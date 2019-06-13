@@ -21,3 +21,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# env
+.env
+./*.env
+*.env
+
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea
+.idea/
+*.idea
+idea/
+idea
+.vscode
+.vscode/
