@@ -1,6 +1,8 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
+import { Box, Flex } from '@rebass/grid';
+
 import styled from 'theme';
 
 import { InputField, PasswordField } from 'components/Form';
@@ -9,6 +11,8 @@ import { Button } from 'components/Buttons';
 
 import { formsConst } from 'consts';
 
+import logo from 'resources/images/logo.svg';
+
 import { formErrorUtil } from 'utils';
 
 const FormWrapper = styled.form`
@@ -16,8 +20,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  align-self: center;
-  justify-content: center;
+  margin: 0 auto;
 `;
 
 interface LoginProps { }
@@ -27,6 +30,11 @@ type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
 const Login: React.FC<LoginPropsAllProps> = () => {
   return (
     <FormWrapper>
+      <Flex justifyContent="center">
+        <Box mb="20px">
+          <img src={logo} width={120} alt=""/>
+        </Box>
+      </Flex>
       <Field
         name="userName"
         placeholder="Enter user name"
@@ -43,7 +51,7 @@ const Login: React.FC<LoginPropsAllProps> = () => {
         label="Password"
         validate={[formErrorUtil.required]}
       />
-      <Button primary={true}>Submit</Button>
+      <Button>Submit</Button>
     </FormWrapper>
   );
 };

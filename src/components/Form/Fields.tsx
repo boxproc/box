@@ -77,10 +77,8 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
     invalid: defaultInvalid,
     isRequired,
     meta: {
-      active,
       touched,
       error,
-      warning,
       submitFailed,
     },
   } = props;
@@ -99,8 +97,6 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
       <Title
         htmlFor={focusOnLabelClick ? id : null}
         invalid={invalid}
-        active={((active && !touched) ? true
-          : (active && !error && !warning)) && true}
       >
         {label}
         {(invalid && showErrors)

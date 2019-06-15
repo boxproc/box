@@ -2,20 +2,36 @@ import React from 'react';
 
 import styled from 'theme';
 
+import { Container } from 'containers/Block';
+
+import { stringsUtil } from 'utils';
+
 const Wrapper = styled.footer`
-  max-width: 1560px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 40px 0 20px;
   font-size: 12px;
-  color: ${({ theme }) => theme.lightGrayColor};
+  text-align: center;
+
+  .highlight {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -13px;
+      display: inline-block;
+      height: 1px;
+      width: 100%;
+      background-image: linear-gradient(to left, hsla(0,0%,0%,0) 0, ${({ theme }) => theme.lightAccentColor} 50%, hsla(0,0%,0%,0) 100%);
+  }
 `;
-const currentYear = new Date().getFullYear();
 
 const Footer = () => {
   return (
     <Wrapper>
-      © {currentYear}
+      <Container>
+        <span className="highlight">
+          BOX Processing © {stringsUtil.currentYear} All rights reserved.
+        </span>
+      </Container>
     </Wrapper>
   );
 };

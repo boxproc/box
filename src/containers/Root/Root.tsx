@@ -1,10 +1,13 @@
 import React from 'react';
+import { match as Match, Route, Switch } from 'react-router';
+
+import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
 import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
 
+import { Container } from 'containers/Block';
 import Login from 'containers/Login';
 
 const RootWrapper = styled.div`
@@ -15,11 +18,22 @@ const RootWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Root = () => {
+const PagesWrapper = styled(Container)`
+`;
+
+interface RootProps {
+  match: Match<string>;
+}
+
+const Root: React.FC<RootProps> = ({ match }) => {
   return (
     <RootWrapper>
-      <Header />
-      <Login />
+      <Box/>
+      <PagesWrapper>
+        <Switch>
+          <Route path={`${match.path}`} component={Login} />
+        </Switch>
+      </PagesWrapper>
       <Footer />
     </RootWrapper>
   );
