@@ -1,3 +1,5 @@
+import React from 'react';
+
 import styled, { css } from 'theme';
 
 export const sharedStyle = css`
@@ -14,9 +16,11 @@ export const sharedStyle = css`
 
 interface ButtonProps {
   primary?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
-export const Button = styled.button<ButtonProps>`
+const Wrapper = styled.button<ButtonProps>`
   ${sharedStyle}
   height: 46px;
   padding: 10px 30px;
@@ -29,10 +33,24 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     background-color: ${({ primary, theme }) =>
-      primary ? theme.lightAccentColor : theme.lightBlackColor};
+    primary ? theme.lightAccentColor : theme.lightBlackColor};
   }
 
   &:disabled {
     opacity: .5;
   }
 `;
+
+export const Button: React.FC<ButtonProps> = ({
+  disabled,
+  onClick,
+  children,
+}) => {
+  return (
+    <Wrapper
+      onClick={disabled ? null : onClick}
+    >
+      {children}
+    </Wrapper>
+  );
+};

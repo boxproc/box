@@ -1,5 +1,5 @@
 export const basePath = '/';
 
 export enum formsConst {
-  LOGIN = 'login',
+  USER_LOGIN = 'user-login',
 }

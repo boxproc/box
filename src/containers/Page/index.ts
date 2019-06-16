@@ -1,27 +1,29 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Login from './Login';
+import Page from './Page';
 
 import {
   createLoadingSelector,
-  handleUserLogin,
+  handleUserLogout,
+  selectUsername,
   UserActionTypes,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  UserActionTypes.USER_LOGIN,
+  UserActionTypes.USER_LOGOUT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  userName: selectUsername(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    userLogin: handleUserLogin,
+    userLogout: handleUserLogout,
   },
   dispatch
 );
@@ -29,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Page);

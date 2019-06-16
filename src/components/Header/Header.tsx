@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styled from 'theme';
 
-import { Container } from 'containers/Block';
+import { Container } from 'components/Block';
 
 import logo from 'resources/images/logo.png';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'theme';
 
-import { Container } from 'containers/Block';
+import { Container } from 'components/Block';
 
 import { stringsUtil } from 'utils';
 

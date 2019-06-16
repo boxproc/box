@@ -5,12 +5,14 @@ import { UserState } from './types';
 
 export const userInitialState: ImmutableObject<UserState> = Immutable({
   userInfo: {
+    sessionId: null,
+    resultCode: null,
+    errorDescription: '',
     id: null,
     userName: '',
     firstName: '',
     lastName: '',
     email: '',
-    status: null,
   },
 });
 

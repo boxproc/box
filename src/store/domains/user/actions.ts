@@ -3,39 +3,57 @@ import * as api from './api';
 import {
   ActionTypeKeys,
   GetUserInfoAction,
-  LogOutAction,
+  UserLoginAction,
+  UserLogoutAction,
 } from './actionTypes';
 
-import { HandleLogout, VoidPromiseThunk } from 'types';
+import { UserLoginData } from './types';
+
+import { HandleUserLogout, Thunk, VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil, urlUtil } from 'utils';
 
+export type UserLogin = (data: UserLoginData) => UserLoginAction;
 export type GetUserInfo = () => GetUserInfoAction;
-export type Logout = () => LogOutAction;
+export type UserLogout = () => UserLogoutAction;
 
-export type HandleGettingUserInfo = VoidPromiseThunk;
+export type HandleUserLogin = (data: UserLoginData) => Thunk<void>;
+export type HandleGetUserInfo = VoidPromiseThunk;
+
+export const userLogin: UserLogin = data => ({
+  type: ActionTypeKeys.USER_LOGIN,
+  payload: api.userLogin(data),
+});
 
 export const getUserInfo: GetUserInfo = () => ({
   type: ActionTypeKeys.GET_USER_INFO,
   payload: api.getUserInfo(),
 });
 
-export const logOut: Logout = () => ({
+export const userLogout: UserLogout = () => ({
   type: ActionTypeKeys.USER_LOGOUT,
-  payload: api.logOut(),
+  payload: api.userLogout(),
 });
 
-export const handleGettingUserInfo: HandleGettingUserInfo = () =>
+export const handleUserLogin: HandleUserLogin = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(async () => {
+      await dispatch(userLogin(data));
+      urlUtil.openLocation('/page');
+    });
+  };
+
+export const handleGetUserInfo: HandleGetUserInfo = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(getUserInfo());
     });
   };
 
-export const handleLogout: HandleLogout = () =>
+export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
-      await dispatch(logOut());
+      await dispatch(userLogout());
       urlUtil.openLocation('/');
     });
   };

@@ -5,13 +5,14 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { InputField, PasswordField } from 'components/Form';
-
 import { Button } from 'components/Buttons';
+import { InputField, PasswordField } from 'components/Form';
 
 import { formsConst } from 'consts';
 
 import logo from 'resources/images/logo.svg';
+
+import { HandleUserLogin } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
@@ -23,13 +24,19 @@ const FormWrapper = styled.form`
   margin: 0 auto;
 `;
 
-interface LoginProps { }
+interface LoginProps {
+  userLogin: HandleUserLogin;
+}
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
 
-const Login: React.FC<LoginPropsAllProps> = () => {
+const Login: React.FC<LoginPropsAllProps> = ({
+  handleSubmit,
+  submitting,
+  userLogin,
+}) => {
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={handleSubmit(data => userLogin(data))}>
       <Flex justifyContent="center">
         <Box mb="20px">
           <img src={logo} width={120} alt=""/>
@@ -51,13 +58,17 @@ const Login: React.FC<LoginPropsAllProps> = () => {
         label="Password"
         validate={[formErrorUtil.required]}
       />
-      <Button>Submit</Button>
+      <Button
+        disabled={submitting}
+      >
+        Submit
+      </Button>
     </FormWrapper>
   );
 };
 
 export default reduxForm<{}, LoginProps>({
-  form: formsConst.LOGIN,
+  form: formsConst.USER_LOGIN,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(Login);
