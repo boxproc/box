@@ -1,12 +1,15 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Box, Flex } from '@rebass/grid';
+import { History } from 'history';
+
+import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
 import { Button } from 'components/Buttons';
 import { InputField, PasswordField } from 'components/Form';
+import { highlightCss } from 'components/highlightCss';
 
 import { formsConst } from 'consts';
 
@@ -22,10 +25,20 @@ const FormWrapper = styled.form`
   max-width: 350px;
   width: 100%;
   margin: 0 auto;
+
+  .highlight {
+    ${highlightCss}
+    &:before {
+      top: auto;
+      bottom: 0;
+      left: 62px;
+    }
+  }
 `;
 
 interface LoginProps {
   userLogin: HandleUserLogin;
+  history: History;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -34,14 +47,21 @@ const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   submitting,
   userLogin,
+  history,
 }) => {
+  const handleSubmitForm = React.useCallback(
+    handleSubmit(data => {
+      userLogin(data);
+      history.push('/page');
+    }),
+    []
+  );
+
   return (
-    <FormWrapper onSubmit={handleSubmit(data => userLogin(data))}>
-      <Flex justifyContent="center">
-        <Box mb="20px">
-          <img src={logo} width={120} alt=""/>
-        </Box>
-      </Flex>
+    <FormWrapper onSubmit={handleSubmitForm}>
+      <Box mb="20px" fontSize="0" className="highlight">
+        <img src={logo} width={62} alt="" />
+      </Box>
       <Field
         name="userName"
         placeholder="Enter user name"
@@ -58,17 +78,17 @@ const Login: React.FC<LoginPropsAllProps> = ({
         label="Password"
         validate={[formErrorUtil.required]}
       />
-      <Button
-        disabled={submitting}
-      >
-        Submit
-      </Button>
+      <Box mt="10px">
+        <Button disabled={submitting}>
+          Log in
+        </Button>
+      </Box>
     </FormWrapper>
   );
 };
 
 export default reduxForm<{}, LoginProps>({
   form: formsConst.USER_LOGIN,
-  destroyOnUnmount: false,
+  destroyOnUnmount: true,
   enableReinitialize: true,
 })(Login);

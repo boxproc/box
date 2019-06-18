@@ -13,6 +13,7 @@ export const sharedInputCss = css<InvalidProp>`
   outline: none;
   color: ${({ theme }) => theme.blackColor};
   border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.grayColor};
+  border-radius: 2px;
 
   &:focus{
     border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.blackColor};
@@ -21,7 +22,7 @@ export const sharedInputCss = css<InvalidProp>`
   ::placeholder {
     font-size: 13px;
     line-height: 17px;
-    color: ${({ theme }) => theme.lightGrayColor};
+    color: ${({ theme }) => theme.grayColor};
     font-weight: normal;
   }
 

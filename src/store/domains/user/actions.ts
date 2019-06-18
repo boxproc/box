@@ -11,7 +11,7 @@ import { UserLoginData } from './types';
 
 import { HandleUserLogout, Thunk, VoidPromiseThunk } from 'types';
 
-import { errorDecoratorUtil, urlUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type UserLogin = (data: UserLoginData) => UserLoginAction;
 export type GetUserInfo = () => GetUserInfoAction;
@@ -39,7 +39,7 @@ export const handleUserLogin: HandleUserLogin = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
-      urlUtil.openLocation('/page');
+      // urlUtil.openLocation('/page');
     });
   };
 
@@ -54,6 +54,6 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogout());
-      urlUtil.openLocation('/');
+      // urlUtil.openLocation('/login');
     });
   };

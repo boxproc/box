@@ -30,11 +30,13 @@ const PagesWrapper = styled(Container)`
 interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
+  isLoggedIn: boolean;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
+  isLoggedIn,
 }) => {
   React.useEffect(
     () => {
@@ -50,7 +52,8 @@ const Root: React.FC<RootProps> = ({
         <Switch>
           <Route path={`${match.path}login`} component={Login} />
           <Route path={`${match.path}page`} component={Page} />
-          <Redirect from="*" to={`${basePath}login`} />
+
+          <Redirect from="*" to={!isLoggedIn ? `${basePath}login` : `${basePath}page`}  />
         </Switch>
       </PagesWrapper>
       <Footer />

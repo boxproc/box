@@ -5,7 +5,13 @@ import Root from './Root';
 
 import {
   handleGetUserInfo,
+  selectIsLoggedIn,
 } from 'store/domains';
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  isLoggedIn: selectIsLoggedIn(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -15,6 +21,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Root);

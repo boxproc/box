@@ -15,26 +15,19 @@ export const sharedStyle = css`
 `;
 
 interface ButtonProps {
-  primary?: boolean;
   disabled?: boolean;
   onClick?: () => void;
 }
 
 const Wrapper = styled.button<ButtonProps>`
   ${sharedStyle}
+  width: 100%;
   height: 46px;
   padding: 10px 30px;
-
   border-radius: 2px;
-
-  background-color: ${({ primary, theme }) =>
-    primary ? theme.normalAccentColor : theme.blackColor};
-  color: ${({ theme }) => theme.whiteColor};
-
-  &:hover {
-    background-color: ${({ primary, theme }) =>
-    primary ? theme.lightAccentColor : theme.lightBlackColor};
-  }
+  border: 2px solid ${({ theme }) => theme.grayColor};
+  background-color: ${({ theme }) => theme.lightGrayColor};
+  color: ${({ theme }) => theme.blackColor};
 
   &:disabled {
     opacity: .5;

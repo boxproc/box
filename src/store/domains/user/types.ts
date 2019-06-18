@@ -15,5 +15,6 @@ export interface UserInfo {
 }
 
 export interface UserState {
+  isLoggedIn: boolean;
   userInfo: UserInfo;
 }
