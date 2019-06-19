@@ -1,5 +1,7 @@
 import * as api from './api';
 
+import { basePath } from 'consts';
+
 import {
   ActionTypeKeys,
   GetUserInfoAction,
@@ -8,6 +10,8 @@ import {
 } from './actionTypes';
 
 import { UserLoginData } from './types';
+
+import { history } from 'store';
 
 import { HandleUserLogout, Thunk, VoidPromiseThunk } from 'types';
 
@@ -39,7 +43,7 @@ export const handleUserLogin: HandleUserLogin = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
-      // urlUtil.openLocation('/page');
+      history.push(`${basePath}page`);
     });
   };
 
@@ -54,6 +58,6 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogout());
-      // urlUtil.openLocation('/login');
+      history.push(`${basePath}login`);
     });
   };

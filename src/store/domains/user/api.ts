@@ -7,7 +7,7 @@ import { throttleUtil } from 'utils';
 
 export const userLogin = (data: UserLoginData) =>
   throttleUtil.getDataAfter({ message: 'success' }, 500);
-  // apiClient.post('', data);
+  // apiClient.post('/ui_login/login', { data });
 
 export const getUserInfo = () =>
   throttleUtil.getDataAfter(User, 500);

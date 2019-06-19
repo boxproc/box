@@ -1,6 +1,7 @@
 export interface UserLoginData {
   userName?: string;
   password?: string;
+  userAgent?: string;
 }
 
 export interface UserInfo {

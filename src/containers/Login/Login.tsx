@@ -1,8 +1,6 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { History } from 'history';
-
 import { Box } from '@rebass/grid';
 
 import styled from 'theme';
@@ -17,7 +15,7 @@ import logo from 'resources/images/logo.svg';
 
 import { HandleUserLogin } from 'store/domains';
 
-import { formErrorUtil } from 'utils';
+import { formErrorUtil, stringsUtil } from 'utils';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -38,7 +36,6 @@ const FormWrapper = styled.form`
 
 interface LoginProps {
   userLogin: HandleUserLogin;
-  history: History;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -47,14 +44,10 @@ const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   submitting,
   userLogin,
-  history,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => {
-      userLogin(data);
-      history.push('/page');
-    }),
-    []
+    handleSubmit(data => userLogin({...data, userAgent: stringsUtil.userAgent})),
+    [userLogin]
   );
 
   return (
