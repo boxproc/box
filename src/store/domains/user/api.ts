@@ -1,12 +1,12 @@
 // import { apiClient } from 'services';
 
-import { User } from './mock';
+import { Login, User } from './mock';
 import { UserLoginData } from './types';
 
 import { throttleUtil } from 'utils';
 
 export const userLogin = (data: UserLoginData) =>
-  throttleUtil.getDataAfter({ message: 'success' }, 500);
+  throttleUtil.getDataAfter(Login, 500);
   // apiClient.post('/ui_login/login', { data });
 
 export const getUserInfo = () =>

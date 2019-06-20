@@ -5,10 +5,12 @@ import { UserState } from './types';
 
 export const userInitialState: ImmutableObject<UserState> = Immutable({
   isLoggedIn: false,
-  userInfo: {
+  loginInfo: {
     sessionId: null,
     resultCode: null,
     errorDescription: '',
+  },
+  userInfo: {
     id: null,
     userName: '',
     firstName: '',
@@ -21,6 +23,7 @@ const userReducer = (state = userInitialState, action: UserActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
       return state
+        .set('loginInfo', action.payload)
         .set('isLoggedIn', true);
 
     case ActionTypeKeys.GET_USER_INFO_FULFILLED:

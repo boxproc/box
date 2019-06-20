@@ -47,7 +47,7 @@ export class ApiClient implements IApiClient {
             const defaultHeaders = isDHeadersWanted ? this.defaults : {};
             const newHeaders = { ...defaultHeaders, ...headers };
 
-            request.set(newHeaders);
+            request.set(newHeaders).withCredentials();
           }
 
           if (type) {

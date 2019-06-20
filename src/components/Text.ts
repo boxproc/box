@@ -1,6 +1,7 @@
 import styled from 'theme';
 
 interface LabelProps {
+  active?: boolean;
   invalid?: boolean;
 }
 

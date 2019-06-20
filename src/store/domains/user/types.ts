@@ -1,13 +1,15 @@
 export interface UserLoginData {
   userName?: string;
-  password?: string;
-  userAgent?: string;
+  passwordHash?: string;
 }
 
-export interface UserInfo {
+export interface LoginResponse {
   sessionId: number;
   resultCode: number;
   errorDescription: string;
+}
+
+export interface UserInfo {
   id: number;
   userName: string;
   firstName: string;

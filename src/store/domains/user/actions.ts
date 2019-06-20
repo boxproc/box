@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 import * as api from './api';
 
 import { basePath } from 'consts';
@@ -10,8 +12,6 @@ import {
 } from './actionTypes';
 
 import { UserLoginData } from './types';
-
-import { history } from 'store';
 
 import { HandleUserLogout, Thunk, VoidPromiseThunk } from 'types';
 
@@ -43,7 +43,7 @@ export const handleUserLogin: HandleUserLogin = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
-      history.push(`${basePath}page`);
+      dispatch(push(`${basePath}page`));
     });
   };
 
@@ -58,6 +58,6 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogout());
-      history.push(`${basePath}login`);
+      dispatch(push(`${basePath}login`));
     });
   };

@@ -6,7 +6,7 @@ import { Box } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button } from 'components/Buttons';
-import { InputField, PasswordField } from 'components/Form';
+import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
 import { formsConst } from 'consts';
@@ -15,7 +15,7 @@ import logo from 'resources/images/logo.svg';
 
 import { HandleUserLogin } from 'store/domains';
 
-import { formErrorUtil, stringsUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -46,7 +46,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   userLogin,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userLogin({...data, userAgent: stringsUtil.userAgent})),
+    handleSubmit(data => userLogin(data)),
     [userLogin]
   );
 
@@ -64,12 +64,19 @@ const Login: React.FC<LoginPropsAllProps> = ({
         validate={[formErrorUtil.required]}
       />
       <Field
-        name="password"
+        name="passwordHash"
         placeholder="Enter password"
         component={PasswordField}
         disabled={false}
         label="Password"
         validate={[formErrorUtil.required]}
+      />
+      <Field
+        id="rememberMe"
+        name="rememberMe"
+        component={CheckboxField}
+        label="Remember me"
+        disabled={false}
       />
       <Box mt="10px">
         <Button disabled={submitting}>
