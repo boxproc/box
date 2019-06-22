@@ -13,6 +13,6 @@ export const getUserInfo = () =>
   throttleUtil.getDataAfter(User, 500);
   // apiClient.get('');
 
-export const userLogout = () =>
+export const userLogout = (sessionId: string) =>
   throttleUtil.getDataAfter({ message: 'success' }, 500);
-  // apiClient.post('');
+  // apiClient.post('/ui_login/logout', { data: {sessionId} });

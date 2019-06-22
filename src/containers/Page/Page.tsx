@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 
-import { HandleUserLogout } from 'types';
+import { HandleUserLogout } from 'store/domains';
 
 interface PageProps {
   userName: string;

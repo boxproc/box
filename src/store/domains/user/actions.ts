@@ -10,19 +10,20 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-
+import { selectSessionId } from './selectors';
 import { UserLoginData } from './types';
 
-import { HandleUserLogout, Thunk, VoidPromiseThunk } from 'types';
+import { Thunk, VoidPromiseThunk, VoidThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
 export type UserLogin = (data: UserLoginData) => UserLoginAction;
 export type GetUserInfo = () => GetUserInfoAction;
-export type UserLogout = () => UserLogoutAction;
+export type UserLogout = (sessionId: string) => UserLogoutAction;
 
 export type HandleUserLogin = (data: UserLoginData) => Thunk<void>;
 export type HandleGetUserInfo = VoidPromiseThunk;
+export type HandleUserLogout = VoidThunk;
 
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,
@@ -34,16 +35,17 @@ export const getUserInfo: GetUserInfo = () => ({
   payload: api.getUserInfo(),
 });
 
-export const userLogout: UserLogout = () => ({
+export const userLogout: UserLogout = sessionId => ({
   type: ActionTypeKeys.USER_LOGOUT,
-  payload: api.userLogout(),
+  payload: api.userLogout(sessionId),
 });
 
 export const handleUserLogin: HandleUserLogin = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
-      dispatch(push(`${basePath}page`));
+      window.sessionStorage.setItem('isLoggedIn', 'true');
+      dispatch(push(`${basePath}`));
     });
   };
 
@@ -55,9 +57,11 @@ export const handleGetUserInfo: HandleGetUserInfo = () =>
   };
 
 export const handleUserLogout: HandleUserLogout = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(async () => {
-      await dispatch(userLogout());
+      const state = getState();
+      await dispatch(userLogout(selectSessionId(state)));
+      window.sessionStorage.setItem('isLoggedIn', 'false');
       dispatch(push(`${basePath}login`));
     });
   };

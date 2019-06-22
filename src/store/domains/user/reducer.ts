@@ -6,7 +6,7 @@ import { UserState } from './types';
 export const userInitialState: ImmutableObject<UserState> = Immutable({
   isLoggedIn: false,
   loginInfo: {
-    sessionId: null,
+    sessionId: '',
     resultCode: null,
     errorDescription: '',
   },

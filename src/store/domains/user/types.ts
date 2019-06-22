@@ -4,7 +4,7 @@ export interface UserLoginData {
 }
 
 export interface LoginResponse {
-  sessionId: number;
+  sessionId: string;
   resultCode: number;
   errorDescription: string;
 }
@@ -19,5 +19,6 @@ export interface UserInfo {
 
 export interface UserState {
   isLoggedIn: boolean;
+  loginInfo: LoginResponse;
   userInfo: UserInfo;
 }

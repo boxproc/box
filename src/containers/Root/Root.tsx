@@ -5,16 +5,15 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Footer } from 'components/Footer';
-
 import { Container } from 'components/Block';
-
-import { basePath } from 'consts';
+import { Footer } from 'components/Footer';
 
 import Login from 'containers/Login';
 import Page from 'containers/Page';
 
 import { HandleGetUserInfo } from 'store/domains';
+
+import { stringsUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -30,13 +29,11 @@ const PagesWrapper = styled(Container)`
 interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
-  isLoggedIn: boolean;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
-  isLoggedIn,
 }) => {
   React.useEffect(
     () => {
@@ -50,10 +47,24 @@ const Root: React.FC<RootProps> = ({
       <Box />
       <PagesWrapper>
         <Switch>
-          <Route path={`${match.path}login`} component={Login} />
-          <Route path={`${match.path}page`} component={Page} />
-
-          <Redirect from="*" to={!isLoggedIn ? `${basePath}login` : `${basePath}page`}  />
+          <Route
+            exact={true}
+            path={`${match.path}`}
+            render={() => (
+              stringsUtil.getSessionStorage('isLoggedIn') === 'true'
+                ? <Page />
+                : <Redirect from="*" to={`${match.path}login`} />
+            )}
+          />
+          <Route
+            exact={true}
+            path={`${match.path}login`}
+            render={() => (
+              stringsUtil.getSessionStorage('isLoggedIn') === 'false'
+                ? <Login />
+                : <Redirect from="*" to={`${match.path}`} />
+            )}
+          />
         </Switch>
       </PagesWrapper>
       <Footer />

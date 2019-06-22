@@ -1,7 +1,7 @@
 import { LoginResponse, UserInfo } from './types';
 
 export const Login: LoginResponse = {
-  sessionId : 1,
+  sessionId: 'sessionId',
   resultCode: 0,
   errorDescription: '',
 };
