@@ -7,6 +7,8 @@ export enum ActionTypeKeys {
   USER_LOGIN_FULFILLED = 'user/USER_LOGIN_FULFILLED',
   USER_LOGIN_REJECTED = 'user/USER_LOGIN_REJECTED',
 
+  SET_REMEMBER_ME = 'user/SET_REMEMBER_ME',
+
   GET_USER_INFO = 'user/GET_USER_INFO',
   GET_USER_INFO_FULFILLED = 'user/GET_USER_INFO_FULFILLED',
   GET_USER_INFO_REJECTED = 'user/GET_USER_INFO_REJECTED',
@@ -29,6 +31,11 @@ export interface UserLoginActionFulfilledAction {
 export interface UserLoginActionRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.USER_LOGIN_REJECTED;
+}
+
+export interface SetRememberMeAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_REMEMBER_ME;
 }
 
 export interface GetUserInfoAction {
@@ -64,4 +71,5 @@ export interface UserLogoutActionRejectedAction {
 export type UserActionTypes =
   | UserLoginActionFulfilledAction
   | GetUserInfoFulfilledAction
-  | UserLogoutActionFulfilledAction;
+  | UserLogoutActionFulfilledAction
+  | SetRememberMeAction;

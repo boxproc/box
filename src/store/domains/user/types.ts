@@ -1,6 +1,7 @@
 export interface UserLoginData {
   userName?: string;
   passwordHash?: string;
+  rememberMe?: boolean;
 }
 
 export interface LoginResponse {
@@ -19,6 +20,7 @@ export interface UserInfo {
 
 export interface UserState {
   isLoggedIn: boolean;
+  isRememberedMe: boolean;
   loginInfo: LoginResponse;
   userInfo: UserInfo;
 }

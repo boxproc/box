@@ -8,12 +8,14 @@ import styled from 'theme';
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
 
+import { cookiesNames } from 'consts';
+
 import Login from 'containers/Login';
 import Page from 'containers/Page';
 
 import { HandleGetUserInfo } from 'store/domains';
 
-import { stringsUtil } from 'utils';
+import { cookiesUtil, stringsUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -23,23 +25,27 @@ const RootWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const PagesWrapper = styled(Container)`
-`;
+const PagesWrapper = styled(Container)``;
 
 interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
+  sessionId: string;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
+  sessionId,
 }) => {
   React.useEffect(
     () => {
       getUserInfo();
+      if (sessionId) {
+        cookiesUtil.setCookie(cookiesNames.SESSION_ID, sessionId);
+      }
     },
-    [getUserInfo]
+    [getUserInfo, sessionId]
   );
 
   return (
@@ -51,7 +57,7 @@ const Root: React.FC<RootProps> = ({
             exact={true}
             path={`${match.path}`}
             render={() => (
-              stringsUtil.getSessionStorage('isLoggedIn') === 'true'
+              stringsUtil.getSessionStorage('isLoggedIn')
                 ? <Page />
                 : <Redirect from="*" to={`${match.path}login`} />
             )}
@@ -60,7 +66,7 @@ const Root: React.FC<RootProps> = ({
             exact={true}
             path={`${match.path}login`}
             render={() => (
-              stringsUtil.getSessionStorage('isLoggedIn') === 'false'
+              !stringsUtil.getSessionStorage('isLoggedIn')
                 ? <Login />
                 : <Redirect from="*" to={`${match.path}`} />
             )}

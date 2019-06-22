@@ -5,13 +5,13 @@ import Page from './Page';
 
 import {
   handleUserLogout,
-  selectUsername,
+  selectUserName,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  userName: selectUsername(state),
+  userName: selectUserName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
