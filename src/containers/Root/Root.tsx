@@ -1,5 +1,5 @@
 import React from 'react';
-import { match as Match, Redirect, Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
@@ -33,13 +33,11 @@ const RootWrapper = styled.div`
 const PagesWrapper = styled(Container)``;
 
 interface RootProps {
-  match: Match<string>;
   getUserInfo: HandleGetUserInfo;
   userLogout: HandleUserLogout;
 }
 
 const Root: React.FC<RootProps> = ({
-  match,
   getUserInfo,
   userLogout,
 }) => {
@@ -64,8 +62,8 @@ const Root: React.FC<RootProps> = ({
           <Container>
             <Flex justifyContent="space-between">
               <Box>
-                <div><Link to="/">Home Page</Link></div>
-                <div><Link to="/page">Page</Link></div>
+                <div><Link to={`${basePath}`}>Home Page</Link></div>
+                <div><Link to={`${basePath}page`}>Page</Link></div>
               </Box>
               <Box>
                 <Button onClick={handleUserLogout}>Logout</Button>
@@ -78,11 +76,11 @@ const Root: React.FC<RootProps> = ({
       <PagesWrapper>
         <Switch>
           <Route
-            path={`${match.path}login`}
+            path={`${basePath}login`}
             render={() => (
               !isLoggedIn
                 ? <Login />
-                : <Redirect from="*" to={`${match.path}`} />
+                : <Redirect from="*" to={`${basePath}`} />
             )}
           />
           <PrivateRoute path={`${basePath}page`} component={Page} />
