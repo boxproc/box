@@ -2,7 +2,7 @@
 
 import * as api from './api';
 
-import { basePath, cookiesNames } from 'consts';
+import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
 import {
   ActionTypeKeys,
@@ -11,7 +11,7 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-import { selectSessionId } from './selectors';
+import { selectIsRememberedMe, selectSessionId, selectUserName } from './selectors';
 import { UserLoginData } from './types';
 
 import { Thunk, VoidPromiseThunk, VoidThunk } from 'types';
@@ -52,12 +52,21 @@ export const handleUserLogin: HandleUserLogin = (data) =>
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
       dispatch(setRememberMe(data.rememberMe));
+      const state = getState();
 
       // dispatch(push(`${basePath}`));
       urlUtil.openLocation(`${basePath}`);
-      cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(getState()),  {
+      cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state),  {
         expires: 30,
       });
+      if (selectIsRememberedMe(state)) {
+        cookiesUtil.setCookie(
+          cookiesNames.USER_NAME,
+          selectUserName(state), {
+            expires: cookiesExpires.USER_NAME_EXPIRES,
+          }
+        );
+      }
     });
   };
 

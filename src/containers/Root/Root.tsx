@@ -12,7 +12,7 @@ import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 
-import { basePath, cookiesExpires, cookiesNames } from 'consts';
+import { basePath, cookiesNames } from 'consts';
 
 import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
@@ -35,16 +35,12 @@ const PagesWrapper = styled(Container)``;
 interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
-  isRememberedMe: boolean;
-  userName: string;
   userLogout: HandleUserLogout;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
-  isRememberedMe,
-  userName,
   userLogout,
 }) => {
   const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
@@ -52,16 +48,8 @@ const Root: React.FC<RootProps> = ({
   React.useEffect(
     () => {
       getUserInfo();
-      if (isRememberedMe) {
-        cookiesUtil.setCookie(
-          cookiesNames.USER_NAME,
-          userName, {
-            expires: cookiesExpires.USER_NAME_EXPIRES,
-          }
-        );
-      }
     },
-    [getUserInfo, isRememberedMe, userName]
+    [getUserInfo]
   );
 
   const handleUserLogout = React.useCallback(
