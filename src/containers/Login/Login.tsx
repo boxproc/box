@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box } from '@rebass/grid';
@@ -9,7 +10,7 @@ import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
-import { formsNames } from 'consts';
+import { basePath, formsNames } from 'consts';
 
 import logo from 'resources/images/logo.svg';
 
@@ -43,7 +44,6 @@ type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
 
 const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
-  submitting,
   userLogin,
   isPasswordFocus,
 }) => {
@@ -55,7 +55,9 @@ const Login: React.FC<LoginPropsAllProps> = ({
   return (
     <FormWrapper onSubmit={handleSubmitForm}>
       <Box mb="20px" fontSize="0" className="highlight">
-        <img src={logo} width={62} alt="" />
+        <Link to={`${basePath}`}>
+          <img src={logo} width={62} alt="" />
+        </Link>
       </Box>
       <Field
         id="userName"
@@ -84,7 +86,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         disabled={false}
       />
       <Box mt="10px">
-        <Button disabled={submitting}>
+        <Button>
           Log in
         </Button>
       </Box>

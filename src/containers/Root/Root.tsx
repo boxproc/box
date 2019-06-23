@@ -1,19 +1,24 @@
 import React from 'react';
 import { match as Match, Redirect, Route, Switch } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
+import { Button } from 'components/Buttons';
+
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
+import PrivateRoute from 'components/PrivateRoute';
 
-import { cookiesExpires, cookiesNames } from 'consts';
+import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
 import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
+import Page from 'containers/Page';
 
-import { HandleGetUserInfo } from 'store/domains';
+import { HandleGetUserInfo, HandleUserLogout } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
 
@@ -30,30 +35,23 @@ const PagesWrapper = styled(Container)``;
 interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
-  sessionId: string;
-  isLoggedIn: string;
   isRememberedMe: boolean;
   userName: string;
+  userLogout: HandleUserLogout;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
-  sessionId,
-  isLoggedIn,
   isRememberedMe,
   userName,
+  userLogout,
 }) => {
+  const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+
   React.useEffect(
     () => {
-      console.log('---isLoggedIn', isLoggedIn);
       getUserInfo();
-      if (sessionId) {
-        cookiesUtil.setCookie(cookiesNames.SESSION_ID, sessionId);
-      }
-      if (!isLoggedIn) {
-        cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
-      }
       if (isRememberedMe) {
         cookiesUtil.setCookie(
           cookiesNames.USER_NAME,
@@ -63,25 +61,35 @@ const Root: React.FC<RootProps> = ({
         );
       }
     },
-    [getUserInfo, sessionId, isLoggedIn, isRememberedMe, userName]
+    [getUserInfo, isRememberedMe, userName]
+  );
+
+  const handleUserLogout = React.useCallback(
+    () => userLogout(),
+    [userLogout]
   );
 
   return (
     <RootWrapper>
-      <Box />
+      <Box>
+        {isLoggedIn && (
+          <Container>
+            <Flex justifyContent="space-between">
+              <Box>
+                <div><Link to="/">Home Page</Link></div>
+                <div><Link to="/page">Page</Link></div>
+              </Box>
+              <Box>
+                <Button onClick={handleUserLogout}>Logout</Button>
+              </Box>
+            </Flex>
+          </Container>
+        )
+        }
+      </Box>
       <PagesWrapper>
         <Switch>
           <Route
-            exact={true}
-            path={`${match.path}`}
-            render={() => (
-              isLoggedIn
-                ? <HomePage />
-                : <Redirect from="*" to={`${match.path}login`} />
-            )}
-          />
-          <Route
-            exact={true}
             path={`${match.path}login`}
             render={() => (
               !isLoggedIn
@@ -89,6 +97,8 @@ const Root: React.FC<RootProps> = ({
                 : <Redirect from="*" to={`${match.path}`} />
             )}
           />
+          <PrivateRoute path={`${basePath}page`} component={Page} />
+          <PrivateRoute path={`${basePath}`} component={HomePage} />
         </Switch>
       </PagesWrapper>
       <Footer />

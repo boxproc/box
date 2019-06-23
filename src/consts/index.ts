@@ -6,10 +6,6 @@ export enum formsNames {
   USER_LOGIN = 'userLogin',
 }
 
-export enum sessionStorageNames {
-  IS_LOGGED_IN = 'isLoggedIn',
-}
-
 export enum cookiesNames {
   SESSION_ID = 'sessionId',
   USER_NAME = 'userName',

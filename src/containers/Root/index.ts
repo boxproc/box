@@ -5,26 +5,21 @@ import Root from './Root';
 
 import {
   handleGetUserInfo,
+  handleUserLogout,
   selectIsRememberedMe,
-  selectSessionId,
   selectUserName,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-import { stringsUtil } from 'utils';
-
-const isLoggedIn = stringsUtil.getSessionStorage('isLoggedIn');
-
 const mapStateToProps = (state: StoreState) => ({
-  sessionId: selectSessionId(state),
   userName: selectUserName(state),
   isRememberedMe: selectIsRememberedMe(state),
-  isLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getUserInfo: handleGetUserInfo,
+    userLogout: handleUserLogout,
   },
   dispatch
 );

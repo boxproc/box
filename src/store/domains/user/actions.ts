@@ -2,7 +2,7 @@
 
 import * as api from './api';
 
-import { basePath } from 'consts';
+import { basePath, cookiesNames } from 'consts';
 
 import {
   ActionTypeKeys,
@@ -16,7 +16,7 @@ import { UserLoginData } from './types';
 
 import { Thunk, VoidPromiseThunk, VoidThunk } from 'types';
 
-import { errorDecoratorUtil, urlUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
 
 export type UserLogin = (data: UserLoginData) => UserLoginAction;
 export type GetUserInfo = () => GetUserInfoAction;
@@ -48,14 +48,16 @@ export const setRememberMe: SetRememberMe = rememberMe => ({
 });
 
 export const handleUserLogin: HandleUserLogin = (data) =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(async () => {
       await dispatch(userLogin(data));
       dispatch(setRememberMe(data.rememberMe));
 
-      window.sessionStorage.setItem('isLoggedIn', 'true');
       // dispatch(push(`${basePath}`));
       urlUtil.openLocation(`${basePath}`);
+      cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(getState()),  {
+        expires: 30,
+      });
     });
   };
 
@@ -72,7 +74,8 @@ export const handleUserLogout: HandleUserLogout = () =>
       const state = getState();
       await dispatch(userLogout(selectSessionId(state)));
 
-      window.sessionStorage.removeItem('isLoggedIn');
+      // dispatch(push(`${basePath}login`));
       urlUtil.openLocation(`${basePath}login`);
+      cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
     });
   };
