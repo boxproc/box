@@ -7,18 +7,13 @@ import Login from './Login';
 
 import {
   handleUserLogin,
-  selectIsRememberedMe,
-  selectUserName,
 } from 'store/domains';
-import { StoreState } from 'store/StoreState';
 
 import { cookiesUtil } from 'utils';
 
 const userName = cookiesUtil.getCookie(cookiesNames.USER_NAME);
 
-const mapStateToProps = (state: StoreState) => ({
-  userName: selectUserName(state),
-  isRememberedMe: selectIsRememberedMe(state),
+const mapStateToProps = () => ({
   isPasswordFocus: !!userName,
   initialValues: {
     rememberMe: !!userName,

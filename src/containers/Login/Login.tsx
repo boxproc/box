@@ -9,13 +9,13 @@ import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
-import { cookiesExpires, cookiesNames, formsNames } from 'consts';
+import { formsNames } from 'consts';
 
 import logo from 'resources/images/logo.svg';
 
 import { HandleUserLogin } from 'store/domains';
 
-import { cookiesUtil, formErrorUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -36,9 +36,7 @@ const FormWrapper = styled.form`
 
 interface LoginProps {
   userLogin: HandleUserLogin;
-  isRememberedMe: boolean;
   isPasswordFocus: boolean;
-  userName: string;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -47,24 +45,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   submitting,
   userLogin,
-  userName,
-  isRememberedMe,
   isPasswordFocus,
 }) => {
-  React.useEffect(
-    () => {
-      if (isRememberedMe) {
-        cookiesUtil.setCookie(
-          cookiesNames.USER_NAME,
-          userName, {
-            expires: cookiesExpires.USER_NAME_EXPIRES,
-          }
-        );
-      }
-    },
-    [isRememberedMe, userName]
-  );
-
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => userLogin(data)),
     [handleSubmit, userLogin]

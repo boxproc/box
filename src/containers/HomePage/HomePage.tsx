@@ -6,12 +6,12 @@ import { Button } from 'components/Buttons';
 
 import { HandleUserLogout } from 'store/domains';
 
-interface PageProps {
+interface HomePageProps {
   userName: string;
   userLogout: HandleUserLogout;
 }
 
-const Page: React.FC<PageProps> = ({
+const HomePage: React.FC<HomePageProps> = ({
   userName,
   userLogout,
 }) => {
@@ -35,4 +35,4 @@ const Page: React.FC<PageProps> = ({
   );
 };
 
-export default Page;
+export default HomePage;

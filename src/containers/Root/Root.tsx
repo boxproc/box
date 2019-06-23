@@ -8,14 +8,14 @@ import styled from 'theme';
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
 
-import { cookiesNames } from 'consts';
+import { cookiesExpires, cookiesNames } from 'consts';
 
+import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
-import Page from 'containers/Page';
 
 import { HandleGetUserInfo } from 'store/domains';
 
-import { cookiesUtil, stringsUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -31,21 +31,39 @@ interface RootProps {
   match: Match<string>;
   getUserInfo: HandleGetUserInfo;
   sessionId: string;
+  isLoggedIn: string;
+  isRememberedMe: boolean;
+  userName: string;
 }
 
 const Root: React.FC<RootProps> = ({
   match,
   getUserInfo,
   sessionId,
+  isLoggedIn,
+  isRememberedMe,
+  userName,
 }) => {
   React.useEffect(
     () => {
+      console.log('---isLoggedIn', isLoggedIn);
       getUserInfo();
       if (sessionId) {
         cookiesUtil.setCookie(cookiesNames.SESSION_ID, sessionId);
       }
+      if (!isLoggedIn) {
+        cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
+      }
+      if (isRememberedMe) {
+        cookiesUtil.setCookie(
+          cookiesNames.USER_NAME,
+          userName, {
+            expires: cookiesExpires.USER_NAME_EXPIRES,
+          }
+        );
+      }
     },
-    [getUserInfo, sessionId]
+    [getUserInfo, sessionId, isLoggedIn, isRememberedMe, userName]
   );
 
   return (
@@ -57,8 +75,8 @@ const Root: React.FC<RootProps> = ({
             exact={true}
             path={`${match.path}`}
             render={() => (
-              stringsUtil.getSessionStorage('isLoggedIn')
-                ? <Page />
+              isLoggedIn
+                ? <HomePage />
                 : <Redirect from="*" to={`${match.path}login`} />
             )}
           />
@@ -66,7 +84,7 @@ const Root: React.FC<RootProps> = ({
             exact={true}
             path={`${match.path}login`}
             render={() => (
-              !stringsUtil.getSessionStorage('isLoggedIn')
+              !isLoggedIn
                 ? <Login />
                 : <Redirect from="*" to={`${match.path}`} />
             )}

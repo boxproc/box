@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 
 import * as api from './api';
 
@@ -54,7 +54,8 @@ export const handleUserLogin: HandleUserLogin = (data) =>
       dispatch(setRememberMe(data.rememberMe));
 
       window.sessionStorage.setItem('isLoggedIn', 'true');
-      dispatch(push(`${basePath}`));
+      // dispatch(push(`${basePath}`));
+      urlUtil.openLocation(`${basePath}`);
     });
   };
 

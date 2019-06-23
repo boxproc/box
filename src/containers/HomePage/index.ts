@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Page from './Page';
+import HomePage from './HomePage';
 
 import {
   handleUserLogout,
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Page);
+)(HomePage);
