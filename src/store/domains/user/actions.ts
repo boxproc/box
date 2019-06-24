@@ -57,7 +57,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
       // dispatch(push(`${basePath}`));
       urlUtil.openLocation(`${basePath}`);
       cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state),  {
-        expires: 30,
+        expires: 600,
       });
       if (selectIsRememberedMe(state)) {
         cookiesUtil.setCookie(
@@ -78,10 +78,11 @@ export const handleGetUserInfo: HandleGetUserInfo = () =>
   };
 
 export const handleUserLogout: HandleUserLogout = () =>
-  async (dispatch, getState) => {
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(async () => {
-      const state = getState();
-      await dispatch(userLogout(selectSessionId(state)));
+      const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+
+      await dispatch(userLogout(sessionId));
 
       // dispatch(push(`${basePath}login`));
       urlUtil.openLocation(`${basePath}login`);
