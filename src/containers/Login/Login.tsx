@@ -86,9 +86,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         disabled={false}
       />
       <Box mt="10px">
-        <Button>
-          Log in
-        </Button>
+        <Button text="Log in"/>
       </Box>
     </FormWrapper>
   );

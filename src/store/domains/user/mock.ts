@@ -4,6 +4,7 @@ export const Login: LoginResponse = {
   sessionId: 'sessionId123abc',
   resultCode: 0,
   errorDescription: '',
+  errorDetails: '',
 };
 
 export const User: UserInfo = {

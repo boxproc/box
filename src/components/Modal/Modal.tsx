@@ -5,7 +5,11 @@ import { media } from 'theme/media';
 
 import { CloseModal } from 'store/domains';
 
-const ModalWrapper = styled.div`
+interface ModalWrapperProps {
+  maxContainerWidth?: string;
+}
+
+const ModalWrapper = styled.div<ModalWrapperProps>`
   position: fixed;
   top: 0;
   right: 0;
@@ -43,49 +47,66 @@ const ModalWrapper = styled.div`
     background-color: #ffffff;
     text-align: left;
     box-sizing: border-box;
-    max-width: 500px;
+    max-width: ${({maxContainerWidth}) => maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 30px;
   }
   .modal-close {
     position: absolute;
-    top: 15px;
+    top: 0;
+    right: 0;
     text-decoration: none;
-    font-size: 40px;
+    font-size: 28px;
     line-height: .6;
     color: #fff;
     outline: none;
     cursor: pointer;
-    right: 30px;
-    color: rgba(255, 255, 255, .7);
-    &:hover {
-      color: rgba(255, 255, 255, 1);
-    }
+    color: ${({ theme }) => theme.blackColor};
+    padding: 10px;
   }
 `;
 
 interface ModalProps {
   name: string;
   closeModal: CloseModal;
+  maxContainerWidth?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
   children,
   name,
   closeModal,
+  maxContainerWidth,
 }) => {
+  React.useEffect(
+    () => {
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.key === 'Backspace') {
+          handleCloseModal();
+        }
+      });
+    },
+    []
+  );
+
   const handleCloseModal = React.useCallback(
     () => closeModal(name),
     [name, closeModal]
   );
 
   return (
-    <ModalWrapper>
-      <div className="modal-backdrop" onClick={handleCloseModal} />
-      <span className="modal-close" onClick={handleCloseModal}>
-        &times;
-      </span>
+    <ModalWrapper maxContainerWidth={maxContainerWidth}>
+      <div
+        className="modal-backdrop"
+        onClick={handleCloseModal}
+      />
       <div className="modal-container">
+        <span
+          className="modal-close"
+          onClick={handleCloseModal}
+        >
+          &times;
+        </span>
         {children}
       </div>
     </ModalWrapper>

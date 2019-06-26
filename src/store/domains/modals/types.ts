@@ -1,4 +1,4 @@
 export interface ModalsState {
-  isErrorModal: boolean;
+  isMessageModal: boolean;
   isTestModal: boolean;
 }

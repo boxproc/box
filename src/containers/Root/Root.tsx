@@ -67,7 +67,10 @@ const Root: React.FC<RootProps> = ({
                 <div><Link to={`${basePath}page`}>Page</Link></div>
               </Box>
               <Box>
-                <Button onClick={handleUserLogout}>Logout</Button>
+                <Button
+                  text="Logout"
+                  onClick={handleUserLogout}
+                />
               </Box>
             </Flex>
           </Container>

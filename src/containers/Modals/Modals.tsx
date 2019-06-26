@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ErrorModal from './ErrorModal';
+import MessageModal from './MessageModal';
 import TestModal from './TestModal';
 
 interface ModalsProps {
@@ -9,8 +9,8 @@ interface ModalsProps {
 
 const modalsList = [
   {
-    name: 'ErrorModal',
-    component: <ErrorModal />,
+    name: 'MessageModal',
+    component: <MessageModal />,
   },
   {
     name: 'TestModal',

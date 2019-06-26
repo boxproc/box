@@ -4,7 +4,7 @@ import { ActionTypeKeys, ModalActionTypes } from './actionTypes';
 import { ModalsState } from './types';
 
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
-  isErrorModal: false,
+  isMessageModal: true,
   isTestModal: false,
 });
 

@@ -7,7 +7,8 @@ export interface UserLoginData {
 export interface LoginResponse {
   sessionId: string;
   resultCode: number;
-  errorDescription: string;
+  errorDescription?: string;
+  errorDetails?: string;
 }
 
 export interface UserInfo {

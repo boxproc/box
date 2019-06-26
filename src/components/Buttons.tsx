@@ -15,11 +15,12 @@ export const sharedStyle = css`
 `;
 
 interface ButtonProps {
+  text: string;
   disabled?: boolean;
   onClick?: () => void;
 }
 
-const Wrapper = styled.button<ButtonProps>`
+const Wrapper = styled.button`
   ${sharedStyle}
   width: 100%;
   height: 46px;
@@ -37,13 +38,13 @@ const Wrapper = styled.button<ButtonProps>`
 export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
-  children,
+  text,
 }) => {
   return (
     <Wrapper
       onClick={disabled ? null : onClick}
     >
-      {children}
+      {text}
     </Wrapper>
   );
 };
