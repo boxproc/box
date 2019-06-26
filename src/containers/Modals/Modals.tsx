@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MessageModal from './MessageModal';
-import TestModal from './TestModal';
 
 interface ModalsProps {
   modalsStateList?: object;
@@ -11,10 +10,6 @@ const modalsList = [
   {
     name: 'MessageModal',
     component: <MessageModal />,
-  },
-  {
-    name: 'TestModal',
-    component: <TestModal />,
   },
 ];
 

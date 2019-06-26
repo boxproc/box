@@ -3,16 +3,17 @@ import {
   CloseModalAction,
   OpenModalAction,
 } from './actionTypes';
+import { ModalsData } from './types';
 
-export type OpenModal = (modalName: string) => OpenModalAction;
+export type OpenModal = (data: ModalsData) => OpenModalAction;
 export type CloseModal = (modalName: string) => CloseModalAction;
 
-export const openModal: OpenModal = param => ({
+export const openModal: OpenModal = data => ({
   type: ActionTypeKeys.OPEN_MODAL,
-  payload: param,
+  payload: data,
 });
 
-export const closeModal: CloseModal = param => ({
+export const closeModal: CloseModal = modalName => ({
   type: ActionTypeKeys.CLOSE_MODAL,
-  payload: param,
+  payload: modalName,
 });

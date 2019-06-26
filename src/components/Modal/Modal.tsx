@@ -49,7 +49,7 @@ const ModalWrapper = styled.div<ModalWrapperProps>`
     box-sizing: border-box;
     max-width: ${({maxContainerWidth}) => maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
     width: 100%;
-    padding: 20px 20px 30px;
+    padding: 20px;
   }
   .modal-close {
     position: absolute;
@@ -85,8 +85,7 @@ const Modal: React.FC<ModalProps> = ({
           handleCloseModal();
         }
       });
-    },
-    []
+    }
   );
 
   const handleCloseModal = React.useCallback(

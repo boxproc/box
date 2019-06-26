@@ -4,7 +4,7 @@ export enum ActionTypeKeys {
 }
 
 export interface OpenModalAction {
-  readonly payload: string;
+  readonly payload: any;
   readonly type: ActionTypeKeys.OPEN_MODAL;
 }
 

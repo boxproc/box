@@ -49,43 +49,52 @@ export const setRememberMe: SetRememberMe = rememberMe => ({
 
 export const handleUserLogin: HandleUserLogin = (data) =>
   async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(async () => {
-      await dispatch(userLogin(data));
-      dispatch(setRememberMe(data.rememberMe));
-      const state = getState();
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(userLogin(data));
+        dispatch(setRememberMe(data.rememberMe));
+        const state = getState();
 
-      // dispatch(push(`${basePath}`));
-      urlUtil.openLocation(`${basePath}`);
-      cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state),  {
-        expires: 600,
-      });
-      if (selectIsRememberedMe(state)) {
-        cookiesUtil.setCookie(
-          cookiesNames.USER_NAME,
-          selectUserName(state), {
-            expires: cookiesExpires.USER_NAME_EXPIRES,
-          }
-        );
-      }
-    });
+        // dispatch(push(`${basePath}`));
+        urlUtil.openLocation(`${basePath}`);
+        cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state), {
+          expires: 600,
+        });
+        if (selectIsRememberedMe(state)) {
+          cookiesUtil.setCookie(
+            cookiesNames.USER_NAME,
+            selectUserName(state), {
+              expires: cookiesExpires.USER_NAME_EXPIRES,
+            }
+          );
+        }
+      },
+      dispatch
+    );
   };
 
 export const handleGetUserInfo: HandleGetUserInfo = () =>
   async dispatch => {
-    errorDecoratorUtil.withErrorHandler(async () => {
-      await dispatch(getUserInfo());
-    });
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getUserInfo());
+      },
+      dispatch
+    );
   };
 
 export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
-    errorDecoratorUtil.withErrorHandler(async () => {
-      const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
-      await dispatch(userLogout(sessionId));
+        await dispatch(userLogout(sessionId));
 
-      // dispatch(push(`${basePath}login`));
-      urlUtil.openLocation(`${basePath}login`);
-      cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
-    });
+        // dispatch(push(`${basePath}login`));
+        urlUtil.openLocation(`${basePath}login`);
+        cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
+      },
+      dispatch
+    );
   };

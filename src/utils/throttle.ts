@@ -13,6 +13,6 @@ export const throttle: Throttle = (func, delay) => {
 
 export const getDataAfter = <R = object>(data: R, timeout: number, rejectable?: boolean) =>
   new Promise<R>((resolve, reject) => setTimeout(
-    () => rejectable ? reject({ statusCode: 500 }) : resolve(data),
+    () => !rejectable ? reject({ statusCode: 500 }) : resolve(data),
     timeout
   ));
