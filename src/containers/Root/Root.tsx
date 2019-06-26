@@ -1,15 +1,13 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { Link } from 'react-router-dom';
 
-import { Box, Flex } from '@rebass/grid';
+import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Button } from 'components/Buttons';
-
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
+import Header from 'components/Header';
 import PrivateRoute from 'components/PrivateRoute';
 
 import { basePath, cookiesNames } from 'consts';
@@ -18,7 +16,7 @@ import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
 import Page from 'containers/Page';
 
-import { HandleGetUserInfo, HandleUserLogout } from 'store/domains';
+import { HandleGetUserInfo } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
 
@@ -34,12 +32,10 @@ const PagesWrapper = styled(Container)``;
 
 interface RootProps {
   getUserInfo: HandleGetUserInfo;
-  userLogout: HandleUserLogout;
 }
 
 const Root: React.FC<RootProps> = ({
   getUserInfo,
-  userLogout,
 }) => {
   const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
@@ -50,28 +46,12 @@ const Root: React.FC<RootProps> = ({
     [getUserInfo]
   );
 
-  const handleUserLogout = React.useCallback(
-    () => userLogout(),
-    [userLogout]
-  );
-
   return (
     <RootWrapper>
       <Box>
         {isLoggedIn && (
-          <Container>
-            <Flex justifyContent="space-between">
-              <Box>
-                <div><Link to={`${basePath}`}>Home Page</Link></div>
-                <div><Link to={`${basePath}page`}>Page</Link></div>
-              </Box>
-              <Box>
-                <Button onClick={handleUserLogout}>Logout</Button>
-              </Box>
-            </Flex>
-          </Container>
-        )
-        }
+          <Header />
+        )}
       </Box>
       <PagesWrapper>
         <Switch>

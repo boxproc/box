@@ -5,13 +5,11 @@ import Root from './Root';
 
 import {
   handleGetUserInfo,
-  handleUserLogout,
 } from 'store/domains';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getUserInfo: handleGetUserInfo,
-    userLogout: handleUserLogout,
   },
   dispatch
 );

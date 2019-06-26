@@ -17,6 +17,7 @@ export const userInitialState: ImmutableObject<UserState> = Immutable({
     firstName: '',
     lastName: '',
     email: '',
+    uiItems: null,
   },
 });
 
