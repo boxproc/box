@@ -16,6 +16,7 @@ import { basePath, cookiesNames } from 'consts';
 
 import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
+import Modals from 'containers/Modals';
 import Page from 'containers/Page';
 
 import { HandleGetUserInfo, HandleUserLogout } from 'store/domains';
@@ -88,6 +89,7 @@ const Root: React.FC<RootProps> = ({
         </Switch>
       </PagesWrapper>
       <Footer />
+      <Modals />
     </RootWrapper>
   );
 };
