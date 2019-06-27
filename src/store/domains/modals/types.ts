@@ -1,15 +1,15 @@
-export interface MessageModalFields {
+export interface FieldsMessageModal {
   title: string;
-  message: string;
+  message?: string;
   details?: string;
 }
 
 export interface ModalsData {
   name: string;
-  messageModalFields?: MessageModalFields;
+  fields?: any;
 }
 
 export interface ModalsState {
   isMessageModal: boolean;
-  messageModalFields?: MessageModalFields;
+  fieldsMessageModal?: FieldsMessageModal;
 }

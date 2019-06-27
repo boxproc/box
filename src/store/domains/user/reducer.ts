@@ -9,8 +9,8 @@ export const userInitialState: ImmutableObject<UserState> = Immutable({
   loginInfo: {
     sessionId: '',
     resultCode: null,
-    errorDescription: '',
-    errorDetails: '',
+    message: '',
+    description: '',
   },
   userInfo: {
     id: null,

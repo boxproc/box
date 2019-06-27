@@ -7,13 +7,16 @@ import Login from './Login';
 
 import {
   handleUserLogin,
+  selectIsMessageModal,
 } from 'store/domains';
+import { StoreState } from 'store/StoreState';
 
 import { cookiesUtil } from 'utils';
 
 const userName = cookiesUtil.getCookie(cookiesNames.USER_NAME);
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state: StoreState) => ({
+  isMessageModal: selectIsMessageModal(state),
   isPasswordFocus: !!userName,
   initialValues: {
     rememberMe: !!userName,

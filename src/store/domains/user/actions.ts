@@ -13,6 +13,7 @@ import {
 } from './actionTypes';
 import { selectIsRememberedMe, selectSessionId, selectUserName } from './selectors';
 import { UserLoginData } from './types';
+import { prepareLoginValues } from './util';
 
 import { Thunk, VoidPromiseThunk, VoidThunk } from 'types';
 
@@ -51,10 +52,11 @@ export const handleUserLogin: HandleUserLogin = (data) =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(userLogin(data));
+        const preparedLoginValues = prepareLoginValues(data);
+        await dispatch(userLogin(preparedLoginValues));
         dispatch(setRememberMe(data.rememberMe));
-        const state = getState();
 
+        const state = getState();
         // dispatch(push(`${basePath}`));
         urlUtil.openLocation(`${basePath}`);
         cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state), {

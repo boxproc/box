@@ -1,17 +1,10 @@
 import React from 'react';
 
-import MessageModal from './MessageModal';
+import { modalsList } from './modalsList';
 
 interface ModalsProps {
   modalsStateList?: object;
 }
-
-const modalsList = [
-  {
-    name: 'MessageModal',
-    component: <MessageModal />,
-  },
-];
 
 const Modals: React.FC<ModalsProps> = ({
   modalsStateList,
@@ -28,9 +21,9 @@ const Modals: React.FC<ModalsProps> = ({
   });
 
   return (
-    <div>
+    <React.Fragment>
       {renderModals()}
-    </div>
+    </React.Fragment>
   );
 };
 

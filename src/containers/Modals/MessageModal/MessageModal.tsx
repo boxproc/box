@@ -1,39 +1,50 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Paragraph, T2 } from 'components/Text';
 
+import { modalNames } from 'consts';
+
+import { FieldsMessageModal } from 'store/domains';
+
 interface MessageModalProps {
-  messageModalFields: any;
+  fieldsMessageModal: FieldsMessageModal;
 }
 
 const MessageModal: React.FC<MessageModalProps> = ({
-  messageModalFields,
+  fieldsMessageModal,
 }) => {
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
 
-  const {title, message, details} = messageModalFields;
+  const { title, message, details } = fieldsMessageModal;
   return (
     <Modal
-      name="MessageModal"
+      name={modalNames.MESSAGE_MODAL}
       maxContainerWidth={350}
     >
-      <T2>{title}</T2>
-      <Paragraph light={true}>{message}</Paragraph>
-      {details &&
-        <Box my="10px">
-          <Button
-            text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
-            onClick={() => setVisibleDetail(!isVisibleDetail)}
-          />
+      <Flex
+        alignItems="center"
+        flexDirection="column"
+      >
+        <Box pr="12px">
+          <T2>{title}</T2>
         </Box>
-      }
-      {isVisibleDetail &&
-        <Paragraph light={true}>{details}</Paragraph>
-      }
+        <Paragraph light={true}>{message}</Paragraph>
+        {details &&
+          <Box my="10px">
+            <Button
+              text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
+              onClick={() => setVisibleDetail(!isVisibleDetail)}
+            />
+          </Box>
+        }
+        {isVisibleDetail &&
+          <Paragraph light={true}>{details}</Paragraph>
+        }
+      </Flex>
     </Modal>
   );
 };

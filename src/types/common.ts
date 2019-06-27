@@ -18,11 +18,7 @@ export interface MessageResponse {
 
 export type ApiResponse = SuperagentApiResponse;
 
-interface NotificationObjectResult extends MessageResponse {
-  body?: any;
-}
-
-export type SendNotification = (res: NotificationObjectResult | string, isCatch?: boolean)
+export type SendNotification = (res: MessageResponse | any, isCatch?: boolean)
   => (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export interface PromiseAction<R> extends Action {

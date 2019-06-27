@@ -14,3 +14,7 @@ export enum cookiesNames {
 export enum cookiesExpires {
   USER_NAME_EXPIRES = 604800,
 }
+
+export enum modalNames {
+  MESSAGE_MODAL = 'MessageModal',
+}

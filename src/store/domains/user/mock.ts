@@ -3,8 +3,8 @@ import { LoginResponse, UserInfo } from './types';
 export const Login: LoginResponse = {
   sessionId: 'sessionId123abc',
   resultCode: 0,
-  errorDescription: '',
-  errorDetails: '',
+  message: '',
+  description: '',
 };
 
 export const User: UserInfo = {

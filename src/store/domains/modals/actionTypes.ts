@@ -1,10 +1,12 @@
+import { ModalsData } from './types';
+
 export enum ActionTypeKeys {
    OPEN_MODAL = 'modals/OPEN_MODAL',
    CLOSE_MODAL = 'modals/CLOSE_MODAL',
 }
 
 export interface OpenModalAction {
-  readonly payload: any;
+  readonly payload: ModalsData;
   readonly type: ActionTypeKeys.OPEN_MODAL;
 }
 

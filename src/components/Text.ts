@@ -13,15 +13,10 @@ export const Label = styled.label<LabelProps>`
   }
 `;
 
-interface TitleProps {
-  textAlign?: string;
-}
-
-export const T2 = styled.h2<TitleProps>`
+export const T2 = styled.h2`
   margin-bottom: 15px;
   font-size: 26px;
   font-family: ${({ theme }) => theme.decorateFont};
-  text-align: ${({ textAlign }) => textAlign ? textAlign : 'center'}
 `;
 
 interface ParagraphProps {
