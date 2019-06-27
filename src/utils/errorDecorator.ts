@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-// import { handleSendNotification } from './notifications';
+import { handleSendNotification } from './notifications';
 
 import { StoreState } from 'store/StoreState';
 
@@ -16,8 +16,7 @@ export const withErrorHandler = async (
     return await fn();
   } catch (e) {
     if (dispatch) {
-      //   handleSendNotification(e, true)(dispatch);
-      console.log('---handleSendNotification');
+      handleSendNotification(e, true)(dispatch);
     }
 
     if (returnReject) {

@@ -16,6 +16,7 @@ import { basePath, cookiesNames } from 'consts';
 
 import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
+import Modals from 'containers/Modals';
 import Page from 'containers/Page';
 
 import { HandleGetUserInfo, HandleUserLogout } from 'store/domains';
@@ -66,7 +67,10 @@ const Root: React.FC<RootProps> = ({
                 <div><Link to={`${basePath}page`}>Page</Link></div>
               </Box>
               <Box>
-                <Button onClick={handleUserLogout}>Logout</Button>
+                <Button
+                  text="Logout"
+                  onClick={handleUserLogout}
+                />
               </Box>
             </Flex>
           </Container>
@@ -88,6 +92,7 @@ const Root: React.FC<RootProps> = ({
         </Switch>
       </PagesWrapper>
       <Footer />
+      <Modals />
     </RootWrapper>
   );
 };

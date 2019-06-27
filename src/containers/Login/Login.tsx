@@ -38,6 +38,7 @@ const FormWrapper = styled.form`
 interface LoginProps {
   userLogin: HandleUserLogin;
   isPasswordFocus: boolean;
+  isMessageModal: boolean;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -46,6 +47,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   userLogin,
   isPasswordFocus,
+  isMessageModal,
+  error,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => userLogin(data)),
@@ -64,16 +67,17 @@ const Login: React.FC<LoginPropsAllProps> = ({
         name="userName"
         placeholder="Enter user name"
         component={InputField}
-        disabled={false}
+        disabled={isMessageModal}
         label="Login"
         validate={[formErrorUtil.required]}
       />
+      {error}
       <Field
         id="passwordHash"
         name="passwordHash"
         placeholder="Enter password"
         component={PasswordField}
-        disabled={false}
+        disabled={isMessageModal}
         label="Password"
         validate={[formErrorUtil.required]}
         autoFocus={isPasswordFocus}
@@ -86,9 +90,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         disabled={false}
       />
       <Box mt="10px">
-        <Button>
-          Log in
-        </Button>
+        <Button text="Log in"/>
       </Box>
     </FormWrapper>
   );
