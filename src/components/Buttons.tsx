@@ -18,17 +18,22 @@ interface ButtonProps {
   text: string;
   disabled?: boolean;
   onClick?: () => void;
+  small?: boolean;
 }
 
-const Wrapper = styled.button`
+interface WrapperProps {
+  small?: boolean;
+}
+
+const Wrapper = styled.button<WrapperProps>`
   ${sharedStyle}
   width: 100%;
-  height: 46px;
-  padding: 10px 30px;
+  padding: ${({ small }) => small ? '7px 10px' : '12px 30px'};
   border-radius: 2px;
   border: 2px solid ${({ theme }) => theme.grayColor};
   background-color: ${({ theme }) => theme.lightGrayColor};
   color: ${({ theme }) => theme.blackColor};
+  font-size: ${({ small }) => small ? '14px' : '15px'};
 
   &:disabled {
     opacity: .5;
@@ -39,10 +44,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   text,
+  small,
 }) => {
   return (
     <Wrapper
       onClick={disabled ? null : onClick}
+      small={small}
     >
       {text}
     </Wrapper>

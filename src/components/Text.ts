@@ -13,20 +13,27 @@ export const Label = styled.label<LabelProps>`
   }
 `;
 
-export const T2 = styled.h2`
+interface TitleProps {
+  textAlign?: string;
+}
+
+export const T2 = styled.h2<TitleProps>`
   margin-bottom: 15px;
   font-size: 26px;
   font-family: ${({ theme }) => theme.decorateFont};
+  text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
 `;
 
 interface ParagraphProps {
   light?: boolean;
+  textAlign?: string;
 }
 
 export const Paragraph = styled.p<ParagraphProps>`
   font-size: 14px;
   line-height: 1.5;
   color: ${({ theme, light }) => light ? theme.darkGrayColor : theme.blackColor };
+  text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   &:not(last-child) {
     margin-bottom: 20px;
   };
