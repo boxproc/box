@@ -3,6 +3,7 @@ import { Reducer } from 'redux';
 import { FormStateMap } from 'redux-form';
 
 import { LoaderState } from './domains/loader';
+import { ModalsState } from './domains/modals';
 import { UserState } from './domains/user';
 
 export interface StoreState {
@@ -10,4 +11,5 @@ export interface StoreState {
   router: RouterState;
   loader: LoaderState;
   user: UserState;
+  modals: ModalsState;
 }

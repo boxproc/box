@@ -52,7 +52,10 @@ const Header: React.FC<HeaderProps> = ({
             <Navbar />
           </Flex>
           <Box>
-            <Button onClick={handleUserLogout}>Logout</Button>
+            <Button
+              text="Logout"
+              onClick={handleUserLogout}
+            />
           </Box>
         </Flex>
       </Container>
