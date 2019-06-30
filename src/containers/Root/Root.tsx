@@ -59,9 +59,7 @@ const Root: React.FC<RootProps> = ({
           <Route
             path={`${basePath}login`}
             render={() => (
-              !isLoggedIn
-                ? <Login />
-                : <Redirect from="*" to={`${basePath}`} />
+              !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
             )}
           />
           <PrivateRoute path={`${basePath}page`} component={Page} />

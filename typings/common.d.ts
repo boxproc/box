@@ -6,7 +6,6 @@
 declare module 'redux-seamless-immutable';
 declare module 'react-burger-menu/lib/menus/slide';
 declare module 'react-select/lib/*';
-declare module 'rc-menu';
 
 /// <reference types="node" />
 /// <reference types="react" />
