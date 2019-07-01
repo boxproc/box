@@ -11,7 +11,7 @@ import { basePath } from 'consts';
 
 import Navbar from 'components/Navbar';
 
-import { HandleUserLogout, UiItem } from 'store/domains';
+import { HandleUserLogout, UiItemPrepared } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
 
@@ -23,7 +23,7 @@ const Wrapper = styled.header`
 
 interface HeaderProps {
   userLogout: HandleUserLogout;
-  uiItems: Array<UiItem>;
+  uiItems: Array<UiItemPrepared>;
 }
 
 const Header: React.FC<HeaderProps> = ({

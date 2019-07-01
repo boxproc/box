@@ -14,9 +14,17 @@ export interface LoginResponse {
 }
 
 export interface UiItem {
-  id: number;
-  title: string;
-  parentId: number;
+  uiItem: string;
+  description: string;
+  itemType: string;
+  // id: number;
+  // title: string;
+  // parentId: number;
+}
+
+export interface UiItemPrepared extends UiItem {
+  id: number | string;
+  parentId: number | string;
 }
 
 export interface UserInfo {

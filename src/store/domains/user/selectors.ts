@@ -11,8 +11,16 @@ export const selectSessionId = (state: StoreState) => state.user.loginInfo.sessi
 export const selectDefaultUiItems = (state: StoreState) => state.user.userInfo.uiItems;
 
 export const selectUiItems = createSelector(
-    selectDefaultUiItems,
-    uiItems => uiItems && uiItems.asMutable()
-  );
+  selectDefaultUiItems,
+  uiItems => {
+    return uiItems && uiItems.asMutable().map(item => {
+      return {
+        ...item,
+        id: item.uiItem,
+        parentId: item.uiItem.split('/').slice(0, -1).join('/') || null,
+      };
+    });
+  }
+);
 
 export const selectUserName = (state: StoreState) => state.user.userInfo.userName;

@@ -2,10 +2,10 @@ import React from 'react';
 
 import { NavbarClasses, NavList } from './NavList';
 
-import { UiItem } from 'store/domains';
+import { UiItemPrepared } from 'store/domains';
 
 interface NavbarProps {
-  uiItems: Array<UiItem>;
+  uiItems: Array<UiItemPrepared>;
 }
 
 const removeActiveClass = (el: HTMLElement) => el.classList.remove(NavbarClasses.ACTIVE);
@@ -31,8 +31,8 @@ const toggleActiveClass = (e: React.MouseEvent<HTMLElement>) => {
 const Navbar: React.FC<NavbarProps> = ({
   uiItems,
 }) => {
-  const renderItem = (item: UiItem) => {
-    const { id, title } = item;
+  const renderItem = (item: UiItemPrepared) => {
+    const { id, description } = item;
 
     return (
       <li
@@ -40,13 +40,13 @@ const Navbar: React.FC<NavbarProps> = ({
         className={NavbarClasses.MENU_ITEM}
         onClick={e => toggleActiveClass(e)}
       >
-        <span className={NavbarClasses.MENU_TITLE}>{title}</span>
+        <span className={NavbarClasses.MENU_TITLE}>{description}</span>
         {renderMenu(id)}
       </li>
     )
   };
 
-  const renderMenu = (id?: number) => id && (
+  const renderMenu = (id?: number | string) => id && (
     <NavList className={NavbarClasses.SUB_MENU}>
       {uiItems.map(item => item.parentId === id && renderItem(item))}
     </NavList>
