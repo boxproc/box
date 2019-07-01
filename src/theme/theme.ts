@@ -20,6 +20,8 @@ export default interface Theme {
   darkGrayColor: string;
 
   whiteColor: string;
+
+  boxShadow: string;
 }
 
 export const theme: Theme = {
@@ -39,4 +41,6 @@ export const theme: Theme = {
   darkGrayColor: '#4d4d4d',
 
   whiteColor: '#ffffff',
+
+  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .1)',
 };

@@ -18,7 +18,7 @@ import logo from 'resources/images/logo.png';
 const Wrapper = styled.header`
   width: 100%;
   padding: 10px 0;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `;
 
 interface HeaderProps {
