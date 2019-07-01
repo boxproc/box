@@ -17,7 +17,6 @@ export interface UiItem {
   id: number;
   title: string;
   parentId: number;
-  childCount: number;
 }
 
 export interface UserInfo {

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export enum NavbarClasses {
-  MENU_CLASS = 'menu',
-  SUB_MENU_CLASS = 'sub-menu',
-  MENU_ITEM_CLASS = 'menu-item',
-  MENU_TITLE_CLASS = 'menu-title',
-  ACTIVE_CLASS = 'is-active',
+  MENU = 'menu',
+  SUB_MENU = 'sub-menu',
+  MENU_ITEM = 'menu-item',
+  MENU_TITLE = 'menu-title',
+  ACTIVE = 'is-active',
 }
 
 export const NavList = styled.ul`
@@ -14,27 +14,28 @@ export const NavList = styled.ul`
   align-items: flex-start;
   font-size: 14px;
   list-style-type: none;
-  .${NavbarClasses.MENU_TITLE_CLASS} {
+  .${NavbarClasses.MENU_TITLE} {
     position: relative;
     display: block;
-    padding: 10px;
+    padding: 12px 0;
     cursor: pointer;
     &:hover {
       color: ${({ theme }) => theme.normalAccentColor};
     }
   }
-  .${NavbarClasses.MENU_ITEM_CLASS}  {
+  .${NavbarClasses.MENU_ITEM}  {
     position: relative;
+    padding: 0 10px;
     &.is-active {
-      & > .${NavbarClasses.SUB_MENU_CLASS} {
+      & > .${NavbarClasses.SUB_MENU} {
         display: block;
       }
-      & > .${NavbarClasses.MENU_TITLE_CLASS} {
+      & > .${NavbarClasses.MENU_TITLE} {
         color: ${({ theme }) => theme.normalAccentColor};
       }
     }
   }
-  .${NavbarClasses.SUB_MENU_CLASS} {
+  .${NavbarClasses.SUB_MENU} {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -45,9 +46,16 @@ export const NavList = styled.ul`
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.whiteColor};
-    .${NavbarClasses.SUB_MENU_CLASS} {
+    .${NavbarClasses.SUB_MENU} {
       left: 100%;
       top: 0;
+    }
+    .${NavbarClasses.MENU_ITEM} {
+      &:not(:last-child) {
+        .${NavbarClasses.MENU_TITLE} {
+          border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+        }
+      }
     }
   }
 `;
