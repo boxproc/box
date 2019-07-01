@@ -43,22 +43,24 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <T2 textAlign="center">{title}</T2>
       </Box>
       <Paragraph light={true} textAlign="center">{message}</Paragraph>
-      <Flex alignItems="flex-end" flexDirection="column">
+      <Flex alignItems="center" flexDirection="column">
         <Box my="10px">
           <Button
-            text="Close/OK"
+            text="Close"
             small={true}
             onClick={() => closeModal(modalNames.MESSAGE_MODAL)}
           />
         </Box>
-        {details &&
+      </Flex>
+      {details &&
+        <Flex alignItems="flex-end" flexDirection="column">
           <Box mt="5px" mb="15px">
             <Link onClick={() => setVisibleDetail(!isVisibleDetail)}>
               {isVisibleDetail ? 'Hide Details' : 'Show Details'}
             </Link>
           </Box>
-        }
-      </Flex>
+        </Flex>
+      }
       {isVisibleDetail &&
         <Paragraph light={true} textAlign="center">{details}</Paragraph>
       }
