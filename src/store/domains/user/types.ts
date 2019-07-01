@@ -13,7 +13,7 @@ export interface LoginResponse {
   description?: string;
 }
 
-export interface MenuItem {
+export interface UiItem {
   id: number;
   title: string;
   parentId: number;
@@ -26,7 +26,7 @@ export interface UserInfo {
   firstName: string;
   lastName: string;
   email: string;
-  uiItems: Array<MenuItem>;
+  uiItems: Array<UiItem>;
 }
 
 export interface UserState {
@@ -39,6 +39,6 @@ export interface UserState {
     firstName: string;
     lastName: string;
     email: string;
-    uiItems: ImmutableArray<MenuItem>;
+    uiItems: ImmutableArray<UiItem>;
   };
 }

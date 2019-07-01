@@ -9,9 +9,9 @@ import { Button } from 'components/Buttons';
 
 import { basePath } from 'consts';
 
-import Navbar from './Navbar';
+import Navbar from 'components/Navbar';
 
-import { HandleUserLogout } from 'store/domains';
+import { HandleUserLogout, UiItem } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
 
@@ -23,10 +23,12 @@ const Wrapper = styled.header`
 
 interface HeaderProps {
   userLogout: HandleUserLogout;
+  uiItems: Array<UiItem>;
 }
 
 const Header: React.FC<HeaderProps> = ({
   userLogout,
+  uiItems,
 }) => {
   const handleUserLogout = React.useCallback(
     () => userLogout(),
@@ -49,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({
                 <img src={logo} width={62} alt="" />
               </a>
             </Box>
-            <Navbar />
+            {uiItems && <Navbar uiItems={uiItems}/>}
           </Flex>
           <Box>
             <Button

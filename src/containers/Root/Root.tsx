@@ -7,15 +7,17 @@ import styled from 'theme';
 
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
-import Header from 'components/Header';
 import PrivateRoute from 'components/PrivateRoute';
 
 import { basePath, cookiesNames } from 'consts';
 
-import HomePage from 'containers/HomePage';
+import Header from 'containers/Header';
 import Login from 'containers/Login';
-import Modals from 'containers/Modals';
+
+import HomePage from 'containers/HomePage';
 import Page from 'containers/Page';
+
+import Modals from 'containers/Modals';
 
 import { HandleGetUserInfo } from 'store/domains';
 

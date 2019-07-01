@@ -12,7 +12,7 @@ export const selectDefaultUiItems = (state: StoreState) => state.user.userInfo.u
 
 export const selectUiItems = createSelector(
     selectDefaultUiItems,
-    uiItems => uiItems.asMutable()
+    uiItems => uiItems && uiItems.asMutable()
   );
 
 export const selectUserName = (state: StoreState) => state.user.userInfo.userName;
