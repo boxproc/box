@@ -24,7 +24,7 @@ const app = {};
 
 try {
   envConfig = require(`./${mode}`);
-  config = { ...app, ...environment, ...envConfig.default };
+  config = {...app, ...environment, ...envConfig.default};
 } catch (e) {
   throw new Error('INVALID CONFIG FILE');
 }
