@@ -43,10 +43,10 @@ const Navbar: React.FC<NavbarProps> = ({
         <span className={NavbarClasses.MENU_TITLE}>{description}</span>
         {renderMenu(id)}
       </li>
-    )
+    );
   };
 
-  const renderMenu = (id?: number | string) => id && (
+  const renderMenu = (id?: string) => id && (
     <NavList className={NavbarClasses.SUB_MENU}>
       {uiItems.map(item => item.parentId === id && renderItem(item))}
     </NavList>

@@ -2,7 +2,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 export interface UserLoginData {
   userName?: string;
-  passwordHash?: string;
+  password?: string;
   rememberMe?: boolean;
 }
 
@@ -17,14 +17,11 @@ export interface UiItem {
   uiItem: string;
   description: string;
   itemType: string;
-  // id: number;
-  // title: string;
-  // parentId: number;
 }
 
 export interface UiItemPrepared extends UiItem {
-  id: number | string;
-  parentId: number | string;
+  id: string;
+  parentId: string;
 }
 
 export interface UserInfo {

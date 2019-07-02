@@ -73,8 +73,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
       />
       {error}
       <Field
-        id="passwordHash"
-        name="passwordHash"
+        id="password"
+        name="password"
         placeholder="Enter password"
         component={PasswordField}
         disabled={isMessageModal}
