@@ -105,3 +105,24 @@ export const CheckedBoxIcon = styled(CheckedBox)`
 CheckedBoxIcon.defaultProps = {
   el: 'g',
 };
+
+const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
+  <svg
+    width={9}
+    height={6}
+    viewBox="0 0 9 6"
+    fill="none"
+    {...props}
+  >
+    <path
+      d="M1 1L4.5 5L8 1"
+      stroke="#000000"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const ChevronIcon = styled(Chevron)`
+  ${({ css }) => css}
+`;

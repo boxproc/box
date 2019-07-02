@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { NavbarClasses, NavList } from './NavList';
+import { Box, Flex } from '@rebass/grid';
+
+import { ChevronIcon } from 'components/Icon';
+
+import { menuClasses, NavList } from './NavList';
 
 import { UiItemPrepared } from 'store/domains';
 
@@ -8,52 +12,74 @@ interface NavbarProps {
   uiItems: Array<UiItemPrepared>;
 }
 
-const removeActiveClass = (el: HTMLElement) => el.classList.remove(NavbarClasses.ACTIVE);
+const removeActiveClass = (el: any) => el.classList.remove(menuClasses.ACTIVE);
 
-const addActiveClass = (el: HTMLElement) => el.classList.add(NavbarClasses.ACTIVE);
+const addActiveClass = (el: HTMLElement) => el.classList.add(menuClasses.ACTIVE);
 
-const toggleActiveClass = (e: React.MouseEvent<HTMLElement>) => {
-  e.stopPropagation();
+const toggleActiveClass = (el: HTMLElement) =>
+  el.classList.contains(menuClasses.ACTIVE)
+    ? removeActiveClass(el)
+    : addActiveClass(el);
 
-  e.currentTarget.closest(`.${NavbarClasses.SUB_MENU}`)
-    ? e.currentTarget
-      .closest(`.${NavbarClasses.SUB_MENU}`)
-      .querySelectorAll('li').forEach(el => removeActiveClass(el))
-    : e.currentTarget
-      .closest(`.${NavbarClasses.MENU}`)
-      .querySelectorAll('li').forEach(el => removeActiveClass(el));
-
-  e.currentTarget.classList.contains(NavbarClasses.ACTIVE)
-    ? removeActiveClass(e.currentTarget)
-    : addActiveClass(e.currentTarget);
-};
+const removeActiveFromAll = (
+  currentItem: HTMLElement,
+  currentRefItem: HTMLDivElement,
+  className: string
+) => currentItem
+  .closest(`.${className}`)
+  .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
+    !currentRefItem.classList.contains(menuClasses.ACTIVE)
+    && el.classList.contains(menuClasses.ACTIVE)
+    && removeActiveClass(el)
+);
 
 const Navbar: React.FC<NavbarProps> = ({
   uiItems,
 }) => {
   const renderItem = (item: UiItemPrepared) => {
-    const { id, description } = item;
+    const menuItemRef = React.createRef<HTMLDivElement>();
+    const { id, parentId, hasChildren, description } = item;
+
+    const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
+      const currentItem = e.currentTarget;
+
+      e.stopPropagation();
+
+      currentItem.closest(`.${menuClasses.SUB_MENU}`)
+        ? removeActiveFromAll(currentItem, menuItemRef.current, menuClasses.SUB_MENU)
+        : removeActiveFromAll(currentItem, menuItemRef.current, menuClasses.MENU);
+
+      toggleActiveClass(currentItem);
+    };
 
     return (
-      <li
+      <div
         key={id}
-        className={NavbarClasses.MENU_ITEM}
-        onClick={e => toggleActiveClass(e)}
+        className={menuClasses.MENU_ITEM}
+        ref={menuItemRef}
+        onClick={e => toggleOpenMenu(e)}
       >
-        <span className={NavbarClasses.MENU_TITLE}>{description}</span>
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          className={menuClasses.MENU_TITLE}
+        >
+          <Box>{description}</Box>
+          {(hasChildren && parentId) && <ChevronIcon className="chevron-icon"/>}
+        </Flex>
         {renderMenu(id)}
-      </li>
+      </div>
     );
   };
 
   const renderMenu = (id?: string) => id && (
-    <NavList className={NavbarClasses.SUB_MENU}>
+    <NavList className={menuClasses.SUB_MENU}>
       {uiItems.map(item => item.parentId === id && renderItem(item))}
     </NavList>
   );
 
   return (
-    <NavList className={NavbarClasses.MENU}>
+    <NavList className={menuClasses.MENU}>
       {uiItems.map(item => !item.parentId && renderItem(item))}
     </NavList>
   );
