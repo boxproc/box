@@ -51,7 +51,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   error,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userLogin(data)),
+    handleSubmit(userLogin),
     [handleSubmit, userLogin]
   );
 

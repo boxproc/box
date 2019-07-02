@@ -4,6 +4,8 @@ import { modalNames } from 'consts';
 
 import { SendNotification } from 'types';
 
+import { parseString } from './strings';
+
 export const handleSendNotification: SendNotification =
   (res, isCatch = false) =>
     async dispatch => {
@@ -24,8 +26,8 @@ export const handleSendNotification: SendNotification =
             name: modalNames.MESSAGE_MODAL,
             fields: {
               title: res.statusCode,
-              message: JSON.parse(res.text).errorDescription,
-              details: res.text,
+              message: parseString(res.text).message,
+              details: parseString(res.text).description,
             },
           }));
         }

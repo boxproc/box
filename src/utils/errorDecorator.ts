@@ -18,7 +18,6 @@ export const withErrorHandler = async (
     if (dispatch) {
       handleSendNotification(e, true)(dispatch);
     }
-
     if (returnReject) {
       return Promise.reject(e);
     }

@@ -1,6 +1,6 @@
 import * as superagent from 'superagent';
 
-import { urlUtil } from 'utils';
+// import { urlUtil } from 'utils';
 
 interface HttpErrorResponse extends Error {
   response: object;
@@ -64,9 +64,9 @@ export class ApiClient implements IApiClient {
 
           request.end(
             (err: HttpErrorResponse, res: superagent.Response) => {
-              if (res && res.status === 401) {
-                urlUtil.openLocation('/Login.aspx?returnUrl=mvc');
-              }
+              // if (res && res.status === 401) {
+              //   urlUtil.openLocation('/Login.aspx?returnUrl=mvc');
+              // }
               return err ? reject(err.response) : resolve(res.body !== null ? res.body : res);
             }
           );
