@@ -17,6 +17,7 @@ export interface UiItem {
   uiItem: string;
   description: string;
   itemType: string;
+  hasChildren: boolean;
 }
 
 export interface UiItemPrepared extends UiItem {
