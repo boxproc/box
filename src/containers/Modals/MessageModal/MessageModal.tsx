@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'theme';
-
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Paragraph, T2 } from 'components/Text';
@@ -17,16 +15,6 @@ interface MessageModalProps {
   closeModal: CloseModal;
 }
 
-const Link = styled.span`
-  font-size: 14px;
-  color: ${({ theme }) => theme.darkGrayColor};
-  border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
-  cursor: pointer;
-  &:hover {
-    border-bottom-color: ${({ theme }) => theme.lightAccentColor};
-  }
-`;
-
 const MessageModal: React.FC<MessageModalProps> = ({
   fieldsMessageModal,
   closeModal,
@@ -37,32 +25,37 @@ const MessageModal: React.FC<MessageModalProps> = ({
   return (
     <Modal
       name={modalNames.MESSAGE_MODAL}
-      maxContainerWidth={350}
+      maxContainerWidth={300}
     >
       <Box pr="12px">
-        <T2 textAlign="center">{title}</T2>
+        <T2>{title}</T2>
       </Box>
-      <Paragraph light={true} textAlign="center">{message}</Paragraph>
-      <Flex alignItems="center" flexDirection="column">
-        <Box my="10px">
+      <Paragraph light={true}>{message}</Paragraph>
+      <Flex
+        alignItems="center"
+        justifyContent="flex-end"
+      >
+        <Box mt="5px">
           <Button
             text="Close"
-            small={true}
+            transparent={true}
             onClick={() => closeModal(modalNames.MESSAGE_MODAL)}
           />
         </Box>
+        {details &&
+        <Box mt="5px" ml="10px">
+          <Button
+            text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
+            transparent={true}
+            onClick={() => setVisibleDetail(!isVisibleDetail)}
+          />
+        </Box>
+        }
       </Flex>
-      {details &&
-        <Flex alignItems="flex-end" flexDirection="column">
-          <Box mt="5px" mb="15px">
-            <Link onClick={() => setVisibleDetail(!isVisibleDetail)}>
-              {isVisibleDetail ? 'Hide Details' : 'Show Details'}
-            </Link>
-          </Box>
-        </Flex>
-      }
       {isVisibleDetail &&
-        <Paragraph light={true} textAlign="center">{details}</Paragraph>
+        <Box mt="15px">
+          <Paragraph light={true}>{details}</Paragraph>
+        </Box>
       }
     </Modal>
   );

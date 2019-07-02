@@ -18,22 +18,30 @@ interface ButtonProps {
   text: string;
   disabled?: boolean;
   onClick?: () => void;
-  small?: boolean;
+  transparent?: boolean;
 }
 
 interface WrapperProps {
-  small?: boolean;
+  transparent?: boolean;
 }
 
 const Wrapper = styled.button<WrapperProps>`
   ${sharedStyle}
   width: 100%;
-  padding: ${({ small }) => small ? '7px 10px' : '12px 30px'};
+  padding: ${({ transparent }) => transparent ? '0' : '12px 30px'};
   border-radius: 2px;
-  border: 2px solid ${({ theme }) => theme.grayColor};
-  background-color: ${({ theme }) => theme.lightGrayColor};
+  border: 2px solid ${({ theme, transparent }) => !transparent ? theme.grayColor : 'transparent'};
+  background: ${({ theme, transparent }) => !transparent ? theme.lightGrayColor : 'transparent'};
   color: ${({ theme }) => theme.blackColor};
-  font-size: ${({ small }) => small ? '14px' : '15px'};
+  font-size: ${({ transparent }) => transparent ? '13px' : '15px'};
+  text-transform: ${({ transparent }) => transparent && 'uppercase'};
+  letter-spacing: ${({ transparent }) => transparent && '.2pt'};
+  color: ${({ theme, transparent }) => transparent && theme.grayColor};
+  font-weight: ${({ transparent }) => transparent && 500};
+
+  &:hover {
+    color: ${({ theme, transparent }) => transparent && theme.lightAccentColor};
+  }
 
   &:disabled {
     opacity: .5;
@@ -44,12 +52,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   text,
-  small,
+  transparent,
 }) => {
   return (
     <Wrapper
       onClick={disabled ? null : onClick}
-      small={small}
+      transparent={transparent}
     >
       {text}
     </Wrapper>

@@ -22,6 +22,7 @@ export const T2 = styled.h2<TitleProps>`
   font-size: 26px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
+  text-transform: capitalize;
 `;
 
 interface ParagraphProps {
@@ -35,6 +36,6 @@ export const Paragraph = styled.p<ParagraphProps>`
   color: ${({ theme, light }) => light ? theme.darkGrayColor : theme.blackColor };
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   &:not(last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   };
 `;

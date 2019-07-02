@@ -40,24 +40,24 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.whiteColor};
     text-align: left;
     box-sizing: border-box;
     max-width: ${({ maxContainerWidth }) => maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
     width: 100%;
-    padding: 20px;
+    padding: 20px 12px 20px 20px;
+    border-radius: 3px;
   }
   .modal-close {
     position: absolute;
     top: 0;
     right: 0;
     text-decoration: none;
-    font-size: 28px;
-    line-height: .6;
-    color: ${({ theme }) => theme.whiteColor};
+    font-size: 24px;
+    line-height: .5;
     outline: none;
     cursor: pointer;
-    color: ${({ theme }) => theme.blackColor};
+    color: ${({ theme }) => theme.grayColor};
     padding: 10px;
   }
 `;
