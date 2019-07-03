@@ -7,8 +7,8 @@ export enum formsNames {
 }
 
 export enum cookiesNames {
-  SESSION_ID = 'sessionId',
-  USER_NAME = 'userName',
+  SESSION_ID = 'session_id',
+  USER_NAME = 'username',
 }
 
 export enum cookiesExpires {

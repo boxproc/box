@@ -10,7 +10,8 @@ export const handleSendNotification: SendNotification =
   (res, isCatch = false) =>
     async dispatch => {
       if (!isCatch) {
-        // console.log('---isCatch', isCatch);
+        console.log('---isCatch', isCatch);
+        // console.log('---res', res);
       } else {
         // console.log('---res', res);
         if (res) {
@@ -26,8 +27,8 @@ export const handleSendNotification: SendNotification =
             name: modalNames.MESSAGE_MODAL,
             fields: {
               title: res.statusCode,
-              message: parseString(res.text).message,
-              details: parseString(res.text).description,
+              message: parseString(res.text).result_message,
+              details: parseString(res.text).result_description,
             },
           }));
         }

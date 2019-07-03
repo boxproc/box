@@ -6,7 +6,7 @@ export const selectIsLoggedIn = (state: StoreState) => state.user.isLoggedIn;
 
 export const selectIsRememberedMe = (state: StoreState) => state.user.isRememberedMe;
 
-export const selectSessionId = (state: StoreState) => state.user.loginInfo.sessionId;
+export const selectSessionId = (state: StoreState) => state.user.loginInfo.session_id;
 
 export const selectDefaultUiItems = (state: StoreState) => state.user.userInfo.uiItems;
 

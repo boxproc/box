@@ -40,7 +40,7 @@ const Wrapper = styled.button<WrapperProps>`
   font-weight: ${({ transparent }) => transparent ? 500 : 400};
 
   &:hover {
-    color: ${({ theme, transparent }) => transparent && theme.lightAccentColor};
+    color: ${({ theme, transparent }) => transparent && theme.lighterAccentColor};
   }
 
   &:disabled {

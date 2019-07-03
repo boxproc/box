@@ -63,8 +63,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
         </Link>
       </Box>
       <Field
-        id="userName"
-        name="userName"
+        id="username"
+        name="username"
         placeholder="Enter user name"
         component={InputField}
         disabled={isMessageModal}
@@ -73,8 +73,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
       />
       {error}
       <Field
-        id="password"
-        name="password"
+        id="password_hash"
+        name="password_hash"
         placeholder="Enter password"
         component={PasswordField}
         disabled={isMessageModal}

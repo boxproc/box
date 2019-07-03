@@ -2,7 +2,7 @@ import { UserLoginData } from './types';
 
 export const prepareLoginValues =
   (formData: UserLoginData): UserLoginData => {
-    const { userName, password } = formData;
+    const { username, password_hash } = formData;
 
-    return ({ userName, password });
+    return ({ username, password_hash });
   };

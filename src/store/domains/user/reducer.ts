@@ -7,17 +7,13 @@ export const userInitialState: ImmutableObject<UserState> = Immutable({
   isLoggedIn: false,
   isRememberedMe: false,
   loginInfo: {
-    sessionId: '',
-    resultCode: null,
+    session_id: '',
+    result_code: null,
     message: '',
     description: '',
   },
   userInfo: {
-    id: null,
     userName: '',
-    firstName: '',
-    lastName: '',
-    email: '',
     uiItems: null,
   },
 });

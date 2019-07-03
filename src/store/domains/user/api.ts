@@ -14,5 +14,5 @@ export const getUserInfo = () =>
   // apiClient.get('');
 
 export const userLogout = (sessionId: string) =>
-  throttleUtil.getDataAfter({ message: 'success' }, 500);
-  // apiClient.post('/ui_login/logout', { data: {sessionId} });
+  // throttleUtil.getDataAfter({ message: 'success' }, 500);
+  apiClient.post('/ui/auth/logout', { data: {session_id: sessionId} });
