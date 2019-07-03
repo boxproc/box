@@ -29,6 +29,7 @@ const RootWrapper = styled.div`
   justify-content: space-between;
   min-width: 320px;
   min-height: 100vh;
+  text-align: center;
 `;
 
 const PagesWrapper = styled(Container)``;

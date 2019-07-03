@@ -2,13 +2,13 @@ import { LoginResponse, UserInfo } from './types';
 
 export const Login: LoginResponse = {
   session_id: 'sessionId123abc',
-  resultCode: 0,
+  result_code: 0,
   message: '',
   description: '',
 };
 
 export const User: UserInfo = {
-  userName: 'Operator',
+  userName: 'operator',
   uiItems: [
     {
       uiItem: 'ledger',

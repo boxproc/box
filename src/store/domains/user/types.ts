@@ -8,7 +8,7 @@ export interface UserLoginData {
 
 export interface LoginResponse {
   session_id: string;
-  resultCode: number;
+  result_code: number;
   message?: string;
   description?: string;
 }

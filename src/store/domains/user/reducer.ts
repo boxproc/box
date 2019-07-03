@@ -8,7 +8,7 @@ export const userInitialState: ImmutableObject<UserState> = Immutable({
   isRememberedMe: false,
   loginInfo: {
     session_id: '',
-    resultCode: null,
+    result_code: null,
     message: '',
     description: '',
   },
