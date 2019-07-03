@@ -23,6 +23,8 @@ const FormWrapper = styled.form`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
+  min-height: calc(100vh - 105px);
+  justify-content: center;
   margin: 0 auto;
   text-align: left;
 
@@ -58,7 +60,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
 
   return (
     <FormWrapper onSubmit={handleSubmitForm}>
-      <Box mb="20px" fontSize="0" className="highlight">
+      <Box my="20px" fontSize="0" className="highlight">
         <Link to={`${basePath}`}>
           <img src={logo} width={62} alt="" />
         </Link>

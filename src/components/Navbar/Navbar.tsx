@@ -44,25 +44,22 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 
     return (
-      <Box
+      <Flex
         key={id}
         className={menuClasses.MENU_ITEM}
         onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
+        alignItems="center"
+        justifyContent="space-between"
       >
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
+        <Box
+          pr={!hasChildren ? '5px' : 0}
+          className={!parentId && 'highlight-link'}
         >
-          <Box
-            pr={!hasChildren ? '5px' : 0}
-            className={!parentId && 'highlight-link'}
-          >
-            {description}
-          </Box>
-          {hasChildren && parentId && <ChevronIcon className="chevron-icon" />}
-        </Flex>
+          {description}
+        </Box>
+        {hasChildren && parentId && <ChevronIcon className="chevron-icon" />}
         {renderMenu(id)}
-      </Box>
+      </Flex>
     );
   };
 

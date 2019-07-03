@@ -9,7 +9,7 @@ interface ModalsProps {
 const Modals: React.FC<ModalsProps> = ({
   modalsStateList,
 }) => {
-  const renderModals = () => modalsList.map((modal, index) => {
+  const renderModal = () => modalsList.map((modal, index) => {
     if (!modalsStateList[`is${modal.name}`]) {
       return null;
     }
@@ -22,7 +22,7 @@ const Modals: React.FC<ModalsProps> = ({
 
   return (
     <React.Fragment>
-      {renderModals()}
+      {renderModal()}
     </React.Fragment>
   );
 };

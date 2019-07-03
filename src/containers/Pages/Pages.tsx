@@ -1,33 +1,32 @@
 import React from 'react';
 
 import { Box } from '@rebass/grid';
+import styled from 'theme';
 
-export const Customers = () => {
-  return (
-    <Box>Customers</Box>
-  );
-};
+const Wrapper = styled(Box)`
+  padding-top: 20px
+`;
 
-export const Accounts = () => {
-  return (
-    <Box>Accounts</Box>
-  );
-};
+export const HomePage = () => (
+  <Wrapper>Welcome!</Wrapper>
+);
 
-export const SystemProperties = () => {
-  return (
-    <Box>System Properties</Box>
-  );
-};
+export const Customers = () => (
+  <Wrapper>Customers</Wrapper>
+);
 
-export const Countries = () => {
-  return (
-    <Box>Countries</Box>
-  );
-};
+export const Accounts = () => (
+  <Wrapper>Accounts</Wrapper>
+);
 
-export const Currencies = () => {
-  return (
-    <Box>Currencies</Box>
-  );
-};
+export const SystemProperties = () => (
+  <Wrapper>System Properties</Wrapper>
+);
+
+export const Countries = () =>  (
+  <Wrapper>Countries</Wrapper>
+);
+
+export const Currencies = () => (
+  <Wrapper>Currencies</Wrapper>
+);
