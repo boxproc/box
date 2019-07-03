@@ -23,40 +23,35 @@ const toggleActiveClass = (el: HTMLElement) =>
 
 const removeActiveFromAll = (
   currentItem: HTMLElement,
-  currentRefItem: HTMLDivElement,
   className: string
 ) => currentItem
   .closest(`.${className}`)
   .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
-    !currentRefItem.classList.contains(menuClasses.ACTIVE)
+    !currentItem.classList.contains(menuClasses.ACTIVE)
     && el.classList.contains(menuClasses.ACTIVE)
     && removeActiveClass(el)
 );
 
-const Navbar: React.FC<NavbarProps> = ({
-  uiItems,
-}) => {
+const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
+  const currentItem = e.currentTarget;
+
+  e.stopPropagation();
+
+  currentItem.closest(`.${menuClasses.SUB_MENU}`)
+    ? removeActiveFromAll(currentItem, menuClasses.SUB_MENU)
+    : removeActiveFromAll(currentItem, menuClasses.MENU);
+
+  toggleActiveClass(currentItem);
+};
+
+const Navbar: React.FC<NavbarProps> = ({ uiItems }) => {
   const renderItem = (item: UiItemPrepared) => {
-    const menuItemRef = React.createRef<HTMLDivElement>();
     const { id, parentId, hasChildren, description } = item;
-
-    const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
-      const currentItem = e.currentTarget;
-
-      e.stopPropagation();
-
-      currentItem.closest(`.${menuClasses.SUB_MENU}`)
-        ? removeActiveFromAll(currentItem, menuItemRef.current, menuClasses.SUB_MENU)
-        : removeActiveFromAll(currentItem, menuItemRef.current, menuClasses.MENU);
-
-      toggleActiveClass(currentItem);
-    };
 
     return (
       <div
         key={id}
         className={menuClasses.MENU_ITEM}
-        ref={menuItemRef}
         onClick={e => toggleOpenMenu(e)}
       >
         <Flex

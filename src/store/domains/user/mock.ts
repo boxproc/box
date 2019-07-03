@@ -45,6 +45,12 @@ export const User: UserInfo = {
       hasChildren: true,
     },
     {
+      uiItem: 'file/preferences/extensions/extension',
+      description: 'Extension',
+      itemType: 'M',
+      hasChildren: false,
+    },
+    {
       uiItem: 'file/preferences/settings',
       description: 'Settings',
       itemType: 'M',
