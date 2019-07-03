@@ -1,13 +1,13 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 export interface UserLoginData {
-  userName?: string;
-  password?: string;
+  username?: string;
+  password_hash?: string;
   rememberMe?: boolean;
 }
 
 export interface LoginResponse {
-  sessionId: string;
+  session_id: string;
   resultCode: number;
   message?: string;
   description?: string;
@@ -26,11 +26,7 @@ export interface UiItemPrepared extends UiItem {
 }
 
 export interface UserInfo {
-  id: number;
   userName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
   uiItems: Array<UiItem>;
 }
 
@@ -39,11 +35,7 @@ export interface UserState {
   isRememberedMe: boolean;
   loginInfo: LoginResponse;
   userInfo: {
-    id: number;
     userName: string;
-    firstName: string;
-    lastName: string;
-    email: string;
     uiItems: ImmutableArray<UiItem>;
   };
 }

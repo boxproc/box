@@ -15,7 +15,7 @@ import Header from 'containers/Header';
 import Login from 'containers/Login';
 
 import HomePage from 'containers/HomePage';
-import Page from 'containers/Page';
+import { pages } from 'containers/Pages';
 
 import Modals from 'containers/Modals';
 
@@ -64,7 +64,20 @@ const Root: React.FC<RootProps> = ({
               !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
             )}
           />
-          <PrivateRoute path={`${basePath}page`} component={Page} />
+          <PrivateRoute path={`${basePath}ledger/customers`} component={pages.Customers} />
+          <PrivateRoute path={`${basePath}ledger/accounts`} component={pages.Accounts} />
+          <PrivateRoute
+            path={`${basePath}administration/system_properties`}
+            component={pages.SystemProperties}
+          />
+          <PrivateRoute
+            path={`${basePath}administration/dictionaries/countries`}
+            component={pages.Countries}
+          />
+          <PrivateRoute
+            path={`${basePath}administration/dictionaries/currencies`}
+            component={pages.Currencies}
+          />
           <PrivateRoute path={`${basePath}`} component={HomePage} />
         </Switch>
       </PagesWrapper>

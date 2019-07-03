@@ -4,7 +4,6 @@ export enum menuClasses {
   MENU = 'menu',
   SUB_MENU = 'sub-menu',
   MENU_ITEM = 'menu-item',
-  MENU_TITLE = 'menu-title',
   ACTIVE = 'is-active',
 }
 
@@ -13,33 +12,40 @@ export const NavList = styled.div`
   display: flex;
   align-items: flex-start;
   font-size: 14px;
-  list-style-type: none;
+  a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .chevron-icon {
+    transform: rotate(-90deg);
+  }
+  .highlight-link {
+    border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+    line-height: 1.4;
+    &:hover {
+      border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
+    }
+  }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
     cursor: pointer;
+    margin: 0 10px;
     &.is-active {
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
-      & > .${menuClasses.MENU_TITLE} {
-        background-color: ${({ theme }) => theme.normalAccentColor};
+      .highlight-link {
+        border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
       }
     }
   }
-  .${menuClasses.MENU_TITLE} {
-    padding: 10px;
-    width: 100%;
-    &:hover {
-      background-color: ${({ theme }) => theme.normalAccentColor};
-    }
-  }
   .${menuClasses.SUB_MENU} {
-    display: flex;
-    flex-direction: column;
     position: absolute;
     left: 0%;
     top: calc(100% + 15px);
-    list-style-type: none;
+    display: flex;
+    flex-direction: column;
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
@@ -49,17 +55,18 @@ export const NavList = styled.div`
       top: 0;
     }
     .${menuClasses.MENU_ITEM} {
-      &:not(:last-child) {
-        border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+      padding: 10px;
+      margin: 0;
+      &:not(:first-child) {
+        border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
       }
-      &.is-active {
-        & > .${menuClasses.MENU_TITLE} {
-          background-color: transparent;
+      &:hover {
+        background-color: ${({ theme }) => theme.lightAccentColor};
+        border-top-color: ${({ theme }) => theme.lightAccentColor};
+        + .${menuClasses.MENU_ITEM} {
+          border-top-color: ${({ theme }) => theme.lightAccentColor};
         }
       }
     }
-  }
-  .chevron-icon {
-    transform: rotate(-90deg);
   }
 `;

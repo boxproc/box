@@ -9,6 +9,7 @@ export default interface Theme {
   decorateFont: string;
 
   normalAccentColor: string;
+  lighterAccentColor: string;
   lightAccentColor: string;
 
   blackColor: string;
@@ -30,7 +31,8 @@ export const theme: Theme = {
   decorateFont: 'Raleway, sans-serif',
 
   normalAccentColor: '#ffa400',
-  lightAccentColor: 'rgba(255, 164, 0, .9)',
+  lighterAccentColor: 'rgba(255, 164, 0, .9)',
+  lightAccentColor: 'rgba(255, 164, 0, .7)',
 
   blackColor: '#000000',
 

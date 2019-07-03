@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box>
             <Button
-              text="Logout"
+              text="Log out"
               onClick={handleUserLogout}
             />
           </Box>
