@@ -43,7 +43,7 @@ export const NavList = styled.div`
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0%;
-    top: calc(100% + 15px);
+    top: calc(100% + 25px);
     display: flex;
     flex-direction: column;
     display: none;

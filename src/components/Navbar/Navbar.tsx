@@ -9,7 +9,12 @@ import { ChevronIcon } from 'components/Icon';
 import { basePath } from 'consts';
 
 import { menuClasses, NavList } from './NavList';
-import { clearMenu, toggleOpenMenu, goToPage } from './utils';
+import {
+  checkHasActive,
+  clearMenu,
+  goToPage,
+  toggleOpenMenu,
+} from './utils';
 
 import { UiItemPrepared } from 'store/domains';
 
@@ -18,6 +23,21 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history }) => {
+  const menuRef = React.useRef(null);
+
+  React.useEffect(
+    () => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  );
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (checkHasActive() && menuRef.current && !menuRef.current.contains(e.target)) {
+      clearMenu();
+    }
+  };
+
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, hasChildren, description } = item;
 
@@ -53,7 +73,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   );
 
   return (
-    <NavList className={menuClasses.MENU}>
+    <NavList className={menuClasses.MENU} ref={menuRef}>
       {uiItems.map(item => !item.parentId && renderItem(item))}
     </NavList>
   );

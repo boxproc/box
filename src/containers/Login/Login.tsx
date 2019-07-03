@@ -24,6 +24,7 @@ const FormWrapper = styled.form`
   max-width: 350px;
   width: 100%;
   margin: 0 auto;
+  text-align: left;
 
   .highlight {
     ${highlightCss}
