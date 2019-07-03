@@ -37,7 +37,7 @@ const Wrapper = styled.button<WrapperProps>`
   text-transform: ${({ transparent }) => transparent && 'uppercase'};
   letter-spacing: ${({ transparent }) => transparent && '.2pt'};
   color: ${({ theme, transparent }) => transparent && theme.grayColor};
-  font-weight: ${({ transparent }) => transparent && 500};
+  font-weight: ${({ transparent }) => transparent ? 500 : 400};
 
   &:hover {
     color: ${({ theme, transparent }) => transparent && theme.lightAccentColor};
