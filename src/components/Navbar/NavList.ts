@@ -11,7 +11,7 @@ export const NavList = styled.div`
   position: relative;
   display: flex;
   align-items: flex-start;
-  font-size: 14px;
+  font-size: 15px;
   a {
     display: block;
     color: inherit;
@@ -30,8 +30,8 @@ export const NavList = styled.div`
   .${menuClasses.MENU_ITEM}  {
     position: relative;
     cursor: pointer;
-    margin: 0 10px;
-    &.is-active {
+    margin: 0 15px;
+    &.${menuClasses.ACTIVE} {
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
@@ -43,13 +43,14 @@ export const NavList = styled.div`
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0%;
-    top: calc(100% + 15px);
+    top: calc(100% + 24px);
     display: flex;
     flex-direction: column;
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.whiteColor};
+    font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: 100%;
       top: 0;
@@ -60,6 +61,7 @@ export const NavList = styled.div`
       &:not(:first-child) {
         border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
       }
+      &.${menuClasses.ACTIVE},
       &:hover {
         background-color: ${({ theme }) => theme.lightAccentColor};
         border-top-color: ${({ theme }) => theme.lightAccentColor};

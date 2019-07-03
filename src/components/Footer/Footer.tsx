@@ -8,7 +8,7 @@ import { highlightCss } from 'components/highlightCss';
 import { stringsUtil } from 'utils';
 
 const Wrapper = styled.footer`
-  padding: 40px 0 20px;
+  padding: 70px 0 20px;
   font-size: 12px;
   text-align: center;
 

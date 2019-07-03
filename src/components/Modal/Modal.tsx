@@ -18,11 +18,8 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   React.useEffect(
     () => {
-      window.addEventListener('keydown', e => {
-        if (e.key === 'Escape' || e.key === 'Backspace') {
-          handleCloseModal();
-        }
-      });
+      window.addEventListener('keydown', handleCloseModalByKey);
+      return () => document.removeEventListener('keydown', handleCloseModalByKey);
     }
   );
 
@@ -30,6 +27,12 @@ const Modal: React.FC<ModalProps> = ({
     () => closeModal(name),
     [name, closeModal]
   );
+
+  const handleCloseModalByKey = (e: KeyboardEventInit) => {
+    if (e.key === 'Escape' || e.key === 'Backspace') {
+      handleCloseModal();
+    }
+  };
 
   return (
     <ModalWrapper maxContainerWidth={maxContainerWidth}>

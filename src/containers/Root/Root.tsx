@@ -14,7 +14,6 @@ import { basePath, cookiesNames } from 'consts';
 import Header from 'containers/Header';
 import Login from 'containers/Login';
 
-import HomePage from 'containers/HomePage';
 import { pages } from 'containers/Pages';
 
 import Modals from 'containers/Modals';
@@ -29,7 +28,6 @@ const RootWrapper = styled.div`
   justify-content: space-between;
   min-width: 320px;
   min-height: 100vh;
-  text-align: center;
 `;
 
 const PagesWrapper = styled(Container)``;
@@ -52,36 +50,38 @@ const Root: React.FC<RootProps> = ({
 
   return (
     <RootWrapper>
-      <Box>
-        {isLoggedIn && (
-          <Header />
-        )}
-      </Box>
-      <PagesWrapper>
-        <Switch>
-          <Route
-            path={`${basePath}login`}
-            render={() => (
-              !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
-            )}
-          />
-          <PrivateRoute path={`${basePath}ledger/customers`} component={pages.Customers} />
-          <PrivateRoute path={`${basePath}ledger/accounts`} component={pages.Accounts} />
-          <PrivateRoute
-            path={`${basePath}administration/system_properties`}
-            component={pages.SystemProperties}
-          />
-          <PrivateRoute
-            path={`${basePath}administration/dictionaries/countries`}
-            component={pages.Countries}
-          />
-          <PrivateRoute
-            path={`${basePath}administration/dictionaries/currencies`}
-            component={pages.Currencies}
-          />
-          <PrivateRoute path={`${basePath}`} component={HomePage} />
-        </Switch>
-      </PagesWrapper>
+      <div>
+        <Box>
+          {isLoggedIn && (
+            <Header />
+          )}
+        </Box>
+        <PagesWrapper>
+          <Switch>
+            <Route
+              path={`${basePath}login`}
+              render={() => (
+                !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
+              )}
+            />
+            <PrivateRoute path={`${basePath}ledger/customers`} component={pages.Customers} />
+            <PrivateRoute path={`${basePath}ledger/accounts`} component={pages.Accounts} />
+            <PrivateRoute
+              path={`${basePath}administration/system_properties`}
+              component={pages.SystemProperties}
+            />
+            <PrivateRoute
+              path={`${basePath}administration/dictionaries/countries`}
+              component={pages.Countries}
+            />
+            <PrivateRoute
+              path={`${basePath}administration/dictionaries/currencies`}
+              component={pages.Currencies}
+            />
+            <PrivateRoute path={`${basePath}`} component={pages.HomePage} />
+          </Switch>
+        </PagesWrapper>
+      </div>
       <Footer />
       <Modals />
     </RootWrapper>

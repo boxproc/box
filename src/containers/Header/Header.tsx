@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Container } from 'components/Block';
-import { Button } from 'components/Buttons';
+import HighlightLink from 'components/HighlightLink';
 
 import { basePath } from 'consts';
 
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Box mr="15px">
+            <Box mr="20px">
               <a href={`${basePath}`}>
                 <img src={logo} width={62} alt="" />
               </a>
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({
             {uiItems && <Navbar uiItems={uiItems}/>}
           </Flex>
           <Box>
-            <Button
+            <HighlightLink
               text="Log out"
               onClick={handleUserLogout}
             />

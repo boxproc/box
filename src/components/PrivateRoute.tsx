@@ -18,6 +18,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   return (
     <Route
       {...rest}
+      exact={true}
       render={props => {
         return (
           isLoggedIn

@@ -1,6 +1,6 @@
 import { menuClasses } from './NavList';
 
-export const removeActiveClass = (el: any) => el.classList.remove(menuClasses.ACTIVE);
+export const removeActiveClass = (el: Element) => el.classList.remove(menuClasses.ACTIVE);
 
 export const addActiveClass = (el: HTMLElement) => el.classList.add(menuClasses.ACTIVE);
 
@@ -20,13 +20,6 @@ export const removeActiveFromAll = (
     && removeActiveClass(el)
   );
 
-export const clearMenu = () =>
-  document
-    .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
-      el.classList.contains(menuClasses.ACTIVE)
-      && removeActiveClass(el)
-    );
-
 export const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
   const currentItem = e.currentTarget;
 
@@ -38,6 +31,19 @@ export const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
 
   toggleActiveClass(currentItem);
 };
+
+export const clearMenu = () =>
+  document
+    .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
+      el.classList.contains(menuClasses.ACTIVE)
+      && removeActiveClass(el)
+    );
+
+export const checkHasActive = () =>
+  [].slice.call(document
+    .querySelectorAll(`.${menuClasses.MENU_ITEM}`)).some(el =>
+      el.classList.contains(menuClasses.ACTIVE)
+    );
 
 export const goToPage = (handlePushToHistory: () => void, handleClearMenu: () => void) => {
   handlePushToHistory();
