@@ -1,8 +1,8 @@
 export enum menuClasses {
-  MENU = 'menu',
-  SUB_MENU = 'sub-menu',
-  MENU_ITEM = 'menu-item',
-  MENU_TITLE = 'menu-title',
+  MENU = 'main-menu',
+  SUB_MENU = 'main-menu__sub-menu',
+  MENU_ITEM = 'main-menu__item',
+  MENU_TITLE = 'main-menu__title',
   ACTIVE = 'is-active',
 }
 

@@ -7,11 +7,6 @@ export const NavList = styled.div`
   display: flex;
   align-items: flex-start;
   font-size: 15px;
-  a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-  }
   .chevron-icon {
     transform: rotate(-90deg);
   }
@@ -23,33 +18,38 @@ export const NavList = styled.div`
       border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
     }
   }
-  .${menuClasses.MENU_ITEM}  {
+  .${menuClasses.MENU_TITLE} {
     position: relative;
     cursor: pointer;
-    margin: 0 15px;
-    // &:before {
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   top: 0;
-    //   left: -10px;
-    //   right: -10px;
-    //   bottom: -30px;
-    //   background: yellow;
-    // }
+    padding: 10px;
+  }
+  .${menuClasses.MENU_ITEM}  {
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -10px;
+      right: -10px;
+      bottom: -20px;
+      cursor: default;
+    }
     &.${menuClasses.ACTIVE} {
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
-      & > .highlight-link {
-        border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
+      & > .${menuClasses.MENU_TITLE} {
+        .highlight-link {
+          border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
+        }
       }
     }
   }
   .${menuClasses.SUB_MENU} {
     position: absolute;
-    left: -10px;
-    top: calc(100% + 24px);
+    left: 0;
+    top: calc(100% + 14px);
     display: flex;
     flex-direction: column;
     display: none;
@@ -62,8 +62,6 @@ export const NavList = styled.div`
       top: 0;
     }
     .${menuClasses.MENU_ITEM} {
-      padding: 10px;
-      margin: 0;
       &:not(:first-child) {
         border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
       }

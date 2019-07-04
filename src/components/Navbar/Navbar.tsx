@@ -50,14 +50,21 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
         key={id}
         className={menuClasses.MENU_ITEM}
         onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
+        onMouseEnter={e => checkHasActive() && toggleOpenMenu(e)}
       >
         <Flex
           alignItems="flex-start"
           justifyContent="space-between"
           className={menuClasses.MENU_TITLE}
         >
-          <Box className={!parentId && 'highlight-link'}>{description}</Box>
-          {hasChildren && parentId && <Box ml="5px"><ChevronIcon className="chevron-icon"/></Box>}
+          <Box className={!parentId && 'highlight-link'}>
+            {description}
+          </Box>
+          {hasChildren && parentId &&
+            <Box ml="5px">
+              <ChevronIcon className="chevron-icon"/>
+            </Box>
+          }
         </Flex>
         {renderMenu(id)}
       </Box>
@@ -71,7 +78,11 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   );
 
   return (
-    <NavList className={menuClasses.MENU} ref={menuRef}>
+    <NavList
+      ref={menuRef}
+      className={menuClasses.MENU}
+      onMouseLeave={() => clearMenu()}
+    >
       {uiItems.map(item => !item.parentId && renderItem(item))}
     </NavList>
   );
