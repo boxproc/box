@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
           justifyContent="space-between"
           className={menuClasses.MENU_TITLE}
         >
-          <Box className={!parentId && 'highlight-link'}>
+          <Box className="highlight-link">
             {description}
           </Box>
           {hasChildren && parentId &&
