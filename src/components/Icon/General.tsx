@@ -1,10 +1,10 @@
 import React from 'react';
 
-import styled from 'theme';
+import styled, { theme } from 'theme';
 
 import {
   IconColorProps,
-  staticGrayStyle,
+  staticAccentStyle,
 } from './sharedCss';
 
 const Logout: React.FC<IconColorProps> = props => (
@@ -34,11 +34,12 @@ const Eye: React.FC<IconColorProps> = ({ el, ...props }) => (
 );
 
 export const EyeIcon = styled(Eye)`
-  ${staticGrayStyle}
+  ${staticAccentStyle}
   ${({ css }) => css}
 `;
 EyeIcon.defaultProps = {
   el: 'g',
+  color: theme.grayColor,
 };
 
 const EyeOff: React.FC<IconColorProps> = ({ el, ...props }) => (
@@ -57,11 +58,12 @@ const EyeOff: React.FC<IconColorProps> = ({ el, ...props }) => (
 );
 
 export const EyeOffIcon = styled(EyeOff)`
-  ${staticGrayStyle}
+  ${staticAccentStyle}
   ${({ css }) => css}
 `;
 EyeOffIcon.defaultProps = {
   el: 'g',
+  color: theme.grayColor,
 };
 
 const UncheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
@@ -124,5 +126,6 @@ const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
 );
 
 export const ChevronIcon = styled(Chevron)`
+  ${staticAccentStyle}
   ${({ css }) => css}
 `;

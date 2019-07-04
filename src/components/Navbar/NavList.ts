@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-export enum menuClasses {
-  MENU = 'menu',
-  SUB_MENU = 'sub-menu',
-  MENU_ITEM = 'menu-item',
-  ACTIVE = 'is-active',
-}
+import { menuClasses } from './utils';
 
 export const NavList = styled.div`
   position: relative;
@@ -21,6 +16,7 @@ export const NavList = styled.div`
     transform: rotate(-90deg);
   }
   .highlight-link {
+    position: relative;
     border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
     line-height: 1.4;
     &:hover {
@@ -31,18 +27,28 @@ export const NavList = styled.div`
     position: relative;
     cursor: pointer;
     margin: 0 15px;
+    // &:before {
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   top: 0;
+    //   left: -10px;
+    //   right: -10px;
+    //   bottom: -30px;
+    //   background: yellow;
+    // }
     &.${menuClasses.ACTIVE} {
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
-      .highlight-link {
+      & > .highlight-link {
         border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
       }
     }
   }
   .${menuClasses.SUB_MENU} {
     position: absolute;
-    left: 0%;
+    left: -10px;
     top: calc(100% + 24px);
     display: flex;
     flex-direction: column;
@@ -59,14 +65,15 @@ export const NavList = styled.div`
       padding: 10px;
       margin: 0;
       &:not(:first-child) {
-        border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
+        border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
       }
       &.${menuClasses.ACTIVE},
       &:hover {
-        background-color: ${({ theme }) => theme.lightAccentColor};
-        border-top-color: ${({ theme }) => theme.lightAccentColor};
-        + .${menuClasses.MENU_ITEM} {
-          border-top-color: ${({ theme }) => theme.lightAccentColor};
+        & > .${menuClasses.MENU_TITLE} {
+          color: ${({ theme }) => theme.normalAccentColor};
+          .chevron-icon path {
+            stroke: ${({ theme }) => theme.normalAccentColor};
+          }
         }
       }
     }

@@ -8,11 +8,13 @@ import { ChevronIcon } from 'components/Icon';
 
 import { basePath } from 'consts';
 
-import { menuClasses, NavList } from './NavList';
+import { NavList } from './NavList';
+
 import {
   checkHasActive,
   clearMenu,
   goToPage,
+  menuClasses,
   toggleOpenMenu,
 } from './utils';
 
@@ -44,22 +46,21 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 
     return (
-      <Flex
+      <Box
         key={id}
         className={menuClasses.MENU_ITEM}
         onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
-        alignItems="center"
-        justifyContent="space-between"
       >
-        <Box
-          pr={!hasChildren ? '5px' : 0}
-          className={!parentId && 'highlight-link'}
+        <Flex
+          alignItems="flex-start"
+          justifyContent="space-between"
+          className={menuClasses.MENU_TITLE}
         >
-          {description}
-        </Box>
-        {hasChildren && parentId && <ChevronIcon className="chevron-icon" />}
+          <Box className={!parentId && 'highlight-link'}>{description}</Box>
+          {hasChildren && parentId && <Box ml="5px"><ChevronIcon className="chevron-icon"/></Box>}
+        </Flex>
         {renderMenu(id)}
-      </Flex>
+      </Box>
     );
   };
 
