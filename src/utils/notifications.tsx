@@ -11,9 +11,9 @@ export const handleSendNotification: SendNotification =
     async dispatch => {
       if (!isCatch) {
         console.log('---isCatch', isCatch);
-        // console.log('---res', res);
+        console.log('---res', res);
       } else {
-        // console.log('---res', res);
+        console.log('---res', res);
         if (res) {
           dispatch(openModal({
             name: modalNames.MESSAGE_MODAL,

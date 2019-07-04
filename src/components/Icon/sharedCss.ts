@@ -11,12 +11,12 @@ export interface IconColorProps {
   onClick?: (e?: React.MouseEvent<SVGElement>) => void;
 }
 
-export const staticGrayStyle = css<IconColorProps>`
+export const staticAccentStyle = css<IconColorProps>`
   :hover ${({ el = 'path' }) => el} {
-    stroke: ${({ hover, theme }) => hover || theme.blackColor }};
+    stroke: ${({ hover, theme }) => hover || theme.normalAccentColor }};
   }
 
   ${({el = 'path'}) => el} {
-    stroke: ${({ color, theme }) => color || theme.grayColor}};
+    stroke: ${({ color, theme }) => color || theme.blackColor}};
   }
 `;

@@ -1,4 +1,10 @@
-import { menuClasses } from './NavList';
+export enum menuClasses {
+  MENU = 'main-menu',
+  SUB_MENU = 'main-menu__sub-menu',
+  MENU_ITEM = 'main-menu__item',
+  MENU_TITLE = 'main-menu__title',
+  ACTIVE = 'is-active',
+}
 
 export const removeActiveClass = (el: Element) => el.classList.remove(menuClasses.ACTIVE);
 
