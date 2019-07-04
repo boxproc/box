@@ -1,8 +1,7 @@
 import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
-
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { ChevronIcon } from 'components/Icon';
 
