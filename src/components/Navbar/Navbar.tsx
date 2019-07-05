@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   };
 
   const renderItem = (item: UiItemPrepared) => {
-    const { id, parentId, hasChildren, description } = item;
+    const { id, parentId, title, hasChildren } = item;
 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 
@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
           className={menuClasses.MENU_TITLE}
         >
           <Box className="highlight-link">
-            {description}
+            {title}
           </Box>
           {hasChildren && parentId &&
             <Box ml="5px">

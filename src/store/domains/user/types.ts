@@ -1,41 +1,27 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface UserLoginData {
-  username?: string;
-  password_hash?: string;
-  rememberMe?: boolean;
-}
-
-export interface LoginResponse {
-  session_id: string;
-  result_code: number;
-  message?: string;
-  description?: string;
-}
-
 export interface UiItem {
-  uiItem: string;
-  description: string;
-  itemType: string;
-  hasChildren: boolean;
+  item_type: string;
+  permission: string;
+  ui_item: string;
+  has_children?: boolean;
 }
 
-export interface UiItemPrepared extends UiItem {
+export interface UiItemPrepared {
   id: string;
   parentId: string;
+  title: string;
+  hasChildren?: boolean;
 }
 
 export interface UserInfo {
   userName: string;
-  uiItems: Array<UiItem>;
+  ui_items: Array<UiItem>;
 }
 
 export interface UserState {
-  isLoggedIn: boolean;
-  isRememberedMe: boolean;
-  loginInfo: LoginResponse;
   userInfo: {
     userName: string;
-    uiItems: ImmutableArray<UiItem>;
+    ui_items: ImmutableArray<UiItem>;
   };
 }

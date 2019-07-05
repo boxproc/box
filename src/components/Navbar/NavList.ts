@@ -22,6 +22,7 @@ export const NavList = styled.div`
     position: relative;
     cursor: pointer;
     padding: 10px;
+    text-transform: capitalize;
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
@@ -63,6 +64,14 @@ export const NavList = styled.div`
     }
     .highlight-link {
       border-bottom: 1px solid transparent;
+    }
+    .${menuClasses.MENU_ITEM}  {
+      &:not(:last-child) {
+        border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
+      }
+      &:hover {
+        background-color: ${({ theme }) => theme.lighterGrayColor};
+      }
     }
   }
 `;
