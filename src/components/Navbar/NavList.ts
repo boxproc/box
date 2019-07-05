@@ -12,7 +12,8 @@ export const NavList = styled.div`
   }
   .highlight-link {
     position: relative;
-    border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+    // border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+    border-bottom: 1px solid transparent;
     line-height: 1.4;
     &:hover {
       border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
