@@ -12,7 +12,8 @@ export const NavList = styled.div`
   }
   .highlight-link {
     position: relative;
-    border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+    // border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
+    border-bottom: 1px solid transparent;
     line-height: 1.4;
     &:hover {
       border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
@@ -61,19 +62,19 @@ export const NavList = styled.div`
       left: 100%;
       top: 0;
     }
-    .${menuClasses.MENU_ITEM} {
-      &:not(:first-child) {
-        border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
-      }
-      &.${menuClasses.ACTIVE},
-      &:hover {
-        & > .${menuClasses.MENU_TITLE} {
-          color: ${({ theme }) => theme.normalAccentColor};
-          .chevron-icon path {
-            stroke: ${({ theme }) => theme.normalAccentColor};
-          }
-        }
-      }
-    }
+    // .${menuClasses.MENU_ITEM} {
+    //   &:not(:first-child) {
+    //     border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
+    //   }
+    //   &.${menuClasses.ACTIVE},
+    //   &:hover {
+    //     & > .${menuClasses.MENU_TITLE} {
+    //       color: ${({ theme }) => theme.normalAccentColor};
+    //       .chevron-icon path {
+    //         stroke: ${({ theme }) => theme.normalAccentColor};
+    //       }
+    //     }
+    //   }
+    // }
   }
 `;
