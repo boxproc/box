@@ -12,8 +12,7 @@ export const NavList = styled.div`
   }
   .highlight-link {
     position: relative;
-    // border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
     line-height: 1.4;
     &:hover {
       border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
@@ -56,11 +55,14 @@ export const NavList = styled.div`
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
-    background-color: ${({ theme }) => theme.lighterGrayColor};
+    background-color: ${({ theme }) => theme.whiteColor};
     font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: 100%;
       top: 0;
+    }
+    .highlight-link {
+      border-bottom: 1px solid transparent;
     }
   }
 `;
