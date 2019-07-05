@@ -19,6 +19,7 @@ const Wrapper = styled.header`
   width: 100%;
   padding: 10px 0;
   box-shadow: ${({ theme }) => theme.boxShadow};
+  background-color: ${({ theme }) => theme.lighterGrayColor};
 `;
 
 interface HeaderProps {

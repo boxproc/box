@@ -56,25 +56,11 @@ export const NavList = styled.div`
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
-    background-color: ${({ theme }) => theme.whiteColor};
+    background-color: ${({ theme }) => theme.lighterGrayColor};
     font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: 100%;
       top: 0;
     }
-    // .${menuClasses.MENU_ITEM} {
-    //   &:not(:first-child) {
-    //     border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
-    //   }
-    //   &.${menuClasses.ACTIVE},
-    //   &:hover {
-    //     & > .${menuClasses.MENU_TITLE} {
-    //       color: ${({ theme }) => theme.normalAccentColor};
-    //       .chevron-icon path {
-    //         stroke: ${({ theme }) => theme.normalAccentColor};
-    //       }
-    //     }
-    //   }
-    // }
   }
 `;
