@@ -12,10 +12,8 @@ export const selectUiItems = createSelector(
         id: item.ui_item,
         parentId: item.ui_item.split('/').slice(0, -1).join('/') || null,
         title: item.ui_item.split('/').slice(-1).join('/') || null,
-        hasChildren: item.has_children || false,
+        type: item.item_type,
       };
     });
   }
 );
-
-export const selectUserName = (state: StoreState) => state.user.userInfo.userName;

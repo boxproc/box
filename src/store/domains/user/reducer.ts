@@ -5,7 +5,6 @@ import { UserState } from './types';
 
 export const userInitialState: ImmutableObject<UserState> = Immutable({
   userInfo: {
-    userName: '',
     ui_items: null,
   },
 });

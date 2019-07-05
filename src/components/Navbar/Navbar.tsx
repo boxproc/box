@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { ChevronIcon } from 'components/Icon';
 
-import { basePath } from 'consts';
+import { basePath, uiItemTypes } from 'consts';
 
 import { NavList } from './NavList';
 
@@ -40,7 +40,8 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   };
 
   const renderItem = (item: UiItemPrepared) => {
-    const { id, parentId, title, hasChildren } = item;
+    const { id, parentId, title, type } = item;
+    const hasChildren = type === uiItemTypes.MENU_PARENT;
 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 

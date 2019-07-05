@@ -18,3 +18,10 @@ export enum cookiesExpires {
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
 }
+
+export enum uiItemTypes {
+  SCREEN = 'S',
+  MENU_PARENT = 'M',
+  MENU_CHILD = 'm',
+  FORM = 'F',
+}
