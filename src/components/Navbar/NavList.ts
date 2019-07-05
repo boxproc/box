@@ -14,9 +14,6 @@ export const NavList = styled.div`
     position: relative;
     border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
     line-height: 1.4;
-    &:hover {
-      border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
-    }
   }
   .${menuClasses.MENU_TITLE} {
     position: relative;
@@ -26,6 +23,14 @@ export const NavList = styled.div`
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
+    background-color: ${({ theme }) => theme.whiteColor};
+    z-index: 1000
+    &:hover {
+      background-color: ${({ theme }) => theme.lighterGrayColor};
+      & > .${menuClasses.MENU_TITLE} .highlight-link {
+        border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
+      }
+    }
     &:before {
       content: "";
       display: block;
@@ -57,10 +62,11 @@ export const NavList = styled.div`
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.whiteColor};
+    border: 1px solid ${({ theme }) => theme.blackColor};
     font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: 100%;
-      top: 0;
+      top: -1px;
     }
     .highlight-link {
       border-bottom: 1px solid transparent;
@@ -68,9 +74,6 @@ export const NavList = styled.div`
     .${menuClasses.MENU_ITEM}  {
       &:not(:last-child) {
         border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
-      }
-      &:hover {
-        background-color: ${({ theme }) => theme.lighterGrayColor};
       }
     }
   }

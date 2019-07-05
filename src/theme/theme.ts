@@ -41,7 +41,7 @@ export const theme: Theme = {
 
   grayColor: '#999999',
   lightGrayColor: '#e6e6e6',
-  lighterGrayColor: 'rgba(230, 230, 230, 0.5)',
+  lighterGrayColor: 'rgba(230, 230, 230, 0.7)',
   darkGrayColor: '#4d4d4d',
 
   whiteColor: '#ffffff',

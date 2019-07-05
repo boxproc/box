@@ -55,7 +55,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         if (selectIsRememberedMe(state)) {
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
-            'operator', {
+            'admin', {
               expires: cookiesExpires.USER_NAME_EXPIRES,
             }
           );

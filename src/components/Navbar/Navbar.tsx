@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
             </Box>
           }
         </Flex>
-        {renderMenu(id)}
+        {hasChildren && renderMenu(id)}
       </Box>
     );
   };
