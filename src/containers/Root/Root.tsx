@@ -45,14 +45,15 @@ const Root: React.FC<RootProps> = ({
   getUiItems,
   visibleUiItems,
 }) => {
+  const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
   React.useEffect(
     () => {
-      getUiItems();
+      if (isLoggedIn) {
+        getUiItems();
+      }
     },
-    [getUiItems]
+    [getUiItems, isLoggedIn]
   );
-
-  const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
   return (
     <RootWrapper>
