@@ -2,15 +2,10 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-import { Box } from '@rebass/grid';
-import styled from 'theme';
-
 import { T2 } from 'components/Text';
-import { UncheckedBoxIcon } from 'components/Icon';
 
-const Wrapper = styled(Box)`
-  padding-top: 30px
-`;
+import { UncheckedBoxIcon } from 'components/Icon';
+import { uiItemConsts } from 'consts';
 
 export const SystemProperties = () => {
   const data = [
@@ -59,7 +54,7 @@ export const SystemProperties = () => {
     );
   };
   return (
-    <Wrapper>
+    <React.Fragment>
       <T2>System Properties</T2>
       <ReactTable
         data={data}
@@ -90,26 +85,26 @@ export const SystemProperties = () => {
         showPageSizeOptions={false}
         className="-highlight"
       />
-    </Wrapper>
+    </React.Fragment>
   );
 };
 
-export const HomePage = () => (
-  <Wrapper>Welcome!</Wrapper>
-);
-
 export const Customers = () => (
-  <Wrapper>Customers</Wrapper>
+  <React.Fragment>{uiItemConsts.LEDGER_CUSTOMERS}</React.Fragment>
 );
 
 export const Accounts = () => (
-  <Wrapper>Accounts</Wrapper>
+  <React.Fragment>{uiItemConsts.LEDGER_ACCOUNTS}</React.Fragment>
 );
 
 export const Countries = () => (
-  <Wrapper>Countries</Wrapper>
+  <React.Fragment>{uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES}</React.Fragment>
 );
 
 export const Currencies = () => (
-  <Wrapper>Currencies</Wrapper>
+  <React.Fragment>{uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES}</React.Fragment>
+);
+
+export const HomePage = () => (
+  <React.Fragment>Welcome!</React.Fragment>
 );

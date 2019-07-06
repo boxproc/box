@@ -4,28 +4,28 @@ import { cookiesNames } from 'consts';
 
 import {
   ActionTypeKeys,
-  GetUserInfoAction,
+  GetUiItemsAction,
 } from './actionTypes';
 
 import { VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
-export type GetUserInfo = (sessionId: string) => GetUserInfoAction;
+export type GetUiItems = (sessionId: string) => GetUiItemsAction;
 
-export type HandleGetUserInfo = VoidPromiseThunk;
+export type HandleGetUiItems = VoidPromiseThunk;
 
-export const getUserInfo: GetUserInfo = sessionId => ({
-  type: ActionTypeKeys.GET_USER_INFO,
-  payload: api.getUserInfo(sessionId),
+export const getUiItems: GetUiItems = sessionId => ({
+  type: ActionTypeKeys.GET_UI_ITEMS,
+  payload: api.getUiItems(sessionId),
 });
 
-export const handleGetUserInfo: HandleGetUserInfo = () =>
+export const handleGetUiItems: HandleGetUiItems = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-        await dispatch(getUserInfo(sessionId));
+        await dispatch(getUiItems(sessionId));
       },
       dispatch
     );

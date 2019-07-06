@@ -14,6 +14,7 @@ export type VoidThunk = () => Thunk<void>;
 export interface MessageResponse {
   statusCode: number;
   message: string;
+  session_id: string;
 }
 
 export type ApiResponse = SuperagentApiResponse;

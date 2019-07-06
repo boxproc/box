@@ -13,14 +13,15 @@ import { basePath, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';
 import Login from 'containers/Login';
-
-import { pages } from 'containers/Pages';
+import { HomePage } from 'containers/Pages/Pages';
 
 import Modals from 'containers/Modals';
+import { pagesList } from '../Pages/pagesList';
 
-import { HandleGetUserInfo } from 'store/domains';
+import { HandleGetUiItems, UiItemPrepared } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
+// import Notfound from 'components/NotFound';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -30,23 +31,28 @@ const RootWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const PagesWrapper = styled(Container)``;
+const PagesWrapper = styled(Container)`
+  padding-top: 30px;
+`;
 
 interface RootProps {
-  getUserInfo: HandleGetUserInfo;
+  getUiItems: HandleGetUiItems;
+  uiItems: Array<UiItemPrepared>;
+  visibleUiItems: Array<string>;
 }
 
 const Root: React.FC<RootProps> = ({
-  getUserInfo,
+  getUiItems,
+  visibleUiItems,
 }) => {
-  const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-
   React.useEffect(
     () => {
-      getUserInfo();
+      getUiItems();
     },
-    [getUserInfo]
+    [getUiItems]
   );
+
+  const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
   return (
     <RootWrapper>
@@ -64,21 +70,20 @@ const Root: React.FC<RootProps> = ({
                 !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
               )}
             />
-            <PrivateRoute path={`${basePath}ledger/customers`} component={pages.Customers} />
-            <PrivateRoute path={`${basePath}ledger/accounts`} component={pages.Accounts} />
-            <PrivateRoute
-              path={`${basePath}administration/system_properties`}
-              component={pages.SystemProperties}
-            />
-            <PrivateRoute
-              path={`${basePath}administration/dictionaries/countries`}
-              component={pages.Countries}
-            />
-            <PrivateRoute
-              path={`${basePath}administration/dictionaries/currencies`}
-              component={pages.Currencies}
-            />
-            <PrivateRoute path={`${basePath}`} component={pages.HomePage} />
+            {pagesList.map(page => {
+              return visibleUiItems
+                && visibleUiItems.includes(page.path)
+                && (
+                  <PrivateRoute
+                    key={page.path}
+                    path={`${basePath}${page.path}`}
+                    component={() => page.component}
+                  />
+                );
+            })
+            }
+            <PrivateRoute path={basePath} component={HomePage} />
+            {/* <Route exact={true} component={Notfound} /> */}
           </Switch>
         </PagesWrapper>
       </div>

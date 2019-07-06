@@ -1,6 +1,6 @@
-import { UserInfo } from './types';
+import { UiItems } from './types';
 
-export const User: UserInfo = {
+export const uiItemsData: UiItems = {
   ui_items: [
     {
       item_type: 'M',
@@ -36,6 +36,11 @@ export const User: UserInfo = {
       item_type: 'm',
       permission: 'W',
       ui_item: 'ledger/customers',
+    },
+    {
+      item_type: 'm',
+      permission: 'W',
+      ui_item: 'administration/system_properties',
     },
   ],
 };

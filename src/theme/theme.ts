@@ -22,6 +22,7 @@ export default interface Theme {
   darkGrayColor: string;
 
   whiteColor: string;
+  whiteOpacityColor: string;
 
   boxShadow: string;
 }
@@ -33,7 +34,7 @@ export const theme: Theme = {
 
   normalAccentColor: '#ffa400',
   lighterAccentColor: 'rgba(255, 164, 0, .9)',
-  lightAccentColor: 'rgba(255, 164, 0, .7)',
+  lightAccentColor: '#ffbf4d',
 
   blackColor: '#000000',
 
@@ -41,10 +42,11 @@ export const theme: Theme = {
 
   grayColor: '#999999',
   lightGrayColor: '#e6e6e6',
-  lighterGrayColor: 'rgba(230, 230, 230, 0.7)',
+  lighterGrayColor: '#eeeeee',
   darkGrayColor: '#4d4d4d',
 
   whiteColor: '#ffffff',
+  whiteOpacityColor: 'rgba(255, 255, 255, .8)',
 
   boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .1)',
 };

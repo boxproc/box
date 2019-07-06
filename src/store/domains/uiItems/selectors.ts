@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-export const selectDefaultUiItems = (state: StoreState) => state.user.userInfo.ui_items;
+export const selectDefaultUiItems = (state: StoreState) => state.uiItems.uiItems;
 
 export const selectUiItems = createSelector(
   selectDefaultUiItems,
@@ -16,4 +16,9 @@ export const selectUiItems = createSelector(
       };
     });
   }
+);
+
+export const selectVisibleUiItems = createSelector(
+  selectDefaultUiItems,
+  uiItems => uiItems && uiItems.asMutable().map(item => item.ui_item)
 );

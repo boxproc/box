@@ -4,17 +4,30 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Root from './Root';
 
 import {
-  handleGetUserInfo,
+  createLoadingSelector,
+  handleGetUiItems,
+  selectVisibleUiItems,
+  UiItemsActionTypes,
 } from 'store/domains';
+import { StoreState } from 'store/StoreState';
+
+const loadingSelector = createLoadingSelector([
+  UiItemsActionTypes.GET_UI_ITEMS,
+]);
+
+const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
+  visibleUiItems: selectVisibleUiItems(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getUserInfo: handleGetUserInfo,
+    getUiItems: handleGetUiItems,
   },
   dispatch
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Root);

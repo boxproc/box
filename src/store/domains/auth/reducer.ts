@@ -6,19 +6,14 @@ import { AuthState } from './types';
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
   isLoggedIn: false,
   isRememberedMe: false,
-  authInfo: {
-    session_id: '',
-    result_code: null,
-    message: '',
-    description: '',
-  },
+  sessionId: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
       return state
-        .set('authInfo', action.payload)
+        .set('sessionId', action.payload.session_id)
         .set('isLoggedIn', true);
 
     case ActionTypeKeys.SET_REMEMBER_USER:

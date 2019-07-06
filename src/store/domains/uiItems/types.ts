@@ -13,12 +13,10 @@ export interface UiItemPrepared {
   type: string;
 }
 
-export interface UserInfo {
+export interface UiItems {
   ui_items: Array<UiItem>;
 }
 
-export interface UserState {
-  userInfo: {
-    ui_items: ImmutableArray<UiItem>;
-  };
+export interface UiItemsState {
+  uiItems: ImmutableArray<UiItem>;
 }

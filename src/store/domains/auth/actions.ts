@@ -11,13 +11,14 @@ import {
   UserLogoutAction,
 } from './actionTypes';
 import { selectIsRememberedMe, selectSessionId } from './selectors';
-import { AuthRequest } from './types';
+import { AuthRequest, PreparedAuthRequest } from './types';
 
 import { Thunk, VoidThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
+import { prepareAuthValues } from './utils';
 
-export type UserLogin = (data: AuthRequest) => UserLoginAction;
+export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
 export type UserLogout = (sessionId: string) => UserLogoutAction;
 export type SetRememberUser = (rememberMe: boolean) => SetRememberUserAction;
 
@@ -43,19 +44,24 @@ export const handleUserLogin: HandleUserLogin = (data) =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(userLogin(data));
+        const preparedAuthValues = prepareAuthValues(data);
+        await dispatch(userLogin(preparedAuthValues));
         dispatch(setRememberUser(data.rememberMe));
 
         const state = getState();
         // dispatch(push(`${basePath}`));
         urlUtil.openLocation(`${basePath}`);
+
         cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state), {
-          expires: 600,
+          // path: basePath,
+          expires: cookiesExpires.SESSION_ID_EXPIRES,
         });
+
         if (selectIsRememberedMe(state)) {
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
             'admin', {
+              // path: basePath,
               expires: cookiesExpires.USER_NAME_EXPIRES,
             }
           );
@@ -74,8 +80,8 @@ export const handleUserLogout: HandleUserLogout = () =>
         await dispatch(userLogout(sessionId));
 
         // dispatch(push(`${basePath}login`));
-        urlUtil.openLocation(`${basePath}login`);
         cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
+        urlUtil.openLocation(`${basePath}login`);
       },
       dispatch
     );

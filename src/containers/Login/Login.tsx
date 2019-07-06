@@ -16,7 +16,7 @@ import logo from 'resources/images/logo.svg';
 
 import { HandleUserLogin } from 'store/domains';
 
-import { formErrorUtil } from 'utils';
+// import { formErrorUtil } from 'utils';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -51,7 +51,6 @@ const Login: React.FC<LoginPropsAllProps> = ({
   userLogin,
   isPasswordFocus,
   isMessageModal,
-  error,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(userLogin),
@@ -66,23 +65,22 @@ const Login: React.FC<LoginPropsAllProps> = ({
         </Link>
       </Box>
       <Field
-        id="username"
-        name="username"
+        id="userName"
+        name="userName"
         placeholder="Enter user name"
         component={InputField}
         disabled={isMessageModal}
         label="Login"
-        validate={[formErrorUtil.required]}
+        // validate={[formErrorUtil.required]}
       />
-      {error}
       <Field
-        id="password_hash"
-        name="password_hash"
+        id="password"
+        name="password"
         placeholder="Enter password"
         component={PasswordField}
         disabled={isMessageModal}
         label="Password"
-        validate={[formErrorUtil.required]}
+        // validate={[formErrorUtil.required]}
         autoFocus={isPasswordFocus}
       />
       <Field

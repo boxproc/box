@@ -7,7 +7,7 @@ import Root from './Root';
 
 const App = () => {
   return (
-    <Route path={basePath || '/'} component={Root} />
+    <Route path={basePath || '/'} component={() => <Root/>} />
   );
 };
 

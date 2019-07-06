@@ -25,9 +25,9 @@ const MessageModal: React.FC<MessageModalProps> = ({
   return (
     <Modal
       name={modalNames.MESSAGE_MODAL}
-      maxContainerWidth={300}
+      maxContainerWidth={350}
     >
-      <Box pr="12px">
+      <Box pr="20px">
         <T2>{title}</T2>
       </Box>
       <Paragraph light={true}>{message}</Paragraph>

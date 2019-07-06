@@ -13,6 +13,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   USER_NAME_EXPIRES = 604800,
+  SESSION_ID_EXPIRES = 10000,
 }
 
 export enum modalNames {
@@ -24,4 +25,13 @@ export enum uiItemTypes {
   MENU_PARENT = 'M',
   MENU_CHILD = 'm',
   FORM = 'F',
+}
+
+export enum uiItemConsts {
+  LEDGER_CUSTOMERS = 'ledger/customers',
+  LEDGER_ACCOUNTS = 'ledger/accounts',
+
+  ADMINISTRATION_SYS_PROPS= 'administration/system_properties',
+  ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
+  ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
 }
