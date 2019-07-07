@@ -23,7 +23,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 135px);
   justify-content: center;
   margin: 0 auto;
   text-align: left;

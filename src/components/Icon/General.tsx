@@ -126,6 +126,5 @@ const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
 );
 
 export const ChevronIcon = styled(Chevron)`
-  ${staticAccentStyle}
   ${({ css }) => css}
 `;

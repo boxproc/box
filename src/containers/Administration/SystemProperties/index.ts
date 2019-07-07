@@ -1,31 +1,29 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Header from './Header';
+import SystemProperties from './SystemProperties';
 
 import {
+  AdminSysPropsActionTypes,
   createLoadingSelector,
-  handleGetUiItems,
-  handleUserLogout,
-  selectUiItems,
-  UiItemsActionTypes,
+  handleGetAdminSysProps,
+  selectAdminSysPropsItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  UiItemsActionTypes.GET_UI_ITEMS,
+  AdminSysPropsActionTypes.GET_ADMIN_SYS_PROPS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  uiItems: selectUiItems(state),
+  adminSysPropsItems: selectAdminSysPropsItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getUiItems: handleGetUiItems,
-    userLogout: handleUserLogout,
+    getAdminSysProps: handleGetAdminSysProps,
   },
   dispatch
 );
@@ -33,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(SystemProperties);

@@ -18,6 +18,11 @@ export const selectUiItems = createSelector(
   }
 );
 
+export const selectIsUiItems = createSelector(
+  selectUiItems,
+  uiItems => uiItems && uiItems.length
+);
+
 export const selectVisibleUiItems = createSelector(
   selectDefaultUiItems,
   uiItems => uiItems && uiItems.asMutable().map(item => item.ui_item)

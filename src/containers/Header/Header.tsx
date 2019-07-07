@@ -6,12 +6,12 @@ import styled from 'theme';
 
 import { Container } from 'components/Block';
 import HighlightLink from 'components/HighlightLink';
+import Navbar from 'components/Navbar';
+import { withSpinner } from 'components/Spinner';
 
 import { basePath } from 'consts';
 
-import Navbar from 'components/Navbar';
-
-import { HandleUserLogout, UiItemPrepared } from 'store/domains';
+import { HandleGetUiItems, HandleUserLogout, UiItemPrepared } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
 
@@ -22,14 +22,23 @@ const Wrapper = styled.header`
 `;
 
 interface HeaderProps {
+  getUiItems: HandleGetUiItems;
   userLogout: HandleUserLogout;
   uiItems: Array<UiItemPrepared>;
 }
 
 const Header: React.FC<HeaderProps> = ({
+  getUiItems,
   userLogout,
   uiItems,
 }) => {
+  React.useEffect(
+    () => {
+      getUiItems();
+    },
+    [getUiItems]
+  );
+
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]
@@ -65,4 +74,6 @@ const Header: React.FC<HeaderProps> = ({
   );
 };
 
-export default Header;
+export default withSpinner({
+  isFixed: true,
+})(Header);

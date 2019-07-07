@@ -2,15 +2,19 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
+import SystemProperties from 'containers/Administration/SystemProperties';
 import {
   Accounts,
   Countries,
   Currencies,
   Customers,
-  SystemProperties,
-} from './Pages';
+} from '../Pages/Pages';
 
 export const pagesList = [
+  {
+    path: uiItemConsts.ADMINISTRATION_SYS_PROPS,
+    component: <SystemProperties/>,
+  },
   {
     path: uiItemConsts.LEDGER_CUSTOMERS,
     component: <Customers/>,
@@ -18,10 +22,6 @@ export const pagesList = [
   {
     path: uiItemConsts.LEDGER_ACCOUNTS,
     component: <Accounts/>,
-  },
-  {
-    path: uiItemConsts.ADMINISTRATION_SYS_PROPS,
-    component: <SystemProperties/>,
   },
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES,

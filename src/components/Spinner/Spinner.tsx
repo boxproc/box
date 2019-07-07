@@ -18,6 +18,7 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   z-index: 2;
   background: ${({ backgroundColor, theme }) => backgroundColor || theme.whiteOpacityColor};
+  z-index: 100;
 `;
 
 interface CircleProps {

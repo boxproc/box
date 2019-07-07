@@ -27,6 +27,11 @@ export enum uiItemTypes {
   FORM = 'F',
 }
 
+export enum yesNoTypes {
+  YES = 'Y',
+  No = 'N',
+}
+
 export enum uiItemConsts {
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',

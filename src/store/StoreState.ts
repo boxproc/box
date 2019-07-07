@@ -2,6 +2,7 @@ import { RouterState } from 'connected-react-router';
 import { Reducer } from 'redux';
 import { FormStateMap } from 'redux-form';
 
+import { AdministrationState } from './domains/administration/';
 import { AuthState } from './domains/auth';
 import { LoaderState } from './domains/loader';
 import { ModalsState } from './domains/modals';
@@ -14,4 +15,5 @@ export interface StoreState {
   uiItems: UiItemsState;
   modals: ModalsState;
   auth: AuthState;
+  administration: AdministrationState;
 }

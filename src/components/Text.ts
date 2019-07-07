@@ -19,7 +19,7 @@ interface TitleProps {
 
 export const T2 = styled.h2<TitleProps>`
   margin-bottom: 15px;
-  font-size: 26px;
+  font-size: 22px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   text-transform: capitalize;

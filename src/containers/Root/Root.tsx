@@ -16,9 +16,9 @@ import Login from 'containers/Login';
 import { HomePage } from 'containers/Pages/Pages';
 
 import Modals from 'containers/Modals';
-import { pagesList } from '../Pages/pagesList';
+import { pagesList } from './pagesList';
 
-import { HandleGetUiItems, UiItemPrepared } from 'store/domains';
+import { UiItemPrepared } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
 // import Notfound from 'components/NotFound';
@@ -36,24 +36,14 @@ const PagesWrapper = styled(Container)`
 `;
 
 interface RootProps {
-  getUiItems: HandleGetUiItems;
   uiItems: Array<UiItemPrepared>;
   visibleUiItems: Array<string>;
 }
 
 const Root: React.FC<RootProps> = ({
-  getUiItems,
   visibleUiItems,
 }) => {
   const isLoggedIn = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-  React.useEffect(
-    () => {
-      if (isLoggedIn) {
-        getUiItems();
-      }
-    },
-    [getUiItems, isLoggedIn]
-  );
 
   return (
     <RootWrapper>

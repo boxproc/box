@@ -6,13 +6,13 @@ import {
   ActionTypeKeys,
   GetUiItemsAction,
 } from './actionTypes';
+import { selectIsUiItems } from './selectors';
 
 import { VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type GetUiItems = (sessionId: string) => GetUiItemsAction;
-
 export type HandleGetUiItems = VoidPromiseThunk;
 
 export const getUiItems: GetUiItems = sessionId => ({
@@ -21,11 +21,15 @@ export const getUiItems: GetUiItems = sessionId => ({
 });
 
 export const handleGetUiItems: HandleGetUiItems = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-        await dispatch(getUiItems(sessionId));
+
+        if (!selectIsUiItems(state)) {
+          await dispatch(getUiItems(sessionId));
+        }
       },
       dispatch
     );
