@@ -7,6 +7,7 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
   isLoggedIn: false,
   isRememberedMe: false,
   sessionId: null,
+  username: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
@@ -14,6 +15,7 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
       return state
         .set('sessionId', action.payload.session_id)
+        .set('username', action.payload.username)
         .set('isLoggedIn', true);
 
     case ActionTypeKeys.SET_REMEMBER_USER:

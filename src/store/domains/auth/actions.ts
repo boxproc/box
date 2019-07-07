@@ -10,7 +10,7 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-import { selectIsRememberedMe, selectSessionId } from './selectors';
+import { selectIsRememberedMe, selectSessionId, selectUsername } from './selectors';
 import { AuthRequest, PreparedAuthRequest } from './types';
 
 import { Thunk, VoidThunk } from 'types';
@@ -60,7 +60,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         if (selectIsRememberedMe(state)) {
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
-            'admin', {
+            selectUsername(state), {
               // path: basePath,
               expires: cookiesExpires.USER_NAME_EXPIRES,
             }

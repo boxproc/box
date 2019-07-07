@@ -2,7 +2,5 @@ import { AuthResponse } from './types';
 
 export const AuthResponseData: AuthResponse = {
   session_id: 'sessionId123abc',
-  result_code: 0,
-  result_message: '',
-  result_description: '',
+  username: 'John.Doe',
 };

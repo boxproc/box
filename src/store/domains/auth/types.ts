@@ -11,13 +11,12 @@ export interface PreparedAuthRequest {
 
 export interface AuthResponse {
   session_id: string;
-  result_code: number;
-  result_message?: string;
-  result_description?: string;
+  username: string;
 }
 
 export interface AuthState {
   isLoggedIn: boolean;
   isRememberedMe: boolean;
   sessionId: string;
+  username: string;
 }
