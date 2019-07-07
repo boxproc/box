@@ -3,15 +3,31 @@ import React from 'react';
 import styled, { theme } from 'theme';
 
 import {
+  DocumentIconProps,
   IconColorProps,
   staticAccentStyle,
 } from './sharedCss';
 
 const Logout: React.FC<IconColorProps> = props => (
   <svg width="15" height="16" viewBox="0 0 15 16" fill="none" {...props}>
-    <path d="M5.9 15H2.4C1.6268 15 1 14.3732 1 13.6V2.4C1 1.6268 1.6268 1 2.4 1H5.9" stroke="#0B132B" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M10.8 10.8L13.6 7.99995L10.8 5.19995" stroke="#0B132B" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M13.6 8H5.19995" stroke="#0B132B" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M5.9 15H2.4C1.6268 15 1 14.3732 1 13.6V2.4C1 1.6268 1.6268 1 2.4 1H5.9"
+      stroke="#0B132B"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.8 10.8L13.6 7.99995L10.8 5.19995"
+      stroke="#0B132B"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M13.6 8H5.19995"
+      stroke="#0B132B"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -126,5 +142,20 @@ const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
 );
 
 export const ChevronIcon = styled(Chevron)`
+  ${({ css }) => css}
+`;
+
+const Delete: React.FC<DocumentIconProps> = ({ el, bigIcon, primary, ...props }) => (
+  <svg width="14" height="18" viewBox="0 0 14 18" fill="none" {...props}>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.5 0L10.5 1H14V3H0V1H3.5L4.5 0H9.5ZM1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM3 6H11V16H3V6Z"
+      fill="#999999"
+    />
+  </svg>
+);
+
+export const DeleteIcon = styled(Delete)`
   ${({ css }) => css}
 `;

@@ -93,11 +93,11 @@ export const TableStyled = styled.div`
   .ReactTable .rt-tbody .rt-tr-group {
     flex: 0 0 0;
     min-height: 45px;
-    border-bottom: none;
+    border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
   }
-  // .ReactTable .rt-tbody .rt-tr-group:last-child {
-  //   border-bottom: solid 1px rgba(11, 19, 43, 0.2);
-  // }
+    // .ReactTable .rt-tbody .rt-tr-group:last-child {
+    //   border-bottom: solid 1px rgba(11, 19, 43, 0.2);
+    // }
 
   /* .rt-tr-group:last-child {
     margin-bottom: 15px;

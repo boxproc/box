@@ -6,6 +6,7 @@ import SystemProperties from './SystemProperties';
 import {
   AdminSysPropsActionTypes,
   createLoadingSelector,
+  handleDeleteAdminSysProp,
   handleGetAdminSysProps,
   selectAdminSysPropsItems,
 } from 'store/domains';
@@ -14,6 +15,7 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.GET_ADMIN_SYS_PROPS,
+  AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -24,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminSysProps: handleGetAdminSysProps,
+    deleteAdminSysProp: handleDeleteAdminSysProp,
   },
   dispatch
 );

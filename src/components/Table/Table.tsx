@@ -6,9 +6,8 @@ import ReactTable, {
 
 import styled from 'theme';
 
+import { T2 } from 'components/Text';
 import { ChevronIcon } from '../Icon';
-
-import 'react-table/react-table.css';
 
 import { TableStyled } from './TableStyled';
 
@@ -90,22 +89,26 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   style?: object;
   sortable?: boolean;
   className?: string;
+  title?: string;
 }
 
 export const Table: React.FC<TableProps> = props => {
-  const { sortable = false, data } = props;
+  const { sortable = false, data, title } = props;
 
   return (
-    <TableStyled>
-      <ReactTable
-        {...props as TableProps}
-        sortable={sortable}
-        minRows={0}
-        showPagination={false}
-        multiSort={false}
-        resizable={false}
-        TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}
-      />
-    </TableStyled>
+    <React.Fragment>
+      <T2>{title}</T2>
+      <TableStyled>
+        <ReactTable
+          {...props as TableProps}
+          sortable={sortable}
+          minRows={0}
+          showPagination={false}
+          multiSort={false}
+          resizable={false}
+          TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}
+        />
+      </TableStyled>
+    </React.Fragment>
   );
 };

@@ -19,6 +19,7 @@ interface ButtonProps {
   disabled?: boolean;
   onClick?: () => void;
   transparent?: boolean;
+  className?: string;
 }
 
 interface WrapperProps {
@@ -53,11 +54,13 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   text,
   transparent,
+  className,
 }) => {
   return (
     <Wrapper
       onClick={disabled ? null : onClick}
       transparent={transparent}
+      className={className}
     >
       {text}
     </Wrapper>
