@@ -13,8 +13,6 @@ import { ChevronIcon } from '../Icon';
 
 import { TableStyled } from './TableStyled';
 
-import { stateClasses } from 'consts';
-
 interface TableItemWrapperProps {
   color?: string;
 }
@@ -34,7 +32,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
     overflow: hidden;
   }
 
-  &.${stateClasses.IS_FOCUSED} {
+  &:focus {
     border: 1px solid ${({ theme, color }) => theme.normalAccentColor };
   }
 
@@ -84,7 +82,6 @@ interface CellProps {
   contentEditable?: boolean;
   suppressContentEditableWarning?: boolean;
   onBlur?: any;
-  onFocus?: any;
   onKeyUp?: any;
 }
 
@@ -94,7 +91,6 @@ export const Cell: React.FC<CellProps> = ({
   contentEditable,
   suppressContentEditableWarning,
   onBlur,
-  onFocus,
   onKeyUp,
 }) => (
   <TableItemWrapper
@@ -102,7 +98,6 @@ export const Cell: React.FC<CellProps> = ({
     contentEditable={contentEditable}
     suppressContentEditableWarning={suppressContentEditableWarning}
     onBlur={onBlur}
-    onFocus={onFocus}
     onKeyUp={onKeyUp}
   >
     {value}
@@ -119,12 +114,20 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   NoDataComponent?: React.FC;
   style?: object;
   sortable?: boolean;
+  filterable?: boolean;
   className?: string;
   title?: string;
+  minRows?: number;
 }
 
 export const Table: React.FC<TableProps> = props => {
-  const { sortable = false, data, title } = props;
+  const {
+    sortable = false,
+    filterable = false,
+    data,
+    title,
+    minRows = 0,
+  } = props;
 
   return (
     <React.Fragment>
@@ -133,10 +136,11 @@ export const Table: React.FC<TableProps> = props => {
         <ReactTable
           {...props as TableProps}
           sortable={sortable}
-          minRows={0}
+          filterable={filterable}
+          minRows={minRows}
           showPagination={false}
           multiSort={false}
-          resizable={false}
+          resizable={true}
           TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}
         />
       </TableStyled>

@@ -16,7 +16,7 @@ import logo from 'resources/images/logo.svg';
 
 import { HandleUserLogin } from 'store/domains';
 
-// import { formErrorUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -71,7 +71,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         component={InputField}
         disabled={isMessageModal}
         label="Login"
-        // validate={[formErrorUtil.required]}
+        validate={[formErrorUtil.required]}
       />
       <Field
         id="password"
@@ -80,7 +80,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         component={PasswordField}
         disabled={isMessageModal}
         label="Password"
-        // validate={[formErrorUtil.required]}
+        validate={[formErrorUtil.required]}
         autoFocus={isPasswordFocus}
       />
       <Field

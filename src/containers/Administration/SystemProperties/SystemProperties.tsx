@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { theme } from 'theme';
 
@@ -11,7 +11,9 @@ import { Cell, Header, Table, TableNoData } from 'components/Table';
 
 import { withSpinner } from 'components/Spinner';
 
-import { codeKeys, stateClasses, yesNoTypes } from 'consts';
+import { codeKeys, yesNoTypes } from 'consts';
+
+import AddSystemPropertyForm from './AddSystemPropertyForm';
 
 import {
   AdminSysPropsItem,
@@ -33,8 +35,7 @@ type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>
 
 const SysPropsNoData = () => (
   <TableNoData
-    title="System Properties"
-    hint="No rows found"
+    title="No rows found"
   />
 );
 
@@ -51,6 +52,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     [getAdminSysProps]
   );
 
+  const [isAddSysPropForm, setIsAddSysPropForm] = React.useState(false);
+
   const renderEditable = (cellInfo: CellInfo) => {
     const isEditable = cellInfo.row.lockedFlag === yesNoTypes.NO;
 
@@ -61,6 +64,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       display: 'flex',
       alignItems: 'center',
       padding: '0 7px',
+      borderRadius: '2px',
     };
 
     const updateCellInfo = (e: any) => {
@@ -70,7 +74,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         ...cellInfo.original,
         [cellInfo.column.id]: e.target.textContent,
       });
-      e.target.classList.remove(stateClasses.IS_FOCUSED);
     };
 
     return (
@@ -79,11 +82,9 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         value={cellInfo.value}
         contentEditable={isEditable}
         suppressContentEditableWarning={isEditable}
-        onFocus={(e: any) => e.target.classList.add(stateClasses.IS_FOCUSED)}
         onBlur={updateCellInfo}
         onKeyUp={(e: any) => {
           if (e.key === codeKeys.ENTER) {
-            updateCellInfo(e);
             e.target.blur();
           }
         }}
@@ -126,18 +127,21 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   const columns = [
     {
       sortable: true,
+      filterable: true,
       Header: <Header title="Property Name" showSortIcons={true} />,
       accessor: 'propertyName',
       Cell: renderEditable,
     },
     {
       sortable: true,
+      filterable: true,
       Header: <Header title="Current Value" showSortIcons={true} />,
       accessor: 'currentValue',
       Cell: renderEditable,
     },
     {
       sortable: true,
+      filterable: true,
       Header: <Header title="Previous Value" showSortIcons={true} />,
       accessor: 'previousValue',
       Cell: (props: SPCell<'previousValue'>) => (
@@ -148,6 +152,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     },
     {
       sortable: true,
+      filterable: true,
       Header: <Header title="Last Datetime" showSortIcons={true} />,
       accessor: 'lastDatetime',
       Cell: (props: SPCell<'lastDatetime'>) => (
@@ -158,14 +163,14 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
-      maxWidth: 90,
+      maxWidth: 85,
       Header: <Header title="Locked" />,
       accessor: 'lockedFlag',
       Cell: renderCheckBoxIcon,
     },
     {
       maxWidth: 100,
-      accessor: 'lockedFlag',
+      accessor: 'deleteButton',
       Cell: renderDeleteButton,
     },
   ];
@@ -179,14 +184,22 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         NoDataComponent={SysPropsNoData}
       />
       <Flex alignItems="flex-start">
-        <div>
+        <Box mb="20px">
           <Button
             text="Add New"
             transparent={true}
+            disabled={isAddSysPropForm}
+            onClick={() => setIsAddSysPropForm(true)}
           />
-        </div>
+        </Box>
       </Flex>
-    </React.Fragment>
+
+      {isAddSysPropForm && (
+        <AddSystemPropertyForm
+          onClickCancel={() => setIsAddSysPropForm(false)}
+        />
+      )}
+    </React.Fragment >
   );
 };
 

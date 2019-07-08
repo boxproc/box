@@ -16,7 +16,7 @@ const NoDataWrapper = styled.div`
 
   .title {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
   }
 
@@ -27,13 +27,11 @@ const NoDataWrapper = styled.div`
 
 interface NoDataProps {
   title: string;
-  Icon?: React.ReactNode;
   hint?: string;
 }
 
-export const TableNoData: React.FC<NoDataProps> = ({ Icon, title, hint }) => (
+export const TableNoData: React.FC<NoDataProps> = ({ title, hint }) => (
   <NoDataWrapper>
-    {Icon && <div>{Icon}</div>}
     <div className="title">{title}</div>
     {hint && <div className="hint">{hint}</div>}
   </NoDataWrapper>

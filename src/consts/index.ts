@@ -41,9 +41,9 @@ export enum uiItemConsts {
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
 }
 
-export enum stateClasses {
-  IS_FOCUSED = 'is-focused',
-}
+// export enum stateClasses {
+//   IS_FOCUSED = 'is-focused',
+// }
 
 export enum codeKeys {
   ENTER = 'Enter',

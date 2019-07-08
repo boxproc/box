@@ -3,6 +3,7 @@ import React from 'react';
 import { ModalWrapper } from './ModalWrapper';
 
 import { CloseModal } from 'store/domains';
+
 import { codeKeys } from 'consts';
 
 interface ModalProps {

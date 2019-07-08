@@ -46,6 +46,7 @@ const Wrapper = styled.button<WrapperProps>`
 
   &:disabled {
     opacity: .5;
+    pointer-events: none;
   }
 `;
 
@@ -61,6 +62,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={disabled ? null : onClick}
       transparent={transparent}
       className={className}
+      disabled={disabled}
     >
       {text}
     </Wrapper>
