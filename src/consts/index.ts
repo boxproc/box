@@ -4,6 +4,7 @@ export const basePath = config.isDevelopment ? '/' : '/ui/';
 
 export enum formsNames {
   USER_LOGIN = 'userLogin',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
 }
 
 export enum cookiesNames {

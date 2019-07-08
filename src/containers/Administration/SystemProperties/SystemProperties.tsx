@@ -17,6 +17,7 @@ import AddSystemPropertyForm from './AddSystemPropertyForm';
 
 import {
   AdminSysPropsItem,
+  HandleAddAdminSysProp,
   HandleDeleteAdminSysProp,
   HandleGetAdminSysProps,
   HandleUpdateAdminSysProps,
@@ -29,6 +30,7 @@ interface SystemPropertiesProps {
   getAdminSysProps: HandleGetAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
+  addAdminSysProp: HandleAddAdminSysProp;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
@@ -41,6 +43,7 @@ const SysPropsNoData = () => (
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
+  addAdminSysProp,
   deleteAdminSysProp,
   getAdminSysProps,
   updateAdminSysProps,
@@ -196,6 +199,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
 
       {isAddSysPropForm && (
         <AddSystemPropertyForm
+          addAdminSysProp={addAdminSysProp}
           onClickCancel={() => setIsAddSysPropForm(false)}
         />
       )}

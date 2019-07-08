@@ -1,9 +1,12 @@
-import * as api from './api';
+import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames } from 'consts';
+import { cookiesNames, formsNames } from 'consts';
+
+import * as api from './api';
 
 import {
   ActionTypeKeys,
+  AddAdminSysPropAction,
   DeleteAdminSysPropAction,
   GetAdminSysPropsAction,
   UpdateAdminSysPropsAction,
@@ -19,6 +22,10 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetAdminSysProps = (sessionId: string) => GetAdminSysPropsAction;
 export type HandleGetAdminSysProps = VoidPromiseThunk;
 
+export type AddAdminSysProp = (sessionId: string, propValues: AdminSysPropsItemResp) =>
+  AddAdminSysPropAction;
+export type HandleAddAdminSysProp = (propValues: AdminSysPropsItem) => Thunk<void>;
+
 export type DeleteAdminSysProp = (sessionId: string, propName: string) => DeleteAdminSysPropAction;
 export type HandleDeleteAdminSysProp = (propName: string) => Thunk<void>;
 
@@ -29,6 +36,11 @@ export type HandleUpdateAdminSysProps = (propValues: AdminSysPropsItem) => Thunk
 export const getAdminSysProps: GetAdminSysProps = sessionId => ({
   type: ActionTypeKeys.GET_ADMIN_SYS_PROPS,
   payload: api.getAdminSysProps(sessionId),
+});
+
+export const addAdminSysProp: AddAdminSysProp = (sessionId, propValues) => ({
+  type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
+  payload: api.addAdminSysProp(sessionId, propValues),
 });
 
 export const deleteAdminSysProp: DeleteAdminSysProp = (sessionId, propName) => ({
@@ -47,6 +59,20 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
       async () => {
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
         await dispatch(getAdminSysProps(sessionId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+        const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
+
+        await dispatch(addAdminSysProp(sessionId, preparedAdminSysItemValues));
+        await dispatch(resetForm(formsNames.ADD_ADMIN_SYSTEM_PROPERTY));
       },
       dispatch
     );

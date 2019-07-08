@@ -1,6 +1,7 @@
 // import { apiClient } from 'services';
 
 import {
+  AdminSysPropsItemsAddedData,
   AdminSysPropsItemsData,
   AdminSysPropsItemsUpdatedData,
 } from './mock';
@@ -14,16 +15,16 @@ import { AdminSysPropsItemResp } from './types';
 export const getAdminSysProps = (sessionId: string) =>
   throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
   // apiClient.post('/ui/administration/system_properties/get', {
-  //   headers: {
+  //   data: {
   //     session_id: sessionId,
-  //   },
+  //   }
   // });
+
+export const addAdminSysProp = (sessionId: string, data: AdminSysPropsItemResp) =>
+  throttleUtil.getDataAfter(AdminSysPropsItemsAddedData, 500);
 
 export const deleteAdminSysProp = (sessionId: string, propName: string) =>
   throttleUtil.getDataAfter(propName, 500);
-// apiClient.get('/sys/properties', { data: {session_id: sessionId} });
 
-export const updateAdminSysProps = (sessionId: string, data: AdminSysPropsItemResp) => {
-  console.log('---data', data);
-  return throttleUtil.getDataAfter(AdminSysPropsItemsUpdatedData, 100);
-};
+export const updateAdminSysProps = (sessionId: string, data: AdminSysPropsItemResp) =>
+  throttleUtil.getDataAfter(AdminSysPropsItemsUpdatedData, 100);

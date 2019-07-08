@@ -6,9 +6,14 @@ import { Box, Flex } from '@rebass/grid';
 import { Button } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
 
+import { formsNames } from 'consts';
+
+// import { HandleAddAdminSysProp } from 'store/domains';
+
 import { formErrorUtil } from 'utils';
 
 interface AddSystemPropertyFormProps {
+  addAdminSysProp: any;
   onClickCancel: () => void;
 }
 
@@ -17,19 +22,21 @@ type AddSystemPropertyFormAllProps = AddSystemPropertyFormProps &
 
 const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   handleSubmit,
+  addAdminSysProp,
   onClickCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(() => console.log('---')),
-    [handleSubmit]
+    handleSubmit(addAdminSysProp),
+    [handleSubmit, addAdminSysProp]
   );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end">
         <Box width="200px" mr="15px">
           <Field
-            id="propName"
-            name="propName"
+            id="propertyName"
+            name="propertyName"
             placeholder="Enter Property Name"
             component={InputField}
             label="Property Name"
@@ -75,8 +82,8 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, any>({
-  form: 'add-admin-system-property',
+export default reduxForm<{}, AddSystemPropertyFormProps>({
+  form: formsNames.ADD_ADMIN_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(AddSystemPropertyForm);

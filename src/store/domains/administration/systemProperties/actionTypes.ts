@@ -7,6 +7,10 @@ export enum ActionTypeKeys {
   GET_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_FULFILLED',
   GET_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_REJECTED',
 
+  ADD_ADMIN_SYS_PROP = 'administration/systemProperties/ADD_ADMIN_SYS_PROP',
+  ADD_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_FULFILLED',
+  ADD_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_REJECTED',
+
   DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
 // tslint:disable-next-line: max-line-length
   DELETE_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
@@ -15,6 +19,7 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_SYS_PROPS = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS',
   // tslint:disable-next-line: max-line-length
   UPDATE_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_FULFILLED',
+// tslint:disable-next-line: max-line-length
   UPDATE_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_REJECTED',
 }
 
@@ -31,6 +36,21 @@ export interface GetAdminSysPropsFulfilledAction {
 export interface GetAdminSysPropsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS_REJECTED;
+}
+
+export interface AddAdminSysPropAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP;
+}
+
+export interface AddAdminSysPropFulfilledAction {
+  readonly payload: AdminSysPropsDataResp;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
+}
+
+export interface AddAdminSysPropRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_REJECTED;
 }
 
 export interface DeleteAdminSysPropAction {
@@ -65,5 +85,6 @@ export interface UpdateAdminSysPropsRejectedAction {
 
 export type AdminSysPropsActionTypes =
   | GetAdminSysPropsFulfilledAction
+  | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
   | UpdateAdminSysPropsFulfilledAction;
