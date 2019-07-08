@@ -4,7 +4,7 @@ import { ActionTypeKeys, UiItemsActionTypes } from './actionTypes';
 import { UiItemsState } from './types';
 
 export const uiItemsInitialState: ImmutableObject<UiItemsState> = Immutable({
-  uiItems: null,
+  uiItems: Immutable([]),
 });
 
 const uiItemsReducer = (state = uiItemsInitialState, action: UiItemsActionTypes) => {

@@ -3,6 +3,7 @@ import React from 'react';
 import { ModalWrapper } from './ModalWrapper';
 
 import { CloseModal } from 'store/domains';
+import { codeKeys } from 'consts';
 
 interface ModalProps {
   name: string;
@@ -29,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 
   const handleCloseModalByKey = (e: KeyboardEventInit) => {
-    if (e.key === 'Escape' || e.key === 'Backspace') {
+    if (e.key === codeKeys.ESCAPE || e.key === codeKeys.BACKSPACE) {
       handleCloseModal();
     }
   };

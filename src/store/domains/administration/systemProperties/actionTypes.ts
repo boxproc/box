@@ -11,6 +11,11 @@ export enum ActionTypeKeys {
 // tslint:disable-next-line: max-line-length
   DELETE_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
   DELETE_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_REJECTED',
+
+  UPDATE_ADMIN_SYS_PROPS = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS',
+  // tslint:disable-next-line: max-line-length
+  UPDATE_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_FULFILLED',
+  UPDATE_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_REJECTED',
 }
 
 export interface GetAdminSysPropsAction {
@@ -43,6 +48,22 @@ export interface DeleteAdminSysPropRejectedAction {
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_REJECTED;
 }
 
+export interface UpdateAdminSysPropsAction {
+  readonly payload: any;
+  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS;
+}
+
+export interface UpdateAdminSysPropsFulfilledAction {
+  readonly payload: any;
+  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
+}
+
+export interface UpdateAdminSysPropsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_REJECTED;
+}
+
 export type AdminSysPropsActionTypes =
   | GetAdminSysPropsFulfilledAction
-  | DeleteAdminSysPropFulfilledAction;
+  | DeleteAdminSysPropFulfilledAction
+  | UpdateAdminSysPropsFulfilledAction;

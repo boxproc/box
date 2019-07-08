@@ -4,12 +4,16 @@ import ReactTable, {
   ReactTableDefaults,
 } from 'react-table';
 
+import { Box } from '@rebass/grid';
+
 import styled from 'theme';
 
 import { T2 } from 'components/Text';
 import { ChevronIcon } from '../Icon';
 
 import { TableStyled } from './TableStyled';
+
+import { stateClasses } from 'consts';
 
 interface TableItemWrapperProps {
   color?: string;
@@ -20,15 +24,18 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   display: flex;
   align-items: center;
   overflow: hidden;
-  color: ${({ theme, color }) => color ? color : theme.blackColor };
+  font-size: 15px;
 
   .title {
-    margin-right: 3px;
+    color: ${({ theme, color }) => theme.blackColorOpacity8 };
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    font-size: 15px;
+  }
+
+  &.${stateClasses.IS_FOCUSED} {
+    border: 1px solid ${({ theme, color }) => theme.normalAccentColor };
   }
 
   &:hover {
@@ -42,7 +49,7 @@ const SortIconsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 7px;
+  margin-left: 10px;
 
   .up-icon {
     margin-bottom: 5px;
@@ -59,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
   title, showSortIcons = false,
 }) => (
     <TableItemWrapper>
-      <div className="title">{title}</div>
+      <Box className="title">{title}</Box>
       <SortIconsWrapper>
         {showSortIcons &&
           <React.Fragment>
@@ -73,14 +80,38 @@ export const Header: React.FC<HeaderProps> = ({
 
 interface CellProps {
   value: string | number;
-  color?: string;
+  style?: object;
+  contentEditable?: boolean;
+  suppressContentEditableWarning?: boolean;
+  onBlur?: any;
+  onFocus?: any;
+  onKeyUp?: any;
 }
 
-export const Cell: React.FC<CellProps> = ({ value, color }) => (
-  <TableItemWrapper color={color}>
+export const Cell: React.FC<CellProps> = ({
+  value,
+  style,
+  contentEditable,
+  suppressContentEditableWarning,
+  onBlur,
+  onFocus,
+  onKeyUp,
+}) => (
+  <TableItemWrapper
+    style={style}
+    contentEditable={contentEditable}
+    suppressContentEditableWarning={suppressContentEditableWarning}
+    onBlur={onBlur}
+    onFocus={onFocus}
+    onKeyUp={onKeyUp}
+  >
     {value}
   </TableItemWrapper>
 );
+
+const TableTitle = styled(T2)`
+  color: ${({ theme }) => theme.blackColorOpacity5};
+`;
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
@@ -97,7 +128,7 @@ export const Table: React.FC<TableProps> = props => {
 
   return (
     <React.Fragment>
-      <T2>{title}</T2>
+      <TableTitle>{title}</TableTitle>
       <TableStyled>
         <ReactTable
           {...props as TableProps}

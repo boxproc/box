@@ -13,6 +13,8 @@ export default interface Theme {
   lightAccentColor: string;
 
   blackColor: string;
+  blackColorOpacity5: string;
+  blackColorOpacity8: string;
 
   redColor: string;
 
@@ -37,6 +39,8 @@ export const theme: Theme = {
   lightAccentColor: '#ffbf4d',
 
   blackColor: '#000000',
+  blackColorOpacity5: 'rgba(0, 0, 0, .5)',
+  blackColorOpacity8: 'rgba(0, 0, 0, .8)',
 
   redColor: '	#FF0000',
 

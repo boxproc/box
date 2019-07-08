@@ -29,7 +29,7 @@ export enum uiItemTypes {
 
 export enum yesNoTypes {
   YES = 'Y',
-  No = 'N',
+  NO = 'N',
 }
 
 export enum uiItemConsts {
@@ -39,4 +39,14 @@ export enum uiItemConsts {
   ADMINISTRATION_SYS_PROPS= 'administration/system_properties',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
+}
+
+export enum stateClasses {
+  IS_FOCUSED = 'is-focused',
+}
+
+export enum codeKeys {
+  ENTER = 'Enter',
+  ESCAPE = 'Escape',
+  BACKSPACE = 'Backspace',
 }

@@ -17,6 +17,7 @@ import { Thunk, VoidThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
 import { prepareAuthValues } from './utils';
+// import { apiClient } from 'services';
 
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
 export type UserLogout = (sessionId: string) => UserLogoutAction;
@@ -49,6 +50,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         dispatch(setRememberUser(data.rememberMe));
 
         const state = getState();
+        // apiClient.set('session_id', re.payload.session_id);
         // dispatch(push(`${basePath}`));
         urlUtil.openLocation(`${basePath}`);
 

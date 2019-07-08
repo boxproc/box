@@ -1,8 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 
-import { Box } from '@rebass/grid';
-
 import styled from 'theme';
 
 import { Container } from 'components/Block';
@@ -48,11 +46,11 @@ const Root: React.FC<RootProps> = ({
   return (
     <RootWrapper>
       <div>
-        <Box>
+        <div>
           {isLoggedIn && (
             <Header />
           )}
-        </Box>
+        </div>
         <PagesWrapper>
           <Switch>
             <Route

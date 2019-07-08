@@ -5,7 +5,9 @@
   "homepage": "https://dev-app01.boxproc.com",
   "dependencies": {
     "@rebass/grid": "^6.0.0",
+    "camelcase": "^5.3.1",
     "connected-react-router": "^6.4.0",
+    "decamelize": "^3.2.0",
     "rc-menu": "^7.4.23",
     "react": "^16.8.6",
     "react-document-title": "^2.0.3",
