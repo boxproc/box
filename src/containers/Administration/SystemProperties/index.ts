@@ -18,7 +18,7 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.GET_ADMIN_SYS_PROPS,
   AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
-  // AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
+  AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

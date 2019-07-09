@@ -130,7 +130,11 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       filterable: true,
       Header: <Header title="Property Name" showSortIcons={true} />,
       accessor: 'propertyName',
-      Cell: renderEditable,
+      Cell: (props: SPCell<'propertyName'>) => (
+        <Cell
+          value={props.value}
+        />
+      ),
     },
     {
       sortable: true,
