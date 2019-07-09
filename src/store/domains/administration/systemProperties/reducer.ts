@@ -14,12 +14,19 @@ const adminSysPropsReducer =
         return state
           .set('system_properties', action.payload.system_properties);
 
-      case ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED:
       case ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED:
         return state
           .set('system_properties', Object.values({
               ...state.system_properties
                 .filter(el => el.property_name !== action.payload.system_property.property_name),
+              ...action.payload,
+            })
+          );
+
+      case ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED:
+        return state
+          .set('system_properties', Object.values({
+              ...state.system_properties,
               ...action.payload,
             })
           );

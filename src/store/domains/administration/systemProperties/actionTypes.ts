@@ -44,7 +44,7 @@ export interface AddAdminSysPropAction {
 }
 
 export interface AddAdminSysPropFulfilledAction {
-  readonly payload: AdminSysPropsDataResp;
+  readonly payload: any;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
 }
 
