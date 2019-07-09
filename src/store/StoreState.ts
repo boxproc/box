@@ -3,7 +3,6 @@ import { Reducer } from 'redux';
 import { FormStateMap } from 'redux-form';
 
 import { AdministrationState } from './domains/administration/';
-import { AuthState } from './domains/auth';
 import { LoaderState } from './domains/loader';
 import { ModalsState } from './domains/modals';
 import { UiItemsState } from './domains/uiItems';
@@ -14,6 +13,5 @@ export interface StoreState {
   loader: LoaderState;
   uiItems: UiItemsState;
   modals: ModalsState;
-  auth: AuthState;
   administration: AdministrationState;
 }
