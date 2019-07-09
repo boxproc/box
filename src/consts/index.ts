@@ -19,6 +19,7 @@ export enum cookiesExpires {
 
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
 }
 
 export enum uiItemTypes {

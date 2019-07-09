@@ -8,7 +8,6 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { T2 } from 'components/Text';
 import { ChevronIcon } from '../Icon';
 
 import { TableStyled } from './TableStyled';
@@ -104,10 +103,6 @@ export const Cell: React.FC<CellProps> = ({
   </TableItemWrapper>
 );
 
-const TableTitle = styled(T2)`
-  color: ${({ theme }) => theme.blackColorOpacity5};
-`;
-
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
   columns: Array<object>;
@@ -125,13 +120,11 @@ export const Table: React.FC<TableProps> = props => {
     sortable = false,
     filterable = false,
     data,
-    title,
     minRows = 0,
   } = props;
 
   return (
     <React.Fragment>
-      <TableTitle>{title}</TableTitle>
       <TableStyled>
         <ReactTable
           {...props as TableProps}

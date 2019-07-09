@@ -8,19 +8,18 @@ import { theme } from 'theme';
 import { Button } from 'components/Buttons';
 import { CheckedBoxIcon, UncheckedBoxIcon } from 'components/Icon';
 import { Cell, Header, Table, TableNoData } from 'components/Table';
+import { T2 } from 'components/Text';
 
 import { withSpinner } from 'components/Spinner';
 
-import { codeKeys, yesNoTypes } from 'consts';
-
-import AddSystemPropertyForm from './AddSystemPropertyForm';
+import { codeKeys, modalNames, yesNoTypes } from 'consts';
 
 import {
   AdminSysPropsItem,
-  HandleAddAdminSysProp,
   HandleDeleteAdminSysProp,
   HandleGetAdminSysProps,
   HandleUpdateAdminSysProps,
+  OpenModal,
 } from 'store/domains';
 
 import { TableCell } from 'types';
@@ -30,7 +29,7 @@ interface SystemPropertiesProps {
   getAdminSysProps: HandleGetAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
-  addAdminSysProp: HandleAddAdminSysProp;
+  openModal: OpenModal;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
@@ -43,9 +42,9 @@ const SysPropsNoData = () => (
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
-  addAdminSysProp,
   deleteAdminSysProp,
   getAdminSysProps,
+  openModal,
   updateAdminSysProps,
 }) => {
   React.useEffect(
@@ -54,8 +53,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     },
     [getAdminSysProps]
   );
-
-  const [isAddSysPropForm, setIsAddSysPropForm] = React.useState(false);
 
   const renderEditable = (cellInfo: CellInfo) => {
     const isEditable = cellInfo.row.lockedFlag === yesNoTypes.NO;
@@ -180,29 +177,23 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
 
   return (
     <React.Fragment>
+      <T2>System Properties</T2>
+      <Flex alignItems="flex-start">
+        <Box mb="10px">
+          <Button
+            text="Add New"
+            transparent={true}
+            onClick={() => openModal({
+              name: modalNames.ADD_ADMIN_SYSTEM_PROPERTY,
+            })}
+          />
+        </Box>
+      </Flex>
       <Table
-        title="System Properties"
         data={adminSysPropsItems}
         columns={columns}
         NoDataComponent={SysPropsNoData}
       />
-      <Flex alignItems="flex-start">
-        <Box mb="20px">
-          <Button
-            text="Add New"
-            transparent={true}
-            disabled={isAddSysPropForm}
-            onClick={() => setIsAddSysPropForm(true)}
-          />
-        </Box>
-      </Flex>
-
-      {isAddSysPropForm && (
-        <AddSystemPropertyForm
-          addAdminSysProp={addAdminSysProp}
-          onClickCancel={() => setIsAddSysPropForm(false)}
-        />
-      )}
     </React.Fragment >
   );
 };

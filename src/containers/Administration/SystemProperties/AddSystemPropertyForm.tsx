@@ -3,18 +3,16 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
+import OkCancelButtons from 'components/OkCancelButtons';
 
 import { formsNames } from 'consts';
-
-// import { HandleAddAdminSysProp } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
 interface AddSystemPropertyFormProps {
   addAdminSysProp: any;
-  onClickCancel: () => void;
+  onCancel: () => void;
 }
 
 type AddSystemPropertyFormAllProps = AddSystemPropertyFormProps &
@@ -23,7 +21,7 @@ type AddSystemPropertyFormAllProps = AddSystemPropertyFormProps &
 const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   handleSubmit,
   addAdminSysProp,
-  onClickCancel,
+  onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(addAdminSysProp),
@@ -63,21 +61,11 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
           />
         </Box>
       </Flex>
-      <Flex alignItems="center">
-        <Box mt="10px" mr="15px">
-          <Button
-            text="Save"
-            transparent={true}
-          />
-        </Box>
-        <Box mt="10px">
-          <Button
-            text="Cancel"
-            transparent={true}
-            onClick={onClickCancel}
-          />
-        </Box>
-      </Flex>
+      <OkCancelButtons
+        okText="Save"
+        cancelText="Cancel"
+        onCancel={onCancel}
+      />
     </form >
   );
 };

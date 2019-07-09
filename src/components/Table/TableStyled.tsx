@@ -1,7 +1,7 @@
 ﻿import styled from 'theme';
 
 export const TableStyled = styled.div`
-  margin: 25px 0 20px;
+  margin-bottom: 20px;
   font-size: 14px;
 
   .ReactTable .rt-tbody::-webkit-scrollbar {

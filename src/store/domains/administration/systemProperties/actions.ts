@@ -1,6 +1,8 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formsNames } from 'consts';
+import { cookiesNames, formsNames, modalNames } from 'consts';
+
+import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
@@ -76,6 +78,7 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
 
         await dispatch(addAdminSysProp(sessionId, preparedAdminSysItemValues));
+        await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
         await dispatch(resetForm(formsNames.ADD_ADMIN_SYSTEM_PROPERTY));
       },
       dispatch
