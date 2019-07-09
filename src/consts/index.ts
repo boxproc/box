@@ -14,7 +14,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   USER_NAME_EXPIRES = 604800,
-  SESSION_ID_EXPIRES = 10000,
+  SESSION_ID_EXPIRES = 600,
 }
 
 export enum modalNames {

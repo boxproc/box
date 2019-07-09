@@ -20,7 +20,9 @@ export const addAdminSysProp = (sessionId: string, data: AdminSysPropsItemResp) 
 
 export const deleteAdminSysProp = (sessionId: string, propName: string) =>
   // throttleUtil.getDataAfter(propName, 500);
-  apiClient.post('/ui/administration/system_properties/delete', { data: {prop_name: propName} });
+  apiClient.post('/ui/administration/system_properties/delete', {
+    data: { property_name: propName },
+  });
 
 export const updateAdminSysProps = (sessionId: string, data: AdminSysPropsItemResp) =>
   // throttleUtil.getDataAfter(AdminSysPropsItemsUpdatedData, 100);

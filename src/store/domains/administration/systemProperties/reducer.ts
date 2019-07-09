@@ -26,7 +26,7 @@ const adminSysPropsReducer =
         return state
           .set(
             'system_properties',
-            state.system_properties.filter(el => el.property_name !== action.payload)
+            state.system_properties.filter(el => el.property_name !== action.payload.property_name)
           );
 
       default: return state;

@@ -14,6 +14,7 @@ interface ModalProps {
   title?: string;
   closeModal: CloseModal;
   maxContainerWidth?: string;
+  zIndex?: string;
 }
 
 const ModalTitle = styled(T2)`
@@ -26,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   title,
   closeModal,
   maxContainerWidth,
+  zIndex,
 }) => {
   React.useEffect(
     () => {
@@ -46,7 +48,10 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <ModalWrapper maxContainerWidth={maxContainerWidth}>
+    <ModalWrapper
+      maxContainerWidth={maxContainerWidth}
+      zIndex={zIndex}
+    >
       <div
         className="modal-backdrop"
         onClick={handleCloseModal}

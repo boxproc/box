@@ -3,6 +3,7 @@ import { media } from 'theme/media';
 
 interface ModalWrapperProps {
   maxContainerWidth?: string;
+  zIndex?: string;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -14,7 +15,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   padding: 50px 20px;
   text-align: center;
   overflow-y: auto;
-  z-index: 100;
+  z-index: ${({zIndex}) => zIndex ? zIndex : 100};
 
   &:after {
     content: "";
