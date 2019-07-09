@@ -8,6 +8,8 @@ import {
 } from './actionTypes';
 import { selectIsUiItems } from './selectors';
 
+import { apiClient } from 'services';
+
 import { VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
@@ -26,6 +28,8 @@ export const handleGetUiItems: HandleGetUiItems = () =>
       async () => {
         const state = getState();
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+
+        apiClient.set('session_id', sessionId);
 
         if (!selectIsUiItems(state)) {
           await dispatch(getUiItems(sessionId));

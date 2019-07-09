@@ -1,8 +1,8 @@
-// import { apiClient } from 'services';
+import { apiClient } from 'services';
 
 import {
   AdminSysPropsItemsAddedData,
-  AdminSysPropsItemsData,
+  // AdminSysPropsItemsData,
   AdminSysPropsItemsUpdatedData,
 } from './mock';
 
@@ -13,12 +13,8 @@ import { AdminSysPropsItemResp } from './types';
 // const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
 export const getAdminSysProps = (sessionId: string) =>
-  throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
-  // apiClient.post('/ui/administration/system_properties/get', {
-  //   data: {
-  //     session_id: sessionId,
-  //   }
-  // });
+  // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
+  apiClient.post('/ui/administration/system_properties/get');
 
 export const addAdminSysProp = (sessionId: string, data: AdminSysPropsItemResp) =>
   throttleUtil.getDataAfter(AdminSysPropsItemsAddedData, 500);

@@ -10,14 +10,16 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-import { selectIsRememberedMe, selectSessionId, selectUsername } from './selectors';
+import { selectIsRememberedMe, selectUsername } from './selectors';
 import { AuthRequest, PreparedAuthRequest } from './types';
+import { prepareAuthValues } from './utils';
 
-import { Thunk, VoidThunk } from 'types';
+import { apiClient } from 'services';
+
+import { PromiseRes, Thunk, VoidThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
-import { prepareAuthValues } from './utils';
-// import { apiClient } from 'services';
+// import { push } from 'connected-react-router';
 
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
 export type UserLogout = (sessionId: string) => UserLogoutAction;
@@ -46,16 +48,16 @@ export const handleUserLogin: HandleUserLogin = (data) =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedAuthValues = prepareAuthValues(data);
-        await dispatch(userLogin(preparedAuthValues));
+        const re = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
         dispatch(setRememberUser(data.rememberMe));
 
         const state = getState();
-        // apiClient.set('session_id', re.payload.session_id);
+        apiClient.set('session_id', re.value.session_id);
+
         // dispatch(push(`${basePath}`));
         urlUtil.openLocation(`${basePath}`);
 
-        cookiesUtil.setCookie(cookiesNames.SESSION_ID, selectSessionId(state), {
-          // path: basePath,
+        cookiesUtil.setCookie(cookiesNames.SESSION_ID, re.value.session_id, {
           expires: cookiesExpires.SESSION_ID_EXPIRES,
         });
 
@@ -63,7 +65,6 @@ export const handleUserLogin: HandleUserLogin = (data) =>
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
             selectUsername(state), {
-              // path: basePath,
               expires: cookiesExpires.USER_NAME_EXPIRES,
             }
           );

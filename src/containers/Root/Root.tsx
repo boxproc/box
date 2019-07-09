@@ -55,6 +55,7 @@ const Root: React.FC<RootProps> = ({
           <Switch>
             <Route
               path={`${basePath}login`}
+              // component={Login}
               render={() => (
                 !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
               )}

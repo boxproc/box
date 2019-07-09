@@ -15,6 +15,8 @@ import {
 import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
 import { prepareAdminSysItemValues } from './utils';
 
+import { apiClient } from 'services';
+
 import { Thunk, VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
@@ -58,6 +60,8 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+
+        apiClient.set('session_id', sessionId);
         await dispatch(getAdminSysProps(sessionId));
       },
       dispatch

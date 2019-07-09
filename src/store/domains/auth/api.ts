@@ -12,4 +12,4 @@ export const userLogin = (data: PreparedAuthRequest) =>
 
 export const userLogout = (sessionId: string) =>
   // throttleUtil.getDataAfter({ message: 'success' }, 500);
-  apiClient.post('/ui/auth/logout', { data: {session_id: sessionId} });
+  apiClient.post('/ui/auth/logout');
