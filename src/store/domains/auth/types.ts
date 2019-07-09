@@ -7,6 +7,7 @@ export interface AuthRequest {
 export interface PreparedAuthRequest {
   username: string;
   password_hash: string;
+  remember_me?: boolean;
 }
 
 export interface AuthResponse {
@@ -15,8 +16,6 @@ export interface AuthResponse {
 }
 
 export interface AuthState {
-  isLoggedIn: boolean;
   isRememberedMe: boolean;
-  sessionId: string;
   username: string;
 }

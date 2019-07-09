@@ -1,8 +1,8 @@
-// import { push } from 'react-router-redux';
+import { push } from 'react-router-redux';
 
 import * as api from './api';
 
-import { basePath, cookiesExpires, cookiesNames } from 'consts';
+import { basePath } from 'consts';
 
 import {
   ActionTypeKeys,
@@ -10,7 +10,7 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-import { selectIsRememberedMe, selectUsername } from './selectors';
+// import { selectIsRememberedMe, selectUsername } from './selectors';
 import { AuthRequest, PreparedAuthRequest } from './types';
 import { prepareAuthValues } from './utils';
 
@@ -18,11 +18,10 @@ import { apiClient } from 'services';
 
 import { PromiseRes, Thunk, VoidThunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
-// import { push } from 'connected-react-router';
+import { errorDecoratorUtil } from 'utils';
 
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
-export type UserLogout = (sessionId: string) => UserLogoutAction;
+export type UserLogout = () => UserLogoutAction;
 export type SetRememberUser = (rememberMe: boolean) => SetRememberUserAction;
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
@@ -33,9 +32,9 @@ export const userLogin: UserLogin = data => ({
   payload: api.userLogin(data),
 });
 
-export const userLogout: UserLogout = sessionId => ({
+export const userLogout: UserLogout = () => ({
   type: ActionTypeKeys.USER_LOGOUT,
-  payload: api.userLogout(sessionId),
+  payload: api.userLogout(),
 });
 
 export const setRememberUser: SetRememberUser = rememberMe => ({
@@ -44,31 +43,31 @@ export const setRememberUser: SetRememberUser = rememberMe => ({
 });
 
 export const handleUserLogin: HandleUserLogin = (data) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedAuthValues = prepareAuthValues(data);
-        const re = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
+        const res = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
         dispatch(setRememberUser(data.rememberMe));
 
-        const state = getState();
-        apiClient.set('session_id', re.value.session_id);
+        // const state = getState();
+        apiClient.set('session_id', res.value.session_id);
 
-        // dispatch(push(`${basePath}`));
-        urlUtil.openLocation(`${basePath}`);
+        dispatch(push(`${basePath}`));
+        // urlUtil.openLocation(`${basePath}`);
 
-        cookiesUtil.setCookie(cookiesNames.SESSION_ID, re.value.session_id, {
-          expires: cookiesExpires.SESSION_ID_EXPIRES,
-        });
+        // cookiesUtil.setCookie(cookiesNames.SESSION_ID, res.value.session_id, {
+        //   expires: cookiesExpires.SESSION_ID_EXPIRES,
+        // });
 
-        if (selectIsRememberedMe(state)) {
-          cookiesUtil.setCookie(
-            cookiesNames.USER_NAME,
-            selectUsername(state), {
-              expires: cookiesExpires.USER_NAME_EXPIRES,
-            }
-          );
-        }
+        // if (selectIsRememberedMe(state)) {
+        //   cookiesUtil.setCookie(
+        //     cookiesNames.USER_NAME,
+        //     selectUsername(state), {
+        //       expires: cookiesExpires.USER_NAME_EXPIRES,
+        //     }
+        //   );
+        // }
       },
       dispatch
     );
@@ -78,13 +77,13 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+        // const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
-        await dispatch(userLogout(sessionId));
+        await dispatch(userLogout());
 
-        // dispatch(push(`${basePath}login`));
-        cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
-        urlUtil.openLocation(`${basePath}login`);
+        dispatch(push(`${basePath}login`));
+        // cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
+        // urlUtil.openLocation(`${basePath}login`);
       },
       dispatch
     );

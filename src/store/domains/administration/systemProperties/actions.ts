@@ -23,38 +23,38 @@ import { Thunk, VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
-export type GetAdminSysProps = (sessionId: string) => GetAdminSysPropsAction;
+export type GetAdminSysProps = () => GetAdminSysPropsAction;
 export type HandleGetAdminSysProps = VoidPromiseThunk;
 
-export type AddAdminSysProp = (sessionId: string, propValues: AdminSysPropsItemResp) =>
+export type AddAdminSysProp = (propValues: AdminSysPropsItemResp) =>
   AddAdminSysPropAction;
 export type HandleAddAdminSysProp = (propValues: AdminSysPropsItem) => Thunk<void>;
 
-export type DeleteAdminSysProp = (sessionId: string, propName: string) => DeleteAdminSysPropAction;
+export type DeleteAdminSysProp = (propName: string) => DeleteAdminSysPropAction;
 export type HandleDeleteAdminSysProp = (propName: string) => Thunk<void>;
 
-export type UpdateAdminSysProps = (sessionId: string, propValues: AdminSysPropsItemResp) =>
+export type UpdateAdminSysProps = (propValues: AdminSysPropsItemResp) =>
   UpdateAdminSysPropsAction;
 export type HandleUpdateAdminSysProps = (propValues: AdminSysPropsItem) => Thunk<void>;
 
-export const getAdminSysProps: GetAdminSysProps = sessionId => ({
+export const getAdminSysProps: GetAdminSysProps = () => ({
   type: ActionTypeKeys.GET_ADMIN_SYS_PROPS,
-  payload: api.getAdminSysProps(sessionId),
+  payload: api.getAdminSysProps(),
 });
 
-export const addAdminSysProp: AddAdminSysProp = (sessionId, propValues) => ({
+export const addAdminSysProp: AddAdminSysProp = (propValues) => ({
   type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
-  payload: api.addAdminSysProp(sessionId, propValues),
+  payload: api.addAdminSysProp(propValues),
 });
 
-export const deleteAdminSysProp: DeleteAdminSysProp = (sessionId, propName) => ({
+export const deleteAdminSysProp: DeleteAdminSysProp = (propName) => ({
   type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
-  payload: api.deleteAdminSysProp(sessionId, propName),
+  payload: api.deleteAdminSysProp(propName),
 });
 
-export const updateAdminSysProps: UpdateAdminSysProps = (sessionId, propValues) => ({
+export const updateAdminSysProps: UpdateAdminSysProps = (propValues) => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS,
-  payload: api.updateAdminSysProps(sessionId, propValues),
+  payload: api.updateAdminSysProps(propValues),
 });
 
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
@@ -64,7 +64,7 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
 
         apiClient.set('session_id', sessionId);
-        await dispatch(getAdminSysProps(sessionId));
+        await dispatch(getAdminSysProps());
       },
       dispatch
     );
@@ -74,10 +74,9 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
 
-        await dispatch(addAdminSysProp(sessionId, preparedAdminSysItemValues));
+        await dispatch(addAdminSysProp(preparedAdminSysItemValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
         await dispatch(resetForm(formsNames.ADD_ADMIN_SYSTEM_PROPERTY));
       },
@@ -89,8 +88,7 @@ export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = propName =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-        await dispatch(deleteAdminSysProp(sessionId, propName));
+        await dispatch(deleteAdminSysProp(propName));
       },
       dispatch
     );
@@ -100,10 +98,9 @@ export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
 
-        await dispatch(updateAdminSysProps(sessionId, preparedAdminSysItemValues));
+        await dispatch(updateAdminSysProps(preparedAdminSysItemValues));
       },
       dispatch
     );

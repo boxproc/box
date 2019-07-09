@@ -14,12 +14,12 @@ import { VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
-export type GetUiItems = (sessionId: string) => GetUiItemsAction;
+export type GetUiItems = () => GetUiItemsAction;
 export type HandleGetUiItems = VoidPromiseThunk;
 
-export const getUiItems: GetUiItems = sessionId => ({
+export const getUiItems: GetUiItems = () => ({
   type: ActionTypeKeys.GET_UI_ITEMS,
-  payload: api.getUiItems(sessionId),
+  payload: api.getUiItems(),
 });
 
 export const handleGetUiItems: HandleGetUiItems = () =>
@@ -32,7 +32,7 @@ export const handleGetUiItems: HandleGetUiItems = () =>
         apiClient.set('session_id', sessionId);
 
         if (!selectIsUiItems(state)) {
-          await dispatch(getUiItems(sessionId));
+          await dispatch(getUiItems());
         }
       },
       dispatch

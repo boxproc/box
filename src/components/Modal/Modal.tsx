@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 
   const handleCloseModalByKey = (e: KeyboardEventInit) => {
-    if (e.key === codeKeys.ESCAPE || e.key === codeKeys.BACKSPACE) {
+    if (e.key === codeKeys.ESCAPE) {
       handleCloseModal();
     }
   };
