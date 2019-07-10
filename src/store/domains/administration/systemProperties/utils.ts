@@ -1,16 +1,22 @@
+import decamelize from 'decamelize';
+
 import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
 
 import { yesNoTypes } from 'consts';
 
 export const prepareAdminSysItemValues =
-  (propValues: AdminSysPropsItem): AdminSysPropsItemResp => {
-    const { propertyName, currentValue, previousValue, lastDatetime, lockedFlag } = propValues;
+  (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> => {
+    const { lockedFlag } = propValues;
+    const preparedProps = {};
 
-    return ({
-      property_name: propertyName,
-      current_value: currentValue,
-      previous_value: previousValue,
-      last_datetime: lastDatetime,
-      locked_flag: lockedFlag === yesNoTypes.NO || !lockedFlag  ? yesNoTypes.NO : yesNoTypes.YES,
-    });
+    for (const prop in propValues) {
+      if (prop) {
+        preparedProps[decamelize(prop, '_')] = prop;
+      }
+    }
+
+    return {
+      ...preparedProps,
+      locked_flag: lockedFlag === yesNoTypes.NO || !lockedFlag ? yesNoTypes.NO : yesNoTypes.YES,
+    };
   };

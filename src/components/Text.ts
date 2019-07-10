@@ -19,11 +19,17 @@ interface TitleProps {
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-size: 22px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   text-transform: capitalize;
+  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity5};
+`;
+
+export const T3 = styled.h3<TitleProps>`
+  margin-bottom: 15px;
+  font-size: 18px;
   color: ${({ theme, color }) => color ? color : theme.blackColorOpacity5};
 `;
 

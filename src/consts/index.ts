@@ -2,11 +2,6 @@ import config from 'config';
 
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
-export enum formsNames {
-  USER_LOGIN = 'userLogin',
-  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
-}
-
 export enum cookiesNames {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
@@ -14,7 +9,13 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   USER_NAME_EXPIRES = 604800,
-  SESSION_ID_EXPIRES = 600,
+  SESSION_ID_EXPIRES = 10000,
+}
+
+export enum formNames {
+  USER_LOGIN = 'userLogin',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
+  SYSTEM_PROPERTY_FILTER = 'SystemPropertyFilter',
 }
 
 export enum modalNames {

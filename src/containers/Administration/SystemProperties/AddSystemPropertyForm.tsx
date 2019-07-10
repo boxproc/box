@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { CheckboxField, InputField } from 'components/Form';
 import OkCancelButtons from 'components/OkCancelButtons';
 
-import { formsNames } from 'consts';
+import { formNames } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
@@ -71,7 +71,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
 };
 
 export default reduxForm<{}, AddSystemPropertyFormProps>({
-  form: formsNames.ADD_ADMIN_SYSTEM_PROPERTY,
+  form: formNames.ADD_ADMIN_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(AddSystemPropertyForm);

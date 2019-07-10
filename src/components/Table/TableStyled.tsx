@@ -45,7 +45,7 @@ export const TableStyled = styled.div`
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
-    padding: 10px 8px;
+    padding: 10px;
     outline: 0;
     text-align: left;
   }

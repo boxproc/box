@@ -7,7 +7,9 @@ import {
   AdminSysPropsActionTypes,
   createLoadingSelector,
   handleDeleteAdminSysProp,
+  handleFilterAdminSysProps,
   handleGetAdminSysProps,
+  handleResetFormByName,
   handleUpdateAdminSysProps,
   openModal,
   selectAdminSysPropsItems,
@@ -19,6 +21,7 @@ const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.GET_ADMIN_SYS_PROPS,
   AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
   AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
+  AdminSysPropsActionTypes.FILTER_ADMIN_SYS_PROPS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -31,6 +34,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     getAdminSysProps: handleGetAdminSysProps,
     deleteAdminSysProp: handleDeleteAdminSysProp,
     updateAdminSysProps: handleUpdateAdminSysProps,
+    filterAdminSysProps: handleFilterAdminSysProps,
+    resetFormByName: handleResetFormByName,
     openModal,
   },
   dispatch

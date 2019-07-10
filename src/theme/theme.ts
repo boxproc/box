@@ -14,6 +14,8 @@ export default interface Theme {
 
   blackColor: string;
   blackColorOpacity5: string;
+  blackColorOpacity6: string;
+  blackColorOpacity7: string;
   blackColorOpacity8: string;
 
   redColor: string;
@@ -40,6 +42,8 @@ export const theme: Theme = {
 
   blackColor: '#000000',
   blackColorOpacity5: 'rgba(0, 0, 0, .5)',
+  blackColorOpacity6: 'rgba(0, 0, 0, .6)',
+  blackColorOpacity7: 'rgba(0, 0, 0, .7)',
   blackColorOpacity8: 'rgba(0, 0, 0, .8)',
 
   redColor: '	#FF0000',

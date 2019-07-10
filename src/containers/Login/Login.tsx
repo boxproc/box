@@ -10,7 +10,7 @@ import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
-import { basePath, formsNames } from 'consts';
+import { basePath, formNames } from 'consts';
 
 import logo from 'resources/images/logo.svg';
 
@@ -98,7 +98,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
 };
 
 export default reduxForm<{}, LoginProps>({
-  form: formsNames.USER_LOGIN,
+  form: formNames.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(Login);

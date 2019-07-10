@@ -14,10 +14,14 @@ import { withSpinner } from 'components/Spinner';
 
 import { codeKeys, modalNames, yesNoTypes } from 'consts';
 
+import SystemPropertyFilter from './SystemPropertyFilter';
+
 import {
   AdminSysPropsItem,
   HandleDeleteAdminSysProp,
+  HandleFilterAdminSysProps,
   HandleGetAdminSysProps,
+  HandleResetFormByName,
   HandleUpdateAdminSysProps,
   OpenModal,
 } from 'store/domains';
@@ -27,8 +31,10 @@ import { TableCell } from 'types';
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
   getAdminSysProps: HandleGetAdminSysProps;
+  filterAdminSysProps: HandleFilterAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
+  resetFormByName: HandleResetFormByName;
   openModal: OpenModal;
 }
 
@@ -44,6 +50,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
   deleteAdminSysProp,
   getAdminSysProps,
+  filterAdminSysProps,
+  resetFormByName,
   openModal,
   updateAdminSysProps,
 }) => {
@@ -182,10 +190,15 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   return (
     <React.Fragment>
       <T2>System Properties</T2>
+      <SystemPropertyFilter
+        resetFormByName={resetFormByName}
+        filterAdminSysProps={filterAdminSysProps}
+      />
       <Flex alignItems="flex-start">
-        <Box mb="10px">
+        <Box mb="7px">
           <Button
             text="Add New"
+            icon="&#43;"
             transparent={true}
             onClick={() => openModal({
               name: modalNames.ADD_ADMIN_SYSTEM_PROPERTY,

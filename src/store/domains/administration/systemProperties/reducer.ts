@@ -11,6 +11,7 @@ const adminSysPropsReducer =
   (state = adminSysPropsInitialState, action: AdminSysPropsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_ADMIN_SYS_PROPS_FULFILLED:
+      case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
           .set('system_properties', action.payload.system_properties);
 

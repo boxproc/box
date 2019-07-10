@@ -39,7 +39,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const isRememberMe = data.rememberMe;
+        const { userName, rememberMe } = data;
         const preparedAuthValues = prepareAuthValues(data);
         const res = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
 
@@ -52,10 +52,10 @@ export const handleUserLogin: HandleUserLogin = (data) =>
           expires: cookiesExpires.SESSION_ID_EXPIRES,
         });
 
-        if (isRememberMe) {
+        if (rememberMe) {
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
-            res.value.username, {
+            userName, {
               expires: cookiesExpires.USER_NAME_EXPIRES,
             }
           );

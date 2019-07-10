@@ -1,4 +1,8 @@
-import { AdminSysPropDataResp, AdminSysPropsDataResp } from './types';
+import {
+  AdminSysPropDataResp,
+  AdminSysPropNameDataResp,
+  AdminSysPropsDataResp,
+} from './types';
 
 import { ApiResponse } from 'types';
 
@@ -12,15 +16,21 @@ export enum ActionTypeKeys {
   ADD_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_REJECTED',
 
   DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
-// tslint:disable-next-line: max-line-length
-  DELETE_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
+  DELETE_ADMIN_SYS_PROP_FULFILLED =
+    'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
   DELETE_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_REJECTED',
 
   UPDATE_ADMIN_SYS_PROPS = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS',
-  // tslint:disable-next-line: max-line-length
-  UPDATE_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_FULFILLED',
-// tslint:disable-next-line: max-line-length
-  UPDATE_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_REJECTED',
+  UPDATE_ADMIN_SYS_PROPS_FULFILLED =
+    'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_FULFILLED',
+  UPDATE_ADMIN_SYS_PROPS_REJECTED =
+    'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_REJECTED',
+
+  FILTER_ADMIN_SYS_PROPS = 'administration/systemProperties/FILTER_ADMIN_SYS_PROPS',
+  FILTER_ADMIN_SYS_PROPS_FULFILLED =
+    'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_FULFILLED',
+  FILTER_ADMIN_SYS_PROPS_REJECTED =
+    'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
 }
 
 export interface GetAdminSysPropsAction {
@@ -54,12 +64,12 @@ export interface AddAdminSysPropRejectedAction {
 }
 
 export interface DeleteAdminSysPropAction {
-  readonly payload: Promise<object>;
+  readonly payload: any;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP;
 }
 
 export interface DeleteAdminSysPropFulfilledAction {
-  readonly payload: Promise<object>;
+  readonly payload: AdminSysPropNameDataResp;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
 }
 
@@ -83,8 +93,24 @@ export interface UpdateAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_REJECTED;
 }
 
+export interface FilterAdminSysPropsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS;
+}
+
+export interface FilterAdminSysPropsFulfilledAction {
+  readonly payload: any;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED;
+}
+
+export interface FilterAdminSysPropsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
+}
+
 export type AdminSysPropsActionTypes =
   | GetAdminSysPropsFulfilledAction
   | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
-  | UpdateAdminSysPropsFulfilledAction;
+  | UpdateAdminSysPropsFulfilledAction
+  | FilterAdminSysPropsFulfilledAction;
