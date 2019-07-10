@@ -1,22 +1,21 @@
-import decamelize from 'decamelize';
-
 import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
 
 import { yesNoTypes } from 'consts';
+
+import { camelizeFieldsUtil } from 'utils';
 
 export const prepareAdminSysItemValues =
   (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> => {
     const { lockedFlag } = propValues;
     const preparedProps = {};
 
-    for (const prop in propValues) {
-      if (prop) {
-        preparedProps[decamelize(prop, '_')] = propValues[prop];
-      }
+    if (lockedFlag) {
+      preparedProps['locked_flag'] =
+        (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES;
     }
 
     return {
+      ...camelizeFieldsUtil.camelizeFields(propValues, 'decamelize'),
       ...preparedProps,
-      locked_flag: lockedFlag === yesNoTypes.NO || !lockedFlag ? yesNoTypes.NO : yesNoTypes.YES,
     };
   };

@@ -5,17 +5,19 @@ export const basePath = config.isDevelopment ? '/' : '/ui/';
 export enum cookiesNames {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
+  ADMIN_SYSTEM_PROPERTY = 'admin_system_property',
 }
 
 export enum cookiesExpires {
-  USER_NAME_EXPIRES = 604800,
-  SESSION_ID_EXPIRES = 10000,
+  USER_NAME = 604800,
+  SESSION_ID = 600,
+  SYSTEM_PROPERTY_FILTER = 604800,
 }
 
 export enum formNames {
   USER_LOGIN = 'userLogin',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
-  SYSTEM_PROPERTY_FILTER = 'SystemPropertyFilter',
+  SYSTEM_PROPERTY_FILTER = 'systemPropertyFilter',
 }
 
 export enum modalNames {
@@ -43,11 +45,6 @@ export enum uiItemConsts {
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
 }
-
-// export enum stateClasses {
-//   IS_FOCUSED = 'is-focused',
-// }
-
 export enum codeKeys {
   ENTER = 'Enter',
   ESCAPE = 'Escape',

@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { cookiesExpires, cookiesNames, formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -74,9 +74,15 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+        const params = cookiesUtil.getCookie(cookiesNames.ADMIN_SYSTEM_PROPERTY);
 
         apiClient.set('session_id', sessionId);
-        await dispatch(getAdminSysProps());
+
+        if (params) {
+          await dispatch(filterAdminSysProps(JSON.parse(params)));
+        } else {
+          await dispatch(getAdminSysProps());
+        }
       },
       dispatch
     );
@@ -123,6 +129,13 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
+
+        cookiesUtil.setCookie(
+          cookiesNames.ADMIN_SYSTEM_PROPERTY,
+          JSON.stringify(preparedAdminSysItemValues), {
+            expires: cookiesExpires.SYSTEM_PROPERTY_FILTER,
+          }
+        );
 
         await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
       },

@@ -4,8 +4,6 @@ import { modalNames } from 'consts';
 
 import { SendNotification } from 'types';
 
-// import { parseString } from './strings';
-
 const getNotification = (
   title: string,
   message: string,

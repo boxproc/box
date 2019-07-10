@@ -12,7 +12,7 @@ import { T2 } from 'components/Text';
 
 import { withSpinner } from 'components/Spinner';
 
-import { codeKeys, modalNames, yesNoTypes } from 'consts';
+import { codeKeys, modalNames, yesNoTypes, cookiesNames } from 'consts';
 
 import SystemPropertyFilter from './SystemPropertyFilter';
 
@@ -27,6 +27,8 @@ import {
 } from 'store/domains';
 
 import { TableCell } from 'types';
+
+import { camelizeFieldsUtil, cookiesUtil } from 'utils';
 
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
@@ -45,6 +47,10 @@ const SysPropsNoData = () => (
     title="No rows found"
   />
 );
+
+const systemPropsParams = cookiesUtil.getCookie(cookiesNames.ADMIN_SYSTEM_PROPERTY);
+const initialFilterValues = systemPropsParams
+  && camelizeFieldsUtil.camelizeFields(JSON.parse(systemPropsParams), 'camelcase');
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -193,6 +199,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       <SystemPropertyFilter
         resetFormByName={resetFormByName}
         filterAdminSysProps={filterAdminSysProps}
+        initialValues={initialFilterValues}
       />
       <Flex alignItems="flex-start">
         <Box mb="7px">

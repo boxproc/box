@@ -49,14 +49,14 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         urlUtil.openLocation(`${basePath}`);
 
         cookiesUtil.setCookie(cookiesNames.SESSION_ID, res.value.session_id, {
-          expires: cookiesExpires.SESSION_ID_EXPIRES,
+          expires: cookiesExpires.SESSION_ID,
         });
 
         if (rememberMe) {
           cookiesUtil.setCookie(
             cookiesNames.USER_NAME,
             userName, {
-              expires: cookiesExpires.USER_NAME_EXPIRES,
+              expires: cookiesExpires.USER_NAME,
             }
           );
         }
