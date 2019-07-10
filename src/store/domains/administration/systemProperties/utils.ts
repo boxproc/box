@@ -11,7 +11,7 @@ export const prepareAdminSysItemValues =
 
     for (const prop in propValues) {
       if (prop) {
-        preparedProps[decamelize(prop, '_')] = prop;
+        preparedProps[decamelize(prop, '_')] = propValues[prop];
       }
     }
 

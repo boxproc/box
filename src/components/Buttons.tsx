@@ -56,7 +56,7 @@ interface ButtonProps {
   transparent?: boolean;
   className?: string;
   icon?: string;
-  type?: 'reset' | 'reset' | 'submit';
+  type?: 'reset' | 'submit';
 }
 
 export const Button: React.FC<ButtonProps> = ({
