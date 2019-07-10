@@ -24,7 +24,6 @@ const adminSysPropsReducer =
           );
 
       case ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED:
-        console.log('---', action.payload);
         return state
           .set('system_properties', Object.values({
               ...state.system_properties,

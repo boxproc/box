@@ -1,4 +1,4 @@
-import { AdminSysPropsDataResp } from './types';
+import { AdminSysPropDataResp, AdminSysPropsDataResp } from './types';
 
 export const AdminSysPropsItemsData: AdminSysPropsDataResp = {
   system_properties: [
@@ -33,7 +33,7 @@ export const AdminSysPropsItemsData: AdminSysPropsDataResp = {
   ],
 };
 
-export const AdminSysPropsItemsUpdatedData: any = {
+export const AdminSysPropsItemsUpdatedData: AdminSysPropDataResp = {
   system_property: {
     property_name: 'scheduler.rmi_port 3',
     current_value: '10.10.10.1',
@@ -43,7 +43,7 @@ export const AdminSysPropsItemsUpdatedData: any = {
   },
 };
 
-export const AdminSysPropsItemsAddedData: any = {
+export const AdminSysPropsItemsAddedData: AdminSysPropDataResp = {
   system_property: {
     property_name: 'Added',
     current_value: '32000',

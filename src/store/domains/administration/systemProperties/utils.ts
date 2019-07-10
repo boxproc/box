@@ -11,6 +11,6 @@ export const prepareAdminSysItemValues =
       current_value: currentValue,
       previous_value: previousValue,
       last_datetime: lastDatetime,
-      locked_flag: lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
+      locked_flag: lockedFlag === yesNoTypes.NO || !lockedFlag  ? yesNoTypes.NO : yesNoTypes.YES,
     });
   };

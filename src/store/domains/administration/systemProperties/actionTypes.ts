@@ -1,4 +1,4 @@
-import { AdminSysPropsDataResp } from './types';
+import { AdminSysPropDataResp, AdminSysPropsDataResp } from './types';
 
 import { ApiResponse } from 'types';
 
@@ -44,7 +44,7 @@ export interface AddAdminSysPropAction {
 }
 
 export interface AddAdminSysPropFulfilledAction {
-  readonly payload: any;
+  readonly payload: AdminSysPropDataResp;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
 }
 
@@ -54,12 +54,12 @@ export interface AddAdminSysPropRejectedAction {
 }
 
 export interface DeleteAdminSysPropAction {
-  readonly payload: any;
+  readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP;
 }
 
 export interface DeleteAdminSysPropFulfilledAction {
-  readonly payload: any;
+  readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
 }
 
@@ -69,12 +69,12 @@ export interface DeleteAdminSysPropRejectedAction {
 }
 
 export interface UpdateAdminSysPropsAction {
-  readonly payload: any;
+  readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS;
 }
 
 export interface UpdateAdminSysPropsFulfilledAction {
-  readonly payload: any;
+  readonly payload: AdminSysPropDataResp;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
 }
 

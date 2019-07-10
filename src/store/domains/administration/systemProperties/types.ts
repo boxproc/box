@@ -12,6 +12,10 @@ export interface AdminSysPropsDataResp {
   system_properties: Array<AdminSysPropsItemResp>;
 }
 
+export interface AdminSysPropDataResp {
+  system_property: AdminSysPropsItemResp;
+}
+
 export interface AdminSysPropsItem {
   propertyName: string;
   currentValue: string | number;
