@@ -6,6 +6,8 @@ import { ModalsState } from './types';
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
   isAddAdminSystemPropertyModal: false,
+  isAddProductModal: false,
+  isGetProductInfo: false,
   fieldsMessageModal: null,
 });
 

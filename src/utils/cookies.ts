@@ -1,4 +1,4 @@
-export const setCookie = (name: string, value: string, options?: any) => {
+export const set = (name: string, value: string, options?: any) => {
   options = options || {};
 
   let expires = options.expires;
@@ -29,13 +29,13 @@ export const setCookie = (name: string, value: string, options?: any) => {
   document.cookie = updatedCookie;
 };
 
-export const deleteCookie = (name: string) => {
-  setCookie(name, '', {
+export const remove = (name: string) => {
+  set(name, '', {
     expires: -1,
   });
 };
 
-export const getCookie = (name: string) => {
+export const get = (name: string) => {
   const matches = document.cookie.match(new RegExp(
     // eslint-disable-next-line
     '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'

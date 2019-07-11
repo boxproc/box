@@ -5,6 +5,7 @@ import { AdminSysPropsState } from './types';
 
 export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Immutable({
   system_properties: Immutable([]),
+  filter_system_properties: null,
 });
 
 const adminSysPropsReducer =
@@ -38,6 +39,10 @@ const adminSysPropsReducer =
             'system_properties',
             state.system_properties.filter(el => el.property_name !== action.payload.property_name)
           );
+
+      case ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS:
+        return state
+          .set('filter_system_properties', action.payload);
 
       default: return state;
     }

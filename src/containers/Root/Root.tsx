@@ -55,7 +55,7 @@ const Root: React.FC<RootProps> = ({
       }
       if (isLoggedIn && isRememberedMe) {
         cookies.set(cookiesNames.USER_NAME, userName, {
-          maxAge: cookiesExpires.USER_NAME,
+          maxAge: cookiesExpires.WEEK,
         });
       }
     },
@@ -89,7 +89,6 @@ const Root: React.FC<RootProps> = ({
                 && visibleUiItems.includes(page.path)
                 && (
                   <PrivateRoute
-                    exact={true}
                     key={page.path}
                     path={`${basePath}${page.path}`}
                     component={() => page.component}

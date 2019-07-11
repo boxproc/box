@@ -13,7 +13,7 @@ import {
   renderEditable,
 } from 'components/Table/utils';
 
-import { cookiesNames, modalNames } from 'consts';
+import { cookiesExpires, cookiesNames, modalNames } from 'consts';
 
 import {
   AdminSysPropsItem,
@@ -29,7 +29,7 @@ import SystemPropertyFilter from './SystemPropertyFilter';
 
 import { TableCell } from 'types';
 
-import { camelizeFieldsUtil, cookiesUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
@@ -39,13 +39,13 @@ interface SystemPropertiesProps {
   adminSysPropsItems: Array<AdminSysPropsItem>;
   resetFormByName: HandleResetFormByName;
   openModal: OpenModal;
+  filterSystemProperties: AdminSysPropsItem;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
 
-const systemPropsParams = cookiesUtil.getCookie(cookiesNames.ADMIN_SYSTEM_PROPERTY);
-const initialFilterValues = systemPropsParams
-  && camelizeFieldsUtil.camelizeFields(JSON.parse(systemPropsParams), 'camelcase');
+const systemPropsParams = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
+const initialFilterValues = systemPropsParams && JSON.parse(systemPropsParams);
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -55,12 +55,22 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   resetFormByName,
   openModal,
   updateAdminSysProps,
+  filterSystemProperties,
 }) => {
   React.useEffect(
     () => {
       getAdminSysProps();
+
+      if (filterSystemProperties) {
+        cookiesUtil.set(
+          cookiesNames.ADMIN_SYSTEM_PROPERTIES,
+          JSON.stringify(filterSystemProperties), {
+            expires: cookiesExpires.WEEK,
+          }
+        );
+      }
     },
-    [getAdminSysProps]
+    [getAdminSysProps, filterSystemProperties]
   );
 
   const columns = [

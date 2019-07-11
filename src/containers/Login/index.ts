@@ -13,7 +13,7 @@ import { StoreState } from 'store/StoreState';
 
 import { cookiesUtil } from 'utils';
 
-const userName = cookiesUtil.getCookie(cookiesNames.USER_NAME);
+const userName = cookiesUtil.get(cookiesNames.USER_NAME);
 
 const mapStateToProps = (state: StoreState) => ({
   isMessageModal: selectIsMessageModal(state),

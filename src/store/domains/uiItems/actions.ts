@@ -27,7 +27,7 @@ export const handleGetUiItems: HandleGetUiItems = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
+        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
 
         apiClient.set('session_id', sessionId);
 

@@ -39,7 +39,7 @@ export const TableStyled = styled.div`
   .ReactTable .rt-td {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 8px 12px;
     transition: none;
     transition-property: none;
   }

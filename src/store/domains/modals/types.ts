@@ -12,5 +12,7 @@ export interface ModalsData {
 export interface ModalsState {
   isMessageModal: boolean;
   isAddAdminSystemPropertyModal: boolean;
+  isAddProductModal: boolean;
+  isGetProductInfo: boolean;
   fieldsMessageModal?: FieldsMessageModal;
 }

@@ -3,26 +3,28 @@ import config from 'config';
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
 export enum cookiesNames {
-  SESSION_ID = 'session_id',
-  USER_NAME = 'username',
-  ADMIN_SYSTEM_PROPERTY = 'admin_system_property',
+  SESSION_ID = 'sessionId',
+  USER_NAME = 'userName',
+  ADMIN_SYSTEM_PROPERTIES = 'adminSystemProperties',
 }
 
 export enum cookiesExpires {
-  USER_NAME = 604800,
+  WEEK = 604800,
   SESSION_ID = 604800,
-  SYSTEM_PROPERTY_FILTER = 604800,
 }
 
 export enum formNames {
   USER_LOGIN = 'userLogin',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
-  SYSTEM_PROPERTY_FILTER = 'systemPropertyFilter',
+  SYSTEM_PROPERTY_FILTER = 'adminSystemProperties',
+  PRODUCTS_FILTER = 'productsFilter',
 }
 
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
+  ADD_PRODUCT = 'AddProductModal',
+  GET_PRODUCT_INFO = 'GetProductInfo',
 }
 
 export enum uiItemTypes {
@@ -41,9 +43,11 @@ export enum uiItemConsts {
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',
 
-  ADMINISTRATION_SYS_PROPS= 'administration/system_properties',
+  ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
+
+  PRODUCTS = 'product_modeler/products',
 }
 export enum codeKeys {
   ENTER = 'Enter',

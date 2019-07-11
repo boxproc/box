@@ -23,7 +23,7 @@ interface NavbarProps extends RouteComponentProps {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history }) => {
+const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
   const menuRef = React.useRef(null);
 
   React.useEffect(

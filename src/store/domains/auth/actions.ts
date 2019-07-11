@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 import * as api from './api';
 
@@ -66,7 +66,7 @@ export const handleUserLogout: HandleUserLogout = () =>
         await dispatch(userLogout());
 
         // dispatch(push(`${basePath}login`));
-        cookiesUtil.deleteCookie(cookiesNames.SESSION_ID);
+        cookiesUtil.remove(cookiesNames.SESSION_ID);
         urlUtil.openLocation(`${basePath}login`);
       },
       dispatch

@@ -14,14 +14,17 @@ import { TableStyled } from './TableStyled';
 
 interface TableItemWrapperProps {
   color?: string;
+  textRight?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   overflow: hidden;
   font-size: 15px;
+  justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'flex-start'};
 
   .title {
     color: ${({ theme, color }) => theme.blackColorOpacity8};
@@ -94,6 +97,7 @@ export const Cell: React.FC<CellProps> = ({
 }) => (
     <TableItemWrapper
       style={style}
+      textRight={typeof value === 'number'}
       contentEditable={contentEditable}
       suppressContentEditableWarning={suppressContentEditableWarning}
       onBlur={onBlur}

@@ -33,4 +33,5 @@ export interface AdminSysPropDataResp {
 
 export interface AdminSysPropsState {
   system_properties: ImmutableArray<AdminSysPropsItemResp>;
+  filter_system_properties: AdminSysPropsItem;
 }

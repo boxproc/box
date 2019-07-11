@@ -17,6 +17,7 @@ interface TablePageProps {
   addNewModalName: string;
   openModal: OpenModal;
   FilterForm: ReactChild;
+  getTrGroupProps?: any;
 }
 
 const NoDataComponent = () => (
@@ -32,6 +33,7 @@ export const TablePage: React.FC<TablePageProps> = ({
   addNewModalName,
   openModal,
   FilterForm,
+  getTrGroupProps,
 }) => {
 
   const [isFilter, setIsFilter] = React.useState(false);
@@ -55,6 +57,7 @@ export const TablePage: React.FC<TablePageProps> = ({
       <Table
         data={data}
         columns={columns}
+        getTrGroupProps={getTrGroupProps}
         NoDataComponent={NoDataComponent}
       />
     </React.Fragment >

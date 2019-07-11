@@ -42,5 +42,15 @@ export const uiItemsData: UiItems = {
       permission: 'W',
       ui_item: 'administration/system_properties',
     },
+    {
+      item_type: 'M',
+      permission: 'W',
+      ui_item: 'product_modeler',
+    },
+    {
+      item_type: 'm',
+      permission: 'W',
+      ui_item: 'product_modeler/products',
+    },
   ],
 };

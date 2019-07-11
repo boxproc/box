@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesExpires, cookiesNames, formNames, modalNames } from 'consts';
+import { cookiesNames, formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -12,6 +12,7 @@ import {
   DeleteAdminSysPropAction,
   FilterAdminSysPropsAction,
   GetAdminSysPropsAction,
+  SetFilterAdminSysPropsAction,
   UpdateAdminSysPropsAction,
 } from './actionTypes';
 
@@ -42,6 +43,9 @@ export type FilterAdminSysProps = (propParams: any)
   => FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (propParams: any) => Thunk<void>;
 
+export type SetFilterAdminSysProps = (propParams: AdminSysPropsItemResp) =>
+  SetFilterAdminSysPropsAction;
+
 export type HandleResetFormByName = (formName: string) => void;
 
 export const getAdminSysProps: GetAdminSysProps = () => ({
@@ -69,12 +73,17 @@ export const filterAdminSysProps: FilterAdminSysProps = propParams => ({
   payload: api.filterAdminSysProps(propParams),
 });
 
+export const setFilterAdminSysProps: SetFilterAdminSysProps = propParams => ({
+  type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS,
+  payload: propParams,
+});
+
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.getCookie(cookiesNames.SESSION_ID);
-        const params = cookiesUtil.getCookie(cookiesNames.ADMIN_SYSTEM_PROPERTY);
+        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+        const params = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
 
         apiClient.set('session_id', sessionId);
 
@@ -130,14 +139,8 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
       async () => {
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
 
-        cookiesUtil.setCookie(
-          cookiesNames.ADMIN_SYSTEM_PROPERTY,
-          JSON.stringify(preparedAdminSysItemValues), {
-            expires: cookiesExpires.SYSTEM_PROPERTY_FILTER,
-          }
-        );
-
         await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
+        await dispatch(setFilterAdminSysProps(propParams));
       },
       dispatch
     );

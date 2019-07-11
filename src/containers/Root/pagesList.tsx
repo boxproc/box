@@ -3,6 +3,7 @@ import React from 'react';
 import { uiItemConsts } from 'consts';
 
 import SystemProperties from 'containers/Administration/SystemProperties';
+import Products from 'containers/ProductModeler/Products';
 import {
   Accounts,
   Countries,
@@ -13,22 +14,26 @@ import {
 export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_SYS_PROPS,
-    component: <SystemProperties/>,
+    component: <SystemProperties />,
+  },
+  {
+    path: uiItemConsts.PRODUCTS,
+    component: <Products />,
   },
   {
     path: uiItemConsts.LEDGER_CUSTOMERS,
-    component: <Customers/>,
+    component: <Customers />,
   },
   {
     path: uiItemConsts.LEDGER_ACCOUNTS,
-    component: <Accounts/>,
+    component: <Accounts />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES,
-    component: <Countries/>,
+    component: <Countries />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES,
-    component: <Currencies/>,
+    component: <Currencies />,
   },
 ];
