@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 
-import { ReactCookieProps } from 'react-cookie';
-
 import Root from './Root';
 
 import {
@@ -13,12 +11,11 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const mapStateToProps = (state: StoreState, ownProps: ReactCookieProps) => ({
+const mapStateToProps = (state: StoreState) => ({
   visibleUiItems: selectVisibleUiItems(state),
   sessionId: selectSessionId(state),
   userName: selectUserName(state),
   isRememberedMe: selectIsRememberedMe(state),
-  ownProps: ownProps.cookies,
 });
 
 export default connect(

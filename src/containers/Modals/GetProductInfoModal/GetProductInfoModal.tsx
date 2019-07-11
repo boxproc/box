@@ -31,7 +31,7 @@ const GetProductInfoModal: React.FC<GetProductInfoModalProps> = ({
           <Button
             text="close"
             transparent={true}
-            onClick={() => closeModal}
+            onClick={() => closeModal(modalNames.GET_PRODUCT_INFO)}
           />
         </Box>
       </Flex>

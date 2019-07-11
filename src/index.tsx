@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 
-import { CookiesProvider } from 'react-cookie';
-
 import { theme, ThemeProvider } from 'theme';
 import { GlobalStyles } from 'theme/global';
 
@@ -17,7 +15,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   (
-    <CookiesProvider>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <React.Fragment>
@@ -28,7 +25,6 @@ ReactDOM.render(
           </React.Fragment>
         </ConnectedRouter>
       </Provider>
-    </CookiesProvider>
   ),
   document.getElementById('root') as HTMLElement
 );
