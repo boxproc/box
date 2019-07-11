@@ -6,6 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 import { combineReducers } from 'redux-seamless-immutable';
 
 import administrationReducer from './domains/administration/reducer';
+import authReducer from './domains/auth/reducer';
 import loaderReducer from './domains/loader/reducer';
 import modalsReducer from './domains/modals/reducer';
 import uiItemsReducer from './domains/uiItems/reducer';
@@ -15,6 +16,7 @@ const createRootReducer = (history: History) => combineReducers({
   form: formReducer,
 
   loader: loaderReducer,
+  auth: authReducer,
   modals: modalsReducer,
   uiItems: uiItemsReducer,
   administration: administrationReducer,

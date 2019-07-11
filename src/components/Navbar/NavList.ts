@@ -70,10 +70,5 @@ export const NavList = styled.div`
     .highlight-link {
       border-bottom: 1px solid transparent;
     }
-    // .${menuClasses.MENU_ITEM}  {
-    //   &:not(:last-child) {
-    //     border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
-    //   }
-    // }
   }
 `;

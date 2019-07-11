@@ -44,8 +44,8 @@ const Wrapper = styled.button<WrapperProps>`
 
   .icon {
     margin-right: 3px;
-    margin-top: -2px;
-    font-size: 20px;
+    margin-top: -1px;
+    font-size: 18px;
   }
 `;
 

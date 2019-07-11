@@ -10,7 +10,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   USER_NAME = 604800,
-  SESSION_ID = 600,
+  SESSION_ID = 604800,
   SYSTEM_PROPERTY_FILTER = 604800,
 }
 

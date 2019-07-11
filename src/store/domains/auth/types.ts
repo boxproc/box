@@ -13,3 +13,9 @@ export interface AuthResponse {
   session_id: string;
   username: string;
 }
+
+export interface AuthState {
+  sessionId: string;
+  username: string;
+  isRememberedMe: boolean;
+}

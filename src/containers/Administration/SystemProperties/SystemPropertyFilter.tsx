@@ -3,21 +3,12 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'styled-components';
-
 import { InputField } from 'components/Form';
 import OkCancelButtons from 'components/OkCancelButtons';
-import { T3 } from 'components/Text';
 
 import { formNames } from 'consts';
 
 import { HandleFilterAdminSysProps, HandleResetFormByName } from 'store/domains';
-
-const FormWrapper = styled.form`
-  margin-bottom: 30px;
-  padding: 20px;
-  box-shadow: ${({ theme }) => theme.boxShadow};
-`;
 
 interface SystemPropertyFilterProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
@@ -38,10 +29,9 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
   );
 
   return (
-    <FormWrapper onSubmit={handleSubmitForm}>
-      <T3>Filters</T3>
+    <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end">
-        <Box width="200px" mr="15px">
+        <Box width="200px">
           <Field
             id="propertyName"
             name="propertyName"
@@ -56,7 +46,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
         cancelText="Reset"
         onCancel={() => resetFormByName(formNames.SYSTEM_PROPERTY_FILTER)}
       />
-    </FormWrapper >
+    </form >
   );
 };
 

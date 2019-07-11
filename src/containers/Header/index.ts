@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
+import { withRouter } from 'react-router-dom';
+
 import Header from './Header';
 
 import {
@@ -30,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   dispatch
 );
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Header));

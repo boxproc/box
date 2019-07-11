@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -19,7 +19,7 @@ import {
 
 import { UiItemPrepared } from 'store/domains';
 
-interface NavbarProps {
+interface NavbarProps extends RouteComponentProps {
   uiItems: Array<UiItemPrepared>;
 }
 
@@ -88,4 +88,4 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;

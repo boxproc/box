@@ -19,7 +19,7 @@ interface TitleProps {
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-size: 22px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
@@ -30,7 +30,7 @@ export const T2 = styled.h2<TitleProps>`
 export const T3 = styled.h3<TitleProps>`
   margin-bottom: 15px;
   font-size: 18px;
-  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity5};
+  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity8};
 `;
 
 interface ParagraphProps {

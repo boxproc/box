@@ -1,11 +1,12 @@
-// import { push } from 'react-router-redux';
+import { push } from 'react-router-redux';
 
 import * as api from './api';
 
-import { basePath, cookiesExpires, cookiesNames } from 'consts';
+import { basePath, cookiesNames } from 'consts';
 
 import {
   ActionTypeKeys,
+  SetRememberMeAction,
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
@@ -25,6 +26,8 @@ export type UserLogout = () => UserLogoutAction;
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type HandleUserLogout = VoidThunk;
 
+export type SetRememberMe = (rememberMe: boolean) => SetRememberMeAction;
+
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,
   payload: api.userLogin(data),
@@ -35,31 +38,22 @@ export const userLogout: UserLogout = () => ({
   payload: api.userLogout(),
 });
 
+export const setRememberMe: SetRememberMe = rememberMe => ({
+  type: ActionTypeKeys.SET_REMEMBER_ME,
+  payload: rememberMe,
+});
+
 export const handleUserLogin: HandleUserLogin = (data) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const { userName, rememberMe } = data;
         const preparedAuthValues = prepareAuthValues(data);
         const res = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
 
         apiClient.set('session_id', res.value.session_id);
 
-        // dispatch(push(`${basePath}`));
-        urlUtil.openLocation(`${basePath}`);
-
-        cookiesUtil.setCookie(cookiesNames.SESSION_ID, res.value.session_id, {
-          expires: cookiesExpires.SESSION_ID,
-        });
-
-        if (rememberMe) {
-          cookiesUtil.setCookie(
-            cookiesNames.USER_NAME,
-            userName, {
-              expires: cookiesExpires.USER_NAME,
-            }
-          );
-        }
+        dispatch(push(`${basePath}`));
+        dispatch(setRememberMe(data.rememberMe));
       },
       dispatch
     );

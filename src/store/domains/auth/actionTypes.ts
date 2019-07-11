@@ -6,6 +6,8 @@ export enum ActionTypeKeys {
   USER_LOGIN_FULFILLED = 'user/USER_LOGIN_FULFILLED',
   USER_LOGIN_REJECTED = 'user/USER_LOGIN_REJECTED',
 
+  SET_REMEMBER_ME = 'user/SET_REMEMBER_ME',
+
   USER_LOGOUT = 'user/USER_LOGOUT',
   USER_LOGOUT_FULFILLED = 'user/USER_LOGOUT_FULFILLED',
   USER_LOGOUT_REJECTED = 'user/USER_LOGOUT_REJECTED',
@@ -26,6 +28,11 @@ export interface UserLoginActionRejectedAction {
   readonly type: ActionTypeKeys.USER_LOGIN_REJECTED;
 }
 
+export interface SetRememberMeAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_REMEMBER_ME;
+}
+
 export interface UserLogoutAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.USER_LOGOUT;
@@ -43,4 +50,5 @@ export interface UserLogoutActionRejectedAction {
 
 export type AuthActionTypes =
   | UserLoginActionFulfilledAction
-  | UserLogoutActionFulfilledAction;
+  | UserLogoutActionFulfilledAction
+  | SetRememberMeAction;

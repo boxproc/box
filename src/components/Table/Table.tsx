@@ -4,7 +4,7 @@ import ReactTable, {
   ReactTableDefaults,
 } from 'react-table';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -24,7 +24,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   font-size: 15px;
 
   .title {
-    color: ${({ theme, color }) => theme.blackColorOpacity8 };
+    color: ${({ theme, color }) => theme.blackColorOpacity8};
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -32,13 +32,11 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 
   &:focus {
-    border: 1px solid ${({ theme, color }) => theme.normalAccentColor };
+    border: 1px solid ${({ theme, color }) => theme.lightGrayColor};
   }
 
-  &:hover {
-    .icon path {
-      stroke: ${({ theme }) => theme.normalAccentColor};
-    }
+  .icon path {
+    stroke: ${({ theme }) => theme.grayColor};
   }
 `;
 
@@ -62,17 +60,19 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   title, showSortIcons = false,
 }) => (
-    <TableItemWrapper>
-      <Box className="title">{title}</Box>
-      <SortIconsWrapper>
-        {showSortIcons &&
-          <React.Fragment>
-            <ChevronIcon className="icon up-icon" />
-            <ChevronIcon className="icon down-icon" />
-          </React.Fragment>
-        }
-      </SortIconsWrapper>
-    </TableItemWrapper>
+    <Flex justifyContent="center" alignItems="center">
+      <TableItemWrapper>
+        <Box className="title">{title}</Box>
+        <SortIconsWrapper>
+          {showSortIcons &&
+            <React.Fragment>
+              <ChevronIcon className="icon up-icon" />
+              <ChevronIcon className="icon down-icon" />
+            </React.Fragment>
+          }
+        </SortIconsWrapper>
+      </TableItemWrapper>
+    </Flex>
   );
 
 interface CellProps {
@@ -92,16 +92,16 @@ export const Cell: React.FC<CellProps> = ({
   onBlur,
   onKeyUp,
 }) => (
-  <TableItemWrapper
-    style={style}
-    contentEditable={contentEditable}
-    suppressContentEditableWarning={suppressContentEditableWarning}
-    onBlur={onBlur}
-    onKeyUp={onKeyUp}
-  >
-    {value}
-  </TableItemWrapper>
-);
+    <TableItemWrapper
+      style={style}
+      contentEditable={contentEditable}
+      suppressContentEditableWarning={suppressContentEditableWarning}
+      onBlur={onBlur}
+      onKeyUp={onKeyUp}
+    >
+      {value}
+    </TableItemWrapper>
+  );
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;

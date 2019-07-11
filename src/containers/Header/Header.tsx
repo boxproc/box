@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
+import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
@@ -21,7 +22,7 @@ const Wrapper = styled.header`
   box-shadow: ${({ theme }) => theme.boxShadow};
 `;
 
-interface HeaderProps {
+interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
   userLogout: HandleUserLogout;
   uiItems: Array<UiItemPrepared>;
@@ -31,6 +32,9 @@ const Header: React.FC<HeaderProps> = ({
   getUiItems,
   userLogout,
   uiItems,
+  history,
+  location,
+  match,
 }) => {
   React.useEffect(
     () => {
@@ -60,7 +64,14 @@ const Header: React.FC<HeaderProps> = ({
                 <img src={logo} width={62} alt="" />
               </a>
             </Box>
-            {uiItems && <Navbar uiItems={uiItems}/>}
+            {uiItems && (
+              <Navbar
+                uiItems={uiItems}
+                history={history}
+                location={location}
+                match={match}
+              />
+            )}
           </Flex>
           <Box>
             <HighlightLink

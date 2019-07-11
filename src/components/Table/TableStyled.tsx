@@ -55,11 +55,11 @@ export const TableStyled = styled.div`
     box-shadow: none;
   }
 
-  .rt-th:first-child, .rt-td:first-child {
+  .ReactTable  .rt-th:first-child, .rt-td:first-child {
     padding-left: 20px !important;
   }
 
-  .rt-th:last-child, .rt-td:last-child {
+  .ReactTable  .rt-th:last-child, .rt-td:last-child {
     padding-right: 20px !important;
   }
 
@@ -69,19 +69,19 @@ export const TableStyled = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
   }
 
-  .rt-tr-group:hover {
+  .ReactTable  .rt-tr-group:hover {
     cursor: default;
     background-color: ${({ theme }) => theme.lighterGrayColor};
   }
-  .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
+  .ReactTable  .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
     box-shadow: none !important;
   }
 
-  .rt-thead .rt-th.-sort-asc, .rt-thead .rt-td.-sort-asc {
+  .ReactTable  .rt-thead .rt-th.-sort-asc, .rt-thead .rt-td.-sort-asc {
     box-shadow: none !important;
   }
 
-  .rt-th, .rt-td {
+  .ReactTable  .rt-th, .rt-td {
     border: none !important;
   }
 
@@ -90,12 +90,9 @@ export const TableStyled = styled.div`
   }
 
   /* header */
-  .-sort-asc .up-icon path {
-    stroke: #0B132B;
-  }
-
-  .-sort-desc .down-icon path {
-    stroke: #0B132B;
+  .ReactTable .-sort-asc .up-icon path,
+  .ReactTable .-sort-desc .down-icon path {
+    stroke: ${({ theme }) => theme.blackColorOpacity8};
   }
   .ReactTable .rt-thead.-filters input {
     &:focus {
