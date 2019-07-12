@@ -2,19 +2,32 @@ import React from 'react';
 
 import { ModalWrapper } from './ModalWrapper';
 
+import { T2 } from 'components/Text';
+
 import { CloseModal } from 'store/domains';
+
+import { codeKeys } from 'consts';
+import styled from 'styled-components';
 
 interface ModalProps {
   name: string;
+  title?: string;
   closeModal: CloseModal;
   maxContainerWidth?: string;
+  zIndex?: string;
 }
+
+const ModalTitle = styled(T2)`
+  color: ${({ theme }) => theme.blackColor};
+`;
 
 const Modal: React.FC<ModalProps> = ({
   children,
   name,
+  title,
   closeModal,
   maxContainerWidth,
+  zIndex,
 }) => {
   React.useEffect(
     () => {
@@ -29,13 +42,16 @@ const Modal: React.FC<ModalProps> = ({
   );
 
   const handleCloseModalByKey = (e: KeyboardEventInit) => {
-    if (e.key === 'Escape' || e.key === 'Backspace') {
+    if (e.key === codeKeys.ESCAPE) {
       handleCloseModal();
     }
   };
 
   return (
-    <ModalWrapper maxContainerWidth={maxContainerWidth}>
+    <ModalWrapper
+      maxContainerWidth={maxContainerWidth}
+      zIndex={zIndex}
+    >
       <div
         className="modal-backdrop"
         onClick={handleCloseModal}
@@ -47,6 +63,7 @@ const Modal: React.FC<ModalProps> = ({
         >
           &times;
         </span>
+        {title && (<ModalTitle>{title}</ModalTitle>)}
         {children}
       </div>
     </ModalWrapper>

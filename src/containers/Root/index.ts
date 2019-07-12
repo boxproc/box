@@ -1,20 +1,23 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 
 import Root from './Root';
 
 import {
-  handleGetUserInfo,
+  selectIsRememberedMe,
+  selectSessionId,
+  selectUserName,
+  selectVisibleUiItems,
 } from 'store/domains';
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    getUserInfo: handleGetUserInfo,
-  },
-  dispatch
-);
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  visibleUiItems: selectVisibleUiItems(state),
+  sessionId: selectSessionId(state),
+  userName: selectUserName(state),
+  isRememberedMe: selectIsRememberedMe(state),
+});
 
 export default connect(
-  null,
-  mapDispatchToProps
+  mapStateToProps
 )(Root);

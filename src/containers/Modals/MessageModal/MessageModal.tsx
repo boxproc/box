@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
-import { Paragraph, T2 } from 'components/Text';
+import { Paragraph } from 'components/Text';
 
 import { modalNames } from 'consts';
 
@@ -25,11 +25,10 @@ const MessageModal: React.FC<MessageModalProps> = ({
   return (
     <Modal
       name={modalNames.MESSAGE_MODAL}
-      maxContainerWidth={300}
+      title={title}
+      maxContainerWidth={350}
+      zIndex="101"
     >
-      <Box pr="12px">
-        <T2>{title}</T2>
-      </Box>
       <Paragraph light={true}>{message}</Paragraph>
       <Flex
         alignItems="center"
@@ -43,13 +42,13 @@ const MessageModal: React.FC<MessageModalProps> = ({
           />
         </Box>
         {details &&
-        <Box mt="5px" ml="10px">
-          <Button
-            text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
-            transparent={true}
-            onClick={() => setVisibleDetail(!isVisibleDetail)}
-          />
-        </Box>
+          <Box mt="5px" ml="10px">
+            <Button
+              text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
+              transparent={true}
+              onClick={() => setVisibleDetail(!isVisibleDetail)}
+            />
+          </Box>
         }
       </Flex>
       {isVisibleDetail &&

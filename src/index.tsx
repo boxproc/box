@@ -15,16 +15,16 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <React.Fragment>
-          <GlobalStyles />
-          <ThemeProvider theme={theme}>
-            <App />
-          </ThemeProvider>
-        </React.Fragment>
-      </ConnectedRouter>
-    </Provider>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <React.Fragment>
+            <GlobalStyles />
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
+          </React.Fragment>
+        </ConnectedRouter>
+      </Provider>
   ),
   document.getElementById('root') as HTMLElement
 );

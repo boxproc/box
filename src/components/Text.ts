@@ -15,14 +15,22 @@ export const Label = styled.label<LabelProps>`
 
 interface TitleProps {
   textAlign?: string;
+  color?: string;
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 15px;
-  font-size: 26px;
+  margin-bottom: 20px;
+  font-size: 22px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   text-transform: capitalize;
+  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity5};
+`;
+
+export const T3 = styled.h3<TitleProps>`
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity8};
 `;
 
 interface ParagraphProps {

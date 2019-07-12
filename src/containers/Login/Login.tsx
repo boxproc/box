@@ -10,7 +10,7 @@ import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
-import { basePath, formsNames } from 'consts';
+import { basePath, formNames } from 'consts';
 
 import logo from 'resources/images/logo.svg';
 
@@ -23,7 +23,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 135px);
   justify-content: center;
   margin: 0 auto;
   text-align: left;
@@ -51,7 +51,6 @@ const Login: React.FC<LoginPropsAllProps> = ({
   userLogin,
   isPasswordFocus,
   isMessageModal,
-  error,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(userLogin),
@@ -66,18 +65,17 @@ const Login: React.FC<LoginPropsAllProps> = ({
         </Link>
       </Box>
       <Field
-        id="username"
-        name="username"
+        id="userName"
+        name="userName"
         placeholder="Enter user name"
         component={InputField}
         disabled={isMessageModal}
         label="Login"
         validate={[formErrorUtil.required]}
       />
-      {error}
       <Field
-        id="password_hash"
-        name="password_hash"
+        id="password"
+        name="password"
         placeholder="Enter password"
         component={PasswordField}
         disabled={isMessageModal}
@@ -100,7 +98,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
 };
 
 export default reduxForm<{}, LoginProps>({
-  form: formsNames.USER_LOGIN,
+  form: formNames.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(Login);

@@ -1,27 +1,38 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Root from './Header';
+import { withRouter } from 'react-router-dom';
+
+import Header from './Header';
 
 import {
+  createLoadingSelector,
+  handleGetUiItems,
   handleUserLogout,
   selectUiItems,
+  UiItemsActionTypes,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  UiItemsActionTypes.GET_UI_ITEMS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    getUiItems: handleGetUiItems,
     userLogout: handleUserLogout,
   },
   dispatch
 );
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Root);
+)(Header));

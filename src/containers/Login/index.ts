@@ -13,14 +13,14 @@ import { StoreState } from 'store/StoreState';
 
 import { cookiesUtil } from 'utils';
 
-const username = cookiesUtil.getCookie(cookiesNames.USER_NAME);
+const userName = cookiesUtil.get(cookiesNames.USER_NAME);
 
 const mapStateToProps = (state: StoreState) => ({
   isMessageModal: selectIsMessageModal(state),
-  isPasswordFocus: !!username,
+  isPasswordFocus: !!userName,
   initialValues: {
-    rememberMe: !!username,
-    username,
+    rememberMe: !!userName,
+    userName,
   },
 });
 

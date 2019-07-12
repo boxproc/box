@@ -5,9 +5,9 @@ import { basePath } from 'consts';
 
 import Root from './Root';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <Route path={basePath || '/'} component={Root} />
+    <Route path={basePath || '/'} component={() => <Root/>} />
   );
 };
 

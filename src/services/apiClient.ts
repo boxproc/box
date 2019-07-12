@@ -23,7 +23,13 @@ interface IApiClient {
 
 export class ApiClient implements IApiClient {
   methods = ['get', 'post', 'put', 'delete'];
-  defaults = {};
+  defaults = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Methods': 'POST',
+    'Accept': '*/*',
+  };
   apiHost: string;
 
   constructor(apiHost: string) {
@@ -45,7 +51,8 @@ export class ApiClient implements IApiClient {
             const defaultHeaders = isDHeadersWanted ? this.defaults : {};
             const newHeaders = { ...defaultHeaders, ...headers };
 
-            request.set(newHeaders);
+            // request.set(newHeaders);
+            request.set(newHeaders).withCredentials();
           }
 
           if (type) {

@@ -13,6 +13,10 @@ export default interface Theme {
   lightAccentColor: string;
 
   blackColor: string;
+  blackColorOpacity5: string;
+  blackColorOpacity6: string;
+  blackColorOpacity7: string;
+  blackColorOpacity8: string;
 
   redColor: string;
 
@@ -22,6 +26,7 @@ export default interface Theme {
   darkGrayColor: string;
 
   whiteColor: string;
+  whiteOpacityColor: string;
 
   boxShadow: string;
 }
@@ -33,18 +38,24 @@ export const theme: Theme = {
 
   normalAccentColor: '#ffa400',
   lighterAccentColor: 'rgba(255, 164, 0, .9)',
-  lightAccentColor: 'rgba(255, 164, 0, .7)',
+  lightAccentColor: '#ffbf4d',
 
   blackColor: '#000000',
+  blackColorOpacity5: 'rgba(0, 0, 0, .5)',
+  blackColorOpacity6: 'rgba(0, 0, 0, .6)',
+  blackColorOpacity7: 'rgba(0, 0, 0, .7)',
+  blackColorOpacity8: 'rgba(0, 0, 0, .8)',
 
   redColor: '	#FF0000',
 
   grayColor: '#999999',
   lightGrayColor: '#e6e6e6',
-  lighterGrayColor: 'rgba(230, 230, 230, 0.5)',
+  // lighterGrayColor: '#eeeeee',
+  lighterGrayColor: '#f3f3f3',
   darkGrayColor: '#4d4d4d',
 
   whiteColor: '#ffffff',
+  whiteOpacityColor: 'rgba(255, 255, 255, .8)',
 
   boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .1)',
 };

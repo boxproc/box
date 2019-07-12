@@ -1,11 +1,11 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
 import { ChevronIcon } from 'components/Icon';
 
-import { basePath } from 'consts';
+import { basePath, uiItemTypes } from 'consts';
 
 import { NavList } from './NavList';
 
@@ -19,11 +19,11 @@ import {
 
 import { UiItemPrepared } from 'store/domains';
 
-interface NavbarProps {
+interface NavbarProps extends RouteComponentProps {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history }) => {
+const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
   const menuRef = React.useRef(null);
 
   React.useEffect(
@@ -40,7 +40,8 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   };
 
   const renderItem = (item: UiItemPrepared) => {
-    const { id, parentId, hasChildren, description } = item;
+    const { id, parentId, title, type } = item;
+    const hasChildren = type === uiItemTypes.MENU_PARENT;
 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 
@@ -57,7 +58,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
           className={menuClasses.MENU_TITLE}
         >
           <Box className="highlight-link">
-            {description}
+            {title}
           </Box>
           {hasChildren && parentId &&
             <Box ml="5px">
@@ -65,7 +66,7 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
             </Box>
           }
         </Flex>
-        {renderMenu(id)}
+        {hasChildren && renderMenu(id)}
       </Box>
     );
   };
@@ -87,4 +88,4 @@ const Navbar: React.FC<NavbarProps & RouteComponentProps> = ({ uiItems, history 
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;

@@ -3,23 +3,13 @@ import React from 'react';
 import styled, { css } from 'theme';
 
 export const sharedStyle = css`
-  font-size: 15px;
-  font-weight: 500;
   font-style: normal;
   font-stretch: normal;
-  line-height: 18px;
   letter-spacing: normal;
   cursor: pointer;
   border: 0;
   outline: 0;
 `;
-
-interface ButtonProps {
-  text: string;
-  disabled?: boolean;
-  onClick?: () => void;
-  transparent?: boolean;
-}
 
 interface WrapperProps {
   transparent?: boolean;
@@ -27,6 +17,9 @@ interface WrapperProps {
 
 const Wrapper = styled.button<WrapperProps>`
   ${sharedStyle}
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: ${({ transparent }) => transparent ? '0' : '12px 30px'};
   border-radius: 2px;
@@ -38,6 +31,7 @@ const Wrapper = styled.button<WrapperProps>`
   letter-spacing: ${({ transparent }) => transparent && '.2pt'};
   color: ${({ theme, transparent }) => transparent && theme.grayColor};
   font-weight: ${({ transparent }) => transparent ? 500 : 400};
+  line-height: 1.3;
 
   &:hover {
     color: ${({ theme, transparent }) => transparent && theme.lighterAccentColor};
@@ -45,20 +39,44 @@ const Wrapper = styled.button<WrapperProps>`
 
   &:disabled {
     opacity: .5;
+    pointer-events: none;
+  }
+
+  .icon {
+    margin-right: 3px;
+    margin-top: -1px;
+    font-size: 14px;
   }
 `;
+
+interface ButtonProps {
+  text: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  transparent?: boolean;
+  className?: string;
+  icon?: string;
+  type?: 'reset' | 'submit';
+}
 
 export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   text,
   transparent,
+  className,
+  icon,
+  type,
 }) => {
   return (
     <Wrapper
       onClick={disabled ? null : onClick}
       transparent={transparent}
+      className={className}
+      disabled={disabled}
+      type={type}
     >
+      {icon && (<span className="icon">{icon}</span>)}
       {text}
     </Wrapper>
   );

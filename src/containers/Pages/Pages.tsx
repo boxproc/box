@@ -1,32 +1,23 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
-import styled from 'theme';
-
-const Wrapper = styled(Box)`
-  padding-top: 20px
-`;
-
-export const HomePage = () => (
-  <Wrapper>Welcome!</Wrapper>
-);
+import { uiItemConsts } from 'consts';
 
 export const Customers = () => (
-  <Wrapper>Customers</Wrapper>
+  <React.Fragment>{uiItemConsts.LEDGER_CUSTOMERS}</React.Fragment>
 );
 
 export const Accounts = () => (
-  <Wrapper>Accounts</Wrapper>
+  <React.Fragment>{uiItemConsts.LEDGER_ACCOUNTS}</React.Fragment>
 );
 
-export const SystemProperties = () => (
-  <Wrapper>System Properties</Wrapper>
-);
-
-export const Countries = () =>  (
-  <Wrapper>Countries</Wrapper>
+export const Countries = () => (
+  <React.Fragment>{uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES}</React.Fragment>
 );
 
 export const Currencies = () => (
-  <Wrapper>Currencies</Wrapper>
+  <React.Fragment>{uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES}</React.Fragment>
+);
+
+export const HomePage = () => (
+  <React.Fragment>Welcome!</React.Fragment>
 );
