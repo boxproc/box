@@ -96,7 +96,9 @@ const Root: React.FC<RootProps> = ({
                 path={basePath}
                 component={HomePage}
               />
-              {/* <Redirect from="*" to={basePath} /> */}
+              {!isLoggedIn &&
+                <Redirect from="*" to={basePath} />
+              }
             </Switch>
           </PagesWrapper>
         </div>

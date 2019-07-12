@@ -21,11 +21,21 @@ export const handleSendNotification: SendNotification =
       } else {
         console.log('---res', res);
         if (res && res.statusCode === 500) {
-          dispatch(getNotification(
-            `${res.statusCode} Internal Server Error`,
-            // tslint:disable-next-line: max-line-length
-            'The server encountered an unexpected condition that prevented it from fulfilling the request.'
-          ));
+
+          if (res.body && res.body.response_status) {
+            const { error_message, error_description } = res.body.response_status;
+            dispatch(getNotification(
+              `${res.statusCode} Internal Server Error`,
+              error_message,
+              error_description
+            ));
+          } else {
+            dispatch(getNotification(
+              `${res.statusCode} Internal Server Error`,
+              // tslint:disable-next-line: max-line-length
+              'The server encountered an unexpected condition that prevented it from fulfilling the request.'
+            ));
+          }
         } else if (res && res.body && res.body.response_status) {
           const { error_message, error_description } = res.body.response_status;
 

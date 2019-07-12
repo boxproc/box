@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { theme } from 'theme';
 
 import {
-  DocumentIconProps,
   IconColorProps,
   staticAccentStyle,
 } from './sharedCss';
@@ -142,20 +141,5 @@ const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
 );
 
 export const ChevronIcon = styled(Chevron)`
-  ${({ css }) => css}
-`;
-
-const Delete: React.FC<DocumentIconProps> = ({ el, bigIcon, primary, ...props }) => (
-  <svg width="14" height="18" viewBox="0 0 14 18" fill="none" {...props}>
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M9.5 0L10.5 1H14V3H0V1H3.5L4.5 0H9.5ZM1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM3 6H11V16H3V6Z"
-      fill="#999999"
-    />
-  </svg>
-);
-
-export const DeleteIcon = styled(Delete)`
   ${({ css }) => css}
 `;

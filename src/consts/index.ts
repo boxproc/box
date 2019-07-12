@@ -47,7 +47,7 @@ export enum uiItemConsts {
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
 
-  PRODUCTS = 'product_modeler/products',
+  PRODUCTS = 'product_designer/products',
 }
 export enum codeKeys {
   ENTER = 'Enter',

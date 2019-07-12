@@ -116,7 +116,6 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   filterable?: boolean;
   className?: string;
   title?: string;
-  minRows?: number;
 }
 
 export const Table: React.FC<TableProps> = props => {
@@ -124,7 +123,6 @@ export const Table: React.FC<TableProps> = props => {
     sortable = false,
     filterable = false,
     data,
-    minRows = 0,
   } = props;
 
   return (
@@ -134,7 +132,7 @@ export const Table: React.FC<TableProps> = props => {
           {...props as TableProps}
           sortable={sortable}
           filterable={filterable}
-          minRows={minRows}
+          minRows={0}
           showPagination={false}
           multiSort={false}
           resizable={true}

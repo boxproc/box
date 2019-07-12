@@ -38,7 +38,7 @@ export const TablePage: React.FC<TablePageProps> = ({
   getTrGroupProps,
 }) => {
 
-  const [isFilter, setIsFilter] = React.useState(false);
+  const [isFilter, setIsFilter] = React.useState(true);
 
   return (
     <React.Fragment>
@@ -48,7 +48,7 @@ export const TablePage: React.FC<TablePageProps> = ({
           <Button
             text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
             transparent={true}
-            icon="&#9776;"
+            iconName="filter"
             onClick={() => setIsFilter(!isFilter)}
           />
         </Box>
@@ -62,8 +62,8 @@ export const TablePage: React.FC<TablePageProps> = ({
         <Box mb="7px">
           <Button
             text="Add New"
-            icon="&#43;"
             transparent={true}
+            iconName="plus"
             onClick={() => openModal({
               name: addNewModalName,
             })}

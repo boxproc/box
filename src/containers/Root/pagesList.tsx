@@ -3,7 +3,7 @@ import React from 'react';
 import { uiItemConsts } from 'consts';
 
 import SystemProperties from 'containers/Administration/SystemProperties';
-import Products from 'containers/ProductModeler/Products';
+import Products from 'containers/ProductDesigner/Products';
 import {
   Accounts,
   Countries,

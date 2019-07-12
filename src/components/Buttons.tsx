@@ -1,4 +1,6 @@
 import React from 'react';
+import { Filter } from 'styled-icons/boxicons-regular/Filter';
+import { Plus } from 'styled-icons/boxicons-regular/Plus';
 
 import styled, { css } from 'theme';
 
@@ -41,12 +43,6 @@ const Wrapper = styled.button<WrapperProps>`
     opacity: .5;
     pointer-events: none;
   }
-
-  .icon {
-    margin-right: 3px;
-    margin-top: -1px;
-    font-size: 14px;
-  }
 `;
 
 interface ButtonProps {
@@ -55,9 +51,20 @@ interface ButtonProps {
   onClick?: () => void;
   transparent?: boolean;
   className?: string;
-  icon?: string;
+  iconName?: 'filter' | 'plus';
   type?: 'reset' | 'submit';
 }
+
+const renderIcon = (name: string) => {
+  switch (name) {
+    case 'filter':
+      return <Filter size="18"/>;
+    case 'plus':
+      return <Plus size="18"/>;
+    default:
+      return null;
+  }
+};
 
 export const Button: React.FC<ButtonProps> = ({
   disabled,
@@ -65,7 +72,7 @@ export const Button: React.FC<ButtonProps> = ({
   text,
   transparent,
   className,
-  icon,
+  iconName,
   type,
 }) => {
   return (
@@ -76,7 +83,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
     >
-      {icon && (<span className="icon">{icon}</span>)}
+      {iconName && renderIcon(iconName)}
       {text}
     </Wrapper>
   );

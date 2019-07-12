@@ -45,12 +45,12 @@ export const uiItemsData: UiItems = {
     {
       item_type: 'M',
       permission: 'W',
-      ui_item: 'product_modeler',
+      ui_item: 'product_designer',
     },
     {
       item_type: 'm',
       permission: 'W',
-      ui_item: 'product_modeler/products',
+      ui_item: 'product_designer/products',
     },
   ],
 };

@@ -29,7 +29,7 @@ import SystemPropertyFilter from './SystemPropertyFilter';
 
 import { TableCell } from 'types';
 
-import { cookiesUtil } from 'utils';
+import { camelizeFieldsUtil, cookiesUtil } from 'utils';
 
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
@@ -45,7 +45,8 @@ interface SystemPropertiesProps {
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
 
 const systemPropsParams = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
-const initialFilterValues = systemPropsParams && JSON.parse(systemPropsParams);
+const initialFilterValues = systemPropsParams
+  && camelizeFieldsUtil.camelizeFields(JSON.parse(systemPropsParams), 'camelcase');
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -57,6 +58,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   updateAdminSysProps,
   filterSystemProperties,
 }) => {
+  console.log('---', adminSysPropsItems);
   React.useEffect(
     () => {
       getAdminSysProps();

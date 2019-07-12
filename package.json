@@ -26,6 +26,7 @@
     "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
     "styled-components": "^4.3.1",
+    "styled-icons": "^8.1.0",
     "superagent": "^5.0.6",
     "typescript": "3.5.1"
   },

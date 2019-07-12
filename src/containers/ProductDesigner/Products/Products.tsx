@@ -76,7 +76,7 @@ export const Products: React.FC<ProductsProps> = ({
 
   const columns = [
     {
-      maxWidth: 100,
+      maxWidth: 80,
       sortable: true,
       filterable: true,
       Header: <Header title="ID" showSortIcons={true} />,
@@ -88,7 +88,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 150,
       sortable: true,
       filterable: true,
       Header: <Header title="Institution ID" showSortIcons={true} />,

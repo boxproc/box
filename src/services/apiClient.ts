@@ -24,11 +24,14 @@ interface IApiClient {
 export class ApiClient implements IApiClient {
   methods = ['get', 'post', 'put', 'delete'];
   defaults = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Methods': 'POST',
-    'Accept': '*/*',
+    // 'Content-Type': 'application/json',
+    // http://10.37.250.47:3000/
+    // 'Origin': 'http://localhost:3000',
+    'Access-Control-Request-Headers': 'session_id',
+    // 'Access-Control-Allow-Origin': '*',
+    // 'Access-Control-Allow-Credentials': 'true',
+    // 'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    // 'Accept': '*/*',
   };
   apiHost: string;
 
@@ -51,8 +54,8 @@ export class ApiClient implements IApiClient {
             const defaultHeaders = isDHeadersWanted ? this.defaults : {};
             const newHeaders = { ...defaultHeaders, ...headers };
 
-            // request.set(newHeaders);
-            request.set(newHeaders).withCredentials();
+            request.set(newHeaders);
+            // request.set(newHeaders).withCredentials();
           }
 
           if (type) {
