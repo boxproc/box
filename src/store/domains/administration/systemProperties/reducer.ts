@@ -18,20 +18,22 @@ const adminSysPropsReducer =
 
       case ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED:
         return state
-          .set('system_properties', Object.values({
+          .set('system_properties', [
+            ...Object.values({
               ...state.system_properties
                 .filter(el => el.property_name !== action.payload.system_property.property_name),
-              ...action.payload,
-            })
-          );
+            }),
+            action.payload.system_property,
+          ]);
 
       case ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED:
         return state
-          .set('system_properties', Object.values({
+          .set('system_properties', [
+            ...Object.values({
               ...state.system_properties,
-              ...action.payload,
-            })
-          );
+            }),
+            action.payload.system_property,
+          ]);
 
       case ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED:
         return state

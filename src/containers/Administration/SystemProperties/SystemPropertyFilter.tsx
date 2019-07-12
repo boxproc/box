@@ -8,11 +8,10 @@ import OkCancelButtons from 'components/OkCancelButtons';
 
 import { formNames } from 'consts';
 
-import { HandleFilterAdminSysProps, HandleResetFormByName } from 'store/domains';
+import { HandleFilterAdminSysProps } from 'store/domains';
 
 interface SystemPropertyFilterProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
-  resetFormByName: HandleResetFormByName;
 }
 
 type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
@@ -21,7 +20,6 @@ type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
 const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
   handleSubmit,
   filterAdminSysProps,
-  resetFormByName,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterAdminSysProps(data)),
@@ -44,7 +42,6 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
       <OkCancelButtons
         okText="Search"
         cancelText="Reset"
-        onCancel={() => resetFormByName(formNames.SYSTEM_PROPERTY_FILTER)}
       />
     </form >
   );

@@ -8,11 +8,8 @@ import OkCancelButtons from 'components/OkCancelButtons';
 
 import { formNames } from 'consts';
 
-import { HandleResetFormByName } from 'store/domains';
-
 interface ProductsFilterProps {
   filterProducts?: any;
-  resetFormByName: HandleResetFormByName;
 }
 
 type ProductsFilterAllProps = ProductsFilterProps &
@@ -21,7 +18,6 @@ type ProductsFilterAllProps = ProductsFilterProps &
 const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
   handleSubmit,
   filterProducts,
-  resetFormByName,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterProducts(data)),
@@ -44,7 +40,6 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
       <OkCancelButtons
         okText="Search"
         cancelText="Reset"
-        onCancel={() => resetFormByName(formNames.PRODUCTS_FILTER)}
       />
     </form >
   );

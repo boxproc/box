@@ -52,7 +52,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
 
         apiClient.set('session_id', res.value.session_id);
 
-        dispatch(push(`${basePath}`));
+        dispatch(push(basePath));
         dispatch(setRememberMe(data.rememberMe));
       },
       dispatch

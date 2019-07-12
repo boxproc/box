@@ -9,11 +9,11 @@ import { modalNames } from 'consts';
 
 import ProductsFilter from './ProductsFilter';
 
-import { HandleResetFormByName, OpenModal } from 'store/domains';
+import { OpenModal } from 'store/domains';
 import { TableCell } from 'types';
+import { renderCheckBoxIcon } from 'components/Table/utils';
 
 interface ProductsProps {
-  resetFormByName: HandleResetFormByName;
   openModal: OpenModal;
 }
 
@@ -30,7 +30,6 @@ interface ProductsItemProps {
 type PCell<T extends keyof ProductsItemProps> = TableCell<ProductsItemProps[T]>;
 
 export const Products: React.FC<ProductsProps> = ({
-  resetFormByName,
   openModal,
 }) => {
   const handleOnClickRow = React.useCallback(
@@ -53,6 +52,7 @@ export const Products: React.FC<ProductsProps> = ({
       status: 'status',
       product_type: 'product_type',
       scheme: 'scheme',
+      locked_flag: 'N',
     },
     {
       id: 2,
@@ -62,6 +62,7 @@ export const Products: React.FC<ProductsProps> = ({
       status: 'status 2',
       product_type: 'product_type 2',
       scheme: 'scheme 2',
+      locked_flag: 'N',
     },
     {
       id: 3,
@@ -71,6 +72,7 @@ export const Products: React.FC<ProductsProps> = ({
       status: 'status 3',
       product_type: 'product_type 3',
       scheme: 'scheme 3',
+      locked_flag: 'Y',
     },
   ];
 
@@ -154,6 +156,13 @@ export const Products: React.FC<ProductsProps> = ({
         />
       ),
     },
+    {
+      maxWidth: 150,
+      sortable: true,
+      Header: <Header title="Locked" showSortIcons={true} />,
+      accessor: 'locked_flag',
+      Cell: renderCheckBoxIcon(() => console.log('---')),
+    },
   ];
 
   return (
@@ -166,9 +175,7 @@ export const Products: React.FC<ProductsProps> = ({
         openModal={openModal}
         getTrGroupProps={handleOnClickRow}
         FilterForm={
-          <ProductsFilter
-            resetFormByName={resetFormByName}
-          />
+          <ProductsFilter/>
         }
       />
     </React.Fragment >

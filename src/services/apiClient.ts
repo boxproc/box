@@ -27,7 +27,7 @@ export class ApiClient implements IApiClient {
     // 'Content-Type': 'application/json',
     // http://10.37.250.47:3000/
     // 'Origin': 'http://localhost:3000',
-    'Access-Control-Request-Headers': 'session_id',
+    // 'Access-Control-Request-Headers': 'session_id',
     // 'Access-Control-Allow-Origin': '*',
     // 'Access-Control-Allow-Credentials': 'true',
     // 'Access-Control-Allow-Methods': 'POST, OPTIONS',

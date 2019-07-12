@@ -7,33 +7,6 @@ import {
   staticAccentStyle,
 } from './sharedCss';
 
-const Logout: React.FC<IconColorProps> = props => (
-  <svg width="15" height="16" viewBox="0 0 15 16" fill="none" {...props}>
-    <path
-      d="M5.9 15H2.4C1.6268 15 1 14.3732 1 13.6V2.4C1 1.6268 1.6268 1 2.4 1H5.9"
-      stroke="#0B132B"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M10.8 10.8L13.6 7.99995L10.8 5.19995"
-      stroke="#0B132B"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M13.6 8H5.19995"
-      stroke="#0B132B"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-export const LogoutIcon = styled(Logout)`
-  ${({ css }) => css}
-`;
-
 const Eye: React.FC<IconColorProps> = ({ el, ...props }) => (
   <svg width={15} height={14} viewBox="0 0 15 14" {...props}>
     <g
@@ -125,8 +98,8 @@ CheckedBoxIcon.defaultProps = {
 
 const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
   <svg
-    width={9}
-    height={6}
+    width={8}
+    height={5}
     viewBox="0 0 9 6"
     fill="none"
     {...props}

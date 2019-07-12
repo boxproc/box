@@ -1,4 +1,4 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { cookiesNames, formNames, modalNames } from 'consts';
 
@@ -46,8 +46,6 @@ export type HandleFilterAdminSysProps = (propParams: any) => Thunk<void>;
 export type SetFilterAdminSysProps = (propParams: AdminSysPropsItemResp) =>
   SetFilterAdminSysPropsAction;
 
-export type HandleResetFormByName = (formName: string) => void;
-
 export const getAdminSysProps: GetAdminSysProps = () => ({
   type: ActionTypeKeys.GET_ADMIN_SYS_PROPS,
   payload: api.getAdminSysProps(),
@@ -79,16 +77,17 @@ export const setFilterAdminSysProps: SetFilterAdminSysProps = propParams => ({
 });
 
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        const params = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
+        const formValues = getFormValues(formNames.SYSTEM_PROPERTY_FILTER);
+        const state = getState();
 
         apiClient.set('session_id', sessionId);
 
-        if (params) {
-          await dispatch(filterAdminSysProps(JSON.parse(params)));
+        if (formValues) {
+          await dispatch(filterAdminSysProps(formValues(state)));
         } else {
           await dispatch(getAdminSysProps());
         }
@@ -145,5 +144,3 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
       dispatch
     );
   };
-
-export const handleResetFormByName: HandleResetFormByName = formName => resetForm(formName);

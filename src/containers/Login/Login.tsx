@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box } from '@rebass/grid';
@@ -60,9 +59,9 @@ const Login: React.FC<LoginPropsAllProps> = ({
   return (
     <FormWrapper onSubmit={handleSubmitForm}>
       <Box my="20px" fontSize="0" className="highlight">
-        <Link to={`${basePath}`}>
+        <a href={basePath}>
           <img src={logo} width={62} alt="" />
-        </Link>
+        </a>
       </Box>
       <Field
         id="userName"

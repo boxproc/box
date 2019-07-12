@@ -27,6 +27,7 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
         <Button
           text={cancelText}
           transparent={true}
+          disabled={true}
           onClick={onCancel}
           type="reset"
         />

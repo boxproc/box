@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({
             alignItems="center"
           >
             <Box mr="20px">
-              <a href={`${basePath}`}>
+              <a href={basePath}>
                 <img src={logo} width={62} alt="" />
               </a>
             </Box>
@@ -76,6 +76,7 @@ const Header: React.FC<HeaderProps> = ({
           <Box>
             <HighlightLink
               text="Log out"
+              iconName="logOut"
               onClick={handleUserLogout}
             />
           </Box>

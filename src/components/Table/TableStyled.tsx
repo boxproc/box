@@ -98,7 +98,7 @@ export const TableStyled = styled.div`
   }
   .ReactTable .rt-thead.-filters input {
     &:focus {
-      border-color: ${({ theme }) => theme.normalAccentColor};
+      border-color: ${({ theme }) => theme.lightAccentColor};
       border-radius: 2px;
     }
   }

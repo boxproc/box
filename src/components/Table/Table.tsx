@@ -35,7 +35,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.lightGrayColor};
+    border: 1px solid ${({ theme }) => theme.lightAccentColor};
   }
 
   .icon path {

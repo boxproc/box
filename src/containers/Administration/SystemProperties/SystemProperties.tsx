@@ -20,7 +20,6 @@ import {
   HandleDeleteAdminSysProp,
   HandleFilterAdminSysProps,
   HandleGetAdminSysProps,
-  HandleResetFormByName,
   HandleUpdateAdminSysProps,
   OpenModal,
 } from 'store/domains';
@@ -37,28 +36,21 @@ interface SystemPropertiesProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
-  resetFormByName: HandleResetFormByName;
   openModal: OpenModal;
   filterSystemProperties: AdminSysPropsItem;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
 
-const systemPropsParams = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
-const initialFilterValues = systemPropsParams
-  && camelizeFieldsUtil.camelizeFields(JSON.parse(systemPropsParams), 'camelcase');
-
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
   deleteAdminSysProp,
   getAdminSysProps,
   filterAdminSysProps,
-  resetFormByName,
   openModal,
   updateAdminSysProps,
   filterSystemProperties,
 }) => {
-  console.log('---', adminSysPropsItems);
   React.useEffect(
     () => {
       getAdminSysProps();
@@ -74,6 +66,10 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     },
     [getAdminSysProps, filterSystemProperties]
   );
+
+  const systemPropsParams = cookiesUtil.get(cookiesNames.ADMIN_SYSTEM_PROPERTIES);
+  const initialFilterValues = systemPropsParams
+    && camelizeFieldsUtil.camelizeFields(JSON.parse(systemPropsParams), 'camelcase');
 
   const columns = [
     {
@@ -118,8 +114,9 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
-      maxWidth: 85,
-      Header: <Header title="Locked" />,
+      maxWidth: 150,
+      sortable: true,
+      Header: <Header title="Locked" showSortIcons={true} />,
       accessor: 'lockedFlag',
       Cell: renderCheckBoxIcon(updateAdminSysProps),
     },
@@ -141,7 +138,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         FilterForm={
           <SystemPropertyFilter
             filterAdminSysProps={filterAdminSysProps}
-            resetFormByName={resetFormByName}
             initialValues={initialFilterValues}
           />
         }

@@ -5,7 +5,6 @@ import Products from './Products';
 
 import {
   createLoadingSelector,
-  handleResetFormByName,
   openModal,
 } from 'store/domains';
 
@@ -19,7 +18,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    resetFormByName: handleResetFormByName,
     openModal,
   },
   dispatch

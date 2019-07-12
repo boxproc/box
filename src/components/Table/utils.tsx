@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Box, Flex } from '@rebass/grid';
+
 import { CellInfo } from 'react-table';
 
 import { Button } from 'components/Buttons';
@@ -52,22 +54,30 @@ export const renderCheckBoxIcon = (updateAction: any) =>
     const isLocked = cellInfo.value === yesNoTypes.YES;
     const propValues = cellInfo.original;
 
-    return isLocked
-      ? (<CheckedBoxIcon />)
-      : (
-        <div
-          style={{ cursor: 'pointer' }}
-          onClick={() => updateAction({
-            ...propValues,
-            lockedFlag: yesNoTypes.YES,
-          })}
-        >
-          <UncheckedBoxIcon />
-        </div>
-      );
+    return (
+      <Box width="100%">
+        <Flex justifyContent="center">
+          {
+            isLocked
+              ? (<CheckedBoxIcon />)
+              : (
+                <div
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => updateAction({
+                    ...propValues,
+                    lockedFlag: yesNoTypes.YES,
+                  })}
+                >
+                  <UncheckedBoxIcon />
+                </div>
+              )
+          }
+        </Flex>
+      </Box>
+    );
   };
 
-export  const renderDeleteButton = (deleteAction: any) =>
+export const renderDeleteButton = (deleteAction: any) =>
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
     const propName = cellInfo.original.propertyName;
