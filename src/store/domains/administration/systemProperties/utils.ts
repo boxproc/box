@@ -9,10 +9,8 @@ export const prepareAdminSysItemValues =
     const { lockedFlag } = propValues;
     const preparedProps = {};
 
-    if (lockedFlag) {
-      preparedProps['locked_flag'] =
-        (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES;
-    }
+    preparedProps['locked_flag'] =
+      (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES;
 
     return {
       ...camelizeFieldsUtil.camelizeFields(propValues, 'decamelize'),

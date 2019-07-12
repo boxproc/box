@@ -3,14 +3,14 @@ import config from 'config';
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
 export enum cookiesNames {
-  SESSION_ID = 'sessionId',
-  USER_NAME = 'userName',
-  ADMIN_SYSTEM_PROPERTIES = 'adminSystemProperties',
+  SESSION_ID = 'session_id',
+  USER_NAME = 'username',
+  ADMIN_SYSTEM_PROPERTIES = 'admin_system_properties',
 }
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 604800,
+  SESSION_ID = 600,
 }
 
 export enum formNames {

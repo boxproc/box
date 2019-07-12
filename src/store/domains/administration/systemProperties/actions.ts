@@ -140,7 +140,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
 
         await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
-        await dispatch(setFilterAdminSysProps(propParams));
+        await dispatch(setFilterAdminSysProps(preparedAdminSysItemValues));
       },
       dispatch
     );

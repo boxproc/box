@@ -88,6 +88,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
+      maxWidth: 100,
       sortable: true,
       filterable: true,
       Header: <Header title="Institution ID" showSortIcons={true} />,

@@ -24,10 +24,10 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   align-items: center;
   overflow: hidden;
   font-size: 15px;
-  justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'flex-start'};
+  justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
 
   .title {
-    color: ${({ theme, color }) => theme.blackColorOpacity8};
+    color: ${({ theme }) => theme.blackColorOpacity8};
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -35,7 +35,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 
   &:focus {
-    border: 1px solid ${({ theme, color }) => theme.lightGrayColor};
+    border: 1px solid ${({ theme }) => theme.lightGrayColor};
   }
 
   .icon path {

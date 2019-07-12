@@ -75,7 +75,7 @@ const Root: React.FC<RootProps> = ({
                 exact={true}
                 path={`${basePath}login`}
                 render={() => (
-                  !isLoggedIn ? <Login /> : <Redirect from="*" to={`${basePath}`} />
+                  !isLoggedIn ? <Login /> : <Redirect from="*" to={basePath} />
                 )}
               />
               {pagesList && pagesList.map(page => {
@@ -89,13 +89,14 @@ const Root: React.FC<RootProps> = ({
                       component={() => page.component}
                     />
                   );
-              })
+                })
               }
               <PrivateRoute
                 exact={true}
                 path={basePath}
                 component={HomePage}
               />
+              {/* <Redirect from="*" to={basePath} /> */}
             </Switch>
           </PagesWrapper>
         </div>

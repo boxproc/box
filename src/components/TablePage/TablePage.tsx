@@ -1,9 +1,11 @@
 import React, { ReactChild } from 'react';
 
+import { Box, Flex } from '@rebass/grid';
+
+import { Button } from 'components/Buttons';
 import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';
 
-import ActionsButtons from './ActionsButtons';
 import TableFilterContainer from './TableFilterContainer';
 
 import {
@@ -41,19 +43,33 @@ export const TablePage: React.FC<TablePageProps> = ({
   return (
     <React.Fragment>
       <T2>{title}</T2>
-      <ActionsButtons
-        isAddNewButton={true}
-        isFilterButton={true}
-        openModal={openModal}
-        addNewModalName={addNewModalName}
-        isFilter={isFilter}
-        onFilterButtonClick={() => setIsFilter(!isFilter)}
-      />
+      <Flex alignItems="center">
+        <Box mb="7px">
+          <Button
+            text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
+            transparent={true}
+            icon="&#9776;"
+            onClick={() => setIsFilter(!isFilter)}
+          />
+        </Box>
+      </Flex>
       {isFilter &&
         <TableFilterContainer>
           {FilterForm}
         </TableFilterContainer>
       }
+      <Flex alignItems="center">
+        <Box mb="7px">
+          <Button
+            text="Add New"
+            icon="&#43;"
+            transparent={true}
+            onClick={() => openModal({
+              name: addNewModalName,
+            })}
+          />
+        </Box>
+      </Flex>
       <Table
         data={data}
         columns={columns}

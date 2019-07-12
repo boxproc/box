@@ -1,5 +1,7 @@
 ﻿import styled from 'theme';
 
+import 'react-table/react-table.css';
+
 export const TableStyled = styled.div`
   margin-bottom: 20px;
   font-size: 14px;
