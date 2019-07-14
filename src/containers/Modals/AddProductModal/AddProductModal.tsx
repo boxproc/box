@@ -5,24 +5,26 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
+import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
+
 import { CloseModal } from 'store/domains';
 
 interface AddSystemPropertyModalProps {
   closeModal: CloseModal;
-  // addProduct?: any;
 }
 
 const AddProductModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
-  // addProduct,
 }) => {
   return (
     <Modal
       name={modalNames.ADD_PRODUCT}
-      title="Add Product"
-      maxContainerWidth={600}
+      title="Add New Product"
+      maxContainerWidth={700}
     >
-      Add Product
+      <ProductForm
+        onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+      />
     </Modal>
   );
 };

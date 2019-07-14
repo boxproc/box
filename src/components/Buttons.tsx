@@ -1,6 +1,11 @@
 import React from 'react';
+
+import { Box } from '@rebass/grid';
+
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
+import { LogOut } from 'styled-icons/feather/LogOut';
+import { Delete } from 'styled-icons/material/Delete';
 
 import styled, { css } from 'theme';
 
@@ -22,7 +27,7 @@ const Wrapper = styled.button<WrapperProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: ${({ transparent }) => transparent ? 'auto' : '100%'};
   padding: ${({ transparent }) => transparent ? '0' : '12px 30px'};
   border-radius: 2px;
   border: 2px solid ${({ theme, transparent }) => !transparent ? theme.grayColor : 'transparent'};
@@ -51,16 +56,20 @@ interface ButtonProps {
   onClick?: () => void;
   transparent?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus';
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete';
   type?: 'reset' | 'submit';
 }
 
 const renderIcon = (name: string) => {
   switch (name) {
     case 'filter':
-      return <Filter size="18"/>;
+      return (<Filter size="18"/>);
     case 'plus':
-      return <Plus size="18"/>;
+      return (<Box mt="-2px"><Plus size="18"/></Box>);
+    case 'logOut':
+      return (<LogOut size="18"/>);
+    case 'delete':
+      return (<Box mt="-2px"><Delete size="18"/></Box>);
     default:
       return null;
   }
@@ -83,7 +92,11 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
     >
-      {iconName && renderIcon(iconName)}
+      {iconName &&
+        <Box mr="2px">
+          {renderIcon(iconName)}
+        </Box>
+      }
       {text}
     </Wrapper>
   );

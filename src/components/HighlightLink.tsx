@@ -1,14 +1,10 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { LogOut } from 'styled-icons/feather/LogOut';
-
-import { Box, Flex  } from '@rebass/grid';
 
 interface HighlightLinkProps {
   text: string;
   isActive?: boolean;
-  iconName?: 'logOut';
   onClick?: () => void;
 }
 
@@ -28,32 +24,13 @@ const Link = styled.div<LinkProps>`
   }
 `;
 
-const LogOutIcon = styled(LogOut)`
-  color: ${({ theme }) => theme.blackColorOpacity5};
-`;
-
-const renderIcon = (name: string) => {
-  switch (name) {
-    case 'logOut':
-      return <LogOutIcon size="16"/>;
-    default:
-      return null;
-  }
-};
-
 const HighlightLink: React.FC<HighlightLinkProps> = ({
   text,
   isActive,
   onClick,
-  iconName,
 }) => {
   return (
-    <Flex alignItems="center">
-      {iconName &&
-        <Box mr="3px" mt="-2px">{renderIcon(iconName)}</Box>
-      }
-      <Link isActive={isActive} onClick={onClick}>{text}</Link>
-    </Flex>
+    <Link isActive={isActive} onClick={onClick}>{text}</Link>
   );
 };
 

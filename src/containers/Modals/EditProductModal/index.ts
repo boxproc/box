@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import GetProductInfoModal from './GetProductInfoModal';
+import EditProductModal from './EditProductModal';
 
 import {
   closeModal,
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetProductInfoModal);
+)(EditProductModal);

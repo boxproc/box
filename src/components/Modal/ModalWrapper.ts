@@ -46,9 +46,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     box-sizing: border-box;
     max-width: ${({ maxContainerWidth }) => maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
     width: 100%;
-    padding: 20px 12px 20px 20px;
+    padding: 20px;
     border-radius: 3px;
-    overflow: hidden;
+    // overflow: hidden;
     word-break: break-word;
   }
   .modal-close {

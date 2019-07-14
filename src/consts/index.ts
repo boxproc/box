@@ -18,13 +18,14 @@ export enum formNames {
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
   SYSTEM_PROPERTY_FILTER = 'adminSystemProperties',
   PRODUCTS_FILTER = 'productsFilter',
+  PRODUCT = 'Product',
 }
 
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_PRODUCT = 'AddProductModal',
-  GET_PRODUCT_INFO = 'GetProductInfo',
+  EDIT_PRODUCT = 'EditProductModal',
 }
 
 export enum uiItemTypes {

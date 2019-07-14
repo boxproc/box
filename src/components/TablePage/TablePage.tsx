@@ -3,6 +3,7 @@ import React, { ReactChild } from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
+import Hint from 'components/Hint';
 import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';
 
@@ -20,6 +21,7 @@ interface TablePageProps {
   openModal: OpenModal;
   FilterForm: ReactChild;
   getTrGroupProps?: any;
+  hint?: string;
 }
 
 const NoDataComponent = () => (
@@ -36,6 +38,7 @@ export const TablePage: React.FC<TablePageProps> = ({
   openModal,
   FilterForm,
   getTrGroupProps,
+  hint,
 }) => {
 
   const [isFilter, setIsFilter] = React.useState(true);
@@ -43,16 +46,14 @@ export const TablePage: React.FC<TablePageProps> = ({
   return (
     <React.Fragment>
       <T2>{title}</T2>
-      <Flex alignItems="center">
-        <Box mb="7px">
-          <Button
-            text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
-            transparent={true}
-            iconName="filter"
-            onClick={() => setIsFilter(!isFilter)}
-          />
-        </Box>
-      </Flex>
+      <Box mb="7px">
+        <Button
+          text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
+          transparent={true}
+          iconName="filter"
+          onClick={() => setIsFilter(!isFilter)}
+        />
+      </Box>
       {isFilter &&
         <TableFilterContainer>
           {FilterForm}
@@ -69,6 +70,11 @@ export const TablePage: React.FC<TablePageProps> = ({
             })}
           />
         </Box>
+        {hint && (
+          <Box mb="10px" ml="7px">
+            <Hint text={hint}/>
+          </Box>
+        )}
       </Flex>
       <Table
         data={data}

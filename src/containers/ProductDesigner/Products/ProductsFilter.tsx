@@ -8,19 +8,16 @@ import OkCancelButtons from 'components/OkCancelButtons';
 
 import { formNames } from 'consts';
 
-interface ProductsFilterProps {
-  filterProducts?: any;
-}
+interface ProductsFilterProps {}
 
 type ProductsFilterAllProps = ProductsFilterProps &
   InjectedFormProps<{}, ProductsFilterProps>;
 
 const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
   handleSubmit,
-  filterProducts,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterProducts(data)),
+    handleSubmit(data => console.log('---', data)),
     [handleSubmit]
   );
 
@@ -29,17 +26,18 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
       <Flex alignItems="flex-end">
         <Box width="200px">
           <Field
-            id="id"
+            id="name"
             name="name"
-            placeholder="Enter"
+            placeholder="Enter Name"
             component={InputField}
-            label="Filter Parameter"
+            label="Name"
           />
         </Box>
       </Flex>
       <OkCancelButtons
         okText="Search"
         cancelText="Reset"
+        disabledCancel={true}
       />
     </form >
   );

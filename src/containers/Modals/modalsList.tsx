@@ -4,7 +4,7 @@ import { modalNames } from 'consts';
 
 import AddProductModal from './AddProductModal';
 import AddSystemPropertyModal from './AddSystemPropertyModal';
-import GetProductInfoModal from './GetProductInfoModal';
+import EditProductModal from './EditProductModal';
 import MessageModal from './MessageModal';
 
 export const modalsList = [
@@ -21,7 +21,7 @@ export const modalsList = [
     component: <AddProductModal />,
   },
   {
-    name: modalNames.GET_PRODUCT_INFO,
-    component: <GetProductInfoModal />,
+    name: modalNames.EDIT_PRODUCT,
+    component: <EditProductModal />,
   },
 ];

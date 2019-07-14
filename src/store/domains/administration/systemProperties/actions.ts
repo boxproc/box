@@ -81,13 +81,14 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+        apiClient.set('session_id', sessionId);
+
         const formValues = getFormValues(formNames.SYSTEM_PROPERTY_FILTER);
         const state = getState();
 
-        apiClient.set('session_id', sessionId);
-
-        if (formValues) {
-          await dispatch(filterAdminSysProps(formValues(state)));
+        if (formValues(state)) {
+          const preparedAdminSysItemValues = prepareAdminSysItemValues(formValues(state));
+          await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
         } else {
           await dispatch(getAdminSysProps());
         }
@@ -139,7 +140,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
 
         await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
-        await dispatch(setFilterAdminSysProps(preparedAdminSysItemValues));
+        dispatch(setFilterAdminSysProps(preparedAdminSysItemValues));
       },
       dispatch
     );

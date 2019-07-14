@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => (
     <Flex justifyContent="center" alignItems="center">
       <TableItemWrapper>
-        <Box className="title">{title}</Box>
+        <Box className="title" title={title}>{title}</Box>
         <SortIconsWrapper>
           {showSortIcons &&
             <React.Fragment>
@@ -85,6 +85,7 @@ interface CellProps {
   suppressContentEditableWarning?: boolean;
   onBlur?: any;
   onKeyUp?: any;
+  hint?: string;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -94,6 +95,7 @@ export const Cell: React.FC<CellProps> = ({
   suppressContentEditableWarning,
   onBlur,
   onKeyUp,
+  hint,
 }) => (
     <TableItemWrapper
       style={style}
@@ -103,7 +105,7 @@ export const Cell: React.FC<CellProps> = ({
       onBlur={onBlur}
       onKeyUp={onKeyUp}
     >
-      {value}
+      <div title={hint}>{value}</div>
     </TableItemWrapper>
   );
 

@@ -114,7 +114,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
-      maxWidth: 150,
+      maxWidth: 100,
       sortable: true,
       Header: <Header title="Locked" showSortIcons={true} />,
       accessor: 'lockedFlag',
@@ -135,6 +135,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         columns={columns}
         addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
         openModal={openModal}
+        hint="Cannot Edit or Delete Locked Property"
         FilterForm={
           <SystemPropertyFilter
             filterAdminSysProps={filterAdminSysProps}

@@ -9,6 +9,7 @@ import administrationReducer from './domains/administration/reducer';
 import authReducer from './domains/auth/reducer';
 import loaderReducer from './domains/loader/reducer';
 import modalsReducer from './domains/modals/reducer';
+import productDesignerReducer from './domains/productDesigner/reducer';
 import uiItemsReducer from './domains/uiItems/reducer';
 
 const createRootReducer = (history: History) => combineReducers({
@@ -20,6 +21,7 @@ const createRootReducer = (history: History) => combineReducers({
   modals: modalsReducer,
   uiItems: uiItemsReducer,
   administration: administrationReducer,
+  productDesigner: productDesignerReducer,
 });
 
 export default createRootReducer;

@@ -6,6 +6,7 @@ import { AdministrationState } from './domains/administration/';
 import { AuthState } from './domains/auth';
 import { LoaderState } from './domains/loader';
 import { ModalsState } from './domains/modals';
+import { ProductDesignerState } from './domains/productDesigner';
 import { UiItemsState } from './domains/uiItems';
 
 export interface StoreState {
@@ -16,4 +17,5 @@ export interface StoreState {
   modals: ModalsState;
   administration: AdministrationState;
   auth: AuthState;
+  productDesigner: ProductDesignerState;
 }

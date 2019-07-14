@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router';
 import styled from 'theme';
 
 import { Container } from 'components/Block';
-import HighlightLink from 'components/HighlightLink';
+import { Button } from 'components/Buttons';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 
@@ -74,9 +74,10 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </Flex>
           <Box>
-            <HighlightLink
+            <Button
               text="Log out"
               iconName="logOut"
+              transparent={true}
               onClick={handleUserLogout}
             />
           </Box>

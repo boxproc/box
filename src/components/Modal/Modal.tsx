@@ -60,6 +60,7 @@ const Modal: React.FC<ModalProps> = ({
         <span
           className="modal-close"
           onClick={handleCloseModal}
+          title="Close"
         >
           &times;
         </span>
