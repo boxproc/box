@@ -47,3 +47,9 @@ export const Paragraph = styled.p<ParagraphProps>`
     margin-bottom: 10px;
   };
 `;
+
+export const Hr = styled.div`
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
+`;

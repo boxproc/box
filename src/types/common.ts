@@ -50,4 +50,9 @@ export interface KeyValuePair<T = number> {
   value: string;
 }
 
+export interface ParsedSelectValues<T = number> {
+  value: T;
+  label: string;
+}
+
 export type HandleEntityRemoval = (id: number) => Thunk<void>;

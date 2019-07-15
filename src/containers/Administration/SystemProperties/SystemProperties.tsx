@@ -2,7 +2,7 @@ import React from 'react';
 
 import { theme } from 'theme';
 
-import { Cell, Header } from 'components/Table';
+import { Cell, Header } from 'components/Table/Table';
 
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage/TablePage';

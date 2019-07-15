@@ -8,7 +8,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ChevronIcon } from '../Icon';
+import { ChevronIcon } from 'components/Icon';
 
 import { TableStyled } from './TableStyled';
 

@@ -29,6 +29,7 @@ export default interface Theme {
   whiteOpacityColor: string;
 
   boxShadow: string;
+  boxShadowBottom: string;
 }
 
 export const theme: Theme = {
@@ -58,4 +59,5 @@ export const theme: Theme = {
   whiteOpacityColor: 'rgba(255, 255, 255, .8)',
 
   boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .1)',
+  boxShadowBottom: '0 3px 3px 0 rgba(0, 0, 0, .1)',
 };

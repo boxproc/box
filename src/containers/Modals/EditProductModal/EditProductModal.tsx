@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
-
-import styled from 'theme';
-
-import { Button } from 'components/Buttons';
+import { Button } from 'components/Buttons/Buttons';
 
 import Modal from 'components/Modal';
 import { withSpinner } from 'components/Spinner';
+import { Panel, Tabs } from 'components/Tabs';
+import { Hr } from 'components/Text';
 
 import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
@@ -15,12 +13,9 @@ import { modalNames } from 'consts';
 
 import { CloseModal } from 'store/domains';
 
-const DeleteWrapper = styled(Box)`
-  border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
-`;
-
 interface EditProductModalProps {
   closeModal: CloseModal;
+  // currencyOptions: any;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
@@ -32,17 +27,22 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       title="Edit Product"
       maxContainerWidth={700}
     >
-      <ProductForm
-        onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
-      />
-
-      <DeleteWrapper mt="15px" pt="15px">
-        <Button
-          text="delete"
-          iconName="delete"
-          transparent={true}
+      <Tabs>
+        <Panel title="General">
+        <ProductForm
+          onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
         />
-      </DeleteWrapper>
+        </Panel>
+        <Panel title="Tab">Tab Content</Panel>
+      </Tabs>
+
+      <Hr/>
+
+      <Button
+        text="delete"
+        iconName="delete"
+        transparent={true}
+      />
     </Modal>
   );
 };

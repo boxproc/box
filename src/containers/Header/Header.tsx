@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router';
 import styled from 'theme';
 
 import { Container } from 'components/Block';
-import { Button } from 'components/Buttons';
+import { Button } from 'components/Buttons/Buttons';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 

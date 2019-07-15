@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Button } from 'components/Buttons';
+import { Button } from 'components/Buttons/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 

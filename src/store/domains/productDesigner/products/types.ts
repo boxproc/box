@@ -1,7 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { KeyValuePair } from 'types';
-
 export interface ProductItemResp {
   id: string | number;
   institution_id: string | number;
@@ -42,16 +40,7 @@ export interface ProductDataResp {
   products: ProductItemResp;
 }
 
-export interface ProductsState<T = Array<KeyValuePair>> {
+export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   filterProducts: ProductItem;
-  productType: T;
-  scheme: T;
-  currencyCode: T;
-}
-
-export interface ProductOptionsResp<T = Array<KeyValuePair>> {
-  product_type: T;
-  scheme: T;
-  currency_code: T;
 }

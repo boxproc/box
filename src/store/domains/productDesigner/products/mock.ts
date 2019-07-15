@@ -1,4 +1,4 @@
-import { ProductOptionsResp, ProductsDataResp } from './types';
+import { ProductsDataResp } from './types';
 
 export const ProductItemsData: ProductsDataResp = {
   products: [
@@ -41,23 +41,5 @@ export const ProductItemsData: ProductsDataResp = {
       default_statement_cycle_id: 3,
       locked_flag: 'Y',
     },
-  ],
-};
-
-export const ProductOptionsData: ProductOptionsResp = {
-  product_type: [
-    {key: 1, value: 'Type 1'},
-    {key: 2, value: 'Type 2'},
-    {key: 3, value: 'Type 3'},
-  ],
-  scheme: [
-    {key: 1, value: 'Schema 1'},
-    {key: 2, value: 'Schema 2'},
-    {key: 3, value: 'Schema 3'},
-  ],
-  currency_code: [
-    { key: 524, value: 'NPR' },
-    { key: 554, value: 'NZD' },
-    { key: 512, value: 'OMR' },
   ],
 };

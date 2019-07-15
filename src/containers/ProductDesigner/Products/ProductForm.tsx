@@ -3,21 +3,27 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import OkCancelButtons from 'components/Buttons/OkCancelButtons';
 import { CheckboxField, InputField, SelectField } from 'components/Form';
-import OkCancelButtons from 'components/OkCancelButtons';
+import {
+  withLoadCurrencyCodes,
+  WithLoadCurrencyCodesProps,
+} from 'components/withLoadCurrencyCodes';
 
-import { formNames } from 'consts';
+import { formNames, productTypesOptions, schemeOptions } from 'consts';
 
 interface ProductFormFormProps {
   onCancel: () => void;
 }
 
-type ProductFormFormAllProps = ProductFormFormProps &
+type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &
   InjectedFormProps<{}, ProductFormFormProps>;
 
 const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
   // handleSubmit,
   onCancel,
+  currencyCodes,
+  isCurrencyCodesLoading,
 }) => {
   return (
     <form onSubmit={() => console.log('---handleSubmitForm')}>
@@ -52,11 +58,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               component={SelectField}
               label="Product Type"
               placeholder="Select Product Type"
-              options={[
-                { value: 1, label: 'Type 1' },
-                { value: 2, label: 'Type 2' },
-                { value: 3, label: 'Type 3' },
-              ]}
+              options={productTypesOptions}
               isDisabled={false}
             />
           </Box>
@@ -68,11 +70,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               component={SelectField}
               label="Scheme"
               placeholder="Select Scheme"
-              options={[
-                { value: 1, label: 'Scheme 1' },
-                { value: 2, label: 'Scheme 2' },
-                { value: 3, label: 'Scheme 3' },
-              ]}
+              options={schemeOptions}
               isDisabled={false}
             />
           </Box>
@@ -84,12 +82,9 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               component={SelectField}
               label="Currency Code"
               placeholder="Select Currency Code"
-              options={[
-                { value: 524, label: 'NPR' },
-                { value: 554, label: 'NZD' },
-                { value: 512, label: 'OMR' },
-              ]}
+              options={currencyCodes}
               isDisabled={false}
+              isLoading={isCurrencyCodesLoading}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -125,4 +120,4 @@ export default reduxForm<{}, ProductFormFormProps>({
   form: formNames.PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(ProductFormForm);
+})(withLoadCurrencyCodes(ProductFormForm));

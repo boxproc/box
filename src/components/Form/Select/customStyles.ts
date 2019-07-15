@@ -71,6 +71,7 @@ export const customStyles: StylesConfig = {
           theme.grayColor,
       backgroundColor: theme.whiteColor,
       boxShadow: 'none',
+      // eslint-disable-next-line
       ['&:hover']: {
         borderColor: '0',
       },
@@ -100,6 +101,7 @@ export const customStyles: StylesConfig = {
   multiValueRemove: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     cursor: 'pointer',
+    // eslint-disable-next-line
     [':hover']: {
       backgroundColor: theme.lightAccentColor,
       color: false,
@@ -116,6 +118,7 @@ export const customStyles: StylesConfig = {
   option: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     backgroundColor: theme.whiteColor,
+    // eslint-disable-next-line
     [':hover']: {
       backgroundColor: theme.lightGrayColor,
     },

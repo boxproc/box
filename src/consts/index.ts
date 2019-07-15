@@ -10,7 +10,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 600,
+  SESSION_ID = 100000,
 }
 
 export enum formNames {
@@ -39,6 +39,40 @@ export enum yesNoTypes {
   YES = 'Y',
   NO = 'N',
 }
+
+export enum statusTypes {
+  ACTIVE = 'A',
+  INACTIVE = 'I',
+  DELETED = 'D',
+}
+
+export enum productTypes {
+  LOAN = 'L',
+  PREPAID = 'P',
+  DEBIT = 'D',
+  SAVINGS = 'S',
+}
+
+export const productTypesOptions = [
+  { value: 'L', label: 'Loan'},
+  { value: 'P', label: 'Prepaid'},
+  { value: 'D', label: 'Debit'},
+  { value: 'S', label: 'Savings'},
+];
+
+export enum schemeTypes {
+  MASTER_CARD = 'M',
+  UPI = 'U',
+  AMEX = 'A',
+  UNSPECIFIED = 'X',
+}
+
+export const schemeOptions = [
+  { value: 'M', label: 'MasterCard'},
+  { value: 'U', label: 'UPI'},
+  { value: 'A', label: 'Amex'},
+  { value: 'X', label: 'Unspecified'},
+];
 
 export enum uiItemConsts {
   LEDGER_CUSTOMERS = 'ledger/customers',
