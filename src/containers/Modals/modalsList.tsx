@@ -3,8 +3,10 @@ import React from 'react';
 import { modalNames } from 'consts';
 
 import AddProductModal from './AddProductModal';
+import AddSchedulerModal from './AddSchedulerModal';
 import AddSystemPropertyModal from './AddSystemPropertyModal';
 import EditProductModal from './EditProductModal';
+import EditSchedularModal from './EditSchedularModal';
 import MessageModal from './MessageModal';
 
 export const modalsList = [
@@ -23,5 +25,13 @@ export const modalsList = [
   {
     name: modalNames.EDIT_PRODUCT,
     component: <EditProductModal />,
+  },
+  {
+    name: modalNames.ADD_SCHEDULER,
+    component: <AddSchedulerModal />,
+  },
+  {
+    name: modalNames.EDIT_SCHEDULER,
+    component: <EditSchedularModal />,
   },
 ];

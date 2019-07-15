@@ -14,5 +14,7 @@ export interface ModalsState {
   isAddAdminSystemPropertyModal: boolean;
   isAddProductModal: boolean;
   isEditProductModal: boolean;
+  isAddSchedulerModal: boolean;
+  isEditSchedulerModal: boolean;
   fieldsMessageModal?: FieldsMessageModal;
 }

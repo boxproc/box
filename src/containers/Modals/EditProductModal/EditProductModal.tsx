@@ -15,7 +15,6 @@ import { CloseModal } from 'store/domains';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
-  // currencyOptions: any;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({

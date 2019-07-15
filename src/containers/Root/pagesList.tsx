@@ -2,8 +2,10 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
+import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
 import Products from 'containers/ProductDesigner/Products';
+
 import {
   Accounts,
   Countries,
@@ -19,6 +21,10 @@ export const pagesList = [
   {
     path: uiItemConsts.PRODUCTS,
     component: <Products />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_SCHEDULER,
+    component: <Scheduler />,
   },
   {
     path: uiItemConsts.LEDGER_CUSTOMERS,

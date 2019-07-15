@@ -5,30 +5,26 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
-import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
-
 import { CloseModal } from 'store/domains';
 
-interface AddProductModalProps {
+interface AddSchedulerModalProps {
   closeModal: CloseModal;
 }
 
-const AddProductModal: React.FC<AddProductModalProps> = ({
-  closeModal,
+const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
+  // closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_PRODUCT}
-      title="Add New Product"
+      name={modalNames.ADD_SCHEDULER}
+      title="Add New"
       maxContainerWidth={700}
     >
-      <ProductForm
-        onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
-      />
+      Add New
     </Modal>
   );
 };
 
 export default withSpinner({
   isFixed: true,
-})(AddProductModal);
+})(AddSchedulerModal);

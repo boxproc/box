@@ -14,11 +14,12 @@ export enum cookiesExpires {
 }
 
 export enum formNames {
-  USER_LOGIN = 'userLogin',
-  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemProperty',
-  SYSTEM_PROPERTY_FILTER = 'adminSystemProperties',
-  PRODUCTS_FILTER = 'productsFilter',
-  PRODUCT = 'Product',
+  USER_LOGIN = 'userLoginForm',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
+  SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
+  PRODUCTS_FILTER = 'productsFilterForm',
+  PRODUCT = 'ProductForm',
+  SCHEDULER = 'SchedulerForm',
 }
 
 export enum modalNames {
@@ -26,6 +27,8 @@ export enum modalNames {
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
+  ADD_SCHEDULER = 'AddSchedulerModal',
+  EDIT_SCHEDULER = 'EditSchedulerModal',
 }
 
 export enum uiItemTypes {
@@ -81,6 +84,7 @@ export enum uiItemConsts {
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
+  ADMINISTRATION_SCHEDULER = 'administration/scheduler',
 
   PRODUCTS = 'product_designer/products',
 }
