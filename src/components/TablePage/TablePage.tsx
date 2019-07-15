@@ -15,8 +15,8 @@ import {
 
 interface TablePageProps {
   title: string;
-  data: any;
-  columns: any;
+  data: Array<object>;
+  columns: Array<object>;
   addNewModalName: string;
   openModal: OpenModal;
   FilterForm: ReactChild;

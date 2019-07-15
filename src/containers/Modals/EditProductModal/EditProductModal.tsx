@@ -11,14 +11,16 @@ import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
 import { modalNames } from 'consts';
 
-import { CloseModal } from 'store/domains';
+import { CloseModal, PreparedFieldsEditProductModal } from 'store/domains';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
+  fieldsEditProductModal: PreparedFieldsEditProductModal;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
+  fieldsEditProductModal,
 }) => {
   return (
     <Modal
@@ -30,6 +32,8 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         <Panel title="General">
         <ProductForm
           onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+          initialValues={fieldsEditProductModal}
+          isDisabledProductTypes={true}
         />
         </Panel>
         <Panel title="Tab">Tab Content</Panel>

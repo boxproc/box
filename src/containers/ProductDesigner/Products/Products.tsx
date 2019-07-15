@@ -41,7 +41,7 @@ export const Products: React.FC<ProductsProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_PRODUCT,
-          fields: {info: rowInfo.original},
+          fields: {values: rowInfo.original},
         }),
       };
     },
@@ -160,11 +160,11 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 95,
       sortable: true,
       Header: <Header title="Locked" showSortIcons={true} />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIcon(() => console.log('---')),
+      Cell: renderCheckBoxIcon(),
     },
   ];
 

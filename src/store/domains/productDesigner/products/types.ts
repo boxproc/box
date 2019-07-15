@@ -1,30 +1,30 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 export interface ProductItemResp {
-  id: string | number;
-  institution_id: string | number;
+  id: number;
+  institution_id: number;
   name: string;
   description: string;
   status: string;
   product_type: string;
   scheme: string;
   currency_code: string;
-  history_retention_number_of_days: number;
-  default_statement_cycle_id: number;
+  history_retention_number_of_days: string;
+  default_statement_cycle_id: string;
   locked_flag: string;
 }
 
 export interface ProductItem {
-  id: string | number;
-  institutionId: string | number;
+  id: number;
+  institutionId: number;
   name: string;
   description: string;
   status: string;
   productType: string;
   scheme: string;
   currencyCode: string;
-  historyRetentionNumberOfDays: number;
-  defaultStatementCycleId: number;
+  historyRetentionNumberOfDays: string;
+  defaultStatementCycleId: string;
   lockedFlag: string;
 }
 

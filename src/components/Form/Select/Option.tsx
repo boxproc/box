@@ -1,6 +1,8 @@
 import React from 'react';
 import { OptionProps } from 'react-select/lib/components/Option';
 
+import { Box } from '@rebass/grid';
+
 import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from '../../Icon';
@@ -13,7 +15,7 @@ const OptionWrapper = styled.div<OptionWrapperProps>`
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  background-color: ${({ isFocused, theme }) => isFocused ? theme.normalAccentColor : ''};
+  background-color: ${({ isFocused, theme }) => isFocused ? theme.lightGrayColor : ''};
 
   svg {
     cursor: pointer;
@@ -49,7 +51,7 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
 
   return (
     <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
-      <div>
+      <Box mr="5px">
         {isSelected ? (
           <CheckedBoxIcon
             onClick={e => selectOption(modifiedData)}
@@ -59,7 +61,7 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
             onClick={e => selectOption(modifiedData)}
           />
         )}
-      </div>
+      </Box>
       <div>{children}</div>
     </OptionWrapper>
   );

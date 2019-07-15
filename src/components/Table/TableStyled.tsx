@@ -4,7 +4,6 @@ import 'react-table/react-table.css';
 
 export const TableStyled = styled.div`
   margin-bottom: 20px;
-  font-size: 14px;
 
   .ReactTable .rt-tbody::-webkit-scrollbar {
     width: 6px;
@@ -67,7 +66,6 @@ export const TableStyled = styled.div`
 
   .ReactTable .rt-tbody .rt-tr-group {
     flex: 0 0 0;
-    min-height: 45px;
     border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
   }
 
@@ -97,6 +95,7 @@ export const TableStyled = styled.div`
     stroke: ${({ theme }) => theme.blackColorOpacity8};
   }
   .ReactTable .rt-thead.-filters input {
+    font-size: 13px;
     &:focus {
       border-color: ${({ theme }) => theme.lightAccentColor};
       border-radius: 2px;

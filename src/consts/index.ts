@@ -10,7 +10,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 100000,
+  SESSION_ID = 600,
 }
 
 export enum formNames {
@@ -49,11 +49,18 @@ export enum statusTypes {
   DELETED = 'D',
 }
 
+export const statusTypesOptions = [
+  { value: 'A', label: 'Active'},
+  { value: 'I', label: 'Inactive'},
+  { value: 'D', label: 'Deleted'},
+];
+
 export enum productTypes {
   LOAN = 'L',
   PREPAID = 'P',
   DEBIT = 'D',
   SAVINGS = 'S',
+  REVOLVING_CREDIT = 'C',
 }
 
 export const productTypesOptions = [
@@ -61,19 +68,22 @@ export const productTypesOptions = [
   { value: 'P', label: 'Prepaid'},
   { value: 'D', label: 'Debit'},
   { value: 'S', label: 'Savings'},
+  { value: 'C', label: 'Revolving credit' },
 ];
 
 export enum schemeTypes {
   MASTER_CARD = 'M',
   UPI = 'U',
   AMEX = 'A',
+  VISA = 'V',
   UNSPECIFIED = 'X',
 }
 
-export const schemeOptions = [
+export const schemeTypesOptions = [
   { value: 'M', label: 'MasterCard'},
   { value: 'U', label: 'UPI'},
   { value: 'A', label: 'Amex'},
+  { value: 'V', label: 'Visa'},
   { value: 'X', label: 'Unspecified'},
 ];
 

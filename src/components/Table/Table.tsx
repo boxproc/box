@@ -23,12 +23,15 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   display: flex;
   align-items: center;
   overflow: hidden;
-  font-size: 15px;
+  font-size: 13px;
+  line-height: 1.35;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
+  white-space: normal;
 
   .title {
     color: ${({ theme }) => theme.blackColorOpacity8};
     font-weight: 500;
+    font-size: 14px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -84,7 +87,7 @@ interface CellProps {
   contentEditable?: boolean;
   suppressContentEditableWarning?: boolean;
   onBlur?: any;
-  onKeyUp?: any;
+  onKeyUp?: (e: React.KeyboardEvent) => void;
   hint?: string;
 }
 

@@ -92,7 +92,7 @@ const Root: React.FC<RootProps> = ({
                 })
               }
               <PrivateRoute
-                exact={true}
+                // exact={true}
                 path={basePath}
                 component={HomePage}
               />

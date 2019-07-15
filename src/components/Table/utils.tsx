@@ -10,7 +10,7 @@ import { CheckedBoxIcon, UncheckedBoxIcon } from 'components/Icon';
 import { codeKeys, yesNoTypes } from 'consts';
 import { Cell } from './Table';
 
-export const renderEditable = (updateAction: any) =>
+export const renderEditable = (updateAction: (data: object) => void) =>
   (cellInfo: CellInfo) => {
     const isEditable = cellInfo.row.lockedFlag === yesNoTypes.NO;
 
@@ -49,7 +49,7 @@ export const renderEditable = (updateAction: any) =>
     );
   };
 
-export const renderCheckBoxIcon = (updateAction: any) =>
+export const renderCheckBoxIcon = (updateAction?: (data: object) => void) =>
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.value === yesNoTypes.YES;
     const propValues = cellInfo.original;
@@ -62,8 +62,8 @@ export const renderCheckBoxIcon = (updateAction: any) =>
               ? (<CheckedBoxIcon />)
               : (
                 <div
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => updateAction({
+                  style={{ cursor: updateAction && 'pointer' }}
+                  onClick={() => updateAction && updateAction({
                     ...propValues,
                     lockedFlag: yesNoTypes.YES,
                   })}
@@ -77,7 +77,7 @@ export const renderCheckBoxIcon = (updateAction: any) =>
     );
   };
 
-export const renderDeleteButton = (deleteAction: any) =>
+export const renderDeleteButton = (deleteAction: (name: string) => void) =>
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
     const propName = cellInfo.original.propertyName;

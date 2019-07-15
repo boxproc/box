@@ -10,10 +10,11 @@ import {
   WithLoadCurrencyCodesProps,
 } from 'components/withLoadCurrencyCodes';
 
-import { formNames, productTypesOptions, schemeOptions } from 'consts';
+import { formNames, productTypesOptions, schemeTypesOptions } from 'consts';
 
 interface ProductFormFormProps {
   onCancel: () => void;
+  isDisabledProductTypes?: boolean;
 }
 
 type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &
@@ -24,6 +25,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
   onCancel,
   currencyCodes,
   isCurrencyCodesLoading,
+  isDisabledProductTypes,
 }) => {
   return (
     <form onSubmit={() => console.log('---handleSubmitForm')}>
@@ -59,7 +61,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               label="Product Type"
               placeholder="Select Product Type"
               options={productTypesOptions}
-              isDisabled={false}
+              isDisabled={isDisabledProductTypes}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -70,7 +72,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               component={SelectField}
               label="Scheme"
               placeholder="Select Scheme"
-              options={schemeOptions}
+              options={schemeTypesOptions}
               isDisabled={false}
             />
           </Box>
@@ -96,7 +98,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
               label="History Retention Number of Days"
             />
           </Box>
-          <Box p="10px">
+          <Box p="10px" width="100%">
             <Field
               id="lockedFlag"
               name="lockedFlag"

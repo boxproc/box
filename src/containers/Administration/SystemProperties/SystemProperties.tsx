@@ -114,7 +114,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 95,
       sortable: true,
       Header: <Header title="Locked" showSortIcons={true} />,
       accessor: 'lockedFlag',
