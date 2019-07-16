@@ -94,6 +94,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
+      maxWidth: 130,
       sortable: true,
       filterable: true,
       Header: <Header title="Status" showSortIcons={true} />,
@@ -105,6 +106,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
+      maxWidth: 130,
       sortable: true,
       filterable: true,
       Header: <Header title="Product Type" showSortIcons={true} />,
@@ -116,6 +118,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
+      maxWidth: 130,
       sortable: true,
       filterable: true,
       Header: <Header title="Scheme" showSortIcons={true} />,
@@ -127,6 +130,7 @@ export const Products: React.FC<ProductsProps> = ({
       ),
     },
     {
+      maxWidth: 130,
       sortable: true,
       filterable: true,
       Header: <Header title="Currency code" showSortIcons={true} />,

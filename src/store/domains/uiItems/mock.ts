@@ -23,6 +23,11 @@ export const uiItemsData: UiItems = {
       ui_item: 'administration/dictionaries/currencies',
     },
     {
+      item_type: 'm',
+      permission: 'R',
+      ui_item: 'administration/scheduler',
+    },
+    {
       item_type: 'M',
       permission: 'W',
       ui_item: 'ledger',

@@ -24,7 +24,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end">
-        <Box width="200px" mr="20px">
+        <Box width="320px" mr="20px">
           <Field
             id="institutionId"
             name="institutionId"

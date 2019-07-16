@@ -24,8 +24,8 @@ const HintWrapper = styled.div<HintWrapperProps>`
     transform: translateY(-50%);
     margin-top: 50%;
     border-radius: 2px;
-    font-size: 14px;
-    line-height: 1.35;
+    font-size: 13px;
+    line-height: 1.4;
     z-index: 1;
 
     &:before {

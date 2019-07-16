@@ -11,6 +11,7 @@ interface AddSchedulerModalProps {
   closeModal: CloseModal;
 }
 
+// eslint-disable-next-line
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
   // closeModal,
 }) => {

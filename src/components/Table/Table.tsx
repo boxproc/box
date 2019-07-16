@@ -21,7 +21,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: 'flex-start';
   overflow: hidden;
   font-size: 13px;
   line-height: 1.35;

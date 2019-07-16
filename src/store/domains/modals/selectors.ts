@@ -29,9 +29,9 @@ export const selectFieldsEditProductModal = createSelector(
         label: fields.scheme,
       },
       currencyCode: {
-        value: currencyCodes
+        value: (currencyCodes
           && currencyCodes.find(el => el.label === fields.currencyCode)
-          && currencyCodes.find(el => el.label === fields.currencyCode).value || '',
+          && currencyCodes.find(el => el.label === fields.currencyCode).value) || '',
         label: fields.currencyCode,
       },
       lockedFlag: fields.lockedFlag === yesNoTypes.YES ? true : false,

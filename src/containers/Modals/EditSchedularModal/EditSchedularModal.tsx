@@ -15,6 +15,7 @@ interface EditSchedulerModalProps {
   closeModal: CloseModal;
 }
 
+// eslint-disable-next-line
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   // closeModal,
 }) => {
