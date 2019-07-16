@@ -39,9 +39,9 @@ export type UpdateAdminSysProps = (propValues: AdminSysPropsItemResp) =>
   UpdateAdminSysPropsAction;
 export type HandleUpdateAdminSysProps = (propValues: AdminSysPropsItem) => Thunk<void>;
 
-export type FilterAdminSysProps = (propParams: any)
+export type FilterAdminSysProps = (propParams: Partial<AdminSysPropsItemResp>)
   => FilterAdminSysPropsAction;
-export type HandleFilterAdminSysProps = (propParams: any) => Thunk<void>;
+export type HandleFilterAdminSysProps = (propParams: Partial<AdminSysPropsItem>) => Thunk<void>;
 
 export type SetFilterAdminSysProps = (propParams: AdminSysPropsItemResp) =>
   SetFilterAdminSysPropsAction;

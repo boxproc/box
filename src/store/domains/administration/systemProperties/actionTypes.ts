@@ -68,7 +68,7 @@ export interface AddAdminSysPropRejectedAction {
 }
 
 export interface DeleteAdminSysPropAction {
-  readonly payload: any;
+  readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP;
 }
 
@@ -103,7 +103,7 @@ export interface FilterAdminSysPropsAction {
 }
 
 export interface FilterAdminSysPropsFulfilledAction {
-  readonly payload: any;
+  readonly payload: AdminSysPropsDataResp;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED;
 }
 

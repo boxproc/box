@@ -8,10 +8,12 @@ import { CheckboxField, InputField } from 'components/Form';
 
 import { formNames } from 'consts';
 
+import { HandleAddAdminSysProp } from 'store/domains';
+
 import { formErrorUtil } from 'utils';
 
 interface AddSystemPropertyFormProps {
-  addAdminSysProp: any;
+  addAdminSysProp: HandleAddAdminSysProp;
   onCancel: () => void;
 }
 

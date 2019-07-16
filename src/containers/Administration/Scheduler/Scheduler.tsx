@@ -80,7 +80,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
 
   const columns = [
     {
-      maxWidth: 60,
+      maxWidth: 80,
       filterable: true,
       Header: <Header title="ID" />,
       accessor: 'id',
@@ -194,7 +194,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Last Execition Result" showSortIcons={true} />,
+      Header: <Header title="Last Execution Result" showSortIcons={true} />,
       accessor: 'last_execution_result',
       Cell: (props: SCell<'last_execution_result'>) => (
         <Cell

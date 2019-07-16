@@ -50,7 +50,7 @@ export const Products: React.FC<ProductsProps> = ({
 
   const columns = [
     {
-      maxWidth: 60,
+      maxWidth: 80,
       filterable: true,
       Header: <Header title="ID" />,
       accessor: 'id',

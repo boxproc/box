@@ -24,12 +24,13 @@ export const renderEditable = (updateAction: (data: object) => void) =>
       borderRadius: '2px',
     };
 
-    const updateCellInfo = (e: any) => {
-      const isChanged = cellInfo.value !== e.target.textContent;
+    const updateCellInfo = (e: React.MouseEvent) => {
+      const el = e.target as HTMLElement;
+      const isChanged = cellInfo.value !== el.textContent;
 
       isChanged && updateAction({
         ...cellInfo.original,
-        [cellInfo.column.id]: e.target.textContent,
+        [cellInfo.column.id]: el.textContent,
       });
     };
 
@@ -40,9 +41,10 @@ export const renderEditable = (updateAction: (data: object) => void) =>
         contentEditable={isEditable}
         suppressContentEditableWarning={isEditable}
         onBlur={updateCellInfo}
-        onKeyUp={(e: any) => {
+        onKeyUp={(e: React.KeyboardEvent) => {
           if (e.key === codeKeys.ENTER) {
-            e.target.blur();
+            const el = e.target as HTMLElement;
+            el.blur();
           }
         }}
       />

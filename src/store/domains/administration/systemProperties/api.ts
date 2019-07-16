@@ -29,6 +29,6 @@ export const updateAdminSysProps = (data: AdminSysPropsItemResp) =>
   throttleUtil.getDataAfter(AdminSysPropsItemsUpdatedData, 100);
   // apiClient.post('/ui/administration/system_properties/update', { data });
 
-export const filterAdminSysProps = (data: any) =>
+export const filterAdminSysProps = (data: AdminSysPropsItemResp) =>
   throttleUtil.getDataAfter(AdminSysPropsItemsDataFiltered, 500);
   // apiClient.post('/ui/administration/system_properties/get', {data});
