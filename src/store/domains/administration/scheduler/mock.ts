@@ -1,6 +1,6 @@
-import { AdminSchedulerData } from './types';
+import { AdminSchedulerDataResp } from './types';
 
-export const AdminSchedulerDataResp: AdminSchedulerData = {
+export const AdminSchedulerData: AdminSchedulerDataResp = {
   s_scheduler: [
     {
       id: 1,
@@ -14,7 +14,6 @@ export const AdminSchedulerDataResp: AdminSchedulerData = {
       log_location: 'test_job1.log',
       last_execution_datetime: '2019-07-12 13:27:18',
       last_execution_result: 'U',
-
     },
     {
       id: 22,
@@ -28,7 +27,6 @@ export const AdminSchedulerDataResp: AdminSchedulerData = {
       log_location: 'test_job2.log',
       last_execution_datetime: '2019-07-12 13:27:18',
       last_execution_result: 'U',
-
     },
   ],
 };

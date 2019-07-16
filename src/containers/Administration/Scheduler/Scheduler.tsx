@@ -3,26 +3,30 @@ import { RowInfo } from 'react-table';
 
 import { theme } from 'theme';
 
+import { Button } from 'components/Buttons/Buttons';
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
 
-import { AdminSchedulerData, HandleGetAdminSchedulerJobs, OpenModal } from 'store/domains';
+import {
+  AdminSchedulerItem,
+  HandleGetAdminSchedulerJobs,
+  OpenModal,
+} from 'store/domains';
 
 import SchedulerFilter from './SchedulerFilter';
 
 import { TableCell } from 'types';
-import { Button } from 'components/Buttons/Buttons';
 
 interface SchedulerProps {
-  adminSchedulerJobsItems: Array<any>;
+  adminSchedulerJobsItems: Array<Partial<AdminSchedulerItem>>;
   openModal: OpenModal;
   getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
 }
 
-type SCell<T extends keyof AdminSchedulerData> = TableCell<AdminSchedulerData[T]>;
+type SCell<T extends keyof AdminSchedulerItem> = TableCell<AdminSchedulerItem[T]>;
 
 export const Scheduler: React.FC<SchedulerProps> = ({
   openModal,
@@ -171,7 +175,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       ),
     },
     {
-      accessor: 'execute',
+      maxWidth: 100,
+      accessor: 'executeButton',
       Cell: () => (
         <Button
           text="Execute"
