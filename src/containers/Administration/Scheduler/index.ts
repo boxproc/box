@@ -4,21 +4,28 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Scheduler from './Scheduler';
 
 import {
+  AdminSchedulerJobsActionTypes,
   createLoadingSelector,
+  handleGetAdminSchedulerJobs,
   openModal,
+  selectAdminSchedulerJobsItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
-const loadingSelector = createLoadingSelector([]);
+const loadingSelector = createLoadingSelector([
+  AdminSchedulerJobsActionTypes.GET_ADMIN_SCHEDULER_JOBS,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
+    getAdminSchedulerJobs: handleGetAdminSchedulerJobs,
   },
   dispatch
 );

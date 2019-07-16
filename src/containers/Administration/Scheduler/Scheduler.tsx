@@ -3,41 +3,42 @@ import { RowInfo } from 'react-table';
 
 import { theme } from 'theme';
 
+import { Button } from 'components/Buttons/Buttons';
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
 
-import { OpenModal } from 'store/domains';
+import {
+  AdminSchedulerItem,
+  HandleGetAdminSchedulerJobs,
+  OpenModal,
+} from 'store/domains';
 
 import SchedulerFilter from './SchedulerFilter';
 
 import { TableCell } from 'types';
 
 interface SchedulerProps {
+  adminSchedulerJobsItems: Array<Partial<AdminSchedulerItem>>;
   openModal: OpenModal;
+  getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
 }
 
-interface SchedulerItem {
-  id: string | number;
-  institution_id: string | number;
-  name: string;
-  description: string;
-  status: string;
-  cron_expression: string;
-  executable_type: string;
-  executable: string;
-  log_location: string;
-  last_execution_datetime: string;
-  last_execution_result: string;
-}
-
-type SCell<T extends keyof SchedulerItem> = TableCell<SchedulerItem[T]>;
+type SCell<T extends keyof AdminSchedulerItem> = TableCell<AdminSchedulerItem[T]>;
 
 export const Scheduler: React.FC<SchedulerProps> = ({
   openModal,
+  getAdminSchedulerJobs,
+  adminSchedulerJobsItems,
 }) => {
+  React.useEffect(
+    () => {
+      getAdminSchedulerJobs();
+    },
+    [getAdminSchedulerJobs]
+  );
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {
@@ -48,35 +49,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     },
     [openModal]
   );
-
-  const data = [
-    {
-      id: 1,
-      institution_id: 1,
-      name: 'API test Job 1',
-      description: 'Job 1 description',
-      status: 'A',
-      cron_expression: '0 0/10  1/1  ? *',
-      executable_type: 'A',
-      executable: '',
-      log_location: 'test_job1.log',
-      last_execution_datetime: '2019-07-12 13:27:18',
-      last_execution_result: 'U',
-    },
-    {
-      id: 2,
-      institution_id: 2,
-      name: 'Shell script test Job 2',
-      description: 'Job 2 description',
-      status: 'A',
-      cron_expression: '0 0/10  1/1  ? *',
-      executable_type: 'S',
-      executable: '',
-      log_location: 'test_job2.log',
-      last_execution_datetime: '2019-07-12 13:27:18',
-      last_execution_result: 'U',
-    },
-  ];
 
   const columns = [
     {
@@ -95,8 +67,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Institution ID" showSortIcons={true} />,
-      accessor: 'institution_id',
-      Cell: (props: SCell<'institution_id'>) => (
+      accessor: 'institutionId',
+      Cell: (props: SCell<'institutionId'>) => (
         <Cell
           value={props.value}
         />
@@ -139,8 +111,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Cron Expression" showSortIcons={true} />,
-      accessor: 'cron_expression',
-      Cell: (props: SCell<'cron_expression'>) => (
+      accessor: 'cronExpression',
+      Cell: (props: SCell<'cronExpression'>) => (
         <Cell
           value={props.value}
         />
@@ -150,8 +122,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Executable Type" showSortIcons={true} />,
-      accessor: 'executable_type',
-      Cell: (props: SCell<'executable_type'>) => (
+      accessor: 'executableType',
+      Cell: (props: SCell<'executableType'>) => (
         <Cell
           value={props.value}
         />
@@ -172,8 +144,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Log Location" showSortIcons={true} />,
-      accessor: 'log_location',
-      Cell: (props: SCell<'log_location'>) => (
+      accessor: 'logLocation',
+      Cell: (props: SCell<'logLocation'>) => (
         <Cell
           value={props.value}
         />
@@ -183,8 +155,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Last Execution Datetime" showSortIcons={true} />,
-      accessor: 'last_execution_datetime',
-      Cell: (props: SCell<'last_execution_datetime'>) => (
+      accessor: 'lastExecutionDatetime',
+      Cell: (props: SCell<'lastExecutionDatetime'>) => (
         <Cell
           value={props.value}
           style={{ color: theme.grayColor }}
@@ -195,10 +167,20 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       sortable: true,
       filterable: true,
       Header: <Header title="Last Execution Result" showSortIcons={true} />,
-      accessor: 'last_execution_result',
-      Cell: (props: SCell<'last_execution_result'>) => (
+      accessor: 'lastExecutionResult',
+      Cell: (props: SCell<'lastExecutionResult'>) => (
         <Cell
           value={props.value}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      accessor: 'executeButton',
+      Cell: () => (
+        <Button
+          text="Execute"
+          transparent={true}
         />
       ),
     },
@@ -208,7 +190,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     <React.Fragment>
       <TablePage
         title="Scheduler"
-        data={data}
+        data={adminSchedulerJobsItems}
         columns={columns}
         addNewModalName={modalNames.ADD_SCHEDULER}
         openModal={openModal}
