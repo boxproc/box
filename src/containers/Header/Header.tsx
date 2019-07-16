@@ -87,7 +87,9 @@ const Header: React.FC<HeaderProps> = ({
     [userLogout]
   );
 
-  const institution = institutions.length && institutions[0];
+  const institution = institutions.length === 1
+    ? institutions[0]
+    : institutions.length && institutions.find(el => el.institutionName === 'BOX');
 
   return (
     <Wrapper>
