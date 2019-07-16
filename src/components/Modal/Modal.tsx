@@ -14,6 +14,7 @@ interface ModalProps {
   title?: string;
   closeModal: CloseModal;
   maxContainerWidth?: string;
+  minContainerHeight?: string;
   zIndex?: string;
 }
 
@@ -27,6 +28,7 @@ const Modal: React.FC<ModalProps> = ({
   title,
   closeModal,
   maxContainerWidth,
+  minContainerHeight,
   zIndex,
 }) => {
   React.useEffect(
@@ -50,6 +52,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <ModalWrapper
       maxContainerWidth={maxContainerWidth}
+      minContainerHeight={minContainerHeight}
       zIndex={zIndex}
     >
       <div

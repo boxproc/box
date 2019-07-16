@@ -11,12 +11,14 @@ import { modalNames, yesNoTypes } from 'consts';
 import ProductsFilter from './ProductsFilter';
 
 import { HandleGetProducts, OpenModal, ProductItem } from 'store/domains';
-import { TableCell } from 'types';
+
+import { ParsedSelectValues, TableCell } from 'types';
 
 interface ProductsProps {
   openModal: OpenModal;
   productItems: Array<Partial<ProductItem>>;
   handleGetProducts: HandleGetProducts;
+  institutionsOptions: Array<ParsedSelectValues>;
 }
 
 type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
@@ -25,6 +27,7 @@ export const Products: React.FC<ProductsProps> = ({
   openModal,
   handleGetProducts,
   productItems,
+  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -183,7 +186,9 @@ export const Products: React.FC<ProductsProps> = ({
         getTrGroupProps={handleOnClickRow}
         hint="Double Click on Row to Edit Unlocked Product"
         FilterForm={
-          <ProductsFilter/>
+          <ProductsFilter
+            institutionsOptions={institutionsOptions}
+          />
         }
       />
     </React.Fragment >

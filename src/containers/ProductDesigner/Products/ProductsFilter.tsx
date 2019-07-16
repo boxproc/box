@@ -8,13 +8,18 @@ import { CheckboxField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
 
-interface ProductsFilterProps { }
+import { ParsedSelectValues } from 'types';
+
+interface ProductsFilterProps {
+  institutionsOptions: Array<ParsedSelectValues>;
+ }
 
 type ProductsFilterAllProps = ProductsFilterProps &
   InjectedFormProps<{}, ProductsFilterProps>;
 
 const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
   handleSubmit,
+  institutionsOptions,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log('---', data)),
@@ -32,12 +37,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
             component={SelectField}
             label="Institution ID"
             placeholder="Select Institution ID"
-            options={[
-              { value: 1, label: 'Institution ID 1' },
-              { value: 2, label: 'Institution ID 2' },
-              { value: 3, label: 'Institution ID 3' },
-              { value: 4, label: 'Institution ID 4' },
-            ]}
+            options={institutionsOptions}
             isDisabled={false}
             isMulti={true}
           />

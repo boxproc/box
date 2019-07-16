@@ -7,8 +7,12 @@ import Header from './Header';
 
 import {
   createLoadingSelector,
+  handleGetInstitutions,
   handleGetUiItems,
   handleUserLogout,
+  selectFirstName,
+  selectInstitutions,
+  selectLastName,
   selectUiItems,
   UiItemsActionTypes,
 } from 'store/domains';
@@ -22,12 +26,16 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
+  institutions: selectInstitutions(state),
+  firstName: selectFirstName(state),
+  lastName: selectLastName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getUiItems: handleGetUiItems,
     userLogout: handleUserLogout,
+    getInstitutions: handleGetInstitutions,
   },
   dispatch
 );

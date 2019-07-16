@@ -12,10 +12,14 @@ export interface PreparedAuthRequest {
 export interface AuthResponse {
   session_id: string;
   username: string;
+  first_name: string;
+  last_name: string;
 }
 
 export interface AuthState {
   sessionId: string;
   username: string;
   isRememberedMe: boolean;
+  firstName: string;
+  lastName: string;
 }
