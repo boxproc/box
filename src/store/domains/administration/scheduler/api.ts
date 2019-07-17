@@ -1,13 +1,13 @@
-// import { throttleUtil } from 'utils';
-// import { AdminSchedulerData } from './mock';
-import { apiClient } from 'services';
+import { throttleUtil } from 'utils';
+import { AdminSchedulerData } from './mock';
+// import { apiClient } from 'services';
 
 export const getAdminSchedulerJobs = () =>
-  // throttleUtil.getDataAfter(AdminSchedulerDataResp, 500);
-  apiClient.post('/ui/administration/scheduler/get');
+  throttleUtil.getDataAfter(AdminSchedulerData, 500);
+  // apiClient.post('/ui/administration/scheduler/get');
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
-  // throttleUtil.getDataAfter({ property_name: propName }, 500);
-  apiClient.post('/ui/administration/scheduler/delete', {
-    data: { id },
-  });
+  throttleUtil.getDataAfter({ job_id: id }, 500);
+  // apiClient.post('/ui/administration/scheduler/delete', {
+  //   data: { id },
+  // });

@@ -11,7 +11,6 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-
 const loadingSelector = createLoadingSelector([]);
 
 const mapStateToProps = (state: StoreState) => ({

@@ -39,6 +39,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     },
     [getAdminSchedulerJobs]
   );
+
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {

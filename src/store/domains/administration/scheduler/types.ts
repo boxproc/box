@@ -1,8 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 export interface AdminSchedulerItem {
-  id: number;
-  institutionId: number;
+  id: number | string;
+  institutionId: number | string;
   name: string;
   description: string;
   status: string;
@@ -15,8 +15,8 @@ export interface AdminSchedulerItem {
 }
 
 export interface AdminSchedulerItemResp {
-  id: number;
-  institution_id: number;
+  id: number | string;
+  institution_id: number | string;
   name: string;
   description: string;
   status: string;

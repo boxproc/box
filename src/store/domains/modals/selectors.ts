@@ -39,4 +39,4 @@ export const selectFieldsEditProductModal = createSelector(
   }
 );
 
-export const selectSchedulerJobId = (state: StoreState) => state.modals.fieldsEditSchedulerModal;
+export const selectSchedulerJobId = (state: StoreState) => state.modals.fieldsEditSchedulerModal.id;
