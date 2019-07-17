@@ -1,16 +1,16 @@
 import { apiClient } from 'services';
 
 // import {
-  // currencyCodesData,
-  // institutionsData,
+//   currencyCodesData,
+//   // institutionsData,
 // } from './mock';
 
 // import { throttleUtil } from 'utils';
 
 export const getCurrencyCodes = () =>
-  // throttleUtil.getDataAfter(currencyCodesData, 1000);
+  // throttleUtil.getDataAfter(currencyCodesData, 500);
   apiClient.post('/ui/administration/dictionaries/currencies/get_options');
 
 export const getInstitutions = () =>
-  // throttleUtil.getDataAfter(institutionsData, 1000);
-  apiClient.post('/ui/institutions/get');
+  // throttleUtil.getDataAfter(institutionsData, 500);
+  apiClient.post('/ui/service_data/institutions/get');

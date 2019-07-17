@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div
         className="modal-backdrop"
-        onClick={handleCloseModal}
+        // onClick={handleCloseModal}
       />
       <div className="modal-container">
         <span
