@@ -3,6 +3,7 @@ import { media } from 'theme/media';
 
 interface ModalWrapperProps {
   maxContainerWidth?: string;
+  minContainerHeight?: string;
   zIndex?: string;
 }
 
@@ -44,7 +45,10 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     background-color: ${({ theme }) => theme.whiteColor};
     text-align: left;
     box-sizing: border-box;
-    max-width: ${({ maxContainerWidth }) => maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
+    max-width: ${({ maxContainerWidth }) =>
+      maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
+    min-height: ${({ minContainerHeight }) =>
+      minContainerHeight ? minContainerHeight + 'px' : 'auto'}
     width: 100%;
     padding: 20px;
     border-radius: 3px;

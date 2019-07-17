@@ -3,7 +3,7 @@ import { ActionTypeKeys, AdminSchedulerJobsActionTypes } from './actionTypes';
 import { AdminSchedulerState } from './types';
 
 export const adminSchedulerJobsInitialState: ImmutableObject<AdminSchedulerState> = Immutable({
-  s_scheduler: Immutable([]),
+  scheduler: Immutable([]),
 });
 
 const adminSchedulerJobsReducer =
@@ -11,13 +11,13 @@ const adminSchedulerJobsReducer =
     switch (action.type) {
       case ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state
-          .set('s_scheduler', action.payload.s_scheduler);
+          .set('scheduler', action.payload.s_scheduler);
 
       case ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state
           .set(
-            's_scheduler',
-            state.s_scheduler.filter(el => el.id !== action.payload.job_id)
+            'scheduler',
+            state.scheduler.filter(el => el.id !== action.payload.job_id)
           );
       default: return state;
     }

@@ -27,25 +27,25 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalNames.EDIT_PRODUCT}
       title="Edit Product"
       maxContainerWidth={700}
+      minContainerHeight={550}
     >
       <Tabs>
         <Panel title="General">
-        <ProductForm
-          onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
-          initialValues={fieldsEditProductModal}
-          isDisabledProductTypes={true}
-        />
+          <ProductForm
+            onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+            initialValues={fieldsEditProductModal}
+            isDisabledProductTypes={true}
+          />
+          <Hr/>
+          <Button
+            text="delete"
+            iconName="delete"
+            transparent={true}
+          />
         </Panel>
-        <Panel title="Tab">Tab Content</Panel>
+        <Panel title="Tab 2">Tab Content 2</Panel>
+        <Panel title="Tab 3">Tab Content 3</Panel>
       </Tabs>
-
-      <Hr/>
-
-      <Button
-        text="delete"
-        iconName="delete"
-        transparent={true}
-      />
     </Modal>
   );
 };

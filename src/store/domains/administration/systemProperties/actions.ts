@@ -17,7 +17,7 @@ import {
 } from './actionTypes';
 
 import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
-import { prepareAdminSysItemValues } from './utils';
+import { prepareAdminSysItemValues, prepareAdminSysItemValuesWithLockedFlag } from './utils';
 
 import { apiClient } from 'services';
 
@@ -87,7 +87,8 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedAdminSysItemValues = prepareAdminSysItemValues(formValues(state));
+          const preparedAdminSysItemValues =
+            prepareAdminSysItemValues(formValues(state));
           await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
         } else {
           await dispatch(getAdminSysProps());
@@ -101,7 +102,8 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
+        const preparedAdminSysItemValues =
+          prepareAdminSysItemValuesWithLockedFlag(propValues);
 
         await dispatch(addAdminSysProp(preparedAdminSysItemValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
@@ -125,7 +127,8 @@ export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedAdminSysItemValues = prepareAdminSysItemValues(propValues);
+        const preparedAdminSysItemValues =
+          prepareAdminSysItemValuesWithLockedFlag(propValues);
 
         await dispatch(updateAdminSysProps(preparedAdminSysItemValues));
       },

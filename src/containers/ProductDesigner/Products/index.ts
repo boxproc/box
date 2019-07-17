@@ -8,6 +8,7 @@ import {
   handleGetProducts,
   openModal,
   ProductsActionTypes,
+  selectInstitutionsOptions,
   selectProductItems,
 } from 'store/domains';
 
@@ -20,6 +21,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   productItems: selectProductItems(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

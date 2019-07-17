@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 import { RouteComponentProps } from 'react-router';
+import { User } from 'styled-icons/fa-solid/User';
 
 import styled from 'theme';
 
@@ -10,43 +11,85 @@ import { Button } from 'components/Buttons/Buttons';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 
-import { basePath } from 'consts';
+import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
-import { HandleGetUiItems, HandleUserLogout, UiItemPrepared } from 'store/domains';
+import StatusBlock from './StatusBlock';
+
+import {
+  HandleGetInstitutions,
+  HandleGetUiItems,
+  HandleUserLogout,
+  InstitutionItemWithStatusLabel,
+  UiItemPrepared,
+} from 'store/domains';
 
 import logo from 'resources/images/logo.png';
+
+import { cookiesUtil } from 'utils';
 
 const Wrapper = styled.header`
   width: 100%;
   padding: 10px 0;
   box-shadow: ${({ theme }) => theme.boxShadow};
+  font-size: 14px;
 `;
+
+const UserIcon = styled(User)`
+  margin-right: 5px;
+  color: ${({ theme }) => theme.grayColor};
+`;
+
+const UserBlock = () => (
+  <Flex alignItems="end">
+    <UserIcon size="15"/>
+    <div>{cookiesUtil.get(cookiesNames.FULL_NAME)}</div>
+  </Flex>
+);
 
 interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
   userLogout: HandleUserLogout;
   uiItems: Array<UiItemPrepared>;
+  getInstitutions: HandleGetInstitutions;
+  institutions: Array<Partial<InstitutionItemWithStatusLabel>>;
+  firstName: string;
+  lastName: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
   getUiItems,
+  getInstitutions,
   userLogout,
   uiItems,
+  institutions,
   history,
   location,
   match,
+  lastName,
+  firstName,
 }) => {
   React.useEffect(
     () => {
       getUiItems();
+      getInstitutions();
+
+      if (firstName && lastName) {
+        cookiesUtil.set(cookiesNames.FULL_NAME, `${firstName} ${lastName}`, {
+          maxAge: cookiesExpires.WEEK,
+        });
+      }
     },
-    [getUiItems]
+    [getUiItems, getInstitutions, firstName, lastName]
   );
 
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]
   );
+
+  const institution = institutions.length === 1
+    ? institutions[0]
+    : institutions.length && institutions.find(el => el.institutionName === 'BOX');
 
   return (
     <Wrapper>
@@ -74,12 +117,24 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </Flex>
           <Box>
-            <Button
-              text="Log out"
-              iconName="logOut"
-              transparent={true}
-              onClick={handleUserLogout}
-            />
+            <Flex alignItems="center">
+              <Box mr="20px">
+                <StatusBlock
+                  text={institution.institutionName}
+                  status={institution.status}
+                  title={institution.statusLabel}
+                />
+              </Box>
+              <Box mr="20px">
+                <UserBlock/>
+              </Box>
+              <Button
+                text="Log out"
+                iconName="logOut"
+                transparent={true}
+                onClick={handleUserLogout}
+              />
+            </Flex>
           </Box>
         </Flex>
       </Container>

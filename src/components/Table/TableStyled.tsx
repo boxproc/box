@@ -40,7 +40,7 @@ export const TableStyled = styled.div`
   .ReactTable .rt-td {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 10px 12px;
     transition: none;
     transition-property: none;
   }
@@ -72,6 +72,7 @@ export const TableStyled = styled.div`
   .ReactTable  .rt-tr-group:hover {
     cursor: default;
     background-color: ${({ theme }) => theme.lighterGrayColor};
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
   .ReactTable  .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
     box-shadow: none !important;

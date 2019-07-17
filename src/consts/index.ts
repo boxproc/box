@@ -5,12 +5,13 @@ export const basePath = config.isDevelopment ? '/' : '/ui/';
 export enum cookiesNames {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
+  FULL_NAME = 'fullName',
   ADMIN_SYSTEM_PROPERTIES = 'admin_system_properties',
 }
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 600,
+  SESSION_ID = 360,
 }
 
 export enum formNames {
