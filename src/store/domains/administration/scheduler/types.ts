@@ -1,5 +1,9 @@
 import { ImmutableArray } from 'seamless-immutable';
 
+export interface AdminSchedulerIdDataResp {
+  job_id?: string | number;
+}
+
 export interface AdminSchedulerData {
   id?: number;
   institutionId?: number;
@@ -26,6 +30,9 @@ export interface AdminSchedulerDataResp {
     log_location?: string;
     last_execution_datetime?: string;
     last_execution_result?: string;
+  }
+export interface AdminSchedulerJobDataResp {
+    system_property: AdminSchedulerDataResp;
   }
 
 export interface AdminSchedulerData {

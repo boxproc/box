@@ -42,4 +42,5 @@ export interface ModalsState {
 
   isAddSchedulerModal: boolean;
   isEditSchedulerModal: boolean;
+  fieldsEditSchedulerModal?: any;
 }

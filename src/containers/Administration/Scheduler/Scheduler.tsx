@@ -9,12 +9,15 @@ import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
 
-import { AdminSchedulerData, HandleGetAdminSchedulerJobs, OpenModal } from 'store/domains';
-
+import { AdminSchedulerData,
+         HandleGetAdminSchedulerJobs,
+         OpenModal,
+} from 'store/domains';
+ 
 import SchedulerFilter from './SchedulerFilter';
 
-import { TableCell } from 'types';
 import { Button } from 'components/Buttons/Buttons';
+import { TableCell } from 'types';
 
 interface SchedulerProps {
   adminSchedulerJobsItems: Array<any>;
@@ -40,6 +43,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_SCHEDULER,
+          fields: {id: rowInfo.original.id},
         }),
       };
     },

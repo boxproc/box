@@ -9,16 +9,23 @@ import { Hr } from 'components/Text';
 
 import { modalNames } from 'consts';
 
-import { CloseModal } from 'store/domains';
+import { CloseModal, HandleDeleteAdminSchedulerJob } from 'store/domains';
+
 
 interface EditSchedulerModalProps {
   closeModal: CloseModal;
+  deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
+  schedulerJobId: any,
 }
 
 // eslint-disable-next-line
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   // closeModal,
+  deleteAdminSchedulerJob,
+  schedulerJobId,
 }) => {
+  console.log('---schedulerJobId', schedulerJobId.id);
+  const id = schedulerJobId.id;
   return (
     <Modal
       name={modalNames.EDIT_SCHEDULER}
@@ -32,6 +39,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         text="delete"
         iconName="delete"
         transparent={true}
+        onClick={() => deleteAdminSchedulerJob(id.toString())}
       />
     </Modal>
   );
