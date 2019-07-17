@@ -22,7 +22,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
 }) => {
   return (
     <Modal
-      name={modalNames.EDIT_SCHEDULER}
+      name={modalNames.EDIT_ADMIN_SCHEDULER}
       title="Edit"
       maxContainerWidth={700}
     >

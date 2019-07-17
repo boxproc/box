@@ -2,7 +2,7 @@ import {
   AdminSysPropDataResp,
   AdminSysPropNameDataResp,
   AdminSysPropsDataResp,
-  AdminSysPropsItemResp,
+  AdminSysPropsItem,
 } from './types';
 
 import { ApiResponse } from 'types';
@@ -113,7 +113,7 @@ export interface FilterAdminSysPropsRejectedAction {
 }
 
 export interface SetFilterAdminSysPropsAction {
-  readonly payload: AdminSysPropsItemResp;
+  readonly payload: AdminSysPropsItem;
   readonly type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS;
 }
 

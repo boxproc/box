@@ -20,3 +20,6 @@ export const selectProductItems = createSelector(
     };
   })
 );
+
+export const selectFilterProductParams = (state: StoreState) =>
+  state.productDesigner.products.filterProductsParams;

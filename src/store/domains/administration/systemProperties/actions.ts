@@ -43,7 +43,7 @@ export type FilterAdminSysProps = (propParams: Partial<AdminSysPropsItemResp>)
   => FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (propParams: Partial<AdminSysPropsItem>) => Thunk<void>;
 
-export type SetFilterAdminSysProps = (propParams: AdminSysPropsItemResp) =>
+export type SetFilterAdminSysProps = (propParams: AdminSysPropsItem) =>
   SetFilterAdminSysPropsAction;
 
 export const getAdminSysProps: GetAdminSysProps = () => ({
@@ -87,8 +87,7 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedAdminSysItemValues =
-            prepareAdminSysItemValues(formValues(state));
+          const preparedAdminSysItemValues = prepareAdminSysItemValues(formValues(state));
           await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
         } else {
           await dispatch(getAdminSysProps());
@@ -143,7 +142,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =
         const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
 
         await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
-        dispatch(setFilterAdminSysProps(preparedAdminSysItemValues));
+        dispatch(setFilterAdminSysProps(propParams));
       },
       dispatch
     );

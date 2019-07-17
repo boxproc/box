@@ -1,27 +1,30 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import EditSchedulerModal from './EditSchedularModal';
+import EditProductModal from './EditProductModal';
 
 import {
   closeModal,
   createLoadingSelector,
-  handleDeleteAdminSchedulerJob,
-  selectSchedulerJobId,
+  handleDeleteProduct,
+  ProductsActionTypes,
+  selectProductId,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const loadingSelector = createLoadingSelector([]);
+const loadingSelector = createLoadingSelector([
+  ProductsActionTypes.DELETE_PRODUCT,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  schedulerJobId: selectSchedulerJobId(state),
+  productId: selectProductId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     closeModal,
+    deleteProduct: handleDeleteProduct,
   },
   dispatch
 );
@@ -29,4 +32,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditSchedulerModal);
+)(EditProductModal);

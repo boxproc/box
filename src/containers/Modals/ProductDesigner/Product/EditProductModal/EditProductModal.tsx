@@ -11,16 +11,18 @@ import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
 import { modalNames } from 'consts';
 
-import { CloseModal, PreparedFieldsEditProductModal } from 'store/domains';
+import { CloseModal, HandleDeleteProduct } from 'store/domains';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
-  fieldsEditProductModal: PreparedFieldsEditProductModal;
+  deleteProduct: HandleDeleteProduct;
+  productId: number | string;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
-  fieldsEditProductModal,
+  deleteProduct,
+  productId,
 }) => {
   return (
     <Modal
@@ -33,7 +35,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         <Panel title="General">
           <ProductForm
             onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
-            initialValues={fieldsEditProductModal}
             isDisabledProductTypes={true}
           />
           <Hr/>
@@ -41,6 +42,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
             text="delete"
             iconName="delete"
             transparent={true}
+            onClick={() => deleteProduct(productId)}
           />
         </Panel>
         <Panel title="Tab 2">Tab Content 2</Panel>

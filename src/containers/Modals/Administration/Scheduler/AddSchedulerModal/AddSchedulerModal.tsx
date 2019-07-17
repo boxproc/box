@@ -17,7 +17,7 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_SCHEDULER}
+      name={modalNames.ADD_ADMIN_SCHEDULER}
       title="Add New"
       maxContainerWidth={700}
     >

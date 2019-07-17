@@ -12,9 +12,9 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isAddProductModal: false,
   isEditProductModal: false,
 
-  isAddSchedulerModal: false,
-  isEditSchedulerModal: false,
-  fieldsEditSchedulerModal: null,
+  isAddAdminSchedulerModal: false,
+  isEditAdminSchedulerModal: false,
+  fieldsEditAdminSchedulerModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

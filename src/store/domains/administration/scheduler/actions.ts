@@ -48,7 +48,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteAdminSchedulerJob(id));
-        await dispatch(closeModal(modalNames.EDIT_SCHEDULER));
+        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
       },
       dispatch
     );

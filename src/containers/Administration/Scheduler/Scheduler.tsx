@@ -44,7 +44,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     (_, rowInfo: RowInfo) => {
       return {
         onDoubleClick: () => openModal({
-          name: modalNames.EDIT_SCHEDULER,
+          name: modalNames.EDIT_ADMIN_SCHEDULER,
           fields: {id: rowInfo.original.id},
         }),
       };
@@ -194,7 +194,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         title="Scheduler"
         data={adminSchedulerJobsItems}
         columns={columns}
-        addNewModalName={modalNames.ADD_SCHEDULER}
+        addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
         openModal={openModal}
         getTrGroupProps={handleOnClickRow}
         hint="Double Click on Row to Edit Scheduler"

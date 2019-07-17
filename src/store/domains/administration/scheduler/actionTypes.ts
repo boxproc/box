@@ -7,8 +7,8 @@ import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS',
-  GET_ADMIN_SCHEDULER_JOBS_FULFILLED = 'administration/scheduler/' +
-   'GET_ADMIN_SCHEDULER_JOBS_FULFILLED',
+  GET_ADMIN_SCHEDULER_JOBS_FULFILLED =
+    'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS_FULFILLED',
   GET_ADMIN_SCHEDULER_JOBS_REJECTED = 'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS_REJECTED',
 
   ADD_ADMIN_SCHEDULER_JOBS = 'administration/systemProperties/ADD_ADMIN_SCHEDULER_JOBS',

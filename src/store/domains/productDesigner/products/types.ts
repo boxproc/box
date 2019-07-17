@@ -28,6 +28,20 @@ export interface ProductItem {
   lockedFlag: string;
 }
 
+export interface ProductFilterParamsPrepared {
+  locked_flag?: string;
+  institution_id?: Array<number>;
+}
+
+export interface ProductFilterParams {
+  lockedFlag?: string;
+  institutionId?: Array<any>;
+}
+
+export interface ProductId {
+  id: number | string;
+}
+
 export interface ProductsDataResp {
   products: Array<ProductItemResp>;
 }
@@ -42,5 +56,5 @@ export interface ProductDataResp {
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
-  filterProducts: ProductItem;
+  filterProductsParams: ProductFilterParamsPrepared;
 }

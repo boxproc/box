@@ -1,19 +1,27 @@
-import { ProductItem, ProductItemResp } from './types';
+import {
+  ProductFilterParams,
+  ProductFilterParamsPrepared,
+  ProductItem,
+  ProductItemResp,
+} from './types';
 
 import { yesNoTypes } from 'consts';
 
 import { camelizeFieldsUtil } from 'utils';
 
 export const prepareProductValues =
-  (propValues: Partial<ProductItem>): Partial<ProductItemResp> => {
-    const { lockedFlag } = propValues;
-    const preparedProps = {};
+  (values: Partial<ProductItem>): Partial<ProductItemResp> =>
+    camelizeFieldsUtil.camelizeFields(values, 'decamelize');
 
-    preparedProps['locked_flag'] =
-      (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES;
+export const prepareProductFiltersParams =
+  (params: Partial<ProductFilterParams>): Partial<ProductFilterParamsPrepared> => {
+    const preparedParams = {};
+    const { lockedFlag, institutionId } = params;
 
-    return {
-      ...camelizeFieldsUtil.camelizeFields(propValues, 'decamelize'),
-      ...preparedProps,
-    };
+    preparedParams['locked_flag'] =
+      (lockedFlag === yesNoTypes.NO || !lockedFlag) ? null : yesNoTypes.YES;
+
+    preparedParams['institution_id'] = institutionId && institutionId.map(id => id.value);
+
+    return preparedParams;
   };
