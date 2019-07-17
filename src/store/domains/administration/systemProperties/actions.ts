@@ -88,7 +88,7 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
 
         if (formValues(state)) {
           const preparedAdminSysItemValues =
-            prepareAdminSysItemValuesWithLockedFlag(formValues(state));
+            prepareAdminSysItemValues(formValues(state));
           await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
         } else {
           await dispatch(getAdminSysProps());
