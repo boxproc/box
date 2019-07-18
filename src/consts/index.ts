@@ -17,6 +17,7 @@ export enum cookiesExpires {
 export enum formNames {
   USER_LOGIN = 'userLoginForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
+  ADD_ADMIN_SCHEDULER_JOB = 'addAdminSchedulerJobForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'ProductForm',
