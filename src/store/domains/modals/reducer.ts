@@ -5,13 +5,16 @@ import { ModalsState } from './types';
 
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
+  fieldsMessageModal: null,
+
   isAddAdminSystemPropertyModal: false,
+
   isAddProductModal: false,
   isEditProductModal: false,
-  isAddSchedulerModal: false,
-  isEditSchedulerModal: false,
-  fieldsMessageModal: null,
-  fieldsEditSchedulerModal: null,
+
+  isAddAdminSchedulerModal: false,
+  isEditAdminSchedulerModal: false,
+  fieldsEditAdminSchedulerModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

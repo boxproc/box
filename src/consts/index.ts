@@ -6,7 +6,8 @@ export enum cookiesNames {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
   FULL_NAME = 'fullName',
-  ADMIN_SYSTEM_PROPERTIES = 'admin_system_properties',
+  SYSTEM_PROPERTIES_FILTER = 'adminSystemProperties',
+  PRODUCTS_FILTER = 'productModelerProducts',
 }
 
 export enum cookiesExpires {
@@ -29,8 +30,8 @@ export enum modalNames {
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
-  ADD_SCHEDULER = 'AddSchedulerModal',
-  EDIT_SCHEDULER = 'EditSchedulerModal',
+  ADD_ADMIN_SCHEDULER = 'AddAdminSchedulerModal',
+  EDIT_ADMIN_SCHEDULER = 'EditAdminSchedulerModal',
 }
 
 export enum uiItemTypes {

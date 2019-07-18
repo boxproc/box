@@ -5,9 +5,11 @@ import Products from './Products';
 
 import {
   createLoadingSelector,
+  handleFilterProducts,
   handleGetProducts,
   openModal,
   ProductsActionTypes,
+  selectFilterProductParams,
   selectInstitutionsOptions,
   selectProductItems,
 } from 'store/domains';
@@ -16,17 +18,20 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCTS,
+  ProductsActionTypes.FILTER_PRODUCTS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   productItems: selectProductItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  filterProductParams: selectFilterProductParams(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    handleGetProducts,
+    getProducts: handleGetProducts,
+    filterProducts: handleFilterProducts,
     openModal,
   },
   dispatch

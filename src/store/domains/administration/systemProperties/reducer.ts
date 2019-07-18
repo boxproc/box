@@ -4,8 +4,8 @@ import { ActionTypeKeys, AdminSysPropsActionTypes } from './actionTypes';
 import { AdminSysPropsState } from './types';
 
 export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Immutable({
-  system_properties: Immutable([]),
-  filter_system_properties: null,
+  systemProperties: Immutable([]),
+  filterSystemProperties: null,
 });
 
 const adminSysPropsReducer =
@@ -14,13 +14,13 @@ const adminSysPropsReducer =
       case ActionTypeKeys.GET_ADMIN_SYS_PROPS_FULFILLED:
       case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
-          .set('system_properties', action.payload.system_properties);
+          .set('systemProperties', action.payload.system_properties);
 
       case ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED:
         return state
-          .set('system_properties', [
+          .set('systemProperties', [
             ...Object.values({
-              ...state.system_properties
+              ...state.systemProperties
                 .filter(el => el.property_name !== action.payload.system_property.property_name),
             }),
             action.payload.system_property,
@@ -28,9 +28,9 @@ const adminSysPropsReducer =
 
       case ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED:
         return state
-          .set('system_properties', [
+          .set('systemProperties', [
             ...Object.values({
-              ...state.system_properties,
+              ...state.systemProperties,
             }),
             action.payload.system_property,
           ]);
@@ -38,13 +38,13 @@ const adminSysPropsReducer =
       case ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED:
         return state
           .set(
-            'system_properties',
-            state.system_properties.filter(el => el.property_name !== action.payload.property_name)
+            'systemProperties',
+            state.systemProperties.filter(el => el.property_name !== action.payload.property_name)
           );
 
       case ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS:
         return state
-          .set('filter_system_properties', action.payload);
+          .set('filterSystemProperties', action.payload);
 
       default: return state;
     }

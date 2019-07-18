@@ -5,10 +5,10 @@ import { StoreState } from 'store/StoreState';
 import { camelizeFieldsUtil } from 'utils';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
-  state.administration.adminSysProps.system_properties;
+  state.administration.adminSysProps.systemProperties;
 
 export const selectFilterSystemProperties = (state: StoreState) =>
-  state.administration.adminSysProps.filter_system_properties;
+  state.administration.adminSysProps.filterSystemProperties;
 
 export const selectAdminSysPropsItems = createSelector(
   selectDefaultAdminSysPropsItems,

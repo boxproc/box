@@ -3,8 +3,8 @@
 import { apiClient } from 'services';
 import { AdminSchedulerItemResp } from './types';
 export const getAdminSchedulerJobs = () =>
-  // throttleUtil.getDataAfter(AdminSchedulerDataResp, 500);
-  apiClient.post('/ui/administration/scheduler/get');
+ // throttleUtil.getDataAfter(AdminSchedulerData, 500);
+   apiClient.post('/ui/administration/scheduler/get');
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
   // throttleUtil.getDataAfter({ property_name: propName }, 500);

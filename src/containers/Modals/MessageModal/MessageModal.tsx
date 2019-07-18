@@ -28,6 +28,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       title={title}
       maxContainerWidth={350}
       zIndex="101"
+      closeOnBackdrop={true}
     >
       <Paragraph light={true}>{message}</Paragraph>
       <Flex

@@ -5,9 +5,8 @@ import { yesNoTypes } from 'consts';
 import { camelizeFieldsUtil } from 'utils';
 
 export const prepareAdminSysItemValues =
-  (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> => {
-    return camelizeFieldsUtil.camelizeFields(propValues, 'decamelize');
-  };
+  (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> =>
+    camelizeFieldsUtil.camelizeFields(propValues, 'decamelize');
 
 export const prepareAdminSysItemValuesWithLockedFlag =
   (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> => {

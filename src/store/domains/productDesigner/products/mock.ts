@@ -43,3 +43,34 @@ export const ProductItemsData: ProductsDataResp = {
     },
   ],
 };
+
+export const ProductItemsDataFiltered: ProductsDataResp = {
+  products: [
+    {
+      currency_code: 'GBP',
+      default_statement_cycle_id: '1',
+      description: 'Test revolving credit product',
+      history_retention_number_of_days: '90',
+      id: 1,
+      institution_id: 1,
+      locked_flag: 'N',
+      name: 'Product: revolving credit filtered',
+      product_type: 'C',
+      scheme: 'V',
+      status: 'A',
+    },
+    {
+      currency_code: 'GBP',
+      default_statement_cycle_id: '1',
+      description: 'Test loan product',
+      history_retention_number_of_days: '90',
+      id: 3,
+      institution_id: 1,
+      locked_flag: 'Y',
+      name: 'Product: loan',
+      product_type: 'L',
+      scheme: 'X',
+      status: 'I',
+    },
+  ],
+};

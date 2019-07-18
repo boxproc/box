@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames, modalNames } from 'consts';
+import { cookiesNames, formNames, modalNames } from 'consts';
 import * as api from './api';
 
 import {
@@ -67,8 +67,8 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = propValues
           prepareAdminSysItemValuesWithLockedFlag(propValues);
 
         await dispatch(addAdminSchedulerJob(preparedAdminSchedulerJobValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
-        await dispatch(resetForm(formNames.ADD_ADMIN_SYSTEM_PROPERTY));
+        await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
+        await dispatch(resetForm(formNames.ADD_ADMIN_SCHEDULER_JOB));
       },
       dispatch
     );
@@ -79,7 +79,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteAdminSchedulerJob(id));
-        await dispatch(closeModal(modalNames.EDIT_SCHEDULER));
+        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
       },
       dispatch
     );

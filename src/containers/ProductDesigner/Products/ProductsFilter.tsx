@@ -8,10 +8,13 @@ import { CheckboxField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
 
+import { HandleFilterProducts } from 'store/domains';
+
 import { ParsedSelectValues } from 'types';
 
 interface ProductsFilterProps {
   institutionsOptions: Array<ParsedSelectValues>;
+  filterProducts: HandleFilterProducts;
  }
 
 type ProductsFilterAllProps = ProductsFilterProps &
@@ -20,9 +23,10 @@ type ProductsFilterAllProps = ProductsFilterProps &
 const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
   handleSubmit,
   institutionsOptions,
+  filterProducts,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log('---', data)),
+    handleSubmit(data => filterProducts(data)),
     [handleSubmit]
   );
 
@@ -53,7 +57,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Box>
       </Flex>
       <OkCancelButtons
-        okText="Search"
+        okText="Filter"
         cancelText="Reset"
         disabledCancel={true}
       />
