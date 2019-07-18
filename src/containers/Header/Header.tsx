@@ -131,7 +131,6 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 text="Log out"
                 iconName="logOut"
-                transparent={true}
                 onClick={handleUserLogout}
               />
             </Flex>

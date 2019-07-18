@@ -30,7 +30,6 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
       <Button
         text="delete"
         iconName="delete"
-        transparent={true}
         onClick={() => deleteAdminSchedulerJob(schedulerJobId.toString())}
       />
     </Modal>

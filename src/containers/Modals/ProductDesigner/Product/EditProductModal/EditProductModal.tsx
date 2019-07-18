@@ -41,7 +41,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
           <Button
             text="delete"
             iconName="delete"
-            transparent={true}
             onClick={() => deleteProduct(productId)}
           />
         </Panel>

@@ -24,14 +24,12 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
       <Box mt="20px" mr="10px">
         <Button
           text={okText}
-          transparent={true}
           disabled={disabledOk}
         />
       </Box>
       <Box mt="20px">
         <Button
           text={cancelText}
-          transparent={true}
           onClick={onCancel}
           type="reset"
           disabled={disabledCancel}

@@ -48,8 +48,8 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Box>
         <Box>
           <Field
-            id="lockedFlag"
-            name="lockedFlag"
+            id="activeStatusFlag"
+            name="activeStatusFlag"
             component={CheckboxField}
             label="Show active"
             disabled={false}
@@ -57,7 +57,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Box>
       </Flex>
       <OkCancelButtons
-        okText="Filter"
+        okText="Run it"
         cancelText="Reset"
         disabledCancel={true}
       />

@@ -87,7 +87,6 @@ export const renderDeleteButton = (deleteAction: (name: string) => void) =>
     return !isLocked && (
       <Button
         text="Delete"
-        transparent={true}
         onClick={() => deleteAction(propName)}
       />
     );

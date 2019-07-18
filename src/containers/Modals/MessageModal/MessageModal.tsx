@@ -38,7 +38,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <Box mt="5px">
           <Button
             text="Close"
-            transparent={true}
             onClick={() => closeModal(modalNames.MESSAGE_MODAL)}
           />
         </Box>
@@ -46,7 +45,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
           <Box mt="5px" ml="10px">
             <Button
               text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
-              transparent={true}
               onClick={() => setVisibleDetail(!isVisibleDetail)}
             />
           </Box>

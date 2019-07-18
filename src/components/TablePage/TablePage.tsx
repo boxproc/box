@@ -49,7 +49,6 @@ export const TablePage: React.FC<TablePageProps> = ({
       <Box mb="7px">
         <Button
           text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
-          transparent={true}
           iconName="filter"
           onClick={() => setIsFilter(!isFilter)}
         />
@@ -63,7 +62,6 @@ export const TablePage: React.FC<TablePageProps> = ({
         <Box mb="7px">
           <Button
             text="Add New"
-            transparent={true}
             iconName="plus"
             onClick={() => openModal({
               name: addNewModalName,

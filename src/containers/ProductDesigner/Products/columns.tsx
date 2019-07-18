@@ -108,8 +108,8 @@ export const columns = [
     sortable: true,
     filterable: true,
     Header: <Header title="History Retention Number of Days" showSortIcons={true} />,
-    accessor: 'historyRetentionNumberOfDays',
-    Cell: (props: PCell<'historyRetentionNumberOfDays'>) => (
+    accessor: 'historyRetentionNumberOfDay',
+    Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell
         value={props.value}
       />
