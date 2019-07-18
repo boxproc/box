@@ -46,6 +46,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
       <OkCancelButtons
         okText="Run it"
         cancelText="Reset"
+        cancelIconName="reset"
         disabledCancel={true}
       />
     </form >

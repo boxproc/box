@@ -32,37 +32,42 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="flex-end">
-        <Box width="200px" mr="15px">
-          <Field
-            id="propertyName"
-            name="propertyName"
-            placeholder="Enter Property Name"
-            component={InputField}
-            label="Property Name"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width="200px" mr="15px">
-          <Field
-            id="currentValue"
-            name="currentValue"
-            placeholder="Enter Current Value"
-            component={InputField}
-            label="Current Value"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width="100px">
-          <Field
-            id="lockedFlag"
-            name="lockedFlag"
-            component={CheckboxField}
-            label="Locked"
-            disabled={false}
-          />
-        </Box>
-      </Flex>
+      <Box mx="-10px">
+        <Flex
+          alignItems="flex-end"
+          flexWrap="wrap"
+        >
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="propertyName"
+              name="propertyName"
+              placeholder="Enter Property Name"
+              component={InputField}
+              label="Property Name"
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="currentValue"
+              name="currentValue"
+              placeholder="Enter Current Value"
+              component={InputField}
+              label="Current Value"
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <Field
+              id="lockedFlag"
+              name="lockedFlag"
+              component={CheckboxField}
+              label="Locked"
+              disabled={false}
+            />
+          </Box>
+        </Flex>
+      </Box>
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"

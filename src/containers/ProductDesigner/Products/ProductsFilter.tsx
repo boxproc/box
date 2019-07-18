@@ -59,6 +59,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
       <OkCancelButtons
         okText="Run it"
         cancelText="Reset"
+        cancelIconName="reset"
         disabledCancel={true}
       />
     </form >

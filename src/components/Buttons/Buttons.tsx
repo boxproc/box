@@ -4,6 +4,7 @@ import { Box } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
+import { Reset } from 'styled-icons/boxicons-regular/Reset';
 import { LogOut } from 'styled-icons/feather/LogOut';
 import { Delete } from 'styled-icons/material/Delete';
 
@@ -49,7 +50,7 @@ interface ButtonProps {
   onClick?: () => void;
   transparent?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete';
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'reset' | string;
   type?: 'reset' | 'submit';
 }
 
@@ -63,6 +64,8 @@ const renderIcon = (name: string) => {
       return (<LogOut size="18"/>);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18"/></Box>);
+    case 'reset':
+      return (<Box mt="-2px"><Reset size="14"/></Box>);
     default:
       return null;
   }

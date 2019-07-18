@@ -50,10 +50,6 @@ export interface ProductsData {
   products: Array<ProductItem>;
 }
 
-export interface ProductDataResp {
-  products: ProductItemResp;
-}
-
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   filterProductsParams: ProductFilterParamsPrepared;

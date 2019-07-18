@@ -10,6 +10,7 @@ interface OkCancelButtonProps {
   onCancel?: () => void;
   disabledCancel?: boolean;
   disabledOk?: boolean;
+  cancelIconName?: string;
 }
 
 const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
@@ -18,6 +19,7 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
   onCancel,
   disabledCancel = false,
   disabledOk = false,
+  cancelIconName,
 }) => {
   return (
     <Flex alignItems="center">
@@ -32,6 +34,7 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
           text={cancelText}
           onClick={onCancel}
           type="reset"
+          iconName={cancelIconName}
           disabled={disabledCancel}
         />
       </Box>
