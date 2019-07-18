@@ -8,13 +8,18 @@ import { withSpinner } from 'components/Spinner';
 import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
 import { CloseModal } from 'store/domains';
+import { ParsedSelectValues } from 'types';
 
 interface AddProductModalProps {
   closeModal: CloseModal;
+  institutionsOptions: Array<ParsedSelectValues>;
+  productTypeValue: ParsedSelectValues;
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
+  institutionsOptions,
+  productTypeValue,
 }) => {
   return (
     <Modal
@@ -24,6 +29,11 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+        institutionsOptions={institutionsOptions}
+        productTypeValue={productTypeValue}
+        initialValues={{
+          historyRetentionNumberOfDay: 90,
+        }}
       />
     </Modal>
   );

@@ -26,7 +26,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Institution ID" showSortIcons={true} />,
+    Header: <Header title="Institution" showSortIcons={true} />,
     accessor: 'institutionId',
     Cell: (props: PCell<'institutionId'>) => (
       <Cell
@@ -118,7 +118,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Default Statement Cycle ID" showSortIcons={true} />,
+    Header: <Header title="Default Statement Cycle" showSortIcons={true} />,
     accessor: 'defaultStatementCycleId',
     Cell: (props: PCell<'defaultStatementCycleId'>) => (
       <Cell

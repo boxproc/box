@@ -24,6 +24,7 @@ const RootWrapper = styled.div`
   justify-content: space-between;
   min-width: 320px;
   min-height: 100vh;
+  padding-top: 70px;
 `;
 
 const PagesWrapper = styled(Container)`

@@ -28,6 +28,6 @@ export const sharedInputCss = css<InvalidProp>`
 
   :disabled {
     background-color: ${({theme}) => theme.whiteColor};
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `;

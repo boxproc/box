@@ -28,10 +28,16 @@ import logo from 'resources/images/logo.png';
 import { cookiesUtil } from 'utils';
 
 const Wrapper = styled.header`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   width: 100%;
   padding: 10px 0;
+  background: ${({ theme }) => theme.whiteColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
   font-size: 14px;
+  z-index: 1;
 `;
 
 const UserIcon = styled(User)`
@@ -125,7 +131,7 @@ const Header: React.FC<HeaderProps> = ({
                   title={institution.statusLabel}
                 />
               </Box>
-              <Box mr="20px">
+              <Box mr="35px">
                 <UserBlock/>
               </Box>
               <Button

@@ -26,7 +26,7 @@ interface TablePageProps {
 
 const NoDataComponent = () => (
   <TableNoData
-    title="No rows found"
+    title="No data found"
   />
 );
 
