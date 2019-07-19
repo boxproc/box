@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import OkCancelButtons from 'components/Buttons/OkCancelButtons';
+import { OkCancelButtons } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
 
 import { formNames } from 'consts';

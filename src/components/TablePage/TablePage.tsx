@@ -2,7 +2,7 @@ import React, { ReactChild } from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
 import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';

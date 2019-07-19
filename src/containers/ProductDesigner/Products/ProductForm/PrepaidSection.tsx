@@ -12,7 +12,7 @@ const PrepaidSection: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="breakAgesAllowed"
             name="breakAgesAllowed"
@@ -21,7 +21,7 @@ const PrepaidSection: React.FC = () => {
             label="Break Ages Allowed"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="reloadAllowed"
             name="reloadAllowed"
@@ -30,7 +30,7 @@ const PrepaidSection: React.FC = () => {
             label="Reload Allowed"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="dormantAfterNumberOfDays"
             name="dormantAfterNumberOfDays"

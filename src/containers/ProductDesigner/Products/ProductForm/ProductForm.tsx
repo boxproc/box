@@ -1,7 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import OkCancelButtons from 'components/Buttons/OkCancelButtons';
+import { OkCancelButtons } from 'components/Buttons';
 import { Panel, Tabs } from 'components/Tabs';
 import {
   withLoadCurrencyCodes,

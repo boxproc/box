@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import OkCancelButtons from 'components/Buttons/OkCancelButtons';
+import { OkCancelButtons } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
 
 import { formNames } from 'consts';
@@ -23,26 +23,31 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="flex-end">
-        <Box width="200px" mr="20px">
-          <Field
-            id="name"
-            name="name"
-            placeholder="Enter Name"
-            component={InputField}
-            label="Name"
-          />
-        </Box>
-        <Box>
-          <Field
-            id="lockedFlag"
-            name="lockedFlag"
-            component={CheckboxField}
-            label="Show active"
-            disabled={false}
-          />
-        </Box>
-      </Flex>
+      <Box width={[ 1, 1, 1, 700]} mx="-10px">
+        <Flex
+          alignItems="flex-end"
+          flexWrap="wrap"
+        >
+          <Box width={[ 1, 1 / 2]} p="10px">
+            <Field
+              id="name"
+              name="name"
+              placeholder="Enter Name"
+              component={InputField}
+              label="Name"
+            />
+          </Box>
+          <Box width={[ 1 ]} p="10px">
+            <Field
+              id="lockedFlag"
+              name="lockedFlag"
+              component={CheckboxField}
+              label="Show only &quot;Active&quot;"
+              disabled={false}
+            />
+          </Box>
+        </Flex>
+      </Box>
       <OkCancelButtons
         okText="Run it"
         cancelText="Reset"

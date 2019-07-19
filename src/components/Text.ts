@@ -28,7 +28,7 @@ export const T2 = styled.h2<TitleProps>`
 `;
 
 export const T3 = styled.h3<TitleProps>`
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 18px;
   color: ${({ theme, color }) => color ? color : theme.blackColorOpacity8};
 `;

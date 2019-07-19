@@ -16,7 +16,7 @@ const LoanTypeSection: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="loanType"
             name="loanType"
@@ -27,7 +27,7 @@ const LoanTypeSection: React.FC = () => {
             options={loanTypesOptions}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="apr"
             name="apr"
@@ -36,7 +36,7 @@ const LoanTypeSection: React.FC = () => {
             label="Apr"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="feeLatePayment"
             name="feeLatePayment"
@@ -45,7 +45,7 @@ const LoanTypeSection: React.FC = () => {
             label="Fee Late Payment"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="paymentGraceNumberOfDays"
             name="paymentGraceNumberOfDays"

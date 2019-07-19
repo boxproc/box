@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 
 interface OkCancelButtonProps {
   okText?: string;
@@ -13,7 +13,7 @@ interface OkCancelButtonProps {
   cancelIconName?: string;
 }
 
-const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
+export const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
   okText = 'Ok',
   cancelText = 'Cancel',
   onCancel,
@@ -23,7 +23,7 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
 }) => {
   return (
     <Flex alignItems="center">
-      <Box mt="20px" mr="10px">
+      <Box mr="10px" mt="20px">
         <Button
           text={okText}
           disabled={disabledOk}
@@ -41,5 +41,3 @@ const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
     </Flex>
   );
 };
-
-export default OkCancelButtons;
