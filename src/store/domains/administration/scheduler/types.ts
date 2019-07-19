@@ -15,8 +15,8 @@ export interface AdminSchedulerItem {
 }
 
 export interface AdminSchedulerItemResp {
-  id: number;
-  institution_id: number;
+  id: number | string;
+  institution_id: number | string;
   name: string;
   description: string;
   status: string;
@@ -26,6 +26,35 @@ export interface AdminSchedulerItemResp {
   log_location: string;
   last_execution_datetime: string;
   last_execution_result: string;
+}
+
+export interface AdminSchedulerDataItemId {
+  id: number | string;
+  institution_id: number | string;
+}
+export interface AdminSchedulerDataItemResponse {
+  name?: string;
+  description?: string;
+  status?: string;
+  cronExpression?: string;
+  executableType?: string;
+  executable?: string;
+  logLocation?: string;
+  lastExecutionDatetime?: string;
+  lastExecutionResult?: string;
+}
+
+export interface AdminSchedulerDataItems extends AdminSchedulerDataItemId {
+  name: string;
+  description: string;
+  status: string;
+  cron_expression: string;
+  executable_type: string;
+  executable: string;
+  log_location: string;
+  last_execution_datetime: string;
+  last_execution_result: string;
+
 }
 
 export interface AdminSchedulerDataResp {

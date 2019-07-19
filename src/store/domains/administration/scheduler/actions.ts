@@ -15,19 +15,20 @@ import { apiClient } from 'services';
 import { closeModal } from 'store/domains/modals';
 
 import { Thunk, VoidPromiseThunk, } from 'types';
-import { AdminSchedulerItem,
-   AdminSchedulerItemResp } from './types';
+import { AdminSchedulerDataItemResponse,
+  AdminSchedulerDataItems } from './types';
 
-import { prepareAdminSysItemValuesWithLockedFlag } from './utils';
+import { prepareAdminSysItemValues } from './utils';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type GetAdminSchedulerJobs = () => GetAdminSchedulerJobAction;
 export type HandleGetAdminSchedulerJobs = VoidPromiseThunk;
 
-export type AddAdminSchedulerJob = (propValues: AdminSchedulerItemResp) =>
+export type AddAdminSchedulerJob = (propValues: AdminSchedulerDataItems) =>
 AddAdminSchedulerJobAction;
-export type HandleAddAdminSchedulerJob = (propValues: AdminSchedulerItem) => Thunk<void>;
+export type HandleAddAdminSchedulerJob =
+ (propValues: AdminSchedulerDataItemResponse) => Thunk<void>;
 
 export type DeleteAdminSchedulerJob = (id: string|number) => DeleteAdminSchedulerJobAction;
 export type HandleDeleteAdminSchedulerJob = (id: string|number) => Thunk<void>;
@@ -64,7 +65,7 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = propValues
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedAdminSchedulerJobValues =
-          prepareAdminSysItemValuesWithLockedFlag(propValues);
+          prepareAdminSysItemValues(propValues);
 
         await dispatch(addAdminSchedulerJob(preparedAdminSchedulerJobValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));

@@ -5,23 +5,30 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
-import { CloseModal } from 'store/domains';
-
+import AddSchedulerJobForm from 'containers/Administration/Scheduler/AddSchedulerJobForm';
+import { CloseModal, HandleAddAdminSchedulerJob } from 'store/domains';
 interface AddSchedulerModalProps {
   closeModal: CloseModal;
+  addAdminSchedulerJob: HandleAddAdminSchedulerJob;
 }
 
 // eslint-disable-next-line
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
-  // closeModal,
+   // tslint:disable-next-line: no-shadowed-variable
+   closeModal,
+   addAdminSchedulerJob,
+
 }) => {
   return (
     <Modal
       name={modalNames.ADD_ADMIN_SCHEDULER}
-      title="Add New"
-      maxContainerWidth={700}
+      title="Add Scheduler Job"
+      maxContainerWidth={800}
     >
-      Add New
+      <AddSchedulerJobForm
+        onCancel={() => closeModal(modalNames.ADD_ADMIN_SCHEDULER)}
+        addAdminSchedulerJob={addAdminSchedulerJob}
+      />
     </Modal>
   );
 };
