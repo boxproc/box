@@ -100,11 +100,16 @@ export const customStyles: StylesConfig = {
   }),
   multiValueRemove: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    cursor: 'pointer',
+    backgroundColor: theme.lightGrayColor,
     // eslint-disable-next-line
     [':hover']: {
       backgroundColor: theme.lightGrayColor,
       color: false,
+    },
+    // eslint-disable-next-line
+    ['& > svg']: {
+      width: 10,
+      cursor: 'pointer',
     },
   }),
   noOptionsMessage: (provided: React.CSSProperties, state: SelectState) => ({

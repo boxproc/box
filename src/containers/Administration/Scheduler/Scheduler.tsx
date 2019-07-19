@@ -3,12 +3,13 @@ import { RowInfo } from 'react-table';
 
 import { theme } from 'theme';
 
-import { Button } from 'components/Buttons/Buttons';
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
+
+import SchedulerButtonsDropdown from './SchedulerButtonsDropdown';
 
 import {
   AdminSchedulerItem,
@@ -177,12 +178,9 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       ),
     },
     {
-      maxWidth: 100,
       accessor: 'executeButton',
       Cell: () => (
-        <Button
-          text="Execute"
-        />
+        <SchedulerButtonsDropdown/>
       ),
     },
   ];

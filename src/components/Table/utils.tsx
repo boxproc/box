@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CellInfo } from 'react-table';
 
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 import { CheckedBoxIcon, UncheckedBoxIcon } from 'components/Icon';
 
 import { codeKeys, yesNoTypes } from 'consts';

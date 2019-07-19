@@ -1,4 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
+import { ParsedSelectValues } from 'types';
 
 export interface ProductItemResp {
   id: number;
@@ -31,11 +32,13 @@ export interface ProductItem {
 export interface ProductFilterParamsPrepared {
   status?: string;
   institution_id?: Array<number>;
+  product_type?: Array<string>;
 }
 
 export interface ProductFilterParams {
   activeStatusFlag?: boolean;
-  institutionId?: Array<any>;
+  institutionId?: Array<ParsedSelectValues>;
+  productType?: Array<ParsedSelectValues>;
 }
 
 export interface ProductId {

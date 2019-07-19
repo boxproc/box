@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import OkCancelButtons from 'components/Buttons/OkCancelButtons';
+import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
 
 import { formNames, statusTypesOptions } from 'consts';
@@ -24,7 +24,7 @@ interface AddSchedulerJobFormProps {
 }
 
 type AddSchedulerJobFormAllProps = AddSchedulerJobFormProps &
-    InjectedFormProps<{}, AddSchedulerJobFormProps>;
+  InjectedFormProps<{}, AddSchedulerJobFormProps>;
 
 const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
     handleSubmit,
@@ -34,18 +34,18 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
     isDisabledStatus,
     onCancel,
 }) => {
-    const handleSubmitForm = React.useCallback(
-        handleSubmit(data => addAdminSchedulerJob(data)),
-        [handleSubmit, addAdminSchedulerJob]
-    );
+  const handleSubmitForm = React.useCallback(
+    handleSubmit(data => addAdminSchedulerJob(data)),
+    [handleSubmit, addAdminSchedulerJob]
+  );
 
-    return (
-        <form onSubmit={handleSubmitForm}>
-            <Tabs>
-                <Panel title="Job">
-                <Box mx="-10px" >
+  return (
+    <form onSubmit={handleSubmitForm}>
+      <Tabs>
+        <Panel title="Job">
+          <Box mx="-10px" >
             <Flex
-                flexWrap="wrap"
+              flexWrap="wrap"
             >
                 <Box width={[1 / 2]} p="10px">
                     <Field
@@ -132,23 +132,23 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
                     />
                 </Box>
             </Flex>
-            </Box>
-                </Panel>
-                <Panel title="Schedule">
-                    CRON
-                </Panel>
-            </Tabs>
-            <OkCancelButtons
-                okText="Save"
-                cancelText="Cancel"
-                onCancel={onCancel}
-            />
-        </form >
-    );
+          </Box>
+        </Panel>
+        <Panel title="Schedule">
+          CRON
+        </Panel>
+      </Tabs>
+      <OkCancelButtons
+        okText="Save"
+        cancelText="Cancel"
+        onCancel={onCancel}
+      />
+    </form >
+  );
 };
 
 export default reduxForm<{}, AddSchedulerJobFormProps>({
-    form: formNames.ADD_ADMIN_SCHEDULER_JOB,
-    destroyOnUnmount: true,
-    enableReinitialize: true,
+  form: formNames.ADD_ADMIN_SCHEDULER_JOB,
+  destroyOnUnmount: true,
+  enableReinitialize: true,
 })(AddSchedulerJobForm);

@@ -12,7 +12,7 @@ const SavingsSection: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="savingsType"
             name="savingsType"
@@ -21,7 +21,7 @@ const SavingsSection: React.FC = () => {
             label="Savings Type"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="apr"
             name="apr"
@@ -30,7 +30,7 @@ const SavingsSection: React.FC = () => {
             label="Apr"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="minimumDepositAllowed"
             name="minimumDepositAllowed"
@@ -39,7 +39,7 @@ const SavingsSection: React.FC = () => {
             label="Minimum Deposit Allowed"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="maximumDepositAllowed"
             name="maximumDepositAllowed"
@@ -48,7 +48,7 @@ const SavingsSection: React.FC = () => {
             label="Maximum Deposit Allowed"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="maximumMonthlyDeposit"
             name="maximumMonthlyDeposit"

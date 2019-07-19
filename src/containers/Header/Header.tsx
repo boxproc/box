@@ -7,7 +7,7 @@ import { User } from 'styled-icons/fa-solid/User';
 import styled from 'theme';
 
 import { Container } from 'components/Block';
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 
@@ -126,9 +126,9 @@ const Header: React.FC<HeaderProps> = ({
             <Flex alignItems="center">
               <Box mr="20px">
                 <StatusBlock
-                  text={institution.institutionName}
-                  status={institution.status}
-                  title={institution.statusLabel}
+                  text={institution && institution.institutionName}
+                  status={institution && institution.status}
+                  title={institution && institution.statusLabel}
                 />
               </Box>
               <Box mr="35px">

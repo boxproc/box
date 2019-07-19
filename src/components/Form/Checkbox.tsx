@@ -14,7 +14,6 @@ const CheckboxWrapper = styled.div<DisabledProp>`
   display: flex;
   align-items: flex-start;
   font-size: 0;
-  margin-bottom: 20px;
 
   .label {
     cursor: pointer;

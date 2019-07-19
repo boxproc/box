@@ -66,7 +66,6 @@ interface PanelProps {
 
 export const Panel: React.FC<PanelProps> = ({
   children,
-  isDisabled,
 }) => {
   return (
     <div>{children}</div>

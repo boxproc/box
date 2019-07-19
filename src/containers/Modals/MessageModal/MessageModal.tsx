@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Paragraph } from 'components/Text';
 

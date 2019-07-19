@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ButtonBg } from 'components/Buttons/Buttons';
+import { ButtonBg } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
@@ -89,7 +89,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         label="Remember me"
         disabled={false}
       />
-      <Box mt="10px">
+      <Box mt="30px">
         <ButtonBg text="Log in"/>
       </Box>
     </FormWrapper>

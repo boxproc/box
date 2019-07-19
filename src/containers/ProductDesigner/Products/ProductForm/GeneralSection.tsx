@@ -37,49 +37,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="institutionId"
-            name="institutionId"
-            isSearchable={true}
-            component={SelectField}
-            label="Institution"
-            placeholder="Select Institution"
-            options={institutionsOptions}
-            isDisabled={isDisabledInstitutions}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="name"
-            name="name"
-            placeholder="Enter Name"
-            component={InputField}
-            label="Name"
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={InputField}
-            label="Description"
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="status"
-            name="status"
-            component={SelectField}
-            isSearchable={true}
-            label="Status"
-            placeholder="Select Status"
-            options={statusTypesOptions}
-            isDisabled={isDisabledStatus}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="productType"
             name="productType"
@@ -92,7 +50,49 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             hint={!isDisabledProductTypes && 'Select Product Type to View Details'}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="institutionId"
+            name="institutionId"
+            isSearchable={true}
+            component={SelectField}
+            label="Institution"
+            placeholder="Select Institution"
+            options={institutionsOptions}
+            isDisabled={isDisabledInstitutions}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="name"
+            name="name"
+            placeholder="Enter Name"
+            component={InputField}
+            label="Name"
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="description"
+            name="description"
+            placeholder="Enter Description"
+            component={InputField}
+            label="Description"
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            isSearchable={true}
+            label="Status"
+            placeholder="Select Status"
+            options={statusTypesOptions}
+            isDisabled={isDisabledStatus}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="scheme"
             name="scheme"
@@ -104,7 +104,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             isDisabled={false}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="currencyCode"
             name="currencyCode"
@@ -117,7 +117,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             isLoading={isCurrencyCodesLoading}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
@@ -126,7 +126,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             label="History Retention Number of Days"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="defaultStatementCycleId"
             name="defaultStatementCycleId"

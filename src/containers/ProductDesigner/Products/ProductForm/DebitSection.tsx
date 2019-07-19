@@ -12,7 +12,7 @@ const DebitSection: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="overdraftAllowed"
             name="overdraftAllowed"
@@ -21,7 +21,7 @@ const DebitSection: React.FC = () => {
             label="Overdraft Allowed"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="aprOverdraft"
             name="aprOverdraft"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from 'components/Buttons/Buttons';
+import { Button } from 'components/Buttons';
 
 import Modal from 'components/Modal';
 import { withSpinner } from 'components/Spinner';
