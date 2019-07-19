@@ -10,8 +10,8 @@ import { formNames } from 'consts';
 
 import { HandleAddAdminSchedulerJob } from 'store/domains';
 
+import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
-import { Tabs, Panel } from 'components/Tabs';
 
 interface AddSchedulerJobFormProps {
     addAdminSchedulerJob: HandleAddAdminSchedulerJob;
