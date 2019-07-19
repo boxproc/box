@@ -74,6 +74,12 @@ export const productTypesOptions = [
   { value: 'C', label: 'Revolving credit' },
 ];
 
+export const executubleTypeOptions  = [
+  { value: 'A', label: 'Api call'},
+  { value: 'S', label: 'Shell script'},
+  { value: 'J', label: 'Java'},
+];
+
 export enum schemeTypes {
   MASTER_CARD = 'M',
   UPI = 'U',
