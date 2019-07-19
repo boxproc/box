@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -9,7 +9,11 @@ const TabsWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadowBottom};
 `;
 
-const TabTitle = styled.div`
+interface TabTitleProps {
+  isDisabled?: boolean;
+}
+
+const TabTitle = styled.div<TabTitleProps>`
   padding: 10px 25px;
   text-transform: uppercase;
   font-weight: 500;
@@ -17,6 +21,8 @@ const TabTitle = styled.div`
   color: ${({ theme }) => theme.grayColor};
   font-size: 14px;
   letter-spacing: .5pt;
+  opacity: ${({ isDisabled }) => isDisabled && .5};
+  pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
 
   &.is-active {
     color: ${({ theme }) => theme.darkGrayColor};
@@ -37,13 +43,13 @@ export const Tabs: React.FC<TabsProps> = ({
         <Flex>
           {React.Children.map(children, (child, i) => {
             return (
-              <Box
+              <TabTitle
+                className={i === activeTabIndex && 'is-active'}
+                isDisabled={children[i].props.isDisabled}
                 onClick={() => setActiveTabIndex(i)}
               >
-                <TabTitle className={i === activeTabIndex && 'is-active'}>
-                  {children[i].props.title}
-                </TabTitle>
-              </Box>
+                {children[i].props.title}
+              </TabTitle>
             );
           })}
         </Flex>
@@ -55,10 +61,12 @@ export const Tabs: React.FC<TabsProps> = ({
 
 interface PanelProps {
   title: string;
+  isDisabled?: boolean;
 }
 
 export const Panel: React.FC<PanelProps> = ({
   children,
+  isDisabled,
 }) => {
   return (
     <div>{children}</div>

@@ -26,7 +26,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Institution ID" showSortIcons={true} />,
+    Header: <Header title="Institution" showSortIcons={true} />,
     accessor: 'institutionId',
     Cell: (props: PCell<'institutionId'>) => (
       <Cell
@@ -108,8 +108,8 @@ export const columns = [
     sortable: true,
     filterable: true,
     Header: <Header title="History Retention Number of Days" showSortIcons={true} />,
-    accessor: 'historyRetentionNumberOfDays',
-    Cell: (props: PCell<'historyRetentionNumberOfDays'>) => (
+    accessor: 'historyRetentionNumberOfDay',
+    Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell
         value={props.value}
       />
@@ -118,7 +118,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Default Statement Cycle ID" showSortIcons={true} />,
+    Header: <Header title="Default Statement Cycle" showSortIcons={true} />,
     accessor: 'defaultStatementCycleId',
     Cell: (props: PCell<'defaultStatementCycleId'>) => (
       <Cell

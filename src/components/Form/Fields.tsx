@@ -3,7 +3,9 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
 import styled from 'theme';
 
-import { Label } from '../Text';
+import Hint from 'components/Hint';
+
+import { Label } from 'components/Text';
 
 import Input from './Input';
 import PasswordInput from './Password';
@@ -53,6 +55,7 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
   isRequired?: boolean;
+  hint?: string;
 }
 
 interface InputWrapperProps {
@@ -77,6 +80,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
     focusOnLabelClick = true,
     invalid: defaultInvalid,
     isRequired,
+    hint,
     meta: {
       touched,
       error,
@@ -100,9 +104,12 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
         invalid={invalid}
       >
         {label}
-        {(invalid && showErrors)
-          ? (error && <span>{error}</span>)
-          : isRequired && <span className="required-icon">*</span>
+        {(invalid && showErrors) ?
+          (error && <span>{error}</span>)
+          :
+            hint ? <Hint text={hint} />
+            :
+            isRequired && <span className="required-icon">*</span>
         }
       </Title>
       <div>

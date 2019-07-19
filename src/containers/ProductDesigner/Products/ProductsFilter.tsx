@@ -39,8 +39,8 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
             name="institutionId"
             isSearchable={true}
             component={SelectField}
-            label="Institution ID"
-            placeholder="Select Institution ID"
+            label="Institution"
+            placeholder="Select Institution"
             options={institutionsOptions}
             isDisabled={false}
             isMulti={true}
@@ -48,8 +48,8 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Box>
         <Box>
           <Field
-            id="lockedFlag"
-            name="lockedFlag"
+            id="activeStatusFlag"
+            name="activeStatusFlag"
             component={CheckboxField}
             label="Show active"
             disabled={false}
@@ -57,8 +57,9 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Box>
       </Flex>
       <OkCancelButtons
-        okText="Filter"
+        okText="Run it"
         cancelText="Reset"
+        cancelIconName="reset"
         disabledCancel={true}
       />
     </form >

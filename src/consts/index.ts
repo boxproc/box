@@ -90,6 +90,32 @@ export const schemeTypesOptions = [
   { value: 'X', label: 'Unspecified'},
 ];
 
+export enum statementTypes {
+  MONTHLY = 'M',
+  BI_MONTHLY = 'N',
+  WEEKLY = 'W',
+  BI_WEEKLY = 'V',
+  FIXED_NUMBER_OF_DAYS = 'F',
+}
+
+export const statementTypesOptions = [
+  {value: 'M', label: 'Monthly'},
+  {value: 'N', label: 'Bi-monthly'},
+  {value: 'W', label: 'Weekly'},
+  {value: 'V', label: 'Bi-weekly'},
+  {value: 'F', label: 'Fixed number of days'},
+];
+
+export enum loanTypes {
+  BUY_NOW_PAY_LATER = 'B',
+  INSTALLMENTS = 'I',
+}
+
+export const loanTypesOptions = [
+  {value: 'B', label: 'Buy now, pay later'},
+  {value: 'I', label: 'Installments'},
+];
+
 export enum uiItemConsts {
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',

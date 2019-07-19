@@ -182,7 +182,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       Cell: () => (
         <Button
           text="Execute"
-          transparent={true}
         />
       ),
     },
