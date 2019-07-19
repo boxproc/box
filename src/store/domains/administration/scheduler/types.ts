@@ -16,7 +16,7 @@ export interface AdminSchedulerItem {
 
 export interface AdminSchedulerItemResp {
   id: number | string;
-  institution_id: number | string;
+  institution_id: number;
   name: string;
   description: string;
   status: string;
@@ -30,9 +30,10 @@ export interface AdminSchedulerItemResp {
 
 export interface AdminSchedulerDataItemId {
   id: number | string;
-  institution_id: number | string;
+  institution_id: number ;
 }
 export interface AdminSchedulerDataItemResponse {
+  institution_id?: number;
   name?: string;
   description?: string;
   status?: string;
@@ -40,8 +41,6 @@ export interface AdminSchedulerDataItemResponse {
   executableType?: string;
   executable?: string;
   logLocation?: string;
-  lastExecutionDatetime?: string;
-  lastExecutionResult?: string;
 }
 
 export interface AdminSchedulerDataItems extends AdminSchedulerDataItemId {

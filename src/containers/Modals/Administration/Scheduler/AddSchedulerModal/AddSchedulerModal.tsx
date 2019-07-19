@@ -6,10 +6,12 @@ import { modalNames } from 'consts';
 import { withSpinner } from 'components/Spinner';
 
 import AddSchedulerJobForm from 'containers/Administration/Scheduler/AddSchedulerJobForm';
-import { CloseModal, HandleAddAdminSchedulerJob } from 'store/domains';
+import { CloseModal } from 'store/domains';
+import { ParsedSelectValues } from 'types';
 interface AddSchedulerModalProps {
   closeModal: CloseModal;
-  addAdminSchedulerJob: HandleAddAdminSchedulerJob;
+  addAdminSchedulerJob: any;
+  institutionsOptions: Array<ParsedSelectValues>;
 }
 
 // eslint-disable-next-line
@@ -17,7 +19,7 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
    // tslint:disable-next-line: no-shadowed-variable
    closeModal,
    addAdminSchedulerJob,
-
+   institutionsOptions,
 }) => {
   return (
     <Modal
@@ -28,6 +30,7 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
       <AddSchedulerJobForm
         onCancel={() => closeModal(modalNames.ADD_ADMIN_SCHEDULER)}
         addAdminSchedulerJob={addAdminSchedulerJob}
+        institutionsOptions={institutionsOptions}
       />
     </Modal>
   );

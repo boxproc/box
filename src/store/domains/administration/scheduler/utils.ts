@@ -1,6 +1,9 @@
 import { camelizeFieldsUtil } from 'utils';
 
-export const prepareAdminSysItemValues =
-  (propValues: any): any => {
-    return camelizeFieldsUtil.camelizeFields(propValues, 'decamelize');
+export const prepareAdminSchedulerJobValues =
+  (values: any): any => {
+    return {
+      ...camelizeFieldsUtil.camelizeFields(values, 'decamelize'),
+      institution_id: values.institutionId.value,
+    };
   };

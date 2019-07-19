@@ -4,17 +4,22 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import OkCancelButtons from 'components/Buttons/OkCancelButtons';
-import { InputField } from 'components/Form';
+import { InputField, SelectField } from 'components/Form';
 
-import { formNames } from 'consts';
+import { formNames, statusTypesOptions } from 'consts';
 
 import { HandleAddAdminSchedulerJob } from 'store/domains';
 
 import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
 
+import { ParsedSelectValues } from 'types';
+
 interface AddSchedulerJobFormProps {
     addAdminSchedulerJob: HandleAddAdminSchedulerJob;
+    institutionsOptions: Array<ParsedSelectValues>;
+    isDisabledInstitutions?: boolean;
+    isDisabledStatus?: boolean;
     onCancel: () => void;
 }
 
@@ -24,6 +29,9 @@ type AddSchedulerJobFormAllProps = AddSchedulerJobFormProps &
 const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
     handleSubmit,
     addAdminSchedulerJob,
+    isDisabledInstitutions,
+    institutionsOptions,
+    isDisabledStatus,
     onCancel,
 }) => {
     const handleSubmitForm = React.useCallback(
@@ -59,16 +67,18 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
                         validate={[formErrorUtil.required]}
                     />
                 </Box>
-                <Box width={[1 / 2]}  p="10px">
-                    <Field
-                        id="status"
-                        name="status"
-                        placeholder="Enter  Job Description"
-                        component={InputField}
-                        label="Scheduler Job Status"
-                        disabled={false}
-                    />
-                </Box>
+                <Box width={[1 / 2]} p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            isSearchable={true}
+            label="Status"
+            placeholder="Select Status"
+            options={statusTypesOptions}
+            isDisabled={isDisabledStatus}
+          />
+        </Box>
                 <Box width={[1 / 2]}  p="10px">
                     <Field
                         id="cronExpression"
@@ -79,6 +89,18 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
                         disabled={false}
                     />
                 </Box>
+                <Box width={[1 / 2]} p="10px">
+          <Field
+            id="institutionId"
+            name="institutionId"
+            isSearchable={true}
+            component={SelectField}
+            label="Institution"
+            placeholder="Select Institution"
+            options={institutionsOptions}
+            isDisabled={isDisabledInstitutions}
+          />
+        </Box>
                 <Box width={[1 / 2]}  p="10px">
                     <Field
                         id="executableType"

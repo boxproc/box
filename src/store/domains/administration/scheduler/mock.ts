@@ -4,7 +4,7 @@ export const AdminSchedulerData: AdminSchedulerDataResp = {
   s_scheduler: [
     {
       id: '1',
-      institution_id: '1',
+      institution_id: 1,
       name: 'API test Job 1',
       description: 'Job 1 description',
       status: 'A',
@@ -17,7 +17,7 @@ export const AdminSchedulerData: AdminSchedulerDataResp = {
     },
     {
       id: '22',
-      institution_id: '2',
+      institution_id: 2,
       name: 'Shell script test Job 2',
       description: 'Job 2 description',
       status: 'A',
