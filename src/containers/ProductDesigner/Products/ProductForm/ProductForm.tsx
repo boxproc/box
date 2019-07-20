@@ -66,6 +66,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
         <Panel
           title="Details"
           isDisabled={!productTypeValue}
+          hintForDisabled="Select Product Type"
         >
           {productTypeValue && productTypeValue.value === productTypes.LOAN &&
             (<LoanTypeSection/>)

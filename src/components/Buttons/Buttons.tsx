@@ -19,15 +19,19 @@ export const sharedStyle = css`
   outline: 0;
 `;
 
-const ButtonWrapper = styled.button`
+interface ButtonWrapperProps {
+  size?: string;
+}
+
+const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${sharedStyle}
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
+  // width: auto;
   color: ${({ theme }) => theme.blackColor};
   background: transparent;
-  font-size: 13px;
+  font-size: ${({ size }) => size ? size + 'px' : '13px'};
   text-transform: uppercase;
   letter-spacing: .2pt;
   color: ${({ theme }) => theme.grayColor };
@@ -47,6 +51,7 @@ const ButtonWrapper = styled.button`
 interface ButtonProps {
   text: string;
   disabled?: boolean;
+  size?: string;
   onClick?: () => void;
   transparent?: boolean;
   className?: string;
@@ -61,7 +66,7 @@ const renderIcon = (name: string) => {
     case 'plus':
       return (<Box mt="-2px"><Plus size="18"/></Box>);
     case 'logOut':
-      return (<LogOut size="18"/>);
+      return (<LogOut size="16"/>);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18"/></Box>);
     case 'reset':
@@ -78,6 +83,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   iconName,
   type,
+  size,
 }) => {
   return (
     <ButtonWrapper
@@ -85,6 +91,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={className}
       disabled={disabled}
       type={type}
+      size={size}
     >
       {iconName &&
         <Box mr="2px">

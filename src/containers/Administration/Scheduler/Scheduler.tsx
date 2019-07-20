@@ -178,6 +178,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       ),
     },
     {
+      minWidth: 125,
       accessor: 'executeButton',
       Cell: () => (
         <SchedulerButtonsDropdown/>

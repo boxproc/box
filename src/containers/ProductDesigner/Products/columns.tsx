@@ -13,7 +13,7 @@ type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
 
 export const columns = [
   {
-    maxWidth: 80,
+    maxWidth: 70,
     filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',

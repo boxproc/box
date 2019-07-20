@@ -48,6 +48,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             options={productTypesOptions}
             isDisabled={isDisabledProductTypes}
             hint={!isDisabledProductTypes && 'Select Product Type to View Details'}
+            hintPosition="top"
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

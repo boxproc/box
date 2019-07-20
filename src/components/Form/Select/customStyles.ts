@@ -114,7 +114,7 @@ export const customStyles: StylesConfig = {
   }),
   noOptionsMessage: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    color: theme.grayColor,
+    color: theme.lightGrayColor,
   }),
   valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,

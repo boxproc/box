@@ -12,28 +12,16 @@ const DropdownWrapper = styled.div`
 
   .dropdown-list {
     position: absolute;
-    left: -10px;
+    left: 0;
     top: calc(100% + 3px);
-    min-width: 130px;
-    box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.whiteColor};
+    border: 1px solid ${({ theme }) => theme.darkGrayColor};
     z-index: 1;
   }
 
   .dropdown-option {
-    position: relative;
-    padding: 7px 10px 5px;
-    cursor: pointer;
-
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
+    padding: 10px 10px 8px;
+    margin-right: 1px;
 
     &:hover {
       background-color: ${({ theme }) => theme.lighterGrayColor};
@@ -67,10 +55,10 @@ export const Dropdown: React.FC = ({
 
   const handleClickOutside = (e: MouseEvent) => {
     if (isOpened
-        && dropdownListRef.current
-        && !dropdownListRef.current.contains(e.target)
-        && !dropdownToggleBtnRef.current.contains(e.target)
-      ) {
+      && dropdownListRef.current
+      && !dropdownListRef.current.contains(e.target)
+      && !dropdownToggleBtnRef.current.contains(e.target)
+    ) {
       setIsOpened(false);
     }
   };
@@ -91,32 +79,31 @@ export const Dropdown: React.FC = ({
           />
         </Box>
       </Flex>
-
-      <div className="dropdown-list" ref={dropdownListRef}>
-        {isOpened && React.Children.map(children, (child, i) => {
-          if (i === selectedIndex) {
-            return null;
-          }
-          return (
-            <div
-              className="dropdown-option"
-              onClick={() => {
-                setIsOpened(false);
-                setSelectedIndex(i);
-              }}
-            >
-              {child}
-            </div>
-          );
-        })}
-      </div>
+      {isOpened && (
+        <div className="dropdown-list" ref={dropdownListRef}>
+          {React.Children.map(children, (child, i) => {
+            if (i === selectedIndex) {
+              return null;
+            }
+            return (
+              <div
+                className="dropdown-option"
+                onClick={() => {
+                  setIsOpened(false);
+                  setSelectedIndex(i);
+                }}
+              >
+                {child}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </DropdownWrapper>
   );
 };
 
-interface OptionProps {}
-
-export const Option: React.FC<OptionProps> = ({
+export const Option: React.FC = ({
   children,
 }) => {
   return (
