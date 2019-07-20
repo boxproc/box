@@ -26,7 +26,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalNames.MESSAGE_MODAL}
       title={title}
-      maxContainerWidth={350}
+      maxContainerWidth={500}
       zIndex="101"
       closeOnBackdrop={true}
     >

@@ -28,7 +28,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   align-items: flex-start;
   overflow: hidden;
   font-size: 13px;
-  line-height: 1.35;
+  line-height: 1.5;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
   word-break: break-word;

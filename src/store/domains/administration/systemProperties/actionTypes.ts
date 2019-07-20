@@ -1,25 +1,24 @@
 import {
-  AdminSysPropDataResp,
-  AdminSysPropNameDataResp,
+  AdminSysPropFilterParamsPrepared,
   AdminSysPropsDataResp,
-  AdminSysPropsItem,
+  EditableAdminSysPropPrepared,
 } from './types';
 
-import { ApiResponse } from 'types';
+import { ApiResponse, SuccessResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_SYS_PROPS = 'administration/systemProperties/GET_ADMIN_SYS_PROPS',
   GET_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_FULFILLED',
   GET_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_REJECTED',
 
-  ADD_ADMIN_SYS_PROP = 'administration/systemProperties/ADD_ADMIN_SYS_PROP',
-  ADD_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_FULFILLED',
-  ADD_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_REJECTED',
-
   DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
   DELETE_ADMIN_SYS_PROP_FULFILLED =
     'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
   DELETE_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_REJECTED',
+
+  ADD_ADMIN_SYS_PROP = 'administration/systemProperties/ADD_ADMIN_SYS_PROP',
+  ADD_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_FULFILLED',
+  ADD_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_REJECTED',
 
   UPDATE_ADMIN_SYS_PROPS = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS',
   UPDATE_ADMIN_SYS_PROPS_FULFILLED =
@@ -37,6 +36,7 @@ export enum ActionTypeKeys {
    'administration/systemProperties/SET_FILTER_ADMIN_SYS_PROPS',
 }
 
+// Get all system properties
 export interface GetAdminSysPropsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS;
@@ -52,29 +52,16 @@ export interface GetAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS_REJECTED;
 }
 
-export interface AddAdminSysPropAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP;
-}
-
-export interface AddAdminSysPropFulfilledAction {
-  readonly payload: AdminSysPropDataResp;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
-}
-
-export interface AddAdminSysPropRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_REJECTED;
-}
-
+// Delete system property by name
 export interface DeleteAdminSysPropAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP;
 }
 
 export interface DeleteAdminSysPropFulfilledAction {
-  readonly payload: AdminSysPropNameDataResp;
+  readonly payload: SuccessResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
+  readonly meta: string;
 }
 
 export interface DeleteAdminSysPropRejectedAction {
@@ -82,14 +69,33 @@ export interface DeleteAdminSysPropRejectedAction {
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_REJECTED;
 }
 
+// Add new system property
+export interface AddAdminSysPropAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP;
+}
+
+export interface AddAdminSysPropFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
+  readonly meta: EditableAdminSysPropPrepared;
+}
+
+export interface AddAdminSysPropRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_REJECTED;
+}
+
+// Edit system property
 export interface UpdateAdminSysPropsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS;
 }
 
 export interface UpdateAdminSysPropsFulfilledAction {
-  readonly payload: AdminSysPropDataResp;
+  readonly payload: SuccessResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
+  readonly meta: EditableAdminSysPropPrepared;
 }
 
 export interface UpdateAdminSysPropsRejectedAction {
@@ -97,6 +103,7 @@ export interface UpdateAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_REJECTED;
 }
 
+// Filter system properties by property name
 export interface FilterAdminSysPropsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS;
@@ -105,6 +112,7 @@ export interface FilterAdminSysPropsAction {
 export interface FilterAdminSysPropsFulfilledAction {
   readonly payload: AdminSysPropsDataResp;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED;
+  // readonly meta: AdminSysPropFilterParamsPrepared;
 }
 
 export interface FilterAdminSysPropsRejectedAction {
@@ -113,7 +121,7 @@ export interface FilterAdminSysPropsRejectedAction {
 }
 
 export interface SetFilterAdminSysPropsAction {
-  readonly payload: AdminSysPropsItem;
+  readonly payload: AdminSysPropFilterParamsPrepared;
   readonly type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS;
 }
 

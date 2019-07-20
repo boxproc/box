@@ -16,8 +16,17 @@ import {
   UpdateAdminSysPropsAction,
 } from './actionTypes';
 
-import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
-import { prepareAdminSysItemValues, prepareAdminSysItemValuesWithLockedFlag } from './utils';
+import {
+  AdminSysPropFilterParams,
+  AdminSysPropFilterParamsPrepared,
+  EditableAdminSysProp,
+  EditableAdminSysPropPrepared,
+} from './types';
+
+import {
+  prepareAdminSysPropFilterParams,
+  prepareEditableAdminSysPropItemValues,
+} from './utils';
 
 import { apiClient } from 'services';
 
@@ -28,22 +37,22 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetAdminSysProps = () => GetAdminSysPropsAction;
 export type HandleGetAdminSysProps = VoidPromiseThunk;
 
-export type AddAdminSysProp = (propValues: AdminSysPropsItemResp) =>
-  AddAdminSysPropAction;
-export type HandleAddAdminSysProp = (propValues: AdminSysPropsItem) => Thunk<void>;
-
 export type DeleteAdminSysProp = (propName: string) => DeleteAdminSysPropAction;
 export type HandleDeleteAdminSysProp = (propName: string) => Thunk<void>;
 
-export type UpdateAdminSysProps = (propValues: AdminSysPropsItemResp) =>
+export type AddAdminSysProp = (propValues: EditableAdminSysPropPrepared) =>
+  AddAdminSysPropAction;
+export type HandleAddAdminSysProp = (propValues: EditableAdminSysProp) => Thunk<void>;
+
+export type UpdateAdminSysProps = (propValues: EditableAdminSysPropPrepared) =>
   UpdateAdminSysPropsAction;
-export type HandleUpdateAdminSysProps = (propValues: AdminSysPropsItem) => Thunk<void>;
+export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Thunk<void>;
 
-export type FilterAdminSysProps = (propParams: Partial<AdminSysPropsItemResp>)
+export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared)
   => FilterAdminSysPropsAction;
-export type HandleFilterAdminSysProps = (propParams: Partial<AdminSysPropsItem>) => Thunk<void>;
+export type HandleFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) => Thunk<void>;
 
-export type SetFilterAdminSysProps = (propParams: AdminSysPropsItem) =>
+export type SetFilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared) =>
   SetFilterAdminSysPropsAction;
 
 export const getAdminSysProps: GetAdminSysProps = () => ({
@@ -51,29 +60,33 @@ export const getAdminSysProps: GetAdminSysProps = () => ({
   payload: api.getAdminSysProps(),
 });
 
-export const addAdminSysProp: AddAdminSysProp = propValues => ({
-  type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
-  payload: api.addAdminSysProp(propValues),
-});
-
 export const deleteAdminSysProp: DeleteAdminSysProp = propName => ({
   type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
   payload: api.deleteAdminSysProp(propName),
+  meta: propName,
+});
+
+export const addAdminSysProp: AddAdminSysProp = propValues => ({
+  type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
+  payload: api.addAdminSysProp(propValues),
+  meta: propValues,
 });
 
 export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS,
   payload: api.updateAdminSysProps(propValues),
+  meta: propValues,
 });
 
-export const filterAdminSysProps: FilterAdminSysProps = propParams => ({
+export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
   type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
-  payload: api.filterAdminSysProps(propParams),
+  payload: api.filterAdminSysProps(filterParams),
+  // meta: filterParams,
 });
 
-export const setFilterAdminSysProps: SetFilterAdminSysProps = propParams => ({
+export const setFilterAdminSysProps: SetFilterAdminSysProps = filterParams => ({
   type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS,
-  payload: propParams,
+  payload: filterParams,
 });
 
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
@@ -87,26 +100,11 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedAdminSysItemValues = prepareAdminSysItemValues(formValues(state));
-          await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
+          const preparedValues = prepareAdminSysPropFilterParams(formValues(state));
+          await dispatch(filterAdminSysProps(preparedValues));
         } else {
           await dispatch(getAdminSysProps());
         }
-      },
-      dispatch
-    );
-  };
-
-export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedAdminSysItemValues =
-          prepareAdminSysItemValuesWithLockedFlag(propValues);
-
-        await dispatch(addAdminSysProp(preparedAdminSysItemValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
-        await dispatch(resetForm(formNames.ADD_ADMIN_SYSTEM_PROPERTY));
       },
       dispatch
     );
@@ -122,27 +120,40 @@ export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = propName =>
     );
   };
 
-export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =>
+export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedAdminSysItemValues =
-          prepareAdminSysItemValuesWithLockedFlag(propValues);
+        const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
 
-        await dispatch(updateAdminSysProps(preparedAdminSysItemValues));
+        await dispatch(addAdminSysProp(preparedValues));
+        await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
+        await dispatch(resetForm(formNames.ADD_ADMIN_SYSTEM_PROPERTY));
       },
       dispatch
     );
   };
 
-export const handleFilterAdminSysProps: HandleFilterAdminSysProps = propParams =>
+export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedAdminSysItemValues = prepareAdminSysItemValues(propParams);
+        const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
 
-        await dispatch(filterAdminSysProps(preparedAdminSysItemValues));
-        dispatch(setFilterAdminSysProps(propParams));
+        await dispatch(updateAdminSysProps(preparedValues));
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterAdminSysProps: HandleFilterAdminSysProps = filterParams =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareAdminSysPropFilterParams(filterParams);
+
+        await dispatch(filterAdminSysProps(preparedValues));
+        dispatch(setFilterAdminSysProps(preparedValues));
       },
       dispatch
     );

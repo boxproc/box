@@ -16,6 +16,7 @@ import {
 import { cookiesExpires, cookiesNames, modalNames } from 'consts';
 
 import {
+  AdminSysPropFilterParams,
   AdminSysPropsItem,
   HandleDeleteAdminSysProp,
   HandleFilterAdminSysProps,
@@ -37,7 +38,7 @@ interface SystemPropertiesProps {
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
   openModal: OpenModal;
-  filterSystemProperties: AdminSysPropsItem;
+  sysPropsFilterParams: AdminSysPropFilterParams;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
@@ -49,22 +50,23 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   filterAdminSysProps,
   openModal,
   updateAdminSysProps,
-  filterSystemProperties,
+  sysPropsFilterParams,
 }) => {
+
   React.useEffect(
     () => {
       getAdminSysProps();
 
-      if (filterSystemProperties) {
+      if (sysPropsFilterParams) {
         cookiesUtil.set(
           cookiesNames.SYSTEM_PROPERTIES_FILTER,
-          JSON.stringify(filterSystemProperties), {
+          JSON.stringify(sysPropsFilterParams), {
             expires: cookiesExpires.WEEK,
           }
         );
       }
     },
-    [getAdminSysProps, filterSystemProperties]
+    [getAdminSysProps, sysPropsFilterParams]
   );
 
   const systemPropsParams = cookiesUtil.get(cookiesNames.SYSTEM_PROPERTIES_FILTER);

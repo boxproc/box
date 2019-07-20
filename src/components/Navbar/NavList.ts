@@ -62,7 +62,7 @@ export const NavList = styled.div`
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
-    border: 1px solid ${({ theme }) => theme.blackColor};
+    border: 1px solid ${({ theme }) => theme.darkGrayColor};
     font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: calc(100% + 1px);

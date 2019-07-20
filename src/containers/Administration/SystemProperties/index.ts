@@ -12,7 +12,7 @@ import {
   handleUpdateAdminSysProps,
   openModal,
   selectAdminSysPropsItems,
-  selectFilterSystemProperties,
+  selectSysPropsFilterParams,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -27,7 +27,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminSysPropsItems: selectAdminSysPropsItems(state),
-  filterSystemProperties: selectFilterSystemProperties(state),
+  sysPropsFilterParams: selectSysPropsFilterParams(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

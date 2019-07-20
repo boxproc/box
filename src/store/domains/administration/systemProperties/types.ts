@@ -1,10 +1,27 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface AdminSysPropNameDataResp {
+export interface EditableAdminSysProp {
+  propertyName?: string;
+  lockedFlag?: string;
+  currentValue?: string | number;
+}
+
+export interface EditableAdminSysPropPrepared {
+  property_name?: string;
+  locked_flag?: string;
+  current_value?: string | number;
+}
+
+export interface AdminSysPropFilterParams {
+  propertyName?: string;
+}
+
+export interface AdminSysPropFilterParamsPrepared {
   property_name?: string;
 }
 
-export interface AdminSysPropsItemResp extends AdminSysPropNameDataResp {
+export interface AdminSysPropsItemResp {
+  property_name?: string;
   current_value?: string | number;
   previous_value?: string | number;
   last_datetime?: string;
@@ -23,15 +40,11 @@ export interface AdminSysPropsDataResp {
   system_properties: Array<AdminSysPropsItemResp>;
 }
 
-export interface AdminSysPropsData {
-  systemProperties: Array<AdminSysPropsItem>;
-}
-
 export interface AdminSysPropDataResp {
   system_property: AdminSysPropsItemResp;
 }
 
 export interface AdminSysPropsState {
   systemProperties: ImmutableArray<AdminSysPropsItemResp>;
-  filterSystemProperties: AdminSysPropsItem;
+  systemPropertiesFilterParams: AdminSysPropsItem;
 }

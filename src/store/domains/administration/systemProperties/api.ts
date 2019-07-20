@@ -1,34 +1,36 @@
 import { apiClient } from 'services';
 
 // import {
-//   AdminSysPropsItemsAddedData,
 //   AdminSysPropsItemsData,
-//   AdminSysPropsItemsDataFiltered,
-//   AdminSysPropsItemsUpdatedData,
+//   AdminSysPropsItemsFilteredData,
+//   SuccessResponseStatus,
 // } from './mock';
 
 // import { throttleUtil } from 'utils';
 
-import { AdminSysPropsItemResp } from './types';
+import {
+  AdminSysPropFilterParamsPrepared,
+  EditableAdminSysPropPrepared,
+} from './types';
 
 export const getAdminSysProps = () =>
   // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
   apiClient.post('/ui/administration/system_properties/get');
 
-export const addAdminSysProp = (data: AdminSysPropsItemResp) =>
-  // throttleUtil.getDataAfter(AdminSysPropsItemsAddedData, 500);
-  apiClient.post('/ui/administration/system_properties/create', { data });
-
 export const deleteAdminSysProp = (propName: string) =>
-  // throttleUtil.getDataAfter({ property_name: propName }, 500);
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/system_properties/delete', {
     data: { property_name: propName },
   });
 
-export const updateAdminSysProps = (data: AdminSysPropsItemResp) =>
-  // throttleUtil.getDataAfter(AdminSysPropsItemsUpdatedData, 100);
+export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  apiClient.post('/ui/administration/system_properties/create', { data });
+
+export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post('/ui/administration/system_properties/update', { data });
 
-export const filterAdminSysProps = (data: AdminSysPropsItemResp) =>
-  // throttleUtil.getDataAfter(AdminSysPropsItemsDataFiltered, 500);
+export const filterAdminSysProps = (data: AdminSysPropFilterParamsPrepared) =>
+  // throttleUtil.getDataAfter(AdminSysPropsItemsFilteredData, 500);
   apiClient.post('/ui/administration/system_properties/get', {data});
