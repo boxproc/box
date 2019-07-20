@@ -15,14 +15,28 @@ const SchedulerButtonsDropdown = () => {
       </Option>
       <Option>
         <Button
-          text="Button 2"
+          text="Stop Job"
           size="11"
           onClick={() => console.log('--- click on Button 2')}
         />
       </Option>
       <Option>
         <Button
-          text="Button 3"
+          text="Start Job"
+          size="11"
+          onClick={() => console.log('--- click on Button 3')}
+        />
+      </Option>
+      <Option>
+        <Button
+          text="Pause Job"
+          size="11"
+          onClick={() => console.log('--- click on Button 3')}
+        />
+      </Option>
+      <Option>
+        <Button
+          text="Resume Job"
           size="11"
           onClick={() => console.log('--- click on Button 3')}
         />

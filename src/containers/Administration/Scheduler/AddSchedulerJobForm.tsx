@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
 
-import { formNames, statusTypesOptions } from 'consts';
+import { executubleTypeOptions, formNames, statusTypesOptions } from 'consts';
 
 import { HandleAddAdminSchedulerJob } from 'store/domains';
 
@@ -105,10 +105,13 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
                     <Field
                         id="executableType"
                         name="executableType"
+                        isSearchable={true}
                         placeholder="Enter  Job Executable type"
-                        component={InputField}
+                        component={SelectField}
                         label="Scheduler Job Executable Type"
                         disabled={false}
+                        options={executubleTypeOptions}
+                        isDisabled={isDisabledStatus}
                     />
                 </Box>
                 <Box width={[1 / 2]}  p="10px">

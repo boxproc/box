@@ -7,7 +7,7 @@ import { AdminSchedulerItemResp } from './types';
 // import { throttleUtil } from 'utils';
 
 export const getAdminSchedulerJobs = () =>
-//  throttleUtil.getDataAfter(AdminSchedulerData, 500);
+  // throttleUtil.getDataAfter(AdminSchedulerData, 500);
   apiClient.post('/ui/administration/scheduler/get');
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
