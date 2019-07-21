@@ -4,7 +4,7 @@ import { StoreState } from 'store/StoreState';
 
 import { statusTypesOptions } from 'consts';
 
-import { camelizeFieldsUtil, selectUtil } from 'utils';
+import { camelizeUtil, selectUtil } from 'utils';
 
 export const selectDefaultCurrencyCodes = (state: StoreState) =>
   state.consts.currencyCodes;
@@ -28,7 +28,7 @@ export const selectInstitutions = createSelector(
   selectDefaultInstitutions,
   data => data && data.map(item => {
     return {
-      ...camelizeFieldsUtil.camelizeFields(item, 'camelcase'),
+      ...camelizeUtil.camelize(item, 'camelcase'),
       statusLabel: statusTypesOptions.find(el => el.value === item.status).label,
     };
   })

@@ -16,7 +16,7 @@ export const sharedInputCss = css<InvalidProp>`
   border-radius: 2px;
 
   &:focus{
-    border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.blackColor};
+    border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.darkGrayColor};
   }
 
   ::placeholder {

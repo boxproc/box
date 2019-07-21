@@ -6,7 +6,7 @@ import { StoreState } from 'store/StoreState';
 
 import { selectDefaultInstitutions } from 'store/domains/consts';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
   state.productDesigner.products.products;
@@ -16,7 +16,7 @@ export const selectProductItems = createSelector(
   selectDefaultInstitutions,
   (items, institutions) => items && items.asMutable().map(item => {
     return {
-      ...camelizeFieldsUtil.camelizeFields(item, 'camelcase'),
+      ...camelizeUtil.camelize(item, 'camelcase'),
       status: statusTypesOptions.find(el => el.value === item.status).label,
       scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
       productType: productTypesOptions.find(el => el.value === item.product_type).label,

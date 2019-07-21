@@ -46,7 +46,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_ADMIN_SCHEDULER,
-          fields: {id: rowInfo.original.id},
+          payload: {id: rowInfo.original.id},
         }),
       };
     },

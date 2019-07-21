@@ -1,4 +1,4 @@
-export interface FieldsMessageModal {
+export interface PayloadMessageModal {
   title: string;
   message?: string;
   details?: string;
@@ -6,20 +6,20 @@ export interface FieldsMessageModal {
 
 export interface ModalsData {
   name: string;
-  fields?: any;
+  payload?: any;
 }
 
 export interface ModalsState {
   isMessageModal: boolean;
-  fieldsMessageModal?: FieldsMessageModal;
+  payloadMessageModal?: PayloadMessageModal;
 
   isAddAdminSystemPropertyModal: boolean;
 
   isAddProductModal: boolean;
   isEditProductModal: boolean;
-  fieldsEditProductModal?: { id: number };
+  payloadEditProductModal?: { id: number };
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
-  fieldsEditAdminSchedulerModal: { id: string | number };
+  payloadEditAdminSchedulerModal: { id: string | number };
 }

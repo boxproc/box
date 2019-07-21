@@ -62,7 +62,7 @@ export const Products: React.FC<ProductsProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_PRODUCT,
-          fields: { id: rowInfo.original.id },
+          payload: { id: rowInfo.original.id },
         }),
       };
     },

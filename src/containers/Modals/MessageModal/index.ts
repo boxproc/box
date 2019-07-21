@@ -5,13 +5,13 @@ import MessageModal from './MessageModal';
 
 import {
   closeModal,
-  selectFieldsMessageModal,
+  selectPayloadMessageModal,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  fieldsMessageModal: selectFieldsMessageModal(state),
+  payloadMessageModal: selectPayloadMessageModal(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

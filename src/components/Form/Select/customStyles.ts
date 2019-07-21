@@ -44,7 +44,7 @@ export const customStyles: StylesConfig = {
     borderRadius: '0 0 2px 2px',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: state.selectProps.invalid ? theme.redColor : theme.blackColor,
+    borderColor: state.selectProps.invalid ? theme.redColor : theme.darkGrayColor,
     borderTop: '0',
   }),
   control: (provided: React.CSSProperties, state: SelectState) => {
@@ -66,7 +66,7 @@ export const customStyles: StylesConfig = {
         theme.redColor
         :
         (isFocused || menuIsOpen) ?
-          theme.blackColor
+          theme.darkGrayColor
           :
           theme.grayColor,
       backgroundColor: theme.whiteColor,

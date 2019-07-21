@@ -1,7 +1,7 @@
 import camelcase from 'camelcase';
 import decamelize from 'decamelize';
 
-export const camelizeFields = (fields: object, action: 'camelcase' | 'decamelize') => {
+export const camelize = (fields: object, action: 'camelcase' | 'decamelize') => {
   const prepared = {};
 
   for (const field in fields) {

@@ -1,11 +1,11 @@
 import { AdminSchedulerEditableItem, AdminSchedulerEditableItemPrepared } from './types';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
 export const prepareAdminSchedulerJobValues =
   (values: AdminSchedulerEditableItem): AdminSchedulerEditableItemPrepared => {
     return {
-      ...camelizeFieldsUtil.camelizeFields(values, 'decamelize'),
+      ...camelizeUtil.camelize(values, 'decamelize'),
       institution_id: values.institutionId.value,
       executable_type: values.executableType.value,
       status: values.status.value,

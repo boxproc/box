@@ -7,7 +7,7 @@ import {
 
 import { yesNoTypes } from 'consts';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
 export const prepareEditableAdminSysPropItemValues =
   (propValues: EditableAdminSysProp): EditableAdminSysPropPrepared => {
@@ -22,4 +22,4 @@ export const prepareEditableAdminSysPropItemValues =
 
 export const prepareAdminSysPropFilterParams =
   (propValues: Partial<AdminSysPropFilterParams>): Partial<AdminSysPropFilterParamsPrepared> =>
-    camelizeFieldsUtil.camelizeFields(propValues, 'decamelize');
+    camelizeUtil.camelize(propValues, 'decamelize');

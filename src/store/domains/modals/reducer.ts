@@ -5,7 +5,7 @@ import { ModalsState } from './types';
 
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
-  fieldsMessageModal: null,
+  payloadMessageModal: null,
 
   isAddAdminSystemPropertyModal: false,
 
@@ -14,7 +14,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddAdminSchedulerModal: false,
   isEditAdminSchedulerModal: false,
-  fieldsEditAdminSchedulerModal: null,
+  payloadEditAdminSchedulerModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
@@ -22,12 +22,12 @@ const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => 
     case ActionTypeKeys.OPEN_MODAL:
       return state
         .set(`is${action.payload.name}`, true)
-        .set(`fields${action.payload.name}`, action.payload.fields);
+        .set(`payload${action.payload.name}`, action.payload.payload);
 
     case ActionTypeKeys.CLOSE_MODAL:
       return state
         .set(`is${action.payload}`, false)
-        .set(`fields${action.payload}`, null);
+        .set(`payload${action.payload}`, null);
 
     default: return state;
   }

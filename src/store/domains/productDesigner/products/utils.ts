@@ -7,11 +7,11 @@ import {
 
 import { statusTypes } from 'consts';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
 export const prepareProductValues =
   (values: Partial<ProductItem>): Partial<ProductItemResp> =>
-    camelizeFieldsUtil.camelizeFields(values, 'decamelize');
+    camelizeUtil.camelize(values, 'decamelize');
 
 export const prepareProductFiltersParams =
   (params: Partial<ProductFilterParams>): Partial<ProductFilterParamsPrepared> => {
