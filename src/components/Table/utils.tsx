@@ -86,7 +86,6 @@ export const renderDeleteButton = (deleteAction: (name: string) => void) =>
     return !isLocked && (
       <Button
         text="Delete"
-        size="11"
         onClick={() => deleteAction(propName)}
       />
     );

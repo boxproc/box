@@ -32,14 +32,22 @@ const adminSysPropsReducer =
           ]);
 
       case ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED:
+        const currentItem = state.systemProperties
+          .find(el => el.property_name === action.meta.property_name);
+        const updatedItem = {
+          ...currentItem,
+          current_value: action.meta.current_value,
+          previous_value: currentItem.current_value,
+        };
+
         return state
           .set('systemProperties', [
-            action.meta,
             ...Object.values({
               ...state.systemProperties
                 .filter(el => el.property_name !== action.meta.property_name),
             }),
-          ]);
+            updatedItem,
+          ].sort((a, b) => (a.property_name > b.property_name) ? 1 : -1));
 
       case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
