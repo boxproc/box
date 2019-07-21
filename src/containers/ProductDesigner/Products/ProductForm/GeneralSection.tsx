@@ -47,7 +47,8 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Product Type"
             options={productTypesOptions}
             isDisabled={isDisabledProductTypes}
-            hint={!isDisabledProductTypes && 'Select Product Type to View Details'}
+            hint={isDisabledProductTypes ? 'Read Only' : 'Select Product Type to View Details'}
+            hintWidth={isDisabledProductTypes && '80'}
             hintPosition="top"
           />
         </Box>
@@ -61,6 +62,9 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Institution"
             options={institutionsOptions}
             isDisabled={isDisabledInstitutions}
+            hint={isDisabledInstitutions && 'Read Only'}
+            hintWidth={isDisabledProductTypes && '80'}
+            hintPosition="top"
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -91,6 +95,9 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Status"
             options={statusTypesOptions}
             isDisabled={isDisabledStatus}
+            hint={isDisabledStatus && 'Read Only'}
+            hintWidth={isDisabledProductTypes && '80'}
+            hintPosition="top"
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -122,9 +129,9 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
-            placeholder="Enter History Retention Number of Days"
+            placeholder="Enter History Retention Number of Day"
             component={InputField}
-            label="History Retention Number of Days"
+            label="History Retention Number of Day"
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

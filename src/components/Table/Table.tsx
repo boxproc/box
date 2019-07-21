@@ -56,6 +56,7 @@ const SortIconsWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-left: 10px;
+  padding: 3px 0;
 
   .up-icon {
     margin-bottom: 5px;

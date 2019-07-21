@@ -1,20 +1,27 @@
-// import { apiClient } from 'services';
+import { apiClient } from 'services';
 
 import {
-  ProductItemsData,
-  ProductItemsDataFiltered,
+  debitItemData,
+  // productItemsData,
+  // revolvingCreditItemData,
+  // loanItemData,
+  // prepaidItemData,
+  productItemsDataFiltered,
+  // savingsItemData,
 } from './mock';
 
 import { throttleUtil } from 'utils';
 import { ProductFilterParamsPrepared } from './types';
 
 export const getProducts = () =>
-  throttleUtil.getDataAfter(ProductItemsData, 500);
-  // apiClient.post('/ui/product_designer/products/get');
+  // throttleUtil.getDataAfter(productItemsData, 500);
+  apiClient.post('/ui/product_designer/products/get');
 
 export const deleteProduct = (id: number) =>
   throttleUtil.getDataAfter({id}, 500);
 
 export const filterProducts = (data: ProductFilterParamsPrepared) =>
-  throttleUtil.getDataAfter(ProductItemsDataFiltered, 500);
-  // apiClient.post('/ui/administration/system_properties/get', {data});
+  throttleUtil.getDataAfter(productItemsDataFiltered, 500);
+
+export const getProduct = (id: number) =>
+  throttleUtil.getDataAfter(debitItemData, 500);

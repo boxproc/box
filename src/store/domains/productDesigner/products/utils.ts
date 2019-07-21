@@ -2,10 +2,17 @@ import {
   ProductFilterParams,
   ProductFilterParamsPrepared,
   ProductItem,
+  ProductItemDetailsResp,
   ProductItemResp,
 } from './types';
 
-import { statusTypes } from 'consts';
+import {
+  productTypesOptions,
+  schemeTypesOptions,
+  statusTypes,
+  statusTypesOptions,
+  yesNoTypes,
+} from 'consts';
 
 import { camelizeUtil } from 'utils';
 
@@ -24,3 +31,13 @@ export const prepareProductFiltersParams =
 
     return preparedParams;
   };
+
+export const preparedGeneralProductValues = (product: ProductItemDetailsResp) => {
+  return {
+    ...camelizeUtil.camelize(product, 'camelcase'),
+      productType: productTypesOptions.find(el => el.value === product.product_type),
+      status: statusTypesOptions.find(el => el.value === product.status),
+      scheme: schemeTypesOptions.find(el => el.value === product.scheme),
+      lockedFlag: product.locked_flag === yesNoTypes.YES ? true : false,
+  };
+};

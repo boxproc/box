@@ -11,6 +11,7 @@ import ProductsFilter from './ProductsFilter';
 
 import {
   HandleFilterProducts,
+  HandleGetProduct,
   HandleGetProducts,
   OpenModal,
   ProductFilterParamsPrepared,
@@ -24,6 +25,7 @@ import { cookiesUtil } from 'utils';
 interface ProductsProps {
   openModal: OpenModal;
   productItems: Array<Partial<ProductItem>>;
+  getProduct: HandleGetProduct;
   getProducts: HandleGetProducts;
   filterProducts: HandleFilterProducts;
   institutionsOptions: Array<ParsedSelectValues>;
@@ -32,6 +34,7 @@ interface ProductsProps {
 
 export const Products: React.FC<ProductsProps> = ({
   openModal,
+  getProduct,
   getProducts,
   productItems,
   institutionsOptions,
@@ -60,13 +63,16 @@ export const Products: React.FC<ProductsProps> = ({
         return null;
       }
       return {
-        onDoubleClick: () => openModal({
-          name: modalNames.EDIT_PRODUCT,
-          payload: { id: rowInfo.original.id },
-        }),
+        onDoubleClick: () => {
+          getProduct(rowInfo.original.id);
+          openModal({
+            name: modalNames.EDIT_PRODUCT,
+            payload: { id: rowInfo.original.id },
+          });
+        },
       };
     },
-    [openModal]
+    [openModal, getProduct]
   );
 
   const productParams = cookiesUtil.get(cookiesNames.PRODUCTS_FILTER);

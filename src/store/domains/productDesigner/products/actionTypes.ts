@@ -1,4 +1,5 @@
 import {
+  ProductDataResp,
   ProductFilterParams,
   ProductsDataResp,
 } from './types';
@@ -19,6 +20,10 @@ export enum ActionTypeKeys {
   FILTER_PRODUCTS_REJECTED = 'productDesigner/products/FILTER_PRODUCTS_REJECTED',
 
   SET_FILTER_PRODUCTS_PARAMS = 'productDesigner/products/SET_FILTER_PRODUCTS_PARAMS',
+
+  GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
+  GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
+  GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
 }
 
 // Get all products
@@ -75,8 +80,25 @@ export interface SetFilterProductsParamsAction {
   readonly type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS;
 }
 
+// Get product by id
+export interface GetProductAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT;
+}
+
+export interface GetProductFulfilledAction {
+  readonly payload: ProductDataResp;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FULFILLED;
+}
+
+export interface GetProductRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
+}
+
 export type ProductsActionTypes =
   | GetProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
-  | SetFilterProductsParamsAction;
+  | SetFilterProductsParamsAction
+  | GetProductFulfilledAction;

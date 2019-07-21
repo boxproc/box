@@ -107,7 +107,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="History Retention Number of Days" showSortIcons={true} />,
+    Header: <Header title="History Retention Number of Day" showSortIcons={true} />,
     accessor: 'historyRetentionNumberOfDay',
     Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell

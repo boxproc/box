@@ -29,7 +29,7 @@ const adminSysPropsReducer =
             ...Object.values({
               ...state.systemProperties,
             }),
-          ]);
+          ].sort((a, b) => (a.property_name > b.property_name) ? 1 : -1));
 
       case ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED:
         const currentItem = state.systemProperties

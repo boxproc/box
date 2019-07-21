@@ -10,6 +10,7 @@ import {
   ActionTypeKeys,
   DeleteProductAction,
   FilterProductsAction,
+  GetProductAction,
   GetProductsAction,
   SetFilterProductsParamsAction,
 } from './actionTypes';
@@ -34,6 +35,9 @@ export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
 export type SetFilterProductsParams = (params: ProductFilterParams) =>
   SetFilterProductsParamsAction;
 
+export type GetProduct = (id: number) => GetProductAction;
+export type HandleGetProduct = (id: number) => Thunk<void>;
+
 export const getProducts: GetProducts = () => ({
   type: ActionTypeKeys.GET_PRODUCTS,
   payload: api.getProducts(),
@@ -53,6 +57,11 @@ export const filterProducts: FilterProducts = params => ({
 export const setFilterFilterProductParams: SetFilterProductsParams = params => ({
   type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS,
   payload: params,
+});
+
+export const getProduct: GetProduct = id => ({
+  type: ActionTypeKeys.GET_PRODUCT,
+  payload: api.getProduct(id),
 });
 
 export const handleGetProducts: HandleGetProducts = () =>
@@ -95,6 +104,16 @@ export const handleFilterProducts: HandleFilterProducts = params =>
 
         await dispatch(filterProducts(preparedValues));
         dispatch(setFilterFilterProductParams(params));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProduct: HandleGetProduct = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getProduct(id));
       },
       dispatch
     );

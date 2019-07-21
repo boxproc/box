@@ -7,6 +7,7 @@ import { InfoCircle } from 'styled-icons/boxicons-regular/InfoCircle';
 interface HintWrapperProps {
   position?: string;
   icon?: boolean;
+  width?: string;
 }
 
 const HintWrapper = styled.div<HintWrapperProps>`
@@ -24,7 +25,7 @@ const HintWrapper = styled.div<HintWrapperProps>`
     right: ${({ position }) => position === 'left' ? 'calc(100% + 3px)' : 'auto'};
     bottom: ${({ position }) => position === 'top' ? 'calc(100% + 3px)' : 'auto'};
     left: ${({ position }) => position === 'right' ? 'calc(100% + 3px)' : 'auto'};
-    min-width: ${({ icon }) => icon ? '160px' : 'auto'};
+    min-width: ${({ icon, width }) => icon ? width ? width + 'px' : '160px' : 'auto'};
     padding: 7px 10px;
     background-color: ${({ theme }) => theme.blackColorOpacity7};
     color: ${({ theme }) => theme.whiteColor};
@@ -59,18 +60,21 @@ interface HintProps {
   text: string;
   position?: 'top' | 'right' | 'bottom' | 'left' | string;
   icon?: boolean;
+  width?: string;
 }
 
 const Hint: React.FC<HintProps> = ({
   text,
   position = 'right',
   icon = true,
+  width,
 }) => {
   const [isHint, setIsHint] = React.useState(false);
   return (
     <HintWrapper
       position={position}
       icon={icon}
+      width={width}
     >
       <div
         className="toggle-hint"

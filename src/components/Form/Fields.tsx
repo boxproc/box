@@ -57,6 +57,7 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   isRequired?: boolean;
   hint?: string;
   hintPosition?: string;
+  hintWidth?: string;
 }
 
 interface InputWrapperProps {
@@ -83,6 +84,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
     isRequired,
     hint,
     hintPosition,
+    hintWidth,
     meta: {
       touched,
       error,
@@ -112,6 +114,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
             hint ? <Hint
               text={hint}
               position={hintPosition}
+              width={hintWidth}
             />
             :
             isRequired && <span className="required-icon">*</span>

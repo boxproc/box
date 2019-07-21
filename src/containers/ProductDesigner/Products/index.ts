@@ -6,6 +6,7 @@ import Products from './Products';
 import {
   createLoadingSelector,
   handleFilterProducts,
+  handleGetProduct,
   handleGetProducts,
   openModal,
   ProductsActionTypes,
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getProducts: handleGetProducts,
     filterProducts: handleFilterProducts,
+    getProduct: handleGetProduct,
     openModal,
   },
   dispatch

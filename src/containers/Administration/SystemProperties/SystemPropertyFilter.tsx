@@ -47,7 +47,6 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
       <OkCancelButtons
         okText="Run it"
         cancelText="Reset"
-        cancelIconName="reset"
         disabledCancel={true}
       />
     </form >

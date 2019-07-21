@@ -12,7 +12,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 36000,
+  SESSION_ID = 360,
 }
 
 export enum formNames {
@@ -120,6 +120,18 @@ export enum loanTypes {
 export const loanTypesOptions = [
   {value: 'B', label: 'Buy now, pay later'},
   {value: 'I', label: 'Installments'},
+];
+
+export enum savingsTypes {
+  FIXED_TERM = 'F',
+  UNLIMITED_TERM = 'U',
+  REWARD = 'R',
+}
+
+export const savingsTypesOptions = [
+  {value: 'F', label: 'Fixed term'},
+  {value: 'U', label: 'Unlimited term'},
+  {value: 'R', label: 'Reward'},
 ];
 
 export enum uiItemConsts {

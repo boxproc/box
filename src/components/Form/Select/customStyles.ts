@@ -21,6 +21,19 @@ export const customStyles: StylesConfig = {
     cursor: 'pointer',
     transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
   }),
+  clearIndicator: (provided: React.CSSProperties, state: SelectState) => ({
+    ...provided,
+    cursor: 'pointer',
+    padding: '5px',
+    // eslint-disable-next-line
+    ['& > svg']: {
+      width: 16,
+    },
+    // eslint-disable-next-line
+    ['& > svg path']: {
+      color: theme.grayColor,
+    },
+  }),
   placeholder: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     color: theme.grayColor,
@@ -59,7 +72,7 @@ export const customStyles: StylesConfig = {
 
     return ({
       ...provided,
-      opacity: isDisabled ? 0.5 : 1,
+      opacity: isDisabled ? 0.8 : 1,
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
       fontSize: 13,
       borderColor: invalid ?
