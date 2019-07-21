@@ -86,6 +86,6 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
 
 export default reduxForm<{}, ProductsFilterProps>({
   form: formNames.PRODUCTS_FILTER,
-  destroyOnUnmount: true,
+  destroyOnUnmount: false,
   enableReinitialize: true,
 })(ProductsFilter);

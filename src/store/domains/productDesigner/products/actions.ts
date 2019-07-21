@@ -25,8 +25,8 @@ import { prepareProductFiltersParams } from './utils';
 export type GetProducts = () => GetProductsAction;
 export type HandleGetProducts = VoidPromiseThunk;
 
-export type DeleteProduct = (id: number | string) => DeleteProductAction;
-export type HandleDeleteProduct = (id: number | string) => Thunk<void>;
+export type DeleteProduct = (id: number) => DeleteProductAction;
+export type HandleDeleteProduct = (id: number) => Thunk<void>;
 
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
 export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
@@ -42,6 +42,7 @@ export const getProducts: GetProducts = () => ({
 export const deleteProduct: DeleteProduct = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT,
   payload: api.deleteProduct(id),
+  meta: id,
 });
 
 export const filterProducts: FilterProducts = params => ({
@@ -65,8 +66,8 @@ export const handleGetProducts: HandleGetProducts = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedProductFiltersParams = prepareProductFiltersParams(formValues(state));
-          await dispatch(filterProducts(preparedProductFiltersParams));
+          const preparedValues = prepareProductFiltersParams(formValues(state));
+          await dispatch(filterProducts(preparedValues));
         } else {
           await dispatch(getProducts());
         }
@@ -90,9 +91,9 @@ export const handleFilterProducts: HandleFilterProducts = params =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedProductFiltersParams = prepareProductFiltersParams(params);
+        const preparedValues = prepareProductFiltersParams(params);
 
-        await dispatch(filterProducts(preparedProductFiltersParams));
+        await dispatch(filterProducts(preparedValues));
         dispatch(setFilterFilterProductParams(params));
       },
       dispatch

@@ -1,5 +1,5 @@
 import {
-  AdminSysPropFilterParamsPrepared,
+  AdminSysPropFilterParams,
   AdminSysPropsDataResp,
   EditableAdminSysPropPrepared,
 } from './types';
@@ -121,7 +121,7 @@ export interface FilterAdminSysPropsRejectedAction {
 }
 
 export interface SetFilterAdminSysPropsAction {
-  readonly payload: AdminSysPropFilterParamsPrepared;
+  readonly payload: AdminSysPropFilterParams;
   readonly type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS;
 }
 

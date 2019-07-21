@@ -16,7 +16,7 @@ import { ParsedSelectValues } from 'types';
 interface EditProductModalProps {
   closeModal: CloseModal;
   deleteProduct: HandleDeleteProduct;
-  productId: number | string;
+  productId: number;
   institutionsOptions: Array<ParsedSelectValues>;
   productTypeValue: ParsedSelectValues;
 }

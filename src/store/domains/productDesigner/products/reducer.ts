@@ -20,7 +20,7 @@ const productsReducer =
         return state
         .set(
           'products',
-          state.products.filter(el => el.id !== action.payload.id)
+          state.products.filter(el => el.id !== action.meta)
         );
 
       case ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS:

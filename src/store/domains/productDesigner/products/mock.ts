@@ -1,6 +1,9 @@
 import { ProductsDataResp } from './types';
 
 export const ProductItemsData: ProductsDataResp = {
+  response_status: {
+    status_code: 0,
+  },
   products: [
     {
       currency_code: 'GBP',
@@ -45,6 +48,9 @@ export const ProductItemsData: ProductsDataResp = {
 };
 
 export const ProductItemsDataFiltered: ProductsDataResp = {
+  response_status: {
+    status_code: 0,
+  },
   products: [
     {
       currency_code: 'GBP',

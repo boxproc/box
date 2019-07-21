@@ -12,7 +12,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360,
+  SESSION_ID = 36000,
 }
 
 export enum formNames {
@@ -74,7 +74,7 @@ export const productTypesOptions = [
   { value: 'C', label: 'Revolving credit' },
 ];
 
-export const executubleTypeOptions  = [
+export const executableTypeOptions  = [
   { value: 'A', label: 'Api call'},
   { value: 'S', label: 'Shell script'},
   { value: 'J', label: 'Java'},

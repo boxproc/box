@@ -12,7 +12,7 @@ export const getProducts = () =>
   throttleUtil.getDataAfter(ProductItemsData, 500);
   // apiClient.post('/ui/product_designer/products/get');
 
-export const deleteProduct = (id: number | string) =>
+export const deleteProduct = (id: number) =>
   throttleUtil.getDataAfter({id}, 500);
 
 export const filterProducts = (data: ProductFilterParamsPrepared) =>

@@ -52,7 +52,7 @@ export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepare
   => FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) => Thunk<void>;
 
-export type SetFilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared) =>
+export type SetFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) =>
   SetFilterAdminSysPropsAction;
 
 export const getAdminSysProps: GetAdminSysProps = () => ({
@@ -153,7 +153,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = filterParams
         const preparedValues = prepareAdminSysPropFilterParams(filterParams);
 
         await dispatch(filterAdminSysProps(preparedValues));
-        dispatch(setFilterAdminSysProps(preparedValues));
+        dispatch(setFilterAdminSysProps(filterParams));
       },
       dispatch
     );

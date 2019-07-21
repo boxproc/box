@@ -16,11 +16,11 @@ export const prepareProductValues =
 export const prepareProductFiltersParams =
   (params: Partial<ProductFilterParams>): Partial<ProductFilterParamsPrepared> => {
     const preparedParams = {};
-    const { activeStatusFlag, institutionId } = params;
+    const { activeStatusFlag, institutionId, productType } = params;
 
     preparedParams['status'] = activeStatusFlag ? statusTypes.ACTIVE : null;
-
     preparedParams['institution_id'] = institutionId && institutionId.map(id => id.value);
+    preparedParams['product_type'] = productType && productType.map(type => type.value);
 
     return preparedParams;
   };
