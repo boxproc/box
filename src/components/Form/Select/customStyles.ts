@@ -16,11 +16,21 @@ export interface SelectState {
 }
 
 export const customStyles: StylesConfig = {
-  dropdownIndicator: (provided: React.CSSProperties, state: SelectState) => ({
-    ...provided,
-    cursor: 'pointer',
-    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-  }),
+  dropdownIndicator: (provided: React.CSSProperties, state: SelectState) => {
+    const {
+      isDisabled,
+    } = state;
+
+    return ({
+      ...provided,
+      cursor: 'pointer',
+      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      // eslint-disable-next-line
+      ['& > svg path']: {
+        stroke: isDisabled ? theme.lightGrayColor : theme.darkGrayColor,
+      },
+    });
+  },
   clearIndicator: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     cursor: 'pointer',
@@ -57,7 +67,7 @@ export const customStyles: StylesConfig = {
     borderRadius: '0 0 2px 2px',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: state.selectProps.invalid ? theme.redColor : theme.darkGrayColor,
+    borderColor: state.selectProps.invalid ? theme.redColor : theme.normalAccentColor,
     borderTop: '0',
   }),
   control: (provided: React.CSSProperties, state: SelectState) => {
@@ -72,16 +82,18 @@ export const customStyles: StylesConfig = {
 
     return ({
       ...provided,
-      opacity: isDisabled ? 0.8 : 1,
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
       fontSize: 13,
       borderColor: invalid ?
         theme.redColor
         :
         (isFocused || menuIsOpen) ?
-          theme.darkGrayColor
+          theme.normalAccentColor
           :
-          theme.grayColor,
+          isDisabled ?
+          theme.lightGrayColor
+          :
+            theme.grayColor,
       backgroundColor: theme.whiteColor,
       boxShadow: 'none',
       // eslint-disable-next-line

@@ -13,8 +13,6 @@ import { withSpinner } from 'components/Spinner';
 
 import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
-import StatusBlock from './StatusBlock';
-
 import {
   HandleGetInstitutions,
   HandleGetUiItems,
@@ -125,14 +123,10 @@ const Header: React.FC<HeaderProps> = ({
           <Box>
             <Flex alignItems="center">
               <Box mr="15px">
-                <StatusBlock
-                  text={institution && institution.institutionName}
-                  status={institution && institution.status}
-                  title={institution && institution.statusLabel}
-                />
+                <UserBlock/>
               </Box>
               <Box mr="30px">
-                <UserBlock/>
+                Institution: {institution && institution.institutionName}
               </Box>
               <Button
                 text="Log out"

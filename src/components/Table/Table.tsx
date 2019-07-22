@@ -32,6 +32,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
   word-break: break-word;
+  border: 1px solid transparent;
 
   .title {
     color: ${({ theme }) => theme.blackColorOpacity8};
@@ -43,7 +44,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.lightAccentColor};
+    border-color: ${({ theme }) => theme.normalAccentColor};
   }
 
   .icon path {

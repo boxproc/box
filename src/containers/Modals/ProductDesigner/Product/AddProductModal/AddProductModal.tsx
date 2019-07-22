@@ -26,8 +26,6 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
       name={modalNames.ADD_PRODUCT}
       title="Add New Product"
       maxContainerWidth={700}
-      label={productTypeValue && productTypeValue.label}
-      labelIconName="creditCard"
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}

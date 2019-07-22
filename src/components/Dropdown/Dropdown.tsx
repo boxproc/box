@@ -12,7 +12,7 @@ const DropdownWrapper = styled.div`
 
   .dropdown-list {
     position: absolute;
-    left: 0;
+    left: -10px;
     top: calc(100% + 3px);
     background-color: ${({ theme }) => theme.whiteColor};
     border: 1px solid ${({ theme }) => theme.darkGrayColor};
@@ -82,9 +82,6 @@ export const Dropdown: React.FC = ({
       {isOpened && (
         <div className="dropdown-list" ref={dropdownListRef}>
           {React.Children.map(children, (child, i) => {
-            if (i === selectedIndex) {
-              return null;
-            }
             return (
               <div
                 className="dropdown-option"

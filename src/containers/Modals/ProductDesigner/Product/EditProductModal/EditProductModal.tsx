@@ -51,8 +51,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalNames.EDIT_PRODUCT}
       title="Edit Product"
       maxContainerWidth={700}
-      label={productTypeValue && productTypeValue.label}
-      labelIconName="creditCard"
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
