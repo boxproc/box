@@ -2,6 +2,8 @@ import config from 'config';
 
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
+export const boxInstitutionName = 'BOX Institution';
+
 export enum cookiesNames {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',

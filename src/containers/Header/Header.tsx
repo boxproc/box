@@ -11,7 +11,7 @@ import { Button } from 'components/Buttons';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 
-import { basePath, cookiesExpires, cookiesNames } from 'consts';
+import { basePath, boxInstitutionName, cookiesExpires, cookiesNames } from 'consts';
 
 import {
   HandleGetInstitutions,
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const institution = institutions.length === 1
     ? institutions[0]
-    : institutions.find(el => el.institutionName === 'BOX');
+    : institutions.find(el => el.institutionName === boxInstitutionName);
 
   return (
     <Wrapper>
@@ -125,9 +125,11 @@ const Header: React.FC<HeaderProps> = ({
               <Box mr="15px">
                 <UserBlock/>
               </Box>
-              <Box mr="30px">
-                Institution: {institution && institution.institutionName}
-              </Box>
+              {institution && (
+                <Box mr="30px">
+                  {institution && institution.institutionName}
+                </Box>
+              )}
               <Button
                 text="Log out"
                 iconName="logOut"

@@ -15,7 +15,7 @@ export const institutionsData: InstitutionsDataResp = {
   institutions: [
     {
       id: 1,
-      institution_name: 'BOX',
+      institution_name: 'BOX Institution',
       status: 'A',
     },
     {
