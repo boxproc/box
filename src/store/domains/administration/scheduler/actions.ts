@@ -78,10 +78,9 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerv
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminSchedulerJobValues(schedulervalues);
-        
         await dispatch(addAdminSchedulerJob(preparedValues));
-        await dispatch(getAdminSchedulerJobs());
         await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
+        await dispatch(getAdminSchedulerJobs());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_SCHEDULER_JOB));
       },
       dispatch
