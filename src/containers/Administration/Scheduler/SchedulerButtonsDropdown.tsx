@@ -32,7 +32,7 @@ const SchedulerButtonsDropdown = () => {
       </Option>
       <Option>
         <Button
-          text="Resume Job"
+          text="Resumegit  Job"
           onClick={() => console.log('--- click on Button 3')}
         />
       </Option>
