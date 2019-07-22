@@ -16,14 +16,14 @@ const CheckboxWrapper = styled.div<DisabledProp>`
   font-size: 0;
 
   .label {
-    cursor: pointer;
+    cursor: ${({ disabled }) => disabled ? 'auto' : 'pointer' };
     padding-left: 10px;
     padding-top: 1px;
   }
 
   ${({ disabled, theme }) => disabled && `
     background-color: ${theme.whiteColor};
-    opacity: 0.8;
+    opacity: 0.5;
   `};
 `;
 

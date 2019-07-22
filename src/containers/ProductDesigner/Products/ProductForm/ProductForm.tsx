@@ -50,6 +50,8 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
     [handleSubmit]
   );
 
+  const productTypeName = productTypeValue && productTypeValue.label;
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Tabs>
@@ -64,7 +66,7 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
           />
         </Panel>
         <Panel
-          title="Details"
+          title={(productTypeName ? productTypeName : '') + ' Details'}
           isDisabled={!productTypeValue}
           hintForDisabled="Select Product Type"
         >
