@@ -8,35 +8,35 @@ import { InputField, SelectField } from 'components/Form';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
 
-import { HandleAddAdminSchedulerJob } from 'store/domains';
+import { HandleAddAdminSchedulerJob, HandleUpdateAdminSchedulerJob } from 'store/domains';
 
 import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
 
 import { ParsedSelectValues } from 'types';
 
-interface AddSchedulerJobFormProps {
-  addAdminSchedulerJob: HandleAddAdminSchedulerJob;
-  institutionsOptions: Array<ParsedSelectValues>;
+interface DefineSchedulerJobFormProps {
+  defineAdminSchedulerJob?: HandleAddAdminSchedulerJob|HandleUpdateAdminSchedulerJob;
+  institutionsOptions?: Array<ParsedSelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
-  onCancel: () => void;
+  onCancel?: () => void;
 }
 
-type AddSchedulerJobFormAllProps = AddSchedulerJobFormProps &
-  InjectedFormProps<{}, AddSchedulerJobFormProps>;
+type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
+  InjectedFormProps<{}, DefineSchedulerJobFormProps>;
 
-const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
+const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   handleSubmit,
-  addAdminSchedulerJob,
+  defineAdminSchedulerJob,
   isDisabledInstitutions,
   institutionsOptions,
   isDisabledStatus,
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => addAdminSchedulerJob(data)),
-    [handleSubmit, addAdminSchedulerJob]
+    handleSubmit(data => defineAdminSchedulerJob(data)),
+    [handleSubmit, defineAdminSchedulerJob]
   );
 
   return (
@@ -149,8 +149,8 @@ const AddSchedulerJobForm: React.FC<AddSchedulerJobFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AddSchedulerJobFormProps>({
-  form: formNames.ADD_ADMIN_SCHEDULER_JOB,
+export default reduxForm<{}, DefineSchedulerJobFormProps>({
+  form: formNames.DEFINE_ADMIN_SCHEDULER_JOB,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(AddSchedulerJobForm);
+})(DefineSchedulerJobForm);

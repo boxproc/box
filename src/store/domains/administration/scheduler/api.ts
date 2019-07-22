@@ -19,3 +19,7 @@ export const deleteAdminSchedulerJob = (id: string | number) =>
 export const addAdminSchedulerJob = (data: AdminSchedulerEditableItemPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/scheduler/create', { data });
+
+export const updateAdminSchedulerJobs = (data: AdminSchedulerEditableItemPrepared) =>
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
+  apiClient.post('/ui/administration/scheduler/update', { data });
