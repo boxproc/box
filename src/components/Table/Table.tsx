@@ -8,9 +8,12 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
+import Hint from 'components/Hint';
 import { ChevronIcon } from 'components/Icon';
 
 import { TableStyled } from './TableStyled';
+
+import { stringsUtil } from 'utils';
 
 interface TableItemWrapperProps {
   color?: string;
@@ -18,15 +21,17 @@ interface TableItemWrapperProps {
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
+  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: 'flex-start';
+  align-items: flex-start;
   overflow: hidden;
   font-size: 13px;
-  line-height: 1.35;
+  line-height: 1.5;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
+  word-break: break-word;
 
   .title {
     color: ${({ theme }) => theme.blackColorOpacity8};
@@ -51,6 +56,7 @@ const SortIconsWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-left: 10px;
+  padding: 3px 0;
 
   .up-icon {
     margin-bottom: 5px;
@@ -64,11 +70,30 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  title, showSortIcons = false,
-}) => (
+  title,
+  showSortIcons = false,
+}) => {
+  const headerCellRef = React.useRef(null);
+  const [isOverflow, setIsOverflow] = React.useState(false);
+
+  React.useEffect(
+    () => {
+      if (stringsUtil.isOverflow(headerCellRef.current)) {
+        setIsOverflow(true);
+      }
+    },
+    [headerCellRef]
+  );
+
+  return (
     <Flex justifyContent="center" alignItems="center">
       <TableItemWrapper>
-        <Box className="title" title={title}>{title}</Box>
+        <Box
+          className="title"
+          ref={headerCellRef}
+        >
+          {title}
+        </Box>
         <SortIconsWrapper>
           {showSortIcons &&
             <React.Fragment>
@@ -78,8 +103,16 @@ export const Header: React.FC<HeaderProps> = ({
           }
         </SortIconsWrapper>
       </TableItemWrapper>
+      {isOverflow && (
+        <Hint
+          text={title}
+          position="bottom"
+          icon={false}
+        />
+      )}
     </Flex>
   );
+};
 
 interface CellProps {
   value: string | number;
@@ -139,8 +172,10 @@ export const Table: React.FC<TableProps> = props => {
           filterable={filterable}
           minRows={0}
           showPagination={false}
+          // showPageSizeOptions={false}
+          // defaultPageSize={10}
           multiSort={false}
-          resizable={true}
+          resizable={false}
           TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}
         />
       </TableStyled>

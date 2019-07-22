@@ -6,44 +6,44 @@ import { InfoCircle } from 'styled-icons/boxicons-regular/InfoCircle';
 
 interface HintWrapperProps {
   position?: string;
+  icon?: boolean;
+  width?: string;
 }
 
 const HintWrapper = styled.div<HintWrapperProps>`
-  position: relative;
+  position: ${({ icon }) => icon ? 'relative' : 'absolute'};
+  width: ${({ icon }) => icon ? 'auto' : '100%'};
+  height: ${({ icon }) => icon ? 'auto' : '100%'};
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
   .hint {
     position: absolute;
-    left: ${({ position }) => position === 'left' ? 'auto' : 'calc(100% + 8px)'};
-    right: ${({ position }) => position === 'left' ? 'calc(100% + 8px)' : 'auto'};
-    top: 0;
-    width: 170px;
-    padding: 10px;
-    box-shadow: ${({ theme }) => theme.boxShadow};
-    background-color: ${({ theme }) => theme.grayColor};
+    top: ${({ position }) => position === 'bottom' ? 'calc(100% + 3px)' : 'auto'};
+    right: ${({ position }) => position === 'left' ? 'calc(100% + 3px)' : 'auto'};
+    bottom: ${({ position }) => position === 'top' ? 'calc(100% + 3px)' : 'auto'};
+    left: ${({ position }) => position === 'right' ? 'calc(100% + 3px)' : 'auto'};
+    min-width: ${({ icon, width }) => icon ? width ? width + 'px' : '160px' : 'auto'};
+    padding: 7px 10px;
+    background-color: ${({ theme }) => theme.blackColorOpacity7};
     color: ${({ theme }) => theme.whiteColor};
-    transform: translateY(-50%);
-    margin-top: 50%;
+    transform: ${({ position }) =>
+      position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)' };
+    margin: ${({ position }) =>
+      position === 'left' || position === 'right' ? '-50% 0 0 0' : '0 0 0 50%' };
     border-radius: 2px;
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.5;
+    text-transform: none;
     z-index: 1;
+    white-space: ${({ icon }) => icon ? 'normal' : 'nowrap'};
+  }
 
-    &:before {
-      content: "";
-      position: absolute;
-      right: ${({ position }) => position === 'right' ? '100%' : 'auto'};
-      left: ${({ position }) => position === 'left' ? '100%' : 'auto'};
-      top: 50%;
-      margin-top: -6px;
-      display: block;
-      width: 0;
-      height: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: ${({ theme, position }) =>
-        position === 'left' ? 'transparent' : '7px solid' + theme.grayColor}
-      border-left: ${({ theme, position }) =>
-        position === 'right' ? 'transparent' : '7px solid' + theme.grayColor}
+  .toggle-hint {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -58,21 +58,33 @@ const InfoButton = styled(InfoCircle)`
 
 interface HintProps {
   text: string;
-  position?: 'left' | 'right';
+  position?: 'top' | 'right' | 'bottom' | 'left' | string;
+  icon?: boolean;
+  width?: string;
 }
 
 const Hint: React.FC<HintProps> = ({
   text,
   position = 'right',
+  icon = true,
+  width,
 }) => {
   const [isHint, setIsHint] = React.useState(false);
   return (
-    <HintWrapper position={position}>
-      <InfoButton
-        size="18"
+    <HintWrapper
+      position={position}
+      icon={icon}
+      width={width}
+    >
+      <div
+        className="toggle-hint"
         onMouseEnter={() => setIsHint(true)}
         onMouseLeave={() => setIsHint(false)}
-      />
+      >
+        {icon && (
+          <InfoButton size="18"/>
+        )}
+      </div>
       {isHint && (
         <div className="hint">{text}</div>
       )}

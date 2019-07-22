@@ -10,41 +10,44 @@ import {
   GetAdminSchedulerJobAction,
 } from './actionTypes';
 
-import { apiClient } from 'services';
-
 import { closeModal } from 'store/domains/modals';
 
-import { Thunk, VoidPromiseThunk, } from 'types';
-import { AdminSchedulerDataItems } from './types';
-
 import { prepareAdminSchedulerJobValues } from './utils';
+
+import { AdminSchedulerEditableItem, AdminSchedulerEditableItemPrepared } from './types';
+
+import { apiClient } from 'services';
+
+import { Thunk, VoidPromiseThunk, } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type GetAdminSchedulerJobs = () => GetAdminSchedulerJobAction;
 export type HandleGetAdminSchedulerJobs = VoidPromiseThunk;
 
-export type AddAdminSchedulerJob = (propValues: AdminSchedulerDataItems) =>
-AddAdminSchedulerJobAction;
-export type HandleAddAdminSchedulerJob =
- (propValues: any) => Thunk<void>;
+export type AddAdminSchedulerJob = (values: AdminSchedulerEditableItemPrepared) =>
+  AddAdminSchedulerJobAction;
+export type HandleAddAdminSchedulerJob = (values: AdminSchedulerEditableItem) =>
+  Thunk<void>;
 
-export type DeleteAdminSchedulerJob = (id: string|number) => DeleteAdminSchedulerJobAction;
-export type HandleDeleteAdminSchedulerJob = (id: string|number) => Thunk<void>;
+export type DeleteAdminSchedulerJob = (id: string | number) => DeleteAdminSchedulerJobAction;
+export type HandleDeleteAdminSchedulerJob = (id: string | number) => Thunk<void>;
 
 export const getAdminSchedulerJobs: GetAdminSchedulerJobs = () => ({
   type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS,
   payload: api.getAdminSchedulerJobs(),
 });
 
-export const addAdminSchedulerJob: AddAdminSchedulerJob = propValues => ({
+export const addAdminSchedulerJob: AddAdminSchedulerJob = values => ({
   type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS,
-  payload: api.addAdminSchedulerJob(propValues),
+  payload: api.addAdminSchedulerJob(values),
+  meta: values,
 });
 
 export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS,
   payload: api.deleteAdminSchedulerJob(id),
+  meta: id,
 });
 
 export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
@@ -59,14 +62,13 @@ export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
     );
   };
 
-export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = propValues =>
+export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedAdminSchedulerJobValues =
-        prepareAdminSchedulerJobValues(propValues);
+        const preparedValues = prepareAdminSchedulerJobValues(values);
 
-        await dispatch(addAdminSchedulerJob(preparedAdminSchedulerJobValues));
+        await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
         await dispatch(resetForm(formNames.ADD_ADMIN_SCHEDULER_JOB));
       },

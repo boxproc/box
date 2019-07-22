@@ -1,23 +1,25 @@
-import { AdminSysPropsItem, AdminSysPropsItemResp } from './types';
+import {
+  AdminSysPropFilterParams,
+  AdminSysPropFilterParamsPrepared,
+  EditableAdminSysProp,
+  EditableAdminSysPropPrepared,
+} from './types';
 
 import { yesNoTypes } from 'consts';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
-export const prepareAdminSysItemValues =
-  (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> =>
-    camelizeFieldsUtil.camelizeFields(propValues, 'decamelize');
-
-export const prepareAdminSysItemValuesWithLockedFlag =
-  (propValues: Partial<AdminSysPropsItem>): Partial<AdminSysPropsItemResp> => {
-    const { lockedFlag } = propValues;
-    const preparedProps = {};
-
-    preparedProps['locked_flag'] =
-      (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES;
+export const prepareEditableAdminSysPropItemValues =
+  (propValues: EditableAdminSysProp): EditableAdminSysPropPrepared => {
+    const { propertyName, currentValue, lockedFlag } = propValues;
 
     return {
-      ...camelizeFieldsUtil.camelizeFields(propValues, 'decamelize'),
-      ...preparedProps,
+      property_name: propertyName,
+      current_value: currentValue,
+      locked_flag: (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES,
     };
   };
+
+export const prepareAdminSysPropFilterParams =
+  (propValues: Partial<AdminSysPropFilterParams>): Partial<AdminSysPropFilterParamsPrepared> =>
+    camelizeUtil.camelize(propValues, 'decamelize');

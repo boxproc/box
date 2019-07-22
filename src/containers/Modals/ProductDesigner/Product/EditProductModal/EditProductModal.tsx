@@ -10,15 +10,28 @@ import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
 import { modalNames } from 'consts';
 
-import { CloseModal, HandleDeleteProduct } from 'store/domains';
+import {
+  CloseModal,
+  // DebitProductItemDetails,
+  HandleDeleteProduct,
+  // LoanProductItemDetails,
+  // PrepaidProductItemDetails,
+  // RevolvingCreditProductItemDetails,
+  // SavingsProductItemDetails,
+} from 'store/domains';
 import { ParsedSelectValues } from 'types';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
   deleteProduct: HandleDeleteProduct;
-  productId: number | string;
+  productId: number;
   institutionsOptions: Array<ParsedSelectValues>;
   productTypeValue: ParsedSelectValues;
+  savingsProduct: any;
+  revolvingCreditProduct: any;
+  prepaidProduct: any;
+  loanProduct: any;
+  debitProduct: any;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
@@ -27,12 +40,19 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   productId,
   institutionsOptions,
   productTypeValue,
+  savingsProduct,
+  revolvingCreditProduct,
+  prepaidProduct,
+  loanProduct,
+  debitProduct,
 }) => {
   return (
     <Modal
       name={modalNames.EDIT_PRODUCT}
       title="Edit Product"
       maxContainerWidth={700}
+      label={productTypeValue && productTypeValue.label}
+      labelIconName="creditCard"
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
@@ -40,7 +60,13 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         isDisabledProductTypes={true}
         isDisabledInstitutions={true}
         isDisabledStatus={true}
-        productTypeValue={productTypeValue}
+        initialValues={
+          savingsProduct
+          || revolvingCreditProduct
+          || prepaidProduct
+          || loanProduct
+          || debitProduct
+        }
       />
       <Hr />
       <Button

@@ -5,9 +5,20 @@ import 'react-table/react-table.css';
 export const TableStyled = styled.div`
   margin-bottom: 20px;
 
-  .ReactTable .rt-tbody,
-  .ReactTable .rt-table {
-    overflow: visible !important;
+  // .ReactTable,
+  // .ReactTable .rt-tbody,
+  // .ReactTable .rt-table {
+  //   overflow-y: visible !important;
+  //   overflow-x: visible !important;
+  // }
+
+  .ReactTable .rt-thead .rt-resizable-header-content,
+  .ReactTable .rt-thead .rt-th {
+    overflow: visible;
+  }
+  .ReactTable .rt-thead .rt-resizable-header,
+  .ReactTable .rt-thead .rt-th.-cursor-pointer  {
+    border-left: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar {
@@ -33,14 +44,14 @@ export const TableStyled = styled.div`
   .ReactTable {
     height: 100%;
     border: none;
-    // overflow-y: auto;
+    overflow-y: auto;
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  // .ReactTable .rt-tbody {
-  //   overflow-y: overlay;
-  //   overflow-x: hidden;
-  // }
+  .ReactTable .rt-tbody {
+    overflow-y: overlay;
+    overflow-x: hidden;
+  }
 
   .ReactTable .rt-td {
     display: flex;
@@ -89,10 +100,6 @@ export const TableStyled = styled.div`
 
   .ReactTable  .rt-th, .rt-td {
     border: none !important;
-  }
-
-  .ReactTable .rt-thead .rt-resizable-header {
-    border-right: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;;
   }
 
   .ReactTable .rt-tbody .rt-td {

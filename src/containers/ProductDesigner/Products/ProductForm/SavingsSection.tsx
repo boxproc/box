@@ -3,7 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components/Form';
+import { InputField, SelectField } from 'components/Form';
+
+import { savingsTypesOptions } from 'consts';
 
 const SavingsSection: React.FC = () => {
   return (
@@ -16,9 +18,11 @@ const SavingsSection: React.FC = () => {
           <Field
             id="savingsType"
             name="savingsType"
-            placeholder="Enter Savings Type"
-            component={InputField}
+            isSearchable={true}
+            component={SelectField}
             label="Savings Type"
+            placeholder="Select Savings Type"
+            options={savingsTypesOptions}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

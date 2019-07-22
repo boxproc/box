@@ -1,10 +1,10 @@
 import {
+  ProductDataResp,
   ProductFilterParams,
-  ProductId,
   ProductsDataResp,
 } from './types';
 
-import { ApiResponse } from 'types';
+import { ApiResponse, SuccessResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_PRODUCTS = 'productDesigner/products/GET_PRODUCTS',
@@ -20,8 +20,13 @@ export enum ActionTypeKeys {
   FILTER_PRODUCTS_REJECTED = 'productDesigner/products/FILTER_PRODUCTS_REJECTED',
 
   SET_FILTER_PRODUCTS_PARAMS = 'productDesigner/products/SET_FILTER_PRODUCTS_PARAMS',
+
+  GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
+  GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
+  GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
 }
 
+// Get all products
 export interface GetProductsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCTS;
@@ -37,14 +42,16 @@ export interface GetProductsRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCTS_REJECTED;
 }
 
+// Delete product by id
 export interface DeleteProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT;
 }
 
 export interface DeleteProductFulfilledAction {
-  readonly payload: ProductId;
+  readonly payload: SuccessResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FULFILLED;
+  readonly meta: number;
 }
 
 export interface DeleteProductRejectedAction {
@@ -52,6 +59,7 @@ export interface DeleteProductRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REJECTED;
 }
 
+// Filter products
 export interface FilterProductsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS;
@@ -72,8 +80,25 @@ export interface SetFilterProductsParamsAction {
   readonly type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS;
 }
 
+// Get product by id
+export interface GetProductAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT;
+}
+
+export interface GetProductFulfilledAction {
+  readonly payload: ProductDataResp;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FULFILLED;
+}
+
+export interface GetProductRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
+}
+
 export type ProductsActionTypes =
   | GetProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
-  | SetFilterProductsParamsAction;
+  | SetFilterProductsParamsAction
+  | GetProductFulfilledAction;

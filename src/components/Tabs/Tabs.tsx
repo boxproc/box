@@ -4,6 +4,8 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
+import Hint from 'components/Hint';
+
 const TabsWrapper = styled.div`
   margin: 0 -20px 20px;
   box-shadow: ${({ theme }) => theme.boxShadowBottom};
@@ -14,15 +16,19 @@ interface TabTitleProps {
 }
 
 const TabTitle = styled.div<TabTitleProps>`
+  position: relative;
   padding: 10px 25px;
   text-transform: uppercase;
   font-weight: 500;
-  cursor: pointer;
+  cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};
   color: ${({ theme }) => theme.grayColor};
   font-size: 14px;
   letter-spacing: .5pt;
-  opacity: ${({ isDisabled }) => isDisabled && .5};
-  pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
+  // pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
+
+  .title {
+    opacity: ${({ isDisabled }) => isDisabled && .5};
+  }
 
   &.is-active {
     color: ${({ theme }) => theme.darkGrayColor};
@@ -42,13 +48,21 @@ export const Tabs: React.FC<TabsProps> = ({
       <TabsWrapper>
         <Flex>
           {React.Children.map(children, (child, i) => {
+            const { title, hintForDisabled, isDisabled } = children[i].props;
             return (
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
-                isDisabled={children[i].props.isDisabled}
-                onClick={() => setActiveTabIndex(i)}
+                isDisabled={isDisabled}
+                onClick={isDisabled ? null : () => setActiveTabIndex(i)}
               >
-                {children[i].props.title}
+                <div className="title">{title}</div>
+                {hintForDisabled && isDisabled && (
+                  <Hint
+                    text={hintForDisabled}
+                    icon={false}
+                    position="bottom"
+                  />
+                )}
               </TabTitle>
             );
           })}
@@ -61,6 +75,7 @@ export const Tabs: React.FC<TabsProps> = ({
 
 interface PanelProps {
   title: string;
+  hintForDisabled?: string;
   isDisabled?: boolean;
 }
 

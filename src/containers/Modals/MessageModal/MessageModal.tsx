@@ -8,25 +8,25 @@ import { Paragraph } from 'components/Text';
 
 import { modalNames } from 'consts';
 
-import { CloseModal, FieldsMessageModal } from 'store/domains';
+import { CloseModal, PayloadMessageModal } from 'store/domains';
 
 interface MessageModalProps {
-  fieldsMessageModal: FieldsMessageModal;
+  payloadMessageModal: PayloadMessageModal;
   closeModal: CloseModal;
 }
 
 const MessageModal: React.FC<MessageModalProps> = ({
-  fieldsMessageModal,
+  payloadMessageModal,
   closeModal,
 }) => {
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
 
-  const { title, message, details } = fieldsMessageModal;
+  const { title, message, details } = payloadMessageModal;
   return (
     <Modal
       name={modalNames.MESSAGE_MODAL}
       title={title}
-      maxContainerWidth={350}
+      maxContainerWidth={500}
       zIndex="101"
       closeOnBackdrop={true}
     >

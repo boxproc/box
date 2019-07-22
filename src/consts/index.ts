@@ -74,7 +74,7 @@ export const productTypesOptions = [
   { value: 'C', label: 'Revolving credit' },
 ];
 
-export const executubleTypeOptions  = [
+export const executableTypeOptions  = [
   { value: 'A', label: 'Api call'},
   { value: 'S', label: 'Shell script'},
   { value: 'J', label: 'Java'},
@@ -120,6 +120,18 @@ export enum loanTypes {
 export const loanTypesOptions = [
   {value: 'B', label: 'Buy now, pay later'},
   {value: 'I', label: 'Installments'},
+];
+
+export enum savingsTypes {
+  FIXED_TERM = 'F',
+  UNLIMITED_TERM = 'U',
+  REWARD = 'R',
+}
+
+export const savingsTypesOptions = [
+  {value: 'F', label: 'Fixed term'},
+  {value: 'U', label: 'Unlimited term'},
+  {value: 'R', label: 'Reward'},
 ];
 
 export enum uiItemConsts {

@@ -4,40 +4,45 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { statusTypes } from 'consts';
+import Hint from 'components/Hint';
 
+import { statusTypes } from 'consts';
 interface CircleProps {
   status: string;
 }
 
 const Circle = styled.div<CircleProps>`
-  margin-right: 4px;
-  margin-top: 1px;
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
-  border: 2px solid ${({ theme, status }) => {
-    switch (status) {
-      case statusTypes.DELETED:
-        return theme.grayColor;
-      default:
-        return 'transparent';
+  position: relative;
+
+  .circle {
+    margin-right: 4px;
+    margin-top: 1px;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    border: 2px solid ${({ theme, status }) => {
+      switch (status) {
+        case statusTypes.DELETED:
+          return theme.grayColor;
+        default:
+          return 'transparent';
+        }
       }
-    }
-  };
-  background: ${({ theme, status }) => {
-    switch (status) {
-      case 'box':
-        return theme.normalAccentColor;
-      case statusTypes.ACTIVE:
-        return theme.greenColor;
-      case statusTypes.INACTIVE:
-        return theme.grayColor;
-      default:
-        return 'transparent';
+    };
+    background: ${({ theme, status }) => {
+      switch (status) {
+        case 'box':
+          return theme.normalAccentColor;
+        case statusTypes.ACTIVE:
+          return theme.greenColor;
+        case statusTypes.INACTIVE:
+          return theme.grayColor;
+        default:
+          return 'transparent';
+        }
       }
-    }
-  };
+    };
+  }
 `;
 
 interface StatusBlockProps {
@@ -52,7 +57,14 @@ const StatusBlock: React.FC<StatusBlockProps> = ({
   title,
 }) => (
     <Flex alignItems="center">
-      <Circle title={title} status={text === 'BOX' ? 'box' : status} />
+      <Circle status={text === 'BOX' ? 'box' : status} >
+        <div className="circle"/>
+        <Hint
+          text={title}
+          icon={false}
+          position="bottom"
+        />
+      </Circle>
       <div>{text}</div>
     </Flex>
   );

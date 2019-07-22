@@ -17,9 +17,8 @@ export const renderEditable = (updateAction: (data: object) => void) =>
     const editableCellStyles = {
       backgroundColor: isEditable && '#fafafa',
       width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
+      height: 'auto',
+      alignSelf: 'flex-start',
       padding: '0 7px',
       borderRadius: '2px',
     };

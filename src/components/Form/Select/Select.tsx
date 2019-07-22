@@ -65,7 +65,7 @@ export const SelectInput = <T extends {}>(props: SelectInputProps<T>) => {
         loadingMessage={loadingMessage}
         className="form-select"
         isMulti={isMulti}
-        isClearable={false}
+        isClearable={true}
         openMenuOnFocus={true}
         tabSelectsValue={false}
         isSearchable={false}

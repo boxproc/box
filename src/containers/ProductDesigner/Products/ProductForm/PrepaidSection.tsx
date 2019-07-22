@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components/Form';
+import { CheckboxField, InputField } from 'components/Form';
 
 const PrepaidSection: React.FC = () => {
   return (
@@ -14,29 +14,29 @@ const PrepaidSection: React.FC = () => {
       >
         <Box width={[1 / 2]} p="10px">
           <Field
-            id="breakAgesAllowed"
-            name="breakAgesAllowed"
-            placeholder="Enter Break Ages Allowed"
-            component={InputField}
-            label="Break Ages Allowed"
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="reloadAllowed"
-            name="reloadAllowed"
-            placeholder="Enter Reload Allowed"
-            component={InputField}
-            label="Reload Allowed"
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
             id="dormantAfterNumberOfDays"
             name="dormantAfterNumberOfDays"
             placeholder="Enter Dormant After Number Of Days"
             component={InputField}
             label="Dormant After Number Of Days"
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="breakAgesAllowed"
+            name="breakAgesAllowed"
+            component={CheckboxField}
+            label="Break Ages Allowed"
+            disabled={false}
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="reloadAllowed"
+            name="reloadAllowed"
+            component={CheckboxField}
+            label="Reload Allowed"
+            disabled={false}
           />
         </Box>
       </Flex>

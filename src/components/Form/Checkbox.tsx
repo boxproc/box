@@ -23,7 +23,7 @@ const CheckboxWrapper = styled.div<DisabledProp>`
 
   ${({ disabled, theme }) => disabled && `
     background-color: ${theme.whiteColor};
-    opacity: 0.5;
+    opacity: 0.8;
   `};
 `;
 

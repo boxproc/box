@@ -23,6 +23,7 @@ export const NavList = styled.div`
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
+    margin: 0 1px;
     background-color: ${({ theme }) => theme.whiteColor};
     z-index: 100
     &:hover {
@@ -61,10 +62,10 @@ export const NavList = styled.div`
     display: none;
     width: 200px;
     box-shadow: ${({ theme }) => theme.boxShadow};
-    border: 1px solid ${({ theme }) => theme.blackColor};
+    border: 1px solid ${({ theme }) => theme.darkGrayColor};
     font-size: 14px;
     .${menuClasses.SUB_MENU} {
-      left: 100%;
+      left: calc(100% + 1px);
       top: -1px;
     }
     .highlight-link {

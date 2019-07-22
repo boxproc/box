@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Box, Flex } from '@rebass/grid';
+import { CreditCard } from 'styled-icons/fa-solid/CreditCard';
+
 import { ModalWrapper } from './ModalWrapper';
 
 import { T2 } from 'components/Text';
@@ -9,9 +12,53 @@ import { CloseModal } from 'store/domains';
 import { codeKeys } from 'consts';
 import styled from 'styled-components';
 
+const ModalTitle = styled(T2)`
+  padding-right: 15px;
+  color: ${({ theme }) => theme.blackColor};
+`;
+
+interface ModalLabelProps {
+  text: string;
+  iconName?: string;
+}
+
+const ModalLabelWrapper = styled(Flex)`
+  padding-top: 6px;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.grayColor};
+  font-size: 14px;
+`;
+
+const renderIcon = (name: string) => {
+  switch (name) {
+    case 'creditCard':
+      return (<CreditCard size="16"/>);
+    default:
+      return null;
+  }
+};
+
+const ModalLabel: React.FC<ModalLabelProps> = ({
+  text,
+  iconName,
+}) => {
+  return (
+    <ModalLabelWrapper alignItems="center">
+      {iconName && (
+        <Box mr="5px">
+          {renderIcon(iconName)}
+        </Box>
+      )}
+      <Box>{text}</Box>
+    </ModalLabelWrapper>
+  );
+};
+
 interface ModalProps {
   name: string;
   title?: string;
+  label?: string;
+  labelIconName?: string;
   closeModal: CloseModal;
   maxContainerWidth?: string;
   minContainerHeight?: string;
@@ -19,14 +66,12 @@ interface ModalProps {
   closeOnBackdrop?: boolean;
 }
 
-const ModalTitle = styled(T2)`
-  color: ${({ theme }) => theme.blackColor};
-`;
-
 const Modal: React.FC<ModalProps> = ({
   children,
   name,
   title,
+  label,
+  labelIconName,
   closeModal,
   maxContainerWidth,
   minContainerHeight,
@@ -69,7 +114,17 @@ const Modal: React.FC<ModalProps> = ({
         >
           &times;
         </span>
-        {title && (<ModalTitle>{title}</ModalTitle>)}
+        <Flex alignItems="flex-start">
+          {title && (
+            <ModalTitle>{title}</ModalTitle>
+          )}
+          {label && (
+            <ModalLabel
+              text={label}
+              iconName={labelIconName}
+            />
+          )}
+        </Flex>
         {children}
       </div>
     </ModalWrapper>

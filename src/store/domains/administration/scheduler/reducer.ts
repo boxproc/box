@@ -13,20 +13,23 @@ const adminSchedulerJobsReducer =
       case ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state
           .set('scheduler', action.payload.s_scheduler);
+
       case ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state
           .set('scheduler', [
+            action.meta,
             ...Object.values({
               ...state.scheduler,
             }),
-            action.payload.scheduler,
           ]);
+
       case ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state
           .set(
             'scheduler',
-            state.scheduler.filter(el => el.id !== action.payload.job_id)
+            state.scheduler.filter(el => el.id !== action.meta)
           );
+
       default: return state;
     }
   };

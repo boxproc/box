@@ -10,6 +10,7 @@ import {
   ActionTypeKeys,
   DeleteProductAction,
   FilterProductsAction,
+  GetProductAction,
   GetProductsAction,
   SetFilterProductsParamsAction,
 } from './actionTypes';
@@ -25,14 +26,17 @@ import { prepareProductFiltersParams } from './utils';
 export type GetProducts = () => GetProductsAction;
 export type HandleGetProducts = VoidPromiseThunk;
 
-export type DeleteProduct = (id: number | string) => DeleteProductAction;
-export type HandleDeleteProduct = (id: number | string) => Thunk<void>;
+export type DeleteProduct = (id: number) => DeleteProductAction;
+export type HandleDeleteProduct = (id: number) => Thunk<void>;
 
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
 export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
 
 export type SetFilterProductsParams = (params: ProductFilterParams) =>
   SetFilterProductsParamsAction;
+
+export type GetProduct = (id: number) => GetProductAction;
+export type HandleGetProduct = (id: number) => Thunk<void>;
 
 export const getProducts: GetProducts = () => ({
   type: ActionTypeKeys.GET_PRODUCTS,
@@ -42,6 +46,7 @@ export const getProducts: GetProducts = () => ({
 export const deleteProduct: DeleteProduct = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT,
   payload: api.deleteProduct(id),
+  meta: id,
 });
 
 export const filterProducts: FilterProducts = params => ({
@@ -52,6 +57,11 @@ export const filterProducts: FilterProducts = params => ({
 export const setFilterFilterProductParams: SetFilterProductsParams = params => ({
   type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS,
   payload: params,
+});
+
+export const getProduct: GetProduct = id => ({
+  type: ActionTypeKeys.GET_PRODUCT,
+  payload: api.getProduct(id),
 });
 
 export const handleGetProducts: HandleGetProducts = () =>
@@ -65,8 +75,8 @@ export const handleGetProducts: HandleGetProducts = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedProductFiltersParams = prepareProductFiltersParams(formValues(state));
-          await dispatch(filterProducts(preparedProductFiltersParams));
+          const preparedValues = prepareProductFiltersParams(formValues(state));
+          await dispatch(filterProducts(preparedValues));
         } else {
           await dispatch(getProducts());
         }
@@ -90,10 +100,20 @@ export const handleFilterProducts: HandleFilterProducts = params =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedProductFiltersParams = prepareProductFiltersParams(params);
+        const preparedValues = prepareProductFiltersParams(params);
 
-        await dispatch(filterProducts(preparedProductFiltersParams));
+        await dispatch(filterProducts(preparedValues));
         dispatch(setFilterFilterProductParams(params));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProduct: HandleGetProduct = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getProduct(id));
       },
       dispatch
     );

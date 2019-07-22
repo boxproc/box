@@ -4,9 +4,9 @@ export const selectModalsStateList = (state: StoreState) => state.modals;
 
 export const selectIsMessageModal = (state: StoreState) => state.modals.isMessageModal;
 
-export const selectFieldsMessageModal = (state: StoreState) => state.modals.fieldsMessageModal;
+export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
-export const selectProductId = (state: StoreState) => state.modals.fieldsEditProductModal.id;
+export const selectProductId = (state: StoreState) => state.modals.payloadEditProductModal.id;
 
 export const selectSchedulerJobId = (state: StoreState) =>
-  state.modals.fieldsEditAdminSchedulerModal.id;
+  state.modals.payloadEditAdminSchedulerModal.id;

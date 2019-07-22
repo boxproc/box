@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components/Form';
+import { CheckboxField, InputField } from 'components/Form';
 
 const RevolvingCreditSection: React.FC = () => {
   return (
@@ -118,6 +118,15 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Payment Grace Number Of Days"
             component={InputField}
             label="Payment Grace Number Of Days"
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="limitSharingAllowedFlag"
+            name="limitSharingAllowedFlag"
+            component={CheckboxField}
+            label="Limit Sharing Allowed"
+            disabled={false}
           />
         </Box>
       </Flex>

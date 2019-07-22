@@ -47,7 +47,6 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
       <OkCancelButtons
         okText="Run it"
         cancelText="Reset"
-        cancelIconName="reset"
         disabledCancel={true}
       />
     </form >
@@ -56,6 +55,6 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
 
 export default reduxForm<{}, SystemPropertyFilterProps>({
   form: formNames.SYSTEM_PROPERTY_FILTER,
-  destroyOnUnmount: true,
+  destroyOnUnmount: false,
   enableReinitialize: true,
 })(SystemPropertyFilter);

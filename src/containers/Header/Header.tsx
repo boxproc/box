@@ -46,8 +46,8 @@ const UserIcon = styled(User)`
 `;
 
 const UserBlock = () => (
-  <Flex alignItems="end">
-    <UserIcon size="15"/>
+  <Flex alignItems="baseline">
+    <UserIcon size="12"/>
     <div>{cookiesUtil.get(cookiesNames.FULL_NAME)}</div>
   </Flex>
 );
@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const institution = institutions.length === 1
     ? institutions[0]
-    : institutions.length && institutions.find(el => el.institutionName === 'BOX');
+    : institutions.find(el => el.institutionName === 'BOX');
 
   return (
     <Wrapper>
@@ -124,14 +124,14 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box>
             <Flex alignItems="center">
-              <Box mr="20px">
+              <Box mr="15px">
                 <StatusBlock
                   text={institution && institution.institutionName}
                   status={institution && institution.status}
                   title={institution && institution.statusLabel}
                 />
               </Box>
-              <Box mr="35px">
+              <Box mr="30px">
                 <UserBlock/>
               </Box>
               <Button

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InjectedFormProps, reduxForm } from 'redux-form';
+import { FormSection, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { Panel, Tabs } from 'components/Tabs';
@@ -66,22 +66,25 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
         <Panel
           title="Details"
           isDisabled={!productTypeValue}
+          hintForDisabled="Select Product Type"
         >
-          {productTypeValue && productTypeValue.value === productTypes.LOAN &&
-            (<LoanTypeSection/>)
-          }
-          {productTypeValue && productTypeValue.value === productTypes.PREPAID &&
-            (<PrepaidSection/>)
-          }
-          {productTypeValue && productTypeValue.value === productTypes.DEBIT &&
-            (<DebitSection/>)
-          }
-          {productTypeValue && productTypeValue.value === productTypes.SAVINGS &&
-            (<SavingsSection/>)
-          }
-          {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT &&
-            (<RevolvingCreditSection/>)
-          }
+          <FormSection name="details">
+            {productTypeValue && productTypeValue.value === productTypes.LOAN && (
+              <LoanTypeSection />
+            )}
+            {productTypeValue && productTypeValue.value === productTypes.PREPAID && (
+              <PrepaidSection />
+            )}
+            {productTypeValue && productTypeValue.value === productTypes.DEBIT && (
+              <DebitSection />
+            )}
+            {productTypeValue && productTypeValue.value === productTypes.SAVINGS && (
+              <SavingsSection />
+            )}
+            {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
+              <RevolvingCreditSection />
+            )}
+          </FormSection>
         </Panel>
       </Tabs>
       <OkCancelButtons

@@ -10,7 +10,7 @@ const getNotification = (
   details?: string
 ) => openModal({
   name: modalNames.MESSAGE_MODAL,
-  fields: { title, message, details },
+  payload: { title, message, details },
 });
 
 export const handleSendNotification: SendNotification =

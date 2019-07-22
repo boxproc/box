@@ -30,11 +30,6 @@ export interface PromiseRes<R> {
   value?: R;
 }
 
-export interface NormalizedData<T1 = {}, T2 = {}> {
-  entities: T1;
-  result: T2;
-}
-
 export type toMutable<T> = T extends ImmutableArray<infer U> ? Array<U> : T;
 
 export type toMutableInterface<T> = { [K in keyof T]: toMutable<T[K]> };
@@ -55,4 +50,10 @@ export interface ParsedSelectValues<T = number | string> {
   label: string;
 }
 
-export type HandleEntityRemoval = (id: number) => Thunk<void>;
+export interface StatusCode {
+  status_code: number;
+}
+
+export interface SuccessResponseStatusType {
+  response_status: StatusCode;
+}

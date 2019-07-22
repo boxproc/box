@@ -2,17 +2,17 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { camelizeFieldsUtil } from 'utils';
+import { camelizeUtil } from 'utils';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
   state.administration.adminSysProps.systemProperties;
 
-export const selectFilterSystemProperties = (state: StoreState) =>
-  state.administration.adminSysProps.filterSystemProperties;
+export const selectSysPropsFilterParams = (state: StoreState) =>
+  state.administration.adminSysProps.systemPropertiesFilterParams;
 
 export const selectAdminSysPropsItems = createSelector(
   selectDefaultAdminSysPropsItems,
   items => items && items.asMutable().map(item => {
-    return camelizeFieldsUtil.camelizeFields(item, 'camelcase');
+    return camelizeUtil.camelize(item, 'camelcase');
   })
 );
