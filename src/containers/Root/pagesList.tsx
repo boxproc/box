@@ -2,6 +2,8 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
+import EventDataElements from 'containers/Administration/EventDataElements';
+import Events from 'containers/Administration/Events';
 import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
 import Products from 'containers/ProductDesigner/Products';
@@ -25,6 +27,14 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_SCHEDULER,
     component: <Scheduler />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENTS,
+    component: <Events />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
+    component: <EventDataElements />,
   },
   {
     path: uiItemConsts.LEDGER_CUSTOMERS,

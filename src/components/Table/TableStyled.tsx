@@ -18,7 +18,7 @@ export const TableStyled = styled.div`
   }
   .ReactTable .rt-thead .rt-resizable-header,
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
-    border-left: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;
+    border-right: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar {

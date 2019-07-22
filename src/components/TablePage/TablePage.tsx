@@ -17,11 +17,11 @@ interface TablePageProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
-  addNewModalName: string;
-  openModal: OpenModal;
-  FilterForm: ReactChild;
+  FilterForm?: ReactChild;
   getTrGroupProps?: any;
   hint?: string;
+  openModal?: OpenModal;
+  addNewModalName?: string;
 }
 
 const NoDataComponent = () => (
@@ -46,31 +46,35 @@ export const TablePage: React.FC<TablePageProps> = ({
   return (
     <React.Fragment>
       <T2>{title}</T2>
-      <Box mb="7px">
-        <Button
-          text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
-          iconName="filter"
-          onClick={() => setIsFilter(!isFilter)}
-        />
-      </Box>
-      {isFilter &&
+      {FilterForm && (
+        <Box mb="7px">
+          <Button
+            text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
+            iconName="filter"
+            onClick={() => setIsFilter(!isFilter)}
+          />
+        </Box>
+      )}
+      {FilterForm && isFilter &&
         <TableFilterContainer>
           {FilterForm}
         </TableFilterContainer>
       }
       <Flex alignItems="center">
-        <Box mb="7px">
-          <Button
-            text="Add New"
-            iconName="plus"
-            onClick={() => openModal({
-              name: addNewModalName,
-            })}
-          />
-        </Box>
+        {addNewModalName && (
+          <Box mb="7px">
+            <Button
+              text="Add New"
+              iconName="plus"
+              onClick={() => openModal({
+                name: addNewModalName,
+              })}
+            />
+          </Box>
+        )}
         {hint && (
           <Box mb="10px" ml="7px">
-            <Hint text={hint}/>
+            <Hint text={hint} />
           </Box>
         )}
       </Flex>

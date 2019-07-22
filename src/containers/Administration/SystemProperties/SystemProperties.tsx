@@ -129,22 +129,20 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   ];
 
   return (
-    <React.Fragment>
-      <TablePage
-        title="System Properties"
-        data={adminSysPropsItems}
-        columns={columns}
-        addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
-        openModal={openModal}
-        hint="Cannot Edit or Delete Locked Property"
-        FilterForm={
-          <SystemPropertyFilter
-            filterAdminSysProps={filterAdminSysProps}
-            initialValues={initialFilterValues}
-          />
-        }
-      />
-    </React.Fragment >
+    <TablePage
+      title="System Properties"
+      data={adminSysPropsItems}
+      columns={columns}
+      addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
+      openModal={openModal}
+      hint="Cannot Edit or Delete Locked Property"
+      FilterForm={
+        <SystemPropertyFilter
+          filterAdminSysProps={filterAdminSysProps}
+          initialValues={initialFilterValues}
+        />
+      }
+    />
   );
 };
 

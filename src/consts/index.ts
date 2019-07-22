@@ -1,5 +1,7 @@
 import config from 'config';
 
+export * from './uiItems';
+
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
 export const boxInstitutionName = 'BOX Institution';
@@ -14,7 +16,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360,
+  SESSION_ID = 360000,
 }
 
 export enum formNames {
@@ -23,8 +25,8 @@ export enum formNames {
   ADD_ADMIN_SCHEDULER_JOB = 'addAdminSchedulerJobForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
-  PRODUCT = 'ProductForm',
-  SCHEDULER = 'SchedulerForm',
+  PRODUCT = 'productForm',
+  SCHEDULER = 'schedulerForm',
 }
 
 export enum modalNames {
@@ -136,17 +138,18 @@ export const savingsTypesOptions = [
   {value: 'R', label: 'Reward'},
 ];
 
-export enum uiItemConsts {
-  LEDGER_CUSTOMERS = 'ledger/customers',
-  LEDGER_ACCOUNTS = 'ledger/accounts',
-
-  ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
-  ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
-  ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
-  ADMINISTRATION_SCHEDULER = 'administration/scheduler',
-
-  PRODUCTS = 'product_designer/products',
+export enum dataTypes {
+  INTEGER = 'I',
+  STRING = 'S',
+  FLOAT = 'F',
 }
+
+export const dataTypesOptions = [
+  {value: 'I', label: 'integer'},
+  {value: 'S', label: 'string'},
+  {value: 'F', label: 'float'},
+];
+
 export enum codeKeys {
   ENTER = 'Enter',
   ESCAPE = 'Escape',

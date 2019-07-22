@@ -14,8 +14,9 @@ type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
 export const columns = [
   {
     maxWidth: 70,
+    sortable: true,
     filterable: true,
-    Header: <Header title="ID" />,
+    Header: <Header title="ID" showSortIcons={true} />,
     accessor: 'id',
     Cell: (props: PCell<'id'>) => (
       <Cell
