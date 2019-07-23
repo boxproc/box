@@ -56,8 +56,9 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   const columns = [
     {
       maxWidth: 80,
+      sortable: true,
       filterable: true,
-      Header: <Header title="ID" />,
+      Header: <Header title="ID" showSortIcons={true} />,
       accessor: 'id',
       Cell: (props: SCell<'id'>) => (
         <Cell
@@ -181,26 +182,24 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       minWidth: 125,
       accessor: 'executeButton',
       Cell: () => (
-        <SchedulerButtonsDropdown/>
+        <SchedulerButtonsDropdown />
       ),
     },
   ];
 
   return (
-    <React.Fragment>
-      <TablePage
-        title="Scheduler"
-        data={adminSchedulerJobsItems}
-        columns={columns}
-        addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
-        openModal={openModal}
-        getTrGroupProps={handleOnClickRow}
-        hint="Double Click on Row to Edit Scheduler"
-        FilterForm={
-          <SchedulerFilter />
-        }
-      />
-    </React.Fragment >
+    <TablePage
+      title="Scheduler"
+      data={adminSchedulerJobsItems}
+      columns={columns}
+      addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
+      openModal={openModal}
+      getTrGroupProps={handleOnClickRow}
+      hint="Double Click on Row to Edit Scheduler"
+      FilterForm={
+        <SchedulerFilter />
+      }
+    />
   );
 };
 

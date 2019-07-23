@@ -25,6 +25,16 @@ export const uiItemsData: UiItems = {
     {
       item_type: 'm',
       permission: 'R',
+      ui_item: 'administration/dictionaries/events',
+    },
+    {
+      item_type: 'm',
+      permission: 'R',
+      ui_item: 'administration/dictionaries/event_data_elements',
+    },
+    {
+      item_type: 'm',
+      permission: 'R',
       ui_item: 'administration/scheduler',
     },
     {

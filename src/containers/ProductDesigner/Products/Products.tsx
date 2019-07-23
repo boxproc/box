@@ -79,24 +79,22 @@ export const Products: React.FC<ProductsProps> = ({
   const initialFilterValues = productParams && JSON.parse(productParams);
 
   return (
-    <React.Fragment>
-      <TablePage
-        title="Products"
-        data={productItems}
-        columns={columns}
-        addNewModalName={modalNames.ADD_PRODUCT}
-        openModal={openModal}
-        getTrGroupProps={handleOnClickRow}
-        hint="Double Click on Row to Edit Unlocked Product"
-        FilterForm={
-          <ProductsFilter
-            filterProducts={filterProducts}
-            institutionsOptions={institutionsOptions}
-            initialValues={initialFilterValues}
-          />
-        }
-      />
-    </React.Fragment >
+    <TablePage
+      title="Products"
+      data={productItems}
+      columns={columns}
+      addNewModalName={modalNames.ADD_PRODUCT}
+      openModal={openModal}
+      getTrGroupProps={handleOnClickRow}
+      hint="Double Click on Row to Edit Unlocked Product"
+      FilterForm={
+        <ProductsFilter
+          filterProducts={filterProducts}
+          institutionsOptions={institutionsOptions}
+          initialValues={initialFilterValues}
+        />
+      }
+    />
   );
 };
 
