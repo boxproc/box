@@ -2,7 +2,6 @@ import Immutable, * as seamlessImmutable from 'seamless-immutable';
 import { ActionTypeKeys, AdminSchedulerJobsActionTypes } from './actionTypes';
 import { AdminSchedulerState } from './types';
 
-
 export const adminSchedulerJobsInitialState:
  seamlessImmutable.ImmutableObject<AdminSchedulerState> = Immutable({
   scheduler: Immutable([]),

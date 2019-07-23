@@ -103,7 +103,6 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminSchedulerJobValues(schedulervalues);
-      
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
 

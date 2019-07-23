@@ -14,6 +14,7 @@ import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
 
 import { ParsedSelectValues } from 'types';
+import SchedulerEditor from 'components/SchedulerEditor';
 
 interface DefineSchedulerJobFormProps {
   defineAdminSchedulerJob?: HandleAddAdminSchedulerJob|HandleUpdateAdminSchedulerJob;
@@ -137,7 +138,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           </Box>
         </Panel>
         <Panel title="Schedule">
-          CRON
+          <SchedulerEditor/>
         </Panel>
       </Tabs>
       <OkCancelButtons

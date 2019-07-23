@@ -49,7 +49,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
         </Flex>
       </Box>
       <OkCancelButtons
-        okText="Run it"
+        okText="Show"
         cancelText="Reset"
         disabledCancel={true}
       />
