@@ -45,7 +45,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
         </Flex>
       </Box>
       <OkCancelButtons
-        okText="Run it"
+        okText="Show"
         cancelText="Reset"
         disabledCancel={true}
       />

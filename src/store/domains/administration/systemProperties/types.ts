@@ -8,9 +8,9 @@ export interface EditableAdminSysProp {
 }
 
 export interface EditableAdminSysPropPrepared {
-  property_name?: string;
-  locked_flag?: string;
-  current_value?: string | number;
+  property_name: string;
+  locked_flag: string;
+  current_value: string | number;
 }
 
 export interface AdminSysPropFilterParams {
@@ -18,23 +18,23 @@ export interface AdminSysPropFilterParams {
 }
 
 export interface AdminSysPropFilterParamsPrepared {
-  property_name?: string;
+  property_name: string;
 }
 
 export interface AdminSysPropsItemResp {
-  property_name?: string;
-  current_value?: string | number;
-  previous_value?: string | number;
-  last_datetime?: string;
-  locked_flag?: string;
+  property_name: string;
+  current_value: string | number;
+  previous_value: string | number;
+  last_datetime: string;
+  locked_flag: string;
 }
 
 export interface AdminSysPropsItem {
-  propertyName?: string;
-  currentValue?: string | number;
-  previousValue?: string | number;
-  lastDatetime?: string;
-  lockedFlag?: string;
+  propertyName: string;
+  currentValue: string | number;
+  previousValue: string | number;
+  lastDatetime: string;
+  lockedFlag: string;
 }
 
 export interface AdminSysPropsDataResp extends SuccessResponseStatusType {
@@ -43,5 +43,5 @@ export interface AdminSysPropsDataResp extends SuccessResponseStatusType {
 
 export interface AdminSysPropsState {
   systemProperties: ImmutableArray<AdminSysPropsItemResp>;
-  systemPropertiesFilterParams: AdminSysPropsItem;
+  systemPropertiesFilterParams: AdminSysPropFilterParamsPrepared;
 }

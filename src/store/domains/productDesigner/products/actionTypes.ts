@@ -19,8 +19,6 @@ export enum ActionTypeKeys {
   FILTER_PRODUCTS_FULFILLED = 'productDesigner/products/FILTER_PRODUCTS_FULFILLED',
   FILTER_PRODUCTS_REJECTED = 'productDesigner/products/FILTER_PRODUCTS_REJECTED',
 
-  SET_FILTER_PRODUCTS_PARAMS = 'productDesigner/products/SET_FILTER_PRODUCTS_PARAMS',
-
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
   GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
@@ -68,16 +66,12 @@ export interface FilterProductsAction {
 export interface FilterProductsFulfilledAction {
   readonly payload: ProductsDataResp;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_FULFILLED;
+  meta: ProductFilterParams;
 }
 
 export interface FilterProductsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
-}
-
-export interface SetFilterProductsParamsAction {
-  readonly payload: ProductFilterParams;
-  readonly type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS;
 }
 
 // Get product by id
@@ -100,5 +94,4 @@ export type ProductsActionTypes =
   | GetProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
-  | SetFilterProductsParamsAction
   | GetProductFulfilledAction;

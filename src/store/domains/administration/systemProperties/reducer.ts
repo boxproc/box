@@ -38,6 +38,7 @@ const adminSysPropsReducer =
           ...currentItem,
           current_value: action.meta.current_value,
           previous_value: currentItem.current_value,
+          locked_flag: action.meta.locked_flag,
         };
 
         return state
@@ -51,12 +52,8 @@ const adminSysPropsReducer =
 
       case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
-          // .set('systemPropertiesFilterParams', action.meta)
+          .set('systemPropertiesFilterParams', action.meta)
           .set('systemProperties', action.payload.system_properties);
-
-      case ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS:
-        return state
-          .set('systemPropertiesFilterParams', action.payload);
 
       default: return state;
     }

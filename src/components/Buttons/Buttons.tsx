@@ -28,8 +28,6 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: auto;
-  color: ${({ theme }) => theme.blackColor};
   background: transparent;
   font-size: ${({ size }) => size ? size + 'px' : '13px'};
   text-transform: uppercase;

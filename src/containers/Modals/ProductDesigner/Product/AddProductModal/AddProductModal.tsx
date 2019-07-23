@@ -8,12 +8,12 @@ import { withSpinner } from 'components/Spinner';
 import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
 
 import { CloseModal } from 'store/domains';
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface AddProductModalProps {
   closeModal: CloseModal;
-  institutionsOptions: Array<ParsedSelectValues>;
-  productTypeValue: ParsedSelectValues;
+  institutionsOptions: Array<SelectValues>;
+  productTypeValue: SelectValues;
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({

@@ -45,7 +45,7 @@ export interface KeyValuePair<T = number> {
   value: string;
 }
 
-export interface ParsedSelectValues<T = number | string> {
+export interface SelectValues<T = number | string> {
   value: T;
   label: string;
 }

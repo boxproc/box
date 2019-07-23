@@ -26,7 +26,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(addAdminSysProp),
+    handleSubmit(data => addAdminSysProp(data)),
     [handleSubmit, addAdminSysProp]
   );
 

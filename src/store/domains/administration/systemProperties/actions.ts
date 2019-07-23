@@ -12,7 +12,6 @@ import {
   DeleteAdminSysPropAction,
   FilterAdminSysPropsAction,
   GetAdminSysPropsAction,
-  SetFilterAdminSysPropsAction,
   UpdateAdminSysPropsAction,
 } from './actionTypes';
 
@@ -52,9 +51,6 @@ export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepare
   => FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) => Thunk<void>;
 
-export type SetFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) =>
-  SetFilterAdminSysPropsAction;
-
 export const getAdminSysProps: GetAdminSysProps = () => ({
   type: ActionTypeKeys.GET_ADMIN_SYS_PROPS,
   payload: api.getAdminSysProps(),
@@ -81,12 +77,7 @@ export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
 export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
   type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
   payload: api.filterAdminSysProps(filterParams),
-  // meta: filterParams,
-});
-
-export const setFilterAdminSysProps: SetFilterAdminSysProps = filterParams => ({
-  type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS,
-  payload: filterParams,
+  meta: filterParams,
 });
 
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
@@ -153,7 +144,6 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = filterParams
         const preparedValues = prepareAdminSysPropFilterParams(filterParams);
 
         await dispatch(filterAdminSysProps(preparedValues));
-        dispatch(setFilterAdminSysProps(filterParams));
       },
       dispatch
     );

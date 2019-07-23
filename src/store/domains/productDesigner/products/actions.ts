@@ -12,7 +12,6 @@ import {
   FilterProductsAction,
   GetProductAction,
   GetProductsAction,
-  SetFilterProductsParamsAction,
 } from './actionTypes';
 
 import { apiClient } from 'services';
@@ -32,9 +31,6 @@ export type HandleDeleteProduct = (id: number) => Thunk<void>;
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
 export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
 
-export type SetFilterProductsParams = (params: ProductFilterParams) =>
-  SetFilterProductsParamsAction;
-
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = (id: number) => Thunk<void>;
 
@@ -52,11 +48,7 @@ export const deleteProduct: DeleteProduct = id => ({
 export const filterProducts: FilterProducts = params => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
   payload: api.filterProducts(params),
-});
-
-export const setFilterFilterProductParams: SetFilterProductsParams = params => ({
-  type: ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS,
-  payload: params,
+  meta: params,
 });
 
 export const getProduct: GetProduct = id => ({
@@ -103,7 +95,6 @@ export const handleFilterProducts: HandleFilterProducts = params =>
         const preparedValues = prepareProductFiltersParams(params);
 
         await dispatch(filterProducts(preparedValues));
-        dispatch(setFilterFilterProductParams(params));
       },
       dispatch
     );

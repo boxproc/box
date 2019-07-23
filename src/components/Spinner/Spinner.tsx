@@ -5,6 +5,7 @@ import styled from 'theme';
 interface ContainerProps {
   isFixed: boolean;
   backgroundColor?: string;
+  maxHeight?: string | number;
 }
 
 const Container = styled.div<ContainerProps>`
@@ -13,6 +14,7 @@ const Container = styled.div<ContainerProps>`
   top: 0;
   width: 100%;
   height: 100%;
+  max-height: ${({ maxHeight }) => maxHeight ? maxHeight : 'none'}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,11 +46,12 @@ const Circle = styled.svg<CircleProps>`
 `;
 
 export const Spinner: React.FC<ContainerProps & CircleProps> = ({
-  size, color, isFixed, backgroundColor,
+  size, color, isFixed, backgroundColor, maxHeight,
 }) => (
     <Container
       isFixed={isFixed}
       backgroundColor={backgroundColor}
+      maxHeight={maxHeight}
     >
       <Circle className="spinner" viewBox="0 0 50 50" size={size} color={color}>
         <circle cx="25" cy="25" r="20" fill="none" strokeWidth="3" />

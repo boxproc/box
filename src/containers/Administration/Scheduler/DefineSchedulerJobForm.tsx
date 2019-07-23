@@ -5,6 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
+import SchedulerEditor from 'components/SchedulerEditor';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
 
@@ -13,12 +14,11 @@ import { HandleAddAdminSchedulerJob, HandleUpdateAdminSchedulerJob } from 'store
 import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
 
-import { ParsedSelectValues } from 'types';
-import SchedulerEditor from 'components/SchedulerEditor';
+import { SelectValues } from 'types';
 
 interface DefineSchedulerJobFormProps {
   defineAdminSchedulerJob?: HandleAddAdminSchedulerJob|HandleUpdateAdminSchedulerJob;
-  institutionsOptions?: Array<ParsedSelectValues>;
+  institutionsOptions?: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;

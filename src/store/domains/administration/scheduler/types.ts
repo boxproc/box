@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ParsedSelectValues, SuccessResponseStatusType } from 'types';
+import { SelectValues, SuccessResponseStatusType } from 'types';
 
 export interface AdminSchedulerItemResp {
   id: number;
@@ -39,9 +39,9 @@ export interface AdminSchedulerEditableItem    {
   cronExpression?: string;
   executable?: string;
   logLocation?: string;
-  status?: ParsedSelectValues;
-  institutionId?: ParsedSelectValues;
-  executableType?: ParsedSelectValues;
+  status?: SelectValues;
+  institutionId?: SelectValues;
+  executableType?: SelectValues;
 }
 
 export interface AdminSchedulerEditableItemPrepared extends AdminSchedulerEditableItemId  {

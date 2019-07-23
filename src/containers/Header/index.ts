@@ -10,8 +10,8 @@ import {
   handleGetInstitutions,
   handleGetUiItems,
   handleUserLogout,
+  selectDefaultInstitutions,
   selectFirstName,
-  selectInstitutions,
   selectLastName,
   selectUiItems,
   UiItemsActionTypes,
@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
-  institutions: selectInstitutions(state),
+  institutions: selectDefaultInstitutions(state),
   firstName: selectFirstName(state),
   lastName: selectLastName(state),
 });

@@ -1,12 +1,8 @@
 import { createSelector } from 'reselect';
 
 import {
-  loanTypesOptions,
   productTypesOptions,
-  savingsTypesOptions,
-  schemeTypesOptions,
-  statusTypesOptions,
-  yesNoTypes,
+  statusTypes,
 } from 'consts';
 
 import { StoreState } from 'store/StoreState';
@@ -17,8 +13,15 @@ import {
   selectInstitutionsOptions,
 } from 'store/domains/consts';
 
-import { camelizeUtil } from 'utils';
-import { preparedGeneralProductValues } from './utils';
+import {
+  preparedDebitDetails,
+  preparedGeneralProductItem,
+  preparedGeneralProductValues,
+  preparedLoanDetails,
+  preparedPrepaidDetails,
+  preparedRevolvingCreditDetails,
+  preparedSavingsDetails,
+} from './utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
   state.productDesigner.products.products;
@@ -26,19 +29,38 @@ export const selectDefaultProductItems = (state: StoreState) =>
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectDefaultInstitutions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  selectCurrencyCodes,
+  (items, institutions, currencyCodes) => items && items.asMutable().map(item => {
     return {
-      ...camelizeUtil.camelize(item, 'camelcase'),
-      status: statusTypesOptions.find(el => el.value === item.status).label,
-      scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
-      productType: productTypesOptions.find(el => el.value === item.product_type).label,
-      institutionId: institutions.find(el => el.id === item.institution_id).institution_name,
+      ...preparedGeneralProductItem(item),
+      currencyCode: currencyCodes
+        && currencyCodes.find(el => el.label === item.currency_code)
+        && currencyCodes.find(el => el.label === item.currency_code).label,
+      institutionId: institutions.find(el => el.id === item.institution_id).name,
     };
   })
 );
 
-export const selectFilterProductParams = (state: StoreState) =>
+export const selectDefaultFilterProductParams = (state: StoreState) =>
   state.productDesigner.products.filterProductsParams;
+
+export const selectFilterProductParams = createSelector(
+  selectDefaultFilterProductParams,
+  selectInstitutionsOptions,
+  (params, institutions) => {
+    if (!params) {
+      return null;
+    }
+    return {
+      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
+      institutionId: params.institution_id &&
+        params.institution_id.map(id => institutions.find(el => el.value === id)),
+      productType: params.product_type &&
+        params.product_type.map(type => productTypesOptions
+          .find(el => el.value === type)),
+    };
+  }
+);
 
 export const selectDefaultDebitProduct = (state: StoreState) =>
   state.productDesigner.products.debitProduct;
@@ -55,12 +77,8 @@ export const selectDebitProduct = createSelector(
       ...preparedGeneralProductValues(product),
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
-        && currencyCodes.find(el => el.value === product.currency_code),
-      details: {
-        ...camelizeUtil.camelize(product.details, 'camelcase'),
-        overdraftAllowed:
-          product.details.overdraft_allowed === yesNoTypes.YES ? true : false,
-      },
+        && currencyCodes.find(el => el.label === product.currency_code),
+      ...preparedDebitDetails(product),
     };
   }
 );
@@ -80,11 +98,8 @@ export const selectLoanProduct = createSelector(
       ...preparedGeneralProductValues(product),
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
-        && currencyCodes.find(el => el.value === product.currency_code),
-      details: {
-        ...camelizeUtil.camelize(product.details, 'camelcase'),
-        loanType: loanTypesOptions.find(el => el.value === product.details.loan_type),
-      },
+        && currencyCodes.find(el => el.label === product.currency_code),
+      ...preparedLoanDetails(product),
     };
   }
 );
@@ -104,14 +119,8 @@ export const selectPrepaidProduct = createSelector(
       ...preparedGeneralProductValues(product),
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
-        && currencyCodes.find(el => el.value === product.currency_code),
-      details: {
-        ...camelizeUtil.camelize(product.details, 'camelcase'),
-        breakAgesAllowed:
-          product.details.break_ages_allowed === yesNoTypes.YES ? true : false,
-        reloadAllowed:
-          product.details.reload_allowed === yesNoTypes.YES ? true : false,
-      },
+        && currencyCodes.find(el => el.label === product.currency_code),
+      ...preparedPrepaidDetails(product),
     };
   }
 );
@@ -131,12 +140,8 @@ export const selectRevolvingCreditProduct = createSelector(
       ...preparedGeneralProductValues(product),
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
-        && currencyCodes.find(el => el.value === product.currency_code),
-      details: {
-        ...camelizeUtil.camelize(product.details, 'camelcase'),
-        limitSharingAllowed:
-          product.details.limit_sharing_allowed_flag === yesNoTypes.YES ? true : false,
-      },
+        && currencyCodes.find(el => el.label === product.currency_code),
+      ...preparedRevolvingCreditDetails(product),
     };
   }
 );
@@ -156,11 +161,8 @@ export const selectSavingsProduct = createSelector(
       ...preparedGeneralProductValues(product),
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
-        && currencyCodes.find(el => el.value === product.currency_code),
-      details: {
-        ...camelizeUtil.camelize(product.details, 'camelcase'),
-        savingsType: savingsTypesOptions.find(el => el.value === product.details.savings_type),
-      },
+        && currencyCodes.find(el => el.label === product.currency_code),
+      ...preparedSavingsDetails(product),
     };
   }
 );

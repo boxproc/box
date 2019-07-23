@@ -12,6 +12,7 @@ export enum cookiesNames {
   FULL_NAME = 'fullName',
   SYSTEM_PROPERTIES_FILTER = 'adminSystemProperties',
   PRODUCTS_FILTER = 'productModelerProducts',
+  EVENT_DATA_ELEMS_FILTER = 'adminEventDataElements',
 }
 
 export enum cookiesExpires {
@@ -27,6 +28,7 @@ export enum formNames {
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   SCHEDULER = 'schedulerForm',
+  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
 }
 
 export enum modalNames {
@@ -145,9 +147,9 @@ export enum dataTypes {
 }
 
 export const dataTypesOptions = [
-  {value: 'I', label: 'integer'},
-  {value: 'S', label: 'string'},
-  {value: 'F', label: 'float'},
+  {value: 'I', label: 'Integer'},
+  {value: 'S', label: 'String'},
+  {value: 'F', label: 'Float'},
 ];
 
 export enum codeKeys {

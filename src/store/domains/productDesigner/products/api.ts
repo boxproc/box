@@ -6,7 +6,7 @@ import {
   // revolvingCreditItemData,
   // loanItemData,
   // prepaidItemData,
-  productItemsDataFiltered,
+  productItemsFilteredData,
   // savingsItemData,
 } from './mock';
 
@@ -21,7 +21,7 @@ export const deleteProduct = (id: number) =>
   throttleUtil.getDataAfter({id}, 500);
 
 export const filterProducts = (data: ProductFilterParamsPrepared) =>
-  throttleUtil.getDataAfter(productItemsDataFiltered, 500);
+  throttleUtil.getDataAfter(productItemsFilteredData, 500);
 
 export const getProduct = (id: number) =>
   throttleUtil.getDataAfter(debitItemData, 500);
