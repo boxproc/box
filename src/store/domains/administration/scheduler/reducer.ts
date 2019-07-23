@@ -30,6 +30,17 @@ const adminSchedulerJobsReducer =
             state.scheduler.filter(el => el.id !== action.meta)
           );
 
+      case ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED:
+            return state
+          .set(
+            'scheduler', [
+              ...Object.values({
+                ...state.scheduler.filter(el => el.id !== action.meta.id),
+              }),
+              action.meta,
+            ].sort((a, b) => (a.id > b.id) ? 1 : -1)
+          );
+
       default: return state;
     }
   };

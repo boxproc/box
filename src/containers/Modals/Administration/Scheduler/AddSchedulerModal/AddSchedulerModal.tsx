@@ -5,10 +5,9 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
-import AddSchedulerJobForm from 'containers/Administration/Scheduler/AddSchedulerJobForm';
-
 import { CloseModal, HandleAddAdminSchedulerJob } from 'store/domains';
 
+import DefineSchedulerJobForm from 'containers/Administration/Scheduler/DefineSchedulerJobForm';
 import { ParsedSelectValues } from 'types';
 interface AddSchedulerModalProps {
   closeModal: CloseModal;
@@ -27,9 +26,9 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
       title="Add Scheduler Job"
       maxContainerWidth={800}
     >
-      <AddSchedulerJobForm
+      <DefineSchedulerJobForm
         onCancel={() => closeModal(modalNames.ADD_ADMIN_SCHEDULER)}
-        addAdminSchedulerJob={addAdminSchedulerJob}
+        defineAdminSchedulerJob={addAdminSchedulerJob}
         institutionsOptions={institutionsOptions}
       />
     </Modal>
