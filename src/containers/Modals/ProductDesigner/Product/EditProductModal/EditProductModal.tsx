@@ -12,26 +12,26 @@ import { modalNames } from 'consts';
 
 import {
   CloseModal,
-  // DebitProductItemDetails,
+  DebitProductItemDetails,
   HandleDeleteProduct,
-  // LoanProductItemDetails,
-  // PrepaidProductItemDetails,
-  // RevolvingCreditProductItemDetails,
-  // SavingsProductItemDetails,
+  LoanProductItemDetails,
+  PrepaidProductItemDetails,
+  RevolvingCreditProductItemDetails,
+  SavingsProductItemDetails,
 } from 'store/domains';
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
   deleteProduct: HandleDeleteProduct;
   productId: number;
-  institutionsOptions: Array<ParsedSelectValues>;
-  productTypeValue: ParsedSelectValues;
-  savingsProduct: any;
-  revolvingCreditProduct: any;
-  prepaidProduct: any;
-  loanProduct: any;
-  debitProduct: any;
+  institutionsOptions: Array<SelectValues>;
+  productTypeValue: SelectValues;
+  savingsProduct: SavingsProductItemDetails;
+  revolvingCreditProduct: RevolvingCreditProductItemDetails;
+  prepaidProduct: PrepaidProductItemDetails;
+  loanProduct: LoanProductItemDetails;
+  debitProduct: DebitProductItemDetails;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({

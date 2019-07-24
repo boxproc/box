@@ -9,11 +9,11 @@ import { CloseModal, HandleAddAdminCyclesEditor } from 'store/domains';
 
 // tslint:disable-next-line: max-line-length
 import DefineCycleEditorForm from 'containers/Administration/Cycles/CyclesEditor/DefineCycleEditorForm';
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 interface AddCycleEditorModalProps {
   closeModal: CloseModal;
   addAdminCyclesEditor: HandleAddAdminCyclesEditor;
-  institutionsOptions: Array<ParsedSelectValues>;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({

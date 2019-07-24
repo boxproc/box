@@ -12,12 +12,12 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadCurrencyCodesProps {
-  currencyCodes: Array<ParsedSelectValues>;
+  currencyCodes: Array<SelectValues>;
   isCurrencyCodesLoading: boolean;
   loadCurrencyCodes: HandleGetCurrencyCodes;
 }

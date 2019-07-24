@@ -57,6 +57,7 @@ export const withSpinner = ({
                 backgroundColor={backgroundColor}
                 color={color}
                 size={size}
+                maxHeight={maxHeight}
               />
             )
           }

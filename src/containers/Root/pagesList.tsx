@@ -3,7 +3,7 @@ import React from 'react';
 import { uiItemConsts } from 'consts';
 
 import CyclesEditor from 'containers/Administration/Cycles/CyclesEditor';
-import EventDataElements from 'containers/Administration/EventDataElements';
+import EventDataElems from 'containers/Administration/EventDataElems';
 import Events from 'containers/Administration/Events';
 import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
@@ -38,7 +38,7 @@ export const pagesList = [
   },
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
-    component: <EventDataElements />,
+    component: <EventDataElems />,
   },
   {
     path: uiItemConsts.LEDGER_CUSTOMERS,

@@ -31,11 +31,8 @@ const productsReducer =
 
       case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
         return state
-          .set('products', action.payload.products);
-
-      case ActionTypeKeys.SET_FILTER_PRODUCTS_PARAMS:
-        return state
-          .set('filterProductsParams', action.payload);
+          .set('products', action.payload.products)
+          .set('filterProductsParams', action.meta);
 
       case ActionTypeKeys.GET_PRODUCT_FULFILLED:
         if (action.payload.product.product_type === productTypes.REVOLVING_CREDIT) {

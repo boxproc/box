@@ -8,11 +8,11 @@ import { withSpinner } from 'components/Spinner';
 import { CloseModal, HandleAddAdminSchedulerJob } from 'store/domains';
 
 import DefineSchedulerJobForm from 'containers/Administration/Scheduler/DefineSchedulerJobForm';
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 interface AddSchedulerModalProps {
   closeModal: CloseModal;
   addAdminSchedulerJob: HandleAddAdminSchedulerJob;
-  institutionsOptions: Array<ParsedSelectValues>;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({

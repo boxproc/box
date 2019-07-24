@@ -55,7 +55,7 @@ export const customStyles: StylesConfig = {
   }),
   menuList: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    padding: 0,
+    padding: '0 1px 1px',
     fontSize: '13px',
     lineHeight: '17px',
     borderRadius: '0 0 2px 2px',

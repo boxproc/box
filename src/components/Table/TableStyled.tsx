@@ -5,13 +5,6 @@ import 'react-table/react-table.css';
 export const TableStyled = styled.div`
   margin-bottom: 20px;
 
-  // .ReactTable,
-  // .ReactTable .rt-tbody,
-  // .ReactTable .rt-table {
-  //   overflow-y: visible !important;
-  //   overflow-x: visible !important;
-  // }
-
   .ReactTable .rt-thead .rt-resizable-header-content,
   .ReactTable .rt-thead .rt-th {
     overflow: visible;
@@ -111,11 +104,58 @@ export const TableStyled = styled.div`
   .ReactTable .-sort-desc .down-icon path {
     stroke: ${({ theme }) => theme.blackColorOpacity8};
   }
+
   .ReactTable .rt-thead.-filters input {
     font-size: 13px;
     &:focus {
       border-color: ${({ theme }) => theme.normalAccentColor};
       border-radius: 2px;
     }
+  }
+
+  .ReactTable .-pagination {
+    justify-content: flex-start;
+    box-shadow: none;
+    border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
+  }
+
+  .ReactTable .-pagination .-pageInfo,
+  .ReactTable .-pagination .-pageJump input {
+    font-size: 12px;
+    color: ${({ theme }) => theme.grayColor};
+  }
+
+  .ReactTable .-pagination .-pageJump input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .ReactTable .-pagination .-pageJump input:focus {
+    border-color: ${({ theme }) => theme.normalAccentColor};
+  }
+
+  .ReactTable .-pagination .-pageInfo {
+    margin: 3px 20px;
+  }
+
+  .ReactTable .-pagination .-btn {
+    width: auto;
+    background: transparent;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2pt;
+    color: ${({ theme }) => theme.grayColor };
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .ReactTable .-pagination .-previous,
+  .ReactTable .-pagination .-next,
+  .ReactTable .-pagination .-center {
+    flex: none;
+  }
+
+  .ReactTable .-pagination .-btn:not([disabled]):hover {
+    background: transparent;
+    color: ${({ theme }) => theme.lighterAccentColor};
   }
 `;

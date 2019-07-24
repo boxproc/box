@@ -12,14 +12,14 @@ import {
   statusTypesOptions,
 } from 'consts';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface GeneralSectionProps {
   isDisabledProductTypes?: boolean;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
-  institutionsOptions: Array<ParsedSelectValues>;
-  currencyCodes: Array<ParsedSelectValues>;
+  institutionsOptions: Array<SelectValues>;
+  currencyCodes: Array<SelectValues>;
   isCurrencyCodesLoading: boolean;
 }
 

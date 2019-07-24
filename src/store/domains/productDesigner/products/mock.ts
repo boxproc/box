@@ -6,7 +6,7 @@ export const productItemsData: ProductsDataResp = {
   },
   products: [
     {
-      currency_code: 784,
+      currency_code: 'GBP',
       default_statement_cycle_id: '1',
       description: 'Test revolving credit product',
       history_retention_number_of_day: 90,
@@ -19,7 +19,7 @@ export const productItemsData: ProductsDataResp = {
       status: 'A',
     },
     {
-      currency_code: 784,
+      currency_code: 'GBP',
       default_statement_cycle_id: '1',
       description: 'Test debit product',
       history_retention_number_of_day: 90,
@@ -32,7 +32,7 @@ export const productItemsData: ProductsDataResp = {
       status: 'D',
     },
     {
-      currency_code: 784,
+      currency_code: 'GBP',
       default_statement_cycle_id: '1',
       description: 'Test loan product',
       history_retention_number_of_day: 90,
@@ -47,13 +47,13 @@ export const productItemsData: ProductsDataResp = {
   ],
 };
 
-export const productItemsDataFiltered: ProductsDataResp = {
+export const productItemsFilteredData: ProductsDataResp = {
   response_status: {
     status_code: 0,
   },
   products: [
     {
-      currency_code: 784,
+      currency_code: 'GBP',
       default_statement_cycle_id: '1',
       description: 'Test revolving credit product',
       history_retention_number_of_day: 90,
@@ -66,7 +66,7 @@ export const productItemsDataFiltered: ProductsDataResp = {
       status: 'A',
     },
     {
-      currency_code: 784,
+      currency_code: 'GBP',
       default_statement_cycle_id: '1',
       description: 'Test loan product',
       history_retention_number_of_day: 90,
@@ -86,7 +86,7 @@ export const revolvingCreditItemData: ProductDataResp = {
     status_code: 0,
   },
   product: {
-    currency_code: 784,
+    currency_code: 'GBP',
     default_statement_cycle_id: '1',
     description: 'Test revolving credit product',
     history_retention_number_of_day: 90,
@@ -120,7 +120,7 @@ export const loanItemData = {
     status_code: 0,
   },
   product: {
-    currency_code: 784,
+    currency_code: 'GBP',
     default_statement_cycle_id: '1',
     description: 'Test loan product',
     history_retention_number_of_day: 90,
@@ -145,7 +145,7 @@ export const prepaidItemData = {
     status_code: 0,
   },
   product: {
-    currency_code: 784,
+    currency_code: 'GBP',
     default_statement_cycle_id: '1',
     description: 'Test prepaid product',
     history_retention_number_of_day: 90,
@@ -169,7 +169,7 @@ export const debitItemData = {
     status_code: 0,
   },
   product: {
-    currency_code: 784,
+    currency_code: 'GBP',
     default_statement_cycle_id: '1',
     description: 'Test Debit product',
     history_retention_number_of_day: 90,
@@ -192,7 +192,7 @@ export const savingsItemData = {
     status_code: 0,
   },
   product: {
-    currency_code: 784,
+    currency_code: 'GBP',
     default_statement_cycle_id: '1',
     description: 'Test Debit product',
     history_retention_number_of_day: 90,

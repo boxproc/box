@@ -10,10 +10,10 @@ import { formNames, productTypesOptions } from 'consts';
 
 import { HandleFilterProducts } from 'store/domains';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface ProductsFilterProps {
-  institutionsOptions: Array<ParsedSelectValues>;
+  institutionsOptions: Array<SelectValues>;
   filterProducts: HandleFilterProducts;
 }
 
@@ -75,7 +75,7 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         </Flex>
       </Box>
       <OkCancelButtons
-        okText="Run it"
+        okText="Show"
         cancelText="Reset"
         disabledCancel={true}
       />

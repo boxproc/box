@@ -37,8 +37,8 @@ interface SystemPropertiesProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
-  openModal: OpenModal;
   sysPropsFilterParams: AdminSysPropFilterParams;
+  openModal: OpenModal;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
@@ -56,7 +56,12 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   React.useEffect(
     () => {
       getAdminSysProps();
+    },
+    [getAdminSysProps]
+  );
 
+  React.useEffect(
+    () => {
       if (sysPropsFilterParams) {
         cookiesUtil.set(
           cookiesNames.SYSTEM_PROPERTIES_FILTER,
@@ -66,11 +71,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
         );
       }
     },
-    [getAdminSysProps, sysPropsFilterParams]
+    [sysPropsFilterParams]
   );
-
-  const systemPropsParams = cookiesUtil.get(cookiesNames.SYSTEM_PROPERTIES_FILTER);
-  const initialFilterValues = systemPropsParams && JSON.parse(systemPropsParams);
 
   const columns = [
     {
@@ -127,6 +129,9 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: renderDeleteButton(deleteAdminSysProp),
     },
   ];
+
+  const systemPropsParams = cookiesUtil.get(cookiesNames.SYSTEM_PROPERTIES_FILTER);
+  const initialFilterValues = systemPropsParams && JSON.parse(systemPropsParams);
 
   return (
     <TablePage

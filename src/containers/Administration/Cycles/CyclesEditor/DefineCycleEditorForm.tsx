@@ -12,11 +12,11 @@ import { HandleAddAdminCyclesEditor } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface DefineSchedulerJobFormProps {
   defineAdminCyclesEditor?: HandleAddAdminCyclesEditor;
-  institutionsOptions?: Array<ParsedSelectValues>;
+  institutionsOptions?: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;

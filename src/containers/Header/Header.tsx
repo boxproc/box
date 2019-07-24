@@ -17,7 +17,7 @@ import {
   HandleGetInstitutions,
   HandleGetUiItems,
   HandleUserLogout,
-  InstitutionItemWithStatusLabel,
+  InstitutionItem,
   UiItemPrepared,
 } from 'store/domains';
 
@@ -55,7 +55,7 @@ interface HeaderProps extends RouteComponentProps {
   userLogout: HandleUserLogout;
   uiItems: Array<UiItemPrepared>;
   getInstitutions: HandleGetInstitutions;
-  institutions: Array<Partial<InstitutionItemWithStatusLabel>>;
+  institutions: Array<InstitutionItem>;
   firstName: string;
   lastName: string;
 }
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const institution = institutions.length === 1
     ? institutions[0]
-    : institutions.find(el => el.institutionName === boxInstitutionName);
+    : institutions.find(el => el.name === boxInstitutionName);
 
   return (
     <Wrapper>
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
               </Box>
               {institution && (
                 <Box mr="30px">
-                  {institution && institution.institutionName}
+                  {institution && institution.name}
                 </Box>
               )}
               <Button
@@ -145,4 +145,5 @@ const Header: React.FC<HeaderProps> = ({
 
 export default withSpinner({
   isFixed: true,
+  maxHeight: '70px',
 })(Header);

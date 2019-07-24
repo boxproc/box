@@ -14,22 +14,22 @@ import {
   HandleGetProduct,
   HandleGetProducts,
   OpenModal,
-  ProductFilterParamsPrepared,
+  ProductFilterParams,
   ProductItem,
 } from 'store/domains';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 import { cookiesUtil } from 'utils';
 
 interface ProductsProps {
   openModal: OpenModal;
-  productItems: Array<Partial<ProductItem>>;
+  productItems: Array<ProductItem>;
   getProduct: HandleGetProduct;
   getProducts: HandleGetProducts;
   filterProducts: HandleFilterProducts;
-  institutionsOptions: Array<ParsedSelectValues>;
-  filterProductParams: ProductFilterParamsPrepared;
+  institutionsOptions: Array<SelectValues>;
+  filterProductParams: ProductFilterParams;
 }
 
 export const Products: React.FC<ProductsProps> = ({
@@ -44,7 +44,12 @@ export const Products: React.FC<ProductsProps> = ({
   React.useEffect(
     () => {
       getProducts();
+    },
+    [getProducts]
+  );
 
+  React.useEffect(
+    () => {
       if (filterProductParams) {
         cookiesUtil.set(
           cookiesNames.PRODUCTS_FILTER,
@@ -54,7 +59,7 @@ export const Products: React.FC<ProductsProps> = ({
         );
       }
     },
-    [getProducts, filterProductParams]
+    [filterProductParams]
   );
 
   const handleOnClickRow = React.useCallback(

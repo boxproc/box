@@ -20,15 +20,15 @@ import PrepaidSection from './PrepaidSection';
 import RevolvingCreditSection from './RevolvingCreditSection';
 import SavingsSection from './SavingsSection';
 
-import { ParsedSelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface ProductFormFormProps {
   onCancel: () => void;
   isDisabledProductTypes?: boolean;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
-  institutionsOptions: Array<ParsedSelectValues>;
-  productTypeValue: ParsedSelectValues;
+  institutionsOptions: Array<SelectValues>;
+  productTypeValue: SelectValues;
 }
 
 type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &

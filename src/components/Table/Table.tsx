@@ -172,9 +172,9 @@ export const Table: React.FC<TableProps> = props => {
           sortable={sortable}
           filterable={filterable}
           minRows={0}
-          showPagination={false}
-          // showPageSizeOptions={false}
-          // defaultPageSize={10}
+          showPagination={data.length > 10}
+          showPageSizeOptions={false}
+          defaultPageSize={10}
           multiSort={false}
           resizable={false}
           TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}

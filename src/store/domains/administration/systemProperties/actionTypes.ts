@@ -1,5 +1,5 @@
 import {
-  AdminSysPropFilterParams,
+  AdminSysPropFilterParamsPrepared,
   AdminSysPropsDataResp,
   EditableAdminSysPropPrepared,
 } from './types';
@@ -31,9 +31,6 @@ export enum ActionTypeKeys {
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_FULFILLED',
   FILTER_ADMIN_SYS_PROPS_REJECTED =
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
-
-  SET_FILTER_ADMIN_SYS_PROPS =
-   'administration/systemProperties/SET_FILTER_ADMIN_SYS_PROPS',
 }
 
 // Get all system properties
@@ -112,7 +109,7 @@ export interface FilterAdminSysPropsAction {
 export interface FilterAdminSysPropsFulfilledAction {
   readonly payload: AdminSysPropsDataResp;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED;
-  // readonly meta: AdminSysPropFilterParamsPrepared;
+  readonly meta: AdminSysPropFilterParamsPrepared;
 }
 
 export interface FilterAdminSysPropsRejectedAction {
@@ -120,15 +117,9 @@ export interface FilterAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
 }
 
-export interface SetFilterAdminSysPropsAction {
-  readonly payload: AdminSysPropFilterParams;
-  readonly type: ActionTypeKeys.SET_FILTER_ADMIN_SYS_PROPS;
-}
-
 export type AdminSysPropsActionTypes =
   | GetAdminSysPropsFulfilledAction
   | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
   | UpdateAdminSysPropsFulfilledAction
-  | FilterAdminSysPropsFulfilledAction
-  | SetFilterAdminSysPropsAction;
+  | FilterAdminSysPropsFulfilledAction;

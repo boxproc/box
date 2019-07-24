@@ -1,15 +1,15 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ParsedSelectValues, SuccessResponseStatusType } from 'types';
+import { SelectValues, SuccessResponseStatusType } from 'types';
 
 export interface ProductItemResp {
   id: number;
-  institution_id: number;
+  institution_id: string | number;
   name: string;
   description: string;
   status: string;
   product_type: string;
   scheme: string;
-  currency_code: number;
+  currency_code: string | number;
   history_retention_number_of_day: number;
   default_statement_cycle_id: string;
   locked_flag: string;
@@ -17,46 +17,32 @@ export interface ProductItemResp {
 
 export interface ProductItem {
   id: number;
-  institutionId: string;
+  institutionId: string | number;
   name: string;
   description: string;
   status: string;
   productType: string;
   scheme: string;
-  currencyCode: number;
+  currencyCode: string | number;
   historyRetentionNumberOfDay: number;
   defaultStatementCycleId: string;
-  lockedFlag: string;
-}
-
-// export interface ProductItemDetails {
-//   id: number;
-//   institutionId: ParsedSelectValues;
-//   name: string;
-//   description: string;
-//   status: ParsedSelectValues;
-//   productType: ParsedSelectValues;
-//   scheme: ParsedSelectValues;
-//   currencyCode: ParsedSelectValues;
-//   historyRetentionNumberOfDay: number;
-//   defaultStatementCycleId: string;
-//   lockedFlag: boolean;
-// }
-
-export interface ProductFilterParamsPrepared {
-  status?: string;
-  institution_id?: Array<number>;
-  product_type?: Array<string>;
-}
-
-export interface ProductFilterParams {
-  activeStatusFlag?: boolean;
-  institutionId?: Array<ParsedSelectValues>;
-  productType?: Array<ParsedSelectValues>;
+  lockedFlag: boolean;
 }
 
 export interface ProductsDataResp extends SuccessResponseStatusType {
   products: Array<ProductItemResp>;
+}
+
+export interface ProductFilterParams {
+  activeStatusFlag?: boolean;
+  institutionId?: Array<SelectValues>;
+  productType?: Array<SelectValues>;
+}
+
+export interface ProductFilterParamsPrepared {
+  status: string;
+  institution_id: Array<number | string>;
+  product_type: Array<number | string>;
 }
 
 export interface RevolvingCreditProductItemResp {
@@ -79,7 +65,7 @@ export interface RevolvingCreditProductItem {
   aprDefault: number;
   aprCash: number;
   aprSales: number;
-  aprBalance_transfer: number;
+  aprBalanceTransfer: number;
   aprFee: number;
   feeLatePayment: number;
   feeExceedLimit: number;
@@ -88,18 +74,18 @@ export interface RevolvingCreditProductItem {
   minimumPaymentPercent: number;
   minimumPaymentAmount: number;
   paymentGraceNumberOfDays: number;
-  limitSharingAllowedFlag: boolean;
+  limitSharingAllowed: boolean;
 }
 
 export interface LoanProductItemResp {
-  loan_type: string;
+  loan_type: number | string;
   apr: number;
   fee_late_payment: number;
   payment_grace_number_of_days: number;
 }
 
 export interface LoanProductItem {
-  loanType: ParsedSelectValues;
+  loanType: SelectValues;
   apr: number;
   feeLatePayment: number;
   paymentGraceNumberOfDays: number;
@@ -128,7 +114,7 @@ export interface DebitProductItem {
 }
 
 export interface SavingsProductItemResp {
-  savings_type: string;
+  savings_type: number | string;
   apr: number;
   minimum_deposit_allowed: number;
   maximum_deposit_allowed: number;
@@ -136,7 +122,7 @@ export interface SavingsProductItemResp {
 }
 
 export interface SavingsProductItem {
-  savingsType: ParsedSelectValues;
+  savingsType: SelectValues;
   apr: number;
   minimumDepositAllowed: number;
   maximumDepositAllowed: number;
@@ -174,25 +160,39 @@ export interface ProductDataResp extends SuccessResponseStatusType {
   product: ProductItemDetailsResp;
 }
 
-// export interface RevolvingCreditProductItemDetails extends ProductItemDetails {
-//   details: RevolvingCreditProductItem;
-// }
+export interface ProductItemDetails {
+  id: number;
+  institutionId: SelectValues;
+  name: string;
+  description: string;
+  status: SelectValues;
+  productType: SelectValues;
+  scheme: SelectValues;
+  currencyCode: SelectValues;
+  historyRetentionNumberOfDay: number;
+  defaultStatementCycleId: string;
+  lockedFlag: boolean;
+}
 
-// export interface SavingsProductItemDetails extends ProductItemDetails {
-//   details: SavingsProductItem;
-// }
+export interface RevolvingCreditProductItemDetails extends ProductItemDetails {
+  details: RevolvingCreditProductItem;
+}
 
-// export interface LoanProductItemDetails extends ProductItemDetails {
-//   details: LoanProductItem;
-// }
+export interface SavingsProductItemDetails extends ProductItemDetails {
+  details: SavingsProductItem;
+}
 
-// export interface PrepaidProductItemDetails extends ProductItemDetails {
-//   details: PrepaidProductItem;
-// }
+export interface LoanProductItemDetails extends ProductItemDetails {
+  details: LoanProductItem;
+}
 
-// export interface DebitProductItemDetails extends ProductItemDetails {
-//   details: DebitProductItem;
-// }
+export interface PrepaidProductItemDetails extends ProductItemDetails {
+  details: PrepaidProductItem;
+}
+
+export interface DebitProductItemDetails extends ProductItemDetails {
+  details: DebitProductItem;
+}
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
