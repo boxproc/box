@@ -8,16 +8,14 @@ import { InputField, SelectField } from 'components/Form';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
 
-import { HandleAddAdminSchedulerJob, HandleUpdateAdminSchedulerJob } from 'store/domains';
+import { HandleAddAdminCyclesEditor } from 'store/domains';
 
-import { Panel, Tabs } from 'components/Tabs';
 import { formErrorUtil } from 'utils';
 
-import SchedulerEditor from 'components/SchedulerEditor';
 import { ParsedSelectValues } from 'types';
 
 interface DefineSchedulerJobFormProps {
-  defineAdminSchedulerJob?: HandleAddAdminSchedulerJob|HandleUpdateAdminSchedulerJob;
+  defineAdminCyclesEditor?: HandleAddAdminCyclesEditor;
   institutionsOptions?: Array<ParsedSelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
@@ -29,33 +27,33 @@ type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
 
 const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   handleSubmit,
-  defineAdminSchedulerJob,
+  defineAdminCyclesEditor,
   isDisabledInstitutions,
   institutionsOptions,
   isDisabledStatus,
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => defineAdminSchedulerJob(data)),
-    [handleSubmit, defineAdminSchedulerJob]
+    handleSubmit(data => console.log(data)),
+    [handleSubmit, defineAdminCyclesEditor]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Tabs>
-        <Panel title="Job">
           <Box mx="-10px" >
             <Flex
               flexWrap="wrap"
             >
               <Box width={[1 / 2]} p="10px">
                 <Field
-                  id="name"
-                  name="name"
-                  placeholder="Enter Job Name"
-                  component={InputField}
-                  label="Scheduler Job Name"
-                  validate={[formErrorUtil.required]}
+                  id="institutionId"
+                  name="institutionId"
+                  isSearchable={true}
+                  component={SelectField}
+                  label="Institution"
+                  placeholder="Select Institution"
+                  options={institutionsOptions}
+                  isDisabled={isDisabledInstitutions}
                 />
               </Box>
               <Box width={[1 / 2]} p="10px">
@@ -66,6 +64,16 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   component={InputField}
                   label="Scheduler Job Description"
                   validate={[formErrorUtil.required]}
+                />
+              </Box>
+              <Box width={[1 / 2]} p="10px">
+                <Field
+                  id="cycleType"
+                  name="cycleType"
+                  placeholder="Enter  Cycle Type"
+                  component={InputField}
+                  label="Cycles Editor Type"
+                  disabled={false}
                 />
               </Box>
               <Box width={[1 / 2]} p="10px">
@@ -82,65 +90,38 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               </Box>
               <Box width={[1 / 2]} p="10px">
                 <Field
-                  id="cronExpression"
-                  name="cronExpression"
-                  placeholder="Enter  Cron Expression Description"
-                  component={InputField}
-                  label="Scheduler Job Cron Expression"
-                  disabled={false}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="institutionId"
-                  name="institutionId"
+                  id="monthlyCycleFirstDay"
+                  name="monthlyCycleFirstDay"
                   isSearchable={true}
+                  placeholder="Enter Monthly Cycle first day "
                   component={SelectField}
-                  label="Institution"
-                  placeholder="Select Institution"
-                  options={institutionsOptions}
-                  isDisabled={isDisabledInstitutions}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="executableType"
-                  name="executableType"
-                  isSearchable={true}
-                  placeholder="Enter  Job Executable type"
-                  component={SelectField}
-                  label="Scheduler Job Executable Type"
+                  label="Cycles Editor Monthly Cycle first day"
                   disabled={false}
                   options={executableTypeOptions}
                 />
               </Box>
               <Box width={[1 / 2]} p="10px">
                 <Field
-                  id="executable"
-                  name="executable"
-                  placeholder="Enter  Job Executable "
+                  id="weeklyCycleFirstDay"
+                  name="weeklyCycleFirstDay"
+                  placeholder="Enter Weekly Cycle first day "
                   component={InputField}
-                  label="Scheduler Job Executable "
+                  label="Cycles Editor Weekly Cycle first day"
                   disabled={false}
                 />
               </Box>
               <Box width={[1 / 2]} p="10px">
                 <Field
-                  id="logLocation"
-                  name="logLocation"
-                  placeholder="Enter  Job Log Location"
+                  id="fixedCycleNumberOfDays"
+                  name="fixedCycleNumberOfDays"
+                  placeholder="Enter  fixed Cycle number of days"
                   component={InputField}
-                  label="Scheduler Job Log Location"
+                  label="Cycles Editor fixed  number of days  "
                   disabled={false}
                 />
               </Box>
             </Flex>
           </Box>
-        </Panel>
-        <Panel title="Schedule">
-          <SchedulerEditor/>
-        </Panel>
-      </Tabs>
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"
@@ -151,7 +132,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineSchedulerJobFormProps>({
-  form: formNames.DEFINE_ADMIN_SCHEDULER_JOB,
+  form: formNames.DEFINE_ADMIN_CYCLE_EDITOR,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineSchedulerJobForm);

@@ -5,6 +5,7 @@ import { modalNames } from 'consts';
 import AddSchedulerModal from './Administration/Scheduler/AddSchedulerModal';
 import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
 import AddSystemPropertyModal from './Administration/SystemProperties/AddSystemPropertyModal';
+import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
 
 import AddProductModal from './ProductDesigner/Product/AddProductModal';
 import EditProductModal from './ProductDesigner/Product/EditProductModal';
@@ -35,5 +36,9 @@ export const modalsList = [
   {
     name: modalNames.EDIT_ADMIN_SCHEDULER,
     component: <EditSchedularModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_CYCLE_EDITOR,
+    component: <AddCyclesEditorModal />,
   },
 ];

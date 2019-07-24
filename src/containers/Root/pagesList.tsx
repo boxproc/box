@@ -2,12 +2,12 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
+import CyclesEditor from 'containers/Administration/Cycles/CyclesEditor';
 import EventDataElements from 'containers/Administration/EventDataElements';
 import Events from 'containers/Administration/Events';
 import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
 import Products from 'containers/ProductDesigner/Products';
-
 import {
   Accounts,
   Countries,
@@ -23,6 +23,10 @@ export const pagesList = [
   {
     path: uiItemConsts.PRODUCTS,
     component: <Products />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_CYCLE_EDITOR,
+    component: <CyclesEditor />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_SCHEDULER,

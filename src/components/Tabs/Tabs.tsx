@@ -48,6 +48,10 @@ export const Tabs: React.FC<TabsProps> = ({
       <TabsWrapper>
         <Flex>
           {React.Children.map(children, (child, i) => {
+            if (!children[i]) {
+              return null;
+            }
+
             const { title, hintForDisabled, isDisabled } = children[i].props;
             return (
               <TabTitle

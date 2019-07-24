@@ -15,6 +15,8 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isAddAdminSchedulerModal: false,
   isEditAdminSchedulerModal: false,
   payloadEditAdminSchedulerModal: null,
+
+  isAddAdminCycleEditor: false,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

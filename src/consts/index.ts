@@ -23,6 +23,7 @@ export enum formNames {
   USER_LOGIN = 'userLoginForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+  DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
@@ -31,6 +32,7 @@ export enum formNames {
 
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
+  ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditor',
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',

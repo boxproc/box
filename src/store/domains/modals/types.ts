@@ -22,4 +22,6 @@ export interface ModalsState {
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
   payloadEditAdminSchedulerModal: any;
+
+  isAddAdminCycleEditor: boolean;
 }
