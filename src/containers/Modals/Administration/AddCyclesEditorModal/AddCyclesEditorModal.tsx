@@ -5,15 +5,17 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
-import { CloseModal, HandleAddAdminCyclesEditor } from 'store/domains';
+import { CloseModal, HandleAddAdminCyclesEditor, } from 'store/domains';
 
 // tslint:disable-next-line: max-line-length
 import DefineCycleEditorForm from 'containers/Administration/Cycles/CyclesEditor/DefineCycleEditorForm';
 import { SelectValues } from 'types';
+
 interface AddCycleEditorModalProps {
   closeModal: CloseModal;
   addAdminCyclesEditor: HandleAddAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
+  // adminCycleEditorItems: Array<AdminCyclesEditorItem>;
 }
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({

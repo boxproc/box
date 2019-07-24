@@ -17,13 +17,14 @@ import {
   OpenModal,
 } from 'store/domains/';
 
-import { TableCell } from 'types';
+import { SelectValues, TableCell } from 'types';
 import CycleEditorFilter from './CycleEditorFilter';
 
 interface CycleEditorProps {
   adminCyclesEditorItems: Array<Partial<AdminCyclesEditorItem>>;
   openModal: OpenModal;
   getAdminCyclesEditor: HandleGetAdminCyclesEditor;
+  institutionsOptions: Array<SelectValues>;
 }
 
 type SCell<T extends keyof AdminCyclesEditorItem> = TableCell<AdminCyclesEditorItem[T]>;
@@ -32,6 +33,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   openModal,
   getAdminCyclesEditor,
   adminCyclesEditorItems,
+  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -44,8 +46,8 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
     (_, rowInfo: RowInfo) => {
       return {
         onDoubleClick: () => openModal({
-          name: modalNames.EDIT_ADMIN_SCHEDULER,
-          payload: {schedulerJobValues: rowInfo.original},
+          name: modalNames.EDIT_CYCLE_EDITOR,
+          payload: {cycleEditorValues: rowInfo.original},
         }),
       };
     },
@@ -157,7 +159,9 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Cycle Editor or Delete record"
       FilterForm={
-        <CycleEditorFilter />
+        <CycleEditorFilter
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );

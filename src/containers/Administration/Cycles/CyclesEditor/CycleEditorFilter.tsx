@@ -8,13 +8,18 @@ import { CheckboxField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
 
-interface CycleEditorFilterProps { }
+import { SelectValues } from 'types';
+
+interface CycleEditorFilterProps {
+  institutionsOptions: Array<SelectValues>;
+ }
 
 type SchedulerFilterAllProps = CycleEditorFilterProps &
   InjectedFormProps<{}, CycleEditorFilterProps>;
 
 const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
   handleSubmit,
+  institutionsOptions,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log(data)),
@@ -36,7 +41,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
               component={SelectField}
               label="Institution"
               placeholder="Select Institution"
-              //options={institutionsOptions}
+              options={institutionsOptions}
               isDisabled={false}
               isMulti={false}
           />

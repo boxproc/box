@@ -34,7 +34,8 @@ export enum formNames {
 
 export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
-  ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditor',
+  ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',
+  EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
@@ -59,6 +60,30 @@ export enum statusTypes {
   INACTIVE = 'I',
   DELETED = 'D',
 }
+
+export const statusTypeCyclesOptions = [
+  { value: 'A', label: 'Active'},
+  { value: 'S', label: 'Suspend'},
+];
+
+export const weeklyCycleTypeOptions = [
+  { value: 1, label: 'Monday'},
+  { value: 2, label: 'Tuesday'},
+  { value: 3, label: 'Wednesday'},
+  { value: 4, label: 'Thursday'},
+  { value: 5, label: 'Friday'},
+  { value: 6, label: 'Saturday'},
+  { value: 7, label: 'Sunday'},
+];
+
+export const typeOfCyclesEditorOptions = [
+  { value: 'M', label: 'Monthly'},
+  { value: 'N', label: 'Bi-monthly'},
+  { value: 'W', label: 'Weekly'},
+  { value: 'V', label: 'Bi-weekly'},
+  { value: 'F', label: 'Fixed number of days'},
+
+];
 
 export const statusTypesOptions = [
   { value: 'A', label: 'Active'},

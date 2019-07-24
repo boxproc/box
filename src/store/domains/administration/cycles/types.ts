@@ -8,7 +8,7 @@ export interface AdminCyclesEditorItemResp {
   cycle_type: string;
   status: string;
   monthly_cycle_first_day: number;
-  weekly_cycle_first_day: number;
+  weekly_cycle_first_day: number | string;
   fixed_cycle_number_of_days: number;
 }
 
@@ -21,7 +21,7 @@ export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditor
   cycle_type: string;
   status: number | string;
   monthly_cycle_first_day: number | string;
-  weekly_cycle_first_day: number;
+  weekly_cycle_first_day: number | string;
   fixed_cycle_number_of_days: number;
 }
 
@@ -32,18 +32,18 @@ export interface AdminCyclesEditorItem    {
   cycleType: string;
   status: string | number;
   monthlyCycleFirstDay: string | number;
-  weeklyCycleFirstDay: number;
+  weeklyCycleFirstDay: number | string;
   fixedCycleNumberOfDays: number;
 }
 
 export interface AdminCyclesEditorEditableItem  {
-  institutionId: SelectValues;
-  description: string;
-  cycleType: string;
-  status: SelectValues;
-  monthlyCycleFirstDay: SelectValues;
-  weeklyCycleFirstDay: number;
-  fixedCycleNumberOfDays: number;
+  institutionId?: SelectValues;
+  description?: string;
+  cycleType?: string;
+  status?: SelectValues;
+  monthlyCycleFirstDay?: number;
+  weeklyCycleFirstDay?: number;
+  fixedCycleNumberOfDays?: number;
 }
 
 export interface AdminCyclesEditorDataResp extends SuccessResponseStatusType {

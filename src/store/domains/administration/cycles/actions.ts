@@ -7,14 +7,16 @@ import { closeModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
   AddAdminCycleEditorAction,
+  DeleteAdminCycleEditorAction,
   GetAdminCycleEditorAction,
+  UpdateAdminCycleEditorAction,
 } from './actionTypes';
 
 import { apiClient } from 'services';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { prepareAdminCyclesEditorValues } from './utils';
+import { prepareAdminCyclesEditorValuesUnderscore } from './utils';
 
 import { AdminCyclesEditorEditableItem, AdminCyclesEditorEditableItemPrepared } from './types';
 
@@ -28,6 +30,14 @@ AddAdminCycleEditorAction;
 export type HandleAddAdminCyclesEditor = (values: AdminCyclesEditorEditableItem) =>
   Thunk<void>;
 
+export type DeleteAdminCycleEditor = (id: string | number) => DeleteAdminCycleEditorAction;
+export type HandleDeleteAdminCycleEditor = (id: string | number) => Thunk<void>;
+
+export type UpdateAdminCyclesEditor = (propValues: AdminCyclesEditorEditableItemPrepared) =>
+UpdateAdminCycleEditorAction;
+export type HandleUpdateAdminCyclesEditor =
+ (propValues: AdminCyclesEditorEditableItem) => Thunk<void>;
+
 export const getAdminCycleEditor: GetAdminCyclesEditor = () => ({
   type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR,
   payload: api.getAdminCycleEditor(),
@@ -36,6 +46,18 @@ export const getAdminCycleEditor: GetAdminCyclesEditor = () => ({
 export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
   type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR,
   payload: api.addAdminCyclesEditor(values),
+  meta: values,
+});
+
+export const deleteAdminCyclesEditor: DeleteAdminCycleEditor = id => ({
+  type: ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR,
+  payload: api.deleteAdminSchedulerJob(id),
+  meta: id,
+});
+
+export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
+  type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR,
+  payload: api.updateAdminSchedulerJobs(values),
   meta: values,
 });
 
@@ -55,11 +77,34 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminCyclesEditorValues(cycleEditorRecords);
+        const preparedValues = prepareAdminCyclesEditorValuesUnderscore(cycleEditorRecords);
         await dispatch(addAdminCyclesEditor(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR));
         await dispatch(getAdminCycleEditor());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_CYCLE_EDITOR));
+      },
+      dispatch
+    );
+  };
+export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(deleteAdminCyclesEditor(id));
+        await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareAdminCyclesEditorValuesUnderscore(values);
+        await dispatch(updateAdminCyclesEditor(preparedValues));
+        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+
       },
       dispatch
     );

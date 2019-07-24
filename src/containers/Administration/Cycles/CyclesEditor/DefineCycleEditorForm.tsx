@@ -6,24 +6,30 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
 
-import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
+import {
+  executableTypeOptions,
+  formNames,
+  statusTypeCyclesOptions,
+  typeOfCyclesEditorOptions,
+  weeklyCycleTypeOptions
+} from 'consts';
 
-import { HandleAddAdminCyclesEditor } from 'store/domains';
+import { HandleAddAdminCyclesEditor, HandleUpdateAdminCyclesEditor } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
 import { SelectValues } from 'types';
 
-interface DefineSchedulerJobFormProps {
-  defineAdminCyclesEditor?: HandleAddAdminCyclesEditor;
+interface DefineCyclesEditorFormProps {
+  defineAdminCyclesEditor?: HandleAddAdminCyclesEditor|HandleUpdateAdminCyclesEditor;
   institutionsOptions?: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;
 }
 
-type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
-  InjectedFormProps<{}, DefineSchedulerJobFormProps>;
+type DefineSchedulerJobFormAllProps = DefineCyclesEditorFormProps &
+  InjectedFormProps<{}, DefineCyclesEditorFormProps>;
 
 const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   handleSubmit,
@@ -34,7 +40,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => defineAdminCyclesEditor(data)),
     [handleSubmit, defineAdminCyclesEditor]
   );
 
@@ -60,9 +66,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 <Field
                   id="description"
                   name="description"
-                  placeholder="Enter  Job Description"
+                  placeholder="Enter Cycles Editor Description"
                   component={InputField}
-                  label="Scheduler Job Description"
+                  label="Cycles Editor Description"
                   validate={[formErrorUtil.required]}
                 />
               </Box>
@@ -70,8 +76,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 <Field
                   id="cycleType"
                   name="cycleType"
-                  placeholder="Enter  Cycle Type"
-                  component={InputField}
+                  placeholder="Enter  Cycles Type"
+                  component={SelectField}
+                  options={typeOfCyclesEditorOptions}
                   label="Cycles Editor Type"
                   disabled={false}
                 />
@@ -83,8 +90,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   component={SelectField}
                   isSearchable={true}
                   label="Status"
-                  placeholder="Select Status"
-                  options={statusTypesOptions}
+                  placeholder="Select Cycles Editor Status"
+                  options={statusTypeCyclesOptions}
                   isDisabled={isDisabledStatus}
                 />
               </Box>
@@ -94,7 +101,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   name="monthlyCycleFirstDay"
                   isSearchable={true}
                   placeholder="Enter Monthly Cycle first day "
-                  component={SelectField}
+                  component={InputField}
                   label="Cycles Editor Monthly Cycle first day"
                   disabled={false}
                   options={executableTypeOptions}
@@ -105,7 +112,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   id="weeklyCycleFirstDay"
                   name="weeklyCycleFirstDay"
                   placeholder="Enter Weekly Cycle first day "
-                  component={InputField}
+                  component={SelectField}
+                  options={weeklyCycleTypeOptions}
                   label="Cycles Editor Weekly Cycle first day"
                   disabled={false}
                 />
@@ -131,8 +139,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, DefineSchedulerJobFormProps>({
+export default reduxForm<{}, DefineCyclesEditorFormProps>({
   form: formNames.DEFINE_ADMIN_CYCLE_EDITOR,
   destroyOnUnmount: true,
-  enableReinitialize: true,
+  enableReinitialize: false,
 })(DefineSchedulerJobForm);

@@ -2,21 +2,29 @@ import { StoreState } from 'store/StoreState';
 
 import { createSelector } from 'reselect';
 
+import {
+  statusTypeCyclesOptions,
+  typeOfCyclesEditorOptions,
+  weeklyCycleTypeOptions,
+} from 'consts';
+import { selectInstitutionsOptions } from 'store/domains/consts';
+
 export const selectDefaultAdminCycleEditorItems = (state: StoreState) =>
   state.administration.adminCyclesEditor.cycle_editor;
 
 export const selectAdminCycleEditorItems = createSelector(
   selectDefaultAdminCycleEditorItems,
-  items => items && items.asMutable().map(item => {
+  selectInstitutionsOptions,
+  (items, institutions) => items && items.asMutable().map(item => {
     return {
-       ...item,
-       id: item.id,
-      institutionId: item.institution_id,
+      id: item.id,
+      institutionId: item && institutions.find(el => el.value === item.institution_id).label,
       description: item.description,
-      cycleType: item.cycle_type,
-      status: item.status,
+      cycleType: item && typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type).label ,
+      status: item && statusTypeCyclesOptions.find(el => el.value === item.status).label,
       monthlyCycleFirstDay: item.monthly_cycle_first_day,
-      weeklyCycleFirstDay: item.weekly_cycle_first_day,
+      weeklyCycleFirstDay:
+       item && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
       fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
       };
     })

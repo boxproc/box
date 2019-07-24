@@ -2,15 +2,16 @@ import React from 'react';
 
 import { modalNames } from 'consts';
 
+import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
 import AddSchedulerModal from './Administration/Scheduler/AddSchedulerModal';
 import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
 import AddSystemPropertyModal from './Administration/SystemProperties/AddSystemPropertyModal';
-import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
 
 import AddProductModal from './ProductDesigner/Product/AddProductModal';
 import EditProductModal from './ProductDesigner/Product/EditProductModal';
 
 import MessageModal from './MessageModal';
+import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
 
 export const modalsList = [
   {
@@ -41,4 +42,9 @@ export const modalsList = [
     name: modalNames.ADD_ADMIN_CYCLE_EDITOR,
     component: <AddCyclesEditorModal />,
   },
+  {
+    name: modalNames.EDIT_CYCLE_EDITOR,
+    component: <EditCyclesEditorModal />,
+  },
+
 ];

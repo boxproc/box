@@ -22,6 +22,23 @@ const adminCyclesEditorReducer =
               ...state.cycle_editor,
             }),
           ]);
+
+      case ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR_FULFILLED:
+              return state
+                .set(
+                  'cycle_editor',
+                  state.cycle_editor.filter(el => el.id !== action.meta)
+                );
+      case ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED:
+                  return state
+                .set(
+                  'cycle_editor', [
+                    ...Object.values({
+                      ...state.cycle_editor.filter(el => el.id !== action.meta.id),
+                    }),
+                    action.meta,
+                  ].sort((a, b) => (a.id > b.id) ? 1 : -1)
+                );
      default:
         return state;
     }
