@@ -103,7 +103,7 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
       async () => {
         const preparedValues = prepareAdminCyclesEditorValuesUnderscore(values);
         await dispatch(updateAdminCyclesEditor(preparedValues));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+        await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
 
       },
       dispatch

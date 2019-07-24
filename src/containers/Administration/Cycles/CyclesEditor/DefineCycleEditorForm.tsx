@@ -142,5 +142,5 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 export default reduxForm<{}, DefineCyclesEditorFormProps>({
   form: formNames.DEFINE_ADMIN_CYCLE_EDITOR,
   destroyOnUnmount: true,
-  enableReinitialize: false,
+  enableReinitialize: true,
 })(DefineSchedulerJobForm);
