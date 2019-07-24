@@ -1,27 +1,43 @@
 import { apiClient } from 'services';
 
-import {
-  debitItemData,
-  // productItemsData,
-  // revolvingCreditItemData,
-  // loanItemData,
-  // prepaidItemData,
-  productItemsFilteredData,
-  // savingsItemData,
-} from './mock';
+// import {
+//   // debitItemData,
+//   // productItemsData,
+//   productItemsFilteredData,
+//   // loanItemData,
+//   // prepaidItemData,
+//   // revolvingCreditItemData,
+//   // savingsItemData,
+//   // successResponseStatus,
+// } from './mock';
 
-import { throttleUtil } from 'utils';
-import { ProductFilterParamsPrepared } from './types';
+// import { throttleUtil } from 'utils';
+import { ProductFilterParamsPrepared, ProductItemDetailsResp } from './types';
 
 export const getProducts = () =>
   // throttleUtil.getDataAfter(productItemsData, 500);
   apiClient.post('/ui/product_designer/products/get');
 
+export const getProduct = (id: number) =>
+  // throttleUtil.getDataAfter(revolvingCreditItemData, 500);
+  apiClient.post('/ui/product_designer/products/get', {
+    data: { id },
+  });
+
 export const deleteProduct = (id: number) =>
-  throttleUtil.getDataAfter({id}, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
+  apiClient.post('/ui/product_designer/products/delete', {
+    data: { id },
+  });
 
 export const filterProducts = (data: ProductFilterParamsPrepared) =>
-  throttleUtil.getDataAfter(productItemsFilteredData, 500);
+  // throttleUtil.getDataAfter(productItemsFilteredData, 500);
+  apiClient.post('/ui/product_designer/products/get', { data });
 
-export const getProduct = (id: number) =>
-  throttleUtil.getDataAfter(debitItemData, 500);
+export const addProduct = (data: ProductItemDetailsResp) =>
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
+  apiClient.post('/ui/product_designer/products/create', { data });
+
+export const updateProduct = (data: ProductItemDetailsResp) =>
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
+  apiClient.post('/ui/product_designer/products/update', { data });

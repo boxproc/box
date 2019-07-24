@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSection, InjectedFormProps, reduxForm } from 'redux-form';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { Panel, Tabs } from 'components/Tabs';
@@ -20,6 +20,8 @@ import PrepaidSection from './PrepaidSection';
 import RevolvingCreditSection from './RevolvingCreditSection';
 import SavingsSection from './SavingsSection';
 
+import { HandleAddProduct, HandleUpdateProduct } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface ProductFormFormProps {
@@ -29,6 +31,7 @@ interface ProductFormFormProps {
   isDisabledStatus?: boolean;
   institutionsOptions: Array<SelectValues>;
   productTypeValue: SelectValues;
+  productAction: HandleAddProduct | HandleUpdateProduct;
 }
 
 type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &
@@ -44,9 +47,10 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
   isDisabledStatus,
   institutionsOptions,
   productTypeValue,
+  productAction,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log('---', data)),
+    handleSubmit(data => productAction(data)),
     [handleSubmit]
   );
 
@@ -70,23 +74,21 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
           isDisabled={!productTypeValue}
           hintForDisabled="Select Product Type"
         >
-          <FormSection name="details">
-            {productTypeValue && productTypeValue.value === productTypes.LOAN && (
-              <LoanTypeSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.PREPAID && (
-              <PrepaidSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.DEBIT && (
-              <DebitSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.SAVINGS && (
-              <SavingsSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
-              <RevolvingCreditSection />
-            )}
-          </FormSection>
+          {productTypeValue && productTypeValue.value === productTypes.LOAN && (
+            <LoanTypeSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.PREPAID && (
+            <PrepaidSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.DEBIT && (
+            <DebitSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.SAVINGS && (
+            <SavingsSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
+            <RevolvingCreditSection />
+          )}
         </Panel>
       </Tabs>
       <OkCancelButtons

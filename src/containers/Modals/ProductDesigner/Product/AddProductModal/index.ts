@@ -9,6 +9,7 @@ import AddProductModal from './AddProductModal';
 import {
   closeModal,
   createLoadingSelector,
+  handleAddProduct,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -25,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    addProduct: handleAddProduct,
     closeModal,
   },
   dispatch

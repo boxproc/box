@@ -6,12 +6,12 @@ export interface ProductItemResp {
   institution_id: string | number;
   name: string;
   description: string;
-  status: string;
-  product_type: string;
-  scheme: string;
+  status: string | number;
+  product_type: string | number;
+  scheme: string | number;
   currency_code: string | number;
   history_retention_number_of_day: number;
-  default_statement_cycle_id: string;
+  default_statement_cycle_id: string | number;
   locked_flag: string;
 }
 
@@ -20,12 +20,26 @@ export interface ProductItem {
   institutionId: string | number;
   name: string;
   description: string;
-  status: string;
-  productType: string;
-  scheme: string;
+  status: string | number;
+  productType: string | number;
+  scheme: string | number;
   currencyCode: string | number;
   historyRetentionNumberOfDay: number;
-  defaultStatementCycleId: string;
+  defaultStatementCycleId: string | number;
+  lockedFlag: boolean;
+}
+
+export interface ProductItemGeneral {
+  id: number;
+  institutionId: SelectValues;
+  name: string;
+  description: string;
+  status: SelectValues;
+  productType: SelectValues;
+  scheme: SelectValues;
+  currencyCode: SelectValues;
+  historyRetentionNumberOfDay: number;
+  defaultStatementCycleId: SelectValues;
   lockedFlag: boolean;
 }
 
@@ -45,7 +59,7 @@ export interface ProductFilterParamsPrepared {
   product_type: Array<number | string>;
 }
 
-export interface RevolvingCreditProductItemResp {
+export interface RevolvingCreditProductItemResp extends ProductItemResp {
   apr_default: number;
   apr_cash: number;
   apr_sales: number;
@@ -61,7 +75,7 @@ export interface RevolvingCreditProductItemResp {
   limit_sharing_allowed_flag: string;
 }
 
-export interface RevolvingCreditProductItem {
+export interface RevolvingCreditProductItem extends ProductItemGeneral {
   aprDefault: number;
   aprCash: number;
   aprSales: number;
@@ -74,46 +88,46 @@ export interface RevolvingCreditProductItem {
   minimumPaymentPercent: number;
   minimumPaymentAmount: number;
   paymentGraceNumberOfDays: number;
-  limitSharingAllowed: boolean;
+  limitSharingAllowedFlag: boolean;
 }
 
-export interface LoanProductItemResp {
+export interface LoanProductItemResp extends ProductItemResp {
   loan_type: number | string;
   apr: number;
   fee_late_payment: number;
   payment_grace_number_of_days: number;
 }
 
-export interface LoanProductItem {
+export interface LoanProductItem extends ProductItemGeneral {
   loanType: SelectValues;
   apr: number;
   feeLatePayment: number;
   paymentGraceNumberOfDays: number;
 }
 
-export interface PrepaidProductItemResp {
+export interface PrepaidProductItemResp extends ProductItemResp {
   dormant_after_number_of_days: number;
   break_ages_allowed: string;
   reload_allowed: string;
 }
 
-export interface PrepaidProductItem {
+export interface PrepaidProductItem extends ProductItemGeneral {
   dormantAfterNumberOfDays: number;
   breakAgesAllowed: boolean;
   reloadAllowed: boolean;
 }
 
-export interface DebitProductItemResp {
+export interface DebitProductItemResp extends ProductItemResp {
   apr_overdraft: number;
   overdraft_allowed: string;
 }
 
-export interface DebitProductItem {
+export interface DebitProductItem extends ProductItemGeneral {
   aprOverdraft: number;
   overdraftAllowed: boolean;
 }
 
-export interface SavingsProductItemResp {
+export interface SavingsProductItemResp extends ProductItemResp {
   savings_type: number | string;
   apr: number;
   minimum_deposit_allowed: number;
@@ -121,7 +135,7 @@ export interface SavingsProductItemResp {
   maximum_monthly_deposit: number;
 }
 
-export interface SavingsProductItem {
+export interface SavingsProductItem extends ProductItemGeneral {
   savingsType: SelectValues;
   apr: number;
   minimumDepositAllowed: number;
@@ -129,77 +143,30 @@ export interface SavingsProductItem {
   maximumMonthlyDeposit: number;
 }
 
-export interface RevolvingCreditProductItemDetailsResp extends ProductItemResp {
-  details: RevolvingCreditProductItemResp;
-}
-
-export interface SavingsProductItemDetailsResp extends ProductItemResp {
-  details: SavingsProductItemResp;
-}
-
-export interface LoanProductItemDetailsResp extends ProductItemResp {
-  details: LoanProductItemResp;
-}
-
-export interface PrepaidProductItemDetailsResp extends ProductItemResp {
-  details: PrepaidProductItemResp;
-}
-
-export interface DebitProductItemDetailsResp extends ProductItemResp {
-  details: DebitProductItemResp;
-}
-
 export type ProductItemDetailsResp =
-  | RevolvingCreditProductItemDetailsResp
-  | SavingsProductItemDetailsResp
-  | LoanProductItemDetailsResp
-  | PrepaidProductItemDetailsResp
-  | DebitProductItemDetailsResp;
+  | Partial<RevolvingCreditProductItemResp>
+  | Partial<SavingsProductItemResp>
+  | Partial<LoanProductItemResp>
+  | Partial<PrepaidProductItemResp>
+  | Partial<DebitProductItemResp>;
 
 export interface ProductDataResp extends SuccessResponseStatusType {
   product: ProductItemDetailsResp;
 }
 
-export interface ProductItemDetails {
-  id: number;
-  institutionId: SelectValues;
-  name: string;
-  description: string;
-  status: SelectValues;
-  productType: SelectValues;
-  scheme: SelectValues;
-  currencyCode: SelectValues;
-  historyRetentionNumberOfDay: number;
-  defaultStatementCycleId: string;
-  lockedFlag: boolean;
-}
-
-export interface RevolvingCreditProductItemDetails extends ProductItemDetails {
-  details: RevolvingCreditProductItem;
-}
-
-export interface SavingsProductItemDetails extends ProductItemDetails {
-  details: SavingsProductItem;
-}
-
-export interface LoanProductItemDetails extends ProductItemDetails {
-  details: LoanProductItem;
-}
-
-export interface PrepaidProductItemDetails extends ProductItemDetails {
-  details: PrepaidProductItem;
-}
-
-export interface DebitProductItemDetails extends ProductItemDetails {
-  details: DebitProductItem;
-}
+export type ProductItemDetails =
+  | Partial<RevolvingCreditProductItem>
+  | Partial<SavingsProductItem>
+  | Partial<LoanProductItem>
+  | Partial<PrepaidProductItem>
+  | Partial<DebitProductItem>;
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
-  revolvingCreditProduct: RevolvingCreditProductItemDetailsResp;
-  loanProduct: LoanProductItemDetailsResp;
-  prepaidProduct: PrepaidProductItemDetailsResp;
-  debitProduct: DebitProductItemDetailsResp;
-  savingsProduct: SavingsProductItemDetailsResp;
+  revolvingCreditProduct: RevolvingCreditProductItemResp;
+  loanProduct: LoanProductItemResp;
+  prepaidProduct: PrepaidProductItemResp;
+  debitProduct: DebitProductItemResp;
+  savingsProduct: SavingsProductItemResp;
   filterProductsParams: ProductFilterParamsPrepared;
 }

@@ -8,11 +8,12 @@ import { CheckboxField, InputField, SelectField } from 'components/Form';
 import {
   productTypesOptions,
   schemeTypesOptions,
-  statementTypesOptions,
   statusTypesOptions,
 } from 'consts';
 
 import { SelectValues } from 'types';
+
+import { formErrorUtil } from 'utils';
 
 interface GeneralSectionProps {
   isDisabledProductTypes?: boolean;
@@ -47,6 +48,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Product Type"
             options={productTypesOptions}
             isDisabled={isDisabledProductTypes}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -59,6 +61,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Institution"
             options={institutionsOptions}
             isDisabled={isDisabledInstitutions}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -68,6 +71,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Enter Name"
             component={InputField}
             label="Name"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -77,6 +81,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Enter Description"
             component={InputField}
             label="Description"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -89,6 +94,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Status"
             options={statusTypesOptions}
             isDisabled={isDisabledStatus}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -101,6 +107,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Select Scheme"
             options={schemeTypesOptions}
             isDisabled={false}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -114,6 +121,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             options={currencyCodes}
             isDisabled={false}
             isLoading={isCurrencyCodesLoading}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -123,6 +131,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             placeholder="Enter History Retention Number of Day"
             component={InputField}
             label="History Retention Number of Day"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -133,7 +142,12 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
             component={SelectField}
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"
-            options={statementTypesOptions}
+            options={[
+              { value: 1, label: 'Statement Cycle 1' },
+              { value: 2, label: 'Statement Cycle 2' },
+              { value: 3, label: 'Statement Cycle 3' },
+            ]}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box p="10px" width="100%">

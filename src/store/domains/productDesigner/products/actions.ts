@@ -1,5 +1,5 @@
 
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { cookiesNames, formNames, modalNames } from 'consts';
 
@@ -8,19 +8,27 @@ import * as api from './api';
 import { closeModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
+  AddProductAction,
   DeleteProductAction,
   FilterProductsAction,
   GetProductAction,
   GetProductsAction,
+  UpdateProductAction,
 } from './actionTypes';
 
 import { apiClient } from 'services';
 
-import { Thunk, VoidPromiseThunk } from 'types';
-
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
-import { ProductFilterParams, ProductFilterParamsPrepared } from './types';
-import { prepareProductFiltersParams } from './utils';
+import {
+  ProductFilterParams,
+  ProductFilterParamsPrepared,
+  ProductItemDetails,
+  ProductItemDetailsResp,
+} from './types';
+
+import { preparedProductItemToSend, prepareProductFiltersParams } from './utils';
+
+import { Thunk, VoidPromiseThunk } from 'types';
 
 export type GetProducts = () => GetProductsAction;
 export type HandleGetProducts = VoidPromiseThunk;
@@ -33,6 +41,12 @@ export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
 
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = (id: number) => Thunk<void>;
+
+export type AddProduct = (values: ProductItemDetailsResp) => AddProductAction;
+export type HandleAddProduct = (values: ProductItemDetails) => Thunk<void>;
+
+export type UpdateProduct = (values: ProductItemDetailsResp) => UpdateProductAction;
+export type HandleUpdateProduct = (values: ProductItemDetails) => Thunk<void>;
 
 export const getProducts: GetProducts = () => ({
   type: ActionTypeKeys.GET_PRODUCTS,
@@ -54,6 +68,16 @@ export const filterProducts: FilterProducts = params => ({
 export const getProduct: GetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
+});
+
+export const addProduct: AddProduct = values => ({
+  type: ActionTypeKeys.ADD_PRODUCT,
+  payload: api.addProduct(values),
+});
+
+export const updateProduct: UpdateProduct = values => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT,
+  payload: api.updateProduct(values),
 });
 
 export const handleGetProducts: HandleGetProducts = () =>
@@ -105,6 +129,40 @@ export const handleGetProduct: HandleGetProduct = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getProduct(id));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddProduct: HandleAddProduct = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = preparedProductItemToSend(values);
+
+        console.log('---add action', preparedValues);
+
+        await dispatch(addProduct(preparedValues));
+        await dispatch(closeModal(modalNames.ADD_PRODUCT));
+        await dispatch(getProducts());
+        await dispatch(resetForm(formNames.PRODUCT));
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateProduct: HandleUpdateProduct = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = preparedProductItemToSend(values);
+
+        console.log('---edit action', preparedValues);
+
+        await dispatch(updateProduct(preparedValues));
+        await dispatch(closeModal(modalNames.EDIT_PRODUCT));
+        await dispatch(getProducts());
+        await dispatch(resetForm(formNames.PRODUCT));
       },
       dispatch
     );

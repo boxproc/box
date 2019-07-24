@@ -5,6 +5,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField } from 'components/Form';
 
+import { formErrorUtil } from 'utils';
+
 const DebitSection: React.FC = () => {
   return (
     <Box mx="-10px">
@@ -19,6 +21,7 @@ const DebitSection: React.FC = () => {
             placeholder="Enter Apr Overdraft"
             component={InputField}
             label="Apr Overdraft"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1]} p="10px">

@@ -14,13 +14,13 @@ import {
 } from 'store/domains/consts';
 
 import {
-  preparedDebitDetails,
+  preparedDebit,
   preparedGeneralProductItem,
   preparedGeneralProductValues,
-  preparedLoanDetails,
-  preparedPrepaidDetails,
-  preparedRevolvingCreditDetails,
-  preparedSavingsDetails,
+  preparedLoan,
+  preparedPrepaid,
+  preparedRevolvingCredit,
+  preparedSavings,
 } from './utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
@@ -36,7 +36,8 @@ export const selectProductItems = createSelector(
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === item.currency_code)
         && currencyCodes.find(el => el.label === item.currency_code).label,
-      institutionId: institutions.find(el => el.id === item.institution_id).name,
+      institutionId: institutions.find(el => el.id === item.institution_id)
+        && institutions.find(el => el.id === item.institution_id).name,
     };
   })
 );
@@ -78,7 +79,7 @@ export const selectDebitProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedDebitDetails(product),
+      ...preparedDebit(product),
     };
   }
 );
@@ -99,7 +100,7 @@ export const selectLoanProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedLoanDetails(product),
+      ...preparedLoan(product),
     };
   }
 );
@@ -120,7 +121,7 @@ export const selectPrepaidProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedPrepaidDetails(product),
+      ...preparedPrepaid(product),
     };
   }
 );
@@ -141,7 +142,7 @@ export const selectRevolvingCreditProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedRevolvingCreditDetails(product),
+      ...preparedRevolvingCredit(product),
     };
   }
 );
@@ -162,7 +163,7 @@ export const selectSavingsProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedSavingsDetails(product),
+      ...preparedSavings(product),
     };
   }
 );

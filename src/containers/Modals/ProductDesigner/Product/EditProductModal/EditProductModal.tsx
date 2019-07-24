@@ -12,26 +12,31 @@ import { modalNames } from 'consts';
 
 import {
   CloseModal,
-  DebitProductItemDetails,
+  // DebitProductItem,
   HandleDeleteProduct,
-  LoanProductItemDetails,
-  PrepaidProductItemDetails,
-  RevolvingCreditProductItemDetails,
-  SavingsProductItemDetails,
+  HandleUpdateProduct,
+  // LoanProductItem,
+  // PrepaidProductItem,
+  // RevolvingCreditProductItem,
+  // SavingsProductItem,
 } from 'store/domains';
 import { SelectValues } from 'types';
+
+interface Id {
+  id: number;
+}
 
 interface EditProductModalProps {
   closeModal: CloseModal;
   deleteProduct: HandleDeleteProduct;
+  updateProduct: HandleUpdateProduct;
   productId: number;
   institutionsOptions: Array<SelectValues>;
-  productTypeValue: SelectValues;
-  savingsProduct: SavingsProductItemDetails;
-  revolvingCreditProduct: RevolvingCreditProductItemDetails;
-  prepaidProduct: PrepaidProductItemDetails;
-  loanProduct: LoanProductItemDetails;
-  debitProduct: DebitProductItemDetails;
+  savingsProduct: Id;
+  revolvingCreditProduct: Id;
+  prepaidProduct: Id;
+  loanProduct: Id;
+  debitProduct: Id;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
@@ -39,12 +44,12 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   deleteProduct,
   productId,
   institutionsOptions,
-  productTypeValue,
   savingsProduct,
   revolvingCreditProduct,
   prepaidProduct,
   loanProduct,
   debitProduct,
+  updateProduct,
 }) => {
   return (
     <Modal
@@ -54,6 +59,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+        productAction={updateProduct}
         institutionsOptions={institutionsOptions}
         isDisabledProductTypes={true}
         isDisabledInstitutions={true}

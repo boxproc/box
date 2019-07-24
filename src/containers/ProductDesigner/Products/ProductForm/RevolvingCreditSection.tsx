@@ -5,6 +5,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField } from 'components/Form';
 
+import { formErrorUtil } from 'utils';
+
 const RevolvingCreditSection: React.FC = () => {
   return (
     <Box mx="-10px">
@@ -19,6 +21,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Apr Default"
             component={InputField}
             label="Apr Default"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -28,6 +31,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Apr Cash"
             component={InputField}
             label="Apr Cash"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -37,6 +41,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Apr Sales"
             component={InputField}
             label="Apr Sales"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -46,6 +51,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Apr Balance Transfer"
             component={InputField}
             label="Apr Balance Transfer"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -55,6 +61,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Apr Fee"
             component={InputField}
             label="Apr Fee"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -64,6 +71,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Fee Late Payment"
             component={InputField}
             label="Fee Late Payment"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -73,6 +81,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Fee Exceed Limit"
             component={InputField}
             label="Fee Exceed Limit"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -82,6 +91,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Fee Unpaid"
             component={InputField}
             label="Fee Unpaid"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -91,6 +101,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Fee Over Limit"
             component={InputField}
             label="Fee Over Limit"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -100,6 +111,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Minimum Payment Percent"
             component={InputField}
             label="Minimum Payment Percent"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -109,6 +121,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Minimum Payment Amount"
             component={InputField}
             label="Minimum Payment Amount"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -118,6 +131,7 @@ const RevolvingCreditSection: React.FC = () => {
             placeholder="Enter Payment Grace Number Of Days"
             component={InputField}
             label="Payment Grace Number Of Days"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1]} p="10px">

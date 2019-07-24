@@ -22,7 +22,7 @@ const RootWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 320px;
+  min-width: 1025px;
   min-height: 100vh;
   padding-top: 70px;
 `;

@@ -42,7 +42,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
               id="lockedFlag"
               name="lockedFlag"
               component={CheckboxField}
-              label="Show only &quot;Active&quot;"
+              label="Only &quot;Active&quot;"
               disabled={false}
             />
           </Box>

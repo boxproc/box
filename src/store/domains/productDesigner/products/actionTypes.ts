@@ -4,7 +4,7 @@ import {
   ProductsDataResp,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, SuccessResponseStatusType, } from 'types';
 
 export enum ActionTypeKeys {
   GET_PRODUCTS = 'productDesigner/products/GET_PRODUCTS',
@@ -22,6 +22,14 @@ export enum ActionTypeKeys {
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
   GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
+
+  UPDATE_PRODUCT= 'productDesigner/products/UPDATE_PRODUCT',
+  UPDATE_PRODUCT_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_FULFILLED',
+  UPDATE_PRODUCT_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_REJECTED',
+
+  ADD_PRODUCT = 'productDesigner/products/ADD_PRODUCT',
+  ADD_PRODUCT_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FULFILLED',
+  ADD_PRODUCT_REJECTED = 'productDesigner/products/ADD_PRODUCT_REJECTED',
 }
 
 // Get all products
@@ -90,8 +98,42 @@ export interface GetProductRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
 }
 
+// Edit product
+export interface UpdateProductAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT;
+}
+
+export interface UpdateProductFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FULFILLED;
+}
+
+export interface UpdateProductRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_REJECTED;
+}
+
+// Add new product
+export interface AddProductAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_PRODUCT;
+}
+
+export interface AddProductFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_FULFILLED;
+}
+
+export interface AddProductRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_REJECTED;
+}
+
 export type ProductsActionTypes =
   | GetProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
-  | GetProductFulfilledAction;
+  | GetProductFulfilledAction
+  | AddProductFulfilledAction
+  | UpdateProductFulfilledAction;

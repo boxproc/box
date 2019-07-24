@@ -10,6 +10,7 @@ import {
   closeModal,
   createLoadingSelector,
   handleDeleteProduct,
+  handleUpdateProduct,
   ProductsActionTypes,
   selectDebitProduct,
   selectLoanProduct,
@@ -44,6 +45,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     closeModal,
     deleteProduct: handleDeleteProduct,
+    updateProduct: handleUpdateProduct,
   },
   dispatch
 );

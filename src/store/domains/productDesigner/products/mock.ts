@@ -1,5 +1,7 @@
 import { ProductDataResp, ProductsDataResp } from './types';
 
+import { SuccessResponseStatusType } from 'types';
+
 export const productItemsData: ProductsDataResp = {
   response_status: {
     status_code: 0,
@@ -7,7 +9,7 @@ export const productItemsData: ProductsDataResp = {
   products: [
     {
       currency_code: 'GBP',
-      default_statement_cycle_id: '1',
+      default_statement_cycle_id: 1,
       description: 'Test revolving credit product',
       history_retention_number_of_day: 90,
       id: 1,
@@ -20,7 +22,7 @@ export const productItemsData: ProductsDataResp = {
     },
     {
       currency_code: 'GBP',
-      default_statement_cycle_id: '1',
+      default_statement_cycle_id: 1,
       description: 'Test debit product',
       history_retention_number_of_day: 90,
       id: 2,
@@ -33,7 +35,7 @@ export const productItemsData: ProductsDataResp = {
     },
     {
       currency_code: 'GBP',
-      default_statement_cycle_id: '1',
+      default_statement_cycle_id: 1,
       description: 'Test loan product',
       history_retention_number_of_day: 90,
       id: 3,
@@ -54,7 +56,7 @@ export const productItemsFilteredData: ProductsDataResp = {
   products: [
     {
       currency_code: 'GBP',
-      default_statement_cycle_id: '1',
+      default_statement_cycle_id: 1,
       description: 'Test revolving credit product',
       history_retention_number_of_day: 90,
       id: 1,
@@ -67,7 +69,7 @@ export const productItemsFilteredData: ProductsDataResp = {
     },
     {
       currency_code: 'GBP',
-      default_statement_cycle_id: '1',
+      default_statement_cycle_id: 1,
       description: 'Test loan product',
       history_retention_number_of_day: 90,
       id: 3,
@@ -87,7 +89,7 @@ export const revolvingCreditItemData: ProductDataResp = {
   },
   product: {
     currency_code: 'GBP',
-    default_statement_cycle_id: '1',
+    default_statement_cycle_id: 1,
     description: 'Test revolving credit product',
     history_retention_number_of_day: 90,
     id: 1,
@@ -97,21 +99,19 @@ export const revolvingCreditItemData: ProductDataResp = {
     product_type: 'C',
     scheme: 'V',
     status: 'A',
-    details: {
-      apr_default: 1,
-      apr_cash: 1,
-      apr_sales: 1,
-      apr_balance_transfer: 1,
-      apr_fee: 1,
-      fee_late_payment: 1,
-      fee_exceed_limit: 1,
-      fee_unpaid: 1,
-      fee_over_limit: 1,
-      minimum_payment_percent: 1,
-      minimum_payment_amount: 1,
-      payment_grace_number_of_days: 1,
-      limit_sharing_allowed_flag: 'Y',
-    },
+    apr_default: 1,
+    apr_cash: 1,
+    apr_sales: 1,
+    apr_balance_transfer: 1,
+    apr_fee: 1,
+    fee_late_payment: 1,
+    fee_exceed_limit: 1,
+    fee_unpaid: 1,
+    fee_over_limit: 1,
+    minimum_payment_percent: 1,
+    minimum_payment_amount: 1,
+    payment_grace_number_of_days: 1,
+    limit_sharing_allowed_flag: 'Y',
   },
 };
 
@@ -121,7 +121,7 @@ export const loanItemData = {
   },
   product: {
     currency_code: 'GBP',
-    default_statement_cycle_id: '1',
+    default_statement_cycle_id: 1,
     description: 'Test loan product',
     history_retention_number_of_day: 90,
     id: 1,
@@ -131,12 +131,10 @@ export const loanItemData = {
     product_type: 'L',
     scheme: 'V',
     status: 'A',
-    details: {
-      loan_type: 'B',
-      apr: 1,
-      fee_late_payment: 1,
-      payment_grace_number_of_days: 1,
-    },
+    loan_type: 'B',
+    apr: 1,
+    fee_late_payment: 1,
+    payment_grace_number_of_days: 1,
   },
 };
 
@@ -146,7 +144,7 @@ export const prepaidItemData = {
   },
   product: {
     currency_code: 'GBP',
-    default_statement_cycle_id: '1',
+    default_statement_cycle_id: 1,
     description: 'Test prepaid product',
     history_retention_number_of_day: 90,
     id: 1,
@@ -156,11 +154,9 @@ export const prepaidItemData = {
     product_type: 'P',
     scheme: 'V',
     status: 'A',
-    details: {
-      dormant_after_number_of_days: 1,
-      break_ages_allowed: 'Y',
-      reload_allowed: 'N',
-    },
+    dormant_after_number_of_days: 1,
+    break_ages_allowed: 'Y',
+    reload_allowed: 'N',
   },
 };
 
@@ -170,7 +166,7 @@ export const debitItemData = {
   },
   product: {
     currency_code: 'GBP',
-    default_statement_cycle_id: '1',
+    default_statement_cycle_id: 1,
     description: 'Test Debit product',
     history_retention_number_of_day: 90,
     id: 1,
@@ -180,10 +176,8 @@ export const debitItemData = {
     product_type: 'D',
     scheme: 'V',
     status: 'A',
-    details: {
-      apr_overdraft: 1,
-      overdraft_allowed: 'Y',
-    },
+    apr_overdraft: 1,
+    overdraft_allowed: 'Y',
   },
 };
 
@@ -193,7 +187,7 @@ export const savingsItemData = {
   },
   product: {
     currency_code: 'GBP',
-    default_statement_cycle_id: '1',
+    default_statement_cycle_id: 1,
     description: 'Test Debit product',
     history_retention_number_of_day: 90,
     id: 1,
@@ -203,12 +197,16 @@ export const savingsItemData = {
     product_type: 'S',
     scheme: 'V',
     status: 'A',
-    details: {
-      savings_type: 'F',
-      apr: 1,
-      minimum_deposit_allowed: 1,
-      maximum_deposit_allowed: 1,
-      maximum_monthly_deposit: 1,
-    },
+    savings_type: 'F',
+    apr: 1,
+    minimum_deposit_allowed: 1,
+    maximum_deposit_allowed: 1,
+    maximum_monthly_deposit: 1,
+  },
+};
+
+export const successResponseStatus: SuccessResponseStatusType = {
+  response_status: {
+    status_code: 0,
   },
 };

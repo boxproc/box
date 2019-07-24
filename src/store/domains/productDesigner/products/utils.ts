@@ -1,17 +1,23 @@
 import {
-  DebitProductItemDetailsResp,
-  LoanProductItemDetailsResp,
-  PrepaidProductItemDetailsResp,
+  DebitProductItem,
+  DebitProductItemResp,
+  LoanProductItem,
+  LoanProductItemResp,
+  PrepaidProductItem,
+  PrepaidProductItemResp,
   ProductFilterParams,
   ProductFilterParamsPrepared,
-  ProductItemDetailsResp,
+  ProductItemDetails,
   ProductItemResp,
-  RevolvingCreditProductItemDetailsResp,
-  SavingsProductItemDetailsResp,
+  RevolvingCreditProductItem,
+  RevolvingCreditProductItemResp,
+  SavingsProductItem,
+  SavingsProductItemResp,
 } from './types';
 
 import {
   loanTypesOptions,
+  productTypes,
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
@@ -45,7 +51,7 @@ export const preparedGeneralProductItem = (item: ProductItemResp) => {
   };
 };
 
-export const preparedGeneralProductValues = (product: ProductItemDetailsResp) => {
+export const preparedGeneralProductValues = (product: ProductItemResp) => {
   return {
     id: product.id,
     name: product.name,
@@ -59,68 +65,146 @@ export const preparedGeneralProductValues = (product: ProductItemDetailsResp) =>
   };
 };
 
-export const preparedRevolvingCreditDetails = (product: RevolvingCreditProductItemDetailsResp) => {
+export const preparedRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
   return {
-    details: {
-      aprDefault: product.details.apr_default,
-      aprCash: product.details.apr_cash,
-      aprSales: product.details.apr_sales,
-      aprBalanceTransfer: product.details.apr_balance_transfer,
-      aprFee: product.details.apr_fee,
-      feeLatePayment: product.details.fee_late_payment,
-      feeExceedLimit: product.details.fee_exceed_limit,
-      feeUnpaid: product.details.fee_unpaid,
-      feeOverLimit: product.details.fee_over_limit,
-      minimumPaymentPercent: product.details.minimum_payment_percent,
-      minimumPaymentAmount: product.details.minimum_payment_amount,
-      paymentGraceNumberOfDays: product.details.payment_grace_number_of_days,
-      limitSharingAllowed:
-        product.details.limit_sharing_allowed_flag === yesNoTypes.YES ? true : false,
-    },
+    aprDefault: product.apr_default,
+    aprCash: product.apr_cash,
+    aprSales: product.apr_sales,
+    aprBalanceTransfer: product.apr_balance_transfer,
+    aprFee: product.apr_fee,
+    feeLatePayment: product.fee_late_payment,
+    feeExceedLimit: product.fee_exceed_limit,
+    feeUnpaid: product.fee_unpaid,
+    feeOverLimit: product.fee_over_limit,
+    minimumPaymentPercent: product.minimum_payment_percent,
+    minimumPaymentAmount: product.minimum_payment_amount,
+    paymentGraceNumberOfDays: product.payment_grace_number_of_days,
+    limitSharingAllowedFlag:
+      product.limit_sharing_allowed_flag === yesNoTypes.YES ? true : false,
   };
 };
 
-export const preparedSavingsDetails = (product: SavingsProductItemDetailsResp) => {
+export const preparedRevolvingCreditToSend = (product: RevolvingCreditProductItem) => {
   return {
-    details: {
-      apr: product.details.apr,
-      minimumDepositAllowed: product.details.minimum_deposit_allowed,
-      maximumDepositAllowed: product.details.maximum_deposit_allowed,
-      maximumMonthlyDeposit: product.details.maximum_monthly_deposit,
-      savingsType: savingsTypesOptions.find(el => el.value === product.details.savings_type),
-    },
+    apr_default: Number(product.aprDefault),
+    apr_cash: Number(product.aprCash),
+    apr_sales: Number(product.aprSales),
+    apr_balance_transfer: Number(product.aprBalanceTransfer),
+    apr_fee: Number(product.aprFee),
+    fee_late_payment: Number(product.feeLatePayment),
+    fee_exceed_limit: Number(product.feeExceedLimit),
+    fee_unpaid: Number(product.feeUnpaid),
+    fee_over_limit: Number(product.feeOverLimit),
+    minimum_payment_percent: Number(product.minimumPaymentPercent),
+    minimum_payment_amount: Number(product.minimumPaymentAmount),
+    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
+    limit_sharing_allowed_flag:
+      product.limitSharingAllowedFlag === true ? yesNoTypes.YES : yesNoTypes.NO,
   };
 };
 
-export const preparedPrepaidDetails = (product: PrepaidProductItemDetailsResp) => {
+export const preparedSavings = (product: SavingsProductItemResp) => {
   return {
-    details: {
-      dormantAfterNumberOfDays: product.details.dormant_after_number_of_days,
-      breakAgesAllowed:
-        product.details.break_ages_allowed === yesNoTypes.YES ? true : false,
-      reloadAllowed:
-        product.details.reload_allowed === yesNoTypes.YES ? true : false,
-    },
+    apr: product.apr,
+    minimumDepositAllowed: product.minimum_deposit_allowed,
+    maximumDepositAllowed: product.maximum_deposit_allowed,
+    maximumMonthlyDeposit: product.maximum_monthly_deposit,
+    savingsType: savingsTypesOptions.find(el => el.value === product.savings_type),
   };
 };
 
-export const preparedLoanDetails = (product: LoanProductItemDetailsResp) => {
+export const preparedSavingsToSend = (product: SavingsProductItem) => {
   return {
-    details: {
-      apr: product.details.apr,
-      feeLatePayment: product.details.fee_late_payment,
-      paymentGraceNumberOfDays: product.details.payment_grace_number_of_days,
-      loanType: loanTypesOptions.find(el => el.value === product.details.loan_type),
-    },
+    apr: Number(product.apr),
+    minimum_deposit_allowed: Number(product.minimumDepositAllowed),
+    maximum_deposit_allowed: Number(product.maximumDepositAllowed),
+    maximum_monthly_deposit: Number(product.maximumMonthlyDeposit),
+    savingsType: product.savingsType.value,
   };
 };
 
-export const preparedDebitDetails = (product: DebitProductItemDetailsResp) => {
+export const preparedPrepaid = (product: PrepaidProductItemResp) => {
   return {
-    details: {
-      aprOverdraft: product.details.apr_overdraft,
-      overdraftAllowed:
-        product.details.overdraft_allowed === yesNoTypes.YES ? true : false,
-    },
+    dormantAfterNumberOfDays: Number(product.dormant_after_number_of_days),
+    breakAgesAllowed:
+      product.break_ages_allowed === yesNoTypes.YES ? true : false,
+    reloadAllowed:
+      product.reload_allowed === yesNoTypes.YES ? true : false,
+  };
+};
+
+export const preparedPrepaidToSend = (product: PrepaidProductItem) => {
+  return {
+    dormant_after_number_of_days: Number(product.dormantAfterNumberOfDays),
+    break_ages_allowed: product.breakAgesAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+    reload_allowed: product.reloadAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+  };
+};
+
+export const preparedLoan = (product: LoanProductItemResp) => {
+  return {
+    apr: product.apr,
+    feeLatePayment: product.fee_late_payment,
+    paymentGraceNumberOfDays: product.payment_grace_number_of_days,
+    loanType: loanTypesOptions.find(el => el.value === product.loan_type),
+  };
+};
+
+export const preparedLoanToSend = (product: LoanProductItem) => {
+  return {
+    apr: Number(product.apr),
+    fee_late_payment: Number(product.feeLatePayment),
+    payment_grace_number_of_days: product.paymentGraceNumberOfDays,
+  };
+};
+
+export const preparedDebit = (product: DebitProductItemResp) => {
+  return {
+    aprOverdraft: product.apr_overdraft,
+    overdraftAllowed:
+      product.overdraft_allowed === yesNoTypes.YES ? true : false,
+  };
+};
+
+export const preparedDebitToSend = (product: DebitProductItem) => {
+  return {
+    apr_overdraft: Number(product.aprOverdraft),
+    overdraft_allowed: product.overdraftAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+  };
+};
+
+const getDetailsByType = (item: any) => {
+  const type = item.productType.value;
+
+  if (type === productTypes.DEBIT) {
+    return preparedDebitToSend(item);
+  } else if (type === productTypes.LOAN) {
+    return preparedLoanToSend(item);
+  } else if (type === productTypes.PREPAID) {
+    return preparedPrepaidToSend(item);
+  } else if (type === productTypes.REVOLVING_CREDIT) {
+    return preparedRevolvingCreditToSend(item);
+  } else if (type === productTypes.SAVINGS) {
+    return preparedSavingsToSend(item);
+  } else {
+    return null;
+  }
+};
+
+export const preparedProductItemToSend = (item: ProductItemDetails) => {
+  return {
+    id: item.id,
+    product_id: item.id,
+    name: item.name,
+    description: item.description,
+    status: item.status.value,
+    institution_id: item.institutionId.value,
+    currency_code: item.currencyCode.label,
+    product_type: item.productType.value,
+    scheme: item.scheme.value,
+    history_retention_number_of_day: item.historyRetentionNumberOfDay,
+    default_statement_cycle_id: item.defaultStatementCycleId.value,
+    locked_flag: item.lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
+    ...getDetailsByType(item),
   };
 };
