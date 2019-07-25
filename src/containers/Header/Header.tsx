@@ -36,7 +36,7 @@ const Wrapper = styled.header`
   box-shadow: ${({ theme }) => theme.boxShadow};
   font-size: 14px;
   white-space: nowrap;
-  z-index: 1;
+  z-index: 10;
 `;
 
 const UserIcon = styled(User)`

@@ -10,6 +10,7 @@ import {
 
 import {
   formNames,
+  hintsConsts,
   productTypes,
 } from 'consts';
 
@@ -48,6 +49,7 @@ const ProductForm: React.FC<ProductFormAllProps> = ({
   institutionsOptions,
   productTypeValue,
   productAction,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => productAction(data)),
@@ -89,13 +91,15 @@ const ProductForm: React.FC<ProductFormAllProps> = ({
           {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
             <RevolvingCreditSection />
           )}
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Cancel"
+            onCancel={onCancel}
+            disabledOk={invalid}
+            hintOk={invalid && hintsConsts.FILL_ALL_FIELDS}
+          />
         </Panel>
       </Tabs>
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Cancel"
-        onCancel={onCancel}
-      />
     </form >
   );
 };

@@ -129,15 +129,15 @@ export const preparedSavingsToSend = (product: SavingsProductItem) => {
     minimum_deposit_allowed: Number(product.minimumDepositAllowed),
     maximum_deposit_allowed: Number(product.maximumDepositAllowed),
     maximum_monthly_deposit: Number(product.maximumMonthlyDeposit),
-    savingsType: product.savingsType.value,
+    savings_type: product.savingsType.value,
   };
 };
 
 export const preparedPrepaid = (product: PrepaidProductItemResp) => {
   return {
     dormantAfterNumberOfDays: Number(product.dormant_after_number_of_days),
-    breakAgesAllowed:
-      product.break_ages_allowed === yesNoTypes.YES ? true : false,
+    breakagesAllowed:
+      product.breakages_allowed === yesNoTypes.YES ? true : false,
     reloadAllowed:
       product.reload_allowed === yesNoTypes.YES ? true : false,
   };
@@ -146,7 +146,7 @@ export const preparedPrepaid = (product: PrepaidProductItemResp) => {
 export const preparedPrepaidToSend = (product: PrepaidProductItem) => {
   return {
     dormant_after_number_of_days: Number(product.dormantAfterNumberOfDays),
-    break_ages_allowed: product.breakAgesAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+    breakages_allowed: product.breakagesAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
     reload_allowed: product.reloadAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
   };
 };

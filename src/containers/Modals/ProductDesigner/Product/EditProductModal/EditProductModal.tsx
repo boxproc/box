@@ -20,6 +20,7 @@ import {
   // RevolvingCreditProductItem,
   // SavingsProductItem,
 } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface Id {
@@ -56,6 +57,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalNames.EDIT_PRODUCT}
       title="Edit Product"
       maxContainerWidth={700}
+      minContainerHeight={610}
     >
       <ProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}

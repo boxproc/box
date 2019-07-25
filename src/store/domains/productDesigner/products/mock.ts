@@ -155,7 +155,7 @@ export const prepaidItemData = {
     scheme: 'V',
     status: 'A',
     dormant_after_number_of_days: 1,
-    break_ages_allowed: 'Y',
+    breakages_allowed: 'Y',
     reload_allowed: 'N',
   },
 };

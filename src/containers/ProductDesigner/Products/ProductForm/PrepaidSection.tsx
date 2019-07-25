@@ -26,8 +26,8 @@ const PrepaidSection: React.FC = () => {
         </Box>
         <Box width={[1]} p="10px">
           <Field
-            id="breakAgesAllowed"
-            name="breakAgesAllowed"
+            id="breakagesAllowed"
+            name="breakagesAllowed"
             component={CheckboxField}
             label="Break Ages Allowed"
             disabled={false}

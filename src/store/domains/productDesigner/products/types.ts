@@ -107,13 +107,13 @@ export interface LoanProductItem extends ProductItemGeneral {
 
 export interface PrepaidProductItemResp extends ProductItemResp {
   dormant_after_number_of_days: number;
-  break_ages_allowed: string;
+  breakages_allowed: string;
   reload_allowed: string;
 }
 
 export interface PrepaidProductItem extends ProductItemGeneral {
   dormantAfterNumberOfDays: number;
-  breakAgesAllowed: boolean;
+  breakagesAllowed: boolean;
   reloadAllowed: boolean;
 }
 
