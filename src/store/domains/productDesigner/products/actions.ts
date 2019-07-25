@@ -26,7 +26,7 @@ import {
   ProductItemDetailsResp,
 } from './types';
 
-import { preparedProductItemToSend, prepareProductFiltersParams } from './utils';
+import { preparedProductItemToSend, prepareProductFiltersParamsToSend } from './utils';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
@@ -91,7 +91,7 @@ export const handleGetProducts: HandleGetProducts = () =>
         const state = getState();
 
         if (formValues(state)) {
-          const preparedValues = prepareProductFiltersParams(formValues(state));
+          const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
           await dispatch(filterProducts(preparedValues));
         } else {
           await dispatch(getProducts());
@@ -116,7 +116,7 @@ export const handleFilterProducts: HandleFilterProducts = params =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareProductFiltersParams(params);
+        const preparedValues = prepareProductFiltersParamsToSend(params);
 
         await dispatch(filterProducts(preparedValues));
       },
@@ -140,11 +140,9 @@ export const handleAddProduct: HandleAddProduct = values =>
       async () => {
         const preparedValues = preparedProductItemToSend(values);
 
-        console.log('---add action', preparedValues);
-
         await dispatch(addProduct(preparedValues));
         await dispatch(closeModal(modalNames.ADD_PRODUCT));
-        await dispatch(getProducts());
+        await dispatch(handleGetProducts());
         await dispatch(resetForm(formNames.PRODUCT));
       },
       dispatch
@@ -157,11 +155,9 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
       async () => {
         const preparedValues = preparedProductItemToSend(values);
 
-        console.log('---edit action', preparedValues);
-
         await dispatch(updateProduct(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_PRODUCT));
-        await dispatch(getProducts());
+        await dispatch(handleGetProducts());
         await dispatch(resetForm(formNames.PRODUCT));
       },
       dispatch

@@ -108,7 +108,7 @@ export const columns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="History Retention Number of Day" showSortIcons={true} />,
+    Header: <Header title="History Retention Number of Days" showSortIcons={true} />,
     accessor: 'historyRetentionNumberOfDay',
     Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell
@@ -128,7 +128,7 @@ export const columns = [
     ),
   },
   {
-    maxWidth: 95,
+    maxWidth: 100,
     sortable: true,
     Header: <Header title="Locked" showSortIcons={true} />,
     accessor: 'lockedFlag',

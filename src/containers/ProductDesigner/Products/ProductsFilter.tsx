@@ -39,19 +39,6 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
         >
           <Box width={[ 1, 1 / 2]} p="10px">
             <Field
-              id="institutionId"
-              name="institutionId"
-              isSearchable={true}
-              component={SelectField}
-              label="Institution"
-              placeholder="Select Institution"
-              options={institutionsOptions}
-              isDisabled={false}
-              isMulti={true}
-            />
-          </Box>
-          <Box width={[ 1, 1 / 2]} p="10px">
-            <Field
               id="productType"
               name="productType"
               isSearchable={true}
@@ -61,6 +48,18 @@ const ProductsFilter: React.FC<ProductsFilterAllProps> = ({
               options={productTypesOptions}
               isDisabled={false}
               isMulti={true}
+            />
+          </Box>
+          <Box width={[ 1, 1 / 2]} p="10px">
+            <Field
+              id="institutionId"
+              name="institutionId"
+              isSearchable={true}
+              component={SelectField}
+              label="Institution"
+              placeholder="Select Institution"
+              options={institutionsOptions}
+              isDisabled={false}
             />
           </Box>
           <Box width={[1]} p="10px">

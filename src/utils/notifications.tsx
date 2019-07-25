@@ -27,7 +27,7 @@ export const handleSendNotification: SendNotification =
             dispatch(getNotification(
               `${res.statusCode} Internal Server Error`,
               error_message,
-              error_description
+              JSON.stringify(error_description)
             ));
           } else {
             dispatch(getNotification(
@@ -48,7 +48,7 @@ export const handleSendNotification: SendNotification =
           dispatch(getNotification(
             `${res && res.statusCode ? res.statusCode : ''} Error`,
             'An error occurred.',
-            res ? JSON.stringify(res) : null
+            res ? res.toString() : null
           ));
         }
       }

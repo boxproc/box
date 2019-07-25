@@ -27,13 +27,23 @@ import {
 } from 'consts';
 
 export const prepareProductFiltersParams =
+  (params: ProductFilterParamsPrepared): ProductFilterParams => {
+    return {
+      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
+      productType: params.product_type ?
+        params.product_type.map(type => productTypesOptions
+          .find(el => el.value === type)) : null,
+    };
+  };
+
+export const prepareProductFiltersParamsToSend =
   (params: ProductFilterParams): ProductFilterParamsPrepared => {
     const { activeStatusFlag, institutionId, productType } = params;
 
     return {
       status: activeStatusFlag ? statusTypes.ACTIVE : null,
-      institution_id: institutionId && institutionId.map(id => id.value),
-      product_type: productType && productType.map(type => type.value),
+      institution_id: institutionId && institutionId.value,
+      product_type: productType && productType.length ? productType.map(type => type.value) : null,
     };
   };
 
@@ -154,7 +164,8 @@ export const preparedLoanToSend = (product: LoanProductItem) => {
   return {
     apr: Number(product.apr),
     fee_late_payment: Number(product.feeLatePayment),
-    payment_grace_number_of_days: product.paymentGraceNumberOfDays,
+    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
+    loan_type: product.loanType.value,
   };
 };
 
@@ -202,7 +213,7 @@ export const preparedProductItemToSend = (item: ProductItemDetails) => {
     currency_code: item.currencyCode.label,
     product_type: item.productType.value,
     scheme: item.scheme.value,
-    history_retention_number_of_day: item.historyRetentionNumberOfDay,
+    history_retention_number_of_day: Number(item.historyRetentionNumberOfDay),
     default_statement_cycle_id: item.defaultStatementCycleId.value,
     locked_flag: item.lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
     ...getDetailsByType(item),

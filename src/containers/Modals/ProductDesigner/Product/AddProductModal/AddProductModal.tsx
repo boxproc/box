@@ -28,7 +28,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
       maxContainerWidth={700}
     >
       <ProductForm
-        onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+        onCancel={() => closeModal(modalNames.ADD_PRODUCT)}
         productAction={addProduct}
         institutionsOptions={institutionsOptions}
         initialValues={{

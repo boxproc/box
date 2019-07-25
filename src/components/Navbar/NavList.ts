@@ -61,6 +61,7 @@ export const NavList = styled.div`
     flex-direction: column;
     display: none;
     width: 200px;
+    background-color: ${({ theme }) => theme.whiteColor};
     box-shadow: ${({ theme }) => theme.boxShadow};
     border: 1px solid ${({ theme }) => theme.darkGrayColor};
     font-size: 14px;

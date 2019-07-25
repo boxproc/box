@@ -24,7 +24,7 @@ import { HandleAddProduct, HandleUpdateProduct } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface ProductFormFormProps {
+interface ProductFormProps {
   onCancel: () => void;
   isDisabledProductTypes?: boolean;
   isDisabledInstitutions?: boolean;
@@ -34,10 +34,10 @@ interface ProductFormFormProps {
   productAction: HandleAddProduct | HandleUpdateProduct;
 }
 
-type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &
-  InjectedFormProps<{}, ProductFormFormProps>;
+type ProductFormAllProps = ProductFormProps & WithLoadCurrencyCodesProps &
+  InjectedFormProps<{}, ProductFormProps>;
 
-const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
+const ProductForm: React.FC<ProductFormAllProps> = ({
   handleSubmit,
   onCancel,
   currencyCodes,
@@ -100,8 +100,8 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, ProductFormFormProps>({
+export default reduxForm<{}, ProductFormProps>({
   form: formNames.PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withLoadCurrencyCodes(ProductFormForm));
+})(withLoadCurrencyCodes(ProductForm));

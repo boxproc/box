@@ -4,7 +4,6 @@ import 'react-cron-generator/dist/cron-builder.css';
 
 const SchedulerEditor: React.FC = () => {
   const [value, setValue] = React.useState(null);
-  console.log('---value', value);
 
   return (
     <div>

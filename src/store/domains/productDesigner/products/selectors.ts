@@ -1,10 +1,5 @@
 import { createSelector } from 'reselect';
 
-import {
-  productTypesOptions,
-  statusTypes,
-} from 'consts';
-
 import { StoreState } from 'store/StoreState';
 
 import {
@@ -21,6 +16,7 @@ import {
   preparedPrepaid,
   preparedRevolvingCredit,
   preparedSavings,
+  prepareProductFiltersParams,
 } from './utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
@@ -53,12 +49,8 @@ export const selectFilterProductParams = createSelector(
       return null;
     }
     return {
-      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
-      institutionId: params.institution_id &&
-        params.institution_id.map(id => institutions.find(el => el.value === id)),
-      productType: params.product_type &&
-        params.product_type.map(type => productTypesOptions
-          .find(el => el.value === type)),
+      institutionId: institutions.find(institution => institution.value === params.institution_id),
+      ...prepareProductFiltersParams(params),
     };
   }
 );

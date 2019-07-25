@@ -49,13 +49,13 @@ export interface ProductsDataResp extends SuccessResponseStatusType {
 
 export interface ProductFilterParams {
   activeStatusFlag?: boolean;
-  institutionId?: Array<SelectValues>;
+  institutionId?: SelectValues;
   productType?: Array<SelectValues>;
 }
 
 export interface ProductFilterParamsPrepared {
   status: string;
-  institution_id: Array<number | string>;
+  institution_id: number | string;
   product_type: Array<number | string>;
 }
 

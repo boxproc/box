@@ -128,9 +128,9 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
-            placeholder="Enter History Retention Number of Day"
+            placeholder="Enter History Retention Number of Days"
             component={InputField}
-            label="History Retention Number of Day"
+            label="History Retention Number of Days"
             validate={[formErrorUtil.required]}
           />
         </Box>
