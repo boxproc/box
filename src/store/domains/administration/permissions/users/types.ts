@@ -50,10 +50,23 @@ export interface AdminUserEditableItem  {
     datetimeOfLastLogin?: string;
 }
 
+export interface UsersFilterParams {
+  statusActiveFlag?: boolean;
+  // institutionId?: SelectValues;
+  // productType?: Array<SelectValues>;
+}
+
+export interface UsersFilterParamsPrepared {
+  status: string;
+  // institution_id: number | string;
+  // product_type: Array<number | string>;
+}
+
 export interface AdminUserDataResp extends SuccessResponseStatusType {
     users: Array<AdminUserItemResp>;
 }
 
 export interface AdminUserState {
     users: ImmutableArray<AdminUserItemResp>;
+    filterUsers: UsersFilterParamsPrepared;
 }

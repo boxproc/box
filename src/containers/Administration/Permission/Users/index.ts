@@ -6,8 +6,10 @@ import User from './User';
 import {
   AdminUserActionTypes,
   createLoadingSelector,
+  handleFilterUsers,
   handleGetAdminUser,
   openModal,
+  selectDefaultFilterUsers,
   selectUserEditorItems,
 } from 'store/domains';
 
@@ -17,19 +19,19 @@ const loadingSelector = createLoadingSelector([
   AdminUserActionTypes.GET_ADMIN_USER,
   AdminUserActionTypes.ADD_ADMIN_USER,
   AdminUserActionTypes.UPDATE_ADMIN_USER,
-
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminUserItems: selectUserEditorItems(state),
-
+  DefaultFilterUsers: selectDefaultFilterUsers(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
     getAdminUser: handleGetAdminUser,
+    filterUsers: handleFilterUsers,
   },
   dispatch
 );

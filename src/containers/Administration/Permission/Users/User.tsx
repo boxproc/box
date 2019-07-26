@@ -10,6 +10,7 @@ import TablePage from 'components/TablePage/TablePage';
 import { modalNames } from 'consts';
 
 import { AdminUserItem,
+  HandleFilterUsers,
   HandleGetAdminUser,
 } from 'store/domains/administration/permissions/users';
 
@@ -25,6 +26,7 @@ interface UserFilterProps {
   openModal: OpenModal;
   getAdminUser: HandleGetAdminUser;
   institutionsOptions: Array<SelectValues>;
+  filterUsers: HandleFilterUsers;
 }
 
 type SCell<T extends keyof AdminUserItem> = TableCell<AdminUserItem[T]>;
@@ -34,6 +36,7 @@ export const User: React.FC<UserFilterProps> = ({
   getAdminUser,
   adminUserItems,
   institutionsOptions,
+  filterUsers,
 }) => {
   React.useEffect(
     () => {
@@ -124,17 +127,6 @@ export const User: React.FC<UserFilterProps> = ({
         />
       ),
     },
-    // {
-    //     sortable: true,
-    //     filterable: true,
-    //     Header: <Header title="Password Hash" showSortIcons={true} />,
-    //     accessor: 'passwordHash',
-    //     Cell: (props: SCell<'passwordHash'>) => (
-    //       <Cell
-    //         value={props.value}
-    //       />
-    //    ),
-    //   },
       {
         sortable: true,
         filterable: true,
@@ -170,6 +162,7 @@ export const User: React.FC<UserFilterProps> = ({
       hint="Double Click on Row to Edit User"
       FilterForm={
         <UserFilter
+          filterUsers={filterUsers}
           institutionsOptions={institutionsOptions}
         />
       }

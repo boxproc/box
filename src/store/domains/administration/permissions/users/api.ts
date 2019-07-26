@@ -1,6 +1,6 @@
 import { apiClient } from 'services';
 
-import { AdminUserEditableItemPrepared } from './types';
+import { AdminUserEditableItemPrepared, UsersFilterParamsPrepared } from './types';
 
 export const getAdminUser = () =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
@@ -13,3 +13,7 @@ export const addAdminUser = (data: AdminUserEditableItemPrepared) =>
 export const updateAdminUser = (data: AdminUserEditableItemPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post('/ui/administration/permissions/users/update', { data }) ;
+
+export const filterAdminUsers = (data: UsersFilterParamsPrepared) =>
+  // throttleUtil.getDataAfter(AdminSchedulerData, 500);
+  apiClient.post('/ui/administration/permissions/users/get', {data});

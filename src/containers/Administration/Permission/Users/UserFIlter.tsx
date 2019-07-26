@@ -8,10 +8,12 @@ import { CheckboxField } from 'components/Form';
 
 import { formNames } from 'consts';
 
+import { HandleFilterUsers } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface UserFilterProps {
   institutionsOptions: Array<SelectValues>;
+  filterUsers: HandleFilterUsers;
  }
 
 type UserFilterAllProps = UserFilterProps &
@@ -19,9 +21,10 @@ type UserFilterAllProps = UserFilterProps &
 
 const UserFilter: React.FC<UserFilterAllProps> = ({
   handleSubmit,
+  filterUsers,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => filterUsers(data)),
     [handleSubmit]
   );
 
@@ -35,8 +38,8 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
 
           <Box width={[ 1 ]} p="10px">
             <Field
-              id="lockedFlag"
-              name="lockedFlag"
+              id="statusActiveFlag"
+              name="statusActiveFlag"
               component={CheckboxField}
               label="Show only &quot;Active&quot;"
               disabled={false}

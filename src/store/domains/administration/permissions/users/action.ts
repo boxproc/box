@@ -7,6 +7,7 @@ import { closeModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
   AddAdminUserAction,
+  FilterUsersAction,
   GetAdminUserAction,
   UpdateAdminUserAction,
 } from './actionType';
@@ -15,9 +16,13 @@ import { apiClient } from 'services';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { prepareAdminUserValuesCamel } from './utils';
+import { prepareAdminUserValuesCamel, prepareUsersFiltersParamsToSend } from './utils';
 
-import { AdminUserEditableItem, AdminUserEditableItemPrepared } from './types';
+import {
+   AdminUserEditableItem,
+   AdminUserEditableItemPrepared,
+   UsersFilterParams,
+   UsersFilterParamsPrepared } from './types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
@@ -28,6 +33,9 @@ export type AddAdminUser = (values: AdminUserEditableItemPrepared) =>
 AddAdminUserAction;
 export type HandleAddAdminUser = (values: AdminUserEditableItem) =>
   Thunk<void>;
+
+export type FilterUsers = (params: UsersFilterParamsPrepared) => FilterUsersAction;
+export type HandleFilterUsers = (params: UsersFilterParams) => Thunk<void>;
 
 export type UpdateAdminUser = (propValues: AdminUserEditableItemPrepared) =>
 UpdateAdminUserAction;
@@ -43,6 +51,12 @@ export const addAdminUser: AddAdminUser = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USER,
   payload: api.addAdminUser(values),
   meta: values,
+});
+
+export const filterUsers: FilterUsers = params => ({
+  type: ActionTypeKeys.FILTER_USERS,
+  payload: api.filterAdminUsers(params),
+  meta: params,
 });
 
 export const updateAdminUser: UpdateAdminUser = values => ({
@@ -73,6 +87,20 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
         await dispatch(closeModal(modalNames.ADD_ADMIN_USER));
         await dispatch(getAdminUser());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_USER));
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterUsers: HandleFilterUsers = params =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        console.log('params', params);
+
+        const preparedValues = prepareUsersFiltersParamsToSend(params);
+        console.log('preparedValues', preparedValues);
+        await dispatch(filterUsers(preparedValues));
       },
       dispatch
     );
