@@ -51,13 +51,13 @@ export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
 
 export const deleteAdminCyclesEditor: DeleteAdminCycleEditor = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR,
-  payload: api.deleteAdminSchedulerJob(id),
+  payload: api.deleteAdminCyclesEditor(id),
   meta: id,
 });
 
 export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR,
-  payload: api.updateAdminSchedulerJobs(values),
+  payload: api.updateAdminCyclesEditor(values),
   meta: values,
 });
 
@@ -78,6 +78,7 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminCyclesEditorValuesUnderscore(cycleEditorRecords);
+        console.log('preparedValues', preparedValues);
         await dispatch(addAdminCyclesEditor(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR));
         await dispatch(getAdminCycleEditor());

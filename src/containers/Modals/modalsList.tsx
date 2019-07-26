@@ -10,8 +10,10 @@ import AddSystemPropertyModal from './Administration/SystemProperties/AddSystemP
 import AddProductModal from './ProductDesigner/Product/AddProductModal';
 import EditProductModal from './ProductDesigner/Product/EditProductModal';
 
-import MessageModal from './MessageModal';
 import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
+import AddUsersModal from './Administration/Users/AddUsersModal';
+import EditUsersModal from './Administration/Users/EditUsersModal';
+import MessageModal from './MessageModal';
 
 export const modalsList = [
   {
@@ -46,5 +48,13 @@ export const modalsList = [
     name: modalNames.EDIT_CYCLE_EDITOR,
     component: <EditCyclesEditorModal />,
   },
+  {
+    name: modalNames.ADD_ADMIN_USER,
+    component: <AddUsersModal />,
+  },
 
+  {
+    name: modalNames.EDIT_ADMIN_USER,
+    component: <EditUsersModal />,
+  },
 ];

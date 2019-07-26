@@ -16,6 +16,7 @@ export const selectAdminCycleEditorItems = createSelector(
   selectDefaultAdminCycleEditorItems,
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
+    console.log('item.weekly_cycle_first_day', item.weekly_cycle_first_day);
     return {
       id: item.id,
       institutionId: item && institutions.find(el => el.value === item.institution_id).label,
@@ -24,7 +25,8 @@ export const selectAdminCycleEditorItems = createSelector(
       status: item && statusTypeCyclesOptions.find(el => el.value === item.status).label,
       monthlyCycleFirstDay: item.monthly_cycle_first_day,
       weeklyCycleFirstDay:
-       item && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
+        item && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
+
       fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
       };
     })

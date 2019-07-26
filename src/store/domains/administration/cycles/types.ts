@@ -22,7 +22,7 @@ export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditor
   status: number | string;
   monthly_cycle_first_day: number | string;
   weekly_cycle_first_day: number | string;
-  fixed_cycle_number_of_days: number;
+  fixed_cycle_number_of_days: number | string;
 }
 
 export interface AdminCyclesEditorItem    {
@@ -33,7 +33,7 @@ export interface AdminCyclesEditorItem    {
   status: string | number;
   monthlyCycleFirstDay: string | number;
   weeklyCycleFirstDay: number | string;
-  fixedCycleNumberOfDays: number;
+  fixedCycleNumberOfDays: number | string;
 }
 
 export interface AdminCyclesEditorEditableItem  {

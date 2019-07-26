@@ -26,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminCyclesEditorItems: selectAdminCycleEditorItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
+
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

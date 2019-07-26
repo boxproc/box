@@ -39,6 +39,8 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
         defineAdminCyclesEditor={updateAdminCyclesEditor}
         initialValues={cyclesEditorValues}
         isDisabledInstitutions={true}
+        isDisabledStatus={true}
+        isDisabledType={true}
 
       />
       <Hr />

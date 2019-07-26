@@ -25,10 +25,13 @@ export enum formNames {
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
+  DEFINE_ADMIN_USER = 'defineAdminUserForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
+  CYCLES_EDITOR = 'cyclesEditorForm',
   SCHEDULER = 'schedulerForm',
+  USER = 'userForm',
   ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
 }
 
@@ -41,6 +44,8 @@ export enum modalNames {
   EDIT_PRODUCT = 'EditProductModal',
   ADD_ADMIN_SCHEDULER = 'AddAdminSchedulerModal',
   EDIT_ADMIN_SCHEDULER = 'EditAdminSchedulerModal',
+  ADD_ADMIN_USER = 'AddAdminUserModal',
+  EDIT_ADMIN_USER = 'EditAdminUserModal',
 }
 
 export enum uiItemTypes {
@@ -67,6 +72,7 @@ export const statusTypeCyclesOptions = [
 ];
 
 export const weeklyCycleTypeOptions = [
+  {value: 0, label: '-'},
   { value: 1, label: 'Monday'},
   { value: 2, label: 'Tuesday'},
   { value: 3, label: 'Wednesday'},
@@ -76,13 +82,20 @@ export const weeklyCycleTypeOptions = [
   { value: 7, label: 'Sunday'},
 ];
 
+export enum cycleTypes {
+  MONTHLY = 'M',
+  BI_MONTHLY = 'N',
+  WEEKLY = 'W',
+  BI_WEEKLY = 'V',
+  FIXED_NUMBER_OF_DAYS = 'F',
+}
+
 export const typeOfCyclesEditorOptions = [
   { value: 'M', label: 'Monthly'},
   { value: 'N', label: 'Bi-monthly'},
   { value: 'W', label: 'Weekly'},
   { value: 'V', label: 'Bi-weekly'},
   { value: 'F', label: 'Fixed number of days'},
-
 ];
 
 export const statusTypesOptions = [

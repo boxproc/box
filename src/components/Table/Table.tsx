@@ -172,7 +172,7 @@ export const Table: React.FC<TableProps> = props => {
           sortable={sortable}
           filterable={filterable}
           minRows={0}
-          showPagination={data.length > 10}
+          showPagination={data && data.length > 10}
           showPageSizeOptions={false}
           defaultPageSize={10}
           multiSort={false}

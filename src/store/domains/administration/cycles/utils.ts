@@ -1,28 +1,48 @@
-// export const prepareAdminCyclesEditorValuesCamel =
-//   (values: any): any => {
-//     return {
-//       ...values,
-//       id: values.id,
-//       institutionId: values.institution_id.value,
-//       description: values.description,
-//       cycleType: values.cycle_type,
-//       status: values.status.value,
-//       monthlyCycleFirstDay: values.monthly_cycle_first_day,
-//       weeklyCycleFirstDay: values.weekly_cycle_first_day,
-//       fixedCycleNumberOfDays: values.fixed_cycle_number_of_days,
-//     };
-//   };
+import { cycleTypes } from 'consts';
 
 export const  prepareAdminCyclesEditorValuesUnderscore =
 (values: any): any => {
-  return {
-    id: values.id,
-    institution_id: values.institutionId.value,
-    description: values.description,
-    cycle_type: values.cycleType.value,
-    status: values.status.value,
-    monthly_cycle_first_day: Number(values.monthlyCycleFirstDay),
-    weekly_cycle_first_day: Number(values.weeklyCycleFirstDay.value),
-    fixed_cycle_number_of_days: Number(values.fixedCycleNumberOfDays),
-  };
+  if (!values) {
+    return null;
+  }
+  if (values.cycleType.value === cycleTypes.BI_MONTHLY
+     || values.cycleType.value === cycleTypes.MONTHLY) {
+    return {
+      id: values.id,
+      institution_id: values.institutionId.value,
+      description: values.description,
+      cycle_type: values.cycleType.value,
+      status: values.status.value,
+      weekly_cycle_first_day: 0,
+      fixed_cycle_number_of_days: 0,
+      monthly_cycle_first_day: values.monthlyCycleFirstDay && Number(values.monthlyCycleFirstDay),
+
+    };
+  } else if (values.cycleType.value === cycleTypes.BI_WEEKLY
+     || values.cycleType.value === cycleTypes.WEEKLY) {
+    return{
+      id: values.id,
+      institution_id: values.institutionId.value,
+      description: values.description,
+      cycle_type: values.cycleType.value,
+      status: values.status.value,
+      fixed_cycle_number_of_days: 0,
+      monthly_cycle_first_day: 0,
+      weekly_cycle_first_day:
+       values.weeklyCycleFirstDay && Number(values.weeklyCycleFirstDay.value),
+
+    };
+  } else if (values.cycleType.value === cycleTypes.FIXED_NUMBER_OF_DAYS) {
+    return{
+      id: values.id,
+      institution_id: values.institutionId.value,
+      description: values.description,
+      cycle_type: values.cycleType.value,
+      status: values.status.value,
+      monthly_cycle_first_day: 0,
+      weekly_cycle_first_day: 0,
+      fixed_cycle_number_of_days:
+       values.fixedCycleNumberOfDays && Number(values.fixedCycleNumberOfDays),
+    };
+  }
 };

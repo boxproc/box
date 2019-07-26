@@ -4,22 +4,21 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons';
-import { CheckboxField, SelectField } from 'components/Form';
+import { CheckboxField } from 'components/Form';
 
 import { formNames } from 'consts';
 
 import { SelectValues } from 'types';
 
-interface CycleEditorFilterProps {
+interface UserFilterProps {
   institutionsOptions: Array<SelectValues>;
  }
 
-type CyclesEditorFilterAllProps = CycleEditorFilterProps &
-  InjectedFormProps<{}, CycleEditorFilterProps>;
+type UserFilterAllProps = UserFilterProps &
+  InjectedFormProps<{}, UserFilterProps>;
 
-const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
+const UserFilter: React.FC<UserFilterAllProps> = ({
   handleSubmit,
-  institutionsOptions,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log(data)),
@@ -33,19 +32,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[ 1, 1 / 2]} p="10px">
-          <Field
-              id="institutionId"
-              name="institutionId"
-              isSearchable={true}
-              component={SelectField}
-              label="Institution"
-              placeholder="Select Institution"
-              options={institutionsOptions}
-              isDisabled={false}
-              isMulti={false}
-          />
-          </Box>
+
           <Box width={[ 1 ]} p="10px">
             <Field
               id="lockedFlag"
@@ -66,8 +53,8 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
   );
 };
 
-export default reduxForm<{}, CycleEditorFilterProps>({
-  form: formNames.SCHEDULER,
+export default reduxForm<{}, UserFilterProps>({
+  form: formNames.USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(CyclesEditorFilter);
+})(UserFilter);

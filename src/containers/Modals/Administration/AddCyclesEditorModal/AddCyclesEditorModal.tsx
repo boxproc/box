@@ -16,12 +16,14 @@ interface AddCycleEditorModalProps {
   addAdminCyclesEditor: HandleAddAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
   // adminCycleEditorItems: Array<AdminCyclesEditorItem>;
+  cyclesEditorValue: any;
 }
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
    closeModal,
    addAdminCyclesEditor,
    institutionsOptions,
+   cyclesEditorValue,
 }) => {
   return (
     <Modal
@@ -33,6 +35,7 @@ const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
         onCancel={() => closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR)}
         defineAdminCyclesEditor={addAdminCyclesEditor}
         institutionsOptions={institutionsOptions}
+        cyclesEditorValue={cyclesEditorValue}
       />
     </Modal>
   );
