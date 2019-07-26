@@ -124,17 +124,17 @@ export const User: React.FC<UserFilterProps> = ({
         />
       ),
     },
-    {
-        sortable: true,
-        filterable: true,
-        Header: <Header title="Password Hash" showSortIcons={true} />,
-        accessor: 'passwordHash',
-        Cell: (props: SCell<'passwordHash'>) => (
-          <Cell
-            value={props.value}
-          />
-       ),
-      },
+    // {
+    //     sortable: true,
+    //     filterable: true,
+    //     Header: <Header title="Password Hash" showSortIcons={true} />,
+    //     accessor: 'passwordHash',
+    //     Cell: (props: SCell<'passwordHash'>) => (
+    //       <Cell
+    //         value={props.value}
+    //       />
+    //    ),
+    //   },
       {
         sortable: true,
         filterable: true,
