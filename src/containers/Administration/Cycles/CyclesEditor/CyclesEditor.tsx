@@ -1,15 +1,14 @@
 import React from 'react';
 import { RowInfo } from 'react-table';
 
-// import { theme } from 'theme';
-
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
 
-import { AdminCyclesEditorItem,
+import {
+  AdminCyclesEditorItem,
   HandleGetAdminCyclesEditor,
 } from 'store/domains/administration/cycles';
 
@@ -47,7 +46,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_CYCLE_EDITOR,
-          payload: {cycleEditorValues: rowInfo.original},
+          payload: { cycleEditorValues: rowInfo.original },
         }),
       };
     },
@@ -100,7 +99,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
         <Cell
           value={props.value}
         />
-     ),
+      ),
     },
     {
       sortable: true,

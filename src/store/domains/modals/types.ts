@@ -6,7 +6,7 @@ export interface PayloadMessageModal {
 
 export interface ModalsData {
   name: string;
-  payload?: any;
+  payload?: object;
 }
 
 export interface ModalsState {

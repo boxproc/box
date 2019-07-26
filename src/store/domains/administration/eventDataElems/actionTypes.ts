@@ -1,5 +1,6 @@
 import {
-  AdminEventDataElemsDataResp, AdminEventDataElemsFilterParamsPrepared,
+  AdminEventDataElemsDataResp,
+  AdminEventDataElemsFilterParamsPrepared,
 } from './types';
 
 import { ApiResponse } from 'types';

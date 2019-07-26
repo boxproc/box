@@ -1,5 +1,3 @@
-// import { AdminSchedulerEditableItem, AdminSchedulerEditableItemPrepared } from './types';
-
 import { camelizeUtil } from 'utils';
 
 export const prepareAdminSchedulerJobValues =

@@ -9,10 +9,11 @@ import { modalNames } from 'consts';
 
 // tslint:disable-next-line: max-line-length
 import AddCyclesEditorForm from 'containers/Administration/Cycles/CyclesEditor/DefineCycleEditorForm';
+
 import {
-   CloseModal,
-   HandleDeleteAdminCycleEditor,
-   HandleUpdateAdminCyclesEditor
+  CloseModal,
+  HandleDeleteAdminCycleEditor,
+  HandleUpdateAdminCyclesEditor
 } from 'store/domains';
 
 interface EditSchedulerModalProps {
@@ -41,7 +42,6 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
         isDisabledInstitutions={true}
         isDisabledStatus={true}
         isDisabledType={true}
-
       />
       <Hr />
       <Button

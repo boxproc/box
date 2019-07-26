@@ -16,9 +16,9 @@ interface AddSchedulerModalProps {
 }
 
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
-   closeModal,
-   addAdminSchedulerJob,
-   institutionsOptions,
+  closeModal,
+  addAdminSchedulerJob,
+  institutionsOptions,
 }) => {
   return (
     <Modal

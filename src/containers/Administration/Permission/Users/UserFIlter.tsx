@@ -12,7 +12,7 @@ import { SelectValues } from 'types';
 
 interface UserFilterProps {
   institutionsOptions: Array<SelectValues>;
- }
+}
 
 type UserFilterAllProps = UserFilterProps &
   InjectedFormProps<{}, UserFilterProps>;
@@ -27,18 +27,17 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[ 1, 1, 1, 700]} mx="-10px">
+      <Box width={[1, 1, 1, 700]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-
-          <Box width={[ 1 ]} p="10px">
+          <Box width={[1]} p="10px">
             <Field
-              id="lockedFlag"
-              name="lockedFlag"
+              id="activeStatusFlag"
+              name="activeStatusFlag"
               component={CheckboxField}
-              label="Show only &quot;Active&quot;"
+              label="Only &quot;Active&quot;"
               disabled={false}
             />
           </Box>

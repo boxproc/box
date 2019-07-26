@@ -5,23 +5,22 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
+import DefineUsersForm from 'containers/Administration/Permission/Users/DefineUsersForm';
+
 import { CloseModal, HandleAddAdminUser, } from 'store/domains';
 
-// tslint:disable-next-line: max-line-length
-import DefineUsersForm from 'containers/Administration/Permission/Users/DefineUsersForm';
 import { SelectValues } from 'types';
 
 interface AddUserModalProps {
   closeModal: CloseModal;
   addAdminUser: HandleAddAdminUser;
   institutionsOptions: Array<SelectValues>;
- //  adminCycleEditorItems: Array<AdminUserItem>;
   cyclesEditorValue: any;
 }
 
 const AddAdminModal: React.FC<AddUserModalProps> = ({
-   closeModal,
-   addAdminUser,
+  closeModal,
+  addAdminUser,
 }) => {
   return (
     <Modal

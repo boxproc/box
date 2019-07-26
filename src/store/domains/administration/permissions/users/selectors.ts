@@ -1,7 +1,8 @@
 import { StoreState } from 'store/StoreState';
 
-import { statusTypesOptions } from 'consts';
 import { createSelector } from 'reselect';
+
+import { statusTypesOptions } from 'consts';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
   state.administration.adminUsers.users.asMutable();
@@ -13,11 +14,11 @@ export const selectUserEditorItems = createSelector(
     return {
       ...item,
       firstName: item.first_name,
-      lastName : item.last_name,
-      status : statusTypesOptions.find(el => el.value === item.status).label,
-      passwordHash : item.password_hash,
-      passwordEntryCounter : item.password_entry_counter,
-      datetimeOfLastLogin : item.datetime_of_last_login,
-      };
-    })
- );
+      lastName: item.last_name,
+      status: statusTypesOptions.find(el => el.value === item.status).label,
+      passwordHash: item.password_hash,
+      passwordEntryCounter: item.password_entry_counter,
+      datetimeOfLastLogin: item.datetime_of_last_login,
+    };
+  })
+);

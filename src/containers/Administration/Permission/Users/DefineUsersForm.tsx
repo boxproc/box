@@ -35,7 +35,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminUser(data)),
-    [handleSubmit, defineAdminUser ]
+    [handleSubmit, defineAdminUser]
   );
 
   return (
@@ -44,7 +44,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         <Flex
           flexWrap="wrap"
         >
-         <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="username"
               name="username"

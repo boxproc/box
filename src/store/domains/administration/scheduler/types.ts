@@ -33,7 +33,7 @@ export interface AdminSchedulerEditableItemId {
   id: number;
 }
 
-export interface AdminSchedulerEditableItem    {
+export interface AdminSchedulerEditableItem {
   name?: string;
   description?: string;
   cronExpression?: string;
@@ -44,7 +44,7 @@ export interface AdminSchedulerEditableItem    {
   executableType?: SelectValues;
 }
 
-export interface AdminSchedulerEditableItemPrepared extends AdminSchedulerEditableItemId  {
+export interface AdminSchedulerEditableItemPrepared extends AdminSchedulerEditableItemId {
   name?: string;
   description?: string;
   cron_expression?: string;

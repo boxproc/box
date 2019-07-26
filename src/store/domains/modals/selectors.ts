@@ -65,10 +65,6 @@ export const selectUsersValues = createSelector(
     return {
       ...values,
       status: values && statusTypesOptions.find(el => el.label === values.status),
-      // cycleType: typeOfCyclesEditorOptions.find(el => el.label === values.cycleType),
-      // institutionId: institutions.find(el => el.label === values.institutionId),
-      // weeklyCycleFirstDay: weeklyCycleTypeOptions.find(
-      //   el => el.label === values.weeklyCycleFirstDay),
     };
   }
 );

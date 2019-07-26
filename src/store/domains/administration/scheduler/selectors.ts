@@ -2,9 +2,8 @@ import { createSelector } from 'reselect';
 
 import { executableTypeOptions, statusTypesOptions } from 'consts';
 
-import { StoreState } from 'store/StoreState';
-
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { StoreState } from 'store/StoreState';
 
 import { camelizeUtil } from 'utils';
 

@@ -1,5 +1,5 @@
 export const prepareAdminUserValuesCamel =
-  (values: any): any => {
+  (values: any) => {
     return {
       id: values.id,
       username: values.username,

@@ -1,15 +1,14 @@
 import React from 'react';
 import { RowInfo } from 'react-table';
 
-// import { theme } from 'theme';
-
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage/TablePage';
 
 import { modalNames } from 'consts';
 
-import { AdminUserItem,
+import {
+  AdminUserItem,
   HandleGetAdminUser,
 } from 'store/domains/administration/permissions/users';
 
@@ -18,7 +17,7 @@ import {
 } from 'store/domains/';
 
 import { SelectValues, TableCell } from 'types';
-import UserFilter from './UserFIlter';
+import UserFilter from './UserFilter';
 
 interface UserFilterProps {
   adminUserItems: Array<Partial<AdminUserItem>>;
@@ -47,7 +46,7 @@ export const User: React.FC<UserFilterProps> = ({
       return {
         onDoubleClick: () => openModal({
           name: modalNames.EDIT_ADMIN_USER,
-          payload: {usersValues: rowInfo.original},
+          payload: { usersValues: rowInfo.original },
         }),
       };
     },
@@ -67,8 +66,7 @@ export const User: React.FC<UserFilterProps> = ({
         />
       ),
     },
-
-     {
+    {
       sortable: true,
       filterable: true,
       Header: <Header title="Username" showSortIcons={true} />,
@@ -90,7 +88,6 @@ export const User: React.FC<UserFilterProps> = ({
         />
       ),
     },
-
     {
       sortable: true,
       filterable: true,
@@ -125,38 +122,38 @@ export const User: React.FC<UserFilterProps> = ({
       ),
     },
     {
-        sortable: true,
-        filterable: true,
-        Header: <Header title="Password Hash" showSortIcons={true} />,
-        accessor: 'passwordHash',
-        Cell: (props: SCell<'passwordHash'>) => (
-          <Cell
-            value={props.value}
-          />
-       ),
-      },
-      {
-        sortable: true,
-        filterable: true,
-        Header: <Header title="Password enty counter" showSortIcons={true} />,
-        accessor: 'passwordEntryCounter',
-       Cell: (props: SCell<'passwordEntryCounter'>) => (
-         <Cell
-            value={props.value}
-         />
-       ),
-      },
-      {
-        sortable: true,
-        filterable: true,
-        Header: <Header title="Datetime of last login" showSortIcons={true} />,
-        accessor: 'datetimeOfLastLogin',
-        Cell: (props: SCell<'datetimeOfLastLogin'>) => (
-          <Cell
-            value={props.value}
-          />
-        ),
-      },
+      sortable: true,
+      filterable: true,
+      Header: <Header title="Password Hash" showSortIcons={true} />,
+      accessor: 'passwordHash',
+      Cell: (props: SCell<'passwordHash'>) => (
+        <Cell
+          value={props.value}
+        />
+      ),
+    },
+    {
+      sortable: true,
+      filterable: true,
+      Header: <Header title="Password enty counter" showSortIcons={true} />,
+      accessor: 'passwordEntryCounter',
+      Cell: (props: SCell<'passwordEntryCounter'>) => (
+        <Cell
+          value={props.value}
+        />
+      ),
+    },
+    {
+      sortable: true,
+      filterable: true,
+      Header: <Header title="Datetime of last login" showSortIcons={true} />,
+      accessor: 'datetimeOfLastLogin',
+      Cell: (props: SCell<'datetimeOfLastLogin'>) => (
+        <Cell
+          value={props.value}
+        />
+      ),
+    },
   ];
 
   return (

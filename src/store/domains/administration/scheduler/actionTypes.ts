@@ -24,9 +24,9 @@ export enum ActionTypeKeys {
 
   UPDATE_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS',
   UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED =
-    'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED',
+  'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED',
   UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED =
-    'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED',
+  'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED',
 }
 
 // Get all scheduler jobs

@@ -1,6 +1,6 @@
-import { cookiesNames, formNames, modalNames, } from 'consts';
 import { reset as resetForm } from 'redux-form';
-import * as api from './api';
+
+import { cookiesNames, formNames, modalNames, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -11,14 +11,13 @@ import {
   GetAdminCycleEditorAction,
   UpdateAdminCycleEditorAction,
 } from './actionTypes';
+import * as api from './api';
+import { AdminCyclesEditorEditableItem, AdminCyclesEditorEditableItemPrepared } from './types';
+import { prepareAdminCyclesEditorValuesUnderscore } from './utils';
 
 import { apiClient } from 'services';
 
 import { Thunk, VoidPromiseThunk } from 'types';
-
-import { prepareAdminCyclesEditorValuesUnderscore } from './utils';
-
-import { AdminCyclesEditorEditableItem, AdminCyclesEditorEditableItemPrepared } from './types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
@@ -26,7 +25,7 @@ export type GetAdminCyclesEditor = () => GetAdminCycleEditorAction;
 export type HandleGetAdminCyclesEditor = VoidPromiseThunk;
 
 export type AddAdminCyclesEditor = (values: AdminCyclesEditorEditableItemPrepared) =>
-AddAdminCycleEditorAction;
+  AddAdminCycleEditorAction;
 export type HandleAddAdminCyclesEditor = (values: AdminCyclesEditorEditableItem) =>
   Thunk<void>;
 
@@ -34,9 +33,9 @@ export type DeleteAdminCycleEditor = (id: string | number) => DeleteAdminCycleEd
 export type HandleDeleteAdminCycleEditor = (id: string | number) => Thunk<void>;
 
 export type UpdateAdminCyclesEditor = (propValues: AdminCyclesEditorEditableItemPrepared) =>
-UpdateAdminCycleEditorAction;
+  UpdateAdminCycleEditorAction;
 export type HandleUpdateAdminCyclesEditor =
- (propValues: AdminCyclesEditorEditableItem) => Thunk<void>;
+  (propValues: AdminCyclesEditorEditableItem) => Thunk<void>;
 
 export const getAdminCycleEditor: GetAdminCyclesEditor = () => ({
   type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR,
@@ -66,6 +65,7 @@ export const handleGetAdminCyclesEditor: HandleGetAdminCyclesEditor = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+
         apiClient.set('session_id', sessionId);
         await dispatch(getAdminCycleEditor());
       },
@@ -78,7 +78,7 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminCyclesEditorValuesUnderscore(cycleEditorRecords);
-        console.log('preparedValues', preparedValues);
+
         await dispatch(addAdminCyclesEditor(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR));
         await dispatch(getAdminCycleEditor());
@@ -87,6 +87,7 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
       dispatch
     );
   };
+
 export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -103,9 +104,10 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminCyclesEditorValuesUnderscore(values);
+
         await dispatch(updateAdminCyclesEditor(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
-
+        await dispatch(getAdminCycleEditor());
       },
       dispatch
     );

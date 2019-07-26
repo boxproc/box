@@ -12,7 +12,7 @@ import { SelectValues } from 'types';
 
 interface CycleEditorFilterProps {
   institutionsOptions: Array<SelectValues>;
- }
+}
 
 type CyclesEditorFilterAllProps = CycleEditorFilterProps &
   InjectedFormProps<{}, CycleEditorFilterProps>;
@@ -28,13 +28,13 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[ 1, 1, 1, 700]} mx="-10px">
+      <Box width={[1, 1, 1, 700]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[ 1, 1 / 2]} p="10px">
-          <Field
+          <Box width={[1, 1 / 2]} p="10px">
+            <Field
               id="institutionId"
               name="institutionId"
               isSearchable={true}
@@ -44,14 +44,14 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
               options={institutionsOptions}
               isDisabled={false}
               isMulti={false}
-          />
+            />
           </Box>
-          <Box width={[ 1 ]} p="10px">
+          <Box width={[1]} p="10px">
             <Field
-              id="lockedFlag"
-              name="lockedFlag"
+              id="activeStatusFlag"
+              name="activeStatusFlag"
               component={CheckboxField}
-              label="Show only &quot;Active&quot;"
+              label="Only &quot;Active&quot;"
               disabled={false}
             />
           </Box>

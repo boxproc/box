@@ -12,4 +12,4 @@ export const addAdminUser = (data: AdminUserEditableItemPrepared) =>
 
 export const updateAdminUser = (data: AdminUserEditableItemPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/permissions/users/update', { data }) ;
+  apiClient.post('/ui/administration/permissions/users/update', { data });

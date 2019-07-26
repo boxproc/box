@@ -1,4 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
+
 import { SelectValues, SuccessResponseStatusType } from 'types';
 
 export interface AdminCyclesEditorItemResp {
@@ -15,7 +16,8 @@ export interface AdminCyclesEditorItemResp {
 export interface AdminCyclesEditorEditableItemId {
   id: number;
 }
-export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditorEditableItemId  {
+
+export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditorEditableItemId {
   institution_id: number | string;
   description: string;
   cycle_type: string;
@@ -25,7 +27,7 @@ export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditor
   fixed_cycle_number_of_days: number | string;
 }
 
-export interface AdminCyclesEditorItem    {
+export interface AdminCyclesEditorItem {
   id: number;
   institutionId: string | number;
   description: string;
@@ -36,7 +38,7 @@ export interface AdminCyclesEditorItem    {
   fixedCycleNumberOfDays: number | string;
 }
 
-export interface AdminCyclesEditorEditableItem  {
+export interface AdminCyclesEditorEditableItem {
   institutionId?: SelectValues;
   description?: string;
   cycleType?: string;
