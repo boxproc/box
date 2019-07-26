@@ -10,10 +10,11 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
 export const selectCurrentProductId = (state: StoreState) =>
-  state.modals.payloadEditProductModal.id;
+  state.modals.payloadEditProductModal && state.modals.payloadEditProductModal.id;
 
 export const selectSchedulerJobId = (state: StoreState) =>
-  state.modals.payloadEditAdminSchedulerModal.schedulerJobValues.id;
+state.modals.payloadEditAdminSchedulerModal
+  && state.modals.payloadEditAdminSchedulerModal.schedulerJobValues.id;
 
 export const selectDefaultSchedulerJobValues = (state: StoreState) =>
   state.modals.payloadEditAdminSchedulerModal.schedulerJobValues;
