@@ -35,7 +35,8 @@ const Wrapper = styled.header`
   background: ${({ theme }) => theme.whiteColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
   font-size: 14px;
-  z-index: 1;
+  white-space: nowrap;
+  z-index: 10;
 `;
 
 const UserIcon = styled(User)`
@@ -122,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box>
             <Flex alignItems="center">
-              <Box mr="15px">
+              <Box mx="15px">
                 <UserBlock/>
               </Box>
               {institution && (

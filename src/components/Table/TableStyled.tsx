@@ -9,8 +9,8 @@ export const TableStyled = styled.div`
   .ReactTable .rt-thead .rt-th {
     overflow: visible;
   }
-  .ReactTable .rt-thead .rt-resizable-header,
-  .ReactTable .rt-thead .rt-th.-cursor-pointer  {
+  .ReactTable .rt-thead .rt-resizable-header:not(:last-child),
+  .ReactTable .rt-thead .rt-th.-cursor-pointer:not(:last-child)  {
     border-right: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;
   }
 

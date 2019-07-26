@@ -7,6 +7,8 @@ import { InputField, SelectField } from 'components/Form';
 
 import { savingsTypesOptions } from 'consts';
 
+import { formErrorUtil } from 'utils';
+
 const SavingsSection: React.FC = () => {
   return (
     <Box mx="-10px">
@@ -23,6 +25,7 @@ const SavingsSection: React.FC = () => {
             label="Savings Type"
             placeholder="Select Savings Type"
             options={savingsTypesOptions}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -32,6 +35,7 @@ const SavingsSection: React.FC = () => {
             placeholder="Enter Apr"
             component={InputField}
             label="Apr"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -41,6 +45,7 @@ const SavingsSection: React.FC = () => {
             placeholder="Enter Minimum Deposit Allowed"
             component={InputField}
             label="Minimum Deposit Allowed"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -50,6 +55,7 @@ const SavingsSection: React.FC = () => {
             placeholder="Enter Maximum Deposit Allowed"
             component={InputField}
             label="Maximum Deposit Allowed"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -59,6 +65,7 @@ const SavingsSection: React.FC = () => {
             placeholder="Enter Maximum Monthly Deposit"
             component={InputField}
             label="Maximum Monthly Deposit"
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

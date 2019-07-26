@@ -1,6 +1,7 @@
 import config from 'config';
 
 export * from './uiItems';
+export * from './hints';
 
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 

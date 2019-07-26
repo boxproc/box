@@ -5,6 +5,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField } from 'components/Form';
 
+import { formErrorUtil } from 'utils';
+
 const PrepaidSection: React.FC = () => {
   return (
     <Box mx="-10px">
@@ -19,12 +21,13 @@ const PrepaidSection: React.FC = () => {
             placeholder="Enter Dormant After Number Of Days"
             component={InputField}
             label="Dormant After Number Of Days"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1]} p="10px">
           <Field
-            id="breakAgesAllowed"
-            name="breakAgesAllowed"
+            id="breakagesAllowed"
+            name="breakagesAllowed"
             component={CheckboxField}
             label="Break Ages Allowed"
             disabled={false}

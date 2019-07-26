@@ -9,6 +9,8 @@ import {
   loanTypesOptions,
 } from 'consts';
 
+import { formErrorUtil } from 'utils';
+
 const LoanTypeSection: React.FC = () => {
   return (
     <Box mx="-10px">
@@ -25,6 +27,7 @@ const LoanTypeSection: React.FC = () => {
             label="Loan Type"
             placeholder="Select Loan Type"
             options={loanTypesOptions}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -34,6 +37,7 @@ const LoanTypeSection: React.FC = () => {
             placeholder="Enter Apr"
             component={InputField}
             label="Apr"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -43,6 +47,7 @@ const LoanTypeSection: React.FC = () => {
             placeholder="Enter Fee Late Payment"
             component={InputField}
             label="Fee Late Payment"
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -52,6 +57,7 @@ const LoanTypeSection: React.FC = () => {
             placeholder="Enter Payment Grace Number Of Days"
             component={InputField}
             label="Payment Grace Number Of Days"
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

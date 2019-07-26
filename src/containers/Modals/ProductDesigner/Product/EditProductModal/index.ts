@@ -10,11 +10,13 @@ import {
   closeModal,
   createLoadingSelector,
   handleDeleteProduct,
+  handleUpdateProduct,
   ProductsActionTypes,
+  selectCurrentProduct,
+  selectCurrentProductId,
   selectDebitProduct,
   selectLoanProduct,
   selectPrepaidProduct,
-  selectProductId,
   selectRevolvingCreditProduct,
   selectSavingsProduct,
 } from 'store/domains';
@@ -28,12 +30,13 @@ const formSelector = formValueSelector(formNames.PRODUCT);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  productId: selectProductId(state),
+  currentProductId: selectCurrentProductId(state),
   savingsProduct: selectSavingsProduct(state),
   revolvingCreditProduct: selectRevolvingCreditProduct(state),
   prepaidProduct: selectPrepaidProduct(state),
   loanProduct: selectLoanProduct(state),
   debitProduct: selectDebitProduct(state),
+  currentProduct: selectCurrentProduct(state),
   productTypeValue: formSelector(
     state,
     'productType'
@@ -44,6 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     closeModal,
     deleteProduct: handleDeleteProduct,
+    updateProduct: handleUpdateProduct,
   },
   dispatch
 );

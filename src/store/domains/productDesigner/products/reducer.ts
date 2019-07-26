@@ -45,8 +45,9 @@ const productsReducer =
           return state.set('prepaidProduct', action.payload.product);
         } else if (action.payload.product.product_type === productTypes.SAVINGS) {
           return state.set('savingsProduct', action.payload.product);
+        } else {
+          return state;
         }
-        return state;
 
       default: return state;
     }

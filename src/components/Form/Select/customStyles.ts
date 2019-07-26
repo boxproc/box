@@ -24,7 +24,6 @@ export const customStyles: StylesConfig = {
     return ({
       ...provided,
       cursor: 'pointer',
-      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       // eslint-disable-next-line
       ['& > svg path']: {
         stroke: isDisabled ? theme.lightGrayColor : theme.darkGrayColor,
@@ -41,6 +40,10 @@ export const customStyles: StylesConfig = {
     },
     // eslint-disable-next-line
     ['& > svg path']: {
+      color: theme.lightGrayColor,
+    },
+    // eslint-disable-next-line
+    ['&:hover > svg path']: {
       color: theme.grayColor,
     },
   }),

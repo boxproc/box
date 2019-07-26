@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormSection, InjectedFormProps, reduxForm } from 'redux-form';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { Panel, Tabs } from 'components/Tabs';
@@ -10,6 +10,7 @@ import {
 
 import {
   formNames,
+  hintsConsts,
   productTypes,
 } from 'consts';
 
@@ -20,21 +21,24 @@ import PrepaidSection from './PrepaidSection';
 import RevolvingCreditSection from './RevolvingCreditSection';
 import SavingsSection from './SavingsSection';
 
+import { HandleAddProduct, HandleUpdateProduct } from 'store/domains';
+
 import { SelectValues } from 'types';
 
-interface ProductFormFormProps {
+interface ProductFormProps {
   onCancel: () => void;
   isDisabledProductTypes?: boolean;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   institutionsOptions: Array<SelectValues>;
   productTypeValue: SelectValues;
+  productAction: HandleAddProduct | HandleUpdateProduct;
 }
 
-type ProductFormFormAllProps = ProductFormFormProps & WithLoadCurrencyCodesProps &
-  InjectedFormProps<{}, ProductFormFormProps>;
+type ProductFormAllProps = ProductFormProps & WithLoadCurrencyCodesProps &
+  InjectedFormProps<{}, ProductFormProps>;
 
-const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
+const ProductForm: React.FC<ProductFormAllProps> = ({
   handleSubmit,
   onCancel,
   currencyCodes,
@@ -44,9 +48,11 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
   isDisabledStatus,
   institutionsOptions,
   productTypeValue,
+  productAction,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log('---', data)),
+    handleSubmit(data => productAction(data)),
     [handleSubmit]
   );
 
@@ -70,36 +76,36 @@ const ProductFormForm: React.FC<ProductFormFormAllProps> = ({
           isDisabled={!productTypeValue}
           hintForDisabled="Select Product Type"
         >
-          <FormSection name="details">
-            {productTypeValue && productTypeValue.value === productTypes.LOAN && (
-              <LoanTypeSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.PREPAID && (
-              <PrepaidSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.DEBIT && (
-              <DebitSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.SAVINGS && (
-              <SavingsSection />
-            )}
-            {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
-              <RevolvingCreditSection />
-            )}
-          </FormSection>
+          {productTypeValue && productTypeValue.value === productTypes.LOAN && (
+            <LoanTypeSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.PREPAID && (
+            <PrepaidSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.DEBIT && (
+            <DebitSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.SAVINGS && (
+            <SavingsSection />
+          )}
+          {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
+            <RevolvingCreditSection />
+          )}
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Cancel"
+            onCancel={onCancel}
+            disabledOk={invalid}
+            hintOk={invalid && hintsConsts.FILL_ALL_FIELDS}
+          />
         </Panel>
       </Tabs>
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Cancel"
-        onCancel={onCancel}
-      />
     </form >
   );
 };
 
-export default reduxForm<{}, ProductFormFormProps>({
+export default reduxForm<{}, ProductFormProps>({
   form: formNames.PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withLoadCurrencyCodes(ProductFormForm));
+})(withLoadCurrencyCodes(ProductForm));

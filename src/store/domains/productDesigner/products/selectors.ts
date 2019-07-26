@@ -1,11 +1,8 @@
 import { createSelector } from 'reselect';
 
-import {
-  productTypesOptions,
-  statusTypes,
-} from 'consts';
-
 import { StoreState } from 'store/StoreState';
+
+import { selectCurrentProductId } from 'store/domains/modals';
 
 import {
   selectCurrencyCodes,
@@ -14,13 +11,14 @@ import {
 } from 'store/domains/consts';
 
 import {
-  preparedDebitDetails,
+  preparedDebit,
   preparedGeneralProductItem,
   preparedGeneralProductValues,
-  preparedLoanDetails,
-  preparedPrepaidDetails,
-  preparedRevolvingCreditDetails,
-  preparedSavingsDetails,
+  preparedLoan,
+  preparedPrepaid,
+  preparedRevolvingCredit,
+  preparedSavings,
+  prepareProductFiltersParams,
 } from './utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
@@ -36,7 +34,8 @@ export const selectProductItems = createSelector(
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === item.currency_code)
         && currencyCodes.find(el => el.label === item.currency_code).label,
-      institutionId: institutions.find(el => el.id === item.institution_id).name,
+      institutionId: institutions.find(el => el.id === item.institution_id)
+        && institutions.find(el => el.id === item.institution_id).name,
     };
   })
 );
@@ -52,12 +51,8 @@ export const selectFilterProductParams = createSelector(
       return null;
     }
     return {
-      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
-      institutionId: params.institution_id &&
-        params.institution_id.map(id => institutions.find(el => el.value === id)),
-      productType: params.product_type &&
-        params.product_type.map(type => productTypesOptions
-          .find(el => el.value === type)),
+      institutionId: institutions.find(institution => institution.value === params.institution_id),
+      ...prepareProductFiltersParams(params),
     };
   }
 );
@@ -78,7 +73,7 @@ export const selectDebitProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedDebitDetails(product),
+      ...preparedDebit(product),
     };
   }
 );
@@ -99,7 +94,7 @@ export const selectLoanProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedLoanDetails(product),
+      ...preparedLoan(product),
     };
   }
 );
@@ -120,7 +115,7 @@ export const selectPrepaidProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedPrepaidDetails(product),
+      ...preparedPrepaid(product),
     };
   }
 );
@@ -141,7 +136,7 @@ export const selectRevolvingCreditProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedRevolvingCreditDetails(product),
+      ...preparedRevolvingCredit(product),
     };
   }
 );
@@ -162,7 +157,35 @@ export const selectSavingsProduct = createSelector(
       institutionId: institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes
         && currencyCodes.find(el => el.label === product.currency_code),
-      ...preparedSavingsDetails(product),
+      ...preparedSavings(product),
     };
+  }
+);
+
+export const selectCurrentProduct = createSelector(
+  selectDebitProduct,
+  selectLoanProduct,
+  selectPrepaidProduct,
+  selectRevolvingCreditProduct,
+  selectSavingsProduct,
+  selectCurrentProductId,
+  (
+    debitProduct,
+    loanProduct,
+    prepaidProduct,
+    revolvingCreditProduct,
+    savingsProduct,
+    currentProductId
+  ) => {
+    const products = [
+      debitProduct,
+      loanProduct,
+      prepaidProduct,
+      revolvingCreditProduct,
+      savingsProduct,
+    ];
+
+    const currentProduct = products.find(product => product && product.id === currentProductId);
+    return currentProduct;
   }
 );

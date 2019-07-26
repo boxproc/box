@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
 
-import { formNames } from 'consts';
+import { formNames, hintsConsts } from 'consts';
 
 import { HandleAddAdminSysProp } from 'store/domains';
 
@@ -24,6 +24,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   handleSubmit,
   addAdminSysProp,
   onCancel,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addAdminSysProp(data)),
@@ -72,6 +73,8 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         okText="Save"
         cancelText="Cancel"
         onCancel={onCancel}
+        disabledOk={invalid}
+        hintOk={invalid && hintsConsts.FILL_ALL_FIELDS}
       />
     </form >
   );
