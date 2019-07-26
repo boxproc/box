@@ -42,7 +42,7 @@ export const prepareProductFiltersParamsToSend =
 
     return {
       status: activeStatusFlag ? statusTypes.ACTIVE : null,
-      institution_id: institutionId && institutionId.value,
+      institution_id: institutionId ? institutionId.value : null,
       product_type: productType && productType.length ? productType.map(type => type.value) : null,
     };
   };

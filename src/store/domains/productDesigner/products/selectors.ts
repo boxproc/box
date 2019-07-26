@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
+import { selectCurrentProductId } from 'store/domains/modals';
+
 import {
   selectCurrencyCodes,
   selectDefaultInstitutions,
@@ -157,5 +159,33 @@ export const selectSavingsProduct = createSelector(
         && currencyCodes.find(el => el.label === product.currency_code),
       ...preparedSavings(product),
     };
+  }
+);
+
+export const selectCurrentProduct = createSelector(
+  selectDebitProduct,
+  selectLoanProduct,
+  selectPrepaidProduct,
+  selectRevolvingCreditProduct,
+  selectSavingsProduct,
+  selectCurrentProductId,
+  (
+    debitProduct,
+    loanProduct,
+    prepaidProduct,
+    revolvingCreditProduct,
+    savingsProduct,
+    currentProductId
+  ) => {
+    const products = [
+      debitProduct,
+      loanProduct,
+      prepaidProduct,
+      revolvingCreditProduct,
+      savingsProduct,
+    ];
+
+    const currentProduct = products.find(product => product && product.id === currentProductId);
+    return currentProduct;
   }
 );

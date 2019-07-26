@@ -9,7 +9,7 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
-export const selectProductId = (state: StoreState) =>
+export const selectCurrentProductId = (state: StoreState) =>
   state.modals.payloadEditProductModal.id;
 
 export const selectSchedulerJobId = (state: StoreState) =>

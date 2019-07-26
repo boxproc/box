@@ -12,13 +12,9 @@ import { modalNames } from 'consts';
 
 import {
   CloseModal,
-  // DebitProductItem,
   HandleDeleteProduct,
   HandleUpdateProduct,
-  // LoanProductItem,
-  // PrepaidProductItem,
-  // RevolvingCreditProductItem,
-  // SavingsProductItem,
+  // ProductItemDetails,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -31,26 +27,18 @@ interface EditProductModalProps {
   closeModal: CloseModal;
   deleteProduct: HandleDeleteProduct;
   updateProduct: HandleUpdateProduct;
-  productId: number;
+  currentProductId: number;
   institutionsOptions: Array<SelectValues>;
-  savingsProduct: Id;
-  revolvingCreditProduct: Id;
-  prepaidProduct: Id;
-  loanProduct: Id;
-  debitProduct: Id;
+  currentProduct: Id;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
   deleteProduct,
-  productId,
+  currentProductId,
   institutionsOptions,
-  savingsProduct,
-  revolvingCreditProduct,
-  prepaidProduct,
-  loanProduct,
-  debitProduct,
   updateProduct,
+  currentProduct,
 }) => {
   return (
     <Modal
@@ -66,19 +54,13 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         isDisabledProductTypes={true}
         isDisabledInstitutions={true}
         isDisabledStatus={true}
-        initialValues={
-          savingsProduct
-          || revolvingCreditProduct
-          || prepaidProduct
-          || loanProduct
-          || debitProduct
-        }
+        initialValues={currentProduct}
       />
       <Hr />
       <Button
         text="delete"
         iconName="delete"
-        onClick={() => deleteProduct(productId)}
+        onClick={() => deleteProduct(currentProductId)}
       />
     </Modal>
   );
