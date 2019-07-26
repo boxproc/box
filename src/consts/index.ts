@@ -37,6 +37,8 @@ export enum formNames {
 }
 
 export enum modalNames {
+  ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroup',
+  DEFINE_ADMIN_USERS_GROUP = 'DefineAdminUsersGroup',
   MESSAGE_MODAL = 'MessageModal',
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',

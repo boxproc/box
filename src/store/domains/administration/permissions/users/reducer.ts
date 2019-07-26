@@ -14,30 +14,7 @@ const adminUserReducer =
       case ActionTypeKeys.GET_ADMIN_USER_FULFILLED:
         return state
           .set('users', action.payload.users);
-      case ActionTypeKeys.ADD_ADMIN_USER_FULFILLED:
-        return state
-          .set('users', [
-            action.meta,
-            ...Object.values({
-              ...state.users,
-            }),
-          ]);
 
-      case ActionTypeKeys.FILTER_USERS_FULFILLED:
-        return state
-            .set('users', action.payload.users)
-            .set('filterUsers', action.meta);
-
-      case ActionTypeKeys.UPDATE_ADMIN_USER_FULFILLED:
-        return state
-          .set(
-            'users', [
-              ...Object.values({
-                ...state.users.filter(el => el.id !== action.meta.id),
-              }),
-              action.meta,
-            ].sort((a, b) => (a.id > b.id) ? 1 : -1)
-          );
       default:
         return state;
     }

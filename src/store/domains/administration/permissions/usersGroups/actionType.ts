@@ -93,7 +93,7 @@ export interface UpdateAdminUsersGroupRejectedAction {
     readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_REJECTED;
   }
 
-export type AdminUserActionTypes =
+export type AdminUsersGroupActionTypes =
     | GetAdminUsersGroupFulfilledAction
     | AddAdminUsersGroupFulfilledAction
    // | FilterUsersFulfilledAction

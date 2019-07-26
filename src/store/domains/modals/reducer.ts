@@ -17,7 +17,6 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   payloadEditAdminSchedulerModal: null,
 
   isAddAdminUserModal: false,
-
   isEditAdminUserModal: false,
   payloadEditAdminUserModal: null,
 
@@ -29,7 +28,6 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.OPEN_MODAL:
-      console.log('--', action.payload);
       return state
         .set(`is${action.payload.name}`, true)
         .set(`payload${action.payload.name}`, action.payload.payload);

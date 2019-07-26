@@ -1,8 +1,8 @@
 import { ModalsData } from './types';
 
 export enum ActionTypeKeys {
-   OPEN_MODAL = 'modals/OPEN_MODAL',
-   CLOSE_MODAL = 'modals/CLOSE_MODAL',
+  OPEN_MODAL = 'modals/OPEN_MODAL',
+  CLOSE_MODAL = 'modals/CLOSE_MODAL',
 }
 
 export interface OpenModalAction {

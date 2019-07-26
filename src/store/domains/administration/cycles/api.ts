@@ -18,4 +18,4 @@ export const deleteAdminCyclesEditor = (id: string | number) =>
 
 export const updateAdminCyclesEditor = (data: AdminCyclesEditorEditableItemPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/cycles/cycles_editor/update', { data }) ;
+  apiClient.post('/ui/administration/cycles/cycles_editor/update', { data });

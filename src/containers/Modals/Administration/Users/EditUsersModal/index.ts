@@ -11,8 +11,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-
- selectUserItems : selectUsersValues(state),
+  selectUserItems: selectUsersValues(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

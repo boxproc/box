@@ -1,29 +1,29 @@
 import React from 'react';
 
 import Modal from 'components/Modal';
-import { modalNames } from 'consts';
-
 import { withSpinner } from 'components/Spinner';
+
+import { modalNames } from 'consts';
 
 import { CloseModal, HandleAddAdminCyclesEditor, } from 'store/domains';
 
 // tslint:disable-next-line: max-line-length
 import DefineCycleEditorForm from 'containers/Administration/Cycles/CyclesEditor/DefineCycleEditorForm';
+
 import { SelectValues } from 'types';
 
 interface AddCycleEditorModalProps {
   closeModal: CloseModal;
   addAdminCyclesEditor: HandleAddAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
-  // adminCycleEditorItems: Array<AdminCyclesEditorItem>;
   cyclesEditorValue: any;
 }
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
-   closeModal,
-   addAdminCyclesEditor,
-   institutionsOptions,
-   cyclesEditorValue,
+  closeModal,
+  addAdminCyclesEditor,
+  institutionsOptions,
+  cyclesEditorValue,
 }) => {
   return (
     <Modal

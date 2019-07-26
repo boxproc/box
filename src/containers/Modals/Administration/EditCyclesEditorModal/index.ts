@@ -14,7 +14,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    AdminCycleEditorActionTypes.DELETE_ADMIN_CYCLE_EDITOR,
+  AdminCycleEditorActionTypes.DELETE_ADMIN_CYCLE_EDITOR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

@@ -16,7 +16,7 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
 export const selectCurrentProductId = (state: StoreState) =>
-  state.modals.payloadEditProductModal.id;
+  state.modals.payloadEditProductModal && state.modals.payloadEditProductModal.id;
 
 export const selectDefaultCycleEditorRecord = (state: StoreState) =>
   state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
@@ -25,7 +25,8 @@ export const selectDefaultUsersRecord = (state: StoreState) =>
   state.modals.payloadEditAdminUserModal.usersValues;
 
 export const selectSchedulerJobId = (state: StoreState) =>
-  state.modals.payloadEditAdminSchedulerModal.schedulerJobValues.id;
+state.modals.payloadEditAdminSchedulerModal
+  && state.modals.payloadEditAdminSchedulerModal.schedulerJobValues.id;
 
 export const selectDefaultSchedulerJobValues = (state: StoreState) =>
   state.modals.payloadEditAdminSchedulerModal.schedulerJobValues;
@@ -64,10 +65,6 @@ export const selectUsersValues = createSelector(
     return {
       ...values,
       status: values && statusTypesOptions.find(el => el.label === values.status),
-      // cycleType: typeOfCyclesEditorOptions.find(el => el.label === values.cycleType),
-      // institutionId: institutions.find(el => el.label === values.institutionId),
-      // weeklyCycleFirstDay: weeklyCycleTypeOptions.find(
-      //   el => el.label === values.weeklyCycleFirstDay),
     };
   }
 );

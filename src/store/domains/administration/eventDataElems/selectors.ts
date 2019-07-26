@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { dataTypesOptions } from 'consts';
 
 import { StoreState } from 'store/StoreState';
+
 import { selectAdminEventsOptions } from '../events';
 
 export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
@@ -12,7 +13,8 @@ export const selectAdminEventDataElemsItems = createSelector(
   selectDefaultAdminEventDataElemsItems,
   items => items && items.map(item => {
     return {
-      ...item,
+      name: item.name,
+      description: item.description,
       eventId: item.event_id,
       dataType: dataTypesOptions.find(el => el.value === item.data_type).label,
     };

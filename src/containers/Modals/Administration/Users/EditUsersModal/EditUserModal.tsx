@@ -2,14 +2,13 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 import { withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import { modalNames } from 'consts';
 
 import AddUserForm from 'containers/Administration/Permission/Users/DefineUsersForm';
 import {
-   CloseModal,
-   HandleUpdateAdminUser
+  CloseModal,
+  HandleUpdateAdminUser
 } from 'store/domains';
 
 interface EditSchedulerModalProps {
@@ -38,7 +37,6 @@ const EditUserModal: React.FC<EditSchedulerModalProps> = ({
         initialValues={selectUserItems}
 
       />
-      <Hr />
     </Modal>
   );
 };

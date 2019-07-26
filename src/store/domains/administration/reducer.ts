@@ -4,6 +4,7 @@ import adminCyclesEditorReducer from './cycles/reducer';
 import adminEventDataElemsReducer from './eventDataElems/reducer';
 import adminEventsReducer from './events/reducer';
 import adminUserReducer from './permissions/users/reducer';
+import adminUsersGroupReducer from './permissions/usersGroups/reducer';
 import adminSchedulerJobsReducer from './scheduler/reducer';
 import adminSysPropsReducer from './systemProperties/reducer';
 
@@ -14,6 +15,7 @@ const administrationReducer = combineReducers({
   adminEvents: adminEventsReducer,
   adminEventDataElems: adminEventDataElemsReducer,
   adminUsers: adminUserReducer,
+  adminUsersGroup: adminUsersGroupReducer,
 });
 
 export default administrationReducer;

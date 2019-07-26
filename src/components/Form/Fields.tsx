@@ -10,6 +10,7 @@ import { Label } from 'components/Text';
 import Input from './Input';
 import PasswordInput from './Password';
 import { SelectInput } from './Select';
+import TextInput from './TextArea';
 
 import { componentUtil } from 'utils';
 
@@ -165,3 +166,4 @@ export const withInputField = <OriginalProps extends {}>(
 export const InputField = withInputField(Input);
 export const PasswordField = withInputField(PasswordInput);
 export const SelectField = withInputField(SelectInput);
+export const TextField = withInputField(TextInput);

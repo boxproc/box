@@ -6,18 +6,18 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
 import SchedulerEditor from 'components/SchedulerEditor';
+import { Panel, Tabs } from 'components/Tabs';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
 
 import { HandleAddAdminSchedulerJob, HandleUpdateAdminSchedulerJob } from 'store/domains';
 
-import { Panel, Tabs } from 'components/Tabs';
-import { formErrorUtil } from 'utils';
-
 import { SelectValues } from 'types';
 
+import { formErrorUtil } from 'utils';
+
 interface DefineSchedulerJobFormProps {
-  defineAdminSchedulerJob?: HandleAddAdminSchedulerJob|HandleUpdateAdminSchedulerJob;
+  defineAdminSchedulerJob?: HandleAddAdminSchedulerJob | HandleUpdateAdminSchedulerJob;
   institutionsOptions?: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
@@ -138,7 +138,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           </Box>
         </Panel>
         <Panel title="Schedule">
-          <SchedulerEditor/>
+          <SchedulerEditor />
         </Panel>
       </Tabs>
       <OkCancelButtons

@@ -10,7 +10,6 @@ import {
 
 import {
   formNames,
-  hintsConsts,
   productTypes,
 } from 'consts';
 
@@ -19,6 +18,7 @@ import GeneralSection from './GeneralSection';
 import LoanTypeSection from './LoanTypeSection';
 import PrepaidSection from './PrepaidSection';
 import RevolvingCreditSection from './RevolvingCreditSection';
+import RulesSection from './RulesSection';
 import SavingsSection from './SavingsSection';
 
 import { HandleAddProduct, HandleUpdateProduct } from 'store/domains';
@@ -49,7 +49,6 @@ const ProductForm: React.FC<ProductFormAllProps> = ({
   institutionsOptions,
   productTypeValue,
   productAction,
-  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => productAction(data)),
@@ -91,12 +90,13 @@ const ProductForm: React.FC<ProductFormAllProps> = ({
           {productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT && (
             <RevolvingCreditSection />
           )}
+        </Panel>
+        <Panel title="Rules">
+          <RulesSection/>
           <OkCancelButtons
             okText="Save"
             cancelText="Cancel"
             onCancel={onCancel}
-            disabledOk={invalid}
-            hintOk={invalid && hintsConsts.FILL_ALL_FIELDS}
           />
         </Panel>
       </Tabs>

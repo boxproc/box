@@ -49,6 +49,17 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
     [handleSubmit, defineAdminCyclesEditor]
   );
 
+  const isMonthlyCycleFirstDay = cyclesEditorValue
+    && (cyclesEditorValue.value === cycleTypes.BI_MONTHLY
+      || cyclesEditorValue.value === cycleTypes.MONTHLY);
+
+  const isWeeklyCycleFirstDay = cyclesEditorValue
+    && (cyclesEditorValue.value === cycleTypes.BI_WEEKLY
+      || cyclesEditorValue.value === cycleTypes.WEEKLY);
+
+  const isFixedCycleNumberOfDays = cyclesEditorValue
+    && cyclesEditorValue.value === cycleTypes.FIXED_NUMBER_OF_DAYS;
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px" >
@@ -89,8 +100,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               isDisabled={isDisabledType}
             />
           </Box>
-          {cyclesEditorValue && (cyclesEditorValue.value === cycleTypes.BI_MONTHLY
-            || cyclesEditorValue.value === cycleTypes.MONTHLY) && (
+          {isMonthlyCycleFirstDay && (
             <Box width={[1 / 2]} p="10px">
               <Field
                 id="monthlyCycleFirstDay"
@@ -104,31 +114,30 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               />
             </Box>
           )}
-          {cyclesEditorValue && (cyclesEditorValue.value === cycleTypes.BI_WEEKLY
-           || cyclesEditorValue.value === cycleTypes.WEEKLY) && (
+          {isWeeklyCycleFirstDay && (
             <Box width={[1 / 2]} p="10px">
-            <Field
-              id="weeklyCycleFirstDay"
-              name="weeklyCycleFirstDay"
-              placeholder="Enter Weekly Cycle first day "
-              component={SelectField}
-              options={weeklyCycleTypeOptions}
-              label="Cycles Editor Weekly Cycle first day"
-              disabled={false}
-            />
-          </Box>
+              <Field
+                id="weeklyCycleFirstDay"
+                name="weeklyCycleFirstDay"
+                placeholder="Enter Weekly Cycle first day "
+                component={SelectField}
+                options={weeklyCycleTypeOptions}
+                label="Cycles Editor Weekly Cycle first day"
+                disabled={false}
+              />
+            </Box>
           )}
-          {cyclesEditorValue && cyclesEditorValue.value === cycleTypes.FIXED_NUMBER_OF_DAYS && (
-             <Box width={[1 / 2]} p="10px">
-             <Field
-               id="fixedCycleNumberOfDays"
-               name="fixedCycleNumberOfDays"
-               placeholder="Enter  fixed Cycle number of days"
-               component={InputField}
-               label="Cycles Editor fixed  number of days  "
-               disabled={false}
-             />
-           </Box>
+          {isFixedCycleNumberOfDays && (
+            <Box width={[1 / 2]} p="10px">
+              <Field
+                id="fixedCycleNumberOfDays"
+                name="fixedCycleNumberOfDays"
+                placeholder="Enter  fixed Cycle number of days"
+                component={InputField}
+                label="Cycles Editor fixed  number of days  "
+                disabled={false}
+              />
+            </Box>
           )}
           <Box width={[1 / 2]} p="10px">
             <Field

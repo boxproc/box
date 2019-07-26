@@ -8,10 +8,11 @@ import { Hr } from 'components/Text';
 import { modalNames } from 'consts';
 
 import AddSchedulerJobForm from 'containers/Administration/Scheduler/DefineSchedulerJobForm';
-import { CloseModal,
-   HandleDeleteAdminSchedulerJob,
-   HandleUpdateAdminSchedulerJob
-   } from 'store/domains';
+import {
+  CloseModal,
+  HandleDeleteAdminSchedulerJob,
+  HandleUpdateAdminSchedulerJob
+} from 'store/domains';
 
 interface EditSchedulerModalProps {
   closeModal: CloseModal;

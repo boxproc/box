@@ -4,19 +4,19 @@ export const scrollbarCss = css`
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: ${({ theme }) => theme.lightGrayColor};
     border: 1px solid white;
     border-radius: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .2);
+    background-color: ${({ theme }) => theme.grayColor};
     border-radius: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .1);
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 0 5px ${({ theme }) => theme.lightGrayColor};
+    -webkit-box-shadow: inset 0 0 5px ${({ theme }) => theme.lightGrayColor};
     border-radius: 8px;
   }
 `;

@@ -8,12 +8,10 @@ import {
   GetAdminEventDataElemsAction,
 } from './actionTypes';
 import * as api from './api';
-
 import {
   AdminEventDataElemsFilterParams,
   AdminEventDataElemsFilterParamsPrepared,
 } from './types';
-
 import { prepareAdminEventDataElemsParams } from './utils';
 
 import { apiClient } from 'services';

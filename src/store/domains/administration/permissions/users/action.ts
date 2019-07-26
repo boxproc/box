@@ -1,5 +1,6 @@
-import { cookiesNames, formNames, modalNames, } from 'consts';
 import { reset as resetForm } from 'redux-form';
+
+import { cookiesNames, formNames, modalNames, } from 'consts';
 import * as api from './api';
 
 import { closeModal } from 'store/domains/modals';
@@ -30,7 +31,7 @@ export type GetAdminUser = () => GetAdminUserAction;
 export type HandleGetAdminUser = VoidPromiseThunk;
 
 export type AddAdminUser = (values: AdminUserEditableItemPrepared) =>
-AddAdminUserAction;
+  AddAdminUserAction;
 export type HandleAddAdminUser = (values: AdminUserEditableItem) =>
   Thunk<void>;
 
@@ -38,9 +39,9 @@ export type FilterUsers = (params: UsersFilterParamsPrepared) => FilterUsersActi
 export type HandleFilterUsers = (params: UsersFilterParams) => Thunk<void>;
 
 export type UpdateAdminUser = (propValues: AdminUserEditableItemPrepared) =>
-UpdateAdminUserAction;
+  UpdateAdminUserAction;
 export type HandleUpdateAdminUser =
- (propValues: AdminUserEditableItem) => Thunk<void>;
+  (propValues: AdminUserEditableItem) => Thunk<void>;
 
 export const getAdminUser: GetAdminUser = () => ({
   type: ActionTypeKeys.GET_ADMIN_USER,
@@ -70,6 +71,7 @@ export const handleGetAdminUser: HandleGetAdminUser = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+
         apiClient.set('session_id', sessionId);
         await dispatch(getAdminUser());
       },
@@ -82,7 +84,7 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminUserValuesCamel(cycleEditorRecords);
-        console.log('preparedValues', preparedValues);
+
         await dispatch(addAdminUser(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_USER));
         await dispatch(getAdminUser());
@@ -111,9 +113,10 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminUserValuesCamel(values);
+
         await dispatch(updateAdminUser(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_USER));
-
+        await dispatch(getAdminUser());
       },
       dispatch
     );
