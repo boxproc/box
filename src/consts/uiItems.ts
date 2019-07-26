@@ -9,6 +9,8 @@ export enum uiItemConsts {
   ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS =
     'administration/dictionaries/event_data_elements',
   ADMINISTRATION_SCHEDULER = 'administration/scheduler',
+  ADMINISTRATION_CYCLE_EDITOR = 'administration/cycles/cycles_editor',
+  ADMINISTRATION_USER = 'administration/permissions/users',
 
   PRODUCTS = 'product_designer/products',
 }
