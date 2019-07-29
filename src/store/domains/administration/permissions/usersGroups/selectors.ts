@@ -2,18 +2,21 @@ import { StoreState } from 'store/StoreState';
 
 import { createSelector } from 'reselect';
 
+import { selectInstitutionsOptions } from 'store/domains/consts';
+
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
   state.administration.adminUsersGroup.users_group.asMutable();
 
 // export const selectDefaultFilterUsers = (state: StoreState) =>
 //  state.administration.adminUsers.filterUsers;
 
-export const selectUserEditorItems = createSelector(
+export const selectUsersGroupEditorItems = createSelector(
     selectDefaultAdminUsersGroupItems,
-    items => items && items.map(item => {
+    selectInstitutionsOptions,
+    (items, institutions) => items && items.map(item => {
     return {
       ...item,
-      institutionId: item.institution_id,
+      institutionId: item && institutions.find(el => el.value === item.institution_id).label,
     };
   })
 );

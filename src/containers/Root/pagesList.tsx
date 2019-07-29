@@ -6,6 +6,7 @@ import CyclesEditor from 'containers/Administration/Cycles/CyclesEditor';
 import EventDataElems from 'containers/Administration/EventDataElems';
 import Events from 'containers/Administration/Events';
 import Users from 'containers/Administration/Permission/Users';
+import UsersGroup from 'containers/Administration/Permission/UsersGroup';
 import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
 import Products from 'containers/ProductDesigner/Products';
@@ -60,5 +61,9 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_USER,
     component: <Users />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
+    component: <UsersGroup/>,
   },
 ];

@@ -6,17 +6,17 @@ import {
 import { ApiResponse, SuccessResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-    GET_ADMIN_USERS_GROUP = 'administration/permissions/usersGroup/GET_ADMIN_USERS_GROUP',
+    GET_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP',
     GET_ADMIN_USERS_GROUP_FULFILLED =
-    'administration/permissions/users/GET_ADMIN_USERS_GROUP_FULFILLED',
+    'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP_FULFILLED',
     GET_ADMIN_USERS_GROUP_REJECTED =
-        'administration/permissions/usersGroup/GET_ADMIN_USERS_GROUP_REJECTED',
+        'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP_REJECTED',
 
-    ADD_ADMIN_USERS_GROUP = 'administration/permissions/usersGroup/ADD_ADMIN_USERS_GROUP',
+    ADD_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP',
     ADD_ADMIN_USERS_GROUP_FULFILLED =
-    'administration/permissions/usersGroup/ADD_ADMIN_USERS_GROUP_FULFILLED',
+    'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_FULFILLED',
     ADD_ADMIN_USERS_GROUP_REJECTED =
-    'administration/permissions/usersGroup/ADD_ADMIN_USERS_GROUP_REJECTED',
+    'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_REJECTED',
 
     // FILTER_USERS_GROUP = 'administration/permissions/usersGroup/FILTER_USERS_GROUP',
     // FILTER_USERS_GROUP_FULFILLED =
@@ -24,11 +24,11 @@ export enum ActionTypeKeys {
     // FILTER_USERS_GROUP_REJECTED =
     // 'administration/permissions/usersGroup/FILTER_USERS_GROUP_REJECTED',
 
-    UPDATE_ADMIN_USERS_GROUP = 'administration/permissions/usersGroup/UPDATE_ADMIN_USERS_GROUP',
+    UPDATE_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP',
     UPDATE_ADMIN_USERS_GROUP_FULFILLED =
-    'administration/permissions/usersGroup/UPDATE_ADMIN_USERS_GROUP_FULFILLED',
+    'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_FULFILLED',
     UPDATE_ADMIN_USERS_GROUP_REJECTED =
-    'administration/permissions/usersGroup/UPDATE_ADMIN_USERS_GROUP_REJECTED',
+    'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_REJECTED',
   }
 
 export interface GetAdminUsersGroupAction {

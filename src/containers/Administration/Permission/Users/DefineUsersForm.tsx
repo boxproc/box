@@ -46,16 +46,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         >
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="username"
-              name="username"
-              isSearchable={true}
-              component={InputField}
-              label="Username"
-              placeholder="Enter Username"
-            />
-          </Box>
-          <Box width={[1 / 2]} p="10px">
-            <Field
               id="firstName"
               name="firstName"
               placeholder="Enter First Name"
@@ -78,14 +68,12 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="status"
-              name="status"
-              component={SelectField}
+              id="username"
+              name="username"
               isSearchable={true}
-              label="Status"
-              placeholder="Select Cycles Editor Status"
-              options={statusTypesOptions}
-              isDisabled={isDisabledStatus}
+              component={InputField}
+              label="Username"
+              placeholder="Enter Username"
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -100,13 +88,38 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               isDisabled={isDisabledType}
             />
           </Box>
+
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="status"
+              name="status"
+              component={SelectField}
+              isSearchable={true}
+              label="Status"
+              placeholder="Select Cycles Editor Status"
+              options={statusTypesOptions}
+              isDisabled={isDisabledStatus}
+            />
+          </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
               id="passwordHash"
               name="passwordHash"
               placeholder="Enter Password"
+              type={'password'}
               component={InputField}
               label="User Password"
+              disabled={false}
+              isDisabled={isDisabledType}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="passwordHash"
+              name="passwordHash"
+              placeholder="Enter Password Again"
+              component={InputField}
+              label="Confirm  Password"
               disabled={false}
               isDisabled={isDisabledType}
             />

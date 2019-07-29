@@ -9,12 +9,9 @@ import DefineUsersForm from 'containers/Administration/Permission/Users/DefineUs
 
 import { CloseModal, HandleAddAdminUser, } from 'store/domains';
 
-import { SelectValues } from 'types';
-
 interface AddUserModalProps {
   closeModal: CloseModal;
   addAdminUser: HandleAddAdminUser;
-  institutionsOptions: Array<SelectValues>;
   cyclesEditorValue: any;
 }
 

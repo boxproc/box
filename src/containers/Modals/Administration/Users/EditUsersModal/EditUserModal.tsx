@@ -11,14 +11,14 @@ import {
   HandleUpdateAdminUser
 } from 'store/domains';
 
-interface EditSchedulerModalProps {
+interface EditUserModalProps {
   closeModal: CloseModal;
   updateAdminUser: HandleUpdateAdminUser;
 
   selectUserItems: any;
 }
 
-const EditUserModal: React.FC<EditSchedulerModalProps> = ({
+const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
   updateAdminUser,
   selectUserItems,
@@ -27,11 +27,11 @@ const EditUserModal: React.FC<EditSchedulerModalProps> = ({
   return (
     <Modal
       name={modalNames.EDIT_ADMIN_USER}
-      title="Edit"
+      title="Edit User"
       maxContainerWidth={700}
     >
       <AddUserForm
-        onCancel={() => closeModal(modalNames.EDIT_CYCLE_EDITOR)}
+        onCancel={() => closeModal(modalNames.EDIT_ADMIN_USER)}
         defineAdminUser={updateAdminUser}
         isDisabledStatus={true}
         initialValues={selectUserItems}

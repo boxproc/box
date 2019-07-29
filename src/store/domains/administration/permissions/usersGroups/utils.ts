@@ -1,12 +1,12 @@
-export const prepareAdminUsersGroupValuesCamel =
+export const prepareAdminUsersGroupValuesUnderscore =
   (values: any) => {
-    return {
-      id: values.id,
-      institution_id: values.institution_id,
-      name: values.name,
-    };
+   return {
+        id: values.id,
+        institution_id: values.institutionId.value,
+        name: values.name,
 
-  };
+      };
+    };
 
 // export const prepareUsersFiltersParams =
 //   (params: UsersFilterParamsPrepared): UsersFilterParams => {

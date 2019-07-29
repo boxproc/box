@@ -1,0 +1,40 @@
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+
+import UsersGroup from './UsersGroup';
+
+import {
+  AdminUsersGroupActionTypes,
+  createLoadingSelector,
+  handleGetAdminUsersGroup,
+  openModal,
+  selectInstitutionsOptions,
+  selectUsersGroupEditorItems,
+} from 'store/domains';
+
+import { StoreState } from 'store/StoreState';
+
+const loadingSelector = createLoadingSelector([
+    AdminUsersGroupActionTypes.GET_ADMIN_USERS_GROUP,
+    AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
+    AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+]);
+
+const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
+  adminUsersGroupItems: selectUsersGroupEditorItems(state),
+  institutionsOptions: selectInstitutionsOptions(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    openModal,
+    getAdminUsersGroup: handleGetAdminUsersGroup,
+  },
+  dispatch
+);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UsersGroup);

@@ -11,6 +11,7 @@ export enum uiItemConsts {
   ADMINISTRATION_SCHEDULER = 'administration/scheduler',
   ADMINISTRATION_CYCLE_EDITOR = 'administration/cycles/cycles_editor',
   ADMINISTRATION_USER = 'administration/permissions/users',
+  ADMINISTRATION_USERS_GROUP = 'administration/permissions/user_groups',
 
   PRODUCTS = 'product_designer/products',
 }

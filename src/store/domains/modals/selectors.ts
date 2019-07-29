@@ -22,7 +22,10 @@ export const selectDefaultCycleEditorRecord = (state: StoreState) =>
   state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 
 export const selectDefaultUsersRecord = (state: StoreState) =>
-  state.modals.payloadEditAdminUserModal.usersValues;
+   state.modals.payloadEditAdminUserModal.usersValues;
+
+export const selectDefaultUsersGroupRecord = (state: StoreState) =>
+  state.modals.payloadEditAdminUsersGroupModal.usersGroupValues;
 
 export const selectSchedulerJobId = (state: StoreState) =>
 state.modals.payloadEditAdminSchedulerModal
@@ -65,6 +68,17 @@ export const selectUsersValues = createSelector(
     return {
       ...values,
       status: values && statusTypesOptions.find(el => el.label === values.status),
+    };
+  }
+);
+
+export const selectUsersGroupValues = createSelector(
+  selectDefaultUsersGroupRecord,
+  selectInstitutionsOptions,
+  (values, institutions) => {
+    return {
+      ...values,
+      institutionId: institutions.find(el => el.label === values.institutionId),
     };
   }
 );

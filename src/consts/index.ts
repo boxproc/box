@@ -27,18 +27,20 @@ export enum formNames {
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
+  DEFINE_ADMIN_USERS_GROUP = 'DefineAdminUsersGroup',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   CYCLES_EDITOR = 'cyclesEditorForm',
   SCHEDULER = 'schedulerForm',
   USER = 'userForm',
+  USERS_GROUP = 'usersGroupForm',
   ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
 }
 
 export enum modalNames {
-  ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroup',
-  DEFINE_ADMIN_USERS_GROUP = 'DefineAdminUsersGroup',
+  ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroupModal',
+  EDIT_ADMIN_USERS_GROUP = 'EditAdminUsersGroupModal',
   MESSAGE_MODAL = 'MessageModal',
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
@@ -75,6 +77,7 @@ export const statusTypeCyclesOptions = [
 ];
 
 export const weeklyCycleTypeOptions = [
+  {value: null, label: '-'},
   {value: 0, label: '-'},
   { value: 1, label: 'Monday'},
   { value: 2, label: 'Tuesday'},

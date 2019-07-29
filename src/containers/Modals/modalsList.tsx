@@ -13,6 +13,8 @@ import EditProductModal from './ProductDesigner/Product/EditProductModal';
 import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
 import AddUsersModal from './Administration/Users/AddUsersModal';
 import EditUsersModal from './Administration/Users/EditUsersModal';
+import AddUsersGroupModal from './Administration/UsersGroup/AddUsersGroupModal';
+import EditUsersGroupModal from './Administration/UsersGroup/EditUsersGroupModal';
 import MessageModal from './MessageModal';
 
 export const modalsList = [
@@ -56,5 +58,14 @@ export const modalsList = [
   {
     name: modalNames.EDIT_ADMIN_USER,
     component: <EditUsersModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_USERS_GROUP,
+    component: <AddUsersGroupModal />,
+  },
+
+  {
+    name: modalNames.EDIT_ADMIN_USERS_GROUP,
+    component: < EditUsersGroupModal/>,
   },
 ];

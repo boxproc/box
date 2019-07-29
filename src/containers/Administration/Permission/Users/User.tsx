@@ -126,18 +126,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Password Hash" showSortIcons={true} />,
-      accessor: 'passwordHash',
-      Cell: (props: SCell<'passwordHash'>) => (
-        <Cell
-          value={props.value}
-        />
-      ),
-    },
-    {
-      sortable: true,
-      filterable: true,
-      Header: <Header title="Password enty counter" showSortIcons={true} />,
+      Header: <Header title="Password entry counter" showSortIcons={true} />,
       accessor: 'passwordEntryCounter',
       Cell: (props: SCell<'passwordEntryCounter'>) => (
         <Cell
