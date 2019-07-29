@@ -1,7 +1,6 @@
 import config from 'config';
 
 export * from './uiItems';
-export * from './hints';
 
 export const basePath = config.isDevelopment ? '/' : '/ui/';
 
@@ -18,7 +17,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360000,
+  SESSION_ID = 360,
 }
 
 export enum formNames {
@@ -30,6 +29,8 @@ export enum formNames {
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
+  ADD_PRODUCT = 'AddProductForm',
+  EDIT_PRODUCT = 'EditProductForm',
   CYCLES_EDITOR = 'cyclesEditorForm',
   SCHEDULER = 'schedulerForm',
   USER = 'userForm',

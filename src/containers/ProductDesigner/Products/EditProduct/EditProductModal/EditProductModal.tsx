@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { Button } from 'components/Buttons';
-
 import Modal from 'components/Modal';
 import { withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
-import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
+import EditProductForm from 'containers/ProductDesigner/Products/EditProduct/EditProductForm';
 
 import { modalNames } from 'consts';
 
@@ -28,17 +25,17 @@ interface EditProductModalProps {
   deleteProduct: HandleDeleteProduct;
   updateProduct: HandleUpdateProduct;
   currentProductId: number;
-  institutionsOptions: Array<SelectValues>;
   currentProduct: Id;
+  productTypeValue: SelectValues;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
   deleteProduct,
   currentProductId,
-  institutionsOptions,
   updateProduct,
   currentProduct,
+  productTypeValue,
 }) => {
   return (
     <Modal
@@ -47,20 +44,37 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       maxContainerWidth={700}
       minContainerHeight={610}
     >
-      <ProductForm
+      <EditProductForm
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
-        productAction={updateProduct}
-        institutionsOptions={institutionsOptions}
-        isDisabledProductTypes={true}
-        isDisabledInstitutions={true}
-        isDisabledStatus={true}
-        initialValues={currentProduct}
-      />
-      <Hr />
-      <Button
-        text="delete"
-        iconName="delete"
-        onClick={() => deleteProduct(currentProductId)}
+        updateProduct={updateProduct}
+        deleteProduct={deleteProduct}
+        productTypeValue={productTypeValue}
+        currentProductId={currentProductId}
+        initialValues={{
+          ...currentProduct,
+          rulesCode:
+`function Comment(props) {
+  return (
+    <div className="Comment">
+      <div className="UserInfo">
+        <img className="Avatar"
+          src={props.author.avatarUrl}
+          alt={props.author.name}
+        />
+        <div className="UserInfo-name">
+          {props.author.name}
+        </div>
+      </div>
+      <div className="Comment-text">
+        {props.text}
+      </div>
+      <div className="Comment-date">
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}`,
+        }}
       />
     </Modal>
   );

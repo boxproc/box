@@ -11,7 +11,7 @@ import { TableCell } from 'types';
 
 type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
 
-export const columns = [
+export const tableColumns = [
   {
     maxWidth: 70,
     sortable: true,

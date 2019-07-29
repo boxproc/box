@@ -11,7 +11,7 @@ import {
 
 import { formErrorUtil } from 'utils';
 
-const LoanTypeSection: React.FC = () => {
+const LoanDetails: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex
@@ -65,4 +65,4 @@ const LoanTypeSection: React.FC = () => {
   );
 };
 
-export default LoanTypeSection;
+export default LoanDetails;

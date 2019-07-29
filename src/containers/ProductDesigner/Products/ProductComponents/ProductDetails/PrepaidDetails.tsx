@@ -7,7 +7,7 @@ import { CheckboxField, InputField } from 'components/Form';
 
 import { formErrorUtil } from 'utils';
 
-const PrepaidSection: React.FC = () => {
+const PrepaidDetails: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex
@@ -47,4 +47,4 @@ const PrepaidSection: React.FC = () => {
   );
 };
 
-export default PrepaidSection;
+export default PrepaidDetails;

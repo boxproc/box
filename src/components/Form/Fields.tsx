@@ -4,9 +4,9 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 import styled from 'theme';
 
 import Hint from 'components/Hint';
-
 import { Label } from 'components/Text';
 
+import HighlightCode from './HighlightCode';
 import Input from './Input';
 import PasswordInput from './Password';
 import { SelectInput } from './Select';
@@ -167,3 +167,4 @@ export const InputField = withInputField(Input);
 export const PasswordField = withInputField(PasswordInput);
 export const SelectField = withInputField(SelectInput);
 export const TextField = withInputField(TextInput);
+export const HighLightCodeField = withInputField(HighlightCode);

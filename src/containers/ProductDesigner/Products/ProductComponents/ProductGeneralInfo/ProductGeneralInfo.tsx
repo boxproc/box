@@ -4,6 +4,10 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components/Form';
+import {
+  withLoadCurrencyCodes,
+  WithLoadCurrencyCodesProps,
+} from 'components/withLoadCurrencyCodes';
 
 import {
   productTypesOptions,
@@ -15,7 +19,7 @@ import { SelectValues } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface GeneralSectionProps {
+interface ProductGeneralInfoProps {
   isDisabledProductTypes?: boolean;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
@@ -24,7 +28,9 @@ interface GeneralSectionProps {
   isCurrencyCodesLoading: boolean;
 }
 
-const GeneralSection: React.FC<GeneralSectionProps> = ({
+type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
+
+const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   currencyCodes,
   isCurrencyCodesLoading,
   isDisabledProductTypes,
@@ -164,4 +170,4 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
   );
 };
 
-export default GeneralSection;
+export default withLoadCurrencyCodes(ProductGeneralInfo);

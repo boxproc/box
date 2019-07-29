@@ -9,7 +9,7 @@ import { savingsTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-const SavingsSection: React.FC = () => {
+const SavingsDetails: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex
@@ -73,4 +73,4 @@ const SavingsSection: React.FC = () => {
   );
 };
 
-export default SavingsSection;
+export default SavingsDetails;

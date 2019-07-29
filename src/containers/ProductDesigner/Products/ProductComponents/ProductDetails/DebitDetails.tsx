@@ -7,7 +7,7 @@ import { CheckboxField, InputField } from 'components/Form';
 
 import { formErrorUtil } from 'utils';
 
-const DebitSection: React.FC = () => {
+const DebitDetails: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex
@@ -38,4 +38,4 @@ const DebitSection: React.FC = () => {
   );
 };
 
-export default DebitSection;
+export default DebitDetails;

@@ -50,6 +50,6 @@ export const Paragraph = styled.p<ParagraphProps>`
 
 export const Hr = styled.div`
   padding-top: 15px;
-  margin-top: 15px;
+  margin-top: 35px;
   border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
 `;

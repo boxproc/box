@@ -7,7 +7,7 @@ import { CheckboxField, InputField } from 'components/Form';
 
 import { formErrorUtil } from 'utils';
 
-const RevolvingCreditSection: React.FC = () => {
+const RevolvingCreditDetails: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex
@@ -148,4 +148,4 @@ const RevolvingCreditSection: React.FC = () => {
   );
 };
 
-export default RevolvingCreditSection;
+export default RevolvingCreditDetails;

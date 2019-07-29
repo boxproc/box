@@ -12,8 +12,10 @@ interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextA
 const TextInput = styled.textarea<TextAreaProps>`
   ${sharedInputCss};
   ${scrollbarCss};
+  height: auto;
+  min-height: 50px;
+  line-height: 1.35;
   resize: none;
-  min-height: 100px;
   overflow: auto;
 `;
 

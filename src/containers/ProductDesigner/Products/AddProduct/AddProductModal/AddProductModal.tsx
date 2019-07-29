@@ -5,20 +5,17 @@ import { modalNames } from 'consts';
 
 import { withSpinner } from 'components/Spinner';
 
-import ProductForm from 'containers/ProductDesigner/Products/ProductForm';
+import AddProductForm from 'containers/ProductDesigner/Products/AddProduct/AddProductForm';
 
 import { CloseModal, HandleAddProduct } from 'store/domains';
-import { SelectValues } from 'types';
 
 interface AddProductModalProps {
   closeModal: CloseModal;
-  institutionsOptions: Array<SelectValues>;
   addProduct: HandleAddProduct;
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
-  institutionsOptions,
   addProduct,
 }) => {
   return (
@@ -28,10 +25,9 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
       maxContainerWidth={700}
       minContainerHeight={610}
     >
-      <ProductForm
+      <AddProductForm
         onCancel={() => closeModal(modalNames.ADD_PRODUCT)}
-        productAction={addProduct}
-        institutionsOptions={institutionsOptions}
+        addProduct={addProduct}
         initialValues={{
           historyRetentionNumberOfDay: 90,
         }}

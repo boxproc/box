@@ -6,8 +6,10 @@ import TablePage from 'components/TablePage/TablePage';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
-import { columns } from './columns';
-import ProductsFilter from './ProductsFilter';
+import {
+  ProductsFilterForm,
+  tableColumns,
+} from 'containers/ProductDesigner/Products/ProductComponents';
 
 import {
   HandleFilterProducts,
@@ -87,13 +89,13 @@ export const Products: React.FC<ProductsProps> = ({
     <TablePage
       title="Products"
       data={productItems}
-      columns={columns}
+      columns={tableColumns}
       addNewModalName={modalNames.ADD_PRODUCT}
       openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Unlocked Product"
       FilterForm={
-        <ProductsFilter
+        <ProductsFilterForm
           filterProducts={filterProducts}
           institutionsOptions={institutionsOptions}
           initialValues={initialFilterValues}
