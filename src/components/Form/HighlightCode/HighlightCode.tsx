@@ -9,23 +9,33 @@ import 'prismjs/components/prism-javascript';
 
 import styled from 'theme';
 
-import { sharedInputCss } from 'components/Form/sharedInputCss';
 import { scrollbarCss } from 'components/Scrollbar';
 
 import './prism.css';
 
 export const Wrapper = styled.div`
-  ${sharedInputCss};
   ${scrollbarCss};
   height: auto;
   padding: 0;
   max-height: 180px;
   border: 1px solid ${({ theme }) => theme.grayColor};
   border-radius: 2px;
-  font-size: 12px;
+  font-size: 13px;
   font-family: ${({ theme }) => theme.codeFont};
   line-height: 1.7;
   overflow: auto;
+
+  &.is-focus {
+    border-color: ${({ theme }) => theme.normalAccentColor};
+  }
+
+  textarea::placeholder {
+    color: ${({ theme }) => theme.grayColor};
+  }
+
+  pre {
+    min-height: 170px;
+  }
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {}
@@ -37,12 +47,20 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   onChange,
   placeholder,
 }) => {
+  const wrapperRef = React.useRef(null);
   const handleChange = React.useCallback(
     code => onChange(code),
     [onChange]
   );
+  const addFocusClass = () => {
+    wrapperRef.current.classList.add('is-focus');
+  };
+  const removeFocusClass = () => {
+    wrapperRef.current.classList.remove('is-focus');
+  };
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <Editor
         value={value.toString()}
         onValueChange={handleChange}
@@ -51,6 +69,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         name={name}
         placeholder={placeholder}
         padding={10}
+        onFocus={addFocusClass}
+        onBlur={removeFocusClass}
       />
     </Wrapper>
   );

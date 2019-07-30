@@ -2,8 +2,6 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { selectCurrentProductId } from 'store/domains/modals';
-
 import {
   selectCurrencyCodes,
   selectDefaultInstitutions,
@@ -39,6 +37,9 @@ export const selectProductItems = createSelector(
     };
   })
 );
+
+export const selectCurrentProductId = (state: StoreState) =>
+  state.productDesigner.products.currentProductId;
 
 export const selectDefaultFilterProductParams = (state: StoreState) =>
   state.productDesigner.products.filterProductsParams;

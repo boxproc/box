@@ -15,9 +15,6 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
-export const selectCurrentProductId = (state: StoreState) =>
-  state.modals.payloadEditProductModal && state.modals.payloadEditProductModal.id;
-
 export const selectDefaultCycleEditorRecord = (state: StoreState) =>
   state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 

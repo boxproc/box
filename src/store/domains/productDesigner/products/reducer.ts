@@ -1,12 +1,11 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { productTypes } from 'consts';
-
 import { ActionTypeKeys, ProductsActionTypes } from './actionTypes';
 import { ProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
+  currentProductId: null,
   revolvingCreditProduct: null,
   loanProduct: null,
   prepaidProduct: null,
@@ -35,19 +34,31 @@ const productsReducer =
           .set('filterProductsParams', action.meta);
 
       case ActionTypeKeys.GET_PRODUCT_FULFILLED:
-        if (action.payload.product.product_type === productTypes.REVOLVING_CREDIT) {
-          return state.set('revolvingCreditProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.LOAN) {
-          return state.set('loanProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.DEBIT) {
-          return state.set('debitProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.PREPAID) {
-          return state.set('prepaidProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.SAVINGS) {
-          return state.set('savingsProduct', action.payload.product);
-        } else {
-          return state;
-        }
+        return state
+          .set('currentProductId', action.meta);
+      // if (action.payload.product.product_type === productTypes.REVOLVING_CREDIT) {
+      //   return state
+      //     .set('currentProductId', action.meta)
+      //     .set('revolvingCreditProduct', action.payload.product);
+      // } else if (action.payload.product.product_type === productTypes.LOAN) {
+      //   return state
+      //     .set('currentProductId', action.meta)
+      //     .set('loanProduct', action.payload.product);
+      // } else if (action.payload.product.product_type === productTypes.DEBIT) {
+      //   return state
+      //     .set('currentProductId', action.meta)
+      //     .set('debitProduct', action.payload.product);
+      // } else if (action.payload.product.product_type === productTypes.PREPAID) {
+      //   return state
+      //     .set('currentProductId', action.meta)
+      //     .set('prepaidProduct', action.payload.product);
+      // } else if (action.payload.product.product_type === productTypes.SAVINGS) {
+      //   return state
+      //     .set('currentProductId', action.meta)
+      //     .set('savingsProduct', action.payload.product);
+      // } else {
+      //   return state;
+      // }
 
       default: return state;
     }

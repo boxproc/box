@@ -17,7 +17,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360,
+  SESSION_ID = 360000,
 }
 
 export enum formNames {
@@ -30,7 +30,9 @@ export enum formNames {
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'AddProductForm',
-  EDIT_PRODUCT = 'EditProductForm',
+  EDIT_GENERAL_PRODUCT = 'EditGeneralProduct',
+  EDIT_PRODUCT_DETAILS = 'EditProductDetails',
+  EDIT_PRODUCT_RULES = 'EditProductRules',
   CYCLES_EDITOR = 'cyclesEditorForm',
   SCHEDULER = 'schedulerForm',
   USER = 'userForm',

@@ -7,30 +7,24 @@ import { withSpinner } from 'components/Spinner';
 
 import AddProductForm from 'containers/ProductDesigner/Products/AddProduct/AddProductForm';
 
-import { CloseModal, HandleAddProduct } from 'store/domains';
+import { CloseModal } from 'store/domains';
 
 interface AddProductModalProps {
   closeModal: CloseModal;
-  addProduct: HandleAddProduct;
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
-  addProduct,
 }) => {
   return (
     <Modal
       name={modalNames.ADD_PRODUCT}
       title="Add New Product"
       maxContainerWidth={700}
-      minContainerHeight={610}
+      minContainerHeight={607}
     >
       <AddProductForm
         onCancel={() => closeModal(modalNames.ADD_PRODUCT)}
-        addProduct={addProduct}
-        initialValues={{
-          historyRetentionNumberOfDay: 90,
-        }}
       />
     </Modal>
   );

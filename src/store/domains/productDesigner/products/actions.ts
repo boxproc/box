@@ -68,6 +68,7 @@ export const filterProducts: FilterProducts = params => ({
 export const getProduct: GetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
+  meta: id,
 });
 
 export const addProduct: AddProduct = values => ({

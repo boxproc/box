@@ -91,6 +91,7 @@ export interface GetProductAction {
 export interface GetProductFulfilledAction {
   readonly payload: ProductDataResp;
   readonly type: ActionTypeKeys.GET_PRODUCT_FULFILLED;
+  readonly meta: number;
 }
 
 export interface GetProductRejectedAction {

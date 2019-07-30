@@ -3,6 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { Panel, Tabs } from 'components/Tabs';
+import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
@@ -12,24 +13,25 @@ import {
   ProductGeneralInfo,
 } from 'containers/ProductDesigner/Products/ProductComponents';
 
-import { HandleAddProduct } from 'store/domains';
+import {
+  HandleAddProduct,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface AddProductFormProps {
-  onCancel: () => void;
   productTypeValue: SelectValues;
   addProduct: HandleAddProduct;
+  onCancel: () => void;
 }
 
-type AddProductFormAllProps = AddProductFormProps &
-  InjectedFormProps<{}, AddProductFormProps>;
+type AddProductFormAllProps = AddProductFormProps & InjectedFormProps<{}, AddProductFormProps>;
 
 const AddProductForm: React.FC<AddProductFormAllProps> = ({
-  handleSubmit,
-  onCancel,
   productTypeValue,
   addProduct,
+  onCancel,
+  handleSubmit,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addProduct(data)),
@@ -50,6 +52,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
           <ProductDetails
             productTypeValue={productTypeValue}
           />
+          <Hr />
           <OkCancelButtons
             okText="Save"
             cancelText="Cancel"

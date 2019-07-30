@@ -74,7 +74,7 @@ export const Products: React.FC<ProductsProps> = ({
           getProduct(rowInfo.original.id);
           openModal({
             name: modalNames.EDIT_PRODUCT,
-            payload: { id: rowInfo.original.id },
+            // payload: { id: rowInfo.original.id },
           });
         },
       };

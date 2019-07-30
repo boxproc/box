@@ -163,6 +163,7 @@ export type ProductItemDetails =
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
+  currentProductId: number;
   revolvingCreditProduct: RevolvingCreditProductItemResp;
   loanProduct: LoanProductItemResp;
   prepaidProduct: PrepaidProductItemResp;
