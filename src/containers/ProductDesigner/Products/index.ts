@@ -20,8 +20,7 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCTS,
   ProductsActionTypes.FILTER_PRODUCTS,
-  ProductsActionTypes.ADD_PRODUCT,
-  ProductsActionTypes.UPDATE_PRODUCT,
+  ProductsActionTypes.GET_PRODUCT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

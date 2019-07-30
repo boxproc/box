@@ -4,22 +4,25 @@ import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/ProductComponents';
 
-import { HandleDeleteProduct, HandleUpdateProduct } from 'store/domains';
+import {
+  HandleDeleteProduct,
+  HandleGetProductRules,
+  HandleUpdateProductRules,
+} from 'store/domains';
 
-import { SelectValues } from 'types';
-
-interface EditProductRulesFormProps {
+interface EditProductRulesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  productTypeValue?: SelectValues;
-  updateProduct?: HandleUpdateProduct;
-  deleteProduct?: HandleDeleteProduct;
-  currentProductId?: number;
+  deleteProduct: HandleDeleteProduct;
+  currentProductId: number;
+  getProductRules: HandleGetProductRules;
+  updateProductRules: HandleUpdateProductRules;
 }
 
 type EditProductRulesFormAllProps = EditProductRulesFormProps &
@@ -30,15 +33,17 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   onCancel,
   deleteProduct,
   currentProductId,
+  getProductRules,
+  updateProductRules,
 }) => {
   React.useEffect(
     () => {
-      console.log('--- load rules');
+      getProductRules(currentProductId);
     },
-    []
+    [getProductRules, currentProductId]
   );
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => updateProductRules(data)),
     [handleSubmit]
   );
 
@@ -70,4 +75,4 @@ export default reduxForm<{}, EditProductRulesFormProps>({
   form: formNames.EDIT_PRODUCT_RULES,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(EditProductRulesForm);
+})(withSpinner()(EditProductRulesForm));

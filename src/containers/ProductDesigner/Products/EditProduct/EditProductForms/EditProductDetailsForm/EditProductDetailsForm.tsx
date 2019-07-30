@@ -4,23 +4,28 @@ import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import {
-  ProductDetails,
-} from 'containers/ProductDesigner/Products/ProductComponents';
+import { ProductDetails } from 'containers/ProductDesigner/Products/ProductComponents';
 
-import { HandleDeleteProduct } from 'store/domains';
+import {
+  HandleDeleteProduct,
+  HandleGetProductDetails,
+  HandleUpdateProductDetails,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface EditProductDetailsFormProps {
+interface EditProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  productTypeValue: SelectValues;
+  productType: SelectValues;
   deleteProduct: HandleDeleteProduct;
   currentProductId: number;
+  getProductDetails: HandleGetProductDetails;
+  updateProductDetails: HandleUpdateProductDetails;
 }
 
 type EditProductDetailsFormAllProps = EditProductDetailsFormProps &
@@ -29,25 +34,27 @@ type EditProductDetailsFormAllProps = EditProductDetailsFormProps &
 const EditProductDetailsForm: React.FC<EditProductDetailsFormAllProps> = ({
   handleSubmit,
   onCancel,
-  productTypeValue,
+  productType,
   deleteProduct,
   currentProductId,
+  getProductDetails,
+  updateProductDetails,
 }) => {
   React.useEffect(
     () => {
-      console.log('--- load details');
+      getProductDetails(currentProductId);
     },
-    []
+    [getProductDetails, currentProductId]
   );
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => updateProductDetails(data)),
     [handleSubmit]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
       <ProductDetails
-        productTypeValue={productTypeValue}
+        productType={productType && productType.value}
       />
       <Hr />
       <Flex
@@ -74,4 +81,4 @@ export default reduxForm<{}, EditProductDetailsFormProps>({
   form: formNames.EDIT_PRODUCT_DETAILS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(EditProductDetailsForm);
+})(withSpinner()(EditProductDetailsForm));

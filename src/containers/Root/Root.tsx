@@ -5,6 +5,7 @@ import styled from 'theme';
 
 import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
+import Notification from 'components/Notification';
 import PrivateRoute from 'components/PrivateRoute';
 
 import { basePath, cookiesExpires, cookiesNames } from 'consts';
@@ -91,7 +92,7 @@ const Root: React.FC<RootProps> = ({
                       component={() => page.component}
                     />
                   );
-                })
+              })
               }
               <PrivateRoute
                 // exact={true}
@@ -107,6 +108,7 @@ const Root: React.FC<RootProps> = ({
         <Footer />
       </RootWrapper>
       <Modals />
+      <Notification />
     </React.Fragment>
   );
 };

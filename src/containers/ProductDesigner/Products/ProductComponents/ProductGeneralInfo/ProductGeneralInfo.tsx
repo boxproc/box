@@ -12,6 +12,7 @@ import {
 import {
   productTypesOptions,
   schemeTypesOptions,
+  statementCyclesOptions,
   statusTypesOptions,
 } from 'consts';
 
@@ -148,11 +149,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={SelectField}
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"
-            options={[
-              { value: 1, label: 'Statement Cycle 1' },
-              { value: 2, label: 'Statement Cycle 2' },
-              { value: 3, label: 'Statement Cycle 3' },
-            ]}
+            options={statementCyclesOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>

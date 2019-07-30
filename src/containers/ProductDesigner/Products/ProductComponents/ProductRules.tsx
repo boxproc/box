@@ -3,7 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { HighLightCodeField, SelectField, TextField } from 'components/Form';
+import { HighLightCodeField, InputField, SelectField, TextField } from 'components/Form';
+
+import { actionTypesOptions } from 'consts';
 
 interface ProductRulesProps {}
 
@@ -16,13 +18,11 @@ const ProductRules: React.FC<ProductRulesProps> = () => {
       >
         <Box width={[1 / 2]} p="10px">
           <Field
-            id="event"
-            name="event"
-            isSearchable={true}
-            component={SelectField}
-            label="Event"
-            placeholder="Select Event"
-            options={[]}
+            id="eventId"
+            name="eventId"
+            component={InputField}
+            label="Event ID"
+            placeholder="Enter Event ID"
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -33,13 +33,13 @@ const ProductRules: React.FC<ProductRulesProps> = () => {
             component={SelectField}
             label="Action Type"
             placeholder="Select Action Type"
-            options={[]}
+            options={actionTypesOptions}
           />
         </Box>
         <Box width={[1]} p="10px">
           <Field
-            id="rulesDescription"
-            name="rulesDescription"
+            id="description"
+            name="description"
             placeholder="Enter Description"
             component={TextField}
             label="Description"
@@ -47,8 +47,8 @@ const ProductRules: React.FC<ProductRulesProps> = () => {
         </Box>
         <Box width={[1]} p="10px">
         <Field
-          id="rulesCode"
-          name="rulesCode"
+          id="script"
+          name="script"
           placeholder="Enter Code"
           component={HighLightCodeField}
           label="Code"

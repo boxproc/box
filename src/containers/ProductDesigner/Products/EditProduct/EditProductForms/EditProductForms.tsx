@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { withSpinner } from 'components/Spinner';
 import { Panel, Tabs } from 'components/Tabs';
-
-import { getDetailsTitle } from 'containers/ProductDesigner/Products/ProductComponents';
 
 import EditGeneralProductForm from './EditGeneralProductForm';
 import EditProductDetailsForm from './EditProductDetailsForm';
@@ -13,14 +12,14 @@ import { HandleDeleteProduct } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface EditProductFormsProps {
-  productTypeValue: SelectValues;
+  currentProductType: SelectValues;
   currentProductId: number;
   deleteProduct: HandleDeleteProduct;
   onCancel: () => void;
 }
 
 const EditProductForms: React.FC<EditProductFormsProps> = ({
-  productTypeValue,
+  currentProductType,
   currentProductId,
   deleteProduct,
   onCancel,
@@ -36,13 +35,14 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         />
       </Panel>
       <Panel
-        title={getDetailsTitle(productTypeValue)}
-        isDisabled={!productTypeValue}
+        title={(currentProductType ? currentProductType.label : '') + ' Details'}
+        isDisabled={!currentProductType}
         hintForDisabled="Select Product Type"
       >
         <EditProductDetailsForm
           currentProductId={currentProductId}
           deleteProduct={deleteProduct}
+          productType={currentProductType}
           onCancel={onCancel}
         />
       </Panel>
@@ -56,4 +56,4 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   );
 };
 
-export default EditProductForms;
+export default withSpinner()(EditProductForms);

@@ -8,21 +8,18 @@ import PrepaidDetails from './PrepaidDetails';
 import RevolvingCreditDetails from './RevolvingCreditDetails';
 import SavingsDetails from './SavingsDetails';
 
-import { SelectValues } from 'types';
-
 interface ProductDetailsProps {
-  productTypeValue: SelectValues;
+  productType: string | number;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({
-  productTypeValue,
+  productType,
 }) => {
-  const isLoan = productTypeValue && productTypeValue.value === productTypes.LOAN;
-  const isDebit = productTypeValue && productTypeValue.value === productTypes.DEBIT;
-  const isSavings = productTypeValue && productTypeValue.value === productTypes.SAVINGS;
-  const isPrepaid = productTypeValue && productTypeValue.value === productTypes.PREPAID;
-  const isRevolvingCredit =
-    productTypeValue && productTypeValue.value === productTypes.REVOLVING_CREDIT;
+  const isLoan = productType === productTypes.LOAN;
+  const isDebit = productType === productTypes.DEBIT;
+  const isSavings = productType === productTypes.SAVINGS;
+  const isPrepaid = productType === productTypes.PREPAID;
+  const isRevolvingCredit = productType === productTypes.REVOLVING_CREDIT;
 
   return (
     <React.Fragment>

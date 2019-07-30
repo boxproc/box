@@ -8,7 +8,6 @@ import { Hr } from 'components/Text';
 import { formNames } from 'consts';
 
 import {
-  getDetailsTitle,
   ProductDetails,
   ProductGeneralInfo,
 } from 'containers/ProductDesigner/Products/ProductComponents';
@@ -20,7 +19,7 @@ import {
 import { SelectValues } from 'types';
 
 interface AddProductFormProps {
-  productTypeValue: SelectValues;
+  currentProductType: SelectValues;
   addProduct: HandleAddProduct;
   onCancel: () => void;
 }
@@ -28,7 +27,7 @@ interface AddProductFormProps {
 type AddProductFormAllProps = AddProductFormProps & InjectedFormProps<{}, AddProductFormProps>;
 
 const AddProductForm: React.FC<AddProductFormAllProps> = ({
-  productTypeValue,
+  currentProductType,
   addProduct,
   onCancel,
   handleSubmit,
@@ -45,12 +44,12 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
           <ProductGeneralInfo />
         </Panel>
         <Panel
-          title={getDetailsTitle(productTypeValue)}
-          isDisabled={!productTypeValue}
+          title={(currentProductType ? currentProductType.label : '') + ' Details'}
+          isDisabled={!currentProductType}
           hintForDisabled="Select Product Type"
         >
           <ProductDetails
-            productTypeValue={productTypeValue}
+            productType={currentProductType && currentProductType.value}
           />
           <Hr />
           <OkCancelButtons

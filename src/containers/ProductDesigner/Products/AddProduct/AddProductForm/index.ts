@@ -20,7 +20,7 @@ const mapStateToProps = (state: StoreState) => ({
   initialValues: {
     historyRetentionNumberOfDay: 90,
   },
-  productTypeValue: formSelector(
+  currentProductType: formSelector(
     state,
     'productType'
   ),

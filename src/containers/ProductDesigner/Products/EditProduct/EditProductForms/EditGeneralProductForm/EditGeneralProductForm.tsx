@@ -8,17 +8,16 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+
 import {
   ProductGeneralInfo,
 } from 'containers/ProductDesigner/Products/ProductComponents';
 
 import { HandleDeleteProduct, HandleUpdateProduct } from 'store/domains';
 
-import { SelectValues } from 'types';
-
-interface EditGeneralProductFormProps {
+interface EditGeneralProductFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  productTypeValue?: SelectValues;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
   currentProductId: number;
@@ -32,9 +31,10 @@ const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
   onCancel,
   deleteProduct,
   currentProductId,
+  updateProduct,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => updateProduct(data)),
     [handleSubmit]
   );
 
@@ -70,4 +70,4 @@ export default reduxForm<{}, EditGeneralProductFormProps>({
   form: formNames.EDIT_GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(EditGeneralProductForm);
+})(withSpinner()(EditGeneralProductForm));

@@ -1,6 +1,8 @@
 import {
   ProductDataResp,
+  ProductDetailsResp,
   ProductFilterParams,
+  ProductRulesResp,
   ProductsDataResp,
 } from './types';
 
@@ -19,13 +21,29 @@ export enum ActionTypeKeys {
   FILTER_PRODUCTS_FULFILLED = 'productDesigner/products/FILTER_PRODUCTS_FULFILLED',
   FILTER_PRODUCTS_REJECTED = 'productDesigner/products/FILTER_PRODUCTS_REJECTED',
 
+  GET_PRODUCT_DETAILS = 'productDesigner/products/GET_PRODUCT_DETAILS',
+  GET_PRODUCT_DETAILS_FULFILLED = 'productDesigner/products/GET_PRODUCT_DETAILS_FULFILLED',
+  GET_PRODUCT_DETAILS_REJECTED = 'productDesigner/products/GET_PRODUCT_DETAILS_REJECTED',
+
+  GET_PRODUCT_RULES = 'productDesigner/products/GET_PRODUCT_RULES',
+  GET_PRODUCT_RULES_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULES_FULFILLED',
+  GET_PRODUCT_RULES_REJECTED = 'productDesigner/products/GET_PRODUCT_RULES_REJECTED',
+
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
   GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
 
-  UPDATE_PRODUCT= 'productDesigner/products/UPDATE_PRODUCT',
+  UPDATE_PRODUCT = 'productDesigner/products/UPDATE_PRODUCT',
   UPDATE_PRODUCT_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_FULFILLED',
   UPDATE_PRODUCT_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_REJECTED',
+
+  UPDATE_PRODUCT_DETAILS = 'productDesigner/products/UPDATE_PRODUCT_DETAILS',
+  UPDATE_PRODUCT_DETAILS_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_DETAILS_FULFILLED',
+  UPDATE_PRODUCT_DETAILS_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_DETAILS_REJECTED',
+
+  UPDATE_PRODUCT_RULES = 'productDesigner/products/UPDATE_PRODUCT_RULES',
+  UPDATE_PRODUCT_RULES_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_RULES_FULFILLED',
+  UPDATE_PRODUCT_RULES_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_RULES_REJECTED',
 
   ADD_PRODUCT = 'productDesigner/products/ADD_PRODUCT',
   ADD_PRODUCT_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FULFILLED',
@@ -99,6 +117,38 @@ export interface GetProductRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
 }
 
+// Get product details by id
+export interface GetProductDetailsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS;
+}
+
+export interface GetProductDetailsFulfilledAction {
+  readonly payload: ProductDetailsResp;
+  readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED;
+}
+
+export interface GetProductDetailsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_REJECTED;
+}
+
+// Get product rules by id
+export interface GetProductRulesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULES;
+}
+
+export interface GetProductRulesFulfilledAction {
+  readonly payload: ProductRulesResp;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED;
+}
+
+export interface GetProductRulesRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULES_REJECTED;
+}
+
 // Edit product
 export interface UpdateProductAction {
   readonly payload: Promise<object>;
@@ -113,6 +163,38 @@ export interface UpdateProductFulfilledAction {
 export interface UpdateProductRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REJECTED;
+}
+
+// Edit product details
+export interface UpdateProductDetailsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS;
+}
+
+export interface UpdateProductDetailsFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED;
+}
+
+export interface UpdateProductDetailsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_REJECTED;
+}
+
+// Edit product rules
+export interface UpdateProductRulesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES;
+}
+
+export interface UpdateProductRulesFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_FULFILLED;
+}
+
+export interface UpdateProductRulesRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_REJECTED;
 }
 
 // Add new product
@@ -136,5 +218,9 @@ export type ProductsActionTypes =
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
   | GetProductFulfilledAction
+  | GetProductDetailsFulfilledAction
+  | GetProductRulesFulfilledAction
   | AddProductFulfilledAction
-  | UpdateProductFulfilledAction;
+  | UpdateProductFulfilledAction
+  | UpdateProductDetailsFulfilledAction
+  | UpdateProductRulesFulfilledAction;

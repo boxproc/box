@@ -71,19 +71,19 @@ export enum statusTypes {
 }
 
 export const statusTypeCyclesOptions = [
-  { value: 'A', label: 'Active'},
-  { value: 'S', label: 'Suspend'},
+  { value: 'A', label: 'Active' },
+  { value: 'S', label: 'Suspend' },
 ];
 
 export const weeklyCycleTypeOptions = [
-  {value: 0, label: '-'},
-  { value: 1, label: 'Monday'},
-  { value: 2, label: 'Tuesday'},
-  { value: 3, label: 'Wednesday'},
-  { value: 4, label: 'Thursday'},
-  { value: 5, label: 'Friday'},
-  { value: 6, label: 'Saturday'},
-  { value: 7, label: 'Sunday'},
+  { value: 0, label: '-' },
+  { value: 1, label: 'Monday' },
+  { value: 2, label: 'Tuesday' },
+  { value: 3, label: 'Wednesday' },
+  { value: 4, label: 'Thursday' },
+  { value: 5, label: 'Friday' },
+  { value: 6, label: 'Saturday' },
+  { value: 7, label: 'Sunday' },
 ];
 
 export enum cycleTypes {
@@ -95,17 +95,17 @@ export enum cycleTypes {
 }
 
 export const typeOfCyclesEditorOptions = [
-  { value: 'M', label: 'Monthly'},
-  { value: 'N', label: 'Bi-monthly'},
-  { value: 'W', label: 'Weekly'},
-  { value: 'V', label: 'Bi-weekly'},
-  { value: 'F', label: 'Fixed number of days'},
+  { value: 'M', label: 'Monthly' },
+  { value: 'N', label: 'Bi-monthly' },
+  { value: 'W', label: 'Weekly' },
+  { value: 'V', label: 'Bi-weekly' },
+  { value: 'F', label: 'Fixed number of days' },
 ];
 
 export const statusTypesOptions = [
-  { value: 'A', label: 'Active'},
-  { value: 'I', label: 'Inactive'},
-  { value: 'D', label: 'Deleted'},
+  { value: 'A', label: 'Active' },
+  { value: 'I', label: 'Inactive' },
+  { value: 'D', label: 'Deleted' },
 ];
 
 export enum productTypes {
@@ -117,17 +117,17 @@ export enum productTypes {
 }
 
 export const productTypesOptions = [
-  { value: 'L', label: 'Loan'},
-  { value: 'P', label: 'Prepaid'},
-  { value: 'D', label: 'Debit'},
-  { value: 'S', label: 'Savings'},
+  { value: 'L', label: 'Loan' },
+  { value: 'P', label: 'Prepaid' },
+  { value: 'D', label: 'Debit' },
+  { value: 'S', label: 'Savings' },
   { value: 'C', label: 'Revolving credit' },
 ];
 
-export const executableTypeOptions  = [
-  { value: 'A', label: 'Api call'},
-  { value: 'S', label: 'Shell script'},
-  { value: 'J', label: 'Java'},
+export const executableTypeOptions = [
+  { value: 'A', label: 'Api call' },
+  { value: 'S', label: 'Shell script' },
+  { value: 'J', label: 'Java' },
 ];
 
 export enum schemeTypes {
@@ -139,11 +139,11 @@ export enum schemeTypes {
 }
 
 export const schemeTypesOptions = [
-  { value: 'M', label: 'MasterCard'},
-  { value: 'U', label: 'UPI'},
-  { value: 'A', label: 'Amex'},
-  { value: 'V', label: 'Visa'},
-  { value: 'X', label: 'Unspecified'},
+  { value: 'M', label: 'MasterCard' },
+  { value: 'U', label: 'UPI' },
+  { value: 'A', label: 'Amex' },
+  { value: 'V', label: 'Visa' },
+  { value: 'X', label: 'Unspecified' },
 ];
 
 export enum statementTypes {
@@ -155,11 +155,17 @@ export enum statementTypes {
 }
 
 export const statementTypesOptions = [
-  {value: 'M', label: 'Monthly'},
-  {value: 'N', label: 'Bi-monthly'},
-  {value: 'W', label: 'Weekly'},
-  {value: 'V', label: 'Bi-weekly'},
-  {value: 'F', label: 'Fixed number of days'},
+  { value: 'M', label: 'Monthly' },
+  { value: 'N', label: 'Bi-monthly' },
+  { value: 'W', label: 'Weekly' },
+  { value: 'V', label: 'Bi-weekly' },
+  { value: 'F', label: 'Fixed number of days' },
+];
+
+export const statementCyclesOptions = [
+  { value: 1, label: 'Statement Cycle' },
+  { value: 2, label: 'Statement Cycle 2' },
+  { value: 3, label: 'Statement Cycle 3' },
 ];
 
 export enum loanTypes {
@@ -168,8 +174,8 @@ export enum loanTypes {
 }
 
 export const loanTypesOptions = [
-  {value: 'B', label: 'Buy now, pay later'},
-  {value: 'I', label: 'Installments'},
+  { value: 'B', label: 'Buy now, pay later' },
+  { value: 'I', label: 'Installments' },
 ];
 
 export enum savingsTypes {
@@ -179,9 +185,9 @@ export enum savingsTypes {
 }
 
 export const savingsTypesOptions = [
-  {value: 'F', label: 'Fixed term'},
-  {value: 'U', label: 'Unlimited term'},
-  {value: 'R', label: 'Reward'},
+  { value: 'F', label: 'Fixed term' },
+  { value: 'U', label: 'Unlimited term' },
+  { value: 'R', label: 'Reward' },
 ];
 
 export enum dataTypes {
@@ -191,9 +197,19 @@ export enum dataTypes {
 }
 
 export const dataTypesOptions = [
-  {value: 'I', label: 'Integer'},
-  {value: 'S', label: 'String'},
-  {value: 'F', label: 'Float'},
+  { value: 'I', label: 'Integer' },
+  { value: 'S', label: 'String' },
+  { value: 'F', label: 'Float' },
+];
+
+export enum actionTypes {
+  VALUE = 'V',
+  APPROVE_DENY = 'R',
+}
+
+export const actionTypesOptions = [
+  { value: 'V', label: 'Value' },
+  { value: 'R', label: 'Approve / Deny' },
 ];
 
 export enum codeKeys {

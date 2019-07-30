@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   ${scrollbarCss};
   height: auto;
   padding: 0;
-  max-height: 180px;
+  max-height: 237px;
   border: 1px solid ${({ theme }) => theme.grayColor};
   border-radius: 2px;
   font-size: 13px;
@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   }
 
   pre {
-    min-height: 170px;
+    min-height: 237px;
   }
 `;
 

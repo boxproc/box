@@ -6,11 +6,10 @@ import { ProductsState } from './types';
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
   currentProductId: null,
-  revolvingCreditProduct: null,
-  loanProduct: null,
-  prepaidProduct: null,
-  debitProduct: null,
-  savingsProduct: null,
+  currentProduct: null,
+  currentProductDetails: null,
+  currentProductRules: null,
+
   filterProductsParams: null,
 });
 
@@ -35,30 +34,16 @@ const productsReducer =
 
       case ActionTypeKeys.GET_PRODUCT_FULFILLED:
         return state
+          .set('currentProduct', action.payload.product)
           .set('currentProductId', action.meta);
-      // if (action.payload.product.product_type === productTypes.REVOLVING_CREDIT) {
-      //   return state
-      //     .set('currentProductId', action.meta)
-      //     .set('revolvingCreditProduct', action.payload.product);
-      // } else if (action.payload.product.product_type === productTypes.LOAN) {
-      //   return state
-      //     .set('currentProductId', action.meta)
-      //     .set('loanProduct', action.payload.product);
-      // } else if (action.payload.product.product_type === productTypes.DEBIT) {
-      //   return state
-      //     .set('currentProductId', action.meta)
-      //     .set('debitProduct', action.payload.product);
-      // } else if (action.payload.product.product_type === productTypes.PREPAID) {
-      //   return state
-      //     .set('currentProductId', action.meta)
-      //     .set('prepaidProduct', action.payload.product);
-      // } else if (action.payload.product.product_type === productTypes.SAVINGS) {
-      //   return state
-      //     .set('currentProductId', action.meta)
-      //     .set('savingsProduct', action.payload.product);
-      // } else {
-      //   return state;
-      // }
+
+      case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
+        return state
+          .set('currentProductDetails', action.payload.product);
+
+      case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
+        return state
+          .set('currentProductRules', action.payload.product_rules);
 
       default: return state;
     }
