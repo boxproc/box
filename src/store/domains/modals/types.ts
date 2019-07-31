@@ -17,7 +17,6 @@ export interface ModalsState {
 
   isAddProductModal: boolean;
   isEditProductModal: boolean;
-  payloadEditProductModal?: { id: number };
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;

@@ -1,17 +1,15 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { productTypes } from 'consts';
-
 import { ActionTypeKeys, ProductsActionTypes } from './actionTypes';
 import { ProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
-  revolvingCreditProduct: null,
-  loanProduct: null,
-  prepaidProduct: null,
-  debitProduct: null,
-  savingsProduct: null,
+  currentProductId: null,
+  currentProduct: null,
+  currentProductDetails: null,
+  currentProductRules: null,
+
   filterProductsParams: null,
 });
 
@@ -34,20 +32,21 @@ const productsReducer =
           .set('products', action.payload.products)
           .set('filterProductsParams', action.meta);
 
+      case ActionTypeKeys.GET_PRODUCT_ID:
+        return state
+          .set('currentProductId', action.payload);
+
       case ActionTypeKeys.GET_PRODUCT_FULFILLED:
-        if (action.payload.product.product_type === productTypes.REVOLVING_CREDIT) {
-          return state.set('revolvingCreditProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.LOAN) {
-          return state.set('loanProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.DEBIT) {
-          return state.set('debitProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.PREPAID) {
-          return state.set('prepaidProduct', action.payload.product);
-        } else if (action.payload.product.product_type === productTypes.SAVINGS) {
-          return state.set('savingsProduct', action.payload.product);
-        } else {
-          return state;
-        }
+        return state
+          .set('currentProduct', action.payload.product);
+
+      case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
+        return state
+          .set('currentProductDetails', action.payload.product);
+
+      case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
+        return state
+          .set('currentProductRules', action.payload.product_rules);
 
       default: return state;
     }

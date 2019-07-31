@@ -7,7 +7,7 @@ declare module 'redux-seamless-immutable';
 declare module 'react-burger-menu/lib/menus/slide';
 declare module 'react-select/lib/*';
 declare module 'react-cron-generator';
-declare module 'prismjs';
+declare module 'prismjs/components/prism-core';
 
 /// <reference types="node" />
 /// <reference types="react" />

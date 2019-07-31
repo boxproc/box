@@ -7,8 +7,8 @@ import { Container } from 'components/Block';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 
-import { basePath, cookiesExpires, cookiesNames } from 'consts';
-// import { basePath, cookiesNames } from 'consts';
+// import { basePath, cookiesExpires, cookiesNames } from 'consts';
+import { basePath, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';
 import Login from 'containers/Login';
@@ -41,26 +41,26 @@ interface RootProps {
 
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
-  sessionId,
-  userName,
-  isRememberedMe,
+  // sessionId,
+  // userName,
+  // isRememberedMe,
 }) => {
   const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID);
-  React.useEffect(
-    () => {
-      if (sessionId) {
-        cookiesUtil.set(cookiesNames.SESSION_ID, sessionId, {
-          expires: cookiesExpires.SESSION_ID,
-        });
-      }
-      if (isLoggedIn && isRememberedMe) {
-        cookiesUtil.set(cookiesNames.USER_NAME, userName, {
-          maxAge: cookiesExpires.WEEK,
-        });
-      }
-    },
-    [sessionId, userName, isRememberedMe, isLoggedIn]
-  );
+  // React.useEffect(
+  //   () => {
+  //     if (sessionId) {
+  //       cookiesUtil.set(cookiesNames.SESSION_ID, sessionId, {
+  //         expires: cookiesExpires.SESSION_ID,
+  //       });
+  //     }
+  //     if (isLoggedIn && isRememberedMe) {
+  //       cookiesUtil.set(cookiesNames.USER_NAME, userName, {
+  //         maxAge: cookiesExpires.WEEK,
+  //       });
+  //     }
+  //   },
+  //   [sessionId, userName, isRememberedMe, isLoggedIn]
+  // );
 
   return (
     <React.Fragment>
@@ -91,7 +91,7 @@ const Root: React.FC<RootProps> = ({
                       component={() => page.component}
                     />
                   );
-                })
+              })
               }
               <PrivateRoute
                 // exact={true}

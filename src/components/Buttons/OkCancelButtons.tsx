@@ -10,7 +10,7 @@ const Wrapper = styled(Box)`
   position: relative;
 `;
 
-interface OkCancelButtonProps {
+interface OkCancelButtonsProps {
   okText?: string;
   cancelText?: string;
   onCancel?: () => void;
@@ -21,7 +21,7 @@ interface OkCancelButtonProps {
   hintCancel?: string;
 }
 
-export const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
+export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   okText = 'Ok',
   cancelText = 'Cancel',
   onCancel,
@@ -33,7 +33,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
 }) => {
   return (
     <Flex alignItems="center">
-      <Wrapper mr="10px" mt="20px">
+      <Wrapper mr="15px" mt="10px">
         <Button
           text={okText}
           disabled={disabledOk}
@@ -46,7 +46,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonProps> = ({
           />
         )}
       </Wrapper>
-      <Wrapper mt="20px">
+      <Wrapper mt="10px">
         <Button
           text={cancelText}
           onClick={onCancel}

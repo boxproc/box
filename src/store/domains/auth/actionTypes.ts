@@ -1,5 +1,6 @@
-import { ApiResponse, MessageResponse } from 'types';
 import { AuthResponse } from './types';
+
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   USER_LOGIN = 'user/USER_LOGIN',
@@ -39,7 +40,7 @@ export interface UserLogoutAction {
 }
 
 export interface UserLogoutActionFulfilledAction {
-  readonly payload: MessageResponse;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.USER_LOGOUT_FULFILLED;
 }
 

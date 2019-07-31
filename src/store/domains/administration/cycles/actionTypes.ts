@@ -3,7 +3,7 @@ import {
   AdminCyclesEditorEditableItemPrepared,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_CYCLE_EDITOR = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR',
@@ -51,7 +51,7 @@ export interface AddAdminCycleEditorAction {
 }
 
 export interface AddAdminCycleEditorFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR_FULFILLED;
   readonly meta: AdminCyclesEditorEditableItemPrepared;
 }
@@ -67,7 +67,7 @@ export interface DeleteAdminCycleEditorAction {
 }
 
 export interface DeleteAdminCycleEditorFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR_FULFILLED;
   meta: number;
 }
@@ -83,7 +83,7 @@ export interface UpdateAdminCycleEditorAction {
 }
 
 export interface UpdateAdminCycleEditorFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED;
   readonly meta: AdminCyclesEditorEditableItemPrepared;
 }
