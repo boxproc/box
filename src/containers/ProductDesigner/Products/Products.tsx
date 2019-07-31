@@ -13,7 +13,7 @@ import {
 
 import {
   HandleFilterProducts,
-  HandleGetProduct,
+  HandleGetProductId,
   HandleGetProducts,
   OpenModal,
   ProductFilterParams,
@@ -27,7 +27,7 @@ import { cookiesUtil } from 'utils';
 interface ProductsProps {
   openModal: OpenModal;
   productItems: Array<ProductItem>;
-  getProduct: HandleGetProduct;
+  getProductId: HandleGetProductId;
   getProducts: HandleGetProducts;
   filterProducts: HandleFilterProducts;
   institutionsOptions: Array<SelectValues>;
@@ -36,7 +36,7 @@ interface ProductsProps {
 
 export const Products: React.FC<ProductsProps> = ({
   openModal,
-  getProduct,
+  getProductId,
   getProducts,
   productItems,
   institutionsOptions,
@@ -71,14 +71,14 @@ export const Products: React.FC<ProductsProps> = ({
       }
       return {
         onDoubleClick: () => {
-          getProduct(rowInfo.original.id);
+          getProductId(rowInfo.original.id);
           openModal({
             name: modalNames.EDIT_PRODUCT,
           });
         },
       };
     },
-    [openModal, getProduct]
+    [openModal, getProductId]
   );
 
   const productParams = cookiesUtil.get(cookiesNames.PRODUCTS_FILTER);

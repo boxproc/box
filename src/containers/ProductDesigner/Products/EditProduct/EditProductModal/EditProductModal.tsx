@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Modal from 'components/Modal';
-import { withSpinner } from 'components/Spinner';
 
 import { modalNames } from 'consts';
 
@@ -30,6 +29,4 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(EditProductModal);
+export default EditProductModal;

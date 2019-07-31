@@ -1,5 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues, SuccessResponseStatusType } from 'types';
+
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface AdminSchedulerItemResp {
   id: number;
@@ -55,7 +56,7 @@ export interface AdminSchedulerEditableItemPrepared extends AdminSchedulerEditab
   executable_type?: string | number;
 }
 
-export interface AdminSchedulerDataResp extends SuccessResponseStatusType {
+export interface AdminSchedulerDataResp extends ResponseStatusType {
   s_scheduler: Array<AdminSchedulerItemResp>;
 }
 

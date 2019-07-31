@@ -5,8 +5,6 @@ import { handleSendNotification } from './notifications';
 
 import { StoreState } from 'store/StoreState';
 
-import { MessageResponse } from 'types';
-
 export const withErrorHandler = async (
   fn: () => Promise<any>,
   dispatch?: ThunkDispatch<StoreState, {}, Action>,
@@ -22,12 +20,4 @@ export const withErrorHandler = async (
       return Promise.reject(e);
     }
   }
-};
-
-export const getApiResponseMessage = (response: MessageResponse): string => {
-  if (response && response.statusCode === 200) {
-    return response.message || 'Successfully submitted';
-  }
-
-  return (response && response.message) || 'An interface has returned an error.';
 };

@@ -1,6 +1,6 @@
 import { AdminSchedulerDataResp } from './types';
 
-import { SuccessResponseStatusType } from 'types';
+import { ResponseStatusType } from 'types';
 
 export const AdminSchedulerData: AdminSchedulerDataResp = {
   response_status: {
@@ -36,7 +36,7 @@ export const AdminSchedulerData: AdminSchedulerDataResp = {
   ],
 };
 
-export const SuccessResponseStatus: SuccessResponseStatusType = {
+export const SuccessResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

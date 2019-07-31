@@ -6,7 +6,7 @@ import Products from './Products';
 import {
   createLoadingSelector,
   handleFilterProducts,
-  handleGetProduct,
+  handleGetProductId,
   handleGetProducts,
   openModal,
   ProductsActionTypes,
@@ -20,7 +20,6 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCTS,
   ProductsActionTypes.FILTER_PRODUCTS,
-  ProductsActionTypes.GET_PRODUCT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -34,7 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getProducts: handleGetProducts,
     filterProducts: handleFilterProducts,
-    getProduct: handleGetProduct,
+    getProductId: handleGetProductId,
     openModal,
   },
   dispatch

@@ -23,9 +23,6 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isAddAdminCycleEditorModal: false,
   isEditCycleEditorRecordsModal: false,
   payloadEditAdminCycleEditorModal: null,
-
-  isNotification: false,
-  notificationMessage: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
@@ -39,16 +36,6 @@ const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => 
       return state
         .set(`is${action.payload}`, false)
         .set(`payload${action.payload}`, null);
-
-    case ActionTypeKeys.SHOW_NOTIFICATION:
-      return state
-        .set('isNotification', true)
-        .set('notificationMessage', action.payload);
-
-    case ActionTypeKeys.HIDE_NOTIFICATION:
-      return state
-        .set('isNotification', false)
-        .set('notificationMessage', '');
 
     default: return state;
   }

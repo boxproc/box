@@ -1,35 +1,26 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import EditGeneralProductForm from './EditGeneralProductForm';
+import AddSystemPropertyForm from './AddSystemPropertyForm';
 
 import {
+  AdminSysPropsActionTypes,
   createLoadingSelector,
-  handleDeleteProduct,
-  handleGetProduct,
-  handleUpdateProduct,
-  ProductsActionTypes,
-  selectCurrentProduct,
+  handleAddAdminSysProp,
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.UPDATE_PRODUCT,
-  ProductsActionTypes.DELETE_PRODUCT,
-  ProductsActionTypes.GET_PRODUCT,
+  AdminSysPropsActionTypes.ADD_ADMIN_SYS_PROP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: selectCurrentProduct(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteProduct: handleDeleteProduct,
-    updateProduct: handleUpdateProduct,
-    getProduct: handleGetProduct,
+    addAdminSysProp: handleAddAdminSysProp,
   },
   dispatch
 );
@@ -37,4 +28,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditGeneralProductForm);
+)(AddSystemPropertyForm);

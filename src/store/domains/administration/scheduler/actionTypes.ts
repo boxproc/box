@@ -2,7 +2,7 @@ import {
   AdminSchedulerDataResp, AdminSchedulerEditableItemPrepared,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS',
@@ -52,7 +52,7 @@ export interface AddAdminSchedulerJobAction {
 }
 
 export interface AddAdminSchedulerJobFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS_FULFILLED;
   meta: AdminSchedulerEditableItemPrepared;
 }
@@ -69,7 +69,7 @@ export interface DeleteAdminSchedulerJobAction {
 }
 
 export interface DeleteAdminSchedulerJobFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED;
   meta: number;
 }
@@ -85,7 +85,7 @@ export interface UpdateAdminSchedulerJobAction {
 }
 
 export interface UpdateAdminSchedulerJobFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED;
   readonly meta: AdminSchedulerEditableItemPrepared;
 }

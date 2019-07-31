@@ -1,5 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues, SuccessResponseStatusType } from 'types';
+
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface ProductItemPlainResp {
   id: number;
@@ -18,11 +19,11 @@ export interface ProductItemResp extends ProductItemPlainResp {
   default_statement_cycle_id: string | number;
 }
 
-export interface ProductsDataResp extends SuccessResponseStatusType {
+export interface ProductsDataResp extends ResponseStatusType {
   products: Array<ProductItemResp>;
 }
 
-export interface ProductDataResp extends SuccessResponseStatusType {
+export interface ProductDataResp extends ResponseStatusType {
   product: ProductItemResp;
 }
 
@@ -81,7 +82,7 @@ export interface RevolvingCreditProductItemResp {
   limit_sharing_allowed_flag: string;
 }
 
-export interface RevolvingCreditProductResp extends SuccessResponseStatusType {
+export interface RevolvingCreditProductResp extends ResponseStatusType {
   product: RevolvingCreditProductItemResp;
 }
 
@@ -110,7 +111,7 @@ export interface LoanProductItemResp {
   payment_grace_number_of_days: number;
 }
 
-export interface LoanProductResp extends SuccessResponseStatusType {
+export interface LoanProductResp extends ResponseStatusType {
   product: LoanProductItemResp;
 }
 
@@ -129,7 +130,7 @@ export interface PrepaidProductItemResp {
   reload_allowed: string;
 }
 
-export interface PrepaidProductResp extends SuccessResponseStatusType {
+export interface PrepaidProductResp extends ResponseStatusType {
   product: PrepaidProductItemResp;
 }
 
@@ -146,7 +147,7 @@ export interface DebitProductItemResp {
   overdraft_allowed: string;
 }
 
-export interface DebitProductResp extends SuccessResponseStatusType {
+export interface DebitProductResp extends ResponseStatusType {
   product: DebitProductItemResp;
 }
 
@@ -165,7 +166,7 @@ export interface SavingsProductItemResp {
   maximum_monthly_deposit: number;
 }
 
-export interface SavingsProductResp extends SuccessResponseStatusType {
+export interface SavingsProductResp extends ResponseStatusType {
   product: SavingsProductItemResp;
 }
 
@@ -211,7 +212,7 @@ export type NewProduct = ProductItemDetails & ProductItemGeneral;
 
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
-export interface ProductRulesResp extends SuccessResponseStatusType {
+export interface ProductRulesResp extends ResponseStatusType {
   product_rules: ProductRulesItemResp;
 }
 

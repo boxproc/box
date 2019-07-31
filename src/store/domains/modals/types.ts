@@ -30,7 +30,4 @@ export interface ModalsState {
 
   isEditAdminUserModal: boolean;
   payloadEditAdminUserModal?: any;
-
-  isNotification: boolean;
-  notificationMessage: string;
 }

@@ -14,12 +14,13 @@ import {
   ProductGeneralInfo,
 } from 'containers/ProductDesigner/Products/ProductComponents';
 
-import { HandleDeleteProduct, HandleUpdateProduct } from 'store/domains';
+import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
 
 interface EditGeneralProductFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
+  getProduct: HandleGetProduct;
   currentProductId: number;
 }
 
@@ -32,7 +33,14 @@ const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
   deleteProduct,
   currentProductId,
   updateProduct,
+  getProduct,
 }) => {
+  React.useEffect(
+    () => {
+      getProduct(currentProductId);
+    },
+    [getProduct, currentProductId]
+  );
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProduct(data)),
     [handleSubmit]
@@ -51,8 +59,8 @@ const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
         justifyContent="space-between"
       >
         <OkCancelButtons
-          okText="Save"
-          cancelText="Cancel"
+          okText="Save Product"
+          cancelText="Close"
           onCancel={onCancel}
         />
         <Button

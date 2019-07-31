@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues, SuccessResponseStatusType } from 'types';
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface AdminUserItemResp {
   id: number;
@@ -51,7 +51,7 @@ export interface AdminUserEditableItem {
   datetimeOfLastLogin?: string;
 }
 
-export interface AdminUserDataResp extends SuccessResponseStatusType {
+export interface AdminUserDataResp extends ResponseStatusType {
   users: Array<AdminUserItemResp>;
 }
 

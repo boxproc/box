@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { cookiesNames, formNames, modalNames } from 'consts';
 
-import { closeModal, showNotification } from 'store/domains/modals';
+import { closeModal } from 'store/domains/modals';
 
 import {
   ActionTypeKeys,
@@ -12,6 +12,7 @@ import {
   FilterProductsAction,
   GetProductAction,
   GetProductDetailsAction,
+  GetProductIdAction,
   GetProductRulesAction,
   GetProductsAction,
   UpdateProductAction,
@@ -61,6 +62,9 @@ export type HandleDeleteProduct = (id: number) => Thunk<void>;
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
 export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
 
+export type GetProductId = (id: number) => GetProductIdAction;
+export type HandleGetProductId = (id: number) => void;
+
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = (id: number) => Thunk<void>;
 
@@ -97,6 +101,11 @@ export const filterProducts: FilterProducts = params => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
   payload: api.filterProducts(params),
   meta: params,
+});
+
+export const getProductId: GetProductId = id => ({
+  type: ActionTypeKeys.GET_PRODUCT_ID,
+  payload: id,
 });
 
 export const getProduct: GetProduct = id => ({
@@ -179,6 +188,9 @@ export const handleFilterProducts: HandleFilterProducts = params =>
     );
   };
 
+export const handleGetProductId: HandleGetProductId = id =>
+  getProductId(id);
+
 export const handleGetProduct: HandleGetProduct = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -216,6 +228,7 @@ export const handleAddProduct: HandleAddProduct = values =>
         const preparedValues = prepareNewProductValuesToSend(values);
 
         await dispatch(addProduct(preparedValues));
+        await dispatch(closeModal(modalNames.ADD_PRODUCT));
         await dispatch(handleGetProducts());
       },
       dispatch
@@ -230,7 +243,6 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
 
         await dispatch(updateProduct(preparedValues));
         await dispatch(handleGetProducts());
-        await dispatch(showNotification('Successfully updated'));
       },
       dispatch
     );
@@ -248,7 +260,6 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
 
         await dispatch(updateProductDetails(preparedValues));
         await dispatch(handleGetProducts());
-        await dispatch(showNotification('Successfully updated'));
       },
       dispatch
     );
@@ -262,7 +273,6 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
 
         await dispatch(updateProductRules(preparedValues));
         await dispatch(handleGetProducts());
-        await dispatch(showNotification('Successfully updated'));
       },
       dispatch
     );

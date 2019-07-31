@@ -6,7 +6,7 @@ import {
   ProductsDataResp,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType, } from 'types';
+import { ApiResponse, ResponseStatusType, } from 'types';
 
 export enum ActionTypeKeys {
   GET_PRODUCTS = 'productDesigner/products/GET_PRODUCTS',
@@ -28,6 +28,8 @@ export enum ActionTypeKeys {
   GET_PRODUCT_RULES = 'productDesigner/products/GET_PRODUCT_RULES',
   GET_PRODUCT_RULES_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULES_FULFILLED',
   GET_PRODUCT_RULES_REJECTED = 'productDesigner/products/GET_PRODUCT_RULES_REJECTED',
+
+  GET_PRODUCT_ID = 'productDesigner/products/GET_PRODUCT_ID',
 
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
@@ -73,7 +75,7 @@ export interface DeleteProductAction {
 }
 
 export interface DeleteProductFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FULFILLED;
   readonly meta: number;
 }
@@ -100,6 +102,12 @@ export interface FilterProductsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
 }
 
+// Get product ID
+export interface GetProductIdAction {
+  readonly payload: number;
+  readonly type: ActionTypeKeys.GET_PRODUCT_ID;
+}
+
 // Get product by id
 export interface GetProductAction {
   readonly payload: Promise<object>;
@@ -109,7 +117,6 @@ export interface GetProductAction {
 export interface GetProductFulfilledAction {
   readonly payload: ProductDataResp;
   readonly type: ActionTypeKeys.GET_PRODUCT_FULFILLED;
-  readonly meta: number;
 }
 
 export interface GetProductRejectedAction {
@@ -156,7 +163,7 @@ export interface UpdateProductAction {
 }
 
 export interface UpdateProductFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FULFILLED;
 }
 
@@ -172,7 +179,7 @@ export interface UpdateProductDetailsAction {
 }
 
 export interface UpdateProductDetailsFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED;
 }
 
@@ -188,7 +195,7 @@ export interface UpdateProductRulesAction {
 }
 
 export interface UpdateProductRulesFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_FULFILLED;
 }
 
@@ -204,7 +211,7 @@ export interface AddProductAction {
 }
 
 export interface AddProductFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FULFILLED;
 }
 
@@ -223,4 +230,5 @@ export type ProductsActionTypes =
   | AddProductFulfilledAction
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction
-  | UpdateProductRulesFulfilledAction;
+  | UpdateProductRulesFulfilledAction
+  | GetProductIdAction;

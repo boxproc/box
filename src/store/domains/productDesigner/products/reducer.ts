@@ -32,10 +32,13 @@ const productsReducer =
           .set('products', action.payload.products)
           .set('filterProductsParams', action.meta);
 
+      case ActionTypeKeys.GET_PRODUCT_ID:
+        return state
+          .set('currentProductId', action.payload);
+
       case ActionTypeKeys.GET_PRODUCT_FULFILLED:
         return state
-          .set('currentProduct', action.payload.product)
-          .set('currentProductId', action.meta);
+          .set('currentProduct', action.payload.product);
 
       case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
         return state

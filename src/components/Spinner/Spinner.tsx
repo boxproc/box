@@ -18,7 +18,6 @@ const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
   background: ${({ backgroundColor, theme }) => backgroundColor || theme.whiteOpacityColor};
   z-index: 100;
 `;

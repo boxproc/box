@@ -33,7 +33,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
 }) => {
   return (
     <Flex alignItems="center">
-      <Wrapper mr="10px" mt="10px">
+      <Wrapper mr="15px" mt="10px">
         <Button
           text={okText}
           disabled={disabledOk}

@@ -2,6 +2,7 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
+import { ExternalSpinnerProps , withSpinner } from 'components/Spinner';
 import { Panel, Tabs } from 'components/Tabs';
 import { Hr } from 'components/Text';
 
@@ -18,7 +19,7 @@ import {
 
 import { SelectValues } from 'types';
 
-interface AddProductFormProps {
+interface AddProductFormProps extends ExternalSpinnerProps {
   currentProductType: SelectValues;
   addProduct: HandleAddProduct;
   onCancel: () => void;
@@ -67,4 +68,4 @@ export default reduxForm<{}, AddProductFormProps>({
   form: formNames.ADD_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(AddProductForm);
+})(withSpinner()(AddProductForm));

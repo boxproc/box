@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SuccessResponseStatusType } from 'types';
+import { ResponseStatusType } from 'types';
 
 export interface EditableAdminSysProp {
   propertyName?: string;
@@ -37,7 +37,7 @@ export interface AdminSysPropsItem {
   lockedFlag: string;
 }
 
-export interface AdminSysPropsDataResp extends SuccessResponseStatusType {
+export interface AdminSysPropsDataResp extends ResponseStatusType {
   system_properties: Array<AdminSysPropsItemResp>;
 }
 

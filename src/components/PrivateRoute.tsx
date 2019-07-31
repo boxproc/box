@@ -6,7 +6,7 @@ import { cookiesUtil } from 'utils';
 
 interface PrivateRouteProps {
   path: string;
-  component: any;
+  component: React.ElementType;
   exact?: boolean;
 }
 

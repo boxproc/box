@@ -65,7 +65,3 @@ export const selectUsersValues = createSelector(
     };
   }
 );
-
-export const selectIsNotification = (state: StoreState) => state.modals.isNotification;
-
-export const selectNotificationMessage = (state: StoreState) => state.modals.notificationMessage;

@@ -11,14 +11,25 @@ export type Thunk<R> = ThunkAction<R, StoreState, {}, AnyAction>;
 export type VoidPromiseThunk = () => Thunk<Promise<void>>;
 export type VoidThunk = () => Thunk<void>;
 
+export interface ResponseStatus {
+  status_code: number;
+  error_message?: string;
+  error_description?: string;
+}
+
+export interface ResponseStatusType {
+  response_status: ResponseStatus;
+}
+
 export interface MessageResponse {
   statusCode: number;
   message: string;
+  body?: ResponseStatusType;
 }
 
 export type ApiResponse = SuperagentApiResponse;
 
-export type SendNotification = (res: MessageResponse | any, isCatch?: boolean)
+export type SendNotification = (res: MessageResponse, isCatch?: boolean)
   => (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export interface PromiseAction<R> extends Action {
@@ -48,12 +59,4 @@ export interface KeyValuePair<T = number> {
 export interface SelectValues<T = number | string> {
   value: T;
   label: string;
-}
-
-export interface StatusCode {
-  status_code: number;
-}
-
-export interface SuccessResponseStatusType {
-  response_status: StatusCode;
 }

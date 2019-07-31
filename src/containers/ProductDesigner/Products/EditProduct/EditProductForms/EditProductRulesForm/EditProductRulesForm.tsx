@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, OkCancelButtons } from 'components/Buttons';
+import { OkCancelButtons } from 'components/Buttons';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { Hr } from 'components/Text';
 
@@ -12,14 +12,12 @@ import { formNames } from 'consts';
 import { ProductRules } from 'containers/ProductDesigner/Products/ProductComponents';
 
 import {
-  HandleDeleteProduct,
   HandleGetProductRules,
   HandleUpdateProductRules,
 } from 'store/domains';
 
 interface EditProductRulesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  deleteProduct: HandleDeleteProduct;
   currentProductId: number;
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
@@ -31,7 +29,6 @@ type EditProductRulesFormAllProps = EditProductRulesFormProps &
 const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   handleSubmit,
   onCancel,
-  deleteProduct,
   currentProductId,
   getProductRules,
   updateProductRules,
@@ -56,15 +53,9 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         justifyContent="space-between"
       >
         <OkCancelButtons
-          okText="Save"
-          cancelText="Cancel"
+          okText="Save Rules"
+          cancelText="Close"
           onCancel={onCancel}
-        />
-        <Button
-          text="delete"
-          iconName="delete"
-          type="reset"
-          onClick={() => deleteProduct(currentProductId)}
         />
       </Flex>
     </form>

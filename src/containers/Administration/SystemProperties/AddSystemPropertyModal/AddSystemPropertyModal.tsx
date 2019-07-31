@@ -3,8 +3,6 @@ import React from 'react';
 import Modal from 'components/Modal';
 import { modalNames } from 'consts';
 
-import { withSpinner } from 'components/Spinner';
-
 import { CloseModal, HandleAddAdminSysProp } from 'store/domains';
 
 // tslint:disable-next-line: max-line-length
@@ -17,7 +15,6 @@ interface AddSystemPropertyModalProps {
 
 const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
-  addAdminSysProp,
 }) => {
   return (
     <Modal
@@ -27,12 +24,9 @@ const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
     >
       <AddSystemPropertyForm
         onCancel={() => closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY)}
-        addAdminSysProp={addAdminSysProp}
       />
     </Modal>
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(AddSystemPropertyModal);
+export default AddSystemPropertyModal;

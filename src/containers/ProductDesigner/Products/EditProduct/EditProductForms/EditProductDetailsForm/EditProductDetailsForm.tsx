@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, OkCancelButtons } from 'components/Buttons';
+import { OkCancelButtons } from 'components/Buttons';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { Hr } from 'components/Text';
 
@@ -12,7 +12,6 @@ import { formNames } from 'consts';
 import { ProductDetails } from 'containers/ProductDesigner/Products/ProductComponents';
 
 import {
-  HandleDeleteProduct,
   HandleGetProductDetails,
   HandleUpdateProductDetails,
 } from 'store/domains';
@@ -22,7 +21,6 @@ import { SelectValues } from 'types';
 interface EditProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   productType: SelectValues;
-  deleteProduct: HandleDeleteProduct;
   currentProductId: number;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
@@ -35,7 +33,6 @@ const EditProductDetailsForm: React.FC<EditProductDetailsFormAllProps> = ({
   handleSubmit,
   onCancel,
   productType,
-  deleteProduct,
   currentProductId,
   getProductDetails,
   updateProductDetails,
@@ -62,15 +59,9 @@ const EditProductDetailsForm: React.FC<EditProductDetailsFormAllProps> = ({
         justifyContent="space-between"
       >
         <OkCancelButtons
-          okText="Save"
-          cancelText="Cancel"
+          okText="Save Details"
+          cancelText="Close"
           onCancel={onCancel}
-        />
-        <Button
-          text="delete"
-          iconName="delete"
-          type="reset"
-          onClick={() => deleteProduct(currentProductId)}
         />
       </Flex>
     </form>

@@ -33,7 +33,8 @@ export const handleSendNotification: SendNotification =
             dispatch(getNotification(
               `${res.statusCode} Internal Server Error`,
               // tslint:disable-next-line: max-line-length
-              'The server encountered an unexpected condition that prevented it from fulfilling the request.'
+              'The server encountered an unexpected condition that prevented it from fulfilling the request.',
+              res ? res.toString() : null
             ));
           }
         } else if (res && res.body && res.body.response_status) {

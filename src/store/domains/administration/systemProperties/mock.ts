@@ -1,6 +1,6 @@
 import { AdminSysPropsDataResp } from './types';
 
-import { SuccessResponseStatusType } from 'types';
+import { ResponseStatusType } from 'types';
 
 export const AdminSysPropsItemsData: AdminSysPropsDataResp = {
   response_status: {
@@ -60,7 +60,7 @@ export const AdminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
   ],
 };
 
-export const SuccessResponseStatus: SuccessResponseStatusType = {
+export const SuccessResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

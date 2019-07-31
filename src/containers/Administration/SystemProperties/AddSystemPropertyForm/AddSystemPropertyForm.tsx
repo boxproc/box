@@ -5,6 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
 import { formNames } from 'consts';
 
@@ -12,7 +13,7 @@ import { HandleAddAdminSysProp } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
-interface AddSystemPropertyFormProps {
+interface AddSystemPropertyFormProps extends ExternalSpinnerProps {
   addAdminSysProp: HandleAddAdminSysProp;
   onCancel: () => void;
 }
@@ -81,4 +82,4 @@ export default reduxForm<{}, AddSystemPropertyFormProps>({
   form: formNames.ADD_ADMIN_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(AddSystemPropertyForm);
+})(withSpinner()(AddSystemPropertyForm));

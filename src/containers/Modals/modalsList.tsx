@@ -2,13 +2,14 @@ import React from 'react';
 
 import { modalNames } from 'consts';
 
+// tslint:disable-next-line: max-line-length
+import AddSystemPropertyModal from 'containers/Administration/SystemProperties/AddSystemPropertyModal';
 import AddProductModal from 'containers/ProductDesigner/Products/AddProduct/AddProductModal';
 import EditProductModal from 'containers/ProductDesigner/Products/EditProduct/EditProductModal';
 
 import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
 import AddSchedulerModal from './Administration/Scheduler/AddSchedulerModal';
 import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
-import AddSystemPropertyModal from './Administration/SystemProperties/AddSystemPropertyModal';
 
 import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
 import AddUsersModal from './Administration/Users/AddUsersModal';

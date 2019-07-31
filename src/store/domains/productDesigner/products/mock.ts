@@ -1,6 +1,6 @@
 import { ProductDetailsResp, ProductRulesResp, ProductsDataResp } from './types';
 
-import { SuccessResponseStatusType } from 'types';
+import { ResponseStatusType } from 'types';
 
 export const productItemsData: ProductsDataResp = {
   response_status: {
@@ -170,7 +170,7 @@ export const productRulesData: ProductRulesResp = {
   },
 };
 
-export const successResponseStatus: SuccessResponseStatusType = {
+export const successResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

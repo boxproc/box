@@ -3,8 +3,6 @@ import React from 'react';
 import Modal from 'components/Modal';
 import { modalNames } from 'consts';
 
-import { withSpinner } from 'components/Spinner';
-
 import AddProductForm from 'containers/ProductDesigner/Products/AddProduct/AddProductForm';
 
 import { CloseModal } from 'store/domains';
@@ -30,6 +28,4 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(AddProductModal);
+export default AddProductModal;

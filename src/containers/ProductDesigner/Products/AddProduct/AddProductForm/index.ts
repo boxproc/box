@@ -11,12 +11,19 @@ import {
 } from 'store/StoreState';
 
 import {
+  createLoadingSelector,
   handleAddProduct,
+  ProductsActionTypes,
 } from 'store/domains';
 
 const formSelector = formValueSelector(formNames.ADD_PRODUCT);
 
+const loadingSelector = createLoadingSelector([
+  ProductsActionTypes.ADD_PRODUCT,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
   initialValues: {
     historyRetentionNumberOfDay: 90,
   },
