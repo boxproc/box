@@ -24,16 +24,12 @@ export const selectDefaultProductItems = (state: StoreState) =>
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectDefaultInstitutions,
-  selectCurrencyCodes,
-  (products, institutions, currencyCodes) => products && products.asMutable().map(product => {
+  (products, institutions) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
     }
     return {
       ...prepareGeneralProductItem(product),
-      currencyCode: currencyCodes
-        && currencyCodes.find(el => el.label === product.currency_code)
-        && currencyCodes.find(el => el.label === product.currency_code).label,
       institutionId: institutions.find(el => el.id === product.institution_id)
         && institutions.find(el => el.id === product.institution_id).name,
     };

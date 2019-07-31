@@ -1,10 +1,10 @@
-// import { apiClient } from 'services';
+import { apiClient } from 'services';
 
 import {
   generalProductData,
   productDetailsData,
-  productItemsData,
-  productItemsFilteredData,
+  // productItemsData,.
+  // productItemsFilteredData,
   productRulesData,
   successResponseStatus,
 } from './mock';
@@ -19,8 +19,8 @@ import {
 } from './types';
 
 export const getProducts = () =>
-  throttleUtil.getDataAfter(productItemsData, 500);
-  // apiClient.post('/ui/product_designer/products/get');
+  // throttleUtil.getDataAfter(productItemsData, 500);
+  apiClient.post('/ui/product_designer/products/get');
 
 export const getProduct = (id: number) =>
   throttleUtil.getDataAfter(generalProductData, 500);
@@ -41,12 +41,12 @@ export const deleteProduct = (id: number) =>
   // });
 
 export const filterProducts = (data: ProductFilterParamsPrepared) =>
-  throttleUtil.getDataAfter(productItemsFilteredData, 500);
-  // apiClient.post('/ui/product_designer/products/get', { data });
+  // throttleUtil.getDataAfter(productItemsFilteredData, 500);
+  apiClient.post('/ui/product_designer/products/get', { data });
 
 export const addProduct = (data: NewProductPrepared) =>
-  throttleUtil.getDataAfter(successResponseStatus, 500);
-  // apiClient.post('/ui/product_designer/products/create', { data });
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
+  apiClient.post('/ui/product_designer/products/create', { data });
 
 export const updateProduct = (data: ProductItemResp) =>
   throttleUtil.getDataAfter(successResponseStatus, 500);

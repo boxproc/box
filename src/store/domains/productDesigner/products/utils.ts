@@ -64,6 +64,7 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
     historyRetentionNumberOfDay: item.history_retention_number_of_day,
     defaultStatementCycleId:
       statementCyclesOptions.find(el => el.value === item.default_statement_cycle_id).label,
+    currencyCode: item.currency_code,
     lockedFlag: item.locked_flag === yesNoTypes.YES ? true : false,
   };
 };
