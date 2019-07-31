@@ -18,6 +18,9 @@ export const selectPayloadMessageModal = (state: StoreState) => state.modals.pay
 export const selectCurrentProductId = (state: StoreState) =>
   state.modals.payloadEditProductModal && state.modals.payloadEditProductModal.id;
 
+export const selesctUserGroupById = (state: StoreState) =>
+  state.modals.payloadEditAdminUsersGroupModal.usersGroupValues.id;
+
 export const selectDefaultCycleEditorRecord = (state: StoreState) =>
   state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 

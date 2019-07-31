@@ -18,7 +18,7 @@ import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
   defineAdminUser?: HandleAddAdminUser | HandleUpdateAdminUser;
-  isDisabledStatus?: boolean;
+  isDisabledUsername?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
 }
@@ -29,7 +29,7 @@ type DefineUserFormAllProps = DefineUserFormProps &
 const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   handleSubmit,
   defineAdminUser,
-  isDisabledStatus,
+  isDisabledUsername,
   isDisabledType,
   onCancel,
 }) => {
@@ -74,6 +74,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
+              disabled={isDisabledUsername}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -84,8 +85,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="User Email"
-              disabled={false}
-              isDisabled={isDisabledType}
             />
           </Box>
 
@@ -98,7 +97,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypesOptions}
-              isDisabled={isDisabledStatus}
+
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -115,12 +114,13 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="passwordHash"
-              name="passwordHash"
-              placeholder="Enter Password Again"
+              id="passwordHashRepeate"
+              name="passwordHashRepeate"
+              placeholder="Repeat Password "
               component={InputField}
-              label="Confirm  Password"
+              label="Repeat  Password"
               disabled={false}
+              type={'password'}
               isDisabled={isDisabledType}
             />
           </Box>

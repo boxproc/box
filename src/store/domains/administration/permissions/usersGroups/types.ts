@@ -31,7 +31,33 @@ export interface AdminUsersGroupDataResp extends SuccessResponseStatusType {
     users_group: Array<AdminUsersGroupItemResp>;
 }
 
+export interface AdminUserGroupMemberId {
+    id: number;
+}
+
+export interface AdminUserGroupMember extends AdminUserGroupMemberId {
+    username: string;
+}
+export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
+    user_group_members: Array<AdminUserGroupMember>;
+}
+
+export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
+    active_users: Array<AdminUserGroupMember>;
+}
+
+export interface AdminUserGroupMembersDeleteResp {
+    user_group_id: number;
+    user_id: number;
+}
+
+export interface AdminUserGroupMembersDelete {
+    userGroupId: number;
+    userId: number;
+}
+
 export interface AdminUsersGroupState {
-    users_group: ImmutableArray<AdminUsersGroupItemResp>;
-    // filterUsers: UsersFilterParamsPrepared;
+    usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
+    userGroupMembers: ImmutableArray<AdminUserGroupMember>;
+    allActiveUsers: ImmutableArray<AdminUserGroupMember>;
 }

@@ -18,7 +18,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360000,
+  SESSION_ID = 360,
 }
 
 export enum formNames {
@@ -27,7 +27,8 @@ export enum formNames {
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
-  DEFINE_ADMIN_USERS_GROUP = 'DefineAdminUsersGroup',
+  DEFINE_ADMIN_USERS_GROUP = 'defineAdminUsersGroup',
+  ADD_ACTIVE_USERS = 'addActiveUsersForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
@@ -39,6 +40,7 @@ export enum formNames {
 }
 
 export enum modalNames {
+  ADD_ADMIN_ACTIVE_USER = 'AddAdminActiveUser',
   ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroupModal',
   EDIT_ADMIN_USERS_GROUP = 'EditAdminUsersGroupModal',
   MESSAGE_MODAL = 'MessageModal',
@@ -77,8 +79,8 @@ export const statusTypeCyclesOptions = [
 ];
 
 export const weeklyCycleTypeOptions = [
-  {value: null, label: '-'},
-  {value: 0, label: '-'},
+  // {value: null, label: '-'},
+  // {value: 0, label: '-'},
   { value: 1, label: 'Monday'},
   { value: 2, label: 'Tuesday'},
   { value: 3, label: 'Wednesday'},

@@ -9,31 +9,33 @@ import { modalNames } from 'consts';
 import AddUsersGroupForm from 'containers/Administration/Permission/UsersGroup/DefineUsersGroupForm';
 import {
   CloseModal,
-  HandleUpdateAdminUsersGroup
+  // HandleUpdateAdminUsersGroup
 } from 'store/domains';
 
 interface EditUsersGroupModalProps {
   closeModal: CloseModal;
-  updateAdminUsersGroup: HandleUpdateAdminUsersGroup;
+  // updateAdminUsersGroup: HandleUpdateAdminUsersGroup;
 
   selectUsersGroupItems: any;
+  usersGroupValue: string;
 }
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
-  updateAdminUsersGroup,
+  // updateAdminUsersGroup,
   selectUsersGroupItems,
+  usersGroupValue,
 
 }) => {
   return (
     <Modal
       name={modalNames.EDIT_ADMIN_USERS_GROUP}
-      title="Edit User Group"
+      title={`Edit User Group : "${usersGroupValue}"`}
       maxContainerWidth={700}
     >
       <AddUsersGroupForm
         onCancel={() => closeModal(modalNames.EDIT_ADMIN_USERS_GROUP)}
-        defineAdminUsersGroup={updateAdminUsersGroup}
+        // defineAdminUsersGroup={updateAdminUsersGroup}
         initialValues={selectUsersGroupItems}
         isDisabledInstitutions={true}
 
