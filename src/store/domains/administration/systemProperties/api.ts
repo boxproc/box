@@ -1,12 +1,12 @@
-// import { apiClient } from 'services';
+import { apiClient } from 'services';
 
-import {
-  AdminSysPropsItemsData,
-  AdminSysPropsItemsFilteredData,
-  SuccessResponseStatus,
-} from './mock';
+// import {
+//   AdminSysPropsItemsData,
+//   AdminSysPropsItemsFilteredData,
+//   SuccessResponseStatus,
+// } from './mock';
 
-import { throttleUtil } from 'utils';
+// import { throttleUtil } from 'utils';
 
 import {
   AdminSysPropFilterParamsPrepared,
@@ -14,23 +14,23 @@ import {
 } from './types';
 
 export const getAdminSysProps = () =>
-  throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
-  // apiClient.post('/ui/administration/system_properties/get');
+  // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
+  apiClient.post('/ui/administration/system_properties/get');
 
 export const deleteAdminSysProp = (propName: string) =>
-  throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  // apiClient.post('/ui/administration/system_properties/delete', {
-  //   data: { property_name: propName },
-  // });
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  apiClient.post('/ui/administration/system_properties/delete', {
+    data: { property_name: propName },
+  });
 
 export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>
-  throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  // apiClient.post('/ui/administration/system_properties/create', { data });
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  apiClient.post('/ui/administration/system_properties/create', { data });
 
 export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
-  throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  // apiClient.post('/ui/administration/system_properties/update', { data });
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
+  apiClient.post('/ui/administration/system_properties/update', { data });
 
 export const filterAdminSysProps = (data: AdminSysPropFilterParamsPrepared) =>
-  throttleUtil.getDataAfter(AdminSysPropsItemsFilteredData, 500);
-  // apiClient.post('/ui/administration/system_properties/get', {data});
+  // throttleUtil.getDataAfter(AdminSysPropsItemsFilteredData, 500);
+  apiClient.post('/ui/administration/system_properties/get', {data});

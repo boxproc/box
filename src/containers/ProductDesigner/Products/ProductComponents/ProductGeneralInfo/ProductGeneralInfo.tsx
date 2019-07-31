@@ -25,8 +25,6 @@ interface ProductGeneralInfoProps {
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   institutionsOptions: Array<SelectValues>;
-  currencyCodes: Array<SelectValues>;
-  isCurrencyCodesLoading: boolean;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;

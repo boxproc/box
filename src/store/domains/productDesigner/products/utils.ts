@@ -265,10 +265,9 @@ export const prepareNewProductValuesToSend = (product: Partial<NewProduct>) => {
   };
 };
 
-export const prepareProductRulesValues = (rules: ProductRulesItemResp): ProductRulesItem => {
+export const prepareProductRulesValues = (rules: ProductRulesItemResp) => {
   return {
     description: rules.description,
-    eventId: rules.event_id,
     actionType: actionTypesOptions.find(el => el.value === rules.action_type),
     script: rules.script,
     productId: rules.product_id,
@@ -279,7 +278,7 @@ export const prepareProductRulesValuesToSend =
   (rules: Partial<ProductRulesItem>): ProductRulesItemResp  => {
   return {
     description: rules.description,
-    event_id: rules.eventId,
+    event_id: rules.eventId.value,
     action_type: rules.actionType.value,
     script: rules.script,
     product_id: rules.productId,

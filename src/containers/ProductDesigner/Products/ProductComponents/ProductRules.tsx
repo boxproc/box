@@ -1,62 +1,78 @@
 import React from 'react';
+import { ContextMenuTrigger } from 'react-contextmenu';
 import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { HighLightCodeField, InputField, SelectField, TextField } from 'components/Form';
+import ContextMenuList from 'components/ContextMenuList';
+import { HighLightCodeField, SelectField, TextField } from 'components/Form';
+import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'components/withLoadAdminEvents';
 
 import { actionTypesOptions } from 'consts';
 
-interface ProductRulesProps {}
+interface ProductRulesProps extends WithLoadAdminEventsProps { }
 
-const ProductRules: React.FC<ProductRulesProps> = () => {
+const ProductRules: React.FC<ProductRulesProps> = ({
+  adminEventsOptions,
+  isAdminEventsLoading,
+}) => {
   return (
-    <Box mx="-10px">
-      <Flex
-        alignItems="flex-end"
-        flexWrap="wrap"
-      >
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="eventId"
-            name="eventId"
-            component={InputField}
-            label="Event ID"
-            placeholder="Enter Event ID"
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="actionType"
-            name="actionType"
-            isSearchable={true}
-            component={SelectField}
-            label="Action Type"
-            placeholder="Select Action Type"
-            options={actionTypesOptions}
-          />
-        </Box>
-        <Box width={[1]} p="10px">
-          <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={TextField}
-            label="Description"
-          />
-        </Box>
-        <Box width={[1]} p="10px">
-        <Field
-          id="script"
-          name="script"
-          placeholder="Enter Code"
-          component={HighLightCodeField}
-          label="Code"
-        />
-        </Box>
-      </Flex>
-    </Box>
+    <React.Fragment>
+      <Box mx="-10px">
+        <Flex
+          alignItems="flex-end"
+          flexWrap="wrap"
+        >
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="eventId"
+              name="eventId"
+              isSearchable={true}
+              component={SelectField}
+              label="Event"
+              placeholder="Select Event"
+              options={adminEventsOptions}
+              isLoading={isAdminEventsLoading}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="actionType"
+              name="actionType"
+              isSearchable={true}
+              component={SelectField}
+              label="Action Type"
+              placeholder="Select Action Type"
+              options={actionTypesOptions}
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <Field
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              component={TextField}
+              label="Description"
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <ContextMenuTrigger id="rulesCodeContextMenu">
+              <Field
+                id="script"
+                name="script"
+                placeholder="Enter Code"
+                component={HighLightCodeField}
+                label="Code"
+              />
+            </ContextMenuTrigger>
+          </Box>
+        </Flex>
+      </Box>
+      <ContextMenuList
+        menuId="rulesCodeContextMenu"
+      />
+    </React.Fragment>
   );
 };
 
-export default ProductRules;
+export default withLoadAdminEvents(ProductRules);

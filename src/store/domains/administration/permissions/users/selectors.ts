@@ -5,12 +5,12 @@ import { createSelector } from 'reselect';
 import { statusTypesOptions } from 'consts';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
-  state.administration.adminUsers.users.asMutable();
+  state.administration.adminUsers.users;
 
 export const selectUserEditorItems = createSelector(
   selectDefaultAdminUsersItems,
 
-  (items) => items && items.map(item => {
+  (items) => items && items.asMutable().map(item => {
     return {
       ...item,
       firstName: item.first_name,

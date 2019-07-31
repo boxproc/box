@@ -8,6 +8,7 @@ import {
   selectInstitutionsOptions,
 } from 'store/domains/consts';
 
+import { selectAdminEventsOptions } from 'store/domains/administration';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
@@ -18,13 +19,13 @@ import {
 
 // All products
 export const selectDefaultProductItems = (state: StoreState) =>
-  state.productDesigner.products.products.asMutable();
+  state.productDesigner.products.products;
 
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectDefaultInstitutions,
   selectCurrencyCodes,
-  (products, institutions, currencyCodes) => products && products.map(product => {
+  (products, institutions, currencyCodes) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
     }
@@ -94,12 +95,14 @@ export const selectDetailsCurrentProductRules = (state: StoreState) =>
 
 export const selectCurrentProductRules = createSelector(
   selectDetailsCurrentProductRules,
-  rules => {
+  selectAdminEventsOptions,
+  (rules, events) => {
     if (!rules) {
       return null;
     }
     return {
       ...prepareProductRulesValues(rules),
+      eventId: events.find(el => el.value === rules.event_id),
     };
   }
 );

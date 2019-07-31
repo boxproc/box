@@ -202,7 +202,7 @@ export type ProductItemDetails =
 
 export interface ProductRulesItemResp {
   description: string;
-  event_id: number;
+  event_id: string | number;
   action_type: string | number;
   script: string;
   product_id: number;
@@ -218,7 +218,7 @@ export interface ProductRulesResp extends ResponseStatusType {
 
 export interface ProductRulesItem {
   description: string;
-  eventId: number;
+  eventId: SelectValues;
   actionType: SelectValues;
   script: string;
   productId: number;

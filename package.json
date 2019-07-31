@@ -11,6 +11,7 @@
     "prismjs": "^1.17.1",
     "rc-menu": "^7.4.23",
     "react": "^16.8.6",
+    "react-contextmenu": "^2.11.0",
     "react-cron-generator": "^1.1.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.8.6",
