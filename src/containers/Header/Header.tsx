@@ -31,6 +31,7 @@ const Wrapper = styled.header`
   right: 0;
   left: 0;
   width: 100%;
+  min-height: 70px;
   padding: 10px 0;
   background: ${({ theme }) => theme.whiteColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
