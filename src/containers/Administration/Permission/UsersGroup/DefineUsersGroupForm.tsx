@@ -82,7 +82,15 @@ const DefineUsersGroupForm: React.FC<DefineUsersGroupFormAllProps> = ({
           </Box>
           <UserGroupMembers />
         </Panel>
-
+        <Panel
+          title="Group Permission"
+          // isDisabled={true}
+        >
+          <Box mb="30px">
+          {/* <ActiveUsersForm /> */}
+          </Box>
+          {/* <UserGroupMembers /> */}
+        </Panel>
       </Tabs>
       <OkCancelButtons
         okText="Save"
