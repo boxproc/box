@@ -71,6 +71,9 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         padding={10}
         onFocus={addFocusClass}
         onBlur={removeFocusClass}
+        style={{
+          fontFamily: 'Inconsolata, monospace',
+        }}
       />
     </Wrapper>
   );

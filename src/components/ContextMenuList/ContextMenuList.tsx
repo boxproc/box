@@ -28,6 +28,22 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
     },
   ];
 
+  const onClick = (e: any, value: any) => {
+    const tempInput = document.createElement('input');
+    tempInput.value = value.name;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    paste();
+    document.body.removeChild(tempInput);
+  };
+
+  const paste = () => {
+    const el = document.querySelector('#script') as HTMLElement;
+    el.focus();
+    document.execCommand('paste');
+  };
+
   return (
     <ContextMenu
       id={menuId}
@@ -38,7 +54,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
           <MenuItem
             key={index}
             data={{name: item.name}}
-            // onClick={onClick}
+            onClick={onClick}
           >
             {item.name}
           </MenuItem>

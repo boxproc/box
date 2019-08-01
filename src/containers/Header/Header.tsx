@@ -8,6 +8,7 @@ import styled from 'theme';
 
 import { Container } from 'components/Block';
 import { Button } from 'components/Buttons';
+import { Dropdown, Option } from 'components/Dropdown';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 
@@ -47,7 +48,7 @@ const UserIcon = styled(User)`
 
 const UserBlock = () => (
   <Flex alignItems="baseline">
-    <UserIcon size="12"/>
+    <UserIcon size="12" />
     <div>{cookiesUtil.get(cookiesNames.FULL_NAME)}</div>
   </Flex>
 );
@@ -124,19 +125,24 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box>
             <Flex alignItems="center">
-              <Box mx="15px">
-                <UserBlock/>
-              </Box>
               {institution && (
-                <Box mr="30px">
+                <Box mr="15px">
                   {institution && institution.name}
                 </Box>
               )}
-              <Button
-                text="Log out"
-                iconName="logOut"
-                onClick={handleUserLogout}
-              />
+              <Dropdown
+                selectable={false}
+                dropdownListPosition="right"
+                ToggleButtonComponent={<UserBlock />}
+              >
+                <Option>
+                  <Button
+                    text="Log out"
+                    iconName="logOut"
+                    onClick={handleUserLogout}
+                  />
+                </Option>
+              </Dropdown>
             </Flex>
           </Box>
         </Flex>

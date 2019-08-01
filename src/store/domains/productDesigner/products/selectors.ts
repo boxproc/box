@@ -60,6 +60,12 @@ export const selectCurrentProduct = createSelector(
   }
 );
 
+// Current product name
+export const selectCurrentProductName = createSelector(
+  selectCurrentProduct,
+  (product) => product && product.name
+);
+
 // Current product type
 export const selectCurrentProductType = createSelector(
   selectCurrentProduct,

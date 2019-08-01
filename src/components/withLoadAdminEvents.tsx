@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  ConstsDataActionTypes,
+  AdminEventsActionTypes,
   createLoadingSelector,
   HandleGetAdminEvents,
   handleGetAdminEvents,
@@ -59,7 +59,7 @@ export const withLoadAdminEvents =
       `WithLoadAdminEvents(${componentUtil.getDisplayName(Component)})`;
 
     const loadingSelector = createLoadingSelector([
-      ConstsDataActionTypes.GET_CURRENCY_CODES,
+      AdminEventsActionTypes.GET_ADMIN_EVENTS,
     ]);
 
     const mapStateToProps = (state: StoreState) => ({
