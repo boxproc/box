@@ -86,7 +86,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter Description"
             component={InputField}
             label="Description"
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -112,7 +111,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Scheme"
             options={schemeTypesOptions}
             isDisabled={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -136,7 +134,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter History Retention Number of Days"
             component={InputField}
             label="History Retention Number of Days"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

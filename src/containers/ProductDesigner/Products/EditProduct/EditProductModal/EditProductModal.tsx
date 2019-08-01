@@ -10,15 +10,19 @@ import { CloseModal } from 'store/domains';
 
 interface EditProductModalProps {
   closeModal: CloseModal;
+  currentProductName: string;
 }
 
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
+  currentProductName,
 }) => {
+  const productName = currentProductName ? `: ${currentProductName}` : '';
+
   return (
     <Modal
       name={modalNames.EDIT_PRODUCT}
-      title="Edit Product"
+      title={`Edit Product${productName}`}
       maxContainerWidth={700}
       minContainerHeight={665}
     >

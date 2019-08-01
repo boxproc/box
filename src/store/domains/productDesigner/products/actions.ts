@@ -165,24 +165,35 @@ export const handleGetProducts: HandleGetProducts = () =>
     );
   };
 
+export const handleFilterProducts: HandleFilterProducts = params =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareProductFiltersParamsToSend(params);
+        const state = getState();
+        const formValues = getFormValues(formNames.PRODUCTS_FILTER);
+        let notEmpty = false;
+
+        for (const i in formValues(state)) {
+          if (formValues(state)[i]) {
+            notEmpty = true;
+          }
+        }
+
+        if (notEmpty) {
+          await dispatch(filterProducts(preparedValues));
+        }
+      },
+      dispatch
+    );
+  };
+
 export const handleDeleteProduct: HandleDeleteProduct = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteProduct(id));
         await dispatch(closeModal(modalNames.EDIT_PRODUCT));
-      },
-      dispatch
-    );
-  };
-
-export const handleFilterProducts: HandleFilterProducts = params =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareProductFiltersParamsToSend(params);
-
-        await dispatch(filterProducts(preparedValues));
       },
       dispatch
     );

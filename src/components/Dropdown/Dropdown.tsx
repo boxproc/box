@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -6,13 +6,18 @@ import styled from 'styled-components';
 
 import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown';
 
-const DropdownWrapper = styled.div`
+interface DropdownWrapperProps {
+  position?: 'left' | 'right';
+}
+
+const DropdownWrapper = styled.div<DropdownWrapperProps>`
   position: relative;
   display: inline-block;
 
   .dropdown-list {
     position: absolute;
-    left: -10px;
+    left: ${({ position }) => position === 'left' ? '-10px' : 'auto'};
+    right: ${({ position }) => position === 'right' ? '-10px' : 'auto'};
     top: calc(100% + 3px);
     background-color: ${({ theme }) => theme.whiteColor};
     border: 1px solid ${({ theme }) => theme.darkGrayColor};
@@ -21,25 +26,40 @@ const DropdownWrapper = styled.div`
 
   .dropdown-option {
     padding: 10px 10px 8px;
-    margin-right: 1px;
+    margin: 1px;
 
     &:hover {
       background-color: ${({ theme }) => theme.lighterGrayColor};
     }
   }
+
+  .dropdown-toggle-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
 
 const ToggleButton = styled(ArrowDropDown)`
   color: ${({ theme }) => theme.grayColor};
-  cursor: pointer;
+  padding-top: 1px;
 
   &:hover {
     color: ${({ theme }) => theme.normalAccentColor};
   }
 `;
 
-export const Dropdown: React.FC = ({
+export interface DropdownProps {
+  selectable?: boolean;
+  dropdownListPosition?: 'left' | 'right';
+  ToggleButtonComponent?: ReactChild;
+}
+
+export const Dropdown: React.FC<DropdownProps> = ({
   children,
+  selectable = true,
+  dropdownListPosition = 'left',
+  ToggleButtonComponent,
 }) => {
   const dropdownListRef = React.useRef(null);
   const dropdownToggleBtnRef = React.useRef(null);
@@ -66,17 +86,24 @@ export const Dropdown: React.FC = ({
   const toggleOpen = () => setIsOpened(!isOpened);
 
   return (
-    <DropdownWrapper>
+    <DropdownWrapper
+      position={dropdownListPosition}
+    >
       <Flex alignItems="baseline">
+        {selectable && (
+          <Box>
+            {children[selectedIndex]}
+          </Box>
+        )}
         <Box>
-          {children[selectedIndex]}
-        </Box>
-        <Box>
-          <ToggleButton
-            size="24"
+          <div
+            className="dropdown-toggle-btn"
             onClick={toggleOpen}
             ref={dropdownToggleBtnRef}
-          />
+          >
+            {ToggleButtonComponent && ToggleButtonComponent}
+            <ToggleButton size="24" />
+          </div>
         </Box>
       </Flex>
       {isOpened && (

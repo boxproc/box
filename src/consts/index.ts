@@ -17,7 +17,7 @@ export enum cookiesNames {
 
 export enum cookiesExpires {
   WEEK = 604800,
-  SESSION_ID = 360000,
+  SESSION_ID = 36000,
 }
 
 export enum formNames {

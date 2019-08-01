@@ -20,7 +20,7 @@
 }
 
 .context-menu .react-contextmenu-item:hover {
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, .7);
 }
 
 .context-menu .react-contextmenu-item--divider {

@@ -25,6 +25,7 @@ export const sharedInputCss = css<InvalidProp>`
     line-height: 17px;
     color: ${({ theme }) => theme.grayColor};
     font-weight: normal;
+    text-align: left;
   }
 
   :disabled {

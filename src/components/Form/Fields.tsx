@@ -13,6 +13,7 @@ import { SelectInput } from './Select';
 import TextInput from './TextArea';
 
 import { componentUtil } from 'utils';
+import MaskInput from './MaskInput';
 
 export const InputFieldWrapper = styled.div`
   width: 100%;
@@ -112,11 +113,11 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
         {(invalid && showErrors) ?
           (error && <span>{error}</span>)
           :
-            hint ? <Hint
-              text={hint}
-              position={hintPosition}
-              width={hintWidth}
-            />
+          hint ? <Hint
+            text={hint}
+            position={hintPosition}
+            width={hintWidth}
+          />
             :
             isRequired && <span className="required-icon">*</span>
         }
@@ -151,6 +152,7 @@ export const withInputField = <OriginalProps extends {}>(
         {...this.props}
         invalid={invalid}
         onBlur={this.onBlur}
+        isNumber={this.props.input.value && !isNaN(Number(this.props.input.value))}
       />
     )
 
@@ -168,3 +170,5 @@ export const PasswordField = withInputField(PasswordInput);
 export const SelectField = withInputField(SelectInput);
 export const TextField = withInputField(TextInput);
 export const HighLightCodeField = withInputField(HighlightCode);
+
+export const MaskField = withInputField(MaskInput);

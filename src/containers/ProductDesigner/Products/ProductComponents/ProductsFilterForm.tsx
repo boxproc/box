@@ -32,12 +32,12 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[ 1, 1, 1, 700]} mx="-10px">
+      <Box width={[1, 1, 1, 700]} mx="-10px">
         <Flex
           alignItems="flex-start"
           flexWrap="wrap"
         >
-          <Box width={[ 1, 1 / 2]} p="10px">
+          <Box width={[1, 1 / 2]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -49,7 +49,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[ 1, 1 / 2]} p="10px">
+          <Box width={[1, 1 / 2]} p="10px">
             <Field
               id="productType"
               name="productType"

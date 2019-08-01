@@ -82,7 +82,12 @@ export const Products: React.FC<ProductsProps> = ({
   );
 
   const productParams = cookiesUtil.get(cookiesNames.PRODUCTS_FILTER);
-  const initialFilterValues = productParams && JSON.parse(productParams);
+  const productParamsParsed = productParams && JSON.parse(productParams);
+
+  const initialFilterValues = {
+    institutionId: institutionsOptions[0],
+    ...productParamsParsed,
+  };
 
   return (
     <TablePage

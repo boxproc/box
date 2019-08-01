@@ -35,7 +35,7 @@ const SavingsDetails: React.FC = () => {
             placeholder="Enter Apr"
             component={InputField}
             label="Apr"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -45,7 +45,7 @@ const SavingsDetails: React.FC = () => {
             placeholder="Enter Minimum Deposit Allowed"
             component={InputField}
             label="Minimum Deposit Allowed"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -55,7 +55,7 @@ const SavingsDetails: React.FC = () => {
             placeholder="Enter Maximum Deposit Allowed"
             component={InputField}
             label="Maximum Deposit Allowed"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -65,7 +65,7 @@ const SavingsDetails: React.FC = () => {
             placeholder="Enter Maximum Monthly Deposit"
             component={InputField}
             label="Maximum Monthly Deposit"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
       </Flex>
