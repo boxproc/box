@@ -6,39 +6,32 @@ import { withSpinner } from 'components/Spinner';
 import { modalNames } from 'consts';
 
 // tslint:disable-next-line: max-line-length
-import AddUsersGroupForm from 'containers/Administration/Permission/UsersGroup/DefineUsersGroupForm';
+import EditUserGroupForms from 'containers/Administration/Permission/UsersGroup/EditUserGroup/EditUserGroupForms';
 import {
   CloseModal,
-  // HandleUpdateAdminUsersGroup
 } from 'store/domains';
 
 interface EditUsersGroupModalProps {
   closeModal: CloseModal;
-  // updateAdminUsersGroup: HandleUpdateAdminUsersGroup;
-
-  selectUsersGroupItems: any;
-  usersGroupValue: string;
+  usersGroupName: string;
 }
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
-  // updateAdminUsersGroup,
-  selectUsersGroupItems,
-  usersGroupValue,
+  usersGroupName,
 
 }) => {
+  const groupName = usersGroupName ? `: "${usersGroupName}"` : '';
+
   return (
     <Modal
       name={modalNames.EDIT_ADMIN_USERS_GROUP}
-      title={`Edit User Group : "${usersGroupValue}"`}
+      title={`Edit User Group${groupName}`}
       maxContainerWidth={700}
+      minContainerHeight={790}
     >
-      <AddUsersGroupForm
+      <EditUserGroupForms
         onCancel={() => closeModal(modalNames.EDIT_ADMIN_USERS_GROUP)}
-        // defineAdminUsersGroup={updateAdminUsersGroup}
-        initialValues={selectUsersGroupItems}
-        isDisabledInstitutions={true}
-
       />
     </Modal>
   );

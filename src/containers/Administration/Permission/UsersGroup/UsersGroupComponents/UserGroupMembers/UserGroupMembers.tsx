@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { withSpinner } from 'components/Spinner';
-import { Cell, Table } from 'components/Table';
+import { Cell, Table, TableNoData } from 'components/Table';
 
 import {
   AdminUserGroupMember,
@@ -51,7 +51,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
         <Button
           iconName="delete"
           text="Delete"
-          type="reset"
+          size=""
           onClick={() => deleteAdminUserGroupMembers(
             adminUserGroupMemberId,
             cellInfo.original.id
@@ -66,11 +66,9 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       title="User Group Members"
       data={AdminUserGroupMembers}
       columns={columns}
-    // addNewModalName={modalNames.ADD_ADMIN_USERS_GROUP}
+      NoDataComponent={TableNoData}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(UsersGroupMembers);
+export default withSpinner()(UsersGroupMembers);

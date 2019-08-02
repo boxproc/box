@@ -26,11 +26,14 @@ const NoDataWrapper = styled.div`
 `;
 
 interface NoDataProps {
-  title: string;
+  title?: string;
   hint?: string;
 }
 
-export const TableNoData: React.FC<NoDataProps> = ({ title, hint }) => (
+export const TableNoData: React.FC<NoDataProps> = ({
+  title = 'No data found',
+  hint,
+}) => (
   <NoDataWrapper>
     <div className="title">{title}</div>
     {hint && <div className="hint">{hint}</div>}

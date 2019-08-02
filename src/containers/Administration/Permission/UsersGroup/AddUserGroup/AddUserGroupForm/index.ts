@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import {
-  closeModal,
+  AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddAdminUsersGroup,
-  selectInstitutionsOptions,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
-import AddUsersGroupModal from './AddUsersGroupModal';
+import AddUserGroupForm from './AddUserGroupForm';
 
-const loadingSelector = createLoadingSelector([]);
+const loadingSelector = createLoadingSelector([
+    AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    closeModal,
     addAdminUsersGroup: handleAddAdminUsersGroup,
   },
   dispatch
@@ -27,4 +26,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddUsersGroupModal);
+)(AddUserGroupForm);

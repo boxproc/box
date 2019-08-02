@@ -1,33 +1,29 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import UsersGroup from './UsersGroup';
+import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
 
 import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleGetAdminUsersGroup,
-  openModal,
-  selectUsersGroupEditorItems,
+  handleUpdateAdminUsersGroup,
+  selectUsersGroupValues,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    AdminUsersGroupActionTypes.GET_ADMIN_USERS_GROUP,
-    AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
-    AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminUsersGroupItems: selectUsersGroupEditorItems(state),
+  initialValues: selectUsersGroupValues(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
-    getAdminUsersGroup: handleGetAdminUsersGroup,
+    updateAdminUsersGroup: handleUpdateAdminUsersGroup,
   },
   dispatch
 );
@@ -35,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UsersGroup);
+)(EditGeneralInfoUserGroupFrom);

@@ -8,8 +8,8 @@ import TablePage from 'components/TablePage/TablePage';
 import { modalNames } from 'consts';
 
 import {
-    AdminUsersGroupItem,
-    HandleGetAdminUsersGroup,
+  AdminUsersGroupItem,
+  HandleGetAdminUsersGroup,
 } from 'store/domains/administration/permissions/usersGroups';
 
 import {
@@ -33,7 +33,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
 }) => {
   React.useEffect(
     () => {
-        getAdminUsersGroup();
+      getAdminUsersGroup();
     },
     [getAdminUsersGroup]
   );
@@ -64,17 +64,19 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       ),
     },
     {
-        sortable: true,
-        filterable: true,
-        Header: <Header title="Institution" showSortIcons={true} />,
-        accessor: 'institutionId',
-        Cell: (props: SCell<'institutionId'>) => (
-          <Cell
-            value={props.value}
-          />
-        ),
-      },
+      maxWidth: 300,
+      sortable: true,
+      filterable: true,
+      Header: <Header title="Institution" showSortIcons={true} />,
+      accessor: 'institutionId',
+      Cell: (props: SCell<'institutionId'>) => (
+        <Cell
+          value={props.value}
+        />
+      ),
+    },
     {
+      maxWidth: 300,
       sortable: true,
       filterable: true,
       Header: <Header title="Name of User Group" showSortIcons={true} />,

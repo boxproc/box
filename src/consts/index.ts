@@ -28,8 +28,6 @@ export enum formNames {
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
-  DEFINE_ADMIN_USERS_GROUP = 'defineAdminUsersGroup',
-  ADD_ACTIVE_USERS = 'addActiveUsersForm',
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
@@ -42,6 +40,12 @@ export enum formNames {
   USER = 'userForm',
   USERS_GROUP = 'usersGroupForm',
   ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
+
+  // User Groups
+  ADD_USER_GROUP = 'addUserGroupForm',
+  EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
+  EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
+  EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
 }
 
 export enum modalNames {

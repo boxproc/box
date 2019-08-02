@@ -1,39 +1,37 @@
 import React from 'react';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box } from '@rebass/grid';
-
-import { SelectField } from 'components/Form';
-
-import {
-  formNames,
-} from 'consts';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button } from 'components/Buttons';
+import { SelectField } from 'components/Form';
+
+import { formNames } from 'consts';
+
 import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store/domains';
+
 import { SelectValues } from 'types';
+
 import { formErrorUtil } from 'utils';
 
-interface ActiveUsersFormProps {
-  onCancel?: () => void;
-  adminUserGroupMemberId: number;
-  activeUsersItemsOptions?: Array<SelectValues>;
+interface EditUserGroupMembersProps {
   getActiveUsers: HandleGetAdminActiveUsers;
   addAdminActiveUsers?: HandleAddAdminActiveUsers;
   currentGroupId: number;
   selectedUser: SelectValues;
+  activeUsersItemsOptions: Array<SelectValues>;
 }
 
-type ActiveUsersFormAllProps = ActiveUsersFormProps &
-  InjectedFormProps<{}, ActiveUsersFormProps>;
+type EditUserGroupMembersPropsAllProps = EditUserGroupMembersProps &
+  InjectedFormProps<{}, EditUserGroupMembersProps>;
 
-const ActiveUsersFormAllForm: React.FC<ActiveUsersFormAllProps> = ({
+const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
   handleSubmit,
   addAdminActiveUsers,
   getActiveUsers,
-  activeUsersItemsOptions,
   currentGroupId,
   selectedUser,
+  activeUsersItemsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -45,6 +43,7 @@ const ActiveUsersFormAllForm: React.FC<ActiveUsersFormAllProps> = ({
     handleSubmit(() => addAdminActiveUsers(currentGroupId, selectedUser.value)),
     [handleSubmit, addAdminActiveUsers]
   );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Box width={[1 / 2]} mb="15px">
@@ -61,15 +60,13 @@ const ActiveUsersFormAllForm: React.FC<ActiveUsersFormAllProps> = ({
       <Button
         iconName="save"
         text="Save"
-        type="reset"
-        onClick={() => addAdminActiveUsers(currentGroupId, selectedUser.value)}
       />
     </form >
   );
 };
 
-export default reduxForm<{}, ActiveUsersFormProps>({
-  form: formNames.ADD_ACTIVE_USERS,
+export default reduxForm<{}, EditUserGroupMembersProps>({
+  form: formNames.EDIT_USER_GROUP_MEMBERS_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(ActiveUsersFormAllForm);
+})(EditUserGroupMembers);

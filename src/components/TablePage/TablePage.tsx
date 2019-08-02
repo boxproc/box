@@ -24,12 +24,6 @@ interface TablePageProps {
   addNewModalName?: string;
 }
 
-const NoDataComponent = () => (
-  <TableNoData
-    title="No data found"
-  />
-);
-
 export const TablePage: React.FC<TablePageProps> = ({
   title,
   data,
@@ -82,7 +76,7 @@ export const TablePage: React.FC<TablePageProps> = ({
         data={data}
         columns={columns}
         getTrGroupProps={getTrGroupProps}
-        NoDataComponent={NoDataComponent}
+        NoDataComponent={TableNoData}
       />
     </React.Fragment >
   );

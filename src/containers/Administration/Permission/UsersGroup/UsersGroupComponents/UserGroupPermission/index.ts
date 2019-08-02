@@ -7,24 +7,21 @@ import {
   handleDeleteAdminGroupPermissions,
   handleGetAdminGroupPermission,
   selectAdminGroupPermissionsItems,
-//   selectAdminUserGroupMembers,
-   selesctUserGroupById,
+  selectUserGroupById,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 import UserGroupPermission from './UserGroupPermission';
 
 const loadingSelector = createLoadingSelector([
-    AdminUsersGroupActionTypes.GET_ADMIN_GROUP_PERMISSIONS,
-    AdminUsersGroupActionTypes.DELETE_ADMIN_GROUP_PERMISSIONS,
-    // AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.GET_ADMIN_GROUP_PERMISSIONS,
+  AdminUsersGroupActionTypes.DELETE_ADMIN_GROUP_PERMISSIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-   adminUserGroupMemberId: selesctUserGroupById(state),
-   adminGroupPermissions: selectAdminGroupPermissionsItems(state),
-//   AdminUserGroupMembers: selectAdminUserGroupMembers(state),
+  adminUserGroupMemberId: selectUserGroupById(state),
+  adminGroupPermissions: selectAdminGroupPermissionsItems(state),
 
 });
 

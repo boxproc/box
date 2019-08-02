@@ -2,32 +2,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
- // AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddGroupPermission,
   handleGetAdminUiItems,
   selectAdminGroupPermissionsUiItems,
   selectDefaultAdminUiItems,
-
-  selesctUserGroupById,
-  // selectUsersGroupEditorItems,
+  selectUserGroupById,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
-import UiItemForm from './UiItemForm';
+import EditGroupPermissionForm from './EditGroupPermissionForm';
 
-const loadingSelector = createLoadingSelector([
-    // AdminUsersGroupActionTypes.GET_ADMIN_ACTIVE_USERS,
-    // AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
-]);
+const loadingSelector = createLoadingSelector([]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  // activeUsersItemsOptions: selectDefaultAdminUiItems(state),
-  currentGroupId: selesctUserGroupById(state),
+  currentGroupId: selectUserGroupById(state),
   defaultAdminUiItems: selectDefaultAdminUiItems(state),
-  uiItemsOption: selectAdminGroupPermissionsUiItems(state),
- // adminUsersGroupItems: selectUsersGroupEditorItems(state)
+  uiItemsOptions: selectAdminGroupPermissionsUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -41,4 +33,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UiItemForm);
+)(EditGroupPermissionForm);

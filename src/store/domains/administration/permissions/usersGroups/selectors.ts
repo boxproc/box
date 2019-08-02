@@ -23,9 +23,9 @@ export const selectDefaultAdminUiItems = (state: StoreState) =>
 //  state.administration.adminUsers.filterUsers;
 
 export const selectUsersGroupEditorItems = createSelector(
-    selectDefaultAdminUsersGroupItems,
-    selectInstitutionsOptions,
-    (items, institutions) => items && items.asMutable().map(item => {
+  selectDefaultAdminUsersGroupItems,
+  selectInstitutionsOptions,
+  (items, institutions) => items && items.asMutable().map(item => {
     return {
       ...item,
       institutionId: item && institutions.find(el => el.value === item.institution_id).label,
@@ -34,24 +34,23 @@ export const selectUsersGroupEditorItems = createSelector(
 );
 
 export const selectActiveUsersItems = createSelector(
-//    selectAdminUserGroupMembers,
-    selectDefaultAdminActiveUsers,
-    data => data && data.map(el => {
-      return {
-        value: el.id,
-        label: el.username,
-      };
-    })
+  selectDefaultAdminActiveUsers,
+  data => data && data.map(el => {
+    return {
+      value: el.id,
+      label: el.username,
+    };
+  })
 );
 
 export const selectAdminGroupPermissionsItems = createSelector(
   selectAdminGroupPermissions,
   items => items && items.map(item => {
     return {
-     ...item,
+      ...item,
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
-     };
+    };
   })
 );
 

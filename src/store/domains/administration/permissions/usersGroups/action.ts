@@ -2,7 +2,7 @@ import { cookiesNames, formNames, modalNames, } from 'consts';
 import { reset as resetForm } from 'redux-form';
 import * as api from './api';
 
-import { closeModal, selesctUserGroupById } from 'store/domains/modals';
+import { closeModal, selectUserGroupById } from 'store/domains/modals';
 
 import {
   ActionTypeKeys,
@@ -246,7 +246,7 @@ export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const currentGroupId = selesctUserGroupById(state);
+        const currentGroupId = selectUserGroupById(state);
         await dispatch(addAdminGroupPermission(groupId, uiItem, permission));
         await dispatch(getAdminUserGroupMembers(currentGroupId));
         await dispatch(resetForm(formNames.ADD_GROUP_PERMISSIONS));
@@ -260,11 +260,11 @@ export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers =  (groupId, u
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const currentGroupId = selesctUserGroupById(state);
+        const currentGroupId = selectUserGroupById(state);
 
         await dispatch(addAdminActiveUsers(groupId, userId));
         await dispatch(getAdminUserGroupMembers(currentGroupId));
-        await dispatch(resetForm(formNames.ADD_ACTIVE_USERS));
+        await dispatch(resetForm(formNames.EDIT_USER_GROUP_MEMBERS_FORM));
       },
       dispatch
     );

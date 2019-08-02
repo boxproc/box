@@ -15,7 +15,7 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
-export const selesctUserGroupById = (state: StoreState) =>
+export const selectUserGroupById = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues.id;
 
 export const selectDefaultCycleEditorRecord = (state: StoreState) =>
@@ -81,4 +81,9 @@ export const selectUsersGroupValues = createSelector(
       institutionId: institutions.find(el => el.label === values.institutionId),
     };
   }
+);
+
+export const selectUsersGroupName = createSelector(
+  selectDefaultUsersGroupRecord,
+  group => group && group.name
 );

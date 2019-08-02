@@ -7,6 +7,11 @@ import AddSystemPropertyModal from 'containers/Administration/SystemProperties/A
 import AddProductModal from 'containers/ProductDesigner/Products/AddProduct/AddProductModal';
 import EditProductModal from 'containers/ProductDesigner/Products/EditProduct/EditProductModal';
 
+// tslint:disable-next-line: max-line-length
+import AddUsersGroupModal from 'containers/Administration/Permission/UsersGroup/AddUserGroup/AddUsersGroupModal';
+// tslint:disable-next-line: max-line-length
+import EditUsersGroupModal from 'containers/Administration/Permission/UsersGroup/EditUserGroup/EditUsersGroupModal';
+
 import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
 import AddSchedulerModal from './Administration/Scheduler/AddSchedulerModal';
 import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
@@ -14,8 +19,6 @@ import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
 import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
 import AddUsersModal from './Administration/Users/AddUsersModal';
 import EditUsersModal from './Administration/Users/EditUsersModal';
-import AddUsersGroupModal from './Administration/UsersGroup/AddUsersGroupModal';
-import EditUsersGroupModal from './Administration/UsersGroup/EditUsersGroupModal';
 import MessageModal from './MessageModal';
 
 export const modalsList = [
