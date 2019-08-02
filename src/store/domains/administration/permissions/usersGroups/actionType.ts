@@ -1,6 +1,8 @@
 import {
+  AdminGroupPermissionDataResp,
   AdminUserGroupMemberDataResp,
   AdminUsersGroupDataResp,
+  AdminGroupPermissionUiItemsDataResp,
   AdminUsersGroupEditableItemPrepared,
 } from './types';
 
@@ -26,6 +28,34 @@ export enum ActionTypeKeys {
   'administration/permissions/usersGroups/GET_ADMIN_ACTIVE_USERS_FULFILLED',
   GET_ADMIN_ACTIVE_USERS_REJECTED =
   'administration/permissions/usersGroups/GET_ADMIN_ACTIVE_USERS_REJECTED',
+
+  GET_ADMIN_UI_ITEMS =
+  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS',
+  GET_ADMIN_UI_ITEMS_FULFILLED =
+  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS_FULFILLED',
+  GET_ADMIN_UI_ITEMS_REJECTED =
+  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS_REJECTED',
+
+  GET_ADMIN_GROUP_PERMISSIONS =
+  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS',
+  GET_ADMIN_GROUP_PERMISSIONS_FULFILLED =
+  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS_FULFILLED',
+  GET_ADMIN_GROUP_PERMISSIONS_REJECTED =
+  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS_REJECTED',
+
+  ADD_ADMIN_GROUP_PERMISSIONS =
+  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS',
+  ADD_ADMIN_GROUP_PERMISSIONS_FULFILLED =
+  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS_FULFILLED',
+  ADD_ADMIN_GROUP_PERMISSIONS_REJECTED =
+  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS_REJECTED',
+
+  DELETE_ADMIN_GROUP_PERMISSIONS =
+   'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS',
+  DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED =
+  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED',
+  DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED =
+  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED',
 
   ADD_ADMIN_ACTIVE_USERS =
   'administration/permissions/usersGroups/ADD_ADMIN_ACTIVE_USERS',
@@ -75,6 +105,21 @@ export interface GetAdminUsersGroupRejectedAction {
   readonly type: ActionTypeKeys.GET_ADMIN_USERS_GROUP_REJECTED;
 }
 
+export interface GetAdminUiItemsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS;
+}
+
+export interface GetAdminUiItemsFulfilledAction {
+  readonly payload: AdminGroupPermissionUiItemsDataResp;
+  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS_FULFILLED;
+}
+
+export interface GetAdminUiItemsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS_REJECTED;
+}
+
 export interface GetAdminUserGroupMembersAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_ADMIN_USER_GROUP_MEMBERS;
@@ -104,6 +149,20 @@ export interface GetAdminActiveUsersRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_ACTIVE_USERS_REJECTED;
 }
+export interface GetAdminGroupPermissionsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS;
+}
+
+export interface GetAdminGroupPermissionsFulfilledAction {
+  readonly payload: AdminGroupPermissionDataResp;
+  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_FULFILLED;
+}
+
+export interface GetAdminGroupPermissionsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_REJECTED;
+}
 
 export interface DeleteAdminUserGroupMembersAction {
   readonly payload: Promise<object>;
@@ -119,6 +178,37 @@ export interface DeleteAdminUserGroupMembersFulfilledAction {
 export interface DeleteAdminUserGroupMembersRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS_REJECTED;
+}
+export interface DeleteAdminGroupPermissionsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS;
+}
+
+export interface DeleteAdminGroupPermissionsFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
+  readonly meta: string;
+}
+
+export interface DeleteAdminGroupPermissionsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED;
+}
+
+export interface AddAdminGroupPermissionsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS;
+}
+
+export interface AddAdminGroupPermissionsFulfilledAction {
+  readonly payload: SuccessResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
+  readonly meta: AdminUsersGroupEditableItemPrepared;
+}
+
+export interface AddAdminGroupPermissionsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
 }
 
 export interface AddAdminUsersGroupAction {
@@ -186,9 +276,13 @@ export interface UpdateAdminUsersGroupRejectedAction {
 export type AdminUsersGroupActionTypes =
   | GetAdminUsersGroupFulfilledAction
   | GetAdminActiveUsersFulfilledAction
+  | GetAdminGroupPermissionsFulfilledAction
+  | AddAdminGroupPermissionsFulfilledAction
+  | DeleteAdminGroupPermissionsFulfilledAction
   | AddAdminUsersGroupFulfilledAction
   | GetAdminUserGroupMembersFulfilledAction
   | DeleteAdminUserGroupMembersFulfilledAction
   | AddAdminActiveUsersFulfilledAction
+  | GetAdminUiItemsFulfilledAction
   // | FilterUsersFulfilledAction
   | UpdateAdminUsersGroupFulfilledAction;

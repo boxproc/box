@@ -10,8 +10,14 @@ export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
 export const selectAdminUserGroupMembers = (state: StoreState) =>
   state.administration.adminUsersGroup.userGroupMembers.asMutable();
 
+export const selectAdminGroupPermissions = (state: StoreState) =>
+  state.administration.adminUsersGroup.groupPermissions.asMutable();
+
 export const selectDefaultAdminActiveUsers = (state: StoreState) =>
   state.administration.adminUsersGroup.allActiveUsers.asMutable();
+
+export const selectDefaultAdminUiItems = (state: StoreState) =>
+  state.administration.adminUsersGroup.uiItems.asMutable();
 
 // export const selectDefaultFilterUsers = (state: StoreState) =>
 //  state.administration.adminUsers.filterUsers;
@@ -36,4 +42,25 @@ export const selectActiveUsersItems = createSelector(
         label: el.username,
       };
     })
+);
+
+export const selectAdminGroupPermissionsItems = createSelector(
+  selectAdminGroupPermissions,
+  items => items && items.map(item => {
+    return {
+     ...item,
+      userGroupId: item.user_group_id,
+      uiItem: item.ui_item,
+     };
+  })
+);
+
+export const selectAdminGroupPermissionsUiItems = createSelector(
+  selectDefaultAdminUiItems,
+  data => data && data.map(el => {
+    return {
+      value: el.ui_item,
+      label: el.ui_item,
+    };
+  })
 );

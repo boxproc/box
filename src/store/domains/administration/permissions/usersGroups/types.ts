@@ -38,12 +38,35 @@ export interface AdminUserGroupMemberId {
 export interface AdminUserGroupMember extends AdminUserGroupMemberId {
     username: string;
 }
+
+export interface AdminGroupPermissionItemResp {
+    user_group_id: number;
+    ui_item: string;
+    permission: string;
+}
+
+export interface AdminGroupPermissionUiItemResp {
+    ui_item: string;
+}
+
+export interface AdminGroupPermissionItem {
+    userGroupId: number;
+    uiItem: string;
+    permission: string;
+}
 export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
     user_group_members: Array<AdminUserGroupMember>;
+}
+export interface AdminGroupPermissionDataResp extends SuccessResponseStatusType {
+    group_permissions: Array<AdminGroupPermissionItemResp>;
 }
 
 export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
     active_users: Array<AdminUserGroupMember>;
+}
+
+export interface AdminGroupPermissionUiItemsDataResp extends SuccessResponseStatusType {
+    ui_items: Array<AdminGroupPermissionUiItemResp>;
 }
 
 export interface AdminUserGroupMembersDeleteResp {
@@ -60,4 +83,6 @@ export interface AdminUsersGroupState {
     usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
     userGroupMembers: ImmutableArray<AdminUserGroupMember>;
     allActiveUsers: ImmutableArray<AdminUserGroupMember>;
+    groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;
+    uiItems: ImmutableArray<AdminGroupPermissionUiItemResp>;
 }

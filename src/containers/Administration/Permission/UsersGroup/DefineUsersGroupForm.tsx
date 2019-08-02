@@ -16,7 +16,9 @@ import { Panel, Tabs } from 'components/Tabs';
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 import ActiveUsersForm from './ActiveUsers';
+import UiItemForm from './UiItems';
 import UserGroupMembers from './UserGroupMembers';
+import UserGroupPermission from './UserGroupPermission';
 
 interface DefineUsersGroupFormProps {
   defineAdminUsersGroup?: HandleAddAdminUsersGroups | HandleUpdateAdminUsersGroup;
@@ -72,6 +74,11 @@ const DefineUsersGroupForm: React.FC<DefineUsersGroupFormAllProps> = ({
               </Box>
             </Flex>
           </Box>
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Cancel"
+            onCancel={onCancel}
+          />
         </Panel>
         <Panel
           title="User Group Members"
@@ -87,16 +94,11 @@ const DefineUsersGroupForm: React.FC<DefineUsersGroupFormAllProps> = ({
           // isDisabled={true}
         >
           <Box mb="30px">
-          {/* <ActiveUsersForm /> */}
+          <UiItemForm/>
           </Box>
-          {/* <UserGroupMembers /> */}
+         <UserGroupPermission/>
         </Panel>
       </Tabs>
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Cancel"
-        onCancel={onCancel}
-      />
     </form >
   );
 };

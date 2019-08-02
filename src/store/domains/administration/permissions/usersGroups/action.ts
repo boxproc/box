@@ -7,12 +7,17 @@ import { closeModal, selesctUserGroupById } from 'store/domains/modals';
 import {
   ActionTypeKeys,
   AddAdminActiveUsersAction,
+  AddAdminGroupPermissionsAction,
   AddAdminUsersGroupAction,
+  DeleteAdminGroupPermissionsAction,
   DeleteAdminUserGroupMembersAction,
   GetAdminActiveUsersAction,
+  GetAdminGroupPermissionsAction,
+  GetAdminUiItemsAction,
   GetAdminUserGroupMembersAction,
   GetAdminUsersGroupAction,
   UpdateAdminUsersGroupAction,
+
 } from './actionType';
 
 import { apiClient } from 'services';
@@ -34,12 +39,25 @@ export type HandleGetAdminUsersGroup = VoidPromiseThunk;
 export type GetAdminUserGroupMembers = (id: number) => GetAdminUserGroupMembersAction;
 export type HandleGetAdminUserGroupMembers = (id: number) =>  Thunk<void>;
 
+export type GetAdminUiItems = (id: number) => GetAdminUiItemsAction;
+export type HandleGetAdminUiItems = (id: number) =>  Thunk<void>;
+
+export type GetAdminUserGroupPermissions =
+ (userGroupId: number) => GetAdminGroupPermissionsAction;
+export type HandleGetAdminGroupPermissions =
+ (userGroupId: number) =>  Thunk<void>;
+
 export type GetAdminActiveUsers = () => GetAdminActiveUsersAction;
 export type HandleGetAdminActiveUsers = VoidPromiseThunk;
 
 export type DeleteAdminUserGroupMembers =
  (groupId: number, userId: number) => DeleteAdminUserGroupMembersAction;
 export type HandleDeleteAdminUserGroupMembers = (groupId: number, userId: number) => Thunk<void>;
+
+export type DeleteAdminGroupPermissions =
+ (groupId: number, uiItem: string, permission: string) => DeleteAdminGroupPermissionsAction;
+export type HandleDeleteAdminGroupPermissions =
+ (groupId: number, uiItem: string, permission: string) => Thunk<void>;
 
 export type AddAdminUsersGroups = (values: AdminUsersGroupEditableItemPrepared) =>
 AddAdminUsersGroupAction;
@@ -49,6 +67,11 @@ export type HandleAddAdminUsersGroups = (values: AdminUsersGroupEditableItem) =>
 export type AddAdminActiveUsers = (groupId: number, userId: number | string) =>
 AddAdminActiveUsersAction;
 export type HandleAddAdminActiveUsers = (groupId: number, userId: number | string) =>
+  Thunk<void>;
+export type AddAdminGroupPermissions = (groupId: number, uiItem: string, permission: string) =>
+AddAdminGroupPermissionsAction;
+export type HandleAddAdminGroupPermissions
+ = (groupId: number, uiItem: string, permission: string) =>
   Thunk<void>;
 
 // export type FilterUsers = (params: UsersFilterParamsPrepared) => FilterUsersAction;
@@ -74,10 +97,26 @@ export const getAdminUserGroupMembers: GetAdminUserGroupMembers = id => ({
   payload: api.getAdminUserGroupMembers(id),
 });
 
+export const getAdminUiItems: GetAdminUiItems = id => ({
+  type: ActionTypeKeys.GET_ADMIN_UI_ITEMS,
+  payload: api.getAdminUiItems(id),
+});
+export const getAdminUserGroupPermissions: GetAdminUserGroupPermissions = id => ({
+  type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS,
+  payload: api.getAdminUserGroupPermissions(id),
+});
+
 export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (groupId, userId) => ({
   type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS,
   payload: api.deleteAdminUserGroupMembers(groupId, userId),
   meta:  userId,
+});
+
+export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions
+ = (groupId, uiItem, permission) => ({
+  type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
+  payload: api.deleteAdminUserGroupPermissions(groupId, uiItem, permission),
+  meta: uiItem,
 });
 
 export const addAdminUserUsersGroup: AddAdminUsersGroups = values => ({
@@ -89,6 +128,12 @@ export const addAdminUserUsersGroup: AddAdminUsersGroups = values => ({
 export const addAdminActiveUsers: AddAdminActiveUsers =  (groupId, userId) => ({
   type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS,
   payload: api.addAdminActiveUsers(groupId, userId),
+});
+
+export const addAdminGroupPermission: AddAdminGroupPermissions =
+  (groupId, uiItem, permission) => ({
+  type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
+  payload: api.addAdminGroupPermission(groupId, uiItem, permission),
 });
 
 // export const filterUsers: FilterUsers = params => ({
@@ -140,11 +185,42 @@ export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMember
     );
   };
 
+export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermissions =
+  (groupId, uiItem, permission) =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem, permission));
+      },
+      dispatch
+    );
+  };
+
 export const handleGetAdminUserGroupMembers: HandleGetAdminUserGroupMembers = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getAdminUserGroupMembers(id));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetAdminUiItems: HandleGetAdminUiItems = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getAdminUiItems(id));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetAdminGroupPermission: HandleGetAdminGroupPermissions = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getAdminUserGroupPermissions(id));
       },
       dispatch
     );
@@ -159,6 +235,21 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
         await dispatch(closeModal(modalNames.ADD_ADMIN_USERS_GROUP));
         await dispatch(getAdminUsersGroup());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_USER));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
+ (groupId, uiItem, permission) =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const currentGroupId = selesctUserGroupById(state);
+        await dispatch(addAdminGroupPermission(groupId, uiItem, permission));
+        await dispatch(getAdminUserGroupMembers(currentGroupId));
+        await dispatch(resetForm(formNames.ADD_GROUP_PERMISSIONS));
       },
       dispatch
     );

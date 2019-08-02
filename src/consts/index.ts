@@ -22,6 +22,8 @@ export enum cookiesExpires {
 }
 
 export enum formNames {
+  UI_ITEMS = 'uiItemsForm',
+  ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
   USER_LOGIN = 'userLoginForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
