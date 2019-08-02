@@ -19,7 +19,6 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   currentProductId,
   onCancel,
 }) => {
-
   return (
     <Tabs>
       <Panel title="General">

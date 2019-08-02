@@ -15,6 +15,7 @@ import {
   GetProductIdAction,
   GetProductRulesAction,
   GetProductsAction,
+  SetRulesCodeAction,
   UpdateProductAction,
   UpdateProductDetailsAction,
   UpdateProductRulesAction,
@@ -74,6 +75,9 @@ export type HandleGetProductDetails = (id: number) => Thunk<void>;
 export type GetProductRules = (id: number) => GetProductRulesAction;
 export type HandleGetProductRules = (id: number) => Thunk<void>;
 
+export type SetRulesCode = (code: string) => SetRulesCodeAction;
+export type HandleSetRulesCode = (code: string) => void;
+
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
 
@@ -106,6 +110,11 @@ export const filterProducts: FilterProducts = params => ({
 export const getProductId: GetProductId = id => ({
   type: ActionTypeKeys.GET_PRODUCT_ID,
   payload: id,
+});
+
+export const setRulesCode: SetRulesCode = code => ({
+  type: ActionTypeKeys.SET_RULES_CODE,
+  payload: code,
 });
 
 export const getProduct: GetProduct = id => ({
@@ -201,6 +210,9 @@ export const handleDeleteProduct: HandleDeleteProduct = id =>
 
 export const handleGetProductId: HandleGetProductId = id =>
   getProductId(id);
+
+export const handleSetRulesCode: HandleSetRulesCode = Code =>
+  setRulesCode(Code);
 
 export const handleGetProduct: HandleGetProduct = id =>
   async dispatch => {

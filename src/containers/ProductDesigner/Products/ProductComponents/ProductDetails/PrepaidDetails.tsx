@@ -22,6 +22,7 @@ const PrepaidDetails: React.FC = () => {
             component={InputField}
             label="Dormant After Number Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1]} p="10px">

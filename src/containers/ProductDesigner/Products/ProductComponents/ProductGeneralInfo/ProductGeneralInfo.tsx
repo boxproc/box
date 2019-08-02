@@ -135,6 +135,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={InputField}
             label="History Retention Number of Days"
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

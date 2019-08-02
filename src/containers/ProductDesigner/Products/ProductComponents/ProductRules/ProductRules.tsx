@@ -10,12 +10,55 @@ import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'components/withLo
 
 import { actionTypesOptions } from 'consts';
 
-interface ProductRulesProps extends WithLoadAdminEventsProps { }
+import {
+  AdminEventDataElemsItem,
+  HandleFilterAdminEventDataElems,
+  HandleSetRulesCode,
+} from 'store/domains';
+
+import { SelectValues } from 'types';
+
+interface ProductRulesProps extends WithLoadAdminEventsProps {
+  setRulesCode: HandleSetRulesCode;
+  filterAdminEventDataElems: HandleFilterAdminEventDataElems;
+  eventValue: SelectValues;
+  adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
+}
+
+const getNewCode = (element: string) => {
+  const textarea = document.querySelector('#script') as HTMLInputElement;
+  const code = textarea.value;
+
+  const startIndex = textarea.selectionStart;
+
+  const startPartText = code.slice(0, startIndex);
+  const endPartText = code.slice(startIndex);
+
+  const resultText = `${startPartText}${element}${endPartText}`;
+
+  return resultText;
+};
 
 const ProductRules: React.FC<ProductRulesProps> = ({
   adminEventsOptions,
   isAdminEventsLoading,
+  setRulesCode,
+  filterAdminEventDataElems,
+  eventValue,
+  adminEventDataElemsItems,
 }) => {
+  React.useEffect(
+    () => {
+      filterAdminEventDataElems({eventId: eventValue});
+    },
+    [filterAdminEventDataElems, eventValue]
+  );
+
+  const onContextMenuClick = (e: Event, value: { name: string }) => {
+    const code = getNewCode(value.name);
+    setRulesCode(code);
+  };
+
   return (
     <React.Fragment>
       <Box mx="-10px">
@@ -70,6 +113,9 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       </Box>
       <ContextMenuList
         menuId="rulesCodeContextMenu"
+        onClick={onContextMenuClick}
+        items={adminEventDataElemsItems}
+        noDataStr="No Available Data Elements"
       />
     </React.Fragment>
   );

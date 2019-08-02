@@ -22,6 +22,7 @@ const DebitDetails: React.FC = () => {
             component={InputField}
             label="Apr Overdraft"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1]} p="10px">

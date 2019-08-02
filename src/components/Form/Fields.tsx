@@ -152,7 +152,6 @@ export const withInputField = <OriginalProps extends {}>(
         {...this.props}
         invalid={invalid}
         onBlur={this.onBlur}
-        isNumber={this.props.input.value && !isNaN(Number(this.props.input.value))}
       />
     )
 

@@ -38,7 +38,7 @@ export const withLoadCurrencyCodes =
 
         React.useEffect(
           () => {
-            if (!isCurrencyCodesLoading && isEmpty) {
+            if (isEmpty) {
               loadCurrencyCodes();
             }
           },

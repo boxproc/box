@@ -47,6 +47,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
+              isClearable={false}
             />
           </Box>
           <Box width={[1, 1 / 2]} p="10px">

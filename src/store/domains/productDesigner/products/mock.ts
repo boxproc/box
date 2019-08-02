@@ -149,7 +149,7 @@ export const productRulesData: ProductRulesResp = {
   product_rules: {
     // tslint:disable-next-line: max-line-length
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    event_id: 1,
+    event_id: 3,
     action_type: 'V',
     script:
 `class ShoppingList extends React.Component {

@@ -9,6 +9,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProduct: null,
   currentProductDetails: null,
   currentProductRules: null,
+  currentRulesCode: null,
 
   filterProductsParams: null,
 });
@@ -46,7 +47,12 @@ const productsReducer =
 
       case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
         return state
-          .set('currentProductRules', action.payload.product_rules);
+          .set('currentProductRules', action.payload.product_rules)
+          .set('currentRulesCode', action.payload.product_rules.script);
+
+      case ActionTypeKeys.SET_RULES_CODE:
+        return state
+          .set('currentRulesCode', action.payload);
 
       default: return state;
     }

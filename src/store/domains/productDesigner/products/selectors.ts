@@ -95,16 +95,22 @@ export const selectCurrentProductDetails = createSelector(
 export const selectDetailsCurrentProductRules = (state: StoreState) =>
   state.productDesigner.products.currentProductRules;
 
+// Current rules code
+export const selectDefaultCurrentRulesCode = (state: StoreState) =>
+  state.productDesigner.products.currentRulesCode;
+
 export const selectCurrentProductRules = createSelector(
   selectDetailsCurrentProductRules,
+  selectDefaultCurrentRulesCode,
   selectAdminEventsOptions,
-  (rules, events) => {
+  (rules, code, events) => {
     if (!rules) {
       return null;
     }
     return {
       ...prepareProductRulesValues(rules),
       eventId: events.find(el => el.value === rules.event_id),
+      script: code,
     };
   }
 );

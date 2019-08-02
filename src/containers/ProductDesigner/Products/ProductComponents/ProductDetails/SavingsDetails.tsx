@@ -36,6 +36,7 @@ const SavingsDetails: React.FC = () => {
             component={InputField}
             label="Apr"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -46,6 +47,7 @@ const SavingsDetails: React.FC = () => {
             component={InputField}
             label="Minimum Deposit Allowed"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -56,6 +58,7 @@ const SavingsDetails: React.FC = () => {
             component={InputField}
             label="Maximum Deposit Allowed"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -66,6 +69,7 @@ const SavingsDetails: React.FC = () => {
             component={InputField}
             label="Maximum Monthly Deposit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
       </Flex>

@@ -22,6 +22,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Apr Default"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -32,6 +33,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Apr Cash"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -42,6 +44,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Apr Sales"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -52,6 +55,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Apr Balance Transfer"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -62,6 +66,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Apr Fee"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -72,6 +77,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -82,6 +88,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Fee Exceed Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -92,6 +99,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Fee Unpaid"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -102,6 +110,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Fee Over Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -112,6 +121,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Minimum Payment Percent"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -122,6 +132,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Minimum Payment Amount"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -132,6 +143,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={InputField}
             label="Payment Grace Number Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1]} p="10px">

@@ -38,6 +38,7 @@ const LoanDetails: React.FC = () => {
             component={InputField}
             label="Apr"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -48,6 +49,7 @@ const LoanDetails: React.FC = () => {
             component={InputField}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -58,6 +60,7 @@ const LoanDetails: React.FC = () => {
             component={InputField}
             label="Payment Grace Number Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            isNumber={true}
           />
         </Box>
       </Flex>

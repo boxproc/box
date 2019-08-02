@@ -1,26 +1,19 @@
 .context-menu {
   color: #ffffff;
   font-size: 13px;
+  max-height: 300px;
+  border-radius: 2px;
+  overflow-y: auto;
 }
 
 .context-menu .react-contextmenu-item {
   padding: 7px 10px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, .8);
-}
-
-.context-menu .react-contextmenu-item:first-child {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-}
-
-.context-menu .react-contextmenu-item:last-child {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  background-color: rgba(0, 0, 0, .9);
 }
 
 .context-menu .react-contextmenu-item:hover {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .context-menu .react-contextmenu-item--divider {
@@ -28,4 +21,23 @@
   padding: 0;
   height: 1px;
   background-color: #ffffff;
+}
+
+.context-menu::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: rgba(0, 0, 0, .1);
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.context-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 8px;
+}
+
+.context-menu::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .8);
+  border-radius: 8px;
 }

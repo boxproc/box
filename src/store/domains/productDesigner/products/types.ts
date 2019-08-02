@@ -230,6 +230,7 @@ export interface ProductsState {
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
   currentProductRules: ProductRulesItemResp;
+  currentRulesCode: string;
 
   filterProductsParams: ProductFilterParamsPrepared;
 }

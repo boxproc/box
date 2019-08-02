@@ -38,11 +38,11 @@ export const withLoadAdminEvents =
 
         React.useEffect(
           () => {
-            if (!isAdminEventsLoading && isEmpty) {
+            if (isEmpty) {
               loadAdminEvents();
             }
           },
-          [loadAdminEvents, isEmpty, isAdminEventsLoading]
+          [loadAdminEvents, isEmpty]
         );
 
         return (
