@@ -4,15 +4,16 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 import styled from 'theme';
 
 import Hint from 'components/Hint';
-
 import { Label } from 'components/Text';
 
+import HighlightCode from './HighlightCode';
 import Input from './Input';
 import PasswordInput from './Password';
 import { SelectInput } from './Select';
 import TextInput from './TextArea';
 
 import { componentUtil } from 'utils';
+import MaskInput from './MaskInput';
 
 export const InputFieldWrapper = styled.div`
   width: 100%;
@@ -112,11 +113,11 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
         {(invalid && showErrors) ?
           (error && <span>{error}</span>)
           :
-            hint ? <Hint
-              text={hint}
-              position={hintPosition}
-              width={hintWidth}
-            />
+          hint ? <Hint
+            text={hint}
+            position={hintPosition}
+            width={hintWidth}
+          />
             :
             isRequired && <span className="required-icon">*</span>
         }
@@ -167,3 +168,6 @@ export const InputField = withInputField(Input);
 export const PasswordField = withInputField(PasswordInput);
 export const SelectField = withInputField(SelectInput);
 export const TextField = withInputField(TextInput);
+export const HighLightCodeField = withInputField(HighlightCode);
+
+export const MaskField = withInputField(MaskInput);

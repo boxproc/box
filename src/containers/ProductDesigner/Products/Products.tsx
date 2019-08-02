@@ -6,12 +6,14 @@ import TablePage from 'components/TablePage/TablePage';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
-import { columns } from './columns';
-import ProductsFilter from './ProductsFilter';
+import {
+  ProductsFilterForm,
+  tableColumns,
+} from 'containers/ProductDesigner/Products/ProductComponents';
 
 import {
   HandleFilterProducts,
-  HandleGetProduct,
+  HandleGetProductId,
   HandleGetProducts,
   OpenModal,
   ProductFilterParams,
@@ -25,7 +27,7 @@ import { cookiesUtil } from 'utils';
 interface ProductsProps {
   openModal: OpenModal;
   productItems: Array<ProductItem>;
-  getProduct: HandleGetProduct;
+  getProductId: HandleGetProductId;
   getProducts: HandleGetProducts;
   filterProducts: HandleFilterProducts;
   institutionsOptions: Array<SelectValues>;
@@ -34,7 +36,7 @@ interface ProductsProps {
 
 export const Products: React.FC<ProductsProps> = ({
   openModal,
-  getProduct,
+  getProductId,
   getProducts,
   productItems,
   institutionsOptions,
@@ -69,31 +71,35 @@ export const Products: React.FC<ProductsProps> = ({
       }
       return {
         onDoubleClick: () => {
-          getProduct(rowInfo.original.id);
+          getProductId(rowInfo.original.id);
           openModal({
             name: modalNames.EDIT_PRODUCT,
-            payload: { id: rowInfo.original.id },
           });
         },
       };
     },
-    [openModal, getProduct]
+    [openModal, getProductId]
   );
 
   const productParams = cookiesUtil.get(cookiesNames.PRODUCTS_FILTER);
-  const initialFilterValues = productParams && JSON.parse(productParams);
+  const productParamsParsed = productParams && JSON.parse(productParams);
+
+  const initialFilterValues = {
+    institutionId: institutionsOptions[0],
+    ...productParamsParsed,
+  };
 
   return (
     <TablePage
       title="Products"
       data={productItems}
-      columns={columns}
+      columns={tableColumns}
       addNewModalName={modalNames.ADD_PRODUCT}
       openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Unlocked Product"
       FilterForm={
-        <ProductsFilter
+        <ProductsFilterForm
           filterProducts={filterProducts}
           institutionsOptions={institutionsOptions}
           initialValues={initialFilterValues}

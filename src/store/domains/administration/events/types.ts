@@ -1,12 +1,13 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SuccessResponseStatusType } from 'types';
+
+import { ResponseStatusType } from 'types';
 
 export interface AdminEventsItem {
   id: number;
   name: string;
 }
 
-export interface AdminEventsData extends SuccessResponseStatusType {
+export interface AdminEventsData extends ResponseStatusType {
   events: Array<AdminEventsItem>;
 }
 

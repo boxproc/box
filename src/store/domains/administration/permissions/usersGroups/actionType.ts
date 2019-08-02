@@ -1,12 +1,12 @@
 import {
   AdminGroupPermissionDataResp,
+  AdminGroupPermissionUiItemsDataResp,
   AdminUserGroupMemberDataResp,
   AdminUsersGroupDataResp,
-  AdminGroupPermissionUiItemsDataResp,
   AdminUsersGroupEditableItemPrepared,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP',
@@ -170,7 +170,7 @@ export interface DeleteAdminUserGroupMembersAction {
 }
 
 export interface DeleteAdminUserGroupMembersFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBER_FULFILLED;
   readonly meta: number;
 }
@@ -185,7 +185,7 @@ export interface DeleteAdminGroupPermissionsAction {
 }
 
 export interface DeleteAdminGroupPermissionsFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
   readonly meta: string;
 }
@@ -201,7 +201,7 @@ export interface AddAdminGroupPermissionsAction {
 }
 
 export interface AddAdminGroupPermissionsFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
   readonly meta: AdminUsersGroupEditableItemPrepared;
 }
@@ -217,7 +217,7 @@ export interface AddAdminUsersGroupAction {
 }
 
 export interface AddAdminUsersGroupFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_FULFILLED;
   readonly meta: AdminUsersGroupEditableItemPrepared;
 }
@@ -232,7 +232,7 @@ export interface AddAdminActiveUsersAction {
 }
 
 export interface AddAdminActiveUsersFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
   readonly meta: any;
 }
@@ -263,7 +263,7 @@ export interface UpdateAdminUsersGroupAction {
 }
 
 export interface UpdateAdminUsersGroupFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_FULFILLED;
   readonly meta: AdminUsersGroupEditableItemPrepared;
 }

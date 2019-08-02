@@ -6,7 +6,9 @@ export interface ThemeProps {
 
 export default interface Theme {
   breakpoints: Array<string>;
+
   decorateFont: string;
+  codeFont: string;
 
   normalAccentColor: string;
   lighterAccentColor: string;
@@ -38,6 +40,7 @@ export const theme: Theme = {
   breakpoints: getBreakpointsRange(400, 1500),
 
   decorateFont: 'Raleway, sans-serif',
+  codeFont: '"Roboto Mono", monospace',
 
   normalAccentColor: '#ffa400',
   lighterAccentColor: 'rgba(255, 164, 0, .9)',

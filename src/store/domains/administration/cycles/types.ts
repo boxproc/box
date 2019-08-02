@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues, SuccessResponseStatusType } from 'types';
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface AdminCyclesEditorItemResp {
   id: number;
@@ -48,7 +48,7 @@ export interface AdminCyclesEditorEditableItem {
   fixedCycleNumberOfDays?: number;
 }
 
-export interface AdminCyclesEditorDataResp extends SuccessResponseStatusType {
+export interface AdminCyclesEditorDataResp extends ResponseStatusType {
   cycle_editor: Array<AdminCyclesEditorItemResp>;
 }
 

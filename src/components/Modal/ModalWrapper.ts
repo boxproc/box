@@ -52,7 +52,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     width: 100%;
     padding: 20px;
     border-radius: 3px;
-    // overflow: hidden;
     word-break: break-word;
   }
   .modal-close {

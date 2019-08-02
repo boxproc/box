@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SuccessResponseStatusType } from 'types';
+import { ResponseStatusType } from 'types';
 
 export interface AdminUsersGroupItemResp {
   id: number;
@@ -27,7 +27,7 @@ export interface AdminUsersGroupEditableItem  {
     name?: string;
 }
 
-export interface AdminUsersGroupDataResp extends SuccessResponseStatusType {
+export interface AdminUsersGroupDataResp extends ResponseStatusType {
     users_group: Array<AdminUsersGroupItemResp>;
 }
 
@@ -54,18 +54,18 @@ export interface AdminGroupPermissionItem {
     uiItem: string;
     permission: string;
 }
-export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
+export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
     user_group_members: Array<AdminUserGroupMember>;
 }
-export interface AdminGroupPermissionDataResp extends SuccessResponseStatusType {
+export interface AdminGroupPermissionDataResp extends ResponseStatusType {
     group_permissions: Array<AdminGroupPermissionItemResp>;
 }
 
-export interface AdminUserGroupMemberDataResp extends SuccessResponseStatusType {
+export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
     active_users: Array<AdminUserGroupMember>;
 }
 
-export interface AdminGroupPermissionUiItemsDataResp extends SuccessResponseStatusType {
+export interface AdminGroupPermissionUiItemsDataResp extends ResponseStatusType {
     ui_items: Array<AdminGroupPermissionUiItemResp>;
 }
 

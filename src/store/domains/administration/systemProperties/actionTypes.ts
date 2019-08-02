@@ -4,7 +4,7 @@ import {
   EditableAdminSysPropPrepared,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_SYS_PROPS = 'administration/systemProperties/GET_ADMIN_SYS_PROPS',
@@ -56,7 +56,7 @@ export interface DeleteAdminSysPropAction {
 }
 
 export interface DeleteAdminSysPropFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
   readonly meta: string;
 }
@@ -73,7 +73,7 @@ export interface AddAdminSysPropAction {
 }
 
 export interface AddAdminSysPropFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
   readonly meta: EditableAdminSysPropPrepared;
 }
@@ -90,7 +90,7 @@ export interface UpdateAdminSysPropsAction {
 }
 
 export interface UpdateAdminSysPropsFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
   readonly meta: EditableAdminSysPropPrepared;
 }

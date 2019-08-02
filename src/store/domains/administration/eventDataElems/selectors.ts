@@ -7,11 +7,11 @@ import { StoreState } from 'store/StoreState';
 import { selectAdminEventsOptions } from '../events';
 
 export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
-  state.administration.adminEventDataElems.eventDataElems.asMutable();
+  state.administration.adminEventDataElems.eventDataElems;
 
 export const selectAdminEventDataElemsItems = createSelector(
   selectDefaultAdminEventDataElemsItems,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     return {
       name: item.name,
       description: item.description,

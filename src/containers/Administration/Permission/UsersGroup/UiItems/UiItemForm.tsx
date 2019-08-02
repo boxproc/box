@@ -38,7 +38,7 @@ const ActiveUsersFormAllForm: React.FC<UiItemsFormAllProps> = ({
         () => {
             getUiItems(currentGroupId);
         },
-        [getUiItems]
+        [getUiItems, currentGroupId]
     );
     const handleSubmitForm = React.useCallback(
         handleSubmit(data => console.log('selectedUiItem, ', data)),

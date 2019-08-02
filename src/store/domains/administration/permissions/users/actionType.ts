@@ -4,7 +4,7 @@ import {
   UsersFilterParams,
 } from './types';
 
-import { ApiResponse, SuccessResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_USER = 'administration/permissions/users/GET_ADMIN_USER',
@@ -50,7 +50,7 @@ export interface AddAdminUserAction {
 }
 
 export interface AddAdminUserFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_USER_FULFILLED;
   readonly meta: AdminUserEditableItemPrepared;
 }
@@ -81,7 +81,7 @@ export interface UpdateAdminUserAction {
 }
 
 export interface UpdateAdminUserFulfilledAction {
-  readonly payload: SuccessResponseStatusType;
+  readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_FULFILLED;
   readonly meta: AdminUserEditableItemPrepared;
 }

@@ -152,8 +152,8 @@ export const handleGetAdminUsersGroup: HandleGetAdminUsersGroup = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        console.log('---action');
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+
         apiClient.set('session_id', sessionId);
         await dispatch(getAdminUsersGroup());
       },
@@ -165,8 +165,8 @@ export const handleGetAdminActiveUsers: HandleGetAdminActiveUsers = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        console.log('---action');
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
+
         apiClient.set('session_id', sessionId);
         await dispatch(getAdminActiveUsers());
       },

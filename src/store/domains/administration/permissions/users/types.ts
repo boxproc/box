@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues, SuccessResponseStatusType } from 'types';
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface AdminUserItemResp {
   id: number;
@@ -63,7 +63,7 @@ export interface UsersFilterParamsPrepared {
   // product_type: Array<number | string>;
 }
 
-export interface AdminUserDataResp extends SuccessResponseStatusType {
+export interface AdminUserDataResp extends ResponseStatusType {
   users: Array<AdminUserItemResp>;
 }
 

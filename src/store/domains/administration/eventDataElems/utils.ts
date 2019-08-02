@@ -10,6 +10,6 @@ export const prepareAdminEventDataElemsParams =
       return null;
     }
     return {
-      event_id: params.eventId.value,
+      event_id: params.eventId && params.eventId.value,
     };
   };

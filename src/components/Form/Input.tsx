@@ -8,11 +8,16 @@ export interface InvalidProp {
   invalid?: boolean;
 }
 
+interface InputProp {
+  isNumber?: boolean;
+}
+
 export interface InputCommonProps extends
-  InvalidProp, React.InputHTMLAttributes<HTMLInputElement> {}
+  InvalidProp, InputProp, React.InputHTMLAttributes<HTMLInputElement> {}
 
 const DefaultInput = styled.input<InputCommonProps>`
   ${sharedInputCss};
+  text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'}
 `;
 
 export default DefaultInput;

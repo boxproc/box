@@ -3,12 +3,15 @@ import {
   DebitProductItemResp,
   LoanProductItem,
   LoanProductItemResp,
+  NewProduct,
   PrepaidProductItem,
   PrepaidProductItemResp,
   ProductFilterParams,
   ProductFilterParamsPrepared,
-  ProductItemDetails,
+  ProductItemGeneral,
   ProductItemResp,
+  ProductRulesItem,
+  ProductRulesItemResp,
   RevolvingCreditProductItem,
   RevolvingCreditProductItemResp,
   SavingsProductItem,
@@ -16,15 +19,18 @@ import {
 } from './types';
 
 import {
+  actionTypesOptions,
   loanTypesOptions,
   productTypes,
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
+  statementCyclesOptions,
   statusTypes,
   statusTypesOptions,
   yesNoTypes,
 } from 'consts';
+import { SelectValues } from 'types';
 
 export const prepareProductFiltersParams =
   (params: ProductFilterParamsPrepared): ProductFilterParams => {
@@ -47,7 +53,7 @@ export const prepareProductFiltersParamsToSend =
     };
   };
 
-export const preparedGeneralProductItem = (item: ProductItemResp) => {
+export const prepareGeneralProductItem = (item: ProductItemResp) => {
   return {
     id: item.id,
     name: item.name,
@@ -56,27 +62,68 @@ export const preparedGeneralProductItem = (item: ProductItemResp) => {
     productType: productTypesOptions.find(el => el.value === item.product_type).label,
     scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
     historyRetentionNumberOfDay: item.history_retention_number_of_day,
-    defaultStatementCycleId: item.default_statement_cycle_id,
+    defaultStatementCycleId:
+      statementCyclesOptions.find(el => el.value === item.default_statement_cycle_id).label,
+    currencyCode: item.currency_code,
     lockedFlag: item.locked_flag === yesNoTypes.YES ? true : false,
   };
 };
 
-export const preparedGeneralProductValues = (product: ProductItemResp) => {
-  return {
-    id: product.id,
-    name: product.name,
-    description: product.description,
-    historyRetentionNumberOfDay: product.history_retention_number_of_day,
-    defaultStatementCycleId: product.default_statement_cycle_id,
-    productType: productTypesOptions.find(el => el.value === product.product_type),
-    status: statusTypesOptions.find(el => el.value === product.status),
-    scheme: schemeTypesOptions.find(el => el.value === product.scheme),
-    lockedFlag: product.locked_flag === yesNoTypes.YES ? true : false,
+export const prepareGeneralProductValues =
+  (product: ProductItemResp): Partial<ProductItemGeneral> => {
+    return {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      historyRetentionNumberOfDay: product.history_retention_number_of_day,
+      productType: productTypesOptions.find(el => el.value === product.product_type),
+      status: statusTypesOptions.find(el => el.value === product.status),
+      scheme: schemeTypesOptions.find(el => el.value === product.scheme),
+      lockedFlag: product.locked_flag === yesNoTypes.YES ? true : false,
+      defaultStatementCycleId:
+        statementCyclesOptions.find(el => el.value === product.default_statement_cycle_id),
+    };
   };
-};
 
-export const preparedRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
+export const prepareGeneralProductValuesToSend =
+  (product: Partial<ProductItemGeneral>): ProductItemResp => {
+    return {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      status: product.status.value,
+      institution_id: product.institutionId.value,
+      currency_code: product.currencyCode.label,
+      product_type: product.productType.value,
+      scheme: product.scheme.value,
+      history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
+      default_statement_cycle_id: product.defaultStatementCycleId.value,
+      locked_flag: product.lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
+    };
+  };
+
+export const prepareProductDetailsValues =
+  (product: any, productType: SelectValues) => {
+    const type = productType.value;
+
+    if (type === productTypes.DEBIT) {
+      return prepareDebit(product);
+    } else if (type === productTypes.LOAN) {
+      return prepareLoan(product);
+    } else if (type === productTypes.PREPAID) {
+      return preparePrepaid(product);
+    } else if (type === productTypes.REVOLVING_CREDIT) {
+      return prepareRevolvingCredit(product);
+    } else if (type === productTypes.SAVINGS) {
+      return prepareSavings(product);
+    } else {
+      return null;
+    }
+  };
+
+export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
   return {
+    productId: product.product_id,
     aprDefault: product.apr_default,
     aprCash: product.apr_cash,
     aprSales: product.apr_sales,
@@ -94,8 +141,9 @@ export const preparedRevolvingCredit = (product: RevolvingCreditProductItemResp)
   };
 };
 
-export const preparedRevolvingCreditToSend = (product: RevolvingCreditProductItem) => {
+export const prepareRevolvingCreditToSend = (product: RevolvingCreditProductItem) => {
   return {
+    product_id: product.productId,
     apr_default: Number(product.aprDefault),
     apr_cash: Number(product.aprCash),
     apr_sales: Number(product.aprSales),
@@ -113,8 +161,9 @@ export const preparedRevolvingCreditToSend = (product: RevolvingCreditProductIte
   };
 };
 
-export const preparedSavings = (product: SavingsProductItemResp) => {
+export const prepareSavings = (product: SavingsProductItemResp) => {
   return {
+    productId: product.product_id,
     apr: product.apr,
     minimumDepositAllowed: product.minimum_deposit_allowed,
     maximumDepositAllowed: product.maximum_deposit_allowed,
@@ -123,8 +172,9 @@ export const preparedSavings = (product: SavingsProductItemResp) => {
   };
 };
 
-export const preparedSavingsToSend = (product: SavingsProductItem) => {
+export const prepareSavingsToSend = (product: SavingsProductItem) => {
   return {
+    product_id: product.productId,
     apr: Number(product.apr),
     minimum_deposit_allowed: Number(product.minimumDepositAllowed),
     maximum_deposit_allowed: Number(product.maximumDepositAllowed),
@@ -133,8 +183,9 @@ export const preparedSavingsToSend = (product: SavingsProductItem) => {
   };
 };
 
-export const preparedPrepaid = (product: PrepaidProductItemResp) => {
+export const preparePrepaid = (product: PrepaidProductItemResp) => {
   return {
+    productId: product.product_id,
     dormantAfterNumberOfDays: Number(product.dormant_after_number_of_days),
     breakagesAllowed:
       product.breakages_allowed === yesNoTypes.YES ? true : false,
@@ -143,16 +194,18 @@ export const preparedPrepaid = (product: PrepaidProductItemResp) => {
   };
 };
 
-export const preparedPrepaidToSend = (product: PrepaidProductItem) => {
+export const preparePrepaidToSend = (product: PrepaidProductItem) => {
   return {
+    product_id: product.productId,
     dormant_after_number_of_days: Number(product.dormantAfterNumberOfDays),
     breakages_allowed: product.breakagesAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
     reload_allowed: product.reloadAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
   };
 };
 
-export const preparedLoan = (product: LoanProductItemResp) => {
+export const prepareLoan = (product: LoanProductItemResp) => {
   return {
+    productId: product.product_id,
     apr: product.apr,
     feeLatePayment: product.fee_late_payment,
     paymentGraceNumberOfDays: product.payment_grace_number_of_days,
@@ -160,8 +213,9 @@ export const preparedLoan = (product: LoanProductItemResp) => {
   };
 };
 
-export const preparedLoanToSend = (product: LoanProductItem) => {
+export const prepareLoanToSend = (product: LoanProductItem) => {
   return {
+    product_id: product.productId,
     apr: Number(product.apr),
     fee_late_payment: Number(product.feeLatePayment),
     payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
@@ -169,53 +223,65 @@ export const preparedLoanToSend = (product: LoanProductItem) => {
   };
 };
 
-export const preparedDebit = (product: DebitProductItemResp) => {
+export const prepareDebit = (product: DebitProductItemResp) => {
   return {
+    productId: product.product_id,
     aprOverdraft: product.apr_overdraft,
     overdraftAllowed:
       product.overdraft_allowed === yesNoTypes.YES ? true : false,
   };
 };
 
-export const preparedDebitToSend = (product: DebitProductItem) => {
+export const prepareDebitToSend = (product: DebitProductItem) => {
   return {
+    product_id: product.productId,
     apr_overdraft: Number(product.aprOverdraft),
     overdraft_allowed: product.overdraftAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
   };
 };
 
-const getDetailsByType = (item: any) => {
-  const type = item.productType.value;
+export const prepareProductDetailsValuesToSend =
+  (product: any, productType: SelectValues) => {
+    const type = productType.value;
 
-  if (type === productTypes.DEBIT) {
-    return preparedDebitToSend(item);
-  } else if (type === productTypes.LOAN) {
-    return preparedLoanToSend(item);
-  } else if (type === productTypes.PREPAID) {
-    return preparedPrepaidToSend(item);
-  } else if (type === productTypes.REVOLVING_CREDIT) {
-    return preparedRevolvingCreditToSend(item);
-  } else if (type === productTypes.SAVINGS) {
-    return preparedSavingsToSend(item);
-  } else {
-    return null;
-  }
+    if (type === productTypes.DEBIT) {
+      return prepareDebitToSend(product);
+    } else if (type === productTypes.LOAN) {
+      return prepareLoanToSend(product);
+    } else if (type === productTypes.PREPAID) {
+      return preparePrepaidToSend(product);
+    } else if (type === productTypes.REVOLVING_CREDIT) {
+      return prepareRevolvingCreditToSend(product);
+    } else if (type === productTypes.SAVINGS) {
+      return prepareSavingsToSend(product);
+    } else {
+      return null;
+    }
+  };
+
+export const prepareNewProductValuesToSend = (product: Partial<NewProduct>) => {
+  return {
+    ...prepareGeneralProductValuesToSend(product),
+    ...prepareProductDetailsValuesToSend(product, product.productType),
+  };
 };
 
-export const preparedProductItemToSend = (item: ProductItemDetails) => {
+export const prepareProductRulesValues = (rules: ProductRulesItemResp) => {
   return {
-    id: item.id,
-    product_id: item.id,
-    name: item.name,
-    description: item.description,
-    status: item.status.value,
-    institution_id: item.institutionId.value,
-    currency_code: item.currencyCode.label,
-    product_type: item.productType.value,
-    scheme: item.scheme.value,
-    history_retention_number_of_day: Number(item.historyRetentionNumberOfDay),
-    default_statement_cycle_id: item.defaultStatementCycleId.value,
-    locked_flag: item.lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
-    ...getDetailsByType(item),
+    description: rules.description,
+    actionType: actionTypesOptions.find(el => el.value === rules.action_type),
+    script: rules.script,
+    productId: rules.product_id,
+  };
+};
+
+export const prepareProductRulesValuesToSend =
+  (rules: Partial<ProductRulesItem>): ProductRulesItemResp  => {
+  return {
+    description: rules.description,
+    event_id: rules.eventId.value,
+    action_type: rules.actionType.value,
+    script: rules.script,
+    product_id: rules.productId,
   };
 };
