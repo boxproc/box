@@ -41,12 +41,18 @@ interface AdminGroupPermissionItemPlain {
 
 export interface AdminGroupPermissionItemResp extends AdminGroupPermissionItemPlain {
   user_group_id: number;
-  ui_item: string;
+  ui_item: string | number;
+}
+
+export interface AdminGroupPermissionItemEditable {
+  userGroupId: number;
+  uiItem: SelectValues;
+  permission: boolean;
 }
 
 export interface AdminGroupPermissionItem extends AdminGroupPermissionItemPlain {
   userGroupId: number;
-  uiItem: string;
+  uiItem: string | number;
 }
 
 export interface AdminGroupPermissionDataResp extends ResponseStatusType {

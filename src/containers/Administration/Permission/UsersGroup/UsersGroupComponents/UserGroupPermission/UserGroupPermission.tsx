@@ -21,7 +21,8 @@ interface UsersGroupMembersProps {
   adminGroupPermissions: Array<AdminGroupPermissionItem>;
 }
 
-type SCell<T extends keyof AdminGroupPermissionItem> = TableCell<AdminGroupPermissionItem[T]>;
+type SCell<T extends keyof AdminGroupPermissionItem> =
+ TableCell<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminGroupPermission,

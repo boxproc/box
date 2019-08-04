@@ -1,6 +1,5 @@
-import { cookiesNames, formNames, modalNames, } from 'consts';
+import { cookiesNames, formNames, modalNames } from 'consts';
 import { reset as resetForm } from 'redux-form';
-import * as api from './api';
 
 import { closeModal, selectUserGroupById } from 'store/domains/modals';
 
@@ -17,19 +16,25 @@ import {
   GetAdminUserGroupMembersAction,
   GetAdminUsersGroupAction,
   UpdateAdminUsersGroupAction,
-
 } from './actionType';
 
-import { apiClient } from 'services';
-
-import { Thunk, VoidPromiseThunk } from 'types';
-
-import { prepareAdminUsersGroupValuesUnderscore } from './utils';
+import * as api from './api';
 
 import {
+  AdminGroupPermissionItemEditable,
+  AdminGroupPermissionItemResp,
   AdminUsersGroupInfoEditable,
   AdminUsersGroupInfoPlainResp,
 } from './types';
+
+import { apiClient } from 'services';
+
+import {
+  AdminGroupPermissionPreparedToSend,
+  prepareAdminUsersGroupValuesUnderscore,
+} from './utils';
+
+import { Thunk, VoidPromiseThunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
@@ -69,11 +74,10 @@ export type AddAdminActiveUsers = (groupId: number, userId: number | string) =>
 export type HandleAddAdminActiveUsers = (groupId: number, userId: number | string) =>
   Thunk<void>;
 
-export type AddAdminGroupPermissions = (groupId: number, uiItem: string, permission: string) =>
+export type AddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemResp>) =>
   AddAdminGroupPermissionsAction;
-export type HandleAddAdminGroupPermissions
-  = (groupId: number, uiItem: string, permission: string) =>
-    Thunk<void>;
+export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemEditable>) =>
+  Thunk<void>;
 
 export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlainResp>) =>
   UpdateAdminUsersGroupAction;
@@ -129,9 +133,9 @@ export const addAdminActiveUsers: AddAdminActiveUsers = (groupId, userId) => ({
 });
 
 export const addAdminGroupPermission: AddAdminGroupPermissions =
-  (groupId, uiItem, permission) => ({
+  (values) => ({
     type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
-    payload: api.addAdminGroupPermission(groupId, uiItem, permission),
+    payload: api.addAdminGroupPermission(values),
   });
 
 export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
@@ -230,15 +234,13 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
   };
 
 export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
-  (groupId, uiItem, permission) =>
-    async (dispatch, getState) => {
+  (values) =>
+    async (dispatch) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
-          const state = getState();
-          const currentGroupId = selectUserGroupById(state);
+          const preparedValues = AdminGroupPermissionPreparedToSend(values);
 
-          await dispatch(addAdminGroupPermission(groupId, uiItem, permission));
-          await dispatch(getAdminUserGroupMembers(currentGroupId));
+          await dispatch(addAdminGroupPermission(preparedValues));
           await dispatch(resetForm(formNames.ADD_GROUP_PERMISSIONS));
         },
         dispatch

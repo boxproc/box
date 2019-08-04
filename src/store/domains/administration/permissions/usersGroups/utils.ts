@@ -1,4 +1,6 @@
-import { AdminUsersGroupInfoEditable } from './types';
+import { permissionTypes } from 'consts';
+
+import { AdminGroupPermissionItemEditable, AdminUsersGroupInfoEditable } from './types';
 
 export const prepareAdminUsersGroupValuesUnderscore =
   (values: Partial<AdminUsersGroupInfoEditable>) => {
@@ -8,3 +10,12 @@ export const prepareAdminUsersGroupValuesUnderscore =
       name: values.name,
     };
   };
+
+export const AdminGroupPermissionPreparedToSend =
+  (values: Partial<AdminGroupPermissionItemEditable>) => {
+  return {
+    user_group_id: values.userGroupId,
+    ui_item: values.uiItem && values.uiItem.value,
+    permission: values.permission ? permissionTypes.READ_WRITE : permissionTypes.READ_ONLY,
+  };
+};
