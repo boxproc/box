@@ -41,7 +41,7 @@ export interface AdminUserGroupMember extends AdminUserGroupMemberId {
 
 export interface AdminGroupPermissionItemResp {
     user_group_id: number;
-    ui_item: string |number;
+    ui_item: string | number;
     permission: string;
 }
 
@@ -77,12 +77,14 @@ export interface AdminGroupPermissionUiItemsDataResp extends ResponseStatusType 
 
 export interface AdminUserGroupMembersDeleteResp {
   user_group_id: number;
-  user_id: number;
+  user_id: string | number;
+  username: SelectValues;
 }
 
 export interface AdminUserGroupMembersDelete {
   userGroupId: number;
-  userId: number;
+  userId:  string | number;
+  username: SelectValues;
 }
 
 export interface AdminUsersGroupState {
