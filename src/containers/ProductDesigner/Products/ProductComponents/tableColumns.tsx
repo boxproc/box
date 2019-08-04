@@ -3,9 +3,7 @@ import React from 'react';
 import { Cell, Header } from 'components/Table';
 import { renderCheckBoxIcon } from 'components/Table/utils';
 
-import {
-  ProductItem,
-} from 'store/domains';
+import { ProductItem } from 'store/domains';
 
 import { TableCell } from 'types';
 

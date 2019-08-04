@@ -3,10 +3,10 @@ import React from 'react';
 import { Box } from '@rebass/grid';
 import { Panel, Tabs } from 'components/Tabs';
 
-// tslint:disable-next-line: max-line-length
-import UserGroupMembers from 'containers/Administration/Permission/UsersGroup/UsersGroupComponents/UserGroupMembers';
-// tslint:disable-next-line: max-line-length
-import UserGroupPermission from 'containers/Administration/Permission/UsersGroup/UsersGroupComponents/UserGroupPermission';
+import {
+  UserGroupMembers,
+  UserGroupPermission,
+} from 'containers/Administration/Permission/UsersGroup/UsersGroupComponents';
 
 import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
 import EditGroupPermissionForm from './EditGroupPermissionForm';

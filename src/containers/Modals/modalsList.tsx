@@ -2,23 +2,22 @@ import React from 'react';
 
 import { modalNames } from 'consts';
 
-// tslint:disable-next-line: max-line-length
 import AddSystemPropertyModal from 'containers/Administration/SystemProperties/AddSystemPropertyModal';
 import AddProductModal from 'containers/ProductDesigner/Products/AddProduct/AddProductModal';
 import EditProductModal from 'containers/ProductDesigner/Products/EditProduct/EditProductModal';
 
-// tslint:disable-next-line: max-line-length
 import AddUsersGroupModal from 'containers/Administration/Permission/UsersGroup/AddUserGroup/AddUsersGroupModal';
-// tslint:disable-next-line: max-line-length
 import EditUsersGroupModal from 'containers/Administration/Permission/UsersGroup/EditUserGroup/EditUsersGroupModal';
 
-import AddCyclesEditorModal from './Administration/AddCyclesEditorModal';
-import AddSchedulerModal from './Administration/Scheduler/AddSchedulerModal';
-import EditSchedularModal from './Administration/Scheduler/EditSchedularModal';
+import AddCyclesEditorModal from 'containers/Administration/Cycles/CyclesEditor/AddCyclesEditorModal';
+import EditCyclesEditorModal from 'containers/Administration/Cycles/CyclesEditor/EditCyclesEditorModal';
 
-import EditCyclesEditorModal from './Administration/EditCyclesEditorModal';
-import AddUsersModal from './Administration/Users/AddUsersModal';
-import EditUsersModal from './Administration/Users/EditUsersModal';
+import AddSchedulerModal from 'containers/Administration/Scheduler/AddSchedulerModal';
+import EditSchedularModal from 'containers/Administration/Scheduler/EditSchedularModal';
+
+import AddUsersModal from 'containers/Administration/Permission/Users/AddUsersModal';
+import EditUsersModal from 'containers/Administration/Permission/Users/EditUsersModal';
+
 import MessageModal from './MessageModal';
 
 export const modalsList = [
@@ -70,6 +69,6 @@ export const modalsList = [
 
   {
     name: modalNames.EDIT_ADMIN_USERS_GROUP,
-    component: < EditUsersGroupModal/>,
+    component: < EditUsersGroupModal />,
   },
 ];

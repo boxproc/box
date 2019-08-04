@@ -3,7 +3,6 @@ import {
   AdminGroupPermissionUiItemsDataResp,
   AdminUserGroupMemberDataResp,
   AdminUsersGroupDataResp,
-  AdminUsersGroupEditableItemPrepared,
 } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
@@ -76,12 +75,6 @@ export enum ActionTypeKeys {
   'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_FULFILLED',
   ADD_ADMIN_USERS_GROUP_REJECTED =
   'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_REJECTED',
-
-  // FILTER_USERS_GROUP = 'administration/permissions/usersGroup/FILTER_USERS_GROUP',
-  // FILTER_USERS_GROUP_FULFILLED =
-  // 'administration/permissions/usersGroup/FILTER_USERS_GROUP_FULFILLED',
-  // FILTER_USERS_GROUP_REJECTED =
-  // 'administration/permissions/usersGroup/FILTER_USERS_GROUP_REJECTED',
 
   UPDATE_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP',
   UPDATE_ADMIN_USERS_GROUP_FULFILLED =
@@ -203,7 +196,6 @@ export interface AddAdminGroupPermissionsAction {
 export interface AddAdminGroupPermissionsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
-  readonly meta: AdminUsersGroupEditableItemPrepared;
 }
 
 export interface AddAdminGroupPermissionsRejectedAction {
@@ -219,7 +211,6 @@ export interface AddAdminUsersGroupAction {
 export interface AddAdminUsersGroupFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_FULFILLED;
-  readonly meta: AdminUsersGroupEditableItemPrepared;
 }
 
 export interface AddAdminUsersGroupRejectedAction {
@@ -234,28 +225,12 @@ export interface AddAdminActiveUsersAction {
 export interface AddAdminActiveUsersFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
-  readonly meta: any;
 }
 
 export interface AddAdminActiveUsersRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
 }
-
-// export interface FilterUsersAction {
-//     readonly payload: Promise<object>;
-//     readonly type: ActionTypeKeys.FILTER_USERS;
-//   }
-
-// export interface FilterUsersFulfilledAction {
-//     readonly payload: AdminUserDataResp;
-//     readonly type: ActionTypeKeys.FILTER_USERS_FULFILLED;
-//     meta: UsersFilterParams;
-//   }
-// export interface FilterUsersRejectedAction {
-//     readonly payload: ApiResponse;
-//     readonly type: ActionTypeKeys.FILTER_USERS_REJECTED;
-//   }
 
 export interface UpdateAdminUsersGroupAction {
   readonly payload: Promise<object>;
@@ -265,7 +240,6 @@ export interface UpdateAdminUsersGroupAction {
 export interface UpdateAdminUsersGroupFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_FULFILLED;
-  readonly meta: AdminUsersGroupEditableItemPrepared;
 }
 
 export interface UpdateAdminUsersGroupRejectedAction {
@@ -284,5 +258,4 @@ export type AdminUsersGroupActionTypes =
   | DeleteAdminUserGroupMembersFulfilledAction
   | AddAdminActiveUsersFulfilledAction
   | GetAdminUiItemsFulfilledAction
-  // | FilterUsersFulfilledAction
   | UpdateAdminUsersGroupFulfilledAction;

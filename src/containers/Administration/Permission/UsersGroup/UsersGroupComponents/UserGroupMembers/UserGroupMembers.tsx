@@ -16,7 +16,7 @@ import { TableCell } from 'types';
 interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
   getAdminUserGroupMembers: HandleGetAdminUserGroupMembers;
-  AdminUserGroupMembers: Array<any>;
+  AdminUserGroupMembers: Array<AdminUserGroupMember>;
   deleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMembers;
 }
 
@@ -67,6 +67,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       data={AdminUserGroupMembers}
       columns={columns}
       NoDataComponent={TableNoData}
+      isHeader={false}
     />
   );
 };

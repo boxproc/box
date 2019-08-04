@@ -20,11 +20,11 @@ export interface AdminCyclesEditorEditableItemId {
 export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditorEditableItemId {
   institution_id: number | string;
   description: string;
-  cycle_type: string;
+  cycle_type: number | string;
   status: number | string;
-  monthly_cycle_first_day: number | string;
-  weekly_cycle_first_day: number | string;
-  fixed_cycle_number_of_days: number | string;
+  monthly_cycle_first_day?: number;
+  weekly_cycle_first_day?: number;
+  fixed_cycle_number_of_days?: number;
 }
 
 export interface AdminCyclesEditorItem {
@@ -39,12 +39,13 @@ export interface AdminCyclesEditorItem {
 }
 
 export interface AdminCyclesEditorEditableItem {
-  institutionId?: SelectValues;
-  description?: string;
-  cycleType?: string;
-  status?: SelectValues;
+  id: number;
+  institutionId: SelectValues;
+  description: string;
+  cycleType: SelectValues;
+  status: SelectValues;
   monthlyCycleFirstDay?: number;
-  weeklyCycleFirstDay?: number;
+  weeklyCycleFirstDay?: SelectValues;
   fixedCycleNumberOfDays?: number;
 }
 
@@ -53,5 +54,5 @@ export interface AdminCyclesEditorDataResp extends ResponseStatusType {
 }
 
 export interface AdminCyclesEditorState {
-  cycle_editor: ImmutableArray<AdminCyclesEditorItemResp>;
+  cycleEditor: ImmutableArray<AdminCyclesEditorItemResp>;
 }

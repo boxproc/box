@@ -3,8 +3,11 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { Hr } from 'components/Text';
 
 import {
   cycleTypes,
@@ -15,35 +18,49 @@ import {
   weeklyCycleTypeOptions
 } from 'consts';
 
-import { HandleAddAdminCyclesEditor, HandleUpdateAdminCyclesEditor } from 'store/domains';
-
-import { formErrorUtil } from 'utils';
+import {
+  HandleAddAdminCyclesEditor,
+  HandleDeleteAdminCycleEditor,
+  HandleUpdateAdminCyclesEditor,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface DefineCyclesEditorFormProps {
-  defineAdminCyclesEditor?: HandleAddAdminCyclesEditor | HandleUpdateAdminCyclesEditor;
-  institutionsOptions?: Array<SelectValues>;
+interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
+  addAdminCyclesEditor: HandleAddAdminCyclesEditor;
+  updateAdminCyclesEditor: HandleUpdateAdminCyclesEditor;
+  deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
+  institutionsOptions: Array<SelectValues>;
+  onCancel: () => void;
+  cyclesEditorValue: SelectValues;
+  currentCycleEditorId: number;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   isDisabledType?: boolean;
-  onCancel?: () => void;
-  cyclesEditorValue?: any;
+  mode: 'add' | 'edit';
 }
 
-type DefineSchedulerJobFormAllProps = DefineCyclesEditorFormProps &
+type DefineCycleEditorFormAllProps = DefineCyclesEditorFormProps &
   InjectedFormProps<{}, DefineCyclesEditorFormProps>;
 
-const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
+const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   handleSubmit,
-  defineAdminCyclesEditor,
+  addAdminCyclesEditor,
+  updateAdminCyclesEditor,
+  deleteAdminCyclesEditor,
+  cyclesEditorValue,
+  currentCycleEditorId,
+  onCancel,
   isDisabledInstitutions,
   institutionsOptions,
   isDisabledStatus,
   isDisabledType,
-  onCancel,
-  cyclesEditorValue,
+  mode,
 }) => {
+  const defineAdminCyclesEditor = mode === 'add'
+    ? addAdminCyclesEditor
+    : updateAdminCyclesEditor;
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminCyclesEditor(data)),
     [handleSubmit, defineAdminCyclesEditor]
@@ -85,14 +102,25 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Cycles Editor Description"
               component={InputField}
               label="Cycles Editor Description"
-              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="status"
+              name="status"
+              component={SelectField}
+              isSearchable={true}
+              label="Status"
+              placeholder="Select Cycles Editor Status"
+              options={statusTypeCyclesOptions}
+              isDisabled={isDisabledStatus}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
               id="cycleType"
               name="cycleType"
-              placeholder="Enter  Cycles Type"
+              placeholder="Enter Cycles Type"
               component={SelectField}
               options={typeOfCyclesEditorOptions}
               label="Cycles Editor Type"
@@ -106,11 +134,12 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 id="monthlyCycleFirstDay"
                 name="monthlyCycleFirstDay"
                 isSearchable={true}
-                placeholder="Enter Monthly Cycle first day "
+                placeholder="Enter Monthly Cycle First Day "
                 component={InputField}
-                label="Cycles Editor Monthly Cycle first day"
+                label="Cycles Editor Monthly Cycle First Day"
                 disabled={false}
                 options={executableTypeOptions}
+                isNumber={true}
               />
             </Box>
           )}
@@ -119,10 +148,10 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               <Field
                 id="weeklyCycleFirstDay"
                 name="weeklyCycleFirstDay"
-                placeholder="Enter Weekly Cycle first day "
+                placeholder="Enter Weekly Cycle First Day "
                 component={SelectField}
                 options={weeklyCycleTypeOptions}
-                label="Cycles Editor Weekly Cycle first day"
+                label="Cycles Editor Weekly Cycle First Day"
                 disabled={false}
               />
             </Box>
@@ -132,32 +161,35 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               <Field
                 id="fixedCycleNumberOfDays"
                 name="fixedCycleNumberOfDays"
-                placeholder="Enter  fixed Cycle number of days"
+                placeholder="Enter  fixed Cycle Number of Days"
                 component={InputField}
-                label="Cycles Editor fixed  number of days  "
+                label="Cycles Editor fixed Number of Days"
                 disabled={false}
+                isNumber={true}
               />
             </Box>
           )}
-          <Box width={[1 / 2]} p="10px">
-            <Field
-              id="status"
-              name="status"
-              component={SelectField}
-              isSearchable={true}
-              label="Status"
-              placeholder="Select Cycles Editor Status"
-              options={statusTypeCyclesOptions}
-              isDisabled={isDisabledStatus}
-            />
-          </Box>
         </Flex>
       </Box>
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Cancel"
-        onCancel={onCancel}
-      />
+      <Hr />
+      <Flex
+        alignItems="flex-end"
+        justifyContent="space-between"
+      >
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Close"
+          onCancel={onCancel}
+        />
+        {mode === 'edit' && (
+          <Button
+            text="delete"
+            iconName="delete"
+            type="reset"
+            onClick={() => deleteAdminCyclesEditor(currentCycleEditorId)}
+          />
+        )}
+      </Flex>
     </form >
   );
 };
@@ -166,4 +198,4 @@ export default reduxForm<{}, DefineCyclesEditorFormProps>({
   form: formNames.DEFINE_ADMIN_CYCLE_EDITOR,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(DefineSchedulerJobForm);
+})(withSpinner()(DefineCycleEditorForm));

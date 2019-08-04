@@ -8,7 +8,7 @@ import { Hr } from 'components/Text';
 import { formNames } from 'consts';
 
 // tslint:disable-next-line: max-line-length
-import GeneralUserGroupInfo from 'containers/Administration/Permission/UsersGroup/UsersGroupComponents/GeneralUserGroupInfo';
+import { GeneralUserGroupInfo } from 'containers/Administration/Permission/UsersGroup/UsersGroupComponents';
 
 import { HandleAddAdminUsersGroups } from 'store/domains';
 

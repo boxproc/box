@@ -18,7 +18,7 @@ interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
   getAdminGroupPermission: HandleGetAdminGroupPermissions;
   deleteAdminGroupPermission: HandleDeleteAdminGroupPermissions;
-  adminGroupPermissions: Array<any>;
+  adminGroupPermissions: Array<AdminGroupPermissionItem>;
 }
 
 type SCell<T extends keyof AdminGroupPermissionItem> = TableCell<AdminGroupPermissionItem[T]>;
@@ -38,6 +38,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
 
   const columns = [
     {
+      sortable: true,
       Header: <Header title="Ui Items" showSortIcons={true} />,
       accessor: 'uiItem',
       Cell: (props: SCell<'uiItem'>) => (
@@ -48,6 +49,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     },
     {
       maxWidth: 200,
+      sortable: true,
       Header: <Header title="Permission" showSortIcons={true} />,
       accessor: 'permission',
       Cell: (props: SCell<'permission'>) => (
@@ -58,11 +60,13 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     },
     {
       maxWidth: 100,
+      sortable: true,
       accessor: 'deleteButton',
       Cell: (cellInfo: CellInfo) => (
         <Button
           iconName="delete"
           text="Delete"
+          size="12"
           onClick={() =>
             deleteAdminGroupPermission(
               cellInfo.original.user_group_id,

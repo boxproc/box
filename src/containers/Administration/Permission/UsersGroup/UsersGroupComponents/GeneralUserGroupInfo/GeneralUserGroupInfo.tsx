@@ -30,9 +30,9 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             placeholder="Select Institution"
             component={SelectField}
             label="Institution"
-            validate={[formErrorUtil.required]}
             options={institutionsOptions}
             isDisabled={isDisabledInstitutions}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -43,6 +43,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             component={InputField}
             label="User group name"
             placeholder="Enter User group name"
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

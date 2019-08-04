@@ -1,6 +1,7 @@
+import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
-import { createSelector } from 'reselect';
+import { permissionTypesOptions } from 'consts';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
@@ -18,9 +19,6 @@ export const selectDefaultAdminActiveUsers = (state: StoreState) =>
 
 export const selectDefaultAdminUiItems = (state: StoreState) =>
   state.administration.adminUsersGroup.uiItems.asMutable();
-
-// export const selectDefaultFilterUsers = (state: StoreState) =>
-//  state.administration.adminUsers.filterUsers;
 
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
@@ -47,9 +45,9 @@ export const selectAdminGroupPermissionsItems = createSelector(
   selectAdminGroupPermissions,
   items => items && items.map(item => {
     return {
-      ...item,
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
+      permission: permissionTypesOptions.find(el => el.value === item.permission).label,
     };
   })
 );
