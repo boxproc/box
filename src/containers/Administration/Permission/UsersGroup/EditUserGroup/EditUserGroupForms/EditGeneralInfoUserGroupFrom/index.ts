@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { isDirty } from 'redux-form';
 
 import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
+
+import { formNames } from 'consts';
 
 import {
   AdminUsersGroupActionTypes,
@@ -16,8 +19,11 @@ const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
 ]);
 
+const dirty = isDirty(formNames.EDIT_GENERAL_INFO_USER_GROUP);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isDirty: dirty(state),
   initialValues: selectUsersGroupValues(state),
 });
 

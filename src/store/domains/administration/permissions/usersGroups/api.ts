@@ -1,6 +1,6 @@
 import { apiClient } from 'services';
 
-import { AdminUsersGroupEditableItemPrepared } from './types';
+import { AdminUsersGroupInfoPlainResp } from './types';
 
 export const getAdminUsersGroup = () =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
@@ -29,11 +29,11 @@ export const getAdminUserGroupPermissions = (id: string | number) =>
     data: { user_group_id: id },
   });
 
-export const addAdminUsersGroup = (data: AdminUsersGroupEditableItemPrepared) =>
+export const addAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/permission/users_group/create', { data });
 
-export const updateAdminUsersGroup = (data: AdminUsersGroupEditableItemPrepared) =>
+export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post('/ui/administration/permissions/users_group/update', { data });
 

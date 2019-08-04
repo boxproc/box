@@ -47,7 +47,9 @@ export const selectAdminGroupPermissionsItems = createSelector(
     return {
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
-      permission: permissionTypesOptions.find(el => el.value === item.permission).label,
+      permission:
+        permissionTypesOptions.find(el => el.value === item.permission)
+        && permissionTypesOptions.find(el => el.value === item.permission).label,
     };
   })
 );

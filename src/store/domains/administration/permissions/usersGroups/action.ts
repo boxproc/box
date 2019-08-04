@@ -27,8 +27,8 @@ import { Thunk, VoidPromiseThunk } from 'types';
 import { prepareAdminUsersGroupValuesUnderscore } from './utils';
 
 import {
-  AdminUsersGroupEditableItem,
-  AdminUsersGroupEditableItemPrepared,
+  AdminUsersGroupInfoEditable,
+  AdminUsersGroupInfoPlainResp,
 } from './types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
@@ -59,9 +59,9 @@ export type DeleteAdminGroupPermissions =
 export type HandleDeleteAdminGroupPermissions =
   (groupId: number, uiItem: string, permission: string) => Thunk<void>;
 
-export type AddAdminUsersGroups = (values: AdminUsersGroupEditableItemPrepared) =>
+export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
   AddAdminUsersGroupAction;
-export type HandleAddAdminUsersGroups = (values: AdminUsersGroupEditableItem) =>
+export type HandleAddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
 export type AddAdminActiveUsers = (groupId: number, userId: number | string) =>
@@ -75,10 +75,10 @@ export type HandleAddAdminGroupPermissions
   = (groupId: number, uiItem: string, permission: string) =>
     Thunk<void>;
 
-export type UpdateAdminUsersGroup = (propValues: AdminUsersGroupEditableItemPrepared) =>
+export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlainResp>) =>
   UpdateAdminUsersGroupAction;
 export type HandleUpdateAdminUsersGroup =
-  (propValues: AdminUsersGroupEditableItem) => Thunk<void>;
+  (propValues: Partial<AdminUsersGroupInfoEditable>) => Thunk<void>;
 
 export const getAdminUsersGroup: GetAdminUsersGroup = () => ({
   type: ActionTypeKeys.GET_ADMIN_USERS_GROUP,
@@ -111,8 +111,8 @@ export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (groupId
   meta: userId,
 });
 
-export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions
-  = (groupId, uiItem, permission) => ({
+export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions =
+  (groupId, uiItem, permission) => ({
     type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
     payload: api.deleteAdminUserGroupPermissions(groupId, uiItem, permission),
     meta: uiItem,
