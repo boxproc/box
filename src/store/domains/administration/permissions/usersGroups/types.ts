@@ -31,6 +31,11 @@ export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
   user_group_members: Array<AdminUserGroupMember>;
 }
 
+// export interface AdminGroupPermissionItemResp {
+//     user_group_id: number;
+//     ui_item: string | number;
+//     permission: string;
+
 export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
   active_users: Array<AdminUserGroupMember>;
 }
@@ -69,12 +74,14 @@ export interface AdminGroupPermissionUiItemsDataResp extends ResponseStatusType 
 
 export interface AdminUserGroupMembersDeleteResp {
   user_group_id: number;
-  user_id: number;
+  user_id: string | number;
+  username: SelectValues;
 }
 
 export interface AdminUserGroupMembersDelete {
   userGroupId: number;
-  userId: number;
+  userId:  string | number;
+  username: SelectValues;
 }
 
 export interface AdminUsersGroupState {

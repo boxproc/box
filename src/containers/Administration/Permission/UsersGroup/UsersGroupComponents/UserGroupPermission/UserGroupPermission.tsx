@@ -18,7 +18,7 @@ interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
   getAdminGroupPermission: HandleGetAdminGroupPermissions;
   deleteAdminGroupPermission: HandleDeleteAdminGroupPermissions;
-  adminGroupPermissions: Array<AdminGroupPermissionItem>;
+  adminGroupPermissions: Array<any>;
 }
 
 type SCell<T extends keyof AdminGroupPermissionItem> =
@@ -71,9 +71,8 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
           withConfirmation={true}
           onClick={() =>
             deleteAdminGroupPermission(
-              cellInfo.original.user_group_id,
-              cellInfo.original.ui_item,
-              cellInfo.original.permission
+              cellInfo.original.userGroupId,
+              cellInfo.original.uiItem
             )
           }
         />

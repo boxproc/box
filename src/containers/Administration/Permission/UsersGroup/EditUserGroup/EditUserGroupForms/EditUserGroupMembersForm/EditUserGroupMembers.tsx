@@ -35,13 +35,13 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getActiveUsers();
+      getActiveUsers(currentGroupId);
     },
     [getActiveUsers]
   );
   const handleSubmitForm = React.useCallback(
-    handleSubmit(() => addAdminActiveUsers(currentGroupId, selectedUser.value)),
-    [handleSubmit, addAdminActiveUsers]
+    handleSubmit(data => addAdminActiveUsers(data)),
+    [handleSubmit, addAdminActiveUsers, currentGroupId]
   );
   const isSelectedUser = !!selectedUser;
 
