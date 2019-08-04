@@ -68,6 +68,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
           iconName="delete"
           text="Delete"
           size="12"
+          withConfirmation={true}
           onClick={() =>
             deleteAdminGroupPermission(
               cellInfo.original.user_group_id,

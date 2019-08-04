@@ -16,7 +16,7 @@ import {
   HandleGetAdminCyclesEditor,
 } from 'store/domains/administration/cycles';
 
-import { OpenModal } from 'store/domains/';
+import { OpenModal } from 'store/domains';
 
 interface CycleEditorProps {
   adminCyclesEditorItems: Array<AdminCyclesEditorItem>;

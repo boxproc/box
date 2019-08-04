@@ -43,6 +43,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
     handleSubmit(() => addAdminActiveUsers(currentGroupId, selectedUser.value)),
     [handleSubmit, addAdminActiveUsers]
   );
+  const isSelectedUser = !!selectedUser;
 
   return (
     <form onSubmit={handleSubmitForm}>
@@ -60,6 +61,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
       <Button
         iconName="save"
         text="Save"
+        disabled={!isSelectedUser}
       />
     </form >
   );

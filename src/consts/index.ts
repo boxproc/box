@@ -53,6 +53,7 @@ export enum modalNames {
   ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroupModal',
   EDIT_ADMIN_USERS_GROUP = 'EditAdminUsersGroupModal',
   MESSAGE_MODAL = 'MessageModal',
+  CONFIRMATION_MODAL = 'ConfirmationModal',
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',

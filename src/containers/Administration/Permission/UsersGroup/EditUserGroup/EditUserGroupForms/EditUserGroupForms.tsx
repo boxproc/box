@@ -27,13 +27,13 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         />
       </Panel>
       <Panel title="User Group Members">
-        <Box mb="25px">
+        <Box mb="30px">
           <EditUserGroupMembersForm />
         </Box>
         <UserGroupMembers />
       </Panel>
       <Panel title="Group Permission">
-        <Box mb="25px">
+        <Box mb="30px">
           <EditGroupPermissionForm />
         </Box>
         <UserGroupPermission/>

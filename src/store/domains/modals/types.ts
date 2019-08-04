@@ -13,6 +13,8 @@ export interface ModalsState {
   isMessageModal: boolean;
   payloadMessageModal?: PayloadMessageModal;
 
+  isConfirmationModal: boolean;
+
   isAddAdminSystemPropertyModal: boolean;
 
   isAddProductModal: boolean;
