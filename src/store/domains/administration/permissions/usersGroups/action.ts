@@ -1,4 +1,4 @@
-import { cookiesNames, formNames, modalNames, permissionTypes, } from 'consts';
+import { cookiesNames, formNames, modalNames } from 'consts';
 import { reset as resetForm } from 'redux-form';
 
 import { closeModal, selectUserGroupById } from 'store/domains/modals';
@@ -21,17 +21,20 @@ import {
 import * as api from './api';
 
 import {
-  AdminGroupPermissionItem,
+  AdminGroupPermissionItemEditable,
   AdminGroupPermissionItemResp,
   AdminUserGroupMembersDelete,
   AdminUserGroupMembersDeleteResp,
-  AdminUsersGroupEditableItem,
-  AdminUsersGroupEditableItemPrepared,
+  AdminUsersGroupInfoEditable,
+  AdminUsersGroupInfoPlainResp,
 } from './types';
 
 import { apiClient } from 'services';
 
-import { prepareAdminUsersGroupValuesUnderscore } from './utils';
+import {
+  AdminGroupPermissionPreparedToSend,
+  prepareAdminUsersGroupValuesUnderscore,
+} from './utils';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
@@ -63,9 +66,9 @@ export type DeleteAdminGroupPermissions =
 export type HandleDeleteAdminGroupPermissions =
   (groupId: number, uiItem: string) => Thunk<void>;
 
-export type AddAdminUsersGroups = (values: AdminUsersGroupEditableItemPrepared) =>
+export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
   AddAdminUsersGroupAction;
-export type HandleAddAdminUsersGroups = (values: AdminUsersGroupEditableItem) =>
+export type HandleAddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
 export type AddAdminActiveUsers = (values: Partial<AdminUserGroupMembersDeleteResp>) =>
@@ -75,13 +78,13 @@ export type HandleAddAdminActiveUsers = (values: Partial<AdminUserGroupMembersDe
 
 export type AddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemResp>) =>
   AddAdminGroupPermissionsAction;
-export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItem>) =>
+export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemEditable>) =>
   Thunk<void>;
 
-export type UpdateAdminUsersGroup = (propValues: AdminUsersGroupEditableItemPrepared) =>
+export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlainResp>) =>
   UpdateAdminUsersGroupAction;
 export type HandleUpdateAdminUsersGroup =
-  (propValues: AdminUsersGroupEditableItem) => Thunk<void>;
+  (propValues: Partial<AdminUsersGroupInfoEditable>) => Thunk<void>;
 
 export const getAdminUsersGroup: GetAdminUsersGroup = () => ({
   type: ActionTypeKeys.GET_ADMIN_USERS_GROUP,
@@ -114,8 +117,7 @@ export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (groupId
   meta: userId,
 });
 
-export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions
-  = (groupId, uiItem) => ({
+export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions = (groupId, uiItem) => ({
     type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
     payload: api.deleteAdminUserGroupPermissions(groupId, uiItem),
     meta: uiItem,
@@ -136,12 +138,6 @@ export const addAdminGroupPermission: AddAdminGroupPermissions =
     type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
     payload: api.addAdminGroupPermission(values),
   });
-
-// export const filterUsers: FilterUsers = params => ({
-//   type: ActionTypeKeys.FILTER_USERS,
-//   payload: api.filterAdminUsers(params),
-//   meta: params,
-// });
 
 export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP,
@@ -194,7 +190,7 @@ export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermission
           const state = getState();
           const currentGroupId = selectUserGroupById(state);
           await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem));
-          await dispatch(getAdminUserGroupMembers(currentGroupId));
+          await dispatch(getAdminUiItems(currentGroupId));
         },
         dispatch
       );
@@ -252,12 +248,9 @@ export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
         async () => {
           const state = getState();
           const currentGroupId = selectUserGroupById(state);
-          const {userGroupId, uiItem, permission} = values;
-          await dispatch(addAdminGroupPermission({
-            user_group_id: userGroupId,
-            ui_item: uiItem.value,
-            permission: permission ? permissionTypes.READ_WRITE : permissionTypes.READ_ONLY,
-          }));
+          const preparedValues = AdminGroupPermissionPreparedToSend(values);
+
+          await dispatch(addAdminGroupPermission(preparedValues));
           await dispatch(getAdminUserGroupPermissions(currentGroupId));
           await dispatch(getAdminUiItems(currentGroupId));
           await dispatch(resetForm(formNames.EDIT_GROUP_PERMISSION));
@@ -292,7 +285,6 @@ export const handleUpdateAdminUsersGroup: HandleUpdateAdminUsersGroup = values =
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
 
         await dispatch(updateAdminUsersGroup(preparedValues));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_USERS_GROUP));
         await dispatch(getAdminUsersGroup());
       },
       dispatch

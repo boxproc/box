@@ -15,6 +15,7 @@ import { HandleAddAdminUsersGroups } from 'store/domains';
 export interface EditGeneralInfoUserGroupFromProps extends ExternalSpinnerProps {
   onCancel: () => void;
   updateAdminUsersGroup: HandleAddAdminUsersGroups;
+  isDirty: boolean;
 }
 
 type EditGeneralInfoUserGroupFromPropsAllProps = EditGeneralInfoUserGroupFromProps &
@@ -24,6 +25,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   onCancel,
   handleSubmit,
   updateAdminUsersGroup,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateAdminUsersGroup(data)),
@@ -38,6 +40,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"
+        disabledOk={!isDirty}
         onCancel={onCancel}
       />
     </form>

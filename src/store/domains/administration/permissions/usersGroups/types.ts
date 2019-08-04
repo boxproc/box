@@ -1,74 +1,71 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface AdminUsersGroupItemResp {
+interface InfoPlain {
   id: number;
-  institution_id: number | string;
   name: string;
 }
 
-export interface AdminUsersGroupEditableItemId {
-  id: number;
-}
-
-export interface AdminUsersGroupEditableItemPrepared extends AdminUsersGroupEditableItemId {
+export interface AdminUsersGroupInfoPlainResp extends InfoPlain {
   institution_id: number | string;
-  name: string;
 }
 
-export interface AdminUsersGroupItem {
-  id: number;
+export interface AdminUsersGroupInfoPlain extends InfoPlain {
   institutionId: number | string;
-  name: string;
 }
 
-export interface AdminUsersGroupEditableItem {
-  institutionId?: number | string;
-  name?: string;
+export interface AdminUsersGroupInfoEditable extends InfoPlain {
+  institutionId: SelectValues;
 }
 
 export interface AdminUsersGroupDataResp extends ResponseStatusType {
-  users_group: Array<AdminUsersGroupItemResp>;
+  users_group: Array<AdminUsersGroupInfoPlainResp>;
 }
 
-export interface AdminUserGroupMemberId {
+export interface AdminUserGroupMember {
   id: number;
-}
-
-export interface AdminUserGroupMember extends AdminUserGroupMemberId {
   username: string;
 }
 
-export interface AdminGroupPermissionItemResp {
-    user_group_id: number;
-    ui_item: string | number;
-    permission: string;
-}
-
-export interface AdminGroupPermissionUiItemResp {
-  ui_item: string;
-}
-
-export interface AdminGroupPermissionItem {
-    userGroupId: number;
-    uiItem: SelectValues;
-    permission: string;
-}
-
-export interface AdminGroupPermissionItemForm {
-    userGroupId: number;
-    uiItem: string | number;
-    permission: string;
-}
 export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
   user_group_members: Array<AdminUserGroupMember>;
 }
+
+// export interface AdminGroupPermissionItemResp {
+//     user_group_id: number;
+//     ui_item: string | number;
+//     permission: string;
+
+export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
+  active_users: Array<AdminUserGroupMember>;
+}
+
+interface AdminGroupPermissionItemPlain {
+  permission: string;
+}
+
+export interface AdminGroupPermissionItemResp extends AdminGroupPermissionItemPlain {
+  user_group_id: number;
+  ui_item: string | number;
+}
+
+export interface AdminGroupPermissionItemEditable {
+  userGroupId: number;
+  uiItem: SelectValues;
+  permission: boolean;
+}
+
+export interface AdminGroupPermissionItem extends AdminGroupPermissionItemPlain {
+  userGroupId: number;
+  uiItem: string | number;
+}
+
 export interface AdminGroupPermissionDataResp extends ResponseStatusType {
   group_permissions: Array<AdminGroupPermissionItemResp>;
 }
 
-export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
-  active_users: Array<AdminUserGroupMember>;
+export interface AdminGroupPermissionUiItemResp {
+  ui_item: string;
 }
 
 export interface AdminGroupPermissionUiItemsDataResp extends ResponseStatusType {
@@ -88,7 +85,7 @@ export interface AdminUserGroupMembersDelete {
 }
 
 export interface AdminUsersGroupState {
-  usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
+  usersGroups: ImmutableArray<AdminUsersGroupInfoPlainResp>;
   userGroupMembers: ImmutableArray<AdminUserGroupMember>;
   allActiveUsers: ImmutableArray<AdminUserGroupMember>;
   groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;

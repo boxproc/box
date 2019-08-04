@@ -8,7 +8,7 @@ import TablePage from 'components/TablePage/TablePage';
 import { modalNames } from 'consts';
 
 import {
-  AdminUsersGroupItem,
+  AdminUsersGroupInfoPlain,
   HandleGetAdminUsersGroup,
 } from 'store/domains/administration/permissions/usersGroups';
 
@@ -19,12 +19,12 @@ import {
 import { TableCell } from 'types';
 
 interface UserFilterProps {
-  adminUsersGroupItems: Array<Partial<AdminUsersGroupItem>>;
+  adminUsersGroupItems: Array<Partial<AdminUsersGroupInfoPlain>>;
   openModal: OpenModal;
   getAdminUsersGroup: HandleGetAdminUsersGroup;
 }
 
-type SCell<T extends keyof AdminUsersGroupItem> = TableCell<AdminUsersGroupItem[T]>;
+type SCell<T extends keyof AdminUsersGroupInfoPlain> = TableCell<AdminUsersGroupInfoPlain[T]>;
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
   openModal,

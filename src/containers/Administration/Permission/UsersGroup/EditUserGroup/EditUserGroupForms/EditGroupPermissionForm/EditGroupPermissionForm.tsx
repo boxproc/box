@@ -13,8 +13,6 @@ import { CheckboxField, SelectField } from 'components/Form';
 
 import { SelectValues } from 'types';
 
-import { formErrorUtil } from 'utils';
-
 interface EditGroupPermissionFormProps {
   addAdminGroupPermission: HandleAddAdminGroupPermissions;
   currentGroupId: number;
@@ -56,7 +54,6 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             placeholder="Select Ui Item"
             component={SelectField}
             label="Ui Item"
-            validate={[formErrorUtil.required]}
             options={uiItemsOptions}
           />
         </Box>

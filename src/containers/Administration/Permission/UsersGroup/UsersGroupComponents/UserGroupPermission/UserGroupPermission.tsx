@@ -4,7 +4,7 @@ import { withSpinner } from 'components/Spinner';
 import { Cell, Header, Table, TableNoData } from 'components/Table';
 
 import {
-  AdminGroupPermissionItemForm,
+  AdminGroupPermissionItem,
   HandleDeleteAdminGroupPermissions,
   HandleGetAdminGroupPermissions,
 } from 'store/domains/administration/permissions/usersGroups';
@@ -21,8 +21,8 @@ interface UsersGroupMembersProps {
   adminGroupPermissions: Array<any>;
 }
 
-type SCell<T extends keyof AdminGroupPermissionItemForm> =
- TableCell<AdminGroupPermissionItemForm[T]>;
+type SCell<T extends keyof AdminGroupPermissionItem> =
+ TableCell<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminGroupPermission,
