@@ -6,7 +6,7 @@ export const getAdminCycleEditor = () =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
   apiClient.post('/ui/administration/cycles/cycles_editor/get');
 
-export const addAdminCyclesEditor = (data: AdminCyclesEditorEditableItemPrepared) =>
+export const addAdminCyclesEditor = (data: Partial<AdminCyclesEditorEditableItemPrepared>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/cycles/cycles_editor/create', { data });
 
@@ -16,6 +16,6 @@ export const deleteAdminCyclesEditor = (id: string | number) =>
     data: { id },
   });
 
-export const updateAdminCyclesEditor = (data: AdminCyclesEditorEditableItemPrepared) =>
+export const updateAdminCyclesEditor = (data: Partial<AdminCyclesEditorEditableItemPrepared>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post('/ui/administration/cycles/cycles_editor/update', { data });

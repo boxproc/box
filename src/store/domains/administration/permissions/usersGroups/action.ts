@@ -100,6 +100,7 @@ export const getAdminUiItems: GetAdminUiItems = id => ({
   type: ActionTypeKeys.GET_ADMIN_UI_ITEMS,
   payload: api.getAdminUiItems(id),
 });
+
 export const getAdminUserGroupPermissions: GetAdminUserGroupPermissions = id => ({
   type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS,
   payload: api.getAdminUserGroupPermissions(id),
@@ -121,7 +122,6 @@ export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions
 export const addAdminUserUsersGroup: AddAdminUsersGroups = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP,
   payload: api.addAdminUsersGroup(values),
-  meta: values,
 });
 
 export const addAdminActiveUsers: AddAdminActiveUsers = (groupId, userId) => ({
@@ -144,7 +144,6 @@ export const addAdminGroupPermission: AddAdminGroupPermissions =
 export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP,
   payload: api.updateAdminUsersGroup(values),
-  meta: values,
 });
 
 export const handleGetAdminUsersGroup: HandleGetAdminUsersGroup = () =>
@@ -164,9 +163,6 @@ export const handleGetAdminActiveUsers: HandleGetAdminActiveUsers = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-
-        apiClient.set('session_id', sessionId);
         await dispatch(getAdminActiveUsers());
       },
       dispatch
@@ -230,6 +226,7 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
+
         await dispatch(addAdminUserUsersGroup(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_USERS_GROUP));
         await dispatch(getAdminUsersGroup());
@@ -244,15 +241,12 @@ export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
     async (dispatch) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
-          // const state = getState();
-          // const currentGroupId = selectUserGroupById(state);
           const {userGroupId, uiItem, permission} = values;
           await dispatch(addAdminGroupPermission({
             user_group_id: userGroupId,
             ui_item: uiItem.value,
             permission: permission ? permissionTypes.READ_WRITE : permissionTypes.READ_ONLY,
           }));
-          // await dispatch(handleGetAdminUiItems(currentGroupId));
           await dispatch(resetForm(formNames.ADD_GROUP_PERMISSIONS));
         },
         dispatch
@@ -274,29 +268,15 @@ export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = (groupId, us
     );
   };
 
-// export const handleFilterUsers: HandleFilterUsers = params =>
-//   async dispatch => {
-//     errorDecoratorUtil.withErrorHandler(
-//       async () => {
-//         console.log('params', params);
-
-//         const preparedValues = prepareUsersFiltersParamsToSend(params);
-//         console.log('preparedValues', preparedValues);
-//         await dispatch(filterUsers(preparedValues));
-//       },
-//       dispatch
-//     );
-//   };
-
 export const handleUpdateAdminUsersGroup: HandleUpdateAdminUsersGroup = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
+
         await dispatch(updateAdminUsersGroup(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_USERS_GROUP));
         await dispatch(getAdminUsersGroup());
-
       },
       dispatch
     );

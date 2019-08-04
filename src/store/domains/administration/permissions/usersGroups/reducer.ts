@@ -32,6 +32,7 @@ const adminUsersGroupReducer =
             'userGroupMembers',
             state.userGroupMembers.filter(el => el.id !== action.meta)
           );
+
       case ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED:
         return state
           .set(

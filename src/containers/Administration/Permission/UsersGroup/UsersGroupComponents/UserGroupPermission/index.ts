@@ -22,7 +22,6 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminUserGroupMemberId: selectUserGroupById(state),
   adminGroupPermissions: selectAdminGroupPermissionsItems(state),
-
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

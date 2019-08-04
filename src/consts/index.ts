@@ -93,8 +93,6 @@ export const statusTypeCyclesOptions = [
 ];
 
 export const weeklyCycleTypeOptions = [
-  // {value: null, label: '-'},
-  // {value: 0, label: '-'},
   { value: 1, label: 'Monday'},
   { value: 2, label: 'Tuesday'},
   { value: 3, label: 'Wednesday'},
@@ -235,3 +233,8 @@ export enum codeKeys {
   ESCAPE = 'Escape',
   BACKSPACE = 'Backspace',
 }
+
+export const permissionTypesOptions = [
+  { value: 'R', label: 'Read only' },
+  { value: 'W', label: 'Read / Write' },
+];

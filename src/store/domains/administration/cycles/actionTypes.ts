@@ -1,7 +1,4 @@
-import {
-  AdminCyclesEditorDataResp,
-  AdminCyclesEditorEditableItemPrepared,
-} from './types';
+import { AdminCyclesEditorDataResp } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -53,7 +50,6 @@ export interface AddAdminCycleEditorAction {
 export interface AddAdminCycleEditorFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR_FULFILLED;
-  readonly meta: AdminCyclesEditorEditableItemPrepared;
 }
 
 export interface AddAdminCycleEditorRejectedAction {
@@ -85,7 +81,6 @@ export interface UpdateAdminCycleEditorAction {
 export interface UpdateAdminCycleEditorFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED;
-  readonly meta: AdminCyclesEditorEditableItemPrepared;
 }
 
 export interface UpdateAdminCycleEditorRejectedAction {

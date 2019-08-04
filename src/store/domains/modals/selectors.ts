@@ -1,9 +1,9 @@
 import {
   executableTypeOptions,
-   statusTypeCyclesOptions,
-    statusTypesOptions,
-     typeOfCyclesEditorOptions,
-     weeklyCycleTypeOptions
+  statusTypeCyclesOptions,
+  statusTypesOptions,
+  typeOfCyclesEditorOptions,
+  weeklyCycleTypeOptions
 } from 'consts';
 import { createSelector } from 'reselect';
 import { selectInstitutionsOptions } from 'store/domains/consts';
@@ -19,16 +19,17 @@ export const selectUserGroupById = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues.id;
 
 export const selectDefaultCycleEditorRecord = (state: StoreState) =>
-  state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
+  state.modals.payloadEditCycleEditorRecordsModal
+  && state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 
 export const selectDefaultUsersRecord = (state: StoreState) =>
-   state.modals.payloadEditAdminUserModal.usersValues;
+  state.modals.payloadEditAdminUserModal.usersValues;
 
 export const selectDefaultUsersGroupRecord = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues;
 
 export const selectSchedulerJobId = (state: StoreState) =>
-state.modals.payloadEditAdminSchedulerModal
+  state.modals.payloadEditAdminSchedulerModal
   && state.modals.payloadEditAdminSchedulerModal.schedulerJobValues.id;
 
 export const selectDefaultSchedulerJobValues = (state: StoreState) =>
@@ -51,6 +52,9 @@ export const selectCycleEditorValues = createSelector(
   selectDefaultCycleEditorRecord,
   selectInstitutionsOptions,
   (values, institutions) => {
+    if (!values) {
+      return null;
+    }
     return {
       ...values,
       status: statusTypeCyclesOptions.find(el => el.label === values.status),
@@ -60,6 +64,11 @@ export const selectCycleEditorValues = createSelector(
         el => el.label === values.weeklyCycleFirstDay),
     };
   }
+);
+
+export const selectCycleEditorId = createSelector(
+  selectDefaultCycleEditorRecord,
+  record => record && record.id
 );
 
 export const selectUsersValues = createSelector(
@@ -77,7 +86,8 @@ export const selectUsersGroupValues = createSelector(
   selectInstitutionsOptions,
   (values, institutions) => {
     return {
-      ...values,
+      id: values.id,
+      name: values.name,
       institutionId: institutions.find(el => el.label === values.institutionId),
     };
   }

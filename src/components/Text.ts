@@ -49,7 +49,7 @@ export const Paragraph = styled.p<ParagraphProps>`
 `;
 
 export const Hr = styled.div`
-  padding-top: 5px;
   margin-top: 25px;
+  margin-bottom: 15px;
   border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
 `;

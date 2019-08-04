@@ -5,7 +5,7 @@ import { AdminCyclesEditorState } from './types';
 
 export const adminCyclesEditorInitialState:
   seamlessImmutable.ImmutableObject<AdminCyclesEditorState> = Immutable({
-    cycle_editor: Immutable([]),
+    cycleEditor: Immutable([]),
   });
 
 const adminCyclesEditorReducer =
@@ -13,13 +13,13 @@ const adminCyclesEditorReducer =
     switch (action.type) {
       case ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR_FULFILLED:
         return state
-          .set('cycle_editor', action.payload.cycle_editor);
+          .set('cycleEditor', action.payload.cycle_editor);
 
       case ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR_FULFILLED:
         return state
           .set(
-            'cycle_editor',
-            state.cycle_editor.filter(el => el.id !== action.meta)
+            'cycleEditor',
+            state.cycleEditor.filter(el => el.id !== action.meta)
           );
 
       default:

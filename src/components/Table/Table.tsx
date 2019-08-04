@@ -155,12 +155,14 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   filterable?: boolean;
   className?: string;
   title?: string;
+  isHeader?: boolean;
 }
 
 export const Table: React.FC<TableProps> = props => {
   const {
     sortable = false,
     filterable = false,
+    isHeader = true,
     data,
   } = props;
 
@@ -177,7 +179,11 @@ export const Table: React.FC<TableProps> = props => {
           defaultPageSize={10}
           multiSort={false}
           resizable={false}
-          TheadComponent={data && data.length > 0 ? ReactTableDefaults.TheadComponent : () => null}
+          TheadComponent={
+            isHeader && data && data.length > 0
+              ? ReactTableDefaults.TheadComponent
+              : () => null
+            }
         />
       </TableStyled>
     </React.Fragment>
