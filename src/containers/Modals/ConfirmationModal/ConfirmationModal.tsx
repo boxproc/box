@@ -9,10 +9,12 @@ import { CloseModal } from 'store/domains';
 
 interface ConfirmationModalProps {
   closeModal: CloseModal;
+  confirmAction: () => void;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
+  confirmAction,
 }) => {
   return (
     <Modal
@@ -24,7 +26,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     >
       <OkCancelButtons
         onCancel={() => closeModal(modalNames.CONFIRMATION_MODAL)}
-        onOk={() => console.log('---confirm')}
+        onOk={confirmAction}
         okText="confirm"
       />
     </Modal>

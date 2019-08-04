@@ -8,6 +8,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   payloadMessageModal: null,
 
   isConfirmationModal: false,
+  payloadConfirmationModal: null,
 
   isAddAdminSystemPropertyModal: false,
 

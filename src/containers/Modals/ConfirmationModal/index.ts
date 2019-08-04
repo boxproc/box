@@ -5,7 +5,14 @@ import ConfirmationModal from './ConfirmationModal';
 
 import {
   closeModal,
+  selectConfirmModalAction,
 } from 'store/domains';
+
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  confirmAction: selectConfirmModalAction(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -15,6 +22,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ConfirmationModal);

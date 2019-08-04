@@ -92,18 +92,16 @@ const Button: React.FC<ButtonProps> = ({
   openModal,
 }) => {
   const handleClick = React.useCallback(
-    () => {
-      return disabled
-        ? null
-        : withConfirmation
-          ? openModal({
-            name: modalNames.CONFIRMATION_MODAL,
-            payload: {
-              confirmationAction: onClick,
-            },
-          })
-          : onClick();
-    },
+    disabled
+      ? null
+      : withConfirmation
+        ? () => openModal({
+          name: modalNames.CONFIRMATION_MODAL,
+          payload: {
+            confirmAction: onClick,
+          },
+        })
+        : onClick,
     [disabled, withConfirmation, openModal, onClick]
   );
 

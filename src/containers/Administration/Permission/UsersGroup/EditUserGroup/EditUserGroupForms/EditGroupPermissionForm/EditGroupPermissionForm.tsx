@@ -72,7 +72,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
       </Flex>
       <Button
         iconName="save"
-        text="Save"
+        text="Add"
         disabled={!isUiItemSelected}
       />
     </form >

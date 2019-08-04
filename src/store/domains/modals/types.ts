@@ -14,6 +14,7 @@ export interface ModalsState {
   payloadMessageModal?: PayloadMessageModal;
 
   isConfirmationModal: boolean;
+  payloadConfirmationModal: { confirmAction: () => void };
 
   isAddAdminSystemPropertyModal: boolean;
 
