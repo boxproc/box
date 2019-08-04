@@ -203,7 +203,6 @@ export interface AddAdminGroupPermissionsAction {
 export interface AddAdminGroupPermissionsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
-  readonly meta: AdminUsersGroupEditableItemPrepared;
 }
 
 export interface AddAdminGroupPermissionsRejectedAction {

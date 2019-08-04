@@ -39,7 +39,10 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
     [getUiItems, currentGroupId]
   );
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log('selectedUiItem, ', data)),
+    handleSubmit((data) => addAdminGroupPermission({
+      ...data,
+      userGroupId: currentGroupId,
+    })),
     [handleSubmit, addAdminGroupPermission]
   );
 
@@ -62,7 +65,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             id="permission"
             name="permission"
             component={CheckboxField}
-            label="Permission"
+            label="Permission Read/Wright"
           />
         </Box>
       </Flex>

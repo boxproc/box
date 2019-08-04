@@ -64,6 +64,11 @@ export enum modalNames {
   EDIT_ADMIN_USER = 'EditAdminUserModal',
 }
 
+export enum permissionTypes {
+  READ_WRITE = 'W',
+  READ_ONLY = 'R',
+}
+
 export enum uiItemTypes {
   SCREEN = 'S',
   MENU_PARENT = 'M',
