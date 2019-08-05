@@ -100,7 +100,7 @@ const Button: React.FC<ButtonProps> = ({
         ? () => openModal({
           name: modalNames.CONFIRMATION_MODAL,
           payload: {
-            confirmAction: onClick,
+            confirmationAction: onClick,
             confirmationText,
           },
         })

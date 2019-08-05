@@ -12,7 +12,6 @@ import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';
 import Login from 'containers/Login';
-import { HomePage } from 'containers/Pages/Pages';
 
 import Modals from 'containers/Modals';
 import { pagesList } from './pagesList';
@@ -38,6 +37,10 @@ interface RootProps {
   userName: string;
   isRememberedMe: boolean;
 }
+
+const HomePage = () => (
+  <React.Fragment>Welcome!</React.Fragment>
+);
 
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
