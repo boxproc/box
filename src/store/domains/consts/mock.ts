@@ -15,12 +15,12 @@ export const institutionsData: InstitutionsDataResp = {
   institutions: [
     {
       id: 1,
-      name: 'BOX Institution',
+      institution_name: 'BOX Institution',
       status: 'A',
     },
     {
       id: 2,
-      name: 'Test customer',
+      institution_name: 'Test customer',
       status: 'A',
     },
   ],

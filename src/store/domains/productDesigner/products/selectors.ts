@@ -4,7 +4,7 @@ import { StoreState } from 'store/StoreState';
 
 import {
   selectCurrencyCodes,
-  selectDefaultInstitutions,
+  selectInstitutions,
   selectInstitutionsOptions,
 } from 'store/domains/consts';
 
@@ -23,7 +23,7 @@ export const selectDefaultProductItems = (state: StoreState) =>
 
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
-  selectDefaultInstitutions,
+  selectInstitutions,
   (products, institutions) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
@@ -31,7 +31,7 @@ export const selectProductItems = createSelector(
     return {
       ...prepareGeneralProductItem(product),
       institutionId: institutions.find(el => el.id === product.institution_id)
-        && institutions.find(el => el.id === product.institution_id).name,
+        && institutions.find(el => el.id === product.institution_id).institutionName,
     };
   })
 );

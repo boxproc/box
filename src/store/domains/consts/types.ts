@@ -6,14 +6,22 @@ export interface CurrencyCodesResp<T = Array<KeyValuePair>> {
   currency_options: T;
 }
 
-export interface InstitutionItem {
+interface InstitutionItemPlain {
   id: number;
-  name: string;
   status: string;
 }
 
+export interface InstitutionItemResp extends InstitutionItemPlain {
+  institution_name: string;
+}
+
+export interface InstitutionItem {
+  id: number;
+  institutionName: string;
+}
+
 export interface InstitutionsDataResp {
-  institutions: Array<InstitutionItem>;
+  institutions: Array<InstitutionItemResp>;
 }
 
 export interface InstitutionsData {
@@ -22,5 +30,5 @@ export interface InstitutionsData {
 
 export interface ConstsState {
   currencyCodes: ImmutableArray<KeyValuePair>;
-  institutions: ImmutableArray<InstitutionItem>;
+  institutions: ImmutableArray<InstitutionItemResp>;
 }
