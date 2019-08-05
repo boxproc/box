@@ -1,34 +1,44 @@
 import React from 'react';
 
+import { Flex } from '@rebass/grid';
+
 import { OkCancelButtons } from 'components/Buttons';
 import Modal from 'components/Modal';
+import { Paragraph } from 'components/Text';
 
 import { modalNames } from 'consts';
 
-import { CloseModal } from 'store/domains';
+import { CloseModal, PayloadConfirmationModal } from 'store/domains';
 
 interface ConfirmationModalProps {
   closeModal: CloseModal;
-  confirmAction: () => void;
+  payloadConfirmModal: PayloadConfirmationModal;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
-  confirmAction,
+  payloadConfirmModal,
 }) => {
+  const { confirmationAction, confirmationText } = payloadConfirmModal;
+
   return (
     <Modal
       name={modalNames.CONFIRMATION_MODAL}
       title="Are you sure?"
-      maxContainerWidth={250}
+      maxContainerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}
     >
-      <OkCancelButtons
-        onCancel={() => closeModal(modalNames.CONFIRMATION_MODAL)}
-        onOk={confirmAction}
-        okText="confirm"
-      />
+      {confirmationText && (
+        <Paragraph light={true}>{confirmationText}</Paragraph>
+      )}
+      <Flex justifyContent="flex-end">
+        <OkCancelButtons
+          onCancel={() => closeModal(modalNames.CONFIRMATION_MODAL)}
+          onOk={confirmationAction}
+          okText="confirm"
+        />
+      </Flex>
     </Modal>
   );
 };

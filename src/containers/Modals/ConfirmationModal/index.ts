@@ -5,13 +5,13 @@ import ConfirmationModal from './ConfirmationModal';
 
 import {
   closeModal,
-  selectConfirmModalAction,
+  selectPayloadConfirmationModal,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  confirmAction: selectConfirmModalAction(state),
+  payloadConfirmModal: selectPayloadConfirmationModal(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

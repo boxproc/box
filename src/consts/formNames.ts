@@ -1,0 +1,27 @@
+export enum formNames {
+  UI_ITEMS = 'uiItemsForm',
+  ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
+  USER_LOGIN = 'userLoginForm',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
+  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+  DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
+  DEFINE_ADMIN_USER = 'defineAdminUserForm',
+  SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
+  PRODUCTS_FILTER = 'productsFilterForm',
+  PRODUCT = 'productForm',
+  ADD_PRODUCT = 'AddProductForm',
+  EDIT_GENERAL_PRODUCT = 'EditGeneralProduct',
+  EDIT_PRODUCT_DETAILS = 'EditProductDetails',
+  EDIT_PRODUCT_RULES = 'EditProductRules',
+  CYCLES_EDITOR = 'cyclesEditorForm',
+  SCHEDULER = 'schedulerForm',
+  USER = 'userForm',
+  USERS_GROUP = 'usersGroupForm',
+  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
+
+  // User Groups
+  ADD_USER_GROUP = 'addUserGroupForm',
+  EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
+  EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
+  EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
+}

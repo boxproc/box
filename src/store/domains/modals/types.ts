@@ -1,12 +1,17 @@
+export interface ModalsData {
+  name: string;
+  payload?: object;
+}
+
 export interface PayloadMessageModal {
   title: string;
   message?: string;
   details?: string;
 }
 
-export interface ModalsData {
-  name: string;
-  payload?: object;
+export interface PayloadConfirmationModal {
+  confirmationAction: () => void;
+  confirmationText?: string;
 }
 
 export interface ModalsState {
@@ -14,7 +19,7 @@ export interface ModalsState {
   payloadMessageModal?: PayloadMessageModal;
 
   isConfirmationModal: boolean;
-  payloadConfirmationModal: { confirmAction: () => void };
+  payloadConfirmationModal: PayloadConfirmationModal;
 
   isAddAdminSystemPropertyModal: boolean;
 

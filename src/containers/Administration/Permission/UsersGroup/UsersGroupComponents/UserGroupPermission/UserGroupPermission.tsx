@@ -22,7 +22,7 @@ interface UsersGroupMembersProps {
 }
 
 type SCell<T extends keyof AdminGroupPermissionItem> =
- TableCell<AdminGroupPermissionItem[T]>;
+  TableCell<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminGroupPermission,
@@ -68,6 +68,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
           iconName="delete"
           text="Delete"
           size="12"
+          confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
           withConfirmation={true}
           onClick={() =>
             deleteAdminGroupPermission(

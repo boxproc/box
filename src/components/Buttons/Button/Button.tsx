@@ -60,6 +60,7 @@ interface ButtonProps {
   iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'reset' | string;
   type?: 'reset' | 'submit';
   withConfirmation?: boolean;
+  confirmationText?: string;
   openModal: OpenModal;
 }
 
@@ -89,6 +90,7 @@ const Button: React.FC<ButtonProps> = ({
   type,
   size,
   withConfirmation = false,
+  confirmationText,
   openModal,
 }) => {
   const handleClick = React.useCallback(
@@ -99,6 +101,7 @@ const Button: React.FC<ButtonProps> = ({
           name: modalNames.CONFIRMATION_MODAL,
           payload: {
             confirmAction: onClick,
+            confirmationText,
           },
         })
         : onClick,

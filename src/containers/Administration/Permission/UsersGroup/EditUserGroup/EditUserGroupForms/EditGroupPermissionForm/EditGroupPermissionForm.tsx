@@ -66,7 +66,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             id="permission"
             name="permission"
             component={CheckboxField}
-            label="Permission Read/Write"
+            label="Permission Read and Write"
           />
         </Box>
       </Flex>
