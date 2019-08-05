@@ -3,7 +3,7 @@ import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
@@ -95,7 +95,6 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       data={adminUsersGroupItems}
       columns={columns}
       addNewModalName={modalNames.ADD_ADMIN_USERS_GROUP}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit User Group"
 

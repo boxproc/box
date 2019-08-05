@@ -2,7 +2,7 @@ import React from 'react';
 import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
@@ -95,7 +95,6 @@ export const Products: React.FC<ProductsProps> = ({
       data={productItems}
       columns={tableColumns}
       addNewModalName={modalNames.ADD_PRODUCT}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Unlocked Product"
       FilterForm={

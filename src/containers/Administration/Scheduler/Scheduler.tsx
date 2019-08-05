@@ -5,7 +5,7 @@ import { theme } from 'theme';
 
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
@@ -193,7 +193,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       data={adminSchedulerJobsItems}
       columns={columns}
       addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Scheduler"
       FilterForm={

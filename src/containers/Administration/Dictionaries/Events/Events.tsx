@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { AdminEventsItem, HandleGetAdminEvents } from 'store/domains';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
@@ -54,7 +54,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       data={adminCyclesEditorItems}
       columns={cycleEditorColumns}
       addNewModalName={modalNames.ADD_ADMIN_CYCLE_EDITOR}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Cycle Editor or Delete Record"
       FilterForm={
