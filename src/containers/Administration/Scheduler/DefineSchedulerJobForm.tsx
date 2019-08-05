@@ -73,7 +73,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   id="status"
                   name="status"
                   component={SelectField}
-                  isSearchable={true}
                   label="Status"
                   placeholder="Select Status"
                   options={statusTypesOptions}
@@ -94,7 +93,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 <Field
                   id="institutionId"
                   name="institutionId"
-                  isSearchable={true}
                   component={SelectField}
                   label="Institution"
                   placeholder="Select Institution"
@@ -106,7 +104,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 <Field
                   id="executableType"
                   name="executableType"
-                  isSearchable={true}
                   placeholder="Enter  Job Executable type"
                   component={SelectField}
                   label="Scheduler Job Executable Type"

@@ -20,7 +20,6 @@ const SavingsDetails: React.FC = () => {
           <Field
             id="savingsType"
             name="savingsType"
-            isSearchable={true}
             component={SelectField}
             label="Savings Type"
             placeholder="Select Savings Type"

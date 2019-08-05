@@ -47,7 +47,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="productType"
             name="productType"
-            isSearchable={true}
             component={SelectField}
             label="Product Type"
             placeholder="Select Product Type"
@@ -60,7 +59,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="institutionId"
             name="institutionId"
-            isSearchable={true}
             component={SelectField}
             label="Institution"
             placeholder="Select Institution"
@@ -93,7 +91,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             id="status"
             name="status"
             component={SelectField}
-            isSearchable={true}
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
@@ -105,7 +102,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="scheme"
             name="scheme"
-            isSearchable={true}
             component={SelectField}
             label="Scheme"
             placeholder="Select Scheme"
@@ -117,7 +113,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="currencyCode"
             name="currencyCode"
-            isSearchable={true}
             component={SelectField}
             label="Currency Code"
             placeholder="Select Currency Code"
@@ -142,7 +137,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="defaultStatementCycleId"
             name="defaultStatementCycleId"
-            isSearchable={true}
             component={SelectField}
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"

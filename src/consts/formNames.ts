@@ -1,27 +1,45 @@
 export enum formNames {
+  // General
   UI_ITEMS = 'uiItemsForm',
-  ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
+
+  // Login
   USER_LOGIN = 'userLoginForm',
-  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
-  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+
+  // Cycle
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
-  DEFINE_ADMIN_USER = 'defineAdminUserForm',
+  CYCLES_EDITOR = 'cyclesEditorForm',
+
+  // Event Data Elements
+  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
+
+  // Scheduler
+  SCHEDULER = 'schedulerForm',
+  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+
+  // System Properties
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
+  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
+
+  // Products
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'AddProductForm',
   EDIT_GENERAL_PRODUCT = 'EditGeneralProduct',
   EDIT_PRODUCT_DETAILS = 'EditProductDetails',
   EDIT_PRODUCT_RULES = 'EditProductRules',
-  CYCLES_EDITOR = 'cyclesEditorForm',
-  SCHEDULER = 'schedulerForm',
-  USER = 'userForm',
-  USERS_GROUP = 'usersGroupForm',
-  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
 
-  // User Groups
+  // User  and User Groups
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
   EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
   EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
+  USERS_GROUP = 'usersGroupForm',
+  ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
+  USER = 'userForm',
+  DEFINE_ADMIN_USER = 'defineAdminUserForm',
+
+  // Customers
+  LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
+  ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
+  EDIT_LEDGER_CUSTOMER = 'editLedgerCustomer',
 }

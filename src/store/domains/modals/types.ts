@@ -16,7 +16,7 @@ export interface PayloadConfirmationModal {
 
 export interface ModalsState {
   isMessageModal: boolean;
-  payloadMessageModal?: PayloadMessageModal;
+  payloadMessageModal: PayloadMessageModal;
 
   isConfirmationModal: boolean;
   payloadConfirmationModal: PayloadConfirmationModal;
@@ -28,17 +28,20 @@ export interface ModalsState {
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
-  payloadEditAdminSchedulerModal?: any;
+  payloadEditAdminSchedulerModal: any;
 
   isAddAdminCycleEditorModal: boolean;
   isEditCycleEditorRecordsModal: boolean;
-  payloadEditCycleEditorRecordsModal?: any;
+  payloadEditCycleEditorRecordsModal: any;
 
   isAddAdminUserModal: boolean;
   isEditAdminUserModal: boolean;
-  payloadEditAdminUserModal?: any;
+  payloadEditAdminUserModal: any;
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;
-  payloadEditAdminUsersGroupModal?: any;
+  payloadEditAdminUsersGroupModal: any;
+
+  isAddLedgerCustomer: boolean;
+  isEditLedgerCustomer: boolean;
 }

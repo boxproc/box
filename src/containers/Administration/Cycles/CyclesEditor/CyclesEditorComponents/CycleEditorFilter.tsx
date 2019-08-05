@@ -37,7 +37,6 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
             <Field
               id="institutionId"
               name="institutionId"
-              isSearchable={true}
               component={SelectField}
               label="Institution"
               placeholder="Select Institution"

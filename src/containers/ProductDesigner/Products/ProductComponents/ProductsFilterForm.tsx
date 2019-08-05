@@ -41,7 +41,6 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
             <Field
               id="institutionId"
               name="institutionId"
-              isSearchable={true}
               component={SelectField}
               label="Institution"
               placeholder="Select Institution"
@@ -54,7 +53,6 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
             <Field
               id="productType"
               name="productType"
-              isSearchable={true}
               component={SelectField}
               label="Product Type"
               placeholder="Select Product Type"

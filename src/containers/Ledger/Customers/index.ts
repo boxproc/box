@@ -5,6 +5,8 @@ import Customers from './Customers';
 
 import {
   createLoadingSelector,
+  openModal,
+  selectInstitutionsOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -13,10 +15,12 @@ const loadingSelector = createLoadingSelector([]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    openModal,
   },
   dispatch
 );

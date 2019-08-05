@@ -12,6 +12,7 @@ export enum modalNames {
 
   // Customers
   ADD_LEDGER_CUSTOMER = 'AddLedgerCustomer',
+  EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomer',
 
   // Cycle
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',

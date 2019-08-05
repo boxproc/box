@@ -179,19 +179,8 @@ export const handleFilterProducts: HandleFilterProducts = params =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareProductFiltersParamsToSend(params);
-        const state = getState();
-        const formValues = getFormValues(formNames.PRODUCTS_FILTER);
-        let notEmpty = false;
 
-        for (const i in formValues(state)) {
-          if (formValues(state)[i]) {
-            notEmpty = true;
-          }
-        }
-
-        if (notEmpty) {
-          await dispatch(filterProducts(preparedValues));
-        }
+        await dispatch(filterProducts(preparedValues));
       },
       dispatch
     );

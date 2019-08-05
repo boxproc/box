@@ -18,16 +18,20 @@ import {
 
 import { OpenModal } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface CycleEditorProps {
   adminCyclesEditorItems: Array<AdminCyclesEditorItem>;
   openModal: OpenModal;
   getAdminCyclesEditor: HandleGetAdminCyclesEditor;
+  institutionsOptions: Array<SelectValues>;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
   openModal,
   getAdminCyclesEditor,
   adminCyclesEditorItems,
+  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -57,7 +61,12 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Cycle Editor or Delete Record"
       FilterForm={
-        <CycleEditorFilter/>
+        <CycleEditorFilter
+          institutionsOptions={institutionsOptions}
+          initialValues={{
+            institutionId: institutionsOptions[0],
+          }}
+        />
       }
     />
   );

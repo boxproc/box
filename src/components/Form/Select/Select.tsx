@@ -68,7 +68,7 @@ export const SelectInput = <T extends {}>(props: SelectInputProps<T>) => {
         isClearable={true}
         openMenuOnFocus={true}
         tabSelectsValue={false}
-        isSearchable={false}
+        isSearchable={true}
         closeMenuOnSelect={!isMulti}
         blurInputOnSelect={!isMulti}
         hideSelectedOptions={!isMulti}

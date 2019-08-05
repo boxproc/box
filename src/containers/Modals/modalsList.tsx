@@ -26,6 +26,9 @@ import EditUsersModal from 'containers/Administration/Permission/Users/EditUsers
 import ConfirmationModal from './ConfirmationModal';
 import MessageModal from './MessageModal';
 
+import AddCustomerModal from 'containers/Ledger/Customers/addCustomer/AddCustomerModal';
+import EditCustomerModal from 'containers/Ledger/Customers/editCustomer/EditCustomerModal';
+
 export const modalsList = [
   {
     name: modalNames.MESSAGE_MODAL,
@@ -76,9 +79,16 @@ export const modalsList = [
     name: modalNames.ADD_ADMIN_USERS_GROUP,
     component: <AddUsersGroupModal />,
   },
-
   {
     name: modalNames.EDIT_ADMIN_USERS_GROUP,
     component: <EditUsersGroupModal />,
+  },
+  {
+    name: modalNames.ADD_LEDGER_CUSTOMER,
+    component: <AddCustomerModal />,
+  },
+  {
+    name: modalNames.EDIT_LEDGER_CUSTOMER,
+    component: <EditCustomerModal />,
   },
 ];

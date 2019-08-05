@@ -41,7 +41,6 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterAllProps> = ({
             <Field
               id="eventId"
               name="eventId"
-              isSearchable={true}
               component={SelectField}
               label="Event"
               placeholder="Select Event"
