@@ -2,9 +2,15 @@ import React from 'react';
 
 import { Panel, Tabs } from 'components/Tabs';
 
-import EditGeneralProductForm from './EditGeneralProductForm';
-import EditProductDetailsForm from './EditProductDetailsForm';
-import EditProductRulesForm from './EditProductRulesForm';
+import {
+  GeneralProductForm,
+  ProductAprsForm,
+  ProductAuxiliaryCountersForm,
+  ProductDetailsForm,
+  ProductLimitsFeesCommissionsForm,
+  ProductLoyaltyAndBonusForm,
+  ProductRulesForm,
+} from 'containers/ProductDesigner/Products/forms';
 
 import { SelectValues } from 'types';
 
@@ -22,7 +28,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   return (
     <Tabs>
       <Panel title="General">
-        <EditGeneralProductForm
+        <GeneralProductForm
           currentProductId={currentProductId}
           onCancel={onCancel}
         />
@@ -32,14 +38,35 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         isDisabled={!currentProductType}
         hintForDisabled="Select Product Type"
       >
-        <EditProductDetailsForm
+        <ProductDetailsForm
           currentProductId={currentProductId}
           productType={currentProductType}
           onCancel={onCancel}
         />
       </Panel>
       <Panel title="Rules">
-        <EditProductRulesForm
+        <ProductRulesForm
+          currentProductId={currentProductId}
+          onCancel={onCancel}
+        />
+      </Panel>
+      <Panel title="Limits, Fees and commissions">
+        <ProductLimitsFeesCommissionsForm
+          onCancel={onCancel}
+        />
+      </Panel>
+      <Panel title="Auxiliary counters">
+        <ProductAuxiliaryCountersForm
+          onCancel={onCancel}
+        />
+      </Panel>
+      <Panel title="APRs">
+        <ProductAprsForm
+          onCancel={onCancel}
+        />
+      </Panel>
+      <Panel title="Loyalty and Bonus">
+        <ProductLoyaltyAndBonusForm
           onCancel={onCancel}
         />
       </Panel>

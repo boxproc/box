@@ -9,22 +9,22 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductRules } from 'containers/ProductDesigner/Products/ProductComponents';
+import { ProductRules } from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleGetProductRules,
   HandleUpdateProductRules,
 } from 'store/domains';
 
-interface EditProductRulesFormProps extends ExternalSpinnerProps {
+interface ProductRulesForm extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentProductId: number;
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
 }
 
-type EditProductRulesFormAllProps = EditProductRulesFormProps &
-  InjectedFormProps<{}, EditProductRulesFormProps>;
+type EditProductRulesFormAllProps = ProductRulesForm &
+  InjectedFormProps<{}, ProductRulesForm>;
 
 const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   handleSubmit,
@@ -62,8 +62,8 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EditProductRulesFormProps>({
-  form: formNames.EDIT_PRODUCT_RULES,
+export default reduxForm<{}, ProductRulesForm>({
+  form: formNames.PRODUCT_RULES,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EditProductRulesForm));

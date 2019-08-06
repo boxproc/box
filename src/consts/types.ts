@@ -166,9 +166,3 @@ export const actionTypesOptions = [
   { value: 'V', label: 'Value' },
   { value: 'R', label: 'Approve / Deny' },
 ];
-
-export enum codeKeys {
-  ENTER = 'Enter',
-  ESCAPE = 'Escape',
-  BACKSPACE = 'Backspace',
-}

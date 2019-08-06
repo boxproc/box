@@ -9,7 +9,7 @@ import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 import {
   ProductsFilterForm,
   tableColumns,
-} from 'containers/ProductDesigner/Products/ProductComponents';
+} from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleFilterProducts,

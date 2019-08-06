@@ -1,35 +1,32 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import EditGeneralProductForm from './EditGeneralProductForm';
+import ProductDetailsForm from './ProductDetailsForm';
 
 import {
   createLoadingSelector,
-  handleDeleteProduct,
-  handleGetProduct,
-  handleUpdateProduct,
+  handleGetProductDetails,
+  handleUpdateProductDetails,
   ProductsActionTypes,
-  selectCurrentProduct,
+  selectCurrentProductDetails,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.UPDATE_PRODUCT,
-  ProductsActionTypes.DELETE_PRODUCT,
-  ProductsActionTypes.GET_PRODUCT,
+  ProductsActionTypes.GET_PRODUCT_DETAILS,
+  ProductsActionTypes.UPDATE_PRODUCT_DETAILS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: selectCurrentProduct(state),
+  initialValues: selectCurrentProductDetails(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteProduct: handleDeleteProduct,
-    updateProduct: handleUpdateProduct,
-    getProduct: handleGetProduct,
+    getProductDetails: handleGetProductDetails,
+    updateProductDetails: handleUpdateProductDetails,
   },
   dispatch
 );
@@ -37,4 +34,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditGeneralProductForm);
+)(ProductDetailsForm);

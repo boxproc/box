@@ -24,9 +24,12 @@ export enum formNames {
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'AddProductForm',
-  EDIT_GENERAL_PRODUCT = 'EditGeneralProduct',
-  EDIT_PRODUCT_DETAILS = 'EditProductDetails',
-  EDIT_PRODUCT_RULES = 'EditProductRules',
+  GENERAL_PRODUCT = 'EditGeneralProduct',
+  PRODUCT_DETAILS = 'EditProductDetails',
+  PRODUCT_RULES = 'EditProductRules',
+  PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissions',
+  PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCounters',
+  PRODUCT_APRS = 'productAPRs',
 
   // User  and User Groups
   ADD_USER_GROUP = 'addUserGroupForm',

@@ -14,3 +14,9 @@ export enum DateFormat {
   FORMAT = 'MM/DD/YYYY',
   MONTH_YEAR = 'MM/YYYY',
 }
+
+export enum codeKeys {
+  ENTER = 'Enter',
+  ESCAPE = 'Escape',
+  BACKSPACE = 'Backspace',
+}

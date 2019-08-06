@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from 'components/Modal';
 import { modalNames } from 'consts';
 
-import AddProductForm from 'containers/ProductDesigner/Products/AddProduct/AddProductForm';
+import AddProductForm from 'containers/ProductDesigner/Products/addProduct/AddProductForm';
 
 import { CloseModal } from 'store/domains';
 

@@ -24,7 +24,7 @@ const TabTitle = styled.div<TabTitleProps>`
   color: ${({ theme }) => theme.grayColor};
   font-size: 14px;
   letter-spacing: .5pt;
-  // pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
+  border-bottom: 2px solid transparent};
 
   .title {
     opacity: ${({ isDisabled }) => isDisabled && .5};
@@ -32,7 +32,7 @@ const TabTitle = styled.div<TabTitleProps>`
 
   &.is-active {
     color: ${({ theme }) => theme.darkGrayColor};
-    border-bottom: 2px solid ${({ theme }) => theme.darkGrayColor};
+    border-bottom-color: ${({ theme }) => theme.darkGrayColor};
   }
 `;
 
@@ -46,7 +46,7 @@ export const Tabs: React.FC<TabsProps> = ({
   return (
     <React.Fragment>
       <TabsWrapper>
-        <Flex>
+        <Flex flexWrap="wrap">
           {React.Children.map(children, (child, i) => {
             if (!children[i]) {
               return null;

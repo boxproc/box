@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import EditProductForms from 'containers/ProductDesigner/Products/EditProduct/EditProductForms';
+import EditProductForms from 'containers/ProductDesigner/Products/editProduct/EditProductForms';
 
 import { CloseModal } from 'store/domains';
 
@@ -24,7 +24,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalNames.EDIT_PRODUCT}
       title={`Edit Product${productName}`}
       maxContainerWidth={700}
-      minContainerHeight={665}
+      minContainerHeight={758}
     >
       <EditProductForms
         onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}

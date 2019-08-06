@@ -40,7 +40,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   const columns = [
     {
       sortable: true,
-      Header: <Header title="Ui Items" showSortIcons={true} />,
+      Header: <Header title="UI Items" showSortIcons={true} />,
       accessor: 'uiItem',
       Cell: (props: SCell<'uiItem'>) => (
         <Cell

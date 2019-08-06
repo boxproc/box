@@ -9,7 +9,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductDetails } from 'containers/ProductDesigner/Products/ProductComponents';
+import { ProductDetails } from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleGetProductDetails,
@@ -18,7 +18,7 @@ import {
 
 import { SelectValues } from 'types';
 
-interface EditProductDetailsFormProps extends ExternalSpinnerProps {
+interface ProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   productType: SelectValues;
   currentProductId: number;
@@ -26,10 +26,10 @@ interface EditProductDetailsFormProps extends ExternalSpinnerProps {
   updateProductDetails: HandleUpdateProductDetails;
 }
 
-type EditProductDetailsFormAllProps = EditProductDetailsFormProps &
-  InjectedFormProps<{}, EditProductDetailsFormProps>;
+type ProductDetailsFormAllProps = ProductDetailsFormProps &
+  InjectedFormProps<{}, ProductDetailsFormProps>;
 
-const EditProductDetailsForm: React.FC<EditProductDetailsFormAllProps> = ({
+const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   handleSubmit,
   onCancel,
   productType,
@@ -68,8 +68,8 @@ const EditProductDetailsForm: React.FC<EditProductDetailsFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EditProductDetailsFormProps>({
-  form: formNames.EDIT_PRODUCT_DETAILS,
+export default reduxForm<{}, ProductDetailsFormProps>({
+  form: formNames.PRODUCT_DETAILS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(EditProductDetailsForm));
+})(withSpinner()(ProductDetailsForm));

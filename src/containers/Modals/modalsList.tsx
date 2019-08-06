@@ -4,8 +4,9 @@ import { modalNames } from 'consts';
 
 // tslint:disable-next-line: max-line-length
 import AddSystemPropertyModal from 'containers/Administration/SystemProperties/AddSystemPropertyModal';
-import AddProductModal from 'containers/ProductDesigner/Products/AddProduct/AddProductModal';
-import EditProductModal from 'containers/ProductDesigner/Products/EditProduct/EditProductModal';
+
+import AddProductModal from 'containers/ProductDesigner/Products/addProduct/AddProductModal';
+import EditProductModal from 'containers/ProductDesigner/Products/editProduct/EditProductModal';
 
 // tslint:disable-next-line: max-line-length
 import AddUsersGroupModal from 'containers/Administration/Permission/UsersGroup/AddUserGroup/AddUsersGroupModal';

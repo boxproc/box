@@ -106,6 +106,7 @@ export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = propName =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteAdminSysProp(propName));
+        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
       },
       dispatch
     );

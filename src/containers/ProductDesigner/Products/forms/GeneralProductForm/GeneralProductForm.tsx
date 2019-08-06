@@ -12,28 +12,30 @@ import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
 import {
   ProductGeneralInfo,
-} from 'containers/ProductDesigner/Products/ProductComponents';
+} from 'containers/ProductDesigner/Products/productComponents';
 
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
 
-interface EditGeneralProductFormProps extends ExternalSpinnerProps {
+interface GeneralProductFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
   getProduct: HandleGetProduct;
   currentProductId: number;
+  currentProductName: string;
 }
 
-type EditGeneralProductFormAllProps = EditGeneralProductFormProps &
-  InjectedFormProps<{}, EditGeneralProductFormProps>;
+type GeneralProductFormAllProps = GeneralProductFormProps &
+  InjectedFormProps<{}, GeneralProductFormProps>;
 
-const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
+const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   onCancel,
   deleteProduct,
   currentProductId,
   updateProduct,
   getProduct,
+  currentProductName,
 }) => {
   React.useEffect(
     () => {
@@ -67,6 +69,8 @@ const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
           text="delete"
           iconName="delete"
           type="reset"
+          withConfirmation={true}
+          confirmationText={`Delete "${currentProductName}" product?`}
           onClick={() => deleteProduct(currentProductId)}
         />
       </Flex>
@@ -74,8 +78,8 @@ const EditGeneralProductForm: React.FC<EditGeneralProductFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EditGeneralProductFormProps>({
-  form: formNames.EDIT_GENERAL_PRODUCT,
+export default reduxForm<{}, GeneralProductFormProps>({
+  form: formNames.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(EditGeneralProductForm));
+})(withSpinner()(GeneralProductForm));

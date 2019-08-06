@@ -192,6 +192,7 @@ export const handleDeleteProduct: HandleDeleteProduct = id =>
       async () => {
         await dispatch(deleteProduct(id));
         await dispatch(closeModal(modalNames.EDIT_PRODUCT));
+        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
       },
       dispatch
     );
