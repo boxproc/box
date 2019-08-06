@@ -187,6 +187,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={CalendarField}
             label="Date Created"
             placeholder="dd/mm/yyyy"
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -196,6 +197,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={CalendarField}
             label="Date Closed"
             placeholder="dd/mm/yyyy"
+            disabled={true}
           />
         </Box>
       </Flex>

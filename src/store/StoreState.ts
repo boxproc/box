@@ -5,6 +5,7 @@ import { FormStateMap } from 'redux-form';
 import { AdministrationState } from './domains/administration/';
 import { AuthState } from './domains/auth';
 import { ConstsState } from './domains/consts';
+import { LedgerState } from './domains/ledger';
 import { LoaderState } from './domains/loader';
 import { ModalsState } from './domains/modals';
 import { ProductDesignerState } from './domains/productDesigner';
@@ -20,4 +21,5 @@ export interface StoreState {
   auth: AuthState;
   productDesigner: ProductDesignerState;
   consts: ConstsState;
+  ledger: LedgerState;
 }

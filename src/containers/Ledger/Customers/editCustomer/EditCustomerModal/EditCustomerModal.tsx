@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import EditCustomerForm from 'containers/Ledger/Customers/editCustomer/EditCustomerForm';
+import { CustomerForm } from 'containers/Ledger/Customers/forms';
 
 import { CloseModal } from 'store/domains';
 
@@ -21,7 +21,12 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
       title="Edit Customer"
       maxContainerWidth={700}
     >
-      <EditCustomerForm onCancel={() => closeModal(modalNames.EDIT_LEDGER_CUSTOMER)} />
+      <CustomerForm
+        isDisabledInstitution={true}
+        isDisabledStatus={true}
+        onCancel={() => closeModal(modalNames.EDIT_LEDGER_CUSTOMER)}
+        mode="edit"
+      />
     </Modal>
   );
 };

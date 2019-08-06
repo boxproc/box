@@ -6,10 +6,8 @@ import TablePage from 'components/TablePage';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
-import {
-  ProductsFilterForm,
-  tableColumns,
-} from 'containers/ProductDesigner/Products/productComponents';
+import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
+import { tableColumns } from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleFilterProducts,

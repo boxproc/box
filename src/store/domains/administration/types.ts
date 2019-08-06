@@ -1,6 +1,6 @@
 import { AdminCyclesEditorState } from './cycles';
-import { AdminEventDataElemsState } from './eventDataElems';
-import { AdminEventsState } from './events';
+import { AdminEventDataElemsState } from './dictionaries/eventDataElems';
+import { AdminEventsState } from './dictionaries/events';
 import { AdminUserState } from './permissions/users' ;
 import { AdminUsersGroupState } from './permissions/usersGroups';
 import { AdminSchedulerState } from './scheduler';

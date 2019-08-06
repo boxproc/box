@@ -117,114 +117,114 @@ export const tableColumns = [
       />
     ),
   },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Line 1" showSortIcons={true} />,
-    accessor: 'addressLine1',
-    Cell: (props: CCell<'addressLine1'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Line 2" showSortIcons={true} />,
-    accessor: 'addressLine2',
-    Cell: (props: CCell<'addressLine2'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Line 3" showSortIcons={true} />,
-    accessor: 'addressLine3',
-    Cell: (props: CCell<'addressLine3'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Line 4" showSortIcons={true} />,
-    accessor: 'addressLine4',
-    Cell: (props: CCell<'addressLine4'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Town" showSortIcons={true} />,
-    accessor: 'addressTown',
-    Cell: (props: CCell<'addressTown'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Post Code" showSortIcons={true} />,
-    accessor: 'addressPostCode',
-    Cell: (props: CCell<'addressPostCode'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Address Country Code" showSortIcons={true} />,
-    accessor: 'addressCountryCode',
-    Cell: (props: CCell<'addressCountryCode'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Nationality Country Code" showSortIcons={true} />,
-    accessor: 'nationalityCountryCode',
-    Cell: (props: CCell<'nationalityCountryCode'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Date Created" showSortIcons={true} />,
-    accessor: 'dateCreated',
-    Cell: (props: CCell<'dateCreated'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Date Closed" showSortIcons={true} />,
-    accessor: 'dateClosed',
-    Cell: (props: CCell<'dateClosed'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Line 1" showSortIcons={true} />,
+  //   accessor: 'addressLine1',
+  //   Cell: (props: CCell<'addressLine1'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Line 2" showSortIcons={true} />,
+  //   accessor: 'addressLine2',
+  //   Cell: (props: CCell<'addressLine2'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Line 3" showSortIcons={true} />,
+  //   accessor: 'addressLine3',
+  //   Cell: (props: CCell<'addressLine3'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Line 4" showSortIcons={true} />,
+  //   accessor: 'addressLine4',
+  //   Cell: (props: CCell<'addressLine4'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Town" showSortIcons={true} />,
+  //   accessor: 'addressTown',
+  //   Cell: (props: CCell<'addressTown'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Post Code" showSortIcons={true} />,
+  //   accessor: 'addressPostCode',
+  //   Cell: (props: CCell<'addressPostCode'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Address Country Code" showSortIcons={true} />,
+  //   accessor: 'addressCountryCode',
+  //   Cell: (props: CCell<'addressCountryCode'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Nationality Country Code" showSortIcons={true} />,
+  //   accessor: 'nationalityCountryCode',
+  //   Cell: (props: CCell<'nationalityCountryCode'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Date Created" showSortIcons={true} />,
+  //   accessor: 'dateCreated',
+  //   Cell: (props: CCell<'dateCreated'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
+  // {
+  //   sortable: true,
+  //   filterable: true,
+  //   Header: <Header title="Date Closed" showSortIcons={true} />,
+  //   accessor: 'dateClosed',
+  //   Cell: (props: CCell<'dateClosed'>) => (
+  //     <Cell
+  //       value={props.value}
+  //     />
+  //   ),
+  // },
 ];

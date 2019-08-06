@@ -8,10 +8,13 @@ import { InputField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
 
+import { HandleFilterLedgerCustomers } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface CustomerFilterFormProps {
   institutionsOptions: Array<SelectValues>;
+  filterLedgerCustomers: HandleFilterLedgerCustomers;
 }
 
 type CustomerFilterFormAllProps = CustomerFilterFormProps &
@@ -20,9 +23,10 @@ type CustomerFilterFormAllProps = CustomerFilterFormProps &
 const CustomerFilterForm: React.FC<CustomerFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
+  filterLedgerCustomers,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => filterLedgerCustomers(data)),
     [handleSubmit]
   );
 
