@@ -11,48 +11,37 @@ import { formNames } from 'consts';
 
 import CustomerInfo from 'containers/Ledger/Customers/customerComponents/CustomerInfo';
 import {
-  HandleAddLedgerCustomer,
   HandleDeleteLedgerCustomer,
   HandleUpdateLedgerCustomer,
 } from 'store/domains';
 
-interface CustomerFormProps extends ExternalSpinnerProps {
+interface EditCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
-  isDisabledInstitution?: boolean;
-  isDisabledStatus?: boolean;
-  addLedgerCustomer: HandleAddLedgerCustomer;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   updateLedgerCustomer: HandleUpdateLedgerCustomer;
-  mode: 'add' | 'edit';
   ledgerCustomerCurrentId: number;
 }
 
-type CustomerFormAllProps = CustomerFormProps &
-  InjectedFormProps<{}, CustomerFormProps>;
+type EditCustomerFormAllProps = EditCustomerFormProps &
+  InjectedFormProps<{}, EditCustomerFormProps>;
 
-const CustomerForm: React.FC<CustomerFormAllProps> = ({
+const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   onCancel,
   handleSubmit,
-  isDisabledInstitution,
-  isDisabledStatus,
-  addLedgerCustomer,
   deleteLedgerCustomer,
   updateLedgerCustomer,
-  mode,
   ledgerCustomerCurrentId,
 }) => {
-  const handleAction = mode === 'add' ? addLedgerCustomer : updateLedgerCustomer;
-
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => handleAction(data)),
+    handleSubmit(data => updateLedgerCustomer(data)),
     [handleSubmit]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
       <CustomerInfo
-        isDisabledInstitution={isDisabledInstitution}
-        isDisabledStatus={isDisabledStatus}
+        isDisabledInstitution={true}
+        isDisabledStatus={true}
       />
       <Hr />
       <Flex
@@ -64,23 +53,21 @@ const CustomerForm: React.FC<CustomerFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
         />
-        {mode === 'edit' && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText={`Delete customer?`}
-            onClick={() => deleteLedgerCustomer(ledgerCustomerCurrentId)}
-          />
-        )}
+        <Button
+          text="delete"
+          iconName="delete"
+          type="reset"
+          withConfirmation={true}
+          confirmationText={`Delete customer?`}
+          onClick={() => deleteLedgerCustomer(ledgerCustomerCurrentId)}
+        />
       </Flex>
     </form >
   );
 };
 
-export default reduxForm<{}, CustomerFormProps>({
-  form: formNames.LEDGER_CUSTOMER,
+export default reduxForm<{}, EditCustomerFormProps>({
+  form: formNames.EDIT_LEDGER_CUSTOMER,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(CustomerForm));
+})(withSpinner()(EditCustomerForm));

@@ -3,8 +3,10 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CalendarField, InputField, SelectField } from 'components/Form';
+import { CalendarField, InputField, MaskField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
+
+import { customerStatusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -43,7 +45,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={SelectField}
             label="Status"
             placeholder="Select Status"
-            options={institutionsOptions}
+            options={customerStatusTypesOptions}
             isDisabled={isDisabledStatus}
           />
         </Box>
@@ -93,9 +95,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"
-            component={InputField}
+            component={MaskField}
             label="Mobile Phone Number"
             placeholder="Enter Mobile Phone Number"
+            mask="+99 99 9999 9999"
+            maskChar={null}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

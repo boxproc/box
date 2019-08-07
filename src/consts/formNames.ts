@@ -43,5 +43,6 @@ export enum formNames {
 
   // Customers
   LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
-  LEDGER_CUSTOMER = 'ledgerCustomer',
+  ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
+  EDIT_LEDGER_CUSTOMER = 'editLedgerCustomer',
 }

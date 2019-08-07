@@ -122,7 +122,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
         await dispatch(addLedgerCustomer(preparedValues));
         await dispatch(closeModal(modalNames.ADD_LEDGER_CUSTOMER));
         await dispatch(handleGetLedgerCustomers());
-        await dispatch(resetForm(formNames.LEDGER_CUSTOMER));
+        await dispatch(resetForm(formNames.ADD_LEDGER_CUSTOMER));
       },
       dispatch
     );

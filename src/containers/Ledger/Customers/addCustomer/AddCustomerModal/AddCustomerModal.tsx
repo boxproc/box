@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import { CustomerForm } from 'containers/Ledger/Customers/forms';
+import AddCustomerForm from 'containers/Ledger/Customers/addCustomer/AddCustomerForm';
 
 import { CloseModal } from 'store/domains';
 
@@ -21,9 +21,8 @@ const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
       title="Add New Customer"
       maxContainerWidth={700}
     >
-      <CustomerForm
+      <AddCustomerForm
         onCancel={() => closeModal(modalNames.ADD_LEDGER_CUSTOMER)}
-        mode="add"
       />
     </Modal>
   );

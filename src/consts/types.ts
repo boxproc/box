@@ -26,19 +26,37 @@ export enum statusTypes {
   DELETED = 'D',
 }
 
+export const statusTypesOptions = [
+  { value: 'A', label: 'Active' },
+  { value: 'I', label: 'Inactive' },
+  { value: 'D', label: 'Deleted' },
+];
+
+export enum customerStatusTypes {
+  ACTIVE = 'A',
+  INACTIVE = 'I',
+  CLOSED = 'C',
+}
+
+export const customerStatusTypesOptions = [
+  { value: 'A', label: 'Active' },
+  { value: 'I', label: 'Inactive' },
+  { value: 'C', label: 'Closed' },
+];
+
 export const statusTypeCyclesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'S', label: 'Suspend' },
 ];
 
 export const weeklyCycleTypeOptions = [
-  { value: 1, label: 'Monday'},
-  { value: 2, label: 'Tuesday'},
-  { value: 3, label: 'Wednesday'},
-  { value: 4, label: 'Thursday'},
-  { value: 5, label: 'Friday'},
-  { value: 6, label: 'Saturday'},
-  { value: 7, label: 'Sunday'},
+  { value: 1, label: 'Monday' },
+  { value: 2, label: 'Tuesday' },
+  { value: 3, label: 'Wednesday' },
+  { value: 4, label: 'Thursday' },
+  { value: 5, label: 'Friday' },
+  { value: 6, label: 'Saturday' },
+  { value: 7, label: 'Sunday' },
 ];
 
 export enum cycleTypes {
@@ -55,12 +73,6 @@ export const typeOfCyclesEditorOptions = [
   { value: 'W', label: 'Weekly' },
   { value: 'V', label: 'Bi-weekly' },
   { value: 'F', label: 'Fixed number of days' },
-];
-
-export const statusTypesOptions = [
-  { value: 'A', label: 'Active' },
-  { value: 'I', label: 'Inactive' },
-  { value: 'D', label: 'Deleted' },
 ];
 
 export enum productTypes {
@@ -160,9 +172,15 @@ export const dataTypesOptions = [
 export enum actionTypes {
   VALUE = 'V',
   APPROVE_DENY = 'R',
+  UPDATE_AUX_COUNTER_1 = 'X',
+  UPDATE_AUX_COUNTER_2 = 'Y',
+  UPDATE_AUX_COUNTER_3 = 'Z',
 }
 
 export const actionTypesOptions = [
   { value: 'V', label: 'Value' },
   { value: 'R', label: 'Approve / Deny' },
+  { value: 'X', label: 'Update Aux Counter 1' },
+  { value: 'Y', label: 'Update Aux Counter 2' },
+  { value: 'Z', label: 'Update Aux Counter 3' },
 ];

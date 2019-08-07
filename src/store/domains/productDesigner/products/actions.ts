@@ -45,7 +45,7 @@ import {
   prepareNewProductValuesToSend,
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
-  prepareProductRulesValuesToSend,
+  prepareProductRuleValuesToSend,
 } from './utils';
 
 import { apiClient } from 'services';
@@ -282,7 +282,7 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareProductRulesValuesToSend(values);
+        const preparedValues = prepareProductRuleValuesToSend(values);
 
         await dispatch(updateProductRules(preparedValues));
         await dispatch(handleGetProducts());

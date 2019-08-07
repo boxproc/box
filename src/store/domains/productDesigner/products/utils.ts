@@ -266,22 +266,25 @@ export const prepareNewProductValuesToSend = (product: Partial<NewProduct>) => {
   };
 };
 
-export const prepareProductRulesValues = (rules: ProductRulesItemResp) => {
+export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
+  if (!rule) {
+    return null;
+  }
   return {
-    description: rules.description,
-    actionType: actionTypesOptions.find(el => el.value === rules.action_type),
-    script: rules.script,
-    productId: rules.product_id,
+    description: rule.description,
+    actionType: actionTypesOptions.find(el => el.value === rule.action_type),
+    script: rule.script,
+    productId: rule.product_id,
   };
 };
 
-export const prepareProductRulesValuesToSend =
-  (rules: Partial<ProductRulesItem>): ProductRulesItemResp  => {
-  return {
-    description: rules.description,
-    event_id: rules.eventId.value,
-    action_type: rules.actionType.value,
-    script: rules.script,
-    product_id: rules.productId,
+export const prepareProductRuleValuesToSend =
+  (rule: Partial<ProductRulesItem>): ProductRulesItemResp => {
+    return {
+      description: rule.description,
+      event_id: rule.eventId.value,
+      action_type: rule.actionType.value,
+      script: rule.script,
+      product_id: rule.productId,
+    };
   };
-};

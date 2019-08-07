@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
+import { customerStatusTypesOptions } from 'consts';
+
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
@@ -16,7 +18,7 @@ export const selectLedgerCustomers = createSelector(
       institutionId: institutions.find(el => el.value === item.institution_id).label,
       firstName: item.first_name,
       lastName: item.last_name,
-      status: item.status,
+      status: customerStatusTypesOptions.find(el => el.value === item.status).label,
       dateOfBirth: item.date_of_birth,
       email: item.email,
       mobilePhoneNumber: item.mobile_phone_number,
@@ -46,6 +48,7 @@ export const selectLedgerCurrentCustomer = createSelector(
     return {
       ...current,
       institutionId: institutions.find(el => el.value === currentId),
+      status: customerStatusTypesOptions.find(el => el.label === current.status),
     };
   }
 );
