@@ -18,7 +18,6 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
     <Modal
       name={modalNames.ADD_PRODUCT}
       title="Add New Product"
-      maxContainerWidth={700}
       minContainerHeight={607}
     >
       <AddProductForm

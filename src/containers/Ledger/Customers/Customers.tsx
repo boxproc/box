@@ -5,7 +5,7 @@ import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
 import { tableColumns } from 'containers/Ledger/Customers/customerComponents';
-import { CustomerFilterForm } from 'containers/Ledger/Customers/forms';
+import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
 
 import { modalNames } from 'consts';
 
@@ -64,7 +64,7 @@ const Customers: React.FC<CustomersProps> = ({
       hint="Double Click on Row to Edit Customer"
       getTrGroupProps={handleOnClickRow}
       FilterForm={
-        <CustomerFilterForm
+        <CustomersFilterForm
           filterLedgerCustomers={filterLedgerCustomers}
           institutionsOptions={institutionsOptions}
           initialValues={{

@@ -23,7 +23,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     <Modal
       name={modalNames.EDIT_PRODUCT}
       title={`Edit Product${productName}`}
-      maxContainerWidth={700}
       minContainerHeight={758}
     >
       <EditProductForms

@@ -30,6 +30,8 @@ import MessageModal from './MessageModal';
 import AddCustomerModal from 'containers/Ledger/Customers/addCustomer/AddCustomerModal';
 import EditCustomerModal from 'containers/Ledger/Customers/editCustomer/EditCustomerModal';
 
+import EditAccountModal from 'containers/Ledger/Accounts/editAccount/EditAccountModal';
+
 export const modalsList = [
   {
     name: modalNames.MESSAGE_MODAL,
@@ -71,7 +73,6 @@ export const modalsList = [
     name: modalNames.ADD_ADMIN_USER,
     component: <AddUsersModal />,
   },
-
   {
     name: modalNames.EDIT_ADMIN_USER,
     component: <EditUsersModal />,
@@ -91,5 +92,9 @@ export const modalsList = [
   {
     name: modalNames.EDIT_LEDGER_CUSTOMER,
     component: <EditCustomerModal />,
+  },
+  {
+    name: modalNames.EDIT_LEDGER_ACCOUNT,
+    component: <EditAccountModal />,
   },
 ];

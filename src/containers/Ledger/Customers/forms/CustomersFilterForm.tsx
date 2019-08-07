@@ -12,22 +12,22 @@ import { HandleFilterLedgerCustomers } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface CustomerFilterFormProps {
+interface CustomersFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
 }
 
-type CustomerFilterFormAllProps = CustomerFilterFormProps &
-  InjectedFormProps<{}, CustomerFilterFormProps>;
+type CustomersFilterFormAllProps = CustomersFilterFormProps &
+  InjectedFormProps<{}, CustomersFilterFormProps>;
 
-const CustomerFilterForm: React.FC<CustomerFilterFormAllProps> = ({
+const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterLedgerCustomers,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterLedgerCustomers(data)),
-    [handleSubmit]
+    [handleSubmit, filterLedgerCustomers]
   );
 
   return (
@@ -90,8 +90,8 @@ const CustomerFilterForm: React.FC<CustomerFilterFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, CustomerFilterFormProps>({
+export default reduxForm<{}, CustomersFilterFormProps>({
   form: formNames.LEDGER_CUSTOMERS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
-})(CustomerFilterForm);
+})(CustomersFilterForm);

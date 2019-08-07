@@ -1,1 +1,1 @@
-export { default as CustomerFilterForm } from './CustomerFilterForm';
+export { default as CustomersFilterForm } from './CustomersFilterForm';

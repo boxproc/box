@@ -1,26 +1,24 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Accounts from './Accounts';
+import EditAccountForm from './EditAccountForm';
+
+import {
+  StoreState,
+} from 'store/StoreState';
 
 import {
   createLoadingSelector,
-  openModal,
-  selectInstitutionsOptions,
 } from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
   },
   dispatch
 );
@@ -28,4 +26,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Accounts);
+)(EditAccountForm);

@@ -33,6 +33,8 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddLedgerCustomer: false,
   isEditLedgerCustomer: false,
+
+  isEditLedgerAccount: false,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

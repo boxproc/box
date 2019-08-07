@@ -44,4 +44,6 @@ export interface ModalsState {
 
   isAddLedgerCustomer: boolean;
   isEditLedgerCustomer: boolean;
+
+  isEditLedgerAccount: boolean;
 }
