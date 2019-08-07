@@ -213,7 +213,7 @@ export type NewProduct = ProductItemDetails & ProductItemGeneral;
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
 export interface ProductRulesResp extends ResponseStatusType {
-  product_rules: ProductRulesItemResp;
+  product_rules: Array<ProductRulesItemResp>;
 }
 
 export interface ProductRulesItem {
@@ -229,7 +229,7 @@ export interface ProductsState {
   currentProductId: number;
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
-  currentProductRules: ProductRulesItemResp;
+  currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentRulesCode: string;
 
   filterProductsParams: ProductFilterParamsPrepared;

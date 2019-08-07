@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({
   name,
   title,
   closeModal,
-  maxContainerWidth,
+  maxContainerWidth = '700',
   minContainerHeight,
   zIndex,
   closeOnBackdrop = false,

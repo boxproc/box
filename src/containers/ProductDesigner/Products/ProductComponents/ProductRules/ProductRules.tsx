@@ -70,7 +70,6 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             <Field
               id="eventId"
               name="eventId"
-              isSearchable={true}
               component={SelectField}
               label="Event"
               placeholder="Select Event"
@@ -82,7 +81,6 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             <Field
               id="actionType"
               name="actionType"
-              isSearchable={true}
               component={SelectField}
               label="Action Type"
               placeholder="Select Action Type"

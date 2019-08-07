@@ -2,14 +2,12 @@ import React from 'react';
 import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
-import {
-  ProductsFilterForm,
-  tableColumns,
-} from 'containers/ProductDesigner/Products/ProductComponents';
+import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
+import { tableColumns } from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleFilterProducts,
@@ -95,7 +93,6 @@ export const Products: React.FC<ProductsProps> = ({
       data={productItems}
       columns={tableColumns}
       addNewModalName={modalNames.ADD_PRODUCT}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Unlocked Product"
       FilterForm={

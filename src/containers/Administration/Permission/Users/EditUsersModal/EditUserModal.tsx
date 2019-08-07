@@ -28,7 +28,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
     <Modal
       name={modalNames.EDIT_ADMIN_USER}
       title="Edit User"
-      maxContainerWidth={700}
     >
       <AddUserForm
         onCancel={() => closeModal(modalNames.EDIT_ADMIN_USER)}

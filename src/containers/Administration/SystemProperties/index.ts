@@ -10,7 +10,6 @@ import {
   handleFilterAdminSysProps,
   handleGetAdminSysProps,
   handleUpdateAdminSysProps,
-  openModal,
   selectAdminSysPropsItems,
   selectSysPropsFilterParams,
 } from 'store/domains';
@@ -36,7 +35,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteAdminSysProp: handleDeleteAdminSysProp,
     updateAdminSysProps: handleUpdateAdminSysProps,
     filterAdminSysProps: handleFilterAdminSysProps,
-    openModal,
   },
   dispatch
 );

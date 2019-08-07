@@ -22,7 +22,6 @@ const LoanDetails: React.FC = () => {
           <Field
             id="loanType"
             name="loanType"
-            isSearchable={true}
             component={SelectField}
             label="Loan Type"
             placeholder="Select Loan Type"

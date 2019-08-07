@@ -2,20 +2,21 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
+// Administration
 import CyclesEditor from 'containers/Administration/Cycles/CyclesEditor';
-import EventDataElems from 'containers/Administration/EventDataElems';
-import Events from 'containers/Administration/Events';
+import EventDataElems from 'containers/Administration/Dictionaries/EventDataElems';
+import Events from 'containers/Administration/Dictionaries/Events';
 import Users from 'containers/Administration/Permission/Users';
 import UsersGroup from 'containers/Administration/Permission/UsersGroup';
 import Scheduler from 'containers/Administration/Scheduler';
 import SystemProperties from 'containers/Administration/SystemProperties';
+
+// Product Designer
 import Products from 'containers/ProductDesigner/Products';
-import {
-  Accounts,
-  Countries,
-  Currencies,
-  Customers,
-} from '../Pages/Pages';
+
+// Ledger
+import Accounts from 'containers/Ledger/Accounts';
+import Customers from 'containers/Ledger/Customers';
 
 export const pagesList = [
   {
@@ -51,19 +52,11 @@ export const pagesList = [
     component: <Accounts />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES,
-    component: <Countries />,
-  },
-  {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES,
-    component: <Currencies />,
-  },
-  {
     path: uiItemConsts.ADMINISTRATION_USER,
     component: <Users />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
-    component: <UsersGroup/>,
+    component: <UsersGroup />,
   },
 ];

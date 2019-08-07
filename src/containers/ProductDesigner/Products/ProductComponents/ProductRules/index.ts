@@ -14,7 +14,7 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const formValues = formValueSelector(formNames.EDIT_PRODUCT_RULES);
+const formValues = formValueSelector(formNames.PRODUCT_RULES);
 
 const mapStateToProps = (state: StoreState) => ({
   adminEventDataElemsItems: selectAdminEventDataElemsItems(state),

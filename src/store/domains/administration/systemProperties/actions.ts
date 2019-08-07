@@ -47,8 +47,8 @@ export type UpdateAdminSysProps = (propValues: EditableAdminSysPropPrepared) =>
   UpdateAdminSysPropsAction;
 export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Thunk<void>;
 
-export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared)
-  => FilterAdminSysPropsAction;
+export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared) =>
+  FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) => Thunk<void>;
 
 export const getAdminSysProps: GetAdminSysProps = () => ({
@@ -65,13 +65,11 @@ export const deleteAdminSysProp: DeleteAdminSysProp = propName => ({
 export const addAdminSysProp: AddAdminSysProp = propValues => ({
   type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
   payload: api.addAdminSysProp(propValues),
-  meta: propValues,
 });
 
 export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS,
   payload: api.updateAdminSysProps(propValues),
-  meta: propValues,
 });
 
 export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
@@ -106,6 +104,7 @@ export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = propName =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteAdminSysProp(propName));
+        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
       },
       dispatch
     );

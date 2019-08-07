@@ -6,14 +6,15 @@ import styled from 'theme';
 import Hint from 'components/Hint';
 import { Label } from 'components/Text';
 
+import { CalendarInput } from './Calendar';
 import HighlightCode from './HighlightCode';
 import Input from './Input';
+import MaskInput from './MaskInput';
 import PasswordInput from './Password';
 import { SelectInput } from './Select';
 import TextInput from './TextArea';
 
 import { componentUtil } from 'utils';
-import MaskInput from './MaskInput';
 
 export const InputFieldWrapper = styled.div`
   width: 100%;
@@ -169,5 +170,6 @@ export const PasswordField = withInputField(PasswordInput);
 export const SelectField = withInputField(SelectInput);
 export const TextField = withInputField(TextInput);
 export const HighLightCodeField = withInputField(HighlightCode);
+export const CalendarField = withInputField(CalendarInput);
 
 export const MaskField = withInputField(MaskInput);

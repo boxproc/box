@@ -1,7 +1,6 @@
 import {
   AdminSysPropFilterParamsPrepared,
   AdminSysPropsDataResp,
-  EditableAdminSysPropPrepared,
 } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
@@ -75,7 +74,6 @@ export interface AddAdminSysPropAction {
 export interface AddAdminSysPropFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
-  readonly meta: EditableAdminSysPropPrepared;
 }
 
 export interface AddAdminSysPropRejectedAction {
@@ -92,7 +90,6 @@ export interface UpdateAdminSysPropsAction {
 export interface UpdateAdminSysPropsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
-  readonly meta: EditableAdminSysPropPrepared;
 }
 
 export interface UpdateAdminSysPropsRejectedAction {

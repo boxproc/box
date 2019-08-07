@@ -87,7 +87,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
             <Field
               id="institutionId"
               name="institutionId"
-              isSearchable={true}
               component={SelectField}
               label="Institution"
               placeholder="Select Institution"
@@ -109,7 +108,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               id="status"
               name="status"
               component={SelectField}
-              isSearchable={true}
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypeCyclesOptions}
@@ -133,7 +131,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               <Field
                 id="monthlyCycleFirstDay"
                 name="monthlyCycleFirstDay"
-                isSearchable={true}
                 placeholder="Enter Monthly Cycle First Day "
                 component={InputField}
                 label="Cycles Editor Monthly Cycle First Day"

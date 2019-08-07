@@ -118,10 +118,10 @@ export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (groupId
 });
 
 export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions = (groupId, uiItem) => ({
-    type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
-    payload: api.deleteAdminUserGroupPermissions(groupId, uiItem),
-    meta: uiItem,
-  });
+  type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
+  payload: api.deleteAdminUserGroupPermissions(groupId, uiItem),
+  meta: uiItem,
+});
 
 export const addAdminUserUsersGroup: AddAdminUsersGroups = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP,
@@ -134,7 +134,7 @@ export const addAdminActiveUsers: AddAdminActiveUsers = values => ({
 });
 
 export const addAdminGroupPermission: AddAdminGroupPermissions =
-  (values) => ({
+  values => ({
     type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
     payload: api.addAdminGroupPermission(values),
   });
@@ -175,8 +175,10 @@ export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMember
         async () => {
           const state = getState();
           const currentGroupId = selectUserGroupById(state);
+
           await dispatch(deleteAdminUserGroupMembers(groupId, userId));
           await dispatch(getAdminActiveUsers(currentGroupId));
+          await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
         },
         dispatch
       );
@@ -184,13 +186,15 @@ export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMember
 
 export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermissions =
   (groupId, uiItem) =>
-    async (dispatch, getState) =>  {
+    async (dispatch, getState) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
           const state = getState();
           const currentGroupId = selectUserGroupById(state);
+
           await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem));
           await dispatch(getAdminUiItems(currentGroupId));
+          await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
         },
         dispatch
       );

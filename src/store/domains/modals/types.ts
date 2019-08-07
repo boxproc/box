@@ -1,17 +1,25 @@
+export interface ModalsData {
+  name: string;
+  payload?: object;
+}
+
 export interface PayloadMessageModal {
   title: string;
   message?: string;
   details?: string;
 }
 
-export interface ModalsData {
-  name: string;
-  payload?: object;
+export interface PayloadConfirmationModal {
+  confirmationAction: () => void;
+  confirmationText?: string;
 }
 
 export interface ModalsState {
   isMessageModal: boolean;
-  payloadMessageModal?: PayloadMessageModal;
+  payloadMessageModal: PayloadMessageModal;
+
+  isConfirmationModal: boolean;
+  payloadConfirmationModal: PayloadConfirmationModal;
 
   isAddAdminSystemPropertyModal: boolean;
 
@@ -20,17 +28,22 @@ export interface ModalsState {
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
-  payloadEditAdminSchedulerModal?: any;
+  payloadEditAdminSchedulerModal: any;
 
   isAddAdminCycleEditorModal: boolean;
   isEditCycleEditorRecordsModal: boolean;
-  payloadEditCycleEditorRecordsModal?: any;
+  payloadEditCycleEditorRecordsModal: any;
 
   isAddAdminUserModal: boolean;
   isEditAdminUserModal: boolean;
-  payloadEditAdminUserModal?: any;
+  payloadEditAdminUserModal: any;
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;
-  payloadEditAdminUsersGroupModal?: any;
+  payloadEditAdminUsersGroupModal: any;
+
+  isAddLedgerCustomer: boolean;
+  isEditLedgerCustomer: boolean;
+
+  isEditLedgerAccount: boolean;
 }

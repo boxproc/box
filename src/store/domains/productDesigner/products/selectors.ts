@@ -4,7 +4,7 @@ import { StoreState } from 'store/StoreState';
 
 import {
   selectCurrencyCodes,
-  selectDefaultInstitutions,
+  selectInstitutions,
   selectInstitutionsOptions,
 } from 'store/domains/consts';
 
@@ -14,7 +14,7 @@ import {
   prepareGeneralProductValues,
   prepareProductDetailsValues,
   prepareProductFiltersParams,
-  prepareProductRulesValues,
+  prepareProductRuleValues,
 } from './utils';
 
 // All products
@@ -23,7 +23,7 @@ export const selectDefaultProductItems = (state: StoreState) =>
 
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
-  selectDefaultInstitutions,
+  selectInstitutions,
   (products, institutions) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
@@ -31,7 +31,7 @@ export const selectProductItems = createSelector(
     return {
       ...prepareGeneralProductItem(product),
       institutionId: institutions.find(el => el.id === product.institution_id)
-        && institutions.find(el => el.id === product.institution_id).name,
+        && institutions.find(el => el.id === product.institution_id).institutionName,
     };
   })
 );
@@ -93,7 +93,7 @@ export const selectCurrentProductDetails = createSelector(
 
 // Current product rules
 export const selectDetailsCurrentProductRules = (state: StoreState) =>
-  state.productDesigner.products.currentProductRules;
+  state.productDesigner.products.currentProductRules.asMutable();
 
 // Current rules code
 export const selectDefaultCurrentRulesCode = (state: StoreState) =>
@@ -107,9 +107,10 @@ export const selectCurrentProductRules = createSelector(
     if (!rules) {
       return null;
     }
+    const rule = rules[0];
     return {
-      ...prepareProductRulesValues(rules),
-      eventId: events.find(el => el.value === rules.event_id),
+      ...prepareProductRuleValues(rule),
+      eventId: rule && events.find(el => el.value === rule.event_id),
       script: code,
     };
   }

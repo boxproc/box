@@ -41,7 +41,7 @@ interface ParagraphProps {
 export const Paragraph = styled.p<ParagraphProps>`
   font-size: 14px;
   line-height: 1.5;
-  color: ${({ theme, light }) => light ? theme.darkGrayColor : theme.blackColor };
+  color: ${({ theme, light }) => light ? theme.darkGrayColor : theme.blackColor};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   &:not(last-child) {
     margin-bottom: 10px;
@@ -49,7 +49,8 @@ export const Paragraph = styled.p<ParagraphProps>`
 `;
 
 export const Hr = styled.div`
-  margin-top: 25px;
+  margin-top: 30px;
   margin-bottom: 15px;
   border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
+  width: 100%;
 `;

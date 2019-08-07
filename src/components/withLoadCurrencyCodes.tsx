@@ -42,7 +42,7 @@ export const withLoadCurrencyCodes =
               loadCurrencyCodes();
             }
           },
-          [loadCurrencyCodes, isEmpty, isCurrencyCodesLoading]
+          [loadCurrencyCodes, isEmpty]
         );
 
         return (

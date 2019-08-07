@@ -34,7 +34,6 @@ export const TablePage: React.FC<TablePageProps> = ({
   getTrGroupProps,
   hint,
 }) => {
-
   const [isFilter, setIsFilter] = React.useState(true);
 
   return (

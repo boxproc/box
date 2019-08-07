@@ -15,6 +15,9 @@ export const selectIsMessageModal = (state: StoreState) => state.modals.isMessag
 
 export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
 
+export const selectPayloadConfirmationModal = (state: StoreState) =>
+  state.modals.payloadConfirmationModal;
+
 export const selectUserGroupById = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues.id;
 

@@ -70,7 +70,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             <Field
               id="username"
               name="username"
-              isSearchable={true}
               component={InputField}
               label="Username"
               placeholder="Enter Username"
@@ -93,7 +92,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               id="status"
               name="status"
               component={SelectField}
-              isSearchable={true}
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypesOptions}

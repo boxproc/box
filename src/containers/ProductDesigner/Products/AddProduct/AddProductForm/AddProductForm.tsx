@@ -11,7 +11,7 @@ import { formNames } from 'consts';
 import {
   ProductDetails,
   ProductGeneralInfo,
-} from 'containers/ProductDesigner/Products/ProductComponents';
+} from 'containers/ProductDesigner/Products/productComponents';
 
 import {
   HandleAddProduct,

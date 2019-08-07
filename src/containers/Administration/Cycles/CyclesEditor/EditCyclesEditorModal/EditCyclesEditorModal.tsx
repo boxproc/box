@@ -21,7 +21,6 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
     <Modal
       name={modalNames.EDIT_CYCLE_EDITOR}
       title="Edit Cycle Editor Record"
-      maxContainerWidth={700}
       minContainerHeight={410}
     >
       <DefineCycleEditorForm

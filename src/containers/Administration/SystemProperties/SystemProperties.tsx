@@ -1,19 +1,20 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
 import { theme } from 'theme';
 
 import { Cell, Header } from 'components/Table/Table';
 
 import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
+import { Button } from 'components/Buttons';
 import {
   renderCheckBoxIcon,
-  renderDeleteButton,
   renderEditable,
 } from 'components/Table/utils';
 
-import { cookiesExpires, cookiesNames, modalNames } from 'consts';
+import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
 import {
   AdminSysPropFilterParams,
@@ -22,7 +23,6 @@ import {
   HandleFilterAdminSysProps,
   HandleGetAdminSysProps,
   HandleUpdateAdminSysProps,
-  OpenModal,
 } from 'store/domains';
 
 import SystemPropertyFilter from './SystemPropertyFilter';
@@ -38,17 +38,31 @@ interface SystemPropertiesProps {
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
   sysPropsFilterParams: AdminSysPropFilterParams;
-  openModal: OpenModal;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
+
+const renderDeleteButton = (deleteAction: (name: string) => void) =>
+(cellInfo: CellInfo) => {
+  const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
+  const propName = cellInfo.original.propertyName;
+
+  return !isLocked && (
+    <Button
+      text="Delete"
+      iconName="delete"
+      withConfirmation={true}
+      confirmationText={`Delete "${propName}" system property?`}
+      onClick={() => deleteAction(propName)}
+    />
+  );
+};
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
   deleteAdminSysProp,
   getAdminSysProps,
   filterAdminSysProps,
-  openModal,
   updateAdminSysProps,
   sysPropsFilterParams,
 }) => {
@@ -139,7 +153,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       data={adminSysPropsItems}
       columns={columns}
       addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
-      openModal={openModal}
       hint="Cannot Edit or Delete Locked Property"
       FilterForm={
         <SystemPropertyFilter

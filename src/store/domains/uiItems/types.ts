@@ -2,7 +2,6 @@ import { ImmutableArray } from 'seamless-immutable';
 
 export interface UiItem {
   item_type: string;
-  permission: string;
   ui_item: string;
 }
 

@@ -33,7 +33,6 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
     <Modal
       name={modalNames.EDIT_ADMIN_SCHEDULER}
       title="Edit"
-      maxContainerWidth={700}
     >
       <AddSchedulerJobForm
         onCancel={() => closeModal(modalNames.EDIT_ADMIN_SCHEDULER)}

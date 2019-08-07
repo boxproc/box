@@ -27,7 +27,6 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
     <Modal
       name={modalNames.EDIT_ADMIN_USERS_GROUP}
       title={`Edit User Group${groupName}`}
-      maxContainerWidth={700}
       minContainerHeight={790}
     >
       <EditUserGroupForms

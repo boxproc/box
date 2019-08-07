@@ -9,6 +9,7 @@ import {
   handleGetAdminCyclesEditor,
   openModal,
   selectAdminCycleEditorItems,
+  selectInstitutionsOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -20,6 +21,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminCyclesEditorItems: selectAdminCycleEditorItems(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

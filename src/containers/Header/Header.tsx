@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const institution = institutions.length === 1
     ? institutions[0]
-    : institutions.find(el => el.name === boxInstitutionName);
+    : institutions.find(el => el.institutionName === boxInstitutionName);
 
   return (
     <Wrapper>
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             <Flex alignItems="center">
               {institution && (
                 <Box mr="15px">
-                  {institution && institution.name}
+                  {institution && institution.institutionName}
                 </Box>
               )}
               <Dropdown

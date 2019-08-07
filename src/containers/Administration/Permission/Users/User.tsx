@@ -1,9 +1,11 @@
 import React from 'react';
 import { RowInfo } from 'react-table';
 
+import { theme } from 'theme';
+
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
-import TablePage from 'components/TablePage/TablePage';
+import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
@@ -142,6 +144,7 @@ export const User: React.FC<UserFilterProps> = ({
       Cell: (props: SCell<'datetimeOfLastLogin'>) => (
         <Cell
           value={props.value}
+          style={{ color: theme.grayColor }}
         />
       ),
     },
@@ -153,7 +156,6 @@ export const User: React.FC<UserFilterProps> = ({
       data={adminUserItems}
       columns={columns}
       addNewModalName={modalNames.ADD_ADMIN_USER}
-      openModal={openModal}
       getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit User"
       FilterForm={

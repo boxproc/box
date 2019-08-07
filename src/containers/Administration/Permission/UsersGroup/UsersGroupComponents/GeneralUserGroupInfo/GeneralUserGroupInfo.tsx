@@ -39,7 +39,6 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
           <Field
             id="name"
             name="name"
-            isSearchable={true}
             component={InputField}
             label="User group name"
             placeholder="Enter User group name"

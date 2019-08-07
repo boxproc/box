@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
 import adminCyclesEditorReducer from './cycles/reducer';
-import adminEventDataElemsReducer from './eventDataElems/reducer';
-import adminEventsReducer from './events/reducer';
+import adminEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
+import adminEventsReducer from './dictionaries/events/reducer';
 import adminUserReducer from './permissions/users/reducer';
 import adminUsersGroupReducer from './permissions/usersGroups/reducer';
 import adminSchedulerJobsReducer from './scheduler/reducer';

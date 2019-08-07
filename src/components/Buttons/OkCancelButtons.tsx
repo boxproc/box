@@ -14,6 +14,7 @@ interface OkCancelButtonsProps {
   okText?: string;
   cancelText?: string;
   onCancel?: () => void;
+  onOk?: () => void;
   disabledCancel?: boolean;
   disabledOk?: boolean;
   cancelIconName?: string;
@@ -25,6 +26,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   okText = 'Ok',
   cancelText = 'Cancel',
   onCancel,
+  onOk,
   disabledCancel = false,
   disabledOk = false,
   cancelIconName,
@@ -37,6 +39,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
         <Button
           text={okText}
           disabled={disabledOk}
+          onClick={onOk}
         />
         {hintOk && (
           <Hint

@@ -18,6 +18,7 @@ interface EditGroupPermissionFormProps {
   currentGroupId: number;
   getUiItems: HandleGetAdminUiItems;
   uiItemsOptions: Array<SelectValues>;
+  selectedUiItem: SelectValues;
 }
 
 type EditGroupPermissionFormPropsAllProps = EditGroupPermissionFormProps &
@@ -29,6 +30,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
   addAdminGroupPermission,
   currentGroupId,
   uiItemsOptions,
+  selectedUiItem,
 }) => {
   React.useEffect(
     () => {
@@ -44,6 +46,8 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
     [handleSubmit, addAdminGroupPermission]
   );
 
+  const isUiItemSelected = !!selectedUiItem;
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="center">
@@ -53,7 +57,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             name="uiItem"
             placeholder="Select Ui Item"
             component={SelectField}
-            label="Ui Item"
+            label="UI Item"
             options={uiItemsOptions}
           />
         </Box>
@@ -62,13 +66,14 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             id="permission"
             name="permission"
             component={CheckboxField}
-            label="Permission Read/Wright"
+            label="Permission Read and Write"
           />
         </Box>
       </Flex>
       <Button
         iconName="save"
-        text="Save"
+        text="Add"
+        disabled={!isUiItemSelected}
       />
     </form >
   );
