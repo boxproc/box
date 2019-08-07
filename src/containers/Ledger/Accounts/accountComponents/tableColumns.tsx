@@ -6,6 +6,7 @@ import { TableCell } from 'types';
 
 interface LedgerAccountItem {
   id: string;
+  institutionId: number;
   accountAlias: string;
   customerId: number;
   customerFirstName: string;
@@ -30,6 +31,17 @@ export const tableColumns = [
     Header: <Header title="ID" showSortIcons={true} />,
     accessor: 'id',
     Cell: (props: ACell<'id'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    sortable: true,
+    filterable: true,
+    Header: <Header title="Institution" showSortIcons={true} />,
+    accessor: 'institutionId',
+    Cell: (props: ACell<'institutionId'>) => (
       <Cell
         value={props.value}
       />

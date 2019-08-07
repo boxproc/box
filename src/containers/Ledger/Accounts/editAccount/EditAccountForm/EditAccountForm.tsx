@@ -15,8 +15,11 @@ import {
   Overdue,
 } from 'containers/Ledger/Accounts/accountComponents';
 
+import { HandleUpdateLedgerAccount } from 'store/domains';
+
 interface EditAccountFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
+  updateLedgerAccount: HandleUpdateLedgerAccount;
 }
 
 type EditAccountFormAllProps = EditAccountFormProps &
@@ -25,9 +28,10 @@ type EditAccountFormAllProps = EditAccountFormProps &
 const EditAccountForm: React.FC<EditAccountFormAllProps> = ({
   onCancel,
   handleSubmit,
+  updateLedgerAccount,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => updateLedgerAccount(data)),
     [handleSubmit]
   );
 

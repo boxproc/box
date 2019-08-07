@@ -5,22 +5,34 @@ import Accounts from './Accounts';
 
 import {
   createLoadingSelector,
+  handleFilterLedgerAccounts,
+  handleGetLedgerAccounts,
+  handleSetLedgerAccountId,
+  LedgerAccountsActionTypes,
   openModal,
   selectInstitutionsOptions,
+  selectLedgerAccounts,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
-const loadingSelector = createLoadingSelector([]);
+const loadingSelector = createLoadingSelector([
+  LedgerAccountsActionTypes.GET_LEDGER_ACCOUNTS,
+  LedgerAccountsActionTypes.FILTER_LEDGER_ACCOUNTS,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  ledgerAccounts: selectLedgerAccounts(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
+    getLedgerAccounts: handleGetLedgerAccounts,
+    filterLedgerAccounts: handleFilterLedgerAccounts,
+    setLedgerAccountsId: handleSetLedgerAccountId,
   },
   dispatch
 );

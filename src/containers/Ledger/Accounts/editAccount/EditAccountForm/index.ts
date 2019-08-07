@@ -9,16 +9,23 @@ import {
 
 import {
   createLoadingSelector,
+  handleUpdateLedgerAccount,
+  LedgerAccountsActionTypes,
+  selectLedgerCurrentAccount,
 } from 'store/domains';
 
-const loadingSelector = createLoadingSelector([]);
+const loadingSelector = createLoadingSelector([
+  LedgerAccountsActionTypes.UPDATE_LEDGER_ACCOUNT,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  initialValues: selectLedgerCurrentAccount(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    updateLedgerAccount: handleUpdateLedgerAccount,
   },
   dispatch
 );

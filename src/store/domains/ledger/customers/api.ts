@@ -6,8 +6,9 @@ import {
   SuccessResponseStatus,
 } from './mock';
 
-import { throttleUtil } from 'utils';
 import { LedgerCustomerItem, LedgerCustomersFilterParamsPrepared } from './types';
+
+import { throttleUtil } from 'utils';
 
 export const getLedgerCustomers = () =>
   throttleUtil.getDataAfter(LedgerCustomersItems, 500);
