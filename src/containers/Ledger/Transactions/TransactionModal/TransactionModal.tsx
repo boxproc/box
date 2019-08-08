@@ -28,9 +28,11 @@ const TableWrapper = styled.div`
 
   td {
     padding: 10px 25px;
+    vertical-align: top;
   }
 
   td:first-child {
+    width: 200px;
     color: ${({ theme }) => theme.darkGrayColor};
     text-transform: capitalize;
   }
@@ -52,13 +54,15 @@ const Table: React.FC<TableProps> = ({ data }) => {
   return (
     <TableWrapper>
       <table>
-        {Object.entries(data).map((el, index) => (
-          <tr key={index}>
-            <td>{el[0]
-              .replace(/([A-Z])/g, ' $1')}</td>
-            <td>{el[1]}</td>
-          </tr>
-        ))}
+        <tbody>
+          {Object.entries(data).map((el, index) => (
+            <tr key={index}>
+              <td>{el[0]
+                .replace(/([A-Z])/g, ' $1')}</td>
+              <td>{el[1]}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </TableWrapper>
   );
