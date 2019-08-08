@@ -1,6 +1,10 @@
 import { debitCreditIndicatorOptions } from 'consts';
 
-import { LedgerTransactionItem, LedgerTransactionItemPrepared } from './types';
+import {
+  LedgerTransactionItem,
+  LedgerTransactionItemPrepared,
+  LedgerTransactionsFilterParams,
+} from './types';
 
 export const prepareValuesToRender = (values: LedgerTransactionItem):
   LedgerTransactionItemPrepared => {
@@ -78,5 +82,21 @@ export const prepareBalanceValuesToRender = (values: Partial<LedgerTransactionIt
     balanceSettledAfter: values.balanceSettledAfter,
     balanceAvailableBefore: values.balanceAvailableBefore,
     balanceAvailableAfter: values.balanceAvailableAfter,
+  };
+};
+
+export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFilterParams>) => {
+  if (!params) {
+    return null;
+  }
+
+  const { id, customerId, productType, datetimeFrom, datetimeTo } = params;
+
+  return {
+    id: id && Number(id),
+    customer_id: customerId && Number(customerId),
+    product_type: productType && productType.value,
+    datetime_from: datetimeFrom,
+    datetime_to: datetimeTo,
   };
 };

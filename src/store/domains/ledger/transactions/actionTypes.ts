@@ -50,5 +50,5 @@ export interface FilterLedgerTransactionsRejectedAction {
 
 export type LedgerTransactionsActionTypes =
   | GetLedgerTransactionsFulfilledAction
-  | FilterLedgerTransactionsAction
+  | FilterLedgerTransactionsFulfilledAction
   | SetLedgerTransactionIdAction;

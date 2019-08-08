@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons';
 import { CalendarField, InputField, SelectField } from 'components/Form';
 
-import { formNames, productTypesOptions } from 'consts';
+import { DateFormat, formNames, productTypesOptions } from 'consts';
 
 import { HandleFilterLedgerTransactions } from 'store/domains';
 
@@ -35,8 +35,8 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
         >
           <Box width="100px" p="10px">
             <Field
-              id="TransactionId"
-              name="TransactionId"
+              id="id"
+              name="id"
               component={InputField}
               label="Transaction ID"
               placeholder="Enter ID"
@@ -62,7 +62,6 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               placeholder="Select Product Type"
               options={productTypesOptions}
               isDisabled={false}
-              isMulti={true}
             />
           </Box>
           <Box width="175px" p="10px">
@@ -71,7 +70,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               name="datetimeFrom"
               component={CalendarField}
               label="Date From"
-              placeholder="dd/mm/yyyy"
+              placeholder={DateFormat.FORMAT}
             />
           </Box>
           <Box width="175px" p="10px">
@@ -80,7 +79,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               name="datetimeTo"
               component={CalendarField}
               label="Date To"
-              placeholder="dd/mm/yyyy"
+              placeholder={DateFormat.FORMAT}
             />
           </Box>
         </Flex>

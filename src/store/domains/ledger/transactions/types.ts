@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType } from 'types';
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface LedgerTransactionId {
   id: number;
@@ -52,6 +52,20 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   cardConversionRate: number;
   cardAcceptorName: string;
   cardAcceptorLocation: string;
+}
+
+export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
+  customerId: number;
+  productType: SelectValues;
+  datetimeFrom: string;
+  datetimeTo: string;
+}
+
+export interface LedgerTransactionsFilterParamsPrepared extends LedgerTransactionId {
+  customer_id: number;
+  product_type: string | number;
+  datetime_from: string;
+  datetime_to: string;
 }
 
 export interface LedgerTransactionsState {

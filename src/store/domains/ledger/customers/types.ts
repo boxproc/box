@@ -8,12 +8,12 @@ export interface LedgerCustomerId {
 }
 
 export interface LedgerCustomerItemPlain extends LedgerCustomerId {
-  status: string;
   email: string;
 }
 
 export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
-  institution_id: number;
+  status: string | number;
+  institution_id: string | number;
   first_name: string;
   last_name: string;
   date_of_birth: string;
@@ -34,8 +34,7 @@ export interface LedgerCustomerItems extends ResponseStatusType {
   customers: Array<LedgerCustomerItem>;
 }
 
-export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlain {
-  institutionId: string;
+export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain {
   firstName: string;
   lastName: string;
   dateOfBirth: string;
@@ -50,6 +49,16 @@ export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlain {
   nationalityCountryCode: string;
   dateCreated: string;
   dateClosed: string;
+}
+
+export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepared {
+  institutionId: string | number;
+  status: string | number;
+}
+
+export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPlainPrepared {
+  institutionId: SelectValues;
+  status: SelectValues;
 }
 
 export interface LedgerCustomersFilterParams extends LedgerCustomerId {

@@ -2,6 +2,9 @@ import moment from 'moment';
 
 import { DateFormat } from 'consts';
 
+export const today = moment().format(DateFormat.FORMAT);
+export const yesterday = moment().subtract(1, 'day').format(DateFormat.FORMAT);
+
 const toValidDate = (value: string, result: string) =>
   result === 'Invalid Date' ? value : result;
 

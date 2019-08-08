@@ -6,6 +6,7 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
+import { TransactionsFilterForm } from './forms';
 import { tableColumns } from './transactionsComponents';
 
 import {
@@ -17,7 +18,8 @@ import {
 } from 'store/domains';
 
 import { SelectValues } from 'types';
-import { TransactionsFilterForm } from './forms';
+
+import { dateUtil } from 'utils';
 
 export interface TransactionsProps {
   institutionsOptions: Array<SelectValues>;
@@ -52,7 +54,7 @@ const Transactions: React.FC<TransactionsProps> = ({
         },
       };
     },
-    [openModal]
+    [openModal, setLedgerTransactionId]
   );
   return (
     <TablePage
@@ -64,6 +66,10 @@ const Transactions: React.FC<TransactionsProps> = ({
       FilterForm={
         <TransactionsFilterForm
           filterLedgerTransactions={filterLedgerTransactions}
+          initialValues={{
+            datetimeFrom: dateUtil.yesterday,
+            datetimeTo: dateUtil.today,
+          }}
         />
       }
     />

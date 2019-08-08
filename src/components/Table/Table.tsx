@@ -147,7 +147,12 @@ export const Cell: React.FC<CellProps> = ({
       onKeyUp={onKeyUp}
       isDate={isDate}
     >
-      <div title={hint}>{value}</div>
+      <div title={hint}>{
+        value
+        // isDate
+        // ? moment('2019-07-29T14:55:12Z').format('MMMM Do YYYY, h:mm:ss a')
+        // : value
+      }</div>
     </TableItemWrapper>
   );
 
@@ -188,7 +193,7 @@ export const Table: React.FC<TableProps> = props => {
             isHeader && data && data.length > 0
               ? ReactTableDefaults.TheadComponent
               : () => null
-            }
+          }
         />
       </TableStyled>
     </React.Fragment>

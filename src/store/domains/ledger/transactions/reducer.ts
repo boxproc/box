@@ -16,6 +16,10 @@ const ledgerCustomersReducer =
         return state
           .set('transactions', action.payload.transactions);
 
+      case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_FULFILLED:
+        return state
+          .set('transactions', action.payload.transactions);
+
       case ActionTypeKeys.SET_LEDGER_TRANSACTION_ID:
         return state
           .set('currentTransactionId', action.payload);

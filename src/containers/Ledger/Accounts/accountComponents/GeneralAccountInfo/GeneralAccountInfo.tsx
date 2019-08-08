@@ -6,7 +6,12 @@ import { Box, Flex } from '@rebass/grid';
 import { CalendarField, InputField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
 
-import { productTypesOptions, statementCyclesOptions, statusTypesOptions } from 'consts';
+import {
+  DateFormat,
+  productTypesOptions,
+  statementCyclesOptions,
+  statusTypesOptions,
+} from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -193,7 +198,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="lastCycleDate"
             component={CalendarField}
             label="Last Cycle Date"
-            placeholder="dd/mm/yyyy"
+            placeholder={DateFormat.FORMAT}
             disabled={true}
           />
         </Box>
@@ -204,9 +209,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="dateCreated"
             component={CalendarField}
             label="Date Created"
-            placeholder="dd/mm/yyyy"
+            placeholder={DateFormat.FORMAT}
             disabled={true}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -215,7 +219,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="dateClosed"
             component={CalendarField}
             label="Date Closed"
-            placeholder="dd/mm/yyyy"
+            placeholder={DateFormat.FORMAT}
             disabled={true}
           />
         </Box>
