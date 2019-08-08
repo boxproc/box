@@ -22,10 +22,8 @@ export enum ActionTypeKeys {
   UPDATE_LEDGER_CUSTOMER_REJECTED = 'ledger/customers/UPDATE_LEDGER_CUSTOMERS_REJECTED',
 
   FILTER_LEDGER_CUSTOMERS = 'ledger/customers/FILTER_LEDGER_CUSTOMERS',
-  FILTER_LEDGER_CUSTOMERS_FULFILLED =
-  'ledger/customers/FILTER_LEDGER_CUSTOMERS_FULFILLED',
-  FILTER_LEDGER_CUSTOMERS_REJECTED =
-  'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
+  FILTER_LEDGER_CUSTOMERS_FULFILLED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_FULFILLED',
+  FILTER_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
 }
 
 // Get all customers
@@ -44,7 +42,7 @@ export interface GetLedgerCustomersRejectedAction {
   readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMERS_REJECTED;
 }
 
-// Get customer by id
+// Set current customer id
 export interface GetLedgerCustomerIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMER_ID;

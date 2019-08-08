@@ -59,7 +59,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="accountAlias"
             name="accountAlias"
@@ -68,7 +68,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder="Enter Account Alias"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="accountAliasAdditional"
             name="accountAliasAdditional"
@@ -77,13 +77,24 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder="Enter Account Alias Additional"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="productName"
             name="productName"
             component={InputField}
             label="Product Name"
             placeholder="Enter Product Name"
+            disabled={true}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width="100px" p="10px">
+          <Field
+            id="productId"
+            name="productId"
+            component={InputField}
+            label="Product ID"
+            placeholder="Enter ID"
             disabled={true}
             validate={[formErrorUtil.required]}
           />
