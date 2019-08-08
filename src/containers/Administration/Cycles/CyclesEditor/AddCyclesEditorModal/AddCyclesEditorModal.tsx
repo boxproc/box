@@ -13,18 +13,20 @@ interface AddCycleEditorModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.ADD_ADMIN_CYCLE_EDITOR;
+
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_ADMIN_CYCLE_EDITOR}
+      name={modalName}
       title="Add Cycle Editor Record"
       maxContainerWidth={800}
       minContainerHeight={410}
     >
       <DefineCycleEditorForm
-        onCancel={() => closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR)}
+        onCancel={() => closeModal(modalName)}
         mode="add"
       />
     </Modal>

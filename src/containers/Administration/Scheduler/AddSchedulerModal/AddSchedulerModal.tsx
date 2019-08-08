@@ -9,11 +9,14 @@ import { CloseModal, HandleAddAdminSchedulerJob } from 'store/domains';
 
 import DefineSchedulerJobForm from 'containers/Administration/Scheduler/DefineSchedulerJobForm';
 import { SelectValues } from 'types';
+
 interface AddSchedulerModalProps {
   closeModal: CloseModal;
   addAdminSchedulerJob: HandleAddAdminSchedulerJob;
   institutionsOptions: Array<SelectValues>;
 }
+
+const modalName = modalNames.ADD_ADMIN_SCHEDULER;
 
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
   closeModal,
@@ -22,12 +25,12 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_ADMIN_SCHEDULER}
+      name={modalName}
       title="Add Scheduler Job"
       maxContainerWidth={800}
     >
       <DefineSchedulerJobForm
-        onCancel={() => closeModal(modalNames.ADD_ADMIN_SCHEDULER)}
+        onCancel={() => closeModal(modalName)}
         defineAdminSchedulerJob={addAdminSchedulerJob}
         institutionsOptions={institutionsOptions}
       />

@@ -13,18 +13,20 @@ interface EditSchedulerModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.EDIT_CYCLE_EDITOR;
+
 const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
 }) => {
 
   return (
     <Modal
-      name={modalNames.EDIT_CYCLE_EDITOR}
+      name={modalName}
       title="Edit Cycle Editor Record"
       minContainerHeight={410}
     >
       <DefineCycleEditorForm
-        onCancel={() => closeModal(modalNames.EDIT_CYCLE_EDITOR)}
+        onCancel={() => closeModal(modalName)}
         isDisabledInstitutions={true}
         isDisabledStatus={true}
         isDisabledType={true}

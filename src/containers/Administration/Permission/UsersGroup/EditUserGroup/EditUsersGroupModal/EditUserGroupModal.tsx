@@ -16,6 +16,8 @@ interface EditUsersGroupModalProps {
   usersGroupName: string;
 }
 
+const modalName = modalNames.EDIT_ADMIN_USERS_GROUP;
+
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
   usersGroupName,
@@ -25,12 +27,12 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
 
   return (
     <Modal
-      name={modalNames.EDIT_ADMIN_USERS_GROUP}
+      name={modalName}
       title={`Edit User Group${groupName}`}
       minContainerHeight={790}
     >
       <EditUserGroupForms
-        onCancel={() => closeModal(modalNames.EDIT_ADMIN_USERS_GROUP)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

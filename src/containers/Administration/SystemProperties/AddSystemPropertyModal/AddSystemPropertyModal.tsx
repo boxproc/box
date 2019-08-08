@@ -13,17 +13,19 @@ interface AddSystemPropertyModalProps {
   addAdminSysProp: HandleAddAdminSysProp;
 }
 
+const modalName = modalNames.ADD_ADMIN_SYSTEM_PROPERTY;
+
 const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
+      name={modalName}
       title="Add System Property"
       maxContainerWidth={600}
     >
       <AddSystemPropertyForm
-        onCancel={() => closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

@@ -13,6 +13,8 @@ interface EditProductModalProps {
   currentProductName: string;
 }
 
+const modalName = modalNames.EDIT_PRODUCT;
+
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
   currentProductName,
@@ -21,12 +23,12 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
 
   return (
     <Modal
-      name={modalNames.EDIT_PRODUCT}
+      name={modalName}
       title={`Edit Product${productName}`}
       minContainerHeight={758}
     >
       <EditProductForms
-        onCancel={() => closeModal(modalNames.EDIT_PRODUCT)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

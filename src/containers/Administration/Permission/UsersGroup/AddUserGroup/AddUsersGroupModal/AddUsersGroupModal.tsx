@@ -14,17 +14,19 @@ interface AddUserModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.ADD_ADMIN_USERS_GROUP;
+
 const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_ADMIN_USERS_GROUP}
+      name={modalName}
       title="Add New User Group"
       maxContainerWidth={800}
     >
       <AddUserGroupForm
-        onCancel={() => closeModal(modalNames.ADD_ADMIN_USERS_GROUP)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );
