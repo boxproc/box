@@ -15,6 +15,7 @@ import SystemProperties from 'containers/Administration/SystemProperties';
 import Products from 'containers/ProductDesigner/Products';
 
 // Ledger
+import UserActivities from 'containers/Audit/UserActivity';
 import Accounts from 'containers/Ledger/Accounts';
 import Customers from 'containers/Ledger/Customers';
 
@@ -58,5 +59,9 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
     component: <UsersGroup />,
+  },
+  {
+    path: uiItemConsts.AUDIT_USER_ACTIVITIES,
+    component: <UserActivities />,
   },
 ];

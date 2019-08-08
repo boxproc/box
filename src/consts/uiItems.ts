@@ -2,6 +2,8 @@ export enum uiItemConsts {
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',
 
+  AUDIT_USER_ACTIVITIES = 'audit/users_activity',
+
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',

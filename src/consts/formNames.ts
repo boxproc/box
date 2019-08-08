@@ -49,4 +49,7 @@ export enum formNames {
   // Accounts
   LEDGER_ACCOUNTS_FILTER = 'ledgerAccountsFilter',
   EDIT_LEDGER_ACCOUNT = 'editLedgerAccount',
+
+  // UserActivities
+  AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 }
