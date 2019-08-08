@@ -7,7 +7,7 @@ export enum ActionTypeKeys {
   GET_LEDGER_ACCOUNTS_FULFILLED = 'ledger/accounts/GET_LEDGER_ACCOUNTS_FULFILLED',
   GET_LEDGER_ACCOUNTS_REJECTED = 'ledger/accounts/GET_LEDGER_ACCOUNTS_REJECTED',
 
-  GET_LEDGER_ACCOUNT_ID = 'ledger/accounts/GET_LEDGER_ACCOUNT_ID',
+  SET_LEDGER_ACCOUNT_ID = 'ledger/accounts/SET_LEDGER_ACCOUNT_ID',
 
   UPDATE_LEDGER_ACCOUNT = 'ledger/accounts/UPDATE_LEDGER_ACCOUNTS',
   UPDATE_LEDGER_ACCOUNT_FULFILLED = 'ledger/accounts/UPDATE_LEDGER_ACCOUNTS_FULFILLED',
@@ -37,7 +37,7 @@ export interface GetLedgerAccountsRejectedAction {
 // Set current account Id
 export interface SetLedgerAccountIdAction {
   readonly payload: number;
-  readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_ID;
+  readonly type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID;
 }
 
 // Edit account

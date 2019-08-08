@@ -19,7 +19,7 @@ const ledgerAccountsReducer =
         return state
           .set('accounts', action.payload.accounts);
 
-      case ActionTypeKeys.GET_LEDGER_ACCOUNT_ID:
+      case ActionTypeKeys.SET_LEDGER_ACCOUNT_ID:
         return state
           .set('currentAccountId', action.payload);
 

@@ -21,7 +21,6 @@ const modalName = modalNames.EDIT_ADMIN_USERS_GROUP;
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
   usersGroupName,
-
 }) => {
   const groupName = usersGroupName ? `: "${usersGroupName}"` : '';
 

@@ -180,7 +180,19 @@ export enum actionTypes {
 export const actionTypesOptions = [
   { value: 'V', label: 'Value' },
   { value: 'R', label: 'Approve / Deny' },
-  { value: 'X', label: 'Update Aux Counter 1' },
-  { value: 'Y', label: 'Update Aux Counter 2' },
-  { value: 'Z', label: 'Update Aux Counter 3' },
+  { value: 'X', label: 'Update aux counter 1' },
+  { value: 'Y', label: 'Update aux counter 2' },
+  { value: 'Z', label: 'Update aux counter 3' },
+];
+
+export enum debitCreditIndicator {
+  DEBIT_TRANSACTION = 'D',
+  CREDIT_TRANSACTION = 'C',
+  NOT_APPLICABLE = 'U',
+}
+
+export const debitCreditIndicatorOptions = [
+  { value: 'D', label: 'Debit transaction' },
+  { value: 'C', label: 'Credit transaction' },
+  { value: 'U', label: 'Not applicable' },
 ];

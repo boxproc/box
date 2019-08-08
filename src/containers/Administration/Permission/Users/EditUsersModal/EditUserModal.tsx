@@ -24,7 +24,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
   updateAdminUser,
   selectUserItems,
-
 }) => {
   return (
     <Modal

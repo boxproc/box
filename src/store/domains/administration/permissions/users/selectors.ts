@@ -12,7 +12,6 @@ export const selectDefaultFilterUsers = (state: StoreState) =>
 
 export const selectUserEditorItems = createSelector(
   selectDefaultAdminUsersItems,
-
   (items) => items && items.asMutable().map(item => {
     return {
       ...item,

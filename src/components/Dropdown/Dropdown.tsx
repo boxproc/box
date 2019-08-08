@@ -89,7 +89,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <DropdownWrapper
       position={dropdownListPosition}
     >
-      <Flex alignItems="baseline">
+      <Flex alignItems="center">
         {selectable && (
           <Box>
             {children[selectedIndex]}

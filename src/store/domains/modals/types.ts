@@ -42,8 +42,10 @@ export interface ModalsState {
   isEditAdminUsersGroupModal: boolean;
   payloadEditAdminUsersGroupModal: any;
 
-  isAddLedgerCustomer: boolean;
-  isEditLedgerCustomer: boolean;
+  isAddLedgerCustomerModal: boolean;
+  isEditLedgerCustomerModal: boolean;
 
-  isEditLedgerAccount: boolean;
+  isEditLedgerAccountModal: boolean;
+
+  isLedgerTransactionModal: boolean;
 }

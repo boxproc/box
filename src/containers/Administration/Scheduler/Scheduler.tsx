@@ -1,8 +1,6 @@
 import React from 'react';
 import { RowInfo } from 'react-table';
 
-import { theme } from 'theme';
-
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage';
@@ -163,7 +161,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       Cell: (props: SCell<'lastExecutionDatetime'>) => (
         <Cell
           value={props.value}
-          style={{ color: theme.grayColor }}
+          isDate={true}
         />
       ),
     },

@@ -14,11 +14,11 @@ export const toFormattedDateTime = (value: string) =>
   value && value.length > 0
   && toValidDate(
     value,
-    new Date(value).toLocaleString('en-US', dateTimeOptions).replace(',', ' at')
+    new Date(value).toLocaleString('en-GB', dateTimeOptions).replace(',', ' at')
   );
 
 export const toFormattedCalendarDate =
-  (date: string, dateFormat: string = DateFormat.FORMAT, lng: string = 'en-us') => {
+  (date: string, dateFormat: string = DateFormat.FORMAT, lng: string = 'en-GB') => {
     moment.locale(lng);
 
     const momentObj = moment(new Date(date), dateFormat, lng);

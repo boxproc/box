@@ -47,7 +47,7 @@ export const getLedgerAccounts: GetLedgerAccounts = () => ({
 });
 
 export const setLedgerAccountId: SetLedgerAccountId = id => ({
-  type: ActionTypeKeys.GET_LEDGER_ACCOUNT_ID,
+  type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID,
   payload: id,
 });
 
