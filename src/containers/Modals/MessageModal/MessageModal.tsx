@@ -15,6 +15,8 @@ interface MessageModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.MESSAGE_MODAL;
+
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
@@ -24,7 +26,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
   const { title, message, details } = payloadMessageModal;
   return (
     <Modal
-      name={modalNames.MESSAGE_MODAL}
+      name={modalName}
       title={title}
       maxContainerWidth={500}
       zIndex="101"
@@ -38,7 +40,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <Box mt="5px">
           <Button
             text="Close"
-            onClick={() => closeModal(modalNames.MESSAGE_MODAL)}
+            onClick={() => closeModal(modalName)}
           />
         </Box>
         {details &&

@@ -11,7 +11,7 @@ interface LedgerAccountItem {
   customerId: number;
   customerFirstName: string;
   customerLastName: string;
-  productName: string;
+  productType: string;
   status: string;
   balanceSettled: number;
   balanceAvailable: number;
@@ -95,8 +95,8 @@ export const tableColumns = [
     sortable: true,
     filterable: true,
     Header: <Header title="Product Name" showSortIcons={true} />,
-    accessor: 'productName',
-    Cell: (props: ACell<'productName'>) => (
+    accessor: 'productType',
+    Cell: (props: ACell<'productType'>) => (
       <Cell
         value={props.value}
       />

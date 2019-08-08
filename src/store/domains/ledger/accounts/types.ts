@@ -19,7 +19,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   customer_last_name: string;
   institution_id: number | string;
   product_id: number;
-  product_name: string;
+  product_type: string | number;
   balance_settled: number;
   balance_available: number;
   amount_due_repayment: number;
@@ -55,16 +55,13 @@ export interface LedgerAccountItems extends ResponseStatusType {
   accounts: Array<LedgerAccountItem>;
 }
 
-export interface LedgerAccountItemPrepared extends LedgerAccountId {
-  status: SelectValues;
+export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   accountAlias: string;
   accountAliasAdditional: string;
   customerId: number;
   customerFirstName: string;
   customerLastName: string;
-  institutionId: SelectValues;
   productId: number;
-  productName: string;
   balanceSettled: number;
   balanceAvailable: number;
   amountDueRepayment: number;
@@ -73,7 +70,6 @@ export interface LedgerAccountItemPrepared extends LedgerAccountId {
   accruedInterest: number;
   dateCreated: string;
   dateClosed: string;
-  statementCycleId: SelectValues;
   lastCycleDate: string;
   auxCounter1: number;
   auxCounter2: number;
@@ -94,6 +90,20 @@ export interface LedgerAccountItemPrepared extends LedgerAccountId {
   numberOfTimesOverdue5Cycles: number;
   numberOfTimesOverdue6Cycles: number;
   numberOfTimesOverdue7Cycles: number;
+}
+
+export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepared {
+  status: string | number;
+  institutionId: string | number;
+  statementCycleId: string | number;
+  productType: string | number;
+}
+
+export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
+  status: SelectValues;
+  institutionId: SelectValues;
+  statementCycleId: SelectValues;
+  productType: SelectValues;
 }
 
 export interface LedgerAccountsFilterParams extends LedgerAccountId {

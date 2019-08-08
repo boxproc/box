@@ -11,17 +11,19 @@ interface AddProductModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.ADD_PRODUCT;
+
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_PRODUCT}
+      name={modalName}
       title="Add New Product"
       minContainerHeight={607}
     >
       <AddProductForm
-        onCancel={() => closeModal(modalNames.ADD_PRODUCT)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

@@ -22,6 +22,8 @@ interface EditSchedulerModalProps {
   schedulerJobValues: any;
 }
 
+const modalName = modalNames.EDIT_ADMIN_SCHEDULER;
+
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
   deleteAdminSchedulerJob,
@@ -31,11 +33,11 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
 }) => {
   return (
     <Modal
-      name={modalNames.EDIT_ADMIN_SCHEDULER}
+      name={modalName}
       title="Edit"
     >
       <AddSchedulerJobForm
-        onCancel={() => closeModal(modalNames.EDIT_ADMIN_SCHEDULER)}
+        onCancel={() => closeModal(modalName)}
         defineAdminSchedulerJob={updateAdminSchedulerJob}
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}

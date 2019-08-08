@@ -12,16 +12,18 @@ interface AddCustomerModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.ADD_LEDGER_CUSTOMER;
+
 const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_LEDGER_CUSTOMER}
+      name={modalName}
       title="Add New Customer"
     >
       <AddCustomerForm
-        onCancel={() => closeModal(modalNames.ADD_LEDGER_CUSTOMER)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

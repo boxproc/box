@@ -10,18 +10,22 @@ import { CloseModal } from 'store/domains';
 
 interface EditAccountModalProps {
   closeModal: CloseModal;
+  ledgerCurrentAccountAlias: string;
 }
+
+const modalName = modalNames.EDIT_LEDGER_ACCOUNT;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
+  ledgerCurrentAccountAlias,
 }) => {
-  const modalName = modalNames.EDIT_LEDGER_ACCOUNT;
+  const accountAlias = ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '';
 
   return (
     <Modal
       name={modalName}
-      title="Account"
-      minContainerHeight={870}
+      title={`Account${accountAlias}`}
+      minContainerHeight={999}
     >
       <EditAccountForm
         onCancel={() => closeModal(modalName)}

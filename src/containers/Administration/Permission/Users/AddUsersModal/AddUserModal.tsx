@@ -15,18 +15,20 @@ interface AddUserModalProps {
   cyclesEditorValue: any;
 }
 
+const modalName = modalNames.ADD_ADMIN_USER;
+
 const AddAdminModal: React.FC<AddUserModalProps> = ({
   closeModal,
   addAdminUser,
 }) => {
   return (
     <Modal
-      name={modalNames.ADD_ADMIN_USER}
+      name={modalName}
       title="Add new User"
       maxContainerWidth={800}
     >
       <DefineUsersForm
-        onCancel={() => closeModal(modalNames.ADD_ADMIN_USER)}
+        onCancel={() => closeModal(modalName)}
         defineAdminUser={addAdminUser}
       />
     </Modal>

@@ -12,16 +12,18 @@ interface EditCustomerModalProps {
   closeModal: CloseModal;
 }
 
+const modalName = modalNames.EDIT_LEDGER_CUSTOMER;
+
 const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,
 }) => {
   return (
     <Modal
-      name={modalNames.EDIT_LEDGER_CUSTOMER}
+      name={modalName}
       title="Edit Customer"
     >
       <EditCustomerForm
-        onCancel={() => closeModal(modalNames.EDIT_LEDGER_CUSTOMER)}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );

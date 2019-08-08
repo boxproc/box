@@ -15,6 +15,8 @@ interface ConfirmationModalProps {
   payloadConfirmModal: PayloadConfirmationModal;
 }
 
+const modalName = modalNames.CONFIRMATION_MODAL;
+
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
   payloadConfirmModal,
@@ -23,7 +25,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   return (
     <Modal
-      name={modalNames.CONFIRMATION_MODAL}
+      name={modalName}
       title="Are you sure?"
       maxContainerWidth={350}
       zIndex="101"
@@ -34,7 +36,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       )}
       <Flex justifyContent="flex-end">
         <OkCancelButtons
-          onCancel={() => closeModal(modalNames.CONFIRMATION_MODAL)}
+          onCancel={() => closeModal(modalName)}
           onOk={confirmationAction}
           okText="confirm"
         />

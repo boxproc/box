@@ -18,6 +18,8 @@ interface EditUserModalProps {
   selectUserItems: any;
 }
 
+const modalName = modalNames.EDIT_ADMIN_USER;
+
 const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
   updateAdminUser,
@@ -26,11 +28,11 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
 }) => {
   return (
     <Modal
-      name={modalNames.EDIT_ADMIN_USER}
+      name={modalName}
       title="Edit User"
     >
       <AddUserForm
-        onCancel={() => closeModal(modalNames.EDIT_ADMIN_USER)}
+        onCancel={() => closeModal(modalName)}
         defineAdminUser={updateAdminUser}
         isDisabledUsername={true}
         initialValues={selectUserItems}
