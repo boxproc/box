@@ -3,7 +3,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import EditAccountModal from './EditAccountModal';
 
-import { closeModal } from 'store/domains';
+import { closeModal, selectLedgerCurrentAccountAlias } from 'store/domains';
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  ledgerCurrentAccountAlias: selectLedgerCurrentAccountAlias(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -13,6 +18,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(EditAccountModal);

@@ -12,7 +12,7 @@ import {
 
 import {
   LedgerAccountItem,
-  LedgerAccountItemPrepared,
+  LedgerAccountItemDetailsPrepared,
   LedgerAccountsFilterParams,
   LedgerAccountsFilterParamsPrepared,
 } from './types';
@@ -33,7 +33,7 @@ export type HandleSetLedgerAccountId = (id: number) => void;
 
 export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) =>
   UpdateLedgerAccountAction;
-export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemPrepared>) =>
+export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterLedgerAccounts = (params: Partial<LedgerAccountsFilterParamsPrepared>) =>
