@@ -11,11 +11,14 @@ export enum modalNames {
   EDIT_PRODUCT = 'EditProductModal',
 
   // Customers
-  ADD_LEDGER_CUSTOMER = 'AddLedgerCustomer',
-  EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomer',
+  ADD_LEDGER_CUSTOMER = 'AddLedgerCustomerModal',
+  EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomerModal',
 
   // Accounts
-  EDIT_LEDGER_ACCOUNT = 'EditLedgerAccount',
+  EDIT_LEDGER_ACCOUNT = 'EditLedgerAccountModal',
+
+  // Transactions
+  LEDGER_TRANSACTION = 'LedgerTransactionModal',
 
   // Cycle
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',

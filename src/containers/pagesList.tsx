@@ -18,6 +18,7 @@ import Products from 'containers/ProductDesigner/Products';
 import UserActivities from 'containers/Audit/UserActivity';
 import Accounts from 'containers/Ledger/Accounts';
 import Customers from 'containers/Ledger/Customers';
+import Transactions from './Ledger/Transactions';
 
 export const pagesList = [
   {
@@ -45,6 +46,14 @@ export const pagesList = [
     component: <EventDataElems />,
   },
   {
+    path: uiItemConsts.ADMINISTRATION_USER,
+    component: <Users />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
+    component: <UsersGroup />,
+  },
+  {
     path: uiItemConsts.LEDGER_CUSTOMERS,
     component: <Customers />,
   },
@@ -53,12 +62,8 @@ export const pagesList = [
     component: <Accounts />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_USER,
-    component: <Users />,
-  },
-  {
-    path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
-    component: <UsersGroup />,
+    path: uiItemConsts.LEDGER_TRANSACTIONS,
+    component: <Transactions />,
   },
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITIES,

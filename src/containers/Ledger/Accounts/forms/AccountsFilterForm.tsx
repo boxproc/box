@@ -81,8 +81,8 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
           </Box>
           <Box width="100px" p="10px">
             <Field
-              id="accountId"
-              name="accountId"
+              id="id"
+              name="id"
               component={InputField}
               label="Account ID"
               placeholder="Enter ID"

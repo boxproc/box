@@ -98,10 +98,8 @@ export const handleFilterUsers: HandleFilterUsers = params =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        console.log('params', params);
-
         const preparedValues = prepareUsersFiltersParamsToSend(params);
-        console.log('preparedValues', preparedValues);
+
         await dispatch(filterUsers(preparedValues));
       },
       dispatch

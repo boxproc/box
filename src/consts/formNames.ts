@@ -31,7 +31,7 @@ export enum formNames {
   PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCounters',
   PRODUCT_APRS = 'productAPRs',
 
-  // User  and User Groups
+  // User and User Groups
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
   EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
@@ -52,4 +52,8 @@ export enum formNames {
 
   // UserActivities
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
+
+  // Transaction
+  LEDGER_TRANSACTIONS_FILTER = 'ledgerTransactionsFilter',
+  LEDGER_TRANSACTIONS = 'ledgerTransactions',
 }

@@ -18,6 +18,7 @@ import { stringsUtil } from 'utils';
 interface TableItemWrapperProps {
   color?: string;
   textRight?: boolean;
+  isDate?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
@@ -27,12 +28,13 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   display: flex;
   align-items: flex-start;
   overflow: hidden;
-  font-size: 13px;
+  font-size: ${({ isDate, theme }) => isDate ? '12px' : '13px'};
   line-height: 1.5;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
   word-break: break-word;
   border: 1px solid transparent;
+  color: ${({ isDate, theme }) => isDate ? theme.grayColor : 'inherit'};
 
   .title {
     color: ${({ theme }) => theme.blackColorOpacity8};
@@ -123,6 +125,7 @@ interface CellProps {
   onBlur?: any;
   onKeyUp?: (e: React.KeyboardEvent) => void;
   hint?: string;
+  isDate?: boolean;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -133,6 +136,7 @@ export const Cell: React.FC<CellProps> = ({
   onBlur,
   onKeyUp,
   hint,
+  isDate = false,
 }) => (
     <TableItemWrapper
       style={style}
@@ -141,8 +145,14 @@ export const Cell: React.FC<CellProps> = ({
       suppressContentEditableWarning={suppressContentEditableWarning}
       onBlur={onBlur}
       onKeyUp={onKeyUp}
+      isDate={isDate}
     >
-      <div title={hint}>{value}</div>
+      <div title={hint}>{
+        value
+        // isDate
+        // ? moment('2019-07-29T14:55:12Z').format('MMMM Do YYYY, h:mm:ss a')
+        // : value
+      }</div>
     </TableItemWrapper>
   );
 
@@ -183,7 +193,7 @@ export const Table: React.FC<TableProps> = props => {
             isHeader && data && data.length > 0
               ? ReactTableDefaults.TheadComponent
               : () => null
-            }
+          }
         />
       </TableStyled>
     </React.Fragment>

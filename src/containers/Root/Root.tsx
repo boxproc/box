@@ -13,7 +13,7 @@ import Header from 'containers/Header';
 import Login from 'containers/Login';
 
 import Modals from 'containers/Modals';
-import { pagesList } from './pagesList';
+import { pagesList } from 'containers/pagesList';
 
 import { cookiesUtil } from 'utils';
 

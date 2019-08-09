@@ -1,8 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { theme } from 'theme';
-
 import { Cell, Header } from 'components/Table/Table';
 
 import { withSpinner } from 'components/Spinner';
@@ -126,7 +124,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: (props: SPCell<'lastDatetime'>) => (
         <Cell
           value={props.value}
-          style={{ color: theme.grayColor }}
+          isDate={true}
         />
       ),
     },

@@ -1,8 +1,6 @@
 import React from 'react';
 import { RowInfo } from 'react-table';
 
-import { theme } from 'theme';
-
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header } from 'components/Table';
 import TablePage from 'components/TablePage';
@@ -144,7 +142,7 @@ export const User: React.FC<UserFilterProps> = ({
       Cell: (props: SCell<'datetimeOfLastLogin'>) => (
         <Cell
           value={props.value}
-          style={{ color: theme.grayColor }}
+          isDate={true}
         />
       ),
     },

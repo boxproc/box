@@ -112,6 +112,7 @@ export interface LedgerAccountsFilterParams extends LedgerAccountId {
   customerLastName: string;
   productType: Array<SelectValues>;
   accountAlias: string;
+  id: number;
 }
 
 export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
@@ -120,6 +121,7 @@ export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
   customer_last_name: string;
   product_type: Array<string | number>;
   account_alias: string;
+  id: number;
 }
 
 export interface LedgerAccountsState {

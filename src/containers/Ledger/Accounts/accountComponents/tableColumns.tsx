@@ -2,26 +2,12 @@ import React from 'react';
 
 import { Cell, Header } from 'components/Table';
 
+import { LedgerAccountItemPrepared } from 'store/domains';
+
 import { TableCell } from 'types';
 
-interface LedgerAccountItem {
-  id: string;
-  institutionId: number;
-  accountAlias: string;
-  customerId: number;
-  customerFirstName: string;
-  customerLastName: string;
-  productType: string;
-  status: string;
-  balanceSettled: number;
-  balanceAvailable: number;
-  amountDueRepayment: number;
-  balanceLimit: number;
-  balanceLimitShared: number;
-  accruedInterest: number;
-}
-
-type ACell<T extends keyof LedgerAccountItem> = TableCell<LedgerAccountItem[T]>;
+type ACell<T extends keyof LedgerAccountItemPrepared> =
+  TableCell<LedgerAccountItemPrepared[T]>;
 
 export const tableColumns = [
   {

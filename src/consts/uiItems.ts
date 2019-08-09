@@ -1,7 +1,4 @@
 export enum uiItemConsts {
-  LEDGER_CUSTOMERS = 'ledger/customers',
-  LEDGER_ACCOUNTS = 'ledger/accounts',
-
   AUDIT_USER_ACTIVITIES = 'audit/users_activity',
 
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
@@ -14,6 +11,10 @@ export enum uiItemConsts {
   ADMINISTRATION_CYCLE_EDITOR = 'administration/cycles/cycles_editor',
   ADMINISTRATION_USER = 'administration/permissions/users',
   ADMINISTRATION_USERS_GROUP = 'administration/permissions/user_groups',
+
+  LEDGER_CUSTOMERS = 'ledger/customers',
+  LEDGER_ACCOUNTS = 'ledger/accounts',
+  LEDGER_TRANSACTIONS = 'ledger/transactions',
 
   PRODUCTS = 'product_designer/products',
 }

@@ -32,6 +32,8 @@ import EditCustomerModal from 'containers/Ledger/Customers/editCustomer/EditCust
 
 import EditAccountModal from 'containers/Ledger/Accounts/editAccount/EditAccountModal';
 
+import TransactionModal from 'containers/Ledger/Transactions/TransactionModal';
+
 export const modalsList = [
   {
     name: modalNames.MESSAGE_MODAL,
@@ -96,5 +98,9 @@ export const modalsList = [
   {
     name: modalNames.EDIT_LEDGER_ACCOUNT,
     component: <EditAccountModal />,
+  },
+  {
+    name: modalNames.LEDGER_TRANSACTION,
+    component: <TransactionModal />,
   },
 ];

@@ -123,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({
               />
             )}
           </Flex>
-          <Box>
+          <Box ml="50px">
             <Flex alignItems="center">
               {institution && (
                 <Box mr="15px">

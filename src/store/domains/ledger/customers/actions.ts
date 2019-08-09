@@ -1,4 +1,4 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { cookiesNames, formNames, modalNames } from 'consts';
 
@@ -15,13 +15,13 @@ import {
   GetLedgerCustomersAction,
   UpdateLedgerCustomerAction,
 } from './actionTypes';
-
 import {
   LedgerCustomerItem,
-  LedgerCustomerItemPrepared,
+  LedgerCustomerItemDetailsPrepared,
   LedgerCustomersFilterParams,
   LedgerCustomersFilterParamsPrepared,
 } from './types';
+import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
 import { apiClient } from 'services';
 
@@ -40,12 +40,12 @@ export type HandleDeleteLedgerCustomer = (id: number) => Thunk<void>;
 
 export type AddLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
   AddLedgerCustomerAction;
-export type HandleAddLedgerCustomer = (values: Partial<LedgerCustomerItemPrepared>) =>
+export type HandleAddLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type UpdateLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
   UpdateLedgerCustomerAction;
-export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemPrepared>) =>
+export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterParamsPrepared>) =>
@@ -86,13 +86,21 @@ export const filterLedgerCustomers: FilterLedgerCustomers = filterParams => ({
 });
 
 export const handleGetLedgerCustomers: HandleGetLedgerCustomers = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
         apiClient.set('session_id', sessionId);
 
-        await dispatch(getLedgerCustomers());
+        const formValues = getFormValues(formNames.LEDGER_CUSTOMERS_FILTER);
+        const state = getState();
+
+        if (formValues(state)) {
+          const preparedValues = preparedFilterParamsToSend(formValues(state));
+          await dispatch(filterLedgerCustomers(preparedValues));
+        } else {
+          await dispatch(getLedgerCustomers());
+        }
       },
       dispatch
     );
@@ -117,7 +125,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = values;
+        const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerCustomer(preparedValues));
         await dispatch(closeModal(modalNames.ADD_LEDGER_CUSTOMER));
@@ -132,7 +140,7 @@ export const handleUpdateLedgerCustomer: HandleUpdateLedgerCustomer = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = values;
+        const preparedValues = preparedValuesToSend(values);
 
         await dispatch(updateLedgerCustomers(preparedValues));
         await dispatch(handleGetLedgerCustomers());
@@ -145,7 +153,7 @@ export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = params =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = params;
+        const preparedValues = preparedFilterParamsToSend(params);
 
         await dispatch(filterLedgerCustomers(preparedValues));
       },

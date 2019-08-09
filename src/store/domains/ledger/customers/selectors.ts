@@ -2,9 +2,8 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { customerStatusTypesOptions } from 'consts';
-
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
   state.ledger.ledgerCustomers.customers;
@@ -14,24 +13,8 @@ export const selectLedgerCustomers = createSelector(
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
     return {
-      id: item.id,
+      ...prepareValuesToRender(item),
       institutionId: institutions.find(el => el.value === item.institution_id).label,
-      firstName: item.first_name,
-      lastName: item.last_name,
-      status: customerStatusTypesOptions.find(el => el.value === item.status).label,
-      dateOfBirth: item.date_of_birth,
-      email: item.email,
-      mobilePhoneNumber: item.mobile_phone_number,
-      addressLine1: item.address_line_1,
-      addressLine2: item.address_line_2,
-      addressLine3: item.address_line_3,
-      addressLine4: item.address_line_4,
-      addressTown: item.address_town,
-      addressPostCode: item.address_post_code,
-      addressCountryCode: item.address_country_code,
-      nationalityCountryCode: item.nationality_country_code,
-      dateCreated: item.date_created,
-      dateClosed: item.date_closed,
     };
   })
 );
@@ -46,9 +29,8 @@ export const selectLedgerCurrentCustomer = createSelector(
   (customers, currentId, institutions) => {
     const current = customers.filter(el => el.id === currentId)[0];
     return {
-      ...current,
+      ...preparedValuesDetailsToRender(current),
       institutionId: institutions.find(el => el.value === currentId),
-      status: customerStatusTypesOptions.find(el => el.label === current.status),
     };
   }
 );

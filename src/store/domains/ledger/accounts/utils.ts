@@ -11,14 +11,22 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerAccountsFilterP
     return null;
   }
 
-  const { institutionId, customerFirstName, customerLastName, accountAlias, productType } = params;
+  const {
+    id,
+    institutionId,
+    customerFirstName,
+    customerLastName,
+    accountAlias,
+    productType,
+  } = params;
 
   return {
-    institution_id: institutionId ? institutionId.value : null,
-    customer_first_name: customerFirstName ? customerFirstName : null,
-    customer_last_name: customerLastName ? customerLastName : null,
-    product_type: productType && productType.length ? productType.map(type => type.value) : null,
-    account_alias: accountAlias ? accountAlias : null,
+    institution_id: institutionId && Number(institutionId.value),
+    customer_first_name: customerFirstName,
+    customer_last_name: customerLastName,
+    product_type: productType && productType.length && productType.map(type => type.value),
+    account_alias: accountAlias,
+    id: id && Number(id),
   };
 };
 

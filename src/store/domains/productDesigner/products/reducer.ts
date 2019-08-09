@@ -10,7 +10,6 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductDetails: null,
   currentProductRules: Immutable([]),
   currentRulesCode: null,
-
   filterProductsParams: null,
 });
 
