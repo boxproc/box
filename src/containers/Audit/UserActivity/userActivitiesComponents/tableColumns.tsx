@@ -21,6 +21,19 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
+    sortable: true,
+    filterable: true,
+    Header: <Header title="User Name" showSortIcons={true} />,
+    accessor: 'username',
+    Cell: (props: ACell<'username'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 180,
     sortable: true,
     filterable: true,
     Header: <Header title="Event Date Time" showSortIcons={true} />,
@@ -32,6 +45,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     filterable: true,
     Header: <Header title="Api Name" showSortIcons={true} />,

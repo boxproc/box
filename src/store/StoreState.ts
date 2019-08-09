@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { FormStateMap } from 'redux-form';
 
 import { AdministrationState } from './domains/administration/';
-import { AuditUserActivitiesState } from './domains/audit/userActivity';
+import { AuditState } from './domains/audit';
 import { AuthState } from './domains/auth';
 import { ConstsState } from './domains/consts';
 import { LedgerState } from './domains/ledger';
@@ -17,7 +17,7 @@ export interface StoreState {
   router: RouterState;
   loader: LoaderState;
   uiItems: UiItemsState;
-  userActivities: AuditUserActivitiesState;
+  audit: AuditState;
   modals: ModalsState;
   administration: AdministrationState;
   auth: AuthState;

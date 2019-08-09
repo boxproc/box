@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType } from 'types';
+import { ResponseStatusType, SelectValues } from 'types';
 
 export interface AuditUserActivitiesItemResp {
     id: number;
@@ -8,7 +8,9 @@ export interface AuditUserActivitiesItemResp {
     description: string;
     event_datetime: string;
     institution_id: number;
-    username: string;
+    username: string | number;
+    first_name: string;
+    last_name: string;
 }
 
 export interface AuditUserActivitiesItem {
@@ -18,7 +20,24 @@ export interface AuditUserActivitiesItem {
     apiName: string;
     eventDatetime: string;
     description: string;
-    username: string;
+    username: string | number;
+    firstName: string;
+    lastName: string;
+
+}
+
+export interface AuditUserActivitiesFilter {
+    institutionId: SelectValues;
+    username: SelectValues;
+    datetimeFrom: string;
+    datetimeTo: string;
+}
+
+export interface AuditUserActivitiesFilterPrepared {
+    institution_id: string | number;
+    username: string | number;
+    datetime_from: string;
+    datetime_to: string;
 }
 
 export interface AuditUserActivitySelectInstitution {
@@ -26,7 +45,13 @@ export interface AuditUserActivitySelectInstitution {
 }
 export interface AuditUserActivitySelectInstitutionResponse {
     id: number;
-    username: string;
+    username: string | number;
+    first_name: string;
+    last_name: string;
+}
+
+export interface AuditUsersDataResp extends ResponseStatusType {
+    users_activity: Array<AuditUserActivitySelectInstitutionResponse>;
 }
 
 export interface AuditUserActivitiesDataResp extends ResponseStatusType {
@@ -34,5 +59,6 @@ export interface AuditUserActivitiesDataResp extends ResponseStatusType {
 }
 
 export interface AuditUserActivitiesState {
-    users_activity: ImmutableArray<AuditUserActivitiesItemResp>;
+    users_activity: ImmutableArray<AuditUserActivitySelectInstitutionResponse>;
+    filtered_users: ImmutableArray<AuditUserActivitiesItemResp>;
 }

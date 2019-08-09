@@ -4,15 +4,21 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons';
-import { CalendarField, SelectField } from 'components/Form';
+import { InputField, SelectField } from 'components/Form';
 
 import { formNames, } from 'consts';
 
+import { HandleFilterAuditUserActivities, HandleGetAuditUsers } from 'store/domains';
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface UserActivitiesFilterFormProps {
   institutionsOptions: Array<SelectValues>;
-  // filterLedgerAccounts: HandleFilterLedgerAccounts;
+  getAuditUsers?: HandleGetAuditUsers;
+  currentInstitution: SelectValues;
+  auditUsersOptions: Array<SelectValues>;
+  isLoadingUsers: boolean;
+  filterAuditUserActivities: HandleFilterAuditUserActivities;
 }
 
 type UserActivitiesFilterFormAllProps = UserActivitiesFilterFormProps &
@@ -20,12 +26,26 @@ type UserActivitiesFilterFormAllProps = UserActivitiesFilterFormProps &
 
 const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
   handleSubmit,
+  filterAuditUserActivities,
+  auditUsersOptions,
   institutionsOptions,
- // filterLedgerAccounts,
+  getAuditUsers,
+  currentInstitution,
+  isLoadingUsers,
 }) => {
+  const currentInstitutionId = currentInstitution && currentInstitution.value;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log()),
-    [handleSubmit]
+    handleSubmit(data => filterAuditUserActivities(data)),
+    [handleSubmit, filterAuditUserActivities ]
+  );
+
+  React.useEffect(
+    () => {
+       if (currentInstitutionId) {
+        getAuditUsers(currentInstitutionId);
+       }
+    },
+    [getAuditUsers, currentInstitutionId]
   );
 
   return (
@@ -43,6 +63,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
+              validate={[formErrorUtil.required]}
               isDisabled={false}
               isClearable={false}
             />
@@ -52,10 +73,12 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               id="username"
               name="username"
               component={SelectField}
-              label="Username"
+              label="User Name"
+              options={auditUsersOptions}
               placeholder="Select Username"
+              validate={[formErrorUtil.required]}
               isDisabled={false}
-              isMulti={true}
+              isLoading={isLoadingUsers}
             />
           </Box>
           <Box width="175px" p="10px" >
@@ -63,7 +86,8 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               id="datetimeFrom"
               name="datetimeFrom"
               placeholder="dd/mm/yyyy"
-              component={CalendarField}
+              validate={[formErrorUtil.required]}
+              component={InputField}
               label="Date From"
               isDisabled={false}
             />
@@ -73,7 +97,8 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               id="datetimeTo"
               name="datetimeTo"
               placeholder="dd/mm/yyyy"
-              component={CalendarField}
+              component={InputField}
+              validate={[formErrorUtil.required]}
               label="Date To"
               isDisabled={false}
             />

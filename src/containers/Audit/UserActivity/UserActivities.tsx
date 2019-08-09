@@ -7,15 +7,18 @@ import { } from 'containers/Audit/UserActivity/forms';
 
 import { tableColumns } from './userActivitiesComponents';
 
+import { AuditUserActivitiesItem } from 'store/domains';
 import { SelectValues } from 'types';
 import UserActivitiesFilterForm from './forms/UserActivitiesFilterForm';
 
 export interface UserActivityProps {
   institutionsOptions: Array<SelectValues>;
+  auditUserActivities: Array<AuditUserActivitiesItem>;
 }
 
 const UserActivities: React.FC<UserActivityProps> = ({
   institutionsOptions,
+  auditUserActivities,
 }) => {
   React.useEffect(
     () => {
@@ -27,11 +30,10 @@ const UserActivities: React.FC<UserActivityProps> = ({
   return (
     <TablePage
       title="User Activities"
-      // data={ledgerAccounts}
+      data={auditUserActivities}
       columns={tableColumns}
       FilterForm={
         <UserActivitiesFilterForm
-          // filterLedgerAccounts={filterLedgerAccounts}
           institutionsOptions={institutionsOptions}
           initialValues={{
             institutionId: institutionsOptions[0],
