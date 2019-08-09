@@ -9,6 +9,7 @@ import { tableColumns } from './userActivitiesComponents';
 
 import { AuditUserActivitiesItem } from 'store/domains';
 import { SelectValues } from 'types';
+import { dateUtil } from 'utils';
 import UserActivitiesFilterForm from './forms/UserActivitiesFilterForm';
 
 export interface UserActivityProps {
@@ -20,13 +21,6 @@ const UserActivities: React.FC<UserActivityProps> = ({
   institutionsOptions,
   auditUserActivities,
 }) => {
-  React.useEffect(
-    () => {
-      console.log();
-    },
-    []
-  );
-
   return (
     <TablePage
       title="User Activities"
@@ -37,6 +31,8 @@ const UserActivities: React.FC<UserActivityProps> = ({
           institutionsOptions={institutionsOptions}
           initialValues={{
             institutionId: institutionsOptions[0],
+            datetimeFrom: dateUtil.yesterday,
+            datetimeTo: dateUtil.today,
           }}
         />
       }

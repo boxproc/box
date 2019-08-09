@@ -4,9 +4,9 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons';
-import { InputField, SelectField } from 'components/Form';
+import { MaskField, SelectField } from 'components/Form';
 
-import { formNames, } from 'consts';
+import { dateFormat, formNames, maskFormat, } from 'consts';
 
 import { HandleFilterAuditUserActivities, HandleGetAuditUsers } from 'store/domains';
 import { SelectValues } from 'types';
@@ -19,6 +19,7 @@ interface UserActivitiesFilterFormProps {
   auditUsersOptions: Array<SelectValues>;
   isLoadingUsers: boolean;
   filterAuditUserActivities: HandleFilterAuditUserActivities;
+  isDirty: boolean;
 }
 
 type UserActivitiesFilterFormAllProps = UserActivitiesFilterFormProps &
@@ -81,25 +82,29 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               isLoading={isLoadingUsers}
             />
           </Box>
-          <Box width="175px" p="10px" >
+          <Box width="190px" p="10px" >
             <Field
               id="datetimeFrom"
               name="datetimeFrom"
-              placeholder="dd/mm/yyyy"
               validate={[formErrorUtil.required]}
-              component={InputField}
+              component={MaskField}
               label="Date From"
+              placeholder={dateFormat.DATE_TIME_FORMAT}
+              mask={maskFormat.DATE_TIME}
+              maskChar={null}
               isDisabled={false}
             />
           </Box>
-          <Box width="175px" p="10px" >
+          <Box width="190px" p="10px" >
             <Field
               id="datetimeTo"
               name="datetimeTo"
-              placeholder="dd/mm/yyyy"
-              component={InputField}
+              component={MaskField}
               validate={[formErrorUtil.required]}
               label="Date To"
+              placeholder={dateFormat.DATE_TIME_FORMAT}
+              mask={maskFormat.DATE_TIME}
+              maskChar={null}
               isDisabled={false}
             />
           </Box>
