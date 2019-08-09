@@ -36,6 +36,7 @@ const Transactions: React.FC<TransactionsProps> = ({
   ledgerTransactions,
   setLedgerTransactionId,
   filterLedgerTransactions,
+  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -66,7 +67,9 @@ const Transactions: React.FC<TransactionsProps> = ({
       FilterForm={
         <TransactionsFilterForm
           filterLedgerTransactions={filterLedgerTransactions}
+          institutionsOptions={institutionsOptions}
           initialValues={{
+            institutionId: institutionsOptions[0],
             datetimeFrom: dateUtil.yesterday,
             datetimeTo: dateUtil.today,
           }}

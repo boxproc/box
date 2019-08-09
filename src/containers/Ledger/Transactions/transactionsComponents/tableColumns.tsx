@@ -124,15 +124,4 @@ export const tableColumns = [
       />
     ),
   },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Card Acceptor Location" showSortIcons={true} />,
-    accessor: 'cardAcceptorLocation',
-    Cell: (props: TCell<'cardAcceptorLocation'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
 ];

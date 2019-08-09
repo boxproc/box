@@ -31,14 +31,12 @@ const TabTitle = styled.div<TabTitleProps>`
   }
 
   &.is-active {
-    color: ${({ theme }) => theme.darkGrayColor};
-    border-bottom-color: ${({ theme }) => theme.darkGrayColor};
+    color: ${({ theme }) => theme.normalAccentColor};
+    border-bottom-color: ${({ theme }) => theme.lightAccentColor};
   }
 `;
 
-interface TabsProps { }
-
-export const Tabs: React.FC<TabsProps> = ({
+export const Tabs: React.FC = ({
   children,
 }) => {
   const [activeTabIndex, setActiveTabIndex] = React.useState(0);

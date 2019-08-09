@@ -18,10 +18,10 @@ export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   last_name: string;
   date_of_birth: string;
   mobile_phone_number: string;
-  address_line_1: string;
-  address_line_2: string;
-  address_line_3: string;
-  address_line_4: string;
+  address_line1: string;
+  address_line2: string;
+  address_line3: string;
+  address_line4: string;
   address_town: string;
   address_post_code: string;
   address_country_code: string;

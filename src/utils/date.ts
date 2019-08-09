@@ -1,9 +1,21 @@
 import moment from 'moment';
 
-import { DateFormat } from 'consts';
+import { dateFormat as dateFormatConst } from 'consts';
 
-export const today = moment().format(DateFormat.FORMAT);
-export const yesterday = moment().subtract(1, 'day').format(DateFormat.FORMAT);
+export const today = moment().format(dateFormatConst.DATE_TIME_FORMAT);
+export const yesterday = moment().subtract(1, 'day').format(dateFormatConst.DATE_TIME_FORMAT);
+
+export const toMomentObject = (date: string, lng: string = 'en-GB') => {
+  let dateObj;
+  moment.locale(lng);
+  if (date && date.length > 0) {
+    dateObj = moment(date);
+    if (dateObj.isValid() === false) {
+      dateObj = moment(date, dateFormatConst.DATE_TIME_FORMAT, lng);
+    }
+  }
+  return dateObj && dateObj.isValid() ? dateObj : undefined;
+};
 
 const toValidDate = (value: string, result: string) =>
   result === 'Invalid Date' ? value : result;
@@ -21,7 +33,7 @@ export const toFormattedDateTime = (value: string) =>
   );
 
 export const toFormattedCalendarDate =
-  (date: string, dateFormat: string = DateFormat.FORMAT, lng: string = 'en-GB') => {
+  (date: string, dateFormat: string = dateFormatConst.FORMAT, lng: string = 'en-GB') => {
     moment.locale(lng);
 
     const momentObj = moment(new Date(date), dateFormat, lng);

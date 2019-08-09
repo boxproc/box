@@ -7,7 +7,7 @@ import { CalendarField, InputField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
 
 import {
-  DateFormat,
+  dateFormat,
   productTypesOptions,
   statementCyclesOptions,
   statusTypesOptions,
@@ -198,7 +198,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="lastCycleDate"
             component={CalendarField}
             label="Last Cycle Date"
-            placeholder={DateFormat.FORMAT}
+            placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>
@@ -209,7 +209,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="dateCreated"
             component={CalendarField}
             label="Date Created"
-            placeholder={DateFormat.FORMAT}
+            placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>
@@ -219,7 +219,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="dateClosed"
             component={CalendarField}
             label="Date Closed"
-            placeholder={DateFormat.FORMAT}
+            placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>

@@ -1,5 +1,3 @@
-import { debitCreditIndicatorOptions } from 'consts';
-
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
@@ -17,71 +15,27 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     accountId: values.account_id,
     transactionDatetime: values.transaction_datetime,
     transactionTypeId: values.transaction_type_id,
-    debitCreditIndicator:
-      debitCreditIndicatorOptions.find(el => el.value === values.debit_credit_indicator)
-        ? debitCreditIndicatorOptions.find(el => el.value === values.debit_credit_indicator).label
-        : values.debit_credit_indicator,
-    amount: values.amount,
-    amountInOriginalCurrency: values.amount_in_original_currency,
-    balanceSettledBefore: values.balance_settled_before,
-    balanceSettledAfter: values.balance_settled_after,
-    balanceAvailableBefore: values.balance_available_before,
-    balanceAvailableAfter: values.balance_available_after,
+    debitCreditIndicator: values.debit_credit_indicator,
+    amount: values.amount && values.amount.toFixed(2),
+    amountInOriginalCurrency: values.amount_in_original_currency
+      && values.amount_in_original_currency.toFixed(2),
+    balanceSettledBefore: values.balance_settled_before
+    && values.balance_settled_before.toFixed(2),
+    balanceSettledAfter: values.balance_settled_after
+    && values.balance_settled_after.toFixed(2),
+    balanceAvailableBefore: values.balance_available_before
+    && values.balance_available_before.toFixed(2),
+    balanceAvailableAfter: values.balance_available_after
+    && values.balance_available_after.toFixed(2),
     description: values.description,
     originalCurrency: values.original_currency,
     cardTransactionId: values.card_transaction_id,
     cardId: values.card_id,
     cardCurrency: values.card_currency,
-    cardAmount: values.card_amount,
-    cardConversionRate: values.card_conversion_rate,
+    cardAmount: values.card_amount && values.card_amount.toFixed(2),
+    cardConversionRate: values.card_conversion_rate && values.card_conversion_rate.toFixed(2),
     cardAcceptorName: values.card_acceptor_name,
     cardAcceptorLocation: values.card_acceptor_location,
-  };
-};
-
-export const prepareGeneralValuesToRender = (values: Partial<LedgerTransactionItemPrepared>) => {
-  if (!values) {
-    return null;
-  }
-
-  return {
-    id: values.id,
-    amount: values.amount,
-    description: values.description,
-    accountId: values.accountId,
-    transactionDatetime: values.transactionDatetime,
-    transactionTypeId: values.transactionTypeId,
-    debitCreditIndicator: values.debitCreditIndicator,
-    amountInOriginalCurrency: values.amountInOriginalCurrency,
-  };
-};
-
-export const prepareCardValuesToRender = (values: Partial<LedgerTransactionItemPrepared>) => {
-  if (!values) {
-    return null;
-  }
-
-  return {
-    cardTransactionId: values.cardTransactionId,
-    cardId: values.cardId,
-    cardCurrency: values.cardCurrency,
-    cardAmount: values.cardAmount,
-    cardConversionRate: values.cardConversionRate,
-    cardAcceptorName: values.cardAcceptorName,
-    cardAcceptorLocation: values.cardAcceptorLocation,
-  };
-};
-
-export const prepareBalanceValuesToRender = (values: Partial<LedgerTransactionItemPrepared>) => {
-  if (!values) {
-    return null;
-  }
-
-  return {
-    balanceSettledBefore: values.balanceSettledBefore,
-    balanceSettledAfter: values.balanceSettledAfter,
-    balanceAvailableBefore: values.balanceAvailableBefore,
-    balanceAvailableAfter: values.balanceAvailableAfter,
   };
 };
 
@@ -90,10 +44,18 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFil
     return null;
   }
 
-  const { id, customerId, productType, datetimeFrom, datetimeTo } = params;
+  const {
+    id,
+    institutionId,
+    customerId,
+    productType,
+    datetimeFrom,
+    datetimeTo,
+  } = params;
 
   return {
     id: id && Number(id),
+    institution_id: institutionId && institutionId.value,
     customer_id: customerId && Number(customerId),
     product_type: productType && productType.value,
     datetime_from: datetimeFrom,

@@ -6,11 +6,11 @@ export interface LedgerTransactionId {
 }
 
 export interface LedgerTransactionPlainInfo extends LedgerTransactionId {
-  amount: number;
   description: string;
 }
 
 export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
+  amount: number;
   account_id: number;
   transaction_datetime: string;
   transaction_type_id: number;
@@ -35,26 +35,28 @@ export interface LedgerTransactionItems extends ResponseStatusType {
 }
 
 export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInfo {
+  amount: string;
   accountId: number;
   transactionDatetime: string;
   transactionTypeId: number;
   debitCreditIndicator: string;
-  amountInOriginalCurrency: number;
-  balanceSettledBefore: number;
-  balanceSettledAfter: number;
-  balanceAvailableBefore: number;
-  balanceAvailableAfter: number;
+  amountInOriginalCurrency: string;
+  balanceSettledBefore: string;
+  balanceSettledAfter: string;
+  balanceAvailableBefore: string;
+  balanceAvailableAfter: string;
   originalCurrency: string;
   cardTransactionId: string;
   cardId: number;
   cardCurrency: string;
-  cardAmount: number;
-  cardConversionRate: number;
+  cardAmount: string;
+  cardConversionRate: string;
   cardAcceptorName: string;
   cardAcceptorLocation: string;
 }
 
 export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
+  institutionId: SelectValues;
   customerId: number;
   productType: SelectValues;
   datetimeFrom: string;
@@ -62,6 +64,7 @@ export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
 }
 
 export interface LedgerTransactionsFilterParamsPrepared extends LedgerTransactionId {
+  institution_id: string | number;
   customer_id: number;
   product_type: string | number;
   datetime_from: string;

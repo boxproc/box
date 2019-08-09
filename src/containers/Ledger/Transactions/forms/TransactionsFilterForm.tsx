@@ -4,14 +4,17 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons';
-import { CalendarField, InputField, SelectField } from 'components/Form';
+import { InputField, MaskField, SelectField } from 'components/Form';
 
-import { DateFormat, formNames, productTypesOptions } from 'consts';
+import { dateFormat, formNames, maskFormat, productTypesOptions } from 'consts';
 
 import { HandleFilterLedgerTransactions } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface TransactionsFilterFormProps {
   filterLedgerTransactions: HandleFilterLedgerTransactions;
+  institutionsOptions: Array<SelectValues>;
 }
 
 type TransactionsFilterFormAllProps = TransactionsFilterFormProps &
@@ -20,6 +23,7 @@ type TransactionsFilterFormAllProps = TransactionsFilterFormProps &
 const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
   handleSubmit,
   filterLedgerTransactions,
+  institutionsOptions,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterLedgerTransactions(data)),
@@ -28,11 +32,34 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 1, 990]} mx="-10px">
+      <Box width={[1, 1, 1, 1, 700]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
+          <Box width={[1, 1 / 2]} p="10px">
+            <Field
+              id="institutionId"
+              name="institutionId"
+              component={SelectField}
+              label="Institution"
+              placeholder="Select Institution"
+              options={institutionsOptions}
+              isDisabled={false}
+              isClearable={false}
+            />
+          </Box>
+          <Box width={[1, 1 / 2]} p="10px">
+            <Field
+              id="productType"
+              name="productType"
+              component={SelectField}
+              label="Product"
+              placeholder="Select Product Type"
+              options={productTypesOptions}
+              isDisabled={false}
+            />
+          </Box>
           <Box width="100px" p="10px">
             <Field
               id="id"
@@ -53,33 +80,26 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 3]} p="10px">
-            <Field
-              id="productType"
-              name="productType"
-              component={SelectField}
-              label="Product Type"
-              placeholder="Select Product Type"
-              options={productTypesOptions}
-              isDisabled={false}
-            />
-          </Box>
-          <Box width="175px" p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="datetimeFrom"
               name="datetimeFrom"
-              component={CalendarField}
+              component={MaskField}
               label="Date From"
-              placeholder={DateFormat.FORMAT}
+              placeholder={dateFormat.DATE_TIME_FORMAT}
+              mask={maskFormat.DATE_TIME}
+              maskChar={null}
             />
           </Box>
-          <Box width="175px" p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="datetimeTo"
               name="datetimeTo"
-              component={CalendarField}
+              component={MaskField}
               label="Date To"
-              placeholder={DateFormat.FORMAT}
+              placeholder={dateFormat.DATE_TIME_FORMAT}
+              mask={maskFormat.DATE_TIME}
+              maskChar={null}
             />
           </Box>
         </Flex>

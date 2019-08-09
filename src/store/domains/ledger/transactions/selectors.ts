@@ -3,9 +3,6 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 import {
-  prepareBalanceValuesToRender,
-  prepareCardValuesToRender,
-  prepareGeneralValuesToRender,
   prepareValuesToRender,
 } from './utils';
 
@@ -27,19 +24,4 @@ export const selectLedgerCurrentTransaction = createSelector(
     const current = transaction.filter(el => el.id === currentId)[0];
     return current;
   }
-);
-
-export const selectLedgerCurrentTransactionGeneral = createSelector(
-  selectLedgerCurrentTransaction,
-  transaction => prepareGeneralValuesToRender(transaction)
-);
-
-export const selectLedgerCurrentTransactionCard = createSelector(
-  selectLedgerCurrentTransaction,
-  transaction => prepareCardValuesToRender(transaction)
-);
-
-export const selectLedgerCurrentTransactionBalance = createSelector(
-  selectLedgerCurrentTransaction,
-  transaction => prepareBalanceValuesToRender(transaction)
 );

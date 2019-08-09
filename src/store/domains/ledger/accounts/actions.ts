@@ -1,4 +1,6 @@
-import { cookiesNames } from 'consts';
+import { getFormValues } from 'redux-form';
+
+import { cookiesNames, formNames } from 'consts';
 
 import * as api from './api';
 
@@ -63,13 +65,21 @@ export const filterLedgerAccounts: FilterLedgerAccounts = filterParams => ({
 });
 
 export const handleGetLedgerAccounts: HandleGetLedgerAccounts = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
         apiClient.set('session_id', sessionId);
 
-        await dispatch(getLedgerAccounts());
+        const formValues = getFormValues(formNames.LEDGER_ACCOUNTS_FILTER);
+        const state = getState();
+
+        if (formValues(state)) {
+          const preparedValues = preparedFilterParamsToSend(formValues(state));
+          await dispatch(filterLedgerAccounts(preparedValues));
+        } else {
+          await dispatch(getLedgerAccounts());
+        }
       },
       dispatch
     );

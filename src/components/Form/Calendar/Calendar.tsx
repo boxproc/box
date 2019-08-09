@@ -12,7 +12,7 @@ import { InputCommonProps } from '../Input';
 
 import { sharedCalendarCss } from './sharedCalendarCss';
 
-import { DateFormat } from 'consts';
+import { dateFormat as dateFormatConst } from 'consts';
 
 import { dateUtil } from 'utils';
 
@@ -78,7 +78,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       invalid,
       disabled,
       locale = 'eng',
-      dateFormat = DateFormat.FORMAT,
+      dateFormat = dateFormatConst.FORMAT,
       input: { value },
       ...props
     } = this.props;
@@ -142,13 +142,13 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
   onChange = (value: string | Moment) => {
     const date = typeof value === 'string'
-      ? value : value.format(DateFormat.FORMAT);
+      ? value : value.format(dateFormatConst.FORMAT);
 
     return this.props.onChange(date);
   }
 
   setCurrentDate = () => {
-    const today = moment().format(DateFormat.FORMAT);
+    const today = moment().format(dateFormatConst.FORMAT);
 
     this.props.onChange(today);
   }

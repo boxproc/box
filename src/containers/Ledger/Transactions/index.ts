@@ -10,6 +10,7 @@ import {
   handleSetLedgerTransactionId,
   LedgerTransactionsActionTypes,
   openModal,
+  selectInstitutionsOptions,
   selectLedgerTransactions,
 } from 'store/domains';
 
@@ -23,6 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerTransactions: selectLedgerTransactions(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

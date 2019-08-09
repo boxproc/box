@@ -18,7 +18,6 @@ import {
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
-  LedgerCustomerItemPrepared,
   LedgerCustomersFilterParams,
   LedgerCustomersFilterParamsPrepared,
 } from './types';
@@ -41,7 +40,7 @@ export type HandleDeleteLedgerCustomer = (id: number) => Thunk<void>;
 
 export type AddLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
   AddLedgerCustomerAction;
-export type HandleAddLedgerCustomer = (values: Partial<LedgerCustomerItemPrepared>) =>
+export type HandleAddLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type UpdateLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
@@ -126,7 +125,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = values;
+        const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerCustomer(preparedValues));
         await dispatch(closeModal(modalNames.ADD_LEDGER_CUSTOMER));
