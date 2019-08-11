@@ -92,7 +92,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Email"
             placeholder="Enter Email"
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.email]}
           />
         </Box>
         <Box width={[3 / 8]} p="10px">

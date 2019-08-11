@@ -41,6 +41,7 @@ export const tableColumns = [
     Cell: (props: ACell<'eventDatetime'>) => (
       <Cell
         value={props.value}
+        isDate={true}
       />
     ),
   },

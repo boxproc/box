@@ -64,6 +64,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="User Last Name"
               disabled={false}
               isDisabled={isDisabledType}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -74,6 +75,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Username"
               placeholder="Enter Username"
               disabled={isDisabledUsername}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -84,9 +86,9 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="User Email"
+              validate={[formErrorUtil.required, formErrorUtil.email]}
             />
           </Box>
-
           <Box width={[1 / 2]} p="10px">
             <Field
               id="status"
@@ -95,7 +97,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypesOptions}
-
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -108,18 +110,20 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="User Password"
               disabled={false}
               isDisabled={isDisabledType}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="passwordHashRepeate"
-              name="passwordHashRepeate"
+              id="passwordHashRepeat"
+              name="passwordHashRepeat"
               placeholder="Repeat Password "
               component={InputField}
               label="Repeat  Password"
               disabled={false}
               type={'password'}
               isDisabled={isDisabledType}
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
