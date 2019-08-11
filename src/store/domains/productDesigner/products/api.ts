@@ -61,8 +61,8 @@ export const updateProduct = (data: ProductItemResp) =>
 
 export const updateProductDetails = (data: ProductItemDetailsResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post('/ui/product_designer/extensions/update', { data });
+  apiClient.post('/ui/product_designer/products/extensions/update', { data });
 
 export const updateProductRules = (data: ProductRulesItemResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post('/ui/product_designer/rules/update', { data });
+  apiClient.post('/ui/product_designer/products/rules/update', { data });
