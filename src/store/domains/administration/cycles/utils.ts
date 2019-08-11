@@ -31,17 +31,23 @@ export const prepareAdminCyclesEditorValuesUnderscore =
     if (isMonthlyCycleFirstDay) {
       return {
         ...prepareGeneral(),
+        fixed_cycle_number_of_days: 0,
+        weekly_cycle_first_day: 0,
         monthly_cycle_first_day: values.monthlyCycleFirstDay && Number(values.monthlyCycleFirstDay),
       };
     } else if (isWeeklyCycleFirstDay) {
       return {
         ...prepareGeneral(),
+        fixed_cycle_number_of_days: 0,
+        monthly_cycle_first_day: 0,
         weekly_cycle_first_day:
           values.weeklyCycleFirstDay && Number(values.weeklyCycleFirstDay.value),
       };
     } else if (isFixedCycleNumberOfDays) {
       return {
         ...prepareGeneral(),
+        monthly_cycle_first_day: 0,
+        weekly_cycle_first_day: 0,
         fixed_cycle_number_of_days:
           values.fixedCycleNumberOfDays && Number(values.fixedCycleNumberOfDays),
       };
