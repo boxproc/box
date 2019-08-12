@@ -13,9 +13,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 50px 20px;
+  padding: 0 20px;
   text-align: center;
-  overflow-y: auto;
+  overflow-y: scroll;
   z-index: ${({zIndex}) => zIndex ? zIndex : 100};
 
   &:after {
@@ -33,7 +33,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   .modal-backdrop {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 17px;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .6);
@@ -42,7 +42,8 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    background-color: ${({ theme }) => theme.whiteColor};
+    margin: 50px 0;
+    background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;
     max-width: ${({ maxContainerWidth }) =>

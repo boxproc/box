@@ -67,7 +67,6 @@ export const prepareValuesToRender = (values: Partial<LedgerCustomerItem>) => {
     addressLine4: values.address_line4,
     addressTown: values.address_town,
     addressPostCode: values.address_post_code,
-    addressCountryCode: values.address_country_code,
     nationalityCountryCode: values.nationality_country_code,
     dateCreated: values.date_created,
     dateClosed: values.date_closed,

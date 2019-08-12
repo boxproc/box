@@ -57,7 +57,7 @@ export const User: React.FC<UserFilterProps> = ({
 
   const columns = [
     {
-      maxWidth: 80,
+      maxWidth: 100,
       sortable: true,
       filterable: true,
       Header: <Header title="ID" showSortIcons={true} />,
@@ -65,6 +65,7 @@ export const User: React.FC<UserFilterProps> = ({
       Cell: (props: SCell<'id'>) => (
         <Cell
           value={props.value}
+          isNumber={true}
         />
       ),
     },
@@ -131,6 +132,7 @@ export const User: React.FC<UserFilterProps> = ({
       Cell: (props: SCell<'passwordEntryCounter'>) => (
         <Cell
           value={props.value}
+          isNumber={true}
         />
       ),
     },

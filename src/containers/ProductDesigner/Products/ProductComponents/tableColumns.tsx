@@ -11,7 +11,7 @@ type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 70,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -19,6 +19,7 @@ export const tableColumns = [
     Cell: (props: PCell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -111,6 +112,7 @@ export const tableColumns = [
     Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },

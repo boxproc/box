@@ -53,7 +53,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
 
   const columns = [
     {
-      maxWidth: 80,
+      maxWidth: 100,
       sortable: true,
       filterable: true,
       Header: <Header title="ID" showSortIcons={true} />,
@@ -61,6 +61,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       Cell: (props: SCell<'id'>) => (
         <Cell
           value={props.value}
+          isNumber={true}
         />
       ),
     },

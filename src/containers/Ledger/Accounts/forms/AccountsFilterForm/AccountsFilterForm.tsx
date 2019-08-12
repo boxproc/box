@@ -6,15 +6,19 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons';
 import { InputField, SelectField } from 'components/Form';
 
-import { formNames, productTypesOptions } from 'consts';
+import { formNames } from 'consts';
 
-import { HandleFilterLedgerAccounts } from 'store/domains';
+import { HandleFilterLedgerAccounts, HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface AccountsFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterLedgerAccounts: HandleFilterLedgerAccounts;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  institutionValue: SelectValues;
+  institutionProductsOptions: Array<SelectValues>;
+  isLoadingInstitutionProducts: boolean;
 }
 
 type AccountsFilterFormAllProps = AccountsFilterFormProps &
@@ -24,7 +28,22 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterLedgerAccounts,
+  institutionValue,
+  getInstitutionProducts,
+  institutionProductsOptions,
+  isLoadingInstitutionProducts,
 }) => {
+  const currentInstitutionId = institutionValue && institutionValue.value;
+
+  React.useEffect(
+    () => {
+      if (currentInstitutionId) {
+        getInstitutionProducts(currentInstitutionId);
+      }
+    },
+    [getInstitutionProducts, currentInstitutionId]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterLedgerAccounts(data)),
     [handleSubmit]
@@ -32,7 +51,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 1, 1000]} mx="-10px">
+      <Box width={[1, 1, 1, 1000]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
@@ -51,32 +70,15 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
           </Box>
           <Box width={[1, 1 / 3]} p="10px">
             <Field
-              id="customerFirstName"
-              name="customerFirstName"
-              component={InputField}
-              label="Customer First Name"
-              placeholder="Enter Customer First Name"
+              id="productName"
+              name="productName"
+              component={SelectField}
+              label="Product"
+              placeholder="Select Product Type"
+              options={institutionProductsOptions}
               isDisabled={false}
-            />
-          </Box>
-          <Box width={[1, 1 / 3]} p="10px">
-            <Field
-              id="customerLastName"
-              name="customerLastName"
-              component={InputField}
-              label="Last Customer Name"
-              placeholder="Enter Customer Last Name"
-              isDisabled={false}
-            />
-          </Box>
-          <Box width={[1, 1 / 3]} p="10px">
-            <Field
-              id="accountAlias"
-              name="accountAlias"
-              component={InputField}
-              label="Account Alias"
-              placeholder="Enter Account Alias"
-              isDisabled={false}
+              isMulti={true}
+              isLoadingInstitutionProducts={isLoadingInstitutionProducts}
             />
           </Box>
           <Box width="100px" p="10px">
@@ -89,16 +91,34 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 3]} p="10px">
+          <Box width={[1, 1 / 4]} p="10px">
             <Field
-              id="productType"
-              name="productType"
-              component={SelectField}
-              label="Product Type"
-              placeholder="Select Product Type"
-              options={productTypesOptions}
+              id="accountAlias"
+              name="accountAlias"
+              component={InputField}
+              label="Account Alias"
+              placeholder="Enter Account Alias"
               isDisabled={false}
-              isMulti={true}
+            />
+          </Box>
+          <Box width={[1, 1 / 4]} p="10px">
+            <Field
+              id="customerFirstName"
+              name="customerFirstName"
+              component={InputField}
+              label="First Name"
+              placeholder="Enter First Name"
+              isDisabled={false}
+            />
+          </Box>
+          <Box width={[1, 1 / 4]} p="10px">
+            <Field
+              id="customerLastName"
+              name="customerLastName"
+              component={InputField}
+              label="Last Name"
+              placeholder="Enter Last Name"
+              isDisabled={false}
             />
           </Box>
         </Flex>

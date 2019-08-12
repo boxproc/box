@@ -10,7 +10,7 @@ type CCell<T extends keyof LedgerCustomerItemPrepared> = TableCell<LedgerCustome
 
 export const tableColumns = [
   {
-    maxWidth: 70,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -18,6 +18,7 @@ export const tableColumns = [
     Cell: (props: CCell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -90,7 +91,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Mobile Phone Number" showSortIcons={true} />,
+    Header: <Header title="Mobile Phone" showSortIcons={true} />,
     accessor: 'mobilePhoneNumber',
     Cell: (props: CCell<'mobilePhoneNumber'>) => (
       <Cell

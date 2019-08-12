@@ -11,7 +11,7 @@ type ACell<T extends keyof LedgerAccountItemPrepared> =
 
 export const tableColumns = [
   {
-    maxWidth: 70,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -19,6 +19,7 @@ export const tableColumns = [
     Cell: (props: ACell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -36,11 +37,23 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
+    Header: <Header title="Product Name" showSortIcons={true} />,
+    accessor: 'productName',
+    Cell: (props: ACell<'productName'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    sortable: true,
+    filterable: true,
     Header: <Header title="Account Alias" showSortIcons={true} />,
     accessor: 'accountAlias',
     Cell: (props: ACell<'accountAlias'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -52,13 +65,14 @@ export const tableColumns = [
     Cell: (props: ACell<'customerId'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Customer First Name" showSortIcons={true} />,
+    Header: <Header title="First Name" showSortIcons={true} />,
     accessor: 'customerFirstName',
     Cell: (props: ACell<'customerFirstName'>) => (
       <Cell
@@ -69,20 +83,9 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Customer Last Name" showSortIcons={true} />,
+    Header: <Header title="Last Name" showSortIcons={true} />,
     accessor: 'customerLastName',
     Cell: (props: ACell<'customerLastName'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Product Name" showSortIcons={true} />,
-    accessor: 'productType',
-    Cell: (props: ACell<'productType'>) => (
       <Cell
         value={props.value}
       />
@@ -107,6 +110,7 @@ export const tableColumns = [
     Cell: (props: ACell<'balanceSettled'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -118,6 +122,7 @@ export const tableColumns = [
     Cell: (props: ACell<'balanceAvailable'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -129,6 +134,7 @@ export const tableColumns = [
     Cell: (props: ACell<'amountDueRepayment'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -140,6 +146,7 @@ export const tableColumns = [
     Cell: (props: ACell<'balanceLimit'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -151,6 +158,7 @@ export const tableColumns = [
     Cell: (props: ACell<'balanceLimitShared'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -162,6 +170,7 @@ export const tableColumns = [
     Cell: (props: ACell<'accruedInterest'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },

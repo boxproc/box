@@ -19,6 +19,7 @@ import { dateUtil } from 'utils';
 export interface DateTimeWrapperProps {
   active?: boolean;
   invalid?: boolean;
+  disabled?: boolean;
 }
 
 type CalendarProps = Datetime.DatetimepickerProps & InputCommonProps & WrappedFieldProps;
@@ -40,7 +41,6 @@ const DatepickerWrapper = styled.div<DisabledProp>`
 
   ${({ disabled, theme }) => disabled && `
     background-color: ${theme.whiteColor};
-    opacity: 0.5;
     pointer-events: none;
   `};
 `;
@@ -50,8 +50,14 @@ const IconWrapper = styled.div<DateTimeWrapperProps>`
   background-color: ${({ theme }) => theme.whiteColor};
   cursor: pointer;
   padding: 9.5px;
-  border: solid 1px ${({ theme, invalid, active }) =>
-    invalid ? theme.redColor : active ? theme.normalAccentColor : theme.grayColor};
+  border: solid 1px ${({ theme, invalid, active, disabled }) =>
+    invalid
+      ? theme.redColor
+      : active
+        ? theme.normalAccentColor
+        : disabled
+          ? theme.lightGrayColor
+          : theme.grayColor};
   border-left: none;
   border-radius: 0 2px 2px 0;
 `;
@@ -90,7 +96,11 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
     return (
       <DatepickerWrapper disabled={disabled}>
-        <DateTimeWrapper active={isOpen} invalid={invalid}>
+        <DateTimeWrapper
+          active={isOpen}
+          invalid={invalid}
+          disabled={disabled}
+        >
           <Datetime
             {...props}
             ref={this.datepicker}
@@ -118,6 +128,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
           active={isOpen}
           draggable={false}
           invalid={invalid}
+          disabled={disabled}
           onClick={this.toggleCalendar}
         >
           <CalendarIconWrapper

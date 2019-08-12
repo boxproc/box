@@ -10,24 +10,17 @@ import { TransactionsFilterForm } from './forms';
 import { tableColumns } from './transactionsComponents';
 
 import {
-  HandleFilterLedgerTransactions,
   HandleGetLedgerTransactions,
   HandleSetLedgerTransactionId,
   LedgerTransactionItemPrepared,
   OpenModal,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
-
-import { dateUtil } from 'utils';
-
 export interface TransactionsProps {
-  institutionsOptions: Array<SelectValues>;
   openModal: OpenModal;
   getLedgerTransactions: HandleGetLedgerTransactions;
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
   setLedgerTransactionId: HandleSetLedgerTransactionId;
-  filterLedgerTransactions: HandleFilterLedgerTransactions;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
@@ -35,8 +28,6 @@ const Transactions: React.FC<TransactionsProps> = ({
   getLedgerTransactions,
   ledgerTransactions,
   setLedgerTransactionId,
-  filterLedgerTransactions,
-  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -65,15 +56,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       hint="Double Click on Row to View Transaction"
       getTrGroupProps={handleOnClickRow}
       FilterForm={
-        <TransactionsFilterForm
-          filterLedgerTransactions={filterLedgerTransactions}
-          institutionsOptions={institutionsOptions}
-          initialValues={{
-            institutionId: institutionsOptions[0],
-            datetimeFrom: dateUtil.yesterday,
-            datetimeTo: dateUtil.today,
-          }}
-        />
+        <TransactionsFilterForm />
       }
     />
   );

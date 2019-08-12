@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectCountryCodes, selectInstitutionsOptions } from 'store/domains/consts';
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
@@ -11,10 +11,13 @@ export const selectDefaultLedgerCustomers = (state: StoreState) =>
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.map(item => {
+  selectCountryCodes,
+  (items, institutions, countries) => items && items.map(item => {
     return {
       ...prepareValuesToRender(item),
       institutionId: institutions.find(el => el.value === item.institution_id).label,
+      addressCountryCode: countries.find(el => el.value === item.address_country_code)
+        && countries.find(el => el.value === item.address_country_code).label,
     };
   })
 );

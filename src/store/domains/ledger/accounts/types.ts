@@ -19,7 +19,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   customer_last_name: string;
   institution_id: number | string;
   product_id: number;
-  product_type: string | number;
+  product_name: string | number;
   balance_settled: number;
   balance_available: number;
   amount_due_repayment: number;
@@ -96,21 +96,21 @@ export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepare
   status: string | number;
   institutionId: string | number;
   statementCycleId: string | number;
-  productType: string | number;
+  productName: string | number;
 }
 
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
   status: SelectValues;
   institutionId: SelectValues;
   statementCycleId: SelectValues;
-  productType: SelectValues;
+  productName: SelectValues;
 }
 
 export interface LedgerAccountsFilterParams extends LedgerAccountId {
   institutionId: SelectValues;
   customerFirstName: string;
   customerLastName: string;
-  productType: Array<SelectValues>;
+  productName: Array<SelectValues>;
   accountAlias: string;
   id: number;
 }
@@ -119,7 +119,7 @@ export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
   institution_id: string | number;
   customer_first_name: string;
   customer_last_name: string;
-  product_type: Array<string | number>;
+  product_name: Array<string | number>;
   account_alias: string;
   id: number;
 }

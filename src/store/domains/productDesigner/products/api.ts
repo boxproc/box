@@ -1,6 +1,7 @@
 import { apiClient } from 'services';
 
 // import {
+// institutionProducts
 //   generalProductData,
 //   productDetailsData,
 //   productItemsData,
@@ -27,6 +28,12 @@ export const getProduct = (id: number) =>
   // throttleUtil.getDataAfter(generalProductData, 500);
   apiClient.post('/ui/product_designer/products/get', {
     data: { id },
+  });
+
+export const getInstitutionProducts = (id: number | string) =>
+  // throttleUtil.getDataAfter(institutionProducts, 500);
+  apiClient.post('/ui/service_data/institutions/products/get', {
+    data: { institution_id: id },
   });
 
 export const getProductDetails = (id: number) =>

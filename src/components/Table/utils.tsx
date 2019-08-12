@@ -39,6 +39,7 @@ export const renderEditable = (updateAction: (data: object) => void) =>
         contentEditable={isEditable}
         suppressContentEditableWarning={isEditable}
         onBlur={updateCellInfo}
+        isNumber={true}
         onKeyUp={(e: React.KeyboardEvent) => {
           if (e.key === codeKeys.ENTER) {
             const el = e.target as HTMLElement;

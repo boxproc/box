@@ -1,12 +1,27 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { KeyValuePair } from 'types';
-
-export interface CurrencyCodesResp<T = Array<KeyValuePair>> {
-  currency_options: T;
+export interface CurrencyItem {
+  currency_code: string;
+  name: string;
+  number_digits_after_dec_point: number;
+  numeric_code: number;
 }
 
-interface InstitutionItemPlain {
+export interface CurrencyCodes {
+  currencies: Array<CurrencyItem>;
+}
+
+export interface CountryItem {
+  name: string;
+  country_code: string;
+  numeric_code: number;
+}
+
+export interface CountryCodes {
+  countries: Array<CountryItem>;
+}
+
+export interface InstitutionItemPlain {
   id: number;
   status: string;
 }
@@ -29,6 +44,7 @@ export interface InstitutionsData {
 }
 
 export interface ConstsState {
-  currencyCodes: ImmutableArray<KeyValuePair>;
+  currencies: ImmutableArray<CurrencyItem>;
+  countries: ImmutableArray<CountryItem>;
   institutions: ImmutableArray<InstitutionItemResp>;
 }

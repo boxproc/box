@@ -2,9 +2,12 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface ProductItemPlainResp {
+export interface ProductItemInfoPlain {
   id: number;
   name: string;
+}
+
+export interface ProductItemPlainResp extends ProductItemInfoPlain {
   description: string;
   history_retention_number_of_day: number;
   locked_flag: string;
@@ -27,9 +30,7 @@ export interface ProductDataResp extends ResponseStatusType {
   product: ProductItemResp;
 }
 
-export interface ProductItemPlain {
-  id: number;
-  name: string;
+export interface ProductItemPlain extends ProductItemInfoPlain {
   description: string;
   historyRetentionNumberOfDay: number;
   lockedFlag: boolean;
@@ -224,6 +225,10 @@ export interface ProductRulesItem {
   productId: number;
 }
 
+export interface InstitutionProducts extends ResponseStatusType {
+  institution_products: Array<ProductItemInfoPlain>;
+}
+
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProductId: number;
@@ -231,6 +236,6 @@ export interface ProductsState {
   currentProductDetails: ProductItemDetailsResp;
   currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentRulesCode: string;
-
   filterProductsParams: ProductFilterParamsPrepared;
+  institutionProducts: ImmutableArray<ProductItemInfoPlain>;
 }

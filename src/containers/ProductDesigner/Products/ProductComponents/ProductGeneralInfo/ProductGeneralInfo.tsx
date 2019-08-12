@@ -86,7 +86,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Description"
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="status"
             name="status"
@@ -98,7 +98,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="scheme"
             name="scheme"
@@ -107,6 +107,17 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Scheme"
             options={schemeTypesOptions}
             isDisabled={false}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="historyRetentionNumberOfDay"
+            name="historyRetentionNumberOfDay"
+            placeholder="Enter History Retention Number of Days"
+            component={InputField}
+            label="History Retention Number of Days"
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -120,17 +131,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             isDisabled={false}
             isLoading={isCurrencyCodesLoading}
             validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="historyRetentionNumberOfDay"
-            name="historyRetentionNumberOfDay"
-            placeholder="Enter History Retention Number of Days"
-            component={InputField}
-            label="History Retention Number of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">

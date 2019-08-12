@@ -30,7 +30,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[2 / 5]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -42,47 +42,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[2 / 5]} p="10px">
-          <Field
-            id="status"
-            name="status"
-            component={SelectField}
-            label="Status"
-            placeholder="Select Status"
-            options={statusTypesOptions}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="accountAlias"
-            name="accountAlias"
-            component={InputField}
-            label="Account Alias"
-            placeholder="Enter Account Alias"
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="accountAliasAdditional"
-            name="accountAliasAdditional"
-            component={InputField}
-            label="Account Alias Additional"
-            placeholder="Enter Account Alias Additional"
-          />
-        </Box>
-        <Box width="100px" p="10px">
-          <Field
-            id="customerId"
-            name="customerId"
-            component={InputField}
-            label="Customer ID"
-            placeholder="Enter ID"
-            disabled={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Hr />
         <Box width={[1 / 3]} p="10px">
           <Field
             id="productType"
@@ -106,8 +65,48 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 4]} p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            label="Status"
+            placeholder="Select Status"
+            options={statusTypesOptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="accountAlias"
+            name="accountAlias"
+            component={InputField}
+            label="Account Alias"
+            placeholder="Enter Account Alias"
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="accountAliasAdditional"
+            name="accountAliasAdditional"
+            component={InputField}
+            label="Account Alias Additional"
+            placeholder="Enter Account Alias Additional"
+          />
+        </Box>
+        <Box width="100px" p="10px">
+          <Field
+            id="customerId"
+            name="customerId"
+            component={InputField}
+            label="Customer ID"
+            placeholder="Enter ID"
+            disabled={true}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Hr />
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -119,7 +118,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
@@ -131,7 +130,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="amountDueRepayment"
             name="amountDueRepayment"
@@ -143,7 +142,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -155,7 +154,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -167,7 +166,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -180,7 +179,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           />
         </Box>
         <Hr />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="statementCycleId"
             name="statementCycleId"

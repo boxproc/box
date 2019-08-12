@@ -36,6 +36,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     cardConversionRate: values.card_conversion_rate && values.card_conversion_rate.toFixed(2),
     cardAcceptorName: values.card_acceptor_name,
     cardAcceptorLocation: values.card_acceptor_location,
+    transactionTypeDescription: values.transaction_type_description,
   };
 };
 
@@ -48,7 +49,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFil
     id,
     institutionId,
     customerId,
-    productType,
+    productName,
     datetimeFrom,
     datetimeTo,
   } = params;
@@ -57,7 +58,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFil
     id: id && Number(id),
     institution_id: institutionId && institutionId.value,
     customer_id: customerId && Number(customerId),
-    product_type: productType && productType.value,
+    product_type: productName && productName.value,
     datetime_from: datetimeFrom,
     datetime_to: datetimeTo,
   };

@@ -93,7 +93,7 @@ export const prepareGeneralProductValuesToSend =
       description: product.description,
       status: product.status.value,
       institution_id: product.institutionId.value,
-      currency_code: product.currencyCode.label,
+      currency_code: product.currencyCode.value,
       product_type: product.productType.value,
       scheme: product.scheme.value,
       history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),

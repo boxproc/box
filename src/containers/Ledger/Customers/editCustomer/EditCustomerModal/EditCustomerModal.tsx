@@ -21,6 +21,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
     <Modal
       name={modalName}
       title="Edit Customer"
+      maxContainerWidth={980}
     >
       <EditCustomerForm
         onCancel={() => closeModal(modalName)}

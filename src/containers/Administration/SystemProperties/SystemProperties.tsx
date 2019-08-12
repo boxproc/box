@@ -113,6 +113,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: (props: SPCell<'previousValue'>) => (
         <Cell
           value={props.value}
+          isNumber={true}
         />
       ),
     },

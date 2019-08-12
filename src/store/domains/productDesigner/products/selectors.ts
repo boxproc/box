@@ -55,7 +55,7 @@ export const selectCurrentProduct = createSelector(
     return {
       ...prepareGeneralProductValues(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
-      currencyCode: currencyCodes && currencyCodes.find(el => el.label === product.currency_code),
+      currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
     };
   }
 );
@@ -131,5 +131,21 @@ export const selectFilterProductParams = createSelector(
       ...prepareProductFiltersParams(params),
       institutionId: institutions.find(institution => institution.value === params.institution_id),
     };
+  }
+);
+
+// Institution products
+export const selectDefaultInstitutionProducts = (state: StoreState) =>
+  state.productDesigner.products.institutionProducts;
+
+export const selectInstitutionProductsOptions = createSelector(
+  selectDefaultInstitutionProducts,
+  products => {
+    return products && products.asMutable().map(product => {
+      return {
+        value: product.id,
+        label: product.name,
+      };
+    });
   }
 );

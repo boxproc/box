@@ -9,7 +9,7 @@ type ACell<T extends keyof AuditUserActivitiesItem> = TableCell<AuditUserActivit
 
 export const tableColumns = [
   {
-    maxWidth: 70,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -17,6 +17,7 @@ export const tableColumns = [
     Cell: (props: ACell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },

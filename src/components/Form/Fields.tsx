@@ -26,12 +26,8 @@ export const InputFieldWrapper = styled.div`
     margin-bottom: 20px;
   }
 
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  .field {
+    user-select: all;
   }
 `;
 
@@ -123,7 +119,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = props => {
             isRequired && <span className="required-icon">*</span>
         }
       </Title>
-      <div>
+      <div className="field">
         {render(invalid, preventBlur)}
       </div>
     </InputFieldWrapper>

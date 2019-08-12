@@ -1,13 +1,25 @@
-import { CurrencyCodesResp, InstitutionsDataResp } from './types';
+import { CurrencyCodes, InstitutionsDataResp } from './types';
 
-export const currencyCodesData: CurrencyCodesResp = {
-  currency_options: [
-    { key: 784, value: 'AED' },
-    { key: 971, value: 'AFN' },
-    { key: 8, value: 'ALL' },
-    { key: 51, value: 'AMD' },
-    { key: 532, value: 'ANG' },
-    { key: 973, value: 'AOA' },
+export const currencyCodesData: CurrencyCodes = {
+  currencies: [
+    {
+      currency_code: 'AED',
+      name: 'United Arab Emirates dirham',
+      number_digits_after_dec_point: 2,
+      numeric_code: 784,
+    },
+    {
+      currency_code: 'AFN',
+      name: 'Afghan afghani',
+      number_digits_after_dec_point: 2,
+      numeric_code: 971,
+    },
+    {
+      currency_code: 'ALL',
+      name: 'Albanian lek',
+      number_digits_after_dec_point: 2,
+      numeric_code: 8,
+    },
   ],
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ScrollDisable } from 'components/Scrollbar';
+
 import { modalsList } from './modalsList';
 
 interface ModalsProps {
@@ -15,6 +17,7 @@ const Modals: React.FC<ModalsProps> = ({
     }
     return (
       <React.Fragment key={modal.name + index}>
+        <ScrollDisable />
         {modal.component}
       </React.Fragment>
     );

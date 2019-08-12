@@ -33,9 +33,9 @@ const PagesWrapper = styled(Container)`
 
 interface RootProps {
   visibleUiItems: Array<string>;
-  // sessionId: string;
-  // userName: string;
-  // isRememberedMe: boolean;
+  sessionId: string;
+  userName: string;
+  isRememberedMe: boolean;
 }
 
 const HomePage = () => (
@@ -97,7 +97,7 @@ const Root: React.FC<RootProps> = ({
               })
               }
               <PrivateRoute
-                exact={true}
+                // exact={true}
                 path={basePath}
                 component={HomePage}
               />

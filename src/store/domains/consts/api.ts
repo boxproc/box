@@ -9,7 +9,10 @@ import { apiClient } from 'services';
 
 export const getCurrencyCodes = () =>
   // throttleUtil.getDataAfter(currencyCodesData, 500);
-  apiClient.post('/ui/administration/dictionaries/currencies/get_options');
+  apiClient.post('/ui/administration/dictionaries/currencies/get');
+
+export const getCountryCodes = () =>
+  apiClient.post('/ui/administration/dictionaries/countries/get');
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);

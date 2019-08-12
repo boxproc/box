@@ -10,7 +10,7 @@ type SCell<T extends keyof AdminCyclesEditorItem> = TableCell<AdminCyclesEditorI
 
 export const cycleEditorColumns = [
   {
-    maxWidth: 80,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -18,6 +18,7 @@ export const cycleEditorColumns = [
     Cell: (props: SCell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -74,6 +75,7 @@ export const cycleEditorColumns = [
     Cell: (props: SCell<'monthlyCycleFirstDay'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -96,6 +98,7 @@ export const cycleEditorColumns = [
     Cell: (props: SCell<'fixedCycleNumberOfDays'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },

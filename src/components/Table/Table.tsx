@@ -8,12 +8,9 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import Hint from 'components/Hint';
 import { ChevronIcon } from 'components/Icon';
 
 import { TableStyled } from './TableStyled';
-
-import { stringsUtil } from 'utils';
 
 interface TableItemWrapperProps {
   color?: string;
@@ -27,22 +24,19 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   width: 100%;
   display: flex;
   align-items: flex-start;
-  overflow: hidden;
   font-size: ${({ isDate, theme }) => isDate ? '12px' : '13px'};
   line-height: 1.5;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
-  word-break: break-word;
   border: 1px solid transparent;
   color: ${({ isDate, theme }) => isDate ? theme.grayColor : 'inherit'};
 
   .title {
+    padding-right: 20px;
     color: ${({ theme }) => theme.blackColorOpacity8};
     font-weight: 500;
-    font-size: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   &:focus {
@@ -55,11 +49,13 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
 `;
 
 const SortIconsWrapper = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 10px;
-  padding: 3px 0;
+  padding: 2px 0;
 
   .up-icon {
     margin-bottom: 5px;
@@ -76,24 +72,11 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   showSortIcons = false,
 }) => {
-  const headerCellRef = React.useRef(null);
-  const [isOverflow, setIsOverflow] = React.useState(false);
-
-  React.useEffect(
-    () => {
-      if (stringsUtil.isOverflow(headerCellRef.current)) {
-        setIsOverflow(true);
-      }
-    },
-    [headerCellRef]
-  );
-
   return (
     <Flex justifyContent="center" alignItems="center">
       <TableItemWrapper>
         <Box
           className="title"
-          ref={headerCellRef}
         >
           {title}
         </Box>
@@ -106,13 +89,6 @@ export const Header: React.FC<HeaderProps> = ({
           }
         </SortIconsWrapper>
       </TableItemWrapper>
-      {isOverflow && (
-        <Hint
-          text={title}
-          position="bottom"
-          icon={false}
-        />
-      )}
     </Flex>
   );
 };
@@ -126,6 +102,7 @@ interface CellProps {
   onKeyUp?: (e: React.KeyboardEvent) => void;
   hint?: string;
   isDate?: boolean;
+  isNumber?: boolean;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -137,22 +114,18 @@ export const Cell: React.FC<CellProps> = ({
   onKeyUp,
   hint,
   isDate = false,
+  isNumber = false,
 }) => (
     <TableItemWrapper
       style={style}
-      textRight={typeof value === 'number'}
+      textRight={isNumber}
       contentEditable={contentEditable}
       suppressContentEditableWarning={suppressContentEditableWarning}
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       isDate={isDate}
     >
-      <div title={hint}>{
-        value
-        // isDate
-        // ? moment('2019-07-29T14:55:12Z').format('MMMM Do YYYY, h:mm:ss a')
-        // : value
-      }</div>
+      <div title={hint}>{value}</div>
     </TableItemWrapper>
   );
 

@@ -1,4 +1,5 @@
 import {
+  InstitutionProducts,
   ProductDataResp,
   ProductDetailsResp,
   ProductFilterParams,
@@ -12,6 +13,12 @@ export enum ActionTypeKeys {
   GET_PRODUCTS = 'productDesigner/products/GET_PRODUCTS',
   GET_PRODUCTS_FULFILLED = 'productDesigner/products/GET_PRODUCTS_FULFILLED',
   GET_PRODUCTS_REJECTED = 'productDesigner/products/GET_PRODUCTS_REJECTED',
+
+  GET_INSTITUTION_PRODUCTS = 'productDesigner/products/GET_INSTITUTION_PRODUCTS',
+  GET_INSTITUTION_PRODUCTS_FULFILLED =
+    'productDesigner/products/GET_INSTITUTION_PRODUCTS_FULFILLED',
+  GET_INSTITUTION_PRODUCTS_REJECTED =
+    'productDesigner/products/GET_INSTITUTION_PRODUCTS_REJECTED',
 
   DELETE_PRODUCT = 'productDesigner/products/DELETE_PRODUCT',
   DELETE_PRODUCT_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FULFILLED',
@@ -68,6 +75,22 @@ export interface GetProductsFulfilledAction {
 export interface GetProductsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCTS_REJECTED;
+}
+
+// Get products by institution ID
+export interface GetInstitutionProductsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS;
+}
+
+export interface GetInstitutionProductsFulfilledAction {
+  readonly payload: InstitutionProducts;
+  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED;
+}
+
+export interface GetInstitutionProductsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_REJECTED;
 }
 
 // Delete product by id
@@ -230,6 +253,7 @@ export interface AddProductRejectedAction {
 
 export type ProductsActionTypes =
   | GetProductsFulfilledAction
+  | GetInstitutionProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction
   | GetProductFulfilledAction

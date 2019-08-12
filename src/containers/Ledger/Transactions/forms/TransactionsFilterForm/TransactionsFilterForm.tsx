@@ -6,15 +6,19 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons';
 import { InputField, MaskField, SelectField } from 'components/Form';
 
-import { dateFormat, formNames, maskFormat, productTypesOptions } from 'consts';
+import { dateFormat, formNames, maskFormat } from 'consts';
 
-import { HandleFilterLedgerTransactions } from 'store/domains';
+import { HandleFilterLedgerTransactions, HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface TransactionsFilterFormProps {
   filterLedgerTransactions: HandleFilterLedgerTransactions;
   institutionsOptions: Array<SelectValues>;
+  institutionProductsOptions: Array<SelectValues>;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  institutionValue: SelectValues;
+  isLoadingInstitutionProducts: boolean;
 }
 
 type TransactionsFilterFormAllProps = TransactionsFilterFormProps &
@@ -24,7 +28,21 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
   handleSubmit,
   filterLedgerTransactions,
   institutionsOptions,
+  institutionProductsOptions,
+  getInstitutionProducts,
+  institutionValue,
+  isLoadingInstitutionProducts,
 }) => {
+  const currentInstitutionId = institutionValue && institutionValue.value;
+
+  React.useEffect(
+    () => {
+      if (currentInstitutionId) {
+        getInstitutionProducts(currentInstitutionId);
+      }
+    },
+    [getInstitutionProducts, currentInstitutionId]
+  );
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterLedgerTransactions(data)),
     [handleSubmit]
@@ -32,7 +50,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 1, 700]} mx="-10px">
+      <Box width={[1, 1, 1, 700]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
@@ -51,13 +69,14 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
           </Box>
           <Box width={[1, 1 / 2]} p="10px">
             <Field
-              id="productType"
-              name="productType"
+              id="productName"
+              name="productName"
               component={SelectField}
               label="Product"
-              placeholder="Select Product Type"
-              options={productTypesOptions}
+              placeholder="Select Product"
+              options={institutionProductsOptions}
               isDisabled={false}
+              isLoading={isLoadingInstitutionProducts}
             />
           </Box>
           <Box width="100px" p="10px">

@@ -1,4 +1,4 @@
-import { productTypesOptions, statementCyclesOptions, statusTypesOptions } from 'consts';
+import { statementCyclesOptions, statusTypesOptions } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -17,14 +17,14 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerAccountsFilterP
     customerFirstName,
     customerLastName,
     accountAlias,
-    productType,
+    productName,
   } = params;
 
   return {
     institution_id: institutionId && Number(institutionId.value),
     customer_first_name: customerFirstName,
     customer_last_name: customerLastName,
-    product_type: productType && productType.length && productType.map(type => type.value),
+    product_name: productName && productName.length && productName.map(name => name.value),
     account_alias: accountAlias,
     id: id && Number(id),
   };
@@ -45,7 +45,7 @@ export const preparedValuesToSend = (values: Partial<LedgerAccountItemDetailsPre
     customer_last_name: values.customerLastName,
     institution_id: values.institutionId && values.institutionId.value,
     product_id: values.productId,
-    product_type: values.productType && values.productType.value,
+    product_name: values.productName && values.productName.value,
     balance_settled: values.balanceSettled,
     balance_available: values.balanceAvailable,
     amount_due_repayment: values.amountDueRepayment,
@@ -92,7 +92,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     customerFirstName: values.customer_first_name,
     customerLastName: values.customer_last_name,
     productId: values.product_id,
-    productType: productTypesOptions.find(el => el.value === values.product_type).label,
+    productName: values.product_name,
     balanceSettled: values.balance_settled,
     balanceAvailable: values.balance_available,
     amountDueRepayment: values.amount_due_repayment,
@@ -134,6 +134,6 @@ export const preparedValuesDetailsToRender = (values: Partial<LedgerAccountItemP
   return {
     ...values,
     status: statusTypesOptions.find(el => el.label === values.status),
-    productType: productTypesOptions.find(el => el.label === values.productType),
+    // productName: productTypesOptions.find(el => el.label === values.productType),
   };
 };

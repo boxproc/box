@@ -10,6 +10,7 @@ import {
   AddProductAction,
   DeleteProductAction,
   FilterProductsAction,
+  GetInstitutionProductsAction,
   GetProductAction,
   GetProductDetailsAction,
   GetProductIdAction,
@@ -57,6 +58,9 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetProducts = () => GetProductsAction;
 export type HandleGetProducts = VoidPromiseThunk;
 
+export type GetInstitutionProducts = (id: number | string) => GetInstitutionProductsAction;
+export type HandleGetInstitutionProducts = (id: number | string) => Thunk<void>;
+
 export type DeleteProduct = (id: number) => DeleteProductAction;
 export type HandleDeleteProduct = (id: number) => Thunk<void>;
 
@@ -93,6 +97,11 @@ export type HandleUpdateProductRules = (values: Partial<ProductRulesItem>) => Th
 export const getProducts: GetProducts = () => ({
   type: ActionTypeKeys.GET_PRODUCTS,
   payload: api.getProducts(),
+});
+
+export const getInstitutionProducts: GetInstitutionProducts = id => ({
+  type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
+  payload: api.getInstitutionProducts(id),
 });
 
 export const deleteProduct: DeleteProduct = id => ({
@@ -175,12 +184,22 @@ export const handleGetProducts: HandleGetProducts = () =>
   };
 
 export const handleFilterProducts: HandleFilterProducts = params =>
-  async (dispatch, getState) => {
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareProductFiltersParamsToSend(params);
 
         await dispatch(filterProducts(preparedValues));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getInstitutionProducts(id));
       },
       dispatch
     );

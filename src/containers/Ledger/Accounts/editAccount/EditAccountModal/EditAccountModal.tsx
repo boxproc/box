@@ -25,7 +25,8 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     <Modal
       name={modalName}
       title={`Account${accountAlias}`}
-      minContainerHeight={999}
+      maxContainerWidth={980}
+      minContainerHeight={783}
     >
       <EditAccountForm
         onCancel={() => closeModal(modalName)}

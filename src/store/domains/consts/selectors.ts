@@ -2,14 +2,19 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { selectUtil } from 'utils';
-
 export const selectDefaultCurrencyCodes = (state: StoreState) =>
-  state.consts.currencyCodes.asMutable();
+  state.consts.currencies.asMutable();
 
 export const selectCurrencyCodes = createSelector(
   selectDefaultCurrencyCodes,
-  data => data && selectUtil.parseListValues(data)
+  data => data && data.map(code => {
+    const { currency_code, name } = code;
+
+    return {
+      value: currency_code,
+      label: `${currency_code} - ${name}`,
+    };
+  })
 );
 
 export const selectIsCurrencyCodesLoaded =
@@ -17,6 +22,28 @@ export const selectIsCurrencyCodesLoaded =
     selectDefaultCurrencyCodes,
     currencyCodes => {
       return currencyCodes && currencyCodes.length > 0;
+    });
+
+export const selectDefaultCountryCodes = (state: StoreState) =>
+  state.consts.countries.asMutable();
+
+export const selectCountryCodes = createSelector(
+  selectDefaultCountryCodes,
+  data => data && data.map(code => {
+    const { country_code, name } = code;
+
+    return {
+      value: country_code,
+      label: name,
+    };
+  })
+);
+
+export const selectIsCountryCodesLoaded =
+  createSelector(
+    selectDefaultCountryCodes,
+    countryCodes => {
+      return countryCodes && countryCodes.length > 0;
     });
 
 export const selectDefaultInstitutions = (state: StoreState) =>

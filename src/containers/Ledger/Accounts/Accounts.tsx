@@ -11,29 +11,22 @@ import { modalNames } from 'consts';
 import { tableColumns } from './accountComponents';
 
 import {
-  HandleFilterLedgerAccounts,
   HandleGetLedgerAccounts,
   HandleSetLedgerAccountId,
   LedgerAccountItemPrepared,
   OpenModal,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
-
 export interface AccountsProps {
-  institutionsOptions: Array<SelectValues>;
   openModal: OpenModal;
   getLedgerAccounts: HandleGetLedgerAccounts;
-  filterLedgerAccounts: HandleFilterLedgerAccounts;
   setLedgerAccountsId: HandleSetLedgerAccountId;
   ledgerAccounts: Array<LedgerAccountItemPrepared>;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
-  institutionsOptions,
   openModal,
   getLedgerAccounts,
-  filterLedgerAccounts,
   setLedgerAccountsId,
   ledgerAccounts,
 }) => {
@@ -64,13 +57,7 @@ const Accounts: React.FC<AccountsProps> = ({
       hint="Double Click on Row to View Account"
       getTrGroupProps={handleOnClickRow}
       FilterForm={
-        <AccountsFilterForm
-          filterLedgerAccounts={filterLedgerAccounts}
-          institutionsOptions={institutionsOptions}
-          initialValues={{
-            institutionId: institutionsOptions[0],
-          }}
-        />
+        <AccountsFilterForm />
       }
     />
   );

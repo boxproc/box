@@ -15,10 +15,10 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     outline: none;
     color: ${({ theme }) => theme.blackColor};
     border-radius: 2px 0 0 2px;
-    border: solid 1px ${({ theme, active, invalid }) =>
+    border: solid 1px ${({ theme, active, invalid, disabled }) =>
       invalid ? theme.redColor :
         active ? theme.normalAccentColor :
-          theme.grayColor
+          disabled ? theme.lightGrayColor : theme.grayColor
   };
 
     &:focus{

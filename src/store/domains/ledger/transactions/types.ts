@@ -28,6 +28,7 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   card_conversion_rate: number;
   card_acceptor_name: string;
   card_acceptor_location: string;
+  transaction_type_description: string;
 }
 
 export interface LedgerTransactionItems extends ResponseStatusType {
@@ -53,12 +54,13 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   cardConversionRate: string;
   cardAcceptorName: string;
   cardAcceptorLocation: string;
+  transactionTypeDescription: string;
 }
 
 export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
   institutionId: SelectValues;
   customerId: number;
-  productType: SelectValues;
+  productName: SelectValues;
   datetimeFrom: string;
   datetimeTo: string;
 }
@@ -66,7 +68,7 @@ export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
 export interface LedgerTransactionsFilterParamsPrepared extends LedgerTransactionId {
   institution_id: string | number;
   customer_id: number;
-  product_type: string | number;
+  product_name: string | number;
   datetime_from: string;
   datetime_to: string;
 }

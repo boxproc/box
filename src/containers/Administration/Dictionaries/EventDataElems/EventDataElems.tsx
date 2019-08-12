@@ -63,7 +63,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
 
   const columns = [
     {
-      maxWidth: 80,
+      maxWidth: 100,
       sortable: true,
       filterable: true,
       Header: <Header title="ID" showSortIcons={true} />,
@@ -71,6 +71,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
       Cell: (props: EDECell<'eventId'>) => (
         <Cell
           value={props.value}
+          isNumber={true}
         />
       ),
     },

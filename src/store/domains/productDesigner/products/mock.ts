@@ -1,4 +1,9 @@
-import { ProductDetailsResp, ProductRulesResp, ProductsDataResp } from './types';
+import {
+  InstitutionProducts,
+  ProductDetailsResp,
+  ProductRulesResp,
+  ProductsDataResp,
+} from './types';
 
 import { ResponseStatusType } from 'types';
 
@@ -121,24 +126,6 @@ export const productDetailsData: ProductDetailsResp = {
     minimum_payment_amount: 1,
     payment_grace_number_of_days: 1,
     limit_sharing_allowed_flag: 'Y',
-
-    // loan_type: 'B',
-    // apr: 1,
-    // fee_late_payment: 1,
-    // payment_grace_number_of_days: 1,
-
-    // dormant_after_number_of_days: 1,
-    // breakages_allowed: 'Y',
-    // reload_allowed: 'N',
-
-    // apr_overdraft: 1,
-    // overdraft_allowed: 'Y',
-
-    // savings_type: 'F',
-    // apr: 1,
-    // minimum_deposit_allowed: 1,
-    // maximum_deposit_allowed: 1,
-    // maximum_monthly_deposit: 1,
   },
 };
 
@@ -152,7 +139,7 @@ export const productRulesData: ProductRulesResp = {
     event_id: 3,
     action_type: 'V',
     script:
-`class ShoppingList extends React.Component {
+      `class ShoppingList extends React.Component {
   render() {
     return (
       <div className="shopping-list">
@@ -168,7 +155,24 @@ export const productRulesData: ProductRulesResp = {
 }`,
     product_id: 1,
   },
-]};
+  ],
+};
+
+export const institutionProducts: InstitutionProducts = {
+  response_status: {
+    status_code: 0,
+  },
+  institution_products: [
+    {
+      id: 1,
+      name: 'Test revolving credit product',
+    },
+    {
+      id: 2,
+      name: 'Product: debit',
+    },
+  ],
+};
 
 export const successResponseStatus: ResponseStatusType = {
   response_status: {

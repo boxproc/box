@@ -11,7 +11,7 @@ type TCell<T extends keyof LedgerTransactionItemPrepared> =
 
 export const tableColumns = [
   {
-    maxWidth: 70,
+    maxWidth: 100,
     sortable: true,
     filterable: true,
     Header: <Header title="ID" showSortIcons={true} />,
@@ -19,6 +19,7 @@ export const tableColumns = [
     Cell: (props: TCell<'id'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -26,11 +27,12 @@ export const tableColumns = [
     maxWidth: 120,
     sortable: true,
     filterable: true,
-    Header: <Header title="Account Id" showSortIcons={true} />,
+    Header: <Header title="Account ID" showSortIcons={true} />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -49,20 +51,9 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Transaction Type ID" showSortIcons={true} />,
-    accessor: 'transactionTypeId',
-    Cell: (props: TCell<'transactionTypeId'>) => (
-      <Cell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    filterable: true,
-    Header: <Header title="Debit Credit Indicator" showSortIcons={true} />,
-    accessor: 'debitCreditIndicator',
-    Cell: (props: TCell<'debitCreditIndicator'>) => (
+    Header: <Header title="Transaction" showSortIcons={true} />,
+    accessor: 'transactionTypeDescription',
+    Cell: (props: TCell<'transactionTypeDescription'>) => (
       <Cell
         value={props.value}
       />
@@ -72,11 +63,23 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     filterable: true,
+    Header: <Header title="D/C" showSortIcons={true} />,
+    accessor: 'debitCreditIndicator',
+    Cell: (props: TCell<'debitCreditIndicator'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    sortable: true,
+    filterable: true,
     Header: <Header title="Amount" showSortIcons={true} />,
     accessor: 'amount',
     Cell: (props: TCell<'amount'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -88,6 +91,7 @@ export const tableColumns = [
     Cell: (props: TCell<'amountInOriginalCurrency'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -105,18 +109,19 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Original Currency" showSortIcons={true} />,
+    Header: <Header title="Currency" showSortIcons={true} />,
     accessor: 'originalCurrency',
     Cell: (props: TCell<'originalCurrency'>) => (
       <Cell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Card Conversion Rate" showSortIcons={true} />,
+    Header: <Header title="Conversion Rate" showSortIcons={true} />,
     accessor: 'cardConversionRate',
     Cell: (props: TCell<'cardConversionRate'>) => (
       <Cell
