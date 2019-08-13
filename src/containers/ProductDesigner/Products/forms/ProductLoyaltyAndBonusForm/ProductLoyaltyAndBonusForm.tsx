@@ -8,7 +8,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductLoyaltyAndBonus } from 'containers/ProductDesigner/Products/productComponents';
+import { ProductLoyaltyAndBonus } from 'containers/ProductDesigner/Products/components';
 
 interface LoyaltyAndBonusFormProps {
   onCancel?: () => void;

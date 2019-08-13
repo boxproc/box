@@ -4,7 +4,7 @@ import { RowInfo } from 'react-table';
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
-import { tableColumns } from 'containers/Ledger/Customers/customerComponents';
+import { tableColumns } from 'containers/Ledger/Customers/components';
 import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
 
 import { modalNames } from 'consts';

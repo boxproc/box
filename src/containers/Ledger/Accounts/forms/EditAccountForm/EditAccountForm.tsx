@@ -13,7 +13,7 @@ import {
   AuxiliaryCounters,
   GeneralAccountInfo,
   Overdue,
-} from 'containers/Ledger/Accounts/accountComponents';
+} from 'containers/Ledger/Accounts/сomponents';
 
 import { HandleUpdateLedgerAccount } from 'store/domains';
 

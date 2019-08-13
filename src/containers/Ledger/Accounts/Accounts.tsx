@@ -8,7 +8,7 @@ import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
 
 import { modalNames } from 'consts';
 
-import { tableColumns } from './accountComponents';
+import { tableColumns } from './сomponents';
 
 import {
   HandleGetLedgerAccounts,

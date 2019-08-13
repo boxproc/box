@@ -9,7 +9,7 @@ import {
   LedgerCurrentTransactionBalance,
   LedgerCurrentTransactionCard,
   LedgerCurrentTransactionGeneral,
-} from 'containers/Ledger/Transactions/transactionsComponents';
+} from 'containers/Ledger/Transactions/components';
 
 interface LedgerTransactionsFormProps { }
 

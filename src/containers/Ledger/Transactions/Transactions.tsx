@@ -6,8 +6,8 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
+import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
-import { tableColumns } from './transactionsComponents';
 
 import {
   HandleGetLedgerTransactions,

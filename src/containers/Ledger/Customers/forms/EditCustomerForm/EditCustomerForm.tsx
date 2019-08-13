@@ -9,7 +9,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import CustomerInfo from 'containers/Ledger/Customers/customerComponents/CustomerInfo';
+import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
   HandleDeleteLedgerCustomer,
   HandleUpdateLedgerCustomer,

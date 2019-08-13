@@ -12,7 +12,7 @@ import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
 import {
   ProductGeneralInfo,
-} from 'containers/ProductDesigner/Products/productComponents';
+} from 'containers/ProductDesigner/Products/components';
 
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
 

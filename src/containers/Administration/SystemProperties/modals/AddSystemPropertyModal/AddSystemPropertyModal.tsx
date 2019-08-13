@@ -6,7 +6,7 @@ import { modalNames } from 'consts';
 import { CloseModal, HandleAddAdminSysProp } from 'store/domains';
 
 // tslint:disable-next-line: max-line-length
-import AddSystemPropertyForm from 'containers/Administration/SystemProperties/AddSystemPropertyForm';
+import { AddSystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
 interface AddSystemPropertyModalProps {
   closeModal: CloseModal;

@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import EditCustomerForm from 'containers/Ledger/Customers/editCustomer/EditCustomerForm';
+import { EditCustomerForm } from 'containers/Ledger/Customers/forms';
 
 import { CloseModal } from 'store/domains';
 

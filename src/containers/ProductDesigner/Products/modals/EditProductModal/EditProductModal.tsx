@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import EditProductForms from 'containers/ProductDesigner/Products/editProduct/EditProductForms';
+import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
 import { CloseModal } from 'store/domains';
 

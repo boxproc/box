@@ -7,8 +7,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-// tslint:disable-next-line: max-line-length
-import ProductAuxiliaryCounters from 'containers/ProductDesigner/Products/productComponents/ProductAuxiliaryCounters';
+import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/components';
 
 interface ProductAuxiliaryCountersFormProps {
   onCancel?: () => void;
