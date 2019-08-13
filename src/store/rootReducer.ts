@@ -28,6 +28,7 @@ const createRootReducer = (history: History) => combineReducers({
   consts: constsReducer,
   ledger: ledgerReducer,
   audit: auditReducer,
+
 });
 
 export default createRootReducer;
