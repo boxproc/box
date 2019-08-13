@@ -9,7 +9,7 @@ import MessageModal from './MessageModal';
 import { AddProductModal, EditProductModal } from 'containers/ProductDesigner/Products/modals';
 
 // Ledger
-import { EditAccountModal } from 'containers/Ledger/Accounts/modals';
+import { AddAccountModal, EditAccountModal } from 'containers/Ledger/Accounts/modals';
 import { AddCustomerModal, EditCustomerModal } from 'containers/Ledger/Customers/modals';
 import { TransactionModal } from 'containers/Ledger/Transactions/modals';
 
@@ -92,6 +92,10 @@ export const modalsList = [
   {
     name: modalNames.EDIT_LEDGER_CUSTOMER,
     component: <EditCustomerModal />,
+  },
+  {
+    name: modalNames.ADD_LEDGER_ACCOUNT,
+    component: <AddAccountModal />,
   },
   {
     name: modalNames.EDIT_LEDGER_ACCOUNT,

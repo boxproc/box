@@ -1,2 +1,2 @@
 export { default as AccountsFilterForm } from './AccountsFilterForm';
-export { default as EditAccountForm } from './EditAccountForm';
+export { default as AccountForm } from './AccountForm';

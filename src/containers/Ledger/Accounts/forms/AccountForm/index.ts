@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import EditAccountForm from './EditAccountForm';
+import AccountForm from './AccountForm';
 
 import {
   StoreState,
@@ -33,4 +33,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditAccountForm);
+)(AccountForm);

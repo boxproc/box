@@ -21,10 +21,16 @@ export interface ModalsState {
   isConfirmationModal: boolean;
   payloadConfirmationModal: PayloadConfirmationModal;
 
-  isAddAdminSystemPropertyModal: boolean;
-
   isAddProductModal: boolean;
   isEditProductModal: boolean;
+
+  isAddLedgerCustomerModal: boolean;
+  isEditLedgerCustomerModal: boolean;
+  isEditLedgerAccountModal: boolean;
+  isAddLedgerAccountModal: boolean;
+  isLedgerTransactionModal: boolean;
+
+  isAddAdminSystemPropertyModal: boolean;
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
@@ -41,11 +47,4 @@ export interface ModalsState {
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;
   payloadEditAdminUsersGroupModal: any;
-
-  isAddLedgerCustomerModal: boolean;
-  isEditLedgerCustomerModal: boolean;
-
-  isEditLedgerAccountModal: boolean;
-
-  isLedgerTransactionModal: boolean;
 }

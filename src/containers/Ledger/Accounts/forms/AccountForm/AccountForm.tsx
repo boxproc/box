@@ -13,19 +13,19 @@ import {
   AuxiliaryCounters,
   GeneralAccountInfo,
   Overdue,
-} from 'containers/Ledger/Accounts/сomponents';
+} from 'containers/Ledger/Accounts/components';
 
 import { HandleUpdateLedgerAccount } from 'store/domains';
 
-interface EditAccountFormProps extends ExternalSpinnerProps {
+interface AccountFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   updateLedgerAccount: HandleUpdateLedgerAccount;
 }
 
-type EditAccountFormAllProps = EditAccountFormProps &
-  InjectedFormProps<{}, EditAccountFormProps>;
+type AccountFormAllProps = AccountFormProps &
+  InjectedFormProps<{}, AccountFormProps>;
 
-const EditAccountForm: React.FC<EditAccountFormAllProps> = ({
+const AccountForm: React.FC<AccountFormAllProps> = ({
   onCancel,
   handleSubmit,
   updateLedgerAccount,
@@ -58,8 +58,8 @@ const EditAccountForm: React.FC<EditAccountFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EditAccountFormProps>({
+export default reduxForm<{}, AccountFormProps>({
   form: formNames.EDIT_LEDGER_ACCOUNT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(EditAccountForm));
+})(withSpinner()(AccountForm));
