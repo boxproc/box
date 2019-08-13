@@ -13,11 +13,12 @@ export const selectLedgerCustomers = createSelector(
   selectInstitutionsOptions,
   selectCountryCodes,
   (items, institutions, countries) => items && items.map(item => {
+    const country = countries.find(el => el.value === item.address_country_code);
+
     return {
       ...prepareValuesToRender(item),
       institutionId: institutions.find(el => el.value === item.institution_id).label,
-      addressCountryCode: countries.find(el => el.value === item.address_country_code)
-        && countries.find(el => el.value === item.address_country_code).label,
+      addressCountryCode: country && `${country.value} - ${country.label}`,
     };
   })
 );

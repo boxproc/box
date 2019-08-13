@@ -40,7 +40,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   const columns = [
     {
       sortable: true,
-      Header: <Header title="UI Items" showSortIcons={true} />,
+      Header: <Header title="UI Items" />,
       accessor: 'uiItem',
       Cell: (props: SCell<'uiItem'>) => (
         <Cell
@@ -51,7 +51,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     {
       maxWidth: 200,
       sortable: true,
-      Header: <Header title="Permission" showSortIcons={true} />,
+      Header: <Header title="Permission" />,
       accessor: 'permission',
       Cell: (props: SCell<'permission'>) => (
         <Cell

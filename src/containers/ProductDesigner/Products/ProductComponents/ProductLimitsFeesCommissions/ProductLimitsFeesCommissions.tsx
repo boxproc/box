@@ -69,8 +69,8 @@ const ProductLimitsFeesCommissions: React.FC<ProductLimitsFeesCommissionsProps> 
             id="cyclePurchaseTransactionsNumberThreshold"
             name="cyclePurchaseTransactionsNumberThreshold"
             component={InputField}
-            label="Cycle Purchase Transactions Number Threshold"
-            placeholder="Enter Cycle Purchase Transactions Number Threshold"
+            label="Cycle Purchase Transactions # Threshold"
+            placeholder="Enter Cycle Purchase Transactions # Threshold"
             isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
@@ -93,8 +93,8 @@ const ProductLimitsFeesCommissions: React.FC<ProductLimitsFeesCommissionsProps> 
             id="CycleCashTransactionsNumberThreshold"
             name="CycleCashTransactionsNumberThreshold"
             component={InputField}
-            label="Cycle Cash Transactions Number Threshold"
-            placeholder="Enter Cycle Cash Transactions Number Threshold "
+            label="Cycle Cash Transactions # Threshold"
+            placeholder="Enter Cycle Cash Transactions # Threshold "
             isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
@@ -117,8 +117,8 @@ const ProductLimitsFeesCommissions: React.FC<ProductLimitsFeesCommissionsProps> 
             id="cycleOtherTransactionsNumberThreshold"
             name="cycleOtherTransactionsNumberThreshold"
             component={InputField}
-            label="Cycle 'Other' Transactions Number Threshold"
-            placeholder="Enter Cycle 'Other' Transactions Number Threshold"
+            label="Cycle 'Other' Transactions # Threshold"
+            placeholder="Enter Cycle 'Other' Transactions # Threshold"
             isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}

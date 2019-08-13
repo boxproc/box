@@ -66,7 +66,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="eventId"
               name="eventId"
@@ -77,7 +77,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               isLoading={isAdminEventsLoading}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="actionType"
               name="actionType"

@@ -13,7 +13,7 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     filterable: true,
-    Header: <Header title="ID" showSortIcons={true} />,
+    Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: CCell<'id'>) => (
       <Cell
@@ -25,7 +25,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Institution" showSortIcons={true} />,
+    Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: CCell<'institutionId'>) => (
       <Cell
@@ -36,7 +36,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="First Name" showSortIcons={true} />,
+    Header: <Header title="First Name" />,
     accessor: 'firstName',
     Cell: (props: CCell<'firstName'>) => (
       <Cell
@@ -47,7 +47,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Last Name" showSortIcons={true} />,
+    Header: <Header title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: CCell<'lastName'>) => (
       <Cell
@@ -58,7 +58,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Status" showSortIcons={true} />,
+    Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: CCell<'status'>) => (
       <Cell
@@ -69,7 +69,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Date of Birth" showSortIcons={true} />,
+    Header: <Header title="Date of Birth" />,
     accessor: 'dateOfBirth',
     Cell: (props: CCell<'dateOfBirth'>) => (
       <Cell
@@ -80,7 +80,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Email" showSortIcons={true} />,
+    Header: <Header title="Email" />,
     accessor: 'email',
     Cell: (props: CCell<'email'>) => (
       <Cell
@@ -91,7 +91,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Mobile Phone" showSortIcons={true} />,
+    Header: <Header title="Mobile Phone" />,
     accessor: 'mobilePhoneNumber',
     Cell: (props: CCell<'mobilePhoneNumber'>) => (
       <Cell

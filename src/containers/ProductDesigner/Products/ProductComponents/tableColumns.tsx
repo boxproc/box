@@ -14,7 +14,7 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     filterable: true,
-    Header: <Header title="ID" showSortIcons={true} />,
+    Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: PCell<'id'>) => (
       <Cell
@@ -26,7 +26,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Institution" showSortIcons={true} />,
+    Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: PCell<'institutionId'>) => (
       <Cell
@@ -37,7 +37,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Name" showSortIcons={true} />,
+    Header: <Header title="Name" />,
     accessor: 'name',
     Cell: (props: PCell<'name'>) => (
       <Cell
@@ -48,7 +48,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Description" showSortIcons={true} />,
+    Header: <Header title="Description" />,
     accessor: 'description',
     Cell: (props: PCell<'description'>) => (
       <Cell
@@ -60,7 +60,7 @@ export const tableColumns = [
     maxWidth: 130,
     sortable: true,
     filterable: true,
-    Header: <Header title="Status" showSortIcons={true} />,
+    Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: PCell<'status'>) => (
       <Cell
@@ -72,7 +72,7 @@ export const tableColumns = [
     maxWidth: 130,
     sortable: true,
     filterable: true,
-    Header: <Header title="Product Type" showSortIcons={true} />,
+    Header: <Header title="Product Type" />,
     accessor: 'productType',
     Cell: (props: PCell<'productType'>) => (
       <Cell
@@ -84,7 +84,7 @@ export const tableColumns = [
     maxWidth: 130,
     sortable: true,
     filterable: true,
-    Header: <Header title="Scheme" showSortIcons={true} />,
+    Header: <Header title="Scheme" />,
     accessor: 'scheme',
     Cell: (props: PCell<'scheme'>) => (
       <Cell
@@ -96,7 +96,7 @@ export const tableColumns = [
     maxWidth: 130,
     sortable: true,
     filterable: true,
-    Header: <Header title="Currency code" showSortIcons={true} />,
+    Header: <Header title="Currency code" />,
     accessor: 'currencyCode',
     Cell: (props: PCell<'currencyCode'>) => (
       <Cell
@@ -107,7 +107,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="History Retention Number of Days" showSortIcons={true} />,
+    Header: <Header title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDay',
     Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
       <Cell
@@ -119,7 +119,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Default Statement Cycle" showSortIcons={true} />,
+    Header: <Header title="Default Statement Cycle" />,
     accessor: 'defaultStatementCycleId',
     Cell: (props: PCell<'defaultStatementCycleId'>) => (
       <Cell
@@ -130,7 +130,7 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Locked" showSortIcons={true} />,
+    Header: <Header title="Locked" />,
     accessor: 'lockedFlag',
     Cell: renderCheckBoxIcon(),
   },

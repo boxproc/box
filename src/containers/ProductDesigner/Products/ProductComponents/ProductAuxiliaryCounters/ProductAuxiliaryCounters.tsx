@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField } from 'components/Form';
+import { Delimiter } from 'components/Text';
 
 import { formErrorUtil } from 'utils';
 
@@ -16,7 +17,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="auxCounter1Description"
             name="auxCounter1Description"
@@ -27,7 +28,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="25px">
           <Field
             id="auxCounter1Enabled"
             name="auxCounter1Enabled"
@@ -37,7 +38,8 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             isDisabled={false}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Delimiter />
+        <Box width="230px" p="10px">
           <Field
             id="auxCounter2Description"
             name="auxCounter2Description"
@@ -48,7 +50,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="25px">
           <Field
             id="auxCounter2Enabled"
             name="auxCounter2Enabled"
@@ -58,7 +60,8 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             isDisabled={false}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Delimiter />
+        <Box width="230px" p="10px">
           <Field
             id="auxCounter3Description"
             name="auxCounter3Description"
@@ -69,7 +72,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="25px">
           <Field
             id="auxCounter3Enabled"
             name="auxCounter3Enabled"

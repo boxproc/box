@@ -22,7 +22,7 @@ const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
     <Modal
       name={modalName}
       title="Add System Property"
-      maxContainerWidth={600}
+      maxContainerWidth={550}
     >
       <AddSystemPropertyForm
         onCancel={() => closeModal(modalName)}

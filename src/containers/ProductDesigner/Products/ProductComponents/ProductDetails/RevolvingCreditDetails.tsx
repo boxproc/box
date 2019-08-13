@@ -14,7 +14,7 @@ const RevolvingCreditDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="aprDefault"
             name="aprDefault"
@@ -25,7 +25,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="aprCash"
             name="aprCash"
@@ -36,7 +36,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="aprSales"
             name="aprSales"
@@ -47,7 +47,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="aprBalanceTransfer"
             name="aprBalanceTransfer"
@@ -58,7 +58,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="aprFee"
             name="aprFee"
@@ -69,7 +69,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="feeLatePayment"
             name="feeLatePayment"
@@ -80,7 +80,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="feeExceedLimit"
             name="feeExceedLimit"
@@ -91,7 +91,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="feeUnpaid"
             name="feeUnpaid"
@@ -102,7 +102,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="feeOverLimit"
             name="feeOverLimit"
@@ -113,7 +113,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="minimumPaymentPercent"
             name="minimumPaymentPercent"
@@ -124,7 +124,7 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="minimumPaymentAmount"
             name="minimumPaymentAmount"
@@ -135,13 +135,13 @@ const RevolvingCreditDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="paymentGraceNumberOfDays"
             name="paymentGraceNumberOfDays"
-            placeholder="Enter Payment Grace Number Of Days"
+            placeholder="Enter #"
             component={InputField}
-            label="Payment Grace Number Of Days"
+            label="Payment Grace # Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
           />

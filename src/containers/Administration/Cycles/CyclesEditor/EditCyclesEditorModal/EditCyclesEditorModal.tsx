@@ -23,7 +23,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
     <Modal
       name={modalName}
       title="Edit Cycle Editor Record"
-      minContainerHeight={410}
+      maxContainerWidth={550}
     >
       <DefineCycleEditorForm
         onCancel={() => closeModal(modalName)}

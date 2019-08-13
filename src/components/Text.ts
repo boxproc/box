@@ -19,7 +19,7 @@ interface TitleProps {
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-size: 22px;
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
@@ -49,8 +49,12 @@ export const Paragraph = styled.p<ParagraphProps>`
 `;
 
 export const Hr = styled.div`
-  margin-top: 30px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 5px;
   border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
+  width: 100%;
+`;
+
+export const Delimiter = styled.div`
   width: 100%;
 `;

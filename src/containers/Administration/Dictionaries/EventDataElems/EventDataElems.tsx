@@ -66,7 +66,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
       maxWidth: 100,
       sortable: true,
       filterable: true,
-      Header: <Header title="ID" showSortIcons={true} />,
+      Header: <Header title="ID" />,
       accessor: 'eventId',
       Cell: (props: EDECell<'eventId'>) => (
         <Cell
@@ -78,7 +78,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Name" showSortIcons={true} />,
+      Header: <Header title="Name" />,
       accessor: 'name',
       Cell: (props: EDECell<'name'>) => (
         <Cell
@@ -89,7 +89,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Description" showSortIcons={true} />,
+      Header: <Header title="Description" />,
       accessor: 'description',
       Cell: (props: EDECell<'description'>) => (
         <Cell
@@ -100,7 +100,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Data Type" showSortIcons={true} />,
+      Header: <Header title="Data Type" />,
       accessor: 'dataType',
       Cell: (props: EDECell<'dataType'>) => (
         <Cell

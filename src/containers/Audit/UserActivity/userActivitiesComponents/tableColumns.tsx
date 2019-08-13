@@ -12,7 +12,7 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     filterable: true,
-    Header: <Header title="ID" showSortIcons={true} />,
+    Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: ACell<'id'>) => (
       <Cell
@@ -25,7 +25,7 @@ export const tableColumns = [
     maxWidth: 200,
     sortable: true,
     filterable: true,
-    Header: <Header title="User Name" showSortIcons={true} />,
+    Header: <Header title="User Name" />,
     accessor: 'username',
     Cell: (props: ACell<'username'>) => (
       <Cell
@@ -37,7 +37,7 @@ export const tableColumns = [
     maxWidth: 180,
     sortable: true,
     filterable: true,
-    Header: <Header title="Event Date Time" showSortIcons={true} />,
+    Header: <Header title="Event Date Time" />,
     accessor: 'eventDatetime',
     Cell: (props: ACell<'eventDatetime'>) => (
       <Cell
@@ -50,7 +50,7 @@ export const tableColumns = [
     maxWidth: 300,
     sortable: true,
     filterable: true,
-    Header: <Header title="Api Name" showSortIcons={true} />,
+    Header: <Header title="Api Name" />,
     accessor: 'apiName',
     Cell: (props: ACell<'apiName'>) => (
       <Cell
@@ -61,7 +61,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Description" showSortIcons={true} />,
+    Header: <Header title="Description" />,
     accessor: 'description',
     Cell: (props: ACell<'description'>) => (
       <Cell

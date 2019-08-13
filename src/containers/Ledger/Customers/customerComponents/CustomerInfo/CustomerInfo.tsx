@@ -35,7 +35,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -47,7 +47,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width="180px" p="10px">
           <Field
             id="status"
             name="status"
@@ -59,7 +59,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 4]} p="10px">
           <Field
             id="firstName"
@@ -80,7 +79,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width="180px" p="10px">
           <Field
             id="dateOfBirth"
             name="dateOfBirth"
@@ -90,7 +89,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 4]} p="10px">
           <Field
             id="email"
@@ -101,7 +99,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.email]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"
@@ -114,7 +112,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           />
         </Box>
         <Hr />
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressLine1"
             name="addressLine1"
@@ -124,7 +122,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -134,7 +132,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressLine3"
             name="addressLine3"
@@ -143,7 +141,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             placeholder="Enter Address Line 3"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressLine4"
             name="addressLine4"
@@ -152,7 +150,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             placeholder="Enter Address Line 4"
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="addressTown"
             name="addressTown"
@@ -162,7 +160,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="addressPostCode"
             name="addressPostCode"
@@ -172,17 +170,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[3 / 5]} p="10px">
-          <Field
-            id="addressCountryCode"
-            name="addressCountryCode"
-            component={InputField}
-            label="Address Country Code"
-            placeholder="Enter Country Code"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="nationalityCountryCode"
             name="nationalityCountryCode"
@@ -192,8 +180,18 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Box width={[2 / 5]} p="10px">
+          <Field
+            id="addressCountryCode"
+            name="addressCountryCode"
+            component={InputField}
+            label="Address Country Code"
+            placeholder="Enter Country Code"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
         <Hr />
-        <Box width={[1 / 4]} p="10px">
+        <Box width="180px" p="10px">
           <Field
             id="dateCreated"
             name="dateCreated"
@@ -203,7 +201,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             disabled={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width="180px" p="10px">
           <Field
             id="dateClosed"
             name="dateClosed"

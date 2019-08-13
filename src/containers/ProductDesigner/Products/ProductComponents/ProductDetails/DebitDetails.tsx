@@ -14,7 +14,7 @@ const DebitDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="aprOverdraft"
             name="aprOverdraft"

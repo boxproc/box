@@ -14,13 +14,13 @@ const PrepaidDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="dormantAfterNumberOfDays"
             name="dormantAfterNumberOfDays"
-            placeholder="Enter Dormant After Number Of Days"
+            placeholder="Enter #"
             component={InputField}
-            label="Dormant After Number Of Days"
+            label="Dormant After # Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
             isNumber={true}
           />

@@ -4,10 +4,9 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField, SelectField } from 'components/Form';
+import { Delimiter } from 'components/Text';
 
-import {
-  loanTypesOptions,
-} from 'consts';
+import { loanTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
@@ -18,7 +17,7 @@ const LoanDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="loanType"
             name="loanType"
@@ -29,7 +28,7 @@ const LoanDetails: React.FC = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="apr"
             name="apr"
@@ -40,7 +39,8 @@ const LoanDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Delimiter />
+        <Box width="180px" p="10px">
           <Field
             id="feeLatePayment"
             name="feeLatePayment"
@@ -51,13 +51,13 @@ const LoanDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="paymentGraceNumberOfDays"
             name="paymentGraceNumberOfDays"
-            placeholder="Enter Payment Grace Number Of Days"
+            placeholder="Enter #"
             component={InputField}
-            label="Payment Grace Number Of Days"
+            label="Payment Grace # Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
           />

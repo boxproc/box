@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField, SelectField } from 'components/Form';
+import { CheckboxField, InputField, SelectField, TextField } from 'components/Form';
 import {
   withLoadCurrencyCodes,
   WithLoadCurrencyCodesProps,
@@ -40,10 +40,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   return (
     <Box mx="-10px">
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="productType"
             name="productType"
@@ -55,7 +55,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -67,7 +67,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="name"
             name="name"
@@ -77,12 +77,12 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="description"
             name="description"
             placeholder="Enter Description"
-            component={InputField}
+            component={TextField}
             label="Description"
           />
         </Box>
@@ -111,17 +111,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
-            id="historyRetentionNumberOfDay"
-            name="historyRetentionNumberOfDay"
-            placeholder="Enter History Retention Number of Days"
-            component={InputField}
-            label="History Retention Number of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
-            isNumber={true}
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
             id="currencyCode"
             name="currencyCode"
             component={SelectField}
@@ -133,7 +122,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="defaultStatementCycleId"
             name="defaultStatementCycleId"
@@ -144,7 +133,18 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box p="10px" width="100%">
+        <Box width="125px" p="10px">
+          <Field
+            id="historyRetentionNumberOfDay"
+            name="historyRetentionNumberOfDay"
+            placeholder="Enter #"
+            component={InputField}
+            label="Retention # of Days"
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            isNumber={true}
+          />
+        </Box>
+        <Box width="125px" p="10px" mt="20px">
           <Field
             id="lockedFlag"
             name="lockedFlag"

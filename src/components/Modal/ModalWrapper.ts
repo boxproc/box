@@ -42,7 +42,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin: 50px 0;
+    margin: 5px 0;
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;

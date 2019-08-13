@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField, SelectField } from 'components/Form';
+import { Delimiter } from 'components/Text';
 
 import { savingsTypesOptions } from 'consts';
 
@@ -16,7 +17,7 @@ const SavingsDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="180px" p="10px">
           <Field
             id="savingsType"
             name="savingsType"
@@ -27,7 +28,7 @@ const SavingsDetails: React.FC = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="apr"
             name="apr"
@@ -38,7 +39,8 @@ const SavingsDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Delimiter />
+        <Box width="230px" p="10px">
           <Field
             id="minimumDepositAllowed"
             name="minimumDepositAllowed"
@@ -49,7 +51,7 @@ const SavingsDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="maximumDepositAllowed"
             name="maximumDepositAllowed"
@@ -60,7 +62,7 @@ const SavingsDetails: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="maximumMonthlyDeposit"
             name="maximumMonthlyDeposit"
