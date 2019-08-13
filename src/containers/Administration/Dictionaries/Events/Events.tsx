@@ -36,7 +36,7 @@ export const Events: React.FC<EventsProps> = ({
       maxWidth: 100,
       sortable: true,
       filterable: true,
-      Header: <Header title="ID" showSortIcons={true}/>,
+      Header: <Header title="ID" />,
       accessor: 'id',
       Cell: (props: EventsCell<'id'>) => (
         <Cell
@@ -49,7 +49,7 @@ export const Events: React.FC<EventsProps> = ({
       maxWidth: 300,
       sortable: true,
       filterable: true,
-      Header: <Header title="Name" showSortIcons={true}/>,
+      Header: <Header title="Name" />,
       accessor: 'name',
       Cell: (props: EventsCell<'name'>) => (
         <Cell

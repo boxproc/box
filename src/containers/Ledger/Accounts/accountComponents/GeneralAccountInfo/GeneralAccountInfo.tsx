@@ -178,7 +178,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 3]} p="10px">
           <Field
             id="statementCycleId"

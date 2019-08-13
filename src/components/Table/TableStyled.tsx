@@ -55,22 +55,21 @@ export const TableStyled = styled.div`
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
-    padding: 10px;
+    padding: 6px;
     outline: 0;
     text-align: left;
+  }
+
+  .ReactTable .rt-thead .rt-th > div {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .ReactTable .rt-thead.-header {
     background-color: ${({ theme }) => theme.lightGrayColor};
     box-shadow: none;
-  }
-
-  .ReactTable  .rt-th:first-child, .rt-td:first-child {
-    padding-left: 20px !important;
-  }
-
-  .ReactTable  .rt-th:last-child, .rt-td:last-child {
-    padding-right: 20px !important;
   }
 
   .ReactTable .rt-tbody .rt-tr-group {

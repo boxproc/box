@@ -6,6 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { OkCancelButtons } from 'components/Buttons';
 import { CheckboxField, InputField } from 'components/Form';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
@@ -69,6 +70,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
           </Box>
         </Flex>
       </Box>
+      <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"

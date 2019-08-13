@@ -41,20 +41,20 @@ interface SystemPropertiesProps {
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
 
 const renderDeleteButton = (deleteAction: (name: string) => void) =>
-(cellInfo: CellInfo) => {
-  const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
-  const propName = cellInfo.original.propertyName;
+  (cellInfo: CellInfo) => {
+    const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
+    const propName = cellInfo.original.propertyName;
 
-  return !isLocked && (
-    <Button
-      text="Delete"
-      iconName="delete"
-      withConfirmation={true}
-      confirmationText={`Delete "${propName}" system property?`}
-      onClick={() => deleteAction(propName)}
-    />
-  );
-};
+    return !isLocked && (
+      <Button
+        text="Delete"
+        iconName="delete"
+        withConfirmation={true}
+        confirmationText={`Delete "${propName}" system property?`}
+        onClick={() => deleteAction(propName)}
+      />
+    );
+  };
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -90,7 +90,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Property Name" showSortIcons={true} />,
+      Header: <Header title="Property Name" />,
       accessor: 'propertyName',
       Cell: (props: SPCell<'propertyName'>) => (
         <Cell
@@ -101,14 +101,14 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Current Value" showSortIcons={true} />,
+      Header: <Header title="Current Value" />,
       accessor: 'currentValue',
       Cell: renderEditable(updateAdminSysProps),
     },
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Previous Value" showSortIcons={true} />,
+      Header: <Header title="Previous Value" />,
       accessor: 'previousValue',
       Cell: (props: SPCell<'previousValue'>) => (
         <Cell
@@ -120,7 +120,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Last Datetime" showSortIcons={true} />,
+      Header: <Header title="Last Datetime" />,
       accessor: 'lastDatetime',
       Cell: (props: SPCell<'lastDatetime'>) => (
         <Cell
@@ -132,7 +132,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       maxWidth: 100,
       sortable: true,
-      Header: <Header title="Locked" showSortIcons={true} />,
+      Header: <Header title="Locked" />,
       accessor: 'lockedFlag',
       Cell: renderCheckBoxIcon(updateAdminSysProps),
     },

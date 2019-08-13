@@ -7,7 +7,8 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
-import { AdminUserItem,
+import {
+  AdminUserItem,
   HandleFilterUsers,
   HandleGetAdminUser,
 } from 'store/domains/administration/permissions/users';
@@ -60,7 +61,7 @@ export const User: React.FC<UserFilterProps> = ({
       maxWidth: 100,
       sortable: true,
       filterable: true,
-      Header: <Header title="ID" showSortIcons={true} />,
+      Header: <Header title="ID" />,
       accessor: 'id',
       Cell: (props: SCell<'id'>) => (
         <Cell
@@ -72,7 +73,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Username" showSortIcons={true} />,
+      Header: <Header title="Username" />,
       accessor: 'username',
       Cell: (props: SCell<'username'>) => (
         <Cell
@@ -83,7 +84,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="First Name" showSortIcons={true} />,
+      Header: <Header title="First Name" />,
       accessor: 'firstName',
       Cell: (props: SCell<'firstName'>) => (
         <Cell
@@ -94,7 +95,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Last Name" showSortIcons={true} />,
+      Header: <Header title="Last Name" />,
       accessor: 'lastName',
       Cell: (props: SCell<'lastName'>) => (
         <Cell
@@ -105,7 +106,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Email" showSortIcons={true} />,
+      Header: <Header title="Email" />,
       accessor: 'email',
       Cell: (props: SCell<'email'>) => (
         <Cell
@@ -116,7 +117,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Status" showSortIcons={true} />,
+      Header: <Header title="Status" />,
       accessor: 'status',
       Cell: (props: SCell<'status'>) => (
         <Cell
@@ -127,7 +128,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Password entry counter" showSortIcons={true} />,
+      Header: <Header title="Password entry counter" />,
       accessor: 'passwordEntryCounter',
       Cell: (props: SCell<'passwordEntryCounter'>) => (
         <Cell
@@ -139,7 +140,7 @@ export const User: React.FC<UserFilterProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Datetime of last login" showSortIcons={true} />,
+      Header: <Header title="Datetime of last login" />,
       accessor: 'datetimeOfLastLogin',
       Cell: (props: SCell<'datetimeOfLastLogin'>) => (
         <Cell

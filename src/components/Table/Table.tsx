@@ -19,12 +19,11 @@ interface TableItemWrapperProps {
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
-  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
   align-items: flex-start;
-  font-size: ${({ isDate, theme }) => isDate ? '12px' : '13px'};
+  font-size: ${({ isDate }) => isDate ? '12px' : '13px'};
   line-height: 1.5;
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
@@ -32,11 +31,11 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   color: ${({ isDate, theme }) => isDate ? theme.grayColor : 'inherit'};
 
   .title {
-    padding-right: 20px;
     color: ${({ theme }) => theme.blackColorOpacity8};
     font-weight: 500;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: center;
   }
 
   &:focus {
@@ -49,9 +48,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
 `;
 
 const SortIconsWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -80,14 +77,12 @@ export const Header: React.FC<HeaderProps> = ({
         >
           {title}
         </Box>
-        <SortIconsWrapper>
-          {showSortIcons &&
-            <React.Fragment>
-              <ChevronIcon className="icon up-icon" />
-              <ChevronIcon className="icon down-icon" />
-            </React.Fragment>
-          }
-        </SortIconsWrapper>
+        {showSortIcons &&
+          <SortIconsWrapper>
+            <ChevronIcon className="icon up-icon" />
+            <ChevronIcon className="icon down-icon" />
+          </SortIconsWrapper>
+        }
       </TableItemWrapper>
     </Flex>
   );

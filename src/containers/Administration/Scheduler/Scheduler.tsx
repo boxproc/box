@@ -56,7 +56,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       maxWidth: 100,
       sortable: true,
       filterable: true,
-      Header: <Header title="ID" showSortIcons={true} />,
+      Header: <Header title="ID" />,
       accessor: 'id',
       Cell: (props: SCell<'id'>) => (
         <Cell
@@ -69,7 +69,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       maxWidth: 130,
       sortable: true,
       filterable: true,
-      Header: <Header title="Institution ID" showSortIcons={true} />,
+      Header: <Header title="Institution ID" />,
       accessor: 'institutionId',
       Cell: (props: SCell<'institutionId'>) => (
         <Cell
@@ -80,7 +80,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Name" showSortIcons={true} />,
+      Header: <Header title="Name" />,
       accessor: 'name',
       Cell: (props: SCell<'name'>) => (
         <Cell
@@ -91,7 +91,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Description" showSortIcons={true} />,
+      Header: <Header title="Description" />,
       accessor: 'description',
       Cell: (props: SCell<'description'>) => (
         <Cell
@@ -102,7 +102,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Status" showSortIcons={true} />,
+      Header: <Header title="Status" />,
       accessor: 'status',
       Cell: (props: SCell<'status'>) => (
         <Cell
@@ -113,7 +113,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Cron Expression" showSortIcons={true} />,
+      Header: <Header title="Cron Expression" />,
       accessor: 'cronExpression',
       Cell: (props: SCell<'cronExpression'>) => (
         <Cell
@@ -124,7 +124,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Executable Type" showSortIcons={true} />,
+      Header: <Header title="Executable Type" />,
       accessor: 'executableType',
       Cell: (props: SCell<'executableType'>) => (
         <Cell
@@ -135,7 +135,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Executable" showSortIcons={true} />,
+      Header: <Header title="Executable" />,
       accessor: 'executable',
       Cell: (props: SCell<'executable'>) => (
         <Cell
@@ -146,7 +146,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Log Location" showSortIcons={true} />,
+      Header: <Header title="Log Location" />,
       accessor: 'logLocation',
       Cell: (props: SCell<'logLocation'>) => (
         <Cell
@@ -157,7 +157,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Last Execution Datetime" showSortIcons={true} />,
+      Header: <Header title="Last Execution Datetime" />,
       accessor: 'lastExecutionDatetime',
       Cell: (props: SCell<'lastExecutionDatetime'>) => (
         <Cell
@@ -169,7 +169,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     {
       sortable: true,
       filterable: true,
-      Header: <Header title="Last Execution Result" showSortIcons={true} />,
+      Header: <Header title="Last Execution Result" />,
       accessor: 'lastExecutionResult',
       Cell: (props: SCell<'lastExecutionResult'>) => (
         <Cell

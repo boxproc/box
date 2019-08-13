@@ -14,7 +14,7 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     filterable: true,
-    Header: <Header title="ID" showSortIcons={true} />,
+    Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: ACell<'id'>) => (
       <Cell
@@ -26,7 +26,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Institution" showSortIcons={true} />,
+    Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: ACell<'institutionId'>) => (
       <Cell
@@ -37,7 +37,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Product Name" showSortIcons={true} />,
+    Header: <Header title="Product Name" />,
     accessor: 'productName',
     Cell: (props: ACell<'productName'>) => (
       <Cell
@@ -48,7 +48,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Account Alias" showSortIcons={true} />,
+    Header: <Header title="Account Alias" />,
     accessor: 'accountAlias',
     Cell: (props: ACell<'accountAlias'>) => (
       <Cell
@@ -60,7 +60,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Customer ID" showSortIcons={true} />,
+    Header: <Header title="Customer ID" />,
     accessor: 'customerId',
     Cell: (props: ACell<'customerId'>) => (
       <Cell
@@ -72,7 +72,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="First Name" showSortIcons={true} />,
+    Header: <Header title="First Name" />,
     accessor: 'customerFirstName',
     Cell: (props: ACell<'customerFirstName'>) => (
       <Cell
@@ -83,7 +83,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Last Name" showSortIcons={true} />,
+    Header: <Header title="Last Name" />,
     accessor: 'customerLastName',
     Cell: (props: ACell<'customerLastName'>) => (
       <Cell
@@ -94,7 +94,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Status" showSortIcons={true} />,
+    Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: ACell<'status'>) => (
       <Cell
@@ -105,7 +105,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Balance Settled" showSortIcons={true} />,
+    Header: <Header title="Balance Settled" />,
     accessor: 'balanceSettled',
     Cell: (props: ACell<'balanceSettled'>) => (
       <Cell
@@ -117,7 +117,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Balance Available" showSortIcons={true} />,
+    Header: <Header title="Balance Available" />,
     accessor: 'balanceAvailable',
     Cell: (props: ACell<'balanceAvailable'>) => (
       <Cell
@@ -129,7 +129,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Amount Due Repayment" showSortIcons={true} />,
+    Header: <Header title="Amount Due Repayment" />,
     accessor: 'amountDueRepayment',
     Cell: (props: ACell<'amountDueRepayment'>) => (
       <Cell
@@ -141,7 +141,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Balance Limit" showSortIcons={true} />,
+    Header: <Header title="Balance Limit" />,
     accessor: 'balanceLimit',
     Cell: (props: ACell<'balanceLimit'>) => (
       <Cell
@@ -153,7 +153,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Balance Limit Shared" showSortIcons={true} />,
+    Header: <Header title="Balance Limit Shared" />,
     accessor: 'balanceLimitShared',
     Cell: (props: ACell<'balanceLimitShared'>) => (
       <Cell
@@ -165,7 +165,7 @@ export const tableColumns = [
   {
     sortable: true,
     filterable: true,
-    Header: <Header title="Accrued Interest" showSortIcons={true} />,
+    Header: <Header title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: ACell<'accruedInterest'>) => (
       <Cell

@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField, SelectField } from 'components/Form';
+import { Delimiter } from 'components/Text';
 
 import { formErrorUtil } from 'utils';
 
@@ -16,7 +17,7 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="participatingSchemes"
             name="participatingSchemes"
@@ -34,7 +35,7 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="230px" p="10px">
           <Field
             id="discountOrBond"
             name="discountOrBond"
@@ -49,7 +50,8 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Delimiter />
+        <Box width="160px" p="10px">
           <Field
             id="discount"
             name="discount"
@@ -61,7 +63,7 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width="190px" p="10px">
           <Field
             id="discountThreshold"
             name="discountThreshold"
