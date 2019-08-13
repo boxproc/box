@@ -3,7 +3,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import AddAccountModal from './AddAccountModal';
 
-import { closeModal } from 'store/domains';
+import { closeModal, selectInstitutionsOptions } from 'store/domains';
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  institutionsOptions: selectInstitutionsOptions(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -13,6 +18,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddAccountModal);

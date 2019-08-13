@@ -16,10 +16,13 @@ import {
 } from 'containers/Ledger/Accounts/components';
 
 import { HandleUpdateLedgerAccount } from 'store/domains';
+import { SelectValues } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
-  onCancel: () => void;
+  institutionsOptions: Array<SelectValues>;
   updateLedgerAccount: HandleUpdateLedgerAccount;
+  onCancel: () => void;
+  mode: 'add' | 'edit';
 }
 
 type AccountFormAllProps = AccountFormProps &
@@ -29,7 +32,11 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   onCancel,
   handleSubmit,
   updateLedgerAccount,
+  institutionsOptions,
+  mode,
 }) => {
+  const isEditMode = mode === 'edit';
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateLedgerAccount(data)),
     [handleSubmit]
@@ -39,13 +46,20 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <Tabs>
         <Panel title="General">
-          <GeneralAccountInfo />
+          <GeneralAccountInfo
+            institutionsOptions={institutionsOptions}
+            isEditMode={isEditMode}
+          />
         </Panel>
         <Panel title="Auxiliary Counters">
-          <AuxiliaryCounters />
+          <AuxiliaryCounters
+            isEditMode={isEditMode}
+          />
         </Panel>
         <Panel title="Overdue">
-          <Overdue />
+          <Overdue
+            isEditMode={isEditMode}
+          />
         </Panel>
       </Tabs>
       <Hr />
@@ -59,7 +73,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 };
 
 export default reduxForm<{}, AccountFormProps>({
-  form: formNames.EDIT_LEDGER_ACCOUNT,
+  form: formNames.LEDGER_ACCOUNT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AccountForm));

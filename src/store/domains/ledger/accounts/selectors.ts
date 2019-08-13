@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
@@ -27,11 +28,14 @@ export const selectLedgerCurrentAccount = createSelector(
   selectLedgerAccounts,
   selectLedgerAccountCurrentId,
   selectInstitutionsOptions,
-  (accounts, currentId, institutions) => {
+  selectInstitutionProductsOptions,
+  (accounts, currentId, institutions, institutionProducts) => {
     const current = accounts.filter(el => el.id === currentId)[0];
+
     return {
       ...preparedValuesDetailsToRender(current),
       institutionId: institutions.find(el => el.value === currentId),
+      productName: institutionProducts.find(el => el.label === current.productName),
     };
   }
 );

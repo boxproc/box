@@ -134,6 +134,7 @@ export const preparedValuesDetailsToRender = (values: Partial<LedgerAccountItemP
   return {
     ...values,
     status: statusTypesOptions.find(el => el.label === values.status),
-    // productName: productTypesOptions.find(el => el.label === values.productType),
+    statementCycleId: statementCyclesOptions
+      .find(el => el.value === values.statementCycleId),
   };
 };

@@ -20,6 +20,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             component={InputField}
             label="ID"
             disabled={true}
+            isNumber={true}
           />
         </Box>
         <Box width="150px" p="10px">
@@ -29,6 +30,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             component={InputField}
             label="Account ID"
             disabled={true}
+            isNumber={true}
           />
         </Box>
         <Delimiter />
@@ -48,6 +50,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             component={InputField}
             label="Transaction Type ID"
             disabled={true}
+            isNumber={true}
           />
         </Box>
         <Box width={[1]} p="10px">

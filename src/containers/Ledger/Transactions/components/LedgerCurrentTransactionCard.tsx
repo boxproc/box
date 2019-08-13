@@ -19,6 +19,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             component={InputField}
             label="Card ID"
             disabled={true}
+            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">

@@ -7,7 +7,13 @@ import { InputField } from 'components/Form';
 
 import { formErrorUtil } from 'utils';
 
-const AuxiliaryCounters: React.FC = () => {
+interface AuxiliaryCountersProps {
+  isEditMode: boolean;
+}
+
+const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
+  isEditMode,
+}) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -21,7 +27,7 @@ const AuxiliaryCounters: React.FC = () => {
             component={InputField}
             label="Aux Counter 1"
             placeholder="Enter Aux Counter 1"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.isNumber]}
           />
@@ -33,7 +39,7 @@ const AuxiliaryCounters: React.FC = () => {
             component={InputField}
             label="Aux Counter 2"
             placeholder="Enter Aux Counter 2"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.isNumber]}
           />
@@ -45,7 +51,7 @@ const AuxiliaryCounters: React.FC = () => {
             component={InputField}
             label="Aux Counter 3"
             placeholder="Enter Aux Counter 3"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.isNumber]}
           />

@@ -6,9 +6,10 @@ import { Box, Flex } from '@rebass/grid';
 import { InputField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
 
+import { HandleGetInstitutionProducts } from 'store/domains';
+
 import {
   dateFormat,
-  productTypesOptions,
   statementCyclesOptions,
   statusTypesOptions,
 } from 'consts';
@@ -19,11 +20,32 @@ import { formErrorUtil } from 'utils';
 
 export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
+  institutionProductsOptions: Array<SelectValues>;
+  isLoadingInstitutionProducts: boolean;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  institutionValue: SelectValues;
+  isEditMode: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
+  institutionValue,
+  institutionProductsOptions,
+  isLoadingInstitutionProducts,
+  getInstitutionProducts,
+  isEditMode = false,
 }) => {
+  const currentInstitutionId = institutionValue && institutionValue.value;
+
+  React.useEffect(
+    () => {
+      if (currentInstitutionId) {
+        getInstitutionProducts(currentInstitutionId);
+      }
+    },
+    [getInstitutionProducts, currentInstitutionId]
+  );
+
   return (
     <Box mx="-10px">
       <Flex
@@ -38,7 +60,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionsOptions}
-            isDisabled={true}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -49,22 +71,25 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={SelectField}
             label="Product"
             placeholder="Select Product"
-            isDisabled={true}
-            options={productTypesOptions}
+            isDisabled={isEditMode}
+            options={institutionProductsOptions}
+            isLoading={isLoadingInstitutionProducts}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" p="10px">
-          <Field
-            id="productId"
-            name="productId"
-            component={InputField}
-            label="Product ID"
-            placeholder="Enter ID"
-            disabled={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
+        {isEditMode && (
+          <Box width="150px" p="10px">
+            <Field
+              id="productId"
+              name="productId"
+              component={InputField}
+              label="Product ID"
+              placeholder="Enter ID"
+              disabled={isEditMode}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+        )}
         <Box width={[1 / 4]} p="10px">
           <Field
             id="status"
@@ -101,79 +126,79 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Customer ID"
             placeholder="Enter ID"
-            disabled={true}
+            disabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
         <Hr />
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
             component={InputField}
             label="Balance Settled"
             placeholder="Enter Balance Settled"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
             component={InputField}
             label="Balance Available"
             placeholder="Enter Balance Available"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="amountDueRepayment"
             name="amountDueRepayment"
             component={InputField}
             label="Amount Due Repayment"
             placeholder="Enter Amount Due Repayment"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
             component={InputField}
             label="Balance Limit"
             placeholder="Enter Balance Limit"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
             component={InputField}
             label="Balance Limit Shared"
             placeholder="Enter Balance Limit Shared"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
             component={InputField}
             label="Accrued Interest"
             placeholder="Enter Accrued Interest"
-            disabled={true}
+            disabled={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -186,40 +211,42 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Statement Cycle"
             placeholder="Select Statement Cycle"
             options={statementCyclesOptions}
-            isDisabled={true}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="lastCycleDate"
-            name="lastCycleDate"
-            component={InputField}
-            label="Last Cycle Date"
-            placeholder={dateFormat.FORMAT}
-            disabled={true}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="dateCreated"
-            name="dateCreated"
-            component={InputField}
-            label="Date Created"
-            placeholder={dateFormat.FORMAT}
-            disabled={true}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="dateClosed"
-            name="dateClosed"
-            component={InputField}
-            label="Date Closed"
-            placeholder={dateFormat.FORMAT}
-            disabled={true}
-          />
-        </Box>
+        {isEditMode && (
+          <React.Fragment>
+            <Box width={[1 / 4]} p="10px">
+              <Field
+                id="lastCycleDate"
+                name="lastCycleDate"
+                component={InputField}
+                label="Last Cycle Date"
+                placeholder={dateFormat.FORMAT}
+                disabled={true}
+              />
+            </Box>
+            <Box width={[1 / 4]} p="10px">
+              <Field
+                id="dateCreated"
+                name="dateCreated"
+                component={InputField}
+                label="Date Created"
+                disabled={true}
+              />
+            </Box>
+            <Box width={[1 / 4]} p="10px">
+              <Field
+                id="dateClosed"
+                name="dateClosed"
+                component={InputField}
+                label="Date Closed"
+                disabled={true}
+              />
+            </Box>
+          </React.Fragment>
+        )}
       </Flex>
     </Box>
   );

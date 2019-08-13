@@ -201,9 +201,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           <Field
             id="dateCreated"
             name="dateCreated"
-            component={CalendarField}
+            component={InputField}
             label="Date Created"
-            placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>
@@ -211,9 +210,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           <Field
             id="dateClosed"
             name="dateClosed"
-            component={CalendarField}
+            component={InputField}
             label="Date Closed"
-            placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>

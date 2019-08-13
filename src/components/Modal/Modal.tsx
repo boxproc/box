@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
-  color: ${({ theme }) => theme.blackColor};
+  color: ${({ theme }) => theme.blackColorOpacity7};
 `;
 
 interface ModalProps {

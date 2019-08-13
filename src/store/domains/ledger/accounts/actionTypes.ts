@@ -9,6 +9,10 @@ export enum ActionTypeKeys {
 
   SET_LEDGER_ACCOUNT_ID = 'ledger/accounts/SET_LEDGER_ACCOUNT_ID',
 
+  ADD_LEDGER_ACCOUNT = 'ledger/accounts/ADD_LEDGER_ACCOUNT',
+  ADD_LEDGER_ACCOUNT_FULFILLED = 'ledger/accounts/ADD_LEDGER_ACCOUNT_FULFILLED',
+  ADD_LEDGER_ACCOUNT_REJECTED = 'ledger/accounts/ADD_LEDGER_ACCOUNT_REJECTED',
+
   UPDATE_LEDGER_ACCOUNT = 'ledger/accounts/UPDATE_LEDGER_ACCOUNTS',
   UPDATE_LEDGER_ACCOUNT_FULFILLED = 'ledger/accounts/UPDATE_LEDGER_ACCOUNTS_FULFILLED',
   UPDATE_LEDGER_ACCOUNT_REJECTED = 'ledger/accounts/UPDATE_LEDGER_ACCOUNTS_REJECTED',
@@ -38,6 +42,22 @@ export interface GetLedgerAccountsRejectedAction {
 export interface SetLedgerAccountIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID;
+}
+
+// Add new account
+export interface AddLedgerAccountAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_LEDGER_ACCOUNT;
+}
+
+export interface AddLedgerAccountFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_LEDGER_ACCOUNT_FULFILLED;
+}
+
+export interface AddLedgerAccountRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_LEDGER_ACCOUNT_REJECTED;
 }
 
 // Edit account
@@ -75,5 +95,6 @@ export interface FilterLedgerAccountsRejectedAction {
 export type LedgerAccountsActionTypes =
   | GetLedgerAccountsFulfilledAction
   | UpdateLedgerAccountFulfilledAction
+  | AddLedgerAccountFulfilledAction
   | FilterLedgerAccountsFulfilledAction
   | SetLedgerAccountIdAction;

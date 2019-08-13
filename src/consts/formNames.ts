@@ -1,7 +1,4 @@
 export enum formNames {
-  // General
-  UI_ITEMS = 'uiItemsForm',
-
   // Login
   USER_LOGIN = 'userLoginForm',
 
@@ -41,19 +38,15 @@ export enum formNames {
   USER = 'userForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
 
-  // Customers
+  // Ledger
   LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
   ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
   EDIT_LEDGER_CUSTOMER = 'editLedgerCustomer',
-
-  // Accounts
   LEDGER_ACCOUNTS_FILTER = 'ledgerAccountsFilter',
-  EDIT_LEDGER_ACCOUNT = 'editLedgerAccount',
+  LEDGER_ACCOUNT = 'ledgerAccount',
+  LEDGER_TRANSACTIONS_FILTER = 'ledgerTransactionsFilter',
+  LEDGER_TRANSACTIONS = 'ledgerTransactions',
 
   // UserActivities
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
-
-  // Transaction
-  LEDGER_TRANSACTIONS_FILTER = 'ledgerTransactionsFilter',
-  LEDGER_TRANSACTIONS = 'ledgerTransactions',
 }

@@ -66,5 +66,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     cursor: pointer;
     color: ${({ theme }) => theme.grayColor};
     padding: 10px;
+
+    &:hover {
+      color: ${({ theme }) => theme.normalAccentColor};
+    }
   }
 `;

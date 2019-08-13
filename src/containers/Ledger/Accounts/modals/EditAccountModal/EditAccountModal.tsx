@@ -6,11 +6,14 @@ import { modalNames } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { CloseModal } from 'store/domains';
+import { CloseModal, LedgerAccountItemDetailsPrepared } from 'store/domains';
+import { SelectValues } from 'types';
 
 interface EditAccountModalProps {
   closeModal: CloseModal;
   ledgerCurrentAccountAlias: string;
+  ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const modalName = modalNames.EDIT_LEDGER_ACCOUNT;
@@ -18,6 +21,8 @@ const modalName = modalNames.EDIT_LEDGER_ACCOUNT;
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   ledgerCurrentAccountAlias,
+  ledgerCurrentAccount,
+  institutionsOptions,
 }) => {
   const accountAlias = ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '';
 
@@ -26,10 +31,13 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       name={modalName}
       title={`Account${accountAlias}`}
       maxContainerWidth={980}
-      minContainerHeight={566}
+      minContainerHeight={551}
     >
       <AccountForm
         onCancel={() => closeModal(modalName)}
+        mode="edit"
+        initialValues={ledgerCurrentAccount}
+        institutionsOptions={institutionsOptions}
       />
     </Modal>
   );

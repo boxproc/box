@@ -1,11 +1,14 @@
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames } from 'consts';
+import { cookiesNames, formNames, modalNames } from 'consts';
+
+import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
 import {
   ActionTypeKeys,
+  AddLedgerAccountAction,
   FilterLedgerAccountsAction,
   GetLedgerAccountsAction,
   SetLedgerAccountIdAction,
@@ -30,6 +33,11 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetLedgerAccounts = () => GetLedgerAccountsAction;
 export type HandleGetLedgerAccounts = VoidPromiseThunk;
 
+export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) =>
+  AddLedgerAccountAction;
+export type HandleAddLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
+  Thunk<void>;
+
 export type SetLedgerAccountId = (id: number) => SetLedgerAccountIdAction;
 export type HandleSetLedgerAccountId = (id: number) => void;
 
@@ -51,6 +59,11 @@ export const getLedgerAccounts: GetLedgerAccounts = () => ({
 export const setLedgerAccountId: SetLedgerAccountId = id => ({
   type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID,
   payload: id,
+});
+
+export const addLedgerAccount: AddLedgerAccount = values => ({
+  type: ActionTypeKeys.ADD_LEDGER_ACCOUNT,
+  payload: api.addLedgerAccount(values),
 });
 
 export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
@@ -96,6 +109,21 @@ export const handleUpdateLedgerAccount: HandleUpdateLedgerAccount = values =>
 
         await dispatch(updateLedgerAccounts(preparedValues));
         await dispatch(handleGetLedgerAccounts());
+      },
+      dispatch
+    );
+  };
+
+export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = preparedValuesToSend(values);
+
+        await dispatch(addLedgerAccount(preparedValues));
+        await dispatch(closeModal(modalNames.ADD_LEDGER_ACCOUNT));
+        await dispatch(handleGetLedgerAccounts());
+        await dispatch(resetForm(formNames.LEDGER_ACCOUNT));
       },
       dispatch
     );
