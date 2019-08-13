@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField, TextField } from 'components/Form';
+import { Delimiter } from 'components/Text';
 
 const LedgerCurrentTransactionGeneral: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="100px" p="10px">
+        <Box width="150px" p="10px">
           <Field
             id="id"
             name="id"
@@ -21,7 +22,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
-        <Box width="100px" p="10px">
+        <Box width="150px" p="10px">
           <Field
             id="accountId"
             name="accountId"
@@ -30,7 +31,8 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
-        <Box width="230px" p="10px">
+        <Delimiter />
+        <Box width="200px" p="10px">
           <Field
             id="transactionDatetime"
             name="transactionDatetime"

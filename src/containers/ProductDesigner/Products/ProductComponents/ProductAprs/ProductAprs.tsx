@@ -16,7 +16,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="160px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="Tt1Apr"
             name="Tt1Apr"
@@ -28,7 +28,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="Tt2Apr"
             name="Tt2Apr"
@@ -40,7 +40,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="180px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="introductionTermApr"
             name="introductionTermApr"
@@ -52,7 +52,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="210px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="balanceTransferApr"
             name="balanceTransferApr"
@@ -64,7 +64,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="210px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="delinquentApr"
             name="delinquentApr"
@@ -76,7 +76,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="210px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="overpaymentApr"
             name="overpaymentApr"
@@ -88,7 +88,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="210px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="convertToLoanApr"
             name="convertToLoanApr"

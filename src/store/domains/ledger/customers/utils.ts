@@ -41,8 +41,8 @@ export const preparedValuesToSend = (values: Partial<LedgerCustomerItemDetailsPr
     address_line4: values.addressLine4,
     address_town: values.addressTown,
     address_post_code: values.addressPostCode,
-    address_country_code: values.addressCountryCode,
-    nationality_country_code: values.nationalityCountryCode,
+    address_country_code: values.addressCountryCode && values.addressCountryCode.value,
+    nationality_country_code: values.nationalityCountryCode &&  values.nationalityCountryCode.value,
     date_created: values.dateCreated,
     date_closed: values.dateClosed,
   };
@@ -67,7 +67,6 @@ export const prepareValuesToRender = (values: Partial<LedgerCustomerItem>) => {
     addressLine4: values.address_line4,
     addressTown: values.address_town,
     addressPostCode: values.address_post_code,
-    nationalityCountryCode: values.nationality_country_code,
     dateCreated: values.date_created,
     dateClosed: values.date_closed,
   };

@@ -58,7 +58,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFil
     id: id && Number(id),
     institution_id: institutionId && institutionId.value,
     customer_id: customerId && Number(customerId),
-    product_type: productName && productName.value,
+    product_name: productName && productName.label,
     datetime_from: datetimeFrom,
     datetime_to: datetimeTo,
   };

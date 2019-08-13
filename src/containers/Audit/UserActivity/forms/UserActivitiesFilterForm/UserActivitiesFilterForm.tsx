@@ -51,7 +51,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 1000]} mx="-10px">
+      <Box width={[1000]} mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"

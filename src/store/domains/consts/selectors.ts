@@ -34,7 +34,7 @@ export const selectCountryCodes = createSelector(
 
     return {
       value: country_code,
-      label: name,
+      label: `${country_code} - ${name}`,
     };
   })
 );

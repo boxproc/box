@@ -5,6 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField } from 'components/Form';
+import { Hr } from 'components/Text';
 
 import {
   formNames,
@@ -128,6 +129,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           </Box>
         </Flex>
       </Box>
+      <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"

@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CalendarField, InputField, SelectField } from 'components/Form';
+import { InputField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
 
 import {
@@ -44,8 +44,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
-            id="productType"
-            name="productType"
+            id="productName"
+            name="productName"
             component={SelectField}
             label="Product"
             placeholder="Select Product"
@@ -54,7 +54,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="100px" p="10px">
+        <Box width="150px" p="10px">
           <Field
             id="productId"
             name="productId"
@@ -94,7 +94,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder="Enter Account Alias Additional"
           />
         </Box>
-        <Box width="100px" p="10px">
+        <Box width="150px" p="10px">
           <Field
             id="customerId"
             name="customerId"
@@ -178,7 +178,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="statementCycleId"
             name="statementCycleId"
@@ -194,18 +194,17 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="lastCycleDate"
             name="lastCycleDate"
-            component={CalendarField}
+            component={InputField}
             label="Last Cycle Date"
             placeholder={dateFormat.FORMAT}
             disabled={true}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 4]} p="10px">
           <Field
             id="dateCreated"
             name="dateCreated"
-            component={CalendarField}
+            component={InputField}
             label="Date Created"
             placeholder={dateFormat.FORMAT}
             disabled={true}
@@ -215,7 +214,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="dateClosed"
             name="dateClosed"
-            component={CalendarField}
+            component={InputField}
             label="Date Closed"
             placeholder={dateFormat.FORMAT}
             disabled={true}

@@ -17,7 +17,7 @@ import { SelectValues } from 'types';
 import { componentUtil } from 'utils';
 
 export interface WithLoadCountryCodesProps {
-  CountryCodes: Array<SelectValues>;
+  countryCodes: Array<SelectValues>;
   isCountryCodesLoading: boolean;
   loadCountryCodes: HandleGetCountryCodes;
 }
@@ -29,12 +29,12 @@ export const withLoadCountryCodes =
     const WithLoadCountryCodes:
       React.FC<WithLoadCountryCodesProps> = props => {
         const {
-          CountryCodes,
+          countryCodes,
           loadCountryCodes,
           isCountryCodesLoading,
           ...originProps
         } = props;
-        const isEmpty = CountryCodes.length === 0;
+        const isEmpty = countryCodes.length === 0;
 
         React.useEffect(
           () => {
@@ -48,7 +48,7 @@ export const withLoadCountryCodes =
         return (
           <Component
             isCountryCodesLoading={isCountryCodesLoading}
-            CountryCodes={CountryCodes}
+            countryCodes={countryCodes}
             loadCountryCodes={loadCountryCodes}
             {...originProps as OriginProps}
           />
@@ -64,7 +64,7 @@ export const withLoadCountryCodes =
 
     const mapStateToProps = (state: StoreState) => ({
       isCountryCodesLoading: loadingSelector(state),
-      CountryCodes: selectCountryCodes(state),
+      countryCodes: selectCountryCodes(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

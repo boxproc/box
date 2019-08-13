@@ -32,12 +32,12 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box mx="-10px">
+      <Box width="980" mx="-10px">
         <Flex
           alignItems="flex-start"
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -49,7 +49,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               isClearable={false}
             />
           </Box>
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -59,7 +59,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="lastName"
               name="lastName"
@@ -69,7 +69,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width="100px" p="10px">
+          <Box width="150px" p="10px">
             <Field
               id="id"
               name="id"

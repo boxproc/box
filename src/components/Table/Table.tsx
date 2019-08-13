@@ -127,6 +127,7 @@ export const Cell: React.FC<CellProps> = ({
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
   columns: Array<object>;
+  pageSize?: number;
   NoDataComponent?: React.FC;
   style?: object;
   sortable?: boolean;
@@ -142,6 +143,7 @@ export const Table: React.FC<TableProps> = props => {
     filterable = false,
     isHeader = true,
     data,
+    pageSize = 10,
   } = props;
 
   return (
@@ -154,7 +156,7 @@ export const Table: React.FC<TableProps> = props => {
           minRows={0}
           showPagination={data && data.length > 10}
           showPageSizeOptions={false}
-          defaultPageSize={10}
+          defaultPageSize={pageSize}
           multiSort={false}
           resizable={false}
           TheadComponent={

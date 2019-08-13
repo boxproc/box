@@ -28,6 +28,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
   institutionsOptions,
   isDisabledInstitution,
   isDisabledStatus,
+  countryCodes,
+  isCountryCodesLoading,
 }) => {
   return (
     <Box mx="-10px">
@@ -150,7 +152,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             placeholder="Enter Address Line 4"
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressTown"
             name="addressTown"
@@ -160,7 +162,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressPostCode"
             name="addressPostCode"
@@ -170,23 +172,27 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="nationalityCountryCode"
             name="nationalityCountryCode"
-            component={InputField}
+            component={SelectField}
+            options={countryCodes}
+            isLoading={isCountryCodesLoading}
             label="Nationality Country Code"
-            placeholder="Enter Nationality Country Code"
+            placeholder="Select Nationality Country Code"
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[2 / 5]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="addressCountryCode"
             name="addressCountryCode"
-            component={InputField}
+            component={SelectField}
+            options={countryCodes}
+            isLoading={isCountryCodesLoading}
             label="Address Country Code"
-            placeholder="Enter Country Code"
+            placeholder="Select Country Code"
             validate={[formErrorUtil.required]}
           />
         </Box>

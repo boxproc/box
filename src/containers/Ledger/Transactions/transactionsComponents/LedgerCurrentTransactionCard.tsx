@@ -12,7 +12,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="100px" p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="cardId"
             name="cardId"

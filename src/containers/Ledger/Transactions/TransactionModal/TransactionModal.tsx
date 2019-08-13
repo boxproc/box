@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Box } from '@rebass/grid';
+
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Hr } from 'components/Text';
@@ -25,14 +27,16 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
       title="Transaction"
       closeOnBackdrop={true}
       maxContainerWidth={600}
-      minContainerHeight={455}
+      minContainerHeight={545}
     >
       <LedgerTransactionsForm />
       <Hr />
-      <Button
-        text="close"
-        onClick={() => closeModal(modalName)}
-      />
+      <Box mt={10}>
+        <Button
+          text="close"
+          onClick={() => closeModal(modalName)}
+        />
+        </Box>
     </Modal>
   );
 };
