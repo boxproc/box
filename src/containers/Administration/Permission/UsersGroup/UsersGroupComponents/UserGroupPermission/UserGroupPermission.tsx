@@ -86,6 +86,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       title="User Group Members"
       data={adminGroupPermissions}
       columns={columns}
+      pageSize={5}
       NoDataComponent={TableNoData}
     />
   );

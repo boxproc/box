@@ -8,7 +8,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductAprs } from 'containers/ProductDesigner/Products/productComponents';
+import { ProductAprs } from 'containers/ProductDesigner/Products/components';
 
 interface ProductAprsFormProps {
   onCancel?: () => void;

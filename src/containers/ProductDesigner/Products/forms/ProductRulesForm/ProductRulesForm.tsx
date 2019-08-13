@@ -9,7 +9,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductRules } from 'containers/ProductDesigner/Products/productComponents';
+import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
 import {
   HandleGetProductRules,

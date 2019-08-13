@@ -8,7 +8,7 @@ import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
 
 import { modalNames } from 'consts';
 
-import { tableColumns } from './accountComponents';
+import { tableColumns } from './components';
 
 import {
   HandleGetLedgerAccounts,
@@ -54,6 +54,7 @@ const Accounts: React.FC<AccountsProps> = ({
       title="Accounts"
       data={ledgerAccounts}
       columns={tableColumns}
+      addNewModalName={modalNames.ADD_LEDGER_ACCOUNT}
       hint="Double Click on Row to View Account"
       getTrGroupProps={handleOnClickRow}
       FilterForm={

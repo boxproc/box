@@ -51,12 +51,12 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 1000]} mx="-10px">
+      <Box width="700px" mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -68,7 +68,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               isClearable={false}
             />
           </Box>
-          <Box width={[1, 1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="productName"
               name="productName"
@@ -78,10 +78,10 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               options={institutionProductsOptions}
               isDisabled={false}
               isMulti={true}
-              isLoadingInstitutionProducts={isLoadingInstitutionProducts}
+              isLoading={isLoadingInstitutionProducts}
             />
           </Box>
-          <Box width="100px" p="10px">
+          <Box width="150px" p="10px">
             <Field
               id="id"
               name="id"
@@ -91,7 +91,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="accountAlias"
               name="accountAlias"
@@ -101,7 +101,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="customerFirstName"
               name="customerFirstName"
@@ -111,7 +111,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1, 1 / 4]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="customerLastName"
               name="customerLastName"

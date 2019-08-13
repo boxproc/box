@@ -24,8 +24,8 @@ export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   address_line4: string;
   address_town: string;
   address_post_code: string;
-  address_country_code: string;
-  nationality_country_code: string;
+  address_country_code: string | number;
+  nationality_country_code: string | number;
   date_created: string;
   date_closed: string;
 }
@@ -45,8 +45,8 @@ export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain
   addressLine4: string;
   addressTown: string;
   addressPostCode: string;
-  addressCountryCode: string;
-  nationalityCountryCode: string;
+  addressCountryCode: SelectValues;
+  nationalityCountryCode: SelectValues;
   dateCreated: string;
   dateClosed: string;
 }

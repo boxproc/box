@@ -30,7 +30,7 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 700]} mx="-10px">
+      <Box width="700px" mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"

@@ -8,8 +8,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-// tslint:disable-next-line: max-line-length
-import { ProductLimitsFeesCommissions } from 'containers/ProductDesigner/Products/productComponents';
+import { ProductLimitsFeesCommissions } from 'containers/ProductDesigner/Products/components';
 
 interface ProductLimitsFeesCommissionsFormProps {
   onCancel?: () => void;

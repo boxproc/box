@@ -2,11 +2,19 @@ import React from 'react';
 
 import { modalNames } from 'consts';
 
-// tslint:disable-next-line: max-line-length
-import AddSystemPropertyModal from 'containers/Administration/SystemProperties/AddSystemPropertyModal';
+import ConfirmationModal from './ConfirmationModal';
+import MessageModal from './MessageModal';
 
-import AddProductModal from 'containers/ProductDesigner/Products/addProduct/AddProductModal';
-import EditProductModal from 'containers/ProductDesigner/Products/editProduct/EditProductModal';
+// Product Modeler
+import { AddProductModal, EditProductModal } from 'containers/ProductDesigner/Products/modals';
+
+// Ledger
+import { AddAccountModal, EditAccountModal } from 'containers/Ledger/Accounts/modals';
+import { AddCustomerModal, EditCustomerModal } from 'containers/Ledger/Customers/modals';
+import { TransactionModal } from 'containers/Ledger/Transactions/modals';
+
+// Administration
+import { AddSystemPropertyModal } from 'containers/Administration/SystemProperties/modals';
 
 // tslint:disable-next-line: max-line-length
 import AddUsersGroupModal from 'containers/Administration/Permission/UsersGroup/AddUserGroup/AddUsersGroupModal';
@@ -23,16 +31,6 @@ import EditSchedularModal from 'containers/Administration/Scheduler/EditSchedula
 
 import AddUsersModal from 'containers/Administration/Permission/Users/AddUsersModal';
 import EditUsersModal from 'containers/Administration/Permission/Users/EditUsersModal';
-
-import ConfirmationModal from './ConfirmationModal';
-import MessageModal from './MessageModal';
-
-import AddCustomerModal from 'containers/Ledger/Customers/addCustomer/AddCustomerModal';
-import EditCustomerModal from 'containers/Ledger/Customers/editCustomer/EditCustomerModal';
-
-import EditAccountModal from 'containers/Ledger/Accounts/editAccount/EditAccountModal';
-
-import TransactionModal from 'containers/Ledger/Transactions/TransactionModal';
 
 export const modalsList = [
   {
@@ -94,6 +92,10 @@ export const modalsList = [
   {
     name: modalNames.EDIT_LEDGER_CUSTOMER,
     component: <EditCustomerModal />,
+  },
+  {
+    name: modalNames.ADD_LEDGER_ACCOUNT,
+    component: <AddAccountModal />,
   },
   {
     name: modalNames.EDIT_LEDGER_ACCOUNT,

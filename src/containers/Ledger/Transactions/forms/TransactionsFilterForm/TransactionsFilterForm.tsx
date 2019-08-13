@@ -50,12 +50,12 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 700]} mx="-10px">
+      <Box width="700px" mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -67,7 +67,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               isClearable={false}
             />
           </Box>
-          <Box width={[1, 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="productName"
               name="productName"
@@ -79,22 +79,22 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               isLoading={isLoadingInstitutionProducts}
             />
           </Box>
-          <Box width="100px" p="10px">
-            <Field
-              id="id"
-              name="id"
-              component={InputField}
-              label="Transaction ID"
-              placeholder="Enter ID"
-              isDisabled={false}
-            />
-          </Box>
-          <Box width="100px" p="10px">
+          <Box width="150px" p="10px">
             <Field
               id="customerId"
               name="customerId"
               component={InputField}
               label="Customer ID"
+              placeholder="Enter ID"
+              isDisabled={false}
+            />
+          </Box>
+          <Box width="150px" p="10px">
+            <Field
+              id="id"
+              name="id"
+              component={InputField}
+              label="Transaction ID"
               placeholder="Enter ID"
               isDisabled={false}
             />

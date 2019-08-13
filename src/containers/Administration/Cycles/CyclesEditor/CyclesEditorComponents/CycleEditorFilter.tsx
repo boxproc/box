@@ -28,12 +28,12 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1, 1, 1, 700]} mx="-10px">
+      <Box width="700px" mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1, 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"

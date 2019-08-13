@@ -9,7 +9,7 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
-import { ProductDetails } from 'containers/ProductDesigner/Products/productComponents';
+import { ProductDetails } from 'containers/ProductDesigner/Products/components';
 
 import {
   HandleGetProductDetails,
