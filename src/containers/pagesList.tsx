@@ -18,6 +18,7 @@ import Products from 'containers/ProductDesigner/Products';
 import UserActivities from 'containers/Audit/UserActivity';
 import Accounts from 'containers/Ledger/Accounts';
 import Customers from 'containers/Ledger/Customers';
+import Cards from './Ledger/Cards';
 import Transactions from './Ledger/Transactions';
 
 export const pagesList = [
@@ -68,5 +69,9 @@ export const pagesList = [
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITIES,
     component: <UserActivities />,
+  },
+  {
+    path: uiItemConsts.LEDGER_CARDS,
+    component: <Cards />,
   },
 ];

@@ -46,7 +46,9 @@ export enum formNames {
   LEDGER_ACCOUNT = 'ledgerAccount',
   LEDGER_TRANSACTIONS_FILTER = 'ledgerTransactionsFilter',
   LEDGER_TRANSACTIONS = 'ledgerTransactions',
+  LEDGER_CARDS_FILTER = 'ledgerCardsFilter',
+  LEDGER_CARDS = 'ledgerCards',
 
-  // UserActivities
+  // Audit
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 }
