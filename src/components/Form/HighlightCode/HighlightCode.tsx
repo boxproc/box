@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   }
 
   pre {
-    min-height: 132px;
+    min-height: 130px;
   }
 `;
 

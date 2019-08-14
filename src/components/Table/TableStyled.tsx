@@ -22,7 +22,7 @@ export const TableStyled = styled.div`
   .ReactTable .rt-tbody::-webkit-scrollbar-thumb {
     background-color: rgba(38, 46, 62, 0.2);
     border-radius: 5px;
-    outline: 1px solid ${({ theme }) => theme.grayColor};
+    outline: 1px solid ${({ theme }) => theme.normalAccentColor};
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar-track {
@@ -96,6 +96,7 @@ export const TableStyled = styled.div`
 
   .ReactTable .rt-tbody .rt-td {
     overflow: visible;
+    word-break: break-word;
   }
 
   /* header */

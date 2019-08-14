@@ -25,6 +25,7 @@ import {
 import * as api from './api';
 
 import {
+  selectCurrentProductId,
   selectCurrentProductType,
 } from './selectors';
 
@@ -298,12 +299,16 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
   };
 
 export const handleUpdateProductRules: HandleUpdateProductRules = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareProductRuleValuesToSend(values);
+        const state = getState();
 
-        await dispatch(updateProductRules(preparedValues));
+        await dispatch(updateProductRules({
+          ...preparedValues,
+          product_id: selectCurrentProductId(state),
+        }));
         await dispatch(handleGetProducts());
       },
       dispatch
