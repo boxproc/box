@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
@@ -30,16 +29,12 @@ const LoyaltyAndBonusForm: React.FC<LoyaltyAndBonusFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <ProductLoyaltyAndBonus />
       <Hr />
-      <Flex
-        alignItems="flex-end"
-        justifyContent="space-between"
-      >
-        <OkCancelButtons
-          okText="Save Loyalty and Bonus"
-          cancelText="Close"
-          onCancel={onCancel}
-        />
-      </Flex>
+      <OkCancelButtons
+        okText="Save Loyalty and Bonus"
+        cancelText="Close"
+        onCancel={onCancel}
+        rightPosition={true}
+      />
     </form>
   );
 };

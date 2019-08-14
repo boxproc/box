@@ -30,6 +30,6 @@ export const sharedInputCss = css<InvalidProp>`
 
   :disabled {
     background-color: ${({theme}) => theme.whiteColor};
-    border-color: ${({theme}) => theme.lighterGrayColor};
+    border-color: ${({theme}) => theme.lightGrayColor};
   }
 `;

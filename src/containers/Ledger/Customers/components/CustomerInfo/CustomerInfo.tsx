@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CalendarField, InputField, MaskField, SelectField } from 'components/Form';
-import { Hr } from 'components/Text';
+import { Delimiter, Hr } from 'components/Text';
 
 import { customerStatusTypesOptions, dateFormat, maskFormat } from 'consts';
 
@@ -196,7 +196,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Hr />
+        <Delimiter />
         <Box width="180px" p="10px">
           <Field
             id="dateCreated"

@@ -48,11 +48,6 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
         alignItems="flex-end"
         justifyContent="space-between"
       >
-        <OkCancelButtons
-          okText="Save"
-          cancelText="Cancel"
-          onCancel={onCancel}
-        />
         <Button
           text="delete"
           iconName="delete"
@@ -60,6 +55,12 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           withConfirmation={true}
           confirmationText={`Delete customer?`}
           onClick={() => deleteLedgerCustomer(ledgerCustomerCurrentId)}
+        />
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Cancel"
+          onCancel={onCancel}
+          rightPosition={true}
         />
       </Flex>
     </form >

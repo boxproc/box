@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
@@ -31,12 +31,12 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
     >
       <LedgerTransactionsForm />
       <Hr />
-      <Box mt={10}>
+      <Flex justifyContent="flex-end">
         <Button
           text="close"
           onClick={() => closeModal(modalName)}
         />
-        </Box>
+      </Flex>
     </Modal>
   );
 };

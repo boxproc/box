@@ -48,10 +48,15 @@ export const Paragraph = styled.p<ParagraphProps>`
   };
 `;
 
-export const Hr = styled.div`
+interface HrProps {
+  accentColor?: boolean;
+}
+
+export const Hr = styled.div<HrProps>`
   margin-top: 15px;
-  margin-bottom: 5px;
-  border-top: 1px solid ${({ theme }) => theme.lightGrayColor};
+  margin-bottom: 10px;
+  border-top: 1px solid ${({ theme, accentColor }) =>
+    accentColor ? theme.normalAccentColor : theme.lightGrayColor};
   width: 100%;
 `;
 

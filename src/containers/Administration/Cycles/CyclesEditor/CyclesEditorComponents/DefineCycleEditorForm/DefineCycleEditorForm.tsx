@@ -173,19 +173,22 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
         alignItems="flex-end"
         justifyContent="space-between"
       >
-        <OkCancelButtons
-          okText="Save"
-          cancelText="Close"
-          onCancel={onCancel}
-        />
         {mode === 'edit' && (
           <Button
             text="delete"
             iconName="delete"
             type="reset"
+            withConfirmation={true}
+            confirmationText={`Delete cycle editor record?`}
             onClick={() => deleteAdminCyclesEditor(currentCycleEditorId)}
           />
         )}
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Close"
+          onCancel={onCancel}
+          rightPosition={true}
+        />
       </Flex>
     </form >
   );

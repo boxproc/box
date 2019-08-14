@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
-
 import { OkCancelButtons } from 'components/Buttons';
 import Modal from 'components/Modal';
-import { Paragraph } from 'components/Text';
+import { Hr, Paragraph } from 'components/Text';
 
 import { modalNames } from 'consts';
 
@@ -30,17 +28,20 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       maxContainerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}
+      accentClose={false}
     >
       {confirmationText && (
-        <Paragraph light={true}>{confirmationText}</Paragraph>
+        <React.Fragment>
+          <Hr accentColor={true} />
+          <Paragraph light={true}>{confirmationText}</Paragraph>
+        </React.Fragment>
       )}
-      <Flex justifyContent="flex-end">
-        <OkCancelButtons
-          onCancel={() => closeModal(modalName)}
-          onOk={confirmationAction}
-          okText="confirm"
-        />
-      </Flex>
+      <OkCancelButtons
+        onCancel={() => closeModal(modalName)}
+        onOk={confirmationAction}
+        okText="confirm"
+        rightPosition={true}
+      />
     </Modal>
   );
 };

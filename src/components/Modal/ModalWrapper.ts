@@ -5,6 +5,7 @@ interface ModalWrapperProps {
   maxContainerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
+  accentClose?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -64,11 +65,8 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     line-height: .5;
     outline: none;
     cursor: pointer;
-    color: ${({ theme }) => theme.grayColor};
+    color: ${({ theme, accentClose }) =>
+      accentClose ? theme.normalAccentColor : theme.grayColor};
     padding: 10px;
-
-    &:hover {
-      color: ${({ theme }) => theme.normalAccentColor};
-    }
   }
 `;

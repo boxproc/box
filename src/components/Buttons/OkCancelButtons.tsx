@@ -20,6 +20,7 @@ interface OkCancelButtonsProps {
   cancelIconName?: string;
   hintOk?: string;
   hintCancel?: string;
+  rightPosition?: boolean;
 }
 
 export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
@@ -32,9 +33,14 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   cancelIconName,
   hintOk,
   hintCancel,
+  rightPosition = false,
 }) => {
   return (
-    <Flex alignItems="center">
+    <Flex
+      alignItems="center"
+      justifyContent={rightPosition ? 'flex-end' : 'flex-start'}
+      width={rightPosition ? '100%' : 'auto'}
+    >
       <Wrapper mr="15px" mt="10px">
         <Button
           text={okText}

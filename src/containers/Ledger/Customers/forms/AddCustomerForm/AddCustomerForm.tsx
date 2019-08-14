@@ -39,6 +39,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
         okText="Save"
         cancelText="Cancel"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form >
   );

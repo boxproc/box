@@ -60,11 +60,6 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
         alignItems="flex-end"
         justifyContent="space-between"
       >
-        <OkCancelButtons
-          okText="Save Product"
-          cancelText="Close"
-          onCancel={onCancel}
-        />
         <Button
           text="delete"
           iconName="delete"
@@ -72,6 +67,12 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           withConfirmation={true}
           confirmationText={`Delete "${currentProductName}" product?`}
           onClick={() => deleteProduct(currentProductId)}
+        />
+        <OkCancelButtons
+          okText="Save Product"
+          cancelText="Close"
+          onCancel={onCancel}
+          rightPosition={true}
         />
       </Flex>
     </form>

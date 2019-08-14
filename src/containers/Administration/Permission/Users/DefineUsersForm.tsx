@@ -134,6 +134,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         okText="Save"
         cancelText="Cancel"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form >
   );

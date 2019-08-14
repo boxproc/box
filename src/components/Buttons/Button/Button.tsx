@@ -39,6 +39,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   color: ${({ theme }) => theme.grayColor};
   font-weight: 500;
   line-height: 1.3;
+  white-space: nowrap;
 
   &:hover {
     color: ${({ theme }) => theme.lighterAccentColor};

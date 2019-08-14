@@ -33,6 +33,7 @@ const ProductAuxiliaryCountersForm: React.FC<ProductAuxiliaryCountersFormAllProp
         okText="Save Auxiliary counters"
         cancelText="Close"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form>
   );

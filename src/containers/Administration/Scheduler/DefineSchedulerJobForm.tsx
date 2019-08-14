@@ -142,6 +142,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
         okText="Save"
         cancelText="Cancel"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form >
   );

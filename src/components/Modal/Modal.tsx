@@ -21,6 +21,7 @@ interface ModalProps {
   maxContainerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
+  accentClose?: boolean;
   closeOnBackdrop?: boolean;
 }
 
@@ -32,6 +33,7 @@ const Modal: React.FC<ModalProps> = ({
   maxContainerWidth = '720',
   minContainerHeight,
   zIndex,
+  accentClose = true,
   closeOnBackdrop = false,
 }) => {
   React.useEffect(
@@ -57,6 +59,7 @@ const Modal: React.FC<ModalProps> = ({
       maxContainerWidth={maxContainerWidth}
       minContainerHeight={minContainerHeight}
       zIndex={zIndex}
+      accentClose={accentClose}
     >
       <div
         className="modal-backdrop"

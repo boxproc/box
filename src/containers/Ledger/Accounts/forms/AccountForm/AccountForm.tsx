@@ -67,6 +67,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form >
   );

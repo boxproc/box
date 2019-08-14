@@ -75,6 +75,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         okText="Save"
         cancelText="Cancel"
         onCancel={onCancel}
+        rightPosition={true}
       />
     </form >
   );

@@ -57,6 +57,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             okText="Save"
             cancelText="Cancel"
             onCancel={onCancel}
+            rightPosition={true}
           />
         </Panel>
       </Tabs>

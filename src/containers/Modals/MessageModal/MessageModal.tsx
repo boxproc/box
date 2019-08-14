@@ -29,7 +29,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       name={modalName}
       title={title}
       maxContainerWidth={500}
-      zIndex="101"
+      zIndex="102"
       closeOnBackdrop={true}
     >
       <Paragraph light={true}>{message}</Paragraph>
