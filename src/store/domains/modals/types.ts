@@ -32,16 +32,15 @@ export interface ModalsState {
 
   isAddAdminSystemPropertyModal: boolean;
 
-  isAddAdminSchedulerModal: boolean;
-  isEditAdminSchedulerModal: boolean;
-  payloadEditAdminSchedulerModal: any;
+  isAddAdminUserModal: boolean;
+  isEditAdminUserModal: boolean;
 
   isAddAdminCycleEditorModal: boolean;
   isEditCycleEditorRecordsModal: boolean;
-  payloadEditCycleEditorRecordsModal: any;
 
-  isAddAdminUserModal: boolean;
-  isEditAdminUserModal: boolean;
+  isAddAdminSchedulerModal: boolean;
+  isEditAdminSchedulerModal: boolean;
+  payloadEditAdminSchedulerModal: any;
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;

@@ -7,35 +7,40 @@ import {
   typeOfCyclesEditorOptions,
   weeklyCycleTypeOptions,
 } from 'consts';
+import { prepareValuesToRender } from 'store/domains/administration/cycles/utils';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
 export const selectDefaultAdminCycleEditorItems = (state: StoreState) =>
-  state.administration.adminCyclesEditor.cycleEditor;
+  state.administration.cyclesEditor.cycleEditor;
 
 export const selectAdminCycleEditorItems = createSelector(
   selectDefaultAdminCycleEditorItems,
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
-    if (!item) {
-      return null;
-    }
-
     return {
-      id: item.id,
-      institutionId:
-        institutions.find(el => el.value === item.institution_id)
-        && institutions.find(el => el.value === item.institution_id).label,
-      description: item.description,
-      cycleType:
-        typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type)
-        && typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type).label,
-      status: statusTypeCyclesOptions.find(el => el.value === item.status)
-        && statusTypeCyclesOptions.find(el => el.value === item.status).label,
-      monthlyCycleFirstDay: item.monthly_cycle_first_day,
-      weeklyCycleFirstDay:
-        weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day)
-        && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
-      fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
+      ...prepareValuesToRender(item),
+      institutionId: institutions.find(el => el.value === item.institution_id).label,
     };
   })
+);
+
+export const selectCycleEditorId = (state: StoreState) =>
+  state.administration.cyclesEditor.currentCycleEditorId;
+
+export const selectCycleEditorValues = createSelector(
+  selectDefaultAdminCycleEditorItems,
+  selectCycleEditorId,
+  selectInstitutionsOptions,
+  (cycleEditorItems, currentId, institutions) => {
+    const current = cycleEditorItems && cycleEditorItems.find(item => item.id === currentId);
+
+    return {
+      ...prepareValuesToRender(current),
+      status: statusTypeCyclesOptions.find(el => el.value === current.status),
+      institutionId: institutions.find(el => el.value === current.institution_id),
+      cycleType: typeOfCyclesEditorOptions.find(el => el.value === current.cycle_type),
+      weeklyCycleFirstDay: weeklyCycleTypeOptions.find(
+        el => el.label === current.weekly_cycle_first_day),
+    };
+  }
 );

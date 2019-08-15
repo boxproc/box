@@ -6,10 +6,10 @@ import ledgerCustomersReducer from './customers/reducer';
 import ledgerTransactionsReducer from './transactions/reducer';
 
 const ledgerReducer = combineReducers({
-  ledgerCustomers: ledgerCustomersReducer,
-  ledgerAccounts: ledgerAccountsReducer,
-  ledgerTransactions: ledgerTransactionsReducer,
-  ledgerCards: ledgerCardsReducer,
+  customers: ledgerCustomersReducer,
+  accounts: ledgerAccountsReducer,
+  transactions: ledgerTransactionsReducer,
+  cards: ledgerCardsReducer,
 });
 
 export default ledgerReducer;

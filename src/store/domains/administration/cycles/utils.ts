@@ -1,5 +1,32 @@
-import { cycleTypes } from 'consts';
-import { AdminCyclesEditorEditableItem } from './types';
+import {
+  cycleTypes,
+  statusTypeCyclesOptions,
+  typeOfCyclesEditorOptions,
+  weeklyCycleTypeOptions,
+} from 'consts';
+
+import { AdminCyclesEditorEditableItem, AdminCyclesEditorItem } from './types';
+
+export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
+  if (!item) {
+    return item;
+  }
+
+  return {
+    id: item.id,
+    description: item.description,
+    cycleType:
+      typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type)
+      && typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type).label,
+    status: statusTypeCyclesOptions.find(el => el.value === item.status)
+      && statusTypeCyclesOptions.find(el => el.value === item.status).label,
+    monthlyCycleFirstDay: item.monthly_cycle_first_day,
+    weeklyCycleFirstDay:
+      weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day)
+      && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
+    fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
+  };
+};
 
 export const prepareAdminCyclesEditorValuesUnderscore =
   (values: Partial<AdminCyclesEditorEditableItem>) => {

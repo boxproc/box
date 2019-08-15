@@ -10,7 +10,7 @@ import { selectInstitutionsOptions } from 'store/domains/consts';
 import { preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
-  state.ledger.ledgerAccounts.accounts.asMutable();
+  state.ledger.accounts.accounts.asMutable();
 
 export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
@@ -24,7 +24,7 @@ export const selectLedgerAccounts = createSelector(
 );
 
 export const selectLedgerAccountCurrentId = (state: StoreState) =>
-  state.ledger.ledgerAccounts.currentAccountId;
+  state.ledger.accounts.currentAccountId;
 
 export const selectLedgerCurrentAccount = createSelector(
   selectLedgerAccounts,

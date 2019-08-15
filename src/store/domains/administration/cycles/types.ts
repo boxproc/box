@@ -2,57 +2,44 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface AdminCyclesEditorItemResp {
+interface PlainInfo {
   id: number;
-  institution_id: number;
   description: string;
-  cycle_type: string;
-  status: string;
-  monthly_cycle_first_day: number;
+}
+
+export interface AdminCyclesEditorItem extends PlainInfo {
+  institution_id: number | string;
+  cycle_type: number | string;
+  monthly_cycle_first_day: number | string;
   weekly_cycle_first_day: number | string;
   fixed_cycle_number_of_days: number;
-}
-
-export interface AdminCyclesEditorEditableItemId {
-  id: number;
-}
-
-export interface AdminCyclesEditorEditableItemPrepared extends AdminCyclesEditorEditableItemId {
-  institution_id: number | string;
-  description: string;
-  cycle_type: number | string;
   status: number | string;
-  monthly_cycle_first_day?: number;
-  weekly_cycle_first_day?: number;
-  fixed_cycle_number_of_days?: number;
 }
 
-export interface AdminCyclesEditorItem {
-  id: number;
-  institutionId: string | number;
-  description: string;
-  cycleType: string;
-  status: string | number;
-  monthlyCycleFirstDay: string | number;
-  weeklyCycleFirstDay: number | string;
+export interface AdminCyclesEditorItemPreparedPlain extends PlainInfo {
+  monthlyCycleFirstDay: number | string;
   fixedCycleNumberOfDays: number | string;
 }
 
-export interface AdminCyclesEditorEditableItem {
-  id: number;
+export interface AdminCyclesEditorItemPrepared extends AdminCyclesEditorItemPreparedPlain {
+  institutionId: string | number;
+  cycleType: string | number;
+  status: string | number;
+  weeklyCycleFirstDay: number | string;
+}
+
+export interface AdminCyclesEditorEditableItem extends AdminCyclesEditorItemPreparedPlain {
   institutionId: SelectValues;
-  description: string;
   cycleType: SelectValues;
   status: SelectValues;
-  monthlyCycleFirstDay?: number;
-  weeklyCycleFirstDay?: SelectValues;
-  fixedCycleNumberOfDays?: number;
+  weeklyCycleFirstDay: SelectValues;
 }
 
 export interface AdminCyclesEditorDataResp extends ResponseStatusType {
-  cycle_editor: Array<AdminCyclesEditorItemResp>;
+  cycle_editor: Array<AdminCyclesEditorItem>;
 }
 
 export interface AdminCyclesEditorState {
-  cycleEditor: ImmutableArray<AdminCyclesEditorItemResp>;
+  cycleEditor: ImmutableArray<AdminCyclesEditorItem>;
+  currentCycleEditorId: null;
 }

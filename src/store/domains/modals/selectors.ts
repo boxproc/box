@@ -1,11 +1,10 @@
+import { createSelector } from 'reselect';
+
 import {
   executableTypeOptions,
-  statusTypeCyclesOptions,
   statusTypesOptions,
-  typeOfCyclesEditorOptions,
-  weeklyCycleTypeOptions
 } from 'consts';
-import { createSelector } from 'reselect';
+
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { StoreState } from 'store/StoreState';
 
@@ -20,10 +19,6 @@ export const selectPayloadConfirmationModal = (state: StoreState) =>
 
 export const selectUserGroupById = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues.id;
-
-export const selectDefaultCycleEditorRecord = (state: StoreState) =>
-  state.modals.payloadEditCycleEditorRecordsModal
-  && state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 
 export const selectDefaultUsersGroupRecord = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues;
@@ -46,29 +41,6 @@ export const selectSchedulerJobValues = createSelector(
       institutionId: institutions.find(el => el.label === values.institutionId),
     };
   }
-);
-
-export const selectCycleEditorValues = createSelector(
-  selectDefaultCycleEditorRecord,
-  selectInstitutionsOptions,
-  (values, institutions) => {
-    if (!values) {
-      return null;
-    }
-    return {
-      ...values,
-      status: statusTypeCyclesOptions.find(el => el.label === values.status),
-      cycleType: typeOfCyclesEditorOptions.find(el => el.label === values.cycleType),
-      institutionId: institutions.find(el => el.label === values.institutionId),
-      weeklyCycleFirstDay: weeklyCycleTypeOptions.find(
-        el => el.label === values.weeklyCycleFirstDay),
-    };
-  }
-);
-
-export const selectCycleEditorId = createSelector(
-  selectDefaultCycleEditorRecord,
-  record => record && record.id
 );
 
 export const selectUsersGroupValues = createSelector(

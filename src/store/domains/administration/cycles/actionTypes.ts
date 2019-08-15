@@ -4,27 +4,22 @@ import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_CYCLE_EDITOR = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR',
-  GET_ADMIN_CYCLE_EDITOR_FULFILLED =
-  'administration/cycles/GET_ADMIN_CYCLE_EDITOR_FULFILLED',
+  GET_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR_FULFILLED',
   GET_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR_REJECTED',
 
   ADD_ADMIN_CYCLE_EDITOR = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS',
-  ADD_ADMIN_CYCLE_EDITOR_FULFILLED =
-  'administration/cycles/ADD_ADMIN_CYCLE_JOBS_FULFILLED',
-  ADD_ADMIN_CYCLE_EDITOR_REJECTED =
-  'administration/cycles/ADD_ADMIN_CYCLE_JOBS_REJECTED',
+  ADD_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS_FULFILLED',
+  ADD_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS_REJECTED',
 
   DELETE_ADMIN_CYCLE_EDITOR = 'administration/cycles/DELETE_ADMIN_CYCLE_EDITOR',
-  DELETE_ADMIN_CYCLE_EDITOR_FULFILLED =
-  'administration/cycles/DELETE_ADMIN_CYCLE_EDITOR_FULFILLED',
-  DELETE_ADMIN_CYCLE_EDITOR_REJECTED =
-  'administration/cycles/DELETE_ADMIN_CYCLE_EDITOR_REJECTED',
+  DELETE_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/DELETE_ADMIN_CYCLE_EDITOR_FULFILLED',
+  DELETE_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/DELETE_ADMIN_CYCLE_EDITOR_REJECTED',
 
   UPDATE_ADMIN_CYCLE_EDITOR = 'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR',
-  UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED =
-  'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED',
-  UPDATE_ADMIN_CYCLE_EDITOR_REJECTED =
-  'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_REJECTED',
+  UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED',
+  UPDATE_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_REJECTED',
+
+  SET_ADMIN_CYCLE_EDITOR_ID = 'administration/cycles/SET_ADMIN_CYCLE_EDITOR_ID',
 }
 
 export interface GetAdminCycleEditorAction {
@@ -88,8 +83,14 @@ export interface UpdateAdminCycleEditorRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR_REJECTED;
 }
 
+export interface SetAdminCycleEditorIdAction {
+  readonly payload: number;
+  readonly type: ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID;
+}
+
 export type AdminCycleEditorActionTypes =
   | GetAdminCycleEditorFulfilledAction
   | AddAdminCycleEditorFulfilledAction
   | DeleteAdminCycleEditorFulfilledAction
-  | UpdateAdminCycleEditorFulfilledAction;
+  | UpdateAdminCycleEditorFulfilledAction
+  | SetAdminCycleEditorIdAction;

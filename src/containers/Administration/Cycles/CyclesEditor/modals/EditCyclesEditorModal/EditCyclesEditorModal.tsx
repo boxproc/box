@@ -6,16 +6,18 @@ import { modalNames } from 'consts';
 
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/components';
 
-import { CloseModal } from 'store/domains';
+import { AdminCyclesEditorEditableItem, CloseModal } from 'store/domains';
 
 interface EditSchedulerModalProps {
   closeModal: CloseModal;
+  cycleEditorValues: Partial<AdminCyclesEditorEditableItem>;
 }
 
 const modalName = modalNames.EDIT_CYCLE_EDITOR;
 
 const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
+  cycleEditorValues,
 }) => {
 
   return (
@@ -26,6 +28,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
     >
       <DefineCycleEditorForm
         onCancel={() => closeModal(modalName)}
+        initialValues={cycleEditorValues}
         isDisabledInstitutions={true}
         isDisabledStatus={true}
         isDisabledType={true}

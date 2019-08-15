@@ -7,7 +7,7 @@ import {
 } from './utils';
 
 export const selectDefaultLedgerTransactions = (state: StoreState) =>
-  state.ledger.ledgerTransactions.transactions;
+  state.ledger.transactions.transactions;
 
 export const selectLedgerTransactions = createSelector(
   selectDefaultLedgerTransactions,
@@ -15,13 +15,14 @@ export const selectLedgerTransactions = createSelector(
 );
 
 export const selectLedgerTransactionCurrentId = (state: StoreState) =>
-  state.ledger.ledgerTransactions.currentTransactionId;
+  state.ledger.transactions.currentTransactionId;
 
 export const selectLedgerCurrentTransaction = createSelector(
   selectLedgerTransactions,
   selectLedgerTransactionCurrentId,
   (transaction, currentId) => {
-    const current = transaction.filter(el => el.id === currentId)[0];
+    const current = transaction.find(el => el.id === currentId);
+
     return current;
   }
 );

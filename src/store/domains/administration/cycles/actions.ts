@@ -9,10 +9,11 @@ import {
   AddAdminCycleEditorAction,
   DeleteAdminCycleEditorAction,
   GetAdminCycleEditorAction,
+  SetAdminCycleEditorIdAction,
   UpdateAdminCycleEditorAction,
 } from './actionTypes';
 import * as api from './api';
-import { AdminCyclesEditorEditableItem, AdminCyclesEditorEditableItemPrepared } from './types';
+import { AdminCyclesEditorEditableItem, AdminCyclesEditorItem } from './types';
 import { prepareAdminCyclesEditorValuesUnderscore } from './utils';
 
 import { apiClient } from 'services';
@@ -24,7 +25,7 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetAdminCyclesEditor = () => GetAdminCycleEditorAction;
 export type HandleGetAdminCyclesEditor = VoidPromiseThunk;
 
-export type AddAdminCyclesEditor = (values: Partial<AdminCyclesEditorEditableItemPrepared>) =>
+export type AddAdminCyclesEditor = (values: Partial<AdminCyclesEditorItem>) =>
   AddAdminCycleEditorAction;
 export type HandleAddAdminCyclesEditor = (values: Partial<AdminCyclesEditorEditableItem>) =>
   Thunk<void>;
@@ -33,9 +34,12 @@ export type DeleteAdminCycleEditor = (id: number) => DeleteAdminCycleEditorActio
 export type HandleDeleteAdminCycleEditor = (id: number) => Thunk<void>;
 
 export type UpdateAdminCyclesEditor =
-  (propValues: Partial<AdminCyclesEditorEditableItemPrepared>) => UpdateAdminCycleEditorAction;
+  (propValues: Partial<AdminCyclesEditorItem>) => UpdateAdminCycleEditorAction;
 export type HandleUpdateAdminCyclesEditor =
   (propValues: Partial<AdminCyclesEditorEditableItem>) => Thunk<void>;
+
+export type SetAdminCycleEditorId = (id: number) => SetAdminCycleEditorIdAction;
+export type HandleSetAdminCycleEditorId = (id: number) => void;
 
 export const getAdminCycleEditor: GetAdminCyclesEditor = () => ({
   type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR,
@@ -56,6 +60,11 @@ export const deleteAdminCyclesEditor: DeleteAdminCycleEditor = id => ({
 export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR,
   payload: api.updateAdminCyclesEditor(values),
+});
+
+export const setAdminCycleEditorId: SetAdminCycleEditorId = id => ({
+  type: ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID,
+  payload: id,
 });
 
 export const handleGetAdminCyclesEditor: HandleGetAdminCyclesEditor = () =>
@@ -110,3 +119,6 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
       dispatch
     );
   };
+
+export const handleSetAdminCycleEditorId: HandleSetAdminCycleEditorId = id =>
+  setAdminCycleEditorId(id);

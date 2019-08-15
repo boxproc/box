@@ -8,7 +8,7 @@ import { StoreState } from 'store/StoreState';
 import { camelizeUtil } from 'utils';
 
 export const selectDefaultAdminSchedulerJobsItems = (state: StoreState) =>
-  state.administration.adminSchedulerJobs.scheduler;
+  state.administration.scheduler.scheduler;
 
 export const selectAdminSchedulerJobsItems = createSelector(
   selectDefaultAdminSchedulerJobsItems,

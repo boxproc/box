@@ -9,13 +9,13 @@ import adminSchedulerJobsReducer from './scheduler/reducer';
 import adminSysPropsReducer from './systemProperties/reducer';
 
 const administrationReducer = combineReducers({
-  adminSysProps: adminSysPropsReducer,
-  adminSchedulerJobs: adminSchedulerJobsReducer,
-  adminCyclesEditor: adminCyclesEditorReducer,
-  adminEvents: adminEventsReducer,
-  adminEventDataElems: adminEventDataElemsReducer,
-  adminUsers: adminUserReducer,
-  adminUsersGroup: adminUsersGroupReducer,
+  systemProperties: adminSysPropsReducer,
+  scheduler: adminSchedulerJobsReducer,
+  cyclesEditor: adminCyclesEditorReducer,
+  events: adminEventsReducer,
+  eventDataElements: adminEventDataElemsReducer,
+  users: adminUserReducer,
+  userGroups: adminUsersGroupReducer,
 });
 
 export default administrationReducer;

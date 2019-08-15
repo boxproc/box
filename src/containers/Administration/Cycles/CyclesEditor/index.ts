@@ -7,6 +7,7 @@ import {
   AdminCycleEditorActionTypes,
   createLoadingSelector,
   handleGetAdminCyclesEditor,
+  handleSetAdminCycleEditorId,
   openModal,
   selectAdminCycleEditorItems,
   selectInstitutionsOptions,
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
     getAdminCyclesEditor: handleGetAdminCyclesEditor,
+    setAdminCycleEditorId: handleSetAdminCycleEditorId,
   },
   dispatch
 );

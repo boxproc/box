@@ -12,8 +12,9 @@ import {
 } from './components';
 
 import {
-  AdminCyclesEditorItem,
+  AdminCyclesEditorItemPrepared,
   HandleGetAdminCyclesEditor,
+  HandleSetAdminCycleEditorId,
 } from 'store/domains/administration/cycles';
 
 import { OpenModal } from 'store/domains';
@@ -21,10 +22,11 @@ import { OpenModal } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface CycleEditorProps {
-  adminCyclesEditorItems: Array<AdminCyclesEditorItem>;
+  adminCyclesEditorItems: Array<Partial<AdminCyclesEditorItemPrepared>>;
   openModal: OpenModal;
   getAdminCyclesEditor: HandleGetAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
+  setAdminCycleEditorId: HandleSetAdminCycleEditorId;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
@@ -32,6 +34,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   getAdminCyclesEditor,
   adminCyclesEditorItems,
   institutionsOptions,
+  setAdminCycleEditorId,
 }) => {
   React.useEffect(
     () => {
@@ -43,13 +46,15 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {
-        onDoubleClick: () => openModal({
-          name: modalNames.EDIT_CYCLE_EDITOR,
-          payload: { cycleEditorValues: rowInfo.original },
-        }),
+        onDoubleClick: () => {
+          setAdminCycleEditorId(rowInfo.original.id);
+          openModal({
+            name: modalNames.EDIT_CYCLE_EDITOR,
+          });
+        },
       };
     },
-    [openModal]
+    [openModal, setAdminCycleEditorId]
   );
 
   return (

@@ -6,19 +6,19 @@ import { permissionTypesOptions } from 'consts';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
-  state.administration.adminUsersGroup.usersGroups;
+  state.administration.userGroups.usersGroups;
 
 export const selectAdminUserGroupMembers = (state: StoreState) =>
-  state.administration.adminUsersGroup.userGroupMembers.asMutable();
+  state.administration.userGroups.userGroupMembers.asMutable();
 
 export const selectAdminGroupPermissions = (state: StoreState) =>
-  state.administration.adminUsersGroup.groupPermissions.asMutable();
+  state.administration.userGroups.groupPermissions.asMutable();
 
 export const selectDefaultAdminActiveUsers = (state: StoreState) =>
-  state.administration.adminUsersGroup.allActiveUsers.asMutable();
+  state.administration.userGroups.allActiveUsers.asMutable();
 
 export const selectDefaultAdminUiItems = (state: StoreState) =>
-  state.administration.adminUsersGroup.uiItems.asMutable();
+  state.administration.userGroups.uiItems.asMutable();
 
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,

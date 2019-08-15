@@ -3,10 +3,10 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
-  state.administration.adminSysProps.systemProperties;
+  state.administration.systemProperties.systemProperties;
 
 export const selectDefaultSysPropsFilterParams = (state: StoreState) =>
-  state.administration.adminSysProps.systemPropertiesFilterParams;
+  state.administration.systemProperties.systemPropertiesFilterParams;
 
 export const selectAdminSysPropsItems = createSelector(
   selectDefaultAdminSysPropsItems,

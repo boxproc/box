@@ -6,7 +6,7 @@ import { selectCountryCodes, selectInstitutionsOptions } from 'store/domains/con
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
-  state.ledger.ledgerCustomers.customers.asMutable();
+  state.ledger.customers.customers.asMutable();
 
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
@@ -24,7 +24,7 @@ export const selectLedgerCustomers = createSelector(
 );
 
 export const selectLedgerCustomerCurrentId = (state: StoreState) =>
-  state.ledger.ledgerCustomers.currentCustomerId;
+  state.ledger.customers.currentCustomerId;
 
 export const selectLedgerCurrentCustomer = createSelector(
   selectLedgerCustomers,

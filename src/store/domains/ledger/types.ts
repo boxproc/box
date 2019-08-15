@@ -4,8 +4,8 @@ import { LedgerCustomersState } from './customers';
 import { LedgerTransactionsState } from './transactions';
 
 export interface LedgerState {
-  ledgerAccounts: LedgerAccountsState;
-  ledgerCustomers: LedgerCustomersState;
-  ledgerTransactions: LedgerTransactionsState;
-  ledgerCards: LedgerCardsState;
+  accounts: LedgerAccountsState;
+  customers: LedgerCustomersState;
+  transactions: LedgerTransactionsState;
+  cards: LedgerCardsState;
 }

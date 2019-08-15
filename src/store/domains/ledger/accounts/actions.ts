@@ -33,16 +33,14 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetLedgerAccounts = () => GetLedgerAccountsAction;
 export type HandleGetLedgerAccounts = VoidPromiseThunk;
 
-export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) =>
-  AddLedgerAccountAction;
+export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) => AddLedgerAccountAction;
 export type HandleAddLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type SetLedgerAccountId = (id: number) => SetLedgerAccountIdAction;
 export type HandleSetLedgerAccountId = (id: number) => void;
 
-export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) =>
-  UpdateLedgerAccountAction;
+export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) => UpdateLedgerAccountAction;
 export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
@@ -74,7 +72,6 @@ export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
 export const filterLedgerAccounts: FilterLedgerAccounts = filterParams => ({
   type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS,
   payload: api.filterLedgerAccounts(filterParams),
-  meta: filterParams,
 });
 
 export const handleGetLedgerAccounts: HandleGetLedgerAccounts = () =>

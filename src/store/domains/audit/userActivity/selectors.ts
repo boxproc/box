@@ -4,10 +4,10 @@ import { AuditUserActivitiesFilter } from './types';
 import { preparedValuesToRender } from './utils';
 
 export const selectDefaultAuditUsers = (state: StoreState) =>
-  state.audit.auditUserActivities.users_activity.asMutable();
+  state.audit.userActivities.users_activity.asMutable();
 
 export const selectDefaultAuditUserActivities = (state: StoreState) =>
-  state.audit.auditUserActivities.filtered_users.asMutable();
+  state.audit.userActivities.filtered_users.asMutable();
 
 export const selectAuditUsers = createSelector(
   selectDefaultAuditUsers,

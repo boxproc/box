@@ -7,7 +7,7 @@ import {
 } from './utils';
 
 export const selectDefaultLedgerCards = (state: StoreState) =>
-  state.ledger.ledgerCards.cards;
+  state.ledger.cards.cards;
 
 export const selectLedgerCards = createSelector(
   selectDefaultLedgerCards,

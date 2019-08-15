@@ -7,11 +7,11 @@ import { AdminSchedulerState } from './scheduler';
 import { AdminSysPropsState } from './systemProperties';
 
 export interface AdministrationState {
-  adminCyclesEditor: AdminCyclesEditorState;
-  adminSysProps: AdminSysPropsState;
-  adminSchedulerJobs: AdminSchedulerState;
-  adminUsers: AdminUserState;
-  adminUsersGroup: AdminUsersGroupState;
-  adminEvents: AdminEventsState;
-  adminEventDataElems: AdminEventDataElemsState;
+  systemProperties: AdminSysPropsState;
+  scheduler: AdminSchedulerState;
+  cyclesEditor: AdminCyclesEditorState;
+  users: AdminUserState;
+  userGroups: AdminUsersGroupState;
+  events: AdminEventsState;
+  eventDataElements: AdminEventDataElemsState;
 }

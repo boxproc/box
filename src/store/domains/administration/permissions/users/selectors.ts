@@ -6,7 +6,7 @@ import { statusTypesOptions } from 'consts';
 import { prepareAdminUserValuesToRender } from './utils';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
-  state.administration.adminUsers.users;
+  state.administration.users.users;
 
 export const selectUserEditorItems = createSelector(
   selectDefaultAdminUsersItems,
@@ -18,7 +18,7 @@ export const selectUserEditorItems = createSelector(
 );
 
 export const selectCurrentUserId = (state: StoreState) =>
-  state.administration.adminUsers.currentUserId;
+  state.administration.users.currentUserId;
 
 export const selectUsersValues = createSelector(
   selectDefaultAdminUsersItems,

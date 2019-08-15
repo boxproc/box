@@ -7,7 +7,7 @@ import { StoreState } from 'store/StoreState';
 import { selectAdminEventsOptions } from '../events';
 
 export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
-  state.administration.adminEventDataElems.eventDataElems;
+  state.administration.eventDataElements.eventDataElems;
 
 export const selectAdminEventDataElemsItems = createSelector(
   selectDefaultAdminEventDataElemsItems,
@@ -22,7 +22,7 @@ export const selectAdminEventDataElemsItems = createSelector(
 );
 
 export const selectDefaultFilterAdminEventDataElemsParams = (state: StoreState) =>
-  state.administration.adminEventDataElems.filterEventDataElems;
+  state.administration.eventDataElements.filterEventDataElems;
 
 export const selectFilterAdminEventDataElemsParams = createSelector(
   selectDefaultFilterAdminEventDataElemsParams,
