@@ -49,6 +49,6 @@ export enum formNames {
   LEDGER_CARDS_FILTER = 'ledgerCardsFilter',
   LEDGER_CARDS = 'ledgerCards',
 
-  // USer activity
+  // User activity
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 }

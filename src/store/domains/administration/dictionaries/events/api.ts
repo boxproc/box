@@ -1,3 +1,5 @@
+import { adminEventsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -8,4 +10,4 @@ import { apiClient } from 'services';
 
 export const getAdminEvents = () =>
   // throttleUtil.getDataAfter(adminEventsData, 500);
-  apiClient.post('/ui/administration/dictionaries/events/get');
+  apiClient.post(adminEventsPathNames.GET);

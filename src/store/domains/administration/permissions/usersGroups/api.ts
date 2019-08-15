@@ -1,3 +1,5 @@
+import { adminUserGroupsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 import {
@@ -7,44 +9,36 @@ import {
 } from './types';
 
 export const getAdminUsersGroup = () =>
-  // throttleUtil.getDataAfter(AdminSchedulerData, 500);
-  apiClient.post('/ui/administration/permissions/users_group/get');
+  apiClient.post(adminUserGroupsPathNames.GET_USERS_GROUPS);
 
-export const getAdminActiveUsers = (id: string | number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/users_group_members/get_active_users', {
+export const getAdminActiveUsers = (id: number) =>
+  apiClient.post(adminUserGroupsPathNames.GET_ACTIVE_USERS, {
     data: { user_group_id: id },
   });
 
-export const getAdminUserGroupMembers = (id: string | number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/users_group_members/get', {
+export const getAdminUserGroupMembers = (id: number) =>
+  apiClient.post(adminUserGroupsPathNames.GET_GROUP_MEMBERS, {
     data: { id },
   });
 
-export const getAdminUiItems = (id: string | number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/group_permissions_ui_items/get', {
+export const getAdminUiItems = (id: number) =>
+  apiClient.post(adminUserGroupsPathNames.GET_GROUP_UI_ITEMS, {
     data: { user_group_id: id },
   });
 
-export const getAdminUserGroupPermissions = (id: string | number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/group_permissions/get', {
+export const getAdminUserGroupPermissions = (id: number) =>
+  apiClient.post(adminUserGroupsPathNames.GET_GROUP_PERMISSIONS, {
     data: { user_group_id: id },
   });
 
 export const addAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permission/users_group/create', { data });
+  apiClient.post(adminUserGroupsPathNames.CREATE_USERS_GROUP, { data });
 
 export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/permissions/users_group/update', { data });
+  apiClient.post(adminUserGroupsPathNames.UPDATE_USERS_GROUP, { data });
 
 export const deleteAdminUserGroupMembers = (groupId: number, userId: number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/users_group_members/delete', {
+  apiClient.post(adminUserGroupsPathNames.DELETE_USERS_GROUP_MEMBER, {
     data: {
       user_group_id: groupId,
       user_id: userId,
@@ -53,8 +47,7 @@ export const deleteAdminUserGroupMembers = (groupId: number, userId: number) =>
 
 export const deleteAdminUserGroupPermissions =
   (groupId: number, uiItem: string) =>
-    // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-    apiClient.post('/ui/administration/permissions/group_permissions/delete', {
+    apiClient.post(adminUserGroupsPathNames.DELETE_GROUP_PERMISSIONS, {
       data: {
         user_group_id: groupId,
         ui_item: uiItem,
@@ -62,11 +55,9 @@ export const deleteAdminUserGroupPermissions =
     });
 
 export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/users_group_members/create', {
+  apiClient.post(adminUserGroupsPathNames.CREATE_USERS_GROUP_MEMBERS, {
     data,
   });
 
 export const addAdminGroupPermission = (data: Partial<AdminGroupPermissionItemResp>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/group_permissions/create', { data });
+  apiClient.post(adminUserGroupsPathNames.CREATE_GROUP_PERMISSIONS, { data });

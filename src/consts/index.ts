@@ -4,6 +4,7 @@ export * from './modalNames';
 export * from './cookies';
 export * from './types';
 export * from './links';
+export * from './pathNames';
 
 export const basePath = '/ui/';
 

@@ -1,21 +1,19 @@
+import { adminCyclesPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 import { AdminCyclesEditorItem } from './types';
 
 export const getAdminCycleEditor = () =>
-  // throttleUtil.getDataAfter(AdminSchedulerData, 500);
-  apiClient.post('/ui/administration/cycles/cycles_editor/get');
+  apiClient.post(adminCyclesPathNames.GET);
 
 export const addAdminCyclesEditor = (data: Partial<AdminCyclesEditorItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/cycles/cycles_editor/create', { data });
+  apiClient.post(adminCyclesPathNames.CREATE, { data });
 
-export const deleteAdminCyclesEditor = (id: string | number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/cycles/cycles_editor/delete', {
+export const deleteAdminCyclesEditor = (id: number) =>
+  apiClient.post(adminCyclesPathNames.DELETE, {
     data: { id },
   });
 
 export const updateAdminCyclesEditor = (data: Partial<AdminCyclesEditorItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/cycles/cycles_editor/update', { data });
+  apiClient.post(adminCyclesPathNames.UPDATE, { data });

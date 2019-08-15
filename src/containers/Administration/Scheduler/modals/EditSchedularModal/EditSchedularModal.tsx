@@ -42,7 +42,6 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         defineAdminSchedulerJob={updateAdminSchedulerJob}
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}
-
       />
       <Hr />
       <Button

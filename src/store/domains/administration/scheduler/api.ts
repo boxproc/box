@@ -1,3 +1,5 @@
+import { adminSchedulerPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import { AdminSchedulerData, SuccessResponseStatus } from './mock';
@@ -8,18 +10,18 @@ import { AdminSchedulerItem } from './types';
 
 export const getAdminSchedulerJobs = () =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
-  apiClient.post('/ui/administration/scheduler/get');
+  apiClient.post(adminSchedulerPathNames.GET);
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/scheduler/delete', {
+  apiClient.post(adminSchedulerPathNames.DELETE, {
     data: { id },
   });
 
 export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/scheduler/create', { data });
+  apiClient.post(adminSchedulerPathNames.CREATE, { data });
 
 export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/scheduler/update', { data });
+  apiClient.post(adminSchedulerPathNames.UPDATE, { data });

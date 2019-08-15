@@ -1,3 +1,5 @@
+import { adminEventDataElemsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -11,8 +13,8 @@ import { AdminEventDataElemsFilterParamsPrepared } from './types';
 
 export const getAdminEventDataElems = () =>
   // throttleUtil.getDataAfter(adminEventDataElemsData, 500);
-  apiClient.post('/ui/administration/dictionaries/event_data_elements/get');
+  apiClient.post(adminEventDataElemsPathNames.GET);
 
 export const filterAdminEventDataElems = (data: AdminEventDataElemsFilterParamsPrepared) =>
   // throttleUtil.getDataAfter(adminEventDataElemsFilteredData, 500);
-  apiClient.post('/ui/administration/dictionaries/event_data_elements/get', { data });
+  apiClient.post(adminEventDataElemsPathNames.GET, { data });

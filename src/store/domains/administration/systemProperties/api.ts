@@ -1,3 +1,5 @@
+import { adminSystemPropsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -15,22 +17,22 @@ import {
 
 export const getAdminSysProps = () =>
   // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
-  apiClient.post('/ui/administration/system_properties/get');
+  apiClient.post(adminSystemPropsPathNames.GET);
 
 export const deleteAdminSysProp = (propName: string) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/system_properties/delete', {
+  apiClient.post(adminSystemPropsPathNames.DELETE, {
     data: { property_name: propName },
   });
 
 export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/system_properties/create', { data });
+  apiClient.post(adminSystemPropsPathNames.CREATE, { data });
 
 export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/administration/system_properties/update', { data });
+  apiClient.post(adminSystemPropsPathNames.UPDATE, { data });
 
 export const filterAdminSysProps = (data: AdminSysPropFilterParamsPrepared) =>
   // throttleUtil.getDataAfter(AdminSysPropsItemsFilteredData, 500);
-  apiClient.post('/ui/administration/system_properties/get', {data});
+  apiClient.post(adminSystemPropsPathNames.GET, {data});
