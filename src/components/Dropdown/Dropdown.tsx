@@ -37,6 +37,10 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    &:hover * {
+      color: ${({ theme }) => theme.normalAccentColor};
+    }
   }
 `;
 

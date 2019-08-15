@@ -15,7 +15,7 @@ import { cookiesUtil } from 'utils';
 
 const UserIcon = styled(User)`
   margin-right: 5px;
-  color: ${({ theme }) => theme.normalAccentColor};
+  color: ${({ theme }) => theme.grayColor};
 `;
 
 const UserBlock = () => (

@@ -18,17 +18,13 @@ import { stringsUtil } from 'utils';
 
 const HelpIcon = styled(HelpCircle)`
   margin-right: 3px;
-  color: ${({ theme }) => theme.normalAccentColor};
-`;
-
-const AccentColorBlock = styled.div`
-  color: ${({ theme }) => theme.normalAccentColor};
+  color: ${({ theme }) => theme.grayColor};
 `;
 
 const HelpBlock = () => (
   <Flex alignItems="center">
     <HelpIcon size="16" />
-    <AccentColorBlock>Help</AccentColorBlock>
+    <div>Help</div>
   </Flex>
 );
 
@@ -54,7 +50,6 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
     <Dropdown
       selectable={false}
       ToggleButtonComponent={<HelpBlock />}
-      isAccentColorIcon={true}
     >
       <Option>
         <Flex alignItems="center">
