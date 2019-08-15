@@ -289,6 +289,6 @@ export const prepareProductRuleValuesToSend =
       event_id: rule.eventId && rule.eventId.value,
       action_type: rule.actionType && rule.actionType.value,
       script: rule.script,
-      // product_id: rule.productId,
+      product_id: rule.productId,
     };
   };

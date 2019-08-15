@@ -7,6 +7,8 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
+import { UserFilter } from 'containers/Administration/Permission/Users/forms';
+
 import {
   AdminUserItem,
   HandleFilterUsers,
@@ -18,7 +20,6 @@ import {
 } from 'store/domains/';
 
 import { SelectValues, TableCell } from 'types';
-import UserFilter from './UserFilter';
 
 interface UserFilterProps {
   adminUserItems: Array<Partial<AdminUserItem>>;

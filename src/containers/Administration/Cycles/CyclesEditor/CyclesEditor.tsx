@@ -9,7 +9,7 @@ import { modalNames } from 'consts';
 import {
   cycleEditorColumns,
   CycleEditorFilter,
-} from './CyclesEditorComponents';
+} from './components';
 
 import {
   AdminCyclesEditorItem,

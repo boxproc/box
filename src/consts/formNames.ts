@@ -2,28 +2,17 @@ export enum formNames {
   // Login
   USER_LOGIN = 'userLoginForm',
 
-  // Cycle
-  DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
-  CYCLES_EDITOR = 'cyclesEditorForm',
-
-  // Event Data Elements
-  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
-
-  // Scheduler
-  SCHEDULER = 'schedulerForm',
-  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
-
   // System Properties
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
 
-  // Products
+  // Product
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
-  ADD_PRODUCT = 'AddProductForm',
-  GENERAL_PRODUCT = 'EditGeneralProduct',
-  PRODUCT_DETAILS = 'EditProductDetails',
-  PRODUCT_RULES = 'EditProductRules',
+  ADD_PRODUCT = 'addProductForm',
+  GENERAL_PRODUCT = 'editGeneralProduct',
+  PRODUCT_DETAILS = 'editProductDetails',
+  PRODUCT_RULES = 'editProductRules',
   PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissions',
   PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCounters',
   PRODUCT_APRS = 'productAPRs',
@@ -38,6 +27,17 @@ export enum formNames {
   USER = 'userForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
 
+  // Cycle
+  DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
+  CYCLES_EDITOR = 'cyclesEditorForm',
+
+  // Event Data Elements
+  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
+
+  // Scheduler
+  SCHEDULER = 'schedulerForm',
+  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+
   // Ledger
   LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
   ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
@@ -49,6 +49,6 @@ export enum formNames {
   LEDGER_CARDS_FILTER = 'ledgerCardsFilter',
   LEDGER_CARDS = 'ledgerCards',
 
-  // Audit
+  // USer activity
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 }
