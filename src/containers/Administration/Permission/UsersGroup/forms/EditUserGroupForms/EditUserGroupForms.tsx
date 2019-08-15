@@ -36,7 +36,7 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         <Box mb="30px">
           <EditGroupPermissionForm />
         </Box>
-        <UserGroupPermission/>
+        <UserGroupPermission />
       </Panel>
     </Tabs>
   );

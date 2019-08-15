@@ -35,7 +35,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
       <GeneralUserGroupInfo
         isDisabledInstitutions={true}
       />
-      <Hr/>
+      <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"

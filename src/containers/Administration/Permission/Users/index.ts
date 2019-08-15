@@ -8,11 +8,10 @@ import {
   createLoadingSelector,
   handleFilterUsers,
   handleGetAdminUser,
+  handleSetAdminUserId,
   openModal,
-  selectDefaultFilterUsers,
   selectUserEditorItems,
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
@@ -24,7 +23,6 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminUserItems: selectUserEditorItems(state),
-  DefaultFilterUsers: selectDefaultFilterUsers(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -32,6 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     openModal,
     getAdminUser: handleGetAdminUser,
     filterUsers: handleFilterUsers,
+    setAdminUserId: handleSetAdminUserId,
   },
   dispatch
 );

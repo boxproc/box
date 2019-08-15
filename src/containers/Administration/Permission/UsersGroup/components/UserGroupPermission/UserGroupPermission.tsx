@@ -18,7 +18,7 @@ interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
   getAdminGroupPermission: HandleGetAdminGroupPermissions;
   deleteAdminGroupPermission: HandleDeleteAdminGroupPermissions;
-  adminGroupPermissions: Array<any>;
+  adminGroupPermissions: Array<AdminGroupPermissionItem>;
 }
 
 type SCell<T extends keyof AdminGroupPermissionItem> =

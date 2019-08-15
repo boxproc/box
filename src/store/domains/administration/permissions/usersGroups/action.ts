@@ -49,10 +49,8 @@ export type HandleGetAdminUserGroupMembers = (id: number) => Thunk<void>;
 export type GetAdminUiItems = (id: number) => GetAdminUiItemsAction;
 export type HandleGetAdminUiItems = (id: number) => Thunk<void>;
 
-export type GetAdminUserGroupPermissions =
-  (userGroupId: number) => GetAdminGroupPermissionsAction;
-export type HandleGetAdminGroupPermissions =
-  (userGroupId: number) => Thunk<void>;
+export type GetAdminUserGroupPermissions = (userGroupId: number) => GetAdminGroupPermissionsAction;
+export type HandleGetAdminGroupPermissions = (userGroupId: number) => Thunk<void>;
 
 export type GetAdminActiveUsers = (userGroupId: number) => GetAdminActiveUsersAction;
 export type HandleGetAdminActiveUsers = (userGroupId: number) => Thunk<void>;
@@ -63,8 +61,7 @@ export type HandleDeleteAdminUserGroupMembers = (groupId: number, userId: number
 
 export type DeleteAdminGroupPermissions =
   (groupId: number, uiItem: string) => DeleteAdminGroupPermissionsAction;
-export type HandleDeleteAdminGroupPermissions =
-  (groupId: number, uiItem: string) => Thunk<void>;
+export type HandleDeleteAdminGroupPermissions = (groupId: number, uiItem: string) => Thunk<void>;
 
 export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
   AddAdminUsersGroupAction;
@@ -83,8 +80,8 @@ export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissi
 
 export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlainResp>) =>
   UpdateAdminUsersGroupAction;
-export type HandleUpdateAdminUsersGroup =
-  (propValues: Partial<AdminUsersGroupInfoEditable>) => Thunk<void>;
+export type HandleUpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoEditable>) =>
+  Thunk<void>;
 
 export const getAdminUsersGroup: GetAdminUsersGroup = () => ({
   type: ActionTypeKeys.GET_ADMIN_USERS_GROUP,
@@ -133,11 +130,10 @@ export const addAdminActiveUsers: AddAdminActiveUsers = values => ({
   payload: api.addAdminActiveUsers(values),
 });
 
-export const addAdminGroupPermission: AddAdminGroupPermissions =
-  values => ({
-    type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
-    payload: api.addAdminGroupPermission(values),
-  });
+export const addAdminGroupPermission: AddAdminGroupPermissions = values => ({
+  type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
+  payload: api.addAdminGroupPermission(values),
+});
 
 export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP,
@@ -149,8 +145,8 @@ export const handleGetAdminUsersGroup: HandleGetAdminUsersGroup = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-
         apiClient.set('session_id', sessionId);
+
         await dispatch(getAdminUsersGroup());
       },
       dispatch

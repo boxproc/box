@@ -27,7 +27,6 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddAdminUserModal: false,
   isEditAdminUserModal: false,
-  payloadEditAdminUserModal: null,
 
   isAddAdminCycleEditorModal: false,
   isEditCycleEditorRecordsModal: false,

@@ -10,6 +10,7 @@ import {
   AddAdminUserAction,
   FilterUsersAction,
   GetAdminUserAction,
+  SetAdminUserIdAction,
   UpdateAdminUserAction,
 } from './actionType';
 
@@ -17,31 +18,31 @@ import { apiClient } from 'services';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { prepareAdminUserValuesCamel, prepareUsersFiltersParamsToSend } from './utils';
+import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
 
 import {
-   AdminUserEditableItem,
-   AdminUserEditableItemPrepared,
-   UsersFilterParams,
-   UsersFilterParamsPrepared } from './types';
+  AdminUserItem,
+  AdminUserItemDetails,
+  UsersFilterParams,
+  UsersFilterParamsPrepared
+} from './types';
 
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type GetAdminUser = () => GetAdminUserAction;
 export type HandleGetAdminUser = VoidPromiseThunk;
 
-export type AddAdminUser = (values: AdminUserEditableItemPrepared) =>
-  AddAdminUserAction;
-export type HandleAddAdminUser = (values: AdminUserEditableItem) =>
-  Thunk<void>;
+export type AddAdminUser = (values: Partial<AdminUserItem>) => AddAdminUserAction;
+export type HandleAddAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
 
-export type FilterUsers = (params: UsersFilterParamsPrepared) => FilterUsersAction;
-export type HandleFilterUsers = (params: UsersFilterParams) => Thunk<void>;
+export type FilterUsers = (params: Partial<UsersFilterParamsPrepared>) => FilterUsersAction;
+export type HandleFilterUsers = (params: Partial<UsersFilterParams>) => Thunk<void>;
 
-export type UpdateAdminUser = (propValues: AdminUserEditableItemPrepared) =>
-  UpdateAdminUserAction;
-export type HandleUpdateAdminUser =
-  (propValues: AdminUserEditableItem) => Thunk<void>;
+export type UpdateAdminUser = (values: Partial<AdminUserItem>) => UpdateAdminUserAction;
+export type HandleUpdateAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
+
+export type SetAdminUserId = (id: number) => SetAdminUserIdAction;
+export type HandleSetAdminUserId = (id: number) => void;
 
 export const getAdminUser: GetAdminUser = () => ({
   type: ActionTypeKeys.GET_ADMIN_USER,
@@ -51,19 +52,21 @@ export const getAdminUser: GetAdminUser = () => ({
 export const addAdminUser: AddAdminUser = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USER,
   payload: api.addAdminUser(values),
-  meta: values,
 });
 
 export const filterUsers: FilterUsers = params => ({
   type: ActionTypeKeys.FILTER_USERS,
   payload: api.filterAdminUsers(params),
-  meta: params,
 });
 
 export const updateAdminUser: UpdateAdminUser = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USER,
   payload: api.updateAdminUser(values),
-  meta: values,
+});
+
+export const setAdminUserId: SetAdminUserId = id => ({
+  type: ActionTypeKeys.SET_ADMIN_USER_ID,
+  payload: id,
 });
 
 export const handleGetAdminUser: HandleGetAdminUser = () =>
@@ -83,7 +86,7 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserValuesCamel(cycleEditorRecords);
+        const preparedValues = prepareAdminUserValuesToSend(cycleEditorRecords);
 
         await dispatch(addAdminUser(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_USER));
@@ -110,7 +113,7 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserValuesCamel(values);
+        const preparedValues = prepareAdminUserValuesToSend(values);
 
         await dispatch(updateAdminUser(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_USER));
@@ -119,3 +122,6 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
       dispatch
     );
   };
+
+export const handleSetAdminUserId: HandleSetAdminUserId = id =>
+  setAdminUserId(id);

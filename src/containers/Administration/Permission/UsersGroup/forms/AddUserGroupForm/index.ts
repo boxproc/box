@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+
+import AddUserGroupForm from './AddUserGroupForm';
+
 import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddAdminUsersGroup,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
-import AddUserGroupForm from './AddUserGroupForm';
 
 const loadingSelector = createLoadingSelector([
-    AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

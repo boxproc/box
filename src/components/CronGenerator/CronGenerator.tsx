@@ -2,7 +2,7 @@ import React from 'react';
 import Cron from 'react-cron-generator';
 import 'react-cron-generator/dist/cron-builder.css';
 
-const SchedulerEditor: React.FC = () => {
+const CronGenerator: React.FC = () => {
   const [value, setValue] = React.useState(null);
 
   return (
@@ -18,4 +18,4 @@ const SchedulerEditor: React.FC = () => {
   );
 };
 
-export default SchedulerEditor;
+export default CronGenerator;

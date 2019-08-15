@@ -1,21 +1,21 @@
 import React from 'react';
 
 import Modal from 'components/Modal';
-import { withSpinner } from 'components/Spinner';
 
 import { modalNames } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
+
 import {
+  AdminUserItemDetails,
   CloseModal,
-  HandleUpdateAdminUser
+  HandleUpdateAdminUser,
 } from 'store/domains';
 
 interface EditUserModalProps {
   closeModal: CloseModal;
   updateAdminUser: HandleUpdateAdminUser;
-
-  selectUserItems: any;
+  selectUserItems: AdminUserItemDetails;
 }
 
 const modalName = modalNames.EDIT_ADMIN_USER;
@@ -29,6 +29,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
     <Modal
       name={modalName}
       title="Edit User"
+      maxContainerWidth={650}
     >
       <DefineUsersForm
         onCancel={() => closeModal(modalName)}
@@ -40,6 +41,4 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(EditUserModal);
+export default EditUserModal;

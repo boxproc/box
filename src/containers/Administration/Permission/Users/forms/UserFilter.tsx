@@ -9,6 +9,7 @@ import { CheckboxField } from 'components/Form';
 import { formNames } from 'consts';
 
 import { HandleFilterUsers } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface UserFilterProps {

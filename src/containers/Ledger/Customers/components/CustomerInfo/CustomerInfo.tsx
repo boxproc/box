@@ -13,7 +13,7 @@ import { SelectValues } from 'types';
 import {
   withLoadCountryCodes,
   WithLoadCountryCodesProps,
-} from 'components/withLoadCountryCodes';
+} from 'components/HOCs';
 import { formErrorUtil } from 'utils';
 
 interface CustomerInfoProps {

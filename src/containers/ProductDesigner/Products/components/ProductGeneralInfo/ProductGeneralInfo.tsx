@@ -7,7 +7,7 @@ import { CheckboxField, InputField, SelectField, TextField } from 'components/Fo
 import {
   withLoadCurrencyCodes,
   WithLoadCurrencyCodesProps,
-} from 'components/withLoadCurrencyCodes';
+} from 'components/HOCs';
 
 import {
   productTypesOptions,

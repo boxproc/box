@@ -5,7 +5,7 @@ import { AdminUserState } from './types';
 export const adminUserInitialState:
   seamlessImmutable.ImmutableObject<AdminUserState> = Immutable({
     users: Immutable([]),
-    filterUsers: null,
+    currentUserId: null,
   });
 
 const adminUserReducer =
@@ -14,6 +14,10 @@ const adminUserReducer =
       case ActionTypeKeys.GET_ADMIN_USER_FULFILLED:
         return state
           .set('users', action.payload.users);
+
+      case ActionTypeKeys.SET_ADMIN_USER_ID:
+        return state
+          .set('currentUserId', action.payload);
 
       default:
         return state;

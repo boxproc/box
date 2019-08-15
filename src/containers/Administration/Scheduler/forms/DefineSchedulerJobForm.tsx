@@ -4,8 +4,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
+import CronGenerator from 'components/CronGenerator';
 import { InputField, SelectField } from 'components/Form';
-import SchedulerEditor from 'components/SchedulerEditor';
 import { Panel, Tabs } from 'components/Tabs';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
@@ -135,7 +135,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           </Box>
         </Panel>
         <Panel title="Schedule">
-          <SchedulerEditor />
+          <CronGenerator />
         </Panel>
       </Tabs>
       <OkCancelButtons

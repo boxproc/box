@@ -18,7 +18,7 @@ import { HandleAddAdminUser, HandleUpdateAdminUser } from 'store/domains';
 import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
-  defineAdminUser?: HandleAddAdminUser | HandleUpdateAdminUser;
+  defineAdminUser: HandleAddAdminUser | HandleUpdateAdminUser;
   isDisabledUsername?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
@@ -45,30 +45,30 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         <Flex
           flexWrap="wrap"
         >
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="firstName"
               name="firstName"
               placeholder="Enter First Name"
               component={InputField}
-              label="User First Name"
+              label="First Name"
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="lastName"
               name="lastName"
               placeholder="Enter  Last Name"
               component={InputField}
               options={typeOfCyclesEditorOptions}
-              label="User Last Name"
+              label="Last Name"
               disabled={false}
               isDisabled={isDisabledType}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="username"
               name="username"
@@ -120,7 +120,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="passwordHashRepeat"
               placeholder="Repeat Password "
               component={InputField}
-              label="Repeat  Password"
+              label="Repeat Password"
               disabled={false}
               type={'password'}
               isDisabled={isDisabledType}

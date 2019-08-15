@@ -31,11 +31,6 @@ export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
   user_group_members: Array<AdminUserGroupMember>;
 }
 
-// export interface AdminGroupPermissionItemResp {
-//     user_group_id: number;
-//     ui_item: string | number;
-//     permission: string;
-
 export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
   active_users: Array<AdminUserGroupMember>;
 }

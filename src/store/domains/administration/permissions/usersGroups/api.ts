@@ -8,13 +8,12 @@ import {
 
 export const getAdminUsersGroup = () =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
-
   apiClient.post('/ui/administration/permissions/users_group/get');
 
 export const getAdminActiveUsers = (id: string | number) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/permissions/users_group_members/get_active_users', {
-    data: {user_group_id: id },
+    data: { user_group_id: id },
   });
 
 export const getAdminUserGroupMembers = (id: string | number) =>
@@ -26,7 +25,7 @@ export const getAdminUserGroupMembers = (id: string | number) =>
 export const getAdminUiItems = (id: string | number) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/permissions/group_permissions_ui_items/get', {
-    data: {user_group_id: id },
+    data: { user_group_id: id },
   });
 
 export const getAdminUserGroupPermissions = (id: string | number) =>
@@ -53,14 +52,14 @@ export const deleteAdminUserGroupMembers = (groupId: number, userId: number) =>
   });
 
 export const deleteAdminUserGroupPermissions =
- (groupId: number, uiItem: string) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/group_permissions/delete', {
-    data: {
-      user_group_id: groupId,
-      ui_item: uiItem,
-    },
-  });
+  (groupId: number, uiItem: string) =>
+    // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+    apiClient.post('/ui/administration/permissions/group_permissions/delete', {
+      data: {
+        user_group_id: groupId,
+        ui_item: uiItem,
+      },
+    });
 
 export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
@@ -70,4 +69,4 @@ export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteRes
 
 export const addAdminGroupPermission = (data: Partial<AdminGroupPermissionItemResp>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/administration/permissions/group_permissions/create', {data});
+  apiClient.post('/ui/administration/permissions/group_permissions/create', { data });

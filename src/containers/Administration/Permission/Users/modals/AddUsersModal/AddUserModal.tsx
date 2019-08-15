@@ -3,8 +3,6 @@ import React from 'react';
 import Modal from 'components/Modal';
 import { modalNames } from 'consts';
 
-import { withSpinner } from 'components/Spinner';
-
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
 import { CloseModal, HandleAddAdminUser, } from 'store/domains';
@@ -12,7 +10,6 @@ import { CloseModal, HandleAddAdminUser, } from 'store/domains';
 interface AddUserModalProps {
   closeModal: CloseModal;
   addAdminUser: HandleAddAdminUser;
-  cyclesEditorValue: any;
 }
 
 const modalName = modalNames.ADD_ADMIN_USER;
@@ -25,7 +22,7 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
     <Modal
       name={modalName}
       title="Add new User"
-      maxContainerWidth={800}
+      maxContainerWidth={650}
     >
       <DefineUsersForm
         onCancel={() => closeModal(modalName)}
@@ -35,6 +32,4 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(AddAdminModal);
+export default AddAdminModal;

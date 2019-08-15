@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import ContextMenuList from 'components/ContextMenuList';
 import { HighLightCodeField, SelectField, TextField } from 'components/Form';
-import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'components/withLoadAdminEvents';
+import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'components/HOCs';
 
 import { actionTypesOptions } from 'consts';
 

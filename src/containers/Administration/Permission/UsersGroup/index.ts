@@ -14,9 +14,9 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    AdminUsersGroupActionTypes.GET_ADMIN_USERS_GROUP,
-    AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
-    AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.GET_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
-import { Container } from 'components/Block';
+import { Container } from 'components/Container';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 import { HelpDropdown, UserDropdown } from './components';

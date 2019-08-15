@@ -1,32 +1,25 @@
-import {
-  AdminUserDataResp,
-  AdminUserEditableItemPrepared,
-  UsersFilterParams,
-} from './types';
+import { AdminUserDataResp } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_USER = 'administration/permissions/users/GET_ADMIN_USER',
-  GET_ADMIN_USER_FULFILLED =
-  'administration/permissions/users/GET_ADMIN_USER_FULFILLED',
+  GET_ADMIN_USER_FULFILLED = 'administration/permissions/users/GET_ADMIN_USER_FULFILLED',
   GET_ADMIN_USER_REJECTED = 'administration/permissions/users/GET_ADMIN_USER_REJECTED',
 
   ADD_ADMIN_USER = 'administration/permissions/users/ADD_ADMIN_USER',
-  ADD_ADMIN_USER_FULFILLED =
-  'administration/permissions/users/ADD_ADMIN_USER_FULFILLED',
-  ADD_ADMIN_USER_REJECTED =
-  'administration/permissions/users/ADD_ADMIN_USER_REJECTED',
+  ADD_ADMIN_USER_FULFILLED = 'administration/permissions/users/ADD_ADMIN_USER_FULFILLED',
+  ADD_ADMIN_USER_REJECTED = 'administration/permissions/users/ADD_ADMIN_USER_REJECTED',
 
   FILTER_USERS = 'administration/permissions/users/FILTER_USERS',
   FILTER_USERS_FULFILLED = 'administration/permissions/users/FILTER_USERS_FULFILLED',
   FILTER_USERS_REJECTED = 'administration/permissions/users/FILTER_USERS_REJECTED',
 
   UPDATE_ADMIN_USER = 'administration/permissions/users/UPDATE_ADMIN_USER',
-  UPDATE_ADMIN_USER_FULFILLED =
-  'administration/permissions/users/UPDATE_ADMIN_USER_FULFILLED',
-  UPDATE_ADMIN_USER_REJECTED =
-  'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
+  UPDATE_ADMIN_USER_FULFILLED = 'administration/permissions/users/UPDATE_ADMIN_USER_FULFILLED',
+  UPDATE_ADMIN_USER_REJECTED = 'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
+
+  SET_ADMIN_USER_ID = 'administration/permissions/SET_ADMIN_USER_ID',
 }
 
 export interface GetAdminUserAction {
@@ -52,7 +45,6 @@ export interface AddAdminUserAction {
 export interface AddAdminUserFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.ADD_ADMIN_USER_FULFILLED;
-  readonly meta: AdminUserEditableItemPrepared;
 }
 
 export interface AddAdminUserRejectedAction {
@@ -66,9 +58,8 @@ export interface FilterUsersAction {
 }
 
 export interface FilterUsersFulfilledAction {
-  readonly payload: AdminUserDataResp;
+  readonly payload: Partial<AdminUserDataResp>;
   readonly type: ActionTypeKeys.FILTER_USERS_FULFILLED;
-  meta: UsersFilterParams;
 }
 export interface FilterUsersRejectedAction {
   readonly payload: ApiResponse;
@@ -83,7 +74,6 @@ export interface UpdateAdminUserAction {
 export interface UpdateAdminUserFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_FULFILLED;
-  readonly meta: AdminUserEditableItemPrepared;
 }
 
 export interface UpdateAdminUserRejectedAction {
@@ -91,8 +81,14 @@ export interface UpdateAdminUserRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_REJECTED;
 }
 
+export interface SetAdminUserIdAction {
+  readonly payload: number;
+  readonly type: ActionTypeKeys.SET_ADMIN_USER_ID;
+}
+
 export type AdminUserActionTypes =
   | GetAdminUserFulfilledAction
   | AddAdminUserFulfilledAction
   | FilterUsersFulfilledAction
-  | UpdateAdminUserFulfilledAction;
+  | UpdateAdminUserFulfilledAction
+  | SetAdminUserIdAction;

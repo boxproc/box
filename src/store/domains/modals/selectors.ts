@@ -25,9 +25,6 @@ export const selectDefaultCycleEditorRecord = (state: StoreState) =>
   state.modals.payloadEditCycleEditorRecordsModal
   && state.modals.payloadEditCycleEditorRecordsModal.cycleEditorValues;
 
-export const selectDefaultUsersRecord = (state: StoreState) =>
-  state.modals.payloadEditAdminUserModal.usersValues;
-
 export const selectDefaultUsersGroupRecord = (state: StoreState) =>
   state.modals.payloadEditAdminUsersGroupModal.usersGroupValues;
 
@@ -72,16 +69,6 @@ export const selectCycleEditorValues = createSelector(
 export const selectCycleEditorId = createSelector(
   selectDefaultCycleEditorRecord,
   record => record && record.id
-);
-
-export const selectUsersValues = createSelector(
-  selectDefaultUsersRecord,
-  values => {
-    return {
-      ...values,
-      status: values && statusTypesOptions.find(el => el.label === values.status),
-    };
-  }
 );
 
 export const selectUsersGroupValues = createSelector(

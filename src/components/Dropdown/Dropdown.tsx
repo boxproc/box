@@ -44,13 +44,8 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   }
 `;
 
-interface ToggleButtonProps {
-  isAccentColor?: boolean;
-}
-
-const ToggleButton = styled(ArrowDropDown)<ToggleButtonProps>`
-  color: ${({ theme, isAccentColor }) =>
-    isAccentColor ? theme.normalAccentColor : theme.grayColor};
+const ToggleButton = styled(ArrowDropDown)`
+  color: ${({ theme }) => theme.grayColor};
   padding-top: 1px;
 
   &:hover {
@@ -62,7 +57,6 @@ export interface DropdownProps {
   selectable?: boolean;
   dropdownListPosition?: 'left' | 'right';
   ToggleButtonComponent?: ReactChild;
-  isAccentColorIcon?: boolean;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -70,7 +64,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   selectable = true,
   dropdownListPosition = 'left',
   ToggleButtonComponent,
-  isAccentColorIcon = false,
 }) => {
   const dropdownListRef = React.useRef(null);
   const dropdownToggleBtnRef = React.useRef(null);
@@ -115,7 +108,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
             {ToggleButtonComponent && ToggleButtonComponent}
             <ToggleButton
               size="23"
-              isAccentColor={isAccentColorIcon}
             />
           </div>
         </Box>

@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import styled from 'theme';
 
-import { Container } from 'components/Block';
+import { Container } from 'components/Container';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 

@@ -42,7 +42,6 @@ export interface ModalsState {
 
   isAddAdminUserModal: boolean;
   isEditAdminUserModal: boolean;
-  payloadEditAdminUserModal: any;
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;

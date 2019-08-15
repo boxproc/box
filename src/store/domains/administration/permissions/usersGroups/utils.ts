@@ -4,6 +4,10 @@ import { AdminGroupPermissionItemEditable, AdminUsersGroupInfoEditable } from '.
 
 export const prepareAdminUsersGroupValuesUnderscore =
   (values: Partial<AdminUsersGroupInfoEditable>) => {
+    if (!values) {
+      return null;
+    }
+
     return {
       id: values.id,
       institution_id: values.institutionId && values.institutionId.value,
@@ -13,9 +17,13 @@ export const prepareAdminUsersGroupValuesUnderscore =
 
 export const AdminGroupPermissionPreparedToSend =
   (values: Partial<AdminGroupPermissionItemEditable>) => {
-  return {
-    user_group_id: values.userGroupId,
-    ui_item: values.uiItem && values.uiItem.value,
-    permission: values.permission ? permissionTypes.READ_WRITE : permissionTypes.READ_ONLY,
+    if (!values) {
+      return null;
+    }
+
+    return {
+      user_group_id: values.userGroupId,
+      ui_item: values.uiItem && values.uiItem.value,
+      permission: values.permission ? permissionTypes.READ_WRITE : permissionTypes.READ_ONLY,
+    };
   };
-};
