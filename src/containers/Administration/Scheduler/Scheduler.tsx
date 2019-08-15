@@ -7,7 +7,7 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
-import SchedulerButtonsDropdown from './SchedulerButtonsDropdown';
+import { SchedulerButtonsDropdown } from 'containers/Administration/Scheduler/components';
 
 import {
   AdminSchedulerItem,
@@ -15,7 +15,7 @@ import {
   OpenModal,
 } from 'store/domains';
 
-import SchedulerFilter from './SchedulerFilter';
+import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
 import { TableCell } from 'types';
 

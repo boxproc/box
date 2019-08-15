@@ -11,6 +11,7 @@ import {
   renderCheckBoxIcon,
   renderEditable,
 } from 'components/Table/utils';
+import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
 
 import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
 
@@ -22,8 +23,6 @@ import {
   HandleGetAdminSysProps,
   HandleUpdateAdminSysProps,
 } from 'store/domains';
-
-import SystemPropertyFilter from './SystemPropertyFilter';
 
 import { TableCell } from 'types';
 

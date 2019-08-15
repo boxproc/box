@@ -279,11 +279,15 @@ export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
 };
 
 export const prepareProductRuleValuesToSend =
-  (rule: Partial<ProductRulesItem>): ProductRulesItemResp => {
+  (rule: Partial<ProductRulesItem>) => {
+    if (!rule) {
+      return null;
+    }
+
     return {
       description: rule.description,
-      event_id: rule.eventId.value,
-      action_type: rule.actionType.value,
+      event_id: rule.eventId && rule.eventId.value,
+      action_type: rule.actionType && rule.actionType.value,
       script: rule.script,
       product_id: rule.productId,
     };

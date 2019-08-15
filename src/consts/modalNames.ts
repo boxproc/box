@@ -3,7 +3,7 @@ export enum modalNames {
   MESSAGE_MODAL = 'MessageModal',
   CONFIRMATION_MODAL = 'ConfirmationModal',
 
-  // Product Modeler
+  // Product Designer
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
 

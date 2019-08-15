@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ScrollDisable } from 'components/Scrollbar';
 
-import { modalsList } from './modalsList';
+import { modalsList } from 'containers/Modals/modalsList';
 
 interface ModalsProps {
   modalsStateList?: object;

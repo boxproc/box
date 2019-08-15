@@ -1,19 +1,22 @@
 import React, { ReactChild } from 'react';
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
+import { ExternalLink } from 'components/links';
 import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';
 
 import TableFilterContainer from './TableFilterContainer';
 
-import {
-  OpenModal,
-} from 'store/domains';
+import { OpenModal } from 'store/domains';
 
-interface TablePageProps {
+import { stringsUtil } from 'utils';
+
+interface TablePageProps extends RouteComponentProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
@@ -33,6 +36,7 @@ export const TablePage: React.FC<TablePageProps> = ({
   FilterForm,
   getTrGroupProps,
   hint,
+  location,
 }) => {
   const [isFilter, setIsFilter] = React.useState(true);
 
@@ -53,23 +57,40 @@ export const TablePage: React.FC<TablePageProps> = ({
           {FilterForm}
         </TableFilterContainer>
       }
-      <Flex alignItems="center">
-        {addNewModalName && (
-          <Box mb="7px">
-            <Button
-              text="Add New"
-              iconName="plus"
-              onClick={() => openModal({
-                name: addNewModalName,
-              })}
-            />
-          </Box>
-        )}
-        {hint && (
-          <Box mb="10px" ml="7px">
-            <Hint text={hint} />
-          </Box>
-        )}
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Box>
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            {addNewModalName && (
+              <Box mb="7px">
+                <Button
+                  text="Add New"
+                  iconName="plus"
+                  onClick={() => openModal({
+                    name: addNewModalName,
+                  })}
+                />
+              </Box>
+            )}
+            {hint && (
+              <Box mb="10px" ml="7px">
+                <Hint text={hint} />
+              </Box>
+            )}
+          </Flex>
+        </Box>
+        <Box mb="10px">
+          <ExternalLink
+            text="HELP"
+            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+            grayStyle={true}
+          />
+        </Box>
       </Flex>
       <Table
         data={data}
@@ -81,4 +102,4 @@ export const TablePage: React.FC<TablePageProps> = ({
   );
 };
 
-export default TablePage;
+export default withRouter(TablePage);

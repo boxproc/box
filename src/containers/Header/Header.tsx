@@ -2,15 +2,13 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 import { RouteComponentProps } from 'react-router';
-import { User } from 'styled-icons/fa-solid/User';
 
 import styled from 'theme';
 
 import { Container } from 'components/Block';
-import { Button } from 'components/Buttons';
-import { Dropdown, Option } from 'components/Dropdown';
 import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
+import { HelpDropdown, UserDropdown } from './components';
 
 import { basePath, boxInstitutionName, cookiesExpires, cookiesNames } from 'consts';
 
@@ -40,18 +38,6 @@ const Wrapper = styled.header`
   white-space: nowrap;
   z-index: 10;
 `;
-
-const UserIcon = styled(User)`
-  margin-right: 5px;
-  color: ${({ theme }) => theme.grayColor};
-`;
-
-const UserBlock = () => (
-  <Flex alignItems="baseline">
-    <UserIcon size="12" />
-    <div>{cookiesUtil.get(cookiesNames.FULL_NAME)}</div>
-  </Flex>
-);
 
 interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
@@ -89,11 +75,6 @@ const Header: React.FC<HeaderProps> = ({
     [getUiItems, getInstitutions, firstName, lastName]
   );
 
-  const handleUserLogout = React.useCallback(
-    () => userLogout(),
-    [userLogout]
-  );
-
   const institution = institutions.length === 1
     ? institutions[0]
     : institutions.find(el => el.institutionName === boxInstitutionName);
@@ -125,24 +106,20 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box ml="50px">
             <Flex alignItems="center">
+              <Box mr="10px">
+                <HelpDropdown
+                  location={location}
+                  uiItems={uiItems}
+                />
+              </Box>
               {institution && (
                 <Box mr="15px">
                   {institution && institution.institutionName}
                 </Box>
               )}
-              <Dropdown
-                selectable={false}
-                dropdownListPosition="right"
-                ToggleButtonComponent={<UserBlock />}
-              >
-                <Option>
-                  <Button
-                    text="Log out"
-                    iconName="logOut"
-                    onClick={handleUserLogout}
-                  />
-                </Option>
-              </Dropdown>
+              <UserDropdown
+                userLogout={userLogout}
+              />
             </Flex>
           </Box>
         </Flex>

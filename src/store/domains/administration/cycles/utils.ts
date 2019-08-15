@@ -33,7 +33,7 @@ export const prepareAdminCyclesEditorValuesUnderscore =
         ...prepareGeneral(),
         fixed_cycle_number_of_days: 0,
         weekly_cycle_first_day: 0,
-        monthly_cycle_first_day: values.monthlyCycleFirstDay && Number(values.monthlyCycleFirstDay),
+        monthly_cycle_first_day: Number(values.monthlyCycleFirstDay),
       };
     } else if (isWeeklyCycleFirstDay) {
       return {
@@ -48,8 +48,7 @@ export const prepareAdminCyclesEditorValuesUnderscore =
         ...prepareGeneral(),
         monthly_cycle_first_day: 0,
         weekly_cycle_first_day: 0,
-        fixed_cycle_number_of_days:
-          values.fixedCycleNumberOfDays && Number(values.fixedCycleNumberOfDays),
+        fixed_cycle_number_of_days: Number(values.fixedCycleNumberOfDays),
       };
     } else {
       return null;

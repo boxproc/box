@@ -298,7 +298,7 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
   };
 
 export const handleUpdateProductRules: HandleUpdateProductRules = values =>
-  async dispatch => {
+  async (dispatch) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareProductRuleValuesToSend(values);

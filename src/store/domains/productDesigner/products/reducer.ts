@@ -48,7 +48,10 @@ const productsReducer =
       case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
         return state
           .set('currentProductRules', action.payload.product_rules)
-          .set('currentRulesCode', action.payload.product_rules[0].script);
+          .set(
+            'currentRulesCode',
+            action.payload.product_rules.length && action.payload.product_rules[0].script
+          );
 
       case ActionTypeKeys.SET_RULES_CODE:
         return state

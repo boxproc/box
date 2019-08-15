@@ -18,7 +18,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   customer_first_name: string;
   customer_last_name: string;
   institution_id: number | string;
-  product_id: number;
+  product_id: number | string;
   product_name: string | number;
   balance_settled: number;
   balance_available: number;
@@ -43,12 +43,12 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   amount_overdue_7_cycles: number;
   number_of_times_overdue_total: number;
   number_of_times_overdue_1_cycle: number;
-  number_of_times_overdue_2_cycles: number;
-  number_of_times_overdue_3_cycles: number;
-  number_of_times_overdue_4_cycles: number;
-  number_of_times_overdue_5_cycles: number;
-  number_of_times_overdue_6_cycles: number;
-  number_of_times_overdue_7_cycles: number;
+  number_of_times_overdue_2_cycle: number;
+  number_of_times_overdue_3_cycle: number;
+  number_of_times_overdue_4_cycle: number;
+  number_of_times_overdue_5_cycle: number;
+  number_of_times_overdue_6_cycle: number;
+  number_of_times_overdue_7_cycle: number;
 }
 
 export interface LedgerAccountItems extends ResponseStatusType {
@@ -61,7 +61,7 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   customerId: number;
   customerFirstName: string;
   customerLastName: string;
-  productId: number;
+  productId: number | string;
   balanceSettled: number;
   balanceAvailable: number;
   amountDueRepayment: number;

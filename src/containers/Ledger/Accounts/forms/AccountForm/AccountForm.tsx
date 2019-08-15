@@ -15,12 +15,13 @@ import {
   Overdue,
 } from 'containers/Ledger/Accounts/components';
 
-import { HandleUpdateLedgerAccount } from 'store/domains';
+import { HandleAddLedgerAccount, HandleUpdateLedgerAccount } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
   updateLedgerAccount: HandleUpdateLedgerAccount;
+  addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
   mode: 'add' | 'edit';
 }
@@ -32,13 +33,15 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   onCancel,
   handleSubmit,
   updateLedgerAccount,
+  addLedgerAccount,
   institutionsOptions,
   mode,
 }) => {
   const isEditMode = mode === 'edit';
+  const action = isEditMode ? updateLedgerAccount : addLedgerAccount;
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateLedgerAccount(data)),
+    handleSubmit(data => action(data)),
     [handleSubmit]
   );
 

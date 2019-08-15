@@ -6,7 +6,7 @@ import TablePage from 'components/TablePage';
 
 import { cookiesExpires, cookiesNames } from 'consts';
 
-import EventDataElemsFilter from './EventDataElemsFilter';
+import { EventDataElemsFilter } from 'containers/Administration/Dictionaries/EventDataElems/forms';
 
 import {
   AdminEventDataElemsFilterParams,

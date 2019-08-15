@@ -37,11 +37,20 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    &:hover * {
+      color: ${({ theme }) => theme.normalAccentColor};
+    }
   }
 `;
 
-const ToggleButton = styled(ArrowDropDown)`
-  color: ${({ theme }) => theme.grayColor};
+interface ToggleButtonProps {
+  isAccentColor?: boolean;
+}
+
+const ToggleButton = styled(ArrowDropDown)<ToggleButtonProps>`
+  color: ${({ theme, isAccentColor }) =>
+    isAccentColor ? theme.normalAccentColor : theme.grayColor};
   padding-top: 1px;
 
   &:hover {
@@ -53,6 +62,7 @@ export interface DropdownProps {
   selectable?: boolean;
   dropdownListPosition?: 'left' | 'right';
   ToggleButtonComponent?: ReactChild;
+  isAccentColorIcon?: boolean;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -60,6 +70,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   selectable = true,
   dropdownListPosition = 'left',
   ToggleButtonComponent,
+  isAccentColorIcon = false,
 }) => {
   const dropdownListRef = React.useRef(null);
   const dropdownToggleBtnRef = React.useRef(null);
@@ -102,13 +113,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
             ref={dropdownToggleBtnRef}
           >
             {ToggleButtonComponent && ToggleButtonComponent}
-            <ToggleButton size="24" />
+            <ToggleButton
+              size="23"
+              isAccentColor={isAccentColorIcon}
+            />
           </div>
         </Box>
       </Flex>
       {isOpened && (
         <div className="dropdown-list" ref={dropdownListRef}>
           {React.Children.map(children, (child, i) => {
+            if (!child) {
+              return null;
+            }
             return (
               <div
                 className="dropdown-option"
@@ -131,6 +148,6 @@ export const Option: React.FC = ({
   children,
 }) => {
   return (
-    <div>{children}</div>
+    <React.Fragment>{children}</React.Fragment>
   );
 };

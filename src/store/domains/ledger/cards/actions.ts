@@ -64,7 +64,7 @@ export const handleFilterLedgerCards: HandleFilterLedgerCards = params =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedFilterParamsToSend(params);
-        console.log('preparedValues', preparedValues);
+
         await dispatch(filterLedgerCards(preparedValues));
       },
       dispatch
