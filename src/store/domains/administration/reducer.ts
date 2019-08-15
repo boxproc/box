@@ -3,6 +3,8 @@ import { combineReducers } from 'redux-seamless-immutable';
 import adminCyclesEditorReducer from './cycles/reducer';
 import adminEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
 import adminEventsReducer from './dictionaries/events/reducer';
+import adminEndpointsReducer from './endpoints/reducer';
+import adminInterfacesReducer from './interfaces/reducer';
 import adminUserReducer from './permissions/users/reducer';
 import adminUsersGroupReducer from './permissions/usersGroups/reducer';
 import adminSchedulerJobsReducer from './scheduler/reducer';
@@ -16,6 +18,8 @@ const administrationReducer = combineReducers({
   adminEventDataElems: adminEventDataElemsReducer,
   adminUsers: adminUserReducer,
   adminUsersGroup: adminUsersGroupReducer,
+  adminEndpoints: adminEndpointsReducer,
+  adminInterfaces: adminInterfacesReducer,
 });
 
 export default administrationReducer;

@@ -47,4 +47,5 @@ export interface ModalsState {
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;
   payloadEditAdminUsersGroupModal: any;
+
 }

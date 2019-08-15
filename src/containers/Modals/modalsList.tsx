@@ -29,6 +29,8 @@ import EditCyclesEditorModal from 'containers/Administration/Cycles/CyclesEditor
 import AddSchedulerModal from 'containers/Administration/Scheduler/AddSchedulerModal';
 import EditSchedularModal from 'containers/Administration/Scheduler/EditSchedularModal';
 
+import { AddEndpointModal, EditEndpointModal } from 'containers/Administration/Endpoints/modals';
+import { AddInterfaceModal, EditInterfaceModal } from 'containers/Administration/Interfaces/modals';
 import AddUsersModal from 'containers/Administration/Permission/Users/AddUsersModal';
 import EditUsersModal from 'containers/Administration/Permission/Users/EditUsersModal';
 
@@ -105,4 +107,21 @@ export const modalsList = [
     name: modalNames.LEDGER_TRANSACTION,
     component: <TransactionModal />,
   },
+  {
+    name: modalNames.ADD_ADMIN_ENDPOINT,
+    component: <AddEndpointModal />,
+  },
+  {
+    name: modalNames.EDIT_ADMIN_ENDPOINT,
+    component: <EditEndpointModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_INTERFACE,
+    component: <AddInterfaceModal />,
+  },
+  {
+    name: modalNames.EDIT_ADMIN_INTERFACE,
+    component: <EditInterfaceModal />,
+  },
+
 ];

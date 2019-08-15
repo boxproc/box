@@ -18,6 +18,8 @@ import Products from 'containers/ProductDesigner/Products';
 import UserActivities from 'containers/Audit/UserActivity';
 import Accounts from 'containers/Ledger/Accounts';
 import Customers from 'containers/Ledger/Customers';
+import Endpoints from './Administration/Endpoints';
+import Interfaces from './Administration/Interfaces';
 import Cards from './Ledger/Cards';
 import Transactions from './Ledger/Transactions';
 
@@ -73,5 +75,17 @@ export const pagesList = [
   {
     path: uiItemConsts.LEDGER_CARDS,
     component: <Cards />,
+  },
+  {
+    path: uiItemConsts.LEDGER_CARDS,
+    component: <Cards />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_ENDPOINTS,
+    component: <Endpoints />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_INTERFACES,
+    component: <Interfaces />,
   },
 ];

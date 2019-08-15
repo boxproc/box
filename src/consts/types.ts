@@ -31,6 +31,10 @@ export const statusTypesOptions = [
   { value: 'I', label: 'Inactive' },
   { value: 'D', label: 'Deleted' },
 ];
+export const protocolTypesOptions = [
+  { value: 'R', label: 'Rest' },
+  { value: 'S', label: 'Soap' },
+];
 
 export enum customerStatusTypes {
   ACTIVE = 'A',

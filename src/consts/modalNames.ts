@@ -25,4 +25,8 @@ export enum modalNames {
   EDIT_ADMIN_USERS_GROUP = 'EditAdminUsersGroupModal',
   ADD_ADMIN_USER = 'AddAdminUserModal',
   EDIT_ADMIN_USER = 'EditAdminUserModal',
+  ADD_ADMIN_ENDPOINT = 'AddAdminEndPoint',
+  EDIT_ADMIN_ENDPOINT = 'EditAdminEndpoint',
+  ADD_ADMIN_INTERFACE = 'AddAdminInterface',
+  EDIT_ADMIN_INTERFACE = 'EditAdminInterface',
 }
