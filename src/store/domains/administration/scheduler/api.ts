@@ -2,7 +2,7 @@ import { apiClient } from 'services';
 
 // import { AdminSchedulerData, SuccessResponseStatus } from './mock';
 
-import { AdminSchedulerEditableItemPrepared } from './types';
+import { AdminSchedulerItem } from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -16,10 +16,10 @@ export const deleteAdminSchedulerJob = (id: string | number) =>
     data: { id },
   });
 
-export const addAdminSchedulerJob = (data: AdminSchedulerEditableItemPrepared) =>
+export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post('/ui/administration/scheduler/create', { data });
 
-export const updateAdminSchedulerJobs = (data: AdminSchedulerEditableItemPrepared) =>
+export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post('/ui/administration/scheduler/update', { data });

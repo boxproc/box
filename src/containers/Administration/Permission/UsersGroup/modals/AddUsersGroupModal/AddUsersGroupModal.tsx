@@ -22,7 +22,7 @@ const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
     <Modal
       name={modalName}
       title="Add New User Group"
-      maxContainerWidth={800}
+      maxContainerWidth={550}
     >
       <AddUserGroupForm
         onCancel={() => closeModal(modalName)}

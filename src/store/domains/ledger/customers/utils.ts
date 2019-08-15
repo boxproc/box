@@ -2,7 +2,6 @@ import { customerStatusTypesOptions } from 'consts';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
-  LedgerCustomerItemPrepared,
   LedgerCustomersFilterParams,
 } from './types';
 
@@ -72,13 +71,13 @@ export const prepareValuesToRender = (values: Partial<LedgerCustomerItem>) => {
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<LedgerCustomerItemPrepared>) => {
+export const preparedValuesDetailsToRender = (values: Partial<LedgerCustomerItem>) => {
   if (!values) {
     return null;
   }
 
   return {
-    ...values,
-    status: customerStatusTypesOptions.find(el => el.label === values.status),
+    ...prepareValuesToRender(values),
+    status: customerStatusTypesOptions.find(el => el.value === values.status),
   };
 };

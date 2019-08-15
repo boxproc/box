@@ -2,7 +2,6 @@ import { statementCyclesOptions, statusTypesOptions } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
-  LedgerAccountItemPrepared,
   LedgerAccountsFilterParams,
 } from './types';
 
@@ -126,13 +125,15 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<LedgerAccountItemPrepared>) => {
+export const preparedValuesDetailsToRender = (values: Partial<LedgerAccountItem>) => {
   if (!values) {
     return null;
   }
 
   return {
-    ...values,
-    status: statusTypesOptions.find(el => el.label === values.status),
+    ...preparedValuesToRender(values),
+    status: statusTypesOptions.find(el => el.value === values.status),
+    statementCycleId: statementCyclesOptions
+      .find(el => el.value === values.statement_cycle_id),
   };
 };

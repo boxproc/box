@@ -27,17 +27,15 @@ export const selectLedgerCustomerCurrentId = (state: StoreState) =>
   state.ledger.customers.currentCustomerId;
 
 export const selectLedgerCurrentCustomer = createSelector(
-  selectLedgerCustomers,
   selectDefaultLedgerCustomers,
   selectLedgerCustomerCurrentId,
   selectInstitutionsOptions,
-  (customers, defaultCustomers, currentId, institutions) => {
+  (customers, currentId, institutions) => {
     const current = customers.find(el => el.id === currentId);
-    const defaultCurrent = defaultCustomers.find(el => el.id === currentId);
 
     return {
       ...preparedValuesDetailsToRender(current),
-      institutionId: institutions.find(el => el.value === defaultCurrent.institution_id),
+      institutionId: institutions.find(el => el.value === current.institution_id),
     };
   }
 );

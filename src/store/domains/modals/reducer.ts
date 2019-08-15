@@ -15,15 +15,16 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddLedgerCustomerModal: false,
   isEditLedgerCustomerModal: false,
+
   isEditLedgerAccountModal: false,
   isAddLedgerAccountModal: false,
+
   isLedgerTransactionModal: false,
 
   isAddAdminSystemPropertyModal: false,
 
   isAddAdminSchedulerModal: false,
   isEditAdminSchedulerModal: false,
-  payloadEditAdminSchedulerModal: null,
 
   isAddAdminUserModal: false,
   isEditAdminUserModal: false,
@@ -33,7 +34,6 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddAdminUsersGroupModal: false,
   isEditAdminUsersGroupModal: false,
-  payloadEditAdminUsersGroupModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

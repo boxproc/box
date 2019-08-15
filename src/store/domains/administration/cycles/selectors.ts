@@ -36,11 +36,11 @@ export const selectCycleEditorValues = createSelector(
 
     return {
       ...prepareValuesToRender(current),
-      status: statusTypeCyclesOptions.find(el => el.value === current.status),
-      institutionId: institutions.find(el => el.value === current.institution_id),
-      cycleType: typeOfCyclesEditorOptions.find(el => el.value === current.cycle_type),
-      weeklyCycleFirstDay: weeklyCycleTypeOptions.find(
-        el => el.label === current.weekly_cycle_first_day),
+      status: current && statusTypeCyclesOptions.find(el => el.value === current.status),
+      institutionId: current && institutions.find(el => el.value === current.institution_id),
+      cycleType: current && typeOfCyclesEditorOptions.find(el => el.value === current.cycle_type),
+      weeklyCycleFirstDay: current && weeklyCycleTypeOptions.find(
+        el => el.value === current.weekly_cycle_first_day),
     };
   }
 );

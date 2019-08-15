@@ -12,7 +12,7 @@ export interface AdminCyclesEditorItem extends PlainInfo {
   cycle_type: number | string;
   monthly_cycle_first_day: number | string;
   weekly_cycle_first_day: number | string;
-  fixed_cycle_number_of_days: number;
+  fixed_cycle_number_of_days: number | string;
   status: number | string;
 }
 

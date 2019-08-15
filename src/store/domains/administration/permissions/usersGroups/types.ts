@@ -85,4 +85,5 @@ export interface AdminUsersGroupState {
   allActiveUsers: ImmutableArray<AdminUserGroupMember>;
   groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;
   uiItems: ImmutableArray<AdminGroupPermissionUiItemResp>;
+  currentUsersGroupId: number;
 }

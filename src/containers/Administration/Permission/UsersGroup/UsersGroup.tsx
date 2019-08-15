@@ -11,18 +11,21 @@ import { OpenModal } from 'store/domains/';
 import {
   AdminUsersGroupInfoPlain,
   HandleGetAdminUsersGroup,
+  HandleSetAdminUsersGroupId,
 } from 'store/domains/administration/permissions/usersGroups';
 
 interface UserFilterProps {
   adminUsersGroupItems: Array<AdminUsersGroupInfoPlain>;
   openModal: OpenModal;
   getAdminUsersGroup: HandleGetAdminUsersGroup;
+  setAdminUsersGroupId: HandleSetAdminUsersGroupId;
 }
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
   openModal,
   getAdminUsersGroup,
   adminUsersGroupItems,
+  setAdminUsersGroupId,
 }) => {
   React.useEffect(
     () => {
@@ -34,13 +37,15 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {
-        onDoubleClick: () => openModal({
-          name: modalNames.EDIT_ADMIN_USERS_GROUP,
-          payload: { usersGroupValues: rowInfo.original },
-        }),
+        onDoubleClick: () => {
+          setAdminUsersGroupId(rowInfo.original.id);
+          openModal({
+            name: modalNames.EDIT_ADMIN_USERS_GROUP,
+          });
+        },
       };
     },
-    [openModal]
+    [openModal, setAdminUsersGroupId]
   );
 
   return (

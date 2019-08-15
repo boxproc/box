@@ -6,7 +6,7 @@ import { permissionTypesOptions } from 'consts';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
-  state.administration.userGroups.usersGroups;
+  state.administration.userGroups.usersGroups.asMutable();
 
 export const selectAdminUserGroupMembers = (state: StoreState) =>
   state.administration.userGroups.userGroupMembers.asMutable();
@@ -23,7 +23,7 @@ export const selectDefaultAdminUiItems = (state: StoreState) =>
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.map(item => {
     return {
       ...item,
       institutionId: item && institutions.find(el => el.value === item.institution_id).label,
@@ -73,4 +73,27 @@ export const selectAdminGroupPermissionsUiItems = createSelector(
       label: el.ui_item,
     };
   })
+);
+
+export const selectCurrentUserGroupId = (state: StoreState) =>
+  state.administration.userGroups.currentUsersGroupId;
+
+export const selectUsersGroupValues = createSelector(
+  selectDefaultAdminUsersGroupItems,
+  selectInstitutionsOptions,
+  selectCurrentUserGroupId,
+  (items, institutions, currentId) => {
+    const current = items && items.find(item => item.id === currentId);
+
+    return {
+      id: current.id,
+      name: current.name,
+      institutionId: institutions.find(el => el.value === current.institution_id),
+    };
+  }
+);
+
+export const selectUsersGroupName = createSelector(
+  selectUsersGroupValues,
+  group => group && group.name
 );

@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect';
 
-import { statementCyclesOptions } from 'consts';
-
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
@@ -27,21 +25,17 @@ export const selectLedgerAccountCurrentId = (state: StoreState) =>
   state.ledger.accounts.currentAccountId;
 
 export const selectLedgerCurrentAccount = createSelector(
-  selectLedgerAccounts,
   selectLedgerAccountCurrentId,
   selectInstitutionsOptions,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,
-  (accounts, currentId, institutions, institutionProducts, defaultAccounts) => {
+  (currentId, institutions, institutionProducts, accounts) => {
     const current = accounts.find(el => el.id === currentId);
-    const currentDefault = defaultAccounts.find(el => el.id === currentId);
 
     return {
       ...preparedValuesDetailsToRender(current),
-      institutionId: institutions.find(el => el.value === currentDefault.institution_id),
-      productName: institutionProducts.find(el => el.value === currentDefault.product_id),
-      statementCycleId: statementCyclesOptions
-        .find(el => el.value === currentDefault.statement_cycle_id),
+      institutionId: institutions.find(el => el.value === current.institution_id),
+      productName: institutionProducts.find(el => el.value === current.product_id),
     };
   }
 );

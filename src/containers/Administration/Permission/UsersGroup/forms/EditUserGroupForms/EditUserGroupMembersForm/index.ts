@@ -6,7 +6,7 @@ import {
   handleAddAdminActiveUsers,
   handleGetAdminActiveUsers,
   selectActiveUsersItems,
-  selectUserGroupById,
+  selectCurrentUserGroupId,
 } from 'store/domains';
 
 import { formNames } from 'consts';
@@ -18,7 +18,7 @@ import { StoreState } from 'store/StoreState';
 const formSelector = formValueSelector(formNames.EDIT_USER_GROUP_MEMBERS_FORM);
 
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectUserGroupById(state),
+  currentGroupId: selectCurrentUserGroupId(state),
   activeUsersItemsOptions: selectActiveUsersItems(state),
   selectedUser: formSelector(
     state,

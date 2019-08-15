@@ -108,10 +108,11 @@ export const selectCurrentProductRules = createSelector(
       return null;
     }
     const rule = rules[0];
+
     return {
       ...prepareProductRuleValues(rule),
       eventId: rule && events.find(el => el.value === rule.event_id),
-      script: code,
+      script: code || null,
     };
   }
 );

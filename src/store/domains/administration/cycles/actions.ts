@@ -99,6 +99,7 @@ export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
         await dispatch(deleteAdminCyclesEditor(id));
         await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
       },

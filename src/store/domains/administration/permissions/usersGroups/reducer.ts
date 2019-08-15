@@ -9,6 +9,7 @@ export const adminUsersGroupInitialState:
     allActiveUsers: Immutable([]),
     groupPermissions: Immutable([]),
     uiItems: Immutable([]),
+    currentUsersGroupId: null,
   });
 
 const adminUsersGroupReducer =
@@ -47,6 +48,10 @@ const adminUsersGroupReducer =
       case ActionTypeKeys.GET_ADMIN_UI_ITEMS_FULFILLED:
         return state
           .set('uiItems', action.payload.ui_items);
+
+      case ActionTypeKeys.SET_ADMIN_USERS_GROUP_ID:
+        return state
+          .set('currentUsersGroupId', action.payload);
 
       default:
         return state;

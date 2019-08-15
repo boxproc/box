@@ -7,6 +7,7 @@ import {
   AdminSchedulerJobsActionTypes,
   createLoadingSelector,
   handleGetAdminSchedulerJobs,
+  handleSetAdminSchedulerJobId,
   openModal,
   selectAdminSchedulerJobsItems,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
     getAdminSchedulerJobs: handleGetAdminSchedulerJobs,
+    setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
   },
   dispatch
 );

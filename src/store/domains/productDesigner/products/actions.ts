@@ -25,6 +25,7 @@ import {
 import * as api from './api';
 
 import {
+  selectCurrentProductId,
   selectCurrentProductType,
 } from './selectors';
 
@@ -209,9 +210,9 @@ export const handleDeleteProduct: HandleDeleteProduct = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
         await dispatch(deleteProduct(id));
         await dispatch(closeModal(modalNames.EDIT_PRODUCT));
-        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
       },
       dispatch
     );
@@ -220,8 +221,8 @@ export const handleDeleteProduct: HandleDeleteProduct = id =>
 export const handleGetProductId: HandleGetProductId = id =>
   getProductId(id);
 
-export const handleSetRulesCode: HandleSetRulesCode = Code =>
-  setRulesCode(Code);
+export const handleSetRulesCode: HandleSetRulesCode = code =>
+  setRulesCode(code);
 
 export const handleGetProduct: HandleGetProduct = id =>
   async dispatch => {
@@ -298,12 +299,16 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
   };
 
 export const handleUpdateProductRules: HandleUpdateProductRules = values =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
         const preparedValues = prepareProductRuleValuesToSend(values);
 
-        await dispatch(updateProductRules(preparedValues));
+        await dispatch(updateProductRules({
+          ...preparedValues,
+          product_id: selectCurrentProductId(state),
+        }));
         await dispatch(handleGetProducts());
       },
       dispatch

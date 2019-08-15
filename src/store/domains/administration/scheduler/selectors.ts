@@ -1,24 +1,36 @@
 import { createSelector } from 'reselect';
 
-import { executableTypeOptions, statusTypesOptions } from 'consts';
-
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { StoreState } from 'store/StoreState';
-
-import { camelizeUtil } from 'utils';
+import { prepareDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultAdminSchedulerJobsItems = (state: StoreState) =>
-  state.administration.scheduler.scheduler;
+  state.administration.scheduler.scheduler.asMutable();
 
 export const selectAdminSchedulerJobsItems = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
-  (items, institutionsOptions) => items && items.asMutable().map(item => {
+  (items, institutionsOptions) => items && items.map(item => {
     return {
-      ...camelizeUtil.camelize(item, 'camelcase'),
-      status: statusTypesOptions.find(el => el.value === item.status).label,
-      executableType: executableTypeOptions.find(el => el.value === item.executable_type).label,
+      ...prepareValuesToRender(item),
       institutionId: institutionsOptions.find(el => el.value === item.institution_id).label,
     };
   })
+);
+
+export const selectSchedulerJobId = (state: StoreState) =>
+  state.administration.scheduler.currentSchedulerId;
+
+export const selectSchedulerJobValues = createSelector(
+  selectDefaultAdminSchedulerJobsItems,
+  selectInstitutionsOptions,
+  selectSchedulerJobId,
+  (items, institutions, currentId) => {
+    const current = items && items.find(item => item.id === currentId);
+
+    return {
+      ...prepareDetailsToRender(current),
+      institutionId: institutions.find(el => el.value === current.institution_id),
+    };
+  }
 );

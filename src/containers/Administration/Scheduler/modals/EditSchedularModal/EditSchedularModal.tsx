@@ -9,6 +9,7 @@ import { modalNames } from 'consts';
 
 import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
 import {
+  AdminSchedulerEditableItem,
   CloseModal,
   HandleDeleteAdminSchedulerJob,
   HandleUpdateAdminSchedulerJob
@@ -19,7 +20,7 @@ interface EditSchedulerModalProps {
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobId: number | string;
-  schedulerJobValues: any;
+  schedulerJobValues: AdminSchedulerEditableItem;
 }
 
 const modalName = modalNames.EDIT_ADMIN_SCHEDULER;

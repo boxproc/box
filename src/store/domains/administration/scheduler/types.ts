@@ -2,64 +2,47 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface AdminSchedulerItemResp {
+interface PlainInfo {
   id: number;
-  institution_id: number;
   name: string;
   description: string;
-  status: string;
-  cron_expression: string;
-  executable_type: string;
   executable: string;
+}
+
+export interface AdminSchedulerItem extends PlainInfo {
+  institution_id: string | number;
+  status: string | number;
+  cron_expression: string;
+  executable_type: string | number;
   log_location: string;
   last_execution_datetime: string;
   last_execution_result: string;
 }
 
-export interface AdminSchedulerItem {
-  id: number;
-  institutionId: string | number;
-  name: string;
-  description: string;
-  status: string | number;
+export interface AdminSchedulerItemPreparedPlain extends PlainInfo {
   cronExpression: string;
-  executableType: string | number;
-  executable: string;
   logLocation: string;
   lastExecutionDatetime: string;
   lastExecutionResult: string;
 }
 
-export interface AdminSchedulerEditableItemId {
-  id: number;
+export interface AdminSchedulerItemPrepared extends AdminSchedulerItemPreparedPlain {
+  institutionId: string | number;
+  status: string | number;
+  executableType: string | number;
 }
 
-export interface AdminSchedulerEditableItem {
-  name?: string;
-  description?: string;
-  cronExpression?: string;
-  executable?: string;
-  logLocation?: string;
-  status?: SelectValues;
-  institutionId?: SelectValues;
-  executableType?: SelectValues;
-}
-
-export interface AdminSchedulerEditableItemPrepared extends AdminSchedulerEditableItemId {
-  name?: string;
-  description?: string;
-  cron_expression?: string;
-  executable?: string;
-  log_location?: string;
-  status?: string | number;
-  institution_id?: string | number;
-  executable_type?: string | number;
+export interface AdminSchedulerEditableItem extends AdminSchedulerItemPreparedPlain {
+  status: SelectValues;
+  institutionId: SelectValues;
+  executableType: SelectValues;
 }
 
 export interface AdminSchedulerDataResp extends ResponseStatusType {
-  s_scheduler: Array<AdminSchedulerItemResp>;
+  s_scheduler: Array<AdminSchedulerItem>;
 }
 
 export interface AdminSchedulerState {
-  scheduler: ImmutableArray<AdminSchedulerItemResp>;
+  scheduler: ImmutableArray<AdminSchedulerItem>;
+  currentSchedulerId: number;
 }
