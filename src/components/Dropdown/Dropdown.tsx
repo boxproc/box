@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown';
 
 interface DropdownWrapperProps {
+  isActive: boolean;
   position?: 'left' | 'right';
 }
 
@@ -25,8 +26,12 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   }
 
   .dropdown-option {
-    padding: 10px 10px 8px;
     margin: 1px;
+
+    > * {
+      padding: 10px 10px 8px;
+      width: 100%;
+    }
 
     &:hover {
       background-color: ${({ theme }) => theme.lighterGrayColor};
@@ -37,6 +42,10 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    * {
+      color: ${({ theme, isActive}) => isActive && theme.normalAccentColor }
+    }
 
     &:hover * {
       color: ${({ theme }) => theme.normalAccentColor};
@@ -92,6 +101,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownWrapper
       position={dropdownListPosition}
+      isActive={isOpened}
     >
       <Flex alignItems="center">
         {selectable && (
@@ -106,9 +116,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             ref={dropdownToggleBtnRef}
           >
             {ToggleButtonComponent && ToggleButtonComponent}
-            <ToggleButton
-              size="23"
-            />
+            <ToggleButton size="23" />
           </div>
         </Box>
       </Flex>

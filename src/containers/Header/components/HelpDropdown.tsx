@@ -52,21 +52,19 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
       ToggleButtonComponent={<HelpBlock />}
     >
       <Option>
-        <Flex alignItems="center">
-          <ExternalLink
-            link={links.BPS}
-            text="BOX-UI"
-          />
-        </Flex>
+        <ExternalLink
+          link={links.BPS}
+          text="BOX-UI"
+          underline={true}
+        />
       </Option>
       {!isHome && (
         <Option>
-          <Flex alignItems="center">
-            <ExternalLink
-              link={currentUrl}
-              text={`Help: ${currentUiItemName}`}
-            />
-          </Flex>
+          <ExternalLink
+            link={currentUrl}
+            text={`Help: ${currentUiItemName}`}
+            underline={true}
+          />
         </Option>
       )}
     </Dropdown>

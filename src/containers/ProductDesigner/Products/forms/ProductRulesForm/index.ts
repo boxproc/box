@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
 
 import ProductRulesForm from './ProductRulesForm';
+
+import { formNames } from 'consts';
 
 import {
   createLoadingSelector,
@@ -18,9 +21,23 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.UPDATE_PRODUCT_RULES,
 ]);
 
+const formValues = formValueSelector(formNames.PRODUCT_RULES);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: selectCurrentProductRules(state),
+  initialValues: {
+    ...selectCurrentProductRules(state),
+    ...formValues(
+      state,
+      'eventId',
+      'actionType',
+      'description'
+    ),
+  },
+  eventValue: formValues(
+    state,
+    'eventId'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

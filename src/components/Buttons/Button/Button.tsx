@@ -30,8 +30,6 @@ interface ButtonWrapperProps {
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${sharedStyle}
   display: flex;
-  align-items: center;
-  justify-content: center;
   background: transparent;
   font-size: ${({ size }) => size ? size + 'px' : '13px'};
   text-transform: uppercase;

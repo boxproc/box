@@ -14,11 +14,14 @@ import {
   HandleUpdateProductRules,
 } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface ProductRulesForm extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentProductId: number;
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
+  eventValue: SelectValues;
 }
 
 type EditProductRulesFormAllProps = ProductRulesForm &
@@ -30,6 +33,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   currentProductId,
   getProductRules,
   updateProductRules,
+  eventValue,
 }) => {
   React.useEffect(
     () => {
@@ -44,7 +48,9 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <ProductRules />
+      <ProductRules
+        eventValue={eventValue}
+      />
       <OkCancelButtons
         okText="Save Rules"
         cancelText="Close"

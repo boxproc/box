@@ -1,12 +1,13 @@
 import React from 'react';
 import Cron from 'react-cron-generator';
-import 'react-cron-generator/dist/cron-builder.css';
+
+import { CronGeneratorStyled } from './CronGeneratorStyled';
 
 const CronGenerator: React.FC = () => {
   const [value, setValue] = React.useState(null);
 
   return (
-    <div>
+    <CronGeneratorStyled>
       <Cron
         onChange={(e: React.MouseEvent) => setValue(e)}
         value={value}
@@ -14,7 +15,7 @@ const CronGenerator: React.FC = () => {
         showResultCron={true}
       />
 
-    </div>
+    </CronGeneratorStyled>
   );
 };
 

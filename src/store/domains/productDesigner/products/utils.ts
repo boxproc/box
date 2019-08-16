@@ -270,6 +270,7 @@ export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
   if (!rule) {
     return null;
   }
+
   return {
     description: rule.description,
     actionType: actionTypesOptions.find(el => el.value === rule.action_type),

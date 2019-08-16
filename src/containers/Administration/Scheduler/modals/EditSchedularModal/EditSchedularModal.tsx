@@ -33,7 +33,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Edit"
+      title="Edit Scheduler"
       minContainerHeight={488}
     >
       <DefineSchedulerJobForm
