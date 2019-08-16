@@ -11,6 +11,8 @@ export enum uiItemConsts {
   ADMINISTRATION_CYCLE_EDITOR = 'administration/cycles/cycles_editor',
   ADMINISTRATION_USER = 'administration/permissions/users',
   ADMINISTRATION_USERS_GROUP = 'administration/permissions/user_groups',
+  ADMINISTRATION_ENDPOINTS = 'administration/endpoints',
+  ADMINISTRATION_INTERFACES = 'administration/interfaces',
 
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',

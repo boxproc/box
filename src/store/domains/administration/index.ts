@@ -6,3 +6,5 @@ export * from './dictionaries/eventDataElems';
 export * from './permissions/usersGroups';
 export * from './types';
 export * from './permissions/users';
+export * from './endpoints';
+export * from './interfaces';

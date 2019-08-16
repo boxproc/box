@@ -51,4 +51,11 @@ export enum formNames {
 
   // User activity
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
+
+  //
+  ADMIN_ENDPOINT = 'adminEnpoints',
+  ADMIN_ENDPOINT_FILTER = 'adminEndpointFilter',
+
+  ADMIN_INTERFACE = 'adminInterfaceForm',
+  ADMIN_INTERFACE_FILTER = 'adminInterfaceFilterForm',
 }

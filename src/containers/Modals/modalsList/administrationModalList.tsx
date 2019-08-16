@@ -6,10 +6,9 @@ import {
   AddCyclesEditorModal,
   EditCyclesEditorModal,
 } from 'containers/Administration/Cycles/CyclesEditor/modals';
-import {
-  AddUsersModal,
-  EditUsersModal,
-} from 'containers/Administration/Permission/Users/modals';
+import { AddEndpointModal, EditEndpointModal } from 'containers/Administration/Endpoints/modals';
+import { AddInterfaceModal, EditInterfaceModal } from 'containers/Administration/Interfaces/modals';
+import { AddUsersModal, EditUsersModal } from 'containers/Administration/Permission/Users/modals';
 import {
   AddUsersGroupModal,
   EditUsersGroupModal,
@@ -56,5 +55,21 @@ export const administrationModalList = [
   {
     name: modalNames.EDIT_ADMIN_USERS_GROUP,
     component: <EditUsersGroupModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_ENDPOINT,
+    component: <AddEndpointModal />,
+  },
+  {
+    name: modalNames.EDIT_ADMIN_ENDPOINT,
+    component: <EditEndpointModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_INTERFACE,
+    component: <AddInterfaceModal />,
+  },
+  {
+    name: modalNames.EDIT_ADMIN_INTERFACE,
+    component: <EditInterfaceModal />,
   },
 ];
