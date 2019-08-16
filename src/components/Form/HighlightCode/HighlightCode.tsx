@@ -21,9 +21,12 @@ export const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.grayColor};
   border-radius: 2px;
   font-size: 13px;
-  font-family: ${({ theme }) => theme.codeFont};
   line-height: 1.7;
   overflow: auto;
+
+  * {
+    font-family: ${({ theme }) => theme.codeFont};
+  }
 
   &.is-focus {
     border-color: ${({ theme }) => theme.normalAccentColor};
@@ -72,7 +75,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         onFocus={addFocusClass}
         onBlur={removeFocusClass}
         style={{
-          fontFamily: 'Inconsolata, monospace',
+          fontFamily: '"Roboto Mono", monospace',
+          fontSize: 13,
         }}
       />
     </Wrapper>

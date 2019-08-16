@@ -99,6 +99,7 @@ export const customStyles: StylesConfig = {
             theme.grayColor,
       backgroundColor: theme.whiteColor,
       boxShadow: 'none',
+      minHeight: '31px',
       // eslint-disable-next-line
       ['&:hover']: {
         borderColor: '0',
@@ -146,7 +147,7 @@ export const customStyles: StylesConfig = {
   }),
   valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    minHeight: '44px',
+    minHeight: '31px',
   }),
   option: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,

@@ -4,7 +4,6 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components/Buttons';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
@@ -46,7 +45,6 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <ProductRules />
-      <Hr />
       <OkCancelButtons
         okText="Save Rules"
         cancelText="Close"

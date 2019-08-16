@@ -34,7 +34,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
               data={{ name: item.name }}
               onClick={onClick}
             >
-              {item.name}
+              <span className="item-text">{item.name}</span>
             </MenuItem>
           );
         })

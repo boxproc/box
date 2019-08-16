@@ -3,14 +3,20 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import CronGenerator from 'components/CronGenerator';
 import { InputField, SelectField } from 'components/Form';
 import { Panel, Tabs } from 'components/Tabs';
+import { Hr } from 'components/Text';
 
 import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
 
-import { HandleAddAdminSchedulerJob, HandleUpdateAdminSchedulerJob } from 'store/domains';
+import {
+  HandleAddAdminSchedulerJob,
+  HandleDeleteAdminSchedulerJob,
+  HandleUpdateAdminSchedulerJob,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -22,6 +28,9 @@ interface DefineSchedulerJobFormProps {
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;
+  deleteAdminSchedulerJob?: HandleDeleteAdminSchedulerJob;
+  schedulerJobId?: number | string;
+  mode: 'add' | 'edit';
 }
 
 type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
@@ -34,11 +43,16 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   institutionsOptions,
   isDisabledStatus,
   onCancel,
+  deleteAdminSchedulerJob,
+  schedulerJobId,
+  mode,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminSchedulerJob(data)),
     [handleSubmit, defineAdminSchedulerJob]
   );
+
+  const isEditable = mode === 'edit';
 
   return (
     <form onSubmit={handleSubmitForm}>
@@ -138,12 +152,25 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           <CronGenerator />
         </Panel>
       </Tabs>
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Cancel"
-        onCancel={onCancel}
-        rightPosition={true}
-      />
+      <Hr />
+      <Flex
+        alignItems="flex-end"
+        justifyContent="space-between"
+      >
+        {isEditable && (
+          <Button
+            text="delete"
+            iconName="delete"
+            onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
+          />
+        )}
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Cancel"
+          onCancel={onCancel}
+          rightPosition={true}
+        />
+      </Flex>
     </form >
   );
 };

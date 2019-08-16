@@ -30,4 +30,8 @@ export const GlobalStyles = createGlobalStyle`
   * :focus {
     outline: none;
   }
+
+  button::-moz-focus-inner {
+    border: 0;
+  }
 `;

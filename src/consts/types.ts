@@ -170,7 +170,7 @@ export const dataTypesOptions = [
 ];
 
 export enum actionTypes {
-  VALUE = 'V',
+  API_CALL = 'A',
   APPROVE_DENY = 'R',
   UPDATE_AUX_COUNTER_1 = 'X',
   UPDATE_AUX_COUNTER_2 = 'Y',
@@ -178,7 +178,7 @@ export enum actionTypes {
 }
 
 export const actionTypesOptions = [
-  { value: 'V', label: 'Value' },
+  { value: 'A', label: 'API Call' },
   { value: 'R', label: 'Approve / Deny' },
   { value: 'X', label: 'Update aux counter 1' },
   { value: 'Y', label: 'Update aux counter 2' },

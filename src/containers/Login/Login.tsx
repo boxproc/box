@@ -58,7 +58,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
 
   return (
     <FormWrapper onSubmit={handleSubmitForm}>
-      <Box my="20px" fontSize="0" className="highlight">
+      <Box my="15px" fontSize="0" className="highlight">
         <a href={basePath}>
           <img src={logo} width={62} alt="" />
         </a>
@@ -89,7 +89,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         label="Remember me"
         disabled={false}
       />
-      <Box mt="30px">
+      <Box mt="20px">
         <ButtonBg text="Log in"/>
       </Box>
     </FormWrapper>

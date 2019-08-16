@@ -53,7 +53,7 @@ interface HrProps {
 }
 
 export const Hr = styled.div<HrProps>`
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 10px;
   border-top: 1px solid ${({ theme, accentColor }) =>
     accentColor ? theme.normalAccentColor : theme.lightGrayColor};

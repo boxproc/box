@@ -40,7 +40,7 @@ export const theme: Theme = {
   breakpoints: getBreakpointsRange(400, 1500),
 
   decorateFont: 'Raleway, sans-serif',
-  codeFont: 'Inconsolata, monospace',
+  codeFont: 'Roboto Mono, monospace',
 
   normalAccentColor: '#ffa400',
   lighterAccentColor: 'rgba(255, 164, 0, .9)',

@@ -42,7 +42,17 @@ export const TablePage: React.FC<TablePageProps> = ({
 
   return (
     <React.Fragment>
-      <T2>{title}</T2>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <T2>{title}</T2>
+        <ExternalLink
+          text="HELP"
+          link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+          grayStyle={true}
+        />
+      </Flex>
       {FilterForm && (
         <Box mb="7px">
           <Button
@@ -67,7 +77,7 @@ export const TablePage: React.FC<TablePageProps> = ({
             justifyContent="space-between"
           >
             {addNewModalName && (
-              <Box mb="7px">
+              <Box mb="7px" mr="7px">
                 <Button
                   text="Add New"
                   iconName="plus"
@@ -78,18 +88,11 @@ export const TablePage: React.FC<TablePageProps> = ({
               </Box>
             )}
             {hint && (
-              <Box mb="10px" ml="7px">
+              <Box mb="10px">
                 <Hint text={hint} />
               </Box>
             )}
           </Flex>
-        </Box>
-        <Box mb="10px">
-          <ExternalLink
-            text="HELP"
-            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
-            grayStyle={true}
-          />
         </Box>
       </Flex>
       <Table

@@ -23,7 +23,7 @@ export const InputFieldWrapper = styled.div`
   position: relative;
 
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .field {

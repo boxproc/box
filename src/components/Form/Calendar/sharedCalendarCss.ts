@@ -8,8 +8,8 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
   .form-control {
     position: relative;
     width: 100%;
-    height: 46px;
-    padding: 10px;
+    height: 33px;
+    padding: 7px;
     box-shadow: none;
     box-sizing: border-box;
     outline: none;

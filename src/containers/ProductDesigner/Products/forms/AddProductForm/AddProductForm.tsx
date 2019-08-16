@@ -45,7 +45,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
           <ProductGeneralInfo />
         </Panel>
         <Panel
-          title={(currentProductType ? currentProductType.label : '') + ' Details'}
+          title="Details"
           isDisabled={!currentProductType}
           hintForDisabled="Select Product Type"
         >

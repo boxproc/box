@@ -15,8 +15,8 @@ const PasswordInputWrapper = styled.div`
 
 const IconWrapper = styled.span`
   position: absolute;
-  top: 16px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   cursor: pointer;
   user-select:none
   font-size: 0;
@@ -33,7 +33,6 @@ interface PasswordInputState {
 }
 
 class PasswordInput extends React.Component<InputCommonProps, PasswordInputState> {
-
   state = {
     masked: true,
   };

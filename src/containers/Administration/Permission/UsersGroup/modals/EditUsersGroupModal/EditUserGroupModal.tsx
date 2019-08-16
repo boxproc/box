@@ -26,7 +26,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
     <Modal
       name={modalName}
       title={`Edit User Group${groupName}`}
-      minContainerHeight={569}
+      minContainerHeight={555}
     >
       <EditUserGroupForms
         onCancel={() => closeModal(modalName)}

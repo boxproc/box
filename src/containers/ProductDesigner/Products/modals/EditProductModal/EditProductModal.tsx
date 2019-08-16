@@ -25,7 +25,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     <Modal
       name={modalName}
       title={`Edit Product${productName}`}
-      minContainerHeight={595}
+      minContainerHeight={560}
     >
       <EditProductForms
         onCancel={() => closeModal(modalName)}

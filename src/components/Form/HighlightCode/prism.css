@@ -1,5 +1,5 @@
 /* PrismJS 1.17.1
-https://prismjs.com/download.html?source=post_page---------------------------#themes=prism&languages=markup+css+clike+javascript */
+https://prismjs.com/download.html?source=post_page---------------------------#themes=prism&languages=clike+javascript */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -139,3 +139,4 @@ https://prismjs.com/download.html?source=post_page---------------------------#th
  .token.entity {
 	 cursor: help;
  }
+ 

@@ -12,7 +12,7 @@ interface LinkProps {
   isActive?: boolean;
 }
 
-const Link = styled.div<LinkProps>`
+const Link = styled.span<LinkProps>`
   color: ${({ theme }) => theme.blackColor};
   border-bottom: 1px solid ${({ theme, isActive }) =>
     isActive ? theme.lightAccentColor : theme.lightGrayColor};
@@ -30,7 +30,12 @@ const HighlightLink: React.FC<HighlightLinkProps> = ({
   onClick,
 }) => {
   return (
-    <Link isActive={isActive} onClick={onClick}>{text}</Link>
+    <Link
+      isActive={isActive}
+      onClick={onClick}
+    >
+      {text}
+    </Link>
   );
 };
 

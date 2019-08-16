@@ -6,8 +6,8 @@ export const sharedInputCss = css<InvalidProp>`
   font-size: 13px;
   line-height: 1.3;
   width: 100%;
-  height: 46px;
-  padding: 13px 10px;
+  height: 33px;
+  padding: 7px;
   box-shadow: none;
   box-sizing: border-box;
   outline: none;

@@ -23,12 +23,12 @@ const ButtonWrapperBg = styled.button`
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 12px 30px;
+  padding: 6px 10px;
   border-radius: 2px;
   border: 2px solid ${({ theme }) => theme.grayColor};
   background: ${({ theme }) => theme.lightGrayColor};
-  color: ${({ theme }) => theme.blackColor};
-  font-size: 15px;
+  color: ${({ theme }) => theme.blackColorOpacity8};
+  font-size: 14px;
   line-height: 1.3;
 
   &:disabled {

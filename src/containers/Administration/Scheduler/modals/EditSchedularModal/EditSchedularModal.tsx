@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import { modalNames } from 'consts';
 
@@ -18,8 +16,8 @@ import {
 interface EditSchedulerModalProps {
   closeModal: CloseModal;
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
-  updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobId: number | string;
+  updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
 }
 
@@ -36,18 +34,16 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
     <Modal
       name={modalName}
       title="Edit"
+      minContainerHeight={488}
     >
       <DefineSchedulerJobForm
         onCancel={() => closeModal(modalName)}
         defineAdminSchedulerJob={updateAdminSchedulerJob}
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}
-      />
-      <Hr />
-      <Button
-        text="delete"
-        iconName="delete"
-        onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
+        deleteAdminSchedulerJob={deleteAdminSchedulerJob}
+        schedulerJobId={schedulerJobId}
+        mode="edit"
       />
     </Modal>
   );

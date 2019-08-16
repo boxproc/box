@@ -47,9 +47,10 @@ const DatepickerWrapper = styled.div<DisabledProp>`
 
 const IconWrapper = styled.div<DateTimeWrapperProps>`
   display: flex;
+  align-items: center;
   background-color: ${({ theme }) => theme.whiteColor};
   cursor: pointer;
-  padding: 9.5px;
+  padding: 5px;
   border: solid 1px ${({ theme, invalid, active, disabled }) =>
     invalid
       ? theme.redColor
@@ -133,7 +134,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         >
           <CalendarIconWrapper
             isOpen={isOpen}
-            size="24"
+            size="13"
           />
         </IconWrapper>
       </DatepickerWrapper>

@@ -19,15 +19,8 @@ export const scrollbarCss = css`
     -webkit-box-shadow: inset 0 0 5px #e6e6e6;
     border-radius: 8px;
   }
-
-  scrollbar-color: #ffa400 #e6e6e6;
   scrollbar-width: thin;
-  // scrollbar-highlight-color: #ffa400;
-  // scrollbar-shadow-color: #ffa400;
-  // scrollbar-3Dlight-color: #ffa400;
-  // scrollbar-arrow-color: #ffa400;
-  // scrollbar-track-color: #e6e6e6;
-  // scrollbar-darkshadow-color: #ffa400;
+  scrollbar-color: #ffa400 #f3f3f3;
 `;
 
 export const ScrollDisable = createGlobalStyle`

@@ -28,12 +28,13 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
     <Modal
       name={modalName}
       title="Add Scheduler Job"
-      maxContainerWidth={800}
+      minContainerHeight={488}
     >
       <DefineSchedulerJobForm
         onCancel={() => closeModal(modalName)}
         defineAdminSchedulerJob={addAdminSchedulerJob}
         institutionsOptions={institutionsOptions}
+        mode="add"
       />
     </Modal>
   );
