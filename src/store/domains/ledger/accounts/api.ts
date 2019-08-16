@@ -1,3 +1,5 @@
+import { lenderAccountsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -12,16 +14,16 @@ import { LedgerAccountItem, LedgerAccountsFilterParamsPrepared } from './types';
 
 export const getLedgerAccounts = () =>
   // throttleUtil.getDataAfter(LedgerAccountsItems, 500);
-  apiClient.post('/ui/ledger/accounts/get');
+  apiClient.post(lenderAccountsPathNames.GET);
 
 export const addLedgerAccount = (data: Partial<LedgerAccountItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/ledger/accounts/create', { data });
+  apiClient.post(lenderAccountsPathNames.CREATE, { data });
 
 export const updateLedgerAccount = (data: Partial<LedgerAccountItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/ledger/accounts/update', { data });
+  apiClient.post(lenderAccountsPathNames.UPDATE, { data });
 
 export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterParamsPrepared>) =>
   // throttleUtil.getDataAfter(LedgerAccountsFilteredItems, 500);
-  apiClient.post('/ui/ledger/accounts/get', { data });
+  apiClient.post(lenderAccountsPathNames.GET, { data });

@@ -1,3 +1,18 @@
+export enum authPathNames {
+  LOGIN = '/ui/auth/login',
+  LOGOUT = '/ui/auth/logout',
+}
+
+export enum uiItemsPathNames {
+  GET = '/ui/items/get',
+}
+
+export enum constsPathNames {
+  GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
+  GET_COUNTRIES = '/ui/administration/dictionaries/countries/get',
+  GET_INSTITUTIONS = '/ui/service_data/institutions/get',
+}
+
 export enum adminCyclesPathNames {
   GET = '/ui/administration/cycles/cycles_editor/get',
   CREATE = '/ui/administration/cycles/cycles_editor/create',
@@ -45,4 +60,41 @@ export enum adminSystemPropsPathNames {
   DELETE = '/ui/administration/system_properties/delete',
   CREATE = '/ui/administration/system_properties/create',
   UPDATE = '/ui/administration/system_properties/update',
+}
+
+export enum auditUserActivitiesPathNames {
+  GET = '/ui/audit/users_activity/get',
+}
+
+export enum lenderAccountsPathNames {
+  GET = '/ui/ledger/accounts/get',
+  CREATE = '/ui/ledger/accounts/create',
+  UPDATE = '/ui/ledger/accounts/update',
+}
+
+export enum lenderCardsPathNames {
+  GET = '/ui/ledger/cards/get',
+}
+
+export enum lenderCustomersPathNames {
+  GET = '/ui/ledger/customers/get',
+  CREATE = '/ui/ledger/customers/create',
+  UPDATE = '/ui/ledger/customers/update',
+  DELETE = '/ui/ledger/customers/delete',
+}
+
+export enum lenderTransactionsPathNames {
+  GET = '/ui/ledger/transactions/get',
+}
+
+export enum productsPathNames {
+  GET_PRODUCTS = '/ui/product_designer/products/get',
+  GET_INSTITUTIONS_PRODUCTS = '/ui/service_data/institutions/products/get',
+  GET_PRODUCTS_DETAILS = '/ui/product_designer/products/extensions/get',
+  GET_PRODUCTS_RULES = '/ui/product_designer/products/rules/get',
+  DELETE_PRODUCT = '/ui/product_designer/products/delete',
+  CREATE_PRODUCT = '/ui/product_designer/products/create',
+  UPDATE_PRODUCT = '/ui/product_designer/products/update',
+  UPDATE_DETAILS = '/ui/product_designer/products/extensions/update',
+  UPDATE_RULES = '/ui/product_designer/products/rules/update',
 }

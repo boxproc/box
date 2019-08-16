@@ -1,3 +1,5 @@
+import { authPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 import { PreparedAuthRequest } from './types';
@@ -8,8 +10,8 @@ import { PreparedAuthRequest } from './types';
 
 export const userLogin = (data: PreparedAuthRequest) =>
   // throttleUtil.getDataAfter(AuthResponseData, 500);
-  apiClient.post('/ui/auth/login', { data });
+  apiClient.post(authPathNames.LOGIN, { data });
 
 export const userLogout = () =>
   // throttleUtil.getDataAfter({ message: 'success' }, 500);
-  apiClient.post('/ui/auth/logout');
+  apiClient.post(authPathNames.LOGOUT);

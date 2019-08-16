@@ -1,3 +1,5 @@
+import { lenderCustomersPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -12,22 +14,22 @@ import { LedgerCustomerItem, LedgerCustomersFilterParamsPrepared } from './types
 
 export const getLedgerCustomers = () =>
   // throttleUtil.getDataAfter(LedgerCustomersItems, 500);
-  apiClient.post('/ui/ledger/customers/get');
+  apiClient.post(lenderCustomersPathNames.GET);
 
 export const deleteLedgerCustomer = (id: number) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/ledger/customers/delete', {
+  apiClient.post(lenderCustomersPathNames.DELETE, {
     data: { id },
   });
 
 export const addLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-  apiClient.post('/ui/ledger/customers/create', { data });
+  apiClient.post(lenderCustomersPathNames.CREATE, { data });
 
 export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
-  apiClient.post('/ui/ledger/customers/update', { data });
+  apiClient.post(lenderCustomersPathNames.UPDATE, { data });
 
 export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterParamsPrepared>) =>
   // throttleUtil.getDataAfter(LedgerCustomersFilteredItems, 500);
-  apiClient.post('/ui/ledger/customers/get', { data });
+  apiClient.post(lenderCustomersPathNames.GET, { data });

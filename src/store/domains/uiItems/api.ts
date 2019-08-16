@@ -1,3 +1,5 @@
+import { uiItemsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import { uiItemsData } from './mock';
@@ -6,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getUiItems = () =>
   // throttleUtil.getDataAfter(uiItemsData, 500);
-  apiClient.post('/ui/items/get');
+  apiClient.post(uiItemsPathNames.GET);

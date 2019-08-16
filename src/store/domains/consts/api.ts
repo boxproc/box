@@ -1,3 +1,5 @@
+import { constsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 // import {
@@ -9,11 +11,11 @@ import { apiClient } from 'services';
 
 export const getCurrencyCodes = () =>
   // throttleUtil.getDataAfter(currencyCodesData, 500);
-  apiClient.post('/ui/administration/dictionaries/currencies/get');
+  apiClient.post(constsPathNames.GET_CURRENCIES);
 
 export const getCountryCodes = () =>
-  apiClient.post('/ui/administration/dictionaries/countries/get');
+  apiClient.post(constsPathNames.GET_COUNTRIES);
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
-  apiClient.post('/ui/service_data/institutions/get');
+  apiClient.post(constsPathNames.GET_INSTITUTIONS);
