@@ -34,6 +34,9 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddAdminUsersGroupModal: false,
   isEditAdminUsersGroupModal: false,
+
+  isAddAdminInstitution: false,
+  isEditAdminInstitution: false,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

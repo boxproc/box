@@ -8,3 +8,4 @@ export * from './types';
 export * from './permissions/users';
 export * from './endpoints';
 export * from './interfaces';
+export * from './institutions';

@@ -68,5 +68,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     color: ${({ theme, accentClose }) =>
       accentClose ? theme.normalAccentColor : theme.grayColor};
     padding: 10px;
+
+    &:hover {
+      color: ${({ theme, accentClose }) => theme.normalAccentColor};
+    }
   }
 `;

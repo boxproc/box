@@ -13,6 +13,7 @@ export enum uiItemConsts {
   ADMINISTRATION_USERS_GROUP = 'administration/permissions/user_groups',
   ADMINISTRATION_ENDPOINTS = 'administration/endpoints',
   ADMINISTRATION_INTERFACES = 'administration/interfaces',
+  ADMINISTRATION_INSTITUTIONS = 'administration/institutions',
 
   LEDGER_CUSTOMERS = 'ledger/customers',
   LEDGER_ACCOUNTS = 'ledger/accounts',

@@ -43,4 +43,7 @@ export interface ModalsState {
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;
+
+  isAddAdminInstitution: boolean;
+  isEditAdminInstitution: boolean;
 }

@@ -20,6 +20,13 @@ export enum adminCyclesPathNames {
   UPDATE = '/ui/administration/cycles/cycles_editor/update',
 }
 
+export enum adminInstitutionsPathNames {
+  GET = '',
+  CREATE = '',
+  DELETE = '',
+  UPDATE = '',
+}
+
 export enum adminInterfacePathNames {
   GET = '/ui/administration/interfaces/get',
   CREATE = '/ui/administration/interfaces/create',

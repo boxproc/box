@@ -2,6 +2,7 @@ import { AdminCyclesEditorState } from './cycles';
 import { AdminEventDataElemsState } from './dictionaries/eventDataElems';
 import { AdminEventsState } from './dictionaries/events';
 import { AdminEndpointState } from './endpoints';
+import { AdminInstitutionsState } from './institutions';
 import { AdminInterfaceState } from './interfaces';
 import { AdminUserState } from './permissions/users' ;
 import { AdminUsersGroupState } from './permissions/usersGroups';
@@ -18,4 +19,5 @@ export interface AdministrationState {
   eventDataElements: AdminEventDataElemsState;
   endpoints: AdminEndpointState;
   interfaces: AdminInterfaceState;
+  institutions: AdminInstitutionsState;
 }

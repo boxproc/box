@@ -4,6 +4,7 @@ import adminCyclesEditorReducer from './cycles/reducer';
 import adminEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
 import adminEventsReducer from './dictionaries/events/reducer';
 import adminEndpointsReducer from './endpoints/reducer';
+import adminInstitutionsReducer from './institutions/reducer';
 import adminInterfacesReducer from './interfaces/reducer';
 import adminUserReducer from './permissions/users/reducer';
 import adminUsersGroupReducer from './permissions/usersGroups/reducer';
@@ -20,6 +21,7 @@ const administrationReducer = combineReducers({
   userGroups: adminUsersGroupReducer,
   endpoints: adminEndpointsReducer,
   interfaces: adminInterfacesReducer,
+  institutions: adminInstitutionsReducer,
 });
 
 export default administrationReducer;

@@ -29,4 +29,6 @@ export enum modalNames {
   EDIT_ADMIN_ENDPOINT = 'EditAdminEndpoint',
   ADD_ADMIN_INTERFACE = 'AddAdminInterface',
   EDIT_ADMIN_INTERFACE = 'EditAdminInterface',
+  ADD_ADMIN_INSTITUTION = 'AddAdminInstitution',
+  EDIT_ADMIN_INSTITUTION = 'EditAdminInstitution',
 }

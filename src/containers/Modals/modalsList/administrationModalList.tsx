@@ -7,6 +7,10 @@ import {
   EditCyclesEditorModal,
 } from 'containers/Administration/Cycles/CyclesEditor/modals';
 import { AddEndpointModal, EditEndpointModal } from 'containers/Administration/Endpoints/modals';
+import {
+  AddInstitutionModal,
+  EditInstitutionModal,
+} from 'containers/Administration/Institutions/modals';
 import { AddInterfaceModal, EditInterfaceModal } from 'containers/Administration/Interfaces/modals';
 import { AddUsersModal, EditUsersModal } from 'containers/Administration/Permission/Users/modals';
 import {
@@ -23,6 +27,14 @@ export const administrationModalList = [
   {
     name: modalNames.ADD_ADMIN_SYSTEM_PROPERTY,
     component: <AddSystemPropertyModal />,
+  },
+  {
+    name: modalNames.ADD_ADMIN_INSTITUTION,
+    component: <AddInstitutionModal />,
+  },
+  {
+    name: modalNames.EDIT_ADMIN_INSTITUTION,
+    component: <EditInstitutionModal />,
   },
   {
     name: modalNames.ADD_ADMIN_SCHEDULER,

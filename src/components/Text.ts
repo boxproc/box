@@ -1,4 +1,5 @@
 import styled from 'theme';
+import { highlightCss } from './highlightCss';
 
 interface LabelProps {
   active?: boolean;
@@ -56,8 +57,13 @@ export const Hr = styled.div<HrProps>`
   margin-top: 20px;
   margin-bottom: 10px;
   border-top: 1px solid ${({ theme, accentColor }) =>
-    accentColor ? theme.normalAccentColor : theme.lightGrayColor};
+    accentColor ? 'transparent' : theme.lightGrayColor};
   width: 100%;
+  ${({ accentColor }) => accentColor && highlightCss};
+
+  &:before {
+    top: -6px;
+  }
 `;
 
 export const Delimiter = styled.div`

@@ -21,6 +21,11 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 }) => {
   const { confirmationAction, confirmationText } = payloadConfirmModal;
 
+  const handleConfirm = () => {
+    confirmationAction();
+    closeModal(modalName);
+  };
+
   return (
     <Modal
       name={modalName}
@@ -38,7 +43,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       )}
       <OkCancelButtons
         onCancel={() => closeModal(modalName)}
-        onOk={confirmationAction}
+        onOk={handleConfirm}
         okText="confirm"
         rightPosition={true}
       />

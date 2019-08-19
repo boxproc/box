@@ -21,6 +21,8 @@ interface OkCancelButtonsProps {
   hintOk?: string;
   hintCancel?: string;
   rightPosition?: boolean;
+  withCancelConfirmation?: boolean;
+  cancelConfirmationText?: string;
 }
 
 export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
@@ -34,6 +36,8 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   hintOk,
   hintCancel,
   rightPosition = false,
+  withCancelConfirmation = false,
+  cancelConfirmationText = 'You have unsaved changes.',
 }) => {
   return (
     <Flex
@@ -62,6 +66,8 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
           type="reset"
           iconName={cancelIconName}
           disabled={disabledCancel}
+          withConfirmation={withCancelConfirmation}
+          confirmationText={cancelConfirmationText}
         />
         {hintCancel && (
           <Hint

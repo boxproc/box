@@ -119,7 +119,6 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = id =>
       async () => {
         await dispatch(deleteAdminEndpoint(id));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_ENDPOINT));
-        await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
       },
       dispatch
     );

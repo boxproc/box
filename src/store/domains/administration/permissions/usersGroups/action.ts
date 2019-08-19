@@ -178,7 +178,6 @@ export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMember
           const state = getState();
           const currentGroupId = selectCurrentUserGroupId(state);
 
-          await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
           await dispatch(deleteAdminUserGroupMembers(groupId, userId));
           await dispatch(getAdminActiveUsers(currentGroupId));
         },
@@ -194,7 +193,6 @@ export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermission
           const state = getState();
           const currentGroupId = selectCurrentUserGroupId(state);
 
-          await dispatch(closeModal(modalNames.CONFIRMATION_MODAL));
           await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem));
           await dispatch(getAdminUiItems(currentGroupId));
         },
