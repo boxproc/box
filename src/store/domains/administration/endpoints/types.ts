@@ -38,6 +38,7 @@ export interface AdminEndpointItems extends ResponseStatusType {
 export interface AdminEndpointFilterParams {
   institutionId: SelectValues;
 }
+
 export interface AdminEndpointFilterParamsPrepared {
   institution_id: string | number;
 }

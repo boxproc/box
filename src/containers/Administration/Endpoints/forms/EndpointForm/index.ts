@@ -14,7 +14,6 @@ import {
   handleDeleteAdminEndpoint,
   handleUpdateEndpoint,
   selectAdminCurrentEndpointId,
-
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([

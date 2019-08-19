@@ -31,8 +31,7 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetAdminEndpoint = () => GetAdminEndpointAction;
 export type HandleGetAdminEndpoint = VoidPromiseThunk;
 
-export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) =>
-  AddAdminEndpointAction;
+export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
 export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
@@ -42,10 +41,10 @@ export type HandleSetEndpointId = (id: number) => void;
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
 export type HandleDeleteAdminEndpoint = (id: number) => Thunk<void>;
 
-export type UpdateAdminEndpoint =
-  (propValues: Partial<AdminEndpointItem>) => UpdateAdminEndpointAction;
-export type HandleUpdateAdminEndpoint =
-  (propValues: Partial<AdminEndpointItemDetailsPrepared>) => Thunk<void>;
+export type UpdateAdminEndpoint = (propValues: Partial<AdminEndpointItem>) =>
+  UpdateAdminEndpointAction;
+export type HandleUpdateAdminEndpoint = (propValues: Partial<AdminEndpointItemDetailsPrepared>) =>
+  Thunk<void>;
 
 export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterParamsPrepared>) =>
   FilterAdminEndpointAction;

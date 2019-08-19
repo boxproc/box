@@ -8,13 +8,15 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
+import { GeneralEndpointsInfo } from 'containers/Administration/Endpoints/components';
+
 import {
   HandleAddAdminEndpoint,
   HandleDeleteAdminEndpoint,
   HandleUpdateAdminEndpoint
 } from 'store/domains';
+
 import { SelectValues } from 'types';
-import GeneralEndpointsInfo from '../../components/GeneralEndpointsInfo';
 
 interface EndpointFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
@@ -41,6 +43,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminEndpoint : addAdminEndpoint;
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => action(data)),
     [handleSubmit]
@@ -48,11 +51,11 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-          <GeneralEndpointsInfo
-            institutionsOptions={institutionsOptions}
-            isEditMode={isEditMode}
-          />
-      <Hr/>
+      <GeneralEndpointsInfo
+        institutionsOptions={institutionsOptions}
+        isEditMode={isEditMode}
+      />
+      <Hr />
       {isEditMode && (
         <Button
           text="delete"
@@ -61,7 +64,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           withConfirmation={true}
           onClick={() => deleteEndpoint(currentEndpointId)}
         />
-        )}
+      )}
       <OkCancelButtons
         okText="Save"
         cancelText="Close"

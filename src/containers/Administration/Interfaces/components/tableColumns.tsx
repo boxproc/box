@@ -3,6 +3,7 @@ import React from 'react';
 import { Cell, Header } from 'components/Table';
 
 import { AdminInterfaceItemPrepared } from 'store/domains';
+
 import { TableCell } from 'types';
 
 type ACell<T extends keyof AdminInterfaceItemPrepared> =

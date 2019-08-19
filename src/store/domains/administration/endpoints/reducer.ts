@@ -20,7 +20,7 @@ const adminEndpointsReducer =
         return state
           .set(
             'endpoints',
-            state.endpoints.filter(el => el.id !== action.meta)
+            state.endpoints.filter(el => el.id !== action.meta.id)
           );
 
       case ActionTypeKeys.FILTER_ADMIN_ENDPOINT_FULFILLED:

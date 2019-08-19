@@ -4,9 +4,11 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
+import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
+
 import { CloseModal } from 'store/domains';
+
 import { SelectValues } from 'types';
-import InterfaceForm from '../../forms/InterfaceForm';
 
 interface AddInterfaceModalProps {
   closeModal: CloseModal;
@@ -23,8 +25,6 @@ const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
     <Modal
       name={modalName}
       title="Add Interface"
-      maxContainerWidth={980}
-      minContainerHeight={400}
     >
       <InterfaceForm
         institutionsOptions={institutionsOptions}

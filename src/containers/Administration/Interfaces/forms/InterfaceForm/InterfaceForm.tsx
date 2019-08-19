@@ -8,13 +8,14 @@ import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 
+import { GeneralInterfacesInfo } from 'containers/Administration/Interfaces/components';
+
 import {
   HandleAddAdminInterface,
   HandleDeleteAdminInterface,
   HandleUpdateAdminInterface
 } from 'store/domains';
 import { SelectValues } from 'types';
-import GeneralInterfaceInfo from '../../components/GeneralInterfacesInfo';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
@@ -41,6 +42,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminInterface : addAdminInterface;
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => action(data)),
     [handleSubmit]
@@ -48,11 +50,11 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-          <GeneralInterfaceInfo
-            institutionsOptions={institutionsOptions}
-            isEditMode={isEditMode}
-          />
-      <Hr/>
+      <GeneralInterfacesInfo
+        institutionsOptions={institutionsOptions}
+        isEditMode={isEditMode}
+      />
+      <Hr />
       {isEditMode && (
         <Button
           text="delete"
@@ -61,7 +63,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           withConfirmation={true}
           onClick={() => deleteInterface(currentInterfaceId)}
         />
-        )}
+      )}
       <OkCancelButtons
         okText="Save"
         cancelText="Close"

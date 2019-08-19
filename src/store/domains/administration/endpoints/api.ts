@@ -1,20 +1,22 @@
+import { adminEndPointsPathNames } from 'consts';
+
 import { apiClient } from 'services';
 
 import { AdminEndpointFilterParamsPrepared, AdminEndpointItem } from './types';
 
 export const getAdminEndpoint = () =>
-  apiClient.post('/ui/administration/endpoints/get');
+  apiClient.post(adminEndPointsPathNames.GET);
 
 export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
-  apiClient.post('/ui/administration/endpoints/create', { data });
+  apiClient.post(adminEndPointsPathNames.CREATE, { data });
 
-export const deleteAdminEndpoint = (id: string | number) =>
-  apiClient.post('/ui/administration/endpoints/delete', {
+export const deleteAdminEndpoint = (id: number) =>
+  apiClient.post(adminEndPointsPathNames.DELETE, {
     data: { id },
   });
 
 export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
-  apiClient.post('/ui/administration/endpoints/update', { data });
+  apiClient.post(adminEndPointsPathNames.UPDATE, { data });
 
 export const filterAdminEndpoint = (data: Partial<AdminEndpointFilterParamsPrepared>) =>
-  apiClient.post('/ui/administration/endpoints/get', { data });
+  apiClient.post(adminEndPointsPathNames.GET, { data });

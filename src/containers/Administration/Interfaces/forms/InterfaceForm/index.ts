@@ -3,9 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import InterfaceForm from './InterfaceForm';
 
-import {
-  StoreState,
-} from 'store/StoreState';
+import { StoreState } from 'store/StoreState';
 
 import {
   AdminInterfacesActionTypes,
@@ -14,7 +12,6 @@ import {
   handleDeleteAdminInterface,
   handleUpdateInterface,
   selectAdminCurrentInterfaceId,
-
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([

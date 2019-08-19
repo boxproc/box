@@ -32,8 +32,7 @@ import {
 export type GetAdminInterface = () => GetAdminInterfaceAction;
 export type HandleGetAdminInterface = VoidPromiseThunk;
 
-export type AddAdminInterface = (values: Partial<AdminInterfaceItem>) =>
-  AddAdminInterfaceAction;
+export type AddAdminInterface = (values: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
 export type HandleAddAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
 
@@ -43,10 +42,10 @@ export type HandleSetInterfaceId = (id: number) => void;
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
 export type HandleDeleteAdminInterface = (id: number) => Thunk<void>;
 
-export type UpdateAdminInterface =
-  (propValues: Partial<AdminInterfaceItem>) => UpdateAdminInterfaceAction;
-export type HandleUpdateAdminInterface =
-  (propValues: Partial<AdminInterfaceItemDetailsPrepared>) => Thunk<void>;
+export type UpdateAdminInterface = (propValues: Partial<AdminInterfaceItem>) =>
+  UpdateAdminInterfaceAction;
+export type HandleUpdateAdminInterface = (propValues: Partial<AdminInterfaceItemDetailsPrepared>) =>
+  Thunk<void>;
 
 export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterParamsPrepared>) =>
   FilterAdminInterfaceAction;
@@ -89,8 +88,8 @@ export const handleGetAdminInterface: HandleGetAdminInterface = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-
         apiClient.set('session_id', sessionId);
+
         await dispatch(getAdminInterface());
       },
       dispatch
@@ -105,6 +104,7 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+
         await dispatch(addAdminInterface(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_INTERFACE));
         await dispatch(handleGetAdminInterface());
@@ -131,6 +131,7 @@ export const handleUpdateInterface: HandleUpdateAdminInterface = values =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+
         await dispatch(updateAdminInterface(preparedValues));
         await dispatch(handleGetAdminInterface());
       },

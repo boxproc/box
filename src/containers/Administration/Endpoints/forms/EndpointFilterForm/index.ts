@@ -16,8 +16,9 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    AdminEndpointsActionTypes.GET_ADMIN_ENDPOINT,
+  AdminEndpointsActionTypes.GET_ADMIN_ENDPOINT,
 ]);
+
 const formSelector = formValueSelector(formNames.ADMIN_ENDPOINT_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({

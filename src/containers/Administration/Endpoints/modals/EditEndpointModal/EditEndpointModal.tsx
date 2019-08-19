@@ -4,9 +4,11 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
+import { EndpointForm } from 'containers/Administration/Endpoints/forms';
+
 import { AdminEndpointItemDetailsPrepared, CloseModal } from 'store/domains';
+
 import { SelectValues } from 'types';
-import EndpointForm from '../../forms/EnpointForm';
 
 interface EditAccountModalProps {
   closeModal: CloseModal;
@@ -21,13 +23,10 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   adminCurrentEndpoint,
   institutionsOptions,
 }) => {
-
   return (
     <Modal
       title="Edit Endpoint"
       name={modalName}
-      maxContainerWidth={980}
-      minContainerHeight={400}
     >
       <EndpointForm
         onCancel={() => closeModal(modalName)}

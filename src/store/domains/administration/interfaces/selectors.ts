@@ -21,18 +21,16 @@ export const selectAdminInterface = createSelector(
 );
 
 export const selectAdminCurrentInterface = createSelector(
-  selectAdminInterface,
+  selectDefaultAdminInterface,
   selectAdminCurrentInterfaceId,
   selectInstitutionsOptions,
-  selectDefaultAdminInterface,
-  (endpoints, currentId, institutions, defaultEndpoints) => {
+  (endpoints, currentId, institutions) => {
     const current = endpoints.find(el => el.id === currentId);
-    const currentDefault = defaultEndpoints.find(el => el.id === currentId);
 
     return {
       ...preparedValuesDetailsToRender(current),
-      institutionId: currentDefault && institutions
-        && institutions.find(el => el.value === currentDefault.institution_id),
+      institutionId: current && institutions
+        && institutions.find(el => el.value === current.institution_id),
     };
   }
 );

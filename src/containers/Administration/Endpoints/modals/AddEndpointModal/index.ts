@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import AddEndpoinModal from './AddEndpoinModal';
+import AddEndpointModal from './AddEndpointModal';
 
 import { closeModal, selectInstitutionsOptions } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddEndpoinModal);
+)(AddEndpointModal);

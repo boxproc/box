@@ -3,29 +3,22 @@ import { AdminInterfaceItems } from './types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_INTERFACE = 'administration/interfaces/GET_ADMIN_INTERFACE',
-  GET_ADMIN_INTERFACE_FULFILLED =
-  'administration/interfaces/GET_ADMIN_INTERFACE_FULFILLED',
+  GET_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/GET_ADMIN_INTERFACE_FULFILLED',
   GET_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/GET_ADMIN_INTERFACE_REJECTED',
 
   ADD_ADMIN_INTERFACE = 'administration/interfaces/ADD_ADMIN_INTERFACE',
-  ADD_ADMIN_INTERFACE_FULFILLED =
-  'administration/interfaces/ADD_ADMIN_ENDPOINT_FULFILLED',
-  ADD_ADMIN_INTERFACE_REJECTED =
-  'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
+  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_ENDPOINT_FULFILLED',
+  ADD_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
 
   DELETE_ADMIN_INTERFACE = 'administration/interfaces/DELETE_ADMIN_INTERFACE',
-  DELETE_ADMIN_INTERFACE_FULFILLED =
-  'administration/interfaces/DELETE_ADMIN_INTERFACE_FULFILLED',
-  DELETE_ADMIN_INTERFACE_REJECTED =
-  'administration/interfaces/DELETE_ADMIN_INTERFACE_REJECTED',
+  DELETE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_FULFILLED',
+  DELETE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_REJECTED',
 
   SET_ADMIN_INTERFACE_ID = 'administration/interfaces/SET_ADMIN_ENDPOINT_ID',
 
   UPDATE_ADMIN_INTERFACE = 'administration/interfaces/UPDATE_ADMIN_INTERFACE',
-  UPDATE_ADMIN_INTERFACE_FULFILLED =
-  'administration/interfaces/UPDATE_ADMIN_INTERFACE_FULFILLED',
-  UPDATE_ADMIN_INTERFACE_REJECTED =
-  'administration/interfaces/UPDATE_ADMIN_INTERFACE_REJECTED',
+  UPDATE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_FULFILLED',
+  UPDATE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_REJECTED',
 
   FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
   FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
@@ -74,7 +67,7 @@ export interface DeleteAdminInterfaceAction {
 export interface DeleteAdminInterfaceFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE_FULFILLED;
-  meta: number;
+  meta: { id: number };
 }
 
 export interface DeleteAdminInterfaceRejectedAction {

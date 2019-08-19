@@ -20,6 +20,7 @@ export interface AdminInterfaceItemPrepared extends AdminInterfaceItemId {
   protocolType: number | string;
   connectionAttributes: string;
 }
+
 export interface AdminInterfaceItemDetailsPrepared extends AdminInterfaceItemId {
   institutionId: SelectValues;
   name: string;
@@ -41,6 +42,7 @@ export interface AdminInterfaceItems extends ResponseStatusType {
 export interface AdminInterfaceFilterParams {
   institutionId: SelectValues;
 }
+
 export interface AdminInterfaceFilterParamsPrepared {
   institution_id: string | number;
 }

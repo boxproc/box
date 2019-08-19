@@ -5,9 +5,10 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField } from 'components/Form';
 
+import { protocolTypesOptions, statusTypesOptions } from 'consts';
+
 import { SelectValues } from 'types';
 
-import { protocolTypesOptions, statusTypesOptions } from 'consts';
 import { formErrorUtil } from 'utils';
 
 export interface GeneralInterfacesInfoProps {

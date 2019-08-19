@@ -20,6 +20,20 @@ export enum adminCyclesPathNames {
   UPDATE = '/ui/administration/cycles/cycles_editor/update',
 }
 
+export enum adminInterfacePathNames {
+  GET = '/ui/administration/interfaces/get',
+  CREATE = '/ui/administration/interfaces/create',
+  DELETE = '/ui/administration/interfaces/delete',
+  UPDATE = '/ui/administration/interfaces/update',
+}
+
+export enum adminEndPointsPathNames {
+  GET = '/ui/administration/endpoints/get',
+  CREATE = '/ui/administration/endpoints/create',
+  DELETE = '/ui/administration/endpoints/delete',
+  UPDATE = '/ui/administration/endpoints/update',
+}
+
 export enum adminEventDataElemsPathNames {
   GET = '/ui/administration/dictionaries/event_data_elements/get',
 }

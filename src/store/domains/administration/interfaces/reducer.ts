@@ -20,11 +20,13 @@ const adminInterfacesReducer =
         return state
           .set(
             'interfaces',
-            state.interfaces.filter(el => el.id !== action.meta)
+            state.interfaces.filter(el => el.id !== action.meta.id)
           );
+
       case ActionTypeKeys.FILTER_ADMIN_INTERFACE_FULFILLED:
         return state
           .set('interfaces', action.payload.interfaces);
+
       case ActionTypeKeys.SET_ADMIN_INTERFACE_ID:
         return state
           .set('currentInterfaceId', action.payload);

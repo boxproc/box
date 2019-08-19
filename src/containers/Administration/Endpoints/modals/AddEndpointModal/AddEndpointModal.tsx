@@ -4,9 +4,11 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
+import { EndpointForm } from 'containers/Administration/Endpoints/forms';
+
 import { CloseModal } from 'store/domains';
+
 import { SelectValues } from 'types';
-import EndpointForm from '../../forms/EnpointForm';
 
 interface AddEndpointModalProps {
   closeModal: CloseModal;
@@ -23,8 +25,6 @@ const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
     <Modal
       name={modalName}
       title="Add Endpoint"
-      maxContainerWidth={980}
-      minContainerHeight={400}
     >
       <EndpointForm
         institutionsOptions={institutionsOptions}

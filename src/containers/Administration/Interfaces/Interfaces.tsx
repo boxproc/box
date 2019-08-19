@@ -35,6 +35,7 @@ const Interfaces: React.FC<AccountsProps> = ({
     },
     [getAdminInterface]
   );
+
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {
@@ -48,6 +49,7 @@ const Interfaces: React.FC<AccountsProps> = ({
     },
     [openModal, setAdminInterfaceId]
   );
+
   return (
     <TablePage
       title="Interfaces"

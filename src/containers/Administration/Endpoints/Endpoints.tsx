@@ -7,6 +7,7 @@ import TablePage from 'components/TablePage';
 import { modalNames } from 'consts';
 
 import { tableColumns } from './components';
+import { EndpointFilterForm } from './forms';
 
 import {
   AdminEndpointItemPrepared,
@@ -14,7 +15,6 @@ import {
   HandleSetEndpointId,
   OpenModal,
 } from 'store/domains';
-import EndpointFilterForm from './forms/EndpointFilterForm';
 
 export interface EndpointsProps {
   openModal: OpenModal;

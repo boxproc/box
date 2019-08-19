@@ -57,7 +57,7 @@ export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItem
     return null;
   }
   return {
-    ...values,
+    ...preparedValuesToRender(values),
     status: statusTypesOptions.find(el => el.label === values.status),
     protocolType: protocolTypesOptions.find(el => el.label === values.protocolType),
   };

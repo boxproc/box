@@ -55,7 +55,7 @@ export const preparedValuesDetailsToRender = (values: Partial<AdminEndpointItemP
     return null;
   }
   return {
-    ...values,
-    status: statusTypesOptions.find(el => el.label === values.status),
+    ...preparedValuesToRender(values),
+    status: statusTypesOptions.find(el => el.value === values.status),
   };
 };

@@ -4,9 +4,11 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
+import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
+
 import { AdminInterfaceItemDetailsPrepared, CloseModal } from 'store/domains';
+
 import { SelectValues } from 'types';
-import InterfaceForm from '../../forms/InterfaceForm';
 
 interface EditAccountModalProps {
   closeModal: CloseModal;
@@ -26,8 +28,6 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     <Modal
       title="Edit Interface"
       name={modalName}
-      maxContainerWidth={980}
-      minContainerHeight={400}
     >
       <InterfaceForm
         onCancel={() => closeModal(modalName)}
