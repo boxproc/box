@@ -41,6 +41,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 130,
     sortable: true,
     filterable: true,
     Header: <Header title="Status" />,

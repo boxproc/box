@@ -21,10 +21,10 @@ export enum adminCyclesPathNames {
 }
 
 export enum adminInstitutionsPathNames {
-  GET = '',
-  CREATE = '',
-  DELETE = '',
-  UPDATE = '',
+  GET = '/ui/service_data/institutions/get_all',
+  CREATE = '/ui/service_data/institutions/create',
+  DELETE = '/ui/service_data/institutions/delete',
+  UPDATE = '/ui/service_data/institutions/update',
 }
 
 export enum adminInterfacePathNames {

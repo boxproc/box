@@ -11,6 +11,7 @@ export interface PayloadMessageModal {
 
 export interface PayloadConfirmationModal {
   confirmationAction: () => void;
+  confirmationTitle?: string;
   confirmationText?: string;
 }
 

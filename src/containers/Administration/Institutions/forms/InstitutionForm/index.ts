@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { isDirty } from 'redux-form';
-
-import { formNames } from 'consts';
 
 import InstitutionForm from './InstitutionForm';
 
@@ -24,11 +21,8 @@ const loadingSelector = createLoadingSelector([
   AdminInstitutionsActionTypes.DELETE_ADMIN_INSTITUTION,
 ]);
 
-const dirty = isDirty(formNames.ADMIN_INSTITUTIONS);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isDirty: dirty(state),
   adminInstitutionCurrentId: selectAdminInstitutionCurrentId(state),
   adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
 });

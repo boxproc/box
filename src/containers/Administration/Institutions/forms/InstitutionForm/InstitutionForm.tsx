@@ -59,7 +59,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           flexWrap="wrap"
         >
           {isEditMode && (
-            <Box width={[1 / 5]} p="10px">
+            <Box width={[3 / 15]} p="10px">
               <Field
                 id="id"
                 name="id"
@@ -71,7 +71,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[2 / 5]} p="10px">
+          <Box width={[8 / 15]} p="10px">
             <Field
               id="name"
               name="name"
@@ -82,7 +82,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[2 / 5]} p="10px">
+          <Box width={[4 / 15]} p="10px">
             <Field
               id="status"
               name="status"
@@ -124,7 +124,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
             iconName="delete"
             type="reset"
             withConfirmation={true}
-            confirmationText={`Delete ${adminCurrentInstitutionName}?`}
+            confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
             onClick={() => deleteAdminInstitution(adminInstitutionCurrentId)}
           />
         )}

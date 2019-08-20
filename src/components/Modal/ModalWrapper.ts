@@ -18,7 +18,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   text-align: center;
   overflow-y: scroll;
   z-index: ${({zIndex}) => zIndex ? zIndex : 100};
-
   &:after {
     content: "";
     display: inline-block;

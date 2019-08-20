@@ -1,15 +1,6 @@
 import React from 'react';
 
-import styled, { css } from 'theme';
-
-export const sharedStyle = css`
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-`;
+import styled from 'theme';
 
 interface ButtonWrapperBgProps {
   text: string;
@@ -18,7 +9,12 @@ interface ButtonWrapperBgProps {
 }
 
 const ButtonWrapperBg = styled.button`
-  ${sharedStyle}
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
   display: flex;
   align-items: center;
   justify-content: center;

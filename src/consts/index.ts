@@ -5,6 +5,7 @@ export * from './cookies';
 export * from './types';
 export * from './links';
 export * from './pathNames';
+export * from './messages';
 
 export const basePath = '/ui/';
 

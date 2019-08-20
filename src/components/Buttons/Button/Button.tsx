@@ -8,27 +8,23 @@ import { Reset } from 'styled-icons/boxicons-regular/Reset';
 import { LogOut } from 'styled-icons/feather/LogOut';
 import { Delete } from 'styled-icons/material/Delete';
 
-import styled, { css } from 'theme';
+import styled from 'theme';
 
 import { modalNames } from 'consts';
 
 import { OpenModal } from 'store/domains';
-
-export const sharedStyle = css`
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-`;
 
 interface ButtonWrapperProps {
   size?: string;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
-  ${sharedStyle}
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
   display: flex;
   background: transparent;
   font-size: ${({ size }) => size ? size + 'px' : '13px'};
@@ -51,16 +47,17 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
 interface ButtonProps {
   text: string;
-  disabled?: boolean;
   size?: string;
-  onClick?: () => void;
   transparent?: boolean;
+  disabled?: boolean;
   className?: string;
   iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'reset' | string;
   type?: 'reset' | 'submit';
+  openModal: OpenModal;
+  onClick?: () => void;
   withConfirmation?: boolean;
   confirmationText?: string;
-  openModal: OpenModal;
+  confirmationTitle?: string;
 }
 
 const renderIcon = (name: string) => {
@@ -90,6 +87,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
   withConfirmation = false,
   confirmationText,
+  confirmationTitle,
   openModal,
 }) => {
   const handleClick = React.useCallback(
@@ -100,6 +98,7 @@ const Button: React.FC<ButtonProps> = ({
           name: modalNames.CONFIRMATION_MODAL,
           payload: {
             confirmationAction: onClick,
+            confirmationTitle,
             confirmationText,
           },
         })

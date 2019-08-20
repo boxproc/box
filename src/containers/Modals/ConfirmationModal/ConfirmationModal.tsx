@@ -19,7 +19,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
   payloadConfirmModal,
 }) => {
-  const { confirmationAction, confirmationText } = payloadConfirmModal;
+  const { confirmationAction, confirmationText, confirmationTitle } = payloadConfirmModal;
 
   const handleConfirm = () => {
     confirmationAction();
@@ -29,7 +29,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Are you sure?"
+      title={confirmationTitle ? confirmationTitle : 'Are you sure?'}
       maxContainerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}

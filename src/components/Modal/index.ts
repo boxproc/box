@@ -5,11 +5,13 @@ import Modal from './Modal';
 
 import {
   closeModal,
+  openModal,
 } from 'store/domains';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     closeModal,
+    openModal,
   },
   dispatch
 );

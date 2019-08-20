@@ -6,6 +6,8 @@ import { Box, Flex } from '@rebass/grid';
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
 
+import { messages } from 'consts';
+
 const Wrapper = styled(Box)`
   position: relative;
 `;
@@ -23,6 +25,7 @@ interface OkCancelButtonsProps {
   rightPosition?: boolean;
   withCancelConfirmation?: boolean;
   cancelConfirmationText?: string;
+  cancelConfirmationTitle?: string;
 }
 
 export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
@@ -37,7 +40,8 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   hintCancel,
   rightPosition = false,
   withCancelConfirmation = false,
-  cancelConfirmationText = 'You have unsaved changes.',
+  cancelConfirmationText = messages.UNSAVED_CHANGES,
+  cancelConfirmationTitle = messages.CLOSE_MODAL_WINDOW,
 }) => {
   return (
     <Flex
@@ -68,6 +72,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
           disabled={disabledCancel}
           withConfirmation={withCancelConfirmation}
           confirmationText={cancelConfirmationText}
+          confirmationTitle={cancelConfirmationTitle}
         />
         {hintCancel && (
           <Hint
