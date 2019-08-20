@@ -10,20 +10,24 @@ import { AddSystemPropertyForm } from 'containers/Administration/SystemPropertie
 interface AddSystemPropertyModalProps {
   closeModal: CloseModal;
   addAdminSysProp: HandleAddAdminSysProp;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNames.ADD_ADMIN_SYSTEM_PROPERTY;
 
 const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
+  isFormDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add System Property"
       maxContainerWidth={550}
+      withCloseConfirmation={isFormDirty}
     >
       <AddSystemPropertyForm
+        isDirty={isFormDirty}
         onCancel={() => closeModal(modalName)}
       />
     </Modal>

@@ -22,6 +22,7 @@ interface DefineUserFormProps {
   isDisabledUsername?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
+  isDirty: boolean;
 }
 
 type DefineUserFormAllProps = DefineUserFormProps &
@@ -33,6 +34,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   isDisabledUsername,
   isDisabledType,
   onCancel,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminUser(data)),
@@ -135,6 +137,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         cancelText="Cancel"
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form >
   );

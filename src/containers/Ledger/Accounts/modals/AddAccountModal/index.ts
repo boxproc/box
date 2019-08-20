@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { isDirty } from 'redux-form';
+
+import { formNames } from 'consts';
 
 import AddAccountModal from './AddAccountModal';
 
 import { closeModal, selectInstitutionsOptions } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
+const dirty = isDirty(formNames.LEDGER_ACCOUNT);
+
 const mapStateToProps = (state: StoreState) => ({
+  isFormDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 

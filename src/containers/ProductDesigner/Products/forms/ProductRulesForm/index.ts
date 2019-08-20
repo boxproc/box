@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, isDirty } from 'redux-form';
 
 import ProductRulesForm from './ProductRulesForm';
 
@@ -23,8 +23,11 @@ const loadingSelector = createLoadingSelector([
 
 const formValues = formValueSelector(formNames.PRODUCT_RULES);
 
+const dirty = isDirty(formNames.PRODUCT_RULES);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isDirty: dirty(state),
   initialValues: {
     ...selectCurrentProductRules(state),
     ...formValues(

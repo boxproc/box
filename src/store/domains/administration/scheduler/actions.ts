@@ -74,6 +74,7 @@ export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
         apiClient.set('session_id', sessionId);
+
         await dispatch(getAdminSchedulerJobs());
       },
       dispatch
@@ -88,7 +89,7 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
 
         await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
-        await dispatch(getAdminSchedulerJobs());
+        await dispatch(handleGetAdminSchedulerJobs());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_SCHEDULER_JOB));
       },
       dispatch
@@ -101,6 +102,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =
       async () => {
         await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+        await dispatch(handleGetAdminSchedulerJobs());
       },
       dispatch
     );
@@ -114,7 +116,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
 
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
-        await dispatch(getAdminSchedulerJobs());
+        await dispatch(handleGetAdminSchedulerJobs());
       },
       dispatch
     );

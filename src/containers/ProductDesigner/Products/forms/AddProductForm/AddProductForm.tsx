@@ -23,6 +23,7 @@ interface AddProductFormProps extends ExternalSpinnerProps {
   currentProductType: SelectValues;
   addProduct: HandleAddProduct;
   onCancel: () => void;
+  isDirty: boolean;
 }
 
 type AddProductFormAllProps = AddProductFormProps & InjectedFormProps<{}, AddProductFormProps>;
@@ -32,6 +33,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   addProduct,
   onCancel,
   handleSubmit,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addProduct(data)),
@@ -58,6 +60,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             cancelText="Cancel"
             onCancel={onCancel}
             rightPosition={true}
+            withCancelConfirmation={isDirty}
           />
         </Panel>
       </Tabs>

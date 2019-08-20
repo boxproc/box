@@ -24,6 +24,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  isDirty: boolean;
 }
 
 type AccountFormAllProps = AccountFormProps &
@@ -36,6 +37,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   addLedgerAccount,
   institutionsOptions,
   mode,
+  isDirty,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateLedgerAccount : addLedgerAccount;
@@ -71,6 +73,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form >
   );

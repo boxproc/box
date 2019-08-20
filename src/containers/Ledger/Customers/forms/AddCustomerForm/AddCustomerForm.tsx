@@ -16,6 +16,7 @@ import {
 interface AddCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   addLedgerCustomer: HandleAddLedgerCustomer;
+  isDirty: boolean;
 }
 
 type AddCustomerFormAllProps = AddCustomerFormProps &
@@ -25,6 +26,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
   onCancel,
   handleSubmit,
   addLedgerCustomer,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addLedgerCustomer(data)),
@@ -40,6 +42,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
         cancelText="Cancel"
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form >
   );

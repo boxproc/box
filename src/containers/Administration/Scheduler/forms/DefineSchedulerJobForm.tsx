@@ -30,6 +30,7 @@ interface DefineSchedulerJobFormProps {
   onCancel?: () => void;
   deleteAdminSchedulerJob?: HandleDeleteAdminSchedulerJob;
   schedulerJobId?: number | string;
+  isDirty: boolean;
   mode: 'add' | 'edit';
 }
 
@@ -46,6 +47,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   deleteAdminSchedulerJob,
   schedulerJobId,
   mode,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminSchedulerJob(data)),
@@ -161,6 +163,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           <Button
             text="delete"
             iconName="delete"
+            type="reset"
+            withConfirmation={true}
+            confirmationText="Delete scheduler?"
             onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
           />
         )}
@@ -169,6 +174,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           rightPosition={true}
+          withCancelConfirmation={isDirty}
         />
       </Flex>
     </form >

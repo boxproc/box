@@ -12,6 +12,7 @@ import { SelectValues } from 'types';
 interface AddAccountModalProps {
   closeModal: CloseModal;
   institutionsOptions: Array<SelectValues>;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNames.ADD_LEDGER_ACCOUNT;
@@ -19,6 +20,7 @@ const modalName = modalNames.ADD_LEDGER_ACCOUNT;
 const AddAccountModal: React.FC<AddAccountModalProps> = ({
   closeModal,
   institutionsOptions,
+  isFormDirty,
 }) => {
   return (
     <Modal
@@ -26,12 +28,14 @@ const AddAccountModal: React.FC<AddAccountModalProps> = ({
       title="Add Account"
       maxContainerWidth={980}
       minContainerHeight={519}
+      withCloseConfirmation={isFormDirty}
     >
       <AccountForm
         institutionsOptions={institutionsOptions}
         initialValues={{
           institutionId: institutionsOptions && institutionsOptions[0],
         }}
+        isDirty={isFormDirty}
         onCancel={() => closeModal(modalName)}
         mode="add"
       />

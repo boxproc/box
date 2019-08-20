@@ -18,18 +18,16 @@ import { formErrorUtil } from 'utils';
 
 interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
-  isDisabledInstitution?: boolean;
-  isDisabledStatus?: boolean;
+  isEditMode?: boolean;
 }
 
 type CustomerInfoAllProps = CustomerInfoProps & WithLoadCountryCodesProps;
 
 const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
   institutionsOptions,
-  isDisabledInstitution,
-  isDisabledStatus,
   countryCodes,
   isCountryCodesLoading,
+  isEditMode = false,
 }) => {
   return (
     <Box mx="-10px">
@@ -37,6 +35,18 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
+        {isEditMode && (
+          <Box width="150px" p="10px">
+            <Field
+              id="id"
+              name="id"
+              component={InputField}
+              label="ID"
+              placeholder="Enter ID"
+              disabled={true}
+            />
+          </Box>
+        )}
         <Box width={[1 / 4]} p="10px">
           <Field
             id="institutionId"
@@ -45,7 +55,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitution}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -57,7 +67,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             label="Status"
             placeholder="Select Status"
             options={customerStatusTypesOptions}
-            isDisabled={isDisabledStatus}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>

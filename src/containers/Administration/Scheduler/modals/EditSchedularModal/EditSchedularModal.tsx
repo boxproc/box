@@ -19,6 +19,7 @@ interface EditSchedulerModalProps {
   schedulerJobId: number | string;
   updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNames.EDIT_ADMIN_SCHEDULER;
@@ -29,12 +30,14 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   schedulerJobId,
   updateAdminSchedulerJob,
   schedulerJobValues,
+  isFormDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Edit Scheduler"
       minContainerHeight={488}
+      withCloseConfirmation={isFormDirty}
     >
       <DefineSchedulerJobForm
         onCancel={() => closeModal(modalName)}
@@ -44,6 +47,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         deleteAdminSchedulerJob={deleteAdminSchedulerJob}
         schedulerJobId={schedulerJobId}
         mode="edit"
+        isDirty={isFormDirty}
       />
     </Modal>
   );

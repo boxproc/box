@@ -22,6 +22,7 @@ interface ProductRulesForm extends ExternalSpinnerProps {
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
   eventValue: SelectValues;
+  isDirty: boolean;
 }
 
 type EditProductRulesFormAllProps = ProductRulesForm &
@@ -34,6 +35,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   getProductRules,
   updateProductRules,
   eventValue,
+  isDirty,
 }) => {
   React.useEffect(
     () => {
@@ -56,6 +58,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form>
   );

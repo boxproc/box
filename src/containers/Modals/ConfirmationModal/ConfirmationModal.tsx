@@ -35,11 +35,9 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       closeOnBackdrop={true}
       accentClose={false}
     >
+      <Hr accentColor={true} />
       {confirmationText && (
-        <React.Fragment>
-          <Hr accentColor={true} />
-          <Paragraph light={true}>{confirmationText}</Paragraph>
-        </React.Fragment>
+        <Paragraph light={true}>{confirmationText}</Paragraph>
       )}
       <OkCancelButtons
         onCancel={() => closeModal(modalName)}

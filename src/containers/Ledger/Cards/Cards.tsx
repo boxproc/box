@@ -22,7 +22,7 @@ const Cards: React.FC<CardsProps> = ({
 }) => {
   React.useEffect(
     () => {
-        getLedgerCards();
+      getLedgerCards();
     },
     [getLedgerCards]
   );

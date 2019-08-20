@@ -34,3 +34,8 @@ export const selectAdminCurrentEndpoint = createSelector(
     };
   }
 );
+
+export const selectAdminCurrentEndpointName = createSelector(
+  selectAdminCurrentEndpoint,
+  endpoint => endpoint && endpoint.name
+);

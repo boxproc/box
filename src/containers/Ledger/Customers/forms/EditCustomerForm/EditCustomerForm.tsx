@@ -20,6 +20,7 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   updateLedgerCustomer: HandleUpdateLedgerCustomer;
   ledgerCustomerCurrentId: number;
+  isDirty: boolean;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &
@@ -31,6 +32,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   deleteLedgerCustomer,
   updateLedgerCustomer,
   ledgerCustomerCurrentId,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateLedgerCustomer(data)),
@@ -40,8 +42,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <CustomerInfo
-        isDisabledInstitution={true}
-        isDisabledStatus={true}
+        isEditMode={true}
       />
       <Hr />
       <Flex
@@ -61,6 +62,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           rightPosition={true}
+          withCancelConfirmation={isDirty}
         />
       </Flex>
     </form >

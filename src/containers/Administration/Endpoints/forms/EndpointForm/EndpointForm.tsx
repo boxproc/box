@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
@@ -24,8 +25,10 @@ interface EndpointFormProps extends ExternalSpinnerProps {
   addAdminEndpoint: HandleAddAdminEndpoint;
   currentEndpointId: number;
   deleteEndpoint: HandleDeleteAdminEndpoint;
+  isDirty: boolean;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  currentEndpointName: string;
 }
 
 type EndpointFormAllProps = EndpointFormProps &
@@ -39,7 +42,9 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   updateAdminEndpoint,
   addAdminEndpoint,
   institutionsOptions,
+  isDirty,
   mode,
+  currentEndpointName,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminEndpoint : addAdminEndpoint;
@@ -56,21 +61,28 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
         isEditMode={isEditMode}
       />
       <Hr />
-      {isEditMode && (
-        <Button
-          text="delete"
-          iconName="delete"
-          type="reset"
-          withConfirmation={true}
-          onClick={() => deleteEndpoint(currentEndpointId)}
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        {isEditMode && (
+          <Button
+            text="delete"
+            iconName="delete"
+            type="reset"
+            withConfirmation={true}
+            confirmationText={`Delete endpoint "${currentEndpointName}"?`}
+            onClick={() => deleteEndpoint(currentEndpointId)}
+          />
+        )}
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Close"
+          onCancel={onCancel}
+          rightPosition={true}
+          withCancelConfirmation={isDirty}
         />
-      )}
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-      />
+      </Flex>
     </form >
   );
 };

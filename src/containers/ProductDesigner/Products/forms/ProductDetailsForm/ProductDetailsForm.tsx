@@ -23,6 +23,7 @@ interface ProductDetailsFormProps extends ExternalSpinnerProps {
   currentProductId: number;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
+  isDirty: boolean;
 }
 
 type ProductDetailsFormAllProps = ProductDetailsFormProps &
@@ -35,6 +36,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   currentProductId,
   getProductDetails,
   updateProductDetails,
+  isDirty,
 }) => {
   React.useEffect(
     () => {
@@ -58,6 +60,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form>
   );

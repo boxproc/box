@@ -13,6 +13,7 @@ import { SelectValues } from 'types';
 interface AddInterfaceModalProps {
   closeModal: CloseModal;
   institutionsOptions: Array<SelectValues>;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNames.ADD_ADMIN_INTERFACE;
@@ -20,11 +21,13 @@ const modalName = modalNames.ADD_ADMIN_INTERFACE;
 const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
   closeModal,
   institutionsOptions,
+  isFormDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add Interface"
+      withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm
         institutionsOptions={institutionsOptions}
@@ -33,6 +36,7 @@ const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
         }}
         onCancel={() => closeModal(modalName)}
         mode="add"
+        isDirty={isFormDirty}
       />
     </Modal>
   );

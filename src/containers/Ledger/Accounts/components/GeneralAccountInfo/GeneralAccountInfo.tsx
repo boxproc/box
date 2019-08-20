@@ -52,6 +52,18 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
+        {isEditMode && (
+          <Box width="150px" p="10px">
+            <Field
+              id="id"
+              name="id"
+              component={InputField}
+              label="ID"
+              placeholder="Enter ID"
+              disabled={true}
+            />
+          </Box>
+        )}
         <Box width={[1 / 3]} p="10px">
           <Field
             id="institutionId"
@@ -90,14 +102,14 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 4]} p="10px">
+        <Box width="150px" p="10px">
           <Field
-            id="status"
-            name="status"
-            component={SelectField}
-            label="Status"
-            placeholder="Select Status"
-            options={statusTypesOptions}
+            id="customerId"
+            name="customerId"
+            component={InputField}
+            label="Customer ID"
+            placeholder="Enter ID"
+            disabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -119,14 +131,14 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder="Enter Account Alias Additional"
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
-            id="customerId"
-            name="customerId"
-            component={InputField}
-            label="Customer ID"
-            placeholder="Enter ID"
-            disabled={isEditMode}
+            id="status"
+            name="status"
+            component={SelectField}
+            label="Status"
+            placeholder="Select Status"
+            options={statusTypesOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>

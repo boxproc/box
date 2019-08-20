@@ -6,10 +6,8 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
-import {
-  cycleEditorColumns,
-  CycleEditorFilter,
-} from './components';
+import { cycleEditorColumns } from './components';
+import { CycleEditorFilter } from './forms';
 
 import {
   AdminCyclesEditorItemPrepared,

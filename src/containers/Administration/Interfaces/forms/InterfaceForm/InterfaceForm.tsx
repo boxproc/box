@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
@@ -25,6 +26,7 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   deleteInterface: HandleDeleteAdminInterface;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  isDirty: boolean;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -38,6 +40,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   updateAdminInterface,
   addAdminInterface,
   institutionsOptions,
+  isDirty,
   mode,
 }) => {
   const isEditMode = mode === 'edit';
@@ -55,21 +58,28 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
         isEditMode={isEditMode}
       />
       <Hr />
-      {isEditMode && (
-        <Button
-          text="delete"
-          iconName="delete"
-          type="reset"
-          withConfirmation={true}
-          onClick={() => deleteInterface(currentInterfaceId)}
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        {isEditMode && (
+          <Button
+            text="delete"
+            iconName="delete"
+            type="reset"
+            withConfirmation={true}
+            confirmationText="Delete interface?"
+            onClick={() => deleteInterface(currentInterfaceId)}
+          />
+        )}
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Close"
+          onCancel={onCancel}
+          rightPosition={true}
+          withCancelConfirmation={isDirty}
         />
-      )}
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-      />
+      </Flex>
     </form >
   );
 };

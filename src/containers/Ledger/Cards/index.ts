@@ -13,8 +13,8 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    LedgerCardsActionTypes.GET_LEDGER_CARDS,
-    LedgerCardsActionTypes.FILTER_LEDGER_CARDS,
+  LedgerCardsActionTypes.GET_LEDGER_CARDS,
+  LedgerCardsActionTypes.FILTER_LEDGER_CARDS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

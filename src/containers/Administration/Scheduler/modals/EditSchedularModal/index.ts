@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { isDirty } from 'redux-form';
+
+import { formNames } from 'consts';
 
 import EditSchedulerModal from './EditSchedularModal';
 
@@ -18,8 +21,11 @@ const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
 ]);
 
+const dirty = isDirty(formNames.DEFINE_ADMIN_SCHEDULER_JOB);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isFormDirty: dirty(state),
   schedulerJobId: selectSchedulerJobId(state),
   schedulerJobValues: selectSchedulerJobValues(state),
 });
