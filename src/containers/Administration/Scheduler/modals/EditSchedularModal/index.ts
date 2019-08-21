@@ -12,6 +12,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleUpdateAdminSchedulerJobs,
+  selectCurrentSchedulerName,
   selectSchedulerJobId,
   selectSchedulerJobValues,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   schedulerJobId: selectSchedulerJobId(state),
   schedulerJobValues: selectSchedulerJobValues(state),
+  currentSchedulerName: selectCurrentSchedulerName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

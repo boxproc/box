@@ -1,21 +1,22 @@
 import React from 'react';
-import Cron from 'react-cron-generator';
+import CronBuilder from 'react-cron-builder';
 
-import { CronGeneratorStyled } from './CronGeneratorStyled';
+import 'react-cron-builder/dist/bundle.css';
+import './styles.css';
 
 const CronGenerator: React.FC = () => {
   const [value, setValue] = React.useState(null);
 
-  return (
-    <CronGeneratorStyled>
-      <Cron
-        onChange={(e: React.MouseEvent) => setValue(e)}
-        value={value}
-        showResultText={true}
-        showResultCron={true}
-      />
+  console.log('---value', value);
 
-    </CronGeneratorStyled>
+  return (
+    <React.Fragment>
+      <CronBuilder
+        cronExpression="*/4 2,12,22 * * 1-5"
+        onChange={(e: React.MouseEvent) => setValue(e)}
+        showResult={true}
+      />
+    </React.Fragment>
   );
 };
 

@@ -30,7 +30,7 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
     <Modal
       name={modalName}
       title="Add Scheduler Job"
-      minContainerHeight={488}
+      minContainerHeight={510}
       withCloseConfirmation={isFormDirty}
     >
       <DefineSchedulerJobForm

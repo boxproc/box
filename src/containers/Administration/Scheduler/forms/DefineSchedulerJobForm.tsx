@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import CronGenerator from 'components/CronGenerator';
-import { InputField, SelectField } from 'components/Form';
+import { InputField, SelectField, TextField } from 'components/Form';
 import { Panel, Tabs } from 'components/Tabs';
 import { Hr } from 'components/Text';
 
@@ -63,49 +63,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           <Box mx="-10px" >
             <Flex
               flexWrap="wrap"
+              alignItems="flex-end"
             >
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="name"
-                  name="name"
-                  placeholder="Enter Job Name"
-                  component={InputField}
-                  label="Scheduler Job Name"
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="description"
-                  name="description"
-                  placeholder="Enter  Job Description"
-                  component={InputField}
-                  label="Scheduler Job Description"
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="status"
-                  name="status"
-                  component={SelectField}
-                  label="Status"
-                  placeholder="Select Status"
-                  options={statusTypesOptions}
-                  isDisabled={isDisabledStatus}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="cronExpression"
-                  name="cronExpression"
-                  placeholder="Enter  Cron Expression Description"
-                  component={InputField}
-                  label="Scheduler Job Cron Expression"
-                  disabled={false}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
+              <Box width={[1 / 3]} p="10px">
                 <Field
                   id="institutionId"
                   name="institutionId"
@@ -116,7 +76,48 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   isDisabled={isDisabledInstitutions}
                 />
               </Box>
-              <Box width={[1 / 2]} p="10px">
+              <Box width={[1 / 3]} p="10px">
+                <Field
+                  id="name"
+                  name="name"
+                  placeholder="Enter Job Name"
+                  component={InputField}
+                  label="Scheduler Job Name"
+                  validate={[formErrorUtil.required]}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="10px">
+                <Field
+                  id="status"
+                  name="status"
+                  component={SelectField}
+                  label="Status"
+                  placeholder="Select Status"
+                  options={statusTypesOptions}
+                  isDisabled={isDisabledStatus}
+                />
+              </Box>
+              <Box width={[1]} p="10px">
+                <Field
+                  id="description"
+                  name="description"
+                  placeholder="Enter  Job Description"
+                  component={TextField}
+                  label="Scheduler Job Description"
+                  validate={[formErrorUtil.required]}
+                />
+              </Box>
+              <Box width={[1 / 3]} p="10px">
+                <Field
+                  id="cronExpression"
+                  name="cronExpression"
+                  placeholder="Enter  Cron Expression Description"
+                  component={InputField}
+                  label="Scheduler Job Cron Expression"
+                  disabled={false}
+                />
+              </Box>
+              <Box width={[1 / 3]} p="10px">
                 <Field
                   id="executableType"
                   name="executableType"
@@ -127,7 +128,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   options={executableTypeOptions}
                 />
               </Box>
-              <Box width={[1 / 2]} p="10px">
+              <Box width={[1 / 3]} p="10px">
                 <Field
                   id="executable"
                   name="executable"
@@ -137,7 +138,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   disabled={false}
                 />
               </Box>
-              <Box width={[1 / 2]} p="10px">
+              <Box width={[1 / 3]} p="10px">
                 <Field
                   id="logLocation"
                   name="logLocation"
@@ -149,34 +150,34 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               </Box>
             </Flex>
           </Box>
+          <Hr />
+          <Flex
+            alignItems="flex-end"
+            justifyContent="space-between"
+          >
+            {isEditable && (
+              <Button
+                text="delete"
+                iconName="delete"
+                type="reset"
+                withConfirmation={true}
+                confirmationText="Delete scheduler?"
+                onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
+              />
+            )}
+            <OkCancelButtons
+              okText="Save"
+              cancelText="Cancel"
+              onCancel={onCancel}
+              rightPosition={true}
+              withCancelConfirmation={isDirty}
+            />
+          </Flex>
         </Panel>
         <Panel title="Schedule">
           <CronGenerator />
         </Panel>
       </Tabs>
-      <Hr />
-      <Flex
-        alignItems="flex-end"
-        justifyContent="space-between"
-      >
-        {isEditable && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText="Delete scheduler?"
-            onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
-          />
-        )}
-        <OkCancelButtons
-          okText="Save"
-          cancelText="Cancel"
-          onCancel={onCancel}
-          rightPosition={true}
-          withCancelConfirmation={isDirty}
-        />
-      </Flex>
     </form >
   );
 };

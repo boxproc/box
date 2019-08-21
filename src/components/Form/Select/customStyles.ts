@@ -1,4 +1,3 @@
-// import SelectBase from 'react-select';
 import { Props } from 'react-select/lib/Select';
 import { StylesConfig } from 'react-select/lib/styles';
 

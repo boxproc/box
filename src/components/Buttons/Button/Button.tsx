@@ -36,7 +36,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   white-space: nowrap;
 
   &:hover {
-    color: ${({ theme }) => theme.lighterAccentColor};
+    color: ${({ theme }) => theme.normalAccentColor};
   }
 
   &:disabled {
