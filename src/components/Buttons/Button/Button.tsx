@@ -16,6 +16,7 @@ import { OpenModal } from 'store/domains';
 
 interface ButtonWrapperProps {
   size?: string;
+  bordered?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -35,8 +36,21 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   line-height: 1.3;
   white-space: nowrap;
 
+  ${({ bordered, theme }) => bordered && `
+    border: 1px solid  ${theme.grayColor};
+    border-radius: 2px;
+    padding: 9px 10px 7px;
+    width: 100%;
+    justify-content: center;
+    background-color: ${theme.lighterGrayColor}
+  `};
+
   &:hover {
     color: ${({ theme }) => theme.normalAccentColor};
+
+    ${({ bordered, theme }) => bordered && `
+      border-color: ${theme.normalAccentColor};
+  `};
   }
 
   &:disabled {
@@ -58,6 +72,7 @@ interface ButtonProps {
   withConfirmation?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
+  bordered?: boolean;
 }
 
 const renderIcon = (name: string) => {
@@ -89,6 +104,7 @@ const Button: React.FC<ButtonProps> = ({
   confirmationText,
   confirmationTitle,
   openModal,
+  bordered = false,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -113,6 +129,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       size={size}
+      bordered={bordered}
     >
       {iconName &&
         <Box mr="2px">

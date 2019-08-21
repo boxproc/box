@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ButtonBg } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 
@@ -90,7 +90,10 @@ const Login: React.FC<LoginPropsAllProps> = ({
         disabled={false}
       />
       <Box mt="20px">
-        <ButtonBg text="Log in"/>
+        <Button
+          text="Log in"
+          bordered={true}
+        />
       </Box>
     </FormWrapper>
   );
