@@ -124,7 +124,26 @@ export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
   id: number;
 }
 
+export interface LedgerAccountsCardsItem {
+  pan_alias: string;
+  pan_masked: string;
+  expiry_date: string;
+  status: string;
+}
+
+export interface LedgerAccountsCardsItemPrepared {
+  panAlias: string;
+  panMasked: string;
+  expiryDate: string;
+  status: string;
+}
+
+export interface LedgerAccountCardsItems extends ResponseStatusType {
+  cards: Array<LedgerAccountsCardsItem>;
+}
+
 export interface LedgerAccountsState {
   accounts: ImmutableArray<LedgerAccountItem>;
+  cards: ImmutableArray<LedgerAccountsCardsItem>;
   currentAccountId: number;
 }

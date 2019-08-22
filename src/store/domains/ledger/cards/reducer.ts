@@ -10,11 +10,6 @@ export const ledgerCardsInitialState: ImmutableObject<LedgerCardsState> = Immuta
 const ledgerCardsReducer =
   (state = ledgerCardsInitialState, action: LedgerCardsActionTypes) => {
     switch (action.type) {
-
-      case ActionTypeKeys.GET_LEDGER_CARDS_FULFILLED:
-        return state
-          .set('cards', action.payload.cards);
-
       case ActionTypeKeys.FILTER_LEDGER_CARDS_FULFILLED:
         return state
           .set('cards', action.payload.cards);

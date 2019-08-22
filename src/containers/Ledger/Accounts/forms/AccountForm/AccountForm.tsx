@@ -11,6 +11,7 @@ import { formNames } from 'consts';
 
 import {
   AuxiliaryCounters,
+  Cards,
   GeneralAccountInfo,
   Overdue,
 } from 'containers/Ledger/Accounts/components';
@@ -55,26 +56,48 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             institutionsOptions={institutionsOptions}
             isEditMode={isEditMode}
           />
+          <Hr />
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Close"
+            onCancel={onCancel}
+            rightPosition={true}
+            withCancelConfirmation={isDirty}
+          />
         </Panel>
         <Panel title="Auxiliary Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
+          />
+          <Hr />
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Close"
+            onCancel={onCancel}
+            rightPosition={true}
+            withCancelConfirmation={isDirty}
           />
         </Panel>
         <Panel title="Overdue">
           <Overdue
             isEditMode={isEditMode}
           />
+          <Hr />
+          <OkCancelButtons
+            okText="Save"
+            cancelText="Close"
+            onCancel={onCancel}
+            rightPosition={true}
+            withCancelConfirmation={isDirty}
+          />
         </Panel>
+        {isEditMode && (
+          <Panel title="Cards">
+            <Cards />
+          </Panel>
+        )}
       </Tabs>
-      <Hr />
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-        withCancelConfirmation={isDirty}
-      />
+
     </form >
   );
 };

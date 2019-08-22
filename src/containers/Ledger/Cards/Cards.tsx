@@ -7,26 +7,16 @@ import { tableColumns } from './cardsComponents';
 import { CardsFilterForm } from './forms';
 
 import {
-  HandleGetLedgerCards,
   LedgerCardItemPrepared,
 } from 'store/domains';
 
 export interface CardsProps {
-  getLedgerCards: HandleGetLedgerCards;
   ledgerCards: Array<LedgerCardItemPrepared>;
 }
 
 const Cards: React.FC<CardsProps> = ({
-  getLedgerCards,
   ledgerCards,
 }) => {
-  React.useEffect(
-    () => {
-      getLedgerCards();
-    },
-    [getLedgerCards]
-  );
-
   return (
     <TablePage
       title="Cards"

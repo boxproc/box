@@ -5,7 +5,8 @@ import { StoreState } from 'store/StoreState';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
-import { preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
+// tslint:disable-next-line: max-line-length
+import { preparedAccountCardsToRender, preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
   state.ledger.accounts.accounts.asMutable();
@@ -24,6 +25,13 @@ export const selectLedgerAccounts = createSelector(
 export const selectLedgerAccountCurrentId = (state: StoreState) =>
   state.ledger.accounts.currentAccountId;
 
+export const selectDefaultLedgerAccountCards = (state: StoreState) =>
+  state.ledger.accounts.cards.asMutable();
+
+export const selectLedgerAccountCards = createSelector(
+  selectDefaultLedgerAccountCards,
+  items => items && items.map(item => preparedAccountCardsToRender(item))
+);
 export const selectLedgerCurrentAccount = createSelector(
   selectLedgerAccountCurrentId,
   selectInstitutionsOptions,
