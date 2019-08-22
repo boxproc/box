@@ -14,6 +14,11 @@ export const Label = styled.label<LabelProps>`
   }
 `;
 
+export const SmallText = styled.div`
+  font-size: 12px;
+  color: ${({ theme }) => theme.grayColor};
+`;
+
 interface TitleProps {
   textAlign?: string;
   color?: string;

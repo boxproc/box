@@ -20,6 +20,7 @@ import {
 import {
   AddSchedulerModal,
   EditSchedularModal,
+  GenerateCronExpressionModal,
 } from 'containers/Administration/Scheduler/modals';
 import { AddSystemPropertyModal } from 'containers/Administration/SystemProperties/modals';
 
@@ -43,6 +44,10 @@ export const administrationModalList = [
   {
     name: modalNames.EDIT_ADMIN_SCHEDULER,
     component: <EditSchedularModal />,
+  },
+  {
+    name: modalNames.GENERATE_CRON_EXPRESSION,
+    component: <GenerateCronExpressionModal />,
   },
   {
     name: modalNames.ADD_ADMIN_CYCLE_EDITOR,

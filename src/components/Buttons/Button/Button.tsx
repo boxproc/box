@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
-import { Reset } from 'styled-icons/boxicons-regular/Reset';
+import { Copy } from 'styled-icons/boxicons-solid/Copy';
 import { LogOut } from 'styled-icons/feather/LogOut';
 import { Delete } from 'styled-icons/material/Delete';
 
@@ -39,10 +39,12 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ bordered, theme }) => bordered && `
     border: 1px solid  ${theme.grayColor};
     border-radius: 2px;
-    padding: 9px 10px 7px;
+    padding: 8px 10px 7px;
     width: 100%;
     justify-content: center;
-    background-color: ${theme.lighterGrayColor}
+    background-color: ${theme.lighterGrayColor};
+    line-height: 1.25;
+    box-shadow: ${theme.boxShadow};
   `};
 
   &:hover {
@@ -65,7 +67,7 @@ interface ButtonProps {
   transparent?: boolean;
   disabled?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'reset' | string;
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'copy' | string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
   onClick?: () => void;
@@ -85,8 +87,8 @@ const renderIcon = (name: string) => {
       return (<LogOut size="16" />);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18" /></Box>);
-    case 'reset':
-      return (<Box mt="-2px"><Reset size="14" /></Box>);
+    case 'copy':
+      return (<Box mt="-2px"><Copy size="18" /></Box>);
     default:
       return null;
   }

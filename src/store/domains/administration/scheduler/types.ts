@@ -45,4 +45,5 @@ export interface AdminSchedulerDataResp extends ResponseStatusType {
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
   currentSchedulerId: number;
+  cronExpression: string;
 }

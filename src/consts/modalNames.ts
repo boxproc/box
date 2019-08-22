@@ -20,6 +20,7 @@ export enum modalNames {
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
   ADD_ADMIN_SCHEDULER = 'AddAdminSchedulerModal',
   EDIT_ADMIN_SCHEDULER = 'EditAdminSchedulerModal',
+  GENERATE_CRON_EXPRESSION = 'GenerateCronExpressionModal',
   ADD_ADMIN_ACTIVE_USER = 'AddAdminActiveUser',
   ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroupModal',
   EDIT_ADMIN_USERS_GROUP = 'EditAdminUsersGroupModal',

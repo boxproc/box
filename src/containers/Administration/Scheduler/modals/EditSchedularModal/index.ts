@@ -12,6 +12,8 @@ import {
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleUpdateAdminSchedulerJobs,
+  openModal,
+  selectCurrentCronExpression,
   selectCurrentSchedulerName,
   selectSchedulerJobId,
   selectSchedulerJobValues,
@@ -30,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   schedulerJobId: selectSchedulerJobId(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
+  currentCronExpression: selectCurrentCronExpression(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -37,6 +40,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
     closeModal,
+    openModal,
   },
   dispatch
 );

@@ -40,3 +40,11 @@ export const selectCurrentSchedulerName = createSelector(
   selectSchedulerJobValues,
   scheduler => scheduler && scheduler.name
 );
+
+export const selectCurrentCronExpression = createSelector(
+  selectSchedulerJobValues,
+  scheduler => scheduler && scheduler.cronExpression
+);
+
+export const selectCronExpression = (state: StoreState) =>
+  state.administration.scheduler.cronExpression;

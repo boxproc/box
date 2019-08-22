@@ -25,6 +25,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
 
   isAddAdminSchedulerModal: false,
   isEditAdminSchedulerModal: false,
+  isGenerateCronExpressionModal: false,
 
   isAddAdminUserModal: false,
   isEditAdminUserModal: false,

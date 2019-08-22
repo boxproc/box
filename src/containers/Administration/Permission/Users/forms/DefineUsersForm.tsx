@@ -61,7 +61,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             <Field
               id="lastName"
               name="lastName"
-              placeholder="Enter  Last Name"
+              placeholder="Enter Last Name"
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Last Name"

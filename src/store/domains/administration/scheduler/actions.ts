@@ -9,6 +9,7 @@ import {
   DeleteAdminSchedulerJobAction,
   GetAdminSchedulerJobAction,
   SetAdminSchedulerJobIdAction,
+  SetCronExpressionAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
@@ -40,6 +41,9 @@ export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEdita
 export type SetAdminSchedulerJobId = (id: number) => SetAdminSchedulerJobIdAction;
 export type HandleSetAdminSchedulerJobId = (id: number) => void;
 
+export type SetCronExpression = (expression: string) => SetCronExpressionAction;
+export type HandleSetCronExpression = (expression: string) => void;
+
 export const getAdminSchedulerJobs: GetAdminSchedulerJobs = () => ({
   type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS,
   payload: api.getAdminSchedulerJobs(),
@@ -66,6 +70,11 @@ export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues
 export const setAdminSchedulerJobId: SetAdminSchedulerJobId = id => ({
   type: ActionTypeKeys.SET_ADMIN_SCHEDULER_JOBS_ID,
   payload: id,
+});
+
+export const setCronExpression: SetCronExpression = expression => ({
+  type: ActionTypeKeys.SET_CRON_EXPRESSION,
+  payload: expression,
 });
 
 export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
@@ -115,7 +124,6 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
         const preparedValues = prepareValuesToSend(schedulerValues);
 
         await dispatch(updateAdminSchedulerJobs(preparedValues));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
         await dispatch(handleGetAdminSchedulerJobs());
       },
       dispatch
@@ -124,3 +132,6 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
 
 export const handleSetAdminSchedulerJobId: HandleSetAdminSchedulerJobId = id =>
   setAdminSchedulerJobId(id);
+
+export const handleSetCronExpression: HandleSetCronExpression = expression =>
+  setCronExpression(expression);

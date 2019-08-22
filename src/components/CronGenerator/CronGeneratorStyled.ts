@@ -3,6 +3,8 @@ import styled from 'theme';
 import 'react-cron-builder/dist/bundle.css';
 
 export const CronGeneratorStyled = styled.div`
+  margin: 0 -20px;
+
   .cron-builder {
     display: inline-block;
     width: 100%;
@@ -16,14 +18,14 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__fieldset {
-    border: 1px solid #ffa400;
-    margin-bottom: 20px;
+    border: 0;
   }
 
   .cron-builder__legend {
-    margin-bottom: 20px;
-    margin-left: 8px;
-    padding: 0 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,.1);
   }
 
   .cron-builder__action,
@@ -34,8 +36,7 @@ export const CronGeneratorStyled = styled.div`
     background: transparent;
     background-image: none;
     height: auto;
-    margin: 0;
-    padding: 9px 9px 7px;
+    padding: 8px 10px 7px;
     min-height: 34px;
     font-size: 13px;
     text-transform: uppercase;
@@ -47,6 +48,13 @@ export const CronGeneratorStyled = styled.div`
     outline: 0;
     border: 1px solid #999999;
     border-radius: 2px;
+    margin: 0;
+  }
+
+  .cron-builder__action {
+    float: left;
+    margin: 0 20px 15px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   }
 
   .cron-builder__preset .cron-builder__tab {
@@ -72,20 +80,25 @@ export const CronGeneratorStyled = styled.div`
     background-color: transparent;
     background-image: none;
     font-weight: normal;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 0;
     height: auto;
-    font-size: 14px;
     line-height: 1.5;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    color: #999999;
+    font-size: 13px;
+    letter-spacing: .5pt;
+    border-bottom: 2px solid transparent;
+    margin: 0;
   }
 
-  .cron-builder__legend .cron-builder__tab--active,
   .cron-builder__legend .cron-builder__tab:hover {
-    border-bottom-color: #ffa400;
+    color: #ffa400;
   }
 
-  .cron-builder__legend .cron-builder__tab:not(:last-child) {
-    margin-right: 20px;
+  .cron-builder__legend .cron-builder__tab--active {
+    border-bottom-color: #ffa400;
   }
 
   .cron-builder__row--main {
@@ -103,7 +116,7 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__pretty-expression {
-    margin: 25px 0 15px;
+    margin: 7px 20px;
     font-size: 13px;
     color: inherit;
     font-weight: inherit;
@@ -112,19 +125,17 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__preset {
-    margin-top: 0;
-    margin-bottom: 50px;
-    padding: 0 15px 15px;
-    min-height: auto;
+    margin: 0 20px 45px;
+    min-height: 95px;
   }
   .cron-builder__preset > div {
     margin-left: 0 !important;
   }
 
   .cron-builder__hr {
-    margin-top: 20px;
-    border-top: 1px solid #e6e6e6;
-    display: none;
+    display: block;
+    width: 100%;
+    border-top: 1px solid transparent;
   }
 
   .cron-builder__label {
@@ -140,6 +151,7 @@ export const CronGeneratorStyled = styled.div`
     width: auto;
     border: 1px solid #ffbf4d;
     padding: 7px;
+    margin: 0 20px 5px;
     border-radius: 2px;
     background-color: transparent;
     color: inherit;
@@ -297,6 +309,7 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__input {
+    min-width: 110px;
     margin-right: 8px;
   }
 
