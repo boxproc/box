@@ -3,6 +3,7 @@ import React from 'react';
 import { modalNames } from 'consts';
 
 import { AddAccountModal, EditAccountModal } from 'containers/Ledger/Accounts/modals';
+import { InfoCardModal } from 'containers/Ledger/Cards/modals';
 import { AddCustomerModal, EditCustomerModal } from 'containers/Ledger/Customers/modals';
 import { TransactionModal } from 'containers/Ledger/Transactions/modals';
 
@@ -26,5 +27,9 @@ export const ledgerModalList = [
   {
     name: modalNames.LEDGER_TRANSACTION,
     component: <TransactionModal />,
+  },
+  {
+    name: modalNames.INFO_LEDGER_CARDS,
+    component: <InfoCardModal />,
   },
 ];

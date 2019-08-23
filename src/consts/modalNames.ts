@@ -13,6 +13,7 @@ export enum modalNames {
   EDIT_LEDGER_ACCOUNT = 'EditLedgerAccountModal',
   ADD_LEDGER_ACCOUNT = 'AddLedgerAccountModal',
   LEDGER_TRANSACTION = 'LedgerTransactionModal',
+  INFO_LEDGER_CARDS = 'InfoCardModal',
 
   // Administration
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',

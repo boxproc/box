@@ -4,10 +4,13 @@ import Cards from './Cards';
 
 import {
   createLoadingSelector,
+  handleSetLedgerLedgerCardId,
   LedgerCardsActionTypes,
+  openModal,
   selectLedgerCards,
 } from 'store/domains';
 
+import { bindActionCreators, Dispatch } from 'redux';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
@@ -19,6 +22,14 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerCards: selectLedgerCards(state),
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    openModal,
+    setLedgerCardId: handleSetLedgerLedgerCardId,
+  },
+  dispatch
+);
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Cards);

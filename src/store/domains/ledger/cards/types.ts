@@ -39,4 +39,5 @@ export interface LedgerCardsFilterParamsPrepared {
 
 export interface LedgerCardsState {
     cards: ImmutableArray<LedgerCardItem>;
+    currentСardId: number;
   }

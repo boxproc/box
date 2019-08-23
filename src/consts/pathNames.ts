@@ -97,6 +97,7 @@ export enum lenderAccountsPathNames {
 
 export enum lenderCardsPathNames {
   GET = '/ui/ledger/cards/get',
+  ACTIVATE_CARD = '/ui/ledger/cards/activate_card',
 }
 
 export enum lenderCustomersPathNames {
