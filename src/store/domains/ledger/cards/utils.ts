@@ -1,7 +1,7 @@
 import { statusTypesOptions } from 'consts';
 import { LedgerCardItem, LedgerCardItemPrepared, LedgerCardsFilterParamsPrepared } from './types';
 
-export const prepareValuesToRender = (values: LedgerCardItem):
+export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
   LedgerCardItemPrepared => {
   if (!values) {
     return null;
@@ -13,7 +13,7 @@ export const prepareValuesToRender = (values: LedgerCardItem):
     panAlias: values.pan_alias,
     panMasked: values.pan_masked,
     expiryDate: values.expiry_date,
-    status: statusTypesOptions.find(el => el.value === values.status).label,
+    status : values.status && statusTypesOptions.find(el => el.value === values.status).label,
   };
 };
 
@@ -30,9 +30,9 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerCardsFilterPara
     } = params;
 
     return {
-      id: Number(id),
-      account_id: Number(accountId),
-      customer_id: Number(customerId),
-      pan_alias: panAlias,
+      id: id ? Number(id) : null,
+      account_id: accountId ? Number(accountId) : null,
+      customer_id: customerId ? Number(customerId) : null,
+      pan_alias: panAlias ? panAlias : null,
     };
   };

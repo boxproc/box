@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 
 import Cards from './Cards';
 
 import {
   createLoadingSelector,
-  handleGetLedgerCards,
+  handleSetLedgerLedgerCardId,
   LedgerCardsActionTypes,
+  openModal,
   selectLedgerCards,
 } from 'store/domains';
 
+import { bindActionCreators, Dispatch } from 'redux';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  LedgerCardsActionTypes.GET_LEDGER_CARDS,
   LedgerCardsActionTypes.FILTER_LEDGER_CARDS,
 ]);
 
@@ -24,11 +24,11 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getLedgerCards: handleGetLedgerCards,
+    openModal,
+    setLedgerCardId: handleSetLedgerLedgerCardId,
   },
   dispatch
 );
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

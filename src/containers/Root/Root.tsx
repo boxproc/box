@@ -7,7 +7,6 @@ import { Container } from 'components/Container';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 
-// import { basePath, cookiesExpires, cookiesNames } from 'consts';
 import { basePath, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';

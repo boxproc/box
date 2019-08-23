@@ -91,10 +91,13 @@ export enum lenderAccountsPathNames {
   GET = '/ui/ledger/accounts/get',
   CREATE = '/ui/ledger/accounts/create',
   UPDATE = '/ui/ledger/accounts/update',
+  GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
+  ORDER_ACCOUNT_CARD = '/ui/ledger/cards/order_card',
 }
 
 export enum lenderCardsPathNames {
   GET = '/ui/ledger/cards/get',
+  ACTIVATE_CARD = '/ui/ledger/cards/activate_card',
 }
 
 export enum lenderCustomersPathNames {

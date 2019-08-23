@@ -70,7 +70,6 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 interface ButtonProps {
   text: string;
   size?: string;
-  transparent?: boolean;
   disabled?: boolean;
   className?: string;
   iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'copy' | string;

@@ -2,6 +2,7 @@ import { statementCyclesOptions, statusTypesOptions } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
+  LedgerAccountsCardsItem,
   LedgerAccountsFilterParams,
 } from './types';
 
@@ -122,6 +123,18 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     numberOfTimesOverdue5Cycles: values.number_of_times_overdue_5_cycle,
     numberOfTimesOverdue6Cycles: values.number_of_times_overdue_6_cycle,
     numberOfTimesOverdue7Cycles: values.number_of_times_overdue_7_cycle,
+  };
+};
+export const preparedAccountCardsToRender = (values: Partial<LedgerAccountsCardsItem>) => {
+  if (!values) {
+    return null;
+  }
+
+  return {
+    status: statusTypesOptions.find(el => el.value === values.status).label,
+    panAlias: values.pan_alias,
+    panMasked: values.pan_masked,
+    expiryDate: values.expiry_date,
   };
 };
 
