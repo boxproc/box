@@ -13,7 +13,7 @@ interface LinkProps {
 }
 
 const Link = styled.span<LinkProps>`
-  color: ${({ theme }) => theme.blackColor};
+  color: ${({ theme }) => theme.grayColor};
   border-bottom: 1px solid ${({ theme, isActive }) =>
     isActive ? theme.lightAccentColor : theme.lightGrayColor};
   line-height: 1.4;

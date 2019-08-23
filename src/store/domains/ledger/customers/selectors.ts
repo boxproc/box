@@ -6,13 +6,13 @@ import { selectCountryCodes, selectInstitutionsOptions } from 'store/domains/con
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
-  state.ledger.customers.customers.asMutable();
+  state.ledger.customers.customers;
 
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
   selectInstitutionsOptions,
   selectCountryCodes,
-  (items, institutions, countries) => items && items.map(item => {
+  (items, institutions, countries) => items && items.asMutable().map(item => {
 
     return {
       ...prepareValuesToRender(item),
@@ -31,7 +31,7 @@ export const selectLedgerCurrentCustomer = createSelector(
   selectLedgerCustomerCurrentId,
   selectInstitutionsOptions,
   (customers, currentId, institutions) => {
-    const current = customers.find(el => el.id === currentId);
+    const current = customers && customers.asMutable().find(el => el.id === currentId);
 
     return {
       ...preparedValuesDetailsToRender(current),

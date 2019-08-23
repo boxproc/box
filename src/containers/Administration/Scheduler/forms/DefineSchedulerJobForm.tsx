@@ -5,17 +5,16 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
-import CronGenerator from 'components/CronGenerator';
-import { InputField, SelectField } from 'components/Form';
-import { Panel, Tabs } from 'components/Tabs';
+import { InputField, SelectField, TextField } from 'components/Form';
 import { Hr } from 'components/Text';
 
-import { executableTypeOptions, formNames, statusTypesOptions } from 'consts';
+import { executableTypeOptions, formNames, modalNames, statusTypesOptions } from 'consts';
 
 import {
   HandleAddAdminSchedulerJob,
   HandleDeleteAdminSchedulerJob,
   HandleUpdateAdminSchedulerJob,
+  OpenModal,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -32,6 +31,7 @@ interface DefineSchedulerJobFormProps {
   schedulerJobId?: number | string;
   isDirty: boolean;
   mode: 'add' | 'edit';
+  openModal?: OpenModal;
 }
 
 type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
@@ -48,6 +48,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   schedulerJobId,
   mode,
   isDirty,
+  openModal,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminSchedulerJob(data)),
@@ -58,102 +59,114 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Tabs>
-        <Panel title="Job">
-          <Box mx="-10px" >
-            <Flex
-              flexWrap="wrap"
-            >
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="name"
-                  name="name"
-                  placeholder="Enter Job Name"
-                  component={InputField}
-                  label="Scheduler Job Name"
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="description"
-                  name="description"
-                  placeholder="Enter  Job Description"
-                  component={InputField}
-                  label="Scheduler Job Description"
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="status"
-                  name="status"
-                  component={SelectField}
-                  label="Status"
-                  placeholder="Select Status"
-                  options={statusTypesOptions}
-                  isDisabled={isDisabledStatus}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="cronExpression"
-                  name="cronExpression"
-                  placeholder="Enter  Cron Expression Description"
-                  component={InputField}
-                  label="Scheduler Job Cron Expression"
-                  disabled={false}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="institutionId"
-                  name="institutionId"
-                  component={SelectField}
-                  label="Institution"
-                  placeholder="Select Institution"
-                  options={institutionsOptions}
-                  isDisabled={isDisabledInstitutions}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="executableType"
-                  name="executableType"
-                  placeholder="Enter  Job Executable type"
-                  component={SelectField}
-                  label="Scheduler Job Executable Type"
-                  disabled={false}
-                  options={executableTypeOptions}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="executable"
-                  name="executable"
-                  placeholder="Enter  Job Executable "
-                  component={InputField}
-                  label="Scheduler Job Executable "
-                  disabled={false}
-                />
-              </Box>
-              <Box width={[1 / 2]} p="10px">
-                <Field
-                  id="logLocation"
-                  name="logLocation"
-                  placeholder="Enter  Job Log Location"
-                  component={InputField}
-                  label="Scheduler Job Log Location"
-                  disabled={false}
-                />
-              </Box>
-            </Flex>
+      <Box mx="-10px" >
+        <Flex
+          flexWrap="wrap"
+          alignItems="flex-end"
+        >
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="institutionId"
+              name="institutionId"
+              component={SelectField}
+              label="Institution"
+              placeholder="Select Institution"
+              options={institutionsOptions}
+              isDisabled={isDisabledInstitutions}
+              validate={[formErrorUtil.required]}
+            />
           </Box>
-        </Panel>
-        <Panel title="Schedule">
-          <CronGenerator />
-        </Panel>
-      </Tabs>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="name"
+              name="name"
+              placeholder="Enter Job Name"
+              component={InputField}
+              label="Scheduler Job Name"
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 4]} p="10px">
+            <Field
+              id="status"
+              name="status"
+              component={SelectField}
+              label="Status"
+              placeholder="Select Status"
+              options={statusTypesOptions}
+              isDisabled={isDisabledStatus}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <Field
+              id="description"
+              name="description"
+              placeholder="Enter Job Description"
+              component={TextField}
+              label="Scheduler Job Description"
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="executableType"
+              name="executableType"
+              placeholder="Enter Job Executable type"
+              component={SelectField}
+              label="Scheduler Job Executable Type"
+              disabled={false}
+              options={executableTypeOptions}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="executable"
+              name="executable"
+              placeholder="Enter Job Executable "
+              component={InputField}
+              label="Scheduler Job Executable "
+              disabled={false}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="logLocation"
+              name="logLocation"
+              placeholder="Enter Job Log Location"
+              component={InputField}
+              label="Scheduler Job Log Location"
+              disabled={false}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="cronExpression"
+              name="cronExpression"
+              placeholder="Enter Cron Expression Description"
+              component={InputField}
+              label="Scheduler Job Cron Expression"
+              disabled={false}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[2 / 3]} p="10px 10px 20px">
+            <Button
+              type="reset"
+              text="Build cron expression"
+              underline={true}
+              onClick={() => {
+                openModal({
+                  name: modalNames.GENERATE_CRON_EXPRESSION,
+                });
+              }}
+            />
+          </Box>
+        </Flex>
+      </Box>
       <Hr />
       <Flex
         alignItems="flex-end"
@@ -183,6 +196,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 
 export default reduxForm<{}, DefineSchedulerJobFormProps>({
   form: formNames.DEFINE_ADMIN_SCHEDULER_JOB,
+  keepDirtyOnReinitialize: true,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineSchedulerJobForm);

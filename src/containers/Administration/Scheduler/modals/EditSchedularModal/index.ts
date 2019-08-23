@@ -11,7 +11,11 @@ import {
   closeModal,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
+  handleSetAdminSchedulerJobId,
   handleUpdateAdminSchedulerJobs,
+  openModal,
+  selectCurrentCronExpression,
+  selectCurrentSchedulerName,
   selectSchedulerJobId,
   selectSchedulerJobValues,
 } from 'store/domains';
@@ -28,13 +32,17 @@ const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   schedulerJobId: selectSchedulerJobId(state),
   schedulerJobValues: selectSchedulerJobValues(state),
+  currentSchedulerName: selectCurrentSchedulerName(state),
+  currentCronExpression: selectCurrentCronExpression(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
+    setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
     closeModal,
+    openModal,
   },
   dispatch
 );

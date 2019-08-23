@@ -1,20 +1,24 @@
 import React from 'react';
-import Cron from 'react-cron-generator';
+import CronBuilder from 'react-cron-builder';
 
 import { CronGeneratorStyled } from './CronGeneratorStyled';
 
-const CronGenerator: React.FC = () => {
-  const [value, setValue] = React.useState(null);
+interface CronGeneratorProps {
+  initialValue?: string;
+  setValue: (value: string) => void;
+}
 
+const CronGenerator: React.FC<CronGeneratorProps> = ({
+  initialValue,
+  setValue,
+}) => {
   return (
     <CronGeneratorStyled>
-      <Cron
-        onChange={(e: React.MouseEvent) => setValue(e)}
-        value={value}
-        showResultText={true}
-        showResultCron={true}
+      <CronBuilder
+        cronExpression={initialValue}
+        onChange={(value: string) => setValue(value)}
+        showResult={false}
       />
-
     </CronGeneratorStyled>
   );
 };

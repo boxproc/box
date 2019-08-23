@@ -41,6 +41,7 @@ export interface ModalsState {
 
   isAddAdminSchedulerModal: boolean;
   isEditAdminSchedulerModal: boolean;
+  isGenerateCronExpressionModal: boolean;
 
   isAddAdminUsersGroupModal: boolean;
   isEditAdminUsersGroupModal: boolean;

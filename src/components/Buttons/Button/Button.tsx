@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
-import { Reset } from 'styled-icons/boxicons-regular/Reset';
+import { Copy } from 'styled-icons/boxicons-solid/Copy';
 import { LogOut } from 'styled-icons/feather/LogOut';
 import { Delete } from 'styled-icons/material/Delete';
 
@@ -16,6 +16,8 @@ import { OpenModal } from 'store/domains';
 
 interface ButtonWrapperProps {
   size?: string;
+  bordered?: boolean;
+  underline?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -35,8 +37,28 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   line-height: 1.3;
   white-space: nowrap;
 
+  ${({ underline, theme }) => underline && `
+    border-bottom: 1px solid ${theme.normalAccentColor};
+  `}
+
+  ${({ bordered, theme }) => bordered && `
+    border: 1px solid ${theme.grayColor};
+    border-radius: 2px;
+    padding: 8px 10px 7px;
+    width: 100%;
+    justify-content: center;
+    background-color: ${theme.lighterGrayColor};
+    line-height: 1.25;
+    box-shadow: ${theme.boxShadow};
+  `};
+
   &:hover {
-    color: ${({ theme }) => theme.lighterAccentColor};
+    color: ${({ theme }) => theme.normalAccentColor};
+
+    ${({ bordered, theme }) => bordered && `
+      border-color: ${theme.normalAccentColor};
+      background-color: ${theme.whiteColor};
+  `};
   }
 
   &:disabled {
@@ -50,13 +72,15 @@ interface ButtonProps {
   size?: string;
   disabled?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'reset' | string;
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'copy' | string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
   onClick?: () => void;
   withConfirmation?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
+  bordered?: boolean;
+  underline?: boolean;
 }
 
 const renderIcon = (name: string) => {
@@ -69,8 +93,8 @@ const renderIcon = (name: string) => {
       return (<LogOut size="16" />);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18" /></Box>);
-    case 'reset':
-      return (<Box mt="-2px"><Reset size="14" /></Box>);
+    case 'copy':
+      return (<Box mt="-2px"><Copy size="18" /></Box>);
     default:
       return null;
   }
@@ -88,6 +112,8 @@ const Button: React.FC<ButtonProps> = ({
   confirmationText,
   confirmationTitle,
   openModal,
+  bordered = false,
+  underline = false,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -112,6 +138,8 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       size={size}
+      bordered={bordered}
+      underline={underline}
     >
       {iconName &&
         <Box mr="2px">
