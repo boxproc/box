@@ -28,7 +28,7 @@ export enum ActionTypeKeys {
 
   SET_ADMIN_SCHEDULER_JOBS_ID = 'administration/scheduler/SET_ADMIN_SCHEDULER_JOBS_ID',
 
-  SET_CRON_EXPRESSION = 'administration/scheduler/SET_CRON_EXPRESSION',
+  SET_GENERATED_CRON_EXPRESSION = 'administration/scheduler/SET_GENERATED_CRON_EXPRESSION',
 }
 
 export interface GetAdminSchedulerJobAction {
@@ -97,9 +97,9 @@ export interface SetAdminSchedulerJobIdAction {
   readonly type: ActionTypeKeys.SET_ADMIN_SCHEDULER_JOBS_ID;
 }
 
-export interface SetCronExpressionAction {
+export interface SetGeneratedCronExpressionAction {
   readonly payload: string;
-  readonly type: ActionTypeKeys.SET_CRON_EXPRESSION;
+  readonly type: ActionTypeKeys.SET_GENERATED_CRON_EXPRESSION;
 }
 
 export type AdminSchedulerJobsActionTypes =
@@ -108,4 +108,4 @@ export type AdminSchedulerJobsActionTypes =
   | DeleteAdminSchedulerJobFulfilledAction
   | UpdateAdminSchedulerJobFulfilledAction
   | SetAdminSchedulerJobIdAction
-  | SetCronExpressionAction;
+  | SetGeneratedCronExpressionAction;

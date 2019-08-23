@@ -4,22 +4,20 @@ import { bindActionCreators, Dispatch } from 'redux';
 import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
 import {
-  closeModal,
-  handleSetCronExpression,
-  selectCronExpression,
+  handleSetGeneratedCronExpression,
   selectCurrentCronExpression,
+  selectGeneratedCronExpression,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   currentCronExpression: selectCurrentCronExpression(state),
-  cronExpression: selectCronExpression(state),
+  generatedCronExpression: selectGeneratedCronExpression(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    closeModal,
-    setCronExpression: handleSetCronExpression,
+    setGeneratedCronExpression: handleSetGeneratedCronExpression,
   },
   dispatch
 );

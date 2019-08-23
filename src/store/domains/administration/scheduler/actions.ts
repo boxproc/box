@@ -9,7 +9,7 @@ import {
   DeleteAdminSchedulerJobAction,
   GetAdminSchedulerJobAction,
   SetAdminSchedulerJobIdAction,
-  SetCronExpressionAction,
+  SetGeneratedCronExpressionAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
@@ -41,8 +41,8 @@ export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEdita
 export type SetAdminSchedulerJobId = (id: number) => SetAdminSchedulerJobIdAction;
 export type HandleSetAdminSchedulerJobId = (id: number) => void;
 
-export type SetCronExpression = (expression: string) => SetCronExpressionAction;
-export type HandleSetCronExpression = (expression: string) => void;
+export type SetGeneratedCronExpression = (expression: string) => SetGeneratedCronExpressionAction;
+export type HandleSetGeneratedCronExpression = (expression: string) => Thunk<void>;
 
 export const getAdminSchedulerJobs: GetAdminSchedulerJobs = () => ({
   type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS,
@@ -52,7 +52,6 @@ export const getAdminSchedulerJobs: GetAdminSchedulerJobs = () => ({
 export const addAdminSchedulerJob: AddAdminSchedulerJob = values => ({
   type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS,
   payload: api.addAdminSchedulerJob(values),
-  meta: values,
 });
 
 export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
@@ -64,7 +63,6 @@ export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
 export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS,
   payload: api.updateAdminSchedulerJobs(schedulerValues),
-  meta: schedulerValues,
 });
 
 export const setAdminSchedulerJobId: SetAdminSchedulerJobId = id => ({
@@ -72,8 +70,8 @@ export const setAdminSchedulerJobId: SetAdminSchedulerJobId = id => ({
   payload: id,
 });
 
-export const setCronExpression: SetCronExpression = expression => ({
-  type: ActionTypeKeys.SET_CRON_EXPRESSION,
+export const setGeneratedCronExpression: SetGeneratedCronExpression = expression => ({
+  type: ActionTypeKeys.SET_GENERATED_CRON_EXPRESSION,
   payload: expression,
 });
 
@@ -96,8 +94,8 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
+        await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(handleGetAdminSchedulerJobs());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_SCHEDULER_JOB));
       },
@@ -109,8 +107,8 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+        await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(handleGetAdminSchedulerJobs());
       },
       dispatch
@@ -123,6 +121,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
+        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(handleGetAdminSchedulerJobs());
       },
@@ -133,5 +132,13 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
 export const handleSetAdminSchedulerJobId: HandleSetAdminSchedulerJobId = id =>
   setAdminSchedulerJobId(id);
 
-export const handleSetCronExpression: HandleSetCronExpression = expression =>
-  setCronExpression(expression);
+export const handleSetGeneratedCronExpression: HandleSetGeneratedCronExpression = expression =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(setGeneratedCronExpression(expression));
+        await dispatch(closeModal(modalNames.GENERATE_CRON_EXPRESSION));
+      },
+      dispatch
+    );
+  };

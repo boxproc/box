@@ -17,6 +17,7 @@ import { OpenModal } from 'store/domains';
 interface ButtonWrapperProps {
   size?: string;
   bordered?: boolean;
+  underline?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -36,8 +37,12 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   line-height: 1.3;
   white-space: nowrap;
 
+  ${({ underline, theme }) => underline && `
+    border-bottom: 1px solid ${theme.normalAccentColor};
+  `}
+
   ${({ bordered, theme }) => bordered && `
-    border: 1px solid  ${theme.grayColor};
+    border: 1px solid ${theme.grayColor};
     border-radius: 2px;
     padding: 8px 10px 7px;
     width: 100%;
@@ -52,6 +57,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
     ${({ bordered, theme }) => bordered && `
       border-color: ${theme.normalAccentColor};
+      background-color: ${theme.whiteColor};
   `};
   }
 
@@ -75,6 +81,7 @@ interface ButtonProps {
   confirmationText?: string;
   confirmationTitle?: string;
   bordered?: boolean;
+  underline?: boolean;
 }
 
 const renderIcon = (name: string) => {
@@ -107,6 +114,7 @@ const Button: React.FC<ButtonProps> = ({
   confirmationTitle,
   openModal,
   bordered = false,
+  underline = false,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -132,6 +140,7 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       size={size}
       bordered={bordered}
+      underline={underline}
     >
       {iconName &&
         <Box mr="2px">

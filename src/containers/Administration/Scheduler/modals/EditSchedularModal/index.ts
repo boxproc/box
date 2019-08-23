@@ -11,6 +11,7 @@ import {
   closeModal,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
+  handleSetAdminSchedulerJobId,
   handleUpdateAdminSchedulerJobs,
   openModal,
   selectCurrentCronExpression,
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
+    setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
     closeModal,
     openModal,
   },

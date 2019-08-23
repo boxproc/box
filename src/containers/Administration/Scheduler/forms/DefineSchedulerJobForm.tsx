@@ -73,6 +73,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={isDisabledInstitutions}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -94,6 +95,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Select Status"
               options={statusTypesOptions}
               isDisabled={isDisabledStatus}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1]} p="10px">
@@ -115,6 +117,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               label="Scheduler Job Executable Type"
               disabled={false}
               options={executableTypeOptions}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -125,6 +128,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               component={InputField}
               label="Scheduler Job Executable "
               disabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -135,6 +139,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               component={InputField}
               label="Scheduler Job Log Location"
               disabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -145,16 +150,19 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               component={InputField}
               label="Scheduler Job Cron Expression"
               disabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[2 / 3]} p="10px 10px 20px">
             <Button
               type="reset"
-              text="Generate cron expression"
-              bordered={true}
-              onClick={() => openModal({
-                name: modalNames.GENERATE_CRON_EXPRESSION,
-              })}
+              text="Build cron expression"
+              underline={true}
+              onClick={() => {
+                openModal({
+                  name: modalNames.GENERATE_CRON_EXPRESSION,
+                });
+              }}
             />
           </Box>
         </Flex>
@@ -188,6 +196,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 
 export default reduxForm<{}, DefineSchedulerJobFormProps>({
   form: formNames.DEFINE_ADMIN_SCHEDULER_JOB,
+  keepDirtyOnReinitialize: true,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineSchedulerJobForm);

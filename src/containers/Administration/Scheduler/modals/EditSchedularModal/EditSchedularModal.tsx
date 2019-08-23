@@ -10,6 +10,7 @@ import {
   AdminSchedulerEditableItem,
   CloseModal,
   HandleDeleteAdminSchedulerJob,
+  HandleSetAdminSchedulerJobId,
   HandleUpdateAdminSchedulerJob,
   OpenModal,
 } from 'store/domains';
@@ -23,6 +24,7 @@ interface EditSchedulerModalProps {
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
   isFormDirty: boolean;
+  setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
 }
 
 const modalName = modalNames.EDIT_ADMIN_SCHEDULER;
@@ -36,7 +38,17 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   schedulerJobValues,
   currentSchedulerName,
   isFormDirty,
+  setAdminSchedulerJobId,
 }) => {
+  React.useEffect(
+    () => {
+      return () => {
+        setAdminSchedulerJobId(null);
+      };
+    },
+    [setAdminSchedulerJobId]
+  );
+
   const currentName = currentSchedulerName ? `: "${currentSchedulerName}"` : '';
 
   return (

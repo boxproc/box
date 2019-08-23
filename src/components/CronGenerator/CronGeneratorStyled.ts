@@ -6,12 +6,13 @@ export const CronGeneratorStyled = styled.div`
   margin: 0 -20px;
 
   .cron-builder {
+    position: relative;
     display: inline-block;
     width: 100%;
     min-height: auto;
     background-color: transparent;
     padding: 0;
-    color: #000000;
+    color: ${({ theme }) => theme.blackColor};
     font-weight: normal;
     font-size: 12px;
     line-height: 1.35;
@@ -23,9 +24,8 @@ export const CronGeneratorStyled = styled.div`
 
   .cron-builder__legend {
     width: 100%;
-    margin-bottom: 10px;
     padding: 0;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,.1);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .1);
   }
 
   .cron-builder__action,
@@ -36,29 +36,36 @@ export const CronGeneratorStyled = styled.div`
     background: transparent;
     background-image: none;
     height: auto;
-    padding: 8px 10px 7px;
     min-height: 34px;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: .2pt;
-    color: #999999;
+    color: ${({ theme }) => theme.grayColor};
     font-weight: 500;
     line-height: 1.3;
     cursor: pointer;
     outline: 0;
-    border: 1px solid #999999;
-    border-radius: 2px;
     margin: 0;
   }
 
   .cron-builder__action {
     float: left;
-    margin: 0 20px 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+    margin: 0 20px 10px;
+    border-bottom: 1px solid ${({ theme }) => theme.normalAccentColor};
+    min-height: auto;
+    line-height: 1.35;
+  }
+
+  .cron-builder__action:hover {
+    color: ${({ theme }) => theme.normalAccentColor};
   }
 
   .cron-builder__preset .cron-builder__tab {
     font-size: 12px;
+    padding: 8px 9px 7px;
+    border: 1px solid ${({ theme }) => theme.grayColor};
+    border-radius: 2px;
+    line-height: 1;
   }
 
   .cron-builder__preset .cron-builder__tab:not(:last-child) {
@@ -69,11 +76,10 @@ export const CronGeneratorStyled = styled.div`
     background-image: none;
   }
 
-  .cron-builder__action:hover,
   .cron-builder__preset .cron-builder__tab:hover,
   .cron-builder__preset .cron-builder__tab--active {
-    color: #ffa400;
-    border-color: #ffbf4d;
+    border-color: ${({ theme }) => theme.normalAccentColor};
+    background-color: ${({ theme }) => theme.whiteColor};
   }
 
   .cron-builder__legend .cron-builder__tab {
@@ -86,7 +92,7 @@ export const CronGeneratorStyled = styled.div`
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;
-    color: #999999;
+    color: ${({ theme }) => theme.grayColor};
     font-size: 13px;
     letter-spacing: .5pt;
     border-bottom: 2px solid transparent;
@@ -94,11 +100,11 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__legend .cron-builder__tab:hover {
-    color: #ffa400;
+    color: ${({ theme }) => theme.normalAccentColor};
   }
 
   .cron-builder__legend .cron-builder__tab--active {
-    border-bottom-color: #ffa400;
+    border-bottom-color: ${({ theme }) => theme.normalAccentColor};
   }
 
   .cron-builder__row--main {
@@ -116,9 +122,9 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__pretty-expression {
-    margin: 7px 20px;
+    color: ${({ theme }) => theme.grayColor};
+    margin: 10px 20px 0;
     font-size: 13px;
-    color: inherit;
     font-weight: inherit;
     line-height: 1.5;
     max-width: none;
@@ -140,6 +146,7 @@ export const CronGeneratorStyled = styled.div`
 
   .cron-builder__label {
     padding-bottom: 5px;
+    margin: 0;
     font-size: 12px;
     color: inherit;
   }
@@ -149,9 +156,9 @@ export const CronGeneratorStyled = styled.div`
     height: auto;
     min-width: 150px;
     width: auto;
-    border: 1px solid #ffbf4d;
+    border: 1px solid ${({ theme }) => theme.normalAccentColor};
     padding: 7px;
-    margin: 0 20px 5px;
+    margin: 7px 20px 0;
     border-radius: 2px;
     background-color: transparent;
     color: inherit;
@@ -175,8 +182,8 @@ export const CronGeneratorStyled = styled.div`
     box-shadow: none;
     box-sizing: border-box;
     outline: none;
-    color: #000000;
-    border: solid 1px #999999;
+    color: ${({ theme }) => theme.blackColor};
+    border: solid 1px ${({ theme }) => theme.grayColor};
     border-radius: 2px;
     /* -webkit-appearance: none; */
   }
@@ -188,7 +195,7 @@ export const CronGeneratorStyled = styled.div`
   .cron-builder .Select.is-focused:not(.is-open) > .Select-control,
   .cron-builder .Select.is-searchable.is-open > .Select-control,
   .cron-builder select:focus {
-    border-color: #ffa400;
+    border-color: ${({ theme }) => theme.normalAccentColor};
     box-shadow: none;
   }
 
@@ -204,7 +211,7 @@ export const CronGeneratorStyled = styled.div`
     line-height: 1.1;
     margin: 1px 2px;
     color: inherit;
-    border: 1px solid #e6e6e6;
+    border: 1px solid ${({ theme }) => theme.lightGrayColor};
     background-color: transparent;
     font-size: 11px;
   }
@@ -212,7 +219,7 @@ export const CronGeneratorStyled = styled.div`
   .cron-builder .Select--multi .Select-value {
     border: 0;
     color: inherit;
-    background-color: #e6e6e6;
+    background-color: ${({ theme }) => theme.lightGrayColor};
     padding: 0;
   }
 
@@ -233,21 +240,21 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder .Select-clear-zone {
-    color: #e6e6e6;
+    color: ${({ theme }) => theme.lightGrayColor};
   }
 
   .cron-builder .Select-clear-zone:hover {
-    color: #999999;
+    color: ${({ theme }) => theme.grayColor};
   }
 
   .cron-builder .Select-arrow,
   .cron-builder .Select-arrow-zone:hover > .Select-arrow {
-    border-color: #999999 transparent transparent;
+    border-color: ${({ theme }) => theme.grayColor} transparent transparent;
   }
 
   .cron-builder .Select.is-open > .Select-control .Select-arrow {
     top: 0;
-    border-color: #999999 transparent transparent;
+    border-color: ${({ theme }) => theme.grayColor} transparent transparent;
     border-width: 5px 5px 2.5px;
     border-style: solid;
   }
@@ -273,7 +280,7 @@ export const CronGeneratorStyled = styled.div`
 
   .cron-builder .Select-menu-outer {
     border-radius: 0 0 2px 2px;
-    border: 1px solid #ffa400;
+    border: 1px solid ${({ theme }) => theme.normalAccentColor};
     border-top-color: transparent;
     box-shadow: none;
     margin-top: 0;
@@ -282,29 +289,29 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder .Select-option.is-focused {
-    background-color: #e6e6e6;
+    background-color: ${({ theme }) => theme.lightGrayColor};
   }
 
   .cron-builder .Select-option {
-    color: #000000;
+    color: ${({ theme }) => theme.blackColor};
   }
 
   .cron-builder .Select-menu::-webkit-scrollbar {
     width: 4px;
     height: 4px;
-    background-color: #e6e6e6;
+    background-color: ${({ theme }) => theme.lightGrayColor};
     border: 1px solid white;
     border-radius: 8px;
   }
 
   .cron-builder .Select-menu::-webkit-scrollbar-thumb {
-    background-color: #ffa400;
+    background-color: ${({ theme }) => theme.normalAccentColor};
     border-radius: 8px;
   }
 
   .cron-builder .Select-menu::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #e6e6e6;
-    -webkit-box-shadow: inset 0 0 5px #e6e6e6;
+    box-shadow: inset 0 0 5px ${({ theme }) => theme.lightGrayColor};
+    -webkit-box-shadow: inset 0 0 5px ${({ theme }) => theme.lightGrayColor};
     border-radius: 8px;
   }
 

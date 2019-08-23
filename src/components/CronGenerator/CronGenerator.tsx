@@ -12,21 +12,12 @@ const CronGenerator: React.FC<CronGeneratorProps> = ({
   initialValue,
   setValue,
 }) => {
-  React.useEffect(
-    () => {
-      return () => {
-        setValue(null);
-      };
-    },
-    [setValue]
-  );
-
   return (
     <CronGeneratorStyled>
       <CronBuilder
         cronExpression={initialValue}
         onChange={(value: string) => setValue(value)}
-        showResult={true}
+        showResult={false}
       />
     </CronGeneratorStyled>
   );
