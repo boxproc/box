@@ -6,6 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
+import { withEditTable, WithEditTableProps } from 'components/HOCs';
 import { ExternalLink } from 'components/links';
 import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';
@@ -16,15 +17,15 @@ import { OpenModal } from 'store/domains';
 
 import { stringsUtil } from 'utils';
 
-interface TablePageProps extends RouteComponentProps {
+interface TablePageProps extends RouteComponentProps, WithEditTableProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
   FilterForm?: ReactChild;
-  getTrGroupProps?: any;
   hint?: string;
   openModal?: OpenModal;
   addNewModalName?: string;
+  contextMenuItems?: Array<{ name: string }>;
 }
 
 export const TablePage: React.FC<TablePageProps> = ({
@@ -34,9 +35,9 @@ export const TablePage: React.FC<TablePageProps> = ({
   addNewModalName,
   openModal,
   FilterForm,
-  getTrGroupProps,
   hint,
   location,
+  onRowClick,
 }) => {
   const [isFilter, setIsFilter] = React.useState(true);
 
@@ -98,11 +99,11 @@ export const TablePage: React.FC<TablePageProps> = ({
       <Table
         data={data}
         columns={columns}
-        getTrGroupProps={getTrGroupProps}
+        getTrGroupProps={onRowClick}
         NoDataComponent={TableNoData}
       />
     </React.Fragment >
   );
 };
 
-export default withRouter(TablePage);
+export default withRouter(withEditTable(TablePage));

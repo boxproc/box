@@ -23,7 +23,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
   return (
     <ContextMenu
       id={menuId}
-      hideOnLeave={true}
+      // hideOnLeave={true}
       className="context-menu"
     >
       {(items && items.length)
