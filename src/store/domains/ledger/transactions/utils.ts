@@ -20,13 +20,13 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     amountInOriginalCurrency: values.amount_in_original_currency
       && values.amount_in_original_currency.toFixed(2),
     balanceSettledBefore: values.balance_settled_before
-    && values.balance_settled_before.toFixed(2),
+      && values.balance_settled_before.toFixed(2),
     balanceSettledAfter: values.balance_settled_after
-    && values.balance_settled_after.toFixed(2),
+      && values.balance_settled_after.toFixed(2),
     balanceAvailableBefore: values.balance_available_before
-    && values.balance_available_before.toFixed(2),
+      && values.balance_available_before.toFixed(2),
     balanceAvailableAfter: values.balance_available_after
-    && values.balance_available_after.toFixed(2),
+      && values.balance_available_after.toFixed(2),
     description: values.description,
     originalCurrency: values.original_currency,
     cardTransactionId: values.card_transaction_id,
@@ -55,11 +55,11 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFil
   } = params;
 
   return {
-    id: Number(id),
-    institution_id: institutionId && institutionId.value,
-    customer_id: Number(customerId),
-    product_name: productName && productName.label,
-    datetime_from: datetimeFrom,
-    datetime_to: datetimeTo,
+    id: id ? Number(id) : null,
+    institution_id: institutionId ? institutionId.value : null,
+    customer_id: customerId ? Number(customerId) : null,
+    product_name: productName ? productName.label : null,
+    datetime_from: datetimeFrom ? datetimeFrom : null,
+    datetime_to: datetimeTo ? datetimeTo : null,
   };
 };

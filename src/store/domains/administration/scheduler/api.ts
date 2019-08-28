@@ -4,7 +4,7 @@ import { apiClient } from 'services';
 
 // import { AdminSchedulerData, SuccessResponseStatus } from './mock';
 
-import { AdminSchedulerItem } from './types';
+import { AdminSchedulerItem, AdminSchedulerJobAction } from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -25,3 +25,6 @@ export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
 export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post(adminSchedulerPathNames.UPDATE, { data });
+
+export const sendAdminSchedulerAction = (data: Partial<AdminSchedulerJobAction>) =>
+  apiClient.post(adminSchedulerPathNames.SEND_ACTION, { data });

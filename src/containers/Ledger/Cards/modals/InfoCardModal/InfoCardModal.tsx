@@ -6,6 +6,7 @@ import Modal from 'components/Modal';
 
 import { Button } from 'components/Buttons';
 
+import { Hr } from 'components/Text';
 import { modalNames } from 'consts';
 import { CardForm } from 'containers/Ledger/Cards/forms';
 import { CloseModal, HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
@@ -39,6 +40,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           <Button
             disabled={isStatusActive}
             type="reset"
+            underline={true}
             onClick={() => activateLedgerCard(ledgerCardPanAlias)}
             iconName="activateCard"
             text="Activate Card"
@@ -49,6 +51,15 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
         initialValues={ledgerCurrentCard}
         onCancel={() => closeModal(modalName)}
       />
+      <Hr />
+       <Box mb="35px">
+          <Button
+            rightPosition={true}
+            onClick={() => closeModal(modalName)}
+            iconName="closeModal"
+            text="Close"
+          />
+        </Box>
     </Modal>
   );
 };

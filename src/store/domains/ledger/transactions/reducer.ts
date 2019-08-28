@@ -11,11 +11,6 @@ export const ledgerTransactionsInitialState: ImmutableObject<LedgerTransactionsS
 const ledgerCustomersReducer =
   (state = ledgerTransactionsInitialState, action: LedgerTransactionsActionTypes) => {
     switch (action.type) {
-
-      case ActionTypeKeys.GET_LEDGER_TRANSACTIONS_FULFILLED:
-        return state
-          .set('transactions', action.payload.transactions);
-
       case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_FULFILLED:
         return state
           .set('transactions', action.payload.transactions);

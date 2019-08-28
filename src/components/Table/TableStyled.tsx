@@ -72,17 +72,37 @@ export const TableStyled = styled.div`
     box-shadow: none;
   }
 
-  .ReactTable .rt-tbody .rt-tr-group {
+  .ReactTable .rt-tbody .rt-tr-group,
+  .ReactTable .rt-tbody .rt-tr-group:last-child {
+    position: relative;
     flex: 0 0 0;
     border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
   }
 
-  .ReactTable  .rt-tr-group:hover {
+  .ReactTable .rt-tr-group:hover,
+  .ReactTable .rt-tbody .rt-tr-group:last-child:hover {
     cursor: default;
     background-color: ${({ theme }) => theme.lighterGrayColor};
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
-  .ReactTable  .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
+
+  .ReactTable .rt-tbody .rt-tr-group:hover:before,
+  .ReactTable .rt-tbody .rt-tr-group:hover:last-child:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: o;
+    height: 100%;
+    width: 0.12rem;
+    display: block;
+    background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
+      ${({ theme }) => theme.lighterAccentColor} 50%,
+      hsla(0,0%,0%,0) 100%);
+  }
+
+
+  .ReactTable .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
     box-shadow: none !important;
   }
 

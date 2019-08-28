@@ -9,29 +9,19 @@ import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
 
 import {
-  HandleGetLedgerTransactions,
   HandleSetLedgerTransactionId,
   LedgerTransactionItemPrepared,
 } from 'store/domains';
 
 export interface TransactionsProps {
-  getLedgerTransactions: HandleGetLedgerTransactions;
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
   setLedgerTransactionId: HandleSetLedgerTransactionId;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
-  getLedgerTransactions,
   ledgerTransactions,
   setLedgerTransactionId,
 }) => {
-  React.useEffect(
-    () => {
-      getLedgerTransactions();
-    },
-    [getLedgerTransactions]
-  );
-
   return (
     <TablePage
       title="Transactions"
