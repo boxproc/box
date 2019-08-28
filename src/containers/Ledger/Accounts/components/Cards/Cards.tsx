@@ -5,7 +5,10 @@ import { Cell, Header, Table } from 'components/Table';
 
 import { Box } from '@rebass/grid';
 import { Button } from 'components/Buttons';
+import { Hr } from 'components/Text';
+import { modalNames } from 'consts';
 import {
+    closeModal,
     HandleGetLedgerAccountCards,
     HandleOrderLedgerAccountCard,
     LedgerAccountsCardsItemPrepared
@@ -18,6 +21,8 @@ interface AccountCardsProps {
   ledgerAccountCards: Array<LedgerAccountsCardsItemPrepared>;
   orderLedgerAccountCard: HandleOrderLedgerAccountCard;
 }
+
+const modalName = modalNames.INFO_LEDGER_CARDS;
 
 type SCell<T extends keyof LedgerAccountsCardsItemPrepared> =
   TableCell<LedgerAccountsCardsItemPrepared[T]>;
@@ -43,6 +48,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       accessor: 'panAlias',
       Cell: (props: SCell<'panAlias'>) => (
         <Cell
+          isNumber={true}
           value={props.value}
         />
       ),
@@ -82,6 +88,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       <Box mb="25px">
         <Button
           type="reset"
+          underline={true}
           onClick={() => orderLedgerAccountCard(ledgerAccountCurrentId)}
           iconName="orderCard"
           text="Order Card"
@@ -93,6 +100,15 @@ export const Cards: React.FC<AccountCardsProps> = ({
         data={ledgerAccountCards}
         columns={columns}
       />
+      <Hr />
+      <Box mb="35px">
+          <Button
+            rightPosition={true}
+            onClick={() => closeModal(modalName)}
+            iconName="closeModal"
+            text="Close"
+          />
+        </Box>
     </React.Fragment>
   );
 };
