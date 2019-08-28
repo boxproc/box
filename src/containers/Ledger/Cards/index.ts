@@ -6,7 +6,6 @@ import {
   createLoadingSelector,
   handleSetLedgerLedgerCardId,
   LedgerCardsActionTypes,
-  openModal,
   selectLedgerCards,
 } from 'store/domains';
 
@@ -24,7 +23,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     setLedgerCardId: handleSetLedgerLedgerCardId,
   },
   dispatch

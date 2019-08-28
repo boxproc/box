@@ -14,7 +14,7 @@ export const prepareEditableAdminSysPropItemValues =
     return {
       property_name: propertyName,
       current_value: currentValue,
-      locked_flag: (lockedFlag === yesNoTypes.NO || !lockedFlag) ? yesNoTypes.NO : yesNoTypes.YES,
+      locked_flag: lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
     };
   };
 

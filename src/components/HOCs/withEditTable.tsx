@@ -17,6 +17,8 @@ export interface WithEditTableProps {
   editModalName: string;
   onRowClick: () => object;
   contextMenuItems?: Array<{ name: string }>;
+  withOpenModalOnDoubleClick?: boolean;
+  withContextMenu?: boolean;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -29,6 +31,8 @@ export const withEditTable = <OriginProps extends {}>(
       editModalName,
       onRowClick,
       contextMenuItems,
+      withOpenModalOnDoubleClick = false,
+      withContextMenu = false,
       ...originProps
     } = props;
 
@@ -46,18 +50,23 @@ export const withEditTable = <OriginProps extends {}>(
 
     const handleClickOnRow = React.useCallback(
       (_, rowInfo: RowInfo) => {
+        const isLocked = rowInfo.original.lockedFlag;
         const id = rowInfo.original.id;
 
+        if (isLocked) {
+          return null;
+        }
+
         return {
-          onClick: () => {
-            openCurrentRowInModal(id);
+          onDoubleClick: () => {
+            return withOpenModalOnDoubleClick ? openCurrentRowInModal(id) : null;
           },
           onContextMenu: () => {
-            setCurrentId(id);
+            return withContextMenu ? setCurrentId(id) : null;
           },
         };
       },
-      [openCurrentRowInModal]
+      [openCurrentRowInModal, withOpenModalOnDoubleClick, withContextMenu]
     );
 
     const onContextMenuClick = (e: Event, value: { name: string }) =>
@@ -71,11 +80,13 @@ export const withEditTable = <OriginProps extends {}>(
             {...originProps as OriginProps}
           />
         </ContextMenuTrigger>
-        <ContextMenuList
-          menuId="tableContextMenu"
-          onClick={onContextMenuClick}
-          items={contextMenuItems}
-        />
+        {withContextMenu && (
+          <ContextMenuList
+            menuId="tableContextMenu"
+            onClick={onContextMenuClick}
+            items={contextMenuItems}
+          />
+        )}
       </React.Fragment>
     );
   };

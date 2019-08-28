@@ -32,10 +32,10 @@ export const TablePage: React.FC<TablePageProps> = ({
   title,
   data,
   columns,
-  addNewModalName,
-  openModal,
   FilterForm,
   hint,
+  openModal,
+  addNewModalName,
   location,
   onRowClick,
 }) => {
@@ -43,10 +43,7 @@ export const TablePage: React.FC<TablePageProps> = ({
 
   return (
     <React.Fragment>
-      <Flex
-        alignItems="center"
-        justifyContent="space-between"
-      >
+      <Flex alignItems="center" justifyContent="space-between">
         <T2>{title}</T2>
         <ExternalLink
           text="HELP"
@@ -63,38 +60,24 @@ export const TablePage: React.FC<TablePageProps> = ({
           />
         </Box>
       )}
-      {FilterForm && isFilter &&
-        <TableFilterContainer>
-          {FilterForm}
-        </TableFilterContainer>
-      }
-      <Flex
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Box>
-          <Flex
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            {addNewModalName && (
-              <Box mb="7px" mr="7px">
-                <Button
-                  text="Add New"
-                  iconName="plus"
-                  onClick={() => openModal({
-                    name: addNewModalName,
-                  })}
-                />
-              </Box>
-            )}
-            {hint && (
-              <Box mb="10px">
-                <Hint text={hint} />
-              </Box>
-            )}
-          </Flex>
-        </Box>
+      {FilterForm && isFilter && (
+        <TableFilterContainer>{FilterForm}</TableFilterContainer>
+      )}
+      <Flex alignItems="center">
+        {addNewModalName && (
+          <Box mb="7px" mr="7px">
+            <Button
+              text="Add New"
+              iconName="plus"
+              onClick={() => openModal({
+                name: addNewModalName,
+              })}
+            />
+          </Box>
+        )}
+        {hint && (
+          <Box mb="10px"><Hint text={hint} /></Box>
+        )}
       </Flex>
       <Table
         data={data}

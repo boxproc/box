@@ -9,7 +9,6 @@ import {
   handleFilterUsers,
   handleGetAdminUser,
   handleSetAdminUserId,
-  openModal,
   selectUserEditorItems,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     getAdminUser: handleGetAdminUser,
     filterUsers: handleFilterUsers,
     setAdminUserId: handleSetAdminUserId,

@@ -36,12 +36,14 @@ const Institutions: React.FC<InstitutionsProps> = ({
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}
+      hint="Double Click on Row to View Institution"
       addNewModalName={modalNames.ADD_ADMIN_INSTITUTION}
       editModalName={modalNames.EDIT_ADMIN_INSTITUTION}
       setCurrentIdAction={setAdminInstitutionId}
-      hint="Double Click on Row to View Institution"
+      withOpenModalOnDoubleClick={true}
+      withContextMenu={true}
       contextMenuItems={[
-        {name: 'Edit'},
+        { name: 'Edit' },
       ]}
     />
   );

@@ -1,10 +1,9 @@
 import React from 'react';
-import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
-import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
+import { cookiesExpires, cookiesNames, modalNames } from 'consts';
 
 import { tableColumns } from 'containers/ProductDesigner/Products/components';
 import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
@@ -13,7 +12,6 @@ import {
   HandleFilterProducts,
   HandleGetProductId,
   HandleGetProducts,
-  OpenModal,
   ProductFilterParams,
   ProductItem,
 } from 'store/domains';
@@ -23,7 +21,6 @@ import { SelectValues } from 'types';
 import { cookiesUtil } from 'utils';
 
 interface ProductsProps {
-  openModal: OpenModal;
   productItems: Array<ProductItem>;
   getProductId: HandleGetProductId;
   getProducts: HandleGetProducts;
@@ -33,7 +30,6 @@ interface ProductsProps {
 }
 
 export const Products: React.FC<ProductsProps> = ({
-  openModal,
   getProductId,
   getProducts,
   productItems,
@@ -62,23 +58,6 @@ export const Products: React.FC<ProductsProps> = ({
     [filterProductParams]
   );
 
-  const handleOnClickRow = React.useCallback(
-    (_, rowInfo: RowInfo) => {
-      if (rowInfo.original.lockedFlag === yesNoTypes.YES) {
-        return null;
-      }
-      return {
-        onDoubleClick: () => {
-          getProductId(rowInfo.original.id);
-          openModal({
-            name: modalNames.EDIT_PRODUCT,
-          });
-        },
-      };
-    },
-    [openModal, getProductId]
-  );
-
   const productParams = cookiesUtil.get(cookiesNames.PRODUCTS_FILTER);
   const productParamsParsed = productParams && JSON.parse(productParams);
 
@@ -92,9 +71,15 @@ export const Products: React.FC<ProductsProps> = ({
       title="Products"
       data={productItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_PRODUCT}
-      getTrGroupProps={handleOnClickRow}
       hint="Double Click on Row to Edit Unlocked Product"
+      addNewModalName={modalNames.ADD_PRODUCT}
+      editModalName={modalNames.EDIT_PRODUCT}
+      setCurrentIdAction={getProductId}
+      withOpenModalOnDoubleClick={true}
+      withContextMenu={true}
+      contextMenuItems={[
+        { name: 'Edit' },
+      ]}
       FilterForm={
         <ProductsFilterForm
           filterProducts={filterProducts}

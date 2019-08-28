@@ -8,7 +8,6 @@ import {
   createLoadingSelector,
   handleGetAdminEndpoint,
   handleSetAdminEndpointId,
-  openModal,
   selectAdminEndpoints,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -16,8 +15,8 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-    AdminEndpointsActionTypes.GET_ADMIN_ENDPOINT,
-    AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINT,
+  AdminEndpointsActionTypes.GET_ADMIN_ENDPOINT,
+  AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -28,7 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     getAdminEndpoint: handleGetAdminEndpoint,
     setAdminEndpointId: handleSetAdminEndpointId,
   },

@@ -8,7 +8,6 @@ import {
   createLoadingSelector,
   handleGetAdminCyclesEditor,
   handleSetAdminCycleEditorId,
-  openModal,
   selectAdminCycleEditorItems,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     getAdminCyclesEditor: handleGetAdminCyclesEditor,
     setAdminCycleEditorId: handleSetAdminCycleEditorId,
   },

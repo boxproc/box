@@ -13,7 +13,7 @@ import {
 } from 'components/Table/utils';
 import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
 
-import { cookiesExpires, cookiesNames, modalNames, yesNoTypes } from 'consts';
+import { cookiesExpires, cookiesNames, modalNames } from 'consts';
 
 import {
   AdminSysPropFilterParams,
@@ -41,7 +41,7 @@ type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>
 
 const renderDeleteButton = (deleteAction: (name: string) => void) =>
   (cellInfo: CellInfo) => {
-    const isLocked = cellInfo.row.lockedFlag === yesNoTypes.YES;
+    const isLocked = cellInfo.row.lockedFlag;
     const propName = cellInfo.original.propertyName;
 
     return !isLocked && (
@@ -150,8 +150,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}
-      addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
       hint="Cannot Edit or Delete Locked Property"
+      addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
       FilterForm={
         <SystemPropertyFilter
           filterAdminSysProps={filterAdminSysProps}

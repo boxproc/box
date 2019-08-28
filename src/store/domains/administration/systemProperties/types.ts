@@ -3,7 +3,7 @@ import { ResponseStatusType } from 'types';
 
 export interface EditableAdminSysProp {
   propertyName?: string;
-  lockedFlag?: string;
+  lockedFlag?: boolean;
   currentValue?: string | number;
 }
 
@@ -34,7 +34,7 @@ export interface AdminSysPropsItem {
   currentValue: string | number;
   previousValue: string | number;
   lastDatetime: string;
-  lockedFlag: string;
+  lockedFlag: boolean;
 }
 
 export interface AdminSysPropsDataResp extends ResponseStatusType {
