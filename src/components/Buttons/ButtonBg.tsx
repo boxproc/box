@@ -5,6 +5,7 @@ import styled from 'theme';
 interface ButtonWrapperBgProps {
   text: string;
   disabled?: boolean;
+  rightPosition?: boolean;
   onClick?: () => void;
 }
 

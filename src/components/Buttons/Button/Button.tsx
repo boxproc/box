@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
@@ -75,6 +75,7 @@ interface ButtonProps {
   iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'copy' | string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
+  rightPosition: boolean;
   onClick?: () => void;
   withConfirmation?: boolean;
   confirmationText?: string;
@@ -111,6 +112,7 @@ const Button: React.FC<ButtonProps> = ({
   withConfirmation = false,
   confirmationText,
   confirmationTitle,
+  rightPosition = false,
   openModal,
   bordered = false,
   underline = false,
@@ -132,23 +134,30 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <ButtonWrapper
-      onClick={handleClick}
-      className={className}
-      disabled={disabled}
-      type={type}
-      size={size}
-      bordered={bordered}
-      underline={underline}
+    <Flex
+      alignItems="center"
+      justifyContent={rightPosition ? 'flex-end' : 'flex-start'}
+      width={rightPosition ? '100%' : 'auto'}
     >
-      {iconName &&
-        <Box mr="2px">
-          {renderIcon(iconName)}
-        </Box>
-      }
-      {text}
-    </ButtonWrapper>
+      <ButtonWrapper
+        onClick={handleClick}
+        className={className}
+        disabled={disabled}
+        type={type}
+        size={size}
+        bordered={bordered}
+        underline={underline}
+      >
+        {iconName &&
+          <Box mr="2px">
+            {renderIcon(iconName)}
+          </Box>
+        }
+        {text}
+      </ButtonWrapper>
+    </Flex>
   );
+
 };
 
 export default Button;
