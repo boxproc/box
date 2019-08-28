@@ -38,6 +38,16 @@ export interface AdminSchedulerEditableItem extends AdminSchedulerItemPreparedPl
   executableType: SelectValues;
 }
 
+export interface AdminSchedulerJobAction {
+  task_id: number;
+  task_command: string;
+}
+
+export interface AdminSchedulerJobActionPrepared {
+  taskId: number;
+  taskCommand: string;
+}
+
 export interface AdminSchedulerDataResp extends ResponseStatusType {
   s_scheduler: Array<AdminSchedulerItem>;
 }

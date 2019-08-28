@@ -13,6 +13,7 @@ export default interface Theme {
   normalAccentColor: string;
   lighterAccentColor: string;
   lightAccentColor: string;
+  accentColorOpacity7: string;
 
   blackColor: string;
   blackColorOpacity5: string;
@@ -45,6 +46,7 @@ export const theme: Theme = {
   normalAccentColor: '#ffa400',
   lighterAccentColor: 'rgba(255, 164, 0, .9)',
   lightAccentColor: '#ffbf4d',
+  accentColorOpacity7: 'rgba(255, 164, 0, .7)',
 
   blackColor: '#000000',
   blackColorOpacity5: 'rgba(0, 0, 0, .5)',

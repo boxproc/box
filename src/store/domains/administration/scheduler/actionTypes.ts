@@ -20,6 +20,12 @@ export enum ActionTypeKeys {
   DELETE_ADMIN_SCHEDULER_JOBS_REJECTED =
   'administration/scheduler/DELETE_ADMIN_SCHEDULER_JOBS_REJECTED',
 
+  SEND_ADMIN_SCHEDULER_ACTION_JOB = 'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB',
+  SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED =
+   'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED',
+  SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED =
+   'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED',
+
   UPDATE_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS',
   UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED =
   'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED',
@@ -92,6 +98,21 @@ export interface UpdateAdminSchedulerJobRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
+export interface SendAdminSchedulerActionJobAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB;
+}
+
+export interface SendAdminSchedulerActionJobFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED;
+}
+
+export interface SendAdminSchedulerActionJobRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED;
+}
+
 export interface SetAdminSchedulerJobIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.SET_ADMIN_SCHEDULER_JOBS_ID;
@@ -107,5 +128,6 @@ export type AdminSchedulerJobsActionTypes =
   | AddAdminSchedulerJobFulfilledAction
   | DeleteAdminSchedulerJobFulfilledAction
   | UpdateAdminSchedulerJobFulfilledAction
+  | SendAdminSchedulerActionJobFulfilledAction
   | SetAdminSchedulerJobIdAction
   | SetGeneratedCronExpressionAction;

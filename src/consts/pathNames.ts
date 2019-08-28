@@ -74,6 +74,7 @@ export enum adminSchedulerPathNames {
   DELETE = '/ui/administration/scheduler/delete',
   CREATE = '/ui/administration/scheduler/create',
   UPDATE = '/ui/administration/scheduler/update',
+  SEND_ACTION = '/sys/scheduler/management',
 }
 
 export enum adminSystemPropsPathNames {
