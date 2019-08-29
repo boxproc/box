@@ -30,11 +30,6 @@ const Cards: React.FC<CardsProps> = ({
       hint="Double Click on Row to View Card"
       editModalName={modalNames.INFO_LEDGER_CARDS}
       setCurrentIdAction={setLedgerCardId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <CardsFilterForm />
       }

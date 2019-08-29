@@ -4,7 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
-import { InputField, SelectField } from 'components/Form';
+import { InputField, PasswordField, SelectField } from 'components/Form';
 import { Hr } from 'components/Text';
 
 import {
@@ -108,8 +108,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               id="passwordHash"
               name="passwordHash"
               placeholder="Enter Password"
-              type={'password'}
-              component={InputField}
+              component={PasswordField}
               label="User Password"
               disabled={false}
               isDisabled={isDisabledType}
@@ -120,11 +119,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             <Field
               id="passwordHashRepeat"
               name="passwordHashRepeat"
-              placeholder="Repeat Password "
-              component={InputField}
+              placeholder="Repeat Password"
+              component={PasswordField}
               label="Repeat Password"
               disabled={false}
-              type={'password'}
               isDisabled={isDisabledType}
               validate={[formErrorUtil.required]}
             />

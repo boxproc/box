@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Cell, Header } from 'components/Table';
 
-import { SchedulerButtonsDropdown } from 'containers/Administration/Scheduler/components';
-
 import { AdminSchedulerItemPrepared } from 'store/domains';
 
 import { TableCell } from 'types';
@@ -134,13 +132,6 @@ export const tableColumns = [
       <Cell
         value={props.value}
       />
-    ),
-  },
-  {
-    minWidth: 125,
-    accessor: 'executeButton',
-    Cell: () => (
-      <SchedulerButtonsDropdown />
     ),
   },
 ];

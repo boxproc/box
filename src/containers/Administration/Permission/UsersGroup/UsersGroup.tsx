@@ -39,11 +39,6 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_USERS_GROUP}
       editModalName={modalNames.EDIT_ADMIN_USERS_GROUP}
       setCurrentIdAction={setAdminUsersGroupId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
     />
   );
 };

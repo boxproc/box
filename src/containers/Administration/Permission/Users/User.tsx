@@ -48,11 +48,6 @@ export const User: React.FC<UserFilterProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_USER}
       editModalName={modalNames.EDIT_ADMIN_USER}
       setCurrentIdAction={setAdminUserId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <UserFilter
           filterUsers={filterUsers}

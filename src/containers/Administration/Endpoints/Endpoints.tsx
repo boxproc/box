@@ -41,11 +41,6 @@ const Endpoints: React.FC<EndpointsProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_ENDPOINT}
       editModalName={modalNames.EDIT_ADMIN_ENDPOINT}
       setCurrentIdAction={setAdminEndpointId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <EndpointFilterForm />
       }

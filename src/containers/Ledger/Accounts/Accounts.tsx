@@ -42,11 +42,6 @@ const Accounts: React.FC<AccountsProps> = ({
       addNewModalName={modalNames.ADD_LEDGER_ACCOUNT}
       editModalName={modalNames.EDIT_LEDGER_ACCOUNT}
       setCurrentIdAction={setLedgerAccountsId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <AccountsFilterForm />
       }

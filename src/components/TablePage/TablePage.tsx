@@ -6,18 +6,18 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
-import { withEditTable, WithEditTableProps } from 'components/HOCs';
 import { ExternalLink } from 'components/links';
-import { Table, TableNoData } from 'components/Table';
 import { T2 } from 'components/Text';
 
+import EditableTable from './EditableTable';
 import TableFilterContainer from './TableFilterContainer';
 
 import { OpenModal } from 'store/domains';
 
+import { ContextMenuItem } from 'types';
 import { stringsUtil } from 'utils';
 
-interface TablePageProps extends RouteComponentProps, WithEditTableProps {
+interface TablePageProps extends RouteComponentProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
@@ -25,20 +25,22 @@ interface TablePageProps extends RouteComponentProps, WithEditTableProps {
   hint?: string;
   openModal?: OpenModal;
   addNewModalName?: string;
-  contextMenuItems?: Array<{ name: string }>;
+  contextMenuItems?: Array<ContextMenuItem>;
 }
 
-export const TablePage: React.FC<TablePageProps> = ({
-  title,
-  data,
-  columns,
-  FilterForm,
-  hint,
-  openModal,
-  addNewModalName,
-  location,
-  onRowClick,
-}) => {
+export const TablePage: React.FC<TablePageProps> = props => {
+  const {
+    title,
+    data,
+    columns,
+    FilterForm,
+    hint,
+    openModal,
+    addNewModalName,
+    location,
+    ...tablePageProps
+  } = props;
+
   const [isFilter, setIsFilter] = React.useState(true);
 
   return (
@@ -79,14 +81,13 @@ export const TablePage: React.FC<TablePageProps> = ({
           <Box mb="10px"><Hint text={hint} /></Box>
         )}
       </Flex>
-      <Table
+      <EditableTable
         data={data}
         columns={columns}
-        getTrGroupProps={onRowClick}
-        NoDataComponent={TableNoData}
+        {...tablePageProps}
       />
     </React.Fragment >
   );
 };
 
-export default withRouter(withEditTable(TablePage));
+export default withRouter(TablePage);

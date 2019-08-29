@@ -5,7 +5,7 @@ import TablePage from 'components/TablePage';
 
 import { modalNames } from 'consts';
 
-import { tableColumns } from 'containers/Administration/Scheduler/components';
+import { contextMenuItems, tableColumns } from 'containers/Administration/Scheduler/components';
 
 import {
   AdminSchedulerItemPrepared,
@@ -42,11 +42,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
       editModalName={modalNames.EDIT_ADMIN_SCHEDULER}
       setCurrentIdAction={setAdminSchedulerJobId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
+      contextMenuItems={contextMenuItems}
       FilterForm={
         <SchedulerFilter />
       }

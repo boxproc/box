@@ -40,11 +40,6 @@ const Institutions: React.FC<InstitutionsProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_INSTITUTION}
       editModalName={modalNames.EDIT_ADMIN_INSTITUTION}
       setCurrentIdAction={setAdminInstitutionId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
     />
   );
 };

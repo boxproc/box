@@ -30,11 +30,6 @@ const Transactions: React.FC<TransactionsProps> = ({
       hint="Double Click on Row to View Transaction"
       editModalName={modalNames.LEDGER_TRANSACTION}
       setCurrentIdAction={setLedgerTransactionId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <TransactionsFilterForm />
       }

@@ -48,11 +48,6 @@ const Customers: React.FC<CustomersProps> = ({
       addNewModalName={modalNames.ADD_LEDGER_CUSTOMER}
       editModalName={modalNames.EDIT_LEDGER_CUSTOMER}
       setCurrentIdAction={getLedgerCustomerId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <CustomersFilterForm
           filterLedgerCustomers={filterLedgerCustomers}

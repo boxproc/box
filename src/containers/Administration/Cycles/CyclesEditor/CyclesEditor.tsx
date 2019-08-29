@@ -45,11 +45,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_CYCLE_EDITOR}
       editModalName={modalNames.EDIT_CYCLE_EDITOR}
       setCurrentIdAction={setAdminCycleEditorId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <CycleEditorFilter
           institutionsOptions={institutionsOptions}

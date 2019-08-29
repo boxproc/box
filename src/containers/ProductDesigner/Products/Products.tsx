@@ -75,11 +75,6 @@ export const Products: React.FC<ProductsProps> = ({
       addNewModalName={modalNames.ADD_PRODUCT}
       editModalName={modalNames.EDIT_PRODUCT}
       setCurrentIdAction={getProductId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <ProductsFilterForm
           filterProducts={filterProducts}

@@ -41,11 +41,6 @@ const Interfaces: React.FC<AccountsProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_INTERFACE}
       editModalName={modalNames.EDIT_ADMIN_INTERFACE}
       setCurrentIdAction={setAdminInterfaceId}
-      withOpenModalOnDoubleClick={true}
-      withContextMenu={true}
-      contextMenuItems={[
-        { name: 'Edit' },
-      ]}
       FilterForm={
         <InterfaceFilterForm />
       }
