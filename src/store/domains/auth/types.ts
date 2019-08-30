@@ -6,7 +6,7 @@ export interface AuthRequest {
 
 export interface PreparedAuthRequest {
   username: string;
-  password_hash: string;
+  password: string;
   remember_me: boolean;
 }
 
