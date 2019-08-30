@@ -74,16 +74,18 @@ export const withEditTable = <OriginProps extends {}>(
             return editModalName ? openCurrentRowInModal(id) : null;
           },
           onContextMenu: () => {
-            return menuItems.length
-              ? setContextMenuState({
-                currentId: id,
-                isVisible: true,
-              })
-              : null;
+            if (!menuItems.length) {
+              return null;
+            }
+            return setCurrentIdAction(id);
+            // setContextMenuState({
+            //   currentId: id,
+            //   isVisible: true,
+            // });
           },
         };
       },
-      [openCurrentRowInModal, editModalName, menuItems]
+      [openCurrentRowInModal, editModalName, menuItems  , setCurrentIdAction]
     );
 
     return (
