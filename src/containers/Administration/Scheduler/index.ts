@@ -10,6 +10,7 @@ import {
   handleSendAdminSchedulerAction,
   handleSetAdminSchedulerJobId,
   selectAdminSchedulerJobsItems,
+  selectCurrentSchedulerJobId,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -23,6 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
+  currentSchedulerJobId: selectCurrentSchedulerJobId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

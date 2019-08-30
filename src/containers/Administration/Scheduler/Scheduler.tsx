@@ -21,6 +21,7 @@ interface SchedulerProps {
   getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
   setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
+  currentSchedulerJobId: number;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -28,6 +29,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   adminSchedulerJobsItems,
   setAdminSchedulerJobId,
   sendAdminSchedulerAction,
+  currentSchedulerJobId,
 }) => {
   React.useEffect(
     () => {
@@ -46,14 +48,26 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       editModalName={modalNames.EDIT_ADMIN_SCHEDULER}
       setCurrentIdAction={setAdminSchedulerJobId}
       contextMenuItems={[
-        { name: 'Execute now', action: sendAdminSchedulerAction({
-          taskId: 0,
+        { name: 'Execute now', action: () => sendAdminSchedulerAction({
+          taskId: currentSchedulerJobId,
           taskCommand: 'execute_task',
         }) },
-        // { name: 'Stop job', action: () => console.log('---Stop job') },
-        // { name: 'Start job', action: () => console.log('---Start job') },
-        // { name: 'Pause job', action: () => console.log('---Pause job') },
-        // { name: 'Resume job', action: () => console.log('---Resume job') },
+        { name: 'Stop job', action: () => sendAdminSchedulerAction({
+          taskId: currentSchedulerJobId,
+          taskCommand: 'execute_task',
+        }) },
+        { name: 'Start job', action: () => sendAdminSchedulerAction({
+          taskId: currentSchedulerJobId,
+          taskCommand: 'execute_task',
+        }) },
+        { name: 'Pause job', action: () => sendAdminSchedulerAction({
+          taskId: currentSchedulerJobId,
+          taskCommand: 'execute_task',
+        }) },
+        { name: 'Resume job', action: () => sendAdminSchedulerAction({
+          taskId: currentSchedulerJobId,
+          taskCommand: 'execute_task',
+        }) },
       ]}
       FilterForm={
         <SchedulerFilter />

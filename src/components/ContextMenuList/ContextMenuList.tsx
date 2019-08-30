@@ -64,6 +64,9 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
       >
         {(items && items.length)
           ? items.map((item, index) => {
+            if (!item) {
+              return null;
+            }
             return (
               <MenuItem
                 key={index}

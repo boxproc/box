@@ -19,7 +19,7 @@ interface EditSchedulerModalProps {
   closeModal: CloseModal;
   openModal: OpenModal;
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
-  schedulerJobId: number;
+  currentSchedulerJobId: number;
   updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
@@ -33,7 +33,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
   openModal,
   deleteAdminSchedulerJob,
-  schedulerJobId,
+  currentSchedulerJobId,
   updateAdminSchedulerJob,
   schedulerJobValues,
   currentSchedulerName,
@@ -64,7 +64,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}
         deleteAdminSchedulerJob={deleteAdminSchedulerJob}
-        schedulerJobId={schedulerJobId}
+        schedulerJobId={currentSchedulerJobId}
         mode="edit"
         isDirty={isFormDirty}
       />

@@ -15,8 +15,8 @@ import {
   handleUpdateAdminSchedulerJobs,
   openModal,
   selectCurrentCronExpression,
+  selectCurrentSchedulerJobId,
   selectCurrentSchedulerName,
-  selectSchedulerJobId,
   selectSchedulerJobValues,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -30,7 +30,7 @@ const dirty = isDirty(formNames.DEFINE_ADMIN_SCHEDULER_JOB);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isFormDirty: dirty(state),
-  schedulerJobId: selectSchedulerJobId(state),
+  currentSchedulerJobId: selectCurrentSchedulerJobId(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
   currentCronExpression: selectCurrentCronExpression(state),

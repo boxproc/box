@@ -10,12 +10,15 @@ import styled from 'theme';
 
 import { ChevronIcon } from 'components/Icon';
 
+import { statusTypes, statusTypesOptions } from 'consts';
+
 import { TableStyled } from './TableStyled';
 
 interface TableItemWrapperProps {
   color?: string;
   textRight?: boolean;
   isDate?: boolean;
+  isAccentColor?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
@@ -28,7 +31,15 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
   border: 1px solid transparent;
-  color: ${({ isDate, theme }) => isDate ? theme.grayColor : 'inherit'};
+  color: inherit;
+
+  ${({ isDate, theme }) => isDate && `
+    color: ${theme.grayColor};
+  `}
+
+  ${({ isAccentColor, theme }) => isAccentColor && `
+    color: ${theme.normalAccentColor};
+  `}
 
   .title {
     color: ${({ theme }) => theme.blackColorOpacity8};
@@ -108,7 +119,11 @@ export const Cell: React.FC<CellProps> = ({
   onKeyUp,
   isDate = false,
   isNumber = false,
-}) => (
+}) => {
+  const isPendingStatus = value === statusTypesOptions
+    .find(status => status.value === statusTypes.EXECUTION_PENDING).label;
+
+  return (
     <TableItemWrapper
       style={style}
       textRight={isNumber}
@@ -117,10 +132,12 @@ export const Cell: React.FC<CellProps> = ({
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       isDate={isDate}
+      isAccentColor={isPendingStatus}
     >
       {value}
     </TableItemWrapper>
   );
+};
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;

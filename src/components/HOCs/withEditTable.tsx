@@ -68,7 +68,7 @@ export const withEditTable = <OriginProps extends {}>(
         if (isLocked) {
           return null;
         }
-
+        console.log('menuItems', menuItems);
         return {
           onDoubleClick: () => {
             return editModalName ? openCurrentRowInModal(id) : null;
@@ -77,15 +77,15 @@ export const withEditTable = <OriginProps extends {}>(
             if (!menuItems.length) {
               return null;
             }
-            return setCurrentIdAction(id);
-            // setContextMenuState({
-            //   currentId: id,
-            //   isVisible: true,
-            // });
+            setCurrentIdAction(id);
+            setContextMenuState({
+              currentId: id,
+              isVisible: true,
+            });
           },
         };
       },
-      [openCurrentRowInModal, editModalName, menuItems  , setCurrentIdAction]
+      [openCurrentRowInModal, editModalName, menuItems, setCurrentIdAction]
     );
 
     return (

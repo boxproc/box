@@ -24,6 +24,7 @@ export enum statusTypes {
   ACTIVE = 'A',
   INACTIVE = 'I',
   DELETED = 'D',
+  EXECUTION_PENDING = 'E',
 }
 
 export const statusTypesOptions = [
