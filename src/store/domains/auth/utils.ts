@@ -6,7 +6,7 @@ export const prepareAuthValues =
 
     return ({
       username: userName,
-      password_hash: password,
+      password,
       remember_me: rememberMe,
     });
   };
