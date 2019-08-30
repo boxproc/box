@@ -10,7 +10,6 @@ import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
 
 import {
-  HandleGetLedgerTransactions,
   HandleSetLedgerTransactionId,
   LedgerTransactionItemPrepared,
   OpenModal,
@@ -18,23 +17,15 @@ import {
 
 export interface TransactionsProps {
   openModal: OpenModal;
-  getLedgerTransactions: HandleGetLedgerTransactions;
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
   setLedgerTransactionId: HandleSetLedgerTransactionId;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
   openModal,
-  getLedgerTransactions,
   ledgerTransactions,
   setLedgerTransactionId,
 }) => {
-  React.useEffect(
-    () => {
-      getLedgerTransactions();
-    },
-    [getLedgerTransactions]
-  );
   const handleOnClickRow = React.useCallback(
     (_, rowInfo: RowInfo) => {
       return {

@@ -5,7 +5,6 @@ import Transactions from './Transactions';
 
 import {
   createLoadingSelector,
-  handleGetLedgerTransactions,
   handleSetLedgerTransactionId,
   LedgerTransactionsActionTypes,
   openModal,
@@ -15,7 +14,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  LedgerTransactionsActionTypes.GET_LEDGER_TRANSACTIONS,
   LedgerTransactionsActionTypes.FILTER_LEDGER_TRANSACTIONS,
 ]);
 
@@ -27,7 +25,6 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     openModal,
-    getLedgerTransactions: handleGetLedgerTransactions,
     setLedgerTransactionId: handleSetLedgerTransactionId,
   },
   dispatch
