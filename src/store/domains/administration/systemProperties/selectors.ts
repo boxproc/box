@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { yesNoTypes } from 'consts';
+
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
@@ -16,7 +18,7 @@ export const selectAdminSysPropsItems = createSelector(
       currentValue: item.current_value,
       previousValue: item.previous_value,
       lastDatetime: item.last_datetime,
-      lockedFlag: item.locked_flag,
+      lockedFlag: item.locked_flag === yesNoTypes.YES ? true : false,
     };
   })
 );

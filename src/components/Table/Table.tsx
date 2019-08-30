@@ -95,7 +95,6 @@ interface CellProps {
   suppressContentEditableWarning?: boolean;
   onBlur?: any;
   onKeyUp?: (e: React.KeyboardEvent) => void;
-  hint?: string;
   isDate?: boolean;
   isNumber?: boolean;
 }
@@ -107,7 +106,6 @@ export const Cell: React.FC<CellProps> = ({
   suppressContentEditableWarning,
   onBlur,
   onKeyUp,
-  hint,
   isDate = false,
   isNumber = false,
 }) => (
@@ -120,7 +118,7 @@ export const Cell: React.FC<CellProps> = ({
       onKeyUp={onKeyUp}
       isDate={isDate}
     >
-      <div title={hint}>{value}</div>
+      {value}
     </TableItemWrapper>
   );
 

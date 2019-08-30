@@ -13,7 +13,7 @@ const loadingSelector = createLoadingSelector([
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-    isLoading: loadingSelector(state),
+  isLoading: loadingSelector(state),
 });
 
 export default connect(

@@ -9,7 +9,6 @@ import {
   handleGetLedgerAccounts,
   handleSetLedgerAccountId,
   LedgerAccountsActionTypes,
-  openModal,
   selectInstitutionsOptions,
   selectLedgerAccounts,
 } from 'store/domains';
@@ -29,7 +28,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     getLedgerAccounts: handleGetLedgerAccounts,
     filterLedgerAccounts: handleFilterLedgerAccounts,
     setLedgerAccountsId: handleSetLedgerAccountId,

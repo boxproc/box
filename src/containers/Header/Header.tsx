@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box ml="50px">
             <Flex alignItems="center">
-              <Box mr="10px">
+              <Box mr="5px">
                 <HelpDropdown
                   location={location}
                   uiItems={uiItems}

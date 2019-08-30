@@ -1,27 +1,24 @@
 import React from 'react';
-import { RowInfo } from 'react-table';
 
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
+import { modalNames } from 'consts';
+
 import { tableColumns } from 'containers/Ledger/Customers/components';
 import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
-
-import { modalNames } from 'consts';
 
 import {
   HandleFilterLedgerCustomers,
   HandleGetLedgerCustomerId,
   HandleGetLedgerCustomers,
   LedgerCustomerItemPrepared,
-  OpenModal,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 export interface CustomersProps {
   institutionsOptions: Array<SelectValues>;
-  openModal: OpenModal;
   getLedgerCustomers: HandleGetLedgerCustomers;
   ledgerCustomers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
@@ -30,7 +27,6 @@ export interface CustomersProps {
 
 const Customers: React.FC<CustomersProps> = ({
   institutionsOptions,
-  openModal,
   getLedgerCustomers,
   ledgerCustomers,
   filterLedgerCustomers,
@@ -42,27 +38,16 @@ const Customers: React.FC<CustomersProps> = ({
     },
     [getLedgerCustomers]
   );
-  const handleOnClickRow = React.useCallback(
-    (_, rowInfo: RowInfo) => {
-      return {
-        onDoubleClick: () => {
-          getLedgerCustomerId(rowInfo.original.id);
-          openModal({
-            name: modalNames.EDIT_LEDGER_CUSTOMER,
-          });
-        },
-      };
-    },
-    [openModal, getLedgerCustomerId]
-  );
+
   return (
     <TablePage
       title="Customers"
       data={ledgerCustomers}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_LEDGER_CUSTOMER}
       hint="Double Click on Row to Edit Customer"
-      getTrGroupProps={handleOnClickRow}
+      addNewModalName={modalNames.ADD_LEDGER_CUSTOMER}
+      editModalName={modalNames.EDIT_LEDGER_CUSTOMER}
+      setCurrentIdAction={getLedgerCustomerId}
       FilterForm={
         <CustomersFilterForm
           filterLedgerCustomers={filterLedgerCustomers}

@@ -1,49 +1,91 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
+import { Edit } from 'styled-icons/fa-regular/Edit';
+
+import styled from 'theme';
 
 import './styles.css';
 
-interface ContextMenuItem {
-  name: string;
+import { ContextMenuItem } from 'types';
+
+interface ContextMenuWrapperProps {
+  isVisible?: boolean;
 }
+
+const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
+  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
+  visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
+
+  .item {
+    position: relative;
+    padding: 0 16px;
+
+    .icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+`;
 
 interface ContextMenuListProps {
   menuId: string;
-  items: Array<{ name: string }>;
-  onClick?: (e: Event, value: ContextMenuItem) => void;
+  items: Array<ContextMenuItem>;
   noDataStr?: string;
+  isVisible?: boolean;
+  onClick?: (e: Event, value: ContextMenuItem) => void;
+  onHide?: () => void;
 }
+
+const renderIcon = (name: string) => {
+  switch (name) {
+    case 'edit':
+      return (<Edit size="13" />);
+    default:
+      return null;
+  }
+};
 
 const ContextMenuList: React.FC<ContextMenuListProps> = ({
   menuId,
   onClick,
   items,
   noDataStr,
+  onHide,
+  isVisible = true,
 }) => {
   return (
-    <ContextMenu
-      id={menuId}
-      hideOnLeave={true}
-      className="context-menu"
-    >
-      {(items && items.length)
-        ? items.map((item, index) => {
-          return (
-            <MenuItem
-              key={index}
-              data={{ name: item.name }}
-              onClick={onClick}
-            >
-              <span className="item-text">{item.name}</span>
+    <ContextMenuWrapper isVisible={isVisible}>
+      <ContextMenu
+        id={menuId}
+        onHide={onHide}
+        // hideOnLeave={true}
+        className="context-menu"
+      >
+        {(items && items.length)
+          ? items.map((item, index) => {
+            return (
+              <MenuItem
+                key={index}
+                data={{ action: item.action }}
+                onClick={onClick}
+              >
+                <div className="item">
+                  {item.icon && (
+                    <div className="icon">{renderIcon(item.icon)}</div>
+                  )}
+                  <span className="item-text">{item.name}</span>
+                </div>
+              </MenuItem>
+            );
+          })
+          : (
+            <MenuItem>
+              {noDataStr}
             </MenuItem>
-          );
-        })
-        : (
-          <MenuItem>
-            {noDataStr}
-          </MenuItem>
-        )}
-    </ContextMenu>
+          )}
+      </ContextMenu>
+    </ContextMenuWrapper>
   );
 };
 

@@ -60,3 +60,9 @@ export interface SelectValues<T = number | string> {
   value: T;
   label: string;
 }
+
+export interface ContextMenuItem {
+  name: string;
+  icon?: string;
+  action?: () => void;
+}

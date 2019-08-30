@@ -8,7 +8,6 @@ import {
   createLoadingSelector,
   handleGetAdminUsersGroup,
   handleSetAdminUsersGroupId,
-  openModal,
   selectUsersGroupEditorItems,
 } from 'store/domains';
 
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
     getAdminUsersGroup: handleGetAdminUsersGroup,
     setAdminUsersGroupId: handleSetAdminUsersGroupId,
   },

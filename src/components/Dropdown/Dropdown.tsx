@@ -16,7 +16,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   display: inline-block;
 
   .dropdown-list {
-    // position: absolute;
+    position: absolute;
     left: ${({ position }) => position === 'left' ? '-10px' : 'auto'};
     right: ${({ position }) => position === 'right' ? '0' : 'auto'};
     top: calc(100% + 3px);

@@ -11,7 +11,7 @@ import { Cell } from './Table';
 
 export const renderEditable = (updateAction: (data: object) => void) =>
   (cellInfo: CellInfo) => {
-    const isEditable = cellInfo.row.lockedFlag === yesNoTypes.NO;
+    const isEditable = cellInfo.row.lockedFlag === false;
 
     const editableCellStyles = {
       backgroundColor: isEditable && '#fafafa',
@@ -52,7 +52,7 @@ export const renderEditable = (updateAction: (data: object) => void) =>
 
 export const renderCheckBoxIcon = (updateAction?: (data: object) => void) =>
   (cellInfo: CellInfo) => {
-    const isLocked = cellInfo.value === yesNoTypes.YES;
+    const isLocked = cellInfo.value === true;
     const propValues = cellInfo.original;
 
     return (

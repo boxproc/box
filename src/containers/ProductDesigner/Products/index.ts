@@ -8,7 +8,6 @@ import {
   handleFilterProducts,
   handleGetProductId,
   handleGetProducts,
-  openModal,
   ProductsActionTypes,
   selectFilterProductParams,
   selectInstitutionsOptions,
@@ -34,7 +33,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     getProducts: handleGetProducts,
     filterProducts: handleFilterProducts,
     getProductId: handleGetProductId,
-    openModal,
   },
   dispatch
 );

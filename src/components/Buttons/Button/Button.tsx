@@ -3,9 +3,9 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
+import { LogOut } from 'styled-icons/boxicons-regular/LogOut';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
 import { Copy } from 'styled-icons/boxicons-solid/Copy';
-import { LogOut } from 'styled-icons/feather/LogOut';
 import { Delete } from 'styled-icons/material/Delete';
 
 import styled from 'theme';
@@ -91,7 +91,7 @@ const renderIcon = (name: string) => {
     case 'plus':
       return (<Box mt="-2px"><Plus size="18" /></Box>);
     case 'logOut':
-      return (<LogOut size="16" />);
+      return (<Box mt="-2px"><LogOut size="16" /></Box>);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18" /></Box>);
     case 'copy':

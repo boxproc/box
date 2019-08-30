@@ -44,7 +44,8 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
     logLocation: item.log_location,
     lastExecutionDatetime: item.last_execution_datetime,
     lastExecutionResult: item.last_execution_result,
-    status: statusTypesOptions.find(el => el.value === item.status).label,
+    status: statusTypesOptions.find(el => el.value === item.status)
+      && statusTypesOptions.find(el => el.value === item.status).label,
     executableType: executableTypeOptions.find(el => el.value === item.executable_type).label,
   };
 };

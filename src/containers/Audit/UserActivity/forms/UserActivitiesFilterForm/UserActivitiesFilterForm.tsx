@@ -37,14 +37,14 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
   const currentInstitutionId = currentInstitution && currentInstitution.value;
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterAuditUserActivities(data)),
-    [handleSubmit, filterAuditUserActivities ]
+    [handleSubmit, filterAuditUserActivities]
   );
 
   React.useEffect(
     () => {
-       if (currentInstitutionId) {
+      if (currentInstitutionId) {
         getAuditUsers(currentInstitutionId);
-       }
+      }
     },
     [getAuditUsers, currentInstitutionId]
   );
@@ -92,7 +92,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               placeholder={dateFormat.DATE_TIME_FORMAT}
               mask={maskFormat.DATE_TIME}
               maskChar={null}
-              isDisabled={false}
+              disabled={false}
             />
           </Box>
           <Box width="190px" p="10px" >
@@ -105,7 +105,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               placeholder={dateFormat.DATE_TIME_FORMAT}
               mask={maskFormat.DATE_TIME}
               maskChar={null}
-              isDisabled={false}
+              disabled={false}
             />
           </Box>
         </Flex>

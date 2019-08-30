@@ -120,13 +120,13 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[2 / 3]} p="10px">
             <Field
               id="executable"
               name="executable"
-              placeholder="Enter Job Executable "
+              placeholder="Enter Job Executable"
               component={InputField}
-              label="Scheduler Job Executable "
+              label="Scheduler Job Executable"
               disabled={false}
               validate={[formErrorUtil.required]}
             />
@@ -153,7 +153,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[2 / 3]} p="10px 10px 20px">
+          <Box width={[1 / 3]} p="10px 10px 20px">
             <Button
               type="reset"
               text="Build cron expression"
