@@ -1,2 +1,2 @@
-export { default as SchedulerButtonsDropdown } from './SchedulerButtonsDropdown';
+export { default as SchedulerButtonsDropdown } from './ButtonActions';
 export * from './tableColumns';

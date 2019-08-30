@@ -8,13 +8,19 @@ import {
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   GetAdminSchedulerJobAction,
+  SendAdminSchedulerActionJobAction,
   SetAdminSchedulerJobIdAction,
   SetGeneratedCronExpressionAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
-import { AdminSchedulerEditableItem, AdminSchedulerItem } from './types';
-import { prepareValuesToSend } from './utils';
+import {
+  AdminSchedulerEditableItem,
+  AdminSchedulerItem,
+  AdminSchedulerJobAction,
+  AdminSchedulerJobActionPrepared
+} from './types';
+import { prepareValuesToSend, prepareValuesToSendActions } from './utils';
 
 import { apiClient } from 'services';
 
@@ -32,6 +38,11 @@ export type HandleAddAdminSchedulerJob = (values: Partial<AdminSchedulerEditable
 
 export type DeleteAdminSchedulerJob = (id: string | number) => DeleteAdminSchedulerJobAction;
 export type HandleDeleteAdminSchedulerJob = (id: string | number) => Thunk<void>;
+
+export type SendAdminSchedulerAction =
+ (values: Partial<AdminSchedulerJobAction>) => SendAdminSchedulerActionJobAction;
+export type HandleSendAdminSchedulerAction = (values: Partial<AdminSchedulerJobActionPrepared>) =>
+  Thunk<void>;
 
 export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
   UpdateAdminSchedulerJobAction;
@@ -58,6 +69,11 @@ export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS,
   payload: api.deleteAdminSchedulerJob(id),
   meta: id,
+});
+
+export const sendAdminSchedulerAction: SendAdminSchedulerAction = values => ({
+  type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB,
+  payload: api.sendAdminSchedulerAction(values),
 });
 
 export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues => ({
@@ -123,6 +139,19 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
 
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
+        await dispatch(handleGetAdminSchedulerJobs());
+      },
+      dispatch
+    );
+  };
+
+export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareValuesToSendActions(values);
+
+        await dispatch(sendAdminSchedulerAction(preparedValues));
         await dispatch(handleGetAdminSchedulerJobs());
       },
       dispatch

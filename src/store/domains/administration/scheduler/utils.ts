@@ -1,6 +1,10 @@
 import { executableTypeOptions, statusTypesOptions } from 'consts';
 
-import { AdminSchedulerEditableItem, AdminSchedulerItem } from './types';
+import {
+  AdminSchedulerEditableItem,
+  AdminSchedulerItem,
+  AdminSchedulerJobActionPrepared
+} from './types';
 
 export const prepareValuesToSend =
   (values: Partial<AdminSchedulerEditableItem>) => {
@@ -16,6 +20,13 @@ export const prepareValuesToSend =
       institution_id: values.institutionId && values.institutionId.value,
       executable_type: values.institutionId && values.executableType.value,
       status: values.status && values.status.value,
+    };
+  };
+export const prepareValuesToSendActions =
+  (values: Partial<AdminSchedulerJobActionPrepared>) => {
+    return {
+      task_id: values.taskId,
+      task_command: values.taskCommand,
     };
   };
 

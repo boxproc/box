@@ -1,12 +1,12 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
 import { Cell, Header } from 'components/Table';
-
-import { SchedulerButtonsDropdown } from 'containers/Administration/Scheduler/components';
 
 import { AdminSchedulerItemPrepared } from 'store/domains';
 
 import { TableCell } from 'types';
+import SchedulerButtonsDropdown from './ButtonActions';
 
 type SCell<T extends keyof AdminSchedulerItemPrepared> = TableCell<AdminSchedulerItemPrepared[T]>;
 
@@ -139,8 +139,10 @@ export const tableColumns = [
   {
     minWidth: 125,
     accessor: 'executeButton',
-    Cell: () => (
-      <SchedulerButtonsDropdown />
+    Cell: (cellInfo: CellInfo) => (
+      <SchedulerButtonsDropdown
+        currentId={cellInfo.original.id}
+      />
     ),
   },
 ];
