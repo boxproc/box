@@ -13,7 +13,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -26,7 +25,6 @@ export const tableColumns = [
   {
     maxWidth: 120,
     sortable: true,
-    filterable: true,
     Header: <Header title="PAN Alias" />,
     accessor: 'panAlias',
     Cell: (props: TCell<'panAlias'>) => (
@@ -38,7 +36,6 @@ export const tableColumns = [
   {
     maxWidth: 175,
     sortable: true,
-    filterable: true,
     Header: <Header title="PAN Masked" />,
     accessor: 'panMasked',
     Cell: (props: TCell<'panMasked'>) => (
@@ -48,9 +45,8 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 175,
+    maxWidth: 200,
     sortable: true,
-    filterable: true,
     Header: <Header title="Expiry Date" />,
     accessor: 'expiryDate',
     Cell: (props: TCell<'expiryDate'>) => (
@@ -63,7 +59,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
@@ -76,7 +71,6 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (

@@ -10,8 +10,8 @@ import PrivateRoute from 'components/PrivateRoute';
 import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';
+import HomePage from 'containers/HomePage';
 import Login from 'containers/Login';
-
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
@@ -37,10 +37,6 @@ interface RootProps {
   isRememberedMe: boolean;
 }
 
-const HomePage = () => (
-  <React.Fragment>Welcome!</React.Fragment>
-);
-
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
   sessionId,
@@ -48,6 +44,7 @@ const Root: React.FC<RootProps> = ({
   isRememberedMe,
 }) => {
   const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID);
+
   React.useEffect(
     () => {
       if (sessionId) {

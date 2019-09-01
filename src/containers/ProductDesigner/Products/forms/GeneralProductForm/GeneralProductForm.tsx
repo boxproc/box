@@ -59,7 +59,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
       />
       <Hr />
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         justifyContent="space-between"
       >
         <Button
@@ -71,7 +71,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           onClick={() => deleteProduct(currentProductId)}
         />
         <OkCancelButtons
-          okText="Save Product"
+          okText="Save"
           cancelText="Close"
           onCancel={onCancel}
           rightPosition={true}

@@ -37,7 +37,6 @@ const Interfaces: React.FC<AccountsProps> = ({
       title="Interfaces"
       data={adminInterfaceItems}
       columns={tableColumns}
-      hint="Double Click on Row to Edit Interface"
       addNewModalName={modalNames.ADD_ADMIN_INTERFACE}
       editModalName={modalNames.EDIT_ADMIN_INTERFACE}
       setCurrentIdAction={setAdminInterfaceId}

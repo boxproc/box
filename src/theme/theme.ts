@@ -16,10 +16,7 @@ export default interface Theme {
   accentColorOpacity7: string;
 
   blackColor: string;
-  blackColorOpacity5: string;
-  blackColorOpacity6: string;
   blackColorOpacity7: string;
-  blackColorOpacity8: string;
 
   redColor: string;
 
@@ -48,18 +45,15 @@ export const theme: Theme = {
   lightAccentColor: '#ffbf4d',
   accentColorOpacity7: 'rgba(255, 164, 0, .7)',
 
-  blackColor: '#000000',
-  blackColorOpacity5: 'rgba(0, 0, 0, .5)',
-  blackColorOpacity6: 'rgba(0, 0, 0, .6)',
+  blackColor: '#333333',
   blackColorOpacity7: 'rgba(0, 0, 0, .7)',
-  blackColorOpacity8: 'rgba(0, 0, 0, .8)',
 
   redColor: '	#FF0000',
 
   grayColor: '#999999',
   lightGrayColor: '#e6e6e6',
   lighterGrayColor: '#f3f3f3',
-  darkGrayColor: '#4d4d4d',
+  darkGrayColor: '#6c6c6c',
 
   greenColor: '#00CC00',
 

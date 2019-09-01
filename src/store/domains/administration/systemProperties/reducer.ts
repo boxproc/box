@@ -5,13 +5,14 @@ import { AdminSysPropsState } from './types';
 
 export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Immutable({
   systemProperties: Immutable([]),
-  systemPropertiesFilterParams: null,
+  currentSysPropId: null,
 });
 
 const adminSysPropsReducer =
   (state = adminSysPropsInitialState, action: AdminSysPropsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_ADMIN_SYS_PROPS_FULFILLED:
+      case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
           .set('systemProperties', action.payload.system_properties);
 
@@ -22,10 +23,10 @@ const adminSysPropsReducer =
             state.systemProperties.filter(el => el.property_name !== action.meta)
           );
 
-      case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
+      case ActionTypeKeys.SET_ADMIN_SYS_PROP_ID:
+        console.log('---', action.payload);
         return state
-          .set('systemPropertiesFilterParams', action.meta)
-          .set('systemProperties', action.payload.system_properties);
+          .set('currentSysPropId', action.payload);
 
       default: return state;
     }

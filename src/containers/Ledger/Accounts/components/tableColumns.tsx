@@ -13,7 +13,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: ACell<'id'>) => (
@@ -25,7 +24,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: ACell<'institutionId'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Product Name" />,
     accessor: 'productName',
     Cell: (props: ACell<'productName'>) => (
@@ -47,7 +44,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Account Alias" />,
     accessor: 'accountAlias',
     Cell: (props: ACell<'accountAlias'>) => (
@@ -59,7 +55,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Customer ID" />,
     accessor: 'customerId',
     Cell: (props: ACell<'customerId'>) => (
@@ -71,7 +66,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="First Name" />,
     accessor: 'customerFirstName',
     Cell: (props: ACell<'customerFirstName'>) => (
@@ -82,7 +76,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Last Name" />,
     accessor: 'customerLastName',
     Cell: (props: ACell<'customerLastName'>) => (
@@ -93,7 +86,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: ACell<'status'>) => (
@@ -104,7 +96,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Balance Settled" />,
     accessor: 'balanceSettled',
     Cell: (props: ACell<'balanceSettled'>) => (
@@ -116,7 +107,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Balance Available" />,
     accessor: 'balanceAvailable',
     Cell: (props: ACell<'balanceAvailable'>) => (
@@ -128,7 +118,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Amount Due Repayment" />,
     accessor: 'amountDueRepayment',
     Cell: (props: ACell<'amountDueRepayment'>) => (
@@ -140,7 +129,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Balance Limit" />,
     accessor: 'balanceLimit',
     Cell: (props: ACell<'balanceLimit'>) => (
@@ -152,7 +140,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Balance Limit Shared" />,
     accessor: 'balanceLimitShared',
     Cell: (props: ACell<'balanceLimitShared'>) => (
@@ -164,7 +151,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: ACell<'accruedInterest'>) => (

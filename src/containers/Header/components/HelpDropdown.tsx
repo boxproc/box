@@ -21,10 +21,18 @@ const HelpIcon = styled(HelpCircle)`
   color: ${({ theme }) => theme.grayColor};
 `;
 
+const TextWrapper = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.darkGrayColor};
+  text-transform: uppercase;
+  letter-spacing: .2pt;
+`;
+
 const HelpBlock = () => (
   <Flex alignItems="center">
     <HelpIcon size="16" />
-    <div>Help</div>
+    <TextWrapper>Help</TextWrapper>
   </Flex>
 );
 
@@ -55,7 +63,6 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
         <ExternalLink
           link={links.BPS}
           text="BOX-UI"
-          underline={true}
         />
       </Option>
       {!isHome && (
@@ -63,7 +70,6 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
           <ExternalLink
             link={currentUrl}
             text={`Help: ${currentUiItemName}`}
-            underline={true}
           />
         </Option>
       )}

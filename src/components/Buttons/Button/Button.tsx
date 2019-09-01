@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
+import { Box } from '@rebass/grid';
 
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
+import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 import { LogOut } from 'styled-icons/boxicons-regular/LogOut';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
-import { Copy } from 'styled-icons/boxicons-solid/Copy';
 import { Delete } from 'styled-icons/material/Delete';
 
 import styled from 'theme';
@@ -18,6 +18,7 @@ interface ButtonWrapperProps {
   size?: string;
   bordered?: boolean;
   underline?: boolean;
+  hasIcon?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -37,7 +38,17 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   line-height: 1.3;
   white-space: nowrap;
 
+  ${({ hasIcon, theme }) => !hasIcon && `
+    padding: 8px 10px 6px;
+    border-radius: 2px;
+    &:hover {
+      background-color: ${theme.lighterGrayColor};
+    }
+  `}
+
   ${({ underline, theme }) => underline && `
+    padding: 0;
+    border-radius: 0;
     border-bottom: 1px solid ${theme.normalAccentColor};
   `}
 
@@ -59,6 +70,10 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
       border-color: ${theme.normalAccentColor};
       background-color: ${theme.whiteColor};
   `};
+
+    ${({ underline, theme }) => underline && `
+      background-color: inherit;
+  `};
   }
 
   &:disabled {
@@ -72,10 +87,9 @@ interface ButtonProps {
   size?: string;
   disabled?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'copy' | string;
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'help' | string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
-  rightPosition: boolean;
   onClick?: () => void;
   withConfirmation?: boolean;
   confirmationText?: string;
@@ -94,8 +108,8 @@ const renderIcon = (name: string) => {
       return (<Box mt="-2px"><LogOut size="16" /></Box>);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18" /></Box>);
-    case 'copy':
-      return (<Box mt="-2px"><Copy size="18" /></Box>);
+    case 'help':
+      return (<Box mt="-1px"><HelpCircle size="16" /></Box>);
     default:
       return null;
   }
@@ -112,7 +126,6 @@ const Button: React.FC<ButtonProps> = ({
   withConfirmation = false,
   confirmationText,
   confirmationTitle,
-  rightPosition = false,
   openModal,
   bordered = false,
   underline = false,
@@ -134,28 +147,23 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <Flex
-      alignItems="center"
-      justifyContent={rightPosition ? 'flex-end' : 'flex-start'}
-      width={rightPosition ? '100%' : 'auto'}
+    <ButtonWrapper
+      onClick={handleClick}
+      className={className}
+      disabled={disabled}
+      type={type}
+      size={size}
+      bordered={bordered}
+      underline={underline}
+      hasIcon={!!iconName}
     >
-      <ButtonWrapper
-        onClick={handleClick}
-        className={className}
-        disabled={disabled}
-        type={type}
-        size={size}
-        bordered={bordered}
-        underline={underline}
-      >
-        {iconName &&
-          <Box mr="2px">
-            {renderIcon(iconName)}
-          </Box>
-        }
-        {text}
-      </ButtonWrapper>
-    </Flex>
+      {iconName &&
+        <Box mr="2px">
+          {renderIcon(iconName)}
+        </Box>
+      }
+      {text}
+    </ButtonWrapper>
   );
 
 };

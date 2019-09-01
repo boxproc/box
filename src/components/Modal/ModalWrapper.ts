@@ -51,9 +51,10 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     min-height: ${({ minContainerHeight }) =>
       minContainerHeight ? minContainerHeight + 'px' : 'auto'}
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 10px;
     border-radius: 3px;
     word-break: break-word;
+    font-size: 0;
   }
   .modal-close {
     position: absolute;

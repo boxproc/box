@@ -3,6 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 export interface UiItem {
   item_type: string;
   ui_item: string;
+  description: string;
 }
 
 export interface UiItemPrepared {

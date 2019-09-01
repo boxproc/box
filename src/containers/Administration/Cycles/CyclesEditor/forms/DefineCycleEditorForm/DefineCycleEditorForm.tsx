@@ -35,7 +35,6 @@ interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
   cyclesEditorValue: SelectValues;
   currentCycleEditorId: number;
   isDisabledInstitutions?: boolean;
-  isDisabledStatus?: boolean;
   isDisabledType?: boolean;
   isDirty: boolean;
   mode: 'add' | 'edit';
@@ -54,7 +53,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   onCancel,
   isDisabledInstitutions,
   institutionsOptions,
-  isDisabledStatus,
   isDisabledType,
   isDirty,
   mode,
@@ -113,7 +111,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypeCyclesOptions}
-              isDisabled={isDisabledStatus}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -172,7 +169,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
       </Box>
       <Hr />
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         justifyContent="space-between"
       >
         {mode === 'edit' && (

@@ -16,9 +16,8 @@ const CheckboxWrapper = styled.div<DisabledProp>`
   font-size: 0;
 
   .label {
-    cursor: ${({ disabled }) => disabled ? 'auto' : 'pointer' };
-    padding-left: 10px;
-    padding-top: 1px;
+    cursor: ${({ disabled }) => disabled ? 'auto' : 'pointer'};
+    padding-left: 7px;
   }
 
   ${({ disabled, theme }) => disabled && `

@@ -15,6 +15,7 @@ export interface AuthResponse {
   username: string;
   first_name: string;
   last_name: string;
+  last_activity: string;
 }
 
 export interface AuthState {
@@ -23,4 +24,5 @@ export interface AuthState {
   isRememberedMe: boolean;
   firstName: string;
   lastName: string;
+  lastActivity: string;
 }

@@ -12,7 +12,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: SCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Username" />,
     accessor: 'username',
     Cell: (props: SCell<'username'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="First Name" />,
     accessor: 'firstName',
     Cell: (props: SCell<'firstName'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: SCell<'lastName'>) => (
@@ -57,7 +53,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Email" />,
     accessor: 'email',
     Cell: (props: SCell<'email'>) => (
@@ -68,7 +63,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: SCell<'status'>) => (
@@ -79,7 +73,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Password entry counter" />,
     accessor: 'passwordEntryCounter',
     Cell: (props: SCell<'passwordEntryCounter'>) => (
@@ -90,8 +83,8 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
-    filterable: true,
     Header: <Header title="Datetime of last login" />,
     accessor: 'datetimeOfLastLogin',
     Cell: (props: SCell<'datetimeOfLastLogin'>) => (

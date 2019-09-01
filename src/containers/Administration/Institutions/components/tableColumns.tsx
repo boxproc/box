@@ -19,7 +19,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: ICell<'id'>) => (
@@ -31,7 +30,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
     Cell: (props: ICell<'name'>) => (
@@ -43,7 +41,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: ICell<'status'>) => (
@@ -54,7 +51,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="SFTP Location" />,
     accessor: 'sftpLocation',
     Cell: (props: ICell<'sftpLocation'>) => (
@@ -65,7 +61,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="SFTP Public Key" />,
     accessor: 'sftpPublicKey',
     Cell: (props: ICell<'sftpPublicKey'>) => (

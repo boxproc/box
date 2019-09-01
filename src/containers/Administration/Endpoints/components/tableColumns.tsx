@@ -12,7 +12,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: ACell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: ACell<'institutionId'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
     Cell: (props: ACell<'name'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Port" />,
     accessor: 'port',
     Cell: (props: ACell<'port'>) => (
@@ -58,7 +54,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Private Key Location" />,
     accessor: 'privateKeyLocation',
     Cell: (props: ACell<'privateKeyLocation'>) => (
@@ -69,7 +64,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: ACell<'status'>) => (
@@ -80,7 +74,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Connection Attributes" />,
     accessor: 'connectionAttributes',
     Cell: (props: ACell<'connectionAttributes'>) => (

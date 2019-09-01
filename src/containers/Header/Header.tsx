@@ -10,7 +10,7 @@ import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 import { HelpDropdown, UserDropdown } from './components';
 
-import { basePath, boxInstitutionName, cookiesExpires, cookiesNames } from 'consts';
+import { basePath, boxInstitutionName, cookiesNames } from 'consts';
 
 import {
   HandleGetInstitutions,
@@ -34,7 +34,7 @@ const Wrapper = styled.header`
   padding: 10px 0;
   background: ${({ theme }) => theme.whiteColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
-  font-size: 14px;
+  font-size: 13px;
   white-space: nowrap;
   z-index: 10;
 `;
@@ -65,14 +65,16 @@ const Header: React.FC<HeaderProps> = ({
     () => {
       getUiItems();
       getInstitutions();
-
+    },
+    [getUiItems, getInstitutions]
+  );
+  React.useEffect(
+    () => {
       if (firstName && lastName) {
-        cookiesUtil.set(cookiesNames.FULL_NAME, `${firstName} ${lastName}`, {
-          maxAge: cookiesExpires.WEEK,
-        });
+        cookiesUtil.set(cookiesNames.FULL_NAME, `${firstName} ${lastName}`);
       }
     },
-    [getUiItems, getInstitutions, firstName, lastName]
+    [firstName, lastName]
   );
 
   const institution = institutions.length === 1
@@ -90,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Box mr="20px">
+            <Box mr="15px">
               <a href={basePath}>
                 <img src={logo} width={62} alt="" />
               </a>
@@ -106,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box ml="50px">
             <Flex alignItems="center">
-              <Box mr="5px">
+              <Box mr="7px">
                 <HelpDropdown
                   location={location}
                   uiItems={uiItems}

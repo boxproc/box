@@ -169,7 +169,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
       </Box>
       <Hr />
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         justifyContent="space-between"
       >
         {isEditable && (

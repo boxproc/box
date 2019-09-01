@@ -115,7 +115,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
       </Box>
       <Hr />
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         justifyContent="space-between"
       >
         {isEditMode && (

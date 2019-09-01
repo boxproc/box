@@ -14,7 +14,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: SCell<'id'>) => (
@@ -27,7 +26,6 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: SCell<'institutionId'>) => (
@@ -39,7 +37,6 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    filterable: true,
     Header: <Header title="Name of User Group" />,
     accessor: 'name',
     Cell: (props: SCell<'name'>) => (

@@ -46,7 +46,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
       />
       <Hr />
       <Flex
-        alignItems="flex-end"
+        alignItems="center"
         justifyContent="space-between"
       >
         <Button

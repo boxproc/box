@@ -8,10 +8,10 @@ import { Button } from 'components/Buttons';
 import { Hr } from 'components/Text';
 import { modalNames } from 'consts';
 import {
-    closeModal,
-    HandleGetLedgerAccountCards,
-    HandleOrderLedgerAccountCard,
-    LedgerAccountsCardsItemPrepared
+  closeModal,
+  HandleGetLedgerAccountCards,
+  HandleOrderLedgerAccountCard,
+  LedgerAccountsCardsItemPrepared
 } from 'store/domains';
 import { TableCell } from 'types';
 
@@ -102,13 +102,12 @@ export const Cards: React.FC<AccountCardsProps> = ({
       />
       <Hr />
       <Box mb="35px">
-          <Button
-            rightPosition={true}
-            onClick={() => closeModal(modalName)}
-            iconName="closeModal"
-            text="Close"
-          />
-        </Box>
+        <Button
+          onClick={() => closeModal(modalName)}
+          iconName="closeModal"
+          text="Close"
+        />
+      </Box>
     </React.Fragment>
   );
 };

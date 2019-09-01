@@ -56,7 +56,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
       />
       <Hr />
       <OkCancelButtons
-        okText="Save Details"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

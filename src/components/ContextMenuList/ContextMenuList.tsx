@@ -1,6 +1,9 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
+
+import { LockAlt } from 'styled-icons/boxicons-solid/LockAlt';
 import { Edit } from 'styled-icons/fa-regular/Edit';
+import { Delete } from 'styled-icons/material/Delete';
 
 import styled from 'theme';
 
@@ -18,12 +21,14 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
 
   .item {
     position: relative;
-    padding: 0 16px;
+    padding: 0 18px;
 
     .icon {
       position: absolute;
       left: 0;
-      top: 0;
+      top: 2px;
+      font-size: 0;
+      color: ${({ theme }) => theme.grayColor};
     }
   }
 `;
@@ -41,6 +46,10 @@ const renderIcon = (name: string) => {
   switch (name) {
     case 'edit':
       return (<Edit size="13" />);
+    case 'delete':
+      return (<Delete size="15" />);
+    case 'lock':
+      return (<LockAlt size="15" />);
     default:
       return null;
   }
@@ -77,7 +86,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
                   {item.icon && (
                     <div className="icon">{renderIcon(item.icon)}</div>
                   )}
-                  <span className="item-text">{item.name}</span>
+                  <span>{item.name}</span>
                 </div>
               </MenuItem>
             );

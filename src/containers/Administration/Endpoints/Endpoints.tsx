@@ -37,7 +37,6 @@ const Endpoints: React.FC<EndpointsProps> = ({
       title="Endpoints"
       data={adminEndpointItems}
       columns={tableColumns}
-      hint="Double Click on Row to View Endpoint"
       addNewModalName={modalNames.ADD_ADMIN_ENDPOINT}
       editModalName={modalNames.EDIT_ADMIN_ENDPOINT}
       setCurrentIdAction={setAdminEndpointId}

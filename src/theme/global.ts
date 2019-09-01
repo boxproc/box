@@ -5,6 +5,9 @@ import { scrollbarCss } from 'components/Scrollbar';
 export const GlobalStyles = createGlobalStyle`
   body {
     ${scrollbarCss};
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.35;
   }
 
   * {

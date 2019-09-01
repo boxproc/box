@@ -27,7 +27,6 @@ const Cards: React.FC<CardsProps> = ({
       title="Cards"
       data={ledgerCards}
       columns={tableColumns}
-      hint="Double Click on Row to View Card"
       editModalName={modalNames.INFO_LEDGER_CARDS}
       setCurrentIdAction={setLedgerCardId}
       FilterForm={

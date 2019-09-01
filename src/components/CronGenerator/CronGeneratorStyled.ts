@@ -62,7 +62,7 @@ export const CronGeneratorStyled = styled.div`
 
   .cron-builder__preset .cron-builder__tab {
     font-size: 12px;
-    padding: 8px 9px 7px;
+    padding: 8px 10px 7px;
     border: 1px solid ${({ theme }) => theme.grayColor};
     border-radius: 2px;
     line-height: 1;

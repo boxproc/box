@@ -19,10 +19,10 @@ export const getAdminSysProps = () =>
   // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
   apiClient.post(adminSystemPropsPathNames.GET);
 
-export const deleteAdminSysProp = (propName: string) =>
+export const deleteAdminSysProp = (id: string) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post(adminSystemPropsPathNames.DELETE, {
-    data: { property_name: propName },
+    data: { property_name: id },
   });
 
 export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>

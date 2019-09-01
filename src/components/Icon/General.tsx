@@ -106,7 +106,7 @@ const Chevron: React.FC<IconColorProps> = ({ ...props }) => (
   >
     <path
       d="M1 1L4.5 5L8 1"
-      stroke="#000000"
+      stroke="#333333"
       strokeLinecap="round"
       strokeLinejoin="round"
     />

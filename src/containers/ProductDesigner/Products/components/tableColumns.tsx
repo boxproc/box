@@ -13,7 +13,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: PCell<'id'>) => (
@@ -25,7 +24,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: PCell<'institutionId'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
     Cell: (props: PCell<'name'>) => (
@@ -47,7 +44,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Description" />,
     accessor: 'description',
     Cell: (props: PCell<'description'>) => (
@@ -59,7 +55,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: PCell<'status'>) => (
@@ -71,7 +66,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Product Type" />,
     accessor: 'productType',
     Cell: (props: PCell<'productType'>) => (
@@ -83,7 +77,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Scheme" />,
     accessor: 'scheme',
     Cell: (props: PCell<'scheme'>) => (
@@ -95,7 +88,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Currency code" />,
     accessor: 'currencyCode',
     Cell: (props: PCell<'currencyCode'>) => (
@@ -106,7 +98,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDay',
     Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
@@ -118,7 +109,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Default Statement Cycle" />,
     accessor: 'defaultStatementCycleId',
     Cell: (props: PCell<'defaultStatementCycleId'>) => (

@@ -24,7 +24,7 @@ const TabTitle = styled.div<TabTitleProps>`
   color: ${({ theme }) => theme.grayColor};
   font-size: 14px;
   letter-spacing: .5pt;
-  border-bottom: 2px solid transparent};
+  border-bottom: 1px solid transparent;
 
   &:hover {
     color: ${({ theme }) => theme.normalAccentColor};

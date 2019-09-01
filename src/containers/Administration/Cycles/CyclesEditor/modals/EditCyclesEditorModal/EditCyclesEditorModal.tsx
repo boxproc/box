@@ -25,7 +25,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Edit Cycle Editor Record"
+      title="Edit Cycle"
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}
     >
@@ -33,7 +33,6 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
         onCancel={() => closeModal(modalName)}
         initialValues={cycleEditorValues}
         isDisabledInstitutions={true}
-        isDisabledStatus={true}
         isDisabledType={true}
         isDirty={isFormDirty}
         mode="edit"

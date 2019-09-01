@@ -30,7 +30,7 @@ const LoyaltyAndBonusForm: React.FC<LoyaltyAndBonusFormAllProps> = ({
       <ProductLoyaltyAndBonus />
       <Hr />
       <OkCancelButtons
-        okText="Save Loyalty and Bonus"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

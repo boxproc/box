@@ -12,7 +12,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: SCell<'id'>) => (
@@ -25,7 +24,6 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution ID" />,
     accessor: 'institutionId',
     Cell: (props: SCell<'institutionId'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
     Cell: (props: SCell<'name'>) => (
@@ -47,7 +44,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Description" />,
     accessor: 'description',
     Cell: (props: SCell<'description'>) => (
@@ -58,7 +54,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: SCell<'status'>) => (
@@ -69,7 +64,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Cron Expression" />,
     accessor: 'cronExpression',
     Cell: (props: SCell<'cronExpression'>) => (
@@ -80,7 +74,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Executable Type" />,
     accessor: 'executableType',
     Cell: (props: SCell<'executableType'>) => (
@@ -91,7 +84,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Executable" />,
     accessor: 'executable',
     Cell: (props: SCell<'executable'>) => (
@@ -102,7 +94,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Log Location" />,
     accessor: 'logLocation',
     Cell: (props: SCell<'logLocation'>) => (
@@ -112,8 +103,8 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
-    filterable: true,
     Header: <Header title="Last Execution Datetime" />,
     accessor: 'lastExecutionDatetime',
     Cell: (props: SCell<'lastExecutionDatetime'>) => (
@@ -125,7 +116,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Last Execution Result" />,
     accessor: 'lastExecutionResult',
     Cell: (props: SCell<'lastExecutionResult'>) => (

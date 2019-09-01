@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { OkCancelButtons } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { SelectField } from 'components/Form';
 
 import { HandleFilterAdminEventDataElems } from 'store/domains';
@@ -49,12 +49,8 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterAllProps> = ({
             />
           </Box>
         </Flex>
+        <Button text="Show" />
       </Box>
-      <OkCancelButtons
-        okText="Show"
-        cancelText="Reset"
-        disabledCancel={true}
-      />
     </form >
   );
 };

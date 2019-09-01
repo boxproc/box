@@ -43,8 +43,8 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         >
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="propertyName"
-              name="propertyName"
+              id="id"
+              name="id"
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"

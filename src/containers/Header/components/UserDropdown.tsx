@@ -18,10 +18,18 @@ const UserIcon = styled(User)`
   color: ${({ theme }) => theme.grayColor};
 `;
 
+const TextWrapper = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.darkGrayColor};
+  text-transform: uppercase;
+  letter-spacing: .2pt;
+`;
+
 const UserBlock = () => (
   <Flex alignItems="baseline">
     <UserIcon size="12" />
-    <div>{cookiesUtil.get(cookiesNames.FULL_NAME)}</div>
+    <TextWrapper>{cookiesUtil.get(cookiesNames.FULL_NAME)}</TextWrapper>
   </Flex>
 );
 

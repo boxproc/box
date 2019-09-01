@@ -27,7 +27,6 @@ const Transactions: React.FC<TransactionsProps> = ({
       title="Transactions"
       data={ledgerTransactions}
       columns={tableColumns}
-      hint="Double Click on Row to View Transaction"
       editModalName={modalNames.LEDGER_TRANSACTION}
       setCurrentIdAction={setLedgerTransactionId}
       FilterForm={

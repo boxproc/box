@@ -30,7 +30,7 @@ const ProductLimitsFeesCommissionsForm: React.FC<ProductLimitsFeesCommissionsFor
       <ProductLimitsFeesCommissions />
       <Hr />
       <OkCancelButtons
-        okText="Save Limits Fees and Commissions"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

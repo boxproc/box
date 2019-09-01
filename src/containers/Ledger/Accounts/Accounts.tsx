@@ -38,7 +38,6 @@ const Accounts: React.FC<AccountsProps> = ({
       title="Accounts"
       data={ledgerAccounts}
       columns={tableColumns}
-      hint="Double Click on Row to View Account"
       addNewModalName={modalNames.ADD_LEDGER_ACCOUNT}
       editModalName={modalNames.EDIT_LEDGER_ACCOUNT}
       setCurrentIdAction={setLedgerAccountsId}

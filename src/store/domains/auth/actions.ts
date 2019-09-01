@@ -63,13 +63,12 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
-          await dispatch(userLogout());
-          // cookiesUtil.remove(cookiesNames.SESSION_ID);
-        }
+        await dispatch(userLogout());
 
-        // dispatch(push(`${basePath}login`));
-        urlUtil.openLocation(`${basePath}login`);
+        if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
+          urlUtil.openLocation(`${basePath}login`);
+          cookiesUtil.remove(cookiesNames.SESSION_ID);
+        }
       },
       dispatch
     );

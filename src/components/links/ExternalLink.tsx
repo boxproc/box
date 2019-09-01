@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 interface ExternalLinkWrapperProps {
   grayStyle?: boolean;
-  underline?: boolean;
 }
 
 const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
@@ -18,21 +17,9 @@ const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
   font-weight: ${({ grayStyle }) => grayStyle ? '500' : 'normal'};
   text-transform: capitalize;
 
-  ${({ theme, underline }) => underline && `
-    .text {
-      border-bottom: 1px solid transparent;
-    }
-
-    &:hover .text {
-      border-bottom-color: ${theme.normalAccentColor};
-    }
-  `}
-
-  ${({ theme, underline }) => !underline && `
-    &:hover * {
-      color: ${theme.normalAccentColor};
-    }
-  `}
+  &:hover * {
+    color: ${({ theme }) => theme.normalAccentColor};
+  }
 `;
 
 const LinkIcon = styled(LinkExternal)`
@@ -44,21 +31,18 @@ interface ExternalLinkProps {
   link: string;
   text: string;
   grayStyle?: boolean;
-  underline?: boolean;
 }
 
 const ExternalLink: React.FC<ExternalLinkProps> = ({
   link,
   text,
   grayStyle = false,
-  underline = false,
 }) => {
   return (
     <ExternalLinkWrapper
       href={link}
       title={link}
       grayStyle={grayStyle}
-      underline={underline}
       target="_blank"
       rel="noopener noreferrer"
     >

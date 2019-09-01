@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { withEditTable, WithEditTableProps } from 'components/HOCs';
 import { Table, TableNoData } from 'components/Table';
+
+import { withEditTable, WithEditTableProps } from './withEditTable';
 
 interface TablePageProps extends WithEditTableProps {
   data: Array<object>;
@@ -13,6 +14,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     data,
     columns,
     onRowClick,
+    activeRowChild,
     ...tablePageProps
   } = props;
 
@@ -20,6 +22,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     <Table
       data={data}
       columns={columns}
+      activeRowChild={activeRowChild}
       getTrGroupProps={onRowClick}
       NoDataComponent={TableNoData}
       {...tablePageProps}

@@ -57,12 +57,10 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
           justifyContent="space-between"
           className={menuClasses.MENU_TITLE}
         >
-          <Box className="highlight-link">
-            {title}
-          </Box>
+          {title}
           {hasChildren && parentId &&
             <Box ml="5px">
-              <ChevronIcon className="chevron-icon"/>
+              <ChevronIcon className="chevron-icon" />
             </Box>
           }
         </Flex>

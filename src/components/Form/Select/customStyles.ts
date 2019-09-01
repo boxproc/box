@@ -111,7 +111,7 @@ export const customStyles: StylesConfig = {
       ...provided,
       fontSize: '13px',
       lineHeight: '17px',
-      color: isCustomSingleValue ? theme.blackColor : 'inherit',
+      color: theme.blackColor,
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
   },

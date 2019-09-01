@@ -30,13 +30,13 @@ export const T2 = styled.h2<TitleProps>`
   font-family: ${({ theme }) => theme.decorateFont};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   text-transform: capitalize;
-  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity5};
+  color: ${({ theme, color }) => color ? color : theme.darkGrayColor};
 `;
 
 export const T3 = styled.h3<TitleProps>`
   margin-bottom: 10px;
   font-size: 18px;
-  color: ${({ theme, color }) => color ? color : theme.blackColorOpacity8};
+  color: ${({ theme, color }) => color ? color : theme.darkGrayColor};
 `;
 
 interface ParagraphProps {
@@ -59,15 +59,15 @@ interface HrProps {
 }
 
 export const Hr = styled.div<HrProps>`
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 9px;
   border-top: 1px solid ${({ theme, accentColor }) =>
     accentColor ? 'transparent' : theme.lightGrayColor};
   width: 100%;
   ${({ accentColor }) => accentColor && highlightCss};
 
   &:before {
-    top: -6px;
+    top: -5px;
   }
 `;
 

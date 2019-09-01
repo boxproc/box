@@ -12,16 +12,16 @@ import {
   DeleteAdminSysPropAction,
   FilterAdminSysPropsAction,
   GetAdminSysPropsAction,
+  SetAdminSysPropIdAction,
   UpdateAdminSysPropsAction,
 } from './actionTypes';
-
+import { selectCurrentAdminSysPropsItem } from './selectors';
 import {
   AdminSysPropFilterParams,
   AdminSysPropFilterParamsPrepared,
   EditableAdminSysProp,
   EditableAdminSysPropPrepared,
 } from './types';
-
 import {
   prepareAdminSysPropFilterParams,
   prepareEditableAdminSysPropItemValues,
@@ -36,8 +36,8 @@ import { cookiesUtil, errorDecoratorUtil } from 'utils';
 export type GetAdminSysProps = () => GetAdminSysPropsAction;
 export type HandleGetAdminSysProps = VoidPromiseThunk;
 
-export type DeleteAdminSysProp = (propName: string) => DeleteAdminSysPropAction;
-export type HandleDeleteAdminSysProp = (propName: string) => Thunk<void>;
+export type DeleteAdminSysProp = (id: string) => DeleteAdminSysPropAction;
+export type HandleDeleteAdminSysProp = (id: string) => Thunk<void>;
 
 export type AddAdminSysProp = (propValues: EditableAdminSysPropPrepared) =>
   AddAdminSysPropAction;
@@ -51,15 +51,18 @@ export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepare
   FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = (filterParams: AdminSysPropFilterParams) => Thunk<void>;
 
+export type SetAdminSysPropId = (id: string) => SetAdminSysPropIdAction;
+export type HandleSetAdminSysPropId = (id: string) => void;
+
 export const getAdminSysProps: GetAdminSysProps = () => ({
   type: ActionTypeKeys.GET_ADMIN_SYS_PROPS,
   payload: api.getAdminSysProps(),
 });
 
-export const deleteAdminSysProp: DeleteAdminSysProp = propName => ({
+export const deleteAdminSysProp: DeleteAdminSysProp = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
-  payload: api.deleteAdminSysProp(propName),
-  meta: propName,
+  payload: api.deleteAdminSysProp(id),
+  meta: id,
 });
 
 export const addAdminSysProp: AddAdminSysProp = propValues => ({
@@ -75,7 +78,11 @@ export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
 export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
   type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
   payload: api.filterAdminSysProps(filterParams),
-  meta: filterParams,
+});
+
+export const setAdminSysPropId: SetAdminSysPropId = id => ({
+  type: ActionTypeKeys.SET_ADMIN_SYS_PROP_ID,
+  payload: id,
 });
 
 export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
@@ -91,19 +98,17 @@ export const handleGetAdminSysProps: HandleGetAdminSysProps = () =>
         if (formValues(state)) {
           const preparedValues = prepareAdminSysPropFilterParams(formValues(state));
           await dispatch(filterAdminSysProps(preparedValues));
-        } else {
-          await dispatch(getAdminSysProps());
         }
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = propName =>
+export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteAdminSysProp(propName));
+        await dispatch(deleteAdminSysProp(id));
       },
       dispatch
     );
@@ -125,10 +130,14 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
   };
 
 export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
+        const state = getState();
+        const preparedValues = prepareEditableAdminSysPropItemValues({
+          ...selectCurrentAdminSysPropsItem(state),
+          ...propValues,
+        });
 
         await dispatch(updateAdminSysProps(preparedValues));
         await dispatch(handleGetAdminSysProps());
@@ -148,3 +157,6 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = filterParams
       dispatch
     );
   };
+
+export const handleSetAdminSysPropId: HandleSetAdminSysPropId = id =>
+  setAdminSysPropId(id);

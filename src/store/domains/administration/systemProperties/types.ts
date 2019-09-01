@@ -2,7 +2,7 @@ import { ImmutableArray } from 'seamless-immutable';
 import { ResponseStatusType } from 'types';
 
 export interface EditableAdminSysProp {
-  propertyName?: string;
+  id?: string;
   lockedFlag?: boolean;
   currentValue?: string | number;
 }
@@ -14,7 +14,7 @@ export interface EditableAdminSysPropPrepared {
 }
 
 export interface AdminSysPropFilterParams {
-  propertyName?: string;
+  id?: string;
 }
 
 export interface AdminSysPropFilterParamsPrepared {
@@ -30,7 +30,7 @@ export interface AdminSysPropsItemResp {
 }
 
 export interface AdminSysPropsItem {
-  propertyName: string;
+  id: string;
   currentValue: string | number;
   previousValue: string | number;
   lastDatetime: string;
@@ -43,5 +43,5 @@ export interface AdminSysPropsDataResp extends ResponseStatusType {
 
 export interface AdminSysPropsState {
   systemProperties: ImmutableArray<AdminSysPropsItemResp>;
-  systemPropertiesFilterParams: AdminSysPropFilterParamsPrepared;
+  currentSysPropId: string;
 }

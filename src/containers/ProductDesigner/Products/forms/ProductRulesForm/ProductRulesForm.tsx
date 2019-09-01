@@ -54,7 +54,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         eventValue={eventValue}
       />
       <OkCancelButtons
-        okText="Save Rules"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

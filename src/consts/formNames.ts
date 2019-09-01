@@ -1,23 +1,19 @@
 export enum formNames {
-  // Login
   USER_LOGIN = 'userLoginForm',
 
-  // System Properties
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
 
-  // Product
   PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'addProductForm',
-  GENERAL_PRODUCT = 'editGeneralProduct',
-  PRODUCT_DETAILS = 'editProductDetails',
-  PRODUCT_RULES = 'editProductRules',
-  PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissions',
-  PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCounters',
-  PRODUCT_APRS = 'productAPRs',
+  GENERAL_PRODUCT = 'editGeneralProductForm',
+  PRODUCT_DETAILS = 'editProductDetailsForm',
+  PRODUCT_RULES = 'editProductRulesForm',
+  PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissionsForm',
+  PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCountersForm',
+  PRODUCT_APRS = 'productAPRsForm',
 
-  // User and User Groups
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
   EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
@@ -27,18 +23,14 @@ export enum formNames {
   USER = 'userForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
 
-  // Cycle
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
-  CYCLES_EDITOR = 'cyclesEditorForm',
+  CYCLES_EDITOR_FILTER = 'adminCycleEditorFilterForm',
 
-  // Event Data Elements
   ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
 
-  // Scheduler
   SCHEDULER = 'schedulerForm',
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
 
-  // Ledger
   LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
   ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
   EDIT_LEDGER_CUSTOMER = 'editLedgerCustomer',
@@ -50,7 +42,6 @@ export enum formNames {
   LEDGER_CARDS = 'cardForm',
   LEDGER_ACCOUNT_CARDS = 'ledgerAccountCards',
 
-  // User activity
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 
   ADMIN_ENDPOINT = 'adminEnpoints',

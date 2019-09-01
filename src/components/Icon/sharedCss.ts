@@ -13,10 +13,10 @@ export interface IconColorProps {
 
 export const staticAccentStyle = css<IconColorProps>`
   :hover ${({ el = 'path' }) => el} {
-    stroke: ${({ hover, theme }) => hover || theme.normalAccentColor }};
+    stroke: ${({ hover, theme }) => hover || theme.normalAccentColor}};
   }
 
-  ${({el = 'path'}) => el} {
+  ${({ el = 'path' }) => el} {
     stroke: ${({ color, theme }) => color || theme.blackColor}};
   }
 `;

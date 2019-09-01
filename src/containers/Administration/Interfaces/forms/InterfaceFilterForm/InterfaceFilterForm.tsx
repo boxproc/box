@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { OkCancelButtons } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
@@ -51,12 +51,8 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
+        <Button text="Show" />
       </Box>
-      <OkCancelButtons
-        okText="Show"
-        cancelText="Reset"
-        disabledCancel={true}
-      />
     </form >
   );
 };

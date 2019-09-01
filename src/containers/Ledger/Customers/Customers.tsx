@@ -44,7 +44,6 @@ const Customers: React.FC<CustomersProps> = ({
       title="Customers"
       data={ledgerCustomers}
       columns={tableColumns}
-      hint="Double Click on Row to Edit Customer"
       addNewModalName={modalNames.ADD_LEDGER_CUSTOMER}
       editModalName={modalNames.EDIT_LEDGER_CUSTOMER}
       setCurrentIdAction={getLedgerCustomerId}

@@ -30,7 +30,7 @@ const ProductAuxiliaryCountersForm: React.FC<ProductAuxiliaryCountersFormAllProp
       <ProductAuxiliaryCounters />
       <Hr />
       <OkCancelButtons
-        okText="Save Auxiliary counters"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

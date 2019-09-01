@@ -13,7 +13,6 @@ export const cycleEditorColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: SCell<'id'>) => (
@@ -26,7 +25,6 @@ export const cycleEditorColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution ID" />,
     accessor: 'institutionId',
     Cell: (props: SCell<'institutionId'>) => (
@@ -37,7 +35,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Description" />,
     accessor: 'description',
     Cell: (props: SCell<'description'>) => (
@@ -48,7 +45,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Cycle Type" />,
     accessor: 'cycleType',
     Cell: (props: SCell<'cycleType'>) => (
@@ -59,7 +55,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: SCell<'status'>) => (
@@ -70,7 +65,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Monthly Cycle First Day" />,
     accessor: 'monthlyCycleFirstDay',
     Cell: (props: SCell<'monthlyCycleFirstDay'>) => (
@@ -82,7 +76,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Weekly Cycle First Day" />,
     accessor: 'weeklyCycleFirstDay',
     Cell: (props: SCell<'weeklyCycleFirstDay'>) => (
@@ -93,7 +86,6 @@ export const cycleEditorColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Fixed Cycle Number of Days" />,
     accessor: 'fixedCycleNumberOfDays',
     Cell: (props: SCell<'fixedCycleNumberOfDays'>) => (

@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { OkCancelButtons } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { CheckboxField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
@@ -55,18 +55,14 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
             />
           </Box>
         </Flex>
+        <Button text="Show" />
       </Box>
-      <OkCancelButtons
-        okText="Show"
-        cancelText="Reset"
-        disabledCancel={true}
-      />
     </form >
   );
 };
 
 export default reduxForm<{}, CycleEditorFilterProps>({
-  form: formNames.SCHEDULER,
+  form: formNames.CYCLES_EDITOR_FILTER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(CyclesEditorFilter);

@@ -12,7 +12,6 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    filterable: true,
     Header: <Header title="ID" />,
     accessor: 'id',
     Cell: (props: CCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: CCell<'institutionId'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="First Name" />,
     accessor: 'firstName',
     Cell: (props: CCell<'firstName'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: CCell<'lastName'>) => (
@@ -57,7 +53,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: CCell<'status'>) => (
@@ -68,7 +63,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Date of Birth" />,
     accessor: 'dateOfBirth',
     Cell: (props: CCell<'dateOfBirth'>) => (
@@ -79,7 +73,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Email" />,
     accessor: 'email',
     Cell: (props: CCell<'email'>) => (
@@ -90,7 +83,6 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    filterable: true,
     Header: <Header title="Mobile Phone" />,
     accessor: 'mobilePhoneNumber',
     Cell: (props: CCell<'mobilePhoneNumber'>) => (

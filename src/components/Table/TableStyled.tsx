@@ -2,7 +2,11 @@
 
 import 'react-table/react-table.css';
 
-export const TableStyled = styled.div`
+interface TableStyledProps {
+  activeRowChild: number;
+}
+
+export const TableStyled = styled.div<TableStyledProps>`
   margin-bottom: 20px;
 
   .ReactTable .rt-thead .rt-resizable-header-content,
@@ -86,8 +90,7 @@ export const TableStyled = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  .ReactTable .rt-tbody .rt-tr-group:hover:before,
-  .ReactTable .rt-tbody .rt-tr-group:hover:last-child:before {
+  .ReactTable .rt-tbody .rt-tr-group:hover:before {
     content: '';
     position: absolute;
     left: 0;
@@ -100,6 +103,26 @@ export const TableStyled = styled.div`
       ${({ theme }) => theme.lighterAccentColor} 50%,
       hsla(0,0%,0%,0) 100%);
   }
+
+  ${({ activeRowChild, theme }) => activeRowChild && `
+    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowChild}) {
+      background-color: ${theme.lighterGrayColor};
+      box-shadow: ${theme.boxShadow};
+    }
+    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowChild}):before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: o;
+      height: 100%;
+      width: 0.12rem;
+      display: block;
+      background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
+        ${theme.lighterAccentColor} 50%,
+        hsla(0,0%,0%,0) 100%);
+    }
+  `}
 
 
   .ReactTable .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
@@ -122,7 +145,7 @@ export const TableStyled = styled.div`
   /* header */
   .ReactTable .-sort-asc .up-icon path,
   .ReactTable .-sort-desc .down-icon path {
-    stroke: ${({ theme }) => theme.blackColorOpacity8};
+    stroke: ${({ theme }) => theme.blackColor};
   }
 
   .ReactTable .rt-thead.-filters input {

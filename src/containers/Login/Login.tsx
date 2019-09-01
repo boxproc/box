@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -22,7 +22,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   max-width: 350px;
   width: 100%;
-  min-height: calc(100vh - 205px);
+  min-height: calc(100vh - 210px);
   justify-content: center;
   margin: 0 auto;
   text-align: left;
@@ -82,19 +82,23 @@ const Login: React.FC<LoginPropsAllProps> = ({
         validate={[formErrorUtil.required]}
         autoFocus={isPasswordFocus}
       />
-      <Field
-        id="rememberMe"
-        name="rememberMe"
-        component={CheckboxField}
-        label="Remember me"
-        disabled={false}
-      />
-      <Box mt="20px">
-        <Button
-          text="Log in"
-          bordered={true}
-        />
-      </Box>
+      <Flex
+        flexDirection="column"
+        alignItems="flex-end"
+      >
+        <Box>
+          <Field
+            id="rememberMe"
+            name="rememberMe"
+            component={CheckboxField}
+            label="Remember me"
+            disabled={false}
+          />
+        </Box>
+        <Box mt="7px">
+          <Button text="Log in" />
+        </Box>
+      </Flex>
     </FormWrapper>
   );
 };

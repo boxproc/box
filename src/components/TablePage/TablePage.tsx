@@ -45,18 +45,20 @@ export const TablePage: React.FC<TablePageProps> = props => {
 
   return (
     <React.Fragment>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex alignItems="baseline">
+        <Box mr="15px">
+          <ExternalLink
+            text="HELP"
+            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+            grayStyle={true}
+          />
+        </Box>
         <T2>{title}</T2>
-        <ExternalLink
-          text="HELP"
-          link={stringsUtil.getCurrentBPSUrl(location.pathname)}
-          grayStyle={true}
-        />
       </Flex>
       {FilterForm && (
         <Box mb="7px">
           <Button
-            text={(isFilter ? 'Hide' : 'Show') + ' Filters'}
+            text={(isFilter ? 'Hide' : 'Show') + ' Filter'}
             iconName="filter"
             onClick={() => setIsFilter(!isFilter)}
           />

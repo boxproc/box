@@ -11,7 +11,7 @@ export const selectUiItems = createSelector(
       return {
         id: item.ui_item,
         parentId: item.ui_item.split('/').slice(0, -1).join('/') || null,
-        title: item.ui_item.split('/').slice(-1).join('').split('_').join(' ') || null,
+        title: item.description,
         type: item.item_type,
       };
     });

@@ -1,15 +1,26 @@
 import React from 'react';
 import styled from 'theme';
 
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
 
 import { messages } from 'consts';
 
-const Wrapper = styled(Box)`
-  position: relative;
+interface WrapperProps {
+  rightPosition?: boolean;
+}
+
+const Wrapper = styled(Flex) <WrapperProps>`
+  align-items: center;
+  justify-content: ${({ rightPosition }) => rightPosition ? 'flex-end' : 'flex-start'};
+  width=${({ rightPosition }) => rightPosition ? '100%' : 'auto'};
+  margin: 0 -10px;
+
+  .btn-wrapper {
+    position: relative;
+  }
 `;
 
 interface OkCancelButtonsProps {
@@ -44,12 +55,8 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   cancelConfirmationTitle = messages.CLOSE_MODAL_WINDOW,
 }) => {
   return (
-    <Flex
-      alignItems="center"
-      justifyContent={rightPosition ? 'flex-end' : 'flex-start'}
-      width={rightPosition ? '100%' : 'auto'}
-    >
-      <Wrapper mr="15px" mt="10px">
+    <Wrapper rightPosition={rightPosition} >
+      <div className="btn-wrapper">
         <Button
           text={okText}
           disabled={disabledOk}
@@ -62,8 +69,8 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
             position="top"
           />
         )}
-      </Wrapper>
-      <Wrapper mt="10px">
+      </div>
+      <div className="btn-wrapper">
         <Button
           text={cancelText}
           onClick={onCancel}
@@ -81,7 +88,7 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
             position="top"
           />
         )}
-      </Wrapper>
-    </Flex>
+      </div>
+    </Wrapper>
   );
 };

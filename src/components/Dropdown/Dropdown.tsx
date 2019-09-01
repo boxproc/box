@@ -44,7 +44,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     cursor: pointer;
 
     * {
-      color: ${({ theme, isActive}) => isActive && theme.normalAccentColor }
+      color: ${({ theme, isActive }) => isActive && theme.normalAccentColor}
     }
 
     &:hover * {
@@ -55,7 +55,6 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
 
 const ToggleButton = styled(ArrowDropDown)`
   color: ${({ theme }) => theme.grayColor};
-  padding-top: 1px;
 
   &:hover {
     color: ${({ theme }) => theme.normalAccentColor};
@@ -116,7 +115,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             ref={dropdownToggleBtnRef}
           >
             {ToggleButtonComponent && ToggleButtonComponent}
-            <ToggleButton size="23" />
+            <ToggleButton size="21" />
           </div>
         </Box>
       </Flex>

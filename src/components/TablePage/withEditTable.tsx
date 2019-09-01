@@ -19,6 +19,7 @@ export interface WithEditTableProps {
   editModalName: string;
   onRowClick: () => object;
   contextMenuItems?: Array<ContextMenuItem>;
+  activeRowChild?: number;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -30,6 +31,7 @@ export const withEditTable = <OriginProps extends {}>(
       handleOpenModal,
       editModalName,
       onRowClick,
+      activeRowChild,
       contextMenuItems = [],
       ...originProps
     } = props;
@@ -37,6 +39,7 @@ export const withEditTable = <OriginProps extends {}>(
     const [contextMenuState, setContextMenuState] = React.useState({
       currentId: null,
       isVisible: false,
+      selected: null,
     });
 
     const openCurrentRowInModal = React.useCallback(
@@ -51,24 +54,31 @@ export const withEditTable = <OriginProps extends {}>(
 
     const onContextMenuClick = (e: Event, value: ContextMenuItem) => value.action();
 
-    const menuItems = [
-      editModalName && {
-        name: 'Edit',
-        icon: 'edit',
-        action: () => openCurrentRowInModal(contextMenuState.currentId),
-      },
+    let menuItems = [
       ...contextMenuItems,
     ];
+
+    if (editModalName) {
+      menuItems = [
+        {
+          name: 'Edit',
+          icon: 'edit',
+          action: () => openCurrentRowInModal(contextMenuState.currentId),
+        },
+        ...menuItems,
+      ];
+    }
 
     const handleClickOnRow = React.useCallback(
       (_, rowInfo: RowInfo) => {
         const isLocked = rowInfo.original.lockedFlag;
         const id = rowInfo.original.id;
+        const childIndex = rowInfo.index + 1;
 
         if (isLocked) {
           return null;
         }
-        console.log('menuItems', menuItems);
+
         return {
           onDoubleClick: () => {
             return editModalName ? openCurrentRowInModal(id) : null;
@@ -81,6 +91,7 @@ export const withEditTable = <OriginProps extends {}>(
             setContextMenuState({
               currentId: id,
               isVisible: true,
+              selected: childIndex,
             });
           },
         };
@@ -93,6 +104,7 @@ export const withEditTable = <OriginProps extends {}>(
         <ContextMenuTrigger id="tableContextMenu">
           <Component
             onRowClick={handleClickOnRow}
+            activeRowChild={contextMenuState.selected}
             {...originProps as OriginProps}
           />
         </ContextMenuTrigger>
@@ -104,6 +116,7 @@ export const withEditTable = <OriginProps extends {}>(
           onHide={() => setContextMenuState({
             currentId: null,
             isVisible: false,
+            selected: null,
           })}
         />
       </React.Fragment>

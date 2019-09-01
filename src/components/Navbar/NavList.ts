@@ -6,32 +6,29 @@ export const NavList = styled.div`
   position: relative;
   display: flex;
   align-items: flex-start;
-  font-size: 15px;
+  line-height: 1.4;
   .chevron-icon {
     transform: rotate(-90deg);
-  }
-  .highlight-link {
-    position: relative;
-    border-bottom: 1px solid ${({ theme }) => theme.lightGrayColor};
-    line-height: 1.4;
   }
   .${menuClasses.MENU_TITLE} {
     position: relative;
     cursor: pointer;
-    padding: 10px;
-    text-transform: capitalize;
+    padding: 7px 10px 6px;
+    // text-transform: capitalize;
+  }
+  .${menuClasses.MENU_ITEM} {
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .2pt;
+    color: ${({ theme }) => theme.darkGrayColor};
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
     margin: 0 1px;
     background-color: ${({ theme }) => theme.whiteColor};
     z-index: 100
-    &:hover {
-      background-color: ${({ theme }) => theme.lighterGrayColor};
-      & > .${menuClasses.MENU_TITLE} .highlight-link {
-        border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
-      }
-    }
     &:before {
       content: "";
       display: block;
@@ -46,17 +43,13 @@ export const NavList = styled.div`
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
-      & > .${menuClasses.MENU_TITLE} {
-        .highlight-link {
-          border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
-        }
-      }
     }
   }
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0;
     top: calc(100% + 14px);
+    padding: 1px 0;
     display: flex;
     flex-direction: column;
     display: none;
@@ -64,13 +57,23 @@ export const NavList = styled.div`
     background-color: ${({ theme }) => theme.whiteColor};
     box-shadow: ${({ theme }) => theme.boxShadow};
     border: 1px solid ${({ theme }) => theme.darkGrayColor};
-    font-size: 14px;
     .${menuClasses.SUB_MENU} {
       left: calc(100% + 1px);
-      top: -1px;
+      top: -2px;
     }
-    .highlight-link {
-      border-bottom: 1px solid transparent;
+    .${menuClasses.MENU_ITEM} {
+      border-radius: 0;
+      text-transform: none;
+      font-size: 14px;
+      font-weight: normal;
+      letter-spacing: normal;
+      color: ${({ theme }) => theme.blackColor};
+    }
+  }
+  .${menuClasses.MENU_ITEM}  {
+    &:hover {
+      background-color: ${({ theme }) => theme.lighterGrayColor};
+      color: ${({ theme }) => theme.normalAccentColor};
     }
   }
 `;

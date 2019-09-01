@@ -30,7 +30,7 @@ const ProductAprsForm: React.FC<ProductAprsFormAllProps> = ({
       <ProductAprs />
       <Hr />
       <OkCancelButtons
-        okText="Save APRs"
+        okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}

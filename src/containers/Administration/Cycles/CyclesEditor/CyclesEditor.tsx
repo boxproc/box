@@ -38,10 +38,9 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
 
   return (
     <TablePage
-      title="Cycles Editor"
+      title="Cycles"
       data={adminCyclesEditorItems}
       columns={cycleEditorColumns}
-      hint="Double Click on Row to Edit Cycle Editor or Delete Record"
       addNewModalName={modalNames.ADD_ADMIN_CYCLE_EDITOR}
       editModalName={modalNames.EDIT_CYCLE_EDITOR}
       setCurrentIdAction={setAdminCycleEditorId}

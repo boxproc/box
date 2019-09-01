@@ -35,7 +35,6 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       title="Users Group"
       data={adminUsersGroupItems}
       columns={tableColumns}
-      hint="Double Click on Row to Edit User Group"
       addNewModalName={modalNames.ADD_ADMIN_USERS_GROUP}
       editModalName={modalNames.EDIT_ADMIN_USERS_GROUP}
       setCurrentIdAction={setAdminUsersGroupId}

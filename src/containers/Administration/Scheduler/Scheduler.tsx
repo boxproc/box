@@ -38,37 +38,53 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     [getAdminSchedulerJobs]
   );
 
+  const contextMenuItems = [
+    {
+      name: 'Execute now',
+      action: () => sendAdminSchedulerAction({
+        taskId: currentSchedulerJobId,
+        taskCommand: 'execute_task',
+      }),
+    },
+    {
+      name: 'Stop job',
+      action: () => sendAdminSchedulerAction({
+        taskId: currentSchedulerJobId,
+        taskCommand: 'execute_task',
+      }),
+    },
+    {
+      name: 'Start job',
+      action: () => sendAdminSchedulerAction({
+        taskId: currentSchedulerJobId,
+        taskCommand: 'execute_task',
+      }),
+    },
+    {
+      name: 'Pause job',
+      action: () => sendAdminSchedulerAction({
+        taskId: currentSchedulerJobId,
+        taskCommand: 'execute_task',
+      }),
+    },
+    {
+      name: 'Resume job',
+      action: () => sendAdminSchedulerAction({
+        taskId: currentSchedulerJobId,
+        taskCommand: 'execute_task',
+      }),
+    },
+  ];
+
   return (
     <TablePage
       title="Scheduler"
       data={adminSchedulerJobsItems}
       columns={tableColumns}
-      hint="Double Click on Row to Edit Scheduler"
       addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
       editModalName={modalNames.EDIT_ADMIN_SCHEDULER}
       setCurrentIdAction={setAdminSchedulerJobId}
-      contextMenuItems={[
-        { name: 'Execute now', action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
-        }) },
-        { name: 'Stop job', action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
-        }) },
-        { name: 'Start job', action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
-        }) },
-        { name: 'Pause job', action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
-        }) },
-        { name: 'Resume job', action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
-        }) },
-      ]}
+      contextMenuItems={contextMenuItems}
       FilterForm={
         <SchedulerFilter />
       }

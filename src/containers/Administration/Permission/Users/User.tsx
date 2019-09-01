@@ -44,7 +44,6 @@ export const User: React.FC<UserFilterProps> = ({
       title="Users"
       data={adminUserItems}
       columns={tableColumns}
-      hint="Double Click on Row to Edit User"
       addNewModalName={modalNames.ADD_ADMIN_USER}
       editModalName={modalNames.EDIT_ADMIN_USER}
       setCurrentIdAction={setAdminUserId}

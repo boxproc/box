@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { OkCancelButtons } from 'components/Buttons';
+import { Button } from 'components/Buttons';
 import { InputField } from 'components/Form';
 
 import { formNames } from 'consts';
@@ -28,27 +28,23 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[ 1, 1, 1, 700]} mx="-10px">
+      <Box width="700px" mx="-10px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[ 1, 3 / 4, 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
-              id="propertyName"
-              name="propertyName"
+              id="id"
+              name="id"
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
             />
           </Box>
         </Flex>
+        <Button text="Show" />
       </Box>
-      <OkCancelButtons
-        okText="Show"
-        cancelText="Reset"
-        disabledCancel={true}
-      />
     </form >
   );
 };

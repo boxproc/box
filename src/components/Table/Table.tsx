@@ -42,7 +42,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   `}
 
   .title {
-    color: ${({ theme }) => theme.blackColorOpacity8};
+    color: ${({ theme }) => theme.blackColor};
     font-weight: 500;
     font-size: 11px;
     line-height: 1.6;
@@ -150,6 +150,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   className?: string;
   title?: string;
   isHeader?: boolean;
+  activeRowChild?: number;
 }
 
 export const Table: React.FC<TableProps> = props => {
@@ -159,11 +160,14 @@ export const Table: React.FC<TableProps> = props => {
     isHeader = true,
     data,
     pageSize = 10,
+    activeRowChild,
   } = props;
 
   return (
     <React.Fragment>
-      <TableStyled>
+      <TableStyled
+        activeRowChild={activeRowChild}
+      >
         <ReactTable
           {...props as TableProps}
           sortable={sortable}
@@ -173,7 +177,7 @@ export const Table: React.FC<TableProps> = props => {
           showPageSizeOptions={false}
           defaultPageSize={pageSize}
           multiSort={false}
-          resizable={false}
+          resizable={true}
           TheadComponent={
             isHeader && data && data.length > 0
               ? ReactTableDefaults.TheadComponent
