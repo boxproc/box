@@ -39,6 +39,11 @@ export const typeOptions = [
   { value: 'T', label: 'Tribe' },
   { value: 'U', label: 'Tutuka' },
 ];
+
+export const typeOfInterfaces = [
+  { value: 'T', label: 'Tribe card processing' },
+  { value: 'U', label: 'Tutuka card processing' },
+];
 export const protocolTypesOptions = [
   { value: 'R', label: 'REST' },
   { value: 'S', label: 'SOAP' },
