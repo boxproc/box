@@ -42,6 +42,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Port" />,
     accessor: 'port',
@@ -63,10 +64,22 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
     Cell: (props: ACell<'status'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 150,
+    sortable: true,
+    Header: <Header title="Type" />,
+    accessor: 'type',
+    Cell: (props: ACell<'type'>) => (
       <Cell
         value={props.value}
       />

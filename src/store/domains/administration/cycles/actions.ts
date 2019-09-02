@@ -1,4 +1,4 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { cookiesNames, formNames, modalNames, } from 'consts';
 
@@ -8,13 +8,22 @@ import {
   ActionTypeKeys,
   AddAdminCycleEditorAction,
   DeleteAdminCycleEditorAction,
+  FilterCyclesAction,
   GetAdminCycleEditorAction,
   SetAdminCycleEditorIdAction,
   UpdateAdminCycleEditorAction,
 } from './actionTypes';
 import * as api from './api';
-import { AdminCyclesEditorEditableItem, AdminCyclesEditorItem } from './types';
-import { prepareAdminCyclesEditorValuesUnderscore } from './utils';
+import {
+  AdminCyclesEditorEditableItem,
+  AdminCyclesEditorItem,
+  CycleFilterParams,
+  CycleFilterParamsPrepared
+} from './types';
+import {
+  prepareAdminCyclesEditorValuesUnderscore,
+  prepareCyclesFiltersParamsToSend
+} from './utils';
 
 import { apiClient } from 'services';
 
@@ -37,6 +46,9 @@ export type UpdateAdminCyclesEditor =
   (propValues: Partial<AdminCyclesEditorItem>) => UpdateAdminCycleEditorAction;
 export type HandleUpdateAdminCyclesEditor =
   (propValues: Partial<AdminCyclesEditorEditableItem>) => Thunk<void>;
+
+export type FilterCycles = (params: CycleFilterParamsPrepared) => FilterCyclesAction;
+export type HandleFilterCycles = (params: CycleFilterParams) => Thunk<void>;
 
 export type SetAdminCycleEditorId = (id: number) => SetAdminCycleEditorIdAction;
 export type HandleSetAdminCycleEditorId = (id: number) => void;
@@ -66,15 +78,40 @@ export const setAdminCycleEditorId: SetAdminCycleEditorId = id => ({
   type: ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID,
   payload: id,
 });
+export const filterCycles: FilterCycles = params => ({
+  type: ActionTypeKeys.FILTER_CYCLES,
+  payload: api.filterCycles(params),
+  meta: params,
+});
 
 export const handleGetAdminCyclesEditor: HandleGetAdminCyclesEditor = () =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
 
         apiClient.set('session_id', sessionId);
-        await dispatch(getAdminCycleEditor());
+        const formValues = getFormValues(formNames.CYCLES_EDITOR_FILTER);
+        const state = getState();
+
+        if (formValues(state)) {
+          const preparedValues = prepareCyclesFiltersParamsToSend(formValues(state));
+          await dispatch(filterCycles(preparedValues));
+        } else {
+          await dispatch(getAdminCycleEditor());
+        }
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterCycles: HandleFilterCycles = params =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareCyclesFiltersParamsToSend(params);
+
+        await dispatch(filterCycles(preparedValues));
       },
       dispatch
     );

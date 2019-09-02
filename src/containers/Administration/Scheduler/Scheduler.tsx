@@ -31,6 +31,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   sendAdminSchedulerAction,
   currentSchedulerJobId,
 }) => {
+
   React.useEffect(
     () => {
       getAdminSchedulerJobs();
@@ -45,6 +46,16 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+    },
+    {
+      name: 'Execute now and refresh table ',
+      action: () => sendAdminSchedulerAction(
+        {
+          taskId: currentSchedulerJobId,
+          taskCommand: 'execute_task',
+        },
+        { withRefresh: true }
+      ),
     },
     {
       name: 'Stop job',

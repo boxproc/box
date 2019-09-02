@@ -33,6 +33,12 @@ export const statusTypesOptions = [
   { value: 'D', label: 'Deleted' },
   { value: 'E', label: 'Execution pending' },
 ];
+
+export const typeOptions = [
+  { value: 'B', label: 'BOX API' },
+  { value: 'T', label: 'Tribe' },
+  { value: 'U', label: 'Tutuka' },
+];
 export const protocolTypesOptions = [
   { value: 'R', label: 'Rest' },
   { value: 'S', label: 'Soap' },

@@ -8,10 +8,12 @@ import { CheckboxField, SelectField } from 'components/Form';
 
 import { formNames } from 'consts';
 
+import { HandleFilterCycles } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface CycleEditorFilterProps {
   institutionsOptions: Array<SelectValues>;
+  filterCycles: HandleFilterCycles;
 }
 
 type CyclesEditorFilterAllProps = CycleEditorFilterProps &
@@ -20,9 +22,10 @@ type CyclesEditorFilterAllProps = CycleEditorFilterProps &
 const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
   handleSubmit,
   institutionsOptions,
+  filterCycles,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => filterCycles(data)),
     [handleSubmit]
   );
 

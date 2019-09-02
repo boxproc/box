@@ -6,6 +6,7 @@ import CyclesEditor from './CyclesEditor';
 import {
   AdminCycleEditorActionTypes,
   createLoadingSelector,
+  handleFilterCycles,
   handleGetAdminCyclesEditor,
   handleSetAdminCycleEditorId,
   selectAdminCycleEditorItems,
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminCyclesEditor: handleGetAdminCyclesEditor,
     setAdminCycleEditorId: handleSetAdminCycleEditorId,
+    filterCycles: handleFilterCycles,
   },
   dispatch
 );

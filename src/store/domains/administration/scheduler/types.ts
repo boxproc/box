@@ -32,6 +32,10 @@ export interface AdminSchedulerItemPrepared extends AdminSchedulerItemPreparedPl
   executableType: string | number;
 }
 
+export interface SetRefresh {
+  withRefresh?: boolean;
+}
+
 export interface AdminSchedulerEditableItem extends AdminSchedulerItemPreparedPlain {
   status: SelectValues;
   institutionId: SelectValues;

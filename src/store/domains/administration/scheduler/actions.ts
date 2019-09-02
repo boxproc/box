@@ -18,7 +18,8 @@ import {
   AdminSchedulerEditableItem,
   AdminSchedulerItem,
   AdminSchedulerJobAction,
-  AdminSchedulerJobActionPrepared
+  AdminSchedulerJobActionPrepared,
+  SetRefresh
 } from './types';
 import { prepareValuesToSend, prepareValuesToSendActions } from './utils';
 
@@ -40,9 +41,11 @@ export type DeleteAdminSchedulerJob = (id: string | number) => DeleteAdminSchedu
 export type HandleDeleteAdminSchedulerJob = (id: string | number) => Thunk<void>;
 
 export type SendAdminSchedulerAction =
- (values: Partial<AdminSchedulerJobAction>) => SendAdminSchedulerActionJobAction;
-export type HandleSendAdminSchedulerAction = (values: Partial<AdminSchedulerJobActionPrepared>) =>
-  Thunk<void>;
+  (values: Partial<AdminSchedulerJobAction>, withRefresh?: SetRefresh) =>
+    SendAdminSchedulerActionJobAction;
+export type HandleSendAdminSchedulerAction =
+  (values: Partial<AdminSchedulerJobActionPrepared>, withRefresh?: SetRefresh) =>
+    Thunk<void>;
 
 export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
   UpdateAdminSchedulerJobAction;
@@ -145,18 +148,22 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
     );
   };
 
-export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = values =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareValuesToSendActions(values);
-
-        await dispatch(sendAdminSchedulerAction(preparedValues));
-        await dispatch(handleGetAdminSchedulerJobs());
-      },
-      dispatch
-    );
-  };
+export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction =
+ (values, withRefresh) =>
+    async dispatch => {
+      errorDecoratorUtil.withErrorHandler(
+        async () => {
+          const preparedValues = prepareValuesToSendActions(values);
+          await dispatch(sendAdminSchedulerAction(preparedValues));
+          if (withRefresh) {
+            setInterval(async () => dispatch(console.log), 1000);
+          } else {
+            await dispatch(handleGetAdminSchedulerJobs());
+          }
+        },
+        dispatch
+      );
+    };
 
 export const handleSetAdminSchedulerJobId: HandleSetAdminSchedulerJobId = id =>
   setAdminSchedulerJobId(id);
