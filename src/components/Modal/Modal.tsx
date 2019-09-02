@@ -4,9 +4,9 @@ import { ModalWrapper } from './ModalWrapper';
 
 import { T2 } from 'components/Text';
 
-import { CloseModal, OpenModal } from 'store/domains';
+import { CloseModal, HandleSetActiveTableRowIndex, OpenModal } from 'store/domains';
 
-import { messages, modalNames } from 'consts';
+import { messages, modalNames, modalTypes } from 'consts';
 import styled from 'styled-components';
 
 const ModalTitle = styled(T2)`
@@ -17,6 +17,7 @@ const ModalTitle = styled(T2)`
 interface ModalProps {
   name: string;
   title?: string;
+  type?: string;
   closeModal: CloseModal;
   openModal: OpenModal;
   maxContainerWidth?: string;
@@ -25,6 +26,7 @@ interface ModalProps {
   accentClose?: boolean;
   closeOnBackdrop?: boolean;
   withCloseConfirmation?: boolean;
+  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -39,6 +41,8 @@ const Modal: React.FC<ModalProps> = ({
   accentClose = true,
   closeOnBackdrop = false,
   withCloseConfirmation = false,
+  setActiveTableRowIndex,
+  type,
 }) => {
   // React.useEffect(
   //   () => {
@@ -46,6 +50,15 @@ const Modal: React.FC<ModalProps> = ({
   //     return () => document.removeEventListener('keydown', handleCloseModalByKey);
   //   }
   // );
+
+  React.useEffect(
+    () => {
+      return type === modalTypes.EDIT_MODAL
+        ? () => setActiveTableRowIndex(null)
+        : () => null;
+    },
+    [setActiveTableRowIndex, type]
+  );
 
   const handleCloseModal = React.useCallback(
     withCloseConfirmation

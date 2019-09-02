@@ -67,7 +67,7 @@ export const Hr = styled.div<HrProps>`
   ${({ accentColor }) => accentColor && highlightCss};
 
   &:before {
-    top: -5px;
+    top: -6px;
   }
 `;
 

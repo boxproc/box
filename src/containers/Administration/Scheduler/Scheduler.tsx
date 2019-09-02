@@ -45,6 +45,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+      withConfirmation: true,
+      confirmationText: 'Execute now?',
     },
     {
       name: 'Stop job',
@@ -52,6 +54,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+      withConfirmation: true,
+      confirmationText: 'Stop job?',
     },
     {
       name: 'Start job',
@@ -59,6 +63,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+      withConfirmation: true,
+      confirmationText: 'Start job?',
     },
     {
       name: 'Pause job',
@@ -66,6 +72,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+      withConfirmation: true,
+      confirmationText: 'Pause job?',
     },
     {
       name: 'Resume job',
@@ -73,6 +81,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         taskId: currentSchedulerJobId,
         taskCommand: 'execute_task',
       }),
+      withConfirmation: true,
+      confirmationText: 'Resume job?',
     },
   ];
 

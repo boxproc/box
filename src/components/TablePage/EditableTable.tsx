@@ -14,7 +14,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     data,
     columns,
     onRowClick,
-    activeRowChild,
+    activeTableRowIndex,
     ...tablePageProps
   } = props;
 
@@ -22,7 +22,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     <Table
       data={data}
       columns={columns}
-      activeRowChild={activeRowChild}
+      activeRowIndex={activeTableRowIndex}
       getTrGroupProps={onRowClick}
       NoDataComponent={TableNoData}
       {...tablePageProps}

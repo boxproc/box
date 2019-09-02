@@ -47,4 +47,5 @@ export interface ConstsState {
   currencies: ImmutableArray<CurrencyItem>;
   countries: ImmutableArray<CountryItem>;
   institutions: ImmutableArray<InstitutionItemResp>;
+  activeTableRowIndex: number;
 }

@@ -150,7 +150,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   className?: string;
   title?: string;
   isHeader?: boolean;
-  activeRowChild?: number;
+  activeRowIndex?: number;
 }
 
 export const Table: React.FC<TableProps> = props => {
@@ -160,13 +160,13 @@ export const Table: React.FC<TableProps> = props => {
     isHeader = true,
     data,
     pageSize = 10,
-    activeRowChild,
+    activeRowIndex,
   } = props;
 
   return (
     <React.Fragment>
       <TableStyled
-        activeRowChild={activeRowChild}
+        activeRowIndex={activeRowIndex}
       >
         <ReactTable
           {...props as TableProps}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
@@ -31,6 +31,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title={`Account${accountAlias}`}
       maxContainerWidth={980}
       minContainerHeight={519}

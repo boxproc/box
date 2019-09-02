@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
@@ -30,6 +30,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     <Modal
       title="Edit Interface"
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm

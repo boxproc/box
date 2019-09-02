@@ -7,7 +7,7 @@ import Modal from 'components/Modal';
 import { Button } from 'components/Buttons';
 
 import { Hr } from 'components/Text';
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 import { CardForm } from 'containers/Ledger/Cards/forms';
 import { CloseModal, HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
 
@@ -32,6 +32,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title="Card"
       maxContainerWidth={550}
     >

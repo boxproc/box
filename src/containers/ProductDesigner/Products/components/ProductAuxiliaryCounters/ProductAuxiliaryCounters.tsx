@@ -24,18 +24,18 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 1 Description"
             placeholder="Enter Aux Counter 1 Description"
-            isDisabled={false}
+            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="20px">
           <Field
             id="auxCounter1Enabled"
             name="auxCounter1Enabled"
             component={CheckboxField}
             label="Aux Counter 1 Enabled"
             placeholder="Enter Aux Counter 1 Enabled"
-            isDisabled={false}
+            disabled={false}
           />
         </Box>
         <Delimiter />
@@ -46,18 +46,18 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 2 Description"
             placeholder="Enter Aux Counter 2 Description"
-            isDisabled={false}
+            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="20px">
           <Field
             id="auxCounter2Enabled"
             name="auxCounter2Enabled"
             component={CheckboxField}
             label="Aux Counter 2 Enabled"
             placeholder="Enter Aux Counter 2 Enabled"
-            isDisabled={false}
+            disabled={false}
           />
         </Box>
         <Delimiter />
@@ -68,18 +68,18 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 3 Description"
             placeholder="Enter Aux Counter 3 Description"
-            isDisabled={false}
+            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="25px">
+        <Box width="230px" p="10px" pb="20px">
           <Field
             id="auxCounter3Enabled"
             name="auxCounter3Enabled"
             component={CheckboxField}
             label="Aux Counter 3 Enabled"
             placeholder="Enter Aux Counter 1 Enabled"
-            isDisabled={false}
+            disabled={false}
           />
         </Box>
       </Flex>

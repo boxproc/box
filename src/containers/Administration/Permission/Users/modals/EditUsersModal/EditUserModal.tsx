@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
@@ -30,6 +30,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title="Edit User"
       maxContainerWidth={650}
       withCloseConfirmation={isFormDirty}

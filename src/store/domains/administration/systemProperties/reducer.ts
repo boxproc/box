@@ -24,7 +24,6 @@ const adminSysPropsReducer =
           );
 
       case ActionTypeKeys.SET_ADMIN_SYS_PROP_ID:
-        console.log('---', action.payload);
         return state
           .set('currentSysPropId', action.payload);
 

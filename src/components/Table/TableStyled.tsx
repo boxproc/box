@@ -3,7 +3,7 @@
 import 'react-table/react-table.css';
 
 interface TableStyledProps {
-  activeRowChild: number;
+  activeRowIndex: number;
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
@@ -104,12 +104,12 @@ export const TableStyled = styled.div<TableStyledProps>`
       hsla(0,0%,0%,0) 100%);
   }
 
-  ${({ activeRowChild, theme }) => activeRowChild && `
-    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowChild}) {
+  ${({ activeRowIndex, theme }) => activeRowIndex && `
+    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}) {
       background-color: ${theme.lighterGrayColor};
       box-shadow: ${theme.boxShadow};
     }
-    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowChild}):before {
+    .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}):before {
       content: '';
       position: absolute;
       left: 0;

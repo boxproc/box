@@ -65,4 +65,7 @@ export interface ContextMenuItem {
   name: string;
   icon?: string;
   action?: () => void;
+  withConfirmation?: boolean;
+  confirmationTitle?: string;
+  confirmationText?: string;
 }

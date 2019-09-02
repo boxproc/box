@@ -65,21 +65,22 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        {isEditMode && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText={`Delete endpoint "${currentEndpointName}"?`}
-            onClick={() => deleteEndpoint(currentEndpointId)}
-          />
-        )}
+        <div>
+          {isEditMode && (
+            <Button
+              text="delete"
+              iconName="delete"
+              type="reset"
+              withConfirmation={true}
+              confirmationText={`Delete endpoint "${currentEndpointName}"?`}
+              onClick={() => deleteEndpoint(currentEndpointId)}
+            />
+          )}
+        </div>
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          rightPosition={true}
           withCancelConfirmation={isDirty}
         />
       </Flex>

@@ -79,7 +79,12 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
             return (
               <MenuItem
                 key={index}
-                data={{ action: item.action }}
+                data={{
+                  action: item.action,
+                  withConfirmation: item.withConfirmation,
+                  confirmationTitle: item.confirmationTitle,
+                  confirmationText: item.confirmationText,
+                }}
                 onClick={onClick}
               >
                 <div className="item">

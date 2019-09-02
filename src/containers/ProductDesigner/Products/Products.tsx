@@ -71,7 +71,6 @@ export const Products: React.FC<ProductsProps> = ({
       title="Products"
       data={productItems}
       columns={tableColumns}
-      hint="Cannot Edit or Delete Locked Product"
       addNewModalName={modalNames.ADD_PRODUCT}
       editModalName={modalNames.EDIT_PRODUCT}
       setCurrentIdAction={getProductId}

@@ -53,7 +53,7 @@ export const renderEditable = (updateAction: (data: object) => void) =>
 export const renderCheckBoxIcon = (updateAction?: (data: object) => void) =>
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.value === true;
-    const propValues = cellInfo.original;
+    const values = cellInfo.original;
 
     return (
       <Box width="100%">
@@ -65,7 +65,7 @@ export const renderCheckBoxIcon = (updateAction?: (data: object) => void) =>
                 <div
                   style={{ cursor: updateAction && 'pointer' }}
                   onClick={() => updateAction && updateAction({
-                    ...propValues,
+                    ...values,
                     lockedFlag: yesNoTypes.YES,
                   })}
                 >

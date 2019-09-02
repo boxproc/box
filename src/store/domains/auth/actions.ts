@@ -66,9 +66,10 @@ export const handleUserLogout: HandleUserLogout = () =>
         await dispatch(userLogout());
 
         if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
-          urlUtil.openLocation(`${basePath}login`);
           cookiesUtil.remove(cookiesNames.SESSION_ID);
         }
+
+        urlUtil.openLocation(`${basePath}login`);
       },
       dispatch
     );

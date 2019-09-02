@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
 
@@ -25,6 +25,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title="Edit Cycle"
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}

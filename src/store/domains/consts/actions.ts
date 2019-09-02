@@ -5,6 +5,7 @@ import {
   GetCountryCodesAction,
   GetCurrencyCodesAction,
   GetInstitutionsAction,
+  SetActiveTableRowIndexAction,
 } from './actionTypes';
 
 import {
@@ -26,6 +27,9 @@ export type HandleGetCountryCodes = VoidPromiseThunk;
 export type GetInstitutions = () => GetInstitutionsAction;
 export type HandleGetInstitutions= VoidPromiseThunk;
 
+export type SetActiveTableRowIndex = (index: number) => SetActiveTableRowIndexAction;
+export type HandleSetActiveTableRowIndex = (index: number) => void;
+
 export const getCurrencyCodes: GetCurrencyCodes = () => ({
   type: ActionTypeKeys.GET_CURRENCY_CODES,
   payload: api.getCurrencyCodes(),
@@ -39,6 +43,11 @@ export const getCountryCodes: GetCountryCodes = () => ({
 export const getInstitutions: GetInstitutions = () => ({
   type: ActionTypeKeys.GET_INSTITUTIONS,
   payload: api.getInstitutions(),
+});
+
+export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
+  type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX,
+  payload: index,
 });
 
 export const handleGetCountryCodes: HandleGetCountryCodes = () =>
@@ -76,3 +85,6 @@ export const handleGetInstitutions: HandleGetInstitutions = () =>
       dispatch
     );
   };
+
+export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index =>
+  setActiveTableRowIndex(index);

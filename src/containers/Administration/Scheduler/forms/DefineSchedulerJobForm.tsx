@@ -172,21 +172,22 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        {isEditable && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText="Delete scheduler?"
-            onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
-          />
-        )}
+        <div>
+          {isEditable && (
+            <Button
+              text="delete"
+              iconName="delete"
+              type="reset"
+              withConfirmation={true}
+              confirmationText="Delete scheduler?"
+              onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
+            />
+          )}
+        </div>
         <OkCancelButtons
           okText="Save"
           cancelText="Cancel"
           onCancel={onCancel}
-          rightPosition={true}
           withCancelConfirmation={isDirty}
         />
       </Flex>

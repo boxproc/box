@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
@@ -27,6 +27,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title={`Edit Institution${institutionName}`}
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}

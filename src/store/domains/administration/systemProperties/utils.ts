@@ -10,7 +10,6 @@ import { yesNoTypes } from 'consts';
 export const prepareEditableAdminSysPropItemValues =
   (propValues: EditableAdminSysProp): EditableAdminSysPropPrepared => {
     const { id, currentValue, lockedFlag } = propValues;
-    console.log('---propValues', propValues);
 
     return {
       property_name: id,

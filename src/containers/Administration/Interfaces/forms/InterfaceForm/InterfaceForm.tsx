@@ -62,21 +62,22 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        {isEditMode && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText="Delete interface?"
-            onClick={() => deleteInterface(currentInterfaceId)}
-          />
-        )}
+        <div>
+          {isEditMode && (
+            <Button
+              text="delete"
+              iconName="delete"
+              type="reset"
+              withConfirmation={true}
+              confirmationText="Delete interface?"
+              onClick={() => deleteInterface(currentInterfaceId)}
+            />
+          )}
+        </div>
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          rightPosition={true}
           withCancelConfirmation={isDirty}
         />
       </Flex>

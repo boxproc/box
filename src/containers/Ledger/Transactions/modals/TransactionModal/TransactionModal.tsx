@@ -6,7 +6,7 @@ import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Hr } from 'components/Text';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { LedgerTransactionsForm } from 'containers/Ledger/Transactions/forms';
 
@@ -24,6 +24,7 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title="Transaction"
       closeOnBackdrop={true}
       maxContainerWidth={600}

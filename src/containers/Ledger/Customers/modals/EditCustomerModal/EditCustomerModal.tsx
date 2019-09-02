@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { EditCustomerForm } from 'containers/Ledger/Customers/forms';
 
@@ -22,6 +22,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title="Edit Customer"
       maxContainerWidth={980}
       withCloseConfirmation={isFormDirty}

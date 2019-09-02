@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'components/Modal';
 
-import { modalNames } from 'consts';
+import { modalNames, modalTypes } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
@@ -33,8 +33,9 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   return (
     <Modal
       name={modalName}
+      type={modalTypes.EDIT_MODAL}
       title={`Edit Product${productName}`}
-      minContainerHeight={560}
+      minContainerHeight={545}
       withCloseConfirmation={isFormDirty}
     >
       <EditProductForms

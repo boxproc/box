@@ -93,10 +93,13 @@ const Login: React.FC<LoginPropsAllProps> = ({
             component={CheckboxField}
             label="Remember me"
             disabled={false}
+            reverse={true}
           />
         </Box>
-        <Box mt="7px">
-          <Button text="Log in" />
+        <Box width="100%" mt="7px">
+          <Flex justifyContent="center">
+            <Button text="Log in" />
+          </Flex>
         </Box>
       </Flex>
     </FormWrapper>

@@ -118,22 +118,23 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        {isEditMode && (
-          <Button
-            text="delete"
-            iconName="delete"
-            type="reset"
-            withConfirmation={true}
-            confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
-            onClick={() => deleteAdminInstitution(adminInstitutionCurrentId)}
-          />
-        )}
+        <div>
+          {isEditMode && (
+            <Button
+              text="delete"
+              iconName="delete"
+              type="reset"
+              withConfirmation={true}
+              confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
+              onClick={() => deleteAdminInstitution(adminInstitutionCurrentId)}
+            />
+          )}
+        </div>
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
           withCancelConfirmation={isDirty}
           onCancel={onCancel}
-          rightPosition={true}
         />
       </Flex>
     </form >

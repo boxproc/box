@@ -5,10 +5,7 @@ import { Cell, Header } from 'components/Table/Table';
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
-import {
-  renderCheckBoxIcon,
-  renderEditable,
-} from 'components/Table/utils';
+import { renderCheckBoxIcon, renderEditable } from 'components/Table/utils';
 import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
 
 import { modalNames } from 'consts';
@@ -96,6 +93,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       name: 'Delete',
       icon: 'delete',
       action: () => deleteAdminSysProp(currentSysPropId),
+      withConfirmation: true,
+      confirmationText: `Delete system property "${currentSysPropId}"?`,
     },
     {
       name: 'Lock',
@@ -103,6 +102,8 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       action: () => updateAdminSysProps({
         lockedFlag: true,
       }),
+      withConfirmation: true,
+      confirmationText: `Lock system property "${currentSysPropId}"?`,
     },
   ];
 
@@ -111,7 +112,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}
-      hint="Cannot Edit or Delete Locked Property"
       addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       setCurrentIdAction={setAdminSysPropId}
