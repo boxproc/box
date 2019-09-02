@@ -3,37 +3,21 @@ import { createSelector } from 'reselect';
 import { dataTypesOptions } from 'consts';
 
 import { StoreState } from 'store/StoreState';
-
-import { selectAdminEventsOptions } from '../events';
+import { selectAdminEventsItems } from '../events';
 
 export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
   state.administration.eventDataElements.eventDataElems;
 
 export const selectAdminEventDataElemsItems = createSelector(
   selectDefaultAdminEventDataElemsItems,
-  items => items && items.asMutable().map(item => {
+  selectAdminEventsItems,
+  (dataElems, events) => dataElems && dataElems.asMutable().map(item => {
     return {
       name: item.name,
       description: item.description,
       eventId: item.event_id,
       dataType: dataTypesOptions.find(el => el.value === item.data_type).label,
+      event: events.find(event => event.id === item.event_id).name,
     };
   })
-);
-
-export const selectDefaultFilterAdminEventDataElemsParams = (state: StoreState) =>
-  state.administration.eventDataElements.filterEventDataElems;
-
-export const selectFilterAdminEventDataElemsParams = createSelector(
-  selectDefaultFilterAdminEventDataElemsParams,
-  selectAdminEventsOptions,
-  (params, events) => {
-    if (!params) {
-      return null;
-    }
-
-    return {
-      eventId: events.find(el => el.value === params.event_id),
-    };
-  }
 );

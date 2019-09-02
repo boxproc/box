@@ -27,6 +27,7 @@ interface ProductsProps {
   filterProducts: HandleFilterProducts;
   institutionsOptions: Array<SelectValues>;
   filterProductParams: ProductFilterParams;
+  isFilterFormDirty: boolean;
 }
 
 export const Products: React.FC<ProductsProps> = ({
@@ -36,6 +37,7 @@ export const Products: React.FC<ProductsProps> = ({
   institutionsOptions,
   filterProducts,
   filterProductParams,
+  isFilterFormDirty,
 }) => {
   React.useEffect(
     () => {
@@ -79,6 +81,7 @@ export const Products: React.FC<ProductsProps> = ({
           filterProducts={filterProducts}
           institutionsOptions={institutionsOptions}
           initialValues={initialFilterValues}
+          isDirty={isFilterFormDirty}
         />
       }
     />

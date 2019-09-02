@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { isDirty } from 'redux-form';
+
+import { formNames } from 'consts';
 
 import Scheduler from './Scheduler';
 
@@ -21,8 +24,11 @@ const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.UPDATE_ADMIN_SCHEDULER_JOBS,
 ]);
 
+const dirty = isDirty(formNames.SCHEDULER);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isFilterFormDirty: dirty(state),
   adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
   currentSchedulerJobId: selectCurrentSchedulerJobId(state),
 });

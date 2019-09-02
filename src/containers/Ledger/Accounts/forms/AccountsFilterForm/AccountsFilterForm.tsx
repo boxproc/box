@@ -11,6 +11,7 @@ import { formNames } from 'consts';
 import { HandleFilterLedgerAccounts, HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface AccountsFilterFormProps {
   institutionsOptions: Array<SelectValues>;
@@ -19,6 +20,7 @@ interface AccountsFilterFormProps {
   institutionValue: SelectValues;
   institutionProductsOptions: Array<SelectValues>;
   isLoadingInstitutionProducts: boolean;
+  isDirty: boolean;
 }
 
 type AccountsFilterFormAllProps = AccountsFilterFormProps &
@@ -32,6 +34,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
   getInstitutionProducts,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
+  isDirty,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -65,7 +68,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -122,7 +125,10 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

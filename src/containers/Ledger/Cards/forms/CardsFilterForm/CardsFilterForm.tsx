@@ -10,7 +10,8 @@ import { formNames, maskFormat } from 'consts';
 
 import { HandleFilterLedgerCards } from 'store/domains';
 interface CardsFilterFormProps {
-    filterLedgerCards: HandleFilterLedgerCards;
+  filterLedgerCards: HandleFilterLedgerCards;
+  isDirty: boolean;
 }
 
 type CardsFilterFormAllProps = CardsFilterFormProps &
@@ -19,6 +20,7 @@ type CardsFilterFormAllProps = CardsFilterFormProps &
 const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
   handleSubmit,
   filterLedgerCards,
+  isDirty,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -41,7 +43,6 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
               label="Card ID"
               placeholder="Card ID"
               isDisabled={false}
-              isClearable={false}
             />
           </Box>
           <Box width="150px" p="10px">
@@ -76,7 +77,10 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

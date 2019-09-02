@@ -11,10 +11,12 @@ import { formNames } from 'consts';
 import { HandleFilterLedgerCustomers } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface CustomersFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
+  isDirty: boolean;
 }
 
 type CustomersFilterFormAllProps = CustomersFilterFormProps &
@@ -24,6 +26,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterLedgerCustomers,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterLedgerCustomers(data)),
@@ -46,7 +49,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -80,7 +83,10 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

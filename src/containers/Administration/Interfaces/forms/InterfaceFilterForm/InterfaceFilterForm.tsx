@@ -11,10 +11,12 @@ import { formNames } from 'consts';
 import {  HandleFilterAdminInterface } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface InterfaceFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterAdminInterface: HandleFilterAdminInterface;
+  isDirty: boolean;
 }
 
 type InterfaceFilterFormAllProps = InterfaceFilterFormProps &
@@ -24,6 +26,7 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterAdminInterface,
+  isDirty,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -47,11 +50,14 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

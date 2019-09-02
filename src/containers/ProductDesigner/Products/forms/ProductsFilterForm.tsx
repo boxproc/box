@@ -11,10 +11,12 @@ import { formNames, productTypesOptions } from 'consts';
 import { HandleFilterProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface ProductsFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterProducts: HandleFilterProducts;
+  isDirty: boolean;
 }
 
 type ProductsFilterFormAllProps = ProductsFilterFormProps &
@@ -24,6 +26,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterProducts,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterProducts(data)),
@@ -46,7 +49,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -59,6 +62,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               options={productTypesOptions}
               isDisabled={false}
               isMulti={true}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1]} p="10px">
@@ -71,7 +75,10 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

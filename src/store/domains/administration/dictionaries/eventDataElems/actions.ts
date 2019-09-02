@@ -36,7 +36,6 @@ export const getAdminEventDataElems: GetAdminEventDataElems = () => ({
 export const filterAdminEventDataElems: FilterAdminEventDataElems = params => ({
   type: ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS,
   payload: api.filterAdminEventDataElems(params),
-  meta: params,
 });
 
 export const handleGetAdminEventDataElems: HandleGetAdminEventDataElems = () =>

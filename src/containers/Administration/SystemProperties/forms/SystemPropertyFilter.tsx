@@ -10,8 +10,11 @@ import { formNames } from 'consts';
 
 import { HandleFilterAdminSysProps } from 'store/domains';
 
+import { formErrorUtil } from 'utils';
+
 interface SystemPropertyFilterProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
+  isDirty: boolean;
 }
 
 type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
@@ -20,6 +23,7 @@ type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
 const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
   handleSubmit,
   filterAdminSysProps,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterAdminSysProps(data)),
@@ -40,10 +44,14 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, isDirty } from 'redux-form';
 
 import { formNames } from 'consts';
 
@@ -18,6 +18,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const formSelector = formValueSelector(formNames.AUDIT_USER_ACTIVITIES_FILTER);
+const dirty = isDirty(formNames.AUDIT_USER_ACTIVITIES_FILTER);
 
 const loadingSelector = createLoadingSelector([
   AuditUserActivityActionType.GET_AUDIT_USERS,
@@ -26,6 +27,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoadingUsers: loadingSelector(state),
+  isDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
   auditUsersOptions: selectAuditUsers(state),
   currentInstitution: formSelector(

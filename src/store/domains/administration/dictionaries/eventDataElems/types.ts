@@ -14,6 +14,7 @@ export interface AdminEventDataElemsItem {
   description: string;
   name: string;
   dataType: string;
+  event: string;
 }
 
 export interface AdminEventDataElemsDataResp extends ResponseStatusType {
@@ -30,5 +31,4 @@ export interface AdminEventDataElemsFilterParamsPrepared {
 
 export interface AdminEventDataElemsState {
   eventDataElems: ImmutableArray<AdminEventDataElemsItemResp>;
-  filterEventDataElems: AdminEventDataElemsFilterParamsPrepared;
 }

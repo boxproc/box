@@ -33,6 +33,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
   getAuditUsers,
   currentInstitution,
   isLoadingUsers,
+  isDirty,
 }) => {
   const currentInstitutionId = currentInstitution && currentInstitution.value;
   const handleSubmitForm = React.useCallback(
@@ -66,7 +67,6 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
               options={institutionsOptions}
               validate={[formErrorUtil.required]}
               isDisabled={false}
-              isClearable={false}
             />
           </Box>
           <Box width={[1 / 4]} p="10px">
@@ -109,7 +109,10 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

@@ -1,7 +1,4 @@
-import {
-  AdminEventDataElemsDataResp,
-  AdminEventDataElemsFilterParamsPrepared,
-} from './types';
+import { AdminEventDataElemsDataResp } from './types';
 
 import { ApiResponse } from 'types';
 
@@ -44,7 +41,6 @@ export interface FilterAdminEventDataElemsAction {
 export interface FilterAdminEventDataElemsFulfilledAction {
   readonly payload: AdminEventDataElemsDataResp;
   readonly type: ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS_FULFILLED;
-  readonly meta: AdminEventDataElemsFilterParamsPrepared;
 }
 
 export interface FilterAdminEventDataElemsRejectedAction {

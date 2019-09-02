@@ -11,11 +11,13 @@ import { formNames } from 'consts';
 import { HandleFilterAdminEndpoint } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface EndpointFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterAdminEndpoint: HandleFilterAdminEndpoint;
   isLoadingInstitutionProducts: boolean;
+  isDirty: boolean;
 }
 
 type EndpointsFilterFormAllProps = EndpointFilterFormProps &
@@ -25,6 +27,7 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterAdminEndpoint,
+  isDirty,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -48,11 +51,14 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

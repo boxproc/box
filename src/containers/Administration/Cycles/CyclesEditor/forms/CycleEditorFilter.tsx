@@ -9,11 +9,15 @@ import { CheckboxField, SelectField } from 'components/Form';
 import { formNames } from 'consts';
 
 import { HandleFilterCycles } from 'store/domains';
+
 import { SelectValues } from 'types';
+
+import { formErrorUtil } from 'utils';
 
 interface CycleEditorFilterProps {
   institutionsOptions: Array<SelectValues>;
   filterCycles: HandleFilterCycles;
+  isDirty: boolean;
 }
 
 type CyclesEditorFilterAllProps = CycleEditorFilterProps &
@@ -23,6 +27,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterCycles,
+  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterCycles(data)),
@@ -46,6 +51,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
               options={institutionsOptions}
               isDisabled={false}
               isMulti={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1]} p="10px">
@@ -58,7 +64,10 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );

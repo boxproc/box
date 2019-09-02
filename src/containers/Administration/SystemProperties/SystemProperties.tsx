@@ -27,6 +27,7 @@ interface SystemPropertiesProps {
   adminSysPropsItems: Array<AdminSysPropsItem>;
   setAdminSysPropId: HandleSetAdminSysPropId;
   currentSysPropId: string;
+  isFilterFormDirty: boolean;
 }
 
 type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
@@ -38,6 +39,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   updateAdminSysProps,
   setAdminSysPropId,
   currentSysPropId,
+  isFilterFormDirty,
 }) => {
   const columns = [
     {
@@ -118,6 +120,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       FilterForm={
         <SystemPropertyFilter
           filterAdminSysProps={filterAdminSysProps}
+          isDirty={isFilterFormDirty}
         />
       }
     />

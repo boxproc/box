@@ -21,6 +21,7 @@ interface CycleEditorProps {
   institutionsOptions: Array<SelectValues>;
   setAdminCycleEditorId: HandleSetAdminCycleEditorId;
   filterCycles: HandleFilterCycles;
+  isFilterFormDirty: boolean;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
@@ -28,6 +29,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   institutionsOptions,
   setAdminCycleEditorId,
   filterCycles,
+  isFilterFormDirty,
 }) => {
   return (
     <TablePage
@@ -41,6 +43,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
         <CycleEditorFilter
           filterCycles={filterCycles}
           institutionsOptions={institutionsOptions}
+          isDirty={isFilterFormDirty}
         />
       }
     />

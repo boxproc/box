@@ -11,6 +11,7 @@ import { dateFormat, formNames, maskFormat } from 'consts';
 import { HandleFilterLedgerTransactions, HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface TransactionsFilterFormProps {
   filterLedgerTransactions: HandleFilterLedgerTransactions;
@@ -19,6 +20,7 @@ interface TransactionsFilterFormProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   institutionValue: SelectValues;
   isLoadingInstitutionProducts: boolean;
+  isDirty: boolean;
 }
 
 type TransactionsFilterFormAllProps = TransactionsFilterFormProps &
@@ -32,6 +34,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
   getInstitutionProducts,
   institutionValue,
   isLoadingInstitutionProducts,
+  isDirty,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -64,7 +67,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
-              isClearable={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -122,7 +125,10 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+          disabled={!isDirty}
+        />
       </Box>
     </form >
   );
