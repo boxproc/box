@@ -156,7 +156,7 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction =
           const preparedValues = prepareValuesToSendActions(values);
           await dispatch(sendAdminSchedulerAction(preparedValues));
           if (withRefresh) {
-            setInterval(async () => dispatch(console.log), 1000);
+            setInterval(async () => dispatch(handleGetAdminSchedulerJobs()), 1000);
           } else {
             await dispatch(handleGetAdminSchedulerJobs());
           }

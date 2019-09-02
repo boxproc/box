@@ -44,12 +44,11 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    Header: <Header title="Url" />,
+    Header: <Header title="URL" />,
     accessor: 'url',
     Cell: (props: ACell<'url'>) => (
       <Cell
         value={props.value}
-        isNumber={true}
       />
     ),
   },
@@ -64,6 +63,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
@@ -74,6 +74,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Protocol Type" />,
     accessor: 'protocolType',

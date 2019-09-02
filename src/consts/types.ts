@@ -40,8 +40,8 @@ export const typeOptions = [
   { value: 'U', label: 'Tutuka' },
 ];
 export const protocolTypesOptions = [
-  { value: 'R', label: 'Rest' },
-  { value: 'S', label: 'Soap' },
+  { value: 'R', label: 'REST' },
+  { value: 'S', label: 'SOAP' },
 ];
 
 export enum customerStatusTypes {
