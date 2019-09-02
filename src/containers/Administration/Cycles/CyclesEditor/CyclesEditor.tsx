@@ -11,7 +11,6 @@ import { CycleEditorFilter } from './forms';
 import {
   AdminCyclesEditorItemPrepared,
   HandleFilterCycles,
-  HandleGetAdminCyclesEditor,
   HandleSetAdminCycleEditorId,
 } from 'store/domains/administration/cycles';
 
@@ -19,26 +18,17 @@ import { SelectValues } from 'types';
 
 interface CycleEditorProps {
   adminCyclesEditorItems: Array<Partial<AdminCyclesEditorItemPrepared>>;
-  getAdminCyclesEditor: HandleGetAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
   setAdminCycleEditorId: HandleSetAdminCycleEditorId;
   filterCycles: HandleFilterCycles;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
-  getAdminCyclesEditor,
   adminCyclesEditorItems,
   institutionsOptions,
   setAdminCycleEditorId,
   filterCycles,
 }) => {
-  React.useEffect(
-    () => {
-      getAdminCyclesEditor();
-    },
-    [getAdminCyclesEditor]
-  );
-
   return (
     <TablePage
       title="Cycles"
@@ -51,9 +41,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
         <CycleEditorFilter
           filterCycles={filterCycles}
           institutionsOptions={institutionsOptions}
-          initialValues={{
-            institutionId: institutionsOptions[0],
-          }}
         />
       }
     />

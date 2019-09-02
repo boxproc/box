@@ -24,9 +24,6 @@ const formSelector = formValueSelector(formNames.ADMIN_ENDPOINT_FILTER);
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  initialValues: {
-    institutionId: selectInstitutionsOptions(state)[0],
-  },
   institutionValue: formSelector(
     state,
     'institutionId'

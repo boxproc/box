@@ -53,7 +53,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Status" />,
     accessor: 'status',

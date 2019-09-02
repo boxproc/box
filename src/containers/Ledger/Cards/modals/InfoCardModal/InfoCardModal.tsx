@@ -41,7 +41,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           <Button
             disabled={isStatusActive}
             type="reset"
-            underline={true}
             onClick={() => activateLedgerCard(ledgerCardPanAlias)}
             iconName="activateCard"
             text="Activate Card"

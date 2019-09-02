@@ -9,29 +9,19 @@ import { tableColumns } from './components';
 
 import {
   AdminInterfaceItemPrepared,
-  HandleGetAdminInterface,
   HandleSetInterfaceId,
 } from 'store/domains';
 import InterfaceFilterForm from './forms/InterfaceFilterForm';
 
 export interface AccountsProps {
-  getAdminInterface: HandleGetAdminInterface;
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
   setAdminInterfaceId: HandleSetInterfaceId;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
-  getAdminInterface,
   setAdminInterfaceId,
   adminInterfaceItems,
 }) => {
-  React.useEffect(
-    () => {
-      getAdminInterface();
-    },
-    [getAdminInterface]
-  );
-
   return (
     <TablePage
       title="Interfaces"

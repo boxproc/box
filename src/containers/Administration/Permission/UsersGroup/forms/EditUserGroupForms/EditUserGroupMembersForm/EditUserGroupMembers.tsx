@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button } from 'components/Buttons';
@@ -47,22 +47,26 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width={[1 / 2]} mb="15px">
-        <Field
-          id="username"
-          name="username"
-          placeholder="Select User"
-          component={SelectField}
-          label="Username"
-          validate={[formErrorUtil.required]}
-          options={activeUsersItemsOptions}
-        />
-      </Box>
-      <Button
-        iconName="save"
-        text="Add"
-        disabled={!isSelectedUser}
-      />
+      <Flex alignItems="center">
+        <Box width={[1 / 2]} mb="15px" pr="10px">
+          <Field
+            id="username"
+            name="username"
+            placeholder="Select User"
+            component={SelectField}
+            label="Username"
+            validate={[formErrorUtil.required]}
+            options={activeUsersItemsOptions}
+          />
+        </Box>
+        <Box width={[1 / 2]}>
+          <Button
+            iconName="plus"
+            text="Add to the group"
+            disabled={!isSelectedUser}
+          />
+        </Box>
+      </Flex>
     </form >
   );
 };

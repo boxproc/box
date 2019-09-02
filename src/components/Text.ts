@@ -39,6 +39,12 @@ export const T3 = styled.h3<TitleProps>`
   color: ${({ theme, color }) => color ? color : theme.darkGrayColor};
 `;
 
+export const T4 = styled.h4<TitleProps>`
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: ${({ theme, color }) => color ? color : theme.darkGrayColor};
+`;
+
 interface ParagraphProps {
   light?: boolean;
   textAlign?: string;

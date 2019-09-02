@@ -2,6 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components/Spinner';
 import { Cell, Table, TableNoData } from 'components/Table';
+import { T4 } from 'components/Text';
 
 import {
   AdminUserGroupMember,
@@ -50,8 +51,8 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       Cell: (cellInfo: CellInfo) => (
         <Button
           iconName="delete"
-          text="Delete"
-          size="12"
+          text="Remove"
+          size="11"
           withConfirmation={true}
           confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
           onClick={() => deleteAdminUserGroupMembers(
@@ -64,13 +65,15 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   ];
 
   return (
-    <Table
-      title="User Group Members"
-      data={AdminUserGroupMembers}
-      columns={columns}
-      NoDataComponent={TableNoData}
-      isHeader={false}
-    />
+    <React.Fragment>
+      <T4>Group Members</T4>
+      <Table
+        data={AdminUserGroupMembers}
+        columns={columns}
+        NoDataComponent={TableNoData}
+        isHeader={false}
+      />
+    </React.Fragment>
   );
 };
 

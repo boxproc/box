@@ -63,17 +63,19 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
+      maxWidth: 120,
       Header: <Header title="Expiry Date" />,
       accessor: 'expiryDate',
       Cell: (props: SCell<'expiryDate'>) => (
         <Cell
           value={props.value}
+          isDate={true}
         />
       ),
     },
     {
+      maxWidth: 120,
       Header: <Header title="Status" />,
-      maxWidth: 150,
       accessor: 'status',
       Cell: (props: SCell<'status'>) => (
         <Cell
@@ -88,7 +90,6 @@ export const Cards: React.FC<AccountCardsProps> = ({
       <Box mb="25px">
         <Button
           type="reset"
-          underline={true}
           onClick={() => orderLedgerAccountCard(ledgerAccountCurrentId)}
           iconName="orderCard"
           text="Order Card"

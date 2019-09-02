@@ -61,20 +61,22 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             options={uiItemsOptions}
           />
         </Box>
-        <Box width={[1 / 2]}>
+        <Box width="120px" pr="10px">
           <Field
             id="permission"
             name="permission"
             component={CheckboxField}
-            label="Permission Read and Write"
+            label={'"Write" Allowed'}
+          />
+        </Box>
+        <Box width={[1 / 3]}>
+          <Button
+            iconName="plus"
+            text="Add to the group"
+            disabled={!isUiItemSelected}
           />
         </Box>
       </Flex>
-      <Button
-        iconName="save"
-        text="Add"
-        disabled={!isUiItemSelected}
-      />
     </form >
   );
 };

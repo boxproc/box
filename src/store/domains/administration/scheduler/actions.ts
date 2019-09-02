@@ -154,12 +154,14 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction =
       errorDecoratorUtil.withErrorHandler(
         async () => {
           const preparedValues = prepareValuesToSendActions(values);
+
           await dispatch(sendAdminSchedulerAction(preparedValues));
-          if (withRefresh) {
-            setInterval(async () => dispatch(handleGetAdminSchedulerJobs()), 1000);
-          } else {
-            await dispatch(handleGetAdminSchedulerJobs());
-          }
+          await dispatch(handleGetAdminSchedulerJobs());
+          // if (withRefresh) {
+          //   setInterval(async () => dispatch(handleGetAdminSchedulerJobs()), 1000);
+          // } else {
+          //   await dispatch(handleGetAdminSchedulerJobs());
+          // }
         },
         dispatch
       );

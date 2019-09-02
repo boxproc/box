@@ -6,7 +6,6 @@ import Endpoints from './Endpoints';
 import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
-  handleGetAdminEndpoint,
   handleSetAdminEndpointId,
   selectAdminEndpoints,
   selectInstitutionsOptions,
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminEndpoint: handleGetAdminEndpoint,
     setAdminEndpointId: handleSetAdminEndpointId,
   },
   dispatch

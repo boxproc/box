@@ -6,7 +6,6 @@ import Interfaces from './Interfaces';
 import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
-  handleGetAdminInterface,
   handleSetAdminInterfaceId,
   selectAdminInterface,
   selectInstitutionsOptions,
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminInterface: handleGetAdminInterface,
     setAdminInterfaceId: handleSetAdminInterfaceId,
   },
   dispatch

@@ -1,4 +1,4 @@
-import { AdminCyclesEditorDataResp, CycleFilterParams } from './types';
+import { AdminCyclesEditorDataResp } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -19,9 +19,10 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_FULFILLED',
   UPDATE_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/UPDATE_ADMIN_CYCLE_EDITOR_REJECTED',
 
-  FILTER_CYCLES = 'administration/cycles/FILTER_CYCLES',
-  FILTER_CYCLES_FULFILLED = 'administration/cycles/FILTER_CYCLES_FULFILLED',
-  FILTER_CYCLES_REJECTED = 'administration/cycles/FILTER_CYCLES_REJECTED',
+  FILTER_ADMIN_CYCLES_EDITOR = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR',
+  FILTER_ADMIN_CYCLES_EDITOR_FULFILLED =
+  'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
+  FILTER_ADMIN_CYCLES_EDITOR_REJECTED = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_REJECTED',
 
   SET_ADMIN_CYCLE_EDITOR_ID = 'administration/cycles/SET_ADMIN_CYCLE_EDITOR_ID',
 }
@@ -94,18 +95,17 @@ export interface SetAdminCycleEditorIdAction {
 
 export interface FilterCyclesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_CYCLES;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR;
 }
 
 export interface FilterCyclesFulfilledAction {
   readonly payload: AdminCyclesEditorDataResp;
-  readonly type: ActionTypeKeys.FILTER_CYCLES_FULFILLED;
-  meta: CycleFilterParams;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_FULFILLED;
 }
 
 export interface FilteCyclesRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.FILTER_CYCLES_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_REJECTED;
 }
 
 export type AdminCycleEditorActionTypes =

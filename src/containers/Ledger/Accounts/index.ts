@@ -6,7 +6,6 @@ import Accounts from './Accounts';
 import {
   createLoadingSelector,
   handleFilterLedgerAccounts,
-  handleGetLedgerAccounts,
   handleSetLedgerAccountId,
   LedgerAccountsActionTypes,
   selectInstitutionsOptions,
@@ -28,7 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getLedgerAccounts: handleGetLedgerAccounts,
     filterLedgerAccounts: handleFilterLedgerAccounts,
     setLedgerAccountsId: handleSetLedgerAccountId,
   },

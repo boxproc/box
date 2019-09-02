@@ -6,7 +6,6 @@ import Customers from './Customers';
 import {
   createLoadingSelector,
   handleFilterLedgerCustomers,
-  handleGetLedgerCustomerId,
   handleGetLedgerCustomers,
   LedgerCustomersActionTypes,
   selectInstitutionsOptions,
@@ -30,7 +29,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getLedgerCustomers: handleGetLedgerCustomers,
     filterLedgerCustomers: handleFilterLedgerCustomers,
-    getLedgerCustomerId: handleGetLedgerCustomerId,
   },
   dispatch
 );

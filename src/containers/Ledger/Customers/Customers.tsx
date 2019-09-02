@@ -27,18 +27,10 @@ export interface CustomersProps {
 
 const Customers: React.FC<CustomersProps> = ({
   institutionsOptions,
-  getLedgerCustomers,
   ledgerCustomers,
   filterLedgerCustomers,
   getLedgerCustomerId,
 }) => {
-  React.useEffect(
-    () => {
-      getLedgerCustomers();
-    },
-    [getLedgerCustomers]
-  );
-
   return (
     <TablePage
       title="Customers"

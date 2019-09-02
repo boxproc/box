@@ -52,6 +52,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Status" />,
     accessor: 'status',
@@ -62,6 +63,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Date of Birth" />,
     accessor: 'dateOfBirth',

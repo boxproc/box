@@ -79,9 +79,8 @@ export const setAdminCycleEditorId: SetAdminCycleEditorId = id => ({
   payload: id,
 });
 export const filterCycles: FilterCycles = params => ({
-  type: ActionTypeKeys.FILTER_CYCLES,
+  type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR,
   payload: api.filterCycles(params),
-  meta: params,
 });
 
 export const handleGetAdminCyclesEditor: HandleGetAdminCyclesEditor = () =>

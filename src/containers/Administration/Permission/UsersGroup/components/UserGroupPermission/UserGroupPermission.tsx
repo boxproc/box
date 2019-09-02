@@ -2,6 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header, Table, TableNoData } from 'components/Table';
+import { T4 } from 'components/Text';
 
 import {
   AdminGroupPermissionItem,
@@ -66,8 +67,8 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       Cell: (cellInfo: CellInfo) => (
         <Button
           iconName="delete"
-          text="Delete"
-          size="12"
+          text="Remove"
+          size="11"
           confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
           withConfirmation={true}
           onClick={() =>
@@ -82,13 +83,15 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   ];
 
   return (
-    <Table
-      title="User Group Members"
-      data={adminGroupPermissions}
-      columns={columns}
-      pageSize={5}
-      NoDataComponent={TableNoData}
-    />
+    <React.Fragment>
+      <T4>Group Permissions</T4>
+      <Table
+        data={adminGroupPermissions}
+        columns={columns}
+        pageSize={5}
+        NoDataComponent={TableNoData}
+      />
+    </React.Fragment>
   );
 };
 

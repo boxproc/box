@@ -7,7 +7,6 @@ import {
   AdminUserActionTypes,
   createLoadingSelector,
   handleFilterUsers,
-  handleGetAdminUser,
   handleSetAdminUserId,
   selectUserEditorItems,
 } from 'store/domains';
@@ -17,6 +16,7 @@ const loadingSelector = createLoadingSelector([
   AdminUserActionTypes.GET_ADMIN_USER,
   AdminUserActionTypes.ADD_ADMIN_USER,
   AdminUserActionTypes.UPDATE_ADMIN_USER,
+  AdminUserActionTypes.FILTER_USERS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -26,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminUser: handleGetAdminUser,
     filterUsers: handleFilterUsers,
     setAdminUserId: handleSetAdminUserId,
   },

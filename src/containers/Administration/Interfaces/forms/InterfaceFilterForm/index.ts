@@ -12,9 +12,6 @@ import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
-  initialValues: {
-    institutionId: selectInstitutionsOptions(state)[0],
-  },
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

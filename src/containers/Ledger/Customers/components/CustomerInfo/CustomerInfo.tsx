@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CalendarField, InputField, MaskField, SelectField } from 'components/Form';
-import { Delimiter, Hr } from 'components/Text';
+import { Hr, T4 } from 'components/Text';
 
 import { customerStatusTypesOptions, dateFormat, maskFormat } from 'consts';
 
@@ -36,7 +36,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
         flexWrap="wrap"
       >
         {isEditMode && (
-          <Box width="150px" p="10px">
+          <Box width="100px" p="10px">
             <Field
               id="id"
               name="id"
@@ -47,7 +47,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -124,13 +124,16 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           />
         </Box>
         <Hr />
+        <Box width="100%" px="10px">
+          <T4>Address</T4>
+        </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
             id="addressLine1"
             name="addressLine1"
             component={InputField}
-            label="Address Line 1"
-            placeholder="Enter Address Line 1"
+            label="Line 1"
+            placeholder="Enter Line 1"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -139,8 +142,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             id="addressLine2"
             name="addressLine2"
             component={InputField}
-            label="Address Line 2"
-            placeholder="Enter Address Line 2"
+            label="Line 2"
+            placeholder="Enter Line 2"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -149,8 +152,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             id="addressLine3"
             name="addressLine3"
             component={InputField}
-            label="Address Line 3"
-            placeholder="Enter Address Line 3"
+            label="Line 3"
+            placeholder="Enter Line 3"
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -158,8 +161,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             id="addressLine4"
             name="addressLine4"
             component={InputField}
-            label="Address Line 4"
-            placeholder="Enter Address Line 4"
+            label="Line 4"
+            placeholder="Enter Line 4"
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -167,8 +170,8 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             id="addressTown"
             name="addressTown"
             component={InputField}
-            label="Address Town"
-            placeholder="Enter Address Town"
+            label="Town"
+            placeholder="Enter Town"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -177,7 +180,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             id="addressPostCode"
             name="addressPostCode"
             component={InputField}
-            label="Address Post Code"
+            label="Post Code"
             placeholder="Enter Post Code"
             validate={[formErrorUtil.required]}
           />
@@ -206,7 +209,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Delimiter />
+        <Hr />
         <Box width="180px" p="10px">
           <Field
             id="dateCreated"

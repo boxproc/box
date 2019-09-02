@@ -37,7 +37,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
           alignItems="flex-start"
           flexWrap="wrap"
         >
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 5]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -49,7 +49,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               isClearable={false}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 5]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -59,7 +59,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               isDisabled={false}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 5]} p="10px">
             <Field
               id="lastName"
               name="lastName"

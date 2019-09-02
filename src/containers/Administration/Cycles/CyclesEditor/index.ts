@@ -7,7 +7,6 @@ import {
   AdminCycleEditorActionTypes,
   createLoadingSelector,
   handleFilterCycles,
-  handleGetAdminCyclesEditor,
   handleSetAdminCycleEditorId,
   selectAdminCycleEditorItems,
   selectInstitutionsOptions,
@@ -17,6 +16,7 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AdminCycleEditorActionTypes.GET_ADMIN_CYCLE_EDITOR,
+  AdminCycleEditorActionTypes.FILTER_ADMIN_CYCLES_EDITOR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -27,7 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminCyclesEditor: handleGetAdminCyclesEditor,
     setAdminCycleEditorId: handleSetAdminCycleEditorId,
     filterCycles: handleFilterCycles,
   },

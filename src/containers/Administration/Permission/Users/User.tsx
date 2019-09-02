@@ -11,7 +11,6 @@ import { UserFilter } from 'containers/Administration/Permission/Users/forms';
 import {
   AdminUserItemPrepared,
   HandleFilterUsers,
-  HandleGetAdminUser,
   HandleSetAdminUserId,
 } from 'store/domains/administration/permissions/users';
 
@@ -19,25 +18,17 @@ import { SelectValues } from 'types';
 
 interface UserFilterProps {
   adminUserItems: Array<AdminUserItemPrepared>;
-  getAdminUser: HandleGetAdminUser;
   institutionsOptions: Array<SelectValues>;
   filterUsers: HandleFilterUsers;
   setAdminUserId: HandleSetAdminUserId;
 }
 
 export const User: React.FC<UserFilterProps> = ({
-  getAdminUser,
   adminUserItems,
   institutionsOptions,
   filterUsers,
   setAdminUserId,
 }) => {
-  React.useEffect(
-    () => {
-      getAdminUser();
-    },
-    [getAdminUser]
-  );
 
   return (
     <TablePage

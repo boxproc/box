@@ -10,28 +10,18 @@ import { EndpointFilterForm } from './forms';
 
 import {
   AdminEndpointItemPrepared,
-  HandleGetAdminEndpoint,
   HandleSetEndpointId,
 } from 'store/domains';
 
 export interface EndpointsProps {
-  getAdminEndpoint: HandleGetAdminEndpoint;
   adminEndpointItems: Array<AdminEndpointItemPrepared>;
   setAdminEndpointId: HandleSetEndpointId;
 }
 
 const Endpoints: React.FC<EndpointsProps> = ({
-  getAdminEndpoint,
   setAdminEndpointId,
   adminEndpointItems,
 }) => {
-  React.useEffect(
-    () => {
-        getAdminEndpoint();
-    },
-    [getAdminEndpoint]
-  );
-
   return (
     <TablePage
       title="Endpoints"

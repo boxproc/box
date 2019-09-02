@@ -42,7 +42,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <Header title="Port" />,
     accessor: 'port',
