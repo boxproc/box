@@ -15,7 +15,7 @@ import {
 interface EditUserModalProps {
   closeModal: CloseModal;
   updateAdminUser: HandleUpdateAdminUser;
-  selectUserItems: AdminUserItemDetails;
+  selectUserItems: Partial<AdminUserItemDetails>;
   isFormDirty: boolean;
 }
 

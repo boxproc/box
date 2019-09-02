@@ -25,7 +25,7 @@ export const prepareAdminUserValuesToSend =
     };
   };
 
-export const prepareAdminUserValuesToRender = (values: AdminUserItem) => {
+export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) => {
   if (!values) {
     return null;
   }
@@ -37,7 +37,6 @@ export const prepareAdminUserValuesToRender = (values: AdminUserItem) => {
     lastName: values.last_name,
     email: values.email,
     status: statusTypesOptions.find(el => el.value === values.status).label,
-    passwordHash: values.password_hash,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
   };

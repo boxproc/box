@@ -42,6 +42,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
         disabledOk={!isDirty}
         onCancel={onCancel}
         rightPosition={true}
+        withCancelConfirmation={isDirty}
       />
     </form>
   );

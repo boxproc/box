@@ -20,7 +20,6 @@ export interface AdminUserItem extends AdminUserPlainInfo {
 export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
   firstName: string;
   lastName: string;
-  passwordHash: string;
   passwordEntryCounter: number | string;
   datetimeOfLastLogin: string;
 }
@@ -31,6 +30,7 @@ export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
 
 export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
   status: SelectValues;
+  passwordHash: string;
 }
 
 export interface UsersFilterParams {
