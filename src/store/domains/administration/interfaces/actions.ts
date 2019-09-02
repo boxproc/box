@@ -119,6 +119,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteAdminInterface(id));
+        await dispatch(getAdminInterface());
         await dispatch(closeModal(modalNames.EDIT_ADMIN_INTERFACE));
       },
       dispatch

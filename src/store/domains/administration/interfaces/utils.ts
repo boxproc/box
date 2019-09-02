@@ -1,4 +1,4 @@
-import { protocolTypesOptions, statusTypesOptions } from 'consts';
+import { protocolTypesOptions, statusTypesOptions, typeOfInterfaces } from 'consts';
 import {
   AdminInterfaceFilterParams,
   AdminInterfaceItem,
@@ -31,9 +31,11 @@ export const preparedValuesToSend = (values: Partial<AdminInterfaceItemDetailsPr
     institution_id: values.institutionId && values.institutionId.value,
     name: values.name,
     url: values.url,
+    type: values.type && values.type.value,
     protocol_type: values.protocolType && values.protocolType.value,
     private_key_location: values.privateKeyLocation,
     connection_attributes: values.connectionAttributes,
+    log_file_location: values.logFileLocation,
   };
 };
 
@@ -45,10 +47,12 @@ export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
     id: values.id,
     name: values.name,
     status: statusTypesOptions.find(el => el.value === values.status).label,
+    type: typeOfInterfaces.find(el => el.value === values.type).label,
     url: values.url,
     protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type).label,
     privateKeyLocation: values.private_key_location,
     connectionAttributes: values.connection_attributes,
+    logFileLocation: values.log_file_location,
   };
 };
 
@@ -60,5 +64,6 @@ export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItem
     ...preparedValuesToRender(values),
     status: statusTypesOptions.find(el => el.label === values.status),
     protocolType: protocolTypesOptions.find(el => el.label === values.protocolType),
+    type: typeOfInterfaces.find(el => el.label === values.status),
   };
 };

@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextField } from 'components/Form';
 
-import { protocolTypesOptions, statusTypesOptions } from 'consts';
+import { protocolTypesOptions, statusTypesOptions, typeOfInterfaces } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -80,12 +80,33 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
         </Box>
         <Box width={[1 / 2]} p="10px">
           <Field
+            id="type"
+            name="type"
+            component={SelectField}
+            label="Type"
+            placeholder="Select Type"
+            options={typeOfInterfaces}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
             id="protocolType"
             name="protocolType"
             component={SelectField}
             label="Protocol Type"
             placeholder="Select Protocol Type"
             options={protocolTypesOptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="logFileLocation"
+            name="logFileLocation"
+            component={TextField}
+            label="Log File Location Attributes"
+            placeholder="Enter Log File Location"
             validate={[formErrorUtil.required]}
           />
         </Box>

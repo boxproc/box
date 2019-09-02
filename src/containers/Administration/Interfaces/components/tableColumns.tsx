@@ -74,6 +74,16 @@ export const tableColumns = [
     ),
   },
   {
+    sortable: true,
+    Header: <Header title="Type" />,
+    accessor: 'type',
+    Cell: (props: ACell<'type'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
     maxWidth: 150,
     sortable: true,
     Header: <Header title="Protocol Type" />,
@@ -89,6 +99,16 @@ export const tableColumns = [
     Header: <Header title="Connection Attributes" />,
     accessor: 'connectionAttributes',
     Cell: (props: ACell<'connectionAttributes'>) => (
+      <Cell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    sortable: true,
+    Header: <Header title="Log File Location" />,
+    accessor: 'logFileLocation',
+    Cell: (props: ACell<'logFileLocation'>) => (
       <Cell
         value={props.value}
       />
