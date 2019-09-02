@@ -10,6 +10,7 @@ import { CycleEditorFilter } from './forms';
 
 import {
   AdminCyclesEditorItemPrepared,
+  HandleFilterCycles,
   HandleGetAdminCyclesEditor,
   HandleSetAdminCycleEditorId,
 } from 'store/domains/administration/cycles';
@@ -21,6 +22,7 @@ interface CycleEditorProps {
   getAdminCyclesEditor: HandleGetAdminCyclesEditor;
   institutionsOptions: Array<SelectValues>;
   setAdminCycleEditorId: HandleSetAdminCycleEditorId;
+  filterCycles: HandleFilterCycles;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
@@ -28,6 +30,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   adminCyclesEditorItems,
   institutionsOptions,
   setAdminCycleEditorId,
+  filterCycles,
 }) => {
   React.useEffect(
     () => {
@@ -46,6 +49,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       setCurrentIdAction={setAdminCycleEditorId}
       FilterForm={
         <CycleEditorFilter
+          filterCycles={filterCycles}
           institutionsOptions={institutionsOptions}
           initialValues={{
             institutionId: institutionsOptions[0],

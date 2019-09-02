@@ -7,6 +7,8 @@ export const adminCyclesEditorInitialState:
   seamlessImmutable.ImmutableObject<AdminCyclesEditorState> = Immutable({
     cycleEditor: Immutable([]),
     currentCycleEditorId: null,
+    filterCyclesParams : null,
+
   });
 
 const adminCyclesEditorReducer =
@@ -22,6 +24,11 @@ const adminCyclesEditorReducer =
             'cycleEditor',
             state.cycleEditor.filter(el => el.id !== action.meta)
           );
+
+      case ActionTypeKeys.FILTER_CYCLES_FULFILLED:
+        return state
+          .set('cycleEditor', action.payload.cycle_editor)
+          .set('filterCyclesParams', action.meta);
 
       case ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID:
         return state

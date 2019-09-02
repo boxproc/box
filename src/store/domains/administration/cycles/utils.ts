@@ -1,11 +1,17 @@
 import {
   cycleTypes,
   statusTypeCyclesOptions,
+  statusTypes,
   typeOfCyclesEditorOptions,
   weeklyCycleTypeOptions,
 } from 'consts';
 
-import { AdminCyclesEditorEditableItem, AdminCyclesEditorItem } from './types';
+import {
+  AdminCyclesEditorEditableItem,
+  AdminCyclesEditorItem,
+  CycleFilterParams,
+  CycleFilterParamsPrepared
+} from './types';
 
 export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
   if (!item) {
@@ -27,6 +33,16 @@ export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
     fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
   };
 };
+
+export const prepareCyclesFiltersParamsToSend =
+  (params: CycleFilterParams): CycleFilterParamsPrepared => {
+    const { activeStatusFlag, institutionId } = params;
+
+    return {
+      status: activeStatusFlag ? statusTypes.ACTIVE : null,
+      institution_id: institutionId ? institutionId.value : null,
+    };
+  };
 
 export const prepareAdminCyclesEditorValuesUnderscore =
   (values: Partial<AdminCyclesEditorEditableItem>) => {

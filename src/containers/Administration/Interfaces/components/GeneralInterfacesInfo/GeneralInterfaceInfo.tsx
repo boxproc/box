@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField } from 'components/Form';
+import { InputField, SelectField, TextField } from 'components/Form';
 
 import { protocolTypesOptions, statusTypesOptions } from 'consts';
 
@@ -42,8 +42,8 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             id="name"
             name="name"
             component={InputField}
-            label="Interface  name"
-            placeholder="Enter Interface name"
+            label="Name"
+            placeholder="Enter Name"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -52,8 +52,8 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             id="url"
             name="url"
             component={InputField}
-            label="Interface  url"
-            placeholder="Enter Interface url"
+            label="URL"
+            placeholder="Enter URL"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -72,8 +72,8 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             id="status"
             name="status"
             component={SelectField}
-            label="Interface  Status"
-            placeholder="Select Interface Status"
+            label="Status"
+            placeholder="Select Status"
             options={statusTypesOptions}
             validate={[formErrorUtil.required]}
           />
@@ -83,20 +83,19 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             id="protocolType"
             name="protocolType"
             component={SelectField}
-            label="Interface  Protocol Type"
-            placeholder="Select Interface Protocol Type"
+            label="Protocol Type"
+            placeholder="Select Protocol Type"
             options={protocolTypesOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="connectionAttributes"
             name="connectionAttributes"
-            component={InputField}
-            label="Interface  Connection Attributes"
-            placeholder="Enter Interface Connection Attributes"
-            validate={[formErrorUtil.required]}
+            component={TextField}
+            label="Connection Attributes"
+            placeholder="Enter Connection Attributes"
           />
         </Box>
       </Flex>

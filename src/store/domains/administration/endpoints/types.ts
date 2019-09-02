@@ -7,6 +7,7 @@ export interface AdminEndpointItem extends AdminEndpointItemId {
   port: number;
   status: number | string;
   private_key_location: string;
+  type: string | number;
   connection_attributes: string;
 }
 
@@ -16,6 +17,7 @@ export interface AdminEndpointItemPrepared extends AdminEndpointItemId {
   port: number;
   status: string | number;
   privateKeyLocation: string;
+  type: string | number;
   connectionAttributes: string;
 }
 export interface AdminEndpointItemDetailsPrepared extends AdminEndpointItemId {
@@ -23,6 +25,7 @@ export interface AdminEndpointItemDetailsPrepared extends AdminEndpointItemId {
   name: string;
   port: number;
   status: SelectValues;
+  type: SelectValues;
   privateKeyLocation: string;
   connectionAttributes: string;
 }

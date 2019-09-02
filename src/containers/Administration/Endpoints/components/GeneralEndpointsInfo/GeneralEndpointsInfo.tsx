@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField } from 'components/Form';
 
-import { statusTypesOptions } from 'consts';
+import { statusTypesOptions, typeOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -42,8 +42,8 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             id="name"
             name="name"
             component={InputField}
-            label="Endpoint  name"
-            placeholder="Enter Endpoint name"
+            label="Name"
+            placeholder="Enter name"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -52,8 +52,8 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             id="port"
             name="port"
             component={InputField}
-            label="Endpoint  port"
-            placeholder="Enter Endpoint port"
+            label="Port"
+            placeholder="Enter port"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -62,8 +62,8 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             id="privateKeyLocation"
             name="privateKeyLocation"
             component={InputField}
-            label="Endpoint  Private Key Location"
-            placeholder="Enter Endpoint  Private Key Location"
+            label="Private Key Location"
+            placeholder="Enter Private Key Location"
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -72,8 +72,8 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             id="status"
             name="status"
             component={SelectField}
-            label="Endpoint  Status"
-            placeholder="Select Endpoint Status"
+            label="Status"
+            placeholder="Select Status"
             options={statusTypesOptions}
             validate={[formErrorUtil.required]}
           />
@@ -83,8 +83,18 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             id="connectionAttributes"
             name="connectionAttributes"
             component={InputField}
-            label="Endpoint  Connection Attributes"
-            placeholder="Enter Endpoint Connection Attributes"
+            label="Connection Attributes"
+            placeholder="Enter Connection Attributes"
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="type"
+            name="type"
+            component={SelectField}
+            label="Type"
+            options={typeOptions}
+            placeholder="Select Type"
             validate={[formErrorUtil.required]}
           />
         </Box>

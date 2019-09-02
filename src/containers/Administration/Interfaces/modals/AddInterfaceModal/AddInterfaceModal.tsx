@@ -25,6 +25,7 @@ const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
 }) => {
   return (
     <Modal
+      maxContainerWidth={550}
       name={modalName}
       title="Add Interface"
       withCloseConfirmation={isFormDirty}

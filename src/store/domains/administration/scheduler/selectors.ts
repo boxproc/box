@@ -52,3 +52,7 @@ export const selectCurrentSchedulerName = createSelector(
   selectSchedulerJobValues,
   scheduler => scheduler && scheduler.name
 );
+export const selectCurrentSchedulerStatus = createSelector(
+  selectSchedulerJobValues,
+  scheduler => scheduler && scheduler.status.label
+);

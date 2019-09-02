@@ -35,6 +35,16 @@ export interface AdminCyclesEditorEditableItem extends AdminCyclesEditorItemPrep
   weeklyCycleFirstDay: SelectValues;
 }
 
+export interface CycleFilterParams {
+  institutionId?: SelectValues;
+  activeStatusFlag?: boolean;
+}
+
+export interface CycleFilterParamsPrepared {
+  institution_id: number | string;
+  status: string;
+}
+
 export interface AdminCyclesEditorDataResp extends ResponseStatusType {
   cycle_editor: Array<AdminCyclesEditorItem>;
 }
@@ -42,4 +52,5 @@ export interface AdminCyclesEditorDataResp extends ResponseStatusType {
 export interface AdminCyclesEditorState {
   cycleEditor: ImmutableArray<AdminCyclesEditorItem>;
   currentCycleEditorId: null;
+  filterCyclesParams: CycleFilterParamsPrepared;
 }
