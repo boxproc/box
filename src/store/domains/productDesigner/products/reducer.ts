@@ -10,6 +10,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductDetails: null,
   currentProductRules: Immutable([]),
   currentRulesCode: null,
+  currentProductRule: null,
   filterProductsParams: null,
   institutionProducts: Immutable([]),
 });
@@ -56,6 +57,20 @@ const productsReducer =
       case ActionTypeKeys.SET_RULES_CODE:
         return state
           .set('currentRulesCode', action.payload);
+
+      case ActionTypeKeys.GET_RULE_BY_EVENT:
+        const currentRuleByEvent =
+          state.currentProductRules.find(el => el.event_id === action.payload);
+        return state
+          .set('currentProductRule', currentRuleByEvent ? currentRuleByEvent : null)
+          .set('currentRulesCode', currentRuleByEvent && currentRuleByEvent.script);
+
+      case ActionTypeKeys.GET_RULE_BY_ACTION_TYPE:
+        const currentRuleByActionType =
+          state.currentProductRules.find(el => el.action_type === action.payload);
+        return state
+          .set('currentProductRule', currentRuleByActionType ? currentRuleByActionType : null)
+          .set('currentRulesCode', currentRuleByActionType && currentRuleByActionType.script);
 
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state

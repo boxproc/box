@@ -95,25 +95,49 @@ export const selectCurrentProductDetails = createSelector(
 export const selectDetailsCurrentProductRules = (state: StoreState) =>
   state.productDesigner.products.currentProductRules.asMutable();
 
+// Current rule
+export const selectDefaultCurrentRule = (state: StoreState) =>
+  state.productDesigner.products.currentProductRule;
+
 // Current rules code
 export const selectDefaultCurrentRulesCode = (state: StoreState) =>
   state.productDesigner.products.currentRulesCode;
 
 export const selectCurrentProductRules = createSelector(
   selectDetailsCurrentProductRules,
+  selectDefaultCurrentRule,
   selectDefaultCurrentRulesCode,
   selectAdminEventsOptions,
-  (rules, code, events) => {
-    if (!rules) {
+  (rules, currentRule, code, events) => {
+    if (!rules.length) {
       return null;
     }
-    const rule = rules[0];
+
+    const rule = currentRule ? currentRule : rules[0];
 
     return {
       ...prepareProductRuleValues(rule),
       eventId: rule && events.find(el => el.value === rule.event_id),
       script: code,
     };
+  }
+);
+
+export const selectProductRules = createSelector(
+  selectDetailsCurrentProductRules,
+  selectDefaultCurrentRulesCode,
+  selectAdminEventsOptions,
+  (rules, code, events) => {
+    if (!rules.length) {
+      return null;
+    }
+
+    return rules.map(rule => {
+      return {
+        ...prepareProductRuleValues(rule),
+        eventId: rule && events.find(el => el.value === rule.event_id),
+      };
+    });
   }
 );
 
