@@ -25,25 +25,27 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
         <Flex
           flexWrap="wrap"
         >
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="id"
               name="id"
               component={InputField}
               label="ID"
               disabled={true}
+              isNumber={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="accountId"
               name="accountId"
               component={InputField}
               label="Account ID"
               disabled={true}
+              isNumber={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="panAlias"
               name="panAlias"
@@ -52,16 +54,7 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
-            <Field
-              id="panMasked"
-              name="panMasked"
-              component={InputField}
-              label="Pan Masked"
-              disabled={true}
-            />
-          </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="expiryDate"
               name="expiryDate"
@@ -70,7 +63,16 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[2 / 3]} p="10px">
+            <Field
+              id="panMasked"
+              name="panMasked"
+              component={InputField}
+              label="Pan Masked"
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="status"
               name="status"

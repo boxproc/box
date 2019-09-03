@@ -9,7 +9,7 @@ import { selectInstitutionsOptions } from 'store/domains/consts';
 import { preparedAccountCardsToRender, preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
-  state.ledger.accounts.accounts.asMutable();
+  state.ledger.accounts.accounts && state.ledger.accounts.accounts.asMutable();
 
 export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
