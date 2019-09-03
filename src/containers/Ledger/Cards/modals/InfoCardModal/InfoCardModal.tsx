@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import Modal from 'components/Modal';
 
@@ -34,10 +34,11 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       name={modalName}
       type={modalTypes.EDIT_MODAL}
       title="Card"
-      maxContainerWidth={550}
+      maxContainerWidth={500}
+      minContainerHeight={250}
     >
       <React.Fragment>
-        <Box mb="25px">
+        <Box mb="10px">
           <Button
             disabled={isStatusActive}
             type="reset"
@@ -52,7 +53,10 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
         onCancel={() => closeModal(modalName)}
       />
       <Hr />
-       <Box mb="35px">
+      <Flex
+        justifyContent="flex-end"
+      >
+        <Box mb="10px">
           <Button
             rightPosition={true}
             onClick={() => closeModal(modalName)}
@@ -60,6 +64,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
             text="Close"
           />
         </Box>
+      </Flex>
     </Modal>
   );
 };

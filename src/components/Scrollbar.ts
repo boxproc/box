@@ -19,8 +19,8 @@ export const scrollbarCss = css`
     -webkit-box-shadow: inset 0 0 5px #e6e6e6;
     border-radius: 8px;
   }
-  scrollbar-width: thin;
-  scrollbar-color: #ffa400 #f3f3f3;
+  // scrollbar-width: thin;
+  // scrollbar-color: #ffa400 #f3f3f3;
 `;
 
 export const ScrollDisable = createGlobalStyle`
