@@ -4,9 +4,6 @@ import { apiClient } from 'services';
 
 import { AdminUserItem, UsersFilterParamsPrepared } from './types';
 
-export const getAdminUser = () =>
-  apiClient.post(adminUserNames.GET);
-
 export const addAdminUser = (data: Partial<AdminUserItem>) =>
   apiClient.post(adminUserNames.CREATE, { data });
 

@@ -23,6 +23,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
@@ -33,6 +34,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
@@ -43,6 +45,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="URL" />,
     accessor: 'url',
@@ -53,6 +56,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Private Key Location" />,
     accessor: 'privateKeyLocation',
@@ -74,6 +78,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Type" />,
     accessor: 'type',

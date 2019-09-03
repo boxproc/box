@@ -6,6 +6,7 @@ import Interfaces from './Interfaces';
 import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
+  handleDeleteAdminInterface,
   handleSetAdminInterfaceId,
   selectAdminInterface,
   selectInstitutionsOptions,
@@ -14,7 +15,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminInterfacesActionTypes.GET_ADMIN_INTERFACE,
   AdminInterfacesActionTypes.FILTER_ADMIN_INTERFACE,
 ]);
 
@@ -27,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     setAdminInterfaceId: handleSetAdminInterfaceId,
+    deleteInterface: handleDeleteAdminInterface,
   },
   dispatch
 );

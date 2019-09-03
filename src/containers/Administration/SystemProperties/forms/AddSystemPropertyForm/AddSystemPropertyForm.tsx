@@ -79,6 +79,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={isDirty}
+        disabledOk={!isDirty}
       />
     </form >
   );

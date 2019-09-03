@@ -2,10 +2,6 @@ import { ApiResponse, ResponseStatusType } from 'types';
 import { AdminEndpointItems } from './types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_ENDPOINT = 'administration/endpoints/GET_ADMIN_ENDPOINT',
-  GET_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/GET_ADMIN_ENDPOINT_FULFILLED',
-  GET_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/GET_ADMIN_ENDPOINT_REJECTED',
-
   ADD_ADMIN_ENDPOINT = 'administration/endpoints/ADD_ADMIN_ENDPOINT',
   ADD_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/ADD_ADMIN_ENDPOINT_FULFILLED',
   ADD_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/ADD_ADMIN_ENDPOINT_REJECTED',
@@ -23,21 +19,6 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_ENDPOINT = 'administration/endpoints/FILTER_ADMIN_ENDPOINT',
   FILTER_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_FULFILLED',
   FILTER_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_REJECTED',
-}
-
-export interface GetAdminEndpointAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_ENDPOINT;
-}
-
-export interface GetAdminEndpointFulfilledAction {
-  readonly payload: AdminEndpointItems;
-  readonly type: ActionTypeKeys.GET_ADMIN_ENDPOINT_FULFILLED;
-}
-
-export interface GetAdminEndpointRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_ENDPOINT_REJECTED;
 }
 
 export interface SetEndpointIdAction {
@@ -107,7 +88,6 @@ export interface FilterAdminEndpointRejectedAction {
 }
 
 export type AdminEndpointActionTypes =
-  | GetAdminEndpointFulfilledAction
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
   | SetEndpointIdAction

@@ -10,7 +10,7 @@ import styled from 'theme';
 
 import { ChevronIcon } from 'components/Icon';
 
-import { statusTypes, statusTypesOptions } from 'consts';
+import { schedulerStatusTypesOptions, statusTypes } from 'consts';
 
 import { TableStyled } from './TableStyled';
 
@@ -120,7 +120,7 @@ export const Cell: React.FC<CellProps> = ({
   isDate = false,
   isNumber = false,
 }) => {
-  const isPendingStatus = value === statusTypesOptions
+  const isPendingStatus = value === schedulerStatusTypesOptions
     .find(status => status.value === statusTypes.EXECUTION_PENDING).label;
 
   return (

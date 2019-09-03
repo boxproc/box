@@ -13,7 +13,6 @@ import {
   handleAddAdminEndpoint,
   handleDeleteAdminEndpoint,
   handleUpdateEndpoint,
-  selectAdminCurrentEndpointId,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
@@ -22,7 +21,6 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  currentEndpointId: selectAdminCurrentEndpointId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

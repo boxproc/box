@@ -3,10 +3,6 @@ import { AdminUserDataResp } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_USER = 'administration/permissions/users/GET_ADMIN_USER',
-  GET_ADMIN_USER_FULFILLED = 'administration/permissions/users/GET_ADMIN_USER_FULFILLED',
-  GET_ADMIN_USER_REJECTED = 'administration/permissions/users/GET_ADMIN_USER_REJECTED',
-
   ADD_ADMIN_USER = 'administration/permissions/users/ADD_ADMIN_USER',
   ADD_ADMIN_USER_FULFILLED = 'administration/permissions/users/ADD_ADMIN_USER_FULFILLED',
   ADD_ADMIN_USER_REJECTED = 'administration/permissions/users/ADD_ADMIN_USER_REJECTED',
@@ -20,21 +16,6 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_USER_REJECTED = 'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
 
   SET_ADMIN_USER_ID = 'administration/permissions/SET_ADMIN_USER_ID',
-}
-
-export interface GetAdminUserAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER;
-}
-
-export interface GetAdminUserFulfilledAction {
-  readonly payload: AdminUserDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER_FULFILLED;
-}
-
-export interface GetAdminUserRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER_REJECTED;
 }
 
 export interface AddAdminUserAction {
@@ -87,7 +68,6 @@ export interface SetAdminUserIdAction {
 }
 
 export type AdminUserActionTypes =
-  | GetAdminUserFulfilledAction
   | AddAdminUserFulfilledAction
   | FilterUsersFulfilledAction
   | UpdateAdminUserFulfilledAction

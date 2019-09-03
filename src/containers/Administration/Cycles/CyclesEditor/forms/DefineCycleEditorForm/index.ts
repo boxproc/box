@@ -12,7 +12,6 @@ import {
   handleAddAdminCyclesEditor,
   handleDeleteAdminCyclesEditor,
   handleUpdateAdminCyclesEditor,
-  selectCycleEditorId,
   selectInstitutionsOptions,
 } from 'store/domains';
 
@@ -29,7 +28,6 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  currentCycleEditorId: selectCycleEditorId(state),
   cyclesEditorValue: formSelector(
     state,
     'cycleType'

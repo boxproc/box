@@ -4,9 +4,6 @@ import { apiClient } from 'services';
 
 import { AdminEndpointFilterParamsPrepared, AdminEndpointItem } from './types';
 
-export const getAdminEndpoint = () =>
-  apiClient.post(adminEndPointsPathNames.GET);
-
 export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClient.post(adminEndPointsPathNames.CREATE, { data });
 

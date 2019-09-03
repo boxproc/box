@@ -10,6 +10,7 @@ import { CycleEditorFilter } from './forms';
 
 import {
   AdminCyclesEditorItemPrepared,
+  HandleDeleteAdminCycleEditor,
   HandleFilterCycles,
   HandleSetAdminCycleEditorId,
 } from 'store/domains/administration/cycles';
@@ -21,6 +22,7 @@ interface CycleEditorProps {
   institutionsOptions: Array<SelectValues>;
   setAdminCycleEditorId: HandleSetAdminCycleEditorId;
   filterCycles: HandleFilterCycles;
+  deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
   isFilterFormDirty: boolean;
 }
 
@@ -30,7 +32,18 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   setAdminCycleEditorId,
   filterCycles,
   isFilterFormDirty,
+  deleteAdminCyclesEditor,
 }) => {
+  const contextMenuItems = [
+    {
+      name: 'Delete',
+      icon: 'delete',
+      action: deleteAdminCyclesEditor,
+      withConfirmation: true,
+      confirmationText: `Delete cycle editor record?`,
+    },
+  ];
+
   return (
     <TablePage
       title="Cycles"
@@ -39,6 +52,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       addNewModalName={modalNames.ADD_ADMIN_CYCLE_EDITOR}
       editModalName={modalNames.EDIT_CYCLE_EDITOR}
       setCurrentIdAction={setAdminCycleEditorId}
+      contextMenuItems={contextMenuItems}
       FilterForm={
         <CycleEditorFilter
           filterCycles={filterCycles}

@@ -22,7 +22,6 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
   updateAdminInterface: HandleUpdateAdminInterface;
   addAdminInterface: HandleAddAdminInterface;
-  currentInterfaceId: number;
   deleteInterface: HandleDeleteAdminInterface;
   onCancel: () => void;
   mode: 'add' | 'edit';
@@ -35,7 +34,6 @@ type InterfaceFormAllProps = InterfaceFormProps &
 const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   onCancel,
   handleSubmit,
-  currentInterfaceId,
   deleteInterface,
   updateAdminInterface,
   addAdminInterface,
@@ -70,7 +68,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText="Delete interface?"
-              onClick={() => deleteInterface(currentInterfaceId)}
+              onClick={deleteInterface}
             />
           )}
         </div>
@@ -79,6 +77,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
         />
       </Flex>
     </form >

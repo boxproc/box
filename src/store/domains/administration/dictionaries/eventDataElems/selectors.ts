@@ -12,13 +12,14 @@ export const selectAdminEventDataElemsItems = createSelector(
   selectDefaultAdminEventDataElemsItems,
   selectAdminEventsItems,
   (dataElems, events) => dataElems && dataElems.asMutable().map(item => {
+    const itemEvent = events.find(event => event.id === item.event_id);
+
     return {
       name: item.name,
       description: item.description,
       eventId: item.event_id,
       dataType: dataTypesOptions.find(el => el.value === item.data_type).label,
-      event: events.find(event => event.id === item.event_id)
-        && events.find(event => event.id === item.event_id).name,
+      event: itemEvent && itemEvent.name,
     };
   })
 );

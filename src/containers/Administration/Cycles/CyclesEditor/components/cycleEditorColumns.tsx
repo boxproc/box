@@ -23,7 +23,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Institution ID" />,
     accessor: 'institutionId',
@@ -34,6 +34,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
+    maxWidth: 400,
     sortable: true,
     Header: <Header title="Description" />,
     accessor: 'description',
@@ -44,6 +45,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Cycle Type" />,
     accessor: 'cycleType',
@@ -65,6 +67,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Monthly Cycle First Day" />,
     accessor: 'monthlyCycleFirstDay',
@@ -76,6 +79,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Weekly Cycle First Day" />,
     accessor: 'weeklyCycleFirstDay',
@@ -86,6 +90,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Fixed Cycle Number of Days" />,
     accessor: 'fixedCycleNumberOfDays',

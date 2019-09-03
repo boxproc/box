@@ -20,6 +20,10 @@ export const prepareEditableAdminSysPropItemValues =
 
 export const prepareAdminSysPropFilterParams =
   (propValues: AdminSysPropFilterParams): AdminSysPropFilterParamsPrepared => {
+    if (!propValues) {
+      return null;
+    }
+
     return {
       property_name: propValues.id,
     };

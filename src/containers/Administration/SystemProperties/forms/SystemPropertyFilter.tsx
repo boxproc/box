@@ -26,7 +26,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
   isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterAdminSysProps(data)),
+    handleSubmit(filterAdminSysProps),
     [handleSubmit]
   );
 

@@ -6,9 +6,22 @@ export const selectAdminEventsItems = (state: StoreState) =>
 
 export const selectAdminEventsOptions = createSelector(
   selectAdminEventsItems,
-  items => items.map(item => {
-    return {
-      value: item.id, label: item.name,
-    };
-  })
+  items => {
+    const options = [
+      {
+        value: '',
+        label: 'Select All',
+      },
+    ];
+
+    return [
+      ...options,
+      ...items.map(item => {
+        return {
+          value: item.id,
+          label: item.name,
+        };
+      }),
+    ];
+  }
 );

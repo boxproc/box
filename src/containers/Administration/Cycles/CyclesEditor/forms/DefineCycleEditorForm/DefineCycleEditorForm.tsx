@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
-import { InputField, SelectField } from 'components/Form';
+import { InputField, SelectField, TextField } from 'components/Form';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { Hr } from 'components/Text';
 
@@ -25,17 +25,15 @@ import {
 } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
+  institutionsOptions: Array<SelectValues>;
+  cyclesEditorValue: SelectValues;
   addAdminCyclesEditor: HandleAddAdminCyclesEditor;
   updateAdminCyclesEditor: HandleUpdateAdminCyclesEditor;
   deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
-  institutionsOptions: Array<SelectValues>;
   onCancel: () => void;
-  cyclesEditorValue: SelectValues;
-  currentCycleEditorId: number;
-  isDisabledInstitutions?: boolean;
-  isDisabledType?: boolean;
   isDirty: boolean;
   mode: 'add' | 'edit';
 }
@@ -49,17 +47,16 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   updateAdminCyclesEditor,
   deleteAdminCyclesEditor,
   cyclesEditorValue,
-  currentCycleEditorId,
   onCancel,
-  isDisabledInstitutions,
   institutionsOptions,
-  isDisabledType,
   isDirty,
   mode,
 }) => {
-  const defineAdminCyclesEditor = mode === 'add'
-    ? addAdminCyclesEditor
-    : updateAdminCyclesEditor;
+  const isEditMode = mode === 'edit';
+
+  const defineAdminCyclesEditor = isEditMode
+    ? updateAdminCyclesEditor
+    : addAdminCyclesEditor;
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminCyclesEditor(data)),
@@ -91,16 +88,8 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={isDisabledInstitutions}
-            />
-          </Box>
-          <Box width={[1 / 2]} p="10px">
-            <Field
-              id="description"
-              name="description"
-              placeholder="Enter Cycles Editor Description"
-              component={InputField}
-              label="Cycles Editor Description"
+              isDisabled={isEditMode}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -111,6 +100,17 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               label="Status"
               placeholder="Select Cycles Editor Status"
               options={statusTypeCyclesOptions}
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <Field
+              id="description"
+              name="description"
+              placeholder="Enter Cycles Editor Description"
+              component={TextField}
+              label="Cycles Editor Description"
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -122,7 +122,8 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               options={typeOfCyclesEditorOptions}
               label="Cycles Editor Type"
               disabled={false}
-              isDisabled={isDisabledType}
+              isDisabled={isEditMode}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           {isMonthlyCycleFirstDay && (
@@ -180,7 +181,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete cycle editor record?`}
-              onClick={() => deleteAdminCyclesEditor(currentCycleEditorId)}
+              onClick={() => deleteAdminCyclesEditor()}
             />
           )}
         </div>
@@ -189,6 +190,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
         />
       </Flex>
     </form >

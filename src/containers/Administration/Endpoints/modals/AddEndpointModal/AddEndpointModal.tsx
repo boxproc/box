@@ -32,9 +32,6 @@ const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
     >
       <EndpointForm
         institutionsOptions={institutionsOptions}
-        initialValues={{
-          institutionId: institutionsOptions && institutionsOptions[0],
-        }}
         isDirty={isFormDirty}
         onCancel={() => closeModal(modalName)}
         mode="add"

@@ -23,13 +23,13 @@ import { ContextMenuItem } from 'types';
 import { componentUtil } from 'utils';
 
 export interface WithEditTableProps {
-  setCurrentIdAction: (id: number) => void;
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
-  handleOpenModal: OpenModal;
   editModalName: string;
-  onRowClick: () => object;
   contextMenuItems?: Array<ContextMenuItem>;
   activeTableRowIndex?: number;
+  handleOpenModal: OpenModal;
+  setCurrentIdAction: (id: number) => void;
+  onRowClick: () => object;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -87,23 +87,24 @@ export const withEditTable = <OriginProps extends {}>(
         const id = rowInfo.original.id;
         const rowIndex = rowInfo.index + 1; // from 1
 
-        if (isLocked) {
-          return null;
-        }
-
         return {
           onDoubleClick: () => {
-            setActiveTableRowIndex(rowIndex);
-            setCurrentIdAction(id);
-            return editModalName ? openCurrentRowInModal() : null;
-          },
-          onContextMenu: () => {
-            if (!menuItems.length) {
+            if (editModalName && !isLocked) {
+              setActiveTableRowIndex(rowIndex);
+              setCurrentIdAction(id);
+              return openCurrentRowInModal();
+            } else {
               return null;
             }
-            setCurrentIdAction(id);
-            setCurrentId(id);
-            setActiveTableRowIndex(rowIndex);
+          },
+          onContextMenu: () => {
+            if (menuItems.length && !isLocked) {
+              setCurrentIdAction(id);
+              setCurrentId(id);
+              setActiveTableRowIndex(rowIndex);
+            } else {
+              return null;
+            }
           },
         };
       },

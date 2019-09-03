@@ -1,6 +1,6 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames, } from 'consts';
+import { formNames, modalNames, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -9,7 +9,6 @@ import {
   AddAdminInterfaceAction,
   DeleteAdminInterfaceAction,
   FilterAdminInterfaceAction,
-  GetAdminInterfaceAction,
   SetInterfaceIdAction,
   UpdateAdminInterfaceAction,
 } from './actionTypes';
@@ -17,20 +16,17 @@ import * as api from './api';
 
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
-import { apiClient } from 'services';
-
-import { Thunk, VoidPromiseThunk } from 'types';
-
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
 import {
-  AdminInterfaceFilterParams,
   AdminInterfaceFilterParamsPrepared,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared
 } from './types';
 
-export type GetAdminInterface = () => GetAdminInterfaceAction;
-export type HandleGetAdminInterface = VoidPromiseThunk;
+import { selectAdminCurrentInterfaceId } from './selectors';
+
+import { Thunk } from 'types';
+
+import { errorDecoratorUtil } from 'utils';
 
 export type AddAdminInterface = (values: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
 export type HandleAddAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
@@ -40,7 +36,7 @@ export type SetInterfaceId = (id: number) => SetInterfaceIdAction;
 export type HandleSetInterfaceId = (id: number) => void;
 
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
-export type HandleDeleteAdminInterface = (id: number) => Thunk<void>;
+export type HandleDeleteAdminInterface = () => Thunk<void>;
 
 export type UpdateAdminInterface = (propValues: Partial<AdminInterfaceItem>) =>
   UpdateAdminInterfaceAction;
@@ -49,13 +45,7 @@ export type HandleUpdateAdminInterface = (propValues: Partial<AdminInterfaceItem
 
 export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterParamsPrepared>) =>
   FilterAdminInterfaceAction;
-export type HandleFilterAdminInterface = (params: Partial<AdminInterfaceFilterParams>) =>
-  Thunk<void>;
-
-export const getAdminInterface: GetAdminInterface = () => ({
-  type: ActionTypeKeys.GET_ADMIN_INTERFACE,
-  payload: api.getAdminInterface(),
-});
+export type HandleFilterAdminInterface = () => Thunk<void>;
 
 export const setAdminInterfaceId: SetInterfaceId = id => ({
   type: ActionTypeKeys.SET_ADMIN_INTERFACE_ID,
@@ -83,14 +73,17 @@ export const updateAdminInterface: UpdateAdminInterface = values => ({
   payload: api.updateAdminInterface(values),
 });
 
-export const handleGetAdminInterface: HandleGetAdminInterface = () =>
-  async dispatch => {
+export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
+        const formValues = getFormValues(formNames.ADMIN_INTERFACE_FILTER);
+        const state = getState();
+        const preparedValues = preparedFilterParamsToSend(formValues(state));
 
-        await dispatch(getAdminInterface());
+        if (preparedValues) {
+          await dispatch(filterAdminInterface(preparedValues));
+        }
       },
       dispatch
     );
@@ -107,20 +100,23 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
 
         await dispatch(addAdminInterface(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_INTERFACE));
-        await dispatch(handleGetAdminInterface());
+        await dispatch(handleFilterAdminInterface());
         await dispatch(resetForm(formNames.ADMIN_INTERFACE));
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminInterface: HandleDeleteAdminInterface = id =>
-  async dispatch => {
+export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectAdminCurrentInterfaceId(state);
+
         await dispatch(deleteAdminInterface(id));
-        await dispatch(getAdminInterface());
         await dispatch(closeModal(modalNames.EDIT_ADMIN_INTERFACE));
+        await dispatch(handleFilterAdminInterface());
       },
       dispatch
     );
@@ -133,19 +129,7 @@ export const handleUpdateInterface: HandleUpdateAdminInterface = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(updateAdminInterface(preparedValues));
-        await dispatch(handleGetAdminInterface());
-      },
-      dispatch
-    );
-  };
-
-export const handleFilterAdminInterface: HandleFilterAdminInterface = params =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = preparedFilterParamsToSend(params);
-
-        await dispatch(filterAdminInterface(preparedValues));
+        await dispatch(handleFilterAdminInterface());
       },
       dispatch
     );

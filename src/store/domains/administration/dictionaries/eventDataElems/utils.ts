@@ -5,7 +5,7 @@ import {
 
 export const prepareAdminEventDataElemsParams =
   (params: AdminEventDataElemsFilterParams):
-  AdminEventDataElemsFilterParamsPrepared => {
+    AdminEventDataElemsFilterParamsPrepared => {
     if (!params) {
       return null;
     }

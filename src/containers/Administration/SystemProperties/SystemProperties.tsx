@@ -94,7 +94,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       name: 'Delete',
       icon: 'delete',
-      action: () => deleteAdminSysProp(currentSysPropId),
+      action: deleteAdminSysProp,
       withConfirmation: true,
       confirmationText: `Delete system property "${currentSysPropId}"?`,
     },

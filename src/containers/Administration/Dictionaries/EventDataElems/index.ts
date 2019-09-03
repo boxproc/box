@@ -18,7 +18,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEventDataElemsActionTypes.GET_ADMIN_EVENT_DATA_ELEMS,
   AdminEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
 ]);
 

@@ -30,7 +30,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
   isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterCycles(data)),
+    handleSubmit(filterCycles),
     [handleSubmit]
   );
 
@@ -51,6 +51,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
               options={institutionsOptions}
               isDisabled={false}
               isMulti={false}
+              isClearable={true}
               validate={[formErrorUtil.required]}
             />
           </Box>

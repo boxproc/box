@@ -50,7 +50,7 @@ export enum ActionTypeKeys {
   'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS_REJECTED',
 
   DELETE_ADMIN_GROUP_PERMISSIONS =
-   'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS',
+  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS',
   DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED =
   'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED',
   DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED =
@@ -64,7 +64,7 @@ export enum ActionTypeKeys {
   'administration/permissions/usersGroups/ADD_ADMIN_ACTIVE_USERS_REJECTED',
 
   DELETE_ADMIN_GROUP_MEMBERS =
-   'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS',
+  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS',
   DELETE_ADMIN_GROUP_MEMBER_FULFILLED =
   'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS_FULFILLED',
   DELETE_ADMIN_GROUP_MEMBERS_REJECTED =
@@ -167,7 +167,7 @@ export interface DeleteAdminUserGroupMembersAction {
 export interface DeleteAdminUserGroupMembersFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBER_FULFILLED;
-  readonly meta: number;
+  readonly meta: { userId: number };
 }
 
 export interface DeleteAdminUserGroupMembersRejectedAction {
@@ -182,7 +182,7 @@ export interface DeleteAdminGroupPermissionsAction {
 export interface DeleteAdminGroupPermissionsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
-  readonly meta: string;
+  readonly meta: { uiItem: string };
 }
 
 export interface DeleteAdminGroupPermissionsRejectedAction {

@@ -3,10 +3,6 @@ import { AdminSysPropsDataResp } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_SYS_PROPS = 'administration/systemProperties/GET_ADMIN_SYS_PROPS',
-  GET_ADMIN_SYS_PROPS_FULFILLED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_FULFILLED',
-  GET_ADMIN_SYS_PROPS_REJECTED = 'administration/systemProperties/GET_ADMIN_SYS_PROPS_REJECTED',
-
   DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
   DELETE_ADMIN_SYS_PROP_FULFILLED =
     'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
@@ -29,21 +25,6 @@ export enum ActionTypeKeys {
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
 
   SET_ADMIN_SYS_PROP_ID = 'administration/systemProperties/SET_ADMIN_SYS_PROP_ID',
-}
-
-export interface GetAdminSysPropsAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS;
-}
-
-export interface GetAdminSysPropsFulfilledAction {
-  readonly payload: AdminSysPropsDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS_FULFILLED;
-}
-
-export interface GetAdminSysPropsRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_SYS_PROPS_REJECTED;
 }
 
 export interface DeleteAdminSysPropAction {
@@ -113,7 +94,6 @@ export interface SetAdminSysPropIdAction {
 }
 
 export type AdminSysPropsActionTypes =
-  | GetAdminSysPropsFulfilledAction
   | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
   | UpdateAdminSysPropsFulfilledAction

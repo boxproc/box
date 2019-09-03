@@ -22,7 +22,6 @@ interface InstitutionFormProps extends ExternalSpinnerProps {
   updateAdminInstitution: HandleUpdateAdminInstitution;
   addAdminInstitution: HandleAddAdminInstitution;
   deleteAdminInstitution: HandleDeleteAdminInstitution;
-  adminInstitutionCurrentId: number;
   adminCurrentInstitutionName: string;
   onCancel: () => void;
   mode: 'add' | 'edit';
@@ -38,7 +37,6 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   updateAdminInstitution,
   addAdminInstitution,
   deleteAdminInstitution,
-  adminInstitutionCurrentId,
   adminCurrentInstitutionName,
   mode,
   isDirty,
@@ -126,7 +124,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
-              onClick={() => deleteAdminInstitution(adminInstitutionCurrentId)}
+              onClick={deleteAdminInstitution}
             />
           )}
         </div>
@@ -134,6 +132,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
           onCancel={onCancel}
         />
       </Flex>

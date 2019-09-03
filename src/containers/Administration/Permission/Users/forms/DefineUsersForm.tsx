@@ -136,6 +136,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={isDirty}
+        disabledOk={!isDirty}
       />
     </form >
   );

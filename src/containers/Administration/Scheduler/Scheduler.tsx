@@ -9,6 +9,7 @@ import { tableColumns } from 'containers/Administration/Scheduler/components';
 
 import {
   AdminSchedulerItemPrepared,
+  HandleDeleteAdminSchedulerJob,
   HandleGetAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
   HandleSetAdminSchedulerJobId,
@@ -21,8 +22,10 @@ interface SchedulerProps {
   getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
   setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
+  deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   currentSchedulerJobId: number;
   isFilterFormDirty: boolean;
+  currentSchedulerName: string;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -32,6 +35,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   sendAdminSchedulerAction,
   currentSchedulerJobId,
   isFilterFormDirty,
+  deleteAdminSchedulerJob,
+  currentSchedulerName,
 }) => {
 
   React.useEffect(
@@ -96,6 +101,13 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       }),
       withConfirmation: true,
       confirmationText: 'Resume job?',
+    },
+    {
+      name: 'Delete',
+      icon: 'delete',
+      action: deleteAdminSchedulerJob,
+      withConfirmation: true,
+      confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
     },
   ];
 

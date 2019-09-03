@@ -33,7 +33,6 @@ export const setLedgerTransactionId: SetLedgerTransactionId = id => ({
 export const filterLedgerTransactions: FilterLedgerTransactions = filterParams => ({
   type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS,
   payload: api.filterLedgerTransactions(filterParams),
-  meta: filterParams,
 });
 
 export const handleSetLedgerTransactionId: HandleSetLedgerTransactionId = id =>

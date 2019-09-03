@@ -11,7 +11,6 @@ export const adminUserInitialState:
 const adminUserReducer =
   (state = adminUserInitialState, action: AdminUserActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_USER_FULFILLED:
       case ActionTypeKeys.FILTER_USERS_FULFILLED:
         return state
           .set('users', action.payload.users);

@@ -22,6 +22,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
@@ -32,6 +33,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
@@ -54,6 +56,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Private Key Location" />,
     accessor: 'privateKeyLocation',

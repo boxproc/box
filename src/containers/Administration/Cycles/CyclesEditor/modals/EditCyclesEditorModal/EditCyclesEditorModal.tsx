@@ -33,8 +33,6 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
       <DefineCycleEditorForm
         onCancel={() => closeModal(modalName)}
         initialValues={cycleEditorValues}
-        isDisabledInstitutions={true}
-        isDisabledType={true}
         isDirty={isFormDirty}
         mode="edit"
       />

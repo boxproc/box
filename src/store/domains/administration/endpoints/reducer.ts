@@ -12,10 +12,6 @@ export const adminEndpointInitialState:
 const adminEndpointsReducer =
   (state = adminEndpointInitialState, action: AdminEndpointActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_ENDPOINT_FULFILLED:
-        return state
-          .set('endpoints', action.payload.endpoints);
-
       case ActionTypeKeys.DELETE_ADMIN_ENDPOINT_FULFILLED:
         return state
           .set(

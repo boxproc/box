@@ -29,6 +29,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Name" />,
     accessor: 'name',

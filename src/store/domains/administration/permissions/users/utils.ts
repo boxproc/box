@@ -51,6 +51,9 @@ export const prepareUsersFiltersParams =
 
 export const prepareUsersFiltersParamsToSend =
   (params: Partial<UsersFilterParams>): Partial<UsersFilterParamsPrepared> => {
+    if (!params) {
+      return null;
+    }
     const { statusActiveFlag } = params;
 
     return {

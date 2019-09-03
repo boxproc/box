@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 import {
@@ -23,11 +23,10 @@ import {
 } from './types';
 import { prepareValuesToSend, prepareValuesToSendActions } from './utils';
 
-import { apiClient } from 'services';
-
 import { Thunk, VoidPromiseThunk, } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
+import { selectCurrentSchedulerJobId } from './selectors';
 
 export type GetAdminSchedulerJobs = () => GetAdminSchedulerJobAction;
 export type HandleGetAdminSchedulerJobs = VoidPromiseThunk;
@@ -37,8 +36,8 @@ export type AddAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
 export type HandleAddAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
   Thunk<void>;
 
-export type DeleteAdminSchedulerJob = (id: string | number) => DeleteAdminSchedulerJobAction;
-export type HandleDeleteAdminSchedulerJob = (id: string | number) => Thunk<void>;
+export type DeleteAdminSchedulerJob = (id: number) => DeleteAdminSchedulerJobAction;
+export type HandleDeleteAdminSchedulerJob = () => Thunk<void>;
 
 export type SendAdminSchedulerAction =
   (values: Partial<AdminSchedulerJobAction>, withRefresh?: SetRefresh) =>
@@ -98,9 +97,6 @@ export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
         await dispatch(getAdminSchedulerJobs());
       },
       dispatch
@@ -122,10 +118,13 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
     );
   };
 
-export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =>
-  async dispatch => {
+export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectCurrentSchedulerJobId(state);
+
         await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(handleGetAdminSchedulerJobs());

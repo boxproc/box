@@ -6,8 +6,10 @@ import Accounts from './Institutions';
 import {
   AdminInstitutionsActionTypes,
   createLoadingSelector,
+  handleDeleteAdminInstitution,
   handleGetAdminInstitutions,
   handleSetAdminInstitutionId,
+  selectAdminCurrentInstitutionName,
   selectAdminInstitutions,
 } from 'store/domains';
 
@@ -20,12 +22,14 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminInstitutions: selectAdminInstitutions(state),
+  adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminInstitutions: handleGetAdminInstitutions,
     setAdminInstitutionId: handleSetAdminInstitutionId,
+    deleteAdminInstitution: handleDeleteAdminInstitution,
   },
   dispatch
 );
