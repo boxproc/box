@@ -94,7 +94,7 @@ export interface RevolvingCreditProductItem {
   aprSales: number;
   aprBalanceTransfer: number;
   aprFee: number;
-  feeLatePayment: number;
+  feeLatePayment: number ;
   feeExceedLimit: number;
   feeUnpaid: number;
   feeOverLimit: number;
@@ -154,7 +154,7 @@ export interface DebitProductResp extends ResponseStatusType {
 
 export interface DebitProductItem {
   productId: number;
-  aprOverdraft: number;
+  aprOverdraft: number | string;
   overdraftAllowed: boolean;
 }
 

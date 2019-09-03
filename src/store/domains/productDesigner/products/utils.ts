@@ -124,17 +124,19 @@ export const prepareProductDetailsValues =
 export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
   return {
     productId: product.product_id,
-    aprDefault: product.apr_default,
-    aprCash: product.apr_cash,
-    aprSales: product.apr_sales,
-    aprBalanceTransfer: product.apr_balance_transfer,
-    aprFee: product.apr_fee,
-    feeLatePayment: product.fee_late_payment,
-    feeExceedLimit: product.fee_exceed_limit,
-    feeUnpaid: product.fee_unpaid,
-    feeOverLimit: product.fee_over_limit,
-    minimumPaymentPercent: product.minimum_payment_percent,
-    minimumPaymentAmount: product.minimum_payment_amount,
+    aprDefault: product.apr_default && product.apr_default.toFixed(2),
+    aprCash: product.apr_cash && product.apr_cash.toFixed(2),
+    aprSales: product.apr_sales && product.apr_sales.toFixed(2),
+    aprBalanceTransfer: product.apr_balance_transfer && product.apr_balance_transfer.toFixed(2),
+    aprFee: product.apr_fee && product.apr_fee.toFixed(2),
+    feeLatePayment: product.fee_late_payment && product.fee_late_payment.toFixed(2),
+    feeExceedLimit: product.fee_exceed_limit && product.fee_exceed_limit.toFixed(2),
+    feeUnpaid: product.fee_unpaid && product.fee_unpaid.toFixed(2),
+    feeOverLimit: product.fee_over_limit && product.fee_over_limit.toFixed(2),
+    minimumPaymentPercent: product.minimum_payment_percent &&
+     product.minimum_payment_percent.toFixed(2),
+    minimumPaymentAmount: product.minimum_payment_amount &&
+     product.minimum_payment_amount.toFixed(2),
     paymentGraceNumberOfDays: product.payment_grace_number_of_days,
     limitSharingAllowedFlag:
       product.limit_sharing_allowed_flag === yesNoTypes.YES ? true : false,
@@ -165,9 +167,12 @@ export const prepareSavings = (product: SavingsProductItemResp) => {
   return {
     productId: product.product_id,
     apr: product.apr,
-    minimumDepositAllowed: product.minimum_deposit_allowed,
-    maximumDepositAllowed: product.maximum_deposit_allowed,
-    maximumMonthlyDeposit: product.maximum_monthly_deposit,
+    minimumDepositAllowed: product.minimum_deposit_allowed &&
+     product.minimum_deposit_allowed.toFixed(2),
+    maximumDepositAllowed: product.maximum_deposit_allowed &&
+    product.maximum_deposit_allowed.toFixed(2),
+    maximumMonthlyDeposit: product.maximum_monthly_deposit &&
+    product.maximum_monthly_deposit.toFixed(2),
     savingsType: savingsTypesOptions.find(el => el.value === product.savings_type),
   };
 };
@@ -226,7 +231,7 @@ export const prepareLoanToSend = (product: LoanProductItem) => {
 export const prepareDebit = (product: DebitProductItemResp) => {
   return {
     productId: product.product_id,
-    aprOverdraft: product.apr_overdraft,
+    aprOverdraft: product.apr_overdraft && product.apr_overdraft.toFixed(2),
     overdraftAllowed:
       product.overdraft_allowed === yesNoTypes.YES ? true : false,
   };
