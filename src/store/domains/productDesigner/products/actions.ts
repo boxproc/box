@@ -16,6 +16,8 @@ import {
   GetProductIdAction,
   GetProductRulesAction,
   GetProductsAction,
+  GetRuleByActionTypeAction,
+  GetRuleByEventAction,
   SetRulesCodeAction,
   UpdateProductAction,
   UpdateProductDetailsAction,
@@ -83,6 +85,12 @@ export type HandleGetProductRules = (id: number) => Thunk<void>;
 export type SetRulesCode = (code: string) => SetRulesCodeAction;
 export type HandleSetRulesCode = (code: string) => void;
 
+export type GetRuleByEvent = (event: string | number) => GetRuleByEventAction;
+export type HandleGetRuleByEvent = (event: string | number) => void;
+
+export type GetRuleByActionType = (actionType: string | number) => GetRuleByActionTypeAction;
+export type HandleGetRuleByActionType = (actionType: string | number) => void;
+
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
 
@@ -125,6 +133,16 @@ export const getProductId: GetProductId = id => ({
 export const setRulesCode: SetRulesCode = code => ({
   type: ActionTypeKeys.SET_RULES_CODE,
   payload: code,
+});
+
+export const getRuleByEvent: GetRuleByEvent = event => ({
+  type: ActionTypeKeys.GET_RULE_BY_EVENT,
+  payload: event,
+});
+
+export const getRuleByActionType: GetRuleByActionType = actionType => ({
+  type: ActionTypeKeys.GET_RULE_BY_ACTION_TYPE,
+  payload: actionType,
 });
 
 export const getProduct: GetProduct = id => ({
@@ -222,6 +240,12 @@ export const handleGetProductId: HandleGetProductId = id =>
 
 export const handleSetRulesCode: HandleSetRulesCode = code =>
   setRulesCode(code);
+
+export const handleGetRuleByEvent: HandleGetRuleByEvent = event =>
+  getRuleByEvent(event);
+
+export const handleGetRuleByActionType: HandleGetRuleByActionType = actionType =>
+  getRuleByActionType(actionType);
 
 export const handleGetProduct: HandleGetProduct = id =>
   async dispatch => {

@@ -17,7 +17,8 @@ export const selectAdminEventDataElemsItems = createSelector(
       description: item.description,
       eventId: item.event_id,
       dataType: dataTypesOptions.find(el => el.value === item.data_type).label,
-      event: events.find(event => event.id === item.event_id).name,
+      event: events.find(event => event.id === item.event_id)
+        && events.find(event => event.id === item.event_id).name,
     };
   })
 );

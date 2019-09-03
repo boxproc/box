@@ -11,6 +11,8 @@ import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
 import {
   HandleGetProductRules,
+  HandleGetRuleByActionType,
+  HandleGetRuleByEvent,
   HandleUpdateProductRules,
 } from 'store/domains';
 
@@ -22,7 +24,10 @@ interface ProductRulesForm extends ExternalSpinnerProps {
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
   eventValue: SelectValues;
+  actionTypeValue: SelectValues;
   isDirty: boolean;
+  getRuleByEvent: HandleGetRuleByEvent;
+  getRuleByActionType: HandleGetRuleByActionType;
 }
 
 type EditProductRulesFormAllProps = ProductRulesForm &
@@ -35,7 +40,10 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   getProductRules,
   updateProductRules,
   eventValue,
+  actionTypeValue,
   isDirty,
+  getRuleByEvent,
+  getRuleByActionType,
 }) => {
   React.useEffect(
     () => {
@@ -43,6 +51,25 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
     },
     [getProductRules, currentProductId]
   );
+
+  React.useEffect(
+    () => {
+      if (actionTypeValue) {
+        getRuleByActionType(actionTypeValue.value);
+      }
+    },
+    [actionTypeValue, getRuleByActionType]
+  );
+
+  React.useEffect(
+    () => {
+      if (eventValue) {
+        getRuleByEvent(eventValue.value);
+      }
+    },
+    [eventValue, getRuleByEvent]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProductRules(data)),
     [handleSubmit]

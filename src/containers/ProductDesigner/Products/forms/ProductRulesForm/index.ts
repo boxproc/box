@@ -9,9 +9,12 @@ import { formNames } from 'consts';
 import {
   createLoadingSelector,
   handleGetProductRules,
+  handleGetRuleByActionType,
+  handleGetRuleByEvent,
   handleUpdateProductRules,
   ProductsActionTypes,
   selectCurrentProductRules,
+  selectProductRules,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -28,18 +31,15 @@ const dirty = isDirty(formNames.PRODUCT_RULES);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isDirty: dirty(state),
-  initialValues: {
-    ...selectCurrentProductRules(state),
-    ...formValues(
-      state,
-      'eventId',
-      'actionType',
-      'description'
-    ),
-  },
+  productRules: selectProductRules(state),
+  initialValues: selectCurrentProductRules(state),
   eventValue: formValues(
     state,
     'eventId'
+  ),
+  actionTypeValue: formValues(
+    state,
+    'actionType'
   ),
 });
 
@@ -47,6 +47,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getProductRules: handleGetProductRules,
     updateProductRules: handleUpdateProductRules,
+    getRuleByEvent: handleGetRuleByEvent,
+    getRuleByActionType: handleGetRuleByActionType,
   },
   dispatch
 );
