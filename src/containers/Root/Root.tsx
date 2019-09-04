@@ -7,7 +7,7 @@ import { Container } from 'components/Container';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 
-import { basePath, cookiesNames } from 'consts';
+import { basePath, cookiesExpires, cookiesNames } from 'consts';
 
 import Header from 'containers/Header';
 import HomePage from 'containers/HomePage';
@@ -32,35 +32,34 @@ const PagesWrapper = styled(Container)`
 
 interface RootProps {
   visibleUiItems: Array<string>;
-  // sessionId: string;
-  // userName: string;
-  // isRememberedMe: boolean;
+  sessionId: string;
+  userName: string;
+  isRememberedMe: boolean;
 }
 
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
-  // sessionId,
-  // userName,
-  // isRememberedMe,
+  sessionId,
+  userName,
+  isRememberedMe,
 }) => {
   const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID);
 
-  // For demo
-  // React.useEffect(
-  //   () => {
-  //     if (sessionId) {
-  //       cookiesUtil.set(cookiesNames.SESSION_ID, sessionId, {
-  //         expires: cookiesExpires.SESSION_ID,
-  //       });
-  //     }
-  //     if (isLoggedIn && isRememberedMe) {
-  //       cookiesUtil.set(cookiesNames.USER_NAME, userName, {
-  //         maxAge: cookiesExpires.WEEK,
-  //       });
-  //     }
-  //   },
-  //   [sessionId, userName, isRememberedMe, isLoggedIn]
-  // );
+  React.useEffect(
+    () => {
+      if (sessionId) {
+        cookiesUtil.set(cookiesNames.SESSION_ID, sessionId, {
+          expires: cookiesExpires.SESSION_ID,
+        });
+      }
+      if (isLoggedIn && isRememberedMe) {
+        cookiesUtil.set(cookiesNames.USER_NAME, userName, {
+          maxAge: cookiesExpires.WEEK,
+        });
+      }
+    },
+    [sessionId, userName, isRememberedMe, isLoggedIn]
+  );
 
   return (
     <React.Fragment>
