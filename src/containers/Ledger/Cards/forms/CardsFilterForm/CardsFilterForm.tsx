@@ -24,7 +24,7 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
 }) => {
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterLedgerCards(data)),
+    handleSubmit(filterLedgerCards),
     [handleSubmit, filterLedgerCards]
   );
 

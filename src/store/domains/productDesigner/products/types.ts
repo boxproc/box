@@ -237,6 +237,5 @@ export interface ProductsState {
   currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentProductRule: ProductRulesItemResp;
   currentRulesCode: string;
-  filterProductsParams: ProductFilterParamsPrepared;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
 }

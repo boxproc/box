@@ -2,7 +2,6 @@ import {
   InstitutionProducts,
   ProductDataResp,
   ProductDetailsResp,
-  ProductFilterParams,
   ProductRulesResp,
   ProductsDataResp,
 } from './types';
@@ -10,15 +9,11 @@ import {
 import { ApiResponse, ResponseStatusType, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_PRODUCTS = 'productDesigner/products/GET_PRODUCTS',
-  GET_PRODUCTS_FULFILLED = 'productDesigner/products/GET_PRODUCTS_FULFILLED',
-  GET_PRODUCTS_REJECTED = 'productDesigner/products/GET_PRODUCTS_REJECTED',
-
   GET_INSTITUTION_PRODUCTS = 'productDesigner/products/GET_INSTITUTION_PRODUCTS',
   GET_INSTITUTION_PRODUCTS_FULFILLED =
-    'productDesigner/products/GET_INSTITUTION_PRODUCTS_FULFILLED',
+  'productDesigner/products/GET_INSTITUTION_PRODUCTS_FULFILLED',
   GET_INSTITUTION_PRODUCTS_REJECTED =
-    'productDesigner/products/GET_INSTITUTION_PRODUCTS_REJECTED',
+  'productDesigner/products/GET_INSTITUTION_PRODUCTS_REJECTED',
 
   DELETE_PRODUCT = 'productDesigner/products/DELETE_PRODUCT',
   DELETE_PRODUCT_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FULFILLED',
@@ -64,23 +59,6 @@ export enum ActionTypeKeys {
   ADD_PRODUCT_REJECTED = 'productDesigner/products/ADD_PRODUCT_REJECTED',
 }
 
-// Get all products
-export interface GetProductsAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_PRODUCTS;
-}
-
-export interface GetProductsFulfilledAction {
-  readonly payload: ProductsDataResp;
-  readonly type: ActionTypeKeys.GET_PRODUCTS_FULFILLED;
-}
-
-export interface GetProductsRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_PRODUCTS_REJECTED;
-}
-
-// Get products by institution ID
 export interface GetInstitutionProductsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS;
@@ -96,7 +74,6 @@ export interface GetInstitutionProductsRejectedAction {
   readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_REJECTED;
 }
 
-// Delete product by id
 export interface DeleteProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT;
@@ -113,7 +90,6 @@ export interface DeleteProductRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REJECTED;
 }
 
-// Filter products
 export interface FilterProductsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS;
@@ -122,7 +98,6 @@ export interface FilterProductsAction {
 export interface FilterProductsFulfilledAction {
   readonly payload: ProductsDataResp;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_FULFILLED;
-  meta: ProductFilterParams;
 }
 
 export interface FilterProductsRejectedAction {
@@ -130,13 +105,11 @@ export interface FilterProductsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
 }
 
-// Get product ID
 export interface GetProductIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.GET_PRODUCT_ID;
 }
 
-// Set rules Code
 export interface SetRulesCodeAction {
   readonly payload: string;
   readonly type: ActionTypeKeys.SET_RULES_CODE;
@@ -152,7 +125,6 @@ export interface GetRuleByActionTypeAction {
   readonly type: ActionTypeKeys.GET_RULE_BY_ACTION_TYPE;
 }
 
-// Get product by id
 export interface GetProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT;
@@ -168,7 +140,6 @@ export interface GetProductRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
 }
 
-// Get product details by id
 export interface GetProductDetailsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS;
@@ -184,7 +155,6 @@ export interface GetProductDetailsRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_REJECTED;
 }
 
-// Get product rules by id
 export interface GetProductRulesAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_RULES;
@@ -200,7 +170,6 @@ export interface GetProductRulesRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_RULES_REJECTED;
 }
 
-// Edit product
 export interface UpdateProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT;
@@ -216,7 +185,6 @@ export interface UpdateProductRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REJECTED;
 }
 
-// Edit product details
 export interface UpdateProductDetailsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS;
@@ -232,7 +200,6 @@ export interface UpdateProductDetailsRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_REJECTED;
 }
 
-// Edit product rules
 export interface UpdateProductRulesAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES;
@@ -248,7 +215,6 @@ export interface UpdateProductRulesRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_REJECTED;
 }
 
-// Add new product
 export interface AddProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT;
@@ -265,7 +231,6 @@ export interface AddProductRejectedAction {
 }
 
 export type ProductsActionTypes =
-  | GetProductsFulfilledAction
   | GetInstitutionProductsFulfilledAction
   | DeleteProductFulfilledAction
   | FilterProductsFulfilledAction

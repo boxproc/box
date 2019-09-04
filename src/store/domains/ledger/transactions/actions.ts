@@ -1,5 +1,3 @@
-import { cookiesNames } from 'consts';
-
 import {
   ActionTypeKeys,
   FilterLedgerTransactionsAction,
@@ -11,11 +9,9 @@ import * as api from './api';
 import { LedgerTransactionsFilterParams, LedgerTransactionsFilterParamsPrepared } from './types';
 import { preparedFilterParamsToSend } from './utils';
 
-import { apiClient } from 'services';
-
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type SetLedgerTransactionId = (id: number) => SetLedgerTransactionIdAction;
 export type HandleSetLedgerTransactionId = (id: number) => void;
@@ -42,12 +38,11 @@ export const handleFilterLedgerTransactions: HandleFilterLedgerTransactions = pa
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
         const preparedValues = preparedFilterParamsToSend(params);
 
-        await dispatch(filterLedgerTransactions(preparedValues));
+        if (preparedValues) {
+          await dispatch(filterLedgerTransactions(preparedValues));
+        }
       },
       dispatch
     );

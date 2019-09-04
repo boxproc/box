@@ -13,7 +13,7 @@ import {
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
   selectLedgerCurrentCustomer,
-  selectLedgerCustomerCurrentId,
+  selectLedgerCurrentCustomerName,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
@@ -24,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
-  ledgerCustomerCurrentId: selectLedgerCustomerCurrentId(state),
+  ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

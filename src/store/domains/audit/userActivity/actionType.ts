@@ -43,6 +43,7 @@ export interface FilterUserActivitiesRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITIES_REJECTED;
 }
+
 export type AuditUserActivityActionTypes =
   | GetAuditUsersFulfilledAction
   | FilterUserActivitiesFulfilledAction;

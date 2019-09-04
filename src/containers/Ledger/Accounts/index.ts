@@ -15,7 +15,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  LedgerAccountsActionTypes.GET_LEDGER_ACCOUNTS,
   LedgerAccountsActionTypes.FILTER_LEDGER_ACCOUNTS,
 ]);
 

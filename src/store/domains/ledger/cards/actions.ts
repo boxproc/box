@@ -1,3 +1,7 @@
+import { getFormValues } from 'redux-form';
+
+import { formNames } from 'consts';
+
 import {
   ActionTypeKeys,
   ActivateLedgerCardAction,
@@ -7,19 +11,16 @@ import {
 
 import * as api from './api';
 
-import { LedgerCardsFilterParams, LedgerCardsFilterParamsPrepared } from './types';
+import { LedgerCardsFilterParamsPrepared } from './types';
 import { preparedFilterParamsToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { cookiesNames } from 'consts';
-import { apiClient } from 'services';
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type FilterLedgerCards = (params: Partial<LedgerCardsFilterParamsPrepared>) =>
   FilterLedgerCardsAction;
-export type HandleFilterLedgerCards = (params: Partial<LedgerCardsFilterParams>) =>
-  Thunk<void>;
+export type HandleFilterLedgerCards = () => Thunk<void>;
 
 export type SetLedgerLedgerCardId = (id: number) => SetLedgerLedgerCardIdAction;
 export type HandleSetLedgerLedgerCardId = (id: number) => void;
@@ -44,16 +45,17 @@ export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
   payload: api.activateLedgerCard(panAlias),
 });
 
-export const handleFilterLedgerCards: HandleFilterLedgerCards = params =>
-  async dispatch => {
+export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
+        const formValues = getFormValues(formNames.LEDGER_CARDS_FILTER);
+        const state = getState();
+        const preparedValues = preparedFilterParamsToSend(formValues(state));
 
-        const preparedValues = preparedFilterParamsToSend(params);
-
-        await dispatch(filterLedgerCards(preparedValues));
+        if (preparedValues) {
+          await dispatch(filterLedgerCards(preparedValues));
+        }
       },
       dispatch
     );

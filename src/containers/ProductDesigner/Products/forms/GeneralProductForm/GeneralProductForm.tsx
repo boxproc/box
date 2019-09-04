@@ -21,7 +21,6 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
   getProduct: HandleGetProduct;
-  currentProductId: number;
   currentProductName: string;
   isDirty: boolean;
 }
@@ -33,7 +32,6 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   onCancel,
   deleteProduct,
-  currentProductId,
   updateProduct,
   getProduct,
   currentProductName,
@@ -41,9 +39,9 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getProduct(currentProductId);
+      getProduct();
     },
-    [getProduct, currentProductId]
+    [getProduct]
   );
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProduct(data)),
@@ -52,11 +50,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <ProductGeneralInfo
-        isDisabledStatus={true}
-        isDisabledProductTypes={true}
-        isDisabledInstitutions={true}
-      />
+      <ProductGeneralInfo isEditMode={true} />
       <Hr />
       <Flex
         alignItems="center"
@@ -67,8 +61,8 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           iconName="delete"
           type="reset"
           withConfirmation={true}
-          confirmationText={`Delete "${currentProductName}" product?`}
-          onClick={() => deleteProduct(currentProductId)}
+          confirmationText={`Delete product "${currentProductName}"?`}
+          onClick={deleteProduct}
         />
         <OkCancelButtons
           okText="Save"
@@ -76,6 +70,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           onCancel={onCancel}
           rightPosition={true}
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
         />
       </Flex>
     </form>

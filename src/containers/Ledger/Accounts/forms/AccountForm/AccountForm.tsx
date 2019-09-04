@@ -63,6 +63,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={isDirty}
+            disabledOk={!isDirty}
           />
         </Panel>
         <Panel title="Auxiliary Counters">
@@ -76,12 +77,11 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={isDirty}
+            disabledOk={!isDirty}
           />
         </Panel>
         <Panel title="Overdue">
-          <Overdue
-            isEditMode={isEditMode}
-          />
+          <Overdue isEditMode={isEditMode}/>
           <Hr />
           <OkCancelButtons
             okText="Save"
@@ -89,6 +89,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={isDirty}
+            disabledOk={!isDirty}
           />
         </Panel>
         {isEditMode && (
@@ -97,7 +98,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
           </Panel>
         )}
       </Tabs>
-
     </form >
   );
 };

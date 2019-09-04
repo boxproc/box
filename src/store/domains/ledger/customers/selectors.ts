@@ -30,12 +30,24 @@ export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
   selectLedgerCustomerCurrentId,
   selectInstitutionsOptions,
-  (customers, currentId, institutions) => {
+  selectCountryCodes,
+  (customers, currentId, institutions, countries) => {
     const current = customers && customers.asMutable().find(el => el.id === currentId);
+
+    if (!current) {
+      return null;
+    }
 
     return {
       ...preparedValuesDetailsToRender(current),
       institutionId: institutions.find(el => el.value === current.institution_id),
+      addressCountryCode: countries.find(el => el.value === current.address_country_code),
+      nationalityCountryCode: countries.find(el => el.value === current.address_country_code),
     };
   }
+);
+
+export const selectLedgerCurrentCustomerName = createSelector(
+  selectLedgerCurrentCustomer,
+  (customer) => customer && `${customer.firstName} ${customer.lastName}`
 );

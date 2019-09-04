@@ -29,7 +29,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
   isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterProducts(data)),
+    handleSubmit(filterProducts),
     [handleSubmit]
   );
 
@@ -62,7 +62,6 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               options={productTypesOptions}
               isDisabled={false}
               isMulti={true}
-              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1]} p="10px">

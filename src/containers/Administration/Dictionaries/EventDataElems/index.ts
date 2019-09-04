@@ -27,7 +27,13 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isFilterFormDirty: dirty(state),
   adminEventDataElemsItems: selectAdminEventDataElemsItems(state),
-  adminEventsOptions: selectAdminEventsOptions(state),
+  adminEventsOptions: [
+    {
+      label: 'Select All',
+      value: '',
+    },
+    ...selectAdminEventsOptions(state),
+  ],
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

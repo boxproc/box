@@ -42,9 +42,8 @@ export const Cards: React.FC<AccountCardsProps> = ({
 
   const columns = [
     {
-
-      Header: <Header title="Pan Alias" />,
       maxWidth: 150,
+      Header: <Header title="Pan Alias" />,
       accessor: 'panAlias',
       Cell: (props: SCell<'panAlias'>) => (
         <Cell
@@ -54,6 +53,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
+      maxWidth: 300,
       Header: <Header title="Pan Masked" />,
       accessor: 'panMasked',
       Cell: (props: SCell<'panMasked'>) => (
@@ -63,7 +63,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       Header: <Header title="Expiry Date" />,
       accessor: 'expiryDate',
       Cell: (props: SCell<'expiryDate'>) => (
@@ -74,7 +74,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       Header: <Header title="Status" />,
       accessor: 'status',
       Cell: (props: SCell<'status'>) => (

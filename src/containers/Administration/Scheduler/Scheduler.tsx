@@ -62,8 +62,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         {
           taskId: currentSchedulerJobId,
           taskCommand: 'execute_task',
-        },
-        { withRefresh: true }
+        }
       ),
     },
     {

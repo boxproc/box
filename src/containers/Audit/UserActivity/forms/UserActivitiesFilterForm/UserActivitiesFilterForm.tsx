@@ -37,7 +37,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
 }) => {
   const currentInstitutionId = currentInstitution && currentInstitution.value;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterAuditUserActivities(data)),
+    handleSubmit(filterAuditUserActivities),
     [handleSubmit, filterAuditUserActivities]
   );
 

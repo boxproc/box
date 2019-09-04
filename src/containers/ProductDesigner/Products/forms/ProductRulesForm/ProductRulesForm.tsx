@@ -20,7 +20,6 @@ import { SelectValues } from 'types';
 
 interface ProductRulesForm extends ExternalSpinnerProps {
   onCancel?: () => void;
-  currentProductId: number;
   getProductRules: HandleGetProductRules;
   updateProductRules: HandleUpdateProductRules;
   eventValue: SelectValues;
@@ -36,7 +35,6 @@ type EditProductRulesFormAllProps = ProductRulesForm &
 const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   handleSubmit,
   onCancel,
-  currentProductId,
   getProductRules,
   updateProductRules,
   eventValue,
@@ -47,9 +45,9 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getProductRules(currentProductId);
+      getProductRules();
     },
-    [getProductRules, currentProductId]
+    [getProductRules]
   );
 
   React.useEffect(
@@ -86,6 +84,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={isDirty}
+        disabledOk={!isDirty}
       />
     </form>
   );

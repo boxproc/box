@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Account ID" />,
     accessor: 'accountId',
@@ -57,7 +57,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="D/C" />,
     accessor: 'debitCreditIndicator',
@@ -68,6 +68,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Amount" />,
     accessor: 'amount',
@@ -79,6 +80,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
@@ -100,6 +102,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Currency" />,
     accessor: 'originalCurrency',
@@ -111,6 +114,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Conversion Rate" />,
     accessor: 'cardConversionRate',

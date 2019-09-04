@@ -22,10 +22,6 @@ import {
   ProductRulesItemResp,
 } from './types';
 
-export const getProducts = () =>
-  // throttleUtil.getDataAfter(productItemsData, 500);
-  apiClient.post(productsPathNames.GET_PRODUCTS);
-
 export const getProduct = (id: number) =>
   // throttleUtil.getDataAfter(generalProductData, 500);
   apiClient.post(productsPathNames.GET_PRODUCTS, {

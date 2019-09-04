@@ -23,6 +23,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
@@ -33,6 +34,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="Product Name" />,
     accessor: 'productName',
@@ -43,6 +45,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Account Alias" />,
     accessor: 'accountAlias',
@@ -54,6 +57,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Customer ID" />,
     accessor: 'customerId',
@@ -65,6 +69,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="First Name" />,
     accessor: 'customerFirstName',
@@ -75,6 +80,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Last Name" />,
     accessor: 'customerLastName',
@@ -96,6 +102,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Balance Settled" />,
     accessor: 'balanceSettled',
@@ -107,6 +114,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Balance Available" />,
     accessor: 'balanceAvailable',
@@ -118,6 +126,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Amount Due Repayment" />,
     accessor: 'amountDueRepayment',
@@ -129,6 +138,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Balance Limit" />,
     accessor: 'balanceLimit',
@@ -140,6 +150,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Balance Limit Shared" />,
     accessor: 'balanceLimitShared',
@@ -151,6 +162,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="Accrued Interest" />,
     accessor: 'accruedInterest',

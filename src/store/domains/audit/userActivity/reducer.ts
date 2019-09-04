@@ -8,7 +8,6 @@ export const auditUserActivityInitialState:
   seamlessImmutable.ImmutableObject<AuditUserActivitiesState> = Immutable({
     usersActivity: Immutable([]),
     filteredUsers: Immutable([]),
-
   });
 const auditUserActivitiesReducer =
   (state = auditUserActivityInitialState, action: AuditUserActivityActionTypes) => {

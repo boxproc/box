@@ -34,7 +34,7 @@ export const withLoadAdminEvents =
           isAdminEventsLoading,
           ...originProps
         } = props;
-        const isEmpty = adminEventsOptions.length === 0;
+        const isEmpty = adminEventsOptions && adminEventsOptions.length === 0;
 
         React.useEffect(
           () => {

@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 150,
     sortable: true,
     Header: <Header title="PAN Alias" />,
     accessor: 'panAlias',
@@ -34,7 +34,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 175,
+    maxWidth: 300,
     sortable: true,
     Header: <Header title="PAN Masked" />,
     accessor: 'panMasked',

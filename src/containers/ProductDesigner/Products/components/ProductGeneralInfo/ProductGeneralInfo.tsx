@@ -21,9 +21,7 @@ import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ProductGeneralInfoProps {
-  isDisabledProductTypes?: boolean;
-  isDisabledInstitutions?: boolean;
-  isDisabledStatus?: boolean;
+  isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
 }
 
@@ -32,9 +30,7 @@ type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCode
 const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   currencyCodes,
   isCurrencyCodesLoading,
-  isDisabledProductTypes,
-  isDisabledInstitutions,
-  isDisabledStatus,
+  isEditMode = false,
   institutionsOptions,
 }) => {
   return (
@@ -51,7 +47,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Product Type"
             placeholder="Select Product Type"
             options={productTypesOptions}
-            isDisabled={isDisabledProductTypes}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -63,7 +59,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -94,7 +90,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
-            isDisabled={isDisabledStatus}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
