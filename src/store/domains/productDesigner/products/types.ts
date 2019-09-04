@@ -225,8 +225,38 @@ export interface ProductRulesItem {
   productId: number;
 }
 
+export interface ProductServiceInterfaces {
+  id: number;
+  name: string;
+}
+
+export interface ProductServiceEndpoints {
+  id: number;
+  name: string;
+}
+
 export interface InstitutionProducts extends ResponseStatusType {
   institution_products: Array<ProductItemInfoPlain>;
+}
+
+export interface InstitutionProductServiceInterfaces  {
+  interfaces: Array<ProductServiceInterfaces>;
+}
+
+export interface InstitutionProductServiceEndpoints  {
+  endpoints: Array<ProductServiceEndpoints>;
+}
+
+export interface ServicesItems {
+  id: number;
+  card_transactions_endpoint_id: string | number;
+  card_management_interface_id: string | number;
+}
+export interface ServicesItemsPrepared {
+  id: number;
+  endpoints: SelectValues;
+  interfaces: SelectValues;
+
 }
 
 export interface ProductsState {
@@ -239,4 +269,6 @@ export interface ProductsState {
   currentRulesCode: string;
   filterProductsParams: ProductFilterParamsPrepared;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
+  interfaces: ImmutableArray<ProductServiceInterfaces>;
+  endpoints: ImmutableArray<ProductServiceEndpoints>;
 }

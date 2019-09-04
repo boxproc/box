@@ -122,4 +122,7 @@ export enum productsPathNames {
   UPDATE_PRODUCT = '/ui/product_designer/products/update',
   UPDATE_DETAILS = '/ui/product_designer/products/extensions/update',
   UPDATE_RULES = '/ui/product_designer/products/rules/update',
+  GET_ENDPOINTS_SERVICE = '/ui/product_designer/products/services/get/endpoints',
+  GET_INTERFACES_SERVICE = '/ui/product_designer/products/services/get/interfaces',
+  UPDATE_CARD_SERVICE = '/ui/product_designer/products/services/update',
 }

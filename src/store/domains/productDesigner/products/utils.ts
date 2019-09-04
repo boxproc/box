@@ -16,6 +16,8 @@ import {
   RevolvingCreditProductItemResp,
   SavingsProductItem,
   SavingsProductItemResp,
+  ServicesItemsPrepared,
+  // ServicesItemsPrepared,
 } from './types';
 
 import {
@@ -50,6 +52,20 @@ export const prepareProductFiltersParamsToSend =
       status: activeStatusFlag ? statusTypes.ACTIVE : null,
       institution_id: institutionId ? institutionId.value : null,
       product_type: productType && productType.length ? productType.map(type => type.value) : null,
+    };
+  };
+
+export const prepareUpdateCardServiceValuesUnderscore =
+  (values: Partial<ServicesItemsPrepared>) => {
+    if (!values) {
+      return null;
+    }
+    return {
+      id: values.id,
+      card_transactions_endpoint_id: values.endpoints &&
+      values.endpoints.value,
+      card_management_interface_id: values.interfaces &&
+      values.interfaces.value,
     };
   };
 

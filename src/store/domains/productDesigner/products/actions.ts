@@ -10,7 +10,9 @@ import {
   AddProductAction,
   DeleteProductAction,
   FilterProductsAction,
+  GetEndpointsProductServiceAction,
   GetInstitutionProductsAction,
+  GetInterfacesProductServiceAction,
   GetProductAction,
   GetProductDetailsAction,
   GetProductIdAction,
@@ -19,6 +21,7 @@ import {
   GetRuleByActionTypeAction,
   GetRuleByEventAction,
   SetRulesCodeAction,
+  UpdateCardServiceAction,
   UpdateProductAction,
   UpdateProductDetailsAction,
   UpdateProductRulesAction,
@@ -27,6 +30,7 @@ import {
 import * as api from './api';
 
 import {
+  selectCurrentInstitutionId,
   selectCurrentProductId,
   selectCurrentProductType,
 } from './selectors';
@@ -42,6 +46,8 @@ import {
   ProductItemResp,
   ProductRulesItem,
   ProductRulesItemResp,
+  ServicesItems,
+  ServicesItemsPrepared,
 } from './types';
 
 import {
@@ -50,6 +56,7 @@ import {
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
   prepareProductRuleValuesToSend,
+  prepareUpdateCardServiceValuesUnderscore,
 } from './utils';
 
 import { apiClient } from 'services';
@@ -82,6 +89,15 @@ export type HandleGetProductDetails = (id: number) => Thunk<void>;
 export type GetProductRules = (id: number) => GetProductRulesAction;
 export type HandleGetProductRules = (id: number) => Thunk<void>;
 
+export type GetInterfacesService = (institutionId: string | number) =>
+GetInterfacesProductServiceAction;
+export type HandleGetInterfacesService = () => Thunk<void>;
+
+export type GetEndpointsService = (institutionId: string | number) =>
+GetEndpointsProductServiceAction;
+export type HandleGetEndpointsService = () =>
+ Thunk<void>;
+
 export type SetRulesCode = (code: string) => SetRulesCodeAction;
 export type HandleSetRulesCode = (code: string) => void;
 
@@ -93,6 +109,9 @@ export type HandleGetRuleByActionType = (actionType: string | number) => void;
 
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
+
+export type UpdateCardService = (values: ServicesItems) => UpdateCardServiceAction;
+export type HandleUpdateCardService = (values: Partial<ServicesItemsPrepared>) => Thunk<void>;
 
 export type UpdateProduct = (values: ProductItemResp) => UpdateProductAction;
 export type HandleUpdateProduct = (values: Partial<ProductItemGeneral>) => Thunk<void>;
@@ -111,6 +130,16 @@ export const getProducts: GetProducts = () => ({
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
   type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
   payload: api.getInstitutionProducts(id),
+});
+
+export const getEndpointsService: GetEndpointsService = institutionId => ({
+  type: ActionTypeKeys.GET_SERVICE_ENDPOINTS,
+  payload: api.getEndpointsService(institutionId),
+});
+
+export const getInterfacesService: GetInterfacesService = institutionId => ({
+  type: ActionTypeKeys.GET_SERVICE_INTERFACES,
+  payload: api.getInterfacesService(institutionId),
 });
 
 export const deleteProduct: DeleteProduct = id => ({
@@ -151,6 +180,11 @@ export const getProduct: GetProduct = id => ({
   meta: id,
 });
 
+export const updateCardService: UpdateCardService = values => ({
+  type: ActionTypeKeys.UPDATE_CARD_SERVICES,
+  payload: api.updateCardService(values),
+});
+
 export const getProductDetails: GetProductDetails = id => ({
   type: ActionTypeKeys.GET_PRODUCT_DETAILS,
   payload: api.getProductDetails(id),
@@ -181,6 +215,17 @@ export const updateProductRules: UpdateProductRules = values => ({
   payload: api.updateProductRules(values),
 });
 
+export const handleUpdateCardService: HandleUpdateCardService = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareUpdateCardServiceValuesUnderscore(values);
+        console.log(preparedValues, 'VALUESS');
+        await dispatch(updateCardService(preparedValues));
+      },
+      dispatch
+    );
+  };
 export const handleGetProducts: HandleGetProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
@@ -219,6 +264,28 @@ export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getInstitutionProducts(id));
+      },
+      dispatch
+    );
+  };
+export const handleGetInterfacesService: HandleGetInterfacesService = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const currentInstitutionId = selectCurrentInstitutionId(state);
+        await dispatch(getInterfacesService(currentInstitutionId));
+      },
+      dispatch
+    );
+  };
+export const handleGetEndpointsService: HandleGetEndpointsService = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const currentInstitutionId = selectCurrentInstitutionId(state);
+        await dispatch(getEndpointsService(currentInstitutionId));
       },
       dispatch
     );

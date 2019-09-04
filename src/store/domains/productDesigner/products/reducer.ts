@@ -13,6 +13,8 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductRule: null,
   filterProductsParams: null,
   institutionProducts: Immutable([]),
+  interfaces: Immutable([]),
+  endpoints: Immutable([]),
 });
 
 const productsReducer =
@@ -75,6 +77,14 @@ const productsReducer =
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state
           .set('institutionProducts', action.payload.institution_products);
+
+      case ActionTypeKeys.GET_SERVICE_INTERFACES_FULFILLED:
+        return state
+          .set('interfaces', action.payload.interfaces);
+
+      case ActionTypeKeys.GET_SERVICE_ENDPOINTS_FULFILLED:
+        return state
+          .set('endpoints', action.payload.endpoints);
 
       default: return state;
     }
