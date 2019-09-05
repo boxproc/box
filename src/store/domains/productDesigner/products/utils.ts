@@ -54,14 +54,13 @@ export const prepareProductFiltersParamsToSend =
     };
   };
 
-export const prepareUpdateCardServiceValuesUnderscore =
+export const prepareUpdateCardServiceValuesPrepared =
   (values: Partial<ServicesItemsPrepared>) => {
     if (!values) {
       return null;
     }
     const endpointId = values.endpoints.value;
     const interfaceId = values.interfaces.value;
-    console.log(endpointId, '---');
 
     return {
       id: values.id,

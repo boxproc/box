@@ -54,7 +54,7 @@ import {
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
   prepareProductRuleValuesToSend,
-  prepareUpdateCardServiceValuesUnderscore,
+  prepareUpdateCardServiceValuesPrepared,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -205,7 +205,7 @@ export const handleUpdateCardService: HandleUpdateCardService = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareUpdateCardServiceValuesUnderscore(values);
+        const preparedValues = prepareUpdateCardServiceValuesPrepared(values);
 
         await dispatch(updateCardService(preparedValues));
       },
