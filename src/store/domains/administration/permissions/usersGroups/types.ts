@@ -24,6 +24,12 @@ export interface AdminUsersGroupDataResp extends ResponseStatusType {
 
 export interface AdminUserGroupMember {
   id: number;
+  first_name: string;
+  last_name: string;
+}
+
+export interface AdminUserGroupMemberPrepared {
+  id: number;
   username: string;
 }
 
