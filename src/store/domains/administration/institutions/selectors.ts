@@ -9,12 +9,7 @@ export const selectDefaultAdminInstitutions = (state: StoreState) =>
 
 export const selectAdminInstitutions = createSelector(
   selectDefaultAdminInstitutions,
-  items => items && items.map(item => {
-
-    return {
-      ...prepareValuesToRender(item),
-    };
-  })
+  items => items && items.map(item => prepareValuesToRender(item))
 );
 
 export const selectAdminInstitutionCurrentId = (state: StoreState) =>
@@ -26,9 +21,7 @@ export const selectAdminCurrentInstitution = createSelector(
   (institutions, currentId) => {
     const current = institutions.find(el => el.id === currentId);
 
-    return {
-      ...preparedValuesDetailsToRender(current),
-    };
+    return preparedValuesDetailsToRender(current);
   }
 );
 

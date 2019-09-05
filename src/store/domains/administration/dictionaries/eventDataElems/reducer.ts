@@ -10,10 +10,6 @@ export const adminEventsInitialState: ImmutableObject<AdminEventDataElemsState> 
 const adminEventDataElemsReducer =
   (state = adminEventsInitialState, action: AdminEventDataElemsActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_EVENT_DATA_ELEMS_FULFILLED:
-        return state
-          .set('eventDataElems', action.payload.event_data_elements);
-
       case ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS_FULFILLED:
         return state
           .set('eventDataElems', action.payload.event_data_elements);

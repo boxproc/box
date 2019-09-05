@@ -43,6 +43,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={isDirty}
+        disabledOk={!isDirty}
       />
     </form >
   );

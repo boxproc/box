@@ -17,7 +17,6 @@ import {
   SavingsProductItem,
   SavingsProductItemResp,
   ServicesItemsPrepared,
-  // ServicesItemsPrepared,
 } from './types';
 
 import {
@@ -60,12 +59,14 @@ export const prepareUpdateCardServiceValuesUnderscore =
     if (!values) {
       return null;
     }
+    const endpointId = values.endpoints.value;
+    const interfaceId = values.interfaces.value;
+    console.log(endpointId, '---');
+
     return {
       id: values.id,
-      card_transactions_endpoint_id: values.endpoints &&
-      values.endpoints.value,
-      card_management_interface_id: values.interfaces &&
-      values.interfaces.value,
+      card_transactions_endpoint_id: endpointId ? endpointId : null,
+      card_management_interface_id: interfaceId ? interfaceId : null,
     };
   };
 

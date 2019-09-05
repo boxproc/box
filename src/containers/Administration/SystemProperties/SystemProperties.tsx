@@ -43,6 +43,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
 }) => {
   const columns = [
     {
+      maxWidth: 100,
       sortable: true,
       Header: <Header title="Property Name" />,
       accessor: 'id',
@@ -94,7 +95,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       name: 'Delete',
       icon: 'delete',
-      action: () => deleteAdminSysProp(currentSysPropId),
+      action: deleteAdminSysProp,
       withConfirmation: true,
       confirmationText: `Delete system property "${currentSysPropId}"?`,
     },

@@ -11,7 +11,6 @@ export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Im
 const adminSysPropsReducer =
   (state = adminSysPropsInitialState, action: AdminSysPropsActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_SYS_PROPS_FULFILLED:
       case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
         return state
           .set('systemProperties', action.payload.system_properties);

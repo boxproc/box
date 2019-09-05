@@ -20,6 +20,7 @@ export interface AdminEndpointItemPrepared extends AdminEndpointItemId {
   type: string | number;
   connectionAttributes: string;
 }
+
 export interface AdminEndpointItemDetailsPrepared extends AdminEndpointItemId {
   institutionId: SelectValues;
   name: string;

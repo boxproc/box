@@ -29,13 +29,13 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
   isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterLedgerCustomers(data)),
+    handleSubmit(filterLedgerCustomers),
     [handleSubmit, filterLedgerCustomers]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box width="980" mx="-10px">
+      <Box width="1000px" mx="-10px">
         <Flex
           alignItems="flex-start"
           flexWrap="wrap"

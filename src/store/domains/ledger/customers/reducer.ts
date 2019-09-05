@@ -11,10 +11,6 @@ export const ledgerCustomersInitialState: ImmutableObject<LedgerCustomersState> 
 const ledgerCustomersReducer =
   (state = ledgerCustomersInitialState, action: LedgerCustomersActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_LEDGER_CUSTOMERS_FULFILLED:
-        return state
-          .set('customers', action.payload.customers);
-
       case ActionTypeKeys.DELETE_LEDGER_CUSTOMER_FULFILLED:
         return state
           .set(

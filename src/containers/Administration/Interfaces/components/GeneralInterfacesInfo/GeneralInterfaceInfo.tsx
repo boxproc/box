@@ -47,7 +47,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="url"
             name="url"
@@ -57,17 +57,17 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="privateKeyLocation"
             name="privateKeyLocation"
             component={InputField}
-            label="Interface  Private Key Location"
-            placeholder="Enter Interface  Private Key Location"
+            label="Private Key Location"
+            placeholder="Enter Private Key Location"
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[3 / 11]} p="10px">
           <Field
             id="status"
             name="status"
@@ -78,7 +78,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[5 / 11]} p="10px">
           <Field
             id="type"
             name="type"
@@ -89,22 +89,22 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[3 / 11]} p="10px">
           <Field
             id="protocolType"
             name="protocolType"
             component={SelectField}
             label="Protocol Type"
-            placeholder="Select Protocol Type"
+            placeholder="Select Type"
             options={protocolTypesOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="logFileLocation"
             name="logFileLocation"
-            component={TextField}
+            component={InputField}
             label="Log File Location Attributes"
             placeholder="Enter Log File Location"
             validate={[formErrorUtil.required]}

@@ -31,14 +31,14 @@ const adminUsersGroupReducer =
         return state
           .set(
             'userGroupMembers',
-            state.userGroupMembers.filter(el => el.id !== action.meta)
+            state.userGroupMembers.filter(el => el.id !== action.meta.userId)
           );
 
       case ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED:
         return state
           .set(
             'groupPermissions',
-            state.groupPermissions.filter(el => el.ui_item !== action.meta)
+            state.groupPermissions.filter(el => el.ui_item !== action.meta.uiItem)
           );
 
       case ActionTypeKeys.GET_ADMIN_ACTIVE_USERS_FULFILLED:

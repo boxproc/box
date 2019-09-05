@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -14,19 +14,16 @@ import {
   SetAdminInstitutionIdAction,
   UpdateAdminInstitutionAction,
 } from './actionTypes';
-
+import { selectAdminInstitutionCurrentId } from './selectors';
 import {
   AdminInstitutionsItem,
   AdminInstitutionsItemDetailsPrepared,
 } from './types';
-
 import { preparedValuesToSend } from './utils';
-
-import { apiClient } from 'services';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type GetAdminInstitutions = () => GetAdminInstitutionsAction;
 export type HandleGetAdminInstitutions = VoidPromiseThunk;
@@ -45,7 +42,7 @@ export type HandleUpdateAdminInstitution =
   (values: Partial<AdminInstitutionsItemDetailsPrepared>) => Thunk<void>;
 
 export type DeleteAdminInstitution = (id: number) => DeleteAdminInstitutionAction;
-export type HandleDeleteAdminInstitution = (id: number) => Thunk<void>;
+export type HandleDeleteAdminInstitution = () => Thunk<void>;
 
 export const getAdminInstitutions: GetAdminInstitutions = () => ({
   type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS,
@@ -77,9 +74,6 @@ export const handleGetAdminInstitutions: HandleGetAdminInstitutions = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
         await dispatch(getAdminInstitutions());
       },
       dispatch
@@ -117,10 +111,13 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
     );
   };
 
-export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = id =>
-  async dispatch => {
+export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectAdminInstitutionCurrentId(state);
+
         await dispatch(deleteAdminInstitution(id));
         await dispatch(closeModal(modalNames.EDIT_ADMIN_INSTITUTION));
       },

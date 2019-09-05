@@ -42,6 +42,9 @@ export const User: React.FC<UserFilterProps> = ({
         <UserFilter
           filterUsers={filterUsers}
           institutionsOptions={institutionsOptions}
+          initialValues={{
+            statusActiveFlag: false,
+          }}
         />
       }
     />

@@ -61,6 +61,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={isDirty}
+            disabledOk={!isDirty}
           />
         </Panel>
       </Tabs>

@@ -13,11 +13,9 @@ import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
   prepareProductDetailsValues,
-  prepareProductFiltersParams,
   prepareProductRuleValues,
 } from './utils';
 
-// All products
 export const selectDefaultProductItems = (state: StoreState) =>
   state.productDesigner.products.products;
 
@@ -42,11 +40,9 @@ export const selectProductItems = createSelector(
   })
 );
 
-// Current product ID
 export const selectCurrentProductId = (state: StoreState) =>
   state.productDesigner.products.currentProductId;
 
-// Current product
 export const selectDefaultCurrentProduct = (state: StoreState) =>
   state.productDesigner.products.currentProduct;
 
@@ -80,8 +76,8 @@ export const selectProductCardInterfacesService = createSelector(
   selectDefaultInterfaces,
   data => data && data.map(el => {
     return {
-      value: el.id,
-      label: el.name,
+      value: el.id ? el.id : 0,
+      label: el.name ,
     };
   })
 );
@@ -90,19 +86,17 @@ export const selectProductCardEndpointsService = createSelector(
   selectDefaultEndpoints,
   data => data && data.map(el => {
     return {
-      value: el.id,
-      label: el.name,
-    };
+        value: el.id ? el.id : 0,
+        label: el.name,
+      };
   })
 );
 
-// Current product name
 export const selectCurrentProductName = createSelector(
   selectCurrentProduct,
   (product) => product && product.name
 );
 
-// Current product type
 export const selectCurrentProductType = createSelector(
   selectCurrentProduct,
   product => {
@@ -110,7 +104,6 @@ export const selectCurrentProductType = createSelector(
   }
 );
 
-// Current product details
 export const selectDetailsCurrentProductDetails = (state: StoreState) =>
   state.productDesigner.products.currentProductDetails;
 
@@ -127,75 +120,32 @@ export const selectCurrentProductDetails = createSelector(
   }
 );
 
-// Current product rules
 export const selectDetailsCurrentProductRules = (state: StoreState) =>
   state.productDesigner.products.currentProductRules.asMutable();
 
-// Current rule
 export const selectDefaultCurrentRule = (state: StoreState) =>
   state.productDesigner.products.currentProductRule;
 
-// Current rules code
 export const selectDefaultCurrentRulesCode = (state: StoreState) =>
   state.productDesigner.products.currentRulesCode;
 
 export const selectCurrentProductRules = createSelector(
-  selectDetailsCurrentProductRules,
   selectDefaultCurrentRule,
   selectDefaultCurrentRulesCode,
   selectAdminEventsOptions,
-  (rules, currentRule, code, events) => {
-    if (!rules.length) {
+  (currentRule, code, events) => {
+    if (!currentRule) {
       return null;
     }
 
-    const rule = currentRule ? currentRule : rules[0];
-
     return {
-      ...prepareProductRuleValues(rule),
-      eventId: rule && events.find(el => el.value === rule.event_id),
+      ...prepareProductRuleValues(currentRule),
+      eventId: events && events.find(el => el.value === currentRule.event_id),
       script: code,
     };
   }
 );
 
-export const selectProductRules = createSelector(
-  selectDetailsCurrentProductRules,
-  selectDefaultCurrentRulesCode,
-  selectAdminEventsOptions,
-  (rules, code, events) => {
-    if (!rules.length) {
-      return null;
-    }
-
-    return rules.map(rule => {
-      return {
-        ...prepareProductRuleValues(rule),
-        eventId: rule && events.find(el => el.value === rule.event_id),
-      };
-    });
-  }
-);
-
-// Filter parameters
-export const selectDefaultFilterProductParams = (state: StoreState) =>
-  state.productDesigner.products.filterProductsParams;
-
-export const selectFilterProductParams = createSelector(
-  selectDefaultFilterProductParams,
-  selectInstitutionsOptions,
-  (params, institutions) => {
-    if (!params) {
-      return null;
-    }
-    return {
-      ...prepareProductFiltersParams(params),
-      institutionId: institutions.find(institution => institution.value === params.institution_id),
-    };
-  }
-);
-
-// Institution products
 export const selectDefaultInstitutionProducts = (state: StoreState) =>
   state.productDesigner.products.institutionProducts;
 

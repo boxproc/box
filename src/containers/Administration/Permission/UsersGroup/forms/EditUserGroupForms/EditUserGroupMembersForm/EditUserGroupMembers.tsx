@@ -48,7 +48,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="center">
-        <Box width={[1 / 2]} mb="15px" pr="10px">
+        <Box width={[1 / 2]} mb="15px" mr="10px">
           <Field
             id="username"
             name="username"

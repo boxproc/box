@@ -23,7 +23,7 @@ export const adminEventsData: AdminEventsData = {
     },
     {
       id: 5,
-      name: 'Transaction - Adjustement',
+      name: 'Transaction - Adjustment',
     },
     {
       id: 6,

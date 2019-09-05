@@ -18,7 +18,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEventDataElemsActionTypes.GET_ADMIN_EVENT_DATA_ELEMS,
   AdminEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
 ]);
 
@@ -28,7 +27,13 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isFilterFormDirty: dirty(state),
   adminEventDataElemsItems: selectAdminEventDataElemsItems(state),
-  adminEventsOptions: selectAdminEventsOptions(state),
+  adminEventsOptions: [
+    {
+      label: 'Select All',
+      value: '',
+    },
+    ...selectAdminEventsOptions(state),
+  ],
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

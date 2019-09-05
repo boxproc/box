@@ -23,6 +23,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Institution" />,
     accessor: 'institutionId',
@@ -33,6 +34,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Name" />,
     accessor: 'name',
@@ -97,6 +99,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 130,
     sortable: true,
     Header: <Header title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDay',
@@ -108,6 +111,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Default Statement Cycle" />,
     accessor: 'defaultStatementCycleId',

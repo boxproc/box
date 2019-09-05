@@ -8,11 +8,11 @@ import Products from './Products';
 
 import {
   createLoadingSelector,
+  handleDeleteProduct,
   handleFilterProducts,
   handleGetProductId,
-  handleGetProducts,
   ProductsActionTypes,
-  selectFilterProductParams,
+  selectCurrentProductName,
   selectInstitutionsOptions,
   selectProductItems,
 } from 'store/domains';
@@ -20,7 +20,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCTS,
   ProductsActionTypes.FILTER_PRODUCTS,
 ]);
 
@@ -31,14 +30,14 @@ const mapStateToProps = (state: StoreState) => ({
   isFilterFormDirty: dirty(state),
   productItems: selectProductItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  filterProductParams: selectFilterProductParams(state),
+  currentProductName: selectCurrentProductName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getProducts: handleGetProducts,
     filterProducts: handleFilterProducts,
     getProductId: handleGetProductId,
+    deleteProduct: handleDeleteProduct,
   },
   dispatch
 );

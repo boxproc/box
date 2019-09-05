@@ -15,10 +15,6 @@ import {
   EditableAdminSysPropPrepared,
 } from './types';
 
-export const getAdminSysProps = () =>
-  // throttleUtil.getDataAfter(AdminSysPropsItemsData, 500);
-  apiClient.post(adminSystemPropsPathNames.GET);
-
 export const deleteAdminSysProp = (id: string) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
   apiClient.post(adminSystemPropsPathNames.DELETE, {

@@ -23,7 +23,6 @@ interface EndpointFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
   updateAdminEndpoint: HandleUpdateAdminEndpoint;
   addAdminEndpoint: HandleAddAdminEndpoint;
-  currentEndpointId: number;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   isDirty: boolean;
   onCancel: () => void;
@@ -37,7 +36,6 @@ type EndpointFormAllProps = EndpointFormProps &
 const EndpointForm: React.FC<EndpointFormAllProps> = ({
   onCancel,
   handleSubmit,
-  currentEndpointId,
   deleteEndpoint,
   updateAdminEndpoint,
   addAdminEndpoint,
@@ -73,7 +71,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete endpoint "${currentEndpointName}"?`}
-              onClick={() => deleteEndpoint(currentEndpointId)}
+              onClick={deleteEndpoint}
             />
           )}
         </div>
@@ -81,6 +79,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
+          disabledOk={!isDirty}
           withCancelConfirmation={isDirty}
         />
       </Flex>

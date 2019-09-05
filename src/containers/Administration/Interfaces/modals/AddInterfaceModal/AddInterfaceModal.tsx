@@ -32,9 +32,6 @@ const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
     >
       <InterfaceForm
         institutionsOptions={institutionsOptions}
-        initialValues={{
-          institutionId: institutionsOptions && institutionsOptions[0],
-        }}
         onCancel={() => closeModal(modalName)}
         mode="add"
         isDirty={isFormDirty}

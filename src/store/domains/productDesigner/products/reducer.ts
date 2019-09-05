@@ -5,14 +5,14 @@ import { ProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
+  currentProductRules: Immutable([]),
+  institutionProducts: Immutable([]),
   currentProductId: null,
   currentProduct: null,
   currentProductDetails: null,
-  currentProductRules: Immutable([]),
   currentRulesCode: null,
   currentProductRule: null,
   filterProductsParams: null,
-  institutionProducts: Immutable([]),
   interfaces: Immutable([]),
   endpoints: Immutable([]),
 });
@@ -20,10 +20,6 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
 const productsReducer =
   (state = productsInitialState, action: ProductsActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_PRODUCTS_FULFILLED:
-        return state
-          .set('products', action.payload.products);
-
       case ActionTypeKeys.DELETE_PRODUCT_FULFILLED:
         return state
           .set(
@@ -33,8 +29,7 @@ const productsReducer =
 
       case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
         return state
-          .set('products', action.payload.products)
-          .set('filterProductsParams', action.meta);
+          .set('products', action.payload.products);
 
       case ActionTypeKeys.GET_PRODUCT_ID:
         return state
@@ -51,6 +46,7 @@ const productsReducer =
       case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
         return state
           .set('currentProductRules', action.payload.product_rules)
+          .set('currentProductRule', action.payload.product_rules[0])
           .set(
             'currentRulesCode',
             action.payload.product_rules.length && action.payload.product_rules[0].script
@@ -64,15 +60,26 @@ const productsReducer =
         const currentRuleByEvent =
           state.currentProductRules.find(el => el.event_id === action.payload);
         return state
-          .set('currentProductRule', currentRuleByEvent ? currentRuleByEvent : null)
-          .set('currentRulesCode', currentRuleByEvent && currentRuleByEvent.script);
+          .set(
+            'currentProductRule',
+            currentRuleByEvent ? currentRuleByEvent : { event_id: action.payload }
+          )
+          .set(
+            'currentRulesCode',
+            currentRuleByEvent && currentRuleByEvent.script);
 
       case ActionTypeKeys.GET_RULE_BY_ACTION_TYPE:
         const currentRuleByActionType =
           state.currentProductRules.find(el => el.action_type === action.payload);
         return state
-          .set('currentProductRule', currentRuleByActionType ? currentRuleByActionType : null)
-          .set('currentRulesCode', currentRuleByActionType && currentRuleByActionType.script);
+          .set(
+            'currentProductRule',
+            currentRuleByActionType ? currentRuleByActionType : { action_type: action.payload }
+          )
+          .set(
+            'currentRulesCode',
+            currentRuleByActionType && currentRuleByActionType.script
+          );
 
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state

@@ -1,7 +1,7 @@
 
 import { getFormValues } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -17,7 +17,6 @@ import {
   GetProductDetailsAction,
   GetProductIdAction,
   GetProductRulesAction,
-  GetProductsAction,
   GetRuleByActionTypeAction,
   GetRuleByEventAction,
   SetRulesCodeAction,
@@ -38,7 +37,6 @@ import {
 import {
   NewProduct,
   NewProductPrepared,
-  ProductFilterParams,
   ProductFilterParamsPrepared,
   ProductItemDetails,
   ProductItemDetailsResp,
@@ -59,35 +57,30 @@ import {
   prepareUpdateCardServiceValuesUnderscore,
 } from './utils';
 
-import { apiClient } from 'services';
+import { Thunk } from 'types';
 
-import { Thunk, VoidPromiseThunk } from 'types';
-
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
-
-export type GetProducts = () => GetProductsAction;
-export type HandleGetProducts = VoidPromiseThunk;
+import { errorDecoratorUtil } from 'utils';
 
 export type GetInstitutionProducts = (id: number | string) => GetInstitutionProductsAction;
 export type HandleGetInstitutionProducts = (id: number | string) => Thunk<void>;
 
 export type DeleteProduct = (id: number) => DeleteProductAction;
-export type HandleDeleteProduct = (id: number) => Thunk<void>;
+export type HandleDeleteProduct = () => Thunk<void>;
 
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
-export type HandleFilterProducts = (params: ProductFilterParams) => Thunk<void>;
+export type HandleFilterProducts = () => Thunk<void>;
 
 export type GetProductId = (id: number) => GetProductIdAction;
 export type HandleGetProductId = (id: number) => void;
 
 export type GetProduct = (id: number) => GetProductAction;
-export type HandleGetProduct = (id: number) => Thunk<void>;
+export type HandleGetProduct = () => Thunk<void>;
 
 export type GetProductDetails = (id: number) => GetProductDetailsAction;
-export type HandleGetProductDetails = (id: number) => Thunk<void>;
+export type HandleGetProductDetails = () => Thunk<void>;
 
 export type GetProductRules = (id: number) => GetProductRulesAction;
-export type HandleGetProductRules = (id: number) => Thunk<void>;
+export type HandleGetProductRules = () => Thunk<void>;
 
 export type GetInterfacesService = (institutionId: string | number) =>
 GetInterfacesProductServiceAction;
@@ -122,11 +115,6 @@ export type HandleUpdateProductDetails = (values: Partial<ProductItemDetails>) =
 export type UpdateProductRules = (values: ProductRulesItemResp) => UpdateProductRulesAction;
 export type HandleUpdateProductRules = (values: Partial<ProductRulesItem>) => Thunk<void>;
 
-export const getProducts: GetProducts = () => ({
-  type: ActionTypeKeys.GET_PRODUCTS,
-  payload: api.getProducts(),
-});
-
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
   type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
   payload: api.getInstitutionProducts(id),
@@ -151,7 +139,6 @@ export const deleteProduct: DeleteProduct = id => ({
 export const filterProducts: FilterProducts = params => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
   payload: api.filterProducts(params),
-  meta: params,
 });
 
 export const getProductId: GetProductId = id => ({
@@ -177,7 +164,6 @@ export const getRuleByActionType: GetRuleByActionType = actionType => ({
 export const getProduct: GetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
-  meta: id,
 });
 
 export const updateCardService: UpdateCardService = values => ({
@@ -220,40 +206,24 @@ export const handleUpdateCardService: HandleUpdateCardService = values =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareUpdateCardServiceValuesUnderscore(values);
-        console.log(preparedValues, 'VALUESS');
+
         await dispatch(updateCardService(preparedValues));
       },
       dispatch
     );
   };
-export const handleGetProducts: HandleGetProducts = () =>
+
+export const handleFilterProducts: HandleFilterProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
         const formValues = getFormValues(formNames.PRODUCTS_FILTER);
         const state = getState();
+        const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
 
-        if (formValues(state)) {
-          const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
+        if (preparedValues) {
           await dispatch(filterProducts(preparedValues));
-        } else {
-          await dispatch(getProducts());
         }
-      },
-      dispatch
-    );
-  };
-
-export const handleFilterProducts: HandleFilterProducts = params =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareProductFiltersParamsToSend(params);
-
-        await dispatch(filterProducts(preparedValues));
       },
       dispatch
     );
@@ -291,17 +261,6 @@ export const handleGetEndpointsService: HandleGetEndpointsService = () =>
     );
   };
 
-export const handleDeleteProduct: HandleDeleteProduct = id =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(deleteProduct(id));
-        await dispatch(closeModal(modalNames.EDIT_PRODUCT));
-      },
-      dispatch
-    );
-  };
-
 export const handleGetProductId: HandleGetProductId = id =>
   getProductId(id);
 
@@ -314,30 +273,53 @@ export const handleGetRuleByEvent: HandleGetRuleByEvent = event =>
 export const handleGetRuleByActionType: HandleGetRuleByActionType = actionType =>
   getRuleByActionType(actionType);
 
-export const handleGetProduct: HandleGetProduct = id =>
-  async dispatch => {
+export const handleDeleteProduct: HandleDeleteProduct = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectCurrentProductId(state);
+
+        await dispatch(deleteProduct(id));
+        await dispatch(closeModal(modalNames.EDIT_PRODUCT));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProduct: HandleGetProduct = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const id = selectCurrentProductId(state);
+
         await dispatch(getProduct(id));
       },
       dispatch
     );
   };
 
-export const handleGetProductDetails: HandleGetProductDetails = id =>
-  async dispatch => {
+export const handleGetProductDetails: HandleGetProductDetails = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectCurrentProductId(state);
+
         await dispatch(getProductDetails(id));
       },
       dispatch
     );
   };
 
-export const handleGetProductRules: HandleGetProductRules = id =>
-  async dispatch => {
+export const handleGetProductRules: HandleGetProductRules = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectCurrentProductId(state);
+
         await dispatch(getProductRules(id));
       },
       dispatch
@@ -352,7 +334,7 @@ export const handleAddProduct: HandleAddProduct = values =>
 
         await dispatch(addProduct(preparedValues));
         await dispatch(closeModal(modalNames.ADD_PRODUCT));
-        await dispatch(handleGetProducts());
+        await dispatch(handleFilterProducts());
       },
       dispatch
     );
@@ -365,7 +347,8 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
         const preparedValues = prepareGeneralProductValuesToSend(values);
 
         await dispatch(updateProduct(preparedValues));
-        await dispatch(handleGetProducts());
+        await dispatch(handleFilterProducts());
+        await dispatch(handleGetProduct());
       },
       dispatch
     );
@@ -382,7 +365,8 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
         );
 
         await dispatch(updateProductDetails(preparedValues));
-        await dispatch(handleGetProducts());
+        await dispatch(handleFilterProducts());
+        await dispatch(handleGetProductDetails());
       },
       dispatch
     );
@@ -399,7 +383,8 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
           ...preparedValues,
           product_id: selectCurrentProductId(state),
         }));
-        await dispatch(handleGetProducts());
+        await dispatch(handleFilterProducts());
+        await dispatch(handleGetProductRules());
       },
       dispatch
     );

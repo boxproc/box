@@ -8,7 +8,7 @@ import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { InputField, SelectField, TextField } from 'components/Form';
 import { Hr } from 'components/Text';
 
-import { executableTypeOptions, formNames, modalNames, statusTypesOptions } from 'consts';
+import { executableTypeOptions, formNames, modalNames, schedulerStatusTypesOptions } from 'consts';
 
 import {
   HandleAddAdminSchedulerJob,
@@ -28,10 +28,10 @@ interface DefineSchedulerJobFormProps {
   isDisabledStatus?: boolean;
   onCancel?: () => void;
   deleteAdminSchedulerJob?: HandleDeleteAdminSchedulerJob;
-  schedulerJobId?: number | string;
   isDirty: boolean;
   mode: 'add' | 'edit';
   openModal?: OpenModal;
+  currentSchedulerName?: string;
 }
 
 type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
@@ -45,10 +45,10 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   isDisabledStatus,
   onCancel,
   deleteAdminSchedulerJob,
-  schedulerJobId,
   mode,
   isDirty,
   openModal,
+  currentSchedulerName,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminSchedulerJob(data)),
@@ -86,14 +86,14 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="status"
               name="status"
               component={SelectField}
               label="Status"
               placeholder="Select Status"
-              options={statusTypesOptions}
+              options={schedulerStatusTypesOptions}
               isDisabled={isDisabledStatus}
               validate={[formErrorUtil.required]}
             />
@@ -179,8 +179,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               iconName="delete"
               type="reset"
               withConfirmation={true}
-              confirmationText="Delete scheduler?"
-              onClick={() => deleteAdminSchedulerJob(schedulerJobId)}
+              confirmationText={`Delete scheduler "${currentSchedulerName}"?`}
+              onClick={deleteAdminSchedulerJob}
             />
           )}
         </div>
@@ -189,6 +189,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
         />
       </Flex>
     </form >

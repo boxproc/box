@@ -19,8 +19,8 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   updateLedgerCustomer: HandleUpdateLedgerCustomer;
-  ledgerCustomerCurrentId: number;
   isDirty: boolean;
+  ledgerCurrentCustomerName: string;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &
@@ -31,8 +31,8 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   handleSubmit,
   deleteLedgerCustomer,
   updateLedgerCustomer,
-  ledgerCustomerCurrentId,
   isDirty,
+  ledgerCurrentCustomerName,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateLedgerCustomer(data)),
@@ -41,9 +41,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <CustomerInfo
-        isEditMode={true}
-      />
+      <CustomerInfo isEditMode={true} />
       <Hr />
       <Flex
         alignItems="center"
@@ -54,8 +52,8 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           iconName="delete"
           type="reset"
           withConfirmation={true}
-          confirmationText={`Delete customer?`}
-          onClick={() => deleteLedgerCustomer(ledgerCustomerCurrentId)}
+          confirmationText={`Delete customer "${ledgerCurrentCustomerName}"?`}
+          onClick={deleteLedgerCustomer}
         />
         <OkCancelButtons
           okText="Save"
@@ -63,6 +61,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           onCancel={onCancel}
           rightPosition={true}
           withCancelConfirmation={isDirty}
+          disabledOk={!isDirty}
         />
       </Flex>
     </form >

@@ -2,10 +2,6 @@ import { ApiResponse, ResponseStatusType } from 'types';
 import { AdminInterfaceItems } from './types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_INTERFACE = 'administration/interfaces/GET_ADMIN_INTERFACE',
-  GET_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/GET_ADMIN_INTERFACE_FULFILLED',
-  GET_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/GET_ADMIN_INTERFACE_REJECTED',
-
   ADD_ADMIN_INTERFACE = 'administration/interfaces/ADD_ADMIN_INTERFACE',
   ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_ENDPOINT_FULFILLED',
   ADD_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
@@ -23,20 +19,6 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
   FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
   FILTER_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_REJECTED',
-}
-export interface GetAdminInterfaceAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_INTERFACE;
-}
-
-export interface GetAdminInterfaceFulfilledAction {
-  readonly payload: AdminInterfaceItems;
-  readonly type: ActionTypeKeys.GET_ADMIN_INTERFACE_FULFILLED;
-}
-
-export interface GetAdminInterfaceRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_INTERFACE_REJECTED;
 }
 
 export interface SetInterfaceIdAction {
@@ -106,7 +88,6 @@ export interface FilterAdminInterfaceRejectedAction {
 }
 
 export type AdminInterfacesActionTypes =
-  | GetAdminInterfaceFulfilledAction
   | AddAdminInterfaceFulfilledAction
   | DeleteAdminInterfaceFulfilledAction
   | SetInterfaceIdAction

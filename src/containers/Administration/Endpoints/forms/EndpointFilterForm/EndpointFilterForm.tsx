@@ -31,7 +31,7 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
 }) => {
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterAdminEndpoint(data)),
+    handleSubmit(filterAdminEndpoint),
     [handleSubmit]
   );
 
@@ -51,6 +51,7 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
+              isClearable={true}
               validate={[formErrorUtil.required]}
             />
           </Box>

@@ -3,8 +3,6 @@ export enum cookiesNames {
   USER_NAME = 'username',
   FULL_NAME = 'fullName',
   LAST_ACTIVITY = 'lastActivity',
-  PRODUCTS_FILTER = 'productModelerProducts',
-  EVENT_DATA_ELEMS_FILTER = 'adminEventDataElements',
 }
 
 export enum cookiesExpires {

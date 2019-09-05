@@ -9,9 +9,9 @@ import { tableColumns } from 'containers/Ledger/Customers/components';
 import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
 
 import {
+  HandleDeleteLedgerCustomer,
   HandleFilterLedgerCustomers,
   HandleGetLedgerCustomerId,
-  HandleGetLedgerCustomers,
   LedgerCustomerItemPrepared,
 } from 'store/domains';
 
@@ -19,11 +19,12 @@ import { SelectValues } from 'types';
 
 export interface CustomersProps {
   institutionsOptions: Array<SelectValues>;
-  getLedgerCustomers: HandleGetLedgerCustomers;
   ledgerCustomers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
   getLedgerCustomerId: HandleGetLedgerCustomerId;
   isFilterFormDirty: boolean;
+  deleteLedgerCustomer: HandleDeleteLedgerCustomer;
+  ledgerCurrentCustomerName: string;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -32,7 +33,19 @@ const Customers: React.FC<CustomersProps> = ({
   filterLedgerCustomers,
   getLedgerCustomerId,
   isFilterFormDirty,
+  deleteLedgerCustomer,
+  ledgerCurrentCustomerName,
 }) => {
+  const contextMenuItems = [
+    {
+      name: 'Delete',
+      icon: 'delete',
+      action: deleteLedgerCustomer,
+      withConfirmation: true,
+      confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
+    },
+  ];
+
   return (
     <TablePage
       title="Customers"
@@ -41,6 +54,7 @@ const Customers: React.FC<CustomersProps> = ({
       addNewModalName={modalNames.ADD_LEDGER_CUSTOMER}
       editModalName={modalNames.EDIT_LEDGER_CUSTOMER}
       setCurrentIdAction={getLedgerCustomerId}
+      contextMenuItems={contextMenuItems}
       FilterForm={
         <CustomersFilterForm
           filterLedgerCustomers={filterLedgerCustomers}

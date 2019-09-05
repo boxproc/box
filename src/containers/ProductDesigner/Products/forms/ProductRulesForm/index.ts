@@ -14,7 +14,6 @@ import {
   handleUpdateProductRules,
   ProductsActionTypes,
   selectCurrentProductRules,
-  selectProductRules,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -31,7 +30,6 @@ const dirty = isDirty(formNames.PRODUCT_RULES);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isDirty: dirty(state),
-  productRules: selectProductRules(state),
   initialValues: selectCurrentProductRules(state),
   eventValue: formValues(
     state,

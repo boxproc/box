@@ -1,6 +1,6 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames, } from 'consts';
+import { formNames, modalNames, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -9,27 +9,21 @@ import {
   AddAdminEndpointAction,
   DeleteAdminEndpointAction,
   FilterAdminEndpointAction,
-  GetAdminEndpointAction,
   SetEndpointIdAction,
   UpdateAdminEndpointAction,
 } from './actionTypes';
 import * as api from './api';
+import { selectAdminCurrentEndpointId } from './selectors';
 import {
-  AdminEndpointFilterParams,
   AdminEndpointFilterParamsPrepared,
   AdminEndpointItem,
   AdminEndpointItemDetailsPrepared
 } from './types';
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
-import { apiClient } from 'services';
+import { Thunk } from 'types';
 
-import { Thunk, VoidPromiseThunk } from 'types';
-
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
-
-export type GetAdminEndpoint = () => GetAdminEndpointAction;
-export type HandleGetAdminEndpoint = VoidPromiseThunk;
+import { errorDecoratorUtil } from 'utils';
 
 export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
 export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
@@ -39,7 +33,7 @@ export type SetEndpointId = (id: number) => SetEndpointIdAction;
 export type HandleSetEndpointId = (id: number) => void;
 
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
-export type HandleDeleteAdminEndpoint = (id: number) => Thunk<void>;
+export type HandleDeleteAdminEndpoint = () => Thunk<void>;
 
 export type UpdateAdminEndpoint = (propValues: Partial<AdminEndpointItem>) =>
   UpdateAdminEndpointAction;
@@ -48,13 +42,7 @@ export type HandleUpdateAdminEndpoint = (propValues: Partial<AdminEndpointItemDe
 
 export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterParamsPrepared>) =>
   FilterAdminEndpointAction;
-export type HandleFilterAdminEndpoint = (params: Partial<AdminEndpointFilterParams>) =>
-  Thunk<void>;
-
-export const getAdminEndpoint: GetAdminEndpoint = () => ({
-  type: ActionTypeKeys.GET_ADMIN_ENDPOINT,
-  payload: api.getAdminEndpoint(),
-});
+export type HandleFilterAdminEndpoint = () => Thunk<void>;
 
 export const setAdminEndpointId: SetEndpointId = id => ({
   type: ActionTypeKeys.SET_ADMIN_ENDPOINT_ID,
@@ -82,14 +70,17 @@ export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
   payload: api.updateAdminEndpoint(values),
 });
 
-export const handleGetAdminEndpoint: HandleGetAdminEndpoint = () =>
-  async dispatch => {
+export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
+        const formValues = getFormValues(formNames.ADMIN_ENDPOINT_FILTER);
+        const state = getState();
+        const preparedValues = preparedFilterParamsToSend(formValues(state));
 
-        await dispatch(getAdminEndpoint());
+        if (preparedValues) {
+          await dispatch(filterAdminEndpoint(preparedValues));
+        }
       },
       dispatch
     );
@@ -106,19 +97,22 @@ export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
 
         await dispatch(addAdminEndpoint(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_ENDPOINT));
-        await dispatch(handleGetAdminEndpoint());
+        await dispatch(handleFilterAdminEndpoint());
         await dispatch(resetForm(formNames.ADMIN_ENDPOINT));
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = id =>
-  async dispatch => {
+export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectAdminCurrentEndpointId(state);
+
         await dispatch(deleteAdminEndpoint(id));
-        await dispatch (getAdminEndpoint());
+        await dispatch(handleFilterAdminEndpoint());
         await dispatch(closeModal(modalNames.EDIT_ADMIN_ENDPOINT));
       },
       dispatch
@@ -132,19 +126,7 @@ export const handleUpdateEndpoint: HandleUpdateAdminEndpoint = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(updateAdminEndpoint(preparedValues));
-        await dispatch(handleGetAdminEndpoint());
-      },
-      dispatch
-    );
-  };
-
-export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = params =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = preparedFilterParamsToSend(params);
-
-        await dispatch(filterAdminEndpoint(preparedValues));
+        await dispatch(handleFilterAdminEndpoint());
       },
       dispatch
     );

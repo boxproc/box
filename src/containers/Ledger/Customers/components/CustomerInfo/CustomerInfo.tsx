@@ -209,25 +209,29 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Hr />
-        <Box width="180px" p="10px">
-          <Field
-            id="dateCreated"
-            name="dateCreated"
-            component={InputField}
-            label="Date Created"
-            disabled={true}
-          />
-        </Box>
-        <Box width="180px" p="10px">
-          <Field
-            id="dateClosed"
-            name="dateClosed"
-            component={InputField}
-            label="Date Closed"
-            disabled={true}
-          />
-        </Box>
+        {isEditMode && (
+          <React.Fragment>
+            <Hr />
+            <Box width="180px" p="10px">
+              <Field
+                id="dateCreated"
+                name="dateCreated"
+                component={InputField}
+                label="Date Created"
+                disabled={true}
+              />
+            </Box>
+            <Box width="180px" p="10px">
+              <Field
+                id="dateClosed"
+                name="dateClosed"
+                component={InputField}
+                label="Date Closed"
+                disabled={true}
+              />
+            </Box>
+          </React.Fragment>
+        )}
       </Flex>
     </Box>
   );

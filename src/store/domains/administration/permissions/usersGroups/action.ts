@@ -1,4 +1,4 @@
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { formNames, modalNames } from 'consts';
 import { reset as resetForm } from 'redux-form';
 
 import { closeModal } from 'store/domains/modals';
@@ -32,11 +32,9 @@ import {
   prepareAdminUsersGroupValuesUnderscore,
 } from './utils';
 
-import { apiClient } from 'services';
-
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type GetAdminUsersGroup = () => GetAdminUsersGroupAction;
 export type HandleGetAdminUsersGroup = VoidPromiseThunk;
@@ -150,9 +148,6 @@ export const handleGetAdminUsersGroup: HandleGetAdminUsersGroup = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
         await dispatch(getAdminUsersGroup());
       },
       dispatch
@@ -238,7 +233,7 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
 
         await dispatch(addAdminUserUsersGroup(preparedValues));
         await dispatch(closeModal(modalNames.ADD_ADMIN_USERS_GROUP));
-        await dispatch(getAdminUsersGroup());
+        await dispatch(handleGetAdminUsersGroup());
         await dispatch(resetForm(formNames.DEFINE_ADMIN_USER));
       },
       dispatch
@@ -289,7 +284,7 @@ export const handleUpdateAdminUsersGroup: HandleUpdateAdminUsersGroup = values =
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
 
         await dispatch(updateAdminUsersGroup(preparedValues));
-        await dispatch(getAdminUsersGroup());
+        await dispatch(handleGetAdminUsersGroup());
       },
       dispatch
     );

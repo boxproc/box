@@ -31,6 +31,12 @@ export const statusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },
   { value: 'D', label: 'Deleted' },
+];
+
+export const schedulerStatusTypesOptions = [
+  { value: 'A', label: 'Active' },
+  { value: 'I', label: 'Inactive' },
+  { value: 'D', label: 'Deleted' },
   { value: 'E', label: 'Execution pending' },
 ];
 

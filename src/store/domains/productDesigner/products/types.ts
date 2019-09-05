@@ -253,7 +253,7 @@ export interface ServicesItems {
   card_management_interface_id: string | number;
 }
 export interface ServicesItemsPrepared {
-  id: number;
+  id: number ;
   endpoints: SelectValues;
   interfaces: SelectValues;
 
@@ -267,7 +267,6 @@ export interface ProductsState {
   currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentProductRule: ProductRulesItemResp;
   currentRulesCode: string;
-  filterProductsParams: ProductFilterParamsPrepared;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
   interfaces: ImmutableArray<ProductServiceInterfaces>;
   endpoints: ImmutableArray<ProductServiceEndpoints>;

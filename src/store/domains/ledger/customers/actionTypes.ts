@@ -3,10 +3,6 @@ import { LedgerCustomerItems } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_LEDGER_CUSTOMERS = 'ledger/customers/GET_LEDGER_CUSTOMERS',
-  GET_LEDGER_CUSTOMERS_FULFILLED = 'ledger/customers/GET_LEDGER_CUSTOMERS_FULFILLED',
-  GET_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/GET_LEDGER_CUSTOMERS_REJECTED',
-
   GET_LEDGER_CUSTOMER_ID = 'ledger/customers/GET_LEDGER_CUSTOMER_ID',
 
   DELETE_LEDGER_CUSTOMER = 'ledger/customers/DELETE_LEDGER_CUSTOMER',
@@ -26,29 +22,11 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
 }
 
-// Get all customers
-export interface GetLedgerCustomersAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMERS;
-}
-
-export interface GetLedgerCustomersFulfilledAction {
-  readonly payload: LedgerCustomerItems;
-  readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMERS_FULFILLED;
-}
-
-export interface GetLedgerCustomersRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMERS_REJECTED;
-}
-
-// Set current customer id
 export interface GetLedgerCustomerIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMER_ID;
 }
 
-// Delete customer by id
 export interface DeleteLedgerCustomerAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER;
@@ -67,7 +45,6 @@ export interface DeleteLedgerCustomerRejectedAction {
   readonly type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER_REJECTED;
 }
 
-// Add new customer
 export interface AddLedgerCustomerAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_LEDGER_CUSTOMER;
@@ -83,7 +60,6 @@ export interface AddLedgerCustomerRejectedAction {
   readonly type: ActionTypeKeys.ADD_LEDGER_CUSTOMER_REJECTED;
 }
 
-// Edit customer
 export interface UpdateLedgerCustomerAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_LEDGER_CUSTOMER;
@@ -99,7 +75,6 @@ export interface UpdateLedgerCustomerRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_LEDGER_CUSTOMER_REJECTED;
 }
 
-// Filter customers
 export interface FilterLedgerCustomersAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS;
@@ -116,7 +91,6 @@ export interface FilterLedgerCustomersRejectedAction {
 }
 
 export type LedgerCustomersActionTypes =
-  | GetLedgerCustomersFulfilledAction
   | AddLedgerCustomerFulfilledAction
   | DeleteLedgerCustomerFulfilledAction
   | UpdateLedgerCustomerFulfilledAction

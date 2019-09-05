@@ -6,7 +6,9 @@ import Endpoints from './Endpoints';
 import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
+  handleDeleteAdminEndpoint,
   handleSetAdminEndpointId,
+  selectAdminCurrentEndpointName,
   selectAdminEndpoints,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -14,7 +16,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEndpointsActionTypes.GET_ADMIN_ENDPOINT,
   AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINT,
 ]);
 
@@ -22,11 +23,13 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
   adminEndpointItems: selectAdminEndpoints(state),
+  adminCurrentEndpointName: selectAdminCurrentEndpointName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     setAdminEndpointId: handleSetAdminEndpointId,
+    deleteEndpoint: handleDeleteAdminEndpoint,
   },
   dispatch
 );

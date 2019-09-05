@@ -13,7 +13,6 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminUserActionTypes.GET_ADMIN_USER,
   AdminUserActionTypes.ADD_ADMIN_USER,
   AdminUserActionTypes.UPDATE_ADMIN_USER,
   AdminUserActionTypes.FILTER_USERS,

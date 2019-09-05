@@ -11,7 +11,6 @@ import {
   handleAddAdminInterface,
   handleDeleteAdminInterface,
   handleUpdateInterface,
-  selectAdminCurrentInterfaceId,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
@@ -20,7 +19,6 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  currentInterfaceId: selectAdminCurrentInterfaceId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

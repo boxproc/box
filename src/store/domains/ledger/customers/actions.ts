@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { cookiesNames, formNames, modalNames } from 'consts';
+import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -12,31 +12,25 @@ import {
   DeleteLedgerCustomerAction,
   FilterLedgerCustomersAction,
   GetLedgerCustomerIdAction,
-  GetLedgerCustomersAction,
   UpdateLedgerCustomerAction,
 } from './actionTypes';
+import { selectLedgerCustomerCurrentId } from './selectors';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
-  LedgerCustomersFilterParams,
   LedgerCustomersFilterParamsPrepared,
 } from './types';
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
-import { apiClient } from 'services';
+import { Thunk } from 'types';
 
-import { Thunk, VoidPromiseThunk } from 'types';
-
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
-
-export type GetLedgerCustomers = () => GetLedgerCustomersAction;
-export type HandleGetLedgerCustomers = VoidPromiseThunk;
+import { errorDecoratorUtil } from 'utils';
 
 export type GetLedgerCustomerId = (id: number) => GetLedgerCustomerIdAction;
 export type HandleGetLedgerCustomerId = (id: number) => void;
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
-export type HandleDeleteLedgerCustomer = (id: number) => Thunk<void>;
+export type HandleDeleteLedgerCustomer = () => Thunk<void>;
 
 export type AddLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
   AddLedgerCustomerAction;
@@ -50,13 +44,7 @@ export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDeta
 
 export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterParamsPrepared>) =>
   FilterLedgerCustomersAction;
-export type HandleFilterLedgerCustomers = (params: Partial<LedgerCustomersFilterParams>) =>
-  Thunk<void>;
-
-export const getLedgerCustomers: GetLedgerCustomers = () => ({
-  type: ActionTypeKeys.GET_LEDGER_CUSTOMERS,
-  payload: api.getLedgerCustomers(),
-});
+export type HandleFilterLedgerCustomers = () => Thunk<void>;
 
 export const getLedgerCustomerId: GetLedgerCustomerId = id => ({
   type: ActionTypeKeys.GET_LEDGER_CUSTOMER_ID,
@@ -85,34 +73,16 @@ export const filterLedgerCustomers: FilterLedgerCustomers = filterParams => ({
   meta: filterParams,
 });
 
-export const handleGetLedgerCustomers: HandleGetLedgerCustomers = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-        apiClient.set('session_id', sessionId);
-
-        const formValues = getFormValues(formNames.LEDGER_CUSTOMERS_FILTER);
-        const state = getState();
-
-        if (formValues(state)) {
-          const preparedValues = preparedFilterParamsToSend(formValues(state));
-          await dispatch(filterLedgerCustomers(preparedValues));
-        } else {
-          await dispatch(getLedgerCustomers());
-        }
-      },
-      dispatch
-    );
-  };
-
 export const handleGetLedgerCustomerId: HandleGetLedgerCustomerId = id =>
   getLedgerCustomerId(id);
 
-export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = id =>
-  async dispatch => {
+export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const id = selectLedgerCustomerCurrentId(state);
+
         await dispatch(deleteLedgerCustomer(id));
         await dispatch(closeModal(modalNames.EDIT_LEDGER_CUSTOMER));
       },
@@ -128,7 +98,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
 
         await dispatch(addLedgerCustomer(preparedValues));
         await dispatch(closeModal(modalNames.ADD_LEDGER_CUSTOMER));
-        await dispatch(handleGetLedgerCustomers());
+        await dispatch(handleFilterLedgerCustomers());
         await dispatch(resetForm(formNames.ADD_LEDGER_CUSTOMER));
       },
       dispatch
@@ -142,19 +112,23 @@ export const handleUpdateLedgerCustomer: HandleUpdateLedgerCustomer = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(updateLedgerCustomers(preparedValues));
-        await dispatch(handleGetLedgerCustomers());
+        await dispatch(handleFilterLedgerCustomers());
       },
       dispatch
     );
   };
 
-export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = params =>
-  async dispatch => {
+export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedFilterParamsToSend(params);
+        const formValues = getFormValues(formNames.LEDGER_CUSTOMERS_FILTER);
+        const state = getState();
+        const preparedValues = preparedFilterParamsToSend(formValues(state));
 
-        await dispatch(filterLedgerCustomers(preparedValues));
+        if (preparedValues) {
+          await dispatch(filterLedgerCustomers(preparedValues));
+        }
       },
       dispatch
     );

@@ -12,15 +12,11 @@ export const adminCyclesEditorInitialState:
 const adminCyclesEditorReducer =
   (state = adminCyclesEditorInitialState, action: AdminCycleEditorActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR_FULFILLED:
-        return state
-          .set('cycleEditor', action.payload.cycle_editor);
-
       case ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR_FULFILLED:
         return state
           .set(
             'cycleEditor',
-            state.cycleEditor.filter(el => el.id !== action.meta)
+            state.cycleEditor.filter(el => el.id !== action.meta.id)
           );
 
       case ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_FULFILLED:

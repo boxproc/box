@@ -30,7 +30,7 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
 }) => {
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterAdminInterface(data)),
+    handleSubmit(filterAdminInterface),
     [handleSubmit]
   );
 
@@ -50,6 +50,7 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={false}
+              isClearable={true}
               validate={[formErrorUtil.required]}
             />
           </Box>

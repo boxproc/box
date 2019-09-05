@@ -3,10 +3,6 @@ import { AdminCyclesEditorDataResp } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_CYCLE_EDITOR = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR',
-  GET_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR_FULFILLED',
-  GET_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/GET_ADMIN_CYCLE_EDITOR_REJECTED',
-
   ADD_ADMIN_CYCLE_EDITOR = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS',
   ADD_ADMIN_CYCLE_EDITOR_FULFILLED = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS_FULFILLED',
   ADD_ADMIN_CYCLE_EDITOR_REJECTED = 'administration/cycles/ADD_ADMIN_CYCLE_JOBS_REJECTED',
@@ -21,25 +17,10 @@ export enum ActionTypeKeys {
 
   FILTER_ADMIN_CYCLES_EDITOR = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR',
   FILTER_ADMIN_CYCLES_EDITOR_FULFILLED =
-  'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
+    'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
   FILTER_ADMIN_CYCLES_EDITOR_REJECTED = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_REJECTED',
 
   SET_ADMIN_CYCLE_EDITOR_ID = 'administration/cycles/SET_ADMIN_CYCLE_EDITOR_ID',
-}
-
-export interface GetAdminCycleEditorAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR;
-}
-
-export interface GetAdminCycleEditorFulfilledAction {
-  readonly payload: AdminCyclesEditorDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR_FULFILLED;
-}
-
-export interface GetAdminCycleEditorRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_CYCLE_EDITOR_REJECTED;
 }
 
 export interface AddAdminCycleEditorAction {
@@ -65,7 +46,7 @@ export interface DeleteAdminCycleEditorAction {
 export interface DeleteAdminCycleEditorFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR_FULFILLED;
-  meta: number;
+  meta: { id: number };
 }
 
 export interface DeleteAdminCycleEditorRejectedAction {
@@ -103,13 +84,12 @@ export interface FilterCyclesFulfilledAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_FULFILLED;
 }
 
-export interface FilteCyclesRejectedAction {
+export interface FilterCyclesRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_REJECTED;
 }
 
 export type AdminCycleEditorActionTypes =
-  | GetAdminCycleEditorFulfilledAction
   | AddAdminCycleEditorFulfilledAction
   | DeleteAdminCycleEditorFulfilledAction
   | UpdateAdminCycleEditorFulfilledAction

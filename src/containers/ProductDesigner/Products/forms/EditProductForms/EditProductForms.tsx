@@ -17,22 +17,17 @@ import ProductServicesForm from '../ProductServicesForm';
 
 interface EditProductFormsProps {
   currentProductType: SelectValues;
-  currentProductId: number;
   onCancel: () => void;
 }
 
 const EditProductForms: React.FC<EditProductFormsProps> = ({
   currentProductType,
-  currentProductId,
   onCancel,
 }) => {
   return (
     <Tabs>
       <Panel title="General">
-        <GeneralProductForm
-          currentProductId={currentProductId}
-          onCancel={onCancel}
-        />
+        <GeneralProductForm onCancel={onCancel} />
       </Panel>
       <Panel
         title="Details"
@@ -40,16 +35,12 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         hintForDisabled="Select Product Type"
       >
         <ProductDetailsForm
-          currentProductId={currentProductId}
           productType={currentProductType}
           onCancel={onCancel}
         />
       </Panel>
       <Panel title="Rules">
-        <ProductRulesForm
-          currentProductId={currentProductId}
-          onCancel={onCancel}
-        />
+        <ProductRulesForm onCancel={onCancel} />
       </Panel>
       <Panel title="Limits, Fees and commissions">
         <ProductLimitsFeesCommissionsForm

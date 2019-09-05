@@ -3,10 +3,9 @@ import { productsPathNames } from 'consts';
 import { apiClient } from 'services';
 
 // import {
-// institutionProducts
 //   generalProductData,
+//   institutionProducts,
 //   productDetailsData,
-//   productItemsData,
 //   productItemsFilteredData,
 //   productRulesData,
 //   successResponseStatus,
@@ -22,10 +21,6 @@ import {
   ProductRulesItemResp,
   ServicesItems,
 } from './types';
-
-export const getProducts = () =>
-  // throttleUtil.getDataAfter(productItemsData, 500);
-  apiClient.post(productsPathNames.GET_PRODUCTS);
 
 export const getProduct = (id: number) =>
   // throttleUtil.getDataAfter(generalProductData, 500);

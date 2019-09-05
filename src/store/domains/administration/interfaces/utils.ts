@@ -3,7 +3,6 @@ import {
   AdminInterfaceFilterParams,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared,
-  AdminInterfaceItemPrepared,
 } from './types';
 
 export const preparedFilterParamsToSend = (params: Partial<AdminInterfaceFilterParams>) => {
@@ -56,14 +55,14 @@ export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItemPrepared>) => {
+export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItem>) => {
   if (!values) {
     return null;
   }
   return {
     ...preparedValuesToRender(values),
-    status: statusTypesOptions.find(el => el.label === values.status),
-    protocolType: protocolTypesOptions.find(el => el.label === values.protocolType),
-    type: typeOfInterfaces.find(el => el.label === values.status),
+    status: statusTypesOptions.find(el => el.value === values.status),
+    protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type),
+    type: typeOfInterfaces.find(el => el.value === values.type),
   };
 };

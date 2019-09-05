@@ -25,7 +25,7 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
   filterUsers,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => filterUsers(data)),
+    handleSubmit(filterUsers),
     [handleSubmit]
   );
 
@@ -46,7 +46,9 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button text="Show" />
+        <Button
+          text="Show"
+        />
       </Box>
     </form >
   );

@@ -28,6 +28,9 @@ const mapStateToProps = (state: StoreState) => ({
   isDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
   institutionProductsOptions: selectInstitutionProductsOptions(state),
+  initialValues: {
+    institutionId: selectInstitutionsOptions(state)[0],
+  },
   institutionValue: formSelector(
     state,
     'institutionId'

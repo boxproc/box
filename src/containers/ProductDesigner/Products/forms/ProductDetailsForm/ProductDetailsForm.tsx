@@ -20,7 +20,6 @@ import { SelectValues } from 'types';
 interface ProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   productType: SelectValues;
-  currentProductId: number;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
   isDirty: boolean;
@@ -33,16 +32,15 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   handleSubmit,
   onCancel,
   productType,
-  currentProductId,
   getProductDetails,
   updateProductDetails,
   isDirty,
 }) => {
   React.useEffect(
     () => {
-      getProductDetails(currentProductId);
+      getProductDetails();
     },
-    [getProductDetails, currentProductId]
+    [getProductDetails]
   );
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProductDetails(data)),

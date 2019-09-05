@@ -22,6 +22,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Username" />,
     accessor: 'username',
@@ -32,6 +33,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="First Name" />,
     accessor: 'firstName',
@@ -42,6 +44,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Last Name" />,
     accessor: 'lastName',
@@ -52,6 +55,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Email" />,
     accessor: 'email',
@@ -73,6 +77,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <Header title="Password entry counter" />,
     accessor: 'passwordEntryCounter',

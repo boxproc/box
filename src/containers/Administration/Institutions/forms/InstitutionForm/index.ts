@@ -12,7 +12,6 @@ import {
   handleDeleteAdminInstitution,
   handleUpdateAdminInstitution,
   selectAdminCurrentInstitutionName,
-  selectAdminInstitutionCurrentId,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
@@ -23,7 +22,6 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminInstitutionCurrentId: selectAdminInstitutionCurrentId(state),
   adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
 });
 

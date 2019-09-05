@@ -14,7 +14,6 @@ export const NavList = styled.div`
     position: relative;
     cursor: pointer;
     padding: 7px 10px 6px;
-    // text-transform: capitalize;
   }
   .${menuClasses.MENU_ITEM} {
     border-radius: 2px;

@@ -12,10 +12,6 @@ export const adminInterfaceInitialState:
 const adminInterfacesReducer =
   (state = adminInterfaceInitialState, action: AdminInterfacesActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_INTERFACE_FULFILLED:
-        return state
-          .set('interfaces', action.payload.interfaces);
-
       case ActionTypeKeys.DELETE_ADMIN_INTERFACE_FULFILLED:
         return state
           .set(
