@@ -124,7 +124,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Repeat Password"
               disabled={false}
               isDisabled={isDisabledType}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.required, formErrorUtil.passwordsMatch]}
             />
           </Box>
         </Flex>
