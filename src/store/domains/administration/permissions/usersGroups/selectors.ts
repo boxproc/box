@@ -8,7 +8,7 @@ import { StoreState } from 'store/StoreState';
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
   state.administration.userGroups.usersGroups.asMutable();
 
-export const selectAdminUserGroupMembers = (state: StoreState) =>
+export const selectDefaultAdminUserGroupMembers = (state: StoreState) =>
   state.administration.userGroups.userGroupMembers.asMutable();
 
 export const selectAdminGroupPermissions = (state: StoreState) =>
@@ -36,7 +36,18 @@ export const selectActiveUsersItems = createSelector(
   data => data && data.map(el => {
     return {
       value: el.id,
-      label: el.username,
+      label: `${el.first_name} ${el.last_name}`,
+    };
+  })
+);
+
+export const selectAdminUserGroupMembers = createSelector(
+  selectDefaultAdminUserGroupMembers,
+  data => data && data.map(el => {
+    return {
+      id: el.id,
+      username: `${el.first_name} ${el.last_name} `,
+
     };
   })
 );

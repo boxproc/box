@@ -11,6 +11,7 @@ import {
   ProductLoyaltyAndBonusForm,
   ProductRulesForm,
 } from 'containers/ProductDesigner/Products/forms';
+import ProductServicesForm from '../ProductServicesForm';
 
 import { SelectValues } from 'types';
 
@@ -60,6 +61,11 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         <ProductLoyaltyAndBonusForm
           onCancel={onCancel}
         />
+      </Panel>
+      <Panel title="Services">
+       <ProductServicesForm
+          onCancel={onCancel}
+       />
       </Panel>
     </Tabs>
   );

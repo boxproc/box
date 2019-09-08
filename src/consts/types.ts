@@ -40,6 +40,12 @@ export const schedulerStatusTypesOptions = [
   { value: 'E', label: 'Execution pending' },
 ];
 
+export const lastExecutionResultOptions = [
+  { value: 'S', label: 'Success' },
+  { value: 'F', label: 'Fail' },
+  { value: 'U', label: 'Unknown' },
+];
+
 export const typeOptions = [
   { value: 'B', label: 'BOX API' },
   { value: 'T', label: 'Tribe' },

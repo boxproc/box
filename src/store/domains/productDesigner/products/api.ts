@@ -19,6 +19,7 @@ import {
   ProductItemDetailsResp,
   ProductItemResp,
   ProductRulesItemResp,
+  ServicesItems,
 } from './types';
 
 export const getProduct = (id: number) =>
@@ -38,6 +39,19 @@ export const getProductDetails = (id: number) =>
   apiClient.post(productsPathNames.GET_PRODUCTS_DETAILS, {
     data: { id },
   });
+
+export const getEndpointsService = (institutionId: number | string) =>
+  apiClient.post(productsPathNames.GET_ENDPOINTS_SERVICE, {
+    data: { institution_id: institutionId },
+  });
+
+export const getInterfacesService = (institutionId: number | string) =>
+  apiClient.post(productsPathNames.GET_INTERFACES_SERVICE, {
+    data: { institution_id: institutionId },
+  });
+
+export const updateCardService = (data: Partial<ServicesItems>) =>
+  apiClient.post(productsPathNames.UPDATE_CARD_SERVICE, { data });
 
 export const getProductRules = (id: number) =>
   // throttleUtil.getDataAfter(productRulesData, 500);

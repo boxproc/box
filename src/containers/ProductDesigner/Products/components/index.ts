@@ -5,4 +5,5 @@ export { default as ProductAuxiliaryCounters } from './ProductAuxiliaryCounters'
 export { default as ProductLimitsFeesCommissions } from './ProductLimitsFeesCommissions';
 export { default as ProductAprs } from './ProductAprs';
 export { default as ProductLoyaltyAndBonus } from './ProductLoyaltyAndBonus';
+export { default as  Services } from './ProductServices';
 export * from './tableColumns';

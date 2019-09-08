@@ -5,7 +5,7 @@ import { Cell, Table, TableNoData } from 'components/Table';
 import { T4 } from 'components/Text';
 
 import {
-  AdminUserGroupMember,
+  AdminUserGroupMemberPrepared,
   HandleDeleteAdminUserGroupMembers,
   HandleGetAdminUserGroupMembers,
 } from 'store/domains/administration/permissions/usersGroups';
@@ -17,11 +17,12 @@ import { TableCell } from 'types';
 interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
   getAdminUserGroupMembers: HandleGetAdminUserGroupMembers;
-  AdminUserGroupMembers: Array<AdminUserGroupMember>;
+  AdminUserGroupMembers: Array<AdminUserGroupMemberPrepared>;
   deleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMembers;
 }
 
-type SCell<T extends keyof AdminUserGroupMember> = TableCell<AdminUserGroupMember[T]>;
+type SCell<T extends keyof AdminUserGroupMemberPrepared> =
+ TableCell<AdminUserGroupMemberPrepared[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminUserGroupMembers,
