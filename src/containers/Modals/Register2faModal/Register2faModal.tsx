@@ -43,15 +43,15 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
     [setUserCurrentRegisterStep]
   );
 
-  const stepTwo = 2;
+  const isSecondStep = currentRegisterStep === 2;
 
   return (
     <Modal
       name={modalName}
-      title={currentRegisterStep === stepTwo ? 'Secret Code' : 'Password'}
-      maxContainerWidth={350}
+      title={isSecondStep ? 'Secret Code' : 'Password'}
+      maxContainerWidth={isSecondStep ? 410 : 300}
     >
-      {currentRegisterStep === stepTwo
+      {isSecondStep
         ? (
           <CodeScreen
             onConfirm={userConfirmAuthKey}

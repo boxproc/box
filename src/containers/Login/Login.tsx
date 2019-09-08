@@ -8,19 +8,20 @@ import styled from 'theme';
 import { Button } from 'components/Buttons';
 import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
 import { basePath, formNames } from 'consts';
 
-import { HandleUserLogin } from 'store/domains';
+import { HandleUserEnterAuthKey, HandleUserLogin } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
 import logo from 'resources/images/logo.svg';
 
-const FormWrapper = styled.form`
+const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  max-width: 300px;
   width: 100%;
   min-height: calc(100vh - 210px);
   justify-content: center;
@@ -37,10 +38,13 @@ const FormWrapper = styled.form`
   }
 `;
 
-interface LoginProps {
+interface LoginProps extends ExternalSpinnerProps {
   userLogin: HandleUserLogin;
+  userEnterAuthKey: HandleUserEnterAuthKey;
   isPasswordFocus: boolean;
   isMessageModal: boolean;
+  is2faAuthenticationPending: boolean;
+  is2faRegistrationPending: boolean;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -48,60 +52,86 @@ type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
 const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   userLogin,
+  userEnterAuthKey,
   isPasswordFocus,
   isMessageModal,
+  is2faAuthenticationPending,
+  is2faRegistrationPending,
 }) => {
+  const action = is2faAuthenticationPending ? userEnterAuthKey : userLogin;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userLogin(data)),
+    handleSubmit(data => action(data)),
     [handleSubmit, userLogin]
   );
 
   return (
-    <FormWrapper onSubmit={handleSubmitForm}>
+    <FormWrapper>
       <Box my="15px" fontSize="0" className="highlight">
         <a href={basePath}>
           <img src={logo} width={62} alt="" />
         </a>
       </Box>
-      <Field
-        id="userName"
-        name="userName"
-        placeholder="Enter user name"
-        component={InputField}
-        disabled={isMessageModal}
-        label="Login"
-        validate={[formErrorUtil.required]}
-      />
-      <Field
-        id="password"
-        name="password"
-        placeholder="Enter password"
-        component={PasswordField}
-        disabled={isMessageModal}
-        label="Password"
-        validate={[formErrorUtil.required]}
-        autoFocus={isPasswordFocus}
-      />
-      <Flex
-        flexDirection="column"
-        alignItems="flex-end"
-      >
-        <Box>
+      <form onSubmit={handleSubmitForm}>
+        {(is2faRegistrationPending || !is2faAuthenticationPending) && (
+          <React.Fragment>
+            <Field
+              id="userName"
+              name="userName"
+              placeholder="Enter user name"
+              component={InputField}
+              disabled={isMessageModal}
+              label="Login"
+              validate={[formErrorUtil.required]}
+            />
+            <Field
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              component={PasswordField}
+              disabled={isMessageModal}
+              label="Password"
+              validate={[formErrorUtil.required]}
+              autoFocus={isPasswordFocus}
+            />
+            <Flex
+              flexDirection="column"
+              alignItems="flex-end"
+            >
+              <Box>
+                <Field
+                  id="rememberMe"
+                  name="rememberMe"
+                  component={CheckboxField}
+                  label="Remember me"
+                  disabled={false}
+                  reverse={true}
+                />
+              </Box>
+            </Flex>
+          </React.Fragment>
+        )}
+        {is2faAuthenticationPending && (
           <Field
-            id="rememberMe"
-            name="rememberMe"
-            component={CheckboxField}
-            label="Remember me"
-            disabled={false}
-            reverse={true}
+            id="code"
+            name="code"
+            placeholder="Enter code"
+            component={InputField}
+            disabled={isMessageModal}
+            label="Code"
+            validate={[formErrorUtil.required]}
           />
-        </Box>
-        <Box width="100%" mt="7px">
-          <Flex justifyContent="center">
-            <Button text="Log in" />
-          </Flex>
-        </Box>
-      </Flex>
+        )}
+        <Flex
+          flexDirection="column"
+          alignItems="flex-end"
+        >
+          <Box width="100%" mt="7px">
+            <Flex justifyContent="center">
+              <Button text="Log in" />
+            </Flex>
+          </Box>
+        </Flex>
+      </form>
     </FormWrapper>
   );
 };
@@ -110,4 +140,4 @@ export default reduxForm<{}, LoginProps>({
   form: formNames.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(Login);
+})(withSpinner()(Login));

@@ -13,6 +13,8 @@ const DashedBlock = styled.div`
   padding: 10px;
   font-size: 14px;
   border: 1px dashed ${({ theme }) => theme.grayColor};
+  font-size: 14px;
+  font-family: ${({ theme }) => theme.codeFont};
 `;
 
 interface CodeScreenProps {
