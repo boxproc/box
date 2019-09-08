@@ -3,8 +3,8 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
+import { Delimiter } from 'components/Delimiter';
 import { InputField, SelectField } from 'components/Form';
-import { Delimiter } from 'components/Text';
 
 import { SelectValues } from 'types';
 

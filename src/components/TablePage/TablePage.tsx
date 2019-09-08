@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';
-import { ExternalLink } from 'components/links';
+import { ExternalLink } from 'components/Links';
 import { T2 } from 'components/Text';
 
 import EditableTable from './EditableTable';

@@ -1,5 +1,6 @@
-import { formNames, modalNames } from 'consts';
 import { reset as resetForm } from 'redux-form';
+
+import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 import {
@@ -27,12 +28,13 @@ import {
   AdminUsersGroupInfoEditable,
   AdminUsersGroupInfoPlainResp,
 } from './types';
+
+import { Thunk, VoidPromiseThunk } from 'types';
+
 import {
   AdminGroupPermissionPreparedToSend,
   prepareAdminUsersGroupValuesUnderscore,
 } from './utils';
-
-import { Thunk, VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 

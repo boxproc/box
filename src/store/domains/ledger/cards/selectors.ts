@@ -10,7 +10,7 @@ export const selectDefaultLedgerCards = (state: StoreState) =>
   state.ledger.cards.cards;
 
 export const selectLedgerCardId = (state: StoreState) =>
-  state.ledger.cards.currentСardId;
+  state.ledger.cards.currentCardId;
 
 export const selectLedgerCards = createSelector(
   selectDefaultLedgerCards,

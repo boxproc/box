@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'theme';
 
 import { menuClasses } from './utils';
 

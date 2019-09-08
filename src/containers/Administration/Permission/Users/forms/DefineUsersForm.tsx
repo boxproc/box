@@ -4,8 +4,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
+import { Hr } from 'components/Delimiter';
 import { InputField, PasswordField, SelectField } from 'components/Form';
-import { Hr } from 'components/Text';
 
 import {
   formNames,

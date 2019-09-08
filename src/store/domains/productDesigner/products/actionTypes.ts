@@ -1,5 +1,7 @@
 import {
   InstitutionProducts,
+  InstitutionProductServiceEndpoints,
+  InstitutionProductServiceInterfaces,
   ProductDataResp,
   ProductDetailsResp,
   ProductRulesResp,
@@ -42,6 +44,14 @@ export enum ActionTypeKeys {
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
   GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
 
+  GET_SERVICE_INTERFACES = 'productDesigner/products/GET_SERVICE_INTERFACES',
+  GET_SERVICE_INTERFACES_FULFILLED = 'productDesigner/products/GET_SERVICE_INTERFACES_FULFILLED',
+  GET_SERVICE_INTERFACES_REJECTED = 'productDesigner/products/GET_SERVICE_INTERFACES_REJECTED',
+
+  GET_SERVICE_ENDPOINTS = 'productDesigner/products/GET_SERVICE_ENDPOINTS',
+  GET_SERVICE_ENDPOINTS_FULFILLED = 'productDesigner/products/GET_SERVICE_ENDPOINTS_FULFILLED',
+  GET_SERVICE_ENDPOINTS_REJECTED = 'productDesigner/products/GET_SERVICE_ENDPOINTS_REJECTED',
+
   UPDATE_PRODUCT = 'productDesigner/products/UPDATE_PRODUCT',
   UPDATE_PRODUCT_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_FULFILLED',
   UPDATE_PRODUCT_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_REJECTED',
@@ -57,6 +67,10 @@ export enum ActionTypeKeys {
   ADD_PRODUCT = 'productDesigner/products/ADD_PRODUCT',
   ADD_PRODUCT_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FULFILLED',
   ADD_PRODUCT_REJECTED = 'productDesigner/products/ADD_PRODUCT_REJECTED',
+
+  UPDATE_CARD_SERVICES = 'productDesigner/products/UPDATE_CARD_SERVICES',
+  UPDATE_CARD_SERVICES_FULFILLED = 'productDesigner/products/UPDATE_CARD_SERVICES_FULFILLED',
+  UPDATE_CARD_SERVICES_REJECTED = 'productDesigner/products/UPDATE_CARD_SERVICES_REJECTED',
 }
 
 export interface GetInstitutionProductsAction {
@@ -72,6 +86,36 @@ export interface GetInstitutionProductsFulfilledAction {
 export interface GetInstitutionProductsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_REJECTED;
+}
+
+export interface GetInterfacesProductServiceAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES;
+}
+
+export interface GetInterfacesProductServiceFulfilledAction {
+  readonly payload: InstitutionProductServiceInterfaces;
+  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES_FULFILLED;
+}
+
+export interface GetInterfacesProductServiceRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES_REJECTED;
+}
+
+export interface GetEndpointsProductServiceAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS;
+}
+
+export interface GetEndpointsProductServiceFulfilledAction {
+  readonly payload: InstitutionProductServiceEndpoints;
+  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS_FULFILLED;
+}
+
+export interface GetEndpointsProductServiceRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS_REJECTED;
 }
 
 export interface DeleteProductAction {
@@ -230,6 +274,22 @@ export interface AddProductRejectedAction {
   readonly type: ActionTypeKeys.ADD_PRODUCT_REJECTED;
 }
 
+// Update card service
+export interface UpdateCardServiceAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES;
+}
+
+export interface UpdateCardServiceFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_FULFILLED;
+}
+
+export interface UpdateCardServiceRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
+}
+
 export type ProductsActionTypes =
   | GetInstitutionProductsFulfilledAction
   | DeleteProductFulfilledAction
@@ -237,6 +297,8 @@ export type ProductsActionTypes =
   | GetProductFulfilledAction
   | GetProductDetailsFulfilledAction
   | GetProductRulesFulfilledAction
+  | GetEndpointsProductServiceFulfilledAction
+  | GetInterfacesProductServiceFulfilledAction
   | AddProductFulfilledAction
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction

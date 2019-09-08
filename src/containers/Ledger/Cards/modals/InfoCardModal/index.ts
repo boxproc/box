@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
 
 import InfoCardModal from './InfoCardModal';
 
 import { formNames } from 'consts';
-import { formValueSelector } from 'redux-form';
 import {
   closeModal,
   handleActivateLedgerCard,

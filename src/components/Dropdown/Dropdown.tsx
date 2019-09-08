@@ -1,10 +1,9 @@
 import React, { ReactChild } from 'react';
 
 import { Box, Flex } from '@rebass/grid';
-
-import styled from 'styled-components';
-
 import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown';
+
+import styled from 'theme';
 
 interface DropdownWrapperProps {
   isActive: boolean;

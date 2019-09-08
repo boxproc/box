@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { ModalWrapper } from './ModalWrapper';
+import styled from 'theme';
 
 import { T2 } from 'components/Text';
 
-import { CloseModal, HandleSetActiveTableRowIndex, OpenModal } from 'store/domains';
-
 import { messages, modalNames, modalTypes } from 'consts';
-import styled from 'styled-components';
+
+import { ModalWrapper } from './ModalWrapper';
+
+import { CloseModal, HandleSetActiveTableRowIndex, OpenModal } from 'store/domains';
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;

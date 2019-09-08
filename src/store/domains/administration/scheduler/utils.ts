@@ -1,4 +1,4 @@
-import { executableTypeOptions, statusTypesOptions } from 'consts';
+import { executableTypeOptions, lastExecutionResultOptions, statusTypesOptions } from 'consts';
 
 import {
   AdminSchedulerEditableItem,
@@ -16,7 +16,7 @@ export const prepareValuesToSend =
       executable: values.executable,
       log_location: values.logLocation,
       last_execution_datetime: values.lastExecutionDatetime,
-      last_execution_result: values.lastExecutionResult,
+      last_execution_result: values.lastExecutionResult && values.lastExecutionResult.value,
       institution_id: values.institutionId && values.institutionId.value,
       executable_type: values.institutionId && values.executableType.value,
       status: values.status && values.status.value,
@@ -43,7 +43,8 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
     executable: item.executable,
     logLocation: item.log_location,
     lastExecutionDatetime: item.last_execution_datetime,
-    lastExecutionResult: item.last_execution_result,
+    lastExecutionResult: lastExecutionResultOptions.find(el => el.value === item.status)
+      && lastExecutionResultOptions.find(el => el.value === item.status).label,
     status: statusTypesOptions.find(el => el.value === item.status)
       && statusTypesOptions.find(el => el.value === item.status).label,
     executableType: executableTypeOptions.find(el => el.value === item.executable_type).label,
@@ -58,6 +59,8 @@ export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
   return {
     ...prepareValuesToRender(item),
     status: statusTypesOptions.find(el => el.value === item.status),
+    lastExecutionResult:
+     lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
     executableType: executableTypeOptions.find(el => el.value === item.executable_type),
   };
 };

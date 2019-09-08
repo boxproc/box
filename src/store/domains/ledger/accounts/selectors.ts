@@ -5,8 +5,11 @@ import { StoreState } from 'store/StoreState';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
-// tslint:disable-next-line: max-line-length
-import { preparedAccountCardsToRender, preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
+import {
+  preparedAccountCardsToRender,
+  preparedValuesDetailsToRender,
+  preparedValuesToRender
+} from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
   state.ledger.accounts.accounts && state.ledger.accounts.accounts.asMutable();

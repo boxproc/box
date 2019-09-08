@@ -4,9 +4,9 @@ import { Box, Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
+import { Hr } from 'components/Delimiter';
 import { InputField, SelectField } from 'components/Form';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import { formNames, statusTypesOptions } from 'consts';
 

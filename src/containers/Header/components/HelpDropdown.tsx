@@ -7,7 +7,7 @@ import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 import styled from 'theme';
 
 import { Dropdown, Option } from 'components/Dropdown';
-import { ExternalLink } from 'components/links';
+import { ExternalLink } from 'components/Links';
 
 import { basePath, links } from 'consts';
 

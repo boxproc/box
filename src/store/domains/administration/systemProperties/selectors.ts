@@ -15,7 +15,7 @@ export const selectAdminSysPropsItems = createSelector(
       currentValue: item.current_value,
       previousValue: item.previous_value,
       lastDatetime: item.last_datetime,
-      lockedFlag: item.locked_flag === yesNoTypes.YES ? true : false,
+      lockedFlag: item.locked_flag === yesNoTypes.YES,
     };
   })
 );

@@ -3,6 +3,7 @@ import { reset as resetForm } from 'redux-form';
 import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
+
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
@@ -14,6 +15,7 @@ import {
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
+import { selectCurrentSchedulerJobId } from './selectors';
 import {
   AdminSchedulerEditableItem,
   AdminSchedulerItem,
@@ -25,7 +27,6 @@ import { prepareValuesToSend, prepareValuesToSendActions } from './utils';
 import { Thunk, VoidPromiseThunk, } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
-import { selectCurrentSchedulerJobId } from './selectors';
 
 export type GetAdminSchedulerJobs = () => GetAdminSchedulerJobAction;
 export type HandleGetAdminSchedulerJobs = VoidPromiseThunk;

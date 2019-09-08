@@ -1,33 +1,33 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Cards from './Cards';
+import ProductServicesForm from './ProductServicesForm';
 
 import {
-  createLoadingSelector,
-  handleSetLedgerLedgerCardId,
-  LedgerCardsActionTypes,
-  selectLedgerCards,
+    createLoadingSelector,
+    handleUpdateCardService,
+    ProductsActionTypes,
+    selectCurrentProductId
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  LedgerCardsActionTypes.FILTER_LEDGER_CARDS,
-]);
-
+    ProductsActionTypes.UPDATE_CARD_SERVICES,
+  ]);
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  ledgerCards: selectLedgerCards(state),
+    currentGroupId:  selectCurrentProductId(state),
+    isLoading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setLedgerCardId: handleSetLedgerLedgerCardId,
+
+    updateCardService: handleUpdateCardService,
   },
   dispatch
 );
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Cards);
+)(ProductServicesForm);

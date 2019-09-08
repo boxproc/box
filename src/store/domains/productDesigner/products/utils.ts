@@ -1,4 +1,17 @@
 import {
+  actionTypesOptions,
+  loanTypesOptions,
+  productTypes,
+  productTypesOptions,
+  savingsTypesOptions,
+  schemeTypesOptions,
+  statementCyclesOptions,
+  statusTypes,
+  statusTypesOptions,
+  yesNoTypes,
+} from 'consts';
+
+import {
   DebitProductItem,
   DebitProductItemResp,
   LoanProductItem,
@@ -16,26 +29,15 @@ import {
   RevolvingCreditProductItemResp,
   SavingsProductItem,
   SavingsProductItemResp,
+  ServicesItemsPrepared,
 } from './types';
 
-import {
-  actionTypesOptions,
-  loanTypesOptions,
-  productTypes,
-  productTypesOptions,
-  savingsTypesOptions,
-  schemeTypesOptions,
-  statementCyclesOptions,
-  statusTypes,
-  statusTypesOptions,
-  yesNoTypes,
-} from 'consts';
 import { SelectValues } from 'types';
 
 export const prepareProductFiltersParams =
   (params: ProductFilterParamsPrepared): ProductFilterParams => {
     return {
-      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
+      activeStatusFlag: params.status === statusTypes.ACTIVE,
       productType: params.product_type ?
         params.product_type.map(type => productTypesOptions
           .find(el => el.value === type)) : null,
@@ -50,6 +52,21 @@ export const prepareProductFiltersParamsToSend =
       status: activeStatusFlag ? statusTypes.ACTIVE : null,
       institution_id: institutionId ? institutionId.value : null,
       product_type: productType && productType.length ? productType.map(type => type.value) : null,
+    };
+  };
+
+export const prepareUpdateCardServiceValuesPrepared =
+  (values: Partial<ServicesItemsPrepared>) => {
+    if (!values) {
+      return null;
+    }
+    const endpointId = values.endpoints.value;
+    const interfaceId = values.interfaces.value;
+
+    return {
+      id: values.id,
+      card_transactions_endpoint_id: endpointId ? endpointId : null,
+      card_management_interface_id: interfaceId ? interfaceId : null,
     };
   };
 

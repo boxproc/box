@@ -4,8 +4,8 @@ import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
+import { Hr } from 'components/Delimiter';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import { formNames } from 'consts';
 

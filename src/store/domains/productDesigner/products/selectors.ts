@@ -19,6 +19,12 @@ import {
 export const selectDefaultProductItems = (state: StoreState) =>
   state.productDesigner.products.products;
 
+export const selectDefaultInterfaces = (state: StoreState) =>
+  state.productDesigner.products.interfaces.asMutable();
+
+export const selectDefaultEndpoints = (state: StoreState) =>
+  state.productDesigner.products.endpoints.asMutable();
+
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectInstitutions,
@@ -54,6 +60,36 @@ export const selectCurrentProduct = createSelector(
       currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
     };
   }
+);
+
+export const selectCurrentInstitutionId = createSelector(
+  selectDefaultCurrentProduct,
+  product => {
+    if (!product) {
+      return null;
+    }
+    return product.institution_id;
+  }
+);
+
+export const selectProductCardInterfacesService = createSelector(
+  selectDefaultInterfaces,
+  data => data && data.map(el => {
+    return {
+      value: el.id ? el.id : 0,
+      label: el.name ,
+    };
+  })
+);
+
+export const selectProductCardEndpointsService = createSelector(
+  selectDefaultEndpoints,
+  data => data && data.map(el => {
+    return {
+        value: el.id ? el.id : 0,
+        label: el.name,
+      };
+  })
 );
 
 export const selectCurrentProductName = createSelector(

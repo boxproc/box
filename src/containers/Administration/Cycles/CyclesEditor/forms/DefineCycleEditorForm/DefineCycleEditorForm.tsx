@@ -5,9 +5,9 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
+import { Hr } from 'components/Delimiter';
 import { InputField, SelectField, TextField } from 'components/Form';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Hr } from 'components/Text';
 
 import {
   cycleTypes,

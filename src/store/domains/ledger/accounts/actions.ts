@@ -4,8 +4,6 @@ import { formNames, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import * as api from './api';
-
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
@@ -15,19 +13,18 @@ import {
   SetLedgerAccountIdAction,
   UpdateLedgerAccountAction,
 } from './actionTypes';
-
+import * as api from './api';
+import { selectLedgerAccountCurrentId } from './selectors';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
   LedgerAccountsFilterParamsPrepared,
 } from './types';
-
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
-import { selectLedgerAccountCurrentId } from './selectors';
 
 export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCardsAction;
 export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;

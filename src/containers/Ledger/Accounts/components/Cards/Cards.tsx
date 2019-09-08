@@ -1,18 +1,20 @@
 import React from 'react';
 
+import { Box, Flex } from '@rebass/grid';
+
+import { Button } from 'components/Buttons';
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header, Table } from 'components/Table';
 
-import { Box } from '@rebass/grid';
-import { Button } from 'components/Buttons';
-import { Hr } from 'components/Text';
 import { modalNames } from 'consts';
+
 import {
   closeModal,
   HandleGetLedgerAccountCards,
   HandleOrderLedgerAccountCard,
   LedgerAccountsCardsItemPrepared
 } from 'store/domains';
+
 import { TableCell } from 'types';
 
 interface AccountCardsProps {
@@ -101,14 +103,15 @@ export const Cards: React.FC<AccountCardsProps> = ({
         data={ledgerAccountCards}
         columns={columns}
       />
-      <Hr />
-      <Box mb="35px">
-        <Button
-          onClick={() => closeModal(modalName)}
-          iconName="closeModal"
-          text="Close"
-        />
-      </Box>
+      <Flex
+        justifyContent="flex-end"
+      >
+          <Button
+            onClick={() => closeModal(modalName)}
+            iconName="closeModal"
+            text="Close"
+          />
+      </Flex>
     </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'theme';
 import { media } from 'theme/media';
 
 interface ModalWrapperProps {

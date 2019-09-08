@@ -14,6 +14,7 @@ export enum formNames {
   PRODUCT_RULES = 'editProductRulesForm',
   PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissionsForm',
   PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCountersForm',
+  PRODUCT_SERVICES = 'productServicesForm',
   PRODUCT_APRS = 'productAPRsForm',
 
   ADD_USER_GROUP = 'addUserGroupForm',

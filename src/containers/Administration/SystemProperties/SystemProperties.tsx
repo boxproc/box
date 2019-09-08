@@ -43,7 +43,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
 }) => {
   const columns = [
     {
-      maxWidth: 100,
+      maxWidth: 300,
       sortable: true,
       Header: <Header title="Property Name" />,
       accessor: 'id',
