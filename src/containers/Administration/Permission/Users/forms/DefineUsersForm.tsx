@@ -111,7 +111,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="User Password"
               disabled={false}
-              isDisabled={isDisabledType}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -123,7 +122,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="Repeat Password"
               disabled={false}
-              isDisabled={isDisabledType}
               validate={[formErrorUtil.required, formErrorUtil.passwordsMatch]}
             />
           </Box>

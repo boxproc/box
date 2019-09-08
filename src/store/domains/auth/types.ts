@@ -16,6 +16,7 @@ export interface AuthResponse {
   first_name: string;
   last_name: string;
   last_activity: string;
+  registered_2fa: string;
 }
 
 export interface AuthState {
@@ -25,4 +26,5 @@ export interface AuthState {
   firstName: string;
   lastName: string;
   lastActivity: string;
+  registered2fa: string;
 }

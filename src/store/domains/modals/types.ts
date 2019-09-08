@@ -22,6 +22,8 @@ export interface ModalsState {
   isConfirmationModal: boolean;
   payloadConfirmationModal: PayloadConfirmationModal;
 
+  isRegister2faModal: boolean;
+
   isAddProductModal: boolean;
   isEditProductModal: boolean;
 

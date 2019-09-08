@@ -1,6 +1,8 @@
 export enum formNames {
   USER_LOGIN = 'userLoginForm',
 
+  REGISTER_2FA = 'register2fa',
+
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
 

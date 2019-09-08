@@ -10,6 +10,7 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
   lastName: null,
   isRememberedMe: false,
   lastActivity: null,
+  registered2fa: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
@@ -20,7 +21,8 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('username', action.payload.username)
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
-        .set('lastActivity', action.payload.last_activity);
+        .set('lastActivity', action.payload.last_activity)
+        .set('registered2fa', action.payload.registered_2fa);
 
     case ActionTypeKeys.SET_REMEMBER_ME:
       return state

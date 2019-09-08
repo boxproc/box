@@ -6,7 +6,9 @@ import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 import { LogOut } from 'styled-icons/boxicons-regular/LogOut';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
+import { Qrcode } from 'styled-icons/icomoon/Qrcode';
 import { Delete } from 'styled-icons/material/Delete';
+import { Smartphone } from 'styled-icons/material/Smartphone';
 
 import styled from 'theme';
 
@@ -87,7 +89,7 @@ interface ButtonProps {
   size?: string;
   disabled?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'help' | string;
+  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'help' | 'smartphone' | 'qrcode' | string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
   onClick?: () => void;
@@ -110,6 +112,10 @@ const renderIcon = (name: string) => {
       return (<Box mt="-2px"><Delete size="18" /></Box>);
     case 'help':
       return (<Box mt="-1px"><HelpCircle size="16" /></Box>);
+    case 'smartphone':
+      return (<Box mt="-1px"><Smartphone size="16" /></Box>);
+    case 'qrcode':
+      return (<Box mt="-1px" mr="3px"><Qrcode size="14" /></Box>);
     default:
       return null;
   }

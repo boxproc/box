@@ -14,9 +14,14 @@ export const Label = styled.label<LabelProps>`
   }
 `;
 
-export const SmallText = styled.div`
+interface SmallTextProps {
+  bold?: boolean;
+}
+
+export const SmallText = styled.div<SmallTextProps>`
   font-size: 12px;
   color: ${({ theme }) => theme.grayColor};
+  font-weight: ${({ bold }) => bold ? 500 : 'normal'};
 `;
 
 interface TitleProps {
@@ -48,13 +53,16 @@ export const T4 = styled.h4<TitleProps>`
 interface ParagraphProps {
   light?: boolean;
   textAlign?: string;
+  bold?: boolean;
+  size?: number;
 }
 
 export const Paragraph = styled.p<ParagraphProps>`
-  font-size: 14px;
+  font-size: ${({ size }) => size ? size + 'px' : '14px'};
   line-height: 1.5;
   color: ${({ theme, light }) => light ? theme.darkGrayColor : theme.blackColor};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
+  font-weight: ${({ bold }) => bold ? 500 : 'normal'};
   &:not(last-child) {
     margin-bottom: 10px;
   };

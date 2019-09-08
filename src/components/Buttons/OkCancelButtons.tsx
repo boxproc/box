@@ -57,20 +57,6 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
     <Wrapper rightPosition={rightPosition} >
       <div className="btn-wrapper">
         <Button
-          text={okText}
-          disabled={disabledOk}
-          onClick={onOk}
-        />
-        {hintOk && (
-          <Hint
-            text={hintOk}
-            icon={false}
-            position="top"
-          />
-        )}
-      </div>
-      <div className="btn-wrapper">
-        <Button
           text={cancelText}
           onClick={onCancel}
           type="reset"
@@ -83,6 +69,20 @@ export const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
         {hintCancel && (
           <Hint
             text={hintCancel}
+            icon={false}
+            position="top"
+          />
+        )}
+      </div>
+      <div className="btn-wrapper">
+        <Button
+          text={okText}
+          disabled={disabledOk}
+          onClick={onOk}
+        />
+        {hintOk && (
+          <Hint
+            text={hintOk}
             icon={false}
             position="top"
           />

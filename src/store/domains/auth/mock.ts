@@ -6,4 +6,5 @@ export const AuthResponseData: AuthResponse = {
   first_name: 'John',
   last_name: 'Doe',
   last_activity: '01/09/2019 13:27:38',
+  registered_2fa: 'N',
 };
