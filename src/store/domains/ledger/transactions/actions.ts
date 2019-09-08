@@ -7,6 +7,7 @@ import {
 import * as api from './api';
 
 import { LedgerTransactionsFilterParams, LedgerTransactionsFilterParamsPrepared } from './types';
+
 import { preparedFilterParamsToSend } from './utils';
 
 import { Thunk } from 'types';

@@ -1,4 +1,17 @@
 import {
+  actionTypesOptions,
+  loanTypesOptions,
+  productTypes,
+  productTypesOptions,
+  savingsTypesOptions,
+  schemeTypesOptions,
+  statementCyclesOptions,
+  statusTypes,
+  statusTypesOptions,
+  yesNoTypes,
+} from 'consts';
+
+import {
   DebitProductItem,
   DebitProductItemResp,
   LoanProductItem,
@@ -18,24 +31,12 @@ import {
   SavingsProductItemResp,
 } from './types';
 
-import {
-  actionTypesOptions,
-  loanTypesOptions,
-  productTypes,
-  productTypesOptions,
-  savingsTypesOptions,
-  schemeTypesOptions,
-  statementCyclesOptions,
-  statusTypes,
-  statusTypesOptions,
-  yesNoTypes,
-} from 'consts';
 import { SelectValues } from 'types';
 
 export const prepareProductFiltersParams =
   (params: ProductFilterParamsPrepared): ProductFilterParams => {
     return {
-      activeStatusFlag: params.status === statusTypes.ACTIVE ? true : false,
+      activeStatusFlag: params.status === statusTypes.ACTIVE,
       productType: params.product_type ?
         params.product_type.map(type => productTypesOptions
           .find(el => el.value === type)) : null,

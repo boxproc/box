@@ -3,8 +3,8 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { Delimiter } from 'components/Delimiter';
 import { InputField, TextField } from 'components/Form';
-import { Delimiter } from 'components/Text';
 
 const LedgerCurrentTransactionGeneral: React.FC = () => {
   return (

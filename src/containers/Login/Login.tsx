@@ -11,11 +11,11 @@ import { highlightCss } from 'components/highlightCss';
 
 import { basePath, formNames } from 'consts';
 
-import logo from 'resources/images/logo.svg';
-
 import { HandleUserLogin } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
+
+import logo from 'resources/images/logo.svg';
 
 const FormWrapper = styled.form`
   display: flex;

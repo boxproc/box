@@ -7,9 +7,7 @@ import { InputField } from 'components/Form';
 
 import { formErrorUtil } from 'utils';
 
-interface ProductLimitsFeesCommissionsProps { }
-
-const ProductLimitsFeesCommissions: React.FC<ProductLimitsFeesCommissionsProps> = () => {
+const ProductLimitsFeesCommissions: React.FC = () => {
   return (
     <Box mx="-10px">
       <Flex

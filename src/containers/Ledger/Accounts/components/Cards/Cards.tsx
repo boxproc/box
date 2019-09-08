@@ -1,18 +1,21 @@
 import React from 'react';
 
+import { Box } from '@rebass/grid';
+
+import { Button } from 'components/Buttons';
+import { Hr } from 'components/Delimiter';
 import { withSpinner } from 'components/Spinner';
 import { Cell, Header, Table } from 'components/Table';
 
-import { Box } from '@rebass/grid';
-import { Button } from 'components/Buttons';
-import { Hr } from 'components/Text';
 import { modalNames } from 'consts';
+
 import {
   closeModal,
   HandleGetLedgerAccountCards,
   HandleOrderLedgerAccountCard,
   LedgerAccountsCardsItemPrepared
 } from 'store/domains';
+
 import { TableCell } from 'types';
 
 interface AccountCardsProps {

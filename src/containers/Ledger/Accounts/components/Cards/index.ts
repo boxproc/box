@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
+import Cards from './Cards';
+
 import {
   createLoadingSelector,
   handleGetLedgerAccountCards,
@@ -11,7 +13,6 @@ import {
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
-import Cards from './Cards';
 
 const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.GET_LEDGER_ACCOUNT_CARDS,

@@ -4,7 +4,6 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Box, Flex } from '@rebass/grid';
 
 import { ChevronIcon } from 'components/Icon';
-
 import { basePath, uiItemTypes } from 'consts';
 
 import { NavList } from './NavList';

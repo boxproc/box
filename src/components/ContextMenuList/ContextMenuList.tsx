@@ -7,9 +7,9 @@ import { Delete } from 'styled-icons/material/Delete';
 
 import styled from 'theme';
 
-import './styles.css';
-
 import { ContextMenuItem } from 'types';
+
+import './styles.css';
 
 interface ContextMenuWrapperProps {
   isVisible?: boolean;

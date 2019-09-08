@@ -4,12 +4,9 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField } from 'components/Form';
-
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import {
-  formNames,
 
-} from 'consts';
+import { formNames } from 'consts';
 
 interface CardInfoFormProps extends ExternalSpinnerProps {
   onCancel: () => void;

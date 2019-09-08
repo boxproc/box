@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'theme';
 
 import { Flex } from '@rebass/grid';
+
+import styled from 'theme';
 
 import { Button } from 'components/Buttons';
 import Hint from 'components/Hint';

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import { InfoCircle } from 'styled-icons/boxicons-regular/InfoCircle';
+
+import styled from 'theme';
 
 interface HintWrapperProps {
   position?: string;
@@ -70,6 +70,11 @@ const Hint: React.FC<HintProps> = ({
   width,
 }) => {
   const [isHint, setIsHint] = React.useState(false);
+
+  const toggleIsHint = React.useCallback(
+    () => setIsHint(!isHint),
+    [isHint]);
+
   return (
     <HintWrapper
       position={position}
@@ -78,8 +83,8 @@ const Hint: React.FC<HintProps> = ({
     >
       <div
         className="toggle-hint"
-        onMouseEnter={() => setIsHint(true)}
-        onMouseLeave={() => setIsHint(false)}
+        onMouseEnter={toggleIsHint}
+        onMouseLeave={toggleIsHint}
       >
         {icon && (
           <InfoButton size="18"/>

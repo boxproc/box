@@ -10,9 +10,7 @@ export const preparedFilterParamsToSend = (params: Partial<AdminInterfaceFilterP
     return null;
   }
 
-  const {
-    institutionId,
-  } = params;
+  const { institutionId } = params;
 
   return {
     institution_id: institutionId && Number(institutionId.value),

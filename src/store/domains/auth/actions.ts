@@ -1,7 +1,5 @@
 import { push } from 'connected-react-router';
 
-import * as api from './api';
-
 import { basePath, cookiesNames } from 'consts';
 
 import {
@@ -10,14 +8,13 @@ import {
   UserLoginAction,
   UserLogoutAction,
 } from './actionTypes';
-
+import * as api from './api';
 import { AuthRequest, PreparedAuthRequest } from './types';
 import { prepareAuthValues } from './utils';
 
 import { apiClient } from 'services';
 
 import { PromiseRes, Thunk, VoidThunk } from 'types';
-
 import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
 
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;

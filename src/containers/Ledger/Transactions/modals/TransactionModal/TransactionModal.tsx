@@ -3,8 +3,8 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
+import { Hr } from 'components/Delimiter';
 import Modal from 'components/Modal';
-import { Hr } from 'components/Text';
 
 import { modalNames, modalTypes } from 'consts';
 

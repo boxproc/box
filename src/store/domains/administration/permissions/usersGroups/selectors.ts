@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { StoreState } from 'store/StoreState';
 
 import { permissionTypesOptions } from 'consts';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
   state.administration.userGroups.usersGroups.asMutable();

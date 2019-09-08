@@ -1,11 +1,11 @@
+import { yesNoTypes } from 'consts';
+
 import {
   AdminSysPropFilterParams,
   AdminSysPropFilterParamsPrepared,
   EditableAdminSysProp,
   EditableAdminSysPropPrepared,
 } from './types';
-
-import { yesNoTypes } from 'consts';
 
 export const prepareEditableAdminSysPropItemValues =
   (propValues: EditableAdminSysProp): EditableAdminSysPropPrepared => {

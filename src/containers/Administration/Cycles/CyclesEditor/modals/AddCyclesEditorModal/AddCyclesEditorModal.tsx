@@ -4,9 +4,9 @@ import Modal from 'components/Modal';
 
 import { modalNames } from 'consts';
 
-import { CloseModal } from 'store/domains';
-
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
+
+import { CloseModal } from 'store/domains';
 
 interface AddCycleEditorModalProps {
   closeModal: CloseModal;

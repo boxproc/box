@@ -5,8 +5,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components/Buttons';
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
+import { Hr } from 'components/Delimiter';
 import { InputField, SelectField, TextField } from 'components/Form';
-import { Hr } from 'components/Text';
 
 import { executableTypeOptions, formNames, modalNames, schedulerStatusTypesOptions } from 'consts';
 

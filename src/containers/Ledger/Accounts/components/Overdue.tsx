@@ -3,8 +3,8 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { Hr } from 'components/Delimiter';
 import { InputField } from 'components/Form';
-import { Hr } from 'components/Text';
 
 import { formErrorUtil } from 'utils';
 

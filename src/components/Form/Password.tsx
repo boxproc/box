@@ -1,8 +1,11 @@
 import React from 'react';
+import { css } from 'styled-components';
+
+import { Eye } from 'styled-icons/fa-regular/Eye';
+import { EyeSlash } from 'styled-icons/fa-regular/EyeSlash';
 
 import styled from 'theme';
 
-import { EyeIcon, EyeOffIcon } from '../Icon';
 import Input, { InputCommonProps } from './Input';
 
 const PasswordInputBase = styled(Input)`
@@ -11,15 +14,31 @@ const PasswordInputBase = styled(Input)`
 
 const PasswordInputWrapper = styled.div`
   position: relative;
+
+  .icon-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    user-select:none;
+    font-size: 0;
+  }
 `;
 
-const IconWrapper = styled.span`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
-  user-select:none
-  font-size: 0;
+const iconStyles = css`
+  color: ${({ theme }) => theme.grayColor};
+
+  &:hover {
+  color: ${({ theme }) => theme.normalAccentColor}
+  }
+`;
+
+const EyeSlashStyled = styled(EyeSlash)`
+  ${iconStyles}
+`;
+
+const EyeStyled = styled(Eye)`
+  ${iconStyles}
 `;
 
 interface RenderComponentProps {
@@ -28,47 +47,34 @@ interface RenderComponentProps {
   tip: string;
 }
 
-interface PasswordInputState {
-  masked: boolean;
-}
+export const PasswordInput: React.FC<InputCommonProps> = props => {
+  const [masked, setMasked] = React.useState(false);
 
-class PasswordInput extends React.Component<InputCommonProps, PasswordInputState> {
-  state = {
-    masked: true,
-  };
-
-  changeShowMode = (e: React.MouseEvent<HTMLInputElement>) =>
-    this.setState(({ masked }) => ({masked: !masked}))
-
-  renderComponent = ({ type, icon, tip }: RenderComponentProps) => (
+  const renderComponent = ({ type, icon, tip }: RenderComponentProps) => (
     <PasswordInputWrapper>
       <PasswordInputBase
-        {...this.props}
+        {...props}
         type={type}
       />
-      <IconWrapper
+      <span
+        className="icon-wrapper"
         draggable={false}
-        onClick={this.changeShowMode}
+        onClick={() => setMasked(!masked)}
         title={tip}
       >
         {icon}
-      </IconWrapper>
+      </span>
     </PasswordInputWrapper>
-  )
-
-  render() {
-    const { masked } = this.state;
-
-    return (
-      <div>
-        {this.renderComponent({
-          type: masked ? 'password' : 'text',
-          icon: masked ? <EyeOffIcon/> : <EyeIcon />,
-          tip: masked ? 'Show password' : 'Hide password',
-        })}
-      </div>
-    );
-  }
-}
+  );
+  return (
+    <React.Fragment>
+      {renderComponent({
+        type: masked ? 'password' : 'text',
+        icon: masked ? <EyeSlashStyled size="15" /> : <EyeStyled size="15" />,
+        tip: masked ? 'Show password' : 'Hide password',
+      })}
+    </React.Fragment>
+  );
+};
 
 export default PasswordInput;

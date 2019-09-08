@@ -1,6 +1,6 @@
-import { StoreState } from 'store/StoreState';
-
 import { createSelector } from 'reselect';
+
+import { StoreState } from 'store/StoreState';
 
 import { statusTypesOptions } from 'consts';
 import { prepareAdminUserValuesToRender } from './utils';

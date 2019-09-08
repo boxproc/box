@@ -3,17 +3,15 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { Hr } from 'components/Delimiter';
 import { CalendarField, InputField, MaskField, SelectField } from 'components/Form';
-import { Hr, T4 } from 'components/Text';
+import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'components/HOCs';
+import { T4 } from 'components/Text';
 
 import { customerStatusTypesOptions, dateFormat, maskFormat } from 'consts';
 
 import { SelectValues } from 'types';
 
-import {
-  withLoadCountryCodes,
-  WithLoadCountryCodesProps,
-} from 'components/HOCs';
 import { formErrorUtil } from 'utils';
 
 interface CustomerInfoProps {

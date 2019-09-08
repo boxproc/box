@@ -22,7 +22,7 @@ const Wrapper = styled.footer`
   }
 `;
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Wrapper>
       <Container>

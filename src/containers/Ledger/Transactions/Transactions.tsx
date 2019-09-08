@@ -8,10 +8,7 @@ import { modalNames } from 'consts';
 import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
 
-import {
-  HandleSetLedgerTransactionId,
-  LedgerTransactionItemPrepared,
-} from 'store/domains';
+import { HandleSetLedgerTransactionId, LedgerTransactionItemPrepared } from 'store/domains';
 
 export interface TransactionsProps {
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;

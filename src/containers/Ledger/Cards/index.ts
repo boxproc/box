@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import Cards from './Cards';
 
@@ -9,7 +10,6 @@ import {
   selectLedgerCards,
 } from 'store/domains';
 
-import { bindActionCreators, Dispatch } from 'redux';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([

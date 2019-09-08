@@ -4,15 +4,14 @@ import moment, { Moment } from 'moment';
 import Datetime from 'react-datetime';
 import OnClickOut from 'react-onclickoutside';
 import { WrappedFieldProps } from 'redux-form';
+import { Calendar as CalendarIcon } from 'styled-icons/octicons/Calendar';
 
 import styled from 'theme';
 
-import { Calendar as CalendarIcon } from 'styled-icons/octicons/Calendar';
-import { InputCommonProps } from '../Input';
-
-import { sharedCalendarCss } from './sharedCalendarCss';
-
 import { dateFormat as dateFormatConst } from 'consts';
+
+import { InputCommonProps } from '../Input';
+import { sharedCalendarCss } from './sharedCalendarCss';
 
 import { dateUtil } from 'utils';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LinkExternal } from 'styled-icons/boxicons-regular/LinkExternal';
 
-import styled from 'styled-components';
+import styled from 'theme';
 
 interface ExternalLinkWrapperProps {
   grayStyle?: boolean;

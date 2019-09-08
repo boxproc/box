@@ -3,11 +3,11 @@ import React from 'react';
 import { withSpinner } from 'components/Spinner';
 import TablePage from 'components/TablePage';
 
-import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
-
 import { modalNames } from 'consts';
 
 import { tableColumns } from './components';
+
+import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
 
 import {
   HandleSetLedgerAccountId,

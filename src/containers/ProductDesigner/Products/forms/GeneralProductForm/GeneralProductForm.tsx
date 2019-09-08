@@ -4,15 +4,12 @@ import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Text';
+import { Hr } from 'components/Delimiter';
+import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
 import { formNames } from 'consts';
 
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-
-import {
-  ProductGeneralInfo,
-} from 'containers/ProductDesigner/Products/components';
+import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
 

@@ -2,8 +2,9 @@ import { createSelector } from 'reselect';
 
 import { dataTypesOptions } from 'consts';
 
-import { StoreState } from 'store/StoreState';
 import { selectAdminEventsItems } from '../events';
+
+import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
   state.administration.eventDataElements.eventDataElems;
