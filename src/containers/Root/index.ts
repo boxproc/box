@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import Root from './Root';
 
 import {
-  selectIsRememberedMe,
-  selectSessionId,
+  selectUserIsRememberedMe,
   selectUserName,
+  selectUserSessionId,
   selectVisibleUiItems,
 } from 'store/domains';
 
@@ -13,9 +13,9 @@ import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   visibleUiItems: selectVisibleUiItems(state),
-  sessionId: selectSessionId(state),
+  sessionId: selectUserSessionId(state),
   userName: selectUserName(state),
-  isRememberedMe: selectIsRememberedMe(state),
+  isRememberedMe: selectUserIsRememberedMe(state),
 });
 
 export default connect(

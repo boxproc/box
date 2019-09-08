@@ -25,6 +25,8 @@ export enum statusTypes {
   INACTIVE = 'I',
   DELETED = 'D',
   EXECUTION_PENDING = 'E',
+  REGISTRATION_PENDING = 'F',
+  AUTHENTICATION_PENDING = 'P',
 }
 
 export const statusTypesOptions = [

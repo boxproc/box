@@ -3,16 +3,30 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import Register2faModal from './Register2faModal';
 
-import { closeModal } from 'store/domains';
+import {
+  handleSetUserCurrentRegisterStep,
+  handleUserConfirmAuthKey,
+  selectUserCode,
+  selectUserCurrentRegisterStep,
+  selectUserDataUrl,
+} from 'store/domains';
+import { StoreState } from 'store/StoreState';
+
+const mapStateToProps = (state: StoreState) => ({
+  currentRegisterStep: selectUserCurrentRegisterStep(state),
+  code: selectUserCode(state),
+  dataUrl: selectUserDataUrl(state),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    closeModal,
+    setUserCurrentRegisterStep: handleSetUserCurrentRegisterStep,
+    userConfirmAuthKey: handleUserConfirmAuthKey,
   },
   dispatch
 );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Register2faModal);

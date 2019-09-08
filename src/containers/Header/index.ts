@@ -6,14 +6,15 @@ import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 import {
+  AuthActionTypes,
   createLoadingSelector,
   handleGetInstitutions,
   handleGetUiItems,
   handleUserLogout,
-  selectFirstName,
   selectInstitutions,
-  selectLastName,
   selectUiItems,
+  selectUserFirstName,
+  selectUserLastName,
   UiItemsActionTypes,
 } from 'store/domains';
 
@@ -21,14 +22,15 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   UiItemsActionTypes.GET_UI_ITEMS,
+  AuthActionTypes.USER_LOGOUT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
   institutions: selectInstitutions(state),
-  firstName: selectFirstName(state),
-  lastName: selectLastName(state),
+  firstName: selectUserFirstName(state),
+  lastName: selectUserLastName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

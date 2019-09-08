@@ -1,6 +1,9 @@
-export interface AuthRequest {
-  userName?: string;
+export interface AuthPassword {
   password?: string;
+}
+
+export interface AuthRequest extends AuthPassword {
+  userName?: string;
   rememberMe?: boolean;
 }
 
@@ -16,7 +19,17 @@ export interface AuthResponse {
   first_name: string;
   last_name: string;
   last_activity: string;
-  registered_2fa: string;
+  status: string;
+}
+
+export interface AuthStepTwoResponse {
+  code: string;
+  data_url: string;
+}
+
+export interface AuthStepTwoResponsePrepared {
+  code: string;
+  dataUrl: string;
 }
 
 export interface AuthState {
@@ -26,5 +39,8 @@ export interface AuthState {
   firstName: string;
   lastName: string;
   lastActivity: string;
-  registered2fa: string;
+  status: string;
+  currentRegisterStep: number;
+  code: string;
+  dataUrl: string;
 }

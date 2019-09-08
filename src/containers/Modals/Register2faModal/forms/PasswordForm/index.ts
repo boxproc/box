@@ -1,20 +1,26 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import Home from './Home';
+import PasswordForm from './PasswordForm';
 
-import { openModal, selectIs2faRegistered, selectUserLastActivity } from 'store/domains';
-
+import {
+  AuthActionTypes,
+  createLoadingSelector,
+  handleUserGetAuthKey,
+} from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  AuthActionTypes.USER_GET_AUTH_KEY,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-  lastActivity: selectUserLastActivity(state),
-  is2faRegistered: selectIs2faRegistered(state),
+  isLoading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    openModal,
+    userGetAuthKey: handleUserGetAuthKey,
   },
   dispatch
 );
@@ -22,4 +28,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(PasswordForm);

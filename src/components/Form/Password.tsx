@@ -48,7 +48,7 @@ interface RenderComponentProps {
 }
 
 export const PasswordInput: React.FC<InputCommonProps> = props => {
-  const [masked, setMasked] = React.useState(false);
+  const [masked, setMasked] = React.useState(true);
 
   const renderComponent = ({ type, icon, tip }: RenderComponentProps) => (
     <PasswordInputWrapper>

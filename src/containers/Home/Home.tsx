@@ -14,7 +14,7 @@ import { cookiesUtil } from 'utils';
 interface HomeProps {
   lastActivity: string;
   openModal: OpenModal;
-  // is2faRegistered: boolean;
+  is2faRegistered: boolean;
 }
 
 const CenterBlock = styled.div`
@@ -40,6 +40,8 @@ const Home: React.FC<HomeProps> = ({
     [lastActivity]
   );
 
+  // console.log('---is2faRegistered', is2faRegistered)
+
   return (
     <React.Fragment>
       <CenterBlock>
@@ -55,14 +57,18 @@ const Home: React.FC<HomeProps> = ({
             activity: {sessionStorage.getItem(sessionStorageNames.LAST_ACTIVITY)}
           </SmallText>
         )}
-        <Paragraph>Please, enable two-factor authentication</Paragraph>
-        <Button
-          text="Turn on"
-          iconName="smartphone"
-          onClick={() => openModal({
-            name: modalNames.REGISTER_2FA_MODAL,
-          })}
-        />
+        {/* {is2faRegistered && ( */}
+          <React.Fragment>
+            <Paragraph>Please, enable two-factor authentication</Paragraph>
+            <Button
+              text="Turn on"
+              iconName="smartphone"
+              onClick={() => openModal({
+                name: modalNames.REGISTER_2FA_MODAL,
+              })}
+            />
+          </React.Fragment>
+        {/* )} */}
       </CenterBlock>
     </React.Fragment>
   );

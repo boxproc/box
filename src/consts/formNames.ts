@@ -1,7 +1,7 @@
 export enum formNames {
   USER_LOGIN = 'userLoginForm',
 
-  REGISTER_2FA = 'register2fa',
+  PASSWORD = 'passwordForm',
 
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
@@ -47,7 +47,7 @@ export enum formNames {
 
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
 
-  ADMIN_ENDPOINT = 'adminEnpoints',
+  ADMIN_ENDPOINT = 'adminEndpoints',
   ADMIN_ENDPOINT_FILTER = 'adminEndpointFilter',
 
   ADMIN_INTERFACE = 'adminInterfaceForm',
