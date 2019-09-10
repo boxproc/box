@@ -14,7 +14,6 @@ import { cookiesUtil } from 'utils';
 interface HomeProps {
   lastActivity: string;
   openModal: OpenModal;
-  is2faRegistrationPending: boolean;
 }
 
 const CenterBlock = styled.div`
@@ -28,7 +27,6 @@ const CenterBlock = styled.div`
 const Home: React.FC<HomeProps> = ({
   lastActivity,
   openModal,
-  is2faRegistrationPending,
 }) => {
   React.useEffect(
     () => {

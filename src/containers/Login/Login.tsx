@@ -60,15 +60,13 @@ const Login: React.FC<LoginPropsAllProps> = ({
 }) => {
   React.useEffect(
     () => {
-      is2faAuthenticationPending
-        ? cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y')
-        : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
-
       is2faRegistrationPending
         ? cookiesUtil.set(cookiesNames.AUTH_REGISTRATION_PENDING, 'Y')
         : cookiesUtil.remove(cookiesNames.AUTH_REGISTRATION_PENDING);
 
-      return cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+      is2faAuthenticationPending
+        ? cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y')
+        : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
     },
     [is2faAuthenticationPending, is2faRegistrationPending]
   );

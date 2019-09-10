@@ -20,7 +20,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
     exact={exact}
     render={props => {
       return (
-        cookiesUtil.get(cookiesNames.SESSION_ID)
+        cookiesUtil.get(cookiesNames.SESSION_ID) && !cookiesUtil.get(cookiesNames.AUTH_PENDING)
           ? <Component {...props} />
           : <Redirect
             to={{
