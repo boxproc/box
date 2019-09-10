@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 
-import { basePath, cookiesNames, modalNames } from 'consts';
+import { basePath, modalNames } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 import {
@@ -19,7 +19,7 @@ import { prepareAuthValues } from './utils';
 import { apiClient } from 'services';
 
 import { PromiseRes, Thunk, VoidThunk } from 'types';
-import { cookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
+import { errorDecoratorUtil, urlUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -91,10 +91,10 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
-          await dispatch(userLogout());
-          urlUtil.openLocation(`${basePath}login`);
-          cookiesUtil.remove(cookiesNames.SESSION_ID);
+        const res = await dispatch(userLogout()) as PromiseRes<any>;
+
+        if (res.value.response_status.status_code === 0) {
+          urlUtil.openLocation(basePath);
         }
       },
       dispatch

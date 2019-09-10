@@ -9,6 +9,7 @@ export enum cookiesNames {
 export enum cookiesExpires {
   WEEK = 604800,
   SESSION_ID = 3600,
+  MINUTE = 60,
 }
 
 export enum sessionStorageNames {

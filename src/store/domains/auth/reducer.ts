@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { cookiesNames } from 'consts';
+import { cookiesExpires, cookiesNames, statusTypes } from 'consts';
 
 import { ActionTypeKeys, AuthActionTypes } from './actionTypes';
 import { AuthState } from './types';
@@ -20,7 +20,11 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
-      cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y');
+      if (action.payload.status === statusTypes.ACTIVE) {
+        cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y', {
+          expires: cookiesExpires.MINUTE,
+        });
+      }
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
       return state
         .set('firstName', action.payload.first_name)
