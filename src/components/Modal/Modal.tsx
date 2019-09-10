@@ -90,7 +90,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div
         className="modal-backdrop"
-        onClick={closeOnBackdrop ? handleCloseModal : null}
+        onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
         <span

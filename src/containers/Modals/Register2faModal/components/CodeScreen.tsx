@@ -32,23 +32,23 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <CircleList
-        items={[
-          'Install the Google Authenticator app on your phone.',
-          'Scan the QR code in the app.',
-        ]}
-      />
-      <Flex justifyContent="center">
-        <Box my="15px">
-          <img alt="" src={dataUrl} />
-        </Box>
-      </Flex>
-      <CircleList
-        items={[
-          'Or manually entry the key into the app.',
-        ]}
-      />
-      <DashedBlock>{code}</DashedBlock>
+      <CircleList items={['Install the Google Authenticator app on your phone.']} />
+      {dataUrl && (
+        <React.Fragment>
+          <CircleList items={['Scan the QR code in the app.']} />
+          <Flex justifyContent="center">
+            <Box my="15px">
+              <img alt="" src={dataUrl} />
+            </Box>
+          </Flex>
+        </React.Fragment>
+      )}
+      {code && (
+        <React.Fragment>
+          <CircleList items={['Or manually entry the key into the app.']} />
+          <DashedBlock>{code}</DashedBlock>
+        </React.Fragment>
+      )}
       <Hr />
       <Flex justifyContent="space-between">
         <Button

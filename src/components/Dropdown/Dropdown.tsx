@@ -113,7 +113,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             onClick={toggleOpen}
             ref={dropdownToggleBtnRef}
           >
-            {ToggleButtonComponent && ToggleButtonComponent}
+            {ToggleButtonComponent}
             <ToggleButton size="21" />
           </div>
         </Box>

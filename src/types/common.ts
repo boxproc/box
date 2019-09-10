@@ -1,7 +1,6 @@
 import { CellInfo } from 'react-table';
 import { Action, AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { ImmutableArray } from 'seamless-immutable';
 import { Response as SuperagentApiResponse } from 'superagent';
 
 import { StoreState } from 'store/StoreState';
@@ -29,8 +28,8 @@ export interface MessageResponse {
 
 export type ApiResponse = SuperagentApiResponse;
 
-export type SendNotification = (res: MessageResponse, isCatch?: boolean)
-  => (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
+export type SendNotification = (res: MessageResponse, isCatch?: boolean) =>
+  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export interface PromiseAction<R> extends Action {
   payload: R;
@@ -40,12 +39,6 @@ export interface PromiseRes<R> {
   action?: PromiseAction<R>;
   value?: R;
 }
-
-export type toMutable<T> = T extends ImmutableArray<infer U> ? Array<U> : T;
-
-export type toMutableInterface<T> = { [K in keyof T]: toMutable<T[K]> };
-
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export interface TableCell<T> extends CellInfo {
   value: T;
@@ -59,13 +52,4 @@ export interface KeyValuePair<T = number> {
 export interface SelectValues<T = number | string> {
   value: T;
   label: string;
-}
-
-export interface ContextMenuItem {
-  name: string;
-  icon?: string;
-  action?: () => void;
-  withConfirmation?: boolean;
-  confirmationTitle?: string;
-  confirmationText?: string;
 }

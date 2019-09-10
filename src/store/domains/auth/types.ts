@@ -6,6 +6,10 @@ export interface AuthCode {
   code?: string;
 }
 
+export interface AuthConfirm {
+  confirm: string;
+}
+
 export interface AuthRequest extends AuthPassword {
   userName?: string;
   rememberMe?: boolean;
@@ -18,6 +22,7 @@ export interface PreparedAuthRequest {
 }
 
 export interface AuthResponse {
+  session_id: string;
   first_name: string;
   last_name: string;
   last_activity: string;
@@ -25,8 +30,10 @@ export interface AuthResponse {
 }
 
 export interface AuthStepTwoResponse {
-  code: string;
-  data_url: string;
+  two_factor_authentication: {
+    secret_key: string;
+    data_url: string;
+  };
 }
 
 export interface AuthStepTwoResponsePrepared {

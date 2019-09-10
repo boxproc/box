@@ -3,7 +3,6 @@
   export default value;
 }
 
-declare module 'redux-seamless-immutable';
 declare module 'react-select/lib/*';
 declare module 'react-cron-builder';
 declare module 'prismjs/components/prism-core';

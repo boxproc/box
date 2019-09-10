@@ -18,6 +18,7 @@ interface SmallTextProps {
 }
 
 export const SmallText = styled.div<SmallTextProps>`
+  margin-bottom: 3px;
   font-size: 12px;
   color: ${({ theme }) => theme.grayColor};
   font-weight: ${({ bold }) => bold ? 500 : 'normal'};
@@ -66,4 +67,3 @@ export const Paragraph = styled.p<ParagraphProps>`
     margin-bottom: 10px;
   };
 `;
-

@@ -1,34 +1,34 @@
-// import { authPathNames } from 'consts';
+import { authPathNames } from 'consts';
 
-// import { apiClient } from 'services';
+import { apiClient } from 'services';
 
-import { PreparedAuthRequest } from './types';
+import { AuthCode, AuthConfirm, AuthPassword, PreparedAuthRequest } from './types';
 
-import {
-  AuthResponseFullData,
-  AuthResponseStepOneData,
-  AuthSecretKeyData,
-  SuccessResponseStatus,
-} from './mock';
+// import {
+//   // AuthResponseFullData,
+//   // AuthResponseStepOneData,
+//   AuthSecretKeyData,
+//   SuccessResponseStatus,
+// } from './mock';
 
-import { throttleUtil } from 'utils';
+// import { throttleUtil } from 'utils';
 
 export const userLogin = (data: PreparedAuthRequest) =>
-  throttleUtil.getDataAfter(AuthResponseStepOneData, 500);
-// apiClient.post(authPathNames.LOGIN, { data });
+  // throttleUtil.getDataAfter(AuthResponseFullData, 500);
+  apiClient.post(authPathNames.LOGIN, { data });
 
 export const userLogout = () =>
-  throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-// apiClient.post(authPathNames.LOGOUT);
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  apiClient.post(authPathNames.LOGOUT);
 
-export const getAuthKey = (data: string) =>
-  throttleUtil.getDataAfter(AuthSecretKeyData, 500);
-// apiClient.post(authPathNames.GET_AUTH_KEY, { data });
+export const getAuthKey = (data: AuthPassword) =>
+  // throttleUtil.getDataAfter(AuthSecretKeyData, 500);
+  apiClient.post(authPathNames.LOGIN, { data });
 
-export const userConfirmAuthKey = () =>
-  throttleUtil.getDataAfter(SuccessResponseStatus, 500);
-// apiClient.post(authPathNames.CONFIRM_AUTH_KEY);
+export const userConfirmAuthKey = (data: AuthConfirm) =>
+  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  apiClient.post(authPathNames.LOGIN, { data });
 
-export const enterAuthKey = (data: string) =>
-  throttleUtil.getDataAfter(AuthResponseFullData, 500);
-// apiClient.post(authPathNames.ENTER_AUTH_KEY, { data });
+export const enterAuthKey = (data: AuthCode) =>
+  // throttleUtil.getDataAfter(AuthResponseFullData, 500);
+  apiClient.post(authPathNames.LOGIN, { data });

@@ -35,7 +35,6 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
   React.useEffect(
     () => {
       setUserCurrentRegisterStep(1);
-
       return () => {
         setUserCurrentRegisterStep(null);
       };

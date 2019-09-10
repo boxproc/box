@@ -24,6 +24,7 @@ export enum statusTypes {
   ACTIVE = 'A',
   INACTIVE = 'I',
   DELETED = 'D',
+  CLOSED = 'C',
   EXECUTION_PENDING = 'E',
   REGISTRATION_PENDING = 'F',
   AUTHENTICATION_PENDING = 'P',
@@ -62,12 +63,6 @@ export const protocolTypesOptions = [
   { value: 'R', label: 'REST' },
   { value: 'S', label: 'SOAP' },
 ];
-
-export enum customerStatusTypes {
-  ACTIVE = 'A',
-  INACTIVE = 'I',
-  CLOSED = 'C',
-}
 
 export const customerStatusTypesOptions = [
   { value: 'A', label: 'Active' },

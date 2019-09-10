@@ -1,10 +1,10 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
+import { statusTypes } from 'consts';
+
 import { ActionTypeKeys, AuthActionTypes } from './actionTypes';
 import { AuthState } from './types';
 
-// for demo
-import { cookiesNames } from 'consts';
 import { cookiesUtil } from 'utils';
 
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
@@ -21,7 +21,10 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
     // case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
-      // cookiesUtil.set(cookiesNames.SESSION_ID, '12345'); // for demo
+      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
+      if (action.payload.status === statusTypes.ACTIVE) {
+        cookiesUtil.set('auth_pending', 'Y');
+      }
       return state
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
@@ -29,21 +32,18 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('status', action.payload.status);
 
     case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
-      cookiesUtil.set(cookiesNames.SESSION_ID, 'sessionId123'); // for demo
+      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
+      cookiesUtil.remove('auth_pending');
       return state
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
         .set('status', action.payload.status);
 
-    case ActionTypeKeys.USER_LOGOUT_FULFILLED:
-      return state
-        .set('sessionId', null);
-
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state
-        .set('code', action.payload.code)
-        .set('dataUrl', action.payload.data_url)
+        .set('code', action.payload.two_factor_authentication.secret_key)
+        .set('dataUrl', action.payload.two_factor_authentication.data_url)
         .set('currentRegisterStep', 2);
 
     case ActionTypeKeys.SET_USER_CURRENT_REGISTER_STEP:

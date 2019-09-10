@@ -24,7 +24,8 @@ export const scrollbarCss = css`
 `;
 
 export const ScrollDisable = createGlobalStyle`
-  body {
+  body,
+  .main-wrapper {
     overflow: hidden;
   }
 `;

@@ -14,11 +14,11 @@ import { HandleUserLogout } from 'store/domains';
 import { cookiesUtil } from 'utils';
 
 const UserIcon = styled(User)`
-  margin-right: 5px;
   color: ${({ theme }) => theme.grayColor};
 `;
 
 const TextWrapper = styled.div`
+  margin-left: 5px;
   font-size: 12px;
   font-weight: 500;
   color: ${({ theme }) => theme.darkGrayColor};
@@ -29,7 +29,9 @@ const TextWrapper = styled.div`
 const UserBlock = () => (
   <Flex alignItems="baseline">
     <UserIcon size="12" />
-    <TextWrapper>{cookiesUtil.get(cookiesNames.FULL_NAME)}</TextWrapper>
+    {cookiesUtil.get(cookiesNames.FULL_NAME) && (
+      <TextWrapper>{cookiesUtil.get(cookiesNames.FULL_NAME)}</TextWrapper>
+    )}
   </Flex>
 );
 

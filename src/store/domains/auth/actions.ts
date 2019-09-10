@@ -13,7 +13,7 @@ import {
   UserLogoutAction,
 } from './actionTypes';
 import * as api from './api';
-import { AuthCode, AuthPassword, AuthRequest, PreparedAuthRequest } from './types';
+import { AuthCode, AuthConfirm, AuthPassword, AuthRequest, PreparedAuthRequest } from './types';
 import { prepareAuthValues } from './utils';
 
 import { apiClient } from 'services';
@@ -31,13 +31,13 @@ export type SetUserCurrentRegisterStep = (step: number) => SetUserCurrentRegiste
 export type HandleSetUserCurrentRegisterStep = (step: number) => void;
 
 export type HandleUserGetAuthKey = (data: AuthPassword) => Thunk<void>;
-export type UserGetAuthKey = (password: string) => UserGetAuthKeyAction;
+export type UserGetAuthKey = (data: AuthPassword) => UserGetAuthKeyAction;
 
 export type HandleUserConfirmAuthKey = VoidThunk;
-export type UserConfirmAuthKey = () => UserConfirmAuthKeyAction;
+export type UserConfirmAuthKey = (data: AuthConfirm) => UserConfirmAuthKeyAction;
 
 export type HandleUserEnterAuthKey = (data: AuthCode) => Thunk<void>;
-export type UserEnterAuthKey = (code: string) => UserEnterAuthKeyAction;
+export type UserEnterAuthKey = (data: AuthCode) => UserEnterAuthKeyAction;
 
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,
@@ -49,9 +49,9 @@ export const userLogout: UserLogout = () => ({
   payload: api.userLogout(),
 });
 
-export const userGetAuthKey: UserGetAuthKey = password => ({
+export const userGetAuthKey: UserGetAuthKey = data => ({
   type: ActionTypeKeys.USER_GET_AUTH_KEY,
-  payload: api.getAuthKey(password),
+  payload: api.getAuthKey(data),
 });
 
 export const setUserCurrentRegisterStep: SetUserCurrentRegisterStep = step => ({
@@ -59,9 +59,9 @@ export const setUserCurrentRegisterStep: SetUserCurrentRegisterStep = step => ({
   payload: step,
 });
 
-export const userConfirmAuthKey: UserConfirmAuthKey = () => ({
+export const userConfirmAuthKey: UserConfirmAuthKey = data => ({
   type: ActionTypeKeys.USER_CONFIRM_AUTH_KEY,
-  payload: api.userConfirmAuthKey(),
+  payload: api.userConfirmAuthKey(data),
 });
 
 export const userEnterAuthKey: UserEnterAuthKey = code => ({
@@ -91,7 +91,6 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-
         if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
           await dispatch(userLogout());
           urlUtil.openLocation(`${basePath}login`);
@@ -106,7 +105,7 @@ export const handleUserGetAuthKey: HandleUserGetAuthKey = (data) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(userGetAuthKey(data.password));
+        await dispatch(userGetAuthKey(data));
       },
       dispatch
     );
@@ -116,6 +115,7 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        await dispatch(userConfirmAuthKey({confirm: 'Y'}));
         await dispatch(closeModal(modalNames.REGISTER_2FA_MODAL));
         await dispatch(handleUserLogout());
       },
@@ -127,7 +127,7 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const res = await dispatch(userEnterAuthKey(data.code)) as PromiseRes<any>;
+        const res = await dispatch(userEnterAuthKey(data)) as PromiseRes<any>;
 
         apiClient.set('session_id', res.value.session_id);
 

@@ -1,6 +1,11 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'theme/customScrollbar.css';
+
 import styled from 'theme';
 
 import { Container } from 'components/Container';
@@ -22,7 +27,7 @@ const RootWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   min-width: 1025px;
-  min-height: 100vh;
+  height: 100vh;
   padding-top: 70px;
 `;
 
@@ -37,11 +42,11 @@ interface RootProps {
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
 }) => {
-  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID);
+  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID) && !cookiesUtil.get('auth_pending');
 
   return (
-    <React.Fragment>
-      <RootWrapper>
+    <PerfectScrollbar>
+      <RootWrapper className="main-wrapper">
         <div>
           <div>
             {isLoggedIn && (
@@ -84,7 +89,7 @@ const Root: React.FC<RootProps> = ({
         <Footer />
       </RootWrapper>
       <Modals />
-    </React.Fragment>
+    </PerfectScrollbar>
   );
 };
 
