@@ -10,11 +10,11 @@ import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
-import { basePath, formNames } from 'consts';
+import { basePath, cookiesNames, formNames } from 'consts';
 
 import { HandleUserEnterAuthKey, HandleUserLogin } from 'store/domains';
 
-import { formErrorUtil } from 'utils';
+import { cookiesUtil, formErrorUtil } from 'utils';
 
 import logo from 'resources/images/logo.svg';
 
@@ -58,6 +58,21 @@ const Login: React.FC<LoginPropsAllProps> = ({
   is2faAuthenticationPending,
   is2faRegistrationPending,
 }) => {
+  React.useEffect(
+    () => {
+      is2faAuthenticationPending
+        ? cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y')
+        : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+
+      is2faRegistrationPending
+        ? cookiesUtil.set(cookiesNames.AUTH_REGISTRATION_PENDING, 'Y')
+        : cookiesUtil.remove(cookiesNames.AUTH_REGISTRATION_PENDING);
+
+      return cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+    },
+    [is2faAuthenticationPending, is2faRegistrationPending]
+  );
+
   const action = is2faAuthenticationPending ? userEnterAuthKey : userLogin;
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => action(data)),

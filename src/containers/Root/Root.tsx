@@ -42,7 +42,8 @@ interface RootProps {
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
 }) => {
-  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID) && !cookiesUtil.get('auth_pending');
+  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
+    && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
 
   return (
     <PerfectScrollbar>

@@ -1,4 +1,6 @@
 export enum cookiesNames {
+  AUTH_PENDING = 'auth_pending',
+  AUTH_REGISTRATION_PENDING = 'auth_registration_pending',
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
   FULL_NAME = 'full_name',

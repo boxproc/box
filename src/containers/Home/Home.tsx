@@ -57,7 +57,7 @@ const Home: React.FC<HomeProps> = ({
             </SmallText>
           </React.Fragment>
         )}
-        {is2faRegistrationPending && (
+        {cookiesUtil.get(cookiesNames.AUTH_REGISTRATION_PENDING) && (
           <React.Fragment>
             <Paragraph>Please, enable two-factor authentication</Paragraph>
             <Button

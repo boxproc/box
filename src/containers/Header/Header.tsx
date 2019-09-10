@@ -73,6 +73,7 @@ const Header: React.FC<HeaderProps> = ({
       if (firstName && lastName) {
         cookiesUtil.set(cookiesNames.FULL_NAME, `${firstName} ${lastName}`);
       }
+      return cookiesUtil.remove(cookiesNames.FULL_NAME);
     },
     [firstName, lastName]
   );

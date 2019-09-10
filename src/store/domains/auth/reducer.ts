@@ -1,11 +1,7 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { statusTypes } from 'consts';
-
 import { ActionTypeKeys, AuthActionTypes } from './actionTypes';
 import { AuthState } from './types';
-
-import { cookiesUtil } from 'utils';
 
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
   firstName: null,
@@ -22,9 +18,6 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
     // case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
-      if (action.payload.status === statusTypes.ACTIVE) {
-        cookiesUtil.set('auth_pending', 'Y');
-      }
       return state
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
@@ -33,7 +26,6 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
 
     case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
-      cookiesUtil.remove('auth_pending');
       return state
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
