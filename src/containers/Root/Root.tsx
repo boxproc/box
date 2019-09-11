@@ -39,9 +39,7 @@ interface RootProps {
   visibleUiItems: Array<string>;
 }
 
-const Root: React.FC<RootProps> = ({
-  visibleUiItems,
-}) => {
+const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
   const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
     && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
 
@@ -81,9 +79,9 @@ const Root: React.FC<RootProps> = ({
                 path={basePath}
                 component={Home}
               />
-              {!isLoggedIn &&
+              {!isLoggedIn && (
                 <Redirect from="*" to={basePath} />
-              }
+              )}
             </Switch>
           </PagesWrapper>
         </div>

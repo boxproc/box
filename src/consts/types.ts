@@ -34,6 +34,7 @@ export const statusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },
   { value: 'D', label: 'Deleted' },
+  { value: 'F', label: '2FA registration pending' },
 ];
 
 export const schedulerStatusTypesOptions = [

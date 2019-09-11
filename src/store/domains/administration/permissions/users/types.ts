@@ -11,10 +11,11 @@ interface AdminUserPlainInfo {
 export interface AdminUserItem extends AdminUserPlainInfo {
   first_name: string;
   last_name: string;
-  password_hash: string;
+  password: string;
   password_entry_counter: number | string;
   datetime_of_last_login: string;
   status: string | number;
+  requires_2fa_flag: string;
 }
 
 export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
@@ -22,6 +23,7 @@ export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
   lastName: string;
   passwordEntryCounter: number | string;
   datetimeOfLastLogin: string;
+  requires2faFlag: boolean;
 }
 
 export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
@@ -30,7 +32,7 @@ export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
 
 export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
   status: SelectValues;
-  passwordHash: string;
+  password: string;
 }
 
 export interface UsersFilterParams {

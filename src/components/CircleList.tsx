@@ -9,6 +9,8 @@ const CircleListWrapper = styled.ul`
   li {
     position: relative;
     padding-left: 13px;
+    margin-bottom: 7px;
+    line-height: 1.4;
 
     &:before {
       content: '';
@@ -20,10 +22,6 @@ const CircleListWrapper = styled.ul`
       height: 6px;
       border-radius: 50%;
       background-color: ${({ theme }) => theme.normalAccentColor};
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 5px;
     }
   }
 `;

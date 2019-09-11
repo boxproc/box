@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Cell, Header } from 'components/Table';
+import { renderCheckBoxIcon } from 'components/Table/utils';
 
 import { AdminUserItemPrepared } from 'store/domains/administration/permissions/users';
 
@@ -75,6 +76,13 @@ export const tableColumns = [
         value={props.value}
       />
     ),
+  },
+  {
+    maxWidth: 100,
+    sortable: true,
+    Header: <Header title="2FA Required" />,
+    accessor: 'requires2faFlag',
+    Cell: renderCheckBoxIcon(),
   },
   {
     maxWidth: 200,

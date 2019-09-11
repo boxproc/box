@@ -32,35 +32,35 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <CircleList items={['Install the Google Authenticator app on your phone.']} />
+      <CircleList
+        items={[
+          'Download Google Authenticator from Play Play or Apple Store.',
+          // tslint:disable-next-line: max-line-length
+          'Launch Google Authenticator on your mobile phone and follow instructions to complete registration.',
+        ]}
+      />
       {dataUrl && (
-        <React.Fragment>
-          <CircleList items={['Scan the QR code in the app.']} />
-          <Flex justifyContent="center">
-            <Box my="15px">
-              <img alt="" src={dataUrl} />
-            </Box>
-          </Flex>
-        </React.Fragment>
+        <Flex justifyContent="center">
+          <Box my="15px">
+            <img alt="" src={dataUrl} />
+          </Box>
+        </Flex>
       )}
       {code && (
-        <React.Fragment>
-          <CircleList items={['Or manually entry the key into the app.']} />
-          <DashedBlock>{code}</DashedBlock>
-        </React.Fragment>
+        <DashedBlock>{code}</DashedBlock>
       )}
       <Hr />
       <Flex justifyContent="space-between">
         <Button
-          text="Regenerate"
+          text="Regenerate key"
           iconName="qrcode"
           onClick={onRegenerate}
         />
         <Button
-          text="Confirm"
+          text="Registration completed"
           withConfirmation={true}
-          confirmationTitle="Enable Two-Factor Authentication"
-          confirmationText="Confirm BOX UI profile is appeared in your Google Authentication app?"
+          confirmationTitle="Confirmation"
+          confirmationText="Confirm BOX UI profile appeared in your Google Authentication app."
           onClick={onConfirm}
         />
       </Flex>

@@ -13,4 +13,4 @@ export const isInteger = (value: number) =>
   Number.isInteger(Number(value)) ? undefined : 'Must be an integer';
 
 export const passwordsMatch = (value: string, allValues: any) =>
-  value !== allValues.passwordHash ? 'Passwords don\'t match' : undefined;
+  value !== allValues.password ? 'Passwords don\'t match' : undefined;

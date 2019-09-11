@@ -10,11 +10,11 @@ import { CheckboxField, InputField, PasswordField } from 'components/Form';
 import { highlightCss } from 'components/highlightCss';
 import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 
-import { basePath, cookiesNames, formNames } from 'consts';
+import { basePath, formNames } from 'consts';
 
-import { HandleUserEnterAuthKey, HandleUserLogin } from 'store/domains';
+import { HandleUserLogin } from 'store/domains';
 
-import { cookiesUtil, formErrorUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 import logo from 'resources/images/logo.svg';
 
@@ -40,11 +40,8 @@ const FormWrapper = styled.div`
 
 interface LoginProps extends ExternalSpinnerProps {
   userLogin: HandleUserLogin;
-  userEnterAuthKey: HandleUserEnterAuthKey;
   isPasswordFocus: boolean;
   isMessageModal: boolean;
-  is2faAuthenticationPending: boolean;
-  is2faRegistrationPending: boolean;
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -52,24 +49,11 @@ type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
 const Login: React.FC<LoginPropsAllProps> = ({
   handleSubmit,
   userLogin,
-  userEnterAuthKey,
   isPasswordFocus,
   isMessageModal,
-  is2faAuthenticationPending,
-  is2faRegistrationPending,
 }) => {
-  React.useEffect(
-    () => {
-      is2faRegistrationPending
-        ? cookiesUtil.set(cookiesNames.AUTH_REGISTRATION_PENDING, 'Y')
-        : cookiesUtil.remove(cookiesNames.AUTH_REGISTRATION_PENDING);
-    },
-    [is2faRegistrationPending]
-  );
-
-  const action = is2faAuthenticationPending ? userEnterAuthKey : userLogin;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
+    handleSubmit(data => userLogin(data)),
     [handleSubmit, userLogin]
   );
 
@@ -81,55 +65,32 @@ const Login: React.FC<LoginPropsAllProps> = ({
         </a>
       </Box>
       <form onSubmit={handleSubmitForm}>
-        {(is2faRegistrationPending || !is2faAuthenticationPending) && (
-          <React.Fragment>
-            <Field
-              id="userName"
-              name="userName"
-              placeholder="Enter user name"
-              component={InputField}
-              disabled={isMessageModal}
-              label="Login"
-              validate={[formErrorUtil.required]}
-            />
-            <Field
-              id="password"
-              name="password"
-              placeholder="Enter password"
-              component={PasswordField}
-              disabled={isMessageModal}
-              label="Password"
-              validate={[formErrorUtil.required]}
-              autoFocus={isPasswordFocus}
-            />
-            <Flex
-              flexDirection="column"
-              alignItems="flex-end"
-            >
-              <Box>
-                <Field
-                  id="rememberMe"
-                  name="rememberMe"
-                  component={CheckboxField}
-                  label="Remember me"
-                  disabled={false}
-                  reverse={true}
-                />
-              </Box>
-            </Flex>
-          </React.Fragment>
-        )}
-        {is2faAuthenticationPending && (
-          <Field
-            id="code"
-            name="code"
-            placeholder="Enter code"
-            component={InputField}
-            disabled={isMessageModal}
-            label="Code"
-            validate={[formErrorUtil.required]}
-          />
-        )}
+        <Field
+          id="userName"
+          name="userName"
+          placeholder="Enter user name"
+          component={InputField}
+          disabled={isMessageModal}
+          label="Login"
+          validate={[formErrorUtil.required]}
+        />
+        <Field
+          id="password"
+          name="password"
+          placeholder="Enter password"
+          component={PasswordField}
+          disabled={isMessageModal}
+          label="Password"
+          validate={[formErrorUtil.required]}
+          autoFocus={isPasswordFocus}
+        />
+        <Field
+          id="rememberMe"
+          name="rememberMe"
+          component={CheckboxField}
+          label="Remember me"
+          disabled={false}
+        />
         <Flex
           flexDirection="column"
           alignItems="flex-end"
@@ -149,4 +110,6 @@ export default reduxForm<{}, LoginProps>({
   form: formNames.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(Login));
+})(withSpinner({
+  isFixed: true,
+})(Login));

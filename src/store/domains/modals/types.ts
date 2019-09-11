@@ -23,6 +23,7 @@ export interface ModalsState {
   payloadConfirmationModal: PayloadConfirmationModal;
 
   isRegister2faModal: boolean;
+  isLoginCode2faModal: boolean;
 
   isAddProductModal: boolean;
   isEditProductModal: boolean;

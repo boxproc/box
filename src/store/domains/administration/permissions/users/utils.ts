@@ -1,4 +1,4 @@
-import { statusTypes, statusTypesOptions } from 'consts';
+import { statusTypes, statusTypesOptions, yesNoTypes } from 'consts';
 import {
   AdminUserItem,
   AdminUserItemDetails,
@@ -18,10 +18,11 @@ export const prepareAdminUserValuesToSend =
       email: values.email,
       first_name: values.firstName,
       last_name: values.lastName,
-      password_hash: values.passwordHash,
+      password: values.password,
       password_entry_counter: values.passwordEntryCounter,
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
+      requires_2fa_flag: values.requires2faFlag ? yesNoTypes.YES : yesNoTypes.NO,
     };
   };
 
@@ -39,6 +40,7 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     status: statusTypesOptions.find(el => el.value === values.status).label,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
+    requires2faFlag: values.requires_2fa_flag === yesNoTypes.YES,
   };
 };
 

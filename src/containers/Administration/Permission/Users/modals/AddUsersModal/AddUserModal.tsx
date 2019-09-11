@@ -31,6 +31,9 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
         onCancel={() => closeModal(modalName)}
         defineAdminUser={addAdminUser}
         isDirty={isFormDirty}
+        initialValues={{
+          requires2faFlag: true,
+        }}
       />
     </Modal>
   );

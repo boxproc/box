@@ -2,7 +2,7 @@ import { push } from 'connected-react-router';
 
 import { basePath, modalNames } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
+import { closeModal, openModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
   SetUserCurrentRegisterStepAction,
@@ -13,13 +13,14 @@ import {
   UserLogoutAction,
 } from './actionTypes';
 import * as api from './api';
+import { selectIs2faAuthenticationPending, selectSessionId } from './selectors';
 import { AuthCode, AuthConfirm, AuthPassword, AuthRequest, PreparedAuthRequest } from './types';
 import { prepareAuthValues } from './utils';
 
 import { apiClient } from 'services';
 
-import { PromiseRes, Thunk, VoidThunk } from 'types';
-import { errorDecoratorUtil, urlUtil } from 'utils';
+import { Thunk, VoidThunk } from 'types';
+import { clearCookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -73,14 +74,36 @@ export const handleSetUserCurrentRegisterStep: HandleSetUserCurrentRegisterStep 
   setUserCurrentRegisterStep(step);
 
 export const handleUserLogin: HandleUserLogin = (data) =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedAuthValues = prepareAuthValues(data);
-        const res = await dispatch(userLogin(preparedAuthValues)) as PromiseRes<any>;
+        await dispatch(userLogin(preparedAuthValues));
 
-        apiClient.set('session_id', res.value.session_id);
+        const state = getState();
 
+        if (selectIs2faAuthenticationPending(state)) {
+          await dispatch(openModal({
+            name: modalNames.LOGIN_CODE_2FA_MODAL,
+          }));
+        } else {
+          dispatch(push(basePath));
+          apiClient.set('session_id', selectSessionId(state));
+        }
+      },
+      dispatch
+    );
+  };
+
+export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        apiClient.set('session_id', selectSessionId(state));
+
+        await dispatch(userEnterAuthKey(data));
+        await dispatch(closeModal(modalNames.LOGIN_CODE_2FA_MODAL));
         dispatch(push(basePath));
       },
       dispatch
@@ -91,11 +114,11 @@ export const handleUserLogout: HandleUserLogout = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const res = await dispatch(userLogout()) as PromiseRes<any>;
+        await dispatch(userLogout());
 
-        if (res.value.response_status.status_code === 0) {
-          urlUtil.openLocation(basePath);
-        }
+        clearCookiesUtil.clear();
+        apiClient.clear();
+        dispatch(push(basePath));
       },
       dispatch
     );
@@ -115,23 +138,9 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(userConfirmAuthKey({confirm: 'Y'}));
+        await dispatch(userConfirmAuthKey({ confirm: 'Y' }));
         await dispatch(closeModal(modalNames.REGISTER_2FA_MODAL));
         await dispatch(handleUserLogout());
-      },
-      dispatch
-    );
-  };
-
-export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const res = await dispatch(userEnterAuthKey(data)) as PromiseRes<any>;
-
-        apiClient.set('session_id', res.value.session_id);
-
-        dispatch(push(basePath));
       },
       dispatch
     );

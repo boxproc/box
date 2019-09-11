@@ -14,23 +14,28 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
   exact,
   ...rest
-}) =>  (
-  <Route
-    {...rest}
-    exact={exact}
-    render={props => {
-      return (
-        cookiesUtil.get(cookiesNames.SESSION_ID) && !cookiesUtil.get(cookiesNames.AUTH_PENDING)
-          ? <Component {...props} />
-          : <Redirect
-            to={{
-              pathname: `${basePath}login`,
-              state: { from: props.location },
-            }}
-          />
-      );
-    }}
-  />
-);
+}) => {
+  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
+    && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
+
+  return (
+    <Route
+      {...rest}
+      exact={exact}
+      render={props => {
+        return (
+          isLoggedIn
+            ? <Component {...props} />
+            : <Redirect
+              to={{
+                pathname: `${basePath}login`,
+                state: { from: props.location },
+              }}
+            />
+        );
+      }}
+    />
+  );
+};
 
 export default PrivateRoute;

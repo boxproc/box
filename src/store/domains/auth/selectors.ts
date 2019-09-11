@@ -4,6 +4,8 @@ import { statusTypes } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
+export const selectSessionId = (state: StoreState) => state.auth.sessionId;
+
 export const selectUserFirstName = (state: StoreState) => state.auth.firstName;
 
 export const selectUserLastName = (state: StoreState) => state.auth.lastName;

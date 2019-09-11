@@ -42,6 +42,7 @@ export interface AuthStepTwoResponsePrepared {
 }
 
 export interface AuthState {
+  sessionId: string;
   firstName: string;
   lastName: string;
   lastActivity: string;

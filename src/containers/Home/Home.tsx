@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Flex } from '@rebass/grid';
+
 import styled from 'theme';
 
 import { Button } from 'components/Buttons';
@@ -13,7 +15,10 @@ import { cookiesUtil } from 'utils';
 
 interface HomeProps {
   lastActivity: string;
+  is2faRegistrationPending: boolean;
   openModal: OpenModal;
+  firstName: string;
+  lastName: string;
 }
 
 const CenterBlock = styled.div`
@@ -26,6 +31,9 @@ const CenterBlock = styled.div`
 
 const Home: React.FC<HomeProps> = ({
   lastActivity,
+  is2faRegistrationPending,
+  firstName,
+  lastName,
   openModal,
 }) => {
   React.useEffect(
@@ -33,10 +41,15 @@ const Home: React.FC<HomeProps> = ({
       if (lastActivity) {
         sessionStorage.setItem(sessionStorageNames.LAST_ACTIVITY, lastActivity);
       }
+      if (is2faRegistrationPending) {
+        cookiesUtil.set(cookiesNames.AUTH_REGISTRATION_PENDING, 'Y');
+      }
       return () => sessionStorage.removeItem(sessionStorageNames.LAST_ACTIVITY);
     },
-    [lastActivity]
+    [lastActivity, is2faRegistrationPending]
   );
+
+  const fullName = `${firstName} ${lastName}`;
 
   return (
     <React.Fragment>
@@ -47,24 +60,32 @@ const Home: React.FC<HomeProps> = ({
               bold={true}
               size={15}
             >
-              Welcome, {cookiesUtil.get(cookiesNames.FULL_NAME)}!
+              Welcome, {cookiesUtil.get(cookiesNames.FULL_NAME) || fullName}!
             </Paragraph>
             <SmallText>
               Datetime of your last
-            activity: {sessionStorage.getItem(sessionStorageNames.LAST_ACTIVITY)}
+              activity: {lastActivity}
             </SmallText>
           </React.Fragment>
         )}
-        {cookiesUtil.get(cookiesNames.AUTH_REGISTRATION_PENDING) && (
+        {(cookiesUtil.get(cookiesNames.AUTH_REGISTRATION_PENDING) || is2faRegistrationPending) && (
           <React.Fragment>
-            <Paragraph>Please, enable two-factor authentication</Paragraph>
-            <Button
-              text="Turn on"
-              iconName="smartphone"
-              onClick={() => openModal({
-                name: modalNames.REGISTER_2FA_MODAL,
-              })}
-            />
+            <Paragraph>
+              Complete registration in <b>BOX UI</b> by enabling second authentication.
+            </Paragraph>
+            <Flex
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button
+                text="Enable second factor authentication"
+                bordered={true}
+                iconName="smartphone"
+                onClick={() => openModal({
+                  name: modalNames.REGISTER_2FA_MODAL,
+                })}
+              />
+            </Flex>
           </React.Fragment>
         )}
       </CenterBlock>

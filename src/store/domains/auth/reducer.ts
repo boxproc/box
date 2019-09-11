@@ -8,6 +8,7 @@ import { AuthState } from './types';
 import { cookiesUtil } from 'utils';
 
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
+  sessionId: null,
   firstName: null,
   lastName: null,
   lastActivity: null,
@@ -20,13 +21,17 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
-      if (action.payload.status === statusTypes.ACTIVE) {
-        cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y', {
-          expires: cookiesExpires.MINUTE,
-        });
-      }
-      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
+      action.payload.status === statusTypes.ACTIVE
+        ? cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y', {
+          expires: cookiesExpires.SESSION_ID,
+        })
+        : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+      // for demo
+      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id, {
+      //   expires: cookiesExpires.SESSION_ID,
+      // });
       return state
+        .set('sessionId', action.payload.session_id)
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
@@ -36,10 +41,19 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
       cookiesUtil.remove(cookiesNames.AUTH_PENDING);
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
       return state
+        .set('sessionId', action.payload.session_id)
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
         .set('status', action.payload.status);
+
+    case ActionTypeKeys.USER_LOGOUT_FULFILLED:
+      return state
+        .set('sessionId', null)
+        .set('firstName', null)
+        .set('lastName', null)
+        .set('lastActivity', null)
+        .set('status', null);
 
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state
@@ -48,11 +62,10 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('currentRegisterStep', 2);
 
     case ActionTypeKeys.SET_USER_CURRENT_REGISTER_STEP:
-      const step = action.payload;
       return state
-        .set('dataUrl', null)
         .set('code', null)
-        .set('currentRegisterStep', step);
+        .set('dataUrl', null)
+        .set('currentRegisterStep', action.payload);
 
     default: return state;
   }

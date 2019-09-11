@@ -8,7 +8,6 @@ import { Label as DefaultLabel } from '../Text';
 
 interface CheckboxWrapperProp {
   disabled?: boolean;
-  reverse?: boolean;
 }
 
 const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
@@ -25,15 +24,6 @@ const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
     background-color: ${theme.whiteColor};
     opacity: 0.5;
   `};
-
-  ${({ reverse }) => reverse && `
-    flex-direction: row-reverse;
-
-    .label {
-      padding-left: 0;
-      padding-right: 7px;
-    }
-  `}
 `;
 
 const CheckboxFieldWrapper = styled.div`
@@ -88,7 +78,6 @@ interface CheckboxFieldProps extends BaseFieldProps, WrappedFieldProps {
   label: string | React.FC;
   id?: string;
   disabled?: boolean;
-  reverse?: boolean;
 }
 
 export const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
@@ -96,7 +85,6 @@ export const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = (
   label,
   disabled,
   id = 'option',
-  reverse = false,
   ...props
 }) => {
   const Label = label;
@@ -109,7 +97,6 @@ export const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = (
     <CheckboxWrapper
       className="input-field checkbox-field"
       disabled={disabled}
-      reverse={reverse}
     >
       <Checkbox
         {...props}

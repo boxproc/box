@@ -132,5 +132,5 @@ const Header: React.FC<HeaderProps> = ({
 
 export default withSpinner({
   isFixed: true,
-  maxHeight: '70px',
+  // maxHeight: '70px',
 })(Header);

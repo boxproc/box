@@ -18,7 +18,7 @@ const PasswordInputWrapper = styled.div`
   .icon-wrapper {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 10px;
     cursor: pointer;
     user-select:none;
     font-size: 0;

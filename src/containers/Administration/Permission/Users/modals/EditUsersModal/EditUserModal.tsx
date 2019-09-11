@@ -38,7 +38,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       <DefineUsersForm
         onCancel={() => closeModal(modalName)}
         defineAdminUser={updateAdminUser}
-        isDisabledUsername={true}
+        isEditable={true}
         initialValues={selectUserItems}
         isDirty={isFormDirty}
       />

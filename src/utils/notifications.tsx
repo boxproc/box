@@ -16,9 +16,7 @@ const getNotification = (
 export const handleSendNotification: SendNotification =
   (res, isCatch = false) =>
     async dispatch => {
-      if (!isCatch) {
-        console.log('---isCatch', isCatch);
-      } else {
+      if (isCatch) {
         console.log('---res', res);
         if (res && res.statusCode === 500) {
 

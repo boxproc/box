@@ -37,4 +37,8 @@ export const GlobalStyles = createGlobalStyle`
   button::-moz-focus-inner {
     border: 0;
   }
+
+  b {
+    font-weight: 500;
+  }
 `;

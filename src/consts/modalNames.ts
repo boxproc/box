@@ -10,6 +10,7 @@ export enum modalNames {
   CONFIRMATION_MODAL = 'ConfirmationModal',
 
   REGISTER_2FA_MODAL = 'Register2faModal',
+  LOGIN_CODE_2FA_MODAL = 'LoginCode2faModal',
 
   // Product Designer
   ADD_PRODUCT = 'AddProductModal',

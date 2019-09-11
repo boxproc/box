@@ -79,6 +79,10 @@ export class ApiClient implements IApiClient {
     this.defaults[key] = value;
   }
 
+  clear(): void {
+    this.defaults = {};
+  }
+
   private _adjustPath = (path: string): string =>
     path[0] !== '/' ? '/' + path : path
 

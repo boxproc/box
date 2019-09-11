@@ -29,7 +29,6 @@ export const User: React.FC<UserFilterProps> = ({
   filterUsers,
   setAdminUserId,
 }) => {
-
   return (
     <TablePage
       title="Users"

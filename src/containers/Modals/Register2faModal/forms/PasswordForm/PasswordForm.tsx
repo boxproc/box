@@ -38,14 +38,11 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
           name="password"
           placeholder="Enter Password"
           component={PasswordField}
-          label="Password"
           disabled={false}
           validate={[formErrorUtil.required]}
         />
         <Flex justifyContent="flex-end">
-          <Button
-            text="Next"
-          />
+          <Button text="Next" />
         </Flex>
       </form>
     </React.Fragment>

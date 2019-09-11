@@ -1,18 +1,11 @@
 import * as api from './api';
 
-import { cookiesNames } from 'consts';
-
-import {
-  ActionTypeKeys,
-  GetUiItemsAction,
-} from './actionTypes';
+import { ActionTypeKeys, GetUiItemsAction } from './actionTypes';
 import { selectIsUiItems } from './selectors';
-
-import { apiClient } from 'services';
 
 import { VoidPromiseThunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type GetUiItems = () => GetUiItemsAction;
 export type HandleGetUiItems = VoidPromiseThunk;
@@ -27,9 +20,6 @@ export const handleGetUiItems: HandleGetUiItems = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-
-        apiClient.set('session_id', sessionId);
 
         if (!selectIsUiItems(state)) {
           await dispatch(getUiItems());

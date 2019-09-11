@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
 import { Hr } from 'components/Delimiter';
-import { InputField, PasswordField, SelectField } from 'components/Form';
+import { CheckboxField, InputField, PasswordField, SelectField } from 'components/Form';
 
 import {
   formNames,
@@ -19,7 +19,7 @@ import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
   defineAdminUser: HandleAddAdminUser | HandleUpdateAdminUser;
-  isDisabledUsername?: boolean;
+  isEditable?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
   isDirty: boolean;
@@ -31,7 +31,7 @@ type DefineUserFormAllProps = DefineUserFormProps &
 const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   handleSubmit,
   defineAdminUser,
-  isDisabledUsername,
+  isEditable,
   isDisabledType,
   onCancel,
   isDirty,
@@ -46,6 +46,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
       <Box mx="-10px" >
         <Flex
           flexWrap="wrap"
+          alignItems="flex-end"
         >
           <Box width={[1 / 3]} p="10px">
             <Field
@@ -77,11 +78,11 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
-              disabled={isDisabledUsername}
+              disabled={isEditable}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="email"
               name="email"
@@ -92,21 +93,31 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.email]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          {isEditable && (
+            <Box width={[1 / 3]} p="10px">
+              <Field
+                id="status"
+                name="status"
+                component={SelectField}
+                label="Status"
+                placeholder="Select Cycles Editor Status"
+                options={statusTypesOptions}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+          )}
+          <Box width={[1 / 3]} p="10px" pb="20px">
             <Field
-              id="status"
-              name="status"
-              component={SelectField}
-              label="Status"
-              placeholder="Select Cycles Editor Status"
-              options={statusTypesOptions}
-              validate={[formErrorUtil.required]}
+              id="requires2faFlag"
+              name="requires2faFlag"
+              component={CheckboxField}
+              label="2FA Required"
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="passwordHash"
-              name="passwordHash"
+              id="password"
+              name="password"
               placeholder="Enter Password"
               component={PasswordField}
               label="User Password"
@@ -116,8 +127,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           </Box>
           <Box width={[1 / 2]} p="10px">
             <Field
-              id="passwordHashRepeat"
-              name="passwordHashRepeat"
+              id="passwordRepeat"
+              name="passwordRepeat"
               placeholder="Repeat Password"
               component={PasswordField}
               label="Repeat Password"
