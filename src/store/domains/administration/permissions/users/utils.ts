@@ -1,4 +1,4 @@
-import { statusTypes, statusTypesOptions, yesNoTypes } from 'consts';
+import { statusTypes, statusTypes2faOptions, yesNoTypes } from 'consts';
 import {
   AdminUserItem,
   AdminUserItemDetails,
@@ -37,7 +37,7 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     firstName: values.first_name,
     lastName: values.last_name,
     email: values.email,
-    status: statusTypesOptions.find(el => el.value === values.status).label,
+    status: statusTypes2faOptions.find(el => el.value === values.status).label,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
     requires2faFlag: values.requires_2fa_flag === yesNoTypes.YES,

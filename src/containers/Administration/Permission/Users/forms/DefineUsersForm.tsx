@@ -9,6 +9,7 @@ import { CheckboxField, InputField, PasswordField, SelectField } from 'component
 
 import {
   formNames,
+  statusTypes2faOptions,
   statusTypesOptions,
   typeOfCyclesEditorOptions,
 } from 'consts';
@@ -23,6 +24,7 @@ interface DefineUserFormProps {
   isDisabledType?: boolean;
   onCancel?: () => void;
   isDirty: boolean;
+  requires2faFlagValue?: boolean;
 }
 
 type DefineUserFormAllProps = DefineUserFormProps &
@@ -35,6 +37,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   isDisabledType,
   onCancel,
   isDirty,
+  requires2faFlagValue,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminUser(data)),
@@ -101,7 +104,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                 component={SelectField}
                 label="Status"
                 placeholder="Select Cycles Editor Status"
-                options={statusTypesOptions}
+                options={requires2faFlagValue ? statusTypes2faOptions : statusTypesOptions}
                 validate={[formErrorUtil.required]}
               />
             </Box>

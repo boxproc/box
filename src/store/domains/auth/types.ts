@@ -27,6 +27,7 @@ export interface AuthResponse {
   last_name: string;
   last_activity: string;
   status: string;
+  requires_2fa_flag: string;
 }
 
 export interface AuthStepTwoResponse {
@@ -50,4 +51,5 @@ export interface AuthState {
   currentRegisterStep: number;
   code: string;
   dataUrl: string;
+  requires2faFlag: string;
 }

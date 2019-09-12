@@ -20,7 +20,7 @@ import { prepareAuthValues } from './utils';
 import { apiClient } from 'services';
 
 import { Thunk, VoidThunk } from 'types';
-import { clearCookiesUtil, errorDecoratorUtil } from 'utils';
+import { clearCookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -87,8 +87,8 @@ export const handleUserLogin: HandleUserLogin = (data) =>
             name: modalNames.LOGIN_CODE_2FA_MODAL,
           }));
         } else {
-          dispatch(push(basePath));
           apiClient.set('session_id', selectSessionId(state));
+          dispatch(push(basePath));
         }
       },
       dispatch
@@ -118,7 +118,7 @@ export const handleUserLogout: HandleUserLogout = () =>
 
         clearCookiesUtil.clear();
         apiClient.clear();
-        dispatch(push(basePath));
+        urlUtil.openLocation(basePath);
       },
       dispatch
     );

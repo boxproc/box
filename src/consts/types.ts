@@ -34,13 +34,15 @@ export const statusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },
   { value: 'D', label: 'Deleted' },
+];
+
+export const statusTypes2faOptions = [
+  ...statusTypesOptions,
   { value: 'F', label: '2FA registration pending' },
 ];
 
 export const schedulerStatusTypesOptions = [
-  { value: 'A', label: 'Active' },
-  { value: 'I', label: 'Inactive' },
-  { value: 'D', label: 'Deleted' },
+  ...statusTypesOptions,
   { value: 'E', label: 'Execution pending' },
 ];
 

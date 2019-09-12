@@ -12,6 +12,7 @@ export const AuthResponseFullData: AuthResponse = {
   last_name: 'Doe',
   last_activity: '01/09/2019 13:27:38',
   status: 'F',
+  requires_2fa_flag: 'Y',
 };
 
 export const AuthSecretKeyData: AuthStepTwoResponse = {

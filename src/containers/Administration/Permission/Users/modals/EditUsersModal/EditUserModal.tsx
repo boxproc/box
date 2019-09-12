@@ -17,6 +17,7 @@ interface EditUserModalProps {
   updateAdminUser: HandleUpdateAdminUser;
   selectUserItems: Partial<AdminUserItemDetails>;
   isFormDirty: boolean;
+  requires2faFlagValue: boolean;
 }
 
 const modalName = modalNames.EDIT_ADMIN_USER;
@@ -26,6 +27,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   updateAdminUser,
   selectUserItems,
   isFormDirty,
+  requires2faFlagValue,
 }) => {
   return (
     <Modal
@@ -41,6 +43,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
         isEditable={true}
         initialValues={selectUserItems}
         isDirty={isFormDirty}
+        requires2faFlagValue={requires2faFlagValue}
       />
     </Modal>
   );
