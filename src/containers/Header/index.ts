@@ -12,6 +12,7 @@ import {
   handleGetUiItems,
   handleUserLogout,
   selectInstitutions,
+  selectIsLogout,
   selectUiItems,
   selectUserFirstName,
   selectUserLastName,
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   institutions: selectInstitutions(state),
   firstName: selectUserFirstName(state),
   lastName: selectUserLastName(state),
+  isLogout: selectIsLogout(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

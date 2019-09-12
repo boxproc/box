@@ -20,7 +20,7 @@ import Login from 'containers/Login';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
-import { cookiesUtil, urlUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -37,19 +37,9 @@ const PagesWrapper = styled(Container)`
 
 interface RootProps {
   visibleUiItems: Array<string>;
-  isLogout: boolean;
 }
 
-const Root: React.FC<RootProps> = ({ visibleUiItems, isLogout }) => {
-  React.useEffect(
-    () => {
-      if (isLogout) {
-        urlUtil.openLocation(basePath);
-      }
-    },
-    [isLogout]
-  );
-
+const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
   const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
     && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
 

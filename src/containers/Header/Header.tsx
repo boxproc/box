@@ -47,6 +47,7 @@ interface HeaderProps extends RouteComponentProps {
   institutions: Array<InstitutionItem>;
   firstName: string;
   lastName: string;
+  isLogout: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -60,13 +61,16 @@ const Header: React.FC<HeaderProps> = ({
   match,
   lastName,
   firstName,
+  isLogout,
 }) => {
   React.useEffect(
     () => {
-      getUiItems();
-      getInstitutions();
+      if (!isLogout) {
+        getUiItems();
+        getInstitutions();
+      }
     },
-    [getUiItems, getInstitutions]
+    [getUiItems, getInstitutions, isLogout]
   );
   React.useEffect(
     () => {

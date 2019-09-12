@@ -118,6 +118,8 @@ export const handleUserLogout: HandleUserLogout = () =>
 
         clearCookiesUtil.clear();
         apiClient.clear();
+        // urlUtil.openLocation(basePath);
+        dispatch(push(basePath));
       },
       dispatch
     );
