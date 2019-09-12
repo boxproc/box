@@ -20,7 +20,7 @@ import { prepareAuthValues } from './utils';
 import { apiClient } from 'services';
 
 import { Thunk, VoidThunk } from 'types';
-import { clearCookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil, urlUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -116,10 +116,9 @@ export const handleUserLogout: HandleUserLogout = () =>
       async () => {
         await dispatch(userLogout());
 
-        clearCookiesUtil.clear();
         apiClient.clear();
-        // urlUtil.openLocation(basePath);
-        dispatch(push(basePath));
+        urlUtil.openLocation(basePath);
+        // dispatch(push(basePath));
       },
       dispatch
     );
