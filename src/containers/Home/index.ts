@@ -5,7 +5,6 @@ import Home from './Home';
 
 import {
   openModal,
-  selectIs2faRegistrationPending,
   selectUserFirstName,
   selectUserLastActivity,
   selectUserLastName,
@@ -15,7 +14,6 @@ import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   lastActivity: selectUserLastActivity(state),
-  is2faRegistrationPending: selectIs2faRegistrationPending(state),
   firstName: selectUserFirstName(state),
   lastName: selectUserLastName(state),
 });

@@ -12,15 +12,13 @@ import { Container } from 'components/Container';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
 
-import { basePath, cookiesNames } from 'consts';
+import { basePath, sessionStorageNames } from 'consts';
 
 import Header from 'containers/Header';
 import Home from 'containers/Home';
 import Login from 'containers/Login';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
-
-import { cookiesUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -40,8 +38,7 @@ interface RootProps {
 }
 
 const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
-  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
-    && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
+  const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
 
   return (
     <PerfectScrollbar>

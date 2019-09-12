@@ -10,7 +10,7 @@ import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 import { HelpDropdown, UserDropdown } from './components';
 
-import { basePath, boxInstitutionName, cookiesNames } from 'consts';
+import { basePath, boxInstitutionName, cookiesNames, sessionStorageNames } from 'consts';
 
 import {
   HandleGetInstitutions,
@@ -21,7 +21,6 @@ import {
 } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
-
 import { cookiesUtil } from 'utils';
 
 const Wrapper = styled.header`
@@ -63,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   React.useEffect(
     () => {
-      if (!cookiesUtil.get('isLogout')) {
+      if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
         getUiItems();
         getInstitutions();
       }
@@ -73,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({
   React.useEffect(
     () => {
       if (firstName && lastName) {
-        cookiesUtil.set(cookiesNames.FULL_NAME, `${firstName} ${lastName}`);
+        sessionStorage.setItem(sessionStorageNames.FULL_NAME, `${firstName} ${lastName}`);
       }
     },
     [firstName, lastName]

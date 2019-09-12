@@ -26,3 +26,7 @@ export enum codeKeys {
   ESCAPE = 'Escape',
   BACKSPACE = 'Backspace',
 }
+
+export enum statusCodes {
+  NO_SESSION = 3,
+}

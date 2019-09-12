@@ -1,4 +1,3 @@
-import * as clearCookiesUtil from './clearCookies';
 import * as componentUtil from './component';
 import * as cookiesUtil from './cookies';
 import * as dateUtil from './date';
@@ -13,7 +12,6 @@ import * as urlUtil from './url';
 export {
   componentUtil,
   cookiesUtil,
-  clearCookiesUtil,
   dateUtil,
   errorDecoratorUtil,
   screenCheckUtil,

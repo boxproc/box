@@ -1,8 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-import { basePath, cookiesNames } from 'consts';
-import { cookiesUtil } from 'utils';
+import { basePath, sessionStorageNames } from 'consts';
 
 interface PrivateRouteProps {
   path: string;
@@ -15,8 +14,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   exact,
   ...rest
 }) => {
-  const isLoggedIn = cookiesUtil.get(cookiesNames.SESSION_ID)
-    && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
+  const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
 
   return (
     <Route

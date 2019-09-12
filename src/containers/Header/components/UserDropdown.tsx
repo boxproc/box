@@ -7,18 +7,16 @@ import styled from 'theme';
 
 import { Button } from 'components/Buttons';
 import { Dropdown, Option } from 'components/Dropdown';
-import { cookiesNames } from 'consts';
+import { sessionStorageNames } from 'consts';
 
 import { HandleUserLogout } from 'store/domains';
 
-import { cookiesUtil } from 'utils';
-
 const UserIcon = styled(User)`
+  margin-right: 5px;
   color: ${({ theme }) => theme.grayColor};
 `;
 
 const TextWrapper = styled.div`
-  margin-left: 5px;
   font-size: 12px;
   font-weight: 500;
   color: ${({ theme }) => theme.darkGrayColor};
@@ -29,9 +27,7 @@ const TextWrapper = styled.div`
 const UserBlock = () => (
   <Flex alignItems="baseline">
     <UserIcon size="12" />
-    {cookiesUtil.get(cookiesNames.FULL_NAME) && (
-      <TextWrapper>{cookiesUtil.get(cookiesNames.FULL_NAME)}</TextWrapper>
-    )}
+    <TextWrapper>{sessionStorage.getItem(sessionStorageNames.FULL_NAME)}</TextWrapper>
   </Flex>
 );
 
@@ -39,10 +35,7 @@ interface UserDropdownProps {
   userLogout: HandleUserLogout;
 }
 
-const UserDropdown: React.FC<UserDropdownProps> = ({
-  userLogout,
-}) => {
-
+const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout }) => {
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]

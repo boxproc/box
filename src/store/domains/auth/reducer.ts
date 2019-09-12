@@ -1,11 +1,7 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { cookiesExpires, cookiesNames, statusTypes, yesNoTypes } from 'consts';
-
 import { ActionTypeKeys, AuthActionTypes } from './actionTypes';
 import { AuthState } from './types';
-
-import { cookiesUtil } from 'utils';
 
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
   sessionId: null,
@@ -22,17 +18,6 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
-      action.payload.status === statusTypes.ACTIVE
-        && action.payload.requires_2fa_flag === yesNoTypes.YES
-        ? cookiesUtil.set(cookiesNames.AUTH_PENDING, 'Y', {
-          expires: cookiesExpires.SESSION_ID,
-        })
-        : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
-      cookiesUtil.remove('isLogout');
-      // for demo
-      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id, {
-      //   expires: cookiesExpires.SESSION_ID,
-      // });
       return state
         .set('sessionId', action.payload.session_id)
         .set('firstName', action.payload.first_name)
@@ -42,9 +27,6 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('requires2faFlag', action.payload.requires_2fa_flag);
 
     case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
-      cookiesUtil.remove(cookiesNames.AUTH_PENDING);
-      cookiesUtil.remove('isLogout');
-      // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
       return state
         .set('sessionId', action.payload.session_id)
         .set('firstName', action.payload.first_name)
@@ -53,9 +35,6 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('status', action.payload.status);
 
     case ActionTypeKeys.USER_LOGOUT_FULFILLED:
-      cookiesUtil.set('isLogout', 'Y', {
-        expires: 60,
-      });
       return state
         .set('sessionId', null)
         .set('firstName', null)

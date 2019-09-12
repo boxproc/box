@@ -7,10 +7,11 @@ import { SendNotification } from 'types';
 const getNotification = (
   title: string,
   message: string,
-  details?: string
+  details?: string,
+  statusCode?: number
 ) => openModal({
   name: modalNames.MESSAGE_MODAL,
-  payload: { title, message, details },
+  payload: { title, message, details, statusCode },
 });
 
 export const handleSendNotification: SendNotification =
@@ -21,11 +22,12 @@ export const handleSendNotification: SendNotification =
         if (res && res.statusCode === 500) {
 
           if (res.body && res.body.response_status) {
-            const { error_message, error_description } = res.body.response_status;
+            const { error_message, error_description, status_code } = res.body.response_status;
             dispatch(getNotification(
               `${res.statusCode} Internal Server Error`,
               error_message,
-              JSON.stringify(error_description)
+              JSON.stringify(error_description),
+              status_code
             ));
           } else {
             dispatch(getNotification(
@@ -35,12 +37,13 @@ export const handleSendNotification: SendNotification =
             ));
           }
         } else if (res && res.body && res.body.response_status) {
-          const { error_message, error_description } = res.body.response_status;
+          const { error_message, error_description, status_code } = res.body.response_status;
 
           dispatch(getNotification(
             `${res.statusCode} Error`,
             error_message,
-            error_description
+            error_description,
+            status_code
           ));
         } else {
           dispatch(getNotification(

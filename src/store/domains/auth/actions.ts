@@ -13,14 +13,29 @@ import {
   UserLogoutAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectIs2faAuthenticationPending, selectSessionId } from './selectors';
-import { AuthCode, AuthConfirm, AuthPassword, AuthRequest, PreparedAuthRequest } from './types';
-import { prepareAuthValues } from './utils';
-
-import { apiClient } from 'services';
+import {
+  selectIs2faAuthenticationPending,
+  selectIs2faRegistrationPending,
+  selectSessionId,
+} from './selectors';
+import {
+  AuthCode,
+  AuthConfirm,
+  AuthPassword,
+  AuthRequest,
+  PreparedAuthRequest,
+} from './types';
+import {
+  clearStorage,
+  prepareAuthValues,
+  setAuthPendingStatusToStorage,
+  setLoginStatusToStorage,
+  setRegistrationPendingStatusToStorage,
+  // setSessionIdToStorage,
+} from './utils';
 
 import { Thunk, VoidThunk } from 'types';
-import { clearCookiesUtil, errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -82,13 +97,20 @@ export const handleUserLogin: HandleUserLogin = (data) =>
 
         const state = getState();
 
+        // setSessionIdToStorage(selectSessionId(state)); // for demo
+
         if (selectIs2faAuthenticationPending(state)) {
+          setAuthPendingStatusToStorage();
           await dispatch(openModal({
             name: modalNames.LOGIN_CODE_2FA_MODAL,
           }));
         } else {
-          apiClient.set('session_id', selectSessionId(state));
+          setLoginStatusToStorage(selectSessionId(state));
           dispatch(push(basePath));
+
+          if (selectIs2faRegistrationPending(state)) {
+            setRegistrationPendingStatusToStorage();
+          }
         }
       },
       dispatch
@@ -100,7 +122,9 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        apiClient.set('session_id', selectSessionId(state));
+
+        // setSessionIdToStorage(selectSessionId(state)); // for demo
+        setLoginStatusToStorage(selectSessionId(state));
 
         await dispatch(userEnterAuthKey(data));
         await dispatch(closeModal(modalNames.LOGIN_CODE_2FA_MODAL));
@@ -116,8 +140,7 @@ export const handleUserLogout: HandleUserLogout = () =>
       async () => {
         await dispatch(userLogout());
 
-        clearCookiesUtil.clear();
-        apiClient.clear();
+        clearStorage();
         dispatch(push(basePath));
       },
       dispatch

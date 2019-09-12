@@ -3,7 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { handleSendNotification } from './notifications';
 
-import { cookiesNames } from 'consts';
+import { cookiesNames, sessionStorageNames } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -12,7 +12,7 @@ import { apiClient } from 'services';
 import { cookiesUtil } from 'utils';
 
 const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-const isLoggedIn = sessionId && !cookiesUtil.get(cookiesNames.AUTH_PENDING);
+const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
 
 export const withErrorHandler = async (
   fn: () => Promise<any>,
@@ -20,7 +20,7 @@ export const withErrorHandler = async (
   returnReject: boolean = false
 ) => {
   try {
-    if (isLoggedIn) {
+    if (isLoggedIn && sessionId) {
       apiClient.set('session_id', sessionId);
     }
 
