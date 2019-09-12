@@ -17,7 +17,6 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
   code: null,
   dataUrl: null,
   requires2faFlag: null,
-  isLogout: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
@@ -29,6 +28,7 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
           expires: cookiesExpires.SESSION_ID,
         })
         : cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+      cookiesUtil.remove('isLogout');
       // for demo
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id, {
       //   expires: cookiesExpires.SESSION_ID,
@@ -39,28 +39,29 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
         .set('status', action.payload.status)
-        .set('requires2faFlag', action.payload.requires_2fa_flag)
-        .set('isLogout', false);
+        .set('requires2faFlag', action.payload.requires_2fa_flag);
 
     case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
       cookiesUtil.remove(cookiesNames.AUTH_PENDING);
+      cookiesUtil.remove('isLogout');
       // cookiesUtil.set(cookiesNames.SESSION_ID, action.payload.session_id); // for demo
       return state
         .set('sessionId', action.payload.session_id)
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
-        .set('status', action.payload.status)
-        .set('isLogout', false);
+        .set('status', action.payload.status);
 
     case ActionTypeKeys.USER_LOGOUT_FULFILLED:
+      cookiesUtil.set('isLogout', 'Y', {
+        expires: 60,
+      });
       return state
         .set('sessionId', null)
         .set('firstName', null)
         .set('lastName', null)
         .set('lastActivity', null)
-        .set('status', null)
-        .set('isLogout', true);
+        .set('status', null);
 
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state
