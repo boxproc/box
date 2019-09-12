@@ -9,6 +9,8 @@ import { Paragraph } from 'components/Text';
 
 import { basePath, modalNames, statusCodes } from 'consts';
 
+import { apiClient } from 'services';
+
 import { CloseModal, PayloadMessageModal } from 'store/domains';
 
 interface MessageModalProps extends RouteComponentProps {
@@ -33,6 +35,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       if (statusCode === statusCodes.NO_SESSION) {
         sessionStorage.clear();
         history.push(basePath);
+        apiClient.clear();
       }
     },
     [closeModal, statusCode, history]
