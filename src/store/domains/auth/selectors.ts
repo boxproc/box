@@ -16,6 +16,8 @@ export const selectAuthStatus = (state: StoreState) => state.auth.status;
 
 export const selectAuthRequires2faFlag = (state: StoreState) => state.auth.requires2faFlag;
 
+export const selectIsLogout = (state: StoreState) => state.auth.isLogout;
+
 export const selectIs2faRegistrationPending = createSelector(
   selectAuthStatus,
   status => status === statusTypes.REGISTRATION_PENDING

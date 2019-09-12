@@ -5,7 +5,7 @@ import { cookiesExpires, cookiesNames, statusTypes, yesNoTypes } from 'consts';
 import { ActionTypeKeys, AuthActionTypes } from './actionTypes';
 import { AuthState } from './types';
 
-import { clearCookiesUtil, cookiesUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 export const authInitialState: ImmutableObject<AuthState> = Immutable({
   sessionId: null,
@@ -17,6 +17,7 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
   code: null,
   dataUrl: null,
   requires2faFlag: null,
+  isLogout: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
@@ -38,7 +39,8 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
         .set('status', action.payload.status)
-        .set('requires2faFlag', action.payload.requires_2fa_flag);
+        .set('requires2faFlag', action.payload.requires_2fa_flag)
+        .set('isLogout', false);
 
     case ActionTypeKeys.USER_ENTER_AUTH_KEY_FULFILLED:
       cookiesUtil.remove(cookiesNames.AUTH_PENDING);
@@ -48,16 +50,17 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('firstName', action.payload.first_name)
         .set('lastName', action.payload.last_name)
         .set('lastActivity', action.payload.last_activity)
-        .set('status', action.payload.status);
+        .set('status', action.payload.status)
+        .set('isLogout', false);
 
     case ActionTypeKeys.USER_LOGOUT_FULFILLED:
-      clearCookiesUtil.clear();
       return state
         .set('sessionId', null)
         .set('firstName', null)
         .set('lastName', null)
         .set('lastActivity', null)
-        .set('status', null);
+        .set('status', null)
+        .set('isLogout', true);
 
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state

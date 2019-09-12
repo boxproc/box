@@ -52,4 +52,5 @@ export interface AuthState {
   code: string;
   dataUrl: string;
   requires2faFlag: string;
+  isLogout: boolean;
 }
