@@ -20,7 +20,7 @@ import { prepareAuthValues } from './utils';
 import { apiClient } from 'services';
 
 import { Thunk, VoidThunk } from 'types';
-import { clearCookiesUtil, errorDecoratorUtil, urlUtil } from 'utils';
+import { clearCookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -118,7 +118,6 @@ export const handleUserLogout: HandleUserLogout = () =>
 
         clearCookiesUtil.clear();
         apiClient.clear();
-        urlUtil.openLocation(basePath);
       },
       dispatch
     );

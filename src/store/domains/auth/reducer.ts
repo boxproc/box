@@ -17,6 +17,7 @@ export const authInitialState: ImmutableObject<AuthState> = Immutable({
   code: null,
   dataUrl: null,
   requires2faFlag: null,
+  isLogout: null,
 });
 
 const authReducer = (state = authInitialState, action: AuthActionTypes) => {
@@ -56,7 +57,8 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('firstName', null)
         .set('lastName', null)
         .set('lastActivity', null)
-        .set('status', null);
+        .set('status', null)
+        .set('isLogout', true);
 
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state
