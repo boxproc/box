@@ -31,7 +31,7 @@ import {
   setAuthPendingStatusToStorage,
   setLoginStatusToStorage,
   setRegistrationPendingStatusToStorage,
-  setSessionIdToStorage,
+  // setSessionIdToStorage,
 } from './utils';
 
 import { Thunk, VoidThunk } from 'types';
