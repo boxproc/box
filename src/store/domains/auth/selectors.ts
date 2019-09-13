@@ -10,6 +10,8 @@ export const selectUserFirstName = (state: StoreState) => state.auth.firstName;
 
 export const selectUserLastName = (state: StoreState) => state.auth.lastName;
 
+export const selectUserName = (state: StoreState) => state.auth.username;
+
 export const selectUserLastActivity = (state: StoreState) => state.auth.lastActivity;
 
 export const selectAuthStatus = (state: StoreState) => state.auth.status;

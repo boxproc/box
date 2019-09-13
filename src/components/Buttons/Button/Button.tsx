@@ -9,6 +9,7 @@ import { Plus } from 'styled-icons/boxicons-regular/Plus';
 import { Qrcode } from 'styled-icons/icomoon/Qrcode';
 import { Delete } from 'styled-icons/material/Delete';
 import { Smartphone } from 'styled-icons/material/Smartphone';
+import { User } from 'styled-icons/fa-solid/User';
 
 import styled from 'theme';
 
@@ -89,7 +90,7 @@ interface ButtonProps {
   size?: string;
   disabled?: boolean;
   className?: string;
-  iconName?: 'filter' | 'plus' | 'logOut' | 'delete' | 'help' | 'smartphone' | 'qrcode' | string;
+  iconName?: string;
   type?: 'reset' | 'submit';
   openModal: OpenModal;
   onClick?: () => void;
@@ -107,7 +108,7 @@ const renderIcon = (name: string) => {
     case 'plus':
       return (<Box mt="-2px"><Plus size="18" /></Box>);
     case 'logOut':
-      return (<Box mt="-2px"><LogOut size="16" /></Box>);
+      return (<Box mt="-2px" mr="1px"><LogOut size="16" /></Box>);
     case 'delete':
       return (<Box mt="-2px"><Delete size="18" /></Box>);
     case 'help':
@@ -116,6 +117,8 @@ const renderIcon = (name: string) => {
       return (<Box mt="-1px"><Smartphone size="16" /></Box>);
     case 'qrcode':
       return (<Box mt="-1px" mr="3px"><Qrcode size="14" /></Box>);
+    case 'user':
+      return (<Box mt="-2px" mr="2px"><User size="12" /></Box>);
     default:
       return null;
   }

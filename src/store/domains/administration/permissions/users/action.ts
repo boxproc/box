@@ -9,6 +9,7 @@ import {
   ActionTypeKeys,
   AddAdminUserAction,
   FilterUsersAction,
+  GetAccessUsersAction,
   SetAdminUserIdAction,
   UpdateAdminUserAction,
 } from './actionType';
@@ -37,6 +38,9 @@ export type HandleUpdateAdminUser = (values: Partial<AdminUserItemDetails>) => T
 export type SetAdminUserId = (id: number) => SetAdminUserIdAction;
 export type HandleSetAdminUserId = (id: number) => void;
 
+export type GetAccessUsers = () => GetAccessUsersAction;
+export type HandleGetAccessUsers = () => Thunk<void>;
+
 export const addAdminUser: AddAdminUser = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USER,
   payload: api.addAdminUser(values),
@@ -55,6 +59,11 @@ export const updateAdminUser: UpdateAdminUser = values => ({
 export const setAdminUserId: SetAdminUserId = id => ({
   type: ActionTypeKeys.SET_ADMIN_USER_ID,
   payload: id,
+});
+
+export const getAccessUsers: GetAccessUsers = () => ({
+  type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS,
+  payload: api.getAdminAccessUsers(),
 });
 
 export const handleFilterUsers: HandleFilterUsers = () =>
@@ -104,3 +113,13 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
 
 export const handleSetAdminUserId: HandleSetAdminUserId = id =>
   setAdminUserId(id);
+
+export const handleGetAccessUsers: HandleGetAccessUsers = () =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getAccessUsers());
+      },
+      dispatch
+    );
+  };

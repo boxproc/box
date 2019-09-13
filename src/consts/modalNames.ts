@@ -12,6 +12,8 @@ export enum modalNames {
   REGISTER_2FA_MODAL = 'Register2faModal',
   LOGIN_CODE_2FA_MODAL = 'LoginCode2faModal',
 
+  CHANGE_PROFILE_MODAL = 'ChangeProfileModal',
+
   // Product Designer
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',

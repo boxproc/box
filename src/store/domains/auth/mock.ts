@@ -10,6 +10,7 @@ export const AuthResponseFullData: AuthResponse = {
   session_id: '123',
   first_name: 'John',
   last_name: 'Doe',
+  username: 'admin',
   last_activity: '01/09/2019 13:27:38',
   status: 'F',
   requires_2fa_flag: 'Y',

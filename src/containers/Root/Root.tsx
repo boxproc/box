@@ -11,14 +11,17 @@ import styled from 'theme';
 import { Container } from 'components/Container';
 import { Footer } from 'components/Footer';
 import PrivateRoute from 'components/PrivateRoute';
+import { ExternalSpinnerProps , withSpinner } from 'components/Spinner';
 
-import { basePath, sessionStorageNames } from 'consts';
+import { basePath, cookiesNames, sessionStorageNames } from 'consts';
 
 import Header from 'containers/Header';
 import Home from 'containers/Home';
 import Login from 'containers/Login';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
+
+import { cookiesUtil, storageUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -33,12 +36,21 @@ const PagesWrapper = styled(Container)`
   padding-top: 30px;
 `;
 
-interface RootProps {
+interface RootProps extends ExternalSpinnerProps {
   visibleUiItems: Array<string>;
 }
 
 const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
   const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
+
+  React.useEffect(
+    () => {
+      if (isLoggedIn && !cookiesUtil.get(cookiesNames.SESSION_ID)) {
+        storageUtil.clearStorage();
+      }
+    },
+    [isLoggedIn]
+  );
 
   return (
     <PerfectScrollbar>
@@ -89,4 +101,6 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
   );
 };
 
-export default Root;
+export default withSpinner({
+  isFixed: true,
+})(Root);

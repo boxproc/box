@@ -26,6 +26,8 @@ export interface ModalsState {
   isRegister2faModal: boolean;
   isLoginCode2faModal: boolean;
 
+  isChangeProfileModal: boolean;
+
   isAddProductModal: boolean;
   isEditProductModal: boolean;
 

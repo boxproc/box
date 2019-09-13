@@ -24,6 +24,11 @@ export enum ActionTypeKeys {
   USER_ENTER_AUTH_KEY = 'user/USER_ENTER_AUTH_KEY',
   USER_ENTER_AUTH_KEY_FULFILLED = 'user/USER_ENTER_AUTH_KEY_FULFILLED',
   USER_ENTER_AUTH_KEY_REJECTED = 'user/USER_ENTER_AUTH_KEY_REJECTED',
+
+  CHANGE_ADMIN_PROFILE = 'administration/permissions/users/CHANGE_ADMIN_PROFILE',
+  CHANGE_ADMIN_PROFILE_FULFILLED =
+    'administration/permissions/users/CHANGE_ADMIN_PROFILE_FULFILLED',
+  CHANGE_ADMIN_PROFILE_REJECTED = 'administration/permissions/users/CHANGE_ADMIN_PROFILE_REJECTED',
 }
 
 export interface UserLoginAction {
@@ -105,10 +110,26 @@ export interface UserEnterAuthKeyRejectedAction {
   readonly type: ActionTypeKeys.USER_ENTER_AUTH_KEY_REJECTED;
 }
 
+export interface ChangeAdminProfileAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE;
+}
+
+export interface ChangeAdminProfileFulfilledAction {
+  readonly payload: any;
+  readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE_FULFILLED;
+}
+
+export interface ChangeAdminProfileRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE_REJECTED;
+}
+
 export type AuthActionTypes =
   | UserLoginFulfilledAction
   | UserLogoutFulfilledAction
   | UserGetAuthKeyFulfilledAction
   | SetUserCurrentRegisterStepAction
   | UserConfirmAuthKeyFulfilledAction
-  | UserEnterAuthKeyFulfilledAction;
+  | UserEnterAuthKeyFulfilledAction
+  | ChangeAdminProfileFulfilledAction;

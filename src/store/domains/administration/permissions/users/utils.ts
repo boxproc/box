@@ -23,6 +23,7 @@ export const prepareAdminUserValuesToSend =
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
       requires_2fa_flag: values.requires2faFlag ? yesNoTypes.YES : yesNoTypes.NO,
+      change_profile_allowed_flag: values.changeProfileAllowedFlag ? yesNoTypes.YES : yesNoTypes.NO,
     };
   };
 
@@ -41,6 +42,7 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
     requires2faFlag: values.requires_2fa_flag === yesNoTypes.YES,
+    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypes.YES,
   };
 };
 

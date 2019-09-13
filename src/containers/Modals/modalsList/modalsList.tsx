@@ -3,6 +3,7 @@ import React from 'react';
 import { modalNames } from 'consts';
 
 import MessageModal from 'containers/Modals//MessageModal';
+import ChangeProfileModal from 'containers/Modals/ChangeProfileModal';
 import ConfirmationModal from 'containers/Modals/ConfirmationModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
 import LoginCode2faModal from '../LoginCode2faModal';
@@ -26,6 +27,10 @@ export const modalsList = [
   {
     name: modalNames.LOGIN_CODE_2FA_MODAL,
     component: <LoginCode2faModal />,
+  },
+  {
+    name: modalNames.CHANGE_PROFILE_MODAL,
+    component: <ChangeProfileModal />,
   },
   ...administrationModalList,
   ...ledgerModalList,

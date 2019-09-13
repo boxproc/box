@@ -109,12 +109,20 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[1 / 3]} p="10px" pb="20px">
+          <Box width="100%" p="10px">
             <Field
               id="requires2faFlag"
               name="requires2faFlag"
               component={CheckboxField}
               label="2FA Required"
+            />
+          </Box>
+          <Box width="100%" p="10px">
+            <Field
+              id="changeProfileAllowedFlag"
+              name="changeProfileAllowedFlag"
+              component={CheckboxField}
+              label="Change Profile Allowed"
             />
           </Box>
           <Box width={[1 / 2]} p="10px">

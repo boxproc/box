@@ -5,6 +5,7 @@ import { basePath, modalNames } from 'consts';
 import { closeModal, openModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
+  ChangeAdminProfileAction,
   SetUserCurrentRegisterStepAction,
   UserConfirmAuthKeyAction,
   UserEnterAuthKeyAction,
@@ -26,16 +27,15 @@ import {
   PreparedAuthRequest,
 } from './types';
 import {
-  clearStorage,
   prepareAuthValues,
   setAuthPendingStatusToStorage,
   setLoginStatusToStorage,
   setRegistrationPendingStatusToStorage,
-  // setSessionIdToStorage,
+  setSessionIdToStorage,
 } from './utils';
 
 import { Thunk, VoidThunk } from 'types';
-import { errorDecoratorUtil } from 'utils';
+import { errorDecoratorUtil, storageUtil, urlUtil } from 'utils';
 
 export type HandleUserLogin = (data: AuthRequest) => Thunk<void>;
 export type UserLogin = (data: PreparedAuthRequest) => UserLoginAction;
@@ -54,6 +54,9 @@ export type UserConfirmAuthKey = (data: AuthConfirm) => UserConfirmAuthKeyAction
 
 export type HandleUserEnterAuthKey = (data: AuthCode) => Thunk<void>;
 export type UserEnterAuthKey = (data: AuthCode) => UserEnterAuthKeyAction;
+
+export type ChangeAdminProfile = (data: any) => ChangeAdminProfileAction;
+export type HandleChangeAdminProfile = (data: any) => Thunk<void>;
 
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,
@@ -85,6 +88,11 @@ export const userEnterAuthKey: UserEnterAuthKey = code => ({
   payload: api.enterAuthKey(code),
 });
 
+export const changeAdminProfile: ChangeAdminProfile = data => ({
+  type: ActionTypeKeys.CHANGE_ADMIN_PROFILE,
+  payload: api.changeAdminProfile(data),
+});
+
 export const handleSetUserCurrentRegisterStep: HandleSetUserCurrentRegisterStep = step =>
   setUserCurrentRegisterStep(step);
 
@@ -96,8 +104,9 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         await dispatch(userLogin(preparedAuthValues));
 
         const state = getState();
+        const sessionId = selectSessionId(state);
 
-        // setSessionIdToStorage(selectSessionId(state)); // for demo
+        // setSessionIdToStorage(sessionId); // for demo
 
         if (selectIs2faAuthenticationPending(state)) {
           setAuthPendingStatusToStorage();
@@ -105,12 +114,11 @@ export const handleUserLogin: HandleUserLogin = (data) =>
             name: modalNames.LOGIN_CODE_2FA_MODAL,
           }));
         } else {
-          setLoginStatusToStorage(selectSessionId(state));
-          dispatch(push(basePath));
-
           if (selectIs2faRegistrationPending(state)) {
             setRegistrationPendingStatusToStorage();
           }
+          setLoginStatusToStorage(sessionId);
+          dispatch(push(basePath));
         }
       },
       dispatch
@@ -121,12 +129,14 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-
-        // setSessionIdToStorage(selectSessionId(state)); // for demo
-        setLoginStatusToStorage(selectSessionId(state));
-
         await dispatch(userEnterAuthKey(data));
+
+        const state = getState();
+        const sessionId = selectSessionId(state);
+
+        // setSessionIdToStorage(sessionId); // for demo
+        setLoginStatusToStorage(sessionId);
+
         await dispatch(closeModal(modalNames.LOGIN_CODE_2FA_MODAL));
         dispatch(push(basePath));
       },
@@ -140,8 +150,8 @@ export const handleUserLogout: HandleUserLogout = () =>
       async () => {
         await dispatch(userLogout());
 
-        clearStorage();
-        dispatch(push(basePath));
+        storageUtil.clearStorage();
+        urlUtil.openLocation(basePath);
       },
       dispatch
     );
@@ -164,6 +174,29 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
         await dispatch(userConfirmAuthKey({ confirm: 'Y' }));
         await dispatch(closeModal(modalNames.REGISTER_2FA_MODAL));
         await dispatch(handleUserLogout());
+      },
+      dispatch
+    );
+  };
+
+export const handleChangeAdminProfile: HandleChangeAdminProfile = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(changeAdminProfile({user_id: data.username.value}));
+
+        const state = getState();
+        const sessionId = selectSessionId(state);
+
+        // setSessionIdToStorage(sessionId); // for demo
+
+        if (selectIs2faRegistrationPending(state)) {
+          setRegistrationPendingStatusToStorage();
+        }
+        setLoginStatusToStorage(sessionId);
+
+        await dispatch(closeModal(modalNames.CHANGE_PROFILE_MODAL));
+        urlUtil.openLocation(basePath);
       },
       dispatch
     );

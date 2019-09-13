@@ -1,19 +1,16 @@
 import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
-import { RouteComponentProps } from 'react-router';
 
 import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Paragraph } from 'components/Text';
 
-import { basePath, modalNames, statusCodes } from 'consts';
-
-import { apiClient } from 'services';
+import { modalNames } from 'consts';
 
 import { CloseModal, PayloadMessageModal } from 'store/domains';
 
-interface MessageModalProps extends RouteComponentProps {
+interface MessageModalProps {
   payloadMessageModal: PayloadMessageModal;
   closeModal: CloseModal;
 }
@@ -23,22 +20,16 @@ const modalName = modalNames.MESSAGE_MODAL;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
-  history,
 }) => {
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
 
-  const { title, message, details, statusCode } = payloadMessageModal;
+  const { title, message, details } = payloadMessageModal;
 
   const handleClick = React.useCallback(
     () => {
       closeModal(modalName);
-      if (statusCode === statusCodes.NO_SESSION) {
-        sessionStorage.clear();
-        history.push(basePath);
-        apiClient.clear();
-      }
     },
-    [closeModal, statusCode, history]
+    [closeModal]
   );
 
   return (

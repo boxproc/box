@@ -16,6 +16,7 @@ export interface AdminUserItem extends AdminUserPlainInfo {
   datetime_of_last_login: string;
   status: string | number;
   requires_2fa_flag: string;
+  change_profile_allowed_flag: string;
 }
 
 export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
@@ -24,6 +25,7 @@ export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
   passwordEntryCounter: number | string;
   datetimeOfLastLogin: string;
   requires2faFlag: boolean;
+  changeProfileAllowedFlag: boolean;
 }
 
 export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
@@ -50,4 +52,5 @@ export interface AdminUserDataResp extends ResponseStatusType {
 export interface AdminUserState {
   users: ImmutableArray<AdminUserItem>;
   currentUserId: number;
+  adminAccessUsers: ImmutableArray<any>;
 }

@@ -9,7 +9,7 @@ import { StoreState } from 'store/StoreState';
 
 import { apiClient } from 'services';
 
-import { cookiesUtil } from 'utils';
+import { cookiesUtil, storageUtil } from 'utils';
 
 const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
 const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
@@ -28,7 +28,7 @@ export const withErrorHandler = async (
   } catch (e) {
     if (dispatch) {
       if (!isLoggedIn) {
-        apiClient.clear();
+        storageUtil.clearStorage();
       }
       handleSendNotification(e, true)(dispatch);
     }

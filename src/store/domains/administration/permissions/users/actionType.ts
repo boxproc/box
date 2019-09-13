@@ -16,7 +16,13 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_USER_REJECTED = 'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
 
   SET_ADMIN_USER_ID = 'administration/permissions/SET_ADMIN_USER_ID',
-}
+
+  GET_ADMIN_ACCESS_USERS = 'administration/permissions/users/GET_ADMIN_ACCESS_USERS',
+  GET_ADMIN_ACCESS_USERS_FULFILLED =
+    'administration/permissions/users/GET_ADMIN_ACCESS_USERS_FULFILLED',
+  GET_ADMIN_ACCESS_USERS_REJECTED =
+    'administration/permissions/users/GET_ADMIN_ACCESS_USERS_REJECTED',
+  }
 
 export interface AddAdminUserAction {
   readonly payload: Promise<object>;
@@ -42,6 +48,7 @@ export interface FilterUsersFulfilledAction {
   readonly payload: Partial<AdminUserDataResp>;
   readonly type: ActionTypeKeys.FILTER_USERS_FULFILLED;
 }
+
 export interface FilterUsersRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_USERS_REJECTED;
@@ -67,8 +74,24 @@ export interface SetAdminUserIdAction {
   readonly type: ActionTypeKeys.SET_ADMIN_USER_ID;
 }
 
+export interface GetAccessUsersAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS;
+}
+
+export interface GetAccessUsersFulfilledAction {
+  readonly payload: any;
+  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_FULFILLED;
+}
+
+export interface GetAccessUsersRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_REJECTED;
+}
+
 export type AdminUserActionTypes =
   | AddAdminUserFulfilledAction
   | FilterUsersFulfilledAction
   | UpdateAdminUserFulfilledAction
-  | SetAdminUserIdAction;
+  | SetAdminUserIdAction
+  | GetAccessUsersFulfilledAction;

@@ -1,4 +1,4 @@
-import { authPathNames } from 'consts';
+import { adminUserPathNames, authPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -32,3 +32,6 @@ export const userConfirmAuthKey = (data: AuthConfirm) =>
 export const enterAuthKey = (data: AuthCode) =>
   // throttleUtil.getDataAfter(AuthResponseFullData, 500);
   apiClient.post(authPathNames.LOGIN, { data });
+
+export const changeAdminProfile = (data: any) =>
+  apiClient.post(adminUserPathNames.CHANGE_ADMIN_PROFILE, { data });

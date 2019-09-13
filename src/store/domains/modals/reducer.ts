@@ -13,6 +13,8 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isRegister2faModal: false,
   isLoginCode2faModal: false,
 
+  isChangeProfileModal: false,
+
   isAddProductModal: false,
   isEditProductModal: false,
 

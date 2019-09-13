@@ -25,6 +25,7 @@ export interface AuthResponse {
   session_id: string;
   first_name: string;
   last_name: string;
+  username: string;
   last_activity: string;
   status: string;
   requires_2fa_flag: string;
@@ -46,6 +47,7 @@ export interface AuthState {
   sessionId: string;
   firstName: string;
   lastName: string;
+  username: string;
   lastActivity: string;
   status: string;
   currentRegisterStep: number;

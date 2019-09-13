@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { withRouter } from 'react-router-dom';
-
 import MessageModal from './MessageModal';
 
 import {
@@ -23,7 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   dispatch
 );
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessageModal));
+)(MessageModal);

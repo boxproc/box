@@ -32,3 +32,16 @@ export const selectUsersValues = createSelector(
     };
   }
 );
+
+export const selectDefaultAdminAccessUsers = (state: StoreState) =>
+  state.administration.users.adminAccessUsers;
+
+export const selectAdminAccessUsersOptions = createSelector(
+  selectDefaultAdminAccessUsers,
+  users => users && users.asMutable().map(user => {
+    return {
+      value: user.id,
+      label: user.username,
+    };
+  })
+);

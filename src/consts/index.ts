@@ -29,4 +29,6 @@ export enum codeKeys {
 
 export enum statusCodes {
   NO_SESSION = 3,
+  USER_NOT_AUTH = 4,
+  SESSION_TIMEOUT = 5,
 }

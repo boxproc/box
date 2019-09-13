@@ -49,10 +49,12 @@ export enum adminEventsPathNames {
   GET = '/ui/administration/dictionaries/events/get',
 }
 
-export enum adminUserNames {
+export enum adminUserPathNames {
   GET = '/ui/administration/permissions/users/get',
   CREATE = '/ui/administration/permissions/users/create',
   UPDATE = '/ui/administration/permissions/users/update',
+  GET_ADMIN_ACCESS_USERS = '/ui/administration/permissions/administrator/get',
+  CHANGE_ADMIN_PROFILE = '/ui/administration/permissions/administrator/change_profile',
 }
 
 export enum adminUserGroupsPathNames {

@@ -17,6 +17,7 @@ import {
   HandleGetUiItems,
   HandleUserLogout,
   InstitutionItem,
+  OpenModal,
   UiItemPrepared,
 } from 'store/domains';
 
@@ -41,17 +42,20 @@ const Wrapper = styled.header`
 interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
   userLogout: HandleUserLogout;
+  openModal: OpenModal;
   uiItems: Array<UiItemPrepared>;
   getInstitutions: HandleGetInstitutions;
   institutions: Array<InstitutionItem>;
   firstName: string;
   lastName: string;
+  username: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
   getUiItems,
   getInstitutions,
   userLogout,
+  openModal,
   uiItems,
   institutions,
   history,
@@ -59,6 +63,7 @@ const Header: React.FC<HeaderProps> = ({
   match,
   lastName,
   firstName,
+  username,
 }) => {
   React.useEffect(
     () => {
@@ -74,8 +79,11 @@ const Header: React.FC<HeaderProps> = ({
       if (firstName && lastName) {
         sessionStorage.setItem(sessionStorageNames.FULL_NAME, `${firstName} ${lastName}`);
       }
+      if (username) {
+        sessionStorage.setItem(sessionStorageNames.USER_NAME, username);
+      }
     },
-    [firstName, lastName]
+    [firstName, lastName, username]
   );
 
   const institution = institutions.length === 1
@@ -122,6 +130,7 @@ const Header: React.FC<HeaderProps> = ({
               )}
               <UserDropdown
                 userLogout={userLogout}
+                openModal={openModal}
               />
             </Flex>
           </Box>
@@ -133,5 +142,5 @@ const Header: React.FC<HeaderProps> = ({
 
 export default withSpinner({
   isFixed: true,
-  // maxHeight: '70px',
+  maxHeight: '70px',
 })(Header);

@@ -33,11 +33,6 @@ export const setLoginStatusToStorage = (sessionId: string) => {
   sessionStorage.setItem(sessionStorageNames.IS_LOGIN, yesNoTypes.YES);
 };
 
-export const clearStorage = () => {
-  sessionStorage.clear();
-  apiClient.clear();
-};
-
 export const setSessionIdToStorage = (sessionId: string) => {
   cookiesUtil.set(cookiesNames.SESSION_ID, sessionId, {
     expires: 360,

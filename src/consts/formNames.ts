@@ -4,6 +4,7 @@ export enum formNames {
   LOGIN_CODE = 'loginCodeForm',
 
   PASSWORD = 'passwordForm',
+  CHANGE_PROFILE_FORM = 'ChangeProfileForm',
 
   SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',

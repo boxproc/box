@@ -85,7 +85,14 @@ export const tableColumns = [
     Cell: renderCheckBoxIcon(),
   },
   {
-    maxWidth: 200,
+    maxWidth: 100,
+    sortable: true,
+    Header: <Header title="Change Profile Allowed" />,
+    accessor: 'changeProfileAllowedFlag',
+    Cell: renderCheckBoxIcon(),
+  },
+  {
+    maxWidth: 100,
     sortable: true,
     Header: <Header title="Password entry counter" />,
     accessor: 'passwordEntryCounter',
