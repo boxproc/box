@@ -6,9 +6,10 @@ import { Button } from 'components/Buttons';
 import Modal from 'components/Modal';
 import { Paragraph } from 'components/Text';
 
-import { modalNames } from 'consts';
+import { modalNames, statusCodes } from 'consts';
 
 import { CloseModal, PayloadMessageModal } from 'store/domains';
+import { storageUtil } from 'utils';
 
 interface MessageModalProps {
   payloadMessageModal: PayloadMessageModal;
@@ -21,9 +22,22 @@ const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
 }) => {
-  const [isVisibleDetail, setVisibleDetail] = React.useState(false);
+  const { title, message, details, statusCode } = payloadMessageModal;
 
-  const { title, message, details } = payloadMessageModal;
+  React.useEffect(
+    () => {
+      if (
+        statusCode === statusCodes.NO_SESSION
+        || statusCode === statusCodes.USER_NOT_AUTH
+        || statusCode === statusCodes.SESSION_TIMEOUT
+      ) {
+        storageUtil.clear();
+      }
+    },
+    [statusCode]
+  );
+
+  const [isVisibleDetail, setVisibleDetail] = React.useState(false);
 
   const handleClick = React.useCallback(
     () => {
@@ -51,20 +65,20 @@ const MessageModal: React.FC<MessageModalProps> = ({
             onClick={handleClick}
           />
         </Box>
-        {details &&
+        {details && (
           <Box mt="5px" ml="10px">
             <Button
               text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
               onClick={() => setVisibleDetail(!isVisibleDetail)}
             />
           </Box>
-        }
+        )}
       </Flex>
-      {isVisibleDetail &&
+      {isVisibleDetail && (
         <Box mt="15px">
           <Paragraph light={true}>{details}</Paragraph>
         </Box>
-      }
+      )}
     </Modal>
   );
 };

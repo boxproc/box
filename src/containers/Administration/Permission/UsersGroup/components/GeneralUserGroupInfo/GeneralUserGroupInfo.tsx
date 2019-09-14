@@ -3,7 +3,6 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { Delimiter } from 'components/Delimiter';
 import { InputField, SelectField } from 'components/Form';
 
 import { SelectValues } from 'types';
@@ -12,19 +11,19 @@ import { formErrorUtil } from 'utils';
 
 export interface GeneralUserGroupInfoProps {
   institutionsOptions: Array<SelectValues>;
-  isDisabledInstitutions?: boolean;
+  isEditMode?: boolean;
 }
 
 const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
   institutionsOptions,
-  isDisabledInstitutions,
+  isEditMode,
 }) => {
   return (
     <Box mx="-10px" >
       <Flex
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[isEditMode ? 1 / 2 : 1]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -32,12 +31,11 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Delimiter />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[isEditMode ? 1 / 2 : 1]} p="10px">
           <Field
             id="name"
             name="name"

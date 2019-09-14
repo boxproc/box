@@ -4,9 +4,9 @@ export enum cookiesNames {
 }
 
 export enum sessionStorageNames {
+  USER = 'user',
+  FIRST_SCREEN = 'firstScreen',
   AUTH_PENDING = 'authPending',
-  USER_NAME = 'username',
   AUTH_REGISTRATION_PENDING = 'authRegistrationPending',
   IS_LOGIN = 'isLogin',
-  FULL_NAME = 'fullName',
 }

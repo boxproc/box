@@ -14,9 +14,6 @@ import {
   openModal,
   selectInstitutions,
   selectUiItems,
-  selectUserFirstName,
-  selectUserLastName,
-  selectUserName,
   UiItemsActionTypes,
 } from 'store/domains';
 
@@ -30,9 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
   institutions: selectInstitutions(state),
-  firstName: selectUserFirstName(state),
-  lastName: selectUserLastName(state),
-  username: selectUserName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -3,25 +3,20 @@ import { createSelector } from 'reselect';
 import { statusTypes, yesNoTypes } from 'consts';
 
 import { StoreState } from 'store/StoreState';
+import { prepareUserDataToRender } from './utils';
 
-export const selectSessionId = (state: StoreState) => state.auth.sessionId;
+export const selectDefaultLoginData = (state: StoreState) => state.auth.loginData;
 
-export const selectUserFirstName = (state: StoreState) => state.auth.firstName;
-
-export const selectUserLastName = (state: StoreState) => state.auth.lastName;
-
-export const selectUserName = (state: StoreState) => state.auth.username;
-
-export const selectUserLastActivity = (state: StoreState) => state.auth.lastActivity;
-
-export const selectAuthStatus = (state: StoreState) => state.auth.status;
-
-export const selectAuthRequires2faFlag = (state: StoreState) => state.auth.requires2faFlag;
-
-export const selectIs2faRegistrationPending = createSelector(
-  selectAuthStatus,
-  status => status === statusTypes.REGISTRATION_PENDING
+export const selectLoginData = createSelector(
+  selectDefaultLoginData,
+  data => prepareUserDataToRender(data)
 );
+
+export const selectAuthStatus = (state: StoreState) =>
+  state.auth.loginData && state.auth.loginData.status;
+
+export const selectAuthRequires2faFlag = (state: StoreState) =>
+  state.auth.loginData.requires_2fa_flag;
 
 export const selectIs2faAuthenticationPending = createSelector(
   selectAuthStatus,
@@ -31,11 +26,13 @@ export const selectIs2faAuthenticationPending = createSelector(
 
 export const selectUserCurrentRegisterStep = (state: StoreState) => state.auth.currentRegisterStep;
 
-export const selectDefaultUserCode = (state: StoreState) => state.auth.code;
+export const selectDefaultUserCode = (state: StoreState) =>
+state.auth.data2fa && state.auth.data2fa.secret_key;
 
 export const selectUserCode = createSelector(
   selectDefaultUserCode,
   code => code && code.match(/.{1,4}/g).join(' ')
 );
 
-export const selectUserDataUrl = (state: StoreState) => state.auth.dataUrl;
+export const selectUserDataUrl = (state: StoreState) =>
+state.auth.data2fa && state.auth.data2fa.data_url;

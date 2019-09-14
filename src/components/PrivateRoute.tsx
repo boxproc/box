@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-import { basePath, sessionStorageNames } from 'consts';
+import { basePath } from 'consts';
+import { storageUtil } from 'utils';
 
 interface PrivateRouteProps {
   path: string;
@@ -14,7 +15,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   exact,
   ...rest
 }) => {
-  const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
+  const isLoggedIn = storageUtil.getLoginFlag();
 
   return (
     <Route

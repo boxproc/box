@@ -1,18 +1,15 @@
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { handleSendNotification } from './notifications';
+import { cookiesNames } from 'consts';
 
-import { cookiesNames, sessionStorageNames } from 'consts';
+import { handleSendNotification } from './notifications';
 
 import { StoreState } from 'store/StoreState';
 
 import { apiClient } from 'services';
 
-import { cookiesUtil, storageUtil } from 'utils';
-
-const sessionId = cookiesUtil.get(cookiesNames.SESSION_ID);
-const isLoggedIn = sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
+import { storageUtil } from 'utils';
 
 export const withErrorHandler = async (
   fn: () => Promise<any>,
@@ -20,16 +17,17 @@ export const withErrorHandler = async (
   returnReject: boolean = false
 ) => {
   try {
-    if (isLoggedIn && sessionId) {
-      apiClient.set('session_id', sessionId);
+    if (storageUtil.getSessionId()) {
+      apiClient.set(cookiesNames.SESSION_ID, storageUtil.getSessionId());
     }
 
     return await fn();
   } catch (e) {
     if (dispatch) {
-      if (!isLoggedIn) {
-        storageUtil.clearStorage();
+      if (!storageUtil.getLoginFlag()) {
+        storageUtil.clear();
       }
+
       handleSendNotification(e, true)(dispatch);
     }
     if (returnReject) {

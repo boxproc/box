@@ -7,15 +7,13 @@ import styled from 'theme';
 import { Button } from 'components/Buttons';
 import { Paragraph, SmallText } from 'components/Text';
 
-import { modalNames, sessionStorageNames } from 'consts';
+import { modalNames } from 'consts';
 
 import { OpenModal } from 'store/domains';
+import { storageUtil } from 'utils';
 
 interface HomeProps {
-  lastActivity: string;
   openModal: OpenModal;
-  firstName: string;
-  lastName: string;
 }
 
 const CenterBlock = styled.div`
@@ -26,47 +24,52 @@ const CenterBlock = styled.div`
   justify-content: center;
 `;
 
-const Home: React.FC<HomeProps> = ({
-  lastActivity,
-  openModal,
-  firstName,
-  lastName,
-}) => {
-  const fullName = `${firstName} ${lastName}`;
+const Home: React.FC<HomeProps> = ({ openModal }) => {
+  React.useEffect(
+    () => {
+      return () => {
+        storageUtil.removeFirstScreenFlag();
+      };
+    },
+    []
+  );
+
+  const userData = storageUtil.getUserData();
+  const registrationPendingFlag = storageUtil.getRegistrationPendingFlag();
 
   return (
     <React.Fragment>
       <CenterBlock>
-        {lastActivity && (
+        {storageUtil.getFirstScreenFlag() && (
           <React.Fragment>
             <Paragraph bold={true} size={15}>
-              Welcome, {fullName}!
+              Welcome, {`${userData && userData.firstName} ${userData && userData.lastName}`}!
             </Paragraph>
             <SmallText>
-              Datetime of your last activity: {lastActivity}
+              Datetime of your last activity: {userData && userData.lastActivity}
             </SmallText>
           </React.Fragment>
         )}
-        {sessionStorage.getItem(sessionStorageNames.AUTH_REGISTRATION_PENDING) && (
-            <React.Fragment>
-              <Paragraph>
-                Complete registration in <b>BOX UI</b> by enabling second authentication.
+        {registrationPendingFlag && (
+          <React.Fragment>
+            <Paragraph>
+              Complete registration in <b>BOX UI</b> by enabling second authentication.
             </Paragraph>
-              <Flex
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Button
-                  text="Enable second factor authentication"
-                  bordered={true}
-                  iconName="smartphone"
-                  onClick={() => openModal({
-                    name: modalNames.REGISTER_2FA_MODAL,
-                  })}
-                />
-              </Flex>
-            </React.Fragment>
-          )}
+            <Flex
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button
+                text="Enable second factor authentication"
+                bordered={true}
+                iconName="smartphone"
+                onClick={() => openModal({
+                  name: modalNames.REGISTER_2FA_MODAL,
+                })}
+              />
+            </Flex>
+          </React.Fragment>
+        )}
       </CenterBlock>
     </React.Fragment>
   );

@@ -8,9 +8,11 @@ import styled, { css } from 'theme';
 
 import { Button } from 'components/Buttons';
 import { Dropdown, Option } from 'components/Dropdown';
-import { modalNames, sessionStorageNames } from 'consts';
+
+import { modalNames, usernames } from 'consts';
 
 import { HandleUserLogout, OpenModal } from 'store/domains';
+import { storageUtil } from 'utils';
 
 const iconCss = css`
   margin-right: 5px;
@@ -33,13 +35,19 @@ const TextWrapper = styled.div`
   letter-spacing: .2pt;
 `;
 
-const UserBlock = () => (
+interface UserDataProps {
+  username: string;
+  firstName: string;
+  lastName: string;
+}
+
+const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName}) => (
   <Flex alignItems="baseline">
-    {sessionStorage.getItem(sessionStorageNames.USER_NAME) === 'admin'
+    {username === usernames.ADMIN
       ? <div><UserShieldIcon size="17"/></div>
       : <UserIcon size="12"/>
     }
-    <TextWrapper>{sessionStorage.getItem(sessionStorageNames.FULL_NAME)}</TextWrapper>
+    <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
   </Flex>
 );
 
@@ -48,10 +56,9 @@ interface UserDropdownProps {
   openModal: OpenModal;
 }
 
-const UserDropdown: React.FC<UserDropdownProps> = ({
-  userLogout,
-  openModal,
-}) => {
+const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) => {
+  const userData = storageUtil.getUserData();
+
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]
@@ -61,9 +68,15 @@ const UserDropdown: React.FC<UserDropdownProps> = ({
     <Dropdown
       selectable={false}
       dropdownListPosition="right"
-      ToggleButtonComponent={<UserBlock />}
+      ToggleButtonComponent={
+        <UserBlock
+          username={userData && userData.username}
+          firstName={userData && userData.firstName}
+          lastName={userData && userData.lastName}
+        />
+      }
     >
-      {sessionStorage.getItem(sessionStorageNames.USER_NAME) === 'admin' && (
+      {userData && userData.username === usernames.ADMIN && (
         <Option>
         <Button
           text="Change profile"

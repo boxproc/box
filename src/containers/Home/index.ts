@@ -3,20 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import Home from './Home';
 
-import {
-  openModal,
-  selectUserFirstName,
-  selectUserLastActivity,
-  selectUserLastName,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
-
-const mapStateToProps = (state: StoreState) => ({
-  lastActivity: selectUserLastActivity(state),
-  firstName: selectUserFirstName(state),
-  lastName: selectUserLastName(state),
-});
+import { openModal } from 'store/domains';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -26,6 +13,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Home);

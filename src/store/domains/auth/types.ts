@@ -31,11 +31,23 @@ export interface AuthResponse {
   requires_2fa_flag: string;
 }
 
+export interface UserData {
+  sessionId: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  lastActivity: string;
+  status: string;
+  requires2faFlag: string;
+}
+
+export interface AuthStepTwoData {
+  secret_key: string;
+  data_url: string;
+}
+
 export interface AuthStepTwoResponse {
-  two_factor_authentication: {
-    secret_key: string;
-    data_url: string;
-  };
+  two_factor_authentication: AuthStepTwoData;
 }
 
 export interface AuthStepTwoResponsePrepared {
@@ -44,14 +56,7 @@ export interface AuthStepTwoResponsePrepared {
 }
 
 export interface AuthState {
-  sessionId: string;
-  firstName: string;
-  lastName: string;
-  username: string;
-  lastActivity: string;
-  status: string;
+  loginData: AuthResponse;
+  data2fa: AuthStepTwoData;
   currentRegisterStep: number;
-  code: string;
-  dataUrl: string;
-  requires2faFlag: string;
 }

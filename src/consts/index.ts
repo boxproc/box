@@ -32,3 +32,7 @@ export enum statusCodes {
   USER_NOT_AUTH = 4,
   SESSION_TIMEOUT = 5,
 }
+
+export enum usernames {
+  ADMIN = 'admin',
+}

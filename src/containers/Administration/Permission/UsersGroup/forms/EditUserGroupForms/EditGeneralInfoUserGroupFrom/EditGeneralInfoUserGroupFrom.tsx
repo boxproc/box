@@ -33,7 +33,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   return (
     <form onSubmit={handleSubmitForm}>
       <GeneralUserGroupInfo
-        isDisabledInstitutions={true}
+        isEditMode={true}
       />
       <Hr />
       <OkCancelButtons

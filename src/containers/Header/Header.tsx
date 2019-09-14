@@ -10,7 +10,7 @@ import Navbar from 'components/Navbar';
 import { withSpinner } from 'components/Spinner';
 import { HelpDropdown, UserDropdown } from './components';
 
-import { basePath, boxInstitutionName, cookiesNames, sessionStorageNames } from 'consts';
+import { basePath, boxInstitutionName } from 'consts';
 
 import {
   HandleGetInstitutions,
@@ -22,7 +22,7 @@ import {
 } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
-import { cookiesUtil } from 'utils';
+import { storageUtil } from 'utils';
 
 const Wrapper = styled.header`
   position: fixed;
@@ -61,29 +61,17 @@ const Header: React.FC<HeaderProps> = ({
   history,
   location,
   match,
-  lastName,
-  firstName,
-  username,
 }) => {
+  const sessionId = storageUtil.getSessionId();
+
   React.useEffect(
     () => {
-      if (cookiesUtil.get(cookiesNames.SESSION_ID)) {
+      if (sessionId) {
         getUiItems();
         getInstitutions();
       }
     },
-    [getUiItems, getInstitutions]
-  );
-  React.useEffect(
-    () => {
-      if (firstName && lastName) {
-        sessionStorage.setItem(sessionStorageNames.FULL_NAME, `${firstName} ${lastName}`);
-      }
-      if (username) {
-        sessionStorage.setItem(sessionStorageNames.USER_NAME, username);
-      }
-    },
-    [firstName, lastName, username]
+    [getUiItems, getInstitutions, sessionId]
   );
 
   const institution = institutions.length === 1

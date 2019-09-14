@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { cookiesNames } from 'consts';
-
 import Login from './Login';
 
 import {
@@ -13,14 +11,14 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-import { cookiesUtil } from 'utils';
+import { storageUtil } from 'utils';
 
 const loadingSelector = createLoadingSelector([
   AuthActionTypes.USER_LOGIN,
   AuthActionTypes.USER_ENTER_AUTH_KEY,
 ]);
 
-const userName = cookiesUtil.get(cookiesNames.USER_NAME);
+const userName = storageUtil.getUserName();
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
