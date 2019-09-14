@@ -26,15 +26,18 @@ const Endpoints: React.FC<EndpointsProps> = ({
   deleteEndpoint,
   adminCurrentEndpointName,
 }) => {
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteEndpoint,
-      withConfirmation: true,
-      confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteEndpoint,
+        withConfirmation: true,
+        confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
+      },
+    ],
+    [deleteEndpoint, adminCurrentEndpointName]
+  );
 
   return (
     <TablePage

@@ -16,7 +16,7 @@ interface EditUserModalProps {
   closeModal: CloseModal;
   updateAdminUser: HandleUpdateAdminUser;
   selectUserItems: Partial<AdminUserItemDetails>;
-  isFormDirty: boolean;
+  isDirty: boolean;
   requires2faFlagValue: boolean;
 }
 
@@ -26,7 +26,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
   updateAdminUser,
   selectUserItems,
-  isFormDirty,
+  isDirty,
   requires2faFlagValue,
 }) => {
   return (
@@ -35,14 +35,14 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Edit User"
       maxContainerWidth={650}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <DefineUsersForm
         onCancel={() => closeModal(modalName)}
         defineAdminUser={updateAdminUser}
         isEditable={true}
         initialValues={selectUserItems}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
         requires2faFlagValue={requires2faFlagValue}
       />
     </Modal>

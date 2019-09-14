@@ -14,7 +14,7 @@ interface EditAccountModalProps {
   closeModal: CloseModal;
   adminCurrentInterface: Partial<AdminInterfaceItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_ADMIN_INTERFACE;
@@ -23,7 +23,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   adminCurrentInterface,
   institutionsOptions,
-  isFormDirty,
+  isDirty,
 }) => {
 
   return (
@@ -32,14 +32,14 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       title="Edit Interface"
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <InterfaceForm
         onCancel={() => closeModal(modalName)}
         mode="edit"
         initialValues={adminCurrentInterface}
         institutionsOptions={institutionsOptions}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

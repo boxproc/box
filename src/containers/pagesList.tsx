@@ -2,29 +2,24 @@ import React from 'react';
 
 import { uiItemConsts } from 'consts';
 
-// Administration
-import CyclesEditor from 'containers/Administration/Cycles/CyclesEditor';
-import EventDataElems from 'containers/Administration/Dictionaries/EventDataElems';
-import Events from 'containers/Administration/Dictionaries/Events';
-import Institutions from 'containers/Administration/Institutions';
-import Users from 'containers/Administration/Permission/Users';
-import UsersGroup from 'containers/Administration/Permission/UsersGroup';
-import Scheduler from 'containers/Administration/Scheduler';
-import SystemProperties from 'containers/Administration/SystemProperties';
-import Endpoints from './Administration/Endpoints';
-import Interfaces from './Administration/Interfaces';
+import {
+  CyclesEditor,
+  Endpoints,
+  EventDataElems,
+  Events,
+  Institutions,
+  Interfaces,
+  Scheduler,
+  SystemProperties,
+  Users,
+  UsersGroup,
+} from './Administration';
 
-// Product Designer
-import Products from 'containers/ProductDesigner/Products';
+import { Products } from 'containers/ProductDesigner';
 
-// Ledger
-import Accounts from 'containers/Ledger/Accounts';
-import Customers from 'containers/Ledger/Customers';
-import Cards from './Ledger/Cards';
-import Transactions from './Ledger/Transactions';
+import { Accounts, Cards, Customers, Transactions } from 'containers/Ledger';
 
-// Audit
-import UserActivities from 'containers/Audit/UserActivity';
+import { UserActivity } from 'containers/Audit';
 
 export const pagesList = [
   {
@@ -61,7 +56,7 @@ export const pagesList = [
   },
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITIES,
-    component: <UserActivities />,
+    component: <UserActivity />,
   },
   {
     path: uiItemConsts.LEDGER_CARDS,

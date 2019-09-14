@@ -28,7 +28,7 @@ const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
   currentCronExpression: selectCurrentCronExpression(state),

@@ -10,17 +10,16 @@ import styled from 'theme';
 
 import {
   Container,
+  ExternalSpinnerProps,
   Footer,
   PrivateRoute,
-  ExternalSpinnerProps,
   withSpinner,
 } from 'components';
 
 import { basePath } from 'consts';
 
 import Header from 'containers/Header';
-import Home from 'containers/Home';
-import Login from 'containers/Login';
+import { Home, Login } from 'containers/Landings';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
@@ -56,6 +55,22 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
     [isLoggedIn, sessionId]
   );
 
+  const routes = React.useMemo(
+    () => pagesList && pagesList.map(page => {
+      return visibleUiItems
+        && visibleUiItems.includes(page.path)
+        && (
+          <PrivateRoute
+            exact={true}
+            key={page.path}
+            path={`${basePath}${page.path}`}
+            component={() => page.component}
+          />
+        );
+    }),
+    [visibleUiItems]
+  );
+
   return (
     <PerfectScrollbar>
       <RootWrapper className="main-wrapper">
@@ -74,19 +89,7 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
                   !isLoggedIn ? <Login /> : <Redirect from="*" to={basePath} />
                 )}
               />
-              {pagesList && pagesList.map(page => {
-                return visibleUiItems
-                  && visibleUiItems.includes(page.path)
-                  && (
-                    <PrivateRoute
-                      exact={true}
-                      key={page.path}
-                      path={`${basePath}${page.path}`}
-                      component={() => page.component}
-                    />
-                  );
-              })
-              }
+              {routes}
               <PrivateRoute
                 // exact={true}
                 path={basePath}

@@ -10,14 +10,14 @@ import { CloseModal, } from 'store/domains';
 
 interface AddUserModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_USERS_GROUP;
 
 const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
@@ -27,7 +27,7 @@ const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
     >
       <AddUserGroupForm
         onCancel={() => closeModal(modalName)}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

@@ -10,26 +10,26 @@ import { CloseModal } from 'store/domains';
 
 interface AddInstitutionModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_INSTITUTION;
 
 const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add Institution"
       maxContainerWidth={550}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <InstitutionForm
         onCancel={() => closeModal(modalName)}
         mode="add"
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

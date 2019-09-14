@@ -21,7 +21,7 @@ interface AddSchedulerModalProps {
   addAdminSchedulerJob: HandleAddAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   institutionsOptions: Array<SelectValues>;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_SCHEDULER;
@@ -31,14 +31,14 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
   openModal,
   addAdminSchedulerJob,
   institutionsOptions,
-  isFormDirty,
+  isDirty,
   schedulerJobValues,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add Scheduler Job"
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <DefineSchedulerJobForm
         onCancel={() => closeModal(modalName)}
@@ -47,7 +47,7 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
         institutionsOptions={institutionsOptions}
         mode="add"
         initialValues={schedulerJobValues}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

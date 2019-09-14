@@ -14,7 +14,7 @@ interface EditAccountModalProps {
   closeModal: CloseModal;
   adminCurrentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
-  isFormDirty: boolean;
+  isDirty: boolean;
   adminCurrentEndpointName: string;
 }
 
@@ -24,7 +24,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   adminCurrentEndpoint,
   institutionsOptions,
-  isFormDirty,
+  isDirty,
   adminCurrentEndpointName,
 }) => {
   const endpointName = adminCurrentEndpointName ? `: "${adminCurrentEndpointName}"` : '';
@@ -35,14 +35,14 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       maxContainerWidth={550}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <EndpointForm
         onCancel={() => closeModal(modalName)}
         mode="edit"
         initialValues={adminCurrentEndpoint}
         institutionsOptions={institutionsOptions}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
         currentEndpointName={adminCurrentEndpointName}
       />
     </Modal>

@@ -18,7 +18,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
   schedulerJobValues: selectSchedulerJobValues(state),
 });

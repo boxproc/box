@@ -17,7 +17,7 @@ const dirty = isDirty(formNamesConst.DEFINE_ADMIN_USER);
 const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_USER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   selectUserItems: selectUsersValues(state),
   requires2faFlagValue: formSelector(
     state,

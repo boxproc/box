@@ -4,7 +4,7 @@ import { TablePage, withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { tableColumns } from './cardsComponents';
+import { tableColumns } from './components';
 import { CardsFilterForm } from './forms';
 
 import {

@@ -12,7 +12,7 @@ interface EditInstitutionModalProps {
   closeModal: CloseModal;
   adminCurrentInstitution: AdminInstitutionsItemDetailsPrepared;
   adminCurrentInstitutionName: string;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_ADMIN_INSTITUTION;
@@ -21,7 +21,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   closeModal,
   adminCurrentInstitution,
   adminCurrentInstitutionName,
-  isFormDirty,
+  isDirty,
 }) => {
   const institutionName = adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '';
   return (
@@ -30,13 +30,13 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Institution${institutionName}`}
       maxContainerWidth={550}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <InstitutionForm
         initialValues={adminCurrentInstitution}
         onCancel={() => closeModal(modalName)}
         mode="edit"
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

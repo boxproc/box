@@ -33,15 +33,18 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   isFilterFormDirty,
   deleteAdminCyclesEditor,
 }) => {
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteAdminCyclesEditor,
-      withConfirmation: true,
-      confirmationText: `Delete cycle editor record?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteAdminCyclesEditor,
+        withConfirmation: true,
+        confirmationText: `Delete cycle editor record?`,
+      },
+    ],
+    [deleteAdminCyclesEditor]
+  );
 
   return (
     <TablePage

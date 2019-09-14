@@ -14,7 +14,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.ADD_ADMIN_SYSTEM_PROPERTY);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -12,7 +12,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.LEDGER_ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 

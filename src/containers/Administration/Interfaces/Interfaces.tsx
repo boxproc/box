@@ -25,15 +25,18 @@ const Interfaces: React.FC<AccountsProps> = ({
   adminInterfaceItems,
   deleteInterface,
 }) => {
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteInterface,
-      withConfirmation: true,
-      confirmationText: `Delete cycle editor record?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteInterface,
+        withConfirmation: true,
+        confirmationText: `Delete cycle editor record?`,
+      },
+    ],
+    [deleteInterface]
+  );
 
   return (
     <TablePage

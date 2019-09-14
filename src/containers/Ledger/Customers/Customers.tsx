@@ -35,15 +35,18 @@ const Customers: React.FC<CustomersProps> = ({
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
 }) => {
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteLedgerCustomer,
-      withConfirmation: true,
-      confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteLedgerCustomer,
+        withConfirmation: true,
+        confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
+      },
+    ],
+    [deleteLedgerCustomer, ledgerCurrentCustomerName]
+  );
 
   return (
     <TablePage

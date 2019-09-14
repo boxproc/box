@@ -10,26 +10,26 @@ import { CloseModal } from 'store/domains';
 
 interface AddCycleEditorModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_CYCLE_EDITOR;
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add Cycle Editor Record"
       maxContainerWidth={550}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <DefineCycleEditorForm
         onCancel={() => closeModal(modalName)}
         mode="add"
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

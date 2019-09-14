@@ -35,15 +35,18 @@ export const Products: React.FC<ProductsProps> = ({
   currentProductName,
   deleteProduct,
 }) => {
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteProduct,
-      withConfirmation: true,
-      confirmationText: `Delete product "${currentProductName}?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteProduct,
+        withConfirmation: true,
+        confirmationText: `Delete product "${currentProductName}?`,
+      },
+    ],
+    [deleteProduct, currentProductName]
+  );
 
   return (
     <TablePage

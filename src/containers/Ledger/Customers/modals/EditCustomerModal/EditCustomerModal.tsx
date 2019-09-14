@@ -10,14 +10,14 @@ import { CloseModal } from 'store/domains';
 
 interface EditCustomerModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
 
 const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
@@ -25,11 +25,11 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Edit Customer"
       maxContainerWidth={980}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <EditCustomerForm
         onCancel={() => closeModal(modalName)}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

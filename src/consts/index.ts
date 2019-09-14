@@ -8,8 +8,6 @@ export * from './pathNames';
 export * from './messages';
 export * from './iconNames';
 
-export const basePath = '/ui/';
-
 export const boxInstitutionName = 'BOX Institution';
 
 export enum dateFormat {

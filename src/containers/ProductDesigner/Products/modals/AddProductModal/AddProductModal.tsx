@@ -10,25 +10,25 @@ import { CloseModal } from 'store/domains';
 
 interface AddProductModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_PRODUCT;
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add New Product"
       minContainerHeight={465}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <AddProductForm
         onCancel={() => closeModal(modalName)}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

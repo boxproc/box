@@ -89,6 +89,7 @@ export enum adminSystemPropsPathNames {
 export enum auditUserActivitiesPathNames {
   GET = '/ui/audit/users_activity/get',
 }
+export const basePath = '/ui/';
 
 export enum lenderAccountsPathNames {
   GET = '/ui/ledger/accounts/get',

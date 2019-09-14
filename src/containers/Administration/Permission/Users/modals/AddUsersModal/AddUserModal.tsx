@@ -11,7 +11,7 @@ import { CloseModal, HandleAddAdminUser, } from 'store/domains';
 interface AddUserModalProps {
   closeModal: CloseModal;
   addAdminUser: HandleAddAdminUser;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_USER;
@@ -19,19 +19,19 @@ const modalName = modalNamesConst.ADD_ADMIN_USER;
 const AddAdminModal: React.FC<AddUserModalProps> = ({
   closeModal,
   addAdminUser,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add new User"
       maxContainerWidth={650}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <DefineUsersForm
         onCancel={() => closeModal(modalName)}
         defineAdminUser={addAdminUser}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
         initialValues={{
           requires2faFlag: true,
         }}

@@ -12,7 +12,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.EDIT_LEDGER_CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

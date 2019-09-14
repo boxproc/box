@@ -17,7 +17,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.ADMIN_ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   adminCurrentEndpoint: selectAdminCurrentEndpoint(state),
   adminCurrentEndpointName: selectAdminCurrentEndpointName(state),
   institutionsOptions: selectInstitutionsOptions(state),

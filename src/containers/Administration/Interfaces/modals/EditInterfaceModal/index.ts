@@ -16,7 +16,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.ADMIN_INTERFACE);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  isDirty: dirty(state),
   adminCurrentInterface: selectAdminCurrentInterface(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });

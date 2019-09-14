@@ -34,16 +34,18 @@ const Institutions: React.FC<InstitutionsProps> = ({
     },
     [getAdminInstitutions]
   );
-
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteAdminInstitution,
-      withConfirmation: true,
-      confirmationText: `Delete institution "${adminCurrentInstitutionName}"?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteAdminInstitution,
+        withConfirmation: true,
+        confirmationText: `Delete institution "${adminCurrentInstitutionName}"?`,
+      },
+    ],
+    [deleteAdminInstitution, adminCurrentInstitutionName]
+  );
 
   return (
     <TablePage

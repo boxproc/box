@@ -93,25 +93,27 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: renderCheckBoxIconTableCell(),
     },
   ];
-
-  const contextMenuItems = [
-    {
-      name: 'Delete',
-      icon: 'delete',
-      action: deleteAdminSysProp,
-      withConfirmation: true,
-      confirmationText: `Delete system property "${currentSysPropId}"?`,
-    },
-    {
-      name: 'Lock',
-      icon: 'lock',
-      action: () => updateAdminSysProps({
-        lockedFlag: true,
-      }),
-      withConfirmation: true,
-      confirmationText: `Lock system property "${currentSysPropId}"?`,
-    },
-  ];
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Delete',
+        icon: 'delete',
+        action: deleteAdminSysProp,
+        withConfirmation: true,
+        confirmationText: `Delete system property "${currentSysPropId}"?`,
+      },
+      {
+        name: 'Lock',
+        icon: 'lock',
+        action: () => updateAdminSysProps({
+          lockedFlag: true,
+        }),
+        withConfirmation: true,
+        confirmationText: `Lock system property "${currentSysPropId}"?`,
+      },
+    ],
+    [deleteAdminSysProp, currentSysPropId, updateAdminSysProps]
+  );
 
   return (
     <TablePage

@@ -10,25 +10,25 @@ import { CloseModal } from 'store/domains';
 
 interface AddCustomerModalProps {
   closeModal: CloseModal;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_LEDGER_CUSTOMER;
 
 const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
   closeModal,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add New Customer"
       maxContainerWidth={980}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <AddCustomerForm
         onCancel={() => closeModal(modalName)}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
       />
     </Modal>
   );

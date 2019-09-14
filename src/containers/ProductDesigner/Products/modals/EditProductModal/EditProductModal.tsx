@@ -26,7 +26,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isProductRulesFormDirty,
 }) => {
   const productName = currentProductName ? `: ${currentProductName}` : '';
-  const isFormDirty = isGeneralProductFormDirty
+  const isDirty = isGeneralProductFormDirty
     || isProductDetailsFormDirty
     || isProductRulesFormDirty;
 
@@ -36,7 +36,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Product${productName}`}
       minContainerHeight={545}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <EditProductForms
         onCancel={() => closeModal(modalName)}

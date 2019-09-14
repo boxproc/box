@@ -13,7 +13,7 @@ import { SelectValues } from 'types';
 interface AddEndpointModalProps {
   closeModal: CloseModal;
   institutionsOptions: Array<SelectValues>;
-  isFormDirty: boolean;
+  isDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
@@ -21,18 +21,18 @@ const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
 const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
   closeModal,
   institutionsOptions,
-  isFormDirty,
+  isDirty,
 }) => {
   return (
     <Modal
       name={modalName}
       title="Add Endpoint"
       maxContainerWidth={550}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <EndpointForm
         institutionsOptions={institutionsOptions}
-        isDirty={isFormDirty}
+        isDirty={isDirty}
         onCancel={() => closeModal(modalName)}
         mode="add"
       />

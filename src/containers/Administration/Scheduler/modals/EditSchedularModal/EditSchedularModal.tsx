@@ -21,7 +21,7 @@ interface EditSchedulerModalProps {
   updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
-  isFormDirty: boolean;
+  isDirty: boolean;
   setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
 }
 
@@ -34,7 +34,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   updateAdminSchedulerJob,
   schedulerJobValues,
   currentSchedulerName,
-  isFormDirty,
+  isDirty,
   setAdminSchedulerJobId,
 }) => {
   React.useEffect(
@@ -53,7 +53,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Scheduler${currentName}`}
-      withCloseConfirmation={isFormDirty}
+      withCloseConfirmation={isDirty}
     >
       <DefineSchedulerJobForm
         onCancel={() => closeModal(modalName)}
@@ -63,7 +63,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         isDisabledInstitutions={true}
         deleteAdminSchedulerJob={deleteAdminSchedulerJob}
         mode="edit"
-        isDirty={isFormDirty}
+        isDirty={isDirty}
         currentSchedulerName={currentSchedulerName}
       />
     </Modal>
