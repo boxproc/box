@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage';
-import { tableColumns } from 'containers/Administration/Permission/UsersGroup/components';
+import { TablePage, withSpinner } from 'components';
 
 import { modalNames } from 'consts';
+
+import { tableColumns } from 'containers/Administration/Permission/UsersGroup/components';
 
 import {
   AdminUsersGroupInfoPlain,

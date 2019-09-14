@@ -1,15 +1,13 @@
 import React from 'react';
-
-import { Box, Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button } from 'components/Buttons';
+import { Box, Flex } from '@rebass/grid';
+
+import { Button, CheckboxField, SelectField } from 'components';
 
 import { formNames } from 'consts';
 
 import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store/domains';
-
-import { CheckboxField, SelectField } from 'components/Form';
 
 import { SelectValues } from 'types';
 

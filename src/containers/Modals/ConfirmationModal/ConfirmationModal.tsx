@@ -1,9 +1,6 @@
 import React from 'react';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import Modal from 'components/Modal';
-import { Paragraph } from 'components/Text';
+import { Hr, Modal, OkCancelButtons, Paragraph } from 'components';
 
 import { modalNames } from 'consts';
 

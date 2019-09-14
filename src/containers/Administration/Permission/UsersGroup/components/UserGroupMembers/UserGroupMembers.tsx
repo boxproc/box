@@ -1,8 +1,7 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { withSpinner } from 'components/Spinner';
-import { Cell, Table, TableNoData } from 'components/Table';
-import { T4 } from 'components/Text';
+import { Button, T4, Table, TableCell, TableNoData, withSpinner } from 'components';
 
 import {
   AdminUserGroupMemberPrepared,
@@ -10,9 +9,7 @@ import {
   HandleGetAdminUserGroupMembers,
 } from 'store/domains/administration/permissions/usersGroups';
 
-import { Button } from 'components/Buttons';
-import { CellInfo } from 'react-table';
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
@@ -21,8 +18,8 @@ interface UsersGroupMembersProps {
   deleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMembers;
 }
 
-type SCell<T extends keyof AdminUserGroupMemberPrepared> =
- TableCell<AdminUserGroupMemberPrepared[T]>;
+type TCell<T extends keyof AdminUserGroupMemberPrepared> =
+ TableCellType<AdminUserGroupMemberPrepared[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminUserGroupMembers,
@@ -40,8 +37,8 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   const columns = [
     {
       accessor: 'username',
-      Cell: (props: SCell<'username'>) => (
-        <Cell
+      Cell: (props: TCell<'username'>) => (
+        <TableCell
           value={props.value}
         />
       ),

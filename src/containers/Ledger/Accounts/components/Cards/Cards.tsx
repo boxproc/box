@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { withSpinner } from 'components/Spinner';
-import { Cell, Header, Table } from 'components/Table';
+import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
 
 import { modalNames } from 'consts';
 
@@ -15,7 +13,7 @@ import {
   LedgerAccountsCardsItemPrepared
 } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 interface AccountCardsProps {
   ledgerAccountCurrentId: number;
@@ -26,8 +24,8 @@ interface AccountCardsProps {
 
 const modalName = modalNames.INFO_LEDGER_CARDS;
 
-type SCell<T extends keyof LedgerAccountsCardsItemPrepared> =
-  TableCell<LedgerAccountsCardsItemPrepared[T]>;
+type TCell<T extends keyof LedgerAccountsCardsItemPrepared> =
+  TableCellType<LedgerAccountsCardsItemPrepared[T]>;
 
 export const Cards: React.FC<AccountCardsProps> = ({
   getLedgerAccountCards,
@@ -45,10 +43,10 @@ export const Cards: React.FC<AccountCardsProps> = ({
   const columns = [
     {
       maxWidth: 150,
-      Header: <Header title="Pan Alias" />,
+      Header: <TableHeader title="Pan Alias" />,
       accessor: 'panAlias',
-      Cell: (props: SCell<'panAlias'>) => (
-        <Cell
+      Cell: (props: TCell<'panAlias'>) => (
+        <TableCell
           isNumber={true}
           value={props.value}
         />
@@ -56,20 +54,20 @@ export const Cards: React.FC<AccountCardsProps> = ({
     },
     {
       maxWidth: 300,
-      Header: <Header title="Pan Masked" />,
+      Header: <TableHeader title="Pan Masked" />,
       accessor: 'panMasked',
-      Cell: (props: SCell<'panMasked'>) => (
-        <Cell
+      Cell: (props: TCell<'panMasked'>) => (
+        <TableCell
           value={props.value}
         />
       ),
     },
     {
       maxWidth: 150,
-      Header: <Header title="Expiry Date" />,
+      Header: <TableHeader title="Expiry Date" />,
       accessor: 'expiryDate',
-      Cell: (props: SCell<'expiryDate'>) => (
-        <Cell
+      Cell: (props: TCell<'expiryDate'>) => (
+        <TableCell
           value={props.value}
           isDate={true}
         />
@@ -77,10 +75,10 @@ export const Cards: React.FC<AccountCardsProps> = ({
     },
     {
       maxWidth: 150,
-      Header: <Header title="Status" />,
+      Header: <TableHeader title="Status" />,
       accessor: 'status',
-      Cell: (props: SCell<'status'>) => (
-        <Cell
+      Cell: (props: TCell<'status'>) => (
+        <TableCell
           value={props.value}
         />
       ),

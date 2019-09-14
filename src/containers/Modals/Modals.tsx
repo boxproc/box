@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ScrollDisable } from 'components/Scrollbar';
+import { ScrollDisable } from 'theme/scrollbarCss';
 
 import { modalsList } from 'containers/Modals/modalsList';
 

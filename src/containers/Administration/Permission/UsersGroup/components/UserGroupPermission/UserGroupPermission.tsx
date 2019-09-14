@@ -1,8 +1,7 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { withSpinner } from 'components/Spinner';
-import { Cell, Header, Table, TableNoData } from 'components/Table';
-import { T4 } from 'components/Text';
+import { Button, T4, Table, TableCell, TableHeader, TableNoData, withSpinner } from 'components';
 
 import {
   AdminGroupPermissionItem,
@@ -10,10 +9,7 @@ import {
   HandleGetAdminGroupPermissions,
 } from 'store/domains/administration/permissions/usersGroups';
 
-import { Button } from 'components/Buttons';
-import { CellInfo } from 'react-table';
-
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 interface UsersGroupMembersProps {
   adminUserGroupMemberId: number;
@@ -22,8 +18,8 @@ interface UsersGroupMembersProps {
   adminGroupPermissions: Array<AdminGroupPermissionItem>;
 }
 
-type SCell<T extends keyof AdminGroupPermissionItem> =
-  TableCell<AdminGroupPermissionItem[T]>;
+type TCell<T extends keyof AdminGroupPermissionItem> =
+  TableCellType<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminGroupPermission,
@@ -41,10 +37,10 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   const columns = [
     {
       sortable: true,
-      Header: <Header title="UI Items" />,
+      Header: <TableHeader title="UI Items" />,
       accessor: 'uiItem',
-      Cell: (props: SCell<'uiItem'>) => (
-        <Cell
+      Cell: (props: TCell<'uiItem'>) => (
+        <TableCell
           value={props.value}
         />
       ),
@@ -52,10 +48,10 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     {
       maxWidth: 200,
       sortable: true,
-      Header: <Header title="Permission" />,
+      Header: <TableHeader title="Permission" />,
       accessor: 'permission',
-      Cell: (props: SCell<'permission'>) => (
-        <Cell
+      Cell: (props: TCell<'permission'>) => (
+        <TableCell
           value={props.value}
         />
       ),

@@ -2,8 +2,7 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
+import { Hr, OkCancelButtons } from 'components';
 
 import { formNames } from 'consts';
 

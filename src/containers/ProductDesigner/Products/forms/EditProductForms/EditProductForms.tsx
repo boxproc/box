@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Panel, Tabs } from 'components/Tabs';
+import { Tabs, TabsPanel } from 'components';
 
 import {
   GeneralProductForm,
@@ -26,10 +26,10 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
 }) => {
   return (
     <Tabs>
-      <Panel title="General">
+      <TabsPanel title="General">
         <GeneralProductForm onCancel={onCancel} />
-      </Panel>
-      <Panel
+      </TabsPanel>
+      <TabsPanel
         title="Details"
         isDisabled={!currentProductType}
         hintForDisabled="Select Product Type"
@@ -38,35 +38,35 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           productType={currentProductType}
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="Rules">
+      </TabsPanel>
+      <TabsPanel title="Rules">
         <ProductRulesForm onCancel={onCancel} />
-      </Panel>
-      <Panel title="Limits, Fees and commissions">
+      </TabsPanel>
+      <TabsPanel title="Limits, Fees and commissions">
         <ProductLimitsFeesCommissionsForm
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="Auxiliary counters">
+      </TabsPanel>
+      <TabsPanel title="Auxiliary counters">
         <ProductAuxiliaryCountersForm
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="APRs">
+      </TabsPanel>
+      <TabsPanel title="APRs">
         <ProductAprsForm
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="Loyalty and Bonus">
+      </TabsPanel>
+      <TabsPanel title="Loyalty and Bonus">
         <ProductLoyaltyAndBonusForm
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="Services">
+      </TabsPanel>
+      <TabsPanel title="Services">
        <ProductServicesForm
           onCancel={onCancel}
        />
-      </Panel>
+      </TabsPanel>
     </Tabs>
   );
 };

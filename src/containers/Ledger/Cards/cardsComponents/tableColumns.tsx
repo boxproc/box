@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { LedgerCardItemPrepared } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 type TCell<T extends keyof LedgerCardItemPrepared> =
-  TableCell<LedgerCardItemPrepared[T]>;
+  TableCellType<LedgerCardItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +25,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="PAN Alias" />,
+    Header: <TableHeader title="PAN Alias" />,
     accessor: 'panAlias',
     Cell: (props: TCell<'panAlias'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),
@@ -36,10 +36,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="PAN Masked" />,
+    Header: <TableHeader title="PAN Masked" />,
     accessor: 'panMasked',
     Cell: (props: TCell<'panMasked'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),
@@ -47,10 +47,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Expiry Date" />,
+    Header: <TableHeader title="Expiry Date" />,
     accessor: 'expiryDate',
     Cell: (props: TCell<'expiryDate'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isDate={true}
       />
@@ -59,10 +59,10 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Account ID" />,
+    Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -71,10 +71,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),

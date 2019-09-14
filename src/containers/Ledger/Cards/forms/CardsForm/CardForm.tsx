@@ -3,8 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { ExternalSpinnerProps, InputField, withSpinner } from 'components';
 
 import { formNames } from 'consts';
 

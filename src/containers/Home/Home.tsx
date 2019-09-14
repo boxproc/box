@@ -4,8 +4,7 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Button } from 'components/Buttons';
-import { Paragraph, SmallText } from 'components/Text';
+import { Button, Paragraph, SmallText } from 'components';
 
 import { modalNames } from 'consts';
 

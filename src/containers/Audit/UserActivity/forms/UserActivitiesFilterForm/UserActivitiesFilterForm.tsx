@@ -3,8 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { MaskField, SelectField } from 'components/Form';
+import { Button, MaskField, SelectField } from 'components';
 
 import { dateFormat, formNames, maskFormat, } from 'consts';
 

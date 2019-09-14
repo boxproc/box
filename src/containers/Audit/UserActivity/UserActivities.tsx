@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage';
+import { TablePage, withSpinner } from 'components';
 
 import UserActivitiesFilterForm from './forms/UserActivitiesFilterForm';
 import { tableColumns } from './userActivitiesComponents';

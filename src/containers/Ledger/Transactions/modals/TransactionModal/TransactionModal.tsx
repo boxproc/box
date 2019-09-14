@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import Modal from 'components/Modal';
+import { Button, Hr, Modal } from 'components';
 
 import { modalNames, modalTypes } from 'consts';
 

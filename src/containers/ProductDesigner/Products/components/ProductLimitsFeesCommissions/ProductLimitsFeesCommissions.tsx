@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components/Form';
+import { InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 

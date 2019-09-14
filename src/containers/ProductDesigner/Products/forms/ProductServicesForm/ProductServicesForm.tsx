@@ -2,13 +2,18 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
+import {
+  ExternalSpinnerProps,
+  Hr,
+  OkCancelButtons,
+  withSpinner,
+} from 'components';
 
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
 import { formNames } from 'consts';
+
 import { HandleUpdateCardService } from 'store/domains';
-import { Services } from '../../components';
+
+import { Services } from 'containers/ProductDesigner/Products/components';
 
 interface ServicesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;

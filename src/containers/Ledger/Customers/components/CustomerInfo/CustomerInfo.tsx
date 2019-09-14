@@ -3,10 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr } from 'components/Delimiter';
-import { CalendarField, InputField, MaskField, SelectField } from 'components/Form';
-import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'components/HOCs';
-import { T4 } from 'components/Text';
+import { CalendarField, Hr, InputField, MaskField, SelectField, T4 } from 'components';
+
+import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'HOCs';
 
 import { customerStatusTypesOptions, dateFormat, maskFormat } from 'consts';
 

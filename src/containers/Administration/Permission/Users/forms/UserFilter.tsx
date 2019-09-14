@@ -3,8 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { CheckboxField } from 'components/Form';
+import { Button, CheckboxField } from 'components';
 
 import { formNames } from 'consts';
 

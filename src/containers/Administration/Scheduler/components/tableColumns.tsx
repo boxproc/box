@@ -1,21 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AdminSchedulerItemPrepared } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type SCell<T extends keyof AdminSchedulerItemPrepared> = TableCell<AdminSchedulerItemPrepared[T]>;
+type TCell<T extends keyof AdminSchedulerItemPrepared> =
+  TableCellType<AdminSchedulerItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: SCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -24,30 +25,30 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <Header title="Institution ID" />,
+    Header: <TableHeader title="Institution ID" />,
     accessor: 'institutionId',
-    Cell: (props: SCell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Name" />,
+    Header: <TableHeader title="Name" />,
     accessor: 'name',
-    Cell: (props: SCell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
-    Cell: (props: SCell<'description'>) => (
-      <Cell
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -55,50 +56,50 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: SCell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Cron Expression" />,
+    Header: <TableHeader title="Cron Expression" />,
     accessor: 'cronExpression',
-    Cell: (props: SCell<'cronExpression'>) => (
-      <Cell
+    Cell: (props: TCell<'cronExpression'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Executable Type" />,
+    Header: <TableHeader title="Executable Type" />,
     accessor: 'executableType',
-    Cell: (props: SCell<'executableType'>) => (
-      <Cell
+    Cell: (props: TCell<'executableType'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Executable" />,
+    Header: <TableHeader title="Executable" />,
     accessor: 'executable',
-    Cell: (props: SCell<'executable'>) => (
-      <Cell
+    Cell: (props: TCell<'executable'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Log Location" />,
+    Header: <TableHeader title="Log Location" />,
     accessor: 'logLocation',
-    Cell: (props: SCell<'logLocation'>) => (
-      <Cell
+    Cell: (props: TCell<'logLocation'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -106,10 +107,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Last Execution Datetime" />,
+    Header: <TableHeader title="Last Execution Datetime" />,
     accessor: 'lastExecutionDatetime',
-    Cell: (props: SCell<'lastExecutionDatetime'>) => (
-      <Cell
+    Cell: (props: TCell<'lastExecutionDatetime'>) => (
+      <TableCell
         value={props.value}
         isDate={true}
       />
@@ -117,10 +118,10 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    Header: <Header title="Last Execution Result" />,
+    Header: <TableHeader title="Last Execution Result" />,
     accessor: 'lastExecutionResult',
-    Cell: (props: SCell<'lastExecutionResult'>) => (
-      <Cell
+    Cell: (props: TCell<'lastExecutionResult'>) => (
+      <TableCell
         value={props.value}
       />
     ),

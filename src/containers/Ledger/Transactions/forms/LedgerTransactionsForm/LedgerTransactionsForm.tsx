@@ -1,7 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Panel, Tabs } from 'components/Tabs';
+import { Tabs, TabsPanel } from 'components';
 
 import { formNames } from 'consts';
 
@@ -20,15 +20,15 @@ const LedgerTransactionsForm: React.FC<TransactionsFilterFormAllProps> = () => {
   return (
     <form>
       <Tabs>
-        <Panel title="General">
+        <TabsPanel title="General">
           <LedgerCurrentTransactionGeneral />
-        </Panel>
-        <Panel title="Card">
+        </TabsPanel>
+        <TabsPanel title="Card">
           <LedgerCurrentTransactionCard />
-        </Panel>
-        <Panel title="Balance">
+        </TabsPanel>
+        <TabsPanel title="Balance">
           <LedgerCurrentTransactionBalance />
-        </Panel>
+        </TabsPanel>
       </Tabs>
     </form>
   );

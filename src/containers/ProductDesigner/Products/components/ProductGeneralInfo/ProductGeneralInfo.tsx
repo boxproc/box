@@ -3,11 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField, SelectField, TextField } from 'components/Form';
-import {
-  withLoadCurrencyCodes,
-  WithLoadCurrencyCodesProps,
-} from 'components/HOCs';
+import { CheckboxField, InputField, SelectField, TextField } from 'components';
+
+import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
 import {
   productTypesOptions,

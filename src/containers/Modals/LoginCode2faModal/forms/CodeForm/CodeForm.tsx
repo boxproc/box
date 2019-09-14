@@ -1,11 +1,9 @@
 import React from 'react';
-
-import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button } from 'components/Buttons';
-import { InputField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { Flex } from '@rebass/grid';
+
+import { Button, ExternalSpinnerProps, InputField, withSpinner } from 'components';
 
 import { formNames } from 'consts';
 

@@ -2,10 +2,14 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Panel, Tabs } from 'components/Tabs';
+import {
+  ExternalSpinnerProps,
+  Hr,
+  OkCancelButtons,
+  Tabs,
+  TabsPanel,
+  withSpinner,
+} from 'components';
 
 import { formNames } from 'consts';
 
@@ -51,7 +55,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Tabs>
-        <Panel title="General">
+        <TabsPanel title="General">
           <GeneralAccountInfo
             institutionsOptions={institutionsOptions}
             isEditMode={isEditMode}
@@ -65,8 +69,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             withCancelConfirmation={isDirty}
             disabledOk={!isDirty}
           />
-        </Panel>
-        <Panel title="Auxiliary Counters">
+        </TabsPanel>
+        <TabsPanel title="Auxiliary Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
           />
@@ -79,8 +83,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             withCancelConfirmation={isDirty}
             disabledOk={!isDirty}
           />
-        </Panel>
-        <Panel title="Overdue">
+        </TabsPanel>
+        <TabsPanel title="Overdue">
           <Overdue isEditMode={isEditMode}/>
           <Hr />
           <OkCancelButtons
@@ -91,11 +95,11 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             withCancelConfirmation={isDirty}
             disabledOk={!isDirty}
           />
-        </Panel>
+        </TabsPanel>
         {isEditMode && (
-          <Panel title="Cards">
+          <TabsPanel title="Cards">
             <Cards />
-          </Panel>
+          </TabsPanel>
         )}
       </Tabs>
     </form >

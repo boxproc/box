@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Modal from 'components/Modal';
-import { modalNames } from 'consts';
+import { Modal, withSpinner } from 'components';
 
-import { withSpinner } from 'components/Spinner';
+import { modalNames } from 'consts';
 
 import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
 

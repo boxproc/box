@@ -3,8 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button } from 'components/Buttons';
-import { SelectField } from 'components/Form';
+import { Button, SelectField } from 'components';
 
 import { formNames } from 'consts';
 

@@ -6,8 +6,7 @@ import { UserShield } from 'styled-icons/fa-solid/UserShield';
 
 import styled, { css } from 'theme';
 
-import { Button } from 'components/Buttons';
-import { Dropdown, Option } from 'components/Dropdown';
+import { Button, Dropdown, DropdownOption } from 'components';
 
 import { modalNames, usernames } from 'consts';
 
@@ -77,7 +76,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
       }
     >
       {userData && userData.username === usernames.ADMIN && (
-        <Option>
+        <DropdownOption>
           <Button
             text="Change profile"
             iconName="user"
@@ -85,14 +84,14 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
               name: modalNames.CHANGE_PROFILE_MODAL,
             })}
           />
-        </Option>)}
-      <Option>
+        </DropdownOption>)}
+      <DropdownOption>
         <Button
           text="Log out"
           iconName="logOut"
           onClick={handleUserLogout}
         />
-      </Option>
+      </DropdownOption>
     </Dropdown>
   );
 };

@@ -1,10 +1,14 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import { ExternalSpinnerProps , withSpinner } from 'components/Spinner';
-import { Panel, Tabs } from 'components/Tabs';
+import {
+  ExternalSpinnerProps,
+  Hr,
+  OkCancelButtons,
+  Tabs,
+  TabsPanel,
+  withSpinner,
+} from 'components';
 
 import { formNames } from 'consts';
 
@@ -43,10 +47,10 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Tabs>
-        <Panel title="General">
+        <TabsPanel title="General">
           <ProductGeneralInfo />
-        </Panel>
-        <Panel
+        </TabsPanel>
+        <TabsPanel
           title="Details"
           isDisabled={!currentProductType}
           hintForDisabled="Select Product Type"
@@ -63,7 +67,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             withCancelConfirmation={isDirty}
             disabledOk={!isDirty}
           />
-        </Panel>
+        </TabsPanel>
       </Tabs>
     </form >
   );

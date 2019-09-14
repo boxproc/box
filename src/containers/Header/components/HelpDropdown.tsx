@@ -6,8 +6,7 @@ import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 
 import styled from 'theme';
 
-import { Dropdown, Option } from 'components/Dropdown';
-import { ExternalLink } from 'components/Links';
+import { Dropdown, DropdownOption, ExternalLink } from 'components';
 
 import { basePath, links } from 'consts';
 
@@ -59,19 +58,19 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
       selectable={false}
       ToggleButtonComponent={<HelpBlock />}
     >
-      <Option>
+      <DropdownOption>
         <ExternalLink
           link={links.BPS}
           text="BOX-UI"
         />
-      </Option>
+      </DropdownOption>
       {!isHome && (
-        <Option>
+        <DropdownOption>
           <ExternalLink
             link={currentUrl}
             text={`Help: ${currentUiItemName}`}
           />
-        </Option>
+        </DropdownOption>
       )}
     </Dropdown>
   );

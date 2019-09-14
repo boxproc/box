@@ -3,8 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter } from 'components/Delimiter';
-import { CheckboxField, InputField } from 'components/Form';
+import { CheckboxField, Delimiter, InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 

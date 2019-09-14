@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AdminCyclesEditorItemPrepared } from 'store/domains/administration/cycles';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type SCell<T extends keyof AdminCyclesEditorItemPrepared> =
-  TableCell<AdminCyclesEditorItemPrepared[T]>;
+type TCell<T extends keyof AdminCyclesEditorItemPrepared> =
+  TableCellType<AdminCyclesEditorItemPrepared[T]>;
 
 export const cycleEditorColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: SCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +25,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Institution ID" />,
+    Header: <TableHeader title="Institution ID" />,
     accessor: 'institutionId',
-    Cell: (props: SCell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -36,10 +36,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 400,
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
-    Cell: (props: SCell<'description'>) => (
-      <Cell
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -47,10 +47,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Cycle Type" />,
+    Header: <TableHeader title="Cycle Type" />,
     accessor: 'cycleType',
-    Cell: (props: SCell<'cycleType'>) => (
-      <Cell
+    Cell: (props: TCell<'cycleType'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -58,10 +58,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: SCell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -69,10 +69,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Monthly Cycle First Day" />,
+    Header: <TableHeader title="Monthly Cycle First Day" />,
     accessor: 'monthlyCycleFirstDay',
-    Cell: (props: SCell<'monthlyCycleFirstDay'>) => (
-      <Cell
+    Cell: (props: TCell<'monthlyCycleFirstDay'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -81,10 +81,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Weekly Cycle First Day" />,
+    Header: <TableHeader title="Weekly Cycle First Day" />,
     accessor: 'weeklyCycleFirstDay',
-    Cell: (props: SCell<'weeklyCycleFirstDay'>) => (
-      <Cell
+    Cell: (props: TCell<'weeklyCycleFirstDay'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -92,10 +92,10 @@ export const cycleEditorColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Fixed Cycle Number of Days" />,
+    Header: <TableHeader title="Fixed Cycle Number of Days" />,
     accessor: 'fixedCycleNumberOfDays',
-    Cell: (props: SCell<'fixedCycleNumberOfDays'>) => (
-      <Cell
+    Cell: (props: TCell<'fixedCycleNumberOfDays'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />

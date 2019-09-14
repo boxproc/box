@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Modal from 'components/Modal';
-import { withSpinner } from 'components/Spinner';
+import { Modal, withSpinner } from 'components';
 
 import { modalNames } from 'consts';
 

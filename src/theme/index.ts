@@ -11,4 +11,5 @@ const {
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<Theme>;
 
 export { css, createGlobalStyle, keyframes, ThemeProvider, theme };
+
 export default styled;

@@ -1,23 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
-import {
-  AdminUsersGroupInfoPlain,
-} from 'store/domains/administration/permissions/usersGroups';
+import { AdminUsersGroupInfoPlain } from 'store/domains/administration/permissions/usersGroups';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type SCell<T extends keyof AdminUsersGroupInfoPlain> = TableCell<AdminUsersGroupInfoPlain[T]>;
+type TCell<T extends keyof AdminUsersGroupInfoPlain> = TableCellType<AdminUsersGroupInfoPlain[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: SCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -26,10 +24,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Institution" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
-    Cell: (props: SCell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -37,10 +35,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Name of User Group" />,
+    Header: <TableHeader title="Name of User Group" />,
     accessor: 'name',
-    Cell: (props: SCell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),

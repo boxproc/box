@@ -3,8 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter } from 'components/Delimiter';
-import { InputField, SelectField } from 'components/Form';
+import { Delimiter, InputField, SelectField } from 'components';
 
 import { loanTypesOptions } from 'consts';
 

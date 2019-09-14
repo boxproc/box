@@ -3,9 +3,14 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
-import { Hr } from 'components/Delimiter';
-import { CheckboxField, InputField, PasswordField, SelectField } from 'components/Form';
+import {
+  CheckboxField,
+  Hr,
+  InputField,
+  OkCancelButtons,
+  PasswordField,
+  SelectField,
+} from 'components';
 
 import {
   formNames,

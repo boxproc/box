@@ -4,9 +4,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import ContextMenuList from 'components/ContextMenuList';
-import { HighLightCodeField, SelectField, TextField } from 'components/Form';
-import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'components/HOCs';
+import { ContextMenuList, HighLightCodeField, SelectField, TextField } from 'components';
+
+import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'HOCs';
 
 import { actionTypesOptions } from 'consts';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField, TextField } from 'components/Form';
+import { InputField, SelectField, TextField } from 'components';
 
 import { protocolTypesOptions, statusTypesOptions, typeOfInterfaces } from 'consts';
 

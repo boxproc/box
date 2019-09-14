@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Modal from 'components/Modal';
+import { Modal } from 'components';
+
 import { modalNames } from 'consts';
 
-import { CloseModal, HandleAddAdminSysProp } from 'store/domains';
-
 import { AddSystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
+
+import { CloseModal, HandleAddAdminSysProp } from 'store/domains';
 
 interface AddSystemPropertyModalProps {
   closeModal: CloseModal;

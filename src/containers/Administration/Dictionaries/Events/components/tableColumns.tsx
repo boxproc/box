@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AdminEventsItem } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type EventsCell<T extends keyof AdminEventsItem> = TableCell<AdminEventsItem[T]>;
+type TCell<T extends keyof AdminEventsItem> = TableCellType<AdminEventsItem[T]>;
 
 export const tableColumns = [
     {
       maxWidth: 100,
       sortable: true,
-      Header: <Header title="ID" />,
+      Header: <TableHeader title="ID" />,
       accessor: 'id',
-      Cell: (props: EventsCell<'id'>) => (
-        <Cell
+      Cell: (props: TCell<'id'>) => (
+        <TableCell
           value={props.value}
           isNumber={true}
         />
@@ -24,10 +24,10 @@ export const tableColumns = [
     {
       maxWidth: 300,
       sortable: true,
-      Header: <Header title="Name" />,
+      Header: <TableHeader title="Name" />,
       accessor: 'name',
-      Cell: (props: EventsCell<'name'>) => (
-        <Cell
+      Cell: (props: TCell<'name'>) => (
+        <TableCell
           value={props.value}
         />
       ),

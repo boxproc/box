@@ -40,7 +40,7 @@ export interface PromiseRes<R> {
   value?: R;
 }
 
-export interface TableCell<T> extends CellInfo {
+export interface TableCellType<T> extends CellInfo {
   value: T;
 }
 

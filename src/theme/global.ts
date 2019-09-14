@@ -1,7 +1,5 @@
 import { createGlobalStyle } from './index';
 
-// import { scrollbarCss } from 'components/Scrollbar';
-
 export const GlobalStyles = createGlobalStyle`
   body {
     color: #333333;

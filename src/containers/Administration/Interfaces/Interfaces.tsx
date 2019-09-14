@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage';
+import { TablePage, withSpinner } from 'components';
+
+import { tableColumns } from './components';
 
 import { modalNames } from 'consts';
 
-import { tableColumns } from './components';
+import InterfaceFilterForm from './forms/InterfaceFilterForm';
 
 import {
   AdminInterfaceItemPrepared,
   HandleDeleteAdminInterface,
   HandleSetInterfaceId,
 } from 'store/domains';
-import InterfaceFilterForm from './forms/InterfaceFilterForm';
 
 export interface AccountsProps {
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;

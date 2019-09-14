@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Box } from '@rebass/grid';
-import { Panel, Tabs } from 'components/Tabs';
+
+import { Tabs, TabsPanel } from 'components';
 
 import {
   UserGroupMembers,
@@ -21,23 +22,23 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
 }) => {
   return (
     <Tabs>
-      <Panel title="General">
+      <TabsPanel title="General">
         <EditGeneralInfoUserGroupFrom
           onCancel={onCancel}
         />
-      </Panel>
-      <Panel title="User Group Members">
+      </TabsPanel>
+      <TabsPanel title="User Group Members">
         <Box mb="10px">
           <EditUserGroupMembersForm />
         </Box>
         <UserGroupMembers />
-      </Panel>
-      <Panel title="Group Permission">
+      </TabsPanel>
+      <TabsPanel title="Group Permission">
         <Box mb="10px">
           <EditGroupPermissionForm />
         </Box>
         <UserGroupPermission />
-      </Panel>
+      </TabsPanel>
     </Tabs>
   );
 };

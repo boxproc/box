@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { LedgerTransactionItemPrepared } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 type TCell<T extends keyof LedgerTransactionItemPrepared> =
-  TableCell<LedgerTransactionItemPrepared[T]>;
+  TableCellType<LedgerTransactionItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +25,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Account ID" />,
+    Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -37,10 +37,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Transaction Datetime" />,
+    Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isDate={true}
       />
@@ -48,10 +48,10 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    Header: <Header title="Transaction" />,
+    Header: <TableHeader title="Transaction" />,
     accessor: 'transactionTypeDescription',
     Cell: (props: TCell<'transactionTypeDescription'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),
@@ -59,10 +59,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="D/C" />,
+    Header: <TableHeader title="D/C" />,
     accessor: 'debitCreditIndicator',
     Cell: (props: TCell<'debitCreditIndicator'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),
@@ -70,10 +70,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Amount" />,
+    Header: <TableHeader title="Amount" />,
     accessor: 'amount',
     Cell: (props: TCell<'amount'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -82,10 +82,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Amount in Original Currency" />,
+    Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
     Cell: (props: TCell<'amountInOriginalCurrency'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -93,10 +93,10 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),
@@ -104,10 +104,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Currency" />,
+    Header: <TableHeader title="Currency" />,
     accessor: 'originalCurrency',
     Cell: (props: TCell<'originalCurrency'>) => (
-      <Cell
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -116,10 +116,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Conversion Rate" />,
+    Header: <TableHeader title="Conversion Rate" />,
     accessor: 'cardConversionRate',
     Cell: (props: TCell<'cardConversionRate'>) => (
-      <Cell
+      <TableCell
         value={props.value}
       />
     ),

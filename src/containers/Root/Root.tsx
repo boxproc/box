@@ -8,10 +8,13 @@ import 'theme/customScrollbar.css';
 
 import styled from 'theme';
 
-import { Container } from 'components/Container';
-import { Footer } from 'components/Footer';
-import PrivateRoute from 'components/PrivateRoute';
-import { ExternalSpinnerProps , withSpinner } from 'components/Spinner';
+import {
+  Container,
+  Footer,
+  PrivateRoute,
+  ExternalSpinnerProps,
+  withSpinner,
+} from 'components';
 
 import { basePath } from 'consts';
 

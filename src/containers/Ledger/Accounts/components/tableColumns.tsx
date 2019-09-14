@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { LedgerAccountItemPrepared } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type ACell<T extends keyof LedgerAccountItemPrepared> =
-  TableCell<LedgerAccountItemPrepared[T]>;
+type TCell<T extends keyof LedgerAccountItemPrepared> =
+  TableCellType<LedgerAccountItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: ACell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +25,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Institution" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
-    Cell: (props: ACell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -36,10 +36,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Product Name" />,
+    Header: <TableHeader title="Product Name" />,
     accessor: 'productName',
-    Cell: (props: ACell<'productName'>) => (
-      <Cell
+    Cell: (props: TCell<'productName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -47,10 +47,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Account Alias" />,
+    Header: <TableHeader title="Account Alias" />,
     accessor: 'accountAlias',
-    Cell: (props: ACell<'accountAlias'>) => (
-      <Cell
+    Cell: (props: TCell<'accountAlias'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -59,10 +59,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Customer ID" />,
+    Header: <TableHeader title="Customer ID" />,
     accessor: 'customerId',
-    Cell: (props: ACell<'customerId'>) => (
-      <Cell
+    Cell: (props: TCell<'customerId'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -71,10 +71,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="First Name" />,
+    Header: <TableHeader title="First Name" />,
     accessor: 'customerFirstName',
-    Cell: (props: ACell<'customerFirstName'>) => (
-      <Cell
+    Cell: (props: TCell<'customerFirstName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -82,10 +82,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Last Name" />,
+    Header: <TableHeader title="Last Name" />,
     accessor: 'customerLastName',
-    Cell: (props: ACell<'customerLastName'>) => (
-      <Cell
+    Cell: (props: TCell<'customerLastName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -93,10 +93,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: ACell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -104,10 +104,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Balance Settled" />,
+    Header: <TableHeader title="Balance Settled" />,
     accessor: 'balanceSettled',
-    Cell: (props: ACell<'balanceSettled'>) => (
-      <Cell
+    Cell: (props: TCell<'balanceSettled'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -116,10 +116,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Balance Available" />,
+    Header: <TableHeader title="Balance Available" />,
     accessor: 'balanceAvailable',
-    Cell: (props: ACell<'balanceAvailable'>) => (
-      <Cell
+    Cell: (props: TCell<'balanceAvailable'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -128,10 +128,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Amount Due Repayment" />,
+    Header: <TableHeader title="Amount Due Repayment" />,
     accessor: 'amountDueRepayment',
-    Cell: (props: ACell<'amountDueRepayment'>) => (
-      <Cell
+    Cell: (props: TCell<'amountDueRepayment'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -140,10 +140,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Balance Limit" />,
+    Header: <TableHeader title="Balance Limit" />,
     accessor: 'balanceLimit',
-    Cell: (props: ACell<'balanceLimit'>) => (
-      <Cell
+    Cell: (props: TCell<'balanceLimit'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -152,10 +152,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Balance Limit Shared" />,
+    Header: <TableHeader title="Balance Limit Shared" />,
     accessor: 'balanceLimitShared',
-    Cell: (props: ACell<'balanceLimitShared'>) => (
-      <Cell
+    Cell: (props: TCell<'balanceLimitShared'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -164,10 +164,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Accrued Interest" />,
+    Header: <TableHeader title="Accrued Interest" />,
     accessor: 'accruedInterest',
-    Cell: (props: ACell<'accruedInterest'>) => (
-      <Cell
+    Cell: (props: TCell<'accruedInterest'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />

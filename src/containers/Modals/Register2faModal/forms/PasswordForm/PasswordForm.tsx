@@ -3,10 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button } from 'components/Buttons';
-import { PasswordField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
-import { Paragraph } from 'components/Text';
+import { Button, ExternalSpinnerProps, Paragraph, PasswordField, withSpinner } from 'components';
 
 import { HandleUserGetAuthKey } from 'store/domains';
 

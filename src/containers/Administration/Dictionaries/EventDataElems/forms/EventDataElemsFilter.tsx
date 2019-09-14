@@ -3,8 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { SelectField } from 'components/Form';
+import { Button, SelectField } from 'components';
 
 import { HandleFilterAdminEventDataElems } from 'store/domains';
 

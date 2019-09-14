@@ -1,20 +1,20 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AuditUserActivitiesItem } from 'store/domains/audit/userActivity';
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type ACell<T extends keyof AuditUserActivitiesItem> = TableCell<AuditUserActivitiesItem[T]>;
+type TCell<T extends keyof AuditUserActivitiesItem> = TableCellType<AuditUserActivitiesItem[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: ACell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -23,10 +23,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="User Name" />,
+    Header: <TableHeader title="User Name" />,
     accessor: 'username',
-    Cell: (props: ACell<'username'>) => (
-      <Cell
+    Cell: (props: TCell<'username'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -34,10 +34,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Event Date Time" />,
+    Header: <TableHeader title="Event Date Time" />,
     accessor: 'eventDatetime',
-    Cell: (props: ACell<'eventDatetime'>) => (
-      <Cell
+    Cell: (props: TCell<'eventDatetime'>) => (
+      <TableCell
         value={props.value}
         isDate={true}
       />
@@ -46,20 +46,20 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="API Name" />,
+    Header: <TableHeader title="API Name" />,
     accessor: 'apiName',
-    Cell: (props: ACell<'apiName'>) => (
-      <Cell
+    Cell: (props: TCell<'apiName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
-    Cell: (props: ACell<'description'>) => (
-      <Cell
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
         value={props.value}
       />
     ),

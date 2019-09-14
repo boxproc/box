@@ -3,11 +3,16 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components/Buttons';
-import { OkCancelButtons } from 'components/Buttons/OkCancelButtons';
-import { Hr } from 'components/Delimiter';
-import { InputField, SelectField, TextField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import {
+  Button,
+  ExternalSpinnerProps,
+  Hr,
+  InputField,
+  OkCancelButtons,
+  SelectField,
+  TextField,
+  withSpinner
+} from 'components';
 
 import {
   cycleTypes,

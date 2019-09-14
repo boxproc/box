@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage';
-import { tableColumns } from 'containers/Administration/Permission/Users/components';
+import { TablePage, withSpinner } from 'components';
 
 import { modalNames } from 'consts';
 
-import { UserFilter } from 'containers/Administration/Permission/Users/forms';
+import { tableColumns } from './components';
+import { UserFilter } from './forms';
 
 import {
   AdminUserItemPrepared,

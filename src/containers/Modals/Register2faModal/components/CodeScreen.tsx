@@ -4,9 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'styled-components';
 
-import { Button } from 'components/Buttons';
-import CircleList from 'components/CircleList';
-import { Hr } from 'components/Delimiter';
+import { Button, CircleList, Hr } from 'components';
 
 const DashedBlock = styled.div`
   margin: 10px 0 20px;

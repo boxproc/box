@@ -1,9 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
 import { formNames } from 'consts';
 

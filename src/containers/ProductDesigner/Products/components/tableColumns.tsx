@@ -1,22 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
-import { renderCheckBoxIcon } from 'components/Table/utils';
+import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
 
 import { ProductItem } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type PCell<T extends keyof ProductItem> = TableCell<ProductItem[T]>;
+type TCell<T extends keyof ProductItem> = TableCellType<ProductItem[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: PCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +24,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Institution" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
-    Cell: (props: PCell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -36,20 +35,20 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Name" />,
+    Header: <TableHeader title="Name" />,
     accessor: 'name',
-    Cell: (props: PCell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
-    Cell: (props: PCell<'description'>) => (
-      <Cell
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -57,10 +56,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: PCell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -68,10 +67,10 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <Header title="Product Type" />,
+    Header: <TableHeader title="Product Type" />,
     accessor: 'productType',
-    Cell: (props: PCell<'productType'>) => (
-      <Cell
+    Cell: (props: TCell<'productType'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -79,10 +78,10 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <Header title="Scheme" />,
+    Header: <TableHeader title="Scheme" />,
     accessor: 'scheme',
-    Cell: (props: PCell<'scheme'>) => (
-      <Cell
+    Cell: (props: TCell<'scheme'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -90,10 +89,10 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <Header title="Currency code" />,
+    Header: <TableHeader title="Currency code" />,
     accessor: 'currencyCode',
-    Cell: (props: PCell<'currencyCode'>) => (
-      <Cell
+    Cell: (props: TCell<'currencyCode'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -101,10 +100,10 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <Header title="History Retention Number of Days" />,
+    Header: <TableHeader title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDay',
-    Cell: (props: PCell<'historyRetentionNumberOfDay'>) => (
-      <Cell
+    Cell: (props: TCell<'historyRetentionNumberOfDay'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -113,10 +112,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Default Statement Cycle" />,
+    Header: <TableHeader title="Default Statement Cycle" />,
     accessor: 'defaultStatementCycleId',
-    Cell: (props: PCell<'defaultStatementCycleId'>) => (
-      <Cell
+    Cell: (props: TCell<'defaultStatementCycleId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -124,8 +123,8 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Locked" />,
+    Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',
-    Cell: renderCheckBoxIcon(),
+    Cell: renderCheckBoxIconTableCell(),
   },
 ];

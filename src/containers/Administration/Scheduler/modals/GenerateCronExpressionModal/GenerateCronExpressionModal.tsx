@@ -1,7 +1,6 @@
 import React from 'react';
 
-import CronGenerator from 'components/CronGenerator';
-import Modal from 'components/Modal';
+import { CronGenerator, Modal } from 'components';
 
 import { modalNames } from 'consts';
 

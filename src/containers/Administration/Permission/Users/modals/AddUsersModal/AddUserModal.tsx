@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Modal from 'components/Modal';
+import { Modal } from 'components';
+
 import { modalNames } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';

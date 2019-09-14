@@ -1,9 +1,12 @@
 import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
-import { SelectField } from 'components/Form';
 import { Field } from 'redux-form';
+
+import { SelectField } from 'components';
+
 import { HandleGetEndpointsService, HandleGetInterfacesService } from 'store/domains';
+
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 

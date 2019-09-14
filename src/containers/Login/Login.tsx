@@ -4,11 +4,16 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
+import { highlightCss } from 'theme/highlightCss';
 
-import { Button } from 'components/Buttons';
-import { CheckboxField, InputField, PasswordField } from 'components/Form';
-import { highlightCss } from 'components/highlightCss';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import {
+  Button,
+  CheckboxField,
+  ExternalSpinnerProps,
+  InputField,
+  PasswordField,
+  withSpinner,
+} from 'components';
 
 import { basePath, formNames } from 'consts';
 

@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AdminEventDataElemsItem } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type EDECell<T extends keyof AdminEventDataElemsItem> = TableCell<AdminEventDataElemsItem[T]>;
+type TCell<T extends keyof AdminEventDataElemsItem> = TableCellType<AdminEventDataElemsItem[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'eventId',
-    Cell: (props: EDECell<'eventId'>) => (
-      <Cell
+    Cell: (props: TCell<'eventId'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -24,10 +24,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Name" />,
+    Header: <TableHeader title="Name" />,
     accessor: 'name',
-    Cell: (props: EDECell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -35,10 +35,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Description" />,
+    Header: <TableHeader title="Description" />,
     accessor: 'description',
-    Cell: (props: EDECell<'description'>) => (
-      <Cell
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -46,10 +46,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Event" />,
+    Header: <TableHeader title="Event" />,
     accessor: 'event',
-    Cell: (props: EDECell<'event'>) => (
-      <Cell
+    Cell: (props: TCell<'event'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -57,10 +57,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Data Type" />,
+    Header: <TableHeader title="Data Type" />,
     accessor: 'dataType',
-    Cell: (props: EDECell<'dataType'>) => (
-      <Cell
+    Cell: (props: TCell<'dataType'>) => (
+      <TableCell
         value={props.value}
       />
     ),

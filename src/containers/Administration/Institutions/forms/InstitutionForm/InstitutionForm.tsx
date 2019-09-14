@@ -3,10 +3,15 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, OkCancelButtons } from 'components/Buttons';
-import { Hr } from 'components/Delimiter';
-import { InputField, SelectField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import {
+  Button,
+  ExternalSpinnerProps,
+  Hr,
+  InputField,
+  OkCancelButtons,
+  SelectField,
+  withSpinner,
+} from 'components';
 
 import { formNames, statusTypesOptions } from 'consts';
 

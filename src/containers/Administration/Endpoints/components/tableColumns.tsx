@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { AdminEndpointItemPrepared } from 'store/domains';
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type ACell<T extends keyof AdminEndpointItemPrepared> =
-  TableCell<AdminEndpointItemPrepared[T]>;
+type TCell<T extends keyof AdminEndpointItemPrepared> =
+  TableCellType<AdminEndpointItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: ACell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -24,10 +24,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Institution" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
-    Cell: (props: ACell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -35,10 +35,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Name" />,
+    Header: <TableHeader title="Name" />,
     accessor: 'name',
-    Cell: (props: ACell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -46,10 +46,10 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Port" />,
+    Header: <TableHeader title="Port" />,
     accessor: 'port',
-    Cell: (props: ACell<'port'>) => (
-      <Cell
+    Cell: (props: TCell<'port'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -58,10 +58,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Private Key Location" />,
+    Header: <TableHeader title="Private Key Location" />,
     accessor: 'privateKeyLocation',
-    Cell: (props: ACell<'privateKeyLocation'>) => (
-      <Cell
+    Cell: (props: TCell<'privateKeyLocation'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -69,10 +69,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: ACell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -80,20 +80,20 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Type" />,
+    Header: <TableHeader title="Type" />,
     accessor: 'type',
-    Cell: (props: ACell<'type'>) => (
-      <Cell
+    Cell: (props: TCell<'type'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="Connection Attributes" />,
+    Header: <TableHeader title="Connection Attributes" />,
     accessor: 'connectionAttributes',
-    Cell: (props: ACell<'connectionAttributes'>) => (
-      <Cell
+    Cell: (props: TCell<'connectionAttributes'>) => (
+      <TableCell
         value={props.value}
       />
     ),

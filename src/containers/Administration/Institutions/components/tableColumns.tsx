@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 interface AdminInstitutionsItemPrepared {
   id: number;
@@ -12,17 +12,17 @@ interface AdminInstitutionsItemPrepared {
   sftpPublicKey?: string;
 }
 
-type ICell<T extends keyof AdminInstitutionsItemPrepared> =
-  TableCell<AdminInstitutionsItemPrepared[T]>;
+type TCell<T extends keyof AdminInstitutionsItemPrepared> =
+  TableCellType<AdminInstitutionsItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: ICell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -31,10 +31,10 @@ export const tableColumns = [
   {
     maxWidth: 300,
     sortable: true,
-    Header: <Header title="Name" />,
+    Header: <TableHeader title="Name" />,
     accessor: 'name',
-    Cell: (props: ICell<'name'>) => (
-      <Cell
+    Cell: (props: TCell<'name'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -42,30 +42,30 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: ICell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="SFTP Location" />,
+    Header: <TableHeader title="SFTP Location" />,
     accessor: 'sftpLocation',
-    Cell: (props: ICell<'sftpLocation'>) => (
-      <Cell
+    Cell: (props: TCell<'sftpLocation'>) => (
+      <TableCell
         value={props.value}
       />
     ),
   },
   {
     sortable: true,
-    Header: <Header title="SFTP Public Key" />,
+    Header: <TableHeader title="SFTP Public Key" />,
     accessor: 'sftpPublicKey',
-    Cell: (props: ICell<'sftpPublicKey'>) => (
-      <Cell
+    Cell: (props: TCell<'sftpPublicKey'>) => (
+      <TableCell
         value={props.value}
       />
     ),

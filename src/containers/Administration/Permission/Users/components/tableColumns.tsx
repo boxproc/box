@@ -1,22 +1,21 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
-import { renderCheckBoxIcon } from 'components/Table/utils';
+import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
 
 import { AdminUserItemPrepared } from 'store/domains/administration/permissions/users';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type SCell<T extends keyof AdminUserItemPrepared> = TableCell<AdminUserItemPrepared[T]>;
+type TCell<T extends keyof AdminUserItemPrepared> = TableCellType<AdminUserItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: SCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -25,10 +24,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Username" />,
+    Header: <TableHeader title="Username" />,
     accessor: 'username',
-    Cell: (props: SCell<'username'>) => (
-      <Cell
+    Cell: (props: TCell<'username'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -36,10 +35,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="First Name" />,
+    Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
-    Cell: (props: SCell<'firstName'>) => (
-      <Cell
+    Cell: (props: TCell<'firstName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -47,10 +46,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Last Name" />,
+    Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
-    Cell: (props: SCell<'lastName'>) => (
-      <Cell
+    Cell: (props: TCell<'lastName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -58,10 +57,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Email" />,
+    Header: <TableHeader title="Email" />,
     accessor: 'email',
-    Cell: (props: SCell<'email'>) => (
-      <Cell
+    Cell: (props: TCell<'email'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -69,10 +68,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: SCell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -80,24 +79,24 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="2FA Required" />,
+    Header: <TableHeader title="2FA Required" />,
     accessor: 'requires2faFlag',
-    Cell: renderCheckBoxIcon(),
+    Cell: renderCheckBoxIconTableCell(),
   },
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Change Profile Allowed" />,
+    Header: <TableHeader title="Change Profile Allowed" />,
     accessor: 'changeProfileAllowedFlag',
-    Cell: renderCheckBoxIcon(),
+    Cell: renderCheckBoxIconTableCell(),
   },
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="Password entry counter" />,
+    Header: <TableHeader title="Password entry counter" />,
     accessor: 'passwordEntryCounter',
-    Cell: (props: SCell<'passwordEntryCounter'>) => (
-      <Cell
+    Cell: (props: TCell<'passwordEntryCounter'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -106,10 +105,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Datetime of last login" />,
+    Header: <TableHeader title="Datetime of last login" />,
     accessor: 'datetimeOfLastLogin',
-    Cell: (props: SCell<'datetimeOfLastLogin'>) => (
-      <Cell
+    Cell: (props: TCell<'datetimeOfLastLogin'>) => (
+      <TableCell
         value={props.value}
         isDate={true}
       />

@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table/Table';
+import {
+  renderCheckBoxIconTableCell,
+  renderEditableTableCell,
+  TableCell,
+  TableHeader,
+  TablePage,
+  withSpinner,
+} from 'components';
 
-import { withSpinner } from 'components/Spinner';
-import TablePage from 'components/TablePage';
-
-import { renderCheckBoxIcon, renderEditable } from 'components/Table/utils';
 import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
 
 import { modalNames } from 'consts';
@@ -18,7 +21,7 @@ import {
   HandleUpdateAdminSysProps,
 } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
@@ -30,7 +33,7 @@ interface SystemPropertiesProps {
   isFilterFormDirty: boolean;
 }
 
-type SPCell<T extends keyof AdminSysPropsItem> = TableCell<AdminSysPropsItem[T]>;
+type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[T]>;
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -45,26 +48,26 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       maxWidth: 300,
       sortable: true,
-      Header: <Header title="Property Name" />,
+      Header: <TableHeader title="Property Name" />,
       accessor: 'id',
-      Cell: (props: SPCell<'id'>) => (
-        <Cell
+      Cell: (props: TCell<'id'>) => (
+        <TableCell
           value={props.value}
         />
       ),
     },
     {
       sortable: true,
-      Header: <Header title="Current Value" />,
+      Header: <TableHeader title="Current Value" />,
       accessor: 'currentValue',
-      Cell: renderEditable(updateAdminSysProps),
+      Cell: renderEditableTableCell(updateAdminSysProps),
     },
     {
       sortable: true,
-      Header: <Header title="Previous Value" />,
+      Header: <TableHeader title="Previous Value" />,
       accessor: 'previousValue',
-      Cell: (props: SPCell<'previousValue'>) => (
-        <Cell
+      Cell: (props: TCell<'previousValue'>) => (
+        <TableCell
           value={props.value}
           isNumber={true}
         />
@@ -73,10 +76,10 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       maxWidth: 200,
       sortable: true,
-      Header: <Header title="Last Datetime" />,
+      Header: <TableHeader title="Last Datetime" />,
       accessor: 'lastDatetime',
-      Cell: (props: SPCell<'lastDatetime'>) => (
-        <Cell
+      Cell: (props: TCell<'lastDatetime'>) => (
+        <TableCell
           value={props.value}
           isDate={true}
         />
@@ -85,9 +88,9 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     {
       maxWidth: 100,
       sortable: true,
-      Header: <Header title="Locked" />,
+      Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIcon(),
+      Cell: renderCheckBoxIconTableCell(),
     },
   ];
 

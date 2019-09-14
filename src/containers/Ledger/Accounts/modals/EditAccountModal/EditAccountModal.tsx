@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Modal from 'components/Modal';
+import { Modal } from 'components';
 
 import { modalNames, modalTypes } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { CloseModal, LedgerAccountItemDetailsPrepared } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface EditAccountModalProps {

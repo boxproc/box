@@ -3,9 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button } from 'components/Buttons';
-import { SelectField } from 'components/Form';
-import { ExternalSpinnerProps, withSpinner } from 'components/Spinner';
+import { Button, ExternalSpinnerProps, SelectField, withSpinner } from 'components';
 
 import { formNames } from 'consts';
 

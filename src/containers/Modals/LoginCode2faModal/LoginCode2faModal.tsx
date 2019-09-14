@@ -2,8 +2,7 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import CircleList from 'components/CircleList';
-import Modal from 'components/Modal';
+import { CircleList, Modal } from 'components';
 
 import { modalNames } from 'consts';
 

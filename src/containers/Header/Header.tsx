@@ -5,12 +5,11 @@ import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
-import { Container } from 'components/Container';
-import Navbar from 'components/Navbar';
-import { withSpinner } from 'components/Spinner';
-import { HelpDropdown, UserDropdown } from './components';
+import { Container, Navbar, withSpinner } from 'components';
 
 import { basePath, boxInstitutionName } from 'consts';
+
+import { HelpDropdown, UserDropdown } from './components';
 
 import {
   HandleGetInstitutions,

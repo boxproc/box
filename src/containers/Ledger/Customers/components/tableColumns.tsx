@@ -1,21 +1,22 @@
 import React from 'react';
 
-import { Cell, Header } from 'components/Table';
+import { TableCell, TableHeader } from 'components';
 
 import { LedgerCustomerItemPrepared } from 'store/domains';
 
-import { TableCell } from 'types';
+import { TableCellType } from 'types';
 
-type CCell<T extends keyof LedgerCustomerItemPrepared> = TableCell<LedgerCustomerItemPrepared[T]>;
+type TCell<T extends keyof LedgerCustomerItemPrepared> =
+  TableCellType<LedgerCustomerItemPrepared[T]>;
 
 export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <Header title="ID" />,
+    Header: <TableHeader title="ID" />,
     accessor: 'id',
-    Cell: (props: CCell<'id'>) => (
-      <Cell
+    Cell: (props: TCell<'id'>) => (
+      <TableCell
         value={props.value}
         isNumber={true}
       />
@@ -24,10 +25,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Institution" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
-    Cell: (props: CCell<'institutionId'>) => (
-      <Cell
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -35,10 +36,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="First Name" />,
+    Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
-    Cell: (props: CCell<'firstName'>) => (
-      <Cell
+    Cell: (props: TCell<'firstName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -46,10 +47,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Last Name" />,
+    Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
-    Cell: (props: CCell<'lastName'>) => (
-      <Cell
+    Cell: (props: TCell<'lastName'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -57,10 +58,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Status" />,
+    Header: <TableHeader title="Status" />,
     accessor: 'status',
-    Cell: (props: CCell<'status'>) => (
-      <Cell
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -68,10 +69,10 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <Header title="Date of Birth" />,
+    Header: <TableHeader title="Date of Birth" />,
     accessor: 'dateOfBirth',
-    Cell: (props: CCell<'dateOfBirth'>) => (
-      <Cell
+    Cell: (props: TCell<'dateOfBirth'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -79,10 +80,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Email" />,
+    Header: <TableHeader title="Email" />,
     accessor: 'email',
-    Cell: (props: CCell<'email'>) => (
-      <Cell
+    Cell: (props: TCell<'email'>) => (
+      <TableCell
         value={props.value}
       />
     ),
@@ -90,10 +91,10 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <Header title="Mobile Phone" />,
+    Header: <TableHeader title="Mobile Phone" />,
     accessor: 'mobilePhoneNumber',
-    Cell: (props: CCell<'mobilePhoneNumber'>) => (
-      <Cell
+    Cell: (props: TCell<'mobilePhoneNumber'>) => (
+      <TableCell
         value={props.value}
       />
     ),
