@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 import { Button, CircleList, Hr } from 'components';
 
+import { iconNamesConst } from 'consts';
+
 const DashedBlock = styled.div`
   margin: 10px 0 20px;
   padding: 10px;
@@ -51,7 +53,7 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
       <Flex justifyContent="space-between">
         <Button
           text="Regenerate key"
-          iconName="qrcode"
+          iconName={iconNamesConst.QRCODE}
           onClick={onRegenerate}
         />
         <Button

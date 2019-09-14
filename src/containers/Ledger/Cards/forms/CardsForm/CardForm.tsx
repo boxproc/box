@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { ExternalSpinnerProps, InputField, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 interface CardInfoFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
@@ -88,7 +88,7 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
 };
 
 export default reduxForm<{}, CardInfoFormProps>({
-  form: formNames.LEDGER_CARDS,
+  form: formNamesConst.LEDGER_CARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(CardInfoForm));

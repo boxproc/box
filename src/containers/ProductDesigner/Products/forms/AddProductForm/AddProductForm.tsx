@@ -10,7 +10,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   ProductDetails,
@@ -74,7 +74,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
 };
 
 export default reduxForm<{}, AddProductFormProps>({
-  form: formNames.ADD_PRODUCT,
+  form: formNamesConst.ADD_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AddProductForm));

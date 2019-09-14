@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { AddProductForm } from 'containers/ProductDesigner/Products/forms';
 
@@ -13,7 +13,7 @@ interface AddProductModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_PRODUCT;
+const modalName = modalNamesConst.ADD_PRODUCT;
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,

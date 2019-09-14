@@ -5,7 +5,13 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, InputField, OkCancelButtons, SelectField, TextField } from 'components';
 
-import { executableTypeOptions, formNames, modalNames, schedulerStatusTypesOptions } from 'consts';
+import {
+  executableTypeOptions,
+  formNamesConst,
+  iconNamesConst,
+  modalNamesConst,
+  schedulerStatusTypesOptions,
+} from 'consts';
 
 import {
   HandleAddAdminSchedulerJob,
@@ -157,7 +163,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               underline={true}
               onClick={() => {
                 openModal({
-                  name: modalNames.GENERATE_CRON_EXPRESSION,
+                  name: modalNamesConst.GENERATE_CRON_EXPRESSION,
                 });
               }}
             />
@@ -173,7 +179,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           {isEditable && (
             <Button
               text="delete"
-              iconName="delete"
+              iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete scheduler "${currentSchedulerName}"?`}
@@ -194,7 +200,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineSchedulerJobFormProps>({
-  form: formNames.DEFINE_ADMIN_SCHEDULER_JOB,
+  form: formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB,
   keepDirtyOnReinitialize: true,
   destroyOnUnmount: true,
   enableReinitialize: true,

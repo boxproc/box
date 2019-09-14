@@ -4,7 +4,7 @@ import { Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { LedgerTransactionsForm } from 'containers/Ledger/Transactions/forms';
 
@@ -14,7 +14,7 @@ interface EditTransactionModalProps {
   closeModal: CloseModal;
 }
 
-const modalName = modalNames.LEDGER_TRANSACTION;
+const modalName = modalNamesConst.LEDGER_TRANSACTION;
 
 const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   closeModal,
@@ -22,7 +22,7 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title="Transaction"
       closeOnBackdrop={true}
       maxContainerWidth={600}

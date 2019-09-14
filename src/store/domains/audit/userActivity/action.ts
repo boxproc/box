@@ -1,4 +1,4 @@
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 import { getFormValues } from 'redux-form';
 
 import { ActionTypeKeys, FilterUserActivitiesAction, GetAuditUsersAction } from './actionType';
@@ -41,7 +41,7 @@ export const handleFilterAuditUserActivities: HandleFilterAuditUserActivities = 
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.AUDIT_USER_ACTIVITIES_FILTER);
+        const formValues = getFormValues(formNamesConst.AUDIT_USER_ACTIVITIES_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 

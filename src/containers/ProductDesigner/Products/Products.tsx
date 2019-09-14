@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from 'containers/ProductDesigner/Products/components';
 import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
@@ -50,8 +50,8 @@ export const Products: React.FC<ProductsProps> = ({
       title="Products"
       data={productItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_PRODUCT}
-      editModalName={modalNames.EDIT_PRODUCT}
+      addNewModalName={modalNamesConst.ADD_PRODUCT}
+      editModalName={modalNamesConst.EDIT_PRODUCT}
       setCurrentIdAction={getProductId}
       contextMenuItems={contextMenuItems}
       FilterForm={

@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, formNames, maskFormat } from 'consts';
+import { dateFormat, formNamesConst, maskFormat } from 'consts';
 
 import { HandleFilterLedgerTransactions, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -134,7 +134,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, TransactionsFilterFormProps>({
-  form: formNames.LEDGER_TRANSACTIONS_FILTER,
+  form: formNamesConst.LEDGER_TRANSACTIONS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(TransactionsFilterForm);

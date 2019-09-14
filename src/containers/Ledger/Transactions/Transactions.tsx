@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
@@ -23,7 +23,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       title="Transactions"
       data={ledgerTransactions}
       columns={tableColumns}
-      editModalName={modalNames.LEDGER_TRANSACTION}
+      editModalName={modalNamesConst.LEDGER_TRANSACTION}
       setCurrentIdAction={setLedgerTransactionId}
       FilterForm={
         <TransactionsFilterForm />

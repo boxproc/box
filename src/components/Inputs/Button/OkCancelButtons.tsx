@@ -6,7 +6,7 @@ import styled from 'theme';
 
 import { Button, Hint } from 'components';
 
-import { messages } from 'consts';
+import { messagesConst } from 'consts';
 
 interface WrapperProps {
   rightPosition?: boolean;
@@ -50,8 +50,8 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   hintCancel,
   rightPosition = false,
   withCancelConfirmation = false,
-  cancelConfirmationText = messages.UNSAVED_CHANGES,
-  cancelConfirmationTitle = messages.CLOSE_MODAL_WINDOW,
+  cancelConfirmationText = messagesConst.UNSAVED_CHANGES,
+  cancelConfirmationTitle = messagesConst.CLOSE_MODAL_WINDOW,
 }) => {
   return (
     <Wrapper rightPosition={rightPosition} >

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
@@ -15,7 +15,7 @@ interface AddAccountModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_LEDGER_ACCOUNT;
+const modalName = modalNamesConst.ADD_LEDGER_ACCOUNT;
 
 const AddAccountModal: React.FC<AddAccountModalProps> = ({
   closeModal,

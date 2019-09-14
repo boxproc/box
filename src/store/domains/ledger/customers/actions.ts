@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -84,7 +84,7 @@ export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
         const id = selectLedgerCustomerCurrentId(state);
 
         await dispatch(deleteLedgerCustomer(id));
-        await dispatch(closeModal(modalNames.EDIT_LEDGER_CUSTOMER));
+        await dispatch(closeModal(modalNamesConst.EDIT_LEDGER_CUSTOMER));
       },
       dispatch
     );
@@ -97,9 +97,9 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerCustomer(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_LEDGER_CUSTOMER));
+        await dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
         await dispatch(handleFilterLedgerCustomers());
-        await dispatch(resetForm(formNames.ADD_LEDGER_CUSTOMER));
+        await dispatch(resetForm(formNamesConst.ADD_LEDGER_CUSTOMER));
       },
       dispatch
     );
@@ -122,7 +122,7 @@ export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.LEDGER_CUSTOMERS_FILTER);
+        const formValues = getFormValues(formNamesConst.LEDGER_CUSTOMERS_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 

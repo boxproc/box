@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal, withSpinner } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditUserGroupForms } from 'containers/Administration/Permission/UsersGroup/forms';
 
@@ -13,7 +13,7 @@ interface EditUsersGroupModalProps {
   usersGroupName: string;
 }
 
-const modalName = modalNames.EDIT_ADMIN_USERS_GROUP;
+const modalName = modalNamesConst.EDIT_ADMIN_USERS_GROUP;
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
@@ -24,7 +24,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title={`Edit User Group${groupName}`}
       minContainerHeight={550}
     >

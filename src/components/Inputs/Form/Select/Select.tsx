@@ -10,7 +10,7 @@ import { Close as CloseIcon } from 'styled-icons/evil/Close';
 import styled from 'theme';
 import { scrollbarCss } from 'theme/scrollbarCss';
 
-import { ChevronIcon } from 'components';
+import { ChevronDownIcon } from 'components';
 import MultiSelectOption from './Option';
 
 import { customStyles } from './customStyles';
@@ -25,7 +25,7 @@ const WithCustomScrollbar = styled.div`
 const DropdownIndicator = <T extends {}>(props: IndicatorProps<T>) => {
   return components.DropdownIndicator && (
     <components.DropdownIndicator {...props}>
-      <ChevronIcon />
+      <ChevronDownIcon size="16" />
     </components.DropdownIndicator>
   );
 };

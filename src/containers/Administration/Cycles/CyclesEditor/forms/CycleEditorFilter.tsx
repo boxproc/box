@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, CheckboxField, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleFilterCycles } from 'store/domains';
 
@@ -74,7 +74,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
 };
 
 export default reduxForm<{}, CycleEditorFilterProps>({
-  form: formNames.CYCLES_EDITOR_FILTER,
+  form: formNamesConst.CYCLES_EDITOR_FILTER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(CyclesEditorFilter);

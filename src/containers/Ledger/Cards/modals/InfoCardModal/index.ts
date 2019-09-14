@@ -4,7 +4,7 @@ import { formValueSelector } from 'redux-form';
 
 import InfoCardModal from './InfoCardModal';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 import {
   closeModal,
   handleActivateLedgerCard,
@@ -13,7 +13,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNames.LEDGER_CARDS);
+const formSelector = formValueSelector(formNamesConst.LEDGER_CARDS);
 
 const mapStateToProps = (state: StoreState) => ({
     ledgerCurrentCard: selectLedgerCardValues(state),

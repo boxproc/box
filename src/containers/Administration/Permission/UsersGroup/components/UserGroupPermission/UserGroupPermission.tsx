@@ -3,6 +3,8 @@ import { CellInfo } from 'react-table';
 
 import { Button, T4, Table, TableCell, TableHeader, TableNoData, withSpinner } from 'components';
 
+import { iconNamesConst } from 'consts';
+
 import {
   AdminGroupPermissionItem,
   HandleDeleteAdminGroupPermissions,
@@ -62,7 +64,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       accessor: 'deleteButton',
       Cell: (cellInfo: CellInfo) => (
         <Button
-          iconName="delete"
+          iconName={iconNamesConst.DELETE}
           text="Remove"
           size="11"
           confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}

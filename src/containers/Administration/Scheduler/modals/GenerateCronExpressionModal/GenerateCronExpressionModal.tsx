@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CronGenerator, Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { HandleSetGeneratedCronExpression } from 'store/domains';
 
@@ -12,7 +12,7 @@ interface GenerateCronExpressionModalProps {
   generatedCronExpression: string;
 }
 
-const modalName = modalNames.GENERATE_CRON_EXPRESSION;
+const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 
 const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = ({
   currentCronExpression,

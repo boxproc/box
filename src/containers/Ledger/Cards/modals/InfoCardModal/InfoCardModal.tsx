@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm } from 'containers/Ledger/Cards/forms';
 
@@ -18,7 +18,7 @@ interface InfoAccountModalProps {
   statusValue: string;
 }
 
-const modalName = modalNames.INFO_LEDGER_CARDS;
+const modalName = modalNamesConst.INFO_LEDGER_CARDS;
 
 const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   closeModal,
@@ -31,7 +31,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title="Card"
       maxContainerWidth={500}
       minContainerHeight={250}
@@ -42,7 +42,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
             disabled={isStatusActive}
             type="reset"
             onClick={() => activateLedgerCard(ledgerCardPanAlias)}
-            iconName="activateCard"
             text="Activate Card"
           />
         </Box>
@@ -59,7 +58,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           <Button
             rightPosition={true}
             onClick={() => closeModal(modalName)}
-            iconName="closeModal"
             text="Close"
           />
         </Box>

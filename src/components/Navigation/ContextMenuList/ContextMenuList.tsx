@@ -1,15 +1,14 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 
-import { LockAlt } from 'styled-icons/boxicons-solid/LockAlt';
-import { Edit } from 'styled-icons/fa-regular/Edit';
-import { Delete } from 'styled-icons/material/Delete';
+import { DeleteIcon, EditIcon, LockIcon } from 'components';
 
 import styled from 'theme';
+import './styles.css';
+
+import { iconNamesConst } from 'consts';
 
 import { ContextMenuItem } from 'types';
-
-import './styles.css';
 
 interface ContextMenuWrapperProps {
   isVisible?: boolean;
@@ -44,12 +43,12 @@ interface ContextMenuListProps {
 
 const renderIcon = (name: string) => {
   switch (name) {
-    case 'edit':
-      return (<Edit size="13" />);
-    case 'delete':
-      return (<Delete size="15" />);
-    case 'lock':
-      return (<LockAlt size="15" />);
+    case iconNamesConst.EDIT:
+      return (<EditIcon size="13" />);
+    case iconNamesConst.DELETE:
+      return (<DeleteIcon size="15" />);
+    case iconNamesConst.LOCK:
+      return (<LockIcon size="15" />);
     default:
       return null;
   }
@@ -99,9 +98,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
             );
           })
           : (
-            <MenuItem>
-              {noDataStr}
-            </MenuItem>
+            <MenuItem>{noDataStr}</MenuItem>
           )}
       </ContextMenu>
     </ContextMenuWrapper>

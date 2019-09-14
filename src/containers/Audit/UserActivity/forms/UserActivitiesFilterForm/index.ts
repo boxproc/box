@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector, isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import UserActivitiesFilterForm from './UserActivitiesFilterForm';
 
@@ -17,8 +17,8 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNames.AUDIT_USER_ACTIVITIES_FILTER);
-const dirty = isDirty(formNames.AUDIT_USER_ACTIVITIES_FILTER);
+const formSelector = formValueSelector(formNamesConst.AUDIT_USER_ACTIVITIES_FILTER);
+const dirty = isDirty(formNamesConst.AUDIT_USER_ACTIVITIES_FILTER);
 
 const loadingSelector = createLoadingSelector([
   AuditUserActivityActionType.GET_AUDIT_USERS,

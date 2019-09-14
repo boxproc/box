@@ -1,14 +1,14 @@
 import {
   actionTypesOptions,
   loanTypesOptions,
-  productTypes,
+  productTypesConst,
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
   statementCyclesOptions,
-  statusTypes,
+  statusTypesConst,
   statusTypesOptions,
-  yesNoTypes,
+  yesNoTypesConst,
 } from 'consts';
 
 import {
@@ -37,7 +37,7 @@ import { SelectValues } from 'types';
 export const prepareProductFiltersParams =
   (params: ProductFilterParamsPrepared): ProductFilterParams => {
     return {
-      activeStatusFlag: params.status === statusTypes.ACTIVE,
+      activeStatusFlag: params.status === statusTypesConst.ACTIVE,
       productType: params.product_type ?
         params.product_type.map(type => productTypesOptions
           .find(el => el.value === type)) : null,
@@ -49,7 +49,7 @@ export const prepareProductFiltersParamsToSend =
     const { activeStatusFlag, institutionId, productType } = params;
 
     return {
-      status: activeStatusFlag ? statusTypes.ACTIVE : null,
+      status: activeStatusFlag ? statusTypesConst.ACTIVE : null,
       institution_id: institutionId ? institutionId.value : null,
       product_type: productType && productType.length ? productType.map(type => type.value) : null,
     };
@@ -82,7 +82,7 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
     defaultStatementCycleId:
       statementCyclesOptions.find(el => el.value === item.default_statement_cycle_id).label,
     currencyCode: item.currency_code,
-    lockedFlag: item.locked_flag === yesNoTypes.YES ? true : false,
+    lockedFlag: item.locked_flag === yesNoTypesConst.YES ? true : false,
   };
 };
 
@@ -96,7 +96,7 @@ export const prepareGeneralProductValues =
       productType: productTypesOptions.find(el => el.value === product.product_type),
       status: statusTypesOptions.find(el => el.value === product.status),
       scheme: schemeTypesOptions.find(el => el.value === product.scheme),
-      lockedFlag: product.locked_flag === yesNoTypes.YES ? true : false,
+      lockedFlag: product.locked_flag === yesNoTypesConst.YES ? true : false,
       defaultStatementCycleId:
         statementCyclesOptions.find(el => el.value === product.default_statement_cycle_id),
     };
@@ -115,7 +115,7 @@ export const prepareGeneralProductValuesToSend =
       scheme: product.scheme.value,
       history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
       default_statement_cycle_id: product.defaultStatementCycleId.value,
-      locked_flag: product.lockedFlag ? yesNoTypes.YES : yesNoTypes.NO,
+      locked_flag: product.lockedFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
     };
   };
 
@@ -123,15 +123,15 @@ export const prepareProductDetailsValues =
   (product: any, productType: SelectValues) => {
     const type = productType.value;
 
-    if (type === productTypes.DEBIT) {
+    if (type === productTypesConst.DEBIT) {
       return prepareDebit(product);
-    } else if (type === productTypes.LOAN) {
+    } else if (type === productTypesConst.LOAN) {
       return prepareLoan(product);
-    } else if (type === productTypes.PREPAID) {
+    } else if (type === productTypesConst.PREPAID) {
       return preparePrepaid(product);
-    } else if (type === productTypes.REVOLVING_CREDIT) {
+    } else if (type === productTypesConst.REVOLVING_CREDIT) {
       return prepareRevolvingCredit(product);
-    } else if (type === productTypes.SAVINGS) {
+    } else if (type === productTypesConst.SAVINGS) {
       return prepareSavings(product);
     } else {
       return null;
@@ -156,7 +156,7 @@ export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) 
      product.minimum_payment_amount.toFixed(2),
     paymentGraceNumberOfDays: product.payment_grace_number_of_days,
     limitSharingAllowedFlag:
-      product.limit_sharing_allowed_flag === yesNoTypes.YES ? true : false,
+      product.limit_sharing_allowed_flag === yesNoTypesConst.YES ? true : false,
   };
 };
 
@@ -176,7 +176,7 @@ export const prepareRevolvingCreditToSend = (product: RevolvingCreditProductItem
     minimum_payment_amount: Number(product.minimumPaymentAmount),
     payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
     limit_sharing_allowed_flag:
-      product.limitSharingAllowedFlag === true ? yesNoTypes.YES : yesNoTypes.NO,
+      product.limitSharingAllowedFlag === true ? yesNoTypesConst.YES : yesNoTypesConst.NO,
   };
 };
 
@@ -210,9 +210,9 @@ export const preparePrepaid = (product: PrepaidProductItemResp) => {
     productId: product.product_id,
     dormantAfterNumberOfDays: Number(product.dormant_after_number_of_days),
     breakagesAllowed:
-      product.breakages_allowed === yesNoTypes.YES ? true : false,
+      product.breakages_allowed === yesNoTypesConst.YES ? true : false,
     reloadAllowed:
-      product.reload_allowed === yesNoTypes.YES ? true : false,
+      product.reload_allowed === yesNoTypesConst.YES ? true : false,
   };
 };
 
@@ -220,8 +220,8 @@ export const preparePrepaidToSend = (product: PrepaidProductItem) => {
   return {
     product_id: product.productId,
     dormant_after_number_of_days: Number(product.dormantAfterNumberOfDays),
-    breakages_allowed: product.breakagesAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
-    reload_allowed: product.reloadAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+    breakages_allowed: product.breakagesAllowed === true ? yesNoTypesConst.YES : yesNoTypesConst.NO,
+    reload_allowed: product.reloadAllowed === true ? yesNoTypesConst.YES : yesNoTypesConst.NO,
   };
 };
 
@@ -250,7 +250,7 @@ export const prepareDebit = (product: DebitProductItemResp) => {
     productId: product.product_id,
     aprOverdraft: product.apr_overdraft && product.apr_overdraft.toFixed(2),
     overdraftAllowed:
-      product.overdraft_allowed === yesNoTypes.YES ? true : false,
+      product.overdraft_allowed === yesNoTypesConst.YES ? true : false,
   };
 };
 
@@ -258,7 +258,7 @@ export const prepareDebitToSend = (product: DebitProductItem) => {
   return {
     product_id: product.productId,
     apr_overdraft: Number(product.aprOverdraft),
-    overdraft_allowed: product.overdraftAllowed === true ? yesNoTypes.YES : yesNoTypes.NO,
+    overdraft_allowed: product.overdraftAllowed === true ? yesNoTypesConst.YES : yesNoTypesConst.NO,
   };
 };
 
@@ -266,15 +266,15 @@ export const prepareProductDetailsValuesToSend =
   (product: any, productType: SelectValues) => {
     const type = productType.value;
 
-    if (type === productTypes.DEBIT) {
+    if (type === productTypesConst.DEBIT) {
       return prepareDebitToSend(product);
-    } else if (type === productTypes.LOAN) {
+    } else if (type === productTypesConst.LOAN) {
       return prepareLoanToSend(product);
-    } else if (type === productTypes.PREPAID) {
+    } else if (type === productTypesConst.PREPAID) {
       return preparePrepaidToSend(product);
-    } else if (type === productTypes.REVOLVING_CREDIT) {
+    } else if (type === productTypesConst.REVOLVING_CREDIT) {
       return prepareRevolvingCreditToSend(product);
-    } else if (type === productTypes.SAVINGS) {
+    } else if (type === productTypesConst.SAVINGS) {
       return prepareSavingsToSend(product);
     } else {
       return null;

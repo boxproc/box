@@ -9,13 +9,13 @@ import {
   selectCurrentUserGroupId,
 } from 'store/domains';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import EditUserGroupMembers from './EditUserGroupMembers';
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNames.EDIT_USER_GROUP_MEMBERS_FORM);
+const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM);
 
 const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectCurrentUserGroupId(state),

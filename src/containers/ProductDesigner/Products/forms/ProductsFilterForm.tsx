@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, CheckboxField, SelectField } from 'components';
 
-import { formNames, productTypesOptions } from 'consts';
+import { formNamesConst, productTypesOptions } from 'consts';
 
 import { HandleFilterProducts } from 'store/domains';
 
@@ -83,7 +83,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, ProductsFilterFormProps>({
-  form: formNames.PRODUCTS_FILTER,
+  form: formNamesConst.PRODUCTS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(ProductsFilterForm);

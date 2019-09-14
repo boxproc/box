@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, CheckboxField, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store/domains';
 
@@ -69,7 +69,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
         </Box>
         <Box width={[1 / 3]}>
           <Button
-            iconName="plus"
+            iconName={iconNamesConst.PLUS}
             text="Add to the group"
             disabled={!isUiItemSelected}
           />
@@ -80,7 +80,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
 };
 
 export default reduxForm<{}, EditGroupPermissionFormProps>({
-  form: formNames.EDIT_GROUP_PERMISSION,
+  form: formNamesConst.EDIT_GROUP_PERMISSION,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(EditGroupPermissionForm);

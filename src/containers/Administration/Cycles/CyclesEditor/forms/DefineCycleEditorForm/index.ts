@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import DefineCycleEditorForm from './DefineCycleEditorForm';
 
@@ -17,7 +17,7 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNames.DEFINE_ADMIN_CYCLE_EDITOR);
+const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR);
 
 const loadingSelector = createLoadingSelector([
   AdminCycleEditorActionTypes.ADD_ADMIN_CYCLE_EDITOR,

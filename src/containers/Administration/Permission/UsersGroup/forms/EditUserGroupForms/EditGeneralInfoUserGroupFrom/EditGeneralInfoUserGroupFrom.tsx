@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { GeneralUserGroupInfo } from 'containers/Administration/Permission/UsersGroup/components';
 
@@ -47,7 +47,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
 };
 
 export default reduxForm<{}, EditGeneralInfoUserGroupFromProps>({
-  form: formNames.EDIT_GENERAL_INFO_USER_GROUP,
+  form: formNamesConst.EDIT_GENERAL_INFO_USER_GROUP,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EditGeneralInfoUserGroupFrom));

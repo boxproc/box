@@ -1,7 +1,7 @@
 
 import { getFormValues } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -217,7 +217,7 @@ export const handleFilterProducts: HandleFilterProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.PRODUCTS_FILTER);
+        const formValues = getFormValues(formNamesConst.PRODUCTS_FILTER);
         const state = getState();
         const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
 
@@ -281,7 +281,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
         const id = selectCurrentProductId(state);
 
         await dispatch(deleteProduct(id));
-        await dispatch(closeModal(modalNames.EDIT_PRODUCT));
+        await dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
       },
       dispatch
     );
@@ -333,7 +333,7 @@ export const handleAddProduct: HandleAddProduct = values =>
         const preparedValues = prepareNewProductValuesToSend(values);
 
         await dispatch(addProduct(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_PRODUCT));
+        await dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
         await dispatch(handleFilterProducts());
       },
       dispatch

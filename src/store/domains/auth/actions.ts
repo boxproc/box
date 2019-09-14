@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 
-import { basePath, modalNames } from 'consts';
+import { basePath, modalNamesConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 import {
@@ -98,7 +98,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
 
         if (selectIs2faAuthenticationPending(state)) {
           await dispatch(openModal({
-            name: modalNames.LOGIN_CODE_2FA_MODAL,
+            name: modalNamesConst.LOGIN_CODE_2FA_MODAL,
           }));
         } else {
           dispatch(push(basePath));
@@ -117,7 +117,7 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
         const state = getState();
         setUserDataToStorage(selectLoginData(state));
 
-        await dispatch(closeModal(modalNames.LOGIN_CODE_2FA_MODAL));
+        await dispatch(closeModal(modalNamesConst.LOGIN_CODE_2FA_MODAL));
         dispatch(push(basePath));
       },
       dispatch
@@ -167,7 +167,7 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(userConfirmAuthKey({ confirm: 'Y' }));
-        await dispatch(closeModal(modalNames.REGISTER_2FA_MODAL));
+        await dispatch(closeModal(modalNamesConst.REGISTER_2FA_MODAL));
         await dispatch(handleUserLogout());
       },
       dispatch

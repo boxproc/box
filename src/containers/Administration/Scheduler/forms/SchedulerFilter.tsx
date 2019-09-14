@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, CheckboxField, InputField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 import { formErrorUtil } from 'utils';
 
 interface SchedulerFilterProps {
@@ -61,7 +61,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
 };
 
 export default reduxForm<{}, SchedulerFilterProps>({
-  form: formNames.SCHEDULER,
+  form: formNamesConst.SCHEDULER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(SchedulerFilter);

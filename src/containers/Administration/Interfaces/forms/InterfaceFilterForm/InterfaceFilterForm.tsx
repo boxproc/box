@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {  HandleFilterAdminInterface } from 'store/domains';
 
@@ -64,7 +64,7 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, InterfaceFilterFormProps>({
-  form: formNames.ADMIN_INTERFACE_FILTER,
+  form: formNamesConst.ADMIN_INTERFACE_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(InterfaceFilterForm);

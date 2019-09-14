@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
@@ -18,7 +18,7 @@ interface EditAccountModalProps {
   adminCurrentEndpointName: string;
 }
 
-const modalName = modalNames.EDIT_ADMIN_ENDPOINT;
+const modalName = modalNamesConst.EDIT_ADMIN_ENDPOINT;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
@@ -33,7 +33,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     <Modal
       title={`Edit Endpoint${endpointName}`}
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}
     >

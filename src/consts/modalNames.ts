@@ -1,10 +1,10 @@
-export enum modalTypes {
+export enum modalTypesConst {
   EDIT_MODAL = 'editModal',
   MESSAGE = 'messageModal',
   CONFIRMATION_MODAL = 'confirmationModal',
 }
 
-export enum modalNames {
+export enum modalNamesConst {
   // General Modals
   MESSAGE_MODAL = 'MessageModal',
   CONFIRMATION_MODAL = 'ConfirmationModal',

@@ -5,7 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store/domains';
 
@@ -60,7 +60,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
         </Box>
         <Box width={[1 / 2]}>
           <Button
-            iconName="plus"
+            iconName={iconNamesConst.PLUS}
             text="Add to the group"
             disabled={!isSelectedUser}
           />
@@ -71,7 +71,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
 };
 
 export default reduxForm<{}, EditUserGroupMembersProps>({
-  form: formNames.EDIT_USER_GROUP_MEMBERS_FORM,
+  form: formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(EditUserGroupMembers);

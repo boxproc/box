@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { ProductDetails } from 'containers/ProductDesigner/Products/components';
 
@@ -63,7 +63,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
 };
 
 export default reduxForm<{}, ProductDetailsFormProps>({
-  form: formNames.PRODUCT_DETAILS,
+  form: formNamesConst.PRODUCT_DETAILS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(ProductDetailsForm));

@@ -6,6 +6,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, ExternalLink, Hint, T2 } from 'components';
 
+import { iconNamesConst } from 'consts';
+
 import EditableTable from './EditableTable';
 import TableFilterContainer from './TableFilterContainer';
 
@@ -56,7 +58,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
         <Box mb="7px">
           <Button
             text={(isFilter ? 'Hide' : 'Show') + ' Filter'}
-            iconName="filter"
+            iconName={iconNamesConst.FILTER}
             onClick={() => setIsFilter(!isFilter)}
           />
         </Box>
@@ -69,7 +71,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
           <Box mb="7px" mr="7px">
             <Button
               text="Add New"
-              iconName="plus"
+              iconName={iconNamesConst.PLUS}
               onClick={() => openModal({
                 name: addNewModalName,
               })}

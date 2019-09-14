@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector, isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import AccountsFilterForm from './AccountsFilterForm';
 
@@ -20,8 +20,8 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
 ]);
-const formSelector = formValueSelector(formNames.LEDGER_ACCOUNTS_FILTER);
-const dirty = isDirty(formNames.LEDGER_ACCOUNTS_FILTER);
+const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNTS_FILTER);
+const dirty = isDirty(formNamesConst.LEDGER_ACCOUNTS_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),

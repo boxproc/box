@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import Products from './Products';
 
@@ -23,7 +23,7 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.FILTER_PRODUCTS,
 ]);
 
-const dirty = isDirty(formNames.PRODUCTS_FILTER);
+const dirty = isDirty(formNamesConst.PRODUCTS_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

@@ -4,7 +4,7 @@ import { formValueSelector, isDirty } from 'redux-form';
 
 import ProductRulesForm from './ProductRulesForm';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   createLoadingSelector,
@@ -23,9 +23,9 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.UPDATE_PRODUCT_RULES,
 ]);
 
-const formValues = formValueSelector(formNames.PRODUCT_RULES);
+const formValues = formValueSelector(formNamesConst.PRODUCT_RULES);
 
-const dirty = isDirty(formNames.PRODUCT_RULES);
+const dirty = isDirty(formNamesConst.PRODUCT_RULES);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

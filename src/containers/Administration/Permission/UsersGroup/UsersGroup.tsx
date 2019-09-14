@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from 'containers/Administration/Permission/UsersGroup/components';
 
@@ -35,8 +35,8 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       title="Users Group"
       data={adminUsersGroupItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_USERS_GROUP}
-      editModalName={modalNames.EDIT_ADMIN_USERS_GROUP}
+      addNewModalName={modalNamesConst.ADD_ADMIN_USERS_GROUP}
+      editModalName={modalNamesConst.EDIT_ADMIN_USERS_GROUP}
       setCurrentIdAction={setAdminUsersGroupId}
     />
   );

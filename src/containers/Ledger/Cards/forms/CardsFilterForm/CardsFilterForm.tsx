@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField } from 'components';
 
-import { formNames, maskFormat } from 'consts';
+import { formNamesConst, maskFormat } from 'consts';
 
 import { HandleFilterLedgerCards } from 'store/domains';
 interface CardsFilterFormProps {
@@ -86,7 +86,7 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, CardsFilterFormProps>({
-  form: formNames.LEDGER_CARDS_FILTER,
+  form: formNamesConst.LEDGER_CARDS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(CardsFilterForm);

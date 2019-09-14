@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import {
   AddCyclesEditorModal,
@@ -26,67 +26,67 @@ import { AddSystemPropertyModal } from 'containers/Administration/SystemProperti
 
 export const administrationModalList = [
   {
-    name: modalNames.ADD_ADMIN_SYSTEM_PROPERTY,
+    name: modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY,
     component: <AddSystemPropertyModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_INSTITUTION,
+    name: modalNamesConst.ADD_ADMIN_INSTITUTION,
     component: <AddInstitutionModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_INSTITUTION,
+    name: modalNamesConst.EDIT_ADMIN_INSTITUTION,
     component: <EditInstitutionModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_SCHEDULER,
+    name: modalNamesConst.ADD_ADMIN_SCHEDULER,
     component: <AddSchedulerModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_SCHEDULER,
+    name: modalNamesConst.EDIT_ADMIN_SCHEDULER,
     component: <EditSchedularModal />,
   },
   {
-    name: modalNames.GENERATE_CRON_EXPRESSION,
+    name: modalNamesConst.GENERATE_CRON_EXPRESSION,
     component: <GenerateCronExpressionModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_CYCLE_EDITOR,
+    name: modalNamesConst.ADD_ADMIN_CYCLE_EDITOR,
     component: <AddCyclesEditorModal />,
   },
   {
-    name: modalNames.EDIT_CYCLE_EDITOR,
+    name: modalNamesConst.EDIT_CYCLE_EDITOR,
     component: <EditCyclesEditorModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_USER,
+    name: modalNamesConst.ADD_ADMIN_USER,
     component: <AddUsersModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_USER,
+    name: modalNamesConst.EDIT_ADMIN_USER,
     component: <EditUsersModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_USERS_GROUP,
+    name: modalNamesConst.ADD_ADMIN_USERS_GROUP,
     component: <AddUsersGroupModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_USERS_GROUP,
+    name: modalNamesConst.EDIT_ADMIN_USERS_GROUP,
     component: <EditUsersGroupModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_ENDPOINT,
+    name: modalNamesConst.ADD_ADMIN_ENDPOINT,
     component: <AddEndpointModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_ENDPOINT,
+    name: modalNamesConst.EDIT_ADMIN_ENDPOINT,
     component: <EditEndpointModal />,
   },
   {
-    name: modalNames.ADD_ADMIN_INTERFACE,
+    name: modalNamesConst.ADD_ADMIN_INTERFACE,
     component: <AddInterfaceModal />,
   },
   {
-    name: modalNames.EDIT_ADMIN_INTERFACE,
+    name: modalNamesConst.EDIT_ADMIN_INTERFACE,
     component: <EditInterfaceModal />,
   },
 ];

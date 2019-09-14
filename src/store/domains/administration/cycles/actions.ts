@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 import {
@@ -75,7 +75,7 @@ export const handleFilterCycles: HandleFilterCycles = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.CYCLES_EDITOR_FILTER);
+        const formValues = getFormValues(formNamesConst.CYCLES_EDITOR_FILTER);
         const state = getState();
         const preparedValues = prepareCyclesFiltersParamsToSend(formValues(state));
 
@@ -94,9 +94,9 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
         const preparedValues = prepareAdminCyclesEditorValuesToSend(cycleEditorRecords);
 
         await dispatch(addAdminCyclesEditor(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_CYCLE_EDITOR));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
-        await dispatch(resetForm(formNames.DEFINE_ADMIN_CYCLE_EDITOR));
+        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR));
       },
       dispatch
     );
@@ -110,7 +110,7 @@ export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = () =>
         const id = selectCycleEditorId(state);
 
         await dispatch(deleteAdminCyclesEditor(id));
-        await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
+        await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },
       dispatch
@@ -124,7 +124,7 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
         const preparedValues = prepareAdminCyclesEditorValuesToSend(values);
 
         await dispatch(updateAdminCyclesEditor(preparedValues));
-        await dispatch(closeModal(modalNames.EDIT_CYCLE_EDITOR));
+        await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },
       dispatch

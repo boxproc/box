@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, MaskField, SelectField } from 'components';
 
-import { dateFormat, formNames, maskFormat, } from 'consts';
+import { dateFormat, formNamesConst, maskFormat, } from 'consts';
 
 import { HandleFilterAuditUserActivities, HandleGetAuditUsers } from 'store/domains';
 import { SelectValues } from 'types';
@@ -118,7 +118,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, UserActivitiesFilterFormProps>({
-  form: formNames.AUDIT_USER_ACTIVITIES_FILTER,
+  form: formNamesConst.AUDIT_USER_ACTIVITIES_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(UserActivitiesFilterForm);

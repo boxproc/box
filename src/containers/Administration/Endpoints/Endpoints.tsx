@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 import { EndpointFilterForm } from './forms';
@@ -41,8 +41,8 @@ const Endpoints: React.FC<EndpointsProps> = ({
       title="Endpoints"
       data={adminEndpointItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_ENDPOINT}
-      editModalName={modalNames.EDIT_ADMIN_ENDPOINT}
+      addNewModalName={modalNamesConst.ADD_ADMIN_ENDPOINT}
+      editModalName={modalNamesConst.EDIT_ADMIN_ENDPOINT}
       setCurrentIdAction={setAdminEndpointId}
       contextMenuItems={contextMenuItems}
       FilterForm={

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
 
@@ -13,7 +13,7 @@ interface AddCycleEditorModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_CYCLE_EDITOR;
+const modalName = modalNamesConst.ADD_ADMIN_CYCLE_EDITOR;
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   closeModal,

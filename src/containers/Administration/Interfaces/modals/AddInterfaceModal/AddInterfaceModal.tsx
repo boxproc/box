@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
@@ -16,7 +16,7 @@ interface AddInterfaceModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_INTERFACE;
+const modalName = modalNamesConst.ADD_ADMIN_INTERFACE;
 
 const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
   closeModal,

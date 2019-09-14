@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Hr, OkCancelButtons } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/components';
 
@@ -39,7 +39,7 @@ const ProductAuxiliaryCountersForm: React.FC<ProductAuxiliaryCountersFormAllProp
 };
 
 export default reduxForm<{}, ProductAuxiliaryCountersFormProps>({
-  form: formNames.PRODUCT_AUXILIARY_COUNTERS,
+  form: formNamesConst.PRODUCT_AUXILIARY_COUNTERS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ProductAuxiliaryCountersForm);

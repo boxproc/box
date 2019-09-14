@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import MessageModal from 'containers/Modals//MessageModal';
 import ChangeProfileModal from 'containers/Modals/ChangeProfileModal';
@@ -13,23 +13,23 @@ import { productDesignerModalList } from './productDesignerModalList';
 
 export const modalsList = [
   {
-    name: modalNames.MESSAGE_MODAL,
+    name: modalNamesConst.MESSAGE_MODAL,
     component: <MessageModal />,
   },
   {
-    name: modalNames.CONFIRMATION_MODAL,
+    name: modalNamesConst.CONFIRMATION_MODAL,
     component: <ConfirmationModal />,
   },
   {
-    name: modalNames.REGISTER_2FA_MODAL,
+    name: modalNamesConst.REGISTER_2FA_MODAL,
     component: <Register2faModal />,
   },
   {
-    name: modalNames.LOGIN_CODE_2FA_MODAL,
+    name: modalNamesConst.LOGIN_CODE_2FA_MODAL,
     component: <LoginCode2faModal />,
   },
   {
-    name: modalNames.CHANGE_PROFILE_MODAL,
+    name: modalNamesConst.CHANGE_PROFILE_MODAL,
     component: <ChangeProfileModal />,
   },
   ...administrationModalList,

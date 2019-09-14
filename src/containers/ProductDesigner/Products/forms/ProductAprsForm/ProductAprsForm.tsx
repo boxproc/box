@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Hr, OkCancelButtons } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { ProductAprs } from 'containers/ProductDesigner/Products/components';
 
@@ -39,7 +39,7 @@ const ProductAprsForm: React.FC<ProductAprsFormAllProps> = ({
 };
 
 export default reduxForm<{}, ProductAprsFormProps>({
-  form: formNames.PRODUCT_LIMITS_AND_COMMISSION,
+  form: formNamesConst.PRODUCT_LIMITS_AND_COMMISSION,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ProductAprsForm);

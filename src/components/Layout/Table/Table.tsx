@@ -5,9 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ChevronIcon } from 'components';
-
-import { schedulerStatusTypesOptions, statusTypes } from 'consts';
+import { schedulerStatusTypesOptions, statusTypesConst } from 'consts';
 
 import { TableStyled } from './TableStyled';
 
@@ -55,42 +53,17 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 `;
 
-const SortIconsWrapper = styled.div`
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 2px 0;
-
-  .up-icon {
-    margin-bottom: 5px;
-    transform: rotate(180deg);
-  }
-`;
-
 interface TableHeaderProps {
-  showSortIcons?: boolean;
   title: string;
 }
 
-export const TableHeader: React.FC<TableHeaderProps> = ({
-  title,
-  showSortIcons = false,
-}) => {
+export const TableHeader: React.FC<TableHeaderProps> = ({ title }) => {
   return (
     <Flex justifyContent="center" alignItems="center">
       <TableItemWrapper>
-        <Box
-          className="title"
-        >
+        <Box className="title">
           {title}
         </Box>
-        {showSortIcons &&
-          <SortIconsWrapper>
-            <ChevronIcon className="icon up-icon" />
-            <ChevronIcon className="icon down-icon" />
-          </SortIconsWrapper>
-        }
       </TableItemWrapper>
     </Flex>
   );
@@ -118,7 +91,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   isNumber = false,
 }) => {
   const isPendingStatus = value === schedulerStatusTypesOptions
-    .find(status => status.value === statusTypes.EXECUTION_PENDING).label;
+    .find(status => status.value === statusTypesConst.EXECUTION_PENDING).label;
 
   return (
     <TableItemWrapper

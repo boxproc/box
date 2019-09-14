@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { CustomerInfo } from 'containers/Ledger/Customers/components';
 import {
@@ -48,7 +48,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
 };
 
 export default reduxForm<{}, AddCustomerFormProps>({
-  form: formNames.ADD_LEDGER_CUSTOMER,
+  form: formNamesConst.ADD_LEDGER_CUSTOMER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AddCustomerForm));

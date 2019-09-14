@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditCustomerForm } from 'containers/Ledger/Customers/forms';
 
@@ -13,7 +13,7 @@ interface EditCustomerModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.EDIT_LEDGER_CUSTOMER;
+const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
 
 const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,
@@ -22,7 +22,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title="Edit Customer"
       maxContainerWidth={980}
       withCloseConfirmation={isFormDirty}

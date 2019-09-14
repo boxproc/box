@@ -1,4 +1,4 @@
-export enum permissionTypes {
+export enum permissionTypesConst {
   READ_WRITE = 'W',
   READ_ONLY = 'R',
 }
@@ -8,19 +8,19 @@ export const permissionTypesOptions = [
   { value: 'W', label: 'Read and Write' },
 ];
 
-export enum uiItemTypes {
+export enum uiItemTypesConst {
   SCREEN = 'S',
   MENU_PARENT = 'M',
   MENU_CHILD = 'm',
   FORM = 'F',
 }
 
-export enum yesNoTypes {
+export enum yesNoTypesConst {
   YES = 'Y',
   NO = 'N',
 }
 
-export enum statusTypes {
+export enum statusTypesConst {
   ACTIVE = 'A',
   INACTIVE = 'I',
   DELETED = 'D',
@@ -62,6 +62,7 @@ export const typeOfInterfaces = [
   { value: 'T', label: 'Tribe card processing' },
   { value: 'U', label: 'Tutuka card processing' },
 ];
+
 export const protocolTypesOptions = [
   { value: 'R', label: 'REST' },
   { value: 'S', label: 'SOAP' },
@@ -88,7 +89,7 @@ export const weeklyCycleTypeOptions = [
   { value: 7, label: 'Sunday' },
 ];
 
-export enum cycleTypes {
+export enum cycleTypesConst {
   MONTHLY = 'M',
   BI_MONTHLY = 'N',
   WEEKLY = 'W',
@@ -104,7 +105,7 @@ export const typeOfCyclesEditorOptions = [
   { value: 'F', label: 'Fixed number of days' },
 ];
 
-export enum productTypes {
+export enum productTypesConst {
   LOAN = 'L',
   PREPAID = 'P',
   DEBIT = 'D',
@@ -126,7 +127,7 @@ export const executableTypeOptions = [
   { value: 'J', label: 'Java' },
 ];
 
-export enum schemeTypes {
+export enum schemeTypesConst {
   MASTER_CARD = 'M',
   UPI = 'U',
   AMEX = 'A',
@@ -142,7 +143,7 @@ export const schemeTypesOptions = [
   { value: 'X', label: 'Unspecified' },
 ];
 
-export enum statementTypes {
+export enum statementTypesConst {
   MONTHLY = 'M',
   BI_MONTHLY = 'N',
   WEEKLY = 'W',
@@ -164,7 +165,7 @@ export const statementCyclesOptions = [
   { value: 3, label: 'Statement Cycle 3' },
 ];
 
-export enum loanTypes {
+export enum loanTypesConst {
   BUY_NOW_PAY_LATER = 'B',
   INSTALLMENTS = 'I',
 }
@@ -174,7 +175,7 @@ export const loanTypesOptions = [
   { value: 'I', label: 'Installments' },
 ];
 
-export enum savingsTypes {
+export enum savingsTypesConst {
   FIXED_TERM = 'F',
   UNLIMITED_TERM = 'U',
   REWARD = 'R',
@@ -186,7 +187,7 @@ export const savingsTypesOptions = [
   { value: 'R', label: 'Reward' },
 ];
 
-export enum dataTypes {
+export enum dataTypesConst {
   INTEGER = 'I',
   STRING = 'S',
   FLOAT = 'F',
@@ -198,7 +199,7 @@ export const dataTypesOptions = [
   { value: 'F', label: 'Float' },
 ];
 
-export enum actionTypes {
+export enum actionTypesConst {
   API_CALL = 'A',
   APPROVE_DENY = 'R',
   UPDATE_AUX_COUNTER_1 = 'X',
@@ -214,7 +215,7 @@ export const actionTypesOptions = [
   { value: 'Z', label: 'Update aux counter 3' },
 ];
 
-export enum debitCreditIndicator {
+export enum debitCreditIndicatorConst {
   DEBIT_TRANSACTION = 'D',
   CREDIT_TRANSACTION = 'C',
   NOT_APPLICABLE = 'U',

@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames, } from 'consts';
+import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -77,7 +77,7 @@ export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.ADMIN_INTERFACE_FILTER);
+        const formValues = getFormValues(formNamesConst.ADMIN_INTERFACE_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 
@@ -99,9 +99,9 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminInterface(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_INTERFACE));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_INTERFACE));
         await dispatch(handleFilterAdminInterface());
-        await dispatch(resetForm(formNames.ADMIN_INTERFACE));
+        await dispatch(resetForm(formNamesConst.ADMIN_INTERFACE));
       },
       dispatch
     );
@@ -115,7 +115,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
         const id = selectAdminCurrentInterfaceId(state);
 
         await dispatch(deleteAdminInterface(id));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_INTERFACE));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INTERFACE));
         await dispatch(handleFilterAdminInterface());
       },
       dispatch

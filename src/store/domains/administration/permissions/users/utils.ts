@@ -1,4 +1,4 @@
-import { statusTypes, statusTypes2faOptions, yesNoTypes } from 'consts';
+import { statusTypes2faOptions, statusTypesConst, yesNoTypesConst } from 'consts';
 import {
   AdminUserItem,
   AdminUserItemDetails,
@@ -22,8 +22,10 @@ export const prepareAdminUserValuesToSend =
       password_entry_counter: values.passwordEntryCounter,
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
-      requires_2fa_flag: values.requires2faFlag ? yesNoTypes.YES : yesNoTypes.NO,
-      change_profile_allowed_flag: values.changeProfileAllowedFlag ? yesNoTypes.YES : yesNoTypes.NO,
+      requires_2fa_flag: values.requires2faFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
+      change_profile_allowed_flag: values.changeProfileAllowedFlag
+        ? yesNoTypesConst.YES
+        : yesNoTypesConst.NO,
     };
   };
 
@@ -41,15 +43,15 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     status: statusTypes2faOptions.find(el => el.value === values.status).label,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
-    requires2faFlag: values.requires_2fa_flag === yesNoTypes.YES,
-    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypes.YES,
+    requires2faFlag: values.requires_2fa_flag === yesNoTypesConst.YES,
+    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypesConst.YES,
   };
 };
 
 export const prepareUsersFiltersParams =
   (params: Partial<UsersFilterParamsPrepared>): Partial<UsersFilterParams> => {
     return {
-      statusActiveFlag: params.status === statusTypes.ACTIVE ? true : false,
+      statusActiveFlag: params.status === statusTypesConst.ACTIVE ? true : false,
     };
   };
 
@@ -61,6 +63,6 @@ export const prepareUsersFiltersParamsToSend =
     const { statusActiveFlag } = params;
 
     return {
-      status: statusActiveFlag ? statusTypes.ACTIVE : null,
+      status: statusActiveFlag ? statusTypesConst.ACTIVE : null,
     };
   };

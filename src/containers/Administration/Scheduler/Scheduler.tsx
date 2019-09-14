@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from 'containers/Administration/Scheduler/components';
 
@@ -114,8 +114,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       title="Scheduler"
       data={adminSchedulerJobsItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_SCHEDULER}
-      editModalName={modalNames.EDIT_ADMIN_SCHEDULER}
+      addNewModalName={modalNamesConst.ADD_ADMIN_SCHEDULER}
+      editModalName={modalNamesConst.EDIT_ADMIN_SCHEDULER}
       setCurrentIdAction={setAdminSchedulerJobId}
       contextMenuItems={contextMenuItems}
       FilterForm={

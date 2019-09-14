@@ -7,9 +7,6 @@ export const NavList = styled.div`
   display: flex;
   align-items: flex-start;
   line-height: 1.4;
-  .chevron-icon {
-    transform: rotate(-90deg);
-  }
   .${menuClasses.MENU_TITLE} {
     position: relative;
     cursor: pointer;

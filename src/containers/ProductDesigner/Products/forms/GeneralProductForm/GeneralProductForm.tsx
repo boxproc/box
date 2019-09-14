@@ -11,7 +11,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
@@ -59,7 +59,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
       >
         <Button
           text="delete"
-          iconName="delete"
+          iconName={iconNamesConst.DELETE}
           type="reset"
           withConfirmation={true}
           confirmationText={`Delete product "${currentProductName}"?`}
@@ -79,7 +79,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
 };
 
 export default reduxForm<{}, GeneralProductFormProps>({
-  form: formNames.GENERAL_PRODUCT,
+  form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(GeneralProductForm));

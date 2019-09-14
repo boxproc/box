@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames, } from 'consts';
+import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -74,7 +74,7 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.ADMIN_ENDPOINT_FILTER);
+        const formValues = getFormValues(formNamesConst.ADMIN_ENDPOINT_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 
@@ -96,9 +96,9 @@ export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminEndpoint(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_ENDPOINT));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_ENDPOINT));
         await dispatch(handleFilterAdminEndpoint());
-        await dispatch(resetForm(formNames.ADMIN_ENDPOINT));
+        await dispatch(resetForm(formNamesConst.ADMIN_ENDPOINT));
       },
       dispatch
     );
@@ -113,7 +113,7 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
 
         await dispatch(deleteAdminEndpoint(id));
         await dispatch(handleFilterAdminEndpoint());
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_ENDPOINT));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_ENDPOINT));
       },
       dispatch
     );

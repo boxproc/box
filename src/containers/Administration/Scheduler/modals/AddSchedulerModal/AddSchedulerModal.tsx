@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
 
@@ -24,7 +24,7 @@ interface AddSchedulerModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_SCHEDULER;
+const modalName = modalNamesConst.ADD_ADMIN_SCHEDULER;
 
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
   closeModal,

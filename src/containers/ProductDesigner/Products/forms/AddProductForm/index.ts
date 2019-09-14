@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import AddProductForm from './AddProductForm';
 
@@ -16,7 +16,7 @@ import {
   ProductsActionTypes,
 } from 'store/domains';
 
-const formSelector = formValueSelector(formNames.ADD_PRODUCT);
+const formSelector = formValueSelector(formNamesConst.ADD_PRODUCT);
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.ADD_PRODUCT,

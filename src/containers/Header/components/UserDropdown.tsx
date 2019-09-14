@@ -8,7 +8,7 @@ import styled, { css } from 'theme';
 
 import { Button, Dropdown, DropdownOption } from 'components';
 
-import { modalNames, usernames } from 'consts';
+import { iconNamesConst, modalNamesConst, usernames } from 'consts';
 
 import { HandleUserLogout, OpenModal } from 'store/domains';
 import { storageUtil } from 'utils';
@@ -79,16 +79,16 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
         <DropdownOption>
           <Button
             text="Change profile"
-            iconName="user"
+            iconName={iconNamesConst.USER}
             onClick={() => openModal({
-              name: modalNames.CHANGE_PROFILE_MODAL,
+              name: modalNamesConst.CHANGE_PROFILE_MODAL,
             })}
           />
         </DropdownOption>)}
       <DropdownOption>
         <Button
           text="Log out"
-          iconName="logOut"
+          iconName={iconNamesConst.LOGOUT}
           onClick={handleUserLogout}
         />
       </DropdownOption>

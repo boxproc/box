@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -81,7 +81,7 @@ export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.LEDGER_ACCOUNTS_FILTER);
+        const formValues = getFormValues(formNamesConst.LEDGER_ACCOUNTS_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 
@@ -98,7 +98,7 @@ export const handleGetLedgerAccountCards: HandleGetLedgerAccountCards = accountI
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getLedgerAccountCards(accountId));
-        await dispatch(resetForm(formNames.LEDGER_ACCOUNT_CARDS));
+        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT_CARDS));
       },
       dispatch
     );
@@ -128,7 +128,7 @@ export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accoun
 
         await dispatch(orderLedgerAccountCard(accountId));
         await dispatch(handleGetLedgerAccountCards(currentAccountId));
-        await dispatch(resetForm(formNames.LEDGER_ACCOUNT));
+        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
       },
       dispatch
     );
@@ -141,9 +141,9 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerAccount(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_LEDGER_ACCOUNT));
+        await dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
         await dispatch(handleFilterLedgerAccounts());
-        await dispatch(resetForm(formNames.LEDGER_ACCOUNT));
+        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
       },
       dispatch
     );

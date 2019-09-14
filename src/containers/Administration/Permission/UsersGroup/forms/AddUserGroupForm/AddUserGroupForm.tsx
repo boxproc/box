@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { GeneralUserGroupInfo } from 'containers/Administration/Permission/UsersGroup/components';
 
@@ -44,7 +44,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
 };
 
 export default reduxForm<{}, AddUserGroupFormProps>({
-  form: formNames.ADD_USER_GROUP,
+  form: formNamesConst.ADD_USER_GROUP,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AddUserGroupForm));

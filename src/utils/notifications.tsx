@@ -1,6 +1,6 @@
 import { openModal } from 'store/domains';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { SendNotification } from 'types';
 
@@ -10,7 +10,7 @@ const getNotification = (
   details?: string,
   statusCode?: number
 ) => openModal({
-  name: modalNames.MESSAGE_MODAL,
+  name: modalNamesConst.MESSAGE_MODAL,
   payload: { title, message, details, statusCode },
 });
 

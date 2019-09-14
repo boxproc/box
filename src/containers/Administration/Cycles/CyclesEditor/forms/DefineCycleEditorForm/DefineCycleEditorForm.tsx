@@ -15,9 +15,10 @@ import {
 } from 'components';
 
 import {
-  cycleTypes,
+  cycleTypesConst,
   executableTypeOptions,
-  formNames,
+  formNamesConst,
+  iconNamesConst,
   statusTypeCyclesOptions,
   typeOfCyclesEditorOptions,
   weeklyCycleTypeOptions
@@ -69,15 +70,15 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   );
 
   const isMonthlyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypes.BI_MONTHLY
-      || cyclesEditorValue.value === cycleTypes.MONTHLY);
+    && (cyclesEditorValue.value === cycleTypesConst.BI_MONTHLY
+      || cyclesEditorValue.value === cycleTypesConst.MONTHLY);
 
   const isWeeklyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypes.BI_WEEKLY
-      || cyclesEditorValue.value === cycleTypes.WEEKLY);
+    && (cyclesEditorValue.value === cycleTypesConst.BI_WEEKLY
+      || cyclesEditorValue.value === cycleTypesConst.WEEKLY);
 
   const isFixedCycleNumberOfDays = cyclesEditorValue
-    && cyclesEditorValue.value === cycleTypes.FIXED_NUMBER_OF_DAYS;
+    && cyclesEditorValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS;
 
   return (
     <form onSubmit={handleSubmitForm}>
@@ -182,7 +183,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           {mode === 'edit' && (
             <Button
               text="delete"
-              iconName="delete"
+              iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete cycle editor record?`}
@@ -203,7 +204,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineCyclesEditorFormProps>({
-  form: formNames.DEFINE_ADMIN_CYCLE_EDITOR,
+  form: formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(DefineCycleEditorForm));

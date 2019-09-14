@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames, } from 'consts';
+import { formNamesConst, modalNamesConst, } from 'consts';
 import * as api from './api';
 
 import { closeModal } from 'store/domains/modals';
@@ -70,7 +70,7 @@ export const handleFilterUsers: HandleFilterUsers = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.USER);
+        const formValues = getFormValues(formNamesConst.USER);
         const state = getState();
         const preparedValues = prepareUsersFiltersParamsToSend(formValues(state));
 
@@ -89,9 +89,9 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
         const preparedValues = prepareAdminUserValuesToSend(cycleEditorRecords);
 
         await dispatch(addAdminUser(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_USER));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_USER));
         await dispatch(handleFilterUsers());
-        await dispatch(resetForm(formNames.DEFINE_ADMIN_USER));
+        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_USER));
       },
       dispatch
     );
@@ -104,7 +104,7 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
         const preparedValues = prepareAdminUserValuesToSend(values);
 
         await dispatch(updateAdminUser(preparedValues));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_USER));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_USER));
         await dispatch(handleFilterUsers());
       },
       dispatch

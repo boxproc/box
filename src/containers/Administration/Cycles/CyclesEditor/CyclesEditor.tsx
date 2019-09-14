@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { cycleEditorColumns } from './components';
 import { CycleEditorFilter } from './forms';
@@ -48,8 +48,8 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       title="Cycles"
       data={adminCyclesEditorItems}
       columns={cycleEditorColumns}
-      addNewModalName={modalNames.ADD_ADMIN_CYCLE_EDITOR}
-      editModalName={modalNames.EDIT_CYCLE_EDITOR}
+      addNewModalName={modalNamesConst.ADD_ADMIN_CYCLE_EDITOR}
+      editModalName={modalNamesConst.EDIT_CYCLE_EDITOR}
       setCurrentIdAction={setAdminCycleEditorId}
       contextMenuItems={contextMenuItems}
       FilterForm={

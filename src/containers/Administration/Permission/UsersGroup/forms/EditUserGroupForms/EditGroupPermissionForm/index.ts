@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import EditGroupPermissionForm from './EditGroupPermissionForm';
 
@@ -16,7 +16,7 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNames.EDIT_GROUP_PERMISSION);
+const formSelector = formValueSelector(formNamesConst.EDIT_GROUP_PERMISSION);
 
 const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectCurrentUserGroupId(state),

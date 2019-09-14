@@ -4,7 +4,7 @@ import { TablePage, withSpinner } from 'components';
 
 import { tableColumns } from './components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import InterfaceFilterForm from './forms/InterfaceFilterForm';
 
@@ -40,8 +40,8 @@ const Interfaces: React.FC<AccountsProps> = ({
       title="Interfaces"
       data={adminInterfaceItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_INTERFACE}
-      editModalName={modalNames.EDIT_ADMIN_INTERFACE}
+      addNewModalName={modalNamesConst.ADD_ADMIN_INTERFACE}
+      editModalName={modalNamesConst.EDIT_ADMIN_INTERFACE}
       setCurrentIdAction={setAdminInterfaceId}
       contextMenuItems={contextMenuItems}
       FilterForm={

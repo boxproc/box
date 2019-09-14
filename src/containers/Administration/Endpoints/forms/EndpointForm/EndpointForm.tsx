@@ -11,7 +11,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import { GeneralEndpointsInfo } from 'containers/Administration/Endpoints/components';
 
@@ -71,7 +71,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           {isEditMode && (
             <Button
               text="delete"
-              iconName="delete"
+              iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete endpoint "${currentEndpointName}"?`}
@@ -92,7 +92,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
 };
 
 export default reduxForm<{}, EndpointFormProps>({
-  form: formNames.ADMIN_ENDPOINT,
+  form: formNamesConst.ADMIN_ENDPOINT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EndpointForm));

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Hr, Modal, OkCancelButtons, Paragraph } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { CloseModal, PayloadConfirmationModal } from 'store/domains';
 
@@ -11,7 +11,7 @@ interface ConfirmationModalProps {
   payloadConfirmModal: PayloadConfirmationModal;
 }
 
-const modalName = modalNames.CONFIRMATION_MODAL;
+const modalName = modalNamesConst.CONFIRMATION_MODAL;
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,

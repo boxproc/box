@@ -7,7 +7,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import { ContextMenuList } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import {
   handleSetActiveTableRowIndex,
@@ -59,7 +59,7 @@ export const withEditTable = <OriginProps extends {}>(
     const onContextMenuClick = (e: Event, value: ContextMenuItem) =>
       value.withConfirmation
         ? handleOpenModal({
-          name: modalNames.CONFIRMATION_MODAL,
+          name: modalNamesConst.CONFIRMATION_MODAL,
           payload: {
             confirmationAction: value.action,
             confirmationTitle: value.confirmationTitle,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 
@@ -50,8 +50,8 @@ const Institutions: React.FC<InstitutionsProps> = ({
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_INSTITUTION}
-      editModalName={modalNames.EDIT_ADMIN_INSTITUTION}
+      addNewModalName={modalNamesConst.ADD_ADMIN_INSTITUTION}
+      editModalName={modalNamesConst.EDIT_ADMIN_INSTITUTION}
       setCurrentIdAction={setAdminInstitutionId}
       contextMenuItems={contextMenuItems}
     />

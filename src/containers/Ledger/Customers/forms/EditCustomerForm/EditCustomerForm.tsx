@@ -5,7 +5,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
@@ -47,7 +47,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
       >
         <Button
           text="delete"
-          iconName="delete"
+          iconName={iconNamesConst.DELETE}
           type="reset"
           withConfirmation={true}
           confirmationText={`Delete customer "${ledgerCurrentCustomerName}"?`}
@@ -67,7 +67,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 };
 
 export default reduxForm<{}, EditCustomerFormProps>({
-  form: formNames.EDIT_LEDGER_CUSTOMER,
+  form: formNamesConst.EDIT_LEDGER_CUSTOMER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EditCustomerForm));

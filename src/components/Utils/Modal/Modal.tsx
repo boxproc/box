@@ -4,7 +4,7 @@ import styled from 'theme';
 
 import { T2 } from 'components';
 
-import { messages, modalNames, modalTypes } from 'consts';
+import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
 
   React.useEffect(
     () => {
-      return type === modalTypes.EDIT_MODAL
+      return type === modalTypesConst.EDIT_MODAL
         ? () => setActiveTableRowIndex(null)
         : () => null;
     },
@@ -64,11 +64,11 @@ const Modal: React.FC<ModalProps> = ({
   const handleCloseModal = React.useCallback(
     withCloseConfirmation
       ? () => openModal({
-        name: modalNames.CONFIRMATION_MODAL,
+        name: modalNamesConst.CONFIRMATION_MODAL,
         payload: {
           confirmationAction: () => closeModal(name),
-          confirmationTitle: messages.CLOSE_MODAL_WINDOW,
-          confirmationText: messages.UNSAVED_CHANGES,
+          confirmationTitle: messagesConst.CLOSE_MODAL_WINDOW,
+          confirmationText: messagesConst.UNSAVED_CHANGES,
         },
       })
       : () => closeModal(name),

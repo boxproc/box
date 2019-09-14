@@ -13,7 +13,7 @@ import {
 } from 'components';
 
 import {
-  formNames,
+  formNamesConst,
   statusTypes2faOptions,
   statusTypesOptions,
   typeOfCyclesEditorOptions,
@@ -168,7 +168,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineUserFormProps>({
-  form: formNames.DEFINE_ADMIN_USER,
+  form: formNamesConst.DEFINE_ADMIN_USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineUserForm);

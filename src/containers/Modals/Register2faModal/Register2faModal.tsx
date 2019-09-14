@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { CodeScreen } from './components';
 import { PasswordForm } from './forms';
@@ -22,7 +22,7 @@ interface Register2faModalProps {
   dataUrl: string;
 }
 
-const modalName = modalNames.REGISTER_2FA_MODAL;
+const modalName = modalNamesConst.REGISTER_2FA_MODAL;
 
 const Register2faModal: React.FC<Register2faModalProps> = ({
   userGetAuthKey,

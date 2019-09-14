@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import EventDataElems from './EventDataElems';
 
@@ -21,7 +21,7 @@ const loadingSelector = createLoadingSelector([
   AdminEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
 ]);
 
-const dirty = isDirty(formNames.ADMIN_EVENT_DATA_ELEMS_FILTER);
+const dirty = isDirty(formNamesConst.ADMIN_EVENT_DATA_ELEMS_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

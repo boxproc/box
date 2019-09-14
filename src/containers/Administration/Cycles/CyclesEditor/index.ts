@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import CyclesEditor from './CyclesEditor';
 
@@ -18,7 +18,7 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNames.CYCLES_EDITOR_FILTER);
+const dirty = isDirty(formNamesConst.CYCLES_EDITOR_FILTER);
 
 const loadingSelector = createLoadingSelector([
   AdminCycleEditorActionTypes.FILTER_ADMIN_CYCLES_EDITOR,

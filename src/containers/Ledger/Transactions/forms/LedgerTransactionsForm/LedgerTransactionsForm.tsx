@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Tabs, TabsPanel } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   LedgerCurrentTransactionBalance,
@@ -35,7 +35,7 @@ const LedgerTransactionsForm: React.FC<TransactionsFilterFormAllProps> = () => {
 };
 
 export default reduxForm<{}, LedgerTransactionsFormProps>({
-  form: formNames.LEDGER_TRANSACTIONS,
+  form: formNamesConst.LEDGER_TRANSACTIONS,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(LedgerTransactionsForm);

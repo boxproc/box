@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { ChangeProfileForm } from './forms';
 
@@ -17,7 +17,7 @@ interface ChangeProfileModalProps {
   isLoading: boolean;
 }
 
-const modalName = modalNames.CHANGE_PROFILE_MODAL;
+const modalName = modalNamesConst.CHANGE_PROFILE_MODAL;
 
 const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
   getAccessUsers,

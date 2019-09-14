@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { AddUserGroupForm } from 'containers/Administration/Permission/UsersGroup/forms';
 
@@ -13,7 +13,7 @@ interface AddUserModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_USERS_GROUP;
+const modalName = modalNamesConst.ADD_ADMIN_USERS_GROUP;
 
 const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
   closeModal,

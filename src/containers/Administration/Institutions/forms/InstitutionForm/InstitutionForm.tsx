@@ -13,7 +13,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames, statusTypesOptions } from 'consts';
+import { formNamesConst, iconNamesConst, statusTypesOptions } from 'consts';
 
 import {
   HandleAddAdminInstitution,
@@ -125,7 +125,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           {isEditMode && (
             <Button
               text="delete"
-              iconName="delete"
+              iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
@@ -146,7 +146,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
 };
 
 export default reduxForm<{}, InstitutionFormProps>({
-  form: formNames.ADMIN_INSTITUTIONS,
+  form: formNamesConst.ADMIN_INSTITUTIONS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(InstitutionForm));

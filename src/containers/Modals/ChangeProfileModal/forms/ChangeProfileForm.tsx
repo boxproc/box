@@ -5,7 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, ExternalSpinnerProps, SelectField, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleChangeAdminProfile } from 'store/domains';
 
@@ -53,7 +53,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
 };
 
 export default reduxForm<{}, ChangeProfileFormProps>({
-  form: formNames.CHANGE_PROFILE_FORM,
+  form: formNamesConst.CHANGE_PROFILE_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(ChangeProfileForm));

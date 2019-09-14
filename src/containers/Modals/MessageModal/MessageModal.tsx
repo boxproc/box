@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, Modal, Paragraph } from 'components';
 
-import { modalNames, statusCodes } from 'consts';
+import { modalNamesConst, statusCodes } from 'consts';
 
 import { CloseModal, PayloadMessageModal } from 'store/domains';
 import { storageUtil } from 'utils';
@@ -14,7 +14,7 @@ interface MessageModalProps {
   closeModal: CloseModal;
 }
 
-const modalName = modalNames.MESSAGE_MODAL;
+const modalName = modalNamesConst.MESSAGE_MODAL;
 
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,

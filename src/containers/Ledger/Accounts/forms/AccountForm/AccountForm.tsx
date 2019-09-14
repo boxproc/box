@@ -11,7 +11,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   AuxiliaryCounters,
@@ -107,7 +107,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 };
 
 export default reduxForm<{}, AccountFormProps>({
-  form: formNames.LEDGER_ACCOUNT,
+  form: formNamesConst.LEDGER_ACCOUNT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AccountForm));

@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import {
   closeModal,
@@ -22,7 +22,7 @@ interface AccountCardsProps {
   orderLedgerAccountCard: HandleOrderLedgerAccountCard;
 }
 
-const modalName = modalNames.INFO_LEDGER_CARDS;
+const modalName = modalNamesConst.INFO_LEDGER_CARDS;
 
 type TCell<T extends keyof LedgerAccountsCardsItemPrepared> =
   TableCellType<LedgerAccountsCardsItemPrepared[T]>;
@@ -91,7 +91,6 @@ export const Cards: React.FC<AccountCardsProps> = ({
         <Button
           type="reset"
           onClick={() => orderLedgerAccountCard(ledgerAccountCurrentId)}
-          iconName="orderCard"
           text="Order Card"
         />
       </Box>
@@ -101,14 +100,11 @@ export const Cards: React.FC<AccountCardsProps> = ({
         data={ledgerAccountCards}
         columns={columns}
       />
-      <Flex
-        justifyContent="flex-end"
-      >
-          <Button
-            onClick={() => closeModal(modalName)}
-            iconName="closeModal"
-            text="Close"
-          />
+      <Flex justifyContent="flex-end">
+        <Button
+          onClick={() => closeModal(modalName)}
+          text="Close"
+        />
       </Flex>
     </React.Fragment>
   );

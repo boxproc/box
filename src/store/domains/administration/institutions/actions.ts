@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -103,9 +103,9 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminInstitution(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_INSTITUTION));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_INSTITUTION));
         await dispatch(handleGetAdminInstitutions());
-        await dispatch(resetForm(formNames.ADMIN_INSTITUTIONS));
+        await dispatch(resetForm(formNamesConst.ADMIN_INSTITUTIONS));
       },
       dispatch
     );
@@ -119,7 +119,7 @@ export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = () =>
         const id = selectAdminInstitutionCurrentId(state);
 
         await dispatch(deleteAdminInstitution(id));
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_INSTITUTION));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INSTITUTION));
       },
       dispatch
     );

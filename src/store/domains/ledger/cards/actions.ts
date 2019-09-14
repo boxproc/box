@@ -1,6 +1,6 @@
 import { getFormValues } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   ActionTypeKeys,
@@ -49,7 +49,7 @@ export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.LEDGER_CARDS_FILTER);
+        const formValues = getFormValues(formNamesConst.LEDGER_CARDS_FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 

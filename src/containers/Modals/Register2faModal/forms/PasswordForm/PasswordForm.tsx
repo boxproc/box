@@ -7,7 +7,7 @@ import { Button, ExternalSpinnerProps, Paragraph, PasswordField, withSpinner } f
 
 import { HandleUserGetAuthKey } from 'store/domains';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
@@ -47,7 +47,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
 };
 
 export default reduxForm<{}, PasswordFormProps>({
-  form: formNames.PASSWORD,
+  form: formNamesConst.PASSWORD,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(PasswordForm));

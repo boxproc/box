@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './cardsComponents';
 import { CardsFilterForm } from './forms';
@@ -26,7 +26,7 @@ const Cards: React.FC<CardsProps> = ({
       title="Cards"
       data={ledgerCards}
       columns={tableColumns}
-      editModalName={modalNames.INFO_LEDGER_CARDS}
+      editModalName={modalNamesConst.INFO_LEDGER_CARDS}
       setCurrentIdAction={setLedgerCardId}
       FilterForm={
         <CardsFilterForm />

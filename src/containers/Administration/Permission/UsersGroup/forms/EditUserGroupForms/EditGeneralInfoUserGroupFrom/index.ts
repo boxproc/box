@@ -4,7 +4,7 @@ import { isDirty } from 'redux-form';
 
 import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import {
   AdminUsersGroupActionTypes,
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
 ]);
 
-const dirty = isDirty(formNames.EDIT_GENERAL_INFO_USER_GROUP);
+const dirty = isDirty(formNamesConst.EDIT_GENERAL_INFO_USER_GROUP);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal, withSpinner } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
 import {
@@ -25,7 +25,7 @@ interface EditSchedulerModalProps {
   setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
 }
 
-const modalName = modalNames.EDIT_ADMIN_SCHEDULER;
+const modalName = modalNamesConst.EDIT_ADMIN_SCHEDULER;
 
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
@@ -51,7 +51,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title={`Edit Scheduler${currentName}`}
       withCloseConfirmation={isFormDirty}
     >

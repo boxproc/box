@@ -9,7 +9,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleUpdateCardService } from 'store/domains';
 
@@ -54,7 +54,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
 };
 
 export default reduxForm<{}, ServicesFormProps>({
-  form: formNames.PRODUCT_SERVICES,
+  form: formNamesConst.PRODUCT_SERVICES,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(ServicesForm));

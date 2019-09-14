@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 import { UserFilter } from './forms';
@@ -33,8 +33,8 @@ export const User: React.FC<UserFilterProps> = ({
       title="Users"
       data={adminUserItems}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_ADMIN_USER}
-      editModalName={modalNames.EDIT_ADMIN_USER}
+      addNewModalName={modalNamesConst.ADD_ADMIN_USER}
+      editModalName={modalNamesConst.EDIT_ADMIN_USER}
       setCurrentIdAction={setAdminUserId}
       FilterForm={
         <UserFilter

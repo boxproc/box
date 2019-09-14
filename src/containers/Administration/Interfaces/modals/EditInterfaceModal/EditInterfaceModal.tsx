@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
@@ -17,7 +17,7 @@ interface EditAccountModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.EDIT_ADMIN_INTERFACE;
+const modalName = modalNamesConst.EDIT_ADMIN_INTERFACE;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
@@ -31,7 +31,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       maxContainerWidth={550}
       title="Edit Interface"
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm

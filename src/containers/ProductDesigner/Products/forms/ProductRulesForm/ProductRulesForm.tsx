@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
@@ -90,7 +90,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
 };
 
 export default reduxForm<{}, ProductRulesForm>({
-  form: formNames.PRODUCT_RULES,
+  form: formNamesConst.PRODUCT_RULES,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EditProductRulesForm));

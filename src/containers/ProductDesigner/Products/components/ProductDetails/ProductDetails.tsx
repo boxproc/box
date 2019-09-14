@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { productTypes } from 'consts';
+import { productTypesConst } from 'consts';
 
 import DebitDetails from './DebitDetails';
 import LoanDetails from './LoanDetails';
@@ -15,11 +15,11 @@ interface ProductDetailsProps {
 const ProductDetails: React.FC<ProductDetailsProps> = ({
   productType,
 }) => {
-  const isLoan = productType === productTypes.LOAN;
-  const isDebit = productType === productTypes.DEBIT;
-  const isSavings = productType === productTypes.SAVINGS;
-  const isPrepaid = productType === productTypes.PREPAID;
-  const isRevolvingCredit = productType === productTypes.REVOLVING_CREDIT;
+  const isLoan = productType === productTypesConst.LOAN;
+  const isDebit = productType === productTypesConst.DEBIT;
+  const isSavings = productType === productTypesConst.SAVINGS;
+  const isPrepaid = productType === productTypesConst.PREPAID;
+  const isRevolvingCredit = productType === productTypesConst.REVOLVING_CREDIT;
 
   return (
     <React.Fragment>

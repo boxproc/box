@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleFilterAdminEndpoint } from 'store/domains';
 
@@ -65,7 +65,7 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, EndpointFilterFormProps>({
-  form: formNames.ADMIN_ENDPOINT_FILTER,
+  form: formNamesConst.ADMIN_ENDPOINT_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(EndpointsFilterForm);

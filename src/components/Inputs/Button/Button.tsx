@@ -2,20 +2,22 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import { Filter } from 'styled-icons/boxicons-regular/Filter';
-import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
-import { LogOut } from 'styled-icons/boxicons-regular/LogOut';
-import { Plus } from 'styled-icons/boxicons-regular/Plus';
-import { User } from 'styled-icons/fa-solid/User';
-import { Qrcode } from 'styled-icons/icomoon/Qrcode';
-import { Delete } from 'styled-icons/material/Delete';
-import { Smartphone } from 'styled-icons/material/Smartphone';
+import {
+  DeleteIcon,
+  FilterIcon,
+  HelpIcon,
+  LogOutIcon,
+  PlusIcon,
+  QrcodeIcon,
+  SmartphoneIcon,
+  UserIcon,
+} from 'components';
 
 import styled from 'theme';
 
 import { withOpenModal } from 'HOCs';
 
-import { modalNames } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { OpenModal } from 'store/domains';
 
@@ -76,7 +78,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
       background-color: ${theme.colors.white};
   `};
 
-    ${({ underline, theme }) => underline && `
+    ${({ underline }) => underline && `
       background-color: inherit;
   `};
   }
@@ -105,22 +107,22 @@ interface ButtonProps {
 
 const renderIcon = (name: string) => {
   switch (name) {
-    case 'filter':
-      return (<Filter size="18" />);
-    case 'plus':
-      return (<Box mt="-2px"><Plus size="18" /></Box>);
-    case 'logOut':
-      return (<Box mt="-2px" mr="1px"><LogOut size="16" /></Box>);
-    case 'delete':
-      return (<Box mt="-2px"><Delete size="18" /></Box>);
-    case 'help':
-      return (<Box mt="-1px"><HelpCircle size="16" /></Box>);
-    case 'smartphone':
-      return (<Box mt="-1px"><Smartphone size="16" /></Box>);
-    case 'qrcode':
-      return (<Box mt="-1px" mr="3px"><Qrcode size="14" /></Box>);
-    case 'user':
-      return (<Box mt="-2px" mr="2px"><User size="12" /></Box>);
+    case iconNamesConst.FILTER:
+      return (<FilterIcon size="18" />);
+    case iconNamesConst.PLUS:
+      return (<Box mt="-2px"><PlusIcon size="18" /></Box>);
+    case iconNamesConst.LOGOUT:
+      return (<Box mt="-2px" mr="1px"><LogOutIcon size="16" /></Box>);
+    case iconNamesConst.DELETE:
+      return (<Box mt="-2px"><DeleteIcon size="18" /></Box>);
+    case iconNamesConst.HELP:
+      return (<Box mt="-1px"><HelpIcon size="16" /></Box>);
+    case iconNamesConst.SMARTPHONE:
+      return (<Box mt="-1px"><SmartphoneIcon size="16" /></Box>);
+    case iconNamesConst.QRCODE:
+      return (<Box mt="-1px" mr="3px"><QrcodeIcon size="14" /></Box>);
+    case iconNamesConst.USER:
+      return (<Box mt="-2px" mr="2px"><UserIcon size="12" /></Box>);
     default:
       return null;
   }
@@ -146,7 +148,7 @@ const Button: React.FC<ButtonProps> = ({
       ? null
       : withConfirmation
         ? () => openModal({
-          name: modalNames.CONFIRMATION_MODAL,
+          name: modalNamesConst.CONFIRMATION_MODAL,
           payload: {
             confirmationAction: onClick,
             confirmationTitle,

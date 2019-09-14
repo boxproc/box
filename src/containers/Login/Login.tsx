@@ -15,7 +15,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { basePath, formNames } from 'consts';
+import { basePath, formNamesConst } from 'consts';
 
 import { HandleUserLogin } from 'store/domains';
 
@@ -112,7 +112,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
 };
 
 export default reduxForm<{}, LoginProps>({
-  form: formNames.USER_LOGIN,
+  form: formNamesConst.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner({

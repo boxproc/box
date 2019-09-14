@@ -1,4 +1,4 @@
-export enum formNames {
+export enum formNamesConst {
   USER_LOGIN = 'userLoginForm',
 
   LOGIN_CODE = 'loginCodeForm',

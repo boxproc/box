@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 
@@ -27,8 +27,8 @@ const Accounts: React.FC<AccountsProps> = ({
       title="Accounts"
       data={ledgerAccounts}
       columns={tableColumns}
-      addNewModalName={modalNames.ADD_LEDGER_ACCOUNT}
-      editModalName={modalNames.EDIT_LEDGER_ACCOUNT}
+      addNewModalName={modalNamesConst.ADD_LEDGER_ACCOUNT}
+      editModalName={modalNamesConst.EDIT_LEDGER_ACCOUNT}
       setCurrentIdAction={setLedgerAccountsId}
       FilterForm={
         <AccountsFilterForm />

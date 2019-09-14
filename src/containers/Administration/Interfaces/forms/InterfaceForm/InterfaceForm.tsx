@@ -5,7 +5,7 @@ import { Flex } from '@rebass/grid';
 
 import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
 import { GeneralInterfacesInfo } from 'containers/Administration/Interfaces/components';
 
@@ -62,7 +62,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           {isEditMode && (
             <Button
               text="delete"
-              iconName="delete"
+              iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
               confirmationText="Delete interface?"
@@ -83,7 +83,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
 };
 
 export default reduxForm<{}, InterfaceFormProps>({
-  form: formNames.ADMIN_INTERFACE,
+  form: formNamesConst.ADMIN_INTERFACE,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(InterfaceForm));

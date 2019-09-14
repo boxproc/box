@@ -1,4 +1,4 @@
-import { links } from 'consts';
+import { linksConst } from 'consts';
 
 export const currentYear = new Date().getFullYear();
 
@@ -16,7 +16,7 @@ export const parseNumber = (value: string | number, emptyAsZero?: boolean) => {
 
 export const getCurrentBPSUrl = (pathname: string) => {
   const currentPathname = pathname.slice(1);
-  const currentUrl = `${links.BPS_BASE}${currentPathname}`;
+  const currentUrl = `${linksConst.BPS_BASE}${currentPathname}`;
 
   return currentUrl;
 };

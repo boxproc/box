@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { Dropdown, DropdownOption, ExternalLink } from 'components';
 
-import { basePath, links } from 'consts';
+import { basePath, linksConst } from 'consts';
 
 import {
   UiItemPrepared,
@@ -60,7 +60,7 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
     >
       <DropdownOption>
         <ExternalLink
-          link={links.BPS}
+          link={linksConst.BPS}
           text="BOX-UI"
         />
       </DropdownOption>

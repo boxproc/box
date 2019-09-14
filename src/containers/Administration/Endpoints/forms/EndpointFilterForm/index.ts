@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector, isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import EndpointFilterForm from './EndpointFilterForm';
 
@@ -19,8 +19,8 @@ const loadingSelector = createLoadingSelector([
   AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINT,
 ]);
 
-const formSelector = formValueSelector(formNames.ADMIN_ENDPOINT_FILTER);
-const dirty = isDirty(formNames.ADMIN_ENDPOINT_FILTER);
+const formSelector = formValueSelector(formNamesConst.ADMIN_ENDPOINT_FILTER);
+const dirty = isDirty(formNamesConst.ADMIN_ENDPOINT_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isDirty: dirty(state),

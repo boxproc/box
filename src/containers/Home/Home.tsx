@@ -6,7 +6,7 @@ import styled from 'theme';
 
 import { Button, Paragraph, SmallText } from 'components';
 
-import { modalNames } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { OpenModal } from 'store/domains';
 import { storageUtil } from 'utils';
@@ -61,9 +61,9 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
               <Button
                 text="Enable second factor authentication"
                 bordered={true}
-                iconName="smartphone"
+                iconName={iconNamesConst.SMARTPHONE}
                 onClick={() => openModal({
-                  name: modalNames.REGISTER_2FA_MODAL,
+                  name: modalNamesConst.REGISTER_2FA_MODAL,
                 })}
               />
             </Flex>

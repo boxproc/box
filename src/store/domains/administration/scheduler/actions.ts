@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -107,10 +107,10 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        await dispatch(closeModal(modalNames.ADD_ADMIN_SCHEDULER));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_SCHEDULER));
         await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(handleGetAdminSchedulerJobs());
-        await dispatch(resetForm(formNames.DEFINE_ADMIN_SCHEDULER_JOB));
+        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB));
       },
       dispatch
     );
@@ -123,7 +123,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =
         const state = getState();
         const id = selectCurrentSchedulerJobId(state);
 
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(handleGetAdminSchedulerJobs());
       },
@@ -137,7 +137,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        await dispatch(closeModal(modalNames.EDIT_ADMIN_SCHEDULER));
+        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(handleGetAdminSchedulerJobs());
       },
@@ -166,7 +166,7 @@ export const handleSetGeneratedCronExpression: HandleSetGeneratedCronExpression 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(setGeneratedCronExpression(expression));
-        await dispatch(closeModal(modalNames.GENERATE_CRON_EXPRESSION));
+        await dispatch(closeModal(modalNamesConst.GENERATE_CRON_EXPRESSION));
       },
       dispatch
     );

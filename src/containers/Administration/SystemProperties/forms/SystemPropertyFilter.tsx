@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleFilterAdminSysProps } from 'store/domains';
 
@@ -57,7 +57,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
 };
 
 export default reduxForm<{}, SystemPropertyFilterProps>({
-  form: formNames.SYSTEM_PROPERTY_FILTER,
+  form: formNamesConst.SYSTEM_PROPERTY_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(SystemPropertyFilter);

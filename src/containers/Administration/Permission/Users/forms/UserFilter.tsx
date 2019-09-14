@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, CheckboxField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleFilterUsers } from 'store/domains';
 
@@ -54,7 +54,7 @@ const UserFilter: React.FC<UserFilterAllProps> = ({
 };
 
 export default reduxForm<{}, UserFilterProps>({
-  form: formNames.USER,
+  form: formNamesConst.USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(UserFilter);

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
@@ -16,7 +16,7 @@ interface AddEndpointModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_ENDPOINT;
+const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
 
 const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
   closeModal,

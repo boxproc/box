@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
@@ -14,7 +14,7 @@ interface AddUserModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_USER;
+const modalName = modalNamesConst.ADD_ADMIN_USER;
 
 const AddAdminModal: React.FC<AddUserModalProps> = ({
   closeModal,

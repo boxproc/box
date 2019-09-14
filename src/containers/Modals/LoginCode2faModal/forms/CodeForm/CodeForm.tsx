@@ -5,7 +5,7 @@ import { Flex } from '@rebass/grid';
 
 import { Button, ExternalSpinnerProps, InputField, withSpinner } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleUserEnterAuthKey } from 'store/domains';
 
@@ -46,7 +46,7 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
 };
 
 export default reduxForm<{}, CodeFormProps>({
-  form: formNames.LOGIN_CODE,
+  form: formNamesConst.LOGIN_CODE,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner({

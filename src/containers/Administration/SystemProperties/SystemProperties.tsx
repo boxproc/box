@@ -11,7 +11,7 @@ import {
 
 import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import {
   AdminSysPropsItem,
@@ -118,7 +118,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}
-      addNewModalName={modalNames.ADD_ADMIN_SYSTEM_PROPERTY}
+      addNewModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       setCurrentIdAction={setAdminSysPropId}
       FilterForm={

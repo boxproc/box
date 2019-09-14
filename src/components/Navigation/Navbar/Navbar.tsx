@@ -3,8 +3,9 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { ChevronIcon } from 'components';
-import { basePath, uiItemTypes } from 'consts';
+import { ChevronRightIcon } from 'components';
+
+import { basePath, uiItemTypesConst } from 'consts';
 
 import { NavList } from './NavList';
 
@@ -40,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
 
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type } = item;
-    const hasChildren = type === uiItemTypes.MENU_PARENT;
+    const hasChildren = type === uiItemTypesConst.MENU_PARENT;
 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 
@@ -58,8 +59,8 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
         >
           {title}
           {hasChildren && parentId &&
-            <Box ml="5px">
-              <ChevronIcon className="chevron-icon" />
+            <Box ml="5px" mt="-2px">
+              <ChevronRightIcon size="17" />
             </Box>
           }
         </Flex>

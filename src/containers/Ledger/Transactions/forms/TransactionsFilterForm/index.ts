@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector, isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import TransactionsFilterForm from './TransactionsFilterForm';
 
@@ -22,8 +22,8 @@ import { dateUtil } from 'utils';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
 ]);
-const formSelector = formValueSelector(formNames.LEDGER_TRANSACTIONS_FILTER);
-const dirty = isDirty(formNames.LEDGER_TRANSACTIONS_FILTER);
+const formSelector = formValueSelector(formNamesConst.LEDGER_TRANSACTIONS_FILTER);
+const dirty = isDirty(formNamesConst.LEDGER_TRANSACTIONS_FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),

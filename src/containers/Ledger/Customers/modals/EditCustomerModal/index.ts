@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import EditCustomerModal from './EditCustomerModal';
 
 import { closeModal } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNames.EDIT_LEDGER_CUSTOMER);
+const dirty = isDirty(formNamesConst.EDIT_LEDGER_CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

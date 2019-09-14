@@ -1,6 +1,6 @@
 import { reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 import {
@@ -161,7 +161,7 @@ export const handleGetAdminActiveUsers: HandleGetAdminActiveUsers = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getAdminActiveUsers(id));
-        await dispatch(resetForm(formNames.EDIT_USER_GROUP_MEMBERS_FORM));
+        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM));
       },
       dispatch
     );
@@ -234,9 +234,9 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
 
         await dispatch(addAdminUserUsersGroup(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_USERS_GROUP));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_USERS_GROUP));
         await dispatch(handleGetAdminUsersGroup());
-        await dispatch(resetForm(formNames.DEFINE_ADMIN_USER));
+        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_USER));
       },
       dispatch
     );
@@ -254,7 +254,7 @@ export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
           await dispatch(addAdminGroupPermission(preparedValues));
           await dispatch(getAdminUserGroupPermissions(currentGroupId));
           await dispatch(getAdminUiItems(currentGroupId));
-          await dispatch(resetForm(formNames.EDIT_GROUP_PERMISSION));
+          await dispatch(resetForm(formNamesConst.EDIT_GROUP_PERMISSION));
         },
         dispatch
       );
@@ -273,7 +273,7 @@ export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = (values) =>
         }));
         await dispatch(getAdminActiveUsers(currentGroupId));
         await dispatch(getAdminUserGroupMembers(currentGroupId));
-        await dispatch(resetForm(formNames.EDIT_USER_GROUP_MEMBERS_FORM));
+        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM));
       },
       dispatch
     );

@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNames, modalNames } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -94,9 +94,9 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
         const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
 
         await dispatch(addAdminSysProp(preparedValues));
-        await dispatch(closeModal(modalNames.ADD_ADMIN_SYSTEM_PROPERTY));
+        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY));
         await dispatch(handleFilterAdminSysProps());
-        await dispatch(resetForm(formNames.ADD_ADMIN_SYSTEM_PROPERTY));
+        await dispatch(resetForm(formNamesConst.ADD_ADMIN_SYSTEM_PROPERTY));
       },
       dispatch
     );
@@ -123,7 +123,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNames.SYSTEM_PROPERTY_FILTER);
+        const formValues = getFormValues(formNamesConst.SYSTEM_PROPERTY_FILTER);
         const state = getState();
         const preparedValues = prepareAdminSysPropFilterParams(formValues(state));
 

@@ -7,7 +7,7 @@ import { Button, SelectField } from 'components';
 
 import { HandleFilterAdminEventDataElems } from 'store/domains';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
@@ -62,7 +62,7 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterAllProps> = ({
 };
 
 export default reduxForm<{}, EventsDataElemsFilterProps>({
-  form: formNames.ADMIN_EVENT_DATA_ELEMS_FILTER,
+  form: formNamesConst.ADMIN_EVENT_DATA_ELEMS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(EventsDataElemsFilter);

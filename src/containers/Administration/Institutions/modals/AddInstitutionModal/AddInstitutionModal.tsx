@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
@@ -13,7 +13,7 @@ interface AddInstitutionModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNames.ADD_ADMIN_INSTITUTION;
+const modalName = modalNamesConst.ADD_ADMIN_INSTITUTION;
 
 const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
   closeModal,

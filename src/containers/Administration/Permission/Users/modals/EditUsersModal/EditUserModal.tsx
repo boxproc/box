@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNames, modalTypes } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
@@ -20,7 +20,7 @@ interface EditUserModalProps {
   requires2faFlagValue: boolean;
 }
 
-const modalName = modalNames.EDIT_ADMIN_USER;
+const modalName = modalNamesConst.EDIT_ADMIN_USER;
 
 const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
@@ -32,7 +32,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypes.EDIT_MODAL}
+      type={modalTypesConst.EDIT_MODAL}
       title="Edit User"
       maxContainerWidth={650}
       withCloseConfirmation={isFormDirty}

@@ -4,13 +4,13 @@ import { Box } from '@rebass/grid';
 
 import { CircleList, Modal } from 'components';
 
-import { modalNames } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { CodeForm } from './forms';
 
 interface Register2faModalProps {}
 
-const modalName = modalNames.LOGIN_CODE_2FA_MODAL;
+const modalName = modalNamesConst.LOGIN_CODE_2FA_MODAL;
 
 const Register2faModal: React.FC<Register2faModalProps> = () => {
   return (

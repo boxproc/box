@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, SelectField } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleFilterLedgerAccounts, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -140,7 +140,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, AccountsFilterFormProps>({
-  form: formNames.LEDGER_ACCOUNTS_FILTER,
+  form: formNamesConst.LEDGER_ACCOUNTS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(AccountsFilterForm);

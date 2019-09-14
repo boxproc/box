@@ -12,7 +12,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNames } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { HandleAddAdminSysProp } from 'store/domains';
 
@@ -90,7 +90,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
 };
 
 export default reduxForm<{}, AddSystemPropertyFormProps>({
-  form: formNames.ADD_ADMIN_SYSTEM_PROPERTY,
+  form: formNamesConst.ADD_ADMIN_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AddSystemPropertyForm));
