@@ -9,10 +9,10 @@ interface HrProps {
 export const Hr = styled.div<HrProps>`
   margin-top: 15px;
   margin-bottom: 9px;
-  border-top: 1px solid ${({theme, accentColor}) =>
-  accentColor ? 'transparent' : theme.lightGrayColor};
+  border-top: 1px solid ${({ theme, accentColor }) =>
+    accentColor ? 'transparent' : theme.colors.lightGray};
   width: 100%;
-  ${({accentColor}) => accentColor && highlightCss};
+  ${({ accentColor }) => accentColor && highlightCss};
 
   &:before {
     top: -6px;

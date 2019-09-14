@@ -19,8 +19,8 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     left: ${({ position }) => position === 'left' ? '-10px' : 'auto'};
     right: ${({ position }) => position === 'right' ? '0' : 'auto'};
     top: calc(100% + 3px);
-    background-color: ${({ theme }) => theme.whiteColor};
-    border: 1px solid ${({ theme }) => theme.darkGrayColor};
+    background-color: ${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.darkGray};
     z-index: 1;
   }
 
@@ -33,7 +33,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     }
 
     &:hover {
-      background-color: ${({ theme }) => theme.lighterGrayColor};
+      background-color: ${({ theme }) => theme.colors.lighterGray};
     }
   }
 
@@ -43,20 +43,20 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     cursor: pointer;
 
     * {
-      color: ${({ theme, isActive }) => isActive && theme.normalAccentColor}
+      color: ${({ theme, isActive }) => isActive && theme.colors.normalAccent}
     }
 
     &:hover * {
-      color: ${({ theme }) => theme.normalAccentColor};
+      color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
 `;
 
 const ToggleButton = styled(ArrowDropDown)`
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 
   &:hover {
-    color: ${({ theme }) => theme.normalAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
   }
 `;
 

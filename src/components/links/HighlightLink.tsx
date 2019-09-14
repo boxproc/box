@@ -13,14 +13,14 @@ interface LinkProps {
 }
 
 const Link = styled.span<LinkProps>`
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
   border-bottom: 1px solid ${({ theme, isActive }) =>
-    isActive ? theme.lightAccentColor : theme.lightGrayColor};
+    isActive ? theme.colors.lightAccent : theme.colors.lightGray};
   line-height: 1.4;
   font-size: 15px;
   cursor: pointer;
   &:hover {
-    border-bottom-color: ${({ theme }) => theme.lighterAccentColor};
+    border-bottom-color: ${({ theme }) => theme.colors.lighterAccent};
   }
 `;
 

@@ -6,10 +6,10 @@ import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 import { LogOut } from 'styled-icons/boxicons-regular/LogOut';
 import { Plus } from 'styled-icons/boxicons-regular/Plus';
+import { User } from 'styled-icons/fa-solid/User';
 import { Qrcode } from 'styled-icons/icomoon/Qrcode';
 import { Delete } from 'styled-icons/material/Delete';
 import { Smartphone } from 'styled-icons/material/Smartphone';
-import { User } from 'styled-icons/fa-solid/User';
 
 import styled from 'theme';
 
@@ -36,7 +36,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   font-size: ${({ size }) => size ? size + 'px' : '13px'};
   text-transform: uppercase;
   letter-spacing: .2pt;
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
   font-weight: 500;
   line-height: 1.3;
   white-space: nowrap;
@@ -45,33 +45,33 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
     padding: 8px 10px 6px;
     border-radius: 2px;
     &:hover {
-      background-color: ${theme.lighterGrayColor};
+      background-color: ${theme.colors.lighterGray};
     }
   `}
 
   ${({ underline, theme }) => underline && `
     padding: 0;
     border-radius: 0;
-    border-bottom: 1px solid ${theme.normalAccentColor};
+    border-bottom: 1px solid ${theme.colors.normalAccent};
   `}
 
   ${({ bordered, theme }) => bordered && `
-    border: 1px solid ${theme.grayColor};
+    border: 1px solid ${theme.colors.gray};
     border-radius: 2px;
     padding: 8px 10px 7px;
     width: 100%;
     justify-content: center;
-    background-color: ${theme.lighterGrayColor};
+    background-color: ${theme.colors.lighterGray};
     line-height: 1.25;
-    box-shadow: ${theme.boxShadow};
+    box-shadow: ${theme.shadows.normalBox};
   `};
 
   &:hover {
-    color: ${({ theme }) => theme.normalAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
 
     ${({ bordered, theme }) => bordered && `
-      border-color: ${theme.normalAccentColor};
-      background-color: ${theme.whiteColor};
+      border-color: ${theme.colors.normalAccent};
+      background-color: ${theme.colors.white};
   `};
 
     ${({ underline, theme }) => underline && `

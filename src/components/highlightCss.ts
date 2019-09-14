@@ -13,7 +13,7 @@ export const highlightCss = css`
     height: 1px;
     background-image:
       linear-gradient(to left, hsla(0,0%,0%,0) 0,
-      ${({ theme }) => theme.lighterAccentColor} 50%,
+      ${({ theme }) => theme.colors.lighterAccent} 50%,
       hsla(0,0%,0%,0) 100%);
   }
 `;

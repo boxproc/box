@@ -13,26 +13,26 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     box-shadow: none;
     box-sizing: border-box;
     outline: none;
-    color: ${({ theme }) => theme.blackColor};
+    color: ${({ theme }) => theme.colors.black};
     border-radius: 2px 0 0 2px;
     border: solid 1px ${({ theme, active, invalid, disabled }) =>
-      invalid ? theme.redColor :
-        active ? theme.normalAccentColor :
-          disabled ? theme.lightGrayColor : theme.grayColor
+    invalid ? theme.colors.red :
+      active ? theme.colors.normalAccent :
+        disabled ? theme.colors.lightGray : theme.colors.gray
   };
 
     &:focus{
       border: solid 1px ${({ theme, invalid }) =>
-        invalid ? theme.redColor : theme.normalAccentColor};
+    invalid ? theme.colors.red : theme.colors.normalAccent};
     }
 
     ::placeholder{
       font-size: 14px;
-      color: ${({ theme }) => theme.grayColor};
+      color: ${({ theme }) => theme.colors.gray};
     }
 
     :disabled {
-      background-color: ${({ theme }) => theme.whiteColor};
+      background-color: ${({ theme }) => theme.colors.white};
     }
   }
   input {
@@ -47,7 +47,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     display: block;
   }
   tbody {
-    border-top: 1px solid ${({ theme }) => theme.lightAccentColor};
+    border-top: 1px solid ${({ theme }) => theme.colors.lightAccent};
     margin: 0 10px;
     padding: 10px 0;
   }
@@ -66,11 +66,11 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     position: absolute;
     width: 200px;
     margin-top: 7px;
-    background: ${({ theme }) => theme.whiteColor};
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    background: ${({ theme }) => theme.colors.white};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
   }
   .rdtPicker:hover {
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
   }
   .rdtOpen .rdtPicker {
     display: block;
@@ -84,7 +84,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     margin: 0;
   }
   .rdtPicker table thead tr:first-child {
-    background-color: ${({ theme }) => theme.normalAccentColor};
+    background-color: ${({ theme }) => theme.colors.normalAccent};
     vertical-align: baseline;
     padding: 8px 15px;
   }
@@ -97,7 +97,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     cursor: pointer;
     font-size: 10px;
     font-weight: 500;
-    color: ${({ theme }) => theme.blackColor};
+    color: ${({ theme }) => theme.colors.black};
   }
   .rdtPicker td.rdtDay:hover {
     border-radius: 100%;
@@ -106,7 +106,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
   }
   .rdtPicker td.rdtOld,
   .rdtPicker td.rdtNew {
-    color: ${({ theme }) => theme.grayColor};
+    color: ${({ theme }) => theme.colors.gray};
   }
   .rdtPicker td.rdtToday {
     font-weight: bold;
@@ -117,7 +117,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
   .rdtPicker td.rdtActive:hover {
     border-radius: 100%;
     opacity: 1;
-    background-color: ${({ theme }) => theme.normalAccentColor};
+    background-color: ${({ theme }) => theme.colors.normalAccent};
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
@@ -181,6 +181,6 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
   .rdtPicker td.rdtOld,
   .rdtPicker td.rdtDisabled,
   .rdtPicker td.rdtNew {
-    color: ${({ theme }) => theme.grayColor};
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;

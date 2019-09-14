@@ -39,7 +39,7 @@ const DatepickerWrapper = styled.div<DisabledProp>`
   display: flex;
 
   ${({ disabled, theme }) => disabled && `
-    background-color: ${theme.whiteColor};
+    background-color: ${theme.colors.white};
     pointer-events: none;
   `};
 `;
@@ -47,23 +47,23 @@ const DatepickerWrapper = styled.div<DisabledProp>`
 const IconWrapper = styled.div<DateTimeWrapperProps>`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.whiteColor};
+  background-color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   padding: 5px;
   border: solid 1px ${({ theme, invalid, active, disabled }) =>
     invalid
-      ? theme.redColor
+      ? theme.colors.red
       : active
-        ? theme.normalAccentColor
+        ? theme.colors.normalAccent
         : disabled
-          ? theme.lightGrayColor
-          : theme.grayColor};
+          ? theme.colors.lightGray
+          : theme.colors.gray};
   border-left: none;
   border-radius: 0 2px 2px 0;
 `;
 
 const CalendarIconWrapper = styled(CalendarIcon) <CalendarState>`
-  color: ${({ isOpen, theme }) => isOpen ? theme.normalAccentColor : theme.grayColor};
+  color: ${({ isOpen, theme }) => isOpen ? theme.colors.normalAccent : theme.colors.gray};
 `;
 
 class Calendar extends React.Component<CalendarProps, CalendarState> {

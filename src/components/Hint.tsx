@@ -27,12 +27,12 @@ const HintWrapper = styled.div<HintWrapperProps>`
     left: ${({ position }) => position === 'right' ? 'calc(100% + 3px)' : 'auto'};
     min-width: ${({ icon, width }) => icon ? width ? width + 'px' : '160px' : 'auto'};
     padding: 7px 10px;
-    background-color: ${({ theme }) => theme.blackColorOpacity7};
-    color: ${({ theme }) => theme.whiteColor};
+    background-color: ${({ theme }) => theme.colors.blackOpacity};
+    color: ${({ theme }) => theme.colors.white};
     transform: ${({ position }) =>
-      position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)' };
+    position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)'};
     margin: ${({ position }) =>
-      position === 'left' || position === 'right' ? '-50% 0 0 0' : '0 0 0 50%' };
+    position === 'left' || position === 'right' ? '-50% 0 0 0' : '0 0 0 50%'};
     border-radius: 2px;
     font-size: 13px;
     line-height: 1.5;
@@ -49,10 +49,10 @@ const HintWrapper = styled.div<HintWrapperProps>`
 
 const InfoButton = styled(InfoCircle)`
   cursor: pointer;
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 
   &:hover {
-    color: ${({ theme }) => theme.normalAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
   }
 `;
 
@@ -87,7 +87,7 @@ const Hint: React.FC<HintProps> = ({
         onMouseLeave={toggleIsHint}
       >
         {icon && (
-          <InfoButton size="18"/>
+          <InfoButton size="18" />
         )}
       </div>
       {isHint && (

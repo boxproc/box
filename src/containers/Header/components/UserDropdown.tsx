@@ -16,7 +16,7 @@ import { storageUtil } from 'utils';
 
 const iconCss = css`
   margin-right: 5px;
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const UserIcon = styled(User)`
@@ -30,7 +30,7 @@ const UserShieldIcon = styled(UserShield)`
 const TextWrapper = styled.div`
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.darkGrayColor};
+  color: ${({ theme }) => theme.colors.darkGray};
   text-transform: uppercase;
   letter-spacing: .2pt;
 `;
@@ -41,11 +41,11 @@ interface UserDataProps {
   lastName: string;
 }
 
-const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName}) => (
+const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) => (
   <Flex alignItems="baseline">
     {username === usernames.ADMIN
-      ? <div><UserShieldIcon size="17"/></div>
-      : <UserIcon size="12"/>
+      ? <div><UserShieldIcon size="17" /></div>
+      : <UserIcon size="12" />
     }
     <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
   </Flex>
@@ -78,14 +78,14 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
     >
       {userData && userData.username === usernames.ADMIN && (
         <Option>
-        <Button
-          text="Change profile"
-          iconName="user"
-          onClick={() => openModal({
-            name: modalNames.CHANGE_PROFILE_MODAL,
-          })}
-        />
-      </Option>)}
+          <Button
+            text="Change profile"
+            iconName="user"
+            onClick={() => openModal({
+              name: modalNames.CHANGE_PROFILE_MODAL,
+            })}
+          />
+        </Option>)}
       <Option>
         <Button
           text="Log out"

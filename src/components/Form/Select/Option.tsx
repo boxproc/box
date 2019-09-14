@@ -15,7 +15,7 @@ const OptionWrapper = styled.div<OptionWrapperProps>`
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  background-color: ${({ isFocused, theme }) => isFocused ? theme.lightGrayColor : ''};
+  background-color: ${({ isFocused, theme }) => isFocused ? theme.colors.lightGray : ''};
 
   svg {
     cursor: pointer;
@@ -47,7 +47,7 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
     },
   } = props;
 
-  const modifiedData = modifySelectOption ? modifySelectOption({...props}) : data;
+  const modifiedData = modifySelectOption ? modifySelectOption({ ...props }) : data;
 
   return (
     <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
@@ -57,10 +57,10 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
             onClick={e => selectOption(modifiedData)}
           />
         ) : (
-          <UncheckedBoxIcon
-            onClick={e => selectOption(modifiedData)}
-          />
-        )}
+            <UncheckedBoxIcon
+              onClick={e => selectOption(modifiedData)}
+            />
+          )}
       </Box>
       <div>{children}</div>
     </OptionWrapper>

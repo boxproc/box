@@ -8,7 +8,7 @@ import Hint from 'components/Hint';
 
 const TabsWrapper = styled.div`
   margin: 0 -20px 20px;
-  box-shadow: ${({ theme }) => theme.boxShadowBottom};
+  box-shadow: ${({ theme }) => theme.shadows.bottomBox};
 `;
 
 interface TabTitleProps {
@@ -21,13 +21,13 @@ const TabTitle = styled.div<TabTitleProps>`
   text-transform: uppercase;
   font-weight: 500;
   cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
   font-size: 14px;
   letter-spacing: .5pt;
   border-bottom: 1px solid transparent;
 
   &:hover {
-    color: ${({ theme }) => theme.normalAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
   }
 
   .title {
@@ -35,8 +35,8 @@ const TabTitle = styled.div<TabTitleProps>`
   }
 
   &.is-active {
-    color: ${({ theme }) => theme.normalAccentColor};
-    border-bottom-color: ${({ theme }) => theme.lightAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
+    border-bottom-color: ${({ theme }) => theme.colors.lightAccent};
   }
 `;
 

@@ -17,22 +17,22 @@ export const Wrapper = styled.div`
   height: auto;
   padding: 0;
   max-height: 132px;
-  border: 1px solid ${({ theme }) => theme.grayColor};
+  border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
   font-size: 13px;
   line-height: 1.7;
   overflow: auto;
 
   * {
-    font-family: ${({ theme }) => theme.codeFont};
+    font-family: ${({ theme }) => theme.fonts.code};
   }
 
   &.is-focus {
-    border-color: ${({ theme }) => theme.normalAccentColor};
+    border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
   textarea::placeholder {
-    color: ${({ theme }) => theme.grayColor};
+    color: ${({ theme }) => theme.colors.gray};
   }
 
   pre {
@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {}
+interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> { }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
   id,

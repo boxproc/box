@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactTable, {
-  ComponentDecoratorProps,
-  ReactTableDefaults,
-} from 'react-table';
+import ReactTable, { ComponentDecoratorProps, ReactTableDefaults } from 'react-table';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -34,15 +31,15 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   color: inherit;
 
   ${({ isDate, theme }) => isDate && `
-    color: ${theme.grayColor};
+    color: ${theme.colors.gray};
   `}
 
   ${({ isAccentColor, theme }) => isAccentColor && `
-    color: ${theme.normalAccentColor};
+    color: ${theme.colors.normalAccent};
   `}
 
   .title {
-    color: ${({ theme }) => theme.blackColor};
+    color: ${({ theme }) => theme.colors.black};
     font-weight: 500;
     font-size: 11px;
     line-height: 1.6;
@@ -50,11 +47,11 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   }
 
   &:focus {
-    border-color: ${({ theme }) => theme.normalAccentColor};
+    border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
   .icon path {
-    stroke: ${({ theme }) => theme.grayColor};
+    stroke: ${({ theme }) => theme.colors.gray};
   }
 `;
 

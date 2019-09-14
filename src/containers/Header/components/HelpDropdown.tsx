@@ -18,13 +18,13 @@ import { stringsUtil } from 'utils';
 
 const HelpIcon = styled(HelpCircle)`
   margin-right: 3px;
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const TextWrapper = styled.div`
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.darkGrayColor};
+  color: ${({ theme }) => theme.colors.darkGray};
   text-transform: uppercase;
   letter-spacing: .2pt;
 `;

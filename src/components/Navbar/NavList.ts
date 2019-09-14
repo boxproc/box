@@ -21,12 +21,12 @@ export const NavList = styled.div`
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .2pt;
-    color: ${({ theme }) => theme.darkGrayColor};
+    color: ${({ theme }) => theme.colors.darkGray};
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;
     margin: 0 1px;
-    background-color: ${({ theme }) => theme.whiteColor};
+    background-color: ${({ theme }) => theme.colors.white};
     z-index: 100
     &:before {
       content: "";
@@ -53,9 +53,9 @@ export const NavList = styled.div`
     flex-direction: column;
     display: none;
     width: 200px;
-    background-color: ${({ theme }) => theme.whiteColor};
-    box-shadow: ${({ theme }) => theme.boxShadow};
-    border: 1px solid ${({ theme }) => theme.darkGrayColor};
+    background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
+    border: 1px solid ${({ theme }) => theme.colors.darkGray};
     .${menuClasses.SUB_MENU} {
       left: calc(100% + 1px);
       top: -2px;
@@ -66,13 +66,13 @@ export const NavList = styled.div`
       font-size: 14px;
       font-weight: normal;
       letter-spacing: normal;
-      color: ${({ theme }) => theme.blackColor};
+      color: ${({ theme }) => theme.colors.black};
     }
   }
   .${menuClasses.MENU_ITEM}  {
     &:hover {
-      background-color: ${({ theme }) => theme.lighterGrayColor};
-      color: ${({ theme }) => theme.normalAccentColor};
+      background-color: ${({ theme }) => theme.colors.lighterGray};
+      color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
 `;

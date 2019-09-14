@@ -15,7 +15,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   }
   .ReactTable .rt-thead .rt-resizable-header,
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
-    border-right: 1px solid ${({ theme }) => theme.lighterGrayColor} !important;
+    border-right: 1px solid ${({ theme }) => theme.colors.lighterGray} !important;
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar {
@@ -26,11 +26,11 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-tbody::-webkit-scrollbar-thumb {
     background-color: rgba(38, 46, 62, 0.2);
     border-radius: 5px;
-    outline: 1px solid ${({ theme }) => theme.normalAccentColor};
+    outline: 1px solid ${({ theme }) => theme.colors.normalAccent};
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px ${({ theme }) => theme.grayColor};
+    box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.gray};
     border-radius: 2px;
   }
 
@@ -42,7 +42,7 @@ export const TableStyled = styled.div<TableStyledProps>`
     height: 100%;
     border: none;
     overflow-y: auto;
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
   }
 
   .ReactTable .rt-tbody {
@@ -72,7 +72,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   }
 
   .ReactTable .rt-thead.-header {
-    background-color: ${({ theme }) => theme.lightGrayColor};
+    background-color: ${({ theme }) => theme.colors.lightGray};
     box-shadow: none;
   }
 
@@ -80,14 +80,14 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-tbody .rt-tr-group:last-child {
     position: relative;
     flex: 0 0 0;
-    border-bottom: 1px solid ${({ theme }) => theme.lighterGrayColor};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
   }
 
   .ReactTable .rt-tr-group:hover,
   .ReactTable .rt-tbody .rt-tr-group:last-child:hover {
     cursor: default;
-    background-color: ${({ theme }) => theme.lighterGrayColor};
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    background-color: ${({ theme }) => theme.colors.lighterGray};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
   }
 
   .ReactTable .rt-tbody .rt-tr-group:hover:before {
@@ -100,14 +100,14 @@ export const TableStyled = styled.div<TableStyledProps>`
     width: 0.12rem;
     display: block;
     background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
-      ${({ theme }) => theme.lighterAccentColor} 50%,
+      ${({ theme }) => theme.colors.lighterAccent} 50%,
       hsla(0,0%,0%,0) 100%);
   }
 
   ${({ activeRowIndex, theme }) => activeRowIndex && `
     .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}) {
-      background-color: ${theme.lighterGrayColor};
-      box-shadow: ${theme.boxShadow};
+      background-color: ${theme.colors.lighterGray};
+      box-shadow: ${theme.shadows.normalBox};
     }
     .ReactTable .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}):before {
       content: '';
@@ -119,7 +119,7 @@ export const TableStyled = styled.div<TableStyledProps>`
       width: 0.12rem;
       display: block;
       background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
-        ${theme.lighterAccentColor} 50%,
+        ${theme.colors.lighterAccent} 50%,
         hsla(0,0%,0%,0) 100%);
     }
   `}
@@ -145,13 +145,13 @@ export const TableStyled = styled.div<TableStyledProps>`
   /* header */
   .ReactTable .-sort-asc .up-icon path,
   .ReactTable .-sort-desc .down-icon path {
-    stroke: ${({ theme }) => theme.blackColor};
+    stroke: ${({ theme }) => theme.colors.black};
   }
 
   .ReactTable .rt-thead.-filters input {
     font-size: 13px;
     &:focus {
-      border-color: ${({ theme }) => theme.normalAccentColor};
+      border-color: ${({ theme }) => theme.colors.normalAccent};
       border-radius: 2px;
     }
   }
@@ -159,13 +159,13 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .-pagination {
     justify-content: flex-start;
     box-shadow: none;
-    border-top: 1px solid ${({ theme }) => theme.lighterGrayColor};
+    border-top: 1px solid ${({ theme }) => theme.colors.lighterGray};
   }
 
   .ReactTable .-pagination .-pageInfo,
   .ReactTable .-pagination .-pageJump input {
     font-size: 12px;
-    color: ${({ theme }) => theme.grayColor};
+    color: ${({ theme }) => theme.colors.gray};
   }
 
   .ReactTable .-pagination .-pageJump input::-webkit-inner-spin-button {
@@ -173,7 +173,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   }
 
   .ReactTable .-pagination .-pageJump input:focus {
-    border-color: ${({ theme }) => theme.normalAccentColor};
+    border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
   .ReactTable .-pagination .-pageInfo {
@@ -186,7 +186,7 @@ export const TableStyled = styled.div<TableStyledProps>`
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .2pt;
-    color: ${({ theme }) => theme.grayColor };
+    color: ${({ theme }) => theme.colors.gray};
     font-weight: 500;
     line-height: 1.3;
   }
@@ -199,7 +199,7 @@ export const TableStyled = styled.div<TableStyledProps>`
 
   .ReactTable .-pagination .-btn:not([disabled]):hover {
     background: transparent;
-    color: ${({ theme }) => theme.lighterAccentColor};
+    color: ${({ theme }) => theme.colors.lighterAccent};
   }
 
   input[type=number]::-webkit-outer-spin-button,

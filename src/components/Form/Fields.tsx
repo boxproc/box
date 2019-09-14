@@ -37,7 +37,7 @@ const Title = styled(Label)`
   justify-content: space-between;
 
   .required-icon {
-    color: ${({ theme }) => theme.redColor};
+    color: ${({ theme }) => theme.colors.red};
   }
 `;
 

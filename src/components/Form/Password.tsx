@@ -26,10 +26,10 @@ const PasswordInputWrapper = styled.div`
 `;
 
 const iconStyles = css`
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.gray};
 
   &:hover {
-  color: ${({ theme }) => theme.normalAccentColor}
+  color: ${({ theme }) => theme.normalAccent}
   }
 `;
 

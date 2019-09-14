@@ -25,7 +25,7 @@ export const customStyles: StylesConfig = {
       cursor: 'pointer',
       // eslint-disable-next-line
       ['& > svg path']: {
-        stroke: isDisabled ? theme.lightGrayColor : theme.darkGrayColor,
+        stroke: isDisabled ? theme.colors.lightGray : theme.colors.darkGray,
       },
     });
   },
@@ -39,16 +39,16 @@ export const customStyles: StylesConfig = {
     },
     // eslint-disable-next-line
     ['& > svg path']: {
-      color: theme.lightGrayColor,
+      color: theme.colors.lightGray,
     },
     // eslint-disable-next-line
     ['&:hover > svg path']: {
-      color: theme.grayColor,
+      color: theme.colors.gray,
     },
   }),
   placeholder: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    color: theme.grayColor,
+    color: theme.colors.gray,
     fontSize: '13px',
     lineHeight: '17px',
     textOverflow: 'ellipsis',
@@ -69,7 +69,7 @@ export const customStyles: StylesConfig = {
     borderRadius: '0 0 2px 2px',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: state.selectProps.invalid ? theme.redColor : theme.normalAccentColor,
+    borderColor: state.selectProps.invalid ? theme.colors.red : theme.colors.normalAccent,
     borderTop: '0',
   }),
   control: (provided: React.CSSProperties, state: SelectState) => {
@@ -87,16 +87,16 @@ export const customStyles: StylesConfig = {
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
       fontSize: 13,
       borderColor: invalid ?
-        theme.redColor
+        theme.colors.red
         :
         (isFocused || menuIsOpen) ?
-          theme.normalAccentColor
+          theme.colors.normalAccent
           :
           isDisabled ?
-          theme.lightGrayColor
-          :
-            theme.grayColor,
-      backgroundColor: theme.whiteColor,
+            theme.colors.lightGray
+            :
+            theme.colors.gray,
+      backgroundColor: theme.colors.white,
       boxShadow: 'none',
       minHeight: '31px',
       // eslint-disable-next-line
@@ -111,27 +111,27 @@ export const customStyles: StylesConfig = {
       ...provided,
       fontSize: '13px',
       lineHeight: '17px',
-      color: theme.blackColor,
+      color: theme.colors.black,
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
   },
   multiValueLabel: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    color: theme.blackColor,
+    color: theme.colors.black,
     padding: '3px 5px',
     paddingRight: 2,
     fontWeight: 500,
   }),
   multiValue: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    backgroundColor: theme.lightGrayColor,
+    backgroundColor: theme.colors.lightGray,
   }),
   multiValueRemove: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    backgroundColor: theme.lightGrayColor,
+    backgroundColor: theme.colors.lightGray,
     // eslint-disable-next-line
     [':hover']: {
-      backgroundColor: theme.lightGrayColor,
+      backgroundColor: theme.colors.lightGray,
       color: false,
     },
     // eslint-disable-next-line
@@ -142,7 +142,7 @@ export const customStyles: StylesConfig = {
   }),
   noOptionsMessage: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    color: theme.lightGrayColor,
+    color: theme.colors.lightGray,
   }),
   valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
@@ -150,10 +150,10 @@ export const customStyles: StylesConfig = {
   }),
   option: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    backgroundColor: theme.whiteColor,
+    backgroundColor: theme.colors.white,
     // eslint-disable-next-line
     [':hover']: {
-      backgroundColor: theme.lightGrayColor,
+      backgroundColor: theme.colors.lightGray,
     },
   }),
 };

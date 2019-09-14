@@ -11,20 +11,20 @@ interface ExternalLinkWrapperProps {
 const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
   display: flex;
   align-items: center;
-  color: ${({ theme, grayStyle }) => grayStyle ? theme.grayColor : 'inherit'};
+  color: ${({ theme, grayStyle }) => grayStyle ? theme.colors.gray : 'inherit'};
   font-size: 13px;
   text-decoration: none;
   font-weight: ${({ grayStyle }) => grayStyle ? '500' : 'normal'};
   text-transform: capitalize;
 
   &:hover * {
-    color: ${({ theme }) => theme.normalAccentColor};
+    color: ${({ theme }) => theme.colors.normalAccent};
   }
 `;
 
 const LinkIcon = styled(LinkExternal)`
   margin-right: 5px;
-  color: ${({ theme }) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 interface ExternalLinkProps {

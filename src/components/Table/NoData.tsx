@@ -12,7 +12,7 @@ const NoDataWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   pointer-events: none;
-  color: ${({ theme}) => theme.grayColor};
+  color: ${({ theme }) => theme.colors.gray};
 
   .title {
     margin-bottom: 10px;
@@ -34,8 +34,8 @@ export const TableNoData: React.FC<NoDataProps> = ({
   title = 'No data found',
   hint,
 }) => (
-  <NoDataWrapper>
-    <div className="title">{title}</div>
-    {hint && <div className="hint">{hint}</div>}
-  </NoDataWrapper>
-);
+    <NoDataWrapper>
+      <div className="title">{title}</div>
+      {hint && <div className="hint">{hint}</div>}
+    </NoDataWrapper>
+  );

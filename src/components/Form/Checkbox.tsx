@@ -21,7 +21,7 @@ const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
   }
 
   ${({ disabled, theme }) => disabled && `
-    background-color: ${theme.whiteColor};
+    background-color: ${theme.colors.white};
     opacity: 0.5;
   `};
 `;
@@ -63,7 +63,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           <UncheckedBoxIcon
             css={invalid && touched ? `
               path {
-                stroke: ${mainTheme.redColor};
+                stroke: ${mainTheme.colors.red};
                 stroke-opacity: 1;
               }
             ` : ``}

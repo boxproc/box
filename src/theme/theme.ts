@@ -1,65 +1,61 @@
-import { getBreakpointsRange } from './media';
-
 export interface ThemeProps {
   theme: Theme;
 }
 
 export default interface Theme {
-  breakpoints: Array<string>;
+  fonts: {
+    decorate: string;
+    code: string;
+  };
+  colors: {
+    normalAccent: string;
+    lightAccent: string;
+    lighterAccent: string;
 
-  decorateFont: string;
-  codeFont: string;
+    black: string;
+    blackOpacity: string;
 
-  normalAccentColor: string;
-  lighterAccentColor: string;
-  lightAccentColor: string;
-  accentColorOpacity7: string;
+    red: string;
 
-  blackColor: string;
-  blackColorOpacity7: string;
+    gray: string;
+    lightGray: string;
+    lighterGray: string;
+    darkGray: string;
 
-  redColor: string;
-
-  grayColor: string;
-  lightGrayColor: string;
-  lighterGrayColor: string;
-  darkGrayColor: string;
-
-  greenColor: string;
-
-  whiteColor: string;
-  whiteOpacityColor: string;
-
-  boxShadow: string;
-  boxShadowBottom: string;
+    white: string;
+    whiteOpacity: string;
+  };
+  shadows: {
+    normalBox: string;
+    bottomBox: string;
+  };
 }
 
 export const theme: Theme = {
-  breakpoints: getBreakpointsRange(400, 1500),
+  fonts: {
+    decorate: 'Raleway, sans-serif',
+    code: 'Roboto Mono, monospace',
+  },
+  colors: {
+    normalAccent: '#ffa400',
+    lightAccent: '#ffbf4d',
+    lighterAccent: 'rgba(255, 164, 0, .9)',
 
-  decorateFont: 'Raleway, sans-serif',
-  codeFont: 'Roboto Mono, monospace',
+    black: '#333333',
+    blackOpacity: 'rgba(0, 0, 0, .7)',
 
-  normalAccentColor: '#ffa400',
-  lighterAccentColor: 'rgba(255, 164, 0, .9)',
-  lightAccentColor: '#ffbf4d',
-  accentColorOpacity7: 'rgba(255, 164, 0, .7)',
+    red: '#FF0000',
 
-  blackColor: '#333333',
-  blackColorOpacity7: 'rgba(0, 0, 0, .7)',
+    gray: '#999999',
+    lightGray: '#e6e6e6',
+    lighterGray: '#f3f3f3',
+    darkGray: '#6c6c6c',
 
-  redColor: '	#FF0000',
-
-  grayColor: '#999999',
-  lightGrayColor: '#e6e6e6',
-  lighterGrayColor: '#f3f3f3',
-  darkGrayColor: '#6c6c6c',
-
-  greenColor: '#00CC00',
-
-  whiteColor: '#ffffff',
-  whiteOpacityColor: 'rgba(255, 255, 255, .8)',
-
-  boxShadow: '0 2px 4px 0 rgba(0, 0, 0, .1)',
-  boxShadowBottom: '0 3px 3px 0 rgba(0, 0, 0, .1)',
+    white: '#ffffff',
+    whiteOpacity: 'rgba(255, 255, 255, .8)',
+  },
+  shadows: {
+    normalBox: '0 2px 4px 0 rgba(0, 0, 0, .1)',
+    bottomBox: '0 3px 3px 0 rgba(0, 0, 0, .1)',
+  },
 };
