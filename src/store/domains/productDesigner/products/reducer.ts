@@ -48,7 +48,9 @@ const productsReducer =
           .set('currentProductRule', action.payload.product_rules[0])
           .set(
             'currentRulesCode',
-            action.payload.product_rules.length && action.payload.product_rules[0].script
+            action.payload.product_rules.length
+              ? action.payload.product_rules[0].script
+              : null
           );
 
       case ActionTypeKeys.SET_RULES_CODE:
@@ -65,7 +67,8 @@ const productsReducer =
           )
           .set(
             'currentRulesCode',
-            currentRuleByEvent && currentRuleByEvent.script);
+            currentRuleByEvent ? currentRuleByEvent.script : null
+          );
 
       case ActionTypeKeys.GET_RULE_BY_ACTION_TYPE:
         const currentRuleByActionType =
@@ -77,7 +80,7 @@ const productsReducer =
           )
           .set(
             'currentRulesCode',
-            currentRuleByActionType && currentRuleByActionType.script
+            currentRuleByActionType ? currentRuleByActionType.script : null
           );
 
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:

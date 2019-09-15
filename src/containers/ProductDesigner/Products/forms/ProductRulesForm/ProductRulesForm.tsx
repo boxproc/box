@@ -26,6 +26,7 @@ interface ProductRulesForm extends ExternalSpinnerProps {
   isDirty: boolean;
   getRuleByEvent: HandleGetRuleByEvent;
   getRuleByActionType: HandleGetRuleByActionType;
+  currentProductId: number;
 }
 
 type EditProductRulesFormAllProps = ProductRulesForm &
@@ -41,12 +42,13 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   isDirty,
   getRuleByEvent,
   getRuleByActionType,
+  currentProductId,
 }) => {
   React.useEffect(
     () => {
-      getProductRules();
+      getProductRules(currentProductId);
     },
-    [getProductRules]
+    [getProductRules, currentProductId]
   );
 
   React.useEffect(

@@ -103,7 +103,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 name="script"
                 placeholder="Enter Code"
                 component={HighlightCodeField}
-                label="Code"
+                // label="Code"
               />
             </ContextMenuTrigger>
           </Box>

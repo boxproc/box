@@ -80,16 +80,16 @@ export type GetProductDetails = (id: number) => GetProductDetailsAction;
 export type HandleGetProductDetails = () => Thunk<void>;
 
 export type GetProductRules = (id: number) => GetProductRulesAction;
-export type HandleGetProductRules = () => Thunk<void>;
+export type HandleGetProductRules = (id: number) => Thunk<void>;
 
 export type GetInterfacesService = (institutionId: string | number) =>
-GetInterfacesProductServiceAction;
+  GetInterfacesProductServiceAction;
 export type HandleGetInterfacesService = () => Thunk<void>;
 
 export type GetEndpointsService = (institutionId: string | number) =>
-GetEndpointsProductServiceAction;
+  GetEndpointsProductServiceAction;
 export type HandleGetEndpointsService = () =>
- Thunk<void>;
+  Thunk<void>;
 
 export type SetRulesCode = (code: string) => SetRulesCodeAction;
 export type HandleSetRulesCode = (code: string) => void;
@@ -313,13 +313,10 @@ export const handleGetProductDetails: HandleGetProductDetails = () =>
     );
   };
 
-export const handleGetProductRules: HandleGetProductRules = () =>
-  async (dispatch, getState) => {
+export const handleGetProductRules: HandleGetProductRules = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectCurrentProductId(state);
-
         await dispatch(getProductRules(id));
       },
       dispatch
@@ -378,13 +375,14 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
       async () => {
         const state = getState();
         const preparedValues = prepareProductRuleValuesToSend(values);
+        const currentProductId = selectCurrentProductId(state);
 
         await dispatch(updateProductRules({
           ...preparedValues,
           product_id: selectCurrentProductId(state),
         }));
         await dispatch(handleFilterProducts());
-        await dispatch(handleGetProductRules());
+        await dispatch(handleGetProductRules(currentProductId));
       },
       dispatch
     );

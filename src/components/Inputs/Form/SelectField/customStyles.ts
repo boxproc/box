@@ -138,6 +138,7 @@ export const customStyles: StylesConfig = {
     ['& > svg']: {
       width: 10,
       cursor: 'pointer',
+      color: theme.colors.normalAccent,
     },
   }),
   noOptionsMessage: (provided: React.CSSProperties, state: SelectState) => ({

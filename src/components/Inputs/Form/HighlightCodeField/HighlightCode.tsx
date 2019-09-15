@@ -1,23 +1,23 @@
 import React from 'react';
 import Editor from 'react-simple-code-editor';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 import { highlight, languages } from 'prismjs/components/prism-core';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
 import styled from 'theme';
-import { scrollbarCss } from 'theme/scrollbarCss';
+// import { scrollbarCss } from 'theme/scrollbarCss';
 
 import './prism.css';
 
 import { withFormField } from '../withFormField';
 
 export const Wrapper = styled.div`
-  ${scrollbarCss};
-  height: auto;
   padding: 0;
-  max-height: 132px;
+  height: 132px;
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
   font-size: 13px;
@@ -32,12 +32,17 @@ export const Wrapper = styled.div`
     border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
+  textarea {
+    min-height: 130px;
+  }
+
   textarea::placeholder {
     color: ${({ theme }) => theme.colors.gray};
   }
 
   pre {
-    min-height: 130px;
+    word-break: break-word !important;
+    line-height: 1.7;
   }
 `;
 
@@ -64,6 +69,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
 
   return (
     <Wrapper ref={wrapperRef}>
+      <PerfectScrollbar>
       <Editor
         value={value.toString()}
         onValueChange={handleChange}
@@ -75,10 +81,12 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         onFocus={addFocusClass}
         onBlur={removeFocusClass}
         style={{
+          overflow: 'visible',
           fontFamily: '"Roboto Mono", monospace',
           fontSize: 13,
         }}
       />
+      </PerfectScrollbar>
     </Wrapper>
   );
 };

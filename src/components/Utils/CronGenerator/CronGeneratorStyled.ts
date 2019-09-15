@@ -95,7 +95,7 @@ export const CronGeneratorStyled = styled.div`
     color: ${({ theme }) => theme.colors.gray};
     font-size: 13px;
     letter-spacing: .5pt;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
     margin: 0;
   }
 
@@ -231,6 +231,7 @@ export const CronGeneratorStyled = styled.div`
     border-right: 0;
     font-size: 14px;
     padding: 0 5px;
+    color: ${({ theme }) => theme.colors.normalAccent};
   }
 
   .cron-builder .Select--multi .Select-value-icon:focus,

@@ -13,6 +13,7 @@ import {
   handleGetRuleByEvent,
   handleUpdateProductRules,
   ProductsActionTypes,
+  selectCurrentProductId,
   selectCurrentProductRules,
 } from 'store/domains';
 
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isDirty: dirty(state),
   initialValues: selectCurrentProductRules(state),
+  currentProductId: selectCurrentProductId(state),
   eventValue: formValues(
     state,
     'eventId'

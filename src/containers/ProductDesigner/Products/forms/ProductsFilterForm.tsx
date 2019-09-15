@@ -3,6 +3,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { Button, CheckboxField, SelectField } from 'components';
 
 import { formNamesConst, productTypesOptions } from 'consts';
@@ -11,6 +13,11 @@ import { HandleFilterProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
+
+const ProductWrapper = styled(Box)`
+  min-width: 234px
+  max-width: 460px;
+`;
 
 interface ProductsFilterFormProps {
   institutionsOptions: Array<SelectValues>;
@@ -51,7 +58,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <ProductWrapper p="10px">
             <Field
               id="productType"
               name="productType"
@@ -62,7 +69,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
               isDisabled={false}
               isMulti={true}
             />
-          </Box>
+          </ProductWrapper>
           <Box width={[1]} p="10px">
             <Field
               id="activeStatusFlag"
