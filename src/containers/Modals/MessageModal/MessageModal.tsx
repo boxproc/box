@@ -24,13 +24,15 @@ const MessageModal: React.FC<MessageModalProps> = ({
 
   React.useEffect(
     () => {
-      if (
-        statusCode === statusCodes.NO_SESSION
-        || statusCode === statusCodes.USER_NOT_AUTH
-        || statusCode === statusCodes.SESSION_TIMEOUT
-      ) {
-        storageUtil.clear();
-      }
+      return () => {
+        if (
+          statusCode === statusCodes.NO_SESSION
+          || statusCode === statusCodes.USER_NOT_AUTH
+          || statusCode === statusCodes.SESSION_TIMEOUT
+        ) {
+          storageUtil.clear();
+        }
+      };
     },
     [statusCode]
   );

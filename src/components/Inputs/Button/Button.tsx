@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 import {
   DeleteIcon,
   FilterIcon,
-  HelpIcon,
+  HelpCircleIcon,
   LogOutIcon,
   PlusIcon,
   QrcodeIcon,
@@ -116,7 +116,7 @@ const renderIcon = (name: string) => {
     case iconNamesConst.DELETE:
       return (<Box mt="-2px"><DeleteIcon size="18" /></Box>);
     case iconNamesConst.HELP:
-      return (<Box mt="-1px"><HelpIcon size="16" /></Box>);
+      return (<Box mt="-1px"><HelpCircleIcon size="16" /></Box>);
     case iconNamesConst.SMARTPHONE:
       return (<Box mt="-1px"><SmartphoneIcon size="16" /></Box>);
     case iconNamesConst.QRCODE:

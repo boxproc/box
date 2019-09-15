@@ -8,9 +8,7 @@ interface ModalsProps {
   modalsStateList?: object;
 }
 
-const Modals: React.FC<ModalsProps> = ({
-  modalsStateList,
-}) => {
+const Modals: React.FC<ModalsProps> = ({ modalsStateList }) => {
   const renderModal = () => modalsList.map((modal, index) => {
     if (!modalsStateList[`is${modal.name}`]) {
       return null;

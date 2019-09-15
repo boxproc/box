@@ -89,6 +89,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
               label="Customer ID"
               placeholder="Enter ID"
               isDisabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width="150px" p="10px">

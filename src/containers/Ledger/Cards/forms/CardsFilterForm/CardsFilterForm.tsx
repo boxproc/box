@@ -8,6 +8,8 @@ import { Button, InputField } from 'components';
 import { formNamesConst, maskFormat } from 'consts';
 
 import { HandleFilterLedgerCards } from 'store/domains';
+import { formErrorUtil } from 'utils';
+
 interface CardsFilterFormProps {
   filterLedgerCards: HandleFilterLedgerCards;
   isDirty: boolean;
@@ -62,6 +64,7 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
               label="Customer ID"
               placeholder="Customer ID"
               isDisabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width="200px" p="10px">

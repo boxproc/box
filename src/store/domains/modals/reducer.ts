@@ -6,43 +6,7 @@ import { ModalsState } from './types';
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
   payloadMessageModal: null,
-
-  isConfirmationModal: false,
   payloadConfirmationModal: null,
-
-  isRegister2faModal: false,
-  isLoginCode2faModal: false,
-
-  isChangeProfileModal: false,
-
-  isAddProductModal: false,
-  isEditProductModal: false,
-
-  isAddLedgerCustomerModal: false,
-  isEditLedgerCustomerModal: false,
-
-  isEditLedgerAccountModal: false,
-  isAddLedgerAccountModal: false,
-
-  isLedgerTransactionModal: false,
-
-  isAddAdminSystemPropertyModal: false,
-
-  isAddAdminSchedulerModal: false,
-  isEditAdminSchedulerModal: false,
-  isGenerateCronExpressionModal: false,
-
-  isAddAdminUserModal: false,
-  isEditAdminUserModal: false,
-
-  isAddAdminCycleEditorModal: false,
-  isEditCycleEditorRecordsModal: false,
-
-  isAddAdminUsersGroupModal: false,
-  isEditAdminUsersGroupModal: false,
-
-  isAddAdminInstitutionModal: false,
-  isEditAdminInstitutionModal: false,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

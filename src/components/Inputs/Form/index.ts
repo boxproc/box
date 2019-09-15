@@ -1,7 +1,9 @@
-export * from './Fields';
-export * from './Select';
-export * from './Checkbox';
-export * from './Input';
+export { default as InputField } from './InputField';
+export { default as PasswordField } from './PasswordField';
+export { default as TextField } from './TextField';
+export { default as HighlightCodeField } from './HighlightCodeField';
+export { default as CalendarField } from './CalendarField';
+export { default as MaskField } from './MaskField';
+export { default as CheckboxField } from './CheckboxField';
+export { default as SelectField } from './SelectField';
 export * from './sharedInputCss';
-export { default as DefaultInput } from './Input';
-export { default as PasswordInput } from './Password';

@@ -79,6 +79,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
               label="Customer ID"
               placeholder="Enter ID"
               isDisabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>

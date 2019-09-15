@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { Flex } from '@rebass/grid';
-import { User } from 'styled-icons/fa-solid/User';
-import { UserShield } from 'styled-icons/fa-solid/UserShield';
 
 import styled, { css } from 'theme';
 
-import { Button, Dropdown, DropdownOption } from 'components';
+import { Button, Dropdown, DropdownOption, UserIcon, UserShieldIcon } from 'components';
 
 import { iconNamesConst, modalNamesConst, usernames } from 'consts';
 
@@ -18,11 +16,11 @@ const iconCss = css`
   color: ${({ theme }) => theme.colors.gray};
 `;
 
-const UserIcon = styled(User)`
+const UserIconStyled = styled(UserIcon)`
   ${iconCss};
 `;
 
-const UserShieldIcon = styled(UserShield)`
+const UserShieldIconStyled = styled(UserShieldIcon)`
   ${iconCss};
 `;
 
@@ -43,8 +41,8 @@ interface UserDataProps {
 const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) => (
   <Flex alignItems="baseline">
     {username === usernames.ADMIN
-      ? <div><UserShieldIcon size="17" /></div>
-      : <UserIcon size="12" />
+      ? <div><UserShieldIconStyled size="17" /></div>
+      : <UserIconStyled size="12" />
     }
     <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
   </Flex>

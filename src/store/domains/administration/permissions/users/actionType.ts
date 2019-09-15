@@ -80,7 +80,7 @@ export interface GetAccessUsersAction {
 }
 
 export interface GetAccessUsersFulfilledAction {
-  readonly payload: any;
+  readonly payload: Partial<AdminUserDataResp>;
   readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_FULFILLED;
 }
 

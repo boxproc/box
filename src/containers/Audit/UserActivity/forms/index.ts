@@ -1,1 +1,1 @@
-export { default as AccountsFilterForm } from './UserActivitiesFilterForm';
+export { default as UserActivitiesFilterForm } from './UserActivitiesFilterForm';

@@ -2,7 +2,7 @@ import { adminUserPathNames, authPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AuthCode, AuthConfirm, AuthPassword, PreparedAuthRequest } from './types';
+import { AuthCode, AuthConfirm, AuthPassword, AuthUserId, PreparedAuthRequest } from './types';
 
 // import {
 //   // AuthResponseFullData,
@@ -33,5 +33,5 @@ export const enterAuthKey = (data: AuthCode) =>
   // throttleUtil.getDataAfter(AuthResponseFullData, 500);
   apiClient.post(authPathNames.LOGIN, { data });
 
-export const changeAdminProfile = (data: any) =>
+export const changeAdminProfile = (data: AuthUserId) =>
   apiClient.post(adminUserPathNames.CHANGE_ADMIN_PROFILE, { data });

@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { ContextMenuList, HighLightCodeField, SelectField, TextField } from 'components';
+import { ContextMenuList, HighlightCodeField, SelectField, TextField } from 'components';
 
 import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'HOCs';
 
@@ -102,7 +102,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 id="script"
                 name="script"
                 placeholder="Enter Code"
-                component={HighLightCodeField}
+                component={HighlightCodeField}
                 label="Code"
               />
             </ContextMenuTrigger>

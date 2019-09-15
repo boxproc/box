@@ -3,11 +3,12 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { ChevronRightIcon } from 'components';
+import { NavList } from './NavList';
 
 import { basePath, uiItemTypesConst } from 'consts';
-
-import { NavList } from './NavList';
 
 import {
   checkHasActive,
@@ -18,6 +19,10 @@ import {
 } from './utils';
 
 import { UiItemPrepared } from 'store/domains';
+
+const ChevronRightIconStyled = styled(ChevronRightIcon)`
+  color: ${({ theme }) => theme.colors.darkGray};
+`;
 
 interface NavbarProps extends RouteComponentProps {
   uiItems: Array<UiItemPrepared>;
@@ -60,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
           {title}
           {hasChildren && parentId &&
             <Box ml="5px" mt="-2px">
-              <ChevronRightIcon size="17" />
+              <ChevronRightIconStyled className="icon" size="17" />
             </Box>
           }
         </Flex>

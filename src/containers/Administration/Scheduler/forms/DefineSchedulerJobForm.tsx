@@ -58,7 +58,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
     [handleSubmit, defineAdminSchedulerJob]
   );
 
-  const isEditable = mode === 'edit';
+  const isEditMode = mode === 'edit';
 
   return (
     <form onSubmit={handleSubmitForm}>
@@ -176,7 +176,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
         justifyContent="space-between"
       >
         <div>
-          {isEditable && (
+          {isEditMode && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}

@@ -1,9 +1,19 @@
+import { SelectValues } from 'types';
+
 export interface AuthPassword {
   password?: string;
 }
 
 export interface AuthCode {
   code?: string;
+}
+
+export interface AuthUsername {
+  username?: SelectValues;
+}
+
+export interface AuthUserId {
+  user_id: number | string;
 }
 
 export interface AuthConfirm {

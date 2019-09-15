@@ -2,8 +2,9 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import UserActivitiesFilterForm from './forms/UserActivitiesFilterForm';
-import { tableColumns } from './userActivitiesComponents';
+import { UserActivitiesFilterForm } from './forms';
+
+import { tableColumns } from './components';
 
 import { AuditUserActivitiesItem } from 'store/domains';
 import { SelectValues } from 'types';

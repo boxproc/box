@@ -2,11 +2,10 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 import * as H from 'history';
-import { HelpCircle } from 'styled-icons/boxicons-regular/HelpCircle';
 
 import styled from 'theme';
 
-import { Dropdown, DropdownOption, ExternalLink } from 'components';
+import { Dropdown, DropdownOption, ExternalLink, HelpCircleIcon } from 'components';
 
 import { basePath, linksConst } from 'consts';
 
@@ -15,7 +14,7 @@ import {
 } from 'store/domains';
 import { stringsUtil } from 'utils';
 
-const HelpIcon = styled(HelpCircle)`
+const HelpIcon = styled(HelpCircleIcon)`
   margin-right: 3px;
   color: ${({ theme }) => theme.colors.gray};
 `;

@@ -116,7 +116,7 @@ export interface ChangeAdminProfileAction {
 }
 
 export interface ChangeAdminProfileFulfilledAction {
-  readonly payload: any;
+  readonly payload: AuthResponse;
   readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE_FULFILLED;
 }
 

@@ -19,39 +19,5 @@ export interface PayloadConfirmationModal {
 export interface ModalsState {
   isMessageModal: boolean;
   payloadMessageModal: PayloadMessageModal;
-
-  isConfirmationModal: boolean;
   payloadConfirmationModal: PayloadConfirmationModal;
-
-  isRegister2faModal: boolean;
-  isLoginCode2faModal: boolean;
-
-  isChangeProfileModal: boolean;
-
-  isAddProductModal: boolean;
-  isEditProductModal: boolean;
-
-  isAddLedgerCustomerModal: boolean;
-  isEditLedgerCustomerModal: boolean;
-  isEditLedgerAccountModal: boolean;
-  isAddLedgerAccountModal: boolean;
-  isLedgerTransactionModal: boolean;
-
-  isAddAdminSystemPropertyModal: boolean;
-
-  isAddAdminUserModal: boolean;
-  isEditAdminUserModal: boolean;
-
-  isAddAdminCycleEditorModal: boolean;
-  isEditCycleEditorRecordsModal: boolean;
-
-  isAddAdminSchedulerModal: boolean;
-  isEditAdminSchedulerModal: boolean;
-  isGenerateCronExpressionModal: boolean;
-
-  isAddAdminUsersGroupModal: boolean;
-  isEditAdminUsersGroupModal: boolean;
-
-  isAddAdminInstitutionModal: boolean;
-  isEditAdminInstitutionModal: boolean;
 }

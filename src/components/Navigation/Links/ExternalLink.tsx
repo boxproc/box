@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { LinkExternal } from 'styled-icons/boxicons-regular/LinkExternal';
-
 import styled from 'theme';
+
+import { LinkExternalIcon } from 'components';
 
 interface ExternalLinkWrapperProps {
   grayStyle?: boolean;
@@ -22,7 +22,7 @@ const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
   }
 `;
 
-const LinkIcon = styled(LinkExternal)`
+const LinkIcon = styled(LinkExternalIcon)`
   margin-right: 5px;
   color: ${({ theme }) => theme.colors.gray};
 `;

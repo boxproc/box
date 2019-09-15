@@ -1,6 +1,6 @@
 import { css } from 'theme';
 
-import { InvalidProp } from './Input';
+import { InvalidProp } from './types';
 
 export const sharedInputCss = css<InvalidProp>`
   font-size: 13px;
@@ -12,8 +12,7 @@ export const sharedInputCss = css<InvalidProp>`
   box-sizing: border-box;
   outline: none;
   color: ${({ theme }) => theme.colors.black};
-  border: solid 1px ${({ theme, invalid }) =>
-    invalid ? theme.colors.red : theme.colors.gray};
+  border: solid 1px ${({ theme, invalid }) => invalid ? theme.colors.red : theme.colors.gray};
   border-radius: 2px;
 
   &:focus{

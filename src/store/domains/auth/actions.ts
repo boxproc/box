@@ -20,6 +20,8 @@ import {
   AuthConfirm,
   AuthPassword,
   AuthRequest,
+  AuthUserId,
+  AuthUsername,
   PreparedAuthRequest,
 } from './types';
 import { prepareAuthValues, setUserDataToStorage } from './utils';
@@ -45,8 +47,8 @@ export type UserConfirmAuthKey = (data: AuthConfirm) => UserConfirmAuthKeyAction
 export type HandleUserEnterAuthKey = (data: AuthCode) => Thunk<void>;
 export type UserEnterAuthKey = (data: AuthCode) => UserEnterAuthKeyAction;
 
-export type ChangeAdminProfile = (data: any) => ChangeAdminProfileAction;
-export type HandleChangeAdminProfile = (data: any) => Thunk<void>;
+export type ChangeAdminProfile = (data: AuthUserId) => ChangeAdminProfileAction;
+export type HandleChangeAdminProfile = (data: AuthUsername) => Thunk<void>;
 
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,

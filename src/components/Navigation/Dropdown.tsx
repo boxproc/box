@@ -1,7 +1,7 @@
 import React, { ReactChild } from 'react';
 
 import { Box, Flex } from '@rebass/grid';
-import { ArrowDropDown } from 'styled-icons/material/ArrowDropDown';
+import { ArrowDropDownIcon } from 'components';
 
 import styled from 'theme';
 
@@ -52,7 +52,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
   }
 `;
 
-const ToggleButton = styled(ArrowDropDown)`
+const ToggleButton = styled(ArrowDropDownIcon)`
   color: ${({ theme }) => theme.colors.gray};
 
   &:hover {

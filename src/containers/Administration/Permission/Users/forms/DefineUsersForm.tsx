@@ -25,7 +25,7 @@ import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
   defineAdminUser: HandleAddAdminUser | HandleUpdateAdminUser;
-  isEditable?: boolean;
+  isEditMode?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
   isDirty: boolean;
@@ -38,7 +38,7 @@ type DefineUserFormAllProps = DefineUserFormProps &
 const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   handleSubmit,
   defineAdminUser,
-  isEditable,
+  isEditMode,
   isDisabledType,
   onCancel,
   isDirty,
@@ -86,7 +86,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
-              disabled={isEditable}
+              disabled={isEditMode}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -101,7 +101,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.email]}
             />
           </Box>
-          {isEditable && (
+          {isEditMode && (
             <Box width={[1 / 3]} p="10px">
               <Field
                 id="status"

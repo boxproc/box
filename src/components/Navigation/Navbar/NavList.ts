@@ -11,6 +11,9 @@ export const NavList = styled.div`
     position: relative;
     cursor: pointer;
     padding: 7px 10px 6px;
+    &:hover .icon {
+      color: ${({ theme }) => theme.colors.normalAccent};
+    }
   }
   .${menuClasses.MENU_ITEM} {
     border-radius: 2px;

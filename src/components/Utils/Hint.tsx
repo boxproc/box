@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { InfoCircle } from 'styled-icons/boxicons-regular/InfoCircle';
-
 import styled from 'theme';
+
+import { InfoCircleIcon } from 'components';
 
 interface HintWrapperProps {
   position?: string;
@@ -47,7 +47,7 @@ const HintWrapper = styled.div<HintWrapperProps>`
   }
 `;
 
-const InfoButton = styled(InfoCircle)`
+const InfoButton = styled(InfoCircleIcon)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray};
 

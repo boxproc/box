@@ -80,6 +80,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
                   label="Account ID"
                   placeholder="Enter ID"
                   isDisabled={false}
+                  validate={[formErrorUtil.required]}
                 />
               </Box>
               <Box width={[2 / 7]} p="10px">

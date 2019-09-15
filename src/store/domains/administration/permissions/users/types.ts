@@ -52,5 +52,5 @@ export interface AdminUserDataResp extends ResponseStatusType {
 export interface AdminUserState {
   users: ImmutableArray<AdminUserItem>;
   currentUserId: number;
-  adminAccessUsers: ImmutableArray<any>;
+  adminAccessUsers: ImmutableArray<AdminUserItem>;
 }
