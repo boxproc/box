@@ -1,4 +1,8 @@
-import { executableTypeOptions, lastExecutionResultOptions, statusTypesOptions } from 'consts';
+import {
+  executableTypeOptions,
+  lastExecutionResultOptions,
+  schedulerStatusTypesOptions,
+} from 'consts';
 
 import {
   AdminSchedulerEditableItem,
@@ -35,6 +39,10 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
     return null;
   }
 
+  const status = schedulerStatusTypesOptions.find(el => el.value === item.status);
+  const lastExecutionResult = lastExecutionResultOptions.find(el => el.value === item.status);
+  const executableType = executableTypeOptions.find(el => el.value === item.executable_type);
+
   return {
     id: item.id,
     name: item.name,
@@ -43,11 +51,9 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
     executable: item.executable,
     logLocation: item.log_location,
     lastExecutionDatetime: item.last_execution_datetime,
-    lastExecutionResult: lastExecutionResultOptions.find(el => el.value === item.status)
-      && lastExecutionResultOptions.find(el => el.value === item.status).label,
-    status: statusTypesOptions.find(el => el.value === item.status)
-      && statusTypesOptions.find(el => el.value === item.status).label,
-    executableType: executableTypeOptions.find(el => el.value === item.executable_type).label,
+    lastExecutionResult: lastExecutionResult && lastExecutionResult.label,
+    status: status && status.label,
+    executableType: executableType && executableType.label,
   };
 };
 
@@ -58,9 +64,9 @@ export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
 
   return {
     ...prepareValuesToRender(item),
-    status: statusTypesOptions.find(el => el.value === item.status),
+    status: schedulerStatusTypesOptions.find(el => el.value === item.status),
     lastExecutionResult:
-     lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
+      lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
     executableType: executableTypeOptions.find(el => el.value === item.executable_type),
   };
 };
