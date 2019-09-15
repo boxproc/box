@@ -1,16 +1,16 @@
-import { basePath, cookiesNames, sessionStorageNames, yesNoTypesConst } from 'consts';
+import { cookiesNames, sessionStorageNames, yesNoTypesConst } from 'consts';
 
 import { UserData } from 'store/domains';
 
 import { apiClient } from 'services';
 
-import { cookiesUtil, urlUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 export const clear = () => {
   sessionStorage.clear();
   cookiesUtil.remove(cookiesNames.SESSION_ID);
   apiClient.clear();
-  urlUtil.openLocation(basePath);
+  // urlUtil.openLocation(basePath);
 };
 
 export const setRegistrationPendingFlag = () =>

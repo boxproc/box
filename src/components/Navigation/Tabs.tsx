@@ -36,7 +36,9 @@ const TabTitle = styled.div<TabTitleProps>`
 
   &.is-active {
     color: ${({ theme }) => theme.colors.normalAccent};
+    background-color: ${({ theme }) => theme.colors.lighterGray};
     border-bottom-color: ${({ theme }) => theme.colors.lightAccent};
+    border-radius: 2px;
   }
 `;
 

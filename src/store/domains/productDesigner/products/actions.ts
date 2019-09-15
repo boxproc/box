@@ -19,7 +19,6 @@ import {
   GetProductRulesAction,
   GetRuleByActionTypeAction,
   GetRuleByEventAction,
-  SetRulesCodeAction,
   UpdateCardServiceAction,
   UpdateProductAction,
   UpdateProductDetailsAction,
@@ -57,7 +56,7 @@ import {
   prepareUpdateCardServiceValuesPrepared,
 } from './utils';
 
-import { Thunk } from 'types';
+import { SelectValues, Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
@@ -88,17 +87,13 @@ export type HandleGetInterfacesService = () => Thunk<void>;
 
 export type GetEndpointsService = (institutionId: string | number) =>
   GetEndpointsProductServiceAction;
-export type HandleGetEndpointsService = () =>
-  Thunk<void>;
-
-export type SetRulesCode = (code: string) => SetRulesCodeAction;
-export type HandleSetRulesCode = (code: string) => void;
+export type HandleGetEndpointsService = () => Thunk<void>;
 
 export type GetRuleByEvent = (event: string | number) => GetRuleByEventAction;
-export type HandleGetRuleByEvent = (event: string | number) => void;
+export type HandleGetRuleByEvent = (event: SelectValues) => void;
 
 export type GetRuleByActionType = (actionType: string | number) => GetRuleByActionTypeAction;
-export type HandleGetRuleByActionType = (actionType: string | number) => void;
+export type HandleGetRuleByActionType = (actionType: SelectValues) => void;
 
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
@@ -144,11 +139,6 @@ export const filterProducts: FilterProducts = params => ({
 export const getProductId: GetProductId = id => ({
   type: ActionTypeKeys.GET_PRODUCT_ID,
   payload: id,
-});
-
-export const setRulesCode: SetRulesCode = code => ({
-  type: ActionTypeKeys.SET_RULES_CODE,
-  payload: code,
 });
 
 export const getRuleByEvent: GetRuleByEvent = event => ({
@@ -264,14 +254,11 @@ export const handleGetEndpointsService: HandleGetEndpointsService = () =>
 export const handleGetProductId: HandleGetProductId = id =>
   getProductId(id);
 
-export const handleSetRulesCode: HandleSetRulesCode = code =>
-  setRulesCode(code);
-
 export const handleGetRuleByEvent: HandleGetRuleByEvent = event =>
-  getRuleByEvent(event);
+  getRuleByEvent(event && event.value);
 
 export const handleGetRuleByActionType: HandleGetRuleByActionType = actionType =>
-  getRuleByActionType(actionType);
+  getRuleByActionType(actionType && actionType.value);
 
 export const handleDeleteProduct: HandleDeleteProduct = () =>
   async (dispatch, getState) => {

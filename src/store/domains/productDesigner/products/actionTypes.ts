@@ -35,8 +35,6 @@ export enum ActionTypeKeys {
 
   GET_PRODUCT_ID = 'productDesigner/products/GET_PRODUCT_ID',
 
-  SET_RULES_CODE = 'productDesigner/products/SET_RULES_CODE',
-
   GET_RULE_BY_EVENT = 'productDesigner/products/GET_RULE_BY_EVENT',
   GET_RULE_BY_ACTION_TYPE = 'productDesigner/products/GET_RULE_BY_ACTION_TYPE',
 
@@ -152,11 +150,6 @@ export interface FilterProductsRejectedAction {
 export interface GetProductIdAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.GET_PRODUCT_ID;
-}
-
-export interface SetRulesCodeAction {
-  readonly payload: string;
-  readonly type: ActionTypeKeys.SET_RULES_CODE;
 }
 
 export interface GetRuleByEventAction {
@@ -304,6 +297,5 @@ export type ProductsActionTypes =
   | UpdateProductDetailsFulfilledAction
   | UpdateProductRulesFulfilledAction
   | GetProductIdAction
-  | SetRulesCodeAction
   | GetRuleByEventAction
   | GetRuleByActionTypeAction;

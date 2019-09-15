@@ -13,13 +13,11 @@ import { actionTypesOptions } from 'consts';
 import {
   AdminEventDataElemsItem,
   HandleFilterAdminEventDataElems,
-  HandleSetRulesCode,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface ProductRulesProps extends WithLoadAdminEventsProps {
-  setRulesCode: HandleSetRulesCode;
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
   eventValue: SelectValues;
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
@@ -39,25 +37,30 @@ const getNewCode = (element: string) => {
   return resultText;
 };
 
+const onContextMenuClick = (e: Event, value: { name: string }) => {
+  const code = getNewCode(value.name);
+  const textarea = document.querySelector('#script') as HTMLInputElement;
+
+  textarea.value = code;
+  textarea.nextSibling.textContent = code;
+  textarea.focus();
+};
+
 const ProductRules: React.FC<ProductRulesProps> = ({
   adminEventsOptions,
   isAdminEventsLoading,
-  setRulesCode,
   filterAdminEventDataElems,
   eventValue,
   adminEventDataElemsItems,
 }) => {
   React.useEffect(
     () => {
-      filterAdminEventDataElems({eventId: eventValue});
+      if (eventValue) {
+        filterAdminEventDataElems({ eventId: eventValue });
+      }
     },
     [filterAdminEventDataElems, eventValue]
   );
-
-  const onContextMenuClick = (e: Event, value: { name: string }) => {
-    const code = getNewCode(value.name);
-    setRulesCode(code);
-  };
 
   return (
     <React.Fragment>
@@ -103,7 +106,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 name="script"
                 placeholder="Enter Code"
                 component={HighlightCodeField}
-                // label="Code"
+                label="Code"
               />
             </ContextMenuTrigger>
           </Box>

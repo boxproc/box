@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector, isDirty } from 'redux-form';
+import { formValueSelector } from 'redux-form';
 
 import ProductRulesForm from './ProductRulesForm';
 
@@ -14,7 +14,7 @@ import {
   handleUpdateProductRules,
   ProductsActionTypes,
   selectCurrentProductId,
-  selectCurrentProductRules,
+  selectCurrentProductRule,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -26,12 +26,9 @@ const loadingSelector = createLoadingSelector([
 
 const formValues = formValueSelector(formNamesConst.PRODUCT_RULES);
 
-const dirty = isDirty(formNamesConst.PRODUCT_RULES);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isDirty: dirty(state),
-  initialValues: selectCurrentProductRules(state),
+  initialValues: selectCurrentProductRule(state),
   currentProductId: selectCurrentProductId(state),
   eventValue: formValues(
     state,

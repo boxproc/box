@@ -1,15 +1,16 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Modal, Paragraph } from 'components';
 
-import { modalNamesConst, statusCodes } from 'consts';
+import { basePath, modalNamesConst, statusCodes } from 'consts';
 
 import { CloseModal, PayloadMessageModal } from 'store/domains';
 import { storageUtil } from 'utils';
 
-interface MessageModalProps {
+interface MessageModalProps extends RouteComponentProps {
   payloadMessageModal: PayloadMessageModal;
   closeModal: CloseModal;
 }
@@ -19,6 +20,7 @@ const modalName = modalNamesConst.MESSAGE_MODAL;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
+  history,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
 
@@ -31,10 +33,11 @@ const MessageModal: React.FC<MessageModalProps> = ({
           || statusCode === statusCodes.SESSION_TIMEOUT
         ) {
           storageUtil.clear();
+          history.push(basePath);
         }
       };
     },
-    [statusCode]
+    [statusCode, history]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);

@@ -9,11 +9,8 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
 import styled from 'theme';
-// import { scrollbarCss } from 'theme/scrollbarCss';
 
 import './prism.css';
-
-import { withFormField } from '../withFormField';
 
 export const Wrapper = styled.div`
   padding: 0;
@@ -91,4 +88,4 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   );
 };
 
-export default withFormField(HighlightCode);
+export default HighlightCode;

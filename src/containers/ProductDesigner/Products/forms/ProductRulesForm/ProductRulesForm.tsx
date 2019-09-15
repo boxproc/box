@@ -23,7 +23,6 @@ interface ProductRulesForm extends ExternalSpinnerProps {
   updateProductRules: HandleUpdateProductRules;
   eventValue: SelectValues;
   actionTypeValue: SelectValues;
-  isDirty: boolean;
   getRuleByEvent: HandleGetRuleByEvent;
   getRuleByActionType: HandleGetRuleByActionType;
   currentProductId: number;
@@ -39,7 +38,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   updateProductRules,
   eventValue,
   actionTypeValue,
-  isDirty,
+  dirty,
   getRuleByEvent,
   getRuleByActionType,
   currentProductId,
@@ -54,7 +53,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   React.useEffect(
     () => {
       if (actionTypeValue) {
-        getRuleByActionType(actionTypeValue.value);
+        getRuleByActionType(actionTypeValue);
       }
     },
     [actionTypeValue, getRuleByActionType]
@@ -63,7 +62,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   React.useEffect(
     () => {
       if (eventValue) {
-        getRuleByEvent(eventValue.value);
+        getRuleByEvent(eventValue);
       }
     },
     [eventValue, getRuleByEvent]
@@ -84,8 +83,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
-        withCancelConfirmation={isDirty}
-        disabledOk={!isDirty}
+        withCancelConfirmation={dirty}
       />
     </form>
   );

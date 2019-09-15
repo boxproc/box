@@ -126,14 +126,10 @@ export const selectDetailsCurrentProductRules = (state: StoreState) =>
 export const selectDefaultCurrentRule = (state: StoreState) =>
   state.productDesigner.products.currentProductRule;
 
-export const selectDefaultCurrentRulesCode = (state: StoreState) =>
-  state.productDesigner.products.currentRulesCode;
-
-export const selectCurrentProductRules = createSelector(
+export const selectCurrentProductRule = createSelector(
   selectDefaultCurrentRule,
-  selectDefaultCurrentRulesCode,
   selectAdminEventsOptions,
-  (currentRule, code, events) => {
+  (currentRule, events) => {
     if (!currentRule) {
       return null;
     }
@@ -141,7 +137,6 @@ export const selectCurrentProductRules = createSelector(
     return {
       ...prepareProductRuleValues(currentRule),
       eventId: events && events.find(el => el.value === currentRule.event_id),
-      script: code,
     };
   }
 );

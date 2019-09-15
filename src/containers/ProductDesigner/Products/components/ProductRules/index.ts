@@ -5,7 +5,6 @@ import ProductRules from './ProductRules';
 
 import {
   handleFilterAdminEventDataElems,
-  handleSetRulesCode,
   selectAdminEventDataElemsItems,
 } from 'store/domains';
 
@@ -17,7 +16,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setRulesCode: handleSetRulesCode,
     filterAdminEventDataElems: handleFilterAdminEventDataElems,
   },
   dispatch

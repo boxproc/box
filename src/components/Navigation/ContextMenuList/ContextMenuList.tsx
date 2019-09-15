@@ -38,6 +38,7 @@ interface ContextMenuListProps {
   noDataStr?: string;
   isVisible?: boolean;
   onClick?: (e: Event, value: ContextMenuItem) => void;
+  onShow?: any;
   onHide?: () => void;
 }
 
@@ -57,6 +58,7 @@ const renderIcon = (name: string) => {
 const ContextMenuList: React.FC<ContextMenuListProps> = ({
   menuId,
   onClick,
+  onShow,
   items,
   noDataStr,
   onHide,
@@ -67,6 +69,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
       <ContextMenu
         id={menuId}
         onHide={onHide}
+        onShow={onShow}
         // hideOnLeave={true}
         className="context-menu"
       >

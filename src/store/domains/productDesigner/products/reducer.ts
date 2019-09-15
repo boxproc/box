@@ -10,7 +10,6 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductId: null,
   currentProduct: null,
   currentProductDetails: null,
-  currentRulesCode: null,
   currentProductRule: null,
   interfaces: Immutable([]),
   endpoints: Immutable([]),
@@ -52,10 +51,6 @@ const productsReducer =
               ? action.payload.product_rules[0].script
               : null
           );
-
-      case ActionTypeKeys.SET_RULES_CODE:
-        return state
-          .set('currentRulesCode', action.payload);
 
       case ActionTypeKeys.GET_RULE_BY_EVENT:
         const currentRuleByEvent =

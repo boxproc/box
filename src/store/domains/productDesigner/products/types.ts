@@ -266,7 +266,6 @@ export interface ProductsState {
   currentProductDetails: ProductItemDetailsResp;
   currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentProductRule: ProductRulesItemResp;
-  currentRulesCode: string;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
   interfaces: ImmutableArray<ProductServiceInterfaces>;
   endpoints: ImmutableArray<ProductServiceEndpoints>;
