@@ -5,10 +5,8 @@ import Accounts from './Accounts';
 
 import {
   createLoadingSelector,
-  handleFilterLedgerAccounts,
   handleSetLedgerAccountId,
   LedgerAccountsActionTypes,
-  selectInstitutionsOptions,
   selectLedgerAccounts,
 } from 'store/domains';
 
@@ -20,13 +18,11 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
   ledgerAccounts: selectLedgerAccounts(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerAccounts: handleFilterLedgerAccounts,
     setLedgerAccountsId: handleSetLedgerAccountId,
   },
   dispatch

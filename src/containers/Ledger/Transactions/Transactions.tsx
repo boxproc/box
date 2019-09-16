@@ -32,4 +32,6 @@ const Transactions: React.FC<TransactionsProps> = ({
   );
 };
 
-export default withSpinner()(Transactions);
+export default withSpinner({
+  isFixed: true,
+})(Transactions);

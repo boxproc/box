@@ -111,6 +111,10 @@ export enum lenderCustomersPathNames {
   DELETE = '/ui/ledger/customers/delete',
 }
 
+export enum lenderStatementsPathNames {
+  GET = '',
+}
+
 export enum lenderTransactionsPathNames {
   GET = '/ui/ledger/transactions/get',
 }

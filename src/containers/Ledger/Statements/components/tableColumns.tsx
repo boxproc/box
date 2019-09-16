@@ -2,26 +2,12 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
+import { LedgerStatementItemPrepared } from 'store/domains';
+
 import { TableCellType } from 'types';
 
-interface TableColumnsProps {
-  id: number;
-  accountId: number;
-  dateFrom: string;
-  dateTo: string;
-  balanceOpen: number;
-  balanceClose: number;
-  minimumAmountDueRepayment: number;
-  statementCycleId: number;
-  cycleExecutionHistoryId: number;
-  accountAlias: number;
-  institution: string;
-  product: string;
-  firstName: string;
-  lastName: string;
-}
-
-type TCell<T extends keyof TableColumnsProps> = TableCellType<TableColumnsProps[T]>;
+type TCell<T extends keyof LedgerStatementItemPrepared> =
+  TableCellType<LedgerStatementItemPrepared[T]>;
 
 export const tableColumns = [
   {
@@ -40,8 +26,8 @@ export const tableColumns = [
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Institution" />,
-    accessor: 'institution',
-    Cell: (props: TCell<'institution'>) => (
+    accessor: 'institutionId',
+    Cell: (props: TCell<'institutionId'>) => (
       <TableCell
         value={props.value}
       />
@@ -50,7 +36,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Product name" />,
+    Header: <TableHeader title="Product Name" />,
     accessor: 'product',
     Cell: (props: TCell<'product'>) => (
       <TableCell
@@ -61,7 +47,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Account" />,
+    Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
       <TableCell
@@ -85,7 +71,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="First name" />,
+    Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
       <TableCell
@@ -96,7 +82,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Last name" />,
+    Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (
       <TableCell
@@ -107,7 +93,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Date from" />,
+    Header: <TableHeader title="Date From" />,
     accessor: 'dateFrom',
     Cell: (props: TCell<'dateFrom'>) => (
       <TableCell
@@ -119,7 +105,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Date to" />,
+    Header: <TableHeader title="Date To" />,
     accessor: 'dateTo',
     Cell: (props: TCell<'dateTo'>) => (
       <TableCell
@@ -131,7 +117,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Balance open" />,
+    Header: <TableHeader title="Balance Open" />,
     accessor: 'balanceOpen',
     Cell: (props: TCell<'balanceOpen'>) => (
       <TableCell
@@ -143,7 +129,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Balance close" />,
+    Header: <TableHeader title="Balance Close" />,
     accessor: 'balanceClose',
     Cell: (props: TCell<'balanceClose'>) => (
       <TableCell
@@ -155,7 +141,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Minimum amount due repayment" />,
+    Header: <TableHeader title="Minimum Amount Due Repayment" />,
     accessor: 'minimumAmountDueRepayment',
     Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
       <TableCell
@@ -167,7 +153,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Statement cycle" />,
+    Header: <TableHeader title="Statement Cycle" />,
     accessor: 'statementCycleId',
     Cell: (props: TCell<'statementCycleId'>) => (
       <TableCell
@@ -179,7 +165,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Cycle execution history" />,
+    Header: <TableHeader title="Cycle Execution History" />,
     accessor: 'cycleExecutionHistoryId',
     Cell: (props: TCell<'cycleExecutionHistoryId'>) => (
       <TableCell

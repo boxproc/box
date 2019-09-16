@@ -7,9 +7,19 @@ import { Button, InputField, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
+import { HandleFilterLedgerStatements, HandleGetInstitutionProducts } from 'store/domains';
+
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface StatementFilterFormProps { }
+interface StatementFilterFormProps {
+  institutionsOptions: Array<SelectValues>;
+  filterLedgerStatements: HandleFilterLedgerStatements;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  institutionValue: SelectValues;
+  institutionProductsOptions: Array<SelectValues>;
+  isLoadingInstitutionProducts: boolean;
+}
 
 type StatementFilterFormAllProps = StatementFilterFormProps &
   InjectedFormProps<{}, StatementFilterFormProps>;
@@ -17,9 +27,26 @@ type StatementFilterFormAllProps = StatementFilterFormProps &
 const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
   handleSubmit,
   dirty,
+  institutionsOptions,
+  filterLedgerStatements,
+  institutionValue,
+  getInstitutionProducts,
+  institutionProductsOptions,
+  isLoadingInstitutionProducts,
 }) => {
+  const currentInstitutionId = institutionValue && institutionValue.value;
+
+  React.useEffect(
+    () => {
+      if (currentInstitutionId) {
+        getInstitutionProducts(currentInstitutionId);
+      }
+    },
+    [getInstitutionProducts, currentInstitutionId]
+  );
+
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(filterLedgerStatements),
     [handleSubmit]
   );
 
@@ -39,7 +66,7 @@ const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
                   component={SelectField}
                   label="Institution"
                   placeholder="Select Institution"
-                  options={[]}
+                  options={institutionsOptions}
                   isDisabled={false}
                   validate={[formErrorUtil.required]}
                 />
@@ -112,29 +139,29 @@ const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
           <Flex>
             <Box width="250px" p="10px">
               <Field
-                id="productName"
-                name="productName"
+                id="product"
+                name="product"
                 component={SelectField}
                 label="Product"
                 placeholder="Select Product"
-                options={[]}
+                options={institutionProductsOptions}
                 isDisabled={false}
                 isMulti={true}
-                isLoading={false}
+                isLoading={isLoadingInstitutionProducts}
               />
             </Box>
           </Flex>
         </Flex>
         <Button
           text="Show"
-          disabled={dirty}
+          disabled={!dirty}
         />
       </Box>
     </form >
   );
 };
 
-export default reduxForm({
+export default reduxForm<{}, StatementFilterFormProps>({
   form: formNamesConst.LEDGER_STATEMENTS_FILTER,
   destroyOnUnmount: false,
   enableReinitialize: true,

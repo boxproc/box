@@ -8,9 +8,8 @@ import { cookiesUtil } from 'utils';
 
 export const clear = () => {
   sessionStorage.clear();
-  cookiesUtil.remove(cookiesNames.SESSION_ID);
+  // cookiesUtil.remove(cookiesNames.SESSION_ID); // for demo
   apiClient.clear();
-  // urlUtil.openLocation(basePath);
 };
 
 export const setRegistrationPendingFlag = () =>

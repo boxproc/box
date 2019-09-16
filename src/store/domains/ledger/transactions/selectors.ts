@@ -2,9 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import {
-  prepareValuesToRender,
-} from './utils';
+import { prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerTransactions = (state: StoreState) =>
   state.ledger.transactions.transactions;

@@ -29,12 +29,11 @@ const StatementsModal: React.FC<StatementsModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title="Statements"
+      title="Statement"
       closeOnBackdrop={true}
-      maxContainerWidth={600}
-      minContainerHeight={499}
+      maxContainerWidth={800}
     >
-      <StatementForm />
+      <StatementForm isDisabled={true} />
       <Hr />
       <Flex justifyContent="flex-end">
         <Button
