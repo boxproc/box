@@ -19,6 +19,7 @@ export enum uiItemConsts {
   LEDGER_ACCOUNTS = 'ledger/accounts',
   LEDGER_TRANSACTIONS = 'ledger/transactions',
   LEDGER_CARDS = 'ledger/cards',
+  LEDGER_STATEMENTS = 'ledger/statements',
 
   PRODUCTS = 'product_designer/products',
 }

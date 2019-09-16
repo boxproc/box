@@ -15,7 +15,7 @@ import {
 
 import styled from 'theme';
 
-import { withOpenModal } from 'HOCs';
+import { withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
@@ -181,4 +181,4 @@ const Button: React.FC<ButtonProps> = ({
 
 };
 
-export default withOpenModal(Button);
+export default withModal(Button);

@@ -17,7 +17,7 @@ import {
 
 import { Products } from 'containers/ProductDesigner';
 
-import { Accounts, Cards, Customers, Transactions } from 'containers/Ledger';
+import { Accounts, Cards, Customers, Statements, Transactions } from 'containers/Ledger';
 
 import { UserActivity } from 'containers/Audit';
 
@@ -77,6 +77,10 @@ export const pagesList = [
   {
     path: uiItemConsts.LEDGER_ACCOUNTS,
     component: <Accounts />,
+  },
+  {
+    path: uiItemConsts.LEDGER_STATEMENTS,
+    component: <Statements />,
   },
   {
     path: uiItemConsts.LEDGER_TRANSACTIONS,

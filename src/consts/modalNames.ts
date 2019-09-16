@@ -25,6 +25,7 @@ export enum modalNamesConst {
   ADD_LEDGER_ACCOUNT = 'AddLedgerAccountModal',
   LEDGER_TRANSACTION = 'LedgerTransactionModal',
   INFO_LEDGER_CARDS = 'InfoCardModal',
+  LEDGER_STATEMENTS = 'LedgerStatements',
 
   // Administration
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
