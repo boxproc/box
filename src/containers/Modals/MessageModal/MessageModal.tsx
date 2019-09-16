@@ -7,12 +7,13 @@ import { Button, Modal, Paragraph } from 'components';
 
 import { basePath, modalNamesConst, statusCodes } from 'consts';
 
-import { CloseModal, PayloadMessageModal } from 'store/domains';
+import { CloseAllModals, CloseModal, PayloadMessageModal } from 'store/domains';
 import { storageUtil } from 'utils';
 
 interface MessageModalProps extends RouteComponentProps {
   payloadMessageModal: PayloadMessageModal;
   closeModal: CloseModal;
+  closeAllModals: CloseAllModals;
 }
 
 const modalName = modalNamesConst.MESSAGE_MODAL;
@@ -20,6 +21,7 @@ const modalName = modalNamesConst.MESSAGE_MODAL;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
+  closeAllModals,
   history,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
@@ -33,19 +35,18 @@ const MessageModal: React.FC<MessageModalProps> = ({
           || statusCode === statusCodes.SESSION_TIMEOUT
         ) {
           storageUtil.clear();
+          closeAllModals();
           history.push(basePath);
         }
       };
     },
-    [statusCode, history]
+    [statusCode, history, closeAllModals]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
 
   const handleClick = React.useCallback(
-    () => {
-      closeModal(modalName);
-    },
+    () => closeModal(modalName),
     [closeModal]
   );
 

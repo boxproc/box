@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import MessageModal from './MessageModal';
 
 import {
+  closeAllModals,
   closeModal,
   selectPayloadMessageModal,
 } from 'store/domains';
@@ -19,6 +20,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     closeModal,
+    closeAllModals,
   },
   dispatch
 );

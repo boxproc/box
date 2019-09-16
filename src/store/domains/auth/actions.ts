@@ -26,6 +26,8 @@ import {
 } from './types';
 import { prepareAuthValues, setUserDataToStorage } from './utils';
 
+import { apiClient } from 'services';
+
 import { Thunk, VoidThunk } from 'types';
 import { errorDecoratorUtil, storageUtil, urlUtil } from 'utils';
 
@@ -92,6 +94,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        apiClient.clear();
         const preparedAuthValues = prepareAuthValues(data);
         await dispatch(userLogin(preparedAuthValues));
 
@@ -149,6 +152,7 @@ export const handleUserLogout: HandleUserLogout = () =>
 
         storageUtil.clear();
         urlUtil.openLocation(basePath);
+        // dispatch(push(basePath));
       },
       dispatch
     );

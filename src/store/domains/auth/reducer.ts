@@ -18,8 +18,7 @@ const authReducer = (state = authInitialState, action: AuthActionTypes) => {
         .set('loginData', action.payload);
 
     case ActionTypeKeys.USER_LOGOUT_FULFILLED:
-      return state
-        .set('loginData', null);
+      return state = authInitialState;
 
     case ActionTypeKeys.USER_GET_AUTH_KEY_FULFILLED:
       return state

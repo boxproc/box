@@ -60,6 +60,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="ID"
               placeholder="Enter ID"
               disabled={true}
+              isNumber={true}
             />
           </Box>
         )}
@@ -97,6 +98,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="Product ID"
               placeholder="Enter ID"
               disabled={isEditMode}
+              isNumber={true}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -109,6 +111,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Customer ID"
             placeholder="Enter ID"
             disabled={isEditMode}
+            isNumber={true}
             validate={[formErrorUtil.required]}
           />
         </Box>

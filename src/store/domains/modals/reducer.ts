@@ -21,6 +21,9 @@ const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => 
         .set(`is${action.payload}`, false)
         .set(`payload${action.payload}`, null);
 
+    case ActionTypeKeys.CLOSE_ALL_MODALS:
+      return state = modalsInitialState;
+
     default: return state;
   }
 };

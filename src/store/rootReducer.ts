@@ -18,7 +18,6 @@ import uiItemsReducer from './domains/uiItems/reducer';
 const createRootReducer = (history: History) => combineReducers({
   router: connectRouter(history),
   form: formReducer,
-
   loader: loaderReducer,
   auth: authReducer,
   modals: modalsReducer,
@@ -28,7 +27,6 @@ const createRootReducer = (history: History) => combineReducers({
   consts: constsReducer,
   ledger: ledgerReducer,
   audit: auditReducer,
-
 });
 
 export default createRootReducer;
