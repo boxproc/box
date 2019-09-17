@@ -7,9 +7,19 @@ import { Button, InputField, MaskField, SelectField } from 'components';
 
 import { dateFormat, formNamesConst, maskFormat } from 'consts';
 
+import { HandleFilterAuditApiCalls, HandleGetEndpointsByInstitutionId } from 'store/domains';
+
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ApiCallsFilterFormProps { }
+interface ApiCallsFilterFormProps {
+  filterAuditApiCalls: HandleFilterAuditApiCalls;
+  getEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId;
+  institutionValue: SelectValues;
+  institutionsOptions: Array<SelectValues>;
+  apiCallEndpointsOptions: Array<SelectValues>;
+  isLoadingEndpoints: boolean;
+}
 
 type ApiCallsFilterFormAllProps = ApiCallsFilterFormProps &
   InjectedFormProps<{}, ApiCallsFilterFormProps>;
@@ -18,9 +28,26 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
   handleSubmit,
   pristine,
   invalid,
+  filterAuditApiCalls,
+  institutionValue,
+  getEndpointsByInstitutionId,
+  institutionsOptions,
+  apiCallEndpointsOptions,
+  isLoadingEndpoints,
 }) => {
+  const currentInstitutionId = institutionValue && institutionValue.value;
+
+  React.useEffect(
+    () => {
+      if (currentInstitutionId) {
+        getEndpointsByInstitutionId(currentInstitutionId);
+      }
+    },
+    [getEndpointsByInstitutionId, currentInstitutionId]
+  );
+
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(filterAuditApiCalls),
     [handleSubmit]
   );
 
@@ -37,20 +64,23 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
               name="institutionId"
               component={SelectField}
               label="Institution"
+              options={institutionsOptions}
               placeholder="Select Institution"
-              validate={[formErrorUtil.required]}
               isDisabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
-              id="endPoint"
-              name="endPoint"
+              id="endpointId"
+              name="endpointId"
               component={SelectField}
               label="Endpoint"
+              options={apiCallEndpointsOptions}
               placeholder="Select endpoint"
-              validate={[formErrorUtil.required]}
               isDisabled={false}
+              isLoading={isLoadingEndpoints}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -60,34 +90,34 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
               component={InputField}
               label="API Name"
               placeholder="Enter api name"
-              validate={[formErrorUtil.required]}
               isDisabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
-              id="datetimeFrom"
-              name="datetimeFrom"
-              validate={[formErrorUtil.required]}
+              id="dateFrom"
+              name="dateFrom"
               component={MaskField}
               label="Date From"
               placeholder={dateFormat.DATE_TIME_FORMAT}
               mask={maskFormat.DATE_TIME}
               maskChar={null}
               disabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
-              id="datetimeTo"
-              name="datetimeTo"
+              id="dateTo"
+              name="dateTo"
               component={MaskField}
-              validate={[formErrorUtil.required]}
               label="Date To"
               placeholder={dateFormat.DATE_TIME_FORMAT}
               mask={maskFormat.DATE_TIME}
               maskChar={null}
               disabled={false}
+              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>

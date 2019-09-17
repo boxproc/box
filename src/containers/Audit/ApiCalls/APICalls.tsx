@@ -1,45 +1,21 @@
 import React from 'react';
 
-import { TablePage } from 'components';
+import { TablePage, withSpinner } from 'components';
 import { ApiCallsFilterForm } from './forms';
 
 import { tableColumns } from './components';
 
-const APICallsItems = [
-  {
-    id: 1,
-    eventDatetime: '16/09/2019 11:03:37',
-    endpointId: 1,
-    endpointName: 'BOX API endpoint',
-    apiName: 'api_name',
-    description: 'description',
-    institutionId: 'BOX Institution',
-  },
-  {
-    id: 2,
-    eventDatetime: '16/09/2019 11:03:37',
-    endpointId: 2,
-    endpointName: 'BOX API endpoint',
-    apiName: 'api_name',
-    description: 'description',
-    institutionId: 'BOX Institution',
-  },
-  {
-    id: 3,
-    eventDatetime: '16/09/2019 11:03:37',
-    endpointId: 3,
-    endpointName: 'BOX API endpoint',
-    apiName: 'api_name',
-    description: 'description',
-    institutionId: 'BOX Institution',
-  },
-];
+import { ApiCallsItemPrepared } from 'store/domains';
 
-const ApiCalls: React.FC = () => {
+interface ApiCallsProps {
+  auditApiCalls: Array<ApiCallsItemPrepared>;
+}
+
+const ApiCalls: React.FC<ApiCallsProps> = ({ auditApiCalls }) => {
   return (
     <TablePage
       title="API Calls"
-      data={APICallsItems}
+      data={auditApiCalls}
       columns={tableColumns}
       FilterForm={
         <ApiCallsFilterForm />
@@ -47,5 +23,6 @@ const ApiCalls: React.FC = () => {
     />
   );
 };
-
-export default ApiCalls;
+export default withSpinner({
+  isFixed: true,
+})(ApiCalls);

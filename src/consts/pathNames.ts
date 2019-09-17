@@ -1,3 +1,5 @@
+export const basePath = '/ui/';
+
 export enum authPathNames {
   LOGIN = '/ui/auth/login',
   LOGOUT = '/ui/auth/logout',
@@ -89,7 +91,10 @@ export enum adminSystemPropsPathNames {
 export enum auditUserActivitiesPathNames {
   GET = '/ui/audit/users_activity/get',
 }
-export const basePath = '/ui/';
+
+export enum auditApiClassPathNames {
+  GET = '/ui/audit/api_calls/get',
+}
 
 export enum lenderAccountsPathNames {
   GET = '/ui/ledger/accounts/get',

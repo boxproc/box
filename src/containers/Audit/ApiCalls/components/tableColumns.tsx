@@ -2,19 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
+import { ApiCallsItemPrepared } from 'store/domains';
+
 import { TableCellType } from 'types';
 
-export interface ApiCallsItem {
-  id: number;
-  eventDatetime: string;
-  endpointId: number;
-  endpointName: string;
-  apiName: string;
-  description: string;
-  institutionId: string;
-}
-
-type TCell<T extends keyof ApiCallsItem> = TableCellType<ApiCallsItem[T]>;
+type TCell<T extends keyof ApiCallsItemPrepared> = TableCellType<ApiCallsItemPrepared[T]>;
 
 export const tableColumns = [
   {
