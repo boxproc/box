@@ -19,7 +19,7 @@ import { Products } from 'containers/ProductDesigner';
 
 import { Accounts, Cards, Customers, Statements, Transactions } from 'containers/Ledger';
 
-import { UserActivity } from 'containers/Audit';
+import { ApiCalls, UserActivity } from 'containers/Audit';
 
 export const pagesList = [
   {
@@ -53,6 +53,10 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
     component: <UsersGroup />,
+  },
+  {
+    path: uiItemConsts.AUDIT_API_CALLS,
+    component: <ApiCalls />,
   },
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITIES,

@@ -51,6 +51,7 @@ export enum formNamesConst {
   LEDGER_STATEMENT = 'ledgerStatement',
 
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
+  AUDIT_API_CALLS_FILTER = 'auditApiCallsFilter',
 
   ADMIN_ENDPOINT = 'adminEndpoints',
   ADMIN_ENDPOINT_FILTER = 'adminEndpointFilter',

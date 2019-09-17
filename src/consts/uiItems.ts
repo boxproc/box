@@ -1,5 +1,7 @@
 export enum uiItemConsts {
+
   AUDIT_USER_ACTIVITIES = 'audit/users_activity',
+  AUDIT_API_CALLS = 'audit/api_calls',
 
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
