@@ -112,7 +112,7 @@ export enum lenderCustomersPathNames {
 }
 
 export enum lenderStatementsPathNames {
-  GET = '',
+  GET = '/ui/ledger/statements/get',
 }
 
 export enum lenderTransactionsPathNames {

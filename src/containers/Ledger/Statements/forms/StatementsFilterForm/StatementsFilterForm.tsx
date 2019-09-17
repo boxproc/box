@@ -3,9 +3,9 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, SelectField } from 'components';
+import { Button, InputField, MaskField, SelectField } from 'components';
 
-import { formNamesConst } from 'consts';
+import { dateFormat, formNamesConst, maskFormat } from 'consts';
 
 import { HandleFilterLedgerStatements, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -73,8 +73,8 @@ const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
               </Box>
               <Box width={[2 / 7]} p="10px">
                 <Field
-                  id="id"
-                  name="id"
+                  id="accountId"
+                  name="accountId"
                   component={InputField}
                   label="Account ID"
                   placeholder="Enter ID"
@@ -116,22 +116,26 @@ const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
                 <Field
                   id="dateFrom"
                   name="dateFrom"
-                  component={InputField}
-                  label="Date from"
-                  placeholder="Enter date from"
-                  isDisabled={false}
-                  isMulti={true}
+                  component={MaskField}
+                  label="Date From"
+                  placeholder={dateFormat.DATE_TIME_FORMAT}
+                  mask={maskFormat.DATE_TIME}
+                  maskChar={null}
+                  disabled={false}
+                  validate={[formErrorUtil.required]}
                 />
               </Box>
               <Box width={[3 / 7]} p="10px">
                 <Field
                   id="dateTo"
                   name="dateTo"
-                  component={InputField}
-                  label="Date to"
-                  placeholder="Enter date to"
-                  isDisabled={false}
-                  isMulti={true}
+                  component={MaskField}
+                  label="Date To"
+                  placeholder={dateFormat.DATE_TIME_FORMAT}
+                  mask={maskFormat.DATE_TIME}
+                  maskChar={null}
+                  disabled={false}
+                  validate={[formErrorUtil.required]}
                 />
               </Box>
             </Flex>

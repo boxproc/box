@@ -17,7 +17,7 @@ export interface LedgerStatementItem extends LedgerStatementId {
   cycle_execution_history_id: number;
   account_alias: string;
   institution_id: string | number;
-  product: string | number;
+  product_name: string | number;
   first_name: string;
   last_name: string;
 }
@@ -37,12 +37,13 @@ export interface LedgerStatementItemPrepared extends LedgerStatementId {
   cycleExecutionHistoryId: number;
   accountAlias: string;
   institutionId: string | number;
-  product: string | number;
+  productName: string | number;
   firstName: string;
   lastName: string;
 }
 
-export interface LedgerStatementsFilterParams extends LedgerStatementId {
+export interface LedgerStatementsFilterParams {
+  accountId: number;
   institutionId: SelectValues;
   accountAlias: string;
   firstName: string;
@@ -52,7 +53,8 @@ export interface LedgerStatementsFilterParams extends LedgerStatementId {
   product: Array<SelectValues>;
 }
 
-export interface LedgerStatementsFilterParamsPrepared extends LedgerStatementId {
+export interface LedgerStatementsFilterParamsPrepared {
+  account_id: number;
   institution_id: string | number;
   account_alias: string;
   first_name: string;

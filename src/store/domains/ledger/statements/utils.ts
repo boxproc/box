@@ -19,7 +19,7 @@ export const prepareValuesToRender = (values: LedgerStatementItem) => {
     statementCycleId: values.statement_cycle_id,
     cycleExecutionHistoryId: values.cycle_execution_history_id,
     accountAlias: values.account_alias,
-    product: values.product,
+    productName: values.product_name,
     firstName: values.first_name,
     lastName: values.last_name,
   };
@@ -31,7 +31,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerStatementsFilte
   }
 
   const {
-    id,
+    accountId,
     institutionId,
     firstName,
     lastName,
@@ -42,13 +42,13 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerStatementsFilte
   } = params;
 
   return {
-    id: Number(id),
-    institution_id: institutionId && Number(institutionId.value),
-    first_name: firstName,
-    last_name: lastName,
-    product: product && product.length && product.map(name => name.label),
-    account_alias: accountAlias,
-    date_from: dateFrom,
-    date_to: dateTo,
+    account_id: accountId ? Number(accountId) : null,
+    institution_id: institutionId ? Number(institutionId.value) : null,
+    first_name: firstName ? firstName : null,
+    last_name: lastName ? lastName : null,
+    product: (product && product.length) ? product.map(name => name.value) : null,
+    account_alias: accountAlias ? accountAlias : null,
+    date_from: dateFrom ? dateFrom : null,
+    date_to: dateTo ? dateTo : null,
   };
 };
