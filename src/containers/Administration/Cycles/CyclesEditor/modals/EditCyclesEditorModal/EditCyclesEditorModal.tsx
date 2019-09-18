@@ -11,7 +11,7 @@ import { AdminCyclesEditorEditableItem, CloseModal } from 'store/domains';
 interface EditSchedulerModalProps {
   closeModal: CloseModal;
   cycleEditorValues: Partial<AdminCyclesEditorEditableItem>;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_CYCLE_EDITOR;
@@ -19,7 +19,7 @@ const modalName = modalNamesConst.EDIT_CYCLE_EDITOR;
 const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
   cycleEditorValues,
-  isDirty,
+  isFormDirty,
 }) => {
 
   return (
@@ -28,12 +28,11 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Edit Cycle"
       maxContainerWidth={550}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <DefineCycleEditorForm
         onCancel={() => closeModal(modalName)}
         initialValues={cycleEditorValues}
-        // isDirty={isDirty}
         mode="edit"
       />
     </Modal>

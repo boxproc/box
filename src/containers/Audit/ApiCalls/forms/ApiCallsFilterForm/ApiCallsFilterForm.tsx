@@ -91,7 +91,7 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
               label="API Name"
               placeholder="Enter api name"
               isDisabled={false}
-              validate={[formErrorUtil.required]}
+              // validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">

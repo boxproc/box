@@ -16,7 +16,6 @@ import { formErrorUtil } from 'utils';
 interface CycleEditorFilterProps {
   institutionsOptions: Array<SelectValues>;
   filterCycles: HandleFilterCycles;
-  isDirty: boolean;
 }
 
 type CyclesEditorFilterAllProps = CycleEditorFilterProps &
@@ -26,7 +25,8 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterCycles,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(filterCycles),
@@ -66,7 +66,7 @@ const CyclesEditorFilter: React.FC<CyclesEditorFilterAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

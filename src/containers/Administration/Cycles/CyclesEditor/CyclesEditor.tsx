@@ -22,7 +22,6 @@ interface CycleEditorProps {
   setAdminCycleEditorId: HandleSetAdminCycleEditorId;
   filterCycles: HandleFilterCycles;
   deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
-  isFilterFormDirty: boolean;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
@@ -30,7 +29,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   institutionsOptions,
   setAdminCycleEditorId,
   filterCycles,
-  isFilterFormDirty,
   deleteAdminCyclesEditor,
 }) => {
   const contextMenuItems = React.useMemo(
@@ -59,7 +57,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
         <CycleEditorFilter
           filterCycles={filterCycles}
           institutionsOptions={institutionsOptions}
-          isDirty={isFilterFormDirty}
         />
       }
     />

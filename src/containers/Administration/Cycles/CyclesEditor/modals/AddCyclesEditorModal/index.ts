@@ -12,7 +12,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR);
 
 const mapStateToProps = (state: StoreState) => ({
-  isDirty: dirty(state),
+  isFormDirty: dirty(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

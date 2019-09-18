@@ -40,7 +40,6 @@ interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
   updateAdminCyclesEditor: HandleUpdateAdminCyclesEditor;
   deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
   onCancel: () => void;
-  isDirty: boolean;
   mode: 'add' | 'edit';
 }
 
@@ -55,8 +54,10 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   cyclesEditorValue,
   onCancel,
   institutionsOptions,
-  isDirty,
   mode,
+  pristine,
+  invalid,
+  dirty,
 }) => {
   const isEditMode = mode === 'edit';
 
@@ -195,8 +196,8 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
         />
       </Flex>
     </form >
