@@ -14,8 +14,9 @@ import {
   selectInstitutionProductsOptions,
   selectInstitutionsOptions,
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
+
+import { dateUtil } from 'utils';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
@@ -28,6 +29,8 @@ const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   initialValues: {
     institutionId: selectInstitutionsOptions(state)[0],
+    dateFrom: dateUtil.yesterday,
+    dateTo: dateUtil.today,
   },
   institutionValue: formSelector(
     state,

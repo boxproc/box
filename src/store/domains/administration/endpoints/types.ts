@@ -47,7 +47,17 @@ export interface AdminEndpointFilterParamsPrepared {
   institution_id: string | number;
 }
 
+export interface AdminEndpointNameItem {
+  id: number;
+  name: string;
+}
+
+export interface AdminEndpointNameItems extends ResponseStatusType {
+  endpoints: Array<AdminEndpointNameItem>;
+}
+
 export interface AdminEndpointState {
   endpoints: ImmutableArray<AdminEndpointItem>;
   currentEndpointId: number;
+  endpointsByInstitutionId: ImmutableArray<AdminEndpointNameItem>;
 }

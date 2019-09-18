@@ -6,7 +6,6 @@ import { AuditApiCallsState } from './types';
 export const auditApiCallsInitialState:
   seamlessImmutable.ImmutableObject<AuditApiCallsState> = Immutable({
     apiCalls: Immutable([]),
-    endpoints: Immutable([]),
   });
 
 const auditApiCallsReducer = (
@@ -17,10 +16,6 @@ const auditApiCallsReducer = (
     case ActionTypeKeys.FILTER_AUDIT_API_CALLS_FULFILLED:
       return state
         .set('apiCalls', action.payload.api_calls);
-
-    case ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED:
-      return state
-        .set('endpoints', action.payload.endpoints);
 
     default:
       return state;

@@ -6,6 +6,7 @@ import { AdminEndpointState } from './types';
 export const adminEndpointInitialState:
   seamlessImmutable.ImmutableObject<AdminEndpointState> = Immutable({
     endpoints: Immutable([]),
+    endpointsByInstitutionId: Immutable([]),
     currentEndpointId: null,
   });
 
@@ -26,6 +27,10 @@ const adminEndpointsReducer =
       case ActionTypeKeys.SET_ADMIN_ENDPOINT_ID:
         return state
           .set('currentEndpointId', action.payload);
+
+    case ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED:
+      return state
+        .set('endpointsByInstitutionId', action.payload.endpoints);
 
       default:
         return state;

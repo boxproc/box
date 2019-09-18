@@ -17,7 +17,7 @@ interface ApiCallsFilterFormProps {
   getEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId;
   institutionValue: SelectValues;
   institutionsOptions: Array<SelectValues>;
-  apiCallEndpointsOptions: Array<SelectValues>;
+  endpointsOptions: Array<SelectValues>;
   isLoadingEndpoints: boolean;
 }
 
@@ -32,7 +32,7 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
   institutionValue,
   getEndpointsByInstitutionId,
   institutionsOptions,
-  apiCallEndpointsOptions,
+  endpointsOptions,
   isLoadingEndpoints,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
@@ -76,7 +76,7 @@ const ApiCallsFilterForm: React.FC<ApiCallsFilterFormAllProps> = ({
               name="endpointId"
               component={SelectField}
               label="Endpoint"
-              options={apiCallEndpointsOptions}
+              options={endpointsOptions}
               placeholder="Select endpoint"
               isDisabled={false}
               isLoading={isLoadingEndpoints}

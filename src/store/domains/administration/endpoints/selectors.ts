@@ -39,3 +39,16 @@ export const selectAdminCurrentEndpointName = createSelector(
   selectAdminCurrentEndpoint,
   endpoint => endpoint && endpoint.name
 );
+
+export const selectDefaultEndpointsByInstIdOptions = (state: StoreState) =>
+  state.administration.endpoints.endpointsByInstitutionId;
+
+export const selectEndpointsByInstIdOptions = createSelector(
+  selectDefaultEndpointsByInstIdOptions,
+  items => items && items.asMutable().map(item => {
+    return {
+      value: item.id,
+      label: item.name,
+    };
+  })
+);

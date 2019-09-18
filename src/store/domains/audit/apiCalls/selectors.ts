@@ -15,16 +15,3 @@ export const selectAuditApiCalls = createSelector(
     };
   })
 );
-
-export const selectDefaultApiCallEndpointsOptions = (state: StoreState) =>
-  state.audit.apiCalls.endpoints;
-
-export const selectApiCallEndpointsOptions = createSelector(
-  selectDefaultApiCallEndpointsOptions,
-  items => items && items.asMutable().map(item => {
-    return {
-      value: item.id,
-      label: item.name,
-    };
-  })
-);

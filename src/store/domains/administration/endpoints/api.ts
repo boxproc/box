@@ -17,3 +17,10 @@ export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
 
 export const filterAdminEndpoint = (data: Partial<AdminEndpointFilterParamsPrepared>) =>
   apiClient.post(adminEndPointsPathNames.GET, { data });
+
+export const getEndpointsByInstitutionId = (id: number | string) =>
+  apiClient.post(adminEndPointsPathNames.GET_BY_INSTITUTION_ID, {
+    data: {
+      institution_id: id,
+    },
+  });

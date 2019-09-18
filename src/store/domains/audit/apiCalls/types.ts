@@ -1,15 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ResponseStatusType } from 'types';
 
-export interface ApiCallsEndpointItem {
-  id: number;
-  name: string;
-}
-
-export interface ApiCallsEndpointItems extends ResponseStatusType {
-  endpoints: Array<ApiCallsEndpointItem>;
-}
-
 export interface ApiCallsItem {
   id: number;
   event_datetime: string;
@@ -52,5 +43,4 @@ export interface AuditApiCallsFilterParamsPrepared {
 
 export interface AuditApiCallsState {
   apiCalls: ImmutableArray<ApiCallsItem>;
-  endpoints: ImmutableArray<ApiCallsEndpointItem>;
 }

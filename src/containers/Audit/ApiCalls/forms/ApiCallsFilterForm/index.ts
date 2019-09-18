@@ -7,18 +7,19 @@ import { formNamesConst } from 'consts';
 import ApiCallsFilterForm from './ApiCallsFilterForm';
 
 import {
-  AuditApiCallsActionTypes,
+  AdminEndpointsActionTypes,
   createLoadingSelector,
   handleFilterAuditApiCalls,
   handleGetEndpointsByInstitutionId,
-  selectApiCallEndpointsOptions,
+  selectEndpointsByInstIdOptions,
   selectInstitutionsOptions,
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
+import { dateUtil } from 'utils';
+
 const loadingSelector = createLoadingSelector([
-  AuditApiCallsActionTypes.GET_ENDPOINTS_BY_INSTITUTION_ID,
+  AdminEndpointsActionTypes.GET_ENDPOINTS_BY_INSTITUTION_ID,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.AUDIT_API_CALLS_FILTER);
@@ -26,9 +27,11 @@ const formSelector = formValueSelector(formNamesConst.AUDIT_API_CALLS_FILTER);
 const mapStateToProps = (state: StoreState) => ({
   isLoadingEndpoints: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  apiCallEndpointsOptions: selectApiCallEndpointsOptions(state),
+  endpointsOptions: selectEndpointsByInstIdOptions(state),
   initialValues: {
     institutionId: selectInstitutionsOptions(state)[0],
+    dateFrom: dateUtil.yesterday,
+    dateTo: dateUtil.today,
   },
   institutionValue: formSelector(
     state,

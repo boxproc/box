@@ -1,7 +1,6 @@
 import {
   ActionTypeKeys,
   FilterAuditApiCallsAction,
-  GetEndpointsByInstitutionIdAction,
 } from './actionTypes';
 import * as api from './api';
 import { AuditApiCallsFilterParams, AuditApiCallsFilterParamsPrepared } from './types';
@@ -15,18 +14,9 @@ export type HandleFilterAuditApiCalls = (params: Partial<AuditApiCallsFilterPara
 export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterParamsPrepared>) =>
   FilterAuditApiCallsAction;
 
-export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<void>;
-export type GetEndpointsByInstitutionId = (id: string | number) =>
-  GetEndpointsByInstitutionIdAction;
-
 export const filterAuditApiCalls: FilterAuditApiCalls = params => ({
   type: ActionTypeKeys.FILTER_AUDIT_API_CALLS,
   payload: api.filterAuditApiCalls(params),
-});
-
-export const getEndpointsByInstitutionId: GetEndpointsByInstitutionId = id => ({
-  type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID,
-  payload: api.getEndpointsByInstitutionId(id),
 });
 
 export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = params =>
@@ -36,16 +26,6 @@ export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = params =>
         const preparedParams = preparedFilterParamsToSend(params);
 
         await dispatch(filterAuditApiCalls(preparedParams));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId = id =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(getEndpointsByInstitutionId(id));
       },
       dispatch
     );

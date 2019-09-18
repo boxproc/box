@@ -9,6 +9,7 @@ import {
   AddAdminEndpointAction,
   DeleteAdminEndpointAction,
   FilterAdminEndpointAction,
+  GetEndpointsByInstitutionIdAction,
   SetEndpointIdAction,
   UpdateAdminEndpointAction,
 } from './actionTypes';
@@ -44,6 +45,10 @@ export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterParamsPrep
   FilterAdminEndpointAction;
 export type HandleFilterAdminEndpoint = () => Thunk<void>;
 
+export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<void>;
+export type GetEndpointsByInstitutionId = (id: string | number) =>
+  GetEndpointsByInstitutionIdAction;
+
 export const setAdminEndpointId: SetEndpointId = id => ({
   type: ActionTypeKeys.SET_ADMIN_ENDPOINT_ID,
   payload: id,
@@ -68,6 +73,11 @@ export const filterAdminEndpoint: FilterAdminEndpoint = filterParams => ({
 export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_ENDPOINT,
   payload: api.updateAdminEndpoint(values),
+});
+
+export const getEndpointsByInstitutionId: GetEndpointsByInstitutionId = id => ({
+  type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID,
+  payload: api.getEndpointsByInstitutionId(id),
 });
 
 export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
@@ -127,6 +137,16 @@ export const handleUpdateEndpoint: HandleUpdateAdminEndpoint = values =>
 
         await dispatch(updateAdminEndpoint(preparedValues));
         await dispatch(handleFilterAdminEndpoint());
+      },
+      dispatch
+    );
+  };
+
+export const handleGetEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getEndpointsByInstitutionId(id));
       },
       dispatch
     );

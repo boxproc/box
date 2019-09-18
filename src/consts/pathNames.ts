@@ -41,6 +41,7 @@ export enum adminEndPointsPathNames {
   CREATE = '/ui/administration/endpoints/create',
   DELETE = '/ui/administration/endpoints/delete',
   UPDATE = '/ui/administration/endpoints/update',
+  GET_BY_INSTITUTION_ID = '/ui/administration/endpoints/get_by_institution',
 }
 
 export enum adminEventDataElemsPathNames {

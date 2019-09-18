@@ -26,7 +26,8 @@ type StatementFilterFormAllProps = StatementFilterFormProps &
 
 const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
   handleSubmit,
-  dirty,
+  pristine,
+  invalid,
   institutionsOptions,
   filterLedgerStatements,
   institutionValue,
@@ -158,7 +159,7 @@ const StatementFilterForm: React.FC<StatementFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!dirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

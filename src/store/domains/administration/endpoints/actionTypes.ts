@@ -1,5 +1,5 @@
 import { ApiResponse, ResponseStatusType } from 'types';
-import { AdminEndpointItems } from './types';
+import { AdminEndpointItems, AdminEndpointNameItems } from './types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_ENDPOINT = 'administration/endpoints/ADD_ADMIN_ENDPOINT',
@@ -19,6 +19,12 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_ENDPOINT = 'administration/endpoints/FILTER_ADMIN_ENDPOINT',
   FILTER_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_FULFILLED',
   FILTER_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_REJECTED',
+
+  GET_ENDPOINTS_BY_INSTITUTION_ID = 'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID',
+  GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED =
+  'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED',
+  GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED =
+  'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
 }
 
 export interface SetEndpointIdAction {
@@ -86,10 +92,25 @@ export interface FilterAdminEndpointRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT_REJECTED;
 }
+export interface GetEndpointsByInstitutionIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID;
+}
+
+export interface GetEndpointsByInstitutionIdFulfilledAction {
+  readonly payload: AdminEndpointNameItems;
+  readonly type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED;
+}
+
+export interface GetEndpointsByInstitutionIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED;
+}
 
 export type AdminEndpointActionTypes =
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
   | SetEndpointIdAction
   | FilterAdminEndpointFulfilledAction
-  | UpdateAdminEndpointFulfilledAction;
+  | UpdateAdminEndpointFulfilledAction
+  | GetEndpointsByInstitutionIdFulfilledAction;
