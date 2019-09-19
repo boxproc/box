@@ -21,7 +21,7 @@ const CircleListWrapper = styled.ul`
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: ${({ theme }) => theme.normalAccent};
+      background-color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
 `;

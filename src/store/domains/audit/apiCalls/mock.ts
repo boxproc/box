@@ -11,14 +11,7 @@ export const apiCallsItems: ApiCallsItems = {
       endpoint_id: 1,
       endpoint_name: 'BOX API endpoint',
       api_name: 'apiname',
-      request_body:
-`endpoints: [
-  {name: "BOX API endpoint", id: 1},
-  {name: "Tribe card transactions endpoint", id: 2},
-  {name: "Tutuka card transactions endpoint", id: 3}
-]
-response_status: {status_code: 0}
-`,
+      request_body: '',
       response_body: '',
       institution_id: 1,
     },
