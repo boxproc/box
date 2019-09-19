@@ -10,17 +10,11 @@ import { NavList } from './NavList';
 
 import { basePath, uiItemTypesConst } from 'consts';
 
-import {
-  checkHasActive,
-  clearMenu,
-  goToPage,
-  menuClasses,
-  toggleOpenMenu,
-} from './utils';
+import { clearMenu, goToPage, menuClasses, toggleOpenMenu } from './utils';
 
 import { UiItemPrepared } from 'store/domains';
 
-const ChevronRightIconStyled = styled(ChevronRightIcon)`
+const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
@@ -30,19 +24,6 @@ interface NavbarProps extends RouteComponentProps {
 
 const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
   const menuRef = React.useRef(null);
-
-  React.useEffect(
-    () => {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }
-  );
-
-  const handleClickOutside = (e: MouseEvent) => {
-    if (checkHasActive() && menuRef.current && !menuRef.current.contains(e.target)) {
-      clearMenu();
-    }
-  };
 
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type } = item;
@@ -54,8 +35,10 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
       <Box
         key={id}
         className={menuClasses.MENU_ITEM}
-        onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
-        onMouseEnter={e => checkHasActive() && toggleOpenMenu(e)}
+        onClick={() => !hasChildren && goToPage(pushToHistory, clearMenu)}
+        onMouseEnter={e => toggleOpenMenu(e)}
+        // onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
+        // onMouseEnter={e => checkHasActive() && toggleOpenMenu(e)}
       >
         <Flex
           alignItems="flex-start"
@@ -65,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
           {title}
           {hasChildren && parentId &&
             <Box ml="5px" mt="-2px">
-              <ChevronRightIconStyled className="icon" size="17" />
+              <ChevronIconStyled className="icon" size="17" />
             </Box>
           }
         </Flex>

@@ -15,6 +15,7 @@ import { usersModals } from 'containers/Administration/Permission/Users/modals';
 import { usersGroupModals } from 'containers/Administration/Permission/UsersGroup/modals';
 import { schedulerModals } from 'containers/Administration/Scheduler/modals';
 import { systemPropertiesModals } from 'containers/Administration/SystemProperties/modals';
+import { apiCallsModals } from 'containers/Audit/ApiCalls/modals';
 import { accountsModals } from 'containers/Ledger/Accounts/modals';
 import { cardsModals } from 'containers/Ledger/Cards/modals';
 import { customersModals } from 'containers/Ledger/Customers/modals';
@@ -57,4 +58,5 @@ export const modalsList = [
   ...statementsModals,
   ...transactionsModals,
   ...productsModals,
+  ...apiCallsModals,
 ];

@@ -11,7 +11,8 @@ export const prepareValuesToRender = (values: ApiCallsItem) => {
     endpointId: values.endpoint_id,
     endpointName: values.endpoint_name,
     apiName: values.api_name,
-    description: values.description,
+    responseBody: values.response_body,
+    requestBody: values.request_body,
     institutionId: values.institution_id,
   };
 };

@@ -1,13 +1,17 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface ApiCallsItem {
+export interface AuditApiCallId {
   id: number;
+}
+
+export interface ApiCallsItem extends AuditApiCallId {
   event_datetime: string;
   endpoint_id: number;
   endpoint_name: string;
   api_name: string;
-  description: string;
+  request_body: string;
+  response_body: string;
   institution_id: number;
 }
 
@@ -15,13 +19,13 @@ export interface ApiCallsItems extends ResponseStatusType {
   api_calls: Array<ApiCallsItem>;
 }
 
-export interface ApiCallsItemPrepared {
-  id: number;
+export interface ApiCallsItemPrepared extends AuditApiCallId {
   eventDatetime: string;
   endpointId: number;
   endpointName: string;
   apiName: string;
-  description: string;
+  requestBody: string;
+  responseBody: string;
   institutionId: number;
 }
 
@@ -43,4 +47,5 @@ export interface AuditApiCallsFilterParamsPrepared {
 
 export interface AuditApiCallsState {
   apiCalls: ImmutableArray<ApiCallsItem>;
+  currentStatementId: number;
 }

@@ -18,6 +18,9 @@ export enum modalNamesConst {
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
 
+  // Audit
+  AUDIT_API_CALL = 'AuditApiCall',
+
   // Ledger
   ADD_LEDGER_CUSTOMER = 'AddLedgerCustomerModal',
   EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomerModal',

@@ -16,7 +16,7 @@ const TextField = styled.textarea<TextAreaProps>`
   height: auto;
   min-height: 50px;
   line-height: 1.35;
-  resize: none;
+  resize: vertical;
   overflow: auto;
 `;
 

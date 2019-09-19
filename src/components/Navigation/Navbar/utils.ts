@@ -45,12 +45,6 @@ export const clearMenu = () =>
       && removeActiveClass(el)
     );
 
-export const checkHasActive = () =>
-  [].slice.call(document
-    .querySelectorAll(`.${menuClasses.MENU_ITEM}`)).some(el =>
-      el.classList.contains(menuClasses.ACTIVE)
-    );
-
 export const goToPage = (handlePushToHistory: () => void, handleClearMenu: () => void) => {
   handlePushToHistory();
   setTimeout(() => handleClearMenu(), 50);

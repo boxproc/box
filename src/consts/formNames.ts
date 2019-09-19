@@ -52,6 +52,7 @@ export enum formNamesConst {
 
   AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
   AUDIT_API_CALLS_FILTER = 'auditApiCallsFilter',
+  AUDIT_API_CALL = 'auditApiCall',
 
   ADMIN_ENDPOINT = 'adminEndpoints',
   ADMIN_ENDPOINT_FILTER = 'adminEndpointFilter',

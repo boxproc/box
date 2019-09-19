@@ -13,7 +13,6 @@ import { formErrorUtil } from 'utils';
 
 interface SystemPropertyFilterProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
-  isDirty: boolean;
 }
 
 type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
@@ -22,7 +21,6 @@ type SystemPropertyFilterAllProps = SystemPropertyFilterProps &
 const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
   handleSubmit,
   filterAdminSysProps,
-  isDirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(filterAdminSysProps),
@@ -47,10 +45,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
             />
           </Box>
         </Flex>
-        <Button
-          text="Show"
-          disabled={!isDirty}
-        />
+        <Button text="Show" />
       </Box>
     </form >
   );

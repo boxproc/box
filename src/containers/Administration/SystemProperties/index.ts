@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { isDirty } from 'redux-form';
-
-import { formNamesConst } from 'consts';
 
 import SystemProperties from './SystemProperties';
 
@@ -25,11 +22,8 @@ const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.FILTER_ADMIN_SYS_PROPS,
 ]);
 
-const dirty = isDirty(formNamesConst.SYSTEM_PROPERTY_FILTER);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isFilterFormDirty: dirty(state),
   adminSysPropsItems: selectAdminSysPropsItems(state),
   currentSysPropId: selectCurrentSysPropId(state),
 });

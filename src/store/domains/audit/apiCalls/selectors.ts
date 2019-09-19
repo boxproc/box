@@ -15,3 +15,16 @@ export const selectAuditApiCalls = createSelector(
     };
   })
 );
+
+export const selectAuditApiCallCurrentId = (state: StoreState) =>
+  state.audit.apiCalls.currentStatementId;
+
+export const selectAuditApiCallStatement = createSelector(
+  selectAuditApiCalls,
+  selectAuditApiCallCurrentId,
+  (apiCall, currentId) => {
+    const current = apiCall.find(el => el.id === currentId);
+
+    return current;
+  }
+);

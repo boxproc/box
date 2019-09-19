@@ -3,8 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField } from 'components';
-import { SelectField } from 'components/Inputs/Form/SelectField/SelectField';
+import { Hr, InputField, SelectField } from 'components';
 
 import { dateFormat, maskFormat, statementCyclesOptions } from 'consts';
 

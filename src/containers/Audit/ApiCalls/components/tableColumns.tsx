@@ -80,9 +80,19 @@ export const tableColumns = [
   },
   {
     sortable: true,
-    Header: <TableHeader title="Description" />,
-    accessor: 'description',
-    Cell: (props: TCell<'description'>) => (
+    Header: <TableHeader title="Response Body" />,
+    accessor: 'responseBody',
+    Cell: (props: TCell<'responseBody'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    sortable: true,
+    Header: <TableHeader title="Request Body" />,
+    accessor: 'requestBody',
+    Cell: (props: TCell<'requestBody'>) => (
       <TableCell
         value={props.value}
       />
