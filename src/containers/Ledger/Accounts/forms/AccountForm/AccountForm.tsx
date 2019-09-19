@@ -1,8 +1,10 @@
 import React from 'react';
-
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
+import { Flex } from '@rebass/grid';
+
 import {
+  Button,
   ExternalSpinnerProps,
   Hr,
   OkCancelButtons,
@@ -17,6 +19,7 @@ import {
   AuxiliaryCounters,
   Cards,
   GeneralAccountInfo,
+  LastStatement,
   Overdue,
 } from 'containers/Ledger/Accounts/components';
 
@@ -85,7 +88,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
           />
         </TabsPanel>
         <TabsPanel title="Overdue">
-          <Overdue isEditMode={isEditMode}/>
+          <Overdue isEditMode={isEditMode} />
           <Hr />
           <OkCancelButtons
             okText="Save"
@@ -99,6 +102,18 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         {isEditMode && (
           <TabsPanel title="Cards">
             <Cards />
+          </TabsPanel>
+        )}
+        {isEditMode && (
+          <TabsPanel title="Last Statement">
+            <LastStatement />
+            <Hr />
+            <Flex justifyContent="flex-end">
+              <Button
+                text="close"
+                onClick={onCancel}
+              />
+            </Flex>
           </TabsPanel>
         )}
       </Tabs>

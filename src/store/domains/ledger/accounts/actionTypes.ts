@@ -1,6 +1,7 @@
 import { LedgerAccountCardsItems, LedgerAccountItems } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
+import { LedgerStatementItem } from '../statements';
 
 export enum ActionTypeKeys {
   GET_LEDGER_ACCOUNT_CARDS = 'ledger/accounts/GET_LEDGER_ACCOUNT_CARDS',
@@ -24,6 +25,10 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_ACCOUNTS = 'ledger/accounts/FILTER_LEDGER_ACCOUNTS',
   FILTER_LEDGER_ACCOUNTS_FULFILLED = 'ledger/accounts/FILTER_LEDGER_ACCOUNTS_FULFILLED',
   FILTER_LEDGER_ACCOUNTS_REJECTED = 'ledger/accounts/FILTER_LEDGER_ACCOUNTS_REJECTED',
+
+  GET_LEDGER_LAST_STATEMENT = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT',
+  GET_LEDGER_LAST_STATEMENT_FULFILLED = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT_FULFILLED',
+  GET_LEDGER_LAST_STATEMENT_REJECTED = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT_REJECTED',
 }
 
 export interface GetLedgerAccountCardsAction {
@@ -106,10 +111,26 @@ export interface FilterLedgerAccountsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_REJECTED;
 }
 
+export interface GetLedgerLastStatementAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT;
+}
+
+export interface GetLedgerLastStatementFulfilledAction {
+  readonly payload: { statement: Partial<LedgerStatementItem> };
+  readonly type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT_FULFILLED;
+}
+
+export interface GetLedgerLastStatementRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT_REJECTED;
+}
+
 export type LedgerAccountsActionTypes =
   | GetLedgerAccountCardsFulfilledAction
   | OrderLedgerAccountCardFulfilledAction
   | UpdateLedgerAccountFulfilledAction
   | AddLedgerAccountFulfilledAction
   | FilterLedgerAccountsFulfilledAction
-  | SetLedgerAccountIdAction;
+  | SetLedgerAccountIdAction
+  | GetLedgerLastStatementFulfilledAction;

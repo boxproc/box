@@ -9,6 +9,7 @@ import {
   AddLedgerAccountAction,
   FilterLedgerAccountsAction,
   GetLedgerAccountCardsAction,
+  GetLedgerLastStatementAction,
   OrderLedgerAccountCardAction,
   SetLedgerAccountIdAction,
   UpdateLedgerAccountAction,
@@ -30,8 +31,7 @@ export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCards
 export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;
 
 export type OrderLedgerAccountCard = (accountId: number) => OrderLedgerAccountCardAction;
-export type HandleOrderLedgerAccountCard = (accountId: number) =>
-  Thunk<void>;
+export type HandleOrderLedgerAccountCard = (accountId: number) => Thunk<void>;
 
 export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) => AddLedgerAccountAction;
 export type HandleAddLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
@@ -48,6 +48,9 @@ export type FilterLedgerAccounts = (params: Partial<LedgerAccountsFilterParamsPr
   FilterLedgerAccountsAction;
 export type HandleFilterLedgerAccounts = () => Thunk<void>;
 
+export type GetLedgerLastStatement = (accountId: number) => GetLedgerLastStatementAction;
+export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
+
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS,
   payload: api.getLedgerAccountCards(accountId),
@@ -62,6 +65,7 @@ export const addLedgerAccount: AddLedgerAccount = values => ({
   type: ActionTypeKeys.ADD_LEDGER_ACCOUNT,
   payload: api.addLedgerAccount(values),
 });
+
 export const orderLedgerAccountCard: OrderLedgerAccountCard = accountId => ({
   type: ActionTypeKeys.ORDER_LEDGER_ACCOUNT_CARD,
   payload: api.orderLedgerAccountCard(accountId),
@@ -75,6 +79,11 @@ export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
 export const filterLedgerAccounts: FilterLedgerAccounts = filterParams => ({
   type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS,
   payload: api.filterLedgerAccounts(filterParams),
+});
+
+export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
+  type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT,
+  payload: api.getLedgerLastStatement(accountId),
 });
 
 export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
@@ -144,6 +153,16 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
         await dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
         await dispatch(handleFilterLedgerAccounts());
         await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetLedgerLastStatement: HandleGetLedgerLastStatement = accountId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getLedgerLastStatement(accountId));
       },
       dispatch
     );

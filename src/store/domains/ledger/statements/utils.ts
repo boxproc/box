@@ -1,9 +1,8 @@
-import {
-  LedgerStatementItem,
-  LedgerStatementsFilterParams,
-} from './types';
+import { LedgerStatementItem, LedgerStatementsFilterParams } from './types';
 
-export const prepareValuesToRender = (values: LedgerStatementItem) => {
+import { statementCyclesOptions } from 'consts';
+
+export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
   if (!values) {
     return null;
   }
@@ -13,10 +12,12 @@ export const prepareValuesToRender = (values: LedgerStatementItem) => {
     accountId: values.id,
     dateFrom: values.date_from,
     dateTo: values.date_to,
-    balanceOpen: values.balance_open.toFixed(2),
-    balanceClose: values.balance_close.toFixed(2),
-    minimumAmountDueRepayment: values.minimum_amount_due_repayment.toFixed(2),
-    statementCycleId: values.statement_cycle_id,
+    balanceOpen: values.balance_open && values.balance_open.toFixed(2),
+    balanceClose: values.balance_close && values.balance_close.toFixed(2),
+    minimumAmountDueRepayment:
+      values.minimum_amount_due_repayment && values.minimum_amount_due_repayment.toFixed(2),
+    statementCycleId: statementCyclesOptions
+      .find(el => el.value === values.statement_cycle_id).label,
     cycleExecutionHistoryId: values.cycle_execution_history_id,
     accountAlias: values.account_alias,
     productName: values.product_name,

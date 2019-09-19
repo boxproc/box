@@ -16,6 +16,7 @@ interface EditAccountModalProps {
   ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
   isDirty: boolean;
+  ledgerLastStatement: any;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_ACCOUNT;
@@ -26,6 +27,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   ledgerCurrentAccount,
   institutionsOptions,
   isDirty,
+  ledgerLastStatement,
 }) => {
   const accountAlias = ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '';
 
@@ -35,14 +37,17 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Account${accountAlias}`}
       maxContainerWidth={980}
-      minContainerHeight={511}
+      minContainerHeight={515}
       withCloseConfirmation={isDirty}
     >
       <AccountForm
         onCancel={() => closeModal(modalName)}
         mode="edit"
         isDirty={isDirty}
-        initialValues={ledgerCurrentAccount}
+        initialValues={{
+          ...ledgerCurrentAccount,
+          ...ledgerLastStatement,
+        }}
         institutionsOptions={institutionsOptions}
       />
     </Modal>

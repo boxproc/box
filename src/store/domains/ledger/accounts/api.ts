@@ -2,10 +2,7 @@ import { lenderAccountsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-// import {
-//   LedgerAccountsFilteredItems,
-//   SuccessResponseStatus,
-// } from './mock';
+// import { LedgerAccountsFilteredItems, SuccessResponseStatus } from './mock';
 
 import { LedgerAccountItem, LedgerAccountsFilterParamsPrepared } from './types';
 
@@ -30,5 +27,10 @@ export const getLedgerAccountCards = (accountId: number) =>
 
 export const orderLedgerAccountCard = (accountId: number) =>
   apiClient.post(lenderAccountsPathNames.ORDER_ACCOUNT_CARD, {
+    data: { account_id: accountId },
+  });
+
+export const getLedgerLastStatement = (accountId: number) =>
+  apiClient.post(lenderAccountsPathNames.GET_LAST_STATEMENT, {
     data: { account_id: accountId },
   });

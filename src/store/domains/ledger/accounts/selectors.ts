@@ -3,6 +3,9 @@ import { createSelector } from 'reselect';
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
+// tslint:disable-next-line: max-line-length
+import { prepareValuesToRender as prepareLastStatementValuesToRender } from 'store/domains/ledger/statements/utils';
+
 import { selectInstitutionsOptions } from 'store/domains/consts';
 
 import {
@@ -56,4 +59,12 @@ export const selectLedgerCurrentAccountAlias = createSelector(
   currentAccount => {
     return currentAccount && currentAccount.accountAlias;
   }
+);
+
+export const selectDefaultLedgerLastStatement = (state: StoreState) =>
+  state.ledger.accounts.lastStatement;
+
+export const selectLedgerLastStatement = createSelector(
+  selectDefaultLedgerLastStatement,
+  lastStatement => lastStatement && prepareLastStatementValuesToRender(lastStatement)
 );

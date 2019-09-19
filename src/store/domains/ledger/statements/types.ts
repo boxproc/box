@@ -13,7 +13,7 @@ export interface LedgerStatementItem extends LedgerStatementId {
   balance_open: number;
   balance_close: number;
   minimum_amount_due_repayment: number;
-  statement_cycle_id: number;
+  statement_cycle_id: number | string;
   cycle_execution_history_id: number;
   account_alias: string;
   institution_id: string | number;
@@ -33,7 +33,7 @@ export interface LedgerStatementItemPrepared extends LedgerStatementId {
   balanceOpen: string | number;
   balanceClose: string | number;
   minimumAmountDueRepayment: string | number;
-  statementCycleId: number;
+  statementCycleId: number | string;
   cycleExecutionHistoryId: number;
   accountAlias: string;
   institutionId: string | number;

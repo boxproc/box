@@ -4,20 +4,19 @@ import { Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
 import { withModal } from 'HOCs';
+import { StatementForm } from '../forms';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { StatementForm } from 'containers/Ledger/Statements/forms';
-
 import { CloseModal } from 'store/domains';
 
-interface StatementsModalProps {
+interface StatementModalProps {
   closeModal: CloseModal;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
 
-const StatementsModal: React.FC<StatementsModalProps> = ({
+const StatementModal: React.FC<StatementModalProps> = ({
   closeModal,
 }) => {
   const handleCloseModal = React.useCallback(
@@ -45,4 +44,4 @@ const StatementsModal: React.FC<StatementsModalProps> = ({
   );
 };
 
-export default withModal(StatementsModal);
+export default withModal(StatementModal);

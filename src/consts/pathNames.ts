@@ -103,6 +103,7 @@ export enum lenderAccountsPathNames {
   UPDATE = '/ui/ledger/accounts/update',
   GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
   ORDER_ACCOUNT_CARD = '/ui/ledger/cards/order_card',
+  GET_LAST_STATEMENT = '/ui/ledger/accounts/get_last_statement',
 }
 
 export enum lenderCardsPathNames {
