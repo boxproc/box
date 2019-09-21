@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
 import { formNamesConst } from 'consts';
@@ -7,7 +6,6 @@ import { formNamesConst } from 'consts';
 import EditAccountModal from './EditAccountModal';
 
 import {
-  closeModal,
   selectInstitutionsOptions,
   selectLedgerCurrentAccount,
   selectLedgerCurrentAccountAlias,
@@ -18,21 +16,13 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.LEDGER_ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isDirty: dirty(state),
+  isFormDirty: dirty(state),
   ledgerCurrentAccountAlias: selectLedgerCurrentAccountAlias(state),
   ledgerCurrentAccount: selectLedgerCurrentAccount(state),
   institutionsOptions: selectInstitutionsOptions(state),
   ledgerLastStatement: selectLedgerLastStatement(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    closeModal,
-  },
-  dispatch
-);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(EditAccountModal);

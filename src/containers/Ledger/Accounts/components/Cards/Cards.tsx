@@ -3,11 +3,11 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import {
-  closeModal,
   HandleGetLedgerAccountCards,
   HandleOrderLedgerAccountCard,
   LedgerAccountsCardsItemPrepared
@@ -15,7 +15,7 @@ import {
 
 import { TableCellType } from 'types';
 
-interface AccountCardsProps {
+interface AccountCardsProps extends WithModalProps {
   ledgerAccountCurrentId: number;
   getLedgerAccountCards: HandleGetLedgerAccountCards;
   ledgerAccountCards: Array<LedgerAccountsCardsItemPrepared>;
@@ -32,12 +32,18 @@ export const Cards: React.FC<AccountCardsProps> = ({
   ledgerAccountCurrentId,
   ledgerAccountCards,
   orderLedgerAccountCard,
+  closeModal,
 }) => {
   React.useEffect(
     () => {
       getLedgerAccountCards(ledgerAccountCurrentId);
     },
     [getLedgerAccountCards, ledgerAccountCurrentId]
+  );
+
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
   );
 
   const columns = [
@@ -102,7 +108,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       />
       <Flex justifyContent="flex-end">
         <Button
-          onClick={() => closeModal(modalName)}
+          onClick={handleOnCancel}
           text="Close"
         />
       </Flex>
@@ -110,4 +116,6 @@ export const Cards: React.FC<AccountCardsProps> = ({
   );
 };
 
-export default withSpinner()(Cards);
+export default withSpinner()(
+  withModal(Cards)
+);

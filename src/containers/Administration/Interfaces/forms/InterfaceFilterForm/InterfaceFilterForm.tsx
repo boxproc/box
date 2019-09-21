@@ -15,7 +15,6 @@ import { formErrorUtil } from 'utils';
 interface InterfaceFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterAdminInterface: HandleFilterAdminInterface;
-  isDirty: boolean;
 }
 
 type InterfaceFilterFormAllProps = InterfaceFilterFormProps &
@@ -25,7 +24,8 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterAdminInterface,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -56,7 +56,7 @@ const InterfaceFilterForm: React.FC<InterfaceFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

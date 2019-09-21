@@ -1,37 +1,37 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { AddProductForm } from 'containers/ProductDesigner/Products/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface AddProductModalProps {
-  closeModal: CloseModal;
-  isDirty: boolean;
+interface AddProductModalProps extends WithModalProps {
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_PRODUCT;
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
   closeModal,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add New Product"
       minContainerHeight={465}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
-      <AddProductForm
-        onCancel={() => closeModal(modalName)}
-        isDirty={isDirty}
-      />
+      <AddProductForm onCancel={handleOnCancel} />
     </Modal>
   );
 };
 
-export default AddProductModal;
+export default withModal(AddProductModal);

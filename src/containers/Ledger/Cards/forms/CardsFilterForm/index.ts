@@ -1,19 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { isDirty } from 'redux-form';
-
-import { formNamesConst } from 'consts';
 
 import CardsFilterForm from './CardsFilterForm';
 
 import { handleFilterLedgerCards } from 'store/domains';
-import { StoreState } from 'store/StoreState';
-
-const dirty = isDirty(formNamesConst.LEDGER_CARDS_FILTER);
-
-const mapStateToProps = (state: StoreState) => ({
-  isDirty: dirty(state),
-});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -23,6 +13,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 );
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CardsFilterForm);

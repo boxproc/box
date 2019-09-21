@@ -21,7 +21,6 @@ export interface CustomersProps {
   ledgerCustomers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
   getLedgerCustomerId: HandleGetLedgerCustomerId;
-  isFilterFormDirty: boolean;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   ledgerCurrentCustomerName: string;
 }
@@ -31,7 +30,6 @@ const Customers: React.FC<CustomersProps> = ({
   ledgerCustomers,
   filterLedgerCustomers,
   getLedgerCustomerId,
-  isFilterFormDirty,
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
 }) => {
@@ -61,7 +59,6 @@ const Customers: React.FC<CustomersProps> = ({
         <CustomersFilterForm
           filterLedgerCustomers={filterLedgerCustomers}
           institutionsOptions={institutionsOptions}
-          isDirty={isFilterFormDirty}
         />
       }
     />

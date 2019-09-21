@@ -5,32 +5,31 @@ import { apiClient } from 'services';
 import { AuthCode, AuthConfirm, AuthPassword, AuthUserId, PreparedAuthRequest } from './types';
 
 // import {
-//   // AuthResponseFullData,
-//   // AuthResponseStepOneData,
-//   AuthSecretKeyData,
-//   SuccessResponseStatus,
+//   authResponseFullData,
+//   authSecretKeyData,
+//   successResponseStatus,
 // } from './mock';
 
 // import { throttleUtil } from 'utils';
 
 export const userLogin = (data: PreparedAuthRequest) =>
-  // throttleUtil.getDataAfter(AuthResponseFullData, 500);
+  // throttleUtil.getDataAfter(authResponseFullData, 500);
   apiClient.post(authPathNames.LOGIN, { data });
 
 export const userLogout = () =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(authPathNames.LOGOUT);
 
 export const getAuthKey = (data: AuthPassword) =>
-  // throttleUtil.getDataAfter(AuthSecretKeyData, 500);
+  // throttleUtil.getDataAfter(authSecretKeyData, 500);
   apiClient.post(authPathNames.LOGIN, { data });
 
 export const userConfirmAuthKey = (data: AuthConfirm) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(authPathNames.LOGIN, { data });
 
 export const enterAuthKey = (data: AuthCode) =>
-  // throttleUtil.getDataAfter(AuthResponseFullData, 500);
+  // throttleUtil.getDataAfter(authResponseFullData, 500);
   apiClient.post(authPathNames.LOGIN, { data });
 
 export const changeAdminProfile = (data: AuthUserId) =>

@@ -1,27 +1,24 @@
 import React from 'react';
 
 import { Modal, withSpinner } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
 import {
   AdminSchedulerEditableItem,
-  CloseModal,
   HandleDeleteAdminSchedulerJob,
   HandleSetAdminSchedulerJobId,
   HandleUpdateAdminSchedulerJob,
-  OpenModal,
 } from 'store/domains';
 
-interface EditSchedulerModalProps {
-  closeModal: CloseModal;
-  openModal: OpenModal;
+interface EditSchedulerModalProps extends WithModalProps {
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
-  isDirty: boolean;
+  isFormDirty: boolean;
   setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
 }
 
@@ -34,7 +31,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   updateAdminSchedulerJob,
   schedulerJobValues,
   currentSchedulerName,
-  isDirty,
+  isFormDirty,
   setAdminSchedulerJobId,
 }) => {
   React.useEffect(
@@ -46,6 +43,11 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
     [setAdminSchedulerJobId]
   );
 
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const currentName = currentSchedulerName ? `: "${currentSchedulerName}"` : '';
 
   return (
@@ -53,17 +55,16 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Scheduler${currentName}`}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <DefineSchedulerJobForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         openModal={openModal}
         defineAdminSchedulerJob={updateAdminSchedulerJob}
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}
         deleteAdminSchedulerJob={deleteAdminSchedulerJob}
         mode="edit"
-        isDirty={isDirty}
         currentSchedulerName={currentSchedulerName}
       />
     </Modal>
@@ -72,4 +73,6 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(EditSchedulerModal);
+})(
+  withModal(EditSchedulerModal)
+);

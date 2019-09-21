@@ -1,19 +1,17 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
-import { CloseModal } from 'store/domains';
-
 import { SelectValues } from 'types';
 
-interface AddEndpointModalProps {
-  closeModal: CloseModal;
+interface AddEndpointModalProps extends WithModalProps {
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
@@ -21,23 +19,27 @@ const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
 const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
   closeModal,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add Endpoint"
       maxContainerWidth={550}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <EndpointForm
         institutionsOptions={institutionsOptions}
-        isDirty={isDirty}
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="add"
       />
     </Modal>
   );
 };
 
-export default AddEndpointModal;
+export default withModal(AddEndpointModal);

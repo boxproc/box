@@ -23,7 +23,6 @@ interface SchedulerProps {
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   currentSchedulerJobId: number;
-  isFilterFormDirty: boolean;
   currentSchedulerName: string;
 }
 
@@ -33,7 +32,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   setAdminSchedulerJobId,
   sendAdminSchedulerAction,
   currentSchedulerJobId,
-  isFilterFormDirty,
   deleteAdminSchedulerJob,
   currentSchedulerName,
 }) => {
@@ -121,9 +119,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       setCurrentIdAction={setAdminSchedulerJobId}
       contextMenuItems={contextMenuItems}
       FilterForm={
-        <SchedulerFilter
-          isDirty={isFilterFormDirty}
-        />
+        <SchedulerFilter />
       }
     />
   );

@@ -16,7 +16,6 @@ interface EndpointFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterAdminEndpoint: HandleFilterAdminEndpoint;
   isLoadingInstitutionProducts: boolean;
-  isDirty: boolean;
 }
 
 type EndpointsFilterFormAllProps = EndpointFilterFormProps &
@@ -26,7 +25,8 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterAdminEndpoint,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -57,7 +57,7 @@ const EndpointsFilterForm: React.FC<EndpointsFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

@@ -1,15 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface AddCycleEditorModalProps {
-  closeModal: CloseModal;
+interface AddCycleEditorModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
@@ -19,6 +17,11 @@ const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   closeModal,
   isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -27,11 +30,11 @@ const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
       withCloseConfirmation={isFormDirty}
     >
       <DefineCycleEditorForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="add"
       />
     </Modal>
   );
 };
 
-export default AddCycleEditorModal;
+export default withModal(AddCycleEditorModal);

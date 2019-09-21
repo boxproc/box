@@ -1,18 +1,18 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
-import { AdminInstitutionsItemDetailsPrepared, CloseModal } from 'store/domains';
+import { AdminInstitutionsItemDetailsPrepared } from 'store/domains';
 
-interface EditInstitutionModalProps {
-  closeModal: CloseModal;
+interface EditInstitutionModalProps extends WithModalProps {
   adminCurrentInstitution: AdminInstitutionsItemDetailsPrepared;
   adminCurrentInstitutionName: string;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_ADMIN_INSTITUTION;
@@ -21,8 +21,12 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   closeModal,
   adminCurrentInstitution,
   adminCurrentInstitutionName,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
   const institutionName = adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '';
   return (
     <Modal
@@ -30,16 +34,15 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Institution${institutionName}`}
       maxContainerWidth={550}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <InstitutionForm
         initialValues={adminCurrentInstitution}
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="edit"
-        isDirty={isDirty}
       />
     </Modal>
   );
 };
 
-export default EditInstitutionModal;
+export default withModal(EditInstitutionModal);

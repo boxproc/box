@@ -1,38 +1,33 @@
 import React from 'react';
 
-import { Modal, withSpinner } from 'components';
+import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { AddUserGroupForm } from 'containers/Administration/Permission/UsersGroup/forms';
 
-import { CloseModal, } from 'store/domains';
-
-interface AddUserModalProps {
-  closeModal: CloseModal;
-  isDirty: boolean;
-}
+interface AddUserModalProps extends WithModalProps { }
 
 const modalName = modalNamesConst.ADD_ADMIN_USERS_GROUP;
 
 const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
   closeModal,
-  isDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add New User Group"
       maxContainerWidth={350}
     >
-      <AddUserGroupForm
-        onCancel={() => closeModal(modalName)}
-        isDirty={isDirty}
-      />
+      <AddUserGroupForm onCancel={handleOnCancel} />
     </Modal>
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(AddAdminUsersGroupModal);
+export default withModal(AddAdminUsersGroupModal);

@@ -22,7 +22,6 @@ const ProductWrapper = styled(Box)`
 interface ProductsFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterProducts: HandleFilterProducts;
-  isDirty: boolean;
 }
 
 type ProductsFilterFormAllProps = ProductsFilterFormProps &
@@ -32,7 +31,8 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterProducts,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(filterProducts),
@@ -82,7 +82,7 @@ const ProductsFilterForm: React.FC<ProductsFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

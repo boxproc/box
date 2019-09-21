@@ -1,15 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface EditProductModalProps {
-  closeModal: CloseModal;
+interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
@@ -25,8 +23,13 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isProductDetailsFormDirty,
   isProductRulesFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const productName = currentProductName ? `: ${currentProductName}` : '';
-  const isDirty = isGeneralProductFormDirty
+  const isFormDirty = isGeneralProductFormDirty
     || isProductDetailsFormDirty
     || isProductRulesFormDirty;
 
@@ -36,13 +39,13 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit Product${productName}`}
       minContainerHeight={545}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <EditProductForms
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
       />
     </Modal>
   );
 };
 
-export default EditProductModal;
+export default withModal(EditProductModal);

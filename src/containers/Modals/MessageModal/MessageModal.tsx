@@ -4,16 +4,15 @@ import { RouteComponentProps } from 'react-router';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Modal, Paragraph } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, statusCodes } from 'consts';
 
-import { CloseAllModals, CloseModal, PayloadMessageModal } from 'store/domains';
+import { PayloadMessageModal } from 'store/domains';
 import { storageUtil } from 'utils';
 
-interface MessageModalProps extends RouteComponentProps {
+interface MessageModalProps extends RouteComponentProps, WithModalProps {
   payloadMessageModal: PayloadMessageModal;
-  closeModal: CloseModal;
-  closeAllModals: CloseAllModals;
 }
 
 const modalName = modalNamesConst.MESSAGE_MODAL;
@@ -87,4 +86,4 @@ const MessageModal: React.FC<MessageModalProps> = ({
   );
 };
 
-export default MessageModal;
+export default withModal(MessageModal);

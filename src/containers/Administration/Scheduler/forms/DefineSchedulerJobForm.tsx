@@ -31,7 +31,6 @@ interface DefineSchedulerJobFormProps {
   isDisabledStatus?: boolean;
   onCancel?: () => void;
   deleteAdminSchedulerJob?: HandleDeleteAdminSchedulerJob;
-  isDirty: boolean;
   mode: 'add' | 'edit';
   openModal?: OpenModal;
   currentSchedulerName?: string;
@@ -49,13 +48,24 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   onCancel,
   deleteAdminSchedulerJob,
   mode,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
   openModal,
   currentSchedulerName,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminSchedulerJob(data)),
     [handleSubmit, defineAdminSchedulerJob]
+  );
+
+  const handleOpenModal = React.useCallback(
+    () => {
+      openModal({
+        name: modalNamesConst.GENERATE_CRON_EXPRESSION,
+      });
+    },
+    [openModal]
   );
 
   const isEditMode = mode === 'edit';
@@ -161,11 +171,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               type="reset"
               text="Build cron expression"
               underline={true}
-              onClick={() => {
-                openModal({
-                  name: modalNamesConst.GENERATE_CRON_EXPRESSION,
-                });
-              }}
+              onClick={handleOpenModal}
             />
           </Box>
         </Flex>
@@ -191,8 +197,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           okText="Save"
           cancelText="Cancel"
           onCancel={onCancel}
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
         />
       </Flex>
     </form >

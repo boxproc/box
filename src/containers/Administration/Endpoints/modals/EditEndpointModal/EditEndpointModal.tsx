@@ -1,20 +1,20 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
-import { AdminEndpointItemDetailsPrepared, CloseModal } from 'store/domains';
+import { AdminEndpointItemDetailsPrepared } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface EditAccountModalProps {
-  closeModal: CloseModal;
+interface EditAccountModalProps extends WithModalProps {
   adminCurrentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
   adminCurrentEndpointName: string;
 }
 
@@ -24,9 +24,14 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   adminCurrentEndpoint,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
   adminCurrentEndpointName,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const endpointName = adminCurrentEndpointName ? `: "${adminCurrentEndpointName}"` : '';
 
   return (
@@ -35,18 +40,17 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       maxContainerWidth={550}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <EndpointForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="edit"
         initialValues={adminCurrentEndpoint}
         institutionsOptions={institutionsOptions}
-        isDirty={isDirty}
         currentEndpointName={adminCurrentEndpointName}
       />
     </Modal>
   );
 };
 
-export default EditAccountModal;
+export default withModal(EditAccountModal);

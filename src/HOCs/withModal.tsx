@@ -2,19 +2,40 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { closeModal, openModal } from 'store/domains';
+import {
+  closeAllModals,
+  CloseAllModals,
+  closeModal,
+  CloseModal,
+  openModal,
+  OpenModal,
+} from 'store/domains';
 
-export const withModal = (Component: React.ComponentType<any>) => {
-  const WithOpenModal: React.FC = props => {
-    return (<Component {...props}/>);
+export interface WithModalProps {
+  openModal: OpenModal;
+  closeModal: CloseModal;
+  closeAllModals: CloseAllModals;
+}
+
+export const withModal = <OriginProps extends {}>(
+  Component: React.ComponentType<OriginProps & Partial<WithModalProps>>
+) => {
+  const WithModal: React.FC = props => {
+    return (
+      <Component {...props as OriginProps} />
+    );
   };
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     {
       openModal,
       closeModal,
+      closeAllModals,
     },
     dispatch
   );
 
-  return connect(null, mapDispatchToProps)(WithOpenModal);
+  return connect(
+    null,
+    mapDispatchToProps
+  )(WithModal);
 };

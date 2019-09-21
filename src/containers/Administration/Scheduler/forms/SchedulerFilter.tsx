@@ -8,16 +8,15 @@ import { Button, CheckboxField, InputField } from 'components';
 import { formNamesConst } from 'consts';
 import { formErrorUtil } from 'utils';
 
-interface SchedulerFilterProps {
-  isDirty: boolean;
-}
+interface SchedulerFilterProps { }
 
 type SchedulerFilterAllProps = SchedulerFilterProps &
   InjectedFormProps<{}, SchedulerFilterProps>;
 
 const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
   handleSubmit,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log('---', data)),
@@ -53,7 +52,7 @@ const SchedulerFilter: React.FC<SchedulerFilterAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

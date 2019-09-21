@@ -18,7 +18,6 @@ interface UserActivitiesFilterFormProps {
   auditUsersOptions: Array<SelectValues>;
   isLoadingUsers: boolean;
   filterAuditUserActivities: HandleFilterAuditUserActivities;
-  isDirty: boolean;
 }
 
 type UserActivitiesFilterFormAllProps = UserActivitiesFilterFormProps &
@@ -32,7 +31,8 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
   getAuditUsers,
   currentInstitution,
   isLoadingUsers,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const currentInstitutionId = currentInstitution && currentInstitution.value;
   const handleSubmitForm = React.useCallback(
@@ -110,7 +110,7 @@ const UserActivitiesFilterForm: React.FC<UserActivitiesFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

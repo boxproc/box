@@ -6,12 +6,10 @@ import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 import {
-  // AuthActionTypes,
   createLoadingSelector,
   handleGetInstitutions,
   handleGetUiItems,
   handleUserLogout,
-  openModal,
   selectInstitutions,
   selectUiItems,
   UiItemsActionTypes,
@@ -34,7 +32,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     getUiItems: handleGetUiItems,
     userLogout: handleUserLogout,
     getInstitutions: handleGetInstitutions,
-    openModal,
   },
   dispatch
 );

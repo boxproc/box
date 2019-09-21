@@ -1,38 +1,40 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface AddInstitutionModalProps {
-  closeModal: CloseModal;
-  isDirty: boolean;
+interface AddInstitutionModalProps extends WithModalProps {
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_INSTITUTION;
 
 const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
   closeModal,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add Institution"
       maxContainerWidth={550}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <InstitutionForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="add"
-        isDirty={isDirty}
       />
     </Modal>
   );
 };
 
-export default AddInstitutionModal;
+export default withModal(AddInstitutionModal);

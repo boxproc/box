@@ -6,7 +6,6 @@ import InfoCardModal from './InfoCardModal';
 
 import { formNamesConst } from 'consts';
 import {
-  closeModal,
   handleActivateLedgerCard,
   selectLedgerCardPanAlias,
   selectLedgerCardValues,
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     activateLedgerCard: handleActivateLedgerCard,
-    closeModal,
   },
   dispatch
 );

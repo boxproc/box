@@ -23,7 +23,6 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   deleteInterface: HandleDeleteAdminInterface;
   onCancel: () => void;
   mode: 'add' | 'edit';
-  isDirty: boolean;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -36,8 +35,10 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   updateAdminInterface,
   addAdminInterface,
   institutionsOptions,
-  isDirty,
   mode,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminInterface : addAdminInterface;
@@ -74,8 +75,8 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
         />
       </Flex>
     </form >

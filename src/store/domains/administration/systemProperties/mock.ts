@@ -2,7 +2,7 @@ import { AdminSysPropsDataResp } from './types';
 
 import { ResponseStatusType } from 'types';
 
-export const AdminSysPropsItemsData: AdminSysPropsDataResp = {
+export const adminSysPropsItemsData: AdminSysPropsDataResp = {
   response_status: {
     status_code: 0,
   },
@@ -38,7 +38,7 @@ export const AdminSysPropsItemsData: AdminSysPropsDataResp = {
   ],
 };
 
-export const AdminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
+export const adminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
   response_status: {
     status_code: 0,
   },
@@ -60,7 +60,7 @@ export const AdminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
   ],
 };
 
-export const SuccessResponseStatus: ResponseStatusType = {
+export const successResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

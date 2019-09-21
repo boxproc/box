@@ -19,7 +19,6 @@ interface EventDataElemsProps {
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
   adminEventsOptions: Array<SelectValues>;
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
-  isFilterFormDirty: boolean;
 }
 
 export const EventDataElems: React.FC<EventDataElemsProps> = ({
@@ -27,7 +26,6 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
   adminEventDataElemsItems,
   adminEventsOptions,
   filterAdminEventDataElems,
-  isFilterFormDirty,
 }) => {
   React.useEffect(
     () => {
@@ -45,7 +43,6 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
         <EventDataElemsFilter
           eventOptions={adminEventsOptions}
           filterAdminEventDataElems={filterAdminEventDataElems}
-          isDirty={isFilterFormDirty}
         />
       }
     />

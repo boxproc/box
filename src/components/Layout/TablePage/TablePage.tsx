@@ -5,24 +5,22 @@ import { withRouter } from 'react-router-dom';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, ExternalLink, Hint, T2 } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
 import TableFilterContainer from './TableFilterContainer';
 
-import { OpenModal } from 'store/domains';
-
 import { ContextMenuItem } from 'types';
 import { stringsUtil } from 'utils';
 
-interface TablePageProps extends RouteComponentProps {
+interface TablePageProps extends RouteComponentProps, WithModalProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
   FilterForm?: ReactChild;
   hint?: string;
-  openModal?: OpenModal;
   addNewModalName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
 }
@@ -91,4 +89,6 @@ export const TablePage: React.FC<TablePageProps> = props => {
   );
 };
 
-export default withRouter(TablePage);
+export default withModal(
+  withRouter(TablePage)
+);

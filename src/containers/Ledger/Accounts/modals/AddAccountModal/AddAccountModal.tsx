@@ -1,18 +1,17 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { CloseModal } from 'store/domains';
 import { SelectValues } from 'types';
 
-interface AddAccountModalProps {
-  closeModal: CloseModal;
+interface AddAccountModalProps extends WithModalProps {
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_LEDGER_ACCOUNT;
@@ -20,27 +19,31 @@ const modalName = modalNamesConst.ADD_LEDGER_ACCOUNT;
 const AddAccountModal: React.FC<AddAccountModalProps> = ({
   closeModal,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add Account"
       maxContainerWidth={980}
       minContainerHeight={515}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <AccountForm
         institutionsOptions={institutionsOptions}
         initialValues={{
           institutionId: institutionsOptions && institutionsOptions[0],
         }}
-        isDirty={isDirty}
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="add"
       />
     </Modal>
   );
 };
 
-export default AddAccountModal;
+export default withModal(AddAccountModal);

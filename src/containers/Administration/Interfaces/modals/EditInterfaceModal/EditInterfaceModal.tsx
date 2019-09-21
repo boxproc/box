@@ -1,20 +1,20 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
-import { AdminInterfaceItemDetailsPrepared, CloseModal } from 'store/domains';
+import { AdminInterfaceItemDetailsPrepared } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface EditAccountModalProps {
-  closeModal: CloseModal;
+interface EditAccountModalProps extends WithModalProps {
   adminCurrentInterface: Partial<AdminInterfaceItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_ADMIN_INTERFACE;
@@ -23,8 +23,12 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   adminCurrentInterface,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
 
   return (
     <Modal
@@ -32,17 +36,16 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       title="Edit Interface"
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="edit"
         initialValues={adminCurrentInterface}
         institutionsOptions={institutionsOptions}
-        isDirty={isDirty}
       />
     </Modal>
   );
 };
 
-export default EditAccountModal;
+export default withModal(EditAccountModal);

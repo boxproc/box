@@ -16,7 +16,6 @@ import {
   HandleGetUiItems,
   HandleUserLogout,
   InstitutionItem,
-  OpenModal,
   UiItemPrepared,
 } from 'store/domains';
 
@@ -41,7 +40,6 @@ const Wrapper = styled.header`
 interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
   userLogout: HandleUserLogout;
-  openModal: OpenModal;
   uiItems: Array<UiItemPrepared>;
   getInstitutions: HandleGetInstitutions;
   institutions: Array<InstitutionItem>;
@@ -54,7 +52,6 @@ const Header: React.FC<HeaderProps> = ({
   getUiItems,
   getInstitutions,
   userLogout,
-  openModal,
   uiItems,
   institutions,
   history,
@@ -117,7 +114,6 @@ const Header: React.FC<HeaderProps> = ({
               )}
               <UserDropdown
                 userLogout={userLogout}
-                openModal={openModal}
               />
             </Flex>
           </Box>

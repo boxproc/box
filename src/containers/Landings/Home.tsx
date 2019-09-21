@@ -5,15 +5,13 @@ import { Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button, Paragraph, SmallText } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
-import { OpenModal } from 'store/domains';
 import { storageUtil } from 'utils';
 
-interface HomeProps {
-  openModal: OpenModal;
-}
+interface HomeProps extends WithModalProps { }
 
 const CenterBlock = styled.div`
   display: flex;
@@ -31,6 +29,13 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
       };
     },
     []
+  );
+
+  const handleOpenModal = React.useCallback(
+    () => openModal({
+      name: modalNamesConst.REGISTER_2FA_MODAL,
+    }),
+    [openModal]
   );
 
   const userData = storageUtil.getUserData();
@@ -62,9 +67,7 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
                 text="Enable second factor authentication"
                 bordered={true}
                 iconName={iconNamesConst.SMARTPHONE}
-                onClick={() => openModal({
-                  name: modalNamesConst.REGISTER_2FA_MODAL,
-                })}
+                onClick={handleOpenModal}
               />
             </Flex>
           </React.Fragment>
@@ -74,4 +77,4 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
   );
 };
 
-export default Home;
+export default withModal(Home);

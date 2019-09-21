@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { isDirty } from 'redux-form';
-
-import { formNamesConst } from 'consts';
 
 import GeneralProductForm from './GeneralProductForm';
 
@@ -24,11 +21,8 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT,
 ]);
 
-const dirty = isDirty(formNamesConst.GENERAL_PRODUCT);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isDirty: dirty(state),
   initialValues: selectCurrentProduct(state),
   currentProductName: selectCurrentProductName(state),
 });

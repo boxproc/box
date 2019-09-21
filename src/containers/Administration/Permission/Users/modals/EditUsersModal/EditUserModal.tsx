@@ -1,22 +1,18 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
-import {
-  AdminUserItemDetails,
-  CloseModal,
-  HandleUpdateAdminUser,
-} from 'store/domains';
+import { AdminUserItemDetails, HandleUpdateAdminUser } from 'store/domains';
 
-interface EditUserModalProps {
-  closeModal: CloseModal;
+interface EditUserModalProps extends WithModalProps {
   updateAdminUser: HandleUpdateAdminUser;
   selectUserItems: Partial<AdminUserItemDetails>;
-  isDirty: boolean;
+  isFormDirty: boolean;
   requires2faFlagValue: boolean;
 }
 
@@ -26,27 +22,30 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
   updateAdminUser,
   selectUserItems,
-  isDirty,
+  isFormDirty,
   requires2faFlagValue,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Edit User"
       maxContainerWidth={650}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <DefineUsersForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         defineAdminUser={updateAdminUser}
         isEditMode={true}
         initialValues={selectUserItems}
-        isDirty={isDirty}
         requires2faFlagValue={requires2faFlagValue}
       />
     </Modal>
   );
 };
 
-export default EditUserModal;
+export default withModal(EditUserModal);

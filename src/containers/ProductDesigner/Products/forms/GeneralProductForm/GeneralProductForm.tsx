@@ -23,7 +23,6 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   deleteProduct: HandleDeleteProduct;
   getProduct: HandleGetProduct;
   currentProductName: string;
-  isDirty: boolean;
 }
 
 type GeneralProductFormAllProps = GeneralProductFormProps &
@@ -36,7 +35,9 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   updateProduct,
   getProduct,
   currentProductName,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   React.useEffect(
     () => {
@@ -70,8 +71,8 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           rightPosition={true}
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
         />
       </Flex>
     </form>

@@ -8,12 +8,10 @@ import EditSchedulerModal from './EditSchedularModal';
 
 import {
   AdminSchedulerJobsActionTypes,
-  closeModal,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleSetAdminSchedulerJobId,
   handleUpdateAdminSchedulerJobs,
-  openModal,
   selectCurrentCronExpression,
   selectCurrentSchedulerName,
   selectSchedulerJobValues,
@@ -28,7 +26,7 @@ const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isDirty: dirty(state),
+  isFormDirty: dirty(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
   currentCronExpression: selectCurrentCronExpression(state),
@@ -39,8 +37,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
     setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
-    closeModal,
-    openModal,
   },
   dispatch
 );

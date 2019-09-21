@@ -5,11 +5,11 @@ import { Modal } from 'components';
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
+import { withModal, WithModalProps } from 'HOCs';
 
-import { AdminCyclesEditorEditableItem, CloseModal } from 'store/domains';
+import { AdminCyclesEditorEditableItem } from 'store/domains';
 
-interface EditSchedulerModalProps {
-  closeModal: CloseModal;
+interface EditSchedulerModalProps extends WithModalProps {
   cycleEditorValues: Partial<AdminCyclesEditorEditableItem>;
   isFormDirty: boolean;
 }
@@ -21,6 +21,10 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   cycleEditorValues,
   isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
 
   return (
     <Modal
@@ -31,7 +35,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
       withCloseConfirmation={isFormDirty}
     >
       <DefineCycleEditorForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         initialValues={cycleEditorValues}
         mode="edit"
       />
@@ -39,4 +43,4 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   );
 };
 
-export default EditCyclesEditorModal;
+export default withModal(EditCyclesEditorModal);

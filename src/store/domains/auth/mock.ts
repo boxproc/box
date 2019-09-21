@@ -2,21 +2,21 @@ import { AuthResponse, AuthStepTwoResponse } from './types';
 
 import { ResponseStatusType } from 'types';
 
-export const AuthResponseStepOneData: { status: string } = {
+export const authResponseStepOneData: { status: string } = {
   status: 'A',
 };
 
-export const AuthResponseFullData: AuthResponse = {
+export const authResponseFullData: AuthResponse = {
   session_id: '123',
   first_name: 'John',
   last_name: 'Doe',
   username: 'admin',
   last_activity: '01/09/2019 13:27:38',
-  status: 'F',
-  requires_2fa_flag: 'Y',
+  status: 'A',
+  requires_2fa_flag: 'N',
 };
 
-export const AuthSecretKeyData: AuthStepTwoResponse = {
+export const authSecretKeyData: AuthStepTwoResponse = {
   two_factor_authentication: {
     secret_key: 'dapdwjiEfreo2804FdlpsP9el2flsdpw',
     // tslint:disable-next-line: max-line-length
@@ -24,7 +24,7 @@ export const AuthSecretKeyData: AuthStepTwoResponse = {
   },
 };
 
-export const SuccessResponseStatus: ResponseStatusType = {
+export const successResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

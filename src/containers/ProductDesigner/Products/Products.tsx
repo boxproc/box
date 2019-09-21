@@ -23,7 +23,6 @@ interface ProductsProps {
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
   currentProductName: string;
-  isFilterFormDirty: boolean;
 }
 
 export const Products: React.FC<ProductsProps> = ({
@@ -31,7 +30,6 @@ export const Products: React.FC<ProductsProps> = ({
   productItems,
   institutionsOptions,
   filterProducts,
-  isFilterFormDirty,
   currentProductName,
   deleteProduct,
 }) => {
@@ -61,7 +59,6 @@ export const Products: React.FC<ProductsProps> = ({
         <ProductsFilterForm
           filterProducts={filterProducts}
           institutionsOptions={institutionsOptions}
-          isDirty={isFilterFormDirty}
         />
       }
     />

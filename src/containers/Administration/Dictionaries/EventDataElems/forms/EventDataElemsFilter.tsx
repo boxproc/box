@@ -15,7 +15,6 @@ import { formErrorUtil } from 'utils';
 interface EventsDataElemsFilterProps {
   eventOptions: Array<SelectValues>;
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
-  isDirty: boolean;
 }
 
 type EventsDataElemsFilterAllProps = EventsDataElemsFilterProps &
@@ -25,7 +24,8 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterAllProps> = ({
   handleSubmit,
   eventOptions,
   filterAdminEventDataElems,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => filterAdminEventDataElems(data)),
@@ -54,7 +54,7 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

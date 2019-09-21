@@ -5,15 +5,11 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { ContextMenuList, HighlightCodeField, SelectField, TextField } from 'components';
-
 import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'HOCs';
 
 import { actionTypesOptions } from 'consts';
 
-import {
-  AdminEventDataElemsItem,
-  HandleFilterAdminEventDataElems,
-} from 'store/domains';
+import { AdminEventDataElemsItem, HandleFilterAdminEventDataElems } from 'store/domains';
 
 import { SelectValues } from 'types';
 

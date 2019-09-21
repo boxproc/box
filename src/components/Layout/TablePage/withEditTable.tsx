@@ -103,7 +103,9 @@ export const withEditTable = <OriginProps extends {}>(
               setCurrentId(id);
               setActiveTableRowIndex(rowIndex);
             } else {
-              return null;
+              setCurrentIdAction(null);
+              setCurrentId(null);
+              setActiveTableRowIndex(null);
             }
           },
         };

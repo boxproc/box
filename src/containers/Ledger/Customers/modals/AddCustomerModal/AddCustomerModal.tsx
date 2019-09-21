@@ -1,37 +1,37 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { AddCustomerForm } from 'containers/Ledger/Customers/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface AddCustomerModalProps {
-  closeModal: CloseModal;
-  isDirty: boolean;
+interface AddCustomerModalProps extends WithModalProps {
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_LEDGER_CUSTOMER;
 
 const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
   closeModal,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add New Customer"
       maxContainerWidth={980}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
-      <AddCustomerForm
-        onCancel={() => closeModal(modalName)}
-        isDirty={isDirty}
-      />
+      <AddCustomerForm onCancel={handleOnCancel} />
     </Modal>
   );
 };
 
-export default AddCustomerModal;
+export default withModal(AddCustomerModal);

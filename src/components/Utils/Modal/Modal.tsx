@@ -3,24 +3,23 @@ import React from 'react';
 import styled from 'theme';
 
 import { T2 } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
-import { CloseModal, HandleSetActiveTableRowIndex, OpenModal } from 'store/domains';
+import { HandleSetActiveTableRowIndex } from 'store/domains';
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
   text-transform: none;
 `;
 
-interface ModalProps {
+interface ModalProps extends WithModalProps {
   name: string;
   title?: string;
   type?: string;
-  closeModal: CloseModal;
-  openModal: OpenModal;
   maxContainerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
@@ -109,4 +108,4 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export default Modal;
+export default withModal(Modal);

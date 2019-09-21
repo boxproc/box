@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
 
   textarea {
     min-height: 130px;
+    background-color: ${({ theme }) => theme.colors.white} !important;
   }
 
   textarea::placeholder {

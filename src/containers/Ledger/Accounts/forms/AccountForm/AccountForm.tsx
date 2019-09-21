@@ -32,7 +32,6 @@ interface AccountFormProps extends ExternalSpinnerProps {
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
   mode: 'add' | 'edit';
-  isDirty: boolean;
 }
 
 type AccountFormAllProps = AccountFormProps &
@@ -45,7 +44,9 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   addLedgerAccount,
   institutionsOptions,
   mode,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateLedgerAccount : addLedgerAccount;
@@ -69,8 +70,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             cancelText="Close"
             onCancel={onCancel}
             rightPosition={true}
-            withCancelConfirmation={isDirty}
-            disabledOk={!isDirty}
+            withCancelConfirmation={dirty}
+            disabledOk={pristine || invalid}
           />
         </TabsPanel>
         <TabsPanel title="Auxiliary Counters">
@@ -83,8 +84,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             cancelText="Close"
             onCancel={onCancel}
             rightPosition={true}
-            withCancelConfirmation={isDirty}
-            disabledOk={!isDirty}
+            withCancelConfirmation={dirty}
+            disabledOk={pristine || invalid}
           />
         </TabsPanel>
         <TabsPanel title="Overdue">
@@ -95,8 +96,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             cancelText="Close"
             onCancel={onCancel}
             rightPosition={true}
-            withCancelConfirmation={isDirty}
-            disabledOk={!isDirty}
+            withCancelConfirmation={dirty}
+            disabledOk={pristine || invalid}
           />
         </TabsPanel>
         {isEditMode && (

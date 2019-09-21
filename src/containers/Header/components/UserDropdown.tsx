@@ -5,10 +5,11 @@ import { Flex } from '@rebass/grid';
 import styled, { css } from 'theme';
 
 import { Button, Dropdown, DropdownOption, UserIcon, UserShieldIcon } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, usernames } from 'consts';
 
-import { HandleUserLogout, OpenModal } from 'store/domains';
+import { HandleUserLogout } from 'store/domains';
 import { storageUtil } from 'utils';
 
 const iconCss = css`
@@ -48,9 +49,8 @@ const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) =
   </Flex>
 );
 
-interface UserDropdownProps {
+interface UserDropdownProps extends WithModalProps {
   userLogout: HandleUserLogout;
-  openModal: OpenModal;
 }
 
 const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) => {
@@ -59,6 +59,13 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]
+  );
+
+  const handleOpenModal = React.useCallback(
+    () => openModal({
+      name: modalNamesConst.CHANGE_PROFILE_MODAL,
+    }),
+    [openModal]
   );
 
   return (
@@ -78,9 +85,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
           <Button
             text="Change profile"
             iconName={iconNamesConst.USER}
-            onClick={() => openModal({
-              name: modalNamesConst.CHANGE_PROFILE_MODAL,
-            })}
+            onClick={handleOpenModal}
           />
         </DropdownOption>)}
       <DropdownOption>
@@ -94,4 +99,4 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
   );
 };
 
-export default UserDropdown;
+export default withModal(UserDropdown);

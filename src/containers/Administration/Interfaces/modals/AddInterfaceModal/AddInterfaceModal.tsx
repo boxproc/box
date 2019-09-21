@@ -1,19 +1,17 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
-import { CloseModal } from 'store/domains';
-
 import { SelectValues } from 'types';
 
-interface AddInterfaceModalProps {
-  closeModal: CloseModal;
+interface AddInterfaceModalProps extends WithModalProps {
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_INTERFACE;
@@ -21,23 +19,27 @@ const modalName = modalNamesConst.ADD_ADMIN_INTERFACE;
 const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
   closeModal,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       maxContainerWidth={550}
       name={modalName}
       title="Add Interface"
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm
         institutionsOptions={institutionsOptions}
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="add"
-        isDirty={isDirty}
       />
     </Modal>
   );
 };
 
-export default AddInterfaceModal;
+export default withModal(AddInterfaceModal);

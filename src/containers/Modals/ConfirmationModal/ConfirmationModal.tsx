@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Hr, Modal, OkCancelButtons, Paragraph } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-import { CloseModal, PayloadConfirmationModal } from 'store/domains';
+import { PayloadConfirmationModal } from 'store/domains';
 
-interface ConfirmationModalProps {
-  closeModal: CloseModal;
+interface ConfirmationModalProps extends WithModalProps {
   payloadConfirmModal: PayloadConfirmationModal;
 }
 
@@ -17,6 +17,11 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,
   payloadConfirmModal,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const { confirmationAction, confirmationText, confirmationTitle } = payloadConfirmModal;
 
   const handleConfirm = () => {
@@ -38,7 +43,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <Paragraph light={true}>{confirmationText}</Paragraph>
       )}
       <OkCancelButtons
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         onOk={handleConfirm}
         okText="confirm"
         rightPosition={true}
@@ -47,4 +52,4 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   );
 };
 
-export default ConfirmationModal;
+export default withModal(ConfirmationModal);

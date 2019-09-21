@@ -3,16 +3,12 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
-import { withModal } from 'HOCs';
+import { withModal, WithModalProps } from 'HOCs';
 import { StatementForm } from '../forms';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { CloseModal } from 'store/domains';
-
-interface StatementModalProps {
-  closeModal: CloseModal;
-}
+interface StatementModalProps extends WithModalProps { }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
 

@@ -3,15 +3,15 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm } from 'containers/Ledger/Cards/forms';
 
-import { CloseModal, HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
+import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
 
-interface InfoAccountModalProps {
-  closeModal: CloseModal;
+interface InfoAccountModalProps extends WithModalProps {
   ledgerCurrentCard: Partial<LedgerCardItemPrepared>;
   activateLedgerCard: HandleActivateLedgerCard;
   ledgerCardPanAlias: string;
@@ -27,7 +27,13 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   ledgerCardPanAlias,
   statusValue,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const isStatusActive = (statusValue === 'Active');
+
   return (
     <Modal
       name={modalName}
@@ -48,7 +54,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       </React.Fragment>
       <CardForm
         initialValues={ledgerCurrentCard}
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
       />
       <Hr />
       <Flex
@@ -57,7 +63,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
         <Box mb="10px">
           <Button
             rightPosition={true}
-            onClick={() => closeModal(modalName)}
+            onClick={handleOnCancel}
             text="Close"
           />
         </Box>
@@ -66,4 +72,4 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   );
 };
 
-export default InfoAccountModal;
+export default withModal(InfoAccountModal);

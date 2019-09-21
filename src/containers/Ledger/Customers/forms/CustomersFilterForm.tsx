@@ -15,7 +15,6 @@ import { formErrorUtil } from 'utils';
 interface CustomersFilterFormProps {
   institutionsOptions: Array<SelectValues>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
-  isDirty: boolean;
 }
 
 type CustomersFilterFormAllProps = CustomersFilterFormProps &
@@ -25,7 +24,8 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
   handleSubmit,
   institutionsOptions,
   filterLedgerCustomers,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(filterLedgerCustomers),
@@ -85,7 +85,7 @@ const CustomersFilterForm: React.FC<CustomersFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

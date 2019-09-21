@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { isDirty } from 'redux-form';
-
-import { formNamesConst } from 'consts';
 
 import Customers from './Customers';
 
@@ -23,11 +20,8 @@ const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.FILTER_LEDGER_CUSTOMERS,
 ]);
 
-const dirty = isDirty(formNamesConst.LEDGER_CUSTOMERS_FILTER);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isFilterFormDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
   ledgerCustomers: selectLedgerCustomers(state),
   ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),

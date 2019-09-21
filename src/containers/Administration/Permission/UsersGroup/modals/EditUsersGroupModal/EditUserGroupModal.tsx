@@ -1,15 +1,13 @@
 import React from 'react';
 
 import { Modal, withSpinner } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditUserGroupForms } from 'containers/Administration/Permission/UsersGroup/forms';
 
-import { CloseModal } from 'store/domains';
-
-interface EditUsersGroupModalProps {
-  closeModal: CloseModal;
+interface EditUsersGroupModalProps extends WithModalProps {
   usersGroupName: string;
 }
 
@@ -19,6 +17,11 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
   usersGroupName,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const groupName = usersGroupName ? `: "${usersGroupName}"` : '';
 
   return (
@@ -29,7 +32,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
       minContainerHeight={550}
     >
       <EditUserGroupForms
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
       />
     </Modal>
   );
@@ -37,4 +40,6 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(EditUsersGroupModal);
+})(
+  withModal(EditUsersGroupModal)
+);

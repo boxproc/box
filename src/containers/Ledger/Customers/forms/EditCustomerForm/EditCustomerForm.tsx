@@ -17,7 +17,6 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   updateLedgerCustomer: HandleUpdateLedgerCustomer;
-  isDirty: boolean;
   ledgerCurrentCustomerName: string;
 }
 
@@ -29,7 +28,9 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   handleSubmit,
   deleteLedgerCustomer,
   updateLedgerCustomer,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
   ledgerCurrentCustomerName,
 }) => {
   const handleSubmitForm = React.useCallback(
@@ -58,8 +59,8 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           rightPosition={true}
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
         />
       </Flex>
     </form >

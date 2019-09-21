@@ -28,7 +28,6 @@ interface DefineUserFormProps {
   isEditMode?: boolean;
   isDisabledType?: boolean;
   onCancel?: () => void;
-  isDirty: boolean;
   requires2faFlagValue?: boolean;
 }
 
@@ -41,8 +40,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   isEditMode,
   isDisabledType,
   onCancel,
-  isDirty,
   requires2faFlagValue,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminUser(data)),
@@ -56,7 +57,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -66,7 +67,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="lastName"
               name="lastName"
@@ -79,7 +80,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="username"
               name="username"
@@ -90,7 +91,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="email"
               name="email"
@@ -102,7 +103,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 4]} p="10px">
               <Field
                 id="status"
                 name="status"
@@ -130,7 +131,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Change Profile Allowed"
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="password"
               name="password"
@@ -141,7 +142,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="passwordRepeat"
               name="passwordRepeat"
@@ -160,8 +161,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         cancelText="Cancel"
         onCancel={onCancel}
         rightPosition={true}
-        withCancelConfirmation={isDirty}
-        disabledOk={!isDirty}
+        withCancelConfirmation={dirty}
+        disabledOk={pristine || invalid}
       />
     </form >
   );

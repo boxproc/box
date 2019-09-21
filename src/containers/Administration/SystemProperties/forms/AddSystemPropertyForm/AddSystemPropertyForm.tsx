@@ -21,7 +21,6 @@ import { formErrorUtil } from 'utils';
 interface AddSystemPropertyFormProps extends ExternalSpinnerProps {
   addAdminSysProp: HandleAddAdminSysProp;
   onCancel: () => void;
-  isDirty: boolean;
 }
 
 type AddSystemPropertyFormAllProps = AddSystemPropertyFormProps &
@@ -31,7 +30,9 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   handleSubmit,
   addAdminSysProp,
   onCancel,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addAdminSysProp(data)),
@@ -82,8 +83,8 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         cancelText="Cancel"
         onCancel={onCancel}
         rightPosition={true}
-        withCancelConfirmation={isDirty}
-        disabledOk={!isDirty}
+        withCancelConfirmation={dirty}
+        disabledOk={pristine || invalid}
       />
     </form >
   );

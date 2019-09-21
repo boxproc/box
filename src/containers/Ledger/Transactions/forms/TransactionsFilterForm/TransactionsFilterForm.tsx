@@ -19,7 +19,6 @@ interface TransactionsFilterFormProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   institutionValue: SelectValues;
   isLoadingInstitutionProducts: boolean;
-  isDirty: boolean;
 }
 
 type TransactionsFilterFormAllProps = TransactionsFilterFormProps &
@@ -33,7 +32,8 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
   getInstitutionProducts,
   institutionValue,
   isLoadingInstitutionProducts,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -127,7 +127,7 @@ const TransactionsFilterForm: React.FC<TransactionsFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

@@ -30,7 +30,6 @@ interface InstitutionFormProps extends ExternalSpinnerProps {
   adminCurrentInstitutionName: string;
   onCancel: () => void;
   mode: 'add' | 'edit';
-  isDirty: boolean;
 }
 
 type InstitutionFormAllProps = InstitutionFormProps &
@@ -44,7 +43,9 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   deleteAdminInstitution,
   adminCurrentInstitutionName,
   mode,
-  isDirty,
+  dirty,
+  pristine,
+  invalid,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminInstitution : addAdminInstitution;
@@ -136,8 +137,8 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
-          withCancelConfirmation={isDirty}
-          disabledOk={!isDirty}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine || invalid}
           onCancel={onCancel}
         />
       </Flex>

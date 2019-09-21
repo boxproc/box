@@ -19,7 +19,6 @@ interface AccountsFilterFormProps {
   institutionValue: SelectValues;
   institutionProductsOptions: Array<SelectValues>;
   isLoadingInstitutionProducts: boolean;
-  isDirty: boolean;
 }
 
 type AccountsFilterFormAllProps = AccountsFilterFormProps &
@@ -33,7 +32,8 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
   getInstitutionProducts,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -133,7 +133,7 @@ const AccountsFilterForm: React.FC<AccountsFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

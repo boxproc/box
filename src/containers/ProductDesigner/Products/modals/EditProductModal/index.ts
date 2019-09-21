@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
 import EditProductModal from './EditProductModal';
 
-import { closeModal, selectCurrentProductName } from 'store/domains';
+import { selectCurrentProductName } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const generalProductFormDirty = isDirty(formNamesConst.GENERAL_PRODUCT);
@@ -20,14 +19,6 @@ const mapStateToProps = (state: StoreState) => ({
   currentProductName: selectCurrentProductName(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    closeModal,
-  },
-  dispatch
-);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(EditProductModal);

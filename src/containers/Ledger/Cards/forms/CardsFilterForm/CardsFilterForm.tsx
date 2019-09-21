@@ -12,7 +12,6 @@ import { formErrorUtil } from 'utils';
 
 interface CardsFilterFormProps {
   filterLedgerCards: HandleFilterLedgerCards;
-  isDirty: boolean;
 }
 
 type CardsFilterFormAllProps = CardsFilterFormProps &
@@ -21,7 +20,8 @@ type CardsFilterFormAllProps = CardsFilterFormProps &
 const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
   handleSubmit,
   filterLedgerCards,
-  isDirty,
+  pristine,
+  invalid,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -81,7 +81,7 @@ const CardsFilterForm: React.FC<CardsFilterFormAllProps> = ({
         </Flex>
         <Button
           text="Show"
-          disabled={!isDirty}
+          disabled={pristine || invalid}
         />
       </Box>
     </form >

@@ -1,21 +1,21 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { CloseModal, LedgerAccountItemDetailsPrepared } from 'store/domains';
+import { LedgerAccountItemDetailsPrepared } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface EditAccountModalProps {
-  closeModal: CloseModal;
+interface EditAccountModalProps extends WithModalProps {
   ledgerCurrentAccountAlias: string;
   ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
-  isDirty: boolean;
+  isFormDirty: boolean;
   ledgerLastStatement: any;
 }
 
@@ -26,9 +26,14 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   ledgerCurrentAccountAlias,
   ledgerCurrentAccount,
   institutionsOptions,
-  isDirty,
+  isFormDirty,
   ledgerLastStatement,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   const accountAlias = ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '';
 
   return (
@@ -38,12 +43,11 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       title={`Account${accountAlias}`}
       maxContainerWidth={980}
       minContainerHeight={515}
-      withCloseConfirmation={isDirty}
+      withCloseConfirmation={isFormDirty}
     >
       <AccountForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         mode="edit"
-        isDirty={isDirty}
         initialValues={{
           ...ledgerCurrentAccount,
           ...ledgerLastStatement,
@@ -54,4 +58,4 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   );
 };
 
-export default EditAccountModal;
+export default withModal(EditAccountModal);

@@ -1,17 +1,17 @@
 import React from 'react';
 
 import { Modal } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
-import { CloseModal, HandleAddAdminUser, } from 'store/domains';
+import { HandleAddAdminUser, } from 'store/domains';
 
-interface AddUserModalProps {
-  closeModal: CloseModal;
+interface AddUserModalProps extends WithModalProps {
   addAdminUser: HandleAddAdminUser;
-  isDirty: boolean;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ADMIN_USER;
@@ -19,19 +19,23 @@ const modalName = modalNamesConst.ADD_ADMIN_USER;
 const AddAdminModal: React.FC<AddUserModalProps> = ({
   closeModal,
   addAdminUser,
-  isDirty,
+  isFormDirty,
 }) => {
+  const handleOnCancel = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Add new User"
-      maxContainerWidth={650}
-      withCloseConfirmation={isDirty}
+      maxContainerWidth={800}
+      withCloseConfirmation={isFormDirty}
     >
       <DefineUsersForm
-        onCancel={() => closeModal(modalName)}
+        onCancel={handleOnCancel}
         defineAdminUser={addAdminUser}
-        isDirty={isDirty}
         initialValues={{
           requires2faFlag: true,
         }}
@@ -40,4 +44,4 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
   );
 };
 
-export default AddAdminModal;
+export default withModal(AddAdminModal);

@@ -12,7 +12,6 @@ import { HandleAddAdminUsersGroups } from 'store/domains';
 export interface AddUserGroupFormProps extends ExternalSpinnerProps {
   addAdminUsersGroup: HandleAddAdminUsersGroups;
   onCancel: () => void;
-  isDirty: boolean;
 }
 
 type AddUserGroupFormPropsAllProps = AddUserGroupFormProps &
@@ -22,7 +21,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
   onCancel,
   addAdminUsersGroup,
   handleSubmit,
-  isDirty,
+  dirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addAdminUsersGroup(data)),
@@ -37,7 +36,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
         cancelText="Cancel"
         onCancel={onCancel}
         rightPosition={true}
-        withCancelConfirmation={isDirty}
+        withCancelConfirmation={dirty}
       />
     </form>
   );
