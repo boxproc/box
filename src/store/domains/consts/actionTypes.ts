@@ -18,8 +18,6 @@ export enum ActionTypeKeys {
   GET_INSTITUTIONS = 'const/GET_INSTITUTIONS',
   GET_INSTITUTIONS_FULFILLED = 'const/GET_INSTITUTIONS_FULFILLED',
   GET_INSTITUTIONS_REJECTED = 'const/GET_INSTITUTIONS_REJECTED',
-
-  SET_ACTIVE_TABLE_ROW_INDEX = 'const/SET_ACTIVE_TABLE_ROW_INDEX',
 }
 
 export interface GetCurrencyCodesAction {
@@ -67,13 +65,7 @@ export interface GetInstitutionsRejectedAction {
   readonly type: ActionTypeKeys.GET_INSTITUTIONS_REJECTED;
 }
 
-export interface SetActiveTableRowIndexAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX;
-}
-
 export type ConstsActionTypes =
   | GetCurrencyCodesFulfilledAction
   | GetInstitutionsFulfilledAction
-  | GetCountryCodesFulfilledAction
-  | SetActiveTableRowIndexAction;
+  | GetCountryCodesFulfilledAction;

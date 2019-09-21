@@ -14,6 +14,7 @@ import loaderReducer from './domains/loader/reducer';
 import modalsReducer from './domains/modals/reducer';
 import productDesignerReducer from './domains/productDesigner/reducer';
 import uiItemsReducer from './domains/uiItems/reducer';
+import utilsReducer from './domains/utils/reducer';
 
 const createRootReducer = (history: History) => combineReducers({
   router: connectRouter(history),
@@ -27,6 +28,7 @@ const createRootReducer = (history: History) => combineReducers({
   consts: constsReducer,
   ledger: ledgerReducer,
   audit: auditReducer,
+  utils: utilsReducer,
 });
 
 export default createRootReducer;

@@ -8,7 +8,6 @@ export const constsInitialState: ImmutableObject<ConstsState> = Immutable({
   currencies: Immutable([]),
   countries: Immutable([]),
   institutions: Immutable([]),
-  activeTableRowIndex: null,
 });
 
 const constsReducer =
@@ -25,10 +24,6 @@ const constsReducer =
       case ActionTypeKeys.GET_INSTITUTIONS_FULFILLED:
         return state
           .set('institutions', action.payload.institutions);
-
-      case ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX:
-        return state
-          .set('activeTableRowIndex', action.payload);
 
       default: return state;
     }

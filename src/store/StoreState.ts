@@ -11,6 +11,7 @@ import { LoaderState } from './domains/loader';
 import { ModalsState } from './domains/modals';
 import { ProductDesignerState } from './domains/productDesigner';
 import { UiItemsState } from './domains/uiItems';
+import { UtilsState } from './domains/utils';
 
 export interface StoreState {
   form: Reducer<FormStateMap>;
@@ -24,4 +25,5 @@ export interface StoreState {
   productDesigner: ProductDesignerState;
   consts: ConstsState;
   ledger: LedgerState;
+  utils: UtilsState;
 }

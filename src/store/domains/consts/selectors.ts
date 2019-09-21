@@ -75,6 +75,3 @@ export const selectIsInstitutionsLoaded =
     institutions => {
       return institutions && institutions.length > 0;
     });
-
-export const selectActiveTableRowIndex = (state: StoreState) =>
-  state.consts.activeTableRowIndex;
