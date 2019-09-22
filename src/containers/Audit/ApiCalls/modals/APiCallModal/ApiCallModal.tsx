@@ -2,20 +2,32 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal } from 'components';
+import { Button, Modal, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 
-interface EditTransactionModalProps extends WithModalProps { }
+import { HandleGetDetailsAuditApiCalls } from 'store/domains';
+
+interface EditTransactionModalProps extends WithModalProps {
+  getDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls;
+}
 
 const modalName = modalNamesConst.AUDIT_API_CALL;
 
 const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   closeModal,
+  getDetailsAuditApiCalls,
 }) => {
+  React.useEffect(
+    () => {
+      getDetailsAuditApiCalls();
+    },
+    [getDetailsAuditApiCalls]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -27,10 +39,9 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="API Call"
       closeOnBackdrop={true}
-      maxContainerWidth={600}
+      maxContainerWidth={980}
     >
       <ApiCallForm />
-      <Hr />
       <Flex justifyContent="flex-end">
         <Button
           text="close"
@@ -41,4 +52,8 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   );
 };
 
-export default withModal(EditTransactionModal);
+export default withSpinner({
+  isFixed: true,
+})(
+  withModal(EditTransactionModal)
+);

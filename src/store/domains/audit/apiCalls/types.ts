@@ -26,7 +26,7 @@ export interface ApiCallsItemPrepared extends AuditApiCallId {
   apiName: string;
   requestBody: string;
   responseBody: string;
-  institutionId: number;
+  institutionId: string | number;
 }
 
 export interface AuditApiCallsFilterParams {
@@ -45,6 +45,12 @@ export interface AuditApiCallsFilterParamsPrepared {
   date_to: string;
 }
 
+export interface ApiCallDetails {
+  request_body: string;
+  response_body: string;
+}
+
 export interface AuditApiCallsState {
   apiCalls: ImmutableArray<ApiCallsItem>;
+  apiCallDetails: ApiCallDetails;
 }

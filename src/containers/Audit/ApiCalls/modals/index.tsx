@@ -2,7 +2,7 @@ import React from 'react';
 
 import { modalNamesConst } from 'consts';
 
-import ApiCallModal from './ApiCallModal';
+import ApiCallModal from './APiCallModal';
 
 export const apiCallsModals = [
   {

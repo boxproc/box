@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
@@ -10,19 +11,33 @@ export const selectDefaultAuditApiCalls = (state: StoreState) =>
 
 export const selectAuditApiCalls = createSelector(
   selectDefaultAuditApiCalls,
-  items => items && items.asMutable().map(item => {
+  selectInstitutionsOptions,
+  (items, institutionsOptions) => items && items.asMutable().map(item => {
+    const institution = institutionsOptions.find(el => el.value === item.institution_id);
+
     return {
       ...prepareValuesToRender(item),
+      institutionId: institution && institution.label,
     };
   })
 );
 
-export const selectAuditApiCallStatement = createSelector(
-  selectAuditApiCalls,
-  selectActiveItemId,
-  (apiCall, currentId) => {
-    const current = apiCall.find(el => el.id === currentId);
+export const selectDefaultAuditApiCallDetails = (state: StoreState) =>
+  state.audit.apiCalls.apiCallDetails;
 
-    return current;
+export const selectAuditApiCallDetails = createSelector(
+  selectDefaultAuditApiCalls,
+  selectActiveItemId,
+  selectInstitutionsOptions,
+  selectDefaultAuditApiCallDetails,
+  (items, currentId, institutionsOptions, apiCallDetails) => {
+    const current = items.find(el => el.id === currentId);
+
+    return {
+      ...prepareValuesToRender(current),
+      requestBody: apiCallDetails && apiCallDetails.request_body,
+      responseBody: apiCallDetails && apiCallDetails.response_body,
+      institutionId: institutionsOptions.find(el => el.value === current.institution_id),
+    };
   }
 );

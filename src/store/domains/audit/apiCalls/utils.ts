@@ -13,7 +13,6 @@ export const prepareValuesToRender = (values: ApiCallsItem) => {
     apiName: values.api_name,
     responseBody: values.response_body,
     requestBody: values.request_body,
-    institutionId: values.institution_id,
   };
 };
 

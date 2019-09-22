@@ -95,6 +95,7 @@ export enum auditUserActivitiesPathNames {
 
 export enum auditApiClassPathNames {
   GET = '/ui/audit/api_calls/get',
+  GET_DETAILS = '/ui/audit/api_calls/get_whole_description',
 }
 
 export enum lenderAccountsPathNames {

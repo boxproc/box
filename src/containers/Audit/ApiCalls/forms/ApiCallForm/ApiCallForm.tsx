@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { InputField, SelectField, TextField } from 'components';
+import { Delimiter, InputField, SelectField, TextField } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -30,7 +30,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[3 / 11]} p="10px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -41,33 +41,13 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               isDisabled={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[3 / 11]} p="10px">
             <Field
               id="eventDatetime"
               name="eventDatetime"
               component={InputField}
               label="Event Datetime"
               placeholder="Enter Event Datetime"
-              disabled={true}
-            />
-          </Box>
-          <Box width="100px" p="10px">
-            <Field
-              id="endpointId"
-              name="endpointId"
-              component={InputField}
-              label="Endpoint ID"
-              placeholder="Enter Endpoint ID"
-              disabled={true}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="endpointName"
-              name="endpointName"
-              component={InputField}
-              label="Endpoint Name"
-              placeholder="Enter Endpoint Name"
               disabled={true}
             />
           </Box>
@@ -81,25 +61,52 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               disabled={true}
             />
           </Box>
-          <Box width="100%" p="10px">
+          <Delimiter />
+          <Box width="100px" p="10px">
             <Field
-              id="requestBody"
-              name="requestBody"
-              component={TextField}
-              label="Request Body"
-              placeholder="Request Body"
+              id="endpointId"
+              name="endpointId"
+              component={InputField}
+              label="Endpoint ID"
+              placeholder="Enter Endpoint ID"
               disabled={true}
             />
           </Box>
-          <Box width="100%" p="10px">
+          <Box width={[5 / 13]} p="10px">
             <Field
-              id="responseBody"
-              name="responseBody"
-              component={TextField}
-              label="Response Body"
-              placeholder="Response Body"
+              id="endpointName"
+              name="endpointName"
+              component={InputField}
+              label="Endpoint Name"
+              placeholder="Enter Endpoint Name"
               disabled={true}
             />
+          </Box>
+          <Box width="100%">
+            <Flex alignItems="flex-start">
+              <Box width="50%" p="10px">
+                <Field
+                  id="requestBody"
+                  name="requestBody"
+                  component={TextField}
+                  label="Request Body"
+                  placeholder="Request Body"
+                  disabled={true}
+                  height={250}
+                />
+              </Box>
+              <Box width="50%" p="10px">
+                <Field
+                  id="responseBody"
+                  name="responseBody"
+                  component={TextField}
+                  label="Response Body"
+                  placeholder="Response Body"
+                  disabled={true}
+                  height={250}
+                />
+              </Box>
+            </Flex>
           </Box>
         </Flex>
       </Box>

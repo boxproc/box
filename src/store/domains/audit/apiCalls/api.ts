@@ -11,3 +11,7 @@ import { AuditApiCallsFilterParamsPrepared } from './types';
 export const filterAuditApiCalls = (data: Partial<AuditApiCallsFilterParamsPrepared>) =>
   // throttleUtil.getDataAfter(apiCallsItems, 500);
   apiClient.post(auditApiClassPathNames.GET, { data });
+
+export const getDetailsAuditApiCalls = (data: { id: number }) =>
+  // throttleUtil.getDataAfter(apiCallsItems, 500);
+  apiClient.post(auditApiClassPathNames.GET_DETAILS, { data });
