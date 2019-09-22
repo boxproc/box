@@ -11,7 +11,6 @@ import {
   HandleDeleteAdminSchedulerJob,
   HandleGetAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
-  HandleSetAdminSchedulerJobId,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -19,7 +18,6 @@ import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 interface SchedulerProps {
   adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
   getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
-  setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   currentSchedulerJobId: number;
@@ -29,7 +27,6 @@ interface SchedulerProps {
 export const Scheduler: React.FC<SchedulerProps> = ({
   getAdminSchedulerJobs,
   adminSchedulerJobsItems,
-  setAdminSchedulerJobId,
   sendAdminSchedulerAction,
   currentSchedulerJobId,
   deleteAdminSchedulerJob,
@@ -116,7 +113,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_SCHEDULER}
       editModalName={modalNamesConst.EDIT_ADMIN_SCHEDULER}
-      setCurrentIdAction={setAdminSchedulerJobId}
       contextMenuItems={contextMenuItems}
       FilterForm={
         <SchedulerFilter />

@@ -7,11 +7,7 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { UserFilter } from './forms';
 
-import {
-  AdminUserItemPrepared,
-  HandleFilterUsers,
-  HandleSetAdminUserId,
-} from 'store/domains/administration/permissions/users';
+import { AdminUserItemPrepared, HandleFilterUsers } from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -19,14 +15,12 @@ interface UserFilterProps {
   adminUserItems: Array<AdminUserItemPrepared>;
   institutionsOptions: Array<SelectValues>;
   filterUsers: HandleFilterUsers;
-  setAdminUserId: HandleSetAdminUserId;
 }
 
 export const User: React.FC<UserFilterProps> = ({
   adminUserItems,
   institutionsOptions,
   filterUsers,
-  setAdminUserId,
 }) => {
   return (
     <TablePage
@@ -35,7 +29,6 @@ export const User: React.FC<UserFilterProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_USER}
       editModalName={modalNamesConst.EDIT_ADMIN_USER}
-      setCurrentIdAction={setAdminUserId}
       FilterForm={
         <UserFilter
           filterUsers={filterUsers}

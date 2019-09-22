@@ -7,7 +7,6 @@ import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
   handleDeleteAdminEndpoint,
-  handleSetAdminEndpointId,
   selectAdminCurrentEndpointName,
   selectAdminEndpoints,
   selectInstitutionsOptions,
@@ -28,7 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setAdminEndpointId: handleSetAdminEndpointId,
     deleteEndpoint: handleDeleteAdminEndpoint,
   },
   dispatch

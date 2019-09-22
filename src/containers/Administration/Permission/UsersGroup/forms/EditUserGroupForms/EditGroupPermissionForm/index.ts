@@ -9,8 +9,8 @@ import EditGroupPermissionForm from './EditGroupPermissionForm';
 import {
   handleAddGroupPermission,
   handleGetAdminUiItems,
+  selectActiveItemId,
   selectAdminGroupPermissionsUiItems,
-  selectCurrentUserGroupId,
   selectDefaultAdminUiItems,
 } from 'store/domains';
 
@@ -19,7 +19,7 @@ import { StoreState } from 'store/StoreState';
 const formSelector = formValueSelector(formNamesConst.EDIT_GROUP_PERMISSION);
 
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectCurrentUserGroupId(state),
+  currentGroupId: selectActiveItemId(state),
   defaultAdminUiItems: selectDefaultAdminUiItems(state),
   uiItemsOptions: selectAdminGroupPermissionsUiItems(state),
   selectedUiItem: formSelector(

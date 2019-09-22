@@ -6,7 +6,6 @@ import { AdminSchedulerState } from './types';
 export const adminSchedulerJobsInitialState:
   seamlessImmutable.ImmutableObject<AdminSchedulerState> = Immutable({
     scheduler: Immutable([]),
-    currentSchedulerId: null,
     generatedCronExpression: null,
   });
 
@@ -23,10 +22,6 @@ const adminSchedulerJobsReducer =
             'scheduler',
             state.scheduler.filter(el => el.id !== action.meta.id)
           );
-
-      case ActionTypeKeys.SET_ADMIN_SCHEDULER_JOBS_ID:
-        return state
-          .set('currentSchedulerId', action.payload);
 
       case ActionTypeKeys.SET_GENERATED_CRON_EXPRESSION:
         return state

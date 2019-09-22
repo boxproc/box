@@ -40,9 +40,6 @@ export const selectProductItems = createSelector(
   })
 );
 
-export const selectCurrentProductId = (state: StoreState) =>
-  state.productDesigner.products.currentProductId;
-
 export const selectDefaultCurrentProduct = (state: StoreState) =>
   state.productDesigner.products.currentProduct;
 

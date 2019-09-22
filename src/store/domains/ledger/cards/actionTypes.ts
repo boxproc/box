@@ -9,8 +9,6 @@ export enum ActionTypeKeys {
   ACTIVATE_LEDGER_CARD = 'ledger/accounts/ACTIVATE_LEDGER_CARD',
   ACTIVATE_LEDGER_CARD_FULFILLED = 'ledger/accounts/ACTIVATE_LEDGER_CARD_FULFILLED',
   ACTIVATE_LEDGER_CARD_REJECTED = 'ledger/accounts/ACTIVATE_LEDGER_CARD_REJECTED',
-
-  SET_LEDGER_CARD_ID = 'ledger/cards/SET_LEDGER_CARDS',
 }
 
 export interface FilterLedgerCardsAction {
@@ -43,12 +41,6 @@ export interface ActivateLedgerCardRejectedAction {
   readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD_REJECTED;
 }
 
-export interface SetLedgerLedgerCardIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_LEDGER_CARD_ID;
-}
-
 export type LedgerCardsActionTypes =
-  | SetLedgerLedgerCardIdAction
   | ActivateLedgerCardFulfilledAction
   | FilterLedgerCardsFulfilledAction;

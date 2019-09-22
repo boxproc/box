@@ -9,7 +9,6 @@ import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/form
 import {
   AdminSchedulerEditableItem,
   HandleDeleteAdminSchedulerJob,
-  HandleSetAdminSchedulerJobId,
   HandleUpdateAdminSchedulerJob,
 } from 'store/domains';
 
@@ -19,7 +18,6 @@ interface EditSchedulerModalProps extends WithModalProps {
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
   isFormDirty: boolean;
-  setAdminSchedulerJobId: HandleSetAdminSchedulerJobId;
 }
 
 const modalName = modalNamesConst.EDIT_ADMIN_SCHEDULER;
@@ -32,17 +30,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   schedulerJobValues,
   currentSchedulerName,
   isFormDirty,
-  setAdminSchedulerJobId,
 }) => {
-  React.useEffect(
-    () => {
-      return () => {
-        setAdminSchedulerJobId(null);
-      };
-    },
-    [setAdminSchedulerJobId]
-  );
-
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]

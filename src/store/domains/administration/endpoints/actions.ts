@@ -4,17 +4,16 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminEndpointAction,
   DeleteAdminEndpointAction,
   FilterAdminEndpointAction,
   GetEndpointsByInstitutionIdAction,
-  SetEndpointIdAction,
   UpdateAdminEndpointAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectAdminCurrentEndpointId } from './selectors';
 import {
   AdminEndpointFilterParamsPrepared,
   AdminEndpointItem,
@@ -23,15 +22,11 @@ import {
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
 export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
 export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
-
-export type SetEndpointId = (id: number) => SetEndpointIdAction;
-export type HandleSetEndpointId = (id: number) => void;
 
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
 export type HandleDeleteAdminEndpoint = () => Thunk<void>;
@@ -48,11 +43,6 @@ export type HandleFilterAdminEndpoint = () => Thunk<void>;
 export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<void>;
 export type GetEndpointsByInstitutionId = (id: string | number) =>
   GetEndpointsByInstitutionIdAction;
-
-export const setAdminEndpointId: SetEndpointId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_ENDPOINT_ID,
-  payload: id,
-});
 
 export const addAdminEndpoint: AddAdminEndpoint = values => ({
   type: ActionTypeKeys.ADD_ADMIN_ENDPOINT,
@@ -96,9 +86,6 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
     );
   };
 
-export const handleSetAdminEndpointId: HandleSetEndpointId = id =>
-  setAdminEndpointId(id);
-
 export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -119,7 +106,7 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectAdminCurrentEndpointId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminEndpoint(id));
         await dispatch(handleFilterAdminEndpoint());

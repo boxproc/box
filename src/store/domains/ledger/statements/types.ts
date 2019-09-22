@@ -66,5 +66,4 @@ export interface LedgerStatementsFilterParamsPrepared {
 
 export interface LedgerStatementsState {
   statements: ImmutableArray<LedgerStatementItem>;
-  currentStatementId: number;
 }

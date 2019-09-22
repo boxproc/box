@@ -75,5 +75,4 @@ export interface LedgerTransactionsFilterParamsPrepared extends LedgerTransactio
 
 export interface LedgerTransactionsState {
   transactions: ImmutableArray<LedgerTransactionItem>;
-  currentTransactionId: number;
 }

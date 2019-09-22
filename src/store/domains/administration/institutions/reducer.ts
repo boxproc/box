@@ -5,7 +5,6 @@ import { AdminInstitutionsState } from './types';
 
 export const adminInstitutionsInitialState: ImmutableObject<AdminInstitutionsState> = Immutable({
   institutions: Immutable([]),
-  currentInstitutionId: null,
 });
 
 const adminInstitutionsReducer =
@@ -21,10 +20,6 @@ const adminInstitutionsReducer =
             'institutions',
             state.institutions.filter(el => el.id !== action.meta.id)
           );
-
-      case ActionTypeKeys.SET_ADMIN_INSTITUTION_ID:
-        return state
-          .set('currentInstitutionId', action.payload);
 
       default: return state;
     }

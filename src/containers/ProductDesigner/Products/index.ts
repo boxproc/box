@@ -7,7 +7,6 @@ import {
   createLoadingSelector,
   handleDeleteProduct,
   handleFilterProducts,
-  handleGetProductId,
   ProductsActionTypes,
   selectCurrentProductName,
   selectInstitutionsOptions,
@@ -30,7 +29,6 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterProducts: handleFilterProducts,
-    getProductId: handleGetProductId,
     deleteProduct: handleDeleteProduct,
   },
   dispatch

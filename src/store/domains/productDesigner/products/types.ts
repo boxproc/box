@@ -261,7 +261,6 @@ export interface ServicesItemsPrepared {
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
-  currentProductId: number;
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
   currentProductRules: ImmutableArray<ProductRulesItemResp>;

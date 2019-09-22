@@ -10,8 +10,6 @@ export enum ActionTypeKeys {
   DELETE_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/DELETE_ADMIN_ENDPOINT_FULFILLED',
   DELETE_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/DELETE_ADMIN_ENDPOINT_REJECTED',
 
-  SET_ADMIN_ENDPOINT_ID = 'administration/endpoints/SET_ADMIN_ENDPOINT_ID',
-
   UPDATE_ADMIN_ENDPOINT = 'administration/endpoints/UPDATE_ADMIN_ENDPOINT',
   UPDATE_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/UPDATE_ADMIN_ENDPOINT_FULFILLED',
   UPDATE_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/UPDATE_ADMIN_ENDPOINT_REJECTED',
@@ -25,11 +23,6 @@ export enum ActionTypeKeys {
   'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED',
   GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED =
   'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
-}
-
-export interface SetEndpointIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_ENDPOINT_ID;
 }
 
 export interface AddAdminEndpointAction {
@@ -110,7 +103,6 @@ export interface GetEndpointsByInstitutionIdRejectedAction {
 export type AdminEndpointActionTypes =
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
-  | SetEndpointIdAction
   | FilterAdminEndpointFulfilledAction
   | UpdateAdminEndpointFulfilledAction
   | GetEndpointsByInstitutionIdFulfilledAction;

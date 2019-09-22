@@ -8,8 +8,6 @@ export enum ActionTypeKeys {
   GET_LEDGER_ACCOUNT_CARDS_FULFILLED = 'ledger/accounts/GET_LEDGER_ACCOUNT_CARDS_FULFILLED',
   GET_LEDGER_ACCOUNT_CARDS_REJECTED = 'ledger/accounts/GET_LEDGER_ACCOUNT_CARDS_REJECTED',
 
-  SET_LEDGER_ACCOUNT_ID = 'ledger/accounts/SET_LEDGER_ACCOUNT_ID',
-
   ADD_LEDGER_ACCOUNT = 'ledger/accounts/ADD_LEDGER_ACCOUNT',
   ADD_LEDGER_ACCOUNT_FULFILLED = 'ledger/accounts/ADD_LEDGER_ACCOUNT_FULFILLED',
   ADD_LEDGER_ACCOUNT_REJECTED = 'ledger/accounts/ADD_LEDGER_ACCOUNT_REJECTED',
@@ -59,11 +57,6 @@ export interface OrderLedgerAccountCardFulfilledAction {
 export interface OrderLedgerAccountCardRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.ORDER_LEDGER_ACCOUNT_CARD_REJECTED;
-}
-
-export interface SetLedgerAccountIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID;
 }
 
 export interface AddLedgerAccountAction {
@@ -132,5 +125,4 @@ export type LedgerAccountsActionTypes =
   | UpdateLedgerAccountFulfilledAction
   | AddLedgerAccountFulfilledAction
   | FilterLedgerAccountsFulfilledAction
-  | SetLedgerAccountIdAction
   | GetLedgerLastStatementFulfilledAction;

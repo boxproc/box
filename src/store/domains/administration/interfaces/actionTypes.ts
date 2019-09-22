@@ -10,8 +10,6 @@ export enum ActionTypeKeys {
   DELETE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_FULFILLED',
   DELETE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_REJECTED',
 
-  SET_ADMIN_INTERFACE_ID = 'administration/interfaces/SET_ADMIN_ENDPOINT_ID',
-
   UPDATE_ADMIN_INTERFACE = 'administration/interfaces/UPDATE_ADMIN_INTERFACE',
   UPDATE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_FULFILLED',
   UPDATE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_REJECTED',
@@ -19,11 +17,6 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
   FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
   FILTER_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_REJECTED',
-}
-
-export interface SetInterfaceIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_INTERFACE_ID;
 }
 
 export interface AddAdminInterfaceAction {
@@ -90,6 +83,5 @@ export interface FilterAdminInterfaceRejectedAction {
 export type AdminInterfacesActionTypes =
   | AddAdminInterfaceFulfilledAction
   | DeleteAdminInterfaceFulfilledAction
-  | SetInterfaceIdAction
   | FilterAdminInterfaceFulfilledAction
   | UpdateAdminInterfaceFulfilledAction;

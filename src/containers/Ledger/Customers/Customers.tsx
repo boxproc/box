@@ -10,7 +10,6 @@ import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
 import {
   HandleDeleteLedgerCustomer,
   HandleFilterLedgerCustomers,
-  HandleGetLedgerCustomerId,
   LedgerCustomerItemPrepared,
 } from 'store/domains';
 
@@ -20,7 +19,6 @@ export interface CustomersProps {
   institutionsOptions: Array<SelectValues>;
   ledgerCustomers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
-  getLedgerCustomerId: HandleGetLedgerCustomerId;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   ledgerCurrentCustomerName: string;
 }
@@ -29,7 +27,6 @@ const Customers: React.FC<CustomersProps> = ({
   institutionsOptions,
   ledgerCustomers,
   filterLedgerCustomers,
-  getLedgerCustomerId,
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
 }) => {
@@ -53,7 +50,6 @@ const Customers: React.FC<CustomersProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_LEDGER_CUSTOMER}
       editModalName={modalNamesConst.EDIT_LEDGER_CUSTOMER}
-      setCurrentIdAction={getLedgerCustomerId}
       contextMenuItems={contextMenuItems}
       FilterForm={
         <CustomersFilterForm

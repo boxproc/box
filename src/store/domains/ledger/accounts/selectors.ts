@@ -7,6 +7,7 @@ import { StoreState } from 'store/StoreState';
 import { prepareValuesToRender as prepareLastStatementValuesToRender } from 'store/domains/ledger/statements/utils';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 
 import {
   preparedAccountCardsToRender,
@@ -28,9 +29,6 @@ export const selectLedgerAccounts = createSelector(
   })
 );
 
-export const selectLedgerAccountCurrentId = (state: StoreState) =>
-  state.ledger.accounts.currentAccountId;
-
 export const selectDefaultLedgerAccountCards = (state: StoreState) =>
   state.ledger.accounts.cards.asMutable();
 
@@ -39,7 +37,7 @@ export const selectLedgerAccountCards = createSelector(
   items => items && items.map(item => preparedAccountCardsToRender(item))
 );
 export const selectLedgerCurrentAccount = createSelector(
-  selectLedgerAccountCurrentId,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,

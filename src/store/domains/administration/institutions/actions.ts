@@ -6,15 +6,14 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminInstitutionAction,
   DeleteAdminInstitutionAction,
   GetAdminInstitutionsAction,
-  SetAdminInstitutionIdAction,
   UpdateAdminInstitutionAction,
 } from './actionTypes';
-import { selectAdminInstitutionCurrentId } from './selectors';
 import {
   AdminInstitutionsItem,
   AdminInstitutionsItemDetailsPrepared,
@@ -33,9 +32,6 @@ export type AddAdminInstitution = (values: Partial<AdminInstitutionsItem>) =>
 export type HandleAddAdminInstitution = (values: Partial<AdminInstitutionsItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type SetAdminInstitutionId = (id: number) => SetAdminInstitutionIdAction;
-export type HandleSetAdminInstitutionId = (id: number) => void;
-
 export type UpdateAdminInstitution = (values: Partial<AdminInstitutionsItem>) =>
   UpdateAdminInstitutionAction;
 export type HandleUpdateAdminInstitution =
@@ -47,11 +43,6 @@ export type HandleDeleteAdminInstitution = () => Thunk<void>;
 export const getAdminInstitutions: GetAdminInstitutions = () => ({
   type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS,
   payload: api.getAdminInstitutions(),
-});
-
-export const setAdminInstitutionId: SetAdminInstitutionId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_INSTITUTION_ID,
-  payload: id,
 });
 
 export const addAdminInstitution: AddAdminInstitution = values => ({
@@ -79,9 +70,6 @@ export const handleGetAdminInstitutions: HandleGetAdminInstitutions = () =>
       dispatch
     );
   };
-
-export const handleSetAdminInstitutionId: HandleSetAdminInstitutionId = id =>
-  setAdminInstitutionId(id);
 
 export const handleUpdateAdminInstitution: HandleUpdateAdminInstitution = values =>
   async dispatch => {
@@ -116,7 +104,7 @@ export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectAdminInstitutionCurrentId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminInstitution(id));
         await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INSTITUTION));

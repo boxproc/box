@@ -5,7 +5,6 @@ import { LedgerCustomersState } from './types';
 
 export const ledgerCustomersInitialState: ImmutableObject<LedgerCustomersState> = Immutable({
   customers: Immutable([]),
-  currentCustomerId: null,
 });
 
 const ledgerCustomersReducer =
@@ -21,10 +20,6 @@ const ledgerCustomersReducer =
       case ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_FULFILLED:
         return state
           .set('customers', action.payload.customers);
-
-      case ActionTypeKeys.GET_LEDGER_CUSTOMER_ID:
-        return state
-          .set('currentCustomerId', action.payload);
 
       default: return state;
     }

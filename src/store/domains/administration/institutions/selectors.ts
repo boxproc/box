@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
@@ -12,12 +13,9 @@ export const selectAdminInstitutions = createSelector(
   items => items && items.map(item => prepareValuesToRender(item))
 );
 
-export const selectAdminInstitutionCurrentId = (state: StoreState) =>
-  state.administration.institutions.currentInstitutionId;
-
 export const selectAdminCurrentInstitution = createSelector(
   selectDefaultAdminInstitutions,
-  selectAdminInstitutionCurrentId,
+  selectActiveItemId,
   (institutions, currentId) => {
     const current = institutions.find(el => el.id === currentId);
 

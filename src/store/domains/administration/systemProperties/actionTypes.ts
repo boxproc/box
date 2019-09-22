@@ -23,8 +23,6 @@ export enum ActionTypeKeys {
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_FULFILLED',
   FILTER_ADMIN_SYS_PROPS_REJECTED =
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
-
-  SET_ADMIN_SYS_PROP_ID = 'administration/systemProperties/SET_ADMIN_SYS_PROP_ID',
 }
 
 export interface DeleteAdminSysPropAction {
@@ -35,7 +33,7 @@ export interface DeleteAdminSysPropAction {
 export interface DeleteAdminSysPropFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
-  readonly meta: string;
+  readonly meta: number | string;
 }
 
 export interface DeleteAdminSysPropRejectedAction {
@@ -88,14 +86,8 @@ export interface FilterAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
 }
 
-export interface SetAdminSysPropIdAction {
-  readonly payload: string;
-  readonly type: ActionTypeKeys.SET_ADMIN_SYS_PROP_ID;
-}
-
 export type AdminSysPropsActionTypes =
   | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
   | UpdateAdminSysPropsFulfilledAction
-  | FilterAdminSysPropsFulfilledAction
-  | SetAdminSysPropIdAction;
+  | FilterAdminSysPropsFulfilledAction;

@@ -146,6 +146,5 @@ export interface LedgerAccountCardsItems extends ResponseStatusType {
 export interface LedgerAccountsState {
   accounts: ImmutableArray<LedgerAccountItem>;
   cards: ImmutableArray<LedgerAccountsCardsItem>;
-  currentAccountId: number;
   lastStatement: Partial<LedgerStatementItem>;
 }

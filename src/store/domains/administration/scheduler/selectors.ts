@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 import { prepareDetailsToRender, prepareValuesToRender } from './utils';
 
@@ -19,16 +20,13 @@ export const selectAdminSchedulerJobsItems = createSelector(
   })
 );
 
-export const selectCurrentSchedulerJobId = (state: StoreState) =>
-  state.administration.scheduler.currentSchedulerId;
-
 export const selectGeneratedCronExpression = (state: StoreState) =>
   state.administration.scheduler.generatedCronExpression;
 
 export const selectSchedulerJobValues = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
-  selectCurrentSchedulerJobId,
+  selectActiveItemId,
   selectGeneratedCronExpression,
   (items, institutions, currentId, generatedCronExpression) => {
     const current = items && items.asMutable().find(item => item.id === currentId);

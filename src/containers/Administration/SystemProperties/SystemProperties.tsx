@@ -17,7 +17,6 @@ import {
   AdminSysPropsItem,
   HandleDeleteAdminSysProp,
   HandleFilterAdminSysProps,
-  HandleSetAdminSysPropId,
   HandleUpdateAdminSysProps,
 } from 'store/domains';
 
@@ -28,8 +27,7 @@ interface SystemPropertiesProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
-  setAdminSysPropId: HandleSetAdminSysPropId;
-  currentSysPropId: string;
+  currentSysPropId: number | string;
 }
 
 type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[T]>;
@@ -39,7 +37,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   deleteAdminSysProp,
   filterAdminSysProps,
   updateAdminSysProps,
-  setAdminSysPropId,
   currentSysPropId,
 }) => {
   const columns = [
@@ -120,7 +117,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       columns={columns}
       addNewModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
-      setCurrentIdAction={setAdminSysPropId}
       FilterForm={
         <SystemPropertyFilter
           filterAdminSysProps={filterAdminSysProps}

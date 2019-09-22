@@ -3,8 +3,6 @@ import { LedgerCustomerItems } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_LEDGER_CUSTOMER_ID = 'ledger/customers/GET_LEDGER_CUSTOMER_ID',
-
   DELETE_LEDGER_CUSTOMER = 'ledger/customers/DELETE_LEDGER_CUSTOMER',
   DELETE_LEDGER_CUSTOMER_FULFILLED = 'ledger/customers/DELETE_LEDGER_CUSTOMER_FULFILLED',
   DELETE_LEDGER_CUSTOMER_REJECTED = 'ledger/customers/DELETE_LEDGER_CUSTOMER_REJECTED',
@@ -20,11 +18,6 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_CUSTOMERS = 'ledger/customers/FILTER_LEDGER_CUSTOMERS',
   FILTER_LEDGER_CUSTOMERS_FULFILLED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_FULFILLED',
   FILTER_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
-}
-
-export interface GetLedgerCustomerIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.GET_LEDGER_CUSTOMER_ID;
 }
 
 export interface DeleteLedgerCustomerAction {
@@ -94,5 +87,4 @@ export type LedgerCustomersActionTypes =
   | AddLedgerCustomerFulfilledAction
   | DeleteLedgerCustomerFulfilledAction
   | UpdateLedgerCustomerFulfilledAction
-  | FilterLedgerCustomersFulfilledAction
-  | GetLedgerCustomerIdAction;
+  | FilterLedgerCustomersFulfilledAction;

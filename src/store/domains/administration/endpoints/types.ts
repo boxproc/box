@@ -58,6 +58,5 @@ export interface AdminEndpointNameItems extends ResponseStatusType {
 
 export interface AdminEndpointState {
   endpoints: ImmutableArray<AdminEndpointItem>;
-  currentEndpointId: number;
   endpointsByInstitutionId: ImmutableArray<AdminEndpointNameItem>;
 }

@@ -8,7 +8,6 @@ import {
   createLoadingSelector,
   handleDeleteAdminCyclesEditor,
   handleFilterCycles,
-  handleSetAdminCycleEditorId,
   selectAdminCycleEditorItems,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -27,7 +26,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setAdminCycleEditorId: handleSetAdminCycleEditorId,
     filterCycles: handleFilterCycles,
     deleteAdminCyclesEditor: handleDeleteAdminCyclesEditor,
   },

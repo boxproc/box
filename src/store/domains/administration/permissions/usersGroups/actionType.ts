@@ -81,8 +81,6 @@ export enum ActionTypeKeys {
   'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_FULFILLED',
   UPDATE_ADMIN_USERS_GROUP_REJECTED =
   'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_REJECTED',
-
-  SET_ADMIN_USERS_GROUP_ID = 'administration/permissions/usersGroups/SET_ADMIN_USERS_GROUP_ID',
 }
 
 export interface GetAdminUsersGroupAction {
@@ -249,11 +247,6 @@ export interface UpdateAdminUsersGroupRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_REJECTED;
 }
 
-export interface SetAdminUsersGroupIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_USERS_GROUP_ID;
-}
-
 export type AdminUsersGroupActionTypes =
   | GetAdminUsersGroupFulfilledAction
   | GetAdminActiveUsersFulfilledAction
@@ -265,5 +258,4 @@ export type AdminUsersGroupActionTypes =
   | DeleteAdminUserGroupMembersFulfilledAction
   | AddAdminActiveUsersFulfilledAction
   | GetAdminUiItemsFulfilledAction
-  | UpdateAdminUsersGroupFulfilledAction
-  | SetAdminUsersGroupIdAction;
+  | UpdateAdminUsersGroupFulfilledAction;

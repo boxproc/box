@@ -47,5 +47,4 @@ export interface AuditApiCallsFilterParamsPrepared {
 
 export interface AuditApiCallsState {
   apiCalls: ImmutableArray<ApiCallsItem>;
-  currentStatementId: number;
 }

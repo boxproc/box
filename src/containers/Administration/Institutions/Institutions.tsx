@@ -10,13 +10,11 @@ import {
   AdminInstitutionsItemPrepared,
   HandleDeleteAdminInstitution,
   HandleGetAdminInstitutions,
-  HandleSetAdminInstitutionId,
 } from 'store/domains';
 
 export interface InstitutionsProps {
   getAdminInstitutions: HandleGetAdminInstitutions;
   adminInstitutions: Array<AdminInstitutionsItemPrepared>;
-  setAdminInstitutionId: HandleSetAdminInstitutionId;
   deleteAdminInstitution: HandleDeleteAdminInstitution;
   adminCurrentInstitutionName: string;
 }
@@ -24,7 +22,6 @@ export interface InstitutionsProps {
 const Institutions: React.FC<InstitutionsProps> = ({
   adminInstitutions,
   getAdminInstitutions,
-  setAdminInstitutionId,
   deleteAdminInstitution,
   adminCurrentInstitutionName,
 }) => {
@@ -54,7 +51,6 @@ const Institutions: React.FC<InstitutionsProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_INSTITUTION}
       editModalName={modalNamesConst.EDIT_ADMIN_INSTITUTION}
-      setCurrentIdAction={setAdminInstitutionId}
       contextMenuItems={contextMenuItems}
     />
   );

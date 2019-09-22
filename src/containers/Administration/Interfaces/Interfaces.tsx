@@ -8,20 +8,14 @@ import { modalNamesConst } from 'consts';
 
 import InterfaceFilterForm from './forms/InterfaceFilterForm';
 
-import {
-  AdminInterfaceItemPrepared,
-  HandleDeleteAdminInterface,
-  HandleSetInterfaceId,
-} from 'store/domains';
+import { AdminInterfaceItemPrepared, HandleDeleteAdminInterface } from 'store/domains';
 
 export interface AccountsProps {
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
-  setAdminInterfaceId: HandleSetInterfaceId;
   deleteInterface: HandleDeleteAdminInterface;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
-  setAdminInterfaceId,
   adminInterfaceItems,
   deleteInterface,
 }) => {
@@ -45,7 +39,6 @@ const Interfaces: React.FC<AccountsProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_INTERFACE}
       editModalName={modalNamesConst.EDIT_ADMIN_INTERFACE}
-      setCurrentIdAction={setAdminInterfaceId}
       contextMenuItems={contextMenuItems}
       FilterForm={
         <InterfaceFilterForm />

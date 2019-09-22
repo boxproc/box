@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 
 import Transactions from './Transactions';
 
 import {
   createLoadingSelector,
-  handleSetLedgerTransactionId,
   LedgerTransactionsActionTypes,
   selectLedgerTransactions,
 } from 'store/domains';
@@ -21,14 +19,6 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerTransactions: selectLedgerTransactions(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    setLedgerTransactionId: handleSetLedgerTransactionId,
-  },
-  dispatch
-);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Transactions);

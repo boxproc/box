@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 import { yesNoTypesConst } from 'consts';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
@@ -20,11 +21,8 @@ export const selectAdminSysPropsItems = createSelector(
   })
 );
 
-export const selectCurrentSysPropId = (state: StoreState) =>
-  state.administration.systemProperties.currentSysPropId;
-
 export const selectCurrentAdminSysPropsItem = createSelector(
   selectAdminSysPropsItems,
-  selectCurrentSysPropId,
+  selectActiveItemId,
   (items, currentId) => items.find(item => item.id === currentId)
 );

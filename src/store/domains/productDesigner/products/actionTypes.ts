@@ -33,8 +33,6 @@ export enum ActionTypeKeys {
   GET_PRODUCT_RULES_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULES_FULFILLED',
   GET_PRODUCT_RULES_REJECTED = 'productDesigner/products/GET_PRODUCT_RULES_REJECTED',
 
-  GET_PRODUCT_ID = 'productDesigner/products/GET_PRODUCT_ID',
-
   GET_RULE_BY_EVENT = 'productDesigner/products/GET_RULE_BY_EVENT',
   GET_RULE_BY_ACTION_TYPE = 'productDesigner/products/GET_RULE_BY_ACTION_TYPE',
 
@@ -145,11 +143,6 @@ export interface FilterProductsFulfilledAction {
 export interface FilterProductsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
-}
-
-export interface GetProductIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.GET_PRODUCT_ID;
 }
 
 export interface GetRuleByEventAction {
@@ -267,7 +260,6 @@ export interface AddProductRejectedAction {
   readonly type: ActionTypeKeys.ADD_PRODUCT_REJECTED;
 }
 
-// Update card service
 export interface UpdateCardServiceAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES;
@@ -296,6 +288,5 @@ export type ProductsActionTypes =
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction
   | UpdateProductRulesFulfilledAction
-  | GetProductIdAction
   | GetRuleByEventAction
   | GetRuleByActionTypeAction;

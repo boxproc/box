@@ -19,8 +19,6 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_CYCLES_EDITOR_FULFILLED =
     'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
   FILTER_ADMIN_CYCLES_EDITOR_REJECTED = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_REJECTED',
-
-  SET_ADMIN_CYCLE_EDITOR_ID = 'administration/cycles/SET_ADMIN_CYCLE_EDITOR_ID',
 }
 
 export interface AddAdminCycleEditorAction {
@@ -69,11 +67,6 @@ export interface UpdateAdminCycleEditorRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR_REJECTED;
 }
 
-export interface SetAdminCycleEditorIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID;
-}
-
 export interface FilterCyclesAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR;
@@ -93,5 +86,4 @@ export type AdminCycleEditorActionTypes =
   | AddAdminCycleEditorFulfilledAction
   | DeleteAdminCycleEditorFulfilledAction
   | UpdateAdminCycleEditorFulfilledAction
-  | SetAdminCycleEditorIdAction
   | FilterCyclesFulfilledAction;

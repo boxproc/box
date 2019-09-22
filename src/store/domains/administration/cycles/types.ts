@@ -51,5 +51,4 @@ export interface AdminCyclesEditorDataResp extends ResponseStatusType {
 
 export interface AdminCyclesEditorState {
   cycleEditor: ImmutableArray<AdminCyclesEditorItem>;
-  currentCycleEditorId: null;
 }

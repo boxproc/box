@@ -3,11 +3,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import Modal from './Modal';
 
-import { handleSetActiveTableRowIndex } from 'store/domains';
+import { handleSetActiveItemId, handleSetActiveTableRowIndex } from 'store/domains';
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     setActiveTableRowIndex: handleSetActiveTableRowIndex,
+    setActiveItemId: handleSetActiveItemId,
   },
   dispatch
 );

@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 import { prepareValuesToRender } from './utils';
@@ -12,12 +13,9 @@ export const selectLedgerTransactions = createSelector(
   items => items && items.asMutable().map(item => prepareValuesToRender(item))
 );
 
-export const selectLedgerTransactionCurrentId = (state: StoreState) =>
-  state.ledger.transactions.currentTransactionId;
-
 export const selectLedgerCurrentTransaction = createSelector(
   selectLedgerTransactions,
-  selectLedgerTransactionCurrentId,
+  selectActiveItemId,
   (transaction, currentId) => {
     const current = transaction.find(el => el.id === currentId);
 

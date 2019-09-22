@@ -7,8 +7,6 @@ export enum ActionTypeKeys {
   GET_ADMIN_INSTITUTIONS_FULFILLED = 'administration/institutions/GET_ADMIN_INSTITUTIONS_FULFILLED',
   GET_ADMIN_INSTITUTIONS_REJECTED = 'administration/institutions/GET_ADMIN_INSTITUTIONS_REJECTED',
 
-  SET_ADMIN_INSTITUTION_ID = 'administration/institutions/SET_ADMIN_INSTITUTION_ID',
-
   DELETE_ADMIN_INSTITUTION = 'administration/institutions/DELETE_ADMIN_INSTITUTION',
   DELETE_ADMIN_INSTITUTION_FULFILLED =
   'administration/institutions/DELETE_ADMIN_INSTITUTION_FULFILLED',
@@ -39,11 +37,6 @@ export interface GetAdminInstitutionsFulfilledAction {
 export interface GetAdminInstitutionsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS_REJECTED;
-}
-
-export interface SetAdminInstitutionIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_INSTITUTION_ID;
 }
 
 export interface DeleteAdminInstitutionAction {
@@ -98,5 +91,4 @@ export type AdminInstitutionsActionTypes =
   | GetAdminInstitutionsFulfilledAction
   | AddAdminInstitutionFulfilledAction
   | DeleteAdminInstitutionFulfilledAction
-  | UpdateAdminInstitutionFulfilledAction
-  | SetAdminInstitutionIdAction;
+  | UpdateAdminInstitutionFulfilledAction;

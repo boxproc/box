@@ -75,5 +75,4 @@ export interface LedgerCustomersFilterParamsPrepared extends LedgerCustomerId {
 
 export interface LedgerCustomersState {
   customers: ImmutableArray<LedgerCustomerItem>;
-  currentCustomerId: number;
 }

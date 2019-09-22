@@ -7,16 +7,14 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { TransactionsFilterForm } from './forms';
 
-import { HandleSetLedgerTransactionId, LedgerTransactionItemPrepared } from 'store/domains';
+import { LedgerTransactionItemPrepared } from 'store/domains';
 
 export interface TransactionsProps {
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
-  setLedgerTransactionId: HandleSetLedgerTransactionId;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
   ledgerTransactions,
-  setLedgerTransactionId,
 }) => {
   return (
     <TablePage
@@ -24,7 +22,6 @@ const Transactions: React.FC<TransactionsProps> = ({
       data={ledgerTransactions}
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_TRANSACTION}
-      setCurrentIdAction={setLedgerTransactionId}
       FilterForm={
         <TransactionsFilterForm />
       }

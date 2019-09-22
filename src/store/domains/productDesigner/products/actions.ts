@@ -15,7 +15,6 @@ import {
   GetInterfacesProductServiceAction,
   GetProductAction,
   GetProductDetailsAction,
-  GetProductIdAction,
   GetProductRulesAction,
   GetRuleByActionTypeAction,
   GetRuleByEventAction,
@@ -27,11 +26,7 @@ import {
 
 import * as api from './api';
 
-import {
-  selectCurrentInstitutionId,
-  selectCurrentProductId,
-  selectCurrentProductType,
-} from './selectors';
+import { selectCurrentInstitutionId, selectCurrentProductType } from './selectors';
 
 import {
   NewProduct,
@@ -58,6 +53,7 @@ import {
 
 import { SelectValues, Thunk } from 'types';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { errorDecoratorUtil } from 'utils';
 
 export type GetInstitutionProducts = (id: number | string) => GetInstitutionProductsAction;
@@ -68,9 +64,6 @@ export type HandleDeleteProduct = () => Thunk<void>;
 
 export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
 export type HandleFilterProducts = () => Thunk<void>;
-
-export type GetProductId = (id: number) => GetProductIdAction;
-export type HandleGetProductId = (id: number) => void;
 
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = () => Thunk<void>;
@@ -134,11 +127,6 @@ export const deleteProduct: DeleteProduct = id => ({
 export const filterProducts: FilterProducts = params => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
   payload: api.filterProducts(params),
-});
-
-export const getProductId: GetProductId = id => ({
-  type: ActionTypeKeys.GET_PRODUCT_ID,
-  payload: id,
 });
 
 export const getRuleByEvent: GetRuleByEvent = event => ({
@@ -251,9 +239,6 @@ export const handleGetEndpointsService: HandleGetEndpointsService = () =>
     );
   };
 
-export const handleGetProductId: HandleGetProductId = id =>
-  getProductId(id);
-
 export const handleGetRuleByEvent: HandleGetRuleByEvent = event =>
   getRuleByEvent(event && event.value);
 
@@ -265,7 +250,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCurrentProductId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteProduct(id));
         await dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
@@ -279,7 +264,7 @@ export const handleGetProduct: HandleGetProduct = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCurrentProductId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(getProduct(id));
       },
@@ -292,7 +277,7 @@ export const handleGetProductDetails: HandleGetProductDetails = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCurrentProductId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(getProductDetails(id));
       },
@@ -362,11 +347,11 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
       async () => {
         const state = getState();
         const preparedValues = prepareProductRuleValuesToSend(values);
-        const currentProductId = selectCurrentProductId(state);
+        const currentProductId = selectActiveItemId(state);
 
         await dispatch(updateProductRules({
           ...preparedValues,
-          product_id: selectCurrentProductId(state),
+          product_id: selectActiveItemId(state),
         }));
         await dispatch(handleFilterProducts());
         await dispatch(handleGetProductRules(currentProductId));

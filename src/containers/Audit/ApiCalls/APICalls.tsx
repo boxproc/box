@@ -7,16 +7,14 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { ApiCallsFilterForm } from './forms';
 
-import { ApiCallsItemPrepared, HandleSetAuditApiCallId } from 'store/domains';
+import { ApiCallsItemPrepared } from 'store/domains';
 
 interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
-  setAuditApiCallId: HandleSetAuditApiCallId;
 }
 
 const ApiCalls: React.FC<ApiCallsProps> = ({
   auditApiCalls,
-  setAuditApiCallId,
 }) => {
   return (
     <TablePage
@@ -24,7 +22,6 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       data={auditApiCalls}
       columns={tableColumns}
       editModalName={modalNamesConst.AUDIT_API_CALL}
-      setCurrentIdAction={setAuditApiCallId}
       FilterForm={
         <ApiCallsFilterForm />
       }

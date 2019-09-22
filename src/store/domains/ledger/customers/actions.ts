@@ -6,15 +6,14 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerCustomerAction,
   DeleteLedgerCustomerAction,
   FilterLedgerCustomersAction,
-  GetLedgerCustomerIdAction,
   UpdateLedgerCustomerAction,
 } from './actionTypes';
-import { selectLedgerCustomerCurrentId } from './selectors';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
@@ -25,9 +24,6 @@ import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
-
-export type GetLedgerCustomerId = (id: number) => GetLedgerCustomerIdAction;
-export type HandleGetLedgerCustomerId = (id: number) => void;
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
 export type HandleDeleteLedgerCustomer = () => Thunk<void>;
@@ -45,11 +41,6 @@ export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDeta
 export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterParamsPrepared>) =>
   FilterLedgerCustomersAction;
 export type HandleFilterLedgerCustomers = () => Thunk<void>;
-
-export const getLedgerCustomerId: GetLedgerCustomerId = id => ({
-  type: ActionTypeKeys.GET_LEDGER_CUSTOMER_ID,
-  payload: id,
-});
 
 export const deleteLedgerCustomer: DeleteLedgerCustomer = id => ({
   type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER,
@@ -73,15 +64,12 @@ export const filterLedgerCustomers: FilterLedgerCustomers = filterParams => ({
   meta: filterParams,
 });
 
-export const handleGetLedgerCustomerId: HandleGetLedgerCustomerId = id =>
-  getLedgerCustomerId(id);
-
 export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectLedgerCustomerCurrentId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteLedgerCustomer(id));
         await dispatch(closeModal(modalNamesConst.EDIT_LEDGER_CUSTOMER));

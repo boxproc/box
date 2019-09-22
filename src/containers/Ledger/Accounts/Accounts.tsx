@@ -8,18 +8,13 @@ import { tableColumns } from './components';
 
 import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
 
-import {
-  HandleSetLedgerAccountId,
-  LedgerAccountItemPrepared,
-} from 'store/domains';
+import { LedgerAccountItemPrepared } from 'store/domains';
 
 export interface AccountsProps {
-  setLedgerAccountsId: HandleSetLedgerAccountId;
   ledgerAccounts: Array<LedgerAccountItemPrepared>;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
-  setLedgerAccountsId,
   ledgerAccounts,
 }) => {
   return (
@@ -29,7 +24,6 @@ const Accounts: React.FC<AccountsProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_LEDGER_ACCOUNT}
       editModalName={modalNamesConst.EDIT_LEDGER_ACCOUNT}
-      setCurrentIdAction={setLedgerAccountsId}
       FilterForm={
         <AccountsFilterForm />
       }

@@ -9,6 +9,7 @@ import {
 } from 'consts';
 import { prepareValuesToRender } from 'store/domains/administration/cycles/utils';
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 
 export const selectDefaultAdminCycleEditorItems = (state: StoreState) =>
   state.administration.cyclesEditor.cycleEditor;
@@ -24,12 +25,9 @@ export const selectAdminCycleEditorItems = createSelector(
   })
 );
 
-export const selectCycleEditorId = (state: StoreState) =>
-  state.administration.cyclesEditor.currentCycleEditorId;
-
 export const selectCycleEditorValues = createSelector(
   selectDefaultAdminCycleEditorItems,
-  selectCycleEditorId,
+  selectActiveItemId,
   selectInstitutionsOptions,
   (cycleEditorItems, currentId, institutions) => {
     const current = cycleEditorItems && cycleEditorItems.find(item => item.id === currentId);

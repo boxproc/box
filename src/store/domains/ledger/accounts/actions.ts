@@ -4,6 +4,7 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
@@ -11,11 +12,9 @@ import {
   GetLedgerAccountCardsAction,
   GetLedgerLastStatementAction,
   OrderLedgerAccountCardAction,
-  SetLedgerAccountIdAction,
   UpdateLedgerAccountAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectLedgerAccountCurrentId } from './selectors';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -37,9 +36,6 @@ export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) => AddLedger
 export type HandleAddLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type SetLedgerAccountId = (id: number) => SetLedgerAccountIdAction;
-export type HandleSetLedgerAccountId = (id: number) => void;
-
 export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) => UpdateLedgerAccountAction;
 export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
@@ -54,11 +50,6 @@ export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS,
   payload: api.getLedgerAccountCards(accountId),
-});
-
-export const setLedgerAccountId: SetLedgerAccountId = id => ({
-  type: ActionTypeKeys.SET_LEDGER_ACCOUNT_ID,
-  payload: id,
 });
 
 export const addLedgerAccount: AddLedgerAccount = values => ({
@@ -112,8 +103,6 @@ export const handleGetLedgerAccountCards: HandleGetLedgerAccountCards = accountI
       dispatch
     );
   };
-export const handleSetLedgerAccountId: HandleSetLedgerAccountId = id =>
-  setLedgerAccountId(id);
 
 export const handleUpdateLedgerAccount: HandleUpdateLedgerAccount = values =>
   async dispatch => {
@@ -133,7 +122,7 @@ export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accoun
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const currentAccountId = selectLedgerAccountCurrentId(state);
+        const currentAccountId = selectActiveItemId(state);
 
         await dispatch(orderLedgerAccountCard(accountId));
         await dispatch(handleGetLedgerAccountCards(currentAccountId));

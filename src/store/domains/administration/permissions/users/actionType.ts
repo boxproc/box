@@ -15,8 +15,6 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_USER_FULFILLED = 'administration/permissions/users/UPDATE_ADMIN_USER_FULFILLED',
   UPDATE_ADMIN_USER_REJECTED = 'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
 
-  SET_ADMIN_USER_ID = 'administration/permissions/SET_ADMIN_USER_ID',
-
   GET_ADMIN_ACCESS_USERS = 'administration/permissions/users/GET_ADMIN_ACCESS_USERS',
   GET_ADMIN_ACCESS_USERS_FULFILLED =
     'administration/permissions/users/GET_ADMIN_ACCESS_USERS_FULFILLED',
@@ -69,11 +67,6 @@ export interface UpdateAdminUserRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_REJECTED;
 }
 
-export interface SetAdminUserIdAction {
-  readonly payload: number;
-  readonly type: ActionTypeKeys.SET_ADMIN_USER_ID;
-}
-
 export interface GetAccessUsersAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS;
@@ -93,5 +86,4 @@ export type AdminUserActionTypes =
   | AddAdminUserFulfilledAction
   | FilterUsersFulfilledAction
   | UpdateAdminUserFulfilledAction
-  | SetAdminUserIdAction
   | GetAccessUsersFulfilledAction;

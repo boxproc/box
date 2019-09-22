@@ -5,7 +5,6 @@ import { AdminSysPropsState } from './types';
 
 export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Immutable({
   systemProperties: Immutable([]),
-  currentSysPropId: null,
 });
 
 const adminSysPropsReducer =
@@ -21,10 +20,6 @@ const adminSysPropsReducer =
             'systemProperties',
             state.systemProperties.filter(el => el.property_name !== action.meta)
           );
-
-      case ActionTypeKeys.SET_ADMIN_SYS_PROP_ID:
-        return state
-          .set('currentSysPropId', action.payload);
 
       default: return state;
     }

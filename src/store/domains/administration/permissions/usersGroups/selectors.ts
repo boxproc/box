@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { permissionTypesOptions } from 'consts';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
@@ -88,13 +89,10 @@ export const selectAdminGroupPermissionsUiItems = createSelector(
   })
 );
 
-export const selectCurrentUserGroupId = (state: StoreState) =>
-  state.administration.userGroups.currentUsersGroupId;
-
 export const selectUsersGroupValues = createSelector(
   selectDefaultAdminUsersGroupItems,
   selectInstitutionsOptions,
-  selectCurrentUserGroupId,
+  selectActiveItemId,
   (items, institutions, currentId) => {
     const current = items && items.find(item => item.id === currentId);
 

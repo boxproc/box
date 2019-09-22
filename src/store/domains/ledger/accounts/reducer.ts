@@ -6,7 +6,6 @@ import { LedgerAccountsState } from './types';
 export const ledgerAccountsInitialState: ImmutableObject<LedgerAccountsState> = Immutable({
   accounts: Immutable([]),
   cards: Immutable([]),
-  currentAccountId: null,
   lastStatement: null,
 });
 
@@ -20,10 +19,6 @@ const ledgerAccountsReducer =
       case ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS_FULFILLED:
         return state
           .set('cards', action.payload.cards);
-
-      case ActionTypeKeys.SET_LEDGER_ACCOUNT_ID:
-        return state
-          .set('currentAccountId', action.payload);
 
       case ActionTypeKeys.GET_LEDGER_LAST_STATEMENT_FULFILLED:
         return state

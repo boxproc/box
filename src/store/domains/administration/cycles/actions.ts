@@ -3,16 +3,15 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminCycleEditorAction,
   DeleteAdminCycleEditorAction,
   FilterCyclesAction,
-  SetAdminCycleEditorIdAction,
   UpdateAdminCycleEditorAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectCycleEditorId } from './selectors';
 import {
   AdminCyclesEditorEditableItem,
   AdminCyclesEditorItem,
@@ -42,9 +41,6 @@ export type HandleUpdateAdminCyclesEditor =
 export type FilterCycles = (params: CycleFilterParamsPrepared) => FilterCyclesAction;
 export type HandleFilterCycles = () => Thunk<void>;
 
-export type SetAdminCycleEditorId = (id: number) => SetAdminCycleEditorIdAction;
-export type HandleSetAdminCycleEditorId = (id: number) => void;
-
 export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
   type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR,
   payload: api.addAdminCyclesEditor(values),
@@ -59,11 +55,6 @@ export const deleteAdminCyclesEditor: DeleteAdminCycleEditor = id => ({
 export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR,
   payload: api.updateAdminCyclesEditor(values),
-});
-
-export const setAdminCycleEditorId: SetAdminCycleEditorId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_CYCLE_EDITOR_ID,
-  payload: id,
 });
 
 export const filterCycles: FilterCycles = params => ({
@@ -107,7 +98,7 @@ export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCycleEditorId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminCyclesEditor(id));
         await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
@@ -130,6 +121,3 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
       dispatch
     );
   };
-
-export const handleSetAdminCycleEditorId: HandleSetAdminCycleEditorId = id =>
-  setAdminCycleEditorId(id);

@@ -10,7 +10,6 @@ import {
   AdminSchedulerJobsActionTypes,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
-  handleSetAdminSchedulerJobId,
   handleUpdateAdminSchedulerJobs,
   selectCurrentCronExpression,
   selectCurrentSchedulerName,
@@ -36,7 +35,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
-    setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
   },
   dispatch
 );

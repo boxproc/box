@@ -1,10 +1,9 @@
 import { createSelector } from 'reselect';
+
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 import { preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
-
-export const selectAdminCurrentEndpointId = (state: StoreState) =>
-  state.administration.endpoints.currentEndpointId;
 
 export const selectDefaultAdminEndpoints = (state: StoreState) =>
   state.administration.endpoints && state.administration.endpoints.endpoints;
@@ -22,7 +21,7 @@ export const selectAdminEndpoints = createSelector(
 
 export const selectAdminCurrentEndpoint = createSelector(
   selectDefaultAdminEndpoints,
-  selectAdminCurrentEndpointId,
+  selectActiveItemId,
   selectInstitutionsOptions,
   (endpoints, currentId, institutions) => {
     const current = endpoints.find(el => el.id === currentId);

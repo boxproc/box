@@ -8,8 +8,8 @@ import {
   handleGetLedgerAccountCards,
   handleOrderLedgerAccountCard,
   LedgerAccountsActionTypes,
+  selectActiveItemId,
   selectLedgerAccountCards,
-  selectLedgerAccountCurrentId,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -20,7 +20,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  ledgerAccountCurrentId: selectLedgerAccountCurrentId(state),
+  ledgerAccountCurrentId: selectActiveItemId(state),
   ledgerAccountCards: selectLedgerAccountCards(state),
 });
 

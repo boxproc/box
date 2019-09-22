@@ -7,7 +7,7 @@ import {
   createLoadingSelector,
   handleGetLedgerLastStatement,
   LedgerAccountsActionTypes,
-  selectLedgerAccountCurrentId,
+  selectActiveItemId,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -18,7 +18,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  accountCurrentId: selectLedgerAccountCurrentId(state),
+  accountCurrentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

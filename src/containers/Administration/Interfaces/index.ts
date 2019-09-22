@@ -7,7 +7,6 @@ import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
   handleDeleteAdminInterface,
-  handleSetAdminInterfaceId,
   selectAdminInterface,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -26,7 +25,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setAdminInterfaceId: handleSetAdminInterfaceId,
     deleteInterface: handleDeleteAdminInterface,
   },
   dispatch

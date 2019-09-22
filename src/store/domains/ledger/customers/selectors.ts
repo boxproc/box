@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 import { selectCountryCodes, selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
@@ -23,12 +24,9 @@ export const selectLedgerCustomers = createSelector(
   })
 );
 
-export const selectLedgerCustomerCurrentId = (state: StoreState) =>
-  state.ledger.customers.currentCustomerId;
-
 export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
-  selectLedgerCustomerCurrentId,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectCountryCodes,
   (customers, currentId, institutions, countries) => {

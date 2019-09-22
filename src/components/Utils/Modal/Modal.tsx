@@ -9,7 +9,7 @@ import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
-import { HandleSetActiveTableRowIndex } from 'store/domains';
+import { HandleSetActiveItemId, HandleSetActiveTableRowIndex } from 'store/domains';
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
@@ -27,6 +27,7 @@ interface ModalProps extends WithModalProps {
   closeOnBackdrop?: boolean;
   withCloseConfirmation?: boolean;
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
+  setActiveItemId: HandleSetActiveItemId;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -42,6 +43,7 @@ const Modal: React.FC<ModalProps> = ({
   closeOnBackdrop = false,
   withCloseConfirmation = false,
   setActiveTableRowIndex,
+  setActiveItemId,
   type,
 }) => {
   // React.useEffect(
@@ -54,10 +56,13 @@ const Modal: React.FC<ModalProps> = ({
   React.useEffect(
     () => {
       return type === modalTypesConst.EDIT_MODAL
-        ? () => setActiveTableRowIndex(null)
+        ? () => {
+          setActiveTableRowIndex(null);
+          setActiveItemId(null);
+        }
         : () => null;
     },
-    [setActiveTableRowIndex, type]
+    [setActiveTableRowIndex, setActiveItemId, type]
   );
 
   const handleCloseModal = React.useCallback(

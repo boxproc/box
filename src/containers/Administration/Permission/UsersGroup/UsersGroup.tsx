@@ -4,24 +4,18 @@ import { TablePage, withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { tableColumns } from 'containers/Administration/Permission/UsersGroup/components';
+import { tableColumns } from './components';
 
-import {
-  AdminUsersGroupInfoPlain,
-  HandleGetAdminUsersGroup,
-  HandleSetAdminUsersGroupId,
-} from 'store/domains/administration/permissions/usersGroups';
+import { AdminUsersGroupInfoPlain, HandleGetAdminUsersGroup } from 'store/domains';
 
 interface UserFilterProps {
   adminUsersGroupItems: Array<AdminUsersGroupInfoPlain>;
   getAdminUsersGroup: HandleGetAdminUsersGroup;
-  setAdminUsersGroupId: HandleSetAdminUsersGroupId;
 }
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
   getAdminUsersGroup,
   adminUsersGroupItems,
-  setAdminUsersGroupId,
 }) => {
   React.useEffect(
     () => {
@@ -37,7 +31,6 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_USERS_GROUP}
       editModalName={modalNamesConst.EDIT_ADMIN_USERS_GROUP}
-      setCurrentIdAction={setAdminUsersGroupId}
     />
   );
 };

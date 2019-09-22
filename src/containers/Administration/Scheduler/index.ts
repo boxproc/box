@@ -9,9 +9,8 @@ import {
   handleDeleteAdminSchedulerJob,
   handleGetAdminSchedulerJobs,
   handleSendAdminSchedulerAction,
-  handleSetAdminSchedulerJobId,
+  selectActiveItemId,
   selectAdminSchedulerJobsItems,
-  selectCurrentSchedulerJobId,
   selectCurrentSchedulerName,
 } from 'store/domains';
 
@@ -27,13 +26,12 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
-  currentSchedulerJobId: selectCurrentSchedulerJobId(state),
+  currentSchedulerJobId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminSchedulerJobs: handleGetAdminSchedulerJobs,
-    setAdminSchedulerJobId: handleSetAdminSchedulerJobId,
     sendAdminSchedulerAction: handleSendAdminSchedulerAction,
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
   },

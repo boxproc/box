@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 import { prepareValuesToRender } from './utils';
@@ -19,12 +20,9 @@ export const selectLedgerStatements = createSelector(
   })
 );
 
-export const selectLedgerStatementCurrentId = (state: StoreState) =>
-  state.ledger.statements.currentStatementId;
-
 export const selectLedgerCurrentStatement = createSelector(
   selectLedgerStatements,
-  selectLedgerStatementCurrentId,
+  selectActiveItemId,
   (statement, currentId) => {
     const current = statement.find(el => el.id === currentId);
 

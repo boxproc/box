@@ -33,5 +33,4 @@ export interface AdminInstitutionsItemDetailsPrepared extends AdminInstitutionsI
 
 export interface AdminInstitutionsState {
   institutions: ImmutableArray<AdminInstitutionsItem>;
-  currentInstitutionId: number;
 }

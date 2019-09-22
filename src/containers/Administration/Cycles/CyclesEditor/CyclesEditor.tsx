@@ -11,7 +11,6 @@ import {
   AdminCyclesEditorItemPrepared,
   HandleDeleteAdminCycleEditor,
   HandleFilterCycles,
-  HandleSetAdminCycleEditorId,
 } from 'store/domains/administration/cycles';
 
 import { SelectValues } from 'types';
@@ -19,7 +18,6 @@ import { SelectValues } from 'types';
 interface CycleEditorProps {
   adminCyclesEditorItems: Array<Partial<AdminCyclesEditorItemPrepared>>;
   institutionsOptions: Array<SelectValues>;
-  setAdminCycleEditorId: HandleSetAdminCycleEditorId;
   filterCycles: HandleFilterCycles;
   deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
 }
@@ -27,7 +25,6 @@ interface CycleEditorProps {
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
   adminCyclesEditorItems,
   institutionsOptions,
-  setAdminCycleEditorId,
   filterCycles,
   deleteAdminCyclesEditor,
 }) => {
@@ -51,7 +48,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       columns={cycleEditorColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_CYCLE_EDITOR}
       editModalName={modalNamesConst.EDIT_CYCLE_EDITOR}
-      setCurrentIdAction={setAdminCycleEditorId}
       contextMenuItems={contextMenuItems}
       FilterForm={
         <CycleEditorFilter

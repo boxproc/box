@@ -10,7 +10,6 @@ import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
 import {
   HandleDeleteProduct,
   HandleFilterProducts,
-  HandleGetProductId,
   ProductItem,
 } from 'store/domains';
 
@@ -19,14 +18,12 @@ import { SelectValues } from 'types';
 interface ProductsProps {
   productItems: Array<ProductItem>;
   institutionsOptions: Array<SelectValues>;
-  getProductId: HandleGetProductId;
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
   currentProductName: string;
 }
 
 export const Products: React.FC<ProductsProps> = ({
-  getProductId,
   productItems,
   institutionsOptions,
   filterProducts,
@@ -53,7 +50,6 @@ export const Products: React.FC<ProductsProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_PRODUCT}
       editModalName={modalNamesConst.EDIT_PRODUCT}
-      setCurrentIdAction={getProductId}
       contextMenuItems={contextMenuItems}
       FilterForm={
         <ProductsFilterForm

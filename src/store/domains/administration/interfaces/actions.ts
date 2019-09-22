@@ -9,20 +9,18 @@ import {
   AddAdminInterfaceAction,
   DeleteAdminInterfaceAction,
   FilterAdminInterfaceAction,
-  SetInterfaceIdAction,
   UpdateAdminInterfaceAction,
 } from './actionTypes';
 import * as api from './api';
 
 import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   AdminInterfaceFilterParamsPrepared,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared
 } from './types';
-
-import { selectAdminCurrentInterfaceId } from './selectors';
 
 import { Thunk } from 'types';
 
@@ -31,9 +29,6 @@ import { errorDecoratorUtil } from 'utils';
 export type AddAdminInterface = (values: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
 export type HandleAddAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
-
-export type SetInterfaceId = (id: number) => SetInterfaceIdAction;
-export type HandleSetInterfaceId = (id: number) => void;
 
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
 export type HandleDeleteAdminInterface = () => Thunk<void>;
@@ -46,11 +41,6 @@ export type HandleUpdateAdminInterface = (propValues: Partial<AdminInterfaceItem
 export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterParamsPrepared>) =>
   FilterAdminInterfaceAction;
 export type HandleFilterAdminInterface = () => Thunk<void>;
-
-export const setAdminInterfaceId: SetInterfaceId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_INTERFACE_ID,
-  payload: id,
-});
 
 export const addAdminInterface: AddAdminInterface = values => ({
   type: ActionTypeKeys.ADD_ADMIN_INTERFACE,
@@ -89,9 +79,6 @@ export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
     );
   };
 
-export const handleSetAdminInterfaceId: HandleSetInterfaceId = id =>
-  setAdminInterfaceId(id);
-
 export const handleAddAdminInterface: HandleAddAdminInterface = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -112,7 +99,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectAdminCurrentInterfaceId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminInterface(id));
         await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INTERFACE));

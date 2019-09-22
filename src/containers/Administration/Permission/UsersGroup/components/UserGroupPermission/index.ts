@@ -6,8 +6,8 @@ import {
   createLoadingSelector,
   handleDeleteAdminGroupPermissions,
   handleGetAdminGroupPermission,
+  selectActiveItemId,
   selectAdminGroupPermissionsItems,
-  selectCurrentUserGroupId,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -20,7 +20,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminUserGroupMemberId: selectCurrentUserGroupId(state),
+  adminUserGroupMemberId: selectActiveItemId(state),
   adminGroupPermissions: selectAdminGroupPermissionsItems(state),
 });
 

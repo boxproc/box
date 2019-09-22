@@ -7,16 +7,14 @@ import { StatementsFilterForm } from './forms';
 
 import { modalNamesConst } from 'consts';
 
-import { HandleSetLedgerStatementId, LedgerStatementItemPrepared } from 'store/domains';
+import { LedgerStatementItemPrepared } from 'store/domains';
 
 export interface StatementsProps {
   ledgerStatements: Array<LedgerStatementItemPrepared>;
-  setLedgerStatementId: HandleSetLedgerStatementId;
 }
 
 const Statements: React.FC<StatementsProps> = ({
   ledgerStatements,
-  setLedgerStatementId,
 }) => {
   return (
     <TablePage
@@ -24,7 +22,6 @@ const Statements: React.FC<StatementsProps> = ({
       data={ledgerStatements}
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_STATEMENTS}
-      setCurrentIdAction={setLedgerStatementId}
       FilterForm={
         <StatementsFilterForm />
       }

@@ -7,7 +7,6 @@ import {
   createLoadingSelector,
   handleDeleteLedgerCustomer,
   handleFilterLedgerCustomers,
-  handleGetLedgerCustomerId,
   LedgerCustomersActionTypes,
   selectInstitutionsOptions,
   selectLedgerCurrentCustomerName,
@@ -30,7 +29,6 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCustomers: handleFilterLedgerCustomers,
-    getLedgerCustomerId: handleGetLedgerCustomerId,
     deleteLedgerCustomer: handleDeleteLedgerCustomer,
   },
   dispatch

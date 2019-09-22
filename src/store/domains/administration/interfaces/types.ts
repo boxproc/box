@@ -55,5 +55,4 @@ export interface AdminInterfaceFilterParamsPrepared {
 
 export interface AdminInterfaceState {
   interfaces: ImmutableArray<AdminInterfaceItem>;
-  currentInterfaceId: number;
 }

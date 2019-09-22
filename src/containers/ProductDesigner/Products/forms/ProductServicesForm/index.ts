@@ -7,7 +7,7 @@ import {
     createLoadingSelector,
     handleUpdateCardService,
     ProductsActionTypes,
-    selectCurrentProductId
+    selectActiveItemId
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -15,7 +15,7 @@ const loadingSelector = createLoadingSelector([
     ProductsActionTypes.UPDATE_CARD_SERVICES,
   ]);
 const mapStateToProps = (state: StoreState) => ({
-    currentGroupId:  selectCurrentProductId(state),
+    currentGroupId:  selectActiveItemId(state),
     isLoading: loadingSelector(state),
 });
 

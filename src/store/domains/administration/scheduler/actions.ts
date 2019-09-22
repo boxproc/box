@@ -4,18 +4,17 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   GetAdminSchedulerJobAction,
   SendAdminSchedulerActionJobAction,
-  SetAdminSchedulerJobIdAction,
   SetGeneratedCronExpressionAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
-import { selectCurrentSchedulerJobId } from './selectors';
 import {
   AdminSchedulerEditableItem,
   AdminSchedulerItem,
@@ -49,9 +48,6 @@ export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
 export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
   Thunk<void>;
 
-export type SetAdminSchedulerJobId = (id: number) => SetAdminSchedulerJobIdAction;
-export type HandleSetAdminSchedulerJobId = (id: number) => void;
-
 export type SetGeneratedCronExpression = (expression: string) => SetGeneratedCronExpressionAction;
 export type HandleSetGeneratedCronExpression = (expression: string) => Thunk<void>;
 
@@ -79,11 +75,6 @@ export const sendAdminSchedulerAction: SendAdminSchedulerAction = values => ({
 export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS,
   payload: api.updateAdminSchedulerJobs(schedulerValues),
-});
-
-export const setAdminSchedulerJobId: SetAdminSchedulerJobId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_SCHEDULER_JOBS_ID,
-  payload: id,
 });
 
 export const setGeneratedCronExpression: SetGeneratedCronExpression = expression => ({
@@ -121,7 +112,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCurrentSchedulerJobId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
@@ -157,9 +148,6 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = va
       dispatch
     );
   };
-
-export const handleSetAdminSchedulerJobId: HandleSetAdminSchedulerJobId = id =>
-  setAdminSchedulerJobId(id);
 
 export const handleSetGeneratedCronExpression: HandleSetGeneratedCronExpression = expression =>
   async dispatch => {

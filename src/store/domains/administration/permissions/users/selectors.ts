@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store/StoreState';
-
 import { statusTypesOptions } from 'consts';
+
+import { selectActiveItemId } from 'store/domains/utils';
+import { StoreState } from 'store/StoreState';
 import { prepareAdminUserValuesToRender } from './utils';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
@@ -17,12 +18,9 @@ export const selectUserEditorItems = createSelector(
   })
 );
 
-export const selectCurrentUserId = (state: StoreState) =>
-  state.administration.users.currentUserId;
-
 export const selectUsersValues = createSelector(
   selectDefaultAdminUsersItems,
-  selectCurrentUserId,
+  selectActiveItemId,
   (items, currentId) => {
     const current = items && items.find(item => item.id === currentId);
 

@@ -5,8 +5,8 @@ import { formValueSelector } from 'redux-form';
 import {
   handleAddAdminActiveUsers,
   handleGetAdminActiveUsers,
+  selectActiveItemId,
   selectActiveUsersItems,
-  selectCurrentUserGroupId,
 } from 'store/domains';
 
 import { formNamesConst } from 'consts';
@@ -18,7 +18,7 @@ import { StoreState } from 'store/StoreState';
 const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM);
 
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectCurrentUserGroupId(state),
+  currentGroupId: selectActiveItemId(state),
   activeUsersItemsOptions: selectActiveUsersItems(state),
   selectedUser: formSelector(
     state,

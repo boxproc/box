@@ -1,13 +1,12 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { statusTypesConst } from 'consts';
+// import { statusTypesConst } from 'consts';
 
 import { ActionTypeKeys, LedgerCardsActionTypes } from './actionTypes';
 import { LedgerCardsState } from './types';
 
 export const ledgerCardsInitialState: ImmutableObject<LedgerCardsState> = Immutable({
   cards: Immutable([]),
-  currentCardId: null,
 });
 
 const ledgerCardsReducer =
@@ -18,23 +17,19 @@ const ledgerCardsReducer =
           .set('cards', action.payload.cards);
 
       case ActionTypeKeys.ACTIVATE_LEDGER_CARD_FULFILLED:
-        const updatedCard = {
-          ...state.cards.find(card => card.id === state.currentCardId),
-          status: statusTypesConst.ACTIVE,
-        };
+        // const updatedCard = {
+        //   ...state.cards.find(card => card.id === state.currentCardId),
+        //   status: statusTypesConst.ACTIVE,
+        // };
 
-        return state
-          .set(
-            'cards',
-            [
-              ...state.cards.filter(card => card.id !== state.currentCardId).asMutable(),
-              updatedCard,
-            ].sort((a, b) => (a.id > b.id) ? 1 : -1)
-          );
-
-      case ActionTypeKeys.SET_LEDGER_CARD_ID:
-        return state
-          .set('currentCardId', action.payload);
+        return state;
+          // .set(
+          //   'cards',
+          //   [
+          //     ...state.cards.filter(card => card.id !== state.currentCardId).asMutable(),
+          //     updatedCard,
+          //   ].sort((a, b) => (a.id > b.id) ? 1 : -1)
+          // );
 
       default: return state;
     }

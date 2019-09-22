@@ -1,8 +1,4 @@
-import {
-  ActionTypeKeys,
-  FilterLedgerTransactionsAction,
-  SetLedgerTransactionIdAction,
-} from './actionTypes';
+import { ActionTypeKeys, FilterLedgerTransactionsAction } from './actionTypes';
 
 import * as api from './api';
 
@@ -14,26 +10,15 @@ import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type SetLedgerTransactionId = (id: number) => SetLedgerTransactionIdAction;
-export type HandleSetLedgerTransactionId = (id: number) => void;
-
 export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterParamsPrepared>) =>
   FilterLedgerTransactionsAction;
 export type HandleFilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterParams>) =>
   Thunk<void>;
 
-export const setLedgerTransactionId: SetLedgerTransactionId = id => ({
-  type: ActionTypeKeys.SET_LEDGER_TRANSACTION_ID,
-  payload: id,
-});
-
 export const filterLedgerTransactions: FilterLedgerTransactions = filterParams => ({
   type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS,
   payload: api.filterLedgerTransactions(filterParams),
 });
-
-export const handleSetLedgerTransactionId: HandleSetLedgerTransactionId = id =>
-  setLedgerTransactionId(id);
 
 export const handleFilterLedgerTransactions: HandleFilterLedgerTransactions = params =>
   async dispatch => {

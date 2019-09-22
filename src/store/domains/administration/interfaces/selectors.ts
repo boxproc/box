@@ -1,10 +1,9 @@
 import { createSelector } from 'reselect';
+
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 import { preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
-
-export const selectAdminCurrentInterfaceId = (state: StoreState) =>
-  state.administration.interfaces.currentInterfaceId;
 
 export const selectDefaultAdminInterface = (state: StoreState) =>
   state.administration.interfaces && state.administration.interfaces.interfaces;
@@ -22,7 +21,7 @@ export const selectAdminInterface = createSelector(
 
 export const selectAdminCurrentInterface = createSelector(
   selectDefaultAdminInterface,
-  selectAdminCurrentInterfaceId,
+  selectActiveItemId,
   selectInstitutionsOptions,
   (endpoints, currentId, institutions) => {
     const current = endpoints.find(el => el.id === currentId);

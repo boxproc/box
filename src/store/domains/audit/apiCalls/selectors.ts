@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 import { prepareValuesToRender } from './utils';
@@ -16,12 +17,9 @@ export const selectAuditApiCalls = createSelector(
   })
 );
 
-export const selectAuditApiCallCurrentId = (state: StoreState) =>
-  state.audit.apiCalls.currentStatementId;
-
 export const selectAuditApiCallStatement = createSelector(
   selectAuditApiCalls,
-  selectAuditApiCallCurrentId,
+  selectActiveItemId,
   (apiCall, currentId) => {
     const current = apiCall.find(el => el.id === currentId);
 

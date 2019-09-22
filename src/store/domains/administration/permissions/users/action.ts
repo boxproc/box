@@ -10,7 +10,6 @@ import {
   AddAdminUserAction,
   FilterUsersAction,
   GetAccessUsersAction,
-  SetAdminUserIdAction,
   UpdateAdminUserAction,
 } from './actionType';
 
@@ -35,9 +34,6 @@ export type HandleFilterUsers = () => Thunk<void>;
 export type UpdateAdminUser = (values: Partial<AdminUserItem>) => UpdateAdminUserAction;
 export type HandleUpdateAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
 
-export type SetAdminUserId = (id: number) => SetAdminUserIdAction;
-export type HandleSetAdminUserId = (id: number) => void;
-
 export type GetAccessUsers = () => GetAccessUsersAction;
 export type HandleGetAccessUsers = () => Thunk<void>;
 
@@ -54,11 +50,6 @@ export const filterUsers: FilterUsers = params => ({
 export const updateAdminUser: UpdateAdminUser = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USER,
   payload: api.updateAdminUser(values),
-});
-
-export const setAdminUserId: SetAdminUserId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_USER_ID,
-  payload: id,
 });
 
 export const getAccessUsers: GetAccessUsers = () => ({
@@ -110,9 +101,6 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
       dispatch
     );
   };
-
-export const handleSetAdminUserId: HandleSetAdminUserId = id =>
-  setAdminUserId(id);
 
 export const handleGetAccessUsers: HandleGetAccessUsers = () =>
   async dispatch => {

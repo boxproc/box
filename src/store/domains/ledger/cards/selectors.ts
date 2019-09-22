@@ -2,15 +2,11 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import {
-  prepareValuesToRender,
-} from './utils';
+import { selectActiveItemId } from 'store/domains/utils';
+import { prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCards = (state: StoreState) =>
   state.ledger.cards.cards;
-
-export const selectLedgerCardId = (state: StoreState) =>
-  state.ledger.cards.currentCardId;
 
 export const selectLedgerCards = createSelector(
   selectDefaultLedgerCards,
@@ -19,7 +15,7 @@ export const selectLedgerCards = createSelector(
 
 export const selectLedgerCardValues = createSelector(
   selectDefaultLedgerCards,
-  selectLedgerCardId,
+  selectActiveItemId,
   (cardsItems, currentId) => {
     const current = cardsItems && cardsItems.asMutable().find(item => item.id === currentId);
 

@@ -7,19 +7,14 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { CardsFilterForm } from './forms';
 
-import {
-  HandleSetLedgerLedgerCardId,
-  LedgerCardItemPrepared,
-} from 'store/domains';
+import { LedgerCardItemPrepared } from 'store/domains';
 
 export interface CardsProps {
   ledgerCards: Array<LedgerCardItemPrepared>;
-  setLedgerCardId: HandleSetLedgerLedgerCardId;
 }
 
 const Cards: React.FC<CardsProps> = ({
   ledgerCards,
-  setLedgerCardId,
 }) => {
   return (
     <TablePage
@@ -27,7 +22,6 @@ const Cards: React.FC<CardsProps> = ({
       data={ledgerCards}
       columns={tableColumns}
       editModalName={modalNamesConst.INFO_LEDGER_CARDS}
-      setCurrentIdAction={setLedgerCardId}
       FilterForm={
         <CardsFilterForm />
       }

@@ -6,15 +6,15 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSysPropAction,
   DeleteAdminSysPropAction,
   FilterAdminSysPropsAction,
-  SetAdminSysPropIdAction,
   UpdateAdminSysPropsAction,
 } from './actionTypes';
-import { selectCurrentAdminSysPropsItem, selectCurrentSysPropId } from './selectors';
+import { selectCurrentAdminSysPropsItem } from './selectors';
 import {
   AdminSysPropFilterParamsPrepared,
   EditableAdminSysProp,
@@ -29,7 +29,7 @@ import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type DeleteAdminSysProp = (id: string) => DeleteAdminSysPropAction;
+export type DeleteAdminSysProp = (id: number | string) => DeleteAdminSysPropAction;
 export type HandleDeleteAdminSysProp = () => Thunk<void>;
 
 export type AddAdminSysProp = (propValues: EditableAdminSysPropPrepared) =>
@@ -43,9 +43,6 @@ export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Th
 export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared) =>
   FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = () => Thunk<void>;
-
-export type SetAdminSysPropId = (id: string) => SetAdminSysPropIdAction;
-export type HandleSetAdminSysPropId = (id: string) => void;
 
 export const deleteAdminSysProp: DeleteAdminSysProp = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
@@ -68,17 +65,12 @@ export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
   payload: api.filterAdminSysProps(filterParams),
 });
 
-export const setAdminSysPropId: SetAdminSysPropId = id => ({
-  type: ActionTypeKeys.SET_ADMIN_SYS_PROP_ID,
-  payload: id,
-});
-
 export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectCurrentSysPropId(state);
+        const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminSysProp(id));
         await dispatch(handleFilterAdminSysProps());
@@ -134,6 +126,3 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = () =>
       dispatch
     );
   };
-
-export const handleSetAdminSysPropId: HandleSetAdminSysPropId = id =>
-  setAdminSysPropId(id);

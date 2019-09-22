@@ -10,6 +10,8 @@ import { ContextMenuList } from 'components';
 import { modalNamesConst } from 'consts';
 
 import {
+  handleSetActiveItemId,
+  HandleSetActiveItemId,
   handleSetActiveTableRowIndex,
   HandleSetActiveTableRowIndex,
   openModal,
@@ -24,11 +26,11 @@ import { componentUtil } from 'utils';
 
 export interface WithEditTableProps {
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
+  setActiveItemId: HandleSetActiveItemId;
   editModalName: string;
   contextMenuItems?: Array<ContextMenuItem>;
   activeTableRowIndex?: number;
   handleOpenModal: OpenModal;
-  setCurrentIdAction: (id: number) => void;
   onRowClick: () => object;
 }
 
@@ -37,8 +39,8 @@ export const withEditTable = <OriginProps extends {}>(
 ) => {
   const WithEditTable: React.FC<WithEditTableProps> = props => {
     const {
-      setCurrentIdAction,
       setActiveTableRowIndex,
+      setActiveItemId,
       handleOpenModal,
       editModalName,
       onRowClick,
@@ -91,7 +93,7 @@ export const withEditTable = <OriginProps extends {}>(
           onDoubleClick: () => {
             if (editModalName && !isLocked) {
               setActiveTableRowIndex(rowIndex);
-              setCurrentIdAction(id);
+              setActiveItemId(id);
               return openCurrentRowInModal();
             } else {
               return null;
@@ -99,11 +101,11 @@ export const withEditTable = <OriginProps extends {}>(
           },
           onContextMenu: () => {
             if (menuItems.length && !isLocked) {
-              setCurrentIdAction(id);
+              setActiveItemId(id);
               setCurrentId(id);
               setActiveTableRowIndex(rowIndex);
             } else {
-              setCurrentIdAction(null);
+              setActiveItemId(null);
               setCurrentId(null);
               setActiveTableRowIndex(null);
             }
@@ -114,7 +116,7 @@ export const withEditTable = <OriginProps extends {}>(
         openCurrentRowInModal,
         editModalName,
         menuItems,
-        setCurrentIdAction,
+        setActiveItemId,
         setActiveTableRowIndex,
       ]
     );
@@ -149,6 +151,7 @@ export const withEditTable = <OriginProps extends {}>(
     {
       handleOpenModal: openModal,
       setActiveTableRowIndex: handleSetActiveTableRowIndex,
+      setActiveItemId: handleSetActiveItemId,
     },
     dispatch
   );

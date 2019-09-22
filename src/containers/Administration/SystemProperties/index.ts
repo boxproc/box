@@ -8,10 +8,9 @@ import {
   createLoadingSelector,
   handleDeleteAdminSysProp,
   handleFilterAdminSysProps,
-  handleSetAdminSysPropId,
   handleUpdateAdminSysProps,
+  selectActiveItemId,
   selectAdminSysPropsItems,
-  selectCurrentSysPropId,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -25,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminSysPropsItems: selectAdminSysPropsItems(state),
-  currentSysPropId: selectCurrentSysPropId(state),
+  currentSysPropId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -33,7 +32,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteAdminSysProp: handleDeleteAdminSysProp,
     updateAdminSysProps: handleUpdateAdminSysProps,
     filterAdminSysProps: handleFilterAdminSysProps,
-    setAdminSysPropId: handleSetAdminSysPropId,
   },
   dispatch
 );
