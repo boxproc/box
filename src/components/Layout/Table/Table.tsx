@@ -1,4 +1,5 @@
 import React from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import ReactTable, { ComponentDecoratorProps, ReactTableDefaults } from 'react-table';
 
 import { Box, Flex } from '@rebass/grid';
@@ -46,10 +47,6 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.normalAccent};
-  }
-
-  .icon path {
-    stroke: ${({ theme }) => theme.colors.gray};
   }
 `;
 
@@ -109,6 +106,10 @@ export const TableCell: React.FC<TableCellProps> = ({
   );
 };
 
+const TableWrapper = styled.div`
+  box-shadow: ${({ theme }) => theme.shadows.normalBox};
+`;
+
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
   columns: Array<object>;
@@ -134,27 +135,27 @@ export const Table: React.FC<TableProps> = props => {
   } = props;
 
   return (
-    <React.Fragment>
-      <TableStyled
-        activeRowIndex={activeRowIndex}
-      >
-        <ReactTable
-          {...props as TableProps}
-          sortable={sortable}
-          filterable={filterable}
-          minRows={0}
-          showPagination={data && data.length > pageSize}
-          showPageSizeOptions={false}
-          defaultPageSize={pageSize}
-          multiSort={false}
-          resizable={true}
-          TheadComponent={
-            isHeader && data && data.length > 0
-              ? ReactTableDefaults.TheadComponent
-              : () => null
-          }
-        />
-      </TableStyled>
-    </React.Fragment>
+    <TableWrapper>
+      <PerfectScrollbar>
+        <TableStyled activeRowIndex={activeRowIndex}>
+          <ReactTable
+            {...props as TableProps}
+            sortable={sortable}
+            filterable={filterable}
+            minRows={0}
+            showPagination={data && data.length > pageSize}
+            showPageSizeOptions={false}
+            defaultPageSize={pageSize}
+            multiSort={false}
+            resizable={true}
+            TheadComponent={
+              isHeader && data && data.length > 0
+                ? ReactTableDefaults.TheadComponent
+                : () => null
+            }
+          />
+        </TableStyled>
+      </PerfectScrollbar>
+    </TableWrapper>
   );
 };

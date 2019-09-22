@@ -7,7 +7,17 @@ interface TableStyledProps {
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
-  margin-bottom: 20px;
+  overflow: visible;
+
+  .ReactTable,
+  .ReactTable .rt-table {
+    overflow: visible;
+  }
+
+  .ReactTable {
+    height: 100%;
+    border: none;
+  }
 
   .ReactTable .rt-thead .rt-resizable-header-content,
   .ReactTable .rt-thead .rt-th {
@@ -40,18 +50,6 @@ export const TableStyled = styled.div<TableStyledProps>`
 
   .ReactTable .rt-tbody::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
-
-  .ReactTable {
-    height: 100%;
-    border: none;
-    overflow-y: auto;
-    box-shadow: ${({ theme }) => theme.shadows.normalBox};
-  }
-
-  .ReactTable .rt-tbody {
-    overflow-y: overlay;
-    overflow-x: hidden;
   }
 
   .ReactTable .rt-td {
@@ -142,11 +140,9 @@ export const TableStyled = styled.div<TableStyledProps>`
   }
 
   .ReactTable .rt-tbody .rt-td {
-    overflow: visible;
     word-break: break-word;
   }
 
-  /* header */
   .ReactTable .-sort-asc .up-icon path,
   .ReactTable .-sort-desc .down-icon path {
     stroke: ${({ theme }) => theme.colors.black};

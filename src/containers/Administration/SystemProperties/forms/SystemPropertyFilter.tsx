@@ -9,8 +9,6 @@ import { formNamesConst } from 'consts';
 
 import { HandleFilterAdminSysProps } from 'store/domains';
 
-import { formErrorUtil } from 'utils';
-
 interface SystemPropertyFilterProps {
   filterAdminSysProps: HandleFilterAdminSysProps;
 }
@@ -41,7 +39,6 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterAllProps> = ({
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
-              validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
