@@ -45,12 +45,16 @@ export interface AuditApiCallsFilterParamsPrepared {
   date_to: string;
 }
 
-export interface ApiCallDetails {
+export interface ApiCallDetailsItem {
   request_body: string;
   response_body: string;
 }
 
+export interface ApiCallDetails {
+  api_call: ApiCallDetailsItem;
+}
+
 export interface AuditApiCallsState {
   apiCalls: ImmutableArray<ApiCallsItem>;
-  apiCallDetails: ApiCallDetails;
+  apiCallDetails: ApiCallDetailsItem;
 }

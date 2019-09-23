@@ -20,7 +20,7 @@ const auditApiCallsReducer = (
 
     case ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_FULFILLED:
       return state
-        .set('apiCallDetails', action.payload.api_calls[0]);
+        .set('apiCallDetails', action.payload.api_call);
 
     default:
       return state;

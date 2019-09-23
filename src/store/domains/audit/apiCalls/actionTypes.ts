@@ -1,4 +1,4 @@
-import { ApiCallsItems, AuditApiCallId } from './types';
+import { ApiCallDetails, ApiCallsItems } from './types';
 
 import { ApiResponse } from 'types';
 
@@ -33,7 +33,7 @@ export interface GetDetailsAuditApiCallsAction {
 }
 
 export interface GetDetailsAuditApiCallsFulfilledAction {
-  readonly payload: {api_calls: Array<AuditApiCallId>};
+  readonly payload: ApiCallDetails;
   readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_FULFILLED;
 }
 

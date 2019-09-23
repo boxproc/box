@@ -1,79 +1,23 @@
 import React from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
-import TextareaAutosize from 'react-autosize-textarea';
 
 import styled from 'theme';
+import { scrollbarCss } from 'theme/scrollbarCss';
 
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
 
 import { InvalidProp } from './types';
 
-interface WrapperProps {
-  height?: number;
-  disabled?: boolean;
-  invalid?: boolean;
-}
+interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextAreaElement> { }
 
-const Wrapper = styled.div<WrapperProps>`
-  height: ${({ height }) => height ? height + 'px' : '50px'};
-  border: solid 1px ${({ theme }) => theme.colors.gray};
-  padding: 1px;
-
-  ${({ disabled, theme }) => disabled && `
-    border-color: ${theme.colors.lightGray};
-  `};
-
-  ${({ invalid, theme }) => invalid && `
-    border-color: ${theme.colors.red};
-  `};
-
-  &.is-focus {
-    border-color: ${({ theme }) => theme.colors.normalAccent};
-  }
-`;
-
-const Textarea = styled(TextareaAutosize)`
+const TextField = styled.textarea<TextAreaProps>`
   ${sharedInputCss};
-  min-height: 100%;
+  ${scrollbarCss};
+  height: auto;
+  min-height: 50px;
   line-height: 1.35;
-  resize: none;
-  overflow: hidden;
-  border: 0 !important;
+  resize: vertical;
+  overflow: auto;
 `;
-
-interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextAreaElement> {
-  height?: number;
-}
-
-const TextField: React.FC<TextAreaProps> = props => {
-  const { height, disabled, invalid } = props;
-  const wrapperRef = React.useRef(null);
-
-  const addFocusClass = () => {
-    wrapperRef.current.classList.add('is-focus');
-  };
-  const removeFocusClass = () => {
-    wrapperRef.current.classList.remove('is-focus');
-  };
-
-  return (
-    <Wrapper
-      ref={wrapperRef}
-      height={height}
-      disabled={disabled}
-      invalid={invalid}
-      onFocus={addFocusClass}
-      onBlur={removeFocusClass}
-    >
-      <PerfectScrollbar>
-        <Textarea
-          {...props}
-        />
-      </PerfectScrollbar>
-    </Wrapper>
-  );
-};
 
 export default withFormField(TextField);

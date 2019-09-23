@@ -108,6 +108,11 @@ export const TableCell: React.FC<TableCellProps> = ({
 
 const TableWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
+
+  .ps__thumb-x,
+  .ps__thumb-y {
+    background-color: #ffa400;
+  }
 `;
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {

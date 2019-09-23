@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { LedgerAccountItemDetailsPrepared } from 'store/domains';
+import { LedgerAccountItemDetailsPrepared, LedgerStatementItemPrepared } from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -16,7 +16,7 @@ interface EditAccountModalProps extends WithModalProps {
   ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
   isFormDirty: boolean;
-  ledgerLastStatement: any;
+  ledgerLastStatement: Partial<LedgerStatementItemPrepared>;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_ACCOUNT;

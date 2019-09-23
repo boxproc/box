@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Delimiter, InputField, SelectField, TextField } from 'components';
+import { Delimiter, InputField, SelectField, TextareaAutosizeField } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -20,7 +20,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="100px" p="10px">
+          <Box width="115px" p="10px">
             <Field
               id="id"
               name="id"
@@ -62,7 +62,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
             />
           </Box>
           <Delimiter />
-          <Box width="100px" p="10px">
+          <Box width="115px" p="10px">
             <Field
               id="endpointId"
               name="endpointId"
@@ -88,7 +88,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
                 <Field
                   id="requestBody"
                   name="requestBody"
-                  component={TextField}
+                  component={TextareaAutosizeField}
                   label="Request Body"
                   placeholder="Request Body"
                   disabled={true}
@@ -99,7 +99,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
                 <Field
                   id="responseBody"
                   name="responseBody"
-                  component={TextField}
+                  component={TextareaAutosizeField}
                   label="Response Body"
                   placeholder="Response Body"
                   disabled={true}
