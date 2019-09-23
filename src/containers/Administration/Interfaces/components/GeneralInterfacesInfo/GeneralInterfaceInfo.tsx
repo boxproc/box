@@ -34,6 +34,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             label="Institution"
             options={institutionsOptions}
             isDisabled={isDisabledInstitutions}
+            isClearable={false}
             validate={[formErrorUtil.required]}
           />
         </Box>

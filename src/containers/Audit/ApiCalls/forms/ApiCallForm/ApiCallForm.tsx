@@ -20,7 +20,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="115px" p="10px">
+          <Box width="100px" p="10px">
             <Field
               id="id"
               name="id"
@@ -39,6 +39,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               label="Institution"
               placeholder="Select Institution"
               isDisabled={true}
+              isClearable={false}
             />
           </Box>
           <Box width={[3 / 11]} p="10px">
@@ -62,7 +63,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
             />
           </Box>
           <Delimiter />
-          <Box width="115px" p="10px">
+          <Box width="100px" p="10px">
             <Field
               id="endpointId"
               name="endpointId"

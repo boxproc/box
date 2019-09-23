@@ -18,6 +18,7 @@ export const customStyles: StylesConfig = {
   dropdownIndicator: (provided: React.CSSProperties, state: SelectState) => {
     const {
       isDisabled,
+      isFocused,
     } = state;
 
     return ({
@@ -25,7 +26,11 @@ export const customStyles: StylesConfig = {
       cursor: 'pointer',
       // eslint-disable-next-line
       ['& > svg path']: {
-        stroke: isDisabled ? theme.colors.lightGray : theme.colors.darkGray,
+        color: isDisabled
+          ? theme.colors.lightGray
+          : isFocused
+            ? theme.colors.normalAccent
+            : theme.colors.darkGray,
       },
     });
   },
@@ -86,16 +91,13 @@ export const customStyles: StylesConfig = {
       ...provided,
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
       fontSize: 13,
-      borderColor: invalid ?
-        theme.colors.red
-        :
-        (isFocused || menuIsOpen) ?
-          theme.colors.normalAccent
-          :
-          isDisabled ?
-            theme.colors.lightGray
-            :
-            theme.colors.gray,
+      borderColor: invalid
+        ? theme.colors.red
+        : (isFocused || menuIsOpen)
+          ? theme.colors.normalAccent
+          : isDisabled
+            ? theme.colors.lightGray
+            : theme.colors.gray,
       backgroundColor: theme.colors.white,
       boxShadow: 'none',
       minHeight: '31px',

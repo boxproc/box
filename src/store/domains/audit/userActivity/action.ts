@@ -41,7 +41,7 @@ export const handleFilterAuditUserActivities: HandleFilterAuditUserActivities = 
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNamesConst.AUDIT_USER_ACTIVITIES_FILTER);
+        const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 

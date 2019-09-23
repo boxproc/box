@@ -5,20 +5,29 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
-import { EndpointFilterForm } from './forms';
+import { EndpointsFilter } from './forms';
 
-import { AdminEndpointItemPrepared, HandleDeleteAdminEndpoint } from 'store/domains';
+import {
+  AdminEndpointItemPrepared,
+  HandleDeleteAdminEndpoint,
+  HandleFilterAdminEndpoint,
+} from 'store/domains';
+import { SelectValues } from 'types';
 
 export interface EndpointsProps {
   adminEndpointItems: Array<AdminEndpointItemPrepared>;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   adminCurrentEndpointName: string;
+  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const Endpoints: React.FC<EndpointsProps> = ({
   adminEndpointItems,
   deleteEndpoint,
+  filterAdminEndpoint,
   adminCurrentEndpointName,
+  institutionsOptions,
 }) => {
   const contextMenuItems = React.useMemo(
     () => [
@@ -41,8 +50,12 @@ const Endpoints: React.FC<EndpointsProps> = ({
       addNewModalName={modalNamesConst.ADD_ADMIN_ENDPOINT}
       editModalName={modalNamesConst.EDIT_ADMIN_ENDPOINT}
       contextMenuItems={contextMenuItems}
+      filterAction={filterAdminEndpoint}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
-        <EndpointFilterForm />
+        <EndpointsFilter institutionsOptions={institutionsOptions} />
       }
     />
   );

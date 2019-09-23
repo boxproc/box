@@ -110,7 +110,7 @@ export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNamesConst.LEDGER_CUSTOMERS_FILTER);
+        const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
         const preparedValues = preparedFilterParamsToSend(formValues(state));
 

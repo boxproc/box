@@ -117,10 +117,9 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       columns={columns}
       addNewModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
+      filterAction={filterAdminSysProps}
       FilterForm={
-        <SystemPropertyFilter
-          filterAdminSysProps={filterAdminSysProps}
-        />
+        <SystemPropertyFilter />
       }
     />
   );

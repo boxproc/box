@@ -10,6 +10,7 @@ export const clear = () => {
   sessionStorage.clear();
   // cookiesUtil.remove(cookiesNames.SESSION_ID); // for demo
   apiClient.clear();
+  // urlUtil.openLocation(basePath);
 };
 
 export const setRegistrationPendingFlag = () =>

@@ -58,6 +58,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Institution"
             options={institutionsOptions}
             isDisabled={isEditMode}
+            isClearable={false}
             validate={[formErrorUtil.required]}
           />
         </Box>

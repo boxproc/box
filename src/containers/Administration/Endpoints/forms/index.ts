@@ -1,2 +1,2 @@
 export { default as EndpointForm } from './EndpointForm';
-export { default as EndpointFilterForm } from './EndpointFilterForm';
+export { default as EndpointsFilter } from './EndpointsFilter';

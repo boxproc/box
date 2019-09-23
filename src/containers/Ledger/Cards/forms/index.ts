@@ -1,2 +1,2 @@
-export { default as CardsFilterForm } from './CardsFilterForm';
+export { default as CardsFilter } from './CardsFilter';
 export { default as CardForm } from './CardsForm';

@@ -43,7 +43,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   requires2faFlagValue,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => defineAdminUser(data)),
@@ -162,7 +162,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
-        disabledOk={pristine || invalid}
+        disabledOk={pristine || submitting}
       />
     </form >
   );

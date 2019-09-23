@@ -6,16 +6,21 @@ import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 
-import { AccountsFilterForm } from 'containers/Ledger/Accounts/forms';
+import { AccountsFilter } from './forms';
 
-import { LedgerAccountItemPrepared } from 'store/domains';
+import { HandleFilterLedgerAccounts, LedgerAccountItemPrepared } from 'store/domains';
+import { SelectValues } from 'types';
 
 export interface AccountsProps {
   ledgerAccounts: Array<LedgerAccountItemPrepared>;
+  filterLedgerAccounts: HandleFilterLedgerAccounts;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
   ledgerAccounts,
+  filterLedgerAccounts,
+  institutionsOptions,
 }) => {
   return (
     <TablePage
@@ -24,8 +29,12 @@ const Accounts: React.FC<AccountsProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_LEDGER_ACCOUNT}
       editModalName={modalNamesConst.EDIT_LEDGER_ACCOUNT}
+      filterAction={filterLedgerAccounts}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
-        <AccountsFilterForm />
+        <AccountsFilter institutionsOptions={institutionsOptions} />
       }
     />
   );

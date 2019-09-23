@@ -39,11 +39,9 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
       title="Event Data Elements"
       data={adminEventDataElemsItems}
       columns={tableColumns}
+      filterAction={filterAdminEventDataElems}
       FilterForm={
-        <EventDataElemsFilter
-          eventOptions={adminEventsOptions}
-          filterAdminEventDataElems={filterAdminEventDataElems}
-        />
+        <EventDataElemsFilter eventOptions={adminEventsOptions} />
       }
     />
   );

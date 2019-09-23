@@ -17,11 +17,7 @@ import { Thunk } from 'types';
 
 import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
 
-import {
-  AdminUserItem,
-  AdminUserItemDetails,
-  UsersFilterParamsPrepared
-} from './types';
+import { AdminUserItem, AdminUserItemDetails, UsersFilterParamsPrepared } from './types';
 
 import { errorDecoratorUtil } from 'utils';
 
@@ -61,7 +57,7 @@ export const handleFilterUsers: HandleFilterUsers = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNamesConst.USER);
+        const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
         const preparedValues = prepareUsersFiltersParamsToSend(formValues(state));
 

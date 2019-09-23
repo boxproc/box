@@ -28,9 +28,6 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
     border-right: 1px solid ${({ theme }) => theme.colors.lighterGray} !important;
   }
-  .ReactTable .rt-thead .rt-th:hover .title {
-    color: ${({ theme }) => theme.colors.normalAccent};
-  }
 
   .ReactTable .rt-tbody::-webkit-scrollbar {
     width: 6px;

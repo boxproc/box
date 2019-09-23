@@ -5,16 +5,18 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
-import { CardsFilterForm } from './forms';
+import { CardsFilter } from './forms';
 
-import { LedgerCardItemPrepared } from 'store/domains';
+import { HandleFilterLedgerCards, LedgerCardItemPrepared } from 'store/domains';
 
 export interface CardsProps {
   ledgerCards: Array<LedgerCardItemPrepared>;
+  filterLedgerCards: HandleFilterLedgerCards;
 }
 
 const Cards: React.FC<CardsProps> = ({
   ledgerCards,
+  filterLedgerCards,
 }) => {
   return (
     <TablePage
@@ -22,8 +24,9 @@ const Cards: React.FC<CardsProps> = ({
       data={ledgerCards}
       columns={tableColumns}
       editModalName={modalNamesConst.INFO_LEDGER_CARDS}
+      filterAction={filterLedgerCards}
       FilterForm={
-        <CardsFilterForm />
+        <CardsFilter />
       }
     />
   );

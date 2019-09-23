@@ -152,7 +152,7 @@ export const handleGetAdminActiveUsers: HandleGetAdminActiveUsers = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getAdminActiveUsers(id));
-        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM));
+        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS));
       },
       dispatch
     );
@@ -264,7 +264,7 @@ export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = (values) =>
         }));
         await dispatch(getAdminActiveUsers(currentGroupId));
         await dispatch(getAdminUserGroupMembers(currentGroupId));
-        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM));
+        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS));
       },
       dispatch
     );

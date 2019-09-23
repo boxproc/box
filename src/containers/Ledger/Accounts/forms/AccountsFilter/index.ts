@@ -4,34 +4,25 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import StatementsFilterForm from './StatementsFilterForm';
+import AccountsFilter from './AccountsFilter';
 
 import {
   createLoadingSelector,
-  handleFilterLedgerStatements,
   handleGetInstitutionProducts,
   ProductsActionTypes,
   selectInstitutionProductsOptions,
-  selectInstitutionsOptions,
 } from 'store/domains';
-import { StoreState } from 'store/StoreState';
 
-import { dateUtil } from 'utils';
+import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
 ]);
-const formSelector = formValueSelector(formNamesConst.LEDGER_STATEMENTS_FILTER);
+const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
   institutionProductsOptions: selectInstitutionProductsOptions(state),
-  initialValues: {
-    institutionId: selectInstitutionsOptions(state)[0],
-    dateFrom: dateUtil.yesterday,
-    dateTo: dateUtil.today,
-  },
   institutionValue: formSelector(
     state,
     'institutionId'
@@ -40,7 +31,6 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerStatements: handleFilterLedgerStatements,
     getInstitutionProducts: handleGetInstitutionProducts,
   },
   dispatch
@@ -49,4 +39,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(StatementsFilterForm);
+)(AccountsFilter);

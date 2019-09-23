@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import Statements from './Statements';
 
 import {
   createLoadingSelector,
+  handleFilterLedgerStatements,
   LedgerStatementsActionTypes,
+  selectInstitutionsOptions,
   selectLedgerStatements,
 } from 'store/domains';
 
@@ -17,8 +20,17 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerStatements: selectLedgerStatements(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    filterLedgerStatements: handleFilterLedgerStatements,
+  },
+  dispatch
+);
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Statements);

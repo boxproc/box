@@ -30,7 +30,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   updateLedgerCustomer,
   dirty,
   pristine,
-  invalid,
+  submitting,
   ledgerCurrentCustomerName,
 }) => {
   const handleSubmitForm = React.useCallback(
@@ -60,7 +60,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
           onCancel={onCancel}
           rightPosition={true}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
         />
       </Flex>
     </form >

@@ -34,13 +34,15 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     return null;
   }
 
+  const status = statusTypes2faOptions.find(el => el.value === values.status);
+
   return {
     id: values.id,
     username: values.username,
     firstName: values.first_name,
     lastName: values.last_name,
     email: values.email,
-    status: statusTypes2faOptions.find(el => el.value === values.status).label,
+    status: status && status.label,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
     requires2faFlag: values.requires_2fa_flag === yesNoTypesConst.YES,

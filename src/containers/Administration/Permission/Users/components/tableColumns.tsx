@@ -93,7 +93,7 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <TableHeader title="Password entry counter" />,
+    Header: <TableHeader title="Password Entry Counter" />,
     accessor: 'passwordEntryCounter',
     Cell: (props: TCell<'passwordEntryCounter'>) => (
       <TableCell
@@ -105,7 +105,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Datetime of last login" />,
+    Header: <TableHeader title="Datetime of Last Login" />,
     accessor: 'datetimeOfLastLogin',
     Cell: (props: TCell<'datetimeOfLastLogin'>) => (
       <TableCell

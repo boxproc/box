@@ -7,6 +7,7 @@ import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
   handleDeleteAdminEndpoint,
+  handleFilterAdminEndpoint,
   selectAdminCurrentEndpointName,
   selectAdminEndpoints,
   selectInstitutionsOptions,
@@ -28,6 +29,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteEndpoint: handleDeleteAdminEndpoint,
+    filterAdminEndpoint: handleFilterAdminEndpoint,
   },
   dispatch
 );

@@ -3,13 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import {
-  Button,
-  ExternalSpinnerProps,
-  Hr,
-  OkCancelButtons,
-  withSpinner,
-} from 'components';
+import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
@@ -44,8 +38,8 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   addAdminEndpoint,
   institutionsOptions,
   pristine,
-  invalid,
   dirty,
+  submitting,
   mode,
   currentEndpointName,
 }) => {
@@ -84,7 +78,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
           withCancelConfirmation={dirty}
         />
       </Flex>

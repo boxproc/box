@@ -56,8 +56,8 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   institutionsOptions,
   mode,
   pristine,
-  invalid,
   dirty,
+  submitting,
 }) => {
   const isEditMode = mode === 'edit';
 
@@ -96,6 +96,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={isEditMode}
+              isClearable={false}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -197,7 +198,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
         />
       </Flex>
     </form >

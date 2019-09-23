@@ -5,7 +5,7 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from 'containers/Ledger/Customers/components';
-import { CustomersFilterForm } from 'containers/Ledger/Customers/forms';
+import { CustomersFilter } from 'containers/Ledger/Customers/forms';
 
 import {
   HandleDeleteLedgerCustomer,
@@ -51,9 +51,12 @@ const Customers: React.FC<CustomersProps> = ({
       addNewModalName={modalNamesConst.ADD_LEDGER_CUSTOMER}
       editModalName={modalNamesConst.EDIT_LEDGER_CUSTOMER}
       contextMenuItems={contextMenuItems}
+      filterAction={filterLedgerCustomers}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
-        <CustomersFilterForm
-          filterLedgerCustomers={filterLedgerCustomers}
+        <CustomersFilter
           institutionsOptions={institutionsOptions}
         />
       }

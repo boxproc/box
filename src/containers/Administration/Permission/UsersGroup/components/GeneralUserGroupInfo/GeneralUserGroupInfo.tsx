@@ -32,6 +32,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             label="Institution"
             options={institutionsOptions}
             isDisabled={isEditMode}
+            isClearable={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -42,7 +43,6 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             component={InputField}
             label="User group name"
             placeholder="Enter User group name"
-            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

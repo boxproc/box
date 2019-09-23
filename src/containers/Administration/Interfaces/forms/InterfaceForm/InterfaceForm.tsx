@@ -38,7 +38,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   mode,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminInterface : addAdminInterface;
@@ -76,7 +76,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
         />
       </Flex>
     </form >

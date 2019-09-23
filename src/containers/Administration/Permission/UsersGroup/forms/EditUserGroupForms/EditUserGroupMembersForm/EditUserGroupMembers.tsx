@@ -71,7 +71,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
 };
 
 export default reduxForm<{}, EditUserGroupMembersProps>({
-  form: formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM,
+  form: formNamesConst.EDIT_USER_GROUP_MEMBERS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(EditUserGroupMembers);

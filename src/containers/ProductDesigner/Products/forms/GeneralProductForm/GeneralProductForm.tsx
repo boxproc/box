@@ -37,7 +37,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   currentProductName,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   React.useEffect(
     () => {
@@ -72,7 +72,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           onCancel={onCancel}
           rightPosition={true}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
         />
       </Flex>
     </form>

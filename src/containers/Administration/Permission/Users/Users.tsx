@@ -5,21 +5,17 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
-import { UserFilter } from './forms';
+import { UsersFilter } from './forms';
 
 import { AdminUserItemPrepared, HandleFilterUsers } from 'store/domains';
 
-import { SelectValues } from 'types';
-
-interface UserFilterProps {
+interface UsersProps {
   adminUserItems: Array<AdminUserItemPrepared>;
-  institutionsOptions: Array<SelectValues>;
   filterUsers: HandleFilterUsers;
 }
 
-export const User: React.FC<UserFilterProps> = ({
+export const Users: React.FC<UsersProps> = ({
   adminUserItems,
-  institutionsOptions,
   filterUsers,
 }) => {
   return (
@@ -29,14 +25,12 @@ export const User: React.FC<UserFilterProps> = ({
       columns={tableColumns}
       addNewModalName={modalNamesConst.ADD_ADMIN_USER}
       editModalName={modalNamesConst.EDIT_ADMIN_USER}
+      filterAction={filterUsers}
+      initialFilterValues={{
+        statusActiveFlag: false,
+      }}
       FilterForm={
-        <UserFilter
-          filterUsers={filterUsers}
-          institutionsOptions={institutionsOptions}
-          initialValues={{
-            statusActiveFlag: false,
-          }}
-        />
+        <UsersFilter />
       }
     />
   );
@@ -44,4 +38,4 @@ export const User: React.FC<UserFilterProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(User);
+})(Users);

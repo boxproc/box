@@ -9,7 +9,7 @@ import { withModal, WithModalProps } from 'HOCs';
 import { basePath, modalNamesConst, statusCodes } from 'consts';
 
 import { PayloadMessageModal } from 'store/domains';
-import { storageUtil } from 'utils';
+import { storageUtil, urlUtil } from 'utils';
 
 interface MessageModalProps extends RouteComponentProps, WithModalProps {
   payloadMessageModal: PayloadMessageModal;
@@ -21,7 +21,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
   closeAllModals,
-  history,
+  // history,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
 
@@ -35,11 +35,12 @@ const MessageModal: React.FC<MessageModalProps> = ({
         ) {
           storageUtil.clear();
           closeAllModals();
-          history.push(basePath);
+          // history.push(basePath);
+          urlUtil.openLocation(basePath);
         }
       };
     },
-    [statusCode, history, closeAllModals]
+    [statusCode, closeAllModals]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);

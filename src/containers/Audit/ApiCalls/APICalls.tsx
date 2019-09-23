@@ -5,16 +5,22 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
-import { ApiCallsFilterForm } from './forms';
+import { ApiCallsFilter } from './forms';
 
-import { ApiCallsItemPrepared } from 'store/domains';
+import { ApiCallsItemPrepared, HandleFilterAuditApiCalls } from 'store/domains';
+import { SelectValues } from 'types';
+import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
+  filterAuditApiCalls: HandleFilterAuditApiCalls;
+  institutionsOptions: Array<SelectValues>;
 }
 
 const ApiCalls: React.FC<ApiCallsProps> = ({
   auditApiCalls,
+  filterAuditApiCalls,
+  institutionsOptions,
 }) => {
   return (
     <TablePage
@@ -22,8 +28,14 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       data={auditApiCalls}
       columns={tableColumns}
       editModalName={modalNamesConst.AUDIT_API_CALL}
+      filterAction={filterAuditApiCalls}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+        dateFrom: dateUtil.yesterday,
+        dateTo: dateUtil.today,
+      }}
       FilterForm={
-        <ApiCallsFilterForm />
+        <ApiCallsFilter institutionsOptions={institutionsOptions} />
       }
     />
   );

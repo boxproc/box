@@ -103,7 +103,12 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
       },
     ],
-    [sendAdminSchedulerAction, currentSchedulerName, currentSchedulerJobId, deleteAdminSchedulerJob]
+    [
+      sendAdminSchedulerAction,
+      currentSchedulerName,
+      currentSchedulerJobId,
+      deleteAdminSchedulerJob,
+    ]
   );
 
   return (
@@ -114,6 +119,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       addNewModalName={modalNamesConst.ADD_ADMIN_SCHEDULER}
       editModalName={modalNamesConst.EDIT_ADMIN_SCHEDULER}
       contextMenuItems={contextMenuItems}
+      // filterAction={}
       FilterForm={
         <SchedulerFilter />
       }

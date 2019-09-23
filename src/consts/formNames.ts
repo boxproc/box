@@ -4,12 +4,12 @@ export enum formNamesConst {
   LOGIN_CODE = 'loginCodeForm',
 
   PASSWORD = 'passwordForm',
-  CHANGE_PROFILE_FORM = 'ChangeProfileForm',
+  CHANGE_PROFILE_FORM = 'changeProfileForm',
 
-  SYSTEM_PROPERTY_FILTER = 'adminSystemPropertiesForm',
+  FILTER = 'filterForm',
+
   ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
 
-  PRODUCTS_FILTER = 'productsFilterForm',
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'addProductForm',
   GENERAL_PRODUCT = 'editGeneralProductForm',
@@ -22,43 +22,29 @@ export enum formNamesConst {
 
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
-  EDIT_USER_GROUP_MEMBERS_FORM = 'editUserGroupMembersForm',
+  EDIT_USER_GROUP_MEMBERS = 'editUserGroupMembersForm',
   EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
   USERS_GROUP = 'usersGroupForm',
   ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
-  USER = 'userForm',
   DEFINE_ADMIN_USER = 'defineAdminUserForm',
 
   DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
-  CYCLES_EDITOR_FILTER = 'adminCycleEditorFilterForm',
 
-  ADMIN_EVENT_DATA_ELEMS_FILTER = 'adminEventDataElemsFilterForm',
-
-  SCHEDULER = 'schedulerForm',
   DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
 
-  LEDGER_CUSTOMERS_FILTER = 'ledgerCustomersFilter',
-  ADD_LEDGER_CUSTOMER = 'addLedgerCustomer',
-  EDIT_LEDGER_CUSTOMER = 'editLedgerCustomer',
-  LEDGER_ACCOUNTS_FILTER = 'ledgerAccountsFilter',
-  LEDGER_ACCOUNT = 'ledgerAccount',
-  LEDGER_TRANSACTIONS_FILTER = 'ledgerTransactionsFilter',
-  LEDGER_TRANSACTIONS = 'ledgerTransactions',
-  LEDGER_CARDS_FILTER = 'ledgerCardsFilter',
+  ADD_LEDGER_CUSTOMER = 'addLedgerCustomerForm',
+  EDIT_LEDGER_CUSTOMER = 'editLedgerCustomerForm',
+  LEDGER_ACCOUNT = 'ledgerAccountForm',
+  LEDGER_TRANSACTIONS = 'ledgerTransactionsForm',
   LEDGER_CARDS = 'cardForm',
-  LEDGER_ACCOUNT_CARDS = 'ledgerAccountCards',
-  LEDGER_STATEMENTS_FILTER = 'ledgerStatementsFilter',
-  LEDGER_STATEMENT = 'ledgerStatement',
+  LEDGER_ACCOUNT_CARDS = 'ledgerAccountCardsForm',
+  LEDGER_STATEMENT = 'ledgerStatementForm',
 
-  AUDIT_USER_ACTIVITIES_FILTER = 'auditUserActivitiesFilter',
-  AUDIT_API_CALLS_FILTER = 'auditApiCallsFilter',
-  AUDIT_API_CALL = 'auditApiCall',
+  AUDIT_API_CALL = 'auditApiCallForm',
 
-  ADMIN_ENDPOINT = 'adminEndpoints',
-  ADMIN_ENDPOINT_FILTER = 'adminEndpointFilter',
+  ADMIN_ENDPOINT = 'adminEndpointsForm',
 
   ADMIN_INTERFACE = 'adminInterfaceForm',
-  ADMIN_INTERFACE_FILTER = 'adminInterfaceFilterForm',
 
   ADMIN_INSTITUTIONS = 'adminInstitutionsForm',
 }

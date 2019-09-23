@@ -25,7 +25,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
   addLedgerCustomer,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addLedgerCustomer(data)),
@@ -42,7 +42,7 @@ const AddCustomerForm: React.FC<AddCustomerFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
-        disabledOk={pristine || invalid}
+        disabledOk={pristine || submitting}
       />
     </form >
   );

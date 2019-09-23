@@ -23,7 +23,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   updateAdminUsersGroup,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateAdminUsersGroup(data)),
@@ -38,7 +38,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"
-        disabledOk={pristine || invalid}
+        disabledOk={pristine || submitting}
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}

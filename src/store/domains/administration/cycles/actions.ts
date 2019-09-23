@@ -66,7 +66,7 @@ export const handleFilterCycles: HandleFilterCycles = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNamesConst.CYCLES_EDITOR_FILTER);
+        const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
         const preparedValues = prepareCyclesFiltersParamsToSend(formValues(state));
 

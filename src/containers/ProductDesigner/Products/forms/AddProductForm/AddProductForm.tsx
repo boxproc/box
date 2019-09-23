@@ -38,7 +38,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   handleSubmit,
   dirty,
   pristine,
-  invalid,
+  submitting,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addProduct(data)),
@@ -66,7 +66,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}
-            disabledOk={pristine || invalid}
+            disabledOk={pristine || submitting}
           />
         </TabsPanel>
       </Tabs>

@@ -4,26 +4,25 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import EndpointFilterForm from './EndpointFilterForm';
+import ApiCallsFilter from './ApiCallsFilter';
 
 import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
-  handleFilterAdminEndpoint,
-  selectInstitutionsOptions,
+  handleGetEndpointsByInstitutionId,
+  selectEndpointsByInstIdOptions,
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINT,
+  AdminEndpointsActionTypes.GET_ENDPOINTS_BY_INSTITUTION_ID,
 ]);
 
-const formSelector = formValueSelector(formNamesConst.ADMIN_ENDPOINT_FILTER);
+const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoadingInstitutionProducts: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  isLoadingEndpoints: loadingSelector(state),
+  endpointsOptions: selectEndpointsByInstIdOptions(state),
   institutionValue: formSelector(
     state,
     'institutionId'
@@ -32,7 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAdminEndpoint: handleFilterAdminEndpoint,
+    getEndpointsByInstitutionId: handleGetEndpointsByInstitutionId,
   },
   dispatch
 );
@@ -40,4 +39,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EndpointFilterForm);
+)(ApiCallsFilter);

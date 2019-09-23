@@ -83,6 +83,8 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     return null;
   }
 
+  const statementCycles = statementCyclesOptions.find(el => el.value === values.statement_cycle_id);
+
   return {
     id: values.id,
     status: statusTypesOptions.find(el => el.value === values.status).label,
@@ -101,8 +103,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     accruedInterest: values.accrued_interest && values.accrued_interest.toFixed(2),
     dateCreated: values.date_created,
     dateClosed: values.date_closed,
-    statementCycleId: statementCyclesOptions
-      .find(el => el.value === values.statement_cycle_id).label,
+    statementCycleId: statementCycles && statementCycles.label,
     lastCycleDate: values.last_cycle_date,
     auxCounter1: values.aux_counter_1 && values.aux_counter_1.toFixed(2),
     auxCounter2: values.aux_counter_2 && values.aux_counter_2.toFixed(2),

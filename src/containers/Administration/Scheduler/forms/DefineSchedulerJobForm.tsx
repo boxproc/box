@@ -50,7 +50,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   mode,
   dirty,
   pristine,
-  invalid,
+  submitting,
   openModal,
   currentSchedulerName,
 }) => {
@@ -86,6 +86,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Select Institution"
               options={institutionsOptions}
               isDisabled={isDisabledInstitutions}
+              isClearable={false}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -198,7 +199,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || invalid}
+          disabledOk={pristine || submitting}
         />
       </Flex>
     </form >

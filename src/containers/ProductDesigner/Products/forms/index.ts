@@ -5,6 +5,6 @@ export { default as ProductLimitsFeesCommissionsForm } from './ProductLimitsFees
 export { default as ProductRulesForm } from './ProductRulesForm';
 export { default as ProductAprsForm } from './ProductAprsForm';
 export { default as ProductLoyaltyAndBonusForm } from './ProductLoyaltyAndBonusForm';
-export { default as ProductsFilterForm } from './ProductsFilterForm';
+export { default as ProductsFilter } from './ProductsFilter';
 export { default as AddProductForm } from './AddProductForm';
 export { default as EditProductForms } from './EditProductForms';

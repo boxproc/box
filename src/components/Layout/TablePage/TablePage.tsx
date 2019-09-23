@@ -4,25 +4,26 @@ import { withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, ExternalLink, Hint, T2 } from 'components';
+import { Button, ExternalLink, T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
-import TableFilterContainer from './TableFilterContainer';
+import Filter from './Filter';
 
 import { ContextMenuItem } from 'types';
-import { stringsUtil } from 'utils';
+import { cookiesUtil, stringsUtil } from 'utils';
 
 interface TablePageProps extends RouteComponentProps, WithModalProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
   FilterForm?: ReactChild;
-  hint?: string;
   addNewModalName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
+  filterAction?: () => void;
+  initialFilterValues?: object;
 }
 
 export const TablePage: React.FC<TablePageProps> = props => {
@@ -31,7 +32,8 @@ export const TablePage: React.FC<TablePageProps> = props => {
     data,
     columns,
     FilterForm,
-    hint,
+    filterAction,
+    initialFilterValues,
     openModal,
     addNewModalName,
     location,
@@ -39,6 +41,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
   } = props;
 
   const [isFilter, setIsFilter] = React.useState(true);
+  const storedFilterParams = cookiesUtil.get(window.location.pathname);
 
   return (
     <React.Fragment>
@@ -62,24 +65,27 @@ export const TablePage: React.FC<TablePageProps> = props => {
         </Box>
       )}
       {FilterForm && isFilter && (
-        <TableFilterContainer>{FilterForm}</TableFilterContainer>
+        <Filter
+          filterAction={filterAction}
+          initialValues={{
+            ...initialFilterValues,
+            ...storedFilterParams && JSON.parse(storedFilterParams),
+          }}
+        >
+          {FilterForm}
+        </Filter>
       )}
-      <Flex alignItems="center">
-        {addNewModalName && (
-          <Box mb="7px" mr="7px">
-            <Button
-              text="Add New"
-              iconName={iconNamesConst.PLUS}
-              onClick={() => openModal({
-                name: addNewModalName,
-              })}
-            />
-          </Box>
-        )}
-        {hint && (
-          <Box mb="10px"><Hint text={hint} /></Box>
-        )}
-      </Flex>
+      {addNewModalName && (
+        <Box mb="7px">
+          <Button
+            text="Add New"
+            iconName={iconNamesConst.PLUS}
+            onClick={() => openModal({
+              name: addNewModalName,
+            })}
+          />
+        </Box>
+      )}
       <EditableTable
         data={data}
         columns={columns}

@@ -15,7 +15,7 @@ import EditUserGroupMembers from './EditUserGroupMembers';
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS_FORM);
+const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS);
 
 const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectActiveItemId(state),

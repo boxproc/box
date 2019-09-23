@@ -5,7 +5,7 @@ import { TablePage, withSpinner } from 'components';
 import { modalNamesConst } from 'consts';
 
 import { tableColumns } from 'containers/ProductDesigner/Products/components';
-import { ProductsFilterForm } from 'containers/ProductDesigner/Products/forms';
+import { ProductsFilter } from 'containers/ProductDesigner/Products/forms';
 
 import {
   HandleDeleteProduct,
@@ -51,9 +51,12 @@ export const Products: React.FC<ProductsProps> = ({
       addNewModalName={modalNamesConst.ADD_PRODUCT}
       editModalName={modalNamesConst.EDIT_PRODUCT}
       contextMenuItems={contextMenuItems}
+      filterAction={filterProducts}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
-        <ProductsFilterForm
-          filterProducts={filterProducts}
+        <ProductsFilter
           institutionsOptions={institutionsOptions}
         />
       }

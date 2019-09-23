@@ -1,2 +1,2 @@
 export { default as StatementForm } from './StatementForm';
-export { default as StatementsFilterForm } from './StatementsFilterForm';
+export { default as StatementsFilter } from './StatementsFilter';

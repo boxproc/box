@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import UserActivities from './UserActivities';
 
 import {
   AuditUserActivityActionType,
   createLoadingSelector,
+  handleFilterAuditUserActivities,
   selectAuditUserActivities,
   selectInstitutionsOptions
 } from 'store/domains';
@@ -21,6 +23,14 @@ const mapStateToProps = (state: StoreState) => ({
   auditUserActivities: selectAuditUserActivities(state),
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    filterAuditUserActivities: handleFilterAuditUserActivities,
+  },
+  dispatch
+);
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(UserActivities);

@@ -195,7 +195,7 @@ export const handleFilterProducts: HandleFilterProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const formValues = getFormValues(formNamesConst.PRODUCTS_FILTER);
+        const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
         const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
 
