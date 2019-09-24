@@ -12,12 +12,13 @@ import { actionTypesOptions } from 'consts';
 import { AdminEventDataElemsItem, HandleFilterAdminEventDataElems } from 'store/domains';
 
 import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface ProductRulesProps extends WithLoadAdminEventsProps {
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
   eventValue: SelectValues;
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
-  onBlur?: () => void;
+  onChange?: () => void;
   changeFormField: (field: string, value: string) => void;
 }
 
@@ -41,7 +42,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   filterAdminEventDataElems,
   eventValue,
   adminEventDataElemsItems,
-  onBlur,
+  onChange,
   changeFormField,
 }) => {
   React.useEffect(
@@ -54,9 +55,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   );
 
   const onContextMenuClick = (e: Event, value: { name: string }) => {
+    const textarea = document.querySelector('#rule-script') as HTMLInputElement;
     const code = getNewCode(value.name);
 
     changeFormField('script', code);
+    textarea.focus();
   };
 
   return (
@@ -76,7 +79,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               options={adminEventsOptions}
               isLoading={isAdminEventsLoading}
               isClearable={false}
-              onBlur={onBlur}
+              onChange={() => onChange()}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -88,7 +92,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Select Action Type"
               options={actionTypesOptions}
               isClearable={false}
-              onBlur={onBlur}
+              onChange={() => onChange()}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">

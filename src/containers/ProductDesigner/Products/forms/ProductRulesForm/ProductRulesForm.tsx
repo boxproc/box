@@ -47,6 +47,11 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
     [getProductRule, eventId, actionType]
   );
 
+  const handleGetRule = React.useCallback(
+    () => getProductRule(),
+    [getProductRule]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(updateProductRules),
     [handleSubmit]
@@ -56,7 +61,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <ProductRules
         eventValue={eventId}
-        onBlur={() => getProductRule()}
+        onChange={handleGetRule}
         changeFormField={change}
       />
       <OkCancelButtons
