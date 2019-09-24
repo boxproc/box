@@ -18,7 +18,7 @@ interface ProductRulesProps extends WithLoadAdminEventsProps {
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
   eventValue: SelectValues;
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
-  onChange?: () => void;
+  onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
 }
 
@@ -42,7 +42,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   filterAdminEventDataElems,
   eventValue,
   adminEventDataElemsItems,
-  onChange,
+  onChangeValues,
   changeFormField,
 }) => {
   React.useEffect(
@@ -79,7 +79,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               options={adminEventsOptions}
               isLoading={isAdminEventsLoading}
               isClearable={false}
-              onChange={() => onChange()}
+              onBlur={onChangeValues}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -92,7 +92,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Select Action Type"
               options={actionTypesOptions}
               isClearable={false}
-              onChange={() => onChange()}
+              onBlur={onChangeValues}
               validate={[formErrorUtil.required]}
             />
           </Box>

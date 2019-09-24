@@ -61,7 +61,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <ProductRules
         eventValue={eventId}
-        onChange={handleGetRule}
+        onChangeValues={handleGetRule}
         changeFormField={change}
       />
       <OkCancelButtons
