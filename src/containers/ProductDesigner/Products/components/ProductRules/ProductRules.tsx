@@ -17,10 +17,12 @@ interface ProductRulesProps extends WithLoadAdminEventsProps {
   filterAdminEventDataElems: HandleFilterAdminEventDataElems;
   eventValue: SelectValues;
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
+  onBlur?: () => void;
+  changeFormField: (field: string, value: string) => void;
 }
 
 const getNewCode = (element: string) => {
-  const textarea = document.querySelector('#script') as HTMLInputElement;
+  const textarea = document.querySelector('#rule-script') as HTMLInputElement;
   const code = textarea.value;
 
   const startIndex = textarea.selectionStart;
@@ -33,21 +35,14 @@ const getNewCode = (element: string) => {
   return resultText;
 };
 
-const onContextMenuClick = (e: Event, value: { name: string }) => {
-  const code = getNewCode(value.name);
-  const textarea = document.querySelector('#script') as HTMLInputElement;
-
-  textarea.value = code;
-  textarea.nextSibling.textContent = code;
-  textarea.focus();
-};
-
 const ProductRules: React.FC<ProductRulesProps> = ({
   adminEventsOptions,
   isAdminEventsLoading,
   filterAdminEventDataElems,
   eventValue,
   adminEventDataElemsItems,
+  onBlur,
+  changeFormField,
 }) => {
   React.useEffect(
     () => {
@@ -57,6 +52,12 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     },
     [filterAdminEventDataElems, eventValue]
   );
+
+  const onContextMenuClick = (e: Event, value: { name: string }) => {
+    const code = getNewCode(value.name);
+
+    changeFormField('script', code);
+  };
 
   return (
     <React.Fragment>
@@ -74,6 +75,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Select Event"
               options={adminEventsOptions}
               isLoading={isAdminEventsLoading}
+              isClearable={false}
+              onBlur={onBlur}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -84,25 +87,28 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               label="Action Type"
               placeholder="Select Action Type"
               options={actionTypesOptions}
+              isClearable={false}
+              onBlur={onBlur}
             />
           </Box>
-          <Box width={[1]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="description"
               name="description"
               placeholder="Enter Description"
               component={TextField}
               label="Description"
+              height={34}
             />
           </Box>
           <Box width={[1]} p="10px">
             <ContextMenuTrigger id="rulesCodeContextMenu">
               <Field
-                id="script"
+                id="rule-script"
                 name="script"
-                placeholder="Enter Code"
+                placeholder="Enter Script"
                 component={HighlightCodeField}
-                label="Code"
+                label="Script"
               />
             </ContextMenuTrigger>
           </Box>

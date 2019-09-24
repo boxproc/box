@@ -117,9 +117,6 @@ export const selectCurrentProductDetails = createSelector(
   }
 );
 
-export const selectDetailsCurrentProductRules = (state: StoreState) =>
-  state.productDesigner.products.currentProductRules.asMutable();
-
 export const selectDefaultCurrentRule = (state: StoreState) =>
   state.productDesigner.products.currentProductRule;
 

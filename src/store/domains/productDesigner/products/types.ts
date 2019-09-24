@@ -94,7 +94,7 @@ export interface RevolvingCreditProductItem {
   aprSales: number;
   aprBalanceTransfer: number;
   aprFee: number;
-  feeLatePayment: number ;
+  feeLatePayment: number;
   feeExceedLimit: number;
   feeUnpaid: number;
   feeOverLimit: number;
@@ -213,8 +213,8 @@ export type NewProduct = ProductItemDetails & ProductItemGeneral;
 
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
-export interface ProductRulesResp extends ResponseStatusType {
-  product_rules: Array<ProductRulesItemResp>;
+export interface ProductRuleResp extends ResponseStatusType {
+  product_rule: ProductRulesItemResp;
 }
 
 export interface ProductRulesItem {
@@ -223,6 +223,18 @@ export interface ProductRulesItem {
   actionType: SelectValues;
   script: string;
   productId: number;
+}
+
+export interface ProductRuleRequest {
+  productId: number;
+  eventId?: number | string;
+  actionType?: number | string;
+}
+
+export interface ProductRuleRequestPrepared {
+  product_id: number;
+  event_id?: number | string;
+  action_type?: number | string;
 }
 
 export interface ProductServiceInterfaces {
@@ -239,11 +251,11 @@ export interface InstitutionProducts extends ResponseStatusType {
   institution_products: Array<ProductItemInfoPlain>;
 }
 
-export interface InstitutionProductServiceInterfaces  {
+export interface InstitutionProductServiceInterfaces {
   interfaces: Array<ProductServiceInterfaces>;
 }
 
-export interface InstitutionProductServiceEndpoints  {
+export interface InstitutionProductServiceEndpoints {
   endpoints: Array<ProductServiceEndpoints>;
 }
 
@@ -252,8 +264,9 @@ export interface ServicesItems {
   card_transactions_endpoint_id: string | number;
   card_management_interface_id: string | number;
 }
+
 export interface ServicesItemsPrepared {
-  id: number ;
+  id: number;
   endpoints: SelectValues;
   interfaces: SelectValues;
 
@@ -263,7 +276,6 @@ export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
-  currentProductRules: ImmutableArray<ProductRulesItemResp>;
   currentProductRule: ProductRulesItemResp;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
   interfaces: ImmutableArray<ProductServiceInterfaces>;

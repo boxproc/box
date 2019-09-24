@@ -8,7 +8,7 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AuthActionTypes.USER_LOGIN,
-  AuthActionTypes.USER_LOGOUT,
+  // AuthActionTypes.USER_LOGOUT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

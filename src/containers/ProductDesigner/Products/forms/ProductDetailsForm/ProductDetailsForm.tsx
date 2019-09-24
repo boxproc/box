@@ -32,6 +32,8 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   getProductDetails,
   updateProductDetails,
   dirty,
+  submitting,
+  pristine,
 }) => {
   React.useEffect(
     () => {
@@ -56,6 +58,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
+        disabledOk={pristine || submitting}
       />
     </form>
   );

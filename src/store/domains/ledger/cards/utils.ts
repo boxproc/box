@@ -30,7 +30,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerCardsFilterPara
     } = params;
 
     return {
-      id: id ? Number(id) : null,
+      id: id ? id : null,
       account_id: accountId ? Number(accountId) : null,
       customer_id: customerId ? Number(customerId) : null,
       pan_alias: panAlias ? panAlias : null,

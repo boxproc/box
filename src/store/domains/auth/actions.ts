@@ -151,8 +151,8 @@ export const handleUserLogout: HandleUserLogout = () =>
         await dispatch(userLogout());
 
         storageUtil.clear();
-        urlUtil.openLocation(basePath);
         // dispatch(push(basePath));
+        urlUtil.openLocation(basePath);
       },
       dispatch
     );

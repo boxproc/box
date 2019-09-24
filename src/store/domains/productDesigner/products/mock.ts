@@ -1,7 +1,7 @@
 import {
   InstitutionProducts,
   ProductDetailsResp,
-  ProductRulesResp,
+  ProductRuleResp,
   ProductsDataResp,
 } from './types';
 
@@ -129,11 +129,11 @@ export const productDetailsData: ProductDetailsResp = {
   },
 };
 
-export const productRulesData: ProductRulesResp = {
+export const productRulesData: ProductRuleResp = {
   response_status: {
     status_code: 0,
   },
-  product_rules: [{
+  product_rule: {
     // tslint:disable-next-line: max-line-length
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     event_id: 3,
@@ -155,7 +155,6 @@ export const productRulesData: ProductRulesResp = {
 }`,
     product_id: 1,
   },
-  ],
 };
 
 export const institutionProducts: InstitutionProducts = {

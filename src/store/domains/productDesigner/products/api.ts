@@ -18,6 +18,7 @@ import {
   ProductFilterParamsPrepared,
   ProductItemDetailsResp,
   ProductItemResp,
+  ProductRuleRequestPrepared,
   ProductRulesItemResp,
   ServicesItems,
 } from './types';
@@ -53,11 +54,9 @@ export const getInterfacesService = (institutionId: number | string) =>
 export const updateCardService = (data: Partial<ServicesItems>) =>
   apiClient.post(productsPathNames.UPDATE_CARD_SERVICE, { data });
 
-export const getProductRules = (id: number) =>
+export const getProductRule = (data: ProductRuleRequestPrepared) =>
   // throttleUtil.getDataAfter(productRulesData, 500);
-  apiClient.post(productsPathNames.GET_PRODUCTS_RULES, {
-    data: { id },
-  });
+  apiClient.post(productsPathNames.GET_PRODUCTS_RULES, { data });
 
 export const deleteProduct = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);

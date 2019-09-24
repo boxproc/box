@@ -109,7 +109,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                 name="status"
                 component={SelectField}
                 label="Status"
-                placeholder="Select Cycles Editor Status"
+                placeholder="Select Status"
                 options={requires2faFlagValue ? statusTypes2faOptions : statusTypesOptions}
                 validate={[formErrorUtil.required]}
               />
@@ -139,7 +139,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="User Password"
               disabled={false}
-              validate={[formErrorUtil.required]}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -150,7 +149,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="Repeat Password"
               disabled={false}
-              validate={[formErrorUtil.required, formErrorUtil.passwordsMatch]}
             />
           </Box>
         </Flex>

@@ -15,9 +15,7 @@ import {
   GetInterfacesProductServiceAction,
   GetProductAction,
   GetProductDetailsAction,
-  GetProductRulesAction,
-  GetRuleByActionTypeAction,
-  GetRuleByEventAction,
+  GetProductRuleAction,
   UpdateCardServiceAction,
   UpdateProductAction,
   UpdateProductDetailsAction,
@@ -36,6 +34,7 @@ import {
   ProductItemDetailsResp,
   ProductItemGeneral,
   ProductItemResp,
+  ProductRuleRequestPrepared,
   ProductRulesItem,
   ProductRulesItemResp,
   ServicesItems,
@@ -47,11 +46,12 @@ import {
   prepareNewProductValuesToSend,
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
+  prepareProductRuleIdsToSend,
   prepareProductRuleValuesToSend,
   prepareUpdateCardServiceValuesPrepared,
 } from './utils';
 
-import { SelectValues, Thunk } from 'types';
+import { Thunk } from 'types';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import { errorDecoratorUtil } from 'utils';
@@ -71,8 +71,8 @@ export type HandleGetProduct = () => Thunk<void>;
 export type GetProductDetails = (id: number) => GetProductDetailsAction;
 export type HandleGetProductDetails = () => Thunk<void>;
 
-export type GetProductRules = (id: number) => GetProductRulesAction;
-export type HandleGetProductRules = (id: number) => Thunk<void>;
+export type GetProductRule = (data: ProductRuleRequestPrepared) => GetProductRuleAction;
+export type HandleGetProductRule = () => Thunk<void>;
 
 export type GetInterfacesService = (institutionId: string | number) =>
   GetInterfacesProductServiceAction;
@@ -81,12 +81,6 @@ export type HandleGetInterfacesService = () => Thunk<void>;
 export type GetEndpointsService = (institutionId: string | number) =>
   GetEndpointsProductServiceAction;
 export type HandleGetEndpointsService = () => Thunk<void>;
-
-export type GetRuleByEvent = (event: string | number) => GetRuleByEventAction;
-export type HandleGetRuleByEvent = (event: SelectValues) => void;
-
-export type GetRuleByActionType = (actionType: string | number) => GetRuleByActionTypeAction;
-export type HandleGetRuleByActionType = (actionType: SelectValues) => void;
 
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
@@ -129,16 +123,6 @@ export const filterProducts: FilterProducts = params => ({
   payload: api.filterProducts(params),
 });
 
-export const getRuleByEvent: GetRuleByEvent = event => ({
-  type: ActionTypeKeys.GET_RULE_BY_EVENT,
-  payload: event,
-});
-
-export const getRuleByActionType: GetRuleByActionType = actionType => ({
-  type: ActionTypeKeys.GET_RULE_BY_ACTION_TYPE,
-  payload: actionType,
-});
-
 export const getProduct: GetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
@@ -154,9 +138,9 @@ export const getProductDetails: GetProductDetails = id => ({
   payload: api.getProductDetails(id),
 });
 
-export const getProductRules: GetProductRules = id => ({
-  type: ActionTypeKeys.GET_PRODUCT_RULES,
-  payload: api.getProductRules(id),
+export const getProductRule: GetProductRule = data => ({
+  type: ActionTypeKeys.GET_PRODUCT_RULE,
+  payload: api.getProductRule(data),
 });
 
 export const addProduct: AddProduct = values => ({
@@ -239,12 +223,6 @@ export const handleGetEndpointsService: HandleGetEndpointsService = () =>
     );
   };
 
-export const handleGetRuleByEvent: HandleGetRuleByEvent = event =>
-  getRuleByEvent(event && event.value);
-
-export const handleGetRuleByActionType: HandleGetRuleByActionType = actionType =>
-  getRuleByActionType(actionType && actionType.value);
-
 export const handleDeleteProduct: HandleDeleteProduct = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
@@ -285,11 +263,18 @@ export const handleGetProductDetails: HandleGetProductDetails = () =>
     );
   };
 
-export const handleGetProductRules: HandleGetProductRules = id =>
-  async dispatch => {
+export const handleGetProductRule: HandleGetProductRule = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getProductRules(id));
+        const formValues = getFormValues(formNamesConst.PRODUCT_RULES);
+        const state = getState();
+        const prepared = prepareProductRuleIdsToSend(formValues(state));
+
+        await dispatch(getProductRule({
+            product_id: selectActiveItemId(state),
+          ...prepared,
+        }));
       },
       dispatch
     );
@@ -347,14 +332,13 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
       async () => {
         const state = getState();
         const preparedValues = prepareProductRuleValuesToSend(values);
-        const currentProductId = selectActiveItemId(state);
 
         await dispatch(updateProductRules({
           ...preparedValues,
           product_id: selectActiveItemId(state),
         }));
         await dispatch(handleFilterProducts());
-        await dispatch(handleGetProductRules(currentProductId));
+        await dispatch(handleGetProductRule());
       },
       dispatch
     );

@@ -40,8 +40,9 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           label="Username"
           placeholder="Select username"
           component={SelectField}
-          disabled={false}
           options={adminAccessUsersOptions}
+          disabled={false}
+          autoFocus={true}
           validate={[formErrorUtil.required]}
         />
         <Flex justifyContent="flex-end">

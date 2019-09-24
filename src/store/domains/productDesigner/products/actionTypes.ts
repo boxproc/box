@@ -4,7 +4,7 @@ import {
   InstitutionProductServiceInterfaces,
   ProductDataResp,
   ProductDetailsResp,
-  ProductRulesResp,
+  ProductRuleResp,
   ProductsDataResp,
 } from './types';
 
@@ -29,12 +29,9 @@ export enum ActionTypeKeys {
   GET_PRODUCT_DETAILS_FULFILLED = 'productDesigner/products/GET_PRODUCT_DETAILS_FULFILLED',
   GET_PRODUCT_DETAILS_REJECTED = 'productDesigner/products/GET_PRODUCT_DETAILS_REJECTED',
 
-  GET_PRODUCT_RULES = 'productDesigner/products/GET_PRODUCT_RULES',
-  GET_PRODUCT_RULES_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULES_FULFILLED',
-  GET_PRODUCT_RULES_REJECTED = 'productDesigner/products/GET_PRODUCT_RULES_REJECTED',
-
-  GET_RULE_BY_EVENT = 'productDesigner/products/GET_RULE_BY_EVENT',
-  GET_RULE_BY_ACTION_TYPE = 'productDesigner/products/GET_RULE_BY_ACTION_TYPE',
+  GET_PRODUCT_RULE = 'productDesigner/products/GET_PRODUCT_RULE',
+  GET_PRODUCT_RULE_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULE_FULFILLED',
+  GET_PRODUCT_RULE_REJECTED = 'productDesigner/products/GET_PRODUCT_RULE_REJECTED',
 
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
@@ -145,16 +142,6 @@ export interface FilterProductsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
 }
 
-export interface GetRuleByEventAction {
-  readonly payload: string | number;
-  readonly type: ActionTypeKeys.GET_RULE_BY_EVENT;
-}
-
-export interface GetRuleByActionTypeAction {
-  readonly payload: string | number;
-  readonly type: ActionTypeKeys.GET_RULE_BY_ACTION_TYPE;
-}
-
 export interface GetProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT;
@@ -185,19 +172,19 @@ export interface GetProductDetailsRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_REJECTED;
 }
 
-export interface GetProductRulesAction {
+export interface GetProductRuleAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_PRODUCT_RULES;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULE;
 }
 
-export interface GetProductRulesFulfilledAction {
-  readonly payload: ProductRulesResp;
-  readonly type: ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED;
+export interface GetProductRuleFulfilledAction {
+  readonly payload: ProductRuleResp;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULE_FULFILLED;
 }
 
-export interface GetProductRulesRejectedAction {
+export interface GetProductRuleRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_PRODUCT_RULES_REJECTED;
+  readonly type: ActionTypeKeys.GET_PRODUCT_RULE_REJECTED;
 }
 
 export interface UpdateProductAction {
@@ -281,12 +268,10 @@ export type ProductsActionTypes =
   | FilterProductsFulfilledAction
   | GetProductFulfilledAction
   | GetProductDetailsFulfilledAction
-  | GetProductRulesFulfilledAction
+  | GetProductRuleFulfilledAction
   | GetEndpointsProductServiceFulfilledAction
   | GetInterfacesProductServiceFulfilledAction
   | AddProductFulfilledAction
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction
-  | UpdateProductRulesFulfilledAction
-  | GetRuleByEventAction
-  | GetRuleByActionTypeAction;
+  | UpdateProductRulesFulfilledAction;

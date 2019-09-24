@@ -26,7 +26,7 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerAccountsFilterP
     customer_last_name: customerLastName,
     product_name: productName && productName.length && productName.map(name => name.label),
     account_alias: accountAlias,
-    id: Number(id),
+    id,
   };
 };
 

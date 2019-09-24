@@ -301,8 +301,7 @@ export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
   };
 };
 
-export const prepareProductRuleValuesToSend =
-  (rule: Partial<ProductRulesItem>) => {
+export const prepareProductRuleValuesToSend = (rule: Partial<ProductRulesItem>) => {
     if (!rule) {
       return null;
     }
@@ -312,5 +311,16 @@ export const prepareProductRuleValuesToSend =
       event_id: rule.eventId && rule.eventId.value,
       action_type: rule.actionType && rule.actionType.value,
       script: rule.script,
+    };
+  };
+
+export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => {
+    if (!data) {
+      return null;
+    }
+
+    return {
+      event_id: data.eventId && data.eventId.value,
+      action_type: data.actionType && data.actionType.value,
     };
   };

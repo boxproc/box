@@ -5,7 +5,6 @@ import { ProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
-  currentProductRules: Immutable([]),
   institutionProducts: Immutable([]),
   currentProduct: null,
   currentProductDetails: null,
@@ -36,42 +35,9 @@ const productsReducer =
         return state
           .set('currentProductDetails', action.payload.product);
 
-      case ActionTypeKeys.GET_PRODUCT_RULES_FULFILLED:
+      case ActionTypeKeys.GET_PRODUCT_RULE_FULFILLED:
         return state
-          .set('currentProductRules', action.payload.product_rules)
-          .set('currentProductRule', action.payload.product_rules[0])
-          .set(
-            'currentRulesCode',
-            action.payload.product_rules.length
-              ? action.payload.product_rules[0].script
-              : null
-          );
-
-      case ActionTypeKeys.GET_RULE_BY_EVENT:
-        const currentRuleByEvent =
-          state.currentProductRules.find(el => el.event_id === action.payload);
-        return state
-          .set(
-            'currentProductRule',
-            currentRuleByEvent ? currentRuleByEvent : { event_id: action.payload }
-          )
-          .set(
-            'currentRulesCode',
-            currentRuleByEvent ? currentRuleByEvent.script : null
-          );
-
-      case ActionTypeKeys.GET_RULE_BY_ACTION_TYPE:
-        const currentRuleByActionType =
-          state.currentProductRules.find(el => el.action_type === action.payload);
-        return state
-          .set(
-            'currentProductRule',
-            currentRuleByActionType ? currentRuleByActionType : { action_type: action.payload }
-          )
-          .set(
-            'currentRulesCode',
-            currentRuleByActionType ? currentRuleByActionType.script : null
-          );
+          .set('currentProductRule', action.payload.product_rule);
 
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state

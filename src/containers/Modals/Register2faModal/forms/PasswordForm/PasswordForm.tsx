@@ -37,6 +37,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
           component={PasswordField}
           disabled={false}
           validate={[formErrorUtil.required]}
+          autoFocus={true}
         />
         <Flex justifyContent="flex-end">
           <Button text="Next" />

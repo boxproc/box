@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { formNamesConst, uiItemConsts } from 'consts';
+import { formNamesConst } from 'consts';
 import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`
@@ -30,7 +30,7 @@ const Filter: React.FC<FilterAllProps> = ({
   children,
   handleSubmit,
   submitting,
-  filterValues,
+  // filterValues,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
@@ -47,20 +47,20 @@ const Filter: React.FC<FilterAllProps> = ({
     [handleSubmit, filterAction]
   );
 
-  const hasInstitutionId = filterValues
-    && Object.keys(filterValues).find(el => el === 'institutionId');
+  // const hasInstitutionId = filterValues
+  //   && Object.keys(filterValues).find(el => el === 'institutionId');
 
-  const valuesCount = filterValues
-    && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
+  // const valuesCount = filterValues
+  //   && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
 
-  const isAccessibleButton =
-    hasInstitutionId ? valuesCount > 1
-      : (
-        window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`
-        || window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_USER}`
-      )
-        ? valuesCount >= 0
-        : valuesCount > 0;
+  // const isAccessibleButton =
+  //   hasInstitutionId ? valuesCount > 1
+  //     : (
+  //       window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`
+  //       || window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_USER}`
+  //     )
+  //       ? valuesCount >= 0
+  //       : valuesCount > 0;
 
   return (
     <FilterWrapper>
@@ -70,7 +70,7 @@ const Filter: React.FC<FilterAllProps> = ({
           <Flex alignItems="flex-end" flexWrap="wrap">
             {children}
           </Flex>
-          <Button text="Show" disabled={submitting || !isAccessibleButton} />
+          <Button text="Show" disabled={submitting} />
         </Box>
       </form>
     </FilterWrapper >

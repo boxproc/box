@@ -21,7 +21,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
   closeAllModals,
-  // history,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
 

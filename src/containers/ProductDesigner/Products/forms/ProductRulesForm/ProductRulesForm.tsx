@@ -8,24 +8,18 @@ import { formNamesConst } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
-import {
-  HandleGetProductRules,
-  HandleGetRuleByActionType,
-  HandleGetRuleByEvent,
-  HandleUpdateProductRules,
-} from 'store/domains';
+import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface ProductRulesForm extends ExternalSpinnerProps {
   onCancel?: () => void;
-  getProductRules: HandleGetProductRules;
+  getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
-  eventValue: SelectValues;
-  actionTypeValue: SelectValues;
-  getRuleByEvent: HandleGetRuleByEvent;
-  getRuleByActionType: HandleGetRuleByActionType;
-  currentProductId: number;
+  rulesValues: {
+    eventId: SelectValues;
+    actionType: SelectValues;
+  };
 }
 
 type EditProductRulesFormAllProps = ProductRulesForm &
@@ -34,49 +28,36 @@ type EditProductRulesFormAllProps = ProductRulesForm &
 const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   handleSubmit,
   onCancel,
-  getProductRules,
+  getProductRule,
   updateProductRules,
-  eventValue,
-  actionTypeValue,
   dirty,
-  getRuleByEvent,
-  getRuleByActionType,
-  currentProductId,
+  pristine,
+  submitting,
+  rulesValues,
+  change,
 }) => {
-  React.useEffect(
-    () => {
-      getProductRules(currentProductId);
-    },
-    [getProductRules, currentProductId]
-  );
+  const { eventId, actionType } = rulesValues;
 
   React.useEffect(
     () => {
-      if (actionTypeValue) {
-        getRuleByActionType(actionTypeValue);
+      if (!eventId && !actionType) {
+        getProductRule();
       }
     },
-    [actionTypeValue, getRuleByActionType]
-  );
-
-  React.useEffect(
-    () => {
-      if (eventValue) {
-        getRuleByEvent(eventValue);
-      }
-    },
-    [eventValue, getRuleByEvent]
+    [getProductRule, eventId, actionType]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateProductRules(data)),
+    handleSubmit(updateProductRules),
     [handleSubmit]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
       <ProductRules
-        eventValue={eventValue}
+        eventValue={eventId}
+        onBlur={() => getProductRule()}
+        changeFormField={change}
       />
       <OkCancelButtons
         okText="Save"
@@ -84,6 +65,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
+        disabledOk={pristine || submitting}
       />
     </form>
   );
