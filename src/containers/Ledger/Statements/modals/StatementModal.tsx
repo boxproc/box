@@ -26,7 +26,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Statement"
       closeOnBackdrop={true}
-      maxContainerWidth={800}
+      maxContainerWidth={820}
     >
       <StatementForm isDisabled={true} />
       <Hr />

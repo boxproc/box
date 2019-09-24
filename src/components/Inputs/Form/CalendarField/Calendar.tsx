@@ -85,7 +85,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       invalid,
       disabled,
       locale = 'eng',
-      dateFormat = dateFormatConst.FORMAT,
+      dateFormat = dateFormatConst.DATE,
       input: { value },
       ...props
     } = this.props;
@@ -154,13 +154,13 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
   onChange = (value: string | Moment) => {
     const date = typeof value === 'string'
-      ? value : value.format(dateFormatConst.FORMAT);
+      ? value : value.format(dateFormatConst.DATE);
 
     return this.props.onChange(date);
   }
 
   setCurrentDate = () => {
-    const today = moment().format(dateFormatConst.FORMAT);
+    const today = moment().format(dateFormatConst.DATE);
 
     this.props.onChange(today);
   }

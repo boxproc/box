@@ -2,11 +2,15 @@ import moment from 'moment';
 
 import { dateFormat as dateFormatConst } from 'consts';
 
-export const today = moment().format(dateFormatConst.DATE_TIME_FORMAT);
-export const yesterday = moment().subtract(1, 'day').format(dateFormatConst.DATE_TIME_FORMAT);
+export const todayDate = moment().format(dateFormatConst.DATE);
+export const yesterdayDate = moment().subtract(1, 'day').format(dateFormatConst.DATE);
+
+export const todayDateTime = moment().format(dateFormatConst.DATE_TIME);
+export const yesterdayDateTime = moment().subtract(1, 'day')
+  .format(dateFormatConst.DATE_TIME);
 
 export const toFormattedCalendarDate =
-  (date: string, dateFormat: string = dateFormatConst.FORMAT, lng: string = 'en-GB') => {
+  (date: string, dateFormat: string = dateFormatConst.DATE, lng: string = 'en-GB') => {
     moment.locale(lng);
 
     const momentObj = moment(new Date(date), dateFormat, lng);

@@ -78,8 +78,8 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           </Box>
           <Box width={[4 / 9]} p="10px">
             <Field
-              id="customerFirstName"
-              name="customerFirstName"
+              id="firstName"
+              name="firstName"
               component={InputField}
               label="First Name"
               placeholder="Enter First Name"
@@ -88,8 +88,8 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           </Box>
           <Box width={[4 / 9]} p="10px">
             <Field
-              id="customerLastName"
-              name="customerLastName"
+              id="lastName"
+              name="lastName"
               component={InputField}
               label="Last Name"
               placeholder="Enter Last Name"

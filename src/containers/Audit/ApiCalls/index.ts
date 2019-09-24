@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import ApiCalls from './ApiCalls';
 
@@ -19,10 +20,17 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   auditApiCalls: selectAuditApiCalls(state),
-  filterAuditApiCalls: handleFilterAuditApiCalls,
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    filterAuditApiCalls: handleFilterAuditApiCalls,
+  },
+  dispatch
+);
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ApiCalls);

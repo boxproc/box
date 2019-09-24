@@ -95,7 +95,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             name="dateOfBirth"
             component={CalendarField}
             label="Date of Birth"
-            placeholder={dateFormat.FORMAT}
+            placeholder={dateFormat.DATE}
             validate={[formErrorUtil.required]}
           />
         </Box>

@@ -33,8 +33,8 @@ const Statements: React.FC<StatementsProps> = ({
       filterAction={filterLedgerStatements}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterday,
-        dateTo: dateUtil.today,
+        dateFrom: dateUtil.yesterdayDate,
+        dateTo: dateUtil.todayDate,
       }}
       FilterForm={
         <StatementsFilter institutionsOptions={institutionsOptions} />

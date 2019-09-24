@@ -14,7 +14,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AuditUserActivityActionType.FILTER_AUDIT_USER_ACTIVITIES,
+  AuditUserActivityActionType.FILTER_AUDIT_USER_ACTIVITY,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

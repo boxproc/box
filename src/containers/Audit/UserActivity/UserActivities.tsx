@@ -29,8 +29,8 @@ const UserActivities: React.FC<UserActivityProps> = ({
       filterAction={filterAuditUserActivities}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        datetimeFrom: dateUtil.yesterday,
-        datetimeTo: dateUtil.today,
+        datetimeFrom: dateUtil.yesterdayDateTime,
+        datetimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <UserActivityFilter

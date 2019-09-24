@@ -93,7 +93,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Date / Time From" />,
+    Header: <TableHeader title="Date From" />,
     accessor: 'dateFrom',
     Cell: (props: TCell<'dateFrom'>) => (
       <TableCell
@@ -105,7 +105,7 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Date / Time To" />,
+    Header: <TableHeader title="Date To" />,
     accessor: 'dateTo',
     Cell: (props: TCell<'dateTo'>) => (
       <TableCell

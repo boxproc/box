@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { formNamesConst } from 'consts';
+import { formNamesConst, uiItemConsts } from 'consts';
 import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`
@@ -30,7 +30,7 @@ const Filter: React.FC<FilterAllProps> = ({
   children,
   handleSubmit,
   submitting,
-  // filterValues,
+  filterValues,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
@@ -47,11 +47,33 @@ const Filter: React.FC<FilterAllProps> = ({
     [handleSubmit, filterAction]
   );
 
-  // const hasInstitutionId = filterValues
-  //   && Object.keys(filterValues).find(el => el === 'institutionId');
+  const hasInstitution = filterValues && filterValues['institutionId'];
+  const hasId = filterValues && filterValues['id'];
+  const hasAccountId = filterValues && filterValues['accountId'];
+  const hasAccountAlias = filterValues && filterValues['accountAlias'];
+  const hasLastName = filterValues && filterValues['lastName'];
 
-  // const valuesCount = filterValues
-  //   && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
+  const valuesCount = filterValues
+    && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
+
+  const isAccessibleButton = () => {
+    switch (window.location.pathname) {
+      case `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
+      case `/ui/${uiItemConsts.ADMINISTRATION_USER}`:
+        return valuesCount >= 0;
+      case `/ui/${uiItemConsts.AUDIT_API_CALLS}`:
+      case `/ui/${uiItemConsts.AUDIT_USER_ACTIVITY}`:
+        return valuesCount > 1;
+      case `/ui/${uiItemConsts.LEDGER_ACCOUNTS}`:
+        return hasInstitution && (hasId || hasAccountAlias || hasLastName);
+      case `/ui/${uiItemConsts.LEDGER_STATEMENTS}`:
+        return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
+      case `/ui/${uiItemConsts.LEDGER_CUSTOMERS}`:
+        return hasInstitution && (hasId || hasLastName);
+      default:
+        return valuesCount > 0;
+    }
+  };
 
   // const isAccessibleButton =
   //   hasInstitutionId ? valuesCount > 1
@@ -65,14 +87,14 @@ const Filter: React.FC<FilterAllProps> = ({
   return (
     <FilterWrapper>
       <T3>Filter</T3>
+
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
-          <Flex alignItems="flex-end" flexWrap="wrap">
-            {children}
-          </Flex>
-          <Button text="Show" disabled={submitting} />
+          <Flex alignItems="flex-end" flexWrap="wrap">{children}</Flex>
+          <Button text="Show" disabled={submitting || !isAccessibleButton()} />
         </Box>
       </form>
+
     </FilterWrapper >
   );
 };

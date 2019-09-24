@@ -60,8 +60,8 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   accountAlias: string;
   accountAliasAdditional: string;
   customerId: number;
-  customerFirstName: string;
-  customerLastName: string;
+  firstName: string;
+  lastName: string;
   productId: number | string;
   balanceSettled: string | number;
   balanceAvailable: number | string;
@@ -109,8 +109,8 @@ export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlain
 
 export interface LedgerAccountsFilterParams extends LedgerAccountId {
   institutionId: SelectValues;
-  customerFirstName: string;
-  customerLastName: string;
+  firstName: string;
+  lastName: string;
   productName: Array<SelectValues>;
   accountAlias: string;
   id: number;

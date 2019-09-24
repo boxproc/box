@@ -1,5 +1,6 @@
-import { formNamesConst } from 'consts';
 import { getFormValues } from 'redux-form';
+
+import { formNamesConst } from 'consts';
 
 import { ActionTypeKeys, FilterUserActivitiesAction, GetAuditUsersAction } from './actionType';
 import * as api from './api';
@@ -23,7 +24,7 @@ export const getAuditUsers: GetAuditUsers = institutionId => ({
 });
 
 export const filterAuditUserActivities: FilterAuditUserActivities = filterParams => ({
-  type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITIES,
+  type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY,
   payload: api.filterAuditUserActivities(filterParams),
 });
 

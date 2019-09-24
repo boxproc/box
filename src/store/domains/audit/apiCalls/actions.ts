@@ -1,3 +1,7 @@
+import { getFormValues } from 'redux-form';
+
+import { formNamesConst } from 'consts';
+
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
@@ -5,14 +9,14 @@ import {
   GetDetailsAuditApiCallsAction,
 } from './actionTypes';
 import * as api from './api';
-import { AuditApiCallsFilterParams, AuditApiCallsFilterParamsPrepared } from './types';
+import { AuditApiCallsFilterParamsPrepared } from './types';
 import { preparedFilterParamsToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type HandleFilterAuditApiCalls = (params: Partial<AuditApiCallsFilterParams>) => Thunk<void>;
+export type HandleFilterAuditApiCalls = () => Thunk<void>;
 export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterParamsPrepared>) =>
   FilterAuditApiCallsAction;
 
@@ -29,11 +33,13 @@ export const getDetailsAuditApiCalls: GetDetailsAuditApiCalls = id => ({
   payload: api.getDetailsAuditApiCalls({ id }),
 });
 
-export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = params =>
-  async dispatch => {
+export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedParams = preparedFilterParamsToSend(params);
+        const state = getState();
+        const formValues = getFormValues(formNamesConst.FILTER);
+        const preparedParams = preparedFilterParamsToSend(formValues(state));
 
         await dispatch(filterAuditApiCalls(preparedParams));
       },

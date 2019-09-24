@@ -59,7 +59,7 @@ export const pagesList = [
     component: <ApiCalls />,
   },
   {
-    path: uiItemConsts.AUDIT_USER_ACTIVITIES,
+    path: uiItemConsts.AUDIT_USER_ACTIVITY,
     component: <UserActivity />,
   },
   {

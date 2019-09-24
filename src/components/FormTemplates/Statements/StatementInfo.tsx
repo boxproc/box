@@ -33,9 +33,9 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             id="dateFrom"
             name="dateFrom"
             component={InputField}
-            label="Date / Time From"
-            placeholder={dateFormat.DATE_TIME_FORMAT}
-            mask={maskFormat.DATE_TIME}
+            label="Date From"
+            placeholder={dateFormat.DATE}
+            mask={maskFormat.DATE}
             maskChar={null}
             disabled={isDisabled}
           />
@@ -45,9 +45,9 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             id="dateTo"
             name="dateTo"
             component={InputField}
-            label="Date / Time To"
-            placeholder={dateFormat.DATE_TIME_FORMAT}
-            mask={maskFormat.DATE_TIME}
+            label="Date To"
+            placeholder={dateFormat.DATE}
+            mask={maskFormat.DATE}
             maskChar={null}
             disabled={isDisabled}
           />

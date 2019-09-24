@@ -72,8 +72,8 @@ export const tableColumns = [
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="First Name" />,
-    accessor: 'customerFirstName',
-    Cell: (props: TCell<'customerFirstName'>) => (
+    accessor: 'firstName',
+    Cell: (props: TCell<'firstName'>) => (
       <TableCell
         value={props.value}
       />
@@ -83,8 +83,8 @@ export const tableColumns = [
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Last Name" />,
-    accessor: 'customerLastName',
-    Cell: (props: TCell<'customerLastName'>) => (
+    accessor: 'lastName',
+    Cell: (props: TCell<'lastName'>) => (
       <TableCell
         value={props.value}
       />

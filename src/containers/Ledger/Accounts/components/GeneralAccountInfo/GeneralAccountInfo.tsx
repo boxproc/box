@@ -238,7 +238,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 name="lastCycleDate"
                 component={InputField}
                 label="Last Cycle Date"
-                placeholder={dateFormat.FORMAT}
+                placeholder={dateFormat.DATE}
                 disabled={true}
               />
             </Box>

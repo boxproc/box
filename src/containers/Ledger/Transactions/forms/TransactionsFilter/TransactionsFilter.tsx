@@ -90,7 +90,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           name="datetimeFrom"
           component={MaskField}
           label="Date / Time From"
-          placeholder={dateFormat.DATE_TIME_FORMAT}
+          placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
         />
@@ -101,7 +101,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           name="datetimeTo"
           component={MaskField}
           label="Date / Time To"
-          placeholder={dateFormat.DATE_TIME_FORMAT}
+          placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
         />
