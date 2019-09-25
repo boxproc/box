@@ -6,27 +6,27 @@ import { UserActivityFilter } from './forms';
 
 import { tableColumns } from './components';
 
-import { AuditUserActivitiesItem, HandleFilterAuditUserActivities } from 'store/domains';
+import { AuditUserActivityItem, HandleFilterAuditUserActivity } from 'store/domains';
 import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
 export interface UserActivityProps {
   institutionsOptions: Array<SelectValues>;
-  auditUserActivities: Array<AuditUserActivitiesItem>;
-  filterAuditUserActivities: HandleFilterAuditUserActivities;
+  auditUserActivity: Array<AuditUserActivityItem>;
+  filterAuditUserActivity: HandleFilterAuditUserActivity;
 }
 
-const UserActivities: React.FC<UserActivityProps> = ({
+const UserActivity: React.FC<UserActivityProps> = ({
   institutionsOptions,
-  auditUserActivities,
-  filterAuditUserActivities,
+  auditUserActivity,
+  filterAuditUserActivity,
 }) => {
   return (
     <TablePage
-      title="User Activities"
-      data={auditUserActivities}
+      title="User Activity"
+      data={auditUserActivity}
       columns={tableColumns}
-      filterAction={filterAuditUserActivities}
+      filterAction={filterAuditUserActivity}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
         datetimeFrom: dateUtil.yesterdayDateTime,
@@ -41,4 +41,4 @@ const UserActivities: React.FC<UserActivityProps> = ({
   );
 };
 
-export default withSpinner()(UserActivities);
+export default withSpinner()(UserActivity);

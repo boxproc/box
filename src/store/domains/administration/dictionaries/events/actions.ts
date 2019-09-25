@@ -1,9 +1,6 @@
 import * as api from './api';
 
-import {
-  ActionTypeKeys,
-  GetAdminEventsAction,
-} from './actionTypes';
+import { ActionTypeKeys, GetAdminEventsAction } from './actionTypes';
 
 import { VoidPromiseThunk } from 'types';
 

@@ -1,6 +1,4 @@
-import {
-  AdminEventsData,
-} from './types';
+import { AdminEventsData } from './types';
 
 import { ApiResponse } from 'types';
 

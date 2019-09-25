@@ -48,6 +48,11 @@ export enum adminEventDataElemsPathNames {
   GET = '/ui/administration/dictionaries/event_data_elements/get',
 }
 
+export enum dictionariesPathNames {
+  GET_COUNTRIES = '/ui/administration/dictionaries/countries/get',
+  GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
+}
+
 export enum adminEventsPathNames {
   GET = '/ui/administration/dictionaries/events/get',
 }
@@ -89,7 +94,7 @@ export enum adminSystemPropsPathNames {
   UPDATE = '/ui/administration/system_properties/update',
 }
 
-export enum auditUserActivitiesPathNames {
+export enum auditUserActivityPathNames {
   GET = '/ui/audit/users_activity/get',
 }
 

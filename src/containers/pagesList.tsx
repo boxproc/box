@@ -3,6 +3,8 @@ import React from 'react';
 import { uiItemConsts } from 'consts';
 
 import {
+  Countries,
+  Currencies,
   CyclesEditor,
   Endpoints,
   EventDataElems,
@@ -37,6 +39,14 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_SCHEDULER,
     component: <Scheduler />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES,
+    component: <Countries />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES,
+    component: <Currencies />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENTS,

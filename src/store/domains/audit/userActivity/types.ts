@@ -7,7 +7,7 @@ interface PlainInfo {
   username: string | number;
 }
 
-export interface AuditUserActivitiesItemResp extends PlainInfo {
+export interface AuditUserActivityItemResp extends PlainInfo {
   user_id: number;
   api_name: string;
   event_datetime: string;
@@ -16,7 +16,7 @@ export interface AuditUserActivitiesItemResp extends PlainInfo {
   last_name: string;
 }
 
-export interface AuditUserActivitiesItem extends PlainInfo {
+export interface AuditUserActivityItem extends PlainInfo {
   institutionId: number;
   userId: number;
   apiName: string;
@@ -26,14 +26,14 @@ export interface AuditUserActivitiesItem extends PlainInfo {
 
 }
 
-export interface AuditUserActivitiesFilter {
+export interface AuditUserActivityFilter {
   institutionId: SelectValues;
   username: SelectValues;
   datetimeFrom: string;
   datetimeTo: string;
 }
 
-export interface AuditUserActivitiesFilterPrepared {
+export interface AuditUserActivityFilterPrepared {
   institution_id: string | number;
   username: string | number;
   datetime_from: string;
@@ -55,11 +55,11 @@ export interface AuditUsersDataResp extends ResponseStatusType {
   users_activity: Array<AuditUserActivitySelectInstitutionResponse>;
 }
 
-export interface AuditUserActivitiesDataResp extends ResponseStatusType {
-  users_activity: Array<AuditUserActivitiesItemResp>;
+export interface AuditUserActivityDataResp extends ResponseStatusType {
+  users_activity: Array<AuditUserActivityItemResp>;
 }
 
-export interface AuditUserActivitiesState {
+export interface AuditUserActivityState {
   usersActivity: ImmutableArray<AuditUserActivitySelectInstitutionResponse>;
-  filteredUsers: ImmutableArray<AuditUserActivitiesItemResp>;
+  filteredUsers: ImmutableArray<AuditUserActivityItemResp>;
 }

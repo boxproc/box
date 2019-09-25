@@ -1,4 +1,4 @@
-import { AuditUserActivitiesDataResp, AuditUsersDataResp } from './types';
+import { AuditUserActivityDataResp, AuditUsersDataResp } from './types';
 
 import { ApiResponse } from 'types';
 
@@ -27,21 +27,21 @@ export interface GetAuditUserActivityRejectedAction {
   readonly type: ActionTypeKeys.GET_AUDIT_USERS_FULFILLED;
 }
 
-export interface FilterUserActivitiesAction {
+export interface FilterUserActivityAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY;
 }
 
-export interface FilterUserActivitiesFulfilledAction {
-  readonly payload: AuditUserActivitiesDataResp;
+export interface FilterUserActivityFulfilledAction {
+  readonly payload: AuditUserActivityDataResp;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_FULFILLED;
 }
 
-export interface FilterUserActivitiesRejectedAction {
+export interface FilterUserActivityRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_REJECTED;
 }
 
 export type AuditUserActivityActionTypes =
   | GetAuditUsersFulfilledAction
-  | FilterUserActivitiesFulfilledAction;
+  | FilterUserActivityFulfilledAction;

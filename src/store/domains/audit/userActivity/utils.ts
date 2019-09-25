@@ -1,6 +1,6 @@
-import { AuditUserActivitiesFilter, AuditUserActivitiesItemResp } from './types';
+import { AuditUserActivityFilter, AuditUserActivityItemResp } from './types';
 
-export const preparedValuesToRender = (values: Partial<AuditUserActivitiesItemResp>) => {
+export const preparedValuesToRender = (values: Partial<AuditUserActivityItemResp>) => {
   if (!values) {
     return null;
   }
@@ -18,7 +18,7 @@ export const preparedValuesToRender = (values: Partial<AuditUserActivitiesItemRe
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<AuditUserActivitiesFilter>) => {
+export const preparedFilterParamsToSend = (params: Partial<AuditUserActivityFilter>) => {
   if (!params) {
     return null;
   }

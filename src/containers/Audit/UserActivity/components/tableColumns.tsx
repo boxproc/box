@@ -2,10 +2,10 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AuditUserActivitiesItem } from 'store/domains/audit/userActivity';
+import { AuditUserActivityItem } from 'store/domains/audit/userActivity';
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof AuditUserActivitiesItem> = TableCellType<AuditUserActivitiesItem[T]>;
+type TCell<T extends keyof AuditUserActivityItem> = TableCellType<AuditUserActivityItem[T]>;
 
 export const tableColumns = [
   {

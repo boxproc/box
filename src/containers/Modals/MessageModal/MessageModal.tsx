@@ -37,7 +37,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         }
       };
     },
-    [statusCode, closeAllModals]
+    [statusCode, closeAllModals, isSessionEnded]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
@@ -62,7 +62,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       >
         <Box mt="5px">
           <Button
-            text="Close"
+            text={isSessionEnded ? 'Re Login' : 'Close'}
             onClick={handleClick}
           />
         </Box>

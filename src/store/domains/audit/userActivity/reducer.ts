@@ -1,15 +1,15 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
 
-import { AuditUserActivitiesState } from './types';
+import { AuditUserActivityState } from './types';
 
 import { ActionTypeKeys, AuditUserActivityActionTypes } from './actionType';
 
 export const auditUserActivityInitialState:
-  seamlessImmutable.ImmutableObject<AuditUserActivitiesState> = Immutable({
+  seamlessImmutable.ImmutableObject<AuditUserActivityState> = Immutable({
     usersActivity: Immutable([]),
     filteredUsers: Immutable([]),
   });
-const auditUserActivitiesReducer =
+const auditUserActivityReducer =
   (state = auditUserActivityInitialState, action: AuditUserActivityActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_AUDIT_USERS_FULFILLED:
@@ -25,4 +25,4 @@ const auditUserActivitiesReducer =
     }
   };
 
-export default auditUserActivitiesReducer;
+export default auditUserActivityReducer;

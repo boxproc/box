@@ -1,7 +1,7 @@
 import { AuditApiCallsState } from './apiCalls';
-import { AuditUserActivitiesState } from './userActivity';
+import { AuditUserActivityState } from './userActivity';
 
 export interface AuditState {
-  userActivities: AuditUserActivitiesState;
+  userActivity: AuditUserActivityState;
   apiCalls: AuditApiCallsState;
 }

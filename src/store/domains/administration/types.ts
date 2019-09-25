@@ -1,4 +1,6 @@
 import { AdminCyclesEditorState } from './cycles';
+import { AdminCountriesState } from './dictionaries/countries';
+import { AdminCurrenciesState } from './dictionaries/currencies';
 import { AdminEventDataElemsState } from './dictionaries/eventDataElems';
 import { AdminEventsState } from './dictionaries/events';
 import { AdminEndpointState } from './endpoints';
@@ -15,6 +17,8 @@ export interface AdministrationState {
   cyclesEditor: AdminCyclesEditorState;
   users: AdminUserState;
   userGroups: AdminUsersGroupState;
+  countries: AdminCountriesState;
+  currencies: AdminCurrenciesState;
   events: AdminEventsState;
   eventDataElements: AdminEventDataElemsState;
   endpoints: AdminEndpointState;

@@ -1,13 +1,13 @@
-import { auditUserActivitiesPathNames } from 'consts';
+import { auditUserActivityPathNames } from 'consts';
 
-import { AuditUserActivitiesFilterPrepared } from './types';
+import { AuditUserActivityFilterPrepared } from './types';
 
 import { apiClient } from 'services';
 
 export const getAuditUsers = (institutionId: string | number) =>
-  apiClient.post(auditUserActivitiesPathNames.GET, {
+  apiClient.post(auditUserActivityPathNames.GET, {
     data: { institution_id: institutionId },
   });
 
-export const filterAuditUserActivities = (data: Partial<AuditUserActivitiesFilterPrepared>) =>
-  apiClient.post(auditUserActivitiesPathNames.GET, { data });
+export const filterAuditUserActivity = (data: Partial<AuditUserActivityFilterPrepared>) =>
+  apiClient.post(auditUserActivityPathNames.GET, { data });

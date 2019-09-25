@@ -1,31 +1,29 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import UserActivity from './UserActivity';
+import Currencies from './Currencies';
 
 import {
-  AuditUserActivityActionType,
+  AdminCurrenciesActionTypes,
   createLoadingSelector,
-  handleFilterAuditUserActivity,
-  selectAuditUserActivity,
-  selectInstitutionsOptions
+  handleGetAdminCurrencies,
+  selectAdminCurrencies,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AuditUserActivityActionType.FILTER_AUDIT_USER_ACTIVITY,
+  AdminCurrenciesActionTypes.GET_ADMIN_CURRENCIES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
-  auditUserActivity: selectAuditUserActivity(state),
+  adminCurrencies: selectAdminCurrencies(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAuditUserActivity: handleFilterAuditUserActivity,
+    getAdminCurrencies: handleGetAdminCurrencies,
   },
   dispatch
 );
@@ -33,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserActivity);
+)(Currencies);

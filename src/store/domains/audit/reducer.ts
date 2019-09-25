@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux-seamless-immutable';
 import auditApiCallsReducer from './apiCalls/reducer';
-import auditUserActivitiesReducer from './userActivity/reducer';
+import auditUserActivityReducer from './userActivity/reducer';
 
 const auditReducer = combineReducers({
-  userActivities: auditUserActivitiesReducer,
+  userActivity: auditUserActivityReducer,
   apiCalls: auditApiCallsReducer,
 });
 

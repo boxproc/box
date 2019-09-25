@@ -213,4 +213,8 @@ export const TableStyled = styled.div<TableStyledProps>`
     width: 8px;
     right: -4px;
   }
+
+  .ReactTable .rt-th:last-child .rt-resizer {
+    display: none;
+  }
 `;
