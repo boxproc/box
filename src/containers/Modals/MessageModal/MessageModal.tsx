@@ -23,15 +23,13 @@ const MessageModal: React.FC<MessageModalProps> = ({
   closeAllModals,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
+  const isSessionEnded = statusCode === statusCodes.NO_SESSION
+    || statusCode === statusCodes.SESSION_TIMEOUT;
 
   React.useEffect(
     () => {
       return () => {
-        if (
-          statusCode === statusCodes.NO_SESSION
-          || statusCode === statusCodes.USER_NOT_AUTH
-          || statusCode === statusCodes.SESSION_TIMEOUT
-        ) {
+        if (isSessionEnded || statusCode === statusCodes.USER_NOT_AUTH) {
           storageUtil.clear();
           closeAllModals();
           // history.push(basePath);
@@ -52,7 +50,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title={title}
+      title={isSessionEnded ? 'Session ended' : title}
       maxContainerWidth={500}
       zIndex="102"
       closeOnBackdrop={true}
