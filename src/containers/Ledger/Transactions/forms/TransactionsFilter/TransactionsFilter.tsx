@@ -93,6 +93,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
+          validate={[formErrorUtil.required]}
         />
       </Box>
       <Box width="200px" p="10px">
@@ -104,6 +105,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
+          validate={[formErrorUtil.required]}
         />
       </Box>
     </React.Fragment>

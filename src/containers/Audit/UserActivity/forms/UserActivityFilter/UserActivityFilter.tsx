@@ -74,6 +74,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
+          validate={[formErrorUtil.required]}
         />
       </Box>
       <Box width="200px" p="10px" >
@@ -86,6 +87,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
+          validate={[formErrorUtil.required]}
         />
       </Box>
     </React.Fragment>

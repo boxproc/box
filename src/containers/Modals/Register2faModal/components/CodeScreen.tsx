@@ -34,7 +34,7 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
     <React.Fragment>
       <CircleList
         items={[
-          'Download Google Authenticator from Play Play or Apple Store.',
+          'Download Google Authenticator from Google Play or Apple Store.',
           // tslint:disable-next-line: max-line-length
           'Launch Google Authenticator on your mobile phone and follow instructions to complete registration.',
         ]}

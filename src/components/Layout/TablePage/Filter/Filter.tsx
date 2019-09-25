@@ -30,6 +30,7 @@ const Filter: React.FC<FilterAllProps> = ({
   children,
   handleSubmit,
   submitting,
+  invalid,
   filterValues,
 }) => {
   const handleSubmitForm = React.useCallback(
@@ -50,6 +51,8 @@ const Filter: React.FC<FilterAllProps> = ({
   const hasInstitution = filterValues && filterValues['institutionId'];
   const hasId = filterValues && filterValues['id'];
   const hasAccountId = filterValues && filterValues['accountId'];
+  const hasCustomerId = filterValues && filterValues['customerId'];
+  const hasProductName = filterValues && filterValues['productName'];
   const hasAccountAlias = filterValues && filterValues['accountAlias'];
   const hasLastName = filterValues && filterValues['lastName'];
 
@@ -60,29 +63,29 @@ const Filter: React.FC<FilterAllProps> = ({
     switch (window.location.pathname) {
       case `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
       case `/ui/${uiItemConsts.ADMINISTRATION_USER}`:
+      case `/ui/${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
         return valuesCount >= 0;
+
       case `/ui/${uiItemConsts.AUDIT_API_CALLS}`:
       case `/ui/${uiItemConsts.AUDIT_USER_ACTIVITY}`:
         return valuesCount > 1;
+
       case `/ui/${uiItemConsts.LEDGER_ACCOUNTS}`:
         return hasInstitution && (hasId || hasAccountAlias || hasLastName);
+
       case `/ui/${uiItemConsts.LEDGER_STATEMENTS}`:
         return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
+
       case `/ui/${uiItemConsts.LEDGER_CUSTOMERS}`:
         return hasInstitution && (hasId || hasLastName);
+
+      case `/ui/${uiItemConsts.LEDGER_TRANSACTIONS}`:
+        return hasInstitution && (hasId || hasProductName || hasCustomerId);
+
       default:
         return valuesCount > 0;
     }
   };
-
-  // const isAccessibleButton =
-  //   hasInstitutionId ? valuesCount > 1
-  //     : (
-  //       window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`
-  //       || window.location.pathname === `/ui/${uiItemConsts.ADMINISTRATION_USER}`
-  //     )
-  //       ? valuesCount >= 0
-  //       : valuesCount > 0;
 
   return (
     <FilterWrapper>
@@ -91,7 +94,7 @@ const Filter: React.FC<FilterAllProps> = ({
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-end" flexWrap="wrap">{children}</Flex>
-          <Button text="Show" disabled={submitting || !isAccessibleButton()} />
+          <Button text="Show" disabled={submitting || invalid || !isAccessibleButton()} />
         </Box>
       </form>
 

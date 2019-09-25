@@ -23,7 +23,7 @@ import { Home, Login } from 'containers/Landings';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
-import { storageUtil, urlUtil } from 'utils';
+import { storageUtil } from 'utils';
 
 const RootWrapper = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
       if (isLoggedIn && !sessionId) {
         storageUtil.clear();
         // history.push(basePath);
-        urlUtil.openLocation(basePath);
+        // urlUtil.openLocation(basePath);
       }
     },
     [isLoggedIn, sessionId]

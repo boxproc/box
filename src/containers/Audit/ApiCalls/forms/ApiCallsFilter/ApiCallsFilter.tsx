@@ -63,6 +63,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder="Select endpoint"
           isDisabled={false}
           isLoading={isLoadingEndpoints}
+          validate={[formErrorUtil.required]}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -86,6 +87,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
+          validate={[formErrorUtil.required]}
         />
       </Box>
       <Box width="200px" p="10px">
@@ -98,6 +100,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
+          validate={[formErrorUtil.required]}
         />
       </Box>
     </React.Fragment>
