@@ -9,13 +9,13 @@ import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'HOCs';
 
 import { actionTypesOptions } from 'consts';
 
-import { AdminEventDataElemsItem, HandleFilterAdminEventDataElems } from 'store/domains';
+import { AdminEventDataElemsItem, HandleFilterAdminEventDataElemsById } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ProductRulesProps extends WithLoadAdminEventsProps {
-  filterAdminEventDataElems: HandleFilterAdminEventDataElems;
+  filterAdminEventDataElemsById: HandleFilterAdminEventDataElemsById;
   eventValue: SelectValues;
   adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
   onChangeValues?: () => void;
@@ -39,7 +39,7 @@ const getNewCode = (element: string) => {
 const ProductRules: React.FC<ProductRulesProps> = ({
   adminEventsOptions,
   isAdminEventsLoading,
-  filterAdminEventDataElems,
+  filterAdminEventDataElemsById,
   eventValue,
   adminEventDataElemsItems,
   onChangeValues,
@@ -48,10 +48,10 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   React.useEffect(
     () => {
       if (eventValue) {
-        filterAdminEventDataElems({ eventId: eventValue });
+        filterAdminEventDataElemsById({ eventId: eventValue });
       }
     },
-    [filterAdminEventDataElems, eventValue]
+    [filterAdminEventDataElemsById, eventValue]
   );
 
   const onContextMenuClick = (e: Event, value: { name: string }) => {

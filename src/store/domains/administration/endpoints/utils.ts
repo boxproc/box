@@ -14,7 +14,7 @@ export const preparedFilterParamsToSend = (params: Partial<AdminEndpointFilterPa
   const { institutionId } = params;
 
   return {
-    institution_id: institutionId && Number(institutionId.value),
+    institution_id: institutionId ? institutionId.value : null,
   };
 };
 

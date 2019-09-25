@@ -43,8 +43,8 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerStatementsFilte
   } = params;
 
   return {
-    account_id: accountId ? Number(accountId) : null,
-    institution_id: institutionId ? Number(institutionId.value) : null,
+    account_id: accountId ? accountId : null,
+    institution_id: institutionId ? institutionId.value : null,
     first_name: firstName ? firstName : null,
     last_name: lastName ? lastName : null,
     product: (product && product.length) ? product.map(name => name.value) : null,

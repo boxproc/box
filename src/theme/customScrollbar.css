@@ -1,9 +1,19 @@
 .ps__thumb-y {
   width: 3px;
+  right: 0;
 }
 
 .ps__thumb-x {
   height: 3px;
+  bottom: 0;
+}
+
+.ps__rail-x {
+  height: 8px;
+}
+
+.ps__rail-y {
+  width: 8px;
 }
 
 .ps--active-x > .ps__rail-x,

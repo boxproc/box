@@ -21,12 +21,12 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerAccountsFilterP
   } = params;
 
   return {
-    institution_id: institutionId && Number(institutionId.value),
-    customer_first_name: firstName,
-    customer_last_name: lastName,
-    product_name: productName && productName.length && productName.map(name => name.label),
-    account_alias: accountAlias,
-    id,
+    institution_id: institutionId ? institutionId.value : null,
+    first_name: firstName ? firstName : null,
+    last_name: lastName ? lastName : null,
+    product_name: (productName && productName.length) ? productName.map(name => name.label) : null,
+    account_alias: accountAlias ? accountAlias : null,
+    id: id ? id : null,
   };
 };
 
@@ -90,7 +90,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     status: statusTypesOptions.find(el => el.value === values.status).label,
     accountAlias: values.account_alias,
     accountAliasAdditional: values.account_alias_additional,
-    customerId: Number(values.customer_id),
+    customerId: values.customer_id,
     firstName: values.customer_first_name,
     lastName: values.customer_last_name,
     productId: values.product_id,

@@ -3,12 +3,19 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { InputField, SelectField } from 'components';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
+
+const ProductWrapper = styled(Box)`
+  min-width: 235px
+  max-width: 410px;
+`;
 
 interface AccountsFilterProps {
   institutionsOptions: Array<SelectValues>;
@@ -40,7 +47,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
     <Flex alignItems="flex-start">
       <Box width="529px">
         <Flex
-          alignItems="flex-end"
+          alignItems="flex-start"
           flexWrap="wrap"
         >
           <Box width={[4 / 9]} p="10px">
@@ -98,21 +105,19 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           </Box>
         </Flex>
       </Box>
-      <Flex>
-        <Box width="250px" p="10px">
-          <Field
-            id="productName"
-            name="productName"
-            component={SelectField}
-            label="Product"
-            placeholder="Select Product"
-            options={institutionProductsOptions}
-            isDisabled={false}
-            isMulti={true}
-            isLoading={isLoadingInstitutionProducts}
-          />
-        </Box>
-      </Flex>
+      <ProductWrapper p="10px">
+        <Field
+          id="productName"
+          name="productName"
+          component={SelectField}
+          label="Product"
+          placeholder="Select Product"
+          options={institutionProductsOptions}
+          isDisabled={false}
+          isMulti={true}
+          isLoading={isLoadingInstitutionProducts}
+        />
+      </ProductWrapper>
     </Flex>
   );
 };

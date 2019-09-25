@@ -2,7 +2,7 @@ import styled from 'theme';
 
 import { menuClasses } from './utils';
 
-export const NavList = styled.div`
+export const NavListStyled = styled.div`
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -47,7 +47,7 @@ export const NavList = styled.div`
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0;
-    top: calc(100% + 14px);
+    top: calc(100% + 20px);
     padding: 1px 0;
     display: flex;
     flex-direction: column;

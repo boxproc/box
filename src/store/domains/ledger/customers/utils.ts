@@ -13,10 +13,10 @@ export const preparedFilterParamsToSend = (params: Partial<LedgerCustomersFilter
   const { id, institutionId, firstName, lastName } = params;
 
   return {
-    id,
-    first_name: firstName,
-    institution_id: institutionId && institutionId.value,
-    last_name: lastName,
+    id: id ? id : null,
+    first_name: firstName ? firstName : null,
+    institution_id: institutionId ? institutionId.value : null,
+    last_name: lastName ? lastName : null,
   };
 };
 

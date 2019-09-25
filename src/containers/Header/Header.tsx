@@ -34,7 +34,7 @@ const Wrapper = styled.header`
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
   font-size: 13px;
   white-space: nowrap;
-  z-index: 10;
+  z-index: 100;
 `;
 
 interface HeaderProps extends RouteComponentProps {

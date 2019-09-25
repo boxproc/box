@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { ChevronRightIcon } from 'components';
-import { NavList } from './NavList';
+import { NavListStyled } from './NavListStyled';
 
 import { basePath, uiItemTypesConst } from 'consts';
 
@@ -37,8 +37,6 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
         className={menuClasses.MENU_ITEM}
         onClick={() => !hasChildren && goToPage(pushToHistory, clearMenu)}
         onMouseEnter={e => toggleOpenMenu(e)}
-        // onClick={e => hasChildren ? toggleOpenMenu(e) : goToPage(pushToHistory, clearMenu)}
-        // onMouseEnter={e => checkHasActive() && toggleOpenMenu(e)}
       >
         <Flex
           alignItems="flex-start"
@@ -58,19 +56,19 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
   };
 
   const renderMenu = (id?: string) => id && (
-    <NavList className={menuClasses.SUB_MENU}>
+    <NavListStyled className={menuClasses.SUB_MENU}>
       {uiItems.map(item => item.parentId === id && renderItem(item))}
-    </NavList>
+    </NavListStyled>
   );
 
   return (
-    <NavList
+    <NavListStyled
       ref={menuRef}
       className={menuClasses.MENU}
       onMouseLeave={() => clearMenu()}
     >
       {uiItems.map(item => !item.parentId && renderItem(item))}
-    </NavList>
+    </NavListStyled>
   );
 };
 

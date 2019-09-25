@@ -47,10 +47,10 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
         {storageUtil.getFirstScreenFlag() && (
           <React.Fragment>
             <Paragraph bold={true} size={15}>
-              Welcome, {`${userData && userData.firstName} ${userData && userData.lastName}`}!
+              Welcome {`${userData && userData.firstName} ${userData && userData.lastName}`}!
             </Paragraph>
             <SmallText>
-              Datetime of your last activity: {userData && userData.lastActivity}
+              Your last activity: {userData && userData.lastActivity}
             </SmallText>
           </React.Fragment>
         )}

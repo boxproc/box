@@ -5,7 +5,7 @@ import { modalNamesConst } from 'consts';
 import AddInterfaceModal from './AddInterfaceModal';
 import EditInterfaceModal from './EditInterfaceModal';
 
-export const institutionsModals = [
+export const interfacesModals = [
   {
     name: modalNamesConst.ADD_ADMIN_INTERFACE,
     component: <AddInterfaceModal />,

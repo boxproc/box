@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ProductRules from './ProductRules';
 
 import {
-  handleFilterAdminEventDataElems,
+  handleFilterAdminEventDataElemsById,
   selectAdminEventDataElemsItems,
 } from 'store/domains';
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAdminEventDataElems: handleFilterAdminEventDataElems,
+    filterAdminEventDataElemsById: handleFilterAdminEventDataElemsById,
   },
   dispatch
 );

@@ -113,6 +113,11 @@ const TableWrapper = styled.div`
   .ps__thumb-y {
     background-color: #ffa400;
   }
+
+  .ps--active-x > .ps__rail-x,
+  .ps--active-y > .ps__rail-y {
+    z-index: 9;
+  }
 `;
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {

@@ -34,16 +34,6 @@ import {
 
 import { SelectValues } from 'types';
 
-export const prepareProductFiltersParams =
-  (params: ProductFilterParamsPrepared): ProductFilterParams => {
-    return {
-      activeStatusFlag: params.status === statusTypesConst.ACTIVE,
-      productType: params.product_type ?
-        params.product_type.map(type => productTypesOptions
-          .find(el => el.value === type)) : null,
-    };
-  };
-
 export const prepareProductFiltersParamsToSend =
   (params: ProductFilterParams): ProductFilterParamsPrepared => {
     const { activeStatusFlag, institutionId, productType } = params;

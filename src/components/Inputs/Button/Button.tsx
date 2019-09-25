@@ -15,6 +15,7 @@ interface ButtonProps extends WithModalProps {
   iconName?: string;
   type?: 'reset' | 'submit';
   disabled?: boolean;
+  isFocused?: boolean;
   withConfirmation?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
@@ -25,6 +26,7 @@ interface ButtonProps extends WithModalProps {
 
 const Button: React.FC<ButtonProps> = ({
   disabled,
+  isFocused,
   onClick,
   text,
   iconName,
@@ -62,6 +64,7 @@ const Button: React.FC<ButtonProps> = ({
       bordered={bordered}
       underline={underline}
       hasIcon={!!iconName}
+      className={isFocused && 'is-focused'}
     >
       {iconName && (
         <Box mr="2px">

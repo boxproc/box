@@ -24,7 +24,9 @@ export const prepareAdminSysPropFilterParams =
       return null;
     }
 
+    const propName = propValues.id;
+
     return {
-      property_name: propValues.id,
+      property_name: propName ? propName : null,
     };
   };

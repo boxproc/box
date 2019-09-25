@@ -118,8 +118,8 @@ export interface LedgerAccountsFilterParams extends LedgerAccountId {
 
 export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
   institution_id: string | number;
-  customer_first_name: string;
-  customer_last_name: string;
+  first_name: string;
+  last_name: string;
   product_name: Array<string | number>;
   account_alias: string;
   id: number;

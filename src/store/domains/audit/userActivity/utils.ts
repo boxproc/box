@@ -26,9 +26,9 @@ export const preparedFilterParamsToSend = (params: Partial<AuditUserActivitiesFi
   const { institutionId, username, datetimeFrom, datetimeTo } = params;
 
   return {
-    institution_id: institutionId && institutionId.value,
-    username: username && username.value,
-    datetime_from: datetimeFrom && datetimeFrom,
-    datetime_to: datetimeTo && datetimeTo,
+    institution_id: institutionId ? institutionId.value : null,
+    username: username ? username.value : null,
+    datetime_from: datetimeFrom ? datetimeFrom : null,
+    datetime_to: datetimeTo ? datetimeTo : null,
   };
 };

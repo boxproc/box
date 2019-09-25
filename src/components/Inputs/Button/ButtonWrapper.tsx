@@ -28,7 +28,9 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 8px 10px 6px;
     border-radius: 2px;
-    &:hover {
+    border: 1px solid transparent;
+    &:hover,
+    &.is-focused:not(:disabled) {
       background-color: ${theme.colors.lighterGray};
     }
   `}
@@ -50,7 +52,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     box-shadow: ${theme.shadows.normalBox};
   `};
 
-  &:hover {
+  &:hover,
+  &.is-focused:not(:disabled) {
     color: ${({ theme }) => theme.colors.normalAccent};
 
     ${({ bordered, theme }) => bordered && `

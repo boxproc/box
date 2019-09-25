@@ -19,6 +19,10 @@ const Wrapper = styled(Flex) <WrapperProps>`
 
   .btn-wrapper {
     position: relative;
+
+    &:first-child {
+      margin-right: 5px;
+    }
   }
 `;
 
@@ -29,6 +33,7 @@ interface OkCancelButtonsProps {
   onOk?: () => void;
   disabledCancel?: boolean;
   disabledOk?: boolean;
+  focusedButton?: 'ok' | 'cancel';
   cancelIconName?: string;
   hintOk?: string;
   hintCancel?: string;
@@ -41,6 +46,7 @@ interface OkCancelButtonsProps {
 const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   okText = 'Ok',
   cancelText = 'Cancel',
+  focusedButton = 'ok',
   onCancel,
   onOk,
   cancelIconName,
@@ -53,12 +59,31 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   cancelConfirmationText = messagesConst.UNSAVED_CHANGES,
   cancelConfirmationTitle = messagesConst.CLOSE_MODAL_WINDOW,
 }) => {
+  const okBtnFocused = focusedButton === 'ok';
+  const cancelBtnFocused = focusedButton === 'cancel';
+
   return (
     <Wrapper rightPosition={rightPosition} >
       <div className="btn-wrapper">
         <Button
+          text={okText}
+          disabled={disabledOk}
+          onClick={onOk}
+          isFocused={okBtnFocused}
+        />
+        {hintOk && (
+          <Hint
+            text={hintOk}
+            icon={false}
+            position="top"
+          />
+        )}
+      </div>
+      <div className="btn-wrapper">
+        <Button
           text={cancelText}
           onClick={onCancel}
+          isFocused={cancelBtnFocused}
           type="reset"
           iconName={cancelIconName}
           disabled={disabledCancel}
@@ -69,20 +94,6 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
         {hintCancel && (
           <Hint
             text={hintCancel}
-            icon={false}
-            position="top"
-          />
-        )}
-      </div>
-      <div className="btn-wrapper">
-        <Button
-          text={okText}
-          disabled={disabledOk}
-          onClick={onOk}
-        />
-        {hintOk && (
-          <Hint
-            text={hintOk}
             icon={false}
             position="top"
           />

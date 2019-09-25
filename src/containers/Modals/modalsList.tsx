@@ -11,6 +11,7 @@ import Register2faModal from 'containers/Modals/Register2faModal';
 import { cycleEditorModals } from 'containers/Administration/Cycles/CyclesEditor/modals';
 import { endpointsModals } from 'containers/Administration/Endpoints/modals';
 import { institutionsModals } from 'containers/Administration/Institutions/modals';
+import { interfacesModals } from 'containers/Administration/Interfaces/modals';
 import { usersModals } from 'containers/Administration/Permission/Users/modals';
 import { usersGroupModals } from 'containers/Administration/Permission/UsersGroup/modals';
 import { schedulerModals } from 'containers/Administration/Scheduler/modals';
@@ -47,7 +48,7 @@ export const modalsList = [
   ...cycleEditorModals,
   ...endpointsModals,
   ...institutionsModals,
-  ...institutionsModals,
+  ...interfacesModals,
   ...usersModals,
   ...usersGroupModals,
   ...schedulerModals,

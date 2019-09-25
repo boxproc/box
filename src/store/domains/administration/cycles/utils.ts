@@ -18,18 +18,18 @@ export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
     return item;
   }
 
+  const cycleType = typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type);
+  const status = statusTypeCyclesOptions.find(el => el.value === item.status);
+  const weeklyCycleFirstDay = weeklyCycleTypeOptions
+    .find(el => el.value === item.weekly_cycle_first_day);
+
   return {
     id: item.id,
     description: item.description,
-    cycleType:
-      typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type)
-      && typeOfCyclesEditorOptions.find(el => el.value === item.cycle_type).label,
-    status: statusTypeCyclesOptions.find(el => el.value === item.status)
-      && statusTypeCyclesOptions.find(el => el.value === item.status).label,
+    cycleType: cycleType && cycleType.label,
+    status: status && status.label,
     monthlyCycleFirstDay: item.monthly_cycle_first_day,
-    weeklyCycleFirstDay:
-      weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day)
-      && weeklyCycleTypeOptions.find(el => el.value === item.weekly_cycle_first_day).label,
+    weeklyCycleFirstDay: weeklyCycleFirstDay && weeklyCycleFirstDay.label,
     fixedCycleNumberOfDays: item.fixed_cycle_number_of_days,
   };
 };

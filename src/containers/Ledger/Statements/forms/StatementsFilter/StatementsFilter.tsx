@@ -3,6 +3,8 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { InputField, MaskField, SelectField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
@@ -11,6 +13,11 @@ import { HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
+
+const ProductWrapper = styled(Box)`
+  min-width: 235px
+  max-width: 410px;
+`;
 
 interface StatementsFilterProps {
   institutionsOptions: Array<SelectValues>;
@@ -126,7 +133,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           </Flex>
         </Box>
         <Flex>
-          <Box width="250px" p="10px">
+          <ProductWrapper p="10px">
             <Field
               id="product"
               name="product"
@@ -138,7 +145,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
               isMulti={true}
               isLoading={isLoadingInstitutionProducts}
             />
-          </Box>
+          </ProductWrapper>
         </Flex>
       </Flex>
     </React.Fragment>
