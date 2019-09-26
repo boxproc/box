@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { formNamesConst, uiItemConsts } from 'consts';
 import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`
@@ -61,25 +61,25 @@ const Filter: React.FC<FilterAllProps> = ({
 
   const isAccessibleButton = () => {
     switch (window.location.pathname) {
-      case `${basePath}${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
-      case `${basePath}${uiItemConsts.ADMINISTRATION_USER}`:
-      case `${basePath}${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
+      case `/ui/${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
+      case `/ui/${uiItemConsts.ADMINISTRATION_USER}`:
+      case `/ui/${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
         return valuesCount >= 0;
 
-      case `${basePath}${uiItemConsts.AUDIT_API_CALLS}`:
-      case `${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`:
+      case `/ui/${uiItemConsts.AUDIT_API_CALLS}`:
+      case `/ui/${uiItemConsts.AUDIT_USER_ACTIVITY}`:
         return valuesCount > 1;
 
-      case `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`:
+      case `/ui/${uiItemConsts.LEDGER_ACCOUNTS}`:
         return hasInstitution && (hasId || hasAccountAlias || hasLastName);
 
-      case `${basePath}${uiItemConsts.LEDGER_STATEMENTS}`:
+      case `/ui/${uiItemConsts.LEDGER_STATEMENTS}`:
         return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
-      case `${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`:
+      case `/ui/${uiItemConsts.LEDGER_CUSTOMERS}`:
         return hasInstitution && (hasId || hasLastName);
 
-      case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
+      case `/ui/${uiItemConsts.LEDGER_TRANSACTIONS}`:
         return hasInstitution && (hasId || hasProductName || hasCustomerId);
 
       default:

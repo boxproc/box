@@ -14,6 +14,7 @@ import { formErrorUtil } from 'utils';
 export interface GeneralUserGroupInfoProps {
   institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
+  isInstitutionsLoading: boolean;
   getAdminInstitutions: HandleGetAdminInstitutions;
 }
 
@@ -21,6 +22,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
   institutionsOptions,
   isEditMode,
   getAdminInstitutions,
+  isInstitutionsLoading,
 }) => {
   React.useEffect(
     () => {
@@ -44,6 +46,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             options={institutionsOptions}
             isDisabled={isEditMode}
             isClearable={false}
+            isLoading={isInstitutionsLoading}
             validate={[formErrorUtil.required]}
           />
         </Box>
