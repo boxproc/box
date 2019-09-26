@@ -10,7 +10,6 @@ import {
 import {
   selectIsCountryCodesLoaded,
   selectIsCurrencyCodesLoaded,
-  selectIsInstitutionsLoaded,
 } from './selectors';
 
 import { VoidPromiseThunk } from 'types';
@@ -69,9 +68,7 @@ export const handleGetInstitutions: HandleGetInstitutions = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsInstitutionsLoaded(getState())) {
-          await dispatch(getInstitutions());
-        }
+        await dispatch(getInstitutions());
       },
       dispatch
     );

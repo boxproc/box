@@ -13,6 +13,16 @@ export const selectAdminInstitutions = createSelector(
   items => items && items.map(item => prepareValuesToRender(item))
 );
 
+export const selectAdminInstitutionsOptions = createSelector(
+  selectDefaultAdminInstitutions,
+  items => items && items.map(item => {
+    return {
+      value: item.id,
+      label: item.name,
+    };
+  })
+);
+
 export const selectAdminCurrentInstitution = createSelector(
   selectDefaultAdminInstitutions,
   selectActiveItemId,

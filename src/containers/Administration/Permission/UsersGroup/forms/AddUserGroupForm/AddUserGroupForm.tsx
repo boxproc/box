@@ -22,6 +22,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
   addAdminUsersGroup,
   handleSubmit,
   dirty,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addAdminUsersGroup(data)),
@@ -37,6 +38,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
+        disabledOk={pristine}
       />
     </form>
   );

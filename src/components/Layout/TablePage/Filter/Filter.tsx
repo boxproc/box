@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { formNamesConst, uiItemConsts, basePath } from 'consts';
+import { basePath, formNamesConst, uiItemConsts } from 'consts';
 import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`

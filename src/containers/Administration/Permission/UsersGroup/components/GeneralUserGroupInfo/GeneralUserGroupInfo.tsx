@@ -5,6 +5,8 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField } from 'components';
 
+import { HandleGetAdminInstitutions } from 'store/domains';
+
 import { SelectValues } from 'types';
 
 import { formErrorUtil } from 'utils';
@@ -12,12 +14,21 @@ import { formErrorUtil } from 'utils';
 export interface GeneralUserGroupInfoProps {
   institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
+  getAdminInstitutions: HandleGetAdminInstitutions;
 }
 
 const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
   institutionsOptions,
   isEditMode,
+  getAdminInstitutions,
 }) => {
+  React.useEffect(
+    () => {
+      getAdminInstitutions();
+    },
+    [getAdminInstitutions]
+  );
+
   return (
     <Box mx="-10px" >
       <Flex

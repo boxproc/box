@@ -68,10 +68,3 @@ export const selectInstitutionsOptions = createSelector(
     };
   })
 );
-
-export const selectIsInstitutionsLoaded =
-  createSelector(
-    selectDefaultInstitutions,
-    institutions => {
-      return institutions && institutions.length > 0;
-    });

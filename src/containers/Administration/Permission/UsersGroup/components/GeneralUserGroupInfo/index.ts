@@ -1,14 +1,24 @@
+import { bindActionCreators, Dispatch } from 'redux';
+
 import { connect } from 'react-redux';
 
 import GeneralUserGroupInfo from './GeneralUserGroupInfo';
 
-import { selectInstitutionsOptions } from 'store/domains';
+import { handleGetAdminInstitutions, selectAdminInstitutionsOptions } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: selectAdminInstitutionsOptions(state),
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    getAdminInstitutions: handleGetAdminInstitutions,
+  },
+  dispatch
+);
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(GeneralUserGroupInfo);
