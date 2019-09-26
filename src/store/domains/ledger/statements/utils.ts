@@ -1,4 +1,4 @@
-import { LedgerStatementItem, LedgerStatementsFilterParams } from './types';
+import { LedgerStatementItem, LedgerStatementsFilter } from './types';
 
 import { statementCyclesOptions } from 'consts';
 
@@ -26,7 +26,7 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<LedgerStatementsFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) => {
   if (!params) {
     return null;
   }

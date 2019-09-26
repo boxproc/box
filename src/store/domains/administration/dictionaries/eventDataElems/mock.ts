@@ -1,6 +1,6 @@
-import { AdminEventDataElemsDataResp } from './types';
+import { DictionaryEventDataElemsDataResp } from './types';
 
-export const adminEventDataElemsData: AdminEventDataElemsDataResp = {
+export const dictionaryEventDataElemsData: DictionaryEventDataElemsDataResp = {
   response_status: {
     status_code: 0,
   },
@@ -38,7 +38,7 @@ export const adminEventDataElemsData: AdminEventDataElemsDataResp = {
   ],
 };
 
-export const adminEventDataElemsFilteredData: AdminEventDataElemsDataResp = {
+export const dictionaryEventDataElemsFilteredData: DictionaryEventDataElemsDataResp = {
   response_status: {
     status_code: 0,
   },

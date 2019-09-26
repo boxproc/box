@@ -4,28 +4,31 @@ import { TablePage, withSpinner } from 'components';
 
 import { tableColumns } from './components';
 
-import { AdminCurrenciesItemPrepared, HandleGetAdminCurrencies } from 'store/domains';
+import {
+  DictionaryCurrenciesItemPrepared,
+  HandleGetDictionaryCurrencies,
+} from 'store/domains';
 
 interface CurrenciesProps {
-  getAdminCurrencies: HandleGetAdminCurrencies;
-  adminCurrencies: Array<AdminCurrenciesItemPrepared>;
+  getDictionaryCurrencies: HandleGetDictionaryCurrencies;
+  dictionaryCurrencies: Array<DictionaryCurrenciesItemPrepared>;
 }
 
 export const Currencies: React.FC<CurrenciesProps> = ({
-  getAdminCurrencies,
-  adminCurrencies,
+  getDictionaryCurrencies,
+  dictionaryCurrencies,
 }) => {
   React.useEffect(
     () => {
-      getAdminCurrencies();
+      getDictionaryCurrencies();
     },
-    [getAdminCurrencies]
+    [getDictionaryCurrencies]
   );
 
   return (
     <TablePage
       title="Currencies"
-      data={adminCurrencies}
+      data={dictionaryCurrencies}
       columns={tableColumns}
     />
   );

@@ -4,26 +4,26 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Countries from './Countries';
 
 import {
-  AdminCountriesActionTypes,
   createLoadingSelector,
-  handleGetAdminCountries,
-  selectAdminCountries,
+  DictionaryCountriesActionTypes,
+  handleGetDictionaryCountries,
+  selectDictionaryCountries,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminCountriesActionTypes.GET_ADMIN_COUNTRIES,
+  DictionaryCountriesActionTypes.GET_DICTIONARY_COUNTRIES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminCountries: selectAdminCountries(state),
+  dictionaryCountries: selectDictionaryCountries(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminCountries: handleGetAdminCountries,
+    getDictionaryCountries: handleGetDictionaryCountries,
   },
   dispatch
 );

@@ -2,14 +2,14 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ResponseStatusType, SelectValues } from 'types';
 
-export interface AdminEventDataElemsItemResp {
+export interface DictionaryEventDataElemsItemResp {
   event_id: number;
   description: string;
   name: string;
   data_type: string;
 }
 
-export interface AdminEventDataElemsItem {
+export interface DictionaryEventDataElemsItem {
   eventId: number;
   description: string;
   name: string;
@@ -17,18 +17,18 @@ export interface AdminEventDataElemsItem {
   event: string;
 }
 
-export interface AdminEventDataElemsDataResp extends ResponseStatusType {
-  event_data_elements: Array<AdminEventDataElemsItemResp>;
+export interface DictionaryEventDataElemsDataResp extends ResponseStatusType {
+  event_data_elements: Array<DictionaryEventDataElemsItemResp>;
 }
 
-export interface AdminEventDataElemsFilterParams {
+export interface DictionaryEventDataElemsFilter {
   eventId?: SelectValues;
 }
 
-export interface AdminEventDataElemsFilterParamsPrepared {
+export interface DictionaryEventDataElemsFilterPrepared {
   event_id?: number | string;
 }
 
-export interface AdminEventDataElemsState {
-  eventDataElems: ImmutableArray<AdminEventDataElemsItemResp>;
+export interface DictionaryEventDataElemsState {
+  eventDataElems: ImmutableArray<DictionaryEventDataElemsItemResp>;
 }

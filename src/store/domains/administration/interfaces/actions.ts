@@ -13,11 +13,11 @@ import {
 } from './actionTypes';
 import * as api from './api';
 
-import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
+import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import {
-  AdminInterfaceFilterParamsPrepared,
+  AdminInterfaceFilterPrepared,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared
 } from './types';
@@ -38,7 +38,7 @@ export type UpdateAdminInterface = (propValues: Partial<AdminInterfaceItem>) =>
 export type HandleUpdateAdminInterface = (propValues: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterParamsPrepared>) =>
+export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared>) =>
   FilterAdminInterfaceAction;
 export type HandleFilterAdminInterface = () => Thunk<void>;
 
@@ -53,9 +53,9 @@ export const deleteAdminInterface: DeleteAdminInterface = id => ({
   meta: id,
 });
 
-export const filterAdminInterface: FilterAdminInterface = filterParams => ({
+export const filterAdminInterface: FilterAdminInterface = Filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_INTERFACE,
-  payload: api.filterAdminInterface(filterParams),
+  payload: api.filterAdminInterface(Filter),
 });
 
 export const updateAdminInterface: UpdateAdminInterface = values => ({
@@ -69,7 +69,7 @@ export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterAdminInterface(preparedValues));

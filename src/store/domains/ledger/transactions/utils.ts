@@ -1,7 +1,7 @@
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
-  LedgerTransactionsFilterParams,
+  LedgerTransactionsFilter,
 } from './types';
 
 export const prepareValuesToRender = (values: LedgerTransactionItem):
@@ -40,7 +40,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<LedgerTransactionsFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) => {
   if (!params) {
     return null;
   }

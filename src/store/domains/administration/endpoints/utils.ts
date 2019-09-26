@@ -1,12 +1,12 @@
 import { statusTypesOptions, typeOptions } from 'consts';
 import {
-  AdminEndpointFilterParams,
+  AdminEndpointFilter,
   AdminEndpointItem,
   AdminEndpointItemDetailsPrepared,
   AdminEndpointItemPrepared,
 } from './types';
 
-export const preparedFilterParamsToSend = (params: Partial<AdminEndpointFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<AdminEndpointFilter>) => {
   if (!params) {
     return null;
   }

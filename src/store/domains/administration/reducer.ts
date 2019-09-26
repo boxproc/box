@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
 import adminCyclesEditorReducer from './cycles/reducer';
-import adminCountriesReducer from './dictionaries/countries/reducer';
-import adminCurrenciesReducer from './dictionaries/currencies/reducer';
-import adminEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
-import adminEventsReducer from './dictionaries/events/reducer';
+import dictionaryCountriesReducer from './dictionaries/countries/reducer';
+import dictionaryCurrenciesReducer from './dictionaries/currencies/reducer';
+import dictionaryEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
+import dictionaryEventsReducer from './dictionaries/events/reducer';
 import adminEndpointsReducer from './endpoints/reducer';
 import adminInstitutionsReducer from './institutions/reducer';
 import adminInterfacesReducer from './interfaces/reducer';
@@ -17,10 +17,10 @@ const administrationReducer = combineReducers({
   systemProperties: adminSysPropsReducer,
   scheduler: adminSchedulerJobsReducer,
   cyclesEditor: adminCyclesEditorReducer,
-  countries: adminCountriesReducer,
-  currencies: adminCurrenciesReducer,
-  events: adminEventsReducer,
-  eventDataElements: adminEventDataElemsReducer,
+  countries: dictionaryCountriesReducer,
+  currencies: dictionaryCurrenciesReducer,
+  events: dictionaryEventsReducer,
+  eventDataElements: dictionaryEventDataElemsReducer,
   users: adminUserReducer,
   userGroups: adminUsersGroupReducer,
   endpoints: adminEndpointsReducer,

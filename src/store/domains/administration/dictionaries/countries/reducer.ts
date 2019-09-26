@@ -1,16 +1,17 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, AdminCountriesActionTypes } from './actionTypes';
-import { AdminCountriesState } from './types';
+import { ActionTypeKeys, DictionaryCountriesActionTypes } from './actionTypes';
+import { DictionaryCountriesState } from './types';
 
-export const adminCountriesInitialState: ImmutableObject<AdminCountriesState> = Immutable({
+export const dictionaryCountriesInitialState:
+  ImmutableObject<DictionaryCountriesState> = Immutable({
   countries: Immutable([]),
 });
 
-const adminCountriesReducer =
-  (state = adminCountriesInitialState, action: AdminCountriesActionTypes) => {
+const dictionaryCountriesReducer =
+  (state = dictionaryCountriesInitialState, action: DictionaryCountriesActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_COUNTRIES_FULFILLED:
+      case ActionTypeKeys.GET_DICTIONARY_COUNTRIES_FULFILLED:
         return state
           .set('countries', action.payload.countries);
 
@@ -18,4 +19,4 @@ const adminCountriesReducer =
     }
   };
 
-export default adminCountriesReducer;
+export default dictionaryCountriesReducer;

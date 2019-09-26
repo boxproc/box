@@ -1,16 +1,17 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, AdminCurrenciesActionTypes } from './actionTypes';
-import { AdminCurrenciesState } from './types';
+import { ActionTypeKeys, DictionaryCurrenciesActionTypes } from './actionTypes';
+import { DictionaryCurrenciesState } from './types';
 
-export const adminCurrenciesInitialState: ImmutableObject<AdminCurrenciesState> = Immutable({
+export const dictionaryCurrenciesInitialState:
+  ImmutableObject<DictionaryCurrenciesState> = Immutable({
   currencies: Immutable([]),
 });
 
-const adminCurrenciesReducer =
-  (state = adminCurrenciesInitialState, action: AdminCurrenciesActionTypes) => {
+const dictionaryCurrenciesReducer =
+  (state = dictionaryCurrenciesInitialState, action: DictionaryCurrenciesActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_ADMIN_CURRENCIES_FULFILLED:
+      case ActionTypeKeys.GET_DICTIONARY_CURRENCIES_FULFILLED:
         return state
           .set('currencies', action.payload.currencies);
 
@@ -18,4 +19,4 @@ const adminCurrenciesReducer =
     }
   };
 
-export default adminCurrenciesReducer;
+export default dictionaryCurrenciesReducer;

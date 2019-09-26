@@ -6,7 +6,7 @@ import { apiClient } from 'services';
 
 // import { throttleUtil } from 'utils';
 
-import { AdminSysPropFilterParamsPrepared, EditableAdminSysPropPrepared } from './types';
+import { AdminSysPropFilterPrepared, EditableAdminSysPropPrepared } from './types';
 
 export const deleteAdminSysProp = (id: number | string) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
@@ -22,6 +22,6 @@ export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
   apiClient.post(adminSystemPropsPathNames.UPDATE, { data });
 
-export const filterAdminSysProps = (data: AdminSysPropFilterParamsPrepared) =>
+export const filterAdminSysProps = (data: AdminSysPropFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSysPropsItemsFilteredData, 500);
   apiClient.post(adminSystemPropsPathNames.GET, {data});

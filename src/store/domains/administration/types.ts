@@ -1,8 +1,8 @@
 import { AdminCyclesEditorState } from './cycles';
-import { AdminCountriesState } from './dictionaries/countries';
-import { AdminCurrenciesState } from './dictionaries/currencies';
-import { AdminEventDataElemsState } from './dictionaries/eventDataElems';
-import { AdminEventsState } from './dictionaries/events';
+import { DictionaryCountriesState } from './dictionaries/countries';
+import { DictionaryCurrenciesState } from './dictionaries/currencies';
+import { DictionaryEventDataElemsState } from './dictionaries/eventDataElems';
+import { DictionaryEventsState } from './dictionaries/events';
 import { AdminEndpointState } from './endpoints';
 import { AdminInstitutionsState } from './institutions';
 import { AdminInterfaceState } from './interfaces';
@@ -17,10 +17,10 @@ export interface AdministrationState {
   cyclesEditor: AdminCyclesEditorState;
   users: AdminUserState;
   userGroups: AdminUsersGroupState;
-  countries: AdminCountriesState;
-  currencies: AdminCurrenciesState;
-  events: AdminEventsState;
-  eventDataElements: AdminEventDataElemsState;
+  countries: DictionaryCountriesState;
+  currencies: DictionaryCurrenciesState;
+  events: DictionaryEventsState;
+  eventDataElements: DictionaryEventDataElemsState;
   endpoints: AdminEndpointState;
   interfaces: AdminInterfaceState;
   institutions: AdminInstitutionsState;

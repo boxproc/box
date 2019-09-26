@@ -2,7 +2,8 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-import { selectCountryCodes, selectInstitutionsOptions } from 'store/domains/consts';
+import { selectCountryCodesOptions } from 'store/domains/administration';
+import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
 
@@ -12,7 +13,7 @@ export const selectDefaultLedgerCustomers = (state: StoreState) =>
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
   selectInstitutionsOptions,
-  selectCountryCodes,
+  selectCountryCodesOptions,
   (items, institutions, countries) => items && items.asMutable().map(item => {
 
     return {
@@ -28,7 +29,7 @@ export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
   selectActiveItemId,
   selectInstitutionsOptions,
-  selectCountryCodes,
+  selectCountryCodesOptions,
   (customers, currentId, institutions, countries) => {
     const current = customers && customers.asMutable().find(el => el.id === currentId);
 

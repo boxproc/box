@@ -3,12 +3,10 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 import {
-  selectCurrencyCodes,
-  selectInstitutions,
-  selectInstitutionsOptions,
-} from 'store/domains/consts';
-
-import { selectAdminEventsOptions } from 'store/domains/administration';
+  selectCurrencyCodesOptions,
+  selectDictionaryEventsOptions,
+} from 'store/domains/administration';
+import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
@@ -46,7 +44,7 @@ export const selectDefaultCurrentProduct = (state: StoreState) =>
 export const selectCurrentProduct = createSelector(
   selectDefaultCurrentProduct,
   selectInstitutionsOptions,
-  selectCurrencyCodes,
+  selectCurrencyCodesOptions,
   (product, institutions, currencyCodes) => {
     if (!product) {
       return null;
@@ -122,7 +120,7 @@ export const selectDefaultCurrentRule = (state: StoreState) =>
 
 export const selectCurrentProductRule = createSelector(
   selectDefaultCurrentRule,
-  selectAdminEventsOptions,
+  selectDictionaryEventsOptions,
   (currentRule, events) => {
     if (!currentRule) {
       return null;

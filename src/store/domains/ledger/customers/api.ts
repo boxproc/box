@@ -8,7 +8,7 @@ import { apiClient } from 'services';
 //   SuccessResponseStatus,
 // } from './mock';
 
-import { LedgerCustomerItem, LedgerCustomersFilterParamsPrepared } from './types';
+import { LedgerCustomerItem, LedgerCustomersFilterPrepared } from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -30,6 +30,6 @@ export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post(lenderCustomersPathNames.UPDATE, { data });
 
-export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterParamsPrepared>) =>
+export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterPrepared>) =>
   // throttleUtil.getDataAfter(LedgerCustomersFilteredItems, 500);
   apiClient.post(lenderCustomersPathNames.GET, { data });

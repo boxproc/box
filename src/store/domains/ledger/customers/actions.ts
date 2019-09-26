@@ -17,9 +17,9 @@ import {
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
-  LedgerCustomersFilterParamsPrepared,
+  LedgerCustomersFilterPrepared,
 } from './types';
-import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
+import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -38,7 +38,7 @@ export type UpdateLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
 export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterParamsPrepared>) =>
+export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterPrepared>) =>
   FilterLedgerCustomersAction;
 export type HandleFilterLedgerCustomers = () => Thunk<void>;
 
@@ -58,10 +58,10 @@ export const updateLedgerCustomers: UpdateLedgerCustomer = values => ({
   payload: api.updateLedgerCustomer(values),
 });
 
-export const filterLedgerCustomers: FilterLedgerCustomers = filterParams => ({
+export const filterLedgerCustomers: FilterLedgerCustomers = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS,
-  payload: api.filterLedgerCustomers(filterParams),
-  meta: filterParams,
+  payload: api.filterLedgerCustomers(Filter),
+  meta: Filter,
 });
 
 export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
@@ -112,7 +112,7 @@ export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterLedgerCustomers(preparedValues));

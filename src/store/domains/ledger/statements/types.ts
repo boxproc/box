@@ -42,7 +42,7 @@ export interface LedgerStatementItemPrepared extends LedgerStatementId {
   lastName: string;
 }
 
-export interface LedgerStatementsFilterParams {
+export interface LedgerStatementsFilter {
   accountId: number;
   institutionId: SelectValues;
   accountAlias: string;
@@ -53,7 +53,7 @@ export interface LedgerStatementsFilterParams {
   product: Array<SelectValues>;
 }
 
-export interface LedgerStatementsFilterParamsPrepared {
+export interface LedgerStatementsFilterPrepared {
   account_id: number;
   institution_id: string | number;
   account_alias: string;

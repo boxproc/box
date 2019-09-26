@@ -1,14 +1,15 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, AdminEventDataElemsActionTypes } from './actionTypes';
-import { AdminEventDataElemsState } from './types';
+import { ActionTypeKeys, DictionaryEventDataElemsActionTypes } from './actionTypes';
+import { DictionaryEventDataElemsState } from './types';
 
-export const adminEventsInitialState: ImmutableObject<AdminEventDataElemsState> = Immutable({
+export const dictionaryEventsInitialState:
+  ImmutableObject<DictionaryEventDataElemsState> = Immutable({
   eventDataElems: Immutable([]),
 });
 
-const adminEventDataElemsReducer =
-  (state = adminEventsInitialState, action: AdminEventDataElemsActionTypes) => {
+const dictionaryEventDataElemsReducer =
+  (state = dictionaryEventsInitialState, action: DictionaryEventDataElemsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS_FULFILLED:
         return state
@@ -18,4 +19,4 @@ const adminEventDataElemsReducer =
     }
   };
 
-export default adminEventDataElemsReducer;
+export default dictionaryEventDataElemsReducer;

@@ -2,9 +2,9 @@ import { lenderCardsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { LedgerCardsFilterParamsPrepared } from './types';
+import { LedgerCardsFilterPrepared } from './types';
 
-export const filterLedgerCards = (data: Partial<LedgerCardsFilterParamsPrepared>) =>
+export const filterLedgerCards = (data: Partial<LedgerCardsFilterPrepared>) =>
   apiClient.post(lenderCardsPathNames.GET, { data });
 
 export const activateLedgerCard = (panAlias: string) =>

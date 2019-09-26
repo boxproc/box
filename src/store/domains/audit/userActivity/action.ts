@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 import { ActionTypeKeys, FilterUserActivityAction, GetAuditUsersAction } from './actionType';
 import * as api from './api';
 import { AuditUserActivityFilterPrepared } from './types';
-import { preparedFilterParamsToSend } from './utils';
+import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -23,9 +23,9 @@ export const getAuditUsers: GetAuditUsers = institutionId => ({
   payload: api.getAuditUsers(institutionId),
 });
 
-export const filterAuditUserActivity: FilterAuditUserActivity = filterParams => ({
+export const filterAuditUserActivity: FilterAuditUserActivity = Filter => ({
   type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY,
-  payload: api.filterAuditUserActivity(filterParams),
+  payload: api.filterAuditUserActivity(Filter),
 });
 
 export const handleGetAuditUsers: HandleGetAuditUsers = institutionId =>
@@ -44,7 +44,7 @@ export const handleFilterAuditUserActivity: HandleFilterAuditUserActivity = () =
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterAuditUserActivity(preparedValues));

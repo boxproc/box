@@ -7,41 +7,41 @@ import { tableColumns } from './components';
 import { EventDataElemsFilter } from 'containers/Administration/Dictionaries/EventDataElems/forms';
 
 import {
-  AdminEventDataElemsItem,
-  HandleFilterAdminEventDataElems,
-  HandleGetAdminEvents,
+  DictionaryEventDataElemsItem,
+  HandleFilterDictionaryEventDataElems,
+  HandleGetDictionaryEvents,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface EventDataElemsProps {
-  getAdminEvents: HandleGetAdminEvents;
-  adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
-  adminEventsOptions: Array<SelectValues>;
-  filterAdminEventDataElems: HandleFilterAdminEventDataElems;
+  getDictionaryEvents: HandleGetDictionaryEvents;
+  dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
+  dictionaryEventsOptions: Array<SelectValues>;
+  filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
 }
 
 export const EventDataElems: React.FC<EventDataElemsProps> = ({
-  getAdminEvents,
-  adminEventDataElemsItems,
-  adminEventsOptions,
-  filterAdminEventDataElems,
+  getDictionaryEvents,
+  dictionaryEventDataElemsItems,
+  dictionaryEventsOptions,
+  filterDictionaryEventDataElems,
 }) => {
   React.useEffect(
     () => {
-      getAdminEvents();
+      getDictionaryEvents();
     },
-    [getAdminEvents]
+    [getDictionaryEvents]
   );
 
   return (
     <TablePage
       title="Event Data Elements"
-      data={adminEventDataElemsItems}
+      data={dictionaryEventDataElemsItems}
       columns={tableColumns}
-      filterAction={filterAdminEventDataElems}
+      filterAction={filterDictionaryEventDataElems}
       FilterForm={
-        <EventDataElemsFilter eventOptions={adminEventsOptions} />
+        <EventDataElemsFilter eventOptions={dictionaryEventsOptions} />
       }
     />
   );

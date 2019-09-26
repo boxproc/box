@@ -1,24 +1,24 @@
 import * as api from './api';
 
-import { ActionTypeKeys, GetAdminEventsAction } from './actionTypes';
+import { ActionTypeKeys, GetDictionaryEventsAction } from './actionTypes';
 
 import { VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetAdminEvents = () => GetAdminEventsAction;
-export type HandleGetAdminEvents = VoidPromiseThunk;
+export type GetDictionaryEvents = () => GetDictionaryEventsAction;
+export type HandleGetDictionaryEvents = VoidPromiseThunk;
 
-export const getAdminEvents: GetAdminEvents = () => ({
-  type: ActionTypeKeys.GET_ADMIN_EVENTS,
-  payload: api.getAdminEvents(),
+export const getDictionaryEvents: GetDictionaryEvents = () => ({
+  type: ActionTypeKeys.GET_DICTIONARY_EVENTS,
+  payload: api.getDictionaryEvents(),
 });
 
-export const handleGetAdminEvents: HandleGetAdminEvents = () =>
+export const handleGetDictionaryEvents: HandleGetDictionaryEvents = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getAdminEvents());
+        await dispatch(getDictionaryEvents());
       },
       dispatch
     );

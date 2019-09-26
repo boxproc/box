@@ -1,10 +1,10 @@
 import {
-  AdminEventDataElemsFilterParams,
-  AdminEventDataElemsFilterParamsPrepared,
+  DictionaryEventDataElemsFilter,
+  DictionaryEventDataElemsFilterPrepared,
 } from './types';
 
-export const prepareAdminEventDataElemsParams =
-  (params: AdminEventDataElemsFilterParams): AdminEventDataElemsFilterParamsPrepared => {
+export const prepareDictionaryEventDataElemsParams =
+  (params: DictionaryEventDataElemsFilter): DictionaryEventDataElemsFilterPrepared => {
     if (!params) {
       return null;
     }

@@ -15,7 +15,7 @@ import * as api from './api';
 import {
   AdminCyclesEditorEditableItem,
   AdminCyclesEditorItem,
-  CycleFilterParamsPrepared
+  CycleFilterPrepared
 } from './types';
 import {
   prepareAdminCyclesEditorValuesToSend,
@@ -38,7 +38,7 @@ export type UpdateAdminCyclesEditor =
 export type HandleUpdateAdminCyclesEditor =
   (propValues: Partial<AdminCyclesEditorEditableItem>) => Thunk<void>;
 
-export type FilterCycles = (params: CycleFilterParamsPrepared) => FilterCyclesAction;
+export type FilterCycles = (params: CycleFilterPrepared) => FilterCyclesAction;
 export type HandleFilterCycles = () => Thunk<void>;
 
 export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({

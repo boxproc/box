@@ -41,7 +41,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
   } = props;
 
   const [isFilter, setIsFilter] = React.useState(true);
-  const storedFilterParams = cookiesUtil.get(window.location.pathname);
+  const storedFilter = cookiesUtil.get(window.location.pathname);
 
   return (
     <React.Fragment>
@@ -69,7 +69,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
           filterAction={filterAction}
           initialValues={{
             ...initialFilterValues,
-            ...storedFilterParams && JSON.parse(storedFilterParams),
+            ...storedFilter && JSON.parse(storedFilter),
           }}
         >
           {FilterForm}

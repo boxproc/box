@@ -4,26 +4,26 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Events from './Events';
 
 import {
-  AdminEventsActionTypes,
   createLoadingSelector,
-  handleGetAdminEvents,
-  selectAdminEventsItems,
+  DictionaryEventsActionTypes,
+  handleGetDictionaryEvents,
+  selectDictionaryEventsItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEventsActionTypes.GET_ADMIN_EVENTS,
+  DictionaryEventsActionTypes.GET_DICTIONARY_EVENTS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminEventsItems: selectAdminEventsItems(state),
+  dictionaryEventsItems: selectDictionaryEventsItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminEvents: handleGetAdminEvents,
+    getDictionaryEvents: handleGetDictionaryEvents,
   },
   dispatch
 );

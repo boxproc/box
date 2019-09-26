@@ -15,7 +15,7 @@ import { apiClient } from 'services';
 
 import {
   NewProductPrepared,
-  ProductFilterParamsPrepared,
+  ProductFilterPrepared,
   ProductItemDetailsResp,
   ProductItemResp,
   ProductRuleRequestPrepared,
@@ -64,7 +64,7 @@ export const deleteProduct = (id: number) =>
     data: { id },
   });
 
-export const filterProducts = (data: ProductFilterParamsPrepared) =>
+export const filterProducts = (data: ProductFilterPrepared) =>
   // throttleUtil.getDataAfter(productItemsFilteredData, 500);
   apiClient.post(productsPathNames.GET_PRODUCTS, { data });
 

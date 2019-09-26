@@ -29,7 +29,7 @@ import { selectCurrentInstitutionId, selectCurrentProductType } from './selector
 import {
   NewProduct,
   NewProductPrepared,
-  ProductFilterParamsPrepared,
+  ProductFilterPrepared,
   ProductItemDetails,
   ProductItemDetailsResp,
   ProductItemGeneral,
@@ -62,7 +62,7 @@ export type HandleGetInstitutionProducts = (id: number | string) => Thunk<void>;
 export type DeleteProduct = (id: number) => DeleteProductAction;
 export type HandleDeleteProduct = () => Thunk<void>;
 
-export type FilterProducts = (params: ProductFilterParamsPrepared) => FilterProductsAction;
+export type FilterProducts = (params: ProductFilterPrepared) => FilterProductsAction;
 export type HandleFilterProducts = () => Thunk<void>;
 
 export type GetProduct = (id: number) => GetProductAction;

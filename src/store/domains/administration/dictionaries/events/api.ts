@@ -1,11 +1,11 @@
-import { adminEventsPathNames } from 'consts';
+import { dictionariesPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-// import { adminEventsData } from './mock';
+// import { dictionaryEventsData } from './mock';
 
 // import { throttleUtil } from 'utils';
 
-export const getAdminEvents = () =>
-  // throttleUtil.getDataAfter(adminEventsData, 500);
-  apiClient.post(adminEventsPathNames.GET);
+export const getDictionaryEvents = () =>
+  // throttleUtil.getDataAfter(dictionaryEventsData, 500);
+  apiClient.post(dictionariesPathNames.GET_EVENTS);

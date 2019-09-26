@@ -1,27 +1,28 @@
-import { AdminCountriesData } from './types';
+import { DictionaryCountriesData } from './types';
 
 import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_COUNTRIES = 'administration/countries/GET_ADMIN_COUNTRIES',
-  GET_ADMIN_COUNTRIES_FULFILLED = 'administration/countries/GET_ADMIN_COUNTRIES_FULFILLED',
-  GET_ADMIN_COUNTRIES_REJECTED = 'administration/countries/GET_ADMIN_COUNTRIES_REJECTED',
+  GET_DICTIONARY_COUNTRIES = 'administration/countries/GET_DICTIONARY_COUNTRIES',
+  GET_DICTIONARY_COUNTRIES_FULFILLED =
+    'administration/countries/GET_DICTIONARY_COUNTRIES_FULFILLED',
+  GET_DICTIONARY_COUNTRIES_REJECTED = 'administration/countries/GET_DICTIONARY_COUNTRIES_REJECTED',
 }
 
-export interface GetAdminCountriesAction {
+export interface GetDictionaryCountriesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_COUNTRIES;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_COUNTRIES;
 }
 
-export interface GetAdminCountriesFulfilledAction {
-  readonly payload: AdminCountriesData;
-  readonly type: ActionTypeKeys.GET_ADMIN_COUNTRIES_FULFILLED;
+export interface GetDictionaryCountriesFulfilledAction {
+  readonly payload: DictionaryCountriesData;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_COUNTRIES_FULFILLED;
 }
 
-export interface GetAdminCountriesRejectedAction {
+export interface GetDictionaryCountriesRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_COUNTRIES_REJECTED;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_COUNTRIES_REJECTED;
 }
 
-export type AdminCountriesActionTypes =
-  | GetAdminCountriesFulfilledAction;
+export type DictionaryCountriesActionTypes =
+  | GetDictionaryCountriesFulfilledAction;

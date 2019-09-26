@@ -1,6 +1,6 @@
-import { AdminCurrenciesData } from './types';
+import { DictionaryCurrenciesData } from './types';
 
-export const adminCurrenciesData: AdminCurrenciesData = {
+export const dictionaryCurrenciesData: DictionaryCurrenciesData = {
   response_status: {
     status_code: 0,
   },

@@ -4,7 +4,7 @@ import { apiClient } from 'services';
 
 // import { LedgerAccountsFilteredItems, SuccessResponseStatus } from './mock';
 
-import { LedgerAccountItem, LedgerAccountsFilterParamsPrepared } from './types';
+import { LedgerAccountItem, LedgerAccountsFilterPrepared } from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -16,7 +16,7 @@ export const updateLedgerAccount = (data: Partial<LedgerAccountItem>) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
   apiClient.post(lenderAccountsPathNames.UPDATE, { data });
 
-export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterParamsPrepared>) =>
+export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
   // throttleUtil.getDataAfter(LedgerAccountsFilteredItems, 500);
   apiClient.post(lenderAccountsPathNames.GET, { data });
 

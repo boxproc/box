@@ -10,14 +10,14 @@ import {
 
 import * as api from './api';
 
-import { LedgerCardsFilterParamsPrepared } from './types';
-import { preparedFilterParamsToSend } from './utils';
+import { LedgerCardsFilterPrepared } from './types';
+import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type FilterLedgerCards = (params: Partial<LedgerCardsFilterParamsPrepared>) =>
+export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
   FilterLedgerCardsAction;
 export type HandleFilterLedgerCards = () => Thunk<void>;
 
@@ -25,10 +25,10 @@ export type ActivateLedgerCard = (panAlias: string) => ActivateLedgerCardAction;
 export type HandleActivateLedgerCard = (panAlias: string) =>
   Thunk<void>;
 
-export const filterLedgerCards: FilterLedgerCards = filterParams => ({
+export const filterLedgerCards: FilterLedgerCards = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CARDS,
-  payload: api.filterLedgerCards(filterParams),
-  meta: filterParams,
+  payload: api.filterLedgerCards(Filter),
+  meta: Filter,
 });
 
 export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
@@ -42,7 +42,7 @@ export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterLedgerCards(preparedValues));

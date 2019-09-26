@@ -45,11 +45,11 @@ export interface AdminInterfaceItems extends ResponseStatusType {
   interfaces: Array<AdminInterfaceItem>;
 }
 
-export interface AdminInterfaceFilterParams {
+export interface AdminInterfaceFilter {
   institutionId: SelectValues;
 }
 
-export interface AdminInterfaceFilterParamsPrepared {
+export interface AdminInterfaceFilterPrepared {
   institution_id: string | number;
 }
 

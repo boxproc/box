@@ -4,36 +4,36 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EventDataElems from './EventDataElems';
 
 import {
-  AdminEventDataElemsActionTypes,
+  DictionaryEventDataElemsActionTypes,
   createLoadingSelector,
-  handleFilterAdminEventDataElems,
-  handleGetAdminEvents,
-  selectAdminEventDataElemsItems,
-  selectAdminEventsOptions,
+  handleFilterDictionaryEventDataElems,
+  handleGetDictionaryEvents,
+  selectDictionaryEventDataElemsItems,
+  selectDictionaryEventsOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
+  DictionaryEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminEventDataElemsItems: selectAdminEventDataElemsItems(state),
-  adminEventsOptions: [
+  dictionaryEventDataElemsItems: selectDictionaryEventDataElemsItems(state),
+  dictionaryEventsOptions: [
     {
       label: 'Select All',
       value: '',
     },
-    ...selectAdminEventsOptions(state),
+    ...selectDictionaryEventsOptions(state),
   ],
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminEvents: handleGetAdminEvents,
-    filterAdminEventDataElems: handleFilterAdminEventDataElems,
+    getDictionaryEvents: handleGetDictionaryEvents,
+    filterDictionaryEventDataElems: handleFilterDictionaryEventDataElems,
   },
   dispatch
 );

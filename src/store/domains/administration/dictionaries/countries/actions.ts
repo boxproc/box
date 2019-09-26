@@ -1,24 +1,28 @@
 import * as api from './api';
 
-import { ActionTypeKeys, GetAdminCountriesAction } from './actionTypes';
+import { ActionTypeKeys, GetDictionaryCountriesAction } from './actionTypes';
+
+import { selectIsCurrencyCodesLoaded } from 'store/domains/administration';
 
 import { VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetAdminCountries = () => GetAdminCountriesAction;
-export type HandleGetAdminCountries = VoidPromiseThunk;
+export type GetDictionaryCountries = () => GetDictionaryCountriesAction;
+export type HandleGetDictionaryCountries = VoidPromiseThunk;
 
-export const getAdminCountries: GetAdminCountries = () => ({
-  type: ActionTypeKeys.GET_ADMIN_COUNTRIES,
-  payload: api.getAdminCountries(),
+export const getDictionaryCountries: GetDictionaryCountries = () => ({
+  type: ActionTypeKeys.GET_DICTIONARY_COUNTRIES,
+  payload: api.getDictionaryCountries(),
 });
 
-export const handleGetAdminCountries: HandleGetAdminCountries = () =>
-  async dispatch => {
+export const handleGetDictionaryCountries: HandleGetDictionaryCountries = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getAdminCountries());
+        if (!selectIsCurrencyCodesLoaded(getState())) {
+          await dispatch(getDictionaryCountries());
+        }
       },
       dispatch
     );

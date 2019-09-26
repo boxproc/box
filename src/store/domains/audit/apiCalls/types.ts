@@ -29,7 +29,7 @@ export interface ApiCallsItemPrepared extends AuditApiCallId {
   institutionId: string | number;
 }
 
-export interface AuditApiCallsFilterParams {
+export interface AuditApiCallsFilter {
   institutionId: SelectValues;
   endpointId: SelectValues;
   apiName: string;
@@ -37,7 +37,7 @@ export interface AuditApiCallsFilterParams {
   dateTo: string;
 }
 
-export interface AuditApiCallsFilterParamsPrepared {
+export interface AuditApiCallsFilterPrepared {
   institution_id: string | number;
   endpoint_id: string | number;
   api_name: string;

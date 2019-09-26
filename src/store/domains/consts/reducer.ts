@@ -13,14 +13,6 @@ export const constsInitialState: ImmutableObject<ConstsState> = Immutable({
 const constsReducer =
   (state = constsInitialState, action: ConstsActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.GET_CURRENCY_CODES_FULFILLED:
-        return state
-          .set('currencies', action.payload.currencies);
-
-      case ActionTypeKeys.GET_COUNTRY_CODES_FULFILLED:
-        return state
-          .set('countries', action.payload.countries);
-
       case ActionTypeKeys.GET_INSTITUTIONS_FULFILLED:
         return state
           .set('institutions', action.payload.institutions);

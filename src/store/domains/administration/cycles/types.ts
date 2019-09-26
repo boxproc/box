@@ -35,12 +35,12 @@ export interface AdminCyclesEditorEditableItem extends AdminCyclesEditorItemPrep
   weeklyCycleFirstDay: SelectValues;
 }
 
-export interface CycleFilterParams {
+export interface CycleFilter {
   institutionId?: SelectValues;
   activeStatusFlag?: boolean;
 }
 
-export interface CycleFilterParamsPrepared {
+export interface CycleFilterPrepared {
   institution_id: number | string;
   status: string;
 }

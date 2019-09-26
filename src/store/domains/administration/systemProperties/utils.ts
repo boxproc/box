@@ -1,8 +1,8 @@
 import { yesNoTypesConst } from 'consts';
 
 import {
-  AdminSysPropFilterParams,
-  AdminSysPropFilterParamsPrepared,
+  AdminSysPropFilter,
+  AdminSysPropFilterPrepared,
   EditableAdminSysProp,
   EditableAdminSysPropPrepared,
 } from './types';
@@ -18,8 +18,8 @@ export const prepareEditableAdminSysPropItemValues =
     };
   };
 
-export const prepareAdminSysPropFilterParams =
-  (propValues: AdminSysPropFilterParams): AdminSysPropFilterParamsPrepared => {
+export const prepareAdminSysPropFilter =
+  (propValues: AdminSysPropFilter): AdminSysPropFilterPrepared => {
     if (!propValues) {
       return null;
     }

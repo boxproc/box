@@ -1,6 +1,6 @@
-import { AdminEventsData } from './types';
+import { DictionaryEventsData } from './types';
 
-export const adminEventsData: AdminEventsData = {
+export const dictionaryEventsData: DictionaryEventsData = {
   response_status: {
     status_code: 0,
   },

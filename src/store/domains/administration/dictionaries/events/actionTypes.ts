@@ -1,27 +1,27 @@
-import { AdminEventsData } from './types';
+import { DictionaryEventsData } from './types';
 
 import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_EVENTS = 'administration/events/GET_ADMIN_EVENTS',
-  GET_ADMIN_EVENTS_FULFILLED = 'administration/events/GET_ADMIN_EVENTS_FULFILLED',
-  GET_ADMIN_EVENTS_REJECTED = 'administration/events/GET_ADMIN_EVENTS_REJECTED',
+  GET_DICTIONARY_EVENTS = 'administration/events/GET_DICTIONARY_EVENTS',
+  GET_DICTIONARY_EVENTS_FULFILLED = 'administration/events/GET_DICTIONARY_EVENTS_FULFILLED',
+  GET_DICTIONARY_EVENTS_REJECTED = 'administration/events/GET_DICTIONARY_EVENTS_REJECTED',
 }
 
-export interface GetAdminEventsAction {
+export interface GetDictionaryEventsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_EVENTS;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_EVENTS;
 }
 
-export interface GetAdminEventsFulfilledAction {
-  readonly payload: AdminEventsData;
-  readonly type: ActionTypeKeys.GET_ADMIN_EVENTS_FULFILLED;
+export interface GetDictionaryEventsFulfilledAction {
+  readonly payload: DictionaryEventsData;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_EVENTS_FULFILLED;
 }
 
-export interface GetAdminEventsRejectedAction {
+export interface GetDictionaryEventsRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_EVENTS_REJECTED;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_EVENTS_REJECTED;
 }
 
-export type AdminEventsActionTypes =
-  | GetAdminEventsFulfilledAction;
+export type DictionaryEventsActionTypes =
+  | GetDictionaryEventsFulfilledAction;

@@ -4,19 +4,19 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ProductRules from './ProductRules';
 
 import {
-  handleFilterAdminEventDataElemsById,
-  selectAdminEventDataElemsItems,
+  handleFilterDictionaryEventDataElemsById,
+  selectDictionaryEventDataElemsItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  adminEventDataElemsItems: selectAdminEventDataElemsItems(state),
+  dictionaryEventDataElemsItems: selectDictionaryEventDataElemsItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAdminEventDataElemsById: handleFilterAdminEventDataElemsById,
+    filterDictionaryEventDataElemsById: handleFilterDictionaryEventDataElemsById,
   },
   dispatch
 );

@@ -2,7 +2,7 @@ import { adminUserPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AdminUserItem, UsersFilterParamsPrepared } from './types';
+import { AdminUserItem, UsersFilterPrepared } from './types';
 
 export const addAdminUser = (data: Partial<AdminUserItem>) =>
   apiClient.post(adminUserPathNames.CREATE, { data });
@@ -10,7 +10,7 @@ export const addAdminUser = (data: Partial<AdminUserItem>) =>
 export const updateAdminUser = (data: Partial<AdminUserItem>) =>
   apiClient.post(adminUserPathNames.UPDATE, { data });
 
-export const filterAdminUsers = (data: Partial<UsersFilterParamsPrepared>) =>
+export const filterAdminUsers = (data: Partial<UsersFilterPrepared>) =>
   apiClient.post(adminUserPathNames.GET, { data });
 
 export const getAdminAccessUsers = () =>

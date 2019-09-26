@@ -4,28 +4,28 @@ import { TablePage, withSpinner } from 'components';
 
 import { tableColumns } from './components';
 
-import { AdminEventsItem, HandleGetAdminEvents } from 'store/domains';
+import { DictionaryEventsItem, HandleGetDictionaryEvents } from 'store/domains';
 
 interface EventsProps {
-  getAdminEvents: HandleGetAdminEvents;
-  adminEventsItems: Array<AdminEventsItem>;
+  getDictionaryEvents: HandleGetDictionaryEvents;
+  dictionaryEventsItems: Array<DictionaryEventsItem>;
 }
 
 export const Events: React.FC<EventsProps> = ({
-  getAdminEvents,
-  adminEventsItems,
+  getDictionaryEvents,
+  dictionaryEventsItems,
 }) => {
   React.useEffect(
     () => {
-      getAdminEvents();
+      getDictionaryEvents();
     },
-    [getAdminEvents]
+    [getDictionaryEvents]
   );
 
   return (
     <TablePage
       title="Events"
-      data={adminEventsItems}
+      data={dictionaryEventsItems}
       columns={tableColumns}
     />
   );

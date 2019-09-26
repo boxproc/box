@@ -10,8 +10,6 @@ export enum uiItemsPathNames {
 }
 
 export enum constsPathNames {
-  GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
-  GET_COUNTRIES = '/ui/administration/dictionaries/countries/get',
   GET_INSTITUTIONS = '/ui/service_data/institutions/get',
 }
 
@@ -44,17 +42,11 @@ export enum adminEndPointsPathNames {
   GET_BY_INSTITUTION_ID = '/ui/administration/endpoints/get_by_institution',
 }
 
-export enum adminEventDataElemsPathNames {
-  GET = '/ui/administration/dictionaries/event_data_elements/get',
-}
-
 export enum dictionariesPathNames {
   GET_COUNTRIES = '/ui/administration/dictionaries/countries/get',
   GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
-}
-
-export enum adminEventsPathNames {
-  GET = '/ui/administration/dictionaries/events/get',
+  GET_EVENTS = '/ui/administration/dictionaries/events/get',
+  GET_EVENT_DATA_ELEMS = '/ui/administration/dictionaries/event_data_elements/get',
 }
 
 export enum adminUserPathNames {

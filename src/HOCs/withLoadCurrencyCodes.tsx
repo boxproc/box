@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  ConstsDataActionTypes,
   createLoadingSelector,
-  HandleGetCurrencyCodes,
-  handleGetCurrencyCodes,
-  selectCurrencyCodes,
+  DictionaryCurrenciesActionTypes,
+  HandleGetDictionaryCurrencies,
+  handleGetDictionaryCurrencies,
+  selectCurrencyCodesOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -19,7 +19,7 @@ import { componentUtil } from 'utils';
 export interface WithLoadCurrencyCodesProps {
   currencyCodes: Array<SelectValues>;
   isCurrencyCodesLoading: boolean;
-  loadCurrencyCodes: HandleGetCurrencyCodes;
+  loadCurrencyCodes: HandleGetDictionaryCurrencies;
 }
 
 export const withLoadCurrencyCodes =
@@ -59,17 +59,17 @@ export const withLoadCurrencyCodes =
       `WithLoadCurrencyCodes(${componentUtil.getDisplayName(Component)})`;
 
     const loadingSelector = createLoadingSelector([
-      ConstsDataActionTypes.GET_CURRENCY_CODES,
+      DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,
     ]);
 
     const mapStateToProps = (state: StoreState) => ({
       isCurrencyCodesLoading: loadingSelector(state),
-      currencyCodes: selectCurrencyCodes(state),
+      currencyCodes: selectCurrencyCodesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
       {
-        loadCurrencyCodes: handleGetCurrencyCodes,
+        loadCurrencyCodes: handleGetDictionaryCurrencies,
       },
       dispatch
     );

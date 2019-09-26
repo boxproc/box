@@ -61,13 +61,13 @@ export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPla
   status: SelectValues;
 }
 
-export interface LedgerCustomersFilterParams extends LedgerCustomerId {
+export interface LedgerCustomersFilter extends LedgerCustomerId {
   institutionId: SelectValues;
   firstName: string;
   lastName: string;
 }
 
-export interface LedgerCustomersFilterParamsPrepared extends LedgerCustomerId {
+export interface LedgerCustomersFilterPrepared extends LedgerCustomerId {
   institution_id: string | number;
   first_name: string;
   last_name: string;

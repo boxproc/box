@@ -54,13 +54,13 @@ export interface ProductItemGeneral extends ProductItemPlain {
   defaultStatementCycleId: SelectValues;
 }
 
-export interface ProductFilterParams {
+export interface ProductFilter {
   activeStatusFlag?: boolean;
   institutionId?: SelectValues;
   productType?: Array<SelectValues>;
 }
 
-export interface ProductFilterParamsPrepared {
+export interface ProductFilterPrepared {
   status: string;
   institution_id: number | string;
   product_type: Array<number | string>;

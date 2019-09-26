@@ -5,19 +5,22 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { ContextMenuList, HighlightCodeField, SelectField, TextField } from 'components';
-import { withLoadAdminEvents, WithLoadAdminEventsProps } from 'HOCs';
+import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 import { actionTypesOptions } from 'consts';
 
-import { AdminEventDataElemsItem, HandleFilterAdminEventDataElemsById } from 'store/domains';
+import {
+  DictionaryEventDataElemsItem,
+  HandleFilterDictionaryEventDataElemsById,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ProductRulesProps extends WithLoadAdminEventsProps {
-  filterAdminEventDataElemsById: HandleFilterAdminEventDataElemsById;
+interface ProductRulesProps extends WithLoadDictionaryEventsProps {
+  filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
   eventValue: SelectValues;
-  adminEventDataElemsItems: Array<AdminEventDataElemsItem>;
+  dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
 }
@@ -37,21 +40,21 @@ const getNewCode = (element: string) => {
 };
 
 const ProductRules: React.FC<ProductRulesProps> = ({
-  adminEventsOptions,
-  isAdminEventsLoading,
-  filterAdminEventDataElemsById,
+  dictionaryEventsOptions,
+  isDictionaryEventsLoading,
+  filterDictionaryEventDataElemsById,
   eventValue,
-  adminEventDataElemsItems,
+  dictionaryEventDataElemsItems,
   onChangeValues,
   changeFormField,
 }) => {
   React.useEffect(
     () => {
       if (eventValue) {
-        filterAdminEventDataElemsById({ eventId: eventValue });
+        filterDictionaryEventDataElemsById({ eventId: eventValue });
       }
     },
-    [filterAdminEventDataElemsById, eventValue]
+    [filterDictionaryEventDataElemsById, eventValue]
   );
 
   const onContextMenuClick = (e: Event, value: { name: string }) => {
@@ -76,8 +79,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               component={SelectField}
               label="Event"
               placeholder="Select Event"
-              options={adminEventsOptions}
-              isLoading={isAdminEventsLoading}
+              options={dictionaryEventsOptions}
+              isLoading={isDictionaryEventsLoading}
               isClearable={false}
               onBlur={onChangeValues}
               validate={[formErrorUtil.required]}
@@ -122,11 +125,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       <ContextMenuList
         menuId="rulesCodeContextMenu"
         onClick={onContextMenuClick}
-        items={adminEventDataElemsItems}
+        items={dictionaryEventDataElemsItems}
         noDataStr="No Available Data Elements"
       />
     </React.Fragment>
   );
 };
 
-export default withLoadAdminEvents(ProductRules);
+export default withLoadDictionaryEvents(ProductRules);

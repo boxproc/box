@@ -23,14 +23,14 @@ export interface LedgerCardItemPrepared {
   status: string;
 }
 
-export interface LedgerCardsFilterParams {
+export interface LedgerCardsFilter {
   pan_alias: string;
   id: number;
   account_id: number;
   customer_id: number;
 }
 
-export interface LedgerCardsFilterParamsPrepared {
+export interface LedgerCardsFilterPrepared {
   panAlias: string;
   id: number;
   accountId: number;

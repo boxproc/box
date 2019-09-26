@@ -18,9 +18,9 @@ import * as api from './api';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
-  LedgerAccountsFilterParamsPrepared,
+  LedgerAccountsFilterPrepared,
 } from './types';
-import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
+import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -40,7 +40,7 @@ export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) => Update
 export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterLedgerAccounts = (params: Partial<LedgerAccountsFilterParamsPrepared>) =>
+export type FilterLedgerAccounts = (params: Partial<LedgerAccountsFilterPrepared>) =>
   FilterLedgerAccountsAction;
 export type HandleFilterLedgerAccounts = () => Thunk<void>;
 
@@ -67,9 +67,9 @@ export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
   payload: api.updateLedgerAccount(values),
 });
 
-export const filterLedgerAccounts: FilterLedgerAccounts = filterParams => ({
+export const filterLedgerAccounts: FilterLedgerAccounts = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS,
-  payload: api.filterLedgerAccounts(filterParams),
+  payload: api.filterLedgerAccounts(Filter),
 });
 
 export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
@@ -83,7 +83,7 @@ export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterLedgerAccounts(preparedValues));

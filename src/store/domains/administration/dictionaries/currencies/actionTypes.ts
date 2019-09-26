@@ -1,27 +1,29 @@
-import { AdminCurrenciesData } from './types';
+import { DictionaryCurrenciesData } from './types';
 
 import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_CURRENCIES = 'administration/currencies/GET_ADMIN_CURRENCIES',
-  GET_ADMIN_CURRENCIES_FULFILLED = 'administration/currencies/GET_ADMIN_CURRENCIES_FULFILLED',
-  GET_ADMIN_CURRENCIES_REJECTED = 'administration/currencies/GET_ADMIN_CURRENCIES_REJECTED',
+  GET_DICTIONARY_CURRENCIES = 'administration/currencies/GET_DICTIONARY_CURRENCIES',
+  GET_DICTIONARY_CURRENCIES_FULFILLED =
+    'administration/currencies/GET_DICTIONARY_CURRENCIES_FULFILLED',
+  GET_DICTIONARY_CURRENCIES_REJECTED =
+    'administration/currencies/GET_DICTIONARY_CURRENCIES_REJECTED',
 }
 
-export interface GetAdminCurrenciesAction {
+export interface GetDictionaryCurrenciesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_CURRENCIES;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_CURRENCIES;
 }
 
-export interface GetAdminCurrenciesFulfilledAction {
-  readonly payload: AdminCurrenciesData;
-  readonly type: ActionTypeKeys.GET_ADMIN_CURRENCIES_FULFILLED;
+export interface GetDictionaryCurrenciesFulfilledAction {
+  readonly payload: DictionaryCurrenciesData;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_CURRENCIES_FULFILLED;
 }
 
-export interface GetAdminCurrenciesRejectedAction {
+export interface GetDictionaryCurrenciesRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_CURRENCIES_REJECTED;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_CURRENCIES_REJECTED;
 }
 
-export type AdminCurrenciesActionTypes =
-  | GetAdminCurrenciesFulfilledAction;
+export type DictionaryCurrenciesActionTypes =
+  | GetDictionaryCurrenciesFulfilledAction;

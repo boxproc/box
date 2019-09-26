@@ -17,14 +17,14 @@ import { Thunk } from 'types';
 
 import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
 
-import { AdminUserItem, AdminUserItemDetails, UsersFilterParamsPrepared } from './types';
+import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
 
 import { errorDecoratorUtil } from 'utils';
 
 export type AddAdminUser = (values: Partial<AdminUserItem>) => AddAdminUserAction;
 export type HandleAddAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
 
-export type FilterUsers = (params: Partial<UsersFilterParamsPrepared>) => FilterUsersAction;
+export type FilterUsers = (params: Partial<UsersFilterPrepared>) => FilterUsersAction;
 export type HandleFilterUsers = () => Thunk<void>;
 
 export type UpdateAdminUser = (values: Partial<AdminUserItem>) => UpdateAdminUserAction;

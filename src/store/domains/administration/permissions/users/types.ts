@@ -37,11 +37,11 @@ export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
   password: string;
 }
 
-export interface UsersFilterParams {
+export interface UsersFilter {
   statusActiveFlag: boolean;
 }
 
-export interface UsersFilterParamsPrepared {
+export interface UsersFilterPrepared {
   status: string;
 }
 

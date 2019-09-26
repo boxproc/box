@@ -107,7 +107,7 @@ export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlain
   productName: SelectValues;
 }
 
-export interface LedgerAccountsFilterParams extends LedgerAccountId {
+export interface LedgerAccountsFilter extends LedgerAccountId {
   institutionId: SelectValues;
   firstName: string;
   lastName: string;
@@ -116,7 +116,7 @@ export interface LedgerAccountsFilterParams extends LedgerAccountId {
   id: number;
 }
 
-export interface LedgerAccountsFilterParamsPrepared extends LedgerAccountId {
+export interface LedgerAccountsFilterPrepared extends LedgerAccountId {
   institution_id: string | number;
   first_name: string;
   last_name: string;

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  ConstsDataActionTypes,
   createLoadingSelector,
-  HandleGetCountryCodes,
-  handleGetCountryCodes,
-  selectCountryCodes,
+  DictionaryCountriesActionTypes,
+  HandleGetDictionaryCountries,
+  handleGetDictionaryCountries,
+  selectCountryCodesOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -19,7 +19,7 @@ import { componentUtil } from 'utils';
 export interface WithLoadCountryCodesProps {
   countryCodes: Array<SelectValues>;
   isCountryCodesLoading: boolean;
-  loadCountryCodes: HandleGetCountryCodes;
+  loadCountryCodes: HandleGetDictionaryCountries;
 }
 
 export const withLoadCountryCodes =
@@ -59,17 +59,17 @@ export const withLoadCountryCodes =
       `WithLoadCountryCodes(${componentUtil.getDisplayName(Component)})`;
 
     const loadingSelector = createLoadingSelector([
-      ConstsDataActionTypes.GET_COUNTRY_CODES,
+      DictionaryCountriesActionTypes.GET_DICTIONARY_COUNTRIES,
     ]);
 
     const mapStateToProps = (state: StoreState) => ({
       isCountryCodesLoading: loadingSelector(state),
-      countryCodes: selectCountryCodes(state),
+      countryCodes: selectCountryCodesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
       {
-        loadCountryCodes: handleGetCountryCodes,
+        loadCountryCodes: handleGetDictionaryCountries,
       },
       dispatch
     );

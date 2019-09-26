@@ -2,7 +2,7 @@ import { adminEndPointsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AdminEndpointFilterParamsPrepared, AdminEndpointItem } from './types';
+import { AdminEndpointFilterPrepared, AdminEndpointItem } from './types';
 
 export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClient.post(adminEndPointsPathNames.CREATE, { data });
@@ -15,7 +15,7 @@ export const deleteAdminEndpoint = (id: number) =>
 export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClient.post(adminEndPointsPathNames.UPDATE, { data });
 
-export const filterAdminEndpoint = (data: Partial<AdminEndpointFilterParamsPrepared>) =>
+export const filterAdminEndpoint = (data: Partial<AdminEndpointFilterPrepared>) =>
   apiClient.post(adminEndPointsPathNames.GET, { data });
 
 export const getEndpointsByInstitutionId = (id: number | string) =>

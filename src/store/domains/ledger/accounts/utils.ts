@@ -3,10 +3,10 @@ import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
   LedgerAccountsCardsItem,
-  LedgerAccountsFilterParams,
+  LedgerAccountsFilter,
 } from './types';
 
-export const preparedFilterParamsToSend = (params: Partial<LedgerAccountsFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<LedgerAccountsFilter>) => {
   if (!params) {
     return null;
   }

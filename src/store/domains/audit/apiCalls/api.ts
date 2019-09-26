@@ -2,13 +2,13 @@ import { auditApiClassPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AuditApiCallsFilterParamsPrepared } from './types';
+import { AuditApiCallsFilterPrepared } from './types';
 
 // import { apiCallsItems } from './mock';
 
 // import { throttleUtil } from 'utils';
 
-export const filterAuditApiCalls = (data: Partial<AuditApiCallsFilterParamsPrepared>) =>
+export const filterAuditApiCalls = (data: Partial<AuditApiCallsFilterPrepared>) =>
   // throttleUtil.getDataAfter(apiCallsItems, 500);
   apiClient.post(auditApiClassPathNames.GET, { data });
 

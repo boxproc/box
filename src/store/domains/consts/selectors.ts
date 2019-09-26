@@ -2,50 +2,6 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
 
-export const selectDefaultCurrencyCodes = (state: StoreState) =>
-  state.consts.currencies.asMutable();
-
-export const selectCurrencyCodes = createSelector(
-  selectDefaultCurrencyCodes,
-  data => data && data.map(code => {
-    const { currency_code, name } = code;
-
-    return {
-      value: currency_code,
-      label: `${currency_code} - ${name}`,
-    };
-  })
-);
-
-export const selectIsCurrencyCodesLoaded =
-  createSelector(
-    selectDefaultCurrencyCodes,
-    currencyCodes => {
-      return currencyCodes && currencyCodes.length > 0;
-    });
-
-export const selectDefaultCountryCodes = (state: StoreState) =>
-  state.consts.countries.asMutable();
-
-export const selectCountryCodes = createSelector(
-  selectDefaultCountryCodes,
-  data => data && data.map(code => {
-    const { country_code, name } = code;
-
-    return {
-      value: country_code,
-      label: `${country_code} - ${name}`,
-    };
-  })
-);
-
-export const selectIsCountryCodesLoaded =
-  createSelector(
-    selectDefaultCountryCodes,
-    countryCodes => {
-      return countryCodes && countryCodes.length > 0;
-    });
-
 export const selectDefaultInstitutions = (state: StoreState) =>
   state.consts.institutions.asMutable();
 

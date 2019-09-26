@@ -9,15 +9,15 @@ import {
   GetDetailsAuditApiCallsAction,
 } from './actionTypes';
 import * as api from './api';
-import { AuditApiCallsFilterParamsPrepared } from './types';
-import { preparedFilterParamsToSend } from './utils';
+import { AuditApiCallsFilterPrepared } from './types';
+import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
 export type HandleFilterAuditApiCalls = () => Thunk<void>;
-export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterParamsPrepared>) =>
+export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterPrepared>) =>
   FilterAuditApiCallsAction;
 
 export type HandleGetDetailsAuditApiCalls = () => Thunk<void>;
@@ -39,7 +39,7 @@ export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = () =>
       async () => {
         const state = getState();
         const formValues = getFormValues(formNamesConst.FILTER);
-        const preparedParams = preparedFilterParamsToSend(formValues(state));
+        const preparedParams = preparedFilterToSend(formValues(state));
 
         await dispatch(filterAuditApiCalls(preparedParams));
       },

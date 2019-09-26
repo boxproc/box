@@ -16,12 +16,12 @@ import {
 } from './actionTypes';
 import { selectCurrentAdminSysPropsItem } from './selectors';
 import {
-  AdminSysPropFilterParamsPrepared,
+  AdminSysPropFilterPrepared,
   EditableAdminSysProp,
   EditableAdminSysPropPrepared,
 } from './types';
 import {
-  prepareAdminSysPropFilterParams,
+  prepareAdminSysPropFilter,
   prepareEditableAdminSysPropItemValues,
 } from './utils';
 
@@ -40,7 +40,7 @@ export type UpdateAdminSysProps = (propValues: EditableAdminSysPropPrepared) =>
   UpdateAdminSysPropsAction;
 export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Thunk<void>;
 
-export type FilterAdminSysProps = (filterParams: AdminSysPropFilterParamsPrepared) =>
+export type FilterAdminSysProps = (Filter: AdminSysPropFilterPrepared) =>
   FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = () => Thunk<void>;
 
@@ -60,9 +60,9 @@ export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
   payload: api.updateAdminSysProps(propValues),
 });
 
-export const filterAdminSysProps: FilterAdminSysProps = filterParams => ({
+export const filterAdminSysProps: FilterAdminSysProps = Filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
-  payload: api.filterAdminSysProps(filterParams),
+  payload: api.filterAdminSysProps(Filter),
 });
 
 export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = () =>
@@ -117,7 +117,7 @@ export const handleFilterAdminSysProps: HandleFilterAdminSysProps = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = prepareAdminSysPropFilterParams(formValues(state));
+        const preparedValues = prepareAdminSysPropFilter(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterAdminSysProps(preparedValues));

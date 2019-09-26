@@ -1,4 +1,4 @@
-import { ApiCallsItem, AuditApiCallsFilterParams } from './types';
+import { ApiCallsItem, AuditApiCallsFilter } from './types';
 
 export const prepareValuesToRender = (values: ApiCallsItem) => {
   if (!values) {
@@ -16,7 +16,7 @@ export const prepareValuesToRender = (values: ApiCallsItem) => {
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<AuditApiCallsFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<AuditApiCallsFilter>) => {
   if (!params) {
     return null;
   }

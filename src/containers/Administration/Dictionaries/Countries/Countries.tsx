@@ -4,28 +4,31 @@ import { TablePage, withSpinner } from 'components';
 
 import { tableColumns } from './components';
 
-import { AdminCountriesItemPrepared, HandleGetAdminCountries } from 'store/domains';
+import {
+  DictionaryCountriesItemPrepared,
+  HandleGetDictionaryCountries,
+} from 'store/domains';
 
 interface CountriesProps {
-  getAdminCountries: HandleGetAdminCountries;
-  adminCountries: Array<AdminCountriesItemPrepared>;
+  getDictionaryCountries: HandleGetDictionaryCountries;
+  dictionaryCountries: Array<DictionaryCountriesItemPrepared>;
 }
 
 export const Countries: React.FC<CountriesProps> = ({
-  getAdminCountries,
-  adminCountries,
+  getDictionaryCountries,
+  dictionaryCountries,
 }) => {
   React.useEffect(
     () => {
-      getAdminCountries();
+      getDictionaryCountries();
     },
-    [getAdminCountries]
+    [getDictionaryCountries]
   );
 
   return (
     <TablePage
       title="Countries"
-      data={adminCountries}
+      data={dictionaryCountries}
       columns={tableColumns}
     />
   );

@@ -1,8 +1,8 @@
-import { adminEventDataElemsPathNames } from 'consts';
+import { dictionariesPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AdminEventDataElemsFilterParamsPrepared } from './types';
+import { DictionaryEventDataElemsFilterPrepared } from './types';
 
-export const filterAdminEventDataElems = (data: AdminEventDataElemsFilterParamsPrepared) =>
-  apiClient.post(adminEventDataElemsPathNames.GET, { data });
+export const filterDictionaryEventDataElems = (data: DictionaryEventDataElemsFilterPrepared) =>
+  apiClient.post(dictionariesPathNames.GET_EVENT_DATA_ELEMS, { data });

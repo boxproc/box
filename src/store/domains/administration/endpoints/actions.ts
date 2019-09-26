@@ -15,11 +15,11 @@ import {
 } from './actionTypes';
 import * as api from './api';
 import {
-  AdminEndpointFilterParamsPrepared,
+  AdminEndpointFilterPrepared,
   AdminEndpointItem,
   AdminEndpointItemDetailsPrepared
 } from './types';
-import { preparedFilterParamsToSend, preparedValuesToSend } from './utils';
+import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
@@ -36,7 +36,7 @@ export type UpdateAdminEndpoint = (propValues: Partial<AdminEndpointItem>) =>
 export type HandleUpdateAdminEndpoint = (propValues: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterParamsPrepared>) =>
+export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterPrepared>) =>
   FilterAdminEndpointAction;
 export type HandleFilterAdminEndpoint = () => Thunk<void>;
 
@@ -55,9 +55,9 @@ export const deleteAdminEndpoint: DeleteAdminEndpoint = id => ({
   meta: id,
 });
 
-export const filterAdminEndpoint: FilterAdminEndpoint = filterParams => ({
+export const filterAdminEndpoint: FilterAdminEndpoint = Filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT,
-  payload: api.filterAdminEndpoint(filterParams),
+  payload: api.filterAdminEndpoint(Filter),
 });
 
 export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
@@ -76,7 +76,7 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterAdminEndpoint(preparedValues));

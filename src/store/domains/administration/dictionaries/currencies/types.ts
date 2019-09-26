@@ -2,22 +2,22 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ResponseStatusType } from 'types';
 
-export interface AdminCurrenciesItem {
+export interface DictionaryCurrenciesItem {
   currency_code: string;
   numeric_code: number;
   name: string;
 }
 
-export interface AdminCurrenciesItemPrepared {
+export interface DictionaryCurrenciesItemPrepared {
   currencyCode: string;
   numericCode: number;
   name: string;
 }
 
-export interface AdminCurrenciesData extends ResponseStatusType {
-  currencies: Array<AdminCurrenciesItem>;
+export interface DictionaryCurrenciesData extends ResponseStatusType {
+  currencies: Array<DictionaryCurrenciesItem>;
 }
 
-export interface AdminCurrenciesState {
-  currencies: ImmutableArray<AdminCurrenciesItem>;
+export interface DictionaryCurrenciesState {
+  currencies: ImmutableArray<DictionaryCurrenciesItem>;
 }

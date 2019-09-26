@@ -2,12 +2,12 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminCurrenciesItemPrepared } from 'store/domains';
+import { DictionaryCurrenciesItemPrepared } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof AdminCurrenciesItemPrepared> =
-  TableCellType<AdminCurrenciesItemPrepared[T]>;
+type TCell<T extends keyof DictionaryCurrenciesItemPrepared> =
+  TableCellType<DictionaryCurrenciesItemPrepared[T]>;
 
 export const tableColumns = [
   {

@@ -57,7 +57,7 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   transactionTypeDescription: string;
 }
 
-export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
+export interface LedgerTransactionsFilter extends LedgerTransactionId {
   institutionId: SelectValues;
   customerId: number;
   productName: SelectValues;
@@ -65,7 +65,7 @@ export interface LedgerTransactionsFilterParams extends LedgerTransactionId {
   datetimeTo: string;
 }
 
-export interface LedgerTransactionsFilterParamsPrepared extends LedgerTransactionId {
+export interface LedgerTransactionsFilterPrepared extends LedgerTransactionId {
   institution_id: string | number;
   customer_id: number;
   product_name: string | number;

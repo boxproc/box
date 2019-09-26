@@ -19,8 +19,8 @@ import {
   NewProduct,
   PrepaidProductItem,
   PrepaidProductItemResp,
-  ProductFilterParams,
-  ProductFilterParamsPrepared,
+  ProductFilter,
+  ProductFilterPrepared,
   ProductItemGeneral,
   ProductItemResp,
   ProductRulesItem,
@@ -35,7 +35,7 @@ import {
 import { SelectValues } from 'types';
 
 export const prepareProductFiltersParamsToSend =
-  (params: ProductFilterParams): ProductFilterParamsPrepared => {
+  (params: ProductFilter): ProductFilterPrepared => {
     const { activeStatusFlag, institutionId, productType } = params;
 
     return {

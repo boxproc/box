@@ -4,19 +4,19 @@ import { formNamesConst } from 'consts';
 
 import { ActionTypeKeys, FilterLedgerTransactionsAction } from './actionTypes';
 import * as api from './api';
-import { LedgerTransactionsFilterParamsPrepared } from './types';
-import { preparedFilterParamsToSend } from './utils';
+import { LedgerTransactionsFilterPrepared } from './types';
+import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterParamsPrepared>) =>
+export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterPrepared>) =>
   FilterLedgerTransactionsAction;
 export type HandleFilterLedgerTransactions = () => Thunk<void>;
 
-export const filterLedgerTransactions: FilterLedgerTransactions = filterParams => ({
+export const filterLedgerTransactions: FilterLedgerTransactions = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS,
-  payload: api.filterLedgerTransactions(filterParams),
+  payload: api.filterLedgerTransactions(Filter),
 });
 
 export const handleFilterLedgerTransactions: HandleFilterLedgerTransactions = () =>
@@ -26,7 +26,7 @@ export const handleFilterLedgerTransactions: HandleFilterLedgerTransactions = ()
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
 
-        const preparedValues = preparedFilterParamsToSend(formValues(state));
+        const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterLedgerTransactions(preparedValues));

@@ -9,8 +9,8 @@ import {
 import {
   AdminCyclesEditorEditableItem,
   AdminCyclesEditorItem,
-  CycleFilterParams,
-  CycleFilterParamsPrepared
+  CycleFilter,
+  CycleFilterPrepared
 } from './types';
 
 export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
@@ -35,7 +35,7 @@ export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
 };
 
 export const prepareCyclesFiltersParamsToSend =
-  (params: CycleFilterParams): CycleFilterParamsPrepared => {
+  (params: CycleFilter): CycleFilterPrepared => {
     if (!params) {
       return null;
     }

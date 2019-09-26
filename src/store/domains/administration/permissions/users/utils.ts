@@ -2,8 +2,8 @@ import { statusTypes2faOptions, statusTypesConst, yesNoTypesConst } from 'consts
 import {
   AdminUserItem,
   AdminUserItemDetails,
-  UsersFilterParams,
-  UsersFilterParamsPrepared,
+  UsersFilter,
+  UsersFilterPrepared,
 } from './types';
 
 export const prepareAdminUserValuesToSend =
@@ -51,14 +51,14 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
 };
 
 export const prepareUsersFiltersParams =
-  (params: Partial<UsersFilterParamsPrepared>): Partial<UsersFilterParams> => {
+  (params: Partial<UsersFilterPrepared>): Partial<UsersFilter> => {
     return {
       statusActiveFlag: params.status === statusTypesConst.ACTIVE ? true : false,
     };
   };
 
 export const prepareUsersFiltersParamsToSend =
-  (params: Partial<UsersFilterParams>): Partial<UsersFilterParamsPrepared> => {
+  (params: Partial<UsersFilter>): Partial<UsersFilterPrepared> => {
     if (!params) {
       return null;
     }

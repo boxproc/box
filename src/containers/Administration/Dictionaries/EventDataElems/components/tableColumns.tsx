@@ -2,11 +2,12 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminEventDataElemsItem } from 'store/domains';
+import { DictionaryEventDataElemsItem } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof AdminEventDataElemsItem> = TableCellType<AdminEventDataElemsItem[T]>;
+type TCell<T extends keyof DictionaryEventDataElemsItem> =
+  TableCellType<DictionaryEventDataElemsItem[T]>;
 
 export const tableColumns = [
   {

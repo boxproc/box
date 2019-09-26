@@ -11,16 +11,6 @@ export interface CurrencyCodes {
   currencies: Array<CurrencyItem>;
 }
 
-export interface CountryItem {
-  name: string;
-  country_code: string;
-  numeric_code: number;
-}
-
-export interface CountryCodes {
-  countries: Array<CountryItem>;
-}
-
 export interface InstitutionItemPlain {
   id: number;
   status: string;
@@ -44,7 +34,5 @@ export interface InstitutionsData {
 }
 
 export interface ConstsState {
-  currencies: ImmutableArray<CurrencyItem>;
-  countries: ImmutableArray<CountryItem>;
   institutions: ImmutableArray<InstitutionItemResp>;
 }

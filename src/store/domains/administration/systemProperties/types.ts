@@ -13,11 +13,11 @@ export interface EditableAdminSysPropPrepared {
   current_value: string | number;
 }
 
-export interface AdminSysPropFilterParams {
+export interface AdminSysPropFilter {
   id?: string;
 }
 
-export interface AdminSysPropFilterParamsPrepared {
+export interface AdminSysPropFilterPrepared {
   property_name: string | number;
 }
 

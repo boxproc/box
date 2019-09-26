@@ -18,7 +18,7 @@ export const preparedValuesToRender = (values: Partial<AuditUserActivityItemResp
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<AuditUserActivityFilter>) => {
+export const preparedFilterToSend = (params: Partial<AuditUserActivityFilter>) => {
   if (!params) {
     return null;
   }

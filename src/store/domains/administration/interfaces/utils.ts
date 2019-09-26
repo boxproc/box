@@ -1,11 +1,11 @@
 import { protocolTypesOptions, statusTypesOptions, typeOfInterfaces } from 'consts';
 import {
-  AdminInterfaceFilterParams,
+  AdminInterfaceFilter,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared,
 } from './types';
 
-export const preparedFilterParamsToSend = (params: Partial<AdminInterfaceFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<AdminInterfaceFilter>) => {
   if (!params) {
     return null;
   }

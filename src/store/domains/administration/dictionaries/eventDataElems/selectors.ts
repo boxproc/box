@@ -2,16 +2,16 @@ import { createSelector } from 'reselect';
 
 import { dataTypesOptions } from 'consts';
 
-import { selectAdminEventsItems } from '../events';
+import { selectDictionaryEventsItems } from '../events';
 
 import { StoreState } from 'store/StoreState';
 
-export const selectDefaultAdminEventDataElemsItems = (state: StoreState) =>
+export const selectDefaultDictionaryEventDataElemsItems = (state: StoreState) =>
   state.administration.eventDataElements.eventDataElems;
 
-export const selectAdminEventDataElemsItems = createSelector(
-  selectDefaultAdminEventDataElemsItems,
-  selectAdminEventsItems,
+export const selectDictionaryEventDataElemsItems = createSelector(
+  selectDefaultDictionaryEventDataElemsItems,
+  selectDictionaryEventsItems,
   (dataElems, events) => dataElems && dataElems.asMutable().map(item => {
     const itemEvent = events.find(event => event.id === item.event_id);
 

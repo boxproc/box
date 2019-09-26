@@ -1,6 +1,6 @@
-import { AdminCountriesData } from './types';
+import { DictionaryCountriesData } from './types';
 
-export const adminCountriesData: AdminCountriesData = {
+export const dictionaryCountriesData: DictionaryCountriesData = {
   response_status: {
     status_code: 0,
   },

@@ -39,11 +39,11 @@ export interface AdminEndpointItems extends ResponseStatusType {
   endpoints: Array<AdminEndpointItem>;
 }
 
-export interface AdminEndpointFilterParams {
+export interface AdminEndpointFilter {
   institutionId: SelectValues;
 }
 
-export interface AdminEndpointFilterParamsPrepared {
+export interface AdminEndpointFilterPrepared {
   institution_id: string | number;
 }
 

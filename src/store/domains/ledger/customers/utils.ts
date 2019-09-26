@@ -2,10 +2,10 @@ import { customerStatusTypesOptions } from 'consts';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
-  LedgerCustomersFilterParams,
+  LedgerCustomersFilter,
 } from './types';
 
-export const preparedFilterParamsToSend = (params: Partial<LedgerCustomersFilterParams>) => {
+export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => {
   if (!params) {
     return null;
   }

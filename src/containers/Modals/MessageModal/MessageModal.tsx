@@ -63,6 +63,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <Box mt="5px">
           <Button
             text={isSessionEnded ? 'Re Login' : 'Close'}
+            isFocused={isSessionEnded}
             onClick={handleClick}
           />
         </Box>

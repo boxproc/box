@@ -1,5 +1,5 @@
 import { statusTypesOptions } from 'consts';
-import { LedgerCardItem, LedgerCardItemPrepared, LedgerCardsFilterParamsPrepared } from './types';
+import { LedgerCardItem, LedgerCardItemPrepared, LedgerCardsFilterPrepared } from './types';
 
 export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
   LedgerCardItemPrepared => {
@@ -17,7 +17,7 @@ export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
   };
 };
 
-export const preparedFilterParamsToSend = (params: Partial<LedgerCardsFilterParamsPrepared>) => {
+export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>) => {
     if (!params) {
       return null;
     }
