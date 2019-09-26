@@ -71,7 +71,7 @@ export enum adminUserGroupsPathNames {
   GET_GROUP_MEMBERS = '/ui/administration/permissions/users_group_members/get',
   GET_GROUP_UI_ITEMS = '/ui/administration/permissions/group_permissions_ui_items/get',
   GET_GROUP_PERMISSIONS = '/ui/administration/permissions/group_permissions/get',
-  CREATE_USERS_GROUP = '/ui/administration/permission/users_group/create',
+  CREATE_USERS_GROUP = '/ui/administration/permissions/users_group/create',
   UPDATE_USERS_GROUP = '/ui/administration/permissions/users_group/update',
   DELETE_USERS_GROUP_MEMBER = '/ui/administration/permissions/users_group_members/delete',
   DELETE_GROUP_PERMISSIONS = '/ui/administration/permissions/group_permissions/delete',
