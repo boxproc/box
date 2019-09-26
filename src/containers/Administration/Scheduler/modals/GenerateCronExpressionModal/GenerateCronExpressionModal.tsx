@@ -2,22 +2,18 @@ import React from 'react';
 
 import { CronGenerator, Modal } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
+import { withModal, WithModalProps } from 'HOCs';
 
-import { HandleSetGeneratedCronExpression } from 'store/domains';
-
-interface GenerateCronExpressionModalProps {
-  currentCronExpression: string;
-  setGeneratedCronExpression: HandleSetGeneratedCronExpression;
-  generatedCronExpression: string;
+interface GenerateCronExpressionModalProps extends WithModalProps {
+  change: (formName: string, fieldName: string, value: string) => void;
 }
 
 const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 
 const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = ({
-  currentCronExpression,
-  setGeneratedCronExpression,
-  generatedCronExpression,
+  change,
+  closeModal,
 }) => {
   return (
     <Modal
@@ -26,11 +22,13 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = 
       maxContainerWidth={670}
     >
       <CronGenerator
-        setValue={setGeneratedCronExpression}
-        initialValue={generatedCronExpression ? generatedCronExpression : currentCronExpression}
+        formName={formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB}
+        fieldName="cronExpression"
+        onChange={change}
+        action={() => closeModal(modalName)}
       />
     </Modal>
   );
 };
 
-export default GenerateCronExpressionModal;
+export default withModal(GenerateCronExpressionModal);

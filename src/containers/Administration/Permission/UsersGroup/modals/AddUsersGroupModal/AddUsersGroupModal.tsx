@@ -7,12 +7,15 @@ import { modalNamesConst } from 'consts';
 
 import { AddUserGroupForm } from 'containers/Administration/Permission/UsersGroup/forms';
 
-interface AddUserModalProps extends WithModalProps { }
+interface AddUserModalProps extends WithModalProps {
+  isFormDirty: boolean;
+}
 
 const modalName = modalNamesConst.ADD_ADMIN_USERS_GROUP;
 
 const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
   closeModal,
+  isFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -24,6 +27,7 @@ const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
       name={modalName}
       title="Add New User Group"
       maxContainerWidth={350}
+      withCloseConfirmation={isFormDirty}
     >
       <AddUserGroupForm onCancel={handleOnCancel} />
     </Modal>

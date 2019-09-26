@@ -1,4 +1,4 @@
-import { reset as resetForm } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -9,26 +9,27 @@ import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
-  GetAdminSchedulerJobAction,
+  FilterAdminSchedulerJobsAction,
   SendAdminSchedulerActionJobAction,
-  SetGeneratedCronExpressionAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
 import {
   AdminSchedulerEditableItem,
+  AdminSchedulerFilterPrepared,
   AdminSchedulerItem,
   AdminSchedulerJobAction,
   AdminSchedulerJobActionPrepared,
 } from './types';
-import { prepareValuesToSend, prepareValuesToSendActions } from './utils';
+import { preparedFilterToSend, prepareValuesToSend, prepareValuesToSendActions } from './utils';
 
 import { Thunk, VoidPromiseThunk, } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetAdminSchedulerJobs = () => GetAdminSchedulerJobAction;
-export type HandleGetAdminSchedulerJobs = VoidPromiseThunk;
+export type FilterAdminSchedulerJobs = (params: AdminSchedulerFilterPrepared) =>
+  FilterAdminSchedulerJobsAction;
+export type HandleFilterAdminSchedulerJobs = VoidPromiseThunk;
 
 export type AddAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
   AddAdminSchedulerJobAction;
@@ -48,12 +49,9 @@ export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
 export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
   Thunk<void>;
 
-export type SetGeneratedCronExpression = (expression: string) => SetGeneratedCronExpressionAction;
-export type HandleSetGeneratedCronExpression = (expression: string) => Thunk<void>;
-
-export const getAdminSchedulerJobs: GetAdminSchedulerJobs = () => ({
-  type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS,
-  payload: api.getAdminSchedulerJobs(),
+export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
+  type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS,
+  payload: api.filterAdminSchedulerJobs(params),
 });
 
 export const addAdminSchedulerJob: AddAdminSchedulerJob = values => ({
@@ -77,16 +75,15 @@ export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues
   payload: api.updateAdminSchedulerJobs(schedulerValues),
 });
 
-export const setGeneratedCronExpression: SetGeneratedCronExpression = expression => ({
-  type: ActionTypeKeys.SET_GENERATED_CRON_EXPRESSION,
-  payload: expression,
-});
-
-export const handleGetAdminSchedulerJobs: HandleGetAdminSchedulerJobs = () =>
-  async dispatch => {
+export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getAdminSchedulerJobs());
+        const formValues = getFormValues(formNamesConst.FILTER);
+        const state = getState();
+        const preparedValues = preparedFilterToSend(formValues(state));
+
+        await dispatch(filterAdminSchedulerJobs(preparedValues));
       },
       dispatch
     );
@@ -100,7 +97,7 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
 
         await dispatch(closeModal(modalNamesConst.ADD_ADMIN_SCHEDULER));
         await dispatch(addAdminSchedulerJob(preparedValues));
-        await dispatch(handleGetAdminSchedulerJobs());
+        await dispatch(handleFilterAdminSchedulerJobs());
         await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB));
       },
       dispatch
@@ -116,7 +113,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =
 
         await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
-        await dispatch(handleGetAdminSchedulerJobs());
+        await dispatch(handleFilterAdminSchedulerJobs());
       },
       dispatch
     );
@@ -130,7 +127,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
 
         await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
-        await dispatch(handleGetAdminSchedulerJobs());
+        await dispatch(handleFilterAdminSchedulerJobs());
       },
       dispatch
     );
@@ -143,18 +140,7 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = va
         const preparedValues = prepareValuesToSendActions(values);
 
         await dispatch(sendAdminSchedulerAction(preparedValues));
-        await dispatch(handleGetAdminSchedulerJobs());
-      },
-      dispatch
-    );
-  };
-
-export const handleSetGeneratedCronExpression: HandleSetGeneratedCronExpression = expression =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(setGeneratedCronExpression(expression));
-        await dispatch(closeModal(modalNamesConst.GENERATE_CRON_EXPRESSION));
+        await dispatch(handleFilterAdminSchedulerJobs());
       },
       dispatch
     );

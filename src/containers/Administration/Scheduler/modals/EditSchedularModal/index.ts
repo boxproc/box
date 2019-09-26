@@ -11,7 +11,6 @@ import {
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleUpdateAdminSchedulerJobs,
-  selectCurrentCronExpression,
   selectCurrentSchedulerName,
   selectSchedulerJobValues,
 } from 'store/domains';
@@ -28,7 +27,6 @@ const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
-  currentCronExpression: selectCurrentCronExpression(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

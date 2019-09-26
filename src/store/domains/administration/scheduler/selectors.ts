@@ -20,30 +20,18 @@ export const selectAdminSchedulerJobsItems = createSelector(
   })
 );
 
-export const selectGeneratedCronExpression = (state: StoreState) =>
-  state.administration.scheduler.generatedCronExpression;
-
 export const selectSchedulerJobValues = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
   selectActiveItemId,
-  selectGeneratedCronExpression,
-  (items, institutions, currentId, generatedCronExpression) => {
+  (items, institutions, currentId) => {
     const current = items && items.asMutable().find(item => item.id === currentId);
 
     return {
       ...prepareDetailsToRender(current),
       institutionId: current && institutions.find(el => el.value === current.institution_id),
-      cronExpression: generatedCronExpression
-        ? generatedCronExpression
-        : current && current.cron_expression,
     };
   }
-);
-
-export const selectCurrentCronExpression = createSelector(
-  selectSchedulerJobValues,
-  scheduler => scheduler && scheduler.cronExpression
 );
 
 export const selectCurrentSchedulerName = createSelector(

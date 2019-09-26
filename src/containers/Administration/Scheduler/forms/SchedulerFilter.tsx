@@ -5,8 +5,6 @@ import { Box } from '@rebass/grid';
 
 import { CheckboxField, InputField } from 'components';
 
-import { formErrorUtil } from 'utils';
-
 const SchedulerFilter: React.FC = () => {
   return (
     <React.Fragment>
@@ -17,7 +15,6 @@ const SchedulerFilter: React.FC = () => {
           placeholder="Enter Name"
           component={InputField}
           label="Name"
-          validate={[formErrorUtil.required]}
         />
       </Box>
       <Box width={[1]} p="10px">

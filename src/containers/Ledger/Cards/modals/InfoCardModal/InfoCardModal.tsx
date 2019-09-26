@@ -40,7 +40,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Card"
       maxContainerWidth={500}
-      minContainerHeight={250}
     >
       <React.Fragment>
         <Box mb="10px">
@@ -49,6 +48,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
             type="reset"
             onClick={() => activateLedgerCard(ledgerCardPanAlias)}
             text="Activate Card"
+            isFocused={true}
           />
         </Box>
       </React.Fragment>
@@ -60,13 +60,11 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       <Flex
         justifyContent="flex-end"
       >
-        <Box mb="10px">
-          <Button
-            rightPosition={true}
-            onClick={handleOnCancel}
-            text="Close"
-          />
-        </Box>
+        <Button
+          rightPosition={true}
+          onClick={handleOnCancel}
+          text="Close"
+        />
       </Flex>
     </Modal>
   );

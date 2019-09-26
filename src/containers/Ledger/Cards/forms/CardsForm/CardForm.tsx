@@ -43,15 +43,6 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
           </Box>
           <Box width={[1 / 4]} p="10px">
             <Field
-              id="panAlias"
-              name="panAlias"
-              component={InputField}
-              label="Pan Alias"
-              disabled={true}
-            />
-          </Box>
-          <Box width={[1 / 4]} p="10px">
-            <Field
               id="expiryDate"
               name="expiryDate"
               component={InputField}
@@ -59,21 +50,30 @@ const CardInfoForm: React.FC<DefineCardInfoFormAllProps> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[2 / 3]} p="10px">
-            <Field
-              id="panMasked"
-              name="panMasked"
-              component={InputField}
-              label="Pan Masked"
-              disabled={true}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="status"
               name="status"
               component={InputField}
               label="Status"
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="panAlias"
+              name="panAlias"
+              component={InputField}
+              label="Pan Alias"
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="panMasked"
+              name="panMasked"
+              component={InputField}
+              label="Pan Masked"
               disabled={true}
             />
           </Box>

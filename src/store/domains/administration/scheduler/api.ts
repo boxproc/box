@@ -4,13 +4,13 @@ import { apiClient } from 'services';
 
 // import { AdminSchedulerData, SuccessResponseStatus } from './mock';
 
-import { AdminSchedulerItem, AdminSchedulerJobAction } from './types';
+import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobAction } from './types';
 
 // import { throttleUtil } from 'utils';
 
-export const getAdminSchedulerJobs = () =>
+export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
   // throttleUtil.getDataAfter(AdminSchedulerData, 500);
-  apiClient.post(adminSchedulerPathNames.GET);
+  apiClient.post(adminSchedulerPathNames.GET, { data });
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
   // throttleUtil.getDataAfter(SuccessResponseStatus, 500);

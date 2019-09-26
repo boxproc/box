@@ -131,7 +131,7 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder__preset {
-    margin: 0 20px 45px;
+    margin: 15px 20px 45px;
     min-height: 95px;
   }
   .cron-builder__preset > div {

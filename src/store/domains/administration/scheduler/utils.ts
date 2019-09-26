@@ -2,10 +2,12 @@ import {
   executableTypeOptions,
   lastExecutionResultOptions,
   schedulerStatusTypesOptions,
+  statusTypesConst,
 } from 'consts';
 
 import {
   AdminSchedulerEditableItem,
+  AdminSchedulerFilter,
   AdminSchedulerItem,
   AdminSchedulerJobActionPrepared
 } from './types';
@@ -68,5 +70,21 @@ export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
     lastExecutionResult:
       lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
     executableType: executableTypeOptions.find(el => el.value === item.executable_type),
+  };
+};
+
+export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
+  if (!params) {
+    return null;
+  }
+
+  const {
+    name,
+    activeStatusFlag,
+  } = params;
+
+  return {
+    name: name ? name : null,
+    status: activeStatusFlag ? statusTypesConst.ACTIVE : null,
   };
 };

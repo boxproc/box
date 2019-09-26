@@ -8,6 +8,7 @@ export interface PayloadMessageModal {
   message?: string;
   details?: string;
   statusCode?: number;
+  errorCode?: number;
 }
 
 export interface PayloadConfirmationModal {

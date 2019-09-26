@@ -5,18 +5,34 @@ import { CronGeneratorStyled } from './CronGeneratorStyled';
 
 interface CronGeneratorProps {
   initialValue?: string;
-  setValue: (value: string) => void;
+  formName?: string;
+  fieldName?: string;
+  onChange: (formName: string, fieldName: string, value: string) => void;
+  action?: () => void;
 }
 
 const CronGenerator: React.FC<CronGeneratorProps> = ({
   initialValue,
-  setValue,
+  formName,
+  fieldName,
+  onChange,
+  action,
 }) => {
+  const handleChange = React.useCallback(
+    value => {
+      onChange(formName, fieldName, value);
+      if (action) {
+        action();
+      }
+    },
+    [formName, fieldName, action, onChange]
+  );
+
   return (
     <CronGeneratorStyled>
       <CronBuilder
         cronExpression={initialValue}
-        onChange={(value: string) => setValue(value)}
+        onChange={handleChange}
         showResult={false}
       />
     </CronGeneratorStyled>

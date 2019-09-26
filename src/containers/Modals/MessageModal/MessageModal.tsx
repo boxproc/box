@@ -23,21 +23,25 @@ const MessageModal: React.FC<MessageModalProps> = ({
   closeAllModals,
 }) => {
   const { title, message, details, statusCode } = payloadMessageModal;
+
   const isSessionEnded = statusCode === statusCodes.NO_SESSION
     || statusCode === statusCodes.SESSION_TIMEOUT;
+
+  const isReLogin = isSessionEnded
+    || statusCode === statusCodes.USER_NOT_AUTH
+    || statusCode === statusCodes.NO_SESSION_ID;
 
   React.useEffect(
     () => {
       return () => {
-        if (isSessionEnded || statusCode === statusCodes.USER_NOT_AUTH) {
+        if (isReLogin) {
           storageUtil.clear();
           closeAllModals();
-          // history.push(basePath);
           urlUtil.openLocation(basePath);
         }
       };
     },
-    [statusCode, closeAllModals, isSessionEnded]
+    [statusCode, closeAllModals, isSessionEnded, isReLogin]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
@@ -62,7 +66,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       >
         <Box mt="5px">
           <Button
-            text={isSessionEnded ? 'Re Login' : 'Close'}
+            text={isReLogin ? 'Re Login' : 'Close'}
             isFocused={isSessionEnded}
             onClick={handleClick}
           />

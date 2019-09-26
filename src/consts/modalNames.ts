@@ -5,7 +5,6 @@ export enum modalTypesConst {
 }
 
 export enum modalNamesConst {
-  // General Modals
   MESSAGE_MODAL = 'MessageModal',
   CONFIRMATION_MODAL = 'ConfirmationModal',
 
@@ -14,14 +13,11 @@ export enum modalNamesConst {
 
   CHANGE_PROFILE_MODAL = 'ChangeProfileModal',
 
-  // Product Designer
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
 
-  // Audit
   AUDIT_API_CALL = 'AuditApiCall',
 
-  // Ledger
   ADD_LEDGER_CUSTOMER = 'AddLedgerCustomerModal',
   EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomerModal',
   EDIT_LEDGER_ACCOUNT = 'EditLedgerAccountModal',
@@ -30,7 +26,6 @@ export enum modalNamesConst {
   INFO_LEDGER_CARDS = 'InfoCardModal',
   LEDGER_STATEMENTS = 'LedgerStatements',
 
-  // Administration
   ADD_ADMIN_SYSTEM_PROPERTY = 'AddAdminSystemPropertyModal',
   ADD_ADMIN_CYCLE_EDITOR = 'AddAdminCycleEditorModal',
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',

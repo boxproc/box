@@ -53,7 +53,16 @@ export interface AdminSchedulerDataResp extends ResponseStatusType {
   s_scheduler: Array<AdminSchedulerItem>;
 }
 
+export interface AdminSchedulerFilter {
+  name: string;
+  activeStatusFlag: boolean;
+}
+
+export interface AdminSchedulerFilterPrepared {
+  name: string;
+  status: string;
+}
+
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
-  generatedCronExpression: string;
 }

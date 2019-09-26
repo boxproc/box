@@ -1,28 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { change } from 'redux-form';
 
 import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
-import {
-  handleSetGeneratedCronExpression,
-  selectCurrentCronExpression,
-  selectGeneratedCronExpression,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
-
-const mapStateToProps = (state: StoreState) => ({
-  currentCronExpression: selectCurrentCronExpression(state),
-  generatedCronExpression: selectGeneratedCronExpression(state),
-});
-
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    setGeneratedCronExpression: handleSetGeneratedCronExpression,
+    change,
   },
   dispatch
 );
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(GenerateCronExpressionModal);

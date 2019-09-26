@@ -3,10 +3,11 @@ import { AdminSchedulerDataResp } from './types';
 import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS',
-  GET_ADMIN_SCHEDULER_JOBS_FULFILLED =
-  'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS_FULFILLED',
-  GET_ADMIN_SCHEDULER_JOBS_REJECTED = 'administration/scheduler/GET_ADMIN_SCHEDULER_JOBS_REJECTED',
+  FILTER_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/FILTER_ADMIN_SCHEDULER_JOBS',
+  FILTER_ADMIN_SCHEDULER_JOBS_FULFILLED =
+  'administration/scheduler/FILTER_ADMIN_SCHEDULER_JOBS_FULFILLED',
+  FILTER_ADMIN_SCHEDULER_JOBS_REJECTED =
+  'administration/scheduler/FILTER_ADMIN_SCHEDULER_JOBS_REJECTED',
 
   ADD_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/ADD_ADMIN_SCHEDULER_JOBS',
   ADD_ADMIN_SCHEDULER_JOBS_FULFILLED =
@@ -22,32 +23,30 @@ export enum ActionTypeKeys {
 
   SEND_ADMIN_SCHEDULER_ACTION_JOB = 'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB',
   SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED =
-   'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED',
+  'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED',
   SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED =
-   'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED',
+  'administration/scheduler/SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED',
 
   UPDATE_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS',
   UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED =
   'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED',
   UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED =
   'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED',
-
-  SET_GENERATED_CRON_EXPRESSION = 'administration/scheduler/SET_GENERATED_CRON_EXPRESSION',
 }
 
-export interface GetAdminSchedulerJobAction {
+export interface FilterAdminSchedulerJobsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS;
 }
 
-export interface GetAdminSchedulerJobFulfilledAction {
+export interface FilterAdminSchedulerJobsFulfilledAction {
   readonly payload: AdminSchedulerDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS_FULFILLED;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS_FULFILLED;
 }
 
-export interface GetAdminSchedulerJobRejectedAction {
+export interface FilterAdminSchedulerJobsRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_SCHEDULER_JOBS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
 export interface AddAdminSchedulerJobAction {
@@ -111,15 +110,9 @@ export interface SendAdminSchedulerActionJobRejectedAction {
   readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED;
 }
 
-export interface SetGeneratedCronExpressionAction {
-  readonly payload: string;
-  readonly type: ActionTypeKeys.SET_GENERATED_CRON_EXPRESSION;
-}
-
 export type AdminSchedulerJobsActionTypes =
-  | GetAdminSchedulerJobFulfilledAction
+  | FilterAdminSchedulerJobsFulfilledAction
   | AddAdminSchedulerJobFulfilledAction
   | DeleteAdminSchedulerJobFulfilledAction
   | UpdateAdminSchedulerJobFulfilledAction
-  | SendAdminSchedulerActionJobFulfilledAction
-  | SetGeneratedCronExpressionAction;
+  | SendAdminSchedulerActionJobFulfilledAction;

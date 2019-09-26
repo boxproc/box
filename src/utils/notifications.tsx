@@ -8,10 +8,11 @@ const getNotification = (
   title: string,
   message: string,
   details?: string,
-  statusCode?: number
+  statusCode?: number,
+  errorCode?: number
 ) => openModal({
   name: modalNamesConst.MESSAGE_MODAL,
-  payload: { title, message, details, statusCode },
+  payload: { title, message, details, statusCode, errorCode },
 });
 
 export const handleSendNotification: SendNotification =
@@ -28,7 +29,8 @@ export const handleSendNotification: SendNotification =
               `${res.statusCode} Internal Server Error`,
               error_message,
               JSON.stringify(error_description),
-              status_code
+              status_code,
+              res.statusCode
             ));
           } else {
             dispatch(getNotification(
@@ -43,7 +45,8 @@ export const handleSendNotification: SendNotification =
             `${res.statusCode} Error`,
             error_message,
             error_description,
-            status_code
+            status_code,
+            res.statusCode
           ));
         } else {
           dispatch(getNotification(

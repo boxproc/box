@@ -94,9 +94,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="name"
               name="name"
-              placeholder="Enter Job Name"
+              placeholder="Enter Name"
               component={InputField}
-              label="Scheduler Job Name"
+              label="Name"
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -116,9 +116,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="description"
               name="description"
-              placeholder="Enter Job Description"
+              placeholder="Enter Description"
               component={TextField}
-              label="Scheduler Job Description"
+              label="Description"
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -126,9 +126,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="executableType"
               name="executableType"
-              placeholder="Enter Job Executable type"
+              placeholder="Enter Executable type"
               component={SelectField}
-              label="Scheduler Job Executable Type"
+              label="Executable Type"
               disabled={false}
               options={executableTypeOptions}
               validate={[formErrorUtil.required]}
@@ -138,9 +138,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="executable"
               name="executable"
-              placeholder="Enter Job Executable"
+              placeholder="Executable"
               component={InputField}
-              label="Scheduler Job Executable"
+              label="Executable"
               disabled={false}
               validate={[formErrorUtil.required]}
             />
@@ -149,9 +149,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="logLocation"
               name="logLocation"
-              placeholder="Enter Job Log Location"
+              placeholder="Enter Log Location"
               component={InputField}
-              label="Scheduler Job Log Location"
+              label="Log Location"
               disabled={false}
               validate={[formErrorUtil.required]}
             />
@@ -160,9 +160,9 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
             <Field
               id="cronExpression"
               name="cronExpression"
-              placeholder="Enter Cron Expression Description"
+              placeholder="Enter Cron Expression"
               component={InputField}
-              label="Scheduler Job Cron Expression"
+              label="Cron Expression"
               disabled={false}
               validate={[formErrorUtil.required]}
             />

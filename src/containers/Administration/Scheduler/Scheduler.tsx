@@ -9,7 +9,7 @@ import { tableColumns } from 'containers/Administration/Scheduler/components';
 import {
   AdminSchedulerItemPrepared,
   HandleDeleteAdminSchedulerJob,
-  HandleGetAdminSchedulerJobs,
+  HandleFilterAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
 } from 'store/domains';
 
@@ -17,7 +17,7 @@ import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
 interface SchedulerProps {
   adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
-  getAdminSchedulerJobs: HandleGetAdminSchedulerJobs;
+  filterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs;
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   currentSchedulerJobId: number;
@@ -25,20 +25,13 @@ interface SchedulerProps {
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
-  getAdminSchedulerJobs,
+  filterAdminSchedulerJobs,
   adminSchedulerJobsItems,
   sendAdminSchedulerAction,
   currentSchedulerJobId,
   deleteAdminSchedulerJob,
   currentSchedulerName,
 }) => {
-  React.useEffect(
-    () => {
-      getAdminSchedulerJobs();
-    },
-    [getAdminSchedulerJobs]
-  );
-
   const contextMenuItems = React.useMemo(
     () => [
       {
@@ -119,7 +112,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       addNewModalName={modalNamesConst.ADD_ADMIN_SCHEDULER}
       editModalName={modalNamesConst.EDIT_ADMIN_SCHEDULER}
       contextMenuItems={contextMenuItems}
-      // filterAction={}
+      filterAction={filterAdminSchedulerJobs}
       FilterForm={
         <SchedulerFilter />
       }
