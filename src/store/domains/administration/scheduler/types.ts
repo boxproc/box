@@ -63,6 +63,16 @@ export interface AdminSchedulerFilterPrepared {
   status: string;
 }
 
+export interface AdminSchedulerNameItem {
+  id: number;
+  name: string;
+}
+
+export interface AdminSchedulerNameItems extends ResponseStatusType {
+  scheduler_names: Array<AdminSchedulerNameItem>;
+}
+
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
+  schedulerNames: ImmutableArray<AdminSchedulerNameItem>;
 }

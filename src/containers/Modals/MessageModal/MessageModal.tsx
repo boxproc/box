@@ -59,7 +59,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isSmallWindow ? 350 : 500}
+      maxContainerWidth={isSmallWindow ? 400 : 500}
       zIndex="102"
       closeOnBackdrop={true}
     >

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
 
-import { AdminUserItemPrepared } from 'store/domains/administration/permissions/users';
+import { AdminUserItemPrepared } from 'store/domains';
 
 import { TableCellType } from 'types';
 

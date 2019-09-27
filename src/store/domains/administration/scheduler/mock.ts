@@ -1,8 +1,8 @@
-import { AdminSchedulerDataResp } from './types';
+import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
 
 import { ResponseStatusType } from 'types';
 
-export const AdminSchedulerData: AdminSchedulerDataResp = {
+export const adminSchedulerData: AdminSchedulerDataResp = {
   response_status: {
     status_code: 0,
   },
@@ -32,6 +32,26 @@ export const AdminSchedulerData: AdminSchedulerDataResp = {
       log_location: 'test_job2.log',
       last_execution_datetime: '2019-07-12 13:27:18',
       last_execution_result: 'U',
+    },
+  ],
+};
+
+export const schedulerNames: AdminSchedulerNameItems = {
+  response_status: {
+    status_code: 0,
+  },
+  scheduler_names: [
+    {
+      id: 1,
+      name: 'API test Job 1',
+    },
+    {
+      id: 2,
+      name: 'Shell script test Job 2',
+    },
+    {
+      id: 3,
+      name: 'Settlement - institution1',
     },
   ],
 };

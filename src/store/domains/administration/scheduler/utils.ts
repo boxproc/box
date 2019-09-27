@@ -42,7 +42,8 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
   }
 
   const status = schedulerStatusTypesOptions.find(el => el.value === item.status);
-  const lastExecutionResult = lastExecutionResultOptions.find(el => el.value === item.status);
+  const lastExecutionResult = lastExecutionResultOptions
+    .find(el => el.value === item.last_execution_result);
   const executableType = executableTypeOptions.find(el => el.value === item.executable_type);
 
   return {

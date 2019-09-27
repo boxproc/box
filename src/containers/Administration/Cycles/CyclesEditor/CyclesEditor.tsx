@@ -11,7 +11,7 @@ import {
   AdminCyclesEditorItemPrepared,
   HandleDeleteAdminCycleEditor,
   HandleFilterCycles,
-} from 'store/domains/administration/cycles';
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 

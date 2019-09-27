@@ -1,4 +1,4 @@
-import { AdminSchedulerDataResp } from './types';
+import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -32,6 +32,13 @@ export enum ActionTypeKeys {
   'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED',
   UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED =
   'administration/scheduler/UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED',
+
+  GET_SCHEDULER_NAMES_BY_INSTITUTION_ID =
+  'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID',
+  GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED =
+  'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED',
+  GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED =
+  'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED',
 }
 
 export interface FilterAdminSchedulerJobsAction {
@@ -110,9 +117,25 @@ export interface SendAdminSchedulerActionJobRejectedAction {
   readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED;
 }
 
+export interface GetSchedulerNamesByInstitutionIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID;
+}
+
+export interface GetSchedulerNamesByInstitutionIdFulfilledAction {
+  readonly payload: AdminSchedulerNameItems;
+  readonly type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED;
+}
+
+export interface GetSchedulerNamesByInstitutionIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED;
+}
+
 export type AdminSchedulerJobsActionTypes =
   | FilterAdminSchedulerJobsFulfilledAction
   | AddAdminSchedulerJobFulfilledAction
   | DeleteAdminSchedulerJobFulfilledAction
   | UpdateAdminSchedulerJobFulfilledAction
-  | SendAdminSchedulerActionJobFulfilledAction;
+  | SendAdminSchedulerActionJobFulfilledAction
+  | GetSchedulerNamesByInstitutionIdFulfilledAction;

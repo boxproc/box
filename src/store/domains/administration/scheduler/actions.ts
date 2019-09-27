@@ -10,6 +10,7 @@ import {
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   FilterAdminSchedulerJobsAction,
+  GetSchedulerNamesByInstitutionIdAction,
   SendAdminSchedulerActionJobAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
@@ -49,6 +50,10 @@ export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
 export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
   Thunk<void>;
 
+export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Thunk<void>;
+export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
+  GetSchedulerNamesByInstitutionIdAction;
+
 export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
   type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS,
   payload: api.filterAdminSchedulerJobs(params),
@@ -73,6 +78,11 @@ export const sendAdminSchedulerAction: SendAdminSchedulerAction = values => ({
 export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues => ({
   type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS,
   payload: api.updateAdminSchedulerJobs(schedulerValues),
+});
+
+export const getSchedulerNamesByInstitutionId: GetSchedulerNamesByInstitutionId = id => ({
+  type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID,
+  payload: api.getSchedulerNamesByInstitutionId(id),
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
@@ -141,6 +151,16 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = va
 
         await dispatch(sendAdminSchedulerAction(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
+      },
+      dispatch
+    );
+  };
+
+export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByInstitutionId = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getSchedulerNamesByInstitutionId(id));
       },
       dispatch
     );

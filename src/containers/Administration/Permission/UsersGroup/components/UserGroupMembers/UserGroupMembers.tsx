@@ -9,7 +9,7 @@ import {
   AdminUserGroupMemberPrepared,
   HandleDeleteAdminUserGroupMembers,
   HandleGetAdminUserGroupMembers,
-} from 'store/domains/administration/permissions/usersGroups';
+} from 'store/domains';
 
 import { TableCellType } from 'types';
 

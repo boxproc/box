@@ -38,7 +38,21 @@ export const selectCurrentSchedulerName = createSelector(
   selectSchedulerJobValues,
   scheduler => scheduler && scheduler.name
 );
+
 export const selectCurrentSchedulerStatus = createSelector(
   selectSchedulerJobValues,
   scheduler => scheduler && scheduler.status.label
+);
+
+export const selectDefaultSchedulerNamesByInstIdOptions = (state: StoreState) =>
+  state.administration.scheduler.schedulerNames;
+
+export const selectSchedulerNamesByInstIdOptions = createSelector(
+  selectDefaultSchedulerNamesByInstIdOptions,
+  items => items && items.asMutable().map(item => {
+    return {
+      value: item.id,
+      label: item.name,
+    };
+  })
 );

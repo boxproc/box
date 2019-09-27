@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminCyclesEditorItemPrepared } from 'store/domains/administration/cycles';
+import { AdminCyclesEditorItemPrepared } from 'store/domains';
 
 import { TableCellType } from 'types';
 

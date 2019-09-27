@@ -23,7 +23,6 @@ export interface AuditUserActivityItem extends PlainInfo {
   eventDatetime: string;
   firstName: string;
   lastName: string;
-
 }
 
 export interface AuditUserActivityFilter {

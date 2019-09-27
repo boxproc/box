@@ -41,4 +41,6 @@ const UserActivity: React.FC<UserActivityProps> = ({
   );
 };
 
-export default withSpinner()(UserActivity);
+export default withSpinner({
+  isFixed: true,
+})(UserActivity);

@@ -77,6 +77,7 @@ export enum adminSchedulerPathNames {
   CREATE = '/ui/administration/scheduler/create',
   UPDATE = '/ui/administration/scheduler/update',
   SEND_ACTION = '/sys/scheduler/management',
+  GET_NAMES_BY_INSTITUTION_ID = '',
 }
 
 export enum adminSystemPropsPathNames {
@@ -86,13 +87,11 @@ export enum adminSystemPropsPathNames {
   UPDATE = '/ui/administration/system_properties/update',
 }
 
-export enum auditUserActivityPathNames {
-  GET = '/ui/audit/users_activity/get',
-}
-
-export enum auditApiClassPathNames {
-  GET = '/ui/audit/api_calls/get',
-  GET_DETAILS = '/ui/audit/api_calls/get_whole_description',
+export enum auditPathNames {
+  GET_SCHEDULED_JOBS = '/ui/audit/scheduler_jobs/get',
+  GET_USER_ACTIVITY = '/ui/audit/users_activity/get',
+  GET_API_CALLS = '/ui/audit/api_calls/get',
+  GET_API_CALLS_DETAILS = '/ui/audit/api_calls/get_whole_description',
 }
 
 export enum lenderAccountsPathNames {
