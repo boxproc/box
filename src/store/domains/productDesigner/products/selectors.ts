@@ -7,6 +7,7 @@ import {
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
@@ -38,17 +39,18 @@ export const selectProductItems = createSelector(
   })
 );
 
-export const selectDefaultCurrentProduct = (state: StoreState) =>
-  state.productDesigner.products.currentProduct;
-
 export const selectCurrentProduct = createSelector(
-  selectDefaultCurrentProduct,
+  selectDefaultProductItems,
   selectInstitutionsOptions,
   selectCurrencyCodesOptions,
-  (product, institutions, currencyCodes) => {
+  selectActiveItemId,
+  (products, institutions, currencyCodes, currentId) => {
+    const product = products.find(el => el.id === currentId);
+
     if (!product) {
       return null;
     }
+
     return {
       ...prepareGeneralProductValues(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
@@ -58,12 +60,12 @@ export const selectCurrentProduct = createSelector(
 );
 
 export const selectCurrentInstitutionId = createSelector(
-  selectDefaultCurrentProduct,
+  selectCurrentProduct,
   product => {
     if (!product) {
       return null;
     }
-    return product.institution_id;
+    return product.institutionId.value;
   }
 );
 

@@ -88,25 +88,6 @@ export const productItemsFilteredData: ProductsDataResp = {
   ],
 };
 
-export const generalProductData = {
-  response_status: {
-    status_code: 0,
-  },
-  product: {
-    currency_code: 'AFN',
-    default_statement_cycle_id: 1,
-    description: 'General Product',
-    history_retention_number_of_day: 90,
-    id: 1,
-    institution_id: 1,
-    locked_flag: 'N',
-    name: 'Product: revolving credit',
-    product_type: 'C',
-    scheme: 'V',
-    status: 'A',
-  },
-};
-
 export const productDetailsData: ProductDetailsResp = {
   response_status: {
     status_code: 0,

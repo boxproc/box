@@ -14,7 +14,7 @@ import './prism.css';
 
 export const Wrapper = styled.div`
   padding: 0;
-  height: 225px;
+  height: 220px;
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
   font-size: 13px;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   }
 
   textarea {
-    min-height: 223px;
+    min-height: 218px;
     background-color: ${({ theme }) => theme.colors.white} !important;
   }
 

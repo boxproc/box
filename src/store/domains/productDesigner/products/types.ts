@@ -26,10 +26,6 @@ export interface ProductsDataResp extends ResponseStatusType {
   products: Array<ProductItemResp>;
 }
 
-export interface ProductDataResp extends ResponseStatusType {
-  product: ProductItemResp;
-}
-
 export interface ProductItemPlain extends ProductItemInfoPlain {
   description: string;
   historyRetentionNumberOfDay: number;
@@ -274,7 +270,6 @@ export interface ServicesItemsPrepared {
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
-  currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
   currentProductRule: ProductRulesItemResp;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;

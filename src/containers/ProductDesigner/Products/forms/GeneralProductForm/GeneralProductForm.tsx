@@ -15,13 +15,12 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
-import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
+import { HandleDeleteProduct, HandleUpdateProduct } from 'store/domains';
 
 interface GeneralProductFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
-  getProduct: HandleGetProduct;
   currentProductName: string;
 }
 
@@ -33,18 +32,11 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   onCancel,
   deleteProduct,
   updateProduct,
-  getProduct,
   currentProductName,
   dirty,
   pristine,
   submitting,
 }) => {
-  React.useEffect(
-    () => {
-      getProduct();
-    },
-    [getProduct]
-  );
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProduct(data)),
     [handleSubmit]

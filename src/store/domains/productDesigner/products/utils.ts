@@ -78,6 +78,10 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
 
 export const prepareGeneralProductValues =
   (product: ProductItemResp): Partial<ProductItemGeneral> => {
+    if (!product) {
+      return null;
+    }
+
     return {
       id: product.id,
       name: product.name,
