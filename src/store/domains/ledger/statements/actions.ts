@@ -16,7 +16,7 @@ export type HandleFilterLedgerStatements = () => Thunk<void>;
 
 export const filterLedgerStatements: FilterLedgerStatements = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
-  payload: api.filterLedgerTransactions(Filter),
+  payload: api.filterLedgerStatements(Filter),
 });
 
 export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>

@@ -17,14 +17,14 @@ export const preparedFilterToSend = (params: Partial<LedgerAccountsFilter>) => {
     firstName,
     lastName,
     accountAlias,
-    productName,
+    product,
   } = params;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
     first_name: firstName ? firstName : null,
     last_name: lastName ? lastName : null,
-    product_name: (productName && productName.length) ? productName.map(name => name.label) : null,
+    product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
     id: id ? id : null,
   };

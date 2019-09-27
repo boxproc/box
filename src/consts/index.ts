@@ -32,6 +32,7 @@ export enum statusCodes {
   NO_SESSION = 3,
   USER_NOT_AUTH = 4,
   SESSION_TIMEOUT = 5,
+  INCORRECT_PASSWORD = 15,
 }
 
 export enum usernames {

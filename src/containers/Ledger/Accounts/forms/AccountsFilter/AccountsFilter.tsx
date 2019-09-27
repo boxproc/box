@@ -107,8 +107,8 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
       </Box>
       <ProductWrapper p="10px">
         <Field
-          id="productName"
-          name="productName"
+          id="product"
+          name="product"
           component={SelectField}
           label="Product"
           placeholder="Select Product"

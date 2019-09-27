@@ -111,7 +111,7 @@ export interface LedgerAccountsFilter extends LedgerAccountId {
   institutionId: SelectValues;
   firstName: string;
   lastName: string;
-  productName: Array<SelectValues>;
+  product: Array<SelectValues>;
   accountAlias: string;
   id: number;
 }
@@ -120,7 +120,7 @@ export interface LedgerAccountsFilterPrepared extends LedgerAccountId {
   institution_id: string | number;
   first_name: string;
   last_name: string;
-  product_name: Array<string | number>;
+  product: Array<string | number>;
   account_alias: string;
   id: number;
 }
