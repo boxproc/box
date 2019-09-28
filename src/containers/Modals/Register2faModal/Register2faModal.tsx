@@ -42,6 +42,11 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
     [setUserCurrentRegisterStep]
   );
 
+  const handleSetFirstStep = React.useCallback(
+    () => setUserCurrentRegisterStep(1),
+    [setUserCurrentRegisterStep]
+  );
+
   const isSecondStep = currentRegisterStep === 2;
 
   return (
@@ -54,7 +59,7 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
         ? (
           <CodeScreen
             onConfirm={userConfirmAuthKey}
-            onRegenerate={() => setUserCurrentRegisterStep(1)}
+            onRegenerate={handleSetFirstStep}
             code={code}
             dataUrl={dataUrl}
           />

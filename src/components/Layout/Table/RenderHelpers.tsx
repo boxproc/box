@@ -33,6 +33,13 @@ export const renderEditableTableCell = (updateAction: (data: object) => void) =>
       });
     };
 
+    const handleKeyUp = (e: React.KeyboardEvent) => {
+      if (e.key === codeKeys.ENTER) {
+        const el = e.target as HTMLElement;
+        el.blur();
+      }
+    };
+
     return (
       <TableCell
         style={editableCellStyles}
@@ -41,12 +48,7 @@ export const renderEditableTableCell = (updateAction: (data: object) => void) =>
         suppressContentEditableWarning={isEditable}
         onBlur={updateCellInfo}
         isNumber={true}
-        onKeyUp={(e: React.KeyboardEvent) => {
-          if (e.key === codeKeys.ENTER) {
-            const el = e.target as HTMLElement;
-            el.blur();
-          }
-        }}
+        onKeyUp={handleKeyUp}
       />
     );
   };
@@ -55,6 +57,11 @@ export const renderCheckBoxIconTableCell = (updateAction?: (data: object) => voi
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.value === true;
     const values = cellInfo.original;
+
+    const handleClick = () => updateAction && updateAction({
+      ...values,
+      lockedFlag: yesNoTypesConst.YES,
+    });
 
     return (
       <Box width="100%">
@@ -65,10 +72,7 @@ export const renderCheckBoxIconTableCell = (updateAction?: (data: object) => voi
               : (
                 <div
                   style={{ cursor: updateAction && 'pointer' }}
-                  onClick={() => updateAction && updateAction({
-                    ...values,
-                    lockedFlag: yesNoTypesConst.YES,
-                  })}
+                  onClick={handleClick}
                 >
                   <UncheckedBoxIcon />
                 </div>

@@ -20,7 +20,7 @@ interface TablePageProps extends RouteComponentProps, WithModalProps {
   data: Array<object>;
   columns: Array<object>;
   FilterForm?: ReactChild;
-  addNewModalName?: string;
+  newModalName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
   filterAction?: () => void;
   initialFilterValues?: object;
@@ -35,13 +35,22 @@ export const TablePage: React.FC<TablePageProps> = props => {
     filterAction,
     initialFilterValues,
     openModal,
-    addNewModalName,
+    newModalName,
     location,
     ...tablePageProps
   } = props;
 
+  const handleOpenModal = React.useCallback(
+    () => openModal({
+      name: newModalName,
+    }),
+    [openModal, newModalName]
+  );
+
   const [isFilter, setIsFilter] = React.useState(true);
   const storedFilter = cookiesUtil.get(window.location.pathname);
+
+  const handleSetIsFilter = () => setIsFilter(!isFilter);
 
   return (
     <React.Fragment>
@@ -58,9 +67,9 @@ export const TablePage: React.FC<TablePageProps> = props => {
       {FilterForm && (
         <Box mb="7px">
           <Button
-            text={(isFilter ? 'Hide' : 'Show') + ' Filter'}
+            text={isFilter ? 'Hide Filter' : 'Show Filter'}
             iconName={iconNamesConst.FILTER}
-            onClick={() => setIsFilter(!isFilter)}
+            onClick={handleSetIsFilter}
           />
         </Box>
       )}
@@ -75,14 +84,12 @@ export const TablePage: React.FC<TablePageProps> = props => {
           {FilterForm}
         </Filter>
       )}
-      {addNewModalName && (
+      {newModalName && (
         <Box mb="7px">
           <Button
             text="Add New"
             iconName={iconNamesConst.PLUS}
-            onClick={() => openModal({
-              name: addNewModalName,
-            })}
+            onClick={handleOpenModal}
           />
         </Box>
       )}

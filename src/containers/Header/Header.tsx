@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({
             alignItems="center"
           >
             <Box mr="15px">
-              <a href={basePath}>
+              <a href={basePath} aria-label="BOX UI">
                 <img src={logo} width={62} alt="" />
               </a>
             </Box>

@@ -121,6 +121,11 @@ export const withEditTable = <OriginProps extends {}>(
       ]
     );
 
+    const handleRemoveActiveRowIndex = React.useCallback(
+      () => setActiveTableRowIndex(null),
+      [setActiveTableRowIndex]
+    );
+
     return (
       <React.Fragment>
         <ContextMenuTrigger id="tableContextMenu">
@@ -135,7 +140,7 @@ export const withEditTable = <OriginProps extends {}>(
           onClick={onContextMenuClick}
           items={menuItems}
           isVisible={currentId}
-          onHide={() => setActiveTableRowIndex(null)}
+          onHide={handleRemoveActiveRowIndex}
         />
       </React.Fragment>
     );

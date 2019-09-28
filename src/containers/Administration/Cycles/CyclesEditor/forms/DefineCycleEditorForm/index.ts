@@ -21,7 +21,6 @@ const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR)
 
 const loadingSelector = createLoadingSelector([
   AdminCycleEditorActionTypes.ADD_ADMIN_CYCLE_EDITOR,
-  AdminCycleEditorActionTypes.DELETE_ADMIN_CYCLE_EDITOR,
   AdminCycleEditorActionTypes.UPDATE_ADMIN_CYCLE_EDITOR,
 ]);
 

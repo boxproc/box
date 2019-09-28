@@ -189,7 +189,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete cycle editor record?`}
-              onClick={() => deleteAdminCyclesEditor()}
+              onClick={deleteAdminCyclesEditor}
             />
           )}
         </div>

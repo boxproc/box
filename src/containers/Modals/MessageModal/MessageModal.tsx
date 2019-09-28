@@ -55,6 +55,11 @@ const MessageModal: React.FC<MessageModalProps> = ({
     [closeModal]
   );
 
+  const handleSetVisibleDetails = React.useCallback(
+    () => setVisibleDetail(!setVisibleDetail),
+    [setVisibleDetail]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -79,7 +84,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
           <Box mt="5px" ml="10px">
             <Button
               text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
-              onClick={() => setVisibleDetail(!isVisibleDetail)}
+              onClick={handleSetVisibleDetails}
             />
           </Box>
         )}

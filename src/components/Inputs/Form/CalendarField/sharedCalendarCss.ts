@@ -122,7 +122,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
   .rdtPicker td span.rdtOld {
-    color: #999999;
+    color: ${({ theme }) => theme.colors.gray};
   }
   .rdtPicker .dow {
     height: 33px;
@@ -156,7 +156,7 @@ export const sharedCalendarCss = css<DateTimeWrapperProps>`
   .rdtPicker th.rdtDisabled,
   .rdtPicker th.rdtDisabled:hover {
     background: none;
-    color: #999999;
+    color: ${({ theme }) => theme.colors.gray};
     cursor: not-allowed;
   }
   .rdtPicker thead tr:first-child th {

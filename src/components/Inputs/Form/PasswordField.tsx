@@ -53,6 +53,8 @@ interface RenderComponentProps {
 export const PasswordField: React.FC<InputCommonProps> = props => {
   const [masked, setMasked] = React.useState(true);
 
+  const handleSetMask = () => setMasked(!masked);
+
   const renderComponent = ({ type, icon, tip }: RenderComponentProps) => (
     <PasswordFieldWrapper>
       <PasswordFieldBase
@@ -62,7 +64,7 @@ export const PasswordField: React.FC<InputCommonProps> = props => {
       <span
         className="icon-wrapper"
         draggable={false}
-        onClick={() => setMasked(!masked)}
+        onClick={handleSetMask}
         title={tip}
       >
         {icon}

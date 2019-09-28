@@ -46,6 +46,11 @@ export const Cards: React.FC<AccountCardsProps> = ({
     [closeModal]
   );
 
+  const handleOrderLedgerAccountCard = React.useCallback(
+    () => orderLedgerAccountCard(ledgerAccountCurrentId),
+    [ledgerAccountCurrentId, orderLedgerAccountCard]
+  );
+
   const columns = [
     {
       maxWidth: 150,
@@ -96,7 +101,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       <Box mb="25px">
         <Button
           type="reset"
-          onClick={() => orderLedgerAccountCard(ledgerAccountCurrentId)}
+          onClick={handleOrderLedgerAccountCard}
           text="Order Card"
         />
       </Box>

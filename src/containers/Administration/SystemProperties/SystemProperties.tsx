@@ -85,7 +85,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIconTableCell(),
+      Cell: renderCheckBoxIconTableCell(updateAdminSysProps),
     },
   ];
   const contextMenuItems = React.useMemo(
@@ -115,7 +115,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}
-      addNewModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
+      newModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSysProps}
       FilterForm={

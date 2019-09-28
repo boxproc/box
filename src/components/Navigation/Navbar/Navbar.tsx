@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
     <NavListStyled
       ref={menuRef}
       className={menuClasses.MENU}
-      onMouseLeave={() => clearMenu()}
+      onMouseLeave={clearMenu}
     >
       {uiItems.map(item => !item.parentId && renderItem(item))}
     </NavListStyled>

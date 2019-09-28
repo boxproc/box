@@ -35,7 +35,8 @@
     "styled-components": "^4.3.1",
     "styled-icons": "^8.1.0",
     "superagent": "^5.0.6",
-    "typescript": "3.5.1"
+    "typescript": "3.5.1",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "react-scripts start",

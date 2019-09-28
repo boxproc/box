@@ -82,26 +82,28 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
               <Header />
             )}
           </div>
-          <PagesWrapper>
-            <Switch>
-              <Route
-                exact={true}
-                path={`${basePath}login`}
-                render={() => (
-                  !isLoggedIn ? <Login /> : <Redirect from="*" to={basePath} />
+          <main>
+            <PagesWrapper>
+              <Switch>
+                <Route
+                  exact={true}
+                  path={`${basePath}login`}
+                  render={() => (
+                    !isLoggedIn ? <Login /> : <Redirect from="*" to={basePath} />
+                  )}
+                />
+                {routes}
+                <PrivateRoute
+                  // exact={true}
+                  path={basePath}
+                  component={Home}
+                />
+                {!isLoggedIn && (
+                  <Redirect from="*" to={basePath} />
                 )}
-              />
-              {routes}
-              <PrivateRoute
-                // exact={true}
-                path={basePath}
-                component={Home}
-              />
-              {!isLoggedIn && (
-                <Redirect from="*" to={basePath} />
-              )}
-            </Switch>
-          </PagesWrapper>
+              </Switch>
+            </PagesWrapper>
+          </main>
         </div>
         <Footer />
       </RootWrapper>

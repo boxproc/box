@@ -32,6 +32,11 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     [closeModal]
   );
 
+  const handleActivateLedgerCard = React.useCallback(
+    () => activateLedgerCard(ledgerCardPanAlias),
+    [ledgerCardPanAlias, activateLedgerCard]
+  );
+
   const isStatusActive = (statusValue === 'Active');
 
   return (
@@ -46,7 +51,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           <Button
             disabled={isStatusActive}
             type="reset"
-            onClick={() => activateLedgerCard(ledgerCardPanAlias)}
+            onClick={handleActivateLedgerCard}
             text="Activate Card"
             isFocused={true}
           />

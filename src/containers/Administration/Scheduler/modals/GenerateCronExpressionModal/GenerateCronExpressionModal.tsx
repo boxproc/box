@@ -15,6 +15,11 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = 
   change,
   closeModal,
 }) => {
+  const handleCloseModal = React.useCallback(
+    () => closeModal(modalName),
+    [closeModal]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -25,7 +30,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = 
         formName={formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB}
         fieldName="cronExpression"
         onChange={change}
-        action={() => closeModal(modalName)}
+        action={handleCloseModal}
       />
     </Modal>
   );

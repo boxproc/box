@@ -29,7 +29,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       title="Users Group"
       data={adminUsersGroupItems}
       columns={tableColumns}
-      addNewModalName={modalNamesConst.ADD_ADMIN_USERS_GROUP}
+      newModalName={modalNamesConst.ADD_ADMIN_USERS_GROUP}
       editModalName={modalNamesConst.EDIT_ADMIN_USERS_GROUP}
     />
   );

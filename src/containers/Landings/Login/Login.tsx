@@ -65,7 +65,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   return (
     <FormWrapper>
       <Box my="15px" fontSize="0" className="highlight">
-        <a href={basePath}>
+        <a href={basePath} aria-label="BOX UI">
           <img src={logo} width={62} alt="" />
         </a>
       </Box>

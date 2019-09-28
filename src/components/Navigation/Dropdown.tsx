@@ -94,7 +94,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const toggleOpen = () => setIsOpened(!isOpened);
+  const toggleOpen = React.useCallback(
+    () => setIsOpened(!isOpened),
+    [isOpened]
+  );
 
   return (
     <DropdownWrapper
@@ -124,13 +127,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
             if (!child) {
               return null;
             }
+
+            const handleClick = () => {
+              setIsOpened(false);
+              setSelectedIndex(i);
+            };
+
             return (
               <div
                 className="dropdown-option"
-                onClick={() => {
-                  setIsOpened(false);
-                  setSelectedIndex(i);
-                }}
+                onClick={handleClick}
               >
                 {child}
               </div>
