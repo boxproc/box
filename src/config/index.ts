@@ -1,5 +1,5 @@
 const {
-  NODE_ENV: mode = 'production',
+  NODE_ENV: mode = 'development',
 } = process.env;
 
 const environment = {

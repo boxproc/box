@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WebFont from 'webfontloader';
 
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
@@ -13,16 +12,6 @@ import App from 'containers';
 import store, { history } from './store';
 
 import * as serviceWorker from './serviceWorker';
-
-WebFont.load({
-  google: {
-    families: [
-      'Roboto:300,400,500,700', 'sans-serif',
-      'Raleway:300,400,700', 'sans-serif',
-      'Roboto Mono', 'sans-serif',
-    ],
-  },
-});
 
 ReactDOM.render(
   (

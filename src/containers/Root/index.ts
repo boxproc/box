@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import Root from './Root';
 
@@ -15,6 +16,6 @@ const mapStateToProps = (state: StoreState) => ({
   visibleUiItems: selectVisibleUiItems(state),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps
-)(Root);
+)(Root));

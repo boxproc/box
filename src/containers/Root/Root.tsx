@@ -1,4 +1,5 @@
 import React from 'react';
+import { RouterProps } from 'react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -38,11 +39,11 @@ const PagesWrapper = styled(Container)`
   padding-top: 30px;
 `;
 
-interface RootProps extends ExternalSpinnerProps {
+interface RootProps extends ExternalSpinnerProps, RouterProps {
   visibleUiItems: Array<string>;
 }
 
-const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
+const Root: React.FC<RootProps> = ({ visibleUiItems, history }) => {
   const isLoggedIn = storageUtil.getLoginFlag();
   const sessionId = storageUtil.getSessionId();
 
@@ -50,11 +51,11 @@ const Root: React.FC<RootProps> = ({ visibleUiItems }) => {
     () => {
       if (isLoggedIn && !sessionId) {
         storageUtil.clear();
-        // history.push(basePath);
+        history.push(basePath);
         // urlUtil.openLocation(basePath);
       }
     },
-    [isLoggedIn, sessionId]
+    [isLoggedIn, sessionId, history]
   );
 
   const routes = React.useMemo(
