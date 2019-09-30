@@ -28,20 +28,15 @@ export const selectDefaultEndpoints = (state: StoreState) =>
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectInstitutions,
-  selectCyclesDescriptionsOptions,
-  (products, institutions, cyclesOptions) => products && products.asMutable().map(product => {
+  (products, institutions) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
     }
-
-    const defaultStatementCycle = cyclesOptions
-      .find(el => el.value === product.default_statement_cycle_id);
 
     return {
       ...prepareGeneralProductItem(product),
       institutionId: institutions.find(el => el.id === product.institution_id)
         && institutions.find(el => el.id === product.institution_id).institutionName,
-      defaultStatementCycle: defaultStatementCycle && defaultStatementCycle.label,
     };
   })
 );

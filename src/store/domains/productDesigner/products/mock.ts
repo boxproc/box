@@ -24,6 +24,7 @@ export const productItemsData: ProductsDataResp = {
       product_type: 'C',
       scheme: 'V',
       status: 'A',
+      statement_cycle_description: '',
     },
     {
       currency_code: 'AFN',
@@ -37,6 +38,7 @@ export const productItemsData: ProductsDataResp = {
       product_type: 'D',
       scheme: 'M',
       status: 'D',
+      statement_cycle_description: '',
     },
     {
       currency_code: 'AFN',
@@ -50,6 +52,7 @@ export const productItemsData: ProductsDataResp = {
       product_type: 'L',
       scheme: 'X',
       status: 'I',
+      statement_cycle_description: '',
     },
   ],
 };
@@ -71,6 +74,7 @@ export const productItemsFilteredData: ProductsDataResp = {
       product_type: 'C',
       scheme: 'V',
       status: 'A',
+      statement_cycle_description: '',
     },
     {
       currency_code: 'AFN',
@@ -84,6 +88,7 @@ export const productItemsFilteredData: ProductsDataResp = {
       product_type: 'L',
       scheme: 'X',
       status: 'I',
+      statement_cycle_description: '',
     },
   ],
 };

@@ -20,6 +20,7 @@ export interface ProductItemResp extends ProductItemPlainResp {
   scheme: string | number;
   currency_code: string | number;
   default_statement_cycle_id: string | number;
+  statement_cycle_description: string | number;
 }
 
 export interface ProductsDataResp extends ResponseStatusType {

@@ -69,6 +69,7 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
     scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
     historyRetentionNumberOfDay: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
+    defaultStatementCycle: item.statement_cycle_description,
     lockedFlag: item.locked_flag === yesNoTypesConst.YES ? true : false,
   };
 };
@@ -105,6 +106,7 @@ export const prepareGeneralProductValuesToSend =
       history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
       default_statement_cycle_id: product.defaultStatementCycle.value,
       locked_flag: product.lockedFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
+      statement_cycle_description: product.defaultStatementCycle.value,
     };
   };
 
