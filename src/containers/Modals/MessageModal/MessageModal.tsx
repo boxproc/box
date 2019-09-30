@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, Modal, Paragraph } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { basePath, modalNamesConst, statusCodes } from 'consts';
+import { basePath, modalNamesConst, modalTypesConst, statusCodes } from 'consts';
 
 import { PayloadMessageModal } from 'store/domains';
 import { storageUtil, urlUtil } from 'utils';
@@ -22,10 +22,11 @@ const MessageModal: React.FC<MessageModalProps> = ({
   closeModal,
   closeAllModals,
 }) => {
-  const { title, message, details, statusCode } = payloadMessageModal;
+  const { title, message, details, statusCode, type } = payloadMessageModal;
 
   const isSessionEnded = statusCode === statusCodes.NO_SESSION
-    || statusCode === statusCodes.SESSION_TIMEOUT;
+    || statusCode === statusCodes.SESSION_TIMEOUT
+    || type === modalTypesConst.SESSION_ENDED;
 
   const isReLogin = isSessionEnded
     || statusCode === statusCodes.USER_NOT_AUTH
@@ -64,7 +65,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isSmallWindow ? 400 : 500}
+      maxContainerWidth={isSmallWindow ? 350 : 500}
       zIndex="102"
       closeOnBackdrop={true}
     >

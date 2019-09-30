@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouterProps } from 'react-router';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -16,8 +15,9 @@ import {
   PrivateRoute,
   withSpinner,
 } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
-import { basePath } from 'consts';
+import { basePath, modalNamesConst, modalTypesConst } from 'consts';
 
 import Header from 'containers/Header';
 import { Home, Login } from 'containers/Landings';
@@ -39,23 +39,26 @@ const PagesWrapper = styled(Container)`
   padding-top: 30px;
 `;
 
-interface RootProps extends ExternalSpinnerProps, RouterProps {
+interface RootProps extends ExternalSpinnerProps, WithModalProps {
   visibleUiItems: Array<string>;
 }
 
-const Root: React.FC<RootProps> = ({ visibleUiItems, history }) => {
+const Root: React.FC<RootProps> = ({ visibleUiItems, openModal }) => {
   const isLoggedIn = storageUtil.getLoginFlag();
   const sessionId = storageUtil.getSessionId();
 
   React.useEffect(
     () => {
       if (isLoggedIn && !sessionId) {
-        storageUtil.clear();
-        history.push(basePath);
-        // urlUtil.openLocation(basePath);
+        openModal({
+          name: modalNamesConst.MESSAGE_MODAL,
+          payload: {
+            type: modalTypesConst.SESSION_ENDED,
+          },
+        });
       }
     },
-    [isLoggedIn, sessionId, history]
+    [isLoggedIn, sessionId, openModal]
   );
 
   const routes = React.useMemo(
@@ -115,4 +118,6 @@ const Root: React.FC<RootProps> = ({ visibleUiItems, history }) => {
 
 export default withSpinner({
   isFixed: true,
-})(Root);
+})(
+  withModal(Root)
+);

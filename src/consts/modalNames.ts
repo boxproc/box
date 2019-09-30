@@ -2,6 +2,7 @@ export enum modalTypesConst {
   EDIT_MODAL = 'editModal',
   MESSAGE = 'messageModal',
   CONFIRMATION_MODAL = 'confirmationModal',
+  SESSION_ENDED = 'sessionEnded',
 }
 
 export enum modalNamesConst {

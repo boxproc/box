@@ -24,7 +24,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
   ],
 };
 
-export const SuccessResponseStatus: ResponseStatusType = {
+export const successResponseStatus: ResponseStatusType = {
   response_status: {
     status_code: 0,
   },

@@ -2,22 +2,22 @@ import { lenderAccountsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-// import { LedgerAccountsFilteredItems, SuccessResponseStatus } from './mock';
+// import { ledgerAccountsFilteredItems, successResponseStatus } from './mock';
 
 import { LedgerAccountItem, LedgerAccountsFilterPrepared } from './types';
 
 // import { throttleUtil } from 'utils';
 
 export const addLedgerAccount = (data: Partial<LedgerAccountItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE, { data });
 
 export const updateLedgerAccount = (data: Partial<LedgerAccountItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
+  // throttleUtil.getDataAfter(successResponseStatus, 100);
   apiClient.post(lenderAccountsPathNames.UPDATE, { data });
 
 export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
-  // throttleUtil.getDataAfter(LedgerAccountsFilteredItems, 500);
+  // throttleUtil.getDataAfter(ledgerAccountsFilteredItems, 500);
   apiClient.post(lenderAccountsPathNames.GET, { data });
 
 export const getLedgerAccountCards = (accountId: number) =>

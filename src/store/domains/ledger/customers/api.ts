@@ -2,34 +2,26 @@ import { lenderCustomersPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-// import {
-//   LedgerCustomersFilteredItems,
-//   LedgerCustomersItems,
-//   SuccessResponseStatus,
-// } from './mock';
+// import { ledgerCustomersFilteredItems, successResponseStatus } from './mock';
 
 import { LedgerCustomerItem, LedgerCustomersFilterPrepared } from './types';
 
 // import { throttleUtil } from 'utils';
 
-export const getLedgerCustomers = () =>
-  // throttleUtil.getDataAfter(LedgerCustomersItems, 500);
-  apiClient.post(lenderCustomersPathNames.GET);
-
 export const deleteLedgerCustomer = (id: number) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderCustomersPathNames.DELETE, {
     data: { id },
   });
 
 export const addLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 500);
+  // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderCustomersPathNames.CREATE, { data });
 
 export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
-  // throttleUtil.getDataAfter(SuccessResponseStatus, 100);
+  // throttleUtil.getDataAfter(successResponseStatus, 100);
   apiClient.post(lenderCustomersPathNames.UPDATE, { data });
 
 export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterPrepared>) =>
-  // throttleUtil.getDataAfter(LedgerCustomersFilteredItems, 500);
+  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
   apiClient.post(lenderCustomersPathNames.GET, { data });

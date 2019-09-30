@@ -77,7 +77,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   React.useEffect(
     () => {
-      document.addEventListener('mousedown', handleClickOutside, {passive: true});
+      document.addEventListener('mousedown', handleClickOutside);
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }
   );

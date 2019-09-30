@@ -4,11 +4,7 @@ import { apiClient } from 'services';
 
 import { AuthCode, AuthConfirm, AuthPassword, AuthUserId, PreparedAuthRequest } from './types';
 
-// import {
-//   authResponseFullData,
-//   authSecretKeyData,
-//   successResponseStatus,
-// } from './mock';
+// import { authResponseFullData, authSecretKeyData, successResponseStatus } from './mock';
 
 // import { throttleUtil } from 'utils';
 

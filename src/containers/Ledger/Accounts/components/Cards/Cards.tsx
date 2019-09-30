@@ -74,7 +74,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
-      maxWidth: 150,
+      maxWidth: 120,
       Header: <TableHeader title="Expiry Date" />,
       accessor: 'expiryDate',
       Cell: (props: TCell<'expiryDate'>) => (

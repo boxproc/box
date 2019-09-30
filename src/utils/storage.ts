@@ -8,7 +8,6 @@ import { cookiesUtil } from 'utils';
 
 export const clear = () => {
   sessionStorage.clear();
-  // cookiesUtil.remove(cookiesNames.SESSION_ID); // for demo
   apiClient.clear();
 };
 
@@ -45,7 +44,7 @@ export const setUserData = (data: UserData) =>
 export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNames.USER));
 
 export const setSessionId = (id: string) => cookiesUtil.set(cookiesNames.SESSION_ID, id, {
-  expires: 360,
+  expires: 10000,
 });
 
 export const getSessionId = () => cookiesUtil.get(cookiesNames.SESSION_ID);

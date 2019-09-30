@@ -4,7 +4,7 @@ export * from './modalNames';
 export * from './storage';
 export * from './types';
 export * from './links';
-export * from './pathNames';
+export * from './apiPathNames';
 export * from './messages';
 export * from './iconNames';
 
