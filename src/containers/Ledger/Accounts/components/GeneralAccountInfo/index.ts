@@ -8,15 +8,19 @@ import { formNamesConst } from 'consts';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
+  AdminCycleEditorActionTypes,
   createLoadingSelector,
+  handleGetCyclesDescriptions,
   handleGetInstitutionProducts,
   ProductsActionTypes,
+  selectCyclesDescriptionsOptions,
   selectInstitutionProductsOptions,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
+  AdminCycleEditorActionTypes.GET_ADMIN_STATEMENTS_DESCRIPTIONS,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
@@ -24,15 +28,19 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   isLoadingInstitutionProducts: loadingSelector(state),
-  institutionValue: formSelector(
+  isLoadingCyclesDescriptions: loadingSelector(state),
+  cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
+  formValues: formSelector(
     state,
-    'institutionId'
+    'institutionId',
+    'productName'
   ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstitutionProducts: handleGetInstitutionProducts,
+    getCyclesDescriptions: handleGetCyclesDescriptions,
   },
   dispatch
 );

@@ -4,6 +4,7 @@ import { StoreState } from 'store/StoreState';
 
 import {
   selectCurrencyCodesOptions,
+  selectCyclesDescriptionsOptions,
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
@@ -27,14 +28,20 @@ export const selectDefaultEndpoints = (state: StoreState) =>
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectInstitutions,
-  (products, institutions) => products && products.asMutable().map(product => {
+  selectCyclesDescriptionsOptions,
+  (products, institutions, cyclesOptions) => products && products.asMutable().map(product => {
     if (!products) {
       return null;
     }
+
+    const defaultStatementCycle = cyclesOptions
+      .find(el => el.value === product.default_statement_cycle_id);
+
     return {
       ...prepareGeneralProductItem(product),
       institutionId: institutions.find(el => el.id === product.institution_id)
         && institutions.find(el => el.id === product.institution_id).institutionName,
+      defaultStatementCycle: defaultStatementCycle && defaultStatementCycle.label,
     };
   })
 );
@@ -44,7 +51,8 @@ export const selectCurrentProduct = createSelector(
   selectInstitutionsOptions,
   selectCurrencyCodesOptions,
   selectActiveItemId,
-  (products, institutions, currencyCodes, currentId) => {
+  selectCyclesDescriptionsOptions,
+  (products, institutions, currencyCodes, currentId, cyclesOptions) => {
     const product = products.find(el => el.id === currentId);
 
     if (!product) {
@@ -55,6 +63,8 @@ export const selectCurrentProduct = createSelector(
       ...prepareGeneralProductValues(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
+      defaultStatementCycle: cyclesOptions
+        .find(el => el.value === product.default_statement_cycle_id),
     };
   }
 );
@@ -74,7 +84,7 @@ export const selectProductCardInterfacesService = createSelector(
   data => data && data.map(el => {
     return {
       value: el.id ? el.id : 0,
-      label: el.name ,
+      label: el.name,
     };
   })
 );
@@ -83,9 +93,9 @@ export const selectProductCardEndpointsService = createSelector(
   selectDefaultEndpoints,
   data => data && data.map(el => {
     return {
-        value: el.id ? el.id : 0,
-        label: el.name,
-      };
+      value: el.id ? el.id : 0,
+      label: el.name,
+    };
   })
 );
 

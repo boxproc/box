@@ -30,15 +30,32 @@ export const selectCycleEditorValues = createSelector(
   selectActiveItemId,
   selectInstitutionsOptions,
   (cycleEditorItems, currentId, institutions) => {
-    const current = cycleEditorItems && cycleEditorItems.find(item => item.id === currentId);
+    if (!cycleEditorItems) {
+      return null;
+    }
+
+    const current = cycleEditorItems.find(item => item.id === currentId);
 
     return {
       ...prepareValuesToRender(current),
-      status: current && statusTypeCyclesOptions.find(el => el.value === current.status),
-      institutionId: current && institutions.find(el => el.value === current.institution_id),
-      cycleType: current && typeOfCyclesEditorOptions.find(el => el.value === current.cycle_type),
-      weeklyCycleFirstDay: current && weeklyCycleTypeOptions.find(
-        el => el.value === current.weekly_cycle_first_day),
+      status: statusTypeCyclesOptions.find(el => el.value === current.status),
+      institutionId: institutions.find(el => el.value === current.institution_id),
+      cycleType: typeOfCyclesEditorOptions.find(el => el.value === current.cycle_type),
+      weeklyCycleFirstDay: weeklyCycleTypeOptions
+        .find(el => el.value === current.weekly_cycle_first_day),
     };
   }
+);
+
+export const selectDefaultAdminCyclesDescriptions = (state: StoreState) =>
+  state.administration.cyclesEditor.cyclesDescriptions;
+
+export const selectCyclesDescriptionsOptions = createSelector(
+  selectDefaultAdminCyclesDescriptions,
+  items => items && items.asMutable().map(item => {
+    return {
+      value: item.id,
+      label: item.description,
+    };
+  })
 );

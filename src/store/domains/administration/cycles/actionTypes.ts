@@ -1,4 +1,4 @@
-import { AdminCyclesEditorDataResp } from './types';
+import { AdminCyclesDescriptions, AdminCyclesEditorDataResp } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -17,8 +17,16 @@ export enum ActionTypeKeys {
 
   FILTER_ADMIN_CYCLES_EDITOR = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR',
   FILTER_ADMIN_CYCLES_EDITOR_FULFILLED =
-    'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
+  'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_FULFILLED',
   FILTER_ADMIN_CYCLES_EDITOR_REJECTED = 'administration/cycles/FILTER_ADMIN_CYCLES_EDITOR_REJECTED',
+
+  GET_ADMIN_STATEMENTS_DESCRIPTIONS = 'administration/cycles/GET_ADMIN_STATEMENTS_DESCRIPTIONS',
+  GET_ADMIN_STATEMENTS_DESCRIPTIONS_FULFILLED =
+  'administration/cycles/GET_ADMIN_STATEMENTS_DESCRIPTIONS_FULFILLED',
+  GET_ADMIN_STATEMENTS_DESCRIPTIONS_REJECTED =
+  'administration/cycles/GET_ADMIN_STATEMENTS_DESCRIPTIONS_REJECTED',
+
+  RESET_ADMIN_STATEMENTS_DESCRIPTIONS = 'administration/cycles/RESET_ADMIN_STATEMENTS_DESCRIPTIONS',
 }
 
 export interface AddAdminCycleEditorAction {
@@ -82,8 +90,29 @@ export interface FilterCyclesRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR_REJECTED;
 }
 
+export interface GetCyclesDescriptionsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_ADMIN_STATEMENTS_DESCRIPTIONS;
+}
+
+export interface GetCyclesDescriptionsFulfilledAction {
+  readonly payload: AdminCyclesDescriptions;
+  readonly type: ActionTypeKeys.GET_ADMIN_STATEMENTS_DESCRIPTIONS_FULFILLED;
+}
+
+export interface GetCyclesDescriptionsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_ADMIN_STATEMENTS_DESCRIPTIONS_REJECTED;
+}
+
+export interface ResetCyclesDescriptionsAction {
+  readonly type: ActionTypeKeys.RESET_ADMIN_STATEMENTS_DESCRIPTIONS;
+}
+
 export type AdminCycleEditorActionTypes =
   | AddAdminCycleEditorFulfilledAction
   | DeleteAdminCycleEditorFulfilledAction
   | UpdateAdminCycleEditorFulfilledAction
-  | FilterCyclesFulfilledAction;
+  | FilterCyclesFulfilledAction
+  | GetCyclesDescriptionsFulfilledAction
+  | ResetCyclesDescriptionsAction;

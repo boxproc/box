@@ -38,7 +38,7 @@ export interface ProductItem extends ProductItemPlain {
   productType: string | number;
   scheme: string | number;
   currencyCode: string | number;
-  defaultStatementCycleId: string | number;
+  defaultStatementCycle: string | number;
 }
 
 export interface ProductItemGeneral extends ProductItemPlain {
@@ -47,7 +47,7 @@ export interface ProductItemGeneral extends ProductItemPlain {
   productType: SelectValues;
   scheme: SelectValues;
   currencyCode: SelectValues;
-  defaultStatementCycleId: SelectValues;
+  defaultStatementCycle: SelectValues;
 }
 
 export interface ProductFilter {

@@ -85,7 +85,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
-      maxWidth: 150,
+      maxWidth: 100,
       Header: <TableHeader title="Status" />,
       accessor: 'status',
       Cell: (props: TCell<'status'>) => (

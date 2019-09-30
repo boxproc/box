@@ -154,11 +154,10 @@ export const tableColumns = [
     maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Statement Cycle" />,
-    accessor: 'statementCycleId',
-    Cell: (props: TCell<'statementCycleId'>) => (
+    accessor: 'statementCycle',
+    Cell: (props: TCell<'statementCycle'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
       />
     ),
   },

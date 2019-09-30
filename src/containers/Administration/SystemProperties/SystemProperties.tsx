@@ -52,12 +52,14 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
+      maxWidth: 300,
       sortable: true,
       Header: <TableHeader title="Current Value" />,
       accessor: 'currentValue',
       Cell: renderEditableTableCell(updateAdminSysProps),
     },
     {
+      maxWidth: 300,
       sortable: true,
       Header: <TableHeader title="Previous Value" />,
       accessor: 'previousValue',
@@ -81,7 +83,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 80,
       sortable: true,
       Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',

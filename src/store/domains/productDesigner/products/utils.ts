@@ -5,7 +5,6 @@ import {
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
-  statementCyclesOptions,
   statusTypesConst,
   statusTypesOptions,
   yesNoTypesConst,
@@ -69,8 +68,6 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
     productType: productTypesOptions.find(el => el.value === item.product_type).label,
     scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
     historyRetentionNumberOfDay: item.history_retention_number_of_day,
-    defaultStatementCycleId:
-      statementCyclesOptions.find(el => el.value === item.default_statement_cycle_id).label,
     currencyCode: item.currency_code,
     lockedFlag: item.locked_flag === yesNoTypesConst.YES ? true : false,
   };
@@ -91,8 +88,6 @@ export const prepareGeneralProductValues =
       status: statusTypesOptions.find(el => el.value === product.status),
       scheme: schemeTypesOptions.find(el => el.value === product.scheme),
       lockedFlag: product.locked_flag === yesNoTypesConst.YES ? true : false,
-      defaultStatementCycleId:
-        statementCyclesOptions.find(el => el.value === product.default_statement_cycle_id),
     };
   };
 
@@ -108,7 +103,7 @@ export const prepareGeneralProductValuesToSend =
       product_type: product.productType.value,
       scheme: product.scheme.value,
       history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
-      default_statement_cycle_id: product.defaultStatementCycleId.value,
+      default_statement_cycle_id: product.defaultStatementCycle.value,
       locked_flag: product.lockedFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
     };
   };

@@ -1,7 +1,5 @@
 import { LedgerStatementItem, LedgerStatementsFilter } from './types';
 
-import { statementCyclesOptions } from 'consts';
-
 export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
   if (!values) {
     return null;
@@ -16,8 +14,7 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
     balanceClose: values.balance_close && values.balance_close.toFixed(2),
     minimumAmountDueRepayment:
       values.minimum_amount_due_repayment && values.minimum_amount_due_repayment.toFixed(2),
-    statementCycleId: statementCyclesOptions
-      .find(el => el.value === values.statement_cycle_id).label,
+    statementCycle: values.statement_cycle_description,
     cycleExecutionHistoryId: values.cycle_execution_history_id,
     accountAlias: values.account_alias,
     productName: values.product_name,

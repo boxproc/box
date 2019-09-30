@@ -8,6 +8,8 @@ import {
 
 import {
   AdminCyclesEditorEditableItem,
+  AdminCyclesEditorIds,
+  AdminCyclesEditorIdsPrepared,
   AdminCyclesEditorItem,
   CycleFilter,
   CycleFilterPrepared
@@ -103,3 +105,14 @@ export const prepareAdminCyclesEditorValuesToSend =
       return null;
     }
   };
+
+export const prepareIdsToGetDesc = (ids: AdminCyclesEditorIds): AdminCyclesEditorIdsPrepared => {
+  if (!ids) {
+    return null;
+  }
+
+  return {
+    institution_id: ids.institutionId,
+    product_id: ids.productId,
+  };
+};

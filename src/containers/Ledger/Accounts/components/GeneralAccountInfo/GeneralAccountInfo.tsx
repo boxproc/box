@@ -5,13 +5,9 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Hr, InputField, SelectField } from 'components';
 
-import { HandleGetInstitutionProducts } from 'store/domains';
+import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
 
-import {
-  dateFormat,
-  statementCyclesOptions,
-  statusTypesOptions,
-} from 'consts';
+import { dateFormat, statusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -21,28 +17,47 @@ export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   institutionProductsOptions: Array<SelectValues>;
   isLoadingInstitutionProducts: boolean;
+  isLoadingCyclesDescriptions: boolean;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: SelectValues;
+  getCyclesDescriptions: HandleGetCyclesDescriptions;
+  cyclesDescriptionsOptions: Array<SelectValues>;
+  formValues: {
+    institutionId: SelectValues,
+    productName: SelectValues;
+  };
   isEditMode: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
-  institutionValue,
+  formValues,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
+  isLoadingCyclesDescriptions,
   getInstitutionProducts,
+  getCyclesDescriptions,
+  cyclesDescriptionsOptions,
   isEditMode = false,
 }) => {
-  const currentInstitutionId = institutionValue && institutionValue.value;
+  const { institutionId, productName } = formValues;
 
   React.useEffect(
     () => {
-      if (currentInstitutionId) {
-        getInstitutionProducts(currentInstitutionId);
+      if (institutionId) {
+        getInstitutionProducts(institutionId.value);
       }
     },
-    [getInstitutionProducts, currentInstitutionId]
+    [getInstitutionProducts, institutionId]
+  );
+
+  React.useEffect(
+    () => {
+      getCyclesDescriptions({
+        institutionId: institutionId && institutionId.value,
+        productId: productName && productName.value,
+      });
+    },
+    [institutionId, productName, getCyclesDescriptions]
   );
 
   return (
@@ -220,13 +235,14 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="statementCycleId"
-            name="statementCycleId"
+            id="cycleStatement"
+            name="cycleStatement"
             component={SelectField}
             label="Statement Cycle"
             placeholder="Select Statement Cycle"
-            options={statementCyclesOptions}
+            options={cyclesDescriptionsOptions}
             isDisabled={isEditMode}
+            isLoading={isLoadingCyclesDescriptions}
             validate={[formErrorUtil.required]}
           />
         </Box>

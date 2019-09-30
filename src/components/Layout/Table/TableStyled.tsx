@@ -27,6 +27,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-thead .rt-resizable-header,
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
     border-right: 1px solid ${({ theme }) => theme.colors.lighterGray} !important;
+    min-width: 80px;
   }
 
   .ReactTable .rt-tbody::-webkit-scrollbar {
@@ -55,6 +56,7 @@ export const TableStyled = styled.div<TableStyledProps>`
     padding: 10px 12px;
     transition: none;
     transition-property: none;
+    min-width: 80px;
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {

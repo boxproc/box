@@ -7,12 +7,9 @@ import { CheckboxField, InputField, SelectField, TextField } from 'components';
 
 import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
-import {
-  productTypesOptions,
-  schemeTypesOptions,
-  statementCyclesOptions,
-  statusTypesOptions,
-} from 'consts';
+import { productTypesOptions, schemeTypesOptions, statusTypesOptions } from 'consts';
+
+import { HandleGetCyclesDescriptions } from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -21,6 +18,10 @@ import { formErrorUtil } from 'utils';
 interface ProductGeneralInfoProps {
   isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
+  getCyclesDescriptions: HandleGetCyclesDescriptions;
+  cycleStatementsOptions: Array<SelectValues>;
+  currentInstitutionId: number;
+  currentProductId: number;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
@@ -30,7 +31,21 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   isCurrencyCodesLoading,
   isEditMode = false,
   institutionsOptions,
+  getCyclesDescriptions,
+  cycleStatementsOptions,
+  currentInstitutionId,
+  currentProductId,
 }) => {
+  React.useEffect(
+    () => {
+      getCyclesDescriptions({
+        institutionId: currentInstitutionId,
+        productId: currentProductId,
+      });
+    },
+    [getCyclesDescriptions, currentInstitutionId, currentProductId]
+  );
+
   return (
     <Box mx="-10px">
       <Flex
@@ -119,12 +134,12 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
-            id="defaultStatementCycleId"
-            name="defaultStatementCycleId"
+            id="defaultStatementCycle"
+            name="defaultStatementCycle"
             component={SelectField}
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"
-            options={statementCyclesOptions}
+            options={cycleStatementsOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>

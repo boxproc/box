@@ -54,7 +54,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
@@ -65,7 +65,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Product Type" />,
     accessor: 'productType',
@@ -76,7 +76,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Scheme" />,
     accessor: 'scheme',
@@ -87,7 +87,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Currency code" />,
     accessor: 'currencyCode',
@@ -110,18 +110,18 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Default Statement Cycle" />,
-    accessor: 'defaultStatementCycleId',
-    Cell: (props: TCell<'defaultStatementCycleId'>) => (
+    accessor: 'defaultStatementCycle',
+    Cell: (props: TCell<'defaultStatementCycle'>) => (
       <TableCell
         value={props.value}
       />
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',

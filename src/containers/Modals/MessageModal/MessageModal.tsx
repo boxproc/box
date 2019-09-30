@@ -24,17 +24,17 @@ const MessageModal: React.FC<MessageModalProps> = ({
 }) => {
   const { title, message, details, statusCode, type } = payloadMessageModal;
 
-  const isSessionEnded = statusCode === statusCodes.NO_SESSION
-    || statusCode === statusCodes.SESSION_TIMEOUT
+  const isSessionEnded = statusCode === statusCodes.SESSION_TIMEOUT
     || type === modalTypesConst.SESSION_ENDED;
 
   const isReLogin = isSessionEnded
     || statusCode === statusCodes.USER_NOT_AUTH
-    || statusCode === statusCodes.NO_SESSION_ID;
+    || statusCode === statusCodes.NO_SESSION_ID
+    || statusCode === statusCodes.NO_SESSION;
 
   const isIncorrectPassword = statusCode === statusCodes.INCORRECT_PASSWORD;
 
-  const isSmallWindow = isIncorrectPassword || isSessionEnded;
+  const isSmallWindow = isIncorrectPassword || isReLogin;
 
   React.useEffect(
     () => {
@@ -46,7 +46,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         }
       };
     },
-    [statusCode, closeAllModals, isSessionEnded, isReLogin]
+    [statusCode, closeAllModals, isReLogin]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);
@@ -77,7 +77,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <Box mt="5px">
           <Button
             text={isReLogin ? 'Re Login' : 'Close'}
-            isFocused={isSessionEnded}
+            isFocused={isReLogin}
             onClick={handleClick}
           />
         </Box>

@@ -20,6 +20,7 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       product_name: 'Test product name',
       first_name: 'John',
       last_name: 'Jones',
+      statement_cycle_description: '',
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       product_name: 'Test product name',
       first_name: 'John',
       last_name: 'Jones',
+      statement_cycle_description: '',
     },
   ],
 };

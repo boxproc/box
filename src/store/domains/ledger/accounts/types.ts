@@ -30,6 +30,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   date_created: string;
   date_closed: string;
   statement_cycle_id: number | string;
+  statement_cycle_description: string;
   last_cycle_date: string;
   aux_counter_1: number;
   aux_counter_2: number;
@@ -96,7 +97,7 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
 export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepared {
   status: string | number;
   institutionId: string | number;
-  statementCycleId: string | number;
+  statementCycle: string | number;
   productName: string | number;
 }
 

@@ -3,9 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, SelectField } from 'components';
+import { Hr, InputField } from 'components';
 
-import { dateFormat, maskFormat, statementCyclesOptions } from 'consts';
+import { dateFormat, maskFormat } from 'consts';
 
 interface StatementInfoProps {
   isDisabled?: boolean;
@@ -85,13 +85,12 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="statementCycleId"
-            name="statementCycleId"
-            component={SelectField}
+            id="statementCycle"
+            name="statementCycle"
+            component={InputField}
             label="Statement Cycle"
-            placeholder="Select Statement Cycle"
-            options={statementCyclesOptions}
-            isDisabled={isDisabled}
+            placeholder="Enter Statement Cycle"
+            disabled={isDisabled}
           />
         </Box>
       </Flex>

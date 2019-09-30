@@ -9,17 +9,22 @@ import {
   AddAdminCycleEditorAction,
   DeleteAdminCycleEditorAction,
   FilterCyclesAction,
+  GetCyclesDescriptionsAction,
+  ResetCyclesDescriptionsAction,
   UpdateAdminCycleEditorAction,
 } from './actionTypes';
 import * as api from './api';
 import {
   AdminCyclesEditorEditableItem,
+  AdminCyclesEditorIds,
+  AdminCyclesEditorIdsPrepared,
   AdminCyclesEditorItem,
   CycleFilterPrepared
 } from './types';
 import {
   prepareAdminCyclesEditorValuesToSend,
-  prepareCyclesFiltersParamsToSend
+  prepareCyclesFiltersParamsToSend,
+  prepareIdsToGetDesc,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -41,6 +46,12 @@ export type HandleUpdateAdminCyclesEditor =
 export type FilterCycles = (params: CycleFilterPrepared) => FilterCyclesAction;
 export type HandleFilterCycles = () => Thunk<void>;
 
+export type GetCyclesDescriptions = (ids: AdminCyclesEditorIdsPrepared) =>
+  GetCyclesDescriptionsAction;
+export type HandleGetCyclesDescriptions  = (ids: AdminCyclesEditorIds) => Thunk<void>;
+
+export type ResetCyclesDescriptions = () => ResetCyclesDescriptionsAction;
+
 export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
   type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR,
   payload: api.addAdminCyclesEditor(values),
@@ -60,6 +71,15 @@ export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
 export const filterCycles: FilterCycles = params => ({
   type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR,
   payload: api.filterCycles(params),
+});
+
+export const getCyclesDescriptions: GetCyclesDescriptions = ids => ({
+  type: ActionTypeKeys.GET_ADMIN_STATEMENTS_DESCRIPTIONS,
+  payload: api.getCyclesDescriptions(ids),
+});
+
+export const resetCyclesDescriptions: ResetCyclesDescriptions = () => ({
+  type: ActionTypeKeys.RESET_ADMIN_STATEMENTS_DESCRIPTIONS,
 });
 
 export const handleFilterCycles: HandleFilterCycles = () =>
@@ -117,6 +137,22 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
         await dispatch(updateAdminCyclesEditor(preparedValues));
         await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
+      },
+      dispatch
+    );
+  };
+
+export const handleGetCyclesDescriptions: HandleGetCyclesDescriptions = ids =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const prepared = prepareIdsToGetDesc(ids);
+
+        if (ids.institutionId && ids.productId) {
+          await dispatch(getCyclesDescriptions(prepared));
+        } else {
+          dispatch(resetCyclesDescriptions());
+        }
       },
       dispatch
     );

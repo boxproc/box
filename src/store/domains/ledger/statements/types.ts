@@ -20,6 +20,7 @@ export interface LedgerStatementItem extends LedgerStatementId {
   product_name: string | number;
   first_name: string;
   last_name: string;
+  statement_cycle_description: string;
 }
 
 export interface LedgerStatementItems extends ResponseStatusType {
@@ -33,7 +34,7 @@ export interface LedgerStatementItemPrepared extends LedgerStatementId {
   balanceOpen: string | number;
   balanceClose: string | number;
   minimumAmountDueRepayment: string | number;
-  statementCycleId: number | string;
+  statementCycle: number | string;
   cycleExecutionHistoryId: number;
   accountAlias: string;
   institutionId: string | number;

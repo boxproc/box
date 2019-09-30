@@ -91,11 +91,22 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Statement Cycle" />,
+    accessor: 'statementCycle',
+    Cell: (props: TCell<'statementCycle'>) => (
       <TableCell
         value={props.value}
       />

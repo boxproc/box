@@ -18,6 +18,7 @@ export enum adminCyclesPathNames {
   CREATE = '/ui/administration/cycles/cycles_editor/create',
   DELETE = '/ui/administration/cycles/cycles_editor/delete',
   UPDATE = '/ui/administration/cycles/cycles_editor/update',
+  GET_DESCRIPTIONS = '/ui/administration/cycles/cycles_editor/get_description',
 }
 
 export enum adminInstitutionsPathNames {

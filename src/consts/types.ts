@@ -161,12 +161,6 @@ export const statementTypesOptions = [
   { value: 'F', label: 'Fixed number of days' },
 ];
 
-export const statementCyclesOptions = [
-  { value: 1, label: 'Statement Cycle' },
-  { value: 2, label: 'Statement Cycle 2' },
-  { value: 3, label: 'Statement Cycle 3' },
-];
-
 export enum loanTypesConst {
   BUY_NOW_PAY_LATER = 'B',
   INSTALLMENTS = 'I',

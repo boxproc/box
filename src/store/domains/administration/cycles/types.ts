@@ -49,6 +49,21 @@ export interface AdminCyclesEditorDataResp extends ResponseStatusType {
   cycle_editor: Array<AdminCyclesEditorItem>;
 }
 
+export interface AdminCyclesEditorIds {
+  institutionId: number | string;
+  productId: number | string;
+}
+
+export interface AdminCyclesEditorIdsPrepared {
+  institution_id: number | string;
+  product_id: number | string;
+}
+
+export interface AdminCyclesDescriptions extends ResponseStatusType {
+  statement_cycles_descriptions: Array<PlainInfo>;
+}
+
 export interface AdminCyclesEditorState {
   cycleEditor: ImmutableArray<AdminCyclesEditorItem>;
+  cyclesDescriptions: ImmutableArray<PlainInfo>;
 }
