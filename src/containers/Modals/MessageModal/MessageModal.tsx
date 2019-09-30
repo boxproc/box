@@ -56,8 +56,8 @@ const MessageModal: React.FC<MessageModalProps> = ({
   );
 
   const handleSetVisibleDetails = React.useCallback(
-    () => setVisibleDetail(!setVisibleDetail),
-    [setVisibleDetail]
+    () => setVisibleDetail(!isVisibleDetail),
+    [setVisibleDetail, isVisibleDetail]
   );
 
   return (
