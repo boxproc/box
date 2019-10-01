@@ -24,6 +24,9 @@ export interface MessageResponse {
   statusCode: number;
   message: string;
   body?: ResponseStatusType;
+  error?: {
+    message?: string;
+  };
 }
 
 export type ApiResponse = SuperagentApiResponse;

@@ -1,4 +1,4 @@
-import { statusTypesOptions, typeOptions } from 'consts';
+import { endpointsOptions, statusTypesOptions } from 'consts';
 import {
   AdminEndpointFilter,
   AdminEndpointItem,
@@ -43,7 +43,7 @@ export const preparedValuesToRender = (values: Partial<AdminEndpointItem>) => {
     id: values.id,
     name: values.name,
     status: statusTypesOptions.find(el => el.value === values.status).label,
-    type: typeOptions.find(el => el.value === values.type).label,
+    type: endpointsOptions.find(el => el.value === values.type).label,
     port: values.port,
     privateKeyLocation: values.private_key_location,
     connectionAttributes: values.connection_attributes,
@@ -57,6 +57,6 @@ export const preparedValuesDetailsToRender = (values: Partial<AdminEndpointItemP
   return {
     ...preparedValuesToRender(values),
     status: statusTypesOptions.find(el => el.value === values.status),
-    type: typeOptions.find(el => el.value === values.type),
+    type: endpointsOptions.find(el => el.value === values.type),
   };
 };

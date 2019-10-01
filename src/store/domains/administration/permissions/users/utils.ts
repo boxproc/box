@@ -1,4 +1,4 @@
-import { statusTypes2faOptions, statusTypesConst, yesNoTypesConst } from 'consts';
+import { statusTypes2faOptions, statusTypesCodes, yesNoTypesCodes } from 'consts';
 import {
   AdminUserItem,
   AdminUserItemDetails,
@@ -22,10 +22,10 @@ export const prepareAdminUserValuesToSend =
       password_entry_counter: values.passwordEntryCounter,
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
-      requires_2fa_flag: values.requires2faFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
+      requires_2fa_flag: values.requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
       change_profile_allowed_flag: values.changeProfileAllowedFlag
-        ? yesNoTypesConst.YES
-        : yesNoTypesConst.NO,
+        ? yesNoTypesCodes.YES
+        : yesNoTypesCodes.NO,
     };
   };
 
@@ -45,15 +45,15 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     status: status && status.label,
     passwordEntryCounter: values.password_entry_counter,
     datetimeOfLastLogin: values.datetime_of_last_login,
-    requires2faFlag: values.requires_2fa_flag === yesNoTypesConst.YES,
-    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypesConst.YES,
+    requires2faFlag: values.requires_2fa_flag === yesNoTypesCodes.YES,
+    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypesCodes.YES,
   };
 };
 
 export const prepareUsersFiltersParams =
   (params: Partial<UsersFilterPrepared>): Partial<UsersFilter> => {
     return {
-      statusActiveFlag: params.status === statusTypesConst.ACTIVE ? true : false,
+      statusActiveFlag: params.status === statusTypesCodes.ACTIVE ? true : false,
     };
   };
 
@@ -65,6 +65,6 @@ export const prepareUsersFiltersParamsToSend =
     const { statusActiveFlag } = params;
 
     return {
-      status: statusActiveFlag ? statusTypesConst.ACTIVE : null,
+      status: statusActiveFlag ? statusTypesCodes.ACTIVE : null,
     };
   };

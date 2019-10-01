@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextField } from 'components';
 
-import { statusTypesOptions, typeOptions } from 'consts';
+import { endpointsOptions, statusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -75,7 +75,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             name="type"
             component={SelectField}
             label="Type"
-            options={typeOptions}
+            options={endpointsOptions}
             placeholder="Select Type"
             validate={[formErrorUtil.required]}
           />

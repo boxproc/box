@@ -1,5 +1,10 @@
-import { statusTypesOptions } from 'consts';
-import { LedgerCardItem, LedgerCardItemPrepared, LedgerCardsFilterPrepared } from './types';
+import {
+  LedgerCardIds,
+  LedgerCardIdsPrepared,
+  LedgerCardItem,
+  LedgerCardItemPrepared,
+  LedgerCardsFilterPrepared,
+} from './types';
 
 export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
   LedgerCardItemPrepared => {
@@ -13,26 +18,34 @@ export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
     panAlias: values.pan_alias,
     panMasked: values.pan_masked,
     expiryDate: values.expiry_date,
-    status : values.status && statusTypesOptions.find(el => el.value === values.status).label,
+    status: values.card_status_id,
   };
 };
 
 export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>) => {
-    if (!params) {
-      return null;
-    }
+  if (!params) {
+    return null;
+  }
 
-    const {
-      id,
-      accountId,
-      panAlias,
-      customerId,
-    } = params;
+  const { id, accountId, panAlias, customerId } = params;
 
-    return {
-      id: id ? id : null,
-      account_id: accountId ? accountId : null,
-      customer_id: customerId ? customerId : null,
-      pan_alias: panAlias ? panAlias : null,
-    };
+  return {
+    id: id ? id : null,
+    account_id: accountId ? accountId : null,
+    customer_id: customerId ? customerId : null,
+    pan_alias: panAlias ? panAlias : null,
   };
+};
+
+export const prepareLedgerCartIds = (ids: LedgerCardIds): LedgerCardIdsPrepared => {
+  if (!ids) {
+    return null;
+  }
+
+  const { cardId, cardStatusId } = ids;
+
+  return {
+    card_id: cardId,
+    card_status_id: cardStatusId,
+  };
+};

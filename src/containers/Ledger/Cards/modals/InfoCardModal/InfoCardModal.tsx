@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal } from 'components';
+import { Button, Hr, Modal, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { cardStatusesCodes, modalNamesConst, modalTypesConst, messagesConst } from 'consts';
 
-import { CardForm } from 'containers/Ledger/Cards/forms';
+import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
 import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
 
@@ -15,7 +15,8 @@ interface InfoAccountModalProps extends WithModalProps {
   ledgerCurrentCard: Partial<LedgerCardItemPrepared>;
   activateLedgerCard: HandleActivateLedgerCard;
   ledgerCardPanAlias: string;
-  statusValue: string;
+  currentStatus: number;
+  isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.INFO_LEDGER_CARDS;
@@ -25,7 +26,8 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   ledgerCurrentCard,
   activateLedgerCard,
   ledgerCardPanAlias,
-  statusValue,
+  currentStatus,
+  isFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -37,14 +39,15 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     [ledgerCardPanAlias, activateLedgerCard]
   );
 
-  const isStatusActive = statusValue === 'Active';
+  const isStatusActive = currentStatus === cardStatusesCodes.ACTIVE;
 
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Card"
-      maxContainerWidth={500}
+      maxContainerWidth={450}
+      withCloseConfirmation={isFormDirty}
     >
       <Box mb="10px">
         <Button
@@ -56,10 +59,9 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
         />
       </Box>
       <Hr />
-      <CardForm
-        initialValues={ledgerCurrentCard}
-        onCancel={handleOnCancel}
-      />
+      <StatusForm />
+      <Hr />
+      <CardForm initialValues={ledgerCurrentCard} />
       <Hr />
       <Flex
         justifyContent="flex-end"
@@ -68,10 +70,17 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           rightPosition={true}
           onClick={handleOnCancel}
           text="Close"
+          withConfirmation={isFormDirty}
+          confirmationTitle={messagesConst.CLOSE_MODAL_WINDOW}
+          confirmationText={messagesConst.UNSAVED_CHANGES}
         />
       </Flex>
     </Modal>
   );
 };
 
-export default withModal(InfoAccountModal);
+export default withModal(withSpinner({
+  isFixed: true,
+})(
+  InfoAccountModal
+));

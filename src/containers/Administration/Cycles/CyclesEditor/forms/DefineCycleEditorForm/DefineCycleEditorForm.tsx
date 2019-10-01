@@ -15,7 +15,7 @@ import {
 } from 'components';
 
 import {
-  cycleTypesConst,
+  cycleTypesCodes,
   executableTypeOptions,
   formNamesConst,
   iconNamesConst,
@@ -71,15 +71,15 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   );
 
   const isMonthlyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypesConst.BI_MONTHLY
-      || cyclesEditorValue.value === cycleTypesConst.MONTHLY);
+    && (cyclesEditorValue.value === cycleTypesCodes.BI_MONTHLY
+      || cyclesEditorValue.value === cycleTypesCodes.MONTHLY);
 
   const isWeeklyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypesConst.BI_WEEKLY
-      || cyclesEditorValue.value === cycleTypesConst.WEEKLY);
+    && (cyclesEditorValue.value === cycleTypesCodes.BI_WEEKLY
+      || cyclesEditorValue.value === cycleTypesCodes.WEEKLY);
 
   const isFixedCycleNumberOfDays = cyclesEditorValue
-    && cyclesEditorValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS;
+    && cyclesEditorValue.value === cycleTypesCodes.FIXED_NUMBER_OF_DAYS;
 
   return (
     <form onSubmit={handleSubmitForm}>

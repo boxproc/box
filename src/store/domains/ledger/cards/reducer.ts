@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-// import { statusTypesConst } from 'consts';
+// import { statusTypesCodes } from 'consts';
 
 import { ActionTypeKeys, LedgerCardsActionTypes } from './actionTypes';
 import { LedgerCardsState } from './types';
@@ -19,7 +19,7 @@ const ledgerCardsReducer =
       case ActionTypeKeys.ACTIVATE_LEDGER_CARD_FULFILLED:
         // const updatedCard = {
         //   ...state.cards.find(card => card.id === state.currentCardId),
-        //   status: statusTypesConst.ACTIVE,
+        //   status: statusTypesCodes.ACTIVE,
         // };
 
         return state;

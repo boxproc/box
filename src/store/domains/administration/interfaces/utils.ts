@@ -1,4 +1,4 @@
-import { protocolTypesOptions, statusTypesOptions, typeOfInterfaces } from 'consts';
+import { protocolTypesOptions, statusTypesOptions, typeOfInterfacesCodes } from 'consts';
 import {
   AdminInterfaceFilter,
   AdminInterfaceItem,
@@ -44,7 +44,7 @@ export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
     id: values.id,
     name: values.name,
     status: statusTypesOptions.find(el => el.value === values.status).label,
-    type: typeOfInterfaces.find(el => el.value === values.type).label,
+    type: typeOfInterfacesCodes.find(el => el.value === values.type).label,
     url: values.url,
     protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type).label,
     privateKeyLocation: values.private_key_location,
@@ -61,6 +61,6 @@ export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItem
     ...preparedValuesToRender(values),
     status: statusTypesOptions.find(el => el.value === values.status),
     protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type),
-    type: typeOfInterfaces.find(el => el.value === values.type),
+    type: typeOfInterfacesCodes.find(el => el.value === values.type),
   };
 };

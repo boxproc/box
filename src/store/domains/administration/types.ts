@@ -1,4 +1,5 @@
 import { AdminCyclesEditorState } from './cycles';
+import { DictionaryCardStatusesState } from './dictionaries/cardStatuses';
 import { DictionaryCountriesState } from './dictionaries/countries';
 import { DictionaryCurrenciesState } from './dictionaries/currencies';
 import { DictionaryEventDataElemsState } from './dictionaries/eventDataElems';
@@ -17,6 +18,7 @@ export interface AdministrationState {
   cyclesEditor: AdminCyclesEditorState;
   users: AdminUserState;
   userGroups: AdminUsersGroupState;
+  cardStatuses: DictionaryCardStatusesState;
   countries: DictionaryCountriesState;
   currencies: DictionaryCurrenciesState;
   events: DictionaryEventsState;

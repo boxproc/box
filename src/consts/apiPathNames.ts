@@ -48,6 +48,7 @@ export enum dictionariesPathNames {
   GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
   GET_EVENTS = '/ui/administration/dictionaries/events/get',
   GET_EVENT_DATA_ELEMS = '/ui/administration/dictionaries/event_data_elements/get',
+  GET_CARD_STATUSES = '',
 }
 
 export enum adminUserPathNames {
@@ -107,6 +108,7 @@ export enum lenderAccountsPathNames {
 export enum lenderCardsPathNames {
   GET = '/ui/ledger/cards/get',
   ACTIVATE_CARD = '/ui/ledger/cards/activate_card',
+  CHANGE_STATUS = 'ui/ledger/cards/change_status',
 }
 
 export enum lenderCustomersPathNames {

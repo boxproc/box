@@ -1,4 +1,4 @@
-import { yesNoTypesConst } from 'consts';
+import { yesNoTypesCodes } from 'consts';
 
 import {
   AdminSysPropFilter,
@@ -14,7 +14,7 @@ export const prepareEditableAdminSysPropItemValues =
     return {
       property_name: id,
       current_value: currentValue,
-      locked_flag: lockedFlag ? yesNoTypesConst.YES : yesNoTypesConst.NO,
+      locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
     };
   };
 

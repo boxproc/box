@@ -2,7 +2,7 @@ import {
   executableTypeOptions,
   lastExecutionResultOptions,
   schedulerStatusTypesOptions,
-  statusTypesConst,
+  statusTypesCodes,
 } from 'consts';
 
 import {
@@ -86,6 +86,6 @@ export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
 
   return {
     name: name ? name : null,
-    status: activeStatusFlag ? statusTypesConst.ACTIVE : null,
+    status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
   };
 };

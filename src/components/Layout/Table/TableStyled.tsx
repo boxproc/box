@@ -30,26 +30,6 @@ export const TableStyled = styled.div<TableStyledProps>`
     min-width: 80px;
   }
 
-  .ReactTable .rt-tbody::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  .ReactTable .rt-tbody::-webkit-scrollbar-thumb {
-    background-color: rgba(38, 46, 62, 0.2);
-    border-radius: 5px;
-    outline: 1px solid ${({ theme }) => theme.colors.normalAccent};
-  }
-
-  .ReactTable .rt-tbody::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.gray};
-    border-radius: 2px;
-  }
-
-  .ReactTable .rt-tbody::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
   .ReactTable .rt-td {
     display: flex;
     align-items: center;

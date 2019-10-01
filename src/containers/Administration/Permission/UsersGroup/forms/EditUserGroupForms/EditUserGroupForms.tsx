@@ -23,9 +23,7 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
   return (
     <Tabs>
       <TabsPanel title="General">
-        <EditGeneralInfoUserGroupFrom
-          onCancel={onCancel}
-        />
+        <EditGeneralInfoUserGroupFrom onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="User Group Members">
         <Box mb="10px">

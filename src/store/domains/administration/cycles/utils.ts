@@ -1,7 +1,7 @@
 import {
-  cycleTypesConst,
+  cycleTypesCodes,
   statusTypeCyclesOptions,
-  statusTypesConst,
+  statusTypesCodes,
   typeOfCyclesEditorOptions,
   weeklyCycleTypeOptions,
 } from 'consts';
@@ -45,7 +45,7 @@ export const prepareCyclesFiltersParamsToSend =
     const { activeStatusFlag, institutionId } = params;
 
     return {
-      status: activeStatusFlag ? statusTypesConst.ACTIVE : null,
+      status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
       institution_id: institutionId ? institutionId.value : null,
     };
   };
@@ -57,15 +57,15 @@ export const prepareAdminCyclesEditorValuesToSend =
     }
 
     const isMonthlyCycleFirstDay = values.cycleType
-      && (values.cycleType.value === cycleTypesConst.BI_MONTHLY
-        || values.cycleType.value === cycleTypesConst.MONTHLY);
+      && (values.cycleType.value === cycleTypesCodes.BI_MONTHLY
+        || values.cycleType.value === cycleTypesCodes.MONTHLY);
 
     const isWeeklyCycleFirstDay = values.cycleType
-      && (values.cycleType.value === cycleTypesConst.BI_WEEKLY
-        || values.cycleType.value === cycleTypesConst.WEEKLY);
+      && (values.cycleType.value === cycleTypesCodes.BI_WEEKLY
+        || values.cycleType.value === cycleTypesCodes.WEEKLY);
 
     const isFixedCycleNumberOfDays = values.cycleType
-      && values.cycleType.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS;
+      && values.cycleType.value === cycleTypesCodes.FIXED_NUMBER_OF_DAYS;
 
     const prepareGeneral = () => {
       return {

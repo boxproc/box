@@ -23,13 +23,11 @@ export const selectDefaultAdminUiItems = (state: StoreState) =>
 
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
-  selectAdminInstitutionsOptions,
-  (items, institutions) => items && items.map(item => {
-    const currentInstitution =  institutions.find(el => el.value === item.institution_id);
+  items => items && items.map(item => {
 
     return {
       ...item,
-      institutionId: item && currentInstitution && currentInstitution.label,
+      institutionId: item.institution_id,
     };
   })
 );

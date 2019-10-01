@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { yesNoTypesConst } from 'consts';
+import { yesNoTypesCodes } from 'consts';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
@@ -16,7 +16,7 @@ export const selectAdminSysPropsItems = createSelector(
       currentValue: item.current_value,
       previousValue: item.previous_value,
       lastDatetime: item.last_datetime,
-      lockedFlag: item.locked_flag === yesNoTypesConst.YES,
+      lockedFlag: item.locked_flag === yesNoTypesCodes.YES,
     };
   })
 );

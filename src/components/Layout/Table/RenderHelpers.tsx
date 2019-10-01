@@ -6,7 +6,7 @@ import { CellInfo } from 'react-table';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
 
-import { codeKeys, yesNoTypesConst } from 'consts';
+import { codeKeys, yesNoTypesCodes } from 'consts';
 
 import { TableCell } from './Table';
 
@@ -60,7 +60,7 @@ export const renderCheckBoxIconTableCell = (updateAction?: (data: object) => voi
 
     const handleClick = () => updateAction && updateAction({
       ...values,
-      lockedFlag: yesNoTypesConst.YES,
+      lockedFlag: yesNoTypesCodes.YES,
     });
 
     return (

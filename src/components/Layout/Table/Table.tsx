@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { TableNoData } from 'components';
 
-import { schedulerStatusTypesOptions, statusTypesConst } from 'consts';
+import { schedulerStatusTypesOptions, statusTypesCodes } from 'consts';
 
 import { TableStyled } from './TableStyled';
 
@@ -100,7 +100,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   onCenter = false,
 }) => {
   const isPendingStatus = value === schedulerStatusTypesOptions
-    .find(status => status.value === statusTypesConst.EXECUTION_PENDING).label;
+    .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label;
 
   return (
     <TableItemWrapper

@@ -4,7 +4,7 @@ export const scrollbarCss = css`
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
-    background-color: #e6e6e6;
+    background-color: transparent;
     border: 1px solid white;
     border-radius: 8px;
   }
@@ -15,7 +15,7 @@ export const scrollbarCss = css`
   }
 
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #e6e6e6;
+    box-shadow: none;
     border-radius: 8px;
   }
 `;

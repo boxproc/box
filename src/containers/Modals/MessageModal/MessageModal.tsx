@@ -32,10 +32,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
     || statusCode === statusCodes.NO_SESSION_ID
     || statusCode === statusCodes.NO_SESSION;
 
-  const isIncorrectPassword = statusCode === statusCodes.INCORRECT_PASSWORD;
-
-  const isSmallWindow = isIncorrectPassword || isReLogin;
-
   React.useEffect(
     () => {
       return () => {
@@ -65,7 +61,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isSmallWindow ? 350 : 500}
+      maxContainerWidth={details ? 500 : 350}
       zIndex="102"
       closeOnBackdrop={true}
     >

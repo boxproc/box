@@ -5,13 +5,14 @@ import { formNamesConst } from 'consts';
 import {
   ActionTypeKeys,
   ActivateLedgerCardAction,
+  ChangeLedgerCardStatusAction,
   FilterLedgerCardsAction,
 } from './actionTypes';
 
 import * as api from './api';
 
-import { LedgerCardsFilterPrepared } from './types';
-import { preparedFilterToSend } from './utils';
+import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
+import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
 import { Thunk } from 'types';
 
@@ -22,18 +23,24 @@ export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
 export type HandleFilterLedgerCards = () => Thunk<void>;
 
 export type ActivateLedgerCard = (panAlias: string) => ActivateLedgerCardAction;
-export type HandleActivateLedgerCard = (panAlias: string) =>
-  Thunk<void>;
+export type HandleActivateLedgerCard = (panAlias: string) => Thunk<void>;
+
+export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
+export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
 
 export const filterLedgerCards: FilterLedgerCards = Filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CARDS,
   payload: api.filterLedgerCards(Filter),
-  meta: Filter,
 });
 
 export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
   type: ActionTypeKeys.ACTIVATE_LEDGER_CARD,
   payload: api.activateLedgerCard(panAlias),
+});
+
+export const changeLedgerCardStatus: ChangeLedgerCardStatus = ids => ({
+  type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS,
+  payload: api.changeLedgerCardStatus(ids),
 });
 
 export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
@@ -57,6 +64,19 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = panAlias =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(activateLedgerCard(panAlias));
+      },
+      dispatch
+    );
+  };
+
+export const handleChangeLedgerCardStatus: HandleChangeLedgerCardStatus = ids =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const prepared = prepareLedgerCartIds(ids);
+
+        await dispatch(changeLedgerCardStatus(prepared));
+        await dispatch(handleFilterLedgerCards());
       },
       dispatch
     );

@@ -1,4 +1,4 @@
-export enum permissionTypesConst {
+export enum permissionTypesCodes {
   READ_WRITE = 'W',
   READ_ONLY = 'R',
 }
@@ -8,19 +8,19 @@ export const permissionTypesOptions = [
   { value: 'W', label: 'Read and Write' },
 ];
 
-export enum uiItemTypesConst {
+export enum uiItemTypesCodes {
   SCREEN = 'S',
   MENU_PARENT = 'M',
   MENU_CHILD = 'm',
   FORM = 'F',
 }
 
-export enum yesNoTypesConst {
+export enum yesNoTypesCodes {
   YES = 'Y',
   NO = 'N',
 }
 
-export enum statusTypesConst {
+export enum statusTypesCodes {
   ACTIVE = 'A',
   INACTIVE = 'I',
   DELETED = 'D',
@@ -48,19 +48,30 @@ export const schedulerStatusTypesOptions = [
   { value: 'E', label: 'Execution pending' },
 ];
 
+export enum cardStatusesCodes {
+  UNSPECIFIED = 0,
+  ACTIVE = 1,
+  INACTIVE = 2,
+  CARD_LOST = 3,
+  CARD_STOLEN = 4,
+  PIN_TRIES_EXCEEDED = 5,
+  SUSPECTED_FRAUND = 6,
+  CARD_REPLACED = 7,
+}
+
 export const lastExecutionResultOptions = [
   { value: 'S', label: 'Success' },
   { value: 'F', label: 'Fail' },
   { value: 'U', label: 'Unknown' },
 ];
 
-export const typeOptions = [
+export const endpointsOptions = [
   { value: 'B', label: 'BOX API' },
   { value: 'T', label: 'Tribe' },
   { value: 'U', label: 'Tutuka' },
 ];
 
-export const typeOfInterfaces = [
+export const typeOfInterfacesCodes = [
   { value: 'T', label: 'Tribe card processing' },
   { value: 'U', label: 'Tutuka card processing' },
 ];
@@ -91,7 +102,7 @@ export const weeklyCycleTypeOptions = [
   { value: 7, label: 'Sunday' },
 ];
 
-export enum cycleTypesConst {
+export enum cycleTypesCodes {
   MONTHLY = 'M',
   BI_MONTHLY = 'N',
   WEEKLY = 'W',
@@ -107,7 +118,7 @@ export const typeOfCyclesEditorOptions = [
   { value: 'F', label: 'Fixed number of days' },
 ];
 
-export enum productTypesConst {
+export enum productTypesCodes {
   LOAN = 'L',
   PREPAID = 'P',
   DEBIT = 'D',
@@ -129,14 +140,6 @@ export const executableTypeOptions = [
   { value: 'J', label: 'Java' },
 ];
 
-export enum schemeTypesConst {
-  MASTER_CARD = 'M',
-  UPI = 'U',
-  AMEX = 'A',
-  VISA = 'V',
-  UNSPECIFIED = 'X',
-}
-
 export const schemeTypesOptions = [
   { value: 'M', label: 'MasterCard' },
   { value: 'U', label: 'UPI' },
@@ -145,37 +148,10 @@ export const schemeTypesOptions = [
   { value: 'X', label: 'Unspecified' },
 ];
 
-export enum statementTypesConst {
-  MONTHLY = 'M',
-  BI_MONTHLY = 'N',
-  WEEKLY = 'W',
-  BI_WEEKLY = 'V',
-  FIXED_NUMBER_OF_DAYS = 'F',
-}
-
-export const statementTypesOptions = [
-  { value: 'M', label: 'Monthly' },
-  { value: 'N', label: 'Bi-monthly' },
-  { value: 'W', label: 'Weekly' },
-  { value: 'V', label: 'Bi-weekly' },
-  { value: 'F', label: 'Fixed number of days' },
-];
-
-export enum loanTypesConst {
-  BUY_NOW_PAY_LATER = 'B',
-  INSTALLMENTS = 'I',
-}
-
 export const loanTypesOptions = [
   { value: 'B', label: 'Buy now, pay later' },
   { value: 'I', label: 'Installments' },
 ];
-
-export enum savingsTypesConst {
-  FIXED_TERM = 'F',
-  UNLIMITED_TERM = 'U',
-  REWARD = 'R',
-}
 
 export const savingsTypesOptions = [
   { value: 'F', label: 'Fixed term' },
@@ -183,25 +159,11 @@ export const savingsTypesOptions = [
   { value: 'R', label: 'Reward' },
 ];
 
-export enum dataTypesConst {
-  INTEGER = 'I',
-  STRING = 'S',
-  FLOAT = 'F',
-}
-
 export const dataTypesOptions = [
   { value: 'I', label: 'Integer' },
   { value: 'S', label: 'String' },
   { value: 'F', label: 'Float' },
 ];
-
-export enum actionTypesConst {
-  API_CALL = 'A',
-  APPROVE_DENY = 'R',
-  UPDATE_AUX_COUNTER_1 = 'X',
-  UPDATE_AUX_COUNTER_2 = 'Y',
-  UPDATE_AUX_COUNTER_3 = 'Z',
-}
 
 export const actionTypesOptions = [
   { value: 'A', label: 'API Call' },
@@ -209,16 +171,4 @@ export const actionTypesOptions = [
   { value: 'X', label: 'Update aux counter 1' },
   { value: 'Y', label: 'Update aux counter 2' },
   { value: 'Z', label: 'Update aux counter 3' },
-];
-
-export enum debitCreditIndicatorConst {
-  DEBIT_TRANSACTION = 'D',
-  CREDIT_TRANSACTION = 'C',
-  NOT_APPLICABLE = 'U',
-}
-
-export const debitCreditIndicatorOptions = [
-  { value: 'D', label: 'Debit transaction' },
-  { value: 'C', label: 'Credit transaction' },
-  { value: 'U', label: 'Not applicable' },
 ];

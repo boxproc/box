@@ -300,7 +300,7 @@ export const CronGeneratorStyled = styled.div`
   .cron-builder .Select-menu::-webkit-scrollbar {
     width: 4px;
     height: 4px;
-    background-color: ${({ theme }) => theme.colors.lightGray};
+    background-color: transparent;
     border: 1px solid white;
     border-radius: 8px;
   }
@@ -311,8 +311,7 @@ export const CronGeneratorStyled = styled.div`
   }
 
   .cron-builder .Select-menu::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.lightGray};
-    -webkit-box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.lightGray};
+    box-shadow: none;
     border-radius: 8px;
   }
 

@@ -2,7 +2,7 @@ export * from './uiItems';
 export * from './formNames';
 export * from './modalNames';
 export * from './storage';
-export * from './types';
+export * from './codes';
 export * from './links';
 export * from './apiPathNames';
 export * from './messages';

@@ -1,4 +1,4 @@
-import { statusTypesConst, yesNoTypesConst } from 'consts';
+import { statusTypesCodes, yesNoTypesCodes } from 'consts';
 
 import { AuthRequest, AuthResponse, PreparedAuthRequest, UserData } from './types';
 
@@ -31,11 +31,11 @@ export const prepareUserDataToRender = (data: AuthResponse): UserData => {
 
 export const setUserDataToStorage = (data: UserData, isChangingProfile?: boolean) => {
   if (data) {
-    const is2faLogin = data.status === statusTypesConst.ACTIVE
-      && data.requires2faFlag === yesNoTypesConst.YES
+    const is2faLogin = data.status === statusTypesCodes.ACTIVE
+      && data.requires2faFlag === yesNoTypesCodes.YES
       && !isChangingProfile;
 
-    const isRegistrationPending = data.status === statusTypesConst.REGISTRATION_PENDING;
+    const isRegistrationPending = data.status === statusTypesCodes.REGISTRATION_PENDING;
 
     storageUtil.setUserData(data);
 

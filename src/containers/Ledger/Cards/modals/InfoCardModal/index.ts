@@ -1,26 +1,33 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector } from 'redux-form';
+import { isDirty } from 'redux-form';
+
+import { formNamesConst } from 'consts';
 
 import InfoCardModal from './InfoCardModal';
 
-import { formNamesConst } from 'consts';
 import {
+  createLoadingSelector,
   handleActivateLedgerCard,
+  LedgerCardsActionTypes,
+  selectCurrentCardStatus,
   selectLedgerCardPanAlias,
   selectLedgerCardValues,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.LEDGER_CARDS);
+const loadingSelector = createLoadingSelector([
+  LedgerCardsActionTypes.ACTIVATE_LEDGER_CARD,
+]);
+
+const dirty = isDirty(formNamesConst.LEDGER_CHANGE_CARD_STATUS);
 
 const mapStateToProps = (state: StoreState) => ({
-    ledgerCurrentCard: selectLedgerCardValues(state),
-    ledgerCardPanAlias : selectLedgerCardPanAlias(state),
-    statusValue: formSelector(
-      state,
-      'status'
-    ),
+  isFormDirty: dirty(state),
+  isLoading: loadingSelector(state),
+  ledgerCurrentCard: selectLedgerCardValues(state),
+  ledgerCardPanAlias: selectLedgerCardPanAlias(state),
+  currentStatus: selectCurrentCardStatus(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

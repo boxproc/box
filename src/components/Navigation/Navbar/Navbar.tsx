@@ -8,7 +8,7 @@ import styled from 'theme';
 import { ChevronRightIcon } from 'components';
 import { NavListStyled } from './NavListStyled';
 
-import { basePath, uiItemTypesConst } from 'consts';
+import { basePath, uiItemTypesCodes } from 'consts';
 
 import { clearMenu, goToPage, menuClasses, toggleOpenMenu } from './utils';
 
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
 
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type } = item;
-    const hasChildren = type === uiItemTypesConst.MENU_PARENT;
+    const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
     const pushToHistory = () => history.push(`${basePath}${id}`);
 

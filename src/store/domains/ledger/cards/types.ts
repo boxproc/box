@@ -7,7 +7,7 @@ export interface LedgerCardItem {
   pan_masked: string;
   expiry_date: string;
   account_id: number;
-  status: string;
+  card_status_id: number;
 }
 
 export interface LedgerCardItems extends ResponseStatusType {
@@ -20,7 +20,7 @@ export interface LedgerCardItemPrepared {
   panMasked: string;
   expiryDate: string;
   accountId: number;
-  status: string;
+  status: number;
 }
 
 export interface LedgerCardsFilter {
@@ -35,6 +35,16 @@ export interface LedgerCardsFilterPrepared {
   id: number;
   accountId: number;
   customerId: number;
+}
+
+export interface LedgerCardIds {
+  cardId: number;
+  cardStatusId: number | string;
+}
+
+export interface LedgerCardIdsPrepared {
+  card_id: number;
+  card_status_id: number | string;
 }
 
 export interface LedgerCardsState {

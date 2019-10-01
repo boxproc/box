@@ -1,4 +1,4 @@
-import { cookiesNames, sessionStorageNames, yesNoTypesConst } from 'consts';
+import { cookiesNames, sessionStorageNames, yesNoTypesCodes } from 'consts';
 
 import { UserData } from 'store/domains';
 
@@ -12,24 +12,24 @@ export const clear = () => {
 };
 
 export const setRegistrationPendingFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.AUTH_REGISTRATION_PENDING, yesNoTypesConst.YES);
+  sessionStorage.setItem(sessionStorageNames.AUTH_REGISTRATION_PENDING, yesNoTypesCodes.YES);
 
 export const getRegistrationPendingFlag = () =>
   sessionStorage.getItem(sessionStorageNames.AUTH_REGISTRATION_PENDING);
 
 export const setAuthPendingFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.AUTH_PENDING, yesNoTypesConst.YES);
+  sessionStorage.setItem(sessionStorageNames.AUTH_PENDING, yesNoTypesCodes.YES);
 
 export const setLoginStatus = (sessionId: string) => {
   if (sessionId) {
     apiClient.set(cookiesNames.SESSION_ID, sessionId);
   }
   sessionStorage.removeItem(sessionStorageNames.AUTH_PENDING);
-  sessionStorage.setItem(sessionStorageNames.IS_LOGIN, yesNoTypesConst.YES);
+  sessionStorage.setItem(sessionStorageNames.IS_LOGIN, yesNoTypesCodes.YES);
 };
 
 export const setFirstScreenFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.FIRST_SCREEN, yesNoTypesConst.YES);
+  sessionStorage.setItem(sessionStorageNames.FIRST_SCREEN, yesNoTypesCodes.YES);
 
 export const removeFirstScreenFlag = () =>
   sessionStorage.removeItem(sessionStorageNames.FIRST_SCREEN);
