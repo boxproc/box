@@ -6,6 +6,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
+import { TableNoData } from 'components';
+
 import { schedulerStatusTypesOptions, statusTypesConst } from 'consts';
 
 import { TableStyled } from './TableStyled';
@@ -15,6 +17,7 @@ interface TableItemWrapperProps {
   textRight?: boolean;
   isDate?: boolean;
   isAccentColor?: boolean;
+  textCenter?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
@@ -24,10 +27,17 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   align-items: flex-start;
   font-size: ${({ isDate }) => isDate ? '12px' : '13px'};
   line-height: 1.5;
-  justify-content: ${({ textRight }) => textRight ? 'flex-end' : 'inherit'};
   white-space: normal;
   border: 1px solid transparent;
   color: inherit;
+
+  ${({ textRight }) => textRight && `
+    justify-content: flex-end};
+  `}
+
+  ${({ textCenter }) => textCenter && `
+    justify-content: center};
+  `}
 
   ${({ isDate, theme }) => isDate && `
     color: ${theme.colors.gray};
@@ -75,6 +85,7 @@ interface TableCellProps {
   onKeyUp?: (e: React.KeyboardEvent) => void;
   isDate?: boolean;
   isNumber?: boolean;
+  onCenter?: boolean;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({
@@ -86,6 +97,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   onKeyUp,
   isDate = false,
   isNumber = false,
+  onCenter = false,
 }) => {
   const isPendingStatus = value === schedulerStatusTypesOptions
     .find(status => status.value === statusTypesConst.EXECUTION_PENDING).label;
@@ -99,6 +111,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       isDate={isDate}
+      textCenter={onCenter}
       isAccentColor={isPendingStatus}
     >
       {value}
@@ -124,7 +137,6 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
   columns: Array<object>;
   pageSize?: number;
-  NoDataComponent?: React.FC;
   style?: object;
   sortable?: boolean;
   filterable?: boolean;
@@ -158,6 +170,7 @@ export const Table: React.FC<TableProps> = props => {
             defaultPageSize={pageSize}
             multiSort={false}
             resizable={true}
+            NoDataComponent={TableNoData}
             TheadComponent={
               isHeader && data && data.length > 0
                 ? ReactTableDefaults.TheadComponent

@@ -121,6 +121,7 @@ export const tableColumns = [
     Cell: (props: TCell<'cardConversionRate'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },

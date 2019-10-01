@@ -94,6 +94,7 @@ export const tableColumns = [
     Cell: (props: TCell<'currencyCode'>) => (
       <TableCell
         value={props.value}
+        onCenter={true}
       />
     ),
   },

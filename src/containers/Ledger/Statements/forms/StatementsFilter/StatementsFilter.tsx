@@ -74,6 +74,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Account ID"
                 placeholder="Enter ID"
                 isDisabled={false}
+                isNumber={true}
               />
             </Box>
             <Box width={[3 / 9]} p="10px">

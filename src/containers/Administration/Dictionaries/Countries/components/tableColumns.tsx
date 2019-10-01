@@ -30,6 +30,7 @@ export const tableColumns = [
     Cell: (props: TCell<'countryCode'>) => (
       <TableCell
         value={props.value}
+        onCenter={true}
       />
     ),
   },

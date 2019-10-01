@@ -72,6 +72,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Customer ID"
           placeholder="Enter ID"
           isDisabled={false}
+          isNumber={true}
         />
       </Box>
       <Box width="150px" p="10px">

@@ -112,10 +112,12 @@ export const Cards: React.FC<AccountCardsProps> = ({
         columns={columns}
       />
       <Flex justifyContent="flex-end">
-        <Button
-          onClick={handleOnCancel}
-          text="Close"
-        />
+        <Box mt="10px">
+          <Button
+            onClick={handleOnCancel}
+            text="Close"
+          />
+        </Box>
       </Flex>
     </React.Fragment>
   );

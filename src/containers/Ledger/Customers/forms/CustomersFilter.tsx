@@ -58,6 +58,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           label="Customer ID"
           placeholder="Enter ID"
           isDisabled={false}
+          isNumber={true}
         />
       </Box>
     </React.Fragment>

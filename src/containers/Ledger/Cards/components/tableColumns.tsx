@@ -30,6 +30,7 @@ export const tableColumns = [
     Cell: (props: TCell<'panAlias'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -45,7 +46,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Expiry Date" />,
     accessor: 'expiryDate',

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Table, TableNoData } from 'components';
+import { Table } from 'components';
 
 import { withEditTable, WithEditTableProps } from './withEditTable';
 
@@ -24,7 +24,6 @@ export const TablePage: React.FC<TablePageProps> = props => {
       columns={columns}
       activeRowIndex={activeTableRowIndex}
       getTrGroupProps={onRowClick}
-      NoDataComponent={TableNoData}
       {...tablePageProps}
     />
   );

@@ -25,11 +25,11 @@ export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
   selectAdminInstitutionsOptions,
   (items, institutions) => items && items.map(item => {
-    const current =  institutions.find(el => el.value === item.institution_id);
+    const currentInstitution =  institutions.find(el => el.value === item.institution_id);
 
     return {
       ...item,
-      institutionId: item && current && current.label,
+      institutionId: item && currentInstitution && currentInstitution.label,
     };
   })
 );

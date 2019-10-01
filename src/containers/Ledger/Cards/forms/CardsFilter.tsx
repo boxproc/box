@@ -18,6 +18,7 @@ const CardsFilter: React.FC = () => {
           label="Card ID"
           placeholder="Card ID"
           isDisabled={false}
+          isNumber={true}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -28,6 +29,7 @@ const CardsFilter: React.FC = () => {
           label="Account ID"
           placeholder="Account ID"
           isDisabled={false}
+          isNumber={true}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -38,6 +40,7 @@ const CardsFilter: React.FC = () => {
           label="Customer ID"
           placeholder="Customer ID"
           isDisabled={false}
+          isNumber={true}
         />
       </Box>
       <Box width="200px" p="10px">
@@ -49,6 +52,7 @@ const CardsFilter: React.FC = () => {
           placeholder="PAN Alias"
           mask={maskFormat.DATE_TIME}
           maskChar={null}
+          isNumber={true}
         />
       </Box>
     </React.Fragment>

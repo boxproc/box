@@ -71,6 +71,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               label="Account ID"
               placeholder="Enter ID"
               isDisabled={false}
+              isNumber={true}
             />
           </Box>
           <Box width={[3 / 9]} p="10px">
@@ -81,6 +82,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               label="Account Alias"
               placeholder="Enter Account Alias"
               isDisabled={false}
+              isNumber={true}
             />
           </Box>
           <Box width={[4 / 9]} p="10px">

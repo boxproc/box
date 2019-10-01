@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { Button, T4, Table, TableCell, TableNoData, withSpinner } from 'components';
+import { Button, T4, Table, TableCell, withSpinner } from 'components';
 
 import { iconNamesConst } from 'consts';
 
@@ -70,7 +70,6 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       <Table
         data={AdminUserGroupMembers}
         columns={columns}
-        NoDataComponent={TableNoData}
         isHeader={false}
       />
     </React.Fragment>

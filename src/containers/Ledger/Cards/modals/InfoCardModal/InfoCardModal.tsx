@@ -37,7 +37,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     [ledgerCardPanAlias, activateLedgerCard]
   );
 
-  const isStatusActive = (statusValue === 'Active');
+  const isStatusActive = statusValue === 'Active';
 
   return (
     <Modal
@@ -46,17 +46,16 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       title="Card"
       maxContainerWidth={500}
     >
-      <React.Fragment>
-        <Box mb="10px">
-          <Button
-            disabled={isStatusActive}
-            type="reset"
-            onClick={handleActivateLedgerCard}
-            text="Activate Card"
-            isFocused={true}
-          />
-        </Box>
-      </React.Fragment>
+      <Box mb="10px">
+        <Button
+          disabled={isStatusActive}
+          type="reset"
+          onClick={handleActivateLedgerCard}
+          text="Activate Card"
+          isFocused={true}
+        />
+      </Box>
+      <Hr />
       <CardForm
         initialValues={ledgerCurrentCard}
         onCancel={handleOnCancel}
