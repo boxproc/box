@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 
-import { DeleteIcon, EditIcon, LockIcon } from 'components';
+import { DeleteIcon, EditIcon, LockIcon, PlusIcon } from 'components';
 
 import styled from 'theme';
 import './styles.css';
@@ -50,6 +50,8 @@ const renderIcon = (name: string) => {
       return (<DeleteIcon size="15" />);
     case iconNamesConst.LOCK:
       return (<LockIcon size="15" />);
+    case iconNamesConst.PLUS:
+      return (<PlusIcon size="15" />);
     default:
       return null;
   }
@@ -93,7 +95,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
               >
                 <div className="item">
                   {item.icon && (
-                    <div className="icon">{renderIcon(item.icon)}</div>
+                    <span className="icon">{renderIcon(item.icon)}</span>
                   )}
                   <span>{item.name}</span>
                 </div>

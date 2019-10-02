@@ -90,6 +90,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: renderCheckBoxIconTableCell(updateAdminSysProps),
     },
   ];
+
   const contextMenuItems = React.useMemo(
     () => [
       {

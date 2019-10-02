@@ -1,11 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 
-export interface ProductItemInfoPlain {
-  id: number;
-  name: string;
-}
+interface ProductItemInfoPlain extends IdNamePair { }
 
 export interface ProductItemPlainResp extends ProductItemInfoPlain {
   description: string;
@@ -21,16 +18,22 @@ export interface ProductItemResp extends ProductItemPlainResp {
   currency_code: string | number;
   default_statement_cycle_id: string | number;
   statement_cycle_description: string | number;
+  overrides_product_id?: number;
 }
 
 export interface ProductsDataResp extends ResponseStatusType {
   products: Array<ProductItemResp>;
 }
 
+export interface ProductDataResp extends ResponseStatusType {
+  product: ProductItemResp;
+}
+
 export interface ProductItemPlain extends ProductItemInfoPlain {
   description: string;
   historyRetentionNumberOfDay: number;
   lockedFlag: boolean;
+  overridesProductId?: number;
 }
 
 export interface ProductItem extends ProductItemPlain {
@@ -234,26 +237,16 @@ export interface ProductRuleRequestPrepared {
   action_type?: number | string;
 }
 
-export interface ProductServiceInterfaces {
-  id: number;
-  name: string;
-}
-
-export interface ProductServiceEndpoints {
-  id: number;
-  name: string;
-}
-
 export interface InstitutionProducts extends ResponseStatusType {
   institution_products: Array<ProductItemInfoPlain>;
 }
 
 export interface InstitutionProductServiceInterfaces {
-  interfaces: Array<ProductServiceInterfaces>;
+  interfaces: Array<IdNamePair>;
 }
 
 export interface InstitutionProductServiceEndpoints {
-  endpoints: Array<ProductServiceEndpoints>;
+  endpoints: Array<IdNamePair>;
 }
 
 export interface ServicesItems {
@@ -266,14 +259,14 @@ export interface ServicesItemsPrepared {
   id: number;
   endpoints: SelectValues;
   interfaces: SelectValues;
-
 }
 
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
+  currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
   currentProductRule: ProductRulesItemResp;
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
-  interfaces: ImmutableArray<ProductServiceInterfaces>;
-  endpoints: ImmutableArray<ProductServiceEndpoints>;
+  interfaces: ImmutableArray<IdNamePair>;
+  endpoints: ImmutableArray<IdNamePair>;
 }

@@ -29,7 +29,6 @@ const Filter: React.FC<FilterAllProps> = ({
   filterAction,
   children,
   handleSubmit,
-  submitting,
   invalid,
   filterValues,
 }) => {
@@ -94,7 +93,7 @@ const Filter: React.FC<FilterAllProps> = ({
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-start" flexWrap="wrap">{children}</Flex>
-          <Button text="Show" disabled={submitting || invalid || !isAccessibleButton()} />
+          <Button text="Show" disabled={invalid || !isAccessibleButton()} />
         </Box>
       </form>
 

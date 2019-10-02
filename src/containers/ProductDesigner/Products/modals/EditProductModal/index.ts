@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import EditProductModal from './EditProductModal';
 
-import { selectCurrentProductName } from 'store/domains';
+import { selectCurrentProductName, selectIsProductOverride } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const generalProductFormDirty = isDirty(formNamesConst.GENERAL_PRODUCT);
@@ -17,6 +17,7 @@ const mapStateToProps = (state: StoreState) => ({
   isProductDetailsFormDirty: productDetailsFormDirty(state),
   isProductRulesFormDirty: productRulesFormDirty(state),
   currentProductName: selectCurrentProductName(state),
+  isProductOverride: selectIsProductOverride(state),
 });
 
 export default connect(

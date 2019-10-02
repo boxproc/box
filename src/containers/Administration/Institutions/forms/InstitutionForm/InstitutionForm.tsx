@@ -45,7 +45,6 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   mode,
   dirty,
   pristine,
-  submitting,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateAdminInstitution : addAdminInstitution;
@@ -138,7 +137,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           withCancelConfirmation={dirty}
-          disabledOk={pristine || submitting}
+          disabledOk={pristine}
           onCancel={onCancel}
         />
       </Flex>

@@ -57,8 +57,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   mode,
   pristine,
   dirty,
-  submitting,
-}) => {
+  }) => {
   const isEditMode = mode === 'edit';
 
   const defineAdminCyclesEditor = isEditMode
@@ -198,7 +197,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || submitting}
+          disabledOk={pristine}
         />
       </Flex>
     </form >

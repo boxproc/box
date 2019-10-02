@@ -32,7 +32,6 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   updateProductRules,
   dirty,
   pristine,
-  submitting,
   rulesValues,
   change,
 }) => {
@@ -70,7 +69,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
-        disabledOk={pristine || submitting}
+        disabledOk={pristine}
       />
     </form>
   );

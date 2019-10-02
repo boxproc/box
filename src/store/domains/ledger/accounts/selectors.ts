@@ -47,18 +47,21 @@ export const selectLedgerCurrentAccount = createSelector(
 
     return {
       ...preparedValuesDetailsToRender(current),
-      institutionId: institutions.find(el => el.value === current.institution_id),
-      productName: institutionProducts.find(el => el.value === current.product_id),
-      cycleStatement: cyclesOptions.find(el => el.value === current.statement_cycle_id),
+      institutionId: current && institutions.find(el => el.value === current.institution_id),
+      productName: current && institutionProducts.find(el => el.value === current.product_id),
+      cycleStatement: current && cyclesOptions.find(el => el.value === current.statement_cycle_id),
     };
   }
 );
 
 export const selectLedgerCurrentAccountAlias = createSelector(
   selectLedgerCurrentAccount,
-  currentAccount => {
-    return currentAccount && currentAccount.accountAlias;
-  }
+  currentAccount => currentAccount && currentAccount.accountAlias
+);
+
+export const selectLedgerCurrentAccountHasProductOverride = createSelector(
+  selectLedgerCurrentAccount,
+  currentAccount => currentAccount && currentAccount.productOverrideId ? true : false
 );
 
 export const selectDefaultLedgerLastStatement = (state: StoreState) =>

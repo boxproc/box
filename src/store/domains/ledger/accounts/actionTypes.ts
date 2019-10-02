@@ -27,6 +27,10 @@ export enum ActionTypeKeys {
   GET_LEDGER_LAST_STATEMENT = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT',
   GET_LEDGER_LAST_STATEMENT_FULFILLED = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT_FULFILLED',
   GET_LEDGER_LAST_STATEMENT_REJECTED = 'ledger/accounts/GET_LEDGER_LAST_STATEMENT_REJECTED',
+
+  ADD_PRODUCT_OVERRIDE = 'ledger/accounts/ADD_PRODUCT_OVERRIDE',
+  ADD_PRODUCT_OVERRIDE_FULFILLED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_FULFILLED',
+  ADD_PRODUCT_OVERRIDE_REJECTED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_REJECTED',
 }
 
 export interface GetLedgerAccountCardsAction {
@@ -119,10 +123,26 @@ export interface GetLedgerLastStatementRejectedAction {
   readonly type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT_REJECTED;
 }
 
+export interface AddProductOverrideAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE;
+}
+
+export interface AddProductOverrideFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_FULFILLED;
+}
+
+export interface AddProductOverrideRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_REJECTED;
+}
+
 export type LedgerAccountsActionTypes =
   | GetLedgerAccountCardsFulfilledAction
   | OrderLedgerAccountCardFulfilledAction
   | UpdateLedgerAccountFulfilledAction
   | AddLedgerAccountFulfilledAction
   | FilterLedgerAccountsFulfilledAction
-  | GetLedgerLastStatementFulfilledAction;
+  | GetLedgerLastStatementFulfilledAction
+  | AddProductOverrideFulfilledAction;

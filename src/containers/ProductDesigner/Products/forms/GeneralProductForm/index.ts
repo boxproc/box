@@ -6,6 +6,7 @@ import GeneralProductForm from './GeneralProductForm';
 import {
   createLoadingSelector,
   handleDeleteProduct,
+  handleGetProduct,
   handleUpdateProduct,
   ProductsActionTypes,
   selectCurrentProduct,
@@ -15,6 +16,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
+  ProductsActionTypes.GET_PRODUCT,
   ProductsActionTypes.UPDATE_PRODUCT,
   ProductsActionTypes.DELETE_PRODUCT,
 ]);
@@ -27,6 +29,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    getProduct: handleGetProduct,
     deleteProduct: handleDeleteProduct,
     updateProduct: handleUpdateProduct,
   },

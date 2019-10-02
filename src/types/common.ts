@@ -56,3 +56,8 @@ export interface SelectValues<T = number | string> {
   value: T;
   label: string;
 }
+
+export interface IdNamePair {
+  id: number;
+  name: string;
+}

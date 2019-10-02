@@ -18,7 +18,7 @@ export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
     panAlias: values.pan_alias,
     panMasked: values.pan_masked,
     expiryDate: values.expiry_date,
-    status: values.card_status_id,
+    cardStatusName: values.card_status_name,
   };
 };
 

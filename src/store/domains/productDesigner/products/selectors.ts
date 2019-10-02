@@ -8,7 +8,6 @@ import {
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
@@ -41,15 +40,15 @@ export const selectProductItems = createSelector(
   })
 );
 
+export const selectDefaultCurrentProduct = (state: StoreState) =>
+  state.productDesigner.products.currentProduct;
+
 export const selectCurrentProduct = createSelector(
-  selectDefaultProductItems,
+  selectDefaultCurrentProduct,
   selectInstitutionsOptions,
   selectCurrencyCodesOptions,
-  selectActiveItemId,
   selectCyclesDescriptionsOptions,
-  (products, institutions, currencyCodes, currentId, cyclesOptions) => {
-    const product = products.find(el => el.id === currentId);
-
+  (product, institutions, currencyCodes, cyclesOptions) => {
     if (!product) {
       return null;
     }
@@ -96,7 +95,12 @@ export const selectProductCardEndpointsService = createSelector(
 
 export const selectCurrentProductName = createSelector(
   selectCurrentProduct,
-  (product) => product && product.name
+  product => product && product.name
+);
+
+export const selectIsProductOverride = createSelector(
+  selectCurrentProduct,
+  product => product && product.overridesProductId ? true : false
 );
 
 export const selectCurrentProductType = createSelector(

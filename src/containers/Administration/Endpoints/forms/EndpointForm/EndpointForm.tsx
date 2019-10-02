@@ -39,7 +39,6 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   institutionsOptions,
   pristine,
   dirty,
-  submitting,
   mode,
   currentEndpointName,
 }) => {
@@ -78,7 +77,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
-          disabledOk={pristine || submitting}
+          disabledOk={pristine}
           withCancelConfirmation={dirty}
         />
       </Flex>

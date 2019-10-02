@@ -48,7 +48,7 @@ export enum dictionariesPathNames {
   GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
   GET_EVENTS = '/ui/administration/dictionaries/events/get',
   GET_EVENT_DATA_ELEMS = '/ui/administration/dictionaries/event_data_elements/get',
-  GET_CARD_STATUSES = '',
+  GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses/get',
 }
 
 export enum adminUserPathNames {
@@ -103,6 +103,7 @@ export enum lenderAccountsPathNames {
   GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
   ORDER_ACCOUNT_CARD = '/ui/ledger/cards/order_card',
   GET_LAST_STATEMENT = '/ui/ledger/accounts/get_last_statement',
+  CREATE_PRODUCT_OVERRIDE = '',
 }
 
 export enum lenderCardsPathNames {
@@ -129,6 +130,7 @@ export enum lenderTransactionsPathNames {
 export enum productsPathNames {
   GET_PRODUCTS = '/ui/product_designer/products/get',
   GET_INSTITUTIONS_PRODUCTS = '/ui/service_data/institutions/products/get',
+  GET_PRODUCT = '',
   GET_PRODUCTS_DETAILS = '/ui/product_designer/products/extensions/get',
   GET_PRODUCTS_RULES = '/ui/product_designer/products/rules/get',
   DELETE_PRODUCT = '/ui/product_designer/products/delete',

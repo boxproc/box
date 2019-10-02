@@ -12,6 +12,7 @@ interface EditProductModalProps extends WithModalProps {
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
   isProductRulesFormDirty: boolean;
+  isProductOverride: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_PRODUCT;
@@ -22,6 +23,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isGeneralProductFormDirty,
   isProductDetailsFormDirty,
   isProductRulesFormDirty,
+  isProductOverride,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -37,12 +39,13 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit Product${productName}`}
-      minContainerHeight={545}
+      title={isProductOverride ? `Product override${productName}` : `Edit product${productName}`}
+      minContainerHeight={550}
       withCloseConfirmation={isFormDirty}
     >
       <EditProductForms
         onCancel={handleOnCancel}
+        isProductOverride={isProductOverride}
       />
     </Modal>
   );

@@ -1,10 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 
-interface InfoPlain {
-  id: number;
-  name: string;
-}
+interface InfoPlain extends IdNamePair { }
 
 export interface AdminUsersGroupInfoPlainResp extends InfoPlain {
   institution_id: number | string;

@@ -19,6 +19,7 @@ export enum formNamesConst {
   PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCountersForm',
   PRODUCT_SERVICES = 'productServicesForm',
   PRODUCT_APRS = 'productAPRsForm',
+  PRODUCT_LOYALTY_AND_BONUS = 'productLoyaltyAndBonus',
 
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',

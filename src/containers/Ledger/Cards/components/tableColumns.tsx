@@ -23,6 +23,18 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 100,
+    sortable: true,
+    Header: <TableHeader title="Account ID" />,
+    accessor: 'accountId',
+    Cell: (props: TCell<'accountId'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
     maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="PAN Alias" />,
@@ -60,21 +72,9 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <TableHeader title="Account ID" />,
-    accessor: 'accountId',
-    Cell: (props: TCell<'accountId'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Status" />,
-    accessor: 'status',
-    Cell: (props: TCell<'status'>) => (
+    accessor: 'cardStatusName',
+    Cell: (props: TCell<'cardStatusName'>) => (
       <TableCell
         value={props.value}
       />

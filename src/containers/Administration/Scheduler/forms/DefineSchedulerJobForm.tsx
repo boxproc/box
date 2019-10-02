@@ -50,7 +50,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   mode,
   dirty,
   pristine,
-  submitting,
   openModal,
   currentSchedulerName,
 }) => {
@@ -199,7 +198,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
           cancelText="Cancel"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
-          disabledOk={pristine || submitting}
+          disabledOk={pristine}
         />
       </Flex>
     </form >

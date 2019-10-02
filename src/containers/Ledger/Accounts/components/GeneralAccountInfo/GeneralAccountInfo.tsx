@@ -7,7 +7,7 @@ import { Hr, InputField, SelectField } from 'components';
 
 import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
 
-import { dateFormat, statusTypesOptions } from 'consts';
+import { dateFormat, maskFormat, statusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -26,6 +26,7 @@ export interface CustomerInfoProps {
     productName: SelectValues;
   };
   isEditMode: boolean;
+  hasProductOverride: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
@@ -38,6 +39,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   getCyclesDescriptions,
   cyclesDescriptionsOptions,
   isEditMode = false,
+  hasProductOverride,
 }) => {
   const { institutionId, productName } = formValues;
 
@@ -67,7 +69,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         flexWrap="wrap"
       >
         {isEditMode && (
-          <Box width="150px" p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="id"
               name="id"
@@ -79,7 +81,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -92,7 +94,48 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 6]} p="10px">
+          <Field
+            id="customerId"
+            name="customerId"
+            component={InputField}
+            label="Customer ID"
+            placeholder="Enter ID"
+            disabled={isEditMode}
+            isNumber={true}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="accountAlias"
+            name="accountAlias"
+            component={InputField}
+            label="Account Alias"
+            placeholder="Enter Account Alias"
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="accountAliasAdditional"
+            name="accountAliasAdditional"
+            component={InputField}
+            label="Account Alias Additional"
+            placeholder="Enter Account Alias"
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            label="Status"
+            placeholder="Select Status"
+            options={statusTypesOptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="productName"
             name="productName"
@@ -106,7 +149,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           />
         </Box>
         {isEditMode && (
-          <Box width="150px" p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="productId"
               name="productId"
@@ -119,47 +162,33 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             />
           </Box>
         )}
-        <Box width="150px" p="10px">
-          <Field
-            id="customerId"
-            name="customerId"
-            component={InputField}
-            label="Customer ID"
-            placeholder="Enter ID"
-            disabled={isEditMode}
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="accountAlias"
-            name="accountAlias"
-            component={InputField}
-            label="Account Alias"
-            placeholder="Enter Account Alias"
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="accountAliasAdditional"
-            name="accountAliasAdditional"
-            component={InputField}
-            label="Account Alias Additional"
-            placeholder="Enter Account Alias Additional"
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="status"
-            name="status"
-            component={SelectField}
-            label="Status"
-            placeholder="Select Status"
-            options={statusTypesOptions}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
+        {hasProductOverride && (
+          <Box width={[1 / 6]} p="10px">
+            <Field
+              id="productOverrideId"
+              name="productOverrideId"
+              component={InputField}
+              label="Product Override ID"
+              placeholder="Enter ID"
+              disabled={true}
+              isNumber={true}
+            />
+          </Box>
+        )}
+        {hasProductOverride && (
+          <Box width={[1 / 5]} p="10px">
+            <Field
+              id="dateOfProductOverride"
+              name="dateOfProductOverride"
+              component={InputField}
+              label="Date of Product Override"
+              placeholder={dateFormat.DATE}
+              mask={maskFormat.DATE_TIME}
+              maskChar={null}
+              disabled={true}
+            />
+          </Box>
+        )}
         <Hr />
         <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field

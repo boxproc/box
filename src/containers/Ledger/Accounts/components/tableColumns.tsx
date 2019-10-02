@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { TableCell, TableHeader } from 'components';
+import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
 
 import { LedgerAccountItemPrepared } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof LedgerAccountItemPrepared> =
-  TableCellType<LedgerAccountItemPrepared[T]>;
+type TCell<T extends keyof LedgerAccountItemPrepared> = TableCellType<LedgerAccountItemPrepared[T]>;
 
 export const tableColumns = [
   {
@@ -43,6 +42,13 @@ export const tableColumns = [
         value={props.value}
       />
     ),
+  },
+  {
+    maxWidth: 150,
+    sortable: true,
+    Header: <TableHeader title="Product Override" />,
+    accessor: 'productOverrideFlag',
+    Cell: renderCheckBoxIconTableCell(),
   },
   {
     maxWidth: 200,

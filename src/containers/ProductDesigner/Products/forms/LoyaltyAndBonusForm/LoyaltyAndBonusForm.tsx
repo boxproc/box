@@ -6,18 +6,19 @@ import { Hr, OkCancelButtons } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { ProductLimitsFeesCommissions } from 'containers/ProductDesigner/Products/components';
+import { ProductLoyaltyAndBonus } from 'containers/ProductDesigner/Products/components';
 
-interface ProductLimitsFeesCommissionsFormProps {
+interface LoyaltyAndBonusFormProps {
   onCancel?: () => void;
 }
 
-type ProductLimitsFeesCommissionsFormAllProps = ProductLimitsFeesCommissionsFormProps &
-  InjectedFormProps<{}, ProductLimitsFeesCommissionsFormProps>;
+type LoyaltyAndBonusFormAllProps = LoyaltyAndBonusFormProps &
+  InjectedFormProps<{}, LoyaltyAndBonusFormProps>;
 
-const ProductLimitsFeesCommissionsForm: React.FC<ProductLimitsFeesCommissionsFormAllProps> = ({
+const LoyaltyAndBonusForm: React.FC<LoyaltyAndBonusFormAllProps> = ({
   handleSubmit,
   onCancel,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log(data)),
@@ -26,20 +27,21 @@ const ProductLimitsFeesCommissionsForm: React.FC<ProductLimitsFeesCommissionsFor
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <ProductLimitsFeesCommissions />
+      <ProductLoyaltyAndBonus />
       <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        disabledOk={pristine}
       />
     </form>
   );
 };
 
-export default reduxForm<{}, ProductLimitsFeesCommissionsFormProps>({
-  form: formNamesConst.PRODUCT_LIMITS_AND_COMMISSION,
+export default reduxForm<{}, LoyaltyAndBonusFormProps>({
+  form: formNamesConst.PRODUCT_LOYALTY_AND_BONUS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(ProductLimitsFeesCommissionsForm);
+})(LoyaltyAndBonusForm);

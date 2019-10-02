@@ -28,6 +28,7 @@ export interface WithEditTableProps {
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
   setActiveItemId: HandleSetActiveItemId;
   editModalName: string;
+  editableItemName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
   activeTableRowIndex?: number;
   handleOpenModal: OpenModal;
@@ -43,6 +44,7 @@ export const withEditTable = <OriginProps extends {}>(
       setActiveItemId,
       handleOpenModal,
       editModalName,
+      editableItemName,
       onRowClick,
       activeTableRowIndex,
       contextMenuItems = [],
@@ -75,7 +77,7 @@ export const withEditTable = <OriginProps extends {}>(
     if (editModalName) {
       menuItems = [
         {
-          name: 'Edit',
+          name: editableItemName ? `Edit ${editableItemName}` : 'Edit',
           icon: 'edit',
           action: () => openCurrentRowInModal(),
         },

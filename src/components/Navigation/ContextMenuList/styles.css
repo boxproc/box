@@ -8,7 +8,7 @@
   border: 1px solid #4d4d4d;
   background-color: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
-  z-index: 1;
+  z-index: 10;
 }
 
 .context-menu .react-contextmenu-item {

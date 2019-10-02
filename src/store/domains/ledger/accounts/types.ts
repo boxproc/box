@@ -20,6 +20,8 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   customer_last_name: string;
   institution_id: number | string;
   product_id: number | string;
+  product_override_id?: number;
+  date_of_product_override?: string;
   product_name: string | number;
   balance_settled: number;
   balance_available: number;
@@ -64,6 +66,9 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   firstName: string;
   lastName: string;
   productId: number | string;
+  productOverrideId?: number;
+  dateOfProductOverride?: string;
+  productOverrideFlag?: boolean;
   balanceSettled: string | number;
   balanceAvailable: number | string;
   amountDueRepayment: number | string;
@@ -130,14 +135,14 @@ export interface LedgerAccountsCardsItem {
   pan_alias: string;
   pan_masked: string;
   expiry_date: string;
-  status: string;
+  card_status_name: string;
 }
 
 export interface LedgerAccountsCardsItemPrepared {
   panAlias: string;
   panMasked: string;
   expiryDate: string;
-  status: string;
+  cardStatus: string;
 }
 
 export interface LedgerAccountCardsItems extends ResponseStatusType {

@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, SelectField } from 'components';
+import { Button, SelectField, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -74,8 +74,8 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, StatusFormProps>({
+export default withSpinner()(reduxForm<{}, StatusFormProps>({
   form: formNamesConst.LEDGER_CHANGE_CARD_STATUS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(StatusForm);
+})(StatusForm));

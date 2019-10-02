@@ -28,6 +28,12 @@ export const getInstitutionProducts = (id: number | string) =>
     data: { institution_id: id },
   });
 
+export const getProduct = (id: number) =>
+  // throttleUtil.getDataAfter(productData, 500);
+  apiClient.post(productsPathNames.GET_PRODUCT, {
+    data: { id },
+  });
+
 export const getProductDetails = (id: number) =>
   // throttleUtil.getDataAfter(productDetailsData, 500);
   apiClient.post(productsPathNames.GET_PRODUCTS_DETAILS, {

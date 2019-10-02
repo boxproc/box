@@ -71,6 +71,7 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
     currencyCode: item.currency_code,
     defaultStatementCycle: item.statement_cycle_description,
     lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
+    overridesProductId: item.overrides_product_id,
   };
 };
 
@@ -89,6 +90,7 @@ export const prepareGeneralProductValues =
       status: statusTypesOptions.find(el => el.value === product.status),
       scheme: schemeTypesOptions.find(el => el.value === product.scheme),
       lockedFlag: product.locked_flag === yesNoTypesCodes.YES ? true : false,
+      overridesProductId: product.overrides_product_id,
     };
   };
 
@@ -107,6 +109,7 @@ export const prepareGeneralProductValuesToSend =
       default_statement_cycle_id: product.defaultStatementCycle.value,
       locked_flag: product.lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
       statement_cycle_description: product.defaultStatementCycle.value,
+      overrides_product_id: product.overridesProductId,
     };
   };
 

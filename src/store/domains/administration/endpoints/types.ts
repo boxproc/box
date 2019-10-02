@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 
 export interface AdminEndpointItem extends AdminEndpointItemId {
   institution_id: number | string;
@@ -47,16 +47,11 @@ export interface AdminEndpointFilterPrepared {
   institution_id: string | number;
 }
 
-export interface AdminEndpointNameItem {
-  id: number;
-  name: string;
-}
-
 export interface AdminEndpointNameItems extends ResponseStatusType {
-  endpoints: Array<AdminEndpointNameItem>;
+  endpoints: Array<IdNamePair>;
 }
 
 export interface AdminEndpointState {
   endpoints: ImmutableArray<AdminEndpointItem>;
-  endpointsByInstitutionId: ImmutableArray<AdminEndpointNameItem>;
+  endpointsByInstitutionId: ImmutableArray<IdNamePair>;
 }

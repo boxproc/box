@@ -46,7 +46,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   mode,
   dirty,
   pristine,
-  submitting,
 }) => {
   const isEditMode = mode === 'edit';
   const action = isEditMode ? updateLedgerAccount : addLedgerAccount;
@@ -71,7 +70,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}
-            disabledOk={pristine || submitting}
+            disabledOk={pristine}
           />
         </TabsPanel>
         <TabsPanel title="Auxiliary Counters">
@@ -85,7 +84,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}
-            disabledOk={pristine || submitting}
+            disabledOk={pristine}
           />
         </TabsPanel>
         <TabsPanel title="Overdue">
@@ -97,7 +96,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}
-            disabledOk={pristine || submitting}
+            disabledOk={pristine}
           />
         </TabsPanel>
         {isEditMode && (

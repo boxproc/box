@@ -15,6 +15,7 @@ import {
   ProductsActionTypes,
   selectCyclesDescriptionsOptions,
   selectInstitutionProductsOptions,
+  selectLedgerCurrentAccountHasProductOverride,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -30,6 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),
   isLoadingCyclesDescriptions: loadingSelector(state),
   cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
+  hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   formValues: formSelector(
     state,
     'institutionId',

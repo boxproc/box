@@ -1,10 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 
-interface PlainInfo {
-  id: number;
-  name: string;
+interface PlainInfo extends IdNamePair {
   description: string;
   executable: string;
 }
@@ -63,16 +61,11 @@ export interface AdminSchedulerFilterPrepared {
   status: string;
 }
 
-export interface AdminSchedulerNameItem {
-  id: number;
-  name: string;
-}
-
 export interface AdminSchedulerNameItems extends ResponseStatusType {
-  scheduler_names: Array<AdminSchedulerNameItem>;
+  scheduler_names: Array<IdNamePair>;
 }
 
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
-  schedulerNames: ImmutableArray<AdminSchedulerNameItem>;
+  schedulerNames: ImmutableArray<IdNamePair>;
 }

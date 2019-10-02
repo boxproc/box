@@ -2,15 +2,9 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { TableCellType } from 'types';
+import { AdminInstitutionsItemPrepared } from 'store/domains';
 
-interface AdminInstitutionsItemPrepared {
-  id: number;
-  name: string;
-  status: number | string;
-  sftpLocation?: string;
-  sftpPublicKey?: string;
-}
+import { TableCellType } from 'types';
 
 type TCell<T extends keyof AdminInstitutionsItemPrepared> =
   TableCellType<AdminInstitutionsItemPrepared[T]>;

@@ -2,12 +2,13 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
+import { closeModal, openModal } from 'store/domains/modals';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
+  AddProductOverrideAction,
   FilterLedgerAccountsAction,
   GetLedgerAccountCardsAction,
   GetLedgerLastStatementAction,
@@ -47,6 +48,9 @@ export type HandleFilterLedgerAccounts = () => Thunk<void>;
 export type GetLedgerLastStatement = (accountId: number) => GetLedgerLastStatementAction;
 export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 
+export type AddProductOverride = (productId: number) => AddProductOverrideAction;
+export type HandleAddProductOverride = (data?: {withOpenProductModal?: boolean}) => Thunk<void>;
+
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS,
   payload: api.getLedgerAccountCards(accountId),
@@ -75,6 +79,11 @@ export const filterLedgerAccounts: FilterLedgerAccounts = Filter => ({
 export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT,
   payload: api.getLedgerLastStatement(accountId),
+});
+
+export const addProductOverride: AddProductOverride = productId => ({
+  type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE,
+  payload: api.addProductOverride(productId),
 });
 
 export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
@@ -152,6 +161,26 @@ export const handleGetLedgerLastStatement: HandleGetLedgerLastStatement = accoun
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getLedgerLastStatement(accountId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddProductOverride: HandleAddProductOverride = (withOpenProductModal) =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+
+        await dispatch(addProductOverride(productId));
+        await dispatch(handleFilterLedgerAccounts());
+
+        if (withOpenProductModal) {
+          await dispatch(openModal({
+            name: modalNamesConst.EDIT_PRODUCT,
+          }));
+        }
       },
       dispatch
     );

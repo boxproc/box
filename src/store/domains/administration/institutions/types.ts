@@ -1,12 +1,9 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 
-export interface AdminInstitutionsInfoPlain {
-  id: number;
-  name: string;
-}
+export interface AdminInstitutionsInfoPlain extends IdNamePair {}
 
 export interface AdminInstitutionsItem extends AdminInstitutionsInfoPlain {
   sftp_location: string;

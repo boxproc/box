@@ -6,18 +6,18 @@ import { Hr, OkCancelButtons } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/components';
+import { ProductAprs } from 'containers/ProductDesigner/Products/components';
 
-interface ProductAuxiliaryCountersFormProps {
+interface AprsFormProps {
   onCancel?: () => void;
 }
 
-type ProductAuxiliaryCountersFormAllProps = ProductAuxiliaryCountersFormProps &
-  InjectedFormProps<{}, ProductAuxiliaryCountersFormProps>;
+type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
 
-const ProductAuxiliaryCountersForm: React.FC<ProductAuxiliaryCountersFormAllProps> = ({
+const AprsForm: React.FC<AprsFormAllProps> = ({
   handleSubmit,
   onCancel,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => console.log(data)),
@@ -26,20 +26,21 @@ const ProductAuxiliaryCountersForm: React.FC<ProductAuxiliaryCountersFormAllProp
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <ProductAuxiliaryCounters />
+      <ProductAprs />
       <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        disabledOk={pristine}
       />
     </form>
   );
 };
 
-export default reduxForm<{}, ProductAuxiliaryCountersFormProps>({
-  form: formNamesConst.PRODUCT_AUXILIARY_COUNTERS,
+export default reduxForm<{}, AprsFormProps>({
+  form: formNamesConst.PRODUCT_LIMITS_AND_COMMISSION,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(ProductAuxiliaryCountersForm);
+})(AprsForm);

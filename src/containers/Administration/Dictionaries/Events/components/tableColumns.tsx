@@ -2,11 +2,9 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { DictionaryEventsItem } from 'store/domains';
+import { IdNamePair, TableCellType } from 'types';
 
-import { TableCellType } from 'types';
-
-type TCell<T extends keyof DictionaryEventsItem> = TableCellType<DictionaryEventsItem[T]>;
+type TCell<T extends keyof IdNamePair> = TableCellType<IdNamePair[T]>;
 
 export const tableColumns = [
     {

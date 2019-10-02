@@ -6,6 +6,7 @@ import { ProductsState } from './types';
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   products: Immutable([]),
   institutionProducts: Immutable([]),
+  currentProduct: null,
   currentProductDetails: null,
   currentProductRule: null,
   interfaces: Immutable([]),
@@ -25,6 +26,10 @@ const productsReducer =
       case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
         return state
           .set('products', action.payload.products);
+
+      case ActionTypeKeys.GET_PRODUCT_FULFILLED:
+        return state
+          .set('currentProduct', action.payload.product);
 
       case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
         return state

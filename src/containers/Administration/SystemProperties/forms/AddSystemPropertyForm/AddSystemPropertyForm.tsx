@@ -32,7 +32,6 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   onCancel,
   dirty,
   pristine,
-  submitting,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => addAdminSysProp(data)),
@@ -84,7 +83,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
-        disabledOk={pristine || submitting}
+        disabledOk={pristine}
       />
     </form >
   );

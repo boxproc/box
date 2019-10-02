@@ -87,8 +87,8 @@ export const Cards: React.FC<AccountCardsProps> = ({
     {
       maxWidth: 100,
       Header: <TableHeader title="Status" />,
-      accessor: 'status',
-      Cell: (props: TCell<'status'>) => (
+      accessor: 'cardStatus',
+      Cell: (props: TCell<'cardStatus'>) => (
         <TableCell
           value={props.value}
         />
@@ -98,11 +98,12 @@ export const Cards: React.FC<AccountCardsProps> = ({
 
   return (
     <React.Fragment>
-      <Box mb="25px">
+      <Box mb="15px">
         <Button
           type="reset"
           onClick={handleOrderLedgerAccountCard}
           text="Order Card"
+          isFocused={true}
         />
       </Box>
       <Table

@@ -4,11 +4,13 @@ import { TablePage, withSpinner } from 'components';
 
 import { tableColumns } from './components';
 
-import { DictionaryEventsItem, HandleGetDictionaryEvents } from 'store/domains';
+import { HandleGetDictionaryEvents } from 'store/domains';
+
+import { IdNamePair } from 'types';
 
 interface EventsProps {
   getDictionaryEvents: HandleGetDictionaryEvents;
-  dictionaryEventsItems: Array<DictionaryEventsItem>;
+  dictionaryEventsItems: Array<IdNamePair>;
 }
 
 export const Events: React.FC<EventsProps> = ({
