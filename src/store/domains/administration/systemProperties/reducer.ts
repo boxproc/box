@@ -21,6 +21,9 @@ const adminSysPropsReducer =
             state.systemProperties.filter(el => el.property_name !== action.meta)
           );
 
+      case ActionTypeKeys.RESET_SYSTEM_PROPERTIES:
+        return state = adminSysPropsInitialState;
+
       default: return state;
     }
   };

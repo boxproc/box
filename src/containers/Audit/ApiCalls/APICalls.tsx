@@ -7,7 +7,7 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
-import { ApiCallsItemPrepared, HandleFilterAuditApiCalls } from 'store/domains';
+import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store/domains';
 import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
@@ -15,13 +15,21 @@ interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
   filterAuditApiCalls: HandleFilterAuditApiCalls;
   institutionsOptions: Array<SelectValues>;
+  resetApiCalls: ResetApiCalls;
 }
 
 const ApiCalls: React.FC<ApiCallsProps> = ({
   auditApiCalls,
   filterAuditApiCalls,
   institutionsOptions,
+  resetApiCalls,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetApiCalls();
+    },
+    [resetApiCalls]
+  );
   return (
     <TablePage
       title="API Calls"

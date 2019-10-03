@@ -17,10 +17,12 @@ export enum ActionTypeKeys {
 
   GET_ADMIN_ACCESS_USERS = 'administration/permissions/users/GET_ADMIN_ACCESS_USERS',
   GET_ADMIN_ACCESS_USERS_FULFILLED =
-    'administration/permissions/users/GET_ADMIN_ACCESS_USERS_FULFILLED',
+  'administration/permissions/users/GET_ADMIN_ACCESS_USERS_FULFILLED',
   GET_ADMIN_ACCESS_USERS_REJECTED =
-    'administration/permissions/users/GET_ADMIN_ACCESS_USERS_REJECTED',
-  }
+  'administration/permissions/users/GET_ADMIN_ACCESS_USERS_REJECTED',
+
+  RESET_USERS = 'administration/permissions/users/RESET_USERS',
+}
 
 export interface AddAdminUserAction {
   readonly payload: Promise<object>;
@@ -82,8 +84,13 @@ export interface GetAccessUsersRejectedAction {
   readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_REJECTED;
 }
 
+export interface ResetUsersAction {
+  readonly type: ActionTypeKeys.RESET_USERS;
+}
+
 export type AdminUserActionTypes =
   | AddAdminUserFulfilledAction
   | FilterUsersFulfilledAction
   | UpdateAdminUserFulfilledAction
-  | GetAccessUsersFulfilledAction;
+  | GetAccessUsersFulfilledAction
+  | ResetUsersAction;

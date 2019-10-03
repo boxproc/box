@@ -10,6 +10,8 @@ export enum ActionTypeKeys {
   GET_DETAILS_AUDIT_API_CALLS = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS',
   GET_DETAILS_AUDIT_API_CALLS_FULFILLED = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS_FULFILLED',
   GET_DETAILS_AUDIT_API_CALLS_REJECTED = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS_REJECTED',
+
+  RESET_API_CALLS = 'audit/apiCalls/RESET_API_CALLS',
 }
 
 export interface FilterAuditApiCallsAction {
@@ -42,6 +44,21 @@ export interface GetDetailsAuditApiCallsRejectedAction {
   readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
 }
 
+export interface GetDetailsAuditApiCallsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
+}
+
+export interface GetDetailsAuditApiCallsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
+}
+
+export interface ResetApiCallsAction {
+  readonly type: ActionTypeKeys.RESET_API_CALLS;
+}
+
 export type AuditApiCallsActionTypes =
   | FilterAuditApiCallsFulfilledAction
-  | GetDetailsAuditApiCallsFulfilledAction;
+  | GetDetailsAuditApiCallsFulfilledAction
+  | ResetApiCallsAction;

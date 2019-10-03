@@ -4,7 +4,7 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, setActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
@@ -26,7 +26,6 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
-import { selectLedgerCurrentAccountProductId } from './selectors';
 
 export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCardsAction;
 export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;
@@ -49,8 +48,10 @@ export type HandleFilterLedgerAccounts = () => Thunk<void>;
 export type GetLedgerLastStatement = (accountId: number) => GetLedgerLastStatementAction;
 export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 
-export type AddProductOverride = (productId: number | string) => AddProductOverrideAction;
-export type HandleAddProductOverride = (data?: {withOpenProductModal?: boolean}) => Thunk<void>;
+export type AddProductOverride = (accountId: number) => AddProductOverrideAction;
+export type HandleAddProductOverride = (data?: { withOpenProductModal?: boolean }) => Thunk<void>;
+
+export type ResetAccounts = () => void;
 
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS,
@@ -72,9 +73,9 @@ export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
   payload: api.updateLedgerAccount(values),
 });
 
-export const filterLedgerAccounts: FilterLedgerAccounts = Filter => ({
+export const filterLedgerAccounts: FilterLedgerAccounts = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS,
-  payload: api.filterLedgerAccounts(Filter),
+  payload: api.filterLedgerAccounts(filter),
 });
 
 export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
@@ -82,9 +83,13 @@ export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
   payload: api.getLedgerLastStatement(accountId),
 });
 
-export const addProductOverride: AddProductOverride = productId => ({
+export const addProductOverride: AddProductOverride = accountId => ({
   type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE,
-  payload: api.addProductOverride(productId),
+  payload: api.addProductOverride(accountId),
+});
+
+export const resetAccounts: ResetAccounts = () => ({
+  type: ActionTypeKeys.RESET_ACCOUNTS,
 });
 
 export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
@@ -172,12 +177,14 @@ export const handleAddProductOverride: HandleAddProductOverride = (withOpenProdu
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectLedgerCurrentAccountProductId(state);
+        const accountId = selectActiveItemId(state);
 
-        await dispatch(addProductOverride(productId));
+        const res = await dispatch(addProductOverride(accountId)) as any;
+
         await dispatch(handleFilterLedgerAccounts());
 
         if (withOpenProductModal) {
+          await dispatch(setActiveItemId(res.value.id));
           await dispatch(openModal({
             name: modalNamesConst.EDIT_PRODUCT,
           }));

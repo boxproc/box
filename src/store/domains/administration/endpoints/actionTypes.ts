@@ -23,6 +23,8 @@ export enum ActionTypeKeys {
   'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED',
   GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED =
   'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
+
+  RESET_ENDPOINTS = 'audit/apiCalls/RESET_ENDPOINTS',
 }
 
 export interface AddAdminEndpointAction {
@@ -100,9 +102,14 @@ export interface GetEndpointsByInstitutionIdRejectedAction {
   readonly type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED;
 }
 
+export interface ResetEndpointsAction {
+  readonly type: ActionTypeKeys.RESET_ENDPOINTS;
+}
+
 export type AdminEndpointActionTypes =
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
   | FilterAdminEndpointFulfilledAction
   | UpdateAdminEndpointFulfilledAction
-  | GetEndpointsByInstitutionIdFulfilledAction;
+  | GetEndpointsByInstitutionIdFulfilledAction
+  | ResetEndpointsAction;

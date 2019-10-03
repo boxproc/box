@@ -14,9 +14,15 @@ export type FilterLedgerStatements = (params: Partial<LedgerStatementsFilterPrep
   FilterLedgerStatementsAction;
 export type HandleFilterLedgerStatements = () => Thunk<void>;
 
-export const filterLedgerStatements: FilterLedgerStatements = Filter => ({
+export type ResetStatements = () => void;
+
+export const filterLedgerStatements: FilterLedgerStatements = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
-  payload: api.filterLedgerStatements(Filter),
+  payload: api.filterLedgerStatements(filter),
+});
+
+export const resetStatements: ResetStatements = () => ({
+  type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
 });
 
 export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>

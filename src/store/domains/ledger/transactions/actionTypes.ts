@@ -5,6 +5,8 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_TRANSACTIONS = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS',
   FILTER_LEDGER_TRANSACTIONS_FULFILLED = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_FULFILLED',
   FILTER_LEDGER_TRANSACTIONS_REJECTED = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_REJECTED',
+
+  RESET_TRANSACTIONS = 'ledger/transactions/RESET_TRANSACTIONS',
 }
 
 export interface FilterLedgerTransactionsAction {
@@ -22,5 +24,10 @@ export interface FilterLedgerTransactionsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_REJECTED;
 }
 
+export interface ResetTransactionsAction {
+  readonly type: ActionTypeKeys.RESET_TRANSACTIONS;
+}
+
 export type LedgerTransactionsActionTypes =
-  | FilterLedgerTransactionsFulfilledAction;
+  | FilterLedgerTransactionsFulfilledAction
+  | ResetTransactionsAction;

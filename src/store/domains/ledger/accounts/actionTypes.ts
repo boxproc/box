@@ -31,6 +31,8 @@ export enum ActionTypeKeys {
   ADD_PRODUCT_OVERRIDE = 'ledger/accounts/ADD_PRODUCT_OVERRIDE',
   ADD_PRODUCT_OVERRIDE_FULFILLED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_FULFILLED',
   ADD_PRODUCT_OVERRIDE_REJECTED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_REJECTED',
+
+  RESET_ACCOUNTS = 'ledger/accounts/RESET_ACCOUNTS',
 }
 
 export interface GetLedgerAccountCardsAction {
@@ -129,13 +131,17 @@ export interface AddProductOverrideAction {
 }
 
 export interface AddProductOverrideFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: { id: number };
   readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_FULFILLED;
 }
 
 export interface AddProductOverrideRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_REJECTED;
+}
+
+export interface ResetAccountsAction {
+  readonly type: ActionTypeKeys.RESET_ACCOUNTS;
 }
 
 export type LedgerAccountsActionTypes =
@@ -145,4 +151,5 @@ export type LedgerAccountsActionTypes =
   | AddLedgerAccountFulfilledAction
   | FilterLedgerAccountsFulfilledAction
   | GetLedgerLastStatementFulfilledAction
-  | AddProductOverrideFulfilledAction;
+  | AddProductOverrideFulfilledAction
+  | ResetAccountsAction;

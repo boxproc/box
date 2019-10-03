@@ -9,6 +9,7 @@ import {
   handleDeleteAdminSchedulerJob,
   handleFilterAdminSchedulerJobs,
   handleSendAdminSchedulerAction,
+  resetScheduler,
   selectActiveItemId,
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
@@ -34,6 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterAdminSchedulerJobs: handleFilterAdminSchedulerJobs,
     sendAdminSchedulerAction: handleSendAdminSchedulerAction,
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
+    resetScheduler,
   },
   dispatch
 );

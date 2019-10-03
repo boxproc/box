@@ -18,6 +18,8 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_CUSTOMERS = 'ledger/customers/FILTER_LEDGER_CUSTOMERS',
   FILTER_LEDGER_CUSTOMERS_FULFILLED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_FULFILLED',
   FILTER_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
+
+  RESET_CUSTOMERS = 'ledger/customers/RESET_CUSTOMERS',
 }
 
 export interface DeleteLedgerCustomerAction {
@@ -83,8 +85,13 @@ export interface FilterLedgerCustomersRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_REJECTED;
 }
 
+export interface ResetCustomersAction {
+  readonly type: ActionTypeKeys.RESET_CUSTOMERS;
+}
+
 export type LedgerCustomersActionTypes =
   | AddLedgerCustomerFulfilledAction
   | DeleteLedgerCustomerFulfilledAction
   | UpdateLedgerCustomerFulfilledAction
-  | FilterLedgerCustomersFulfilledAction;
+  | FilterLedgerCustomersFulfilledAction
+  | ResetCustomersAction;

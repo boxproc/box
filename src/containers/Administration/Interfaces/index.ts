@@ -8,6 +8,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminInterface,
   handleFilterAdminInterface,
+  resetInterfaces,
   selectAdminInterface,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteInterface: handleDeleteAdminInterface,
     filterAdminInterface: handleFilterAdminInterface,
+    resetInterfaces,
   },
   dispatch
 );

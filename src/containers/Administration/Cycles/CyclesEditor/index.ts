@@ -8,6 +8,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminCyclesEditor,
   handleFilterCycles,
+  resetCycles,
   selectAdminCycleEditorItems,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCycles: handleFilterCycles,
     deleteAdminCyclesEditor: handleDeleteAdminCyclesEditor,
+    resetCycles,
   },
   dispatch
 );

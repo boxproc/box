@@ -28,9 +28,11 @@ export type HandleActivateLedgerCard = (panAlias: string) => Thunk<void>;
 export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
 export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
 
-export const filterLedgerCards: FilterLedgerCards = Filter => ({
+export type ResetCards = () => void;
+
+export const filterLedgerCards: FilterLedgerCards = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CARDS,
-  payload: api.filterLedgerCards(Filter),
+  payload: api.filterLedgerCards(filter),
 });
 
 export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
@@ -41,6 +43,10 @@ export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
 export const changeLedgerCardStatus: ChangeLedgerCardStatus = ids => ({
   type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS,
   payload: api.changeLedgerCardStatus(ids),
+});
+
+export const resetCards: ResetCards = () => ({
+  type: ActionTypeKeys.RESET_CARDS,
 });
 
 export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>

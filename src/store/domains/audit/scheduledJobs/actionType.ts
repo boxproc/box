@@ -7,6 +7,8 @@ export enum ActionTypeKeys {
   FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED =
   'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED',
   FILTER_AUDIT_SCHEDULED_JOBS_REJECTED = 'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_REJECTED',
+
+  RESET_SCHEDULED_JOBS = 'audit/scheduledJobs/RESET_SCHEDULED_JOBS',
 }
 
 export interface FilterScheduledJobsAction {
@@ -24,5 +26,10 @@ export interface FilterScheduledJobsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_REJECTED;
 }
 
+export interface ResetScheduledJobsAction {
+  readonly type: ActionTypeKeys.RESET_SCHEDULED_JOBS;
+}
+
 export type AuditScheduledJobsActionTypes =
-  | FilterScheduledJobsFulfilledAction;
+  | FilterScheduledJobsFulfilledAction
+  | ResetScheduledJobsAction;

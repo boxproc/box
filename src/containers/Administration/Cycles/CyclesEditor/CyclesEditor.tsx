@@ -11,6 +11,7 @@ import {
   AdminCyclesEditorItemPrepared,
   HandleDeleteAdminCycleEditor,
   HandleFilterCycles,
+  ResetCycles,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -20,6 +21,7 @@ interface CycleEditorProps {
   institutionsOptions: Array<SelectValues>;
   filterCycles: HandleFilterCycles;
   deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
+  resetCycles: ResetCycles;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
@@ -27,7 +29,15 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   institutionsOptions,
   filterCycles,
   deleteAdminCyclesEditor,
+  resetCycles,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetCycles();
+    },
+    [resetCycles]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

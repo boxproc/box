@@ -23,9 +23,12 @@ const adminEndpointsReducer =
         return state
           .set('endpoints', action.payload.endpoints);
 
-    case ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED:
-      return state
-        .set('endpointsByInstitutionId', action.payload.endpoints);
+      case ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED:
+        return state
+          .set('endpointsByInstitutionId', action.payload.endpoints);
+
+      case ActionTypeKeys.RESET_ENDPOINTS:
+        return state = adminEndpointInitialState;
 
       default:
         return state;

@@ -80,6 +80,8 @@ export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlai
 export type HandleUpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
+export type ResetUsersGroup = () => void;
+
 export const getAdminUsersGroup: GetAdminUsersGroup = () => ({
   type: ActionTypeKeys.GET_ADMIN_USERS_GROUP,
   payload: api.getAdminUsersGroup(),
@@ -135,6 +137,10 @@ export const addAdminGroupPermission: AddAdminGroupPermissions = values => ({
 export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP,
   payload: api.updateAdminUsersGroup(values),
+});
+
+export const resetUsersGroup: ResetUsersGroup = () => ({
+  type: ActionTypeKeys.RESET_USERS_GROUP,
 });
 
 export const handleGetAdminUsersGroup: HandleGetAdminUsersGroup = () =>

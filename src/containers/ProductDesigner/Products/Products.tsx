@@ -11,6 +11,7 @@ import {
   HandleDeleteProduct,
   HandleFilterProducts,
   ProductItem,
+  ResetProducts,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -21,6 +22,7 @@ interface ProductsProps {
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
   currentProductName: string;
+  resetProducts: ResetProducts;
 }
 
 export const Products: React.FC<ProductsProps> = ({
@@ -29,7 +31,15 @@ export const Products: React.FC<ProductsProps> = ({
   filterProducts,
   currentProductName,
   deleteProduct,
+  resetProducts,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetProducts();
+    },
+    [resetProducts]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

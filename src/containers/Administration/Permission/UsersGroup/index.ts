@@ -7,6 +7,7 @@ import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleGetAdminUsersGroup,
+  resetUsersGroup,
   selectUsersGroupEditorItems,
 } from 'store/domains';
 
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminUsersGroup: handleGetAdminUsersGroup,
+    resetUsersGroup,
   },
   dispatch
 );

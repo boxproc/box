@@ -4,10 +4,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EventDataElems from './EventDataElems';
 
 import {
-  DictionaryEventDataElemsActionTypes,
   createLoadingSelector,
+  DictionaryEventDataElemsActionTypes,
   handleFilterDictionaryEventDataElems,
   handleGetDictionaryEvents,
+  resetEventDataElems,
   selectDictionaryEventDataElemsItems,
   selectDictionaryEventsOptions,
 } from 'store/domains';
@@ -34,6 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getDictionaryEvents: handleGetDictionaryEvents,
     filterDictionaryEventDataElems: handleFilterDictionaryEventDataElems,
+    resetEventDataElems,
   },
   dispatch
 );

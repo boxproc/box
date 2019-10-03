@@ -48,6 +48,9 @@ const adminUsersGroupReducer =
         return state
           .set('uiItems', action.payload.ui_items);
 
+      case ActionTypeKeys.RESET_USERS_GROUP:
+        return state = adminUsersGroupInitialState;
+
       default:
         return state;
     }

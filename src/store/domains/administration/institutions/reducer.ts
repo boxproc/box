@@ -21,6 +21,9 @@ const adminInstitutionsReducer =
             state.institutions.filter(el => el.id !== action.meta.id)
           );
 
+      case ActionTypeKeys.RESET_INSTITUTIONS:
+        return state = adminInstitutionsInitialState;
+
       default: return state;
     }
   };

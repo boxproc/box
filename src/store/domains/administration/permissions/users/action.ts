@@ -33,6 +33,8 @@ export type HandleUpdateAdminUser = (values: Partial<AdminUserItemDetails>) => T
 export type GetAccessUsers = () => GetAccessUsersAction;
 export type HandleGetAccessUsers = () => Thunk<void>;
 
+export type ResetUsers = () => void;
+
 export const addAdminUser: AddAdminUser = values => ({
   type: ActionTypeKeys.ADD_ADMIN_USER,
   payload: api.addAdminUser(values),
@@ -51,6 +53,10 @@ export const updateAdminUser: UpdateAdminUser = values => ({
 export const getAccessUsers: GetAccessUsers = () => ({
   type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS,
   payload: api.getAdminAccessUsers(),
+});
+
+export const resetUsers: ResetUsers = () => ({
+  type: ActionTypeKeys.RESET_USERS,
 });
 
 export const handleFilterUsers: HandleFilterUsers = () =>

@@ -42,6 +42,8 @@ export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterPrepar
   FilterLedgerCustomersAction;
 export type HandleFilterLedgerCustomers = () => Thunk<void>;
 
+export type ResetCustomers = () => void;
+
 export const deleteLedgerCustomer: DeleteLedgerCustomer = id => ({
   type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER,
   payload: api.deleteLedgerCustomer(id),
@@ -58,10 +60,13 @@ export const updateLedgerCustomers: UpdateLedgerCustomer = values => ({
   payload: api.updateLedgerCustomer(values),
 });
 
-export const filterLedgerCustomers: FilterLedgerCustomers = Filter => ({
+export const filterLedgerCustomers: FilterLedgerCustomers = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS,
-  payload: api.filterLedgerCustomers(Filter),
-  meta: Filter,
+  payload: api.filterLedgerCustomers(filter),
+});
+
+export const resetCustomers: ResetCustomers = () => ({
+  type: ActionTypeKeys.RESET_CUSTOMERS,
 });
 
 export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>

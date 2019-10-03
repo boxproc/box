@@ -7,6 +7,7 @@ import {
   AuditScheduledJobsActionType,
   createLoadingSelector,
   handleFilterAuditScheduledJobs,
+  resetScheduledJobs,
   selectAuditScheduledJobs,
   selectInstitutionsOptions
 } from 'store/domains';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAuditScheduledJobs: handleFilterAuditScheduledJobs,
+    resetScheduledJobs,
   },
   dispatch
 );

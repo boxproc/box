@@ -8,6 +8,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminInstitution,
   handleGetAdminInstitutions,
+  resetInstitutions,
   selectAdminCurrentInstitutionName,
   selectAdminInstitutions,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getAdminInstitutions: handleGetAdminInstitutions,
     deleteAdminInstitution: handleDeleteAdminInstitution,
+    resetInstitutions,
   },
   dispatch
 );

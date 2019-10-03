@@ -14,6 +14,9 @@ const ledgerStatementsReducer =
         return state
           .set('statements', action.payload.statements);
 
+      case ActionTypeKeys.RESET_STATEMENTS:
+        return state = ledgerStatementsInitialState;
+
       default: return state;
     }
   };

@@ -54,19 +54,14 @@ export const selectLedgerCurrentAccount = createSelector(
   }
 );
 
-export const selectLedgerCurrentAccountProductId = createSelector(
-  selectLedgerAccounts,
-  selectActiveItemId,
-  (accounts, activeId) => {
-    const current = accounts.find(account => account.id === activeId);
-
-    return current && current.productId;
-  }
-);
-
 export const selectLedgerCurrentAccountAlias = createSelector(
   selectLedgerCurrentAccount,
   currentAccount => currentAccount && currentAccount.accountAlias
+);
+
+export const selectLedgerCurrentAccountProductOverrideId = createSelector(
+  selectLedgerCurrentAccount,
+  currentAccount => currentAccount && currentAccount.productOverrideId
 );
 
 export const selectLedgerCurrentAccountHasProductOverride = createSelector(

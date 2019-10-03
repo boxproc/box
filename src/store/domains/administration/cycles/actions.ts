@@ -52,6 +52,8 @@ export type HandleGetCyclesDescriptions  = (ids: AdminCyclesEditorIds) => Thunk<
 
 export type ResetCyclesDescriptions = () => ResetCyclesDescriptionsAction;
 
+export type ResetCycles = () => void;
+
 export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
   type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR,
   payload: api.addAdminCyclesEditor(values),
@@ -80,6 +82,10 @@ export const getCyclesDescriptions: GetCyclesDescriptions = ids => ({
 
 export const resetCyclesDescriptions: ResetCyclesDescriptions = () => ({
   type: ActionTypeKeys.RESET_ADMIN_STATEMENTS_DESCRIPTIONS,
+});
+
+export const resetCycles: ResetCycles = () => ({
+  type: ActionTypeKeys.RESET_CYCLES,
 });
 
 export const handleFilterCycles: HandleFilterCycles = () =>

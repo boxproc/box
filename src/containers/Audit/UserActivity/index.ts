@@ -7,6 +7,7 @@ import {
   AuditUserActivityActionType,
   createLoadingSelector,
   handleFilterAuditUserActivity,
+  resetUserActivity,
   selectAuditUserActivity,
   selectInstitutionsOptions
 } from 'store/domains';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAuditUserActivity: handleFilterAuditUserActivity,
+    resetUserActivity,
   },
   dispatch
 );

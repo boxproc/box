@@ -8,6 +8,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminEndpoint,
   handleFilterAdminEndpoint,
+  resetEndpoints,
   selectAdminCurrentEndpointName,
   selectAdminEndpoints,
   selectInstitutionsOptions,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteEndpoint: handleDeleteAdminEndpoint,
     filterAdminEndpoint: handleFilterAdminEndpoint,
+    resetEndpoints,
   },
   dispatch
 );

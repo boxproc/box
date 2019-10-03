@@ -11,6 +11,7 @@ import {
   HandleDeleteAdminSchedulerJob,
   HandleFilterAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
+  ResetScheduler,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -22,6 +23,7 @@ interface SchedulerProps {
   deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
   currentSchedulerJobId: number;
   currentSchedulerName: string;
+  resetScheduler: ResetScheduler;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -31,7 +33,15 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   currentSchedulerJobId,
   deleteAdminSchedulerJob,
   currentSchedulerName,
+  resetScheduler,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetScheduler();
+    },
+    [resetScheduler]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

@@ -17,9 +17,15 @@ export type HandleFilterDictionaryEventDataElems = () => Thunk<void>;
 export type HandleFilterDictionaryEventDataElemsById = (params: DictionaryEventDataElemsFilter) =>
   Thunk<void>;
 
+export type ResetEventDataElems = () => void;
+
 export const filterDictionaryEventDataElems: FilterDictionaryEventDataElems = params => ({
   type: ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS,
   payload: api.filterDictionaryEventDataElems(params),
+});
+
+export const resetEventDataElems: ResetEventDataElems = () => ({
+  type: ActionTypeKeys.RESET_EVENT_DATA_ELEMS,
 });
 
 export const handleFilterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems = () =>

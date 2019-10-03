@@ -27,6 +27,8 @@ export enum ActionTypeKeys {
   'administration/cycles/GET_ADMIN_STATEMENTS_DESCRIPTIONS_REJECTED',
 
   RESET_ADMIN_STATEMENTS_DESCRIPTIONS = 'administration/cycles/RESET_ADMIN_STATEMENTS_DESCRIPTIONS',
+
+  RESET_CYCLES = 'administration/cycles/RESET_CYCLES',
 }
 
 export interface AddAdminCycleEditorAction {
@@ -109,10 +111,15 @@ export interface ResetCyclesDescriptionsAction {
   readonly type: ActionTypeKeys.RESET_ADMIN_STATEMENTS_DESCRIPTIONS;
 }
 
+export interface ResetCyclesAction {
+  readonly type: ActionTypeKeys.RESET_CYCLES;
+}
+
 export type AdminCycleEditorActionTypes =
   | AddAdminCycleEditorFulfilledAction
   | DeleteAdminCycleEditorFulfilledAction
   | UpdateAdminCycleEditorFulfilledAction
   | FilterCyclesFulfilledAction
   | GetCyclesDescriptionsFulfilledAction
-  | ResetCyclesDescriptionsAction;
+  | ResetCyclesDescriptionsAction
+  | ResetCyclesAction;

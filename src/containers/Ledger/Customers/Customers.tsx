@@ -11,6 +11,7 @@ import {
   HandleDeleteLedgerCustomer,
   HandleFilterLedgerCustomers,
   LedgerCustomerItemPrepared,
+  ResetCustomers,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -21,6 +22,7 @@ export interface CustomersProps {
   filterLedgerCustomers: HandleFilterLedgerCustomers;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   ledgerCurrentCustomerName: string;
+  resetCustomers: ResetCustomers;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -29,7 +31,15 @@ const Customers: React.FC<CustomersProps> = ({
   filterLedgerCustomers,
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
+  resetCustomers,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetCustomers();
+    },
+    [resetCustomers]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

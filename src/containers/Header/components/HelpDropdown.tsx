@@ -9,9 +9,7 @@ import { Dropdown, DropdownOption, ExternalLink, HelpCircleIcon } from 'componen
 
 import { basePath, linksConst } from 'consts';
 
-import {
-  UiItemPrepared,
-} from 'store/domains';
+import { UiItemPrepared } from 'store/domains';
 import { stringsUtil } from 'utils';
 
 const HelpIcon = styled(HelpCircleIcon)`

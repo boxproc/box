@@ -15,6 +15,9 @@ const dictionaryEventDataElemsReducer =
         return state
           .set('eventDataElems', action.payload.event_data_elements);
 
+      case ActionTypeKeys.RESET_EVENT_DATA_ELEMS:
+        return state = dictionaryEventsInitialState;
+
       default: return state;
     }
   };

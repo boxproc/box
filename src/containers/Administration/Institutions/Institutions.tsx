@@ -10,6 +10,7 @@ import {
   AdminInstitutionsItemPrepared,
   HandleDeleteAdminInstitution,
   HandleGetAdminInstitutions,
+  ResetInstitutions,
 } from 'store/domains';
 
 export interface InstitutionsProps {
@@ -17,6 +18,7 @@ export interface InstitutionsProps {
   adminInstitutions: Array<AdminInstitutionsItemPrepared>;
   deleteAdminInstitution: HandleDeleteAdminInstitution;
   adminCurrentInstitutionName: string;
+  resetInstitutions: ResetInstitutions;
 }
 
 const Institutions: React.FC<InstitutionsProps> = ({
@@ -24,12 +26,14 @@ const Institutions: React.FC<InstitutionsProps> = ({
   getAdminInstitutions,
   deleteAdminInstitution,
   adminCurrentInstitutionName,
+  resetInstitutions,
 }) => {
   React.useEffect(
     () => {
       getAdminInstitutions();
+      return () => resetInstitutions();
     },
-    [getAdminInstitutions]
+    [getAdminInstitutions, resetInstitutions]
   );
   const contextMenuItems = React.useMemo(
     () => [

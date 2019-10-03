@@ -44,6 +44,8 @@ export type FilterAdminSysProps = (Filter: AdminSysPropFilterPrepared) =>
   FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = () => Thunk<void>;
 
+export type ResetSystemProperties = () => void;
+
 export const deleteAdminSysProp: DeleteAdminSysProp = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
   payload: api.deleteAdminSysProp(id),
@@ -60,9 +62,13 @@ export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
   payload: api.updateAdminSysProps(propValues),
 });
 
-export const filterAdminSysProps: FilterAdminSysProps = Filter => ({
+export const filterAdminSysProps: FilterAdminSysProps = filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
-  payload: api.filterAdminSysProps(Filter),
+  payload: api.filterAdminSysProps(filter),
+});
+
+export const resetSystemProperties: ResetSystemProperties = () => ({
+  type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES,
 });
 
 export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = () =>

@@ -54,6 +54,8 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
+export type ResetScheduler = () => void;
+
 export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
   type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS,
   payload: api.filterAdminSchedulerJobs(params),
@@ -83,6 +85,10 @@ export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues
 export const getSchedulerNamesByInstitutionId: GetSchedulerNamesByInstitutionId = id => ({
   type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID,
   payload: api.getSchedulerNamesByInstitutionId(id),
+});
+
+export const resetScheduler: ResetScheduler = () => ({
+  type: ActionTypeKeys.RESET_SCHEDULER,
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>

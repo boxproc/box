@@ -14,9 +14,15 @@ export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilter
   FilterLedgerTransactionsAction;
 export type HandleFilterLedgerTransactions = () => Thunk<void>;
 
-export const filterLedgerTransactions: FilterLedgerTransactions = Filter => ({
+export type ResetTransactions = () => void;
+
+export const filterLedgerTransactions: FilterLedgerTransactions = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS,
-  payload: api.filterLedgerTransactions(Filter),
+  payload: api.filterLedgerTransactions(filter),
+});
+
+export const resetTransactions: ResetTransactions = () => ({
+  type: ActionTypeKeys.RESET_TRANSACTIONS,
 });
 
 export const handleFilterLedgerTransactions: HandleFilterLedgerTransactions = () =>

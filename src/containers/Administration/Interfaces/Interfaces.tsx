@@ -11,6 +11,7 @@ import {
   AdminInterfaceItemPrepared,
   HandleDeleteAdminInterface,
   HandleFilterAdminInterface,
+  ResetInterfaces,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
@@ -19,6 +20,7 @@ export interface AccountsProps {
   deleteInterface: HandleDeleteAdminInterface;
   filterAdminInterface: HandleFilterAdminInterface;
   institutionsOptions: Array<SelectValues>;
+  resetInterfaces: ResetInterfaces;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
@@ -26,7 +28,15 @@ const Interfaces: React.FC<AccountsProps> = ({
   deleteInterface,
   filterAdminInterface,
   institutionsOptions,
+  resetInterfaces,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetInterfaces();
+    },
+    [resetInterfaces]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

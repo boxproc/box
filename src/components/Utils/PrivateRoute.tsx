@@ -22,6 +22,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
       {...rest}
       exact={exact}
       render={props => {
+        console.log('---', props.location.pathname);
         return (
           isLoggedIn
             ? <Component {...props} />

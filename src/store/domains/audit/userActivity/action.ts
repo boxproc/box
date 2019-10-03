@@ -18,14 +18,20 @@ export type FilterAuditUserActivity = (params: Partial<AuditUserActivityFilterPr
   FilterUserActivityAction;
 export type HandleFilterAuditUserActivity = () => Thunk<void>;
 
+export type ResetUserActivity = () => void;
+
 export const getAuditUsers: GetAuditUsers = institutionId => ({
   type: ActionTypeKeys.GET_AUDIT_USERS,
   payload: api.getAuditUsers(institutionId),
 });
 
-export const filterAuditUserActivity: FilterAuditUserActivity = Filter => ({
+export const filterAuditUserActivity: FilterAuditUserActivity = filter => ({
   type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY,
-  payload: api.filterAuditUserActivity(Filter),
+  payload: api.filterAuditUserActivity(filter),
+});
+
+export const resetUserActivity: ResetUserActivity = () => ({
+  type: ActionTypeKeys.RESET_USER_ACTIVITY,
 });
 
 export const handleGetAuditUsers: HandleGetAuditUsers = institutionId =>

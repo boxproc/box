@@ -6,7 +6,11 @@ import { ScheduledJobsFilter } from './forms';
 
 import { tableColumns } from './components';
 
-import { AuditScheduledJobsItemPrepared, HandleFilterAuditScheduledJobs } from 'store/domains';
+import {
+  AuditScheduledJobsItemPrepared,
+  HandleFilterAuditScheduledJobs,
+  ResetScheduledJobs,
+} from 'store/domains';
 import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
@@ -14,13 +18,22 @@ export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
+  resetScheduledJobs: ResetScheduledJobs;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   institutionsOptions,
   auditScheduledJobs,
   filterAuditScheduledJobs,
+  resetScheduledJobs,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetScheduledJobs();
+    },
+    [resetScheduledJobs]
+  );
+
   return (
     <TablePage
       title="Scheduled Jobs"

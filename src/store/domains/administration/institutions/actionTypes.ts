@@ -22,6 +22,8 @@ export enum ActionTypeKeys {
   'administration/institutions/UPDATE_ADMIN_INSTITUTION_FULFILLED',
   UPDATE_ADMIN_INSTITUTION_REJECTED =
   'administration/institutions/UPDATE_ADMIN_INSTITUTION_REJECTED',
+
+  RESET_INSTITUTIONS = 'administration/institutions/RESET_INSTITUTIONS',
 }
 
 export interface GetAdminInstitutionsAction {
@@ -87,8 +89,13 @@ export interface UpdateAdminInstitutionRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION_REJECTED;
 }
 
+export interface ResetInstitutionsAction {
+  readonly type: ActionTypeKeys.RESET_INSTITUTIONS;
+}
+
 export type AdminInstitutionsActionTypes =
   | GetAdminInstitutionsFulfilledAction
   | AddAdminInstitutionFulfilledAction
   | DeleteAdminInstitutionFulfilledAction
-  | UpdateAdminInstitutionFulfilledAction;
+  | UpdateAdminInstitutionFulfilledAction
+  | ResetInstitutionsAction;

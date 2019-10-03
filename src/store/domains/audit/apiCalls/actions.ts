@@ -23,6 +23,8 @@ export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterPrepared>)
 export type HandleGetDetailsAuditApiCalls = () => Thunk<void>;
 export type GetDetailsAuditApiCalls = (id: number) => GetDetailsAuditApiCallsAction;
 
+export type ResetApiCalls = () => void;
+
 export const filterAuditApiCalls: FilterAuditApiCalls = params => ({
   type: ActionTypeKeys.FILTER_AUDIT_API_CALLS,
   payload: api.filterAuditApiCalls(params),
@@ -31,6 +33,10 @@ export const filterAuditApiCalls: FilterAuditApiCalls = params => ({
 export const getDetailsAuditApiCalls: GetDetailsAuditApiCalls = id => ({
   type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS,
   payload: api.getDetailsAuditApiCalls({ id }),
+});
+
+export const resetApiCalls: ResetApiCalls = () => ({
+  type: ActionTypeKeys.RESET_API_CALLS,
 });
 
 export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = () =>

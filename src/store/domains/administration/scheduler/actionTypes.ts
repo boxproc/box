@@ -39,6 +39,8 @@ export enum ActionTypeKeys {
   'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED',
   GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED =
   'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED',
+
+  RESET_SCHEDULER = 'administration/scheduler/RESET_SCHEDULER',
 }
 
 export interface FilterAdminSchedulerJobsAction {
@@ -132,10 +134,15 @@ export interface GetSchedulerNamesByInstitutionIdRejectedAction {
   readonly type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED;
 }
 
+export interface ResetSchedulerAction {
+  readonly type: ActionTypeKeys.RESET_SCHEDULER;
+}
+
 export type AdminSchedulerJobsActionTypes =
   | FilterAdminSchedulerJobsFulfilledAction
   | AddAdminSchedulerJobFulfilledAction
   | DeleteAdminSchedulerJobFulfilledAction
   | UpdateAdminSchedulerJobFulfilledAction
   | SendAdminSchedulerActionJobFulfilledAction
-  | GetSchedulerNamesByInstitutionIdFulfilledAction;
+  | GetSchedulerNamesByInstitutionIdFulfilledAction
+  | ResetSchedulerAction;

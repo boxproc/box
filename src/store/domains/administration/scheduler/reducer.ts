@@ -27,6 +27,9 @@ const adminSchedulerJobsReducer =
         return state
           .set('schedulerNames', action.payload.scheduler_names);
 
+      case ActionTypeKeys.RESET_SCHEDULER:
+        return state = adminSchedulerJobsInitialState;
+
       default: return state;
     }
   };

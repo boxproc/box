@@ -15,9 +15,15 @@ export type FilterAuditScheduledJobs = (params: Partial<AuditScheduledJobsFilter
   FilterScheduledJobsAction;
 export type HandleFilterAuditScheduledJobs = () => Thunk<void>;
 
-export const filterAuditScheduledJobs: FilterAuditScheduledJobs = Filter => ({
+export type ResetScheduledJobs = () => void;
+
+export const filterAuditScheduledJobs: FilterAuditScheduledJobs = filter => ({
   type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS,
-  payload: api.filterAuditScheduledJobs(Filter),
+  payload: api.filterAuditScheduledJobs(filter),
+});
+
+export const resetScheduledJobs: ResetScheduledJobs = () => ({
+  type: ActionTypeKeys.RESET_SCHEDULED_JOBS,
 });
 
 export const handleFilterAuditScheduledJobs: HandleFilterAuditScheduledJobs = () =>

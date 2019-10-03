@@ -24,6 +24,9 @@ const ledgerAccountsReducer =
         return state
           .set('lastStatement', action.payload.statement);
 
+      case ActionTypeKeys.RESET_ACCOUNTS:
+        return state = ledgerAccountsInitialState;
+
       default: return state;
     }
   };

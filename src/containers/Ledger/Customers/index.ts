@@ -8,6 +8,7 @@ import {
   handleDeleteLedgerCustomer,
   handleFilterLedgerCustomers,
   LedgerCustomersActionTypes,
+  resetCustomers,
   selectInstitutionsOptions,
   selectLedgerCurrentCustomerName,
   selectLedgerCustomers,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCustomers: handleFilterLedgerCustomers,
     deleteLedgerCustomer: handleDeleteLedgerCustomer,
+    resetCustomers,
   },
   dispatch
 );

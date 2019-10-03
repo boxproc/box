@@ -23,13 +23,16 @@ const ledgerCardsReducer =
         // };
 
         return state;
-          // .set(
-          //   'cards',
-          //   [
-          //     ...state.cards.filter(card => card.id !== state.currentCardId).asMutable(),
-          //     updatedCard,
-          //   ].sort((a, b) => (a.id > b.id) ? 1 : -1)
-          // );
+      // .set(
+      //   'cards',
+      //   [
+      //     ...state.cards.filter(card => card.id !== state.currentCardId).asMutable(),
+      //     updatedCard,
+      //   ].sort((a, b) => (a.id > b.id) ? 1 : -1)
+      // );
+
+      case ActionTypeKeys.RESET_CARDS:
+        return state = ledgerCardsInitialState;
 
       default: return state;
     }

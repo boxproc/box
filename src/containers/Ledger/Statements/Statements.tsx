@@ -7,7 +7,11 @@ import { StatementsFilter } from './forms';
 
 import { modalNamesConst } from 'consts';
 
-import { HandleFilterLedgerStatements, LedgerStatementItemPrepared } from 'store/domains';
+import {
+  HandleFilterLedgerStatements,
+  LedgerStatementItemPrepared,
+  ResetStatements,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -17,13 +21,22 @@ export interface StatementsProps {
   ledgerStatements: Array<LedgerStatementItemPrepared>;
   filterLedgerStatements: HandleFilterLedgerStatements;
   institutionsOptions: Array<SelectValues>;
+  resetStatements: ResetStatements;
 }
 
 const Statements: React.FC<StatementsProps> = ({
   ledgerStatements,
   filterLedgerStatements,
   institutionsOptions,
+  resetStatements,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetStatements();
+    },
+    [resetStatements]
+  );
+
   return (
     <TablePage
       title="Statements"

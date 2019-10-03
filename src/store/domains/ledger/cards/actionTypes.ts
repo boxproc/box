@@ -13,6 +13,8 @@ export enum ActionTypeKeys {
   CHANGE_LEDGER_CARD_STATUS = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS',
   CHANGE_LEDGER_CARD_STATUS_FULFILLED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_FULFILLED',
   CHANGE_LEDGER_CARD_STATUS_REJECTED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_REJECTED',
+
+  RESET_CARDS = 'ledger/accounts/RESET_CARDS',
 }
 
 export interface FilterLedgerCardsAction {
@@ -60,7 +62,12 @@ export interface ChangeLedgerCardStatusRejectedAction {
   readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_REJECTED;
 }
 
+export interface ResetCarsAction {
+  readonly type: ActionTypeKeys.RESET_CARDS;
+}
+
 export type LedgerCardsActionTypes =
   | ActivateLedgerCardFulfilledAction
   | FilterLedgerCardsFulfilledAction
-  | ChangeLedgerCardStatusFulfilledAction;
+  | ChangeLedgerCardStatusFulfilledAction
+  | ResetCarsAction;

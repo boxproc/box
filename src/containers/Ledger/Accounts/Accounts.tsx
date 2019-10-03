@@ -12,7 +12,9 @@ import { AccountsFilter } from './forms';
 import {
   HandleAddProductOverride,
   HandleFilterLedgerAccounts,
+  HandleSetActiveItemId,
   LedgerAccountItemPrepared,
+  ResetAccounts,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
@@ -22,6 +24,9 @@ export interface AccountsProps extends WithModalProps {
   addProductOverride: HandleAddProductOverride;
   institutionsOptions: Array<SelectValues>;
   hasProductOverride: boolean;
+  productOverrideId: number;
+  resetAccounts: ResetAccounts;
+  setActiveItemId: HandleSetActiveItemId;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -31,16 +36,29 @@ const Accounts: React.FC<AccountsProps> = ({
   hasProductOverride,
   addProductOverride,
   openModal,
+  resetAccounts,
+  setActiveItemId,
+  productOverrideId,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetAccounts();
+    },
+    [resetAccounts]
+  );
+
   const handleEditOverride = React.useCallback(
     () => {
-      hasProductOverride
-        ? openModal({
+      if (hasProductOverride) {
+        setActiveItemId(productOverrideId);
+        openModal({
           name: modalNamesConst.EDIT_PRODUCT,
-        })
-        : addProductOverride({
+        });
+      } else {
+        addProductOverride({
           withOpenProductModal: true,
         });
+      }
     },
     [openModal, addProductOverride, hasProductOverride]
   );

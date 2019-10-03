@@ -23,6 +23,8 @@ export enum ActionTypeKeys {
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_FULFILLED',
   FILTER_ADMIN_SYS_PROPS_REJECTED =
     'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
+
+  RESET_SYSTEM_PROPERTIES = 'administration/systemProperties/RESET_SYSTEM_PROPERTIES',
 }
 
 export interface DeleteAdminSysPropAction {
@@ -86,8 +88,13 @@ export interface FilterAdminSysPropsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
 }
 
+export interface ResetSystemPropertiesAction {
+  readonly type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES;
+}
+
 export type AdminSysPropsActionTypes =
   | AddAdminSysPropFulfilledAction
   | DeleteAdminSysPropFulfilledAction
   | UpdateAdminSysPropsFulfilledAction
-  | FilterAdminSysPropsFulfilledAction;
+  | FilterAdminSysPropsFulfilledAction
+  | ResetSystemPropertiesAction;

@@ -64,6 +64,8 @@ export enum ActionTypeKeys {
   UPDATE_CARD_SERVICES = 'productDesigner/products/UPDATE_CARD_SERVICES',
   UPDATE_CARD_SERVICES_FULFILLED = 'productDesigner/products/UPDATE_CARD_SERVICES_FULFILLED',
   UPDATE_CARD_SERVICES_REJECTED = 'productDesigner/products/UPDATE_CARD_SERVICES_REJECTED',
+
+  RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
 }
 
 export interface GetInstitutionProductsAction {
@@ -262,6 +264,10 @@ export interface UpdateCardServiceRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
 }
 
+export interface ResetProductsAction {
+  readonly type: ActionTypeKeys.RESET_PRODUCTS;
+}
+
 export type ProductsActionTypes =
   | GetInstitutionProductsFulfilledAction
   | DeleteProductFulfilledAction
@@ -274,4 +280,5 @@ export type ProductsActionTypes =
   | AddProductFulfilledAction
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction
-  | UpdateProductRulesFulfilledAction;
+  | UpdateProductRulesFulfilledAction
+  | ResetProductsAction;

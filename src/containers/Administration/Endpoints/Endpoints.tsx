@@ -11,6 +11,7 @@ import {
   AdminEndpointItemPrepared,
   HandleDeleteAdminEndpoint,
   HandleFilterAdminEndpoint,
+  ResetEndpoints,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
@@ -20,6 +21,7 @@ export interface EndpointsProps {
   adminCurrentEndpointName: string;
   filterAdminEndpoint: HandleFilterAdminEndpoint;
   institutionsOptions: Array<SelectValues>;
+  resetEndpoints: ResetEndpoints;
 }
 
 const Endpoints: React.FC<EndpointsProps> = ({
@@ -28,7 +30,15 @@ const Endpoints: React.FC<EndpointsProps> = ({
   filterAdminEndpoint,
   adminCurrentEndpointName,
   institutionsOptions,
+  resetEndpoints,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetEndpoints();
+    },
+    [resetEndpoints]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

@@ -42,6 +42,8 @@ export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared
   FilterAdminInterfaceAction;
 export type HandleFilterAdminInterface = () => Thunk<void>;
 
+export type ResetInterfaces = () => void;
+
 export const addAdminInterface: AddAdminInterface = values => ({
   type: ActionTypeKeys.ADD_ADMIN_INTERFACE,
   payload: api.addAdminInterface(values),
@@ -53,14 +55,18 @@ export const deleteAdminInterface: DeleteAdminInterface = id => ({
   meta: id,
 });
 
-export const filterAdminInterface: FilterAdminInterface = Filter => ({
+export const filterAdminInterface: FilterAdminInterface = filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_INTERFACE,
-  payload: api.filterAdminInterface(Filter),
+  payload: api.filterAdminInterface(filter),
 });
 
 export const updateAdminInterface: UpdateAdminInterface = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE,
   payload: api.updateAdminInterface(values),
+});
+
+export const resetInterfaces: ResetInterfaces = () => ({
+  type: ActionTypeKeys.RESET_INTERFACES,
 });
 
 export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>

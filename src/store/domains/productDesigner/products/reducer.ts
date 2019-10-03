@@ -51,6 +51,9 @@ const productsReducer =
         return state
           .set('endpoints', action.payload.endpoints);
 
+      case ActionTypeKeys.RESET_PRODUCTS:
+        return state = productsInitialState;
+
       default: return state;
     }
   };

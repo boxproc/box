@@ -129,7 +129,7 @@ export const withEditTable = <OriginProps extends {}>(
         setActiveTableRowIndex(null);
         setActiveItemId(null);
       },
-      [setActiveTableRowIndex, setActiveTableRowIndex]
+      [setActiveTableRowIndex, setActiveItemId]
     );
 
     return (

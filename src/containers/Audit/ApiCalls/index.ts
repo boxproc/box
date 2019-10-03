@@ -7,6 +7,7 @@ import {
   AuditApiCallsActionTypes,
   createLoadingSelector,
   handleFilterAuditApiCalls,
+  resetApiCalls,
   selectAuditApiCalls,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAuditApiCalls: handleFilterAuditApiCalls,
+    resetApiCalls,
   },
   dispatch
 );

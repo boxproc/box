@@ -7,6 +7,7 @@ import {
   createLoadingSelector,
   handleFilterLedgerStatements,
   LedgerStatementsActionTypes,
+  resetStatements,
   selectInstitutionsOptions,
   selectLedgerStatements,
 } from 'store/domains';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerStatements: handleFilterLedgerStatements,
+    resetStatements,
   },
   dispatch
 );

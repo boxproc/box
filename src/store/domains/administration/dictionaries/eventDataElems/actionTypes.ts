@@ -8,6 +8,8 @@ export enum ActionTypeKeys {
   'administration/eventDataElems/FILTER_ADMIN_EVENT_DATA_ELEMS_FULFILLED',
   FILTER_ADMIN_EVENT_DATA_ELEMS_REJECTED =
   'administration/eventDataElems/FILTER_ADMIN_EVENT_DATA_ELEMS_REJECTED',
+
+  RESET_EVENT_DATA_ELEMS = 'administration/eventDataElems/RESET_EVENT_DATA_ELEMS',
 }
 
 export interface FilterDictionaryEventDataElemsAction {
@@ -25,5 +27,10 @@ export interface FilterDictionaryEventDataElemsRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS_REJECTED;
 }
 
+export interface ResetDataElemsAction {
+  readonly type: ActionTypeKeys.RESET_EVENT_DATA_ELEMS;
+}
+
 export type DictionaryEventDataElemsActionTypes =
-  | FilterDictionaryEventDataElemsFulfilledAction;
+  | FilterDictionaryEventDataElemsFulfilledAction
+  | ResetDataElemsAction;

@@ -17,6 +17,8 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
   FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
   FILTER_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_REJECTED',
+
+  RESET_INTERFACES = 'administration/interfaces/RESET_INTERFACES',
 }
 
 export interface AddAdminInterfaceAction {
@@ -80,8 +82,13 @@ export interface FilterAdminInterfaceRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE_REJECTED;
 }
 
+export interface ResetInterfacesAction {
+  readonly type: ActionTypeKeys.RESET_INTERFACES;
+}
+
 export type AdminInterfacesActionTypes =
   | AddAdminInterfaceFulfilledAction
   | DeleteAdminInterfaceFulfilledAction
   | FilterAdminInterfaceFulfilledAction
-  | UpdateAdminInterfaceFulfilledAction;
+  | UpdateAdminInterfaceFulfilledAction
+  | ResetInterfacesAction;

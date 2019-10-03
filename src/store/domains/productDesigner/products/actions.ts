@@ -97,6 +97,8 @@ export type HandleUpdateProductDetails = (values: Partial<ProductItemDetails>) =
 export type UpdateProductRules = (values: ProductRulesItemResp) => UpdateProductRulesAction;
 export type HandleUpdateProductRules = (values: Partial<ProductRulesItem>) => Thunk<void>;
 
+export type ResetProducts = () => void;
+
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
   type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
   payload: api.getInstitutionProducts(id),
@@ -161,6 +163,10 @@ export const updateProductDetails: UpdateProductDetails = values => ({
 export const updateProductRules: UpdateProductRules = values => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_RULES,
   payload: api.updateProductRules(values),
+});
+
+export const resetProducts: ResetProducts = () => ({
+  type: ActionTypeKeys.RESET_PRODUCTS,
 });
 
 export const handleUpdateCardService: HandleUpdateCardService = values =>

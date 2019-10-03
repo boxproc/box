@@ -19,6 +19,9 @@ const adminUserReducer =
         return state
           .set('adminAccessUsers', action.payload.users);
 
+      case ActionTypeKeys.RESET_USERS:
+        return state = adminUserInitialState;
+
       default:
         return state;
     }

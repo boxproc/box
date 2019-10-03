@@ -7,6 +7,7 @@ import {
   createLoadingSelector,
   handleFilterLedgerCards,
   LedgerCardsActionTypes,
+  resetCards,
   selectLedgerCards,
 } from 'store/domains';
 
@@ -24,6 +25,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCards: handleFilterLedgerCards,
+    resetCards,
   },
   dispatch
 );

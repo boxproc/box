@@ -18,6 +18,7 @@ import {
   HandleDeleteAdminSysProp,
   HandleFilterAdminSysProps,
   HandleUpdateAdminSysProps,
+  ResetSystemProperties,
 } from 'store/domains';
 
 import { TableCellType } from 'types';
@@ -28,6 +29,7 @@ interface SystemPropertiesProps {
   updateAdminSysProps: HandleUpdateAdminSysProps;
   adminSysPropsItems: Array<AdminSysPropsItem>;
   currentSysPropId: number | string;
+  resetSystemProperties: ResetSystemProperties;
 }
 
 type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[T]>;
@@ -38,7 +40,15 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   filterAdminSysProps,
   updateAdminSysProps,
   currentSysPropId,
+  resetSystemProperties,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetSystemProperties();
+    },
+    [resetSystemProperties]
+  );
+
   const columns = [
     {
       maxWidth: 300,

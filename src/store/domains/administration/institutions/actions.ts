@@ -40,6 +40,8 @@ export type HandleUpdateAdminInstitution =
 export type DeleteAdminInstitution = (id: number) => DeleteAdminInstitutionAction;
 export type HandleDeleteAdminInstitution = () => Thunk<void>;
 
+export type ResetInstitutions = () => void;
+
 export const getAdminInstitutions: GetAdminInstitutions = () => ({
   type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS,
   payload: api.getAdminInstitutions(),
@@ -59,6 +61,10 @@ export const deleteAdminInstitution: DeleteAdminInstitution = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION,
   payload: api.deleteAdminInstitution(id),
   meta: { id },
+});
+
+export const resetInstitutions: ResetInstitutions = () => ({
+  type: ActionTypeKeys.RESET_INSTITUTIONS,
 });
 
 export const handleGetAdminInstitutions: HandleGetAdminInstitutions = () =>

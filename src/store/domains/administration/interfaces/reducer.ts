@@ -22,6 +22,9 @@ const adminInterfacesReducer =
         return state
           .set('interfaces', action.payload.interfaces);
 
+      case ActionTypeKeys.RESET_INTERFACES:
+        return state = adminInterfaceInitialState;
+
       default:
         return state;
     }

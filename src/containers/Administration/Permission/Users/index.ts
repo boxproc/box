@@ -7,6 +7,7 @@ import {
   AdminUserActionTypes,
   createLoadingSelector,
   handleFilterUsers,
+  resetUsers,
   selectUserEditorItems,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -25,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterUsers: handleFilterUsers,
+    resetUsers,
   },
   dispatch
 );

@@ -8,6 +8,7 @@ import {
   handleDeleteProduct,
   handleFilterProducts,
   ProductsActionTypes,
+  resetProducts,
   selectCurrentProductName,
   selectInstitutionsOptions,
   selectProductItems,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterProducts: handleFilterProducts,
     deleteProduct: handleDeleteProduct,
+    resetProducts,
   },
   dispatch
 );

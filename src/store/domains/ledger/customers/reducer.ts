@@ -21,6 +21,9 @@ const ledgerCustomersReducer =
         return state
           .set('customers', action.payload.customers);
 
+      case ActionTypeKeys.RESET_CUSTOMERS:
+        return state = ledgerCustomersInitialState;
+
       default: return state;
     }
   };

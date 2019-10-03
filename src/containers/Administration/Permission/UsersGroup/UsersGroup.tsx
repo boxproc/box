@@ -6,20 +6,23 @@ import { modalNamesConst } from 'consts';
 
 import { tableColumns } from './components';
 
-import { AdminUsersGroupInfoPlain, HandleGetAdminUsersGroup } from 'store/domains';
+import { AdminUsersGroupInfoPlain, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store/domains';
 
 interface UserFilterProps {
   adminUsersGroupItems: Array<AdminUsersGroupInfoPlain>;
   getAdminUsersGroup: HandleGetAdminUsersGroup;
+  resetUsersGroup: ResetUsersGroup;
 }
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
   getAdminUsersGroup,
   adminUsersGroupItems,
+  resetUsersGroup,
 }) => {
   React.useEffect(
     () => {
       getAdminUsersGroup();
+      return () => resetUsersGroup();
     },
     [getAdminUsersGroup]
   );

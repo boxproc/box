@@ -103,7 +103,7 @@ export enum lenderAccountsPathNames {
   GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
   ORDER_ACCOUNT_CARD = '/ui/ledger/cards/order_card',
   GET_LAST_STATEMENT = '/ui/ledger/accounts/get_last_statement',
-  CREATE_PRODUCT_OVERRIDE = '',
+  CREATE_PRODUCT_OVERRIDE = '/ui/product_designer/products/override/create_product_copy',
 }
 
 export enum lenderCardsPathNames {

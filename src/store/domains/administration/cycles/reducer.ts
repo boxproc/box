@@ -24,6 +24,9 @@ const adminCyclesEditorReducer =
         return state
           .set('cyclesDescriptions', adminCyclesEditorInitialState.cyclesDescriptions);
 
+      case ActionTypeKeys.RESET_CYCLES:
+        return state = adminCyclesEditorInitialState;
+
       default:
         return state;
     }

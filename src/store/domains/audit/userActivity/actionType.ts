@@ -10,6 +10,8 @@ export enum ActionTypeKeys {
   FILTER_AUDIT_USER_ACTIVITY = 'audit/userActivity/FILTER_AUDIT_USER_ACTIVITY',
   FILTER_AUDIT_USER_ACTIVITY_FULFILLED = 'audit/userActivity/FILTER_AUDIT_USER_ACTIVITY_FULFILLED',
   FILTER_AUDIT_USER_ACTIVITY_REJECTED = 'audit/userActivity/FILTER_AUDIT_USER_ACTIVITY_REJECTED',
+
+  RESET_USER_ACTIVITY = 'audit/userActivity/FILTER_AUDIT_USER_ACTIVITY_REJECTED',
 }
 
 export interface GetAuditUsersAction {
@@ -42,6 +44,11 @@ export interface FilterUserActivityRejectedAction {
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_REJECTED;
 }
 
+export interface ResetUSerActivityAction {
+  readonly type: ActionTypeKeys.RESET_USER_ACTIVITY;
+}
+
 export type AuditUserActivityActionTypes =
   | GetAuditUsersFulfilledAction
-  | FilterUserActivityFulfilledAction;
+  | FilterUserActivityFulfilledAction
+  | ResetUSerActivityAction;

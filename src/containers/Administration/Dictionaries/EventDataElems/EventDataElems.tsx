@@ -10,6 +10,7 @@ import {
   DictionaryEventDataElemsItem,
   HandleFilterDictionaryEventDataElems,
   HandleGetDictionaryEvents,
+  ResetEventDataElems,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -19,6 +20,7 @@ interface EventDataElemsProps {
   dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
   dictionaryEventsOptions: Array<SelectValues>;
   filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
+  resetEventDataElems: ResetEventDataElems;
 }
 
 export const EventDataElems: React.FC<EventDataElemsProps> = ({
@@ -26,12 +28,14 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
   dictionaryEventDataElemsItems,
   dictionaryEventsOptions,
   filterDictionaryEventDataElems,
+  resetEventDataElems,
 }) => {
   React.useEffect(
     () => {
       getDictionaryEvents();
+      return () => resetEventDataElems();
     },
-    [getDictionaryEvents]
+    [getDictionaryEvents, resetEventDataElems]
   );
 
   return (

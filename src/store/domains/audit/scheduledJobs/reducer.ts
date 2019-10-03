@@ -16,6 +16,9 @@ const auditScheduledJobsReducer =
         return state
           .set('schedulerJobs', action.payload.scheduler_jobs);
 
+      case ActionTypeKeys.RESET_SCHEDULED_JOBS:
+        return state = auditScheduledJobsInitialState;
+
       default:
         return state;
     }

@@ -7,17 +7,26 @@ import { modalNamesConst } from 'consts';
 import { tableColumns } from './components';
 import { UsersFilter } from './forms';
 
-import { AdminUserItemPrepared, HandleFilterUsers } from 'store/domains';
+import { AdminUserItemPrepared, HandleFilterUsers, ResetUsers } from 'store/domains';
 
 interface UsersProps {
   adminUserItems: Array<AdminUserItemPrepared>;
   filterUsers: HandleFilterUsers;
+  resetUsers: ResetUsers;
 }
 
 export const Users: React.FC<UsersProps> = ({
   adminUserItems,
   filterUsers,
+  resetUsers,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetUsers();
+    },
+    [resetUsers]
+  );
+
   return (
     <TablePage
       title="Users"

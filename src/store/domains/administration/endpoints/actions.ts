@@ -44,6 +44,8 @@ export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<v
 export type GetEndpointsByInstitutionId = (id: string | number) =>
   GetEndpointsByInstitutionIdAction;
 
+export type ResetEndpoints = () => void;
+
 export const addAdminEndpoint: AddAdminEndpoint = values => ({
   type: ActionTypeKeys.ADD_ADMIN_ENDPOINT,
   payload: api.addAdminEndpoint(values),
@@ -55,9 +57,9 @@ export const deleteAdminEndpoint: DeleteAdminEndpoint = id => ({
   meta: id,
 });
 
-export const filterAdminEndpoint: FilterAdminEndpoint = Filter => ({
+export const filterAdminEndpoint: FilterAdminEndpoint = filter => ({
   type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT,
-  payload: api.filterAdminEndpoint(Filter),
+  payload: api.filterAdminEndpoint(filter),
 });
 
 export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
@@ -68,6 +70,10 @@ export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
 export const getEndpointsByInstitutionId: GetEndpointsByInstitutionId = id => ({
   type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID,
   payload: api.getEndpointsByInstitutionId(id),
+});
+
+export const resetEndpoints: ResetEndpoints = () => ({
+  type: ActionTypeKeys.RESET_ENDPOINTS,
 });
 
 export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>

@@ -6,8 +6,6 @@ import { apiClient } from 'services';
 
 import { LedgerAccountItem, LedgerAccountsFilterPrepared } from './types';
 
-// import { throttleUtil } from 'utils';
-
 export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerAccountsFilteredItems, 500);
   apiClient.post(lenderAccountsPathNames.GET, { data });
@@ -16,10 +14,12 @@ export const addLedgerAccount = (data: Partial<LedgerAccountItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE, { data });
 
-export const addProductOverride = (id: number | string) =>
+export const addProductOverride = (accountId: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE_PRODUCT_OVERRIDE, {
-    data: { product_id: id },
+    data: {
+      account_id: accountId,
+    },
   });
 
 export const updateLedgerAccount = (data: Partial<LedgerAccountItem>) =>

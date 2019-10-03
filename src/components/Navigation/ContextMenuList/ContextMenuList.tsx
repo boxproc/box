@@ -72,7 +72,6 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
         id={menuId}
         onHide={onHide}
         onShow={onShow}
-        // hideOnLeave={true}
         className="context-menu"
       >
         {(items && items.length)
