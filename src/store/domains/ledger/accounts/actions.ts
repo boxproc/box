@@ -26,6 +26,7 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
+import { selectLedgerCurrentAccountProductId } from './selectors';
 
 export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCardsAction;
 export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;
@@ -48,7 +49,7 @@ export type HandleFilterLedgerAccounts = () => Thunk<void>;
 export type GetLedgerLastStatement = (accountId: number) => GetLedgerLastStatementAction;
 export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 
-export type AddProductOverride = (productId: number) => AddProductOverrideAction;
+export type AddProductOverride = (productId: number | string) => AddProductOverrideAction;
 export type HandleAddProductOverride = (data?: {withOpenProductModal?: boolean}) => Thunk<void>;
 
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
@@ -171,7 +172,7 @@ export const handleAddProductOverride: HandleAddProductOverride = (withOpenProdu
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = selectLedgerCurrentAccountProductId(state);
 
         await dispatch(addProductOverride(productId));
         await dispatch(handleFilterLedgerAccounts());

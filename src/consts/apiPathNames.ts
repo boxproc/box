@@ -130,7 +130,7 @@ export enum lenderTransactionsPathNames {
 export enum productsPathNames {
   GET_PRODUCTS = '/ui/product_designer/products/get',
   GET_INSTITUTIONS_PRODUCTS = '/ui/service_data/institutions/products/get',
-  GET_PRODUCT = '',
+  GET_PRODUCT = '/ui/product_designer/products/get_product_by_id',
   GET_PRODUCTS_DETAILS = '/ui/product_designer/products/extensions/get',
   GET_PRODUCTS_RULES = '/ui/product_designer/products/rules/get',
   DELETE_PRODUCT = '/ui/product_designer/products/delete',

@@ -16,7 +16,7 @@ export const addLedgerAccount = (data: Partial<LedgerAccountItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE, { data });
 
-export const addProductOverride = (id: number) =>
+export const addProductOverride = (id: number | string) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE_PRODUCT_OVERRIDE, {
     data: { product_id: id },
