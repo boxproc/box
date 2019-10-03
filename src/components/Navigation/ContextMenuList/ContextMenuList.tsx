@@ -83,7 +83,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
             return (
               <MenuItem
                 key={index}
-                // preventClose={true}
+                preventClose={true}
                 data={{
                   name: item.name,
                   action: item.action,

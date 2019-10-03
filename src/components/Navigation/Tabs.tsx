@@ -26,9 +26,11 @@ const TabTitle = styled.div<TabTitleProps>`
   letter-spacing: .5pt;
   border-bottom: 1px solid transparent;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.normalAccent};
-  }
+  ${({ isDisabled, theme }) => !isDisabled && `
+    &:hover {
+      color: ${theme.colors.normalAccent};
+    }
+  `}
 
   .title {
     opacity: ${({ isDisabled }) => isDisabled && .5};

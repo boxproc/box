@@ -57,6 +57,10 @@ export const TableStyled = styled.div<TableStyledProps>`
     box-shadow: none;
   }
 
+  .ReactTable .rt-tbody {
+    overflow: hidden;
+  }
+
   .ReactTable .rt-tbody .rt-tr-group,
   .ReactTable .rt-tbody .rt-tr-group:last-child {
     position: relative;

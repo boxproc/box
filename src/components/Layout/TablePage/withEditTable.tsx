@@ -50,8 +50,7 @@ export const withEditTable = <OriginProps extends {}>(
       contextMenuItems = [],
       ...originProps
     } = props;
-
-    const [currentId, setCurrentId] = React.useState(null);
+    const [isContextMenuVisible, setIsContextMenuVisible] = React.useState(false);
 
     const openCurrentRowInModal = React.useCallback(
       () => handleOpenModal({
@@ -60,7 +59,8 @@ export const withEditTable = <OriginProps extends {}>(
       [handleOpenModal, editModalName]
     );
 
-    const onContextMenuClick = (e: Event, value: ContextMenuItem) =>
+    const onContextMenuClick = (e: Event, value: ContextMenuItem) => {
+      setIsContextMenuVisible(false);
       value.withConfirmation
         ? handleOpenModal({
           name: modalNamesConst.CONFIRMATION_MODAL,
@@ -71,6 +71,7 @@ export const withEditTable = <OriginProps extends {}>(
           },
         })
         : value.action();
+    };
 
     let menuItems = [...contextMenuItems];
 
@@ -104,11 +105,11 @@ export const withEditTable = <OriginProps extends {}>(
           onContextMenu: () => {
             if (menuItems.length && !isLocked) {
               setActiveItemId(id);
-              setCurrentId(id);
+              setIsContextMenuVisible(true);
               setActiveTableRowIndex(rowIndex);
             } else {
               setActiveItemId(null);
-              setCurrentId(null);
+              setIsContextMenuVisible(false);
               setActiveTableRowIndex(null);
             }
           },
@@ -123,9 +124,12 @@ export const withEditTable = <OriginProps extends {}>(
       ]
     );
 
-    const handleRemoveActiveRowIndex = React.useCallback(
-      () => setActiveTableRowIndex(null),
-      [setActiveTableRowIndex]
+    const handleRemoveActiveIds = React.useCallback(
+      () => {
+        setActiveTableRowIndex(null);
+        setActiveItemId(null);
+      },
+      [setActiveTableRowIndex, setActiveTableRowIndex]
     );
 
     return (
@@ -141,8 +145,8 @@ export const withEditTable = <OriginProps extends {}>(
           menuId="tableContextMenu"
           onClick={onContextMenuClick}
           items={menuItems}
-          isVisible={currentId}
-          onHide={handleRemoveActiveRowIndex}
+          isVisible={isContextMenuVisible}
+          onHide={handleRemoveActiveIds}
         />
       </React.Fragment>
     );

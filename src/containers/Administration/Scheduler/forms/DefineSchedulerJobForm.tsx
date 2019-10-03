@@ -207,7 +207,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
 
 export default reduxForm<{}, DefineSchedulerJobFormProps>({
   form: formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB,
-  keepDirtyOnReinitialize: true,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineSchedulerJobForm);
