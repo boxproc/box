@@ -7,7 +7,15 @@ export interface AdminUsersGroupInfoPlainResp extends InfoPlain {
   institution_id: number | string;
 }
 
-export interface AdminUsersGroupInfoPlain extends InfoPlain {
+export interface AdminUsersGroupInfoResp extends AdminUsersGroupInfoPlainResp {
+  institution_name: string;
+}
+
+export interface AdminUsersGroupInfoPlain extends AdminUsersGroupInfoResp {
+  institutionName: string;
+}
+
+export interface AdminUsersGroupInfo extends InfoPlain {
   institutionId: number | string;
 }
 
@@ -83,7 +91,7 @@ export interface AdminUserGroupMembersDelete {
 }
 
 export interface AdminUsersGroupState {
-  usersGroups: ImmutableArray<AdminUsersGroupInfoPlainResp>;
+  usersGroups: ImmutableArray<AdminUsersGroupInfoResp>;
   userGroupMembers: ImmutableArray<AdminUserGroupMember>;
   allActiveUsers: ImmutableArray<AdminUserGroupMember>;
   groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;

@@ -154,7 +154,7 @@ export const handleGetCyclesDescriptions: HandleGetCyclesDescriptions = ids =>
       async () => {
         const prepared = prepareIdsToGetDesc(ids);
 
-        if (ids.institutionId && ids.productId) {
+        if (ids.institutionId) {
           await dispatch(getCyclesDescriptions(prepared));
         } else {
           dispatch(resetCyclesDescriptions());

@@ -60,7 +60,7 @@ const Accounts: React.FC<AccountsProps> = ({
         });
       }
     },
-    [openModal, addProductOverride, hasProductOverride]
+    [openModal, addProductOverride, hasProductOverride, productOverrideId, setActiveItemId]
   );
 
   const contextMenuItems = React.useMemo(

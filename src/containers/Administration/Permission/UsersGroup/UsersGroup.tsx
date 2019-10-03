@@ -24,7 +24,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       getAdminUsersGroup();
       return () => resetUsersGroup();
     },
-    [getAdminUsersGroup]
+    [getAdminUsersGroup, resetUsersGroup]
   );
 
   return (

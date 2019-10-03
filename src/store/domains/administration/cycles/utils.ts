@@ -113,6 +113,5 @@ export const prepareIdsToGetDesc = (ids: AdminCyclesEditorIds): AdminCyclesEdito
 
   return {
     institution_id: ids.institutionId,
-    product_id: ids.productId,
   };
 };

@@ -28,6 +28,7 @@ export const selectUsersGroupEditorItems = createSelector(
     return {
       ...item,
       institutionId: item.institution_id,
+      institutionName: item.institution_name,
     };
   })
 );
@@ -92,11 +93,15 @@ export const selectUsersGroupValues = createSelector(
   selectAdminInstitutionsOptions,
   selectActiveItemId,
   (items, institutions, currentId) => {
-    const current = items && items.find(item => item.id === currentId);
+    if (!items) {
+      return null;
+    }
+
+    const current = items.find(item => item.id === currentId);
 
     return {
-      id: current.id,
-      name: current.name,
+      id: current && current.id,
+      name: current && current.name,
       institutionId: institutions.find(el => el.value === current.institution_id),
     };
   }

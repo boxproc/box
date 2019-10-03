@@ -51,12 +51,10 @@ export interface AdminCyclesEditorDataResp extends ResponseStatusType {
 
 export interface AdminCyclesEditorIds {
   institutionId: number | string;
-  productId: number | string;
 }
 
 export interface AdminCyclesEditorIdsPrepared {
   institution_id: number | string;
-  product_id: number | string;
 }
 
 export interface AdminCyclesDescriptions extends ResponseStatusType {

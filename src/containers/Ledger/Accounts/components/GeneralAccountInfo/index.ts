@@ -34,8 +34,7 @@ const mapStateToProps = (state: StoreState) => ({
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   formValues: formSelector(
     state,
-    'institutionId',
-    'productName'
+    'institutionId'
   ),
 });
 

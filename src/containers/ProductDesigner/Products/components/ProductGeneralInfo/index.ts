@@ -5,7 +5,6 @@ import ProductGeneralInfo from './ProductGeneralInfo';
 
 import {
   handleGetCyclesDescriptions,
-  selectActiveItemId,
   selectCurrentInstitutionId,
   selectCyclesDescriptionsOptions,
   selectInstitutionsOptions,
@@ -16,7 +15,6 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   cycleStatementsOptions: selectCyclesDescriptionsOptions(state),
   currentInstitutionId: selectCurrentInstitutionId(state),
-  currentProductId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

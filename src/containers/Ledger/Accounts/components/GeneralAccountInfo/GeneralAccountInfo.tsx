@@ -23,7 +23,6 @@ export interface CustomerInfoProps {
   cyclesDescriptionsOptions: Array<SelectValues>;
   formValues: {
     institutionId: SelectValues,
-    productName: SelectValues;
   };
   isEditMode: boolean;
   hasProductOverride: boolean;
@@ -41,7 +40,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   isEditMode = false,
   hasProductOverride,
 }) => {
-  const { institutionId, productName } = formValues;
+  const { institutionId } = formValues;
 
   React.useEffect(
     () => {
@@ -56,10 +55,9 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
     () => {
       getCyclesDescriptions({
         institutionId: institutionId && institutionId.value,
-        productId: productName && productName.value,
       });
     },
-    [institutionId, productName, getCyclesDescriptions]
+    [institutionId, getCyclesDescriptions]
   );
 
   return (

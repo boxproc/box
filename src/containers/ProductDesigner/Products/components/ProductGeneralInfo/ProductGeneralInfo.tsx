@@ -21,7 +21,6 @@ interface ProductGeneralInfoProps {
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   cycleStatementsOptions: Array<SelectValues>;
   currentInstitutionId: number;
-  currentProductId: number;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
@@ -34,16 +33,14 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   getCyclesDescriptions,
   cycleStatementsOptions,
   currentInstitutionId,
-  currentProductId,
 }) => {
   React.useEffect(
     () => {
       getCyclesDescriptions({
         institutionId: currentInstitutionId,
-        productId: currentProductId,
       });
     },
-    [getCyclesDescriptions, currentInstitutionId, currentProductId]
+    [getCyclesDescriptions, currentInstitutionId]
   );
 
   return (
