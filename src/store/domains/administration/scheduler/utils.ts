@@ -29,7 +29,7 @@ export const prepareValuesToSend =
     };
   };
 export const prepareValuesToSendActions =
-  (values: Partial<AdminSchedulerJobActionPrepared>) => {
+  (values: AdminSchedulerJobActionPrepared) => {
     return {
       task_id: values.taskId,
       task_command: values.taskCommand,

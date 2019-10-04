@@ -40,9 +40,9 @@ export type HandleAddAdminSchedulerJob = (values: Partial<AdminSchedulerEditable
 export type DeleteAdminSchedulerJob = (id: number) => DeleteAdminSchedulerJobAction;
 export type HandleDeleteAdminSchedulerJob = () => Thunk<void>;
 
-export type SendAdminSchedulerAction =
-  (values: Partial<AdminSchedulerJobAction>) => SendAdminSchedulerActionJobAction;
-export type HandleSendAdminSchedulerAction = (values: Partial<AdminSchedulerJobActionPrepared>) =>
+export type SendAdminSchedulerAction = (values: Partial<AdminSchedulerJobAction>) =>
+  SendAdminSchedulerActionJobAction;
+export type HandleSendAdminSchedulerAction = (values: AdminSchedulerJobActionPrepared) =>
   Thunk<void>;
 
 export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
@@ -69,7 +69,7 @@ export const addAdminSchedulerJob: AddAdminSchedulerJob = values => ({
 export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS,
   payload: api.deleteAdminSchedulerJob(id),
-  meta: id,
+  meta: { id },
 });
 
 export const sendAdminSchedulerAction: SendAdminSchedulerAction = values => ({

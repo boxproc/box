@@ -9,4 +9,5 @@ export enum iconNamesConst {
   SMARTPHONE = 'smartphone',
   QRCODE = 'qrcode',
   USER = 'user',
+  STOP = 'stop',
 }

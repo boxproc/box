@@ -4,13 +4,15 @@ import { withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, ExternalLink, T2 } from 'components';
+import { Button, CountDownTimer, ExternalLink, T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
 import Filter from './Filter';
+
+import { StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItem } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
@@ -24,6 +26,8 @@ interface TablePageProps extends RouteComponentProps, WithModalProps {
   contextMenuItems?: Array<ContextMenuItem>;
   filterAction?: () => void;
   initialFilterValues?: object;
+  isAutoRefresh?: boolean;
+  stopAutoRefresh: StopAutoRefresh;
 }
 
 export const TablePage: React.FC<TablePageProps> = props => {
@@ -37,8 +41,19 @@ export const TablePage: React.FC<TablePageProps> = props => {
     openModal,
     newModalName,
     location,
+    isAutoRefresh,
+    stopAutoRefresh,
     ...tablePageProps
   } = props;
+
+  React.useEffect(
+    () => {
+      const timer = isAutoRefresh && setInterval(() => filterAction(), 5000);
+
+      return () => clearInterval(timer);
+    },
+    [isAutoRefresh, filterAction]
+  );
 
   const handleOpenModal = React.useCallback(
     () => openModal({
@@ -84,15 +99,32 @@ export const TablePage: React.FC<TablePageProps> = props => {
           {FilterForm}
         </Filter>
       )}
-      {newModalName && (
-        <Box mb="7px">
-          <Button
-            text="Add New"
-            iconName={iconNamesConst.PLUS}
-            onClick={handleOpenModal}
-          />
-        </Box>
-      )}
+      <Flex alignItems="center">
+        {newModalName && (
+          <Box mb="7px">
+            <Button
+              text="Add New"
+              iconName={iconNamesConst.PLUS}
+              onClick={handleOpenModal}
+            />
+          </Box>
+        )}
+        {isAutoRefresh && (
+          <Box mb="7px" ml="20px">
+            <Flex alignItems="flex-end">
+              <CountDownTimer seconds={5} />
+              <Box ml="5px">
+                <Button
+                  text="Stop Auto Refreshing"
+                  size="11"
+                  iconName={iconNamesConst.STOP}
+                  onClick={stopAutoRefresh}
+                />
+              </Box>
+            </Flex>
+          </Box>
+        )}
+      </Flex>
       <EditableTable
         data={data}
         columns={columns}

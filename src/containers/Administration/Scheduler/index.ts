@@ -13,6 +13,7 @@ import {
   selectActiveItemId,
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
+  startAutoRefresh,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     sendAdminSchedulerAction: handleSendAdminSchedulerAction,
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
     resetScheduler,
+    startAutoRefresh,
   },
   dispatch
 );

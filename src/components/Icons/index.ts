@@ -17,6 +17,7 @@ import { Qrcode as QrcodeIcon } from 'styled-icons/icomoon/Qrcode';
 import { ArrowDropDown as ArrowDropDownIcon } from 'styled-icons/material/ArrowDropDown';
 import { Delete as DeleteIcon } from 'styled-icons/material/Delete';
 import { Smartphone as SmartphoneIcon } from 'styled-icons/material/Smartphone';
+import { Stop as StopIcon } from 'styled-icons/material/Stop';
 import { Calendar as CalendarIcon } from 'styled-icons/octicons/Calendar';
 import { CheckedBoxIcon, UncheckedBoxIcon } from './Icons';
 
@@ -43,4 +44,5 @@ export {
   ArrowDropDownIcon,
   LinkExternalIcon,
   InfoCircleIcon,
+  StopIcon,
 };

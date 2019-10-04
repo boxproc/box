@@ -28,6 +28,7 @@ export default interface Theme {
   shadows: {
     normalBox: string;
     bottomBox: string;
+    aroundBox: string;
   };
 }
 
@@ -57,5 +58,6 @@ export const theme: Theme = {
   shadows: {
     normalBox: '0 2px 4px 0 rgba(0, 0, 0, .1)',
     bottomBox: '0 3px 3px 0 rgba(0, 0, 0, .1)',
+    aroundBox: '0 0px 4px 0 rgba(0, 0, 0, .1)',
   },
 };

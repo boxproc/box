@@ -34,7 +34,7 @@ export const handleSendNotification: SendNotification =
         } else {
           dispatch(getNotification(
             `${res && res.statusCode ? res.statusCode : ''} Error`,
-            res ? JSON.stringify(res.error.message) : 'An error occurred.'
+            res ? JSON.stringify(res) : 'An error occurred.'
           ));
         }
       }

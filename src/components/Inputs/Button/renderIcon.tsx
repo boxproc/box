@@ -10,6 +10,7 @@ import {
   PlusIcon,
   QrcodeIcon,
   SmartphoneIcon,
+  StopIcon,
   UserIcon,
 } from 'components';
 
@@ -33,6 +34,8 @@ export const renderIcon = (name: string) => {
       return (<Box mt="-1px" mr="3px"><QrcodeIcon size="14" /></Box>);
     case iconNamesConst.USER:
       return (<Box mt="-2px" mr="2px"><UserIcon size="12" /></Box>);
+    case iconNamesConst.STOP:
+      return (<Box mt="-3.5px"><StopIcon size="20" /></Box>);
     default:
       return null;
   }

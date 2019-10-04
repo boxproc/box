@@ -127,9 +127,9 @@ export const withEditTable = <OriginProps extends {}>(
     const handleRemoveActiveIds = React.useCallback(
       () => {
         setActiveTableRowIndex(null);
-        setActiveItemId(null);
+        // setActiveItemId(null);
       },
-      [setActiveTableRowIndex, setActiveItemId]
+      [setActiveTableRowIndex]
     );
 
     return (

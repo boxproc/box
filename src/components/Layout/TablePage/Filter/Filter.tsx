@@ -8,6 +8,9 @@ import styled from 'theme';
 import { Button, T3 } from 'components';
 
 import { formNamesConst, uiItemConsts } from 'consts';
+
+import { StopAutoRefresh } from 'store/domains';
+
 import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`
@@ -21,6 +24,8 @@ const FilterWrapper = styled.div`
 interface FilterProps {
   filterAction: () => void;
   filterValues: object;
+  stopAutoRefresh: StopAutoRefresh;
+  isAutoRefresh: boolean;
 }
 
 type FilterAllProps = FilterProps & InjectedFormProps<{}, FilterProps>;
@@ -31,10 +36,16 @@ const Filter: React.FC<FilterAllProps> = ({
   handleSubmit,
   invalid,
   filterValues,
+  stopAutoRefresh,
+  isAutoRefresh,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
       filterAction();
+
+      if (isAutoRefresh) {
+        stopAutoRefresh();
+      }
 
       cookiesUtil.set(
         window.location.pathname,
@@ -44,7 +55,7 @@ const Filter: React.FC<FilterAllProps> = ({
         }
       );
     }),
-    [handleSubmit, filterAction]
+    [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );
 
   const hasInstitution = filterValues && filterValues['institutionId'];

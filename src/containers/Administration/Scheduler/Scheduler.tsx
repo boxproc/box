@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TablePage, withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, schedulerTasksNames } from 'consts';
 
 import { tableColumns } from 'containers/Administration/Scheduler/components';
 
@@ -12,6 +12,7 @@ import {
   HandleFilterAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
+  StartAutoRefresh,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -24,6 +25,7 @@ interface SchedulerProps {
   currentSchedulerJobId: number;
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
+  startAutoRefresh: StartAutoRefresh;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -34,6 +36,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
+  startAutoRefresh,
 }) => {
   React.useEffect(
     () => {
@@ -48,25 +51,28 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         name: 'Execute now',
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
+          taskCommand: schedulerTasksNames.EXECUTE_TASK,
         }),
         withConfirmation: true,
         confirmationText: 'Execute now?',
       },
       {
-        name: 'Execute now and refresh table ',
-        action: () => sendAdminSchedulerAction(
-          {
+        name: 'Execute now and refresh table',
+        action: () => {
+          sendAdminSchedulerAction({
             taskId: currentSchedulerJobId,
-            taskCommand: 'execute_task',
-          }
-        ),
+            taskCommand: schedulerTasksNames.EXECUTE_TASK,
+          });
+          startAutoRefresh();
+        },
+        withConfirmation: true,
+        confirmationText: 'Execute now and refresh table?',
       },
       {
         name: 'Stop job',
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
+          taskCommand: schedulerTasksNames.STOP,
         }),
         withConfirmation: true,
         confirmationText: 'Stop job?',
@@ -75,7 +81,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         name: 'Start job',
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
+          taskCommand: schedulerTasksNames.START,
         }),
         withConfirmation: true,
         confirmationText: 'Start job?',
@@ -84,7 +90,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         name: 'Pause job',
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
+          taskCommand: schedulerTasksNames.PAUSE,
         }),
         withConfirmation: true,
         confirmationText: 'Pause job?',
@@ -93,14 +99,14 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         name: 'Resume job',
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: 'execute_task',
+          taskCommand: schedulerTasksNames.RESUME,
         }),
         withConfirmation: true,
         confirmationText: 'Resume job?',
       },
       {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteAdminSchedulerJob,
         withConfirmation: true,
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
@@ -111,6 +117,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
+      startAutoRefresh,
     ]
   );
 

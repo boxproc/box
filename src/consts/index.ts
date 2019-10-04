@@ -21,20 +21,14 @@ export enum maskFormat {
   PHONE = '+99 99 9999 9999',
 }
 
-export enum codeKeys {
-  ENTER = 'Enter',
-  ESCAPE = 'Escape',
-  BACKSPACE = 'Backspace',
-}
-
-export enum statusCodes {
-  NO_SESSION_ID = 1,
-  NO_SESSION = 3,
-  USER_NOT_AUTH = 4,
-  SESSION_TIMEOUT = 5,
-  INCORRECT_PASSWORD = 15,
-}
-
 export enum usernames {
   ADMIN = 'admin',
+}
+
+export enum schedulerTasksNames {
+  START = 'start',
+  STOP = 'stop',
+  RESUME = 'resume',
+  PAUSE = 'pause',
+  EXECUTE_TASK = 'execute_task',
 }
