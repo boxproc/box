@@ -27,6 +27,9 @@ const utilsReducer =
       case ActionTypeKeys.STOP_AUTO_REFRESH:
         return state.set('isAutoRefresh', false);
 
+      case ActionTypeKeys.RESET_UTILS:
+        return state = utilsInitialState;
+
       default: return state;
     }
   };

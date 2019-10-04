@@ -9,6 +9,8 @@ export type HandleSetActiveItemId = (id: number | string) => void;
 export type StartAutoRefresh = () => void;
 export type StopAutoRefresh = () => void;
 
+export type ResetUtils = () => void;
+
 export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
   type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX,
   payload: index,
@@ -25,6 +27,10 @@ export const startAutoRefresh: StartAutoRefresh = () => ({
 
 export const stopAutoRefresh: StopAutoRefresh = () => ({
   type: ActionTypeKeys.STOP_AUTO_REFRESH,
+});
+
+export const resetUtils: ResetUtils = () => ({
+  type: ActionTypeKeys.RESET_UTILS,
 });
 
 export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index =>

@@ -12,7 +12,7 @@ import { iconNamesConst } from 'consts';
 import EditableTable from './EditableTable';
 import Filter from './Filter';
 
-import { StopAutoRefresh } from 'store/domains';
+import { ResetUtils, StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItem } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
@@ -28,6 +28,7 @@ interface TablePageProps extends RouteComponentProps, WithModalProps {
   initialFilterValues?: object;
   isAutoRefresh?: boolean;
   stopAutoRefresh: StopAutoRefresh;
+  resetUtils: ResetUtils;
 }
 
 export const TablePage: React.FC<TablePageProps> = props => {
@@ -43,6 +44,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     location,
     isAutoRefresh,
     stopAutoRefresh,
+    resetUtils,
     ...tablePageProps
   } = props;
 
@@ -53,6 +55,13 @@ export const TablePage: React.FC<TablePageProps> = props => {
       return () => clearInterval(timer);
     },
     [isAutoRefresh, filterAction]
+  );
+
+  React.useEffect(
+    () => {
+      return () => resetUtils();
+    },
+    [resetUtils]
   );
 
   const handleOpenModal = React.useCallback(
