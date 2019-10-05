@@ -77,7 +77,7 @@ export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteLedgerCustomer(id));
-        await dispatch(closeModal(modalNamesConst.EDIT_LEDGER_CUSTOMER));
+        dispatch(closeModal(modalNamesConst.EDIT_LEDGER_CUSTOMER));
       },
       dispatch
     );
@@ -90,7 +90,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerCustomer(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
+        dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
         await dispatch(handleFilterLedgerCustomers());
         await dispatch(resetForm(formNamesConst.ADD_LEDGER_CUSTOMER));
       },

@@ -1,4 +1,10 @@
-import { ActionTypeKeys, SetActiveItemIdAction, SetActiveTableRowIndexAction } from './actionTypes';
+import {
+  ActionTypeKeys,
+  SetActiveItemIdAction,
+  SetActiveTableRowIndexAction,
+  StartAutoRefreshAction,
+  StopAutoRefreshAction,
+} from './actionTypes';
 
 export type SetActiveTableRowIndex = (index: number) => SetActiveTableRowIndexAction;
 export type HandleSetActiveTableRowIndex = (index: number) => void;
@@ -6,8 +12,8 @@ export type HandleSetActiveTableRowIndex = (index: number) => void;
 export type SetActiveItemId = (id: number | string) => SetActiveItemIdAction;
 export type HandleSetActiveItemId = (id: number | string) => void;
 
-export type StartAutoRefresh = () => void;
-export type StopAutoRefresh = () => void;
+export type StartAutoRefresh = () => StartAutoRefreshAction;
+export type StopAutoRefresh = () => StopAutoRefreshAction;
 
 export type ResetUtils = () => void;
 

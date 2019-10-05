@@ -111,7 +111,7 @@ export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEdito
         const preparedValues = prepareAdminCyclesEditorValuesToSend(cycleEditorRecords);
 
         await dispatch(addAdminCyclesEditor(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_CYCLE_EDITOR));
+        dispatch(closeModal(modalNamesConst.ADD_ADMIN_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
         await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR));
       },
@@ -127,7 +127,7 @@ export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminCyclesEditor(id));
-        await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
+        dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },
       dispatch
@@ -141,7 +141,7 @@ export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = valu
         const preparedValues = prepareAdminCyclesEditorValuesToSend(values);
 
         await dispatch(updateAdminCyclesEditor(preparedValues));
-        await dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
+        dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },
       dispatch

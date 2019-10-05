@@ -238,7 +238,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteProduct(id));
-        await dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
+        dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
       },
       dispatch
     );
@@ -294,7 +294,7 @@ export const handleAddProduct: HandleAddProduct = values =>
         const preparedValues = prepareNewProductValuesToSend(values);
 
         await dispatch(addProduct(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
+        dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
         await dispatch(handleFilterProducts());
       },
       dispatch

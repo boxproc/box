@@ -154,7 +154,7 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addLedgerAccount(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
+        dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
         await dispatch(handleFilterLedgerAccounts());
         await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
       },
@@ -184,8 +184,8 @@ export const handleAddProductOverride: HandleAddProductOverride = (withOpenProdu
         await dispatch(handleFilterLedgerAccounts());
 
         if (withOpenProductModal) {
-          await dispatch(setActiveItemId(res.value.id));
-          await dispatch(openModal({
+          dispatch(setActiveItemId(res.value.id));
+          dispatch(openModal({
             name: modalNamesConst.EDIT_PRODUCT,
           }));
         }

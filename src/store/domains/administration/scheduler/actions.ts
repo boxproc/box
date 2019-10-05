@@ -4,7 +4,7 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
@@ -42,7 +42,10 @@ export type HandleDeleteAdminSchedulerJob = () => Thunk<void>;
 
 export type SendAdminSchedulerAction = (values: Partial<AdminSchedulerJobAction>) =>
   SendAdminSchedulerActionJobAction;
-export type HandleSendAdminSchedulerAction = (values: AdminSchedulerJobActionPrepared) =>
+export type HandleSendAdminSchedulerAction = (
+  values: AdminSchedulerJobActionPrepared,
+  params?: { withAutoRefresh?: boolean }
+) =>
   Thunk<void>;
 
 export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
@@ -111,7 +114,7 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.ADD_ADMIN_SCHEDULER));
         await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
         await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB));
@@ -127,7 +130,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =
         const state = getState();
         const id = selectActiveItemId(state);
 
-        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(handleFilterAdminSchedulerJobs());
       },
@@ -141,7 +144,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
       },
@@ -149,14 +152,19 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
     );
   };
 
-export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = values =>
+export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = (values, params) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareValuesToSendActions(values);
+        const { withAutoRefresh } = params;
 
         await dispatch(sendAdminSchedulerAction(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
+
+        if (withAutoRefresh) {
+          dispatch(startAutoRefresh());
+        }
       },
       dispatch
     );

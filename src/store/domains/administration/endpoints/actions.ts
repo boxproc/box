@@ -99,7 +99,7 @@ export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminEndpoint(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_ENDPOINT));
+        dispatch(closeModal(modalNamesConst.ADD_ADMIN_ENDPOINT));
         await dispatch(handleFilterAdminEndpoint());
         await dispatch(resetForm(formNamesConst.ADMIN_ENDPOINT));
       },
@@ -116,7 +116,7 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
 
         await dispatch(deleteAdminEndpoint(id));
         await dispatch(handleFilterAdminEndpoint());
-        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_ENDPOINT));
+        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_ENDPOINT));
       },
       dispatch
     );

@@ -92,7 +92,7 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
         const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
 
         await dispatch(addAdminSysProp(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY));
+        dispatch(closeModal(modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY));
         await dispatch(handleFilterAdminSysProps());
         await dispatch(resetForm(formNamesConst.ADD_ADMIN_SYSTEM_PROPERTY));
       },

@@ -12,7 +12,6 @@ import {
   HandleFilterAdminSchedulerJobs,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
-  StartAutoRefresh,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -25,7 +24,6 @@ interface SchedulerProps {
   currentSchedulerJobId: number;
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
-  startAutoRefresh: StartAutoRefresh;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -36,7 +34,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
-  startAutoRefresh,
 }) => {
   React.useEffect(
     () => {
@@ -58,13 +55,14 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: 'Execute now and refresh table',
-        action: () => {
-          sendAdminSchedulerAction({
+        action: () => sendAdminSchedulerAction(
+          {
             taskId: currentSchedulerJobId,
             taskCommand: schedulerTasksNames.EXECUTE_TASK,
-          });
-          startAutoRefresh();
-        },
+          },
+          {
+            withAutoRefresh: true,
+          }),
         withConfirmation: true,
         confirmationText: 'Execute now and refresh table?',
       },
@@ -117,7 +115,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
-      startAutoRefresh,
     ]
   );
 

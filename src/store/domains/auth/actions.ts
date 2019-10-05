@@ -102,7 +102,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         setUserDataToStorage(selectLoginData(state));
 
         if (selectIs2faAuthenticationPending(state)) {
-          await dispatch(openModal({
+          dispatch(openModal({
             name: modalNamesConst.LOGIN_CODE_2FA_MODAL,
           }));
         } else {
@@ -122,7 +122,7 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
         const state = getState();
         setUserDataToStorage(selectLoginData(state));
 
-        await dispatch(closeModal(modalNamesConst.LOGIN_CODE_2FA_MODAL));
+        dispatch(closeModal(modalNamesConst.LOGIN_CODE_2FA_MODAL));
         dispatch(push(basePath));
       },
       dispatch
@@ -173,7 +173,7 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(userConfirmAuthKey({ confirm: 'Y' }));
-        await dispatch(closeModal(modalNamesConst.REGISTER_2FA_MODAL));
+        dispatch(closeModal(modalNamesConst.REGISTER_2FA_MODAL));
         await dispatch(handleUserLogout());
       },
       dispatch

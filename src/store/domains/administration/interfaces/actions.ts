@@ -92,7 +92,7 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminInterface(preparedValues));
-        await dispatch(closeModal(modalNamesConst.ADD_ADMIN_INTERFACE));
+        dispatch(closeModal(modalNamesConst.ADD_ADMIN_INTERFACE));
         await dispatch(handleFilterAdminInterface());
         await dispatch(resetForm(formNamesConst.ADMIN_INTERFACE));
       },
@@ -108,7 +108,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminInterface(id));
-        await dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INTERFACE));
+        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INTERFACE));
         await dispatch(handleFilterAdminInterface());
       },
       dispatch
