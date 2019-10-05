@@ -309,7 +309,7 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
 
         await dispatch(updateProduct(preparedValues));
         await dispatch(handleFilterProducts());
-        await dispatch(handleFilterProducts());
+        await dispatch(handleGetProduct());
       },
       dispatch
     );

@@ -5,6 +5,8 @@ export enum ActionTypeKeys {
   START_AUTO_REFRESH = 'utils/START_AUTO_REFRESH',
   STOP_AUTO_REFRESH = 'utils/STOP_AUTO_REFRESH',
 
+  SET_IS_CLEAR_ACTIVE_iDS = 'utils/SET_IS_CLEAR_ACTIVE_iDS',
+
   RESET_UTILS = 'utils/RESET_UTILS',
 }
 
@@ -17,6 +19,12 @@ export interface SetActiveItemIdAction {
   readonly payload: number | string;
   readonly type: ActionTypeKeys.SET_ACTIVE_ITEM_ID;
 }
+
+export interface SetIsClearActiveIdsAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_iDS;
+}
+
 export interface StartAutoRefreshAction {
   readonly type: ActionTypeKeys.START_AUTO_REFRESH;
 }
@@ -34,4 +42,5 @@ export type UtilsActionTypes =
   | SetActiveItemIdAction
   | StartAutoRefreshAction
   | StopAutoRefreshAction
-  | ResetUtilsAction;
+  | ResetUtilsAction
+  | SetIsClearActiveIdsAction;

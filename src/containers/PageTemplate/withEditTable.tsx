@@ -17,6 +17,7 @@ import {
   openModal,
   OpenModal,
   selectActiveTableRowIndex,
+  selectIsClearActiveIds,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -33,6 +34,7 @@ export interface WithEditTableProps {
   activeTableRowIndex?: number;
   handleOpenModal: OpenModal;
   onRowClick: () => object;
+  isClearActiveIds: boolean;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -48,30 +50,41 @@ export const withEditTable = <OriginProps extends {}>(
       onRowClick,
       activeTableRowIndex,
       contextMenuItems = [],
+      isClearActiveIds,
       ...originProps
     } = props;
     const [isContextMenuVisible, setIsContextMenuVisible] = React.useState(false);
 
+    const handleRemoveActiveIds = React.useCallback(
+      () => {
+        if (isClearActiveIds) {
+          setActiveTableRowIndex(null);
+          setActiveItemId(null);
+        }
+      },
+      [setActiveTableRowIndex, setActiveItemId, isClearActiveIds]
+    );
+
     const openCurrentRowInModal = React.useCallback(
-      () => handleOpenModal({
-        name: editModalName,
-      }),
+      () => handleOpenModal({ name: editModalName }),
       [handleOpenModal, editModalName]
     );
 
-    const onContextMenuClick = (e: Event, value: ContextMenuItem) => {
-      setIsContextMenuVisible(false);
-      value.withConfirmation
-        ? handleOpenModal({
-          name: modalNamesConst.CONFIRMATION_MODAL,
-          payload: {
-            confirmationAction: value.action,
-            confirmationTitle: value.confirmationTitle,
-            confirmationText: value.confirmationText,
-          },
-        })
-        : value.action();
-    };
+    const onContextMenuClick = React.useCallback(
+      (e: Event, value: ContextMenuItem) => {
+        value.withConfirmation
+          ? handleOpenModal({
+            name: modalNamesConst.CONFIRMATION_MODAL,
+            payload: {
+              confirmationAction: value.action,
+              confirmationTitle: value.confirmationTitle,
+              confirmationText: value.confirmationText,
+            },
+          })
+          : value.action();
+      },
+      [handleOpenModal]
+    );
 
     let menuItems = [...contextMenuItems];
 
@@ -90,27 +103,31 @@ export const withEditTable = <OriginProps extends {}>(
       (_, rowInfo: RowInfo) => {
         const isLocked = rowInfo.original.lockedFlag;
         const id = rowInfo.original.id;
-        const rowIndex = rowInfo.index + 1; // from 1
+        const rowIndex = rowInfo.index + 1; // from 1 for css style
 
         return {
           onDoubleClick: () => {
             if (editModalName && !isLocked) {
-              setActiveTableRowIndex(rowIndex);
               setActiveItemId(id);
-              return openCurrentRowInModal();
+              setActiveTableRowIndex(rowIndex);
+
+              openCurrentRowInModal();
             } else {
-              return null;
+              setActiveItemId(null);
+              setActiveTableRowIndex(null);
             }
           },
           onContextMenu: () => {
             if (menuItems.length && !isLocked) {
               setActiveItemId(id);
-              setIsContextMenuVisible(true);
               setActiveTableRowIndex(rowIndex);
+
+              setIsContextMenuVisible(true);
             } else {
               setActiveItemId(null);
-              setIsContextMenuVisible(false);
               setActiveTableRowIndex(null);
+
+              setIsContextMenuVisible(false);
             }
           },
         };
@@ -122,14 +139,6 @@ export const withEditTable = <OriginProps extends {}>(
         setActiveItemId,
         setActiveTableRowIndex,
       ]
-    );
-
-    const handleRemoveActiveIds = React.useCallback(
-      () => {
-        setActiveTableRowIndex(null);
-        // setActiveItemId(null);
-      },
-      [setActiveTableRowIndex]
     );
 
     return (
@@ -156,6 +165,7 @@ export const withEditTable = <OriginProps extends {}>(
 
   const mapStateToProps = (state: StoreState) => ({
     activeTableRowIndex: selectActiveTableRowIndex(state),
+    isClearActiveIds: selectIsClearActiveIds(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

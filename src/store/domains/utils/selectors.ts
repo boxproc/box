@@ -5,3 +5,5 @@ export const selectActiveTableRowIndex = (state: StoreState) => state.utils.acti
 export const selectActiveItemId = (state: StoreState) => state.utils.activeItemId;
 
 export const selectIsAutoRefresh = (state: StoreState) => state.utils.isAutoRefresh;
+
+export const selectIsClearActiveIds = (state: StoreState) => state.utils.isClearActiveIds;

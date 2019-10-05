@@ -2,6 +2,7 @@ import {
   ActionTypeKeys,
   SetActiveItemIdAction,
   SetActiveTableRowIndexAction,
+  SetIsClearActiveIdsAction,
   StartAutoRefreshAction,
   StopAutoRefreshAction,
 } from './actionTypes';
@@ -11,6 +12,9 @@ export type HandleSetActiveTableRowIndex = (index: number) => void;
 
 export type SetActiveItemId = (id: number | string) => SetActiveItemIdAction;
 export type HandleSetActiveItemId = (id: number | string) => void;
+
+export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
+export type HandleSetIsClearActiveIds = (value: boolean) => void;
 
 export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
@@ -25,6 +29,11 @@ export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
 export const setActiveItemId: SetActiveItemId = id => ({
   type: ActionTypeKeys.SET_ACTIVE_ITEM_ID,
   payload: id,
+});
+
+export const setIsClearActiveIds: SetIsClearActiveIds = value => ({
+  type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_iDS,
+  payload: value,
 });
 
 export const startAutoRefresh: StartAutoRefresh = () => ({
@@ -42,5 +51,7 @@ export const resetUtils: ResetUtils = () => ({
 export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index =>
   setActiveTableRowIndex(index);
 
-export const handleSetActiveItemId: HandleSetActiveItemId = id =>
-  setActiveItemId(id);
+export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemId(id);
+
+export const handleSetIsClearActiveIds: HandleSetIsClearActiveIds = value =>
+  setIsClearActiveIds(value);
