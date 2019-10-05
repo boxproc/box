@@ -72,6 +72,7 @@ export const withEditTable = <OriginProps extends {}>(
 
     const onContextMenuClick = React.useCallback(
       (e: Event, value: ContextMenuItem) => {
+        setIsContextMenuVisible(false);
         value.withConfirmation
           ? handleOpenModal({
             name: modalNamesConst.CONFIRMATION_MODAL,

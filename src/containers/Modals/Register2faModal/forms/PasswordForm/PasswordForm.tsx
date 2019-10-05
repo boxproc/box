@@ -20,6 +20,7 @@ type PasswordFormPropsAllProps = PasswordFormProps & InjectedFormProps<{}, Passw
 const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
   handleSubmit,
   userGetAuthKey,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => userGetAuthKey(data)),
@@ -40,7 +41,10 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
           autoFocus={true}
         />
         <Flex justifyContent="flex-end">
-          <Button text="Next" />
+          <Button
+            text="Next"
+            disabled={pristine}
+          />
         </Flex>
       </form>
     </React.Fragment>

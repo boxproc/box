@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, ExternalSpinnerProps, SelectField, withSpinner } from 'components';
+import { Button, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -13,9 +13,11 @@ import { SelectValues } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface ChangeProfileFormProps extends ExternalSpinnerProps {
+interface ChangeProfileFormProps {
   adminAccessUsersOptions: Array<SelectValues>;
   changeAdminProfile: HandleChangeAdminProfile;
+  isLoadingUsers: boolean;
+  isChangingProfile: boolean;
 }
 
 type ChangeProfileFormPropsAllProps =
@@ -25,6 +27,9 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
   handleSubmit,
   adminAccessUsersOptions,
   changeAdminProfile,
+  isLoadingUsers,
+  isChangingProfile,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => changeAdminProfile(data)),
@@ -41,12 +46,16 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           placeholder="Select username"
           component={SelectField}
           options={adminAccessUsersOptions}
-          disabled={false}
+          isDisabled={isChangingProfile}
           autoFocus={true}
+          isLoading={isLoadingUsers}
           validate={[formErrorUtil.required]}
         />
         <Flex justifyContent="flex-end">
-          <Button text="Log in" />
+          <Button
+            text={isChangingProfile ? 'Log in...' : 'Log in'}
+            disabled={isChangingProfile || isLoadingUsers || pristine}
+          />
         </Flex>
       </form>
     </React.Fragment>
@@ -57,4 +66,4 @@ export default reduxForm<{}, ChangeProfileFormProps>({
   form: formNamesConst.CHANGE_PROFILE_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(ChangeProfileForm));
+})(ChangeProfileForm);

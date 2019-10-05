@@ -6,7 +6,11 @@ import { formNamesConst } from 'consts';
 
 import EditUserModal from './EditUserModal';
 
-import { handleUpdateAdminUser, selectUsersValues } from 'store/domains';
+import {
+  handleUpdateAdminUser,
+  selectCurrentPermissionsUsername,
+  selectUsersDetails,
+} from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const dirty = isDirty(formNamesConst.DEFINE_ADMIN_USER);
@@ -14,7 +18,8 @@ const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_USER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  selectUserItems: selectUsersValues(state),
+  userDetails: selectUsersDetails(state),
+  currentUsername: selectCurrentPermissionsUsername(state),
   requires2faFlagValue: formSelector(
     state,
     'requires2faFlag'

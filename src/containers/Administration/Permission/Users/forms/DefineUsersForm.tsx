@@ -14,7 +14,7 @@ import {
 
 import {
   formNamesConst,
-  statusTypes2faOptions,
+  statusTypesLoginOptions,
   statusTypesOptions,
   typeOfCyclesEditorOptions,
 } from 'consts';
@@ -56,7 +56,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -66,7 +66,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="lastName"
               name="lastName"
@@ -79,7 +79,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="username"
               name="username"
@@ -90,7 +90,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="email"
               name="email"
@@ -102,14 +102,14 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 4]} p="10px">
+            <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
               <Field
                 id="status"
                 name="status"
                 component={SelectField}
                 label="Status"
                 placeholder="Select Status"
-                options={requires2faFlagValue ? statusTypes2faOptions : statusTypesOptions}
+                options={requires2faFlagValue ? statusTypesLoginOptions : statusTypesOptions}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -130,7 +130,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Change Profile Allowed"
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="password"
               name="password"
@@ -138,9 +138,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="User Password"
               disabled={false}
+              validate={!isEditMode && formErrorUtil.required}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
             <Field
               id="passwordRepeat"
               name="passwordRepeat"
@@ -148,6 +149,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={PasswordField}
               label="Repeat Password"
               disabled={false}
+              validate={!isEditMode && formErrorUtil.required}
             />
           </Box>
         </Flex>

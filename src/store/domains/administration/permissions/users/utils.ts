@@ -1,4 +1,4 @@
-import { statusTypes2faOptions, statusTypesCodes, yesNoTypesCodes } from 'consts';
+import { statusTypesCodes, statusTypesLoginOptions, yesNoTypesCodes } from 'consts';
 import {
   AdminUserItem,
   AdminUserItemDetails,
@@ -34,7 +34,7 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     return null;
   }
 
-  const status = statusTypes2faOptions.find(el => el.value === values.status);
+  const status = statusTypesLoginOptions.find(el => el.value === values.status);
 
   return {
     id: values.id,

@@ -14,13 +14,17 @@ import {
   selectAdminAccessUsersOptions,
 } from 'store/domains';
 
-const loadingSelector = createLoadingSelector([
-  AdminUserActionTypes.GET_ADMIN_ACCESS_USERS,
+const changingProfile = createLoadingSelector([
   AuthActionTypes.CHANGE_ADMIN_PROFILE,
 ]);
 
+const loadingUsers = createLoadingSelector([
+  AdminUserActionTypes.GET_ADMIN_ACCESS_USERS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isChangingProfile: changingProfile(state),
+  isLoadingUsers: loadingUsers(state),
   adminAccessUsersOptions: selectAdminAccessUsersOptions(state),
 });
 

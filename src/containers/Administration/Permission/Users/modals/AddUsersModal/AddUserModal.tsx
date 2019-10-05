@@ -29,8 +29,8 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Add new User"
-      maxContainerWidth={800}
+      title="Add New User"
+      maxContainerWidth={500}
       withCloseConfirmation={isFormDirty}
     >
       <DefineUsersForm

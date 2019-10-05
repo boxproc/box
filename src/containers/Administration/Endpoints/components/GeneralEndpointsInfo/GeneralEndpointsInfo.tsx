@@ -80,7 +80,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[2 / 3]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
             id="privateKeyLocation"
             name="privateKeyLocation"

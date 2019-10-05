@@ -25,7 +25,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
       <Flex
         flexWrap="wrap"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -38,7 +38,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="name"
             name="name"
@@ -48,7 +48,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="url"
             name="url"
@@ -58,7 +58,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="privateKeyLocation"
             name="privateKeyLocation"
@@ -101,17 +101,17 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="logFileLocation"
             name="logFileLocation"
-            component={InputField}
+            component={TextField}
             label="Log File Location Attributes"
             placeholder="Enter Log File Location"
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="connectionAttributes"
             name="connectionAttributes"

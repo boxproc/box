@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { statusTypesOptions } from 'consts';
+import { statusTypesLoginOptions } from 'consts';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
@@ -18,7 +18,7 @@ export const selectUserEditorItems = createSelector(
   })
 );
 
-export const selectUsersValues = createSelector(
+export const selectUsersDetails = createSelector(
   selectDefaultAdminUsersItems,
   selectActiveItemId,
   (items, currentId) => {
@@ -26,7 +26,7 @@ export const selectUsersValues = createSelector(
 
     return {
       ...prepareAdminUserValuesToRender(current),
-      status: current && statusTypesOptions.find(el => el.value === current.status),
+      status: current && statusTypesLoginOptions.find(el => el.value === current.status),
     };
   }
 );
@@ -42,4 +42,9 @@ export const selectAdminAccessUsersOptions = createSelector(
       label: user.username,
     };
   })
+);
+
+export const selectCurrentPermissionsUsername = createSelector(
+  selectUsersDetails,
+  item => item && item.username
 );

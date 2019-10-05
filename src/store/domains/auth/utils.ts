@@ -39,7 +39,7 @@ export const setUserDataToStorage = (data: UserData, isChangingProfile?: boolean
 
     storageUtil.setUserData(data);
 
-    // storageUtil.setSessionId(data.sessionId); // for demo
+    // storageUtil.setSessionId(data.sessionId); // for demo, comment before deployment
 
     if (is2faLogin) {
       storageUtil.setAuthPendingFlag();

@@ -20,6 +20,7 @@ type CodeFormPropsAllProps = CodeFormProps & InjectedFormProps<{}, CodeFormProps
 const CodeForm: React.FC<CodeFormPropsAllProps> = ({
   handleSubmit,
   userEnterAuthKey,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => userEnterAuthKey(data)),
@@ -38,7 +39,10 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
           autoFocus={true}
         />
         <Flex justifyContent="flex-end">
-          <Button text="Log In" />
+          <Button
+            text="Log In"
+            disabled={pristine}
+          />
         </Flex>
       </form>
     </React.Fragment>

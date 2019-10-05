@@ -32,7 +32,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
 
   return (
     <Modal
-      maxContainerWidth={550}
+      maxContainerWidth={850}
       title="Edit Interface"
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}

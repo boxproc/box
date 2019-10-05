@@ -14,7 +14,8 @@ interface ChangeProfileModalProps {
   getAccessUsers: HandleGetAccessUsers;
   changeAdminProfile: HandleChangeAdminProfile;
   adminAccessUsersOptions: Array<SelectValues>;
-  isLoading: boolean;
+  isChangingProfile: boolean;
+  isLoadingUsers: boolean;
 }
 
 const modalName = modalNamesConst.CHANGE_PROFILE_MODAL;
@@ -23,7 +24,8 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
   getAccessUsers,
   changeAdminProfile,
   adminAccessUsersOptions,
-  isLoading,
+  isChangingProfile,
+  isLoadingUsers,
 }) => {
   React.useEffect(
     () => {
@@ -41,7 +43,8 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
       <ChangeProfileForm
         adminAccessUsersOptions={adminAccessUsersOptions}
         changeAdminProfile={changeAdminProfile}
-        isLoading={isLoading}
+        isLoadingUsers={isLoadingUsers}
+        isChangingProfile={isChangingProfile}
       />
     </Modal>
   );
