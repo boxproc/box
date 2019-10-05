@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { iconNamesConst, modalNamesConst, schedulerTasksNames } from 'consts';
 
-import { tableColumns } from 'containers/Administration/Scheduler/components';
+import PageTemplate from 'containers/PageTemplate';
+import { tableColumns } from './components';
 
 import {
   AdminSchedulerItemPrepared,
@@ -119,7 +120,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Scheduler"
       data={adminSchedulerJobsItems}
       columns={tableColumns}

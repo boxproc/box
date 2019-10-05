@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { StatementsFilter } from './forms';
 
@@ -38,7 +39,7 @@ const Statements: React.FC<StatementsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Statements"
       data={ledgerStatements}
       columns={tableColumns}

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
@@ -51,7 +52,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Interfaces"
       data={adminInterfaceItems}
       columns={tableColumns}

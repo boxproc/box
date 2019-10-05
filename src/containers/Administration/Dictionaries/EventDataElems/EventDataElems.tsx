@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import { EventDataElemsFilter } from 'containers/Administration/Dictionaries/EventDataElems/forms';
@@ -39,7 +40,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Event Data Elements"
       data={dictionaryEventDataElemsItems}
       columns={tableColumns}

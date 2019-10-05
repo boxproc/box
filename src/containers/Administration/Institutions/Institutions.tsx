@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import {
@@ -49,7 +50,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}

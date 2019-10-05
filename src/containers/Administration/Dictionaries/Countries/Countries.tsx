@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import {
@@ -26,7 +27,7 @@ export const Countries: React.FC<CountriesProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Countries"
       data={dictionaryCountries}
       columns={tableColumns}

@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
+
+import PageTemplate from 'containers/PageTemplate';
 
 import { cycleEditorColumns } from './components';
 import { CycleEditorFilter } from './forms';
@@ -52,7 +54,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Cycles"
       data={adminCyclesEditorItems}
       columns={cycleEditorColumns}

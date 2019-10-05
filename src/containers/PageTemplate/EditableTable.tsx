@@ -4,18 +4,18 @@ import { Table } from 'components';
 
 import { withEditTable, WithEditTableProps } from './withEditTable';
 
-interface TablePageProps extends WithEditTableProps {
+interface PageTemplateProps extends WithEditTableProps {
   data: Array<object>;
   columns: Array<object>;
 }
 
-export const TablePage: React.FC<TablePageProps> = props => {
+export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const {
     data,
     columns,
     onRowClick,
     activeTableRowIndex,
-    ...tablePageProps
+    ...pageTemplateProps
   } = props;
 
   return (
@@ -24,9 +24,9 @@ export const TablePage: React.FC<TablePageProps> = props => {
       columns={columns}
       activeRowIndex={activeTableRowIndex}
       getTrGroupProps={onRowClick}
-      {...tablePageProps}
+      {...pageTemplateProps}
     />
   );
 };
 
-export default withEditTable(TablePage);
+export default withEditTable(PageTemplate);

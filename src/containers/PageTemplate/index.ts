@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import TablePage from './TablePage';
+import PageTemplate from './PageTemplate';
 
 import { resetUtils, selectIsAutoRefresh, stopAutoRefresh } from 'store/domains';
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TablePage);
+)(PageTemplate);

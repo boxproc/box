@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
-
 import { AccountsFilter } from './forms';
 
 import {
@@ -75,7 +75,7 @@ const Accounts: React.FC<AccountsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Accounts"
       data={ledgerAccounts}
       columns={tableColumns}

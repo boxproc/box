@@ -17,7 +17,7 @@ import { ResetUtils, StopAutoRefresh } from 'store/domains';
 import { ContextMenuItem } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
 
-interface TablePageProps extends RouteComponentProps, WithModalProps {
+interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
   data: Array<object>;
   columns: Array<object>;
@@ -31,7 +31,7 @@ interface TablePageProps extends RouteComponentProps, WithModalProps {
   resetUtils: ResetUtils;
 }
 
-export const TablePage: React.FC<TablePageProps> = props => {
+export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const {
     title,
     data,
@@ -45,7 +45,7 @@ export const TablePage: React.FC<TablePageProps> = props => {
     isAutoRefresh,
     stopAutoRefresh,
     resetUtils,
-    ...tablePageProps
+    ...pageTemplateProps
   } = props;
 
   React.useEffect(
@@ -119,10 +119,10 @@ export const TablePage: React.FC<TablePageProps> = props => {
           </Box>
         )}
         {isAutoRefresh && (
-          <Box mb="7px" ml="20px">
+          <Box mb="7px" ml="25px">
             <Flex alignItems="flex-end">
               <CountDownTimer seconds={5} />
-              <Box ml="5px">
+              <Box ml="4px">
                 <Button
                   text="Stop Auto Refreshing"
                   size="11"
@@ -137,12 +137,12 @@ export const TablePage: React.FC<TablePageProps> = props => {
       <EditableTable
         data={data}
         columns={columns}
-        {...tablePageProps}
+        {...pageTemplateProps}
       />
     </React.Fragment >
   );
 };
 
 export default withModal(
-  withRouter(TablePage)
+  withRouter(PageTemplate)
 );

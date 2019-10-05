@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
@@ -31,7 +32,7 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
     [resetApiCalls]
   );
   return (
-    <TablePage
+    <PageTemplate
       title="API Calls"
       data={auditApiCalls}
       columns={tableColumns}

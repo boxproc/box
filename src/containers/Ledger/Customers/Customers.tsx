@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { tableColumns } from 'containers/Ledger/Customers/components';
-import { CustomersFilter } from 'containers/Ledger/Customers/forms';
+import PageTemplate from 'containers/PageTemplate';
+import { tableColumns } from './components';
+import { CustomersFilter } from './forms';
 
 import {
   HandleDeleteLedgerCustomer,
@@ -54,7 +55,7 @@ const Customers: React.FC<CustomersProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Customers"
       data={ledgerCustomers}
       columns={tableColumns}

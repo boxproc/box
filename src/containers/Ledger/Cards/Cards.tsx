@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { CardsFilter } from './forms';
 
@@ -28,7 +29,7 @@ const Cards: React.FC<CardsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Cards"
       data={ledgerCards}
       columns={tableColumns}

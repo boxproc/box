@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import { AdminUsersGroupInfoPlain, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store/domains';
@@ -28,7 +29,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Users Group"
       data={adminUsersGroupItems}
       columns={tableColumns}

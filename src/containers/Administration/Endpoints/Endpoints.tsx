@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { EndpointsFilter } from './forms';
 
@@ -53,7 +54,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Endpoints"
       data={adminEndpointItems}
       columns={tableColumns}

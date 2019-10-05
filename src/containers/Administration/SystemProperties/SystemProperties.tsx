@@ -5,11 +5,11 @@ import {
   renderEditableTableCell,
   TableCell,
   TableHeader,
-  TablePage,
   withSpinner,
 } from 'components';
 
-import { SystemPropertyFilter } from 'containers/Administration/SystemProperties/forms';
+import PageTemplate from 'containers/PageTemplate';
+import { SystemPropertyFilter } from './forms';
 
 import { modalNamesConst } from 'consts';
 
@@ -124,7 +124,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}

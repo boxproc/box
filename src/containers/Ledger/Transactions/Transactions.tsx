@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { TransactionsFilter } from './forms';
 
@@ -37,7 +38,7 @@ const Transactions: React.FC<TransactionsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Transactions"
       data={ledgerTransactions}
       columns={tableColumns}

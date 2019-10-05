@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { tableColumns } from 'containers/ProductDesigner/Products/components';
-import { ProductsFilter } from 'containers/ProductDesigner/Products/forms';
+import PageTemplate from 'containers/PageTemplate';
+import { tableColumns } from './components';
+import { ProductsFilter } from './forms';
 
 import {
   HandleDeleteProduct,
@@ -54,7 +55,7 @@ export const Products: React.FC<ProductsProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="Products"
       data={productItems}
       columns={tableColumns}

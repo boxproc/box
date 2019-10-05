@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { TablePage, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
-import { UserActivityFilter } from './forms';
-
+import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
+import { UserActivityFilter } from './forms';
 
 import {
   AuditUserActivityItem,
@@ -35,7 +35,7 @@ const UserActivity: React.FC<UserActivityProps> = ({
   );
 
   return (
-    <TablePage
+    <PageTemplate
       title="User Activity"
       data={auditUserActivity}
       columns={tableColumns}
