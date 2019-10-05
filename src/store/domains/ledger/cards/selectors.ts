@@ -46,8 +46,3 @@ export const selectCurrentCardStatus = createSelector(
     return current.card_status_id;
   }
 );
-
-export const selectLedgerCardPanAlias = createSelector(
-  selectLedgerCardValues,
-  currentCard => currentCard && currentCard.panAlias
-);

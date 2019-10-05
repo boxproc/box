@@ -11,6 +11,7 @@ import {
 
 import * as api from './api';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
 import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
@@ -22,8 +23,8 @@ export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
   FilterLedgerCardsAction;
 export type HandleFilterLedgerCards = () => Thunk<void>;
 
-export type ActivateLedgerCard = (panAlias: string) => ActivateLedgerCardAction;
-export type HandleActivateLedgerCard = (panAlias: string) => Thunk<void>;
+export type ActivateLedgerCard = (cardId: number) => ActivateLedgerCardAction;
+export type HandleActivateLedgerCard = () => Thunk<void>;
 
 export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
 export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
@@ -35,9 +36,9 @@ export const filterLedgerCards: FilterLedgerCards = filter => ({
   payload: api.filterLedgerCards(filter),
 });
 
-export const activateLedgerCard: ActivateLedgerCard = panAlias => ({
+export const activateLedgerCard: ActivateLedgerCard = cardId => ({
   type: ActionTypeKeys.ACTIVATE_LEDGER_CARD,
-  payload: api.activateLedgerCard(panAlias),
+  payload: api.activateLedgerCard(cardId),
 });
 
 export const changeLedgerCardStatus: ChangeLedgerCardStatus = ids => ({
@@ -65,11 +66,14 @@ export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
     );
   };
 
-export const handleActivateLedgerCard: HandleActivateLedgerCard = panAlias =>
-  async dispatch => {
+export const handleActivateLedgerCard: HandleActivateLedgerCard = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(activateLedgerCard(panAlias));
+        const state = getState();
+        const cardId = selectActiveItemId(state);
+
+        await dispatch(activateLedgerCard(cardId));
       },
       dispatch
     );

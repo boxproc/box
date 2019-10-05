@@ -47,7 +47,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="PAN Masked" />,
     accessor: 'panMasked',

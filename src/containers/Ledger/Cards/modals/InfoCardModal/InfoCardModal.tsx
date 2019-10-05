@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal, withSpinner } from 'components';
+import { Button, Hr, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { cardStatusesCodes, modalNamesConst, modalTypesConst, messagesConst } from 'consts';
+import { cardStatusesCodes, messagesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
@@ -14,9 +14,9 @@ import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains'
 interface InfoAccountModalProps extends WithModalProps {
   ledgerCurrentCard: Partial<LedgerCardItemPrepared>;
   activateLedgerCard: HandleActivateLedgerCard;
-  ledgerCardPanAlias: string;
   currentStatus: number;
   isFormDirty: boolean;
+  isLoading: boolean;
 }
 
 const modalName = modalNamesConst.INFO_LEDGER_CARDS;
@@ -25,9 +25,9 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   closeModal,
   ledgerCurrentCard,
   activateLedgerCard,
-  ledgerCardPanAlias,
   currentStatus,
   isFormDirty,
+  isLoading,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -35,8 +35,8 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   );
 
   const handleActivateLedgerCard = React.useCallback(
-    () => activateLedgerCard(ledgerCardPanAlias),
-    [ledgerCardPanAlias, activateLedgerCard]
+    () => activateLedgerCard(),
+    [activateLedgerCard]
   );
 
   const isStatusActive = currentStatus === cardStatusesCodes.ACTIVE;
@@ -51,10 +51,10 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     >
       <Box mb="10px">
         <Button
-          disabled={isStatusActive}
+          disabled={isStatusActive || isLoading}
           type="reset"
           onClick={handleActivateLedgerCard}
-          text="Activate Card"
+          text={isLoading ? 'Activating...' : 'Activate Card'}
           isFocused={true}
         />
       </Box>
@@ -79,8 +79,4 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   );
 };
 
-export default withModal(withSpinner({
-  isFixed: true,
-})(
-  InfoAccountModal
-));
+export default withModal(InfoAccountModal);

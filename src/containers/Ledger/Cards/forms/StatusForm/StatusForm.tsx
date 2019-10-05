@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, SelectField, withSpinner } from 'components';
+import { Button, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -17,6 +17,7 @@ interface StatusFormProps {
   isStatusesLoading: boolean;
   currentCardId: number;
   statusValue: SelectValues;
+  isLoading: boolean;
 }
 
 type StatusFormAllProps = StatusFormProps & InjectedFormProps<{}, StatusFormProps>;
@@ -30,6 +31,7 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   handleSubmit,
   statusValue,
   currentCardId,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -60,12 +62,13 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
               isClearable={false}
               options={cardStatusesOptions}
               isLoading={isStatusesLoading}
+              isDisabled={isLoading}
             />
           </Box>
           <Box width={[1 / 2]} p="10px" pl="0">
             <Button
-              text="Change Status"
-              disabled={pristine}
+              text={isLoading ? 'Changing...' : 'Change Status'}
+              disabled={pristine || isLoading}
             />
           </Box>
         </Flex>
@@ -74,8 +77,8 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   );
 };
 
-export default withSpinner()(reduxForm<{}, StatusFormProps>({
+export default reduxForm<{}, StatusFormProps>({
   form: formNamesConst.LEDGER_CHANGE_CARD_STATUS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(StatusForm));
+})(StatusForm);

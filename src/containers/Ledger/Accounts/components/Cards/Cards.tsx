@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
+import { Button, Table, TableCell, TableHeader } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
@@ -20,6 +20,7 @@ interface AccountCardsProps extends WithModalProps {
   getLedgerAccountCards: HandleGetLedgerAccountCards;
   ledgerAccountCards: Array<LedgerAccountsCardsItemPrepared>;
   orderLedgerAccountCard: HandleOrderLedgerAccountCard;
+  isLoading: boolean;
 }
 
 const modalName = modalNamesConst.INFO_LEDGER_CARDS;
@@ -33,6 +34,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
   ledgerAccountCards,
   orderLedgerAccountCard,
   closeModal,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -64,7 +66,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       ),
     },
     {
-      maxWidth: 300,
+      maxWidth: 200,
       Header: <TableHeader title="Pan Masked" />,
       accessor: 'panMasked',
       Cell: (props: TCell<'panMasked'>) => (
@@ -100,9 +102,10 @@ export const Cards: React.FC<AccountCardsProps> = ({
     <React.Fragment>
       <Box mb="15px">
         <Button
+          disabled={isLoading}
           type="reset"
           onClick={handleOrderLedgerAccountCard}
-          text="Order Card"
+          text={isLoading ? 'Ordering...' : 'Order Card'}
           isFocused={true}
         />
       </Box>
@@ -124,6 +127,4 @@ export const Cards: React.FC<AccountCardsProps> = ({
   );
 };
 
-export default withSpinner()(
-  withModal(Cards)
-);
+export default withModal(Cards);

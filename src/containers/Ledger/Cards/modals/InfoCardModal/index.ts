@@ -11,7 +11,6 @@ import {
   handleActivateLedgerCard,
   LedgerCardsActionTypes,
   selectCurrentCardStatus,
-  selectLedgerCardPanAlias,
   selectLedgerCardValues,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -26,7 +25,6 @@ const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   isLoading: loadingSelector(state),
   ledgerCurrentCard: selectLedgerCardValues(state),
-  ledgerCardPanAlias: selectLedgerCardPanAlias(state),
   currentStatus: selectCurrentCardStatus(state),
 });
 

@@ -7,9 +7,9 @@ import { LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
 export const filterLedgerCards = (data: Partial<LedgerCardsFilterPrepared>) =>
   apiClient.post(lenderCardsPathNames.GET, { data });
 
-export const activateLedgerCard = (panAlias: string) =>
+export const activateLedgerCard = (cardId: number) =>
   apiClient.post(lenderCardsPathNames.ACTIVATE_CARD, {
-    data: { pan_alias: panAlias },
+    data: { card_id: cardId },
   });
 
 export const changeLedgerCardStatus = (data: LedgerCardIdsPrepared) =>
