@@ -9,9 +9,9 @@ import {
   handleFilterProducts,
   ProductsActionTypes,
   resetProducts,
-  selectCurrentProductName,
   selectInstitutionsOptions,
   selectProductItems,
+  selectProductName,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -24,7 +24,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   productItems: selectProductItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  currentProductName: selectCurrentProductName(state),
+  currentProductName: selectProductName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

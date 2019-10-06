@@ -96,6 +96,11 @@ export const selectProductCardEndpointsService = createSelector(
 );
 
 export const selectCurrentProductName = createSelector(
+  selectDefaultCurrentProduct,
+  product => product && product.name
+);
+
+export const selectProductName = createSelector(
   selectDefaultProductItems,
   selectActiveItemId,
   (products, activeId) => {
@@ -112,9 +117,7 @@ export const selectIsProductOverride = createSelector(
 
 export const selectCurrentProductType = createSelector(
   selectCurrentProduct,
-  product => {
-    return product && product.productType;
-  }
+  product => product && product.productType
 );
 
 export const selectDetailsCurrentProductDetails = (state: StoreState) =>
