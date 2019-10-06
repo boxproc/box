@@ -31,6 +31,10 @@ const mapStateToProps = (state: StoreState) => ({
     state,
     'productType'
   ),
+  currentInstitution: formSelector(
+    state,
+    'institutionId'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -21,6 +21,7 @@ import { SelectValues } from 'types';
 interface AddProductFormProps extends ExternalSpinnerProps {
   currentProductType: SelectValues;
   addProduct: HandleAddProduct;
+  currentInstitution: SelectValues;
   onCancel: () => void;
 }
 
@@ -30,6 +31,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   currentProductType,
   addProduct,
   onCancel,
+  currentInstitution,
   handleSubmit,
   dirty,
   pristine,
@@ -43,7 +45,9 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <Tabs>
         <TabsPanel title="General">
-          <ProductGeneralInfo />
+          <ProductGeneralInfo
+            currentInstitution={currentInstitution}
+          />
         </TabsPanel>
         <TabsPanel
           title="Details"

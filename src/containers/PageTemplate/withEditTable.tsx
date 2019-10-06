@@ -37,7 +37,7 @@ export interface WithEditTableProps {
   handleOpenModal: OpenModal;
   onRowClick: () => object;
   isClearActiveIds: boolean;
-  setIsClearActiveIds: HandleSetIsClearActiveIds,
+  setIsClearActiveIds: HandleSetIsClearActiveIds;
 }
 
 export const withEditTable = <OriginProps extends {}>(

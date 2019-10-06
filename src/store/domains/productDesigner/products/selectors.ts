@@ -33,10 +33,11 @@ export const selectProductItems = createSelector(
       return null;
     }
 
+    const institution = institutions.find(el => el.id === product.institution_id);
+
     return {
       ...prepareGeneralProductItem(product),
-      institutionId: institutions.find(el => el.id === product.institution_id)
-        && institutions.find(el => el.id === product.institution_id).institutionName,
+      institutionId: institution && institution.institutionName,
     };
   })
 );

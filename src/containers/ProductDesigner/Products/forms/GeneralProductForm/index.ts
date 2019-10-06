@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
+
+import { formNamesConst } from 'consts';
 
 import GeneralProductForm from './GeneralProductForm';
 
@@ -21,10 +24,16 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.DELETE_PRODUCT,
 ]);
 
+const formSelector = formValueSelector(formNamesConst.GENERAL_PRODUCT);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectCurrentProduct(state),
   currentProductName: selectCurrentProductName(state),
+  currentInstitution: formSelector(
+    state,
+    'institutionId'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

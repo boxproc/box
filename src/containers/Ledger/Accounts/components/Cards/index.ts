@@ -18,8 +18,13 @@ const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.GET_LEDGER_ACCOUNT_CARDS,
 ]);
 
+const orderCardLoadingSelector = createLoadingSelector([
+  LedgerAccountsActionTypes.ORDER_LEDGER_ACCOUNT_CARD,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isOrderingCard: orderCardLoadingSelector(state),
   ledgerAccountCurrentId: selectActiveItemId(state),
   ledgerAccountCards: selectLedgerAccountCards(state),
 });

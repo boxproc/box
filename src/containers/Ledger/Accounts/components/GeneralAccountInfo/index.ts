@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoadingCyclesDescriptions: loadingSelector(state),
   cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
-  formValues: formSelector(
+  currentInstitution: formSelector(
     state,
     'institutionId'
   ),

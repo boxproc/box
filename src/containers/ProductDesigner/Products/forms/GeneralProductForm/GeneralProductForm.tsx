@@ -18,12 +18,14 @@ import { formNamesConst, iconNamesConst } from 'consts';
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
+import { SelectValues } from 'types';
 
 interface GeneralProductFormProps extends ExternalSpinnerProps {
   getProduct: HandleGetProduct;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
   currentProductName: string;
+  currentInstitution: SelectValues;
   isProductOverride: boolean;
   onCancel?: () => void;
 }
@@ -41,6 +43,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   dirty,
   pristine,
   isProductOverride,
+  currentInstitution,
 }) => {
   React.useEffect(
     () => {
@@ -67,7 +70,10 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
         </Flex>
       )}
       <form onSubmit={handleSubmitForm}>
-        <ProductGeneralInfo isEditMode={true} />
+        <ProductGeneralInfo
+          isEditMode={true}
+          currentInstitution={currentInstitution}
+        />
         <Hr />
         <Flex
           alignItems="center"

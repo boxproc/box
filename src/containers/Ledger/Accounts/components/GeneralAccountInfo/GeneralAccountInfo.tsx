@@ -21,16 +21,14 @@ export interface CustomerInfoProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   cyclesDescriptionsOptions: Array<SelectValues>;
-  formValues: {
-    institutionId: SelectValues,
-  };
+  currentInstitution: SelectValues;
   isEditMode: boolean;
   hasProductOverride: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
-  formValues,
+  currentInstitution,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
   isLoadingCyclesDescriptions,
@@ -40,24 +38,14 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   isEditMode = false,
   hasProductOverride,
 }) => {
-  const { institutionId } = formValues;
-
   React.useEffect(
     () => {
-      if (institutionId) {
-        getInstitutionProducts(institutionId.value);
-      }
-    },
-    [getInstitutionProducts, institutionId]
-  );
-
-  React.useEffect(
-    () => {
+      getInstitutionProducts(currentInstitution && currentInstitution.value);
       getCyclesDescriptions({
-        institutionId: institutionId && institutionId.value,
+        institutionId: currentInstitution && currentInstitution.value,
       });
     },
-    [institutionId, getCyclesDescriptions]
+    [getInstitutionProducts, getCyclesDescriptions, currentInstitution]
   );
 
   return (
