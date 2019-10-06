@@ -1,17 +1,16 @@
 import React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
 
-import { DeleteIcon, EditIcon, LockIcon, PlusIcon } from 'components';
-
 import styled from 'theme';
 import './styles.css';
 
-import { iconNamesConst } from 'consts';
+import { renderIcon } from './renderIcon';
 
 import { ContextMenuItem } from 'types';
 
 interface ContextMenuWrapperProps {
   isVisible?: boolean;
+  preventClose?: boolean;
 }
 
 const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
@@ -37,41 +36,25 @@ interface ContextMenuListProps {
   items: Array<ContextMenuItem>;
   noDataStr?: string;
   isVisible?: boolean;
+  preventClose?: boolean;
   onClick?: (e: Event, value: ContextMenuItem) => void;
-  onShow?: any;
   onHide?: () => void;
 }
-
-const renderIcon = (name: string) => {
-  switch (name) {
-    case iconNamesConst.EDIT:
-      return (<EditIcon size="13" />);
-    case iconNamesConst.DELETE:
-      return (<DeleteIcon size="15" />);
-    case iconNamesConst.LOCK:
-      return (<LockIcon size="15" />);
-    case iconNamesConst.PLUS:
-      return (<PlusIcon size="15" />);
-    default:
-      return null;
-  }
-};
 
 const ContextMenuList: React.FC<ContextMenuListProps> = ({
   menuId,
   onClick,
-  onShow,
   items,
   noDataStr,
   onHide,
   isVisible = true,
+  preventClose = false,
 }) => {
   return (
     <ContextMenuWrapper isVisible={isVisible}>
       <ContextMenu
         id={menuId}
         onHide={onHide}
-        onShow={onShow}
         className="context-menu"
       >
         {(items && items.length)
@@ -82,7 +65,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
             return (
               <MenuItem
                 key={index}
-                preventClose={true}
+                preventClose={preventClose}
                 data={{
                   name: item.name,
                   action: item.action,

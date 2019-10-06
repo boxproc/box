@@ -162,6 +162,7 @@ export const withEditTable = <OriginProps extends {}>(
           items={menuItems}
           isVisible={isContextMenuVisible}
           onHide={handleRemoveActiveIds}
+          preventClose={true}
         />
       </React.Fragment>
     );

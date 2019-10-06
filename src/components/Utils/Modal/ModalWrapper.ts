@@ -5,6 +5,7 @@ interface ModalWrapperProps {
   minContainerHeight?: string;
   zIndex?: string;
   accentClose?: boolean;
+  isBlurBackDrop?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -17,6 +18,11 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   text-align: center;
   overflow-y: scroll;
   z-index: ${({ zIndex }) => zIndex ? zIndex : 100};
+
+  ${({ isBlurBackDrop }) => isBlurBackDrop && `
+    backdrop-filter: blur(3px);
+  `}
+
   &:after {
     content: "";
     display: inline-block;
@@ -25,6 +31,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     width: .1%;
     margin-left: -.1%;
   }
+
   .modal-backdrop {
     position: fixed;
     top: 0;
@@ -33,6 +40,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     left: 0;
     background-color: rgba(0, 0, 0, .6);
   }
+
   .modal-container {
     position: relative;
     display: inline-block;
@@ -51,6 +59,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     word-break: break-word;
     font-size: 0;
   }
+
   .modal-close {
     position: absolute;
     top: 0;

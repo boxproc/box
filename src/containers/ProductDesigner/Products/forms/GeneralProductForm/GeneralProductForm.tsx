@@ -93,7 +93,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}
-            disabledOk={pristine}
+            disabledOk={pristine || isUpdating}
           />
         </Flex>
       </form>
