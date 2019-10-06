@@ -3,7 +3,7 @@ import React from 'react';
 import { Hr, Modal, OkCancelButtons, Paragraph } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { PayloadConfirmationModal } from 'store/domains';
 
@@ -37,6 +37,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       zIndex="101"
       closeOnBackdrop={true}
       accentClose={false}
+      type={modalTypesConst.CONFIRMATION_MODAL}
     >
       <Hr accentColor={true} />
       {confirmationText && (

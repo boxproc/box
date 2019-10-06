@@ -13,6 +13,7 @@ import {
   HandleSetActiveItemId,
   HandleSetActiveTableRowIndex,
   HandleSetIsClearActiveIds,
+  SetIsEditModalOpened,
 } from 'store/domains';
 
 const ModalTitle = styled(T2)`
@@ -33,6 +34,8 @@ interface ModalProps extends WithModalProps {
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
   setActiveItemId: HandleSetActiveItemId;
   setIsClearActiveIds: HandleSetIsClearActiveIds;
+  setIsEditModalOpened: SetIsEditModalOpened;
+  isEditModalOpened: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -51,21 +54,25 @@ const Modal: React.FC<ModalProps> = ({
   setActiveItemId,
   type,
   setIsClearActiveIds,
+  setIsEditModalOpened,
+  isEditModalOpened,
 }) => {
-  // React.useEffect(
-  //   () => {
-  //     window.addEventListener('keydown', handleCloseModalByKey);
-  //     return () => document.removeEventListener('keydown', handleCloseModalByKey);
-  //   }
-  // );
+  const isClearableActiveIdsFromStore = (type === modalTypesConst.EDIT_MODAL) || !isEditModalOpened;
 
   React.useEffect(
     () => {
       if (type === modalTypesConst.EDIT_MODAL) {
-        setIsClearActiveIds(false);
+        setIsEditModalOpened(true);
       }
 
-      return type === modalTypesConst.EDIT_MODAL
+      return () => type === modalTypesConst.EDIT_MODAL ? setIsEditModalOpened(false) : null;
+    },
+    [setIsEditModalOpened, type]
+  );
+
+  React.useEffect(
+    () => {
+      return isClearableActiveIdsFromStore
         ? () => {
           setActiveTableRowIndex(null);
           setActiveItemId(null);
@@ -73,7 +80,7 @@ const Modal: React.FC<ModalProps> = ({
         }
         : () => null;
     },
-    [setActiveTableRowIndex, setActiveItemId, type, setIsClearActiveIds]
+    [setActiveTableRowIndex, setActiveItemId, setIsClearActiveIds, isClearableActiveIdsFromStore]
   );
 
   const handleCloseModal = React.useCallback(
@@ -89,12 +96,6 @@ const Modal: React.FC<ModalProps> = ({
       : () => closeModal(name),
     [name, closeModal, withCloseConfirmation]
   );
-
-  // const handleCloseModalByKey = (e: KeyboardEventInit) => {
-  //   if (e.key === codeKeys.ESCAPE) {
-  //     handleCloseModal();
-  //   }
-  // };
 
   return (
     <ModalWrapper

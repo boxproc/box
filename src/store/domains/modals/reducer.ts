@@ -7,6 +7,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
   payloadMessageModal: null,
   payloadConfirmationModal: null,
+  isEditModalOpened: false,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
@@ -20,6 +21,9 @@ const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => 
       return state
         .set(`is${action.payload}`, false)
         .set(`payload${action.payload}`, null);
+
+    case ActionTypeKeys.SET_IS_EDIT_MODAL_OPENED:
+      return state.set('isEditModalOpened', action.payload);
 
     case ActionTypeKeys.CLOSE_ALL_MODALS:
       return state = modalsInitialState;

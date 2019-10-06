@@ -22,4 +22,5 @@ export interface ModalsState {
   isMessageModal: boolean;
   payloadMessageModal: PayloadMessageModal;
   payloadConfirmationModal: PayloadConfirmationModal;
+  isEditModalOpened: boolean;
 }

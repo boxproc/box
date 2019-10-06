@@ -14,6 +14,8 @@ import {
   HandleSetActiveItemId,
   handleSetActiveTableRowIndex,
   HandleSetActiveTableRowIndex,
+  handleSetIsClearActiveIds,
+  HandleSetIsClearActiveIds,
   openModal,
   OpenModal,
   selectActiveTableRowIndex,
@@ -35,6 +37,7 @@ export interface WithEditTableProps {
   handleOpenModal: OpenModal;
   onRowClick: () => object;
   isClearActiveIds: boolean;
+  setIsClearActiveIds: HandleSetIsClearActiveIds,
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -51,6 +54,7 @@ export const withEditTable = <OriginProps extends {}>(
       activeTableRowIndex,
       contextMenuItems = [],
       isClearActiveIds,
+      setIsClearActiveIds,
       ...originProps
     } = props;
     const [isContextMenuVisible, setIsContextMenuVisible] = React.useState(false);
@@ -73,6 +77,7 @@ export const withEditTable = <OriginProps extends {}>(
     const onContextMenuClick = React.useCallback(
       (e: Event, value: ContextMenuItem) => {
         setIsContextMenuVisible(false);
+        setIsClearActiveIds(false);
         value.withConfirmation
           ? handleOpenModal({
             name: modalNamesConst.CONFIRMATION_MODAL,
@@ -84,7 +89,7 @@ export const withEditTable = <OriginProps extends {}>(
           })
           : value.action();
       },
-      [handleOpenModal]
+      [handleOpenModal, setIsClearActiveIds]
     );
 
     let menuItems = [...contextMenuItems];
@@ -174,6 +179,7 @@ export const withEditTable = <OriginProps extends {}>(
       handleOpenModal: openModal,
       setActiveTableRowIndex: handleSetActiveTableRowIndex,
       setActiveItemId: handleSetActiveItemId,
+      setIsClearActiveIds: handleSetIsClearActiveIds,
     },
     dispatch
   );
