@@ -56,7 +56,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -66,7 +66,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="lastName"
               name="lastName"
@@ -130,7 +130,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Change Profile Allowed"
             />
           </Box>
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="password"
               name="password"
@@ -141,7 +141,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={!isEditMode && formErrorUtil.required}
             />
           </Box>
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="passwordRepeat"
               name="passwordRepeat"

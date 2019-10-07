@@ -3,7 +3,14 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, InputField, OkCancelButtons, SelectField, TextField } from 'components';
+import {
+  Button,
+  Hr,
+  InputField,
+  OkCancelButtons,
+  SelectField,
+  TextareaAutosizeField,
+} from 'components';
 
 import {
   executableTypeOptions,
@@ -54,16 +61,12 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   currentSchedulerName,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => defineAdminSchedulerJob(data)),
+    handleSubmit(defineAdminSchedulerJob),
     [handleSubmit, defineAdminSchedulerJob]
   );
 
   const handleOpenModal = React.useCallback(
-    () => {
-      openModal({
-        name: modalNamesConst.GENERATE_CRON_EXPRESSION,
-      });
-    },
+    () => openModal({ name: modalNamesConst.GENERATE_CRON_EXPRESSION }),
     [openModal]
   );
 
@@ -111,15 +114,29 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1]} p="10px">
-            <Field
-              id="description"
-              name="description"
-              placeholder="Enter Description"
-              component={TextField}
-              label="Description"
-              validate={[formErrorUtil.required]}
-            />
+          <Box width="100%">
+            <Flex alignItems="flex-start">
+              <Box width="50%" p="10px">
+                <Field
+                  id="description"
+                  name="description"
+                  component={TextareaAutosizeField}
+                  label="Description"
+                  placeholder="Enter Description"
+                  height={120}
+                />
+              </Box>
+              <Box width="50%" p="10px">
+                <Field
+                  id="parameters"
+                  name="parameters"
+                  component={TextareaAutosizeField}
+                  label="Parameters"
+                  placeholder="Enter Parameters"
+                  height={120}
+                />
+              </Box>
+            </Flex>
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field

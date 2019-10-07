@@ -126,4 +126,14 @@ export const tableColumns = [
       />
     ),
   },
+  {
+    sortable: true,
+    Header: <TableHeader title="Parameters" />,
+    accessor: 'parameters',
+    Cell: (props: TCell<'parameters'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
 ];

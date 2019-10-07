@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField, TextField } from 'components';
+import { InputField, SelectField, TextareaAutosizeField } from 'components';
 
 import { protocolTypesOptions, statusTypesOptions, typeOfInterfacesCodes } from 'consts';
 
@@ -101,24 +101,30 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="logFileLocation"
-            name="logFileLocation"
-            component={TextField}
-            label="Log File Location Attributes"
-            placeholder="Enter Log File Location"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="connectionAttributes"
-            name="connectionAttributes"
-            component={TextField}
-            label="Connection Attributes"
-            placeholder="Enter Connection Attributes"
-          />
+        <Box width="100%">
+          <Flex alignItems="flex-start">
+            <Box width="50%" p="10px">
+              <Field
+                id="logFileLocation"
+                name="logFileLocation"
+                component={TextareaAutosizeField}
+                label="Log File Location Attributes"
+                placeholder="Enter Log File Location"
+                height={120}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+            <Box width="50%" p="10px">
+              <Field
+                id="connectionAttributes"
+                name="connectionAttributes"
+                component={TextareaAutosizeField}
+                label="Connection Attributes"
+                placeholder="Enter Connection Attributes"
+                height={120}
+              />
+            </Box>
+          </Flex>
         </Box>
       </Flex>
     </Box>

@@ -19,6 +19,7 @@ export const adminSchedulerData: AdminSchedulerDataResp = {
       log_location: 'test_job1.log',
       last_execution_datetime: '2019-07-12 13:27:18',
       last_execution_result: 'U',
+      parameters: '',
     },
     {
       id: 22,
@@ -32,6 +33,7 @@ export const adminSchedulerData: AdminSchedulerDataResp = {
       log_location: 'test_job2.log',
       last_execution_datetime: '2019-07-12 13:27:18',
       last_execution_result: 'U',
+      parameters: '',
     },
   ],
 };

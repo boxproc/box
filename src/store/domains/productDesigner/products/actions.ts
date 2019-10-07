@@ -1,10 +1,12 @@
 
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst, modalNamesConst } from 'consts';
+import { formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
+import { handleFilterLedgerAccounts } from 'store/domains';
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddProductAction,
@@ -21,11 +23,8 @@ import {
   UpdateProductDetailsAction,
   UpdateProductRulesAction,
 } from './actionTypes';
-
 import * as api from './api';
-
 import { selectCurrentInstitutionId, selectCurrentProductType } from './selectors';
-
 import {
   NewProduct,
   NewProductPrepared,
@@ -40,7 +39,6 @@ import {
   ServicesItems,
   ServicesItemsPrepared,
 } from './types';
-
 import {
   prepareGeneralProductValuesToSend,
   prepareNewProductValuesToSend,
@@ -53,7 +51,6 @@ import {
 
 import { Thunk } from 'types';
 
-import { selectActiveItemId } from 'store/domains/utils';
 import { errorDecoratorUtil } from 'utils';
 
 export type GetInstitutionProducts = (id: number | string) => GetInstitutionProductsAction;
@@ -239,6 +236,10 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
 
         await dispatch(deleteProduct(id));
         dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
+
+        if (window.location.pathname === `/ui/${uiItemConsts.LEDGER_ACCOUNTS}`) {
+          await dispatch(handleFilterLedgerAccounts());
+        }
       },
       dispatch
     );

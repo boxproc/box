@@ -22,6 +22,7 @@ export interface AccountsProps {
   filterAdminInterface: HandleFilterAdminInterface;
   institutionsOptions: Array<SelectValues>;
   resetInterfaces: ResetInterfaces;
+  interfaceName: string;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
@@ -30,6 +31,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   filterAdminInterface,
   institutionsOptions,
   resetInterfaces,
+  interfaceName,
 }) => {
   React.useEffect(
     () => {
@@ -45,10 +47,10 @@ const Interfaces: React.FC<AccountsProps> = ({
         icon: 'delete',
         action: deleteInterface,
         withConfirmation: true,
-        confirmationText: `Delete cycle editor record?`,
+        confirmationText: `Delete interface: ${interfaceName}?`,
       },
     ],
-    [deleteInterface]
+    [deleteInterface, interfaceName]
   );
 
   return (

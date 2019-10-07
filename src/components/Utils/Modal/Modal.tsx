@@ -36,7 +36,6 @@ interface ModalProps extends WithModalProps {
   setIsClearActiveIds: HandleSetIsClearActiveIds;
   setIsEditModalOpened: SetIsEditModalOpened;
   isEditModalOpened: boolean;
-  isBlurBackDrop?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -57,7 +56,6 @@ const Modal: React.FC<ModalProps> = ({
   setIsClearActiveIds,
   setIsEditModalOpened,
   isEditModalOpened,
-  isBlurBackDrop,
 }) => {
   const isClearableActiveIdsFromStore = (type === modalTypesConst.EDIT_MODAL) || !isEditModalOpened;
 
@@ -105,7 +103,6 @@ const Modal: React.FC<ModalProps> = ({
       minContainerHeight={minContainerHeight}
       zIndex={zIndex}
       accentClose={accentClose}
-      isBlurBackDrop={isBlurBackDrop}
     >
       <div
         className="modal-backdrop"

@@ -14,6 +14,7 @@ import { SelectValues } from 'types';
 interface EditAccountModalProps extends WithModalProps {
   adminCurrentInterface: Partial<AdminInterfaceItemDetailsPrepared>;
   institutionsOptions: Array<SelectValues>;
+  currentInterfaceName: string;
   isFormDirty: boolean;
 }
 
@@ -23,6 +24,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   adminCurrentInterface,
   institutionsOptions,
+  currentInterfaceName,
   isFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -33,7 +35,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   return (
     <Modal
       maxContainerWidth={850}
-      title="Edit Interface"
+      title={`Edit Interface: "${currentInterfaceName}"`}
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       withCloseConfirmation={isFormDirty}
@@ -43,6 +45,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
         mode="edit"
         initialValues={adminCurrentInterface}
         institutionsOptions={institutionsOptions}
+        currentInterfaceName={currentInterfaceName}
       />
     </Modal>
   );

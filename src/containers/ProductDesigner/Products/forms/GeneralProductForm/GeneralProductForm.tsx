@@ -28,6 +28,7 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   isProductOverride: boolean;
   onCancel?: () => void;
   isUpdating: boolean;
+  currentProductName: string;
 }
 
 type GeneralProductFormAllProps = GeneralProductFormProps &
@@ -44,6 +45,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   isProductOverride,
   currentInstitution,
   isUpdating,
+  currentProductName,
 }) => {
   React.useEffect(
     () => {
@@ -84,7 +86,11 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
             iconName={iconNamesConst.DELETE}
             type="reset"
             withConfirmation={true}
-            confirmationText={isProductOverride ? 'Delete product override?' : 'Delete product?'}
+            confirmationText={
+              isProductOverride
+                ? `Delete product override: "${currentProductName}"?`
+                : `Delete product: "${currentProductName}"?`
+            }
             onClick={deleteProduct}
           />
           <OkCancelButtons

@@ -7,7 +7,7 @@ import AddUsersGroupModal from './AddUsersGroupModal';
 
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
+const dirty = isDirty(formNamesConst.ADD_USER_GROUP);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

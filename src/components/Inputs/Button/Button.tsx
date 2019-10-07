@@ -52,7 +52,7 @@ const Button: React.FC<ButtonProps> = ({
           },
         })
         : onClick,
-    [disabled, withConfirmation, openModal, onClick]
+    [disabled, withConfirmation, openModal, onClick, confirmationText, confirmationTitle]
   );
 
   return (

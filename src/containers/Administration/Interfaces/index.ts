@@ -10,6 +10,7 @@ import {
   handleFilterAdminInterface,
   resetInterfaces,
   selectAdminInterface,
+  selectAdminInterfaceName,
   selectInstitutionsOptions,
 } from 'store/domains';
 
@@ -23,6 +24,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
   adminInterfaceItems: selectAdminInterface(state),
+  interfaceName: selectAdminInterfaceName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

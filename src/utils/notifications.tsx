@@ -23,17 +23,18 @@ export const handleSendNotification: SendNotification =
 
         if (res && res.body && res.body.response_status) {
           const { error_message, error_description, status_code } = res.body.response_status;
+          const { statusCode } = res;
 
           dispatch(getNotification(
-            `${res.statusCode} Error`,
+            `${statusCode} Error`,
             error_message,
             JSON.stringify(error_description),
             status_code,
-            res.statusCode
+            statusCode
           ));
         } else {
           dispatch(getNotification(
-            `${res && res.statusCode ? res.statusCode : ''} Error`,
+            `${(res && res.statusCode) ? res.statusCode : ''} Error`,
             res ? JSON.stringify(res) : 'An error occurred.'
           ));
         }

@@ -23,13 +23,30 @@ export const selectAdminCurrentInterface = createSelector(
   selectDefaultAdminInterface,
   selectActiveItemId,
   selectInstitutionsOptions,
-  (endpoints, currentId, institutions) => {
-    const current = endpoints.find(el => el.id === currentId);
+  (interfaces, currentId, institutions) => {
+    const current = interfaces.find(el => el.id === currentId);
 
     return {
       ...preparedValuesDetailsToRender(current),
       institutionId: current && institutions
         && institutions.find(el => el.value === current.institution_id),
     };
+  }
+);
+
+export const selectAdminCurrentInterfaceName = createSelector(
+  selectAdminCurrentInterface,
+  currentInterface => currentInterface && currentInterface.name
+);
+
+export const selectAdminInterfaceName = createSelector(
+  selectDefaultAdminInterface,
+  selectActiveItemId,
+  (interfaces, currentId) => {
+    const current = interfaces.find(el => el.id === currentId);
+
+    console.log('---c', current);
+
+    return current && current.name;
   }
 );

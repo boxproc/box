@@ -6,3 +6,5 @@ export interface ContextMenuItem {
   confirmationText?: string;
   action?: () => void;
 }
+
+export type ChangeFiledValue = (formName: string, fieldName: string, value: string) => void;

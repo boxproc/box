@@ -23,6 +23,7 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   deleteInterface: HandleDeleteAdminInterface;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  currentInterfaceName?: string;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -35,6 +36,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   updateAdminInterface,
   addAdminInterface,
   institutionsOptions,
+  currentInterfaceName,
   mode,
   dirty,
   pristine,
@@ -65,7 +67,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
               iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
-              confirmationText="Delete interface?"
+              confirmationText={`Delete interface: "${currentInterfaceName}"?`}
               onClick={deleteInterface}
             />
           )}

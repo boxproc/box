@@ -5,8 +5,11 @@ import { CronGenerator, Modal } from 'components';
 import { formNamesConst, modalNamesConst } from 'consts';
 import { withModal, WithModalProps } from 'HOCs';
 
+import { ChangeFiledValue } from 'types';
+
 interface GenerateCronExpressionModalProps extends WithModalProps {
-  change: (formName: string, fieldName: string, value: string) => void;
+  change: ChangeFiledValue;
+  currentCronExpression: string;
 }
 
 const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
@@ -14,6 +17,7 @@ const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = ({
   change,
   closeModal,
+  currentCronExpression,
 }) => {
   const handleCloseModal = React.useCallback(
     () => closeModal(modalName),
@@ -31,6 +35,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = 
         fieldName="cronExpression"
         onChange={change}
         action={handleCloseModal}
+        initialValue={currentCronExpression}
       />
     </Modal>
   );

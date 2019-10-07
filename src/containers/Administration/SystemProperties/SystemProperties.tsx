@@ -97,7 +97,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIconTableCell(updateAdminSysProps),
+      Cell: renderCheckBoxIconTableCell(),
     },
   ];
 

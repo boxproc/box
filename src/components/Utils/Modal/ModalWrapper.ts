@@ -5,7 +5,6 @@ interface ModalWrapperProps {
   minContainerHeight?: string;
   zIndex?: string;
   accentClose?: boolean;
-  isBlurBackDrop?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -18,10 +17,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   text-align: center;
   overflow-y: scroll;
   z-index: ${({ zIndex }) => zIndex ? zIndex : 100};
-
-  ${({ isBlurBackDrop }) => isBlurBackDrop && `
-    backdrop-filter: blur(3px);
-  `}
 
   &:after {
     content: "";

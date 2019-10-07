@@ -12,8 +12,7 @@ import {
   AdminSchedulerJobActionPrepared
 } from './types';
 
-export const prepareValuesToSend =
-  (values: Partial<AdminSchedulerEditableItem>) => {
+export const prepareValuesToSend = (values: Partial<AdminSchedulerEditableItem>) => {
     return {
       id: values.id,
       name: values.name,
@@ -26,6 +25,7 @@ export const prepareValuesToSend =
       institution_id: values.institutionId && values.institutionId.value,
       executable_type: values.institutionId && values.executableType.value,
       status: values.status && values.status.value,
+      parameters: values.parameters,
     };
   };
 export const prepareValuesToSendActions =
@@ -57,6 +57,7 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
     lastExecutionResult: lastExecutionResult && lastExecutionResult.label,
     status: status && status.label,
     executableType: executableType && executableType.label,
+    parameters: item.parameters,
   };
 };
 

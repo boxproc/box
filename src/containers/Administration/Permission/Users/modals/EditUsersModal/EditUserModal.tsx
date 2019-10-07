@@ -36,7 +36,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit User: "${currentUsername}"`}
-      maxContainerWidth={720}
+      maxContainerWidth={500}
       withCloseConfirmation={isFormDirty}
     >
       <DefineUsersForm

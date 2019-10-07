@@ -13,7 +13,7 @@ import { formErrorUtil } from 'utils';
 
 interface UserActivityFilterProps {
   institutionsOptions: Array<SelectValues>;
-  getAuditUsers?: HandleGetAuditUsers;
+  getAuditUsers: HandleGetAuditUsers;
   currentInstitution: SelectValues;
   auditUsersOptions: Array<SelectValues>;
   isLoadingUsers: boolean;

@@ -5,6 +5,7 @@ import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
 interface PlainInfo extends IdNamePair {
   description: string;
   executable: string;
+  parameters: string;
 }
 
 export interface AdminSchedulerItem extends PlainInfo {
