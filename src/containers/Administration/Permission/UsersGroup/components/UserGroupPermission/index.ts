@@ -15,7 +15,6 @@ import UserGroupPermission from './UserGroupPermission';
 
 const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.GET_ADMIN_GROUP_PERMISSIONS,
-  AdminUsersGroupActionTypes.DELETE_ADMIN_GROUP_PERMISSIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

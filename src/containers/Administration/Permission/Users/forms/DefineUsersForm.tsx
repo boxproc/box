@@ -136,7 +136,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="password"
               placeholder="Enter Password"
               component={PasswordField}
-              label="User Password"
+              label="Password"
               disabled={false}
               validate={!isEditMode && formErrorUtil.required}
             />

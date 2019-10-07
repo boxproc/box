@@ -15,7 +15,6 @@ import UserGroupMembers from './UserGroupMembers';
 
 const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.GET_ADMIN_USER_GROUP_MEMBERS,
-  AdminUsersGroupActionTypes.DELETE_ADMIN_GROUP_MEMBERS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

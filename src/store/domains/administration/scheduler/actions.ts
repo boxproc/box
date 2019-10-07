@@ -157,12 +157,11 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = (v
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareValuesToSendActions(values);
-        const { withAutoRefresh } = params;
 
         await dispatch(sendAdminSchedulerAction(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
 
-        if (withAutoRefresh) {
+        if (params && params.withAutoRefresh) {
           dispatch(startAutoRefresh());
         }
       },

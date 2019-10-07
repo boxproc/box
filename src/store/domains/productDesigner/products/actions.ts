@@ -1,7 +1,7 @@
 
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst, modalNamesConst, uiItemConsts, basePath } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 

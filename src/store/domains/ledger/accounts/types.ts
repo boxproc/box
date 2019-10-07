@@ -109,7 +109,7 @@ export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepare
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
   status: SelectValues;
   institutionId: SelectValues;
-  statementCycleId: SelectValues;
+  statementCycle: SelectValues;
   productName: SelectValues;
 }
 

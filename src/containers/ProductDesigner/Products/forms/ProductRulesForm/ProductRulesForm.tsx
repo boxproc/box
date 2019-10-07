@@ -47,8 +47,12 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
   );
 
   const handleGetRule = React.useCallback(
-    () => getProductRule(),
-    [getProductRule]
+    () => {
+      if (eventId && actionType) {
+        getProductRule();
+      }
+    },
+    [getProductRule, eventId, actionType]
   );
 
   const handleSubmitForm = React.useCallback(

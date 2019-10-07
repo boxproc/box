@@ -52,7 +52,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           taskCommand: schedulerTasksNames.EXECUTE_TASK,
         }),
         withConfirmation: true,
-        confirmationText: 'Execute now?',
+        confirmationText: `Execute now "${currentSchedulerName}"?`,
       },
       {
         name: 'Execute now and refresh table',
@@ -65,7 +65,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
             withAutoRefresh: true,
           }),
         withConfirmation: true,
-        confirmationText: 'Execute now and refresh table?',
+        confirmationText: `Execute now "${currentSchedulerName}" and refresh table?`,
       },
       {
         name: 'Stop job',
@@ -74,7 +74,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           taskCommand: schedulerTasksNames.STOP,
         }),
         withConfirmation: true,
-        confirmationText: 'Stop job?',
+        confirmationText: `Stop job "${currentSchedulerName}"?`,
       },
       {
         name: 'Start job',
@@ -83,7 +83,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           taskCommand: schedulerTasksNames.START,
         }),
         withConfirmation: true,
-        confirmationText: 'Start job?',
+        confirmationText: `Start job "${currentSchedulerName}"?`,
       },
       {
         name: 'Pause job',
@@ -92,7 +92,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           taskCommand: schedulerTasksNames.PAUSE,
         }),
         withConfirmation: true,
-        confirmationText: 'Pause job?',
+        confirmationText: `Pause job "${currentSchedulerName}"?`,
       },
       {
         name: 'Resume job',
@@ -101,7 +101,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           taskCommand: schedulerTasksNames.RESUME,
         }),
         withConfirmation: true,
-        confirmationText: 'Resume job?',
+        confirmationText: `Resume job "${currentSchedulerName}"?`,
       },
       {
         name: 'Delete',

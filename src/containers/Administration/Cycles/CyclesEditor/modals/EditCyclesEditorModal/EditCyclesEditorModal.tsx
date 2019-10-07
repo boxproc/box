@@ -31,7 +31,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Edit Cycle"
-      maxContainerWidth={550}
+      maxContainerWidth={480}
       withCloseConfirmation={isFormDirty}
     >
       <DefineCycleEditorForm

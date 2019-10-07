@@ -8,8 +8,9 @@ export interface LedgerStatementId {
 
 export interface LedgerStatementItem extends LedgerStatementId {
   account_id: number;
-  date_from: string;
-  date_to: string;
+  first_transaction_id: number;
+  last_transaction_id: number;
+  statement_date: string;
   balance_open: number;
   balance_close: number;
   minimum_amount_due_repayment: number;
@@ -29,8 +30,9 @@ export interface LedgerStatementItems extends ResponseStatusType {
 
 export interface LedgerStatementItemPrepared extends LedgerStatementId {
   accountId: number;
-  dateFrom: string;
-  dateTo: string;
+  firstTransactionId: number;
+  lastTransactionId: number;
+  statementDate: string;
   balanceOpen: string | number;
   balanceClose: string | number;
   minimumAmountDueRepayment: string | number;

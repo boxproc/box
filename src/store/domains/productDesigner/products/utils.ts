@@ -300,11 +300,13 @@ export const prepareProductRuleValuesToSend = (rule: Partial<ProductRulesItem>) 
       return null;
     }
 
+    const { description, eventId, actionType, script } = rule;
+
     return {
-      description: rule.description,
-      event_id: rule.eventId && rule.eventId.value,
-      action_type: rule.actionType && rule.actionType.value,
-      script: rule.script,
+      description,
+      event_id: eventId && eventId.value,
+      action_type: actionType && actionType.value,
+      script: script ? script : null,
     };
   };
 

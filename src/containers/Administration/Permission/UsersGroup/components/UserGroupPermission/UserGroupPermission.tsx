@@ -41,6 +41,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       sortable: true,
       Header: <TableHeader title="UI Items" />,
       accessor: 'uiItem',
+      filterable: true,
       Cell: (props: TCell<'uiItem'>) => (
         <TableCell
           value={props.value}
@@ -86,7 +87,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       <Table
         data={adminGroupPermissions}
         columns={columns}
-        pageSize={5}
+        pageSize={4}
       />
     </React.Fragment>
   );

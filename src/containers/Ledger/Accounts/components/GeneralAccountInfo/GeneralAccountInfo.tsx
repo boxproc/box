@@ -250,8 +250,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="cycleStatement"
-            name="cycleStatement"
+            id="statementCycle"
+            name="statementCycle"
             component={SelectField}
             label="Statement Cycle"
             placeholder="Select Statement Cycle"

@@ -9,7 +9,7 @@ import {
   InputField,
   OkCancelButtons,
   SelectField,
-  TextareaAutosizeField,
+  TextField,
 } from 'components';
 
 import {
@@ -120,20 +120,18 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                 <Field
                   id="description"
                   name="description"
-                  component={TextareaAutosizeField}
+                  component={TextField}
                   label="Description"
                   placeholder="Enter Description"
-                  height={120}
                 />
               </Box>
               <Box width="50%" p="10px">
                 <Field
                   id="parameters"
                   name="parameters"
-                  component={TextareaAutosizeField}
+                  component={TextField}
                   label="Parameters"
                   placeholder="Enter Parameters"
-                  height={120}
                 />
               </Box>
             </Flex>

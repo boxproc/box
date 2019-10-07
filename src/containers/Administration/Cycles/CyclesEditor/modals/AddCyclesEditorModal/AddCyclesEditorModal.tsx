@@ -26,7 +26,7 @@ const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
     <Modal
       name={modalName}
       title="Add Cycle Editor Record"
-      maxContainerWidth={550}
+      maxContainerWidth={480}
       withCloseConfirmation={isFormDirty}
     >
       <DefineCycleEditorForm

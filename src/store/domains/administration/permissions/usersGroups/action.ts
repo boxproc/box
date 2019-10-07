@@ -52,12 +52,12 @@ export type HandleGetAdminGroupPermissions = (userGroupId: number) => Thunk<void
 export type GetAdminActiveUsers = (userGroupId: number) => GetAdminActiveUsersAction;
 export type HandleGetAdminActiveUsers = (userGroupId: number) => Thunk<void>;
 
-export type DeleteAdminUserGroupMembers =
-  (groupId: number, userId: number) => DeleteAdminUserGroupMembersAction;
+export type DeleteAdminUserGroupMembers = (groupId: number, userId: number) =>
+  DeleteAdminUserGroupMembersAction;
 export type HandleDeleteAdminUserGroupMembers = (groupId: number, userId: number) => Thunk<void>;
 
-export type DeleteAdminGroupPermissions =
-  (groupId: number, uiItem: string) => DeleteAdminGroupPermissionsAction;
+export type DeleteAdminGroupPermissions = (groupId: number, uiItem: string) =>
+  DeleteAdminGroupPermissionsAction;
 export type HandleDeleteAdminGroupPermissions = (groupId: number, uiItem: string) => Thunk<void>;
 
 export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
@@ -174,6 +174,7 @@ export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMember
 
           await dispatch(deleteAdminUserGroupMembers(groupId, userId));
           await dispatch(getAdminActiveUsers(currentGroupId));
+          await dispatch(getAdminUserGroupMembers(currentGroupId));
         },
         dispatch
       );
@@ -188,6 +189,7 @@ export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermission
           const currentGroupId = selectActiveItemId(state);
 
           await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem));
+          await dispatch(getAdminUserGroupPermissions(currentGroupId));
           await dispatch(getAdminUiItems(currentGroupId));
         },
         dispatch

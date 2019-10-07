@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoadingCycleDescriptions: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  cycleStatementsOptions: selectCyclesDescriptionsOptions(state),
+  statementCyclesOptions: selectCyclesDescriptionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

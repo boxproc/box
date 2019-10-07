@@ -28,24 +28,32 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             isNumber={true}
           />
         </Box>
-        <Box width="200px" p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
-            id="dateFrom"
-            name="dateFrom"
+            id="firstTransactionId"
+            name="firstTransactionId"
             component={InputField}
-            label="Date From"
-            placeholder={dateFormat.DATE}
-            mask={maskFormat.DATE}
-            maskChar={null}
+            label="First Transaction ID"
             disabled={isDisabled}
+            isNumber={true}
           />
         </Box>
-        <Box width="200px" p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
-            id="dateTo"
-            name="dateTo"
+            id="lastTransactionId"
+            name="lastTransactionId"
             component={InputField}
-            label="Date To"
+            label="Last Transaction ID"
+            disabled={isDisabled}
+            isNumber={true}
+          />
+        </Box>
+        <Box width="150px" p="10px">
+          <Field
+            id="statementDate"
+            name="statementDate"
+            component={InputField}
+            label="Statement Date"
             placeholder={dateFormat.DATE}
             mask={maskFormat.DATE}
             maskChar={null}

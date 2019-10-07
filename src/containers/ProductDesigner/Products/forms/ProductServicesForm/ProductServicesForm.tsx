@@ -29,25 +29,26 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   updateCardService,
   handleSubmit,
   onCancel,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
       ...data,
       id: currentGroupId,
-
     })),
     [handleSubmit, updateCardService]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
-       <Services />
+      <Services />
       <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
+        disabledOk={pristine}
       />
     </form>
   );

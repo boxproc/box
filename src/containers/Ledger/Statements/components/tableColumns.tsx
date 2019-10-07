@@ -91,23 +91,35 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 100,
     sortable: true,
-    Header: <TableHeader title="Date From" />,
-    accessor: 'dateFrom',
-    Cell: (props: TCell<'dateFrom'>) => (
+    Header: <TableHeader title="First Transaction ID" />,
+    accessor: 'firstTransactionId',
+    Cell: (props: TCell<'firstTransactionId'>) => (
       <TableCell
         value={props.value}
-        isDate={true}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 100,
+    sortable: true,
+    Header: <TableHeader title="Last Transaction ID" />,
+    accessor: 'lastTransactionId',
+    Cell: (props: TCell<'lastTransactionId'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
     maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Date To" />,
-    accessor: 'dateTo',
-    Cell: (props: TCell<'dateTo'>) => (
+    Header: <TableHeader title="Statement Date" />,
+    accessor: 'statementDate',
+    Cell: (props: TCell<'statementDate'>) => (
       <TableCell
         value={props.value}
         isDate={true}

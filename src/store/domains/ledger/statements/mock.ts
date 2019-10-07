@@ -8,8 +8,9 @@ export const ledgerStatementsItems: LedgerStatementItems = {
     {
       id: 1,
       account_id: 1,
-      date_from: '16/09/2019 11:03:37',
-      date_to: '16/09/2019 11:03:37',
+      first_transaction_id: 2,
+      last_transaction_id: 23,
+      statement_date: '07/10/2019',
       balance_open: 1,
       balance_close: 1,
       minimum_amount_due_repayment: 1,
@@ -25,8 +26,9 @@ export const ledgerStatementsItems: LedgerStatementItems = {
     {
       id: 2,
       account_id: 1,
-      date_from: '16/09/2019 11:03:37',
-      date_to: '16/09/2019 11:03:37',
+      first_transaction_id: 2,
+      last_transaction_id: 23,
+      statement_date: '07/10/2019',
       balance_open: 2,
       balance_close: 2,
       minimum_amount_due_repayment: 2,

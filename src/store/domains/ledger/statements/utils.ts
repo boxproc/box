@@ -8,8 +8,9 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
   return {
     id: values.id,
     accountId: values.id,
-    dateFrom: values.date_from,
-    dateTo: values.date_to,
+    firstTransactionId: values.first_transaction_id,
+    lastTransactionId: values.last_transaction_id,
+    statementDate: values.statement_date,
     balanceOpen: values.balance_open && values.balance_open.toFixed(2),
     balanceClose: values.balance_close && values.balance_close.toFixed(2),
     minimumAmountDueRepayment:

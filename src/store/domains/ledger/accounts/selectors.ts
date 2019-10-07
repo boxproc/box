@@ -49,7 +49,7 @@ export const selectLedgerCurrentAccount = createSelector(
       ...preparedValuesDetailsToRender(current),
       institutionId: current && institutions.find(el => el.value === current.institution_id),
       productName: current && institutionProducts.find(el => el.value === current.product_id),
-      cycleStatement: current && cyclesOptions.find(el => el.value === current.statement_cycle_id),
+      statementCycle: current && cyclesOptions.find(el => el.value === current.statement_cycle_id),
     };
   }
 );

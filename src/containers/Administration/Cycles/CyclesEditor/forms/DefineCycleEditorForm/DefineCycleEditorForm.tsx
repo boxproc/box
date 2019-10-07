@@ -165,9 +165,9 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               <Field
                 id="fixedCycleNumberOfDays"
                 name="fixedCycleNumberOfDays"
-                placeholder="Enter fixed Cycle Number of Days"
+                placeholder="Enter Fixed Cycle Number of Days"
                 component={InputField}
-                label="Cycles Editor fixed Number of Days"
+                label="Cycles Editor Fixed Number of Days"
                 disabled={false}
                 isNumber={true}
               />

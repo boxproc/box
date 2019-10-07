@@ -102,7 +102,7 @@ export const selectUsersGroupValues = createSelector(
     return {
       id: current && current.id,
       name: current && current.name,
-      institutionId: institutions.find(el => el.value === current.institution_id),
+      institutionId: current && institutions.find(el => el.value === current.institution_id),
     };
   }
 );

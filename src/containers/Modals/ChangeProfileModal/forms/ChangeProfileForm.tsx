@@ -47,13 +47,12 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           component={SelectField}
           options={adminAccessUsersOptions}
           isDisabled={isChangingProfile}
-          autoFocus={true}
           isLoading={isLoadingUsers}
           validate={[formErrorUtil.required]}
         />
         <Flex justifyContent="flex-end">
           <Button
-            text={isChangingProfile ? 'Log in...' : 'Log in'}
+            text="Log in"
             disabled={isChangingProfile || isLoadingUsers || pristine}
           />
         </Flex>

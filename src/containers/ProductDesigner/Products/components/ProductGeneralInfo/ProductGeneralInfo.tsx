@@ -19,7 +19,7 @@ interface ProductGeneralInfoProps {
   isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
   getCyclesDescriptions: HandleGetCyclesDescriptions;
-  cycleStatementsOptions: Array<SelectValues>;
+  statementCyclesOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
   isLoadingCycleDescriptions: boolean;
 }
@@ -32,7 +32,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   isEditMode = false,
   institutionsOptions,
   getCyclesDescriptions,
-  cycleStatementsOptions,
+  statementCyclesOptions,
   currentInstitution,
   isLoadingCycleDescriptions,
 }) => {
@@ -138,7 +138,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={SelectField}
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"
-            options={cycleStatementsOptions}
+            options={statementCyclesOptions}
             validate={[formErrorUtil.required]}
             isLoading={isLoadingCycleDescriptions}
           />
