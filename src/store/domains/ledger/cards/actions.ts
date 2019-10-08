@@ -1,17 +1,16 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
 
+import { openModal } from 'store/domains/modals';
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   ActivateLedgerCardAction,
   ChangeLedgerCardStatusAction,
   FilterLedgerCardsAction,
 } from './actionTypes';
-
 import * as api from './api';
-
-import { selectActiveItemId } from 'store/domains/utils';
 import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
 import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
@@ -74,6 +73,14 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = () =>
         const cardId = selectActiveItemId(state);
 
         await dispatch(activateLedgerCard(cardId));
+        await dispatch(handleFilterLedgerCards());
+
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE_MODAL,
+          payload: {
+            title: 'Card was activate',
+          },
+        }));
       },
       dispatch
     );
