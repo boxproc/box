@@ -7,7 +7,7 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
 
   return {
     id: values.id,
-    accountId: values.id,
+    accountId: values.account_id,
     firstTransactionId: values.first_transaction_id,
     lastTransactionId: values.last_transaction_id,
     statementDate: values.statement_date,
