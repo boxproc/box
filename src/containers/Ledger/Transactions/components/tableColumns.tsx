@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
@@ -47,6 +47,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Transaction" />,
     accessor: 'transactionTypeDescription',
@@ -57,18 +58,19 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="D/C" />,
     accessor: 'debitCreditIndicator',
     Cell: (props: TCell<'debitCreditIndicator'>) => (
       <TableCell
         value={props.value}
+        onCenter={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Amount" />,
     accessor: 'amount',
@@ -80,7 +82,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
@@ -92,6 +94,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
@@ -102,19 +105,19 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Currency" />,
     accessor: 'originalCurrency',
     Cell: (props: TCell<'originalCurrency'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
+        onCenter={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Conversion Rate" />,
     accessor: 'cardConversionRate',
