@@ -40,7 +40,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={isProductOverride ? `Product override${productName}` : `Edit product${productName}`}
-      minContainerHeight={576}
+      minContainerHeight={isProductOverride ? 576 : 550}
       withCloseConfirmation={isFormDirty}
     >
       <EditProductForms

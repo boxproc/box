@@ -42,7 +42,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Account${accountAlias}`}
       maxContainerWidth={980}
-      minContainerHeight={515}
+      minContainerHeight={532}
       withCloseConfirmation={isFormDirty}
     >
       <AccountForm

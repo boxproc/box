@@ -23,7 +23,7 @@ interface AccountCardsProps extends WithModalProps {
   isOrderingCard: boolean;
 }
 
-const modalName = modalNamesConst.INFO_LEDGER_CARDS;
+const modalName = modalNamesConst.EDIT_LEDGER_ACCOUNT;
 
 type TCell<T extends keyof LedgerAccountsCardsItemPrepared> =
   TableCellType<LedgerAccountsCardsItemPrepared[T]>;
@@ -118,6 +118,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       <Flex justifyContent="flex-end">
         <Box mt="10px">
           <Button
+            type="reset"
             onClick={handleOnCancel}
             text="Close"
           />
