@@ -79,8 +79,8 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
       <Delimiter />
       <Box width="200px" p="10px">
         <Field
-          id="dateFrom"
-          name="dateFrom"
+          id="dateTimeFrom"
+          name="dateTimeFrom"
           component={MaskField}
           label="Date / Time From"
           placeholder={dateFormat.DATE_TIME}
@@ -92,8 +92,8 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
       </Box>
       <Box width="200px" p="10px">
         <Field
-          id="dateTo"
-          name="dateTo"
+          id="dateTimeTo"
+          name="dateTimeTo"
           component={MaskField}
           label="Date / Time To"
           placeholder={dateFormat.DATE_TIME}

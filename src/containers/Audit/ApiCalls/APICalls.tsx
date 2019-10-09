@@ -40,8 +40,8 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       filterAction={filterAuditApiCalls}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterdayDateTime,
-        dateTo: dateUtil.todayDateTime,
+        dateTimeFrom: dateUtil.yesterdayDateTime,
+        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />

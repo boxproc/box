@@ -61,8 +61,8 @@ export interface LedgerTransactionsFilter extends LedgerTransactionId {
   institutionId: SelectValues;
   customerId: number;
   productName: SelectValues;
-  datetimeFrom: string;
-  datetimeTo: string;
+  dateTimeFrom: string;
+  dateTimeTo: string;
 }
 
 export interface LedgerTransactionsFilterPrepared extends LedgerTransactionId {

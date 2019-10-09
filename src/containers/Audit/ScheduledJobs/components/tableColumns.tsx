@@ -37,8 +37,8 @@ export const tableColumns = [
     maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Start Date" />,
-    accessor: 'startDatetime',
-    Cell: (props: TCell<'startDatetime'>) => (
+    accessor: 'dateFrom',
+    Cell: (props: TCell<'dateFrom'>) => (
       <TableCell
         value={props.value}
         isDate={true}
@@ -49,8 +49,8 @@ export const tableColumns = [
     maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Finish Date" />,
-    accessor: 'finishDatetime',
-    Cell: (props: TCell<'finishDatetime'>) => (
+    accessor: 'dateTo',
+    Cell: (props: TCell<'dateTo'>) => (
       <TableCell
         value={props.value}
         isDate={true}

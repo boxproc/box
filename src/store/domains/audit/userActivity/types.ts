@@ -28,8 +28,8 @@ export interface AuditUserActivityItem extends PlainInfo {
 export interface AuditUserActivityFilter {
   institutionId: SelectValues;
   username: SelectValues;
-  datetimeFrom: string;
-  datetimeTo: string;
+  dateTimeFrom: string;
+  dateTimeTo: string;
 }
 
 export interface AuditUserActivityFilterPrepared {

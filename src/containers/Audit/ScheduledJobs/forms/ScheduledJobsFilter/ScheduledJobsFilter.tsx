@@ -67,8 +67,8 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
       </Box>
       <Box width="150px" p="10px" >
         <Field
-          id="startDatetime"
-          name="startDatetime"
+          id="dateFrom"
+          name="dateFrom"
           component={MaskField}
           label="Start Datetime"
           placeholder={dateFormat.DATE}
@@ -80,8 +80,8 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
       </Box>
       <Box width="150px" p="10px" >
         <Field
-          id="finishDatetime"
-          name="finishDatetime"
+          id="dateTo"
+          name="dateTo"
           component={MaskField}
           label="Finish Date"
           placeholder={dateFormat.DATE}

@@ -64,17 +64,18 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [resetUtils]
   );
 
-  const handleOpenModal = React.useCallback(
-    () => openModal({
-      name: newModalName,
-    }),
-    [openModal, newModalName]
-  );
-
   const [isFilter, setIsFilter] = React.useState(true);
   const storedFilter = cookiesUtil.get(window.location.pathname);
 
-  const handleSetIsFilter = () => setIsFilter(!isFilter);
+  const handleOpenModal = React.useCallback(
+    () => openModal({ name: newModalName }),
+    [openModal, newModalName]
+  );
+
+  const handleSetIsFilter = React.useCallback(
+    () => setIsFilter(!isFilter),
+    [isFilter]
+  );
 
   return (
     <React.Fragment>

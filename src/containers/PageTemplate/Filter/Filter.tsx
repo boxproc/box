@@ -28,6 +28,16 @@ interface FilterProps {
   isAutoRefresh: boolean;
 }
 
+const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
+const filteredFieldsToStore = (data: object) => {
+  return Object.keys(data)
+    .filter(key => !notAllowedFieldNamesToStore.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = data[key];
+      return obj;
+    },      {});
+};
+
 type FilterAllProps = FilterProps & InjectedFormProps<{}, FilterProps>;
 
 const Filter: React.FC<FilterAllProps> = ({
@@ -49,7 +59,7 @@ const Filter: React.FC<FilterAllProps> = ({
 
       cookiesUtil.set(
         window.location.pathname,
-        JSON.stringify(data),
+        JSON.stringify(filteredFieldsToStore(data)),
         {
           expires: 2592000,
         }
@@ -100,14 +110,12 @@ const Filter: React.FC<FilterAllProps> = ({
   return (
     <FilterWrapper>
       <T3>Filter</T3>
-
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-start" flexWrap="wrap">{children}</Flex>
           <Button text="Show" disabled={invalid || !isAccessibleButton()} />
         </Box>
       </form>
-
     </FilterWrapper >
   );
 };

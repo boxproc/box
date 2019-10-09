@@ -23,12 +23,12 @@ export const preparedFilterToSend = (params: Partial<AuditUserActivityFilter>) =
     return null;
   }
 
-  const { institutionId, username, datetimeFrom, datetimeTo } = params;
+  const { institutionId, username, dateTimeFrom, dateTimeTo } = params;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
     username: username ? username.value : null,
-    datetime_from: datetimeFrom ? datetimeFrom : null,
-    datetime_to: datetimeTo ? datetimeTo : null,
+    datetime_from: dateTimeFrom ? dateTimeFrom : null,
+    datetime_to: dateTimeTo ? dateTimeTo : null,
   };
 };

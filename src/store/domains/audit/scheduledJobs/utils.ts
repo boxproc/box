@@ -14,8 +14,8 @@ export const preparedValuesToRender = (values: AuditScheduledJobsItem):
   return {
     id: values.id,
     schedulerId: values.scheduler_id,
-    startDatetime: values.start_datetime,
-    finishDatetime: values.finish_datetime,
+    dateFrom: values.start_datetime,
+    dateTo: values.finish_datetime,
     executionResult: values.error_description,
     errorDescription: values.error_description,
   };
@@ -27,12 +27,12 @@ export const preparedFilterToSend = (params: Partial<AuditScheduledJobsFilter>):
     return null;
   }
 
-  const { institutionId, scheduler, startDatetime, finishDatetime } = params;
+  const { institutionId, scheduler, dateFrom, dateTo } = params;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
     scheduler_id: scheduler ? scheduler.value : null,
-    start_datetime: startDatetime ? startDatetime : null,
-    finish_datetime: finishDatetime ? finishDatetime : null,
+    start_datetime: dateFrom ? dateFrom : null,
+    finish_datetime: dateTo ? dateTo : null,
   };
 };
