@@ -10,6 +10,7 @@ import {
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   FilterAdminSchedulerJobsAction,
+  GetSchedulerLogFileAction,
   GetSchedulerNamesByInstitutionIdAction,
   SendAdminSchedulerActionJobAction,
   UpdateAdminSchedulerJobAction
@@ -57,6 +58,9 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
+export type GetSchedulerLogFile = (id: number) => GetSchedulerLogFileAction;
+export type HandleGetSchedulerLogFile = () => Thunk<void>;
+
 export type ResetScheduler = () => void;
 
 export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
@@ -92,6 +96,11 @@ export const getSchedulerNamesByInstitutionId: GetSchedulerNamesByInstitutionId 
 
 export const resetScheduler: ResetScheduler = () => ({
   type: ActionTypeKeys.RESET_SCHEDULER,
+});
+
+export const getSchedulerLogFile: GetSchedulerLogFile = id => ({
+  type: ActionTypeKeys.GET_SCHEDULER_LOG_FILE,
+  payload: api.getSchedulerLogFile(id),
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
@@ -174,6 +183,19 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getSchedulerNamesByInstitutionId(id));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const id = selectActiveItemId(state);
+
+        await dispatch(getSchedulerLogFile(id));
       },
       dispatch
     );

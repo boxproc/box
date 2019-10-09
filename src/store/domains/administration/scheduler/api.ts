@@ -3,12 +3,13 @@ import { adminSchedulerPathNames } from 'consts';
 import { apiClient } from 'services';
 
 // import { adminSchedulerData, successResponseStatus, schedulerNames } from './mock';
+import { schedulerLogFile } from './mock';
 
 import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobAction } from './types';
 
 // import { throttleUtil } from 'utils';
 
-// import { throttleUtil } from 'utils';
+import { throttleUtil } from 'utils';
 
 export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSchedulerData, 500);
@@ -32,9 +33,15 @@ export const sendAdminSchedulerAction = (data: Partial<AdminSchedulerJobAction>)
   apiClient.post(adminSchedulerPathNames.SEND_ACTION, { data });
 
 export const getSchedulerNamesByInstitutionId = (id: number | string) =>
-//  throttleUtil.getDataAfter(schedulerNames, 100);
+  //  throttleUtil.getDataAfter(schedulerNames, 100);
   apiClient.post(adminSchedulerPathNames.GET_NAMES_BY_INSTITUTION_ID, {
     data: {
       institution_id: id,
     },
   });
+
+export const getSchedulerLogFile = (id: number) =>
+   throttleUtil.getDataAfter(schedulerLogFile, 500);
+  // apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, {
+  //   data: { id },
+  // });

@@ -9,6 +9,7 @@ import {
   LogOutIcon,
   PlusIcon,
   QrcodeIcon,
+  ShortTextIcon,
   SmartphoneIcon,
   StopIcon,
   UserIcon,
@@ -36,6 +37,8 @@ export const renderIcon = (name: string) => {
       return (<Box mt="-2px" mr="2px"><UserIcon size="12" /></Box>);
     case iconNamesConst.STOP:
       return (<Box mt="-3.5px"><StopIcon size="20" /></Box>);
+    case iconNamesConst.SHORT_TEXT:
+      return (<Box mt="-3.5px"><ShortTextIcon size="20" /></Box>);
     default:
       return null;
   }

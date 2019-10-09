@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
+import { Button, withSpinner } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, schedulerTasksNames } from 'consts';
 
@@ -17,7 +18,7 @@ import {
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
-interface SchedulerProps {
+interface SchedulerProps extends WithModalProps {
   adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
   filterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs;
   sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
@@ -35,6 +36,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
+  openModal,
 }) => {
   React.useEffect(
     () => {
@@ -104,6 +106,11 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `Resume job "${currentSchedulerName}"?`,
       },
       {
+        name: 'Show log file',
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE}),
+      },
+      {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
         action: deleteAdminSchedulerJob,
@@ -116,6 +123,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
+      openModal,
     ]
   );
 
@@ -131,10 +139,17 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       FilterForm={
         <SchedulerFilter />
       }
+      AdditionalButton={
+        <Button
+          text="Show log file"
+          iconName={iconNamesConst.SHORT_TEXT}
+          onClick={() => openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE})}
+        />
+      }
     />
   );
 };
 
 export default withSpinner({
   isFixed: true,
-})(Scheduler);
+})(withModal(Scheduler));

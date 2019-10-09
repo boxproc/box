@@ -45,8 +45,6 @@ export const selectAdminInterfaceName = createSelector(
   (interfaces, currentId) => {
     const current = interfaces.find(el => el.id === currentId);
 
-    console.log('---c', current);
-
     return current && current.name;
   }
 );

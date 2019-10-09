@@ -29,6 +29,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   isAutoRefresh?: boolean;
   stopAutoRefresh: StopAutoRefresh;
   resetUtils: ResetUtils;
+  AdditionalButton?: ReactChild;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -45,6 +46,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     isAutoRefresh,
     stopAutoRefresh,
     resetUtils,
+    AdditionalButton,
     ...pageTemplateProps
   } = props;
 
@@ -118,6 +120,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               onClick={handleOpenModal}
             />
           </Box>
+        )}
+        {AdditionalButton && (
+           <Box mb="7px" ml="20px">
+            {AdditionalButton}
+           </Box>
         )}
         {isAutoRefresh && (
           <Box mb="7px" ml="25px">

@@ -1,4 +1,4 @@
-import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
+import { AdminSchedulerDataResp, AdminSchedulerLogFile, AdminSchedulerNameItems } from './types';
 
 import { ResponseStatusType } from 'types';
 
@@ -56,6 +56,14 @@ export const schedulerNames: AdminSchedulerNameItems = {
       name: 'Settlement - institution1',
     },
   ],
+};
+
+export const schedulerLogFile: AdminSchedulerLogFile = {
+  response_status: {
+    status_code: 0,
+  },
+  // tslint:disable-next-line: max-line-length
+  log_file: '2019-10-08 15:55:15 INFO   [main]: Job: 5 start/n 2019-10-08 16:02:37 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:02:51 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:03:03 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:04:03 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:04:35 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:05:17 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:05:44 INFO   [main]: Job: 5 execute_task/n 2019-10-08 16:16:06 INFO   [main]: Job: 5 execute_task',
 };
 
 export const successResponseStatus: ResponseStatusType = {

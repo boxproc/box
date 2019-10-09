@@ -66,7 +66,12 @@ export interface AdminSchedulerNameItems extends ResponseStatusType {
   scheduler_names: Array<IdNamePair>;
 }
 
+export interface AdminSchedulerLogFile extends ResponseStatusType {
+  log_file: string;
+}
+
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
   schedulerNames: ImmutableArray<IdNamePair>;
+  logFile: string;
 }

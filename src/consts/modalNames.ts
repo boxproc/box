@@ -32,6 +32,7 @@ export enum modalNamesConst {
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
   ADD_ADMIN_SCHEDULER = 'AddAdminSchedulerModal',
   EDIT_ADMIN_SCHEDULER = 'EditAdminSchedulerModal',
+  SHOW_SCHEDULER_LOG_FILE = 'ShowSchedulerLogFile',
   GENERATE_CRON_EXPRESSION = 'GenerateCronExpressionModal',
   ADD_ADMIN_ACTIVE_USER = 'AddAdminActiveUser',
   ADD_ADMIN_USERS_GROUP = 'AddAdminUsersGroupModal',

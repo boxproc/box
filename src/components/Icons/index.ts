@@ -16,6 +16,7 @@ import { UserShield as UserShieldIcon } from 'styled-icons/fa-solid/UserShield';
 import { Qrcode as QrcodeIcon } from 'styled-icons/icomoon/Qrcode';
 import { ArrowDropDown as ArrowDropDownIcon } from 'styled-icons/material/ArrowDropDown';
 import { Delete as DeleteIcon } from 'styled-icons/material/Delete';
+import { ShortText as ShortTextIcon} from 'styled-icons/material/ShortText';
 import { Smartphone as SmartphoneIcon } from 'styled-icons/material/Smartphone';
 import { Stop as StopIcon } from 'styled-icons/material/Stop';
 import { Calendar as CalendarIcon } from 'styled-icons/octicons/Calendar';
@@ -45,4 +46,5 @@ export {
   LinkExternalIcon,
   InfoCircleIcon,
   StopIcon,
+  ShortTextIcon,
 };
