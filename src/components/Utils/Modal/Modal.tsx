@@ -36,6 +36,7 @@ interface ModalProps extends WithModalProps {
   setIsClearActiveIds: HandleSetIsClearActiveIds;
   setIsEditModalOpened: SetIsEditModalOpened;
   isEditModalOpened: boolean;
+  containerWidthAuto?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -56,6 +57,7 @@ const Modal: React.FC<ModalProps> = ({
   setIsClearActiveIds,
   setIsEditModalOpened,
   isEditModalOpened,
+  containerWidthAuto = false,
 }) => {
   const isClearableActiveIdsFromStore = (type === modalTypesConst.EDIT_MODAL) || !isEditModalOpened;
 
@@ -101,6 +103,7 @@ const Modal: React.FC<ModalProps> = ({
     <ModalWrapper
       maxContainerWidth={maxContainerWidth}
       minContainerHeight={minContainerHeight}
+      containerWidthAuto={containerWidthAuto}
       zIndex={zIndex}
       accentClose={accentClose}
     >

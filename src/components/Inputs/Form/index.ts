@@ -3,6 +3,7 @@ export { default as PasswordField } from './PasswordField';
 export { default as TextField } from './TextField';
 export { default as TextareaAutosizeField } from './TextareaAutosizeField';
 export { default as HighlightCodeField } from './HighlightCodeField';
+export { default as HighlightCode } from './HighlightCodeField/HighlightCode';
 export { default as CalendarField } from './CalendarField';
 export { default as MaskField } from './MaskField';
 export { default as CheckboxField } from './CheckboxField';

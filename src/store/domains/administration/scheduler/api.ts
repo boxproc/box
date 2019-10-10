@@ -42,8 +42,6 @@ export const getSchedulerNamesByInstitutionId = (id: number | string) =>
     },
   });
 
-export const getSchedulerLogFile = (id: number) =>
+export const getSchedulerLogFile = (data: object) =>
   //  throttleUtil.getDataAfter(schedulerLogFile, 500);
-  apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, {
-    data: { scheduler_id: id },
-  });
+  apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, { data });

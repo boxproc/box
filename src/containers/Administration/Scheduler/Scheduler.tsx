@@ -108,7 +108,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `Resume job "${currentSchedulerName}"?`,
       },
       {
-        name: 'Show log file',
+        name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getSchedulerLogFile(),
       },
@@ -143,7 +143,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       }
       AdditionalButton={
         <Button
-          text="Show log file"
+          text="Show scheduler master log"
           iconName={iconNamesConst.SHORT_TEXT}
           onClick={getSchedulerLogFile}
         />

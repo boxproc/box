@@ -58,7 +58,7 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
-export type GetSchedulerLogFile = (id: number) => GetSchedulerLogFileAction;
+export type GetSchedulerLogFile = (payload: object) => GetSchedulerLogFileAction;
 export type HandleGetSchedulerLogFile = () => Thunk<void>;
 
 export type ResetScheduler = () => void;
@@ -98,9 +98,9 @@ export const resetScheduler: ResetScheduler = () => ({
   type: ActionTypeKeys.RESET_SCHEDULER,
 });
 
-export const getSchedulerLogFile: GetSchedulerLogFile = id => ({
+export const getSchedulerLogFile: GetSchedulerLogFile = payload => ({
   type: ActionTypeKeys.GET_SCHEDULER_LOG_FILE,
-  payload: api.getSchedulerLogFile(id),
+  payload: api.getSchedulerLogFile(payload),
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
@@ -194,8 +194,9 @@ export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = () =>
       async () => {
         const state = getState();
         const id = selectActiveItemId(state);
+        const payload = id ? { scheduler_id: id } : {};
 
-        await dispatch(getSchedulerLogFile(id));
+        await dispatch(getSchedulerLogFile(payload));
         dispatch(openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE }));
       },
       dispatch

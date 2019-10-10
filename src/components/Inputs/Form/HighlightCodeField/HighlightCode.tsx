@@ -14,7 +14,8 @@ import './prism.css';
 
 export const Wrapper = styled.div`
   padding: 0;
-  height: 220px;
+  min-height: 220px;
+  height: auto;
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
   font-size: 13px;
@@ -41,10 +42,12 @@ export const Wrapper = styled.div`
   pre {
     word-break: break-word !important;
     line-height: 1.7;
+    min-height: 218px;
   }
 `;
 
-interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> { }
+interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+}
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
   id,
@@ -55,7 +58,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
 }) => {
   const wrapperRef = React.useRef(null);
   const handleChange = React.useCallback(
-    code => onChange(code),
+    code => onChange ? onChange(code) : null,
     [onChange]
   );
   const addFocusClass = () => {
@@ -66,7 +69,9 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   };
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper
+      ref={wrapperRef}
+    >
       <PerfectScrollbar>
       <Editor
         value={value.toString()}

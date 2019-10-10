@@ -2,17 +2,10 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Modal } from 'components';
+import { Button, HighlightCode, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import styled from 'theme';
-
-const LogFileWrapper = styled.div`
-  margin-bottom: 7px;
-  font-size: 13px;
-  font-family: ${({ theme }) => theme.fonts.code};
-`;
 
 interface ShowLogFileModalProps extends WithModalProps {
   schedulerName: string;
@@ -37,11 +30,9 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
     <Modal
       name={modalName}
       title={`Log file${currentName}`}
-      maxContainerWidth={500}
+      containerWidthAuto={true}
     >
-      {logFile && logFile.split('/n').map((line: string, index: number) => (
-        <LogFileWrapper key={index}>{line}</LogFileWrapper>
-      ))}
+      <HighlightCode value={logFile.split('\\n').join('\n').trim()} />
       <Flex justifyContent="flex-end">
         <Button
           text="close"
