@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Button, HighlightCode, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
@@ -35,13 +35,15 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
     >
       <HighlightCode
         value={preparedLogFile}
-        fontSize={9}
+        fontSize={8.5}
       />
       <Flex justifyContent="flex-end">
-        <Button
-          text="close"
-          onClick={handleOnCancel}
-        />
+        <Box mt="10px">
+          <Button
+            text="close"
+            onClick={handleOnCancel}
+          />
+        </Box>
       </Flex>
     </Modal>
   );

@@ -24,7 +24,7 @@ export const tableColumns = [
   {
     maxWidth: 100,
     sortable: true,
-    Header: <TableHeader title="Scheduler" />,
+    Header: <TableHeader title="Scheduler ID" />,
     accessor: 'schedulerId',
     Cell: (props: TCell<'schedulerId'>) => (
       <TableCell
@@ -58,7 +58,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Execution Result" />,
     accessor: 'executionResult',

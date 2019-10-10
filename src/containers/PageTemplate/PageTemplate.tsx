@@ -67,7 +67,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   );
 
   const [isFilter, setIsFilter] = React.useState(true);
-  const storedFilter = cookiesUtil.get(window.location.pathname);
+  const storedFilter = cookiesUtil.get(location.pathname);
 
   const handleOpenModal = React.useCallback(
     () => openModal({ name: newModalName }),
@@ -107,6 +107,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             ...initialFilterValues,
             ...storedFilter && JSON.parse(storedFilter),
           }}
+          location={location}
         >
           {FilterForm}
         </Filter>

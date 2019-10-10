@@ -1,3 +1,5 @@
+import { lastExecutionResultOptions } from 'consts';
+
 import {
   AuditScheduledJobsFilter,
   AuditScheduledJobsFilterPrepared,
@@ -11,12 +13,15 @@ export const preparedValuesToRender = (values: AuditScheduledJobsItem):
     return null;
   }
 
+  const executionResult = lastExecutionResultOptions
+    .find(el => el.value === values.execution_result);
+
   return {
     id: values.id,
     schedulerId: values.scheduler_id,
     dateFrom: values.start_datetime,
     dateTo: values.finish_datetime,
-    executionResult: values.error_description,
+    executionResult: executionResult && executionResult.label,
     errorDescription: values.error_description,
   };
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
+import * as H from 'history';
 
 import styled from 'theme';
 
@@ -26,11 +27,12 @@ interface FilterProps {
   filterValues: object;
   stopAutoRefresh: StopAutoRefresh;
   isAutoRefresh: boolean;
+  location: H.Location;
 }
 
 const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
 const filteredFieldsToStore = (data: object) => {
-  return Object.keys(data)
+  return data && Object.keys(data)
     .filter(key => !notAllowedFieldNamesToStore.includes(key))
     .reduce((obj, key) => {
       obj[key] = data[key];
@@ -48,7 +50,25 @@ const Filter: React.FC<FilterAllProps> = ({
   filterValues,
   stopAutoRefresh,
   isAutoRefresh,
+  location,
 }) => {
+  const [filterData, setFilterData] = React.useState(null);
+
+  React.useEffect(
+    () => {
+      return () => {
+        if (filterData) {
+          cookiesUtil.set(
+            location.pathname,
+            JSON.stringify(filteredFieldsToStore(filterData)),
+            { expires: 2592000 }
+          );
+        }
+      };
+    },
+    [filterData, location]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
       filterAction();
@@ -57,13 +77,7 @@ const Filter: React.FC<FilterAllProps> = ({
         stopAutoRefresh();
       }
 
-      cookiesUtil.set(
-        window.location.pathname,
-        JSON.stringify(filteredFieldsToStore(data)),
-        {
-          expires: 2592000,
-        }
-      );
+      setFilterData(data);
     }),
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );
@@ -80,7 +94,7 @@ const Filter: React.FC<FilterAllProps> = ({
     && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
 
   const isAccessibleButton = () => {
-    switch (window.location.pathname) {
+    switch (location.pathname) {
       case `${basePath}${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
       case `${basePath}${uiItemConsts.ADMINISTRATION_USER}`:
       case `${basePath}${uiItemConsts.ADMINISTRATION_SCHEDULER}`:

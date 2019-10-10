@@ -62,9 +62,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
   );
 
   const handleOpenModal = React.useCallback(
-    () => openModal({
-      name: modalNamesConst.CHANGE_PROFILE_MODAL,
-    }),
+    () => openModal({ name: modalNamesConst.CHANGE_PROFILE_MODAL }),
     [openModal]
   );
 
