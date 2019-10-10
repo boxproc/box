@@ -25,6 +25,7 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
   );
 
   const currentName = schedulerName ? `: "${schedulerName}"` : '';
+  const preparedLogFile = logFile.split('\\n').join('\n').trim();
 
   return (
     <Modal
@@ -32,7 +33,10 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
       title={`Log file${currentName}`}
       containerWidthAuto={true}
     >
-      <HighlightCode value={logFile.split('\\n').join('\n').trim()} />
+      <HighlightCode
+        value={preparedLogFile}
+        fontSize={9}
+      />
       <Flex justifyContent="flex-end">
         <Button
           text="close"

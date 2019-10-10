@@ -47,6 +47,7 @@ export const Wrapper = styled.div`
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+  fontSize?: number;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -55,6 +56,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   value,
   onChange,
   placeholder,
+  fontSize,
 }) => {
   const wrapperRef = React.useRef(null);
   const handleChange = React.useCallback(
@@ -86,7 +88,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         style={{
           overflow: 'visible',
           fontFamily: '"Roboto Mono", monospace',
-          fontSize: 13,
+          fontSize: fontSize ? fontSize : 13,
         }}
       />
       </PerfectScrollbar>
