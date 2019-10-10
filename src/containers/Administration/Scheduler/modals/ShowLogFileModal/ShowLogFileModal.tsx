@@ -2,15 +2,20 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Modal, PrismCode, withSpinner } from 'components';
+import { Button, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import { HandleGetSchedulerLogFile } from 'store/domains';
+import styled from 'theme';
+
+const LogFileWrapper = styled.div`
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-family: ${({ theme }) => theme.fonts.code};
+`;
 
 interface ShowLogFileModalProps extends WithModalProps {
   schedulerName: string;
-  getSchedulerLogFile: HandleGetSchedulerLogFile;
   logFile: string;
 }
 
@@ -19,16 +24,8 @@ const modalName = modalNamesConst.SHOW_SCHEDULER_LOG_FILE;
 const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
   closeModal,
   schedulerName,
-  getSchedulerLogFile,
   logFile,
 }) => {
-  React.useEffect(
-    () => {
-      getSchedulerLogFile();
-    },
-    [getSchedulerLogFile]
-  );
-
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -43,7 +40,7 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
       maxContainerWidth={500}
     >
       {logFile && logFile.split('/n').map((line: string, index: number) => (
-        <PrismCode key={index} code={line} />
+        <LogFileWrapper key={index}>{line}</LogFileWrapper>
       ))}
       <Flex justifyContent="flex-end">
         <Button
@@ -55,8 +52,4 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(
-  withModal(ShowLogFileModal)
-);
+export default withModal(ShowLogFileModal);

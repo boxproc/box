@@ -2,7 +2,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
+import { closeModal, openModal } from 'store/domains/modals';
 
 import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
 import {
@@ -196,6 +196,7 @@ export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(getSchedulerLogFile(id));
+        dispatch(openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE }));
       },
       dispatch
     );

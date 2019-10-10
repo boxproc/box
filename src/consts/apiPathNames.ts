@@ -80,7 +80,7 @@ export enum adminSchedulerPathNames {
   UPDATE = '/ui/administration/scheduler/update',
   GET_NAMES_BY_INSTITUTION_ID = '/ui/administration/scheduler/get_scheduler_name',
   SEND_ACTION = '/sys/scheduler/management',
-  GET_LOG_FILE = '',
+  GET_LOG_FILE = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum adminSystemPropsPathNames {

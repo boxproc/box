@@ -12,6 +12,7 @@ import {
   AdminSchedulerItemPrepared,
   HandleDeleteAdminSchedulerJob,
   HandleFilterAdminSchedulerJobs,
+  HandleGetSchedulerLogFile,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
 } from 'store/domains';
@@ -26,6 +27,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerJobId: number;
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
+  getSchedulerLogFile: HandleGetSchedulerLogFile;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -36,7 +38,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
-  openModal,
+  getSchedulerLogFile,
 }) => {
   React.useEffect(
     () => {
@@ -108,7 +110,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: 'Show log file',
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE}),
+        action: () => getSchedulerLogFile(),
       },
       {
         name: 'Delete',
@@ -123,7 +125,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
-      openModal,
+      getSchedulerLogFile,
     ]
   );
 
@@ -143,7 +145,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         <Button
           text="Show log file"
           iconName={iconNamesConst.SHORT_TEXT}
-          onClick={() => openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE})}
+          onClick={getSchedulerLogFile}
         />
       }
     />

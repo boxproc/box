@@ -2,14 +2,16 @@ import { adminSchedulerPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-// import { adminSchedulerData, successResponseStatus, schedulerNames } from './mock';
-import { schedulerLogFile } from './mock';
+// import {
+//   adminSchedulerData,
+//   schedulerLogFile,
+//   schedulerNames,
+//   successResponseStatus,
+// } from './mock';
 
 import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobAction } from './types';
 
 // import { throttleUtil } from 'utils';
-
-import { throttleUtil } from 'utils';
 
 export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSchedulerData, 500);
@@ -41,7 +43,7 @@ export const getSchedulerNamesByInstitutionId = (id: number | string) =>
   });
 
 export const getSchedulerLogFile = (id: number) =>
-   throttleUtil.getDataAfter(schedulerLogFile, 500);
-  // apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, {
-  //   data: { id },
-  // });
+  //  throttleUtil.getDataAfter(schedulerLogFile, 500);
+  apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, {
+    data: { scheduler_id: id },
+  });
