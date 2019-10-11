@@ -15,7 +15,6 @@ import {
 } from 'store/domains';
 
 import { SelectValues } from 'types';
-import { dateUtil } from 'utils';
 
 export interface TransactionsProps {
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
@@ -46,8 +45,6 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterAction={filterLedgerTransactions}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <TransactionsFilter institutionsOptions={institutionsOptions} />

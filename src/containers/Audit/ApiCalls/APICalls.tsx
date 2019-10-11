@@ -10,7 +10,6 @@ import { ApiCallsFilter } from './forms';
 
 import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store/domains';
 import { SelectValues } from 'types';
-import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
@@ -40,8 +39,6 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       filterAction={filterAuditApiCalls}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />

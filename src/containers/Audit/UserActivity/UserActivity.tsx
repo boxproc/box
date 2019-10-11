@@ -12,7 +12,6 @@ import {
   ResetUserActivity,
 } from 'store/domains';
 import { SelectValues } from 'types';
-import { dateUtil } from 'utils';
 
 export interface UserActivityProps {
   institutionsOptions: Array<SelectValues>;
@@ -42,8 +41,6 @@ const UserActivity: React.FC<UserActivityProps> = ({
       filterAction={filterAuditUserActivity}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <UserActivityFilter

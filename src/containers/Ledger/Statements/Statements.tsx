@@ -16,8 +16,6 @@ import {
 
 import { SelectValues } from 'types';
 
-import { dateUtil } from 'utils';
-
 export interface StatementsProps {
   ledgerStatements: Array<LedgerStatementItemPrepared>;
   filterLedgerStatements: HandleFilterLedgerStatements;
@@ -47,8 +45,6 @@ const Statements: React.FC<StatementsProps> = ({
       filterAction={filterLedgerStatements}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterdayDate,
-        dateTo: dateUtil.todayDate,
       }}
       FilterForm={
         <StatementsFilter institutionsOptions={institutionsOptions} />

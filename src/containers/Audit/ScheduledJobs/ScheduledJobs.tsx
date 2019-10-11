@@ -13,7 +13,6 @@ import {
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
-import { dateUtil } from 'utils';
 
 export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
@@ -43,8 +42,6 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       filterAction={filterAuditScheduledJobs}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <ScheduledJobsFilter

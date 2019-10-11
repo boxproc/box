@@ -15,7 +15,7 @@ import Filter from './Filter';
 import { ResetUtils, StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItem } from 'types';
-import { cookiesUtil, stringsUtil } from 'utils';
+import { cookiesUtil, dateUtil, stringsUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
@@ -49,6 +49,12 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     AdditionalButton,
     ...pageTemplateProps
   } = props;
+  const [date, setDate] = React.useState({
+    dateTimeFrom: null,
+    dateTimeTo: null,
+    dateFrom: null,
+    dateTo: null,
+  });
 
   React.useEffect(
     () => {
@@ -61,6 +67,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
 
   React.useEffect(
     () => {
+      setDate({
+        dateTimeFrom: dateUtil.yesterdayDateTime(),
+        dateTimeTo: dateUtil.todayDateTime(),
+        dateFrom: dateUtil.yesterdayDate,
+        dateTo: dateUtil.todayDate,
+      });
+
       return () => resetUtils();
     },
     [resetUtils]
@@ -106,6 +119,10 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           initialValues={{
             ...initialFilterValues,
             ...storedFilter && JSON.parse(storedFilter),
+            dateTimeFrom: date.dateTimeFrom,
+            dateTimeTo: date.dateTimeTo,
+            dateFrom: date.dateFrom,
+            dateTo: date.dateTo,
           }}
           location={location}
         >
