@@ -14,6 +14,7 @@ import './prism.css';
 
 interface WrapperProps {
   height?: string;
+  whiteSpacePre?: boolean;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -50,17 +51,22 @@ export const Wrapper = styled.div<WrapperProps>`
   textarea,
   pre {
     min-height: ${({ height }) => height ? `calc(${height} - 2px)` : '218px'};
-    white-space: pre !important;
+
+    ${({ whiteSpacePre }) => whiteSpacePre && `
+      white-space: pre !important;
+    `}
   }
 
   .editor {
     float: left;
+    min-width: 100%;
   }
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
   height?: string;
+  whiteSpacePre?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -71,6 +77,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   placeholder,
   fontSize,
   height,
+  whiteSpacePre,
 }) => {
   const wrapperRef = React.useRef(null);
 
@@ -89,6 +96,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
     <Wrapper
       ref={wrapperRef}
       height={height}
+      whiteSpacePre={whiteSpacePre}
     >
       <PerfectScrollbar>
       <Editor

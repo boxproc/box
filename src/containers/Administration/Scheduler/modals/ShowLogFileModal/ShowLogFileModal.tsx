@@ -38,6 +38,7 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
         value={preparedLogFile}
         height="calc(100vh - 150px)"
         fontSize={8.5}
+        whiteSpacePre={true}
       />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
