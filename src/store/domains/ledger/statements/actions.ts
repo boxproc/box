@@ -13,6 +13,7 @@ import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
+import { selectLedgerCurrentStatementTransaction } from './selectors';
 
 export type FilterLedgerStatements = (params: Partial<LedgerStatementsFilterPrepared>) =>
   FilterLedgerStatementsAction;
@@ -20,8 +21,7 @@ export type HandleFilterLedgerStatements = () => Thunk<void>;
 
 export type GetLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
 GetLedgerStatementTransactionsAction;
-export type HandleGetLedgerStatementTransactions =
-(data: LedgerStatementTransactionsItemsRequest) => Thunk<void>;
+export type HandleGetLedgerStatementTransactions = () => Thunk<void>;
 
 export type ResetStatements = () => void;
 
@@ -55,10 +55,13 @@ export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>
     );
   };
 
-export const handleGetLedgerStatementTransactions: HandleGetLedgerStatementTransactions = values =>
-  async dispatch => {
+export const handleGetLedgerStatementTransactions: HandleGetLedgerStatementTransactions = () =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const values = selectLedgerCurrentStatementTransaction(state);
+
         await dispatch(getLedgerStatementTransactions(values));
       },
       dispatch
