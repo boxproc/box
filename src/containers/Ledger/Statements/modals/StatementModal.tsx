@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal } from 'components';
+import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 import { StatementForm } from '../forms';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
+import TransactionsTable from '../components/TransactionsTable';
 
 interface StatementModalProps extends WithModalProps { }
 
@@ -26,16 +27,32 @@ const StatementModal: React.FC<StatementModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Statement"
       closeOnBackdrop={true}
-      maxContainerWidth={820}
+      maxContainerWidth={1100}
+      minContainerHeight={566}
     >
-      <StatementForm isDisabled={true} />
-      <Hr />
-      <Flex justifyContent="flex-end">
-        <Button
-          text="close"
-          onClick={handleCloseModal}
-        />
-      </Flex>
+      <Tabs>
+        <TabsPanel title="Totals">
+          <StatementForm isDisabled={true} />
+          <Hr />
+          <Flex justifyContent="flex-end">
+            <Button
+              text="close"
+              onClick={handleCloseModal}
+            />
+          </Flex>
+        </TabsPanel>
+        <TabsPanel title="Transactions" >
+          <TransactionsTable />
+          <Flex justifyContent="flex-end">
+            <Box mt="10px">
+              <Button
+                text="close"
+                onClick={handleCloseModal}
+              />
+            </Box>
+          </Flex>
+        </TabsPanel>
+      </Tabs>
     </Modal>
   );
 };

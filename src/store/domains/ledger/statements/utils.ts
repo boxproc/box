@@ -1,4 +1,8 @@
-import { LedgerStatementItem, LedgerStatementsFilter } from './types';
+import {
+  LedgerStatementItem,
+  LedgerStatementsFilter,
+  LedgerStatementTransactionsItem
+} from './types';
 
 export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
   if (!values) {
@@ -23,6 +27,25 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
     lastName: values.last_name,
   };
 };
+
+export const prepareTransactionsValuesToRender =
+  (values: Partial<LedgerStatementTransactionsItem>) => {
+    if (!values) {
+      return null;
+    }
+
+    return {
+      id: values.id,
+      transactionDatetime: values.transaction_datetime,
+      amount: values.amount.toFixed(2),
+      amountInOriginalCurrency: values.amount_in_original_currency.toFixed(2),
+      balanceAvailableBefore: values.balance_available_before.toFixed(2),
+      balanceAvailableAfter: values.balance_available_after.toFixed(2),
+      balanceSettledBefore: values.balance_settled_before.toFixed(2),
+      balanceSettledAfter: values.balance_settled_after.toFixed(2),
+      description: values.description,
+    };
+  };
 
 export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) => {
   if (!params) {

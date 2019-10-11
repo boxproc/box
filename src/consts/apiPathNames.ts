@@ -122,6 +122,7 @@ export enum lenderCustomersPathNames {
 
 export enum lenderStatementsPathNames {
   GET = '/ui/ledger/statements/get',
+  GET_TRANSACTIONS = '/ui/ledger/statements/get_transactions',
 }
 
 export enum lenderTransactionsPathNames {
