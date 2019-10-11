@@ -6,7 +6,7 @@ interface AuditScheduledJobsId {
 }
 
 export interface AuditScheduledJobsItem extends AuditScheduledJobsId {
-  scheduler_id: number;
+  name: string;
   start_datetime: string;
   finish_datetime: string;
   execution_result: string;
@@ -14,9 +14,9 @@ export interface AuditScheduledJobsItem extends AuditScheduledJobsId {
 }
 
 export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
-  schedulerId: number;
-  dateFrom: string;
-  dateTo: string;
+  scheduler: string;
+  dateTimeFrom: string;
+  dateTimeTo: string;
   executionResult: string;
   errorDescription: string;
 }
@@ -24,8 +24,8 @@ export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
 export interface AuditScheduledJobsFilter {
   institutionId: SelectValues;
   scheduler: SelectValues;
-  dateFrom: string;
-  dateTo: string;
+  dateTimeFrom: string;
+  dateTimeTo: string;
 }
 
 export interface AuditScheduledJobsFilterPrepared {

@@ -43,8 +43,8 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       filterAction={filterAuditScheduledJobs}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterdayDate,
-        dateTo: dateUtil.todayDate,
+        dateTimeFrom: dateUtil.yesterdayDateTime,
+        dateTimeTo: dateUtil.todayDateTime,
       }}
       FilterForm={
         <ScheduledJobsFilter

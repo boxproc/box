@@ -65,27 +65,27 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           isLoading={isLoadingSchedulerNames}
         />
       </Box>
-      <Box width="150px" p="10px" >
+      <Box width="200px" p="10px" >
         <Field
-          id="dateFrom"
-          name="dateFrom"
+          id="dateTimeFrom"
+          name="dateTimeFrom"
           component={MaskField}
-          label="Start Datetime"
-          placeholder={dateFormat.DATE}
-          mask={maskFormat.DATE}
+          label="Start Date / Time"
+          placeholder={dateFormat.DATE_TIME}
+          mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="150px" p="10px" >
+      <Box width="200px" p="10px" >
         <Field
-          id="dateTo"
-          name="dateTo"
+          id="dateTimeTo"
+          name="dateTimeTo"
           component={MaskField}
-          label="Finish Date"
-          placeholder={dateFormat.DATE}
-          mask={maskFormat.DATE}
+          label="Finish Date / Time"
+          placeholder={dateFormat.DATE_TIME}
+          mask={maskFormat.DATE_TIME}
           maskChar={null}
           disabled={false}
           validate={[formErrorUtil.required]}

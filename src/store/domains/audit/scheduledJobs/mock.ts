@@ -7,7 +7,7 @@ export const schedulerJobsItems: AuditScheduledJobsItems = {
   scheduler_jobs: [
     {
       id: 1,
-      scheduler_id: 1,
+      name: 'Settlement - institution1',
       start_datetime: '26/09/2019',
       finish_datetime: '27/09/2019',
       execution_result: '',
@@ -15,7 +15,7 @@ export const schedulerJobsItems: AuditScheduledJobsItems = {
     },
     {
       id: 2,
-      scheduler_id: 1,
+      name: 'Settlement - institution1',
       start_datetime: '26/09/2019',
       finish_datetime: '27/09/2019',
       execution_result: '',
@@ -23,7 +23,7 @@ export const schedulerJobsItems: AuditScheduledJobsItems = {
     },
     {
       id: 3,
-      scheduler_id: 1,
+      name: 'Settlement - institution1',
       start_datetime: '26/09/2019',
       finish_datetime: '27/09/2019',
       execution_result: '',
