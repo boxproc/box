@@ -43,9 +43,6 @@ const Transactions: React.FC<TransactionsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_TRANSACTION}
       filterAction={filterLedgerTransactions}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <TransactionsFilter institutionsOptions={institutionsOptions} />
       }

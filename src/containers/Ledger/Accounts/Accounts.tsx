@@ -84,9 +84,6 @@ const Accounts: React.FC<AccountsProps> = ({
       editableItemName="account"
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <AccountsFilter institutionsOptions={institutionsOptions} />
       }

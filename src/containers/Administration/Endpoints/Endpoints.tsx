@@ -62,9 +62,6 @@ const Endpoints: React.FC<EndpointsProps> = ({
       editModalName={modalNamesConst.EDIT_ADMIN_ENDPOINT}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminEndpoint}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <EndpointsFilter institutionsOptions={institutionsOptions} />
       }

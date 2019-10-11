@@ -43,9 +43,6 @@ const Statements: React.FC<StatementsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_STATEMENTS}
       filterAction={filterLedgerStatements}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <StatementsFilter institutionsOptions={institutionsOptions} />
       }

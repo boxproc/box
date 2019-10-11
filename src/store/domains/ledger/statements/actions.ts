@@ -20,7 +20,7 @@ export type FilterLedgerStatements = (params: Partial<LedgerStatementsFilterPrep
 export type HandleFilterLedgerStatements = () => Thunk<void>;
 
 export type GetLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
-GetLedgerStatementTransactionsAction;
+  GetLedgerStatementTransactionsAction;
 export type HandleGetLedgerStatementTransactions = () => Thunk<void>;
 
 export type ResetStatements = () => void;

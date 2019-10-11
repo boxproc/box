@@ -39,9 +39,6 @@ const UserActivity: React.FC<UserActivityProps> = ({
       data={auditUserActivity}
       columns={tableColumns}
       filterAction={filterAuditUserActivity}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <UserActivityFilter
           institutionsOptions={institutionsOptions}

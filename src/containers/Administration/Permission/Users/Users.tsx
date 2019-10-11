@@ -36,9 +36,6 @@ export const Users: React.FC<UsersProps> = ({
       newModalName={modalNamesConst.ADD_ADMIN_USER}
       editModalName={modalNamesConst.EDIT_ADMIN_USER}
       filterAction={filterUsers}
-      initialFilterValues={{
-        statusActiveFlag: false,
-      }}
       FilterForm={
         <UsersFilter />
       }

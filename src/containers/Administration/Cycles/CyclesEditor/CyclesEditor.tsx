@@ -62,9 +62,6 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       editModalName={modalNamesConst.EDIT_CYCLE_EDITOR}
       contextMenuItems={contextMenuItems}
       filterAction={filterCycles}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <CycleEditorFilter institutionsOptions={institutionsOptions} />
       }

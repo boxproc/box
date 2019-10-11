@@ -31,7 +31,7 @@ interface FilterProps {
 }
 
 const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
-const filteredFieldsToStore = (data: object) => {
+export const filteredFieldsToStore = (data: object) => {
   return data && Object.keys(data)
     .filter(key => !notAllowedFieldNamesToStore.includes(key))
     .reduce((obj, key) => {
@@ -52,23 +52,6 @@ const Filter: React.FC<FilterAllProps> = ({
   isAutoRefresh,
   location,
 }) => {
-  const [filterData, setFilterData] = React.useState(null);
-
-  React.useEffect(
-    () => {
-      return () => {
-        if (filterData) {
-          cookiesUtil.set(
-            location.pathname,
-            JSON.stringify(filteredFieldsToStore(filterData)),
-            { expires: 2592000 }
-          );
-        }
-      };
-    },
-    [filterData, location]
-  );
-
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
       filterAction();
@@ -77,7 +60,11 @@ const Filter: React.FC<FilterAllProps> = ({
         stopAutoRefresh();
       }
 
-      setFilterData(data);
+      cookiesUtil.set(
+        location.pathname,
+        JSON.stringify(data),
+        { expires: 2592000 }
+      );
     }),
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );

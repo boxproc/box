@@ -14,7 +14,7 @@ import Filter from './Filter';
 
 import { ResetUtils, StopAutoRefresh } from 'store/domains';
 
-import { ContextMenuItem } from 'types';
+import { ContextMenuItem, SelectValues } from 'types';
 import { cookiesUtil, dateUtil, stringsUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
@@ -25,11 +25,11 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   newModalName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
   filterAction?: () => void;
-  initialFilterValues?: object;
   isAutoRefresh?: boolean;
   stopAutoRefresh: StopAutoRefresh;
   resetUtils: ResetUtils;
   AdditionalButton?: ReactChild;
+  institutionsOptions: Array<SelectValues>;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -39,7 +39,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     columns,
     FilterForm,
     filterAction,
-    initialFilterValues,
     openModal,
     newModalName,
     location,
@@ -47,6 +46,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     stopAutoRefresh,
     resetUtils,
     AdditionalButton,
+    institutionsOptions,
     ...pageTemplateProps
   } = props;
   const [date, setDate] = React.useState({
@@ -92,6 +92,21 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [isFilter]
   );
 
+  const initialValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+        statusActiveFlag: true,
+        dateTimeFrom: date.dateTimeFrom,
+        dateTimeTo: date.dateTimeTo,
+        dateFrom: date.dateFrom,
+        dateTo: date.dateTo,
+        ...storedFilter && JSON.parse(storedFilter),
+      };
+    },
+    [institutionsOptions, date, storedFilter]
+  );
+
   return (
     <React.Fragment>
       <Flex alignItems="baseline">
@@ -116,14 +131,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       {FilterForm && isFilter && (
         <Filter
           filterAction={filterAction}
-          initialValues={{
-            ...initialFilterValues,
-            ...storedFilter && JSON.parse(storedFilter),
-            dateTimeFrom: date.dateTimeFrom,
-            dateTimeTo: date.dateTimeTo,
-            dateFrom: date.dateFrom,
-            dateTo: date.dateTo,
-          }}
+          initialValues={initialValues}
           location={location}
         >
           {FilterForm}

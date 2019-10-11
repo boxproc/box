@@ -37,9 +37,6 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.AUDIT_API_CALL}
       filterAction={filterAuditApiCalls}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />
       }

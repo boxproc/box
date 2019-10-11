@@ -63,9 +63,6 @@ export const Products: React.FC<ProductsProps> = ({
       editModalName={modalNamesConst.EDIT_PRODUCT}
       contextMenuItems={contextMenuItems}
       filterAction={filterProducts}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <ProductsFilter
           institutionsOptions={institutionsOptions}

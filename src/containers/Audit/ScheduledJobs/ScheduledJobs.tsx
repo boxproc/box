@@ -59,9 +59,6 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       columns={tableColumns}
       filterAction={filterAuditScheduledJobs}
       contextMenuItems={contextMenuItems}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       FilterForm={
         <ScheduledJobsFilter
           institutionsOptions={institutionsOptions}
