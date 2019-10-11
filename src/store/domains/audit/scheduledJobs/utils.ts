@@ -18,7 +18,7 @@ export const preparedValuesToRender = (values: AuditScheduledJobsItem):
 
   return {
     id: values.id,
-    scheduler: values.name,
+    scheduler: values.scheduler_name,
     dateTimeFrom: values.start_datetime,
     dateTimeTo: values.finish_datetime,
     executionResult: executionResult && executionResult.label,

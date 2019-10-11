@@ -131,7 +131,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       )}
       <Flex alignItems="center">
         {newModalName && (
-          <Box mb="7px">
+          <Box>
             <Button
               text="Add New"
               iconName={iconNamesConst.PLUS}
@@ -140,12 +140,12 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           </Box>
         )}
         {AdditionalButton && (
-           <Box mb="7px" ml="20px">
+          <Box ml="20px">
             {AdditionalButton}
-           </Box>
+          </Box>
         )}
         {isAutoRefresh && (
-          <Box mb="7px" ml="25px">
+          <Box ml="25px">
             <Flex alignItems="flex-end">
               <CountDownTimer seconds={5} />
               <Box ml="4px">
@@ -160,11 +160,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           </Box>
         )}
       </Flex>
-      <EditableTable
-        data={data}
-        columns={columns}
-        {...pageTemplateProps}
-      />
+      <Box mt="7px">
+        <EditableTable
+          data={data}
+          columns={columns}
+          {...pageTemplateProps}
+        />
+      </Box>
     </React.Fragment >
   );
 };

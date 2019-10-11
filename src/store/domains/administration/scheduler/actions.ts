@@ -59,7 +59,7 @@ export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
 export type GetSchedulerLogFile = (payload: object) => GetSchedulerLogFileAction;
-export type HandleGetSchedulerLogFile = () => Thunk<void>;
+export type HandleGetSchedulerLogFile = (id: number) => Thunk<void>;
 
 export type ResetScheduler = () => void;
 
@@ -188,12 +188,10 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
     );
   };
 
-export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = () =>
-  async (dispatch, getState) => {
+export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
         const payload = id ? { scheduler_id: id } : {};
 
         await dispatch(getSchedulerLogFile(payload));

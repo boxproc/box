@@ -6,7 +6,8 @@ interface AuditScheduledJobsId {
 }
 
 export interface AuditScheduledJobsItem extends AuditScheduledJobsId {
-  name: string;
+  scheduler_name: string;
+  scheduler_id: number;
   start_datetime: string;
   finish_datetime: string;
   execution_result: string;
