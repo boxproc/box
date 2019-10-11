@@ -24,6 +24,41 @@ export interface LedgerStatementItem extends LedgerStatementId {
   statement_cycle_description: string;
 }
 
+export interface LedgerStatementTransactionsItem extends LedgerStatementTransactionsId {
+  transaction_datetime: string;
+  amount: number;
+  amount_in_original_currency: number;
+  balance_available_before: number;
+  balance_available_after: number;
+  balance_settled_before: number;
+  balance_settled_after: number;
+  description: string;
+}
+export interface LedgerStatementTransactionsId {
+  id: number;
+}
+
+export interface LedgerStatementTransactionsItemPrepared extends LedgerStatementTransactionsId {
+  transactionDatetime: number | string;
+  amount: number | string;
+  amountInOriginalCurrency: number | string;
+  balanceAvailableBefore: number | string;
+  balanceAvailableAfter: number | string;
+  balanceSettledBefore: number | string;
+  balanceSettledAfter: number | string;
+  description: number | string;
+}
+
+export interface LedgerStatementTransactionsItemsRequest {
+  firstTransactionId:  number | string;
+  lastTransactionId:  number | string;
+  id:  number ;
+}
+
+export interface LedgerStatementTransactionsItems extends ResponseStatusType {
+  transactions: Array<LedgerStatementTransactionsItem>;
+}
+
 export interface LedgerStatementItems extends ResponseStatusType {
   statements: Array<LedgerStatementItem>;
 }
@@ -69,4 +104,5 @@ export interface LedgerStatementsFilterPrepared {
 
 export interface LedgerStatementsState {
   statements: ImmutableArray<LedgerStatementItem>;
+  transactions: ImmutableArray<LedgerStatementTransactionsItem>;
 }

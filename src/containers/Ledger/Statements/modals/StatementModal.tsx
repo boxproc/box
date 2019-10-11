@@ -2,11 +2,12 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal } from 'components';
+import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 import { StatementForm } from '../forms';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
+import TransactionsTable from '../components/TransactionsTable';
 
 interface StatementModalProps extends WithModalProps { }
 
@@ -28,7 +29,14 @@ const StatementModal: React.FC<StatementModalProps> = ({
       closeOnBackdrop={true}
       maxContainerWidth={820}
     >
-      <StatementForm isDisabled={true} />
+      <Tabs>
+        <TabsPanel title="Totals">
+          <StatementForm isDisabled={true} />
+        </TabsPanel>
+        <TabsPanel title="Transactions" >
+          <TransactionsTable />
+        </TabsPanel>
+      </Tabs>
       <Hr />
       <Flex justifyContent="flex-end">
         <Button
