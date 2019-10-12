@@ -62,6 +62,9 @@ const Interfaces: React.FC<AccountsProps> = ({
       editModalName={modalNamesConst.EDIT_ADMIN_INTERFACE}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminInterface}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
         <InterfacesFilter institutionsOptions={institutionsOptions} />
       }

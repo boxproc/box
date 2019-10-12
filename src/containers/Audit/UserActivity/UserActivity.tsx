@@ -12,6 +12,7 @@ import {
   ResetUserActivity,
 } from 'store/domains';
 import { SelectValues } from 'types';
+import { dateUtil } from 'utils';
 
 export interface UserActivityProps {
   institutionsOptions: Array<SelectValues>;
@@ -26,8 +27,14 @@ const UserActivity: React.FC<UserActivityProps> = ({
   filterAuditUserActivity,
   resetUserActivity,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetUserActivity();
     },
     [resetUserActivity]
@@ -39,6 +46,11 @@ const UserActivity: React.FC<UserActivityProps> = ({
       data={auditUserActivity}
       columns={tableColumns}
       filterAction={filterAuditUserActivity}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+        dateTimeFrom,
+        dateTimeTo,
+      }}
       FilterForm={
         <UserActivityFilter
           institutionsOptions={institutionsOptions}

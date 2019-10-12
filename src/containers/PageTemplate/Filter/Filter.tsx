@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
 
 import { StopAutoRefresh } from 'store/domains';
 
@@ -19,7 +19,7 @@ const FilterWrapper = styled.div`
   padding: 20px 20px 15px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
-  background-color: rgba(0, 0, 0, .02)};
+  background-color: rgba(0, 0, 0, .02);
 `;
 
 interface FilterProps {
@@ -62,8 +62,8 @@ const Filter: React.FC<FilterAllProps> = ({
 
       cookiesUtil.set(
         location.pathname,
-        JSON.stringify(data),
-        { expires: 2592000 }
+        JSON.stringify(filteredFieldsToStore(data)),
+        { expires: cookiesExpires.MONTH }
       );
     }),
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
@@ -123,6 +123,7 @@ const Filter: React.FC<FilterAllProps> = ({
 
 export default reduxForm<{}, FilterProps>({
   form: formNamesConst.FILTER,
-  destroyOnUnmount: false,
+  keepDirtyOnReinitialize: true,
+  destroyOnUnmount: true,
   enableReinitialize: true,
 })(Filter);

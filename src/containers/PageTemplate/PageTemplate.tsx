@@ -14,8 +14,8 @@ import Filter from './Filter';
 
 import { ResetUtils, StopAutoRefresh } from 'store/domains';
 
-import { ContextMenuItem, SelectValues } from 'types';
-import { cookiesUtil, dateUtil, stringsUtil } from 'utils';
+import { ContextMenuItem } from 'types';
+import { cookiesUtil, stringsUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
@@ -29,8 +29,19 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   stopAutoRefresh: StopAutoRefresh;
   resetUtils: ResetUtils;
   AdditionalButton?: ReactChild;
-  institutionsOptions: Array<SelectValues>;
+  initialFilterValues?: object;
+  filterData: object;
 }
+
+const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
+export const filteredFieldsToStore = (data: object) => {
+  return data && Object.keys(data)
+    .filter(key => !notAllowedFieldNamesToStore.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = data[key];
+      return obj;
+    },      {});
+};
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const {
@@ -46,15 +57,10 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     stopAutoRefresh,
     resetUtils,
     AdditionalButton,
-    institutionsOptions,
+    initialFilterValues,
+    filterData,
     ...pageTemplateProps
   } = props;
-  const [date, setDate] = React.useState({
-    dateTimeFrom: null,
-    dateTimeTo: null,
-    dateFrom: null,
-    dateTo: null,
-  });
 
   React.useEffect(
     () => {
@@ -67,13 +73,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
 
   React.useEffect(
     () => {
-      setDate({
-        dateTimeFrom: dateUtil.yesterdayDateTime(),
-        dateTimeTo: dateUtil.todayDateTime(),
-        dateFrom: dateUtil.yesterdayDate,
-        dateTo: dateUtil.todayDate,
-      });
-
       return () => resetUtils();
     },
     [resetUtils]
@@ -90,21 +89,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const handleSetIsFilter = React.useCallback(
     () => setIsFilter(!isFilter),
     [isFilter]
-  );
-
-  const initialValues = React.useMemo(
-    () => {
-      return {
-        institutionId: institutionsOptions[0],
-        statusActiveFlag: true,
-        dateTimeFrom: date.dateTimeFrom,
-        dateTimeTo: date.dateTimeTo,
-        dateFrom: date.dateFrom,
-        dateTo: date.dateTo,
-        ...storedFilter && JSON.parse(storedFilter),
-      };
-    },
-    [institutionsOptions, date, storedFilter]
   );
 
   return (
@@ -131,8 +115,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       {FilterForm && isFilter && (
         <Filter
           filterAction={filterAction}
-          initialValues={initialValues}
           location={location}
+          initialValues={{
+            ...initialFilterValues,
+            ...storedFilter && JSON.parse(storedFilter),
+          }}
         >
           {FilterForm}
         </Filter>

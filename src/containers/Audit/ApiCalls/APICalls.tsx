@@ -10,6 +10,7 @@ import { ApiCallsFilter } from './forms';
 
 import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store/domains';
 import { SelectValues } from 'types';
+import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
@@ -24,12 +25,19 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
   institutionsOptions,
   resetApiCalls,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetApiCalls();
     },
     [resetApiCalls]
   );
+
   return (
     <PageTemplate
       title="API Calls"
@@ -37,6 +45,11 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.AUDIT_API_CALL}
       filterAction={filterAuditApiCalls}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+        dateTimeFrom,
+        dateTimeTo,
+      }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />
       }

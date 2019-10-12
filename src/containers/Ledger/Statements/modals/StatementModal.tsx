@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
@@ -34,25 +34,17 @@ const StatementModal: React.FC<StatementModalProps> = ({
         <TabsPanel title="Totals">
           <StatementForm isDisabled={true} />
           <Hr />
-          <Flex justifyContent="flex-end">
-            <Button
-              text="close"
-              onClick={handleCloseModal}
-            />
-          </Flex>
         </TabsPanel>
         <TabsPanel title="Transactions" >
           <TransactionsTable />
-          <Flex justifyContent="flex-end">
-            <Box mt="10px">
-              <Button
-                text="close"
-                onClick={handleCloseModal}
-              />
-            </Box>
-          </Flex>
         </TabsPanel>
       </Tabs>
+      <Flex justifyContent="flex-end">
+        <Button
+          text="close"
+          onClick={handleCloseModal}
+        />
+      </Flex>
     </Modal>
   );
 };

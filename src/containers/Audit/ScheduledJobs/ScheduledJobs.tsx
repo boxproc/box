@@ -16,6 +16,7 @@ import {
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
+import { dateUtil } from 'utils';
 
 export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
@@ -34,8 +35,14 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   getSchedulerLogFile,
   currentSchedulerId,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetScheduledJobs();
     },
     [resetScheduledJobs]
@@ -59,6 +66,11 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       columns={tableColumns}
       filterAction={filterAuditScheduledJobs}
       contextMenuItems={contextMenuItems}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+        dateTimeFrom,
+        dateTimeTo,
+      }}
       FilterForm={
         <ScheduledJobsFilter
           institutionsOptions={institutionsOptions}
