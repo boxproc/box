@@ -52,7 +52,6 @@ const CardsFilter: React.FC = () => {
           placeholder="PAN Alias"
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          isNumber={true}
         />
       </Box>
     </React.Fragment>
