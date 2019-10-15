@@ -21,12 +21,12 @@ export const TransactionsTable: React.FC<TransactionsTableProps> = ({
   ledgerStatementTransactions,
   ledgerCurrentStatementTransaction,
 }) => {
-  // React.useEffect(
-  //   () => {
-  //     getLedgerStatementTransactions(ledgerCurrentStatementTransaction);
-  //   },
-  //   [getLedgerStatementTransactions, ledgerCurrentStatementTransaction]
-  // );
+  React.useEffect(
+    () => {
+      getLedgerStatementTransactions(ledgerCurrentStatementTransaction);
+    },
+    [getLedgerStatementTransactions, ledgerCurrentStatementTransaction]
+  );
 
   return (
     <React.Fragment>
