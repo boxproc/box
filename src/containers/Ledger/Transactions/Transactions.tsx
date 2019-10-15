@@ -30,8 +30,14 @@ const Transactions: React.FC<TransactionsProps> = ({
   institutionsOptions,
   resetTransactions,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetTransactions();
     },
     [resetTransactions]
@@ -46,8 +52,8 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterAction={filterLedgerTransactions}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
+        dateTimeFrom,
+        dateTimeTo,
       }}
       FilterForm={
         <TransactionsFilter institutionsOptions={institutionsOptions} />

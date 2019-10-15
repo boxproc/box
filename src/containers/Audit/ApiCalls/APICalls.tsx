@@ -25,12 +25,19 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
   institutionsOptions,
   resetApiCalls,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetApiCalls();
     },
     [resetApiCalls]
   );
+
   return (
     <PageTemplate
       title="API Calls"
@@ -40,8 +47,8 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       filterAction={filterAuditApiCalls}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
+        dateTimeFrom,
+        dateTimeTo,
       }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />

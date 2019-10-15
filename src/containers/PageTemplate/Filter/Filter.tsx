@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { Button, T3 } from 'components';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
 
 import { StopAutoRefresh } from 'store/domains';
 
@@ -19,7 +19,7 @@ const FilterWrapper = styled.div`
   padding: 20px 20px 15px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
-  background-color: rgba(0, 0, 0, .02)};
+  background-color: rgba(0, 0, 0, .02);
 `;
 
 interface FilterProps {
@@ -31,7 +31,7 @@ interface FilterProps {
 }
 
 const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
-const filteredFieldsToStore = (data: object) => {
+export const filteredFieldsToStore = (data: object) => {
   return data && Object.keys(data)
     .filter(key => !notAllowedFieldNamesToStore.includes(key))
     .reduce((obj, key) => {
@@ -52,23 +52,6 @@ const Filter: React.FC<FilterAllProps> = ({
   isAutoRefresh,
   location,
 }) => {
-  const [filterData, setFilterData] = React.useState(null);
-
-  React.useEffect(
-    () => {
-      return () => {
-        if (filterData) {
-          cookiesUtil.set(
-            location.pathname,
-            JSON.stringify(filteredFieldsToStore(filterData)),
-            { expires: 2592000 }
-          );
-        }
-      };
-    },
-    [filterData, location]
-  );
-
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
       filterAction();
@@ -77,7 +60,11 @@ const Filter: React.FC<FilterAllProps> = ({
         stopAutoRefresh();
       }
 
-      setFilterData(data);
+      cookiesUtil.set(
+        location.pathname,
+        JSON.stringify(filteredFieldsToStore(data)),
+        { expires: cookiesExpires.MONTH }
+      );
     }),
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );
@@ -136,6 +123,7 @@ const Filter: React.FC<FilterAllProps> = ({
 
 export default reduxForm<{}, FilterProps>({
   form: formNamesConst.FILTER,
-  destroyOnUnmount: false,
+  keepDirtyOnReinitialize: true,
+  destroyOnUnmount: true,
   enableReinitialize: true,
 })(Filter);

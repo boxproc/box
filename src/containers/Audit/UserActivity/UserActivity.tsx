@@ -27,8 +27,14 @@ const UserActivity: React.FC<UserActivityProps> = ({
   filterAuditUserActivity,
   resetUserActivity,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetUserActivity();
     },
     [resetUserActivity]
@@ -42,8 +48,8 @@ const UserActivity: React.FC<UserActivityProps> = ({
       filterAction={filterAuditUserActivity}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom: dateUtil.yesterdayDateTime,
-        dateTimeTo: dateUtil.todayDateTime,
+        dateTimeFrom,
+        dateTimeTo,
       }}
       FilterForm={
         <UserActivityFilter

@@ -12,11 +12,16 @@ import styled from 'theme';
 
 import './prism.css';
 
-export const Wrapper = styled.div`
+interface WrapperProps {
+  height?: string;
+  whiteSpacePre?: boolean;
+}
+
+export const Wrapper = styled.div<WrapperProps>`
   padding: 0;
-  min-height: 220px;
-  height: auto;
+  height: ${({ height }) => height ? height : '220px'};
   border: 1px solid ${({ theme }) => theme.colors.gray};
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 2px;
   font-size: 13px;
   line-height: 1.7;
@@ -31,7 +36,6 @@ export const Wrapper = styled.div`
   }
 
   textarea {
-    min-height: 218px;
     background-color: ${({ theme }) => theme.colors.white} !important;
   }
 
@@ -42,12 +46,27 @@ export const Wrapper = styled.div`
   pre {
     word-break: break-word !important;
     line-height: 1.7;
-    min-height: 218px;
+  }
+
+  textarea,
+  pre {
+    min-height: ${({ height }) => height ? `calc(${height} - 2px)` : '218px'};
+
+    ${({ whiteSpacePre }) => whiteSpacePre && `
+      white-space: pre !important;
+    `}
+  }
+
+  .editor {
+    float: left;
+    min-width: 100%;
   }
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
+  height?: string;
+  whiteSpacePre?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -57,8 +76,11 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   onChange,
   placeholder,
   fontSize,
+  height,
+  whiteSpacePre,
 }) => {
   const wrapperRef = React.useRef(null);
+
   const handleChange = React.useCallback(
     code => onChange ? onChange(code) : null,
     [onChange]
@@ -73,6 +95,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   return (
     <Wrapper
       ref={wrapperRef}
+      height={height}
+      whiteSpacePre={whiteSpacePre}
     >
       <PerfectScrollbar>
       <Editor
@@ -85,6 +109,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         padding={10}
         onFocus={addFocusClass}
         onBlur={removeFocusClass}
+        className="editor"
         style={{
           overflow: 'visible',
           fontFamily: '"Roboto Mono", monospace',

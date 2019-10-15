@@ -7,9 +7,12 @@ import { ScheduledJobsFilter } from './forms';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
+import { iconNamesConst } from 'consts';
+
 import {
   AuditScheduledJobsItemPrepared,
   HandleFilterAuditScheduledJobs,
+  HandleGetSchedulerLogFile,
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -19,7 +22,9 @@ export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
+  getSchedulerLogFile: HandleGetSchedulerLogFile;
   resetScheduledJobs: ResetScheduledJobs;
+  currentSchedulerId: number;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
@@ -27,12 +32,31 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   auditScheduledJobs,
   filterAuditScheduledJobs,
   resetScheduledJobs,
+  getSchedulerLogFile,
+  currentSchedulerId,
 }) => {
+  const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
+  const [dateTimeTo, setDateTimeTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateTimeFrom(dateUtil.yesterdayDateTime());
+      setDateTimeTo(dateUtil.todayDateTime());
+
       return () => resetScheduledJobs();
     },
     [resetScheduledJobs]
+  );
+
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        name: 'Show log',
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getSchedulerLogFile(currentSchedulerId),
+      },
+    ],
+    [getSchedulerLogFile, currentSchedulerId]
   );
 
   return (
@@ -41,10 +65,11 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       data={auditScheduledJobs}
       columns={tableColumns}
       filterAction={filterAuditScheduledJobs}
+      contextMenuItems={contextMenuItems}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterdayDate,
-        dateTo: dateUtil.todayDate,
+        dateTimeFrom,
+        dateTimeTo,
       }}
       FilterForm={
         <ScheduledJobsFilter

@@ -22,23 +22,22 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 200,
     sortable: true,
-    Header: <TableHeader title="Scheduler ID" />,
-    accessor: 'schedulerId',
-    Cell: (props: TCell<'schedulerId'>) => (
+    Header: <TableHeader title="Scheduler" />,
+    accessor: 'scheduler',
+    Cell: (props: TCell<'scheduler'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
       />
     ),
   },
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Start Date" />,
-    accessor: 'dateFrom',
-    Cell: (props: TCell<'dateFrom'>) => (
+    Header: <TableHeader title="Start Date / Time" />,
+    accessor: 'dateTimeFrom',
+    Cell: (props: TCell<'dateTimeFrom'>) => (
       <TableCell
         value={props.value}
         isDate={true}
@@ -48,9 +47,9 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Finish Date" />,
-    accessor: 'dateTo',
-    Cell: (props: TCell<'dateTo'>) => (
+    Header: <TableHeader title="Finish Date / Time" />,
+    accessor: 'dateTimeTo',
+    Cell: (props: TCell<'dateTimeTo'>) => (
       <TableCell
         value={props.value}
         isDate={true}

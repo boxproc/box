@@ -15,7 +15,6 @@ import {
 } from 'store/domains';
 
 import { SelectValues } from 'types';
-
 import { dateUtil } from 'utils';
 
 export interface StatementsProps {
@@ -31,8 +30,14 @@ const Statements: React.FC<StatementsProps> = ({
   institutionsOptions,
   resetStatements,
 }) => {
+  const [dateFrom, setDateFrom] = React.useState(null);
+  const [dateTo, setDateTo] = React.useState(null);
+
   React.useEffect(
     () => {
+      setDateFrom(dateUtil.yesterdayDate);
+      setDateTo(dateUtil.todayDate);
+
       return () => resetStatements();
     },
     [resetStatements]
@@ -47,8 +52,8 @@ const Statements: React.FC<StatementsProps> = ({
       filterAction={filterLedgerStatements}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateFrom: dateUtil.yesterdayDate,
-        dateTo: dateUtil.todayDate,
+        dateFrom,
+        dateTo,
       }}
       FilterForm={
         <StatementsFilter institutionsOptions={institutionsOptions} />

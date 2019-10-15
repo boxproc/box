@@ -25,12 +25,23 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   newModalName?: string;
   contextMenuItems?: Array<ContextMenuItem>;
   filterAction?: () => void;
-  initialFilterValues?: object;
   isAutoRefresh?: boolean;
   stopAutoRefresh: StopAutoRefresh;
   resetUtils: ResetUtils;
   AdditionalButton?: ReactChild;
+  initialFilterValues?: object;
+  filterData: object;
 }
+
+const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
+export const filteredFieldsToStore = (data: object) => {
+  return data && Object.keys(data)
+    .filter(key => !notAllowedFieldNamesToStore.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = data[key];
+      return obj;
+    },      {});
+};
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const {
@@ -39,7 +50,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     columns,
     FilterForm,
     filterAction,
-    initialFilterValues,
     openModal,
     newModalName,
     location,
@@ -47,6 +57,8 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     stopAutoRefresh,
     resetUtils,
     AdditionalButton,
+    initialFilterValues,
+    filterData,
     ...pageTemplateProps
   } = props;
 
@@ -103,18 +115,18 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       {FilterForm && isFilter && (
         <Filter
           filterAction={filterAction}
+          location={location}
           initialValues={{
             ...initialFilterValues,
             ...storedFilter && JSON.parse(storedFilter),
           }}
-          location={location}
         >
           {FilterForm}
         </Filter>
       )}
       <Flex alignItems="center">
         {newModalName && (
-          <Box mb="7px">
+          <Box>
             <Button
               text="Add New"
               iconName={iconNamesConst.PLUS}
@@ -123,12 +135,12 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           </Box>
         )}
         {AdditionalButton && (
-           <Box mb="7px" ml="20px">
+          <Box ml="20px">
             {AdditionalButton}
-           </Box>
+          </Box>
         )}
         {isAutoRefresh && (
-          <Box mb="7px" ml="25px">
+          <Box ml="25px">
             <Flex alignItems="flex-end">
               <CountDownTimer seconds={5} />
               <Box ml="4px">
@@ -143,11 +155,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           </Box>
         )}
       </Flex>
-      <EditableTable
-        data={data}
-        columns={columns}
-        {...pageTemplateProps}
-      />
+      <Box mt="7px">
+        <EditableTable
+          data={data}
+          columns={columns}
+          {...pageTemplateProps}
+        />
+      </Box>
     </React.Fragment >
   );
 };

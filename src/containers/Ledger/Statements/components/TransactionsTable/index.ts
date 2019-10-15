@@ -3,17 +3,22 @@ import { bindActionCreators, Dispatch } from 'redux';
 import TransactionsTable from './TransactionsTable';
 
 import {
+  createLoadingSelector,
   handleGetLedgerStatementTransactions,
-  selectLedgerCurrentStatementTransaction,
+  LedgerStatementsActionTypes,
   selectLedgerStatementTransactions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-    ledgerCurrentStatementTransaction: selectLedgerCurrentStatementTransaction(state),
-    ledgerStatementTransactions: selectLedgerStatementTransactions(state),
-  });
+  isLoading: loadingSelector(state),
+  ledgerStatementTransactions: selectLedgerStatementTransactions(state),
+});
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getLedgerStatementTransactions: handleGetLedgerStatementTransactions,

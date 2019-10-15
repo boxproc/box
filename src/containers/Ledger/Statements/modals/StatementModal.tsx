@@ -27,17 +27,18 @@ const StatementModal: React.FC<StatementModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Statement"
       closeOnBackdrop={true}
-      maxContainerWidth={820}
+      maxContainerWidth={1100}
+      minContainerHeight={566}
     >
       <Tabs>
         <TabsPanel title="Totals">
           <StatementForm isDisabled={true} />
+          <Hr />
         </TabsPanel>
         <TabsPanel title="Transactions" >
           <TransactionsTable />
         </TabsPanel>
       </Tabs>
-      <Hr />
       <Flex justifyContent="flex-end">
         <Button
           text="close"

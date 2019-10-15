@@ -6,6 +6,7 @@ interface ModalWrapperProps {
   zIndex?: string;
   accentClose?: boolean;
   containerWidthAuto?: boolean;
+  containerHeightFull?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -60,6 +61,10 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
       width: auto;
       max-width: 1550px;
     `};
+
+    ${({ containerHeightFull }) => containerHeightFull && `
+      height: calc(100vh - 20px);
+    `}
   }
 
   .modal-close {

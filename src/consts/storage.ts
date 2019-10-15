@@ -10,3 +10,7 @@ export enum sessionStorageNames {
   AUTH_REGISTRATION_PENDING = 'authRegistrationPending',
   IS_LOGIN = 'isLogin',
 }
+
+export const cookiesExpires = {
+  MONTH: 2592000,
+};

@@ -37,8 +37,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterAdminSchedulerJobs: handleFilterAdminSchedulerJobs,
     sendAdminSchedulerAction: handleSendAdminSchedulerAction,
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
-    resetScheduler,
     getSchedulerLogFile: handleGetSchedulerLogFile,
+    resetScheduler,
   },
   dispatch
 );

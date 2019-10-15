@@ -18,29 +18,31 @@ export const tableTransactionsColumns = [
     Cell: (props: TCell<'transactionDatetime'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
+        isDate={true}
       />
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Amount" />,
     accessor: 'amount',
     Cell: (props: TCell<'amount'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Amount in original Currency" />,
+    Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
     Cell: (props: TCell<'amountInOriginalCurrency'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
@@ -69,29 +71,31 @@ export const tableTransactionsColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Balance Settled Before" />,
     accessor: 'balanceSettledBefore',
     Cell: (props: TCell<'balanceSettledBefore'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Balance Settled After" />,
     accessor: 'balanceSettledAfter',
     Cell: (props: TCell<'balanceSettledAfter'>) => (
       <TableCell
         value={props.value}
+        isNumber={true}
       />
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',

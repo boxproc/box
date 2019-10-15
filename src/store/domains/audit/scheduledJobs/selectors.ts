@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { selectActiveItemId } from 'store/domains/utils';
+
 import { StoreState } from 'store/StoreState';
 import { preparedValuesToRender } from './utils';
 
@@ -8,4 +10,22 @@ export const selectDefaultAuditScheduledJobs = (state: StoreState) =>
 
 export const selectAuditScheduledJobs = createSelector(
   selectDefaultAuditScheduledJobs,
-  items => items && items.asMutable().map(item => preparedValuesToRender(item)));
+  jobs => jobs && jobs.asMutable().map(job => preparedValuesToRender(job)));
+
+export const selectAuditScheduledJobsSchedulerId = createSelector(
+  selectDefaultAuditScheduledJobs,
+  selectActiveItemId,
+  (jobs, currentId) => {
+    const current = jobs.find(job => job.id === currentId);
+
+    return current && current.scheduler_id;
+  });
+
+export const selectAuditScheduledJobsSchedulerName = createSelector(
+  selectDefaultAuditScheduledJobs,
+  selectActiveItemId,
+  (jobs, currentId) => {
+    const current = jobs.find(job => job.id === currentId);
+
+    return current && current.scheduler_name;
+  });

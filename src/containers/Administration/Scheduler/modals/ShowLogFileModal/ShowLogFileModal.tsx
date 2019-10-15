@@ -30,12 +30,15 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title={`Log file${currentName}`}
-      containerWidthAuto={true}
+      title={`Master log${currentName}`}
+      maxContainerWidth={1400}
+      containerHeightFull={true}
     >
       <HighlightCode
         value={preparedLogFile}
+        height="calc(100vh - 150px)"
         fontSize={8.5}
+        whiteSpacePre={true}
       />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
