@@ -6,6 +6,8 @@ interface LabelProps {
 }
 
 export const Label = styled.label<LabelProps>`
+  display: block;
+  margin-bottom: 5px;
   font-size: 12px;
   color: ${({ theme, invalid }) => invalid
     ? theme.colors.red

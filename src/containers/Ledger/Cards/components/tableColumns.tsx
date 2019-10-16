@@ -42,7 +42,6 @@ export const tableColumns = [
     Cell: (props: TCell<'panAlias'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
       />
     ),
   },

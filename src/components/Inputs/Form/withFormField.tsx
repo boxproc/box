@@ -3,7 +3,6 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
 import styled from 'theme';
 
-import { Hint } from 'components';
 import { Label } from 'components/Text';
 
 import { componentUtil } from 'utils';
@@ -22,14 +21,10 @@ export const InputFieldWrapper = styled.div`
   }
 `;
 
-const Title = styled(Label)`
-  padding-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-
-  .required-icon {
-    color: ${({ theme }) => theme.colors.red};
-  }
+const ErrorWrapper = styled.div`
+  margin-top: 3px;
+  font-size: 10px;
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export interface InputFieldProps extends Partial<BaseFieldProps> {
@@ -90,28 +85,20 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
 
   return (
     <InputFieldWrapper className={['input-field', fieldClassName].join(' ')}>
-      <Title
+      <Label
         htmlFor={focusOnLabelClick ? id : null}
         invalid={invalid}
       >
         {label}
-        {(invalid && showErrors) ?
-          (error && <span>{error}</span>)
-          :
-          hint
-            ? (
-              <Hint
-                text={hint}
-                position={hintPosition}
-                width={hintWidth}
-              />
-            )
-            : isRequired && (<span className="required-icon">*</span>)
-        }
-      </Title>
+      </Label>
       <div className="field">
         {render(invalid, preventBlur)}
       </div>
+      {invalid && error && showErrors && (
+        <ErrorWrapper>
+          {error}
+        </ErrorWrapper>
+      )}
     </InputFieldWrapper>
   );
 };

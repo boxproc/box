@@ -73,6 +73,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder="Enter ID"
           isDisabled={false}
           isNumber={true}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -83,6 +84,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Transaction ID"
           placeholder="Enter ID"
           isDisabled={false}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="200px" p="10px">

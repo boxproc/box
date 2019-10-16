@@ -75,6 +75,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 placeholder="Enter ID"
                 isDisabled={false}
                 isNumber={true}
+                validate={[formErrorUtil.isInteger]}
               />
             </Box>
             <Box width={[3 / 9]} p="10px">
