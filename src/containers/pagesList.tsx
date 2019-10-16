@@ -21,7 +21,7 @@ import { Products } from 'containers/ProductDesigner';
 
 import { Accounts, Cards, Customers, Statements, Transactions } from 'containers/Ledger';
 
-import { ApiCalls, ScheduledJobs, UserActivity } from 'containers/Audit';
+import { ApiCalls, ScheduledJobs, SystemMonitor, UserActivity } from 'containers/Audit';
 
 export const pagesList = [
   {
@@ -71,6 +71,10 @@ export const pagesList = [
   {
     path: uiItemConsts.AUDIT_SCHEDULED_JOBS,
     component: <ScheduledJobs />,
+  },
+  {
+    path: uiItemConsts.AUDIT_SYSTEM_MONITOR,
+    component: <SystemMonitor />,
   },
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITY,

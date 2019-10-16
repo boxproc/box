@@ -35,7 +35,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Start Date / Time" />,
+    Header: <TableHeader title="Start Date&nbsp;/&nbsp;Time" />,
     accessor: 'dateTimeFrom',
     Cell: (props: TCell<'dateTimeFrom'>) => (
       <TableCell
@@ -47,7 +47,7 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Finish Date / Time" />,
+    Header: <TableHeader title="Finish Date&nbsp;/&nbsp;Time" />,
     accessor: 'dateTimeTo',
     Cell: (props: TCell<'dateTimeTo'>) => (
       <TableCell
