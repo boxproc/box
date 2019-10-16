@@ -20,7 +20,7 @@ interface SmallTextProps {
 export const SmallText = styled.div<SmallTextProps>`
   margin-bottom: 3px;
   font-size: 12px;
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-weight: ${({ bold }) => bold ? 500 : 'normal'};
 `;
 
