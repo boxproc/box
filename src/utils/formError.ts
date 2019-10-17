@@ -10,7 +10,7 @@ export const isNumber = (value: string | number) =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 
 export const isInteger = (value: number) =>
-  Number.isInteger(Number(value)) ? undefined : 'Must be an integer';
+  (Number.isInteger(Number(value)) || value === undefined) ? undefined : 'Must be an integer';
 
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;

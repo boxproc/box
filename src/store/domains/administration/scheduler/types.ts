@@ -59,7 +59,7 @@ export interface AdminSchedulerFilter {
 
 export interface AdminSchedulerFilterPrepared {
   name: string;
-  status: string;
+  status: Array<string>;
 }
 
 export interface AdminSchedulerNameItems extends ResponseStatusType {

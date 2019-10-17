@@ -124,6 +124,6 @@ const Filter: React.FC<FilterAllProps> = ({
 export default reduxForm<{}, FilterProps>({
   form: formNamesConst.FILTER,
   keepDirtyOnReinitialize: true,
-  destroyOnUnmount: true,
+  destroyOnUnmount: false,
   enableReinitialize: true,
 })(Filter);

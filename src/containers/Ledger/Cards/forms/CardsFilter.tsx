@@ -6,7 +6,7 @@ import { Box } from '@rebass/grid';
 import { InputField } from 'components';
 
 import { maskFormat } from 'consts';
-// import { formErrorUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 const CardsFilter: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const CardsFilter: React.FC = () => {
           label="Card ID"
           placeholder="Card ID"
           isNumber={true}
-          // validate={[formErrorUtil.isInteger]}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -30,7 +30,7 @@ const CardsFilter: React.FC = () => {
           label="Account ID"
           placeholder="Account ID"
           isNumber={true}
-          // validate={[formErrorUtil.isInteger]}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -41,7 +41,7 @@ const CardsFilter: React.FC = () => {
           label="Customer ID"
           placeholder="Customer ID"
           isNumber={true}
-          // validate={[formErrorUtil.isInteger]}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="200px" p="10px">
