@@ -115,7 +115,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Scheme"
             placeholder="Select Scheme"
             options={schemeTypesOptions}
-            isDisabled={false}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -126,7 +125,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Currency Code"
             placeholder="Select Currency Code"
             options={currencyCodes}
-            isDisabled={false}
             isLoading={isCurrencyCodesLoading}
             validate={[formErrorUtil.required]}
           />
@@ -160,7 +158,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
-            disabled={false}
           />
         </Box>
       </Flex>

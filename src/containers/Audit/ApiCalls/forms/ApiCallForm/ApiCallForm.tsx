@@ -27,7 +27,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               component={InputField}
               label="ID"
               placeholder="Enter ID"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Box width={[3 / 11]} p="10px">
@@ -49,7 +49,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               component={InputField}
               label="Event Datetime"
               placeholder="Enter Event Datetime"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Box width={[1 / 3]} p="10px">
@@ -59,7 +59,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               component={InputField}
               label="API Name"
               placeholder="Enter API Name"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Delimiter />
@@ -70,7 +70,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               component={InputField}
               label="Endpoint ID"
               placeholder="Enter Endpoint ID"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Box width={[5 / 13]} p="10px">
@@ -80,7 +80,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               component={InputField}
               label="Endpoint Name"
               placeholder="Enter Endpoint Name"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Box width="100%">
@@ -92,7 +92,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
                   component={TextareaAutosizeField}
                   label="Request Body"
                   placeholder="Request Body"
-                  disabled={true}
+                  readOnly={true}
                   height={250}
                 />
               </Box>
@@ -103,7 +103,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
                   component={TextareaAutosizeField}
                   label="Response Body"
                   placeholder="Response Body"
-                  disabled={true}
+                  readOnly={true}
                   height={250}
                 />
               </Box>

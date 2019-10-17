@@ -25,7 +25,6 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -37,7 +36,6 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           component={InputField}
           label="First Name"
           placeholder="Enter First Name"
-          isDisabled={false}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -47,7 +45,6 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           component={InputField}
           label="Last Name"
           placeholder="Enter Last Name"
-          isDisabled={false}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -57,7 +54,6 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           component={InputField}
           label="Customer ID"
           placeholder="Enter ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />

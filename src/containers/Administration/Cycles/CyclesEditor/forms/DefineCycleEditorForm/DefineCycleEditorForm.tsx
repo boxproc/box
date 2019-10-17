@@ -128,7 +128,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               component={SelectField}
               options={typeOfCyclesEditorOptions}
               label="Cycles Editor Type"
-              disabled={false}
               isDisabled={isEditMode}
               validate={[formErrorUtil.required]}
             />
@@ -141,7 +140,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 placeholder="Enter Monthly Cycle First Day "
                 component={InputField}
                 label="Cycles Editor Monthly Cycle First Day"
-                disabled={false}
                 options={executableTypeOptions}
                 isNumber={true}
               />
@@ -156,7 +154,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 component={SelectField}
                 options={weeklyCycleTypeOptions}
                 label="Cycles Editor Weekly Cycle First Day"
-                disabled={false}
               />
             </Box>
           )}
@@ -168,7 +165,6 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 placeholder="Enter Fixed Cycle Number of Days"
                 component={InputField}
                 label="Cycles Editor Fixed Number of Days"
-                disabled={false}
                 isNumber={true}
               />
             </Box>

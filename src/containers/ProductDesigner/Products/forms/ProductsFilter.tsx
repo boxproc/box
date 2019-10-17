@@ -34,7 +34,6 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -47,7 +46,6 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           label="Product Type"
           placeholder="Select Product Type"
           options={productTypesOptions}
-          isDisabled={false}
           isMulti={true}
         />
       </ProductWrapper>
@@ -57,7 +55,6 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           name="activeStatusFlag"
           component={CheckboxField}
           label="Only &quot;Active&quot;"
-          disabled={false}
         />
       </Box>
     </React.Fragment>

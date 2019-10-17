@@ -71,7 +71,6 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
               name="lockedFlag"
               component={CheckboxField}
               label="Locked"
-              disabled={false}
             />
           </Box>
         </Flex>

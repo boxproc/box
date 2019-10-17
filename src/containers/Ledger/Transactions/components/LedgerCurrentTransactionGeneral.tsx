@@ -18,7 +18,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="id"
             component={InputField}
             label="ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="accountId"
             component={InputField}
             label="Account ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -39,7 +39,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="transactionDatetime"
             component={InputField}
             label="Transaction Datetime"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width="150px" p="10px">
@@ -48,7 +48,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="transactionTypeId"
             component={InputField}
             label="Transaction Type ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -58,7 +58,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="description"
             component={TextField}
             label="Description"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -67,7 +67,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="debitCreditIndicator"
             component={InputField}
             label="Debit Credit Indicator"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -76,7 +76,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="amount"
             component={InputField}
             label="Amount"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -86,7 +86,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="amountInOriginalCurrency"
             component={InputField}
             label="Amount in Original Currency"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>

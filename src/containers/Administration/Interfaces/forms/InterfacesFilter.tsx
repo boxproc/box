@@ -24,7 +24,6 @@ const InterfacesFilter: React.FC<InterfacesFilterProps> = ({
         label="Institution"
         placeholder="Select Institution"
         options={institutionsOptions}
-        isDisabled={false}
         isClearable={false}
         validate={[formErrorUtil.required]}
       />

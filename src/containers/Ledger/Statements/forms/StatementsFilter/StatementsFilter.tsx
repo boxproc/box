@@ -61,7 +61,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Institution"
                 placeholder="Select Institution"
                 options={institutionsOptions}
-                isDisabled={false}
                 isClearable={false}
                 validate={[formErrorUtil.required]}
               />
@@ -73,7 +72,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Account ID"
                 placeholder="Enter ID"
-                isDisabled={false}
                 isNumber={true}
                 validate={[formErrorUtil.isInteger]}
               />
@@ -85,7 +83,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Account Alias"
                 placeholder="Enter Account Alias"
-                isDisabled={false}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -95,7 +92,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="First Name"
                 placeholder="Enter First Name"
-                isDisabled={false}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -105,7 +101,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Last Name"
                 placeholder="Enter Last Name"
-                isDisabled={false}
               />
             </Box>
             <Box width="200px" p="10px">
@@ -117,7 +112,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE_TIME}
                 maskChar={null}
-                disabled={false}
               />
             </Box>
             <Box width="200px" p="10px">
@@ -129,7 +123,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE_TIME}
                 maskChar={null}
-                disabled={false}
               />
             </Box>
           </Flex>
@@ -143,7 +136,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
               label="Product"
               placeholder="Select Product"
               options={institutionProductsOptions}
-              isDisabled={false}
               isMulti={true}
               isLoading={isLoadingInstitutionProducts}
             />

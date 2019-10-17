@@ -143,7 +143,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Executable type"
               component={SelectField}
               label="Executable Type"
-              disabled={false}
               options={executableTypeOptions}
               validate={[formErrorUtil.required]}
             />
@@ -155,7 +154,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Executable"
               component={InputField}
               label="Executable"
-              disabled={false}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -166,7 +164,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Log Location"
               component={InputField}
               label="Log Location"
-              disabled={false}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -177,7 +174,6 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Cron Expression"
               component={InputField}
               label="Cron Expression"
-              disabled={false}
               validate={[formErrorUtil.required]}
             />
           </Box>

@@ -27,7 +27,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 1"
             placeholder="Enter Aux Counter 1"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
           />
         </Box>
@@ -38,7 +38,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 2"
             placeholder="Enter Aux Counter 2"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
           />
         </Box>
@@ -49,7 +49,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 3"
             placeholder="Enter Aux Counter 3"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.isNumber]}
           />

@@ -48,7 +48,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Institution"
           options={institutionsOptions}
           placeholder="Select Institution"
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -61,7 +60,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Endpoint"
           options={endpointsOptions}
           placeholder="Select endpoint"
-          isDisabled={false}
           isLoading={isLoadingEndpoints}
           validate={[formErrorUtil.required]}
         />
@@ -73,7 +71,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           component={InputField}
           label="API Name"
           placeholder="Enter api name"
-          isDisabled={false}
         />
       </Box>
       <Delimiter />
@@ -86,7 +83,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -99,7 +95,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>

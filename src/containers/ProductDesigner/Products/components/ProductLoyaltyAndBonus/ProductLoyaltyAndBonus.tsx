@@ -23,7 +23,6 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             component={SelectField}
             label="Participating Schemes"
             placeholder="Select Participating Schemes"
-            disabled={false}
             isMulti={true}
             options={[
               {value: '1', label: 'Black and White'},
@@ -41,7 +40,6 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             component={SelectField}
             label="'Discount' or 'Bond'"
             placeholder="Select 'Discount' or 'Bond'"
-            disabled={false}
             options={[
               {value: '1', label: 'Discount'},
               {value: '2', label: 'Bond'},
@@ -57,7 +55,6 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             component={InputField}
             label="Discount %"
             placeholder="Enter Discount %"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -69,7 +66,6 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             component={InputField}
             label="Discount Threshold"
             placeholder="Enter Discount Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />

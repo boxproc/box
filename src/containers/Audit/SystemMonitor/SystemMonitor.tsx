@@ -68,10 +68,16 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   endpointsCounts,
   schedulerCounts,
 }) => {
+  const [isCounter, setIsCounter] = React.useState(true);
+
   React.useEffect(
     () => {
       getSystemMonitorData();
-      const timer = setInterval(() => getSystemMonitorData(), 60000);
+      const timer = setInterval(() => {
+        getSystemMonitorData();
+        setIsCounter(false);
+        setIsCounter(true);
+      }, 60000);
 
       return () => clearInterval(timer);
     },
@@ -166,7 +172,11 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           />
         </Box>
         <T2>System Monitor</T2>
-        <Box mb="12px" ml="12px"><CountDownTimer seconds={60} /></Box>
+        <Box mb="12px" ml="12px">
+          {isCounter && (
+            <CountDownTimer seconds={60} />
+          )}
+        </Box>
       </Flex>
       <Box mx="-15px">
         <Flex flexWrap="wrap" alignItems="flex-start">

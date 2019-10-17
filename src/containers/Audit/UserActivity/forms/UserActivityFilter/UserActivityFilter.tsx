@@ -47,7 +47,6 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -60,7 +59,6 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="User Name"
           options={auditUsersOptions}
           placeholder="Select Username"
-          isDisabled={false}
           isLoading={isLoadingUsers}
         />
       </Box>
@@ -73,7 +71,6 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -86,7 +83,6 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>

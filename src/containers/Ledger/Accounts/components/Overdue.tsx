@@ -27,7 +27,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue"
             placeholder="Enter Amount Overdue"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -39,7 +39,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 1 Cycle"
             placeholder="Enter Amount Overdue 1 Cycle"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -51,7 +51,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 2 Cycles"
             placeholder="Enter Amount Overdue 2 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -63,7 +63,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 3 Cycles"
             placeholder="Enter Amount Overdue 3 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -75,7 +75,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 4 Cycles"
             placeholder="Enter Amount Overdue 4 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -87,7 +87,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 5 Cycles"
             placeholder="Enter Amount Overdue 5 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -99,7 +99,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 6 Cycles"
             placeholder="Enter Amount Overdue 6 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -111,7 +111,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Amount Overdue 7 Cycles"
             placeholder="Enter Amount Overdue 7 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -124,7 +124,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue Total"
             placeholder="Enter Number of Times Overdue Total"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -136,7 +136,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 1 Cycle"
             placeholder="Enter Number of Times Overdue 1 Cycle"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -148,7 +148,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 2 Cycles"
             placeholder="Enter Number of Times Overdue 2 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -160,7 +160,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 3 Cycles"
             placeholder="Enter Number of Times Overdue 3 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -172,7 +172,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 4 Cycles"
             placeholder="Enter Number of Times Overdue 4 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -184,7 +184,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 5 Cycles"
             placeholder="Enter Number of Times Overdue 5 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -196,7 +196,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 6 Cycles"
             placeholder="Enter Number of Times Overdue 6 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -208,7 +208,7 @@ const Overdue: React.FC<OverdueProps> = ({
             component={InputField}
             label="Number of Times Overdue 7 Cycles"
             placeholder="Enter Number of Times Overdue 7 Cycles"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />

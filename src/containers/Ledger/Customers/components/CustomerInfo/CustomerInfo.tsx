@@ -40,7 +40,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
               component={InputField}
               label="ID"
               placeholder="Enter ID"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
         )}
@@ -216,7 +216,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
                 name="dateCreated"
                 component={InputField}
                 label="Date Created"
-                disabled={true}
+                readOnly={true}
               />
             </Box>
             <Box width="180px" p="10px">
@@ -225,7 +225,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
                 name="dateClosed"
                 component={InputField}
                 label="Date Closed"
-                disabled={true}
+                readOnly={true}
               />
             </Box>
           </React.Fragment>

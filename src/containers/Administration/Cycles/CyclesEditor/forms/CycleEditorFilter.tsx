@@ -26,7 +26,6 @@ const CyclesEditorFilter: React.FC<CycleEditorFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -37,7 +36,6 @@ const CyclesEditorFilter: React.FC<CycleEditorFilterProps> = ({
           name="activeStatusFlag"
           component={CheckboxField}
           label="Only &quot;Active&quot;"
-          disabled={false}
         />
       </Box>
     </React.Fragment>

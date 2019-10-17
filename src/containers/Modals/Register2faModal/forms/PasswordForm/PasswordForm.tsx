@@ -36,7 +36,6 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
           name="password"
           placeholder="Enter Password"
           component={PasswordField}
-          disabled={false}
           validate={[formErrorUtil.required]}
           autoFocus={true}
         />

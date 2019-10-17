@@ -24,7 +24,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="id"
             component={InputField}
             label="ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -34,7 +34,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="firstTransactionId"
             component={InputField}
             label="First Transaction ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -44,7 +44,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="lastTransactionId"
             component={InputField}
             label="Last Transaction ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -57,7 +57,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             placeholder={dateFormat.DATE}
             mask={maskFormat.DATE}
             maskChar={null}
-            disabled={isDisabled}
+            readOnly={isDisabled}
           />
         </Box>
         <Hr />
@@ -67,7 +67,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="balanceOpen"
             component={InputField}
             label="Balance open"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -77,7 +77,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="balanceClose"
             component={InputField}
             label="Balance close"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -87,7 +87,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="minimumAmountDueRepayment"
             component={InputField}
             label="Minimum amount due repayment"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -98,7 +98,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             component={InputField}
             label="Statement Cycle"
             placeholder="Enter Statement Cycle"
-            disabled={isDisabled}
+            readOnly={isDisabled}
           />
         </Box>
       </Flex>

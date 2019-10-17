@@ -62,7 +62,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="ID"
               placeholder="Enter ID"
-              disabled={true}
+              readOnly={true}
               isNumber={true}
             />
           </Box>
@@ -87,7 +87,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Customer ID"
             placeholder="Enter ID"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -142,7 +142,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Product ID"
               placeholder="Enter ID"
-              disabled={isEditMode}
+              readOnly={isEditMode}
               isNumber={true}
               validate={[formErrorUtil.required]}
             />
@@ -156,7 +156,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Product Override ID"
               placeholder="Enter ID"
-              disabled={true}
+              readOnly={true}
               isNumber={true}
             />
           </Box>
@@ -171,7 +171,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder={dateFormat.DATE}
               mask={maskFormat.DATE_TIME}
               maskChar={null}
-              disabled={true}
+              readOnly={true}
             />
           </Box>
         )}
@@ -183,7 +183,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Balance Settled"
             placeholder="Enter Balance Settled"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -195,7 +195,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Balance Available"
             placeholder="Enter Balance Available"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -207,7 +207,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Amount Due Repayment"
             placeholder="Enter Amount Due Repayment"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -219,7 +219,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Balance Limit"
             placeholder="Enter Balance Limit"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -231,7 +231,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Balance Limit Shared"
             placeholder="Enter Balance Limit Shared"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -243,7 +243,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Accrued Interest"
             placeholder="Enter Accrued Interest"
-            disabled={isEditMode}
+            readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
@@ -270,7 +270,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 component={InputField}
                 label="Last Cycle Date"
                 placeholder={dateFormat.DATE}
-                disabled={true}
+                readOnly={true}
               />
             </Box>
             <Box width={[1 / 4]} p="10px">
@@ -279,7 +279,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 name="dateCreated"
                 component={InputField}
                 label="Date Created"
-                disabled={true}
+                readOnly={true}
               />
             </Box>
             <Box width={[1 / 4]} p="10px">
@@ -288,7 +288,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 name="dateClosed"
                 component={InputField}
                 label="Date Closed"
-                disabled={true}
+                readOnly={true}
               />
             </Box>
           </React.Fragment>

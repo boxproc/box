@@ -23,7 +23,6 @@ const SchedulerFilter: React.FC = () => {
           name="activeStatusFlag"
           component={CheckboxField}
           label="Only &quot;Active&quot;"
-          disabled={false}
         />
       </Box>
     </React.Fragment>

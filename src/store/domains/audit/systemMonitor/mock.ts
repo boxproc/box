@@ -39,7 +39,7 @@ export const systemMonitorEndpoints: SystemMonitorEndpointsData = {
         endpoint_institution_id: 1,
       },
       {
-        endpoint_name: 'ribe card transactions endpoint',
+        endpoint_name: 'Tribe card transactions endpoint',
         endpoint_last_message_datetime: '15/10/2019 17:27:52',
         endpoint_last_fault_datetime: '15/10/2019 17:27:52',
         endpoint_status: 'A',

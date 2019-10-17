@@ -39,10 +39,6 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   showErrors?: boolean;
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
-  isRequired?: boolean;
-  hint?: string;
-  hintPosition?: string;
-  hintWidth?: string;
 }
 
 interface InputWrapperProps {
@@ -64,10 +60,6 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   showErrors = true,
   focusOnLabelClick = true,
   invalid: defaultInvalid,
-  isRequired,
-  hint,
-  hintPosition,
-  hintWidth,
   meta: {
     touched,
     error,
@@ -95,9 +87,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
         {render(invalid, preventBlur)}
       </div>
       {invalid && error && showErrors && (
-        <ErrorWrapper>
-          {error}
-        </ErrorWrapper>
+        <ErrorWrapper>{error}</ErrorWrapper>
       )}
     </InputFieldWrapper>
   );

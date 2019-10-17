@@ -23,7 +23,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 1 Description"
             placeholder="Enter Aux Counter 1 Description"
-            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -34,7 +33,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={CheckboxField}
             label="Aux Counter 1 Enabled"
             placeholder="Enter Aux Counter 1 Enabled"
-            disabled={false}
           />
         </Box>
         <Delimiter />
@@ -45,7 +43,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 2 Description"
             placeholder="Enter Aux Counter 2 Description"
-            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -56,7 +53,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={CheckboxField}
             label="Aux Counter 2 Enabled"
             placeholder="Enter Aux Counter 2 Enabled"
-            disabled={false}
           />
         </Box>
         <Delimiter />
@@ -67,7 +63,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 3 Description"
             placeholder="Enter Aux Counter 3 Description"
-            disabled={false}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -78,7 +73,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={CheckboxField}
             label="Aux Counter 3 Enabled"
             placeholder="Enter Aux Counter 1 Enabled"
-            disabled={false}
           />
         </Box>
       </Flex>

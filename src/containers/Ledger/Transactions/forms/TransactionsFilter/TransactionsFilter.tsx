@@ -47,7 +47,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -60,7 +59,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Product"
           placeholder="Select Product"
           options={institutionProductsOptions}
-          isDisabled={false}
           isLoading={isLoadingInstitutionProducts}
         />
       </Box>
@@ -71,7 +69,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           component={InputField}
           label="Customer ID"
           placeholder="Enter ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />
@@ -83,7 +80,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           component={InputField}
           label="Transaction ID"
           placeholder="Enter ID"
-          isDisabled={false}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>

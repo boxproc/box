@@ -152,7 +152,6 @@ const RevolvingCreditDetails: React.FC = () => {
             name="limitSharingAllowedFlag"
             component={CheckboxField}
             label="Limit Sharing Allowed"
-            disabled={false}
           />
         </Box>
       </Flex>

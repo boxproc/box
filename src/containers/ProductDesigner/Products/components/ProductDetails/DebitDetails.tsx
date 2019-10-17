@@ -31,7 +31,6 @@ const DebitDetails: React.FC = () => {
             name="overdraftAllowed"
             component={CheckboxField}
             label="Overdraft Allowed"
-            disabled={false}
           />
         </Box>
       </Flex>

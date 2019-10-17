@@ -31,7 +31,6 @@ const PrepaidDetails: React.FC = () => {
             name="breakagesAllowed"
             component={CheckboxField}
             label="Break Ages Allowed"
-            disabled={false}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -40,7 +39,6 @@ const PrepaidDetails: React.FC = () => {
             name="reloadAllowed"
             component={CheckboxField}
             label="Reload Allowed"
-            disabled={false}
           />
         </Box>
       </Flex>

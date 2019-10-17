@@ -18,7 +18,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardId"
             component={InputField}
             label="Card ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardTransactionId"
             component={InputField}
             label="Card Transaction ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -38,7 +38,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardCurrency"
             component={InputField}
             label="Card Currency"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -47,7 +47,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardAmount"
             component={InputField}
             label="Card Amount"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -57,7 +57,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardConversionRate"
             component={InputField}
             label="Card Conversion Rate"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -67,7 +67,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardAcceptorName"
             component={InputField}
             label="Card Acceptor Name"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -76,7 +76,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardAcceptorLocation"
             component={InputField}
             label="Card Acceptor Location"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
       </Flex>

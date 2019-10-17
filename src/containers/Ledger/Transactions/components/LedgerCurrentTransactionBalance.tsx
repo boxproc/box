@@ -18,7 +18,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             name="balanceSettledBefore"
             component={InputField}
             label="Balance Settled Before"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             name="balanceSettledAfter"
             component={InputField}
             label="Balance Settled After"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -38,7 +38,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             name="balanceAvailableBefore"
             component={InputField}
             label="Balance Available Before"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -48,7 +48,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             name="balanceAvailableAfter"
             component={InputField}
             label="Balance Available After	"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>

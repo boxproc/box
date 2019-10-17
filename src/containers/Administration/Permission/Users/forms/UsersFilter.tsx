@@ -13,7 +13,6 @@ const UsersFilter: React.FC = () => {
         name="statusActiveFlag"
         component={CheckboxField}
         label="Only &quot;Active&quot;"
-        disabled={false}
       />
     </Box>
   );

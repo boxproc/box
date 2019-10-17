@@ -21,7 +21,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Under Limit Fee %"
             placeholder="Enter Under Limit Fee %"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -33,7 +32,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Over Limit Fee %"
             placeholder="Enter Over Limit Fee %"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -45,7 +43,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Overpayment % Limit"
             placeholder="Enter Overpayment % Limit"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -57,7 +54,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Additional Statement Commission"
             placeholder="Enter Additional Statement Commission"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -69,7 +65,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle Purchase Transactions # Threshold"
             placeholder="Enter Cycle Purchase Transactions # Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -81,7 +76,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle Purchase Threshold"
             placeholder="Enter Cycle Purchase Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -93,7 +87,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle Cash Transactions # Threshold"
             placeholder="Enter Cycle Cash Transactions # Threshold "
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -105,7 +98,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle Cash Threshold"
             placeholder="Enter Cycle Cash Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -117,7 +109,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle 'Other' Transactions # Threshold"
             placeholder="Enter Cycle 'Other' Transactions # Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -129,7 +120,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Cycle 'Other' Threshold"
             placeholder="Enter Cycle 'Other' Threshold"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -141,7 +131,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Loan Conversion Fee %"
             placeholder="Loan Conversion Fee %"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
@@ -153,7 +142,6 @@ const ProductLimitsFeesCommissions: React.FC = () => {
             component={InputField}
             label="Loan Conversion Commission"
             placeholder="Loan Conversion Commission"
-            isDisabled={false}
             isNumber={true}
             validate={[formErrorUtil.required]}
           />

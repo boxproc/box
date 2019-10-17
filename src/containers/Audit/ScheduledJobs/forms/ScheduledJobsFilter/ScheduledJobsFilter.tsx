@@ -48,7 +48,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -61,7 +60,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           options={schedulerNameOptions}
           label="Scheduler"
           placeholder="Select Scheduler"
-          disabled={false}
           isLoading={isLoadingSchedulerNames}
         />
       </Box>
@@ -74,7 +72,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -87,7 +84,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           maskChar={null}
-          disabled={false}
           validate={[formErrorUtil.required]}
         />
       </Box>
