@@ -63,7 +63,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[2 / 9]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="id"
               name="id"
@@ -72,9 +72,10 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               placeholder="Enter ID"
               isDisabled={false}
               isNumber={true}
+              validate={[formErrorUtil.isInteger]}
             />
           </Box>
-          <Box width={[3 / 9]} p="10px">
+          <Box width={[2 / 9]} p="10px">
             <Field
               id="accountAlias"
               name="accountAlias"
@@ -82,7 +83,6 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               label="Account Alias"
               placeholder="Enter Account Alias"
               isDisabled={false}
-              isNumber={true}
             />
           </Box>
           <Box width={[4 / 9]} p="10px">

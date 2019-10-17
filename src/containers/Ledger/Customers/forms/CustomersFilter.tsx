@@ -59,6 +59,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           placeholder="Enter ID"
           isDisabled={false}
           isNumber={true}
+          validate={[formErrorUtil.isInteger]}
         />
       </Box>
     </React.Fragment>
