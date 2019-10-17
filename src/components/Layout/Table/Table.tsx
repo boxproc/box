@@ -18,6 +18,7 @@ interface TableItemWrapperProps {
   isDate?: boolean;
   isAccentColor?: boolean;
   textCenter?: boolean;
+  isSmaller?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
@@ -25,22 +26,27 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   width: 100%;
   display: flex;
   align-items: flex-start;
-  font-size: ${({ isDate }) => isDate ? '12px' : '13px'};
+  font-size: 13px;
   line-height: 1.5;
   white-space: normal;
   border: 1px solid transparent;
   color: inherit;
 
+  ${({ isSmaller }) => isSmaller && `
+    font-size: 12px;
+  `};
+
   ${({ textRight }) => textRight && `
-    justify-content: flex-end};
+    justify-content: flex-end;
   `}
 
   ${({ textCenter }) => textCenter && `
-    justify-content: center};
+    justify-content: center;
   `}
 
-  ${({ isDate, theme }) => isDate && `
+  ${({ isDate, theme, isSmaller }) => isDate && `
     color: ${theme.colors.gray};
+    font-size: ${isSmaller ? '10px' : '12px'}
   `}
 
   ${({ isAccentColor, theme }) => isAccentColor && `
@@ -86,6 +92,7 @@ interface TableCellProps {
   isDate?: boolean;
   isNumber?: boolean;
   onCenter?: boolean;
+  isSmaller?: boolean;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({
@@ -98,6 +105,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   isDate = false,
   isNumber = false,
   onCenter = false,
+  isSmaller = false,
 }) => {
   const isPendingStatus = value === schedulerStatusTypesOptions
     .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label;
@@ -113,6 +121,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       isDate={isDate}
       textCenter={onCenter}
       isAccentColor={isPendingStatus}
+      isSmaller={isSmaller}
     >
       {value}
     </TableItemWrapper>
@@ -144,6 +153,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   title?: string;
   isHeader?: boolean;
   activeRowIndex?: number;
+  isSmaller?: boolean;
 }
 
 export const Table: React.FC<TableProps> = props => {
@@ -154,12 +164,16 @@ export const Table: React.FC<TableProps> = props => {
     data,
     pageSize = 10,
     activeRowIndex,
+    isSmaller,
   } = props;
 
   return (
     <TableWrapper>
       <PerfectScrollbar>
-        <TableStyled activeRowIndex={activeRowIndex}>
+        <TableStyled
+          activeRowIndex={activeRowIndex}
+          isSmaller={isSmaller}
+        >
           <ReactTable
             {...props as TableProps}
             sortable={sortable}

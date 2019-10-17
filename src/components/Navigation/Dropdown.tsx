@@ -106,9 +106,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     >
       <Flex alignItems="center">
         {selectable && (
-          <Box>
-            {children[selectedIndex]}
-          </Box>
+          <Box>{children[selectedIndex]}</Box>
         )}
         <Box>
           <div

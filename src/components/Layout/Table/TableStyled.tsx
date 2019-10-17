@@ -4,6 +4,7 @@ import 'react-table/react-table.css';
 
 interface TableStyledProps {
   activeRowIndex: number;
+  isSmaller?: boolean;
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
@@ -37,12 +38,20 @@ export const TableStyled = styled.div<TableStyledProps>`
     transition: none;
     transition-property: none;
     min-width: 80px;
+
+    ${({ isSmaller }) => isSmaller && `
+      padding: 5px 7px;
+    `};
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
     padding: 6px;
     outline: 0;
     text-align: left;
+
+    ${({ isSmaller }) => isSmaller && `
+      padding: 3px;
+    `};
   }
 
   .ReactTable .rt-thead .rt-th > div {
@@ -149,6 +158,10 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .-pagination .-pageJump input {
     font-size: 12px;
     color: ${({ theme }) => theme.colors.gray};
+
+    ${({ isSmaller }) => isSmaller && `
+      font-size: 10px;
+    `};
   }
 
   .ReactTable .-pagination .-pageJump input::-webkit-inner-spin-button {
@@ -172,6 +185,10 @@ export const TableStyled = styled.div<TableStyledProps>`
     color: ${({ theme }) => theme.colors.gray};
     font-weight: 500;
     line-height: 1.3;
+
+    ${({ isSmaller }) => isSmaller && `
+      font-size: 9px;
+    `};
   }
 
   .ReactTable .-pagination .-previous,

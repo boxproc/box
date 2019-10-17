@@ -12,11 +12,11 @@ const Wrapper = styled.div<WrapperProps>`
   height: 20px;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.colors.lightGray};
-  font-size: 11px;
+  font-size: 10px;
   text-align: center;
   color: ${({ theme }) => theme.colors.normalAccent};
   font-weight: 500;
-  line-height: 15px;
+  line-height: 16.5px;
   box-shadow: ${({ theme }) => theme.shadows.aroundBox};
 
   svg {
@@ -60,12 +60,12 @@ const CountDownTimer: React.FC<CountDownTimerProps> = ({ seconds }) => {
       const interval = setInterval(() => setCount(count - 1), 1000);
 
       if (count <= 0) {
-        setCount(5);
+        setCount(seconds);
       }
 
       return () => clearInterval(interval);
     },
-    [count]
+    [count, seconds]
   );
 
   return (
