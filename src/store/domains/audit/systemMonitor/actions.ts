@@ -11,7 +11,7 @@ import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type HandleGetSystemMonitorData = () => Thunk<void>;
+export type HandleGetSystemMonitorData = (refreshedTables?: Array<string>) => Thunk<void>;
 
 export type GetSystemMonitorInterfaces = () => GetSystemMonitorInterfacesAction;
 export type GetSystemMonitorEndpoints = () => GetSystemMonitorEndpointsAction;
@@ -44,16 +44,41 @@ export const resetSystemMonitor: ResetSystemMonitor = () => ({
   type: ActionTypeKeys.RESET_SYSTEM_MONITOR,
 });
 
-export const handleGetSystemMonitorData: HandleGetSystemMonitorData = () =>
+const actions = [
+  {
+    name: 'interfaces',
+    action: getSystemMonitorInterfaces,
+  },
+  {
+    name: 'endpoints',
+    action: getSystemMonitorEndpoints,
+  },
+  {
+    name: 'schedulerJobs',
+    action: getSystemMonitorScheduler,
+  },
+  {
+    name: 'lastTransactions',
+    action: getSystemMonitorLastTransaction,
+  },
+];
+
+export const handleGetSystemMonitorData: HandleGetSystemMonitorData = refreshedTables =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await Promise.all([
-          dispatch(getSystemMonitorInterfaces()),
-          dispatch(getSystemMonitorEndpoints()),
-          dispatch(getSystemMonitorScheduler()),
-          dispatch(getSystemMonitorLastTransaction()),
-        ]);
+        if (!refreshedTables) {
+          await Promise.all(
+            actions.map(action => dispatch(action.action()))
+          );
+        } else if (refreshedTables.length === 1) {
+          await dispatch(actions.find(action => action.name === refreshedTables[0]).action());
+        } else if (refreshedTables.length > 1) {
+          await Promise.all(
+            refreshedTables
+              .map(name => dispatch(actions.find(action => action.name === name).action()))
+          );
+        }
       },
       dispatch
     );

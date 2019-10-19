@@ -3,11 +3,12 @@ import { highlightCss } from 'theme/highlightCss';
 
 interface HrProps {
   accentColor?: boolean;
+  noSpace?: boolean;
 }
 
 export const Hr = styled.div<HrProps>`
-  margin-top: 15px;
-  margin-bottom: 9px;
+  margin-top: ${({ noSpace }) => noSpace ? '1px' : '15px'};
+  margin-bottom:${({ noSpace }) => noSpace ? '0' : '9px'};;
   border-top: 1px solid ${({ theme, accentColor }) =>
     accentColor ? 'transparent' : theme.colors.lightGray};
   width: 100%;

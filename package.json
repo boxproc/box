@@ -2,7 +2,6 @@
   "name": "box-ui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dev-app01.boxproc.com/ui",
   "dependencies": {
     "@rebass/grid": "^6.0.0",
     "connected-react-router": "^6.4.0",

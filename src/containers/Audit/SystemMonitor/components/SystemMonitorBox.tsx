@@ -15,7 +15,7 @@ const SystemMonitorBoxWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${({ theme }) => theme.colors.whiteOpacity};
+    background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.darkGray};
     font-weight: bold;
     font-size: 10px;

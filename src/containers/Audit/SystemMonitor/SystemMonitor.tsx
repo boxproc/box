@@ -2,17 +2,12 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import {
-  CountDownTimer,
-  ExternalLink,
-  SmallText,
-  T2,
-  T4,
-  Table,
-} from 'components';
+import { CountDownTimer, ExternalLink, T2, Table } from 'components';
 
 import {
   Collapse,
+  Header,
+  RefreshCheckbox,
   schedulerTableColumns,
   SystemMonitorBox,
   tableColumns,
@@ -46,12 +41,18 @@ interface SystemMonitorProps {
 
 interface SystemMonitorBlockProps {
   id: number;
+  name: string;
   title: string;
   isLoading: boolean;
   tableData: Array<object>;
   columns: Array<object>;
   counts?: SystemMonitorCounts;
 }
+
+const refreshInterval = {
+  inSeconds: 60,
+  inMilliseconds: 60000,
+};
 
 const SystemMonitor: React.FC<SystemMonitorProps> = ({
   getSystemMonitorData,
@@ -68,20 +69,50 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   endpointsCounts,
   schedulerCounts,
 }) => {
-  const [isCounter, setIsCounter] = React.useState(true);
+  const [refreshedTables, setRefreshedTables] = React.useState([]);
+  const [isCounter, setIsCounter] = React.useState(false);
+
+  const refreshCounter = () => {
+    setIsCounter(false);
+    setTimeout(() => setIsCounter(true), 50);
+  };
+
+  const handleSetRefreshedTables = React.useCallback(
+    (tableName: string) => {
+      const hasTableName = refreshedTables.find(name => name === tableName);
+
+      if (!hasTableName) {
+        getSystemMonitorData([tableName]); // update current table
+        setRefreshedTables([...refreshedTables, tableName]);
+        refreshCounter();
+      } else {
+        setRefreshedTables(refreshedTables.filter(name => name !== tableName));
+        if (refreshedTables.length <= 1) {
+          setIsCounter(false);
+        } else {
+          refreshCounter();
+        }
+      }
+    },
+    [refreshedTables, getSystemMonitorData]
+  );
 
   React.useEffect(
     () => {
       getSystemMonitorData();
-      const timer = setInterval(() => {
-        getSystemMonitorData();
-        setIsCounter(false);
-        setIsCounter(true);
-      }, 60000);
-
-      return () => clearInterval(timer);
     },
     [getSystemMonitorData]
+  );
+
+  React.useEffect(
+    () => {
+      const timer = isCounter && setInterval(
+        () => getSystemMonitorData(refreshedTables),
+        refreshInterval.inMilliseconds
+      );
+      return () => clearInterval(timer);
+    },
+    [getSystemMonitorData, isCounter, refreshedTables]
   );
 
   React.useEffect(
@@ -108,11 +139,12 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
     [screenHeight]
   );
 
-  const SystemMonitorBlocks = React.useMemo(
+  const systemMonitorBlocks = React.useMemo(
     () => [
       [
         {
           id: 1,
+          name: 'interfaces',
           title: 'Interfaces',
           counts: interfacesCounts,
           isLoading: isLoadingInterfaces,
@@ -121,6 +153,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         },
         {
           id: 2,
+          name: 'lastTransactions',
           title: 'Last Transactions',
           isLoading: isLoadingLastTransaction,
           tableData: lastTransactionData,
@@ -130,6 +163,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       [
         {
           id: 3,
+          name: 'endpoints',
           title: 'Endpoints',
           counts: endpointsCounts,
           isLoading: isLoadingEndpoints,
@@ -138,6 +172,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         },
         {
           id: 4,
+          name: 'schedulerJobs',
           title: 'Scheduler Jobs',
           counts: schedulerCounts,
           isLoading: isLoadingScheduler,
@@ -173,14 +208,12 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         </Box>
         <T2>System Monitor</T2>
         <Box mb="12px" ml="12px">
-          {isCounter && (
-            <CountDownTimer seconds={60} />
-          )}
+          {isCounter && (<CountDownTimer seconds={refreshInterval.inSeconds} />)}
         </Box>
       </Flex>
-      <Box mx="-15px">
+      <Box mx="-20px">
         <Flex flexWrap="wrap" alignItems="flex-start">
-          {SystemMonitorBlocks.map((el: Array<object>, index) => (
+          {systemMonitorBlocks.map((el: Array<object>, index) => (
             <Box
               key={index}
               width={[1 / 2]}
@@ -192,15 +225,16 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                   isLoading={block.isLoading}
                 >
                   <Collapse
-                    title={(
-                      <Flex alignItems="baseline" justifyContent="space-between">
-                        <Box mr="10px"><T4>{block.title}</T4></Box>
-                        {block.counts && (
-                          <SmallText>
-                            {block.counts.countActive} active, {block.counts.countFaulty} faulty
-                          </SmallText>
-                        )}
-                      </Flex>
+                    header={(
+                      <Header
+                        title={block.title}
+                        counts={block.counts}
+                      />
+                    )}
+                    additionalTool={(
+                      <RefreshCheckbox
+                        onClick={() => handleSetRefreshedTables(block.name)}
+                      />
                     )}
                   >
                     <Table
@@ -211,8 +245,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                     />
                   </Collapse>
                 </SystemMonitorBox>
-              )
-              )}
+              ))}
             </Box>
           ))}
         </Flex>

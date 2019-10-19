@@ -1,78 +1,74 @@
 import React, { ReactChild } from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
-import { ChevronDownIcon } from 'components';
-
-const CollapseIcon = styled(ChevronDownIcon)``;
+import { ChevronDownIcon, Hr } from 'components';
 
 interface CollapseButtonProps {
   isOpen: boolean;
 }
 
-const CollapseButton = styled.div<CollapseButtonProps>`
+const CollapseButton = styled(ChevronDownIcon)<CollapseButtonProps>`
   cursor: pointer;
-
-  .title {
-    z-index: 11;
-  }
-
-  .icon {
-    color: ${({ theme }) => theme.colors.gray};
-  }
+  color: ${({ theme }) => theme.colors.gray};
 
   ${({ isOpen }) => isOpen && `
-    .icon {
-      transform: rotate(180deg);
-    }
-  `}
-
-  ${({ theme, isOpen }) => !isOpen && `
-    border-bottom: 1px solid ${theme.colors.lightGray};
-
-    &:hover {
-      border-bottom-color: ${theme.colors.lightAccent};
-    }
+    transform: rotate(180deg);
   `}
 
   &:hover {
-    .icon {
-      color: ${({ theme }) => theme.colors.normalAccent};
-    }
+    color: ${({ theme }) => theme.colors.normalAccent};
+  }
+`;
+
+const CollapseHeader = styled.div`
+  .header {
+    z-index: 11;
   }
 `;
 
 interface CollapseProps {
-  title?: ReactChild;
+  header?: ReactChild;
+  additionalTool?: ReactChild;
 }
 
 const Collapse: React.FC<CollapseProps> = ({
   children,
-  title,
+  header,
+  additionalTool,
 }) => {
   const [isOpen, setIsOpen] = React.useState(true);
   return (
     <div>
-      <CollapseButton
-        onClick={() => setIsOpen(!isOpen)}
-        isOpen={isOpen}
-      >
+      <CollapseHeader>
         <Flex
           justifyContent="space-between"
           alignItems="center"
         >
-          {title && (
-            <div className="title">{title}</div>
+          {header && (
+            <div className="header">{header}</div>
           )}
-          <CollapseIcon
-            size="24"
-            className="icon"
-          />
+          <Flex alignItems="flex-end">
+            {additionalTool && (
+              <Box mb="4px">{additionalTool}</Box>
+            )}
+            <Box mb="3px">
+              <CollapseButton
+                size="24"
+                className="icon"
+                isOpen={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </CollapseButton>
+      </CollapseHeader>
       {isOpen && (
         <React.Fragment>{children}</React.Fragment>
+      )}
+      {!isOpen && (
+        <Hr noSpace={true} />
       )}
     </div>
   );

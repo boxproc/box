@@ -17,20 +17,16 @@ const auditSystemMonitorReducer = (
 ) => {
   switch (action.type) {
     case ActionTypeKeys.GET_SYSTEM_MONITOR_INTERFACES_FULFILLED:
-      return state
-        .set('interfaces', action.payload.system_monitor_interfaces);
+      return state.set('interfaces', action.payload.system_monitor_interfaces);
 
     case ActionTypeKeys.GET_SYSTEM_MONITOR_ENDPOINTS_FULFILLED:
-      return state
-        .set('endpoints', action.payload.system_monitor_endpoints);
+      return state.set('endpoints', action.payload.system_monitor_endpoints);
 
     case ActionTypeKeys.GET_SYSTEM_MONITOR_SCHEDULER_FULFILLED:
-      return state
-        .set('scheduler', action.payload.system_monitor_scheduler_jobs);
+      return state.set('scheduler', action.payload.system_monitor_scheduler_jobs);
 
     case ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION_FULFILLED:
-      return state
-        .set('lastTransaction', action.payload.transaction);
+      return state.set('lastTransaction', action.payload.transaction);
 
     case ActionTypeKeys.RESET_SYSTEM_MONITOR:
       return state = systemMonitorInitialState;
