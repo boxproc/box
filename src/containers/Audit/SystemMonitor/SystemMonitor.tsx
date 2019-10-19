@@ -107,7 +107,10 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   React.useEffect(
     () => {
       const timer = isCounter && setInterval(
-        () => getSystemMonitorData(refreshedTables),
+        () => {
+          getSystemMonitorData(refreshedTables);
+          refreshCounter();
+        },
         refreshInterval.inMilliseconds
       );
       return () => clearInterval(timer);
