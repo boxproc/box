@@ -4,9 +4,13 @@ interface Status {
   status: string;
 }
 
-interface PlainInfo {
-  name: string;
+interface InstitutionInfo {
   institutionId: number;
+  institutionName: string;
+}
+
+interface PlainInfo extends InstitutionInfo {
+  name: string;
 }
 
 export interface SystemMonitorCounts {
@@ -19,9 +23,7 @@ export interface SystemMonitorItem extends PlainInfo, Status {
   lastFaultDatetime: string;
 }
 
-export interface SystemMonitorTransaction {
-  institutionId: number;
-  institutionName: string;
+export interface SystemMonitorTransaction extends InstitutionInfo {
   transactionDatetime: string;
 }
 
@@ -33,6 +35,7 @@ export interface SystemMonitorInterfaces {
   interface_last_fault_datetime: string;
   interface_status: string;
   interface_institution_id: number;
+  interface_institution_name: string;
 }
 
 export interface SystemMonitorInterfacesData {
@@ -49,6 +52,7 @@ export interface SystemMonitorEndpoints {
   endpoint_last_fault_datetime: string;
   endpoint_status: string;
   endpoint_institution_id: number;
+  endpoint_institution_name: string;
 }
 
 export interface SystemMonitorEndpointsData {
@@ -63,6 +67,7 @@ export interface SystemMonitorScheduler {
   scheduler_name: string;
   scheduler_status: string;
   scheduler_institution_id: number;
+  scheduler_institution_name: string;
 }
 
 export interface SystemMonitorSchedulerData {
@@ -99,5 +104,5 @@ export interface SystemMonitorState {
     total_active_scheduler_jobs: number;
     total_faulty_scheduler_jobs: number;
   };
-  lastTransaction: SystemMonitorTransactionItem;
+  lastTransactions: SystemMonitorTransactionItem;
 }

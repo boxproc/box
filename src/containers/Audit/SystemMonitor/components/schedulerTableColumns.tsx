@@ -11,14 +11,13 @@ type TCell<T extends keyof SystemMonitorSchedulerItem> =
 
 export const schedulerTableColumns = [
   {
-    maxWidth: 80,
-    Header: <TableHeader title="Institution ID" />,
-    accessor: 'institutionId',
-    Cell: (props: TCell<'institutionId'>) => (
+    maxWidth: 125,
+    Header: <TableHeader title="Institution" />,
+    accessor: 'institutionName',
+    Cell: (props: TCell<'institutionName'>) => (
       <TableCell
         value={props.value}
         isSmaller={true}
-        isNumber={true}
       />
     ),
   },

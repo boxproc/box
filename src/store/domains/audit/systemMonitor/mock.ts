@@ -14,6 +14,7 @@ export const systemMonitorInterfaces: SystemMonitorInterfacesData = {
         interface_last_fault_datetime: '15/10/2019 17:27:52',
         interface_status: 'A',
         interface_institution_id: 1,
+        interface_institution_name: 'BOX Institution',
       },
       {
         interface_name: 'Tribe card management interface',
@@ -21,6 +22,7 @@ export const systemMonitorInterfaces: SystemMonitorInterfacesData = {
         interface_last_fault_datetime: '15/10/2019 17:27:52',
         interface_status: 'A',
         interface_institution_id: 1,
+        interface_institution_name: 'BOX Institution',
       },
     ],
     total_active_interfaces: 27,
@@ -37,6 +39,7 @@ export const systemMonitorEndpoints: SystemMonitorEndpointsData = {
         endpoint_last_fault_datetime: '15/10/2019 17:27:52',
         endpoint_status: 'A',
         endpoint_institution_id: 1,
+        endpoint_institution_name: 'BOX Institution',
       },
       {
         endpoint_name: 'Tribe card transactions endpoint',
@@ -44,6 +47,7 @@ export const systemMonitorEndpoints: SystemMonitorEndpointsData = {
         endpoint_last_fault_datetime: '15/10/2019 17:27:52',
         endpoint_status: 'A',
         endpoint_institution_id: 1,
+        endpoint_institution_name: 'BOX Institution',
       },
     ],
     total_active_endpoints: 40,
@@ -58,11 +62,13 @@ export const systemMonitorScheduler: SystemMonitorSchedulerData = {
         scheduler_name: 'API test Job 1',
         scheduler_status: 'A',
         scheduler_institution_id: 1,
+        scheduler_institution_name: 'BOX Institution',
       },
       {
         scheduler_name: 'API test Job 1',
         scheduler_status: 'A',
         scheduler_institution_id: 1,
+        scheduler_institution_name: 'BOX Institution',
       },
     ],
     total_active_scheduler_jobs: 20,
@@ -70,7 +76,7 @@ export const systemMonitorScheduler: SystemMonitorSchedulerData = {
   },
 };
 
-export const systemMonitorLastTransaction: SystemMonitorTransactionData = {
+export const systemMonitorLastTransactions: SystemMonitorTransactionData = {
   transaction: {
     institution_id: 1,
     institution_name: 'BOX Institution',

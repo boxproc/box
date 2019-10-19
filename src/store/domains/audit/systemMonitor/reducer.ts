@@ -8,7 +8,7 @@ export const systemMonitorInitialState:
     interfaces: null,
     endpoints: null,
     scheduler: null,
-    lastTransaction: null,
+    lastTransactions: null,
   });
 
 const auditSystemMonitorReducer = (
@@ -25,8 +25,8 @@ const auditSystemMonitorReducer = (
     case ActionTypeKeys.GET_SYSTEM_MONITOR_SCHEDULER_FULFILLED:
       return state.set('scheduler', action.payload.system_monitor_scheduler_jobs);
 
-    case ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION_FULFILLED:
-      return state.set('lastTransaction', action.payload.transaction);
+    case ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED:
+      return state.set('lastTransactions', action.payload.transaction);
 
     case ActionTypeKeys.RESET_SYSTEM_MONITOR:
       return state = systemMonitorInitialState;

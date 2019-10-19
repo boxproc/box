@@ -2,7 +2,7 @@ import {
   ActionTypeKeys,
   GetSystemMonitorEndpointsAction,
   GetSystemMonitorInterfacesAction,
-  GetSystemMonitorLastTransactionAction,
+  GetSystemMonitorLastTransactionsAction,
   GetSystemMonitorSchedulerAction,
 } from './actionTypes';
 import * as api from './api';
@@ -16,7 +16,7 @@ export type HandleGetSystemMonitorData = (refreshedTables?: Array<string>) => Th
 export type GetSystemMonitorInterfaces = () => GetSystemMonitorInterfacesAction;
 export type GetSystemMonitorEndpoints = () => GetSystemMonitorEndpointsAction;
 export type GetSystemMonitorScheduler = () => GetSystemMonitorSchedulerAction;
-export type GetSystemMonitorLastTransaction = () => GetSystemMonitorLastTransactionAction;
+export type GetSystemMonitorLastTransactions = () => GetSystemMonitorLastTransactionsAction;
 
 export type ResetSystemMonitor = () => void;
 
@@ -35,9 +35,9 @@ export const getSystemMonitorScheduler: GetSystemMonitorScheduler = () => ({
   payload: api.getSystemMonitorScheduler(),
 });
 
-export const getSystemMonitorLastTransaction: GetSystemMonitorLastTransaction = () => ({
-  type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION,
-  payload: api.getSystemMonitorLastTransaction(),
+export const getSystemMonitorLastTransactions: GetSystemMonitorLastTransactions = () => ({
+  type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS,
+  payload: api.getSystemMonitorLastTransactions(),
 });
 
 export const resetSystemMonitor: ResetSystemMonitor = () => ({
@@ -59,7 +59,7 @@ const actions = [
   },
   {
     name: 'lastTransactions',
-    action: getSystemMonitorLastTransaction,
+    action: getSystemMonitorLastTransactions,
   },
 ];
 

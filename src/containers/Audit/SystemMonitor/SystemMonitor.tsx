@@ -29,11 +29,11 @@ interface SystemMonitorProps {
   interfacesData: Array<SystemMonitorItem>;
   endpointsData: Array<SystemMonitorItem>;
   schedulerData: Array<SystemMonitorSchedulerItem>;
-  lastTransactionData: Array<SystemMonitorTransaction>;
+  lastTransactionsData: Array<SystemMonitorTransaction>;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isLoadingScheduler: boolean;
-  isLoadingLastTransaction: boolean;
+  isLoadingLastTransactions: boolean;
   interfacesCounts: SystemMonitorCounts;
   endpointsCounts: SystemMonitorCounts;
   schedulerCounts: SystemMonitorCounts;
@@ -60,11 +60,11 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   interfacesData,
   endpointsData,
   schedulerData,
-  lastTransactionData,
+  lastTransactionsData,
   isLoadingInterfaces,
   isLoadingEndpoints,
   isLoadingScheduler,
-  isLoadingLastTransaction,
+  isLoadingLastTransactions,
   interfacesCounts,
   endpointsCounts,
   schedulerCounts,
@@ -158,8 +158,8 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           id: 2,
           name: 'lastTransactions',
           title: 'Last Transactions',
-          isLoading: isLoadingLastTransaction,
-          tableData: lastTransactionData,
+          isLoading: isLoadingLastTransactions,
+          tableData: lastTransactionsData,
           columns: transactionsTableColumns,
         },
       ],
@@ -191,9 +191,9 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       interfacesData,
       isLoadingEndpoints,
       isLoadingInterfaces,
-      isLoadingLastTransaction,
+      isLoadingLastTransactions,
       isLoadingScheduler,
-      lastTransactionData,
+      lastTransactionsData,
       schedulerCounts,
       schedulerData,
     ]

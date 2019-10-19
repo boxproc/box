@@ -12,8 +12,8 @@ export const selectDefaultSystemMonitorEndpoints = (state: StoreState) =>
 export const selectDefaultSystemMonitorScheduler = (state: StoreState) =>
   state.audit.systemMonitor.scheduler;
 
-export const selectDefaultSystemMonitorLastTransaction = (state: StoreState) =>
-  state.audit.systemMonitor.lastTransaction;
+export const selectDefaultSystemMonitorLastTransactions = (state: StoreState) =>
+  state.audit.systemMonitor.lastTransactions;
 
 export const selectSystemMonitorInterfaces = createSelector(
   selectDefaultSystemMonitorInterfaces,
@@ -26,6 +26,7 @@ export const selectSystemMonitorInterfaces = createSelector(
 
         return {
           institutionId: item.interface_institution_id,
+          institutionName: item.interface_institution_name,
           name: item.interface_name,
           status: status && status.label,
           lastMessageDatetime: item.interface_last_message_datetime,
@@ -61,6 +62,7 @@ export const selectSystemMonitorEndpoints = createSelector(
 
         return {
           institutionId: item.endpoint_institution_id,
+          institutionName: item.endpoint_institution_name,
           name: item.endpoint_name,
           status: status && status.label,
           lastMessageDatetime: item.endpoint_last_message_datetime,
@@ -96,6 +98,7 @@ export const selectSystemMonitorScheduler = createSelector(
 
         return {
           institutionId: item.scheduler_institution_id,
+          institutionName: item.scheduler_institution_name,
           name: item.scheduler_name,
           status: status && status.label,
         };
@@ -118,16 +121,16 @@ export const selectSystemMonitorSchedulerCounts = createSelector(
   }
 );
 
-export const selectSystemMonitorLastTransaction = createSelector(
-  selectDefaultSystemMonitorLastTransaction,
-  transaction => {
-    if (!transaction) {
+export const selectSystemMonitorLastTransactions = createSelector(
+  selectDefaultSystemMonitorLastTransactions,
+  transactions => {
+    if (!transactions) {
       return [];
     } else {
       return [{
-        institutionName: transaction && transaction.institution_name,
-        institutionId: transaction && transaction.institution_id,
-        transactionDatetime: transaction && transaction.transaction_datetime,
+        institutionName: transactions && transactions.institution_name,
+        institutionId: transactions && transactions.institution_id,
+        transactionDatetime: transactions && transactions.transaction_datetime,
       }];
     }
   });

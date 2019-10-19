@@ -101,7 +101,7 @@ export enum systemMonitorPathNames {
   GET_INTERFACES = '/ui/audit/system_monitor/get_interface_data',
   GET_ENDPOINTS = '/ui/audit/system_monitor/get_endpoint_data',
   GET_SCHEDULER_JOBS = '/ui/audit/system_monitor/get_scheduler_data',
-  GET_LAST_TRANSACTION = '/ui/audit/system_monitor/get_transaction_data',
+  GET_LAST_TRANSACTIONS = '/ui/audit/system_monitor/get_transactions_data',
 }
 
 export enum lenderAccountsPathNames {

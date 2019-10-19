@@ -5,7 +5,7 @@ import { apiClient } from 'services';
 // import {
 //   systemMonitorEndpoints,
 //   systemMonitorInterfaces,
-//   systemMonitorLastTransaction,
+//   systemMonitorLastTransactions,
 //   systemMonitorScheduler,
 // } from './mock';
 
@@ -23,6 +23,6 @@ export const getSystemMonitorScheduler = () =>
   // throttleUtil.getDataAfter(systemMonitorScheduler, 500);
   apiClient.post(systemMonitorPathNames.GET_SCHEDULER_JOBS);
 
-export const getSystemMonitorLastTransaction = () =>
-  // throttleUtil.getDataAfter(systemMonitorLastTransaction, 500);
-  apiClient.post(systemMonitorPathNames.GET_LAST_TRANSACTION);
+export const getSystemMonitorLastTransactions = () =>
+  // throttleUtil.getDataAfter(systemMonitorLastTransactions, 500);
+  apiClient.post(systemMonitorPathNames.GET_LAST_TRANSACTIONS);

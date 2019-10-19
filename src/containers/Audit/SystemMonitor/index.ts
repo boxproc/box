@@ -11,7 +11,7 @@ import {
   selectSystemMonitorEndpointsCounts,
   selectSystemMonitorInterfaces,
   selectSystemMonitorInterfacesCounts,
-  selectSystemMonitorLastTransaction,
+  selectSystemMonitorLastTransactions,
   selectSystemMonitorScheduler,
   selectSystemMonitorSchedulerCounts,
   SystemMonitorActionTypes,
@@ -27,19 +27,19 @@ const loadingSelectorEndpoints = createLoadingSelector([
 const loadingSelectorScheduler = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_SCHEDULER,
 ]);
-const loadingSelectorLastTransaction = createLoadingSelector([
-  SystemMonitorActionTypes.GET_SYSTEM_MONITOR_LAST_TRANSACTION,
+const loadingSelectorLastTransactions = createLoadingSelector([
+  SystemMonitorActionTypes.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
   isLoadingScheduler: loadingSelectorScheduler(state),
-  isLoadingLastTransaction: loadingSelectorLastTransaction(state),
+  isLoadingLastTransactions: loadingSelectorLastTransactions(state),
   interfacesData: selectSystemMonitorInterfaces(state),
   endpointsData: selectSystemMonitorEndpoints(state),
   schedulerData: selectSystemMonitorScheduler(state),
-  lastTransactionData: selectSystemMonitorLastTransaction(state),
+  lastTransactionsData: selectSystemMonitorLastTransactions(state),
   interfacesCounts: selectSystemMonitorInterfacesCounts(state),
   endpointsCounts: selectSystemMonitorEndpointsCounts(state),
   schedulerCounts: selectSystemMonitorSchedulerCounts(state),
