@@ -8,13 +8,11 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
   }
 
-  /* for Firefox */
   ::-moz-selection {
     background-color: #ffa400;
     color: #333333;
   }
 
-  /* for Safari and Chrome */
   ::selection {
     background-color: #ffa400;
     color: #333333;

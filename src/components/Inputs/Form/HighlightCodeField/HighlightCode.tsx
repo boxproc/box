@@ -37,6 +37,14 @@ export const Wrapper = styled.div<WrapperProps>`
 
   textarea {
     background-color: ${({ theme }) => theme.colors.white} !important;
+
+    &::-moz-selection {
+      background-color: ${({ theme }) => theme.colors.lightGray};
+    }
+
+    &::selection {
+      background-color: ${({ theme }) => theme.colors.lightGray};
+    }
   }
 
   textarea::placeholder {
