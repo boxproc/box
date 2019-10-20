@@ -75,6 +75,7 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   fontSize?: number;
   height?: string;
   whiteSpacePre?: boolean;
+  isScrollbarBottom?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -86,16 +87,32 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   fontSize,
   height,
   whiteSpacePre,
+  isScrollbarBottom,
 }) => {
+  React.useEffect(
+    () => {
+      if (isScrollbarBottom) {
+        const wrapper = document.querySelector('.scrollbar-editor-wrapper');
+
+        if (wrapper) {
+          wrapper.scrollTop = wrapper.scrollHeight;
+        }
+      }
+    },
+    [isScrollbarBottom]
+  );
+
   const wrapperRef = React.useRef(null);
 
   const handleChange = React.useCallback(
     code => onChange ? onChange(code) : null,
     [onChange]
   );
+
   const addFocusClass = () => {
     wrapperRef.current.classList.add('is-focus');
   };
+
   const removeFocusClass = () => {
     wrapperRef.current.classList.remove('is-focus');
   };
@@ -106,24 +123,24 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
       height={height}
       whiteSpacePre={whiteSpacePre}
     >
-      <PerfectScrollbar>
-      <Editor
-        value={value.toString()}
-        onValueChange={handleChange}
-        highlight={code => highlight(code, languages.js)}
-        textareaId={id}
-        name={name}
-        placeholder={placeholder}
-        padding={10}
-        onFocus={addFocusClass}
-        onBlur={removeFocusClass}
-        className="editor"
-        style={{
-          overflow: 'visible',
-          fontFamily: '"Roboto Mono", monospace',
-          fontSize: fontSize ? fontSize : 13,
-        }}
-      />
+      <PerfectScrollbar className="scrollbar-editor-wrapper">
+        <Editor
+          value={value.toString()}
+          onValueChange={handleChange}
+          highlight={code => highlight(code, languages.js)}
+          textareaId={id}
+          name={name}
+          placeholder={placeholder}
+          padding={10}
+          onFocus={addFocusClass}
+          onBlur={removeFocusClass}
+          className="editor"
+          style={{
+            overflow: 'visible',
+            fontFamily: '"Roboto Mono", monospace',
+            fontSize: fontSize ? fontSize : 13,
+          }}
+        />
       </PerfectScrollbar>
     </Wrapper>
   );

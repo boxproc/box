@@ -39,6 +39,7 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
         height="calc(100vh - 150px)"
         fontSize={8.5}
         whiteSpacePre={true}
+        isScrollbarBottom={true}
       />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
