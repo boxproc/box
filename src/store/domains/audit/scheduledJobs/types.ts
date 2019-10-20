@@ -25,8 +25,8 @@ export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
 export interface AuditScheduledJobsFilter {
   institutionId: SelectValues;
   scheduler: SelectValues;
-  dateTimeFrom: string;
-  dateTimeTo: string;
+  scheduledJobsDateTimeFrom: string;
+  scheduledJobsDateTimeTo: string;
 }
 
 export interface AuditScheduledJobsFilterPrepared {

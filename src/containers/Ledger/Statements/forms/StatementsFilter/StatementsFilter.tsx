@@ -105,8 +105,8 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
             </Box>
             <Box width="200px" p="10px">
               <Field
-                id="dateFrom"
-                name="dateFrom"
+                id="statementsDateFrom"
+                name="statementsDateFrom"
                 component={MaskField}
                 label="Date From"
                 placeholder={dateFormat.DATE}
@@ -116,8 +116,8 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
             </Box>
             <Box width="200px" p="10px">
               <Field
-                id="dateTo"
-                name="dateTo"
+                id="statementsDateTo"
+                name="statementsDateTo"
                 component={MaskField}
                 label="Date To"
                 placeholder={dateFormat.DATE}

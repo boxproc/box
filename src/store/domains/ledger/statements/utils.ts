@@ -59,8 +59,8 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     lastName,
     accountAlias,
     product,
-    dateFrom,
-    dateTo,
+    statementsDateFrom,
+    statementsDateTo,
   } = params;
 
   return {
@@ -70,7 +70,7 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     last_name: lastName ? lastName : null,
     product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
-    date_from: dateFrom ? dateFrom : null,
-    date_to: dateTo ? dateTo : null,
+    date_from: statementsDateFrom ? statementsDateFrom : null,
+    date_to: statementsDateTo ? statementsDateTo : null,
   };
 };

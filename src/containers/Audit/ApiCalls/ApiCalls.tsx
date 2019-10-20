@@ -47,8 +47,8 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       filterAction={filterAuditApiCalls}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom,
-        dateTimeTo,
+        apiCallsDateTimeFrom: dateTimeFrom,
+        apiCallsDateTimeTo: dateTimeTo,
       }}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />

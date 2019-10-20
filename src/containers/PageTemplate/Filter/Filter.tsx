@@ -30,10 +30,9 @@ interface FilterProps {
   location: H.Location;
 }
 
-const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
 export const filteredFieldsToStore = (data: object) => {
   return data && Object.keys(data)
-    .filter(key => !notAllowedFieldNamesToStore.includes(key))
+    .filter(key => !key.match(/dateFrom|dateTo|dateTimeFrom|dateTimeTo/gi))
     .reduce((obj, key) => {
       obj[key] = data[key];
       return obj;

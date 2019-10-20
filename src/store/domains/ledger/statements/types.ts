@@ -86,8 +86,8 @@ export interface LedgerStatementsFilter {
   accountAlias: string;
   firstName: string;
   lastName: string;
-  dateFrom: string;
-  dateTo: string;
+  statementsDateFrom: string;
+  statementsDateTo: string;
   product: Array<SelectValues>;
 }
 

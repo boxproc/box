@@ -52,8 +52,8 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterAction={filterLedgerTransactions}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom,
-        dateTimeTo,
+        transactionsDateTimeFrom: dateTimeFrom,
+        transactionsDateTimeTo: dateTimeTo,
       }}
       FilterForm={
         <TransactionsFilter institutionsOptions={institutionsOptions} />

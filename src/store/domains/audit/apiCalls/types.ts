@@ -33,8 +33,8 @@ export interface AuditApiCallsFilter {
   institutionId: SelectValues;
   endpointId: SelectValues;
   apiName: string;
-  dateTimeFrom: string;
-  dateTimeTo: string;
+  apiCallsDateTimeFrom: string;
+  apiCallsDateTimeTo: string;
 }
 
 export interface AuditApiCallsFilterPrepared {

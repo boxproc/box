@@ -33,16 +33,6 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   filterData: object;
 }
 
-const notAllowedFieldNamesToStore = ['dateFrom', 'dateTo', 'dateTimeFrom', 'dateTimeTo'];
-export const filteredFieldsToStore = (data: object) => {
-  return data && Object.keys(data)
-    .filter(key => !notAllowedFieldNamesToStore.includes(key))
-    .reduce((obj, key) => {
-      obj[key] = data[key];
-      return obj;
-    },      {});
-};
-
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const {
     title,

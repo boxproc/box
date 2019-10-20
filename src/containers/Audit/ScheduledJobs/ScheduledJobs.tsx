@@ -68,8 +68,8 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       contextMenuItems={contextMenuItems}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom,
-        dateTimeTo,
+        scheduledJobsDateTimeFrom: dateTimeFrom,
+        scheduledJobsDateTimeTo: dateTimeTo,
       }}
       FilterForm={
         <ScheduledJobsFilter

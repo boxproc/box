@@ -32,12 +32,12 @@ export const preparedFilterToSend = (params: Partial<AuditScheduledJobsFilter>):
     return null;
   }
 
-  const { institutionId, scheduler, dateTimeFrom, dateTimeTo } = params;
+  const { institutionId, scheduler, scheduledJobsDateTimeFrom, scheduledJobsDateTimeTo } = params;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
     scheduler_id: scheduler ? scheduler.value : null,
-    start_datetime: dateTimeFrom ? dateTimeFrom : null,
-    finish_datetime: dateTimeTo ? dateTimeTo : null,
+    start_datetime: scheduledJobsDateTimeFrom ? scheduledJobsDateTimeFrom : null,
+    finish_datetime: scheduledJobsDateTimeTo ? scheduledJobsDateTimeTo : null,
   };
 };

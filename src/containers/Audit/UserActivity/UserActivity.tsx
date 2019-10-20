@@ -48,8 +48,8 @@ const UserActivity: React.FC<UserActivityProps> = ({
       filterAction={filterAuditUserActivity}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom,
-        dateTimeTo,
+        userActivityDateTimeFrom: dateTimeFrom,
+        userActivityDateTimeTo: dateTimeTo,
       }}
       FilterForm={
         <UserActivityFilter

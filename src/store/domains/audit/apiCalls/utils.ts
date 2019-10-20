@@ -21,13 +21,13 @@ export const preparedFilterToSend = (params: Partial<AuditApiCallsFilter>) => {
     return null;
   }
 
-  const { institutionId, endpointId, apiName, dateTimeFrom, dateTimeTo } = params;
+  const { institutionId, endpointId, apiName, apiCallsDateTimeFrom, apiCallsDateTimeTo } = params;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
     endpoint_id: endpointId ? endpointId.value : null,
     api_name: apiName ? apiName : null,
-    date_from: dateTimeFrom ? dateTimeFrom : null,
-    date_to: dateTimeTo ? dateTimeTo : null,
+    date_from: apiCallsDateTimeFrom ? apiCallsDateTimeFrom : null,
+    date_to: apiCallsDateTimeTo ? apiCallsDateTimeTo : null,
   };
 };

@@ -64,8 +64,8 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeFrom"
-          name="dateTimeFrom"
+          id="userActivityDateTimeFrom"
+          name="userActivityDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
@@ -76,8 +76,8 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeTo"
-          name="dateTimeTo"
+          id="userActivityDateTimeTo"
+          name="userActivityDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
