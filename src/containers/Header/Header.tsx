@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Container, Navbar, withSpinner } from 'components';
 
-import { basePath, boxInstitutionName } from 'consts';
+import { basePath, institutionsNames } from 'consts';
 
 import { HelpDropdown, UserDropdown } from './components';
 
@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const institution = institutions.length === 1
     ? institutions[0]
-    : institutions.find(el => el.institutionName === boxInstitutionName);
+    : institutions.find(el => el.institutionName === institutionsNames.BOX);
 
   return (
     <Wrapper>

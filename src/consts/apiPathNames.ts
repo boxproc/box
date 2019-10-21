@@ -1,4 +1,6 @@
-export const basePath = '/ui/';
+import config from 'config';
+
+export const basePath = `/${config.basePath}/`;
 
 export enum authPathNames {
   LOGIN = '/ui/auth/login',

@@ -12,13 +12,15 @@ const CheckBoxWrapper = styled(Flex)`
 `;
 
 interface RefreshCheckboxProps {
-  onClick?: () => void;
+  value: boolean;
+  onClick: () => void;
 }
 
 const RefreshCheckbox: React.FC<RefreshCheckboxProps> = ({
+  value,
   onClick,
 }) => {
-  const [isChecked, setIsChecked] = React.useState(false);
+  const [isChecked, setIsChecked] = React.useState(value);
 
   const handleClick = React.useCallback(
     () => {

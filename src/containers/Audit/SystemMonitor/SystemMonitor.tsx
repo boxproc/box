@@ -1,8 +1,16 @@
 import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
 import { CountDownTimer, ExternalLink, T2, Table } from 'components';
+
+import {
+  cookiesExpires,
+  systemMonitorInterval,
+  systemMonitorTables,
+  yesNoTypesCodes,
+} from 'consts';
 
 import {
   Collapse,
@@ -22,8 +30,9 @@ import {
   SystemMonitorSchedulerItem,
   SystemMonitorTransaction,
 } from 'store/domains';
+import { cookiesUtil, stringsUtil } from 'utils';
 
-interface SystemMonitorProps {
+interface SystemMonitorProps extends RouteComponentProps {
   getSystemMonitorData: HandleGetSystemMonitorData;
   resetSystemMonitor: ResetSystemMonitor;
   interfacesData: Array<SystemMonitorItem>;
@@ -49,11 +58,6 @@ interface SystemMonitorBlockProps {
   counts?: SystemMonitorCounts;
 }
 
-const refreshInterval = {
-  inSeconds: 60,
-  inMilliseconds: 60000,
-};
-
 const SystemMonitor: React.FC<SystemMonitorProps> = ({
   getSystemMonitorData,
   resetSystemMonitor,
@@ -68,64 +72,62 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   interfacesCounts,
   endpointsCounts,
   schedulerCounts,
+  location,
 }) => {
-  const [refreshedTables, setRefreshedTables] = React.useState([]);
+  const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
+  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
+
+  // get data for each table and reset it on unmount
+  React.useEffect(
+    () => {
+      getSystemMonitorData();
+      return () => resetSystemMonitor();
+    },
+    [getSystemMonitorData, resetSystemMonitor]
+  );
+
+  // get table names which have to be refreshed from cookies and set to state
+  React.useEffect(
+    () => {
+      const storedNames = [];
+
+      for (const table in systemMonitorTables) {
+        if (cookiesUtil.get(`${location.pathname}/${systemMonitorTables[table]}`)) {
+          storedNames.push(systemMonitorTables[table]);
+        }
+      }
+
+      setRefreshingTables(storedNames);
+
+      if (storedNames.length > 0) {
+        refreshCounter();
+      }
+    },
+    [location]
+  );
 
   const refreshCounter = () => {
     setIsCounter(false);
     setTimeout(() => setIsCounter(true), 50);
   };
 
-  const handleSetRefreshedTables = React.useCallback(
-    (tableName: string) => {
-      const hasTableName = refreshedTables.find(name => name === tableName);
-
-      if (!hasTableName) {
-        getSystemMonitorData([tableName]); // update current table
-        setRefreshedTables([...refreshedTables, tableName]);
-        refreshCounter();
-      } else {
-        setRefreshedTables(refreshedTables.filter(name => name !== tableName));
-        if (refreshedTables.length <= 1) {
-          setIsCounter(false);
-        } else {
-          refreshCounter();
-        }
-      }
-    },
-    [refreshedTables, getSystemMonitorData]
-  );
-
-  React.useEffect(
-    () => {
-      getSystemMonitorData();
-    },
-    [getSystemMonitorData]
-  );
-
+  // refresh each table which is in refreshingTables state
   React.useEffect(
     () => {
       const timer = isCounter && setInterval(
         () => {
-          getSystemMonitorData(refreshedTables);
+          getSystemMonitorData(refreshingTables);
           refreshCounter();
         },
-        refreshInterval.inMilliseconds
+        systemMonitorInterval.MILLISECONDS
       );
       return () => clearInterval(timer);
     },
-    [getSystemMonitorData, isCounter, refreshedTables]
+    [getSystemMonitorData, isCounter, refreshingTables]
   );
 
-  React.useEffect(
-    () => {
-      return () => resetSystemMonitor();
-    },
-    [resetSystemMonitor]
-  );
-
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
+  // update screen height for setting various number of table rows per page
   const updateWindowHeight = () => setScreenHeight(window.innerHeight);
 
   React.useEffect(
@@ -135,11 +137,44 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
     }
   );
 
-  const pagesCount = React.useMemo(
+  const tablePagesCount = React.useMemo(
     () => screenHeight < 750 ? 3
       : screenHeight < 850 ? 5
         : screenHeight < 950 ? 6 : 8,
     [screenHeight]
+  );
+
+  const handleSetRefreshingTables = React.useCallback(
+    (tableName: string) => {
+      const hasTableName = refreshingTables.find(name => name === tableName);
+
+      if (!hasTableName) {
+        getSystemMonitorData([tableName]); // update current table
+        setRefreshingTables([...refreshingTables, tableName]);
+        refreshCounter();
+      } else {
+        setRefreshingTables(refreshingTables.filter(name => name !== tableName));
+
+        if (refreshingTables.length <= 1) {
+          setIsCounter(false);
+        } else {
+          refreshCounter();
+        }
+      }
+
+      const storedTableName = `${location.pathname}/${tableName}`;
+
+      if (cookiesUtil.get(storedTableName)) {
+        cookiesUtil.remove(storedTableName);
+      } else {
+        cookiesUtil.set(
+          storedTableName,
+          JSON.stringify(yesNoTypesCodes.YES),
+          { expires: cookiesExpires.MONTH }
+        );
+      }
+    },
+    [refreshingTables, getSystemMonitorData, location]
   );
 
   const systemMonitorBlocks = React.useMemo(
@@ -147,7 +182,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       [
         {
           id: 1,
-          name: 'interfaces',
+          name: systemMonitorTables.INTERFACES,
           title: 'Interfaces',
           counts: interfacesCounts,
           isLoading: isLoadingInterfaces,
@@ -156,7 +191,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         },
         {
           id: 2,
-          name: 'lastTransactions',
+          name: systemMonitorTables.LAST_TRANSACTIONS,
           title: 'Last Transactions',
           isLoading: isLoadingLastTransactions,
           tableData: lastTransactionsData,
@@ -166,7 +201,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       [
         {
           id: 3,
-          name: 'endpoints',
+          name: systemMonitorTables.ENDPOINTS,
           title: 'Endpoints',
           counts: endpointsCounts,
           isLoading: isLoadingEndpoints,
@@ -175,7 +210,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         },
         {
           id: 4,
-          name: 'schedulerJobs',
+          name: systemMonitorTables.SCHEDULER_JOBS,
           title: 'Scheduler Jobs',
           counts: schedulerCounts,
           isLoading: isLoadingScheduler,
@@ -205,13 +240,15 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         <Box mb="15px" mr="15px">
           <ExternalLink
             text="HELP"
-            link=""
+            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
             grayStyle={true}
           />
         </Box>
         <T2>System Monitor</T2>
         <Box mb="12px" ml="12px">
-          {isCounter && (<CountDownTimer seconds={refreshInterval.inSeconds} />)}
+          {isCounter && (
+            <CountDownTimer seconds={systemMonitorInterval.SECONDS} />
+          )}
         </Box>
       </Flex>
       <Box mx="-20px">
@@ -236,14 +273,15 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                     )}
                     additionalTool={(
                       <RefreshCheckbox
-                        onClick={() => handleSetRefreshedTables(block.name)}
+                        onClick={() => handleSetRefreshingTables(block.name)}
+                        value={!!cookiesUtil.get(`${location.pathname}/${block.name}`)}
                       />
                     )}
                   >
                     <Table
                       data={block.tableData}
                       columns={block.columns}
-                      pageSize={pagesCount}
+                      pageSize={tablePagesCount}
                       isSmaller={true}
                     />
                   </Collapse>
@@ -257,4 +295,4 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   );
 };
 
-export default SystemMonitor;
+export default withRouter(SystemMonitor);

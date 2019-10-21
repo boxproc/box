@@ -45,8 +45,6 @@ export enum formNamesConst {
   AUDIT_API_CALL = 'auditApiCallForm',
 
   ADMIN_ENDPOINT = 'adminEndpointsForm',
-
   ADMIN_INTERFACE = 'adminInterfaceForm',
-
   ADMIN_INSTITUTIONS = 'adminInstitutionsForm',
 }

@@ -1,3 +1,5 @@
+import { systemMonitorTables } from 'consts';
+
 import {
   ActionTypeKeys,
   GetSystemMonitorEndpointsAction,
@@ -46,19 +48,19 @@ export const resetSystemMonitor: ResetSystemMonitor = () => ({
 
 const actions = [
   {
-    name: 'interfaces',
+    name: systemMonitorTables.INTERFACES,
     action: getSystemMonitorInterfaces,
   },
   {
-    name: 'endpoints',
+    name: systemMonitorTables.ENDPOINTS,
     action: getSystemMonitorEndpoints,
   },
   {
-    name: 'schedulerJobs',
+    name: systemMonitorTables.SCHEDULER_JOBS,
     action: getSystemMonitorScheduler,
   },
   {
-    name: 'lastTransactions',
+    name: systemMonitorTables.LAST_TRANSACTIONS,
     action: getSystemMonitorLastTransactions,
   },
 ];
