@@ -29,6 +29,14 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
       color: ${({ theme }) => theme.colors.gray};
     }
   }
+
+  .gray {
+    color: ${({ theme }) => theme.colors.gray};
+  }
+
+  .code {
+    font-family: ${({ theme }) => theme.fonts.code};
+  }
 `;
 
 interface ContextMenuListProps {
@@ -79,7 +87,15 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
                   {item.icon && (
                     <span className="icon">{renderIcon(item.icon)}</span>
                   )}
-                  <span>{item.name}</span>
+                  <span>
+                    {item.name}
+                    {item.dataType && (
+                      <span className="gray code"> {item.dataType.toLocaleLowerCase()} </span>
+                    )}
+                    {item.description && (
+                      <span className="gray"> {item.description}</span>
+                    )}
+                  </span>
                 </div>
               </MenuItem>
             );

@@ -1,5 +1,7 @@
 export interface ContextMenuItem {
   name: string;
+  description?: string;
+  dataType?: string;
   icon?: string;
   withConfirmation?: boolean;
   confirmationTitle?: string;
