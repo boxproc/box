@@ -1,5 +1,5 @@
 const {
-  NODE_ENV: mode = 'production',
+  NODE_ENV: mode = 'development',
 } = process.env;
 
 const environment = {
@@ -15,7 +15,6 @@ interface Config {
   isDevelopment: boolean;
   apiUrl: string;
   apiHost: string;
-  basePath: string;
 }
 
 let config: Config;
