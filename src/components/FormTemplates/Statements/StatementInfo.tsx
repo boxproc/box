@@ -7,6 +7,8 @@ import { Hr, InputField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
 
+import { formErrorUtil } from 'utils';
+
 interface StatementInfoProps {
   isDisabled?: boolean;
 }
@@ -55,9 +57,10 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             component={InputField}
             label="Statement Date"
             placeholder={dateFormat.DATE}
+            maskPlaceholder={dateFormat.DATE}
             mask={maskFormat.DATE}
-            maskChar={null}
             readOnly={isDisabled}
+            validate={[formErrorUtil.isDate]}
           />
         </Box>
         <Hr />

@@ -1,3 +1,7 @@
+import moment from 'moment';
+
+import { dateFormat } from 'consts';
+
 export const required = (value: string) =>
   value || (typeof value === 'number' && value === 0) ? undefined : true;
 
@@ -14,3 +18,9 @@ export const isInteger = (value: number) =>
 
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;
+
+export const isDateTime = (value: string) =>
+  moment(value, dateFormat.DATE_TIME, true).isValid() ? undefined : 'Incorrect date';
+
+export const isDate = (value: string) =>
+  moment(value, dateFormat.DATE, true).isValid() ? undefined : 'Incorrect date';

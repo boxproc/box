@@ -8,6 +8,7 @@ import { Label } from 'components/Text';
 import { componentUtil } from 'utils';
 
 export const InputFieldWrapper = styled.div`
+  position: relative;
   width: 100%;
   text-align: left;
   position: relative;
@@ -22,8 +23,12 @@ export const InputFieldWrapper = styled.div`
 `;
 
 const ErrorWrapper = styled.div`
-  margin-top: 3px;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  padding-top: 3px;
   font-size: 10px;
+  line-height: 1px
   color: ${({ theme }) => theme.colors.red};
 `;
 
@@ -110,14 +115,16 @@ export const withFormField = <OriginalProps extends {}>(
       );
     }
 
-    renderComponent = (invalid: boolean) => (
-      <Component
-        {...this.props.input}
-        {...this.props}
-        invalid={invalid}
-        onBlur={this.onBlur}
-      />
-    )
+    renderComponent = (invalid: boolean) => {
+      return (
+        <Component
+          {...this.props.input}
+          {...this.props}
+          invalid={invalid}
+          onBlur={this.onBlur}
+        />
+      );
+    }
 
     onBlur = () =>
       this.props.preventBlur

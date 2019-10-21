@@ -31,9 +31,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
       title={`Edit User Group${groupName}`}
       minContainerHeight={550}
     >
-      <EditUserGroupForms
-        onCancel={handleOnCancel}
-      />
+      <EditUserGroupForms onCancel={handleOnCancel} />
     </Modal>
   );
 };

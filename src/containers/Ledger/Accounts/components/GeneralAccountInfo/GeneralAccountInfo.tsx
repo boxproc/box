@@ -169,9 +169,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Date of Product Override"
               placeholder={dateFormat.DATE}
-              mask={maskFormat.DATE_TIME}
-              maskChar={null}
+              maskPlaceholder={dateFormat.DATE}
+              mask={maskFormat.DATE}
               readOnly={true}
+              validate={[formErrorUtil.isDate]}
             />
           </Box>
         )}

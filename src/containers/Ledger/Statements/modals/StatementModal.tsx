@@ -28,7 +28,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       title="Statement"
       closeOnBackdrop={true}
       maxContainerWidth={1100}
-      minContainerHeight={375}
+      minContainerHeight={500}
     >
       <Tabs>
         <TabsPanel title="Totals">

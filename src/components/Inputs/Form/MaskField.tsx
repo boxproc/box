@@ -18,6 +18,7 @@ interface MaskFieldProps extends InputCommonProps {
   fieldClassName?: string;
   mask: string;
   maskChar?: string | null;
+  maskPlaceholder?: string;
   formatChars?: { [key: string]: string };
   alwaysShowMask?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
@@ -33,10 +34,14 @@ const MaskField: React.FC<MaskFieldProps> = ({
   invalid,
   fieldClassName,
   ...props
-}) => (
+}) => {
+  return (
     <Wrapper invalid={invalid}>
-      <ReactInputMask {...props} />
+      <ReactInputMask
+        {...props}
+      />
     </Wrapper>
   );
+};
 
 export default withFormField(MaskField);

@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CalendarField, Hr, InputField, MaskField, SelectField, T4 } from 'components';
+import { Hr, InputField, MaskField, SelectField, T4 } from 'components';
 
 import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'HOCs';
 
@@ -93,10 +93,12 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           <Field
             id="dateOfBirth"
             name="dateOfBirth"
-            component={CalendarField}
+            component={MaskField}
             label="Date of Birth"
             placeholder={dateFormat.DATE}
-            validate={[formErrorUtil.required]}
+            maskPlaceholder={dateFormat.DATE}
+            validate={[formErrorUtil.required, formErrorUtil.isDate]}
+            mask={maskFormat.DATE}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -113,11 +115,9 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"
-            component={MaskField}
+            component={InputField}
             label="Mobile Phone Number"
-            placeholder="Enter Mobile Phone Number"
-            mask={maskFormat.PHONE}
-            maskChar={null}
+            placeholder="Enter Phone Number"
             validate={[formErrorUtil.required]}
           />
         </Box>

@@ -69,9 +69,9 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
       <Box width="200px" p="10px" >
@@ -81,9 +81,9 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
     </React.Fragment>
