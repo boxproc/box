@@ -167,9 +167,11 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     number_of_times_overdue_7_cycle,
   } = values;
 
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
   return {
     id,
-    status: statusTypesOptions.find(el => el.value === status).label,
+    status: currentStatus && currentStatus.label,
     accountAlias: account_alias,
     accountAliasAdditional: account_alias_additional,
     customerId: customer_id,

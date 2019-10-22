@@ -22,9 +22,11 @@ export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
   selectInstitutionsOptions,
   (items, institutions) => items && items.map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...preparedValuesToRender(item),
-      institutionId: institutions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
     };
   })
 );

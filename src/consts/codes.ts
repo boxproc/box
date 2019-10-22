@@ -74,6 +74,7 @@ export const endpointsOptions = [
 export const typeOfInterfacesCodes = [
   { value: 'T', label: 'Tribe card processing' },
   { value: 'U', label: 'Tutuka card processing' },
+  { value: 'Q', label: 'QRails card management interface' },
 ];
 
 export const protocolTypesOptions = [

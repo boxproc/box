@@ -49,6 +49,7 @@ export const prepareUpdateCardServiceValuesPrepared =
     if (!values) {
       return null;
     }
+
     const endpointId = values.endpoints.value;
     const interfaceId = values.interfaces.value;
 
@@ -60,13 +61,17 @@ export const prepareUpdateCardServiceValuesPrepared =
   };
 
 export const prepareGeneralProductItem = (item: ProductItemResp) => {
+  const status = statusTypesOptions.find(el => el.value === item.status);
+  const productType = productTypesOptions.find(el => el.value === item.product_type);
+  const scheme = schemeTypesOptions.find(el => el.value === item.scheme);
+
   return {
     id: item.id,
     name: item.name,
     description: item.description,
-    status: statusTypesOptions.find(el => el.value === item.status).label,
-    productType: productTypesOptions.find(el => el.value === item.product_type).label,
-    scheme: schemeTypesOptions.find(el => el.value === item.scheme).label,
+    status: status && status.label,
+    productType: productType && productType.label,
+    scheme: scheme && scheme.label,
     historyRetentionNumberOfDay: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
     defaultStatementCycle: item.statement_cycle_description,
@@ -145,9 +150,9 @@ export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) 
     feeUnpaid: product.fee_unpaid && product.fee_unpaid.toFixed(2),
     feeOverLimit: product.fee_over_limit && product.fee_over_limit.toFixed(2),
     minimumPaymentPercent: product.minimum_payment_percent &&
-     product.minimum_payment_percent.toFixed(2),
+      product.minimum_payment_percent.toFixed(2),
     minimumPaymentAmount: product.minimum_payment_amount &&
-     product.minimum_payment_amount.toFixed(2),
+      product.minimum_payment_amount.toFixed(2),
     paymentGraceNumberOfDays: product.payment_grace_number_of_days,
     limitSharingAllowedFlag:
       product.limit_sharing_allowed_flag === yesNoTypesCodes.YES ? true : false,
@@ -179,11 +184,11 @@ export const prepareSavings = (product: SavingsProductItemResp) => {
     productId: product.product_id,
     apr: product.apr,
     minimumDepositAllowed: product.minimum_deposit_allowed &&
-     product.minimum_deposit_allowed.toFixed(2),
+      product.minimum_deposit_allowed.toFixed(2),
     maximumDepositAllowed: product.maximum_deposit_allowed &&
-    product.maximum_deposit_allowed.toFixed(2),
+      product.maximum_deposit_allowed.toFixed(2),
     maximumMonthlyDeposit: product.maximum_monthly_deposit &&
-    product.maximum_monthly_deposit.toFixed(2),
+      product.maximum_monthly_deposit.toFixed(2),
     savingsType: savingsTypesOptions.find(el => el.value === product.savings_type),
   };
 };
@@ -296,27 +301,27 @@ export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
 };
 
 export const prepareProductRuleValuesToSend = (rule: Partial<ProductRulesItem>) => {
-    if (!rule) {
-      return null;
-    }
+  if (!rule) {
+    return null;
+  }
 
-    const { description, eventId, actionType, script } = rule;
+  const { description, eventId, actionType, script } = rule;
 
-    return {
-      description,
-      event_id: eventId && eventId.value,
-      action_type: actionType && actionType.value,
-      script: script ? script : null,
-    };
+  return {
+    description,
+    event_id: eventId && eventId.value,
+    action_type: actionType && actionType.value,
+    script: script ? script : null,
   };
+};
 
 export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => {
-    if (!data) {
-      return null;
-    }
+  if (!data) {
+    return null;
+  }
 
-    return {
-      event_id: data.eventId && data.eventId.value,
-      action_type: data.actionType && data.actionType.value,
-    };
+  return {
+    event_id: data.eventId && data.eventId.value,
+    action_type: data.actionType && data.actionType.value,
   };
+};

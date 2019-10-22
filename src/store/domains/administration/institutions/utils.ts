@@ -24,10 +24,12 @@ export const prepareValuesToRender = (values: Partial<AdminInstitutionsItem>) =>
     return null;
   }
 
+  const status = statusTypesOptions.find(el => el.value === values.status);
+
   return {
     id: values.id,
     name: values.name,
-    status: statusTypesOptions.find(el => el.value === values.status).label,
+    status: status && status.label,
     sftpLocation: values.sftp_location,
     sftpPublicKey: values.sftp_public_key,
   };

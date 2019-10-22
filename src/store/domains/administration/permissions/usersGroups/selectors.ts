@@ -57,12 +57,12 @@ export const selectAdminUserGroupMembers = createSelector(
 export const selectAdminGroupPermissionsItems = createSelector(
   selectAdminGroupPermissions,
   items => items && items.map(item => {
+    const permission = permissionTypesOptions.find(el => el.value === item.permission);
+
     return {
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
-      permission:
-        permissionTypesOptions.find(el => el.value === item.permission)
-        && permissionTypesOptions.find(el => el.value === item.permission).label,
+      permission: permission && permission.label,
     };
   })
 );
@@ -70,10 +70,12 @@ export const selectAdminGroupPermissionsItems = createSelector(
 export const selectAdminGroupPermissionsItem = createSelector(
   selectAdminGroupPermissions,
   items => items && items.map(item => {
+    const permission = permissionTypesOptions.find(el => el.value === item.permission);
+
     return {
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
-      permission: permissionTypesOptions.find(el => el.value === item.permission).value,
+      permission: permission && permission.value,
     };
   })
 );

@@ -16,9 +16,11 @@ export const selectLedgerStatements = createSelector(
   selectDefaultLedgerStatements,
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...prepareValuesToRender(item),
-      institutionId: institutions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
     };
   })
 );

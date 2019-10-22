@@ -12,10 +12,11 @@ export const selectAdminSchedulerJobsItems = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
   (items, institutionsOptions) => items && items.asMutable().map(item => {
+    const institution = institutionsOptions.find(el => el.value === item.institution_id);
+
     return {
       ...prepareValuesToRender(item),
-      institutionId: institutionsOptions.find(el => el.value === item.institution_id)
-        && institutionsOptions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
     };
   })
 );

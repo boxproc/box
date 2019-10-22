@@ -52,11 +52,13 @@ export const prepareValuesToRender = (values: Partial<LedgerCustomerItem>) => {
     return null;
   }
 
+  const status = customerStatusTypesOptions.find(el => el.value === values.status);
+
   return {
     id: values.id,
     firstName: values.first_name,
     lastName: values.last_name,
-    status: customerStatusTypesOptions.find(el => el.value === values.status).label,
+    status: status && status.label,
     dateOfBirth: values.date_of_birth,
     email: values.email,
     mobilePhoneNumber: values.mobile_phone_number,

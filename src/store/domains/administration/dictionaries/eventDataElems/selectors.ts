@@ -14,12 +14,13 @@ export const selectDictionaryEventDataElemsItems = createSelector(
   selectDictionaryEventsItems,
   (dataElems, events) => dataElems && dataElems.asMutable().map(item => {
     const itemEvent = events.find(event => event.id === item.event_id);
+    const dataType = dataTypesOptions.find(el => el.value === item.data_type);
 
     return {
       name: item.name,
       description: item.description,
       eventId: item.event_id,
-      dataType: dataTypesOptions.find(el => el.value === item.data_type).label,
+      dataType: dataType && dataType.label,
       event: itemEvent && itemEvent.name,
     };
   })

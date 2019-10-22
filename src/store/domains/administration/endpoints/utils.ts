@@ -39,11 +39,14 @@ export const preparedValuesToRender = (values: Partial<AdminEndpointItem>) => {
   if (!values) {
     return null;
   }
+  const status = statusTypesOptions.find(el => el.value === values.status);
+  const type = endpointsOptions.find(el => el.value === values.type);
+
   return {
     id: values.id,
     name: values.name,
-    status: statusTypesOptions.find(el => el.value === values.status).label,
-    type: endpointsOptions.find(el => el.value === values.type).label,
+    status: status && status.label,
+    type: type && type.label,
     port: values.port,
     privateKeyLocation: values.private_key_location,
     connectionAttributes: values.connection_attributes,

@@ -12,9 +12,11 @@ export const selectAdminEndpoints = createSelector(
   selectDefaultAdminEndpoints,
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...preparedValuesToRender(item),
-      institutionId: institutions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
     };
   })
 );
