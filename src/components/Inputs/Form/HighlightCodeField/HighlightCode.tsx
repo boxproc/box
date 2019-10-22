@@ -3,7 +3,12 @@ import Editor from 'react-simple-code-editor';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import jslint from 'libs/jslint';
+
 import { highlight, languages } from 'prismjs/components/prism-core';
+import { EditorWrapper } from './EditorWrapper';
+
+import { Box, Flex } from '@rebass/grid';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
@@ -12,63 +17,18 @@ import styled from 'theme';
 
 import './prism.css';
 
-interface WrapperProps {
-  height?: string;
-  whiteSpacePre?: boolean;
-}
+import { ContextMenuList, WarningIcon } from 'components';
+import { ContextMenuTrigger } from 'react-contextmenu';
 
-export const Wrapper = styled.div<WrapperProps>`
-  padding: 0;
-  height: ${({ height }) => height ? height : '220px'};
-  border: 1px solid ${({ theme }) => theme.colors.gray};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: 2px;
-  font-size: 13px;
-  line-height: 1.7;
-  overflow: auto;
+const WarningIconWrapper = styled(WarningIcon)`
+  color: ${({ theme }) => theme.colors.normalAccent};
+`;
 
-  * {
-    font-family: ${({ theme }) => theme.fonts.code};
-  }
-
-  &.is-focus {
-    border-color: ${({ theme }) => theme.colors.normalAccent};
-  }
-
-  textarea {
-    background-color: ${({ theme }) => theme.colors.white} !important;
-
-    &::-moz-selection {
-      background-color: ${({ theme }) => theme.colors.lightGray};
-    }
-
-    &::selection {
-      background-color: ${({ theme }) => theme.colors.lightGray};
-    }
-  }
-
-  textarea::placeholder {
-    color: ${({ theme }) => theme.colors.gray};
-  }
-
-  pre {
-    word-break: break-word !important;
-    line-height: 1.7;
-  }
-
-  textarea,
-  pre {
-    min-height: ${({ height }) => height ? `calc(${height} - 2px)` : '218px'};
-
-    ${({ whiteSpacePre }) => whiteSpacePre && `
-      white-space: pre !important;
-    `}
-  }
-
-  .editor {
-    float: left;
-    min-width: 100%;
-  }
+const WarningsWrapper = styled.div`
+  padding-top: 10px;
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  user-select: text;
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
@@ -76,6 +36,11 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   height?: string;
   whiteSpacePre?: boolean;
   isScrollbarBottom?: boolean;
+  contextMenuItems?: any;
+  onContextMenuClick?: any;
+  menuId?: string;
+  noDataStr?: string;
+  checkJSSyntax?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -88,7 +53,14 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   height,
   whiteSpacePre,
   isScrollbarBottom,
+  contextMenuItems,
+  onContextMenuClick,
+  menuId,
+  noDataStr,
+  checkJSSyntax,
 }) => {
+  const [codeWarnings, setCodeWarnings] = React.useState([]);
+
   React.useEffect(
     () => {
       if (isScrollbarBottom) {
@@ -100,6 +72,18 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
       }
     },
     [isScrollbarBottom]
+  );
+
+  React.useEffect(
+    () => {
+      const warnings = jslint(value.toString()).warnings;
+      const warningsList = warnings.map((warning: { message: string }) => warning.message);
+
+      if (checkJSSyntax) {
+        setCodeWarnings(warningsList);
+      }
+    },
+    [value, checkJSSyntax]
   );
 
   const wrapperRef = React.useRef(null);
@@ -118,31 +102,57 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   };
 
   return (
-    <Wrapper
-      ref={wrapperRef}
-      height={height}
-      whiteSpacePre={whiteSpacePre}
-    >
-      <PerfectScrollbar className="scrollbar-editor-wrapper">
-        <Editor
-          value={value.toString()}
-          onValueChange={handleChange}
-          highlight={code => highlight(code, languages.js)}
-          textareaId={id}
-          name={name}
-          placeholder={placeholder}
-          padding={10}
-          onFocus={addFocusClass}
-          onBlur={removeFocusClass}
-          className="editor"
-          style={{
-            overflow: 'visible',
-            fontFamily: '"Roboto Mono", monospace',
-            fontSize: fontSize ? fontSize : 13,
-          }}
-        />
-      </PerfectScrollbar>
-    </Wrapper>
+    <React.Fragment>
+      <EditorWrapper
+        ref={wrapperRef}
+        height={height}
+        whiteSpacePre={whiteSpacePre}
+      >
+        <PerfectScrollbar className="scrollbar-editor-wrapper">
+          <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
+            <Editor
+              value={value.toString()}
+              onValueChange={handleChange}
+              highlight={code => highlight(code, languages.js)}
+              textareaId={id}
+              name={name}
+              placeholder={placeholder}
+              padding={10}
+              onFocus={addFocusClass}
+              onBlur={removeFocusClass}
+              className="editor"
+              tabSize={4}
+              style={{
+                overflow: 'visible',
+                fontFamily: '"Roboto Mono", monospace',
+                fontSize: fontSize ? fontSize : 13,
+              }}
+            />
+          </ContextMenuTrigger>
+          {contextMenuItems && (
+            <ContextMenuList
+              menuId={menuId}
+              onClick={onContextMenuClick}
+              items={contextMenuItems}
+              noDataStr={noDataStr}
+            />
+          )}
+        </PerfectScrollbar>
+      </EditorWrapper>
+      {codeWarnings && codeWarnings.length && (
+        <WarningsWrapper>
+          {codeWarnings.map((warning: string, index: number) => (
+            <Flex
+              key={index}
+              alignItems="center"
+            >
+              <WarningIconWrapper size="12" />
+              <Box ml="7px">{warning}</Box>
+            </Flex>
+          ))}
+        </WarningsWrapper>
+      )}
+    </React.Fragment>
   );
 };
 

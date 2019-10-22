@@ -84,8 +84,8 @@ export interface SystemMonitorTransactionItem {
   transaction_datetime: string;
 }
 
-export interface SystemMonitorTransactionData {
-  transaction: SystemMonitorTransactionItem;
+export interface SystemMonitorTransactionsData {
+  transactions: Array<SystemMonitorTransactionItem>;
 }
 
 export interface SystemMonitorState {
@@ -104,5 +104,5 @@ export interface SystemMonitorState {
     total_active_scheduler_jobs: number;
     total_faulty_scheduler_jobs: number;
   };
-  lastTransactions: SystemMonitorTransactionItem;
+  lastTransactions: ImmutableArray<SystemMonitorTransactionItem>;
 }

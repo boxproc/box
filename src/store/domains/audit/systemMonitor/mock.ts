@@ -2,7 +2,7 @@ import {
   SystemMonitorEndpointsData,
   SystemMonitorInterfacesData,
   SystemMonitorSchedulerData,
-  SystemMonitorTransactionData,
+  SystemMonitorTransactionsData,
 } from './types';
 
 export const systemMonitorInterfaces: SystemMonitorInterfacesData = {
@@ -76,10 +76,12 @@ export const systemMonitorScheduler: SystemMonitorSchedulerData = {
   },
 };
 
-export const systemMonitorLastTransactions: SystemMonitorTransactionData = {
-  transaction: {
-    institution_id: 1,
-    institution_name: 'BOX Institution',
-    transaction_datetime: '2019-10-16 13:49:31',
-  },
+export const systemMonitorLastTransactions: SystemMonitorTransactionsData = {
+  transactions: [
+    {
+      institution_id: 1,
+      institution_name: 'BOX Institution',
+      transaction_datetime: '2019-10-16 13:49:31',
+    },
+  ],
 };

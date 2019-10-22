@@ -63,7 +63,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   validateOnChange,
   fieldClassName = '',
   showErrors = true,
-  focusOnLabelClick = true,
+  focusOnLabelClick = false,
   invalid: defaultInvalid,
   meta: {
     touched,

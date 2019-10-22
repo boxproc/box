@@ -26,7 +26,7 @@ const auditSystemMonitorReducer = (
       return state.set('scheduler', action.payload.system_monitor_scheduler_jobs);
 
     case ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED:
-      return state.set('lastTransactions', action.payload.transaction);
+      return state.set('lastTransactions', action.payload.transactions);
 
     case ActionTypeKeys.RESET_SYSTEM_MONITOR:
       return state = systemMonitorInitialState;

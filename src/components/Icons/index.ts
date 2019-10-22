@@ -19,6 +19,7 @@ import { Delete as DeleteIcon } from 'styled-icons/material/Delete';
 import { ShortText as ShortTextIcon } from 'styled-icons/material/ShortText';
 import { Smartphone as SmartphoneIcon } from 'styled-icons/material/Smartphone';
 import { Stop as StopIcon } from 'styled-icons/material/Stop';
+import { Warning as WarningIcon } from 'styled-icons/material/Warning';
 import { CheckedBoxIcon, UncheckedBoxIcon } from './Icons';
 
 export {
@@ -45,4 +46,5 @@ export {
   InfoCircleIcon,
   StopIcon,
   ShortTextIcon,
+  WarningIcon,
 };

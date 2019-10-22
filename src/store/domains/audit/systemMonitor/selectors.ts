@@ -127,10 +127,12 @@ export const selectSystemMonitorLastTransactions = createSelector(
     if (!transactions) {
       return [];
     } else {
-      return [{
-        institutionName: transactions && transactions.institution_name,
-        institutionId: transactions && transactions.institution_id,
-        transactionDatetime: transactions && transactions.transaction_datetime,
-      }];
+      return transactions.asMutable().map(transaction => {
+        return {
+          institutionName: transaction && transaction.institution_name,
+          institutionId: transaction && transaction.institution_id,
+          transactionDatetime: transaction && transaction.transaction_datetime,
+        };
+      });
     }
   });

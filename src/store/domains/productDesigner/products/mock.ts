@@ -95,21 +95,10 @@ export const productRulesData: ProductRuleResp = {
     // tslint:disable-next-line: max-line-length
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     event_id: 3,
-    action_type: 'V',
+    action_type: 'X',
     script:
-      `class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
-    );
-  }
+      `function test(a, b) {
+    return a + b;
 }`,
     product_id: 1,
   },

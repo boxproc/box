@@ -3,7 +3,7 @@ import {
   SystemMonitorEndpointsData,
   SystemMonitorInterfacesData,
   SystemMonitorSchedulerData,
-  SystemMonitorTransactionData,
+  SystemMonitorTransactionsData,
 } from './types';
 
 export enum ActionTypeKeys {
@@ -85,7 +85,7 @@ export interface GetSystemMonitorLastTransactionsAction {
 }
 
 export interface GetSystemMonitorLastTransactionsFulfilledAction {
-  readonly payload: SystemMonitorTransactionData;
+  readonly payload: SystemMonitorTransactionsData;
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED;
 }
 
