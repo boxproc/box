@@ -6,6 +6,7 @@ import MessageModal from 'containers/Modals//MessageModal';
 import ChangeProfileModal from 'containers/Modals/ChangeProfileModal';
 import ConfirmationModal from 'containers/Modals/ConfirmationModal';
 import LoginCode2faModal from 'containers/Modals/LoginCode2faModal';
+import LogModal from 'containers/Modals/LogModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
 
 import { cycleEditorModals } from 'containers/Administration/Cycles/CyclesEditor/modals';
@@ -32,6 +33,10 @@ export const modalsList = [
   {
     name: modalNamesConst.CONFIRMATION_MODAL,
     component: <ConfirmationModal />,
+  },
+  {
+    name: modalNamesConst.LOG_MODAL,
+    component: <LogModal />,
   },
   {
     name: modalNamesConst.REGISTER_2FA_MODAL,

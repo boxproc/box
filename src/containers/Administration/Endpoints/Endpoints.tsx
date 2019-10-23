@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -12,16 +12,19 @@ import {
   AdminEndpointItemPrepared,
   HandleDeleteAdminEndpoint,
   HandleFilterAdminEndpoint,
+  HandleGetEndpointLogData,
   ResetEndpoints,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
 export interface EndpointsProps {
-  adminEndpointItems: Array<AdminEndpointItemPrepared>;
-  deleteEndpoint: HandleDeleteAdminEndpoint;
   adminCurrentEndpointName: string;
-  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  currentEndPointId: number;
+  adminEndpointItems: Array<AdminEndpointItemPrepared>;
   institutionsOptions: Array<SelectValues>;
+  deleteEndpoint: HandleDeleteAdminEndpoint;
+  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  getEndpointLogData: HandleGetEndpointLogData;
   resetEndpoints: ResetEndpoints;
 }
 
@@ -30,7 +33,9 @@ const Endpoints: React.FC<EndpointsProps> = ({
   deleteEndpoint,
   filterAdminEndpoint,
   adminCurrentEndpointName,
+  currentEndPointId,
   institutionsOptions,
+  getEndpointLogData,
   resetEndpoints,
 }) => {
   React.useEffect(
@@ -43,14 +48,19 @@ const Endpoints: React.FC<EndpointsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.SHOW_LOG,
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getEndpointLogData(currentEndPointId),
+      },
+      {
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteEndpoint,
         withConfirmation: true,
         confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
       },
     ],
-    [deleteEndpoint, adminCurrentEndpointName]
+    [deleteEndpoint, adminCurrentEndpointName, getEndpointLogData, currentEndPointId]
   );
 
   return (

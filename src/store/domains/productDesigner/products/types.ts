@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, SelectValues } from 'types';
 
 interface ProductItemInfoPlain extends IdNamePair { }
 
@@ -21,11 +21,11 @@ export interface ProductItemResp extends ProductItemPlainResp {
   overrides_product_id?: number;
 }
 
-export interface ProductsDataResp extends ResponseStatusType {
+export interface ProductsDataResp {
   products: Array<ProductItemResp>;
 }
 
-export interface ProductDataResp extends ResponseStatusType {
+export interface ProductDataResp {
   product: ProductItemResp;
 }
 
@@ -83,7 +83,7 @@ export interface RevolvingCreditProductItemResp {
   limit_sharing_allowed_flag: string;
 }
 
-export interface RevolvingCreditProductResp extends ResponseStatusType {
+export interface RevolvingCreditProductResp {
   product: RevolvingCreditProductItemResp;
 }
 
@@ -112,7 +112,7 @@ export interface LoanProductItemResp {
   payment_grace_number_of_days: number;
 }
 
-export interface LoanProductResp extends ResponseStatusType {
+export interface LoanProductResp {
   product: LoanProductItemResp;
 }
 
@@ -131,7 +131,7 @@ export interface PrepaidProductItemResp {
   reload_allowed: string;
 }
 
-export interface PrepaidProductResp extends ResponseStatusType {
+export interface PrepaidProductResp {
   product: PrepaidProductItemResp;
 }
 
@@ -148,7 +148,7 @@ export interface DebitProductItemResp {
   overdraft_allowed: string;
 }
 
-export interface DebitProductResp extends ResponseStatusType {
+export interface DebitProductResp {
   product: DebitProductItemResp;
 }
 
@@ -167,7 +167,7 @@ export interface SavingsProductItemResp {
   maximum_monthly_deposit: number;
 }
 
-export interface SavingsProductResp extends ResponseStatusType {
+export interface SavingsProductResp {
   product: SavingsProductItemResp;
 }
 
@@ -213,7 +213,7 @@ export type NewProduct = ProductItemDetails & ProductItemGeneral;
 
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
-export interface ProductRuleResp extends ResponseStatusType {
+export interface ProductRuleResp {
   product_rule: ProductRulesItemResp;
 }
 
@@ -237,7 +237,7 @@ export interface ProductRuleRequestPrepared {
   action_type?: number | string;
 }
 
-export interface InstitutionProducts extends ResponseStatusType {
+export interface InstitutionProducts {
   institution_products: Array<ProductItemInfoPlain>;
 }
 

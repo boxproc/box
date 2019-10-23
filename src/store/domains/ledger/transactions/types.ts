@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 export interface LedgerTransactionId {
   id: number;
@@ -31,7 +31,7 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   transaction_type_description: string;
 }
 
-export interface LedgerTransactionItems extends ResponseStatusType {
+export interface LedgerTransactionItems {
   transactions: Array<LedgerTransactionItem>;
 }
 

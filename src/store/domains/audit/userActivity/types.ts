@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface PlainInfo {
   id: number;
@@ -50,11 +50,11 @@ export interface AuditUserActivitySelectInstitutionResponse {
   last_name: string;
 }
 
-export interface AuditUsersDataResp extends ResponseStatusType {
+export interface AuditUsersDataResp {
   users_activity: Array<AuditUserActivitySelectInstitutionResponse>;
 }
 
-export interface AuditUserActivityDataResp extends ResponseStatusType {
+export interface AuditUserActivityDataResp {
   users_activity: Array<AuditUserActivityItemResp>;
 }
 

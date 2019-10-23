@@ -1,9 +1,9 @@
-import { ApiResponse, ResponseStatusType } from 'types';
+import { ApiResponse, LogData, ResponseStatusType } from 'types';
 import { AdminInterfaceItems } from './types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_INTERFACE = 'administration/interfaces/ADD_ADMIN_INTERFACE',
-  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_ENDPOINT_FULFILLED',
+  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_INTERFACE_FULFILLED',
   ADD_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
 
   DELETE_ADMIN_INTERFACE = 'administration/interfaces/DELETE_ADMIN_INTERFACE',
@@ -17,6 +17,10 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
   FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
   FILTER_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_REJECTED',
+
+  GET_INTERFACE_LOG_DATA = 'administration/interfaces/GET_INTERFACE_LOG_DATA',
+  GET_INTERFACE_LOG_DATA_FULFILLED = 'administration/interfaces/GET_INTERFACE_LOG_DATA_FULFILLED',
+  GET_INTERFACE_LOG_DATA_REJECTED = 'administration/interfaces/GET_INTERFACE_LOG_DATA_REJECTED',
 
   RESET_INTERFACES = 'administration/interfaces/RESET_INTERFACES',
 }
@@ -82,6 +86,21 @@ export interface FilterAdminInterfaceRejectedAction {
   readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE_REJECTED;
 }
 
+export interface GetInterfaceLogDataAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_INTERFACE_LOG_DATA;
+}
+
+export interface GetInterfaceLogDataFulfilledAction {
+  readonly payload: LogData;
+  readonly type: ActionTypeKeys.GET_INTERFACE_LOG_DATA_FULFILLED;
+}
+
+export interface GetInterfaceLogDataRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_INTERFACE_LOG_DATA_REJECTED;
+}
+
 export interface ResetInterfacesAction {
   readonly type: ActionTypeKeys.RESET_INTERFACES;
 }
@@ -91,4 +110,5 @@ export type AdminInterfacesActionTypes =
   | DeleteAdminInterfaceFulfilledAction
   | FilterAdminInterfaceFulfilledAction
   | UpdateAdminInterfaceFulfilledAction
+  | GetInterfaceLogDataFulfilledAction
   | ResetInterfacesAction;

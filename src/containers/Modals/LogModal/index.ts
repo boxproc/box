@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 
-import Modals from './Modals';
+import LogModal from './LogModal';
 
-import { selectModalsStateList } from 'store/domains';
-
+import { selectPayloadLogModal } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  modalsStateList: selectModalsStateList(state),
+  data: selectPayloadLogModal(state),
 });
 
 export default connect(
   mapStateToProps
-)(Modals);
+)(LogModal);

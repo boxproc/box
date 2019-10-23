@@ -7,25 +7,34 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-interface ShowLogFileModalProps extends WithModalProps {
-  schedulerName: string;
-  logFile: string;
+import { PayloadLogModal } from 'store/domains';
+
+interface LogModalProps extends WithModalProps {
+  data: PayloadLogModal;
 }
 
-const modalName = modalNamesConst.SHOW_SCHEDULER_LOG_FILE;
+const modalName = modalNamesConst.LOG_MODAL;
 
-const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
+const LogModal: React.FC<LogModalProps> = ({
+  data,
   closeModal,
-  schedulerName,
-  logFile,
 }) => {
+  const currentName = React.useMemo(
+    () => data.title ? `: "${data.title}"` : '',
+    [data]
+  );
+
+  const preparedLogData = React.useMemo(
+    () => data.logData
+      ? data.logData.split('\\n').join('\n').trim()
+      : '',
+    [data]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
-
-  const currentName = schedulerName ? `: "${schedulerName}"` : '';
-  const preparedLogFile = logFile.split('\\n').join('\n').trim();
 
   return (
     <Modal
@@ -35,7 +44,7 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
       containerHeightFull={true}
     >
       <HighlightCode
-        value={preparedLogFile}
+        value={preparedLogData}
         height="calc(100vh - 150px)"
         fontSize={8.5}
         whiteSpacePre={true}
@@ -53,4 +62,4 @@ const ShowLogFileModal: React.FC<ShowLogFileModalProps> = ({
   );
 };
 
-export default withModal(ShowLogFileModal);
+export default withModal(LogModal);

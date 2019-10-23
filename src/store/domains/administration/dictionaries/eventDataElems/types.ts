@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 export interface DictionaryEventDataElemsItemResp {
   event_id: number;
@@ -17,7 +17,7 @@ export interface DictionaryEventDataElemsItem {
   event: string;
 }
 
-export interface DictionaryEventDataElemsDataResp extends ResponseStatusType {
+export interface DictionaryEventDataElemsDataResp {
   event_data_elements: Array<DictionaryEventDataElemsItemResp>;
 }
 

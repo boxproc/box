@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 import { LedgerStatementItem } from '../statements';
 
 export interface LedgerAccountId {
@@ -55,7 +55,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   number_of_times_overdue_7_cycle: number;
 }
 
-export interface LedgerAccountItems extends ResponseStatusType {
+export interface LedgerAccountItems {
   accounts: Array<LedgerAccountItem>;
 }
 
@@ -145,7 +145,7 @@ export interface LedgerAccountsCardsItemPrepared {
   cardStatus: string;
 }
 
-export interface LedgerAccountCardsItems extends ResponseStatusType {
+export interface LedgerAccountCardsItems {
   cards: Array<LedgerAccountsCardsItem>;
 }
 

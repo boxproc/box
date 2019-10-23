@@ -9,9 +9,6 @@ import {
 import { ResponseStatusType } from 'types';
 
 export const productData: ProductDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   product: {
     currency_code: 'AFN',
     default_statement_cycle_id: 1,
@@ -30,9 +27,6 @@ export const productData: ProductDataResp = {
 };
 
 export const productItemsFilteredData: ProductsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   products: [
     {
       currency_code: 'AFN',
@@ -66,9 +60,6 @@ export const productItemsFilteredData: ProductsDataResp = {
 };
 
 export const productDetailsData: ProductDetailsResp = {
-  response_status: {
-    status_code: 0,
-  },
   product: {
     product_id: 1,
     apr_default: 1,
@@ -88,9 +79,6 @@ export const productDetailsData: ProductDetailsResp = {
 };
 
 export const productRulesData: ProductRuleResp = {
-  response_status: {
-    status_code: 0,
-  },
   product_rule: {
     // tslint:disable-next-line: max-line-length
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -105,9 +93,6 @@ export const productRulesData: ProductRuleResp = {
 };
 
 export const institutionProducts: InstitutionProducts = {
-  response_status: {
-    status_code: 0,
-  },
   institution_products: [
     {
       id: 1,

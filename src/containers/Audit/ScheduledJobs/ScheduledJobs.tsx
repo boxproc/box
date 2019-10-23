@@ -7,12 +7,12 @@ import { ScheduledJobsFilter } from './forms';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { iconNamesConst } from 'consts';
+import { iconNamesConst, stringsConst } from 'consts';
 
 import {
   AuditScheduledJobsItemPrepared,
   HandleFilterAuditScheduledJobs,
-  HandleGetSchedulerLogFile,
+  HandleGetSchedulerLogData,
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -22,7 +22,7 @@ export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
-  getSchedulerLogFile: HandleGetSchedulerLogFile;
+  getSchedulerLogData: HandleGetSchedulerLogData;
   resetScheduledJobs: ResetScheduledJobs;
   currentSchedulerId: number;
 }
@@ -32,7 +32,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   auditScheduledJobs,
   filterAuditScheduledJobs,
   resetScheduledJobs,
-  getSchedulerLogFile,
+  getSchedulerLogData,
   currentSchedulerId,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
@@ -51,12 +51,12 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Show log',
+        name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getSchedulerLogFile(currentSchedulerId),
+        action: () => getSchedulerLogData(currentSchedulerId),
       },
     ],
-    [getSchedulerLogFile, currentSchedulerId]
+    [getSchedulerLogData, currentSchedulerId]
   );
 
   return (

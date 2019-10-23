@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -39,8 +39,8 @@ const Institutions: React.FC<InstitutionsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteAdminInstitution,
         withConfirmation: true,
         confirmationText: `Delete institution "${adminCurrentInstitutionName}"?`,

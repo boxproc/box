@@ -6,23 +6,26 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import {
   AdminInterfaceItemPrepared,
   HandleDeleteAdminInterface,
   HandleFilterAdminInterface,
+  HandleGetInterfaceLogData,
   ResetInterfaces,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
 export interface AccountsProps {
+  interfaceName: string;
+  currentInterfaceId: number;
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
+  institutionsOptions: Array<SelectValues>;
   deleteInterface: HandleDeleteAdminInterface;
   filterAdminInterface: HandleFilterAdminInterface;
-  institutionsOptions: Array<SelectValues>;
+  getInterfaceLogData: HandleGetInterfaceLogData;
   resetInterfaces: ResetInterfaces;
-  interfaceName: string;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
@@ -32,6 +35,8 @@ const Interfaces: React.FC<AccountsProps> = ({
   institutionsOptions,
   resetInterfaces,
   interfaceName,
+  getInterfaceLogData,
+  currentInterfaceId,
 }) => {
   React.useEffect(
     () => {
@@ -43,14 +48,19 @@ const Interfaces: React.FC<AccountsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.SHOW_LOG,
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getInterfaceLogData(currentInterfaceId),
+      },
+      {
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteInterface,
         withConfirmation: true,
         confirmationText: `Delete interface: ${interfaceName}?`,
       },
     ],
-    [deleteInterface, interfaceName]
+    [deleteInterface, interfaceName, currentInterfaceId, getInterfaceLogData]
   );
 
   return (

@@ -5,7 +5,7 @@ export * from './storage';
 export * from './codes';
 export * from './links';
 export * from './apiPathNames';
-export * from './messages';
+export * from './strings';
 export * from './iconNames';
 export * from './scheduler';
 export * from './formats';

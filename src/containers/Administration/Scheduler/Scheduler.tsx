@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst, schedulerTasksNames } from 'consts';
+import { iconNamesConst, modalNamesConst, schedulerTasksConsts, stringsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -12,7 +12,7 @@ import {
   AdminSchedulerItemPrepared,
   HandleDeleteAdminSchedulerJob,
   HandleFilterAdminSchedulerJobs,
-  HandleGetSchedulerLogFile,
+  HandleGetSchedulerLogData,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
 } from 'store/domains';
@@ -27,7 +27,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerJobId: number;
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
-  getSchedulerLogFile: HandleGetSchedulerLogFile;
+  getSchedulerLogData: HandleGetSchedulerLogData;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -38,7 +38,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
-  getSchedulerLogFile,
+  getSchedulerLogData,
 }) => {
   React.useEffect(
     () => {
@@ -50,70 +50,71 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Execute now',
+        name: schedulerTasksConsts.EXECUTE_TASK.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: schedulerTasksNames.EXECUTE_TASK,
+          taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
         }),
         withConfirmation: true,
-        confirmationText: `Execute now "${currentSchedulerName}"?`,
+        confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Execute now and refresh table',
+        name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} and refresh table`,
         action: () => sendAdminSchedulerAction(
           {
             taskId: currentSchedulerJobId,
-            taskCommand: schedulerTasksNames.EXECUTE_TASK,
+            taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
           },
           {
             withAutoRefresh: true,
           }),
         withConfirmation: true,
-        confirmationText: `Execute now "${currentSchedulerName}" and refresh table?`,
+        // tslint:disable-next-line: max-line-length
+        confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" and refresh table?`,
       },
       {
-        name: 'Stop job',
+        name: schedulerTasksConsts.STOP.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: schedulerTasksNames.STOP,
+          taskCommand: schedulerTasksConsts.STOP.TASK_COMMAND,
         }),
         withConfirmation: true,
-        confirmationText: `Stop job "${currentSchedulerName}"?`,
+        confirmationText: `${schedulerTasksConsts.STOP.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Start job',
+        name: schedulerTasksConsts.START.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: schedulerTasksNames.START,
+          taskCommand: schedulerTasksConsts.START.TASK_COMMAND,
         }),
         withConfirmation: true,
-        confirmationText: `Start job "${currentSchedulerName}"?`,
+        confirmationText: `${schedulerTasksConsts.START.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Pause job',
+        name: schedulerTasksConsts.PAUSE.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: schedulerTasksNames.PAUSE,
+          taskCommand: schedulerTasksConsts.PAUSE.TASK_COMMAND,
         }),
         withConfirmation: true,
-        confirmationText: `Pause job "${currentSchedulerName}"?`,
+        confirmationText: `${schedulerTasksConsts.PAUSE.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Resume job',
+        name: schedulerTasksConsts.RESUME.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
-          taskCommand: schedulerTasksNames.RESUME,
+          taskCommand: schedulerTasksConsts.RESUME.TASK_COMMAND,
         }),
         withConfirmation: true,
-        confirmationText: `Resume job "${currentSchedulerName}"?`,
+        confirmationText: `${schedulerTasksConsts.RESUME.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Show log',
+        name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getSchedulerLogFile(currentSchedulerJobId),
+        action: () => getSchedulerLogData(currentSchedulerJobId),
       },
       {
-        name: 'Delete',
+        name: stringsConst.DELETE,
         icon: iconNamesConst.DELETE,
         action: deleteAdminSchedulerJob,
         withConfirmation: true,
@@ -125,7 +126,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
-      getSchedulerLogFile,
+      getSchedulerLogData,
     ]
   );
 
@@ -145,7 +146,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         <Button
           text="Show scheduler master log"
           iconName={iconNamesConst.SHORT_TEXT}
-          onClick={() => getSchedulerLogFile(currentSchedulerJobId)}
+          onClick={() => getSchedulerLogData(currentSchedulerJobId)}
         />
       }
     />

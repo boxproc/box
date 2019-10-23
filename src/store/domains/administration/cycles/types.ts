@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface PlainInfo {
   id: number;
@@ -45,7 +45,7 @@ export interface CycleFilterPrepared {
   status: string;
 }
 
-export interface AdminCyclesEditorDataResp extends ResponseStatusType {
+export interface AdminCyclesEditorDataResp {
   cycle_editor: Array<AdminCyclesEditorItem>;
 }
 
@@ -57,7 +57,7 @@ export interface AdminCyclesEditorIdsPrepared {
   institution_id: number | string;
 }
 
-export interface AdminCyclesDescriptions extends ResponseStatusType {
+export interface AdminCyclesDescriptions {
   statement_cycles_descriptions: Array<PlainInfo>;
 }
 

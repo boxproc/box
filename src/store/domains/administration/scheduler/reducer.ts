@@ -7,7 +7,6 @@ export const adminSchedulerJobsInitialState:
   seamlessImmutable.ImmutableObject<AdminSchedulerState> = Immutable({
     scheduler: Immutable([]),
     schedulerNames: Immutable([]),
-    logFile: null,
   });
 
 const adminSchedulerJobsReducer =
@@ -16,18 +15,8 @@ const adminSchedulerJobsReducer =
       case ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS_FULFILLED:
         return state.set('scheduler', action.payload.s_scheduler);
 
-      // case ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED:
-      //   return state
-      //     .set(
-      //       'scheduler',
-      //       state.scheduler.filter(el => el.id !== action.meta.id)
-      //     );
-
       case ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED:
         return state.set('schedulerNames', action.payload.scheduler_names);
-
-      case ActionTypeKeys.GET_SCHEDULER_LOG_FILE_FULFILLED:
-        return state.set('logFile', action.payload.log_file);
 
       case ActionTypeKeys.RESET_SCHEDULER:
         return state = adminSchedulerJobsInitialState;

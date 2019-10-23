@@ -33,14 +33,16 @@ export enum adminInterfacePathNames {
   CREATE = '/ui/administration/interfaces/create',
   DELETE = '/ui/administration/interfaces/delete',
   UPDATE = '/ui/administration/interfaces/update',
+  GET_LOG_DATA = 'ui/administration/interfaces/get_log_file',
 }
 
-export enum adminEndPointsPathNames {
+export enum adminEndpointsPathNames {
   GET = '/ui/administration/endpoints/get',
   CREATE = '/ui/administration/endpoints/create',
   DELETE = '/ui/administration/endpoints/delete',
   UPDATE = '/ui/administration/endpoints/update',
   GET_BY_INSTITUTION_ID = '/ui/administration/endpoints/get_by_institution',
+  GET_LOG_DATA = 'ui/administration/endpoints/get_log_file',
 }
 
 export enum dictionariesPathNames {
@@ -80,7 +82,7 @@ export enum adminSchedulerPathNames {
   UPDATE = '/ui/administration/scheduler/update',
   GET_NAMES_BY_INSTITUTION_ID = '/ui/administration/scheduler/get_scheduler_name',
   SEND_ACTION = '/sys/scheduler/management',
-  GET_LOG_FILE = 'ui/administration/scheduler/get_log_file',
+  GET_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum adminSystemPropsPathNames {

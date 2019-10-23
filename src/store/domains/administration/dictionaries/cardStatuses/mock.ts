@@ -1,9 +1,6 @@
 import { DictionaryCardStatusesData } from './types';
 
 export const dictionaryCardStatusesData: DictionaryCardStatusesData = {
-  response_status: {
-    status_code: 0,
-  },
   card_statuses: [
     { id: 0, name: 'Unspecified' },
     { id: 1, name: 'Active' },

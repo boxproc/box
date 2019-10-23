@@ -4,18 +4,20 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
+import { selectAuditScheduledJobsSchedulerName } from 'store/domains/audit';
 import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   FilterAdminSchedulerJobsAction,
-  GetSchedulerLogFileAction,
+  GetSchedulerLogDataAction,
   GetSchedulerNamesByInstitutionIdAction,
   SendAdminSchedulerActionJobAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
+import { selectCurrentSchedulerName } from './selectors';
 import {
   AdminSchedulerEditableItem,
   AdminSchedulerFilterPrepared,
@@ -58,8 +60,8 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
-export type GetSchedulerLogFile = (payload: object) => GetSchedulerLogFileAction;
-export type HandleGetSchedulerLogFile = (id: number) => Thunk<void>;
+export type GetSchedulerLogData = (payload: object) => GetSchedulerLogDataAction;
+export type HandleGetSchedulerLogData = (id: number) => Thunk<void>;
 
 export type ResetScheduler = () => void;
 
@@ -98,9 +100,9 @@ export const resetScheduler: ResetScheduler = () => ({
   type: ActionTypeKeys.RESET_SCHEDULER,
 });
 
-export const getSchedulerLogFile: GetSchedulerLogFile = payload => ({
-  type: ActionTypeKeys.GET_SCHEDULER_LOG_FILE,
-  payload: api.getSchedulerLogFile(payload),
+export const getSchedulerLogData: GetSchedulerLogData = payload => ({
+  type: ActionTypeKeys.GET_SCHEDULER_LOG_DATA,
+  payload: api.getSchedulerLogData(payload),
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
@@ -188,14 +190,22 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
     );
   };
 
-export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = id =>
-  async dispatch => {
+export const handleGetSchedulerLogData: HandleGetSchedulerLogData = id =>
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const payload = id ? { scheduler_id: id } : {};
+        const state = getState();
+        const res = await dispatch(getSchedulerLogData(payload)) as any;
 
-        await dispatch(getSchedulerLogFile(payload));
-        dispatch(openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE }));
+        dispatch(openModal({
+          name: modalNamesConst.LOG_MODAL,
+          payload: {
+            title: selectCurrentSchedulerName(state)
+              || selectAuditScheduledJobsSchedulerName(state),
+            logData: res.value.log_file,
+          },
+        }));
       },
       dispatch
     );

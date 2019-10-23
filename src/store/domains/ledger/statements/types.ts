@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 export interface LedgerStatementId {
   id: number;
@@ -55,11 +55,11 @@ export interface LedgerStatementTransactionsItemsRequest {
   id:  number ;
 }
 
-export interface LedgerStatementTransactionsItems extends ResponseStatusType {
+export interface LedgerStatementTransactionsItems {
   transactions: Array<LedgerStatementTransactionsItem>;
 }
 
-export interface LedgerStatementItems extends ResponseStatusType {
+export interface LedgerStatementItems {
   statements: Array<LedgerStatementItem>;
 }
 

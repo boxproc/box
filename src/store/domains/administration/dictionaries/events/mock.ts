@@ -1,9 +1,6 @@
 import { DictionaryEventsData } from './types';
 
 export const dictionaryEventsData: DictionaryEventsData = {
-  response_status: {
-    status_code: 0,
-  },
   events: [
     {
       id: 1,

@@ -3,9 +3,6 @@ import { AdminInstitutionsItems } from './types';
 import { ResponseStatusType } from 'types';
 
 export const adminInstitutionsItems: AdminInstitutionsItems = {
-  response_status: {
-    status_code: 0,
-  },
   institutions: [
     {
       id: 1,

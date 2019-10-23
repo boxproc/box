@@ -1,9 +1,6 @@
 import { ApiCallsItems } from 'store/domains/audit/apiCalls/types';
 
 export const apiCallsItems: ApiCallsItems = {
-  response_status: {
-    status_code: 0,
-  },
   api_calls: [
     {
       id: 1,

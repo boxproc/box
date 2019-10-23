@@ -3,9 +3,6 @@ import { LedgerCustomerItems } from './types';
 import { ResponseStatusType } from 'types';
 
 export const ledgerCustomersFilteredItems: LedgerCustomerItems = {
-  response_status: {
-    status_code: 0,
-  },
   customers: [
     {
       id: 1,

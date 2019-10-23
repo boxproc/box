@@ -9,4 +9,8 @@ export interface ContextMenuItem {
   action?: () => void;
 }
 
+export interface LogData {
+  log_file: string;
+}
+
 export type ChangeFiledValue = (formName: string, fieldName: string, value: string) => void;

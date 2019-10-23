@@ -7,7 +7,7 @@ import {
   AuditScheduledJobsActionType,
   createLoadingSelector,
   handleFilterAuditScheduledJobs,
-  handleGetSchedulerLogFile,
+  handleGetSchedulerLogData,
   resetScheduledJobs,
   selectAuditScheduledJobs,
   selectAuditScheduledJobsSchedulerId,
@@ -30,7 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAuditScheduledJobs: handleFilterAuditScheduledJobs,
-    getSchedulerLogFile: handleGetSchedulerLogFile,
+    getSchedulerLogData: handleGetSchedulerLogData,
     resetScheduledJobs,
   },
   dispatch

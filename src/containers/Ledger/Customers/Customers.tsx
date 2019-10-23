@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -44,8 +44,8 @@ const Customers: React.FC<CustomersProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteLedgerCustomer,
         withConfirmation: true,
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,

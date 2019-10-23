@@ -3,9 +3,6 @@ import { AdminSysPropsDataResp } from './types';
 import { ResponseStatusType } from 'types';
 
 export const adminSysPropsItemsData: AdminSysPropsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   system_properties: [
     {
       property_name: 'scheduler.ip',
@@ -39,9 +36,6 @@ export const adminSysPropsItemsData: AdminSysPropsDataResp = {
 };
 
 export const adminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   system_properties: [
     {
       property_name: 'scheduler.ip',

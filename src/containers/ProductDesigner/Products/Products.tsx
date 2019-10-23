@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -44,8 +44,8 @@ export const Products: React.FC<ProductsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteProduct,
         withConfirmation: true,
         confirmationText: `Delete product "${currentProductName}?`,

@@ -1,9 +1,6 @@
 import { DictionaryEventDataElemsDataResp } from './types';
 
 export const dictionaryEventDataElemsData: DictionaryEventDataElemsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   event_data_elements: [
     {
       event_id: 1,
@@ -39,9 +36,6 @@ export const dictionaryEventDataElemsData: DictionaryEventDataElemsDataResp = {
 };
 
 export const dictionaryEventDataElemsFilteredData: DictionaryEventDataElemsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   event_data_elements: [
     {
       event_id: 1,

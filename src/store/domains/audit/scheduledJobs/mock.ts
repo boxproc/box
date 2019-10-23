@@ -1,9 +1,6 @@
 import { AuditScheduledJobsItems } from './types';
 
 export const schedulerJobsItems: AuditScheduledJobsItems = {
-  response_status: {
-    status_code: 0,
-  },
   scheduler_jobs: [
     {
       id: 1,

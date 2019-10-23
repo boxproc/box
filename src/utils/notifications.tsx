@@ -15,6 +15,25 @@ const getNotification = (
   payload: { title, message, details, statusCode, errorCode },
 });
 
+interface Error {
+  statusCode?: number;
+  error?: {
+    message?: string;
+  };
+}
+
+const errorMessage = (res: Error) => {
+  if (res) {
+    if (res.statusCode && res.statusCode === 404) {
+      return JSON.stringify(res.error.message);
+    } else {
+      return JSON.stringify(res);
+    }
+  } else {
+    return 'An error occurred.';
+  }
+};
+
 export const handleSendNotification: SendNotification =
   (res, isCatch = false) =>
     async dispatch => {
@@ -35,7 +54,7 @@ export const handleSendNotification: SendNotification =
         } else {
           dispatch(getNotification(
             `${(res && res.statusCode) ? res.statusCode : ''} Error`,
-            res ? JSON.stringify(res) : 'An error occurred.'
+            errorMessage(res)
           ));
         }
       }

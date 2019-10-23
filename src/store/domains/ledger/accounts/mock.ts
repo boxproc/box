@@ -3,9 +3,6 @@ import { LedgerAccountItems } from './types';
 import { ResponseStatusType } from 'types';
 
 export const ledgerAccountsFilteredItems: LedgerAccountItems = {
-  response_status: {
-    status_code: 0,
-  },
   accounts: [
     {
       id: 1,

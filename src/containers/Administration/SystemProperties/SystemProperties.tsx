@@ -11,7 +11,7 @@ import {
 import PageTemplate from 'containers/PageTemplate';
 import { SystemPropertyFilter } from './forms';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
 
 import {
   AdminSysPropsItem,
@@ -104,15 +104,15 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: 'delete',
+        name: stringsConst.DELETE,
+        icon: iconNamesConst.DELETE,
         action: deleteAdminSysProp,
         withConfirmation: true,
         confirmationText: `Delete system property "${currentSysPropId}"?`,
       },
       {
-        name: 'Lock',
-        icon: 'lock',
+        name: stringsConst.LOCK,
+        icon: iconNamesConst.LOCK,
         action: () => updateAdminSysProps({
           lockedFlag: true,
         }),

@@ -57,6 +57,3 @@ export const selectSchedulerNamesByInstIdOptions = createSelector(
     };
   })
 );
-
-export const selectSchedulerLogFile = (state: StoreState) =>
-  state.administration.scheduler.logFile;

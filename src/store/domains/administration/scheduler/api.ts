@@ -4,7 +4,7 @@ import { apiClient } from 'services';
 
 // import {
 //   adminSchedulerData,
-//   schedulerLogFile,
+//   schedulerLogData,
 //   schedulerNames,
 //   successResponseStatus,
 // } from './mock';
@@ -42,6 +42,6 @@ export const getSchedulerNamesByInstitutionId = (id: number | string) =>
     },
   });
 
-export const getSchedulerLogFile = (data: object) =>
-  //  throttleUtil.getDataAfter(schedulerLogFile, 500);
-  apiClient.post(adminSchedulerPathNames.GET_LOG_FILE, { data });
+export const getSchedulerLogData = (data: object) =>
+  //  throttleUtil.getDataAfter(schedulerLogData, 500);
+  apiClient.post(adminSchedulerPathNames.GET_LOG_DATA, { data });
