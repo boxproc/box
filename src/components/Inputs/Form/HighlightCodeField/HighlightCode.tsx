@@ -1,12 +1,12 @@
 import React from 'react';
-import Editor from 'react-simple-code-editor';
 
+import { ContextMenuTrigger } from 'react-contextmenu';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import Editor from 'react-simple-code-editor';
 
 import jslint from 'libs/jslint';
 
 import { highlight, languages } from 'prismjs/components/prism-core';
-import { EditorWrapper } from './EditorWrapper';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -18,7 +18,10 @@ import styled from 'theme';
 import './prism.css';
 
 import { ContextMenuList, WarningIcon } from 'components';
-import { ContextMenuTrigger } from 'react-contextmenu';
+
+import { EditorWrapper } from './EditorWrapper';
+
+import { ContextMenuItem } from 'types';
 
 const WarningIconWrapper = styled(WarningIcon)`
   color: ${({ theme }) => theme.colors.normalAccent};
@@ -36,8 +39,8 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   height?: string;
   whiteSpacePre?: boolean;
   isScrollbarBottom?: boolean;
-  contextMenuItems?: any;
-  onContextMenuClick?: any;
+  contextMenuItems?: Array<ContextMenuItem>;
+  onContextMenuClick?: () => void;
   menuId?: string;
   noDataStr?: string;
   checkJSSyntax?: boolean;
