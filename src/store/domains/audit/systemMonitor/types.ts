@@ -11,6 +11,7 @@ interface InstitutionInfo {
 
 interface PlainInfo extends InstitutionInfo {
   name: string;
+  id: number;
 }
 
 export interface SystemMonitorCounts {
@@ -31,6 +32,7 @@ export interface SystemMonitorSchedulerItem extends PlainInfo, Status { }
 
 export interface SystemMonitorInterfaces {
   interface_name: string;
+  interface_id: number;
   interface_last_message_datetime: string;
   interface_last_fault_datetime: string;
   interface_status: string;
@@ -48,6 +50,7 @@ export interface SystemMonitorInterfacesData {
 
 export interface SystemMonitorEndpoints {
   endpoint_name: string;
+  endpoint_id: number;
   endpoint_last_message_datetime: string;
   endpoint_last_fault_datetime: string;
   endpoint_status: string;
@@ -65,6 +68,7 @@ export interface SystemMonitorEndpointsData {
 
 export interface SystemMonitorScheduler {
   scheduler_name: string;
+  scheduler_id: number;
   scheduler_status: string;
   scheduler_institution_id: number;
   scheduler_institution_name: string;

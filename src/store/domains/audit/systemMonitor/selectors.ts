@@ -28,6 +28,7 @@ export const selectSystemMonitorInterfaces = createSelector(
           institutionId: item.interface_institution_id,
           institutionName: item.interface_institution_name,
           name: item.interface_name,
+          id: item.interface_id,
           status: status && status.label,
           lastMessageDatetime: item.interface_last_message_datetime,
           lastFaultDatetime: item.interface_last_fault_datetime,
@@ -64,6 +65,7 @@ export const selectSystemMonitorEndpoints = createSelector(
           institutionId: item.endpoint_institution_id,
           institutionName: item.endpoint_institution_name,
           name: item.endpoint_name,
+          id: item.endpoint_id,
           status: status && status.label,
           lastMessageDatetime: item.endpoint_last_message_datetime,
           lastFaultDatetime: item.endpoint_last_fault_datetime,
@@ -100,6 +102,7 @@ export const selectSystemMonitorScheduler = createSelector(
           institutionId: item.scheduler_institution_id,
           institutionName: item.scheduler_institution_name,
           name: item.scheduler_name,
+          id: item.scheduler_id,
           status: status && status.label,
         };
       });

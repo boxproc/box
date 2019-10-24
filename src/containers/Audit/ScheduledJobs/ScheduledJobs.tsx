@@ -62,7 +62,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
         }),
       },
     ],
-    [getLogData, currentSchedulerId]
+    [getLogData, currentSchedulerId, currentScheduledJobsName]
   );
 
   return (

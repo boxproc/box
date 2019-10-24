@@ -5,6 +5,7 @@ import SystemMonitor from './SystemMonitor';
 
 import {
   createLoadingSelector,
+  handleGetLogData,
   handleGetSystemMonitorData,
   resetSystemMonitor,
   selectSystemMonitorEndpoints,
@@ -18,6 +19,9 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  SystemMonitorActionTypes.GET_LOG_DATA,
+]);
 const loadingSelectorInterfaces = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_INTERFACES,
 ]);
@@ -32,6 +36,7 @@ const loadingSelectorLastTransactions = createLoadingSelector([
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
   isLoadingScheduler: loadingSelectorScheduler(state),
@@ -48,6 +53,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getSystemMonitorData: handleGetSystemMonitorData,
+    getLogData: handleGetLogData,
     resetSystemMonitor,
   },
   dispatch

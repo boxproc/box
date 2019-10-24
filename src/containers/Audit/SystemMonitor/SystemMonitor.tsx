@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CountDownTimer, ExternalLink, T2, Table } from 'components';
+import { CountDownTimer, ExternalLink, T2, Table, withSpinner } from 'components';
 
 import {
   cookiesExpires,
@@ -23,6 +23,7 @@ import {
 } from './components';
 
 import {
+  HandleGetLogData,
   HandleGetSystemMonitorData,
   ResetSystemMonitor,
   SystemMonitorCounts,
@@ -33,12 +34,12 @@ import {
 import { cookiesUtil, stringsUtil } from 'utils';
 
 interface SystemMonitorProps extends RouteComponentProps {
-  getSystemMonitorData: HandleGetSystemMonitorData;
-  resetSystemMonitor: ResetSystemMonitor;
   interfacesData: Array<SystemMonitorItem>;
   endpointsData: Array<SystemMonitorItem>;
   schedulerData: Array<SystemMonitorSchedulerItem>;
   lastTransactionsData: Array<SystemMonitorTransaction>;
+  getLogData: HandleGetLogData;
+  getSystemMonitorData: HandleGetSystemMonitorData;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isLoadingScheduler: boolean;
@@ -46,6 +47,7 @@ interface SystemMonitorProps extends RouteComponentProps {
   interfacesCounts: SystemMonitorCounts;
   endpointsCounts: SystemMonitorCounts;
   schedulerCounts: SystemMonitorCounts;
+  resetSystemMonitor: ResetSystemMonitor;
 }
 
 interface SystemMonitorBlockProps {
@@ -73,6 +75,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   endpointsCounts,
   schedulerCounts,
   location,
+  getLogData,
 }) => {
   const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
@@ -187,7 +190,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           counts: interfacesCounts,
           isLoading: isLoadingInterfaces,
           tableData: interfacesData,
-          columns: tableColumns,
+          columns: tableColumns(getLogData, systemMonitorTables.INTERFACES),
         },
         {
           id: 2,
@@ -206,7 +209,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           counts: endpointsCounts,
           isLoading: isLoadingEndpoints,
           tableData: endpointsData,
-          columns: tableColumns,
+          columns: tableColumns(getLogData, systemMonitorTables.ENDPOINTS),
         },
         {
           id: 4,
@@ -215,7 +218,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           counts: schedulerCounts,
           isLoading: isLoadingScheduler,
           tableData: schedulerData,
-          columns: schedulerTableColumns,
+          columns: schedulerTableColumns(getLogData, systemMonitorTables.SCHEDULER_JOBS),
         },
       ],
     ],
@@ -231,6 +234,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       lastTransactionsData,
       schedulerCounts,
       schedulerData,
+      getLogData,
     ]
   );
 
@@ -295,4 +299,6 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   );
 };
 
-export default withRouter(SystemMonitor);
+export default withSpinner({
+  isFixed: true,
+})(withRouter(SystemMonitor));

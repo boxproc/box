@@ -86,12 +86,10 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
 
   React.useEffect(
     () => {
-      if (isScrollbarBottom) {
-        const wrapper = document.querySelector('.scrollbar-editor-wrapper');
-
-        if (wrapper) {
-          wrapper.scrollTop = wrapper.scrollHeight;
-        }
+      const wrapper = document.querySelector('.scrollbar-editor-wrapper');
+      if (isScrollbarBottom && wrapper) {
+        wrapper.scrollTop = wrapper.scrollHeight;
+        setTimeout(() => wrapper.classList.add('is-visible'), 50);
       }
     },
     [isScrollbarBottom]
@@ -143,6 +141,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         ref={wrapperRef}
         height={height}
         whiteSpacePre={whiteSpacePre}
+        visibilityHidden={isScrollbarBottom}
       >
         <PerfectScrollbar className="scrollbar-editor-wrapper">
           <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>

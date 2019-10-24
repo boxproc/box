@@ -3,6 +3,7 @@ import styled from 'theme';
 interface WrapperProps {
   height?: string;
   whiteSpacePre?: boolean;
+  visibilityHidden?: boolean;
 }
 
 export const EditorWrapper = styled.div<WrapperProps>`
@@ -57,6 +58,18 @@ export const EditorWrapper = styled.div<WrapperProps>`
   .editor {
     float: left;
     min-width: 100%;
+  }
+
+  .scrollbar-editor-wrapper {
+    ${({ visibilityHidden }) => visibilityHidden && `
+      visibility: hidden;
+      opacity: 0;
+    `}
+
+    &.is-visible {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   .ps__thumb-y {
