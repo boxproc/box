@@ -3,7 +3,13 @@ import React from 'react';
 import { Button, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst, schedulerTasksConsts, stringsConst } from 'consts';
+import {
+  iconNamesConst,
+  modalNamesConst,
+  schedulerTasksConsts,
+  stringsConst,
+  systemMonitorTables,
+} from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -12,7 +18,7 @@ import {
   AdminSchedulerItemPrepared,
   HandleDeleteAdminSchedulerJob,
   HandleFilterAdminSchedulerJobs,
-  HandleGetSchedulerLogData,
+  HandleGetLogData,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
 } from 'store/domains';
@@ -27,7 +33,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerJobId: number;
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
-  getSchedulerLogData: HandleGetSchedulerLogData;
+  getLogData: HandleGetLogData;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -38,7 +44,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   deleteAdminSchedulerJob,
   currentSchedulerName,
   resetScheduler,
-  getSchedulerLogData,
+  getLogData,
 }) => {
   React.useEffect(
     () => {
@@ -111,7 +117,11 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getSchedulerLogData(currentSchedulerJobId),
+        action: () => getLogData({
+          name: systemMonitorTables.SCHEDULER_JOBS,
+          id: currentSchedulerJobId,
+          title: currentSchedulerName,
+        }),
       },
       {
         name: stringsConst.DELETE,
@@ -126,7 +136,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
-      getSchedulerLogData,
+      getLogData,
     ]
   );
 
@@ -146,7 +156,9 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         <Button
           text="Show scheduler master log"
           iconName={iconNamesConst.SHORT_TEXT}
-          onClick={() => getSchedulerLogData(currentSchedulerJobId)}
+          onClick={() => getLogData({
+            name: systemMonitorTables.SCHEDULER_JOBS,
+          })}
         />
       }
     />

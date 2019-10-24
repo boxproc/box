@@ -11,6 +11,7 @@ export interface ContextMenuItem {
 
 export interface LogData {
   log_file: string;
+  log_file_path?: string;
 }
 
 export type ChangeFiledValue = (formName: string, fieldName: string, value: string) => void;

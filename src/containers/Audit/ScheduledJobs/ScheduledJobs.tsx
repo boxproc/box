@@ -7,12 +7,12 @@ import { ScheduledJobsFilter } from './forms';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { iconNamesConst, stringsConst } from 'consts';
+import { iconNamesConst, stringsConst, systemMonitorTables } from 'consts';
 
 import {
   AuditScheduledJobsItemPrepared,
   HandleFilterAuditScheduledJobs,
-  HandleGetSchedulerLogData,
+  HandleGetLogData,
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -22,9 +22,10 @@ export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
-  getSchedulerLogData: HandleGetSchedulerLogData;
+  getLogData: HandleGetLogData;
   resetScheduledJobs: ResetScheduledJobs;
   currentSchedulerId: number;
+  currentScheduledJobsName: string;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
@@ -32,8 +33,9 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   auditScheduledJobs,
   filterAuditScheduledJobs,
   resetScheduledJobs,
-  getSchedulerLogData,
+  getLogData,
   currentSchedulerId,
+  currentScheduledJobsName,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -53,10 +55,14 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       {
         name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getSchedulerLogData(currentSchedulerId),
+        action: () => getLogData({
+          id: currentSchedulerId,
+          name: systemMonitorTables.SCHEDULER_JOBS,
+          title: currentScheduledJobsName,
+        }),
       },
     ],
-    [getSchedulerLogData, currentSchedulerId]
+    [getLogData, currentSchedulerId]
   );
 
   return (

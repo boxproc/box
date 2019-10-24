@@ -4,14 +4,11 @@ import { apiClient } from 'services';
 
 // import {
 //   adminSchedulerData,
-//   schedulerLogData,
 //   schedulerNames,
 //   successResponseStatus,
 // } from './mock';
 
 import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobAction } from './types';
-
-// import { throttleUtil } from 'utils';
 
 export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSchedulerData, 500);
@@ -41,7 +38,3 @@ export const getSchedulerNamesByInstitutionId = (id: number | string) =>
       institution_id: id,
     },
   });
-
-export const getSchedulerLogData = (data: object) =>
-  //  throttleUtil.getDataAfter(schedulerLogData, 500);
-  apiClient.post(adminSchedulerPathNames.GET_LOG_DATA, { data });

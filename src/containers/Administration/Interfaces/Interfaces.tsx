@@ -6,13 +6,13 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
-import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst, systemMonitorTables } from 'consts';
 
 import {
   AdminInterfaceItemPrepared,
   HandleDeleteAdminInterface,
   HandleFilterAdminInterface,
-  HandleGetInterfaceLogData,
+  HandleGetLogData,
   ResetInterfaces,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -24,7 +24,7 @@ export interface AccountsProps {
   institutionsOptions: Array<SelectValues>;
   deleteInterface: HandleDeleteAdminInterface;
   filterAdminInterface: HandleFilterAdminInterface;
-  getInterfaceLogData: HandleGetInterfaceLogData;
+  getLogData: HandleGetLogData;
   resetInterfaces: ResetInterfaces;
 }
 
@@ -35,7 +35,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   institutionsOptions,
   resetInterfaces,
   interfaceName,
-  getInterfaceLogData,
+  getLogData,
   currentInterfaceId,
 }) => {
   React.useEffect(
@@ -50,7 +50,11 @@ const Interfaces: React.FC<AccountsProps> = ({
       {
         name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getInterfaceLogData(currentInterfaceId),
+        action: () => getLogData({
+          name: systemMonitorTables.INTERFACES,
+          id: currentInterfaceId,
+          title: interfaceName,
+        }),
       },
       {
         name: stringsConst.DELETE,
@@ -60,7 +64,7 @@ const Interfaces: React.FC<AccountsProps> = ({
         confirmationText: `Delete interface: ${interfaceName}?`,
       },
     ],
-    [deleteInterface, interfaceName, currentInterfaceId, getInterfaceLogData]
+    [deleteInterface, interfaceName, currentInterfaceId, getLogData]
   );
 
   return (

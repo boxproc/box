@@ -88,6 +88,11 @@ export interface SystemMonitorTransactionsData {
   transactions: Array<SystemMonitorTransactionItem>;
 }
 
+export interface LogDataRequest {
+  id: object;
+  apiPathName: string;
+}
+
 export interface SystemMonitorState {
   interfaces: {
     interfaces_data: ImmutableArray<SystemMonitorInterfaces>;

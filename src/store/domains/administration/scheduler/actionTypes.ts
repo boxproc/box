@@ -1,6 +1,6 @@
 import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
 
-import { ApiResponse, LogData, ResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   FILTER_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/FILTER_ADMIN_SCHEDULER_JOBS',
@@ -41,10 +41,6 @@ export enum ActionTypeKeys {
   'administration/scheduler/GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED',
 
   RESET_SCHEDULER = 'administration/scheduler/RESET_SCHEDULER',
-
-  GET_SCHEDULER_LOG_DATA = 'administration/scheduler/GET_SCHEDULER_LOG_DATA',
-  GET_SCHEDULER_LOG_DATA_FULFILLED = 'administration/scheduler/GET_SCHEDULER_LOG_DATA_FULFILLED',
-  GET_SCHEDULER_LOG_DATA_REJECTED = 'administration/scheduler/GET_SCHEDULER_LOG_DATA_REJECTED',
 }
 
 export interface FilterAdminSchedulerJobsAction {
@@ -142,21 +138,6 @@ export interface ResetSchedulerAction {
   readonly type: ActionTypeKeys.RESET_SCHEDULER;
 }
 
-export interface GetSchedulerLogDataAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_SCHEDULER_LOG_DATA;
-}
-
-export interface GetSchedulerLogDataFulfilledAction {
-  readonly payload: LogData;
-  readonly type: ActionTypeKeys.GET_SCHEDULER_LOG_DATA_FULFILLED;
-}
-
-export interface GetSchedulerLogDataRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_SCHEDULER_LOG_DATA_REJECTED;
-}
-
 export type AdminSchedulerJobsActionTypes =
   | FilterAdminSchedulerJobsFulfilledAction
   | AddAdminSchedulerJobFulfilledAction
@@ -164,5 +145,4 @@ export type AdminSchedulerJobsActionTypes =
   | UpdateAdminSchedulerJobFulfilledAction
   | SendAdminSchedulerActionJobFulfilledAction
   | GetSchedulerNamesByInstitutionIdFulfilledAction
-  | ResetSchedulerAction
-  | GetSchedulerLogDataFulfilledAction;
+  | ResetSchedulerAction;

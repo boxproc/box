@@ -33,7 +33,6 @@ export enum adminInterfacePathNames {
   CREATE = '/ui/administration/interfaces/create',
   DELETE = '/ui/administration/interfaces/delete',
   UPDATE = '/ui/administration/interfaces/update',
-  GET_LOG_DATA = 'ui/administration/interfaces/get_log_file',
 }
 
 export enum adminEndpointsPathNames {
@@ -42,7 +41,6 @@ export enum adminEndpointsPathNames {
   DELETE = '/ui/administration/endpoints/delete',
   UPDATE = '/ui/administration/endpoints/update',
   GET_BY_INSTITUTION_ID = '/ui/administration/endpoints/get_by_institution',
-  GET_LOG_DATA = 'ui/administration/endpoints/get_log_file',
 }
 
 export enum dictionariesPathNames {
@@ -82,7 +80,6 @@ export enum adminSchedulerPathNames {
   UPDATE = '/ui/administration/scheduler/update',
   GET_NAMES_BY_INSTITUTION_ID = '/ui/administration/scheduler/get_scheduler_name',
   SEND_ACTION = '/sys/scheduler/management',
-  GET_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum adminSystemPropsPathNames {
@@ -104,6 +101,12 @@ export enum systemMonitorPathNames {
   GET_ENDPOINTS = '/ui/audit/system_monitor/get_endpoint_data',
   GET_SCHEDULER_JOBS = '/ui/audit/system_monitor/get_scheduler_data',
   GET_LAST_TRANSACTIONS = '/ui/audit/system_monitor/get_transactions_data',
+}
+
+export enum logDataPathNames {
+  GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/get_log_file',
+  GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
+  GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum lenderAccountsPathNames {

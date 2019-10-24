@@ -1,6 +1,6 @@
 import { AdminEndpointItems, AdminEndpointNameItems } from './types';
 
-import { ApiResponse, LogData, ResponseStatusType } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_ENDPOINT = 'administration/endpoints/ADD_ADMIN_ENDPOINT',
@@ -26,10 +26,6 @@ export enum ActionTypeKeys {
   'administration/endpoints/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
 
   RESET_ENDPOINTS = 'administration/endpoints/RESET_ENDPOINTS',
-
-  GET_ENDPOINT_LOG_DATA = 'administration/endpoints/GET_ENDPOINT_LOG_DATA',
-  GET_ENDPOINT_LOG_DATA_FULFILLED = 'administration/endpoints/GET_ENDPOINT_LOG_DATA_FULFILLED',
-  GET_ENDPOINT_LOG_DATA_REJECTED = 'administration/endpoints/GET_ENDPOINT_LOG_DATA_REJECTED',
 }
 
 export interface AddAdminEndpointAction {
@@ -111,26 +107,10 @@ export interface ResetEndpointsAction {
   readonly type: ActionTypeKeys.RESET_ENDPOINTS;
 }
 
-export interface GetEndpointLogDataAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ENDPOINT_LOG_DATA;
-}
-
-export interface GetEndpointLogDataFulfilledAction {
-  readonly payload: LogData;
-  readonly type: ActionTypeKeys.GET_ENDPOINT_LOG_DATA_FULFILLED;
-}
-
-export interface GetEndpointLogDataRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_ENDPOINT_LOG_DATA_REJECTED;
-}
-
 export type AdminEndpointActionTypes =
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
   | FilterAdminEndpointFulfilledAction
   | UpdateAdminEndpointFulfilledAction
   | GetEndpointsByInstitutionIdFulfilledAction
-  | GetEndpointLogDataFulfilledAction
   | ResetEndpointsAction;

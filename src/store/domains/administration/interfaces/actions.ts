@@ -2,7 +2,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
+import { closeModal } from 'store/domains/modals';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import {
@@ -10,11 +10,9 @@ import {
   AddAdminInterfaceAction,
   DeleteAdminInterfaceAction,
   FilterAdminInterfaceAction,
-  GetInterfaceLogDataAction,
   UpdateAdminInterfaceAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectAdminCurrentInterfaceName } from './selectors';
 import {
   AdminInterfaceFilterPrepared,
   AdminInterfaceItem,
@@ -42,9 +40,6 @@ export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared
   FilterAdminInterfaceAction;
 export type HandleFilterAdminInterface = () => Thunk<void>;
 
-export type GetInterfaceLogData = (payload: object) => GetInterfaceLogDataAction;
-export type HandleGetInterfaceLogData = (id: number) => Thunk<void>;
-
 export type ResetInterfaces = () => void;
 
 export const addAdminInterface: AddAdminInterface = values => ({
@@ -66,11 +61,6 @@ export const filterAdminInterface: FilterAdminInterface = filter => ({
 export const updateAdminInterface: UpdateAdminInterface = values => ({
   type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE,
   payload: api.updateAdminInterface(values),
-});
-
-export const getInterfaceLogData: GetInterfaceLogData = payload => ({
-  type: ActionTypeKeys.GET_INTERFACE_LOG_DATA,
-  payload: api.getInterfaceLogData(payload),
 });
 
 export const resetInterfaces: ResetInterfaces = () => ({
@@ -131,29 +121,6 @@ export const handleUpdateInterface: HandleUpdateAdminInterface = values =>
 
         await dispatch(updateAdminInterface(preparedValues));
         await dispatch(handleFilterAdminInterface());
-      },
-      dispatch
-    );
-  };
-
-export const handleGetInterfaceLogData: HandleGetInterfaceLogData = id =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const payload = id ? { interface_id: id } : {};
-        const state = getState();
-        const res = await dispatch(getInterfaceLogData(payload)) as any;
-
-        if (res) {
-          dispatch(openModal({
-            name: modalNamesConst.LOG_MODAL,
-            payload: {
-              title: selectAdminCurrentInterfaceName(state),
-              logLocation: res.value.log_file_path,
-              logData: res.value.log_file,
-            },
-          }));
-        }
       },
       dispatch
     );

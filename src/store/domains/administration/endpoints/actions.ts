@@ -2,7 +2,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
+import { closeModal } from 'store/domains/modals';
 
 import { selectActiveItemId } from 'store/domains/utils';
 import {
@@ -10,7 +10,6 @@ import {
   AddAdminEndpointAction,
   DeleteAdminEndpointAction,
   FilterAdminEndpointAction,
-  GetEndpointLogDataAction,
   GetEndpointsByInstitutionIdAction,
   UpdateAdminEndpointAction,
 } from './actionTypes';
@@ -24,7 +23,6 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
-import { selectAdminCurrentEndpointName } from './selectors';
 
 export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
 export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
@@ -45,9 +43,6 @@ export type HandleFilterAdminEndpoint = () => Thunk<void>;
 export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<void>;
 export type GetEndpointsByInstitutionId = (id: string | number) =>
   GetEndpointsByInstitutionIdAction;
-
-export type GetEndpointLogData = (payload: object) => GetEndpointLogDataAction;
-export type HandleGetEndpointLogData = (id: number) => Thunk<void>;
 
 export type ResetEndpoints = () => void;
 
@@ -79,11 +74,6 @@ export const getEndpointsByInstitutionId: GetEndpointsByInstitutionId = id => ({
 
 export const resetEndpoints: ResetEndpoints = () => ({
   type: ActionTypeKeys.RESET_ENDPOINTS,
-});
-
-export const getEndpointLogData: GetEndpointLogData = payload => ({
-  type: ActionTypeKeys.GET_ENDPOINT_LOG_DATA,
-  payload: api.getEndpointLogData(payload),
 });
 
 export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
@@ -150,29 +140,6 @@ export const handleGetEndpointsByInstitutionId: HandleGetEndpointsByInstitutionI
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getEndpointsByInstitutionId(id));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetEndpointLogData: HandleGetEndpointLogData = id =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const payload = id ? { endpoint_id: id } : {};
-        const state = getState();
-        const res = await dispatch(getEndpointLogData(payload)) as any;
-
-        if (res) {
-          dispatch(openModal({
-            name: modalNamesConst.LOG_MODAL,
-            payload: {
-              title: selectAdminCurrentEndpointName(state),
-              logLocation: res.value.log_file_path,
-              logData: res.value.log_file,
-            },
-          }));
-        }
       },
       dispatch
     );

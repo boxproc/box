@@ -2,22 +2,19 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
+import { closeModal } from 'store/domains/modals';
 
-import { selectAuditScheduledJobsSchedulerName } from 'store/domains/audit';
 import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   FilterAdminSchedulerJobsAction,
-  GetSchedulerLogDataAction,
   GetSchedulerNamesByInstitutionIdAction,
   SendAdminSchedulerActionJobAction,
   UpdateAdminSchedulerJobAction
 } from './actionTypes';
 import * as api from './api';
-import { selectCurrentSchedulerName } from './selectors';
 import {
   AdminSchedulerEditableItem,
   AdminSchedulerFilterPrepared,
@@ -60,9 +57,6 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
-export type GetSchedulerLogData = (payload: object) => GetSchedulerLogDataAction;
-export type HandleGetSchedulerLogData = (id: number) => Thunk<void>;
-
 export type ResetScheduler = () => void;
 
 export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
@@ -98,11 +92,6 @@ export const getSchedulerNamesByInstitutionId: GetSchedulerNamesByInstitutionId 
 
 export const resetScheduler: ResetScheduler = () => ({
   type: ActionTypeKeys.RESET_SCHEDULER,
-});
-
-export const getSchedulerLogData: GetSchedulerLogData = payload => ({
-  type: ActionTypeKeys.GET_SCHEDULER_LOG_DATA,
-  payload: api.getSchedulerLogData(payload),
 });
 
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
@@ -185,30 +174,6 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getSchedulerNamesByInstitutionId(id));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetSchedulerLogData: HandleGetSchedulerLogData = id =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const payload = id ? { scheduler_id: id } : {};
-        const state = getState();
-        const res = await dispatch(getSchedulerLogData(payload)) as any;
-
-        if (res) {
-          dispatch(openModal({
-            name: modalNamesConst.LOG_MODAL,
-            payload: {
-              title: selectCurrentSchedulerName(state)
-                || selectAuditScheduledJobsSchedulerName(state),
-              logLocation: res.value.log_file_path,
-              logData: res.value.log_file,
-            },
-          }));
-        }
       },
       dispatch
     );

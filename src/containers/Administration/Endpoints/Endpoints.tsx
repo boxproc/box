@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
+import { iconNamesConst, modalNamesConst, stringsConst, systemMonitorTables } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -12,7 +12,7 @@ import {
   AdminEndpointItemPrepared,
   HandleDeleteAdminEndpoint,
   HandleFilterAdminEndpoint,
-  HandleGetEndpointLogData,
+  HandleGetLogData,
   ResetEndpoints,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -24,7 +24,7 @@ export interface EndpointsProps {
   institutionsOptions: Array<SelectValues>;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   filterAdminEndpoint: HandleFilterAdminEndpoint;
-  getEndpointLogData: HandleGetEndpointLogData;
+  getLogData: HandleGetLogData;
   resetEndpoints: ResetEndpoints;
 }
 
@@ -35,7 +35,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
   adminCurrentEndpointName,
   currentEndPointId,
   institutionsOptions,
-  getEndpointLogData,
+  getLogData,
   resetEndpoints,
 }) => {
   React.useEffect(
@@ -50,7 +50,11 @@ const Endpoints: React.FC<EndpointsProps> = ({
       {
         name: stringsConst.SHOW_LOG,
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getEndpointLogData(currentEndPointId),
+        action: () => getLogData({
+          name: systemMonitorTables.ENDPOINTS,
+          id: currentEndPointId,
+          title: adminCurrentEndpointName,
+        }),
       },
       {
         name: stringsConst.DELETE,
@@ -60,7 +64,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
         confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
       },
     ],
-    [deleteEndpoint, adminCurrentEndpointName, getEndpointLogData, currentEndPointId]
+    [deleteEndpoint, adminCurrentEndpointName, getLogData, currentEndPointId]
   );
 
   return (

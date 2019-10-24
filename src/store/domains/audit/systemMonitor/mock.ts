@@ -1,3 +1,4 @@
+import { LogData } from 'types';
 import {
   SystemMonitorEndpointsData,
   SystemMonitorInterfacesData,
@@ -84,4 +85,10 @@ export const systemMonitorLastTransactions: SystemMonitorTransactionsData = {
       transaction_datetime: '2019-10-16 13:49:31',
     },
   ],
+};
+
+export const logData: LogData = {
+  // tslint:disable-next-line: max-line-length
+  log_file: '2019-10-08 15:55:15 INFO   [main]: Interface test',
+  log_file_path: 'test/test/log',
 };
