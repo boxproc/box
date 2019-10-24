@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Flex } from '@rebass/grid';
+
 import styled from 'theme';
 
 import { T2 } from 'components';
@@ -21,9 +23,16 @@ const ModalTitle = styled(T2)`
   text-transform: none;
 `;
 
+const MonoTitleStr = styled.div`
+  padding-right: 15px;
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.fonts.code};
+`;
+
 interface ModalProps extends WithModalProps {
   name: string;
   title?: string;
+  monoTitleStr?: string;
   type?: string;
   maxContainerWidth?: string;
   minContainerHeight?: string;
@@ -44,6 +53,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   name,
   title,
+  monoTitleStr,
   closeModal,
   openModal,
   maxContainerWidth = '720',
@@ -122,9 +132,14 @@ const Modal: React.FC<ModalProps> = ({
         >
           &times;
         </span>
-        {title && (
-          <ModalTitle>{title}</ModalTitle>
-        )}
+        <Flex alignItems="baseline">
+          {title && (
+            <ModalTitle>{title}</ModalTitle>
+          )}
+          {monoTitleStr && (
+            <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
+          )}
+        </Flex>
         {children}
       </div>
     </ModalWrapper>

@@ -19,8 +19,8 @@ const LogModal: React.FC<LogModalProps> = ({
   data,
   closeModal,
 }) => {
-  const currentName = React.useMemo(
-    () => data.title ? `: "${data.title}"` : '',
+  const title = React.useMemo(
+    () => data.title ? data.title : 'Master log',
     [data]
   );
 
@@ -39,7 +39,8 @@ const LogModal: React.FC<LogModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title={`Master log${currentName}`}
+      title={title}
+      monoTitleStr={data.logLocation}
       maxContainerWidth={1400}
       containerHeightFull={true}
     >

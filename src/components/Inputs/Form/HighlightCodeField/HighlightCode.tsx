@@ -23,6 +23,26 @@ import { EditorWrapper } from './EditorWrapper';
 
 import { ContextMenuItem } from 'types';
 
+const MainWrapper = styled.div`
+  position: relative;
+
+  .warnings-count {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 3px;
+    font-size: 11px;
+    color: ${({ theme }) => theme.colors.darkGray};
+    user-select: text;
+
+    .text {
+      margin-left: 5px;
+    }
+  }
+`;
+
 const WarningIconWrapper = styled(WarningIcon)`
   color: ${({ theme }) => theme.colors.normalAccent};
 `;
@@ -89,6 +109,13 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
     [value, checkJSSyntax]
   );
 
+  const warningsCount = React.useMemo(
+    () => codeWarnings
+      && codeWarnings.length
+      && `${codeWarnings.length} ${codeWarnings.length === 1 ? ' warning' : ' warnings'}`,
+    [codeWarnings]
+  );
+
   const wrapperRef = React.useRef(null);
 
   const handleChange = React.useCallback(
@@ -105,7 +132,13 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   };
 
   return (
-    <React.Fragment>
+    <MainWrapper>
+      {warningsCount && (
+        <div className="warnings-count">
+          <WarningIconWrapper size="12" />
+          <div className="text">{warningsCount}</div>
+        </div>
+      )}
       <EditorWrapper
         ref={wrapperRef}
         height={height}
@@ -120,11 +153,11 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
               textareaId={id}
               name={name}
               placeholder={placeholder}
-              padding={10}
               onFocus={addFocusClass}
               onBlur={removeFocusClass}
-              className="editor"
               tabSize={4}
+              padding={10}
+              className="editor"
               style={{
                 overflow: 'visible',
                 fontFamily: '"Roboto Mono", monospace',
@@ -147,15 +180,15 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
           {codeWarnings.map((warning: string, index: number) => (
             <Flex
               key={index}
-              alignItems="center"
+              alignItems="baseline"
             >
-              <WarningIconWrapper size="12" />
+              <Box><WarningIconWrapper size="12" /></Box>
               <Box ml="7px">{warning}</Box>
             </Flex>
           ))}
         </WarningsWrapper>
       )}
-    </React.Fragment>
+    </MainWrapper>
   );
 };
 

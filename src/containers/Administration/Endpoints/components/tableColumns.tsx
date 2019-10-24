@@ -67,6 +67,17 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
+    sortable: true,
+    Header: <TableHeader title="Log File Location" />,
+    accessor: 'logFileLocation',
+    Cell: (props: TCell<'logFileLocation'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
     maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Status" />,

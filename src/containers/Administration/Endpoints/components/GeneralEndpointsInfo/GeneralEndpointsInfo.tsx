@@ -92,6 +92,16 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
         </Box>
         <Box width={[1]} p="10px">
           <Field
+            id="logFileLocation"
+            name="logFileLocation"
+            component={InputField}
+            label="Log File Location"
+            placeholder="Enter Log File Location"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
             id="connectionAttributes"
             name="connectionAttributes"
             component={TextField}

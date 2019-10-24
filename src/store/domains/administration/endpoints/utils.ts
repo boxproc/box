@@ -31,6 +31,7 @@ export const preparedValuesToSend = (values: Partial<AdminEndpointItemDetailsPre
     port: values.port,
     type: values.type && values.type.value,
     private_key_location: values.privateKeyLocation,
+    log_file_location: values.logFileLocation,
     connection_attributes: values.connectionAttributes,
   };
 };
@@ -49,6 +50,7 @@ export const preparedValuesToRender = (values: Partial<AdminEndpointItem>) => {
     type: type && type.label,
     port: values.port,
     privateKeyLocation: values.private_key_location,
+    logFileLocation: values.log_file_location,
     connectionAttributes: values.connection_attributes,
   };
 };

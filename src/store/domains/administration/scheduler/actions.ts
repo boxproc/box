@@ -198,14 +198,17 @@ export const handleGetSchedulerLogData: HandleGetSchedulerLogData = id =>
         const state = getState();
         const res = await dispatch(getSchedulerLogData(payload)) as any;
 
-        dispatch(openModal({
-          name: modalNamesConst.LOG_MODAL,
-          payload: {
-            title: selectCurrentSchedulerName(state)
-              || selectAuditScheduledJobsSchedulerName(state),
-            logData: res.value.log_file,
-          },
-        }));
+        if (res) {
+          dispatch(openModal({
+            name: modalNamesConst.LOG_MODAL,
+            payload: {
+              title: selectCurrentSchedulerName(state)
+                || selectAuditScheduledJobsSchedulerName(state),
+              logLocation: res.value.log_file_path,
+              logData: res.value.log_file,
+            },
+          }));
+        }
       },
       dispatch
     );

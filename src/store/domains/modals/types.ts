@@ -21,6 +21,7 @@ export interface PayloadConfirmationModal {
 export interface PayloadLogModal {
   title?: string;
   logData: string;
+  logLocation?: string;
 }
 
 export interface ModalsState {

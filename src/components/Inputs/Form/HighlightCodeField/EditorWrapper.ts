@@ -58,4 +58,8 @@ export const EditorWrapper = styled.div<WrapperProps>`
     float: left;
     min-width: 100%;
   }
+
+  .ps__thumb-y {
+    background-color: #ffa400;
+  }
 `;

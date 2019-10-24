@@ -163,13 +163,16 @@ export const handleGetEndpointLogData: HandleGetEndpointLogData = id =>
         const state = getState();
         const res = await dispatch(getEndpointLogData(payload)) as any;
 
-        dispatch(openModal({
-          name: modalNamesConst.LOG_MODAL,
-          payload: {
-            title: selectAdminCurrentEndpointName(state),
-            logData: res.value.log_file,
-          },
-        }));
+        if (res) {
+          dispatch(openModal({
+            name: modalNamesConst.LOG_MODAL,
+            payload: {
+              title: selectAdminCurrentEndpointName(state),
+              logLocation: res.value.log_file_path,
+              logData: res.value.log_file,
+            },
+          }));
+        }
       },
       dispatch
     );
