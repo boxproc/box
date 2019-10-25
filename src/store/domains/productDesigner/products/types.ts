@@ -19,6 +19,9 @@ export interface ProductItemResp extends ProductItemPlainResp {
   default_statement_cycle_id: string | number;
   statement_cycle_description: string | number;
   overrides_product_id?: number;
+  card_transactions_endpoint_id?: number;
+  card_management_interface_id?: number;
+  provider_3d_secure_interface_id?: number;
 }
 
 export interface ProductsDataResp {
@@ -253,12 +256,14 @@ export interface ServicesItems {
   id: number;
   card_transactions_endpoint_id: string | number;
   card_management_interface_id: string | number;
+  provider_3d_secure_interface_id: string | number;
 }
 
 export interface ServicesItemsPrepared {
   id: number;
   endpoints: SelectValues;
   interfaces: SelectValues;
+  secureProviderInterfaces: SelectValues;
 }
 
 export interface ProductsState {

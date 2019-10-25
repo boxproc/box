@@ -23,6 +23,9 @@ export const productData: ProductDataResp = {
     status: 'A',
     statement_cycle_description: '',
     overrides_product_id: 0,
+    card_transactions_endpoint_id: null,
+    card_management_interface_id: null,
+    provider_3d_secure_interface_id: null,
   },
 };
 
@@ -41,6 +44,9 @@ export const productItemsFilteredData: ProductsDataResp = {
       scheme: 'V',
       status: 'A',
       statement_cycle_description: '',
+      card_transactions_endpoint_id: null,
+      card_management_interface_id: null,
+      provider_3d_secure_interface_id: null,
     },
     {
       currency_code: 'AFN',
@@ -55,6 +61,9 @@ export const productItemsFilteredData: ProductsDataResp = {
       scheme: 'X',
       status: 'I',
       statement_cycle_description: '',
+      card_transactions_endpoint_id: null,
+      card_management_interface_id: null,
+      provider_3d_secure_interface_id: null,
     },
   ],
 };

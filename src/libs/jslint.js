@@ -122,6 +122,8 @@
     wrapped, writable, y
 */
 
+/*eslint-disable*/
+
 function empty() {
 
   // The empty function produces a new empty object that inherits nothing. This is

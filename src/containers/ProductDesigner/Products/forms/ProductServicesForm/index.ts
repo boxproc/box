@@ -10,7 +10,8 @@ import {
   ProductsActionTypes,
   selectActiveItemId,
   selectProductCardEndpointsService,
-  selectProductCardInterfacesService
+  selectProductCardInterfacesService,
+  selectProductServices
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -33,10 +34,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectActiveItemId(state),
   productInterfacesServiceOptions: selectProductCardInterfacesService(state),
   productEndpointsServiceOptions: selectProductCardEndpointsService(state),
-  initialValues: {
-    interfaces: selectProductCardInterfacesService(state)[0],
-    endpoints: selectProductCardEndpointsService(state)[0],
-  },
+  initialValues: selectProductServices(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

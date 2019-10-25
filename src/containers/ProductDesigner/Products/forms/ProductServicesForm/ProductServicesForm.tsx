@@ -38,7 +38,6 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   updateCardService,
   handleSubmit,
   onCancel,
-  pristine,
   productEndpointsServiceOptions,
   productInterfacesServiceOptions,
   getProductServices,
@@ -68,7 +67,6 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
         cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
-        disabledOk={pristine}
       />
     </form>
   );

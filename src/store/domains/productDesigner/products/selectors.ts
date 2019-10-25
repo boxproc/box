@@ -95,6 +95,27 @@ export const selectProductCardEndpointsService = createSelector(
   })
 );
 
+export const selectProductServices = createSelector(
+  selectDefaultProductItems,
+  selectActiveItemId,
+  selectProductCardInterfacesService,
+  selectProductCardEndpointsService,
+  (products, activeId, interfacesOptions, endpointsOptions) => {
+    const current = products.find(product => product.id === activeId);
+    const endpointId = current.card_transactions_endpoint_id;
+    const interfaceId = current.card_management_interface_id;
+    const secureProviderInterfaceId = current.provider_3d_secure_interface_id;
+
+    return {
+      endpoints: endpointsOptions.find(el => el.value === endpointId) || endpointsOptions[0],
+      interfaces: interfacesOptions.find(el => el.value === interfaceId) || interfacesOptions[0],
+      secureProviderInterfaces: interfacesOptions
+        .find(el => el.value === secureProviderInterfaceId)
+        || interfacesOptions[0],
+    };
+  }
+);
+
 export const selectCurrentProductName = createSelector(
   selectDefaultCurrentProduct,
   product => product && product.name

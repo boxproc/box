@@ -31,6 +31,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
     },
     [getProductServices]
   );
+
   return (
     <Box mx="-10px">
       <Flex
@@ -43,10 +44,11 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             name="interfaces"
             component={SelectField}
             placeholder="Select Interface"
-            label="Card management Interface"
-            validate={[formErrorUtil.required]}
+            label="Card Management Interface"
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -55,10 +57,24 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             name="endpoints"
             component={SelectField}
             placeholder="Select Endpoint"
-            label="Card transactions endpoint"
-            validate={[formErrorUtil.required]}
+            label="Card Transactions Endpoint"
             options={productEndpointsServiceOptions}
             isLoading={isLoadingEndpoints}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="secureProviderInterfaces"
+            name="secureProviderInterfaces"
+            component={SelectField}
+            placeholder="Select Interface"
+            label="3D Secure Provider Interface"
+            options={productInterfacesServiceOptions}
+            isLoading={isLoadingInterfaces}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

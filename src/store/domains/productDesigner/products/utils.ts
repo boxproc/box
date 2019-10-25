@@ -52,11 +52,15 @@ export const prepareUpdateCardServiceValuesPrepared =
 
     const endpointId = values.endpoints.value;
     const interfaceId = values.interfaces.value;
+    const secureProviderInterfaceId = values.secureProviderInterfaces.value;
 
     return {
       id: values.id,
       card_transactions_endpoint_id: endpointId ? endpointId : null,
       card_management_interface_id: interfaceId ? interfaceId : null,
+      provider_3d_secure_interface_id: secureProviderInterfaceId
+        ? secureProviderInterfaceId
+        : null,
     };
   };
 
