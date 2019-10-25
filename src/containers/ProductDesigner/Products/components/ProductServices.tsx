@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { SelectField } from 'components';
 
-import { HandleGetEndpointsService, HandleGetInterfacesService } from 'store/domains';
+import { HandleGetProductServices } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
@@ -13,25 +13,23 @@ import { formErrorUtil } from 'utils';
 interface ProductServicesProps {
   productEndpointsServiceOptions: Array<SelectValues>;
   productInterfacesServiceOptions: Array<SelectValues>;
-  getInterfacesService: HandleGetInterfacesService;
-  getEndpointsService: HandleGetEndpointsService;
-  isLoadingServices: boolean;
- }
+  getProductServices: HandleGetProductServices;
+  isLoadingInterfaces: boolean;
+  isLoadingEndpoints: boolean;
+}
 
 const ProductServices: React.FC<ProductServicesProps> = ({
   productInterfacesServiceOptions,
   productEndpointsServiceOptions,
-  getInterfacesService,
-  getEndpointsService,
-  isLoadingServices,
+  getProductServices,
+  isLoadingInterfaces,
+  isLoadingEndpoints,
 }) => {
   React.useEffect(
     () => {
-      getInterfacesService();
-      getEndpointsService();
-
+      getProductServices();
     },
-    [getEndpointsService, getInterfacesService ]
+    [getProductServices]
   );
   return (
     <Box mx="-10px">
@@ -48,7 +46,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             label="Card management Interface"
             validate={[formErrorUtil.required]}
             options={productInterfacesServiceOptions}
-            isLoading={isLoadingServices}
+            isLoading={isLoadingInterfaces}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -60,7 +58,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             label="Card transactions endpoint"
             validate={[formErrorUtil.required]}
             options={productEndpointsServiceOptions}
-            isLoading={isLoadingServices}
+            isLoading={isLoadingEndpoints}
           />
         </Box>
       </Flex>

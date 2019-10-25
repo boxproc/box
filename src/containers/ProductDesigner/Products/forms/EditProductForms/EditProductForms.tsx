@@ -3,10 +3,10 @@ import React from 'react';
 import { Tabs, TabsPanel } from 'components';
 
 import {
-  AprsForm,
+  // AprsForm,
   AuxiliaryCountersForm,
   GeneralProductForm,
-  LimitsFeesCommissionsForm,
+  // LimitsFeesCommissionsForm,
   LoyaltyAndBonusForm,
   ProductDetailsForm,
   ProductRulesForm,
@@ -47,30 +47,20 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel title="Rules">
         <ProductRulesForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Limits, Fees and commissions">
-        <LimitsFeesCommissionsForm
-          onCancel={onCancel}
-        />
-      </TabsPanel>
+      {/* <TabsPanel title="Limits, Fees and commissions">
+        <LimitsFeesCommissionsForm onCancel={onCancel} />
+      </TabsPanel> */}
       <TabsPanel title="Auxiliary counters">
-        <AuxiliaryCountersForm
-          onCancel={onCancel}
-        />
+        <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="APRs">
-        <AprsForm
-          onCancel={onCancel}
-        />
-      </TabsPanel>
+      {/* <TabsPanel title="APRs">
+        <AprsForm onCancel={onCancel} />
+      </TabsPanel> */}
       <TabsPanel title="Loyalty and Bonus">
-        <LoyaltyAndBonusForm
-          onCancel={onCancel}
-        />
+        <LoyaltyAndBonusForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Services">
-       <ProductServicesForm
-          onCancel={onCancel}
-       />
+        <ProductServicesForm onCancel={onCancel} />
       </TabsPanel>
     </Tabs>
   );

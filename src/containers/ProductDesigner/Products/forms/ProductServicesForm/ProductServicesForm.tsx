@@ -11,14 +11,23 @@ import {
 
 import { formNamesConst } from 'consts';
 
-import { HandleUpdateCardService } from 'store/domains';
+import {
+  HandleGetProductServices,
+  HandleUpdateCardService,
+} from 'store/domains';
 
 import { Services } from 'containers/ProductDesigner/Products/components';
+import { SelectValues } from 'types';
 
 interface ServicesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentGroupId: number;
   updateCardService: HandleUpdateCardService;
+  productEndpointsServiceOptions: Array<SelectValues>;
+  productInterfacesServiceOptions: Array<SelectValues>;
+  getProductServices: HandleGetProductServices;
+  isLoadingInterfaces: boolean;
+  isLoadingEndpoints: boolean;
 }
 
 type ServicesFormAllProps = ServicesFormProps &
@@ -30,6 +39,11 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   handleSubmit,
   onCancel,
   pristine,
+  productEndpointsServiceOptions,
+  productInterfacesServiceOptions,
+  getProductServices,
+  isLoadingInterfaces,
+  isLoadingEndpoints,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
@@ -41,7 +55,13 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Services />
+      <Services
+        productEndpointsServiceOptions={productEndpointsServiceOptions}
+        productInterfacesServiceOptions={productInterfacesServiceOptions}
+        getProductServices={getProductServices}
+        isLoadingInterfaces={isLoadingInterfaces}
+        isLoadingEndpoints={isLoadingEndpoints}
+      />
       <Hr />
       <OkCancelButtons
         okText="Save"

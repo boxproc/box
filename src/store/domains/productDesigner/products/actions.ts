@@ -73,11 +73,9 @@ export type HandleGetProductRule = () => Thunk<void>;
 
 export type GetInterfacesService = (institutionId: string | number) =>
   GetInterfacesProductServiceAction;
-export type HandleGetInterfacesService = () => Thunk<void>;
-
 export type GetEndpointsService = (institutionId: string | number) =>
   GetEndpointsProductServiceAction;
-export type HandleGetEndpointsService = () => Thunk<void>;
+export type HandleGetProductServices = () => Thunk<void>;
 
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
@@ -204,24 +202,16 @@ export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
     );
   };
 
-export const handleGetInterfacesService: HandleGetInterfacesService = () =>
+export const handleGetProductServices: HandleGetProductServices = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const currentInstitutionId = selectCurrentInstitutionId(state);
-        await dispatch(getInterfacesService(currentInstitutionId));
-      },
-      dispatch
-    );
-  };
-export const handleGetEndpointsService: HandleGetEndpointsService = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const state = getState();
-        const currentInstitutionId = selectCurrentInstitutionId(state);
-        await dispatch(getEndpointsService(currentInstitutionId));
+        await Promise.all([
+          dispatch(getInterfacesService(currentInstitutionId)),
+          dispatch(getEndpointsService(currentInstitutionId)),
+        ]);
       },
       dispatch
     );
@@ -280,7 +270,7 @@ export const handleGetProductRule: HandleGetProductRule = () =>
         const prepared = prepareProductRuleIdsToSend(formValues(state));
 
         await dispatch(getProductRule({
-            product_id: selectActiveItemId(state),
+          product_id: selectActiveItemId(state),
           ...prepared,
         }));
       },
@@ -309,8 +299,10 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
         const preparedValues = prepareGeneralProductValuesToSend(values);
 
         await dispatch(updateProduct(preparedValues));
-        await dispatch(handleFilterProducts());
-        await dispatch(handleGetProduct());
+        await Promise.all([
+          dispatch(handleGetProduct()),
+          dispatch(handleFilterProducts()),
+        ]);
       },
       dispatch
     );
@@ -327,7 +319,6 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
         );
 
         await dispatch(updateProductDetails(preparedValues));
-        await dispatch(handleFilterProducts());
         await dispatch(handleGetProductDetails());
       },
       dispatch
@@ -345,7 +336,6 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
           ...preparedValues,
           product_id: selectActiveItemId(state),
         }));
-        await dispatch(handleFilterProducts());
         await dispatch(handleGetProductRule());
       },
       dispatch

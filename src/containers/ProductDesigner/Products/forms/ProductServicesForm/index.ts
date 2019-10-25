@@ -5,9 +5,12 @@ import ProductServicesForm from './ProductServicesForm';
 
 import {
   createLoadingSelector,
+  handleGetProductServices,
   handleUpdateCardService,
   ProductsActionTypes,
-  selectActiveItemId
+  selectActiveItemId,
+  selectProductCardEndpointsService,
+  selectProductCardInterfacesService
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -15,15 +18,31 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.UPDATE_CARD_SERVICES,
 ]);
 
+const loadingSelectorInterfaces = createLoadingSelector([
+  ProductsActionTypes.GET_SERVICE_INTERFACES,
+]);
+
+const loadingSelectorEndpoints = createLoadingSelector([
+  ProductsActionTypes.GET_SERVICE_ENDPOINTS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectActiveItemId(state),
   isLoading: loadingSelector(state),
+  isLoadingInterfaces: loadingSelectorInterfaces(state),
+  isLoadingEndpoints: loadingSelectorEndpoints(state),
+  currentGroupId: selectActiveItemId(state),
+  productInterfacesServiceOptions: selectProductCardInterfacesService(state),
+  productEndpointsServiceOptions: selectProductCardEndpointsService(state),
+  initialValues: {
+    interfaces: selectProductCardInterfacesService(state)[0],
+    endpoints: selectProductCardEndpointsService(state)[0],
+  },
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-
     updateCardService: handleUpdateCardService,
+    getProductServices: handleGetProductServices,
   },
   dispatch
 );
