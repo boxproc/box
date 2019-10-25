@@ -25,7 +25,7 @@ export const tableColumns = [
   {
     maxWidth: 130,
     sortable: true,
-    Header: <TableHeader title="Institution ID" />,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
       <TableCell
