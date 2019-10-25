@@ -65,11 +65,6 @@ export const EditorWrapper = styled.div<WrapperProps>`
       visibility: hidden;
       opacity: 0;
     `}
-
-    &.is-visible {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   .ps__thumb-y {

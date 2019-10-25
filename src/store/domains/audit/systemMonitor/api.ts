@@ -29,8 +29,6 @@ export const getSystemMonitorLastTransactions = () =>
   // throttleUtil.getDataAfter(systemMonitorLastTransactions, 500);
   apiClient.post(systemMonitorPathNames.GET_LAST_TRANSACTIONS);
 
-export const getLogData = (data: LogDataRequest) => {
-  console.log('---data', data);
+export const getLogData = (data: LogDataRequest) =>
   // return throttleUtil.getDataAfter(logData, 500);
-  return apiClient.post(data.apiPathName, { data: data.id });
-};
+  apiClient.post(data.apiPathName, { data: data.id });

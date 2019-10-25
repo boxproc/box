@@ -114,12 +114,11 @@ export const handleGetLogData: HandleGetLogData = data =>
         const { name, id, title } = data;
         const current = tablesConfig.find(el => el.name === name);
 
-        const logId = id ? id : {};
         const apiPathName = current && current.apiLogPathName;
         const idName = current && current.idName;
 
         const res = await dispatch(getLogData({
-          id: { [idName]: logId },
+          id: id ? { [idName]: id } : {},
           apiPathName,
         })) as any;
 
