@@ -29,6 +29,9 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   card_acceptor_name: string;
   card_acceptor_location: string;
   transaction_type_description: string;
+  apr_id: number;
+  apr_rate: number;
+  apr_calculation_method: string;
 }
 
 export interface LedgerTransactionItems {
@@ -55,6 +58,9 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   cardAcceptorName: string;
   cardAcceptorLocation: string;
   transactionTypeDescription: string;
+  aprId: number;
+  aprRate: string;
+  aprCalculationMethod: string;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

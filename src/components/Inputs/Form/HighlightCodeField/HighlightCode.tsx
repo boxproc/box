@@ -173,6 +173,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
             height="60px"
             fontSize={8.5}
             padding={5}
+            whiteSpacePre={true}
           />
           </Box>
       )}

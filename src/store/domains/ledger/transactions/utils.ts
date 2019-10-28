@@ -1,3 +1,4 @@
+import { aprTypesOptions } from 'consts';
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
@@ -9,6 +10,9 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
   if (!values) {
     return null;
   }
+
+  const aprCalculationMethod = aprTypesOptions
+    .find(el => el.value === values.apr_calculation_method);
 
   return {
     id: values.id,
@@ -37,6 +41,9 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     cardAcceptorName: values.card_acceptor_name,
     cardAcceptorLocation: values.card_acceptor_location,
     transactionTypeDescription: values.transaction_type_description,
+    aprId: values.apr_id,
+    aprRate: values.apr_rate && values.apr_rate.toFixed(2),
+    aprCalculationMethod: aprCalculationMethod.label,
   };
 };
 

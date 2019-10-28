@@ -128,4 +128,16 @@ export const tableColumns = [
       />
     ),
   },
+  {
+    maxWidth: 120,
+    sortable: true,
+    Header: <TableHeader title="APR Rate" />,
+    accessor: 'aprRate',
+    Cell: (props: TCell<'aprRate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
 ];

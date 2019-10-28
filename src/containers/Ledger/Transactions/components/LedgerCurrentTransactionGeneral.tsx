@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, TextField } from 'components';
+import { InputField, TextField } from 'components';
 
 const LedgerCurrentTransactionGeneral: React.FC = () => {
   return (
@@ -32,16 +32,6 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Delimiter />
-        <Box width="200px" p="10px">
-          <Field
-            id="transactionDatetime"
-            name="transactionDatetime"
-            component={InputField}
-            label="Transaction Datetime"
-            readOnly={true}
-          />
-        </Box>
         <Box width="150px" p="10px">
           <Field
             id="transactionTypeId"
@@ -50,6 +40,34 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             label="Transaction Type ID"
             readOnly={true}
             isNumber={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="transactionDatetime"
+            name="transactionDatetime"
+            component={InputField}
+            label="Transaction Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="aprRate"
+            name="aprRate"
+            component={InputField}
+            label="APR Rate"
+            readOnly={true}
+            isNumber={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="aprCalculationMethod"
+            name="aprCalculationMethod"
+            component={InputField}
+            label="APR Calculation Method"
+            readOnly={true}
           />
         </Box>
         <Box width={[1]} p="10px">

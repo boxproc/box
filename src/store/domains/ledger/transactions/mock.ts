@@ -26,6 +26,9 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       id: 2,
       balance_settled_after: 10.2,
       transaction_type_description: 'Debit description',
+      apr_id: 1,
+      apr_rate: 19.99,
+      apr_calculation_method: 'A',
     },
   ],
 };
