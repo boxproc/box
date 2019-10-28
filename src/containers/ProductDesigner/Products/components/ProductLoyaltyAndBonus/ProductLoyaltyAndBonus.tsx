@@ -16,7 +16,7 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="230px" p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="participatingSchemes"
             name="participatingSchemes"
@@ -33,7 +33,7 @@ const ProductLoyaltyAndBonus: React.FC<ProductLoyaltyAndBonusProps> = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="discountOrBond"
             name="discountOrBond"

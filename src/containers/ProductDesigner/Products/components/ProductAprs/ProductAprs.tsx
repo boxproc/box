@@ -3,7 +3,9 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { Delimiter, InputField, SelectField, TextField } from 'components';
+
+import { aprTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
@@ -18,78 +20,46 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
       >
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="Tt1Apr"
-            name="Tt1Apr"
+            id="repaymentSequence"
+            name="repaymentSequence"
             component={InputField}
-            label="TT1 APR"
-            placeholder="Enter TT1 APR"
+            label="Repayment Sequence"
+            placeholder="Enter Repayment Sequence"
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="Tt2Apr"
-            name="Tt2Apr"
+            id="rate"
+            name="rate"
             component={InputField}
-            label="TT2 APR"
-            placeholder="Enter TT2 APR"
+            label="Rate"
+            placeholder="Enter Rate"
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Delimiter />
+        <Box width={[1 / 2]} p="10px">
           <Field
-            id="introductionTermApr"
-            name="introductionTermApr"
-            component={InputField}
-            label="Introduction term APR"
-            placeholder="Enter Introduction Term APR"
-            isNumber={true}
+            id="calculationMethod"
+            name="calculationMethod"
+            component={SelectField}
+            label="Calculation Method"
+            placeholder="Select Calculation Method"
+            options={aprTypesOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1]} p="10px">
           <Field
-            id="balanceTransferApr"
-            name="balanceTransferApr"
-            component={InputField}
-            label="Balance Transfer APR"
-            placeholder="Enter Balance Transfer APR"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="delinquentApr"
-            name="delinquentApr"
-            component={InputField}
-            label="'Delinquent' APR"
-            placeholder="Enter 'Delinquent' APR"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="overpaymentApr"
-            name="overpaymentApr"
-            component={InputField}
-            label="Overpayment APR"
-            placeholder="Enter Overpayment APR"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="convertToLoanApr"
-            name="convertToLoanApr"
-            component={InputField}
-            label="Convert to Loan APR"
-            placeholder="Enter Convert to Loan APR"
-            isNumber={true}
+            id="description"
+            name="description"
+            component={TextField}
+            label="Description"
+            placeholder="Enter Description"
+            height={130}
             validate={[formErrorUtil.required]}
           />
         </Box>

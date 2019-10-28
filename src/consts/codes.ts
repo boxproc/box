@@ -187,3 +187,10 @@ export enum statusCodes {
   SESSION_TIMEOUT = 5,
   INCORRECT_PASSWORD = 15,
 }
+
+export const aprTypesOptions = [
+  { value: 'A', label: 'Actual/Actual' },
+  { value: 'B', label: '30/360' },
+  { value: 'C', label: 'Actual/365' },
+  { value: 'D', label: 'Actual/360' },
+];

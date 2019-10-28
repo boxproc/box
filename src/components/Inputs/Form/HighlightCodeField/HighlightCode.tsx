@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Box } from '@rebass/grid';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import Editor from 'react-simple-code-editor';
@@ -7,8 +8,6 @@ import Editor from 'react-simple-code-editor';
 import jslint from 'libs/jslint';
 
 import { highlight, languages } from 'prismjs/components/prism-core';
-
-import { Box, Flex } from '@rebass/grid';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
@@ -23,23 +22,16 @@ import { EditorWrapper } from './EditorWrapper';
 
 import { ContextMenuItem } from 'types';
 
-const MainWrapper = styled.div`
-  position: relative;
+const WarningsCount = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  font-size: 11px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  user-select: text;
 
-  .warnings-count {
-    position: absolute;
-    right: 0;
-    bottom: 100%;
-    display: flex;
-    align-items: center;
-    padding-bottom: 3px;
-    font-size: 11px;
-    color: ${({ theme }) => theme.colors.darkGray};
-    user-select: text;
-
-    .text {
-      margin-left: 5px;
-    }
+  .text {
+    margin-left: 5px;
   }
 `;
 
@@ -47,16 +39,10 @@ const WarningIconWrapper = styled(WarningIcon)`
   color: ${({ theme }) => theme.colors.normalAccent};
 `;
 
-const WarningsWrapper = styled.div`
-  padding-top: 10px;
-  font-size: 12px;
-  color: ${({ theme }) => theme.colors.darkGray};
-  user-select: text;
-`;
-
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
   height?: string;
+  padding?: number;
   whiteSpacePre?: boolean;
   isScrollbarBottom?: boolean;
   contextMenuItems?: Array<ContextMenuItem>;
@@ -74,6 +60,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   placeholder,
   fontSize,
   height,
+  padding = 10,
   whiteSpacePre,
   isScrollbarBottom,
   contextMenuItems,
@@ -115,6 +102,11 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
     [codeWarnings]
   );
 
+  const preparedWarnings = React.useMemo(
+    () => codeWarnings.join('\n'),
+    [codeWarnings]
+  );
+
   const wrapperRef = React.useRef(null);
 
   const handleChange = React.useCallback(
@@ -131,13 +123,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   };
 
   return (
-    <MainWrapper>
-      {warningsCount && (
-        <div className="warnings-count">
-          <WarningIconWrapper size="12" />
-          <div className="text">{warningsCount}</div>
-        </div>
-      )}
+    <React.Fragment>
       <EditorWrapper
         ref={wrapperRef}
         height={height}
@@ -156,7 +142,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
               onFocus={addFocusClass}
               onBlur={removeFocusClass}
               tabSize={4}
-              padding={10}
+              padding={padding}
               className="editor"
               style={{
                 overflow: 'visible',
@@ -175,20 +161,22 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
           )}
         </PerfectScrollbar>
       </EditorWrapper>
+
       {codeWarnings && codeWarnings.length && (
-        <WarningsWrapper>
-          {codeWarnings.map((warning: string, index: number) => (
-            <Flex
-              key={index}
-              alignItems="baseline"
-            >
-              <Box><WarningIconWrapper size="12" /></Box>
-              <Box ml="7px">{warning}</Box>
-            </Flex>
-          ))}
-        </WarningsWrapper>
+        <Box mt="10px">
+          <WarningsCount>
+            <WarningIconWrapper size="12" />
+            <div className="text">{warningsCount}</div>
+          </WarningsCount>
+          <HighlightCode
+            value={preparedWarnings}
+            height="60px"
+            fontSize={8.5}
+            padding={5}
+          />
+          </Box>
       )}
-    </MainWrapper>
+    </React.Fragment>
   );
 };
 

@@ -93,6 +93,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter Description"
             component={TextField}
             label="Description"
+            height={130}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">

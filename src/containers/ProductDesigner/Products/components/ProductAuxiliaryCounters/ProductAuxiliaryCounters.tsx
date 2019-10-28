@@ -26,7 +26,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="20px">
+        <Box width="230px" p="10px" pb="13px">
           <Field
             id="auxCounter1Enabled"
             name="auxCounter1Enabled"
@@ -46,7 +46,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="20px">
+        <Box width="230px" p="10px" pb="13px">
           <Field
             id="auxCounter2Enabled"
             name="auxCounter2Enabled"
@@ -66,7 +66,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="20px">
+        <Box width="230px" p="10px" pb="13px">
           <Field
             id="auxCounter3Enabled"
             name="auxCounter3Enabled"

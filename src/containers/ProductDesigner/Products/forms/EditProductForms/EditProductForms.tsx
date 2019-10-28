@@ -37,7 +37,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel
         title="Details"
         isDisabled={!currentProductType}
-        hintForDisabled="Select Product Type"
+        hintIfDisabled="Select Product Type"
       >
         <ProductDetailsForm
           productType={currentProductType}

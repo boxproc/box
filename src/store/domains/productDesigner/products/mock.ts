@@ -70,20 +70,19 @@ export const productItemsFilteredData: ProductsDataResp = {
 
 export const productDetailsData: ProductDetailsResp = {
   product: {
+    apr_default: 29.99,
+    apr_default_calculation_method: 'A',
+    fee_exceed_limit: 25,
+    fee_late_payment: 25,
+    fee_overpayment: 25,
+    limit_sharing_allowed_flag: 'N',
+    minimum_payment_amount: 15,
+    minimum_payment_rate: 5,
+    payment_grace_number_of_days: 30,
     product_id: 1,
-    apr_default: 1,
-    apr_cash: 1,
-    apr_sales: 1,
-    apr_balance_transfer: 1,
-    apr_fee: 1,
-    fee_late_payment: 1,
-    fee_exceed_limit: 1,
-    fee_unpaid: 1,
-    fee_over_limit: 1,
-    minimum_payment_percent: 1,
-    minimum_payment_amount: 1,
-    payment_grace_number_of_days: 1,
-    limit_sharing_allowed_flag: 'Y',
+    rate_exceed_limit: 5,
+    rate_late_payment: 3,
+    rate_overpayment: 10,
   },
 };
 

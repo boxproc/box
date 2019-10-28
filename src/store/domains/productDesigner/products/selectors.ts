@@ -102,6 +102,11 @@ export const selectProductServices = createSelector(
   selectProductCardEndpointsService,
   (products, activeId, interfacesOptions, endpointsOptions) => {
     const current = products.find(product => product.id === activeId);
+
+    if (!current) {
+      return null;
+    }
+
     const endpointId = current.card_transactions_endpoint_id;
     const interfaceId = current.card_management_interface_id;
     const secureProviderInterfaceId = current.provider_3d_secure_interface_id;

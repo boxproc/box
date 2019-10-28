@@ -72,18 +72,17 @@ export interface ProductFilterPrepared {
 export interface RevolvingCreditProductItemResp {
   product_id: number;
   apr_default: number;
-  apr_cash: number;
-  apr_sales: number;
-  apr_balance_transfer: number;
-  apr_fee: number;
-  fee_late_payment: number;
+  apr_default_calculation_method: string | number;
   fee_exceed_limit: number;
-  fee_unpaid: number;
-  fee_over_limit: number;
-  minimum_payment_percent: number;
-  minimum_payment_amount: number;
-  payment_grace_number_of_days: number;
+  fee_late_payment: number;
+  fee_overpayment: number;
   limit_sharing_allowed_flag: string;
+  minimum_payment_amount: number;
+  minimum_payment_rate: number;
+  payment_grace_number_of_days: number;
+  rate_exceed_limit: number;
+  rate_late_payment: number;
+  rate_overpayment: number;
 }
 
 export interface RevolvingCreditProductResp {
@@ -93,18 +92,17 @@ export interface RevolvingCreditProductResp {
 export interface RevolvingCreditProductItem {
   productId: number;
   aprDefault: number;
-  aprCash: number;
-  aprSales: number;
-  aprBalanceTransfer: number;
-  aprFee: number;
-  feeLatePayment: number;
+  aprDefaultCalculationMethod: SelectValues;
   feeExceedLimit: number;
-  feeUnpaid: number;
-  feeOverLimit: number;
-  minimumPaymentPercent: number;
-  minimumPaymentAmount: number;
-  paymentGraceNumberOfDays: number;
+  feeLatePayment: number;
+  feeOverpayment: number;
   limitSharingAllowedFlag: boolean;
+  minimumPaymentAmount: number;
+  minimumPaymentRate: number;
+  paymentGraceNumberOfDays: number;
+  rateExceedLimit: number;
+  rateLatePayment: number;
+  rateOverpayment: number;
 }
 
 export interface LoanProductItemResp {

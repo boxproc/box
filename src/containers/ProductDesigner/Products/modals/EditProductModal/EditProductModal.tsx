@@ -13,6 +13,7 @@ interface EditProductModalProps extends WithModalProps {
   isProductDetailsFormDirty: boolean;
   isProductRulesFormDirty: boolean;
   isServicesFormDirty: boolean;
+  isAprsFormDirty: boolean;
   isProductOverride: boolean;
 }
 
@@ -26,6 +27,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isProductRulesFormDirty,
   isProductOverride,
   isServicesFormDirty,
+  isAprsFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -47,19 +49,16 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       return isGeneralProductFormDirty
         || isProductDetailsFormDirty
         || isProductRulesFormDirty
-        || isServicesFormDirty;
+        || isServicesFormDirty
+        || isAprsFormDirty;
     },
     [
       isGeneralProductFormDirty,
       isProductDetailsFormDirty,
       isProductRulesFormDirty,
       isServicesFormDirty,
+      isAprsFormDirty,
     ]
-  );
-
-  const modalMinHeight = React.useMemo(
-    () => isProductOverride ? 576 : 550,
-    [isProductOverride]
   );
 
   return (
@@ -67,7 +66,8 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
-      minContainerHeight={modalMinHeight}
+      maxContainerWidth={900}
+      minContainerHeight={576}
       withCloseConfirmation={isAnyFormDirty}
     >
       <EditProductForms

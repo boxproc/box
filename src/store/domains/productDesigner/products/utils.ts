@@ -1,5 +1,6 @@
 import {
   actionTypesOptions,
+  aprTypesOptions,
   loanTypesOptions,
   productTypesCodes,
   productTypesOptions,
@@ -142,24 +143,24 @@ export const prepareProductDetailsValues =
   };
 
 export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
+  const aprDefaultCalculationMethod = aprTypesOptions
+    .find(el => el.value === product.apr_default_calculation_method);
+
   return {
     productId: product.product_id,
     aprDefault: product.apr_default && product.apr_default.toFixed(2),
-    aprCash: product.apr_cash && product.apr_cash.toFixed(2),
-    aprSales: product.apr_sales && product.apr_sales.toFixed(2),
-    aprBalanceTransfer: product.apr_balance_transfer && product.apr_balance_transfer.toFixed(2),
-    aprFee: product.apr_fee && product.apr_fee.toFixed(2),
-    feeLatePayment: product.fee_late_payment && product.fee_late_payment.toFixed(2),
+    aprDefaultCalculationMethod,
     feeExceedLimit: product.fee_exceed_limit && product.fee_exceed_limit.toFixed(2),
-    feeUnpaid: product.fee_unpaid && product.fee_unpaid.toFixed(2),
-    feeOverLimit: product.fee_over_limit && product.fee_over_limit.toFixed(2),
-    minimumPaymentPercent: product.minimum_payment_percent &&
-      product.minimum_payment_percent.toFixed(2),
-    minimumPaymentAmount: product.minimum_payment_amount &&
-      product.minimum_payment_amount.toFixed(2),
+    feeLatePayment: product.fee_late_payment && product.fee_late_payment.toFixed(2),
+    feeOverpayment: product.fee_overpayment && product.fee_overpayment.toFixed(2),
+    limitSharingAllowedFlag: product.limit_sharing_allowed_flag === yesNoTypesCodes.YES,
+    minimumPaymentAmount: product.minimum_payment_amount
+      && product.minimum_payment_amount.toFixed(2),
+    minimumPaymentRate: product.minimum_payment_rate && product.minimum_payment_rate.toFixed(2),
     paymentGraceNumberOfDays: product.payment_grace_number_of_days,
-    limitSharingAllowedFlag:
-      product.limit_sharing_allowed_flag === yesNoTypesCodes.YES ? true : false,
+    rateExceedLimit: product.rate_exceed_limit && product.rate_exceed_limit.toFixed(2),
+    rateLatePayment: product.rate_late_payment && product.rate_late_payment.toFixed(2),
+    rateOverpayment: product.rate_overpayment && product.rate_overpayment.toFixed(2),
   };
 };
 
@@ -167,19 +168,18 @@ export const prepareRevolvingCreditToSend = (product: RevolvingCreditProductItem
   return {
     product_id: product.productId,
     apr_default: Number(product.aprDefault),
-    apr_cash: Number(product.aprCash),
-    apr_sales: Number(product.aprSales),
-    apr_balance_transfer: Number(product.aprBalanceTransfer),
-    apr_fee: Number(product.aprFee),
-    fee_late_payment: Number(product.feeLatePayment),
+    apr_default_calculation_method: product.aprDefaultCalculationMethod.value,
     fee_exceed_limit: Number(product.feeExceedLimit),
-    fee_unpaid: Number(product.feeUnpaid),
-    fee_over_limit: Number(product.feeOverLimit),
-    minimum_payment_percent: Number(product.minimumPaymentPercent),
-    minimum_payment_amount: Number(product.minimumPaymentAmount),
-    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
+    fee_late_payment: Number(product.feeLatePayment),
+    fee_overpayment: Number(product.feeOverpayment),
     limit_sharing_allowed_flag:
       product.limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    minimum_payment_amount: Number(product.minimumPaymentAmount),
+    minimum_payment_rate: Number(product.minimumPaymentRate),
+    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
+    rate_exceed_limit: Number(product.rateExceedLimit),
+    rate_late_payment: Number(product.rateLatePayment),
+    rate_overpayment: Number(product.rateOverpayment),
   };
 };
 

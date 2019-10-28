@@ -77,8 +77,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     outline: none;
     cursor: pointer;
     color: ${({ theme, accentClose }) =>
-    accentClose ? theme.colors.normalAccent : theme.colors.gray};
+    accentClose ? theme.colors.lightAccent : theme.colors.gray};
     padding: 10px;
+    user-select: none;
 
     &:hover {
       color: ${({ theme }) => theme.colors.normalAccent};

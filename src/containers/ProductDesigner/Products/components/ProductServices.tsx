@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { SelectField } from 'components';
+import { Delimiter, SelectField } from 'components';
 
 import { HandleGetProductServices } from 'store/domains';
 
@@ -51,6 +51,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Delimiter />
         <Box width={[1 / 2]} p="10px">
           <Field
             id="endpoints"
@@ -64,6 +65,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Delimiter />
         <Box width={[1 / 2]} p="10px">
           <Field
             id="secureProviderInterfaces"
