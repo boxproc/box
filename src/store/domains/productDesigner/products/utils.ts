@@ -270,15 +270,30 @@ export const prepareProductDetailsValuesToSend =
     const type = productType.value;
 
     if (type === productTypesCodes.DEBIT) {
-      return prepareDebitToSend(product);
+      return {
+        ...prepareDebitToSend(product),
+        product_type: type,
+      };
     } else if (type === productTypesCodes.LOAN) {
-      return prepareLoanToSend(product);
+      return {
+        ...prepareLoanToSend(product),
+        product_type: type,
+      };
     } else if (type === productTypesCodes.PREPAID) {
-      return preparePrepaidToSend(product);
+      return {
+        ...preparePrepaidToSend(product),
+        product_type: type,
+      };
     } else if (type === productTypesCodes.REVOLVING_CREDIT) {
-      return prepareRevolvingCreditToSend(product);
+      return {
+        ...prepareRevolvingCreditToSend(product),
+        product_type: type,
+      };
     } else if (type === productTypesCodes.SAVINGS) {
-      return prepareSavingsToSend(product);
+      return {
+        ...prepareSavingsToSend(product),
+        product_type: type,
+      };
     } else {
       return null;
     }
