@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { iconNamesConst, modalNamesConst, stringsConst, systemMonitorTables } from 'consts';
+import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -48,7 +48,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: stringsConst.SHOW_LOG,
+        name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           name: systemMonitorTables.ENDPOINTS,
@@ -57,7 +57,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
         }),
       },
       {
-        name: stringsConst.DELETE,
+        name: 'Delete',
         icon: iconNamesConst.DELETE,
         action: deleteEndpoint,
         withConfirmation: true,

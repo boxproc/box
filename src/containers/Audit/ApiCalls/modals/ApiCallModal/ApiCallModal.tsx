@@ -54,6 +54,4 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(EditTransactionModal)
-);
+})(withModal(EditTransactionModal));

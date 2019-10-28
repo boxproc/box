@@ -7,7 +7,6 @@ import {
   iconNamesConst,
   modalNamesConst,
   schedulerTasksConsts,
-  stringsConst,
   systemMonitorTables,
 } from 'consts';
 
@@ -115,7 +114,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `${schedulerTasksConsts.RESUME.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: stringsConst.SHOW_LOG,
+        name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           name: systemMonitorTables.SCHEDULER_JOBS,
@@ -124,7 +123,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         }),
       },
       {
-        name: stringsConst.DELETE,
+        name: 'Delete',
         icon: iconNamesConst.DELETE,
         action: deleteAdminSchedulerJob,
         withConfirmation: true,

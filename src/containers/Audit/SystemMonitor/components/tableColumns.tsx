@@ -3,7 +3,7 @@ import { CellInfo } from 'react-table';
 
 import { Button, TableCell, TableHeader } from 'components';
 
-import { iconNamesConst, stringsConst } from 'consts';
+import { iconNamesConst } from 'consts';
 
 import { TableCellType } from 'types';
 
@@ -75,7 +75,7 @@ export const tableColumns = (getLogData: HandleGetLogData, name: string) => [
     Cell: (cellInfo: CellInfo) => (
       <Button
         iconName={iconNamesConst.SHORT_TEXT}
-        text={stringsConst.SHOW_LOG}
+        text="Show log"
         size="10"
         onClick={() => getLogData({
           name,

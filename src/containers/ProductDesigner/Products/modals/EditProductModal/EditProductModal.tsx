@@ -12,6 +12,7 @@ interface EditProductModalProps extends WithModalProps {
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
   isProductRulesFormDirty: boolean;
+  isServicesFormDirty: boolean;
   isProductOverride: boolean;
 }
 
@@ -24,24 +25,50 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isProductDetailsFormDirty,
   isProductRulesFormDirty,
   isProductOverride,
+  isServicesFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
 
-  const productName = currentProductName ? `: ${currentProductName}` : '';
-  const isFormDirty = isGeneralProductFormDirty
-    || isProductDetailsFormDirty
-    || isProductRulesFormDirty;
+  const productName = React.useMemo(
+    () => currentProductName ? `: ${currentProductName}` : '',
+    [currentProductName]
+  );
+
+  const modalTitle = React.useMemo(
+    () => isProductOverride ? `Product override${productName}` : `Edit product${productName}`,
+    [isProductOverride, productName]
+  );
+
+  const isAnyFormDirty = React.useMemo(
+    () => {
+      return isGeneralProductFormDirty
+        || isProductDetailsFormDirty
+        || isProductRulesFormDirty
+        || isServicesFormDirty;
+    },
+    [
+      isGeneralProductFormDirty,
+      isProductDetailsFormDirty,
+      isProductRulesFormDirty,
+      isServicesFormDirty,
+    ]
+  );
+
+  const modalMinHeight = React.useMemo(
+    () => isProductOverride ? 576 : 550,
+    [isProductOverride]
+  );
 
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={isProductOverride ? `Product override${productName}` : `Edit product${productName}`}
-      minContainerHeight={isProductOverride ? 576 : 550}
-      withCloseConfirmation={isFormDirty}
+      title={modalTitle}
+      minContainerHeight={modalMinHeight}
+      withCloseConfirmation={isAnyFormDirty}
     >
       <EditProductForms
         onCancel={handleOnCancel}

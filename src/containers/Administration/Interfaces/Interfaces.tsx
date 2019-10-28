@@ -6,7 +6,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
-import { iconNamesConst, modalNamesConst, stringsConst, systemMonitorTables } from 'consts';
+import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
 
 import {
   AdminInterfaceItemPrepared,
@@ -48,7 +48,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: stringsConst.SHOW_LOG,
+        name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           name: systemMonitorTables.INTERFACES,
@@ -57,7 +57,7 @@ const Interfaces: React.FC<AccountsProps> = ({
         }),
       },
       {
-        name: stringsConst.DELETE,
+        name: 'Delete',
         icon: iconNamesConst.DELETE,
         action: deleteInterface,
         withConfirmation: true,

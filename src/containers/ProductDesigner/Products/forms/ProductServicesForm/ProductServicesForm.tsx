@@ -43,6 +43,8 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   getProductServices,
   isLoadingInterfaces,
   isLoadingEndpoints,
+  dirty,
+  pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
@@ -65,8 +67,10 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
       <OkCancelButtons
         okText="Save"
         cancelText="Close"
+        withCancelConfirmation={dirty}
         onCancel={onCancel}
         rightPosition={true}
+        disabledOk={pristine}
       />
     </form>
   );

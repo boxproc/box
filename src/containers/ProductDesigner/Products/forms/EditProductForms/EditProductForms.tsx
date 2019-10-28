@@ -3,7 +3,7 @@ import React from 'react';
 import { Tabs, TabsPanel } from 'components';
 
 import {
-  // AprsForm,
+  AprsForm,
   AuxiliaryCountersForm,
   GeneralProductForm,
   // LimitsFeesCommissionsForm,
@@ -53,9 +53,9 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel title="Auxiliary counters">
         <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
-      {/* <TabsPanel title="APRs">
+      <TabsPanel title="APRs">
         <AprsForm onCancel={onCancel} />
-      </TabsPanel> */}
+      </TabsPanel>
       <TabsPanel title="Loyalty and Bonus">
         <LoyaltyAndBonusForm onCancel={onCancel} />
       </TabsPanel>

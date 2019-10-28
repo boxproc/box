@@ -7,7 +7,7 @@ import { ScheduledJobsFilter } from './forms';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { iconNamesConst, stringsConst, systemMonitorTables } from 'consts';
+import { iconNamesConst, systemMonitorTables } from 'consts';
 
 import {
   AuditScheduledJobsItemPrepared,
@@ -53,7 +53,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: stringsConst.SHOW_LOG,
+        name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           id: currentSchedulerId,

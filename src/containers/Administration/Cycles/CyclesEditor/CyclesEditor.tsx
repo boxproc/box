@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { iconNamesConst, modalNamesConst, stringsConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 
@@ -43,7 +43,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: stringsConst.DELETE,
+        name: 'Delete',
         icon: iconNamesConst.DELETE,
         action: deleteAdminCyclesEditor,
         withConfirmation: true,
