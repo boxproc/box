@@ -47,7 +47,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
 
   const columns = [
     {
-      maxWidth: 150,
+      maxWidth: 100,
       sortable: true,
       accessor: 'repaymentSequence',
       Header: <TableHeader title="Repayment Sequence" />,
@@ -59,7 +59,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 180,
+      maxWidth: 230,
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
@@ -123,7 +123,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   ];
 
   return (
-    <Box mb="10px">
+    <Box pb="10px">
       <Table
         data={productAprs}
         columns={columns}

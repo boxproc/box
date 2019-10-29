@@ -13,6 +13,7 @@ import { formErrorUtil } from 'utils';
 
 interface FieldWrapperProps {
   minWidth?: string;
+  maxWidth?: string;
 }
 
 const FieldWrapper = styled(Box)<FieldWrapperProps>`
@@ -21,6 +22,10 @@ const FieldWrapper = styled(Box)<FieldWrapperProps>`
 
   ${({ minWidth }) => minWidth && `
     min-width: ${minWidth};
+  `}
+
+  ${({ maxWidth }) => maxWidth && `
+    max-width: ${maxWidth};
   `}
 `;
 
@@ -33,61 +38,56 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
 }) => {
   return (
     <Flex alignItems="flex-end">
-      <FieldWrapper>
+      <FieldWrapper maxWidth="100px">
         <Field
           id="repaymentSequence"
           name="repaymentSequence"
           component={InputField}
           label="Repayment Sequence"
-          placeholder="Enter Sequence"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper minWidth="180px">
+      <FieldWrapper minWidth="230px" maxWidth="230px">
         <Field
           id="description"
           name="description"
           component={InputField}
           label="Description"
-          placeholder="Enter Description"
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper>
+      <FieldWrapper maxWidth="160px">
         <Field
           id="calculationMethod"
           name="calculationMethod"
           component={SelectField}
           label="Calculation Method"
-          placeholder="Select Method"
           options={aprTypesOptions}
           isDisabled={isDisabled}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper>
+      <FieldWrapper maxWidth="160px">
         <Field
           id="rate"
           name="rate"
           component={InputField}
           label="Rate"
-          placeholder="Enter Rate"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper>
+      <FieldWrapper maxWidth="160px">
         <Field
           id="graceNumberOfDays"
           name="graceNumberOfDays"
           component={InputField}
           label="Grace # of Days"
-          placeholder="Enter #"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
