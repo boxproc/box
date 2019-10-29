@@ -50,12 +50,12 @@ import {
   prepareFormValuesProductAprsToSend,
   prepareGeneralProductValuesToSend,
   prepareNewProductValuesToSend,
+  prepareProductAprsToSend,
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
   prepareProductRuleIdsToSend,
   prepareProductRuleValuesToSend,
   prepareUpdateCardServiceValuesPrepared,
-  prepareProductAprsToSend,
 } from './utils';
 
 import { Thunk } from 'types';
