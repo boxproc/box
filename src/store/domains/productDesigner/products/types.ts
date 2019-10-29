@@ -264,6 +264,41 @@ export interface ServicesItemsPrepared {
   secureProviderInterfaces: SelectValues;
 }
 
+export interface ProductAprItem {
+  id: number;
+  product_id: number;
+  repayment_sequence: number;
+  description: string;
+  calculation_method: string | number;
+  rate: number;
+  grace_number_of_days: number;
+}
+
+export interface ProductAprItems {
+  product_aprs: Array<ProductAprItem>;
+}
+
+export interface ProductAprPlainInfo {
+  id: number;
+  productId: number;
+  repaymentSequence: number;
+  description: string;
+  rate: string;
+  graceNumberOfDays: number;
+}
+
+export interface ProductApr extends ProductAprPlainInfo {
+  calculationMethod: string;
+}
+
+export interface ProductAprFormValues extends ProductAprPlainInfo {
+  calculationMethod: SelectValues;
+}
+
+export interface ProductAprs {
+  product_aprs: Array<ProductApr>;
+}
+
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProduct: ProductItemResp;
@@ -272,4 +307,5 @@ export interface ProductsState {
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
   interfaces: ImmutableArray<IdNamePair>;
   endpoints: ImmutableArray<IdNamePair>;
+  productAprs: ImmutableArray<ProductAprItem>;
 }

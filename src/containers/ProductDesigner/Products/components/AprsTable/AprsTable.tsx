@@ -3,135 +3,48 @@ import { CellInfo } from 'react-table';
 
 import { Box } from '@rebass/grid';
 
-import { Button, renderEditableTableCell, Table, TableCell, TableHeader } from 'components';
+import {
+  Button,
+  renderEditableTableCell,
+  Table,
+  TableCell,
+  TableHeader,
+  withSpinner,
+} from 'components';
 
 import { iconNamesConst } from 'consts';
 
+import {
+  HandleDeleteProductApr,
+  HandleGetProductAprs,
+  HandleUpdateProductApr,
+  ProductApr,
+} from 'store/domains';
+
 import { TableCellType } from 'types';
-
-interface ProductApr {
-  id: number;
-  productId: number;
-  repaymentSequence: number;
-  description: string;
-  calculationMethod: string;
-  rate: string;
-  graceNumberOfDays: number;
-}
-
-const data = [
-  {
-    id: 1,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 1,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 1,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 1,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-  {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  }, {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  }, {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  }, {
-    id: 2,
-    productId: 1,
-    repaymentSequence: 1,
-    description: 'Test description',
-    calculationMethod: 'Actual/Actual',
-    rate: '00.00',
-    graceNumberOfDays: 1,
-  },
-];
 
 type TCell<T extends keyof ProductApr> = TableCellType<ProductApr[T]>;
 
-interface AprsTableProps { }
+interface AprsTableProps {
+  productAprs: Array<ProductApr>;
+  getProductAprs: HandleGetProductAprs;
+  deleteProductApr: HandleDeleteProductApr;
+  updateProductApr: HandleUpdateProductApr;
+}
 
-const AprsTable: React.FC<AprsTableProps> = () => {
+const AprsTable: React.FC<AprsTableProps> = ({
+  productAprs,
+  getProductAprs,
+  deleteProductApr,
+  updateProductApr,
+}) => {
+  React.useEffect(
+    () => {
+      getProductAprs();
+    },
+    [getProductAprs]
+  );
+
   const columns = [
     {
       maxWidth: 150,
@@ -139,7 +52,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
       accessor: 'repaymentSequence',
       Header: <TableHeader title="Repayment Sequence" />,
       Cell: renderEditableTableCell({
-        updateAction: () => console.log('---updating'),
+        updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
         isAlwaysEditable: true,
@@ -151,7 +64,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
       accessor: 'description',
       Header: <TableHeader title="Description" />,
       Cell: renderEditableTableCell({
-        updateAction: () => console.log('---updating'),
+        updateAction: updateProductApr,
         isSmaller: true,
         isAlwaysEditable: true,
       }),
@@ -174,7 +87,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
       Cell: renderEditableTableCell({
-        updateAction: () => console.log('---updating'),
+        updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
         isAlwaysEditable: true,
@@ -186,7 +99,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
       accessor: 'graceNumberOfDays',
       Header: <TableHeader title="Grace Number of&nbsp;Days" />,
       Cell: renderEditableTableCell({
-        updateAction: () => console.log('---updating'),
+        updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
         isAlwaysEditable: true,
@@ -203,7 +116,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
           iconSize="15"
           withConfirmation={true}
           confirmationText={`Confirm want you delete APR?`}
-          onClick={() => console.log('---deleting')}
+          onClick={() => deleteProductApr(cellInfo.original.id)}
         />
       ),
     },
@@ -212,7 +125,7 @@ const AprsTable: React.FC<AprsTableProps> = () => {
   return (
     <Box mb="10px">
       <Table
-        data={data}
+        data={productAprs}
         columns={columns}
         pageSize={8}
         isSmaller={true}
@@ -221,4 +134,4 @@ const AprsTable: React.FC<AprsTableProps> = () => {
   );
 };
 
-export default AprsTable;
+export default withSpinner()(AprsTable);

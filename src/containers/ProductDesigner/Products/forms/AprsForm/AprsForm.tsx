@@ -9,17 +9,24 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { ProductAprs } from 'containers/ProductDesigner/Products/components';
 
-interface AprsFormProps { }
+import { HandleAddProductApr } from 'store/domains';
+
+interface AprsFormProps {
+  addProductApr: HandleAddProductApr;
+  isLoading: boolean;
+}
 
 type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
 
 const AprsForm: React.FC<AprsFormAllProps> = ({
+  addProductApr,
   handleSubmit,
   pristine,
   dirty,
+  isLoading,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(addProductApr),
     [handleSubmit]
   );
 
@@ -27,14 +34,12 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
     <form onSubmit={handleSubmitForm}>
       <Box mb="10px">
         <Flex alignItems="flex-end">
-          <ProductAprs />
-          <Box pb="20px">
+          <ProductAprs isDisabled={isLoading}/>
+          <Box width="90px" pb="20px">
             <Button
-              text="add APR"
+              text={isLoading ? 'adding...' : 'add APR'}
               iconName={iconNamesConst.PLUS}
-              onClick={() => console.log('--- adding apr')}
-              withConfirmation={dirty}
-              disabled={pristine}
+              disabled={pristine || isLoading}
             />
           </Box>
         </Flex>

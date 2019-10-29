@@ -43,7 +43,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     transactionTypeDescription: values.transaction_type_description,
     aprId: values.apr_id,
     aprRate: values.apr_rate && values.apr_rate.toFixed(2),
-    aprCalculationMethod: aprCalculationMethod.label,
+    aprCalculationMethod: aprCalculationMethod && aprCalculationMethod.label,
   };
 };
 

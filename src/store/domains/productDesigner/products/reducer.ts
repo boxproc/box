@@ -11,13 +11,14 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductRule: null,
   interfaces: Immutable([]),
   endpoints: Immutable([]),
+  productAprs: Immutable([]),
 });
 
 const productsReducer =
   (state = productsInitialState, action: ProductsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.DELETE_PRODUCT_FULFILLED:
-        return state.set('products', state.products.filter(el => el.id !== action.meta));
+        return state.set('products', state.products.filter(el => el.id !== action.meta.id));
 
       case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
         return state.set('products', action.payload.products);
@@ -39,6 +40,12 @@ const productsReducer =
 
       case ActionTypeKeys.GET_SERVICE_ENDPOINTS_FULFILLED:
         return state.set('endpoints', action.payload.endpoints);
+
+      case ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED:
+        return state.set('productAprs', action.payload.product_aprs);
+
+      case ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED:
+        return state.set('productAprs', state.productAprs.filter(el => el.id !== action.meta.id));
 
       case ActionTypeKeys.RESET_PRODUCTS:
         return state = productsInitialState;

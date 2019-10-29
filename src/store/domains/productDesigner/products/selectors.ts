@@ -12,6 +12,7 @@ import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
+  prepareProductAprsToRender,
   prepareProductDetailsValues,
   prepareProductRuleValues,
 } from './utils';
@@ -191,6 +192,18 @@ export const selectInstitutionProductsOptions = createSelector(
         value: product.id,
         label: product.name,
       };
+    });
+  }
+);
+
+export const selectDefaultProductAprs = (state: StoreState) =>
+  state.productDesigner.products.productAprs;
+
+export const selectProductAprs = createSelector(
+  selectDefaultProductAprs,
+  aprs => {
+    return aprs && aprs.asMutable().map(apr => {
+      return prepareProductAprsToRender(apr);
     });
   }
 );

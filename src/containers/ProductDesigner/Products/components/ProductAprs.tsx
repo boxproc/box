@@ -24,9 +24,13 @@ const FieldWrapper = styled(Box)<FieldWrapperProps>`
   `}
 `;
 
-interface ProductAprsProps { }
+interface ProductAprsProps {
+  isDisabled: boolean;
+}
 
-const ProductAprs: React.FC<ProductAprsProps> = () => {
+const ProductAprs: React.FC<ProductAprsProps> = ({
+  isDisabled,
+}) => {
   return (
     <Flex alignItems="flex-end">
       <FieldWrapper>
@@ -37,6 +41,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
           label="Repayment Sequence"
           placeholder="Enter Sequence"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
@@ -47,6 +52,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
           component={InputField}
           label="Description"
           placeholder="Enter Description"
+          disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
@@ -58,6 +64,8 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
           label="Calculation Method"
           placeholder="Select Method"
           options={aprTypesOptions}
+          isDisabled={isDisabled}
+          isClearable={false}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
@@ -69,6 +77,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
           label="Rate"
           placeholder="Enter Rate"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
@@ -80,6 +89,7 @@ const ProductAprs: React.FC<ProductAprsProps> = () => {
           label="Grace # of Days"
           placeholder="Enter #"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>

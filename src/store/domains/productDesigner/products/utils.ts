@@ -19,6 +19,10 @@ import {
   NewProduct,
   PrepaidProductItem,
   PrepaidProductItemResp,
+  ProductApr,
+  ProductAprFormValues,
+  ProductAprItem,
+  ProductAprPlainInfo,
   ProductFilter,
   ProductFilterPrepared,
   ProductItemGeneral,
@@ -342,5 +346,61 @@ export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => 
   return {
     event_id: data.eventId && data.eventId.value,
     action_type: data.actionType && data.actionType.value,
+  };
+};
+
+export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => {
+  if (!data) {
+    return null;
+  }
+
+  const calculationMethod = aprTypesOptions.find(el => el.value === data.calculation_method);
+
+  return {
+    id: data.id,
+    productId: data.product_id,
+    repaymentSequence: data.repayment_sequence,
+    description: data.description,
+    calculationMethod: calculationMethod && calculationMethod.label,
+    rate: data.rate && data.rate.toFixed(2),
+    graceNumberOfDays: data.grace_number_of_days,
+  };
+};
+
+export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<ProductAprItem> => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    id: data.id,
+    product_id: data.productId,
+    repayment_sequence: data.repaymentSequence,
+    description: data.description,
+    rate: Number(data.rate),
+    grace_number_of_days: data.graceNumberOfDays,
+  };
+};
+
+export const prepareFormValuesProductAprsToSend = (data: Partial<ProductAprFormValues>):
+  Partial<ProductAprItem> => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    ...prepareProductAprs(data),
+    calculation_method: data.calculationMethod.value,
+  };
+};
+
+export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<ProductAprItem> => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    ...prepareProductAprs(data),
+    calculation_method: data.calculationMethod,
   };
 };

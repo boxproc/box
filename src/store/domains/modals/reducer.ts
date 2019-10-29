@@ -9,6 +9,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   payloadConfirmationModal: null,
   payloadLogModal: null,
   isEditModalOpened: false,
+  isEditProductModal: true,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
