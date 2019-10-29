@@ -1,23 +1,20 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, OkCancelButtons } from 'components';
+import { Button } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
 import { ProductAprs } from 'containers/ProductDesigner/Products/components';
 
-interface AprsFormProps {
-  onCancel?: () => void;
-}
+interface AprsFormProps { }
 
 type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
 
 const AprsForm: React.FC<AprsFormAllProps> = ({
   handleSubmit,
-  onCancel,
   pristine,
   dirty,
 }) => {
@@ -28,29 +25,20 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <ProductAprs />
-      <Hr />
-      <Flex
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Button
-          text="delete"
-          iconName={iconNamesConst.DELETE}
-          type="reset"
-          withConfirmation={true}
-          confirmationText="Delete APR?"
-          onClick={() => console.log('deleting apr')}
-        />
-        <OkCancelButtons
-          okText="Save"
-          cancelText="Close"
-          onCancel={onCancel}
-          rightPosition={true}
-          disabledOk={pristine}
-          withCancelConfirmation={dirty}
-        />
-      </Flex>
+      <Box mb="10px">
+        <Flex alignItems="flex-end">
+          <ProductAprs />
+          <Box pb="20px">
+            <Button
+              text="add APR"
+              iconName={iconNamesConst.PLUS}
+              onClick={() => console.log('--- adding apr')}
+              withConfirmation={dirty}
+              disabled={pristine}
+            />
+          </Box>
+        </Flex>
+      </Box>
     </form>
   );
 };

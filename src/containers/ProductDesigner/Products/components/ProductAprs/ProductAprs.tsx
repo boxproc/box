@@ -3,68 +3,87 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, SelectField, TextField } from 'components';
+import styled from 'theme';
+
+import { InputField, SelectField } from 'components';
 
 import { aprTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
+interface FieldWrapperProps {
+  minWidth?: string;
+}
+
+const FieldWrapper = styled(Box)<FieldWrapperProps>`
+  padding: 10px;
+  width: 100%;
+
+  ${({ minWidth }) => minWidth && `
+    min-width: ${minWidth};
+  `}
+`;
+
 interface ProductAprsProps { }
 
 const ProductAprs: React.FC<ProductAprsProps> = () => {
   return (
-    <Box mx="-10px">
-      <Flex
-        alignItems="flex-end"
-        flexWrap="wrap"
-      >
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="repaymentSequence"
-            name="repaymentSequence"
-            component={InputField}
-            label="Repayment Sequence"
-            placeholder="Enter Repayment Sequence"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="rate"
-            name="rate"
-            component={InputField}
-            label="Rate"
-            placeholder="Enter Rate"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Delimiter />
-        <Box width={[1 / 2]} p="10px">
-          <Field
-            id="calculationMethod"
-            name="calculationMethod"
-            component={SelectField}
-            label="Calculation Method"
-            placeholder="Select Calculation Method"
-            options={aprTypesOptions}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1]} p="10px">
-          <Field
-            id="description"
-            name="description"
-            component={TextField}
-            label="Description"
-            placeholder="Enter Description"
-            height={130}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-      </Flex>
-    </Box>
+    <Flex alignItems="flex-end">
+      <FieldWrapper>
+        <Field
+          id="repaymentSequence"
+          name="repaymentSequence"
+          component={InputField}
+          label="Repayment Sequence"
+          placeholder="Enter Sequence"
+          isNumber={true}
+          validate={[formErrorUtil.required]}
+        />
+      </FieldWrapper>
+      <FieldWrapper minWidth="180px">
+        <Field
+          id="description"
+          name="description"
+          component={InputField}
+          label="Description"
+          placeholder="Enter Description"
+          validate={[formErrorUtil.required]}
+        />
+      </FieldWrapper>
+      <FieldWrapper>
+        <Field
+          id="calculationMethod"
+          name="calculationMethod"
+          component={SelectField}
+          label="Calculation Method"
+          placeholder="Select Method"
+          options={aprTypesOptions}
+          validate={[formErrorUtil.required]}
+        />
+      </FieldWrapper>
+      <FieldWrapper>
+        <Field
+          id="rate"
+          name="rate"
+          component={InputField}
+          label="Rate"
+          placeholder="Enter Rate"
+          isNumber={true}
+          validate={[formErrorUtil.required]}
+        />
+      </FieldWrapper>
+      <FieldWrapper>
+        <Field
+          id="graceNumberOfDays"
+          name="graceNumberOfDays"
+          component={InputField}
+          label="Grace # of Days"
+          placeholder="Enter #"
+          isNumber={true}
+          validate={[formErrorUtil.required]}
+        />
+      </FieldWrapper>
+    </Flex>
   );
 };
 

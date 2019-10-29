@@ -12,6 +12,7 @@ import { renderIcon } from './renderIcon';
 interface ButtonProps extends WithModalProps {
   text: string;
   size?: string;
+  iconSize?: string;
   iconName?: string;
   type?: 'reset' | 'submit';
   disabled?: boolean;
@@ -32,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   iconName,
   type,
   size,
+  iconSize,
   confirmationText,
   confirmationTitle,
   openModal,
@@ -68,7 +70,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {iconName && (
         <Box mr="2px">
-          {renderIcon(iconName)}
+          {renderIcon(iconName, iconSize)}
         </Box>
       )}
       {text}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
+import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { AdminUserItemPrepared } from 'store/domains';
 
@@ -81,14 +81,14 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="2FA Required" />,
     accessor: 'requires2faFlag',
-    Cell: renderCheckBoxIconTableCell(),
+    Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Change Profile Allowed" />,
     accessor: 'changeProfileAllowedFlag',
-    Cell: renderCheckBoxIconTableCell(),
+    Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 100,

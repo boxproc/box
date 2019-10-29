@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  renderCheckBoxIconTableCell,
+  renderCheckBoxTableCell,
   renderEditableTableCell,
   TableCell,
   TableHeader,
@@ -66,7 +66,10 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Current Value" />,
       accessor: 'currentValue',
-      Cell: renderEditableTableCell(updateAdminSysProps),
+      Cell: renderEditableTableCell({
+        updateAction: updateAdminSysProps,
+        isNumber: true,
+      }),
     },
     {
       maxWidth: 300,
@@ -97,7 +100,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIconTableCell(),
+      Cell: renderCheckBoxTableCell(),
     },
   ];
 

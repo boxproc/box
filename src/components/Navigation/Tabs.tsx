@@ -25,6 +25,7 @@ const TabTitle = styled.div<TabTitleProps>`
   font-size: 14px;
   letter-spacing: .5pt;
   border-bottom: 1px solid transparent;
+  user-select: none;
 
   ${({ isDisabled, theme }) => !isDisabled && `
     &:hover {

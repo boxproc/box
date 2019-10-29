@@ -1,5 +1,5 @@
 export enum institutionsNames {
-  BOX = 'BOX Institution',
+  BOX = 'BOX',
 }
 
 export enum usernames {

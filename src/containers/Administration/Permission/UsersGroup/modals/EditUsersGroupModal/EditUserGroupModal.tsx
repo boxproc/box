@@ -38,6 +38,4 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(EditUsersGroupModal)
-);
+})(withModal(EditUsersGroupModal));

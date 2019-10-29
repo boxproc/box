@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
+import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { LedgerAccountItemPrepared } from 'store/domains';
 
@@ -48,7 +48,7 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Product Override" />,
     accessor: 'productOverrideFlag',
-    Cell: renderCheckBoxIconTableCell(),
+    Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 200,
