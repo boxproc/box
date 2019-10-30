@@ -31,6 +31,17 @@ const RevolvingCreditDetails: React.FC = () => {
         </Box>
         <Box width={[1 / 5]} p="10px">
           <Field
+            id="aprDefaultCalculationMethod"
+            name="aprDefaultCalculationMethod"
+            placeholder="Select APR Default Calculation Method"
+            component={SelectField}
+            options={aprTypesOptions}
+            label="APR Default Calculation Method"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
             id="feeExceedLimit"
             name="feeExceedLimit"
             component={NumberFormatField}
@@ -142,17 +153,6 @@ const RevolvingCreditDetails: React.FC = () => {
             label="Rate Overpayment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
-          />
-        </Box>
-        <Box width={[2 / 5]} p="10px">
-          <Field
-            id="aprDefaultCalculationMethod"
-            name="aprDefaultCalculationMethod"
-            placeholder="Select APR Default Calculation Method"
-            component={SelectField}
-            options={aprTypesOptions}
-            label="APR Default Calculation Method"
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[2 / 5]} p="10px" pb="15px">

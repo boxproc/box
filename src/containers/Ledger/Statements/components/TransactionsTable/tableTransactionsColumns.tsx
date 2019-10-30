@@ -11,7 +11,7 @@ type TCell<T extends keyof LedgerStatementTransactionsItemPrepared> =
 
 export const tableTransactionsColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
@@ -19,11 +19,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isDate={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Amount" />,
     accessor: 'amount',
@@ -31,11 +32,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
@@ -43,11 +45,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Balance Available Before" />,
     accessor: 'balanceAvailableBefore',
@@ -55,11 +58,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Balance Available After" />,
     accessor: 'balanceAvailableAfter',
@@ -67,11 +71,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Balance Settled Before" />,
     accessor: 'balanceSettledBefore',
@@ -79,11 +84,12 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Balance Settled After" />,
     accessor: 'balanceSettledAfter',
@@ -91,17 +97,19 @@ export const tableTransactionsColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

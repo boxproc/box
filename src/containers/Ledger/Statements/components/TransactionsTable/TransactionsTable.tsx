@@ -29,7 +29,8 @@ export const TransactionsTable: React.FC<TransactionsTableProps> = ({
       data={ledgerStatementTransactions}
       columns={tableTransactionsColumns}
       isHeader={true}
-      pageSize={4}
+      pageSize={8}
+      isSmaller={true}
     />
   );
 };

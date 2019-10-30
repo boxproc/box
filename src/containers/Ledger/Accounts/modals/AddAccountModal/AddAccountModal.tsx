@@ -31,7 +31,7 @@ const AddAccountModal: React.FC<AddAccountModalProps> = ({
       name={modalName}
       title="Add Account"
       maxContainerWidth={980}
-      minContainerHeight={532}
+      minContainerHeight={490}
       withCloseConfirmation={isFormDirty}
     >
       <AccountForm

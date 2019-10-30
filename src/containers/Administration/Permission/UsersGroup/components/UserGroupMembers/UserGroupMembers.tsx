@@ -42,17 +42,19 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       Cell: (props: TCell<'username'>) => (
         <TableCell
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 90,
       accessor: 'deleteButton',
       Cell: (cellInfo: CellInfo) => (
         <Button
           iconName={iconNamesConst.DELETE}
           text="Remove"
-          size="11"
+          size="10"
+          iconSize="15"
           withConfirmation={true}
           confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
           onClick={() => deleteAdminUserGroupMembers(
@@ -70,7 +72,9 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       <Table
         data={AdminUserGroupMembers}
         columns={columns}
+        pageSize={6}
         isHeader={false}
+        isSmaller={true}
       />
     </React.Fragment>
   );

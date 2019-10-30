@@ -62,6 +62,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
         <TableCell
           isNumber={true}
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
@@ -72,17 +73,19 @@ export const Cards: React.FC<AccountCardsProps> = ({
       Cell: (props: TCell<'panMasked'>) => (
         <TableCell
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 100,
       Header: <TableHeader title="Expiry Date" />,
       accessor: 'expiryDate',
       Cell: (props: TCell<'expiryDate'>) => (
         <TableCell
           value={props.value}
           isDate={true}
+          isSmaller={true}
         />
       ),
     },
@@ -93,6 +96,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
       Cell: (props: TCell<'cardStatus'>) => (
         <TableCell
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
@@ -100,7 +104,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
 
   return (
     <React.Fragment>
-      <Box mb="15px">
+      <Box mt="20px" mb="15px">
         <Button
           disabled={isOrderingCard}
           type="reset"
@@ -111,9 +115,10 @@ export const Cards: React.FC<AccountCardsProps> = ({
       </Box>
       <Table
         title="Account Cards"
-        pageSize={5}
+        pageSize={8}
         data={ledgerAccountCards}
         columns={columns}
+        isSmaller={true}
       />
       <Flex justifyContent="flex-end">
         <Box mt="10px">

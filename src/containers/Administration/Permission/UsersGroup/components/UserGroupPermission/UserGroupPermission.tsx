@@ -45,6 +45,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       Cell: (props: TCell<'uiItem'>) => (
         <TableCell
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
@@ -56,18 +57,20 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       Cell: (props: TCell<'permission'>) => (
         <TableCell
           value={props.value}
+          isSmaller={true}
         />
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 90,
       sortable: true,
       accessor: 'deleteButton',
       Cell: (cellInfo: CellInfo) => (
         <Button
           iconName={iconNamesConst.DELETE}
           text="Remove"
-          size="11"
+          size="10"
+          iconSize="15"
           confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
           withConfirmation={true}
           onClick={() =>
@@ -87,7 +90,8 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       <Table
         data={adminGroupPermissions}
         columns={columns}
-        pageSize={4}
+        pageSize={6}
+        isSmaller={true}
       />
     </React.Fragment>
   );

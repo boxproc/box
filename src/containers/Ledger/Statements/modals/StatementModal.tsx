@@ -36,7 +36,9 @@ const StatementModal: React.FC<StatementModalProps> = ({
           <Hr />
         </TabsPanel>
         <TabsPanel title="Transactions" >
-          <TransactionsTable />
+          <Box mt="20px">
+            <TransactionsTable />
+          </Box>
         </TabsPanel>
       </Tabs>
       <Flex justifyContent="flex-end">
