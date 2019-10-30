@@ -27,8 +27,10 @@ const HintWrapper = styled.div<HintWrapperProps>`
     left: ${({ position }) => position === 'right' ? 'calc(100% + 3px)' : 'auto'};
     min-width: ${({ icon, width }) => icon ? width ? width + 'px' : '160px' : 'auto'};
     padding: 7px 10px;
-    background-color: ${({ theme }) => theme.colors.blackOpacity};
-    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
+    box-shadow: ${({ theme }) => theme.shadows.aroundBox};
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
     transform: ${({ position }) =>
     position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)'};
     margin: ${({ position }) =>

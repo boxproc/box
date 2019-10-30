@@ -130,7 +130,5 @@ export const withFormField = <OriginalProps extends {}>(
     onBlur = () =>
       this.props.preventBlur
         ? ''
-        : setTimeout(() =>
-          this.props.input.onBlur(this.props.input.value)
-        )
+        : setTimeout(() => this.props.input.onBlur(this.props.input.value))
   };
