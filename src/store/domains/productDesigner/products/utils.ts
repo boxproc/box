@@ -388,9 +388,11 @@ export const prepareFormValuesProductAprsToSend = (data: Partial<ProductAprFormV
     return null;
   }
 
+  const calculationMethod = data.calculationMethod;
+
   return {
     ...prepareProductAprs(data),
-    calculation_method: data.calculationMethod.value,
+    calculation_method: calculationMethod && calculationMethod.value,
   };
 };
 
@@ -399,8 +401,10 @@ export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<Pro
     return null;
   }
 
+  const calculationMethod = aprTypesOptions.find(el => el.label === data.calculationMethod);
+
   return {
     ...prepareProductAprs(data),
-    calculation_method: data.calculationMethod,
+    calculation_method: calculationMethod && calculationMethod.value,
   };
 };

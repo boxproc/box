@@ -206,18 +206,6 @@ export const resetProducts: ResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
 });
 
-export const handleUpdateCardService: HandleUpdateCardService = values =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareUpdateCardServiceValuesPrepared(values);
-
-        await dispatch(updateCardService(preparedValues));
-      },
-      dispatch
-    );
-  };
-
 export const handleFilterProducts: HandleFilterProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
@@ -254,6 +242,19 @@ export const handleGetProductServices: HandleGetProductServices = () =>
           dispatch(getInterfacesService(currentInstitutionId)),
           dispatch(getEndpointsService(currentInstitutionId)),
         ]);
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateCardService: HandleUpdateCardService = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareUpdateCardServiceValuesPrepared(values);
+
+        await dispatch(updateCardService(preparedValues));
+        await dispatch(handleFilterProducts());
       },
       dispatch
     );
@@ -409,7 +410,7 @@ export const handleAddProductApr: HandleAddProductApr = values =>
           ...preparedValues,
           product_id: productId,
         }));
-        await dispatch(getProductAprs(productId));
+        await dispatch(handleGetProductAprs());
         await dispatch(resetForm(formNamesConst.PRODUCT_APRS));
       },
       dispatch
@@ -423,6 +424,7 @@ export const handleUpdateProductApr: HandleUpdateProductApr = values =>
         const preparedValues = prepareProductAprsToSend(values);
 
         await dispatch(updateProductApr(preparedValues));
+        await dispatch(handleGetProductAprs());
       },
       dispatch
     );

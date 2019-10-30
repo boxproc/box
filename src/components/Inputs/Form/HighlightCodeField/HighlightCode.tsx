@@ -77,7 +77,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
       const wrapper = document.querySelector('.scrollbar-editor-wrapper');
       if (isScrollbarBottom && wrapper) {
         wrapper.scrollTop = wrapper.scrollHeight;
-        setTimeout(() => setIsHidden(false), 50);
+        setTimeout(() => setIsHidden(false), 10);
       }
     },
     [isScrollbarBottom]
