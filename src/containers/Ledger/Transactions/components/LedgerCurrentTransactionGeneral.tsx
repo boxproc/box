@@ -12,7 +12,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="id"
             name="id"
@@ -22,7 +22,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]}  p="10px">
           <Field
             id="accountId"
             name="accountId"
@@ -32,7 +32,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]}  p="10px">
           <Field
             id="transactionTypeId"
             name="transactionTypeId"
@@ -40,6 +40,15 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             label="Transaction Type ID"
             readOnly={true}
             isNumber={true}
+          />
+        </Box>
+        <Box width={[1 / 4]}  p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={InputField}
+            label="Status"
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">

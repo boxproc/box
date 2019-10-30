@@ -140,4 +140,15 @@ export const tableColumns = [
       />
     ),
   },
+  {
+    maxWidth: 70,
+    sortable: true,
+    Header: <TableHeader title="Status" />,
+    accessor: 'status',
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
 ];

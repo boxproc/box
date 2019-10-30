@@ -32,6 +32,7 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   apr_id: number;
   apr_rate: number;
   apr_calculation_method: string;
+  status: string;
 }
 
 export interface LedgerTransactionItems {
@@ -61,6 +62,7 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   aprId: number;
   aprRate: string;
   aprCalculationMethod: string;
+  status: string;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

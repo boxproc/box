@@ -29,6 +29,7 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       apr_id: 1,
       apr_rate: 19.99,
       apr_calculation_method: 'A',
+      status: '00',
     },
   ],
 };
