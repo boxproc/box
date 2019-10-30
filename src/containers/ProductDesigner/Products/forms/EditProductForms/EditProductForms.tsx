@@ -1,9 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
-
-import { Button, Tabs, TabsPanel } from 'components';
-import { AprsTable } from 'containers/ProductDesigner/Products/components';
+import { Tabs, TabsPanel } from 'components';
 import {
   AprsForm,
   AuxiliaryCountersForm,
@@ -56,11 +53,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="APRs">
-        <AprsForm />
-        <AprsTable />
-        <Flex justifyContent="flex-end">
-          <Button text="Close" onClick={onCancel} />
-        </Flex>
+        <AprsForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Loyalty and Bonus">
         <LoyaltyAndBonusForm onCancel={onCancel} />

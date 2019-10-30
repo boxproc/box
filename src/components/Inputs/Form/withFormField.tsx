@@ -24,12 +24,13 @@ export const InputFieldWrapper = styled.div`
 
 const ErrorWrapper = styled.div`
   position: absolute;
-  top: calc(100% + 3px);
+  top: 100%;
   left: 0;
   padding-top: 3px;
-  font-size: 10px;
-  line-height: 1px
+  font-size: 9px;
+  line-height: 1;
   color: ${({ theme }) => theme.colors.red};
+  white-space: nowrap;
 `;
 
 export interface InputFieldProps extends Partial<BaseFieldProps> {

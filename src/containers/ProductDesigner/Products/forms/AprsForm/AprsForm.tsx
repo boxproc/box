@@ -7,18 +7,20 @@ import { Button } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { ProductAprs } from 'containers/ProductDesigner/Products/components';
+import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
 
 import { HandleAddProductApr } from 'store/domains';
 
 interface AprsFormProps {
   addProductApr: HandleAddProductApr;
   isLoading: boolean;
+  onCancel: () => void;
 }
 
 type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
 
 const AprsForm: React.FC<AprsFormAllProps> = ({
+  onCancel,
   addProductApr,
   handleSubmit,
   pristine,
@@ -31,20 +33,30 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <React.Fragment>
       <Box pb="10px">
-        <Flex alignItems="flex-end">
-          <ProductAprs isDisabled={isLoading}/>
-          <Box width="90px" pb="20px">
-            <Button
-              text={isLoading ? 'adding...' : 'add APR'}
-              iconName={iconNamesConst.PLUS}
-              disabled={pristine || isLoading}
-            />
-          </Box>
-        </Flex>
+        <form onSubmit={handleSubmitForm}>
+          <Flex alignItems="flex-end">
+            <ProductAprs isDisabled={isLoading} />
+            <Box width="90px" pb="20px">
+              <Button
+                text={isLoading ? 'adding...' : 'add APR'}
+                iconName={iconNamesConst.PLUS}
+                disabled={pristine || isLoading}
+              />
+            </Box>
+          </Flex>
+        </form>
       </Box>
-    </form>
+      <AprsTable />
+      <Flex justifyContent="flex-end">
+        <Button
+          text="Close"
+          onClick={onCancel}
+          withConfirmation={dirty}
+        />
+      </Flex>
+    </React.Fragment>
   );
 };
 

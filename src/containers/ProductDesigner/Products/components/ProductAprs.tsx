@@ -38,7 +38,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
 }) => {
   return (
     <Flex alignItems="flex-end">
-      <FieldWrapper maxWidth="100px">
+      <FieldWrapper maxWidth="140px">
         <Field
           id="repaymentSequence"
           name="repaymentSequence"
@@ -46,7 +46,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           label="Repayment Sequence"
           isNumber={true}
           disabled={isDisabled}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isInteger]}
         />
       </FieldWrapper>
       <FieldWrapper minWidth="230px" maxWidth="230px">
@@ -59,7 +59,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper maxWidth="160px">
+      <FieldWrapper maxWidth="130px">
         <Field
           id="calculationMethod"
           name="calculationMethod"
@@ -71,7 +71,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper maxWidth="160px">
+      <FieldWrapper maxWidth="140px">
         <Field
           id="rate"
           name="rate"
@@ -79,10 +79,10 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           label="Rate"
           isNumber={true}
           disabled={isDisabled}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
-      <FieldWrapper maxWidth="160px">
+      <FieldWrapper maxWidth="140px">
         <Field
           id="graceNumberOfDays"
           name="graceNumberOfDays"
@@ -90,7 +90,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           label="Grace # of Days"
           isNumber={true}
           disabled={isDisabled}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
     </Flex>

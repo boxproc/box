@@ -1,33 +1,12 @@
 import {
   InstitutionProducts,
-  ProductDataResp,
+  ProductAprItems,
   ProductDetailsResp,
   ProductRuleResp,
   ProductsDataResp,
 } from './types';
 
 import { ResponseStatusType } from 'types';
-
-export const productData: ProductDataResp = {
-  product: {
-    currency_code: 'AFN',
-    default_statement_cycle_id: 1,
-    description: 'Test revolving credit product from mocks',
-    history_retention_number_of_day: 90,
-    id: 1,
-    institution_id: 1,
-    locked_flag: 'N',
-    name: 'Revolving credit filtered',
-    product_type: 'C',
-    scheme: 'V',
-    status: 'A',
-    statement_cycle_description: '',
-    overrides_product_id: 0,
-    card_transactions_endpoint_id: null,
-    card_management_interface_id: null,
-    provider_3d_secure_interface_id: null,
-  },
-};
 
 export const productItemsFilteredData: ProductsDataResp = {
   products: [
@@ -109,6 +88,38 @@ export const institutionProducts: InstitutionProducts = {
     {
       id: 2,
       name: 'Product: debit',
+    },
+  ],
+};
+
+export const productAprs: ProductAprItems = {
+  product_aprs: [
+    {
+      id: 1,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
+    },
+    {
+      id: 2,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
+    },
+    {
+      id: 3,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
     },
   ],
 };

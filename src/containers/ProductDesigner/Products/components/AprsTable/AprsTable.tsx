@@ -47,7 +47,20 @@ const AprsTable: React.FC<AprsTableProps> = ({
 
   const columns = [
     {
-      maxWidth: 100,
+      maxWidth: 90,
+      sortable: true,
+      accessor: 'id',
+      Header: <TableHeader title="ID" />,
+      Cell: (props: TCell<'id'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+          isNumber={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 90,
       sortable: true,
       accessor: 'repaymentSequence',
       Header: <TableHeader title="Repayment Sequence" />,
@@ -59,7 +72,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 230,
+      maxWidth: 270,
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
@@ -70,7 +83,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 150,
+      maxWidth: 120,
       sortable: true,
       accessor: 'calculationMethod',
       Header: <TableHeader title="Calculation Method" />,
@@ -82,7 +95,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       ),
     },
     {
-      maxWidth: 150,
+      maxWidth: 120,
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
@@ -94,7 +107,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 150,
+      maxWidth: 90,
       sortable: true,
       accessor: 'graceNumberOfDays',
       Header: <TableHeader title="Grace Number of&nbsp;Days" />,
