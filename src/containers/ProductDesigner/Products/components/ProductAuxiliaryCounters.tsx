@@ -16,7 +16,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="230px" p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter1Description"
             name="auxCounter1Description"
@@ -36,7 +36,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
           />
         </Box>
         <Delimiter />
-        <Box width="230px" p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter2Description"
             name="auxCounter2Description"
@@ -56,7 +56,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
           />
         </Box>
         <Delimiter />
-        <Box width="230px" p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter3Description"
             name="auxCounter3Description"

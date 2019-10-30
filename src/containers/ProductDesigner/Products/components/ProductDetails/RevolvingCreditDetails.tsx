@@ -155,7 +155,7 @@ const RevolvingCreditDetails: React.FC = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[2 / 5]} p="10px" pb="15px">
           <Field
             id="limitSharingAllowedFlag"
             name="limitSharingAllowedFlag"
