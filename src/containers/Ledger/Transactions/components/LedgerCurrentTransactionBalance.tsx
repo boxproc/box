@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { NumberFormatField } from 'components';
 
 const LedgerCurrentTransactionBalance: React.FC = () => {
   return (
@@ -16,7 +16,10 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
           <Field
             id="balanceSettledBefore"
             name="balanceSettledBefore"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance Settled Before"
             readOnly={true}
             isNumber={true}
@@ -26,7 +29,10 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
           <Field
             id="balanceSettledAfter"
             name="balanceSettledAfter"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance Settled After"
             readOnly={true}
             isNumber={true}
@@ -36,7 +42,10 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
           <Field
             id="balanceAvailableBefore"
             name="balanceAvailableBefore"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance Available Before"
             readOnly={true}
             isNumber={true}
@@ -46,7 +55,10 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
           <Field
             id="balanceAvailableAfter"
             name="balanceAvailableAfter"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance Available After	"
             readOnly={true}
             isNumber={true}

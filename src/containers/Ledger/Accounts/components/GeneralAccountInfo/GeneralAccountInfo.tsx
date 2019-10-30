@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, SelectField } from 'components';
+import { Hr, InputField, NumberFormatField, SelectField } from 'components';
 
 import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -181,9 +181,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="balanceSettled"
             name="balanceSettled"
-            component={InputField}
             label="Balance Settled"
-            placeholder="Enter Balance Settled"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -193,9 +195,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
-            component={InputField}
             label="Balance Available"
-            placeholder="Enter Balance Available"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -205,9 +209,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="amountDueRepayment"
             name="amountDueRepayment"
-            component={InputField}
             label="Amount Due Repayment"
-            placeholder="Enter Amount Due Repayment"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -217,9 +223,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="balanceLimit"
             name="balanceLimit"
-            component={InputField}
             label="Balance Limit"
-            placeholder="Enter Balance Limit"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -229,9 +237,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
-            component={InputField}
             label="Balance Limit Shared"
-            placeholder="Enter Balance Limit Shared"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -241,9 +251,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           <Field
             id="accruedInterest"
             name="accruedInterest"
-            component={InputField}
             label="Accrued Interest"
-            placeholder="Enter Accrued Interest"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}

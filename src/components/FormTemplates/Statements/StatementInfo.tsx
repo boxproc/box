@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField } from 'components';
+import { Hr, InputField, NumberFormatField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
 
@@ -68,7 +68,10 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="balanceOpen"
             name="balanceOpen"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance open"
             readOnly={isDisabled}
             isNumber={true}
@@ -78,7 +81,10 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="balanceClose"
             name="balanceClose"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance close"
             readOnly={isDisabled}
             isNumber={true}
@@ -88,7 +94,10 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="minimumAmountDueRepayment"
             name="minimumAmountDueRepayment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Minimum amount due repayment"
             readOnly={isDisabled}
             isNumber={true}

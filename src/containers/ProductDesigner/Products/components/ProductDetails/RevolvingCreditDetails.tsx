@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField, SelectField } from 'components';
+import { CheckboxField, InputField, NumberFormatField, SelectField } from 'components';
 
 import { aprTypesOptions } from 'consts';
 
@@ -20,9 +20,11 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="aprDefault"
             name="aprDefault"
-            placeholder="Enter APR Default"
-            component={InputField}
+            component={NumberFormatField}
             label="APR Default"
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
           />
@@ -31,8 +33,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="feeExceedLimit"
             name="feeExceedLimit"
-            placeholder="Enter Fee Exceed Limit"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Fee Exceed Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -42,8 +46,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="feeLatePayment"
             name="feeLatePayment"
-            placeholder="Enter Fee Late Payment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -53,8 +59,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="feeOverpayment"
             name="feeOverpayment"
-            placeholder="Enter Fee Overpayment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Fee Overpayment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -64,8 +72,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="minimumPaymentAmount"
             name="minimumPaymentAmount"
-            placeholder="Enter Minimum Payment Amount"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Minimum Payment Amount"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -75,8 +85,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="minimumPaymentRate"
             name="minimumPaymentRate"
-            placeholder="Enter Minimum Payment Rate"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Minimum Payment Rate"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -86,7 +98,7 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="paymentGraceNumberOfDays"
             name="paymentGraceNumberOfDays"
-            placeholder="Enter #"
+            placeholder="Enter # of Days"
             component={InputField}
             label="Payment Grace # Of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
@@ -97,8 +109,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="rateExceedLimit"
             name="rateExceedLimit"
-            placeholder="Enter Rate Exceed Limit"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Rate Exceed Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -108,8 +122,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="rateLatePayment"
             name="rateLatePayment"
-            placeholder="Enter Rate Late Payment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Rate Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
@@ -119,8 +135,10 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="rateOverpayment"
             name="rateOverpayment"
-            placeholder="Enter Rate Overpayment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Rate Overpayment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}

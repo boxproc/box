@@ -40,7 +40,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
             <ProductAprs isDisabled={isLoading} />
             <Box width="90px" pb="20px">
               <Button
-                text={isLoading ? 'adding...' : 'add APR'}
+                text={isLoading ? 'Adding...' : 'Add APR'}
                 iconName={iconNamesConst.PLUS}
                 disabled={pristine || isLoading}
               />

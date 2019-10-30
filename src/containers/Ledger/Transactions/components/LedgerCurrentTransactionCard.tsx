@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { InputField, NumberFormatField } from 'components';
 
 const LedgerCurrentTransactionCard: React.FC = () => {
   return (
@@ -45,7 +45,10 @@ const LedgerCurrentTransactionCard: React.FC = () => {
           <Field
             id="cardAmount"
             name="cardAmount"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Card Amount"
             readOnly={true}
             isNumber={true}
@@ -55,7 +58,10 @@ const LedgerCurrentTransactionCard: React.FC = () => {
           <Field
             id="cardConversionRate"
             name="cardConversionRate"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Card Conversion Rate"
             readOnly={true}
             isNumber={true}

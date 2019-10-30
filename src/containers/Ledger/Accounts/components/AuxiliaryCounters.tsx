@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
@@ -24,9 +24,11 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
           <Field
             id="auxCounter1"
             name="auxCounter1"
-            component={InputField}
             label="Aux Counter 1"
-            placeholder="Enter Aux Counter 1"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
           />
@@ -35,9 +37,11 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
           <Field
             id="auxCounter2"
             name="auxCounter2"
-            component={InputField}
             label="Aux Counter 2"
-            placeholder="Enter Aux Counter 2"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
           />
@@ -46,9 +50,11 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
           <Field
             id="auxCounter3"
             name="auxCounter3"
-            component={InputField}
             label="Aux Counter 3"
-            placeholder="Enter Aux Counter 3"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.isNumber]}

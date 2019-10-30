@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { InputField, SelectField } from 'components';
+import { InputField, NumberFormatField, SelectField } from 'components';
 
 import { aprTypesOptions } from 'consts';
 
@@ -44,28 +44,31 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           name="repaymentSequence"
           component={InputField}
           label="Repayment Sequence"
+          placeholder="Enter Sequence"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required, formErrorUtil.isInteger]}
         />
       </FieldWrapper>
-      <FieldWrapper minWidth="230px" maxWidth="230px">
+      <FieldWrapper minWidth="200px" maxWidth="200px">
         <Field
           id="description"
           name="description"
           component={InputField}
           label="Description"
+          placeholder="Enter Description"
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper maxWidth="130px">
+      <FieldWrapper maxWidth="150px" minWidth="150px">
         <Field
           id="calculationMethod"
           name="calculationMethod"
           component={SelectField}
           label="Calculation Method"
           options={aprTypesOptions}
+          placeholder="Select Method"
           isDisabled={isDisabled}
           isClearable={false}
           validate={[formErrorUtil.required]}
@@ -75,10 +78,13 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
         <Field
           id="rate"
           name="rate"
-          component={InputField}
+          component={NumberFormatField}
           label="Rate"
           isNumber={true}
           disabled={isDisabled}
+          placeholder="0.00"
+          fixedDecimalScale={true}
+          decimalScale={2}
           validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
@@ -88,6 +94,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           name="graceNumberOfDays"
           component={InputField}
           label="Grace # of Days"
+          placeholder="Enter # of Days"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required, formErrorUtil.isNumber]}

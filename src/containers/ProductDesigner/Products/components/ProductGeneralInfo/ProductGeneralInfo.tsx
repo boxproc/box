@@ -146,7 +146,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
-            placeholder="Enter #"
+            placeholder="Enter # of Days"
             component={InputField}
             label="Retention # of Days"
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
