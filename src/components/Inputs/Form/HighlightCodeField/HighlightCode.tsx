@@ -70,14 +70,14 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   checkJSSyntax,
 }) => {
   const [codeWarnings, setCodeWarnings] = React.useState([]);
-  const [isHidden, setIsHidden] = React.useState(isScrollbarBottom);
+  // const [isHidden, setIsHidden] = React.useState(isScrollbarBottom);
 
   React.useEffect(
     () => {
       const wrapper = document.querySelector('.scrollbar-editor-wrapper');
       if (isScrollbarBottom && wrapper) {
         wrapper.scrollTop = wrapper.scrollHeight;
-        setTimeout(() => setIsHidden(false), 10);
+        // setTimeout(() => setIsHidden(false), 10);
       }
     },
     [isScrollbarBottom]
@@ -128,7 +128,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         ref={wrapperRef}
         height={height}
         whiteSpacePre={whiteSpacePre}
-        visibilityHidden={isHidden}
+        // visibilityHidden={isHidden}
       >
         <PerfectScrollbar className="scrollbar-editor-wrapper">
           <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
