@@ -44,6 +44,8 @@ export const prepareTransactionsValuesToRender =
       balanceSettledBefore: values.balance_settled_before.toFixed(2),
       balanceSettledAfter: values.balance_settled_after.toFixed(2),
       description: values.description,
+      aprId: values.apr_id,
+      aprRate: values.apr_rate && values.apr_rate.toFixed(2),
     };
   };
 

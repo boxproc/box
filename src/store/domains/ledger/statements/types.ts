@@ -33,6 +33,8 @@ export interface LedgerStatementTransactionsItem extends LedgerStatementTransact
   balance_settled_before: number;
   balance_settled_after: number;
   description: string;
+  apr_id: number;
+  apr_rate: number;
 }
 export interface LedgerStatementTransactionsId {
   id: number;
@@ -47,6 +49,8 @@ export interface LedgerStatementTransactionsItemPrepared extends LedgerStatement
   balanceSettledBefore: number | string;
   balanceSettledAfter: number | string;
   description: number | string;
+  aprId: number;
+  aprRate: string;
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
