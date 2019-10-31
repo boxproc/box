@@ -4,7 +4,7 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Hint, T2 } from 'components';
+import { T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
@@ -129,13 +129,9 @@ const Modal: React.FC<ModalProps> = ({
         <span
           className="modal-close"
           onClick={handleCloseModal}
+          title="Close"
         >
           &times;
-          <Hint
-            text="Close"
-            icon={false}
-            position="bottom"
-          />
         </span>
         <Flex alignItems="baseline">
           {title && (
