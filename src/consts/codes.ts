@@ -29,6 +29,7 @@ export enum statusTypesCodes {
   EXECUTION_PENDING = 'E',
   REGISTRATION_PENDING = 'F',
   AUTHENTICATION_PENDING = 'P',
+  SUSPENDED = 'S',
 }
 
 export const statusTypesOptions = [
@@ -46,6 +47,7 @@ export const statusTypesLoginOptions = [
 export const schedulerStatusTypesOptions = [
   ...statusTypesOptions,
   { value: 'E', label: 'Execution pending' },
+  { value: 'S', label: 'Suspended' },
 ];
 
 export enum cardStatusesCodes {
