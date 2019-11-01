@@ -61,6 +61,7 @@ export const Tabs: React.FC = ({
             }
 
             const { title, hintIfDisabled, isDisabled } = children[i].props;
+
             return (
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
