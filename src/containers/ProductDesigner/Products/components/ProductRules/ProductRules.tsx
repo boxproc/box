@@ -120,6 +120,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               menuId="rulesCodeContextMenu"
               noDataStr="No Available Data Elements"
               checkJSSyntax={true}
+              height="calc(100vh - 400px)"
             />
           </Box>
         </Flex>

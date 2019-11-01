@@ -38,11 +38,30 @@ const AprsTable: React.FC<AprsTableProps> = ({
   deleteProductApr,
   updateProductApr,
 }) => {
+  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
+
   React.useEffect(
     () => {
       getProductAprs();
     },
     [getProductAprs]
+  );
+
+  // update screen height for setting various number of table rows per page
+  const updateWindowHeight = () => setScreenHeight(window.innerHeight);
+
+  React.useEffect(
+    () => {
+      window.addEventListener('resize', updateWindowHeight);
+      return () => window.removeEventListener('resize', updateWindowHeight);
+    }
+  );
+
+  const tablePagesCount = React.useMemo(
+    () => screenHeight < 650 ? 8
+      : screenHeight < 850 ? 10
+        : screenHeight < 950 ? 12 : 15,
+    [screenHeight]
   );
 
   const columns = [
@@ -140,7 +159,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       <Table
         data={productAprs}
         columns={columns}
-        pageSize={8}
+        pageSize={tablePagesCount}
         isSmaller={true}
       />
     </Box>

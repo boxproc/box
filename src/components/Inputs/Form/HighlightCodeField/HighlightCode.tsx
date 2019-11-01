@@ -42,6 +42,7 @@ const WarningIconWrapper = styled(WarningIcon)`
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
   height?: string;
+  minHeight?: string;
   padding?: number;
   whiteSpacePre?: boolean;
   isScrollbarBottom?: boolean;
@@ -60,6 +61,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   placeholder,
   fontSize,
   height,
+  minHeight,
   padding = 10,
   whiteSpacePre,
   isScrollbarBottom,
@@ -70,14 +72,12 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   checkJSSyntax,
 }) => {
   const [codeWarnings, setCodeWarnings] = React.useState([]);
-  // const [isHidden, setIsHidden] = React.useState(isScrollbarBottom);
 
   React.useEffect(
     () => {
       const wrapper = document.querySelector('.scrollbar-editor-wrapper');
       if (isScrollbarBottom && wrapper) {
         wrapper.scrollTop = wrapper.scrollHeight;
-        // setTimeout(() => setIsHidden(false), 10);
       }
     },
     [isScrollbarBottom]
@@ -127,8 +127,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
       <EditorWrapper
         ref={wrapperRef}
         height={height}
+        minHeight={minHeight}
         whiteSpacePre={whiteSpacePre}
-        // visibilityHidden={isHidden}
       >
         <PerfectScrollbar className="scrollbar-editor-wrapper">
           <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
@@ -147,7 +147,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
               style={{
                 overflow: 'visible',
                 fontFamily: '"Roboto Mono", monospace',
-                fontSize: fontSize ? fontSize : 13,
+                fontSize: fontSize ? fontSize : 8.5,
               }}
             />
           </ContextMenuTrigger>
@@ -171,11 +171,12 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
           <HighlightCode
             value={preparedWarnings}
             height="60px"
-            fontSize={8.5}
+            minHeight="60px"
             padding={5}
             whiteSpacePre={true}
+            isScrollbarBottom={true}
           />
-          </Box>
+        </Box>
       )}
     </React.Fragment>
   );

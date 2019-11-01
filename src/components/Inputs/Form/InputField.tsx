@@ -14,7 +14,7 @@ const InputField = styled.input<InputCommonProps>`
         text-align: right;
       }
 
-      &:-moz-placeholder {
+      &::-moz-placeholder {
         text-align: right;
       }
     `}

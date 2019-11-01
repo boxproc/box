@@ -2,6 +2,7 @@ import styled from 'theme';
 
 interface WrapperProps {
   height?: string;
+  minHeight?: string;
   whiteSpacePre?: boolean;
   visibilityHidden?: boolean;
 }
@@ -9,6 +10,7 @@ interface WrapperProps {
 export const EditorWrapper = styled.div<WrapperProps>`
   padding: 0;
   height: ${({ height }) => height ? height : '220px'};
+  min-height: ${({ minHeight }) => minHeight ? minHeight : '220px'};
   border: 1px solid ${({ theme }) => theme.colors.gray};
   background: ${({ theme }) => theme.colors.white};
   border-radius: 2px;
@@ -65,6 +67,10 @@ export const EditorWrapper = styled.div<WrapperProps>`
       visibility: hidden;
       opacity: 0;
     `}
+  }
+
+  .react-contextmenu-wrapper {
+    height: 100%;
   }
 
   .ps__thumb-y {

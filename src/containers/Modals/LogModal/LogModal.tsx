@@ -47,7 +47,6 @@ const LogModal: React.FC<LogModalProps> = ({
       <HighlightCode
         value={preparedLogData}
         height="calc(100vh - 150px)"
-        fontSize={8.5}
         whiteSpacePre={true}
         isScrollbarBottom={true}
       />

@@ -35,7 +35,6 @@ const Wrapper = styled.div<WrapperProps>`
     border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
-  .ps__thumb-x,
   .ps__thumb-y {
     background-color: #ffa400;
   }

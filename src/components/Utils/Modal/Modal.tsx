@@ -1,4 +1,5 @@
 import React from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { Flex } from '@rebass/grid';
 
@@ -126,22 +127,26 @@ const Modal: React.FC<ModalProps> = ({
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
-        <span
-          className="modal-close"
-          onClick={handleCloseModal}
-          title="Close"
-        >
-          &times;
-        </span>
-        <Flex alignItems="baseline">
-          {title && (
-            <ModalTitle>{title}</ModalTitle>
-          )}
-          {monoTitleStr && (
-            <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
-          )}
-        </Flex>
-        {children}
+        <PerfectScrollbar>
+          <div className="modal-container-inner">
+            <span
+              className="modal-close"
+              onClick={handleCloseModal}
+              title="Close"
+            >
+              &times;
+          </span>
+            <Flex alignItems="baseline">
+              {title && (
+                <ModalTitle>{title}</ModalTitle>
+              )}
+              {monoTitleStr && (
+                <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
+              )}
+            </Flex>
+            {children}
+          </div>
+        </PerfectScrollbar>
       </div>
     </ModalWrapper>
   );
