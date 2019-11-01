@@ -23,6 +23,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   product_override_id?: number;
   date_of_product_override?: string;
   product_name: string | number;
+  product_type: string;
   balance_settled: number;
   balance_available: number;
   amount_due_repayment: number;

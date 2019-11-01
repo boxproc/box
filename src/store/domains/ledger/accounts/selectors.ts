@@ -63,6 +63,11 @@ export const selectLedgerCurrentAccountAlias = createSelector(
   currentAccount => currentAccount && currentAccount.accountAlias
 );
 
+export const selectLedgerCurrentAccountProductType = createSelector(
+  selectLedgerCurrentAccount,
+  currentAccount => currentAccount && currentAccount.productType
+);
+
 export const selectLedgerCurrentAccountProductOverrideId = createSelector(
   selectLedgerCurrentAccount,
   currentAccount => currentAccount && currentAccount.productOverrideId

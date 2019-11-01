@@ -1,7 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
@@ -13,7 +13,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNamesConst } from 'consts';
+import { formNamesConst, productTypesCodes } from 'consts';
 
 import {
   AuxiliaryCounters,
@@ -21,6 +21,7 @@ import {
   GeneralAccountInfo,
   LastStatement,
   Overdue,
+  RepaymentStatusTable,
 } from 'containers/Ledger/Accounts/components';
 
 import { HandleAddLedgerAccount, HandleUpdateLedgerAccount } from 'store/domains';
@@ -28,6 +29,7 @@ import { SelectValues } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
+  accountProductType: string;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
@@ -43,12 +45,25 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   updateLedgerAccount,
   addLedgerAccount,
   institutionsOptions,
+  accountProductType,
   mode,
   dirty,
   pristine,
 }) => {
-  const isEditMode = mode === 'edit';
-  const action = isEditMode ? updateLedgerAccount : addLedgerAccount;
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
+  );
+
+  const action = React.useMemo(
+    () => isEditMode ? updateLedgerAccount : addLedgerAccount,
+    [updateLedgerAccount, addLedgerAccount]
+  );
+
+  const isLoanProductType = React.useMemo(
+    () => accountProductType === productTypesCodes.LOAN,
+    [accountProductType]
+  );
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => action(data)),
@@ -108,6 +123,19 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
           <TabsPanel title="Last Statement">
             <LastStatement />
             <Hr />
+            <Flex justifyContent="flex-end">
+              <Button
+                text="close"
+                onClick={onCancel}
+              />
+            </Flex>
+          </TabsPanel>
+        )}
+        {isEditMode && isLoanProductType && (
+          <TabsPanel title="Repayment Status">
+            <Box mt="20px">
+              <RepaymentStatusTable />
+            </Box>
             <Flex justifyContent="flex-end">
               <Button
                 text="close"
