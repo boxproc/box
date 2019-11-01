@@ -19,7 +19,7 @@ const Wrapper = styled.div<InputCommonProps>`
         text-align: right;
       }
 
-      &:-moz-placeholder {
+      &::-moz-placeholder {
         text-align: right;
       }
     `}
