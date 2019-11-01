@@ -5,6 +5,7 @@ import {
   AprsForm,
   AuxiliaryCountersForm,
   // LimitsFeesCommissionsForm,
+  GeneralLedgerFrom,
   GeneralProductForm,
   LoyaltyAndBonusForm,
   ProductDetailsForm,
@@ -60,6 +61,9 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       </TabsPanel>
       <TabsPanel title="Services">
         <ProductServicesForm onCancel={onCancel} />
+      </TabsPanel>
+      <TabsPanel title="GL">
+        <GeneralLedgerFrom />
       </TabsPanel>
     </Tabs>
   );

@@ -57,7 +57,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 
   const action = React.useMemo(
     () => isEditMode ? updateLedgerAccount : addLedgerAccount,
-    [updateLedgerAccount, addLedgerAccount]
+    [updateLedgerAccount, addLedgerAccount, isEditMode]
   );
 
   const isLoanProductType = React.useMemo(
