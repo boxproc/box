@@ -62,7 +62,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
 };
 
 export default reduxForm<{}, ChangeProfileFormProps>({
-  form: formNamesConst.CHANGE_PROFILE_FORM,
+  form: formNamesConst.CHANGE_PROFILE,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ChangeProfileForm);

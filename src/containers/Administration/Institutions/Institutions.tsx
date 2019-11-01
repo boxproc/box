@@ -54,8 +54,8 @@ const Institutions: React.FC<InstitutionsProps> = ({
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_INSTITUTION}
-      editModalName={modalNamesConst.EDIT_ADMIN_INSTITUTION}
+      newModalName={modalNamesConst.ADD_INSTITUTION}
+      editModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
     />
   );

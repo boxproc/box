@@ -165,7 +165,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineUserFormProps>({
-  form: formNamesConst.DEFINE_ADMIN_USER,
+  form: formNamesConst.DEFINE_USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineUserForm);

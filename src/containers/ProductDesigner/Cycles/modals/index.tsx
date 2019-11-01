@@ -7,7 +7,7 @@ import EditCyclesEditorModal from './EditCyclesEditorModal';
 
 export const cycleEditorModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_CYCLE_EDITOR,
+    name: modalNamesConst.ADD_CYCLE_EDITOR,
     component: <AddCyclesEditorModal />,
   },
   {

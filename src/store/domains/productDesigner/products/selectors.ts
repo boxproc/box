@@ -4,11 +4,11 @@ import { StoreState } from 'store/StoreState';
 
 import {
   selectCurrencyCodesOptions,
-  selectCyclesDescriptionsOptions,
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
+import { selectCyclesDescriptionsOptions } from '../cycles';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,

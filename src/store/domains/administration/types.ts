@@ -1,4 +1,3 @@
-import { AdminCyclesEditorState } from './cycles';
 import { DictionaryCardStatusesState } from './dictionaries/cardStatuses';
 import { DictionaryCountriesState } from './dictionaries/countries';
 import { DictionaryCurrenciesState } from './dictionaries/currencies';
@@ -15,7 +14,6 @@ import { AdminSysPropsState } from './systemProperties';
 export interface AdministrationState {
   systemProperties: AdminSysPropsState;
   scheduler: AdminSchedulerState;
-  cyclesEditor: AdminCyclesEditorState;
   users: AdminUserState;
   userGroups: AdminUsersGroupState;
   cardStatuses: DictionaryCardStatusesState;

@@ -2,12 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminCyclesEditorItemPrepared } from 'store/domains';
+import { CyclesEditorItemPrepared } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof AdminCyclesEditorItemPrepared> =
-  TableCellType<AdminCyclesEditorItemPrepared[T]>;
+type TCell<T extends keyof CyclesEditorItemPrepared> = TableCellType<CyclesEditorItemPrepared[T]>;
 
 export const cycleEditorColumns = [
   {

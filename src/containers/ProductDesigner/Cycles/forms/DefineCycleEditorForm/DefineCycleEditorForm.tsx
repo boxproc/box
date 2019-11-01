@@ -25,9 +25,9 @@ import {
 } from 'consts';
 
 import {
-  HandleAddAdminCyclesEditor,
-  HandleDeleteAdminCycleEditor,
-  HandleUpdateAdminCyclesEditor,
+  HandleAddCyclesEditor,
+  HandleDeleteCycleEditor,
+  HandleUpdateCyclesEditor,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -36,9 +36,9 @@ import { formErrorUtil } from 'utils';
 interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
   cyclesEditorValue: SelectValues;
-  addAdminCyclesEditor: HandleAddAdminCyclesEditor;
-  updateAdminCyclesEditor: HandleUpdateAdminCyclesEditor;
-  deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
+  addCyclesEditor: HandleAddCyclesEditor;
+  updateCyclesEditor: HandleUpdateCyclesEditor;
+  deleteCyclesEditor: HandleDeleteCycleEditor;
   onCancel: () => void;
   mode: 'add' | 'edit';
 }
@@ -48,9 +48,9 @@ type DefineCycleEditorFormAllProps = DefineCyclesEditorFormProps &
 
 const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   handleSubmit,
-  addAdminCyclesEditor,
-  updateAdminCyclesEditor,
-  deleteAdminCyclesEditor,
+  addCyclesEditor,
+  updateCyclesEditor,
+  deleteCyclesEditor,
   cyclesEditorValue,
   onCancel,
   institutionsOptions,
@@ -60,13 +60,11 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   }) => {
   const isEditMode = mode === 'edit';
 
-  const defineAdminCyclesEditor = isEditMode
-    ? updateAdminCyclesEditor
-    : addAdminCyclesEditor;
+  const defineCyclesEditor = isEditMode ? updateCyclesEditor : addCyclesEditor;
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => defineAdminCyclesEditor(data)),
-    [handleSubmit, defineAdminCyclesEditor]
+    handleSubmit(data => defineCyclesEditor(data)),
+    [handleSubmit, defineCyclesEditor]
   );
 
   const isMonthlyCycleFirstDay = cyclesEditorValue
@@ -183,8 +181,8 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
-              confirmationText={`Delete cycle editor record?`}
-              onClick={deleteAdminCyclesEditor}
+              confirmationText={`Delete cycle record?`}
+              onClick={deleteCyclesEditor}
             />
           )}
         </div>
@@ -201,7 +199,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineCyclesEditorFormProps>({
-  form: formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR,
+  form: formNamesConst.DEFINE_CYCLE_EDITOR,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(DefineCycleEditorForm));

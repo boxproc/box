@@ -17,7 +17,7 @@ interface EditUserModalProps extends WithModalProps {
   currentUsername: string;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_USER;
+const modalName = modalNamesConst.EDIT_USER;
 
 const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,

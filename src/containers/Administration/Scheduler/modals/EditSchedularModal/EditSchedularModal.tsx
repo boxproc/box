@@ -20,7 +20,7 @@ interface EditSchedulerModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_SCHEDULER;
+const modalName = modalNamesConst.EDIT_SCHEDULER;
 
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,

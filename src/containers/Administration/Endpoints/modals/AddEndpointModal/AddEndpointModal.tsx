@@ -14,7 +14,7 @@ interface AddEndpointModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_ADMIN_ENDPOINT;
+const modalName = modalNamesConst.ADD_ENDPOINT;
 
 const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
   closeModal,

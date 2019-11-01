@@ -18,7 +18,7 @@ interface EditAccountModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_INTERFACE;
+const modalName = modalNamesConst.EDIT_INTERFACE;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,

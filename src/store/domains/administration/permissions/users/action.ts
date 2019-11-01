@@ -82,9 +82,9 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
         const preparedValues = prepareAdminUserValuesToSend(cycleEditorRecords);
 
         await dispatch(addAdminUser(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_USER));
+        dispatch(closeModal(modalNamesConst.ADD_USER));
         await dispatch(handleFilterUsers());
-        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_USER));
+        await dispatch(resetForm(formNamesConst.DEFINE_USER));
       },
       dispatch
     );
@@ -97,7 +97,7 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
         const preparedValues = prepareAdminUserValuesToSend(values);
 
         await dispatch(updateAdminUser(preparedValues));
-        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_USER));
+        dispatch(closeModal(modalNamesConst.EDIT_USER));
         await dispatch(handleFilterUsers());
       },
       dispatch

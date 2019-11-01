@@ -33,8 +33,8 @@ export const Users: React.FC<UsersProps> = ({
       title="Users"
       data={adminUserItems}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_USER}
-      editModalName={modalNamesConst.EDIT_ADMIN_USER}
+      newModalName={modalNamesConst.ADD_USER}
+      editModalName={modalNamesConst.EDIT_USER}
       filterAction={filterUsers}
       initialFilterValues={{
         statusActiveFlag: false,

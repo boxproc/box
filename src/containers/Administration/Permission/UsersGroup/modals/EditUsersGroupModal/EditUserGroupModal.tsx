@@ -11,7 +11,7 @@ interface EditUsersGroupModalProps extends WithModalProps {
   usersGroupName: string;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_USERS_GROUP;
+const modalName = modalNamesConst.EDIT_USERS_GROUP;
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,

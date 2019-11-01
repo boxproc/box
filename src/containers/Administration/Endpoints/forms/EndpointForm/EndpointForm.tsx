@@ -86,7 +86,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
 };
 
 export default reduxForm<{}, EndpointFormProps>({
-  form: formNamesConst.ADMIN_ENDPOINT,
+  form: formNamesConst.ENDPOINT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EndpointForm));

@@ -85,7 +85,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
 };
 
 export default reduxForm<{}, InterfaceFormProps>({
-  form: formNamesConst.ADMIN_INTERFACE,
+  form: formNamesConst.INTERFACE,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(InterfaceForm));

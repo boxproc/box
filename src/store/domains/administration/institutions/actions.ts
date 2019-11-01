@@ -97,9 +97,9 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminInstitution(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_INSTITUTION));
+        dispatch(closeModal(modalNamesConst.ADD_INSTITUTION));
         await dispatch(handleGetAdminInstitutions());
-        await dispatch(resetForm(formNamesConst.ADMIN_INSTITUTIONS));
+        await dispatch(resetForm(formNamesConst.INSTITUTIONS));
       },
       dispatch
     );
@@ -113,7 +113,7 @@ export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminInstitution(id));
-        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INSTITUTION));
+        dispatch(closeModal(modalNamesConst.EDIT_INSTITUTION));
       },
       dispatch
     );

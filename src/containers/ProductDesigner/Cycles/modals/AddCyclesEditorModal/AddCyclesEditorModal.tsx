@@ -5,13 +5,13 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
+import { DefineCycleEditorForm } from 'containers/ProductDesigner/Cycles/forms';
 
 interface AddCycleEditorModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_ADMIN_CYCLE_EDITOR;
+const modalName = modalNamesConst.ADD_CYCLE_EDITOR;
 
 const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   closeModal,
@@ -25,7 +25,7 @@ const AddCycleEditorModal: React.FC<AddCycleEditorModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Add Cycle Editor Record"
+      title="Add Cycle Record"
       maxContainerWidth={480}
       withCloseConfirmation={isFormDirty}
     >

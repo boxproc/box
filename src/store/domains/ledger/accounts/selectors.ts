@@ -1,9 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
+import {
+  selectCyclesDescriptionsOptions,
+  selectInstitutionProductsOptions,
+} from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
-import { selectCyclesDescriptionsOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 // tslint:disable-next-line: max-line-length
 import { prepareValuesToRender as prepareLastStatementValuesToRender } from 'store/domains/ledger/statements/utils';

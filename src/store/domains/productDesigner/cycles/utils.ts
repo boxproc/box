@@ -7,15 +7,15 @@ import {
 } from 'consts';
 
 import {
-  AdminCyclesEditorEditableItem,
-  AdminCyclesEditorIds,
-  AdminCyclesEditorIdsPrepared,
-  AdminCyclesEditorItem,
   CycleFilter,
-  CycleFilterPrepared
+  CycleFilterPrepared,
+  CyclesEditorEditableItem,
+  CyclesEditorIds,
+  CyclesEditorIdsPrepared,
+  CyclesEditorItem
 } from './types';
 
-export const prepareValuesToRender = (item: Partial<AdminCyclesEditorItem>) => {
+export const prepareValuesToRender = (item: Partial<CyclesEditorItem>) => {
   if (!item) {
     return item;
   }
@@ -50,8 +50,8 @@ export const prepareCyclesFiltersParamsToSend =
     };
   };
 
-export const prepareAdminCyclesEditorValuesToSend =
-  (values: Partial<AdminCyclesEditorEditableItem>) => {
+export const prepareCyclesEditorValuesToSend =
+  (values: Partial<CyclesEditorEditableItem>) => {
     if (!values) {
       return null;
     }
@@ -106,7 +106,7 @@ export const prepareAdminCyclesEditorValuesToSend =
     }
   };
 
-export const prepareIdsToGetDesc = (ids: AdminCyclesEditorIds): AdminCyclesEditorIdsPrepared => {
+export const prepareIdsToGetDesc = (ids: CyclesEditorIds): CyclesEditorIdsPrepared => {
   if (!ids) {
     return null;
   }

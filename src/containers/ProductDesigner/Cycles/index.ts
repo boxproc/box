@@ -4,31 +4,31 @@ import { bindActionCreators, Dispatch } from 'redux';
 import CyclesEditor from './CyclesEditor';
 
 import {
-  AdminCycleEditorActionTypes,
   createLoadingSelector,
-  handleDeleteAdminCyclesEditor,
+  CycleEditorActionTypes,
+  handleDeleteCyclesEditor,
   handleFilterCycles,
   resetCycles,
-  selectAdminCycleEditorItems,
+  selectCycleEditorItems,
   selectInstitutionsOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminCycleEditorActionTypes.FILTER_ADMIN_CYCLES_EDITOR,
+  CycleEditorActionTypes.FILTER_CYCLES_EDITOR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminCyclesEditorItems: selectAdminCycleEditorItems(state),
+  cyclesEditorItems: selectCycleEditorItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCycles: handleFilterCycles,
-    deleteAdminCyclesEditor: handleDeleteAdminCyclesEditor,
+    deleteCyclesEditor: handleDeleteCyclesEditor,
     resetCycles,
   },
   dispatch

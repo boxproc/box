@@ -7,15 +7,15 @@ import {
   typeOfCyclesEditorOptions,
   weeklyCycleTypeOptions,
 } from 'consts';
-import { prepareValuesToRender } from 'store/domains/administration/cycles/utils';
 import { selectInstitutionsOptions } from 'store/domains/consts';
+import { prepareValuesToRender } from 'store/domains/productDesigner/cycles/utils';
 import { selectActiveItemId } from 'store/domains/utils';
 
-export const selectDefaultAdminCycleEditorItems = (state: StoreState) =>
-  state.administration.cyclesEditor.cycleEditor;
+export const selectDefaultCycleEditorItems = (state: StoreState) =>
+  state.productDesigner.cyclesEditor.cycleEditor;
 
-export const selectAdminCycleEditorItems = createSelector(
-  selectDefaultAdminCycleEditorItems,
+export const selectCycleEditorItems = createSelector(
+  selectDefaultCycleEditorItems,
   selectInstitutionsOptions,
   (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
@@ -28,7 +28,7 @@ export const selectAdminCycleEditorItems = createSelector(
 );
 
 export const selectCycleEditorValues = createSelector(
-  selectDefaultAdminCycleEditorItems,
+  selectDefaultCycleEditorItems,
   selectActiveItemId,
   selectInstitutionsOptions,
   (cycleEditorItems, currentId, institutions) => {
@@ -49,11 +49,11 @@ export const selectCycleEditorValues = createSelector(
   }
 );
 
-export const selectDefaultAdminCyclesDescriptions = (state: StoreState) =>
-  state.administration.cyclesEditor.cyclesDescriptions;
+export const selectDefaultCyclesDescriptions = (state: StoreState) =>
+  state.productDesigner.cyclesEditor.cyclesDescriptions;
 
 export const selectCyclesDescriptionsOptions = createSelector(
-  selectDefaultAdminCyclesDescriptions,
+  selectDefaultCyclesDescriptions,
   items => items && items.asMutable().map(item => {
     return {
       value: item.id,

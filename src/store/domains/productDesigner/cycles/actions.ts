@@ -6,23 +6,23 @@ import { closeModal } from 'store/domains/modals';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
-  AddAdminCycleEditorAction,
-  DeleteAdminCycleEditorAction,
+  AddCycleEditorAction,
+  DeleteCycleEditorAction,
   FilterCyclesAction,
   GetCyclesDescriptionsAction,
   ResetCyclesDescriptionsAction,
-  UpdateAdminCycleEditorAction,
+  UpdateCycleEditorAction,
 } from './actionTypes';
 import * as api from './api';
 import {
-  AdminCyclesEditorEditableItem,
-  AdminCyclesEditorIds,
-  AdminCyclesEditorIdsPrepared,
-  AdminCyclesEditorItem,
-  CycleFilterPrepared
+  CycleFilterPrepared,
+  CyclesEditorEditableItem,
+  CyclesEditorIds,
+  CyclesEditorIdsPrepared,
+  CyclesEditorItem
 } from './types';
 import {
-  prepareAdminCyclesEditorValuesToSend,
+  prepareCyclesEditorValuesToSend,
   prepareCyclesFiltersParamsToSend,
   prepareIdsToGetDesc,
 } from './utils';
@@ -30,58 +30,54 @@ import {
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type AddAdminCyclesEditor = (values: Partial<AdminCyclesEditorItem>) =>
-  AddAdminCycleEditorAction;
-export type HandleAddAdminCyclesEditor = (values: Partial<AdminCyclesEditorEditableItem>) =>
+export type AddCyclesEditor = (values: Partial<CyclesEditorItem>) => AddCycleEditorAction;
+export type HandleAddCyclesEditor = (values: Partial<CyclesEditorEditableItem>) => Thunk<void>;
+
+export type DeleteCycleEditor = (id: number) => DeleteCycleEditorAction;
+export type HandleDeleteCycleEditor = () => Thunk<void>;
+
+export type UpdateCyclesEditor = (propValues: Partial<CyclesEditorItem>) => UpdateCycleEditorAction;
+export type HandleUpdateCyclesEditor = (propValues: Partial<CyclesEditorEditableItem>) =>
   Thunk<void>;
-
-export type DeleteAdminCycleEditor = (id: number) => DeleteAdminCycleEditorAction;
-export type HandleDeleteAdminCycleEditor = () => Thunk<void>;
-
-export type UpdateAdminCyclesEditor =
-  (propValues: Partial<AdminCyclesEditorItem>) => UpdateAdminCycleEditorAction;
-export type HandleUpdateAdminCyclesEditor =
-  (propValues: Partial<AdminCyclesEditorEditableItem>) => Thunk<void>;
 
 export type FilterCycles = (params: CycleFilterPrepared) => FilterCyclesAction;
 export type HandleFilterCycles = () => Thunk<void>;
 
-export type GetCyclesDescriptions = (ids: AdminCyclesEditorIdsPrepared) =>
-  GetCyclesDescriptionsAction;
-export type HandleGetCyclesDescriptions  = (ids: AdminCyclesEditorIds) => Thunk<void>;
+export type GetCyclesDescriptions = (ids: CyclesEditorIdsPrepared) => GetCyclesDescriptionsAction;
+export type HandleGetCyclesDescriptions  = (ids: CyclesEditorIds) => Thunk<void>;
 
 export type ResetCyclesDescriptions = () => ResetCyclesDescriptionsAction;
 
 export type ResetCycles = () => void;
 
-export const addAdminCyclesEditor: AddAdminCyclesEditor = values => ({
-  type: ActionTypeKeys.ADD_ADMIN_CYCLE_EDITOR,
-  payload: api.addAdminCyclesEditor(values),
+export const addCyclesEditor: AddCyclesEditor = values => ({
+  type: ActionTypeKeys.ADD_CYCLE_EDITOR,
+  payload: api.addCyclesEditor(values),
 });
 
-export const deleteAdminCyclesEditor: DeleteAdminCycleEditor = id => ({
-  type: ActionTypeKeys.DELETE_ADMIN_CYCLE_EDITOR,
-  payload: api.deleteAdminCyclesEditor(id),
+export const deleteCyclesEditor: DeleteCycleEditor = id => ({
+  type: ActionTypeKeys.DELETE_CYCLE_EDITOR,
+  payload: api.deleteCyclesEditor(id),
   meta: id,
 });
 
-export const updateAdminCyclesEditor: UpdateAdminCyclesEditor = values => ({
-  type: ActionTypeKeys.UPDATE_ADMIN_CYCLE_EDITOR,
-  payload: api.updateAdminCyclesEditor(values),
+export const updateCyclesEditor: UpdateCyclesEditor = values => ({
+  type: ActionTypeKeys.UPDATE_CYCLE_EDITOR,
+  payload: api.updateCyclesEditor(values),
 });
 
 export const filterCycles: FilterCycles = params => ({
-  type: ActionTypeKeys.FILTER_ADMIN_CYCLES_EDITOR,
+  type: ActionTypeKeys.FILTER_CYCLES_EDITOR,
   payload: api.filterCycles(params),
 });
 
 export const getCyclesDescriptions: GetCyclesDescriptions = ids => ({
-  type: ActionTypeKeys.GET_ADMIN_STATEMENTS_DESCRIPTIONS,
+  type: ActionTypeKeys.GET_STATEMENTS_DESCRIPTIONS,
   payload: api.getCyclesDescriptions(ids),
 });
 
 export const resetCyclesDescriptions: ResetCyclesDescriptions = () => ({
-  type: ActionTypeKeys.RESET_ADMIN_STATEMENTS_DESCRIPTIONS,
+  type: ActionTypeKeys.RESET_STATEMENTS_DESCRIPTIONS,
 });
 
 export const resetCycles: ResetCycles = () => ({
@@ -104,29 +100,29 @@ export const handleFilterCycles: HandleFilterCycles = () =>
     );
   };
 
-export const handleAddAdminCyclesEditor: HandleAddAdminCyclesEditor = cycleEditorRecords =>
+export const handleAddCyclesEditor: HandleAddCyclesEditor = cycleEditorRecords =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminCyclesEditorValuesToSend(cycleEditorRecords);
+        const preparedValues = prepareCyclesEditorValuesToSend(cycleEditorRecords);
 
-        await dispatch(addAdminCyclesEditor(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_CYCLE_EDITOR));
+        await dispatch(addCyclesEditor(preparedValues));
+        dispatch(closeModal(modalNamesConst.ADD_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
-        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR));
+        await dispatch(resetForm(formNamesConst.DEFINE_CYCLE_EDITOR));
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = () =>
+export const handleDeleteCyclesEditor: HandleDeleteCycleEditor = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const id = selectActiveItemId(state);
 
-        await dispatch(deleteAdminCyclesEditor(id));
+        await dispatch(deleteCyclesEditor(id));
         dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },
@@ -134,13 +130,13 @@ export const handleDeleteAdminCyclesEditor: HandleDeleteAdminCycleEditor = () =>
     );
   };
 
-export const handleUpdateAdminCyclesEditor: HandleUpdateAdminCyclesEditor = values =>
+export const handleUpdateCyclesEditor: HandleUpdateCyclesEditor = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminCyclesEditorValuesToSend(values);
+        const preparedValues = prepareCyclesEditorValuesToSend(values);
 
-        await dispatch(updateAdminCyclesEditor(preparedValues));
+        await dispatch(updateCyclesEditor(preparedValues));
         dispatch(closeModal(modalNamesConst.EDIT_CYCLE_EDITOR));
         await dispatch(handleFilterCycles());
       },

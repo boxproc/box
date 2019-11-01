@@ -146,7 +146,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
 };
 
 export default reduxForm<{}, InstitutionFormProps>({
-  form: formNamesConst.ADMIN_INSTITUTIONS,
+  form: formNamesConst.INSTITUTIONS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(InstitutionForm));

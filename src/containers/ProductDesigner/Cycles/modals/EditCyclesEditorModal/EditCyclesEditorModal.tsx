@@ -4,13 +4,13 @@ import { Modal } from 'components';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { DefineCycleEditorForm } from 'containers/Administration/Cycles/CyclesEditor/forms';
+import { DefineCycleEditorForm } from 'containers/ProductDesigner/Cycles/forms';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { AdminCyclesEditorEditableItem } from 'store/domains';
+import { CyclesEditorEditableItem } from 'store/domains';
 
 interface EditSchedulerModalProps extends WithModalProps {
-  cycleEditorValues: Partial<AdminCyclesEditorEditableItem>;
+  cycleEditorValues: Partial<CyclesEditorEditableItem>;
   isFormDirty: boolean;
 }
 

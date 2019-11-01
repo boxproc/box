@@ -8,11 +8,11 @@ import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
 export const schedulerModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_SCHEDULER,
+    name: modalNamesConst.ADD_SCHEDULER,
     component: <AddSchedulerModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_SCHEDULER,
+    name: modalNamesConst.EDIT_SCHEDULER,
     component: <EditSchedularModal />,
   },
   {

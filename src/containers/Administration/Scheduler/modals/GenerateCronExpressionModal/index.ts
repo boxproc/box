@@ -8,7 +8,7 @@ import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
+const formSelector = formValueSelector(formNamesConst.DEFINE_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
   currentCronExpression: formSelector(

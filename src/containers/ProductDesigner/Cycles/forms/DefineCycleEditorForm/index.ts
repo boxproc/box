@@ -7,21 +7,21 @@ import { formNamesConst } from 'consts';
 import DefineCycleEditorForm from './DefineCycleEditorForm';
 
 import {
-  AdminCycleEditorActionTypes,
   createLoadingSelector,
-  handleAddAdminCyclesEditor,
-  handleDeleteAdminCyclesEditor,
-  handleUpdateAdminCyclesEditor,
+  CycleEditorActionTypes,
+  handleAddCyclesEditor,
+  handleDeleteCyclesEditor,
+  handleUpdateCyclesEditor,
   selectInstitutionsOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.DEFINE_ADMIN_CYCLE_EDITOR);
+const formSelector = formValueSelector(formNamesConst.DEFINE_CYCLE_EDITOR);
 
 const loadingSelector = createLoadingSelector([
-  AdminCycleEditorActionTypes.ADD_ADMIN_CYCLE_EDITOR,
-  AdminCycleEditorActionTypes.UPDATE_ADMIN_CYCLE_EDITOR,
+  CycleEditorActionTypes.ADD_CYCLE_EDITOR,
+  CycleEditorActionTypes.UPDATE_CYCLE_EDITOR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -35,9 +35,9 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addAdminCyclesEditor: handleAddAdminCyclesEditor,
-    deleteAdminCyclesEditor: handleDeleteAdminCyclesEditor,
-    updateAdminCyclesEditor: handleUpdateAdminCyclesEditor,
+    addCyclesEditor: handleAddCyclesEditor,
+    deleteCyclesEditor: handleDeleteCyclesEditor,
+    updateCyclesEditor: handleUpdateCyclesEditor,
   },
   dispatch
 );

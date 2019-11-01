@@ -7,11 +7,11 @@ import EditUsersModal from './EditUsersModal';
 
 export const usersModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_USER,
+    name: modalNamesConst.ADD_USER,
     component: <AddUsersModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_USER,
+    name: modalNamesConst.EDIT_USER,
     component: <EditUsersModal />,
   },
 ];

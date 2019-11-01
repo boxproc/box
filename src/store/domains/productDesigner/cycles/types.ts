@@ -7,7 +7,7 @@ interface PlainInfo {
   description: string;
 }
 
-export interface AdminCyclesEditorItem extends PlainInfo {
+export interface CyclesEditorItem extends PlainInfo {
   institution_id: number | string;
   cycle_type: number | string;
   monthly_cycle_first_day: number | string;
@@ -16,19 +16,19 @@ export interface AdminCyclesEditorItem extends PlainInfo {
   status: number | string;
 }
 
-export interface AdminCyclesEditorItemPreparedPlain extends PlainInfo {
+export interface CyclesEditorItemPreparedPlain extends PlainInfo {
   monthlyCycleFirstDay: number | string;
   fixedCycleNumberOfDays: number | string;
 }
 
-export interface AdminCyclesEditorItemPrepared extends AdminCyclesEditorItemPreparedPlain {
+export interface CyclesEditorItemPrepared extends CyclesEditorItemPreparedPlain {
   institutionId: string | number;
   cycleType: string | number;
   status: string | number;
   weeklyCycleFirstDay: number | string;
 }
 
-export interface AdminCyclesEditorEditableItem extends AdminCyclesEditorItemPreparedPlain {
+export interface CyclesEditorEditableItem extends CyclesEditorItemPreparedPlain {
   institutionId: SelectValues;
   cycleType: SelectValues;
   status: SelectValues;
@@ -45,23 +45,23 @@ export interface CycleFilterPrepared {
   status: string;
 }
 
-export interface AdminCyclesEditorDataResp {
-  cycle_editor: Array<AdminCyclesEditorItem>;
+export interface CyclesEditorDataResp {
+  cycle_editor: Array<CyclesEditorItem>;
 }
 
-export interface AdminCyclesEditorIds {
+export interface CyclesEditorIds {
   institutionId: number | string;
 }
 
-export interface AdminCyclesEditorIdsPrepared {
+export interface CyclesEditorIdsPrepared {
   institution_id: number | string;
 }
 
-export interface AdminCyclesDescriptions {
+export interface CyclesDescriptions {
   statement_cycles_descriptions: Array<PlainInfo>;
 }
 
-export interface AdminCyclesEditorState {
-  cycleEditor: ImmutableArray<AdminCyclesEditorItem>;
+export interface CyclesEditorState {
+  cycleEditor: ImmutableArray<CyclesEditorItem>;
   cyclesDescriptions: ImmutableArray<PlainInfo>;
 }

@@ -7,7 +7,7 @@ import AddInstitutionModal from './AddInstitutionModal';
 
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.ADMIN_INSTITUTIONS);
+const dirty = isDirty(formNamesConst.INSTITUTIONS);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

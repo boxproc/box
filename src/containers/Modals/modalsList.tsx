@@ -9,7 +9,6 @@ import LoginCode2faModal from 'containers/Modals/LoginCode2faModal';
 import LogModal from 'containers/Modals/LogModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
 
-import { cycleEditorModals } from 'containers/Administration/Cycles/CyclesEditor/modals';
 import { endpointsModals } from 'containers/Administration/Endpoints/modals';
 import { institutionsModals } from 'containers/Administration/Institutions/modals';
 import { interfacesModals } from 'containers/Administration/Interfaces/modals';
@@ -23,6 +22,7 @@ import { cardsModals } from 'containers/Ledger/Cards/modals';
 import { customersModals } from 'containers/Ledger/Customers/modals';
 import { statementsModals } from 'containers/Ledger/Statements/modals';
 import { transactionsModals } from 'containers/Ledger/Transactions/modals';
+import { cycleEditorModals } from 'containers/ProductDesigner/Cycles/modals';
 import { productsModals } from 'containers/ProductDesigner/Products/modals';
 
 export const modalsList = [

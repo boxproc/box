@@ -10,8 +10,8 @@ import { cycleEditorColumns } from './components';
 import { CycleEditorFilter } from './forms';
 
 import {
-  AdminCyclesEditorItemPrepared,
-  HandleDeleteAdminCycleEditor,
+  CyclesEditorItemPrepared,
+  HandleDeleteCycleEditor,
   HandleFilterCycles,
   ResetCycles,
 } from 'store/domains';
@@ -19,18 +19,18 @@ import {
 import { SelectValues } from 'types';
 
 interface CycleEditorProps {
-  adminCyclesEditorItems: Array<Partial<AdminCyclesEditorItemPrepared>>;
+  cyclesEditorItems: Array<Partial<CyclesEditorItemPrepared>>;
   institutionsOptions: Array<SelectValues>;
   filterCycles: HandleFilterCycles;
-  deleteAdminCyclesEditor: HandleDeleteAdminCycleEditor;
+  deleteCyclesEditor: HandleDeleteCycleEditor;
   resetCycles: ResetCycles;
 }
 
 export const CyclesEditor: React.FC<CycleEditorProps> = ({
-  adminCyclesEditorItems,
+  cyclesEditorItems,
   institutionsOptions,
   filterCycles,
-  deleteAdminCyclesEditor,
+  deleteCyclesEditor,
   resetCycles,
 }) => {
   React.useEffect(
@@ -45,20 +45,20 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteAdminCyclesEditor,
+        action: deleteCyclesEditor,
         withConfirmation: true,
-        confirmationText: `Delete cycle editor record?`,
+        confirmationText: `Delete cycle record?`,
       },
     ],
-    [deleteAdminCyclesEditor]
+    [deleteCyclesEditor]
   );
 
   return (
     <PageTemplate
       title="Cycles"
-      data={adminCyclesEditorItems}
+      data={cyclesEditorItems}
       columns={cycleEditorColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_CYCLE_EDITOR}
+      newModalName={modalNamesConst.ADD_CYCLE_EDITOR}
       editModalName={modalNamesConst.EDIT_CYCLE_EDITOR}
       contextMenuItems={contextMenuItems}
       filterAction={filterCycles}

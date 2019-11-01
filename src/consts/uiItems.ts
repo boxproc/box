@@ -1,5 +1,4 @@
 export enum uiItemConsts {
-  ADMINISTRATION_CYCLE_EDITOR = 'administration/cycles/cycles_editor',
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
   ADMINISTRATION_DICTIONARIES_EVENTS = 'administration/dictionaries/events',
@@ -24,5 +23,6 @@ export enum uiItemConsts {
   LEDGER_CARDS = 'ledger/cards',
   LEDGER_STATEMENTS = 'ledger/statements',
 
-  PRODUCTS = 'product_designer/products',
+  PRODUCTS_DESIGNER_CYCLES = 'product_designer/cycles',
+  PRODUCTS_DESIGNER_PRODUCTS = 'product_designer/products',
 }
