@@ -197,3 +197,9 @@ export const aprTypesOptions = [
   { value: 'C', label: 'Actual/365' },
   { value: 'D', label: 'Actual/360' },
 ];
+
+export const debitCreditIndicatorOptions = [
+  { value: 'D', label: 'Debit transaction' },
+  { value: 'C', label: 'Credit transaction' },
+  { value: 'U', label: 'Not applicable' },
+];

@@ -4,6 +4,7 @@ export enum uiItemConsts {
   ADMINISTRATION_DICTIONARIES_EVENTS = 'administration/dictionaries/events',
   ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS =
   'administration/dictionaries/event_data_elements',
+  ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES = 'administration/dictionaries/transaction_types',
   ADMINISTRATION_INTERFACES = 'administration/interfaces',
   ADMINISTRATION_INSTITUTIONS = 'administration/institutions',
   ADMINISTRATION_USER = 'administration/permissions/users',

@@ -12,6 +12,7 @@ import {
   Interfaces,
   Scheduler,
   SystemProperties,
+  TransactionTypes,
   Users,
   UsersGroup,
 } from './Administration';
@@ -50,6 +51,10 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
     component: <EventDataElems />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES,
+    component: <TransactionTypes />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_USER,
