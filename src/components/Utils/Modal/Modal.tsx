@@ -59,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({
   closeModal,
   openModal,
   maxContainerWidth = '720',
-  minContainerHeight,
+  minContainerHeight = '320',
   zIndex,
   accentClose = true,
   closeOnBackdrop = false,
@@ -73,7 +73,18 @@ const Modal: React.FC<ModalProps> = ({
   containerWidthAuto = false,
   containerHeightFull = false,
 }) => {
-  const isClearableActiveIdsFromStore = (type === modalTypesConst.EDIT_MODAL) || !isEditModalOpened;
+  const isMessageModal = React.useMemo(
+    () => type === modalTypesConst.MESSAGE_MODAL,
+    [type]
+  );
+  const isConfirmationModal = React.useMemo(
+    () => type === modalTypesConst.CONFIRMATION_MODAL,
+    [type]
+  );
+  const isClearableActiveIdsFromStore = React.useMemo(
+    () =>  type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
+    [type, isEditModalOpened]
+  );
 
   React.useEffect(
     () => {
@@ -116,7 +127,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <ModalWrapper
       maxContainerWidth={maxContainerWidth}
-      minContainerHeight={minContainerHeight}
+      minContainerHeight={isMessageModal || isConfirmationModal ? 'auto' : minContainerHeight}
       containerWidthAuto={containerWidthAuto}
       containerHeightFull={containerHeightFull}
       zIndex={zIndex}

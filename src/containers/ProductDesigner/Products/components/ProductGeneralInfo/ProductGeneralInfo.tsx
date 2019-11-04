@@ -53,10 +53,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   return (
     <Box mx="-10px">
       <Flex
-        alignItems="center"
+        alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="productType"
             name="productType"
@@ -68,7 +68,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -81,7 +81,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[4 / 15]} p="10px">
           <Field
             id="name"
             name="name"
@@ -91,18 +91,18 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardFormFactor"
             name="cardFormFactor"
             component={SelectField}
             label="Card Form Factor"
-            placeholder="Select Card Form Factor"
+            placeholder="Select Card"
             options={cardFormFactorOptions}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[2 / 15]} p="10px">
           <Field
             id="numberOfDaysCardExpires"
             name="numberOfDaysCardExpires"
@@ -113,17 +113,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
-        <Box width={[1]} p="10px">
-          <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={TextField}
-            label="Description"
-            height={115}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="status"
             name="status"
@@ -135,7 +125,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="scheme"
             name="scheme"
@@ -145,7 +135,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             options={schemeTypesOptions}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[4 / 15]} p="10px">
           <Field
             id="currencyCode"
             name="currencyCode"
@@ -157,7 +147,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="defaultStatementCycle"
             name="defaultStatementCycle"
@@ -169,7 +159,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             isLoading={isLoadingCycleDescriptions}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[2 / 15]} p="10px">
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
@@ -180,12 +170,22 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             isNumber={true}
           />
         </Box>
-        <Box width="125px" p="10px" mt="20px">
+        <Box width={[1]} p="10px">
           <Field
             id="lockedFlag"
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="description"
+            name="description"
+            placeholder="Enter Description"
+            component={TextField}
+            label="Description"
+            height={115}
           />
         </Box>
       </Flex>

@@ -15,7 +15,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 0 20px;
+  padding: 0 5px;
   text-align: center;
   overflow-y: scroll;
   z-index: ${({ zIndex }) => zIndex ? zIndex : 100};
@@ -49,9 +49,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     min-width: 350px;
     max-width: ${({ maxContainerWidth }) =>
     maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
-    min-height: ${({ minContainerHeight }) =>
-    minContainerHeight ? minContainerHeight + 'px' : 'auto'};
-    max-height: calc(100vh - 20px);
     width: 100%;
     border-radius: 3px;
     word-break: break-word;
@@ -60,6 +57,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
 
     &-inner {
       padding: 20px 20px 10px;
+      min-height: ${({ minContainerHeight }) =>
+      minContainerHeight ? minContainerHeight + 'px' : 'auto'};
+      max-height: calc(100vh - 10px);
     }
 
     ${({ containerWidthAuto }) => containerWidthAuto && `
@@ -68,7 +68,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     `};
 
     ${({ containerHeightFull }) => containerHeightFull && `
-      height: calc(100vh - 20px);
+      height: calc(100vh - 10px);
     `}
   }
 

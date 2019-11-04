@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
@@ -30,6 +30,7 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
     <Modal
       name={modalName}
       title="Add New User"
+      type={modalTypesConst.EDIT_MODAL}
       maxContainerWidth={500}
       withCloseConfirmation={isFormDirty}
     >

@@ -4,7 +4,6 @@ import { Tabs, TabsPanel } from 'components';
 import {
   AprsForm,
   AuxiliaryCountersForm,
-  // LimitsFeesCommissionsForm,
   GeneralLedgerFrom,
   GeneralProductForm,
   LoyaltyAndBonusForm,
@@ -47,9 +46,6 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel title="Rules">
         <ProductRulesForm onCancel={onCancel} />
       </TabsPanel>
-      {/* <TabsPanel title="Limits, Fees and commissions">
-        <LimitsFeesCommissionsForm onCancel={onCancel} />
-      </TabsPanel> */}
       <TabsPanel title="Auxiliary counters">
         <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
@@ -65,6 +61,9 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel title="GL">
         <GeneralLedgerFrom />
       </TabsPanel>
+      {/* <TabsPanel title="Fees">
+        123
+      </TabsPanel> */}
     </Tabs>
   );
 };

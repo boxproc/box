@@ -177,6 +177,19 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
         )}
         <Hr />
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="statementCycle"
+            name="statementCycle"
+            component={SelectField}
+            label="Statement Cycle"
+            placeholder="Select Statement Cycle"
+            options={cyclesDescriptionsOptions}
+            isDisabled={isEditMode}
+            isLoading={isLoadingCyclesDescriptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
         <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
           <Field
             id="balanceSettled"
@@ -259,19 +272,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="statementCycle"
-            name="statementCycle"
-            component={SelectField}
-            label="Statement Cycle"
-            placeholder="Select Statement Cycle"
-            options={cyclesDescriptionsOptions}
-            isDisabled={isEditMode}
-            isLoading={isLoadingCyclesDescriptions}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         {isEditMode && (

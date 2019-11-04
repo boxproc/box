@@ -98,7 +98,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   const warningsCount = React.useMemo(
     () => codeWarnings
       && codeWarnings.length
-      && `${codeWarnings.length} ${codeWarnings.length === 1 ? ' warning' : ' warnings'}`,
+      && `${codeWarnings.length} warning(s)`,
     [codeWarnings]
   );
 
