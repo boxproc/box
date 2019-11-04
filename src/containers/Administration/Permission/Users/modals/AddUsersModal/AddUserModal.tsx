@@ -14,7 +14,7 @@ interface AddUserModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_ADMIN_USER;
+const modalName = modalNamesConst.ADD_USER;
 
 const AddAdminModal: React.FC<AddUserModalProps> = ({
   closeModal,

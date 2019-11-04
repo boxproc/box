@@ -18,7 +18,7 @@ interface EditAccountModalProps extends WithModalProps {
   adminCurrentEndpointName: string;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_ENDPOINT;
+const modalName = modalNamesConst.EDIT_ENDPOINT;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,

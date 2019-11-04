@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, SelectValues } from 'types';
 
 interface ProductItemInfoPlain extends IdNamePair { }
 
@@ -19,13 +19,16 @@ export interface ProductItemResp extends ProductItemPlainResp {
   default_statement_cycle_id: string | number;
   statement_cycle_description: string | number;
   overrides_product_id?: number;
+  card_transactions_endpoint_id?: number;
+  card_management_interface_id?: number;
+  provider_3d_secure_interface_id?: number;
 }
 
-export interface ProductsDataResp extends ResponseStatusType {
+export interface ProductsDataResp {
   products: Array<ProductItemResp>;
 }
 
-export interface ProductDataResp extends ResponseStatusType {
+export interface ProductDataResp {
   product: ProductItemResp;
 }
 
@@ -69,39 +72,37 @@ export interface ProductFilterPrepared {
 export interface RevolvingCreditProductItemResp {
   product_id: number;
   apr_default: number;
-  apr_cash: number;
-  apr_sales: number;
-  apr_balance_transfer: number;
-  apr_fee: number;
-  fee_late_payment: number;
+  apr_default_calculation_method: string | number;
   fee_exceed_limit: number;
-  fee_unpaid: number;
-  fee_over_limit: number;
-  minimum_payment_percent: number;
-  minimum_payment_amount: number;
-  payment_grace_number_of_days: number;
+  fee_late_payment: number;
+  fee_overpayment: number;
   limit_sharing_allowed_flag: string;
+  minimum_payment_amount: number;
+  minimum_payment_rate: number;
+  payment_grace_number_of_days: number;
+  rate_exceed_limit: number;
+  rate_late_payment: number;
+  rate_overpayment: number;
 }
 
-export interface RevolvingCreditProductResp extends ResponseStatusType {
+export interface RevolvingCreditProductResp {
   product: RevolvingCreditProductItemResp;
 }
 
 export interface RevolvingCreditProductItem {
   productId: number;
   aprDefault: number;
-  aprCash: number;
-  aprSales: number;
-  aprBalanceTransfer: number;
-  aprFee: number;
-  feeLatePayment: number;
+  aprDefaultCalculationMethod: SelectValues;
   feeExceedLimit: number;
-  feeUnpaid: number;
-  feeOverLimit: number;
-  minimumPaymentPercent: number;
-  minimumPaymentAmount: number;
-  paymentGraceNumberOfDays: number;
+  feeLatePayment: number;
+  feeOverpayment: number;
   limitSharingAllowedFlag: boolean;
+  minimumPaymentAmount: number;
+  minimumPaymentRate: number;
+  paymentGraceNumberOfDays: number;
+  rateExceedLimit: number;
+  rateLatePayment: number;
+  rateOverpayment: number;
 }
 
 export interface LoanProductItemResp {
@@ -112,7 +113,7 @@ export interface LoanProductItemResp {
   payment_grace_number_of_days: number;
 }
 
-export interface LoanProductResp extends ResponseStatusType {
+export interface LoanProductResp {
   product: LoanProductItemResp;
 }
 
@@ -131,7 +132,7 @@ export interface PrepaidProductItemResp {
   reload_allowed: string;
 }
 
-export interface PrepaidProductResp extends ResponseStatusType {
+export interface PrepaidProductResp {
   product: PrepaidProductItemResp;
 }
 
@@ -148,7 +149,7 @@ export interface DebitProductItemResp {
   overdraft_allowed: string;
 }
 
-export interface DebitProductResp extends ResponseStatusType {
+export interface DebitProductResp {
   product: DebitProductItemResp;
 }
 
@@ -167,7 +168,7 @@ export interface SavingsProductItemResp {
   maximum_monthly_deposit: number;
 }
 
-export interface SavingsProductResp extends ResponseStatusType {
+export interface SavingsProductResp {
   product: SavingsProductItemResp;
 }
 
@@ -213,7 +214,7 @@ export type NewProduct = ProductItemDetails & ProductItemGeneral;
 
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
-export interface ProductRuleResp extends ResponseStatusType {
+export interface ProductRuleResp {
   product_rule: ProductRulesItemResp;
 }
 
@@ -237,7 +238,7 @@ export interface ProductRuleRequestPrepared {
   action_type?: number | string;
 }
 
-export interface InstitutionProducts extends ResponseStatusType {
+export interface InstitutionProducts {
   institution_products: Array<ProductItemInfoPlain>;
 }
 
@@ -253,12 +254,49 @@ export interface ServicesItems {
   id: number;
   card_transactions_endpoint_id: string | number;
   card_management_interface_id: string | number;
+  provider_3d_secure_interface_id: string | number;
 }
 
 export interface ServicesItemsPrepared {
   id: number;
   endpoints: SelectValues;
   interfaces: SelectValues;
+  secureProviderInterfaces: SelectValues;
+}
+
+export interface ProductAprItem {
+  id: number;
+  product_id: number;
+  repayment_sequence: number;
+  description: string;
+  calculation_method: string | number;
+  rate: number;
+  grace_number_of_days: number;
+}
+
+export interface ProductAprItems {
+  product_aprs: Array<ProductAprItem>;
+}
+
+export interface ProductAprPlainInfo {
+  id: number;
+  productId: number;
+  repaymentSequence: number;
+  description: string;
+  rate: string;
+  graceNumberOfDays: number;
+}
+
+export interface ProductApr extends ProductAprPlainInfo {
+  calculationMethod: string;
+}
+
+export interface ProductAprFormValues extends ProductAprPlainInfo {
+  calculationMethod: SelectValues;
+}
+
+export interface ProductAprs {
+  product_aprs: Array<ProductApr>;
 }
 
 export interface ProductsState {
@@ -269,4 +307,5 @@ export interface ProductsState {
   institutionProducts: ImmutableArray<ProductItemInfoPlain>;
   interfaces: ImmutableArray<IdNamePair>;
   endpoints: ImmutableArray<IdNamePair>;
+  productAprs: ImmutableArray<ProductAprItem>;
 }

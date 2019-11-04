@@ -5,7 +5,6 @@ import {
 import { ApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-
   GET_INSTITUTIONS = 'const/GET_INSTITUTIONS',
   GET_INSTITUTIONS_FULFILLED = 'const/GET_INSTITUTIONS_FULFILLED',
   GET_INSTITUTIONS_REJECTED = 'const/GET_INSTITUTIONS_REJECTED',

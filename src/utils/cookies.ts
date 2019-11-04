@@ -36,6 +36,10 @@ export const remove = (name: string) => {
 };
 
 export const get = (name: string) => {
+  if (!name) {
+    return null;
+  }
+
   const matches = document.cookie.match(new RegExp(
     // eslint-disable-next-line
     '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'

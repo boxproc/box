@@ -47,7 +47,6 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -60,34 +59,31 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="User Name"
           options={auditUsersOptions}
           placeholder="Select Username"
-          isDisabled={false}
           isLoading={isLoadingUsers}
         />
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeFrom"
-          name="dateTimeFrom"
+          id="userActivityDateTimeFrom"
+          name="userActivityDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeTo"
-          name="dateTimeTo"
+          id="userActivityDateTimeTo"
+          name="userActivityDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
     </React.Fragment>

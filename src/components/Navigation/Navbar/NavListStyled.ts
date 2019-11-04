@@ -22,6 +22,7 @@ export const NavListStyled = styled.div`
     font-weight: 500;
     letter-spacing: .2pt;
     color: ${({ theme }) => theme.colors.darkGray};
+    user-select: none;
   }
   .${menuClasses.MENU_ITEM}  {
     position: relative;

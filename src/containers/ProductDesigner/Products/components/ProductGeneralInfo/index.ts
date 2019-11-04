@@ -4,8 +4,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ProductGeneralInfo from './ProductGeneralInfo';
 
 import {
-  AdminCycleEditorActionTypes,
   createLoadingSelector,
+  CycleEditorActionTypes,
   handleGetCyclesDescriptions,
   selectCyclesDescriptionsOptions,
   selectInstitutionsOptions,
@@ -13,7 +13,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  AdminCycleEditorActionTypes.GET_ADMIN_STATEMENTS_DESCRIPTIONS,
+  CycleEditorActionTypes.GET_STATEMENTS_DESCRIPTIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

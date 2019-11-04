@@ -1,8 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, ResponseStatusType } from 'types';
+import { IdNamePair } from 'types';
 
-export interface DictionaryEventsData extends ResponseStatusType {
+export interface DictionaryEventsData {
   events: Array<IdNamePair>;
 }
 

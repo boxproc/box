@@ -7,17 +7,20 @@ import {
   AuditScheduledJobsActionType,
   createLoadingSelector,
   handleFilterAuditScheduledJobs,
-  handleGetSchedulerLogFile,
+  handleGetLogData,
   resetScheduledJobs,
   selectAuditScheduledJobs,
   selectAuditScheduledJobsSchedulerId,
-  selectInstitutionsOptions
+  selectAuditScheduledJobsSchedulerName,
+  selectInstitutionsOptions,
+  SystemMonitorActionTypes
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AuditScheduledJobsActionType.FILTER_AUDIT_SCHEDULED_JOBS,
+  SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -25,12 +28,13 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   auditScheduledJobs: selectAuditScheduledJobs(state),
   currentSchedulerId: selectAuditScheduledJobsSchedulerId(state),
+  currentScheduledJobsName: selectAuditScheduledJobsSchedulerName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAuditScheduledJobs: handleFilterAuditScheduledJobs,
-    getSchedulerLogFile: handleGetSchedulerLogFile,
+    getLogData: handleGetLogData,
     resetScheduledJobs,
   },
   dispatch

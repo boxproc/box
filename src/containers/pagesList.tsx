@@ -5,7 +5,6 @@ import { uiItemConsts } from 'consts';
 import {
   Countries,
   Currencies,
-  CyclesEditor,
   Endpoints,
   EventDataElems,
   Events,
@@ -13,11 +12,12 @@ import {
   Interfaces,
   Scheduler,
   SystemProperties,
+  TransactionTypes,
   Users,
   UsersGroup,
 } from './Administration';
 
-import { Products } from 'containers/ProductDesigner';
+import { Cycles, Products } from 'containers/ProductDesigner';
 
 import { Accounts, Cards, Customers, Statements, Transactions } from 'containers/Ledger';
 
@@ -31,10 +31,6 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_INSTITUTIONS,
     component: <Institutions />,
-  },
-  {
-    path: uiItemConsts.ADMINISTRATION_CYCLE_EDITOR,
-    component: <CyclesEditor />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_SCHEDULER,
@@ -55,6 +51,10 @@ export const pagesList = [
   {
     path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
     component: <EventDataElems />,
+  },
+  {
+    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES,
+    component: <TransactionTypes />,
   },
   {
     path: uiItemConsts.ADMINISTRATION_USER,
@@ -113,7 +113,11 @@ export const pagesList = [
     component: <Cards />,
   },
   {
-    path: uiItemConsts.PRODUCTS,
+    path: uiItemConsts.PRODUCTS_DESIGNER_CYCLES,
+    component: <Cycles />,
+  },
+  {
+    path: uiItemConsts.PRODUCTS_DESIGNER_PRODUCTS,
     component: <Products />,
   },
 ];

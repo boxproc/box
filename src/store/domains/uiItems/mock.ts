@@ -10,16 +10,6 @@ export const uiItems: UiItems = {
       item_type: 'M',
     },
     {
-      ui_item: 'administration/cycles',
-      description: 'Cycles',
-      item_type: 'M',
-    },
-    {
-      ui_item: 'administration/cycles/cycles_editor',
-      description: 'Cycles editor',
-      item_type: 'm',
-    },
-    {
       ui_item: 'administration/dictionaries',
       description: 'Dictionaries',
       item_type: 'M',
@@ -138,6 +128,11 @@ export const uiItems: UiItems = {
       ui_item: 'product_designer',
       description: 'Product designer',
       item_type: 'M',
+    },
+    {
+      ui_item: 'product_designer/cycles',
+      description: 'Cycles',
+      item_type: 'm',
     },
     {
       ui_item: 'product_designer/products',

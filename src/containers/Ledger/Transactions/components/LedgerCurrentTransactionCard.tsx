@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { InputField, NumberFormatField } from 'components';
 
 const LedgerCurrentTransactionCard: React.FC = () => {
   return (
@@ -18,7 +18,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardId"
             component={InputField}
             label="Card ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardTransactionId"
             component={InputField}
             label="Card Transaction ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -38,16 +38,19 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardCurrency"
             component={InputField}
             label="Card Currency"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
             id="cardAmount"
             name="cardAmount"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Card Amount"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -55,9 +58,12 @@ const LedgerCurrentTransactionCard: React.FC = () => {
           <Field
             id="cardConversionRate"
             name="cardConversionRate"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Card Conversion Rate"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -67,7 +73,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardAcceptorName"
             component={InputField}
             label="Card Acceptor Name"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -76,7 +82,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             name="cardAcceptorLocation"
             component={InputField}
             label="Card Acceptor Location"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
       </Flex>

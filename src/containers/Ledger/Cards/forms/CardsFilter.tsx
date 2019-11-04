@@ -5,7 +5,6 @@ import { Box } from '@rebass/grid';
 
 import { InputField } from 'components';
 
-import { maskFormat } from 'consts';
 import { formErrorUtil } from 'utils';
 
 const CardsFilter: React.FC = () => {
@@ -18,7 +17,6 @@ const CardsFilter: React.FC = () => {
           component={InputField}
           label="Card ID"
           placeholder="Card ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />
@@ -30,7 +28,6 @@ const CardsFilter: React.FC = () => {
           component={InputField}
           label="Account ID"
           placeholder="Account ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />
@@ -42,7 +39,6 @@ const CardsFilter: React.FC = () => {
           component={InputField}
           label="Customer ID"
           placeholder="Customer ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />
@@ -54,8 +50,6 @@ const CardsFilter: React.FC = () => {
           component={InputField}
           label="PAN Alias"
           placeholder="PAN Alias"
-          mask={maskFormat.DATE_TIME}
-          maskChar={null}
         />
       </Box>
     </React.Fragment>

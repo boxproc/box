@@ -48,7 +48,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -61,34 +60,31 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           options={schedulerNameOptions}
           label="Scheduler"
           placeholder="Select Scheduler"
-          disabled={false}
           isLoading={isLoadingSchedulerNames}
         />
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeFrom"
-          name="dateTimeFrom"
+          id="scheduledJobsDateTimeFrom"
+          name="scheduledJobsDateTimeFrom"
           component={MaskField}
           label="Start Date&nbsp;/&nbsp;Time"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
       <Box width="200px" p="10px" >
         <Field
-          id="dateTimeTo"
-          name="dateTimeTo"
+          id="scheduledJobsDateTimeTo"
+          name="scheduledJobsDateTimeTo"
           component={MaskField}
           label="Finish Date&nbsp;/&nbsp;Time"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
     </React.Fragment>

@@ -52,7 +52,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
         <TabsPanel
           title="Details"
           isDisabled={!currentProductType}
-          hintForDisabled="Select Product Type"
+          hintIfDisabled="Select Product Type"
         >
           <ProductDetails
             productType={currentProductType && currentProductType.value}

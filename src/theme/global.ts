@@ -8,6 +8,16 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
   }
 
+  ::-moz-selection {
+    background-color: #ffa400;
+    color: #333333;
+  }
+
+  ::selection {
+    background-color: #ffa400;
+    color: #333333;
+  }
+
   * {
     margin: 0;
     padding: 0;

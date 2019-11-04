@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, SelectValues } from 'types';
 
 export interface AdminInstitutionsInfoPlain extends IdNamePair {}
 
@@ -11,7 +11,7 @@ export interface AdminInstitutionsItem extends AdminInstitutionsInfoPlain {
   status: string | number;
 }
 
-export interface AdminInstitutionsItems extends ResponseStatusType {
+export interface AdminInstitutionsItems {
   institutions: Array<AdminInstitutionsItem>;
 }
 

@@ -7,12 +7,12 @@ import { ScheduledJobsFilter } from './forms';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { iconNamesConst } from 'consts';
+import { iconNamesConst, systemMonitorTables } from 'consts';
 
 import {
   AuditScheduledJobsItemPrepared,
   HandleFilterAuditScheduledJobs,
-  HandleGetSchedulerLogFile,
+  HandleGetLogData,
   ResetScheduledJobs,
 } from 'store/domains';
 import { SelectValues } from 'types';
@@ -22,9 +22,10 @@ export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValues>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
-  getSchedulerLogFile: HandleGetSchedulerLogFile;
+  getLogData: HandleGetLogData;
   resetScheduledJobs: ResetScheduledJobs;
   currentSchedulerId: number;
+  currentScheduledJobsName: string;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
@@ -32,8 +33,9 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   auditScheduledJobs,
   filterAuditScheduledJobs,
   resetScheduledJobs,
-  getSchedulerLogFile,
+  getLogData,
   currentSchedulerId,
+  currentScheduledJobsName,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -53,10 +55,14 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       {
         name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
-        action: () => getSchedulerLogFile(currentSchedulerId),
+        action: () => getLogData({
+          id: currentSchedulerId,
+          name: systemMonitorTables.SCHEDULER_JOBS,
+          title: currentScheduledJobsName,
+        }),
       },
     ],
-    [getSchedulerLogFile, currentSchedulerId]
+    [getLogData, currentSchedulerId, currentScheduledJobsName]
   );
 
   return (
@@ -68,8 +74,8 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       contextMenuItems={contextMenuItems}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
-        dateTimeFrom,
-        dateTimeTo,
+        scheduledJobsDateTimeFrom: dateTimeFrom,
+        scheduledJobsDateTimeTo: dateTimeTo,
       }}
       FilterForm={
         <ScheduledJobsFilter

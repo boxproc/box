@@ -9,7 +9,7 @@ import AddUserModal from './AddUserModal';
 import { handleAddAdminUser } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.DEFINE_ADMIN_USER);
+const dirty = isDirty(formNamesConst.DEFINE_USER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

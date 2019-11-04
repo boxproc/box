@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -12,16 +12,19 @@ import {
   AdminEndpointItemPrepared,
   HandleDeleteAdminEndpoint,
   HandleFilterAdminEndpoint,
+  HandleGetLogData,
   ResetEndpoints,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
 export interface EndpointsProps {
-  adminEndpointItems: Array<AdminEndpointItemPrepared>;
-  deleteEndpoint: HandleDeleteAdminEndpoint;
   adminCurrentEndpointName: string;
-  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  currentEndPointId: number;
+  adminEndpointItems: Array<AdminEndpointItemPrepared>;
   institutionsOptions: Array<SelectValues>;
+  deleteEndpoint: HandleDeleteAdminEndpoint;
+  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  getLogData: HandleGetLogData;
   resetEndpoints: ResetEndpoints;
 }
 
@@ -30,7 +33,9 @@ const Endpoints: React.FC<EndpointsProps> = ({
   deleteEndpoint,
   filterAdminEndpoint,
   adminCurrentEndpointName,
+  currentEndPointId,
   institutionsOptions,
+  getLogData,
   resetEndpoints,
 }) => {
   React.useEffect(
@@ -43,14 +48,23 @@ const Endpoints: React.FC<EndpointsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
+        name: 'Show log',
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getLogData({
+          name: systemMonitorTables.ENDPOINTS,
+          id: currentEndPointId,
+          title: adminCurrentEndpointName,
+        }),
+      },
+      {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteEndpoint,
         withConfirmation: true,
         confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
       },
     ],
-    [deleteEndpoint, adminCurrentEndpointName]
+    [deleteEndpoint, adminCurrentEndpointName, getLogData, currentEndPointId]
   );
 
   return (
@@ -58,8 +72,8 @@ const Endpoints: React.FC<EndpointsProps> = ({
       title="Endpoints"
       data={adminEndpointItems}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_ENDPOINT}
-      editModalName={modalNamesConst.EDIT_ADMIN_ENDPOINT}
+      newModalName={modalNamesConst.ADD_ENDPOINT}
+      editModalName={modalNamesConst.EDIT_ENDPOINT}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminEndpoint}
       initialFilterValues={{

@@ -8,7 +8,7 @@ import { formNamesConst } from 'consts';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
-  AdminCycleEditorActionTypes,
+  CycleEditorActionTypes,
   createLoadingSelector,
   handleGetCyclesDescriptions,
   handleGetInstitutionProducts,
@@ -21,7 +21,7 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
-  AdminCycleEditorActionTypes.GET_ADMIN_STATEMENTS_DESCRIPTIONS,
+  CycleEditorActionTypes.GET_STATEMENTS_DESCRIPTIONS,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);

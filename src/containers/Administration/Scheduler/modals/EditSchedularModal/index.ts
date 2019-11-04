@@ -20,7 +20,7 @@ const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
 ]);
 
-const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
+const dirty = isDirty(formNamesConst.DEFINE_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

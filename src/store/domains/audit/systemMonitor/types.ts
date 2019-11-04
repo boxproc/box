@@ -4,9 +4,14 @@ interface Status {
   status: string;
 }
 
-interface PlainInfo {
-  name: string;
+interface InstitutionInfo {
   institutionId: number;
+  institutionName: string;
+}
+
+interface PlainInfo extends InstitutionInfo {
+  name: string;
+  id: number;
 }
 
 export interface SystemMonitorCounts {
@@ -19,9 +24,7 @@ export interface SystemMonitorItem extends PlainInfo, Status {
   lastFaultDatetime: string;
 }
 
-export interface SystemMonitorTransaction {
-  institutionId: number;
-  institutionName: string;
+export interface SystemMonitorTransaction extends InstitutionInfo {
   transactionDatetime: string;
 }
 
@@ -29,10 +32,12 @@ export interface SystemMonitorSchedulerItem extends PlainInfo, Status { }
 
 export interface SystemMonitorInterfaces {
   interface_name: string;
+  interface_id: number;
   interface_last_message_datetime: string;
   interface_last_fault_datetime: string;
   interface_status: string;
   interface_institution_id: number;
+  interface_institution_name: string;
 }
 
 export interface SystemMonitorInterfacesData {
@@ -45,10 +50,12 @@ export interface SystemMonitorInterfacesData {
 
 export interface SystemMonitorEndpoints {
   endpoint_name: string;
+  endpoint_id: number;
   endpoint_last_message_datetime: string;
   endpoint_last_fault_datetime: string;
   endpoint_status: string;
   endpoint_institution_id: number;
+  endpoint_institution_name: string;
 }
 
 export interface SystemMonitorEndpointsData {
@@ -61,8 +68,10 @@ export interface SystemMonitorEndpointsData {
 
 export interface SystemMonitorScheduler {
   scheduler_name: string;
+  scheduler_id: number;
   scheduler_status: string;
   scheduler_institution_id: number;
+  scheduler_institution_name: string;
 }
 
 export interface SystemMonitorSchedulerData {
@@ -79,8 +88,13 @@ export interface SystemMonitorTransactionItem {
   transaction_datetime: string;
 }
 
-export interface SystemMonitorTransactionData {
-  transaction: SystemMonitorTransactionItem;
+export interface SystemMonitorTransactionsData {
+  transactions: Array<SystemMonitorTransactionItem>;
+}
+
+export interface LogDataRequest {
+  id: object;
+  apiPathName: string;
 }
 
 export interface SystemMonitorState {
@@ -99,5 +113,5 @@ export interface SystemMonitorState {
     total_active_scheduler_jobs: number;
     total_faulty_scheduler_jobs: number;
   };
-  lastTransaction: SystemMonitorTransactionItem;
+  lastTransactions: ImmutableArray<SystemMonitorTransactionItem>;
 }

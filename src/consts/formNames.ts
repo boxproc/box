@@ -1,25 +1,22 @@
 export enum formNamesConst {
   USER_LOGIN = 'userLoginForm',
-
   LOGIN_CODE = 'loginCodeForm',
-
   PASSWORD = 'passwordForm',
-  CHANGE_PROFILE_FORM = 'changeProfileForm',
+  CHANGE_PROFILE = 'changeProfileForm',
 
   FILTER = 'filterForm',
 
-  ADD_ADMIN_SYSTEM_PROPERTY = 'addAdminSystemPropertyForm',
-
   PRODUCT = 'productForm',
   ADD_PRODUCT = 'addProductForm',
-  GENERAL_PRODUCT = 'editGeneralProductForm',
-  PRODUCT_DETAILS = 'editProductDetailsForm',
-  PRODUCT_RULES = 'editProductRulesForm',
+  GENERAL_PRODUCT = 'generalProductForm',
+  PRODUCT_DETAILS = 'productDetailsForm',
+  PRODUCT_RULES = 'productRulesForm',
   PRODUCT_LIMITS_AND_COMMISSION = 'productLimitsFeesAndCommissionsForm',
   PRODUCT_AUXILIARY_COUNTERS = 'productAuxiliaryCountersForm',
   PRODUCT_SERVICES = 'productServicesForm',
-  PRODUCT_APRS = 'productAPRsForm',
+  PRODUCT_APRS = 'productAprsForm',
   PRODUCT_LOYALTY_AND_BONUS = 'productLoyaltyAndBonus',
+  PRODUCT_GENERAL_LEDGER = 'productGeneralLedger',
 
   ADD_USER_GROUP = 'addUserGroupForm',
   EDIT_GENERAL_INFO_USER_GROUP = 'editGeneralInfoUserGroupForm',
@@ -27,11 +24,17 @@ export enum formNamesConst {
   EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
   USERS_GROUP = 'usersGroupForm',
   ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
-  DEFINE_ADMIN_USER = 'defineAdminUserForm',
+  DEFINE_USER = 'defineUserForm',
 
-  DEFINE_ADMIN_CYCLE_EDITOR = 'defineAdminCycleEditorForm',
+  ENDPOINT = 'endpointsForm',
+  INTERFACE = 'interfaceForm',
+  INSTITUTIONS = 'institutionsForm',
+  ADD_SYSTEM_PROPERTY = 'addSystemPropertyForm',
+  DEFINE_CYCLE_EDITOR = 'defineCycleEditorForm',
 
-  DEFINE_ADMIN_SCHEDULER_JOB = 'defineAdminSchedulerJobForm',
+  DEFINE_SCHEDULER_JOB = 'defineSchedulerJobForm',
+
+  AUDIT_API_CALL = 'auditApiCallForm',
 
   ADD_LEDGER_CUSTOMER = 'addLedgerCustomerForm',
   EDIT_LEDGER_CUSTOMER = 'editLedgerCustomerForm',
@@ -41,12 +44,4 @@ export enum formNamesConst {
   LEDGER_ACCOUNT_CARDS = 'ledgerAccountCardsForm',
   LEDGER_STATEMENT = 'ledgerStatementForm',
   LEDGER_CHANGE_CARD_STATUS = 'ledgerChangeCardStatus',
-
-  AUDIT_API_CALL = 'auditApiCallForm',
-
-  ADMIN_ENDPOINT = 'adminEndpointsForm',
-
-  ADMIN_INTERFACE = 'adminInterfaceForm',
-
-  ADMIN_INSTITUTIONS = 'adminInstitutionsForm',
 }

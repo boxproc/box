@@ -30,9 +30,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   );
   return (
     <form onSubmit={handleSubmitForm}>
-      <GeneralUserGroupInfo
-        isEditMode={true}
-      />
+      <GeneralUserGroupInfo isEditMode={true} />
       <Hr />
       <OkCancelButtons
         okText="Save"

@@ -13,7 +13,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB);
+const dirty = isDirty(formNamesConst.DEFINE_SCHEDULER_JOB);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

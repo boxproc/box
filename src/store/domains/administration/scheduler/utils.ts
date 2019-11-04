@@ -87,6 +87,6 @@ export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
 
   return {
     name: name ? name : null,
-    status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
+    status: activeStatusFlag ? [statusTypesCodes.ACTIVE, statusTypesCodes.EXECUTION_PENDING] : null,
   };
 };

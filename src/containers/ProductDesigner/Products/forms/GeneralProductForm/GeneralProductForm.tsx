@@ -61,10 +61,10 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
     <React.Fragment>
       {isProductOverride && (
         <Flex alignItems="flex-start">
-          <Box mr="7px" mb="10px">
+          <Box mr="7px" mt="5px">
             <CheckedBoxIcon />
           </Box>
-          <Box mb="10px">
+          <Box mt="5px">
             <Label>Product override</Label>
           </Box>
         </Flex>

@@ -8,6 +8,7 @@ import { Label } from 'components/Text';
 import { componentUtil } from 'utils';
 
 export const InputFieldWrapper = styled.div`
+  position: relative;
   width: 100%;
   text-align: left;
   position: relative;
@@ -22,9 +23,14 @@ export const InputFieldWrapper = styled.div`
 `;
 
 const ErrorWrapper = styled.div`
-  margin-top: 3px;
-  font-size: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 3px;
+  font-size: 9px;
+  line-height: 1;
   color: ${({ theme }) => theme.colors.red};
+  white-space: nowrap;
 `;
 
 export interface InputFieldProps extends Partial<BaseFieldProps> {
@@ -39,10 +45,6 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   showErrors?: boolean;
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
-  isRequired?: boolean;
-  hint?: string;
-  hintPosition?: string;
-  hintWidth?: string;
 }
 
 interface InputWrapperProps {
@@ -62,12 +64,8 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   validateOnChange,
   fieldClassName = '',
   showErrors = true,
-  focusOnLabelClick = true,
+  focusOnLabelClick = false,
   invalid: defaultInvalid,
-  isRequired,
-  hint,
-  hintPosition,
-  hintWidth,
   meta: {
     touched,
     error,
@@ -95,9 +93,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
         {render(invalid, preventBlur)}
       </div>
       {invalid && error && showErrors && (
-        <ErrorWrapper>
-          {error}
-        </ErrorWrapper>
+        <ErrorWrapper>{error}</ErrorWrapper>
       )}
     </InputFieldWrapper>
   );
@@ -120,19 +116,19 @@ export const withFormField = <OriginalProps extends {}>(
       );
     }
 
-    renderComponent = (invalid: boolean) => (
-      <Component
-        {...this.props.input}
-        {...this.props}
-        invalid={invalid}
-        onBlur={this.onBlur}
-      />
-    )
+    renderComponent = (invalid: boolean) => {
+      return (
+        <Component
+          {...this.props.input}
+          {...this.props}
+          invalid={invalid}
+          onBlur={this.onBlur}
+        />
+      );
+    }
 
     onBlur = () =>
       this.props.preventBlur
         ? ''
-        : setTimeout(() =>
-          this.props.input.onBlur(this.props.input.value)
-        )
+        : setTimeout(() => this.props.input.onBlur(this.props.input.value))
   };

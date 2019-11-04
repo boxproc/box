@@ -7,7 +7,7 @@ import styled from 'theme';
 import { Hint } from 'components';
 
 const TabsWrapper = styled.div`
-  margin: 0 -20px 20px;
+  margin: 0 -20px 10px;
   box-shadow: ${({ theme }) => theme.shadows.bottomBox};
 `;
 
@@ -25,6 +25,7 @@ const TabTitle = styled.div<TabTitleProps>`
   font-size: 14px;
   letter-spacing: .5pt;
   border-bottom: 1px solid transparent;
+  user-select: none;
 
   ${({ isDisabled, theme }) => !isDisabled && `
     &:hover {
@@ -59,7 +60,8 @@ export const Tabs: React.FC = ({
               return null;
             }
 
-            const { title, hintForDisabled, isDisabled } = children[i].props;
+            const { title, hintIfDisabled, isDisabled } = children[i].props;
+
             return (
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
@@ -67,9 +69,9 @@ export const Tabs: React.FC = ({
                 onClick={isDisabled ? null : () => setActiveTabIndex(i)}
               >
                 <div className="title">{title}</div>
-                {hintForDisabled && isDisabled && (
+                {hintIfDisabled && isDisabled && (
                   <Hint
-                    text={hintForDisabled}
+                    text={hintIfDisabled}
                     icon={false}
                     position="bottom"
                   />
@@ -86,7 +88,7 @@ export const Tabs: React.FC = ({
 
 interface TabsPanelProps {
   title: string;
-  hintForDisabled?: string;
+  hintIfDisabled?: string;
   isDisabled?: boolean;
 }
 

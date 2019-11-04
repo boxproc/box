@@ -40,13 +40,18 @@ export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
   if (!values) {
     return null;
   }
+
+  const status = statusTypesOptions.find(el => el.value === values.status);
+  const type = typeOfInterfacesCodes.find(el => el.value === values.type);
+  const protocolType = protocolTypesOptions.find(el => el.value === values.protocol_type);
+
   return {
     id: values.id,
     name: values.name,
-    status: statusTypesOptions.find(el => el.value === values.status).label,
-    type: typeOfInterfacesCodes.find(el => el.value === values.type).label,
+    status: status && status.label,
+    type: type && type.label,
     url: values.url,
-    protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type).label,
+    protocolType: protocolType && protocolType.label,
     privateKeyLocation: values.private_key_location,
     connectionAttributes: values.connection_attributes,
     logFileLocation: values.log_file_location,

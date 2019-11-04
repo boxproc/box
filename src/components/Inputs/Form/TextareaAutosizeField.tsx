@@ -14,6 +14,7 @@ interface WrapperProps {
   height?: number;
   disabled?: boolean;
   invalid?: boolean;
+  readOnly?: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -22,7 +23,7 @@ const Wrapper = styled.div<WrapperProps>`
   border: solid 1px ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
 
-  ${({ disabled, theme }) => disabled && `
+  ${({ disabled, readOnly, theme }) => (disabled || readOnly) && `
     border-color: ${theme.colors.lightGray};
   `};
 
@@ -34,7 +35,6 @@ const Wrapper = styled.div<WrapperProps>`
     border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 
-  .ps__thumb-x,
   .ps__thumb-y {
     background-color: #ffa400;
   }
@@ -54,21 +54,18 @@ interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextA
 }
 
 const TextareaAutosizeField: React.FC<TextAreaProps> = props => {
-  const { height, disabled, invalid } = props;
+  const { height, disabled, readOnly, invalid } = props;
   const wrapperRef = React.useRef(null);
 
-  const addFocusClass = () => {
-    wrapperRef.current.classList.add('is-focus');
-  };
-  const removeFocusClass = () => {
-    wrapperRef.current.classList.remove('is-focus');
-  };
+  const addFocusClass = () => !readOnly && wrapperRef.current.classList.add('is-focus');
+  const removeFocusClass = () => !readOnly && wrapperRef.current.classList.remove('is-focus');
 
   return (
     <Wrapper
       ref={wrapperRef}
       height={height}
       disabled={disabled}
+      readOnly={readOnly}
       invalid={invalid}
       onFocus={addFocusClass}
       onBlur={removeFocusClass}

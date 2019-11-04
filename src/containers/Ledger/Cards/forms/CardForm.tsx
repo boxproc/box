@@ -22,7 +22,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               name="id"
               component={InputField}
               label="ID"
-              disabled={true}
+              readOnly={true}
               isNumber={true}
             />
           </Box>
@@ -32,7 +32,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               name="accountId"
               component={InputField}
               label="Account ID"
-              disabled={true}
+              readOnly={true}
               isNumber={true}
             />
           </Box>
@@ -42,7 +42,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               name="expiryDate"
               component={InputField}
               label="Expiry Date"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
           <Box width={[1 / 2]} p="10px">
@@ -51,7 +51,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               name="panAlias"
               component={InputField}
               label="Pan Alias"
-              disabled={true}
+              readOnly={true}
               isNumber={true}
             />
           </Box>
@@ -61,7 +61,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               name="panMasked"
               component={InputField}
               label="Pan Masked"
-              disabled={true}
+              readOnly={true}
             />
           </Box>
         </Flex>

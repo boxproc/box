@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -45,7 +45,7 @@ const Customers: React.FC<CustomersProps> = ({
     () => [
       {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteLedgerCustomer,
         withConfirmation: true,
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,

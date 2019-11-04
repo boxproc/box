@@ -1,5 +1,4 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType } from 'types';
 
 export interface LedgerCardItem {
   id: number;
@@ -11,7 +10,7 @@ export interface LedgerCardItem {
   card_status_name: string;
 }
 
-export interface LedgerCardItems extends ResponseStatusType {
+export interface LedgerCardItems {
   cards: Array<LedgerCardItem>;
 }
 

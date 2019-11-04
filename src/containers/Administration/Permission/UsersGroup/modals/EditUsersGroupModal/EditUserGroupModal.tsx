@@ -11,7 +11,7 @@ interface EditUsersGroupModalProps extends WithModalProps {
   usersGroupName: string;
 }
 
-const modalName = modalNamesConst.EDIT_ADMIN_USERS_GROUP;
+const modalName = modalNamesConst.EDIT_USERS_GROUP;
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
@@ -31,15 +31,11 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
       title={`Edit User Group${groupName}`}
       minContainerHeight={550}
     >
-      <EditUserGroupForms
-        onCancel={handleOnCancel}
-      />
+      <EditUserGroupForms onCancel={handleOnCancel} />
     </Modal>
   );
 };
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(EditUsersGroupModal)
-);
+})(withModal(EditUsersGroupModal));

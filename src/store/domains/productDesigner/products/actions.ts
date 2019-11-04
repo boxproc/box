@@ -1,5 +1,5 @@
 
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
@@ -10,16 +10,20 @@ import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddProductAction,
+  AddProductAprAction,
   DeleteProductAction,
+  DeleteProductAprAction,
   FilterProductsAction,
   GetEndpointsProductServiceAction,
   GetInstitutionProductsAction,
   GetInterfacesProductServiceAction,
   GetProductAction,
+  GetProductAprsAction,
   GetProductDetailsAction,
   GetProductRuleAction,
   UpdateCardServiceAction,
   UpdateProductAction,
+  UpdateProductAprAction,
   UpdateProductDetailsAction,
   UpdateProductRulesAction,
 } from './actionTypes';
@@ -28,6 +32,9 @@ import { selectCurrentInstitutionId, selectCurrentProductType } from './selector
 import {
   NewProduct,
   NewProductPrepared,
+  ProductApr,
+  ProductAprFormValues,
+  ProductAprItem,
   ProductFilterPrepared,
   ProductItemDetails,
   ProductItemDetailsResp,
@@ -40,8 +47,10 @@ import {
   ServicesItemsPrepared,
 } from './types';
 import {
+  prepareFormValuesProductAprsToSend,
   prepareGeneralProductValuesToSend,
   prepareNewProductValuesToSend,
+  prepareProductAprsToSend,
   prepareProductDetailsValuesToSend,
   prepareProductFiltersParamsToSend,
   prepareProductRuleIdsToSend,
@@ -73,11 +82,9 @@ export type HandleGetProductRule = () => Thunk<void>;
 
 export type GetInterfacesService = (institutionId: string | number) =>
   GetInterfacesProductServiceAction;
-export type HandleGetInterfacesService = () => Thunk<void>;
-
 export type GetEndpointsService = (institutionId: string | number) =>
   GetEndpointsProductServiceAction;
-export type HandleGetEndpointsService = () => Thunk<void>;
+export type HandleGetProductServices = () => Thunk<void>;
 
 export type AddProduct = (values: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (values: Partial<NewProduct>) => Thunk<void>;
@@ -93,6 +100,18 @@ export type HandleUpdateProductDetails = (values: Partial<ProductItemDetails>) =
 
 export type UpdateProductRules = (values: ProductRulesItemResp) => UpdateProductRulesAction;
 export type HandleUpdateProductRules = (values: Partial<ProductRulesItem>) => Thunk<void>;
+
+export type GetProductAprs = (id: number) => GetProductAprsAction;
+export type HandleGetProductAprs = () => Thunk<void>;
+
+export type AddProductApr = (values: Partial<ProductAprItem>) => AddProductAprAction;
+export type HandleAddProductApr = (values: Partial<ProductAprFormValues>) => Thunk<void>;
+
+export type UpdateProductApr = (values: Partial<ProductAprItem>) => UpdateProductAprAction;
+export type HandleUpdateProductApr = (values: Partial<ProductApr>) => Thunk<void>;
+
+export type DeleteProductApr = (id: number) => DeleteProductAprAction;
+export type HandleDeleteProductApr = (id: number) => Thunk<void>;
 
 export type ResetProducts = () => void;
 
@@ -114,7 +133,7 @@ export const getInterfacesService: GetInterfacesService = institutionId => ({
 export const deleteProduct: DeleteProduct = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT,
   payload: api.deleteProduct(id),
-  meta: id,
+  meta: { id },
 });
 
 export const filterProducts: FilterProducts = params => ({
@@ -162,21 +181,30 @@ export const updateProductRules: UpdateProductRules = values => ({
   payload: api.updateProductRules(values),
 });
 
+export const getProductAprs: GetProductAprs = id => ({
+  type: ActionTypeKeys.GET_PRODUCT_APRS,
+  payload: api.getProductAprs(id),
+});
+
+export const addProductApr: AddProductApr = values => ({
+  type: ActionTypeKeys.ADD_PRODUCT_APR,
+  payload: api.addProductApr(values),
+});
+
+export const updateProductApr: UpdateProductApr = values => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_APR,
+  payload: api.updateProductApr(values),
+});
+
+export const deleteProductApr: DeleteProductApr = id => ({
+  type: ActionTypeKeys.DELETE_PRODUCT_APR,
+  payload: api.deleteProductApr(id),
+  meta: { id },
+});
+
 export const resetProducts: ResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
 });
-
-export const handleUpdateCardService: HandleUpdateCardService = values =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareUpdateCardServiceValuesPrepared(values);
-
-        await dispatch(updateCardService(preparedValues));
-      },
-      dispatch
-    );
-  };
 
 export const handleFilterProducts: HandleFilterProducts = () =>
   async (dispatch, getState) => {
@@ -204,24 +232,29 @@ export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
     );
   };
 
-export const handleGetInterfacesService: HandleGetInterfacesService = () =>
+export const handleGetProductServices: HandleGetProductServices = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const currentInstitutionId = selectCurrentInstitutionId(state);
-        await dispatch(getInterfacesService(currentInstitutionId));
+        await Promise.all([
+          dispatch(getInterfacesService(currentInstitutionId)),
+          dispatch(getEndpointsService(currentInstitutionId)),
+        ]);
       },
       dispatch
     );
   };
-export const handleGetEndpointsService: HandleGetEndpointsService = () =>
-  async (dispatch, getState) => {
+
+export const handleUpdateCardService: HandleUpdateCardService = values =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const currentInstitutionId = selectCurrentInstitutionId(state);
-        await dispatch(getEndpointsService(currentInstitutionId));
+        const preparedValues = prepareUpdateCardServiceValuesPrepared(values);
+
+        await dispatch(updateCardService(preparedValues));
+        await dispatch(handleFilterProducts());
       },
       dispatch
     );
@@ -280,7 +313,7 @@ export const handleGetProductRule: HandleGetProductRule = () =>
         const prepared = prepareProductRuleIdsToSend(formValues(state));
 
         await dispatch(getProductRule({
-            product_id: selectActiveItemId(state),
+          product_id: selectActiveItemId(state),
           ...prepared,
         }));
       },
@@ -309,8 +342,10 @@ export const handleUpdateProduct: HandleUpdateProduct = values =>
         const preparedValues = prepareGeneralProductValuesToSend(values);
 
         await dispatch(updateProduct(preparedValues));
-        await dispatch(handleFilterProducts());
-        await dispatch(handleGetProduct());
+        await Promise.all([
+          dispatch(handleGetProduct()),
+          dispatch(handleFilterProducts()),
+        ]);
       },
       dispatch
     );
@@ -327,7 +362,6 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = values =>
         );
 
         await dispatch(updateProductDetails(preparedValues));
-        await dispatch(handleFilterProducts());
         await dispatch(handleGetProductDetails());
       },
       dispatch
@@ -345,8 +379,62 @@ export const handleUpdateProductRules: HandleUpdateProductRules = values =>
           ...preparedValues,
           product_id: selectActiveItemId(state),
         }));
-        await dispatch(handleFilterProducts());
         await dispatch(handleGetProductRule());
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProductAprs: HandleGetProductAprs = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+
+        await dispatch(getProductAprs(productId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddProductApr: HandleAddProductApr = values =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+        const preparedValues = prepareFormValuesProductAprsToSend(values);
+
+        await dispatch(addProductApr({
+          ...preparedValues,
+          product_id: productId,
+        }));
+        await dispatch(handleGetProductAprs());
+        await dispatch(resetForm(formNamesConst.PRODUCT_APRS));
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateProductApr: HandleUpdateProductApr = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareProductAprsToSend(values);
+
+        await dispatch(updateProductApr(preparedValues));
+        await dispatch(handleGetProductAprs());
+      },
+      dispatch
+    );
+  };
+
+export const handleDeleteProductApr: HandleDeleteProductApr = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(deleteProductApr(id));
       },
       dispatch
     );

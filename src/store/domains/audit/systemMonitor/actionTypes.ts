@@ -1,9 +1,9 @@
-import { ApiResponse } from 'types';
+import { ApiResponse, LogData } from 'types';
 import {
   SystemMonitorEndpointsData,
   SystemMonitorInterfacesData,
   SystemMonitorSchedulerData,
-  SystemMonitorTransactionData,
+  SystemMonitorTransactionsData,
 } from './types';
 
 export enum ActionTypeKeys {
@@ -25,11 +25,15 @@ export enum ActionTypeKeys {
   GET_SYSTEM_MONITOR_SCHEDULER_REJECTED =
   'audit/systemMonitor/GET_SYSTEM_MONITOR_SCHEDULER_REJECTED',
 
-  GET_SYSTEM_MONITOR_LAST_TRANSACTION = 'audit/systemMonitor/GET_SYSTEM_MONITOR_LAST_TRANSACTION',
-  GET_SYSTEM_MONITOR_LAST_TRANSACTION_FULFILLED =
-  'audit/systemMonitor/GET_SYSTEM_MONITOR_LAST_TRANSACTION_FULFILLED',
-  GET_SYSTEM_MONITOR_LAST_TRANSACTION_REJECTED =
+  GET_SYSTEM_MONITOR_LAST_TRANSACTIONS = 'audit/systemMonitor/GET_SYSTEM_MONITOR_LAST_TRANSACTIONS',
+  GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED =
+  'audit/systemMonitor/GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED',
+  GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_REJECTED =
   'audit/systemMonitor/GET_SYSTEM_MONITOR_SCHEDULER_REJECTED',
+
+  GET_LOG_DATA = 'audit/systemMonitor/GET_INTERFACE_LOG_DATA',
+  GET_LOG_DATA_FULFILLED = 'audit/systemMonitor/GET_INTERFACE_LOG_DATA_FULFILLED',
+  GET_LOG_DATA_REJECTED = 'audit/systemMonitor/GET_INTERFACE_LOG_DATA_REJECTED',
 
   RESET_SYSTEM_MONITOR = 'audit/systemMonitor/RESET_SYSTEM_MONITOR',
 }
@@ -79,19 +83,34 @@ export interface GetSystemMonitorSchedulerRejectedAction {
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_SCHEDULER_REJECTED;
 }
 
-export interface GetSystemMonitorLastTransactionAction {
+export interface GetSystemMonitorLastTransactionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION;
+  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS;
 }
 
-export interface GetSystemMonitorLastTransactionFulfilledAction {
-  readonly payload: SystemMonitorTransactionData;
-  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION_FULFILLED;
+export interface GetSystemMonitorLastTransactionsFulfilledAction {
+  readonly payload: SystemMonitorTransactionsData;
+  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED;
 }
 
-export interface GetSystemMonitorLastTransactionRejectedAction {
+export interface GetSystemMonitorLastTransactionsRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTION_REJECTED;
+  readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_REJECTED;
+}
+
+export interface GetLogDataAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LOG_DATA;
+}
+
+export interface GetLogDataFulfilledAction {
+  readonly payload: LogData;
+  readonly type: ActionTypeKeys.GET_LOG_DATA_FULFILLED;
+}
+
+export interface GetLogDataRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LOG_DATA_REJECTED;
 }
 
 export interface ResetSystemMonitorAction {
@@ -102,5 +121,6 @@ export type SystemMonitorActionTypes =
   | GetSystemMonitorInterfacesFulfilledAction
   | GetSystemMonitorEndpointsFulfilledAction
   | GetSystemMonitorSchedulerFulfilledAction
-  | GetSystemMonitorLastTransactionFulfilledAction
+  | GetSystemMonitorLastTransactionsFulfilledAction
+  | GetLogDataFulfilledAction
   | ResetSystemMonitorAction;

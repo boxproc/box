@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { renderCheckBoxIconTableCell, TableCell, TableHeader } from 'components';
+import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { ProductItem } from 'store/domains';
 
@@ -126,6 +126,6 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',
-    Cell: renderCheckBoxIconTableCell(),
+    Cell: renderCheckBoxTableCell(),
   },
 ];

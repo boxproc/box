@@ -58,31 +58,28 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={false}
               isClearable={false}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[2 / 9]} p="10px">
             <Field
               id="id"
               name="id"
               component={InputField}
               label="Account ID"
               placeholder="Enter ID"
-              isDisabled={false}
               isNumber={true}
               validate={[formErrorUtil.isInteger]}
             />
           </Box>
-          <Box width={[2 / 9]} p="10px">
+          <Box width={[3 / 9]} p="10px">
             <Field
               id="accountAlias"
               name="accountAlias"
               component={InputField}
               label="Account Alias"
               placeholder="Enter Account Alias"
-              isDisabled={false}
             />
           </Box>
           <Box width={[4 / 9]} p="10px">
@@ -92,7 +89,6 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               component={InputField}
               label="First Name"
               placeholder="Enter First Name"
-              isDisabled={false}
             />
           </Box>
           <Box width={[4 / 9]} p="10px">
@@ -102,7 +98,6 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
               component={InputField}
               label="Last Name"
               placeholder="Enter Last Name"
-              isDisabled={false}
             />
           </Box>
         </Flex>
@@ -115,7 +110,6 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           label="Product"
           placeholder="Select Product"
           options={institutionProductsOptions}
-          isDisabled={false}
           isMulti={true}
           isLoading={isLoadingInstitutionProducts}
         />

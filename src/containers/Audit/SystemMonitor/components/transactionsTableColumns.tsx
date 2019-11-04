@@ -10,20 +10,8 @@ type TCell<T extends keyof SystemMonitorTransaction> = TableCellType<SystemMonit
 
 export const transactionsTableColumns = [
   {
-    maxWidth: 100,
-    Header: <TableHeader title="Institution ID" />,
-    accessor: 'institutionId',
-    Cell: (props: TCell<'institutionId'>) => (
-      <TableCell
-        value={props.value}
-        isSmaller={true}
-        isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 260,
-    Header: <TableHeader title="Institution Name" />,
+    maxWidth: 125,
+    Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',
     Cell: (props: TCell<'institutionName'>) => (
       <TableCell

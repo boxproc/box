@@ -54,9 +54,9 @@ const LoanDetails: React.FC = () => {
           <Field
             id="paymentGraceNumberOfDays"
             name="paymentGraceNumberOfDays"
-            placeholder="Enter #"
+            placeholder="Enter # of Days"
             component={InputField}
-            label="Payment Grace # Of Days"
+            label="Payment Grace # of Days"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
           />

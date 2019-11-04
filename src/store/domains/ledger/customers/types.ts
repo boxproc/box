@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 export interface LedgerCustomerId {
   id: number;
@@ -30,7 +30,7 @@ export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   date_closed: string;
 }
 
-export interface LedgerCustomerItems extends ResponseStatusType {
+export interface LedgerCustomerItems {
   customers: Array<LedgerCustomerItem>;
 }
 

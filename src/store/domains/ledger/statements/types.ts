@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 export interface LedgerStatementId {
   id: number;
@@ -33,6 +33,8 @@ export interface LedgerStatementTransactionsItem extends LedgerStatementTransact
   balance_settled_before: number;
   balance_settled_after: number;
   description: string;
+  apr_id: number;
+  apr_rate: number;
 }
 export interface LedgerStatementTransactionsId {
   id: number;
@@ -47,6 +49,8 @@ export interface LedgerStatementTransactionsItemPrepared extends LedgerStatement
   balanceSettledBefore: number | string;
   balanceSettledAfter: number | string;
   description: number | string;
+  aprId: number;
+  aprRate: string;
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
@@ -55,11 +59,11 @@ export interface LedgerStatementTransactionsItemsRequest {
   id:  number ;
 }
 
-export interface LedgerStatementTransactionsItems extends ResponseStatusType {
+export interface LedgerStatementTransactionsItems {
   transactions: Array<LedgerStatementTransactionsItem>;
 }
 
-export interface LedgerStatementItems extends ResponseStatusType {
+export interface LedgerStatementItems {
   statements: Array<LedgerStatementItem>;
 }
 
@@ -86,8 +90,8 @@ export interface LedgerStatementsFilter {
   accountAlias: string;
   firstName: string;
   lastName: string;
-  dateFrom: string;
-  dateTo: string;
+  statementsDateFrom: string;
+  statementsDateTo: string;
   product: Array<SelectValues>;
 }
 

@@ -4,14 +4,15 @@ import { StoreState } from 'store/StoreState';
 
 import {
   selectCurrencyCodesOptions,
-  selectCyclesDescriptionsOptions,
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
+import { selectCyclesDescriptionsOptions } from '../cycles';
 import {
   prepareGeneralProductItem,
   prepareGeneralProductValues,
+  prepareProductAprsToRender,
   prepareProductDetailsValues,
   prepareProductRuleValues,
 } from './utils';
@@ -95,6 +96,32 @@ export const selectProductCardEndpointsService = createSelector(
   })
 );
 
+export const selectProductServices = createSelector(
+  selectDefaultProductItems,
+  selectActiveItemId,
+  selectProductCardInterfacesService,
+  selectProductCardEndpointsService,
+  (products, activeId, interfacesOptions, endpointsOptions) => {
+    const current = products.find(product => product.id === activeId);
+
+    if (!current) {
+      return null;
+    }
+
+    const endpointId = current.card_transactions_endpoint_id;
+    const interfaceId = current.card_management_interface_id;
+    const secureProviderInterfaceId = current.provider_3d_secure_interface_id;
+
+    return {
+      endpoints: endpointsOptions.find(el => el.value === endpointId) || endpointsOptions[0],
+      interfaces: interfacesOptions.find(el => el.value === interfaceId) || interfacesOptions[0],
+      secureProviderInterfaces: interfacesOptions
+        .find(el => el.value === secureProviderInterfaceId)
+        || interfacesOptions[0],
+    };
+  }
+);
+
 export const selectCurrentProductName = createSelector(
   selectDefaultCurrentProduct,
   product => product && product.name
@@ -165,6 +192,18 @@ export const selectInstitutionProductsOptions = createSelector(
         value: product.id,
         label: product.name,
       };
+    });
+  }
+);
+
+export const selectDefaultProductAprs = (state: StoreState) =>
+  state.productDesigner.products.productAprs;
+
+export const selectProductAprs = createSelector(
+  selectDefaultProductAprs,
+  aprs => {
+    return aprs && aprs.asMutable().map(apr => {
+      return prepareProductAprsToRender(apr);
     });
   }
 );

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -45,7 +45,7 @@ export const Products: React.FC<ProductsProps> = ({
     () => [
       {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteProduct,
         withConfirmation: true,
         confirmationText: `Delete product "${currentProductName}?`,

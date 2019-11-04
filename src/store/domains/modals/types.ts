@@ -18,9 +18,16 @@ export interface PayloadConfirmationModal {
   confirmationText?: string;
 }
 
+export interface PayloadLogModal {
+  title?: string;
+  logData: string;
+  logLocation?: string;
+}
+
 export interface ModalsState {
   isMessageModal: boolean;
   payloadMessageModal: PayloadMessageModal;
   payloadConfirmationModal: PayloadConfirmationModal;
+  payloadLogModal: PayloadLogModal;
   isEditModalOpened: boolean;
 }

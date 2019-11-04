@@ -47,7 +47,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Institution"
           placeholder="Select Institution"
           options={institutionsOptions}
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -60,7 +59,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Product"
           placeholder="Select Product"
           options={institutionProductsOptions}
-          isDisabled={false}
           isLoading={isLoadingInstitutionProducts}
         />
       </Box>
@@ -71,7 +69,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           component={InputField}
           label="Customer ID"
           placeholder="Enter ID"
-          isDisabled={false}
           isNumber={true}
           validate={[formErrorUtil.isInteger]}
         />
@@ -83,32 +80,31 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           component={InputField}
           label="Transaction ID"
           placeholder="Enter ID"
-          isDisabled={false}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
       <Box width="200px" p="10px">
         <Field
-          id="dateTimeFrom"
-          name="dateTimeFrom"
+          id="transactionsDateTimeFrom"
+          name="transactionsDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
       <Box width="200px" p="10px">
         <Field
-          id="dateTimeTo"
-          name="dateTimeTo"
+          id="transactionsDateTimeTo"
+          name="transactionsDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
     </React.Fragment>

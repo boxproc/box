@@ -61,7 +61,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Institution"
                 placeholder="Select Institution"
                 options={institutionsOptions}
-                isDisabled={false}
                 isClearable={false}
                 validate={[formErrorUtil.required]}
               />
@@ -73,7 +72,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Account ID"
                 placeholder="Enter ID"
-                isDisabled={false}
                 isNumber={true}
                 validate={[formErrorUtil.isInteger]}
               />
@@ -85,7 +83,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Account Alias"
                 placeholder="Enter Account Alias"
-                isDisabled={false}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -95,7 +92,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="First Name"
                 placeholder="Enter First Name"
-                isDisabled={false}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -105,31 +101,30 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Last Name"
                 placeholder="Enter Last Name"
-                isDisabled={false}
               />
             </Box>
             <Box width="200px" p="10px">
               <Field
-                id="dateFrom"
-                name="dateFrom"
+                id="statementsDateFrom"
+                name="statementsDateFrom"
                 component={MaskField}
                 label="Date From"
                 placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE_TIME}
-                maskChar={null}
-                disabled={false}
+                maskPlaceholder={dateFormat.DATE}
+                mask={maskFormat.DATE}
+                validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
             <Box width="200px" p="10px">
               <Field
-                id="dateTo"
-                name="dateTo"
+                id="statementsDateTo"
+                name="statementsDateTo"
                 component={MaskField}
                 label="Date To"
                 placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE_TIME}
-                maskChar={null}
-                disabled={false}
+                maskPlaceholder={dateFormat.DATE}
+                mask={maskFormat.DATE}
+                validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
           </Flex>
@@ -143,7 +138,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
               label="Product"
               placeholder="Select Product"
               options={institutionProductsOptions}
-              isDisabled={false}
               isMulti={true}
               isLoading={isLoadingInstitutionProducts}
             />

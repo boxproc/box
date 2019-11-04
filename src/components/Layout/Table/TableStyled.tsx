@@ -68,6 +68,7 @@ export const TableStyled = styled.div<TableStyledProps>`
 
   .ReactTable .rt-tbody {
     overflow: hidden;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 
   .ReactTable .rt-tbody .rt-tr-group,

@@ -3,9 +3,6 @@ import { LedgerTransactionItems } from './types';
 import { ResponseStatusType } from 'types';
 
 export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
-  response_status: {
-    status_code: 0,
-  },
   transactions: [
     {
       balance_available_after: 10.2,
@@ -29,6 +26,10 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       id: 2,
       balance_settled_after: 10.2,
       transaction_type_description: 'Debit description',
+      apr_id: 1,
+      apr_rate: 19.99,
+      apr_calculation_method: 'A',
+      status: '00',
     },
   ],
 };

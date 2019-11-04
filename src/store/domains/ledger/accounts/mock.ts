@@ -3,9 +3,6 @@ import { LedgerAccountItems } from './types';
 import { ResponseStatusType } from 'types';
 
 export const ledgerAccountsFilteredItems: LedgerAccountItems = {
-  response_status: {
-    status_code: 0,
-  },
   accounts: [
     {
       id: 1,
@@ -20,6 +17,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       product_override_id: 0,
       date_of_product_override: null,
       product_name: 'Test product name',
+      product_type: 'L',
       balance_settled: 1.01,
       balance_available: 1.01,
       amount_due_repayment: 1.01,
@@ -64,6 +62,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       product_override_id: 1,
       date_of_product_override: '2019-08-29',
       product_name: 'Test product name',
+      product_type: 'C',
       balance_settled: 1.01,
       balance_available: 1.01,
       amount_due_repayment: 1.01,

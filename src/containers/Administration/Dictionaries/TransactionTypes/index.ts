@@ -1,0 +1,34 @@
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+
+import TransactionTypes from './TransactionTypes';
+
+import {
+  createLoadingSelector,
+  DictionaryTransactionTypesActionTypes,
+  handleGetDictionaryTransactionTypes,
+  selectDictionaryTransactionTypes,
+} from 'store/domains';
+
+import { StoreState } from 'store/StoreState';
+
+const loadingSelector = createLoadingSelector([
+  DictionaryTransactionTypesActionTypes.GET_DICTIONARY_TRANSACTION_TYPES,
+]);
+
+const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
+  transactionTypes: selectDictionaryTransactionTypes(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    getTransactionTypes: handleGetDictionaryTransactionTypes,
+  },
+  dispatch
+);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TransactionTypes);

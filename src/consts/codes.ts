@@ -29,6 +29,7 @@ export enum statusTypesCodes {
   EXECUTION_PENDING = 'E',
   REGISTRATION_PENDING = 'F',
   AUTHENTICATION_PENDING = 'P',
+  SUSPENDED = 'S',
 }
 
 export const statusTypesOptions = [
@@ -46,6 +47,7 @@ export const statusTypesLoginOptions = [
 export const schedulerStatusTypesOptions = [
   ...statusTypesOptions,
   { value: 'E', label: 'Execution pending' },
+  { value: 'S', label: 'Suspended' },
 ];
 
 export enum cardStatusesCodes {
@@ -74,6 +76,7 @@ export const endpointsOptions = [
 export const typeOfInterfacesCodes = [
   { value: 'T', label: 'Tribe card processing' },
   { value: 'U', label: 'Tutuka card processing' },
+  { value: 'Q', label: 'QRails card management interface' },
 ];
 
 export const protocolTypesOptions = [
@@ -168,6 +171,7 @@ export const dataTypesOptions = [
 export const actionTypesOptions = [
   { value: 'A', label: 'API Call' },
   { value: 'R', label: 'Approve / Deny' },
+  { value: 'T', label: 'Set transaction APR' },
   { value: 'X', label: 'Update aux counter 1' },
   { value: 'Y', label: 'Update aux counter 2' },
   { value: 'Z', label: 'Update aux counter 3' },
@@ -186,3 +190,16 @@ export enum statusCodes {
   SESSION_TIMEOUT = 5,
   INCORRECT_PASSWORD = 15,
 }
+
+export const aprTypesOptions = [
+  { value: 'A', label: 'Actual/Actual' },
+  { value: 'B', label: '30/360' },
+  { value: 'C', label: 'Actual/365' },
+  { value: 'D', label: 'Actual/360' },
+];
+
+export const debitCreditIndicatorOptions = [
+  { value: 'D', label: 'Debit transaction' },
+  { value: 'C', label: 'Credit transaction' },
+  { value: 'U', label: 'Not applicable' },
+];

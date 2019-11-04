@@ -1,23 +1,25 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { TableCell, TableHeader } from 'components';
+import { Button, TableCell, TableHeader } from 'components';
+
+import { iconNamesConst } from 'consts';
 
 import { TableCellType } from 'types';
 
-import { SystemMonitorItem } from 'store/domains';
+import { HandleGetLogData, SystemMonitorItem } from 'store/domains';
 
 type TCell<T extends keyof SystemMonitorItem> = TableCellType<SystemMonitorItem[T]>;
 
-export const tableColumns = [
+export const tableColumns = (getLogData: HandleGetLogData, name: string) => [
   {
-    maxWidth: 80,
-    Header: <TableHeader title="Institution ID" />,
-    accessor: 'institutionId',
-    Cell: (props: TCell<'institutionId'>) => (
+    maxWidth: 125,
+    Header: <TableHeader title="Institution" />,
+    accessor: 'institutionName',
+    Cell: (props: TCell<'institutionName'>) => (
       <TableCell
         value={props.value}
         isSmaller={true}
-        isNumber={true}
       />
     ),
   },
@@ -64,6 +66,22 @@ export const tableColumns = [
         value={props.value}
         isDate={true}
         isSmaller={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 90,
+    accessor: 'showLogButton',
+    Cell: (cellInfo: CellInfo) => (
+      <Button
+        iconName={iconNamesConst.SHORT_TEXT}
+        text="Show log"
+        size="10"
+        onClick={() => getLogData({
+          name,
+          id: cellInfo.original.id,
+          title: cellInfo.original.name,
+        })}
       />
     ),
   },

@@ -16,9 +16,11 @@ export const selectLedgerCustomers = createSelector(
   selectCountryCodesOptions,
   (items, institutions, countries) => items && items.asMutable().map(item => {
 
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...prepareValuesToRender(item),
-      institutionId: institutions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
       addressCountryCode: countries.find(el => el.value === item.address_country_code),
       nationalityCountryCode: countries.find(el => el.value === item.address_country_code),
     };

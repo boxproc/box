@@ -7,11 +7,11 @@ import EditUsersGroupModal from './EditUsersGroupModal';
 
 export const usersGroupModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_USERS_GROUP,
+    name: modalNamesConst.ADD_USERS_GROUP,
     component: <AddUsersGroupModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_USERS_GROUP,
+    name: modalNamesConst.EDIT_USERS_GROUP,
     component: <EditUsersGroupModal />,
   },
 ];

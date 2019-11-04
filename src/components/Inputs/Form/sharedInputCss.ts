@@ -28,8 +28,10 @@ export const sharedInputCss = css<InvalidProp>`
     text-align: left;
   }
 
-  :disabled {
+  :disabled,
+  :read-only {
     background-color: ${({ theme }) => theme.colors.white};
     border-color: ${({ theme }) => theme.colors.lightGray};
+    user-select: text;
   }
 `;

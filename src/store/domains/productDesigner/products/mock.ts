@@ -1,5 +1,6 @@
 import {
   InstitutionProducts,
+  ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
   ProductRuleResp,
@@ -9,9 +10,6 @@ import {
 import { ResponseStatusType } from 'types';
 
 export const productData: ProductDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   product: {
     currency_code: 'AFN',
     default_statement_cycle_id: 1,
@@ -26,13 +24,13 @@ export const productData: ProductDataResp = {
     status: 'A',
     statement_cycle_description: '',
     overrides_product_id: 0,
+    card_transactions_endpoint_id: null,
+    card_management_interface_id: null,
+    provider_3d_secure_interface_id: null,
   },
 };
 
 export const productItemsFilteredData: ProductsDataResp = {
-  response_status: {
-    status_code: 0,
-  },
   products: [
     {
       currency_code: 'AFN',
@@ -47,6 +45,9 @@ export const productItemsFilteredData: ProductsDataResp = {
       scheme: 'V',
       status: 'A',
       statement_cycle_description: '',
+      card_transactions_endpoint_id: null,
+      card_management_interface_id: null,
+      provider_3d_secure_interface_id: null,
     },
     {
       currency_code: 'AFN',
@@ -61,64 +62,46 @@ export const productItemsFilteredData: ProductsDataResp = {
       scheme: 'X',
       status: 'I',
       statement_cycle_description: '',
+      card_transactions_endpoint_id: null,
+      card_management_interface_id: null,
+      provider_3d_secure_interface_id: null,
     },
   ],
 };
 
 export const productDetailsData: ProductDetailsResp = {
-  response_status: {
-    status_code: 0,
-  },
   product: {
+    apr_default: 29.99,
+    apr_default_calculation_method: 'A',
+    fee_exceed_limit: 25,
+    fee_late_payment: 25,
+    fee_overpayment: 25,
+    limit_sharing_allowed_flag: 'N',
+    minimum_payment_amount: 15,
+    minimum_payment_rate: 5,
+    payment_grace_number_of_days: 30,
     product_id: 1,
-    apr_default: 1,
-    apr_cash: 1,
-    apr_sales: 1,
-    apr_balance_transfer: 1,
-    apr_fee: 1,
-    fee_late_payment: 1,
-    fee_exceed_limit: 1,
-    fee_unpaid: 1,
-    fee_over_limit: 1,
-    minimum_payment_percent: 1,
-    minimum_payment_amount: 1,
-    payment_grace_number_of_days: 1,
-    limit_sharing_allowed_flag: 'Y',
+    rate_exceed_limit: 5,
+    rate_late_payment: 3,
+    rate_overpayment: 10,
   },
 };
 
 export const productRulesData: ProductRuleResp = {
-  response_status: {
-    status_code: 0,
-  },
   product_rule: {
     // tslint:disable-next-line: max-line-length
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     event_id: 3,
-    action_type: 'V',
+    action_type: 'X',
     script:
-      `class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
-    );
-  }
+      `function test(a, b) {
+    return a + b;
 }`,
     product_id: 1,
   },
 };
 
 export const institutionProducts: InstitutionProducts = {
-  response_status: {
-    status_code: 0,
-  },
   institution_products: [
     {
       id: 1,
@@ -127,6 +110,38 @@ export const institutionProducts: InstitutionProducts = {
     {
       id: 2,
       name: 'Product: debit',
+    },
+  ],
+};
+
+export const productAprs: ProductAprItems = {
+  product_aprs: [
+    {
+      id: 1,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
+    },
+    {
+      id: 2,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
+    },
+    {
+      id: 3,
+      product_id: 1,
+      repayment_sequence: 1,
+      description: 'Test description',
+      calculation_method: 'A',
+      rate: 0.00,
+      grace_number_of_days: 1,
     },
   ],
 };

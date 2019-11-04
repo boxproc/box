@@ -2,6 +2,7 @@ import {
   InstitutionProducts,
   InstitutionProductServiceEndpoints,
   InstitutionProductServiceInterfaces,
+  ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
   ProductRuleResp,
@@ -65,6 +66,22 @@ export enum ActionTypeKeys {
   UPDATE_CARD_SERVICES_FULFILLED = 'productDesigner/products/UPDATE_CARD_SERVICES_FULFILLED',
   UPDATE_CARD_SERVICES_REJECTED = 'productDesigner/products/UPDATE_CARD_SERVICES_REJECTED',
 
+  GET_PRODUCT_APRS = 'productDesigner/products/GET_PRODUCT_APRS',
+  GET_PRODUCT_APRS_FULFILLED = 'productDesigner/products/GET_PRODUCT_APRS_FULFILLED',
+  GET_PRODUCT_APRS_REJECTED = 'productDesigner/products/GET_PRODUCT_APRS_REJECTED',
+
+  ADD_PRODUCT_APR = 'productDesigner/products/ADD_PRODUCT_APR',
+  ADD_PRODUCT_APR_FULFILLED = 'productDesigner/products/ADD_PRODUCT_APR_FULFILLED',
+  ADD_PRODUCT_APR_REJECTED = 'productDesigner/products/ADD_PRODUCT_APR_REJECTED',
+
+  UPDATE_PRODUCT_APR = 'productDesigner/products/UPDATE_PRODUCT_APR',
+  UPDATE_PRODUCT_APR_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_APR_FULFILLED',
+  UPDATE_PRODUCT_APR_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_APR_REJECTED',
+
+  DELETE_PRODUCT_APR = 'productDesigner/products/DELETE_PRODUCT_APR',
+  DELETE_PRODUCT_APR_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_APR_FULFILLED',
+  DELETE_PRODUCT_APR_REJECTED = 'productDesigner/products/DELETE_PRODUCT_APR_REJECTED',
+
   RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
 }
 
@@ -121,7 +138,7 @@ export interface DeleteProductAction {
 export interface DeleteProductFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FULFILLED;
-  readonly meta: number;
+  readonly meta: { id: number };
 }
 
 export interface DeleteProductRejectedAction {
@@ -264,6 +281,67 @@ export interface UpdateCardServiceRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
 }
 
+export interface GetProductAprsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_APRS;
+}
+
+export interface GetProductAprsFulfilledAction {
+  readonly payload: ProductAprItems;
+  readonly type: ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED;
+}
+
+export interface GetProductAprsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_APRS_REJECTED;
+}
+
+export interface AddProductAprAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_APR;
+}
+
+export interface AddProductAprFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_APR_FULFILLED;
+}
+
+export interface AddProductAprRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_APR_REJECTED;
+}
+
+export interface UpdateProductAprAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR;
+}
+
+export interface UpdateProductAprFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_FULFILLED;
+}
+
+export interface UpdateProductAprRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_REJECTED;
+}
+
+export interface DeleteProductAprAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_APR;
+}
+
+export interface DeleteProductAprFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED;
+  readonly meta: { id: number };
+}
+
+export interface DeleteProductAprRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_REJECTED;
+}
+
 export interface ResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
@@ -281,4 +359,8 @@ export type ProductsActionTypes =
   | UpdateProductFulfilledAction
   | UpdateProductDetailsFulfilledAction
   | UpdateProductRulesFulfilledAction
+  | GetProductAprsFulfilledAction
+  | AddProductAprFulfilledAction
+  | UpdateProductAprFulfilledAction
+  | DeleteProductAprFulfilledAction
   | ResetProductsAction;

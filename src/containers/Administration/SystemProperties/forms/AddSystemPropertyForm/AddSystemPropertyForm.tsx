@@ -71,7 +71,6 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
               name="lockedFlag"
               component={CheckboxField}
               label="Locked"
-              disabled={false}
             />
           </Box>
         </Flex>
@@ -90,7 +89,7 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
 };
 
 export default reduxForm<{}, AddSystemPropertyFormProps>({
-  form: formNamesConst.ADD_ADMIN_SYSTEM_PROPERTY,
+  form: formNamesConst.ADD_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AddSystemPropertyForm));

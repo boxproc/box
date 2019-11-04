@@ -94,7 +94,6 @@ const Login: React.FC<LoginPropsAllProps> = ({
           name="rememberMe"
           component={CheckboxField}
           label="Remember me"
-          disabled={false}
         />
         <Flex
           flexDirection="column"

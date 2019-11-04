@@ -1,9 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
+import {
+  selectCyclesDescriptionsOptions,
+  selectInstitutionProductsOptions,
+} from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
-import { selectCyclesDescriptionsOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 // tslint:disable-next-line: max-line-length
 import { prepareValuesToRender as prepareLastStatementValuesToRender } from 'store/domains/ledger/statements/utils';
@@ -22,9 +24,11 @@ export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
   selectInstitutionsOptions,
   (items, institutions) => items && items.map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...preparedValuesToRender(item),
-      institutionId: institutions.find(el => el.value === item.institution_id).label,
+      institutionId: institution && institution.label,
     };
   })
 );
@@ -57,6 +61,11 @@ export const selectLedgerCurrentAccount = createSelector(
 export const selectLedgerCurrentAccountAlias = createSelector(
   selectLedgerCurrentAccount,
   currentAccount => currentAccount && currentAccount.accountAlias
+);
+
+export const selectLedgerCurrentAccountProductType = createSelector(
+  selectLedgerCurrentAccount,
+  currentAccount => currentAccount && currentAccount.productType
 );
 
 export const selectLedgerCurrentAccountProductOverrideId = createSelector(

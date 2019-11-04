@@ -136,6 +136,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     product_id,
     product_override_id,
     product_name,
+    product_type,
     balance_settled,
     balance_available,
     amount_due_repayment,
@@ -167,9 +168,11 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     number_of_times_overdue_7_cycle,
   } = values;
 
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
   return {
     id,
-    status: statusTypesOptions.find(el => el.value === status).label,
+    status: currentStatus && currentStatus.label,
     accountAlias: account_alias,
     accountAliasAdditional: account_alias_additional,
     customerId: customer_id,
@@ -180,6 +183,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     productOverrideFlag: product_override_id ? true : false,
     dateOfProductOverride: date_of_product_override,
     productName: product_name,
+    productType: product_type,
     balanceSettled: balance_settled && balance_settled.toFixed(2),
     balanceAvailable: balance_available && balance_available.toFixed(2),
     amountDueRepayment: amount_due_repayment && amount_due_repayment.toFixed(2),

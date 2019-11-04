@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withSpinner } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -40,7 +40,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
     () => [
       {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteAdminInstitution,
         withConfirmation: true,
         confirmationText: `Delete institution "${adminCurrentInstitutionName}"?`,
@@ -54,8 +54,8 @@ const Institutions: React.FC<InstitutionsProps> = ({
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_INSTITUTION}
-      editModalName={modalNamesConst.EDIT_ADMIN_INSTITUTION}
+      newModalName={modalNamesConst.ADD_INSTITUTION}
+      editModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
     />
   );

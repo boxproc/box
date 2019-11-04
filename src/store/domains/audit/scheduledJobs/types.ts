@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ResponseStatusType, SelectValues } from 'types';
+import { SelectValues } from 'types';
 
 interface AuditScheduledJobsId {
   id: number;
@@ -25,8 +25,8 @@ export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
 export interface AuditScheduledJobsFilter {
   institutionId: SelectValues;
   scheduler: SelectValues;
-  dateTimeFrom: string;
-  dateTimeTo: string;
+  scheduledJobsDateTimeFrom: string;
+  scheduledJobsDateTimeTo: string;
 }
 
 export interface AuditScheduledJobsFilterPrepared {
@@ -36,7 +36,7 @@ export interface AuditScheduledJobsFilterPrepared {
   finish_datetime: string;
 }
 
-export interface AuditScheduledJobsItems extends ResponseStatusType {
+export interface AuditScheduledJobsItems {
   scheduler_jobs: Array<AuditScheduledJobsItem>;
 }
 

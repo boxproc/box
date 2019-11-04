@@ -1,4 +1,7 @@
 import React from 'react';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
+import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -18,12 +21,20 @@ import {
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
+  margin-bottom: 10px;
   text-transform: none;
+`;
+
+const MonoTitleStr = styled.div`
+  padding-right: 15px;
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.fonts.code};
 `;
 
 interface ModalProps extends WithModalProps {
   name: string;
   title?: string;
+  monoTitleStr?: string;
   type?: string;
   maxContainerWidth?: string;
   minContainerHeight?: string;
@@ -44,6 +55,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   name,
   title,
+  monoTitleStr,
   closeModal,
   openModal,
   maxContainerWidth = '720',
@@ -115,17 +127,26 @@ const Modal: React.FC<ModalProps> = ({
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
-        <span
-          className="modal-close"
-          onClick={handleCloseModal}
-          title="Close"
-        >
-          &times;
-        </span>
-        {title && (
-          <ModalTitle>{title}</ModalTitle>
-        )}
-        {children}
+        <PerfectScrollbar>
+          <div className="modal-container-inner">
+            <span
+              className="modal-close"
+              onClick={handleCloseModal}
+              title="Close"
+            >
+              &times;
+          </span>
+            <Flex alignItems="baseline">
+              {title && (
+                <ModalTitle>{title}</ModalTitle>
+              )}
+              {monoTitleStr && (
+                <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
+              )}
+            </Flex>
+            {children}
+          </div>
+        </PerfectScrollbar>
       </div>
     </ModalWrapper>
   );

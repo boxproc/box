@@ -7,7 +7,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import { ContextMenuList } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
   handleSetActiveItemId,
@@ -98,7 +98,7 @@ export const withEditTable = <OriginProps extends {}>(
       menuItems = [
         {
           name: editableItemName ? `Edit ${editableItemName}` : 'Edit',
-          icon: 'edit',
+          icon: iconNamesConst.EDIT,
           action: () => openCurrentRowInModal(),
         },
         ...menuItems,

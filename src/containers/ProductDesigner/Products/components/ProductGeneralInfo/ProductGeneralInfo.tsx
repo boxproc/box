@@ -93,6 +93,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter Description"
             component={TextField}
             label="Description"
+            height={115}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -115,7 +116,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Scheme"
             placeholder="Select Scheme"
             options={schemeTypesOptions}
-            isDisabled={false}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -126,7 +126,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Currency Code"
             placeholder="Select Currency Code"
             options={currencyCodes}
-            isDisabled={false}
             isLoading={isCurrencyCodesLoading}
             validate={[formErrorUtil.required]}
           />
@@ -147,7 +146,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
-            placeholder="Enter #"
+            placeholder="Enter # of Days"
             component={InputField}
             label="Retention # of Days"
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
@@ -160,7 +159,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
-            disabled={false}
           />
         </Box>
       </Flex>

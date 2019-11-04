@@ -1,5 +1,6 @@
-import { ApiResponse, ResponseStatusType } from 'types';
 import { AdminEndpointItems, AdminEndpointNameItems } from './types';
+
+import { ApiResponse, ResponseStatusType } from 'types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_ENDPOINT = 'administration/endpoints/ADD_ADMIN_ENDPOINT',
@@ -18,13 +19,13 @@ export enum ActionTypeKeys {
   FILTER_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_FULFILLED',
   FILTER_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_REJECTED',
 
-  GET_ENDPOINTS_BY_INSTITUTION_ID = 'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID',
+  GET_ENDPOINTS_BY_INSTITUTION_ID = 'administration/endpoints/GET_ENDPOINTS_BY_INSTITUTION_ID',
   GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED =
-  'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED',
+  'administration/endpoints/GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED',
   GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED =
-  'audit/apiCalls/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
+  'administration/endpoints/GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED',
 
-  RESET_ENDPOINTS = 'audit/apiCalls/RESET_ENDPOINTS',
+  RESET_ENDPOINTS = 'administration/endpoints/RESET_ENDPOINTS',
 }
 
 export interface AddAdminEndpointAction {

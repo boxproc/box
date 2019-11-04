@@ -1,7 +1,11 @@
 import React from 'react';
+
+import { Box } from '@rebass/grid';
+import { ContextMenuTrigger } from 'react-contextmenu';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import Editor from 'react-simple-code-editor';
 
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import jslint from 'libs/jslint';
 
 import { highlight, languages } from 'prismjs/components/prism-core';
 
@@ -12,61 +16,41 @@ import styled from 'theme';
 
 import './prism.css';
 
-interface WrapperProps {
-  height?: string;
-  whiteSpacePre?: boolean;
-}
+import { ContextMenuList, WarningIcon } from 'components';
 
-export const Wrapper = styled.div<WrapperProps>`
-  padding: 0;
-  height: ${({ height }) => height ? height : '220px'};
-  border: 1px solid ${({ theme }) => theme.colors.gray};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: 2px;
-  font-size: 13px;
-  line-height: 1.7;
-  overflow: auto;
+import { EditorWrapper } from './EditorWrapper';
 
-  * {
-    font-family: ${({ theme }) => theme.fonts.code};
+import { ContextMenuItem } from 'types';
+
+const WarningsCount = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  font-size: 11px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  user-select: text;
+
+  .text {
+    margin-left: 5px;
   }
+`;
 
-  &.is-focus {
-    border-color: ${({ theme }) => theme.colors.normalAccent};
-  }
-
-  textarea {
-    background-color: ${({ theme }) => theme.colors.white} !important;
-  }
-
-  textarea::placeholder {
-    color: ${({ theme }) => theme.colors.gray};
-  }
-
-  pre {
-    word-break: break-word !important;
-    line-height: 1.7;
-  }
-
-  textarea,
-  pre {
-    min-height: ${({ height }) => height ? `calc(${height} - 2px)` : '218px'};
-
-    ${({ whiteSpacePre }) => whiteSpacePre && `
-      white-space: pre !important;
-    `}
-  }
-
-  .editor {
-    float: left;
-    min-width: 100%;
-  }
+const WarningIconWrapper = styled(WarningIcon)`
+  color: ${({ theme }) => theme.colors.normalAccent};
 `;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
   height?: string;
+  minHeight?: string;
+  padding?: number;
   whiteSpacePre?: boolean;
+  isScrollbarBottom?: boolean;
+  contextMenuItems?: Array<ContextMenuItem>;
+  onContextMenuClick?: () => void;
+  menuId?: string;
+  noDataStr?: string;
+  checkJSSyntax?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -77,47 +61,124 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   placeholder,
   fontSize,
   height,
+  minHeight,
+  padding = 10,
   whiteSpacePre,
+  isScrollbarBottom,
+  contextMenuItems,
+  onContextMenuClick,
+  menuId,
+  noDataStr,
+  checkJSSyntax,
 }) => {
+  const [codeWarnings, setCodeWarnings] = React.useState([]);
+
+  React.useEffect(
+    () => {
+      const wrapper = document.querySelector('.scrollbar-editor-wrapper');
+      if (isScrollbarBottom && wrapper) {
+        wrapper.scrollTop = wrapper.scrollHeight;
+      }
+    },
+    [isScrollbarBottom]
+  );
+
+  React.useEffect(
+    () => {
+      const warnings = jslint(value.toString()).warnings;
+      const warningsList = warnings.map((warning: { message: string }) => warning.message);
+
+      if (checkJSSyntax) {
+        setCodeWarnings(warningsList);
+      }
+    },
+    [value, checkJSSyntax]
+  );
+
+  const warningsCount = React.useMemo(
+    () => codeWarnings
+      && codeWarnings.length
+      && `${codeWarnings.length} ${codeWarnings.length === 1 ? ' warning' : ' warnings'}`,
+    [codeWarnings]
+  );
+
+  const preparedWarnings = React.useMemo(
+    () => codeWarnings.join('\n'),
+    [codeWarnings]
+  );
+
   const wrapperRef = React.useRef(null);
 
   const handleChange = React.useCallback(
     code => onChange ? onChange(code) : null,
     [onChange]
   );
+
   const addFocusClass = () => {
     wrapperRef.current.classList.add('is-focus');
   };
+
   const removeFocusClass = () => {
     wrapperRef.current.classList.remove('is-focus');
   };
 
   return (
-    <Wrapper
-      ref={wrapperRef}
-      height={height}
-      whiteSpacePre={whiteSpacePre}
-    >
-      <PerfectScrollbar>
-      <Editor
-        value={value.toString()}
-        onValueChange={handleChange}
-        highlight={code => highlight(code, languages.js)}
-        textareaId={id}
-        name={name}
-        placeholder={placeholder}
-        padding={10}
-        onFocus={addFocusClass}
-        onBlur={removeFocusClass}
-        className="editor"
-        style={{
-          overflow: 'visible',
-          fontFamily: '"Roboto Mono", monospace',
-          fontSize: fontSize ? fontSize : 13,
-        }}
-      />
-      </PerfectScrollbar>
-    </Wrapper>
+    <React.Fragment>
+      <EditorWrapper
+        ref={wrapperRef}
+        height={height}
+        minHeight={minHeight}
+        whiteSpacePre={whiteSpacePre}
+      >
+        <PerfectScrollbar className="scrollbar-editor-wrapper">
+          <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
+            <Editor
+              value={value.toString()}
+              onValueChange={handleChange}
+              highlight={code => highlight(code, languages.js)}
+              textareaId={id}
+              name={name}
+              placeholder={placeholder}
+              onFocus={addFocusClass}
+              onBlur={removeFocusClass}
+              tabSize={4}
+              padding={padding}
+              className="editor"
+              style={{
+                overflow: 'visible',
+                fontFamily: '"Roboto Mono", monospace',
+                fontSize: fontSize ? fontSize : 8.5,
+              }}
+            />
+          </ContextMenuTrigger>
+          {contextMenuItems && (
+            <ContextMenuList
+              menuId={menuId}
+              onClick={onContextMenuClick}
+              items={contextMenuItems}
+              noDataStr={noDataStr}
+            />
+          )}
+        </PerfectScrollbar>
+      </EditorWrapper>
+
+      {codeWarnings && codeWarnings.length && (
+        <Box mt="10px">
+          <WarningsCount>
+            <WarningIconWrapper size="12" />
+            <div className="text">{warningsCount}</div>
+          </WarningsCount>
+          <HighlightCode
+            value={preparedWarnings}
+            height="60px"
+            minHeight="60px"
+            padding={5}
+            whiteSpacePre={true}
+            isScrollbarBottom={true}
+          />
+        </Box>
+      )}
+    </React.Fragment>
   );
 };
 

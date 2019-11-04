@@ -1,10 +1,9 @@
 import React from 'react';
-import { ContextMenuTrigger } from 'react-contextmenu';
 import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { ContextMenuList, HighlightCodeField, SelectField, TextField } from 'components';
+import { HighlightCodeField, SelectField, TextField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 import { actionTypesOptions } from 'consts';
@@ -110,24 +109,22 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             />
           </Box>
           <Box width={[1]} p="10px">
-            <ContextMenuTrigger id="rulesCodeContextMenu">
-              <Field
-                id="rule-script"
-                name="script"
-                placeholder="Enter Script"
-                component={HighlightCodeField}
-                label="Script"
-              />
-            </ContextMenuTrigger>
+            <Field
+              id="rule-script"
+              name="script"
+              placeholder="Enter Script"
+              component={HighlightCodeField}
+              label="Script"
+              contextMenuItems={dictionaryEventDataElemsItems}
+              onContextMenuClick={onContextMenuClick}
+              menuId="rulesCodeContextMenu"
+              noDataStr="No Available Data Elements"
+              checkJSSyntax={true}
+              height="calc(100vh - 400px)"
+            />
           </Box>
         </Flex>
       </Box>
-      <ContextMenuList
-        menuId="rulesCodeContextMenu"
-        onClick={onContextMenuClick}
-        items={dictionaryEventDataElemsItems}
-        noDataStr="No Available Data Elements"
-      />
     </React.Fragment>
   );
 };

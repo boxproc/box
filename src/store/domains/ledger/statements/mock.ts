@@ -1,9 +1,6 @@
 import { LedgerStatementItems } from './types';
 
 export const ledgerStatementsItems: LedgerStatementItems = {
-  response_status: {
-    status_code: 0,
-  },
   statements: [
     {
       id: 1,

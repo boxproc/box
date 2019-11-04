@@ -2,7 +2,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
+import { closeModal } from 'store/domains/modals';
 
 import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
 import {
@@ -10,7 +10,6 @@ import {
   AddAdminSchedulerJobAction,
   DeleteAdminSchedulerJobAction,
   FilterAdminSchedulerJobsAction,
-  GetSchedulerLogFileAction,
   GetSchedulerNamesByInstitutionIdAction,
   SendAdminSchedulerActionJobAction,
   UpdateAdminSchedulerJobAction
@@ -58,9 +57,6 @@ export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Th
 export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
   GetSchedulerNamesByInstitutionIdAction;
 
-export type GetSchedulerLogFile = (payload: object) => GetSchedulerLogFileAction;
-export type HandleGetSchedulerLogFile = (id: number) => Thunk<void>;
-
 export type ResetScheduler = () => void;
 
 export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
@@ -98,11 +94,6 @@ export const resetScheduler: ResetScheduler = () => ({
   type: ActionTypeKeys.RESET_SCHEDULER,
 });
 
-export const getSchedulerLogFile: GetSchedulerLogFile = payload => ({
-  type: ActionTypeKeys.GET_SCHEDULER_LOG_FILE,
-  payload: api.getSchedulerLogFile(payload),
-});
-
 export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
@@ -123,10 +114,10 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));
         await dispatch(addAdminSchedulerJob(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
-        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB));
+        await dispatch(resetForm(formNamesConst.DEFINE_SCHEDULER_JOB));
       },
       dispatch
     );
@@ -139,7 +130,7 @@ export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =
         const state = getState();
         const id = selectActiveItemId(state);
 
-        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
         await dispatch(handleFilterAdminSchedulerJobs());
       },
@@ -153,7 +144,7 @@ export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = sch
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_SCHEDULER));
+        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
         await dispatch(updateAdminSchedulerJobs(preparedValues));
         await dispatch(handleFilterAdminSchedulerJobs());
       },
@@ -183,19 +174,6 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getSchedulerNamesByInstitutionId(id));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetSchedulerLogFile: HandleGetSchedulerLogFile = id =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const payload = id ? { scheduler_id: id } : {};
-
-        await dispatch(getSchedulerLogFile(payload));
-        dispatch(openModal({ name: modalNamesConst.SHOW_SCHEDULER_LOG_FILE }));
       },
       dispatch
     );

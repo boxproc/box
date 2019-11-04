@@ -3,7 +3,7 @@ import { AdminInterfaceItems } from './types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_INTERFACE = 'administration/interfaces/ADD_ADMIN_INTERFACE',
-  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_ENDPOINT_FULFILLED',
+  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_INTERFACE_FULFILLED',
   ADD_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
 
   DELETE_ADMIN_INTERFACE = 'administration/interfaces/DELETE_ADMIN_INTERFACE',

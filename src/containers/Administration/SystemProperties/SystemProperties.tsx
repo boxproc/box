@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  renderCheckBoxIconTableCell,
+  renderCheckBoxTableCell,
   renderEditableTableCell,
   TableCell,
   TableHeader,
@@ -11,7 +11,7 @@ import {
 import PageTemplate from 'containers/PageTemplate';
 import { SystemPropertyFilter } from './forms';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
   AdminSysPropsItem,
@@ -66,7 +66,10 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Current Value" />,
       accessor: 'currentValue',
-      Cell: renderEditableTableCell(updateAdminSysProps),
+      Cell: renderEditableTableCell({
+        updateAction: updateAdminSysProps,
+        isNumber: true,
+      }),
     },
     {
       maxWidth: 300,
@@ -97,7 +100,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Locked" />,
       accessor: 'lockedFlag',
-      Cell: renderCheckBoxIconTableCell(),
+      Cell: renderCheckBoxTableCell(),
     },
   ];
 
@@ -105,14 +108,14 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     () => [
       {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteAdminSysProp,
         withConfirmation: true,
         confirmationText: `Delete system property "${currentSysPropId}"?`,
       },
       {
         name: 'Lock',
-        icon: 'lock',
+        icon: iconNamesConst.LOCK,
         action: () => updateAdminSysProps({
           lockedFlag: true,
         }),
@@ -128,7 +131,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={columns}
-      newModalName={modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY}
+      newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSysProps}
       FilterForm={

@@ -1,3 +1,4 @@
+import { aprTypesOptions } from 'consts';
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
@@ -9,6 +10,9 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
   if (!values) {
     return null;
   }
+
+  const aprCalculationMethod = aprTypesOptions
+    .find(el => el.value === values.apr_calculation_method);
 
   return {
     id: values.id,
@@ -37,6 +41,10 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     cardAcceptorName: values.card_acceptor_name,
     cardAcceptorLocation: values.card_acceptor_location,
     transactionTypeDescription: values.transaction_type_description,
+    aprId: values.apr_id,
+    aprRate: values.apr_rate && values.apr_rate.toFixed(2),
+    aprCalculationMethod: aprCalculationMethod && aprCalculationMethod.label,
+    status: values.status,
   };
 };
 
@@ -50,8 +58,8 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
     institutionId,
     customerId,
     productName,
-    dateTimeFrom,
-    dateTimeTo,
+    transactionsDateTimeFrom,
+    transactionsDateTimeTo,
   } = params;
 
   return {
@@ -59,7 +67,7 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
     institution_id: institutionId ? institutionId.value : null,
     customer_id: customerId ? customerId : null,
     product_name: productName ? productName.label : null,
-    datetime_from: dateTimeFrom ? dateTimeFrom : null,
-    datetime_to: dateTimeTo ? dateTimeTo : null,
+    datetime_from: transactionsDateTimeFrom ? transactionsDateTimeFrom : null,
+    datetime_to: transactionsDateTimeTo ? transactionsDateTimeTo : null,
   };
 };

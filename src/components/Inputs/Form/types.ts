@@ -4,6 +4,7 @@ export interface InvalidProp {
 
 interface InputProp {
   isNumber?: boolean;
+  isRightPlaceholder?: boolean;
 }
 
 export interface InputCommonProps extends

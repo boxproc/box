@@ -1,7 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ResponseStatusType } from 'types';
-
 export interface DictionaryCountriesItem {
   country_code: string;
   numeric_code: number;
@@ -14,7 +12,7 @@ export interface DictionaryCountriesItemPrepared {
   name: string;
 }
 
-export interface DictionaryCountriesData extends ResponseStatusType {
+export interface DictionaryCountriesData {
   countries: Array<DictionaryCountriesItem>;
 }
 

@@ -6,23 +6,26 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
 
 import {
   AdminInterfaceItemPrepared,
   HandleDeleteAdminInterface,
   HandleFilterAdminInterface,
+  HandleGetLogData,
   ResetInterfaces,
 } from 'store/domains';
 import { SelectValues } from 'types';
 
 export interface AccountsProps {
+  interfaceName: string;
+  currentInterfaceId: number;
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
+  institutionsOptions: Array<SelectValues>;
   deleteInterface: HandleDeleteAdminInterface;
   filterAdminInterface: HandleFilterAdminInterface;
-  institutionsOptions: Array<SelectValues>;
+  getLogData: HandleGetLogData;
   resetInterfaces: ResetInterfaces;
-  interfaceName: string;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
@@ -32,6 +35,8 @@ const Interfaces: React.FC<AccountsProps> = ({
   institutionsOptions,
   resetInterfaces,
   interfaceName,
+  getLogData,
+  currentInterfaceId,
 }) => {
   React.useEffect(
     () => {
@@ -43,14 +48,23 @@ const Interfaces: React.FC<AccountsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
+        name: 'Show log',
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getLogData({
+          name: systemMonitorTables.INTERFACES,
+          id: currentInterfaceId,
+          title: interfaceName,
+        }),
+      },
+      {
         name: 'Delete',
-        icon: 'delete',
+        icon: iconNamesConst.DELETE,
         action: deleteInterface,
         withConfirmation: true,
         confirmationText: `Delete interface: ${interfaceName}?`,
       },
     ],
-    [deleteInterface, interfaceName]
+    [deleteInterface, interfaceName, currentInterfaceId, getLogData]
   );
 
   return (
@@ -58,8 +72,8 @@ const Interfaces: React.FC<AccountsProps> = ({
       title="Interfaces"
       data={adminInterfaceItems}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_ADMIN_INTERFACE}
-      editModalName={modalNamesConst.EDIT_ADMIN_INTERFACE}
+      newModalName={modalNamesConst.ADD_INTERFACE}
+      editModalName={modalNamesConst.EDIT_INTERFACE}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminInterface}
       initialFilterValues={{

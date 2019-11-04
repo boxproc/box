@@ -13,7 +13,7 @@ export enum constsPathNames {
   GET_INSTITUTIONS = '/ui/service_data/institutions/get',
 }
 
-export enum adminCyclesPathNames {
+export enum cyclesPathNames {
   GET = '/ui/administration/cycles/cycles_editor/get',
   CREATE = '/ui/administration/cycles/cycles_editor/create',
   DELETE = '/ui/administration/cycles/cycles_editor/delete',
@@ -35,7 +35,7 @@ export enum adminInterfacePathNames {
   UPDATE = '/ui/administration/interfaces/update',
 }
 
-export enum adminEndPointsPathNames {
+export enum adminEndpointsPathNames {
   GET = '/ui/administration/endpoints/get',
   CREATE = '/ui/administration/endpoints/create',
   DELETE = '/ui/administration/endpoints/delete',
@@ -49,6 +49,7 @@ export enum dictionariesPathNames {
   GET_EVENTS = '/ui/administration/dictionaries/events/get',
   GET_EVENT_DATA_ELEMS = '/ui/administration/dictionaries/event_data_elements/get',
   GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses/get',
+  GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types/get',
 }
 
 export enum adminUserPathNames {
@@ -80,7 +81,6 @@ export enum adminSchedulerPathNames {
   UPDATE = '/ui/administration/scheduler/update',
   GET_NAMES_BY_INSTITUTION_ID = '/ui/administration/scheduler/get_scheduler_name',
   SEND_ACTION = '/sys/scheduler/management',
-  GET_LOG_FILE = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum adminSystemPropsPathNames {
@@ -101,7 +101,13 @@ export enum systemMonitorPathNames {
   GET_INTERFACES = '/ui/audit/system_monitor/get_interface_data',
   GET_ENDPOINTS = '/ui/audit/system_monitor/get_endpoint_data',
   GET_SCHEDULER_JOBS = '/ui/audit/system_monitor/get_scheduler_data',
-  GET_LAST_TRANSACTION = '/ui/audit/system_monitor/get_transaction_data',
+  GET_LAST_TRANSACTIONS = '/ui/audit/system_monitor/get_transactions_data',
+}
+
+export enum logDataPathNames {
+  GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/get_log_file',
+  GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
+  GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
 export enum lenderAccountsPathNames {
@@ -150,4 +156,8 @@ export enum productsPathNames {
   GET_ENDPOINTS_SERVICE = '/ui/product_designer/products/services/get/endpoints',
   GET_INTERFACES_SERVICE = '/ui/product_designer/products/services/get/interfaces',
   UPDATE_CARD_SERVICE = '/ui/product_designer/products/services/update',
+  GET_APRS = '/ui/product_designer/products/aprs/get',
+  UPDATE_APR = '/ui/product_designer/products/aprs/update',
+  CREATE_APR = '/ui/product_designer/products/aprs/create',
+  DELETE_APR = '/ui/product_designer/products/aprs/delete',
 }

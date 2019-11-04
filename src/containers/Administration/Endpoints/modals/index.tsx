@@ -7,11 +7,11 @@ import EditEndpointModal from './EditEndpointModal';
 
 export const endpointsModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_ENDPOINT,
+    name: modalNamesConst.ADD_ENDPOINT,
     component: <AddEndpointModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_ENDPOINT,
+    name: modalNamesConst.EDIT_ENDPOINT,
     component: <EditEndpointModal />,
   },
 ];

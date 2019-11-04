@@ -13,6 +13,7 @@ interface DropdownWrapperProps {
 const DropdownWrapper = styled.div<DropdownWrapperProps>`
   position: relative;
   display: inline-block;
+  user-select: none;
 
   .dropdown-list {
     position: absolute;

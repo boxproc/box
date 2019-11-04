@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
@@ -28,7 +28,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       title="Statement"
       closeOnBackdrop={true}
       maxContainerWidth={1100}
-      minContainerHeight={566}
+      minContainerHeight={500}
     >
       <Tabs>
         <TabsPanel title="Totals">
@@ -36,14 +36,18 @@ const StatementModal: React.FC<StatementModalProps> = ({
           <Hr />
         </TabsPanel>
         <TabsPanel title="Transactions" >
-          <TransactionsTable />
+          <Box mt="20px">
+            <TransactionsTable />
+          </Box>
         </TabsPanel>
       </Tabs>
       <Flex justifyContent="flex-end">
-        <Button
-          text="close"
-          onClick={handleCloseModal}
-        />
+        <Box mt="10px">
+          <Button
+            text="close"
+            onClick={handleCloseModal}
+          />
+        </Box>
       </Flex>
     </Modal>
   );

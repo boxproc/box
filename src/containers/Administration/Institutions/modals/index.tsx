@@ -7,11 +7,11 @@ import EditInstitutionModal from './EditInstitutionModal';
 
 export const institutionsModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_INSTITUTION,
+    name: modalNamesConst.ADD_INSTITUTION,
     component: <AddInstitutionModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_INSTITUTION,
+    name: modalNamesConst.EDIT_INSTITUTION,
     component: <EditInstitutionModal />,
   },
 ];

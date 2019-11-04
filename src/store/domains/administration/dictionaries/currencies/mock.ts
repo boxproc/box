@@ -1,9 +1,6 @@
 import { DictionaryCurrenciesData } from './types';
 
 export const dictionaryCurrenciesData: DictionaryCurrenciesData = {
-  response_status: {
-    status_code: 0,
-  },
   currencies: [
     {
       currency_code: 'United Arab Emirates dirham',

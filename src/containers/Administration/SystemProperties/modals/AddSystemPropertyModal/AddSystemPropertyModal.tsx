@@ -14,7 +14,7 @@ interface AddSystemPropertyModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY;
+const modalName = modalNamesConst.ADD_SYSTEM_PROPERTY;
 
 const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,

@@ -24,7 +24,6 @@ const EndpointsFilter: React.FC<EndpointFilterFormProps> = ({
         label="Institution"
         placeholder="Select Institution"
         options={institutionsOptions}
-        isDisabled={false}
         isClearable={false}
         validate={[formErrorUtil.required]}
       />

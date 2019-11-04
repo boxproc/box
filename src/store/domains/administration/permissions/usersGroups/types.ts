@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { IdNamePair, ResponseStatusType, SelectValues } from 'types';
+import { IdNamePair, SelectValues } from 'types';
 
 interface InfoPlain extends IdNamePair { }
 
@@ -23,7 +23,7 @@ export interface AdminUsersGroupInfoEditable extends InfoPlain {
   institutionId: SelectValues;
 }
 
-export interface AdminUsersGroupDataResp extends ResponseStatusType {
+export interface AdminUsersGroupDataResp {
   users_group: Array<AdminUsersGroupInfoPlainResp>;
 }
 
@@ -38,11 +38,11 @@ export interface AdminUserGroupMemberPrepared {
   username: string;
 }
 
-export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
+export interface AdminUserGroupMemberDataResp {
   user_group_members: Array<AdminUserGroupMember>;
 }
 
-export interface AdminUserGroupMemberDataResp extends ResponseStatusType {
+export interface AdminUserGroupMemberDataResp {
   active_users: Array<AdminUserGroupMember>;
 }
 
@@ -66,7 +66,7 @@ export interface AdminGroupPermissionItem extends AdminGroupPermissionItemPlain 
   uiItem: string | number;
 }
 
-export interface AdminGroupPermissionDataResp extends ResponseStatusType {
+export interface AdminGroupPermissionDataResp {
   group_permissions: Array<AdminGroupPermissionItemResp>;
 }
 
@@ -74,7 +74,7 @@ export interface AdminGroupPermissionUiItemResp {
   ui_item: string;
 }
 
-export interface AdminGroupPermissionUiItemsDataResp extends ResponseStatusType {
+export interface AdminGroupPermissionUiItemsDataResp {
   ui_items: Array<AdminGroupPermissionUiItemResp>;
 }
 

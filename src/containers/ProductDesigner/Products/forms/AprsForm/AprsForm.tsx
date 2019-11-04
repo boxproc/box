@@ -1,46 +1,67 @@
 import React from 'react';
-
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Hr, OkCancelButtons } from 'components';
+import { Box, Flex } from '@rebass/grid';
 
-import { formNamesConst } from 'consts';
+import { Button } from 'components';
 
-import { ProductAprs } from 'containers/ProductDesigner/Products/components';
+import { formNamesConst, iconNamesConst } from 'consts';
+
+import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
+
+import { HandleAddProductApr } from 'store/domains';
 
 interface AprsFormProps {
-  onCancel?: () => void;
+  addProductApr: HandleAddProductApr;
+  isLoading: boolean;
+  onCancel: () => void;
 }
 
 type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
 
 const AprsForm: React.FC<AprsFormAllProps> = ({
-  handleSubmit,
   onCancel,
+  addProductApr,
+  handleSubmit,
   pristine,
+  dirty,
+  isLoading,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(addProductApr),
     [handleSubmit]
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <ProductAprs />
-      <Hr />
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-        disabledOk={pristine}
-      />
-    </form>
+    <React.Fragment>
+      <Box pb="10px">
+        <form onSubmit={handleSubmitForm}>
+          <Flex alignItems="flex-end">
+            <ProductAprs isDisabled={isLoading} />
+            <Box width="90px" pb="20px">
+              <Button
+                text={isLoading ? 'Adding...' : 'Add APR'}
+                iconName={iconNamesConst.PLUS}
+                disabled={pristine || isLoading}
+              />
+            </Box>
+          </Flex>
+        </form>
+      </Box>
+      <AprsTable />
+      <Flex justifyContent="flex-end">
+        <Button
+          text="Close"
+          onClick={onCancel}
+          withConfirmation={dirty}
+        />
+      </Flex>
+    </React.Fragment>
   );
 };
 
 export default reduxForm<{}, AprsFormProps>({
-  form: formNamesConst.PRODUCT_LIMITS_AND_COMMISSION,
+  form: formNamesConst.PRODUCT_APRS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(AprsForm);

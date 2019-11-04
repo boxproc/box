@@ -48,7 +48,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Institution"
           options={institutionsOptions}
           placeholder="Select Institution"
-          isDisabled={false}
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
@@ -61,7 +60,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Endpoint"
           options={endpointsOptions}
           placeholder="Select endpoint"
-          isDisabled={false}
           isLoading={isLoadingEndpoints}
           validate={[formErrorUtil.required]}
         />
@@ -73,34 +71,31 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           component={InputField}
           label="API Name"
           placeholder="Enter api name"
-          isDisabled={false}
         />
       </Box>
       <Delimiter />
       <Box width="200px" p="10px">
         <Field
-          id="dateTimeFrom"
-          name="dateTimeFrom"
+          id="apiCallsDateTimeFrom"
+          name="apiCallsDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
       <Box width="200px" p="10px">
         <Field
-          id="dateTimeTo"
-          name="dateTimeTo"
+          id="apiCallsDateTimeTo"
+          name="apiCallsDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
+          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          maskChar={null}
-          disabled={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
       </Box>
     </React.Fragment>

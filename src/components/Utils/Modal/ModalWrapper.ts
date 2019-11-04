@@ -32,7 +32,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   .modal-backdrop {
     position: fixed;
     top: 0;
-    right: 17px;
+    right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .6);
@@ -50,12 +50,17 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     max-width: ${({ maxContainerWidth }) =>
     maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
     min-height: ${({ minContainerHeight }) =>
-    minContainerHeight ? minContainerHeight + 'px' : 'auto'}
+    minContainerHeight ? minContainerHeight + 'px' : 'auto'};
+    max-height: calc(100vh - 20px);
     width: 100%;
-    padding: 20px 20px 10px;
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;
+    overflow-y: auto;
+
+    &-inner {
+      padding: 20px 20px 10px;
+    }
 
     ${({ containerWidthAuto }) => containerWidthAuto && `
       width: auto;
@@ -77,8 +82,9 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     outline: none;
     cursor: pointer;
     color: ${({ theme, accentClose }) =>
-    accentClose ? theme.colors.normalAccent : theme.colors.gray};
+    accentClose ? theme.colors.lightAccent : theme.colors.gray};
     padding: 10px;
+    user-select: none;
 
     &:hover {
       color: ${({ theme }) => theme.colors.normalAccent};

@@ -69,7 +69,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
                 component={InputField}
                 label="ID"
                 placeholder="Enter ID"
-                disabled={true}
+                readOnly={true}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -146,7 +146,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
 };
 
 export default reduxForm<{}, InstitutionFormProps>({
-  form: formNamesConst.ADMIN_INSTITUTIONS,
+  form: formNamesConst.INSTITUTIONS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(InstitutionForm));

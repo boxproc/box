@@ -8,7 +8,7 @@ import AddEndpointModal from './AddEndpointModal';
 import { selectInstitutionsOptions } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.ADMIN_ENDPOINT);
+const dirty = isDirty(formNamesConst.ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

@@ -3,9 +3,11 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField } from 'components';
+import { Hr, InputField, NumberFormatField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
+
+import { formErrorUtil } from 'utils';
 
 interface StatementInfoProps {
   isDisabled?: boolean;
@@ -24,7 +26,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="id"
             component={InputField}
             label="ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -34,7 +36,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="firstTransactionId"
             component={InputField}
             label="First Transaction ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -44,7 +46,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             name="lastTransactionId"
             component={InputField}
             label="Last Transaction ID"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -55,9 +57,10 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             component={InputField}
             label="Statement Date"
             placeholder={dateFormat.DATE}
+            maskPlaceholder={dateFormat.DATE}
             mask={maskFormat.DATE}
-            maskChar={null}
-            disabled={isDisabled}
+            readOnly={isDisabled}
+            validate={[formErrorUtil.isDate]}
           />
         </Box>
         <Hr />
@@ -65,9 +68,12 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="balanceOpen"
             name="balanceOpen"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance open"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -75,9 +81,12 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="balanceClose"
             name="balanceClose"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Balance close"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -85,9 +94,12 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           <Field
             id="minimumAmountDueRepayment"
             name="minimumAmountDueRepayment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Minimum amount due repayment"
-            disabled={isDisabled}
+            readOnly={isDisabled}
             isNumber={true}
           />
         </Box>
@@ -98,7 +110,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             component={InputField}
             label="Statement Cycle"
             placeholder="Enter Statement Cycle"
-            disabled={isDisabled}
+            readOnly={isDisabled}
           />
         </Box>
       </Flex>

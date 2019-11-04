@@ -1,24 +1,26 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { TableCell, TableHeader } from 'components';
+import { Button, TableCell, TableHeader } from 'components';
 
-import { SystemMonitorSchedulerItem } from 'store/domains';
+import { iconNamesConst } from 'consts';
+
+import { HandleGetLogData, SystemMonitorSchedulerItem } from 'store/domains';
 
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof SystemMonitorSchedulerItem> =
   TableCellType<SystemMonitorSchedulerItem[T]>;
 
-export const schedulerTableColumns = [
+export const schedulerTableColumns = (getLogData: HandleGetLogData, name: string) => [
   {
-    maxWidth: 80,
-    Header: <TableHeader title="Institution ID" />,
-    accessor: 'institutionId',
-    Cell: (props: TCell<'institutionId'>) => (
+    maxWidth: 125,
+    Header: <TableHeader title="Institution" />,
+    accessor: 'institutionName',
+    Cell: (props: TCell<'institutionName'>) => (
       <TableCell
         value={props.value}
         isSmaller={true}
-        isNumber={true}
       />
     ),
   },
@@ -41,6 +43,22 @@ export const schedulerTableColumns = [
       <TableCell
         value={props.value}
         isSmaller={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 90,
+    accessor: 'showLogButton',
+    Cell: (cellInfo: CellInfo) => (
+      <Button
+        iconName={iconNamesConst.SHORT_TEXT}
+        text="Show log"
+        size="10"
+        onClick={() => getLogData({
+          name,
+          id: cellInfo.original.id,
+          title: cellInfo.original.name,
+        })}
       />
     ),
   },

@@ -51,15 +51,10 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
   return (
     <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
       <Box mr="5px">
-        {isSelected ? (
-          <CheckedBoxIcon
-            onClick={e => selectOption(modifiedData)}
-          />
-        ) : (
-            <UncheckedBoxIcon
-              onClick={e => selectOption(modifiedData)}
-            />
-          )}
+        {isSelected
+          ? (<CheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
+          : (<UncheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
+        }
       </Box>
       <div>{children}</div>
     </OptionWrapper>

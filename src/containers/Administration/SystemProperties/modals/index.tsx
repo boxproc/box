@@ -6,7 +6,7 @@ import AddSystemPropertyModal from './AddSystemPropertyModal';
 
 export const systemPropertiesModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_SYSTEM_PROPERTY,
+    name: modalNamesConst.ADD_SYSTEM_PROPERTY,
     component: <AddSystemPropertyModal />,
   },
 ];

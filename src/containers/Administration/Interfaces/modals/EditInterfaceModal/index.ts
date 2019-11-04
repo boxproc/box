@@ -12,7 +12,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.ADMIN_INTERFACE);
+const dirty = isDirty(formNamesConst.INTERFACE);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

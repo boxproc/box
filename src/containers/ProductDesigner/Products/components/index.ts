@@ -6,4 +6,6 @@ export { default as ProductLimitsFeesCommissions } from './ProductLimitsFeesComm
 export { default as ProductAprs } from './ProductAprs';
 export { default as ProductLoyaltyAndBonus } from './ProductLoyaltyAndBonus';
 export { default as  Services } from './ProductServices';
+export { default as AprsTable } from './AprsTable';
+export { default as GeneralLedger } from './GeneralLedger';
 export * from './tableColumns';

@@ -7,11 +7,11 @@ import EditInterfaceModal from './EditInterfaceModal';
 
 export const interfacesModals = [
   {
-    name: modalNamesConst.ADD_ADMIN_INTERFACE,
+    name: modalNamesConst.ADD_INTERFACE,
     component: <AddInterfaceModal />,
   },
   {
-    name: modalNamesConst.EDIT_ADMIN_INTERFACE,
+    name: modalNamesConst.EDIT_INTERFACE,
     component: <EditInterfaceModal />,
   },
 ];

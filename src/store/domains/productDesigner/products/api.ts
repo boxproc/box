@@ -14,6 +14,7 @@ import { apiClient } from 'services';
 
 import {
   NewProductPrepared,
+  ProductAprItem,
   ProductFilterPrepared,
   ProductItemDetailsResp,
   ProductItemResp,
@@ -82,3 +83,19 @@ export const updateProductDetails = (data: ProductItemDetailsResp) =>
 export const updateProductRules = (data: ProductRulesItemResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(productsPathNames.UPDATE_RULES, { data });
+
+export const getProductAprs = (id: number) =>
+  apiClient.post(productsPathNames.GET_APRS, {
+    data: { product_id: id },
+  });
+
+export const addProductApr = (data: Partial<ProductAprItem>) =>
+  apiClient.post(productsPathNames.CREATE_APR, { data });
+
+export const updateProductApr = (data: Partial<ProductAprItem>) =>
+  apiClient.post(productsPathNames.UPDATE_APR, { data });
+
+export const deleteProductApr = (id: number) =>
+  apiClient.post(productsPathNames.DELETE_APR, {
+    data: { id },
+  });

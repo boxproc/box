@@ -1,18 +1,21 @@
 import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
+import { CountDownTimer, ExternalLink, T2, Table, withSpinner } from 'components';
+
 import {
-  CountDownTimer,
-  ExternalLink,
-  SmallText,
-  T2,
-  T4,
-  Table,
-} from 'components';
+  cookiesExpires,
+  systemMonitorInterval,
+  systemMonitorTables,
+  yesNoTypesCodes,
+} from 'consts';
 
 import {
   Collapse,
+  Header,
+  RefreshCheckbox,
   schedulerTableColumns,
   SystemMonitorBox,
   tableColumns,
@@ -20,6 +23,7 @@ import {
 } from './components';
 
 import {
+  HandleGetLogData,
   HandleGetSystemMonitorData,
   ResetSystemMonitor,
   SystemMonitorCounts,
@@ -27,25 +31,28 @@ import {
   SystemMonitorSchedulerItem,
   SystemMonitorTransaction,
 } from 'store/domains';
+import { cookiesUtil, stringsUtil } from 'utils';
 
-interface SystemMonitorProps {
-  getSystemMonitorData: HandleGetSystemMonitorData;
-  resetSystemMonitor: ResetSystemMonitor;
+interface SystemMonitorProps extends RouteComponentProps {
   interfacesData: Array<SystemMonitorItem>;
   endpointsData: Array<SystemMonitorItem>;
   schedulerData: Array<SystemMonitorSchedulerItem>;
-  lastTransactionData: Array<SystemMonitorTransaction>;
+  lastTransactionsData: Array<SystemMonitorTransaction>;
+  getLogData: HandleGetLogData;
+  getSystemMonitorData: HandleGetSystemMonitorData;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isLoadingScheduler: boolean;
-  isLoadingLastTransaction: boolean;
+  isLoadingLastTransactions: boolean;
   interfacesCounts: SystemMonitorCounts;
   endpointsCounts: SystemMonitorCounts;
   schedulerCounts: SystemMonitorCounts;
+  resetSystemMonitor: ResetSystemMonitor;
 }
 
 interface SystemMonitorBlockProps {
   id: number;
+  name: string;
   title: string;
   isLoading: boolean;
   tableData: Array<object>;
@@ -59,33 +66,71 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   interfacesData,
   endpointsData,
   schedulerData,
-  lastTransactionData,
+  lastTransactionsData,
   isLoadingInterfaces,
   isLoadingEndpoints,
   isLoadingScheduler,
-  isLoadingLastTransaction,
+  isLoadingLastTransactions,
   interfacesCounts,
   endpointsCounts,
   schedulerCounts,
+  location,
+  getLogData,
 }) => {
+  const [refreshingTables, setRefreshingTables] = React.useState([]);
+  const [isCounter, setIsCounter] = React.useState(false);
+  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
+
+  // get data for each table and reset it on unmount
   React.useEffect(
     () => {
       getSystemMonitorData();
-      const timer = setInterval(() => getSystemMonitorData(), 60000);
-
-      return () => clearInterval(timer);
-    },
-    [getSystemMonitorData]
-  );
-
-  React.useEffect(
-    () => {
       return () => resetSystemMonitor();
     },
-    [resetSystemMonitor]
+    [getSystemMonitorData, resetSystemMonitor]
   );
 
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
+  // get table names which have to be refreshed from cookies and set to state
+  React.useEffect(
+    () => {
+      const storedNames = [];
+
+      for (const table in systemMonitorTables) {
+        if (cookiesUtil.get(`${location.pathname}/${systemMonitorTables[table]}`)) {
+          storedNames.push(systemMonitorTables[table]);
+        }
+      }
+
+      setRefreshingTables(storedNames);
+
+      if (storedNames.length > 0) {
+        refreshCounter();
+      }
+    },
+    [location]
+  );
+
+  const refreshCounter = () => {
+    setIsCounter(false);
+    setTimeout(() => setIsCounter(true), 50);
+  };
+
+  // refresh each table which is in refreshingTables state
+  React.useEffect(
+    () => {
+      const timer = isCounter && setInterval(
+        () => {
+          getSystemMonitorData(refreshingTables);
+          refreshCounter();
+        },
+        systemMonitorInterval.MILLISECONDS
+      );
+      return () => clearInterval(timer);
+    },
+    [getSystemMonitorData, isCounter, refreshingTables]
+  );
+
+  // update screen height for setting various number of table rows per page
   const updateWindowHeight = () => setScreenHeight(window.innerHeight);
 
   React.useEffect(
@@ -95,48 +140,85 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
     }
   );
 
-  const pagesCount = React.useMemo(
+  const tablePagesCount = React.useMemo(
     () => screenHeight < 750 ? 3
       : screenHeight < 850 ? 5
         : screenHeight < 950 ? 6 : 8,
     [screenHeight]
   );
 
-  const SystemMonitorBlocks = React.useMemo(
+  const handleSetRefreshingTables = React.useCallback(
+    (tableName: string) => {
+      const hasTableName = refreshingTables.find(name => name === tableName);
+
+      if (!hasTableName) {
+        getSystemMonitorData([tableName]); // update current table
+        setRefreshingTables([...refreshingTables, tableName]);
+        refreshCounter();
+      } else {
+        setRefreshingTables(refreshingTables.filter(name => name !== tableName));
+
+        if (refreshingTables.length <= 1) {
+          setIsCounter(false);
+        } else {
+          refreshCounter();
+        }
+      }
+
+      const storedTableName = `${location.pathname}/${tableName}`;
+
+      if (cookiesUtil.get(storedTableName)) {
+        cookiesUtil.remove(storedTableName);
+      } else {
+        cookiesUtil.set(
+          storedTableName,
+          JSON.stringify(yesNoTypesCodes.YES),
+          { expires: cookiesExpires.MONTH }
+        );
+      }
+    },
+    [refreshingTables, getSystemMonitorData, location]
+  );
+
+  const systemMonitorBlocks = React.useMemo(
     () => [
       [
         {
           id: 1,
+          name: systemMonitorTables.INTERFACES,
           title: 'Interfaces',
           counts: interfacesCounts,
           isLoading: isLoadingInterfaces,
           tableData: interfacesData,
-          columns: tableColumns,
+          columns: tableColumns(getLogData, systemMonitorTables.INTERFACES),
         },
         {
           id: 2,
+          name: systemMonitorTables.LAST_TRANSACTIONS,
           title: 'Last Transactions',
-          isLoading: isLoadingLastTransaction,
-          tableData: lastTransactionData,
+          isLoading: isLoadingLastTransactions,
+          tableData: lastTransactionsData,
           columns: transactionsTableColumns,
         },
       ],
       [
         {
           id: 3,
+          name: systemMonitorTables.ENDPOINTS,
           title: 'Endpoints',
           counts: endpointsCounts,
           isLoading: isLoadingEndpoints,
           tableData: endpointsData,
-          columns: tableColumns,
+          columns: tableColumns(getLogData, systemMonitorTables.ENDPOINTS),
         },
         {
           id: 4,
+          name: systemMonitorTables.SCHEDULER_JOBS,
           title: 'Scheduler Jobs',
           counts: schedulerCounts,
           isLoading: isLoadingScheduler,
           tableData: schedulerData,
-          columns: schedulerTableColumns,
+          columns: schedulerTableColumns(getLogData, systemMonitorTables.SCHEDULER_JOBS),
         },
       ],
     ],
@@ -147,11 +229,12 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       interfacesData,
       isLoadingEndpoints,
       isLoadingInterfaces,
-      isLoadingLastTransaction,
+      isLoadingLastTransactions,
       isLoadingScheduler,
-      lastTransactionData,
+      lastTransactionsData,
       schedulerCounts,
       schedulerData,
+      getLogData,
     ]
   );
 
@@ -161,16 +244,20 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         <Box mb="15px" mr="15px">
           <ExternalLink
             text="HELP"
-            link=""
+            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
             grayStyle={true}
           />
         </Box>
         <T2>System Monitor</T2>
-        <Box mb="12px" ml="12px"><CountDownTimer seconds={60} /></Box>
+        <Box mb="12px" ml="12px">
+          {isCounter && (
+            <CountDownTimer seconds={systemMonitorInterval.SECONDS} />
+          )}
+        </Box>
       </Flex>
-      <Box mx="-15px">
+      <Box mx="-20px">
         <Flex flexWrap="wrap" alignItems="flex-start">
-          {SystemMonitorBlocks.map((el: Array<object>, index) => (
+          {systemMonitorBlocks.map((el: Array<object>, index) => (
             <Box
               key={index}
               width={[1 / 2]}
@@ -182,27 +269,28 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                   isLoading={block.isLoading}
                 >
                   <Collapse
-                    title={(
-                      <Flex alignItems="baseline" justifyContent="space-between">
-                        <Box mr="10px"><T4>{block.title}</T4></Box>
-                        {block.counts && (
-                          <SmallText>
-                            {block.counts.countActive} active, {block.counts.countFaulty} faulty
-                          </SmallText>
-                        )}
-                      </Flex>
+                    header={(
+                      <Header
+                        title={block.title}
+                        counts={block.counts}
+                      />
+                    )}
+                    additionalTool={(
+                      <RefreshCheckbox
+                        onClick={() => handleSetRefreshingTables(block.name)}
+                        value={!!cookiesUtil.get(`${location.pathname}/${block.name}`)}
+                      />
                     )}
                   >
                     <Table
                       data={block.tableData}
                       columns={block.columns}
-                      pageSize={pagesCount}
+                      pageSize={tablePagesCount}
                       isSmaller={true}
                     />
                   </Collapse>
                 </SystemMonitorBox>
-              )
-              )}
+              ))}
             </Box>
           ))}
         </Flex>
@@ -211,4 +299,6 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   );
 };
 
-export default SystemMonitor;
+export default withSpinner({
+  isFixed: true,
+})(withRouter(SystemMonitor));

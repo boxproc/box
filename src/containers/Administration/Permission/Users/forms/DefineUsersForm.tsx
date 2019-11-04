@@ -74,7 +74,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Last Name"
-              disabled={false}
               isDisabled={isDisabledType}
               validate={[formErrorUtil.required]}
             />
@@ -86,7 +85,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
-              disabled={isEditMode}
+              readOnly={isEditMode}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -137,7 +136,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               placeholder="Enter Password"
               component={PasswordField}
               label="Password"
-              disabled={false}
               validate={!isEditMode && formErrorUtil.required}
             />
           </Box>
@@ -148,7 +146,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               placeholder="Repeat Password"
               component={PasswordField}
               label="Repeat Password"
-              disabled={false}
               validate={!isEditMode && formErrorUtil.required}
             />
           </Box>
@@ -168,7 +165,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 };
 
 export default reduxForm<{}, DefineUserFormProps>({
-  form: formNamesConst.DEFINE_ADMIN_USER,
+  form: formNamesConst.DEFINE_USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(DefineUserForm);

@@ -8,12 +8,13 @@ import {
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleFilterAdminSchedulerJobs,
-  handleGetSchedulerLogFile,
+  handleGetLogData,
   handleSendAdminSchedulerAction,
   resetScheduler,
   selectActiveItemId,
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
+  SystemMonitorActionTypes,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -22,7 +23,7 @@ const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.FILTER_ADMIN_SCHEDULER_JOBS,
   AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
   AdminSchedulerJobsActionTypes.UPDATE_ADMIN_SCHEDULER_JOBS,
-  AdminSchedulerJobsActionTypes.GET_SCHEDULER_LOG_FILE,
+  SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterAdminSchedulerJobs: handleFilterAdminSchedulerJobs,
     sendAdminSchedulerAction: handleSendAdminSchedulerAction,
     deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
-    getSchedulerLogFile: handleGetSchedulerLogFile,
+    getLogData: handleGetLogData,
     resetScheduler,
   },
   dispatch

@@ -233,9 +233,9 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
         const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
 
         await dispatch(addAdminUserUsersGroup(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_USERS_GROUP));
+        dispatch(closeModal(modalNamesConst.ADD_USERS_GROUP));
         await dispatch(handleGetAdminUsersGroup());
-        await dispatch(resetForm(formNamesConst.DEFINE_ADMIN_USER));
+        await dispatch(resetForm(formNamesConst.DEFINE_USER));
       },
       dispatch
     );

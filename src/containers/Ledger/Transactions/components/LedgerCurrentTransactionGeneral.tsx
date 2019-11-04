@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, TextField } from 'components';
+import { InputField, NumberFormatField, TextField } from 'components';
 
 const LedgerCurrentTransactionGeneral: React.FC = () => {
   return (
@@ -12,44 +12,71 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="id"
             name="id"
             component={InputField}
             label="ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]}  p="10px">
           <Field
             id="accountId"
             name="accountId"
             component={InputField}
             label="Account ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
-        <Delimiter />
-        <Box width="200px" p="10px">
-          <Field
-            id="transactionDatetime"
-            name="transactionDatetime"
-            component={InputField}
-            label="Transaction Datetime"
-            disabled={true}
-          />
-        </Box>
-        <Box width="150px" p="10px">
+        <Box width={[1 / 4]}  p="10px">
           <Field
             id="transactionTypeId"
             name="transactionTypeId"
             component={InputField}
             label="Transaction Type ID"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
+          />
+        </Box>
+        <Box width={[1 / 4]}  p="10px">
+          <Field
+            id="status"
+            name="status"
+            component={InputField}
+            label="Status"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="transactionDatetime"
+            name="transactionDatetime"
+            component={InputField}
+            label="Transaction Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="aprRate"
+            name="aprRate"
+            component={InputField}
+            label="APR Rate"
+            readOnly={true}
+            isNumber={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="aprCalculationMethod"
+            name="aprCalculationMethod"
+            component={InputField}
+            label="APR Calculation Method"
+            readOnly={true}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -58,7 +85,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="description"
             component={TextField}
             label="Description"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -67,16 +94,19 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="debitCreditIndicator"
             component={InputField}
             label="Debit Credit Indicator"
-            disabled={true}
+            readOnly={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
             id="amount"
             name="amount"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Amount"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>
@@ -84,9 +114,12 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
           <Field
             id="amountInOriginalCurrency"
             name="amountInOriginalCurrency"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Amount in Original Currency"
-            disabled={true}
+            readOnly={true}
             isNumber={true}
           />
         </Box>

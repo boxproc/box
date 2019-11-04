@@ -44,6 +44,8 @@ export const prepareTransactionsValuesToRender =
       balanceSettledBefore: values.balance_settled_before.toFixed(2),
       balanceSettledAfter: values.balance_settled_after.toFixed(2),
       description: values.description,
+      aprId: values.apr_id,
+      aprRate: values.apr_rate && values.apr_rate.toFixed(2),
     };
   };
 
@@ -59,8 +61,8 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     lastName,
     accountAlias,
     product,
-    dateFrom,
-    dateTo,
+    statementsDateFrom,
+    statementsDateTo,
   } = params;
 
   return {
@@ -70,7 +72,7 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     last_name: lastName ? lastName : null,
     product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
-    date_from: dateFrom ? dateFrom : null,
-    date_to: dateTo ? dateTo : null,
+    date_from: statementsDateFrom ? statementsDateFrom : null,
+    date_to: statementsDateTo ? statementsDateTo : null,
   };
 };

@@ -31,7 +31,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalProps> = 
       maxContainerWidth={670}
     >
       <CronGenerator
-        formName={formNamesConst.DEFINE_ADMIN_SCHEDULER_JOB}
+        formName={formNamesConst.DEFINE_SCHEDULER_JOB}
         fieldName="cronExpression"
         onChange={change}
         action={handleCloseModal}

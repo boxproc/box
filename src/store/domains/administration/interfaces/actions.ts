@@ -4,6 +4,7 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
+import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminInterfaceAction,
@@ -12,15 +13,12 @@ import {
   UpdateAdminInterfaceAction,
 } from './actionTypes';
 import * as api from './api';
-
-import { preparedFilterToSend, preparedValuesToSend } from './utils';
-
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   AdminInterfaceFilterPrepared,
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared
 } from './types';
+import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -92,9 +90,9 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
         const preparedValues = preparedValuesToSend(values);
 
         await dispatch(addAdminInterface(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_ADMIN_INTERFACE));
+        dispatch(closeModal(modalNamesConst.ADD_INTERFACE));
         await dispatch(handleFilterAdminInterface());
-        await dispatch(resetForm(formNamesConst.ADMIN_INTERFACE));
+        await dispatch(resetForm(formNamesConst.INTERFACE));
       },
       dispatch
     );
@@ -108,7 +106,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminInterface(id));
-        dispatch(closeModal(modalNamesConst.EDIT_ADMIN_INTERFACE));
+        dispatch(closeModal(modalNamesConst.EDIT_INTERFACE));
         await dispatch(handleFilterAdminInterface());
       },
       dispatch

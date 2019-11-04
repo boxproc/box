@@ -5,19 +5,23 @@ import SystemMonitor from './SystemMonitor';
 
 import {
   createLoadingSelector,
+  handleGetLogData,
   handleGetSystemMonitorData,
   resetSystemMonitor,
   selectSystemMonitorEndpoints,
   selectSystemMonitorEndpointsCounts,
   selectSystemMonitorInterfaces,
   selectSystemMonitorInterfacesCounts,
-  selectSystemMonitorLastTransaction,
+  selectSystemMonitorLastTransactions,
   selectSystemMonitorScheduler,
   selectSystemMonitorSchedulerCounts,
   SystemMonitorActionTypes,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  SystemMonitorActionTypes.GET_LOG_DATA,
+]);
 const loadingSelectorInterfaces = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_INTERFACES,
 ]);
@@ -27,19 +31,20 @@ const loadingSelectorEndpoints = createLoadingSelector([
 const loadingSelectorScheduler = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_SCHEDULER,
 ]);
-const loadingSelectorLastTransaction = createLoadingSelector([
-  SystemMonitorActionTypes.GET_SYSTEM_MONITOR_LAST_TRANSACTION,
+const loadingSelectorLastTransactions = createLoadingSelector([
+  SystemMonitorActionTypes.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
+  isLoading: loadingSelector(state),
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
   isLoadingScheduler: loadingSelectorScheduler(state),
-  isLoadingLastTransaction: loadingSelectorLastTransaction(state),
+  isLoadingLastTransactions: loadingSelectorLastTransactions(state),
   interfacesData: selectSystemMonitorInterfaces(state),
   endpointsData: selectSystemMonitorEndpoints(state),
   schedulerData: selectSystemMonitorScheduler(state),
-  lastTransactionData: selectSystemMonitorLastTransaction(state),
+  lastTransactionsData: selectSystemMonitorLastTransactions(state),
   interfacesCounts: selectSystemMonitorInterfacesCounts(state),
   endpointsCounts: selectSystemMonitorEndpointsCounts(state),
   schedulerCounts: selectSystemMonitorSchedulerCounts(state),
@@ -48,6 +53,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getSystemMonitorData: handleGetSystemMonitorData,
+    getLogData: handleGetLogData,
     resetSystemMonitor,
   },
   dispatch

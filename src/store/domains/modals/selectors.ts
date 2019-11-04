@@ -9,4 +9,7 @@ export const selectPayloadMessageModal = (state: StoreState) => state.modals.pay
 export const selectPayloadConfirmationModal = (state: StoreState) =>
   state.modals.payloadConfirmationModal;
 
+export const selectPayloadLogModal = (state: StoreState) =>
+  state.modals.payloadLogModal;
+
 export const selectIsEditModalOpened = (state: StoreState) => state.modals.isEditModalOpened;
