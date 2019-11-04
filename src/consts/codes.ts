@@ -203,3 +203,9 @@ export const debitCreditIndicatorOptions = [
   { value: 'C', label: 'Credit transaction' },
   { value: 'U', label: 'Not applicable' },
 ];
+
+export const cardFormFactorOptions = [
+  { value: 'X', label: 'Unspecified' },
+  { value: 'V', label: 'Virtual' },
+  { value: 'P', label: 'Physical' },
+];

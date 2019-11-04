@@ -1,6 +1,7 @@
 import {
   actionTypesOptions,
   aprTypesOptions,
+  cardFormFactorOptions,
   loanTypesOptions,
   productTypesCodes,
   productTypesOptions,
@@ -105,6 +106,8 @@ export const prepareGeneralProductValues =
       scheme: schemeTypesOptions.find(el => el.value === product.scheme),
       lockedFlag: product.locked_flag === yesNoTypesCodes.YES ? true : false,
       overridesProductId: product.overrides_product_id,
+      cardFormFactor: cardFormFactorOptions.find(el => el.value === product.card_form_factor),
+      numberOfDaysCardExpires: product.number_of_days_card_expires,
     };
   };
 
@@ -124,6 +127,8 @@ export const prepareGeneralProductValuesToSend =
       locked_flag: product.lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
       statement_cycle_description: product.defaultStatementCycle.value,
       overrides_product_id: product.overridesProductId,
+      card_form_factor: product.cardFormFactor.value,
+      number_of_days_card_expires: product.numberOfDaysCardExpires,
     };
   };
 

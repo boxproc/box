@@ -7,7 +7,12 @@ import { CheckboxField, InputField, SelectField, TextField } from 'components';
 
 import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
-import { productTypesOptions, schemeTypesOptions, statusTypesOptions } from 'consts';
+import {
+  cardFormFactorOptions,
+  productTypesOptions,
+  schemeTypesOptions,
+  statusTypesOptions,
+} from 'consts';
 
 import { HandleGetCyclesDescriptions } from 'store/domains';
 
@@ -86,6 +91,28 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="cardFormFactor"
+            name="cardFormFactor"
+            component={SelectField}
+            label="Card Form Factor"
+            placeholder="Select Card Form Factor"
+            options={cardFormFactorOptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width="150px" p="10px">
+          <Field
+            id="numberOfDaysCardExpires"
+            name="numberOfDaysCardExpires"
+            placeholder="Enter # of Days"
+            component={InputField}
+            label="# of Days Card Expires"
+            isNumber={true}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
         <Box width={[1]} p="10px">
           <Field
             id="description"
@@ -142,7 +169,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             isLoading={isLoadingCycleDescriptions}
           />
         </Box>
-        <Box width="125px" p="10px">
+        <Box width="150px" p="10px">
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"

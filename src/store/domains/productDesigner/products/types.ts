@@ -22,6 +22,8 @@ export interface ProductItemResp extends ProductItemPlainResp {
   card_transactions_endpoint_id?: number;
   card_management_interface_id?: number;
   provider_3d_secure_interface_id?: number;
+  card_form_factor: string | number;
+  number_of_days_card_expires: number;
 }
 
 export interface ProductsDataResp {
@@ -55,6 +57,8 @@ export interface ProductItemGeneral extends ProductItemPlain {
   scheme: SelectValues;
   currencyCode: SelectValues;
   defaultStatementCycle: SelectValues;
+  cardFormFactor: SelectValues;
+  numberOfDaysCardExpires: number;
 }
 
 export interface ProductFilter {
