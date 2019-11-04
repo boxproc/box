@@ -1,5 +1,5 @@
 import React from 'react';
-// import PerfectScrollbar from 'react-perfect-scrollbar';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { Flex } from '@rebass/grid';
 
@@ -127,7 +127,7 @@ const Modal: React.FC<ModalProps> = ({
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
-        {/* <PerfectScrollbar> */}
+        <PerfectScrollbar>
           <div className="modal-container-inner">
             <span
               className="modal-close"
@@ -146,7 +146,7 @@ const Modal: React.FC<ModalProps> = ({
             </Flex>
             {children}
           </div>
-        {/* </PerfectScrollbar> */}
+        </PerfectScrollbar>
       </div>
     </ModalWrapper>
   );
