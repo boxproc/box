@@ -209,3 +209,10 @@ export const cardFormFactorOptions = [
   { value: 'V', label: 'Virtual' },
   { value: 'P', label: 'Physical' },
 ];
+
+export const feeTypesOptions = [
+  { value: 'A', label: 'Apply only fixed amount' },
+  { value: 'R', label: 'Apply only % rate' },
+  { value: 'B', label: 'Apply both fixed amount and % rate' },
+  { value: 'G', label: 'Apply whichever is greater: % rate or the fixed amount' },
+];

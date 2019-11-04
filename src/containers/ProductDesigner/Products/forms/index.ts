@@ -7,4 +7,5 @@ export { default as ProductsFilter } from './ProductsFilter';
 export { default as AddProductForm } from './AddProductForm';
 export { default as EditProductForms } from './EditProductForms';
 export { default as AprsForm } from './AprsForm';
+export { default as FeesForm } from './FeesForm';
 export { default as GeneralLedgerFrom } from './GeneralLedgerFrom';

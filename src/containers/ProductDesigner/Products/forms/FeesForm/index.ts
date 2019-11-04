@@ -1,23 +1,26 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import ProductGeneralInfo from './ProductGeneralInfo';
+import FeesForm from './FeesForm';
 
 import {
-  handleGetCyclesDescriptions,
-  selectCyclesDescriptionsOptions,
-  selectInstitutionsOptions,
+  createLoadingSelector,
+  handleAddProductFee,
+  ProductsActionTypes,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  ProductsActionTypes.ADD_PRODUCT_FEE,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-  institutionsOptions: selectInstitutionsOptions(state),
-  statementCyclesOptions: selectCyclesDescriptionsOptions(state),
+  isLoading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getCyclesDescriptions: handleGetCyclesDescriptions,
+    addProductFee: handleAddProductFee,
   },
   dispatch
 );
@@ -25,4 +28,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductGeneralInfo);
+)(FeesForm);

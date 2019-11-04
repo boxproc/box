@@ -11,8 +11,10 @@ import {
   ActionTypeKeys,
   AddProductAction,
   AddProductAprAction,
+  AddProductFeeAction,
   DeleteProductAction,
   DeleteProductAprAction,
+  DeleteProductFeeAction,
   FilterProductsAction,
   GetEndpointsProductServiceAction,
   GetInstitutionProductsAction,
@@ -20,11 +22,13 @@ import {
   GetProductAction,
   GetProductAprsAction,
   GetProductDetailsAction,
+  GetProductFeesAction,
   GetProductRuleAction,
   UpdateCardServiceAction,
   UpdateProductAction,
   UpdateProductAprAction,
   UpdateProductDetailsAction,
+  UpdateProductFeeAction,
   UpdateProductRulesAction,
 } from './actionTypes';
 import * as api from './api';
@@ -35,6 +39,10 @@ import {
   ProductApr,
   ProductAprFormValues,
   ProductAprItem,
+  ProductFee,
+  ProductFeeFormValues,
+  ProductFeeItem,
+  ProductFeesIds,
   ProductFilterPrepared,
   ProductItemDetails,
   ProductItemDetailsResp,
@@ -48,10 +56,12 @@ import {
 } from './types';
 import {
   prepareFormValuesProductAprsToSend,
+  prepareFormValuesProductFeesToSend,
   prepareGeneralProductValuesToSend,
   prepareNewProductValuesToSend,
   prepareProductAprsToSend,
   prepareProductDetailsValuesToSend,
+  prepareProductFeesToSend,
   prepareProductFiltersParamsToSend,
   prepareProductRuleIdsToSend,
   prepareProductRuleValuesToSend,
@@ -112,6 +122,18 @@ export type HandleUpdateProductApr = (values: Partial<ProductApr>) => Thunk<void
 
 export type DeleteProductApr = (id: number) => DeleteProductAprAction;
 export type HandleDeleteProductApr = (id: number) => Thunk<void>;
+
+export type GetProductFees = (id: number) => GetProductFeesAction;
+export type HandleGetProductFees = () => Thunk<void>;
+
+export type AddProductFee = (values: Partial<ProductFeeItem>) => AddProductFeeAction;
+export type HandleAddProductFee = (values: Partial<ProductFeeFormValues>) => Thunk<void>;
+
+export type UpdateProductFee = (values: Partial<ProductFeeItem>) => UpdateProductFeeAction;
+export type HandleUpdateProductFee = (values: Partial<ProductFee>) => Thunk<void>;
+
+export type DeleteProductFee = (data: ProductFeesIds) => DeleteProductFeeAction;
+export type HandleDeleteProductFee = (data: ProductFeesIds) => Thunk<void>;
 
 export type ResetProducts = () => void;
 
@@ -200,6 +222,27 @@ export const deleteProductApr: DeleteProductApr = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT_APR,
   payload: api.deleteProductApr(id),
   meta: { id },
+});
+
+export const getProductFees: GetProductFees = id => ({
+  type: ActionTypeKeys.GET_PRODUCT_FEES,
+  payload: api.getProductFees(id),
+});
+
+export const addProductFee: AddProductFee = values => ({
+  type: ActionTypeKeys.ADD_PRODUCT_FEE,
+  payload: api.addProductFee(values),
+});
+
+export const updateProductFee: UpdateProductFee = values => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_FEE,
+  payload: api.updateProductFee(values),
+});
+
+export const deleteProductFee: DeleteProductFee = data => ({
+  type: ActionTypeKeys.DELETE_PRODUCT_FEE,
+  payload: api.deleteProductFee(data),
+  meta: { data },
 });
 
 export const resetProducts: ResetProducts = () => ({
@@ -435,6 +478,61 @@ export const handleDeleteProductApr: HandleDeleteProductApr = id =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteProductApr(id));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProductFees: HandleGetProductFees = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+
+        await dispatch(getProductFees(productId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddProductFee: HandleAddProductFee = values =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+        const preparedValues = prepareFormValuesProductFeesToSend(values);
+
+        await dispatch(addProductFee({
+          ...preparedValues,
+          product_id: productId,
+        }));
+        await dispatch(handleGetProductFees());
+        await dispatch(resetForm(formNamesConst.PRODUCT_FEES));
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateProductFee: HandleUpdateProductFee = values =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareProductFeesToSend(values);
+
+        await dispatch(updateProductFee(preparedValues));
+        await dispatch(handleGetProductFees());
+      },
+      dispatch
+    );
+  };
+
+export const handleDeleteProductFee: HandleDeleteProductFee = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(deleteProductFee(data));
       },
       dispatch
     );

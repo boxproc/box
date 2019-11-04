@@ -12,6 +12,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   interfaces: Immutable([]),
   endpoints: Immutable([]),
   productAprs: Immutable([]),
+  productFees: Immutable([]),
 });
 
 const productsReducer =
@@ -46,6 +47,15 @@ const productsReducer =
 
       case ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED:
         return state.set('productAprs', state.productAprs.filter(el => el.id !== action.meta.id));
+
+      case ActionTypeKeys.GET_PRODUCT_FEES_FULFILLED:
+        return state.set('productFees', action.payload.product_fees);
+
+      case ActionTypeKeys.DELETE_PRODUCT_FEE_FULFILLED:
+        return state.set(
+          'productFees',
+          state.productFees.filter(el => el.product_fee_id !== action.meta.data.productFeeId)
+        );
 
       case ActionTypeKeys.RESET_PRODUCTS:
         return state = productsInitialState;

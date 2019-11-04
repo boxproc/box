@@ -26,7 +26,6 @@ interface ProductGeneralInfoProps {
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   statementCyclesOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
-  isLoadingCycleDescriptions: boolean;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
@@ -39,7 +38,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   getCyclesDescriptions,
   statementCyclesOptions,
   currentInstitution,
-  isLoadingCycleDescriptions,
 }) => {
   React.useEffect(
     () => {
@@ -156,7 +154,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Statement Cycle"
             options={statementCyclesOptions}
             validate={[formErrorUtil.required]}
-            isLoading={isLoadingCycleDescriptions}
           />
         </Box>
         <Box width={[2 / 15]} p="10px">
