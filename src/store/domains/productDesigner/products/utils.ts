@@ -128,7 +128,8 @@ export const prepareGeneralProductValuesToSend =
       statement_cycle_description: product.defaultStatementCycle.value,
       overrides_product_id: product.overridesProductId,
       card_form_factor: product.cardFormFactor.value,
-      number_of_days_card_expires: product.numberOfDaysCardExpires,
+      number_of_days_card_expires: product.numberOfDaysCardExpires
+        && Number(product.numberOfDaysCardExpires),
     };
   };
 
