@@ -43,24 +43,19 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     display: inline-block;
     vertical-align: middle;
     margin: 5px 0;
+    padding: 20px 20px 10px;
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;
     min-width: 350px;
     max-width: ${({ maxContainerWidth }) =>
     maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
+    min-height: ${({ minContainerHeight }) =>
+    minContainerHeight ? minContainerHeight + 'px' : 'auto'};
     width: 100%;
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;
-    overflow-y: auto;
-
-    &-inner {
-      padding: 20px 20px 10px;
-      min-height: ${({ minContainerHeight }) =>
-      minContainerHeight ? minContainerHeight + 'px' : 'auto'};
-      max-height: calc(100vh - 10px);
-    }
 
     ${({ containerWidthAuto }) => containerWidthAuto && `
       width: auto;

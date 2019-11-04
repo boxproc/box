@@ -91,7 +91,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 270,
+      maxWidth: 380,
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,

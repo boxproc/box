@@ -28,7 +28,6 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title="Edit Customer"
       maxContainerWidth={980}
-      minContainerHeight={510}
       withCloseConfirmation={isFormDirty}
     >
       <EditCustomerForm onCancel={handleOnCancel} />

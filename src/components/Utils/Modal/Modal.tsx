@@ -1,5 +1,4 @@
 import React from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import { Flex } from '@rebass/grid';
 
@@ -59,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
   closeModal,
   openModal,
   maxContainerWidth = '720',
-  minContainerHeight = '320',
+  minContainerHeight,
   zIndex,
   accentClose = true,
   closeOnBackdrop = false,
@@ -73,16 +72,8 @@ const Modal: React.FC<ModalProps> = ({
   containerWidthAuto = false,
   containerHeightFull = false,
 }) => {
-  const isMessageModal = React.useMemo(
-    () => type === modalTypesConst.MESSAGE_MODAL,
-    [type]
-  );
-  const isConfirmationModal = React.useMemo(
-    () => type === modalTypesConst.CONFIRMATION_MODAL,
-    [type]
-  );
   const isClearableActiveIdsFromStore = React.useMemo(
-    () =>  type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
+    () => type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
     [type, isEditModalOpened]
   );
 
@@ -127,7 +118,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <ModalWrapper
       maxContainerWidth={maxContainerWidth}
-      minContainerHeight={isMessageModal || isConfirmationModal ? 'auto' : minContainerHeight}
+      minContainerHeight={minContainerHeight}
       containerWidthAuto={containerWidthAuto}
       containerHeightFull={containerHeightFull}
       zIndex={zIndex}
@@ -138,26 +129,22 @@ const Modal: React.FC<ModalProps> = ({
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
-        <PerfectScrollbar>
-          <div className="modal-container-inner">
-            <span
-              className="modal-close"
-              onClick={handleCloseModal}
-              title="Close"
-            >
-              &times;
-            </span>
-            <Flex alignItems="baseline">
-              {title && (
-                <ModalTitle>{title}</ModalTitle>
-              )}
-              {monoTitleStr && (
-                <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
-              )}
-            </Flex>
-            {children}
-          </div>
-        </PerfectScrollbar>
+        <span
+          className="modal-close"
+          onClick={handleCloseModal}
+          title="Close"
+        >
+          &times;
+        </span>
+        <Flex alignItems="baseline">
+          {title && (
+            <ModalTitle>{title}</ModalTitle>
+          )}
+          {monoTitleStr && (
+            <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
+          )}
+        </Flex>
+        {children}
       </div>
     </ModalWrapper>
   );

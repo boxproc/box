@@ -50,7 +50,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required, formErrorUtil.isInteger]}
         />
       </FieldWrapper>
-      <FieldWrapper minWidth="200px" maxWidth="200px">
+      <FieldWrapper minWidth="300px" maxWidth="300px">
         <Field
           id="description"
           name="description"

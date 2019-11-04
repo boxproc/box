@@ -3,6 +3,7 @@ export enum modalTypesConst {
   MESSAGE_MODAL = 'messageModal',
   CONFIRMATION_MODAL = 'confirmationModal',
   SESSION_ENDED = 'sessionEnded',
+  REGISTRATION_2FA = 'registration2fa',
 }
 
 export enum modalNamesConst {
