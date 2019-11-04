@@ -52,22 +52,22 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
         <Delimiter />
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="writeAccount"
-            name="writeAccount"
+            id="writeOffAccount"
+            name="writeOffAccount"
             component={InputField}
-            label="Write Account"
-            placeholder="Enter Write Account"
+            label="Write off Account"
+            placeholder="Enter Write off Account"
             isNumber={true}
             validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="correspondedAccount"
-            name="correspondedAccount"
+            id="auxAccount"
+            name="auxAccount"
             component={InputField}
-            label="Corresponded Account"
-            placeholder="Enter Corresponded Account"
+            label="Aux Account"
+            placeholder="Enter Aux Account"
             isNumber={true}
             validate={[formErrorUtil.required]}
           />

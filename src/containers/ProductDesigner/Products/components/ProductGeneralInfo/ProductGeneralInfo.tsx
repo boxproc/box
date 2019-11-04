@@ -110,7 +110,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={InputField}
             label="# of Days Card Expires"
             isNumber={true}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
         <Box width={[1]} p="10px">
