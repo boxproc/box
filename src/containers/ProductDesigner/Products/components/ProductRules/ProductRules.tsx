@@ -11,15 +11,26 @@ import { actionTypesOptions } from 'consts';
 import {
   DictionaryEventDataElemsItem,
   HandleFilterDictionaryEventDataElemsById,
+  HandleGetProductAprs,
+  HandleGetProductFees,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
+interface ContextItemProps {
+  name: string;
+  description: string;
+}
+
 interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
+  getProductAprs: HandleGetProductAprs;
+  getProductFees: HandleGetProductFees;
   eventValue: SelectValues;
-  dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
+  eventDataElemsItems: Array<DictionaryEventDataElemsItem>;
+  productAprsItems: Array<ContextItemProps>;
+  productFeesItems: Array<ContextItemProps>;
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
 }
@@ -42,23 +53,30 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   dictionaryEventsOptions,
   isDictionaryEventsLoading,
   filterDictionaryEventDataElemsById,
+  getProductAprs,
+  productFeesItems,
+  getProductFees,
   eventValue,
-  dictionaryEventDataElemsItems,
+  eventDataElemsItems,
+  productAprsItems,
   onChangeValues,
   changeFormField,
 }) => {
   React.useEffect(
     () => {
+      getProductAprs();
+      getProductFees();
       if (eventValue) {
         filterDictionaryEventDataElemsById({ eventId: eventValue });
       }
     },
-    [filterDictionaryEventDataElemsById, eventValue]
+    [filterDictionaryEventDataElemsById, eventValue, getProductAprs, getProductFees]
   );
 
-  const onContextMenuClick = (e: Event, value: { name: string }) => {
+  const onContextMenuClick = (e: Event, value: { name: string, description: string }) => {
     const textarea = document.querySelector('#rule-script') as HTMLInputElement;
-    const code = getNewCode(value.name);
+    const comment = value.description ? ` /*${value.description}*/` : '';
+    const code = getNewCode(`${value.name}${comment}`);
 
     changeFormField('script', code);
     textarea.focus();
@@ -115,10 +133,25 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Enter Script"
               component={HighlightCodeField}
               label="Script"
-              contextMenuItems={dictionaryEventDataElemsItems}
+              contextSubMenuItems={[
+                {
+                  title: 'Data elements',
+                  items: eventDataElemsItems,
+                  noDataStr: 'No available data elements',
+                },
+                {
+                  title: 'APRs',
+                  items: productAprsItems,
+                  noDataStr: 'No available APRs',
+                },
+                {
+                  title: 'Fees',
+                  items: productFeesItems,
+                  noDataStr: 'No available Fees',
+                },
+              ]}
               onContextMenuClick={onContextMenuClick}
               menuId="rulesCodeContextMenu"
-              noDataStr="No Available Data Elements"
               checkJSSyntax={true}
               height="calc(100vh - 400px)"
             />

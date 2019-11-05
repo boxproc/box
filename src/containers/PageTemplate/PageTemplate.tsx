@@ -14,7 +14,7 @@ import Filter from './Filter';
 
 import { ResetUtils, StopAutoRefresh } from 'store/domains';
 
-import { ContextMenuItem } from 'types';
+import { ContextMenuItemProps } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
@@ -23,7 +23,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   columns: Array<object>;
   FilterForm?: ReactChild;
   newModalName?: string;
-  contextMenuItems?: Array<ContextMenuItem>;
+  contextMenuItems?: Array<ContextMenuItemProps>;
   filterAction?: () => void;
   isAutoRefresh?: boolean;
   stopAutoRefresh: StopAutoRefresh;

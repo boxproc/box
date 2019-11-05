@@ -1,4 +1,4 @@
-export interface ContextMenuItem {
+export interface ContextMenuItemProps {
   name: string;
   description?: string;
   dataType?: string;
@@ -7,7 +7,16 @@ export interface ContextMenuItem {
   confirmationTitle?: string;
   confirmationText?: string;
   action?: () => void;
+  noDataStr?: string;
 }
+
+interface ContextSubMenuItem {
+  title: string;
+  items: Array<ContextMenuItemProps>;
+  noDataStr?: string;
+}
+
+export type ContextSubMenuType = Array<ContextSubMenuItem>;
 
 export interface LogData {
   log_file: string;

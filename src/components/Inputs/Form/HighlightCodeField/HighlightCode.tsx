@@ -20,7 +20,7 @@ import { ContextMenuList, WarningIcon } from 'components';
 
 import { EditorWrapper } from './EditorWrapper';
 
-import { ContextMenuItem } from 'types';
+import { ContextMenuItemProps, ContextSubMenuType } from 'types';
 
 const WarningsCount = styled.div`
   display: flex;
@@ -46,10 +46,10 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   padding?: number;
   whiteSpacePre?: boolean;
   isScrollbarBottom?: boolean;
-  contextMenuItems?: Array<ContextMenuItem>;
+  contextMenuItems?: Array<ContextMenuItemProps>;
+  contextSubMenuItems?: ContextSubMenuType;
   onContextMenuClick?: () => void;
   menuId?: string;
-  noDataStr?: string;
   checkJSSyntax?: boolean;
 }
 
@@ -66,9 +66,9 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   whiteSpacePre,
   isScrollbarBottom,
   contextMenuItems,
+  contextSubMenuItems,
   onContextMenuClick,
   menuId,
-  noDataStr,
   checkJSSyntax,
 }) => {
   const [codeWarnings, setCodeWarnings] = React.useState([]);
@@ -151,17 +151,16 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
               }}
             />
           </ContextMenuTrigger>
-          {contextMenuItems && (
+          {(contextMenuItems || contextSubMenuItems) && (
             <ContextMenuList
               menuId={menuId}
               onClick={onContextMenuClick}
               items={contextMenuItems}
-              noDataStr={noDataStr}
+              subMenuItems={contextSubMenuItems}
             />
           )}
         </PerfectScrollbar>
       </EditorWrapper>
-
       {codeWarnings && codeWarnings.length && (
         <Box mt="10px">
           <WarningsCount>

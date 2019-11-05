@@ -1,39 +1,47 @@
-.context-menu {
+.react-contextmenu {
   color: rgba(0, 0, 0, .8);
   font-size: 13px;
   max-height: 292px;
-  max-width: 450px;
+  max-width: 300px;
   border-radius: 2px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  padding: 1px;
   border: 1px solid #4d4d4d;
   background-color: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
   z-index: 10;
 }
 
-.context-menu .react-contextmenu-item {
+.react-contextmenu-item {
   padding: 5px 10px;
   margin-bottom: 1px;
   cursor: pointer;
   line-height: 1.5;
 }
 
-.context-menu .react-contextmenu-item:hover {
-  background-color: #f3f3f3;
+.react-contextmenu-submenu .react-contextmenu {
+  width: 300px;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  font-size: 12px;
 }
 
-.context-menu .react-contextmenu-item:hover * {
+.react-contextmenu-submenu .react-contextmenu--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.react-contextmenu-submenu .item {
+  padding: 0;
+}
+
+.react-contextmenu-item:hover {
+  background-color: #f3f3f3;
   color: #ffa400;
 }
 
-.context-menu .react-contextmenu-item--divider {
-  margin: 3px 0;
-  padding: 0;
-  height: 1px;
-  background-color: #ffffff;
-}
-
-.context-menu::-webkit-scrollbar {
+.react-contextmenu::-webkit-scrollbar {
   width: 4px;
   height: 4px;
   background-color: #ffffff;
@@ -41,12 +49,12 @@
   border-radius: 8px;
 }
 
-.context-menu::-webkit-scrollbar-thumb {
+.react-contextmenu::-webkit-scrollbar-thumb {
   background-color: #ffa400;
   border-radius: 8px;
 }
 
-.context-menu::-webkit-scrollbar-track {
+.react-contextmenu::-webkit-scrollbar-track {
   box-shadow: none;
   border-radius: 8px;
 }

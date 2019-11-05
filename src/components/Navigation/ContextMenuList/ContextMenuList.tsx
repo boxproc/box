@@ -1,12 +1,12 @@
 import React from 'react';
-import { ContextMenu, MenuItem } from 'react-contextmenu';
+import { ContextMenu, MenuItem, SubMenu } from 'react-contextmenu';
 
 import styled from 'theme';
 import './styles.css';
 
-import { renderIcon } from './renderIcon';
+import ContextMenuItem from './ContextMenuItem';
 
-import { ContextMenuItem } from 'types';
+import { ContextMenuItemProps, ContextSubMenuType } from 'types';
 
 interface ContextMenuWrapperProps {
   isVisible?: boolean;
@@ -41,11 +41,12 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
 
 interface ContextMenuListProps {
   menuId: string;
-  items: Array<ContextMenuItem>;
-  noDataStr?: string;
+  items: Array<ContextMenuItemProps>;
+  subMenuItems?: ContextSubMenuType;
+  // noDataStr?: string;
   isVisible?: boolean;
   preventClose?: boolean;
-  onClick?: (e: Event, value: ContextMenuItem) => void;
+  onClick?: (e: Event, value: ContextMenuItemProps) => void;
   onHide?: () => void;
 }
 
@@ -53,7 +54,8 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
   menuId,
   onClick,
   items,
-  noDataStr,
+  subMenuItems,
+  // noDataStr,
   onHide,
   isVisible = true,
   preventClose = false,
@@ -65,44 +67,50 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
         onHide={onHide}
         className="context-menu"
       >
-        {(items && items.length)
-          ? items.map((item, index) => {
-            if (!item) {
+        {(subMenuItems && subMenuItems.length) && (
+          subMenuItems.map((subMenu, i) => {
+            if (!subMenu) {
               return null;
             }
             return (
-              <MenuItem
-                key={index}
-                preventClose={preventClose}
-                data={{
-                  name: item.name,
-                  action: item.action,
-                  withConfirmation: item.withConfirmation,
-                  confirmationTitle: item.confirmationTitle,
-                  confirmationText: item.confirmationText,
-                }}
-                onClick={onClick}
+              <SubMenu
+                key={i}
+                title={subMenu.title}
+                hoverDelay={200}
               >
-                <div className="item">
-                  {item.icon && (
-                    <span className="icon">{renderIcon(item.icon)}</span>
+                {(subMenu.items && subMenu.items.length)
+                  ? (
+                    subMenu.items.map((item, j) => {
+                      return (
+                        <ContextMenuItem
+                          key={j}
+                          preventClose={preventClose}
+                          item={item}
+                          onClick={onClick}
+                        />
+                      );
+                    })
+                  )
+                  : subMenu.noDataStr && (
+                    <MenuItem>{subMenu.noDataStr}</MenuItem>
                   )}
-                  <span>
-                    {item.name}
-                    {item.dataType && (
-                      <span className="gray code"> {item.dataType.toLocaleLowerCase()} </span>
-                    )}
-                    {item.description && (
-                      <span className="gray"> {item.description}</span>
-                    )}
-                  </span>
-                </div>
-              </MenuItem>
+              </SubMenu>
             );
           })
-          : (
-            <MenuItem>{noDataStr}</MenuItem>
-          )}
+        )}
+        {(items && items.length) && items.map((item, index) => {
+          if (!item) {
+            return null;
+          }
+          return (
+            <ContextMenuItem
+              key={index}
+              preventClose={preventClose}
+              item={item}
+              onClick={onClick}
+            />
+          );
+        })}
       </ContextMenu>
     </ContextMenuWrapper>
   );

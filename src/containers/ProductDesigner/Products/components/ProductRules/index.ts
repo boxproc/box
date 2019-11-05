@@ -5,18 +5,26 @@ import ProductRules from './ProductRules';
 
 import {
   handleFilterDictionaryEventDataElemsById,
-  selectDictionaryEventDataElemsItems,
+  handleGetProductAprs,
+  handleGetProductFees,
+  selectEventDataElemsForRules,
+  selectProductAprsForRules,
+  selectProductFeesForRules,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
-  dictionaryEventDataElemsItems: selectDictionaryEventDataElemsItems(state),
+  eventDataElemsItems: selectEventDataElemsForRules(state),
+  productAprsItems: selectProductAprsForRules(state),
+  productFeesItems: selectProductFeesForRules(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterDictionaryEventDataElemsById: handleFilterDictionaryEventDataElemsById,
+    getProductAprs: handleGetProductAprs,
+    getProductFees: handleGetProductFees,
   },
   dispatch
 );
