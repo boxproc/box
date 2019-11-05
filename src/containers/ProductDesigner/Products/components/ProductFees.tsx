@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { InputField, NumberFormatField, SelectField } from 'components';
 
-import { aprTypesOptions } from 'consts';
+import { feeTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
@@ -16,7 +16,7 @@ interface FieldWrapperProps {
   maxWidth?: string;
 }
 
-const FieldWrapper = styled(Box)<FieldWrapperProps>`
+const FieldWrapper = styled(Box) <FieldWrapperProps>`
   padding: 10px;
   width: 100%;
 
@@ -29,27 +29,15 @@ const FieldWrapper = styled(Box)<FieldWrapperProps>`
   `}
 `;
 
-interface ProductAprsProps {
+interface ProductFeesProps {
   isDisabled: boolean;
 }
 
-const ProductAprs: React.FC<ProductAprsProps> = ({
+const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
 }) => {
   return (
     <Flex alignItems="flex-end">
-      <FieldWrapper maxWidth="140px">
-        <Field
-          id="repaymentSequence"
-          name="repaymentSequence"
-          component={InputField}
-          label="Repayment Sequence"
-          placeholder="Enter Sequence"
-          isNumber={true}
-          disabled={isDisabled}
-          validate={[formErrorUtil.required, formErrorUtil.isInteger]}
-        />
-      </FieldWrapper>
       <FieldWrapper minWidth="300px" maxWidth="300px">
         <Field
           id="description"
@@ -61,14 +49,14 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </FieldWrapper>
-      <FieldWrapper maxWidth="150px" minWidth="150px">
+      <FieldWrapper maxWidth="280px" minWidth="280px">
         <Field
-          id="calculationMethod"
-          name="calculationMethod"
+          id="feeApplicationCondition"
+          name="feeApplicationCondition"
           component={SelectField}
-          label="Calculation Method"
-          options={aprTypesOptions}
-          placeholder="Select Method"
+          label="Fee Application Condition"
+          options={feeTypesOptions}
+          placeholder="Select Condition"
           isDisabled={isDisabled}
           isClearable={false}
           validate={[formErrorUtil.required]}
@@ -90,13 +78,15 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
       </FieldWrapper>
       <FieldWrapper maxWidth="140px">
         <Field
-          id="graceNumberOfDays"
-          name="graceNumberOfDays"
-          component={InputField}
-          label="Grace # of Days"
-          placeholder="Enter # of Days"
+          id="amount"
+          name="amount"
+          component={NumberFormatField}
+          label="Amount"
           isNumber={true}
           disabled={isDisabled}
+          placeholder="0.00"
+          fixedDecimalScale={true}
+          decimalScale={2}
           validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
@@ -104,4 +94,4 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
   );
 };
 
-export default ProductAprs;
+export default ProductFees;

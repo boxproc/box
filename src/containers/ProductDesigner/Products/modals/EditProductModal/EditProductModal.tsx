@@ -66,8 +66,8 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
-      maxContainerWidth={930}
-      containerHeightFull={true}
+      maxContainerWidth={1010}
+      minContainerHeight={window.innerHeight - 10}
       withCloseConfirmation={isAnyFormDirty}
     >
       <EditProductForms

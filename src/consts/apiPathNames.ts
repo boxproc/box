@@ -160,4 +160,8 @@ export enum productsPathNames {
   UPDATE_APR = '/ui/product_designer/products/aprs/update',
   CREATE_APR = '/ui/product_designer/products/aprs/create',
   DELETE_APR = '/ui/product_designer/products/aprs/delete',
+  GET_FEES = '/ui/product_designer/products/fees/get',
+  UPDATE_FEE = '/ui/product_designer/products/fees/update',
+  CREATE_FEE = '/ui/product_designer/products/fees/create',
+  DELETE_FEE = '/ui/product_designer/products/fees/delete',
 }

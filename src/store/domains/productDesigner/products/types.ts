@@ -22,6 +22,8 @@ export interface ProductItemResp extends ProductItemPlainResp {
   card_transactions_endpoint_id?: number;
   card_management_interface_id?: number;
   provider_3d_secure_interface_id?: number;
+  card_form_factor: string | number;
+  number_of_days_card_expires: number;
 }
 
 export interface ProductsDataResp {
@@ -55,6 +57,8 @@ export interface ProductItemGeneral extends ProductItemPlain {
   scheme: SelectValues;
   currencyCode: SelectValues;
   defaultStatementCycle: SelectValues;
+  cardFormFactor: SelectValues;
+  numberOfDaysCardExpires: number;
 }
 
 export interface ProductFilter {
@@ -299,6 +303,44 @@ export interface ProductAprs {
   product_aprs: Array<ProductApr>;
 }
 
+export interface ProductFeeItem {
+  product_id: number;
+  product_fee_id: number;
+  description: string;
+  rate: number;
+  amount: number;
+  fee_application_condition: string | number;
+}
+
+export interface ProductFeeItems {
+  product_fees: Array<ProductFeeItem>;
+}
+
+export interface ProductFeePlainInfo {
+  productId: number;
+  productFeeId: number;
+  description: string;
+  rate: string;
+  amount: string;
+}
+
+export interface ProductFee extends ProductFeePlainInfo {
+  feeApplicationCondition: string;
+}
+
+export interface ProductFeeFormValues extends ProductFeePlainInfo {
+  feeApplicationCondition: SelectValues;
+}
+
+export interface ProductFees {
+  product_fees: Array<ProductFee>;
+}
+
+export interface ProductFeesIds {
+  productId: number;
+  productFeeId: number;
+}
+
 export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProduct: ProductItemResp;
@@ -308,4 +350,5 @@ export interface ProductsState {
   interfaces: ImmutableArray<IdNamePair>;
   endpoints: ImmutableArray<IdNamePair>;
   productAprs: ImmutableArray<ProductAprItem>;
+  productFees: ImmutableArray<ProductFeeItem>;
 }

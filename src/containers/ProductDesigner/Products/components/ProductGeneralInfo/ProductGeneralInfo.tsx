@@ -7,7 +7,12 @@ import { CheckboxField, InputField, SelectField, TextField } from 'components';
 
 import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
-import { productTypesOptions, schemeTypesOptions, statusTypesOptions } from 'consts';
+import {
+  cardFormFactorOptions,
+  productTypesOptions,
+  schemeTypesOptions,
+  statusTypesOptions,
+} from 'consts';
 
 import { HandleGetCyclesDescriptions } from 'store/domains';
 
@@ -21,7 +26,6 @@ interface ProductGeneralInfoProps {
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   statementCyclesOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
-  isLoadingCycleDescriptions: boolean;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
@@ -34,7 +38,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   getCyclesDescriptions,
   statementCyclesOptions,
   currentInstitution,
-  isLoadingCycleDescriptions,
 }) => {
   React.useEffect(
     () => {
@@ -48,10 +51,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   return (
     <Box mx="-10px">
       <Flex
-        alignItems="center"
+        alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="productType"
             name="productType"
@@ -63,7 +66,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -76,7 +79,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[4 / 15]} p="10px">
           <Field
             id="name"
             name="name"
@@ -86,17 +89,29 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={TextField}
-            label="Description"
-            height={115}
+            id="cardFormFactor"
+            name="cardFormFactor"
+            component={SelectField}
+            label="Card Form Factor"
+            placeholder="Select Card"
+            options={cardFormFactorOptions}
+            validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[2 / 15]} p="10px">
+          <Field
+            id="numberOfDaysCardExpires"
+            name="numberOfDaysCardExpires"
+            placeholder="Enter # of Days"
+            component={InputField}
+            label="# of Days Card Expires"
+            isNumber={true}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="status"
             name="status"
@@ -108,7 +123,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="scheme"
             name="scheme"
@@ -118,7 +133,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             options={schemeTypesOptions}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[4 / 15]} p="10px">
           <Field
             id="currencyCode"
             name="currencyCode"
@@ -130,7 +145,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="defaultStatementCycle"
             name="defaultStatementCycle"
@@ -139,10 +154,9 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Statement Cycle"
             options={statementCyclesOptions}
             validate={[formErrorUtil.required]}
-            isLoading={isLoadingCycleDescriptions}
           />
         </Box>
-        <Box width="125px" p="10px">
+        <Box width={[2 / 15]} p="10px">
           <Field
             id="historyRetentionNumberOfDay"
             name="historyRetentionNumberOfDay"
@@ -153,12 +167,22 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             isNumber={true}
           />
         </Box>
-        <Box width="125px" p="10px" mt="20px">
+        <Box width={[1]} p="10px">
           <Field
             id="lockedFlag"
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="description"
+            name="description"
+            placeholder="Enter Description"
+            component={TextField}
+            label="Description"
+            height={115}
           />
         </Box>
       </Flex>

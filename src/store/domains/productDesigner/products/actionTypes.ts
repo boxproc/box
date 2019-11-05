@@ -5,6 +5,8 @@ import {
   ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
+  ProductFeeItems,
+  ProductFeesIds,
   ProductRuleResp,
   ProductsDataResp,
 } from './types';
@@ -81,6 +83,22 @@ export enum ActionTypeKeys {
   DELETE_PRODUCT_APR = 'productDesigner/products/DELETE_PRODUCT_APR',
   DELETE_PRODUCT_APR_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_APR_FULFILLED',
   DELETE_PRODUCT_APR_REJECTED = 'productDesigner/products/DELETE_PRODUCT_APR_REJECTED',
+
+  GET_PRODUCT_FEES = 'productDesigner/products/GET_PRODUCT_FEES',
+  GET_PRODUCT_FEES_FULFILLED = 'productDesigner/products/GET_PRODUCT_FEES_FULFILLED',
+  GET_PRODUCT_FEES_REJECTED = 'productDesigner/products/GET_PRODUCT_FEES_REJECTED',
+
+  ADD_PRODUCT_FEE = 'productDesigner/products/ADD_PRODUCT_FEE',
+  ADD_PRODUCT_FEE_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FEE_FULFILLED',
+  ADD_PRODUCT_FEE_REJECTED = 'productDesigner/products/ADD_PRODUCT_FEE_REJECTED',
+
+  UPDATE_PRODUCT_FEE = 'productDesigner/products/UPDATE_PRODUCT_APR',
+  UPDATE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_APR_FULFILLED',
+  UPDATE_PRODUCT_FEE_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_APR_REJECTED',
+
+  DELETE_PRODUCT_FEE = 'productDesigner/products/DELETE_PRODUCT_FEE',
+  DELETE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FEE_FULFILLED',
+  DELETE_PRODUCT_FEE_REJECTED = 'productDesigner/products/DELETE_PRODUCT_FEE_REJECTED',
 
   RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
 }
@@ -342,6 +360,67 @@ export interface DeleteProductAprRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_REJECTED;
 }
 
+export interface GetProductFeesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEES;
+}
+
+export interface GetProductFeesFulfilledAction {
+  readonly payload: ProductFeeItems;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEES_FULFILLED;
+}
+
+export interface GetProductFeesRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEES_REJECTED;
+}
+
+export interface AddProductFeeAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_FEE;
+}
+
+export interface AddProductFeeFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_FULFILLED;
+}
+
+export interface AddProductFeeRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_REJECTED;
+}
+
+export interface UpdateProductFeeAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE;
+}
+
+export interface UpdateProductFeeFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_FULFILLED;
+}
+
+export interface UpdateProductFeeRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_FULFILLED;
+}
+
+export interface DeleteProductFeeAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE;
+}
+
+export interface DeleteProductFeeFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_FULFILLED;
+  readonly meta: { data: ProductFeesIds };
+}
+
+export interface DeleteProductFeeRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_REJECTED;
+}
+
 export interface ResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
@@ -363,4 +442,8 @@ export type ProductsActionTypes =
   | AddProductAprFulfilledAction
   | UpdateProductAprFulfilledAction
   | DeleteProductAprFulfilledAction
+  | GetProductFeesFulfilledAction
+  | UpdateProductFeeFulfilledAction
+  | AddProductFeeFulfilledAction
+  | DeleteProductFeeFulfilledAction
   | ResetProductsAction;

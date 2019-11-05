@@ -27,6 +27,8 @@ export const productData: ProductDataResp = {
     card_transactions_endpoint_id: null,
     card_management_interface_id: null,
     provider_3d_secure_interface_id: null,
+    card_form_factor: 'P',
+    number_of_days_card_expires: 365,
   },
 };
 
@@ -48,6 +50,8 @@ export const productItemsFilteredData: ProductsDataResp = {
       card_transactions_endpoint_id: null,
       card_management_interface_id: null,
       provider_3d_secure_interface_id: null,
+      card_form_factor: 'P',
+      number_of_days_card_expires: 365,
     },
     {
       currency_code: 'AFN',
@@ -65,6 +69,8 @@ export const productItemsFilteredData: ProductsDataResp = {
       card_transactions_endpoint_id: null,
       card_management_interface_id: null,
       provider_3d_secure_interface_id: null,
+      card_form_factor: 'P',
+      number_of_days_card_expires: 365,
     },
   ],
 };

@@ -62,6 +62,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
       maxContainerWidth={isReLogin ? 350 : 500}
+      type={modalTypesConst.MESSAGE_MODAL}
       closeOnBackdrop={true}
       accentClose={!isReLogin}
       zIndex="102"

@@ -210,3 +210,16 @@ export const debitCreditIndicatorOptions = [
   { value: 'C', label: 'Credit transaction' },
   { value: 'U', label: 'Not applicable' },
 ];
+
+export const cardFormFactorOptions = [
+  { value: 'X', label: 'Unspecified' },
+  { value: 'V', label: 'Virtual' },
+  { value: 'P', label: 'Physical' },
+];
+
+export const feeTypesOptions = [
+  { value: 'A', label: 'Apply only fixed amount' },
+  { value: 'R', label: 'Apply only % rate' },
+  { value: 'B', label: 'Apply both fixed amount and % rate' },
+  { value: 'G', label: 'Apply whichever is greater: % rate or the fixed amount' },
+];

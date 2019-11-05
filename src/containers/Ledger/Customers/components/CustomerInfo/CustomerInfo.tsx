@@ -150,6 +150,30 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
+            id="nationalityCountryCode"
+            name="nationalityCountryCode"
+            component={SelectField}
+            options={countryCodes}
+            isLoading={isCountryCodesLoading}
+            label="Nationality Country Code"
+            placeholder="Select Nationality Country Code"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="addressCountryCode"
+            name="addressCountryCode"
+            component={SelectField}
+            options={countryCodes}
+            isLoading={isCountryCodesLoading}
+            label="Address Country Code"
+            placeholder="Select Country Code"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
             id="addressLine1"
             name="addressLine1"
             component={InputField}
@@ -203,30 +227,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             component={InputField}
             label="Post Code"
             placeholder="Enter Post Code"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="nationalityCountryCode"
-            name="nationalityCountryCode"
-            component={SelectField}
-            options={countryCodes}
-            isLoading={isCountryCodesLoading}
-            label="Nationality Country Code"
-            placeholder="Select Nationality Country Code"
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="addressCountryCode"
-            name="addressCountryCode"
-            component={SelectField}
-            options={countryCodes}
-            isLoading={isCountryCodesLoading}
-            label="Address Country Code"
-            placeholder="Select Country Code"
             validate={[formErrorUtil.required]}
           />
         </Box>

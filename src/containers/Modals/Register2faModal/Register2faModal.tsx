@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNamesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { CodeScreen } from './components';
 import { PasswordForm } from './forms';
@@ -54,6 +54,7 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
       name={modalName}
       title={isSecondStep ? '2FA Registration' : 'Password'}
       maxContainerWidth={isSecondStep ? 500 : 300}
+      type={modalTypesConst.REGISTRATION_2FA}
     >
       {isSecondStep
         ? (

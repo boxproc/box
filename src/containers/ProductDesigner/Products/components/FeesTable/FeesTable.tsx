@@ -15,36 +15,36 @@ import {
 import { iconNamesConst } from 'consts';
 
 import {
-  HandleDeleteProductApr,
-  HandleGetProductAprs,
-  HandleUpdateProductApr,
-  ProductApr,
+  HandleDeleteProductFee,
+  HandleGetProductFees,
+  HandleUpdateProductFee,
+  ProductFee,
 } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof ProductApr> = TableCellType<ProductApr[T]>;
+type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
-interface AprsTableProps {
-  productAprs: Array<ProductApr>;
-  getProductAprs: HandleGetProductAprs;
-  deleteProductApr: HandleDeleteProductApr;
-  updateProductApr: HandleUpdateProductApr;
+interface FeesTableProps {
+  productFees: Array<ProductFee>;
+  getProductFees: HandleGetProductFees;
+  deleteProductFee: HandleDeleteProductFee;
+  updateProductFee: HandleUpdateProductFee;
 }
 
-const AprsTable: React.FC<AprsTableProps> = ({
-  productAprs,
-  getProductAprs,
-  deleteProductApr,
-  updateProductApr,
+const FeesTable: React.FC<FeesTableProps> = ({
+  productFees,
+  getProductFees,
+  deleteProductFee,
+  updateProductFee,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
   React.useEffect(
     () => {
-      getProductAprs();
+      getProductFees();
     },
-    [getProductAprs]
+    [getProductFees]
   );
 
   // update screen height for setting various number of table rows per page
@@ -66,11 +66,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
 
   const columns = [
     {
-      maxWidth: 90,
+      maxWidth: 100,
       sortable: true,
-      accessor: 'id',
-      Header: <TableHeader title="ID" />,
-      Cell: (props: TCell<'id'>) => (
+      accessor: 'productId',
+      Header: <TableHeader title="Product ID" />,
+      Cell: (props: TCell<'productId'>) => (
         <TableCell
           value={props.value}
           isSmaller={true}
@@ -79,39 +79,28 @@ const AprsTable: React.FC<AprsTableProps> = ({
       ),
     },
     {
-      maxWidth: 90,
+      maxWidth: 100,
       sortable: true,
-      accessor: 'repaymentSequence',
-      Header: <TableHeader title="Repayment Sequence" />,
-      Cell: renderEditableTableCell({
-        updateAction: updateProductApr,
-        isSmaller: true,
-        isNumber: true,
-        isAlwaysEditable: true,
-      }),
+      accessor: 'productFeeId',
+      Header: <TableHeader title="Product Fee ID" />,
+      Cell: (props: TCell<'productFeeId'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+          isNumber={true}
+        />
+      ),
     },
     {
-      maxWidth: 380,
+      maxWidth: 280,
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
       Cell: renderEditableTableCell({
-        updateAction: updateProductApr,
+        updateAction: updateProductFee,
         isSmaller: true,
         isAlwaysEditable: true,
       }),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'calculationMethod',
-      Header: <TableHeader title="Calculation Method" />,
-      Cell: (props: TCell<'calculationMethod'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
     },
     {
       maxWidth: 120,
@@ -119,23 +108,35 @@ const AprsTable: React.FC<AprsTableProps> = ({
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
       Cell: renderEditableTableCell({
-        updateAction: updateProductApr,
+        updateAction: updateProductFee,
         isSmaller: true,
         isNumber: true,
         isAlwaysEditable: true,
       }),
     },
     {
-      maxWidth: 90,
+      maxWidth: 120,
       sortable: true,
-      accessor: 'graceNumberOfDays',
-      Header: <TableHeader title="Grace Number of&nbsp;Days" />,
+      accessor: 'amount',
+      Header: <TableHeader title="Amount" />,
       Cell: renderEditableTableCell({
-        updateAction: updateProductApr,
+        updateAction: updateProductFee,
         isSmaller: true,
         isNumber: true,
         isAlwaysEditable: true,
       }),
+    },
+    {
+      maxWidth: 200,
+      sortable: true,
+      accessor: 'feeApplicationCondition',
+      Header: <TableHeader title="Fee Application Condition" />,
+      Cell: (props: TCell<'feeApplicationCondition'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
     },
     {
       maxWidth: 80,
@@ -147,8 +148,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
           size="10"
           iconSize="15"
           withConfirmation={true}
-          confirmationText={`Confirm want you delete APR?`}
-          onClick={() => deleteProductApr(cellInfo.original.id)}
+          confirmationText={`Confirm want you delete fee?`}
+          onClick={() => deleteProductFee({
+            productId: cellInfo.original.productId,
+            productFeeId: cellInfo.original.productFeeId,
+          })}
         />
       ),
     },
@@ -157,7 +161,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   return (
     <Box pb="10px">
       <Table
-        data={productAprs}
+        data={productFees}
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
@@ -166,4 +170,4 @@ const AprsTable: React.FC<AprsTableProps> = ({
   );
 };
 
-export default withSpinner()(AprsTable);
+export default withSpinner()(FeesTable);
