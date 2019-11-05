@@ -83,6 +83,38 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
+      <Box width="150px" p="10px">
+        <Field
+          id="accountId"
+          name="accountId"
+          component={InputField}
+          label="Account ID"
+          placeholder="Enter ID"
+          isNumber={true}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="150px" p="10px">
+        <Field
+          id="cardId"
+          name="cardId"
+          component={InputField}
+          label="Card ID"
+          placeholder="Enter ID"
+          isNumber={true}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="200px" p="10px">
+        <Field
+          id="panAlias"
+          name="panAlias"
+          component={InputField}
+          label="Pan Alias"
+          isNumber={true}
+          placeholder="Enter Pan Alias"
+        />
+      </Box>
       <Box width="200px" p="10px">
         <Field
           id="transactionsDateTimeFrom"

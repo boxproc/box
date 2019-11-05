@@ -71,6 +71,9 @@ export interface LedgerTransactionsFilter extends LedgerTransactionId {
   productName: SelectValues;
   transactionsDateTimeFrom: string;
   transactionsDateTimeTo: string;
+  accountId: number;
+  cardId: number;
+  panAlias: string;
 }
 
 export interface LedgerTransactionsFilterPrepared extends LedgerTransactionId {
@@ -79,6 +82,9 @@ export interface LedgerTransactionsFilterPrepared extends LedgerTransactionId {
   product_name: string | number;
   datetime_from: string;
   datetime_to: string;
+  account_id: number;
+  card_id: number;
+  pan_alias: string;
 }
 
 export interface LedgerTransactionsState {
