@@ -21,6 +21,10 @@ const ledgerCustomersReducer =
         return state
           .set('customers', action.payload.customers);
 
+      case ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED:
+        return state
+          .set('customers', action.payload.customers);
+
       case ActionTypeKeys.RESET_CUSTOMERS:
         return state = ledgerCustomersInitialState;
 

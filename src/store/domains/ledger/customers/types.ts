@@ -2,7 +2,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 import { SelectValues } from 'types';
-
 export interface LedgerCustomerId {
   id: number;
 }
@@ -81,3 +80,25 @@ export interface LedgerCustomersFilterPrepared extends LedgerCustomerId {
 export interface LedgerCustomersState {
   customers: ImmutableArray<LedgerCustomerItem>;
 }
+
+export interface CardId {
+  card_id: number;
+}
+
+export interface CustomerId {
+  customer_id: number;
+}
+
+export interface AccountId {
+  account_id: number;
+}
+
+export interface TransactionId {
+  transaction_id: number;
+}
+
+export interface StatementId {
+  statement_id: number;
+}
+
+export type LedgerId = CardId | AccountId | TransactionId | StatementId;

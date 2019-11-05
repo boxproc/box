@@ -2,6 +2,7 @@ import { lenderCardsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
+import { LedgerId } from '../customers';
 import { LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
 
 export const filterLedgerCards = (data: Partial<LedgerCardsFilterPrepared>) =>
@@ -14,3 +15,7 @@ export const activateLedgerCard = (cardId: number) =>
 
 export const changeLedgerCardStatus = (data: LedgerCardIdsPrepared) =>
   apiClient.post(lenderCardsPathNames.CHANGE_STATUS, { data });
+
+export const filterLedgerCardsById = (data: LedgerId) =>
+  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+  apiClient.post(lenderCardsPathNames.GET, { data });

@@ -4,6 +4,7 @@ import { apiClient } from 'services';
 
 // import { ledgerAccountsFilteredItems, successResponseStatus } from './mock';
 
+import { LedgerId } from '../customers';
 import { LedgerAccountItem, LedgerAccountsFilterPrepared } from './types';
 
 export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
@@ -40,3 +41,7 @@ export const getLedgerLastStatement = (accountId: number) =>
   apiClient.post(lenderAccountsPathNames.GET_LAST_STATEMENT, {
     data: { account_id: accountId },
   });
+
+export const filterLedgerAccountsById = (data: LedgerId) =>
+  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+  apiClient.post(lenderAccountsPathNames.GET, { data });

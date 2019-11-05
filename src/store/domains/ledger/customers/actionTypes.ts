@@ -19,6 +19,12 @@ export enum ActionTypeKeys {
   FILTER_LEDGER_CUSTOMERS_FULFILLED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_FULFILLED',
   FILTER_LEDGER_CUSTOMERS_REJECTED = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_REJECTED',
 
+  FILTER_LEDGER_CUSTOMERS_BY_ID = 'ledger/customers/FILTER_LEDGER_CUSTOMERS_BY_ID',
+  FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED =
+  'ledger/customers/FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED',
+  FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED =
+  'ledger/customers/FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED',
+
   RESET_CUSTOMERS = 'ledger/customers/RESET_CUSTOMERS',
 }
 
@@ -85,6 +91,21 @@ export interface FilterLedgerCustomersRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_REJECTED;
 }
 
+export interface FilterLedgerCustomersByIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID;
+}
+
+export interface FilterLedgerCustomersByIdFulfilledAction {
+  readonly payload: LedgerCustomerItems;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED;
+}
+
+export interface FilterLedgerCustomersByIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED;
+}
+
 export interface ResetCustomersAction {
   readonly type: ActionTypeKeys.RESET_CUSTOMERS;
 }
@@ -94,4 +115,5 @@ export type LedgerCustomersActionTypes =
   | DeleteLedgerCustomerFulfilledAction
   | UpdateLedgerCustomerFulfilledAction
   | FilterLedgerCustomersFulfilledAction
+  | FilterLedgerCustomersByIdFulfilledAction
   | ResetCustomersAction;

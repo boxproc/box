@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNamesConst, modalNamesConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
@@ -12,17 +12,20 @@ import {
   AddLedgerCustomerAction,
   DeleteLedgerCustomerAction,
   FilterLedgerCustomersAction,
+  FilterLedgerCustomersByIdAction,
   UpdateLedgerCustomerAction,
 } from './actionTypes';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
   LedgerCustomersFilterPrepared,
+  LedgerId,
 } from './types';
 import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
+import { push } from 'react-router-redux';
 import { errorDecoratorUtil } from 'utils';
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
@@ -41,6 +44,10 @@ export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDeta
 export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterPrepared>) =>
   FilterLedgerCustomersAction;
 export type HandleFilterLedgerCustomers = () => Thunk<void>;
+
+export type FilterLedgerCustomersById = (id: LedgerId) =>
+  FilterLedgerCustomersByIdAction;
+export type HandleFilterLedgerCustomersById = (id: LedgerId) => Thunk<void>;
 
 export type ResetCustomers = () => void;
 
@@ -63,6 +70,11 @@ export const updateLedgerCustomers: UpdateLedgerCustomer = values => ({
 export const filterLedgerCustomers: FilterLedgerCustomers = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS,
   payload: api.filterLedgerCustomers(filter),
+});
+
+export const filterLedgerCustomersById: FilterLedgerCustomersById = data => ({
+  type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID,
+  payload: api.filterLedgerCustomersById(data),
 });
 
 export const resetCustomers: ResetCustomers = () => ({
@@ -122,6 +134,17 @@ export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
         if (preparedValues) {
           await dispatch(filterLedgerCustomers(preparedValues));
         }
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(filterLedgerCustomersById(id));
+        await dispatch(push(basePath + uiItemConsts.LEDGER_CUSTOMERS));
       },
       dispatch
     );

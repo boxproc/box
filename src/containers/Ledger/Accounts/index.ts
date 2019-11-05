@@ -6,10 +6,12 @@ import Accounts from './Accounts';
 import {
   createLoadingSelector,
   handleAddProductOverride,
+  handleFilterByIdLedgerCustomers,
   handleFilterLedgerAccounts,
   handleSetActiveItemId,
   LedgerAccountsActionTypes,
   resetAccounts,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerAccounts,
   selectLedgerCurrentAccountHasProductOverride,
@@ -28,11 +30,13 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
+  currentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerAccounts: handleFilterLedgerAccounts,
+    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
     addProductOverride: handleAddProductOverride,
     setActiveItemId: handleSetActiveItemId,
     resetAccounts,

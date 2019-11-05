@@ -14,6 +14,12 @@ export enum ActionTypeKeys {
   CHANGE_LEDGER_CARD_STATUS_FULFILLED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_FULFILLED',
   CHANGE_LEDGER_CARD_STATUS_REJECTED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_REJECTED',
 
+  FILTER_LEDGER_CARDS_BY_ID = 'ledger/cards/FILTER_LEDGER_CARDS_BY_ID',
+  FILTER_LEDGER_CARDS_BY_ID_FULFILLED =
+  'ledger/cards/FILTER_LEDGER_CARDS_BY_ID_FULFILLED',
+  FILTER_LEDGER_CARDS_BY_ID_REJECTED =
+  'ledger/cards/FILTER_LEDGER_CARDS_BY_ID_REJECTED',
+
   RESET_CARDS = 'ledger/accounts/RESET_CARDS',
 }
 
@@ -62,6 +68,21 @@ export interface ChangeLedgerCardStatusRejectedAction {
   readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_REJECTED;
 }
 
+export interface FilterLedgerCardsByIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID;
+}
+
+export interface FilterLedgerCardsByIdFulfilledAction {
+  readonly payload: LedgerCardItems;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_FULFILLED;
+}
+
+export interface FilterLedgerCardsByIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_REJECTED;
+}
+
 export interface ResetCarsAction {
   readonly type: ActionTypeKeys.RESET_CARDS;
 }
@@ -70,4 +91,5 @@ export type LedgerCardsActionTypes =
   | ActivateLedgerCardFulfilledAction
   | FilterLedgerCardsFulfilledAction
   | ChangeLedgerCardStatusFulfilledAction
+  | FilterLedgerCardsByIdFulfilledAction
   | ResetCarsAction;

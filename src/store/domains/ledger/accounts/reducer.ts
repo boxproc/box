@@ -16,6 +16,10 @@ const ledgerAccountsReducer =
         return state
           .set('accounts', action.payload.accounts);
 
+      case ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID_FULFILLED:
+        return state
+          .set('accounts', action.payload.accounts);
+
       case ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS_FULFILLED:
         return state
           .set('cards', action.payload.cards);

@@ -12,6 +12,7 @@ import { AccountsFilter } from './forms';
 import {
   HandleAddProductOverride,
   HandleFilterLedgerAccounts,
+  HandleFilterLedgerCustomersById,
   HandleSetActiveItemId,
   LedgerAccountItemPrepared,
   ResetAccounts,
@@ -27,6 +28,8 @@ export interface AccountsProps extends WithModalProps {
   productOverrideId: number;
   resetAccounts: ResetAccounts;
   setActiveItemId: HandleSetActiveItemId;
+  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
+  currentId: number;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -39,6 +42,8 @@ const Accounts: React.FC<AccountsProps> = ({
   resetAccounts,
   setActiveItemId,
   productOverrideId,
+  currentId,
+  filterLedgerCustomersById,
 }) => {
   React.useEffect(
     () => {
@@ -70,8 +75,26 @@ const Accounts: React.FC<AccountsProps> = ({
         icon: hasProductOverride ? iconNamesConst.EDIT : iconNamesConst.PLUS,
         action: handleEditOverride,
       },
+      {
+        name: 'Go to Customers',
+        action: () => filterLedgerCustomersById({
+          account_id: currentId,
+        }),
+      },
+      {
+        name: 'Go to Cards',
+        action: console.log('LINK'),
+      },
+      {
+        name: 'Go to Statements',
+        action: console.log('LINK'),
+      },
+      {
+        name: 'Go to Transactions',
+        action: console.log('LINK'),
+      },
     ],
-    [hasProductOverride, handleEditOverride]
+    [hasProductOverride, handleEditOverride, filterLedgerCustomersById, currentId]
   );
 
   return (

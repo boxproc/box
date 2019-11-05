@@ -16,6 +16,10 @@ const ledgerCardsReducer =
         return state
           .set('cards', action.payload.cards);
 
+      case ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_FULFILLED:
+        return state
+          .set('cards', action.payload.cards);
+
       case ActionTypeKeys.ACTIVATE_LEDGER_CARD_FULFILLED:
         // const updatedCard = {
         //   ...state.cards.find(card => card.id === state.currentCardId),

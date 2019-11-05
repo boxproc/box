@@ -9,6 +9,7 @@ import {
   handleFilterLedgerCustomers,
   LedgerCustomersActionTypes,
   resetCustomers,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerCurrentCustomerName,
   selectLedgerCustomers,
@@ -25,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   ledgerCustomers: selectLedgerCustomers(state),
   ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
+  currentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

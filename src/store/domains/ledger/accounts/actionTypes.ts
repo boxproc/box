@@ -32,6 +32,12 @@ export enum ActionTypeKeys {
   ADD_PRODUCT_OVERRIDE_FULFILLED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_FULFILLED',
   ADD_PRODUCT_OVERRIDE_REJECTED = 'ledger/accounts/ADD_PRODUCT_OVERRIDE_REJECTED',
 
+  FILTER_LEDGER_ACCOUNTS_BY_ID = 'ledger/accounts/FILTER_LEDGER_ACCOUNTS_BY_ID',
+  FILTER_LEDGER_ACCOUNTS_BY_ID_FULFILLED =
+  'ledger/accounts/FILTER_LEDGER_ACCOUNTS_BY_ID_FULFILLED',
+  FILTER_LEDGER_ACCOUNTS_BY_ID_REJECTED =
+  'ledger/accounts/FILTER_LEDGER_ACCOUNTS_BY_ID_REJECTED',
+
   RESET_ACCOUNTS = 'ledger/accounts/RESET_ACCOUNTS',
 }
 
@@ -139,6 +145,20 @@ export interface AddProductOverrideRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_REJECTED;
 }
+export interface FilterLedgerAccountsByIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID;
+}
+
+export interface FilterLedgerAccountsByIdFulfilledAction {
+  readonly payload: LedgerAccountItems;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID_FULFILLED;
+}
+
+export interface FilterLedgerAccountsByIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID_REJECTED;
+}
 
 export interface ResetAccountsAction {
   readonly type: ActionTypeKeys.RESET_ACCOUNTS;
@@ -152,4 +172,5 @@ export type LedgerAccountsActionTypes =
   | FilterLedgerAccountsFulfilledAction
   | GetLedgerLastStatementFulfilledAction
   | AddProductOverrideFulfilledAction
+  | FilterLedgerAccountsByIdFulfilledAction
   | ResetAccountsAction;

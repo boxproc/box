@@ -4,7 +4,7 @@ import { apiClient } from 'services';
 
 // import { ledgerCustomersFilteredItems, successResponseStatus } from './mock';
 
-import { LedgerCustomerItem, LedgerCustomersFilterPrepared } from './types';
+import { LedgerCustomerItem, LedgerCustomersFilterPrepared, LedgerId } from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -23,5 +23,9 @@ export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   apiClient.post(lenderCustomersPathNames.UPDATE, { data });
 
 export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterPrepared>) =>
+  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+  apiClient.post(lenderCustomersPathNames.GET, { data });
+
+export const filterLedgerCustomersById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
   apiClient.post(lenderCustomersPathNames.GET, { data });

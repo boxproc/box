@@ -24,6 +24,7 @@ export interface CustomersProps {
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   ledgerCurrentCustomerName: string;
   resetCustomers: ResetCustomers;
+  currentId: number;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -32,6 +33,7 @@ const Customers: React.FC<CustomersProps> = ({
   filterLedgerCustomers,
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
+  currentId,
   resetCustomers,
 }) => {
   React.useEffect(
@@ -49,6 +51,21 @@ const Customers: React.FC<CustomersProps> = ({
         action: deleteLedgerCustomer,
         withConfirmation: true,
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
+      },
+      // {
+      //   name: 'Go to Accounts',
+      //   action: () => filterLedgerCustomersById({
+      //     customer_id : currentCustomerId
+      //   }),
+      // },
+      { name: 'Go to Cards',
+        action: console.log('LINK'),
+      },
+      { name: 'Go to Statements',
+        action: console.log('LINK'),
+      },
+      { name: 'Go to Transactions',
+        action: console.log('LINK'),
       },
     ],
     [deleteLedgerCustomer, ledgerCurrentCustomerName]
