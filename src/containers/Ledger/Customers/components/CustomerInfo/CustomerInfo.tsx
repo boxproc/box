@@ -7,7 +7,12 @@ import { Hr, InputField, MaskField, SelectField, T4 } from 'components';
 
 import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'HOCs';
 
-import { customerStatusTypesOptions, dateFormat, maskFormat } from 'consts';
+import {
+  customerStatusTypesOptions,
+  dateFormat,
+  identificationTypesOptions,
+  maskFormat
+} from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -69,6 +74,24 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Box width="180px" p="10px">
+              <Field
+                id="identificationType"
+                name="identificationType"
+                component={SelectField}
+                options={identificationTypesOptions}
+                label="Identification Type"
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+            <Box width="180px" p="10px">
+              <Field
+                id="identificationNumber"
+                name="identificationNumber"
+                component={InputField}
+                label="Identification Number"
+              />
+            </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
             id="firstName"

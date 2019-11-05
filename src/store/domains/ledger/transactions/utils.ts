@@ -60,6 +60,9 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
     productName,
     transactionsDateTimeFrom,
     transactionsDateTimeTo,
+    accountId,
+    cardId,
+    panAlias,
   } = params;
 
   return {
@@ -69,5 +72,8 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
     product_name: productName ? productName.label : null,
     datetime_from: transactionsDateTimeFrom ? transactionsDateTimeFrom : null,
     datetime_to: transactionsDateTimeTo ? transactionsDateTimeTo : null,
+    account_id: accountId ? accountId : null,
+    card_id: cardId ? cardId : null,
+    pan_alias: panAlias ? panAlias : null,
   };
 };

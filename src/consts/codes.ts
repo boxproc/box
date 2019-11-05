@@ -90,6 +90,13 @@ export const customerStatusTypesOptions = [
   { value: 'C', label: 'Closed' },
 ];
 
+export const identificationTypesOptions = [
+  { value: 'N', label: 'No Identification' },
+  { value: 'P', label: 'Passport' },
+  { value: 'D', label: 'Driving license' },
+  { value: 'I', label: 'ID card' },
+];
+
 export const statusTypeCyclesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'S', label: 'Suspend' },

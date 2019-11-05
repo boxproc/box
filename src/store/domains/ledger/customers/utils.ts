@@ -1,4 +1,4 @@
-import { customerStatusTypesOptions } from 'consts';
+import { customerStatusTypesOptions, identificationTypesOptions } from 'consts';
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
@@ -41,9 +41,11 @@ export const preparedValuesToSend = (values: Partial<LedgerCustomerItemDetailsPr
     address_town: values.addressTown,
     address_post_code: values.addressPostCode,
     address_country_code: values.addressCountryCode && values.addressCountryCode.value,
-    nationality_country_code: values.nationalityCountryCode &&  values.nationalityCountryCode.value,
+    nationality_country_code: values.nationalityCountryCode && values.nationalityCountryCode.value,
     date_created: values.dateCreated,
     date_closed: values.dateClosed,
+    identification_type: values.identificationType && values.identificationType.value,
+    identification_number: values.identificationNumber,
   };
 };
 
@@ -77,9 +79,15 @@ export const preparedValuesDetailsToRender = (values: Partial<LedgerCustomerItem
   if (!values) {
     return null;
   }
-
+  const identificationType =
+    identificationTypesOptions.find(el => el.value === values.identification_type);
   return {
     ...prepareValuesToRender(values),
     status: customerStatusTypesOptions.find(el => el.value === values.status),
+    identification_type:
+      identificationTypesOptions.find(el => el.value === values.identification_type),
+    identificationType,
+    identificationNumber: values.identification_number,
+
   };
 };

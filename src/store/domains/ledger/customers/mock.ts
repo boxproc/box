@@ -23,6 +23,8 @@ export const ledgerCustomersFilteredItems: LedgerCustomerItems = {
       nationality_country_code: 'GBR',
       date_created: '2019-07-29',
       date_closed: '2019-07-29',
+      identification_type: 'N',
+      identification_number: 1,
     },
     {
       id: 2,
@@ -43,6 +45,8 @@ export const ledgerCustomersFilteredItems: LedgerCustomerItems = {
       nationality_country_code: 'GBR',
       date_created: '2019-07-29',
       date_closed: '2019-07-29',
+      identification_type: 'N',
+      identification_number: 1,
     },
   ],
 };

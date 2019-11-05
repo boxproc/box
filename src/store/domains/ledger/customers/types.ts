@@ -28,6 +28,8 @@ export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   nationality_country_code: string | number;
   date_created: string;
   date_closed: string;
+  identification_type: string | number;
+  identification_number: number;
 }
 
 export interface LedgerCustomerItems {
@@ -49,16 +51,19 @@ export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain
   nationalityCountryCode: SelectValues;
   dateCreated: string;
   dateClosed: string;
+  identificationNumber?: number;
 }
 
 export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepared {
   institutionId: string | number;
   status: string | number;
+  identificationType?: string | number;
 }
 
 export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPlainPrepared {
   institutionId: SelectValues;
   status: SelectValues;
+  identificationType: SelectValues;
 }
 
 export interface LedgerCustomersFilter extends LedgerCustomerId {
