@@ -205,10 +205,30 @@ export const selectProductAprs = createSelector(
   aprs => aprs && aprs.asMutable().map(apr => prepareProductAprsToRender(apr))
 );
 
+export const selectProductAprsForRules = createSelector(
+  selectDefaultProductAprs,
+  aprs => aprs && aprs.asMutable().map(apr => {
+    return {
+      name: apr.id,
+      description: apr.description,
+    };
+  })
+);
+
 export const selectDefaultProductFees = (state: StoreState) =>
   state.productDesigner.products.productFees;
 
 export const selectProductFees = createSelector(
   selectDefaultProductFees,
   fees => fees && fees.asMutable().map(fee => prepareProductFeesToRender(fee))
+);
+
+export const selectProductFeesForRules = createSelector(
+  selectDefaultProductFees,
+  fees => fees && fees.asMutable().map(fee => {
+    return {
+      name: fee.product_fee_id,
+      description: fee.description,
+    };
+  })
 );

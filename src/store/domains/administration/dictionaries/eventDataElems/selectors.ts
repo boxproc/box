@@ -25,3 +25,15 @@ export const selectDictionaryEventDataElemsItems = createSelector(
     };
   })
 );
+
+export const selectEventDataElemsForRules = createSelector(
+  selectDefaultDictionaryEventDataElemsItems,
+  (dataElems) => dataElems && dataElems.asMutable().map(item => {
+    const dataType = dataTypesOptions.find(el => el.value === item.data_type);
+
+    return {
+      name: item.name,
+      description: `${dataType && dataType.label} - ${item.description}`,
+    };
+  })
+);

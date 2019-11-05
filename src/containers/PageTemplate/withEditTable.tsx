@@ -23,7 +23,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-import { ContextMenuItem } from 'types';
+import { ContextMenuItemProps } from 'types';
 
 import { componentUtil } from 'utils';
 
@@ -32,7 +32,7 @@ export interface WithEditTableProps {
   setActiveItemId: HandleSetActiveItemId;
   editModalName: string;
   editableItemName?: string;
-  contextMenuItems?: Array<ContextMenuItem>;
+  contextMenuItems?: Array<ContextMenuItemProps>;
   activeTableRowIndex?: number;
   handleOpenModal: OpenModal;
   onRowClick: () => object;
@@ -75,7 +75,7 @@ export const withEditTable = <OriginProps extends {}>(
     );
 
     const onContextMenuClick = React.useCallback(
-      (e: Event, value: ContextMenuItem) => {
+      (e: Event, value: ContextMenuItemProps) => {
         setIsContextMenuVisible(false);
         setIsClearActiveIds(false);
         value.withConfirmation
