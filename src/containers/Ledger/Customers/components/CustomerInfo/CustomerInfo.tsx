@@ -72,7 +72,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             label="Status"
             placeholder="Select Status"
             options={customerStatusTypesOptions}
-            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
