@@ -85,6 +85,9 @@ const Accounts: React.FC<AccountsProps> = ({
         action: handleEditOverride,
       },
       {
+        hasDivider: true,
+      },
+      {
         name: 'Customers',
         action: () => filterLedgerCustomersById({
           account_id: currentId,

@@ -20,8 +20,8 @@ import {
 
 export interface CardsProps {
   ledgerCards: Array<LedgerCardItemPrepared>;
-  currentId: number;
   filterLedgerCards: HandleFilterLedgerCards;
+  currentId: number;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
@@ -47,6 +47,9 @@ const Cards: React.FC<CardsProps> = ({
   );
   const contextMenuItems = React.useMemo(
     () => [
+      {
+        hasDivider: true,
+      },
       {
         name: 'Accounts',
         action: () => filterLedgerAccountsById({

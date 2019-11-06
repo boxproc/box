@@ -31,7 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCards: handleFilterLedgerCards,
-    filterLedgerByIdAccounts: handleFilterByIdLedgerAccounts,
+    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
     filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
     filterLedgerStatementsById: handleFilterByIdLedgerStatements,
     filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,

@@ -5,9 +5,14 @@ import Statements from './Statements';
 
 import {
   createLoadingSelector,
+  handleFilterByIdLedgerAccounts,
+  handleFilterByIdLedgerCards,
+  handleFilterByIdLedgerCustomers,
+  handleFilterByIdLedgerTransactions,
   handleFilterLedgerStatements,
   LedgerStatementsActionTypes,
   resetStatements,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerStatements,
 } from 'store/domains';
@@ -22,11 +27,16 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerStatements: selectLedgerStatements(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  currentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerStatements: handleFilterLedgerStatements,
+    filterLedgerCardsById: handleFilterByIdLedgerCards,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
+    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
     resetStatements,
   },
   dispatch
