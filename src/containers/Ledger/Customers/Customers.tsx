@@ -10,7 +10,11 @@ import { CustomersFilter } from './forms';
 
 import {
   HandleDeleteLedgerCustomer,
+  HandleFilterLedgerAccountsById,
+  HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomers,
+  HandleFilterLedgerStatementsById,
+  HandleFilterLedgerTransactionsById,
   LedgerCustomerItemPrepared,
   ResetCustomers,
 } from 'store/domains';
@@ -24,6 +28,11 @@ export interface CustomersProps {
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   ledgerCurrentCustomerName: string;
   resetCustomers: ResetCustomers;
+  currentId: number;
+  filterLedgerCardsById: HandleFilterLedgerCardsById;
+  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
+  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -32,6 +41,11 @@ const Customers: React.FC<CustomersProps> = ({
   filterLedgerCustomers,
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
+  currentId,
+  filterLedgerCardsById,
+  filterLedgerTransactionsById,
+  filterLedgerStatementsById,
+  filterLedgerAccountsById,
   resetCustomers,
 }) => {
   React.useEffect(
@@ -50,8 +64,35 @@ const Customers: React.FC<CustomersProps> = ({
         withConfirmation: true,
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
       },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Accounts',
+        action: () => filterLedgerAccountsById({ customer_id: currentId }),
+      },
+      {
+        name: 'Cards',
+        action: () => filterLedgerCardsById({ customer_id: currentId }),
+      },
+      {
+        name: 'Statements',
+        action: () => filterLedgerStatementsById({ customer_id: currentId }),
+      },
+      {
+        name: 'Transactions',
+        action: () => filterLedgerTransactionsById({ customer_id: currentId }),
+      },
     ],
-    [deleteLedgerCustomer, ledgerCurrentCustomerName]
+    [
+      deleteLedgerCustomer,
+      ledgerCurrentCustomerName,
+      filterLedgerTransactionsById,
+      filterLedgerStatementsById,
+      filterLedgerCardsById,
+      filterLedgerAccountsById,
+      currentId,
+    ]
   );
 
   return (

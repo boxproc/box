@@ -15,6 +15,10 @@ const ledgerStatementsReducer =
         return state
           .set('statements', action.payload.statements);
 
+      case ActionTypeKeys.FILTER_LEDGER_STATEMENTS_BY_ID_FULFILLED:
+        return state
+          .set('statements', action.payload.statements);
+
       case ActionTypeKeys.GET_LEDGER_STATEMENT_TRANSACTIONS_FULFILLED:
         return state
           .set('transactions', action.payload.transactions);

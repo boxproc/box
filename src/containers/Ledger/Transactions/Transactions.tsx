@@ -9,6 +9,10 @@ import { tableColumns } from './components';
 import { TransactionsFilter } from './forms';
 
 import {
+  HandleFilterLedgerAccountsById,
+  HandleFilterLedgerCardsById,
+  HandleFilterLedgerCustomersById,
+  HandleFilterLedgerStatementsById,
   HandleFilterLedgerTransactions,
   LedgerTransactionItemPrepared,
   ResetTransactions,
@@ -21,6 +25,11 @@ export interface TransactionsProps {
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
   filterLedgerTransactions: HandleFilterLedgerTransactions;
   institutionsOptions: Array<SelectValues>;
+  currentId: number;
+  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
+  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
+  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  filterLedgerCardsById: HandleFilterLedgerCardsById;
   resetTransactions: ResetTransactions;
 }
 
@@ -29,6 +38,11 @@ const Transactions: React.FC<TransactionsProps> = ({
   filterLedgerTransactions,
   institutionsOptions,
   resetTransactions,
+  filterLedgerCustomersById,
+  filterLedgerAccountsById,
+  filterLedgerStatementsById,
+  filterLedgerCardsById,
+  currentId,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -43,6 +57,37 @@ const Transactions: React.FC<TransactionsProps> = ({
     [resetTransactions]
   );
 
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Accounts',
+        action: () => filterLedgerAccountsById({ transaction_id: currentId }),
+      },
+      {
+        name: 'Customers',
+        action: () => filterLedgerCustomersById({ transaction_id: currentId }),
+      },
+      {
+        name: 'Cards',
+        action: () => filterLedgerCardsById({ transaction_id: currentId }),
+      },
+      {
+        name: 'Statements',
+        action: () => filterLedgerStatementsById({ transaction_id: currentId }),
+      },
+    ],
+    [
+      filterLedgerCustomersById,
+      filterLedgerStatementsById,
+      filterLedgerCardsById,
+      filterLedgerAccountsById,
+      currentId,
+    ]
+  );
+
   return (
     <PageTemplate
       title="Transactions"
@@ -50,6 +95,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_TRANSACTION}
       filterAction={filterLedgerTransactions}
+      contextMenuItems={contextMenuItems}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
         transactionsDateTimeFrom: dateTimeFrom,

@@ -6,10 +6,19 @@ import Accounts from './Accounts';
 import {
   createLoadingSelector,
   handleAddProductOverride,
+  handleFilterByIdLedgerCards,
+  handleFilterByIdLedgerCustomers,
+  handleFilterByIdLedgerStatements,
+  handleFilterByIdLedgerTransactions,
   handleFilterLedgerAccounts,
   handleSetActiveItemId,
   LedgerAccountsActionTypes,
+  LedgerCardsActionTypes,
+  LedgerCustomersActionTypes,
+  LedgerStatementsActionTypes,
+  LedgerTransactionsActionTypes,
   resetAccounts,
+  selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerAccounts,
   selectLedgerCurrentAccountHasProductOverride,
@@ -20,6 +29,10 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.FILTER_LEDGER_ACCOUNTS,
+  LedgerCardsActionTypes.FILTER_LEDGER_CARDS_BY_ID,
+  LedgerTransactionsActionTypes.FILTER_LEDGER_TRANSACTIONS_BY_ID,
+  LedgerStatementsActionTypes.FILTER_LEDGER_STATEMENTS_BY_ID,
+  LedgerCustomersActionTypes.FILTER_LEDGER_CUSTOMERS_BY_ID,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -28,11 +41,16 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
+  currentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerAccounts: handleFilterLedgerAccounts,
+    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
+    filterLedgerCardsById: handleFilterByIdLedgerCards,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
     addProductOverride: handleAddProductOverride,
     setActiveItemId: handleSetActiveItemId,
     resetAccounts,

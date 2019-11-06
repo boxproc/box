@@ -1,6 +1,6 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst, modalNamesConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import { selectActiveItemId } from 'store/domains/utils';
@@ -9,6 +9,7 @@ import {
   ActivateLedgerCardAction,
   ChangeLedgerCardStatusAction,
   FilterLedgerCardsAction,
+  FilterLedgerCardsByIdAction,
 } from './actionTypes';
 import * as api from './api';
 import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
@@ -16,7 +17,9 @@ import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
 import { Thunk } from 'types';
 
-import { errorDecoratorUtil } from 'utils';
+import { push } from 'react-router-redux';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { LedgerId } from '../customers';
 
 export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
   FilterLedgerCardsAction;
@@ -27,6 +30,9 @@ export type HandleActivateLedgerCard = () => Thunk<void>;
 
 export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
 export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
+
+export type FilterLedgerCardsById = (id: LedgerId) => FilterLedgerCardsByIdAction;
+export type HandleFilterLedgerCardsById = (id: LedgerId) => Thunk<void>;
 
 export type ResetCards = () => void;
 
@@ -43,6 +49,11 @@ export const activateLedgerCard: ActivateLedgerCard = cardId => ({
 export const changeLedgerCardStatus: ChangeLedgerCardStatus = ids => ({
   type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS,
   payload: api.changeLedgerCardStatus(ids),
+});
+
+export const filterLedgerCardsById: FilterLedgerCardsById = data => ({
+  type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID,
+  payload: api.filterLedgerCardsById(data),
 });
 
 export const resetCards: ResetCards = () => ({
@@ -98,3 +109,15 @@ export const handleChangeLedgerCardStatus: HandleChangeLedgerCardStatus = ids =>
       dispatch
     );
   };
+
+export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
+    async dispatch => {
+      errorDecoratorUtil.withErrorHandler(
+        async () => {
+          await dispatch(filterLedgerCardsById(id));
+          cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CARDS}`);
+          dispatch(push(`${basePath}${uiItemConsts.LEDGER_CARDS}`));
+        },
+        dispatch
+      );
+   };

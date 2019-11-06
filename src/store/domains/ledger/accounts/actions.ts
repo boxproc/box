@@ -1,6 +1,6 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst, modalNamesConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
@@ -10,6 +10,7 @@ import {
   AddLedgerAccountAction,
   AddProductOverrideAction,
   FilterLedgerAccountsAction,
+  FilterLedgerAccountsByIdAction,
   GetLedgerAccountCardsAction,
   GetLedgerLastStatementAction,
   OrderLedgerAccountCardAction,
@@ -25,7 +26,9 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { errorDecoratorUtil } from 'utils';
+import { push } from 'react-router-redux';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { LedgerId } from '../customers';
 
 export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCardsAction;
 export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;
@@ -50,6 +53,9 @@ export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 
 export type AddProductOverride = (accountId: number) => AddProductOverrideAction;
 export type HandleAddProductOverride = (data?: { withOpenProductModal?: boolean }) => Thunk<void>;
+
+export type FilterLedgerAccountsById = (id: LedgerId) => FilterLedgerAccountsByIdAction;
+export type HandleFilterLedgerAccountsById = (id: LedgerId) => Thunk<void>;
 
 export type ResetAccounts = () => void;
 
@@ -86,6 +92,11 @@ export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
 export const addProductOverride: AddProductOverride = accountId => ({
   type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE,
   payload: api.addProductOverride(accountId),
+});
+
+export const filterLedgerAccountsById: FilterLedgerAccountsById = data => ({
+  type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID,
+  payload: api.filterLedgerAccountsById(data),
 });
 
 export const resetAccounts: ResetAccounts = () => ({
@@ -185,6 +196,18 @@ export const handleAddProductOverride: HandleAddProductOverride = (withOpenProdu
             name: modalNamesConst.EDIT_PRODUCT,
           }));
         }
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterByIdLedgerAccounts: HandleFilterLedgerAccountsById = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(filterLedgerAccountsById(id));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`));
       },
       dispatch
     );

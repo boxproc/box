@@ -12,6 +12,10 @@ import { AccountsFilter } from './forms';
 import {
   HandleAddProductOverride,
   HandleFilterLedgerAccounts,
+  HandleFilterLedgerCardsById,
+  HandleFilterLedgerCustomersById,
+  HandleFilterLedgerStatementsById,
+  HandleFilterLedgerTransactionsById,
   HandleSetActiveItemId,
   LedgerAccountItemPrepared,
   ResetAccounts,
@@ -27,6 +31,11 @@ export interface AccountsProps extends WithModalProps {
   productOverrideId: number;
   resetAccounts: ResetAccounts;
   setActiveItemId: HandleSetActiveItemId;
+  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
+  filterLedgerCardsById: HandleFilterLedgerCardsById;
+  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
+  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  currentId: number;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -39,6 +48,11 @@ const Accounts: React.FC<AccountsProps> = ({
   resetAccounts,
   setActiveItemId,
   productOverrideId,
+  currentId,
+  filterLedgerCustomersById,
+  filterLedgerCardsById,
+  filterLedgerTransactionsById,
+  filterLedgerStatementsById,
 }) => {
   React.useEffect(
     () => {
@@ -70,8 +84,35 @@ const Accounts: React.FC<AccountsProps> = ({
         icon: hasProductOverride ? iconNamesConst.EDIT : iconNamesConst.PLUS,
         action: handleEditOverride,
       },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Customers',
+        action: () => filterLedgerCustomersById({ account_id: currentId }),
+      },
+      {
+        name: 'Cards',
+        action: () => filterLedgerCardsById({ account_id: currentId }),
+      },
+      {
+        name: 'Statements',
+        action: () => filterLedgerStatementsById({ account_id: currentId }),
+      },
+      {
+        name: 'Transactions',
+        action: () => filterLedgerTransactionsById({ account_id: currentId }),
+      },
     ],
-    [hasProductOverride, handleEditOverride]
+    [
+      hasProductOverride,
+      handleEditOverride,
+      filterLedgerCustomersById,
+      filterLedgerTransactionsById,
+      filterLedgerStatementsById,
+      filterLedgerCardsById,
+      currentId,
+    ]
   );
 
   return (

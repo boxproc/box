@@ -1,6 +1,7 @@
 import { lenderStatementsPathNames } from 'consts';
 
 import { apiClient } from 'services';
+import { LedgerId } from '../customers';
 import { LedgerStatementTransactionsItemsRequest } from './types';
 
 // import { ledgerStatementsItems } from './mock';
@@ -20,3 +21,7 @@ export const getLedgerStatementTransactions = (data: LedgerStatementTransactions
       statement_id: data.id,
     },
   });
+
+export const filterLedgerStatementsById = (data: LedgerId) =>
+  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+  apiClient.post(lenderStatementsPathNames.GET, { data });
