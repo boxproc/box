@@ -13,6 +13,10 @@ import {
   handleFilterLedgerAccounts,
   handleSetActiveItemId,
   LedgerAccountsActionTypes,
+  LedgerCardsActionTypes,
+  LedgerCustomersActionTypes,
+  LedgerStatementsActionTypes,
+  LedgerTransactionsActionTypes,
   resetAccounts,
   selectActiveItemId,
   selectInstitutionsOptions,
@@ -25,6 +29,10 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.FILTER_LEDGER_ACCOUNTS,
+  LedgerCardsActionTypes.FILTER_LEDGER_CARDS_BY_ID,
+  LedgerTransactionsActionTypes.FILTER_LEDGER_TRANSACTIONS_BY_ID,
+  LedgerStatementsActionTypes.FILTER_LEDGER_STATEMENTS_BY_ID,
+  LedgerCustomersActionTypes.FILTER_LEDGER_CUSTOMERS_BY_ID,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
