@@ -105,8 +105,8 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="statementCycle"
-            name="statementCycle"
+            id="statementCycleName"
+            name="statementCycleName"
             component={InputField}
             label="Statement Cycle"
             placeholder="Enter Statement Cycle"

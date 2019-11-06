@@ -17,9 +17,9 @@ export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
     statementDate: values.statement_date,
     balanceOpen: values.balance_open && values.balance_open.toFixed(2),
     balanceClose: values.balance_close && values.balance_close.toFixed(2),
-    minimumAmountDueRepayment:
-      values.minimum_amount_due_repayment && values.minimum_amount_due_repayment.toFixed(2),
-    statementCycle: values.statement_cycle_description,
+    minimumAmountDueRepayment: values.minimum_amount_due_repayment
+      && values.minimum_amount_due_repayment.toFixed(2),
+    statementCycleName: values.statement_cycle_description,
     cycleExecutionHistoryId: values.cycle_execution_history_id,
     accountAlias: values.account_alias,
     productName: values.product_name,

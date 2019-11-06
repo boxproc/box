@@ -16,8 +16,6 @@ import { formErrorUtil } from 'utils';
 export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   institutionProductsOptions: Array<SelectValues>;
-  isLoadingInstitutionProducts: boolean;
-  isLoadingCyclesDescriptions: boolean;
   getInstitutionProducts: HandleGetInstitutionProducts;
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   cyclesDescriptionsOptions: Array<SelectValues>;
@@ -30,8 +28,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
   currentInstitution,
   institutionProductsOptions,
-  isLoadingInstitutionProducts,
-  isLoadingCyclesDescriptions,
   getInstitutionProducts,
   getCyclesDescriptions,
   cyclesDescriptionsOptions,
@@ -123,14 +119,13 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="productName"
-            name="productName"
+            id="product"
+            name="product"
             component={SelectField}
             label="Product"
             placeholder="Select Product"
             isDisabled={isEditMode}
             options={institutionProductsOptions}
-            isLoading={isLoadingInstitutionProducts}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -186,7 +181,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder="Select Statement Cycle"
             options={cyclesDescriptionsOptions}
             isDisabled={isEditMode}
-            isLoading={isLoadingCyclesDescriptions}
             validate={[formErrorUtil.required]}
           />
         </Box>
