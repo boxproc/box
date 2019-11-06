@@ -12,7 +12,7 @@ import { iconNamesConst } from 'consts';
 import EditableTable from './EditableTable';
 import Filter from './Filter';
 
-import { ResetUtils, StopAutoRefresh } from 'store/domains';
+import { HandleSetIsOpenFilter, ResetUtils, StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
@@ -31,6 +31,8 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   AdditionalButton?: ReactChild;
   initialFilterValues?: object;
   filterData: object;
+  setIsOpenFilter: HandleSetIsOpenFilter;
+  isOpenFilter: boolean;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -49,6 +51,8 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     AdditionalButton,
     initialFilterValues,
     filterData,
+    setIsOpenFilter,
+    isOpenFilter,
     ...pageTemplateProps
   } = props;
 
@@ -68,17 +72,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [resetUtils]
   );
 
-  const [isFilter, setIsFilter] = React.useState(true);
   const storedFilter = cookiesUtil.get(location.pathname);
 
   const handleOpenModal = React.useCallback(
     () => openModal({ name: newModalName }),
     [openModal, newModalName]
-  );
-
-  const handleSetIsFilter = React.useCallback(
-    () => setIsFilter(!isFilter),
-    [isFilter]
   );
 
   return (
@@ -96,13 +94,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       {FilterForm && (
         <Box mb="7px">
           <Button
-            text={isFilter ? 'Hide Filter' : 'Show Filter'}
+            text={isOpenFilter ? 'Hide Filter' : 'Show Filter'}
             iconName={iconNamesConst.FILTER}
-            onClick={handleSetIsFilter}
+            onClick={() => setIsOpenFilter(!isOpenFilter)}
           />
         </Box>
       )}
-      {FilterForm && isFilter && (
+      {FilterForm && isOpenFilter && (
         <Filter
           filterAction={filterAction}
           location={location}

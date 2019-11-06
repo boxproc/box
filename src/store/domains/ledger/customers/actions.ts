@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
@@ -6,7 +7,7 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerCustomerAction,
@@ -25,7 +26,6 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { push } from 'react-router-redux';
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
@@ -143,6 +143,7 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
         await dispatch(filterLedgerCustomersById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`));
+        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

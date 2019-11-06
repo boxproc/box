@@ -1,10 +1,11 @@
+import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
-import { selectActiveItemId, setActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, setActiveItemId, setIsOpenFilter } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
@@ -26,7 +27,6 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { push } from 'react-router-redux';
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
 import { LedgerId } from '../customers';
 
@@ -208,6 +208,7 @@ export const handleFilterByIdLedgerAccounts: HandleFilterLedgerAccountsById = id
         await dispatch(filterLedgerAccountsById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`));
+        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

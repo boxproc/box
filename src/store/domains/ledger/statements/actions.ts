@@ -1,7 +1,12 @@
+import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
+import { setIsOpenFilter } from 'store/domains/utils';
+import { Thunk } from 'types';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
   FilterLedgerStatementsAction,
@@ -9,14 +14,9 @@ import {
   GetLedgerStatementTransactionsAction
 } from './actionTypes';
 import * as api from './api';
+import { selectLedgerCurrentStatementTransaction } from './selectors';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
 import { preparedFilterToSend } from './utils';
-
-import { push } from 'connected-react-router';
-import { Thunk } from 'types';
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
-import { LedgerId } from '../customers';
-import { selectLedgerCurrentStatementTransaction } from './selectors';
 
 export type FilterLedgerStatements = (params: Partial<LedgerStatementsFilterPrepared>) =>
   FilterLedgerStatementsAction;
@@ -86,6 +86,7 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
         await dispatch(filterLedgerStatementsById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`));
+        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

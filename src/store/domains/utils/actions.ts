@@ -3,6 +3,7 @@ import {
   SetActiveItemIdAction,
   SetActiveTableRowIndexAction,
   SetIsClearActiveIdsAction,
+  SetIsOpenFilterAction,
   StartAutoRefreshAction,
   StopAutoRefreshAction,
 } from './actionTypes';
@@ -15,6 +16,9 @@ export type HandleSetActiveItemId = (id: number | string) => void;
 
 export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
 export type HandleSetIsClearActiveIds = (value: boolean) => void;
+
+export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
+export type HandleSetIsOpenFilter = (value: boolean) => void;
 
 export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
@@ -32,7 +36,12 @@ export const setActiveItemId: SetActiveItemId = id => ({
 });
 
 export const setIsClearActiveIds: SetIsClearActiveIds = value => ({
-  type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_iDS,
+  type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_IDS,
+  payload: value,
+});
+
+export const setIsOpenFilter: SetIsOpenFilter = value => ({
+  type: ActionTypeKeys.SET_IS_OPEN_FILTER,
   payload: value,
 });
 
@@ -55,3 +64,5 @@ export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemI
 
 export const handleSetIsClearActiveIds: HandleSetIsClearActiveIds = value =>
   setIsClearActiveIds(value);
+
+export const handleSetIsOpenFilter: HandleSetIsOpenFilter = value => setIsOpenFilter(value);

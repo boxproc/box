@@ -7,3 +7,5 @@ export const selectActiveItemId = (state: StoreState) => state.utils.activeItemI
 export const selectIsAutoRefresh = (state: StoreState) => state.utils.isAutoRefresh;
 
 export const selectIsClearActiveIds = (state: StoreState) => state.utils.isClearActiveIds;
+
+export const selectIsOpenFilter = (state: StoreState) => state.utils.isOpenFilter;

@@ -5,7 +5,9 @@ export enum ActionTypeKeys {
   START_AUTO_REFRESH = 'utils/START_AUTO_REFRESH',
   STOP_AUTO_REFRESH = 'utils/STOP_AUTO_REFRESH',
 
-  SET_IS_CLEAR_ACTIVE_iDS = 'utils/SET_IS_CLEAR_ACTIVE_iDS',
+  SET_IS_CLEAR_ACTIVE_IDS = 'utils/SET_IS_CLEAR_ACTIVE_IDS',
+
+  SET_IS_OPEN_FILTER = 'utils/SET_IS_OPEN_FILTER',
 
   RESET_UTILS = 'utils/RESET_UTILS',
 }
@@ -22,7 +24,12 @@ export interface SetActiveItemIdAction {
 
 export interface SetIsClearActiveIdsAction {
   readonly payload: boolean;
-  readonly type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_iDS;
+  readonly type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_IDS;
+}
+
+export interface SetIsOpenFilterAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_IS_OPEN_FILTER;
 }
 
 export interface StartAutoRefreshAction {
@@ -43,4 +50,5 @@ export type UtilsActionTypes =
   | StartAutoRefreshAction
   | StopAutoRefreshAction
   | ResetUtilsAction
-  | SetIsClearActiveIdsAction;
+  | SetIsClearActiveIdsAction
+  | SetIsOpenFilterAction;

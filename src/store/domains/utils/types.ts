@@ -3,4 +3,5 @@ export interface UtilsState {
   activeItemId: number;
   isAutoRefresh: boolean;
   isClearActiveIds: boolean;
+  isOpenFilter: boolean;
 }

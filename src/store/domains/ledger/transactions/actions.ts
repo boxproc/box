@@ -1,20 +1,20 @@
+import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
+import { setIsOpenFilter } from 'store/domains/utils';
+import { Thunk } from 'types';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
-   FilterLedgerTransactionsAction,
-    FilterLedgerTransactionsByIdAction
+  FilterLedgerTransactionsAction,
+  FilterLedgerTransactionsByIdAction
 } from './actionTypes';
 import * as api from './api';
 import { LedgerTransactionsFilterPrepared } from './types';
 import { preparedFilterToSend } from './utils';
-
-import { push } from 'connected-react-router';
-import { Thunk } from 'types';
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
-import { LedgerId } from '../customers';
 
 export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterPrepared>) =>
   FilterLedgerTransactionsAction;
@@ -63,6 +63,7 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
         await dispatch(filterLedgerTransactionsById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
+        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );
