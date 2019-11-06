@@ -172,19 +172,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
         )}
         <Hr />
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="statementCycle"
-            name="statementCycle"
-            component={SelectField}
-            label="Statement Cycle"
-            placeholder="Select Statement Cycle"
-            options={cyclesDescriptionsOptions}
-            isDisabled={isEditMode}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -198,7 +186,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
@@ -212,7 +200,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="amountDueRepayment"
             name="amountDueRepayment"
@@ -226,7 +214,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -240,7 +228,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -254,7 +242,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 6 : 1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -266,6 +254,18 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             readOnly={isEditMode}
             isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="statementCycle"
+            name="statementCycle"
+            component={SelectField}
+            label="Statement Cycle"
+            placeholder="Select Statement Cycle"
+            options={cyclesDescriptionsOptions}
+            isDisabled={isEditMode}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         {isEditMode && (

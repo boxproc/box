@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
@@ -103,8 +103,6 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
 
         await dispatch(addLedgerCustomer(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
-        await dispatch(handleFilterLedgerCustomers());
-        await dispatch(resetForm(formNamesConst.ADD_LEDGER_CUSTOMER));
       },
       dispatch
     );

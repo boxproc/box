@@ -33,7 +33,7 @@ const RevolvingCreditDetails: React.FC = () => {
           <Field
             id="aprDefaultCalculationMethod"
             name="aprDefaultCalculationMethod"
-            placeholder="Select APR Default Calculation Method"
+            placeholder="Select Method"
             component={SelectField}
             options={aprTypesOptions}
             label="APR Default Calculation Method"

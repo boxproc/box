@@ -37,8 +37,7 @@ export enum formNamesConst {
 
   AUDIT_API_CALL = 'auditApiCallForm',
 
-  ADD_LEDGER_CUSTOMER = 'addLedgerCustomerForm',
-  EDIT_LEDGER_CUSTOMER = 'editLedgerCustomerForm',
+  LEDGER_CUSTOMER = 'ledgerCustomerForm',
   LEDGER_ACCOUNT = 'ledgerAccountForm',
   LEDGER_TRANSACTIONS = 'ledgerTransactionsForm',
   LEDGER_CARDS = 'ledgerCardForm',

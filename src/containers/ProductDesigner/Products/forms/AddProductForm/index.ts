@@ -4,6 +4,7 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
+import { detailsInitialFormValues } from '../../consts';
 import AddProductForm from './AddProductForm';
 
 import {
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: {
     historyRetentionNumberOfDay: 90,
+    ...detailsInitialFormValues,
   },
   currentProductType: formSelector(
     state,

@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { EditCustomerForm } from 'containers/Ledger/Customers/forms';
+import { CustomerForm } from 'containers/Ledger/Customers/forms';
 
 interface EditCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
@@ -27,10 +27,13 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Edit Customer"
-      maxContainerWidth={980}
+      maxContainerWidth={1010}
       withCloseConfirmation={isFormDirty}
     >
-      <EditCustomerForm onCancel={handleOnCancel} />
+      <CustomerForm
+        isEditMode={true}
+        onCancel={handleOnCancel}
+      />
     </Modal>
   );
 };

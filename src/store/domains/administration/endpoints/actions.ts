@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
@@ -100,8 +100,6 @@ export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
 
         await dispatch(addAdminEndpoint(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_ENDPOINT));
-        await dispatch(handleFilterAdminEndpoint());
-        await dispatch(resetForm(formNamesConst.ENDPOINT));
       },
       dispatch
     );
