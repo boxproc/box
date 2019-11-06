@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 import * as api from './api';
@@ -83,8 +83,6 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
 
         await dispatch(addAdminUser(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_USER));
-        await dispatch(handleFilterUsers());
-        await dispatch(resetForm(formNamesConst.DEFINE_USER));
       },
       dispatch
     );

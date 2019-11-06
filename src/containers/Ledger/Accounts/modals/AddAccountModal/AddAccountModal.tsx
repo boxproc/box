@@ -5,6 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
+import { accountInitialFormValues } from 'containers/Ledger/Accounts/consts';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { SelectValues } from 'types';
@@ -38,6 +39,7 @@ const AddAccountModal: React.FC<AddAccountModalProps> = ({
         institutionsOptions={institutionsOptions}
         initialValues={{
           institutionId: institutionsOptions && institutionsOptions[0],
+          ...accountInitialFormValues,
         }}
         onCancel={handleOnCancel}
         mode="add"

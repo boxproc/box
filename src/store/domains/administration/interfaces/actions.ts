@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
@@ -91,8 +91,6 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
 
         await dispatch(addAdminInterface(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_INTERFACE));
-        await dispatch(handleFilterAdminInterface());
-        await dispatch(resetForm(formNamesConst.INTERFACE));
       },
       dispatch
     );

@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -113,7 +113,6 @@ export const handleGetLedgerAccountCards: HandleGetLedgerAccountCards = accountI
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getLedgerAccountCards(accountId));
-        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT_CARDS));
       },
       dispatch
     );
@@ -141,7 +140,6 @@ export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accoun
 
         await dispatch(orderLedgerAccountCard(accountId));
         await dispatch(handleGetLedgerAccountCards(currentAccountId));
-        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
       },
       dispatch
     );
@@ -155,8 +153,6 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
 
         await dispatch(addLedgerAccount(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
-        await dispatch(handleFilterLedgerAccounts());
-        await dispatch(resetForm(formNamesConst.LEDGER_ACCOUNT));
       },
       dispatch
     );

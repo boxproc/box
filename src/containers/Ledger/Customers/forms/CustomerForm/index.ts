@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
 
-import EditCustomerForm from './EditCustomerForm';
+import { formNamesConst } from 'consts';
 
-import {
-  StoreState,
-} from 'store/StoreState';
+import CustomerForm from './CustomerForm';
+
+import { StoreState } from 'store/StoreState';
 
 import {
   createLoadingSelector,
+  handleAddLedgerCustomer,
   handleDeleteLedgerCustomer,
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
@@ -19,16 +21,24 @@ import {
 const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.DELETE_LEDGER_CUSTOMER,
   LedgerCustomersActionTypes.UPDATE_LEDGER_CUSTOMER,
+  LedgerCustomersActionTypes.ADD_LEDGER_CUSTOMER,
 ]);
+
+const formSelector = formValueSelector(formNamesConst.LEDGER_CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
   ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
+  identificationTypeValue: formSelector(
+    state,
+    'identificationType'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    addLedgerCustomer: handleAddLedgerCustomer,
     deleteLedgerCustomer: handleDeleteLedgerCustomer,
     updateLedgerCustomer: handleUpdateLedgerCustomer,
   },
@@ -38,4 +48,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditCustomerForm);
+)(CustomerForm);

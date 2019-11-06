@@ -90,6 +90,13 @@ export const customerStatusTypesOptions = [
   { value: 'C', label: 'Closed' },
 ];
 
+export enum identificationTypesCodes {
+  NO_IDENTIFICATION = 'N',
+  PASSPORT = 'P',
+  DRIVING_LICENSE = 'D',
+  ID_CARD = 'I',
+}
+
 export const identificationTypesOptions = [
   { value: 'N', label: 'No Identification' },
   { value: 'P', label: 'Passport' },

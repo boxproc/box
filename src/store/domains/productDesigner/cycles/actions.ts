@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -108,8 +108,6 @@ export const handleAddCyclesEditor: HandleAddCyclesEditor = cycleEditorRecords =
 
         await dispatch(addCyclesEditor(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_CYCLE_EDITOR));
-        await dispatch(handleFilterCycles());
-        await dispatch(resetForm(formNamesConst.DEFINE_CYCLE_EDITOR));
       },
       dispatch
     );

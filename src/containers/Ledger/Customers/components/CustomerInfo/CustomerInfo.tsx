@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, MaskField, SelectField, T4 } from 'components';
+import { Delimiter, Hr, InputField, MaskField, SelectField, T4 } from 'components';
 
 import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'HOCs';
 
@@ -21,6 +21,7 @@ import { formErrorUtil } from 'utils';
 interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
+  isIdentification: boolean;
 }
 
 type CustomerInfoAllProps = CustomerInfoProps & WithLoadCountryCodesProps;
@@ -30,6 +31,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
   countryCodes,
   isCountryCodesLoading,
   isEditMode = false,
+  isIdentification,
 }) => {
   return (
     <Box mx="-10px">
@@ -75,24 +77,30 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
           />
         </Box>
         <Box width="180px" p="10px">
-              <Field
-                id="identificationType"
-                name="identificationType"
-                component={SelectField}
-                options={identificationTypesOptions}
-                label="Identification Type"
-                validate={[formErrorUtil.required]}
-              />
-            </Box>
-            <Box width="180px" p="10px">
-              <Field
-                id="identificationNumber"
-                name="identificationNumber"
-                component={InputField}
-                label="Identification Number"
-              />
-            </Box>
-        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="identificationType"
+            name="identificationType"
+            component={SelectField}
+            options={identificationTypesOptions}
+            label="Identification Type"
+            placeholder="Select Type"
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        {isIdentification && (
+          <Box width="180px" p="10px">
+            <Field
+              id="identificationNumber"
+              name="identificationNumber"
+              component={InputField}
+              label="Identification Number"
+              placeholder="Enter Number"
+              validate={[formErrorUtil.required]}
+            />
+          </Box>
+        )}
+        <Delimiter />
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="firstName"
             name="firstName"
@@ -102,7 +110,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="lastName"
             name="lastName"
@@ -112,7 +120,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="180px" p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="dateOfBirth"
             name="dateOfBirth"
@@ -124,7 +132,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             mask={maskFormat.DATE}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="email"
             name="email"
@@ -134,7 +142,7 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.email]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"

@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -94,7 +94,6 @@ export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
         await dispatch(addAdminSysProp(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_SYSTEM_PROPERTY));
         await dispatch(handleFilterAdminSysProps());
-        await dispatch(resetForm(formNamesConst.ADD_SYSTEM_PROPERTY));
       },
       dispatch
     );

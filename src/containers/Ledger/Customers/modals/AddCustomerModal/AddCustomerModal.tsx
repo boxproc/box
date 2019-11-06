@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-import { AddCustomerForm } from 'containers/Ledger/Customers/forms';
+import { CustomerForm } from 'containers/Ledger/Customers/forms';
 
 interface AddCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
@@ -26,10 +26,10 @@ const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
     <Modal
       name={modalName}
       title="Add New Customer"
-      maxContainerWidth={980}
+      maxContainerWidth={1010}
       withCloseConfirmation={isFormDirty}
     >
-      <AddCustomerForm onCancel={handleOnCancel} />
+      <CustomerForm onCancel={handleOnCancel} />
     </Modal>
   );
 };

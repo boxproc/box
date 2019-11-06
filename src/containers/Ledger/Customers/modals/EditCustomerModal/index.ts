@@ -7,7 +7,7 @@ import EditCustomerModal from './EditCustomerModal';
 
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.EDIT_LEDGER_CUSTOMER);
+const dirty = isDirty(formNamesConst.LEDGER_CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

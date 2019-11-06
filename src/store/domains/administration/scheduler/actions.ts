@@ -1,4 +1,4 @@
-import { getFormValues, reset as resetForm } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -114,10 +114,8 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
 
-        dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));
         await dispatch(addAdminSchedulerJob(preparedValues));
-        await dispatch(handleFilterAdminSchedulerJobs());
-        await dispatch(resetForm(formNamesConst.DEFINE_SCHEDULER_JOB));
+        dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));
       },
       dispatch
     );
