@@ -31,8 +31,7 @@ export type HandleActivateLedgerCard = () => Thunk<void>;
 export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
 export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
 
-export type FilterLedgerCardsById = (id: LedgerId) =>
-  FilterLedgerCardsByIdAction;
+export type FilterLedgerCardsById = (id: LedgerId) => FilterLedgerCardsByIdAction;
 export type HandleFilterLedgerCardsById = (id: LedgerId) => Thunk<void>;
 
 export type ResetCards = () => void;
@@ -116,8 +115,8 @@ export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
       errorDecoratorUtil.withErrorHandler(
         async () => {
           await dispatch(filterLedgerCardsById(id));
-          cookiesUtil.remove(basePath + uiItemConsts.LEDGER_CARDS);
-          await dispatch(push(basePath + uiItemConsts.LEDGER_CARDS));
+          cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CARDS}`);
+          dispatch(push(`${basePath}${uiItemConsts.LEDGER_CARDS}`));
         },
         dispatch
       );

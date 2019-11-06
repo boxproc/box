@@ -48,35 +48,32 @@ const Cards: React.FC<CardsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        hasDivider: true,
+        isDivider: true,
       },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({
-          card_id: currentId,
-        }),
+        action: () => filterLedgerAccountsById({ card_id: currentId }),
       },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({
-          card_id: currentId,
-        }),
+        action: () => filterLedgerCustomersById({ card_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({
-          card_id: currentId,
-        }),
+        action: () => filterLedgerStatementsById({ card_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({
-          card_id: currentId,
-        }),
+        action: () => filterLedgerTransactionsById({ card_id: currentId }),
       },
     ],
-    [filterLedgerCustomersById, filterLedgerTransactionsById,
-        filterLedgerStatementsById, filterLedgerAccountsById, currentId]
+    [
+      filterLedgerCustomersById,
+      filterLedgerTransactionsById,
+      filterLedgerStatementsById,
+      filterLedgerAccountsById,
+      currentId,
+    ]
   );
 
   return (

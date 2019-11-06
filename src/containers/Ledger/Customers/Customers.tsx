@@ -65,31 +65,23 @@ const Customers: React.FC<CustomersProps> = ({
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
       },
       {
-        hasDivider: true,
+        isDivider: true,
       },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({
-          customer_id: currentId,
-        }),
+        action: () => filterLedgerAccountsById({ customer_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({
-          customer_id: currentId,
-        }),
+        action: () => filterLedgerCardsById({ customer_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({
-          customer_id: currentId,
-        }),
+        action: () => filterLedgerStatementsById({ customer_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({
-          customer_id: currentId,
-        }),
+        action: () => filterLedgerTransactionsById({ customer_id: currentId }),
       },
     ],
     [

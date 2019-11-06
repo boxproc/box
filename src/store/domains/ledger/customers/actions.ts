@@ -45,8 +45,7 @@ export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterPrepar
   FilterLedgerCustomersAction;
 export type HandleFilterLedgerCustomers = () => Thunk<void>;
 
-export type FilterLedgerCustomersById = (id: LedgerId) =>
-  FilterLedgerCustomersByIdAction;
+export type FilterLedgerCustomersById = (id: LedgerId) => FilterLedgerCustomersByIdAction;
 export type HandleFilterLedgerCustomersById = (id: LedgerId) => Thunk<void>;
 
 export type ResetCustomers = () => void;
@@ -142,8 +141,8 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerCustomersById(id));
-        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_CUSTOMERS);
-        await dispatch(push(basePath + uiItemConsts.LEDGER_CUSTOMERS));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`));
       },
       dispatch
     );

@@ -60,35 +60,32 @@ const Statements: React.FC<StatementsProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        hasDivider: true,
+        isDivider: true,
       },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({
-          statement_id: currentId,
-        }),
+        action: () => filterLedgerAccountsById({ statement_id: currentId }),
       },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({
-          statement_id: currentId,
-        }),
+        action: () => filterLedgerCustomersById({ statement_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({
-          statement_id: currentId,
-        }),
+        action: () => filterLedgerCardsById({ statement_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({
-          statement_id: currentId,
-        }),
+        action: () => filterLedgerTransactionsById({ statement_id: currentId }),
       },
     ],
-    [filterLedgerCustomersById, filterLedgerTransactionsById,
-      filterLedgerCardsById, filterLedgerAccountsById, currentId]
+    [
+      filterLedgerCustomersById,
+      filterLedgerTransactionsById,
+      filterLedgerCardsById,
+      filterLedgerAccountsById,
+      currentId,
+    ]
   );
 
   return (

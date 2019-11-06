@@ -26,8 +26,7 @@ export type GetLedgerStatementTransactions = (data: LedgerStatementTransactionsI
   GetLedgerStatementTransactionsAction;
 export type HandleGetLedgerStatementTransactions = () => Thunk<void>;
 
-export type FilterLedgerStatementsById = (id: LedgerId) =>
-  FilterLedgerStatementsByIdAction;
+export type FilterLedgerStatementsById = (id: LedgerId) => FilterLedgerStatementsByIdAction;
 export type HandleFilterLedgerStatementsById = (id: LedgerId) => Thunk<void>;
 
 export type ResetStatements = () => void;
@@ -85,8 +84,8 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerStatementsById(id));
-        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_STATEMENTS);
-        await dispatch(push(basePath + uiItemConsts.LEDGER_STATEMENTS));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`));
       },
       dispatch
     );

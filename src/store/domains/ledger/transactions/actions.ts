@@ -20,8 +20,7 @@ export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilter
   FilterLedgerTransactionsAction;
 export type HandleFilterLedgerTransactions = () => Thunk<void>;
 
-export type FilterLedgerTransactionsById = (id: LedgerId) =>
-  FilterLedgerTransactionsByIdAction;
+export type FilterLedgerTransactionsById = (id: LedgerId) => FilterLedgerTransactionsByIdAction;
 export type HandleFilterLedgerTransactionsById = (id: LedgerId) => Thunk<void>;
 
 export type ResetTransactions = () => void;
@@ -62,8 +61,8 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerTransactionsById(id));
-        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_TRANSACTIONS);
-        await dispatch(push(basePath + uiItemConsts.LEDGER_TRANSACTIONS));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
       },
       dispatch
     );

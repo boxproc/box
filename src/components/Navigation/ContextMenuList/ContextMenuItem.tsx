@@ -29,7 +29,7 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
         confirmationTitle: item.confirmationTitle,
         confirmationText: item.confirmationText,
       }}
-      divider={item.hasDivider}
+      divider={item.isDivider}
       onClick={onClick}
     >
       <div className="item">

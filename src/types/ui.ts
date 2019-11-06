@@ -7,7 +7,7 @@ export interface ContextMenuItemProps {
   confirmationText?: string;
   action?: () => void;
   noDataStr?: string;
-  hasDivider?: boolean;
+  isDivider?: boolean;
 }
 
 interface ContextSubMenuItem {

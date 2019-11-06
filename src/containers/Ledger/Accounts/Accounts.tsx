@@ -85,36 +85,34 @@ const Accounts: React.FC<AccountsProps> = ({
         action: handleEditOverride,
       },
       {
-        hasDivider: true,
+        isDivider: true,
       },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({
-          account_id: currentId,
-        }),
+        action: () => filterLedgerCustomersById({ account_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({
-          account_id: currentId,
-        }),
+        action: () => filterLedgerCardsById({ account_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({
-          account_id: currentId,
-        }),
+        action: () => filterLedgerStatementsById({ account_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({
-          account_id: currentId,
-        }),
+        action: () => filterLedgerTransactionsById({ account_id: currentId }),
       },
     ],
-    [hasProductOverride, handleEditOverride,
-       filterLedgerCustomersById, filterLedgerTransactionsById,
-        filterLedgerStatementsById, filterLedgerCardsById, currentId]
+    [
+      hasProductOverride,
+      handleEditOverride,
+      filterLedgerCustomersById,
+      filterLedgerTransactionsById,
+      filterLedgerStatementsById,
+      filterLedgerCardsById,
+      currentId,
+    ]
   );
 
   return (

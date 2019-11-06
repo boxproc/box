@@ -54,9 +54,9 @@ export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 export type AddProductOverride = (accountId: number) => AddProductOverrideAction;
 export type HandleAddProductOverride = (data?: { withOpenProductModal?: boolean }) => Thunk<void>;
 
-export type FilterLedgerAccountsById = (id: LedgerId) =>
-  FilterLedgerAccountsByIdAction;
+export type FilterLedgerAccountsById = (id: LedgerId) => FilterLedgerAccountsByIdAction;
 export type HandleFilterLedgerAccountsById = (id: LedgerId) => Thunk<void>;
+
 export type ResetAccounts = () => void;
 
 export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
@@ -206,8 +206,8 @@ export const handleFilterByIdLedgerAccounts: HandleFilterLedgerAccountsById = id
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerAccountsById(id));
-        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_ACCOUNTS);
-        await dispatch(push(basePath + uiItemConsts.LEDGER_ACCOUNTS));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`));
       },
       dispatch
     );
