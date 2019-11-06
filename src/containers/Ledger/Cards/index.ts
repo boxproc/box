@@ -5,9 +5,14 @@ import Cards from './Cards';
 
 import {
   createLoadingSelector,
+  handleFilterByIdLedgerAccounts,
+  handleFilterByIdLedgerCustomers,
+  handleFilterByIdLedgerStatements,
+  handleFilterByIdLedgerTransactions,
   handleFilterLedgerCards,
   LedgerCardsActionTypes,
   resetCards,
+  selectActiveItemId,
   selectLedgerCards,
 } from 'store/domains';
 
@@ -20,11 +25,16 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerCards: selectLedgerCards(state),
+  currentId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCards: handleFilterLedgerCards,
+    filterLedgerByIdAccounts: handleFilterByIdLedgerAccounts,
+    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
+    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
     resetCards,
   },
   dispatch

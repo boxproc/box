@@ -85,25 +85,25 @@ const Accounts: React.FC<AccountsProps> = ({
         action: handleEditOverride,
       },
       {
-        name: 'Go to Customers',
+        name: 'Customers',
         action: () => filterLedgerCustomersById({
           account_id: currentId,
         }),
       },
       {
-        name: 'Go to Cards',
+        name: 'Cards',
         action: () => filterLedgerCardsById({
           account_id: currentId,
         }),
       },
       {
-        name: 'Go to Statements',
+        name: 'Statements',
         action: () => filterLedgerStatementsById({
           account_id: currentId,
         }),
       },
       {
-        name: 'Go to Transactions',
+        name: 'Transactions',
         action: () => filterLedgerTransactionsById({
           account_id: currentId,
         }),
