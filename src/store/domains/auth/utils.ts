@@ -3,6 +3,7 @@ import { statusTypesCodes, yesNoTypesCodes } from 'consts';
 import { AuthRequest, AuthResponse, PreparedAuthRequest, UserData } from './types';
 
 import { storageUtil } from 'utils';
+import config from 'config';
 
 export const prepareAuthValues = (formData: AuthRequest): PreparedAuthRequest => {
   const { userName, password, rememberMe } = formData;
@@ -39,7 +40,10 @@ export const setUserDataToStorage = (data: UserData, isChangingProfile?: boolean
 
     storageUtil.setUserData(data);
 
-    storageUtil.setSessionId(data.sessionId); // for demo, comment before deployment
+    // only for development mode
+    if (config.isDevelopment) {
+      storageUtil.setSessionId(data.sessionId);
+    }
 
     if (is2faLogin) {
       storageUtil.setAuthPendingFlag();
