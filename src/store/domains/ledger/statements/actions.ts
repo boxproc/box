@@ -14,7 +14,7 @@ import { preparedFilterToSend } from './utils';
 
 import { push } from 'connected-react-router';
 import { Thunk } from 'types';
-import { errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
 import { LedgerId } from '../customers';
 import { selectLedgerCurrentStatementTransaction } from './selectors';
 
@@ -85,6 +85,7 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerStatementsById(id));
+        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_STATEMENTS);
         await dispatch(push(basePath + uiItemConsts.LEDGER_STATEMENTS));
       },
       dispatch

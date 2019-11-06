@@ -26,7 +26,7 @@ import { preparedFilterToSend, preparedValuesToSend } from './utils';
 import { Thunk } from 'types';
 
 import { push } from 'react-router-redux';
-import { errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
 export type HandleDeleteLedgerCustomer = () => Thunk<void>;
@@ -144,6 +144,7 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerCustomersById(id));
+        cookiesUtil.remove(basePath + uiItemConsts.LEDGER_CUSTOMERS);
         await dispatch(push(basePath + uiItemConsts.LEDGER_CUSTOMERS));
       },
       dispatch

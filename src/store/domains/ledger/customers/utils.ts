@@ -45,7 +45,7 @@ export const preparedValuesToSend = (values: Partial<LedgerCustomerItemDetailsPr
     date_created: values.dateCreated,
     date_closed: values.dateClosed,
     identification_type: values.identificationType && values.identificationType.value,
-    identification_number: values.identificationNumber,
+    identification_number: values.identificationNumber ? values.identificationNumber : null ,
   };
 };
 

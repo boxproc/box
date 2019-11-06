@@ -18,7 +18,7 @@ import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 import { Thunk } from 'types';
 
 import { push } from 'react-router-redux';
-import { errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
 import { LedgerId } from '../customers';
 
 export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
@@ -116,6 +116,7 @@ export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
       errorDecoratorUtil.withErrorHandler(
         async () => {
           await dispatch(filterLedgerCardsById(id));
+          cookiesUtil.remove(basePath + uiItemConsts.LEDGER_CARDS);
           await dispatch(push(basePath + uiItemConsts.LEDGER_CARDS));
         },
         dispatch
