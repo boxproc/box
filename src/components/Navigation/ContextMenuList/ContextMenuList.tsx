@@ -43,7 +43,6 @@ interface ContextMenuListProps {
   menuId: string;
   items: Array<ContextMenuItemProps>;
   subMenuItems?: ContextSubMenuType;
-  // noDataStr?: string;
   isVisible?: boolean;
   preventClose?: boolean;
   onClick?: (e: Event, value: ContextMenuItemProps) => void;
@@ -55,7 +54,6 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
   onClick,
   items,
   subMenuItems,
-  // noDataStr,
   onHide,
   isVisible = true,
   preventClose = false,

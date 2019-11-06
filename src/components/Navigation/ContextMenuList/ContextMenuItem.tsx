@@ -29,6 +29,7 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
         confirmationTitle: item.confirmationTitle,
         confirmationText: item.confirmationText,
       }}
+      divider={item.hasDivider}
       onClick={onClick}
     >
       <div className="item">
@@ -37,9 +38,6 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
         )}
         <span>
           {item.name}
-          {item.dataType && (
-            <span className="gray code"> {item.dataType.toLocaleLowerCase()} </span>
-          )}
           {item.description && (
             <span className="gray"> {item.description}</span>
           )}

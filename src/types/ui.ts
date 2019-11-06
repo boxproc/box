@@ -1,13 +1,13 @@
 export interface ContextMenuItemProps {
   name: string;
   description?: string;
-  dataType?: string;
   icon?: string;
   withConfirmation?: boolean;
   confirmationTitle?: string;
   confirmationText?: string;
   action?: () => void;
   noDataStr?: string;
+  hasDivider?: boolean;
 }
 
 interface ContextSubMenuItem {
