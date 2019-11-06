@@ -62,7 +62,7 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(filterLedgerTransactionsById(id));
-        await dispatch(push(basePath + uiItemConsts.LEDGER_CUSTOMERS));
+        await dispatch(push(basePath + uiItemConsts.LEDGER_TRANSACTIONS));
       },
       dispatch
     );

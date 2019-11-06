@@ -6,7 +6,10 @@ import Accounts from './Accounts';
 import {
   createLoadingSelector,
   handleAddProductOverride,
+  handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
+  handleFilterByIdLedgerStatements,
+  handleFilterByIdLedgerTransactions,
   handleFilterLedgerAccounts,
   handleSetActiveItemId,
   LedgerAccountsActionTypes,
@@ -37,6 +40,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerAccounts: handleFilterLedgerAccounts,
     filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
+    filterLedgerCardsById: handleFilterByIdLedgerCards,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
     addProductOverride: handleAddProductOverride,
     setActiveItemId: handleSetActiveItemId,
     resetAccounts,

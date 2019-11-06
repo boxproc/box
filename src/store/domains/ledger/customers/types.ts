@@ -101,4 +101,4 @@ export interface StatementId {
   statement_id: number;
 }
 
-export type LedgerId = CardId | AccountId | TransactionId | StatementId;
+export type LedgerId = CardId | AccountId | TransactionId | StatementId | CustomerId;

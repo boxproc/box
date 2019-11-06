@@ -6,6 +6,10 @@ import Customers from './Customers';
 import {
   createLoadingSelector,
   handleDeleteLedgerCustomer,
+  handleFilterByIdLedgerAccounts,
+  handleFilterByIdLedgerCards,
+  handleFilterByIdLedgerStatements,
+  handleFilterByIdLedgerTransactions,
   handleFilterLedgerCustomers,
   LedgerCustomersActionTypes,
   resetCustomers,
@@ -33,6 +37,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterLedgerCustomers: handleFilterLedgerCustomers,
     deleteLedgerCustomer: handleDeleteLedgerCustomer,
+    filterLedgerCardsById: handleFilterByIdLedgerCards,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
+    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
     resetCustomers,
   },
   dispatch

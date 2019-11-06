@@ -10,7 +10,11 @@ import { CustomersFilter } from './forms';
 
 import {
   HandleDeleteLedgerCustomer,
+  HandleFilterLedgerAccountsById,
+  HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomers,
+  HandleFilterLedgerStatementsById,
+  HandleFilterLedgerTransactionsById,
   LedgerCustomerItemPrepared,
   ResetCustomers,
 } from 'store/domains';
@@ -25,6 +29,10 @@ export interface CustomersProps {
   ledgerCurrentCustomerName: string;
   resetCustomers: ResetCustomers;
   currentId: number;
+  filterLedgerCardsById: HandleFilterLedgerCardsById;
+  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
+  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -34,6 +42,10 @@ const Customers: React.FC<CustomersProps> = ({
   deleteLedgerCustomer,
   ledgerCurrentCustomerName,
   currentId,
+  filterLedgerCardsById,
+  filterLedgerTransactionsById,
+  filterLedgerStatementsById,
+  filterLedgerAccountsById,
   resetCustomers,
 }) => {
   React.useEffect(
@@ -52,20 +64,29 @@ const Customers: React.FC<CustomersProps> = ({
         withConfirmation: true,
         confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
       },
-      // {
-      //   name: 'Go to Accounts',
-      //   action: () => filterLedgerCustomersById({
-      //     customer_id : currentCustomerId
-      //   }),
-      // },
-      { name: 'Go to Cards',
-        action: console.log('LINK'),
+      {
+        name: 'Accounts',
+        action: () => filterLedgerAccountsById({
+          customer_id: currentId,
+        }),
       },
-      { name: 'Go to Statements',
-        action: console.log('LINK'),
+      {
+        name: 'Cards',
+        action: () => filterLedgerCardsById({
+          customer_id: currentId,
+        }),
       },
-      { name: 'Go to Transactions',
-        action: console.log('LINK'),
+      {
+        name: 'Statements',
+        action: () => filterLedgerStatementsById({
+          customer_id: currentId,
+        }),
+      },
+      {
+        name: 'Transactions',
+        action: () => filterLedgerTransactionsById({
+          customer_id: currentId,
+        }),
       },
     ],
     [deleteLedgerCustomer, ledgerCurrentCustomerName]
