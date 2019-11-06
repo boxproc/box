@@ -36,8 +36,8 @@ export const tableColumns = [
     maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Product Name" />,
-    accessor: 'productName',
-    Cell: (props: TCell<'productName'>) => (
+    accessor: 'product',
+    Cell: (props: TCell<'product'>) => (
       <TableCell
         value={props.value}
       />

@@ -104,14 +104,14 @@ export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepare
   status: string | number;
   institutionId: string | number;
   statementCycle: string | number;
-  productName: string | number;
+  product: string | number;
 }
 
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
   status: SelectValues;
   institutionId: SelectValues;
   statementCycle: SelectValues;
-  productName: SelectValues;
+  product: SelectValues;
 }
 
 export interface LedgerAccountsFilter extends LedgerAccountId {

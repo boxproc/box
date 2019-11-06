@@ -18,7 +18,7 @@ export interface LedgerStatementItem extends LedgerStatementId {
   cycle_execution_history_id: number;
   account_alias: string;
   institution_id: string | number;
-  product_name: string | number;
+  product_name: string;
   first_name: string;
   last_name: string;
   statement_cycle_description: string;
@@ -75,11 +75,11 @@ export interface LedgerStatementItemPrepared extends LedgerStatementId {
   balanceOpen: string | number;
   balanceClose: string | number;
   minimumAmountDueRepayment: string | number;
-  statementCycle: number | string;
+  statementCycleName: string;
   cycleExecutionHistoryId: number;
   accountAlias: string;
   institutionId: string | number;
-  productName: string | number;
+  productName: string;
   firstName: string;
   lastName: string;
 }

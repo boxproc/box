@@ -52,7 +52,7 @@ export const selectLedgerCurrentAccount = createSelector(
     return {
       ...preparedValuesDetailsToRender(current),
       institutionId: current && institutions.find(el => el.value === current.institution_id),
-      productName: current && institutionProducts.find(el => el.value === current.product_id),
+      product: current && institutionProducts.find(el => el.value === current.product_id),
       statementCycle: current && cyclesOptions.find(el => el.value === current.statement_cycle_id),
     };
   }
@@ -85,3 +85,24 @@ export const selectLedgerLastStatement = createSelector(
   selectDefaultLedgerLastStatement,
   lastStatement => lastStatement && prepareLastStatementValuesToRender(lastStatement)
 );
+
+// export const selectLedgerLastStatementForAccount = createSelector(
+//   selectDefaultLedgerLastStatement,
+//   lastStatement => {
+//     if (!lastStatement) {
+//       return null;
+//     }
+
+//     return {
+//         id: lastStatement.id,
+//         firstTransactionId: lastStatement.first_transaction_id,
+//         lastTransactionId: lastStatement.last_transaction_id,
+//         statementDate: lastStatement.statement_date,
+//         balanceOpen: lastStatement.balance_open && lastStatement.balance_open.toFixed(2),
+//         balanceClose: lastStatement.balance_close && lastStatement.balance_close.toFixed(2),
+//         minimumAmountDueRepayment: lastStatement.minimum_amount_due_repayment
+//           && lastStatement.minimum_amount_due_repayment.toFixed(2),
+//         statementCycle: lastStatement.statement_cycle_description,
+//       };
+//   }
+// );
