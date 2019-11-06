@@ -14,7 +14,6 @@
 
 .react-contextmenu-item {
   padding: 5px 10px;
-  margin-bottom: 1px;
   cursor: pointer;
   line-height: 1.5;
 }
@@ -39,6 +38,13 @@
 .react-contextmenu-item:hover {
   background-color: #f3f3f3;
   color: #ffa400;
+}
+
+.react-contextmenu-item--divider {
+  margin: 0 10px;
+  padding: 0;
+  height: 1px;
+  background-color: #e6e6e6;
 }
 
 .react-contextmenu::-webkit-scrollbar {
