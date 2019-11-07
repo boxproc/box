@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import AddSystemPropertyForm from './AddSystemPropertyForm';
+import SystemPropertyForm from './SystemPropertyForm';
 
 import {
   AdminSysPropsActionTypes,
   createLoadingSelector,
   handleAddAdminSysProp,
+  handleUpdateAdminSysProps,
+  selectCurrentAdminSysPropsItem,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -16,11 +18,13 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  initialValues: selectCurrentAdminSysPropsItem(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addAdminSysProp: handleAddAdminSysProp,
+    addAdminSystemProperty: handleAddAdminSysProp,
+    updateAdminSystemProperty: handleUpdateAdminSysProps,
   },
   dispatch
 );
@@ -28,4 +32,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddSystemPropertyForm);
+)(SystemPropertyForm);

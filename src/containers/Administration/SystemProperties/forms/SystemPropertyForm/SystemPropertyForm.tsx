@@ -14,28 +14,34 @@ import {
 
 import { formNamesConst } from 'consts';
 
-import { HandleAddAdminSysProp } from 'store/domains';
+import { HandleAddAdminSysProp, HandleUpdateAdminSysProps } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
-interface AddSystemPropertyFormProps extends ExternalSpinnerProps {
-  addAdminSysProp: HandleAddAdminSysProp;
+interface SystemPropertyFormProps extends ExternalSpinnerProps {
+  addAdminSystemProperty: HandleAddAdminSysProp;
+  updateAdminSystemProperty: HandleUpdateAdminSysProps;
+  isEditMode?: boolean;
   onCancel: () => void;
 }
 
-type AddSystemPropertyFormAllProps = AddSystemPropertyFormProps &
-  InjectedFormProps<{}, AddSystemPropertyFormProps>;
+type SystemPropertyFormAllProps = SystemPropertyFormProps &
+  InjectedFormProps<{}, SystemPropertyFormProps>;
 
-const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
+const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   handleSubmit,
-  addAdminSysProp,
+  isEditMode,
+  addAdminSystemProperty,
+  updateAdminSystemProperty,
   onCancel,
   dirty,
   pristine,
 }) => {
+
+  const action = isEditMode ?   updateAdminSystemProperty : addAdminSystemProperty;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => addAdminSysProp(data)),
-    [handleSubmit, addAdminSysProp]
+    handleSubmit(data => action(data)),
+    [handleSubmit, addAdminSystemProperty, updateAdminSystemProperty]
   );
 
   return (
@@ -52,9 +58,20 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
-              validate={[formErrorUtil.required]}
+              readOnly={isEditMode}
             />
           </Box>
+          {isEditMode && (
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="lastDatetime"
+              name="lastDatetime"
+              component={InputField}
+              label="Last Date Time"
+              readOnly={true}
+            />
+          </Box>
+        )}
           <Box width={[1 / 2]} p="10px">
             <Field
               id="currentValue"
@@ -65,6 +82,17 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
+          {isEditMode && (
+          <Box width={[1 / 2]} p="10px">
+            <Field
+              id="previousValue"
+              name="previousValue"
+              component={InputField}
+              label="Previous Value"
+              readOnly={true}
+            />
+          </Box>
+        )}
           <Box width={[1]} p="10px">
             <Field
               id="lockedFlag"
@@ -88,8 +116,8 @@ const AddSystemPropertyForm: React.FC<AddSystemPropertyFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AddSystemPropertyFormProps>({
+export default reduxForm<{}, SystemPropertyFormProps>({
   form: formNamesConst.ADD_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(AddSystemPropertyForm));
+})(withSpinner()(SystemPropertyForm));
