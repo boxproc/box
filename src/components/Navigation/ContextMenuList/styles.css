@@ -4,7 +4,6 @@
   max-height: 292px;
   max-width: 300px;
   border-radius: 2px;
-  /* overflow-y: auto; */
   padding: 1px;
   border: 1px solid #4d4d4d;
   background-color: #ffffff;
@@ -37,6 +36,10 @@
 
 .react-contextmenu-item:hover {
   background-color: #f3f3f3;
+  color: #ffa400;
+}
+
+.react-contextmenu-item:hover .icon {
   color: #ffa400;
 }
 

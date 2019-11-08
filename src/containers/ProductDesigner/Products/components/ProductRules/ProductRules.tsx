@@ -75,7 +75,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
 
   const onContextMenuClick = (e: Event, value: { name: string, description: string }) => {
     const textarea = document.querySelector('#rule-script') as HTMLInputElement;
-    const comment = value.description ? ` /*${value.description}*/` : '';
+    const comment = value.description ? ` /* ${value.description} */` : '';
     const code = getNewCode(`${value.name}${comment}`);
 
     changeFormField('script', code);

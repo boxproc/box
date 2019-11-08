@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { ScrollDisable } from 'theme/scrollbarCss';
 
 import { modalNamesConst } from 'consts';
 
@@ -9,6 +8,7 @@ import { modalsList } from 'containers/Modals/modalsList';
 
 interface ModalsWrapperProps {
   isBlured?: boolean;
+  onClick?: () => void;
 }
 
 const ModalsWrapper = styled.div<ModalsWrapperProps>`
@@ -31,7 +31,7 @@ interface ModalsProps {
 
 const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin, onClick }) => {
   return (
-    <div onClick={onClick}>
+    <React.Fragment>
       {modalsList.map((modal, index) => {
         if (!modalsStateList[`is${modal.name}`]) {
           return null;
@@ -43,13 +43,14 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin, onClick }) 
           <ModalsWrapper
             key={modal.name + index}
             isBlured={isRelogin && !isMessageModal}
+            onClick={onClick}
           >
-            <ScrollDisable />
+            {/* <ScrollDisable /> */}
             {modal.component}
           </ModalsWrapper>
         );
       })}
-    </div>
+    </React.Fragment>
   );
 };
 

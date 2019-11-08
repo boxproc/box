@@ -1,7 +1,7 @@
 import React from 'react';
 import { OptionProps } from 'react-select/lib/components/Option';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -50,13 +50,14 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
 
   return (
     <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
-      <Box mr="5px">
-        {isSelected
-          ? (<CheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
-          : (<UncheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
-        }
-      </Box>
-      <div>{children}</div>
+      <Flex alignItems="flex-start">
+        <Box mr="5px" mt="1px">
+          {isSelected
+            ? (<CheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
+            : (<UncheckedBoxIcon onClick={e => selectOption(modifiedData)} />)}
+        </Box>
+        <div>{children}</div>
+      </Flex>
     </OptionWrapper>
   );
 };

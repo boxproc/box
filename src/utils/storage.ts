@@ -1,4 +1,4 @@
-import { cookiesNames, sessionStorageNames, yesNoTypesCodes } from 'consts';
+import { cookiesExpires, cookiesNames, sessionStorageNames, yesNoTypesCodes } from 'consts';
 
 import { UserData } from 'store/domains';
 
@@ -44,7 +44,7 @@ export const setUserData = (data: UserData) =>
 export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNames.USER));
 
 export const setSessionId = (id: string) => cookiesUtil.set(cookiesNames.SESSION_ID, id, {
-  expires: 5,
+  expires: cookiesExpires.TEST_SESSION_ID,
 });
 
 export const getSessionId = () => cookiesUtil.get(cookiesNames.SESSION_ID);

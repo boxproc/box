@@ -169,20 +169,20 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
         </Box>
         <Box width={[1]} p="10px">
           <Field
-            id="lockedFlag"
-            name="lockedFlag"
-            component={CheckboxField}
-            label="Locked"
-          />
-        </Box>
-        <Box width={[1]} p="10px">
-          <Field
             id="description"
             name="description"
             placeholder="Enter Description"
             component={TextField}
             label="Description"
             height={115}
+          />
+        </Box>
+        <Box width={[1]} p="10px">
+          <Field
+            id="lockedFlag"
+            name="lockedFlag"
+            component={CheckboxField}
+            label="Locked"
           />
         </Box>
       </Flex>

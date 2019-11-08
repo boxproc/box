@@ -22,7 +22,9 @@ export const scrollbarCss = css`
 
 export const ScrollDisable = createGlobalStyle`
   body {
-  // .main-wrapper {
-    overflow: hidden;
+    .main-wrapper {
+      overflow: hidden;
+      height: auto;
+    }
   }
 `;

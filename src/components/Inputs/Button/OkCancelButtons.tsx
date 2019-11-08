@@ -15,7 +15,6 @@ interface WrapperProps {
 const Wrapper = styled(Flex) <WrapperProps>`
   align-items: center;
   justify-content: ${({ rightPosition }) => rightPosition ? 'flex-end' : 'flex-start'};
-  margin: 0 -10px;
 
   .btn-wrapper {
     position: relative;
