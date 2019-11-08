@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField } from 'components';
+import { CheckboxField, NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
@@ -18,8 +18,10 @@ const DebitDetails: React.FC = () => {
           <Field
             id="aprOverdraft"
             name="aprOverdraft"
-            placeholder="Enter Apr Overdraft"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Apr Overdraft"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}

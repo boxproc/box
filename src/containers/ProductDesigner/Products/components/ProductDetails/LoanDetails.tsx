@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, SelectField } from 'components';
+import { Delimiter, InputField, NumberFormatField, SelectField } from 'components';
 
 import { loanTypesOptions } from 'consts';
 
@@ -16,7 +16,7 @@ const LoanDetails: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="230px" p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="loanType"
             name="loanType"
@@ -27,24 +27,28 @@ const LoanDetails: React.FC = () => {
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Delimiter />
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="apr"
             name="apr"
-            placeholder="Enter Apr"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Apr"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
           />
         </Box>
-        <Delimiter />
-        <Box width="180px" p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="feeLatePayment"
             name="feeLatePayment"
-            placeholder="Enter Fee Late Payment"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}

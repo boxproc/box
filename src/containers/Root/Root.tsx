@@ -40,6 +40,7 @@ const RootWrapper = styled.div<RootWrapperProps>`
 
   ${({ isBlured }) => isBlured && `
     filter: blur(3px);
+    pointer-events: none;
   `};
 `;
 

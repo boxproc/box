@@ -1,8 +1,7 @@
 import React from 'react';
-
-import { Box, Flex } from '@rebass/grid';
-
 import { CellInfo } from 'react-table';
+
+import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
 
@@ -60,6 +59,14 @@ export const renderEditableTableCell = (data: {
     );
   };
 
+const CheckBoxWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 2px;
+`;
+
 export const renderCheckBoxTableCell = (updateAction?: (data: object) => void) =>
   (cellInfo: CellInfo) => {
     const isLocked = cellInfo.value === true;
@@ -71,21 +78,19 @@ export const renderCheckBoxTableCell = (updateAction?: (data: object) => void) =
     });
 
     return (
-      <Box width="100%">
-        <Flex justifyContent="center">
-          {
-            isLocked
-              ? (<CheckedBoxIcon />)
-              : (
-                <div
-                  style={{ cursor: updateAction && 'pointer' }}
-                  onClick={handleClick}
-                >
-                  <UncheckedBoxIcon />
-                </div>
-              )
-          }
-        </Flex>
-      </Box>
+      <CheckBoxWrapper>
+        {
+          isLocked
+            ? (<CheckedBoxIcon />)
+            : (
+              <div
+                style={{ cursor: updateAction && 'pointer' }}
+                onClick={handleClick}
+              >
+                <UncheckedBoxIcon />
+              </div>
+            )
+        }
+      </CheckBoxWrapper>
     );
   };

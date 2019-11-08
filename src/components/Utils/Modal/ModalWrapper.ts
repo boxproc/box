@@ -89,5 +89,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
 
   ${({ isBlured }) => isBlured && `
     filter: blur(3px);
+    pointer-events: none;
   `};
 `;

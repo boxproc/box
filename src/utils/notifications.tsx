@@ -28,8 +28,10 @@ const errorMessage = (res: Error) => {
   if (res) {
     if (res.statusCode && res.statusCode === 404) {
       return JSON.stringify(res.error.message);
+      // return res.error.message.toString();
     } else {
       return JSON.stringify(res);
+      // return res.toString();
     }
   } else {
     return 'An error occurred.';
