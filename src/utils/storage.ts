@@ -44,7 +44,7 @@ export const setUserData = (data: UserData) =>
 export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNames.USER));
 
 export const setSessionId = (id: string) => cookiesUtil.set(cookiesNames.SESSION_ID, id, {
-  expires: 600,
+  expires: 5,
 });
 
 export const getSessionId = () => cookiesUtil.get(cookiesNames.SESSION_ID);

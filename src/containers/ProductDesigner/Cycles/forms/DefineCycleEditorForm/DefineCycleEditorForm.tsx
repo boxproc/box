@@ -103,7 +103,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               name="status"
               component={SelectField}
               label="Status"
-              placeholder="Select Cycles Status"
+              placeholder="Select Status"
               options={statusTypeCyclesOptions}
               validate={[formErrorUtil.required]}
             />
@@ -112,9 +112,9 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
             <Field
               id="description"
               name="description"
-              placeholder="Enter Cycles Description"
+              placeholder="Enter Description"
               component={TextField}
-              label="Cycles Description"
+              label="Description"
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -122,7 +122,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
             <Field
               id="cycleType"
               name="cycleType"
-              placeholder="Enter Cycles Type"
+              placeholder="Select Cycles Type"
               component={SelectField}
               options={typeOfCyclesEditorOptions}
               label="Cycles Type"
@@ -135,9 +135,9 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               <Field
                 id="monthlyCycleFirstDay"
                 name="monthlyCycleFirstDay"
-                placeholder="Enter Monthly Cycle First Day "
+                placeholder="Enter Monthly First Day "
                 component={InputField}
-                label="Cycles Monthly Cycle First Day"
+                label="Monthly Cycle First Day"
                 options={executableTypeOptions}
                 isNumber={true}
               />
@@ -148,10 +148,10 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               <Field
                 id="weeklyCycleFirstDay"
                 name="weeklyCycleFirstDay"
-                placeholder="Enter Weekly Cycle First Day "
+                placeholder="Enter Weekly First Day "
                 component={SelectField}
                 options={weeklyCycleTypeOptions}
-                label="Cycles Weekly Cycle First Day"
+                label="Weekly First Day"
               />
             </Box>
           )}
@@ -160,9 +160,9 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               <Field
                 id="fixedCycleNumberOfDays"
                 name="fixedCycleNumberOfDays"
-                placeholder="Enter Fixed Cycle Number of Days"
+                placeholder="Enter Fixed Number of Days"
                 component={InputField}
-                label="Cycles Fixed Number of Days"
+                label="Fixed Number of Days"
                 isNumber={true}
               />
             </Box>

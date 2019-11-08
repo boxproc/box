@@ -31,23 +31,23 @@ const MonoTitleStr = styled.div`
 `;
 
 interface ModalProps extends WithModalProps {
-  name: string;
-  title?: string;
-  monoTitleStr?: string;
-  type?: string;
-  maxContainerWidth?: string;
-  minContainerHeight?: string;
-  zIndex?: string;
-  accentClose?: boolean;
-  closeOnBackdrop?: boolean;
-  withCloseConfirmation?: boolean;
-  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
-  setActiveItemId: HandleSetActiveItemId;
-  setIsClearActiveIds: HandleSetIsClearActiveIds;
-  setIsEditModalOpened: SetIsEditModalOpened;
-  isEditModalOpened: boolean;
-  containerWidthAuto?: boolean;
-  containerHeightFull?: boolean;
+  name: string; // modal name
+  title?: string; // modal title
+  monoTitleStr?: string; // addition string to modal title. monoTitleStr has mono font-family.
+  type?: string; // modal type, e.g. 'messageModal', 'editModal' etc.
+  maxContainerWidth?: string; // max width of modal container
+  minContainerHeight?: string; // min height of modal container
+  zIndex?: string; // z-index of modal
+  accentClose?: boolean; // gives accent color for close icon '&times;'
+  closeOnBackdrop?: boolean; // allows close modal on backdrop
+  withCloseConfirmation?: boolean; // opens confirmation modal by modal close
+  setActiveTableRowIndex: HandleSetActiveTableRowIndex; // sets active table row index to store
+  setActiveItemId: HandleSetActiveItemId; // sets active item index to store
+  setIsClearActiveIds: HandleSetIsClearActiveIds; // clearing table row and item indexes in store
+  setIsEditModalOpened: SetIsEditModalOpened;  // sets open state of edit modal to store
+  isEditModalOpened: boolean; // open state of edit modal
+  containerWidthAuto?: boolean; // sets width of container to 'auto'
+  containerHeightFull?: boolean; // sets height of container to '100vh'
 }
 
 const Modal: React.FC<ModalProps> = ({

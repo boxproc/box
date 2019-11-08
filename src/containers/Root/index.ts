@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 
 import Root from './Root';
 
-import { AuthActionTypes, createLoadingSelector, selectVisibleUiItems } from 'store/domains';
+import {
+  AuthActionTypes,
+  createLoadingSelector,
+  selectVisibleUiItems,
+} from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 

@@ -1,5 +1,7 @@
 import { openModal } from 'store/domains';
 
+import config from 'config';
+
 import { modalNamesConst } from 'consts';
 
 import { SendNotification } from 'types';
@@ -38,7 +40,9 @@ export const handleSendNotification: SendNotification =
   (res, isCatch = false) =>
     async dispatch => {
       if (isCatch) {
-        console.log('---res', res);
+        if (config.isDevelopment) {
+          console.log('---res', res);
+        }
 
         if (res && res.body && res.body.response_status) {
           const { error_message, error_description, status_code } = res.body.response_status;

@@ -26,13 +26,21 @@ import { pagesList } from 'containers/pagesList';
 
 import { storageUtil } from 'utils';
 
-const RootWrapper = styled.div`
+interface RootWrapperProps {
+  isBlured?: boolean;
+}
+
+const RootWrapper = styled.div<RootWrapperProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 1025px;
   height: 100vh;
   padding-top: 70px;
+
+  ${({ isBlured }) => isBlured && `
+    filter: blur(3px);
+  `};
 `;
 
 const PagesWrapper = styled(Container)`
@@ -43,22 +51,41 @@ interface RootProps extends ExternalSpinnerProps, WithModalProps {
   visibleUiItems: Array<string>;
 }
 
-const Root: React.FC<RootProps> = ({ visibleUiItems, openModal }) => {
+const Root: React.FC<RootProps> = ({
+  visibleUiItems,
+  openModal,
+}) => {
+  const [isRelogin, setIsRelogin] = React.useState(false);
   const isLoggedIn = storageUtil.getLoginFlag();
-  const sessionId = storageUtil.getSessionId();
+
+  React.useEffect (
+    () => {
+      if (isLoggedIn && !storageUtil.getSessionId()) {
+        setIsRelogin(true);
+      }
+    },
+    [isLoggedIn, isRelogin]
+  );
 
   React.useEffect(
     () => {
-      if (isLoggedIn && !sessionId) {
+      if (isRelogin) {
         openModal({
           name: modalNamesConst.MESSAGE_MODAL,
-          payload: {
-            type: modalTypesConst.SESSION_ENDED,
-          },
+          payload: { type: modalTypesConst.SESSION_ENDED },
         });
       }
     },
-    [isLoggedIn, sessionId, openModal]
+    [isRelogin, openModal]
+  );
+
+  const handleCheckIsRelogin = React.useCallback(
+    () => {
+      if (isLoggedIn && !storageUtil.getSessionId()) {
+        setIsRelogin(true);
+      }
+    },
+    [isLoggedIn]
   );
 
   const routes = React.useMemo(
@@ -79,13 +106,12 @@ const Root: React.FC<RootProps> = ({ visibleUiItems, openModal }) => {
 
   return (
     <PerfectScrollbar>
-      <RootWrapper className="main-wrapper">
+      <RootWrapper
+        isBlured={isRelogin}
+        className="main-wrapper"
+      >
         <div>
-          <div>
-            {isLoggedIn && (
-              <Header />
-            )}
-          </div>
+          <div>{isLoggedIn && (<Header />)}</div>
           <main>
             <PagesWrapper>
               <Switch>
@@ -98,26 +124,24 @@ const Root: React.FC<RootProps> = ({ visibleUiItems, openModal }) => {
                 />
                 {routes}
                 <PrivateRoute
-                  // exact={true}
                   path={basePath}
                   component={Home}
                 />
-                {!isLoggedIn && (
-                  <Redirect from="*" to={basePath} />
-                )}
+                {!isLoggedIn && (<Redirect from="*" to={basePath} />)}
               </Switch>
             </PagesWrapper>
           </main>
         </div>
         <Footer />
       </RootWrapper>
-      <Modals />
+      <Modals
+        isRelogin={isRelogin}
+        onClick={handleCheckIsRelogin}
+      />
     </PerfectScrollbar>
   );
 };
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(Root)
-);
+})(withModal(Root));

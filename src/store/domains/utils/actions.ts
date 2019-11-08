@@ -18,7 +18,6 @@ export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
 export type HandleSetIsClearActiveIds = (value: boolean) => void;
 
 export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
-export type HandleSetIsOpenFilter = (value: boolean) => void;
 
 export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
@@ -64,5 +63,3 @@ export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemI
 
 export const handleSetIsClearActiveIds: HandleSetIsClearActiveIds = value =>
   setIsClearActiveIds(value);
-
-export const handleSetIsOpenFilter: HandleSetIsOpenFilter = value => setIsOpenFilter(value);

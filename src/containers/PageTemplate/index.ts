@@ -4,10 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import PageTemplate from './PageTemplate';
 
 import {
-  handleSetIsOpenFilter,
   resetUtils,
   selectIsAutoRefresh,
   selectIsOpenFilter,
+  setIsOpenFilter,
   stopAutoRefresh,
 } from 'store/domains';
 
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     stopAutoRefresh,
     resetUtils,
-    setIsOpenFilter: handleSetIsOpenFilter,
+    setIsOpenFilter,
   },
   dispatch
 );

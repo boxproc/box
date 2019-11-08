@@ -12,7 +12,7 @@ import { iconNamesConst } from 'consts';
 import EditableTable from './EditableTable';
 import Filter from './Filter';
 
-import { HandleSetIsOpenFilter, ResetUtils, StopAutoRefresh } from 'store/domains';
+import { ResetUtils, SetIsOpenFilter, StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
 import { cookiesUtil, stringsUtil } from 'utils';
@@ -31,7 +31,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   AdditionalButton?: ReactChild;
   initialFilterValues?: object;
   filterData: object;
-  setIsOpenFilter: HandleSetIsOpenFilter;
+  setIsOpenFilter: SetIsOpenFilter;
   isOpenFilter: boolean;
 }
 

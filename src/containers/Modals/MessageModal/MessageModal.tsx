@@ -20,7 +20,6 @@ const modalName = modalNamesConst.MESSAGE_MODAL;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
-  closeAllModals,
 }) => {
   const { title, message, details, statusCode, type } = payloadMessageModal;
 
@@ -37,12 +36,12 @@ const MessageModal: React.FC<MessageModalProps> = ({
       return () => {
         if (isReLogin) {
           storageUtil.clear();
-          closeAllModals();
+          closeModal(modalName);
           urlUtil.openLocation(basePath);
         }
       };
     },
-    [statusCode, closeAllModals, isReLogin]
+    [statusCode, closeModal, isReLogin]
   );
 
   const [isVisibleDetail, setVisibleDetail] = React.useState(false);

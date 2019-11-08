@@ -88,9 +88,7 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = () =>
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE_MODAL,
-          payload: {
-            title: 'Card was activate',
-          },
+          payload: { title: 'Card was activate' },
         }));
       },
       dispatch

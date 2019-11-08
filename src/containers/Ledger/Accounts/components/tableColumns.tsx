@@ -44,7 +44,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Product Override" />,
     accessor: 'productOverrideFlag',
@@ -96,7 +96,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
