@@ -29,6 +29,7 @@ export enum modalNamesConst {
   LEDGER_STATEMENTS = 'LedgerStatements',
 
   ADD_SYSTEM_PROPERTY = 'AddSystemPropertyModal',
+  EDIT_SYSTEM_PROPERTY = 'EditSystemPropertyModal',
   ADD_CYCLE_EDITOR = 'AddCycleEditorModal',
   EDIT_CYCLE_EDITOR = 'EditCycleEditorRecordsModal',
   ADD_SCHEDULER = 'AddSchedulerModal',

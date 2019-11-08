@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   renderCheckBoxTableCell,
-  renderEditableTableCell,
   TableCell,
   TableHeader,
   withSpinner,
@@ -66,10 +65,11 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       sortable: true,
       Header: <TableHeader title="Current Value" />,
       accessor: 'currentValue',
-      Cell: renderEditableTableCell({
-        updateAction: updateAdminSysProps,
-        isNumber: true,
-      }),
+      Cell: (props: TCell<'currentValue'>) => (
+        <TableCell
+          value={props.value}
+        />
+      ),
     },
     {
       maxWidth: 300,
@@ -79,7 +79,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       Cell: (props: TCell<'previousValue'>) => (
         <TableCell
           value={props.value}
-          isNumber={true}
         />
       ),
     },
@@ -132,6 +131,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       data={adminSysPropsItems}
       columns={columns}
       newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
+      editModalName={modalNamesConst.EDIT_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSysProps}
       FilterForm={

@@ -1,2 +1,2 @@
-export { default as AddSystemPropertyForm } from './AddSystemPropertyForm';
+export { default as SystemPropertyForm } from './SystemPropertyForm';
 export { default as SystemPropertyFilter } from './SystemPropertyFilter';

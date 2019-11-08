@@ -7,16 +7,13 @@ import { modalNamesConst } from 'consts';
 
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
-import { HandleAddAdminSysProp } from 'store/domains';
-
 interface AddSystemPropertyModalProps extends WithModalProps {
-  addAdminSysProp: HandleAddAdminSysProp;
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_SYSTEM_PROPERTY;
+const modalName = modalNamesConst.EDIT_SYSTEM_PROPERTY;
 
-const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
+const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
   isFormDirty,
 }) => {
@@ -28,13 +25,16 @@ const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Add System Property"
+      title="Edit System Property"
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}
     >
-      <SystemPropertyForm onCancel={handleOnCancel} />
+      <SystemPropertyForm
+        onCancel={handleOnCancel}
+        isEditMode={true}
+      />
     </Modal>
   );
 };
 
-export default withModal(AddSystemPropertyModal);
+export default withModal(EditSystemPropertyModal);

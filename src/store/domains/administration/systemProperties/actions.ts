@@ -110,6 +110,7 @@ export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =
         });
 
         await dispatch(updateAdminSysProps(preparedValues));
+        dispatch(closeModal(modalNamesConst.EDIT_SYSTEM_PROPERTY));
         await dispatch(handleFilterAdminSysProps());
       },
       dispatch
