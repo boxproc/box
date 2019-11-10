@@ -5,9 +5,11 @@
   "dependencies": {
     "@rebass/grid": "^6.0.0",
     "connected-react-router": "^6.4.0",
+    "core-js": "^3.4.0",
     "moment": "^2.24.0",
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.4",
     "react-autosize-textarea": "^7.0.0",
     "react-contextmenu": "^2.13.0",
     "react-cron-builder": "^1.0.4",

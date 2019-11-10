@@ -372,7 +372,6 @@ export const handleAddProduct: HandleAddProduct = values =>
 
         await dispatch(addProduct(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
-        await dispatch(handleFilterProducts());
       },
       dispatch
     );

@@ -59,7 +59,7 @@ const Root: React.FC<RootProps> = ({
   const [isRelogin, setIsRelogin] = React.useState(false);
   const isLoggedIn = storageUtil.getLoginFlag();
 
-  React.useEffect (
+  React.useEffect(
     () => {
       if (isLoggedIn && !storageUtil.getSessionId()) {
         setIsRelogin(true);
@@ -78,15 +78,6 @@ const Root: React.FC<RootProps> = ({
       }
     },
     [isRelogin, openModal]
-  );
-
-  const handleCheckIsRelogin = React.useCallback(
-    () => {
-      if (isLoggedIn && !storageUtil.getSessionId()) {
-        setIsRelogin(true);
-      }
-    },
-    [isLoggedIn]
   );
 
   const routes = React.useMemo(
@@ -135,10 +126,7 @@ const Root: React.FC<RootProps> = ({
         </div>
         <Footer />
       </RootWrapper>
-      <Modals
-        isRelogin={isRelogin}
-        onClick={handleCheckIsRelogin}
-      />
+      <Modals isRelogin={isRelogin} />
     </PerfectScrollbar>
   );
 };

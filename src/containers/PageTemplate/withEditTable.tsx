@@ -109,7 +109,10 @@ export const withEditTable = <OriginProps extends {}>(
       (_, rowInfo: RowInfo) => {
         const isLocked = rowInfo.original.lockedFlag;
         const id = rowInfo.original.id;
-        const rowIndex = rowInfo.index + 1; // from 1 for css style
+        const rowIndexOriginal = rowInfo.index + 1; // from 1 for css style
+        const rowIndex = rowInfo.page
+          ? rowIndexOriginal - rowInfo.pageSize * rowInfo.page
+          : rowIndexOriginal;
 
         return {
           onDoubleClick: () => {

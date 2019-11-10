@@ -8,7 +8,6 @@ import { modalsList } from 'containers/Modals/modalsList';
 
 interface ModalsWrapperProps {
   isBlured?: boolean;
-  onClick?: () => void;
 }
 
 const ModalsWrapper = styled.div<ModalsWrapperProps>`
@@ -26,10 +25,9 @@ const ModalsWrapper = styled.div<ModalsWrapperProps>`
 interface ModalsProps {
   modalsStateList?: object;
   isRelogin: boolean;
-  onClick?: () => void;
 }
 
-const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin, onClick }) => {
+const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin }) => {
   return (
     <React.Fragment>
       {modalsList.map((modal, index) => {
@@ -43,7 +41,6 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin, onClick }) 
           <ModalsWrapper
             key={modal.name + index}
             isBlured={isRelogin && !isMessageModal}
-            onClick={onClick}
           >
             {/* <ScrollDisable /> */}
             {modal.component}
