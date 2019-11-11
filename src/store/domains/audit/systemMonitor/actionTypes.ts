@@ -1,5 +1,6 @@
 import { ApiResponse, LogData } from 'types';
 import {
+  ItemInfoForLogDataRequest,
   SystemMonitorEndpointsData,
   SystemMonitorInterfacesData,
   SystemMonitorSchedulerData,
@@ -106,6 +107,7 @@ export interface GetLogDataAction {
 export interface GetLogDataFulfilledAction {
   readonly payload: LogData;
   readonly type: ActionTypeKeys.GET_LOG_DATA_FULFILLED;
+  readonly meta: ItemInfoForLogDataRequest;
 }
 
 export interface GetLogDataRejectedAction {

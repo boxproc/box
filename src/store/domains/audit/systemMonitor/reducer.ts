@@ -9,6 +9,7 @@ export const systemMonitorInitialState:
     endpoints: null,
     scheduler: null,
     lastTransactions: null,
+    activeItemInfoForLogData: null,
   });
 
 const auditSystemMonitorReducer = (
@@ -27,6 +28,9 @@ const auditSystemMonitorReducer = (
 
     case ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_FULFILLED:
       return state.set('lastTransactions', action.payload.transactions);
+
+    case ActionTypeKeys.GET_LOG_DATA_FULFILLED:
+      return state.set('activeItemInfoForLogData', action.meta);
 
     case ActionTypeKeys.RESET_SYSTEM_MONITOR:
       return state = systemMonitorInitialState;

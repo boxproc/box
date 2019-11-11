@@ -10,11 +10,12 @@ import {
   GetSystemMonitorSchedulerAction,
 } from './actionTypes';
 import * as api from './api';
-import { LogDataRequest } from './types';
+import { ItemInfoForLogDataRequest, LogDataRequest } from './types';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
+import { selectActiveItemInfoForLogData } from './selectors';
 
 export type HandleGetSystemMonitorData = (refreshedTables?: Array<string>) => Thunk<void>;
 
@@ -23,12 +24,15 @@ export type GetSystemMonitorEndpoints = () => GetSystemMonitorEndpointsAction;
 export type GetSystemMonitorScheduler = () => GetSystemMonitorSchedulerAction;
 export type GetSystemMonitorLastTransactions = () => GetSystemMonitorLastTransactionsAction;
 
-export type GetLogData = (data: LogDataRequest) => GetLogDataAction;
-export type HandleGetLogData = (data: {
-  name: string;
-  id?: number;
-  title?: string;
-}) => Thunk<void>;
+export type GetLogData = (
+  data: {
+    requestData: LogDataRequest,
+    itemData: ItemInfoForLogDataRequest
+  }
+) =>
+  GetLogDataAction;
+export type HandleGetLogData = (data: ItemInfoForLogDataRequest) => Thunk<void>;
+export type HandleRefreshLogData = () => Thunk<void>;
 
 export type ResetSystemMonitor = () => void;
 
@@ -54,7 +58,8 @@ export const getSystemMonitorLastTransactions: GetSystemMonitorLastTransactions 
 
 export const getLogData: GetLogData = data => ({
   type: ActionTypeKeys.GET_LOG_DATA,
-  payload: api.getLogData(data),
+  payload: api.getLogData(data.requestData),
+  meta: data.itemData,
 });
 
 export const resetSystemMonitor: ResetSystemMonitor = () => ({
@@ -112,14 +117,18 @@ export const handleGetLogData: HandleGetLogData = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const { name, id, title } = data;
+
         const current = tablesConfig.find(el => el.name === name);
 
         const apiPathName = current && current.apiLogPathName;
         const idName = current && current.idName;
 
         const res = await dispatch(getLogData({
-          id: id ? { [idName]: id } : {},
-          apiPathName,
+          requestData: {
+            id: id ? { [idName]: id } : {},
+            apiPathName,
+          },
+          itemData: data,
         })) as any;
 
         if (res) {
@@ -132,6 +141,19 @@ export const handleGetLogData: HandleGetLogData = data =>
             },
           }));
         }
+      },
+      dispatch
+    );
+  };
+
+export const handleRefreshLogData: HandleRefreshLogData = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const itemData = selectActiveItemInfoForLogData(state);
+
+        await dispatch(handleGetLogData(itemData));
       },
       dispatch
     );

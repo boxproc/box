@@ -10,5 +10,6 @@ export enum iconNamesConst {
   QRCODE = 'qrcode',
   USER = 'user',
   STOP = 'stop',
-  SHORT_TEXT = 'ShortText',
+  SHORT_TEXT = 'shortText',
+  REFRESH = 'refresh',
 }

@@ -97,6 +97,12 @@ export interface LogDataRequest {
   apiPathName: string;
 }
 
+export interface ItemInfoForLogDataRequest {
+  name: string;
+  id?: number;
+  title?: string;
+}
+
 export interface SystemMonitorState {
   interfaces: {
     interfaces_data: ImmutableArray<SystemMonitorInterfaces>;
@@ -114,4 +120,5 @@ export interface SystemMonitorState {
     total_faulty_scheduler_jobs: number;
   };
   lastTransactions: ImmutableArray<SystemMonitorTransactionItem>;
+  activeItemInfoForLogData: ItemInfoForLogDataRequest;
 }

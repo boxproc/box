@@ -26,6 +26,7 @@ const ModalTitle = styled(T2)`
 
 const MonoTitleStr = styled.div`
   padding-right: 15px;
+  margin-bottom: 10px;
   font-size: 16px;
   font-family: ${({ theme }) => theme.fonts.code};
 `;
@@ -136,7 +137,10 @@ const Modal: React.FC<ModalProps> = ({
         >
           &times;
         </span>
-        <Flex alignItems="baseline">
+        <Flex
+          alignItems="baseline"
+          flexWrap="wrap"
+        >
           {title && (
             <ModalTitle>{title}</ModalTitle>
           )}

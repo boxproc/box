@@ -15,6 +15,9 @@ export const selectDefaultSystemMonitorScheduler = (state: StoreState) =>
 export const selectDefaultSystemMonitorLastTransactions = (state: StoreState) =>
   state.audit.systemMonitor.lastTransactions;
 
+export const selectActiveItemInfoForLogData = (state: StoreState) =>
+  state.audit.systemMonitor.activeItemInfoForLogData;
+
 export const selectSystemMonitorInterfaces = createSelector(
   selectDefaultSystemMonitorInterfaces,
   interfaces => {

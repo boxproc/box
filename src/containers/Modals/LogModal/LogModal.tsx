@@ -2,15 +2,16 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, HighlightCode, Modal } from 'components';
+import { Button, ExternalSpinnerProps, HighlightCode, Modal, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
-import { PayloadLogModal } from 'store/domains';
+import { HandleRefreshLogData, PayloadLogModal } from 'store/domains';
 
-interface LogModalProps extends WithModalProps {
+interface LogModalProps extends WithModalProps, ExternalSpinnerProps {
   data: PayloadLogModal;
+  refreshLogData: HandleRefreshLogData;
 }
 
 const modalName = modalNamesConst.LOG_MODAL;
@@ -18,6 +19,8 @@ const modalName = modalNamesConst.LOG_MODAL;
 const LogModal: React.FC<LogModalProps> = ({
   data,
   closeModal,
+  refreshLogData,
+  isLoading,
 }) => {
   const title = React.useMemo(
     () => data.title ? data.title : 'Master log',
@@ -31,7 +34,7 @@ const LogModal: React.FC<LogModalProps> = ({
     [data]
   );
 
-  const handleOnCancel = React.useCallback(
+  const handleCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
@@ -50,16 +53,23 @@ const LogModal: React.FC<LogModalProps> = ({
         whiteSpacePre={true}
         isScrollbarBottom={true}
       />
-      <Flex justifyContent="flex-end">
-        <Box mt="10px">
+      <Box mt="10px">
+        <Flex justifyContent="space-between">
+          <Button
+            text={isLoading ? 'Refreshing...' : 'Refresh'}
+            iconName={iconNamesConst.REFRESH}
+            onClick={refreshLogData}
+          />
           <Button
             text="close"
-            onClick={handleOnCancel}
+            onClick={handleCancel}
           />
-        </Box>
-      </Flex>
+        </Flex>
+      </Box>
     </Modal>
   );
 };
 
-export default withModal(LogModal);
+export default withSpinner({
+  isFixed: true,
+})(withModal(LogModal));
