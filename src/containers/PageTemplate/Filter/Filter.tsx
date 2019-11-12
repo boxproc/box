@@ -10,7 +10,7 @@ import { Button, T3 } from 'components';
 
 import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
 
-import { StopAutoRefresh } from 'store/domains';
+import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
 
@@ -28,6 +28,7 @@ interface FilterProps {
   stopAutoRefresh: StopAutoRefresh;
   isAutoRefresh: boolean;
   location: H.Location;
+  setIsAccessibleFiltering: SetIsAccessibleFiltering;
 }
 
 export const filteredFieldsToStore = (data: object) => {
@@ -50,6 +51,7 @@ const Filter: React.FC<FilterAllProps> = ({
   stopAutoRefresh,
   isAutoRefresh,
   location,
+  setIsAccessibleFiltering,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
@@ -68,44 +70,98 @@ const Filter: React.FC<FilterAllProps> = ({
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );
 
-  const hasInstitution = filterValues && filterValues['institutionId'];
-  const hasId = filterValues && filterValues['id'];
-  const hasAccountId = filterValues && filterValues['accountId'];
-  const hasCustomerId = filterValues && filterValues['customerId'];
-  const hasProductName = filterValues && filterValues['productName'];
-  const hasAccountAlias = filterValues && filterValues['accountAlias'];
-  const hasLastName = filterValues && filterValues['lastName'];
+  const hasInstitution = React.useMemo(
+    () => filterValues && filterValues['institutionId'],
+    [filterValues]
+  );
 
-  const valuesCount = filterValues
-    && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0);
+  const hasId = React.useMemo(
+    () => filterValues && filterValues['id'],
+    [filterValues]
+  );
 
-  const isAccessibleButton = () => {
-    switch (location.pathname) {
-      case `${basePath}${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
-      case `${basePath}${uiItemConsts.ADMINISTRATION_USER}`:
-      case `${basePath}${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
-        return valuesCount >= 0;
+  const hasAccountId = React.useMemo(
+    () => filterValues && filterValues['accountId'],
+    [filterValues]
+  );
 
-      case `${basePath}${uiItemConsts.AUDIT_API_CALLS}`:
-      case `${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`:
-        return valuesCount > 1;
+  const hasCustomerId = React.useMemo(
+    () => filterValues && filterValues['customerId'],
+    [filterValues]
+  );
 
-      case `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`:
-        return hasInstitution && (hasId || hasAccountAlias || hasLastName);
+  const hasProductName = React.useMemo(
+    () => filterValues && filterValues['productName'],
+    [filterValues]
+  );
 
-      case `${basePath}${uiItemConsts.LEDGER_STATEMENTS}`:
-        return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
+  const hasAccountAlias = React.useMemo(
+    () => filterValues && filterValues['accountAlias'],
+    [filterValues]
+  );
 
-      case `${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`:
-        return hasInstitution && (hasId || hasLastName);
+  const hasLastName = React.useMemo(
+    () => filterValues && filterValues['lastName'],
+    [filterValues]
+  );
 
-      case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
-        return hasInstitution && (hasId || hasProductName || hasCustomerId);
+  const valuesCount = React.useMemo(
+    () => filterValues && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0),
+    [filterValues]
+  );
 
-      default:
-        return valuesCount > 0;
-    }
-  };
+  const isAccessibleButton = React.useCallback(
+    () => {
+      switch (location.pathname) {
+        case `${basePath}${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
+        case `${basePath}${uiItemConsts.ADMINISTRATION_USER}`:
+        case `${basePath}${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
+          return valuesCount >= 0;
+
+        case `${basePath}${uiItemConsts.AUDIT_API_CALLS}`:
+        case `${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`:
+          return valuesCount > 1;
+
+        case `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`:
+          return hasInstitution && (hasId || hasAccountAlias || hasLastName);
+
+        case `${basePath}${uiItemConsts.LEDGER_STATEMENTS}`:
+          return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
+
+        case `${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`:
+          return hasInstitution && (hasId || hasLastName);
+
+        case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
+          return hasInstitution && (hasId || hasProductName || hasCustomerId);
+
+        default:
+          return valuesCount > 0;
+      }
+    },
+    [
+      hasAccountAlias,
+      hasAccountId,
+      hasCustomerId,
+      hasId,
+      hasInstitution,
+      hasLastName,
+      hasProductName,
+      location,
+      valuesCount,
+    ]
+  );
+
+  const isDisabled = React.useMemo(
+    () => invalid || !isAccessibleButton(),
+    [isAccessibleButton, invalid]
+  );
+
+  React.useEffect(
+    () => {
+      setIsAccessibleFiltering(!isDisabled);
+    },
+    [isDisabled, setIsAccessibleFiltering]
+  );
 
   return (
     <FilterWrapper>
@@ -113,7 +169,7 @@ const Filter: React.FC<FilterAllProps> = ({
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-start" flexWrap="wrap">{children}</Flex>
-          <Button text="Show" disabled={invalid || !isAccessibleButton()} />
+          <Button text="Show" disabled={isDisabled} />
         </Box>
       </form>
     </FilterWrapper >

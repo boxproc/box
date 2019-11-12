@@ -5,7 +5,12 @@ import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts'
 
 import { closeModal, openModal } from 'store/domains/modals';
 
-import { selectActiveItemId, setActiveItemId, setIsOpenFilter } from 'store/domains/utils';
+import {
+  selectActiveItemId,
+  selectIsAccessibleFiltering,
+  setActiveItemId,
+  setIsOpenFilter,
+} from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,
@@ -157,13 +162,19 @@ export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accoun
   };
 
 export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addLedgerAccount(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterLedgerAccounts());
+        }
       },
       dispatch
     );

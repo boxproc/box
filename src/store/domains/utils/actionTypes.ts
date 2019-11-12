@@ -9,6 +9,8 @@ export enum ActionTypeKeys {
 
   SET_IS_OPEN_FILTER = 'utils/SET_IS_OPEN_FILTER',
 
+  SET_IS_ACCESSIBLE_FILTERING = 'utils/SET_IS_ACCESSIBLE_FILTERING',
+
   SET_IS_RELOGIN = 'utils/SET_IS_RELOGIN',
 
   RESET_UTILS = 'utils/RESET_UTILS',
@@ -32,6 +34,11 @@ export interface SetIsClearActiveIdsAction {
 export interface SetIsOpenFilterAction {
   readonly payload: boolean;
   readonly type: ActionTypeKeys.SET_IS_OPEN_FILTER;
+}
+
+export interface SetIsAccessibleFilteringAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING;
 }
 
 export interface SetIsReloginAction {
@@ -59,4 +66,5 @@ export type UtilsActionTypes =
   | ResetUtilsAction
   | SetIsClearActiveIdsAction
   | SetIsOpenFilterAction
+  | SetIsAccessibleFilteringAction
   | SetIsReloginAction;

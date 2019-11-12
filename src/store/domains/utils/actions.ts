@@ -2,6 +2,7 @@ import {
   ActionTypeKeys,
   SetActiveItemIdAction,
   SetActiveTableRowIndexAction,
+  SetIsAccessibleFilteringAction,
   SetIsClearActiveIdsAction,
   SetIsOpenFilterAction,
   SetIsReloginAction,
@@ -19,6 +20,8 @@ export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
 export type HandleSetIsClearActiveIds = (value: boolean) => void;
 
 export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
+
+export type SetIsAccessibleFiltering = (value: boolean) => SetIsAccessibleFilteringAction;
 
 export type SetIsRelogin = (value: boolean) => SetIsReloginAction;
 
@@ -44,6 +47,11 @@ export const setIsClearActiveIds: SetIsClearActiveIds = value => ({
 
 export const setIsOpenFilter: SetIsOpenFilter = value => ({
   type: ActionTypeKeys.SET_IS_OPEN_FILTER,
+  payload: value,
+});
+
+export const setIsAccessibleFiltering: SetIsAccessibleFiltering = value => ({
+  type: ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING,
   payload: value,
 });
 

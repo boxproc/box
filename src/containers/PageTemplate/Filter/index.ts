@@ -6,7 +6,7 @@ import { formNamesConst } from 'consts';
 
 import Filter from './Filter';
 
-import { selectIsAutoRefresh, stopAutoRefresh } from 'store/domains';
+import { selectIsAutoRefresh, setIsAccessibleFiltering, stopAutoRefresh } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const formValues = getFormValues(formNamesConst.FILTER);
@@ -19,6 +19,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     stopAutoRefresh,
+    setIsAccessibleFiltering,
   },
   dispatch
 );

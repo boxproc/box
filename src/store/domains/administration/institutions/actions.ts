@@ -96,6 +96,7 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
 
         await dispatch(addAdminInstitution(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_INSTITUTION));
+        await dispatch(handleGetAdminInstitutions());
       },
       dispatch
     );

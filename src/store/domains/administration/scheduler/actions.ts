@@ -4,7 +4,11 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId, startAutoRefresh } from 'store/domains/utils';
+import {
+  selectActiveItemId,
+  selectIsAccessibleFiltering,
+  startAutoRefresh,
+} from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
@@ -109,13 +113,19 @@ export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = ()
   };
 
 export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerValues =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addAdminSchedulerJob(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterAdminSchedulerJobs());
+        }
       },
       dispatch
     );

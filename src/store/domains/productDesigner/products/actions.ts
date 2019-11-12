@@ -6,7 +6,7 @@ import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts'
 import { closeModal } from 'store/domains/modals';
 
 import { handleFilterLedgerAccounts } from 'store/domains';
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddProductAction,
@@ -365,13 +365,19 @@ export const handleGetProductRule: HandleGetProductRule = () =>
   };
 
 export const handleAddProduct: HandleAddProduct = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareNewProductValuesToSend(values);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addProduct(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterProducts());
+        }
       },
       dispatch
     );

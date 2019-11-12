@@ -7,7 +7,11 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
-import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
+import {
+  selectActiveItemId,
+  selectIsAccessibleFiltering,
+  setIsOpenFilter,
+} from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddLedgerCustomerAction,
@@ -95,13 +99,19 @@ export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
   };
 
 export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addLedgerCustomer(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterLedgerCustomers());
+        }
       },
       dispatch
     );

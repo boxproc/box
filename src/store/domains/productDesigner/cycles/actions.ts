@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddCycleEditorAction,
@@ -101,13 +101,19 @@ export const handleFilterCycles: HandleFilterCycles = () =>
   };
 
 export const handleAddCyclesEditor: HandleAddCyclesEditor = cycleEditorRecords =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareCyclesEditorValuesToSend(cycleEditorRecords);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addCyclesEditor(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_CYCLE_EDITOR));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterCycles());
+        }
       },
       dispatch
     );

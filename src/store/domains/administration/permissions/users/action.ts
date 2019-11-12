@@ -5,6 +5,7 @@ import * as api from './api';
 
 import { closeModal } from 'store/domains/modals';
 
+import { selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminUserAction,
@@ -12,12 +13,10 @@ import {
   GetAccessUsersAction,
   UpdateAdminUserAction,
 } from './actionType';
-
-import { Thunk } from 'types';
-
+import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
 import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
 
-import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
+import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
@@ -76,13 +75,19 @@ export const handleFilterUsers: HandleFilterUsers = () =>
   };
 
 export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAdminUserValuesToSend(cycleEditorRecords);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addAdminUser(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_USER));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterUsers());
+        }
       },
       dispatch
     );

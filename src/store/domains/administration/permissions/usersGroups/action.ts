@@ -233,6 +233,7 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
 
         await dispatch(addAdminUserUsersGroup(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_USERS_GROUP));
+        await dispatch(handleGetAdminUsersGroup());
       },
       dispatch
     );

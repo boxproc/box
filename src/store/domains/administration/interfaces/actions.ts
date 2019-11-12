@@ -4,7 +4,7 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminInterfaceAction,
@@ -84,13 +84,19 @@ export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
   };
 
 export const handleAddAdminInterface: HandleAddAdminInterface = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addAdminInterface(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_INTERFACE));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterAdminInterface());
+        }
       },
       dispatch
     );

@@ -11,6 +11,7 @@ export const utilsInitialState: ImmutableObject<UtilsState> = Immutable({
   isClearActiveIds: true,
   isOpenFilter: true,
   isRelogin: false,
+  isAccessibleFiltering: true,
 });
 
 const utilsReducer =
@@ -27,6 +28,9 @@ const utilsReducer =
 
       case ActionTypeKeys.SET_IS_OPEN_FILTER:
         return state.set('isOpenFilter', action.payload);
+
+      case ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING:
+        return state.set('isAccessibleFiltering', action.payload);
 
       case ActionTypeKeys.SET_IS_RELOGIN:
         return state.set('isRelogin', action.payload);

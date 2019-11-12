@@ -4,7 +4,7 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminEndpointAction,
@@ -93,13 +93,19 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
   };
 
 export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = preparedValuesToSend(values);
+        const state = getState();
+        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addAdminEndpoint(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_ENDPOINT));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterAdminEndpoint());
+        }
       },
       dispatch
     );
@@ -113,8 +119,8 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteAdminEndpoint(id));
-        await dispatch(handleFilterAdminEndpoint());
         dispatch(closeModal(modalNamesConst.EDIT_ENDPOINT));
+        await dispatch(handleFilterAdminEndpoint());
       },
       dispatch
     );
