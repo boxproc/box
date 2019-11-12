@@ -23,11 +23,16 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   adminCurrentInstitutionName,
   isFormDirty,
 }) => {
+  const institutionName = React.useMemo(
+    () => adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '',
+    [adminCurrentInstitutionName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
-  const institutionName = adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '';
+
   return (
     <Modal
       name={modalName}

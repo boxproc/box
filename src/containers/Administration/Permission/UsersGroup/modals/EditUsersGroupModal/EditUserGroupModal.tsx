@@ -8,27 +8,32 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { EditUserGroupForms } from 'containers/Administration/Permission/UsersGroup/forms';
 
 interface EditUsersGroupModalProps extends WithModalProps {
-  usersGroupName: string;
+  groupName: string;
+  institutionName: string;
 }
 
 const modalName = modalNamesConst.EDIT_USERS_GROUP;
 
 const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
-  usersGroupName,
+  groupName,
+  institutionName,
 }) => {
+  const currentName = React.useMemo(
+    () => (groupName && institutionName) ? `: "${groupName}" (${institutionName})` : '',
+    [groupName, institutionName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
 
-  const groupName = usersGroupName ? `: "${usersGroupName}"` : '';
-
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit User Group${groupName}`}
+      title={`Edit User Group${currentName}`}
       minContainerHeight={550}
     >
       <EditUserGroupForms onCancel={handleOnCancel} />

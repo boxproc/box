@@ -27,12 +27,15 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   isFormDirty,
   adminCurrentEndpointName,
 }) => {
+  const endpointName = React.useMemo(
+    () => adminCurrentEndpointName ? `: "${adminCurrentEndpointName}"` : '',
+    [adminCurrentEndpointName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
-
-  const endpointName = adminCurrentEndpointName ? `: "${adminCurrentEndpointName}"` : '';
 
   return (
     <Modal

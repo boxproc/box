@@ -166,6 +166,17 @@ export const Table: React.FC<TableProps> = props => {
     activeRowIndex,
     isSmaller,
   } = props;
+  const [height, setHeight] = React.useState(null);
+  const tableRef = React.useRef(null);
+
+  React.useEffect(
+    () => {
+      if (data && data.length) {
+        setHeight(tableRef.current.clientHeight);
+      }
+    },
+    [tableRef, data]
+  );
 
   return (
     <TableWrapper>
@@ -173,6 +184,8 @@ export const Table: React.FC<TableProps> = props => {
         <TableStyled
           activeRowIndex={activeRowIndex}
           isSmaller={isSmaller}
+          ref={tableRef}
+          minHeight={height}
         >
           <ReactTable
             {...props as TableProps}

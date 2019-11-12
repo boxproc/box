@@ -29,12 +29,15 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   isFormDirty,
   ledgerLastStatement,
 }) => {
+  const accountAlias = React.useMemo(
+    () => ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '',
+    [ledgerCurrentAccountAlias]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
-
-  const accountAlias = ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '';
 
   return (
     <Modal

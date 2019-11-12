@@ -48,8 +48,8 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="center">
-        <Box width={[1 / 2]} mb="15px" mr="20px">
+      <Flex alignItems="flex-end">
+        <Box width={[1 / 2]} pb="15px" mr="20px">
           <Field
             id="uiItem"
             name="uiItem"
@@ -59,7 +59,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             options={uiItemsOptions}
           />
         </Box>
-        <Box width="120px" pr="10px">
+        <Box width="120px" pb="17px" mr="10px">
           <Field
             id="permission"
             name="permission"
@@ -67,7 +67,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             label={'"Write" Allowed'}
           />
         </Box>
-        <Box width={[1 / 3]}>
+        <Box width={[1 / 3]} pb="21px">
           <Button
             iconName={iconNamesConst.PLUS}
             text="Add to the group"

@@ -46,19 +46,19 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="center">
+      <Flex alignItems="flex-end">
         <Box width={[1 / 2]} mb="15px" mr="10px">
           <Field
             id="username"
             name="username"
             placeholder="Select User"
             component={SelectField}
-            label="Username"
+            label="Select User"
             validate={[formErrorUtil.required]}
             options={activeUsersItemsOptions}
           />
         </Box>
-        <Box width={[1 / 2]}>
+        <Box width={[1 / 2]} pb="21px">
           <Button
             iconName={iconNamesConst.PLUS}
             text="Add to the group"

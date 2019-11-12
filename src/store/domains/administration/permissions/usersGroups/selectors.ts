@@ -109,6 +109,11 @@ export const selectUsersGroupValues = createSelector(
   }
 );
 
+export const selectUsersGroupInstitutionName = createSelector(
+  selectUsersGroupValues,
+  group => group.institutionId && group.institutionId.label
+);
+
 export const selectUsersGroupName = createSelector(
   selectUsersGroupValues,
   group => group && group.name

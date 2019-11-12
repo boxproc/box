@@ -31,12 +31,15 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   currentSchedulerName,
   isFormDirty,
 }) => {
+  const currentName = React.useMemo(
+    () => currentSchedulerName ? `: "${currentSchedulerName}"` : '',
+    [currentSchedulerName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
-
-  const currentName = currentSchedulerName ? `: "${currentSchedulerName}"` : '';
 
   return (
     <Modal

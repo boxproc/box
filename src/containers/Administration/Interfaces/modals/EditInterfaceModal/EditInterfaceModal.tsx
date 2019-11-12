@@ -27,6 +27,11 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   currentInterfaceName,
   isFormDirty,
 }) => {
+  const interfaceName = React.useMemo(
+    () => currentInterfaceName ? `: "${currentInterfaceName}"` : '',
+    [currentInterfaceName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -35,7 +40,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   return (
     <Modal
       maxContainerWidth={850}
-      title={`Edit Interface: "${currentInterfaceName}"`}
+      title={`Edit Interface${interfaceName}`}
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       withCloseConfirmation={isFormDirty}

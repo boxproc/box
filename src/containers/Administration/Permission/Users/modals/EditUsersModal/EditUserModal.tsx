@@ -27,15 +27,21 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   requires2faFlagValue,
   currentUsername,
 }) => {
+  const username = React.useMemo(
+    () => currentUsername ? `: "${currentUsername}"` : '',
+    [currentUsername]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
+
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit User: "${currentUsername}"`}
+      title={`Edit User${username}`}
       maxContainerWidth={500}
       withCloseConfirmation={isFormDirty}
     >

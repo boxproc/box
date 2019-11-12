@@ -10,18 +10,6 @@ type TCell<T extends keyof AdminUserItemPrepared> = TableCellType<AdminUserItemP
 
 export const tableColumns = [
   {
-    maxWidth: 100,
-    sortable: true,
-    Header: <TableHeader title="ID" />,
-    accessor: 'id',
-    Cell: (props: TCell<'id'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Username" />,

@@ -5,6 +5,7 @@ import 'react-table/react-table.css';
 interface TableStyledProps {
   activeRowIndex: number;
   isSmaller?: boolean;
+  minHeight?: number;
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
@@ -18,6 +19,10 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable {
     height: 100%;
     border: none;
+
+    ${({ minHeight }) => minHeight && `
+      min-height: ${minHeight}px;
+    `};
   }
 
   .ReactTable .rt-thead .rt-resizable-header-content,
@@ -76,6 +81,10 @@ export const TableStyled = styled.div<TableStyledProps>`
     position: relative;
     flex: 0 0 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
+  }
+
+  .ReactTable .rt-tbody .rt-tr-group:last-child {
+    border-bottom: 0;
   }
 
   .ReactTable .rt-tr-group:hover,
