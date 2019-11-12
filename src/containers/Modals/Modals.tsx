@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { ScrollDisable } from 'theme/scrollbarCss';
+
 import { modalNamesConst } from 'consts';
 
 import { modalsList } from 'containers/Modals/modalsList';
@@ -42,7 +44,9 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin }) => {
             key={modal.name + index}
             isBlured={isRelogin && !isMessageModal}
           >
-            {/* <ScrollDisable /> */}
+            {isRelogin && (
+              <ScrollDisable />
+            )}
             {modal.component}
           </ModalsWrapper>
         );

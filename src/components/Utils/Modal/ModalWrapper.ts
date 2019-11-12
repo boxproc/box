@@ -7,7 +7,6 @@ interface ModalWrapperProps {
   accentClose?: boolean;
   containerWidthAuto?: boolean;
   containerHeightFull?: boolean;
-  isBlured?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -86,9 +85,4 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
       color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
-
-  ${({ isBlured }) => isBlured && `
-    filter: blur(3px);
-    pointer-events: none;
-  `};
 `;

@@ -4,6 +4,7 @@ import {
   SetActiveTableRowIndexAction,
   SetIsClearActiveIdsAction,
   SetIsOpenFilterAction,
+  SetIsReloginAction,
   StartAutoRefreshAction,
   StopAutoRefreshAction,
 } from './actionTypes';
@@ -18,6 +19,8 @@ export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
 export type HandleSetIsClearActiveIds = (value: boolean) => void;
 
 export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
+
+export type SetIsRelogin = (value: boolean) => SetIsReloginAction;
 
 export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
@@ -41,6 +44,11 @@ export const setIsClearActiveIds: SetIsClearActiveIds = value => ({
 
 export const setIsOpenFilter: SetIsOpenFilter = value => ({
   type: ActionTypeKeys.SET_IS_OPEN_FILTER,
+  payload: value,
+});
+
+export const setIsRelogin: SetIsRelogin = value => ({
+  type: ActionTypeKeys.SET_IS_RELOGIN,
   payload: value,
 });
 

@@ -9,6 +9,8 @@ export enum ActionTypeKeys {
 
   SET_IS_OPEN_FILTER = 'utils/SET_IS_OPEN_FILTER',
 
+  SET_IS_RELOGIN = 'utils/SET_IS_RELOGIN',
+
   RESET_UTILS = 'utils/RESET_UTILS',
 }
 
@@ -32,6 +34,11 @@ export interface SetIsOpenFilterAction {
   readonly type: ActionTypeKeys.SET_IS_OPEN_FILTER;
 }
 
+export interface SetIsReloginAction {
+  readonly payload: boolean;
+  readonly type: ActionTypeKeys.SET_IS_RELOGIN;
+}
+
 export interface StartAutoRefreshAction {
   readonly type: ActionTypeKeys.START_AUTO_REFRESH;
 }
@@ -51,4 +58,5 @@ export type UtilsActionTypes =
   | StopAutoRefreshAction
   | ResetUtilsAction
   | SetIsClearActiveIdsAction
-  | SetIsOpenFilterAction;
+  | SetIsOpenFilterAction
+  | SetIsReloginAction;

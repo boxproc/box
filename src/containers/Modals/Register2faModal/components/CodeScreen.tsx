@@ -50,7 +50,10 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
         <DashedBlock>{code}</DashedBlock>
       )}
       <Hr />
-      <Flex justifyContent="space-between">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Button
           text="Regenerate key"
           iconName={iconNamesConst.QRCODE}

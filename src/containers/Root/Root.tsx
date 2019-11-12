@@ -24,6 +24,8 @@ import { Home, Login } from 'containers/Landings';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
+import { SetIsRelogin } from 'store/domains';
+
 import { storageUtil } from 'utils';
 
 interface RootWrapperProps {
@@ -50,13 +52,16 @@ const PagesWrapper = styled(Container)`
 
 interface RootProps extends ExternalSpinnerProps, WithModalProps {
   visibleUiItems: Array<string>;
+  setIsRelogin: SetIsRelogin;
+  isRelogin: boolean;
 }
 
 const Root: React.FC<RootProps> = ({
   visibleUiItems,
   openModal,
+  setIsRelogin,
+  isRelogin,
 }) => {
-  const [isRelogin, setIsRelogin] = React.useState(false);
   const isLoggedIn = storageUtil.getLoginFlag();
 
   React.useEffect(
@@ -65,7 +70,7 @@ const Root: React.FC<RootProps> = ({
         setIsRelogin(true);
       }
     },
-    [isLoggedIn, isRelogin]
+    [isLoggedIn, isRelogin, setIsRelogin]
   );
 
   React.useEffect(

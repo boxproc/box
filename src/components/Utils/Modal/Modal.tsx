@@ -49,6 +49,7 @@ interface ModalProps extends WithModalProps {
   isEditModalOpened: boolean; // open state of edit modal
   containerWidthAuto?: boolean; // sets width of container to 'auto'
   containerHeightFull?: boolean; // sets height of container to '100vh'
+  hideCloseIcon?: boolean; // hides close icon '&times;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -72,6 +73,7 @@ const Modal: React.FC<ModalProps> = ({
   isEditModalOpened,
   containerWidthAuto = false,
   containerHeightFull = false,
+  hideCloseIcon = false,
 }) => {
   const isClearableActiveIdsFromStore = React.useMemo(
     () => type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
@@ -130,13 +132,15 @@ const Modal: React.FC<ModalProps> = ({
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container">
-        <span
-          className="modal-close"
-          onClick={handleCloseModal}
-          title="Close"
-        >
-          &times;
-        </span>
+        {!hideCloseIcon && (
+          <span
+            className="modal-close"
+            onClick={handleCloseModal}
+            title="Close"
+          >
+            &times;
+          </span>
+        )}
         <Flex
           alignItems="baseline"
           flexWrap="wrap"

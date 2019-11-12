@@ -4,4 +4,5 @@ export interface UtilsState {
   isAutoRefresh: boolean;
   isClearActiveIds: boolean;
   isOpenFilter: boolean;
+  isRelogin: boolean;
 }

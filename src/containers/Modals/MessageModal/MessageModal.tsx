@@ -8,11 +8,12 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, modalTypesConst, statusCodes } from 'consts';
 
-import { PayloadMessageModal } from 'store/domains';
+import { PayloadMessageModal, SetIsRelogin } from 'store/domains';
 import { storageUtil, urlUtil } from 'utils';
 
 interface MessageModalProps extends RouteComponentProps, WithModalProps {
   payloadMessageModal: PayloadMessageModal;
+  setIsRelogin: SetIsRelogin;
 }
 
 const modalName = modalNamesConst.MESSAGE_MODAL;
@@ -20,31 +21,41 @@ const modalName = modalNamesConst.MESSAGE_MODAL;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
+  setIsRelogin,
 }) => {
+  const [isVisibleDetail, setVisibleDetail] = React.useState(false);
   const { title, message, details, statusCode, type } = payloadMessageModal;
 
-  const isSessionEnded = statusCode === statusCodes.SESSION_TIMEOUT
-    || type === modalTypesConst.SESSION_ENDED;
+  const isSessionEnded = React.useMemo(
+    () => statusCode === statusCodes.SESSION_TIMEOUT || type === modalTypesConst.SESSION_ENDED,
+    [statusCode, type]
+  );
 
-  const isReLogin = isSessionEnded
-    || statusCode === statusCodes.USER_NOT_AUTH
-    || statusCode === statusCodes.NO_SESSION_ID
-    || statusCode === statusCodes.NO_SESSION;
+  const isReLogin = React.useMemo(
+    () => isSessionEnded
+      || statusCode === statusCodes.USER_NOT_AUTH
+      || statusCode === statusCodes.NO_SESSION_ID
+      || statusCode === statusCodes.NO_SESSION,
+    [statusCode, isSessionEnded]
+  );
 
   React.useEffect(
     () => {
-      return () => {
-        if (isReLogin) {
-          storageUtil.clear();
-          closeModal(modalName);
-          urlUtil.openLocation(basePath);
-        }
-      };
+      if (isReLogin) {
+        setIsRelogin(true);
+      }
     },
-    [statusCode, closeModal, isReLogin]
+    [isReLogin, setIsRelogin]
   );
 
-  const [isVisibleDetail, setVisibleDetail] = React.useState(false);
+  const handleRelogin = React.useCallback(
+    () => {
+      storageUtil.clear();
+      closeModal(modalName);
+      urlUtil.openLocation(basePath);
+    },
+    [closeModal]
+  );
 
   const handleClick = React.useCallback(
     () => closeModal(modalName),
@@ -62,8 +73,8 @@ const MessageModal: React.FC<MessageModalProps> = ({
       title={isSessionEnded ? 'Session ended' : title}
       maxContainerWidth={isReLogin ? 350 : 500}
       type={modalTypesConst.MESSAGE_MODAL}
-      closeOnBackdrop={true}
-      accentClose={!isReLogin}
+      closeOnBackdrop={!isReLogin}
+      hideCloseIcon={isReLogin}
       zIndex="102"
     >
       <Paragraph light={true}>{message}</Paragraph>
@@ -75,7 +86,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
           <Button
             text={isReLogin ? 'Re Login' : 'Close'}
             isFocused={isReLogin}
-            onClick={handleClick}
+            onClick={isReLogin ? handleRelogin : handleClick}
           />
         </Box>
         {details && (
