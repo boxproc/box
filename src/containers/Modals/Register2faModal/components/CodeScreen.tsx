@@ -63,7 +63,8 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
           text="Registration completed"
           withConfirmation={true}
           confirmationTitle="Confirmation"
-          confirmationText="Confirm BOX UI profile appeared in your Google Authentication app."
+          // tslint:disable-next-line: max-line-length
+          confirmationText="Confirm BOX (new user) profile appeared in your Google Authenticator app."
           onClick={onConfirm}
         />
       </Flex>

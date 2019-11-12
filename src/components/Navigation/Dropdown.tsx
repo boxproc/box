@@ -105,7 +105,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       position={dropdownListPosition}
       isActive={isOpened}
     >
-      <Flex alignItems="center">
+      <Flex alignItems="flex-start">
         {selectable && (
           <Box>{children[selectedIndex]}</Box>
         )}

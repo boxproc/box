@@ -29,7 +29,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
 
   return (
     <React.Fragment>
-      <Paragraph light={true}>To continue please confirm your identity.</Paragraph>
+      <Paragraph light={true}>To continue please enter your password.</Paragraph>
       <form onSubmit={handleSubmitForm}>
         <Field
           id="password"
