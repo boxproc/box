@@ -130,7 +130,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         minHeight={minHeight}
         whiteSpacePre={whiteSpacePre}
       >
-        <PerfectScrollbar className="scrollbar-editor-wrapper">
+        <PerfectScrollbar className="scrollbar-editor-wrapper visible">
           <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
             <Editor
               value={value.toString()}

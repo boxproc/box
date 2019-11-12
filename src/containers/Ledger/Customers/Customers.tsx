@@ -116,4 +116,6 @@ const Customers: React.FC<CustomersProps> = ({
   );
 };
 
-export default withSpinner()(Customers);
+export default withSpinner({
+  isFixed: true,
+})(Customers);

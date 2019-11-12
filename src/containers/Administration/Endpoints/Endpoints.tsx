@@ -86,4 +86,6 @@ const Endpoints: React.FC<EndpointsProps> = ({
   );
 };
 
-export default withSpinner()(Endpoints);
+export default withSpinner({
+  isFixed: true,
+})(Endpoints);

@@ -34,10 +34,6 @@ const Wrapper = styled.div<WrapperProps>`
   &.is-focus {
     border-color: ${({ theme }) => theme.colors.normalAccent};
   }
-
-  .ps__thumb-y {
-    background-color: #ffa400;
-  }
 `;
 
 const Textarea = styled(TextareaAutosize)`
@@ -70,7 +66,7 @@ const TextareaAutosizeField: React.FC<TextAreaProps> = props => {
       onFocus={addFocusClass}
       onBlur={removeFocusClass}
     >
-      <PerfectScrollbar>
+      <PerfectScrollbar className="visible">
         <Textarea {...props} />
       </PerfectScrollbar>
     </Wrapper>

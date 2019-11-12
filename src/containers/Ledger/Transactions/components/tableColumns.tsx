@@ -35,6 +35,18 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 100,
+    sortable: true,
+    Header: <TableHeader title="Card ID" />,
+    accessor: 'cardId',
+    Cell: (props: TCell<'cardId'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Transaction Datetime" />,
@@ -82,6 +94,18 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 80,
+    sortable: true,
+    Header: <TableHeader title="Currency" />,
+    accessor: 'originalCurrency',
+    Cell: (props: TCell<'originalCurrency'>) => (
+      <TableCell
+        value={props.value}
+        onCenter={true}
+      />
+    ),
+  },
+  {
     maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Amount in Original Currency" />,
@@ -101,18 +125,6 @@ export const tableColumns = [
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
-      />
-    ),
-  },
-  {
-    maxWidth: 80,
-    sortable: true,
-    Header: <TableHeader title="Currency" />,
-    accessor: 'originalCurrency',
-    Cell: (props: TCell<'originalCurrency'>) => (
-      <TableCell
-        value={props.value}
-        onCenter={true}
       />
     ),
   },

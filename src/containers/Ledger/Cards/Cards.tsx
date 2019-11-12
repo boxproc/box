@@ -91,4 +91,6 @@ const Cards: React.FC<CardsProps> = ({
   );
 };
 
-export default withSpinner()(Cards);
+export default withSpinner({
+  isFixed: true,
+})(Cards);

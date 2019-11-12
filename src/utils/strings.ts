@@ -20,3 +20,12 @@ export const getCurrentBPSUrl = (pathname: string) => {
 
   return currentUrl;
 };
+
+export const padStartN = (num: number, N: number) => {
+  let s = num.toString();
+
+  while (s.length < N) {
+    s = '0' + s;
+  }
+  return s;
+};

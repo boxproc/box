@@ -72,8 +72,4 @@ export const EditorWrapper = styled.div<WrapperProps>`
   .react-contextmenu-wrapper {
     height: 100%;
   }
-
-  .ps__thumb-y {
-    background-color: #ffa400;
-  }
 `;

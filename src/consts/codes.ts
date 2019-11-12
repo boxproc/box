@@ -74,9 +74,9 @@ export const endpointsOptions = [
 ];
 
 export const typeOfInterfacesCodes = [
-  { value: 'T', label: 'Tribe card processing' },
-  { value: 'U', label: 'Tutuka card processing' },
-  { value: 'Q', label: 'QRails card management interface' },
+  { value: 'T', label: 'Tribe' },
+  { value: 'U', label: 'Tutuka' },
+  { value: 'Q', label: 'QRails' },
 ];
 
 export const protocolTypesOptions = [
@@ -154,7 +154,6 @@ export const productTypesOptions = [
 export const executableTypeOptions = [
   { value: 'A', label: 'Api call' },
   { value: 'S', label: 'Shell script' },
-  { value: 'J', label: 'Java' },
 ];
 
 export const schemeTypesOptions = [
@@ -213,8 +212,8 @@ export const aprTypesOptions = [
 ];
 
 export const debitCreditIndicatorOptions = [
-  { value: 'D', label: 'Debit transaction' },
-  { value: 'C', label: 'Credit transaction' },
+  { value: 'D', label: 'Debit' },
+  { value: 'C', label: 'Credit' },
   { value: 'U', label: 'Not applicable' },
 ];
 

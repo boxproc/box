@@ -131,11 +131,6 @@ export const TableCell: React.FC<TableCellProps> = ({
 const TableWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
 
-  .ps__thumb-x,
-  .ps__thumb-y {
-    background-color: #ffa400;
-  }
-
   .ps--active-x > .ps__rail-x,
   .ps--active-y > .ps__rail-y {
     z-index: 9;
@@ -180,7 +175,7 @@ export const Table: React.FC<TableProps> = props => {
 
   return (
     <TableWrapper>
-      <PerfectScrollbar>
+      <PerfectScrollbar className="visible">
         <TableStyled
           activeRowIndex={activeRowIndex}
           isSmaller={isSmaller}

@@ -68,19 +68,6 @@ const FeesTable: React.FC<FeesTableProps> = ({
     {
       maxWidth: 100,
       sortable: true,
-      accessor: 'productId',
-      Header: <TableHeader title="Product ID" />,
-      Cell: (props: TCell<'productId'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 100,
-      sortable: true,
       accessor: 'productFeeId',
       Header: <TableHeader title="Product Fee ID" />,
       Cell: (props: TCell<'productFeeId'>) => (
@@ -92,7 +79,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
       ),
     },
     {
-      maxWidth: 280,
+      maxWidth: 350,
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,

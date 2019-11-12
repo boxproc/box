@@ -1,5 +1,8 @@
 import { createSelector } from 'reselect';
+
 import { StoreState } from 'store/StoreState';
+
+import { stringsUtil } from 'utils';
 
 export const selectDefaultDictionaryCurrenciesItems = (state: StoreState) =>
   state.administration.currencies.currencies.asMutable();
@@ -7,9 +10,13 @@ export const selectDefaultDictionaryCurrenciesItems = (state: StoreState) =>
 export const selectDictionaryCurrencies = createSelector(
   selectDefaultDictionaryCurrenciesItems,
   items => items && items.map(item => {
+    if (!item) {
+      return null;
+    }
+
     return {
       currencyCode: item.currency_code,
-      numericCode: item.numeric_code,
+      numericCode: stringsUtil.padStartN(item.numeric_code, 3),
       name: item.name,
     };
   })

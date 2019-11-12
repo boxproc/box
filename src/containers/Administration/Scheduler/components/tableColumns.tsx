@@ -11,18 +11,6 @@ type TCell<T extends keyof AdminSchedulerItemPrepared> =
 
 export const tableColumns = [
   {
-    maxWidth: 100,
-    sortable: true,
-    Header: <TableHeader title="ID" />,
-    accessor: 'id',
-    Cell: (props: TCell<'id'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
     maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
@@ -34,6 +22,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
@@ -44,6 +33,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
@@ -65,46 +55,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
-    Header: <TableHeader title="Cron Expression" />,
-    accessor: 'cronExpression',
-    Cell: (props: TCell<'cronExpression'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    Header: <TableHeader title="Executable Type" />,
-    accessor: 'executableType',
-    Cell: (props: TCell<'executableType'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    Header: <TableHeader title="Executable" />,
-    accessor: 'executable',
-    Cell: (props: TCell<'executable'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    sortable: true,
-    Header: <TableHeader title="Log Location" />,
-    accessor: 'logLocation',
-    Cell: (props: TCell<'logLocation'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
     maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Last Execution Datetime" />,
@@ -117,6 +67,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Last Execution Result" />,
     accessor: 'lastExecutionResult',
@@ -127,10 +78,44 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Parameters" />,
-    accessor: 'parameters',
-    Cell: (props: TCell<'parameters'>) => (
+    Header: <TableHeader title="Cron Expression" />,
+    accessor: 'cronExpression',
+    Cell: (props: TCell<'cronExpression'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 100,
+    sortable: true,
+    Header: <TableHeader title="Executable Type" />,
+    accessor: 'executableType',
+    Cell: (props: TCell<'executableType'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 300,
+    sortable: true,
+    Header: <TableHeader title="Executable" />,
+    accessor: 'executable',
+    Cell: (props: TCell<'executable'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 300,
+    sortable: true,
+    Header: <TableHeader title="Log Location" />,
+    accessor: 'logLocation',
+    Cell: (props: TCell<'logLocation'>) => (
       <TableCell
         value={props.value}
       />

@@ -386,10 +386,10 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
   return {
     id: data.id,
     product_id: data.productId,
-    repayment_sequence: data.repaymentSequence,
+    repayment_sequence: Number(data.repaymentSequence),
     description: data.description,
     rate: Number(data.rate),
-    grace_number_of_days: data.graceNumberOfDays,
+    grace_number_of_days: Number(data.graceNumberOfDays),
   };
 };
 

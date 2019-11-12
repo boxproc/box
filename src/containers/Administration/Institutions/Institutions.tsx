@@ -61,4 +61,6 @@ const Institutions: React.FC<InstitutionsProps> = ({
   );
 };
 
-export default withSpinner()(Institutions);
+export default withSpinner({
+  isFixed: true,
+})(Institutions);

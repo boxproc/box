@@ -8,7 +8,7 @@ export interface DictionaryCurrenciesItem {
 
 export interface DictionaryCurrenciesItemPrepared {
   currencyCode: string;
-  numericCode: number;
+  numericCode: string;
   name: string;
 }
 

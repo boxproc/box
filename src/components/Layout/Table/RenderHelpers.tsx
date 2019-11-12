@@ -30,7 +30,7 @@ export const renderEditableTableCell = (data: {
 
     const updateCellInfo = (e: React.MouseEvent) => {
       const el = e.target as HTMLElement;
-      const isChanged = cellInfo.value !== el.textContent;
+      const isChanged = cellInfo.value.toString() !== el.textContent;
 
       isChanged && updateAction({
         ...cellInfo.original,

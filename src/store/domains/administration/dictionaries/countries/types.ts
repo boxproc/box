@@ -8,7 +8,7 @@ export interface DictionaryCountriesItem {
 
 export interface DictionaryCountriesItemPrepared {
   countryCode: string;
-  numericCode: number;
+  numericCode: string;
   name: string;
 }
 

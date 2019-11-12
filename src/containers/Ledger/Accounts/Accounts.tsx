@@ -135,6 +135,6 @@ const Accounts: React.FC<AccountsProps> = ({
   );
 };
 
-export default withSpinner()(
-  withModal(Accounts)
-);
+export default withSpinner({
+  isFixed: true,
+})(withModal(Accounts));

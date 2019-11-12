@@ -82,7 +82,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       maxWidth: 90,
       sortable: true,
       accessor: 'repaymentSequence',
-      Header: <TableHeader title="Repayment Sequence" />,
+      Header: <TableHeader title="Repayment Priority" />,
       Cell: renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,

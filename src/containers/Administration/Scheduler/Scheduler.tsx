@@ -64,7 +64,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} and refresh table`,
+        name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`,
         action: () => sendAdminSchedulerAction(
           {
             taskId: currentSchedulerJobId,
@@ -75,7 +75,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           }),
         withConfirmation: true,
         // tslint:disable-next-line: max-line-length
-        confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" and refresh table?`,
+        confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`,
       },
       {
         name: schedulerTasksConsts.STOP.NAME,

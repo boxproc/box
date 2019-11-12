@@ -38,7 +38,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 2]} p="10px">
           <Field
             id="name"
             name="name"
@@ -68,7 +68,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[3 / 11]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="status"
             name="status"
@@ -79,7 +79,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[5 / 11]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="type"
             name="type"
@@ -90,7 +90,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[3 / 11]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
             id="protocolType"
             name="protocolType"
