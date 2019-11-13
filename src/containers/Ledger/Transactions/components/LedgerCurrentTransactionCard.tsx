@@ -51,7 +51,6 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             decimalScale={2}
             label="Card Amount"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -64,7 +63,6 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             decimalScale={2}
             label="Card Conversion Rate"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">

@@ -2,10 +2,12 @@ export interface InvalidProp {
   invalid?: boolean;
 }
 
-interface InputProp {
+export interface InputProps {
   isNumber?: boolean;
   isRightPlaceholder?: boolean;
+  isEditableCellStyle?: boolean;
+  invalid?: boolean;
 }
 
 export interface InputCommonProps extends
-  InvalidProp, InputProp, React.InputHTMLAttributes<HTMLInputElement> { }
+  InputProps, React.InputHTMLAttributes<HTMLInputElement> { }

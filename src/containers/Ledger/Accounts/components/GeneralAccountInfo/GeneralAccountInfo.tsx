@@ -182,7 +182,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -196,7 +195,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -210,7 +208,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -224,7 +221,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -238,7 +234,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -252,7 +247,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>

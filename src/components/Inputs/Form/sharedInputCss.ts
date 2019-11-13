@@ -1,13 +1,14 @@
 import { css } from 'theme';
 
-import { InvalidProp } from './types';
+import { InputProps } from './types';
 
-export const sharedInputCss = css<InvalidProp>`
+export const sharedInputCss = css<InputProps>`
   font-size: 13px;
   line-height: 1.3;
   width: 100%;
   height: 33px;
   padding: 7px;
+  text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'}
   box-shadow: none;
   box-sizing: border-box;
   outline: none;
@@ -20,6 +21,18 @@ export const sharedInputCss = css<InvalidProp>`
     invalid ? theme.colors.red : theme.colors.normalAccent};
   }
 
+  ${({ isEditableCellStyle, theme }) => isEditableCellStyle && `
+    border-color: transparent;
+    background-color: #fafafa;
+    height: auto;
+    align-self: flex-start;
+    padding: 2px 7px;
+
+    &:focus{
+      background-color: ${theme.colors.white};
+    }
+  `};
+
   ::placeholder {
     font-size: 13px;
     line-height: 17px;
@@ -27,6 +40,16 @@ export const sharedInputCss = css<InvalidProp>`
     font-weight: normal;
     text-align: left;
   }
+
+  ${({ isRightPlaceholder }) => isRightPlaceholder && `
+    &::-webkit-input-placeholder {
+      text-align: right;
+    }
+
+    &::-moz-placeholder {
+      text-align: right;
+    }
+  `}
 
   :disabled,
   :read-only {

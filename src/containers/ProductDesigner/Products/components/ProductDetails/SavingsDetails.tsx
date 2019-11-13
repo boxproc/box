@@ -38,7 +38,6 @@ const SavingsDetails: React.FC = () => {
             decimalScale={2}
             label="Apr"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -51,7 +50,6 @@ const SavingsDetails: React.FC = () => {
             decimalScale={2}
             label="Minimum Deposit Allowed"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -64,7 +62,6 @@ const SavingsDetails: React.FC = () => {
             decimalScale={2}
             label="Maximum Deposit Allowed"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -77,7 +74,6 @@ const SavingsDetails: React.FC = () => {
             decimalScale={2}
             label="Maximum Monthly Deposit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
       </Flex>

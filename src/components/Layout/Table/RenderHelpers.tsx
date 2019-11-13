@@ -13,28 +13,21 @@ export const renderEditableTableCell = (data: {
   updateAction: (data: object) => void,
   isSmaller?: boolean,
   isNumber?: boolean,
+  isDecimalNumber?: boolean;
   isAlwaysEditable?: boolean,
 }) =>
   (cellInfo: CellInfo) => {
-    const { updateAction, isSmaller, isNumber, isAlwaysEditable } = data;
+    const { updateAction, isSmaller, isNumber, isDecimalNumber, isAlwaysEditable } = data;
     const isEditable = cellInfo.row.lockedFlag === false || isAlwaysEditable;
 
-    const editableCellStyles = {
-      backgroundColor: isEditable && '#fafafa',
-      width: '100%',
-      height: 'auto',
-      alignSelf: 'flex-start',
-      padding: '0 7px',
-      borderRadius: '2px',
-    };
-
     const updateCellInfo = (e: React.MouseEvent) => {
-      const el = e.target as HTMLElement;
-      const isChanged = cellInfo.value.toString() !== el.textContent;
+      const el = e.target as HTMLInputElement;
+      const newValue = el.value;
+      const isChanged = cellInfo.value.toString() !== newValue;
 
       isChanged && updateAction({
         ...cellInfo.original,
-        [cellInfo.column.id]: el.textContent,
+        [cellInfo.column.id]: newValue,
       });
     };
 
@@ -47,12 +40,11 @@ export const renderEditableTableCell = (data: {
 
     return (
       <TableCell
-        style={editableCellStyles}
         value={cellInfo.value}
-        contentEditable={isEditable}
-        suppressContentEditableWarning={isEditable}
+        isEditable={isEditable}
         onBlur={updateCellInfo}
         isNumber={isNumber}
+        isDecimalNumber={isDecimalNumber}
         isSmaller={isSmaller}
         onKeyUp={handleKeyUp}
       />

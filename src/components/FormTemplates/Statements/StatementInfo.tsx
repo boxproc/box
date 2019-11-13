@@ -64,7 +64,7 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
           />
         </Box>
         <Hr />
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceOpen"
             name="balanceOpen"
@@ -74,10 +74,9 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             decimalScale={2}
             label="Balance open"
             readOnly={isDisabled}
-            isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceClose"
             name="balanceClose"
@@ -87,10 +86,9 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             decimalScale={2}
             label="Balance close"
             readOnly={isDisabled}
-            isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="minimumAmountDueRepayment"
             name="minimumAmountDueRepayment"
@@ -100,10 +98,9 @@ const StatementInfo: React.FC<StatementInfoProps> = ({ isDisabled }) => {
             decimalScale={2}
             label="Minimum amount due repayment"
             readOnly={isDisabled}
-            isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="statementCycleName"
             name="statementCycleName"

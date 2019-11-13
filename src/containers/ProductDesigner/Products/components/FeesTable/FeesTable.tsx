@@ -101,7 +101,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
-        isNumber: true,
+        isDecimalNumber: true,
         isAlwaysEditable: !isOnlyAmount,
       }),
     },
@@ -113,7 +113,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
-        isNumber: true,
+        isDecimalNumber: true,
         isAlwaysEditable: !isOnlyRate,
       }),
     },

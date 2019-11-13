@@ -38,7 +38,6 @@ const LoanDetails: React.FC = () => {
             decimalScale={2}
             label="Apr"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -51,7 +50,6 @@ const LoanDetails: React.FC = () => {
             decimalScale={2}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width="160px" p="10px">

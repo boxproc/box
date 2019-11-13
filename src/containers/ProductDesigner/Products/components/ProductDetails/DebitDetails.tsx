@@ -24,7 +24,6 @@ const DebitDetails: React.FC = () => {
             decimalScale={2}
             label="Apr Overdraft"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1]} p="10px">

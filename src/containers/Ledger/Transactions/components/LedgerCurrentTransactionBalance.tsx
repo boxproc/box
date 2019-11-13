@@ -22,7 +22,6 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             decimalScale={2}
             label="Balance Settled Before"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -35,7 +34,6 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             decimalScale={2}
             label="Balance Settled After"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -48,7 +46,6 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             decimalScale={2}
             label="Balance Available Before"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -61,7 +58,6 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             decimalScale={2}
             label="Balance Available After	"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
       </Flex>

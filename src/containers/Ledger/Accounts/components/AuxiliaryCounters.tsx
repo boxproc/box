@@ -30,7 +30,6 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -43,7 +42,6 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -56,7 +54,6 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.isNumber]}
           />
         </Box>
