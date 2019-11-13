@@ -31,10 +31,14 @@ const FieldWrapper = styled(Box) <FieldWrapperProps>`
 
 interface ProductFeesProps {
   isDisabled: boolean;
+  isOnlyAmount: boolean;
+  isOnlyRate: boolean;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
+  isOnlyAmount,
+  isOnlyRate,
 }) => {
   return (
     <Flex alignItems="flex-end">
@@ -69,7 +73,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           component={NumberFormatField}
           label="Rate"
           isNumber={true}
-          disabled={isDisabled}
+          disabled={isDisabled || isOnlyAmount}
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
@@ -83,7 +87,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           component={NumberFormatField}
           label="Amount"
           isNumber={true}
-          disabled={isDisabled}
+          disabled={isDisabled || isOnlyRate}
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}

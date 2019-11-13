@@ -229,3 +229,10 @@ export const feeTypesOptions = [
   { value: 'B', label: 'Apply both fixed amount and % rate' },
   { value: 'G', label: 'Apply whichever is greater: % rate or the fixed amount' },
 ];
+
+export enum feeTypesCodes {
+  APPLY_ONLY_FIXED_AMOUNT = 'A',
+  APPLY_ONLY_RATE = 'R',
+  APPLY_BOTH_FIXED_AMOUNT_AND_RATE = 'B',
+  APPLY_WHICHEVER_IS_GREATER_RATE_OR_FIXED_AMOUNT = 'G',
+}
