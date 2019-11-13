@@ -190,7 +190,7 @@ export const Table: React.FC<TableProps> = props => {
 
   return (
     <TableWrapper>
-      <PerfectScrollbar className="visible">
+      <PerfectScrollbar>
         <TableStyled
           activeRowIndex={activeRowIndex}
           isSmaller={isSmaller}

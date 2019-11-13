@@ -1,3 +1,5 @@
+import { SelectValues } from 'types';
+
 export interface ContextMenuItemProps {
   name: string;
   description?: string;
@@ -23,4 +25,8 @@ export interface LogData {
   log_file_path?: string;
 }
 
-export type ChangeFiledValue = (formName: string, fieldName: string, value: string) => void;
+export type ChangeFieldValue = (
+  formName: string,
+  fieldName: string,
+  value: string | number | SelectValues
+) => void;

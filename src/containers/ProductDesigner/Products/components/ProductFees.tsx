@@ -76,7 +76,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={isOnlyRate && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
       <FieldWrapper maxWidth="140px">
@@ -89,7 +89,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={isOnlyAmount && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
     </Flex>

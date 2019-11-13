@@ -250,7 +250,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 3]} p="10px">
           <Field
             id="statementCycle"
             name="statementCycle"

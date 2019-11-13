@@ -3,13 +3,13 @@ import CronBuilder from 'react-cron-builder';
 
 import { CronGeneratorStyled } from './CronGeneratorStyled';
 
-import { ChangeFiledValue } from 'types';
+import { ChangeFieldValue } from 'types';
 
 interface CronGeneratorProps {
   initialValue?: string;
   formName?: string;
   fieldName?: string;
-  onChange: ChangeFiledValue;
+  onChange: ChangeFieldValue;
   action?: () => void;
 }
 

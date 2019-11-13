@@ -24,11 +24,19 @@ import {
   RepaymentStatusTable,
 } from 'containers/Ledger/Accounts/components';
 
-import { HandleAddLedgerAccount, HandleUpdateLedgerAccount } from 'store/domains';
+import {
+  HandleAddLedgerAccount,
+  HandleUpdateLedgerAccount,
+  InstitutionProductsItemPrepared,
+} from 'store/domains';
+
 import { SelectValues } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
+  cyclesDescriptionsOptions: Array<SelectValues>;
+  institutionProducts: Array<InstitutionProductsItemPrepared>;
+  currentProduct: SelectValues;
   accountProductType: string;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
@@ -46,6 +54,10 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   addLedgerAccount,
   institutionsOptions,
   accountProductType,
+  currentProduct,
+  institutionProducts,
+  cyclesDescriptionsOptions,
+  change,
   mode,
   dirty,
   pristine,
@@ -63,6 +75,30 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   const isLoanProductType = React.useMemo(
     () => accountProductType === productTypesCodes.LOAN,
     [accountProductType]
+  );
+
+  const defaultStatementCycleValue = React.useMemo(
+    () => {
+      if (!currentProduct) {
+        return undefined;
+      }
+
+      const productId = currentProduct.value;
+      const product = institutionProducts.find(el => el.id === productId);
+      const cycleId = product.defaultStatementCycleId;
+
+      return cyclesDescriptionsOptions.find(el => el.value === cycleId);
+    },
+    [institutionProducts, currentProduct, cyclesDescriptionsOptions]
+  );
+
+  React.useEffect(
+    () => {
+      if (defaultStatementCycleValue) {
+        change('statementCycle', defaultStatementCycleValue);
+      }
+    },
+    [defaultStatementCycleValue, change]
   );
 
   const handleSubmitForm = React.useCallback(
