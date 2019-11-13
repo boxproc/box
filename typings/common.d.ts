@@ -3,10 +3,8 @@
   export default value;
 }
 
-declare module 'react-select/lib/*';
 declare module 'react-cron-builder';
 declare module 'prismjs/components/prism-core';
-declare module 'webfontloader';
 
 /// <reference types="node" />
 /// <reference types="react" />

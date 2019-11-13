@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField, TextareaAutosizeField } from 'components';
+import { InputField, SelectField, TextField } from 'components';
 
 import { protocolTypesOptions, statusTypesOptions, typeOfInterfacesCodes } from 'consts';
 
@@ -107,7 +107,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
               <Field
                 id="logFileLocation"
                 name="logFileLocation"
-                component={TextareaAutosizeField}
+                component={TextField}
                 label="Log File Location Attributes"
                 placeholder="Enter Log File Location"
                 height={120}
@@ -118,7 +118,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
               <Field
                 id="connectionAttributes"
                 name="connectionAttributes"
-                component={TextareaAutosizeField}
+                component={TextField}
                 label="Connection Attributes"
                 placeholder="Enter Connection Attributes"
                 height={120}

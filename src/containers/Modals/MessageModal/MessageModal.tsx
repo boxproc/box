@@ -35,7 +35,8 @@ const MessageModal: React.FC<MessageModalProps> = ({
     () => isSessionEnded
       || statusCode === statusCodes.USER_NOT_AUTH
       || statusCode === statusCodes.NO_SESSION_ID
-      || statusCode === statusCodes.NO_SESSION,
+      || statusCode === statusCodes.NO_SESSION
+      || statusCode === statusCodes.SESSION_TIMEOUT,
     [statusCode, isSessionEnded]
   );
 
