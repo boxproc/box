@@ -71,7 +71,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isVisibleDetail ? 1010 : 350}
+      maxContainerWidth={isVisibleDetail ? 1010 : 400}
       type={modalTypesConst.MESSAGE_MODAL}
       closeOnBackdrop={!isReLogin}
       hideCloseIcon={isReLogin}
@@ -100,7 +100,12 @@ const MessageModal: React.FC<MessageModalProps> = ({
       </Flex>
       {isVisibleDetail && (
         <Box mt="15px">
-          <Paragraph light={true}>{details}</Paragraph>
+          <Paragraph
+            light={true}
+            size={10}
+          >
+            {details}
+          </Paragraph>
         </Box>
       )}
     </Modal>
