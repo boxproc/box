@@ -4,6 +4,7 @@ import { ContextMenu, MenuItem, SubMenu } from 'react-contextmenu';
 import styled from 'theme';
 import './styles.css';
 
+import { ChevronRightIcon } from 'components';
 import ContextMenuItem from './ContextMenuItem';
 
 import { ContextMenuItemProps, ContextSubMenuType } from 'types';
@@ -27,6 +28,26 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
       top: 2px;
       font-size: 0;
       color: ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  .submenu-item {
+    position: relative;
+
+    .item {
+      padding: 0;
+    }
+
+    .arrow-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -12px;
+      z-index: 1;
+    }
+
+    &:hover .arrow-icon {
+      color: #ffa400;
     }
   }
 
@@ -71,28 +92,35 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
               return null;
             }
             return (
-              <SubMenu
+              <div
                 key={i}
-                title={subMenu.title}
-                hoverDelay={200}
+                className="submenu-item"
               >
-                {(subMenu.items && subMenu.items.length)
-                  ? (
-                    subMenu.items.map((item, j) => {
-                      return (
-                        <ContextMenuItem
-                          key={j}
-                          preventClose={preventClose}
-                          item={item}
-                          onClick={onClick}
-                        />
-                      );
-                    })
-                  )
-                  : subMenu.noDataStr && (
-                    <MenuItem>{subMenu.noDataStr}</MenuItem>
-                  )}
-              </SubMenu>
+                <span className="arrow-icon">
+                  <ChevronRightIcon size="17" />
+                </span>
+                <SubMenu
+                  title={subMenu.title}
+                  hoverDelay={200}
+                >
+                  {(subMenu.items && subMenu.items.length)
+                    ? (
+                      subMenu.items.map((item, j) => {
+                        return (
+                          <ContextMenuItem
+                            key={j}
+                            preventClose={preventClose}
+                            item={item}
+                            onClick={onClick}
+                          />
+                        );
+                      })
+                    )
+                    : subMenu.noDataStr && (
+                      <MenuItem>{subMenu.noDataStr}</MenuItem>
+                    )}
+                </SubMenu>
+              </div>
             );
           })
         )}
