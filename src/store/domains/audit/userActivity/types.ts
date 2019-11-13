@@ -58,6 +58,10 @@ export interface AuditUserActivityDataResp {
   users_activity: Array<AuditUserActivityItemResp>;
 }
 
+export interface UserId {
+  user_id: number;
+}
+
 export interface AuditUserActivityState {
   usersActivity: ImmutableArray<AuditUserActivitySelectInstitutionResponse>;
   filteredUsers: ImmutableArray<AuditUserActivityItemResp>;

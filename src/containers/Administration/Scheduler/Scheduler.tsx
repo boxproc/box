@@ -20,6 +20,7 @@ import {
   HandleGetLogData,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
+  HandleFilterScheduledJobsById,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -33,6 +34,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
   getLogData: HandleGetLogData;
+  filterAdminScheduledJobsById: HandleFilterScheduledJobsById
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -44,6 +46,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   currentSchedulerName,
   resetScheduler,
   getLogData,
+  filterAdminScheduledJobsById,
 }) => {
   React.useEffect(
     () => {
@@ -128,6 +131,13 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         action: deleteAdminSchedulerJob,
         withConfirmation: true,
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
+      },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Scheduled Jobs',
+        action: () => filterAdminScheduledJobsById({ scheduler_id: currentSchedulerJobId }),
       },
     ],
     [

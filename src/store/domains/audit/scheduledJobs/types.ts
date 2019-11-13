@@ -36,6 +36,10 @@ export interface AuditScheduledJobsFilterPrepared {
   finish_datetime: string;
 }
 
+export interface SchedulerId {
+  scheduler_id: number;
+}
+
 export interface AuditScheduledJobsItems {
   scheduler_jobs: Array<AuditScheduledJobsItem>;
 }
