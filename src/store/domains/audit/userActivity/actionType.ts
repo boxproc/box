@@ -50,6 +50,21 @@ export interface FilterUserActivityRejectedAction {
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_REJECTED;
 }
 
+export interface FilterUserActivityByIdAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID;
+}
+
+export interface FilterUserActivityByIdFulfilledAction {
+  readonly payload: AuditUserActivityDataResp;
+  readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID_FULFILLED;
+}
+
+export interface FilterUserActivityByIdRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID_REJECTED;
+}
+
 export interface ResetUSerActivityAction {
   readonly type: ActionTypeKeys.RESET_USER_ACTIVITY;
 }
@@ -57,4 +72,5 @@ export interface ResetUSerActivityAction {
 export type AuditUserActivityActionTypes =
   | GetAuditUsersFulfilledAction
   | FilterUserActivityFulfilledAction
+  | FilterUserActivityByIdFulfilledAction
   | ResetUSerActivityAction;

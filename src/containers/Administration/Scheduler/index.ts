@@ -5,9 +5,11 @@ import Scheduler from './Scheduler';
 
 import {
   AdminSchedulerJobsActionTypes,
+  AuditScheduledJobsActionType,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleFilterAdminSchedulerJobs,
+  handleFilterByIdAuditScheduledJobs,
   handleGetLogData,
   handleSendAdminSchedulerAction,
   resetScheduler,
@@ -15,8 +17,6 @@ import {
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
   SystemMonitorActionTypes,
-  handleFilterByIdAuditScheduledJobs,
-  AuditScheduledJobsActionType,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -34,7 +34,6 @@ const mapStateToProps = (state: StoreState) => ({
   adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
   currentSchedulerJobId: selectActiveItemId(state),
-  
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

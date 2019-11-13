@@ -8,17 +8,26 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UsersFilter } from './forms';
 
-import { AdminUserItemPrepared, HandleFilterUsers, ResetUsers } from 'store/domains';
+import {
+  AdminUserItemPrepared,
+  HandleFilterAuditUserById,
+  HandleFilterUsers,
+  ResetUsers
+} from 'store/domains';
 
 interface UsersProps {
   adminUserItems: Array<AdminUserItemPrepared>;
   filterUsers: HandleFilterUsers;
+  filterUsersById: HandleFilterAuditUserById;
+  currentUserId: number;
   resetUsers: ResetUsers;
 }
 
 export const Users: React.FC<UsersProps> = ({
   adminUserItems,
   filterUsers,
+  filterUsersById,
+  currentUserId,
   resetUsers,
 }) => {
   React.useEffect(
@@ -28,11 +37,25 @@ export const Users: React.FC<UsersProps> = ({
     [resetUsers]
   );
 
+  const contextMenuItems = React.useMemo(
+    () => [
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Activity',
+        action: () => filterUsersById({ user_id: currentUserId }),
+      },
+    ],
+    [filterUsersById, currentUserId]
+  );
+
   return (
     <PageTemplate
       title="Users"
       data={adminUserItems}
       columns={tableColumns}
+      contextMenuItems={contextMenuItems}
       newModalName={modalNamesConst.ADD_USER}
       editModalName={modalNamesConst.EDIT_USER}
       filterAction={filterUsers}

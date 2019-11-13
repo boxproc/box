@@ -1,15 +1,22 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst } from 'consts';
+import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
-import { ActionTypeKeys, FilterUserActivityAction, GetAuditUsersAction } from './actionType';
+import {
+  ActionTypeKeys,
+  FilterUserActivityAction,
+  FilterUserActivityByIdAction,
+  GetAuditUsersAction
+} from './actionType';
 import * as api from './api';
-import { AuditUserActivityFilterPrepared } from './types';
+import { AuditUserActivityFilterPrepared, UserId } from './types';
 import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { errorDecoratorUtil } from 'utils';
+import { push } from 'connected-react-router';
+import { setIsOpenFilter } from 'store/domains/utils';
+import { cookiesUtil,  errorDecoratorUtil } from 'utils';
 
 export type GetAuditUsers = (institutionId: number | string) => GetAuditUsersAction;
 export type HandleGetAuditUsers = (institutionId: number | string) => Thunk<void>;
@@ -17,6 +24,9 @@ export type HandleGetAuditUsers = (institutionId: number | string) => Thunk<void
 export type FilterAuditUserActivity = (params: Partial<AuditUserActivityFilterPrepared>) =>
   FilterUserActivityAction;
 export type HandleFilterAuditUserActivity = () => Thunk<void>;
+
+export type FilterAuditUserById = (id: UserId) => FilterUserActivityByIdAction;
+export type HandleFilterAuditUserById = (id: UserId) => Thunk<void>;
 
 export type ResetUserActivity = () => void;
 
@@ -28,6 +38,11 @@ export const getAuditUsers: GetAuditUsers = institutionId => ({
 export const filterAuditUserActivity: FilterAuditUserActivity = filter => ({
   type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY,
   payload: api.filterAuditUserActivity(filter),
+});
+
+export const filterAuditUserActivityById: FilterAuditUserById = data => ({
+  type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID,
+  payload: api.filterAuditUserActivityById(data),
 });
 
 export const resetUserActivity: ResetUserActivity = () => ({
@@ -55,6 +70,19 @@ export const handleFilterAuditUserActivity: HandleFilterAuditUserActivity = () =
         if (preparedValues) {
           await dispatch(filterAuditUserActivity(preparedValues));
         }
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterByIdAuditUserActivity: HandleFilterAuditUserById = id =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(filterAuditUserActivityById(id));
+        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`);
+        dispatch(push(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`));
+        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

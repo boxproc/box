@@ -20,6 +20,10 @@ const auditUserActivityReducer =
         return state
           .set('filteredUsers', action.payload.users_activity);
 
+      case ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID_FULFILLED:
+        return state
+          .set('filteredUsers', action.payload.users_activity);
+
       case ActionTypeKeys.RESET_USER_ACTIVITY:
         return state = auditUserActivityInitialState;
 

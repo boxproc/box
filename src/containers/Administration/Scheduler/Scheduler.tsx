@@ -17,10 +17,10 @@ import {
   AdminSchedulerItemPrepared,
   HandleDeleteAdminSchedulerJob,
   HandleFilterAdminSchedulerJobs,
+  HandleFilterScheduledJobsById,
   HandleGetLogData,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
-  HandleFilterScheduledJobsById,
 } from 'store/domains';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
@@ -34,7 +34,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerName: string;
   resetScheduler: ResetScheduler;
   getLogData: HandleGetLogData;
-  filterAdminScheduledJobsById: HandleFilterScheduledJobsById
+  filterAdminScheduledJobsById: HandleFilterScheduledJobsById;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -77,8 +77,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
             withAutoRefresh: true,
           }),
         withConfirmation: true,
-        // tslint:disable-next-line: max-line-length
-        confirmationText: `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`,
+        confirmationText:
+        `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`,
       },
       {
         name: schedulerTasksConsts.STOP.NAME,
@@ -145,6 +145,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       currentSchedulerName,
       currentSchedulerJobId,
       deleteAdminSchedulerJob,
+      filterAdminScheduledJobsById,
       getLogData,
     ]
   );
