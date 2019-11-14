@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { TableNoData } from 'components';
+import { NumberFormatInput, TableNoData, TextInput } from 'components';
 
 import { schedulerStatusTypesOptions, statusTypesCodes } from 'consts';
 
@@ -74,9 +74,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({ title }) => {
   return (
     <Flex justifyContent="center" alignItems="center">
       <TableItemWrapper>
-        <Box className="title">
-          {title}
-        </Box>
+        <Box className="title">{title}</Box>
       </TableItemWrapper>
     </Flex>
   );
@@ -85,27 +83,27 @@ export const TableHeader: React.FC<TableHeaderProps> = ({ title }) => {
 interface TableCellProps {
   value: string | number;
   style?: object;
-  contentEditable?: boolean;
-  suppressContentEditableWarning?: boolean;
   onBlur?: any;
   onKeyUp?: (e: React.KeyboardEvent) => void;
   isDate?: boolean;
   isNumber?: boolean;
+  isDecimalNumber?: boolean;
   onCenter?: boolean;
   isSmaller?: boolean;
+  isEditable?: boolean;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({
   value,
   style,
-  contentEditable,
-  suppressContentEditableWarning,
   onBlur,
   onKeyUp,
   isDate = false,
   isNumber = false,
+  isDecimalNumber = false,
   onCenter = false,
   isSmaller = false,
+  isEditable = false,
 }) => {
   const isPendingStatus = value === schedulerStatusTypesOptions
     .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label;
@@ -113,9 +111,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   return (
     <TableItemWrapper
       style={style}
-      textRight={isNumber}
-      contentEditable={contentEditable}
-      suppressContentEditableWarning={suppressContentEditableWarning}
+      textRight={isNumber || isDecimalNumber}
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       isDate={isDate}
@@ -123,7 +119,26 @@ export const TableCell: React.FC<TableCellProps> = ({
       isAccentColor={isPendingStatus}
       isSmaller={isSmaller}
     >
-      {value}
+      {isEditable
+        ? isDecimalNumber
+          ? (
+            <NumberFormatInput
+              value={value}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              isEditableCellStyle={true}
+            />
+          )
+          : (
+            <TextInput
+              value={value}
+              isNumber={isNumber}
+              isEditableCellStyle={true}
+            />
+          )
+        : value
+      }
     </TableItemWrapper>
   );
 };
@@ -175,7 +190,7 @@ export const Table: React.FC<TableProps> = props => {
 
   return (
     <TableWrapper>
-      <PerfectScrollbar className="visible">
+      <PerfectScrollbar>
         <TableStyled
           activeRowIndex={activeRowIndex}
           isSmaller={isSmaller}

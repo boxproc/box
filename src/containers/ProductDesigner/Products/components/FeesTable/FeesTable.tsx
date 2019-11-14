@@ -30,6 +30,8 @@ interface FeesTableProps {
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
+  isOnlyAmount: boolean;
+  isOnlyRate: boolean;
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
@@ -37,6 +39,8 @@ const FeesTable: React.FC<FeesTableProps> = ({
   getProductFees,
   deleteProductFee,
   updateProductFee,
+  isOnlyAmount,
+  isOnlyRate,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
@@ -97,8 +101,8 @@ const FeesTable: React.FC<FeesTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
-        isNumber: true,
-        isAlwaysEditable: true,
+        isDecimalNumber: true,
+        isAlwaysEditable: !isOnlyAmount,
       }),
     },
     {
@@ -109,8 +113,8 @@ const FeesTable: React.FC<FeesTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
-        isNumber: true,
-        isAlwaysEditable: true,
+        isDecimalNumber: true,
+        isAlwaysEditable: !isOnlyRate,
       }),
     },
     {

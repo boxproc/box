@@ -31,10 +31,14 @@ const FieldWrapper = styled(Box) <FieldWrapperProps>`
 
 interface ProductFeesProps {
   isDisabled: boolean;
+  isOnlyAmount: boolean;
+  isOnlyRate: boolean;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
+  isOnlyAmount,
+  isOnlyRate,
 }) => {
   return (
     <Flex alignItems="flex-end">
@@ -68,12 +72,11 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           name="rate"
           component={NumberFormatField}
           label="Rate"
-          isNumber={true}
-          disabled={isDisabled}
+          disabled={isDisabled || isOnlyAmount}
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={isOnlyRate && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
       <FieldWrapper maxWidth="140px">
@@ -82,12 +85,11 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           name="amount"
           component={NumberFormatField}
           label="Amount"
-          isNumber={true}
-          disabled={isDisabled}
+          disabled={isDisabled || isOnlyRate}
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={isOnlyAmount && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
       </FieldWrapper>
     </Flex>

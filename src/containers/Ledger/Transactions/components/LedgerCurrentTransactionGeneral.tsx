@@ -107,7 +107,6 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             decimalScale={2}
             label="Amount"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 3]} p="10px">
@@ -120,7 +119,6 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             decimalScale={2}
             label="Amount in Original Currency"
             readOnly={true}
-            isNumber={true}
           />
         </Box>
       </Flex>

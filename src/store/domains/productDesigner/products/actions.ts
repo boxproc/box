@@ -3,10 +3,14 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
+import { closeModal, openModal } from 'store/domains/modals';
 
 import { handleFilterLedgerAccounts } from 'store/domains';
-import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
+import {
+  selectActiveItemId,
+  selectIsAccessibleFiltering,
+  setActiveItemId,
+} from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddProductAction,
@@ -372,11 +376,17 @@ export const handleAddProduct: HandleAddProduct = values =>
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
-        await dispatch(addProduct(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
+        const res = await dispatch(addProduct(preparedValues)) as any;
 
-        if (isAccessibleFiltering) {
-          await dispatch(handleFilterProducts());
+        if (res) {
+          if (isAccessibleFiltering) {
+            await dispatch(handleFilterProducts());
+          }
+          dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
+          dispatch(setActiveItemId(res.value.product_id));
+          dispatch(openModal({
+            name: modalNamesConst.EDIT_PRODUCT,
+          }));
         }
       },
       dispatch

@@ -5,16 +5,17 @@ import config from 'config';
 import { modalNamesConst } from 'consts';
 
 import { SendNotification } from 'types';
+import { stringsUtil } from 'utils';
 
 const getNotification = (
   title: string,
   message: string,
   details?: string,
-  statusCode?: number,
+  boxStatusCode?: number,
   errorCode?: number
 ) => openModal({
   name: modalNamesConst.MESSAGE_MODAL,
-  payload: { title, message, details, statusCode, errorCode },
+  payload: { title, message, details, boxStatusCode, errorCode },
 });
 
 interface Error {
@@ -27,11 +28,9 @@ interface Error {
 const errorMessage = (res: Error) => {
   if (res) {
     if (res.statusCode && res.statusCode === 404) {
-      return JSON.stringify(res.error.message);
-      // return res.error.message.toString();
+      return res.error.message.toString();
     } else {
-      return JSON.stringify(res);
-      // return res.toString();
+      return res.toString();
     }
   } else {
     return 'An error occurred.';
@@ -47,13 +46,17 @@ export const handleSendNotification: SendNotification =
         }
 
         if (res && res.body && res.body.response_status) {
-          const { error_message, error_description, status_code } = res.body.response_status;
           const { statusCode } = res;
+          const { error_message, error_description, status_code } = res.body.response_status;
+
+          const errorDescription = error_description
+            ? stringsUtil.addNewLines(error_description)
+            : '';
 
           dispatch(getNotification(
             `${statusCode} Error`,
             error_message,
-            JSON.stringify(error_description),
+            errorDescription,
             status_code,
             statusCode
           ));

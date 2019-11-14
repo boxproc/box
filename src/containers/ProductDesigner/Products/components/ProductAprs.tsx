@@ -80,7 +80,6 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           name="rate"
           component={NumberFormatField}
           label="Rate"
-          isNumber={true}
           disabled={isDisabled}
           placeholder="0.00"
           fixedDecimalScale={true}

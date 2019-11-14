@@ -8,6 +8,7 @@ import { withModal, WithModalProps } from 'HOCs';
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { HandleRefreshLogData, PayloadLogModal } from 'store/domains';
+import { stringsUtil } from 'utils';
 
 interface LogModalProps extends WithModalProps, ExternalSpinnerProps {
   data: PayloadLogModal;
@@ -29,7 +30,7 @@ const LogModal: React.FC<LogModalProps> = ({
 
   const preparedLogData = React.useMemo(
     () => data.logData
-      ? data.logData.split('\\n').join('\n').trim()
+      ? stringsUtil.addNewLines(data.logData)
       : '',
     [data]
   );

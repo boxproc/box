@@ -30,7 +30,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -44,7 +43,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -58,7 +56,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -72,7 +69,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -86,7 +82,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -100,7 +95,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -114,7 +108,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -128,7 +121,6 @@ const Overdue: React.FC<OverdueProps> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             readOnly={isEditMode}
-            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>

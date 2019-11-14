@@ -33,7 +33,6 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -57,7 +56,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Fee Exceed Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -70,7 +68,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Rate Exceed Limit"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -83,7 +80,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Fee Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -96,7 +92,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Rate Late Payment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Delimiter />
@@ -110,7 +105,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Fee Overpayment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -123,7 +117,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Rate Overpayment"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -136,7 +129,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Minimum Payment Amount"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -149,7 +141,6 @@ const RevolvingCreditDetails: React.FC = () => {
             decimalScale={2}
             label="Minimum Payment Rate"
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            isNumber={true}
           />
         </Box>
         <Hr />

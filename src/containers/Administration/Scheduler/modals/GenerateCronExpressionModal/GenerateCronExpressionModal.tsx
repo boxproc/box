@@ -5,10 +5,10 @@ import { CronGenerator, Modal } from 'components';
 import { formNamesConst, modalNamesConst } from 'consts';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { ChangeFiledValue } from 'types';
+import { ChangeFieldValue } from 'types';
 
 interface GenerateCronExpressionModalProps extends WithModalProps {
-  change: ChangeFiledValue;
+  change: ChangeFieldValue;
   currentCronExpression: string;
 }
 

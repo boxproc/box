@@ -5,15 +5,18 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
 
-import { formNamesConst, iconNamesConst } from 'consts';
+import { feeTypesCodes, formNamesConst, iconNamesConst } from 'consts';
 
 import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/components';
 
 import { HandleAddProductFee } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface FeesFormProps {
   addProductFee: HandleAddProductFee;
   isLoading: boolean;
+  feeApplicationConditionValue: SelectValues;
   onCancel: () => void;
 }
 
@@ -26,7 +29,24 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   pristine,
   dirty,
   isLoading,
+  feeApplicationConditionValue,
 }) => {
+  const isOnlyAmount = React.useMemo(
+    () => {
+      return feeApplicationConditionValue
+        && feeApplicationConditionValue.value === feeTypesCodes.APPLY_ONLY_FIXED_AMOUNT;
+    },
+    [feeApplicationConditionValue]
+  );
+
+  const isOnlyRate = React.useMemo(
+    () => {
+      return feeApplicationConditionValue
+        && feeApplicationConditionValue.value === feeTypesCodes.APPLY_ONLY_RATE;
+    },
+    [feeApplicationConditionValue]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductFee),
     [handleSubmit]
@@ -37,7 +57,11 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
       <Box pb="10px">
         <form onSubmit={handleSubmitForm}>
           <Flex alignItems="flex-end">
-            <ProductFees isDisabled={isLoading} />
+            <ProductFees
+              isOnlyAmount={isOnlyAmount}
+              isOnlyRate={isOnlyRate}
+              isDisabled={isLoading}
+            />
             <Box width="90px" pb="20px">
               <Button
                 text={isLoading ? 'Adding...' : 'Add Fee'}
@@ -48,7 +72,10 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
           </Flex>
         </form>
       </Box>
-      <FeesTable />
+      <FeesTable
+        isOnlyAmount={isOnlyAmount}
+        isOnlyRate={isOnlyRate}
+      />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

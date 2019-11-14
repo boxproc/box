@@ -121,7 +121,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
-        isNumber: true,
+        isDecimalNumber: true,
         isAlwaysEditable: true,
       }),
     },

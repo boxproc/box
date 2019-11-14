@@ -197,6 +197,19 @@ export const selectInstitutionProductsOptions = createSelector(
   }
 );
 
+export const selectInstitutionProducts = createSelector(
+  selectDefaultInstitutionProducts,
+  products => {
+    return products && products.asMutable().map(product => {
+      return {
+        id: product.id,
+        name: product.name,
+        defaultStatementCycleId: product.default_statement_cycle_id,
+      };
+    });
+  }
+);
+
 export const selectDefaultProductAprs = (state: StoreState) =>
   state.productDesigner.products.productAprs;
 

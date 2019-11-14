@@ -29,3 +29,5 @@ export const padStartN = (num: number, N: number) => {
   }
   return s;
 };
+
+export const addNewLines = (str: string) => str.split('\\n').join('\n').trim();

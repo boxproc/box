@@ -242,8 +242,16 @@ export interface ProductRuleRequestPrepared {
   action_type?: number | string;
 }
 
+export interface InstitutionProductsItem extends ProductItemInfoPlain {
+  default_statement_cycle_id: number;
+}
+
+export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
+  defaultStatementCycleId: number;
+}
+
 export interface InstitutionProducts {
-  institution_products: Array<ProductItemInfoPlain>;
+  institution_products: Array<InstitutionProductsItem>;
 }
 
 export interface InstitutionProductServiceInterfaces {
@@ -346,7 +354,7 @@ export interface ProductsState {
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
   currentProductRule: ProductRulesItemResp;
-  institutionProducts: ImmutableArray<ProductItemInfoPlain>;
+  institutionProducts: ImmutableArray<InstitutionProductsItem>;
   interfaces: ImmutableArray<IdNamePair>;
   endpoints: ImmutableArray<IdNamePair>;
   productAprs: ImmutableArray<ProductAprItem>;

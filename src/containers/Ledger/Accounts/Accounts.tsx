@@ -65,16 +65,25 @@ const Accounts: React.FC<AccountsProps> = ({
     () => {
       if (hasProductOverride) {
         setActiveItemId(productOverrideId);
-        openModal({
-          name: modalNamesConst.EDIT_PRODUCT,
-        });
+        if (currentId) {
+          openModal({
+            name: modalNamesConst.EDIT_PRODUCT,
+          });
+        }
       } else {
         addProductOverride({
           withOpenProductModal: true,
         });
       }
     },
-    [openModal, addProductOverride, hasProductOverride, productOverrideId, setActiveItemId]
+    [
+      openModal,
+      addProductOverride,
+      hasProductOverride,
+      productOverrideId,
+      setActiveItemId,
+      currentId,
+    ]
   );
 
   const contextMenuItems = React.useMemo(
