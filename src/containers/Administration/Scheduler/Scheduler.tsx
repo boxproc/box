@@ -58,6 +58,25 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
+        name: 'Show log',
+        icon: iconNamesConst.SHORT_TEXT,
+        action: () => getLogData({
+          name: systemMonitorTables.SCHEDULER_JOBS,
+          id: currentSchedulerJobId,
+          title: currentSchedulerName,
+        }),
+      },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Scheduled Jobs',
+        action: () => filterAdminScheduledJobsById({ scheduler_id: currentSchedulerJobId }),
+      },
+      {
+        isDivider: true,
+      },
+      {
         name: schedulerTasksConsts.EXECUTE_TASK.NAME,
         action: () => sendAdminSchedulerAction({
           taskId: currentSchedulerJobId,
@@ -117,13 +136,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         confirmationText: `${schedulerTasksConsts.RESUME.NAME} "${currentSchedulerName}"?`,
       },
       {
-        name: 'Show log',
-        icon: iconNamesConst.SHORT_TEXT,
-        action: () => getLogData({
-          name: systemMonitorTables.SCHEDULER_JOBS,
-          id: currentSchedulerJobId,
-          title: currentSchedulerName,
-        }),
+        isDivider: true,
       },
       {
         name: 'Delete',
@@ -131,13 +144,6 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         action: deleteAdminSchedulerJob,
         withConfirmation: true,
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
-      },
-      {
-        isDivider: true,
-      },
-      {
-        name: 'Scheduled Jobs',
-        action: () => filterAdminScheduledJobsById({ scheduler_id: currentSchedulerJobId }),
       },
     ],
     [
