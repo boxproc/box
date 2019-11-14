@@ -17,7 +17,7 @@ import {
   GetAdminUserGroupMembersAction,
   GetAdminUsersGroupAction,
   UpdateAdminUsersGroupAction,
-} from './actionType';
+} from './actionTypes';
 import * as api from './api';
 import {
   AdminGroupPermissionItemEditable,

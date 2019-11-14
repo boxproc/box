@@ -1,5 +1,5 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
-import { ActionTypeKeys, AdminUserActionTypes } from './actionType';
+import { ActionTypeKeys, AdminUserActionTypes } from './actionTypes';
 import { AdminUserState } from './types';
 
 export const adminUserInitialState:

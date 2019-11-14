@@ -78,7 +78,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           }),
         withConfirmation: true,
         confirmationText:
-        `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`,
+          `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`,
       },
       {
         name: schedulerTasksConsts.STOP.NAME,

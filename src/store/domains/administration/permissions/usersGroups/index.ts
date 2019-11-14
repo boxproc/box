@@ -1,4 +1,4 @@
 export * from './types';
-export * from './action';
+export * from './actions';
 export * from './selectors';
-export { ActionTypeKeys as AdminUsersGroupActionTypes } from './actionType';
+export { ActionTypeKeys as AdminUsersGroupActionTypes } from './actionTypes';

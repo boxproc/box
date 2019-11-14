@@ -15,13 +15,11 @@ import {
   selectInstitutionsOptions,
   SystemMonitorActionTypes
 } from 'store/domains';
-
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AuditScheduledJobsActionType.FILTER_AUDIT_SCHEDULED_JOBS,
   SystemMonitorActionTypes.GET_LOG_DATA,
-
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

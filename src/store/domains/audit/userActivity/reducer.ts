@@ -2,7 +2,7 @@ import Immutable, * as seamlessImmutable from 'seamless-immutable';
 
 import { AuditUserActivityState } from './types';
 
-import { ActionTypeKeys, AuditUserActivityActionTypes } from './actionType';
+import { ActionTypeKeys, AuditUserActivityActionTypes } from './actionTypes';
 
 export const auditUserActivityInitialState:
   seamlessImmutable.ImmutableObject<AuditUserActivityState> = Immutable({

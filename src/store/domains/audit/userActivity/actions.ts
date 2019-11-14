@@ -1,3 +1,4 @@
+import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, uiItemConsts } from 'consts';
@@ -7,16 +8,16 @@ import {
   FilterUserActivityAction,
   FilterUserActivityByIdAction,
   GetAuditUsersAction
-} from './actionType';
+} from './actionTypes';
 import * as api from './api';
 import { AuditUserActivityFilterPrepared, UserId } from './types';
 import { preparedFilterToSend } from './utils';
 
+import { setIsOpenFilter } from 'store/domains/utils';
+
 import { Thunk } from 'types';
 
-import { push } from 'connected-react-router';
-import { setIsOpenFilter } from 'store/domains/utils';
-import { cookiesUtil,  errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type GetAuditUsers = (institutionId: number | string) => GetAuditUsersAction;
 export type HandleGetAuditUsers = (institutionId: number | string) => Thunk<void>;

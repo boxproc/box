@@ -12,7 +12,7 @@ import {
   FilterUsersAction,
   GetAccessUsersAction,
   UpdateAdminUserAction,
-} from './actionType';
+} from './actionTypes';
 import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
 import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
 

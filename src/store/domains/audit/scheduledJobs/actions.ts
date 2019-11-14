@@ -1,17 +1,22 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst, basePath, uiItemConsts } from 'consts';
+import { push } from 'connected-react-router';
 
-import { ActionTypeKeys, FilterScheduledJobsAction, FilterScheduledJobsByIdAction } from './actionType';
+import { basePath, formNamesConst, uiItemConsts } from 'consts';
+
+import { setIsOpenFilter } from 'store/domains/utils';
+import {
+  ActionTypeKeys,
+  FilterScheduledJobsAction,
+  FilterScheduledJobsByIdAction,
+} from './actionTypes';
 import * as api from './api';
 import { AuditScheduledJobsFilterPrepared, SchedulerId } from './types';
 import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { errorDecoratorUtil, cookiesUtil } from 'utils';
-import { push } from 'connected-react-router';
-import { setIsOpenFilter } from 'store/domains/utils';
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
 
 export type FilterAuditScheduledJobs = (params: Partial<AuditScheduledJobsFilterPrepared>) =>
   FilterScheduledJobsAction;
@@ -31,7 +36,6 @@ export const filterScheduledJobsById: FilterScheduledJobsById = data => ({
   type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID,
   payload: api.filterScheduledJobsById(data),
 });
-
 
 export const resetScheduledJobs: ResetScheduledJobs = () => ({
   type: ActionTypeKeys.RESET_SCHEDULED_JOBS,
@@ -65,4 +69,3 @@ export const handleFilterByIdAuditScheduledJobs: HandleFilterScheduledJobsById =
       dispatch
     );
   };
-

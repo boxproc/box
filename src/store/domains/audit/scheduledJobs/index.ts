@@ -1,4 +1,4 @@
 export * from './types';
-export * from './action';
+export * from './actions';
 export * from './selectors';
-export { ActionTypeKeys as AuditScheduledJobsActionType } from './actionType';
+export { ActionTypeKeys as AuditScheduledJobsActionType } from './actionTypes';
