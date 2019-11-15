@@ -10,7 +10,7 @@ import { daysOfWeekOptions } from 'consts';
 const DowSpecificFields: React.FC = () => {
   return (
     <Flex alignItems="baseline" flexWrap="wrap">
-      <Paragraph>Specific day of week (choose one or many)</Paragraph>
+      <Paragraph size={13}>Specific day of week (choose one or many)</Paragraph>
       <Flex
         alignItems="center"
         flexWrap="wrap"

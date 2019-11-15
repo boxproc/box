@@ -12,7 +12,7 @@ const numbersArray = stringsUtil.rangeDecimalNumbersArray(31, 1);
 const DomSpecificFields: React.FC = () => {
   return (
     <Flex alignItems="baseline" flexWrap="wrap">
-      <Paragraph>Specific day of month (choose one or many)</Paragraph>
+      <Paragraph size={13}>Specific day of month (choose one or many)</Paragraph>
       <Flex
         alignItems="center"
         flexWrap="wrap"

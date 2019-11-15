@@ -16,17 +16,18 @@ const options = numbersArray.map(num => {
 const DaysNearestWeekdayFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Nearest weekday (Monday to Friday) to the</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>Nearest weekday (Monday to Friday) to the</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id="cronDaysNearestWeekday"
           name="cronDaysNearestWeekday"
+          placeholder=""
           component={SelectField}
-          placeholder="Select Day"
+          isClearable={false}
           options={options}
         />
       </Box>
-      <Paragraph>of the month</Paragraph>
+      <Paragraph size={13}>of the month</Paragraph>
     </Flex>
   );
 };

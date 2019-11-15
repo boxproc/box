@@ -10,17 +10,18 @@ import { daysOfWeekOptions } from 'consts';
 const LastSpecificDomFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph>On the last</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>On the last</Paragraph>
+      <Box width="130px" p="0 7px">
         <Field
           id="cronLastSpecificDomDay"
           name="cronLastSpecificDomDay"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={daysOfWeekOptions}
         />
       </Box>
-      <Paragraph>of the month</Paragraph>
+      <Paragraph size={13}>of the month</Paragraph>
     </Flex>
   );
 };

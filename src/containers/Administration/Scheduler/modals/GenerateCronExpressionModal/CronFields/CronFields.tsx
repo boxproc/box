@@ -77,7 +77,7 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
         className="cron-option"
         option={{
           value: `cronEvery${name}`,
-          label: `Every ${unity}`,
+          label: `${isYear ? 'Any' : 'Every'} ${unity}`,
         }}
       />
       {isDay && (

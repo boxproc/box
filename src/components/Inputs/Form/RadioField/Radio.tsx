@@ -23,7 +23,7 @@ const RadioWrapper = styled.label<RadioWrapperProps>`
   `};
 
   .radio-label {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   ${({ disabled }) => disabled && `

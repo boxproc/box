@@ -18,26 +18,28 @@ const options = numbersArray.map(num => {
 const NthDayFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Every</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>On the</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id="cronNthDayNth"
           name="cronNthDayNth"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={options}
         />
       </Box>
-      <Paragraph>day(s) starting on</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Box width="130px" p="0 7px">
         <Field
           id="cronNthDayDay"
           name="cronNthDayDay"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={daysOfWeekOptions}
         />
       </Box>
+      <Paragraph size={13}>of the month</Paragraph>
     </Flex>
   );
 };

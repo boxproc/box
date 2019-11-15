@@ -16,16 +16,17 @@ const options = numbersArray.map(num => {
 const DaysBeforeEomFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Box width="150px" p="0 7px">
+      <Box width="90px" p="0 7px">
         <Field
           id="cronDaysBeforeEomMinus"
           name="cronDaysBeforeEomMinus"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={options}
         />
       </Box>
-      <Paragraph>day(s) before the end of the month</Paragraph>
+      <Paragraph size={13}>day(s) before the end of the month</Paragraph>
     </Flex>
   );
 };

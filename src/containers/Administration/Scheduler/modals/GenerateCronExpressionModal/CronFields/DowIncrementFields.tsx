@@ -18,23 +18,25 @@ const options = numbersArray.map(num => {
 const DowIncrementFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Every</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>Every</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id="cronDowIncrementIncrement"
           name="cronDowIncrementIncrement"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={options}
         />
       </Box>
-      <Paragraph>day(s) starting on</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>day(s) starting on</Paragraph>
+      <Box width="130px" p="0 7px">
         <Field
           id="cronDowIncrementStart"
           name="cronDowIncrementStart"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={daysOfWeekOptions}
         />
       </Box>

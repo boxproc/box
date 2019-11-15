@@ -20,27 +20,29 @@ const daysOfMonthOptions = numbersArray.map(num => {
 const DomIncrementFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Every</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>Every</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id="cronDomIncrementIncrement"
           name="cronDomIncrementIncrement"
+          placeholder=""
           component={SelectField}
-          placeholder="Select Day"
+          isClearable={false}
           options={options}
         />
       </Box>
-      <Paragraph>day(s) starting on the day</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>day(s) starting on the day</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id="cronDomIncrementStart"
           name="cronDomIncrementStart"
           component={SelectField}
-          placeholder="Select Day"
+          placeholder=""
+          isClearable={false}
           options={daysOfMonthOptions}
         />
       </Box>
-      <Paragraph>of the month</Paragraph>
+      <Paragraph size={13}>of the month</Paragraph>
     </Flex>
   );
 };

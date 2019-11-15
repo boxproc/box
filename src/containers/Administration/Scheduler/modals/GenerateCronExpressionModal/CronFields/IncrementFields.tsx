@@ -53,23 +53,25 @@ const IncrementFields: React.FC<IncrementFieldsProps> = ({
 
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Every</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>Every</Paragraph>
+      <Box width="90px" p="0 7px">
         <Field
           id={`cron${name}IncrementIncrement`}
           name={`cron${name}IncrementIncrement`}
           component={SelectField}
-          placeholder={`Select ${name}`}
+          placeholder=""
+          isClearable={false}
           options={incrementOptions}
         />
       </Box>
-      <Paragraph>{unity}(s) starting at {unity}</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>{unity}(s) starting at {unity}</Paragraph>
+      <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}IncrementStart`}
           name={`cron${name}IncrementStart`}
           component={SelectField}
-          placeholder={`Select ${name}`}
+          placeholder=""
+          isClearable={false}
           options={incrementStartOptions}
         />
       </Box>

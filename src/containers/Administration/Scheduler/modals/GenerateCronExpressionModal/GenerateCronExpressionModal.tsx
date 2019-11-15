@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
+import { Button, Hr, Modal, Paragraph, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { CronFields } from './CronFields';
@@ -11,10 +11,11 @@ import { CronFields } from './CronFields';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { ChangeFieldValue } from 'types';
+import { cronExpressionGenerator } from './cronExpressionGenerator';
 
 interface GenerateCronExpressionModalProps extends WithModalProps {
-  change: ChangeFieldValue;
-  currentCronExpression: string;
+  changeFormValue: ChangeFieldValue;
+  formValues: any;
 }
 
 type GenerateCronExpressionModalAllProps = GenerateCronExpressionModalProps
@@ -23,19 +24,31 @@ type GenerateCronExpressionModalAllProps = GenerateCronExpressionModalProps
 const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 
 const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps> = ({
-  change,
+  changeFormValue,
   closeModal,
-  handleSubmit,
-  currentCronExpression,
+  formValues,
 }) => {
-  // const handleCloseModal = React.useCallback(
-  //   () => closeModal(modalName),
-  //   [closeModal]
-  // );
+  const [cronExpression, setCronExpression] = React.useState(null);
 
-  const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
-    [handleSubmit]
+  const handleCloseModal = React.useCallback(
+    () => {
+      if (cronExpression) {
+        changeFormValue(formNamesConst.DEFINE_SCHEDULER_JOB, 'cronExpression', cronExpression);
+      }
+      closeModal(modalName);
+    },
+    [closeModal, cronExpression, changeFormValue]
+  );
+
+  React.useEffect(
+    () => {
+      if (formValues) {
+        const expression = cronExpressionGenerator(formValues);
+
+        setCronExpression(expression);
+      }
+    },
+    [formValues]
   );
 
   return (
@@ -45,14 +58,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
       maxContainerWidth={800}
       minContainerHeight={500}
     >
-      {/* <CronGenerator
-        formName={formNamesConst.DEFINE_SCHEDULER_JOB}
-        fieldName="cronExpression"
-        onChange={change}
-        action={handleCloseModal}
-        initialValue={currentCronExpression}
-      /> */}
-      <form onSubmit={handleSubmitForm}>
+      <form>
         <Tabs>
           <TabsPanel title="Seconds">
             <CronFields name="Second" />
@@ -73,11 +79,18 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
             <CronFields name="Year" />
           </TabsPanel>
         </Tabs>
-        <Hr />
-        <Flex justifyContent="flex-end">
-          <Button text="Generate Cron Expression" />
-        </Flex>
       </form>
+      <Hr />
+      <Flex
+        alignItems="baseline"
+        justifyContent="space-between"
+      >
+        <Paragraph><b>Cron Expression:</b> {cronExpression}</Paragraph>
+        <Button
+          text="Apply"
+          onClick={handleCloseModal}
+        />
+      </Flex>
     </Modal>
   );
 };

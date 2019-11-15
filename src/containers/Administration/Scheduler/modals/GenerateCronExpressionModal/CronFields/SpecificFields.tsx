@@ -36,7 +36,7 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
       flexWrap="wrap"
       flexDirection="column"
     >
-      <Paragraph>Specific {unity} (choose one or many)</Paragraph>
+      <Paragraph size={13}>Specific {unity} (choose one or many)</Paragraph>
       <Flex
         alignItems="center"
         flexWrap="wrap"

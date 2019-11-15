@@ -238,13 +238,13 @@ export enum feeTypesCodes {
 }
 
 export const daysOfWeekOptions = [
-  {value: 'Mon', label: 'Monday'},
-  {value: 'Tue', label: 'Tuesday'},
-  {value: 'Wed', label: 'Wednesday'},
-  {value: 'Thu', label: 'Thursday'},
-  {value: 'Fri', label: 'Friday'},
-  {value: 'Sat', label: 'Saturday'},
-  {value: 'Sun', label: 'Sunday'},
+  {value: '1', label: 'Sunday'},
+  {value: '2', label: 'Monday'},
+  {value: '3', label: 'Tuesday'},
+  {value: '4', label: 'Wednesday'},
+  {value: '5', label: 'Thursday'},
+  {value: '6', label: 'Friday'},
+  {value: '7', label: 'Saturday'},
 ];
 
 export const monthsOptions = [

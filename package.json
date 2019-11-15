@@ -9,7 +9,6 @@
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
     "react-contextmenu": "^2.13.0",
-    "react-cron-builder": "^1.0.4",
     "react-dom": "^16.8.6",
     "react-input-mask": "^3.0.0-alpha.0",
     "react-number-format": "^4.3.1",

@@ -36,23 +36,25 @@ const RangeFields: React.FC<RangeFieldsProps> = ({ name, unity, count, isMonth, 
 
   return (
     <Flex alignItems="baseline">
-      <Paragraph>Every {unity} between {unity}</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>Every {unity} between {unity}</Paragraph>
+      <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}RangeStart`}
           name={`cron${name}RangeStart`}
           component={SelectField}
-          placeholder={`Select ${name}`}
+          placeholder=""
+          isClearable={false}
           options={rangeOptions}
         />
       </Box>
-      <Paragraph>and {unity}</Paragraph>
-      <Box width="150px" p="0 7px">
+      <Paragraph size={13}>and {unity}</Paragraph>
+      <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}RangeEnd`}
           name={`cron${name}RangeEnd`}
           component={SelectField}
-          placeholder={`Select ${name}`}
+          placeholder=""
+          isClearable={false}
           options={rangeOptions}
         />
       </Box>
