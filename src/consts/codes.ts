@@ -236,3 +236,37 @@ export enum feeTypesCodes {
   APPLY_BOTH_FIXED_AMOUNT_AND_RATE = 'B',
   APPLY_WHICHEVER_IS_GREATER_RATE_OR_FIXED_AMOUNT = 'G',
 }
+
+export const daysOfWeekOptions = [
+  {value: 'Mon', label: 'Monday'},
+  {value: 'Tue', label: 'Tuesday'},
+  {value: 'Wed', label: 'Wednesday'},
+  {value: 'Thu', label: 'Thursday'},
+  {value: 'Fri', label: 'Friday'},
+  {value: 'Sat', label: 'Saturday'},
+  {value: 'Sun', label: 'Sunday'},
+];
+
+export const monthsOptions = [
+  {value: '1', label: 'January'},
+  {value: '2', label: 'February'},
+  {value: '3', label: 'March'},
+  {value: '4', label: 'April'},
+  {value: '5', label: 'May'},
+  {value: '6', label: 'June'},
+  {value: '7', label: 'July'},
+  {value: '8', label: 'August'},
+  {value: '9', label: 'September'},
+  {value: '10', label: 'October'},
+  {value: '11', label: 'November'},
+  {value: '12', label: 'December'},
+];
+
+export enum timeUnits {
+  SECOND = 'Second',
+  MINUTE = 'Minute',
+  HOUR = 'Hour',
+  DAY = 'Day',
+  MONTH = 'Month',
+  YEAR = 'Year',
+}

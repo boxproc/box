@@ -34,6 +34,7 @@ export enum formNamesConst {
   DEFINE_CYCLE_EDITOR = 'defineCycleEditorForm',
 
   DEFINE_SCHEDULER_JOB = 'defineSchedulerJobForm',
+  GENERATE_CRON_EXPRESSION = 'generateCronExpression',
 
   AUDIT_API_CALL = 'auditApiCallForm',
 

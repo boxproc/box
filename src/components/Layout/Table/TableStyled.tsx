@@ -83,9 +83,9 @@ export const TableStyled = styled.div<TableStyledProps>`
     border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
   }
 
-  .ReactTable .rt-tbody .rt-tr-group:last-child {
-    border-bottom: 0;
-  }
+  // .ReactTable .rt-tbody .rt-tr-group:last-child {
+  //   border-bottom: 0;
+  // }
 
   .ReactTable .rt-tr-group:hover,
   .ReactTable .rt-tbody .rt-tr-group:last-child:hover {

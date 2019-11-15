@@ -83,12 +83,14 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
 
   return (
     <InputFieldWrapper className={['input-field', fieldClassName].join(' ')}>
-      <Label
-        htmlFor={focusOnLabelClick ? id : null}
-        invalid={invalid}
-      >
-        {label}
-      </Label>
+      {label && (
+        <Label
+          htmlFor={focusOnLabelClick ? id : null}
+          invalid={invalid}
+        >
+          {label}
+        </Label>
+      )}
       <div className="field">
         {render(invalid, preventBlur)}
       </div>

@@ -44,8 +44,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   mode: 'add' | 'edit';
 }
 
-type AccountFormAllProps = AccountFormProps &
-  InjectedFormProps<{}, AccountFormProps>;
+type AccountFormAllProps = AccountFormProps & InjectedFormProps<{}, AccountFormProps>;
 
 const AccountForm: React.FC<AccountFormAllProps> = ({
   onCancel,
