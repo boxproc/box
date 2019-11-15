@@ -1,25 +1,23 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { change, formValueSelector } from 'redux-form';
+import { change, getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
+import { cronInitialValues } from './cronInitialValues';
 import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.DEFINE_SCHEDULER_JOB);
-
 const mapStateToProps = (state: StoreState) => ({
-  currentCronExpression: formSelector(
-    state,
-    'cronExpression'
-  ),
+  formValues: getFormValues(formNamesConst.GENERATE_CRON_EXPRESSION)(state),
+
+  initialValues: cronInitialValues,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    change,
+    changeFormValue: change,
   },
   dispatch
 );

@@ -31,3 +31,11 @@ export const padStartN = (num: number, N: number) => {
 };
 
 export const addNewLines = (str: string) => str.split('\\n').join('\n').trim();
+
+export const rangeNumbersArray = (N: number, startIndex: number = 0) => new Array(N)
+  .fill(null)
+  .map((item, index) => (index + startIndex).toString());
+
+export const rangeDecimalNumbersArray = (N: number, startIndex: number = 0) => new Array(N)
+  .fill(null)
+  .map((item, index) => padStartN(index + startIndex, 2));

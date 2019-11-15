@@ -21,7 +21,7 @@ import { ShortText as ShortTextIcon } from 'styled-icons/material/ShortText';
 import { Smartphone as SmartphoneIcon } from 'styled-icons/material/Smartphone';
 import { Stop as StopIcon } from 'styled-icons/material/Stop';
 import { Warning as WarningIcon } from 'styled-icons/material/Warning';
-import { CheckedBoxIcon, UncheckedBoxIcon } from './Icons';
+import { CheckedBoxIcon, CheckedRadioIcon, UncheckedBoxIcon, UncheckedRadioIcon } from './Icons';
 
 export {
   FilterIcon,
@@ -49,4 +49,6 @@ export {
   ShortTextIcon,
   WarningIcon,
   RefreshIcon,
+  CheckedRadioIcon,
+  UncheckedRadioIcon
 };

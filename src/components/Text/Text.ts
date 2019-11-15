@@ -65,6 +65,7 @@ export const Paragraph = styled.p<ParagraphProps>`
   color: ${({ theme, light }) => light ? theme.colors.darkGray : theme.colors.black};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
   font-weight: ${({ bold }) => bold ? 500 : 'normal'};
+
   &:not(last-child) {
     margin-bottom: 10px;
   };
