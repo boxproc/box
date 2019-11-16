@@ -5,15 +5,16 @@ import { Box, Flex } from '@rebass/grid';
 
 import { monthsOptions } from 'consts';
 
-import { CheckboxField, Paragraph } from 'components';
+import { CheckboxField } from 'components';
 import { stringsUtil } from 'utils';
 
 interface SpecificFieldsProps {
   name: string;
   unity: string;
   count: number;
-  isMonth?: boolean;
-  isYear?: boolean;
+  isMonth: boolean;
+  isYear: boolean;
+  isSpecific: boolean;
 }
 
 const SpecificFields: React.FC<SpecificFieldsProps> = ({
@@ -22,6 +23,7 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
   count,
   isMonth,
   isYear,
+  isSpecific,
 }) => {
   const numbersRangeArray = React.useMemo(
     () => isYear
@@ -36,39 +38,44 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
       flexWrap="wrap"
       flexDirection="column"
     >
-      <Paragraph size={13}>Specific {unity} (choose one or many)</Paragraph>
-      <Flex
-        alignItems="center"
-        flexWrap="wrap"
-      >
-        {!isMonth && numbersRangeArray.map(unit => (
-          <Box
-            key={unit}
-            width={isYear ? '70px' : '55px'}
-            p={isYear ? '5px' : '3px'}
+      Specific {unity} (choose one or many)
+      {isSpecific && (
+        <Box mt="10px">
+          <Flex
+            alignItems="center"
+            flexWrap="wrap"
           >
-            <Field
-              id={`cron${name}${unit}`}
-              name={`cron${name}SpecificSpecific${unit}`}
-              component={CheckboxField}
-              label={unit}
-            />
-          </Box>
-        ))}
-        {isMonth && monthsOptions.map(month => (
-          <Box
-            key={month.value}
-            p="0 10px 7px 0"
-          >
-            <Field
-              id={`cron${name}${month.value}`}
-              name={`cron${name}SpecificSpecific${month.value}`}
-              component={CheckboxField}
-              label={month.label}
-            />
-          </Box>
-        ))}
-      </Flex>
+            {!isMonth && numbersRangeArray.map(unit => (
+              <Box
+                key={unit}
+                width={isYear ? '70px' : '55px'}
+                p={isYear ? '5px' : '3px'}
+              >
+                <Field
+                  id={`cron${name}${unit}`}
+                  name={`cron${name}SpecificSpecific${unit}`}
+                  component={CheckboxField}
+                  label={unit}
+                />
+              </Box>
+            ))}
+            {isMonth && monthsOptions.map(month => (
+              <Box
+                key={month.value}
+                mb="10px"
+                width="110px"
+              >
+                <Field
+                  id={`cron${name}${month.value}`}
+                  name={`cron${name}SpecificSpecific${month.value}`}
+                  component={CheckboxField}
+                  label={month.label}
+                />
+              </Box>
+            ))}
+          </Flex>
+        </Box>
+      )}
     </Flex>
   );
 };

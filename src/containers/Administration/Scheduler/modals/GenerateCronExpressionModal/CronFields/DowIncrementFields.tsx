@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { daysOfWeekOptions } from 'consts';
 
@@ -18,7 +18,7 @@ const options = numbersArray.map(num => {
 const DowIncrementFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph size={13}>Every</Paragraph>
+      Every
       <Box width="90px" p="0 7px">
         <Field
           id="cronDowIncrementIncrement"
@@ -29,7 +29,7 @@ const DowIncrementFields: React.FC = () => {
           options={options}
         />
       </Box>
-      <Paragraph size={13}>day(s) starting on</Paragraph>
+      day(s) starting on
       <Box width="130px" p="0 7px">
         <Field
           id="cronDowIncrementStart"

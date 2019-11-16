@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { stringsUtil } from 'utils';
 
@@ -16,7 +16,7 @@ const options = numbersArray.map(num => {
 const DaysNearestWeekdayFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph size={13}>Nearest weekday (Monday to Friday) to the</Paragraph>
+      Nearest weekday (Monday to Friday) to the
       <Box width="90px" p="0 7px">
         <Field
           id="cronDaysNearestWeekday"
@@ -27,7 +27,7 @@ const DaysNearestWeekdayFields: React.FC = () => {
           options={options}
         />
       </Box>
-      <Paragraph size={13}>of the month</Paragraph>
+      of the month
     </Flex>
   );
 };

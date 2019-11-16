@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { monthsOptions } from 'consts';
 
@@ -36,7 +36,7 @@ const RangeFields: React.FC<RangeFieldsProps> = ({ name, unity, count, isMonth, 
 
   return (
     <Flex alignItems="baseline">
-      <Paragraph size={13}>Every {unity} between {unity}</Paragraph>
+      Every {unity} between {unity}
       <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}RangeStart`}
@@ -47,7 +47,7 @@ const RangeFields: React.FC<RangeFieldsProps> = ({ name, unity, count, isMonth, 
           options={rangeOptions}
         />
       </Box>
-      <Paragraph size={13}>and {unity}</Paragraph>
+      and {unity}
       <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}RangeEnd`}

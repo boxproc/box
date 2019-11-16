@@ -87,7 +87,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
         updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
-        isAlwaysEditable: true,
       }),
     },
     {
@@ -98,7 +97,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
       Cell: renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
-        isAlwaysEditable: true,
       }),
     },
     {
@@ -122,7 +120,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
         updateAction: updateProductApr,
         isSmaller: true,
         isDecimalNumber: true,
-        isAlwaysEditable: true,
       }),
     },
     {
@@ -134,7 +131,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
         updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
-        isAlwaysEditable: true,
       }),
     },
     {

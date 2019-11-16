@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { change, getFormValues } from 'redux-form';
+import { change, formValueSelector, getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
@@ -9,9 +9,20 @@ import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
 import { StoreState } from 'store/StoreState';
 
-const mapStateToProps = (state: StoreState) => ({
-  formValues: getFormValues(formNamesConst.GENERATE_CRON_EXPRESSION)(state),
+const formSelector = formValueSelector(formNamesConst.GENERATE_CRON_EXPRESSION);
+const formValues = getFormValues(formNamesConst.GENERATE_CRON_EXPRESSION);
 
+const mapStateToProps = (state: StoreState) => ({
+  formValues: formValues(state),
+  cronRadioValues: formSelector(
+    state,
+    'cronSecond',
+    'cronMinute',
+    'cronHour',
+    'cronDay',
+    'cronMonth',
+    'cronYear'
+  ),
   initialValues: cronInitialValues,
 });
 

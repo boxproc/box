@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { stringsUtil } from 'utils';
 
@@ -20,7 +20,7 @@ const daysOfMonthOptions = numbersArray.map(num => {
 const DomIncrementFields: React.FC = () => {
   return (
     <Flex alignItems="baseline">
-      <Paragraph size={13}>Every</Paragraph>
+      Every
       <Box width="90px" p="0 7px">
         <Field
           id="cronDomIncrementIncrement"
@@ -31,7 +31,7 @@ const DomIncrementFields: React.FC = () => {
           options={options}
         />
       </Box>
-      <Paragraph size={13}>day(s) starting on the day</Paragraph>
+      day(s) starting on the day
       <Box width="90px" p="0 7px">
         <Field
           id="cronDomIncrementStart"
@@ -42,7 +42,7 @@ const DomIncrementFields: React.FC = () => {
           options={daysOfMonthOptions}
         />
       </Box>
-      <Paragraph size={13}>of the month</Paragraph>
+      of the month
     </Flex>
   );
 };

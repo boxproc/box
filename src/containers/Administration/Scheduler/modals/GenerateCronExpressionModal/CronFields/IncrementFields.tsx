@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { monthsOptions } from 'consts';
 
@@ -53,7 +53,7 @@ const IncrementFields: React.FC<IncrementFieldsProps> = ({
 
   return (
     <Flex alignItems="baseline">
-      <Paragraph size={13}>Every</Paragraph>
+      Every
       <Box width="90px" p="0 7px">
         <Field
           id={`cron${name}IncrementIncrement`}
@@ -64,7 +64,7 @@ const IncrementFields: React.FC<IncrementFieldsProps> = ({
           options={incrementOptions}
         />
       </Box>
-      <Paragraph size={13}>{unity}(s) starting at {unity}</Paragraph>
+      {unity}(s) starting at {unity}
       <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}IncrementStart`}

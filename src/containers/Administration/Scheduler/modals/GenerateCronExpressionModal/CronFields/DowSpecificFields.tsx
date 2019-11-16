@@ -3,32 +3,40 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, Paragraph } from 'components';
+import { CheckboxField } from 'components';
 
 import { daysOfWeekOptions } from 'consts';
 
-const DowSpecificFields: React.FC = () => {
+interface DowSpecificFieldsProps {
+  isSpecific: boolean;
+}
+
+const DowSpecificFields: React.FC<DowSpecificFieldsProps> = ({ isSpecific }) => {
   return (
     <Flex alignItems="baseline" flexWrap="wrap">
-      <Paragraph size={13}>Specific day of week (choose one or many)</Paragraph>
-      <Flex
-        alignItems="center"
-        flexWrap="wrap"
-      >
-        {daysOfWeekOptions.map(day => (
-          <Box
-            key={day.value}
-            pr="15px"
+      Specific day of week (choose one or many)
+      {isSpecific && (
+        <Box mt="10px">
+          <Flex
+            alignItems="center"
+            flexWrap="wrap"
           >
-            <Field
-              id={`cronDow${day.value}`}
-              name={`cronDowSpecificSpecific${day.value}`}
-              component={CheckboxField}
-              label={day.label}
-            />
-          </Box>
-        ))}
-      </Flex>
+            {daysOfWeekOptions.map(day => (
+              <Box
+                key={day.value}
+                pr="15px"
+              >
+                <Field
+                  id={`cronDow${day.value}`}
+                  name={`cronDowSpecificSpecific${day.value}`}
+                  component={CheckboxField}
+                  label={day.label}
+                />
+              </Box>
+            ))}
+          </Flex>
+        </Box>
+      )}
     </Flex>
   );
 };

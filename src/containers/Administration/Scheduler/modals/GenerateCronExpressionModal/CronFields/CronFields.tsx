@@ -1,6 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
+import styled from 'theme';
+
 import { RadioField } from 'components';
 
 import { timeUnits } from 'consts';
@@ -17,10 +19,19 @@ import NthDayFields from './NthDayFields';
 import RangeFields from './RangeFields';
 import SpecificFields from './SpecificFields';
 
-type UnityType = 'Second' | 'Minute' | 'Hour' | 'Day' | 'Month' | 'Year';
+import { UnityType } from '../cronExpressionTypes';
+
+const Wrapper = styled.div`
+  font-size: 13px;
+
+  .input-field {
+    margin-bottom: 5px;
+  }
+`;
 
 interface CronFieldsProps {
   name: UnityType;
+  radioValue: string;
 }
 
 const getCount = (name: string) => {
@@ -42,15 +53,34 @@ const getCount = (name: string) => {
   }
 };
 
-const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
+const CronFields: React.FC<CronFieldsProps> = ({ name, radioValue }) => {
   const unity = React.useMemo(
     () => name.toLowerCase(),
     [name]
   );
 
-  const count = React.useMemo(
+  const specificCount = React.useMemo(
     () => getCount(name),
     [name]
+  );
+
+  const isSpecific = React.useMemo(
+    () => radioValue === 'cronSecondSpecific'
+      || radioValue === 'cronMinuteSpecific'
+      || radioValue === 'cronHourSpecific'
+      || radioValue === 'cronMonthSpecific'
+      || radioValue === 'cronYearSpecific',
+    [radioValue]
+  );
+
+  const isDomSpecific = React.useMemo(
+    () => radioValue === 'cronDomSpecific',
+    [radioValue]
+  );
+
+  const isDowSpecific = React.useMemo(
+    () => radioValue === 'cronDowSpecific',
+    [radioValue]
   );
 
   const isDay = React.useMemo(
@@ -69,12 +99,11 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
   );
 
   return (
-    <React.Fragment>
+    <Wrapper>
       <Field
         id={`cronEvery${name}`}
         name={`cron${name}`}
         component={RadioField}
-        className="cron-option"
         option={{
           value: `cronEvery${name}`,
           label: `${isYear ? 'Any' : 'Every'} ${unity}`,
@@ -86,7 +115,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronDowIncrement"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronDowIncrement',
               label: <DowIncrementFields />,
@@ -96,7 +124,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronDomIncrement"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronDomIncrement',
               label: <DomIncrementFields />,
@@ -106,7 +133,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronLastSpecificDom"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronLastSpecificDom',
               label: <LastSpecificDomFields />,
@@ -116,7 +142,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronDaysBeforeEom"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronDaysBeforeEom',
               label: <DaysBeforeEomFields />,
@@ -126,7 +151,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronDaysNearestWeekdayEom"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronDaysNearestWeekdayEom',
               label: <DaysNearestWeekdayFields />,
@@ -136,7 +160,6 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronNthDay"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronNthDay',
               label: <NthDayFields />,
@@ -146,42 +169,42 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id="cronLastDayOfMonth"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronLastDayOfMonth',
-              label: `On the last day of the month`,
+              label: 'On the last day of the month',
             }}
           />
           <Field
             id="cronLastWeekdayOfMonth"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: 'cronLastWeekdayOfMonth',
-              label: `On the last week day of the month`,
+              label: 'On the last week day of the month',
             }}
           />
           <Field
             id="cronDowSpecific"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             alignItems="flex-start"
             option={{
               value: 'cronDowSpecific',
-              label: <DowSpecificFields />,
+              label: <DowSpecificFields
+                isSpecific={isDowSpecific}
+              />,
             }}
           />
           <Field
             id="cronDomSpecific"
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             alignItems="flex-start"
             option={{
               value: 'cronDomSpecific',
-              label: <DomSpecificFields />,
+              label: <DomSpecificFields
+                isSpecific={isDomSpecific}
+              />,
             }}
           />
         </React.Fragment>
@@ -192,13 +215,12 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id={`cron${name}Increment`}
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: `cron${name}Increment`,
               label: <IncrementFields
                 name={name}
                 unity={unity}
-                count={count}
+                count={specificCount}
                 isMonth={isMonth}
                 isYear={isYear}
               />,
@@ -213,7 +235,7 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
               label: <RangeFields
                 name={name}
                 unity={unity}
-                count={count}
+                count={specificCount}
                 isMonth={isMonth}
                 isYear={isYear}
               />,
@@ -223,22 +245,22 @@ const CronFields: React.FC<CronFieldsProps> = ({ name }) => {
             id={`cron${name}Specific`}
             name={`cron${name}`}
             component={RadioField}
-            className="cron-option"
             option={{
               value: `cron${name}Specific`,
               label: <SpecificFields
                 name={name}
                 unity={unity}
-                count={count}
+                count={specificCount}
                 isMonth={isMonth}
                 isYear={isYear}
+                isSpecific={isSpecific}
               />,
             }}
             alignItems="flex-start"
           />
         </React.Fragment>
       )}
-    </React.Fragment>
+    </Wrapper>
   );
 };
 

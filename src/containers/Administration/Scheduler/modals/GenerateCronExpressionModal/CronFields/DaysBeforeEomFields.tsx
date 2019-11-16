@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Paragraph, SelectField } from 'components';
+import { SelectField } from 'components';
 
 import { stringsUtil } from 'utils';
 
@@ -26,7 +26,7 @@ const DaysBeforeEomFields: React.FC = () => {
           options={options}
         />
       </Box>
-      <Paragraph size={13}>day(s) before the end of the month</Paragraph>
+      day(s) before the end of the month
     </Flex>
   );
 };

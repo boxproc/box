@@ -18,13 +18,21 @@ const RadioWrapper = styled.label<RadioWrapperProps>`
   cursor: pointer;
   user-select: text;
 
-  ${({ alignItems }) => alignItems && `
-    align-items: ${alignItems};
-  `};
-
   .radio-label {
     font-size: 13px;
   }
+
+  .radio-label-block {
+    margin-top: 2px;
+  }
+
+  ${({ alignItems }) => alignItems && `
+    align-items: ${alignItems};
+
+    .radio-label-block {
+      margin-top: 0;
+    }
+  `};
 
   ${({ disabled }) => disabled && `
     opacity: 0.5;
@@ -78,7 +86,7 @@ const Radio: React.FC<RadioProps> = ({ value, label, disabled, ...props }) => {
         <Box ml="7px">
           {typeof label === 'string'
             ? <div className="radio-label">{label}</div>
-            : label
+            : <div className="radio-label-block">{label}</div>
           }
         </Box>
       </RadioWrapper>

@@ -14,11 +14,10 @@ export const renderEditableTableCell = (data: {
   isSmaller?: boolean,
   isNumber?: boolean,
   isDecimalNumber?: boolean;
-  isAlwaysEditable?: boolean,
+  isEditable?: boolean,
 }) =>
   (cellInfo: CellInfo) => {
-    const { updateAction, isSmaller, isNumber, isDecimalNumber, isAlwaysEditable } = data;
-    const isEditable = cellInfo.row.lockedFlag === false || isAlwaysEditable;
+    const { updateAction, isSmaller, isNumber, isDecimalNumber, isEditable = true } = data;
 
     const updateCellInfo = (e: React.MouseEvent) => {
       const el = e.target as HTMLInputElement;
