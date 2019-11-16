@@ -435,6 +435,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     rate: data.rate && data.rate.toFixed(2),
     amount: data.amount && data.amount.toFixed(2),
     feeApplicationCondition: feeApplicationCondition.label,
+    feeApplicationConditionValue: data.fee_application_condition,
   };
 };
 

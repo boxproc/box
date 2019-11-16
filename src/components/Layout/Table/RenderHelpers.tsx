@@ -15,14 +15,26 @@ export const renderEditableTableCell = (data: {
   isNumber?: boolean,
   isDecimalNumber?: boolean;
   isEditable?: boolean,
-}) =>
-  (cellInfo: CellInfo) => {
-    const { updateAction, isSmaller, isNumber, isDecimalNumber, isEditable = true } = data;
+  cellInfo: CellInfo;
+}) => {
+    const {
+      updateAction,
+      isSmaller,
+      isNumber,
+      isDecimalNumber,
+      isEditable = true,
+      cellInfo,
+    } = data;
+
+    if (!cellInfo) {
+      return false;
+    }
 
     const updateCellInfo = (e: React.MouseEvent) => {
       const el = e.target as HTMLInputElement;
-      const newValue = el.value;
-      const isChanged = cellInfo.value.toString() !== newValue;
+      const newValue = el.value.toString();
+      const currentValue = cellInfo.value.toString();
+      const isChanged = newValue && (currentValue !== newValue);
 
       isChanged && updateAction({
         ...cellInfo.original,

@@ -66,7 +66,7 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
   } = params;
 
   return {
-    id: id ? id : null,
+    transaction_id: id ? id : null,
     institution_id: institutionId ? institutionId.value : null,
     customer_id: customerId ? customerId : null,
     product_name: productName ? productName.label : null,

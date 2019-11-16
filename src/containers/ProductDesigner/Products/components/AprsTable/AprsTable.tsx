@@ -83,10 +83,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'repaymentSequence',
       Header: <TableHeader title="Repayment Priority" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
+        cellInfo,
       }),
     },
     {
@@ -94,9 +95,10 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
+        cellInfo,
       }),
     },
     {
@@ -116,10 +118,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
         isDecimalNumber: true,
+        cellInfo,
       }),
     },
     {
@@ -127,10 +130,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'graceNumberOfDays',
       Header: <TableHeader title="Grace Number of&nbsp;Days" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,
         isNumber: true,
+        cellInfo,
       }),
     },
     {

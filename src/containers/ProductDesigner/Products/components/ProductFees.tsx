@@ -3,46 +3,28 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'theme';
+import { Button, InputField, NumberFormatField, SelectField } from 'components';
 
-import { InputField, NumberFormatField, SelectField } from 'components';
-
-import { feeTypesOptions } from 'consts';
+import { feeTypesOptions, iconNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
-
-interface FieldWrapperProps {
-  minWidth?: string;
-  maxWidth?: string;
-}
-
-const FieldWrapper = styled(Box) <FieldWrapperProps>`
-  padding: 10px;
-  width: 100%;
-
-  ${({ minWidth }) => minWidth && `
-    min-width: ${minWidth};
-  `}
-
-  ${({ maxWidth }) => maxWidth && `
-    max-width: ${maxWidth};
-  `}
-`;
 
 interface ProductFeesProps {
   isDisabled: boolean;
   isOnlyAmount: boolean;
   isOnlyRate: boolean;
+  pristine: boolean;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
   isOnlyAmount,
   isOnlyRate,
+  pristine,
 }) => {
   return (
-    <Flex alignItems="flex-end">
-      <FieldWrapper minWidth="300px" maxWidth="300px">
+    <Flex alignItems="flex-end" flexWrap="wrap">
+      <Box width="300px" p="10px">
         <Field
           id="description"
           name="description"
@@ -52,8 +34,8 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="280px" minWidth="280px">
+      </Box>
+      <Box width="280px" p="10px">
         <Field
           id="feeApplicationCondition"
           name="feeApplicationCondition"
@@ -65,8 +47,8 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="140px">
+      </Box>
+      <Box width="140px" p="10px">
         <Field
           id="rate"
           name="rate"
@@ -76,10 +58,10 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={isOnlyRate && [formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={!isOnlyAmount && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="140px">
+      </Box>
+      <Box width="140px" p="10px">
         <Field
           id="amount"
           name="amount"
@@ -89,9 +71,16 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={isOnlyAmount && [formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={!isOnlyRate && [formErrorUtil.required, formErrorUtil.isNumber]}
         />
-      </FieldWrapper>
+      </Box>
+      <Box width="90px" pb="20px">
+        <Button
+          text={isDisabled ? 'Adding...' : 'Add Fee'}
+          iconName={iconNamesConst.PLUS}
+          disabled={pristine || isDisabled}
+        />
+      </Box>
     </Flex>
   );
 };

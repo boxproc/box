@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
 
-import { formNamesConst, iconNamesConst } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
 
@@ -36,15 +36,11 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
     <React.Fragment>
       <Box pb="10px">
         <form onSubmit={handleSubmitForm}>
-          <Flex alignItems="flex-end">
-            <ProductAprs isDisabled={isLoading} />
-            <Box width="90px" pb="20px">
-              <Button
-                text={isLoading ? 'Adding...' : 'Add APR'}
-                iconName={iconNamesConst.PLUS}
-                disabled={pristine || isLoading}
-              />
-            </Box>
+          <Flex alignItems="flex-end" flexWrap="wrap">
+            <ProductAprs
+              isDisabled={isLoading}
+              pristine={pristine}
+            />
           </Flex>
         </form>
       </Box>

@@ -181,11 +181,13 @@ export const Table: React.FC<TableProps> = props => {
 
   React.useEffect(
     () => {
-      if (data && data.length) {
+      if (data && data.length > pageSize) {
         setHeight(tableRef.current.clientHeight);
+      } else {
+        setHeight(null);
       }
     },
-    [tableRef, data]
+    [tableRef, data, pageSize]
   );
 
   return (

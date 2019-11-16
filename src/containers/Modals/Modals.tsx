@@ -21,6 +21,8 @@ const ModalsWrapper = styled.div<ModalsWrapperProps>`
     left: 0;
     z-index: 100;
     filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
   `}
 `;
 

@@ -12,7 +12,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { iconNamesConst } from 'consts';
+import { feeTypesCodes, iconNamesConst } from 'consts';
 
 import {
   HandleDeleteProductFee,
@@ -30,8 +30,6 @@ interface FeesTableProps {
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
-  isOnlyAmount: boolean;
-  isOnlyRate: boolean;
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
@@ -39,8 +37,6 @@ const FeesTable: React.FC<FeesTableProps> = ({
   getProductFees,
   deleteProductFee,
   updateProductFee,
-  isOnlyAmount,
-  isOnlyRate,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
@@ -87,9 +83,10 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
+        cellInfo,
       }),
     },
     {
@@ -97,11 +94,13 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
         isDecimalNumber: true,
-        isEditable: !isOnlyAmount,
+        cellInfo,
+        isEditable: cellInfo.original.feeApplicationConditionValue
+          !== feeTypesCodes.APPLY_ONLY_FIXED_AMOUNT,
       }),
     },
     {
@@ -109,11 +108,13 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
-      Cell: renderEditableTableCell({
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductFee,
         isSmaller: true,
         isDecimalNumber: true,
-        isEditable: !isOnlyRate,
+        cellInfo,
+        isEditable: cellInfo.original.feeApplicationConditionValue
+          !== feeTypesCodes.APPLY_ONLY_RATE,
       }),
     },
     {

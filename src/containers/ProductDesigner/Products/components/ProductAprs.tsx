@@ -3,42 +3,24 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'theme';
+import { Button, InputField, NumberFormatField, SelectField } from 'components';
 
-import { InputField, NumberFormatField, SelectField } from 'components';
-
-import { aprTypesOptions } from 'consts';
+import { aprTypesOptions, iconNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-interface FieldWrapperProps {
-  minWidth?: string;
-  maxWidth?: string;
-}
-
-const FieldWrapper = styled(Box)<FieldWrapperProps>`
-  padding: 10px;
-  width: 100%;
-
-  ${({ minWidth }) => minWidth && `
-    min-width: ${minWidth};
-  `}
-
-  ${({ maxWidth }) => maxWidth && `
-    max-width: ${maxWidth};
-  `}
-`;
-
 interface ProductAprsProps {
   isDisabled: boolean;
+  pristine: boolean;
 }
 
 const ProductAprs: React.FC<ProductAprsProps> = ({
   isDisabled,
+  pristine,
 }) => {
   return (
     <Flex alignItems="flex-end">
-      <FieldWrapper maxWidth="140px">
+      <Box width="140px" p="10px">
         <Field
           id="repaymentSequence"
           name="repaymentSequence"
@@ -49,8 +31,8 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           disabled={isDisabled}
           validate={[formErrorUtil.required, formErrorUtil.isInteger]}
         />
-      </FieldWrapper>
-      <FieldWrapper minWidth="300px" maxWidth="300px">
+      </Box>
+      <Box width="300px" p="10px">
         <Field
           id="description"
           name="description"
@@ -60,8 +42,8 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="150px" minWidth="150px">
+      </Box>
+      <Box width="150px" p="10px">
         <Field
           id="calculationMethod"
           name="calculationMethod"
@@ -73,8 +55,8 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           isClearable={false}
           validate={[formErrorUtil.required]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="140px">
+      </Box>
+      <Box width="140px" p="10px">
         <Field
           id="rate"
           name="rate"
@@ -86,8 +68,8 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           decimalScale={2}
           validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
-      </FieldWrapper>
-      <FieldWrapper maxWidth="140px">
+      </Box>
+      <Box width="140px" p="10px">
         <Field
           id="graceNumberOfDays"
           name="graceNumberOfDays"
@@ -98,7 +80,14 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           disabled={isDisabled}
           validate={[formErrorUtil.required, formErrorUtil.isNumber]}
         />
-      </FieldWrapper>
+      </Box>
+      <Box width="90px" pb="20px">
+        <Button
+          text={isDisabled ? 'Adding...' : 'Add APR'}
+          iconName={iconNamesConst.PLUS}
+          disabled={pristine || isDisabled}
+        />
+      </Box>
     </Flex>
   );
 };

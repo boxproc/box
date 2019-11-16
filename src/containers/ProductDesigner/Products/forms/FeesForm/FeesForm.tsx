@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
 
-import { feeTypesCodes, formNamesConst, iconNamesConst } from 'consts';
+import { feeTypesCodes, formNamesConst } from 'consts';
 
 import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/components';
 
@@ -30,6 +30,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   dirty,
   isLoading,
   feeApplicationConditionValue,
+  change,
 }) => {
   const isOnlyAmount = React.useMemo(
     () => {
@@ -47,6 +48,24 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
     [feeApplicationConditionValue]
   );
 
+  React.useEffect(
+    () => {
+      if (isOnlyAmount) {
+        change('rate', '');
+      }
+    },
+    [isOnlyAmount, change]
+  );
+
+  React.useEffect(
+    () => {
+      if (isOnlyRate) {
+        change('amount', '');
+      }
+    },
+    [isOnlyRate, change]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductFee),
     [handleSubmit]
@@ -56,26 +75,15 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
     <React.Fragment>
       <Box pb="10px">
         <form onSubmit={handleSubmitForm}>
-          <Flex alignItems="flex-end">
-            <ProductFees
-              isOnlyAmount={isOnlyAmount}
-              isOnlyRate={isOnlyRate}
-              isDisabled={isLoading}
-            />
-            <Box width="90px" pb="20px">
-              <Button
-                text={isLoading ? 'Adding...' : 'Add Fee'}
-                iconName={iconNamesConst.PLUS}
-                disabled={pristine || isLoading}
-              />
-            </Box>
-          </Flex>
+          <ProductFees
+            isDisabled={isLoading}
+            pristine={pristine}
+            isOnlyAmount={isOnlyAmount}
+            isOnlyRate={isOnlyRate}
+          />
         </form>
       </Box>
-      <FeesTable
-        isOnlyAmount={isOnlyAmount}
-        isOnlyRate={isOnlyRate}
-      />
+      <FeesTable />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

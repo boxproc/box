@@ -334,6 +334,7 @@ export interface ProductFeePlainInfo {
 
 export interface ProductFee extends ProductFeePlainInfo {
   feeApplicationCondition: string;
+  feeApplicationConditionValue: string | number;
 }
 
 export interface ProductFeeFormValues extends ProductFeePlainInfo {
