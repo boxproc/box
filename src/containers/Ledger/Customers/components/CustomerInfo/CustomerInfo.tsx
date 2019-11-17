@@ -196,7 +196,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             component={InputField}
             label="Line 2"
             placeholder="Enter Line 2"
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
