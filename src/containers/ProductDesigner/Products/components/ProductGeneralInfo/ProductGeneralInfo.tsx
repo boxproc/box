@@ -119,7 +119,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
-            isDisabled={isEditMode}
             validate={[formErrorUtil.required]}
           />
         </Box>
