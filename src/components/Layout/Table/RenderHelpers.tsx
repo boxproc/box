@@ -7,7 +7,7 @@ import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
 
 import { codeKeys, yesNoTypesCodes } from 'consts';
 
-import { TableCell } from './Table';
+import { TableCell } from './TableCell';
 
 export const renderEditableTableCell = (data: {
   updateAction: (data: object) => void,
@@ -17,50 +17,50 @@ export const renderEditableTableCell = (data: {
   isEditable?: boolean,
   cellInfo: CellInfo;
 }) => {
-    const {
-      updateAction,
-      isSmaller,
-      isNumber,
-      isDecimalNumber,
-      isEditable = true,
-      cellInfo,
-    } = data;
+  const {
+    updateAction,
+    isSmaller,
+    isNumber,
+    isDecimalNumber,
+    isEditable = true,
+    cellInfo,
+  } = data;
 
-    if (!cellInfo) {
-      return false;
-    }
+  if (!cellInfo) {
+    return false;
+  }
 
-    const updateCellInfo = (e: React.MouseEvent) => {
-      const el = e.target as HTMLInputElement;
-      const newValue = el.value.toString();
-      const currentValue = cellInfo.value.toString();
-      const isChanged = newValue && (currentValue !== newValue);
+  const updateCellInfo = (e: React.MouseEvent) => {
+    const el = e.target as HTMLInputElement;
+    const newValue = el.value.toString();
+    const currentValue = cellInfo.value.toString();
+    const isChanged = currentValue !== newValue;
 
-      isChanged && updateAction({
-        ...cellInfo.original,
-        [cellInfo.column.id]: newValue,
-      });
-    };
-
-    const handleKeyUp = (e: React.KeyboardEvent) => {
-      if (e.key === codeKeys.ENTER) {
-        const el = e.target as HTMLElement;
-        el.blur();
-      }
-    };
-
-    return (
-      <TableCell
-        value={cellInfo.value}
-        isEditable={isEditable}
-        onBlur={updateCellInfo}
-        isNumber={isNumber}
-        isDecimalNumber={isDecimalNumber}
-        isSmaller={isSmaller}
-        onKeyUp={handleKeyUp}
-      />
-    );
+    isChanged && updateAction({
+      ...cellInfo.original,
+      [cellInfo.column.id]: newValue === '' ? null : newValue,
+    });
   };
+
+  const handleKeyUp = (e: React.KeyboardEvent) => {
+    if (e.key === codeKeys.ENTER) {
+      const el = e.target as HTMLElement;
+      el.blur();
+    }
+  };
+
+  return (
+    <TableCell
+      value={cellInfo.value}
+      isEditable={isEditable}
+      onBlur={updateCellInfo}
+      isNumber={isNumber}
+      isDecimalNumber={isDecimalNumber}
+      isSmaller={isSmaller}
+      onKeyUp={handleKeyUp}
+    />
+  );
+};
 
 const CheckBoxWrapper = styled.div`
   display: flex;
