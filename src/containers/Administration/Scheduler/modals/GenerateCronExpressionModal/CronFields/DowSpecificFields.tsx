@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField } from 'components';
 
-import { daysOfWeekOptions } from 'consts';
+import { daysOfWeekOptionsWithStrValues } from 'consts';
 
 interface DowSpecificFieldsProps {
   isSpecific: boolean;
@@ -21,7 +21,7 @@ const DowSpecificFields: React.FC<DowSpecificFieldsProps> = ({ isSpecific }) => 
             alignItems="center"
             flexWrap="wrap"
           >
-            {daysOfWeekOptions.map(day => (
+            {daysOfWeekOptionsWithStrValues.map(day => (
               <Box
                 key={day.value}
                 pr="15px"

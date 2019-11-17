@@ -1,4 +1,8 @@
-export const cronExpressionGenerator = (values: any) => {
+import { CronValuesTypes } from './cronExpressionTypes';
+
+import { stringsUtil } from 'utils';
+
+export const cronExpressionGenerator = (values: Partial<CronValuesTypes>) => {
   if (!values) {
     return false;
   }
@@ -42,250 +46,296 @@ export const cronExpressionGenerator = (values: any) => {
   } = values;
 
   const seconds = () => {
-    let secs = '';
+    let value = '';
+    let description = '';
+
     if (cronSecond === 'cronEverySecond') {
-      secs = '*';
+      value = '*';
+      description = 'Every second';
     } else if (cronSecond === 'cronSecondIncrement') {
-      secs = cronSecondIncrementStart.value;
-      secs += '/';
-      secs += cronSecondIncrementIncrement.value;
+      value = `${cronSecondIncrementStart.value}/${cronSecondIncrementIncrement.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `Every ${cronSecondIncrementIncrement.value} second(s) starting at second :${cronSecondIncrementStart.value}`;
     } else if (cronSecond === 'cronSecondSpecific') {
+      description = 'At second(s)';
 
       for (const i in values) {
         if (i.includes('cronSecondSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronSecondSpecificSpecific')[1]);
+          const specificLabel = i.split('cronSecondSpecificSpecific')[1];
+          const specificValue = Number(specificLabel);
 
-          secs += specific;
-          secs += ',';
+          value += `${specificValue},`;
+          description += ` :${specificLabel},`;
         }
       }
 
-      if (secs === '') {
-        secs = '0';
+      if (value === '') {
+        value = '0';
+        description += ' 0';
       } else {
-        secs = secs.slice(0, -1);
+        value = value.slice(0, -1);
+        description = description.slice(0, -1);
       }
     } else {
-      secs = cronSecondRangeStart.value;
-      secs += '-';
-      secs += cronSecondRangeEnd.value;
+      value = `${cronSecondRangeStart.value}-${cronSecondRangeEnd.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `Every second between :${cronSecondRangeStart.label} and :${cronSecondRangeEnd.label}`;
     }
 
-    return secs;
+    return { value, description };
   };
 
   const minutes = () => {
-    let mins = '';
+    let value = '';
+    let description = '';
 
     if (cronMinute === 'cronEveryMinute') {
-      mins = '*';
+      value = '*';
+      description = 'every minute';
     } else if (cronMinute === 'cronMinuteIncrement') {
-      mins = cronMinuteIncrementStart.value;
-      mins += '/';
-      mins += cronMinuteIncrementIncrement.value;
+      value = `${cronMinuteIncrementStart.value}/${cronMinuteIncrementIncrement.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every ${cronMinuteIncrementIncrement.label} minute(s) starting at minute :${cronMinuteIncrementStart.label}`;
     } else if (cronMinute === 'cronMinuteSpecific') {
+
+      description = `at minute(s)`;
 
       for (const i in values) {
         if (i.includes('cronMinuteSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronMinuteSpecificSpecific')[1]);
+          const specificLabel = i.split('cronMinuteSpecificSpecific')[1];
+          const specificValue = Number(specificLabel);
 
-          mins += specific;
-          mins += ',';
+          value += `${specificValue},`;
+          description += ` :${specificLabel},`;
         }
       }
 
-      if (mins === '') {
-        mins = '0';
+      if (value === '') {
+        value = '0';
+        description += ' 0';
       } else {
-        mins = mins.slice(0, -1);
+        value = value.slice(0, -1);
+        description = description.slice(0, -1);
       }
     } else {
-      mins = cronMinuteRangeStart.value;
-      mins += '-';
-      mins += cronMinuteRangeEnd.value;
+      value = `${cronMinuteRangeStart.value}-${cronMinuteRangeEnd.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every minute between :${cronMinuteRangeStart.label} and :${cronMinuteRangeEnd.label}`;
     }
 
-    return mins;
+    return { value, description };
   };
 
   const hours = () => {
-    let hrs = '';
+    let value = '';
+    let description = '';
 
     if (cronHour === 'cronEveryHour') {
-      hrs = '*';
+      value = '*';
+      description = 'every hour';
     } else if (cronHour === 'cronHourIncrement') {
-      hrs = cronHourIncrementStart.value;
-      hrs += '/';
-      hrs += cronHourIncrementIncrement.value;
+      value = `${cronHourIncrementStart.value}/${cronHourIncrementIncrement.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every ${cronHourIncrementIncrement.value} hour(s) starting at hour ${cronHourIncrementStart.value}`;
     } else if (cronHour === 'cronHourSpecific') {
+
+      description = `at hour(s)`;
 
       for (const i in values) {
         if (i.includes('cronHourSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronHourSpecificSpecific')[1]);
+          const specificLabel = i.split('cronHourSpecificSpecific')[1];
+          const specificValue = Number(specificLabel);
 
-          hrs += specific;
-          hrs += ',';
+          value += `${specificValue},`;
+          description += ` ${specificValue},`;
         }
       }
 
-      if (hrs === '') {
-        hrs = '0';
+      if (value === '') {
+        value = '0';
+        description += ' 0';
       } else {
-        hrs = hrs.slice(0, -1);
+        value = value.slice(0, -1);
+        description = description.slice(0, -1);
       }
     } else {
-      hrs = cronHourRangeStart.value;
-      hrs += '-';
-      hrs += cronHourRangeEnd.value;
+      value = `${cronHourRangeStart.value}-${cronHourRangeEnd.value}`;
+      description = `every hour between ${cronHourRangeStart.value} and ${cronHourRangeEnd.value}`;
     }
 
-    return hrs;
+    return { value, description };
   };
 
   const days = () => {
-    let dow = '';
-    let dom = '';
+    let dowValue = '';
+    let domValue = '';
+    let description = '';
 
     if (cronDay === 'cronEveryDay') {
-      dow = '*';
-      dom = '?';
+      dowValue = '*';
+      domValue = '?';
+      description = 'every day';
     } else if (cronDay === 'cronDowIncrement') {
-      dow = cronDowIncrementStart.value;
-      dow += '/';
-      dow += cronDowIncrementIncrement.value;
-      dom = '?';
+      dowValue = `${cronDowIncrementStart.value}/${cronDowIncrementIncrement.value}`;
+      domValue = '?';
+      // tslint:disable-next-line: max-line-length
+      description = `Every ${cronDowIncrementIncrement.label} day(s) starting on ${cronDowIncrementStart.label}`;
     } else if (cronDay === 'cronDomIncrement') {
-      dom = cronDomIncrementStart.value;
-      dom += '/';
-      dom += cronDomIncrementIncrement.value;
-      dow = '?';
+      domValue = `${cronDomIncrementStart.value}/${cronDomIncrementIncrement.value}`;
+      dowValue = '?';
+      // tslint:disable-next-line: max-line-length
+      description = `Every ${cronDomIncrementIncrement.label} day(s) starting on the ${cronDomIncrementStart.label} of the month`;
     } else if (cronDay === 'cronDowSpecific') {
-      dom = '?';
+      domValue = '?';
+      description = 'on every';
 
       for (const i in values) {
         if (i.includes('cronDowSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronDowSpecificSpecific')[1]);
+          const specificValue = i.split('cronDowSpecificSpecific')[1];
 
-          dow += specific;
-          dow += ',';
+          dowValue += `${specificValue},`;
+          description += ` ${specificValue},`;
         }
       }
 
-      if (dow === '') {
-        dow = 'SUN';
+      if (dowValue === '') {
+        dowValue = 'SUN';
+        description += ' SUN';
       } else {
-        dow = dow.slice(0, -1);
+        dowValue = dowValue.slice(0, -1);
+        description = description.slice(0, -1);
       }
     } else if (cronDay === 'cronDomSpecific') {
-      dow = '?';
+      dowValue = '?';
+      description = 'on the';
 
       for (const i in values) {
         if (i.includes('cronDomSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronDomSpecificSpecific')[1]);
+          const specificValue = i.split('cronDomSpecificSpecific')[1];
+          const specificLabel = Number(specificValue);
 
-          dom += specific;
-          dom += ',';
+          domValue += `${specificValue},`;
+          description += ` ${specificLabel},`;
         }
       }
 
-      if (dom === '') {
-        dom = '1';
+      if (domValue === '') {
+        domValue = '1';
+        description += ' 1';
       } else {
-        dom = dom.slice(0, -1);
+        domValue = domValue.slice(0, -1);
+        description = description.slice(0, -1);
+        description += ' day';
       }
     } else if (cronDay === 'cronLastDayOfMonth') {
-      dow = '?';
-      dom = 'L';
+      dowValue = '?';
+      domValue = 'L';
+      description = 'On the last day of the month';
     } else if (cronDay === 'cronLastWeekdayOfMonth') {
-      dow = '?';
-      dom = 'LW';
+      dowValue = '?';
+      domValue = 'LW';
+      description = 'On the last weekday of the month';
     } else if (cronDay === 'cronLastSpecificDom') {
-      dom = '?';
-      dow = cronLastSpecificDomDay.value;
-      dow += 'L';
+      domValue = '?';
+      dowValue = cronLastSpecificDomDay.value;
+      dowValue += 'L';
+      description = `On the last ${cronLastSpecificDomDay} of the month`;
     } else if (cronDay === 'cronDaysBeforeEom') {
-      dow = '?';
-      dom = 'L-';
-      dom += cronDaysBeforeEomMinus.value;
+      dowValue = '?';
+      domValue = 'L-';
+      domValue += cronDaysBeforeEomMinus.value;
+      description = `${cronDaysBeforeEomMinus} day(s) before the end of the month`;
     } else if (cronDay === 'cronDaysNearestWeekdayEom') {
-      dow = '?';
-      dom = cronDaysNearestWeekday.value;
-      dom += 'W';
+      dowValue = '?';
+      domValue = cronDaysNearestWeekday.value;
+      domValue += 'W';
+      // tslint:disable-next-line: max-line-length
+      description = `Nearest weekday (Monday to Friday) to the ${cronDaysNearestWeekday} of the month`;
     } else if (cronDay === 'cronNthDay') {
-      dom = '?';
-      dow = cronNthDayDay.value;
-      dow += '#';
-      dow += cronNthDayNth.value;
+      domValue = '?';
+      dowValue = `${cronNthDayDay.value}#${cronNthDayNth.value}`;
+      description = `On the ${cronNthDayNth} ${cronNthDayDay} of the month`;
     }
 
-    return { dom, dow };
+    return { domValue, dowValue, description };
   };
 
   const months = () => {
-    let mon = '';
+    let value = '';
+    let description = '';
 
     if (cronMonth === 'cronEveryMonth') {
-      mon = '*';
+      value = '*';
+      description = 'every month';
     } else if (cronMonth === 'cronMonthIncrement') {
-      mon = cronMonthIncrementStart.value;
-      mon += '/';
-      mon += cronMonthIncrementIncrement.value;
+      value = `${cronMonthIncrementStart.value}/${cronMonthIncrementIncrement.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every ${cronMonthIncrementIncrement.label} month(s) starting in month ${cronMonthIncrementStart.label}`;
     } else if (cronMonth === 'cronMonthSpecific') {
+      description = 'in';
+
       for (const i in values) {
         if (i.includes('cronMonthSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronMonthSpecificSpecific')[1]);
+          const specificValue = i.split('cronMonthSpecificSpecific')[1];
 
-          mon += specific;
-          mon += ',';
+          value += `${specificValue},`;
+          description += ` ${specificValue},`;
         }
       }
 
-      if (mon === '') {
-        mon = '1';
+      if (value === '') {
+        value = '1';
+        description = ' 1';
       } else {
-        mon = mon.slice(0, -1);
+        value = value.slice(0, -1);
+        description = value.slice(0, -1);
       }
     } else {
-      mon = cronMonthRangeStart.value;
-      mon += '-';
-      mon += cronMonthRangeEnd.value;
+      value = `${cronMonthRangeStart.value}-${cronMonthRangeEnd.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every month between ${cronMonthRangeStart.label} and ${cronMonthRangeEnd.label}`;
     }
 
-    return mon;
+    return { value, description };
   };
 
   const years = () => {
-    let year = '';
+    let value = '';
+    let description = '';
 
     if (cronYear === 'cronEveryYear') {
-      year = '*';
+      value = '*';
+      description = 'any year';
     } else if (cronYear === 'cronYearIncrement') {
-      year = cronYearIncrementStart.value;
-      year += '/';
-      year += cronYearIncrementIncrement.value;
+      value = `${cronYearIncrementStart.value}/${cronYearIncrementIncrement.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every ${cronYearIncrementIncrement.label} year(s) starting at year ${cronYearIncrementStart.label}`;
     } else if (cronYear === 'cronYearSpecific') {
+      description = 'in';
 
       for (const i in values) {
         if (i.includes('cronYearSpecificSpecific') && values[i]) {
-          const specific = Number(i.split('cronYearSpecificSpecific')[1]);
+          const specificValue = i.split('cronYearSpecificSpecific')[1];
 
-          year += specific;
-          year += ',';
+          value += `${specificValue},`;
+          description += ` ${specificValue},`;
         }
       }
 
-      if (year === '') {
-        year = '2016';
+      if (value === '') {
+        value = stringsUtil.currentYear.toString();
+        description = ` ${stringsUtil.currentYear.toString()}`;
       } else {
-        year = year.slice(0, -1);
+        value = value.slice(0, -1);
+        description = description.slice(0, -1);
       }
     } else {
-      year = cronYearRangeStart.value;
-      year += '-';
-      year += cronYearRangeEnd.value;
+      value = `${cronYearRangeStart.value}-${cronYearRangeEnd.value}`;
+      // tslint:disable-next-line: max-line-length
+      description = `every year between ${cronYearRangeStart.label} and ${cronYearRangeEnd.label}`;
     }
 
-    return year;
+    return { value, description };
   };
 
   const cronSeconds = seconds();
@@ -295,14 +345,25 @@ export const cronExpressionGenerator = (values: any) => {
   const cronMonths = months();
   const cronYears = years();
 
-  const cronExpression =
-    cronSeconds + ' ' +
-    cronMinutes + ' ' +
-    cronHours + ' ' +
-    cronDays.dom + ' ' +
-    cronMonths + ' ' +
-    cronDays.dow + ' ' +
-    cronYears;
+  const expressionValue =
+    cronSeconds.value + ' ' +
+    cronMinutes.value + ' ' +
+    cronHours.value + ' ' +
+    cronDays.domValue + ' ' +
+    cronMonths.value + ' ' +
+    cronDays.dowValue + ' ' +
+    cronYears.value;
 
-  return cronExpression;
+  const expressionDescription =
+    cronSeconds.description + ', ' +
+    cronMinutes.description + ', ' +
+    cronHours.description + ', ' +
+    cronDays.description + ', ' +
+    cronMonths.description + ', ' +
+    cronYears.description + '.';
+
+  return {
+    value: expressionValue,
+    description: expressionDescription,
+  };
 };

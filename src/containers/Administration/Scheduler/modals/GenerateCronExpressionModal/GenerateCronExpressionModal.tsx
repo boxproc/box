@@ -3,7 +3,9 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
 
-import { Hr, Modal, OkCancelButtons, Paragraph, Tabs, TabsPanel } from 'components';
+import styled from 'theme';
+
+import { Hr, Modal, OkCancelButtons, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { formNamesConst, modalNamesConst } from 'consts';
@@ -23,6 +25,20 @@ interface GenerateCronExpressionModalProps extends WithModalProps {
 
 type GenerateCronExpressionModalAllProps = GenerateCronExpressionModalProps
   & InjectedFormProps<{}, GenerateCronExpressionModalProps>;
+
+const ResultWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+  font-size: 14px;
+
+  .description {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: ${({ theme }) => theme.colors.darkGray};
+  }
+`;
 
 const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 
@@ -44,7 +60,11 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
   const handleApplyCronExpression = React.useCallback(
     () => {
       if (cronExpression) {
-        changeFormValue(formNamesConst.DEFINE_SCHEDULER_JOB, 'cronExpression', cronExpression);
+        changeFormValue(
+          formNamesConst.DEFINE_SCHEDULER_JOB,
+          'cronExpression',
+          cronExpression.value
+        );
       }
       handleCloseModal();
     },
@@ -111,10 +131,15 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
       </form>
       <Hr />
       <Flex
-        alignItems="baseline"
+        alignItems="flex-start"
         justifyContent="space-between"
       >
-        <Paragraph><b>Cron Expression:</b> {cronExpression}</Paragraph>
+        {cronExpression && (
+          <ResultWrapper>
+            <div><b>Cron Expression:</b> {cronExpression.value}</div>
+            <div className="description">{cronExpression.description}</div>
+          </ResultWrapper>
+        )}
         <OkCancelButtons
           okText="Apply"
           cancelText="Cancel"

@@ -1,9 +1,11 @@
 import React from 'react';
 import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
+import { Flex } from '@rebass/grid';
+
 import styled from 'theme';
 
-import { Label } from 'components/Text';
+import { Hint, Label } from 'components';
 
 import { componentUtil } from 'utils';
 
@@ -45,6 +47,7 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   showErrors?: boolean;
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
+  hint?: string;
 }
 
 interface InputWrapperProps {
@@ -66,6 +69,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   showErrors = true,
   focusOnLabelClick = false,
   invalid: defaultInvalid,
+  hint,
   meta: {
     touched,
     error,
@@ -88,7 +92,15 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
           htmlFor={focusOnLabelClick ? id : null}
           invalid={invalid}
         >
-          {label}
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            {label}
+            {hint && (
+              <Hint text={hint} position="top" />
+            )}
+          </Flex>
         </Label>
       )}
       <div className="field">

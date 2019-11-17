@@ -64,7 +64,7 @@ const IncrementFields: React.FC<IncrementFieldsProps> = ({
           options={incrementOptions}
         />
       </Box>
-      {unity}(s) starting at {unity}
+      {unity}(s) starting {isMonth ? 'in' : 'at'} {unity}
       <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field
           id={`cron${name}IncrementStart`}

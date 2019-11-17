@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { monthsOptions } from 'consts';
+import { monthsOptionsWithStrValue } from 'consts';
 
 import { CheckboxField } from 'components';
 import { stringsUtil } from 'utils';
@@ -59,7 +59,7 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
                 />
               </Box>
             ))}
-            {isMonth && monthsOptions.map(month => (
+            {isMonth && monthsOptionsWithStrValue.map(month => (
               <Box
                 key={month.value}
                 mb="10px"
