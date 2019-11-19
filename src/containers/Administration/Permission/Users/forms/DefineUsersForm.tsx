@@ -49,6 +49,12 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
     [handleSubmit, defineAdminUser]
   );
 
+  const passwordValidation = React.useMemo(
+    () => isEditMode ? [formErrorUtil.passwordsMatch] :
+    [formErrorUtil.required, formErrorUtil.passwordsMatch],
+    [isEditMode]
+  );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px" >
@@ -97,7 +103,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="User Email"
-              validate={[formErrorUtil.required, formErrorUtil.email]}
+              validate={formErrorUtil.email}
             />
           </Box>
           {isEditMode && (
@@ -146,7 +152,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               placeholder="Repeat Password"
               component={PasswordField}
               label="Repeat Password"
-              validate={!isEditMode && formErrorUtil.required}
+              validate={passwordValidation}
             />
           </Box>
         </Flex>
