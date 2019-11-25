@@ -7,13 +7,14 @@ export enum modalTypesConst {
 }
 
 export enum modalNamesConst {
-  MESSAGE_MODAL = 'MessageModal',
-  CONFIRMATION_MODAL = 'ConfirmationModal',
-  LOG_MODAL = 'LogModal',
+  MESSAGE = 'MessageModal',
+  CONFIRMATION = 'ConfirmationModal',
+  LOG = 'LogModal',
 
-  REGISTER_2FA_MODAL = 'Register2faModal',
-  LOGIN_CODE_2FA_MODAL = 'LoginCode2faModal',
-  CHANGE_PROFILE_MODAL = 'ChangeProfileModal',
+  REGISTER_2FA = 'Register2faModal',
+  LOGIN_CODE_2FA = 'LoginCode2faModal',
+  CHANGE_PROFILE = 'ChangeProfileModal',
+  CHANGE_PASSWORD = 'ChangePasswordModal',
 
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',

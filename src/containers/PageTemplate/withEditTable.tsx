@@ -80,7 +80,7 @@ export const withEditTable = <OriginProps extends {}>(
         setIsClearActiveIds(false);
         value.withConfirmation
           ? handleOpenModal({
-            name: modalNamesConst.CONFIRMATION_MODAL,
+            name: modalNamesConst.CONFIRMATION,
             payload: {
               confirmationAction: value.action,
               confirmationTitle: value.confirmationTitle,

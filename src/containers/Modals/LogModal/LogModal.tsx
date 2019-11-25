@@ -15,7 +15,7 @@ interface LogModalProps extends WithModalProps, ExternalSpinnerProps {
   refreshLogData: HandleRefreshLogData;
 }
 
-const modalName = modalNamesConst.LOG_MODAL;
+const modalName = modalNamesConst.LOG;
 
 const LogModal: React.FC<LogModalProps> = ({
   data,

@@ -2,7 +2,14 @@ import { adminUserPathNames, authPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
-import { AuthCode, AuthConfirm, AuthPassword, AuthUserId, PreparedAuthRequest } from './types';
+import {
+  AuthCode,
+  AuthConfirm,
+  AuthPassword,
+  AuthUserId,
+  ChangePasswordDataPrepared,
+  PreparedAuthRequest,
+} from './types';
 
 // import { authResponseFullData, authSecretKeyData, successResponseStatus } from './mock';
 
@@ -29,4 +36,7 @@ export const enterAuthKey = (data: AuthCode) =>
   apiClient.post(authPathNames.LOGIN, { data });
 
 export const changeAdminProfile = (data: AuthUserId) =>
-  apiClient.post(adminUserPathNames.CHANGE_ADMIN_PROFILE, { data });
+  apiClient.post(adminUserPathNames.CHANGE_PROFILE, { data });
+
+export const changePassword = (data: Partial<ChangePasswordDataPrepared>) =>
+  apiClient.post(adminUserPathNames.CHANGE_PASSWORD, { data });

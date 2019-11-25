@@ -4,13 +4,14 @@ import { Modal } from 'components';
 
 import { modalNamesConst } from 'consts';
 
+import { withModal, WithModalProps } from 'HOCs';
 import { ChangeProfileForm } from './forms';
 
 import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface ChangeProfileModalProps {
+interface ChangeProfileModalProps extends WithModalProps {
   getAccessUsers: HandleGetAccessUsers;
   changeAdminProfile: HandleChangeAdminProfile;
   adminAccessUsersOptions: Array<SelectValues>;
@@ -18,7 +19,7 @@ interface ChangeProfileModalProps {
   isLoadingUsers: boolean;
 }
 
-const modalName = modalNamesConst.CHANGE_PROFILE_MODAL;
+const modalName = modalNamesConst.CHANGE_PROFILE;
 
 const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
   getAccessUsers,
@@ -26,6 +27,7 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
   adminAccessUsersOptions,
   isChangingProfile,
   isLoadingUsers,
+  closeModal,
 }) => {
   React.useEffect(
     () => {
@@ -45,9 +47,10 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
         changeAdminProfile={changeAdminProfile}
         isLoadingUsers={isLoadingUsers}
         isChangingProfile={isChangingProfile}
+        onCancel={() => closeModal(modalName)}
       />
     </Modal>
   );
 };
 
-export default ChangeProfileModal;
+export default withModal(ChangeProfileModal);

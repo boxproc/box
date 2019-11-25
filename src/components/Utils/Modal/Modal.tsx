@@ -107,7 +107,7 @@ const Modal: React.FC<ModalProps> = ({
   const handleCloseModal = React.useCallback(
     withCloseConfirmation
       ? () => openModal({
-        name: modalNamesConst.CONFIRMATION_MODAL,
+        name: modalNamesConst.CONFIRMATION,
         payload: {
           confirmationAction: () => closeModal(name),
           confirmationTitle: messagesConst.CLOSE_MODAL_WINDOW,

@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
   );
 
   const handleOpenModal = React.useCallback(
-    () => openModal({ name: modalNamesConst.REGISTER_2FA_MODAL }),
+    () => openModal({ name: modalNamesConst.REGISTER_2FA }),
     [openModal]
   );
 

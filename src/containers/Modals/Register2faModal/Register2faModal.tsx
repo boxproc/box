@@ -22,7 +22,7 @@ interface Register2faModalProps {
   dataUrl: string;
 }
 
-const modalName = modalNamesConst.REGISTER_2FA_MODAL;
+const modalName = modalNamesConst.REGISTER_2FA;
 
 const Register2faModal: React.FC<Register2faModalProps> = ({
   userGetAuthKey,

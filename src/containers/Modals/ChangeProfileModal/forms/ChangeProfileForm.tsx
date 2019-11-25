@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, SelectField } from 'components';
+import { OkCancelButtons, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -18,6 +17,7 @@ interface ChangeProfileFormProps {
   changeAdminProfile: HandleChangeAdminProfile;
   isLoadingUsers: boolean;
   isChangingProfile: boolean;
+  onCancel: () => void;
 }
 
 type ChangeProfileFormPropsAllProps =
@@ -30,6 +30,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
   isLoadingUsers,
   isChangingProfile,
   pristine,
+  onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => changeAdminProfile(data)),
@@ -50,12 +51,12 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           isLoading={isLoadingUsers}
           validate={[formErrorUtil.required]}
         />
-        <Flex justifyContent="flex-end">
-          <Button
-            text="Log in"
-            disabled={isChangingProfile || isLoadingUsers || pristine}
-          />
-        </Flex>
+        <OkCancelButtons
+          okText="Log in"
+          disabledOk={isChangingProfile || isLoadingUsers || pristine}
+          rightPosition={true}
+          onCancel={onCancel}
+        />
       </form>
     </React.Fragment>
   );

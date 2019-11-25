@@ -87,7 +87,7 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = () =>
         await dispatch(handleFilterLedgerCards());
 
         dispatch(openModal({
-          name: modalNamesConst.MESSAGE_MODAL,
+          name: modalNamesConst.MESSAGE,
           payload: { title: 'Card was activate' },
         }));
       },

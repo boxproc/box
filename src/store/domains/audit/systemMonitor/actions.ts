@@ -133,7 +133,7 @@ export const handleGetLogData: HandleGetLogData = data =>
 
         if (res) {
           dispatch(openModal({
-            name: modalNamesConst.LOG_MODAL,
+            name: modalNamesConst.LOG,
             payload: {
               title,
               logLocation: res.value.log_file_path,

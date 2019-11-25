@@ -9,6 +9,7 @@ export enum sessionStorageNames {
   AUTH_PENDING = 'authPending',
   AUTH_REGISTRATION_PENDING = 'authRegistrationPending',
   IS_LOGIN = 'isLogin',
+  REQUIRES_2FA_FLAG = 'requires2faFlag',
 }
 
 export const cookiesExpires = {

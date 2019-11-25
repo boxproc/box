@@ -10,7 +10,7 @@ import { CodeForm } from './forms';
 
 interface Register2faModalProps {}
 
-const modalName = modalNamesConst.LOGIN_CODE_2FA_MODAL;
+const modalName = modalNamesConst.LOGIN_CODE_2FA;
 
 const Register2faModal: React.FC<Register2faModalProps> = () => {
   return (

@@ -12,4 +12,5 @@ export enum iconNamesConst {
   STOP = 'stop',
   SHORT_TEXT = 'shortText',
   REFRESH = 'refresh',
+  KEY = 'key',
 }

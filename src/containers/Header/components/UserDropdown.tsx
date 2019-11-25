@@ -56,13 +56,23 @@ interface UserDropdownProps extends WithModalProps {
 const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) => {
   const userData = storageUtil.getUserData();
 
+  const isChangePasswordAvailable = React.useMemo(
+    () => storageUtil.getLoginFlag() && !storageUtil.getRegistrationPendingFlag(),
+    []
+  );
+
   const handleUserLogout = React.useCallback(
     () => userLogout(),
     [userLogout]
   );
 
-  const handleOpenModal = React.useCallback(
-    () => openModal({ name: modalNamesConst.CHANGE_PROFILE_MODAL }),
+  const handleOpenChangePasswordModal = React.useCallback(
+    () => openModal({ name: modalNamesConst.CHANGE_PASSWORD }),
+    [openModal]
+  );
+
+  const handleOpenChangeProfileModal = React.useCallback(
+    () => openModal({ name: modalNamesConst.CHANGE_PROFILE }),
     [openModal]
   );
 
@@ -78,12 +88,21 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
         />
       }
     >
+      {isChangePasswordAvailable && (
+        <DropdownOption>
+          <Button
+            text="Change Password"
+            iconName={iconNamesConst.KEY}
+            onClick={handleOpenChangePasswordModal}
+          />
+        </DropdownOption>
+      )}
       {userData && userData.username === usernames.ADMIN && (
         <DropdownOption>
           <Button
             text="Change profile"
             iconName={iconNamesConst.USER}
-            onClick={handleOpenModal}
+            onClick={handleOpenChangeProfileModal}
           />
         </DropdownOption>)}
       <DropdownOption>

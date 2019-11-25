@@ -16,7 +16,7 @@ interface MessageModalProps extends RouteComponentProps, WithModalProps {
   setIsRelogin: SetIsRelogin;
 }
 
-const modalName = modalNamesConst.MESSAGE_MODAL;
+const modalName = modalNamesConst.MESSAGE;
 
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,

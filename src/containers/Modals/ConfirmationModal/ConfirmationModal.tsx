@@ -11,7 +11,7 @@ interface ConfirmationModalProps extends WithModalProps {
   payloadConfirmModal: PayloadConfirmationModal;
 }
 
-const modalName = modalNamesConst.CONFIRMATION_MODAL;
+const modalName = modalNamesConst.CONFIRMATION;
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   closeModal,

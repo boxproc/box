@@ -35,7 +35,11 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
           name="code"
           placeholder="Enter code"
           component={InputField}
-          validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isNumber,
+            formErrorUtil.exactNumberValue6,
+          ]}
           autoFocus={true}
         />
         <Flex justifyContent="flex-end">

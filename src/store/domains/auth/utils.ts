@@ -2,7 +2,14 @@ import config from 'config';
 
 import { statusTypesCodes, yesNoTypesCodes } from 'consts';
 
-import { AuthRequest, AuthResponse, PreparedAuthRequest, UserData } from './types';
+import {
+  AuthRequest,
+  AuthResponse,
+  ChangePasswordData,
+  ChangePasswordDataPrepared,
+  PreparedAuthRequest,
+  UserData,
+} from './types';
 
 import { storageUtil } from 'utils';
 
@@ -28,6 +35,21 @@ export const prepareUserDataToRender = (data: AuthResponse): UserData => {
     lastActivity: data.last_activity,
     status: data.status,
     requires2faFlag: data.requires_2fa_flag,
+  };
+};
+
+export const prepareChangePasswordDataToSend = (data: Partial<ChangePasswordData>):
+  Partial<ChangePasswordDataPrepared> => {
+  if (!data) {
+    return null;
+  }
+
+  const { currentPassword, newPassword, code } = data;
+
+  return {
+    current_password: currentPassword,
+    new_password: newPassword,
+    code: code ? code : '0',
   };
 };
 

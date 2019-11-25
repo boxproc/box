@@ -65,6 +65,18 @@ export interface AuthStepTwoResponsePrepared {
   dataUrl: string;
 }
 
+export interface ChangePasswordData {
+  currentPassword: string;
+  newPassword: string;
+  code: string;
+}
+
+export interface ChangePasswordDataPrepared {
+  current_password: string;
+  new_password: string;
+  code: string;
+}
+
 export interface AuthState {
   loginData: AuthResponse;
   data2fa: AuthStepTwoData;

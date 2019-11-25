@@ -3,6 +3,7 @@ export enum formNamesConst {
   LOGIN_CODE = 'loginCodeForm',
   PASSWORD = 'passwordForm',
   CHANGE_PROFILE = 'changeProfileForm',
+  CHANGE_PASSWORD = 'changePasswordForm',
 
   FILTER = 'filterForm',
 

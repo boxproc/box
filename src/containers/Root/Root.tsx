@@ -78,7 +78,7 @@ const Root: React.FC<RootProps> = ({
     () => {
       if (isRelogin) {
         openModal({
-          name: modalNamesConst.MESSAGE_MODAL,
+          name: modalNamesConst.MESSAGE,
           payload: { type: modalTypesConst.SESSION_ENDED },
         });
       }

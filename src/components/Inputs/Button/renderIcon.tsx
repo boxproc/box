@@ -6,6 +6,7 @@ import {
   DeleteIcon,
   FilterIcon,
   HelpCircleIcon,
+  KeyIcon,
   LogOutIcon,
   PlusIcon,
   QrcodeIcon,
@@ -25,7 +26,7 @@ export const renderIcon = (name: string, size?: string) => {
     case iconNamesConst.PLUS:
       return (<Box mt="-2px"><PlusIcon size={size ? size : '18'} /></Box>);
     case iconNamesConst.LOGOUT:
-      return (<Box mt="-2px" mr="1px"><LogOutIcon size={size ? size : '16'} /></Box>);
+      return (<Box mt="-1px" mr="1px"><LogOutIcon size={size ? size : '14'} /></Box>);
     case iconNamesConst.DELETE:
       return (<Box mt="-2px"><DeleteIcon size={size ? size : '18'} /></Box>);
     case iconNamesConst.HELP:
@@ -42,6 +43,8 @@ export const renderIcon = (name: string, size?: string) => {
       return (<Box mt="-3.5px"><ShortTextIcon size={size ? size : '20'} /></Box>);
     case iconNamesConst.REFRESH:
       return (<Box mt="-1px"><RefreshIcon size={size ? size : '18'} /></Box>);
+    case iconNamesConst.KEY:
+      return (<Box mt="-1px" mr="2px"><KeyIcon size={size ? size : '12'} /></Box>);
 
     default:
       return null;

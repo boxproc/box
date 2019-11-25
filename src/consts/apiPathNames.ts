@@ -56,8 +56,9 @@ export enum adminUserPathNames {
   GET = '/ui/administration/permissions/users/get',
   CREATE = '/ui/administration/permissions/users/create',
   UPDATE = '/ui/administration/permissions/users/update',
+  CHANGE_PASSWORD = '/ui/administration/permissions/users/change_password',
+  CHANGE_PROFILE = '/ui/administration/permissions/administrator/change_profile',
   GET_ADMIN_ACCESS_USERS = '/ui/administration/permissions/administrator/get',
-  CHANGE_ADMIN_PROFILE = '/ui/administration/permissions/administrator/change_profile',
 }
 
 export enum adminUserGroupsPathNames {

@@ -1,4 +1,4 @@
-import { AuthResponse, AuthStepTwoResponse } from './types';
+import { AuthResponse, AuthStepTwoResponse, ChangePasswordData } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -27,8 +27,12 @@ export enum ActionTypeKeys {
 
   CHANGE_ADMIN_PROFILE = 'administration/permissions/users/CHANGE_ADMIN_PROFILE',
   CHANGE_ADMIN_PROFILE_FULFILLED =
-    'administration/permissions/users/CHANGE_ADMIN_PROFILE_FULFILLED',
+  'administration/permissions/users/CHANGE_ADMIN_PROFILE_FULFILLED',
   CHANGE_ADMIN_PROFILE_REJECTED = 'administration/permissions/users/CHANGE_ADMIN_PROFILE_REJECTED',
+
+  CHANGE_PASSWORD = 'administration/permissions/users/CHANGE_PASSWORD',
+  CHANGE_PASSWORD_FULFILLED = 'administration/permissions/users/CHANGE_PASSWORD_FULFILLED',
+  CHANGE_PASSWORD_REJECTED = 'administration/permissions/users/CHANGE_PASSWORD_REJECTED',
 }
 
 export interface UserLoginAction {
@@ -125,6 +129,21 @@ export interface ChangeAdminProfileRejectedAction {
   readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE_REJECTED;
 }
 
+export interface ChangePasswordAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.CHANGE_PASSWORD;
+}
+
+export interface ChangePasswordFulfilledAction {
+  readonly payload: ChangePasswordData;
+  readonly type: ActionTypeKeys.CHANGE_PASSWORD_FULFILLED;
+}
+
+export interface ChangePasswordRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.CHANGE_PASSWORD_REJECTED;
+}
+
 export type AuthActionTypes =
   | UserLoginFulfilledAction
   | UserLogoutFulfilledAction
@@ -132,4 +151,5 @@ export type AuthActionTypes =
   | SetUserCurrentRegisterStepAction
   | UserConfirmAuthKeyFulfilledAction
   | UserEnterAuthKeyFulfilledAction
-  | ChangeAdminProfileFulfilledAction;
+  | ChangeAdminProfileFulfilledAction
+  | ChangePasswordFulfilledAction;

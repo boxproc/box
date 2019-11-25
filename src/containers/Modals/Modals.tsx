@@ -39,7 +39,7 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin }) => {
           return null;
         }
 
-        const isMessageModal = modal.name === modalNamesConst.MESSAGE_MODAL;
+        const isMessageModal = modal.name === modalNamesConst.MESSAGE;
 
         return (
           <ModalsWrapper

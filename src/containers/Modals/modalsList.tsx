@@ -8,6 +8,7 @@ import ConfirmationModal from 'containers/Modals/ConfirmationModal';
 import LoginCode2faModal from 'containers/Modals/LoginCode2faModal';
 import LogModal from 'containers/Modals/LogModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
+import ChangePasswordModal from './ChangePasswordModal';
 
 import { endpointsModals } from 'containers/Administration/Endpoints/modals';
 import { institutionsModals } from 'containers/Administration/Institutions/modals';
@@ -27,28 +28,32 @@ import { productsModals } from 'containers/ProductDesigner/Products/modals';
 
 export const modalsList = [
   {
-    name: modalNamesConst.MESSAGE_MODAL,
+    name: modalNamesConst.MESSAGE,
     component: <MessageModal />,
   },
   {
-    name: modalNamesConst.CONFIRMATION_MODAL,
+    name: modalNamesConst.CONFIRMATION,
     component: <ConfirmationModal />,
   },
   {
-    name: modalNamesConst.LOG_MODAL,
+    name: modalNamesConst.LOG,
     component: <LogModal />,
   },
   {
-    name: modalNamesConst.REGISTER_2FA_MODAL,
+    name: modalNamesConst.REGISTER_2FA,
     component: <Register2faModal />,
   },
   {
-    name: modalNamesConst.LOGIN_CODE_2FA_MODAL,
+    name: modalNamesConst.LOGIN_CODE_2FA,
     component: <LoginCode2faModal />,
   },
   {
-    name: modalNamesConst.CHANGE_PROFILE_MODAL,
+    name: modalNamesConst.CHANGE_PROFILE,
     component: <ChangeProfileModal />,
+  },
+  {
+    name: modalNamesConst.CHANGE_PASSWORD,
+    component: <ChangePasswordModal />,
   },
   ...cycleEditorModals,
   ...endpointsModals,

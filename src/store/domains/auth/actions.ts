@@ -6,6 +6,7 @@ import { closeModal, openModal } from 'store/domains/modals';
 import {
   ActionTypeKeys,
   ChangeAdminProfileAction,
+  ChangePasswordAction,
   SetUserCurrentRegisterStepAction,
   UserConfirmAuthKeyAction,
   UserEnterAuthKeyAction,
@@ -22,9 +23,11 @@ import {
   AuthRequest,
   AuthUserId,
   AuthUsername,
+  ChangePasswordData,
+  ChangePasswordDataPrepared,
   PreparedAuthRequest,
 } from './types';
-import { prepareAuthValues, setUserDataToStorage } from './utils';
+import { prepareAuthValues, prepareChangePasswordDataToSend, setUserDataToStorage } from './utils';
 
 import { apiClient } from 'services';
 
@@ -51,6 +54,9 @@ export type UserEnterAuthKey = (data: AuthCode) => UserEnterAuthKeyAction;
 
 export type ChangeAdminProfile = (data: AuthUserId) => ChangeAdminProfileAction;
 export type HandleChangeAdminProfile = (data: AuthUsername) => Thunk<void>;
+
+export type ChangePassword = (data: Partial<ChangePasswordDataPrepared>) => ChangePasswordAction;
+export type HandleChangePassword = (data: Partial<ChangePasswordData>) => Thunk<void>;
 
 export const userLogin: UserLogin = data => ({
   type: ActionTypeKeys.USER_LOGIN,
@@ -87,6 +93,11 @@ export const changeAdminProfile: ChangeAdminProfile = data => ({
   payload: api.changeAdminProfile(data),
 });
 
+export const changePassword: ChangePassword = data => ({
+  type: ActionTypeKeys.CHANGE_PASSWORD,
+  payload: api.changePassword(data),
+});
+
 export const handleSetUserCurrentRegisterStep: HandleSetUserCurrentRegisterStep = step =>
   setUserCurrentRegisterStep(step);
 
@@ -103,7 +114,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
 
         if (selectIs2faAuthenticationPending(state)) {
           dispatch(openModal({
-            name: modalNamesConst.LOGIN_CODE_2FA_MODAL,
+            name: modalNamesConst.LOGIN_CODE_2FA,
           }));
         } else {
           dispatch(push(basePath));
@@ -122,7 +133,7 @@ export const handleUserEnterAuthKey: HandleUserEnterAuthKey = (data) =>
         const state = getState();
         setUserDataToStorage(selectLoginData(state));
 
-        dispatch(closeModal(modalNamesConst.LOGIN_CODE_2FA_MODAL));
+        dispatch(closeModal(modalNamesConst.LOGIN_CODE_2FA));
         dispatch(push(basePath));
       },
       dispatch
@@ -133,12 +144,29 @@ export const handleChangeAdminProfile: HandleChangeAdminProfile = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(changeAdminProfile({user_id: data.username.value}));
+        await dispatch(changeAdminProfile({ user_id: data.username.value }));
 
         const state = getState();
         setUserDataToStorage(selectLoginData(state), true);
 
         urlUtil.openLocation(basePath);
+      },
+      dispatch
+    );
+  };
+
+export const handleChangePassword: HandleChangePassword = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareChangePasswordDataToSend(data);
+
+        await dispatch(changePassword(preparedData));
+        dispatch(closeModal(modalNamesConst.CHANGE_PASSWORD));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: { title: 'Password changed' },
+        }));
       },
       dispatch
     );
@@ -173,7 +201,7 @@ export const handleUserConfirmAuthKey: HandleUserConfirmAuthKey = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(userConfirmAuthKey({ confirm: 'Y' }));
-        dispatch(closeModal(modalNamesConst.REGISTER_2FA_MODAL));
+        dispatch(closeModal(modalNamesConst.REGISTER_2FA));
         await dispatch(handleUserLogout());
       },
       dispatch

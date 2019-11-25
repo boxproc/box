@@ -19,8 +19,16 @@ export const isInteger = (value: number) =>
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;
 
+export const passwordsDoNotMatch = (value: string, allValues: any) =>
+  value === allValues.currentPassword ? 'Passwords match' : undefined;
+
 export const isDateTime = (value: string) =>
   moment(value, dateFormat.DATE_TIME, true).isValid() ? undefined : 'Incorrect date';
 
 export const isDate = (value: string) =>
   moment(value, dateFormat.DATE, true).isValid() ? undefined : 'Incorrect date';
+
+export const exactNumberValue = (exactNumber: number) => (value: string) =>
+  value && value.length !== exactNumber ? `Must have ${exactNumber} digits` : undefined;
+
+export const exactNumberValue6 = exactNumberValue(6);

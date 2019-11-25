@@ -14,7 +14,7 @@ const getNotification = (
   boxStatusCode?: number,
   errorCode?: number
 ) => openModal({
-  name: modalNamesConst.MESSAGE_MODAL,
+  name: modalNamesConst.MESSAGE,
   payload: { title, message, details, boxStatusCode, errorCode },
 });
 
