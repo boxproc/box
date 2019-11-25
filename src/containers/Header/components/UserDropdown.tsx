@@ -94,6 +94,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
             text="Change Password"
             iconName={iconNamesConst.KEY}
             onClick={handleOpenChangePasswordModal}
+            textTransformNone={true}
           />
         </DropdownOption>
       )}
@@ -103,6 +104,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
             text="Change profile"
             iconName={iconNamesConst.USER}
             onClick={handleOpenChangeProfileModal}
+            textTransformNone={true}
           />
         </DropdownOption>)}
       <DropdownOption>
@@ -110,6 +112,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
           text="Log out"
           iconName={iconNamesConst.LOGOUT}
           onClick={handleUserLogout}
+          textTransformNone={true}
         />
       </DropdownOption>
     </Dropdown>

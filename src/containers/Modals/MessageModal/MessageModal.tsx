@@ -103,7 +103,8 @@ const MessageModal: React.FC<MessageModalProps> = ({
         <Box mt="15px">
           <Paragraph
             light={true}
-            size={10}
+            size={9}
+            monoFontFamily={true}
           >
             {details}
           </Paragraph>

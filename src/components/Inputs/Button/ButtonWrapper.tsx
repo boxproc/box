@@ -5,6 +5,7 @@ interface ButtonWrapperProps {
   bordered?: boolean;
   underline?: boolean;
   hasIcon?: boolean;
+  textTransformNone?: boolean;
 }
 
 export const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -24,6 +25,11 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   line-height: 1.3;
   white-space: nowrap;
   user-select: none;
+
+  ${({ textTransformNone }) => textTransformNone && `
+    text-transform: none;
+    font-weight: normal;
+  `};
 
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 8px 10px 6px;

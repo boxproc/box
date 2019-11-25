@@ -22,6 +22,7 @@ interface ButtonProps extends WithModalProps {
   confirmationTitle?: string;
   bordered?: boolean;
   underline?: boolean;
+  textTransformNone?: boolean;
   onClick?: () => void;
 }
 
@@ -40,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
   withConfirmation = false,
   bordered = false,
   underline = false,
+  textTransformNone = false,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -66,6 +68,7 @@ const Button: React.FC<ButtonProps> = ({
       bordered={bordered}
       underline={underline}
       hasIcon={!!iconName}
+      textTransformNone={textTransformNone}
       className={isFocused && 'is-focused'}
     >
       {iconName && (

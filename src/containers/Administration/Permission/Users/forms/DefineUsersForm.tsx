@@ -102,7 +102,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               placeholder="Enter Email"
               component={InputField}
               options={typeOfCyclesEditorOptions}
-              label="User Email"
+              label="Email"
               validate={formErrorUtil.email}
             />
           </Box>

@@ -57,6 +57,7 @@ interface ParagraphProps {
   textAlign?: string;
   bold?: boolean;
   size?: number;
+  monoFontFamily?: boolean;
 }
 
 export const Paragraph = styled.p<ParagraphProps>`
@@ -69,4 +70,8 @@ export const Paragraph = styled.p<ParagraphProps>`
   &:not(last-child) {
     margin-bottom: 10px;
   };
+
+  ${({ monoFontFamily, theme }) => monoFontFamily && `
+    font-family: ${theme.fonts.code};
+  `};
 `;

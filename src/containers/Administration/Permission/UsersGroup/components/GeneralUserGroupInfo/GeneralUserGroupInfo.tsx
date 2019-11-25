@@ -55,8 +55,9 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             id="name"
             name="name"
             component={InputField}
-            label="User group name"
-            placeholder="Enter User group name"
+            label="Group Name"
+            placeholder="Enter Group Name"
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>
