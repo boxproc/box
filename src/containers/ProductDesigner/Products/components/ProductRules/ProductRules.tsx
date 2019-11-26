@@ -66,11 +66,17 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     () => {
       getProductAprs();
       getProductFees();
+    },
+    [getProductAprs, getProductFees]
+  );
+
+  React.useEffect(
+    () => {
       if (eventValue) {
         filterDictionaryEventDataElemsById({ eventId: eventValue });
       }
     },
-    [filterDictionaryEventDataElemsById, eventValue, getProductAprs, getProductFees]
+    [filterDictionaryEventDataElemsById, eventValue]
   );
 
   const onContextMenuClick = (e: Event, value: { name: string, description: string }) => {

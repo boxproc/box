@@ -39,13 +39,20 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   statementCyclesOptions,
   currentInstitution,
 }) => {
+  const currentInstitutionValue = React.useMemo(
+    () => currentInstitution && currentInstitution.value,
+    [currentInstitution]
+  );
+
   React.useEffect(
     () => {
-      getCyclesDescriptions({
-        institutionId: currentInstitution && currentInstitution.value,
-      });
+      if (currentInstitutionValue) {
+        getCyclesDescriptions({
+          institutionId: currentInstitutionValue,
+        });
+      }
     },
-    [getCyclesDescriptions, currentInstitution]
+    [getCyclesDescriptions, currentInstitutionValue]
   );
 
   return (
