@@ -50,10 +50,11 @@ const preventNoOptionsMsg = (): null => null;
 export interface SelectFieldProps<T = object> extends SelectProps<T> {
   modifySelectOption?: (data: OptionProps<T>) => void;
   isCustomSingleValue?: boolean;
+  onChange?: () => void;
 }
 
 export const SelectField = <T extends {}>(props: SelectFieldProps<T>) => {
-  const { id, isMulti, isCustomSingleValue, ...extraProps } = props;
+  const { id, isMulti, isCustomSingleValue, onChange, ...extraProps } = props;
 
   return (
     <WithCustomScrollbar>
@@ -73,6 +74,7 @@ export const SelectField = <T extends {}>(props: SelectFieldProps<T>) => {
         hideSelectedOptions={!isMulti}
         openMenuOnClick={!isCustomSingleValue}
         noOptionsMessage={isCustomSingleValue ? preventNoOptionsMsg : defaultNoOptionsMsg}
+        onChange={onChange}
         components={
           {
             Option: isMulti ? MultiSelectOption : components.Option,

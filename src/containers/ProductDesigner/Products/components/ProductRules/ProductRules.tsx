@@ -99,7 +99,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               options={dictionaryEventsOptions}
               isLoading={isDictionaryEventsLoading}
               isClearable={false}
-              onBlur={onChangeValues}
+              onChange={onChangeValues}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -112,7 +112,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Select Action Type"
               options={actionTypesOptions}
               isClearable={false}
-              onBlur={onChangeValues}
+              onChange={onChangeValues}
               validate={[formErrorUtil.required]}
             />
           </Box>
