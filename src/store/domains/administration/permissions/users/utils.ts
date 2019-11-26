@@ -16,7 +16,7 @@ export const prepareAdminUserValuesToSend = (values: Partial<AdminUserItemDetail
       password_entry_counter: values.passwordEntryCounter,
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
-      institutionId: values.userInstitution.value,
+      institution_id: values.userInstitution.value,
       requires_2fa_flag: values.requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
       change_profile_allowed_flag: values.changeProfileAllowedFlag
         ? yesNoTypesCodes.YES
