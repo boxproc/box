@@ -54,6 +54,6 @@ export const prepareUsersFiltersParamsToSend = (params: Partial<UsersFilter>) =>
 
     return {
       status: statusActiveFlag ? statusTypesCodes.ACTIVE : null,
-      institutionId: institutionId && institutionId.value,
+      institution_id: institutionId && institutionId.value,
     };
   };

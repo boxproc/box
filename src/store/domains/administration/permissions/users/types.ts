@@ -46,7 +46,7 @@ export interface UsersFilter {
 
 export interface UsersFilterPrepared {
   status: string;
-  institutionId: string | number;
+  institution_id: string | number;
 }
 
 export interface AdminUserDataResp {

@@ -20,7 +20,9 @@ export const handleGetDictionaryCountries: HandleGetDictionaryCountries = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsCurrencyCodesLoaded(getState())) {
+        const state = getState();
+
+        if (!selectIsCurrencyCodesLoaded(state)) {
           await dispatch(getDictionaryCountries());
         }
       },
