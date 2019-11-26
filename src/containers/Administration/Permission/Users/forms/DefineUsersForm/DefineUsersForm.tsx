@@ -62,7 +62,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         change('status', null);
       }
     },
-    [statusValue, requires2faFlagValue]
+    [statusValue, requires2faFlagValue, change]
   );
 
   const submitAction = React.useMemo(
