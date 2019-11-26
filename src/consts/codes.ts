@@ -189,6 +189,8 @@ export const actionTypesOptions = [
   { value: 'A', label: 'API Call' },
   { value: 'R', label: 'Approve / Deny' },
   { value: 'T', label: 'Set transaction APR' },
+  { value: 'R', label: 'Add reward' },
+  { value: 'F', label: 'Add fee' },
   { value: 'X', label: 'Update aux counter 1' },
   { value: 'Y', label: 'Update aux counter 2' },
   { value: 'Z', label: 'Update aux counter 3' },
