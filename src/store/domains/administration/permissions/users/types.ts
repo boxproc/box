@@ -11,12 +11,12 @@ interface AdminUserPlainInfo {
 export interface AdminUserItem extends AdminUserPlainInfo {
   first_name: string;
   last_name: string;
-  password: string;
   password_entry_counter: number | string;
   datetime_of_last_login: string;
   status: string | number;
   requires_2fa_flag: string;
   change_profile_allowed_flag: string;
+  institution_id: number | string;
 }
 
 export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
@@ -30,19 +30,23 @@ export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
 
 export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
   status: string | number;
+  userInstitution: string | number;
 }
 
 export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
   status: SelectValues;
+  userInstitution: SelectValues;
   password: string;
 }
 
 export interface UsersFilter {
   statusActiveFlag: boolean;
+  institutionId: SelectValues;
 }
 
 export interface UsersFilterPrepared {
   status: string;
+  institutionId: string | number;
 }
 
 export interface AdminUserDataResp {

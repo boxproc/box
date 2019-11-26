@@ -45,6 +45,17 @@ export const tableColumns = [
   {
     maxWidth: 200,
     sortable: true,
+    Header: <TableHeader title="Institution" />,
+    accessor: 'userInstitution',
+    Cell: (props: TCell<'userInstitution'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
     Header: <TableHeader title="Email" />,
     accessor: 'email',
     Cell: (props: TCell<'email'>) => (
@@ -91,7 +102,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Datetime of Last Login" />,
     accessor: 'datetimeOfLastLogin',

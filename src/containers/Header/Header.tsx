@@ -20,7 +20,6 @@ import {
 } from 'store/domains';
 
 import logo from 'resources/images/logo.png';
-import { storageUtil } from 'utils';
 
 const Wrapper = styled.header`
   position: fixed;
@@ -38,14 +37,14 @@ const Wrapper = styled.header`
 `;
 
 interface HeaderProps extends RouteComponentProps {
-  getUiItems: HandleGetUiItems;
-  userLogout: HandleUserLogout;
   uiItems: Array<UiItemPrepared>;
-  getInstitutions: HandleGetInstitutions;
   institutions: Array<InstitutionItem>;
   firstName: string;
   lastName: string;
   username: string;
+  getUiItems: HandleGetUiItems;
+  getInstitutions: HandleGetInstitutions;
+  userLogout: HandleUserLogout;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -58,16 +57,12 @@ const Header: React.FC<HeaderProps> = ({
   location,
   match,
 }) => {
-  const sessionId = storageUtil.getSessionId();
-
   React.useEffect(
     () => {
-      if (sessionId) {
-        getUiItems();
-        getInstitutions();
-      }
+      getUiItems();
+      getInstitutions();
     },
-    [getUiItems, getInstitutions, sessionId]
+    [getUiItems, getInstitutions]
   );
 
   const institution = institutions.length === 1
@@ -112,9 +107,7 @@ const Header: React.FC<HeaderProps> = ({
                   {institution && institution.institutionName}
                 </Box>
               )}
-              <UserDropdown
-                userLogout={userLogout}
-              />
+              <UserDropdown userLogout={userLogout} />
             </Flex>
           </Box>
         </Flex>

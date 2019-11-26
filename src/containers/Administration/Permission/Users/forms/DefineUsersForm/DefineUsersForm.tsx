@@ -14,21 +14,26 @@ import {
 
 import {
   formNamesConst,
+  statusTypes2faLoginOptions,
+  statusTypesCodes,
   statusTypesLoginOptions,
-  statusTypesOptions,
   typeOfCyclesEditorOptions,
 } from 'consts';
 
 import { HandleAddAdminUser, HandleUpdateAdminUser } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
-  defineAdminUser: HandleAddAdminUser | HandleUpdateAdminUser;
+  institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
-  isDisabledType?: boolean;
+  requires2faFlagValue: boolean;
+  statusValue: SelectValues;
+  addAdminUser: HandleAddAdminUser;
+  updateAdminUser: HandleUpdateAdminUser;
   onCancel?: () => void;
-  requires2faFlagValue?: boolean;
 }
 
 type DefineUserFormAllProps = DefineUserFormProps &
@@ -36,23 +41,54 @@ type DefineUserFormAllProps = DefineUserFormProps &
 
 const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   handleSubmit,
-  defineAdminUser,
+  addAdminUser,
+  updateAdminUser,
   isEditMode,
-  isDisabledType,
   onCancel,
   requires2faFlagValue,
+  statusValue,
   dirty,
   pristine,
+  institutionsOptions,
+  change,
 }) => {
-  const handleSubmitForm = React.useCallback(
-    handleSubmit(data => defineAdminUser(data)),
-    [handleSubmit, defineAdminUser]
+  React.useEffect(
+    () => {
+      if (
+        !requires2faFlagValue
+          && statusValue
+          && statusValue.value === statusTypesCodes.REGISTRATION_PENDING
+        ) {
+        change('status', null);
+      }
+    },
+    [statusValue, requires2faFlagValue]
+  );
+
+  const submitAction = React.useMemo(
+    () => isEditMode ? updateAdminUser : addAdminUser,
+    [isEditMode, updateAdminUser, addAdminUser]
   );
 
   const passwordValidation = React.useMemo(
-    () => isEditMode ? [formErrorUtil.passwordsMatch] :
-    [formErrorUtil.required, formErrorUtil.passwordsMatch],
+    () => isEditMode
+      ? null
+      : [formErrorUtil.required],
     [isEditMode]
+  );
+
+  const repeatPasswordValidation = React.useMemo(
+    () => isEditMode
+      ? [formErrorUtil.passwordsMatch]
+      : [formErrorUtil.required, formErrorUtil.passwordsMatch],
+    [isEditMode]
+  );
+
+  const statusOptions = requires2faFlagValue ? statusTypes2faLoginOptions : statusTypesLoginOptions;
+
+  const handleSubmitForm = React.useCallback(
+    handleSubmit(submitAction),
+    [handleSubmit, submitAction]
   );
 
   return (
@@ -62,7 +98,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="firstName"
               name="firstName"
@@ -72,7 +108,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="lastName"
               name="lastName"
@@ -80,11 +116,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Last Name"
-              isDisabled={isDisabledType}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="username"
               name="username"
@@ -95,7 +130,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="email"
               name="email"
@@ -103,18 +138,31 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Email"
-              validate={formErrorUtil.email}
+              validate={[formErrorUtil.email]}
+            />
+          </Box>
+          <Box width={[1 / 3]} p="10px">
+            <Field
+              id="userInstitution"
+              name="userInstitution"
+              placeholder="Select Institution"
+              component={SelectField}
+              label="Institution"
+              options={institutionsOptions}
+              isClearable={false}
+              isDisabled={isEditMode}
+              validate={[formErrorUtil.required]}
             />
           </Box>
           {isEditMode && (
-            <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="10px">
+            <Box width={[1 / 3]} p="10px">
               <Field
                 id="status"
                 name="status"
                 component={SelectField}
                 label="Status"
                 placeholder="Select Status"
-                options={requires2faFlagValue ? statusTypesLoginOptions : statusTypesOptions}
+                options={statusOptions}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -135,24 +183,25 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Change Profile Allowed"
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Hr />
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="password"
               name="password"
               placeholder="Enter Password"
               component={PasswordField}
               label="Password"
-              validate={!isEditMode && formErrorUtil.required}
+              validate={passwordValidation}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 3]} p="10px">
             <Field
               id="passwordRepeat"
               name="passwordRepeat"
               placeholder="Repeat Password"
               component={PasswordField}
               label="Repeat Password"
-              validate={passwordValidation}
+              validate={repeatPasswordValidation}
             />
           </Box>
         </Flex>

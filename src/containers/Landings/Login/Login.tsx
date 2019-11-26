@@ -71,8 +71,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
       </Box>
       <form onSubmit={handleSubmitForm}>
         <Field
-          id="userName"
-          name="userName"
+          id="loginUsername"
+          name="loginUsername"
           placeholder="Enter user name"
           component={InputField}
           disabled={isMessageModal}
@@ -80,8 +80,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
           validate={[formErrorUtil.required]}
         />
         <Field
-          id="password"
-          name="password"
+          id="loginPassword"
+          name="loginPassword"
           placeholder="Enter password"
           component={PasswordField}
           disabled={isMessageModal}

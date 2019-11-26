@@ -1,7 +1,7 @@
 import { SelectValues } from 'types';
 
 export interface AuthPassword {
-  password?: string;
+  loginPassword?: string;
 }
 
 export interface AuthCode {
@@ -21,7 +21,7 @@ export interface AuthConfirm {
 }
 
 export interface AuthRequest extends AuthPassword {
-  userName?: string;
+  loginUsername?: string;
   rememberMe?: boolean;
 }
 

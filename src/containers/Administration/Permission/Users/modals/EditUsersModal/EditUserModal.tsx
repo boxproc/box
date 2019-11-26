@@ -7,13 +7,11 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
 
-import { AdminUserItemDetails, HandleUpdateAdminUser } from 'store/domains';
+import { AdminUserItemDetails } from 'store/domains';
 
 interface EditUserModalProps extends WithModalProps {
-  updateAdminUser: HandleUpdateAdminUser;
   userDetails: Partial<AdminUserItemDetails>;
   isFormDirty: boolean;
-  requires2faFlagValue: boolean;
   currentUsername: string;
 }
 
@@ -21,10 +19,8 @@ const modalName = modalNamesConst.EDIT_USER;
 
 const EditUserModal: React.FC<EditUserModalProps> = ({
   closeModal,
-  updateAdminUser,
   userDetails,
   isFormDirty,
-  requires2faFlagValue,
   currentUsername,
 }) => {
   const username = React.useMemo(
@@ -42,15 +38,13 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit User${username}`}
-      maxContainerWidth={500}
+      maxContainerWidth={750}
       withCloseConfirmation={isFormDirty}
     >
       <DefineUsersForm
         onCancel={handleOnCancel}
-        defineAdminUser={updateAdminUser}
         isEditMode={true}
         initialValues={userDetails}
-        requires2faFlagValue={requires2faFlagValue}
       />
     </Modal>
   );

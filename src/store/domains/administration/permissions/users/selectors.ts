@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 
-import { statusTypesLoginOptions } from 'consts';
+import { statusTypes2faLoginOptions } from 'consts';
 
+import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 import { prepareAdminUserValuesToRender } from './utils';
@@ -11,9 +12,13 @@ export const selectDefaultAdminUsersItems = (state: StoreState) =>
 
 export const selectUserEditorItems = createSelector(
   selectDefaultAdminUsersItems,
-  (items) => items && items.asMutable().map(item => {
+  selectInstitutionsOptions,
+  (items, institutions) => items && items.asMutable().map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
     return {
       ...prepareAdminUserValuesToRender(item),
+      userInstitution: institution && institution.label,
     };
   })
 );
@@ -21,12 +26,15 @@ export const selectUserEditorItems = createSelector(
 export const selectUsersDetails = createSelector(
   selectDefaultAdminUsersItems,
   selectActiveItemId,
-  (items, currentId) => {
+  selectInstitutionsOptions,
+  (items, currentId, institutions) => {
     const current = items && items.find(item => item.id === currentId);
+    const institution = institutions.find(el => el.value === current.institution_id);
 
     return {
       ...prepareAdminUserValuesToRender(current),
-      status: current && statusTypesLoginOptions.find(el => el.value === current.status),
+      status: current && statusTypes2faLoginOptions.find(el => el.value === current.status),
+      userInstitution: institution,
     };
   }
 );

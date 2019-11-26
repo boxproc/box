@@ -14,11 +14,11 @@ import {
 import { storageUtil } from 'utils';
 
 export const prepareAuthValues = (formData: AuthRequest): PreparedAuthRequest => {
-  const { userName, password, rememberMe } = formData;
+  const { loginUsername, loginPassword, rememberMe } = formData;
 
   return ({
-    username: userName,
-    password,
+    username: loginUsername,
+    password: loginPassword,
     remember_me: rememberMe,
   });
 };

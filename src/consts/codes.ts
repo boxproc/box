@@ -40,8 +40,12 @@ export const statusTypesOptions = [
 
 export const statusTypesLoginOptions = [
   ...statusTypesOptions,
-  { value: 'F', label: '2FA registration pending' },
   { value: 'L', label: 'Locked' },
+];
+
+export const statusTypes2faLoginOptions = [
+  ...statusTypesLoginOptions,
+  { value: 'F', label: '2FA registration pending' },
 ];
 
 export const schedulerStatusTypesOptions = [

@@ -35,8 +35,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     () => isSessionEnded
       || statusCode === statusCodes.USER_NOT_AUTH
       || statusCode === statusCodes.NO_SESSION_ID
-      || statusCode === statusCodes.NO_SESSION
-      || statusCode === statusCodes.SESSION_TIMEOUT,
+      || statusCode === statusCodes.NO_SESSION,
     [statusCode, isSessionEnded]
   );
 
@@ -58,7 +57,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     [closeModal]
   );
 
-  const handleClick = React.useCallback(
+  const handleCloseModal = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
@@ -87,7 +86,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
           <Button
             text={isReLogin ? 'Re Login' : 'Close'}
             isFocused={isReLogin}
-            onClick={isReLogin ? handleRelogin : handleClick}
+            onClick={isReLogin ? handleRelogin : handleCloseModal}
           />
         </Box>
         {details && (

@@ -11,6 +11,7 @@ import {
   handleFilterUsers,
   resetUsers,
   selectActiveItemId,
+  selectInstitutionsOptions,
   selectUserEditorItems,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminUserItems: selectUserEditorItems(state),
   currentUserId: selectActiveItemId(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

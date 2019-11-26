@@ -15,8 +15,11 @@ import {
   ResetUsers
 } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface UsersProps {
   adminUserItems: Array<AdminUserItemPrepared>;
+  institutionsOptions: Array<SelectValues>;
   filterUsers: HandleFilterUsers;
   filterUsersById: HandleFilterAuditUserById;
   currentUserId: number;
@@ -25,6 +28,7 @@ interface UsersProps {
 
 export const Users: React.FC<UsersProps> = ({
   adminUserItems,
+  institutionsOptions,
   filterUsers,
   filterUsersById,
   currentUserId,
@@ -61,9 +65,12 @@ export const Users: React.FC<UsersProps> = ({
       filterAction={filterUsers}
       initialFilterValues={{
         statusActiveFlag: false,
+        institutionId: institutionsOptions[0],
       }}
       FilterForm={
-        <UsersFilter />
+        <UsersFilter
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );

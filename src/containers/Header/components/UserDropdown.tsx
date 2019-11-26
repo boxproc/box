@@ -91,7 +91,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
       {isChangePasswordAvailable && (
         <DropdownOption>
           <Button
-            text="Change Password"
+            text="Change password"
             iconName={iconNamesConst.KEY}
             onClick={handleOpenChangePasswordModal}
             textTransformNone={true}

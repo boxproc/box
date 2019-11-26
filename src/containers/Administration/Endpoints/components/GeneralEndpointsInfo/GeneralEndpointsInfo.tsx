@@ -22,9 +22,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
 }) => {
   return (
     <Box mx="-10px" >
-      <Flex
-        flexWrap="wrap"
-      >
+      <Flex flexWrap="wrap">
         <Box width={[1 / 2]} p="10px">
           <Field
             id="institutionId"

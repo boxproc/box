@@ -11,11 +11,11 @@ const getNotification = (
   title: string,
   message: string,
   details?: string,
-  boxStatusCode?: number,
+  statusCode?: number,
   errorCode?: number
 ) => openModal({
   name: modalNamesConst.MESSAGE,
-  payload: { title, message, details, boxStatusCode, errorCode },
+  payload: { title, message, details, statusCode, errorCode },
 });
 
 interface Error {

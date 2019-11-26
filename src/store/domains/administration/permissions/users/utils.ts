@@ -1,13 +1,7 @@
-import { statusTypesCodes, statusTypesLoginOptions, yesNoTypesCodes } from 'consts';
-import {
-  AdminUserItem,
-  AdminUserItemDetails,
-  UsersFilter,
-  UsersFilterPrepared,
-} from './types';
+import { statusTypes2faLoginOptions, statusTypesCodes, yesNoTypesCodes } from 'consts';
+import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
-export const prepareAdminUserValuesToSend =
-  (values: Partial<AdminUserItemDetails>) => {
+export const prepareAdminUserValuesToSend = (values: Partial<AdminUserItemDetails>) => {
     if (!values) {
       return null;
     }
@@ -22,6 +16,7 @@ export const prepareAdminUserValuesToSend =
       password_entry_counter: values.passwordEntryCounter,
       datetime_of_last_login: values.datetimeOfLastLogin,
       status: values.status && values.status.value,
+      institutionId: values.userInstitution.value,
       requires_2fa_flag: values.requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
       change_profile_allowed_flag: values.changeProfileAllowedFlag
         ? yesNoTypesCodes.YES
@@ -34,7 +29,7 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
     return null;
   }
 
-  const status = statusTypesLoginOptions.find(el => el.value === values.status);
+  const status = statusTypes2faLoginOptions.find(el => el.value === values.status);
 
   return {
     id: values.id,
@@ -50,21 +45,15 @@ export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) =
   };
 };
 
-export const prepareUsersFiltersParams =
-  (params: Partial<UsersFilterPrepared>): Partial<UsersFilter> => {
-    return {
-      statusActiveFlag: params.status === statusTypesCodes.ACTIVE ? true : false,
-    };
-  };
-
-export const prepareUsersFiltersParamsToSend =
-  (params: Partial<UsersFilter>): Partial<UsersFilterPrepared> => {
+export const prepareUsersFiltersParamsToSend = (params: Partial<UsersFilter>) => {
     if (!params) {
       return null;
     }
-    const { statusActiveFlag } = params;
+
+    const { statusActiveFlag, institutionId } = params;
 
     return {
       status: statusActiveFlag ? statusTypesCodes.ACTIVE : null,
+      institutionId: institutionId && institutionId.value,
     };
   };
