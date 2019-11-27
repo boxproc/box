@@ -21,6 +21,7 @@ import { apiCallsModals } from 'containers/Audit/ApiCalls/modals';
 import { accountsModals } from 'containers/Ledger/Accounts/modals';
 import { cardsModals } from 'containers/Ledger/Cards/modals';
 import { customersModals } from 'containers/Ledger/Customers/modals';
+import { manualTransactionModals } from 'containers/Ledger/ManualTransaction/modals';
 import { statementsModals } from 'containers/Ledger/Statements/modals';
 import { transactionsModals } from 'containers/Ledger/Transactions/modals';
 import { cycleEditorModals } from 'containers/ProductDesigner/Cycles/modals';
@@ -68,6 +69,7 @@ export const modalsList = [
   ...customersModals,
   ...statementsModals,
   ...transactionsModals,
+  ...manualTransactionModals,
   ...productsModals,
   ...apiCallsModals,
 ];

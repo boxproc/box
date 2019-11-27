@@ -56,6 +56,6 @@ export const adminSysPropsItemsFilteredData: AdminSysPropsDataResp = {
 
 export const successResponseStatus: ResponseStatusType = {
   response_status: {
-    status_code: 0,
+    status_code: '00',
   },
 };

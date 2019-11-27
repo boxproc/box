@@ -11,7 +11,7 @@ const getNotification = (
   title: string,
   message: string,
   details?: string,
-  statusCode?: number,
+  statusCode?: string,
   errorCode?: number
 ) => openModal({
   name: modalNamesConst.MESSAGE,

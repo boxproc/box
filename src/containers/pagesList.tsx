@@ -19,7 +19,14 @@ import {
 
 import { Cycles, Products } from 'containers/ProductDesigner';
 
-import { Accounts, Cards, Customers, Statements, Transactions } from 'containers/Ledger';
+import {
+  Accounts,
+  Cards,
+  Customers,
+  ManualTransaction,
+  Statements,
+  Transactions,
+} from 'containers/Ledger';
 
 import { ApiCalls, ScheduledJobs, SystemMonitor, UserActivity } from 'containers/Audit';
 
@@ -105,6 +112,10 @@ export const pagesList = [
     component: <Statements />,
   },
   {
+    path: uiItemConsts.LEDGER_MANUAL_TRANSACTIONS,
+    component: <ManualTransaction />,
+  },
+  {
     path: uiItemConsts.LEDGER_TRANSACTIONS,
     component: <Transactions />,
   },
@@ -113,11 +124,11 @@ export const pagesList = [
     component: <Cards />,
   },
   {
-    path: uiItemConsts.PRODUCTS_DESIGNER_CYCLES,
+    path: uiItemConsts.PRODUCT_DESIGNER_CYCLES,
     component: <Cycles />,
   },
   {
-    path: uiItemConsts.PRODUCTS_DESIGNER_PRODUCTS,
+    path: uiItemConsts.PRODUCT_DESIGNER_PRODUCTS,
     component: <Products />,
   },
 ];

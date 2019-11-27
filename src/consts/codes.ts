@@ -203,11 +203,11 @@ export enum codeKeys {
 }
 
 export enum statusCodes {
-  NO_SESSION_ID = 1,
-  NO_SESSION = 3,
-  USER_NOT_AUTH = 4,
-  SESSION_TIMEOUT = 5,
-  INCORRECT_PASSWORD = 15,
+  NO_SESSION_ID = '01',
+  NO_SESSION = '03',
+  USER_NOT_AUTH = '04',
+  SESSION_TIMEOUT = '05',
+  INCORRECT_PASSWORD = '15',
 }
 
 export const aprTypesOptions = [

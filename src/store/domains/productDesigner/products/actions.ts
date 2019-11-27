@@ -469,7 +469,7 @@ export const handleAddProductApr: HandleAddProductApr = values =>
           product_id: productId,
         }));
         await dispatch(handleGetProductAprs());
-        await dispatch(resetForm(formNamesConst.PRODUCT_APRS));
+        dispatch(resetForm(formNamesConst.PRODUCT_APRS));
       },
       dispatch
     );
@@ -524,7 +524,7 @@ export const handleAddProductFee: HandleAddProductFee = values =>
           product_id: productId,
         }));
         await dispatch(handleGetProductFees());
-        await dispatch(resetForm(formNamesConst.PRODUCT_FEES));
+        dispatch(resetForm(formNamesConst.PRODUCT_FEES));
       },
       dispatch
     );

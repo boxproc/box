@@ -19,6 +19,7 @@ export const customStyles: StylesConfig = {
     const {
       isDisabled,
       isFocused,
+      selectProps,
     } = state;
 
     return ({
@@ -28,7 +29,7 @@ export const customStyles: StylesConfig = {
       ['& > svg path']: {
         color: isDisabled
           ? theme.colors.lightGray
-          : isFocused
+          : isFocused && !selectProps.invalid
             ? theme.colors.normalAccent
             : theme.colors.darkGray,
       },

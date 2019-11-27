@@ -21,6 +21,16 @@ export const selectDictionaryTransactionTypes = createSelector(
   })
 );
 
+export const selectDictionaryTransactionTypesOptions = createSelector(
+  selectDictionaryTransactionTypes,
+  items => items && items.map(item => {
+    return {
+      value: item.id,
+      label: `${item.debitCreditIndicator} - ${item.description}`,
+    };
+  })
+);
+
 export const selectIsTransactionTypesLoaded = createSelector(
   selectDefaultDictionaryTransactionTypesItems,
   countryCodes => countryCodes && countryCodes.length > 0

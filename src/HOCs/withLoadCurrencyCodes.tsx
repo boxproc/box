@@ -8,6 +8,7 @@ import {
   HandleGetDictionaryCurrencies,
   handleGetDictionaryCurrencies,
   selectCurrencyCodesOptions,
+  selectCurrencyNumCodesOptions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -18,6 +19,7 @@ import { componentUtil } from 'utils';
 
 export interface WithLoadCurrencyCodesProps {
   currencyCodes: Array<SelectValues>;
+  numCurrencyCodes: Array<SelectValues>;
   isCurrencyCodesLoading: boolean;
   loadCurrencyCodes: HandleGetDictionaryCurrencies;
 }
@@ -30,6 +32,7 @@ export const withLoadCurrencyCodes =
       React.FC<WithLoadCurrencyCodesProps> = props => {
         const {
           currencyCodes,
+          numCurrencyCodes,
           loadCurrencyCodes,
           isCurrencyCodesLoading,
           ...originProps
@@ -49,6 +52,7 @@ export const withLoadCurrencyCodes =
           <Component
             isCurrencyCodesLoading={isCurrencyCodesLoading}
             currencyCodes={currencyCodes}
+            numCurrencyCodes={numCurrencyCodes}
             loadCurrencyCodes={loadCurrencyCodes}
             {...originProps as OriginProps}
           />
@@ -65,6 +69,7 @@ export const withLoadCurrencyCodes =
     const mapStateToProps = (state: StoreState) => ({
       isCurrencyCodesLoading: loadingSelector(state),
       currencyCodes: selectCurrencyCodesOptions(state),
+      numCurrencyCodes: selectCurrencyNumCodesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

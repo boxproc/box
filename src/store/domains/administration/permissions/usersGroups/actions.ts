@@ -251,7 +251,7 @@ export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
           await dispatch(addAdminGroupPermission(preparedValues));
           await dispatch(getAdminUserGroupPermissions(currentGroupId));
           await dispatch(getAdminUiItems(currentGroupId));
-          await dispatch(resetForm(formNamesConst.EDIT_GROUP_PERMISSION));
+          dispatch(resetForm(formNamesConst.EDIT_GROUP_PERMISSION));
         },
         dispatch
       );
@@ -270,7 +270,7 @@ export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = (values) =>
         }));
         await dispatch(getAdminActiveUsers(currentGroupId));
         await dispatch(getAdminUserGroupMembers(currentGroupId));
-        await dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS));
+        dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS));
       },
       dispatch
     );

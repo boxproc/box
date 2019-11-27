@@ -7,7 +7,7 @@ export interface PayloadMessageModal {
   title: string;
   message?: string;
   details?: string;
-  statusCode?: number;
+  statusCode?: string;
   errorCode?: number;
   type?: string;
 }

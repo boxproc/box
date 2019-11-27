@@ -7,17 +7,14 @@ export const ledgerTransactionsInitialState: ImmutableObject<LedgerTransactionsS
   transactions: Immutable([]),
 });
 
-const ledgerCustomersReducer =
+const ledgerTransactionsReducer =
   (state = ledgerTransactionsInitialState, action: LedgerTransactionsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_FULFILLED:
-        return state
-          .set('transactions', action.payload.transactions);
+        return state.set('transactions', action.payload.transactions);
 
       case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED:
-        return state
-
-          .set('transactions', action.payload.transactions);
+        return state.set('transactions', action.payload.transactions);
 
       case ActionTypeKeys.RESET_TRANSACTIONS:
         return state = ledgerTransactionsInitialState;
@@ -26,4 +23,4 @@ const ledgerCustomersReducer =
     }
   };
 
-export default ledgerCustomersReducer;
+export default ledgerTransactionsReducer;

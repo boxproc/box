@@ -99,6 +99,6 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
 
 export const successResponseStatus: ResponseStatusType = {
   response_status: {
-    status_code: 0,
+    status_code: '00',
   },
 };

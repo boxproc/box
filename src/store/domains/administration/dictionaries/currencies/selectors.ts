@@ -34,6 +34,18 @@ export const selectCurrencyCodesOptions = createSelector(
   })
 );
 
+export const selectCurrencyNumCodesOptions = createSelector(
+  selectDefaultDictionaryCurrenciesItems,
+  data => data && data.map(code => {
+    const { currency_code, name, numeric_code } = code;
+
+    return {
+      value: numeric_code,
+      label: `${currency_code} - ${name}`,
+    };
+  })
+);
+
 export const selectIsCurrencyCodesLoaded =
   createSelector(
     selectDefaultDictionaryCurrenciesItems,

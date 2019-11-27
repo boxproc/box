@@ -11,7 +11,7 @@ export type VoidPromiseThunk = () => Thunk<Promise<void>>;
 export type VoidThunk = () => Thunk<void>;
 
 export interface ResponseStatus {
-  status_code: number;
+  status_code: string;
   error_message?: string;
   error_description?: string;
 }

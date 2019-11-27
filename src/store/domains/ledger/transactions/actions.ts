@@ -4,8 +4,6 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
 import { setIsOpenFilter } from 'store/domains/utils';
-import { Thunk } from 'types';
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
 import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
@@ -15,6 +13,10 @@ import {
 import * as api from './api';
 import { LedgerTransactionsFilterPrepared } from './types';
 import { preparedFilterToSend } from './utils';
+
+import { cookiesUtil, errorDecoratorUtil } from 'utils';
+
+import { Thunk } from 'types';
 
 export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterPrepared>) =>
   FilterLedgerTransactionsAction;

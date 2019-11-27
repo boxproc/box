@@ -42,6 +42,8 @@ export enum formNamesConst {
   LEDGER_CUSTOMER = 'ledgerCustomerForm',
   LEDGER_ACCOUNT = 'ledgerAccountForm',
   LEDGER_TRANSACTIONS = 'ledgerTransactionsForm',
+  LEDGER_MANUAL_TRANSACTION = 'ledgerManualTransaction',
+  LEDGER_RESULT_MANUAL_TRANSACTION = 'ledgerResultManualTransaction',
   LEDGER_CARDS = 'ledgerCardForm',
   LEDGER_ACCOUNT_CARDS = 'ledgerAccountCardsForm',
   LEDGER_STATEMENT = 'ledgerStatementForm',

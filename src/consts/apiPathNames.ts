@@ -143,6 +143,10 @@ export enum lenderTransactionsPathNames {
   GET = '/ui/ledger/transactions/get',
 }
 
+export enum lenderManualTransactionPathNames {
+  MAKE_TRANSACTION = 'ui/ledger/accounts/make_transaction',
+}
+
 export enum productsPathNames {
   GET_PRODUCTS = '/ui/product_designer/products/get',
   GET_INSTITUTIONS_PRODUCTS = '/ui/service_data/institutions/products/get',
