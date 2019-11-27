@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Container, Navbar, withSpinner } from 'components';
 
-import { basePath, institutionsNames } from 'consts';
+import { basePath } from 'consts';
 
 import { HelpDropdown, UserDropdown } from './components';
 
@@ -65,9 +65,10 @@ const Header: React.FC<HeaderProps> = ({
     [getUiItems, getInstitutions]
   );
 
-  const institution = institutions.length === 1
-    ? institutions[0]
-    : institutions.find(el => el.institutionName === institutionsNames.BOX);
+  const institution = React.useMemo(
+    () => institutions[0],
+    [institutions]
+  );
 
   return (
     <Wrapper>

@@ -25,7 +25,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => addAdminUsersGroup(data)),
+    handleSubmit(addAdminUsersGroup),
     [handleSubmit, addAdminUsersGroup]
   );
   return (

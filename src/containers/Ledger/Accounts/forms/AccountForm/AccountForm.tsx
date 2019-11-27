@@ -66,7 +66,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
     [mode]
   );
 
-  const action = React.useMemo(
+  const submitFormAction = React.useMemo(
     () => isEditMode ? updateLedgerAccount : addLedgerAccount,
     [updateLedgerAccount, addLedgerAccount, isEditMode]
   );
@@ -101,8 +101,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
-    [handleSubmit]
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
   );
 
   return (

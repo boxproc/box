@@ -53,7 +53,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateProduct(data)),
+    handleSubmit(updateProduct),
     [handleSubmit, updateProduct]
   );
 

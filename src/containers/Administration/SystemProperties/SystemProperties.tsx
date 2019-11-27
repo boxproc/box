@@ -1,13 +1,9 @@
 import React from 'react';
 
-import {
-  renderCheckBoxTableCell,
-  TableCell,
-  TableHeader,
-  withSpinner,
-} from 'components';
+import { withSpinner } from 'components';
 
 import PageTemplate from 'containers/PageTemplate';
+import { tableColumns } from './components';
 import { SystemPropertyFilter } from './forms';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
@@ -20,8 +16,6 @@ import {
   ResetSystemProperties,
 } from 'store/domains';
 
-import { TableCellType } from 'types';
-
 interface SystemPropertiesProps {
   deleteAdminSysProp: HandleDeleteAdminSysProp;
   filterAdminSysProps: HandleFilterAdminSysProps;
@@ -30,8 +24,6 @@ interface SystemPropertiesProps {
   currentSysPropId: number | string;
   resetSystemProperties: ResetSystemProperties;
 }
-
-type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[T]>;
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   adminSysPropsItems,
@@ -47,61 +39,6 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     },
     [resetSystemProperties]
   );
-
-  const columns = [
-    {
-      maxWidth: 300,
-      sortable: true,
-      Header: <TableHeader title="Property Name" />,
-      accessor: 'id',
-      Cell: (props: TCell<'id'>) => (
-        <TableCell
-          value={props.value}
-        />
-      ),
-    },
-    {
-      maxWidth: 300,
-      sortable: true,
-      Header: <TableHeader title="Current Value" />,
-      accessor: 'currentValue',
-      Cell: (props: TCell<'currentValue'>) => (
-        <TableCell
-          value={props.value}
-        />
-      ),
-    },
-    {
-      maxWidth: 300,
-      sortable: true,
-      Header: <TableHeader title="Previous Value" />,
-      accessor: 'previousValue',
-      Cell: (props: TCell<'previousValue'>) => (
-        <TableCell
-          value={props.value}
-        />
-      ),
-    },
-    {
-      maxWidth: 200,
-      sortable: true,
-      Header: <TableHeader title="Last Datetime" />,
-      accessor: 'lastDatetime',
-      Cell: (props: TCell<'lastDatetime'>) => (
-        <TableCell
-          value={props.value}
-          isDate={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 80,
-      sortable: true,
-      Header: <TableHeader title="Locked" />,
-      accessor: 'lockedFlag',
-      Cell: renderCheckBoxTableCell(),
-    },
-  ];
 
   const contextMenuItems = React.useMemo(
     () => [
@@ -129,7 +66,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
     <PageTemplate
       title="System Properties"
       data={adminSysPropsItems}
-      columns={columns}
+      columns={tableColumns}
       newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
       editModalName={modalNamesConst.EDIT_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}

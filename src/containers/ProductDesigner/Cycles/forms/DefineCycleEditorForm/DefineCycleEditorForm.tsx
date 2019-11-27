@@ -57,33 +57,46 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   mode,
   pristine,
   dirty,
-  }) => {
-  const isEditMode = mode === 'edit';
-
-  const defineCyclesEditor = isEditMode ? updateCyclesEditor : addCyclesEditor;
-
-  const handleSubmitForm = React.useCallback(
-    handleSubmit(data => defineCyclesEditor(data)),
-    [handleSubmit, defineCyclesEditor]
+}) => {
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
   );
 
-  const isMonthlyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypesCodes.BI_MONTHLY
-      || cyclesEditorValue.value === cycleTypesCodes.MONTHLY);
+  const submitFormAction = React.useMemo(
+    () => isEditMode ? updateCyclesEditor : addCyclesEditor,
+    [isEditMode, updateCyclesEditor, addCyclesEditor]
+  );
 
-  const isWeeklyCycleFirstDay = cyclesEditorValue
-    && (cyclesEditorValue.value === cycleTypesCodes.BI_WEEKLY
-      || cyclesEditorValue.value === cycleTypesCodes.WEEKLY);
+  const handleSubmitForm = React.useCallback(
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
+  );
 
-  const isFixedCycleNumberOfDays = cyclesEditorValue
-    && cyclesEditorValue.value === cycleTypesCodes.FIXED_NUMBER_OF_DAYS;
+  const isMonthlyCycleFirstDay = React.useMemo(
+    () => cyclesEditorValue
+      && (cyclesEditorValue.value === cycleTypesCodes.BI_MONTHLY
+        || cyclesEditorValue.value === cycleTypesCodes.MONTHLY),
+    [cyclesEditorValue]
+  );
+
+  const isWeeklyCycleFirstDay = React.useMemo(
+    () => cyclesEditorValue
+      && (cyclesEditorValue.value === cycleTypesCodes.BI_WEEKLY
+        || cyclesEditorValue.value === cycleTypesCodes.WEEKLY),
+    [cyclesEditorValue]
+  );
+
+  const isFixedCycleNumberOfDays = React.useMemo(
+    () => cyclesEditorValue
+      && cyclesEditorValue.value === cycleTypesCodes.FIXED_NUMBER_OF_DAYS,
+    [cyclesEditorValue]
+  );
 
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px" >
-        <Flex
-          flexWrap="wrap"
-        >
+        <Flex flexWrap="wrap">
           <Box width={[1 / 2]} p="10px">
             <Field
               id="institutionId"

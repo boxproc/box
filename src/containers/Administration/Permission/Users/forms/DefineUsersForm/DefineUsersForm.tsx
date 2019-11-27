@@ -52,17 +52,20 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   institutionsOptions,
   change,
 }) => {
+  const isRegistrationPendingStatus = React.useMemo(
+    () => !requires2faFlagValue
+      && statusValue
+      && statusValue.value === statusTypesCodes.REGISTRATION_PENDING,
+    [statusValue, requires2faFlagValue]
+  );
+
   React.useEffect(
     () => {
-      if (
-        !requires2faFlagValue
-          && statusValue
-          && statusValue.value === statusTypesCodes.REGISTRATION_PENDING
-        ) {
+      if (isRegistrationPendingStatus) {
         change('status', null);
       }
     },
-    [statusValue, requires2faFlagValue, change]
+    [isRegistrationPendingStatus, change]
   );
 
   const submitAction = React.useMemo(

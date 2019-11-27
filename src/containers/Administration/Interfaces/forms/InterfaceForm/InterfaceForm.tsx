@@ -41,12 +41,19 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   dirty,
   pristine,
 }) => {
-  const isEditMode = mode === 'edit';
-  const action = isEditMode ? updateAdminInterface : addAdminInterface;
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
+  );
+
+  const submitFormAction = React.useMemo(
+    () => isEditMode ? updateAdminInterface : addAdminInterface,
+    [isEditMode, updateAdminInterface, addAdminInterface]
+  );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
-    [handleSubmit]
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
   );
 
   return (

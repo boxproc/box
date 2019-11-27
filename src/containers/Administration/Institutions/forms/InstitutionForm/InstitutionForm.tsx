@@ -46,12 +46,19 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   dirty,
   pristine,
 }) => {
-  const isEditMode = mode === 'edit';
-  const action = isEditMode ? updateAdminInstitution : addAdminInstitution;
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
+  );
+
+  const submitFormAction = React.useMemo(
+    () => isEditMode ? updateAdminInstitution : addAdminInstitution,
+    [isEditMode, updateAdminInstitution, addAdminInstitution]
+  );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
-    [handleSubmit]
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
   );
 
   return (

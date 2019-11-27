@@ -68,7 +68,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductFee),
-    [handleSubmit]
+    [handleSubmit, addProductFee]
   );
 
   return (

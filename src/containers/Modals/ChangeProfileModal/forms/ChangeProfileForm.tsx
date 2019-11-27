@@ -33,8 +33,8 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => changeAdminProfile(data)),
-    [handleSubmit]
+    handleSubmit(changeAdminProfile),
+    [handleSubmit, changeAdminProfile]
   );
 
   return (

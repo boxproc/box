@@ -40,9 +40,10 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
     },
     [getProductDetails]
   );
+
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateProductDetails(data)),
-    [handleSubmit]
+    handleSubmit(updateProductDetails),
+    [handleSubmit, updateProductDetails]
   );
 
   return (

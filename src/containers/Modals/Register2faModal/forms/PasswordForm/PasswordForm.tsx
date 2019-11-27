@@ -23,7 +23,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userGetAuthKey(data)),
+    handleSubmit(userGetAuthKey),
     [handleSubmit, userGetAuthKey]
   );
 

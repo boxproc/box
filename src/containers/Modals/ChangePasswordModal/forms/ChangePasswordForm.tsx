@@ -33,7 +33,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(changePassword),
-    [handleSubmit]
+    [handleSubmit, changePassword]
   );
 
   return (

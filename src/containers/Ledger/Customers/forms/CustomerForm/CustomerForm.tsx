@@ -48,7 +48,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitAction),
-    [handleSubmit]
+    [handleSubmit, submitAction]
   );
 
   const isIdentification = React.useMemo(

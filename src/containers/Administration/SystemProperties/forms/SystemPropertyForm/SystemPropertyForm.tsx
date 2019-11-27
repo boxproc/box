@@ -37,11 +37,14 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   dirty,
   pristine,
 }) => {
+  const submitFormAction = React.useMemo(
+    () => isEditMode ? updateAdminSystemProperty : addAdminSystemProperty,
+    [isEditMode, updateAdminSystemProperty, addAdminSystemProperty]
+  );
 
-  const action = isEditMode ?   updateAdminSystemProperty : addAdminSystemProperty;
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
-    [handleSubmit, addAdminSystemProperty, updateAdminSystemProperty]
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
   );
 
   return (
@@ -62,16 +65,16 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-          <Box width={[1 / 2]} p="10px">
-            <Field
-              id="lastDatetime"
-              name="lastDatetime"
-              component={InputField}
-              label="Last Date Time"
-              readOnly={true}
-            />
-          </Box>
-        )}
+            <Box width={[1 / 2]} p="10px">
+              <Field
+                id="lastDatetime"
+                name="lastDatetime"
+                component={InputField}
+                label="Last Date Time"
+                readOnly={true}
+              />
+            </Box>
+          )}
           <Box width={[1 / 2]} p="10px">
             <Field
               id="currentValue"
@@ -83,16 +86,16 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-          <Box width={[1 / 2]} p="10px">
-            <Field
-              id="previousValue"
-              name="previousValue"
-              component={InputField}
-              label="Previous Value"
-              readOnly={true}
-            />
-          </Box>
-        )}
+            <Box width={[1 / 2]} p="10px">
+              <Field
+                id="previousValue"
+                name="previousValue"
+                component={InputField}
+                label="Previous Value"
+                readOnly={true}
+              />
+            </Box>
+          )}
           <Box width={[1]} p="10px">
             <Field
               id="lockedFlag"

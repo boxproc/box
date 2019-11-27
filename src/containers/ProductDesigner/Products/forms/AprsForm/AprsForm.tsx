@@ -29,7 +29,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductApr),
-    [handleSubmit]
+    [handleSubmit, addProductApr]
   );
 
   return (

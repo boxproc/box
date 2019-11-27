@@ -25,7 +25,7 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateAdminUsersGroup(data)),
+    handleSubmit(updateAdminUsersGroup),
     [handleSubmit, updateAdminUsersGroup]
   );
   return (

@@ -24,9 +24,7 @@ const CenterBlock = styled.div`
 const Home: React.FC<HomeProps> = ({ openModal }) => {
   React.useEffect(
     () => {
-      return () => {
-        storageUtil.removeFirstScreenFlag();
-      };
+      return () => storageUtil.removeFirstScreenFlag();
     },
     []
   );

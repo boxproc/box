@@ -58,7 +58,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   isMessageModal,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userLogin(data)),
+    handleSubmit(userLogin),
     [handleSubmit, userLogin]
   );
 

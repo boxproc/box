@@ -57,7 +57,7 @@ const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(updateProductRules),
-    [handleSubmit]
+    [handleSubmit, updateProductRules]
   );
 
   return (

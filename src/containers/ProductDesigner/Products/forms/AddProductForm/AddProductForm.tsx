@@ -37,8 +37,8 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => addProduct(data)),
-    [handleSubmit]
+    handleSubmit(addProduct),
+    [handleSubmit, addProduct]
   );
 
   return (

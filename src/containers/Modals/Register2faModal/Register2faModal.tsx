@@ -35,19 +35,20 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
   React.useEffect(
     () => {
       setUserCurrentRegisterStep(1);
-      return () => {
-        setUserCurrentRegisterStep(null);
-      };
+      return () => setUserCurrentRegisterStep(null);
     },
     [setUserCurrentRegisterStep]
+  );
+
+  const isSecondStep = React.useMemo(
+    () => currentRegisterStep === 2,
+    [currentRegisterStep]
   );
 
   const handleSetFirstStep = React.useCallback(
     () => setUserCurrentRegisterStep(1),
     [setUserCurrentRegisterStep]
   );
-
-  const isSecondStep = currentRegisterStep === 2;
 
   return (
     <Modal

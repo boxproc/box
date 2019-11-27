@@ -50,6 +50,17 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
 }) => {
   const [cronExpression, setCronExpression] = React.useState(null);
 
+  React.useEffect(
+    () => {
+      if (formValues) {
+        const expression = cronExpressionGenerator(formValues);
+
+        setCronExpression(expression);
+      }
+    },
+    [formValues]
+  );
+
   const handleCloseModal = React.useCallback(
     () => {
       closeModal(modalName);
@@ -69,17 +80,6 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
       handleCloseModal();
     },
     [cronExpression, changeFormValue, handleCloseModal]
-  );
-
-  React.useEffect(
-    () => {
-      if (formValues) {
-        const expression = cronExpressionGenerator(formValues);
-
-        setCronExpression(expression);
-      }
-    },
-    [formValues]
   );
 
   return (

@@ -42,12 +42,19 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   mode,
   currentEndpointName,
 }) => {
-  const isEditMode = mode === 'edit';
-  const action = isEditMode ? updateAdminEndpoint : addAdminEndpoint;
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
+  );
+
+  const submitFormAction = React.useMemo(
+    () => isEditMode ? updateAdminEndpoint : addAdminEndpoint,
+    [isEditMode, updateAdminEndpoint, addAdminEndpoint]
+  );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => action(data)),
-    [handleSubmit]
+    handleSubmit(submitFormAction),
+    [handleSubmit, submitFormAction]
   );
 
   return (

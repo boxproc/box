@@ -23,8 +23,8 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => userEnterAuthKey(data)),
-    [handleSubmit]
+    handleSubmit(userEnterAuthKey),
+    [handleSubmit, userEnterAuthKey]
   );
 
   return (
