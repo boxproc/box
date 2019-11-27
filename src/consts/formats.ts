@@ -1,6 +1,6 @@
 export enum dateFormat {
   DATE = 'DD/MM/YYYY',
-  DATE_TIME = 'DD/MM/YYYY hh:mm:ss',
+  DATE_TIME = 'DD/MM/YYYY HH:mm:ss',
 }
 
 export enum maskFormat {

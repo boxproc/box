@@ -30,6 +30,11 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [closeModal]
   );
 
+  const handleGetTransaction = React.useCallback(
+    () => filterLedgerTransactionsById({ transaction_id: transactionId }),
+    [transactionId, filterLedgerTransactionsById]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -46,7 +51,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         cancelText="Close"
         focusedButton="ok"
         rightPosition={true}
-        onOk={() => filterLedgerTransactionsById({ transaction_id: transactionId })}
+        onOk={handleGetTransaction}
         onCancel={handleOnCancel}
       />
     </Modal>
