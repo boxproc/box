@@ -132,7 +132,7 @@ const Filter: React.FC<FilterAllProps> = ({
           return hasInstitution && (hasId || hasLastName);
 
         case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
-          return hasInstitution && (hasId || hasProductName || hasCustomerId);
+          return hasInstitution && (hasId || hasProductName || hasCustomerId || hasAccountId);
 
         default:
           return valuesCount > 0;

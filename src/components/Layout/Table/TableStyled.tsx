@@ -32,7 +32,7 @@ export const TableStyled = styled.div<TableStyledProps>`
 
   .ReactTable .rt-thead .rt-resizable-header,
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
-    border-right: 1px solid ${({ theme }) => theme.colors.lighterGray} !important;
+    border-right: 1px solid ${({ theme }) => theme.colors.lighterGray};
     min-width: 80px;
   }
 
@@ -83,10 +83,6 @@ export const TableStyled = styled.div<TableStyledProps>`
     border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
   }
 
-  // .ReactTable .rt-tbody .rt-tr-group:last-child {
-  //   border-bottom: 0;
-  // }
-
   .ReactTable .rt-tr-group:hover,
   .ReactTable .rt-tbody .rt-tr-group:last-child:hover {
     cursor: default;
@@ -129,16 +125,19 @@ export const TableStyled = styled.div<TableStyledProps>`
   `}
 
 
-  .ReactTable .rt-thead .rt-th.-sort-desc, .rt-thead .rt-td.-sort-desc {
-    box-shadow: none !important;
+  .ReactTable .rt-thead .rt-th.-sort-desc,
+  .ReactTable .rt-thead .rt-td.-sort-desc {
+    box-shadow: none;
   }
 
-  .ReactTable  .rt-thead .rt-th.-sort-asc, .rt-thead .rt-td.-sort-asc {
-    box-shadow: none !important;
+  .ReactTable .rt-thead .rt-th.-sort-asc,
+  .ReactTable .rt-thead .rt-td.-sort-asc {
+    box-shadow: none;
   }
 
-  .ReactTable  .rt-th, .rt-td {
-    border: none !important;
+  .ReactTable .rt-tbody .rt-th,
+  .ReactTable .rt-tbody .rt-td {
+    border-right: none;
   }
 
   .ReactTable .rt-tbody .rt-td {

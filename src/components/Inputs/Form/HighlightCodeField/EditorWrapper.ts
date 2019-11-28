@@ -30,10 +30,7 @@ export const EditorWrapper = styled.div<WrapperProps>`
   textarea {
     background-color: ${({ theme }) => theme.colors.white} !important;
 
-    &::-moz-selection {
-      background-color: ${({ theme }) => theme.colors.lightGray};
-    }
-
+    &::-moz-selection,
     &::selection {
       background-color: ${({ theme }) => theme.colors.lightGray};
     }
