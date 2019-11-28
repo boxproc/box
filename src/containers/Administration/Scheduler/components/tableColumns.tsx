@@ -44,7 +44,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',

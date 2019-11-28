@@ -32,7 +32,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Event Date Time" />,
     accessor: 'eventDatetime',

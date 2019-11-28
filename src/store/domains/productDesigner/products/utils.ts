@@ -84,7 +84,7 @@ export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepar
   const { glAccAssets, glAccLiabilities, glAccProfit, glAccLoss, id } = data;
 
   return {
-    id,
+    product_id: id,
     gl_acc_assets: glAccAssets,
     gl_acc_liabilities: glAccLiabilities,
     gl_acc_profit: glAccProfit,

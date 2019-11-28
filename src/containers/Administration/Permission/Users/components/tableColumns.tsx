@@ -43,7 +43,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'userInstitution',
@@ -65,7 +65,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
@@ -76,21 +76,21 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="2FA Required" />,
     accessor: 'requires2faFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     sortable: true,
     Header: <TableHeader title="Change Profile Allowed" />,
     accessor: 'changeProfileAllowedFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     sortable: true,
     Header: <TableHeader title="Password Entry Counter" />,
     accessor: 'passwordEntryCounter',

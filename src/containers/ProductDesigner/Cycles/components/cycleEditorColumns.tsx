@@ -22,7 +22,7 @@ export const cycleEditorColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',

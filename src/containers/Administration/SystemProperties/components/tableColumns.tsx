@@ -10,7 +10,7 @@ type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[
 
 export const tableColumns = [
   {
-    maxWidth: 300,
+    maxWidth: 400,
     sortable: true,
     Header: <TableHeader title="Property Name" />,
     accessor: 'id',
@@ -37,7 +37,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Last Datetime" />,
     accessor: 'lastDatetime',
@@ -49,7 +49,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 65,
     sortable: true,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',

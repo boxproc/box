@@ -22,7 +22,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',

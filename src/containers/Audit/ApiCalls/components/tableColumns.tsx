@@ -22,7 +22,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
@@ -45,7 +45,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Endpoint Name" />,
     accessor: 'endpointName',
@@ -56,7 +56,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Event Date Time" />,
     accessor: 'eventDatetime',
@@ -68,7 +68,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="API Name" />,
     accessor: 'apiName',

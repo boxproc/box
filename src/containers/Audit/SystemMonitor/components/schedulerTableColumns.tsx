@@ -14,7 +14,7 @@ type TCell<T extends keyof SystemMonitorSchedulerItem> =
 
 export const schedulerTableColumns = (getLogData: HandleGetLogData, name: string) => [
   {
-    maxWidth: 125,
+    maxWidth: 130,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',
     Cell: (props: TCell<'institutionName'>) => (

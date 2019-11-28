@@ -52,7 +52,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px" >
+      <Box width={[2 / 7]} p="10px" >
         <Field
           id="scheduler"
           name="scheduler"

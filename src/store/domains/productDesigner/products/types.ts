@@ -281,7 +281,7 @@ export interface ServicesItemsPrepared {
 }
 
 export interface GeneralLedgerItem {
-  id: number;
+  product_id: number;
   gl_acc_assets: string;
   gl_acc_liabilities: string;
   gl_acc_profit: string;

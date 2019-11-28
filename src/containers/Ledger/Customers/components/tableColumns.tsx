@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
@@ -67,12 +67,13 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Date of Birth" />,
     accessor: 'dateOfBirth',
     Cell: (props: TCell<'dateOfBirth'>) => (
       <TableCell
+        isDate={true}
         value={props.value}
       />
     ),

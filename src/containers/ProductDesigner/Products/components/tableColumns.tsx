@@ -22,7 +22,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
@@ -44,6 +44,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
@@ -54,7 +55,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
@@ -65,7 +66,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Product Type" />,
     accessor: 'productType',
@@ -87,7 +88,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Currency code" />,
     accessor: 'currencyCode',
@@ -99,7 +100,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDay',
@@ -111,7 +112,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Default Statement Cycle" />,
     accessor: 'defaultStatementCycle',
@@ -122,7 +123,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 65,
     sortable: true,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',

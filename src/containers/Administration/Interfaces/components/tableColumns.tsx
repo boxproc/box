@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 130,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
@@ -78,7 +78,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Type" />,
     accessor: 'type',
@@ -89,7 +89,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Protocol Type" />,
     accessor: 'protocolType',
@@ -100,6 +100,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Connection Attributes" />,
     accessor: 'connectionAttributes',
@@ -110,6 +111,7 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Log File Location" />,
     accessor: 'logFileLocation',
