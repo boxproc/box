@@ -15,6 +15,7 @@ import {
   LedgerAccountsActionTypes,
   selectCyclesDescriptionsOptions,
   selectInstitutionProducts,
+  selectInstitutionsOptions,
   selectLedgerCurrentAccountProductType,
 } from 'store/domains';
 
@@ -30,6 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
   accountProductType: selectLedgerCurrentAccountProductType(state),
   institutionProducts: selectInstitutionProducts(state),
   cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
+  institutionsOptions: selectInstitutionsOptions(state),
   currentProduct: formSelector(
     state,
     'product'

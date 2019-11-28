@@ -2,11 +2,8 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { SelectValues } from 'types';
 
-export interface LedgerStatementId {
+export interface LedgerStatementItem {
   id: number;
-}
-
-export interface LedgerStatementItem extends LedgerStatementId {
   account_id: number;
   first_transaction_id: number;
   last_transaction_id: number;
@@ -15,7 +12,8 @@ export interface LedgerStatementItem extends LedgerStatementId {
   balance_close: number;
   minimum_amount_due_repayment: number;
   statement_cycle_id: number | string;
-  cycle_execution_history_id: number;
+  repayment_status: string;
+  date_of_last_update: string;
   account_alias: string;
   institution_id: string | number;
   product_name: string;
@@ -24,7 +22,27 @@ export interface LedgerStatementItem extends LedgerStatementId {
   statement_cycle_description: string;
 }
 
-export interface LedgerStatementTransactionsItem extends LedgerStatementTransactionsId {
+export interface LedgerStatementItemPrepared {
+  id: number;
+  accountId: number;
+  firstTransactionId: number;
+  lastTransactionId: number;
+  statementDate: string;
+  balanceOpen: string | number;
+  balanceClose: string | number;
+  minimumAmountDueRepayment: string | number;
+  repaymentStatus: string;
+  dateOfLastUpdate: string;
+  statementCycleName: string;
+  accountAlias: string;
+  institutionId: string | number;
+  productName: string;
+  firstName: string;
+  lastName: string;
+}
+
+export interface LedgerStatementTransactionsItem {
+  id: number;
   transaction_datetime: string;
   amount: number;
   amount_in_original_currency: number;
@@ -36,11 +54,9 @@ export interface LedgerStatementTransactionsItem extends LedgerStatementTransact
   apr_id: number;
   apr_rate: number;
 }
-export interface LedgerStatementTransactionsId {
-  id: number;
-}
 
-export interface LedgerStatementTransactionsItemPrepared extends LedgerStatementTransactionsId {
+export interface LedgerStatementTransactionsItemPrepared {
+  id: number;
   transactionDatetime: number | string;
   amount: number | string;
   amountInOriginalCurrency: number | string;
@@ -54,10 +70,52 @@ export interface LedgerStatementTransactionsItemPrepared extends LedgerStatement
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
-  firstTransactionId:  number | string;
-  lastTransactionId:  number | string;
-  id:  number ;
+  id: number;
+  firstTransactionId: number | string;
+  lastTransactionId: number | string;
 }
+
+export interface LedgerStatementFeeItem {
+  product_apr_id: number;
+  accrued_interest: number;
+}
+
+export interface LedgerStatementFeeItemPrepared {
+  productAprId: number;
+  accruedInterest: string;
+}
+
+export interface LedgerStatementAprItem {
+  product_fee_id: number;
+  accrued_fee: number;
+}
+
+export interface LedgerStatementAprItemPrepared {
+  productFeeId: number;
+  accruedFee: string;
+}
+
+export interface LedgerStatementRewardsItem {
+  product_reward_id: number;
+  accrued_reward: number;
+}
+
+export interface LedgerStatementRewardsItemPrepared {
+  productRewardId: number;
+  accruedReward: string;
+}
+
+export type LedgerAccountStatementItem =
+  Partial<LedgerStatementItem>
+  & LedgerStatementAprItem
+  & LedgerStatementFeeItem
+  & LedgerStatementRewardsItem;
+
+export type LedgerAccountStatementItemPrepared =
+  Partial<LedgerStatementItemPrepared>
+  & LedgerStatementAprItemPrepared
+  & LedgerStatementFeeItemPrepared
+  & LedgerStatementRewardsItemPrepared;
 
 export interface LedgerStatementTransactionsItems {
   transactions: Array<LedgerStatementTransactionsItem>;
@@ -67,21 +125,8 @@ export interface LedgerStatementItems {
   statements: Array<LedgerStatementItem>;
 }
 
-export interface LedgerStatementItemPrepared extends LedgerStatementId {
-  accountId: number;
-  firstTransactionId: number;
-  lastTransactionId: number;
-  statementDate: string;
-  balanceOpen: string | number;
-  balanceClose: string | number;
-  minimumAmountDueRepayment: string | number;
-  statementCycleName: string;
-  cycleExecutionHistoryId: number;
-  accountAlias: string;
-  institutionId: string | number;
-  productName: string;
-  firstName: string;
-  lastName: string;
+export interface LedgerAccountStatementItems {
+  statements: Array<LedgerAccountStatementItem>;
 }
 
 export interface LedgerStatementsFilter {
@@ -109,4 +154,5 @@ export interface LedgerStatementsFilterPrepared {
 export interface LedgerStatementsState {
   statements: ImmutableArray<LedgerStatementItem>;
   transactions: ImmutableArray<LedgerStatementTransactionsItem>;
+  accountStatements: ImmutableArray<LedgerAccountStatementItem>;
 }

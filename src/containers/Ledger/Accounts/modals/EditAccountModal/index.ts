@@ -9,7 +9,6 @@ import {
   selectInstitutionsOptions,
   selectLedgerCurrentAccount,
   selectLedgerCurrentAccountAlias,
-  selectLedgerLastStatement,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -20,7 +19,6 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerCurrentAccountAlias: selectLedgerCurrentAccountAlias(state),
   ledgerCurrentAccount: selectLedgerCurrentAccount(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  ledgerLastStatement: selectLedgerLastStatement(state),
 });
 
 export default connect(

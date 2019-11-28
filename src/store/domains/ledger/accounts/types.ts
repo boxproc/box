@@ -2,7 +2,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 import { SelectValues } from 'types';
-import { LedgerStatementItem } from '../statements';
 
 export interface LedgerAccountId {
   id: number;
@@ -153,5 +152,4 @@ export interface LedgerAccountCardsItems {
 export interface LedgerAccountsState {
   accounts: ImmutableArray<LedgerAccountItem>;
   cards: ImmutableArray<LedgerAccountsCardsItem>;
-  lastStatement: Partial<LedgerStatementItem>;
 }

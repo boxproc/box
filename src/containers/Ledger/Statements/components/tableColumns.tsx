@@ -176,12 +176,25 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Cycle Execution History" />,
-    accessor: 'cycleExecutionHistoryId',
-    Cell: (props: TCell<'cycleExecutionHistoryId'>) => (
+    Header: <TableHeader title="Repayment Status" />,
+    accessor: 'repaymentStatus',
+    Cell: (props: TCell<'repaymentStatus'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Date of Last Update" />,
+    accessor: 'dateOfLastUpdate',
+    Cell: (props: TCell<'dateOfLastUpdate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+        isDate={true}
       />
     ),
   },

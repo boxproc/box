@@ -36,8 +36,8 @@ export type HandleAddCyclesEditor = (values: Partial<CyclesEditorEditableItem>) 
 export type DeleteCycleEditor = (id: number) => DeleteCycleEditorAction;
 export type HandleDeleteCycleEditor = () => Thunk<void>;
 
-export type UpdateCyclesEditor = (propValues: Partial<CyclesEditorItem>) => UpdateCycleEditorAction;
-export type HandleUpdateCyclesEditor = (propValues: Partial<CyclesEditorEditableItem>) =>
+export type UpdateCyclesEditor = (values: Partial<CyclesEditorItem>) => UpdateCycleEditorAction;
+export type HandleUpdateCyclesEditor = (values: Partial<CyclesEditorEditableItem>) =>
   Thunk<void>;
 
 export type FilterCycles = (params: CycleFilterPrepared) => FilterCyclesAction;

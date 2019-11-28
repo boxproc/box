@@ -11,6 +11,7 @@ import {
   ActionTypeKeys,
   FilterLedgerStatementsAction,
   FilterLedgerStatementsByIdAction,
+  GetLedgerAccountStatementsAction,
   GetLedgerStatementTransactionsAction
 } from './actionTypes';
 import * as api from './api';
@@ -18,7 +19,7 @@ import { selectLedgerCurrentStatementTransaction } from './selectors';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
 import { preparedFilterToSend } from './utils';
 
-export type FilterLedgerStatements = (params: Partial<LedgerStatementsFilterPrepared>) =>
+export type FilterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
   FilterLedgerStatementsAction;
 export type HandleFilterLedgerStatements = () => Thunk<void>;
 
@@ -28,6 +29,9 @@ export type HandleGetLedgerStatementTransactions = () => Thunk<void>;
 
 export type FilterLedgerStatementsById = (id: LedgerId) => FilterLedgerStatementsByIdAction;
 export type HandleFilterLedgerStatementsById = (id: LedgerId) => Thunk<void>;
+
+export type GetLedgerAccountStatements = (accountId: number) => GetLedgerAccountStatementsAction;
+export type HandleGetLedgerAccountStatements = (accountId: number) => Thunk<void>;
 
 export type ResetStatements = () => void;
 
@@ -46,6 +50,11 @@ export const filterLedgerStatementsById: FilterLedgerStatementsById = data => ({
   payload: api.filterLedgerStatementsById(data),
 });
 
+export const getLedgerAccountStatements: GetLedgerAccountStatements = accountId => ({
+  type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS,
+  payload: api.getLedgerAccountStatements(accountId),
+});
+
 export const resetStatements: ResetStatements = () => ({
   type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
 });
@@ -56,10 +65,10 @@ export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = preparedFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterLedgerStatements(preparedValues));
+        if (preparedData) {
+          await dispatch(filterLedgerStatements(preparedData));
         }
       },
       dispatch
@@ -71,9 +80,9 @@ export const handleGetLedgerStatementTransactions: HandleGetLedgerStatementTrans
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const values = selectLedgerCurrentStatementTransaction(state);
+        const data = selectLedgerCurrentStatementTransaction(state);
 
-        await dispatch(getLedgerStatementTransactions(values));
+        await dispatch(getLedgerStatementTransactions(data));
       },
       dispatch
     );
@@ -87,6 +96,16 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`));
         dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetLedgerAccountStatements: HandleGetLedgerAccountStatements = accountId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getLedgerAccountStatements(accountId));
       },
       dispatch
     );

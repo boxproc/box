@@ -4,7 +4,11 @@ import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
-import { prepareTransactionsValuesToRender, prepareValuesToRender } from './utils';
+import {
+  prepareAccountStatementsDataToRender,
+  prepareDataToRender,
+  prepareTransactionsDataToRender,
+} from './utils';
 
 export const selectDefaultLedgerStatements = (state: StoreState) =>
   state.ledger.statements.statements;
@@ -19,7 +23,7 @@ export const selectLedgerStatements = createSelector(
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return {
-      ...prepareValuesToRender(item),
+      ...prepareDataToRender(item),
       institutionId: institution && institution.label,
     };
   })
@@ -29,7 +33,7 @@ export const selectLedgerStatementTransactions = createSelector(
   selectDefaultLedgerStatementTransactions,
   items => items && items.asMutable().map(item => {
     return {
-      ...prepareTransactionsValuesToRender(item),
+      ...prepareTransactionsDataToRender(item),
     };
   })
 );
@@ -56,4 +60,14 @@ export const selectLedgerCurrentStatementTransaction = createSelector(
     };
     return data;
   }
+);
+
+export const selectDefaultLedgerAccountStatements = (state: StoreState) =>
+  state.ledger.statements.accountStatements;
+
+export const selectLedgerAccountStatements = createSelector(
+  selectDefaultLedgerAccountStatements,
+  statements => statements && statements.asMutable().map(statement =>
+    prepareAccountStatementsDataToRender(statement)
+  )
 );

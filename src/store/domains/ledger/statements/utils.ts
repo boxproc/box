@@ -1,56 +1,99 @@
+import { repaymentStatusTypesOptions } from 'consts';
+
 import {
+  LedgerAccountStatementItem,
   LedgerStatementItem,
   LedgerStatementsFilter,
   LedgerStatementTransactionsItem
 } from './types';
 
-export const prepareValuesToRender = (values: Partial<LedgerStatementItem>) => {
-  if (!values) {
+export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
+  if (!data) {
     return null;
   }
 
+  const {
+    id,
+    account_id,
+    first_transaction_id,
+    last_transaction_id,
+    statement_date,
+    balance_open,
+    balance_close,
+    minimum_amount_due_repayment,
+    statement_cycle_description,
+    repayment_status,
+    date_of_last_update,
+    account_alias,
+    product_name,
+    first_name,
+    last_name,
+  } = data;
+
+  const repaymentStatus = repaymentStatusTypesOptions
+    .find(status => status.value === repayment_status);
+
   return {
-    id: values.id,
-    accountId: values.account_id,
-    firstTransactionId: values.first_transaction_id,
-    lastTransactionId: values.last_transaction_id,
-    statementDate: values.statement_date,
-    balanceOpen: values.balance_open && values.balance_open.toFixed(2),
-    balanceClose: values.balance_close && values.balance_close.toFixed(2),
-    minimumAmountDueRepayment: values.minimum_amount_due_repayment
-      && values.minimum_amount_due_repayment.toFixed(2),
-    statementCycleName: values.statement_cycle_description,
-    cycleExecutionHistoryId: values.cycle_execution_history_id,
-    accountAlias: values.account_alias,
-    productName: values.product_name,
-    firstName: values.first_name,
-    lastName: values.last_name,
+    id,
+    accountId: account_id,
+    firstTransactionId: first_transaction_id,
+    lastTransactionId: last_transaction_id,
+    statementDate: statement_date,
+    balanceOpen: balance_open && balance_open.toFixed(2),
+    balanceClose: balance_close && balance_close.toFixed(2),
+    minimumAmountDueRepayment: minimum_amount_due_repayment
+      && minimum_amount_due_repayment.toFixed(2),
+    statementCycleName: statement_cycle_description,
+    repaymentStatus: repaymentStatus && repaymentStatus.label,
+    dateOfLastUpdate: date_of_last_update,
+    accountAlias: account_alias,
+    productName: product_name,
+    firstName: first_name,
+    lastName: last_name,
   };
 };
 
-export const prepareTransactionsValuesToRender =
-  (values: Partial<LedgerStatementTransactionsItem>) => {
-    if (!values) {
-      return null;
-    }
+export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTransactionsItem>) => {
+  if (!data) {
+    return null;
+  }
 
-    return {
-      id: values.id,
-      transactionDatetime: values.transaction_datetime,
-      amount: values.amount.toFixed(2),
-      amountInOriginalCurrency: values.amount_in_original_currency.toFixed(2),
-      balanceAvailableBefore: values.balance_available_before.toFixed(2),
-      balanceAvailableAfter: values.balance_available_after.toFixed(2),
-      balanceSettledBefore: values.balance_settled_before.toFixed(2),
-      balanceSettledAfter: values.balance_settled_after.toFixed(2),
-      description: values.description,
-      aprId: values.apr_id,
-      aprRate: values.apr_rate && values.apr_rate.toFixed(2),
-    };
+  const {
+    id,
+    transaction_datetime,
+    amount,
+    amount_in_original_currency,
+    balance_available_before,
+    balance_available_after,
+    balance_settled_before,
+    balance_settled_after,
+    description,
+    apr_id,
+    apr_rate,
+  } = data;
+
+  return {
+    id,
+    transactionDatetime: transaction_datetime,
+    amount: amount && amount.toFixed(2),
+    amountInOriginalCurrency: amount_in_original_currency
+      && amount_in_original_currency.toFixed(2),
+    balanceAvailableBefore: balance_available_before
+      && balance_available_before.toFixed(2),
+    balanceAvailableAfter: balance_available_after
+      && balance_available_after.toFixed(2),
+    balanceSettledBefore: balance_settled_before
+      && balance_settled_before.toFixed(2),
+    balanceSettledAfter: balance_settled_after
+      && balance_settled_after.toFixed(2),
+    description,
+    aprId: apr_id,
+    aprRate: apr_rate && apr_rate.toFixed(2),
   };
+};
 
-export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) => {
-  if (!params) {
+export const preparedFilterToSend = (data: Partial<LedgerStatementsFilter>) => {
+  if (!data) {
     return null;
   }
 
@@ -63,7 +106,7 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     product,
     statementsDateFrom,
     statementsDateTo,
-  } = params;
+  } = data;
 
   return {
     account_id: accountId ? accountId : null,
@@ -74,5 +117,30 @@ export const preparedFilterToSend = (params: Partial<LedgerStatementsFilter>) =>
     account_alias: accountAlias ? accountAlias : null,
     date_from: statementsDateFrom ? statementsDateFrom : null,
     date_to: statementsDateTo ? statementsDateTo : null,
+  };
+};
+
+export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatementItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_apr_id,
+    accrued_interest,
+    product_fee_id,
+    accrued_fee,
+    product_reward_id,
+    accrued_reward,
+  } = data;
+
+  return {
+    ...prepareDataToRender(data),
+    productAprId: product_apr_id,
+    accruedInterest: accrued_interest && accrued_interest.toFixed(2),
+    productFeeId: product_fee_id,
+    accruedFee: accrued_fee && accrued_fee.toFixed(2),
+    productRewardId: product_reward_id,
+    accruedReward: accrued_reward && accrued_reward.toFixed(2),
   };
 };

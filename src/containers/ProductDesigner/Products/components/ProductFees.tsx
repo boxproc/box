@@ -58,7 +58,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyAmount && [formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={!isOnlyAmount ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
       <Box width="140px" p="10px">
@@ -71,7 +71,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyRate && [formErrorUtil.required, formErrorUtil.isNumber]}
+          validate={!isOnlyRate ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
       <Box width="90px" pb="20px">

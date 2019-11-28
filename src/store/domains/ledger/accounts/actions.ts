@@ -18,7 +18,6 @@ import {
   FilterLedgerAccountsAction,
   FilterLedgerAccountsByIdAction,
   GetLedgerAccountCardsAction,
-  GetLedgerLastStatementAction,
   OrderLedgerAccountCardAction,
   UpdateLedgerAccountAction,
 } from './actionTypes';
@@ -28,7 +27,7 @@ import {
   LedgerAccountItemDetailsPrepared,
   LedgerAccountsFilterPrepared,
 } from './types';
-import { preparedFilterToSend, preparedValuesToSend } from './utils';
+import { prepareDataToSend, preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -41,20 +40,17 @@ export type HandleGetLedgerAccountCards = (accountId: number) => Thunk<void>;
 export type OrderLedgerAccountCard = (accountId: number) => OrderLedgerAccountCardAction;
 export type HandleOrderLedgerAccountCard = (accountId: number) => Thunk<void>;
 
-export type AddLedgerAccount = (values: Partial<LedgerAccountItem>) => AddLedgerAccountAction;
-export type HandleAddLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
+export type AddLedgerAccount = (data: Partial<LedgerAccountItem>) => AddLedgerAccountAction;
+export type HandleAddLedgerAccount = (data: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type UpdateLedgerAccount = (values: Partial<LedgerAccountItem>) => UpdateLedgerAccountAction;
-export type HandleUpdateLedgerAccount = (values: Partial<LedgerAccountItemDetailsPrepared>) =>
+export type UpdateLedgerAccount = (data: Partial<LedgerAccountItem>) => UpdateLedgerAccountAction;
+export type HandleUpdateLedgerAccount = (data: Partial<LedgerAccountItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterLedgerAccounts = (params: Partial<LedgerAccountsFilterPrepared>) =>
+export type FilterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
   FilterLedgerAccountsAction;
 export type HandleFilterLedgerAccounts = () => Thunk<void>;
-
-export type GetLedgerLastStatement = (accountId: number) => GetLedgerLastStatementAction;
-export type HandleGetLedgerLastStatement = (accountId: number) => Thunk<void>;
 
 export type AddProductOverride = (accountId: number) => AddProductOverrideAction;
 export type HandleAddProductOverride = (data?: { withOpenProductModal?: boolean }) => Thunk<void>;
@@ -69,9 +65,9 @@ export const getLedgerAccountCards: GetLedgerAccountCards = accountId => ({
   payload: api.getLedgerAccountCards(accountId),
 });
 
-export const addLedgerAccount: AddLedgerAccount = values => ({
+export const addLedgerAccount: AddLedgerAccount = data => ({
   type: ActionTypeKeys.ADD_LEDGER_ACCOUNT,
-  payload: api.addLedgerAccount(values),
+  payload: api.addLedgerAccount(data),
 });
 
 export const orderLedgerAccountCard: OrderLedgerAccountCard = accountId => ({
@@ -79,19 +75,14 @@ export const orderLedgerAccountCard: OrderLedgerAccountCard = accountId => ({
   payload: api.orderLedgerAccountCard(accountId),
 });
 
-export const updateLedgerAccounts: UpdateLedgerAccount = values => ({
+export const updateLedgerAccounts: UpdateLedgerAccount = data => ({
   type: ActionTypeKeys.UPDATE_LEDGER_ACCOUNT,
-  payload: api.updateLedgerAccount(values),
+  payload: api.updateLedgerAccount(data),
 });
 
 export const filterLedgerAccounts: FilterLedgerAccounts = filter => ({
   type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS,
   payload: api.filterLedgerAccounts(filter),
-});
-
-export const getLedgerLastStatement: GetLedgerLastStatement = accountId => ({
-  type: ActionTypeKeys.GET_LEDGER_LAST_STATEMENT,
-  payload: api.getLedgerLastStatement(accountId),
 });
 
 export const addProductOverride: AddProductOverride = accountId => ({
@@ -114,10 +105,10 @@ export const handleFilterLedgerAccounts: HandleFilterLedgerAccounts = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = preparedFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterLedgerAccounts(preparedValues));
+        if (preparedData) {
+          await dispatch(filterLedgerAccounts(preparedData));
         }
       },
       dispatch
@@ -134,13 +125,13 @@ export const handleGetLedgerAccountCards: HandleGetLedgerAccountCards = accountI
     );
   };
 
-export const handleUpdateLedgerAccount: HandleUpdateLedgerAccount = values =>
+export const handleUpdateLedgerAccount: HandleUpdateLedgerAccount = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedData = prepareDataToSend(data);
 
-        await dispatch(updateLedgerAccounts(preparedValues));
+        await dispatch(updateLedgerAccounts(preparedData));
         await dispatch(handleFilterLedgerAccounts());
       },
       dispatch
@@ -161,30 +152,20 @@ export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accoun
     );
   };
 
-export const handleAddLedgerAccount: HandleAddLedgerAccount = values =>
+export const handleAddLedgerAccount: HandleAddLedgerAccount = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
-        await dispatch(addLedgerAccount(preparedValues));
+        await dispatch(addLedgerAccount(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterLedgerAccounts());
         }
-      },
-      dispatch
-    );
-  };
-
-export const handleGetLedgerLastStatement: HandleGetLedgerLastStatement = accountId =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(getLedgerLastStatement(accountId));
       },
       dispatch
     );

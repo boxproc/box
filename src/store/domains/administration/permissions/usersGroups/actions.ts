@@ -75,9 +75,9 @@ export type AddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItem
 export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemEditable>) =>
   Thunk<void>;
 
-export type UpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoPlainResp>) =>
+export type UpdateAdminUsersGroup = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
   UpdateAdminUsersGroupAction;
-export type HandleUpdateAdminUsersGroup = (propValues: Partial<AdminUsersGroupInfoEditable>) =>
+export type HandleUpdateAdminUsersGroup = (values: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
 export type ResetUsersGroup = () => void;

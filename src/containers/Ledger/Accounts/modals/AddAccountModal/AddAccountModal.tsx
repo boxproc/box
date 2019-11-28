@@ -36,7 +36,6 @@ const AddAccountModal: React.FC<AddAccountModalProps> = ({
       withCloseConfirmation={isFormDirty}
     >
       <AccountForm
-        institutionsOptions={institutionsOptions}
         initialValues={{
           institutionId: institutionsOptions && institutionsOptions[0],
           ...accountInitialFormValues,

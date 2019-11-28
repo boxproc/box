@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import {
+  Button,
   Table,
   TableCell,
   TableHeader,
@@ -70,9 +71,13 @@ const data = [
 
 type TCell<T extends keyof RepaymentStatusItem> = TableCellType<RepaymentStatusItem[T]>;
 
-interface RepaymentStatusTableProps { }
+interface RepaymentStatusTableProps {
+  onCancel: () => void;
+}
 
-const RepaymentStatusTable: React.FC<RepaymentStatusTableProps> = () => {
+const RepaymentStatusTable: React.FC<RepaymentStatusTableProps> = ({
+  onCancel,
+}) => {
   const columns = [
     {
       maxWidth: 100,
@@ -167,13 +172,21 @@ const RepaymentStatusTable: React.FC<RepaymentStatusTableProps> = () => {
   ];
 
   return (
-    <Box pb="10px">
+    <Box mt="20px">
       <Table
         data={data}
         columns={columns}
         pageSize={5}
         isSmaller={true}
       />
+      <Flex justifyContent="flex-end">
+        <Box pt="10px">
+          <Button
+            text="close"
+            onClick={onCancel}
+          />
+        </Box>
+      </Flex>
     </Box>
   );
 };

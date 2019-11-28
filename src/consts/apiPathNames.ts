@@ -115,9 +115,8 @@ export enum lenderAccountsPathNames {
   GET = '/ui/ledger/accounts/get',
   CREATE = '/ui/ledger/accounts/create',
   UPDATE = '/ui/ledger/accounts/update',
-  GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
   ORDER_ACCOUNT_CARD = '/ui/ledger/cards/order_card',
-  GET_LAST_STATEMENT = '/ui/ledger/accounts/get_last_statement',
+  GET_ACCOUNT_CARDS = '/ui/ledger/cards/get_account_cards',
   CREATE_PRODUCT_OVERRIDE = 'ui/product_designer/products/override/create_products_override',
 }
 
@@ -137,6 +136,7 @@ export enum lenderCustomersPathNames {
 export enum lenderStatementsPathNames {
   GET = '/ui/ledger/statements/get',
   GET_TRANSACTIONS = '/ui/ledger/statements/get_transactions',
+  GET_ACCOUNT_STATEMENTS = '/ui/ledger/statements/get_account_statements',
 }
 
 export enum lenderTransactionsPathNames {

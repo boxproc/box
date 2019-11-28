@@ -4,4 +4,3 @@ export * from './Layout';
 export * from './Navigation';
 export * from './Text';
 export * from './Utils';
-export * from './FormTemplates';

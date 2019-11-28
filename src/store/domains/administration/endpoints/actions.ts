@@ -31,9 +31,8 @@ export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPr
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
 export type HandleDeleteAdminEndpoint = () => Thunk<void>;
 
-export type UpdateAdminEndpoint = (propValues: Partial<AdminEndpointItem>) =>
-  UpdateAdminEndpointAction;
-export type HandleUpdateAdminEndpoint = (propValues: Partial<AdminEndpointItemDetailsPrepared>) =>
+export type UpdateAdminEndpoint = (values: Partial<AdminEndpointItem>) => UpdateAdminEndpointAction;
+export type HandleUpdateAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterPrepared>) =>

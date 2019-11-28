@@ -6,8 +6,8 @@ import {
   LedgerAccountsFilter,
 } from './types';
 
-export const preparedFilterToSend = (params: Partial<LedgerAccountsFilter>) => {
-  if (!params) {
+export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
+  if (!data) {
     return null;
   }
 
@@ -18,7 +18,7 @@ export const preparedFilterToSend = (params: Partial<LedgerAccountsFilter>) => {
     lastName,
     accountAlias,
     product,
-  } = params;
+  } = data;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
@@ -30,8 +30,8 @@ export const preparedFilterToSend = (params: Partial<LedgerAccountsFilter>) => {
   };
 };
 
-export const preparedValuesToSend = (values: Partial<LedgerAccountItemDetailsPrepared>) => {
-  if (!values) {
+export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared>) => {
+  if (!data) {
     return null;
   }
 
@@ -74,7 +74,7 @@ export const preparedValuesToSend = (values: Partial<LedgerAccountItemDetailsPre
     numberOfTimesOverdue5Cycles,
     numberOfTimesOverdue6Cycles,
     numberOfTimesOverdue7Cycles,
-  } = values;
+  } = data;
 
   return {
     id,
@@ -119,8 +119,8 @@ export const preparedValuesToSend = (values: Partial<LedgerAccountItemDetailsPre
   };
 };
 
-export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
-  if (!values) {
+export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
+  if (!data) {
     return null;
   }
 
@@ -166,7 +166,7 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     number_of_times_overdue_5_cycle,
     number_of_times_overdue_6_cycle,
     number_of_times_overdue_7_cycle,
-  } = values;
+  } = data;
 
   const currentStatus = statusTypesOptions.find(el => el.value === status);
 
@@ -215,12 +215,12 @@ export const preparedValuesToRender = (values: Partial<LedgerAccountItem>) => {
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
   };
 };
-export const preparedAccountCardsToRender = (values: Partial<LedgerAccountsCardsItem>) => {
-  if (!values) {
+export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsItem>) => {
+  if (!data) {
     return null;
   }
 
-  const { card_status_name, pan_alias, pan_masked, expiry_date } = values;
+  const { card_status_name, pan_alias, pan_masked, expiry_date } = data;
 
   return {
     cardStatus: card_status_name,
@@ -230,15 +230,15 @@ export const preparedAccountCardsToRender = (values: Partial<LedgerAccountsCards
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<LedgerAccountItem>) => {
-  if (!values) {
+export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => {
+  if (!data) {
     return null;
   }
 
-  const { status } = values;
+  const { status } = data;
 
   return {
-    ...preparedValuesToRender(values),
+    ...prepareDataToRender(data),
     status: statusTypesOptions.find(el => el.value === status),
   };
 };

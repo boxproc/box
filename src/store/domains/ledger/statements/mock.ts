@@ -1,4 +1,4 @@
-import { LedgerStatementItems } from './types';
+import { LedgerAccountStatementItems, LedgerStatementItems } from './types';
 
 export const ledgerStatementsItems: LedgerStatementItems = {
   statements: [
@@ -12,13 +12,14 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       balance_close: 1,
       minimum_amount_due_repayment: 1,
       statement_cycle_id: 1,
-      cycle_execution_history_id: 1,
+      repayment_status: 'R',
+      date_of_last_update: '07/10/2019',
       account_alias: '0001',
       institution_id: 1,
       product_name: 'Test product name',
       first_name: 'John',
       last_name: 'Jones',
-      statement_cycle_description: '',
+      statement_cycle_description: 'Test',
     },
     {
       id: 2,
@@ -30,13 +31,55 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       balance_close: 2,
       minimum_amount_due_repayment: 2,
       statement_cycle_id: 2,
-      cycle_execution_history_id: 2,
+      repayment_status: 'R',
+      date_of_last_update: '07/10/2019',
       account_alias: '0001',
       institution_id: 1,
       product_name: 'Test product name',
       first_name: 'John',
       last_name: 'Jones',
-      statement_cycle_description: '',
+      statement_cycle_description: 'Test',
+    },
+  ],
+};
+
+export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
+  statements: [
+    {
+      id: 1,
+      account_id: 1,
+      first_transaction_id: 2,
+      last_transaction_id: 23,
+      statement_date: '07/10/2019',
+      balance_open: 1,
+      balance_close: 1,
+      minimum_amount_due_repayment: 1,
+      repayment_status: 'R',
+      date_of_last_update: '07/10/2019',
+      product_apr_id: 1,
+      accrued_interest: 1.00,
+      product_fee_id: 1,
+      accrued_fee: 1.00,
+      product_reward_id: 1,
+      accrued_reward: 1.00,
+    },
+    {
+      id: 1,
+      account_id: 1,
+      first_transaction_id: 2,
+      last_transaction_id: 23,
+      statement_date: '07/10/2019',
+      balance_open: 1,
+      balance_close: 1,
+      minimum_amount_due_repayment: 1,
+      repayment_status: 'O',
+      date_of_last_update: '07/10/2019',
+      product_apr_id: 1,
+      accrued_interest: 1.00,
+      product_fee_id: 1,
+      accrued_fee: 1.00,
+      product_reward_id: 1,
+      accrued_reward: 1.00,
     },
   ],
 };

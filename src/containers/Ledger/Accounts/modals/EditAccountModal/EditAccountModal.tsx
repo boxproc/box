@@ -7,16 +7,12 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { LedgerAccountItemDetailsPrepared, LedgerStatementItemPrepared } from 'store/domains';
-
-import { SelectValues } from 'types';
+import { LedgerAccountItemDetailsPrepared } from 'store/domains';
 
 interface EditAccountModalProps extends WithModalProps {
   ledgerCurrentAccountAlias: string;
   ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
-  institutionsOptions: Array<SelectValues>;
   isFormDirty: boolean;
-  ledgerLastStatement: Partial<LedgerStatementItemPrepared>;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_ACCOUNT;
@@ -25,9 +21,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   ledgerCurrentAccountAlias,
   ledgerCurrentAccount,
-  institutionsOptions,
   isFormDirty,
-  ledgerLastStatement,
 }) => {
   const accountAlias = React.useMemo(
     () => ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '',
@@ -44,18 +38,14 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={`Account${accountAlias}`}
-      maxContainerWidth={980}
-      minContainerHeight={530}
+      maxContainerWidth={1300}
+      minContainerHeight={580}
       withCloseConfirmation={isFormDirty}
     >
       <AccountForm
         onCancel={handleOnCancel}
         mode="edit"
-        initialValues={{
-          ...ledgerCurrentAccount,
-          ...ledgerLastStatement,
-        }}
-        institutionsOptions={institutionsOptions}
+        initialValues={ledgerCurrentAccount}
       />
     </Modal>
   );

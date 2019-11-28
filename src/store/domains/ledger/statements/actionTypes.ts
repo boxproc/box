@@ -1,5 +1,9 @@
 import { ApiResponse } from 'types';
-import { LedgerStatementItems, LedgerStatementTransactionsItems } from './types';
+import {
+  LedgerAccountStatementItem,
+  LedgerStatementItems,
+  LedgerStatementTransactionsItems,
+} from './types';
 
 export enum ActionTypeKeys {
   FILTER_LEDGER_STATEMENTS = 'ledger/statements/FILTER_LEDGER_STATEMENTS',
@@ -17,6 +21,12 @@ export enum ActionTypeKeys {
   'ledger/statements/FILTER_LEDGER_STATEMENTS_BY_ID_FULFILLED',
   FILTER_LEDGER_STATEMENTS_BY_ID_REJECTED =
   'ledger/statements/FILTER_LEDGER_STATEMENTS_BY_ID_REJECTED',
+
+  GET_LEDGER_ACCOUNT_STATEMENTS = 'ledger/statements/GET_LEDGER_ACCOUNT_STATEMENTS',
+  GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED =
+  'ledger/statements/GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED',
+  GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED =
+  'ledger/statements/GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED',
 
   RESET_STATEMENTS = 'ledger/statements/RESET_STATEMENTS',
 }
@@ -64,6 +74,21 @@ export interface FilterLedgerStatementsByIdRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS_BY_ID_REJECTED;
 }
 
+export interface GetLedgerAccountStatementsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS;
+}
+
+export interface GetLedgerAccountStatementsFulfilledAction {
+  readonly payload: { statements: Array<LedgerAccountStatementItem> };
+  readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED;
+}
+
+export interface GetLedgerAccountStatementsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED;
+}
+
 export interface ResetStatementsAction {
   readonly type: ActionTypeKeys.RESET_STATEMENTS;
 }
@@ -72,4 +97,6 @@ export type LedgerStatementsActionTypes =
   | FilterLedgerStatementsFulfilledAction
   | GetLedgerStatementTransactionsFulfilledAction
   | FilterLedgerStatementsByIdFulfilledAction
+  | GetLedgerAccountStatementsFulfilledAction
+  | GetLedgerStatementTransactionsAction
   | ResetStatementsAction;

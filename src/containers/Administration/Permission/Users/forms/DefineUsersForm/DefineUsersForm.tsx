@@ -193,6 +193,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="password"
               placeholder="Enter Password"
               component={PasswordField}
+              autoComplete="new-password"
               label="Password"
               validate={passwordValidation}
             />
@@ -203,6 +204,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="passwordRepeat"
               placeholder="Repeat Password"
               component={PasswordField}
+              autoComplete="new-password"
               label="Repeat Password"
               validate={repeatPasswordValidation}
             />

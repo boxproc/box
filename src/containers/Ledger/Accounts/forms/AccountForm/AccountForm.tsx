@@ -1,13 +1,8 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Box, Flex } from '@rebass/grid';
-
 import {
-  Button,
   ExternalSpinnerProps,
-  Hr,
-  OkCancelButtons,
   Tabs,
   TabsPanel,
   withSpinner,
@@ -16,10 +11,10 @@ import {
 import { formNamesConst, productTypesCodes } from 'consts';
 
 import {
+  AccountStatements,
   AuxiliaryCounters,
   Cards,
   GeneralAccountInfo,
-  LastStatement,
   Overdue,
   RepaymentStatusTable,
 } from 'containers/Ledger/Accounts/components';
@@ -112,71 +107,40 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
           <GeneralAccountInfo
             institutionsOptions={institutionsOptions}
             isEditMode={isEditMode}
-          />
-          <Hr />
-          <OkCancelButtons
-            okText="Save"
-            cancelText="Close"
             onCancel={onCancel}
-            rightPosition={true}
-            withCancelConfirmation={dirty}
-            disabledOk={pristine}
+            dirty={dirty}
+            pristine={pristine}
           />
         </TabsPanel>
         <TabsPanel title="Auxiliary Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
-          />
-          <Hr />
-          <OkCancelButtons
-            okText="Save"
-            cancelText="Close"
             onCancel={onCancel}
-            rightPosition={true}
-            withCancelConfirmation={dirty}
-            disabledOk={pristine}
+            dirty={dirty}
+            pristine={pristine}
           />
         </TabsPanel>
         <TabsPanel title="Overdue">
-          <Overdue isEditMode={isEditMode} />
-          <Hr />
-          <OkCancelButtons
-            okText="Save"
-            cancelText="Close"
+          <Overdue
+            isEditMode={isEditMode}
             onCancel={onCancel}
-            rightPosition={true}
-            withCancelConfirmation={dirty}
-            disabledOk={pristine}
+            dirty={dirty}
+            pristine={pristine}
           />
         </TabsPanel>
         {isEditMode && (
           <TabsPanel title="Cards">
-            <Cards />
+            <Cards onCancel={onCancel} />
           </TabsPanel>
         )}
         {isEditMode && (
-          <TabsPanel title="Last Statement">
-            <LastStatement />
-            <Hr />
-            <Flex justifyContent="flex-end">
-              <Button
-                text="close"
-                onClick={onCancel}
-              />
-            </Flex>
+          <TabsPanel title="Statements">
+            <AccountStatements onCancel={onCancel} />
           </TabsPanel>
         )}
         {isEditMode && isLoanProductType && (
           <TabsPanel title="Repayment Status">
-            <Box mt="20px">
-              <RepaymentStatusTable />
-            </Box>
-            <Flex justifyContent="flex-end">
-              <Button
-                text="close"
-                onClick={onCancel}
-              />
-            </Flex>
+            <RepaymentStatusTable onCancel={onCancel} />
           </TabsPanel>
         )}
       </Tabs>

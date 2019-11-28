@@ -31,9 +31,9 @@ export type HandleAddAdminInterface = (values: Partial<AdminInterfaceItemDetails
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
 export type HandleDeleteAdminInterface = () => Thunk<void>;
 
-export type UpdateAdminInterface = (propValues: Partial<AdminInterfaceItem>) =>
+export type UpdateAdminInterface = (values: Partial<AdminInterfaceItem>) =>
   UpdateAdminInterfaceAction;
-export type HandleUpdateAdminInterface = (propValues: Partial<AdminInterfaceItemDetailsPrepared>) =>
+export type HandleUpdateAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared>) =>

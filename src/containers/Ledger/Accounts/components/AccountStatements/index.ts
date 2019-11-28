@@ -1,29 +1,31 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import LastStatement from './LastStatement';
+import AccountStatements from './AccountStatements';
 
 import {
   createLoadingSelector,
-  handleGetLedgerLastStatement,
-  LedgerAccountsActionTypes,
+  handleGetLedgerAccountStatements,
+  LedgerStatementsActionTypes,
   selectActiveItemId,
+  selectLedgerAccountStatements,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  LedgerAccountsActionTypes.GET_LEDGER_LAST_STATEMENT,
+  LedgerStatementsActionTypes.GET_LEDGER_ACCOUNT_STATEMENTS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   accountCurrentId: selectActiveItemId(state),
+  accountStatements: selectLedgerAccountStatements(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getLedgerLastStatement: handleGetLedgerLastStatement,
+    getLedgerAccountStatements: handleGetLedgerAccountStatements,
   },
   dispatch
 );
@@ -31,4 +33,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LastStatement);
+)(AccountStatements);
