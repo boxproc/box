@@ -2,13 +2,17 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Hr, OkCancelButtons } from 'components';
+import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
 import { GeneralLedger } from 'containers/ProductDesigner/Products/components';
 
-interface GeneralLedgerFromProps {
+import { HandleUpdateGeneralLedger } from 'store/domains';
+
+interface GeneralLedgerFromProps extends ExternalSpinnerProps {
+  currentProductId: number;
+  updateGeneralLedger: HandleUpdateGeneralLedger;
   onCancel?: () => void;
 }
 
@@ -16,12 +20,17 @@ type GeneralLedgerFromAllProps = GeneralLedgerFromProps &
   InjectedFormProps<{}, GeneralLedgerFromProps>;
 
 const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
+  currentProductId,
+  updateGeneralLedger,
   handleSubmit,
   onCancel,
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => console.log(data)),
+    handleSubmit(data => updateGeneralLedger({
+      ...data,
+      id: currentProductId,
+    })),
     [handleSubmit]
   );
 
@@ -44,4 +53,4 @@ export default reduxForm<{}, GeneralLedgerFromProps>({
   form: formNamesConst.PRODUCT_GENERAL_LEDGER,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(GeneralLedgerFrom);
+})(withSpinner()(GeneralLedgerFrom));

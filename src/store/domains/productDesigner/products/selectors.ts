@@ -10,12 +10,12 @@ import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/con
 import { selectActiveItemId } from 'store/domains/utils';
 import { selectCyclesDescriptionsOptions } from '../cycles';
 import {
+  prepareGeneralProductData,
   prepareGeneralProductItem,
-  prepareGeneralProductValues,
   prepareProductAprsToRender,
-  prepareProductDetailsValues,
+  prepareProductDetailsData,
   prepareProductFeesToRender,
-  prepareProductRuleValues,
+  prepareProductRuleData,
 } from './utils';
 
 export const selectDefaultProductItems = (state: StoreState) =>
@@ -58,7 +58,7 @@ export const selectCurrentProduct = createSelector(
     }
 
     return {
-      ...prepareGeneralProductValues(product),
+      ...prepareGeneralProductData(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
       defaultStatementCycle: cyclesOptions
@@ -73,6 +73,7 @@ export const selectCurrentInstitutionId = createSelector(
     if (!product) {
       return null;
     }
+
     return product.institutionId.value;
   }
 );
@@ -109,16 +110,48 @@ export const selectProductServices = createSelector(
       return null;
     }
 
-    const endpointId = current.card_transactions_endpoint_id;
-    const interfaceId = current.card_management_interface_id;
-    const secureProviderInterfaceId = current.provider_3d_secure_interface_id;
+    const {
+      card_transactions_endpoint_id,
+      card_management_interface_id,
+      provider_3d_secure_interface_id,
+    } = current;
+
+    const currentEndpoint = endpointsOptions.find(el => el.value === card_transactions_endpoint_id);
+    const currentInterface = interfacesOptions
+      .find(el => el.value === card_management_interface_id);
+    const currentSecureProviderInterface = interfacesOptions
+      .find(el => el.value === provider_3d_secure_interface_id);
 
     return {
-      endpoints: endpointsOptions.find(el => el.value === endpointId) || endpointsOptions[0],
-      interfaces: interfacesOptions.find(el => el.value === interfaceId) || interfacesOptions[0],
-      secureProviderInterfaces: interfacesOptions
-        .find(el => el.value === secureProviderInterfaceId)
-        || interfacesOptions[0],
+      endpoints: currentEndpoint || endpointsOptions[0],
+      interfaces: currentInterface || interfacesOptions[0],
+      secureProviderInterfaces: currentSecureProviderInterface || interfacesOptions[0],
+    };
+  }
+);
+
+export const selectProductGeneralLedger = createSelector(
+  selectDefaultProductItems,
+  selectActiveItemId,
+  (products, activeId) => {
+    const current = products.find(product => product.id === activeId);
+
+    if (!current) {
+      return null;
+    }
+
+    const {
+      gl_acc_assets,
+      gl_acc_liabilities,
+      gl_acc_profit,
+      gl_acc_loss,
+    } = current;
+
+    return {
+      glAccAssets: gl_acc_assets,
+      glAccLiabilities: gl_acc_liabilities,
+      glAccProfit: gl_acc_profit,
+      glAccLoss: gl_acc_loss,
     };
   }
 );
@@ -158,9 +191,8 @@ export const selectCurrentProductDetails = createSelector(
     if (!product) {
       return null;
     }
-    return {
-      ...prepareProductDetailsValues(product, productType),
-    };
+
+    return prepareProductDetailsData(product, productType);
   }
 );
 
@@ -176,7 +208,7 @@ export const selectCurrentProductRule = createSelector(
     }
 
     return {
-      ...prepareProductRuleValues(currentRule),
+      ...prepareProductRuleData(currentRule),
       eventId: events && events.find(el => el.value === currentRule.event_id),
     };
   }

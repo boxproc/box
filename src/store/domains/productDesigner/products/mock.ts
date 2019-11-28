@@ -29,6 +29,10 @@ export const productData: ProductDataResp = {
     provider_3d_secure_interface_id: null,
     card_form_factor: 'P',
     number_of_days_card_expires: 365,
+    gl_acc_assets: 'ACC-004-01',
+    gl_acc_liabilities: 'ACC-004-02',
+    gl_acc_profit: 'ACC-004-03',
+    gl_acc_loss: 'ACC-004-04',
   },
 };
 
@@ -52,6 +56,10 @@ export const productItemsFilteredData: ProductsDataResp = {
       provider_3d_secure_interface_id: null,
       card_form_factor: 'P',
       number_of_days_card_expires: 365,
+      gl_acc_assets: 'ACC-004-01',
+      gl_acc_liabilities: 'ACC-004-02',
+      gl_acc_profit: 'ACC-004-03',
+      gl_acc_loss: 'ACC-004-04',
     },
     {
       currency_code: 'AFN',
@@ -71,6 +79,10 @@ export const productItemsFilteredData: ProductsDataResp = {
       provider_3d_secure_interface_id: null,
       card_form_factor: 'P',
       number_of_days_card_expires: 365,
+      gl_acc_assets: 'ACC-004-01',
+      gl_acc_liabilities: 'ACC-004-02',
+      gl_acc_profit: 'ACC-004-03',
+      gl_acc_loss: 'ACC-004-04',
     },
   ],
 };

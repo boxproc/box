@@ -19,11 +19,15 @@ export interface ProductItemResp extends ProductItemPlainResp {
   default_statement_cycle_id: string | number;
   statement_cycle_description: string | number;
   overrides_product_id?: number;
+  card_form_factor: string | number;
+  number_of_days_card_expires: number;
   card_transactions_endpoint_id?: number;
   card_management_interface_id?: number;
   provider_3d_secure_interface_id?: number;
-  card_form_factor: string | number;
-  number_of_days_card_expires: number;
+  gl_acc_assets?: string;
+  gl_acc_liabilities?: string;
+  gl_acc_profit?: string;
+  gl_acc_loss?: string;
 }
 
 export interface ProductsDataResp {
@@ -274,6 +278,22 @@ export interface ServicesItemsPrepared {
   endpoints: SelectValues;
   interfaces: SelectValues;
   secureProviderInterfaces: SelectValues;
+}
+
+export interface GeneralLedgerItem {
+  id: number;
+  gl_acc_assets: string;
+  gl_acc_liabilities: string;
+  gl_acc_profit: string;
+  gl_acc_loss: string;
+}
+
+export interface GeneralLedgerItemPrepared {
+  id: number;
+  glAccAssets: string;
+  glAccLiabilities: string;
+  glAccProfit: string;
+  glAccLoss: string;
 }
 
 export interface ProductAprItem {

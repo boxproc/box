@@ -16,6 +16,7 @@ import {
 import {
   DebitProductItem,
   DebitProductItemResp,
+  GeneralLedgerItemPrepared,
   LoanProductItem,
   LoanProductItemResp,
   NewProduct,
@@ -44,36 +45,52 @@ import {
 
 import { SelectValues } from 'types';
 
-export const prepareProductFiltersParamsToSend =
-  (params: ProductFilter): ProductFilterPrepared => {
-    const { activeStatusFlag, institutionId, productType } = params;
+export const prepareProductFiltersParamsToSend = (params: ProductFilter): ProductFilterPrepared => {
+  const { activeStatusFlag, institutionId, productType } = params;
 
-    return {
-      status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
-      institution_id: institutionId ? institutionId.value : null,
-      product_type: productType && productType.length ? productType.map(type => type.value) : null,
-    };
+  return {
+    status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
+    institution_id: institutionId ? institutionId.value : null,
+    product_type: productType && productType.length ? productType.map(type => type.value) : null,
   };
+};
 
-export const prepareUpdateCardServiceValuesPrepared =
-  (values: Partial<ServicesItemsPrepared>) => {
-    if (!values) {
-      return null;
-    }
+export const prepareCardServiceDataToSend = (data: Partial<ServicesItemsPrepared>) => {
+  if (!data) {
+    return null;
+  }
 
-    const endpointId = values.endpoints.value;
-    const interfaceId = values.interfaces.value;
-    const secureProviderInterfaceId = values.secureProviderInterfaces.value;
+  const { endpoints, interfaces, secureProviderInterfaces, id } = data;
 
-    return {
-      id: values.id,
-      card_transactions_endpoint_id: endpointId ? endpointId : null,
-      card_management_interface_id: interfaceId ? interfaceId : null,
-      provider_3d_secure_interface_id: secureProviderInterfaceId
-        ? secureProviderInterfaceId
-        : null,
-    };
+  const endpointId = endpoints.value;
+  const interfaceId = interfaces.value;
+  const secureProviderInterfaceId = secureProviderInterfaces.value;
+
+  return {
+    id,
+    card_transactions_endpoint_id: endpointId ? endpointId : null,
+    card_management_interface_id: interfaceId ? interfaceId : null,
+    provider_3d_secure_interface_id: secureProviderInterfaceId
+      ? secureProviderInterfaceId
+      : null,
   };
+};
+
+export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepared>) => {
+  if (!data) {
+    return null;
+  }
+
+  const { glAccAssets, glAccLiabilities, glAccProfit, glAccLoss, id } = data;
+
+  return {
+    id,
+    gl_acc_assets: glAccAssets,
+    gl_acc_liabilities: glAccLiabilities,
+    gl_acc_profit: glAccProfit,
+    gl_acc_loss: glAccLoss,
+  };
+};
 
 export const prepareGeneralProductItem = (item: ProductItemResp) => {
   const status = statusTypesOptions.find(el => el.value === item.status);
@@ -95,67 +112,66 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
   };
 };
 
-export const prepareGeneralProductValues =
-  (product: ProductItemResp): Partial<ProductItemGeneral> => {
-    if (!product) {
-      return null;
-    }
+export const prepareGeneralProductData = (product: ProductItemResp):
+  Partial<ProductItemGeneral> => {
+  if (!product) {
+    return null;
+  }
 
-    return {
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      historyRetentionNumberOfDay: product.history_retention_number_of_day,
-      productType: productTypesOptions.find(el => el.value === product.product_type),
-      status: statusTypesOptions.find(el => el.value === product.status),
-      scheme: schemeTypesOptions.find(el => el.value === product.scheme),
-      lockedFlag: product.locked_flag === yesNoTypesCodes.YES ? true : false,
-      overridesProductId: product.overrides_product_id,
-      cardFormFactor: cardFormFactorOptions.find(el => el.value === product.card_form_factor),
-      numberOfDaysCardExpires: product.number_of_days_card_expires,
-    };
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    historyRetentionNumberOfDay: product.history_retention_number_of_day,
+    productType: productTypesOptions.find(el => el.value === product.product_type),
+    status: statusTypesOptions.find(el => el.value === product.status),
+    scheme: schemeTypesOptions.find(el => el.value === product.scheme),
+    lockedFlag: product.locked_flag === yesNoTypesCodes.YES ? true : false,
+    overridesProductId: product.overrides_product_id,
+    cardFormFactor: cardFormFactorOptions.find(el => el.value === product.card_form_factor),
+    numberOfDaysCardExpires: product.number_of_days_card_expires,
   };
+};
 
-export const prepareGeneralProductValuesToSend =
-  (product: Partial<ProductItemGeneral>): ProductItemResp => {
-    return {
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      status: product.status.value,
-      institution_id: product.institutionId.value,
-      currency_code: product.currencyCode.value,
-      product_type: product.productType.value,
-      scheme: product.scheme.value,
-      history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
-      default_statement_cycle_id: product.defaultStatementCycle.value,
-      locked_flag: product.lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-      statement_cycle_description: product.defaultStatementCycle.value,
-      overrides_product_id: product.overridesProductId,
-      card_form_factor: product.cardFormFactor.value,
-      number_of_days_card_expires: product.numberOfDaysCardExpires
-        && Number(product.numberOfDaysCardExpires),
-    };
+export const prepareGeneralProductDataToSend = (product: Partial<ProductItemGeneral>):
+  ProductItemResp => {
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    status: product.status.value,
+    institution_id: product.institutionId.value,
+    currency_code: product.currencyCode.value,
+    product_type: product.productType.value,
+    scheme: product.scheme.value,
+    history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
+    default_statement_cycle_id: product.defaultStatementCycle.value,
+    locked_flag: product.lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    statement_cycle_description: product.defaultStatementCycle.value,
+    overrides_product_id: product.overridesProductId,
+    card_form_factor: product.cardFormFactor.value,
+    number_of_days_card_expires: product.numberOfDaysCardExpires
+      && Number(product.numberOfDaysCardExpires),
   };
+};
 
-export const prepareProductDetailsValues =
-  (product: any, productType: SelectValues) => {
-    const type = productType.value;
+export const prepareProductDetailsData = (product: any, productType: SelectValues) => {
+  const type = productType.value;
 
-    if (type === productTypesCodes.DEBIT) {
-      return prepareDebit(product);
-    } else if (type === productTypesCodes.LOAN) {
-      return prepareLoan(product);
-    } else if (type === productTypesCodes.PREPAID) {
-      return preparePrepaid(product);
-    } else if (type === productTypesCodes.REVOLVING_CREDIT) {
-      return prepareRevolvingCredit(product);
-    } else if (type === productTypesCodes.SAVINGS) {
-      return prepareSavings(product);
-    } else {
-      return null;
-    }
-  };
+  if (type === productTypesCodes.DEBIT) {
+    return prepareDebit(product);
+  } else if (type === productTypesCodes.LOAN) {
+    return prepareLoan(product);
+  } else if (type === productTypesCodes.PREPAID) {
+    return preparePrepaid(product);
+  } else if (type === productTypesCodes.REVOLVING_CREDIT) {
+    return prepareRevolvingCredit(product);
+  } else if (type === productTypesCodes.SAVINGS) {
+    return prepareSavings(product);
+  } else {
+    return null;
+  }
+};
 
 export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
   const aprDefaultCalculationMethod = aprTypesOptions
@@ -280,7 +296,7 @@ export const prepareDebitToSend = (product: DebitProductItem) => {
   };
 };
 
-export const prepareProductDetailsValuesToSend =
+export const prepareProductDetailsDataToSend =
   (product: any, productType: SelectValues) => {
     const type = productType.value;
 
@@ -314,14 +330,14 @@ export const prepareProductDetailsValuesToSend =
     }
   };
 
-export const prepareNewProductValuesToSend = (product: Partial<NewProduct>) => {
+export const prepareNewProductDataToSend = (product: Partial<NewProduct>) => {
   return {
-    ...prepareGeneralProductValuesToSend(product),
-    ...prepareProductDetailsValuesToSend(product, product.productType),
+    ...prepareGeneralProductDataToSend(product),
+    ...prepareProductDetailsDataToSend(product, product.productType),
   };
 };
 
-export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
+export const prepareProductRuleData = (rule: ProductRulesItemResp) => {
   if (!rule) {
     return null;
   }
@@ -334,7 +350,7 @@ export const prepareProductRuleValues = (rule: ProductRulesItemResp) => {
   };
 };
 
-export const prepareProductRuleValuesToSend = (rule: Partial<ProductRulesItem>) => {
+export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) => {
   if (!rule) {
     return null;
   }
@@ -393,7 +409,7 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
   };
 };
 
-export const prepareFormValuesProductAprsToSend = (data: Partial<ProductAprFormValues>):
+export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormValues>):
   Partial<ProductAprItem> => {
   if (!data) {
     return null;
@@ -453,7 +469,7 @@ export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<
   };
 };
 
-export const prepareFormValuesProductFeesToSend = (data: Partial<ProductFeeFormValues>):
+export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormValues>):
   Partial<ProductFeeItem> => {
   if (!data) {
     return null;

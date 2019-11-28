@@ -3,9 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField } from 'components';
-
-import { formErrorUtil } from 'utils';
+import { InputField } from 'components';
 
 interface GeneralLedgerProps { }
 
@@ -18,58 +16,38 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
       >
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="liabilitiesAccount"
-            name="liabilitiesAccount"
+            id="glAccAssets"
+            name="glAccAssets"
             component={InputField}
-            label="Liabilities Account"
-            placeholder="Enter Liabilities Account"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
+            label="Account Assets"
+            placeholder="Enter Account Assets"
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="incomeAccount"
-            name="incomeAccount"
+            id="glAccLiabilities"
+            name="glAccLiabilities"
             component={InputField}
-            label="Income Account"
-            placeholder="Enter Income Account"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
+            label="Account Liabilities"
+            placeholder="Enter Account Liabilities"
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="receivableAccount"
-            name="receivableAccount"
+            id="glAccProfit"
+            name="glAccProfit"
             component={InputField}
-            label="Receivable Account"
-            placeholder="Enter Receivable Account"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Delimiter />
-        <Box width={[1 / 4]} p="10px">
-          <Field
-            id="writeOffAccount"
-            name="writeOffAccount"
-            component={InputField}
-            label="Write off Account"
-            placeholder="Enter Write off Account"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
+            label="Account Profit"
+            placeholder="Enter Account Profit"
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="auxAccount"
-            name="auxAccount"
+            id="glAccLoss"
+            name="glAccLoss"
             component={InputField}
-            label="Aux Account"
-            placeholder="Enter Aux Account"
-            isNumber={true}
-            validate={[formErrorUtil.required]}
+            label="Account Loss"
+            placeholder="Enter Account Loss"
           />
         </Box>
       </Flex>

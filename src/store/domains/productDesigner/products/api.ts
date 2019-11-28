@@ -4,6 +4,7 @@ import { apiClient } from 'services';
 
 // import {
 //   institutionProducts,
+//   productData,
 //   productDetailsData,
 //   productItemsFilteredData,
 //   productRulesData,
@@ -13,6 +14,7 @@ import { apiClient } from 'services';
 // import { throttleUtil } from 'utils';
 
 import {
+  GeneralLedgerItem,
   NewProductPrepared,
   ProductAprItem,
   ProductFeeItem,
@@ -55,6 +57,10 @@ export const getInterfacesService = (institutionId: number | string) =>
 
 export const updateCardService = (data: Partial<ServicesItems>) =>
   apiClient.post(productsPathNames.UPDATE_CARD_SERVICE, { data });
+
+export const updateGeneralLedger = (data: Partial<GeneralLedgerItem>) =>
+  // throttleUtil.getDataAfter(productData, 500);
+  apiClient.post(productsPathNames.UPDATE_GENERAL_LEDGER, { data });
 
 export const getProductRule = (data: ProductRuleRequestPrepared) =>
   // throttleUtil.getDataAfter(productRulesData, 500);
