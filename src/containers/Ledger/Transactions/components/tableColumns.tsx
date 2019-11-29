@@ -131,18 +131,6 @@ export const tableColumns = [
   {
     maxWidth: 120,
     sortable: true,
-    Header: <TableHeader title="Conversion Rate" />,
-    accessor: 'cardConversionRate',
-    Cell: (props: TCell<'cardConversionRate'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="APR Rate" />,
     accessor: 'aprRate',
     Cell: (props: TCell<'aprRate'>) => (

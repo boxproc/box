@@ -55,18 +55,6 @@ const LedgerCurrentTransactionCard: React.FC = () => {
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
-            id="cardConversionRate"
-            name="cardConversionRate"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Card Conversion Rate"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
             id="cardAcceptorName"
             name="cardAcceptorName"
             component={InputField}

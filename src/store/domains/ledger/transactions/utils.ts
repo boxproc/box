@@ -37,7 +37,6 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     cardId: values.card_id,
     cardCurrency: values.card_currency,
     cardAmount: values.card_amount && values.card_amount.toFixed(2),
-    cardConversionRate: values.card_conversion_rate && values.card_conversion_rate.toFixed(2),
     cardAcceptorName: values.card_acceptor_name,
     cardAcceptorLocation: values.card_acceptor_location,
     transactionTypeDescription: values.transaction_type_description,

@@ -18,7 +18,6 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       card_currency: 'A',
       transaction_datetime: '11/08/2019 00:04:46',
       balance_available_before: 10.2,
-      card_conversion_rate: 1.002,
       card_acceptor_name: 'Smith',
       debit_credit_indicator: 'C',
       card_transaction_id: 'A',

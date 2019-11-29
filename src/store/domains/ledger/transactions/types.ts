@@ -25,7 +25,6 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   card_id: number;
   card_currency: string;
   card_amount: number;
-  card_conversion_rate: number;
   card_acceptor_name: string;
   card_acceptor_location: string;
   transaction_type_description: string;
@@ -55,7 +54,6 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   cardId: number;
   cardCurrency: string;
   cardAmount: string;
-  cardConversionRate: string;
   cardAcceptorName: string;
   cardAcceptorLocation: string;
   transactionTypeDescription: string;
