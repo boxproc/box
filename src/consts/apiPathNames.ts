@@ -136,7 +136,7 @@ export enum lenderCustomersPathNames {
 export enum lenderStatementsPathNames {
   GET = '/ui/ledger/statements/get',
   GET_TRANSACTIONS = '/ui/ledger/statements/get_transactions',
-  GET_ACCOUNT_STATEMENTS = '/ui/ledger/statements/get_account_statements',
+  GET_ACCOUNT_STATEMENTS = '/ui/ledger/accounts/get_statements',
 }
 
 export enum lenderTransactionsPathNames {
@@ -170,4 +170,8 @@ export enum productsPathNames {
   UPDATE_FEE = '/ui/product_designer/products/fees/update',
   CREATE_FEE = '/ui/product_designer/products/fees/create',
   DELETE_FEE = '/ui/product_designer/products/fees/delete',
+  GET_REWARDS = '/ui/product_designer/products/rewards/get',
+  UPDATE_REWARD = '/ui/product_designer/products/rewards/update',
+  CREATE_REWARD = '/ui/product_designer/products/rewards/create',
+  DELETE_REWARD = '/ui/product_designer/products/rewards/delete',
 }

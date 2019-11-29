@@ -17,7 +17,7 @@ interface TabTitleProps {
 
 const TabTitle = styled.div<TabTitleProps>`
   position: relative;
-  padding: 10px 20px;
+  padding: 10px 15px;
   text-transform: uppercase;
   font-weight: 500;
   cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};

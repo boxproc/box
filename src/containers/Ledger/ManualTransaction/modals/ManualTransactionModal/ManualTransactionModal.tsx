@@ -1,19 +1,20 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
-
-import { Button, Hr, Modal } from 'components';
+import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 import { ResultManualTransactionForm } from 'containers/Ledger/ManualTransaction/forms';
 
 import {
+  HandleFilterLedgerTransactionsById,
   LedgerManualTransactionResultPrepared,
 } from 'store/domains';
 
 interface ManualTransactionModalProps extends WithModalProps {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;
+  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
+  transactionId: number;
 }
 
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
@@ -21,10 +22,20 @@ const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   closeModal,
   ledgerManualTransaction,
+  filterLedgerTransactionsById,
+  transactionId,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
+  );
+
+  const handleGetTransaction = React.useCallback(
+    () => {
+      filterLedgerTransactionsById({ transaction_id: transactionId });
+      handleOnCancel();
+    },
+    [transactionId, filterLedgerTransactionsById]
   );
 
   return (
@@ -38,13 +49,14 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         initialValues={ledgerManualTransaction}
       />
       <Hr />
-      <Flex justifyContent="flex-end">
-        <Button
-          text="Close"
-          onClick={handleOnCancel}
-        />
-      </Flex>
-      <Button />
+      <OkCancelButtons
+        okText="View transaction"
+        cancelText="Close"
+        focusedButton="ok"
+        rightPosition={true}
+        onOk={handleGetTransaction}
+        onCancel={handleOnCancel}
+      />
     </Modal>
   );
 };

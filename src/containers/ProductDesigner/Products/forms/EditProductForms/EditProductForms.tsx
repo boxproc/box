@@ -10,6 +10,7 @@ import {
   LoyaltyAndBonusForm,
   ProductDetailsForm,
   ProductRulesForm,
+  RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 import ProductServicesForm from '../ProductServicesForm';
 
@@ -60,10 +61,13 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         <ProductServicesForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="GL">
-        <GeneralLedgerFrom onCancel={onCancel}  />
+        <GeneralLedgerFrom onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Fees">
         <FeesForm onCancel={onCancel} />
+      </TabsPanel>
+      <TabsPanel title="Rewards">
+        <RewardsForm onCancel={onCancel} />
       </TabsPanel>
     </Tabs>
   );

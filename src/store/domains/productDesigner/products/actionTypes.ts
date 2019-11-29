@@ -97,9 +97,9 @@ export enum ActionTypeKeys {
   ADD_PRODUCT_FEE_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FEE_FULFILLED',
   ADD_PRODUCT_FEE_REJECTED = 'productDesigner/products/ADD_PRODUCT_FEE_REJECTED',
 
-  UPDATE_PRODUCT_FEE = 'productDesigner/products/UPDATE_PRODUCT_APR',
-  UPDATE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_APR_FULFILLED',
-  UPDATE_PRODUCT_FEE_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_APR_REJECTED',
+  UPDATE_PRODUCT_FEE = 'productDesigner/products/UPDATE_PRODUCT_FEE',
+  UPDATE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_FEE_FULFILLED',
+  UPDATE_PRODUCT_FEE_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_FEE_REJECTED',
 
   DELETE_PRODUCT_FEE = 'productDesigner/products/DELETE_PRODUCT_FEE',
   DELETE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FEE_FULFILLED',
@@ -422,7 +422,7 @@ export interface UpdateProductFeeFulfilledAction {
 
 export interface UpdateProductFeeRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_REJECTED;
 }
 
 export interface DeleteProductFeeAction {
