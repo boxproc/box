@@ -35,7 +35,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
       filterLedgerTransactionsById({ transaction_id: transactionId });
       handleOnCancel();
     },
-    [transactionId, filterLedgerTransactionsById]
+    [transactionId, filterLedgerTransactionsById, handleOnCancel]
   );
 
   return (
