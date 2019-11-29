@@ -248,11 +248,17 @@ export const feeTypesOptions = [
   { value: 'G', label: 'Apply whichever is greater: % rate or the fixed amount' },
 ];
 
-export enum feeTypesCodes {
+export const rewardsTypesOptions = [
+  ...feeTypesOptions,
+  { value: 'S', label: 'apply whichever is smaller: % rate or the fixed amount' },
+];
+
+export enum feeRewardsTypesCodes {
   APPLY_ONLY_FIXED_AMOUNT = 'A',
   APPLY_ONLY_RATE = 'R',
   APPLY_BOTH_FIXED_AMOUNT_AND_RATE = 'B',
   APPLY_WHICHEVER_IS_GREATER_RATE_OR_FIXED_AMOUNT = 'G',
+  APPLY_WHICHEVER_IS_SMALLER_RATE_OR_FIXED_AMOUNT = 'S',
 }
 
 export const daysOfWeekOptions = [

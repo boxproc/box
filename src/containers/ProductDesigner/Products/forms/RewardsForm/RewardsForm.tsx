@@ -7,45 +7,45 @@ import { Button } from 'components';
 
 import { feeRewardsTypesCodes, formNamesConst } from 'consts';
 
-import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/components';
+import { ProductRewards, RewardsTable } from 'containers/ProductDesigner/Products/components';
 
-import { HandleAddProductFee } from 'store/domains';
+import { HandleAddProductReward } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface FeesFormProps {
-  addProductFee: HandleAddProductFee;
+interface RewardsFormProps {
+  addProductReward: HandleAddProductReward;
   isLoading: boolean;
-  feeApplicationConditionValue: SelectValues;
+  rewardApplicationConditionValue: SelectValues;
   onCancel: () => void;
 }
 
-type FeesFormAllProps = FeesFormProps & InjectedFormProps<{}, FeesFormProps>;
+type RewardsFormAllProps = RewardsFormProps & InjectedFormProps<{}, RewardsFormProps>;
 
-const FeesForm: React.FC<FeesFormAllProps> = ({
+const RewardsForm: React.FC<RewardsFormAllProps> = ({
   onCancel,
-  addProductFee,
+  addProductReward,
   handleSubmit,
   pristine,
   dirty,
   isLoading,
-  feeApplicationConditionValue,
+  rewardApplicationConditionValue,
   change,
 }) => {
   const isOnlyAmount = React.useMemo(
     () => {
-      return feeApplicationConditionValue
-        && feeApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT;
+      return rewardApplicationConditionValue
+        && rewardApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT;
     },
-    [feeApplicationConditionValue]
+    [rewardApplicationConditionValue]
   );
 
   const isOnlyRate = React.useMemo(
     () => {
-      return feeApplicationConditionValue
-        && feeApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_RATE;
+      return rewardApplicationConditionValue
+        && rewardApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_RATE;
     },
-    [feeApplicationConditionValue]
+    [rewardApplicationConditionValue]
   );
 
   React.useEffect(
@@ -67,23 +67,23 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(addProductFee),
-    [handleSubmit, addProductFee]
+    handleSubmit(addProductReward),
+    [handleSubmit, addProductReward]
   );
 
   return (
     <React.Fragment>
       <Box pb="10px">
         <form onSubmit={handleSubmitForm}>
-          <ProductFees
+          <ProductRewards
             isDisabled={isLoading}
             pristine={pristine}
-            isOnlyAmount={isOnlyAmount}
             isOnlyRate={isOnlyRate}
+            isOnlyAmount={isOnlyAmount}
           />
         </form>
       </Box>
-      <FeesTable />
+      <RewardsTable />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"
@@ -95,8 +95,8 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, FeesFormProps>({
-  form: formNamesConst.PRODUCT_FEES,
+export default reduxForm<{}, RewardsFormProps>({
+  form: formNamesConst.PRODUCT_REWARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(FeesForm);
+})(RewardsForm);

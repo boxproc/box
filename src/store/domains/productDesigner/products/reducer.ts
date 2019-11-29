@@ -13,6 +13,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   endpoints: Immutable([]),
   productAprs: Immutable([]),
   productFees: Immutable([]),
+  productRewards: Immutable([]),
 });
 
 const productsReducer =
@@ -58,6 +59,17 @@ const productsReducer =
         return state.set(
           'productFees',
           state.productFees.filter(el => el.product_fee_id !== action.meta.data.productFeeId)
+        );
+
+      case ActionTypeKeys.GET_PRODUCT_REWARDS_FULFILLED:
+        return state.set('productRewards', action.payload.product_rewards);
+
+      case ActionTypeKeys.DELETE_PRODUCT_REWARD_FULFILLED:
+        return state.set(
+          'productRewards',
+          state
+            .productRewards
+            .filter(el => el.product_reward_id !== action.meta.data.productRewardId)
         );
 
       case ActionTypeKeys.RESET_PRODUCTS:

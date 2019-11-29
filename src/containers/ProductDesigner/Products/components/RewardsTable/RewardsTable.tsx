@@ -15,36 +15,36 @@ import {
 import { feeRewardsTypesCodes, iconNamesConst } from 'consts';
 
 import {
-  HandleDeleteProductFee,
-  HandleGetProductFees,
-  HandleUpdateProductFee,
-  ProductFee,
+  HandleDeleteProductReward,
+  HandleGetProductRewards,
+  HandleUpdateProductReward,
+  ProductReward,
 } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
+type TCell<T extends keyof ProductReward> = TableCellType<ProductReward[T]>;
 
-interface FeesTableProps {
-  productFees: Array<ProductFee>;
-  getProductFees: HandleGetProductFees;
-  deleteProductFee: HandleDeleteProductFee;
-  updateProductFee: HandleUpdateProductFee;
+interface RewardsTableProps {
+  productRewards: Array<ProductReward>;
+  getProductRewards: HandleGetProductRewards;
+  deleteProductReward: HandleDeleteProductReward;
+  updateProductReward: HandleUpdateProductReward;
 }
 
-const FeesTable: React.FC<FeesTableProps> = ({
-  productFees,
-  getProductFees,
-  deleteProductFee,
-  updateProductFee,
+const RewardsTable: React.FC<RewardsTableProps> = ({
+  productRewards,
+  getProductRewards,
+  deleteProductReward,
+  updateProductReward,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
   React.useEffect(
     () => {
-      getProductFees();
+      getProductRewards();
     },
-    [getProductFees]
+    [getProductRewards]
   );
 
   // update screen height for setting various number of table rows per page
@@ -68,9 +68,9 @@ const FeesTable: React.FC<FeesTableProps> = ({
     {
       maxWidth: 100,
       sortable: true,
-      accessor: 'productFeeId',
-      Header: <TableHeader title="Product Fee ID" />,
-      Cell: (props: TCell<'productFeeId'>) => (
+      accessor: 'productRewardId',
+      Header: <TableHeader title="Product Reward ID" />,
+      Cell: (props: TCell<'productRewardId'>) => (
         <TableCell
           value={props.value}
           isSmaller={true}
@@ -84,7 +84,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
       accessor: 'description',
       Header: <TableHeader title="Description" />,
       Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
+        updateAction: updateProductReward,
         isSmaller: true,
         cellInfo,
       }),
@@ -95,11 +95,11 @@ const FeesTable: React.FC<FeesTableProps> = ({
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
       Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
+        updateAction: updateProductReward,
         isSmaller: true,
         isDecimalNumber: true,
         cellInfo,
-        isEditable: cellInfo.original.feeApplicationConditionValue
+        isEditable: cellInfo.original.rewardApplicationConditionValue
           !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT,
       }),
     },
@@ -109,20 +109,20 @@ const FeesTable: React.FC<FeesTableProps> = ({
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
       Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
+        updateAction: updateProductReward,
         isSmaller: true,
         isDecimalNumber: true,
         cellInfo,
-        isEditable: cellInfo.original.feeApplicationConditionValue
+        isEditable: cellInfo.original.rewardApplicationConditionValue
           !== feeRewardsTypesCodes.APPLY_ONLY_RATE,
       }),
     },
     {
       maxWidth: 200,
       sortable: true,
-      accessor: 'feeApplicationCondition',
-      Header: <TableHeader title="Fee Application Condition" />,
-      Cell: (props: TCell<'feeApplicationCondition'>) => (
+      accessor: 'rewardApplicationCondition',
+      Header: <TableHeader title="Reward Application Condition" />,
+      Cell: (props: TCell<'rewardApplicationCondition'>) => (
         <TableCell
           value={props.value}
           isSmaller={true}
@@ -139,10 +139,10 @@ const FeesTable: React.FC<FeesTableProps> = ({
           size="10"
           iconSize="15"
           withConfirmation={true}
-          confirmationText={`Confirm want you delete fee?`}
-          onClick={() => deleteProductFee({
+          confirmationText={`Confirm want you delete reward?`}
+          onClick={() => deleteProductReward({
             productId: cellInfo.original.productId,
-            productFeeId: cellInfo.original.productFeeId,
+            productRewardId: cellInfo.original.productRewardId,
           })}
         />
       ),
@@ -152,7 +152,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
   return (
     <Box pb="10px">
       <Table
-        data={productFees}
+        data={productRewards}
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
@@ -161,4 +161,4 @@ const FeesTable: React.FC<FeesTableProps> = ({
   );
 };
 
-export default withSpinner()(FeesTable);
+export default withSpinner()(RewardsTable);

@@ -23,6 +23,8 @@ import {
   ProductFilterPrepared,
   ProductItemDetailsResp,
   ProductItemResp,
+  ProductRewardItem,
+  ProductRewardsIds,
   ProductRuleRequestPrepared,
   ProductRulesItemResp,
   ServicesItems,
@@ -128,5 +130,24 @@ export const deleteProductFee = (data: ProductFeesIds) =>
     data: {
       product_id: data.productId,
       product_fee_id: data.productFeeId,
+    },
+  });
+
+export const getProductRewards = (id: number) =>
+  apiClient.post(productsPathNames.GET_REWARDS, {
+    data: { product_id: id },
+  });
+
+export const addProductReward = (data: Partial<ProductRewardItem>) =>
+  apiClient.post(productsPathNames.CREATE_REWARD, { data });
+
+export const updateProductReward = (data: Partial<ProductRewardItem>) =>
+  apiClient.post(productsPathNames.UPDATE_REWARD, { data });
+
+export const deleteProductReward = (data: ProductRewardsIds) =>
+  apiClient.post(productsPathNames.DELETE_REWARD, {
+    data: {
+      product_id: data.productId,
+      product_reward_id: data.productRewardId,
     },
   });

@@ -311,9 +311,12 @@ export interface ProductAprItems {
   product_aprs: Array<ProductAprItem>;
 }
 
-export interface ProductAprPlainInfo {
-  productAprId: number;
+export interface ProductAprIds {
   productId: number;
+  productAprId: number;
+}
+
+export interface ProductAprPlainInfo extends ProductAprIds {
   description: string;
   rate: string;
   graceNumberOfDays: number;
@@ -344,9 +347,12 @@ export interface ProductFeeItems {
   product_fees: Array<ProductFeeItem>;
 }
 
-export interface ProductFeePlainInfo {
+export interface ProductFeesIds {
   productId: number;
   productFeeId: number;
+}
+
+export interface ProductFeePlainInfo extends ProductFeesIds {
   description: string;
   rate: string;
   amount: string;
@@ -365,14 +371,41 @@ export interface ProductFees {
   product_fees: Array<ProductFee>;
 }
 
-export interface ProductAprIds {
-  productId: number;
-  productAprId: number;
+export interface ProductRewardItem {
+  product_id: number;
+  product_reward_id: number;
+  description: string;
+  rate: number;
+  amount: number;
+  reward_application_condition: string | number;
 }
 
-export interface ProductFeesIds {
+export interface ProductRewardItems {
+  product_rewards: Array<ProductRewardItem>;
+}
+
+export interface ProductRewardsIds {
   productId: number;
-  productFeeId: number;
+  productRewardId: number;
+}
+
+export interface ProductRewardPlainInfo extends ProductRewardsIds {
+  description: string;
+  rate: string;
+  amount: string;
+}
+
+export interface ProductReward extends ProductRewardPlainInfo {
+  rewardApplicationCondition: string;
+  rewardApplicationConditionValue: string | number;
+}
+
+export interface ProductRewardFormValues extends ProductRewardPlainInfo {
+  rewardApplicationCondition: SelectValues;
+}
+
+export interface ProductRewards {
+  product_rewards: Array<ProductReward>;
 }
 
 export interface ProductsState {
@@ -385,4 +418,5 @@ export interface ProductsState {
   endpoints: ImmutableArray<IdNamePair>;
   productAprs: ImmutableArray<ProductAprItem>;
   productFees: ImmutableArray<ProductFeeItem>;
+  productRewards: ImmutableArray<ProductRewardItem>;
 }

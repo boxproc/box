@@ -6,6 +6,7 @@ import {
   loanTypesOptions,
   productTypesCodes,
   productTypesOptions,
+  rewardsTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
   statusTypesCodes,
@@ -34,6 +35,10 @@ import {
   ProductFilterPrepared,
   ProductItemGeneral,
   ProductItemResp,
+  ProductReward,
+  ProductRewardFormValues,
+  ProductRewardItem,
+  ProductRewardPlainInfo,
   ProductRulesItem,
   ProductRulesItemResp,
   RevolvingCreditProductItem,
@@ -448,7 +453,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     description: data.description,
     rate: data.rate && data.rate.toFixed(2),
     amount: data.amount && data.amount.toFixed(2),
-    feeApplicationCondition: feeApplicationCondition.label,
+    feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
     feeApplicationConditionValue: data.fee_application_condition,
   };
 };
@@ -492,5 +497,68 @@ export const prepareProductFeesToSend = (data: Partial<ProductFee>): Partial<Pro
   return {
     ...prepareProductFees(data),
     fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
+  };
+};
+
+export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductReward => {
+  if (!data) {
+    return null;
+  }
+
+  const rewardApplicationCondition = rewardsTypesOptions
+    .find(el => el.value === data.reward_application_condition);
+
+  return {
+    productId: data.product_id,
+    productRewardId: data.product_reward_id,
+    description: data.description,
+    rate: data.rate && data.rate.toFixed(2),
+    amount: data.amount && data.amount.toFixed(2),
+    rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
+    rewardApplicationConditionValue: data.reward_application_condition,
+  };
+};
+
+export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
+  Partial<ProductRewardItem> => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    product_id: data.productId,
+    product_reward_id: data.productRewardId,
+    description: data.description,
+    rate: Number(data.rate),
+    amount: Number(data.amount),
+  };
+};
+
+export const prepareFormDataProductRewardsToSend = (data: Partial<ProductRewardFormValues>):
+  Partial<ProductRewardItem> => {
+  if (!data) {
+    return null;
+  }
+
+  const rewardApplicationCondition = data.rewardApplicationCondition;
+
+  return {
+    ...prepareProductRewards(data),
+    reward_application_condition: rewardApplicationCondition && rewardApplicationCondition.value,
+  };
+};
+
+export const prepareProductRewardsToSend = (data: Partial<ProductReward>):
+  Partial<ProductRewardItem> => {
+  if (!data) {
+    return null;
+  }
+
+  const rewardApplicationCondition = rewardsTypesOptions
+    .find(el => el.label === data.rewardApplicationCondition);
+
+  return {
+    ...prepareProductRewards(data),
+    reward_application_condition: rewardApplicationCondition && rewardApplicationCondition.value,
   };
 };

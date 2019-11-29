@@ -16,9 +16,11 @@ import {
   AddProductAction,
   AddProductAprAction,
   AddProductFeeAction,
+  AddProductRewardAction,
   DeleteProductAction,
   DeleteProductAprAction,
   DeleteProductFeeAction,
+  DeleteProductRewardAction,
   FilterProductsAction,
   GetEndpointsProductServiceAction,
   GetInstitutionProductsAction,
@@ -27,6 +29,7 @@ import {
   GetProductAprsAction,
   GetProductDetailsAction,
   GetProductFeesAction,
+  GetProductRewardsAction,
   GetProductRuleAction,
   UpdateCardServiceAction,
   UpdateGeneralLegerAction,
@@ -34,6 +37,7 @@ import {
   UpdateProductAprAction,
   UpdateProductDetailsAction,
   UpdateProductFeeAction,
+  UpdateProductRewardAction,
   UpdateProductRulesAction,
 } from './actionTypes';
 import * as api from './api';
@@ -56,6 +60,10 @@ import {
   ProductItemDetailsResp,
   ProductItemGeneral,
   ProductItemResp,
+  ProductReward,
+  ProductRewardFormValues,
+  ProductRewardItem,
+  ProductRewardsIds,
   ProductRuleRequestPrepared,
   ProductRulesItem,
   ProductRulesItemResp,
@@ -66,6 +74,7 @@ import {
   prepareCardServiceDataToSend,
   prepareFormDataProductAprsToSend,
   prepareFormDataProductFeesToSend,
+  prepareFormDataProductRewardsToSend,
   prepareGeneralLedgerToSend,
   prepareGeneralProductDataToSend,
   prepareNewProductDataToSend,
@@ -73,6 +82,7 @@ import {
   prepareProductDetailsDataToSend,
   prepareProductFeesToSend,
   prepareProductFiltersParamsToSend,
+  prepareProductRewardsToSend,
   prepareProductRuleDataToSend,
   prepareProductRuleIdsToSend,
 } from './utils';
@@ -146,6 +156,18 @@ export type HandleUpdateProductFee = (data: Partial<ProductFee>) => Thunk<void>;
 
 export type DeleteProductFee = (data: ProductFeesIds) => DeleteProductFeeAction;
 export type HandleDeleteProductFee = (data: ProductFeesIds) => Thunk<void>;
+
+export type GetProductRewards = (id: number) => GetProductRewardsAction;
+export type HandleGetProductRewards = () => Thunk<void>;
+
+export type AddProductReward = (data: Partial<ProductRewardItem>) => AddProductRewardAction;
+export type HandleAddProductReward = (data: Partial<ProductRewardFormValues>) => Thunk<void>;
+
+export type UpdateProductReward = (data: Partial<ProductRewardItem>) => UpdateProductRewardAction;
+export type HandleUpdateProductReward = (data: Partial<ProductReward>) => Thunk<void>;
+
+export type DeleteProductReward = (data: ProductRewardsIds) => DeleteProductRewardAction;
+export type HandleDeleteProductReward = (data: ProductRewardsIds) => Thunk<void>;
 
 export type ResetProducts = () => void;
 
@@ -259,6 +281,27 @@ export const updateProductFee: UpdateProductFee = data => ({
 export const deleteProductFee: DeleteProductFee = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_FEE,
   payload: api.deleteProductFee(data),
+  meta: { data },
+});
+
+export const getProductRewards: GetProductRewards = id => ({
+  type: ActionTypeKeys.GET_PRODUCT_REWARDS,
+  payload: api.getProductRewards(id),
+});
+
+export const addProductReward: AddProductReward = data => ({
+  type: ActionTypeKeys.ADD_PRODUCT_REWARD,
+  payload: api.addProductReward(data),
+});
+
+export const updateProductReward: UpdateProductReward = data => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_REWARD,
+  payload: api.updateProductReward(data),
+});
+
+export const deleteProductReward: DeleteProductReward = data => ({
+  type: ActionTypeKeys.DELETE_PRODUCT_REWARD,
+  payload: api.deleteProductReward(data),
   meta: { data },
 });
 
@@ -574,6 +617,61 @@ export const handleDeleteProductFee: HandleDeleteProductFee = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteProductFee(data));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProductRewards: HandleGetProductRewards = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+
+        await dispatch(getProductRewards(productId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddProductReward: HandleAddProductReward = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+        const preparedValues = prepareFormDataProductRewardsToSend(data);
+
+        await dispatch(addProductReward({
+          ...preparedValues,
+          product_id: productId,
+        }));
+        await dispatch(handleGetProductRewards());
+        dispatch(resetForm(formNamesConst.PRODUCT_FEES));
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateProductReward: HandleUpdateProductReward = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareProductRewardsToSend(data);
+
+        await dispatch(updateProductReward(preparedValues));
+        await dispatch(handleGetProductRewards());
+      },
+      dispatch
+    );
+  };
+
+export const handleDeleteProductReward: HandleDeleteProductReward = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(deleteProductReward(data));
       },
       dispatch
     );

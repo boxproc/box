@@ -8,6 +8,8 @@ import {
   ProductDetailsResp,
   ProductFeeItems,
   ProductFeesIds,
+  ProductRewardItems,
+  ProductRewardsIds,
   ProductRuleResp,
   ProductsDataResp,
 } from './types';
@@ -104,6 +106,22 @@ export enum ActionTypeKeys {
   DELETE_PRODUCT_FEE = 'productDesigner/products/DELETE_PRODUCT_FEE',
   DELETE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FEE_FULFILLED',
   DELETE_PRODUCT_FEE_REJECTED = 'productDesigner/products/DELETE_PRODUCT_FEE_REJECTED',
+
+  GET_PRODUCT_REWARDS = 'productDesigner/products/GET_PRODUCT_REWARDS',
+  GET_PRODUCT_REWARDS_FULFILLED = 'productDesigner/products/GET_PRODUCT_REWARDS_FULFILLED',
+  GET_PRODUCT_REWARDS_REJECTED = 'productDesigner/products/GET_PRODUCT_REWARDS_REJECTED',
+
+  ADD_PRODUCT_REWARD = 'productDesigner/products/ADD_PRODUCT_REWARD',
+  ADD_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/ADD_PRODUCT_REWARD_FULFILLED',
+  ADD_PRODUCT_REWARD_REJECTED = 'productDesigner/products/ADD_PRODUCT_REWARD_REJECTED',
+
+  UPDATE_PRODUCT_REWARD = 'productDesigner/products/UPDATE_PRODUCT_REWARD',
+  UPDATE_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_REWARD_FULFILLED',
+  UPDATE_PRODUCT_REWARD_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_REWARD_REJECTED',
+
+  DELETE_PRODUCT_REWARD = 'productDesigner/products/DELETE_PRODUCT_REWARD',
+  DELETE_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_REWARD_FULFILLED',
+  DELETE_PRODUCT_REWARD_REJECTED = 'productDesigner/products/DELETE_PRODUCT_REWARD_REJECTED',
 
   RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
 }
@@ -441,6 +459,67 @@ export interface DeleteProductFeeRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_REJECTED;
 }
 
+export interface GetProductRewardsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS;
+}
+
+export interface GetProductRewardsFulfilledAction {
+  readonly payload: ProductRewardItems;
+  readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_FULFILLED;
+}
+
+export interface GetProductRewardsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_REJECTED;
+}
+
+export interface AddProductRewardAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD;
+}
+
+export interface AddProductRewardFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_FULFILLED;
+}
+
+export interface AddProductRewardRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_REJECTED;
+}
+
+export interface UpdateProductRewardAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD;
+}
+
+export interface UpdateProductRewardFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_FULFILLED;
+}
+
+export interface UpdateProductRewardRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_REJECTED;
+}
+
+export interface DeleteProductRewardAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD;
+}
+
+export interface DeleteProductRewardFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_FULFILLED;
+  readonly meta: { data: ProductRewardsIds };
+}
+
+export interface DeleteProductRewardRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_REJECTED;
+}
+
 export interface ResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
@@ -466,5 +545,9 @@ export type ProductsActionTypes =
   | UpdateProductFeeFulfilledAction
   | AddProductFeeFulfilledAction
   | DeleteProductFeeFulfilledAction
+  | GetProductRewardsFulfilledAction
+  | UpdateProductRewardFulfilledAction
+  | AddProductRewardFulfilledAction
+  | DeleteProductRewardFulfilledAction
   | UpdateGeneralLegerFulfilledAction
   | ResetProductsAction;

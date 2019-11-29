@@ -15,6 +15,7 @@ import {
   prepareProductAprsToRender,
   prepareProductDetailsData,
   prepareProductFeesToRender,
+  prepareProductRewardsToRender,
   prepareProductRuleData,
 } from './utils';
 
@@ -274,6 +275,24 @@ export const selectProductFeesForRules = createSelector(
   fees => fees && fees.asMutable().map(fee => {
     return {
       name: fee.product_fee_id,
+      description: fee.description,
+    };
+  })
+);
+
+export const selectDefaultProductRewards = (state: StoreState) =>
+  state.productDesigner.products.productRewards;
+
+export const selectProductRewards = createSelector(
+  selectDefaultProductRewards,
+  fees => fees && fees.asMutable().map(fee => prepareProductRewardsToRender(fee))
+);
+
+export const selectProductRewardsForRules = createSelector(
+  selectDefaultProductRewards,
+  fees => fees && fees.asMutable().map(fee => {
+    return {
+      name: fee.product_reward_id,
       description: fee.description,
     };
   })

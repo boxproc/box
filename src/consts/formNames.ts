@@ -17,6 +17,7 @@ export enum formNamesConst {
   PRODUCT_SERVICES = 'productServicesForm',
   PRODUCT_APRS = 'productAprsForm',
   PRODUCT_FEES = 'productFeesForm',
+  PRODUCT_REWARDS = 'productRewardsForm',
   PRODUCT_LOYALTY_AND_BONUS = 'productLoyaltyAndBonus',
   PRODUCT_GENERAL_LEDGER = 'productGeneralLedger',
 
