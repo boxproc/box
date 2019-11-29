@@ -2,6 +2,7 @@ import {
   InstitutionProducts,
   InstitutionProductServiceEndpoints,
   InstitutionProductServiceInterfaces,
+  ProductAprIds,
   ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
@@ -371,7 +372,7 @@ export interface DeleteProductAprAction {
 export interface DeleteProductAprFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED;
-  readonly meta: { id: number };
+  readonly meta: { data: ProductAprIds };
 }
 
 export interface DeleteProductAprRejectedAction {

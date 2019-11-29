@@ -68,27 +68,15 @@ const AprsTable: React.FC<AprsTableProps> = ({
     {
       maxWidth: 90,
       sortable: true,
-      accessor: 'id',
-      Header: <TableHeader title="ID" />,
-      Cell: (props: TCell<'id'>) => (
+      accessor: 'productAprId',
+      Header: <TableHeader title="APR ID" />,
+      Cell: (props: TCell<'productAprId'>) => (
         <TableCell
           value={props.value}
           isSmaller={true}
           isNumber={true}
         />
       ),
-    },
-    {
-      maxWidth: 90,
-      sortable: true,
-      accessor: 'repaymentSequence',
-      Header: <TableHeader title="Repayment Priority" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductApr,
-        isSmaller: true,
-        isNumber: true,
-        cellInfo,
-      }),
     },
     {
       maxWidth: 380,
@@ -148,7 +136,10 @@ const AprsTable: React.FC<AprsTableProps> = ({
           iconSize="15"
           withConfirmation={true}
           confirmationText={`Confirm want you delete APR?`}
-          onClick={() => deleteProductApr(cellInfo.original.id)}
+          onClick={() => deleteProductApr({
+            productId: cellInfo.original.productId,
+            productAprId: cellInfo.original.productAprId,
+          })}
         />
       ),
     },

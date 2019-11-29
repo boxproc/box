@@ -45,6 +45,7 @@ import {
   NewProductPrepared,
   ProductApr,
   ProductAprFormValues,
+  ProductAprIds,
   ProductAprItem,
   ProductFee,
   ProductFeeFormValues,
@@ -131,8 +132,8 @@ export type HandleAddProductApr = (data: Partial<ProductAprFormValues>) => Thunk
 export type UpdateProductApr = (data: Partial<ProductAprItem>) => UpdateProductAprAction;
 export type HandleUpdateProductApr = (data: Partial<ProductApr>) => Thunk<void>;
 
-export type DeleteProductApr = (id: number) => DeleteProductAprAction;
-export type HandleDeleteProductApr = (id: number) => Thunk<void>;
+export type DeleteProductApr = (data: ProductAprIds) => DeleteProductAprAction;
+export type HandleDeleteProductApr = (data: ProductAprIds) => Thunk<void>;
 
 export type GetProductFees = (id: number) => GetProductFeesAction;
 export type HandleGetProductFees = () => Thunk<void>;
@@ -234,10 +235,10 @@ export const updateProductApr: UpdateProductApr = data => ({
   payload: api.updateProductApr(data),
 });
 
-export const deleteProductApr: DeleteProductApr = id => ({
+export const deleteProductApr: DeleteProductApr = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_APR,
-  payload: api.deleteProductApr(id),
-  meta: { id },
+  payload: api.deleteProductApr(data),
+  meta: { data },
 });
 
 export const getProductFees: GetProductFees = id => ({
@@ -513,11 +514,11 @@ export const handleUpdateProductApr: HandleUpdateProductApr = data =>
     );
   };
 
-export const handleDeleteProductApr: HandleDeleteProductApr = id =>
+export const handleDeleteProductApr: HandleDeleteProductApr = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteProductApr(id));
+        await dispatch(deleteProductApr(data));
       },
       dispatch
     );

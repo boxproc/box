@@ -3,7 +3,14 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, NumberFormatField, OkCancelButtons, SelectField, MaskField } from 'components';
+import {
+  Hr,
+  InputField,
+  MaskField,
+  NumberFormatField,
+  OkCancelButtons,
+  SelectField,
+} from 'components';
 
 import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -60,7 +67,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           flexWrap="wrap"
         >
           {isEditMode && (
-            <Box width={[1 / 6]} p="10px">
+            <Box width="150px" p="10px">
               <Field
                 id="id"
                 name="id"
@@ -140,7 +147,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
           {isChosenLoanProductType && !isEditMode && (
             <React.Fragment>
-              <Box width={[1 / 6]} p="10px">
+              <Box width="150px" p="10px">
                 <Field
                   id="nrLoanCycles"
                   name="nrLoanCycles"
@@ -152,7 +159,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   validate={[formErrorUtil.required, formErrorUtil.isInteger]}
                 />
               </Box>
-              <Box width={[1 / 5]} p="10px">
+              <Box width="150px" p="10px">
                 <Field
                   id="loanStartDate"
                   name="loanStartDate"
@@ -167,7 +174,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </React.Fragment>
           )}
           {isEditMode && (
-            <Box width={[1 / 6]} p="10px">
+            <Box width="150px" p="10px">
               <Field
                 id="productId"
                 name="productId"
@@ -301,7 +308,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
           {isEditMode && (
             <React.Fragment>
-              <Box width={[1 / 6]} p="10px">
+              <Box width="150px" p="10px">
                 <Field
                   id="lastCycleDate"
                   name="lastCycleDate"
@@ -311,7 +318,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   readOnly={true}
                 />
               </Box>
-              <Box width={[1 / 6]} p="10px">
+              <Box width="150px" p="10px">
                 <Field
                   id="dateCreated"
                   name="dateCreated"
@@ -320,7 +327,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   readOnly={true}
                 />
               </Box>
-              <Box width={[1 / 6]} p="10px">
+              <Box width="150px" p="10px">
                 <Field
                   id="dateClosed"
                   name="dateClosed"

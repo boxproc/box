@@ -16,6 +16,7 @@ import { apiClient } from 'services';
 import {
   GeneralLedgerItem,
   NewProductPrepared,
+  ProductAprIds,
   ProductAprItem,
   ProductFeeItem,
   ProductFeesIds,
@@ -103,9 +104,12 @@ export const addProductApr = (data: Partial<ProductAprItem>) =>
 export const updateProductApr = (data: Partial<ProductAprItem>) =>
   apiClient.post(productsPathNames.UPDATE_APR, { data });
 
-export const deleteProductApr = (id: number) =>
+export const deleteProductApr = (data: ProductAprIds) =>
   apiClient.post(productsPathNames.DELETE_APR, {
-    data: { id },
+    data: {
+      product_id: data.productId,
+      product_apr_id: data.productAprId,
+    },
   });
 
 export const getProductFees = (id: number) =>

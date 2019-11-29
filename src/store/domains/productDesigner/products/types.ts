@@ -299,9 +299,8 @@ export interface GeneralLedgerItemPrepared {
 }
 
 export interface ProductAprItem {
-  id: number;
   product_id: number;
-  repayment_sequence: number;
+  product_apr_id: number;
   description: string;
   calculation_method: string | number;
   rate: number;
@@ -313,9 +312,8 @@ export interface ProductAprItems {
 }
 
 export interface ProductAprPlainInfo {
-  id: number;
+  productAprId: number;
   productId: number;
-  repaymentSequence: number;
   description: string;
   rate: string;
   graceNumberOfDays: number;
@@ -365,6 +363,11 @@ export interface ProductFeeFormValues extends ProductFeePlainInfo {
 
 export interface ProductFees {
   product_fees: Array<ProductFee>;
+}
+
+export interface ProductAprIds {
+  productId: number;
+  productAprId: number;
 }
 
 export interface ProductFeesIds {

@@ -384,9 +384,8 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
   const calculationMethod = aprTypesOptions.find(el => el.value === data.calculation_method);
 
   return {
-    id: data.id,
+    productAprId: data.product_apr_id,
     productId: data.product_id,
-    repaymentSequence: data.repayment_sequence,
     description: data.description,
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: data.rate && data.rate.toFixed(2),
@@ -400,9 +399,8 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
   }
 
   return {
-    id: data.id,
+    product_apr_id: data.productAprId,
     product_id: data.productId,
-    repayment_sequence: Number(data.repaymentSequence),
     description: data.description,
     rate: Number(data.rate),
     grace_number_of_days: Number(data.graceNumberOfDays),

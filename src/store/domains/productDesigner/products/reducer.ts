@@ -46,7 +46,10 @@ const productsReducer =
         return state.set('productAprs', action.payload.product_aprs);
 
       case ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED:
-        return state.set('productAprs', state.productAprs.filter(el => el.id !== action.meta.id));
+        return state.set(
+          'productAprs',
+          state.productAprs.filter(el => el.product_apr_id !== action.meta.data.productAprId)
+        );
 
       case ActionTypeKeys.GET_PRODUCT_FEES_FULFILLED:
         return state.set('productFees', action.payload.product_fees);

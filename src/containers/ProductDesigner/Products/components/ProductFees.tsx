@@ -24,7 +24,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
 }) => {
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
-      <Box width="300px" p="10px">
+      <Box width={[2 / 7]} p="10px">
         <Field
           id="description"
           name="description"
@@ -35,7 +35,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="280px" p="10px">
+      <Box width={[2 / 7]} p="10px">
         <Field
           id="feeApplicationCondition"
           name="feeApplicationCondition"
@@ -48,7 +48,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="140px" p="10px">
+      <Box width={[1 / 7]} p="10px">
         <Field
           id="rate"
           name="rate"
@@ -61,7 +61,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={!isOnlyAmount ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
-      <Box width="140px" p="10px">
+      <Box width={[1 / 7]} p="10px">
         <Field
           id="amount"
           name="amount"
@@ -74,7 +74,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={!isOnlyRate ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
-      <Box width="90px" pb="20px">
+      <Box width={[1 / 7]} pb="20px">
         <Button
           text={isDisabled ? 'Adding...' : 'Add Fee'}
           iconName={iconNamesConst.PLUS}

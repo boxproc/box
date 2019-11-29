@@ -255,7 +255,7 @@ export const selectProductAprsForRules = createSelector(
   selectDefaultProductAprs,
   aprs => aprs && aprs.asMutable().map(apr => {
     return {
-      name: apr.id,
+      name: apr.product_apr_id,
       description: apr.description,
     };
   })
