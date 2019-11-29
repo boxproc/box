@@ -86,6 +86,32 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     textarea.focus();
   };
 
+  const contextSubMenuItems = React.useMemo(
+    () => [
+      {
+        title: 'Data elements',
+        items: eventDataElemsItems,
+        noDataStr: 'No available data elements',
+      },
+      {
+        title: 'APRs',
+        items: productAprsItems,
+        noDataStr: 'No available APRs',
+      },
+      {
+        title: 'Fees',
+        items: productFeesItems,
+        noDataStr: 'No available Fees',
+      },
+      {
+        title: 'Rewards',
+        items: productRewardsItems,
+        noDataStr: 'No available Rewards',
+      },
+    ],
+    [eventDataElemsItems, productAprsItems, productFeesItems, productRewardsItems]
+  );
+
   return (
     <React.Fragment>
       <Box mx="-10px">
@@ -137,28 +163,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               placeholder="Enter Script"
               component={HighlightCodeField}
               label="Script"
-              contextSubMenuItems={[
-                {
-                  title: 'Data elements',
-                  items: eventDataElemsItems,
-                  noDataStr: 'No available data elements',
-                },
-                {
-                  title: 'APRs',
-                  items: productAprsItems,
-                  noDataStr: 'No available APRs',
-                },
-                {
-                  title: 'Fees',
-                  items: productFeesItems,
-                  noDataStr: 'No available Fees',
-                },
-                {
-                  title: 'Rewards',
-                  items: productRewardsItems,
-                  noDataStr: 'No available Rewards',
-                },
-              ]}
+              contextSubMenuItems={contextSubMenuItems}
               onContextMenuClick={onContextMenuClick}
               menuId="rulesCodeContextMenu"
               checkJSSyntax={true}

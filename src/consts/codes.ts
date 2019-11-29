@@ -208,6 +208,15 @@ export const actionTypesOptions = [
   { value: 'Z', label: 'Update aux counter 3' },
 ];
 
+export enum actionTypesCodeKeys {
+  APPROVE_DENY = 'R',
+  SET_TRANSACTION_APR = 'T',
+}
+
+export enum eventTypesCodeKeys {
+  TRANSACTION = 3,
+}
+
 export enum codeKeys {
   ENTER = 'Enter',
   ESCAPE = 'Escape',

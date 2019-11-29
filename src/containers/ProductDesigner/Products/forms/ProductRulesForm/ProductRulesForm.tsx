@@ -1,86 +1,76 @@
 import React from 'react';
 
-import { InjectedFormProps, reduxForm } from 'redux-form';
+import { ExternalSpinnerProps, withSpinner } from 'components';
+import { rulesInitialFormValues } from 'containers/ProductDesigner/Products/consts';
+import RulesForm from './RulesForm';
 
-import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
-
-import { formNamesConst } from 'consts';
-
-import { ProductRules } from 'containers/ProductDesigner/Products/components';
+import { actionTypesCodeKeys, eventTypesCodeKeys } from 'consts';
 
 import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface ProductRulesForm extends ExternalSpinnerProps {
+interface ProductRulesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
+  currentProductScript: string;
+  initialValues: any;
+  isLoading: boolean;
   rulesValues: {
     eventId: SelectValues;
     actionType: SelectValues;
   };
 }
 
-type EditProductRulesFormAllProps = ProductRulesForm &
-  InjectedFormProps<{}, ProductRulesForm>;
-
-const EditProductRulesForm: React.FC<EditProductRulesFormAllProps> = ({
-  handleSubmit,
+const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   onCancel,
   getProductRule,
   updateProductRules,
-  dirty,
-  pristine,
   rulesValues,
-  change,
+  initialValues,
+  isLoading,
+  currentProductScript,
 }) => {
+  const [initialScript, setInitialScript] = React.useState(null);
+
   const { eventId, actionType } = rulesValues;
+
+  const script = React.useMemo(
+    () => currentProductScript ? currentProductScript : initialScript,
+    [currentProductScript, initialScript]
+  );
 
   React.useEffect(
     () => {
-      if (!eventId && !actionType) {
-        getProductRule();
-      }
-    },
-    [getProductRule, eventId, actionType]
-  );
-
-  const handleGetRule = React.useCallback(
-    () => {
       if (eventId && actionType) {
-        getProductRule();
+        if (eventId.value === eventTypesCodeKeys.TRANSACTION
+          && actionType.value === actionTypesCodeKeys.APPROVE_DENY) {
+          setInitialScript(rulesInitialFormValues.transactionApproveDeny);
+        } else if (eventId.value === eventTypesCodeKeys.TRANSACTION
+          && actionType.value === actionTypesCodeKeys.SET_TRANSACTION_APR) {
+          setInitialScript(rulesInitialFormValues.transactionSetTransactionApr);
+        } else {
+          setInitialScript(null);
+        }
       }
     },
-    [getProductRule, eventId, actionType]
-  );
-
-  const handleSubmitForm = React.useCallback(
-    handleSubmit(updateProductRules),
-    [handleSubmit, updateProductRules]
+    [getProductRule, eventId, actionType, initialScript]
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <ProductRules
-        eventValue={eventId}
-        onChangeValues={handleGetRule}
-        changeFormField={change}
-      />
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-        withCancelConfirmation={dirty}
-        disabledOk={pristine}
-      />
-    </form>
+    <RulesForm
+      initialValues={{
+        ...initialValues,
+        script,
+      }}
+      isLoading={isLoading}
+      onCancel={onCancel}
+      getProductRule={getProductRule}
+      updateProductRules={updateProductRules}
+      rulesValues={rulesValues}
+    />
   );
 };
 
-export default reduxForm<{}, ProductRulesForm>({
-  form: formNamesConst.PRODUCT_RULES,
-  destroyOnUnmount: true,
-  enableReinitialize: true,
-})(withSpinner()(EditProductRulesForm));
+export default withSpinner()(ProductRulesForm);

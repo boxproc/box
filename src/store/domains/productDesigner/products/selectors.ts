@@ -215,6 +215,11 @@ export const selectCurrentProductRule = createSelector(
   }
 );
 
+export const selectCurrentProductScript = createSelector(
+  selectCurrentProductRule,
+  rule => rule && rule.script
+);
+
 export const selectDefaultInstitutionProducts = (state: StoreState) =>
   state.productDesigner.products.institutionProducts;
 
