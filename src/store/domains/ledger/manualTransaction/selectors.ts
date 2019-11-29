@@ -10,3 +10,8 @@ export const selectLedgerManualTransaction = createSelector(
   selectDefaultLedgerManualTransaction,
   transaction => transaction && prepareResultDataToRender(transaction)
 );
+
+export const selectLedgerManualTransactionId = createSelector(
+  selectLedgerManualTransaction,
+  transaction => transaction && transaction.transactionId
+);
