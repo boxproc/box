@@ -5,11 +5,11 @@ import ProductRules from './ProductRules';
 
 import {
   handleFilterDictionaryEventDataElemsById,
-  handleGetProductAprs,
-  handleGetProductFees,
+  handleGetProductAprsFeesRewards,
   selectEventDataElemsForRules,
   selectProductAprsForRules,
   selectProductFeesForRules,
+  selectProductRewardsForRules,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -18,13 +18,13 @@ const mapStateToProps = (state: StoreState) => ({
   eventDataElemsItems: selectEventDataElemsForRules(state),
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),
+  productRewardsItems: selectProductRewardsForRules(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterDictionaryEventDataElemsById: handleFilterDictionaryEventDataElemsById,
-    getProductAprs: handleGetProductAprs,
-    getProductFees: handleGetProductFees,
+    getProductAprsFeesRewards: handleGetProductAprsFeesRewards,
   },
   dispatch
 );

@@ -11,8 +11,7 @@ import { actionTypesOptions } from 'consts';
 import {
   DictionaryEventDataElemsItem,
   HandleFilterDictionaryEventDataElemsById,
-  HandleGetProductAprs,
-  HandleGetProductFees,
+  HandleGetProductAprsFeesRewards,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -25,12 +24,12 @@ interface ContextItemProps {
 
 interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
-  getProductAprs: HandleGetProductAprs;
-  getProductFees: HandleGetProductFees;
+  getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
   eventValue: SelectValues;
   eventDataElemsItems: Array<DictionaryEventDataElemsItem>;
   productAprsItems: Array<ContextItemProps>;
   productFeesItems: Array<ContextItemProps>;
+  productRewardsItems: Array<ContextItemProps>;
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
 }
@@ -53,9 +52,9 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   dictionaryEventsOptions,
   isDictionaryEventsLoading,
   filterDictionaryEventDataElemsById,
-  getProductAprs,
+  getProductAprsFeesRewards,
   productFeesItems,
-  getProductFees,
+  productRewardsItems,
   eventValue,
   eventDataElemsItems,
   productAprsItems,
@@ -64,10 +63,9 @@ const ProductRules: React.FC<ProductRulesProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getProductAprs();
-      getProductFees();
+      getProductAprsFeesRewards();
     },
-    [getProductAprs, getProductFees]
+    [getProductAprsFeesRewards]
   );
 
   React.useEffect(
@@ -154,6 +152,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                   title: 'Fees',
                   items: productFeesItems,
                   noDataStr: 'No available Fees',
+                },
+                {
+                  title: 'Rewards',
+                  items: productRewardsItems,
+                  noDataStr: 'No available Rewards',
                 },
               ]}
               onContextMenuClick={onContextMenuClick}

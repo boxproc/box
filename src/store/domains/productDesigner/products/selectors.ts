@@ -285,15 +285,15 @@ export const selectDefaultProductRewards = (state: StoreState) =>
 
 export const selectProductRewards = createSelector(
   selectDefaultProductRewards,
-  fees => fees && fees.asMutable().map(fee => prepareProductRewardsToRender(fee))
+  rewards => rewards && rewards.asMutable().map(reward => prepareProductRewardsToRender(reward))
 );
 
 export const selectProductRewardsForRules = createSelector(
   selectDefaultProductRewards,
-  fees => fees && fees.asMutable().map(fee => {
+  rewards => rewards && rewards.asMutable().map(reward => {
     return {
-      name: fee.product_reward_id,
-      description: fee.description,
+      name: reward.product_reward_id,
+      description: reward.description,
     };
   })
 );

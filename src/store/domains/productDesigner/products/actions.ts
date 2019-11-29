@@ -169,6 +169,8 @@ export type HandleUpdateProductReward = (data: Partial<ProductReward>) => Thunk<
 export type DeleteProductReward = (data: ProductRewardsIds) => DeleteProductRewardAction;
 export type HandleDeleteProductReward = (data: ProductRewardsIds) => Thunk<void>;
 
+export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
+
 export type ResetProducts = () => void;
 
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
@@ -341,6 +343,7 @@ export const handleGetProductServices: HandleGetProductServices = () =>
       async () => {
         const state = getState();
         const currentInstitutionId = selectCurrentInstitutionId(state);
+
         await Promise.all([
           dispatch(getInterfacesService(currentInstitutionId)),
           dispatch(getEndpointsService(currentInstitutionId)),
@@ -672,6 +675,23 @@ export const handleDeleteProductReward: HandleDeleteProductReward = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(deleteProductReward(data));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+
+        await Promise.all([
+          dispatch(getProductAprs(productId)),
+          dispatch(getProductRewards(productId)),
+          dispatch(getProductRewards(productId)),
+        ]);
       },
       dispatch
     );
