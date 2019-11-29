@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, NumberFormatField, OkCancelButtons, SelectField } from 'components';
+import { Hr, InputField, NumberFormatField, OkCancelButtons, SelectField, MaskField } from 'components';
 
 import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
 
@@ -22,6 +22,7 @@ export interface CustomerInfoProps {
   currentInstitution: SelectValues;
   isEditMode: boolean;
   hasProductOverride: boolean;
+  isChosenLoanProductType: boolean;
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
@@ -35,6 +36,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   getCyclesDescriptions,
   cyclesDescriptionsOptions,
   isEditMode = false,
+  isChosenLoanProductType,
   hasProductOverride,
   onCancel,
   dirty,
@@ -136,6 +138,34 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
+          {isChosenLoanProductType && !isEditMode && (
+            <React.Fragment>
+              <Box width={[1 / 6]} p="10px">
+                <Field
+                  id="nrLoanCycles"
+                  name="nrLoanCycles"
+                  component={InputField}
+                  label="Loan Cycles"
+                  placeholder="Enter Loan Cycles"
+                  readOnly={isEditMode}
+                  isNumber={true}
+                  validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+                />
+              </Box>
+              <Box width={[1 / 5]} p="10px">
+                <Field
+                  id="loanStartDate"
+                  name="loanStartDate"
+                  component={MaskField}
+                  label="Loan Start Date"
+                  placeholder={dateFormat.DATE}
+                  maskPlaceholder={dateFormat.DATE}
+                  mask={maskFormat.DATE}
+                  validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                />
+              </Box>
+            </React.Fragment>
+          )}
           {isEditMode && (
             <Box width={[1 / 6]} p="10px">
               <Field
@@ -168,7 +198,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               <Field
                 id="dateOfProductOverride"
                 name="dateOfProductOverride"
-                component={InputField}
+                component={MaskField}
                 label="Date of Product Override"
                 placeholder={dateFormat.DATE}
                 maskPlaceholder={dateFormat.DATE}

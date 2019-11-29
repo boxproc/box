@@ -79,7 +79,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 
       const productId = currentProduct.value;
       const product = institutionProducts.find(el => el.id === productId);
-      const cycleId = product.defaultStatementCycleId;
+      const cycleId = product && product.defaultStatementCycleId;
 
       return cyclesDescriptionsOptions.find(el => el.value === cycleId);
     },
@@ -95,6 +95,25 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
     [defaultStatementCycleValue, change]
   );
 
+  const currentProductType = React.useMemo(
+    () => {
+      if (!currentProduct) {
+        return undefined;
+      }
+
+      const productId = currentProduct.value;
+      const product = institutionProducts.find(el => el.id === productId);
+
+      return product.productType;
+    },
+    [institutionProducts, currentProduct]
+  );
+
+  const isChosenLoanProductType = React.useMemo(
+    () => currentProductType === productTypesCodes.LOAN,
+    [currentProductType]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitFormAction),
     [handleSubmit, submitFormAction]
@@ -107,6 +126,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
           <GeneralAccountInfo
             institutionsOptions={institutionsOptions}
             isEditMode={isEditMode}
+            isChosenLoanProductType={isChosenLoanProductType}
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}

@@ -237,6 +237,7 @@ export const selectInstitutionProducts = createSelector(
         id: product.id,
         name: product.name,
         defaultStatementCycleId: product.default_statement_cycle_id,
+        productType: product.product_type,
       };
     });
   }

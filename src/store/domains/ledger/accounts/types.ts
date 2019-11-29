@@ -111,6 +111,8 @@ export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlain
   institutionId: SelectValues;
   statementCycle: SelectValues;
   product: SelectValues;
+  nrLoanCycles?: boolean;
+  loanStartDate?: string;
 }
 
 export interface LedgerAccountsFilter extends LedgerAccountId {

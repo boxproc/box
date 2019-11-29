@@ -125,11 +125,13 @@ export const institutionProducts: InstitutionProducts = {
       id: 1,
       name: 'Test revolving credit product',
       default_statement_cycle_id: 1,
+      product_type: 'C',
     },
     {
       id: 2,
       name: 'Product: debit',
       default_statement_cycle_id: 2,
+      product_type: 'D',
     },
   ],
 };

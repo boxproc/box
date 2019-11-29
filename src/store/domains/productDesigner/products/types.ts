@@ -248,10 +248,12 @@ export interface ProductRuleRequestPrepared {
 
 export interface InstitutionProductsItem extends ProductItemInfoPlain {
   default_statement_cycle_id: number;
+  product_type: string;
 }
 
 export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
   defaultStatementCycleId: number;
+  productType: string;
 }
 
 export interface InstitutionProducts {
