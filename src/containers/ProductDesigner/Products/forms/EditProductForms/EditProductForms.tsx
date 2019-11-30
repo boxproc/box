@@ -7,7 +7,6 @@ import {
   FeesForm,
   GeneralLedgerFrom,
   GeneralProductForm,
-  LoyaltyAndBonusForm,
   ProductDetailsForm,
   ProductRulesForm,
   RewardsForm,
@@ -53,9 +52,6 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       </TabsPanel>
       <TabsPanel title="APRs">
         <AprsForm onCancel={onCancel} />
-      </TabsPanel>
-      <TabsPanel title="Loyalty and Bonus">
-        <LoyaltyAndBonusForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Services">
         <ProductServicesForm onCancel={onCancel} />
