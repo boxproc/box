@@ -7,6 +7,9 @@ export const ledgerStatementsInitialState: ImmutableObject<LedgerStatementsState
   statements: Immutable([]),
   transactions: Immutable([]),
   accountStatements: Immutable([]),
+  statementAprs: Immutable([]),
+  statementFees: Immutable([]),
+  statementRewards: Immutable([]),
 });
 
 const ledgerStatementsReducer =
@@ -23,6 +26,15 @@ const ledgerStatementsReducer =
 
       case ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED:
         return state.set('accountStatements', action.payload.statements);
+
+      case ActionTypeKeys.GET_LEDGER_STATEMENT_APRS_FULFILLED:
+        return state.set('statementAprs', action.payload.statement_aprs);
+
+      case ActionTypeKeys.GET_LEDGER_STATEMENT_FEES_FULFILLED:
+        return state.set('statementFees', action.payload.statement_fees);
+
+      case ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS_FULFILLED:
+        return state.set('statementRewards', action.payload.statement_rewards);
 
       case ActionTypeKeys.RESET_STATEMENTS:
         return state = ledgerStatementsInitialState;

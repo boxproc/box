@@ -16,7 +16,6 @@ import {
   Cards,
   GeneralAccountInfo,
   Overdue,
-  RepaymentStatusTable,
 } from 'containers/Ledger/Accounts/components';
 
 import {
@@ -32,7 +31,6 @@ interface AccountFormProps extends ExternalSpinnerProps {
   cyclesDescriptionsOptions: Array<SelectValues>;
   institutionProducts: Array<InstitutionProductsItemPrepared>;
   currentProduct: SelectValues;
-  accountProductType: string;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
@@ -47,7 +45,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   updateLedgerAccount,
   addLedgerAccount,
   institutionsOptions,
-  accountProductType,
   currentProduct,
   institutionProducts,
   cyclesDescriptionsOptions,
@@ -64,11 +61,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   const submitFormAction = React.useMemo(
     () => isEditMode ? updateLedgerAccount : addLedgerAccount,
     [updateLedgerAccount, addLedgerAccount, isEditMode]
-  );
-
-  const isLoanProductType = React.useMemo(
-    () => accountProductType === productTypesCodes.LOAN,
-    [accountProductType]
   );
 
   const defaultStatementCycleValue = React.useMemo(
@@ -156,11 +148,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         {isEditMode && (
           <TabsPanel title="Statements">
             <AccountStatements onCancel={onCancel} />
-          </TabsPanel>
-        )}
-        {isEditMode && isLoanProductType && (
-          <TabsPanel title="Repayment Status">
-            <RepaymentStatusTable onCancel={onCancel} />
           </TabsPanel>
         )}
       </Tabs>

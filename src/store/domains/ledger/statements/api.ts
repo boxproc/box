@@ -2,7 +2,15 @@ import { lenderStatementsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 import { LedgerId } from '../customers';
+// import {
+//   ledgerAccountStatementAprItems,
+//   ledgerAccountStatementFeeItems,
+//   ledgerAccountStatementRewardItems,
+//   ledgerAccountStatementsItems,
+// } from './mock';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
+
+// import { throttleUtil } from 'utils';
 
 // import { ledgerAccountStatementsItems, ledgerStatementsItems } from './mock';
 
@@ -30,4 +38,22 @@ export const getLedgerAccountStatements = (accountId: number) =>
   // throttleUtil.getDataAfter(ledgerAccountStatementsItems, 500);
   apiClient.post(lenderStatementsPathNames.GET_ACCOUNT_STATEMENTS, {
     data: { account_id: accountId },
+  });
+
+export const getLedgerAccountStatementAprs = (statementId: number) =>
+  // throttleUtil.getDataAfter(ledgerAccountStatementAprItems, 500);
+  apiClient.post(lenderStatementsPathNames.GET_ACCOUNT_STATEMENT_APRS, {
+    data: { statement_id: statementId },
+  });
+
+export const getLedgerAccountStatementFees = (statementId: number) =>
+  // throttleUtil.getDataAfter(ledgerAccountStatementFeeItems, 500);
+  apiClient.post(lenderStatementsPathNames.GET_ACCOUNT_STATEMENT_FEES, {
+    data: { statement_id: statementId },
+  });
+
+export const getLedgerAccountStatementRewards = (statementId: number) =>
+  // throttleUtil.getDataAfter(ledgerAccountStatementRewardItems, 500);
+  apiClient.post(lenderStatementsPathNames.GET_ACCOUNT_STATEMENTS_REWARDS, {
+    data: { statement_id: statementId },
   });

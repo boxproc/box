@@ -5,8 +5,6 @@ import { ActionTypeKeys, ConstsActionTypes } from './actionTypes';
 import { ConstsState } from './types';
 
 export const constsInitialState: ImmutableObject<ConstsState> = Immutable({
-  currencies: Immutable([]),
-  countries: Immutable([]),
   institutions: Immutable([]),
 });
 

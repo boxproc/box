@@ -16,7 +16,6 @@ import {
   selectCyclesDescriptionsOptions,
   selectInstitutionProducts,
   selectInstitutionsOptions,
-  selectLedgerCurrentAccountProductType,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
@@ -28,7 +27,6 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  accountProductType: selectLedgerCurrentAccountProductType(state),
   institutionProducts: selectInstitutionProducts(state),
   cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
   institutionsOptions: selectInstitutionsOptions(state),

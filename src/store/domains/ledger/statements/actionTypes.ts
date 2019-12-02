@@ -1,7 +1,10 @@
 import { ApiResponse } from 'types';
 import {
-  LedgerAccountStatementItem,
+  LedgerAccountStatementItems,
+  LedgerStatementAprItems,
+  LedgerStatementFeeItems,
   LedgerStatementItems,
+  LedgerStatementRewardItems,
   LedgerStatementTransactionsItems,
 } from './types';
 
@@ -27,6 +30,19 @@ export enum ActionTypeKeys {
   'ledger/statements/GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED',
   GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED =
   'ledger/statements/GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED',
+
+  GET_LEDGER_STATEMENT_APRS = 'ledger/statements/GET_LEDGER_STATEMENT_APRS',
+  GET_LEDGER_STATEMENT_APRS_FULFILLED = 'ledger/statements/GET_LEDGER_STATEMENT_APRS_FULFILLED',
+  GET_LEDGER_STATEMENT_APRS_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_APRS_REJECTED',
+
+  GET_LEDGER_STATEMENT_FEES = 'ledger/statements/GET_LEDGER_STATEMENT_FEES',
+  GET_LEDGER_STATEMENT_FEES_FULFILLED = 'ledger/statements/GET_LEDGER_STATEMENT_FEES_FULFILLED',
+  GET_LEDGER_STATEMENT_FEES_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_FEES_REJECTED',
+
+  GET_LEDGER_STATEMENT_REWARDS = 'ledger/statements/GET_LEDGER_STATEMENT_REWARDS',
+  GET_LEDGER_STATEMENT_REWARDS_FULFILLED =
+  'ledger/statements/GET_LEDGER_STATEMENT_REWARDS_FULFILLED',
+  GET_LEDGER_STATEMENT_REWARDS_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_REWARDS_REJECTED',
 
   RESET_STATEMENTS = 'ledger/statements/RESET_STATEMENTS',
 }
@@ -80,13 +96,58 @@ export interface GetLedgerAccountStatementsAction {
 }
 
 export interface GetLedgerAccountStatementsFulfilledAction {
-  readonly payload: { statements: Array<LedgerAccountStatementItem> };
+  readonly payload: LedgerAccountStatementItems;
   readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_FULFILLED;
 }
 
 export interface GetLedgerAccountStatementsRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED;
+}
+
+export interface GetLedgerStatementAprsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS;
+}
+
+export interface GetLedgerStatementAprsFulfilledAction {
+  readonly payload: LedgerStatementAprItems;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS_FULFILLED;
+}
+
+export interface GetLedgerStatementAprsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS_REJECTED;
+}
+
+export interface GetLedgerStatementFeesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES;
+}
+
+export interface GetLedgerStatementFeesFulfilledAction {
+  readonly payload: LedgerStatementFeeItems;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES_FULFILLED;
+}
+
+export interface GetLedgerStatementFeesRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES_REJECTED;
+}
+
+export interface GetLedgerStatementRewardsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS;
+}
+
+export interface GetLedgerStatementRewardsFulfilledAction {
+  readonly payload: LedgerStatementRewardItems;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS_FULFILLED;
+}
+
+export interface GetLedgerStatementRewardsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS_REJECTED;
 }
 
 export interface ResetStatementsAction {
@@ -99,4 +160,7 @@ export type LedgerStatementsActionTypes =
   | FilterLedgerStatementsByIdFulfilledAction
   | GetLedgerAccountStatementsFulfilledAction
   | GetLedgerStatementTransactionsAction
+  | GetLedgerStatementAprsFulfilledAction
+  | GetLedgerStatementFeesFulfilledAction
+  | GetLedgerStatementRewardsFulfilledAction
   | ResetStatementsAction;

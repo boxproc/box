@@ -1,8 +1,9 @@
 import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
+import { openModal } from 'store/domains/modals';
 import { setIsOpenFilter } from 'store/domains/utils';
 import { Thunk } from 'types';
 import { cookiesUtil, errorDecoratorUtil } from 'utils';
@@ -12,6 +13,9 @@ import {
   FilterLedgerStatementsAction,
   FilterLedgerStatementsByIdAction,
   GetLedgerAccountStatementsAction,
+  GetLedgerStatementAprsAction,
+  GetLedgerStatementFeesAction,
+  GetLedgerStatementRewardsAction,
   GetLedgerStatementTransactionsAction
 } from './actionTypes';
 import * as api from './api';
@@ -33,6 +37,12 @@ export type HandleFilterLedgerStatementsById = (id: LedgerId) => Thunk<void>;
 export type GetLedgerAccountStatements = (accountId: number) => GetLedgerAccountStatementsAction;
 export type HandleGetLedgerAccountStatements = (accountId: number) => Thunk<void>;
 
+export type GetLedgerStatementAprs = (statementId: number) => GetLedgerStatementAprsAction;
+export type GetLedgerStatementFees = (statementId: number) => GetLedgerStatementFeesAction;
+export type GetLedgerStatementRewards = (statementId: number) =>
+  GetLedgerStatementRewardsAction;
+export type HandleGetLedgerStatementAprsFeesRewards = (statementId: number) => Thunk<void>;
+
 export type ResetStatements = () => void;
 
 export const filterLedgerStatements: FilterLedgerStatements = filter => ({
@@ -53,6 +63,21 @@ export const filterLedgerStatementsById: FilterLedgerStatementsById = data => ({
 export const getLedgerAccountStatements: GetLedgerAccountStatements = accountId => ({
   type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS,
   payload: api.getLedgerAccountStatements(accountId),
+});
+
+export const getLedgerAccountStatementAprs: GetLedgerStatementAprs = statementId => ({
+  type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS,
+  payload: api.getLedgerAccountStatementAprs(statementId),
+});
+
+export const getLedgerAccountStatementFees: GetLedgerStatementFees = statementId => ({
+  type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES,
+  payload: api.getLedgerAccountStatementFees(statementId),
+});
+
+export const getLedgerAccountStatementRewards: GetLedgerStatementRewards = statementId => ({
+  type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS,
+  payload: api.getLedgerAccountStatementRewards(statementId),
 });
 
 export const resetStatements: ResetStatements = () => ({
@@ -110,3 +135,20 @@ export const handleGetLedgerAccountStatements: HandleGetLedgerAccountStatements 
       dispatch
     );
   };
+
+export const handleGetLedgerStatementAprsFeesRewards:
+  HandleGetLedgerStatementAprsFeesRewards = (statementId) =>
+    async dispatch => {
+      errorDecoratorUtil.withErrorHandler(
+        async () => {
+          await Promise.all([
+            dispatch(getLedgerAccountStatementAprs(statementId)),
+            dispatch(getLedgerAccountStatementFees(statementId)),
+            dispatch(getLedgerAccountStatementRewards(statementId)),
+          ]);
+
+          dispatch(openModal({ name: modalNamesConst.STATEMENT_APRS_FEES_REWARDS }));
+        },
+        dispatch
+      );
+    };

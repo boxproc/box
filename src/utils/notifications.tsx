@@ -26,12 +26,8 @@ interface Error {
 }
 
 const errorMessage = (res: Error) => {
-  if (res) {
-    if (res.statusCode && res.statusCode === 404) {
-      return res.error.message.toString();
-    } else {
-      return res.toString();
-    }
+  if (res && res.error && res.error.message) {
+    return res.error.message.toString();
   } else {
     return 'An error occurred.';
   }

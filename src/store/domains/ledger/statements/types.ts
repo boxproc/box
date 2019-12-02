@@ -20,6 +20,9 @@ export interface LedgerStatementItem {
   first_name: string;
   last_name: string;
   statement_cycle_description: string;
+  accrued_interest_total?: number;
+  accrued_fee_total?: number;
+  accrued_reward_total?: number;
 }
 
 export interface LedgerStatementItemPrepared {
@@ -39,6 +42,9 @@ export interface LedgerStatementItemPrepared {
   productName: string;
   firstName: string;
   lastName: string;
+  accruedInterestTotal?: number;
+  accruedFeeTotal?: number;
+  accruedRewardTotal?: number;
 }
 
 export interface LedgerStatementTransactionsItem {
@@ -75,47 +81,57 @@ export interface LedgerStatementTransactionsItemsRequest {
   lastTransactionId: number | string;
 }
 
-export interface LedgerStatementFeeItem {
+export interface LedgerStatementAprItem {
+  statement_id: number;
   product_apr_id: number;
   accrued_interest: number;
 }
 
-export interface LedgerStatementFeeItemPrepared {
-  productAprId: number;
-  accruedInterest: string;
+export interface LedgerStatementAprItems {
+  statement_aprs: Array<LedgerStatementAprItem>;
 }
 
-export interface LedgerStatementAprItem {
+export interface LedgerStatementAprItemPrepared {
+  statementId: number;
+  productAprId: number;
+  accruedInterest: number;
+}
+
+export interface LedgerStatementFeeItem {
+  statement_id: number;
   product_fee_id: number;
   accrued_fee: number;
 }
 
-export interface LedgerStatementAprItemPrepared {
-  productFeeId: number;
-  accruedFee: string;
+export interface LedgerStatementFeeItems {
+  statement_fees: Array<LedgerStatementFeeItem>;
 }
 
-export interface LedgerStatementRewardsItem {
+export interface LedgerStatementFeeItemPrepared {
+  statementId: number;
+  productFeeId: number;
+  accruedFee: number;
+}
+
+export interface LedgerStatementRewardItem {
+  statement_id: number;
   product_reward_id: number;
   accrued_reward: number;
 }
 
-export interface LedgerStatementRewardsItemPrepared {
-  productRewardId: number;
-  accruedReward: string;
+export interface LedgerStatementRewardItems {
+  statement_rewards: Array<LedgerStatementRewardItem>;
 }
 
-export type LedgerAccountStatementItem =
-  Partial<LedgerStatementItem>
-  & LedgerStatementAprItem
-  & LedgerStatementFeeItem
-  & LedgerStatementRewardsItem;
+export interface LedgerStatementRewardItemPrepared {
+  statementId: number;
+  productRewardId: number;
+  accruedReward: number;
+}
 
-export type LedgerAccountStatementItemPrepared =
-  Partial<LedgerStatementItemPrepared>
-  & LedgerStatementAprItemPrepared
-  & LedgerStatementFeeItemPrepared
-  & LedgerStatementRewardsItemPrepared;
+export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;
+
+export type LedgerAccountStatementItemPrepared = Partial<LedgerStatementItemPrepared>;
 
 export interface LedgerStatementTransactionsItems {
   transactions: Array<LedgerStatementTransactionsItem>;
@@ -155,4 +171,7 @@ export interface LedgerStatementsState {
   statements: ImmutableArray<LedgerStatementItem>;
   transactions: ImmutableArray<LedgerStatementTransactionsItem>;
   accountStatements: ImmutableArray<LedgerAccountStatementItem>;
+  statementAprs: ImmutableArray<LedgerStatementAprItem>;
+  statementFees: ImmutableArray<LedgerStatementFeeItem>;
+  statementRewards: ImmutableArray<LedgerStatementRewardItem>;
 }

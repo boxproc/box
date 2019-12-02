@@ -106,10 +106,10 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
-    Header: <TableHeader title="Product APR ID" />,
-    accessor: 'productAprId',
-    Cell: (props: TCell<'productAprId'>) => (
+    maxWidth: 100,
+    Header: <TableHeader title="Accrued Interest Total" />,
+    accessor: 'accruedInterestTotal',
+    Cell: (props: TCell<'accruedInterestTotal'>) => (
       <TableCell
         isNumber={true}
         value={props.value}
@@ -119,21 +119,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    Header: <TableHeader title="Accrued Interest" />,
-    accessor: 'accruedInterest',
-    Cell: (props: TCell<'accruedInterest'>) => (
-      <TableCell
-        isNumber={true}
-        value={props.value}
-        isSmaller={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 80,
-    Header: <TableHeader title="Product Fee ID" />,
-    accessor: 'productFeeId',
-    Cell: (props: TCell<'productFeeId'>) => (
+    Header: <TableHeader title="Accrued Fee Total" />,
+    accessor: 'accruedFeeTotal',
+    Cell: (props: TCell<'accruedFeeTotal'>) => (
       <TableCell
         isNumber={true}
         value={props.value}
@@ -143,33 +131,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    Header: <TableHeader title="Accrued Fee" />,
-    accessor: 'accruedFee',
-    Cell: (props: TCell<'accruedFee'>) => (
-      <TableCell
-        isNumber={true}
-        value={props.value}
-        isSmaller={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 80,
-    Header: <TableHeader title="Product Reward ID" />,
-    accessor: 'productRewardId',
-    Cell: (props: TCell<'productRewardId'>) => (
-      <TableCell
-        isNumber={true}
-        value={props.value}
-        isSmaller={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 100,
-    Header: <TableHeader title="Accrued Reward" />,
-    accessor: 'accruedReward',
-    Cell: (props: TCell<'accruedReward'>) => (
+    Header: <TableHeader title="Accrued Reward Total" />,
+    accessor: 'accruedRewardTotal',
+    Cell: (props: TCell<'accruedRewardTotal'>) => (
       <TableCell
         isNumber={true}
         value={props.value}

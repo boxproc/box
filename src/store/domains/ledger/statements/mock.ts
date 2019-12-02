@@ -1,4 +1,10 @@
-import { LedgerAccountStatementItems, LedgerStatementItems } from './types';
+import {
+  LedgerAccountStatementItems,
+  LedgerStatementAprItems,
+  LedgerStatementFeeItems,
+  LedgerStatementItems,
+  LedgerStatementRewardItems,
+} from './types';
 
 export const ledgerStatementsItems: LedgerStatementItems = {
   statements: [
@@ -56,15 +62,12 @@ export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
       minimum_amount_due_repayment: 1,
       repayment_status: 'R',
       date_of_last_update: '07/10/2019',
-      product_apr_id: 1,
-      accrued_interest: 1.00,
-      product_fee_id: 1,
-      accrued_fee: 1.00,
-      product_reward_id: 1,
-      accrued_reward: 1.00,
+      accrued_interest_total: 1.00,
+      accrued_fee_total: 1.00,
+      accrued_reward_total: 1.00,
     },
     {
-      id: 1,
+      id: 2,
       account_id: 1,
       first_transaction_id: 2,
       last_transaction_id: 23,
@@ -74,12 +77,119 @@ export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
       minimum_amount_due_repayment: 1,
       repayment_status: 'O',
       date_of_last_update: '07/10/2019',
+      accrued_interest_total: 1.00,
+      accrued_fee_total: 1.00,
+      accrued_reward_total: 1.00,
+    },
+  ],
+};
+
+export const ledgerAccountStatementAprItems: LedgerStatementAprItems = {
+  statement_aprs: [
+    {
+      statement_id: 1,
       product_apr_id: 1,
-      accrued_interest: 1.00,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      accrued_interest: 1,
+    },
+  ],
+};
+
+export const ledgerAccountStatementFeeItems: LedgerStatementFeeItems = {
+  statement_fees: [
+    {
+      statement_id: 1,
       product_fee_id: 1,
-      accrued_fee: 1.00,
+      accrued_fee: 1,
+    },
+  ],
+};
+
+export const ledgerAccountStatementRewardItems: LedgerStatementRewardItems = {
+  statement_rewards: [
+    {
+      statement_id: 1,
       product_reward_id: 1,
-      accrued_reward: 1.00,
+      accrued_reward: 1,
     },
   ],
 };

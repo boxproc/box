@@ -7,6 +7,9 @@ import { StoreState } from 'store/StoreState';
 import {
   prepareAccountStatementsDataToRender,
   prepareDataToRender,
+  prepareStatementAprToRender,
+  prepareStatementFeeToRender,
+  prepareStatementRewardToRender,
   prepareTransactionsDataToRender,
 } from './utils';
 
@@ -70,4 +73,28 @@ export const selectLedgerAccountStatements = createSelector(
   statements => statements && statements.asMutable().map(statement =>
     prepareAccountStatementsDataToRender(statement)
   )
+);
+
+export const selectDefaultLedgerStatementAprs = (state: StoreState) =>
+  state.ledger.statements.statementAprs;
+
+export const selectLedgerStatementAprs = createSelector(
+  selectDefaultLedgerStatementAprs,
+  aprs => aprs && aprs.asMutable().map(apr => prepareStatementAprToRender(apr))
+);
+
+export const selectDefaultLedgerStatementFees = (state: StoreState) =>
+  state.ledger.statements.statementFees;
+
+export const selectLedgerStatementFees = createSelector(
+  selectDefaultLedgerStatementFees,
+  fees => fees && fees.asMutable().map(fee => prepareStatementFeeToRender(fee))
+);
+
+export const selectDefaultLedgerStatementRewards = (state: StoreState) =>
+  state.ledger.statements.statementRewards;
+
+export const selectLedgerStatementRewards = createSelector(
+  selectDefaultLedgerStatementRewards,
+  rewards => rewards && rewards.asMutable().map(reward => prepareStatementRewardToRender(reward))
 );

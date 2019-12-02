@@ -2,7 +2,13 @@ import { repaymentStatusTypesOptions } from 'consts';
 
 import {
   LedgerAccountStatementItem,
+  LedgerStatementAprItem,
+  LedgerStatementAprItemPrepared,
+  LedgerStatementFeeItem,
+  LedgerStatementFeeItemPrepared,
   LedgerStatementItem,
+  LedgerStatementRewardItem,
+  LedgerStatementRewardItemPrepared,
   LedgerStatementsFilter,
   LedgerStatementTransactionsItem
 } from './types';
@@ -126,21 +132,72 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
   }
 
   const {
+    accrued_interest_total,
+    accrued_fee_total,
+    accrued_reward_total,
+  } = data;
+
+  return {
+    ...prepareDataToRender(data),
+    accruedInterestTotal: accrued_interest_total,
+    accruedFeeTotal: accrued_fee_total,
+    accruedRewardTotal: accrued_reward_total,
+  };
+};
+
+export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
+  LedgerStatementAprItemPrepared => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    statement_id,
     product_apr_id,
     accrued_interest,
+  } = data;
+
+  return {
+    statementId: statement_id,
+    productAprId: product_apr_id,
+    accruedInterest: accrued_interest,
+  };
+};
+
+export const prepareStatementFeeToRender = (data: LedgerStatementFeeItem):
+  LedgerStatementFeeItemPrepared => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    statement_id,
     product_fee_id,
     accrued_fee,
+  } = data;
+
+  return {
+    statementId: statement_id,
+    productFeeId: product_fee_id,
+    accruedFee: accrued_fee,
+  };
+};
+
+export const prepareStatementRewardToRender = (data: LedgerStatementRewardItem):
+  LedgerStatementRewardItemPrepared => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    statement_id,
     product_reward_id,
     accrued_reward,
   } = data;
 
   return {
-    ...prepareDataToRender(data),
-    productAprId: product_apr_id,
-    accruedInterest: accrued_interest && accrued_interest.toFixed(2),
-    productFeeId: product_fee_id,
-    accruedFee: accrued_fee && accrued_fee.toFixed(2),
+    statementId: statement_id,
     productRewardId: product_reward_id,
-    accruedReward: accrued_reward && accrued_reward.toFixed(2),
+    accruedReward: accrued_reward,
   };
 };

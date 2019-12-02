@@ -7,10 +7,6 @@ export interface CurrencyItem {
   numeric_code: number;
 }
 
-export interface CurrencyCodes {
-  currencies: Array<CurrencyItem>;
-}
-
 export interface InstitutionItemPlain {
   id: number;
   status: string;

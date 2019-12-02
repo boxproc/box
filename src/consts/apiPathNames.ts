@@ -137,6 +137,9 @@ export enum lenderStatementsPathNames {
   GET = '/ui/ledger/statements/get',
   GET_TRANSACTIONS = '/ui/ledger/statements/get_transactions',
   GET_ACCOUNT_STATEMENTS = '/ui/ledger/accounts/get_statements',
+  GET_ACCOUNT_STATEMENT_APRS = '/ui/ledger/accounts/get_statement_aprs',
+  GET_ACCOUNT_STATEMENT_FEES = '/ui/ledger/accounts/get_statement_fees',
+  GET_ACCOUNT_STATEMENTS_REWARDS = '/ui/ledger/accounts/get_statement_rewards',
 }
 
 export enum lenderTransactionsPathNames {
