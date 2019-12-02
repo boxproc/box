@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
-import { RowInfo } from 'react-table';
+import { CellInfo, RowInfo } from 'react-table';
 
-import { Button, Table, withSpinner } from 'components';
-import { tableColumns } from './tableColumns';
+import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
+
+import { iconNamesConst } from 'consts';
 
 import { WithModalProps } from 'HOCs';
 
@@ -13,6 +14,10 @@ import {
   HandleGetLedgerStatementAprsFeesRewards,
   LedgerAccountStatementItemPrepared,
 } from 'store/domains';
+import { TableCellType } from 'types';
+
+type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
+  TableCellType<LedgerAccountStatementItemPrepared[T]>;
 
 interface AccountStatementsProps extends WithModalProps {
   accountStatements: Array<LedgerAccountStatementItemPrepared>;
@@ -49,10 +54,154 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
     [getLedgerStatementAprsFeesRewards]
   );
 
+  const tableColumns = [
+    {
+      maxWidth: 80,
+      Header: <TableHeader title="Statement Date" />,
+      accessor: 'statementDate',
+      Cell: (props: TCell<'statementDate'>) => (
+        <TableCell
+          isDate={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 80,
+      Header: <TableHeader title="First Tr ID" />,
+      accessor: 'firstTransactionId',
+      Cell: (props: TCell<'firstTransactionId'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 80,
+      Header: <TableHeader title="Last Tr ID" />,
+      accessor: 'lastTransactionId',
+      Cell: (props: TCell<'lastTransactionId'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Balance Open" />,
+      accessor: 'balanceOpen',
+      Cell: (props: TCell<'balanceOpen'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Balance Close" />,
+      accessor: 'balanceClose',
+      Cell: (props: TCell<'balanceClose'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Repayment Amount" />,
+      accessor: 'minimumAmountDueRepayment',
+      Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 80,
+      Header: <TableHeader title="Repayment Status" />,
+      accessor: 'repaymentStatus',
+      Cell: (props: TCell<'repaymentStatus'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 80,
+      Header: <TableHeader title="Date of Last Update" />,
+      accessor: 'dateOfLastUpdate',
+      Cell: (props: TCell<'dateOfLastUpdate'>) => (
+        <TableCell
+          isDate={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Interest" />,
+      accessor: 'accruedInterestTotal',
+      Cell: (props: TCell<'accruedInterestTotal'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Fee" />,
+      accessor: 'accruedFeeTotal',
+      Cell: (props: TCell<'accruedFeeTotal'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 100,
+      Header: <TableHeader title="Reward" />,
+      accessor: 'accruedRewardTotal',
+      Cell: (props: TableCellType<'accruedRewardTotal'>) => (
+        <TableCell
+          isNumber={true}
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 20,
+      Cell: (cellInfo: CellInfo) => (
+        <Button
+          iconName={iconNamesConst.SHORT_TEXT}
+          title="Details"
+          type="reset"
+          onClick={() => getLedgerStatementAprsFeesRewards(cellInfo.original.id)}
+        />
+      ),
+    },
+  ];
+
   return (
     <Box mt="20px">
       <Table
-        title="Account Cards"
         pageSize={5}
         data={accountStatements}
         columns={tableColumns}

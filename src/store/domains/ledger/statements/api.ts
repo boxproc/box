@@ -12,10 +12,6 @@ import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest
 
 // import { throttleUtil } from 'utils';
 
-// import { ledgerAccountStatementsItems, ledgerStatementsItems } from './mock';
-
-// import { throttleUtil } from 'utils';
-
 export const filterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
   apiClient.post(lenderStatementsPathNames.GET, { data });

@@ -23,6 +23,7 @@ interface ButtonProps extends WithModalProps {
   bordered?: boolean;
   underline?: boolean;
   textTransformNone?: boolean;
+  title?: string;
   onClick?: () => void;
 }
 
@@ -42,6 +43,7 @@ const Button: React.FC<ButtonProps> = ({
   bordered = false,
   underline = false,
   textTransformNone = false,
+  title,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -70,6 +72,7 @@ const Button: React.FC<ButtonProps> = ({
       hasIcon={!!iconName}
       textTransformNone={textTransformNone}
       className={isFocused && 'is-focused'}
+      title={title}
     >
       {iconName && (
         <Box mr="2px">

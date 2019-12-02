@@ -32,7 +32,8 @@ export enum statusTypesCodes {
   SUSPENDED = 'S',
 }
 
-export enum repaymentstatusTypesCodes {
+export enum repaymentStatusTypesCodes {
+  NOT_REPIED = 'N',
   REPIED_IN_FULL = 'R',
   REPIED_PARTIALLY = 'P',
   OVERPAID = 'O',
@@ -61,6 +62,7 @@ export const schedulerStatusTypesOptions = [
 ];
 
 export const repaymentStatusTypesOptions = [
+  { value: 'N', label: 'Not repied'},
   { value: 'R', label: 'Repied in full' },
   { value: 'P', label: 'Repied partially' },
   { value: 'O', label: 'Overpaid' },

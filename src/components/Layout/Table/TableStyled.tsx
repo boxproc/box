@@ -33,7 +33,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-thead .rt-resizable-header,
   .ReactTable .rt-thead .rt-th.-cursor-pointer  {
     border-right: 1px solid ${({ theme }) => theme.colors.lighterGray};
-    min-width: 80px;
+    min-width: 50px;
   }
 
   .ReactTable .rt-td {
@@ -42,7 +42,7 @@ export const TableStyled = styled.div<TableStyledProps>`
     padding: 10px 12px;
     transition: none;
     transition-property: none;
-    min-width: 80px;
+    min-width: 50px;
 
     ${({ isSmaller }) => isSmaller && `
       padding: 5px 7px;

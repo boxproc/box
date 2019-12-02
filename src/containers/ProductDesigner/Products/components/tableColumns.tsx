@@ -66,7 +66,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="Product Type" />,
     accessor: 'productType',

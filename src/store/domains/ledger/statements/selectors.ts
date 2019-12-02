@@ -75,6 +75,17 @@ export const selectLedgerAccountStatements = createSelector(
   )
 );
 
+export const selectLedgerAccountStatementDate = createSelector(
+  selectLedgerAccountStatements,
+  statements => {
+    if (!statements && !statements.length) {
+      return null;
+    }
+
+    return statements[0].statementDate;
+  }
+);
+
 export const selectDefaultLedgerStatementAprs = (state: StoreState) =>
   state.ledger.statements.statementAprs;
 

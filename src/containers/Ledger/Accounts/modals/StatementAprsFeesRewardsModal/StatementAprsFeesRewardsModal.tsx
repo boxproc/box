@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal, Tabs, TabsPanel } from 'components';
+import { Button, Modal, Paragraph, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
@@ -19,10 +19,27 @@ import {
   LedgerStatementRewardItemPrepared,
 } from 'store/domains';
 
+interface StatementDateProps {
+  date: string;
+}
+
+const StatementDate: React.FC<StatementDateProps> = ({ date }) => {
+  return (
+    <Paragraph
+      light={true}
+      size={13}
+    >
+      <b>Statement date:</b> {date}
+    </Paragraph>
+  );
+};
+
 interface StatementAprsFeesRewardsProps extends WithModalProps {
   statementAprs: Array<LedgerStatementAprItemPrepared>;
   statementFees: Array<LedgerStatementFeeItemPrepared>;
   statementRewards: Array<LedgerStatementRewardItemPrepared>;
+  currentAccountAlias: string;
+  currentStatementDate: string;
 }
 
 const modalName = modalNamesConst.STATEMENT_APRS_FEES_REWARDS;
@@ -32,7 +49,14 @@ const StatementAprsFeesRewards: React.FC<StatementAprsFeesRewardsProps> = ({
   statementAprs,
   statementFees,
   statementRewards,
+  currentAccountAlias,
+  currentStatementDate,
 }) => {
+  const accountAlias = React.useMemo(
+    () => currentAccountAlias ? `: ${currentAccountAlias}` : '',
+    [currentAccountAlias]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -41,23 +65,26 @@ const StatementAprsFeesRewards: React.FC<StatementAprsFeesRewardsProps> = ({
   return (
     <Modal
       name={modalName}
-      title="Statement"
-      maxContainerWidth={450}
+      title={`Account${accountAlias}`}
+      maxContainerWidth={1010}
       minContainerHeight={500}
     >
       <Tabs>
-        <TabsPanel title="APRs">
+        <TabsPanel title="Accrued Interest">
           <Box mt="20px">
+            <StatementDate date={currentStatementDate} />
             <StatementAprsTable data={statementAprs} />
           </Box>
         </TabsPanel>
         <TabsPanel title="Fees">
           <Box mt="20px">
+            <StatementDate date={currentStatementDate} />
             <StatementFeesTable data={statementFees} />
           </Box>
         </TabsPanel>
         <TabsPanel title="Rewards">
           <Box mt="20px">
+            <StatementDate date={currentStatementDate} />
             <StatementRewardsTable data={statementRewards} />
           </Box>
         </TabsPanel>

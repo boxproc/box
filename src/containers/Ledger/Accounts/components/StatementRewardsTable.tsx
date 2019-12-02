@@ -14,7 +14,6 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Product Reward ID" />,
     accessor: 'productRewardId',
-    filterable: true,
     Cell: (props: TCell<'productRewardId'>) => (
       <TableCell
         value={props.value}
@@ -31,6 +30,52 @@ export const tableColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Description" />,
+    accessor: 'description',
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Rate" />,
+    accessor: 'rate',
+    Cell: (props: TCell<'rate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Amount" />,
+    accessor: 'amount',
+    Cell: (props: TCell<'amount'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Reward Application Condition" />,
+    accessor: 'rewardApplicationCondition',
+    Cell: (props: TCell<'rewardApplicationCondition'>) => (
+      <TableCell
+        value={props.value}
       />
     ),
   },

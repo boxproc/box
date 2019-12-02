@@ -14,7 +14,6 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Product Fee ID" />,
     accessor: 'productFeeId',
-    filterable: true,
     Cell: (props: TCell<'productFeeId'>) => (
       <TableCell
         value={props.value}
@@ -23,7 +22,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Accrued Fee" />,
     accessor: 'accruedFee',
@@ -31,6 +30,52 @@ export const tableColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Description" />,
+    accessor: 'description',
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Rate" />,
+    accessor: 'rate',
+    Cell: (props: TCell<'rate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Amount" />,
+    accessor: 'amount',
+    Cell: (props: TCell<'amount'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Fee Application Condition" />,
+    accessor: 'feeApplicationCondition',
+    Cell: (props: TCell<'feeApplicationCondition'>) => (
+      <TableCell
+        value={props.value}
       />
     ),
   },

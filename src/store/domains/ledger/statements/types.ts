@@ -42,9 +42,9 @@ export interface LedgerStatementItemPrepared {
   productName: string;
   firstName: string;
   lastName: string;
-  accruedInterestTotal?: number;
-  accruedFeeTotal?: number;
-  accruedRewardTotal?: number;
+  accruedInterestTotal?: string;
+  accruedFeeTotal?: string;
+  accruedRewardTotal?: string;
 }
 
 export interface LedgerStatementTransactionsItem {
@@ -85,6 +85,8 @@ export interface LedgerStatementAprItem {
   statement_id: number;
   product_apr_id: number;
   accrued_interest: number;
+  description: string;
+  rate: number;
 }
 
 export interface LedgerStatementAprItems {
@@ -94,13 +96,19 @@ export interface LedgerStatementAprItems {
 export interface LedgerStatementAprItemPrepared {
   statementId: number;
   productAprId: number;
-  accruedInterest: number;
+  accruedInterest: string;
+  description: string;
+  rate: string;
 }
 
 export interface LedgerStatementFeeItem {
   statement_id: number;
   product_fee_id: number;
   accrued_fee: number;
+  description: string;
+  rate?: number;
+  amount?: number;
+  fee_application_condition: string;
 }
 
 export interface LedgerStatementFeeItems {
@@ -110,13 +118,21 @@ export interface LedgerStatementFeeItems {
 export interface LedgerStatementFeeItemPrepared {
   statementId: number;
   productFeeId: number;
-  accruedFee: number;
+  accruedFee: string;
+  description: string;
+  rate?: string;
+  amount?: string;
+  feeApplicationCondition: string;
 }
 
 export interface LedgerStatementRewardItem {
   statement_id: number;
   product_reward_id: number;
   accrued_reward: number;
+  description: string;
+  rate?: number;
+  amount?: number;
+  reward_application_condition: string;
 }
 
 export interface LedgerStatementRewardItems {
@@ -126,7 +142,11 @@ export interface LedgerStatementRewardItems {
 export interface LedgerStatementRewardItemPrepared {
   statementId: number;
   productRewardId: number;
-  accruedReward: number;
+  accruedReward: string;
+  description: string;
+  rate?: string;
+  amount?: string;
+  rewardApplicationCondition: string;
 }
 
 export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;

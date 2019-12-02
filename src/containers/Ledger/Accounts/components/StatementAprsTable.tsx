@@ -14,7 +14,6 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Product APR ID" />,
     accessor: 'productAprId',
-    filterable: true,
     Cell: (props: TCell<'productAprId'>) => (
       <TableCell
         value={props.value}
@@ -23,11 +22,34 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 200,
     sortable: true,
     Header: <TableHeader title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: TCell<'accruedInterest'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Description" />,
+    accessor: 'description',
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 200,
+    sortable: true,
+    Header: <TableHeader title="Rate" />,
+    accessor: 'rate',
+    Cell: (props: TCell<'rate'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
