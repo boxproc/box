@@ -23,11 +23,16 @@ export interface PayloadLogModal {
   logData: string;
   logLocation?: string;
 }
+export interface PayloadLedgerManualTransactionModal {
+  accountId?: number;
+  currencyCode?: string;
+}
 
 export interface ModalsState {
   isMessageModal: boolean;
+  isEditModalOpened: boolean;
   payloadMessageModal: PayloadMessageModal;
   payloadConfirmationModal: PayloadConfirmationModal;
   payloadLogModal: PayloadLogModal;
-  isEditModalOpened: boolean;
+  payloadLedgerManualTransactionModal: PayloadLedgerManualTransactionModal;
 }

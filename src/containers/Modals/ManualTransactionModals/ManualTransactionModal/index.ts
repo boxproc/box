@@ -7,6 +7,8 @@ import {
   createLoadingSelector,
   handleMakeLedgerTransaction,
   LedgerManualTransactionActionTypes,
+  selectCurrencyCodesOptions,
+  selectPayloadLedgerManualTransactionModal,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -16,6 +18,8 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  modalPayload: selectPayloadLedgerManualTransactionModal(state),
+  currenciesOptions: selectCurrencyCodesOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

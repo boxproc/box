@@ -36,7 +36,7 @@ type ManualTransactionFormAllProps = ManualTransactionFormProps
 const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   numCurrencyCodes,
   isCurrencyCodesLoading,
-  transactionTypesOptions,
+  manualTransactionTypesOptions,
   isTransactionTypesLoading,
   makeLedgerTransaction,
   handleSubmit,
@@ -65,7 +65,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               label="Transaction Type"
               placeholder="Select Transaction Type"
               isLoading={isTransactionTypesLoading}
-              options={transactionTypesOptions}
+              options={manualTransactionTypesOptions}
               validate={[formErrorUtil.required]}
             />
           </Box>

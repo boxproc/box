@@ -5,10 +5,11 @@ import { ModalsState } from './types';
 
 export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   isMessageModal: false,
+  isEditModalOpened: false,
   payloadMessageModal: null,
   payloadConfirmationModal: null,
   payloadLogModal: null,
-  isEditModalOpened: false,
+  payloadLedgerManualTransactionModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

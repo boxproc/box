@@ -7,6 +7,7 @@ import {
   DictionaryTransactionTypesActionTypes,
   handleGetDictionaryTransactionTypes,
   HandleGetDictionaryTransactionTypes,
+  selectDictionaryManualTransactionTypesOptions,
   selectDictionaryTransactionTypesOptions,
 } from 'store/domains';
 
@@ -18,6 +19,7 @@ import { componentUtil } from 'utils';
 
 export interface WithLoadTransactionTypesProps {
   transactionTypesOptions: Array<SelectValues>;
+  manualTransactionTypesOptions: Array<SelectValues>;
   isTransactionTypesLoading: boolean;
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
 }
@@ -29,6 +31,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
       React.FC<WithLoadTransactionTypesProps> = props => {
         const {
           transactionTypesOptions,
+          manualTransactionTypesOptions,
           getTransactionTypes,
           isTransactionTypesLoading,
           ...originProps
@@ -48,6 +51,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
           <Component
             isTransactionTypesLoading={isTransactionTypesLoading}
             transactionTypesOptions={transactionTypesOptions}
+            manualTransactionTypesOptions={manualTransactionTypesOptions}
             getTransactionTypes={getTransactionTypes}
             {...originProps as OriginProps}
           />
@@ -64,6 +68,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
     const mapStateToProps = (state: StoreState) => ({
       isTransactionTypesLoading: loadingSelector(state),
       transactionTypesOptions: selectDictionaryTransactionTypesOptions(state),
+      manualTransactionTypesOptions: selectDictionaryManualTransactionTypesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

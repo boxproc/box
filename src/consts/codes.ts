@@ -62,7 +62,7 @@ export const schedulerStatusTypesOptions = [
 ];
 
 export const repaymentStatusTypesOptions = [
-  { value: 'N', label: 'Not repied'},
+  { value: 'N', label: 'Not repied' },
   { value: 'R', label: 'Repied in full' },
   { value: 'P', label: 'Repied partially' },
   { value: 'O', label: 'Overpaid' },
@@ -245,6 +245,12 @@ export const debitCreditIndicatorOptions = [
   { value: 'C', label: 'Credit' },
   { value: 'U', label: 'Not applicable' },
 ];
+
+export enum debitCreditIndicatorCodes {
+  DEBIT = 'D',
+  CREDIT = 'C',
+  NOT_APPLICABLE = 'U',
+}
 
 export const cardFormFactorOptions = [
   { value: 'X', label: 'Unspecified' },

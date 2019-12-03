@@ -36,6 +36,7 @@ export interface AccountsProps extends WithModalProps {
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;
   currentId: number;
+  currentCurrencyCode: string;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -53,6 +54,7 @@ const Accounts: React.FC<AccountsProps> = ({
   filterLedgerCardsById,
   filterLedgerTransactionsById,
   filterLedgerStatementsById,
+  currentCurrencyCode,
 }) => {
   React.useEffect(
     () => {
@@ -66,14 +68,10 @@ const Accounts: React.FC<AccountsProps> = ({
       if (hasProductOverride) {
         setActiveItemId(productOverrideId);
         if (currentId) {
-          openModal({
-            name: modalNamesConst.EDIT_PRODUCT,
-          });
+          openModal({ name: modalNamesConst.EDIT_PRODUCT });
         }
       } else {
-        addProductOverride({
-          withOpenProductModal: true,
-        });
+        addProductOverride({ withOpenProductModal: true });
       }
     },
     [
@@ -112,6 +110,16 @@ const Accounts: React.FC<AccountsProps> = ({
         name: 'Transactions',
         action: () => filterLedgerTransactionsById({ account_id: currentId }),
       },
+      {
+        name: 'Manual Transaction',
+        action: () => openModal({
+          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          payload: {
+            accountId: currentId,
+            currencyCode: currentCurrencyCode,
+          },
+        }),
+      },
     ],
     [
       hasProductOverride,
@@ -121,6 +129,8 @@ const Accounts: React.FC<AccountsProps> = ({
       filterLedgerStatementsById,
       filterLedgerCardsById,
       currentId,
+      currentCurrencyCode,
+      openModal,
     ]
   );
 

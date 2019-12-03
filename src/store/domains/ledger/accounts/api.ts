@@ -18,9 +18,7 @@ export const addLedgerAccount = (data: Partial<LedgerAccountItem>) =>
 export const addProductOverride = (accountId: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(lenderAccountsPathNames.CREATE_PRODUCT_OVERRIDE, {
-    data: {
-      account_id: accountId,
-    },
+    data: { account_id: accountId },
   });
 
 export const updateLedgerAccount = (data: Partial<LedgerAccountItem>) =>

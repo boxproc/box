@@ -4,7 +4,7 @@ import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { ResultManualTransactionForm } from 'containers/Ledger/ManualTransaction/forms';
+import { ResultManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
   HandleFilterLedgerTransactionsById,
@@ -36,7 +36,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       filterLedgerTransactionsById({ transaction_id: transactionId });
       closeAllModals();
     },
-    [transactionId, filterLedgerTransactionsById, handleOnCancel, closeModal]
+    [transactionId, filterLedgerTransactionsById, closeAllModals]
   );
 
   return (

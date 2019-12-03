@@ -21,6 +21,7 @@ import {
   selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerAccounts,
+  selectLedgerCurrentAccountCurrencyCode,
   selectLedgerCurrentAccountHasProductOverride,
   selectLedgerCurrentAccountProductOverrideId,
 } from 'store/domains';
@@ -42,6 +43,7 @@ const mapStateToProps = (state: StoreState) => ({
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
   currentId: selectActiveItemId(state),
+  currentCurrencyCode: selectLedgerCurrentAccountCurrencyCode(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

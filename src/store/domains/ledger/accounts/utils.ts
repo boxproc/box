@@ -170,6 +170,7 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     number_of_times_overdue_5_cycle,
     number_of_times_overdue_6_cycle,
     number_of_times_overdue_7_cycle,
+    currency_code,
   } = data;
 
   const currentStatus = statusTypesOptions.find(el => el.value === status);
@@ -217,6 +218,7 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     numberOfTimesOverdue5Cycles: number_of_times_overdue_5_cycle,
     numberOfTimesOverdue6Cycles: number_of_times_overdue_6_cycle,
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
+    currencyCode: currency_code,
   };
 };
 export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsItem>) => {

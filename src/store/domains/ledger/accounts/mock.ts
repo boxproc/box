@@ -48,6 +48,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       number_of_times_overdue_5_cycle: 1,
       number_of_times_overdue_6_cycle: 1,
       number_of_times_overdue_7_cycle: 1,
+      currency_code: 'MWK',
     },
     {
       id: 2,
@@ -93,6 +94,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       number_of_times_overdue_5_cycle: 1,
       number_of_times_overdue_6_cycle: 1,
       number_of_times_overdue_7_cycle: 1,
+      currency_code: 'MRU',
     },
   ],
 };

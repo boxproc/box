@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { debitCreditIndicatorOptions } from 'consts';
+import { debitCreditIndicatorCodes, debitCreditIndicatorOptions } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -16,6 +16,7 @@ export const selectDictionaryTransactionTypes = createSelector(
     return {
       id: item.id,
       description: item.description,
+      debitCreditIndicatorValue: debitCreditIndicator.value,
       debitCreditIndicator: debitCreditIndicator.label,
     };
   })
@@ -29,6 +30,22 @@ export const selectDictionaryTransactionTypesOptions = createSelector(
       label: `${item.debitCreditIndicator} - ${item.description}`,
     };
   })
+);
+
+export const selectDictionaryManualTransactionTypesOptions = createSelector(
+  selectDictionaryTransactionTypes,
+  transactionTypes => {
+    const items = transactionTypes
+      .filter(type => type.debitCreditIndicatorValue === debitCreditIndicatorCodes.DEBIT
+        || type.debitCreditIndicatorValue === debitCreditIndicatorCodes.CREDIT);
+
+    return items && items.map(item => {
+      return {
+        value: item.id,
+        label: `${item.description} - [${item.debitCreditIndicator}]`,
+      };
+    });
+  }
 );
 
 export const selectIsTransactionTypesLoaded = createSelector(
