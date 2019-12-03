@@ -28,6 +28,7 @@ export enum modalNamesConst {
   STATEMENT_APRS_FEES_REWARDS = 'StatementAprsFeesRewardsModal',
   LEDGER_TRANSACTION = 'LedgerTransactionModal',
   LEDGER_MANUAL_TRANSACTION = 'LedgerManualTransactionModal',
+  LEDGER_MANUAL_TRANSACTION_RESULT = 'LedgerManualTransactionResultModal',
   INFO_LEDGER_CARDS = 'InfoCardModal',
   LEDGER_STATEMENTS = 'LedgerStatements',
 

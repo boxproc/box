@@ -23,7 +23,6 @@ import {
   Accounts,
   Cards,
   Customers,
-  ManualTransaction,
   Statements,
   Transactions,
 } from 'containers/Ledger';
@@ -110,10 +109,6 @@ export const pagesList = [
   {
     path: uiItemConsts.LEDGER_STATEMENTS,
     component: <Statements />,
-  },
-  {
-    path: uiItemConsts.LEDGER_MANUAL_TRANSACTIONS,
-    component: <ManualTransaction />,
   },
   {
     path: uiItemConsts.LEDGER_TRANSACTIONS,

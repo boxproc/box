@@ -1,26 +1,23 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import ManualTransactionModal from './ManualTransactionModal';
+import ManualTransactionModal from './ResultManualTransactionModal';
 
 import {
-  createLoadingSelector,
-  handleMakeLedgerTransaction,
-  LedgerManualTransactionActionTypes,
+  handleFilterByIdLedgerTransactions,
+  selectLedgerManualTransaction,
+  selectLedgerManualTransactionId,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const loadingSelector = createLoadingSelector([
-  LedgerManualTransactionActionTypes.MAKE_LEDGER_TRANSACTION,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  ledgerManualTransaction: selectLedgerManualTransaction(state),
+  transactionId: selectLedgerManualTransactionId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    makeLedgerTransaction: handleMakeLedgerTransaction,
+    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
   },
   dispatch
 );

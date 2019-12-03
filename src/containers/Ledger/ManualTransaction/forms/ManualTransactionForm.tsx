@@ -4,7 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
-  Hr,
+  Button,
   InputField,
   NumberFormatField,
   OkCancelButtons,
@@ -25,6 +25,7 @@ import { formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
+  onCancel: () => void;
 }
 
 type ManualTransactionFormAllProps = ManualTransactionFormProps
@@ -42,6 +43,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   dirty,
   pristine,
   reset,
+  onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(makeLedgerTransaction),
@@ -60,26 +62,37 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               id="transactionType"
               name="transactionType"
               component={SelectField}
-              label="Event"
+              label="Transaction Type"
               placeholder="Select Transaction Type"
               isLoading={isTransactionTypesLoading}
               options={transactionTypesOptions}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1]} p="10px">
+          <Box width={[2 / 7]} p="10px">
+            <Field
+              id="accountId"
+              name="accountId"
+              component={InputField}
+              label="Account"
+              placeholder="Enter Account ID"
+              isNumber={true}
+              validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            />
+          </Box>
+          <Box width={[3 / 7]} p="10px">
             <Field
               id="currencyCode"
               name="currencyCode"
               component={SelectField}
-              label="Currency Code"
-              placeholder="Select Currency Code"
+              label="Currency"
+              placeholder="Select Currency"
               options={numCurrencyCodes}
               isLoading={isCurrencyCodesLoading}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[2 / 7]} p="10px">
             <Field
               id="amount"
               name="amount"
@@ -91,41 +104,35 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="accountId"
-              name="accountId"
-              component={InputField}
-              label="Account ID"
-              placeholder="Enter ID"
-              isNumber={true}
-              validate={[formErrorUtil.required, formErrorUtil.isInteger]}
-            />
-          </Box>
           <Box width={[1]} p="10px">
             <Field
               id="description"
               name="description"
               component={TextField}
-              placeholder="Enter Description"
-              label="Description"
+              placeholder="Enter Transaction Description"
+              label="Transaction Description"
               height={80}
               validate={[formErrorUtil.required]}
             />
           </Box>
         </Flex>
       </Box>
-      <Hr />
-      <OkCancelButtons
-        okText="Apply"
-        cancelText="Reset"
-        onCancel={reset}
-        withCancelConfirmation={dirty}
-        cancelConfirmationTitle="Reset the form?"
-        disabledOk={pristine}
-        disabledCancel={pristine}
-        rightPosition={true}
-      />
+      <Flex justifyContent="space-between">
+        <Button
+          text="Reset form"
+          disabled={pristine}
+          type="reset"
+          onClick={reset}
+        />
+        <OkCancelButtons
+          okText="Apply"
+          cancelText="Close"
+          onCancel={onCancel}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine}
+          disabledCancel={pristine}
+        />
+      </Flex>
     </form >
   );
 };

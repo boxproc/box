@@ -34,7 +34,8 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
 
   ${({ isDate, theme, isSmaller }) => isDate && `
     color: ${theme.colors.gray};
-    font-size: ${isSmaller ? '10px' : '12px'}
+    font-size: ${isSmaller ? '10px' : '12px'};
+    line-height: ${isSmaller ? 1.8 : 'inherit'};
   `}
 
   ${({ isAccentColor, theme }) => isAccentColor && `

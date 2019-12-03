@@ -8,7 +8,9 @@ import styled from 'theme';
 import { ChevronRightIcon } from 'components';
 import { NavListStyled } from './NavListStyled';
 
-import { basePath, uiItemTypesCodes } from 'consts';
+import { withModal, WithModalProps } from 'HOCs';
+
+import { basePath, modalNamesConst, uiItemConsts, uiItemTypesCodes } from 'consts';
 
 import { clearMenu, goToPage, menuClasses, toggleOpenMenu } from './utils';
 
@@ -18,24 +20,32 @@ const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-interface NavbarProps extends RouteComponentProps {
+interface NavbarProps extends RouteComponentProps, WithModalProps {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  uiItems,
+  history,
+  openModal,
+}) => {
   const menuRef = React.useRef(null);
 
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type } = item;
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
-    const pushToHistory = () => history.push(`${basePath}${id}`);
+    const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
+
+    const handleClick = isManualTransaction
+      ? () => openModal({ name: modalNamesConst.LEDGER_MANUAL_TRANSACTION })
+      : () => history.push(`${basePath}${id}`);
 
     return (
       <Box
         key={id}
         className={menuClasses.MENU_ITEM}
-        onClick={() => !hasChildren && goToPage(pushToHistory, clearMenu)}
+        onClick={() => !hasChildren && goToPage(handleClick, clearMenu)}
         onMouseEnter={e => toggleOpenMenu(e)}
       >
         <Flex
@@ -72,4 +82,4 @@ const Navbar: React.FC<NavbarProps> = ({ uiItems, history }) => {
   );
 };
 
-export default Navbar;
+export default withModal(Navbar);
