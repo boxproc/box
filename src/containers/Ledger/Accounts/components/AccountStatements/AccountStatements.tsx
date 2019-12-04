@@ -187,14 +187,20 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
       ),
     },
     {
-      maxWidth: 20,
+      maxWidth: 60,
+      Header: <TableHeader title="Details" />,
       Cell: (cellInfo: CellInfo) => (
-        <Button
-          iconName={iconNamesConst.SHORT_TEXT}
-          title="Details"
-          type="reset"
-          onClick={() => getLedgerStatementAprsFeesRewards(cellInfo.original.id)}
-        />
+        <Flex
+          justifyContent="center"
+          width="100%"
+        >
+          <Button
+            iconName={iconNamesConst.SHORT_TEXT}
+            title="Details"
+            type="reset"
+            onClick={() => getLedgerStatementAprsFeesRewards(cellInfo.original.id)}
+          />
+        </Flex>
       ),
     },
   ];

@@ -103,7 +103,7 @@ const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
         {...props}
         {...input}
         id={id}
-        onChange={handleChange}
+        onChange={!disabled ? handleChange : null}
       />
       {
         typeof label === 'string' ? (

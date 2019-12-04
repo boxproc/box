@@ -120,22 +120,23 @@ export const customStyles: StylesConfig = {
   },
   multiValueLabel: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    color: theme.colors.black,
+    color: theme.colors.darkGray,
     padding: '3px 5px',
     paddingRight: 2,
     fontWeight: 500,
   }),
   multiValue: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    backgroundColor: theme.colors.lightGray,
+    backgroundColor: theme.colors.lighterGray,
   }),
   multiValueRemove: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    backgroundColor: theme.colors.lightGray,
+    backgroundColor: theme.colors.lighterGray,
     // eslint-disable-next-line
     [':hover']: {
       backgroundColor: theme.colors.lightGray,
       color: false,
+      cursor: 'pointer',
     },
     // eslint-disable-next-line
     ['& > svg']: {

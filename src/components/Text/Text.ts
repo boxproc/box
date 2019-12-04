@@ -11,7 +11,7 @@ export const Label = styled.label<LabelProps>`
   font-size: 12px;
   color: ${({ theme, invalid }) => invalid
     ? theme.colors.red
-    : theme.colors.black};
+    : theme.colors.darkGray};
   }
 `;
 

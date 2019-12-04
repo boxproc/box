@@ -22,7 +22,7 @@ const TabTitle = styled.div<TabTitleProps>`
   font-weight: 500;
   cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};
   color: ${({ theme }) => theme.colors.gray};
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: .5pt;
   border-bottom: 1px solid transparent;
   user-select: none;

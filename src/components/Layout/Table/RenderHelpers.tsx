@@ -67,7 +67,7 @@ const CheckBoxWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding-top: 2px;
+  padding: 10px;
 `;
 
 export const renderCheckBoxTableCell = (updateAction?: (data: object) => void) =>

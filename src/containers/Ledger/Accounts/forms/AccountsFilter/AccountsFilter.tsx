@@ -3,19 +3,12 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'theme';
-
-import { InputField, SelectField } from 'components';
+import { Delimiter, InputField, SelectField } from 'components';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
-
-const ProductWrapper = styled(Box)`
-  min-width: 235px
-  max-width: 410px;
-`;
 
 interface AccountsFilterProps {
   institutionsOptions: Array<SelectValues>;
@@ -44,65 +37,41 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
   );
 
   return (
-    <Flex alignItems="flex-start">
-      <Box width="529px">
-        <Flex
-          alignItems="flex-start"
-          flexWrap="wrap"
-        >
-          <Box width={[4 / 9]} p="10px">
-            <Field
-              id="institutionId"
-              name="institutionId"
-              component={SelectField}
-              label="Institution"
-              placeholder="Select Institution"
-              options={institutionsOptions}
-              isClearable={false}
-              validate={[formErrorUtil.required]}
-            />
-          </Box>
-          <Box width={[2 / 9]} p="10px">
-            <Field
-              id="id"
-              name="id"
-              component={InputField}
-              label="Account ID"
-              placeholder="Enter ID"
-              isNumber={true}
-              validate={[formErrorUtil.isInteger]}
-            />
-          </Box>
-          <Box width={[3 / 9]} p="10px">
-            <Field
-              id="accountAlias"
-              name="accountAlias"
-              component={InputField}
-              label="Account Alias"
-              placeholder="Enter Account Alias"
-            />
-          </Box>
-          <Box width={[4 / 9]} p="10px">
-            <Field
-              id="firstName"
-              name="firstName"
-              component={InputField}
-              label="First Name"
-              placeholder="Enter First Name"
-            />
-          </Box>
-          <Box width={[4 / 9]} p="10px">
-            <Field
-              id="lastName"
-              name="lastName"
-              component={InputField}
-              label="Last Name"
-              placeholder="Enter Last Name"
-            />
-          </Box>
-        </Flex>
+    <Flex alignItems="flex-start" flexWrap="wrap">
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="institutionId"
+          name="institutionId"
+          component={SelectField}
+          label="Institution"
+          placeholder="Select Institution"
+          options={institutionsOptions}
+          isClearable={false}
+          validate={[formErrorUtil.required]}
+        />
       </Box>
-      <ProductWrapper p="10px">
+      <Box width="150px" p="10px">
+        <Field
+          id="id"
+          name="id"
+          component={InputField}
+          label="Account"
+          placeholder="Enter Account ID"
+          isNumber={true}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="accountAlias"
+          name="accountAlias"
+          component={InputField}
+          label="Account Alias"
+          placeholder="Enter Account Alias"
+        />
+      </Box>
+      <Delimiter />
+      <Box width={[1 / 3]} p="10px">
         <Field
           id="product"
           name="product"
@@ -113,7 +82,25 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           isMulti={true}
           isLoading={isLoadingInstitutionProducts}
         />
-      </ProductWrapper>
+      </Box>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="firstName"
+          name="firstName"
+          component={InputField}
+          label="First Name"
+          placeholder="Enter First Name"
+        />
+      </Box>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="lastName"
+          name="lastName"
+          component={InputField}
+          label="Last Name"
+          placeholder="Enter Last Name"
+        />
+      </Box>
     </Flex>
   );
 };

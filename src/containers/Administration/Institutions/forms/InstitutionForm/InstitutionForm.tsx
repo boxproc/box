@@ -5,6 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import {
   Button,
+  CheckboxField,
   ExternalSpinnerProps,
   Hr,
   InputField,
@@ -81,7 +82,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[8 / 15]} p="10px">
+          <Box width={[7 / 15]} p="10px">
             <Field
               id="name"
               name="name"
@@ -92,7 +93,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[4 / 15]} p="10px">
+          <Box width={[5 / 15]} p="10px">
             <Field
               id="status"
               name="status"
@@ -119,6 +120,15 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               component={InputField}
               label="SFTP Public Key"
               placeholder="Enter SFTP Public Key"
+            />
+          </Box>
+          <Box width={[1]} p="10px">
+            <Field
+              id="masterInstitution"
+              name="masterInstitution"
+              component={CheckboxField}
+              label="Master Institution"
+              disabled={true}
             />
           </Box>
         </Flex>

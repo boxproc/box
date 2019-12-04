@@ -32,7 +32,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             name="auxCounter1Enabled"
             component={CheckboxField}
             label="Aux Counter 1 Enabled"
-            placeholder="Enter Aux Counter 1 Enabled"
           />
         </Box>
         <Delimiter />
@@ -52,7 +51,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             name="auxCounter2Enabled"
             component={CheckboxField}
             label="Aux Counter 2 Enabled"
-            placeholder="Enter Aux Counter 2 Enabled"
           />
         </Box>
         <Delimiter />
@@ -72,7 +70,6 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             name="auxCounter3Enabled"
             component={CheckboxField}
             label="Aux Counter 3 Enabled"
-            placeholder="Enter Aux Counter 1 Enabled"
           />
         </Box>
       </Flex>

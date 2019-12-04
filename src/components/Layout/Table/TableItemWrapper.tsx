@@ -20,11 +20,11 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   white-space: normal;
   border: 1px solid transparent;
   color: inherit;
-  padding: 10px;
+  padding: 6px;
 
   ${({ isSmaller }) => isSmaller && `
     font-size: 12px;
-    padding: 5px;
+    padding: 4px;
   `};
 
   ${({ isEditable }) => isEditable && `

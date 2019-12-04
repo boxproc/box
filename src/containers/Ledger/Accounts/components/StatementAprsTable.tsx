@@ -17,6 +17,7 @@ export const tableColumns = [
     Cell: (props: TCell<'productAprId'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
         isNumber={true}
       />
     ),
@@ -29,6 +30,7 @@ export const tableColumns = [
     Cell: (props: TCell<'accruedInterest'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
         isNumber={true}
       />
     ),
@@ -41,6 +43,7 @@ export const tableColumns = [
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
@@ -52,6 +55,7 @@ export const tableColumns = [
     Cell: (props: TCell<'rate'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
         isNumber={true}
       />
     ),
