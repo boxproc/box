@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 import * as H from 'history';
 
 import styled from 'theme';
@@ -27,7 +27,7 @@ const TextWrapper = styled.div`
 
 const HelpBlock = () => (
   <Flex alignItems="center">
-    <HelpIcon size="16" />
+    <Box mt="-1px"><HelpIcon size="15" /></Box>
     <TextWrapper>Help</TextWrapper>
   </Flex>
 );
@@ -41,14 +41,32 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
   uiItems,
   location,
 }) => {
-  const isHome = location.pathname === basePath;
-  const currentUrl = stringsUtil.getCurrentBPSUrl(location.pathname);
+  const isHome = React.useMemo(
+    () => location.pathname === basePath,
+    [location]
+  );
 
-  const currentPathname = location.pathname.slice(1);
-  const currentUiItem = currentPathname.split('/').slice(1).join('/');
-  const currentUiItemName = uiItems
+  const currentUrl = React.useMemo(
+    () => stringsUtil.getCurrentBPSUrl(location.pathname),
+    [location]
+  );
+
+  const currentPathname = React.useMemo(
+    () => location.pathname.slice(1),
+    [location]
+  );
+
+  const currentUiItem = React.useMemo(
+    () => currentPathname.split('/').slice(1).join('/'),
+    [currentPathname]
+  );
+
+  const currentUiItemName = React.useMemo(
+    () => uiItems
     && uiItems.find(item => item.id === currentUiItem)
-    && uiItems.find(item => item.id === currentUiItem).title;
+    && uiItems.find(item => item.id === currentUiItem).title,
+    [uiItems, currentUiItem]
+  );
 
   return (
     <Dropdown

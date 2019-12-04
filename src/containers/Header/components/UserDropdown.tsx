@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled, { css } from 'theme';
 
@@ -40,10 +40,10 @@ interface UserDataProps {
 }
 
 const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) => (
-  <Flex alignItems="baseline">
+  <Flex alignItems="center">
     {username === usernames.ADMIN
-      ? <div><UserShieldIconStyled size="17" /></div>
-      : <UserIconStyled size="12" />
+      ? <div><UserShieldIconStyled size="15" /></div>
+      : <Box mt="-2px"><UserIconStyled size="12" /></Box>
     }
     <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
   </Flex>

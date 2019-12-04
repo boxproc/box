@@ -59,8 +59,10 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getUiItems();
-      getInstitutions();
+      Promise.all([
+        getUiItems(),
+        getInstitutions(),
+      ]);
     },
     [getUiItems, getInstitutions]
   );
@@ -97,16 +99,14 @@ const Header: React.FC<HeaderProps> = ({
           </Flex>
           <Box ml="50px">
             <Flex alignItems="center">
-              <Box mr="7px">
+              <Box mr="7px" fontSize="0px">
                 <HelpDropdown
                   location={location}
                   uiItems={uiItems}
                 />
               </Box>
               {institution && (
-                <Box mr="15px">
-                  {institution && institution.institutionName}
-                </Box>
+                <Box mr="15px" fontSize="12px">{institution.institutionName}</Box>
               )}
               <UserDropdown userLogout={userLogout} />
             </Flex>
