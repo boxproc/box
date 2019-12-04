@@ -27,12 +27,18 @@ interface NavbarProps extends RouteComponentProps, WithModalProps {
 const Navbar: React.FC<NavbarProps> = ({
   uiItems,
   history,
+  location,
   openModal,
 }) => {
   const menuRef = React.useRef(null);
 
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type } = item;
+
+    const selectedClassName = (location.pathname.split('/')[2] === id.split('/')[0]) && !parentId
+      ? menuClasses.SELECTED
+      : '';
+
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
     const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
@@ -44,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
     return (
       <Box
         key={id}
-        className={menuClasses.MENU_ITEM}
+        className={`${menuClasses.MENU_ITEM} ${selectedClassName}`}
         onClick={() => !hasChildren && goToPage(handleClick, clearMenu)}
         onMouseEnter={e => toggleOpenMenu(e)}
       >

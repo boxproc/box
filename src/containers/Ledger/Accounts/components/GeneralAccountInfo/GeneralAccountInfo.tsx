@@ -64,7 +64,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         getCyclesDescriptions({ institutionId: currentInstitution.value });
       }
     },
-    [getInstitutionProducts, getCyclesDescriptions]
+    [getCyclesDescriptions, currentInstitution]
   );
 
   return (

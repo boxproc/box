@@ -4,6 +4,7 @@ export enum menuClasses {
   MENU_ITEM = 'main-menu__item',
   MENU_TITLE = 'main-menu__title',
   ACTIVE = 'is-active',
+  SELECTED = 'is-selected',
 }
 
 export const removeActiveClass = (el: Element) => el.classList.remove(menuClasses.ACTIVE);
