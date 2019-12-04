@@ -7,15 +7,31 @@ import { CheckboxField, Delimiter, InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface ProductAuxiliaryCountersProps { }
+interface ProductAuxiliaryCountersProps {
+  isCounter1Enabled: boolean;
+  isCounter2Enabled: boolean;
+  isCounter3Enabled: boolean;
+}
 
-const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => {
+const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
+  isCounter1Enabled,
+  isCounter2Enabled,
+  isCounter3Enabled,
+}) => {
   return (
     <Box mx="-10px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
+        <Box p="10px 0 20px 10px">
+          <Field
+            id="auxCounter1Enabled"
+            name="auxCounter1Enabled"
+            component={CheckboxField}
+            label=""
+          />
+        </Box>
         <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter1Description"
@@ -23,18 +39,19 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 1 Description"
             placeholder="Enter Aux Counter 1 Description"
+            disabled={!isCounter1Enabled}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="13px">
+        <Delimiter />
+        <Box p="10px 0 20px 10px">
           <Field
-            id="auxCounter1Enabled"
-            name="auxCounter1Enabled"
+            id="auxCounter2Enabled"
+            name="auxCounter2Enabled"
             component={CheckboxField}
-            label="Aux Counter 1 Enabled"
+            label=""
           />
         </Box>
-        <Delimiter />
         <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter2Description"
@@ -42,18 +59,19 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 2 Description"
             placeholder="Enter Aux Counter 2 Description"
+            disabled={!isCounter2Enabled}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="230px" p="10px" pb="13px">
+        <Delimiter />
+        <Box p="10px 0 20px 10px">
           <Field
-            id="auxCounter2Enabled"
-            name="auxCounter2Enabled"
+            id="auxCounter3Enabled"
+            name="auxCounter3Enabled"
             component={CheckboxField}
-            label="Aux Counter 2 Enabled"
+            label=""
           />
         </Box>
-        <Delimiter />
         <Box width={[1 / 2]} p="10px">
           <Field
             id="auxCounter3Description"
@@ -61,15 +79,8 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = () => 
             component={InputField}
             label="Aux Counter 3 Description"
             placeholder="Enter Aux Counter 3 Description"
+            disabled={!isCounter3Enabled}
             validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width="230px" p="10px" pb="13px">
-          <Field
-            id="auxCounter3Enabled"
-            name="auxCounter3Enabled"
-            component={CheckboxField}
-            label="Aux Counter 3 Enabled"
           />
         </Box>
       </Flex>
