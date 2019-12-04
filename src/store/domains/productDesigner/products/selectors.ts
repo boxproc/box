@@ -71,7 +71,7 @@ export const selectCurrentProduct = createSelector(
 export const selectCurrentInstitutionId = createSelector(
   selectCurrentProduct,
   product => {
-    if (!product) {
+    if (!product || !product.institutionId) {
       return null;
     }
 
@@ -188,13 +188,7 @@ export const selectDetailsCurrentProductDetails = (state: StoreState) =>
 export const selectCurrentProductDetails = createSelector(
   selectDetailsCurrentProductDetails,
   selectCurrentProductType,
-  (product, productType) => {
-    if (!product) {
-      return null;
-    }
-
-    return prepareProductDetailsData(product, productType);
-  }
+  (product, productType) => product && prepareProductDetailsData(product, productType)
 );
 
 export const selectDefaultCurrentRule = (state: StoreState) =>

@@ -13,6 +13,8 @@ import {
   LedgerStatementTransactionsItem
 } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
   if (!data) {
     return null;
@@ -45,10 +47,9 @@ export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
     firstTransactionId: first_transaction_id,
     lastTransactionId: last_transaction_id,
     statementDate: statement_date,
-    balanceOpen: balance_open !== null && balance_open !== undefined && balance_open.toFixed(2),
-    balanceClose: balance_close !== null && balance_close !== undefined && balance_close.toFixed(2),
-    minimumAmountDueRepayment: minimum_amount_due_repayment !== null
-      && minimum_amount_due_repayment !== undefined
+    balanceOpen: stringsUtil.checkNumberToFixed(balance_open) && balance_open.toFixed(2),
+    balanceClose: stringsUtil.checkNumberToFixed(balance_close) && balance_close.toFixed(2),
+    minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
       && minimum_amount_due_repayment.toFixed(2),
     statementCycleName: statement_cycle_description,
     repaymentStatus: repaymentStatus && repaymentStatus.label,
@@ -82,25 +83,20 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
   return {
     id,
     transactionDatetime: transaction_datetime,
-    amount: amount !== null && amount !== undefined && amount.toFixed(2),
-    amountInOriginalCurrency: amount_in_original_currency !== null
-      && amount_in_original_currency !== undefined
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
       && amount_in_original_currency.toFixed(2),
-    balanceAvailableBefore: balance_available_before !== null
-      && balance_available_before !== undefined
+    balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
       && balance_available_before.toFixed(2),
-    balanceAvailableAfter: balance_available_after !== null
-      && balance_available_after !== undefined
+    balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
       && balance_available_after.toFixed(2),
-    balanceSettledBefore: balance_settled_before !== null
-      && balance_settled_before !== undefined
+    balanceSettledBefore: stringsUtil.checkNumberToFixed(balance_settled_before)
       && balance_settled_before.toFixed(2),
-    balanceSettledAfter: balance_settled_after !== null
-      && balance_settled_after !== undefined
+    balanceSettledAfter: stringsUtil.checkNumberToFixed(balance_settled_after)
       && balance_settled_after.toFixed(2),
     description,
     aprId: apr_id,
-    aprRate: apr_rate !== null && apr_rate !== undefined && apr_rate.toFixed(2),
+    aprRate: stringsUtil.checkNumberToFixed(apr_rate) && apr_rate.toFixed(2),
   };
 };
 
@@ -145,14 +141,11 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
 
   return {
     ...prepareDataToRender(data),
-    accruedInterestTotal: accrued_interest_total !== null
-      && accrued_interest_total !== undefined
+    accruedInterestTotal: stringsUtil.checkNumberToFixed(accrued_interest_total)
       && accrued_interest_total.toFixed(5),
-    accruedFeeTotal: accrued_fee_total !== null
-      && accrued_fee_total !== undefined
+    accruedFeeTotal: stringsUtil.checkNumberToFixed(accrued_fee_total)
       && accrued_fee_total.toFixed(5),
-    accruedRewardTotal: accrued_reward_total !== null
-      && accrued_reward_total !== undefined
+    accruedRewardTotal: stringsUtil.checkNumberToFixed(accrued_reward_total)
       && accrued_reward_total.toFixed(5),
   };
 };
@@ -174,11 +167,10 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
   return {
     statementId: statement_id,
     productAprId: product_apr_id,
-    accruedInterest: accrued_interest !== null
-      && accrued_interest !== undefined
+    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
       && accrued_interest.toFixed(5),
     description,
-    rate: rate !== null && rate !== undefined && rate.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
   };
 };
 
@@ -204,10 +196,10 @@ export const prepareStatementFeeToRender = (data: LedgerStatementFeeItem):
   return {
     statementId: statement_id,
     productFeeId: product_fee_id,
-    accruedFee: accrued_fee !== null && accrued_fee !== undefined && accrued_fee.toFixed(5),
+    accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) && accrued_fee.toFixed(5),
     description,
-    rate: rate !== null && rate !== undefined && rate.toFixed(2),
-    amount: amount !== null && amount !== undefined && amount.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
   };
 };
@@ -234,12 +226,10 @@ export const prepareStatementRewardToRender = (data: LedgerStatementRewardItem):
   return {
     statementId: statement_id,
     productRewardId: product_reward_id,
-    accruedReward: accrued_reward !== null
-      && accrued_reward !== undefined
-      && accrued_reward.toFixed(5),
+    accruedReward: stringsUtil.checkNumberToFixed(accrued_reward) && accrued_reward.toFixed(5),
     description,
-    rate: rate !== null && rate !== undefined && rate.toFixed(2),
-    amount: amount !== null && amount !== undefined && amount.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
   };
 };

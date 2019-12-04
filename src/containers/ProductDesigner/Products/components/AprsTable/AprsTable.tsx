@@ -105,7 +105,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       maxWidth: 120,
       sortable: true,
       accessor: 'rate',
-      Header: <TableHeader title="Rate" />,
+      Header: <TableHeader title="Rate %" />,
       Cell: (cellInfo: CellInfo) => renderEditableTableCell({
         updateAction: updateProductApr,
         isSmaller: true,

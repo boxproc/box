@@ -49,9 +49,10 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
-export const prepareProductFiltersParamsToSend = (params: ProductFilter): ProductFilterPrepared => {
-  const { activeStatusFlag, institutionId, productType } = params;
+export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
+  const { activeStatusFlag, institutionId, productType } = data;
 
   return {
     status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
@@ -117,46 +118,82 @@ export const prepareGeneralProductItem = (item: ProductItemResp) => {
   };
 };
 
-export const prepareGeneralProductData = (product: ProductItemResp):
+export const prepareGeneralProductData = (data: ProductItemResp):
   Partial<ProductItemGeneral> => {
-  if (!product) {
+  if (!data) {
     return null;
   }
 
+  const {
+    id,
+    name,
+    description,
+    history_retention_number_of_day,
+    product_type,
+    status,
+    scheme,
+    locked_flag,
+    overrides_product_id,
+    card_form_factor,
+    number_of_days_card_expires,
+  } = data;
+
   return {
-    id: product.id,
-    name: product.name,
-    description: product.description,
-    historyRetentionNumberOfDay: product.history_retention_number_of_day,
-    productType: productTypesOptions.find(el => el.value === product.product_type),
-    status: statusTypesOptions.find(el => el.value === product.status),
-    scheme: schemeTypesOptions.find(el => el.value === product.scheme),
-    lockedFlag: product.locked_flag === yesNoTypesCodes.YES ? true : false,
-    overridesProductId: product.overrides_product_id,
-    cardFormFactor: cardFormFactorOptions.find(el => el.value === product.card_form_factor),
-    numberOfDaysCardExpires: product.number_of_days_card_expires,
+    id,
+    name,
+    description,
+    historyRetentionNumberOfDay: history_retention_number_of_day,
+    productType: productTypesOptions.find(el => el.value === product_type),
+    status: statusTypesOptions.find(el => el.value === status),
+    scheme: schemeTypesOptions.find(el => el.value === scheme),
+    lockedFlag: locked_flag === yesNoTypesCodes.YES ? true : false,
+    overridesProductId: overrides_product_id,
+    cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
+    numberOfDaysCardExpires: number_of_days_card_expires,
   };
 };
 
-export const prepareGeneralProductDataToSend = (product: Partial<ProductItemGeneral>):
+export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral>):
   ProductItemResp => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    id,
+    name,
+    description,
+    status,
+    institutionId,
+    currencyCode,
+    productType,
+    scheme,
+    historyRetentionNumberOfDay,
+    defaultStatementCycle,
+    lockedFlag,
+    overridesProductId,
+    cardFormFactor,
+    numberOfDaysCardExpires,
+  } = data;
+
   return {
-    id: product.id,
-    name: product.name,
-    description: product.description,
-    status: product.status.value,
-    institution_id: product.institutionId.value,
-    currency_code: product.currencyCode.value,
-    product_type: product.productType.value,
-    scheme: product.scheme.value,
-    history_retention_number_of_day: Number(product.historyRetentionNumberOfDay),
-    default_statement_cycle_id: product.defaultStatementCycle.value,
-    locked_flag: product.lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    statement_cycle_description: product.defaultStatementCycle.value,
-    overrides_product_id: product.overridesProductId,
-    card_form_factor: product.cardFormFactor.value,
-    number_of_days_card_expires: product.numberOfDaysCardExpires
-      && Number(product.numberOfDaysCardExpires),
+    id,
+    name,
+    description,
+    status: status.value,
+    institution_id: institutionId.value,
+    currency_code: currencyCode.value,
+    product_type: productType.value,
+    scheme: scheme.value,
+    history_retention_number_of_day: historyRetentionNumberOfDay
+      && Number(historyRetentionNumberOfDay),
+    default_statement_cycle_id: defaultStatementCycle.value,
+    locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    statement_cycle_description: defaultStatementCycle.value,
+    overrides_product_id: overridesProductId,
+    card_form_factor: cardFormFactor.value,
+    number_of_days_card_expires: numberOfDaysCardExpires
+      && Number(numberOfDaysCardExpires),
   };
 };
 
@@ -178,126 +215,259 @@ export const prepareProductDetailsData = (product: any, productType: SelectValue
   }
 };
 
-export const prepareRevolvingCredit = (product: RevolvingCreditProductItemResp) => {
+export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_id,
+    apr_default,
+    apr_default_calculation_method,
+    fee_exceed_limit,
+    fee_late_payment,
+    fee_overpayment,
+    limit_sharing_allowed_flag,
+    minimum_payment_amount,
+    minimum_payment_rate,
+    payment_grace_number_of_days,
+    rate_exceed_limit,
+    rate_late_payment,
+    rate_overpayment,
+  } = data;
+
   const aprDefaultCalculationMethod = aprTypesOptions
-    .find(el => el.value === product.apr_default_calculation_method);
+    .find(el => el.value === apr_default_calculation_method);
 
   return {
-    productId: product.product_id,
-    aprDefault: product.apr_default && product.apr_default.toFixed(2),
+    productId: product_id,
+    aprDefault: stringsUtil.checkNumberToFixed(apr_default) && apr_default.toFixed(2),
     aprDefaultCalculationMethod,
-    feeExceedLimit: product.fee_exceed_limit && product.fee_exceed_limit.toFixed(2),
-    feeLatePayment: product.fee_late_payment && product.fee_late_payment.toFixed(2),
-    feeOverpayment: product.fee_overpayment && product.fee_overpayment.toFixed(2),
-    limitSharingAllowedFlag: product.limit_sharing_allowed_flag === yesNoTypesCodes.YES,
-    minimumPaymentAmount: product.minimum_payment_amount
-      && product.minimum_payment_amount.toFixed(2),
-    minimumPaymentRate: product.minimum_payment_rate && product.minimum_payment_rate.toFixed(2),
-    paymentGraceNumberOfDays: product.payment_grace_number_of_days,
-    rateExceedLimit: product.rate_exceed_limit && product.rate_exceed_limit.toFixed(2),
-    rateLatePayment: product.rate_late_payment && product.rate_late_payment.toFixed(2),
-    rateOverpayment: product.rate_overpayment && product.rate_overpayment.toFixed(2),
+    feeExceedLimit: stringsUtil.checkNumberToFixed(fee_exceed_limit) && fee_exceed_limit.toFixed(2),
+    feeLatePayment: stringsUtil.checkNumberToFixed(fee_late_payment) && fee_late_payment.toFixed(2),
+    feeOverpayment: stringsUtil.checkNumberToFixed(fee_overpayment) && fee_overpayment.toFixed(2),
+    limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoTypesCodes.YES,
+    minimumPaymentAmount: stringsUtil.checkNumberToFixed(minimum_payment_amount)
+      && minimum_payment_amount.toFixed(2),
+    minimumPaymentRate: stringsUtil.checkNumberToFixed(minimum_payment_rate)
+      && minimum_payment_rate.toFixed(2),
+    paymentGraceNumberOfDays: payment_grace_number_of_days,
+    rateExceedLimit: stringsUtil.checkNumberToFixed(rate_exceed_limit)
+      && rate_exceed_limit.toFixed(2),
+    rateLatePayment: stringsUtil.checkNumberToFixed(rate_late_payment)
+      && rate_late_payment.toFixed(2),
+    rateOverpayment: stringsUtil.checkNumberToFixed(rate_overpayment)
+      && rate_overpayment.toFixed(2),
   };
 };
 
-export const prepareRevolvingCreditToSend = (product: RevolvingCreditProductItem) => {
+export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    aprDefault,
+    aprDefaultCalculationMethod,
+    feeExceedLimit,
+    feeLatePayment,
+    feeOverpayment,
+    limitSharingAllowedFlag,
+    minimumPaymentAmount,
+    minimumPaymentRate,
+    paymentGraceNumberOfDays,
+    rateExceedLimit,
+    rateLatePayment,
+    rateOverpayment,
+  } = data;
+
   return {
-    product_id: product.productId,
-    apr_default: Number(product.aprDefault),
-    apr_default_calculation_method: product.aprDefaultCalculationMethod.value,
-    fee_exceed_limit: Number(product.feeExceedLimit),
-    fee_late_payment: Number(product.feeLatePayment),
-    fee_overpayment: Number(product.feeOverpayment),
+    product_id: productId,
+    apr_default: Number(aprDefault),
+    apr_default_calculation_method: aprDefaultCalculationMethod.value,
+    fee_exceed_limit: Number(feeExceedLimit),
+    fee_late_payment: Number(feeLatePayment),
+    fee_overpayment: Number(feeOverpayment),
     limit_sharing_allowed_flag:
-      product.limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    minimum_payment_amount: Number(product.minimumPaymentAmount),
-    minimum_payment_rate: Number(product.minimumPaymentRate),
-    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
-    rate_exceed_limit: Number(product.rateExceedLimit),
-    rate_late_payment: Number(product.rateLatePayment),
-    rate_overpayment: Number(product.rateOverpayment),
+      limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    minimum_payment_amount: Number(minimumPaymentAmount),
+    minimum_payment_rate: Number(minimumPaymentRate),
+    payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
+    rate_exceed_limit: Number(rateExceedLimit),
+    rate_late_payment: Number(rateLatePayment),
+    rate_overpayment: Number(rateOverpayment),
   };
 };
 
-export const prepareSavings = (product: SavingsProductItemResp) => {
+export const prepareSavings = (data: SavingsProductItemResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_id,
+    apr,
+    minimum_deposit_allowed,
+    maximum_deposit_allowed,
+    maximum_monthly_deposit,
+    savings_type,
+  } = data;
+
   return {
-    productId: product.product_id,
-    apr: product.apr,
-    minimumDepositAllowed: product.minimum_deposit_allowed &&
-      product.minimum_deposit_allowed.toFixed(2),
-    maximumDepositAllowed: product.maximum_deposit_allowed &&
-      product.maximum_deposit_allowed.toFixed(2),
-    maximumMonthlyDeposit: product.maximum_monthly_deposit &&
-      product.maximum_monthly_deposit.toFixed(2),
-    savingsType: savingsTypesOptions.find(el => el.value === product.savings_type),
+    productId: product_id,
+    apr,
+    minimumDepositAllowed: stringsUtil.checkNumberToFixed(minimum_deposit_allowed)
+      && minimum_deposit_allowed.toFixed(2),
+    maximumDepositAllowed: stringsUtil.checkNumberToFixed(maximum_deposit_allowed)
+      && maximum_deposit_allowed.toFixed(2),
+    maximumMonthlyDeposit: stringsUtil.checkNumberToFixed(maximum_monthly_deposit)
+      && maximum_monthly_deposit.toFixed(2),
+    savingsType: savingsTypesOptions.find(el => el.value === savings_type),
   };
 };
 
-export const prepareSavingsToSend = (product: SavingsProductItem) => {
+export const prepareSavingsToSend = (data: SavingsProductItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    apr,
+    minimumDepositAllowed,
+    maximumDepositAllowed,
+    maximumMonthlyDeposit,
+    savingsType,
+  } = data;
+
   return {
-    product_id: product.productId,
-    apr: Number(product.apr),
-    minimum_deposit_allowed: Number(product.minimumDepositAllowed),
-    maximum_deposit_allowed: Number(product.maximumDepositAllowed),
-    maximum_monthly_deposit: Number(product.maximumMonthlyDeposit),
-    savings_type: product.savingsType.value,
+    product_id: productId,
+    apr: Number(apr),
+    minimum_deposit_allowed: Number(minimumDepositAllowed),
+    maximum_deposit_allowed: Number(maximumDepositAllowed),
+    maximum_monthly_deposit: Number(maximumMonthlyDeposit),
+    savings_type: savingsType.value,
   };
 };
 
-export const preparePrepaid = (product: PrepaidProductItemResp) => {
+export const preparePrepaid = (data: PrepaidProductItemResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_id,
+    dormant_after_number_of_days,
+    breakages_allowed,
+    reload_allowed,
+  } = data;
+
   return {
-    productId: product.product_id,
-    dormantAfterNumberOfDays: Number(product.dormant_after_number_of_days),
-    breakagesAllowed:
-      product.breakages_allowed === yesNoTypesCodes.YES ? true : false,
-    reloadAllowed:
-      product.reload_allowed === yesNoTypesCodes.YES ? true : false,
+    productId: product_id,
+    dormantAfterNumberOfDays: Number(dormant_after_number_of_days),
+    breakagesAllowed: breakages_allowed === yesNoTypesCodes.YES ? true : false,
+    reloadAllowed: reload_allowed === yesNoTypesCodes.YES ? true : false,
   };
 };
 
-export const preparePrepaidToSend = (product: PrepaidProductItem) => {
+export const preparePrepaidToSend = (data: PrepaidProductItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    dormantAfterNumberOfDays,
+    breakagesAllowed,
+    reloadAllowed,
+  } = data;
+
   return {
-    product_id: product.productId,
-    dormant_after_number_of_days: Number(product.dormantAfterNumberOfDays),
-    breakages_allowed: product.breakagesAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    reload_allowed: product.reloadAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    product_id: productId,
+    dormant_after_number_of_days: Number(dormantAfterNumberOfDays),
+    breakages_allowed: breakagesAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    reload_allowed: reloadAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };
 
-export const prepareLoan = (product: LoanProductItemResp) => {
+export const prepareLoan = (data: LoanProductItemResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_id,
+    apr,
+    fee_late_payment,
+    payment_grace_number_of_days,
+    loan_type,
+  } = data;
+
   return {
-    productId: product.product_id,
-    apr: product.apr,
-    feeLatePayment: product.fee_late_payment,
-    paymentGraceNumberOfDays: product.payment_grace_number_of_days,
-    loanType: loanTypesOptions.find(el => el.value === product.loan_type),
+    productId: product_id,
+    apr,
+    feeLatePayment: fee_late_payment,
+    paymentGraceNumberOfDays: payment_grace_number_of_days,
+    loanType: loanTypesOptions.find(el => el.value === loan_type),
   };
 };
 
-export const prepareLoanToSend = (product: LoanProductItem) => {
+export const prepareLoanToSend = (data: LoanProductItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    apr,
+    feeLatePayment,
+    paymentGraceNumberOfDays,
+    loanType,
+  } = data;
+
   return {
-    product_id: product.productId,
-    apr: Number(product.apr),
-    fee_late_payment: Number(product.feeLatePayment),
-    payment_grace_number_of_days: Number(product.paymentGraceNumberOfDays),
-    loan_type: product.loanType.value,
+    product_id: productId,
+    apr: Number(apr),
+    fee_late_payment: Number(feeLatePayment),
+    payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
+    loan_type: loanType.value,
   };
 };
 
-export const prepareDebit = (product: DebitProductItemResp) => {
+export const prepareDebit = (data: DebitProductItemResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    product_id,
+    apr_overdraft,
+    overdraft_allowed,
+  } = data;
+
   return {
-    productId: product.product_id,
-    aprOverdraft: product.apr_overdraft && product.apr_overdraft.toFixed(2),
-    overdraftAllowed:
-      product.overdraft_allowed === yesNoTypesCodes.YES ? true : false,
+    productId: product_id,
+    aprOverdraft: stringsUtil.checkNumberToFixed(apr_overdraft) && apr_overdraft.toFixed(2),
+    overdraftAllowed: overdraft_allowed === yesNoTypesCodes.YES ? true : false,
   };
 };
 
-export const prepareDebitToSend = (product: DebitProductItem) => {
+export const prepareDebitToSend = (data: DebitProductItem) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    aprOverdraft,
+    overdraftAllowed,
+  } = data;
+
   return {
-    product_id: product.productId,
-    apr_overdraft: Number(product.aprOverdraft),
-    overdraft_allowed: product.overdraftAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    product_id: productId,
+    apr_overdraft: Number(aprOverdraft),
+    overdraft_allowed: overdraftAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };
 
@@ -375,9 +545,14 @@ export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => 
     return null;
   }
 
+  const {
+    eventId,
+    actionType,
+  } = data;
+
   return {
-    event_id: data.eventId && data.eventId.value,
-    action_type: data.actionType && data.actionType.value,
+    event_id: eventId && eventId.value,
+    action_type: actionType && actionType.value,
   };
 };
 
@@ -386,15 +561,24 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
     return null;
   }
 
-  const calculationMethod = aprTypesOptions.find(el => el.value === data.calculation_method);
+  const {
+    product_apr_id,
+    product_id,
+    description,
+    calculation_method,
+    rate,
+    grace_number_of_days,
+  } = data;
+
+  const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
 
   return {
-    productAprId: data.product_apr_id,
-    productId: data.product_id,
-    description: data.description,
+    productAprId: product_apr_id,
+    productId: product_id,
+    description,
     calculationMethod: calculationMethod && calculationMethod.label,
-    rate: data.rate && data.rate.toFixed(2),
-    graceNumberOfDays: data.grace_number_of_days,
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    graceNumberOfDays: grace_number_of_days,
   };
 };
 
@@ -403,12 +587,20 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
     return null;
   }
 
+  const {
+    productAprId,
+    productId,
+    description,
+    rate,
+    graceNumberOfDays,
+  } = data;
+
   return {
-    product_apr_id: data.productAprId,
-    product_id: data.productId,
-    description: data.description,
-    rate: Number(data.rate),
-    grace_number_of_days: Number(data.graceNumberOfDays),
+    product_apr_id: productAprId,
+    product_id: productId,
+    description,
+    rate: Number(rate),
+    grace_number_of_days: Number(graceNumberOfDays),
   };
 };
 
@@ -418,7 +610,7 @@ export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormVal
     return null;
   }
 
-  const calculationMethod = data.calculationMethod;
+  const { calculationMethod } = data;
 
   return {
     ...prepareProductAprs(data),
@@ -444,17 +636,26 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     return null;
   }
 
+  const {
+    product_id,
+    product_fee_id,
+    description,
+    rate,
+    amount,
+    fee_application_condition,
+  } = data;
+
   const feeApplicationCondition = feeTypesOptions
-    .find(el => el.value === data.fee_application_condition);
+    .find(el => el.value === fee_application_condition);
 
   return {
-    productId: data.product_id,
-    productFeeId: data.product_fee_id,
-    description: data.description,
-    rate: data.rate && data.rate.toFixed(2),
-    amount: data.amount && data.amount.toFixed(2),
+    productId: product_id,
+    productFeeId: product_fee_id,
+    description,
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
-    feeApplicationConditionValue: data.fee_application_condition,
+    feeApplicationConditionValue: fee_application_condition,
   };
 };
 
@@ -463,12 +664,20 @@ export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<
     return null;
   }
 
+  const {
+    productId,
+    productFeeId,
+    description,
+    rate,
+    amount,
+  } = data;
+
   return {
-    product_id: data.productId,
-    product_fee_id: data.productFeeId,
-    description: data.description,
-    rate: Number(data.rate),
-    amount: Number(data.amount),
+    product_id: productId,
+    product_fee_id: productFeeId,
+    description,
+    rate: Number(rate),
+    amount: Number(amount),
   };
 };
 
@@ -478,7 +687,7 @@ export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormVal
     return null;
   }
 
-  const feeApplicationCondition = data.feeApplicationCondition;
+  const { feeApplicationCondition } = data;
 
   return {
     ...prepareProductFees(data),
@@ -505,17 +714,26 @@ export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductR
     return null;
   }
 
+  const {
+    product_id,
+    product_reward_id,
+    description,
+    rate,
+    amount,
+    reward_application_condition,
+  } = data;
+
   const rewardApplicationCondition = rewardsTypesOptions
-    .find(el => el.value === data.reward_application_condition);
+    .find(el => el.value === reward_application_condition);
 
   return {
-    productId: data.product_id,
-    productRewardId: data.product_reward_id,
-    description: data.description,
-    rate: data.rate && data.rate.toFixed(2),
-    amount: data.amount && data.amount.toFixed(2),
+    productId: product_id,
+    productRewardId: product_reward_id,
+    description,
+    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
-    rewardApplicationConditionValue: data.reward_application_condition,
+    rewardApplicationConditionValue: reward_application_condition,
   };
 };
 
@@ -525,12 +743,20 @@ export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
     return null;
   }
 
+  const {
+    productId,
+    productRewardId,
+    description,
+    rate,
+    amount,
+  } = data;
+
   return {
-    product_id: data.productId,
-    product_reward_id: data.productRewardId,
-    description: data.description,
-    rate: Number(data.rate),
-    amount: Number(data.amount),
+    product_id: productId,
+    product_reward_id: productRewardId,
+    description,
+    rate: Number(rate),
+    amount: Number(amount),
   };
 };
 
@@ -540,7 +766,7 @@ export const prepareFormDataProductRewardsToSend = (data: Partial<ProductRewardF
     return null;
   }
 
-  const rewardApplicationCondition = data.rewardApplicationCondition;
+  const { rewardApplicationCondition } = data;
 
   return {
     ...prepareProductRewards(data),

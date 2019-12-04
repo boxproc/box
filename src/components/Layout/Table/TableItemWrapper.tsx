@@ -7,6 +7,7 @@ interface TableItemWrapperProps {
   isAccentColor?: boolean;
   textCenter?: boolean;
   isSmaller?: boolean;
+  isEditable?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`
@@ -19,9 +20,16 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   white-space: normal;
   border: 1px solid transparent;
   color: inherit;
+  padding: 10px;
 
   ${({ isSmaller }) => isSmaller && `
     font-size: 12px;
+    padding: 5px;
+  `};
+
+  ${({ isEditable }) => isEditable && `
+    padding-left: 0;
+    padding-right: 0;
   `};
 
   ${({ textRight }) => textRight && `

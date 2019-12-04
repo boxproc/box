@@ -6,6 +6,8 @@ import {
   LedgerAccountsFilter,
 } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
   if (!data) {
     return null;
@@ -189,27 +191,38 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     dateOfProductOverride: date_of_product_override,
     product: product_name,
     productType: product_type,
-    balanceSettled: balance_settled && balance_settled.toFixed(2),
-    balanceAvailable: balance_available && balance_available.toFixed(2),
-    amountDueRepayment: amount_due_repayment && amount_due_repayment.toFixed(2),
-    balanceLimit: balance_limit && balance_limit.toFixed(2),
-    balanceLimitShared: balance_limit_shared && balance_limit_shared.toFixed(2),
-    accruedInterest: accrued_interest && accrued_interest.toFixed(2),
+    balanceSettled: stringsUtil.checkNumberToFixed(balance_settled) && balance_settled.toFixed(2),
+    balanceAvailable: stringsUtil.checkNumberToFixed(balance_available)
+      && balance_available.toFixed(2),
+    amountDueRepayment: stringsUtil.checkNumberToFixed(amount_due_repayment)
+      && amount_due_repayment.toFixed(2),
+    balanceLimit: stringsUtil.checkNumberToFixed(balance_limit) && balance_limit.toFixed(2),
+    balanceLimitShared: stringsUtil.checkNumberToFixed(balance_limit_shared)
+      && balance_limit_shared.toFixed(2),
+    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
+      && accrued_interest.toFixed(2),
     dateCreated: date_created,
     dateClosed: date_closed,
     statementCycle: statement_cycle_description,
     lastCycleDate: last_cycle_date,
-    auxCounter1: aux_counter_1 && aux_counter_1.toFixed(2),
-    auxCounter2: aux_counter_2 && aux_counter_2.toFixed(2),
-    auxCounter3: aux_counter_3 && aux_counter_3.toFixed(2),
-    amountOverdue: amount_overdue && amount_overdue.toFixed(2),
-    amountOverdue1Cycle: amount_overdue_1_cycle && amount_overdue_1_cycle.toFixed(2),
-    amountOverdue2Cycles: amount_overdue_2_cycles && amount_overdue_2_cycles.toFixed(2),
-    amountOverdue3Cycles: amount_overdue_3_cycles && amount_overdue_3_cycles.toFixed(2),
-    amountOverdue4Cycles: amount_overdue_4_cycles && amount_overdue_4_cycles.toFixed(2),
-    amountOverdue5Cycles: amount_overdue_5_cycles && amount_overdue_5_cycles.toFixed(2),
-    amountOverdue6Cycles: amount_overdue_6_cycles && amount_overdue_6_cycles.toFixed(2),
-    amountOverdue7Cycles: amount_overdue_7_cycles && amount_overdue_7_cycles.toFixed(2),
+    auxCounter1: stringsUtil.checkNumberToFixed(aux_counter_1) && aux_counter_1.toFixed(2),
+    auxCounter2: stringsUtil.checkNumberToFixed(aux_counter_2) && aux_counter_2.toFixed(2),
+    auxCounter3: stringsUtil.checkNumberToFixed(aux_counter_3) && aux_counter_3.toFixed(2),
+    amountOverdue: stringsUtil.checkNumberToFixed(amount_overdue) && amount_overdue.toFixed(2),
+    amountOverdue1Cycle: stringsUtil.checkNumberToFixed(amount_overdue_1_cycle)
+      && amount_overdue_1_cycle.toFixed(2),
+    amountOverdue2Cycles: stringsUtil.checkNumberToFixed(amount_overdue_2_cycles)
+      && amount_overdue_2_cycles.toFixed(2),
+    amountOverdue3Cycles: stringsUtil.checkNumberToFixed(amount_overdue_3_cycles)
+      && amount_overdue_3_cycles.toFixed(2),
+    amountOverdue4Cycles: stringsUtil.checkNumberToFixed(amount_overdue_4_cycles)
+      && amount_overdue_4_cycles.toFixed(2),
+    amountOverdue5Cycles: stringsUtil.checkNumberToFixed(amount_overdue_5_cycles)
+      && amount_overdue_5_cycles.toFixed(2),
+    amountOverdue6Cycles: stringsUtil.checkNumberToFixed(amount_overdue_6_cycles)
+      && amount_overdue_6_cycles.toFixed(2),
+    amountOverdue7Cycles: stringsUtil.checkNumberToFixed(amount_overdue_7_cycles)
+      && amount_overdue_7_cycles.toFixed(2),
     numberOfTimesOverdueTotal: number_of_times_overdue_total,
     numberOfTimesOverdue1Cycle: number_of_times_overdue_1_cycle,
     numberOfTimesOverdue2Cycles: number_of_times_overdue_2_cycle,

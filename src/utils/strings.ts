@@ -39,3 +39,7 @@ export const rangeNumbersArray = (N: number, startIndex: number = 0) => new Arra
 export const rangeDecimalNumbersArray = (N: number, startIndex: number = 0) => new Array(N)
   .fill(null)
   .map((item, index) => padStartN(index + startIndex, 2));
+
+export const checkNumberToFixed = (value: number | string) => {
+  return value || value === 0;
+};

@@ -41,6 +41,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       onBlur={onBlur}
       onKeyUp={onKeyUp}
       isDate={isDate}
+      isEditable={isEditable}
       textCenter={onCenter}
       isAccentColor={isPendingStatus}
       isSmaller={isSmaller}

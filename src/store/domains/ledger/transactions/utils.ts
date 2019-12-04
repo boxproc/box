@@ -1,9 +1,12 @@
 import { aprTypesOptions } from 'consts';
+
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
   LedgerTransactionsFilter,
 } from './types';
+
+import { stringsUtil } from 'utils';
 
 export const prepareValuesToRender = (values: LedgerTransactionItem):
   LedgerTransactionItemPrepared => {
@@ -11,44 +14,70 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     return null;
   }
 
-  const aprCalculationMethod = aprTypesOptions
-    .find(el => el.value === values.apr_calculation_method);
+  const {
+    id,
+    account_id,
+    status,
+    transaction_datetime,
+    transaction_type_id,
+    debit_credit_indicator,
+    amount_in_original_currency,
+    balance_settled_before,
+    balance_settled_after,
+    balance_available_before,
+    balance_available_after,
+    description,
+    original_currency,
+    card_transaction_id,
+    card_id,
+    card_currency,
+    card_amount,
+    card_acceptor_name,
+    card_acceptor_location,
+    transaction_type_description,
+    apr_id,
+    apr_rate,
+    apr_calculation_method,
+    amount,
+  } = values;
+
+  const aprCalculationMethod = aprTypesOptions.find(el => el.value === apr_calculation_method);
 
   return {
-    id: values.id,
-    accountId: values.account_id,
-    transactionDatetime: values.transaction_datetime,
-    transactionTypeId: values.transaction_type_id,
-    debitCreditIndicator: values.debit_credit_indicator,
-    amount: values.amount && values.amount.toFixed(2),
-    amountInOriginalCurrency: values.amount_in_original_currency
-      && values.amount_in_original_currency.toFixed(2),
-    balanceSettledBefore: values.balance_settled_before
-      && values.balance_settled_before.toFixed(2),
-    balanceSettledAfter: values.balance_settled_after
-      && values.balance_settled_after.toFixed(2),
-    balanceAvailableBefore: values.balance_available_before
-      && values.balance_available_before.toFixed(2),
-    balanceAvailableAfter: values.balance_available_after
-      && values.balance_available_after.toFixed(2),
-    description: values.description,
-    originalCurrency: values.original_currency,
-    cardTransactionId: values.card_transaction_id,
-    cardId: values.card_id,
-    cardCurrency: values.card_currency,
-    cardAmount: values.card_amount && values.card_amount.toFixed(2),
-    cardAcceptorName: values.card_acceptor_name,
-    cardAcceptorLocation: values.card_acceptor_location,
-    transactionTypeDescription: values.transaction_type_description,
-    aprId: values.apr_id,
-    aprRate: values.apr_rate && values.apr_rate.toFixed(2),
+    id,
+    accountId: account_id,
+    transactionDatetime: transaction_datetime,
+    transactionTypeId: transaction_type_id,
+    debitCreditIndicator: debit_credit_indicator,
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
+      && amount_in_original_currency.toFixed(2),
+    balanceSettledBefore: stringsUtil.checkNumberToFixed(balance_settled_before)
+      && balance_settled_before.toFixed(2),
+    balanceSettledAfter: stringsUtil.checkNumberToFixed(balance_settled_after)
+      && balance_settled_after.toFixed(2),
+    balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
+      && balance_available_before.toFixed(2),
+    balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
+      && balance_available_after.toFixed(2),
+    description,
+    originalCurrency: original_currency,
+    cardTransactionId: card_transaction_id,
+    cardId: card_id,
+    cardCurrency: card_currency,
+    cardAmount: stringsUtil.checkNumberToFixed(card_amount) && card_amount.toFixed(2),
+    cardAcceptorName: card_acceptor_name,
+    cardAcceptorLocation: card_acceptor_location,
+    transactionTypeDescription: transaction_type_description,
+    aprId: apr_id,
+    aprRate: stringsUtil.checkNumberToFixed(apr_rate) && apr_rate.toFixed(2),
     aprCalculationMethod: aprCalculationMethod && aprCalculationMethod.label,
-    status: values.status,
+    status,
   };
 };
 
-export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) => {
-  if (!params) {
+export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) => {
+  if (!data) {
     return null;
   }
 
@@ -62,7 +91,7 @@ export const preparedFilterToSend = (params: Partial<LedgerTransactionsFilter>) 
     accountId,
     cardId,
     panAlias,
-  } = params;
+  } = data;
 
   return {
     transaction_id: id ? id : null,

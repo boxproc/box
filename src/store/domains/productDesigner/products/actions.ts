@@ -81,7 +81,7 @@ import {
   prepareProductAprsToSend,
   prepareProductDetailsDataToSend,
   prepareProductFeesToSend,
-  prepareProductFiltersParamsToSend,
+  prepareProductFilterDataToSend,
   prepareProductRewardsToSend,
   prepareProductRuleDataToSend,
   prepareProductRuleIdsToSend,
@@ -317,7 +317,7 @@ export const handleFilterProducts: HandleFilterProducts = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = prepareProductFiltersParamsToSend(formValues(state));
+        const preparedValues = prepareProductFilterDataToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterProducts(preparedValues));

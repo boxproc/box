@@ -124,7 +124,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             pristine={pristine}
           />
         </TabsPanel>
-        <TabsPanel title="Auxiliary Counters">
+        <TabsPanel title="Aux Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
             onCancel={onCancel}

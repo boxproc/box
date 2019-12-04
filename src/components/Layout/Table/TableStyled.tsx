@@ -39,18 +39,14 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .rt-td {
     display: flex;
     align-items: center;
-    padding: 10px 12px;
+    padding: 0;
     transition: none;
     transition-property: none;
     min-width: 50px;
-
-    ${({ isSmaller }) => isSmaller && `
-      padding: 5px 7px;
-    `};
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
-    padding: 6px;
+    padding: 0;
     outline: 0;
     text-align: left;
 

@@ -47,23 +47,23 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       <TabsPanel title="Rules">
         <ProductRulesForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Auxiliary counters">
+      <TabsPanel title="Aux counters">
         <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="APRs">
         <AprsForm onCancel={onCancel} />
-      </TabsPanel>
-      <TabsPanel title="Services">
-        <ProductServicesForm onCancel={onCancel} />
-      </TabsPanel>
-      <TabsPanel title="GL">
-        <GeneralLedgerFrom onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Fees">
         <FeesForm onCancel={onCancel} />
       </TabsPanel>
       <TabsPanel title="Rewards">
         <RewardsForm onCancel={onCancel} />
+      </TabsPanel>
+      <TabsPanel title="Services">
+        <ProductServicesForm onCancel={onCancel} />
+      </TabsPanel>
+      <TabsPanel title="GL">
+        <GeneralLedgerFrom onCancel={onCancel} />
       </TabsPanel>
     </Tabs>
   );
