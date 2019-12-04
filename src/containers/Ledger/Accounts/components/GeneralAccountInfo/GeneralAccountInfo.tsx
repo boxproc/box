@@ -51,12 +51,20 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getInstitutionProducts(currentInstitution && currentInstitution.value);
-      getCyclesDescriptions({
-        institutionId: currentInstitution && currentInstitution.value,
-      });
+      if (currentInstitution) {
+        getInstitutionProducts(currentInstitution.value);
+      }
     },
-    [getInstitutionProducts, getCyclesDescriptions, currentInstitution]
+    [getInstitutionProducts, currentInstitution]
+  );
+
+  React.useEffect(
+    () => {
+      if (currentInstitution) {
+        getCyclesDescriptions({ institutionId: currentInstitution.value });
+      }
+    },
+    [getInstitutionProducts, getCyclesDescriptions]
   );
 
   return (
