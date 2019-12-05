@@ -114,7 +114,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
       }),
     },
     {
-      maxWidth: 90,
+      maxWidth: 100,
       sortable: true,
       accessor: 'graceNumberOfDays',
       Header: <TableHeader title="Grace Number of&nbsp;Days" />,
