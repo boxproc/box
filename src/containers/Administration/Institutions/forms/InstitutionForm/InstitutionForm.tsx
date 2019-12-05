@@ -124,8 +124,8 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           </Box>
           <Box width={[1]} p="10px">
             <Field
-              id="masterInstitution"
-              name="masterInstitution"
+              id="masterInstitutionFlag"
+              name="masterInstitutionFlag"
               component={CheckboxField}
               label="Master Institution"
               disabled={true}

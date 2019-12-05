@@ -10,6 +10,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
       status: 'A',
       sftp_location: '',
       sftp_public_key: '',
+      master_institution_flag: 'Y',
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
       status: 'A',
       sftp_location: '',
       sftp_public_key: '',
+      master_institution_flag: 'N',
     },
   ],
 };

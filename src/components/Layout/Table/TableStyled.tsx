@@ -156,7 +156,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   .ReactTable .-pagination {
     justify-content: flex-start;
     box-shadow: none;
-    border-top: 1px solid ${({ theme }) => theme.colors.lighterGray};
+    border-top: 0;
   }
 
   .ReactTable .-pagination .-pageInfo,

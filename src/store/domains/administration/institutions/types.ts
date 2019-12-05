@@ -9,6 +9,7 @@ export interface AdminInstitutionsItem extends AdminInstitutionsInfoPlain {
   sftp_location: string;
   sftp_public_key: string;
   status: string | number;
+  master_institution_flag: string;
 }
 
 export interface AdminInstitutionsItems {
@@ -18,6 +19,7 @@ export interface AdminInstitutionsItems {
 export interface AdminInstitutionsItemPreparedPlain extends AdminInstitutionsInfoPlain {
   sftpLocation: string;
   sftpPublicKey: string;
+  masterInstitutionFlag: boolean;
 }
 
 export interface AdminInstitutionsItemPrepared extends AdminInstitutionsItemPreparedPlain {

@@ -16,7 +16,7 @@ import {
   AdminInstitutionsItem,
   AdminInstitutionsItemDetailsPrepared,
 } from './types';
-import { preparedValuesToSend } from './utils';
+import { preparedDataToSend } from './utils';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
@@ -79,7 +79,7 @@ export const handleUpdateAdminInstitution: HandleUpdateAdminInstitution = values
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
 
         await dispatch(updateAdminInstitutions(preparedValues));
         await dispatch(handleGetAdminInstitutions());
@@ -92,7 +92,7 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
 
         await dispatch(addAdminInstitution(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_INSTITUTION));

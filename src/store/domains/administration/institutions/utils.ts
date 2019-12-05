@@ -1,47 +1,48 @@
-import { statusTypesOptions } from 'consts';
+import { statusTypesOptions, yesNoTypesCodes } from 'consts';
 
 import {
   AdminInstitutionsItem,
   AdminInstitutionsItemDetailsPrepared,
 } from './types';
 
-export const preparedValuesToSend = (values: Partial<AdminInstitutionsItemDetailsPrepared>) => {
-  if (!values) {
+export const preparedDataToSend = (data: Partial<AdminInstitutionsItemDetailsPrepared>) => {
+  if (!data) {
     return null;
   }
 
   return {
-    id: values.id,
-    name: values.name,
-    status: values.status && values.status.value,
-    sftp_location: values.sftpLocation,
-    sftp_public_key: values.sftpPublicKey,
+    id: data.id,
+    name: data.name,
+    status: data.status && data.status.value,
+    sftp_location: data.sftpLocation,
+    sftp_public_key: data.sftpPublicKey,
   };
 };
 
-export const prepareValuesToRender = (values: Partial<AdminInstitutionsItem>) => {
-  if (!values) {
+export const prepareDataToRender = (data: Partial<AdminInstitutionsItem>) => {
+  if (!data) {
     return null;
   }
 
-  const status = statusTypesOptions.find(el => el.value === values.status);
+  const status = statusTypesOptions.find(el => el.value === data.status);
 
   return {
-    id: values.id,
-    name: values.name,
+    id: data.id,
+    name: data.name,
     status: status && status.label,
-    sftpLocation: values.sftp_location,
-    sftpPublicKey: values.sftp_public_key,
+    sftpLocation: data.sftp_location,
+    sftpPublicKey: data.sftp_public_key,
+    masterInstitutionFlag: data.master_institution_flag === yesNoTypesCodes.YES,
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<AdminInstitutionsItem>) => {
-  if (!values) {
+export const preparedDataDetailsToRender = (data: Partial<AdminInstitutionsItem>) => {
+  if (!data) {
     return null;
   }
 
   return {
-    ...prepareValuesToRender(values),
-    status: statusTypesOptions.find(el => el.value === values.status),
+    ...prepareDataToRender(data),
+    status: statusTypesOptions.find(el => el.value === data.status),
   };
 };
