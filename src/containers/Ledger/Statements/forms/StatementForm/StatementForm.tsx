@@ -76,7 +76,6 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               component={InputField}
               label="Statement Date"
               placeholder={dateFormat.DATE}
-              maskPlaceholder={dateFormat.DATE}
               mask={maskFormat.DATE}
               readOnly={true}
             />
@@ -88,7 +87,6 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               component={InputField}
               label="Date of Last Update"
               placeholder={dateFormat.DATE}
-              maskPlaceholder={dateFormat.DATE}
               mask={maskFormat.DATE}
               readOnly={true}
             />

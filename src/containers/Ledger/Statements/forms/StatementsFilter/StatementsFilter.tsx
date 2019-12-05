@@ -110,7 +110,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={MaskField}
                 label="Date From"
                 placeholder={dateFormat.DATE}
-                maskPlaceholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
@@ -122,7 +121,6 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={MaskField}
                 label="Date To"
                 placeholder={dateFormat.DATE}
-                maskPlaceholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />

@@ -70,7 +70,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           component={MaskField}
           label="Start Date&nbsp;/&nbsp;Time"
           placeholder={dateFormat.DATE_TIME}
-          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
@@ -82,7 +81,6 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           component={MaskField}
           label="Finish Date&nbsp;/&nbsp;Time"
           placeholder={dateFormat.DATE_TIME}
-          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />

@@ -81,7 +81,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
-          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />
@@ -93,7 +92,6 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
-          maskPlaceholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
         />

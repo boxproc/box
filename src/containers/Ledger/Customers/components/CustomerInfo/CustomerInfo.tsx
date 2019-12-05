@@ -126,7 +126,6 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
             component={MaskField}
             label="Date of Birth"
             placeholder={dateFormat.DATE}
-            maskPlaceholder={dateFormat.DATE}
             validate={[formErrorUtil.required, formErrorUtil.isDate]}
             mask={maskFormat.DATE}
           />

@@ -174,7 +174,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   component={MaskField}
                   label="Loan Start Date"
                   placeholder={dateFormat.DATE}
-                  maskPlaceholder={dateFormat.DATE}
                   mask={maskFormat.DATE}
                   validate={[formErrorUtil.required, formErrorUtil.isDate]}
                 />
@@ -216,7 +215,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 component={MaskField}
                 label="Date of Product Override"
                 placeholder={dateFormat.DATE}
-                maskPlaceholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
                 readOnly={true}
                 validate={[formErrorUtil.isDate]}
