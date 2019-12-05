@@ -10,8 +10,9 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 import { LedgerAccountItemDetailsPrepared } from 'store/domains';
 
 interface EditAccountModalProps extends WithModalProps {
-  ledgerCurrentAccountAlias: string;
-  ledgerCurrentAccount: Partial<LedgerAccountItemDetailsPrepared>;
+  currentAccountAlias: string;
+  currentAccount: Partial<LedgerAccountItemDetailsPrepared>;
+  currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   isFormDirty: boolean;
 }
 
@@ -19,13 +20,14 @@ const modalName = modalNamesConst.EDIT_LEDGER_ACCOUNT;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
-  ledgerCurrentAccountAlias,
-  ledgerCurrentAccount,
+  currentAccountAlias,
+  currentAccount,
+  currentAccountAuxCounters,
   isFormDirty,
 }) => {
   const accountAlias = React.useMemo(
-    () => ledgerCurrentAccountAlias ? `: ${ledgerCurrentAccountAlias}` : '',
-    [ledgerCurrentAccountAlias]
+    () => currentAccountAlias ? `: ${currentAccountAlias}` : '',
+    [currentAccountAlias]
   );
 
   const handleOnCancel = React.useCallback(
@@ -45,7 +47,8 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       <AccountForm
         onCancel={handleOnCancel}
         mode="edit"
-        initialValues={ledgerCurrentAccount}
+        initialValues={currentAccount}
+        currentAccountAuxCounters={currentAccountAuxCounters}
       />
     </Modal>
   );

@@ -56,6 +56,20 @@ export const selectLedgerCurrentAccount = createSelector(
   }
 );
 
+export const selectLedgerCurrentAccountAuxCounters = createSelector(
+  selectLedgerCurrentAccount,
+  account => {
+    return {
+      auxCounter1Description: account.auxCounter1Description,
+      auxCounter2Description: account.auxCounter2Description,
+      auxCounter3Description: account.auxCounter3Description,
+      auxCounter1Enabled: account.auxCounter1Enabled,
+      auxCounter2Enabled: account.auxCounter2Enabled,
+      auxCounter3Enabled: account.auxCounter3Enabled,
+    };
+  }
+);
+
 export const selectLedgerCurrentAccountAlias = createSelector(
   selectLedgerCurrentAccount,
   currentAccount => currentAccount && currentAccount.accountAlias

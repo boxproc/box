@@ -7,6 +7,8 @@ import { apiClient } from 'services';
 import { LedgerId } from '../customers';
 import { LedgerAccountItem, LedgerAccountsFilterPrepared } from './types';
 
+// import { throttleUtil } from 'utils';
+
 export const filterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerAccountsFilteredItems, 500);
   apiClient.post(lenderAccountsPathNames.GET, { data });

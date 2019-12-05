@@ -9,6 +9,7 @@ import {
   selectInstitutionsOptions,
   selectLedgerCurrentAccount,
   selectLedgerCurrentAccountAlias,
+  selectLedgerCurrentAccountAuxCounters,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -16,8 +17,9 @@ const dirty = isDirty(formNamesConst.LEDGER_ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  ledgerCurrentAccountAlias: selectLedgerCurrentAccountAlias(state),
-  ledgerCurrentAccount: selectLedgerCurrentAccount(state),
+  currentAccountAlias: selectLedgerCurrentAccountAlias(state),
+  currentAccount: selectLedgerCurrentAccount(state),
+  currentAccountAuxCounters: selectLedgerCurrentAccountAuxCounters(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 

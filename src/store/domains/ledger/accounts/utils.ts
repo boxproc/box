@@ -1,4 +1,4 @@
-import { statusTypesOptions } from 'consts';
+import { statusTypesOptions, yesNoTypesCodes } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -156,6 +156,12 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     aux_counter_1,
     aux_counter_2,
     aux_counter_3,
+    aux_counter_1_description,
+    aux_counter_2_description,
+    aux_counter_3_description,
+    aux_counter_1_enabled,
+    aux_counter_2_enabled,
+    aux_counter_3_enabled,
     amount_overdue,
     amount_overdue_1_cycle,
     amount_overdue_2_cycles,
@@ -208,6 +214,18 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     auxCounter1: stringsUtil.checkNumberToFixed(aux_counter_1) && aux_counter_1.toFixed(2),
     auxCounter2: stringsUtil.checkNumberToFixed(aux_counter_2) && aux_counter_2.toFixed(2),
     auxCounter3: stringsUtil.checkNumberToFixed(aux_counter_3) && aux_counter_3.toFixed(2),
+    auxCounter1Description: stringsUtil.checkNumberToFixed(aux_counter_1)
+      ? aux_counter_1_description
+      : 'Not Used',
+    auxCounter2Description: stringsUtil.checkNumberToFixed(aux_counter_2)
+      ? aux_counter_2_description
+      : 'Not Used',
+    auxCounter3Description: stringsUtil.checkNumberToFixed(aux_counter_3)
+      ? aux_counter_3_description
+      : 'Not Used',
+    auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,
+    auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
+    auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
     amountOverdue: stringsUtil.checkNumberToFixed(amount_overdue) && amount_overdue.toFixed(2),
     amountOverdue1Cycle: stringsUtil.checkNumberToFixed(amount_overdue_1_cycle)
       && amount_overdue_1_cycle.toFixed(2),

@@ -7,7 +7,7 @@ import styled from 'theme';
 import { Hint } from 'components';
 
 const TabsWrapper = styled.div`
-  margin: 0 -20px 10px;
+  margin: 0 -15px 10px;
   box-shadow: ${({ theme }) => theme.shadows.bottomBox};
 `;
 
@@ -43,6 +43,7 @@ const TabTitle = styled.div<TabTitleProps>`
     border-bottom-color: ${({ theme }) => theme.colors.normalAccent};
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
+    cursor: default;
   }
 `;
 
@@ -66,7 +67,7 @@ export const Tabs: React.FC = ({
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
                 isDisabled={isDisabled}
-                onClick={isDisabled ? null : () => setActiveTabIndex(i)}
+                onClick={(isDisabled || i === activeTabIndex) ? null : () => setActiveTabIndex(i)}
               >
                 <div className="title">{title}</div>
                 {hintIfDisabled && isDisabled && (

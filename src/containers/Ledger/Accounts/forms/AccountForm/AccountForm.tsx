@@ -22,6 +22,7 @@ import {
   HandleAddLedgerAccount,
   HandleUpdateLedgerAccount,
   InstitutionProductsItemPrepared,
+  LedgerAccountItemDetailsPrepared,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -30,6 +31,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
   cyclesDescriptionsOptions: Array<SelectValues>;
   institutionProducts: Array<InstitutionProductsItemPrepared>;
+  currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   currentProduct: SelectValues;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
@@ -46,6 +48,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   addLedgerAccount,
   institutionsOptions,
   currentProduct,
+  currentAccountAuxCounters,
   institutionProducts,
   cyclesDescriptionsOptions,
   change,
@@ -127,6 +130,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         <TabsPanel title="Aux Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
+            currentAccountAuxCounters={currentAccountAuxCounters}
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}

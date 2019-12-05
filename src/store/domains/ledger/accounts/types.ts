@@ -37,6 +37,12 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   aux_counter_1: number;
   aux_counter_2: number;
   aux_counter_3: number;
+  aux_counter_1_description: string;
+  aux_counter_2_description: string;
+  aux_counter_3_description: string;
+  aux_counter_1_enabled: string;
+  aux_counter_2_enabled: string;
+  aux_counter_3_enabled: string;
   amount_overdue: number;
   amount_overdue_1_cycle: number;
   amount_overdue_2_cycles: number;
@@ -82,6 +88,12 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   auxCounter1: number | string;
   auxCounter2: number | string;
   auxCounter3: number | string;
+  auxCounter1Description: string;
+  auxCounter2Description: string;
+  auxCounter3Description: string;
+  auxCounter1Enabled: boolean;
+  auxCounter2Enabled: boolean;
+  auxCounter3Enabled: boolean;
   amountOverdue: number | string;
   amountOverdue1Cycle: number | string;
   amountOverdue2Cycles: number | string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -31,7 +31,6 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <GeneralUserGroupInfo />
-      <Hr />
       <OkCancelButtons
         okText="Save"
         cancelText="Cancel"
