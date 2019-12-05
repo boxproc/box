@@ -18,13 +18,14 @@ import {
   statusTypesCodes,
   statusTypesLoginOptions,
   typeOfCyclesEditorOptions,
+  yesNoTypesCodes,
 } from 'consts';
 
 import { HandleAddAdminUser, HandleUpdateAdminUser } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-import { formErrorUtil } from 'utils';
+import { formErrorUtil, storageUtil } from 'utils';
 
 interface DefineUserFormProps {
   institutionsOptions: Array<SelectValues>;
@@ -87,7 +88,14 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
     [isEditMode]
   );
 
-  const statusOptions = requires2faFlagValue ? statusTypes2faLoginOptions : statusTypesLoginOptions;
+  const statusOptions = React.useMemo(
+    () => requires2faFlagValue ? statusTypes2faLoginOptions : statusTypesLoginOptions,
+    [requires2faFlagValue]
+  );
+
+  const userData = storageUtil.getUserData();
+  const isMasterInstitutionUser = userData
+    && userData.masterInstitutionFlag === yesNoTypesCodes.YES;
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitAction),
@@ -170,20 +178,22 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width="100%" p="10px">
+          <Box width="100%" p="10px 10px 5px">
             <Field
               id="requires2faFlag"
               name="requires2faFlag"
               component={CheckboxField}
               label="2FA Required"
+              disabled={!isMasterInstitutionUser}
             />
           </Box>
-          <Box width="100%" p="10px">
+          <Box width="100%" p="5px 10px">
             <Field
               id="changeProfileAllowedFlag"
               name="changeProfileAllowedFlag"
               component={CheckboxField}
               label="Change Profile Allowed"
+              disabled={!isMasterInstitutionUser}
             />
           </Box>
           <Hr />

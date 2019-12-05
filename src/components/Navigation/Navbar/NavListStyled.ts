@@ -76,5 +76,9 @@ export const NavListStyled = styled.div`
       background-color: ${({ theme }) => theme.colors.lighterGray};
       color: ${({ theme }) => theme.colors.normalAccent};
     }
+    &:hover,
+    &.${menuClasses.SELECTED}:hover > .${menuClasses.MENU_TITLE} {
+      background-color: ${({ theme }) => theme.colors.lightGrayOpacity};
+    }
   }
 `;

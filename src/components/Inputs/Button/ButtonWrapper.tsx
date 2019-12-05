@@ -35,9 +35,12 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     padding: 8px 10px 6px;
     border-radius: 2px;
     border: 1px solid transparent;
-    &:hover,
     &.is-focused:not(:disabled) {
       background-color: ${theme.colors.lighterGray};
+    }
+    &:hover,
+    &.is-focused:hover {
+      background-color: ${theme.colors.lightGrayOpacity};
     }
   `}
 

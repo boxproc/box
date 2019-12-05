@@ -39,6 +39,7 @@ export interface AuthResponse {
   last_activity: string;
   status: string;
   requires_2fa_flag: string;
+  master_institution_flag: string;
 }
 
 export interface UserData {
@@ -49,6 +50,7 @@ export interface UserData {
   lastActivity: string;
   status: string;
   requires2faFlag: string;
+  masterInstitutionFlag: string;
 }
 
 export interface AuthStepTwoData {

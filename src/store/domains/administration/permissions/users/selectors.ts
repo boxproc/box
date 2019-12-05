@@ -5,7 +5,7 @@ import { statusTypes2faLoginOptions } from 'consts';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
-import { prepareAdminUserValuesToRender } from './utils';
+import { prepareAdminUserDataToRender } from './utils';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
   state.administration.users.users;
@@ -17,7 +17,7 @@ export const selectUserEditorItems = createSelector(
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return {
-      ...prepareAdminUserValuesToRender(item),
+      ...prepareAdminUserDataToRender(item),
       userInstitution: institution && institution.label,
     };
   })
@@ -32,7 +32,7 @@ export const selectUsersDetails = createSelector(
     const institution = institutions.find(el => el.value === current.institution_id);
 
     return {
-      ...prepareAdminUserValuesToRender(current),
+      ...prepareAdminUserDataToRender(current),
       status: current && statusTypes2faLoginOptions.find(el => el.value === current.status),
       userInstitution: institution,
     };

@@ -14,7 +14,7 @@ import {
   UpdateAdminUserAction,
 } from './actionTypes';
 import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
-import { prepareAdminUserValuesToSend, prepareUsersFiltersParamsToSend } from './utils';
+import { prepareAdminUserDataToSend, prepareUsersFiltersDataToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -64,7 +64,7 @@ export const handleFilterUsers: HandleFilterUsers = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = prepareUsersFiltersParamsToSend(formValues(state));
+        const preparedValues = prepareUsersFiltersDataToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(filterUsers(preparedValues));
@@ -78,7 +78,7 @@ export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserValuesToSend(cycleEditorRecords);
+        const preparedValues = prepareAdminUserDataToSend(cycleEditorRecords);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
@@ -97,7 +97,7 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserValuesToSend(values);
+        const preparedValues = prepareAdminUserDataToSend(values);
 
         await dispatch(updateAdminUser(preparedValues));
         dispatch(closeModal(modalNamesConst.EDIT_USER));

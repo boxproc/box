@@ -19,6 +19,7 @@ export default interface Theme {
 
     gray: string;
     lightGray: string;
+    lightGrayOpacity: string;
     lighterGray: string;
     darkGray: string;
 
@@ -49,6 +50,7 @@ export const theme: Theme = {
 
     gray: '#999999',
     lightGray: '#e6e6e6',
+    lightGrayOpacity: 'rgba(230, 230, 230, 0.5)',
     lighterGray: '#f3f3f3',
     darkGray: '#6c6c6c',
 

@@ -1,56 +1,56 @@
 import { statusTypes2faLoginOptions, statusTypesCodes, yesNoTypesCodes } from 'consts';
 import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
-export const prepareAdminUserValuesToSend = (values: Partial<AdminUserItemDetails>) => {
-    if (!values) {
+export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) => {
+    if (!data) {
       return null;
     }
 
     return {
-      id: values.id,
-      username: values.username,
-      email: values.email,
-      first_name: values.firstName,
-      last_name: values.lastName,
-      password: values.password,
-      password_entry_counter: values.passwordEntryCounter,
-      datetime_of_last_login: values.datetimeOfLastLogin,
-      status: values.status && values.status.value,
-      institution_id: values.userInstitution.value,
-      requires_2fa_flag: values.requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-      change_profile_allowed_flag: values.changeProfileAllowedFlag
+      id: data.id,
+      username: data.username,
+      email: data.email,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      password: data.password,
+      password_entry_counter: data.passwordEntryCounter,
+      datetime_of_last_login: data.datetimeOfLastLogin,
+      status: data.status && data.status.value,
+      institution_id: data.userInstitution.value,
+      requires_2fa_flag: data.requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+      change_profile_allowed_flag: data.changeProfileAllowedFlag
         ? yesNoTypesCodes.YES
         : yesNoTypesCodes.NO,
     };
   };
 
-export const prepareAdminUserValuesToRender = (values: Partial<AdminUserItem>) => {
-  if (!values) {
+export const prepareAdminUserDataToRender = (data: Partial<AdminUserItem>) => {
+  if (!data) {
     return null;
   }
 
-  const status = statusTypes2faLoginOptions.find(el => el.value === values.status);
+  const status = statusTypes2faLoginOptions.find(el => el.value === data.status);
 
   return {
-    id: values.id,
-    username: values.username,
-    firstName: values.first_name,
-    lastName: values.last_name,
-    email: values.email,
+    id: data.id,
+    username: data.username,
+    firstName: data.first_name,
+    lastName: data.last_name,
+    email: data.email,
     status: status && status.label,
-    passwordEntryCounter: values.password_entry_counter,
-    datetimeOfLastLogin: values.datetime_of_last_login,
-    requires2faFlag: values.requires_2fa_flag === yesNoTypesCodes.YES,
-    changeProfileAllowedFlag: values.change_profile_allowed_flag === yesNoTypesCodes.YES,
+    passwordEntryCounter: data.password_entry_counter,
+    datetimeOfLastLogin: data.datetime_of_last_login,
+    requires2faFlag: data.requires_2fa_flag === yesNoTypesCodes.YES,
+    changeProfileAllowedFlag: data.change_profile_allowed_flag === yesNoTypesCodes.YES,
   };
 };
 
-export const prepareUsersFiltersParamsToSend = (params: Partial<UsersFilter>) => {
-    if (!params) {
+export const prepareUsersFiltersDataToSend = (data: Partial<UsersFilter>) => {
+    if (!data) {
       return null;
     }
 
-    const { statusActiveFlag, institutionId } = params;
+    const { statusActiveFlag, institutionId } = data;
 
     return {
       status: statusActiveFlag ? statusTypesCodes.ACTIVE : null,

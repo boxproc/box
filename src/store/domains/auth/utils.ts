@@ -27,14 +27,27 @@ export const prepareUserDataToRender = (data: AuthResponse): UserData => {
   if (!data) {
     return null;
   }
+
+  const {
+    session_id,
+    first_name,
+    last_name,
+    username,
+    last_activity,
+    status,
+    requires_2fa_flag,
+    master_institution_flag,
+  } = data;
+
   return {
-    sessionId: data.session_id,
-    firstName: data.first_name,
-    lastName: data.last_name,
-    username: data.username,
-    lastActivity: data.last_activity,
-    status: data.status,
-    requires2faFlag: data.requires_2fa_flag,
+    sessionId: session_id,
+    firstName: first_name,
+    lastName: last_name,
+    username,
+    lastActivity: last_activity,
+    status,
+    requires2faFlag: requires_2fa_flag,
+    masterInstitutionFlag: master_institution_flag,
   };
 };
 
