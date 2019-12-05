@@ -9,9 +9,9 @@ import {
   GeneralProductForm,
   ProductDetailsForm,
   ProductRulesForm,
+  ProductServicesForm,
   RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
-import ProductServicesForm from '../ProductServicesForm';
 
 import { SelectValues } from 'types';
 

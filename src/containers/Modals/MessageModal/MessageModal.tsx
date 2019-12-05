@@ -51,10 +51,10 @@ const MessageModal: React.FC<MessageModalProps> = ({
   const handleRelogin = React.useCallback(
     () => {
       storageUtil.clear();
-      closeModal(modalName);
+      // closeModal(modalName);
       urlUtil.openLocation(basePath);
     },
-    [closeModal]
+    []
   );
 
   const handleCloseModal = React.useCallback(

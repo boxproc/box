@@ -9,12 +9,16 @@ import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
 interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
+  isProductOverride: boolean;
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
   isProductRulesFormDirty: boolean;
-  isServicesFormDirty: boolean;
+  isAuxCountersFormDirty: boolean;
   isAprsFormDirty: boolean;
-  isProductOverride: boolean;
+  isFeesFormDirty: boolean;
+  isRewardsFormDirty: boolean;
+  isServicesFormDirty: boolean;
+  isGlFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_PRODUCT;
@@ -22,12 +26,16 @@ const modalName = modalNamesConst.EDIT_PRODUCT;
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
   currentProductName,
+  isProductOverride,
   isGeneralProductFormDirty,
   isProductDetailsFormDirty,
   isProductRulesFormDirty,
-  isProductOverride,
-  isServicesFormDirty,
+  isAuxCountersFormDirty,
   isAprsFormDirty,
+  isFeesFormDirty,
+  isRewardsFormDirty,
+  isServicesFormDirty,
+  isGlFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -49,15 +57,23 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       return isGeneralProductFormDirty
         || isProductDetailsFormDirty
         || isProductRulesFormDirty
+        || isAuxCountersFormDirty
+        || isAprsFormDirty
+        || isFeesFormDirty
+        || isRewardsFormDirty
         || isServicesFormDirty
-        || isAprsFormDirty;
+        || isGlFormDirty;
     },
     [
       isGeneralProductFormDirty,
       isProductDetailsFormDirty,
       isProductRulesFormDirty,
-      isServicesFormDirty,
+      isAuxCountersFormDirty,
       isAprsFormDirty,
+      isFeesFormDirty,
+      isRewardsFormDirty,
+      isServicesFormDirty,
+      isGlFormDirty,
     ]
   );
 
