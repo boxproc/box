@@ -104,7 +104,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
-          <Box width={[2 / 7]} p="10px">
+          <Box width="170px" p="10px">
             <Field
               id="transactionDatetime"
               name="transactionDatetime"
@@ -112,7 +112,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               label="Transaction Date"
               placeholder="Select Date"
               options={[
-                { value: dateUtil.yesterdayDate, label: dateUtil.yesterdayDate },
+                { value: `${dateUtil.yesterdayDate} 00:00:00`, label: dateUtil.yesterdayDate },
               ]}
             />
           </Box>
