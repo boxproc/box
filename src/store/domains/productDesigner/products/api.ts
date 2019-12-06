@@ -18,6 +18,7 @@ import {
   NewProductPrepared,
   ProductAprIds,
   ProductAprItem,
+  ProductAuxCountersItem,
   ProductFeeItem,
   ProductFeesIds,
   ProductFilterPrepared,
@@ -64,6 +65,10 @@ export const updateCardService = (data: Partial<ServicesItems>) =>
 export const updateGeneralLedger = (data: Partial<GeneralLedgerItem>) =>
   // throttleUtil.getDataAfter(productData, 500);
   apiClient.post(productsPathNames.UPDATE_GENERAL_LEDGER, { data });
+
+export const updateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
+  // throttleUtil.getDataAfter(productData, 500);
+  apiClient.post(productsPathNames.UPDATE_AUX_COUNTERS, { data });
 
 export const getProductRule = (data: ProductRuleRequestPrepared) =>
   // throttleUtil.getDataAfter(productRulesData, 500);

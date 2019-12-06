@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { yesNoTypesCodes } from 'consts';
+
 import { StoreState } from 'store/StoreState';
 
 import {
@@ -153,6 +155,36 @@ export const selectProductGeneralLedger = createSelector(
       glAccLiabilities: gl_acc_liabilities,
       glAccProfit: gl_acc_profit,
       glAccLoss: gl_acc_loss,
+    };
+  }
+);
+
+export const selectProductAuxCounters = createSelector(
+  selectDefaultProductItems,
+  selectActiveItemId,
+  (products, activeId) => {
+    const current = products.find(product => product.id === activeId);
+
+    if (!current) {
+      return null;
+    }
+
+    const {
+      aux_counter_1_description,
+      aux_counter_2_description,
+      aux_counter_3_description,
+      aux_counter_1_enabled,
+      aux_counter_2_enabled,
+      aux_counter_3_enabled,
+    } = current;
+
+    return {
+      auxCounter1Description: aux_counter_1_description,
+      auxCounter2Description: aux_counter_2_description,
+      auxCounter3Description: aux_counter_3_description,
+      auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,
+      auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
+      auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
     };
   }
 );

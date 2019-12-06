@@ -40,7 +40,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             label="Aux Counter 1 Description"
             placeholder="Enter Aux Counter 1 Description"
             disabled={!isCounter1Enabled}
-            validate={[formErrorUtil.required]}
+            validate={isCounter1Enabled ? [formErrorUtil.required] : null}
           />
         </Box>
         <Delimiter />
@@ -60,7 +60,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             label="Aux Counter 2 Description"
             placeholder="Enter Aux Counter 2 Description"
             disabled={!isCounter2Enabled}
-            validate={[formErrorUtil.required]}
+            validate={isCounter2Enabled ? [formErrorUtil.required] : null}
           />
         </Box>
         <Delimiter />
@@ -80,7 +80,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             label="Aux Counter 3 Description"
             placeholder="Enter Aux Counter 3 Description"
             disabled={!isCounter3Enabled}
-            validate={[formErrorUtil.required]}
+            validate={isCounter3Enabled ? [formErrorUtil.required] : null}
           />
         </Box>
       </Flex>

@@ -39,11 +39,20 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
     [currentAccountAuxCounters]
   );
 
-  // const {
-    // auxCounter1Enabled,
-    // auxCounter2Enabled,
-    // auxCounter3Enabled,
-  // } = currentAccountAuxCounters;
+  const auxCounter1Enabled = React.useMemo(
+    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter1Enabled,
+    [currentAccountAuxCounters]
+  );
+
+  const auxCounter2Enabled = React.useMemo(
+    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter2Enabled,
+    [currentAccountAuxCounters]
+  );
+
+  const auxCounter3Enabled = React.useMemo(
+    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter3Enabled,
+    [currentAccountAuxCounters]
+  );
 
   return (
     <React.Fragment>
@@ -61,7 +70,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode && !auxCounter1Enabled}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -73,7 +82,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode && !auxCounter2Enabled}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -85,7 +94,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode && !auxCounter3Enabled}
               validate={[formErrorUtil.isNumber]}
             />
           </Box>

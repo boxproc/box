@@ -32,9 +32,10 @@ import {
   GetProductRewardsAction,
   GetProductRuleAction,
   UpdateCardServiceAction,
-  UpdateGeneralLegerAction,
+  UpdateGeneralLedgerAction,
   UpdateProductAction,
   UpdateProductAprAction,
+  UpdateProductAuxCountersAction,
   UpdateProductDetailsAction,
   UpdateProductFeeAction,
   UpdateProductRewardAction,
@@ -51,6 +52,8 @@ import {
   ProductAprFormValues,
   ProductAprIds,
   ProductAprItem,
+  ProductAuxCountersItem,
+  ProductAuxCountersItemPrepared,
   ProductFee,
   ProductFeeFormValues,
   ProductFeeItem,
@@ -71,6 +74,7 @@ import {
   ServicesItemsPrepared,
 } from './types';
 import {
+  prepareAuxCountersToSend,
   prepareCardServiceDataToSend,
   prepareFormDataProductAprsToSend,
   prepareFormDataProductFeesToSend,
@@ -121,8 +125,13 @@ export type HandleAddProduct = (data: Partial<NewProduct>) => Thunk<void>;
 export type UpdateCardService = (data: ServicesItems) => UpdateCardServiceAction;
 export type HandleUpdateCardService = (data: Partial<ServicesItemsPrepared>) => Thunk<void>;
 
-export type UpdateGeneralLedger = (data: Partial<GeneralLedgerItem>) => UpdateGeneralLegerAction;
+export type UpdateGeneralLedger = (data: Partial<GeneralLedgerItem>) => UpdateGeneralLedgerAction;
 export type HandleUpdateGeneralLedger = (data: Partial<GeneralLedgerItemPrepared>) => Thunk<void>;
+
+export type UpdateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
+  UpdateProductAuxCountersAction;
+export type HandleUpdateProductAuxCounters = (data: Partial<ProductAuxCountersItemPrepared>) =>
+  Thunk<void>;
 
 export type UpdateProduct = (data: ProductItemResp) => UpdateProductAction;
 export type HandleUpdateProduct = (data: Partial<ProductItemGeneral>) => Thunk<void>;
@@ -207,6 +216,11 @@ export const updateCardService: UpdateCardService = data => ({
 export const updateGeneralLedger: UpdateGeneralLedger = data => ({
   type: ActionTypeKeys.UPDATE_GENERAL_LEDGER,
   payload: api.updateGeneralLedger(data),
+});
+
+export const updateProductAuxCounters: UpdateProductAuxCounters = data => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS,
+  payload: api.updateProductAuxCounters(data),
 });
 
 export const getProductDetails: GetProductDetails = id => ({
@@ -373,6 +387,19 @@ export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
         const preparedValues = prepareGeneralLedgerToSend(data);
 
         await dispatch(updateGeneralLedger(preparedValues));
+        await dispatch(handleFilterProducts());
+      },
+      dispatch
+    );
+  };
+
+export const handleUpdateProductAuxCounters: HandleUpdateProductAuxCounters = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareAuxCountersToSend(data);
+
+        await dispatch(updateProductAuxCounters(preparedValues));
         await dispatch(handleFilterProducts());
       },
       dispatch

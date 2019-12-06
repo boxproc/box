@@ -75,6 +75,12 @@ export enum ActionTypeKeys {
   UPDATE_GENERAL_LEDGER_FULFILLED = 'productDesigner/products/UPDATE_GENERAL_LEDGER_FULFILLED',
   UPDATE_GENERAL_LEDGER_REJECTED = 'productDesigner/products/UPDATE_GENERAL_LEDGER_REJECTED',
 
+  UPDATE_PRODUCT_AUX_COUNTERS = 'productDesigner/products/UPDATE_PRODUCT_AUX_COUNTERS',
+  UPDATE_PRODUCT_AUX_COUNTERS_FULFILLED =
+  'productDesigner/products/UPDATE_PRODUCT_AUX_COUNTERS_FULFILLED',
+  UPDATE_PRODUCT_AUX_COUNTERS_REJECTED =
+  'productDesigner/products/UPDATE_PRODUCT_AUX_COUNTERS_REJECTED',
+
   GET_PRODUCT_APRS = 'productDesigner/products/GET_PRODUCT_APRS',
   GET_PRODUCT_APRS_FULFILLED = 'productDesigner/products/GET_PRODUCT_APRS_FULFILLED',
   GET_PRODUCT_APRS_REJECTED = 'productDesigner/products/GET_PRODUCT_APRS_REJECTED',
@@ -322,19 +328,34 @@ export interface UpdateCardServiceRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
 }
 
-export interface UpdateGeneralLegerAction {
+export interface UpdateGeneralLedgerAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER;
 }
 
-export interface UpdateGeneralLegerFulfilledAction {
+export interface UpdateGeneralLedgerFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_FULFILLED;
 }
 
-export interface UpdateGeneralLegerRejectedAction {
+export interface UpdateGeneralLedgerRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_REJECTED;
+}
+
+export interface UpdateProductAuxCountersAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS;
+}
+
+export interface UpdateProductAuxCountersFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS_FULFILLED;
+}
+
+export interface UpdateProductAuxCountersRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS_REJECTED;
 }
 
 export interface GetProductAprsAction {
@@ -549,5 +570,6 @@ export type ProductsActionTypes =
   | UpdateProductRewardFulfilledAction
   | AddProductRewardFulfilledAction
   | DeleteProductRewardFulfilledAction
-  | UpdateGeneralLegerFulfilledAction
+  | UpdateGeneralLedgerFulfilledAction
+  | UpdateProductAuxCountersFulfilledAction
   | ResetProductsAction;

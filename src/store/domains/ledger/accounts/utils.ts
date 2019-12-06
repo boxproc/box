@@ -214,13 +214,13 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     auxCounter1: stringsUtil.checkNumberToFixed(aux_counter_1) && aux_counter_1.toFixed(2),
     auxCounter2: stringsUtil.checkNumberToFixed(aux_counter_2) && aux_counter_2.toFixed(2),
     auxCounter3: stringsUtil.checkNumberToFixed(aux_counter_3) && aux_counter_3.toFixed(2),
-    auxCounter1Description: stringsUtil.checkNumberToFixed(aux_counter_1)
+    auxCounter1Description: aux_counter_1_enabled === yesNoTypesCodes.YES
       ? aux_counter_1_description
       : 'Not Used',
-    auxCounter2Description: stringsUtil.checkNumberToFixed(aux_counter_2)
+    auxCounter2Description: aux_counter_2_enabled === yesNoTypesCodes.YES
       ? aux_counter_2_description
       : 'Not Used',
-    auxCounter3Description: stringsUtil.checkNumberToFixed(aux_counter_3)
+    auxCounter3Description: aux_counter_3_enabled === yesNoTypesCodes.YES
       ? aux_counter_3_description
       : 'Not Used',
     auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,

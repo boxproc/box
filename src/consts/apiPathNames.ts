@@ -165,6 +165,7 @@ export enum productsPathNames {
   GET_INTERFACES_SERVICE = '/ui/product_designer/products/services/get/interfaces',
   UPDATE_CARD_SERVICE = '/ui/product_designer/products/services/update',
   UPDATE_GENERAL_LEDGER = '/ui/product_designer/products/update_general_ledger',
+  UPDATE_AUX_COUNTERS = '/ui/product_designer/products/update_aux_counters',
   GET_APRS = '/ui/product_designer/products/aprs/get',
   UPDATE_APR = '/ui/product_designer/products/aprs/update',
   CREATE_APR = '/ui/product_designer/products/aprs/create',
