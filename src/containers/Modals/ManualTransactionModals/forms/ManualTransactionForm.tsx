@@ -21,7 +21,7 @@ import {
 import { HandleMakeLedgerTransaction } from 'store/domains';
 
 import { formNamesConst } from 'consts';
-import { formErrorUtil } from 'utils';
+import { dateUtil, formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
@@ -102,6 +102,18 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               decimalScale={2}
               label="Amount"
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            />
+          </Box>
+          <Box width={[2 / 7]} p="10px">
+            <Field
+              id="transactionDatetime"
+              name="transactionDatetime"
+              component={SelectField}
+              label="Transaction Date"
+              placeholder="Select Date"
+              options={[
+                { value: dateUtil.yesterdayDate, label: dateUtil.yesterdayDate },
+              ]}
             />
           </Box>
           <Box width={[1]} p="10px">
