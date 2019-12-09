@@ -26,7 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isPasswordFocus: !!userName,
   initialValues: {
     rememberMe: !!userName,
-    userName,
+    loginUsername: userName,
   },
 });
 
