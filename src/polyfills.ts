@@ -1,8 +1,6 @@
 import 'react-app-polyfill/ie11';
 
-import 'core-js/features/array';
-import 'core-js/features/number';
-import 'core-js/features/string';
+import 'core-js';
 
 /* tslint:disable */
 (function () {
