@@ -79,6 +79,34 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
+        <Delimiter />
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="directDebitRepaymentInterface"
+            name="directDebitRepaymentInterface"
+            component={SelectField}
+            placeholder="Select Interface"
+            label="Direct Debit Repayment Interface"
+            options={productInterfacesServiceOptions}
+            isLoading={isLoadingInterfaces}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Delimiter />
+        <Box width={[1 / 2]} p="10px">
+          <Field
+            id="cardRepaymentInterface"
+            name="cardRepaymentInterface"
+            component={SelectField}
+            placeholder="Select Interface"
+            label="Debit Card Repayment Interface"
+            options={productInterfacesServiceOptions}
+            isLoading={isLoadingInterfaces}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
       </Flex>
     </Box>
   );

@@ -117,18 +117,27 @@ export const selectProductServices = createSelector(
       card_transactions_endpoint_id,
       card_management_interface_id,
       provider_3d_secure_interface_id,
+      direct_debit_interface_id,
+      card_repayment_interface_id,
     } = current;
 
-    const currentEndpoint = endpointsOptions.find(el => el.value === card_transactions_endpoint_id);
+    const currentEndpoint = endpointsOptions
+      .find(el => el.value === card_transactions_endpoint_id);
     const currentInterface = interfacesOptions
       .find(el => el.value === card_management_interface_id);
     const currentSecureProviderInterface = interfacesOptions
       .find(el => el.value === provider_3d_secure_interface_id);
+    const currentDirectDebitRepaymentInterface = interfacesOptions
+      .find(el => el.value === direct_debit_interface_id);
+    const currentCardRepaymentInterface = interfacesOptions
+      .find(el => el.value === card_repayment_interface_id);
 
     return {
       endpoints: currentEndpoint || endpointsOptions[0],
       interfaces: currentInterface || interfacesOptions[0],
       secureProviderInterfaces: currentSecureProviderInterface || interfacesOptions[0],
+      directDebitRepaymentInterface: currentDirectDebitRepaymentInterface || interfacesOptions[0],
+      cardRepaymentInterface: currentCardRepaymentInterface || interfacesOptions[0],
     };
   }
 );

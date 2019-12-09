@@ -138,11 +138,10 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
         />
         <OkCancelButtons
           okText="Apply"
-          cancelText="Close"
+          cancelText="Cancel"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
-          disabledCancel={pristine}
         />
       </Flex>
     </form >
