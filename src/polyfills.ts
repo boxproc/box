@@ -1,10 +1,8 @@
 import 'react-app-polyfill/ie11';
 
-import 'core-js/features/array/fill';
-import 'core-js/features/array/find';
-import 'core-js/features/array/includes';
-import 'core-js/features/number/is-nan';
-import 'core-js/features/string/match';
+import 'core-js/features/array';
+import 'core-js/features/number';
+import 'core-js/features/string';
 
 /* tslint:disable */
 (function () {
