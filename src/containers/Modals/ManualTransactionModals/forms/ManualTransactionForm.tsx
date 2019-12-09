@@ -18,13 +18,18 @@ import {
   WithLoadTransactionTypesProps,
 } from 'HOCs';
 
-import { HandleMakeLedgerTransaction } from 'store/domains';
+import {
+  HandleMakeLedgerLimitAdjustmentTransaction,
+  HandleMakeLedgerTransaction
+} from 'store/domains';
 
 import { formNamesConst } from 'consts';
 import { dateUtil, formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
+  makeLedgerLimitAdjustmentTransaction: HandleMakeLedgerLimitAdjustmentTransaction;
+  isLimitAdjustment: boolean;
   onCancel: () => void;
 }
 
@@ -37,8 +42,11 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   numCurrencyCodes,
   isCurrencyCodesLoading,
   manualTransactionTypesOptions,
+  limitAdjustmentTypeOptions,
   isTransactionTypesLoading,
+  isLimitAdjustment,
   makeLedgerTransaction,
+  makeLedgerLimitAdjustmentTransaction,
   handleSubmit,
   dirty,
   pristine,
@@ -46,10 +54,14 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(makeLedgerTransaction),
-    [handleSubmit]
+    handleSubmit(isLimitAdjustment ? makeLedgerLimitAdjustmentTransaction : makeLedgerTransaction),
+    [handleSubmit, makeLedgerLimitAdjustmentTransaction, makeLedgerTransaction, isLimitAdjustment]
   );
 
+  const transactionTypes = React.useMemo(
+    () => isLimitAdjustment ? limitAdjustmentTypeOptions : manualTransactionTypesOptions,
+    [isLimitAdjustment, manualTransactionTypesOptions, limitAdjustmentTypeOptions]
+  );
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px">
@@ -65,10 +77,11 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               label="Transaction Type"
               placeholder="Select Transaction Type"
               isLoading={isTransactionTypesLoading}
-              options={manualTransactionTypesOptions}
+              options={transactionTypes}
               validate={[formErrorUtil.required]}
             />
           </Box>
+           )}
           <Box width={[2 / 7]} p="10px">
             <Field
               id="accountId"
@@ -80,6 +93,8 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.isInteger]}
             />
           </Box>
+          {!isLimitAdjustment && (
+            <React.Fragment>
           <Box width={[3 / 7]} p="10px">
             <Field
               id="currencyCode"
@@ -104,7 +119,31 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
+          </React.Fragment>
+          )}
+          {isLimitAdjustment && (
+            <React.Fragment>
           <Box width="170px" p="10px">
+            <Field
+              id="balanceLimit"
+              name="balanceLimit"
+              component={InputField}
+              label="Balance Limit"
+              placeholder="Enter balance limit"
+            />
+          </Box>
+          <Box width="190px" p="10px">
+            <Field
+              id="balanceLimitShared"
+              name="balanceLimitShared"
+              component={InputField}
+              label="Balance limit shared"
+              placeholder="Enter balance limit shared"
+            />
+          </Box>
+          </React.Fragment>
+          )}
+            <Box width="170px" p="10px">
             <Field
               id="transactionDatetime"
               name="transactionDatetime"

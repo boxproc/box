@@ -10,7 +10,11 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { HandleMakeLedgerTransaction, PayloadLedgerManualTransactionModal } from 'store/domains';
+import {
+  HandleMakeLedgerLimitAdjustmentTransaction,
+  HandleMakeLedgerTransaction,
+  PayloadLedgerManualTransactionModal
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -18,15 +22,19 @@ import { stringsUtil } from 'utils';
 
 interface ManualTransactionModalProps extends RouteComponentProps, WithModalProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
+  makeLedgerLimitAdjustmentTransaction: HandleMakeLedgerLimitAdjustmentTransaction;
   modalPayload: PayloadLedgerManualTransactionModal;
   currenciesOptions: Array<SelectValues>;
+  isLimitAdjustment: boolean;
 }
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
 
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   location,
   makeLedgerTransaction,
+  makeLedgerLimitAdjustmentTransaction,
   modalPayload,
+  isLimitAdjustment,
   closeModal,
   currenciesOptions,
 }) => {
@@ -70,8 +78,10 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
       </Flex>
       <ManualTransactionForm
         makeLedgerTransaction={makeLedgerTransaction}
+        makeLedgerLimitAdjustmentTransaction={makeLedgerLimitAdjustmentTransaction}
         initialValues={initialFormValues}
         onCancel={handleOnCancel}
+        isLimitAdjustment={isLimitAdjustment}
       />
     </Modal>
   );

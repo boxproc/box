@@ -43,8 +43,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
     const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
 
-    const handleClick = isManualTransaction
-      ? () => openModal({ name: modalNamesConst.LEDGER_MANUAL_TRANSACTION })
+    const isLimitAdjustment = item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT;
+
+    const handleClick = (isManualTransaction || isLimitAdjustment)
+      ? () => openModal({
+        name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+        payload: { isLimitAdjustmentMode: isLimitAdjustment },
+      })
       : () => history.push(`${basePath}${id}`);
 
     return (

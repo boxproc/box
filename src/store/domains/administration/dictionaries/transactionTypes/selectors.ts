@@ -48,6 +48,20 @@ export const selectDictionaryManualTransactionTypesOptions = createSelector(
   }
 );
 
+export const selectDictionaryManualTransactionLimitAdjustmentTypesOptions = createSelector(
+  selectDictionaryTransactionTypes,
+  transactionTypes => {
+    const items = transactionTypes
+      .filter(type => type.id === 14);
+
+    return items && items.map(item => {
+      return {
+        value: item.id,
+        label: `${item.description} - [${item.debitCreditIndicator}]`,
+      };
+    });
+  });
+
 export const selectIsTransactionTypesLoaded = createSelector(
   selectDefaultDictionaryTransactionTypesItems,
   countryCodes => countryCodes && countryCodes.length > 0

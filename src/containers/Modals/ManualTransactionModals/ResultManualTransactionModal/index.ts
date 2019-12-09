@@ -5,6 +5,7 @@ import ManualTransactionModal from './ResultManualTransactionModal';
 
 import {
   handleFilterByIdLedgerTransactions,
+  selectLedgerLimitAdjustmentTransaction,
   selectLedgerManualTransaction,
   selectLedgerManualTransactionId,
 } from 'store/domains';
@@ -12,6 +13,7 @@ import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   ledgerManualTransaction: selectLedgerManualTransaction(state),
+  ledgerLimitAdjustmentTransaction: selectLedgerLimitAdjustmentTransaction(state),
   transactionId: selectLedgerManualTransactionId(state),
 });
 

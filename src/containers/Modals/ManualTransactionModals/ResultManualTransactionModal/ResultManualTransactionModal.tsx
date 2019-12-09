@@ -8,11 +8,13 @@ import { ResultManualTransactionForm } from 'containers/Modals/ManualTransaction
 
 import {
   HandleFilterLedgerTransactionsById,
+  LedgerLimitAdjustmentResultPrepared,
   LedgerManualTransactionResultPrepared,
 } from 'store/domains';
 
 interface ResultManualTransactionModalProps extends WithModalProps {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;
+  ledgerLimitAdjustmentTransaction: LedgerLimitAdjustmentResultPrepared;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   transactionId: number;
 }
@@ -22,6 +24,7 @@ const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT;
 const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> = ({
   closeModal,
   ledgerManualTransaction,
+  ledgerLimitAdjustmentTransaction,
   filterLedgerTransactionsById,
   transactionId,
   closeAllModals,
@@ -46,7 +49,9 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       title="Transaction successfully completed"
       maxContainerWidth={650}
     >
-      <ResultManualTransactionForm initialValues={ledgerManualTransaction} />
+      <ResultManualTransactionForm
+        initialValues={[ledgerManualTransaction, ledgerLimitAdjustmentTransaction]}
+      />
       <Hr />
       <OkCancelButtons
         okText="View transaction"
