@@ -13,5 +13,5 @@ export interface LedgerState {
   statements: LedgerStatementsState;
   cards: LedgerCardsState;
   manualTransaction: LedgerManualTransactionState;
-  limitAdjustmentTransaction: LedgerLimitAdjustmentState;
+  limitAdjustment: LedgerLimitAdjustmentState;
 }

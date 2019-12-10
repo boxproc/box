@@ -7,7 +7,7 @@ import {
   DictionaryTransactionTypesActionTypes,
   handleGetDictionaryTransactionTypes,
   HandleGetDictionaryTransactionTypes,
-  selectDictionaryManualTransactionLimitAdjustmentTypesOptions,
+  selectDictionaryLimitAdjustmentTypesOptions,
   selectDictionaryManualTransactionTypesOptions,
   selectDictionaryTransactionTypesOptions,
 } from 'store/domains';
@@ -74,7 +74,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
       transactionTypesOptions: selectDictionaryTransactionTypesOptions(state),
       manualTransactionTypesOptions: selectDictionaryManualTransactionTypesOptions(state),
       limitAdjustmentTypeOptions:
-      selectDictionaryManualTransactionLimitAdjustmentTypesOptions(state),
+      selectDictionaryLimitAdjustmentTypesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

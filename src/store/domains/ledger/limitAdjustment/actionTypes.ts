@@ -3,27 +3,25 @@ import { LedgerLimitAdjustmentResultResponse } from './types';
 import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION = 'ledger/limitAdjustment/MAKE_LEDGER_TRANSACTION',
-  MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION_FULFILLED =
-  'ledger/limitAdjustment/MAKE_LEDGER_TRANSACTION_FULFILLED',
-  MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION_REJECTED =
-  'ledger/limitAdjustment/MAKE_LEDGER_TRANSACTION_REJECTED',
+  LEDGER_LIMIT_ADJUSTMENT = 'ledger/limitAdjustment/LEDGER_LIMIT_ADJUSTMENT',
+  LEDGER_LIMIT_ADJUSTMENT_FULFILLED = 'ledger/limitAdjustment/LEDGER_LIMIT_ADJUSTMENT_FULFILLED',
+  LEDGER_LIMIT_ADJUSTMENT_REJECTED = 'ledger/limitAdjustment/LEDGER_LIMIT_ADJUSTMENT_REJECTED',
 }
 
-export interface MakeLedgerLimitAdjustmentTransactionAction {
+export interface MakeLedgerLimitAdjustmentAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION;
+  readonly type: ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT;
 }
 
-export interface MakeLedgerLimitAdjustmentTransactionFulfilledAction {
+export interface MakeLedgerLimitAdjustmentFulfilledAction {
   readonly payload: LedgerLimitAdjustmentResultResponse;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION_FULFILLED;
+  readonly type: ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT_FULFILLED;
 }
 
-export interface MakeLedgerLimitAdjustmentTransactionRejectedAction {
+export interface MakeLedgerLimitAdjustmentRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_LIMIT_ADJUSTMENT_TRANSACTION_REJECTED;
+  readonly type: ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT_REJECTED;
 }
 
-export type LedgerLimitAdjustmentTransactionActionTypes =
-  | MakeLedgerLimitAdjustmentTransactionFulfilledAction;
+export type LedgerLimitAdjustmentActionTypes =
+  | MakeLedgerLimitAdjustmentFulfilledAction;

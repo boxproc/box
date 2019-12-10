@@ -252,6 +252,10 @@ export enum debitCreditIndicatorCodes {
   NOT_APPLICABLE = 'U',
 }
 
+export enum debitCreditIndicatorIds {
+  LIMIT_ADJUSTMENT = 14,
+}
+
 export const cardFormFactorOptions = [
   { value: 'X', label: 'Unspecified' },
   { value: 'V', label: 'Virtual' },

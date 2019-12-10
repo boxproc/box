@@ -4,5 +4,5 @@ import { apiClient } from 'services';
 
 import { LedgerLimitAdjustmentRequest } from './types';
 
-export const makeLedgerLimitAdjustmentTransaction = (data: Partial<LedgerLimitAdjustmentRequest>) =>
-  apiClient.post(lenderManualTransactionPathNames.MAKE_LIMIT_ADJUSTMENT_TRANSACTION, { data });
+export const makeLedgerLimitAdjustment = (data: Partial<LedgerLimitAdjustmentRequest>) =>
+  apiClient.post(lenderManualTransactionPathNames.LIMIT_ADJUSTMENT, { data });

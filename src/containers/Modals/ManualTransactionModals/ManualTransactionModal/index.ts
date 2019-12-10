@@ -5,8 +5,9 @@ import ManualTransactionModal from './ManualTransactionModal';
 
 import {
   createLoadingSelector,
-  handleMakeLedgerLimitAdjustmentTransaction,
+  handleMakeLedgerLimitAdjustment,
   handleMakeLedgerTransaction,
+  LedgerLimitAdjustmentActionTypes,
   LedgerManualTransactionActionTypes,
   selectCurrencyCodesOptions,
   selectLedgerManualTransactionModalIsLimit,
@@ -17,6 +18,7 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   LedgerManualTransactionActionTypes.MAKE_LEDGER_TRANSACTION,
+  LedgerLimitAdjustmentActionTypes.LEDGER_LIMIT_ADJUSTMENT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -29,7 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     makeLedgerTransaction: handleMakeLedgerTransaction,
-    makeLedgerLimitAdjustmentTransaction: handleMakeLedgerLimitAdjustmentTransaction,
+    makeLedgerLimitAdjustment: handleMakeLedgerLimitAdjustment,
   },
   dispatch
 );

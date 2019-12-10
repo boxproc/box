@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { debitCreditIndicatorCodes, debitCreditIndicatorOptions } from 'consts';
+import {
+  debitCreditIndicatorCodes,
+  debitCreditIndicatorIds,
+  debitCreditIndicatorOptions,
+} from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -48,12 +52,13 @@ export const selectDictionaryManualTransactionTypesOptions = createSelector(
   }
 );
 
-export const selectDictionaryManualTransactionLimitAdjustmentTypesOptions = createSelector(
+export const selectDictionaryLimitAdjustmentTypesOptions = createSelector(
   selectDictionaryTransactionTypes,
   transactionTypes => {
-    const items = transactionTypes.filter(type => type.id === 14);
+    const limitAdjustmentItem = transactionTypes
+      .find(type => type.id === debitCreditIndicatorIds.LIMIT_ADJUSTMENT);
 
-    return items && items.map(item => {
+    return limitAdjustmentItem && [limitAdjustmentItem].map(item => {
       return {
         value: item.id,
         label: `${item.description} - [${item.debitCreditIndicator}]`,

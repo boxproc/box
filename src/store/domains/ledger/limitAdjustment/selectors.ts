@@ -3,15 +3,15 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 import { prepareResultDataToRender } from './util';
 
-export const selectDefaultLedgerLimitAdjustmentTransaction = (state: StoreState) =>
-  state.ledger.limitAdjustmentTransaction.transactionResult.asMutable();
+export const selectDefaultLedgerLimitAdjustment = (state: StoreState) =>
+  state.ledger.limitAdjustment.transactionResult.asMutable();
 
-export const selectLedgerLimitAdjustmentTransaction = createSelector(
-  selectDefaultLedgerLimitAdjustmentTransaction,
+export const selectLedgerLimitAdjustment = createSelector(
+  selectDefaultLedgerLimitAdjustment,
   transaction => transaction && prepareResultDataToRender(transaction)
 );
 
-export const selectLedgerLimitAdjustmentTransactionId = createSelector(
-    selectLedgerLimitAdjustmentTransaction,
-    transaction => transaction && transaction.transactionId
+export const selectLedgerLimitAdjustmentId = createSelector(
+  selectLedgerLimitAdjustment,
+  transaction => transaction && transaction.transactionId
 );

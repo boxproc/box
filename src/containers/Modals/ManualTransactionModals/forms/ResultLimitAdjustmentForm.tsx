@@ -6,12 +6,12 @@ import { Box, Flex } from '@rebass/grid';
 import { NumberFormatField } from 'components';
 import { formNamesConst } from 'consts';
 
-interface ResultLimitAdjustmentTransactionFormProps { }
+interface ResultLimitAdjustmentFormProps { }
 
-type ResultLimitAdjustmentTransactionFormAllProps = ResultLimitAdjustmentTransactionFormProps
-  & InjectedFormProps<{}, ResultLimitAdjustmentTransactionFormProps>;
+type ResultLimitAdjustmentFormAllProps = ResultLimitAdjustmentFormProps
+  & InjectedFormProps<{}, ResultLimitAdjustmentFormProps>;
 
-const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentTransactionFormAllProps> = () => {
+const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = () => {
   return (
     <form>
       <Box mx="-10px">
@@ -49,8 +49,8 @@ const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentTransactionFormAl
   );
 };
 
-export default reduxForm<{}, ResultLimitAdjustmentTransactionFormProps>({
-  form: formNamesConst.LEDGER_RESULT_LIMIT_ADJUSTMENT_TRANSACTION,
+export default reduxForm<{}, ResultLimitAdjustmentFormProps>({
+  form: formNamesConst.LEDGER_RESULT_LIMIT_ADJUSTMENT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ResultLimitAdjustmentForm);

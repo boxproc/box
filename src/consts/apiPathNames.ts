@@ -148,7 +148,7 @@ export enum lenderTransactionsPathNames {
 
 export enum lenderManualTransactionPathNames {
   MAKE_TRANSACTION = 'ui/ledger/accounts/make_transaction',
-  MAKE_LIMIT_ADJUSTMENT_TRANSACTION = 'ui/ledger/accounts/limit_adjustment',
+  LIMIT_ADJUSTMENT = 'ui/ledger/accounts/limit_adjustment',
 }
 
 export enum productsPathNames {
