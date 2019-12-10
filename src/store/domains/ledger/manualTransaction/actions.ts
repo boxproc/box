@@ -30,9 +30,7 @@ export const handleMakeLedgerTransaction: HandleMakeLedgerTransaction = data =>
 
         await dispatch(makeLedgerTransaction(preparedValues));
         dispatch(resetForm(formNamesConst.LEDGER_MANUAL_TRANSACTION));
-        dispatch(openModal({
-          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT,
-        }));
+        dispatch(openModal({ name: modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT }));
       },
       dispatch
     );

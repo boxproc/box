@@ -5,6 +5,9 @@ import { Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Hint } from 'components';
+import { withModal, WithModalProps } from 'HOCs';
+
+import { messagesConst, modalNamesConst } from 'consts';
 
 const TabsWrapper = styled.div`
   margin: 0 -15px 10px;
@@ -44,11 +47,15 @@ const TabTitle = styled.div<TabTitleProps>`
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
     cursor: default;
+    user-select: inherit;
   }
 `;
 
-export const Tabs: React.FC = ({
+interface TabsProps extends WithModalProps { }
+
+const Tabs: React.FC<TabsProps> = ({
   children,
+  openModal,
 }) => {
   const [activeTabIndex, setActiveTabIndex] = React.useState(0);
 
@@ -61,13 +68,25 @@ export const Tabs: React.FC = ({
               return null;
             }
 
-            const { title, hintIfDisabled, isDisabled } = children[i].props;
+            const { title, hintIfDisabled, isDisabled, withConfirmation } = children[i].props;
+
+            const handleClick = () =>
+              withConfirmation
+                ? openModal({
+                  name: modalNamesConst.CONFIRMATION,
+                  payload: {
+                    confirmationAction: () => setActiveTabIndex(i),
+                    confirmationTitle: messagesConst.SWITCH_TAB,
+                    confirmationText: messagesConst.UNSAVED_CHANGES,
+                  },
+                })
+                : setActiveTabIndex(i);
 
             return (
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
                 isDisabled={isDisabled}
-                onClick={(isDisabled || i === activeTabIndex) ? null : () => setActiveTabIndex(i)}
+                onClick={(isDisabled || i === activeTabIndex) ? null : handleClick}
               >
                 <div className="title">{title}</div>
                 {hintIfDisabled && isDisabled && (
@@ -87,16 +106,4 @@ export const Tabs: React.FC = ({
   );
 };
 
-interface TabsPanelProps {
-  title: string;
-  hintIfDisabled?: string;
-  isDisabled?: boolean;
-}
-
-export const TabsPanel: React.FC<TabsPanelProps> = ({
-  children,
-}) => {
-  return (
-    <div>{children}</div>
-  );
-};
+export default withModal(Tabs);

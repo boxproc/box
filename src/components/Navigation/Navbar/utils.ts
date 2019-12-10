@@ -16,11 +16,8 @@ export const toggleActiveClass = (el: HTMLElement) =>
     ? removeActiveClass(el)
     : addActiveClass(el);
 
-export const removeActiveFromAll = (
-  currentItem: HTMLElement,
-  className: string
-) => currentItem
-  .closest(`.${className}`)
+export const removeActiveFromAll = (currentItem: HTMLElement) => currentItem
+  .parentElement
   .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
     !currentItem.classList.contains(menuClasses.ACTIVE)
     && el.classList.contains(menuClasses.ACTIVE)
@@ -32,10 +29,7 @@ export const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
 
   e.stopPropagation();
 
-  currentItem.closest(`.${menuClasses.SUB_MENU}`)
-    ? removeActiveFromAll(currentItem, menuClasses.SUB_MENU)
-    : removeActiveFromAll(currentItem, menuClasses.MENU);
-
+  removeActiveFromAll(currentItem);
   toggleActiveClass(currentItem);
 };
 

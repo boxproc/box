@@ -89,6 +89,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       <EditProductForms
         onCancel={handleOnCancel}
         isProductOverride={isProductOverride}
+        isAnyFormDirty={isAnyFormDirty}
       />
     </Modal>
   );

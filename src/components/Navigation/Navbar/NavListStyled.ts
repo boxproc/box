@@ -11,11 +11,18 @@ export const NavListStyled = styled.div`
     position: relative;
     cursor: pointer;
     padding: 7px 10px 6px;
+    .icon {
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      margin-top: -7px;
+    }
     &:hover .icon {
       color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
   .${menuClasses.MENU_ITEM} {
+    position: relative;
     border-radius: 2px;
     text-transform: uppercase;
     font-size: 12px;
@@ -23,9 +30,6 @@ export const NavListStyled = styled.div`
     letter-spacing: .2pt;
     color: ${({ theme }) => theme.colors.darkGray};
     user-select: none;
-  }
-  .${menuClasses.MENU_ITEM}  {
-    position: relative;
     margin: 0 1px;
     background-color: ${({ theme }) => theme.colors.white};
     z-index: 100
@@ -53,7 +57,7 @@ export const NavListStyled = styled.div`
     display: flex;
     flex-direction: column;
     display: none;
-    width: 200px;
+    width: 180px;
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
@@ -68,6 +72,10 @@ export const NavListStyled = styled.div`
       font-weight: normal;
       letter-spacing: normal;
       color: ${({ theme }) => theme.colors.black};
+    }
+    .${menuClasses.MENU_TITLE} {
+      white-space: normal;
+      padding-right: 15px;
     }
   }
   .${menuClasses.MENU_ITEM} {

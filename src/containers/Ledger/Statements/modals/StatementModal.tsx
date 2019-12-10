@@ -3,11 +3,11 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, Tabs, TabsPanel } from 'components';
+import { TransactionsTable } from 'containers/Ledger/Statements/components';
+import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
-import { StatementForm } from '../forms';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import TransactionsTable from '../components/TransactionsTable';
 
 interface StatementModalProps extends WithModalProps { }
 
@@ -35,7 +35,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
           <StatementForm isDisabled={true} />
           <Hr />
         </TabsPanel>
-        <TabsPanel title="Transactions" >
+        <TabsPanel title="Transactions">
           <Box mt="20px">
             <TransactionsTable />
           </Box>

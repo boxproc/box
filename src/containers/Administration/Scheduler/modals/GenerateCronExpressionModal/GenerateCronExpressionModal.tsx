@@ -5,7 +5,7 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Hr, Modal, OkCancelButtons, Tabs, TabsPanel } from 'components';
+import { Button, Hr, Modal, OkCancelButtons, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { formNamesConst, modalNamesConst } from 'consts';
@@ -33,7 +33,7 @@ const ResultWrapper = styled.div`
   font-size: 14px;
 
   .description {
-    margin-top: 5px;
+    margin: 2px 0 3px;
     font-size: 12px;
     line-height: 1.5;
     color: ${({ theme }) => theme.colors.darkGray};
@@ -47,6 +47,9 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
   closeModal,
   formValues,
   cronRadioValues,
+  reset,
+  pristine,
+  dirty,
 }) => {
   const [cronExpression, setCronExpression] = React.useState(null);
 
@@ -88,6 +91,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
       title="Generate Cron Expression"
       maxContainerWidth={800}
       minContainerHeight={580}
+      withCloseConfirmation={dirty}
     >
       <form>
         <Tabs>
@@ -135,16 +139,27 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
         justifyContent="space-between"
       >
         {cronExpression && (
-          <ResultWrapper>
+          <div>
+            <ResultWrapper>
             <div><b>Cron Expression:</b> {cronExpression.value}</div>
             <div className="description">{cronExpression.description}</div>
           </ResultWrapper>
+          <Button
+            text="Reset Values"
+            type="reset"
+            iconName="_"
+            disabled={pristine}
+            onClick={reset}
+          />
+          </div>
         )}
         <OkCancelButtons
           okText="Apply"
           cancelText="Cancel"
           onOk={handleApplyCronExpression}
           onCancel={handleCloseModal}
+          disabledOk={pristine}
+          withCancelConfirmation={dirty}
         />
       </Flex>
     </Modal>

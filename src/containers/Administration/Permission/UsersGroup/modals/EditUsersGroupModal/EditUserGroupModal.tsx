@@ -10,6 +10,9 @@ import { EditUserGroupForms } from 'containers/Administration/Permission/UsersGr
 interface EditUsersGroupModalProps extends WithModalProps {
   groupName: string;
   institutionName: string;
+  isGeneralInfoFormDirty: boolean;
+  isUserGroupMembersFormDirty: boolean;
+  isGroupPermissionFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_USERS_GROUP;
@@ -18,10 +21,20 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   closeModal,
   groupName,
   institutionName,
+  isGeneralInfoFormDirty,
+  isUserGroupMembersFormDirty,
+  isGroupPermissionFormDirty,
 }) => {
   const currentName = React.useMemo(
     () => (groupName && institutionName) ? `: "${groupName}" (${institutionName})` : '',
     [groupName, institutionName]
+  );
+
+  const isAnyFormDirty = React.useMemo(
+    () => {
+      return isGeneralInfoFormDirty || isUserGroupMembersFormDirty || isGroupPermissionFormDirty;
+    },
+    [isGeneralInfoFormDirty, isUserGroupMembersFormDirty, isGroupPermissionFormDirty]
   );
 
   const handleOnCancel = React.useCallback(
@@ -35,8 +48,12 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={`Edit User Group${currentName}`}
       minContainerHeight={550}
+      withCloseConfirmation={isAnyFormDirty}
     >
-      <EditUserGroupForms onCancel={handleOnCancel} />
+      <EditUserGroupForms
+        onCancel={handleOnCancel}
+        isAnyFormDirty={isAnyFormDirty}
+      />
     </Modal>
   );
 };
