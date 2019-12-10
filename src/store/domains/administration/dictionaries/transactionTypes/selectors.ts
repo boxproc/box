@@ -51,8 +51,7 @@ export const selectDictionaryManualTransactionTypesOptions = createSelector(
 export const selectDictionaryManualTransactionLimitAdjustmentTypesOptions = createSelector(
   selectDictionaryTransactionTypes,
   transactionTypes => {
-    const items = transactionTypes
-      .filter(type => type.id === 14);
+    const items = transactionTypes.filter(type => type.id === 14);
 
     return items && items.map(item => {
       return {

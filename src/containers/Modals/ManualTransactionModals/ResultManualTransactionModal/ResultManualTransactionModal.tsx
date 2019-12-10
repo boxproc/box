@@ -4,7 +4,10 @@ import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { ResultManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
+import {
+  ResultLimitAdjustmentForm,
+  ResultManualTransactionForm
+} from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
   HandleFilterLedgerTransactionsById,
@@ -17,6 +20,7 @@ interface ResultManualTransactionModalProps extends WithModalProps {
   ledgerLimitAdjustmentTransaction: LedgerLimitAdjustmentResultPrepared;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   transactionId: number;
+  isLimitAdjustment: boolean;
 }
 
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT;
@@ -25,6 +29,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
   closeModal,
   ledgerManualTransaction,
   ledgerLimitAdjustmentTransaction,
+  isLimitAdjustment,
   filterLedgerTransactionsById,
   transactionId,
   closeAllModals,
@@ -49,9 +54,16 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       title="Transaction successfully completed"
       maxContainerWidth={650}
     >
+      {!isLimitAdjustment && (
       <ResultManualTransactionForm
-        initialValues={[ledgerManualTransaction, ledgerLimitAdjustmentTransaction]}
+        initialValues={ledgerManualTransaction}
       />
+      )}
+      {isLimitAdjustment && (
+      <ResultLimitAdjustmentForm
+        initialValues={ledgerLimitAdjustmentTransaction}
+      />
+      )}
       <Hr />
       <OkCancelButtons
         okText="View transaction"

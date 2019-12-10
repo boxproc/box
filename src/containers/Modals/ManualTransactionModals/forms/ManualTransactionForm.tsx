@@ -53,15 +53,21 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   reset,
   onCancel,
 }) => {
+  const makeTransaction = React.useMemo(
+    () => isLimitAdjustment ? makeLedgerLimitAdjustmentTransaction : makeLedgerTransaction,
+    [isLimitAdjustment, makeLedgerLimitAdjustmentTransaction, makeLedgerTransaction]
+  );
+
   const handleSubmitForm = React.useCallback(
-    handleSubmit(isLimitAdjustment ? makeLedgerLimitAdjustmentTransaction : makeLedgerTransaction),
-    [handleSubmit, makeLedgerLimitAdjustmentTransaction, makeLedgerTransaction, isLimitAdjustment]
+    handleSubmit(makeTransaction),
+    [handleSubmit, makeTransaction]
   );
 
   const transactionTypes = React.useMemo(
     () => isLimitAdjustment ? limitAdjustmentTypeOptions : manualTransactionTypesOptions,
     [isLimitAdjustment, manualTransactionTypesOptions, limitAdjustmentTypeOptions]
   );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px">
@@ -127,18 +133,22 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             <Field
               id="balanceLimit"
               name="balanceLimit"
-              component={InputField}
+              component={NumberFormatField}
               label="Balance Limit"
-              placeholder="Enter balance limit"
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
             />
           </Box>
           <Box width="190px" p="10px">
             <Field
               id="balanceLimitShared"
               name="balanceLimitShared"
-              component={InputField}
+              component={NumberFormatField}
               label="Balance limit shared"
-              placeholder="Enter balance limit shared"
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
             />
           </Box>
           </React.Fragment>
