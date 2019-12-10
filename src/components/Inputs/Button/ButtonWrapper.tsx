@@ -26,6 +26,10 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   white-space: nowrap;
   user-select: none;
 
+  .text-wrapper {
+    position: relative;
+  }
+
   ${({ textTransformNone }) => textTransformNone && `
     text-transform: none;
     font-weight: normal;

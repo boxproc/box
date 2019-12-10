@@ -79,7 +79,7 @@ const Button: React.FC<ButtonProps> = ({
           {renderIcon(iconName, iconSize)}
         </Box>
       )}
-      {text}
+      <span className="text-wrapper">{text}</span>
     </ButtonWrapper>
   );
 
