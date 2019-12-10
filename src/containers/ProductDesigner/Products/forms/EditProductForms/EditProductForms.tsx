@@ -18,17 +18,22 @@ import { SelectValues } from 'types';
 interface EditProductFormsProps {
   currentProductType: SelectValues;
   isProductOverride: boolean;
+  isAnyFormDirty: boolean;
   onCancel: () => void;
 }
 
 const EditProductForms: React.FC<EditProductFormsProps> = ({
   currentProductType,
   isProductOverride,
+  isAnyFormDirty,
   onCancel,
 }) => {
   return (
     <Tabs>
-      <TabsPanel title="General">
+      <TabsPanel
+        title="General"
+        withConfirmation={isAnyFormDirty}
+      >
         <GeneralProductForm
           onCancel={onCancel}
           isProductOverride={isProductOverride}
@@ -38,31 +43,53 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         title="Details"
         isDisabled={!currentProductType}
         hintIfDisabled="Select Product Type"
+        withConfirmation={isAnyFormDirty}
       >
         <ProductDetailsForm
           productType={currentProductType}
           onCancel={onCancel}
         />
       </TabsPanel>
-      <TabsPanel title="Rules">
+      <TabsPanel
+        title="Rules"
+        withConfirmation={isAnyFormDirty}
+      >
         <ProductRulesForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Aux counters">
+      <TabsPanel
+        title="Aux counters"
+        withConfirmation={isAnyFormDirty}
+      >
         <AuxiliaryCountersForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="APRs">
+      <TabsPanel
+        title="APRs"
+        withConfirmation={isAnyFormDirty}
+      >
         <AprsForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Fees">
+      <TabsPanel
+        title="Fees"
+        withConfirmation={isAnyFormDirty}
+      >
         <FeesForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Rewards">
+      <TabsPanel
+        title="Rewards"
+        withConfirmation={isAnyFormDirty}
+      >
         <RewardsForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="Services">
+      <TabsPanel
+        title="Services"
+        withConfirmation={isAnyFormDirty}
+      >
         <ProductServicesForm onCancel={onCancel} />
       </TabsPanel>
-      <TabsPanel title="GL">
+      <TabsPanel
+        title="GL"
+        withConfirmation={isAnyFormDirty}
+      >
         <GeneralLedgerFrom onCancel={onCancel} />
       </TabsPanel>
     </Tabs>

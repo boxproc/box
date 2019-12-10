@@ -49,7 +49,7 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
               <Box
                 key={unit}
                 width={isYear ? '70px' : '55px'}
-                p={isYear ? '5px' : '3px'}
+                p={isYear ? '0 5px' : '0 3px'}
               >
                 <Field
                   id={`cron${name}${unit}`}

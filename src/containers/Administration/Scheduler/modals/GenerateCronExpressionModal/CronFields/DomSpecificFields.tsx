@@ -27,7 +27,7 @@ const DomSpecificFields: React.FC<DomSpecificFieldsProps> = ({ isSpecific }) => 
               <Box
                 key={num}
                 width={[1 / 11]}
-                p="2px"
+                p="0 2px"
               >
                 <Field
                   id={`cronDom${num}`}
