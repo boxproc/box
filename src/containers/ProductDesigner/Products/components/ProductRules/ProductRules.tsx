@@ -3,6 +3,8 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { HighlightCodeField, SelectField, TextField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
@@ -16,6 +18,22 @@ import {
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
+import SnippetButtons from './SnippetButtons';
+
+const ScriptWrapper = styled.div`
+  position: relative;
+  width: 100%;
+
+  .snippet-buttons {
+    position: absolute;
+    left: 60px;
+    top: 13px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1;
+  }
+`;
 
 interface ContextItemProps {
   name: string;
@@ -81,6 +99,14 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     const textarea = document.querySelector('#rule-script') as HTMLInputElement;
     const comment = value.description ? ` /* ${value.description} */` : '';
     const code = getNewCode(`${value.name}${comment}`);
+
+    changeFormField('script', code);
+    textarea.focus();
+  };
+
+  const onSnippetButtonClick = (snippet: string) => {
+    const textarea = document.querySelector('#rule-script') as HTMLInputElement;
+    const code = getNewCode(snippet);
 
     changeFormField('script', code);
     textarea.focus();
@@ -156,20 +182,27 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               height={34}
             />
           </Box>
-          <Box width={[1]} p="10px">
-            <Field
-              id="rule-script"
-              name="script"
-              placeholder="Enter Script"
-              component={HighlightCodeField}
-              label="Script"
-              contextSubMenuItems={contextSubMenuItems}
-              onContextMenuClick={onContextMenuClick}
-              menuId="rulesCodeContextMenu"
-              checkJSSyntax={true}
-              height="calc(100vh - 400px)"
+          <ScriptWrapper>
+            <SnippetButtons
+              className="snippet-buttons"
+              onClick={onSnippetButtonClick}
             />
-          </Box>
+            <Box width={[1]} p="10px">
+              <Field
+                id="rule-script"
+                name="script"
+                placeholder="Enter Script"
+                component={HighlightCodeField}
+                label="Script"
+                contextSubMenuItems={contextSubMenuItems}
+                onContextMenuClick={onContextMenuClick}
+                menuId="rulesCodeContextMenu"
+                checkJSSyntax={true}
+                fontSize={11}
+                height="calc(100vh - 400px)"
+              />
+            </Box>
+          </ScriptWrapper>
         </Flex>
       </Box>
     </React.Fragment>

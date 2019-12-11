@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
+import { Hint } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
@@ -24,6 +25,8 @@ interface ButtonProps extends WithModalProps {
   underline?: boolean;
   textTransformNone?: boolean;
   title?: string;
+  hint?: string;
+  hintStyle?: object;
   onClick?: () => void;
 }
 
@@ -44,6 +47,8 @@ const Button: React.FC<ButtonProps> = ({
   underline = false,
   textTransformNone = false,
   title,
+  hint,
+  hintStyle,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -79,7 +84,17 @@ const Button: React.FC<ButtonProps> = ({
           {renderIcon(iconName, iconSize)}
         </Box>
       )}
-      <span className="text-wrapper">{text}</span>
+      <span className="text-wrapper">
+        {text}
+        {hint && (
+          <Hint
+            text={hint}
+            icon={false}
+            position="top"
+            style={hintStyle}
+          />
+        )}
+      </span>
     </ButtonWrapper>
   );
 

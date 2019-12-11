@@ -47,12 +47,13 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   );
 
   const handleGetRule = React.useCallback(
-    () => {
-      if (eventId && actionType) {
+    (value: SelectValues, val: SelectValues, prevVal: SelectValues, fieldName: string) => {
+      if (value) {
+        change(fieldName, value);
         getProductRule();
       }
     },
-    [getProductRule, eventId, actionType]
+    [getProductRule, change]
   );
 
   const handleSubmitForm = React.useCallback(

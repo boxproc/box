@@ -18,7 +18,7 @@
 }
 
 .react-contextmenu-submenu .react-contextmenu {
-  width: 300px;
+  width: 250px;
   opacity: 0;
   visibility: hidden;
   overflow-y: auto;

@@ -77,6 +77,7 @@ export const customStyles: StylesConfig = {
     borderStyle: 'solid',
     borderColor: state.selectProps.invalid ? theme.colors.red : theme.colors.normalAccent,
     borderTop: '0',
+    zIndex: 2,
   }),
   control: (provided: React.CSSProperties, state: SelectState) => {
     const {

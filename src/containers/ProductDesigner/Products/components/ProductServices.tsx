@@ -8,7 +8,6 @@ import { Delimiter, SelectField } from 'components';
 import { HandleGetProductServices } from 'store/domains';
 
 import { SelectValues } from 'types';
-import { formErrorUtil } from 'utils';
 
 interface ProductServicesProps {
   productEndpointsServiceOptions: Array<SelectValues>;
@@ -48,7 +47,6 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Delimiter />
@@ -62,7 +60,6 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productEndpointsServiceOptions}
             isLoading={isLoadingEndpoints}
             isClearable={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Delimiter />
@@ -76,7 +73,6 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Delimiter />
@@ -90,7 +86,6 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
         <Delimiter />
@@ -104,7 +99,6 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
-            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

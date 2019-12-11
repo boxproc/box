@@ -205,9 +205,9 @@ export const actionTypesOptions = [
   { value: 'T', label: 'Set transaction APR' },
   { value: 'R', label: 'Add reward' },
   { value: 'F', label: 'Add fee' },
-  { value: 'X', label: 'Update aux counter 1' },
-  { value: 'Y', label: 'Update aux counter 2' },
-  { value: 'Z', label: 'Update aux counter 3' },
+  { value: '1', label: 'Update aux counter 1' },
+  { value: '2', label: 'Update aux counter 2' },
+  { value: '3', label: 'Update aux counter 3' },
 ];
 
 export enum actionTypesCodeKeys {

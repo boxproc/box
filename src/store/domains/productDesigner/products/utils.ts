@@ -587,10 +587,7 @@ export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => 
     return null;
   }
 
-  const {
-    eventId,
-    actionType,
-  } = data;
+  const { eventId, actionType } = data;
 
   return {
     event_id: eventId && eventId.value,

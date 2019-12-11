@@ -22,24 +22,24 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.UPDATE_PRODUCT_RULES,
 ]);
 
-const formValues = formValueSelector(formNamesConst.PRODUCT_RULES);
+const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   currentProductScript: selectCurrentProductScript(state),
-  rulesValues: formValues(
-    state,
-    'eventId',
-    'actionType'
-  ),
   initialValues: {
     ...selectCurrentProductRule(state),
-    ...formValues(
+    ...formSelector(
       state,
       'eventId',
       'actionType'
     ),
   },
+  rulesValues: formSelector(
+    state,
+    'eventId',
+    'actionType'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
