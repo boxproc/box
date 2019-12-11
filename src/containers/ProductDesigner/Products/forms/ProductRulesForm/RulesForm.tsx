@@ -48,12 +48,12 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
 
   const handleGetRule = React.useCallback(
     (value: SelectValues, val: SelectValues, prevVal: SelectValues, fieldName: string) => {
-      if (value) {
+      if (value && (eventId || actionType)) {
         change(fieldName, value);
         getProductRule();
       }
     },
-    [getProductRule, change]
+    [getProductRule, change, eventId, actionType]
   );
 
   const handleSubmitForm = React.useCallback(

@@ -27,14 +27,7 @@ const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   currentProductScript: selectCurrentProductScript(state),
-  initialValues: {
-    ...selectCurrentProductRule(state),
-    ...formSelector(
-      state,
-      'eventId',
-      'actionType'
-    ),
-  },
+  initialValues: selectCurrentProductRule(state),
   rulesValues: formSelector(
     state,
     'eventId',
