@@ -25,7 +25,7 @@ interface ButtonProps extends WithModalProps {
   underline?: boolean;
   textTransformNone?: boolean;
   title?: string;
-  hint?: string;
+  hint?: string | React.ReactChild;
   hintStyle?: object;
   onClick?: () => void;
 }

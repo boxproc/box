@@ -47,7 +47,7 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   showErrors?: boolean;
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
-  hint?: string;
+  hint?: string | React.ReactChild;
 }
 
 interface InputWrapperProps {

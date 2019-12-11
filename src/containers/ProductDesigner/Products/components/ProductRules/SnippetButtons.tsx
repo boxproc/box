@@ -11,34 +11,42 @@ const snippets = [
   {
     id: 1,
     name: 'function',
-    code: 'function run() {\n\t//  code to be executed\n}',
+    code: 'function run() {\n\t\n}',
+    hint: 'function run() {\n\t//  code to be executed\n}',
     width: '150px',
+    shiftCharCount: 21,
   },
   {
     id: 4,
     name: 'switch',
+    code: 'switch() {\n\tcase x:\n\t\t\n\tbreak;\n\tcase y:\n\t\t\n\tbreak;\n\tdefault:\n\t\t\n}',
     // tslint:disable-next-line: max-line-length
-    code: 'switch(expression) {\n\tcase x:\n\t\t// code block\n\tbreak;\n\tcase y:\n\t\t// code block\n\tbreak;\n\tdefault:\n\t\t// code block\n}',
+    hint: 'switch(expression) {\n\tcase x:\n\t\t// code block\n\tbreak;\n\tcase y:\n\t\t// code block\n\tbreak;\n\tdefault:\n\t\t// code block\n}',
     width: '140px',
+    shiftCharCount: 7,
   },
   {
     id: 2,
     name: 'if',
-    code: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n}',
+    code: 'if () {\n\t\n}',
+    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n}',
     width: '300px',
+    shiftCharCount: 4,
   },
   {
     id: 3,
     name: 'else if',
+    code: 'if () {\n\t\n} else {\n\t\n}',
     // tslint:disable-next-line: max-line-length
-    code: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n} else {\n\t//  block of code to be executed if the condition is false\n}',
+    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n} else {\n\t//  block of code to be executed if the condition is false\n}',
     width: '300px',
+    shiftCharCount: 4,
   },
 ];
 
 interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   className?: string;
-  onClick?: (snippet: string) => void;
+  onClick?: (snippet: string, shiftCharCount?: number) => void;
 }
 
 const ProductRules: React.FC<ProductRulesProps> = ({
@@ -48,9 +56,9 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   return (
     <div className={className}>
       {snippets.map(snippet => {
-        const { id, name, code, width } = snippet;
+        const { id, name, code, hint, width, shiftCharCount } = snippet;
 
-        const hint = snippet.code.split('\n').map((el, index) => (
+        const preparedHint = hint.split('\n').map((el, index) => (
           <div key={index}>{el.replace(/\t/g, '\xa0\xa0\xa0\xa0')}</div>
         ));
 
@@ -66,8 +74,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               type="reset"
               iconName="_"
               size={10}
-              onClick={() => onClick(preparedCode)}
-              hint={hint}
+              onClick={() => onClick(preparedCode, shiftCharCount)}
+              hint={preparedHint}
               hintStyle={{
                 whiteSpace: 'normal',
                 width: width ? width : '180px',

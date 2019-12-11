@@ -49,6 +49,7 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   contextMenuItems?: Array<ContextMenuItemProps>;
   contextSubMenuItems?: ContextSubMenuType;
   onContextMenuClick?: () => void;
+  setCursorCurrentPosition?: () => void;
   menuId?: string;
   checkJSSyntax?: boolean;
 }
@@ -68,6 +69,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   contextMenuItems,
   contextSubMenuItems,
   onContextMenuClick,
+  setCursorCurrentPosition,
   menuId,
   checkJSSyntax,
 }) => {
@@ -141,6 +143,9 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
               placeholder={placeholder}
               onFocus={addFocusClass}
               onBlur={removeFocusClass}
+              onKeyUp={setCursorCurrentPosition}
+              onClick={setCursorCurrentPosition}
+              onContextMenu={setCursorCurrentPosition}
               tabSize={4}
               padding={padding}
               className="editor"
@@ -162,7 +167,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         </PerfectScrollbar>
       </EditorWrapper>
       {codeWarnings && codeWarnings.length && (
-        <Box mt="10px">
+        <Box mt="5px">
           <WarningsCount>
             <WarningIconWrapper size="12" />
             <div className="text">{warningsCount}</div>

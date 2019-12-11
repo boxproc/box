@@ -79,6 +79,10 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   onChangeValues,
   changeFormField,
 }) => {
+  const textarea = document.querySelector('#rule-script') as HTMLInputElement;
+
+  const [currentCursorPosition, setCurrentCursorPosition] = React.useState(null);
+
   React.useEffect(
     () => {
       getProductAprsFeesRewards();
@@ -96,20 +100,35 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   );
 
   const onContextMenuClick = (e: Event, value: { name: string, description: string }) => {
-    const textarea = document.querySelector('#rule-script') as HTMLInputElement;
     const comment = value.description ? ` /* ${value.description} */` : '';
-    const code = getNewCode(`${value.name}${comment}`);
+    const newValue = `${value.name}${comment}`;
+    const code = getNewCode(newValue);
 
     changeFormField('script', code);
     textarea.focus();
+
+    setTimeout(
+      () => textarea.setSelectionRange(
+        currentCursorPosition + newValue.length,
+        currentCursorPosition + newValue.length
+      ),
+      50);
   };
 
-  const onSnippetButtonClick = (snippet: string) => {
-    const textarea = document.querySelector('#rule-script') as HTMLInputElement;
+  const onSnippetButtonClick = (snippet: string, shiftCharCount?: number) => {
     const code = getNewCode(snippet);
+    setCurrentCursorPosition(textarea.selectionEnd);
 
     changeFormField('script', code);
+
     textarea.focus();
+
+    setTimeout(
+      () => textarea.setSelectionRange(
+        currentCursorPosition + shiftCharCount,
+        currentCursorPosition + shiftCharCount
+      ),
+      50);
   };
 
   const contextSubMenuItems = React.useMemo(
@@ -196,6 +215,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 label="Script"
                 contextSubMenuItems={contextSubMenuItems}
                 onContextMenuClick={onContextMenuClick}
+                setCursorCurrentPosition={() => setCurrentCursorPosition(textarea.selectionEnd)}
                 menuId="rulesCodeContextMenu"
                 checkJSSyntax={true}
                 fontSize={11}

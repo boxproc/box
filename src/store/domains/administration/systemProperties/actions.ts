@@ -40,7 +40,7 @@ export type UpdateAdminSysProps = (propValues: EditableAdminSysPropPrepared) =>
   UpdateAdminSysPropsAction;
 export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Thunk<void>;
 
-export type FilterAdminSysProps = (Filter: AdminSysPropFilterPrepared) =>
+export type FilterAdminSysProps = (filter: AdminSysPropFilterPrepared) =>
   FilterAdminSysPropsAction;
 export type HandleFilterAdminSysProps = () => Thunk<void>;
 
