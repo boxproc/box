@@ -142,6 +142,7 @@ export const customStyles: StylesConfig = {
     // eslint-disable-next-line
     ['& > svg']: {
       width: 10,
+      height: 10,
       cursor: 'pointer',
       color: theme.colors.normalAccent,
     },

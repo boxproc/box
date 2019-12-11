@@ -40,6 +40,8 @@ interface OkCancelButtonsProps {
   withCancelConfirmation?: boolean;
   cancelConfirmationText?: string;
   cancelConfirmationTitle?: string;
+  hideOk?: boolean;
+  hideCancel?: boolean;
 }
 
 const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
@@ -57,47 +59,53 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   withCancelConfirmation = false,
   cancelConfirmationText = messagesConst.UNSAVED_CHANGES,
   cancelConfirmationTitle = messagesConst.CLOSE_MODAL_WINDOW,
+  hideOk,
+  hideCancel,
 }) => {
   const okBtnFocused = focusedButton === 'ok';
   const cancelBtnFocused = focusedButton === 'cancel';
 
   return (
     <Wrapper rightPosition={rightPosition} >
-      <div className="btn-wrapper">
-        <Button
-          text={okText}
-          disabled={disabledOk}
-          onClick={onOk}
-          isFocused={okBtnFocused}
-        />
-        {hintOk && (
-          <Hint
-            text={hintOk}
-            icon={false}
-            position="top"
+      {!hideOk && (
+        <div className="btn-wrapper">
+          <Button
+            text={okText}
+            disabled={disabledOk}
+            onClick={onOk}
+            isFocused={okBtnFocused}
           />
-        )}
-      </div>
-      <div className="btn-wrapper">
-        <Button
-          text={cancelText}
-          onClick={onCancel}
-          isFocused={cancelBtnFocused}
-          type="reset"
-          iconName={cancelIconName}
-          disabled={disabledCancel}
-          withConfirmation={withCancelConfirmation}
-          confirmationText={cancelConfirmationText}
-          confirmationTitle={cancelConfirmationTitle}
-        />
-        {hintCancel && (
-          <Hint
-            text={hintCancel}
-            icon={false}
-            position="top"
+          {hintOk && (
+            <Hint
+              text={hintOk}
+              icon={false}
+              position="top"
+            />
+          )}
+        </div>
+      )}
+      {!hideCancel && (
+        <div className="btn-wrapper">
+          <Button
+            text={cancelText}
+            onClick={onCancel}
+            isFocused={cancelBtnFocused}
+            type="reset"
+            iconName={cancelIconName}
+            disabled={disabledCancel}
+            withConfirmation={withCancelConfirmation}
+            confirmationText={cancelConfirmationText}
+            confirmationTitle={cancelConfirmationTitle}
           />
-        )}
-      </div>
+          {hintCancel && (
+            <Hint
+              text={hintCancel}
+              icon={false}
+              position="top"
+            />
+          )}
+        </div>
+      )}
     </Wrapper>
   );
 };

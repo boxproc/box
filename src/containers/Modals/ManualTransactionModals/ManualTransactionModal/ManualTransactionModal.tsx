@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -8,28 +7,38 @@ import { ManualTransactionForm } from 'containers/Modals/ManualTransactionModals
 
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { linksConst, modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
 
-import { HandleMakeLedgerTransaction, PayloadLedgerManualTransactionModal } from 'store/domains';
+import {
+  HandleMakeLedgerLimitAdjustment,
+  HandleMakeLedgerTransaction,
+  PayloadLedgerManualTransactionModal
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
-import { stringsUtil } from 'utils';
-
-interface ManualTransactionModalProps extends RouteComponentProps, WithModalProps {
+interface ManualTransactionModalProps extends WithModalProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
+  makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
   modalPayload: PayloadLedgerManualTransactionModal;
   currenciesOptions: Array<SelectValues>;
+  isLimitAdjustment: boolean;
 }
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
 
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
-  location,
   makeLedgerTransaction,
+  makeLedgerLimitAdjustment,
   modalPayload,
+  isLimitAdjustment,
   closeModal,
   currenciesOptions,
 }) => {
+  const modalTitle = React.useMemo(
+    () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
+    [isLimitAdjustment]
+  );
+
   const initialFormValues = React.useMemo(
     () => {
       if (!modalPayload) {
@@ -52,6 +61,10 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [closeModal]
   );
 
+  const helpLink = isLimitAdjustment
+    ? `${linksConst.BPS_BASE}${uiItemConsts.LEDGER_LIMIT_ADJUSTMENT}`
+    : `${linksConst.BPS_BASE}${uiItemConsts.LEDGER_MANUAL_TRANSACTIONS}`;
+
   return (
     <Modal
       name={modalName}
@@ -62,24 +75,23 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         <Box mb="15px" mr="15px">
           <ExternalLink
             text="HELP"
-            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+            link={helpLink}
             grayStyle={true}
           />
         </Box>
-        <T2>Manual Transaction</T2>
+        <T2>{modalTitle}</T2>
       </Flex>
       <ManualTransactionForm
         makeLedgerTransaction={makeLedgerTransaction}
+        makeLedgerLimitAdjustment={makeLedgerLimitAdjustment}
         initialValues={initialFormValues}
         onCancel={handleOnCancel}
+        isLimitAdjustment={isLimitAdjustment}
       />
     </Modal>
   );
 };
 
-const transactionWithRouter = withRouter(ManualTransactionModal);
-const transactionWithRouterAndModal = withModal(transactionWithRouter);
-
 export default withSpinner({
   isFixed: true,
-})(transactionWithRouterAndModal);
+})(withModal(ManualTransactionModal));

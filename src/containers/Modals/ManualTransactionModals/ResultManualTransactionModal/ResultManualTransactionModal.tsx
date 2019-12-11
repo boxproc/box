@@ -4,17 +4,23 @@ import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { ResultManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
+import {
+  ResultLimitAdjustmentForm,
+  ResultManualTransactionForm
+} from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
   HandleFilterLedgerTransactionsById,
+  LedgerLimitAdjustmentResultPrepared,
   LedgerManualTransactionResultPrepared,
 } from 'store/domains';
 
 interface ResultManualTransactionModalProps extends WithModalProps {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;
+  ledgerLimitAdjustment: LedgerLimitAdjustmentResultPrepared;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   transactionId: number;
+  isLimitAdjustment: boolean;
 }
 
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT;
@@ -22,6 +28,8 @@ const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT;
 const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> = ({
   closeModal,
   ledgerManualTransaction,
+  ledgerLimitAdjustment,
+  isLimitAdjustment,
   filterLedgerTransactionsById,
   transactionId,
   closeAllModals,
@@ -44,9 +52,12 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Transaction successfully completed"
-      maxContainerWidth={650}
+      maxContainerWidth={isLimitAdjustment ? 550 : 650}
     >
-      <ResultManualTransactionForm initialValues={ledgerManualTransaction} />
+      {isLimitAdjustment
+        ? (<ResultLimitAdjustmentForm initialValues={ledgerLimitAdjustment} />)
+        : (<ResultManualTransactionForm initialValues={ledgerManualTransaction} />)
+      }
       <Hr />
       <OkCancelButtons
         okText="View transaction"
@@ -55,6 +66,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
         rightPosition={true}
         onOk={handleGetTransaction}
         onCancel={handleOnCancel}
+        hideOk={isLimitAdjustment}
       />
     </Modal>
   );

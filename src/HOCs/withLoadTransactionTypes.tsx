@@ -7,6 +7,7 @@ import {
   DictionaryTransactionTypesActionTypes,
   handleGetDictionaryTransactionTypes,
   HandleGetDictionaryTransactionTypes,
+  selectDictionaryLimitAdjustmentTypesOptions,
   selectDictionaryManualTransactionTypesOptions,
   selectDictionaryTransactionTypesOptions,
 } from 'store/domains';
@@ -20,6 +21,7 @@ import { componentUtil } from 'utils';
 export interface WithLoadTransactionTypesProps {
   transactionTypesOptions: Array<SelectValues>;
   manualTransactionTypesOptions: Array<SelectValues>;
+  limitAdjustmentTypeOptions: Array<SelectValues>;
   isTransactionTypesLoading: boolean;
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
 }
@@ -32,6 +34,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
         const {
           transactionTypesOptions,
           manualTransactionTypesOptions,
+          limitAdjustmentTypeOptions,
           getTransactionTypes,
           isTransactionTypesLoading,
           ...originProps
@@ -52,6 +55,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
             isTransactionTypesLoading={isTransactionTypesLoading}
             transactionTypesOptions={transactionTypesOptions}
             manualTransactionTypesOptions={manualTransactionTypesOptions}
+            limitAdjustmentTypeOptions={limitAdjustmentTypeOptions}
             getTransactionTypes={getTransactionTypes}
             {...originProps as OriginProps}
           />
@@ -69,6 +73,8 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
       isTransactionTypesLoading: loadingSelector(state),
       transactionTypesOptions: selectDictionaryTransactionTypesOptions(state),
       manualTransactionTypesOptions: selectDictionaryManualTransactionTypesOptions(state),
+      limitAdjustmentTypeOptions:
+      selectDictionaryLimitAdjustmentTypesOptions(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
