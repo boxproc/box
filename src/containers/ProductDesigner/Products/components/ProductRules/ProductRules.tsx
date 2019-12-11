@@ -50,6 +50,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   productRewardsItems: Array<ContextItemProps>;
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
+  scriptValue: string;
 }
 
 const getNewCode = (element: string) => {
@@ -78,10 +79,22 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   productAprsItems,
   onChangeValues,
   changeFormField,
+  scriptValue,
 }) => {
   const textarea = document.querySelector('#rule-script') as HTMLInputElement;
 
-  const [currentCursorPosition, setCurrentCursorPosition] = React.useState(null);
+  const [currentCursorPosition, setCurrentCursorPosition] = React.useState(0);
+
+  React.useEffect(
+    () => {
+      if (scriptValue) {
+        setCurrentCursorPosition(textarea.selectionEnd);
+      } else {
+        setCurrentCursorPosition(0);
+      }
+    },
+    [scriptValue, textarea]
+  );
 
   React.useEffect(
     () => {
@@ -99,37 +112,41 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     [filterDictionaryEventDataElemsById, eventValue]
   );
 
-  const onContextMenuClick = (e: Event, value: { name: string, description: string }) => {
-    const comment = value.description ? ` /* ${value.description} */` : '';
-    const newValue = `${value.name}${comment}`;
-    const code = getNewCode(newValue);
+  const onContextMenuClick = React.useCallback(
+    (e: Event, value: { name: string, description: string }) => {
+      const comment = value.description ? ` /* ${value.description} */` : '';
+      const newValue = `${value.name}${comment}`;
+      const code = getNewCode(newValue);
 
-    changeFormField('script', code);
-    textarea.focus();
+      changeFormField('script', code);
+      textarea.focus();
 
-    setTimeout(
-      () => textarea.setSelectionRange(
-        currentCursorPosition + newValue.length,
-        currentCursorPosition + newValue.length
-      ),
-      50);
-  };
+      setTimeout(
+        () => textarea.setSelectionRange(
+          currentCursorPosition + newValue.length,
+          currentCursorPosition + newValue.length
+        ),
+        50);
+    },
+    [currentCursorPosition, changeFormField, textarea]
+  );
 
-  const onSnippetButtonClick = (snippet: string, shiftCharCount?: number) => {
-    const code = getNewCode(snippet);
-    setCurrentCursorPosition(textarea.selectionEnd);
+  const onSnippetButtonClick = React.useCallback(
+    (snippet: string, shiftCharCount?: number) => {
+      const code = getNewCode(snippet);
 
-    changeFormField('script', code);
+      changeFormField('script', code);
+      textarea.focus();
 
-    textarea.focus();
-
-    setTimeout(
-      () => textarea.setSelectionRange(
-        currentCursorPosition + shiftCharCount,
-        currentCursorPosition + shiftCharCount
-      ),
-      50);
-  };
+      setTimeout(
+        () => textarea.setSelectionRange(
+          currentCursorPosition + shiftCharCount,
+          currentCursorPosition + shiftCharCount
+        ),
+        50);
+    },
+    [currentCursorPosition, changeFormField, textarea]
+  );
 
   const contextSubMenuItems = React.useMemo(
     () => [

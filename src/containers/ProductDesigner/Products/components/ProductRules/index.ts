@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
+
+import { formNamesConst } from 'consts';
 
 import ProductRules from './ProductRules';
 
@@ -14,11 +17,17 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
+const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
+
 const mapStateToProps = (state: StoreState) => ({
   eventDataElemsItems: selectEventDataElemsForRules(state),
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),
   productRewardsItems: selectProductRewardsForRules(state),
+  scriptValue: formSelector(
+    state,
+    'script'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
