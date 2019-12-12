@@ -40,7 +40,7 @@ export const NavListStyled = styled.div`
       top: 0;
       left: -10px;
       right: -10px;
-      bottom: -20px;
+      bottom: -10px;
       cursor: default;
     }
     &.${menuClasses.ACTIVE} {
@@ -52,7 +52,7 @@ export const NavListStyled = styled.div`
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0;
-    top: calc(100% + 20px);
+    top: calc(100% + 8px);
     padding: 1px 0;
     display: flex;
     flex-direction: column;
@@ -79,14 +79,9 @@ export const NavListStyled = styled.div`
     }
   }
   .${menuClasses.MENU_ITEM} {
-    &:hover,
-    &.${menuClasses.SELECTED} > .${menuClasses.MENU_TITLE} {
+    &:hover {
       background-color: ${({ theme }) => theme.colors.lighterGray};
       color: ${({ theme }) => theme.colors.normalAccent};
-    }
-    &:hover,
-    &.${menuClasses.SELECTED}:hover > .${menuClasses.MENU_TITLE} {
-      background-color: ${({ theme }) => theme.colors.lightGrayOpacity};
     }
   }
 `;

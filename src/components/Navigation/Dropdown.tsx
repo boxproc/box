@@ -73,6 +73,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
   dropdownListPosition = 'left',
   ToggleButtonComponent,
 }) => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [isOpened, setIsOpened] = React.useState(false);
+
   const dropdownListRef = React.useRef(null);
   const dropdownToggleBtnRef = React.useRef(null);
 
@@ -82,18 +85,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }
   );
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [isOpened, setIsOpened] = React.useState(false);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (isOpened
-      && dropdownListRef.current
-      && !dropdownListRef.current.contains(e.target)
-      && !dropdownToggleBtnRef.current.contains(e.target)
-    ) {
-      setIsOpened(false);
-    }
-  };
+  const handleClickOutside = React.useCallback(
+    (e: MouseEvent) => {
+      if (isOpened
+        && dropdownListRef.current
+        && !dropdownListRef.current.contains(e.target)
+        && !dropdownToggleBtnRef.current.contains(e.target)
+      ) {
+        setIsOpened(false);
+      }
+    },
+    [isOpened]
+  );
 
   const toggleOpen = React.useCallback(
     () => setIsOpened(!isOpened),

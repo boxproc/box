@@ -45,6 +45,7 @@ const Cards: React.FC<CardsProps> = ({
     },
     [resetCards]
   );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

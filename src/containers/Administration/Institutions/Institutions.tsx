@@ -36,6 +36,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
     },
     [getAdminInstitutions, resetInstitutions]
   );
+
   const contextMenuItems = React.useMemo(
     () => [
       {

@@ -27,7 +27,10 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
   institutionValue,
   isLoadingInstitutionProducts,
 }) => {
-  const currentInstitutionId = institutionValue && institutionValue.value;
+  const currentInstitutionId = React.useMemo(
+    () => institutionValue && institutionValue.value,
+    [institutionValue]
+  );
 
   React.useEffect(
     () => {
@@ -37,6 +40,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
     },
     [getInstitutionProducts, currentInstitutionId]
   );
+
   return (
     <React.Fragment>
       <Box width={[1 / 4]} p="10px">

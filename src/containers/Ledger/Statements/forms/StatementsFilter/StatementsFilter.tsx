@@ -34,7 +34,10 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
   institutionProductsOptions,
   isLoadingInstitutionProducts,
 }) => {
-  const currentInstitutionId = institutionValue && institutionValue.value;
+  const currentInstitutionId = React.useMemo(
+    () => institutionValue && institutionValue.value,
+    [institutionValue]
+  );
 
   React.useEffect(
     () => {

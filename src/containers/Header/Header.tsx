@@ -21,19 +21,45 @@ import {
 
 import logo from 'resources/images/logo.png';
 
-const Wrapper = styled.header`
+interface WrapperProps {
+  currentPathname: string;
+}
+
+const Wrapper = styled.header<WrapperProps>`
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   width: 100%;
   min-height: 70px;
-  padding: 10px 0;
+  padding: ${({ currentPathname }) => currentPathname ? '5px 0 15px' : '10px 0'};
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
   font-size: 13px;
   white-space: nowrap;
   z-index: 100;
+
+  .logo-wrapper {
+    position: relative;
+  }
+
+  .logo {
+    display: block;
+    font-size: 0;
+  }
+
+  .location {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.darkGray};
+    font-size: 11px;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.normalAccent};
+    }
+  }
 `;
 
 interface HeaderProps extends RouteComponentProps {
@@ -72,8 +98,13 @@ const Header: React.FC<HeaderProps> = ({
     [institutions]
   );
 
+  const currentPathname = React.useMemo(
+    () => location.pathname.split('/').slice(2).join('/'),
+    [location]
+  );
+
   return (
-    <Wrapper>
+    <Wrapper currentPathname={currentPathname}>
       <Container>
         <Flex
           justifyContent="space-between"
@@ -83,10 +114,25 @@ const Header: React.FC<HeaderProps> = ({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Box mr="15px">
-              <a href={basePath} aria-label="BOX UI">
+            <Box
+              mr="15px"
+              className="logo-wrapper"
+            >
+              <a
+                href={basePath}
+                aria-label="BOX UI"
+                className="logo"
+              >
                 <img src={logo} width={62} alt="" />
               </a>
+              {currentPathname && (
+                <a
+                  href={`${basePath}${currentPathname}`}
+                  className="location"
+                >
+                  {currentPathname}
+                </a>
+              )}
             </Box>
             {uiItems && (
               <Navbar

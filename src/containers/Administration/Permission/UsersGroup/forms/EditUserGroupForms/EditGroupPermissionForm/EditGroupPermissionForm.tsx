@@ -37,6 +37,11 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
     [getUiItems, currentGroupId]
   );
 
+  const isUiItemSelected = React.useMemo(
+    () => !!selectedUiItem,
+    [selectedUiItem]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit((data) => addAdminGroupPermission({
       ...data,
@@ -44,8 +49,6 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
     })),
     [handleSubmit, addAdminGroupPermission, currentGroupId]
   );
-
-  const isUiItemSelected = !!selectedUiItem;
 
   return (
     <form onSubmit={handleSubmitForm}>
