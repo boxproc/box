@@ -52,8 +52,9 @@ const Wrapper = styled.header<WrapperProps>`
     position: absolute;
     left: 0;
     top: 100%;
+    margin-top: 1px;
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.gray};
     font-size: 11px;
 
     &:hover {

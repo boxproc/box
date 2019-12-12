@@ -8,8 +8,6 @@ import styled from 'theme';
 import { HighlightCodeField, SelectField, TextField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
-import { actionTypesOptions } from 'consts';
-
 import {
   DictionaryEventDataElemsItem,
   HandleFilterDictionaryEventDataElemsById,
@@ -51,6 +49,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
   scriptValue: string;
+  actionTypesOptions: SelectValues;
 }
 
 const getNewCode = (element: string) => {
@@ -80,6 +79,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   onChangeValues,
   changeFormField,
   scriptValue,
+  actionTypesOptions,
 }) => {
   const textarea = document.querySelector('#rule-script') as HTMLInputElement;
 

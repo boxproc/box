@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { yesNoTypesCodes } from 'consts';
+import { actionTypesCodeKeys, actionTypesOptions, yesNoTypesCodes } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -195,6 +195,40 @@ export const selectProductAuxCounters = createSelector(
       auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
       auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
     };
+  }
+);
+
+export const selectActionTypesOptions = createSelector(
+  selectProductAuxCounters,
+  auxCounters => {
+    const set = new Set() as any;
+
+    const isAuxCounter1Enabled = auxCounters && auxCounters.auxCounter1Enabled;
+    const isAuxCounter2Enabled = auxCounters && auxCounters.auxCounter2Enabled;
+    const isAuxCounter3Enabled = auxCounters && auxCounters.auxCounter3Enabled;
+
+    const auxCounter1Option = actionTypesOptions
+      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_1);
+    const auxCounter2Option = actionTypesOptions
+      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_2);
+    const auxCounter3Option = actionTypesOptions
+      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_3);
+
+    actionTypesOptions.forEach(type => set.add(type));
+
+    if (!isAuxCounter1Enabled) {
+      set.delete(auxCounter1Option);
+    }
+
+    if (!isAuxCounter2Enabled) {
+      set.delete(auxCounter2Option);
+    }
+
+    if (!isAuxCounter3Enabled) {
+      set.delete(auxCounter3Option);
+    }
+
+    return [...set];
   }
 );
 

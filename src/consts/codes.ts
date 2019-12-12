@@ -211,8 +211,14 @@ export const actionTypesOptions = [
 ];
 
 export enum actionTypesCodeKeys {
+  API_CALL = 'A',
   APPROVE_DENY = 'R',
   SET_TRANSACTION_APR = 'T',
+  AADD_REWARD = 'R',
+  ADD_FEE = 'F',
+  UPDATE_AUX_COUNTER_1 = '1',
+  UPDATE_AUX_COUNTER_2 = '2',
+  UPDATE_AUX_COUNTER_3 = '3',
 }
 
 export enum eventTypesCodeKeys {
