@@ -5,14 +5,14 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Delimiter, Hr, InputField, MaskField, SelectField, T4 } from 'components';
 
-import { withLoadCountryCodes, WithLoadCountryCodesProps } from 'HOCs';
-
 import {
   customerStatusTypesOptions,
   dateFormat,
   identificationTypesOptions,
   maskFormat
 } from 'consts';
+
+import { HandleGetDictionaryCountries } from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -22,17 +22,28 @@ interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
   isIdentification: boolean;
+  loadCountryCodes: HandleGetDictionaryCountries;
+  countryCodes: Array<SelectValues>;
+  isCountryCodesLoading: boolean;
 }
 
-type CustomerInfoAllProps = CustomerInfoProps & WithLoadCountryCodesProps;
-
-const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
+const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
   countryCodes,
-  isCountryCodesLoading,
   isEditMode = false,
   isIdentification,
+  loadCountryCodes,
+  isCountryCodesLoading,
 }) => {
+  React.useEffect(
+    () => {
+      if (!countryCodes.length) {
+        loadCountryCodes();
+      }
+    },
+    [loadCountryCodes]
+  );
+
   return (
     <Box mx="-10px">
       <Flex
@@ -263,4 +274,4 @@ const CustomerInfo: React.FC<CustomerInfoAllProps> = ({
   );
 };
 
-export default withLoadCountryCodes(CustomerInfo);
+export default CustomerInfo;
