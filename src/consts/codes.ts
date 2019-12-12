@@ -212,7 +212,7 @@ export const actionTypesOptions = [
 
 export enum actionTypesCodeKeys {
   API_CALL = 'A',
-  APPROVE_DENY = 'R',
+  APPROVE_DENY = 'B',
   SET_TRANSACTION_APR = 'T',
   AADD_REWARD = 'R',
   ADD_FEE = 'F',
