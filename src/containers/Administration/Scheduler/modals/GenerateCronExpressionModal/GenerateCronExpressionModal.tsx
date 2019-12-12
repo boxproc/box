@@ -158,7 +158,6 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
           cancelText="Cancel"
           onOk={handleApplyCronExpression}
           onCancel={handleCloseModal}
-          disabledOk={pristine}
           withCancelConfirmation={dirty}
         />
       </Flex>

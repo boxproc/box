@@ -201,7 +201,7 @@ export const dataTypesOptions = [
 
 export const actionTypesOptions = [
   { value: 'A', label: 'API Call' },
-  { value: 'R', label: 'Approve / Deny' },
+  { value: 'B', label: 'Approve / Deny' },
   { value: 'T', label: 'Set transaction APR' },
   { value: 'R', label: 'Add reward' },
   { value: 'F', label: 'Add fee' },

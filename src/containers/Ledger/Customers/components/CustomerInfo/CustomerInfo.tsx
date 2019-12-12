@@ -41,7 +41,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         loadCountryCodes();
       }
     },
-    [loadCountryCodes]
+    [loadCountryCodes, countryCodes]
   );
 
   return (
