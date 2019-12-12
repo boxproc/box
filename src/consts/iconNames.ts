@@ -13,4 +13,7 @@ export enum iconNamesConst {
   SHORT_TEXT = 'shortText',
   REFRESH = 'refresh',
   KEY = 'key',
+  DOWNLOAD = 'download',
+  FILE = 'file',
+  FILE_CSV = 'fileCsv',
 }

@@ -4,6 +4,9 @@ import { Box } from '@rebass/grid';
 
 import {
   DeleteIcon,
+  DownloadIcon,
+  FileCsvIcon,
+  FileIcon,
   FilterIcon,
   HelpCircleIcon,
   KeyIcon,
@@ -45,7 +48,12 @@ export const renderIcon = (name: string, size?: string) => {
       return (<Box mt="-1px"><RefreshIcon size={size ? size : '18'} /></Box>);
     case iconNamesConst.KEY:
       return (<Box mt="-1px" mr="2px"><KeyIcon size={size ? size : '12'} /></Box>);
-
+    case iconNamesConst.DOWNLOAD:
+      return (<Box mt="-1px" mr="2px"><DownloadIcon size={size ? size : '14'} /></Box>);
+    case iconNamesConst.FILE:
+      return (<Box mt="-1px" mr="2px"><FileIcon size={size ? size : '14'} /></Box>);
+    case iconNamesConst.FILE_CSV:
+      return (<Box mt="-1px" mr="2px"><FileCsvIcon size={size ? size : '14'} /></Box>);
     default:
       return null;
   }

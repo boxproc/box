@@ -214,7 +214,7 @@ export enum actionTypesCodeKeys {
   API_CALL = 'A',
   APPROVE_DENY = 'B',
   SET_TRANSACTION_APR = 'T',
-  AADD_REWARD = 'R',
+  ADD_REWARD = 'R',
   ADD_FEE = 'F',
   UPDATE_AUX_COUNTER_1 = '1',
   UPDATE_AUX_COUNTER_2 = '2',

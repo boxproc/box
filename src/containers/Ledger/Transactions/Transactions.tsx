@@ -96,6 +96,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       editModalName={modalNamesConst.LEDGER_TRANSACTION}
       filterAction={filterLedgerTransactions}
       contextMenuItems={contextMenuItems}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
         transactionsDateTimeFrom: dateTimeFrom,

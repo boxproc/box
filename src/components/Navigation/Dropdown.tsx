@@ -7,7 +7,8 @@ import styled from 'theme';
 
 interface DropdownWrapperProps {
   isActive: boolean;
-  position?: 'left' | 'right';
+  isDisabled?: boolean;
+  position?: 'left' | 'right' | 'center';
 }
 
 const DropdownWrapper = styled.div<DropdownWrapperProps>`
@@ -23,6 +24,11 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     background-color: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
     z-index: 1;
+
+  ${({ position }) => position === 'center' && `
+    transform: translateX(-50%);
+    margin-left: 50%;
+  `};
   }
 
   .dropdown-option {
@@ -51,6 +57,11 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
       color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
+
+  ${({ isDisabled }) => isDisabled && `
+    pointer-events: none;
+    opacity: .5;
+  `};
 `;
 
 const ToggleButton = styled(ArrowDropDownIcon)`
@@ -63,8 +74,9 @@ const ToggleButton = styled(ArrowDropDownIcon)`
 
 export interface DropdownProps {
   selectable?: boolean;
-  dropdownListPosition?: 'left' | 'right';
+  dropdownListPosition?: 'left' | 'right' | 'center';
   ToggleButtonComponent?: ReactChild;
+  isDisabled?: boolean;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -72,6 +84,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   selectable = true,
   dropdownListPosition = 'left',
   ToggleButtonComponent,
+  isDisabled,
 }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [isOpened, setIsOpened] = React.useState(false);
@@ -108,6 +121,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <DropdownWrapper
       position={dropdownListPosition}
       isActive={isOpened}
+      isDisabled={isDisabled}
     >
       <Flex alignItems="flex-start">
         {selectable && (

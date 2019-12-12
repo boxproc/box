@@ -3,6 +3,7 @@ import { HelpCircle as HelpCircleIcon } from 'styled-icons/boxicons-regular/Help
 import { InfoCircle as InfoCircleIcon } from 'styled-icons/boxicons-regular/InfoCircle';
 import { LinkExternal as LinkExternalIcon } from 'styled-icons/boxicons-regular/LinkExternal';
 import { Plus as PlusIcon } from 'styled-icons/boxicons-regular/Plus';
+import { Download as DownloadIcon } from 'styled-icons/boxicons-solid/Download';
 import { LockAlt as LockIcon } from 'styled-icons/boxicons-solid/LockAlt';
 import { ChevronDown as ChevronDownIcon } from 'styled-icons/evil/ChevronDown';
 import { ChevronRight as ChevronRightIcon } from 'styled-icons/evil/ChevronRight';
@@ -10,6 +11,8 @@ import { Close as CloseIcon } from 'styled-icons/evil/Close';
 import { Edit as EditIcon  } from 'styled-icons/fa-regular/Edit';
 import { Eye as EyeIcon } from 'styled-icons/fa-regular/Eye';
 import { EyeSlash as EyeSlashIcon } from 'styled-icons/fa-regular/EyeSlash';
+import { File as FileIcon } from 'styled-icons/fa-solid/File';
+import { FileCsv as FileCsvIcon } from 'styled-icons/fa-solid/FileCsv';
 import { Key as KeyIcon } from 'styled-icons/fa-solid/Key';
 import { User as UserIcon } from 'styled-icons/fa-solid/User';
 import { UserShield as UserShieldIcon } from 'styled-icons/fa-solid/UserShield';
@@ -51,6 +54,9 @@ export {
   WarningIcon,
   RefreshIcon,
   KeyIcon,
+  DownloadIcon,
+  FileIcon,
+  FileCsvIcon,
   CheckedRadioIcon,
   UncheckedRadioIcon,
 };

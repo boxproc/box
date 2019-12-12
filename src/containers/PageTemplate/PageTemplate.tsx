@@ -4,13 +4,15 @@ import { withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, CountDownTimer, ExternalLink, T2 } from 'components';
+import { Button, CountDownTimer, Dropdown, DropdownOption, ExternalLink, T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
 import Filter from './Filter';
+
+import { downloadCSV } from './downloadCSV';
 
 import { ResetUtils, SetIsOpenFilter, StopAutoRefresh } from 'store/domains';
 
@@ -33,6 +35,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   filterData: object;
   setIsOpenFilter: SetIsOpenFilter;
   isOpenFilter: boolean;
+  isDownloadButton: boolean;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -53,6 +56,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     filterData,
     setIsOpenFilter,
     isOpenFilter,
+    isDownloadButton,
     ...pageTemplateProps
   } = props;
 
@@ -70,6 +74,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       return () => resetUtils();
     },
     [resetUtils]
+  );
+
+  const fileName = React.useMemo(
+    () => title.split(' ').join('_').toLowerCase(),
+    [title]
   );
 
   const storedFilter = cookiesUtil.get(location.pathname);
@@ -114,7 +123,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       )}
       <Flex alignItems="center">
         {newModalName && (
-          <Box>
+          <Box mr="20px">
             <Button
               text="Add New"
               iconName={iconNamesConst.PLUS}
@@ -123,9 +132,31 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           </Box>
         )}
         {AdditionalButton && (
-          <Box ml="20px">
+          <Box mr="20px">
             {AdditionalButton}
           </Box>
+        )}
+        {isDownloadButton && (
+          <Dropdown
+            selectable={false}
+            isDisabled={!data.length}
+            dropdownListPosition="center"
+            ToggleButtonComponent={
+              <Button
+                text="Download"
+                iconName={iconNamesConst.DOWNLOAD}
+              />
+            }
+          >
+            <DropdownOption>
+              <Button
+                text=".csv"
+                iconName={iconNamesConst.FILE_CSV}
+                onClick={() => downloadCSV(`${fileName}.csv`, data)}
+                textTransformNone={true}
+              />
+            </DropdownOption>
+          </Dropdown>
         )}
         {isAutoRefresh && (
           <Box ml="25px">
