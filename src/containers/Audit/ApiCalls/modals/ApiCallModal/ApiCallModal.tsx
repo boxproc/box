@@ -38,7 +38,6 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="API Call"
-      closeOnBackdrop={true}
       maxContainerWidth={980}
     >
       <ApiCallForm />

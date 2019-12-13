@@ -26,7 +26,6 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Transaction"
-      closeOnBackdrop={true}
       maxContainerWidth={600}
       minContainerHeight={500}
     >

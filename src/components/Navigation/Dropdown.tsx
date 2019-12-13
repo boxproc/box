@@ -20,7 +20,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     position: absolute;
     left: ${({ position }) => position === 'left' ? '-10px' : 'auto'};
     right: ${({ position }) => position === 'right' ? '0' : 'auto'};
-    top: calc(100% + 3px);
+    top: calc(100% + 2px);
     background-color: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
     z-index: 1;

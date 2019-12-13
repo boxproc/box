@@ -32,27 +32,47 @@ const Wrapper = styled.header<WrapperProps>`
   left: 0;
   width: 100%;
   min-height: 70px;
-  padding: ${({ currentPathname }) => currentPathname ? '5px 0 15px' : '10px 0'};
+  padding: 10px 0;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
   font-size: 13px;
   white-space: nowrap;
   z-index: 100;
 
-  .logo-wrapper {
-    position: relative;
-  }
-
   .logo {
     display: block;
     font-size: 0;
   }
 
+  .user {
+    position: relative;
+  }
+
+  ${({ currentPathname, theme }) => currentPathname && `
+    .user {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        right: 3px;
+        display: block;
+        width: 100%;
+        height: .5px;
+        background-image: linear-gradient(to right, hsla(0,0%,0%,0) 0,
+        ${theme.colors.lightGray} 50%);
+      }
+    }
+  `}
+
+  .user-main {
+    margin: 2px 0;
+  }
+
   .location {
     position: absolute;
-    left: 0;
+    right: 5px;
     top: 100%;
-    margin-top: 1px;
+    margin-top: 2px;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.gray};
     font-size: 11px;
@@ -115,10 +135,7 @@ const Header: React.FC<HeaderProps> = ({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Box
-              mr="15px"
-              className="logo-wrapper"
-            >
+            <Box mr="15px">
               <a
                 href={basePath}
                 aria-label="BOX UI"
@@ -126,14 +143,6 @@ const Header: React.FC<HeaderProps> = ({
               >
                 <img src={logo} width={62} alt="" />
               </a>
-              {currentPathname && (
-                <a
-                  href={`${basePath}${currentPathname}`}
-                  className="location"
-                >
-                  {currentPathname}
-                </a>
-              )}
             </Box>
             {uiItems && (
               <Navbar
@@ -144,8 +153,14 @@ const Header: React.FC<HeaderProps> = ({
               />
             )}
           </Flex>
-          <Box ml="50px">
-            <Flex alignItems="center">
+          <Box
+            ml="50px"
+            className="user"
+          >
+            <Flex
+              alignItems="center"
+              className="user-main"
+            >
               <Box mr="7px" fontSize="0px">
                 <HelpDropdown
                   location={location}
@@ -157,6 +172,14 @@ const Header: React.FC<HeaderProps> = ({
               )}
               <UserDropdown userLogout={userLogout} />
             </Flex>
+            {currentPathname && (
+              <a
+                href={`${basePath}${currentPathname}`}
+                className="location"
+              >
+                {currentPathname}
+              </a>
+            )}
           </Box>
         </Flex>
       </Container>

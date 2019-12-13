@@ -26,7 +26,6 @@ const StatementModal: React.FC<StatementModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Statement"
-      closeOnBackdrop={true}
       maxContainerWidth={1100}
       minContainerHeight={500}
     >
