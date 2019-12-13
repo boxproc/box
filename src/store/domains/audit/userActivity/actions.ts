@@ -80,9 +80,9 @@ export const handleFilterByIdAuditUserActivity: HandleFilterAuditUserById = id =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(filterAuditUserActivityById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`);
         dispatch(push(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`));
+        await dispatch(filterAuditUserActivityById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch

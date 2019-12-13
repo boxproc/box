@@ -61,9 +61,9 @@ export const handleFilterByIdAuditScheduledJobs: HandleFilterScheduledJobsById =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(filterScheduledJobsById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}`);
         dispatch(push(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}`));
+        await dispatch(filterScheduledJobsById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch

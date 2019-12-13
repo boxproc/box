@@ -62,9 +62,9 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(filterLedgerTransactionsById(id));
         cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
+        await dispatch(filterLedgerTransactionsById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch
