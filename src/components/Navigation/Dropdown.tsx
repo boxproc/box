@@ -23,7 +23,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     top: calc(100% + 2px);
     background-color: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
-    z-index: 1;
+    z-index: 11;
 
   ${({ position }) => position === 'center' && `
     transform: translateX(-50%);

@@ -15,6 +15,7 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
       // insert a space before all caps
       .replace(/([A-Z])/g, ' $1')
       // uppercase the first character
+      .toLocaleLowerCase()
       .replace(/^./, str => str.toUpperCase())
     )
     .join(columnDelimiter)
@@ -45,7 +46,7 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
   return result;
 };
 
-export const downloadCSV = (filename: string, data: Array<object>) => {
+export const downloadCSV = (fileName: string, data: Array<object>) => {
   let csv = convertArrayOfObjectsToCSV(data);
 
   if (csv && !csv.match(/^data:text\/csv/i)) {
@@ -56,6 +57,6 @@ export const downloadCSV = (filename: string, data: Array<object>) => {
 
   const link = document.createElement('a');
   link.setAttribute('href', encodedData);
-  link.setAttribute('download', filename);
+  link.setAttribute('download', `${fileName}.csv`);
   link.click();
 };

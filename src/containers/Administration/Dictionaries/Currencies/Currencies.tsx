@@ -31,6 +31,8 @@ export const Currencies: React.FC<CurrenciesProps> = ({
       title="Currencies"
       data={dictionaryCurrencies}
       columns={tableColumns}
+      isSearchable={true}
+      isDownloadButton={true}
     />
   );
 };

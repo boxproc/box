@@ -14,8 +14,8 @@ export const selectDictionaryCountries = createSelector(
     }
 
     return {
-      countryCode: item.country_code,
       numericCode: stringsUtil.padStartN(item.numeric_code, 3),
+      countryCode: item.country_code,
       name: item.name,
     };
   })

@@ -45,6 +45,8 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
       data={dictionaryEventDataElemsItems}
       columns={tableColumns}
       filterAction={filterDictionaryEventDataElems}
+      isSearchable={true}
+      isDownloadButton={true}
       FilterForm={
         <EventDataElemsFilter eventOptions={dictionaryEventsOptions} />
       }

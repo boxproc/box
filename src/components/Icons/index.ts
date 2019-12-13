@@ -17,6 +17,7 @@ import { Key as KeyIcon } from 'styled-icons/fa-solid/Key';
 import { User as UserIcon } from 'styled-icons/fa-solid/User';
 import { UserShield as UserShieldIcon } from 'styled-icons/fa-solid/UserShield';
 import { Qrcode as QrcodeIcon } from 'styled-icons/icomoon/Qrcode';
+import { Search as SearchIcon } from 'styled-icons/icomoon/Search';
 import { ArrowDropDown as ArrowDropDownIcon } from 'styled-icons/material/ArrowDropDown';
 import { Delete as DeleteIcon } from 'styled-icons/material/Delete';
 import { Refresh as RefreshIcon } from 'styled-icons/material/Refresh';
@@ -57,6 +58,7 @@ export {
   DownloadIcon,
   FileIcon,
   FileCsvIcon,
+  SearchIcon,
   CheckedRadioIcon,
   UncheckedRadioIcon,
 };

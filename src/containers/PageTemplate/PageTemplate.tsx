@@ -35,7 +35,8 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   filterData: object;
   setIsOpenFilter: SetIsOpenFilter;
   isOpenFilter: boolean;
-  isDownloadButton: boolean;
+  isDownloadButton?: boolean;
+  isSearchable?: boolean;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -57,8 +58,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     setIsOpenFilter,
     isOpenFilter,
     isDownloadButton,
+    isSearchable,
     ...pageTemplateProps
   } = props;
+
+  const [isFilterable, setIsFilterable] = React.useState(false);
 
   React.useEffect(
     () => {
@@ -79,6 +83,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const fileName = React.useMemo(
     () => title.split(' ').join('_').toLowerCase(),
     [title]
+  );
+
+  const isData = React.useMemo(
+    () => data.length,
+    [data]
   );
 
   const storedFilter = cookiesUtil.get(location.pathname);
@@ -136,10 +145,20 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             {AdditionalButton}
           </Box>
         )}
+        {isSearchable && (
+          <Box mr="20px">
+            <Button
+              text="Search"
+              disabled={!isData}
+              iconName={iconNamesConst.SEARCH}
+              onClick={() => setIsFilterable(!isFilterable)}
+            />
+          </Box>
+        )}
         {isDownloadButton && (
           <Dropdown
             selectable={false}
-            isDisabled={!data.length}
+            isDisabled={!isData}
             dropdownListPosition="center"
             ToggleButtonComponent={
               <Button
@@ -152,7 +171,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               <Button
                 text=".csv"
                 iconName={iconNamesConst.FILE_CSV}
-                onClick={() => downloadCSV(`${fileName}.csv`, data)}
+                onClick={() => downloadCSV(fileName, data)}
                 textTransformNone={true}
               />
             </DropdownOption>
@@ -178,6 +197,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
         <EditableTable
           data={data}
           columns={columns}
+          filterable={isFilterable}
           {...pageTemplateProps}
         />
       </Box>

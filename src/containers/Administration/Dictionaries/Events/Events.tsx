@@ -30,6 +30,7 @@ export const Events: React.FC<EventsProps> = ({
       title="Events"
       data={dictionaryEventsItems}
       columns={tableColumns}
+      isDownloadButton={true}
     />
   );
 };

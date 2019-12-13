@@ -87,7 +87,7 @@ const Root: React.FC<RootProps> = ({
   );
 
   const routes = React.useMemo(
-    () => pagesList && pagesList.map(page => {
+    () => !isRelogin && pagesList && pagesList.map(page => {
       return visibleUiItems
         && visibleUiItems.includes(page.path)
         && (
@@ -99,7 +99,7 @@ const Root: React.FC<RootProps> = ({
           />
         );
     }),
-    [visibleUiItems]
+    [visibleUiItems, isRelogin]
   );
 
   return (

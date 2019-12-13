@@ -31,6 +31,7 @@ export const TransactionTypes: React.FC<TransactionTypesProps> = ({
       title="Transaction Types"
       data={transactionTypes}
       columns={tableColumns}
+      isDownloadButton={true}
     />
   );
 };

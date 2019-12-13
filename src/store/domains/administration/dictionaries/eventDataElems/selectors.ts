@@ -17,11 +17,11 @@ export const selectDictionaryEventDataElemsItems = createSelector(
     const dataType = dataTypesOptions.find(el => el.value === item.data_type);
 
     return {
+      eventId: item.event_id,
       name: item.name,
       description: item.description,
-      eventId: item.event_id,
-      dataType: dataType && dataType.label,
       event: itemEvent && itemEvent.name,
+      dataType: dataType && dataType.label,
     };
   })
 );

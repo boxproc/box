@@ -14,6 +14,7 @@ import {
   PlusIcon,
   QrcodeIcon,
   RefreshIcon,
+  SearchIcon,
   ShortTextIcon,
   SmartphoneIcon,
   StopIcon,
@@ -54,6 +55,8 @@ export const renderIcon = (name: string, size?: string) => {
       return (<Box mt="-1px" mr="2px"><FileIcon size={size ? size : '14'} /></Box>);
     case iconNamesConst.FILE_CSV:
       return (<Box mt="-1px" mr="2px"><FileCsvIcon size={size ? size : '14'} /></Box>);
+    case iconNamesConst.SEARCH:
+      return (<Box mt="-1px" mr="2px"><SearchIcon size={size ? size : '12'} /></Box>);
     default:
       return null;
   }

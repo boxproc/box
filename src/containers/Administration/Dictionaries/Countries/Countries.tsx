@@ -31,6 +31,7 @@ export const Countries: React.FC<CountriesProps> = ({
       title="Countries"
       data={dictionaryCountries}
       columns={tableColumns}
+      isSearchable={true}
       isDownloadButton={true}
     />
   );

@@ -15,8 +15,8 @@ export const selectDictionaryCurrencies = createSelector(
     }
 
     return {
-      currencyCode: item.currency_code,
       numericCode: stringsUtil.padStartN(item.numeric_code, 3),
+      currencyCode: item.currency_code,
       name: item.name,
     };
   })
