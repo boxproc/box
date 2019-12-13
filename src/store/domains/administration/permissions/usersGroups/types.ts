@@ -3,20 +3,14 @@ import { IdNamePair, SelectValues } from 'types';
 
 interface InfoPlain extends IdNamePair { }
 
-export interface AdminUsersGroupInfoPlainResp extends InfoPlain {
-  institution_id: number | string;
-}
-
-export interface AdminUsersGroupInfoResp extends AdminUsersGroupInfoPlainResp {
-  institution_name: string;
-}
-
-export interface AdminUsersGroupInfoPlain extends AdminUsersGroupInfoResp {
+export interface AdminUsersGroupItem extends InfoPlain {
+  institutionId: number | string;
   institutionName: string;
 }
 
-export interface AdminUsersGroupInfo extends InfoPlain {
-  institutionId: number | string;
+export interface AdminUsersGroupItemResp extends InfoPlain {
+  institution_id: number | string;
+  institution_name: string;
 }
 
 export interface AdminUsersGroupInfoEditable extends InfoPlain {
@@ -24,7 +18,7 @@ export interface AdminUsersGroupInfoEditable extends InfoPlain {
 }
 
 export interface AdminUsersGroupDataResp {
-  users_group: Array<AdminUsersGroupInfoPlainResp>;
+  users_group: Array<AdminUsersGroupItemResp>;
 }
 
 export interface AdminUserGroupMember {
@@ -91,7 +85,7 @@ export interface AdminUserGroupMembersDelete {
 }
 
 export interface AdminUsersGroupState {
-  usersGroups: ImmutableArray<AdminUsersGroupInfoResp>;
+  usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
   userGroupMembers: ImmutableArray<AdminUserGroupMember>;
   allActiveUsers: ImmutableArray<AdminUserGroupMember>;
   groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;

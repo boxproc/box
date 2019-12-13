@@ -3,7 +3,7 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
   const columnDelimiter = ',';
   const lineDelimiter = '\n';
 
-  if (data === null || !data.length) {
+  if (!data || !data.length) {
     return null;
   }
 
@@ -33,7 +33,11 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
         result += item[key].replace(/,/g, ' ').replace(/\n/g, ' ');
       } else if (item[key] === null || item[key] === undefined) {
         result += '';
-      } else {
+      } else if (item[key] === false) {
+        result += 'N';
+      } else if (item[key] === true) {
+        result += 'Y';
+      }  else {
         result += item[key];
       }
 

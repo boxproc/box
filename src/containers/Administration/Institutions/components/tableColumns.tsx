@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TableCell, TableHeader } from 'components';
+import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { AdminInstitutionsItemPrepared } from 'store/domains';
 
@@ -63,5 +63,12 @@ export const tableColumns = [
         value={props.value}
       />
     ),
+  },
+  {
+    maxWidth: 130,
+    sortable: true,
+    Header: <TableHeader title="Master Institution" />,
+    accessor: 'masterInstitutionFlag',
+    Cell: renderCheckBoxTableCell(),
   },
 ];

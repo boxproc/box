@@ -76,6 +76,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
       editModalName={modalNamesConst.EDIT_ENDPOINT}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminEndpoint}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
       }}

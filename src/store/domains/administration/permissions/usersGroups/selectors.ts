@@ -25,10 +25,18 @@ export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
   items => items && items.map(item => {
 
+    const {
+      id,
+      name,
+      institution_id,
+      institution_name,
+    } = item;
+
     return {
-      ...item,
-      institutionId: item.institution_id,
-      institutionName: item.institution_name,
+      id,
+      institutionName: institution_name,
+      name,
+      institutionId: institution_id,
     };
   })
 );

@@ -165,6 +165,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       editModalName={modalNamesConst.EDIT_SCHEDULER}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSchedulerJobs}
+      isDownloadButton={true}
       FilterForm={
         <SchedulerFilter />
       }

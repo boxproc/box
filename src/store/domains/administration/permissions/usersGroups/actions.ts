@@ -25,7 +25,7 @@ import {
   AdminUserGroupMembersDelete,
   AdminUserGroupMembersDeleteResp,
   AdminUsersGroupInfoEditable,
-  AdminUsersGroupInfoPlainResp,
+  AdminUsersGroupItem,
 } from './types';
 
 import { Thunk, VoidPromiseThunk } from 'types';
@@ -60,7 +60,7 @@ export type DeleteAdminGroupPermissions = (groupId: number, uiItem: string) =>
   DeleteAdminGroupPermissionsAction;
 export type HandleDeleteAdminGroupPermissions = (groupId: number, uiItem: string) => Thunk<void>;
 
-export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
+export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupItem>) =>
   AddAdminUsersGroupAction;
 export type HandleAddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
@@ -75,7 +75,7 @@ export type AddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItem
 export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemEditable>) =>
   Thunk<void>;
 
-export type UpdateAdminUsersGroup = (values: Partial<AdminUsersGroupInfoPlainResp>) =>
+export type UpdateAdminUsersGroup = (values: Partial<AdminUsersGroupItem>) =>
   UpdateAdminUsersGroupAction;
 export type HandleUpdateAdminUsersGroup = (values: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;

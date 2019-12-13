@@ -67,6 +67,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       title="System Properties"
       data={adminSysPropsItems}
       columns={tableColumns}
+      isDownloadButton={true}
       newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
       editModalName={modalNamesConst.EDIT_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}

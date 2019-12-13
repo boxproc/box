@@ -16,10 +16,7 @@ export const selectUserEditorItems = createSelector(
   (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return {
-      ...prepareAdminUserDataToRender(item),
-      userInstitution: institution && institution.label,
-    };
+    return prepareAdminUserDataToRender(item, institution);
   })
 );
 
@@ -34,7 +31,7 @@ export const selectUsersDetails = createSelector(
     return {
       ...prepareAdminUserDataToRender(current),
       status: current && statusTypes2faLoginOptions.find(el => el.value === current.status),
-      userInstitution: institution,
+      institution,
     };
   }
 );

@@ -6,6 +6,8 @@ import {
   AdminEndpointItemPrepared,
 } from './types';
 
+import { SelectValues } from 'types';
+
 export const preparedFilterToSend = (params: Partial<AdminEndpointFilter>) => {
   if (!params) {
     return null;
@@ -36,7 +38,10 @@ export const preparedValuesToSend = (values: Partial<AdminEndpointItemDetailsPre
   };
 };
 
-export const preparedValuesToRender = (values: Partial<AdminEndpointItem>) => {
+export const preparedValuesToRender = (
+  values: Partial<AdminEndpointItem>,
+  institution?: SelectValues
+) => {
   if (!values) {
     return null;
   }
@@ -45,12 +50,13 @@ export const preparedValuesToRender = (values: Partial<AdminEndpointItem>) => {
 
   return {
     id: values.id,
+    institutionId: institution && institution.label,
     name: values.name,
-    status: status && status.label,
-    type: type && type.label,
     port: values.port,
     privateKeyLocation: values.private_key_location,
     logFileLocation: values.log_file_location,
+    status: status && status.label,
+    type: type && type.label,
     connectionAttributes: values.connection_attributes,
   };
 };

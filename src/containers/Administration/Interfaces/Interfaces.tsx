@@ -76,6 +76,7 @@ const Interfaces: React.FC<AccountsProps> = ({
       editModalName={modalNamesConst.EDIT_INTERFACE}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminInterface}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
       }}

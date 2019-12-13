@@ -2,11 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminUsersGroupInfoPlain } from 'store/domains';
+import { AdminUsersGroupItem } from 'store/domains';
 
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof AdminUsersGroupInfoPlain> = TableCellType<AdminUsersGroupInfoPlain[T]>;
+type TCell<T extends keyof AdminUsersGroupItem> = TableCellType<AdminUsersGroupItem[T]>;
 
 export const tableColumns = [
   {

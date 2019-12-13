@@ -63,6 +63,7 @@ export const Users: React.FC<UsersProps> = ({
       newModalName={modalNamesConst.ADD_USER}
       editModalName={modalNamesConst.EDIT_USER}
       filterAction={filterUsers}
+      isDownloadButton={true}
       initialFilterValues={{
         statusActiveFlag: false,
         institutionId: institutionsOptions[0],

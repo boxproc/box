@@ -55,6 +55,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
       title="Institutions"
       data={adminInstitutions}
       columns={tableColumns}
+      isDownloadButton={true}
       newModalName={modalNamesConst.ADD_INSTITUTION}
       editModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}

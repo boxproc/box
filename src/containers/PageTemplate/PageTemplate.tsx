@@ -140,11 +140,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             />
           </Box>
         )}
-        {AdditionalButton && (
-          <Box mr="20px">
-            {AdditionalButton}
-          </Box>
-        )}
         {isSearchable && (
           <Box mr="20px">
             <Button
@@ -155,27 +150,10 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             />
           </Box>
         )}
-        {isDownloadButton && (
-          <Dropdown
-            selectable={false}
-            isDisabled={!isData}
-            dropdownListPosition="center"
-            ToggleButtonComponent={
-              <Button
-                text="Download"
-                iconName={iconNamesConst.DOWNLOAD}
-              />
-            }
-          >
-            <DropdownOption>
-              <Button
-                text=".csv"
-                iconName={iconNamesConst.FILE_CSV}
-                onClick={() => downloadCSV(fileName, data)}
-                textTransformNone={true}
-              />
-            </DropdownOption>
-          </Dropdown>
+        {AdditionalButton && (
+          <Box mr="20px">
+            {AdditionalButton}
+          </Box>
         )}
         {isAutoRefresh && (
           <Box ml="25px">
@@ -190,6 +168,30 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 />
               </Box>
             </Flex>
+          </Box>
+        )}
+        {isDownloadButton && (
+          <Box mr="20px">
+            <Dropdown
+              selectable={false}
+              isDisabled={!isData}
+              dropdownListPosition="center"
+              ToggleButtonComponent={
+                <Button
+                  text="Download"
+                  iconName={iconNamesConst.DOWNLOAD}
+                />
+              }
+            >
+              <DropdownOption>
+                <Button
+                  text=".csv"
+                  iconName={iconNamesConst.FILE_CSV}
+                  onClick={() => downloadCSV(fileName, data)}
+                  textTransformNone={true}
+                />
+              </DropdownOption>
+            </Dropdown>
           </Box>
         )}
       </Flex>

@@ -14,10 +14,7 @@ export const selectAdminInterface = createSelector(
   (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return {
-      ...preparedValuesToRender(item),
-      institutionId: institution && institution.label,
-    };
+    return preparedValuesToRender(item, institution);
   })
 );
 

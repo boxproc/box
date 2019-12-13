@@ -5,6 +5,8 @@ import {
   AdminInterfaceItemDetailsPrepared,
 } from './types';
 
+import { SelectValues } from 'types';
+
 export const preparedFilterToSend = (params: Partial<AdminInterfaceFilter>) => {
   if (!params) {
     return null;
@@ -36,7 +38,10 @@ export const preparedValuesToSend = (values: Partial<AdminInterfaceItemDetailsPr
   };
 };
 
-export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
+export const preparedValuesToRender = (
+  values: Partial<AdminInterfaceItem>,
+  institution?: SelectValues
+) => {
   if (!values) {
     return null;
   }
@@ -47,12 +52,13 @@ export const preparedValuesToRender = (values: Partial<AdminInterfaceItem>) => {
 
   return {
     id: values.id,
+    institutionId: institution && institution.label,
     name: values.name,
+    url: values.url,
+    privateKeyLocation: values.private_key_location,
     status: status && status.label,
     type: type && type.label,
-    url: values.url,
     protocolType: protocolType && protocolType.label,
-    privateKeyLocation: values.private_key_location,
     connectionAttributes: values.connection_attributes,
     logFileLocation: values.log_file_location,
   };

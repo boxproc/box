@@ -12,22 +12,24 @@ import {
   AdminSchedulerJobActionPrepared
 } from './types';
 
+import { SelectValues } from 'types';
+
 export const prepareValuesToSend = (values: Partial<AdminSchedulerEditableItem>) => {
-    return {
-      id: values.id,
-      name: values.name,
-      description: values.description,
-      cron_expression: values.cronExpression,
-      executable: values.executable,
-      log_location: values.logLocation,
-      last_execution_datetime: values.lastExecutionDatetime,
-      last_execution_result: values.lastExecutionResult && values.lastExecutionResult.value,
-      institution_id: values.institutionId && values.institutionId.value,
-      executable_type: values.institutionId && values.executableType.value,
-      status: values.status && values.status.value,
-      parameters: values.parameters,
-    };
+  return {
+    id: values.id,
+    name: values.name,
+    description: values.description,
+    cron_expression: values.cronExpression,
+    executable: values.executable,
+    log_location: values.logLocation,
+    last_execution_datetime: values.lastExecutionDatetime,
+    last_execution_result: values.lastExecutionResult && values.lastExecutionResult.value,
+    institution_id: values.institutionId && values.institutionId.value,
+    executable_type: values.institutionId && values.executableType.value,
+    status: values.status && values.status.value,
+    parameters: values.parameters,
   };
+};
 export const prepareValuesToSendActions =
   (values: AdminSchedulerJobActionPrepared) => {
     return {
@@ -36,7 +38,7 @@ export const prepareValuesToSendActions =
     };
   };
 
-export const prepareValuesToRender = (item: AdminSchedulerItem) => {
+export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: SelectValues) => {
   if (!item) {
     return null;
   }
@@ -48,15 +50,16 @@ export const prepareValuesToRender = (item: AdminSchedulerItem) => {
 
   return {
     id: item.id,
+    institutionId: institution && institution.label,
     name: item.name,
     description: item.description,
-    cronExpression: item.cron_expression,
-    executable: item.executable,
-    logLocation: item.log_location,
+    status: status && status.label,
     lastExecutionDatetime: item.last_execution_datetime,
     lastExecutionResult: lastExecutionResult && lastExecutionResult.label,
-    status: status && status.label,
+    cronExpression: item.cron_expression,
     executableType: executableType && executableType.label,
+    executable: item.executable,
+    logLocation: item.log_location,
     parameters: item.parameters,
   };
 };

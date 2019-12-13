@@ -30,12 +30,12 @@ export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
 
 export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
   status: string | number;
-  userInstitution: string | number;
+  institution: string | number;
 }
 
 export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
   status: SelectValues;
-  userInstitution: SelectValues;
+  institution: SelectValues;
   password: string;
 }
 

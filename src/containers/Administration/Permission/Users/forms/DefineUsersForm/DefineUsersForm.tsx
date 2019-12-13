@@ -154,8 +154,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
-              id="userInstitution"
-              name="userInstitution"
+              id="institution"
+              name="institution"
               placeholder="Select Institution"
               component={SelectField}
               label="Institution"

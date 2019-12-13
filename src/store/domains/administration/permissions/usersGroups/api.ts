@@ -5,7 +5,7 @@ import { apiClient } from 'services';
 import {
   AdminGroupPermissionItemResp,
   AdminUserGroupMembersDeleteResp,
-  AdminUsersGroupInfoPlainResp,
+  AdminUsersGroupItemResp,
 } from './types';
 
 export const getAdminUsersGroup = () =>
@@ -31,10 +31,10 @@ export const getAdminUserGroupPermissions = (id: number) =>
     data: { user_group_id: id },
   });
 
-export const addAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
+export const addAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
   apiClient.post(adminUserGroupsPathNames.CREATE_USERS_GROUP, { data });
 
-export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupInfoPlainResp>) =>
+export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
   apiClient.post(adminUserGroupsPathNames.UPDATE_USERS_GROUP, { data });
 
 export const deleteAdminUserGroupMembers = (groupId: number, userId: number) =>
