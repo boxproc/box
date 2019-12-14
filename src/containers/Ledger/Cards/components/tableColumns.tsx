@@ -72,8 +72,8 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Status" />,
-    accessor: 'cardStatusName',
-    Cell: (props: TCell<'cardStatusName'>) => (
+    accessor: 'status',
+    Cell: (props: TCell<'status'>) => (
       <TableCell
         value={props.value}
       />

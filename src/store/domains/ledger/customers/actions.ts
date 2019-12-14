@@ -26,7 +26,7 @@ import {
   LedgerCustomersFilterPrepared,
   LedgerId,
 } from './types';
-import { preparedFilterToSend, preparedValuesToSend } from './utils';
+import { preparedDataToSend, preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
@@ -102,7 +102,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
@@ -121,7 +121,7 @@ export const handleUpdateLedgerCustomer: HandleUpdateLedgerCustomer = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
 
         await dispatch(updateLedgerCustomers(preparedValues));
         await dispatch(handleFilterLedgerCustomers());

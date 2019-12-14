@@ -5,6 +5,8 @@ import {
   LedgerCustomersFilter,
 } from './types';
 
+import { SelectValues } from 'types';
+
 export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => {
   if (!params) {
     return null;
@@ -20,74 +22,80 @@ export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => 
   };
 };
 
-export const preparedValuesToSend = (values: Partial<LedgerCustomerItemDetailsPrepared>) => {
-  if (!values) {
+export const preparedDataToSend = (data: Partial<LedgerCustomerItemDetailsPrepared>) => {
+  if (!data) {
     return null;
   }
 
   return {
-    id: values.id,
-    status: values.status && values.status.value,
-    email: values.email,
-    institution_id: values.institutionId.value,
-    first_name: values.firstName,
-    last_name: values.lastName,
-    date_of_birth: values.dateOfBirth,
-    mobile_phone_number: values.mobilePhoneNumber,
-    address_line1: values.addressLine1,
-    address_line2: values.addressLine2,
-    address_line3: values.addressLine3,
-    address_line4: values.addressLine4,
-    address_town: values.addressTown,
-    address_post_code: values.addressPostCode,
-    address_country_code: values.addressCountryCode && values.addressCountryCode.value,
-    nationality_country_code: values.nationalityCountryCode && values.nationalityCountryCode.value,
-    date_created: values.dateCreated,
-    date_closed: values.dateClosed,
-    identification_type: values.identificationType && values.identificationType.value,
-    identification_number: values.identificationNumber ? values.identificationNumber : null ,
+    id: data.id,
+    status: data.status && data.status.value,
+    email: data.email,
+    institution_id: data.institutionId.value,
+    first_name: data.firstName,
+    last_name: data.lastName,
+    date_of_birth: data.dateOfBirth,
+    mobile_phone_number: data.mobilePhoneNumber,
+    address_line1: data.addressLine1,
+    address_line2: data.addressLine2,
+    address_line3: data.addressLine3,
+    address_line4: data.addressLine4,
+    address_town: data.addressTown,
+    address_post_code: data.addressPostCode,
+    address_country_code: data.addressCountryCode && data.addressCountryCode.value,
+    nationality_country_code: data.nationalityCountryCode && data.nationalityCountryCode.value,
+    date_created: data.dateCreated,
+    date_closed: data.dateClosed,
+    identification_type: data.identificationType && data.identificationType.value,
+    identification_number: data.identificationNumber ? data.identificationNumber : null,
   };
 };
 
-export const prepareValuesToRender = (values: Partial<LedgerCustomerItem>) => {
-  if (!values) {
+export const prepareDataToRender = (
+  data: Partial<LedgerCustomerItem>,
+  institution?: SelectValues
+) => {
+  if (!data) {
     return null;
   }
 
-  const status = customerStatusTypesOptions.find(el => el.value === values.status);
+  const status = customerStatusTypesOptions.find(el => el.value === data.status);
 
   return {
-    id: values.id,
-    firstName: values.first_name,
-    lastName: values.last_name,
+    id: data.id,
+    institutionId: institution && institution.label,
+    firstName: data.first_name,
+    lastName: data.last_name,
     status: status && status.label,
-    dateOfBirth: values.date_of_birth,
-    email: values.email,
-    mobilePhoneNumber: values.mobile_phone_number,
-    addressLine1: values.address_line1,
-    addressLine2: values.address_line2,
-    addressLine3: values.address_line3,
-    addressLine4: values.address_line4,
-    addressTown: values.address_town,
-    addressPostCode: values.address_post_code,
-    dateCreated: values.date_created,
-    dateClosed: values.date_closed,
+    dateOfBirth: data.date_of_birth,
+    email: data.email,
+    mobilePhoneNumber: data.mobile_phone_number,
+    addressCountryCode: data.address_country_code,
+    nationalityCountryCode: data.nationality_country_code,
+    addressLine1: data.address_line1,
+    addressLine2: data.address_line2,
+    addressLine3: data.address_line3,
+    addressLine4: data.address_line4,
+    addressTown: data.address_town,
+    addressPostCode: data.address_post_code,
+    dateCreated: data.date_created,
+    dateClosed: data.date_closed,
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<LedgerCustomerItem>) => {
-  if (!values) {
+export const preparedDataDetailsToRender = (data: Partial<LedgerCustomerItem>) => {
+  if (!data) {
     return null;
   }
   const identificationType =
-    identificationTypesOptions.find(el => el.value === values.identification_type);
+    identificationTypesOptions.find(el => el.value === data.identification_type);
   return {
-    ...prepareValuesToRender(values),
-    status: customerStatusTypesOptions.find(el => el.value === values.status),
+    ...prepareDataToRender(data),
+    status: customerStatusTypesOptions.find(el => el.value === data.status),
     identification_type:
-      identificationTypesOptions.find(el => el.value === values.identification_type),
+      identificationTypesOptions.find(el => el.value === data.identification_type),
     identificationType,
-    identificationNumber: values.identification_number,
+    identificationNumber: data.identification_number,
 
   };
 };

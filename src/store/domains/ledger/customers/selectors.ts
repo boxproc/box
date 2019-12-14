@@ -5,7 +5,7 @@ import { StoreState } from 'store/StoreState';
 import { selectCountryCodesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
-import { preparedValuesDetailsToRender, prepareValuesToRender } from './utils';
+import { prepareDataToRender, preparedDataDetailsToRender } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
   state.ledger.customers.customers;
@@ -15,15 +15,9 @@ export const selectLedgerCustomers = createSelector(
   selectInstitutionsOptions,
   selectCountryCodesOptions,
   (items, institutions, countries) => items && items.asMutable().map(item => {
-
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return {
-      ...prepareValuesToRender(item),
-      institutionId: institution && institution.label,
-      addressCountryCode: countries.find(el => el.value === item.address_country_code),
-      nationalityCountryCode: countries.find(el => el.value === item.address_country_code),
-    };
+    return prepareDataToRender(item, institution);
   })
 );
 
@@ -39,11 +33,17 @@ export const selectLedgerCurrentCustomer = createSelector(
       return null;
     }
 
+    const institutionId = institutions.find(el => el.value === current.institution_id);
+    const addressCountryCode = countries
+      && countries.find(el => el.value === current.address_country_code);
+    const nationalityCountryCode = countries
+      && countries.find(el => el.value === current.nationality_country_code);
+
     return {
-      ...preparedValuesDetailsToRender(current),
-      institutionId: institutions.find(el => el.value === current.institution_id),
-      addressCountryCode: countries.find(el => el.value === current.address_country_code),
-      nationalityCountryCode: countries.find(el => el.value === current.address_country_code),
+      ...preparedDataDetailsToRender(current),
+      institutionId,
+      addressCountryCode,
+      nationalityCountryCode,
     };
   }
 );

@@ -11,18 +11,14 @@ export interface AuditUserActivityItemResp extends PlainInfo {
   user_id: number;
   api_name: string;
   event_datetime: string;
-  institution_id: number;
   first_name: string;
   last_name: string;
 }
 
 export interface AuditUserActivityItem extends PlainInfo {
-  institutionId: number;
   userId: number;
   apiName: string;
   eventDatetime: string;
-  firstName: string;
-  lastName: string;
 }
 
 export interface AuditUserActivityFilter {
@@ -37,10 +33,6 @@ export interface AuditUserActivityFilterPrepared {
   username: string | number;
   datetime_from: string;
   datetime_to: string;
-}
-
-export interface AuditUserActivitySelectInstitution {
-  institution_id: number | string;
 }
 
 export interface AuditUserActivitySelectInstitutionResponse {

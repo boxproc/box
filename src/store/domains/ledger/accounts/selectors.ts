@@ -24,10 +24,7 @@ export const selectLedgerAccounts = createSelector(
   (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return {
-      ...prepareDataToRender(item),
-      institutionId: institution && institution.label,
-    };
+    return prepareDataToRender(item, institution);
   })
 );
 

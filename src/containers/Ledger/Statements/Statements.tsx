@@ -96,6 +96,7 @@ const Statements: React.FC<StatementsProps> = ({
       editModalName={modalNamesConst.LEDGER_STATEMENTS}
       filterAction={filterLedgerStatements}
       contextMenuItems={contextMenuItems}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
         statementsDateFrom: dateFrom,

@@ -36,7 +36,7 @@ export interface LedgerStatementItemPrepared {
   minimumAmountDueRepayment: string | number;
   repaymentStatus: string;
   dateOfLastUpdate: string;
-  statementCycleName: string;
+  statementCycle: string;
   accountAlias: string;
   institutionId: string | number;
   productName: string;

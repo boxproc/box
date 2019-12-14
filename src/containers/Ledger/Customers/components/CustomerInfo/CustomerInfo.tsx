@@ -12,8 +12,6 @@ import {
   maskFormat
 } from 'consts';
 
-import { HandleGetDictionaryCountries } from 'store/domains';
-
 import { SelectValues } from 'types';
 
 import { formErrorUtil } from 'utils';
@@ -22,7 +20,6 @@ interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   isEditMode?: boolean;
   isIdentification: boolean;
-  loadCountryCodes: HandleGetDictionaryCountries;
   countryCodes: Array<SelectValues>;
   isCountryCodesLoading: boolean;
 }
@@ -32,18 +29,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   countryCodes,
   isEditMode = false,
   isIdentification,
-  loadCountryCodes,
   isCountryCodesLoading,
 }) => {
-  React.useEffect(
-    () => {
-      if (!countryCodes.length) {
-        loadCountryCodes();
-      }
-    },
-    [loadCountryCodes, countryCodes]
-  );
-
   return (
     <Box mx="-10px">
       <Flex

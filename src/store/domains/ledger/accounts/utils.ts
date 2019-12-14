@@ -6,6 +6,7 @@ import {
   LedgerAccountsFilter,
 } from './types';
 
+import { SelectValues } from 'types';
 import { stringsUtil } from 'utils';
 
 export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
@@ -125,7 +126,10 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
   };
 };
 
-export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
+export const prepareDataToRender = (
+  data: Partial<LedgerAccountItem>,
+  institution?: SelectValues
+) => {
   if (!data) {
     return null;
   }
@@ -185,6 +189,7 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
 
   return {
     id,
+    institutionId: institution && institution.label,
     status: currentStatus && currentStatus.label,
     accountAlias: account_alias,
     accountAliasAdditional: account_alias_additional,
@@ -211,6 +216,7 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     dateClosed: date_closed,
     statementCycle: statement_cycle_description,
     lastCycleDate: last_cycle_date,
+    currencyCode: currency_code,
     auxCounter1: stringsUtil.checkNumberToFixed(aux_counter_1) && aux_counter_1.toFixed(2),
     auxCounter2: stringsUtil.checkNumberToFixed(aux_counter_2) && aux_counter_2.toFixed(2),
     auxCounter3: stringsUtil.checkNumberToFixed(aux_counter_3) && aux_counter_3.toFixed(2),
@@ -249,7 +255,6 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     numberOfTimesOverdue5Cycles: number_of_times_overdue_5_cycle,
     numberOfTimesOverdue6Cycles: number_of_times_overdue_6_cycle,
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
-    currencyCode: currency_code,
   };
 };
 export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsItem>) => {

@@ -20,7 +20,7 @@ export interface LedgerCardItemPrepared {
   panMasked: string;
   expiryDate: string;
   accountId: number;
-  cardStatusName: string;
+  status: string;
 }
 
 export interface LedgerCardsFilter {

@@ -45,6 +45,7 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       columns={tableColumns}
       editModalName={modalNamesConst.AUDIT_API_CALL}
       filterAction={filterAuditApiCalls}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
         apiCallsDateTimeFrom: dateTimeFrom,

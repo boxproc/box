@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
-import { preparedValuesToRender } from './utils';
+import { preparedDataToRender } from './utils';
 
 export const selectDefaultAuditUsers = (state: StoreState) =>
   state.audit.userActivity.usersActivity.asMutable();
@@ -27,10 +27,5 @@ export const selectAuditUsers = createSelector(
 
 export const selectAuditUserActivity = createSelector(
   selectDefaultAuditUserActivity,
-  items => items && items.map(item => {
-    return {
-      ...preparedValuesToRender(item),
-      username: `${item.first_name} ${item.last_name}`,
-    };
-  })
+  items => items && items.map(item => preparedDataToRender(item))
 );

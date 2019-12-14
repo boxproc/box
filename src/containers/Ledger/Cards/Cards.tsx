@@ -85,6 +85,7 @@ const Cards: React.FC<CardsProps> = ({
       editModalName={modalNamesConst.INFO_LEDGER_CARDS}
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCards}
+      isDownloadButton={true}
       FilterForm={
         <CardsFilter />
       }

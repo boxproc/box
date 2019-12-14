@@ -1,18 +1,31 @@
 import { ApiCallsItem, AuditApiCallsFilter } from './types';
 
-export const prepareValuesToRender = (values: ApiCallsItem) => {
+import { SelectValues } from 'types';
+
+export const prepareValuesToRender = (values: ApiCallsItem, institution?: SelectValues) => {
   if (!values) {
     return null;
   }
 
+  const {
+    id,
+    endpoint_id,
+    endpoint_name,
+    event_datetime,
+    api_name,
+    request_body,
+    response_body,
+  } = values;
+
   return {
-    id: values.id,
-    eventDatetime: values.event_datetime,
-    endpointId: values.endpoint_id,
-    endpointName: values.endpoint_name,
-    apiName: values.api_name,
-    responseBody: values.response_body,
-    requestBody: values.request_body,
+    id,
+    institutionId: institution && institution.label,
+    endpointId: endpoint_id,
+    endpointName: endpoint_name,
+    eventDatetime: event_datetime,
+    apiName: api_name,
+    requestBody: request_body,
+    responseBody: response_body,
   };
 };
 

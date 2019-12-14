@@ -104,6 +104,7 @@ const Customers: React.FC<CustomersProps> = ({
       editModalName={modalNamesConst.EDIT_LEDGER_CUSTOMER}
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCustomers}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
       }}

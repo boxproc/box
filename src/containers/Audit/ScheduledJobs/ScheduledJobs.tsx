@@ -70,6 +70,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       title="Scheduled Jobs"
       data={auditScheduledJobs}
       columns={tableColumns}
+      isDownloadButton={true}
       filterAction={filterAuditScheduledJobs}
       contextMenuItems={contextMenuItems}
       initialFilterValues={{

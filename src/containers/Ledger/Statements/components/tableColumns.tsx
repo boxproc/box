@@ -167,7 +167,7 @@ export const tableColumns = [
     sortable: true,
     Header: <TableHeader title="Statement Cycle" />,
     accessor: 'statementCycle',
-    Cell: (props: TCell<'statementCycleName'>) => (
+    Cell: (props: TCell<'statementCycle'>) => (
       <TableCell
         value={props.value}
       />

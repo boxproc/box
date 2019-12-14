@@ -144,6 +144,7 @@ const Accounts: React.FC<AccountsProps> = ({
       editableItemName="account"
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}
+      isDownloadButton={true}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
       }}

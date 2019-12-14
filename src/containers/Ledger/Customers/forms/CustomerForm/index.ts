@@ -12,8 +12,10 @@ import {
   createLoadingSelector,
   handleAddLedgerCustomer,
   handleDeleteLedgerCustomer,
+  handleGetDictionaryCountries,
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
+  selectCountryCodesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
 } from 'store/domains';
@@ -30,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
   ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
+  countryCodes: selectCountryCodesOptions(state),
   identificationTypeValue: formSelector(
     state,
     'identificationType'
@@ -41,6 +44,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     addLedgerCustomer: handleAddLedgerCustomer,
     deleteLedgerCustomer: handleDeleteLedgerCustomer,
     updateLedgerCustomer: handleUpdateLedgerCustomer,
+    loadCountryCodes: handleGetDictionaryCountries,
   },
   dispatch
 );

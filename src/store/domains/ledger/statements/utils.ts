@@ -13,9 +13,13 @@ import {
   LedgerStatementTransactionsItem
 } from './types';
 
+import { SelectValues } from 'types';
 import { stringsUtil } from 'utils';
 
-export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
+export const prepareDataToRender = (
+  data: Partial<LedgerStatementItem>,
+  institution?: SelectValues
+) => {
   if (!data) {
     return null;
   }
@@ -43,7 +47,12 @@ export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
 
   return {
     id,
+    institutionId: institution && institution.label,
+    productName: product_name,
     accountId: account_id,
+    accountAlias: account_alias,
+    firstName: first_name,
+    lastName: last_name,
     firstTransactionId: first_transaction_id,
     lastTransactionId: last_transaction_id,
     statementDate: statement_date,
@@ -51,13 +60,9 @@ export const prepareDataToRender = (data: Partial<LedgerStatementItem>) => {
     balanceClose: stringsUtil.checkNumberToFixed(balance_close) && balance_close.toFixed(2),
     minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
       && minimum_amount_due_repayment.toFixed(2),
-    statementCycleName: statement_cycle_description,
+    statementCycle: statement_cycle_description,
     repaymentStatus: repaymentStatus && repaymentStatus.label,
     dateOfLastUpdate: date_of_last_update,
-    accountAlias: account_alias,
-    productName: product_name,
-    firstName: first_name,
-    lastName: last_name,
   };
 };
 

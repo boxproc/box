@@ -11,6 +11,7 @@ import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
   HandleAddLedgerCustomer,
   HandleDeleteLedgerCustomer,
+  HandleGetDictionaryCountries,
   HandleUpdateLedgerCustomer,
 } from 'store/domains';
 
@@ -24,6 +25,8 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   ledgerCurrentCustomerName: string;
   identificationTypeValue: SelectValues;
   isEditMode?: boolean;
+  loadCountryCodes: HandleGetDictionaryCountries;
+  countryCodes: Array<SelectValues>;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &
@@ -40,7 +43,18 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   ledgerCurrentCustomerName,
   isEditMode,
   identificationTypeValue,
+  loadCountryCodes,
+  countryCodes,
 }) => {
+  React.useEffect(
+    () => {
+      if (!countryCodes.length) {
+        loadCountryCodes();
+      }
+    },
+    [loadCountryCodes, countryCodes]
+  );
+
   const submitAction = React.useMemo(
     () => isEditMode ? updateLedgerCustomer : addLedgerCustomer,
     [isEditMode, updateLedgerCustomer, addLedgerCustomer]
@@ -60,6 +74,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <CustomerInfo
+        countryCodes={countryCodes}
         isEditMode={isEditMode}
         isIdentification={isIdentification}
       />

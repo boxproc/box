@@ -130,8 +130,8 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
-              id="statementCycleName"
-              name="statementCycleName"
+              id="statementCycle"
+              name="statementCycle"
               component={InputField}
               label="Statement Cycle"
               readOnly={true}

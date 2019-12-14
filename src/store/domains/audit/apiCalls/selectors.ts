@@ -15,10 +15,7 @@ export const selectAuditApiCalls = createSelector(
   (items, institutionsOptions) => items && items.asMutable().map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
-    return {
-      ...prepareValuesToRender(item),
-      institutionId: institution && institution.label,
-    };
+    return prepareValuesToRender(item, institution);
   })
 );
 

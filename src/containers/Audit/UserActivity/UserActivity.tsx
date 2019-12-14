@@ -45,6 +45,7 @@ const UserActivity: React.FC<UserActivityProps> = ({
       title="User Activity"
       data={auditUserActivity}
       columns={tableColumns}
+      isDownloadButton={true}
       filterAction={filterAuditUserActivity}
       initialFilterValues={{
         institutionId: institutionsOptions[0],

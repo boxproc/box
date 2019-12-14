@@ -46,8 +46,6 @@ export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain
   addressLine4: string;
   addressTown: string;
   addressPostCode: string;
-  addressCountryCode: SelectValues;
-  nationalityCountryCode: SelectValues;
   dateCreated: string;
   dateClosed: string;
   identificationNumber?: number;
@@ -57,12 +55,16 @@ export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepa
   institutionId: string | number;
   status: string | number;
   identificationType?: string | number;
+  addressCountryCode: string | number;
+  nationalityCountryCode: string | number;
 }
 
 export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPlainPrepared {
   institutionId: SelectValues;
   status: SelectValues;
   identificationType: SelectValues;
+  addressCountryCode: SelectValues;
+  nationalityCountryCode: SelectValues;
 }
 
 export interface LedgerCustomersFilter extends LedgerCustomerId {
