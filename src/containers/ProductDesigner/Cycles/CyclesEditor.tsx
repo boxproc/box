@@ -58,6 +58,7 @@ export const CyclesEditor: React.FC<CycleEditorProps> = ({
       title="Cycles"
       data={cyclesEditorItems}
       columns={cycleEditorColumns}
+      isDownloadButton={true}
       newModalName={modalNamesConst.ADD_CYCLE_EDITOR}
       editModalName={modalNamesConst.EDIT_CYCLE_EDITOR}
       contextMenuItems={contextMenuItems}

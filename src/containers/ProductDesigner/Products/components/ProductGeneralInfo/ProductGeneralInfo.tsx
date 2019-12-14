@@ -164,8 +164,8 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
         </Box>
         <Box width={[2 / 15]} p="10px">
           <Field
-            id="historyRetentionNumberOfDay"
-            name="historyRetentionNumberOfDay"
+            id="historyRetentionNumberOfDays"
+            name="historyRetentionNumberOfDays"
             placeholder="Enter # of Days"
             component={InputField}
             label="Retention # of Days"

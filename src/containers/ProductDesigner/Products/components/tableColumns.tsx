@@ -103,8 +103,8 @@ export const tableColumns = [
     maxWidth: 120,
     sortable: true,
     Header: <TableHeader title="History Retention Number of Days" />,
-    accessor: 'historyRetentionNumberOfDay',
-    Cell: (props: TCell<'historyRetentionNumberOfDay'>) => (
+    accessor: 'historyRetentionNumberOfDays',
+    Cell: (props: TCell<'historyRetentionNumberOfDays'>) => (
       <TableCell
         value={props.value}
         isNumber={true}

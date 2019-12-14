@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: {
-    historyRetentionNumberOfDay: 90,
+    historyRetentionNumberOfDays: 90,
     ...detailsInitialFormValues,
   },
   currentProductType: formSelector(

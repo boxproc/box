@@ -48,7 +48,7 @@ export interface ProductDataResp {
 
 export interface ProductItemPlain extends ProductItemInfoPlain {
   description: string;
-  historyRetentionNumberOfDay: number;
+  historyRetentionNumberOfDays: number;
   lockedFlag: boolean;
   overridesProductId?: number;
 }

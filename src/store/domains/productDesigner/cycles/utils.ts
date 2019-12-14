@@ -15,7 +15,12 @@ import {
   CyclesEditorItem
 } from './types';
 
-export const prepareValuesToRender = (item: Partial<CyclesEditorItem>) => {
+import { SelectValues } from 'types';
+
+export const prepareValuesToRender = (
+  item: Partial<CyclesEditorItem>,
+  institution?: SelectValues
+) => {
   if (!item) {
     return item;
   }
@@ -27,6 +32,7 @@ export const prepareValuesToRender = (item: Partial<CyclesEditorItem>) => {
 
   return {
     id: item.id,
+    institutionId: institution && institution.label,
     description: item.description,
     cycleType: cycleType && cycleType.label,
     status: status && status.label,

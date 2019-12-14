@@ -59,6 +59,7 @@ export const Products: React.FC<ProductsProps> = ({
       title="Products"
       data={productItems}
       columns={tableColumns}
+      isDownloadButton={true}
       newModalName={modalNamesConst.ADD_PRODUCT}
       editModalName={modalNamesConst.EDIT_PRODUCT}
       contextMenuItems={contextMenuItems}

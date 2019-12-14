@@ -39,11 +39,9 @@ export const selectProductItems = createSelector(
     }
 
     const institution = institutions.find(el => el.id === product.institution_id);
+    const institutionName = institution && institution.institutionName;
 
-    return {
-      ...prepareGeneralProductItem(product),
-      institutionId: institution && institution.institutionName,
-    };
+    return prepareGeneralProductItem(product, institutionName);
   })
 );
 

@@ -140,19 +140,23 @@ export const prepareAuxCountersToSend = (data: Partial<ProductAuxCountersItemPre
   };
 };
 
-export const prepareGeneralProductItem = (item: ProductItemResp) => {
+export const prepareGeneralProductItem = (
+  item: ProductItemResp,
+  institutionName?: string
+) => {
   const status = statusTypesOptions.find(el => el.value === item.status);
   const productType = productTypesOptions.find(el => el.value === item.product_type);
   const scheme = schemeTypesOptions.find(el => el.value === item.scheme);
 
   return {
     id: item.id,
+    institutionId: institutionName,
     name: item.name,
     description: item.description,
     status: status && status.label,
     productType: productType && productType.label,
     scheme: scheme && scheme.label,
-    historyRetentionNumberOfDay: item.history_retention_number_of_day,
+    historyRetentionNumberOfDays: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
     defaultStatementCycle: item.statement_cycle_description,
     lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
@@ -184,7 +188,7 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     id,
     name,
     description,
-    historyRetentionNumberOfDay: history_retention_number_of_day,
+    historyRetentionNumberOfDays: history_retention_number_of_day,
     productType: productTypesOptions.find(el => el.value === product_type),
     status: statusTypesOptions.find(el => el.value === status),
     scheme: schemeTypesOptions.find(el => el.value === scheme),
@@ -210,7 +214,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     currencyCode,
     productType,
     scheme,
-    historyRetentionNumberOfDay,
+    historyRetentionNumberOfDays,
     defaultStatementCycle,
     lockedFlag,
     overridesProductId,
@@ -227,8 +231,8 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     currency_code: currencyCode.value,
     product_type: productType.value,
     scheme: scheme.value,
-    history_retention_number_of_day: historyRetentionNumberOfDay
-      && Number(historyRetentionNumberOfDay),
+    history_retention_number_of_day: historyRetentionNumberOfDays
+      && Number(historyRetentionNumberOfDays),
     default_statement_cycle_id: defaultStatementCycle.value,
     locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
     statement_cycle_description: defaultStatementCycle.value,
