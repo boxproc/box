@@ -130,6 +130,18 @@ const FeesTable: React.FC<FeesTableProps> = ({
       ),
     },
     {
+      maxWidth: 200,
+      sortable: true,
+      accessor: 'aprDescription',
+      Header: <TableHeader title="APR" />,
+      Cell: (props: TCell<'aprDescription'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
       maxWidth: 80,
       accessor: 'deleteButton',
       Cell: (cellInfo: CellInfo) => (

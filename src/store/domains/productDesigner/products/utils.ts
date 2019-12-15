@@ -686,6 +686,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     rate,
     amount,
     fee_application_condition,
+    apr_description,
   } = data;
 
   const feeApplicationCondition = feeTypesOptions
@@ -697,6 +698,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     description,
     rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
     amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    aprDescription: apr_description,
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
     feeApplicationConditionValue: fee_application_condition,
   };

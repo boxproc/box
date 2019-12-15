@@ -372,6 +372,7 @@ export interface ProductFeeItem {
   description: string;
   rate: number;
   amount: number;
+  apr_description: string;
   fee_application_condition: string | number;
 }
 
@@ -388,6 +389,7 @@ export interface ProductFeePlainInfo extends ProductFeesIds {
   description: string;
   rate: string;
   amount: string;
+  aprDescription: string;
 }
 
 export interface ProductFee extends ProductFeePlainInfo {
