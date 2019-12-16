@@ -36,7 +36,7 @@ export const downloadPDF = (
   const content = {
     head: [headers],
     body: preparedData,
-    startY: 85,
+    startY: 73,
     margin: { horizontal: 10 },
     styles: {
       minCellWidth: 30,
@@ -66,9 +66,8 @@ export const downloadPDF = (
   doc.setFontSize(8);
   doc.setFontStyle('normal');
   doc.setTextColor(theme.colors.gray);
-  doc.text(11, 50, `Created by ${username}`);
-  doc.text(11, 62, dateTime);
-  doc.text(11, 74, location);
+  doc.text(11, 50, `Created by ${username} at ${dateTime}`);
+  doc.text(11, 62, location);
 
   doc.autoTable(content);
 
