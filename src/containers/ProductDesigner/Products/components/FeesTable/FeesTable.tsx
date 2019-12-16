@@ -22,12 +22,13 @@ import {
   ProductFee,
 } from 'store/domains';
 
-import { TableCellType } from 'types';
+import { SelectValues, TableCellType } from 'types';
 
 type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
+  aprDescriptionsOptions: Array<SelectValues>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
@@ -35,6 +36,7 @@ interface FeesTableProps {
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
+  aprDescriptionsOptions,
   productFees,
   getProductFees,
   getProductFeeApr,
@@ -145,12 +147,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         isSmaller: true,
         isEditable: true,
         isSelect: true,
-        selectOptions: [
-          {value: 1, label: 'test'},
-          {value: 2, label: 'test'},
-          {value: 3, label: 'test'},
-          {value: 4, label: 'test'},
-        ],
+        selectOptions: aprDescriptionsOptions,
         cellInfo,
       }),
     },

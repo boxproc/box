@@ -10,6 +10,7 @@ import {
   handleGetProductFees,
   handleUpdateProductFee,
   ProductsActionTypes,
+  selectAprDescriptionsOptions,
   selectProductFees,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -23,6 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   productFees: selectProductFees(state),
+  aprDescriptionsOptions: selectAprDescriptionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
