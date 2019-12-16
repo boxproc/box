@@ -21,6 +21,7 @@ import {
   selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerAccounts,
+  selectLedgerAccountsForTable,
   selectLedgerCurrentAccountCurrencyCode,
   selectLedgerCurrentAccountHasProductOverride,
   selectLedgerCurrentAccountProductOverrideId,
@@ -39,6 +40,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerAccounts: selectLedgerAccounts(state),
+  ledgerAccountsForTable: selectLedgerAccountsForTable(state),
   institutionsOptions: selectInstitutionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),

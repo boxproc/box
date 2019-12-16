@@ -22,13 +22,13 @@ import {
   ProductFee,
 } from 'store/domains';
 
-import { SelectValues, TableCellType } from 'types';
+import { TableCellType } from 'types';
 
 type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
-  aprDescriptionsOptions: Array<SelectValues>;
+  // aprDescriptionsOptions: Array<SelectValues>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
@@ -36,7 +36,7 @@ interface FeesTableProps {
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
-  aprDescriptionsOptions,
+  // aprDescriptionsOptions,
   productFees,
   getProductFees,
   getProductFeeApr,
@@ -142,14 +142,20 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'aprDescription',
       Header: <TableHeader title="APR" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
-        isSmaller: true,
-        isEditable: true,
-        isSelect: true,
-        selectOptions: aprDescriptionsOptions,
-        cellInfo,
-      }),
+      Cell: (props: TCell<'aprDescription'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+      // Cell: (cellInfo: CellInfo) => renderEditableTableCell({
+      //   updateAction: updateProductFee,
+      //   isSmaller: true,
+      //   isEditable: true,
+      //   isSelect: true,
+      //   selectOptions: aprDescriptionsOptions,
+      //   cellInfo,
+      // }),
     },
     {
       maxWidth: 80,
@@ -178,7 +184,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
-        isScrollbar={false}
+        // isScrollbar={false}
       />
     </Box>
   );

@@ -20,8 +20,8 @@ export const selectDictionaryTransactionTypes = createSelector(
     return {
       id: item.id,
       description: item.description,
-      debitCreditIndicatorValue: debitCreditIndicator.value,
       debitCreditIndicator: debitCreditIndicator.label,
+      debitCreditIndicatorValue: debitCreditIndicator.value,
     };
   })
 );

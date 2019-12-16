@@ -13,6 +13,7 @@ import { Eye as EyeIcon } from 'styled-icons/fa-regular/Eye';
 import { EyeSlash as EyeSlashIcon } from 'styled-icons/fa-regular/EyeSlash';
 import { File as FileIcon } from 'styled-icons/fa-solid/File';
 import { FileCsv as FileCsvIcon } from 'styled-icons/fa-solid/FileCsv';
+import { FilePdf as FilePdfIcon } from 'styled-icons/fa-solid/FilePdf';
 import { Key as KeyIcon } from 'styled-icons/fa-solid/Key';
 import { User as UserIcon } from 'styled-icons/fa-solid/User';
 import { UserShield as UserShieldIcon } from 'styled-icons/fa-solid/UserShield';
@@ -58,6 +59,7 @@ export {
   DownloadIcon,
   FileIcon,
   FileCsvIcon,
+  FilePdfIcon,
   SearchIcon,
   CheckedRadioIcon,
   UncheckedRadioIcon,

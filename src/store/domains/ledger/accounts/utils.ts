@@ -126,7 +126,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
   };
 };
 
-export const prepareDataToRender = (
+export const prepareDataToTableRender = (
   data: Partial<LedgerAccountItem>,
   institution?: SelectValues
 ) => {
@@ -138,24 +138,59 @@ export const prepareDataToRender = (
     id,
     status,
     account_alias,
-    account_alias_additional,
     customer_id,
     customer_first_name,
     customer_last_name,
-    date_of_product_override,
-    product_id,
     product_override_id,
     product_name,
-    product_type,
     balance_settled,
     balance_available,
     amount_due_repayment,
     balance_limit,
     balance_limit_shared,
     accrued_interest,
+    statement_cycle_description,
+  } = data;
+
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
+  return {
+    id,
+    institutionId: institution && institution.label,
+    product: product_name,
+    productOverrideFlag: product_override_id ? true : false,
+    accountAlias: account_alias,
+    customerId: customer_id,
+    firstName: customer_first_name,
+    lastName: customer_last_name,
+    status: currentStatus && currentStatus.label,
+    statementCycle: statement_cycle_description,
+    balanceSettled: stringsUtil.checkNumberToFixed(balance_settled) && balance_settled.toFixed(2),
+    balanceAvailable: stringsUtil.checkNumberToFixed(balance_available)
+      && balance_available.toFixed(2),
+    amountDueRepayment: stringsUtil.checkNumberToFixed(amount_due_repayment)
+      && amount_due_repayment.toFixed(2),
+    balanceLimit: stringsUtil.checkNumberToFixed(balance_limit) && balance_limit.toFixed(2),
+    balanceLimitShared: stringsUtil.checkNumberToFixed(balance_limit_shared)
+      && balance_limit_shared.toFixed(2),
+    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
+      && accrued_interest.toFixed(2),
+  };
+};
+
+export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    account_alias_additional,
+    date_of_product_override,
+    product_id,
+    product_override_id,
+    product_type,
     date_created,
     date_closed,
-    statement_cycle_description,
     last_cycle_date,
     aux_counter_1,
     aux_counter_2,
@@ -185,36 +220,14 @@ export const prepareDataToRender = (
     currency_code,
   } = data;
 
-  const currentStatus = statusTypesOptions.find(el => el.value === status);
-
   return {
-    id,
-    institutionId: institution && institution.label,
-    status: currentStatus && currentStatus.label,
-    accountAlias: account_alias,
     accountAliasAdditional: account_alias_additional,
-    customerId: customer_id,
-    firstName: customer_first_name,
-    lastName: customer_last_name,
     productId: product_id,
     productOverrideId: product_override_id,
-    productOverrideFlag: product_override_id ? true : false,
     dateOfProductOverride: date_of_product_override,
-    product: product_name,
     productType: product_type,
-    balanceSettled: stringsUtil.checkNumberToFixed(balance_settled) && balance_settled.toFixed(2),
-    balanceAvailable: stringsUtil.checkNumberToFixed(balance_available)
-      && balance_available.toFixed(2),
-    amountDueRepayment: stringsUtil.checkNumberToFixed(amount_due_repayment)
-      && amount_due_repayment.toFixed(2),
-    balanceLimit: stringsUtil.checkNumberToFixed(balance_limit) && balance_limit.toFixed(2),
-    balanceLimitShared: stringsUtil.checkNumberToFixed(balance_limit_shared)
-      && balance_limit_shared.toFixed(2),
-    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
-      && accrued_interest.toFixed(2),
     dateCreated: date_created,
     dateClosed: date_closed,
-    statementCycle: statement_cycle_description,
     lastCycleDate: last_cycle_date,
     currencyCode: currency_code,
     auxCounter1: stringsUtil.checkNumberToFixed(aux_counter_1) && aux_counter_1.toFixed(2),
@@ -257,6 +270,7 @@ export const prepareDataToRender = (
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
   };
 };
+
 export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsItem>) => {
   if (!data) {
     return null;
@@ -280,6 +294,7 @@ export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => 
   const { status } = data;
 
   return {
+    ...prepareDataToTableRender(data),
     ...prepareDataToRender(data),
     status: statusTypesOptions.find(el => el.value === status),
   };

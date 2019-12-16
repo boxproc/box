@@ -12,7 +12,8 @@ import { selectActiveItemId } from 'store/domains/utils';
 import {
   preparedAccountCardsToRender,
   prepareDataDetailsToRender,
-  prepareDataToRender
+  prepareDataToRender,
+  prepareDataToTableRender,
 } from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
@@ -24,7 +25,20 @@ export const selectLedgerAccounts = createSelector(
   (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return prepareDataToRender(item, institution);
+    return {
+      ...prepareDataToTableRender(item, institution),
+      ...prepareDataToRender(item),
+    };
+  })
+);
+
+export const selectLedgerAccountsForTable = createSelector(
+  selectDefaultLedgerAccounts,
+  selectInstitutionsOptions,
+  (items, institutions) => items && items.map(item => {
+    const institution = institutions.find(el => el.value === item.institution_id);
+
+    return prepareDataToTableRender(item, institution);
   })
 );
 

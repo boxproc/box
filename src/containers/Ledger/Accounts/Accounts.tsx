@@ -24,6 +24,7 @@ import { SelectValues } from 'types';
 
 export interface AccountsProps extends WithModalProps {
   ledgerAccounts: Array<LedgerAccountItemPrepared>;
+  ledgerAccountsForTable: Array<Partial<LedgerAccountItemPrepared>>;
   filterLedgerAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
   institutionsOptions: Array<SelectValues>;
@@ -41,6 +42,7 @@ export interface AccountsProps extends WithModalProps {
 
 const Accounts: React.FC<AccountsProps> = ({
   ledgerAccounts,
+  ledgerAccountsForTable,
   filterLedgerAccounts,
   institutionsOptions,
   hasProductOverride,
@@ -145,6 +147,7 @@ const Accounts: React.FC<AccountsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}
       isDownloadButton={true}
+      dataForDownload={ledgerAccountsForTable}
       initialFilterValues={{
         institutionId: institutionsOptions[0],
       }}

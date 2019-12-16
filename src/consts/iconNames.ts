@@ -16,5 +16,6 @@ export enum iconNamesConst {
   DOWNLOAD = 'download',
   FILE = 'file',
   FILE_CSV = 'fileCsv',
+  FILE_PDF = 'filePdf',
   SEARCH = 'search',
 }

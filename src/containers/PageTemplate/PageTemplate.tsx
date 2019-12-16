@@ -13,6 +13,7 @@ import EditableTable from './EditableTable';
 import Filter from './Filter';
 
 import { downloadCSV } from './downloadCSV';
+import { downloadPDF } from './downloadPDF';
 
 import { ResetUtils, SetIsOpenFilter, StopAutoRefresh } from 'store/domains';
 
@@ -36,6 +37,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   setIsOpenFilter: SetIsOpenFilter;
   isOpenFilter: boolean;
   isDownloadButton?: boolean;
+  dataForDownload?: Array<object>;
   isSearchable?: boolean;
 }
 
@@ -58,6 +60,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     setIsOpenFilter,
     isOpenFilter,
     isDownloadButton,
+    dataForDownload,
     isSearchable,
     ...pageTemplateProps
   } = props;
@@ -88,6 +91,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const isData = React.useMemo(
     () => data.length,
     [data]
+  );
+
+  const downloadData = React.useMemo(
+    () => dataForDownload ? dataForDownload : data,
+    [dataForDownload, data]
   );
 
   const storedFilter = cookiesUtil.get(location.pathname);
@@ -187,7 +195,15 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 <Button
                   text=".csv"
                   iconName={iconNamesConst.FILE_CSV}
-                  onClick={() => downloadCSV(fileName, data)}
+                  onClick={() => downloadCSV(fileName, downloadData)}
+                  textTransformNone={true}
+                />
+              </DropdownOption>
+              <DropdownOption>
+                <Button
+                  text=".pdf"
+                  iconName={iconNamesConst.FILE_PDF}
+                  onClick={() => downloadPDF(fileName, title, downloadData, window.location.href)}
                   textTransformNone={true}
                 />
               </DropdownOption>
