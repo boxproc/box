@@ -29,6 +29,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   isHeader?: boolean;
   activeRowIndex?: number;
   isSmaller?: boolean;
+  isScrollbar?: boolean;
 }
 
 export const Table: React.FC<TableProps> = props => {
@@ -36,6 +37,7 @@ export const Table: React.FC<TableProps> = props => {
     sortable = false,
     filterable = false,
     isHeader = true,
+    isScrollbar = true,
     data,
     pageSize = 10,
     activeRowIndex,
@@ -55,34 +57,41 @@ export const Table: React.FC<TableProps> = props => {
     [tableRef, data, pageSize]
   );
 
+  const renderTable = () => (
+    <TableStyled
+      activeRowIndex={activeRowIndex}
+      isSmaller={isSmaller}
+      ref={tableRef}
+      minHeight={height}
+    >
+      <ReactTable
+        {...props as TableProps}
+        sortable={sortable}
+        filterable={filterable}
+        minRows={0}
+        showPagination={data && data.length > pageSize}
+        showPageSizeOptions={false}
+        defaultPageSize={pageSize}
+        multiSort={false}
+        resizable={true}
+        NoDataComponent={TableNoData}
+        TheadComponent={
+          isHeader && data && data.length > 0
+            ? ReactTableDefaults.TheadComponent
+            : () => null
+        }
+      />
+    </TableStyled>
+  );
+
   return (
     <TableWrapper>
-      <PerfectScrollbar>
-        <TableStyled
-          activeRowIndex={activeRowIndex}
-          isSmaller={isSmaller}
-          ref={tableRef}
-          minHeight={height}
-        >
-          <ReactTable
-            {...props as TableProps}
-            sortable={sortable}
-            filterable={filterable}
-            minRows={0}
-            showPagination={data && data.length > pageSize}
-            showPageSizeOptions={false}
-            defaultPageSize={pageSize}
-            multiSort={false}
-            resizable={true}
-            NoDataComponent={TableNoData}
-            TheadComponent={
-              isHeader && data && data.length > 0
-                ? ReactTableDefaults.TheadComponent
-                : () => null
-            }
-          />
-        </TableStyled>
-      </PerfectScrollbar>
+      {isScrollbar
+        ? (
+          <PerfectScrollbar>{renderTable()}</PerfectScrollbar>
+        )
+        : renderTable()
+      }
     </TableWrapper>
   );
 };

@@ -1,3 +1,5 @@
-﻿import SelectField from './SelectField';
+﻿import SelectField from './SelectInput';
 
-export default SelectField;
+import { withFormField } from '../withFormField';
+
+export default withFormField(SelectField);

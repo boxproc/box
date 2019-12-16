@@ -14,8 +14,6 @@ import MultiSelectOption from './Option';
 
 import { customStyles } from './customStyles';
 
-import { withFormField } from '../withFormField';
-
 const WithCustomScrollbar = styled.div`
   width: 100%;
   .form-select__menu-list {
@@ -47,13 +45,13 @@ const loadingMessage = (obj: InputValue) => 'Options are being fetched';
 const defaultNoOptionsMsg = (obj: InputValue) => 'No options';
 const preventNoOptionsMsg = (): null => null;
 
-export interface SelectFieldProps<T = object> extends SelectProps<T> {
+export interface SelectInputProps<T = object> extends SelectProps<T> {
   modifySelectOption?: (data: OptionProps<T>) => void;
   isCustomSingleValue?: boolean;
   onChange?: () => void;
 }
 
-export const SelectField = <T extends {}>(props: SelectFieldProps<T>) => {
+export const SelectInput = <T extends {}>(props: SelectInputProps<T>) => {
   const { id, isMulti, isCustomSingleValue, onChange, ...extraProps } = props;
 
   return (
@@ -90,4 +88,4 @@ export const SelectField = <T extends {}>(props: SelectFieldProps<T>) => {
   );
 };
 
-export default withFormField(SelectField);
+export default SelectInput;

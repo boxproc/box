@@ -68,7 +68,7 @@ export const TableStyled = styled.div<TableStyledProps>`
   }
 
   .ReactTable .rt-tbody {
-    overflow: hidden;
+    overflow: visible;
     background-color: ${({ theme }) => theme.colors.white};
   }
 
@@ -138,6 +138,7 @@ export const TableStyled = styled.div<TableStyledProps>`
 
   .ReactTable .rt-tbody .rt-td {
     word-break: break-word;
+    overflow: visible;
   }
 
   .ReactTable .-sort-asc .up-icon path,

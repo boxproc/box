@@ -9,6 +9,8 @@ import { codeKeys, yesNoTypesCodes } from 'consts';
 
 import { TableCell } from './TableCell';
 
+import { SelectValues } from 'types';
+
 export const renderEditableTableCell = (data: {
   updateAction: (data: object) => void,
   isSmaller?: boolean,
@@ -16,6 +18,8 @@ export const renderEditableTableCell = (data: {
   isDecimalNumber?: boolean;
   isEditable?: boolean,
   cellInfo: CellInfo;
+  isSelect?: boolean;
+  selectOptions?: Array<SelectValues>;
 }) => {
   const {
     updateAction,
@@ -24,6 +28,8 @@ export const renderEditableTableCell = (data: {
     isDecimalNumber,
     isEditable = true,
     cellInfo,
+    isSelect,
+    selectOptions,
   } = data;
 
   if (!cellInfo) {
@@ -32,7 +38,7 @@ export const renderEditableTableCell = (data: {
 
   const updateCellInfo = (e: React.MouseEvent) => {
     const el = e.target as HTMLInputElement;
-    const newValue = el.value.toString();
+    const newValue = !isSelect && el.value.toString();
     const currentValue = cellInfo.value.toString();
     const isChanged = currentValue !== newValue;
 
@@ -57,6 +63,8 @@ export const renderEditableTableCell = (data: {
       isNumber={isNumber}
       isDecimalNumber={isDecimalNumber}
       isSmaller={isSmaller}
+      isSelect={isSelect}
+      selectOptions={selectOptions}
       onKeyUp={handleKeyUp}
     />
   );

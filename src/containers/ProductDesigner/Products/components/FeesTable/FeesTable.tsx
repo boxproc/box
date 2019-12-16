@@ -140,12 +140,19 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'aprDescription',
       Header: <TableHeader title="APR" />,
-      Cell: (props: TCell<'aprDescription'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
+      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
+        updateAction: updateProductFee,
+        isSmaller: true,
+        isEditable: true,
+        isSelect: true,
+        selectOptions: [
+          {value: 1, label: 'test'},
+          {value: 2, label: 'test'},
+          {value: 3, label: 'test'},
+          {value: 4, label: 'test'},
+        ],
+        cellInfo,
+      }),
     },
     {
       maxWidth: 80,
@@ -174,6 +181,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
+        isScrollbar={false}
       />
     </Box>
   );
