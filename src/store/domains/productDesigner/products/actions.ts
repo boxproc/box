@@ -739,6 +739,7 @@ export const handleGetProductFeeAprs: HandleGetProductFeeAprs = () =>
       async () => {
         const state = getState();
         const productId = selectActiveItemId(state);
+
         await dispatch(getProductFeeAprs(productId));
       },
       dispatch

@@ -28,7 +28,7 @@ type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
-  getProductFeeApr: HandleGetProductFeeAprs ;
+  getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
@@ -45,8 +45,10 @@ const FeesTable: React.FC<FeesTableProps> = ({
 
   React.useEffect(
     () => {
-      getProductFees();
-      getProductFeeApr();
+      Promise.all([
+        getProductFees(),
+        getProductFeeApr(),
+      ]);
     },
     [getProductFees, getProductFeeApr]
   );

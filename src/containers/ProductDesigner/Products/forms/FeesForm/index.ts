@@ -17,19 +17,21 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.ADD_PRODUCT_FEE,
 ]);
+
 const aprDescriptionLoading = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_FEE_APR,
 ]);
+
 const formSelector = formValueSelector(formNamesConst.PRODUCT_FEES);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isAprDescriptionLoading: aprDescriptionLoading(state),
+  aprDescriptionsOptions: selectAprDescriptionsOptions(state),
   feeApplicationConditionValue: formSelector(
     state,
     'feeApplicationCondition'
   ),
-   aprDescriptionsOptions: selectAprDescriptionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
