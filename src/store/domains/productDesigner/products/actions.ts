@@ -28,6 +28,7 @@ import {
   GetProductAction,
   GetProductAprsAction,
   GetProductDetailsAction,
+  GetProductFeeAprsAction,
   GetProductFeesAction,
   GetProductRewardsAction,
   GetProductRuleAction,
@@ -178,6 +179,9 @@ export type HandleUpdateProductReward = (data: Partial<ProductReward>) => Thunk<
 export type DeleteProductReward = (data: ProductRewardsIds) => DeleteProductRewardAction;
 export type HandleDeleteProductReward = (data: ProductRewardsIds) => Thunk<void>;
 
+export type GetProductFeeAprs = (id: number) => GetProductFeeAprsAction;
+export type HandleGetProductFeeAprs = () => Thunk<void>;
+
 export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
 
 export type ResetProducts = () => void;
@@ -319,6 +323,11 @@ export const deleteProductReward: DeleteProductReward = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_REWARD,
   payload: api.deleteProductReward(data),
   meta: { data },
+});
+
+export const getProductFeeAprs: GetProductFeeAprs = id => ({
+  type: ActionTypeKeys.GET_PRODUCT_FEE_APR,
+  payload: api.getProductFeeAprs(id),
 });
 
 export const resetProducts: ResetProducts = () => ({
@@ -719,6 +728,18 @@ export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = 
           dispatch(getProductRewards(productId)),
           dispatch(getProductRewards(productId)),
         ]);
+      },
+      dispatch
+    );
+  };
+
+export const handleGetProductFeeAprs: HandleGetProductFeeAprs = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const productId = selectActiveItemId(state);
+        await dispatch(getProductFeeAprs(productId));
       },
       dispatch
     );

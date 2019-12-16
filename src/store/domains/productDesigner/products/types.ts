@@ -343,6 +343,15 @@ export interface ProductAprItems {
   product_aprs: Array<ProductAprItem>;
 }
 
+export interface ProductFeeAprItemResp  {
+  product_apr_id: number | string;
+  apr_description: string;
+}
+
+export interface ProductFeeAprItems {
+  product_fee_aprs: Array<ProductFeeAprItemResp>;
+}
+
 export interface ProductAprIds {
   productId: number;
   productAprId: number;
@@ -374,6 +383,7 @@ export interface ProductFeeItem {
   amount: number;
   apr_description: string;
   fee_application_condition: string | number;
+  apr_id: string | number;
 }
 
 export interface ProductFeeItems {
@@ -389,16 +399,17 @@ export interface ProductFeePlainInfo extends ProductFeesIds {
   description: string;
   rate: string;
   amount: string;
-  aprDescription: string;
 }
 
 export interface ProductFee extends ProductFeePlainInfo {
   feeApplicationCondition: string;
   feeApplicationConditionValue: string | number;
+  aprDescription: string | number;
 }
 
 export interface ProductFeeFormValues extends ProductFeePlainInfo {
   feeApplicationCondition: SelectValues;
+  aprDescription: SelectValues;
 }
 
 export interface ProductFees {
@@ -453,4 +464,5 @@ export interface ProductsState {
   productAprs: ImmutableArray<ProductAprItem>;
   productFees: ImmutableArray<ProductFeeItem>;
   productRewards: ImmutableArray<ProductRewardItem>;
+  productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
 }

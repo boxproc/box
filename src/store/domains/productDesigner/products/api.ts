@@ -156,3 +156,8 @@ export const deleteProductReward = (data: ProductRewardsIds) =>
       product_reward_id: data.productRewardId,
     },
   });
+
+export const getProductFeeAprs = (id: number) =>
+  apiClient.post(productsPathNames.GET_FEE_APRS, {
+    data: { product_id: id },
+  });

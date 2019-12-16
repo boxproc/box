@@ -179,4 +179,5 @@ export enum productsPathNames {
   UPDATE_REWARD = '/ui/product_designer/products/rewards/update',
   CREATE_REWARD = '/ui/product_designer/products/rewards/create',
   DELETE_REWARD = '/ui/product_designer/products/rewards/delete',
+  GET_FEE_APRS = '/ui/product_designer/products/fees/get_fee_aprs',
 }

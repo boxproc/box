@@ -6,6 +6,7 @@ import FeesTable from './FeesTable';
 import {
   createLoadingSelector,
   handleDeleteProductFee,
+  handleGetProductFeeAprs,
   handleGetProductFees,
   handleUpdateProductFee,
   ProductsActionTypes,
@@ -27,6 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getProductFees: handleGetProductFees,
+    getProductFeeApr: handleGetProductFeeAprs,
     deleteProductFee: handleDeleteProductFee,
     updateProductFee: handleUpdateProductFee,
   },

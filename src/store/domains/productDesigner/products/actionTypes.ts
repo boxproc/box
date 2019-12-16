@@ -6,6 +6,7 @@ import {
   ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
+  ProductFeeAprItems,
   ProductFeeItems,
   ProductFeesIds,
   ProductRewardItems,
@@ -34,6 +35,10 @@ export enum ActionTypeKeys {
   GET_PRODUCT = 'productDesigner/products/GET_PRODUCT',
   GET_PRODUCT_FULFILLED = 'productDesigner/products/GET_PRODUCT_FULFILLED',
   GET_PRODUCT_REJECTED = 'productDesigner/products/GET_PRODUCT_REJECTED',
+
+  GET_PRODUCT_FEE_APR = 'productDesigner/products/GET_PRODUCT_FEE_APR',
+  GET_PRODUCT_FEE_APR_FULFILLED = 'productDesigner/products/GET_PRODUCT_FEE_APR_FULFILLED',
+  GET_PRODUCT_FEE_APR_REJECTED = 'productDesigner/products/GET_PRODUCT_FEE_APR_REJECTED',
 
   GET_PRODUCT_DETAILS = 'productDesigner/products/GET_PRODUCT_DETAILS',
   GET_PRODUCT_DETAILS_FULFILLED = 'productDesigner/products/GET_PRODUCT_DETAILS_FULFILLED',
@@ -373,6 +378,21 @@ export interface GetProductAprsRejectedAction {
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS_REJECTED;
 }
 
+export interface GetProductFeeAprsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR;
+}
+
+export interface GetProductFeeAprsFulfilledAction {
+  readonly payload: ProductFeeAprItems;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_FULFILLED;
+}
+
+export interface GetProductFeeAprsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_REJECTED;
+}
+
 export interface AddProductAprAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR;
@@ -572,4 +592,5 @@ export type ProductsActionTypes =
   | DeleteProductRewardFulfilledAction
   | UpdateGeneralLedgerFulfilledAction
   | UpdateProductAuxCountersFulfilledAction
+  | GetProductFeeAprsFulfilledAction
   | ResetProductsAction;

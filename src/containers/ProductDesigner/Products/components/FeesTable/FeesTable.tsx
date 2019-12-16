@@ -16,6 +16,7 @@ import { feeRewardsTypesCodes, iconNamesConst } from 'consts';
 
 import {
   HandleDeleteProductFee,
+  HandleGetProductFeeAprs,
   HandleGetProductFees,
   HandleUpdateProductFee,
   ProductFee,
@@ -27,6 +28,7 @@ type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
+  getProductFeeApr: HandleGetProductFeeAprs ;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
@@ -35,6 +37,7 @@ interface FeesTableProps {
 const FeesTable: React.FC<FeesTableProps> = ({
   productFees,
   getProductFees,
+  getProductFeeApr,
   deleteProductFee,
   updateProductFee,
 }) => {
@@ -43,8 +46,9 @@ const FeesTable: React.FC<FeesTableProps> = ({
   React.useEffect(
     () => {
       getProductFees();
+      getProductFeeApr();
     },
-    [getProductFees]
+    [getProductFees, getProductFeeApr]
   );
 
   // update screen height for setting various number of table rows per page

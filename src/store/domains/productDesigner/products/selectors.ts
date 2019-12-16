@@ -369,3 +369,15 @@ export const selectProductRewardsForRules = createSelector(
     };
   })
 );
+export const selectDefaultAprDescriptions = (state: StoreState) =>
+  state.productDesigner.products.productFeeAprs;
+
+export const selectAprDescriptionsOptions = createSelector(
+  selectDefaultAprDescriptions,
+  items => items && items.asMutable().map(item => {
+    return {
+      value: item.product_apr_id,
+      label: item.apr_description,
+    };
+  })
+);

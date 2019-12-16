@@ -14,6 +14,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   productAprs: Immutable([]),
   productFees: Immutable([]),
   productRewards: Immutable([]),
+  productFeeAprs: Immutable([]),
 });
 
 const productsReducer =
@@ -45,6 +46,9 @@ const productsReducer =
 
       case ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED:
         return state.set('productAprs', action.payload.product_aprs);
+
+      case ActionTypeKeys.GET_PRODUCT_FEE_APR_FULFILLED:
+        return state.set('productFeeAprs', action.payload.product_fee_aprs);
 
       case ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED:
         return state.set(

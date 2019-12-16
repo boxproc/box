@@ -7,20 +7,26 @@ import { Button, InputField, NumberFormatField, SelectField } from 'components';
 
 import { feeTypesOptions, iconNamesConst } from 'consts';
 
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ProductFeesProps {
   isDisabled: boolean;
+  isLoading: boolean;
+  isAprDescriptionLoading: boolean;
   isOnlyAmount: boolean;
   isOnlyRate: boolean;
   pristine: boolean;
+  aprDescriptionsOptions: Array<SelectValues>;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
   isOnlyAmount,
+  isAprDescriptionLoading,
   isOnlyRate,
   pristine,
+  aprDescriptionsOptions,
 }) => {
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
@@ -48,7 +54,20 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 7]} p="10px">
+      <Box width={[2 / 7]} p="10px">
+        <Field
+          id="aprDescription"
+          name="aprDescription"
+          component={SelectField}
+          label="APR"
+          isLoading={isAprDescriptionLoading}
+          options={aprDescriptionsOptions}
+          placeholder="Select APR"
+          isDisabled={isDisabled}
+          isClearable={false}
+        />
+      </Box>
+      <Box width={[1 / 7]} ml="1px" p="10px">
         <Field
           id="rate"
           name="rate"
