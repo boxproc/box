@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import {
   Button,
-  renderEditableTableCell,
+  EditableTableCell,
   Table,
   TableCell,
   TableHeader,
@@ -83,11 +83,13 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductApr,
-        isSmaller: true,
-        cellInfo,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductApr}
+          isSmaller={true}
+          cellInfo={cellInfo}
+        />
+      ),
     },
     {
       maxWidth: 120,
@@ -106,24 +108,28 @@ const AprsTable: React.FC<AprsTableProps> = ({
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate %" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductApr,
-        isSmaller: true,
-        isDecimalNumber: true,
-        cellInfo,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductApr}
+          isSmaller={true}
+          isDecimalNumber={true}
+          cellInfo={cellInfo}
+        />
+      ),
     },
     {
       maxWidth: 100,
       sortable: true,
       accessor: 'graceNumberOfDays',
       Header: <TableHeader title="Grace Number of&nbsp;Days" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductApr,
-        isSmaller: true,
-        isNumber: true,
-        cellInfo,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductApr}
+          isSmaller={true}
+          isNumber={true}
+          cellInfo={cellInfo}
+        />
+      ),
     },
     {
       maxWidth: 80,

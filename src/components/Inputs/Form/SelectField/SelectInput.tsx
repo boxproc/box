@@ -48,7 +48,7 @@ const preventNoOptionsMsg = (): null => null;
 export interface SelectInputProps<T = object> extends SelectProps<T> {
   modifySelectOption?: (data: OptionProps<T>) => void;
   isCustomSingleValue?: boolean;
-  onChange?: () => void;
+  onChange?: any;
 }
 
 export const SelectInput = <T extends {}>(props: SelectInputProps<T>) => {

@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import {
   Button,
-  renderEditableTableCell,
+  EditableTableCell,
   Table,
   TableCell,
   TableHeader,
@@ -22,26 +22,28 @@ import {
   ProductFee,
 } from 'store/domains';
 
-import { TableCellType } from 'types';
+import { SelectValues, TableCellType } from 'types';
 
 type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
-  // aprDescriptionsOptions: Array<SelectValues>;
+  aprsOptions: Array<SelectValues>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
+  isLoadingUpdateSelector: boolean;
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
-  // aprDescriptionsOptions,
+  aprsOptions,
   productFees,
   getProductFees,
   getProductFeeApr,
   deleteProductFee,
   updateProductFee,
+  isLoadingUpdateSelector,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
@@ -91,39 +93,46 @@ const FeesTable: React.FC<FeesTableProps> = ({
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
-        isSmaller: true,
-        cellInfo,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductFee}
+          isSmaller={true}
+          cellInfo={cellInfo}
+          isEditable={!isLoadingUpdateSelector}
+        />
+      ),
     },
     {
       maxWidth: 120,
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
-        isSmaller: true,
-        isDecimalNumber: true,
-        cellInfo,
-        isEditable: cellInfo.original.feeApplicationConditionValue
-          !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductFee}
+          isSmaller={true}
+          isDecimalNumber={true}
+          cellInfo={cellInfo}
+          isEditable={cellInfo.original.feeApplicationConditionValue
+            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT && !isLoadingUpdateSelector}
+        />
+      ),
     },
     {
       maxWidth: 120,
       sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductFee,
-        isSmaller: true,
-        isDecimalNumber: true,
-        cellInfo,
-        isEditable: cellInfo.original.feeApplicationConditionValue
-          !== feeRewardsTypesCodes.APPLY_ONLY_RATE,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductFee}
+          isSmaller={true}
+          isDecimalNumber={true}
+          isEditable={cellInfo.original.feeApplicationConditionValue
+            !== feeRewardsTypesCodes.APPLY_ONLY_RATE && !isLoadingUpdateSelector}
+          cellInfo={cellInfo}
+        />
+      ),
     },
     {
       maxWidth: 200,
@@ -140,22 +149,18 @@ const FeesTable: React.FC<FeesTableProps> = ({
     {
       maxWidth: 200,
       sortable: true,
-      accessor: 'aprDescription',
+      accessor: 'apr',
       Header: <TableHeader title="APR" />,
-      Cell: (props: TCell<'aprDescription'>) => (
-        <TableCell
-          value={props.value}
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductFee}
           isSmaller={true}
+          cellInfo={cellInfo}
+          isSelect={true}
+          selectOptions={aprsOptions}
+          isEditable={!isLoadingUpdateSelector}
         />
       ),
-      // Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-      //   updateAction: updateProductFee,
-      //   isSmaller: true,
-      //   isEditable: true,
-      //   isSelect: true,
-      //   selectOptions: aprDescriptionsOptions,
-      //   cellInfo,
-      // }),
     },
     {
       maxWidth: 80,
@@ -184,7 +189,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
-        // isScrollbar={false}
+        isScrollbar={false}
       />
     </Box>
   );

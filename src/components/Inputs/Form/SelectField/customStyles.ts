@@ -25,13 +25,14 @@ export const customStyles: StylesConfig = {
     return ({
       ...provided,
       cursor: 'pointer',
+      padding: selectProps.isEditableCellStyle ? '5px' : '8px',
       // eslint-disable-next-line
       ['& > svg path']: {
         color: isDisabled
           ? theme.colors.lightGray
           : isFocused && !selectProps.invalid
             ? theme.colors.normalAccent
-            : theme.colors.darkGray,
+            : selectProps.isEditableCellStyle ? theme.colors.gray : theme.colors.darkGray,
       },
     });
   },
@@ -55,7 +56,7 @@ export const customStyles: StylesConfig = {
   placeholder: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     color: theme.colors.gray,
-    fontSize: '13px',
+    fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
     lineHeight: '17px',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
@@ -64,7 +65,7 @@ export const customStyles: StylesConfig = {
   menuList: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     padding: '0 1px 1px',
-    fontSize: '13px',
+    fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
     lineHeight: '17px',
     borderRadius: '0 0 2px 2px',
   }),
@@ -86,23 +87,24 @@ export const customStyles: StylesConfig = {
       selectProps: {
         invalid,
         menuIsOpen,
+        isEditableCellStyle,
       },
     } = state;
 
     return ({
       ...provided,
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
-      fontSize: 13,
+      fontSize: isEditableCellStyle ? 12 : 13,
       borderColor: invalid
         ? theme.colors.red
         : (isFocused || menuIsOpen)
           ? theme.colors.normalAccent
           : isDisabled
             ? theme.colors.lightGray
-            : theme.colors.gray,
+            : isEditableCellStyle ? theme.colors.lightGray : theme.colors.gray,
       backgroundColor: theme.colors.white,
       boxShadow: 'none',
-      minHeight: '31px',
+      minHeight: isEditableCellStyle ? '25px' : '31px',
       // eslint-disable-next-line
       ['&:hover']: {
         borderColor: '0',
@@ -110,10 +112,16 @@ export const customStyles: StylesConfig = {
     });
   },
   singleValue: (provided: React.CSSProperties, state: SelectState) => {
-    const { selectProps: { isCustomSingleValue } } = state;
+    const {
+      selectProps: {
+        isCustomSingleValue,
+        isEditableCellStyle,
+      },
+    } = state;
+
     return ({
       ...provided,
-      fontSize: '13px',
+      fontSize: isEditableCellStyle ? '12px' : '13px',
       lineHeight: '17px',
       color: theme.colors.black,
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
@@ -153,7 +161,8 @@ export const customStyles: StylesConfig = {
   }),
   valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    minHeight: '31px',
+    minHeight: state.selectProps.isEditableCellStyle ? '25px' : '31px',
+    height: state.selectProps.isEditableCellStyle ? '25px' : 'auto',
   }),
   option: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,

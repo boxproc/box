@@ -404,12 +404,12 @@ export interface ProductFeePlainInfo extends ProductFeesIds {
 export interface ProductFee extends ProductFeePlainInfo {
   feeApplicationCondition: string;
   feeApplicationConditionValue: string | number;
-  aprDescription: string | number;
+  apr: SelectValues;
 }
 
 export interface ProductFeeFormValues extends ProductFeePlainInfo {
   feeApplicationCondition: SelectValues;
-  aprDescription: SelectValues;
+  apr: SelectValues;
 }
 
 export interface ProductFees {

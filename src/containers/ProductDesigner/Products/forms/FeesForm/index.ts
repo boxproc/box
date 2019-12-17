@@ -10,7 +10,7 @@ import {
   createLoadingSelector,
   handleAddProductFee,
   ProductsActionTypes,
-  selectAprDescriptionsOptions,
+  selectAprsOptions,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -18,7 +18,7 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.ADD_PRODUCT_FEE,
 ]);
 
-const aprDescriptionLoading = createLoadingSelector([
+const aprsLoading = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_FEE_APR,
 ]);
 
@@ -26,8 +26,8 @@ const formSelector = formValueSelector(formNamesConst.PRODUCT_FEES);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isAprDescriptionLoading: aprDescriptionLoading(state),
-  aprDescriptionsOptions: selectAprDescriptionsOptions(state),
+  isAprsLoading: aprsLoading(state),
+  aprsOptions: selectAprsOptions(state),
   feeApplicationConditionValue: formSelector(
     state,
     'feeApplicationCondition'

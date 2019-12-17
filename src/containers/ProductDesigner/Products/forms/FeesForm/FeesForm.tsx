@@ -16,9 +16,9 @@ import { SelectValues } from 'types';
 interface FeesFormProps {
   addProductFee: HandleAddProductFee;
   isLoading: boolean;
-  isAprDescriptionLoading: boolean;
+  isAprsLoading: boolean;
   feeApplicationConditionValue: SelectValues;
-  aprDescriptionsOptions: Array<SelectValues>;
+  aprsOptions: Array<SelectValues>;
   onCancel: () => void;
 }
 
@@ -31,9 +31,9 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   pristine,
   dirty,
   isLoading,
-  isAprDescriptionLoading,
+  isAprsLoading,
   feeApplicationConditionValue,
-  aprDescriptionsOptions,
+  aprsOptions,
   change,
 }) => {
   const isOnlyAmount = React.useMemo(
@@ -80,13 +80,13 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
       <Box pb="10px">
         <form onSubmit={handleSubmitForm}>
           <ProductFees
-            isAprDescriptionLoading={isAprDescriptionLoading}
+            isAprsLoading={isAprsLoading}
             isLoading={isLoading}
             isDisabled={isLoading}
             pristine={pristine}
             isOnlyAmount={isOnlyAmount}
             isOnlyRate={isOnlyRate}
-            aprDescriptionsOptions={aprDescriptionsOptions}
+            aprsOptions={aprsOptions}
           />
         </form>
       </Box>

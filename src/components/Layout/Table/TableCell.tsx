@@ -21,6 +21,9 @@ interface TableCellProps {
   isEditable?: boolean;
   isSelect?: boolean;
   selectOptions?: Array<SelectValues>;
+  defaultSelectValue?: SelectValues;
+  selectLabel?: string;
+  onSelectChange?: any;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({
@@ -36,9 +39,15 @@ export const TableCell: React.FC<TableCellProps> = ({
   isEditable = false,
   isSelect = false,
   selectOptions,
+  defaultSelectValue,
+  selectLabel,
+  onSelectChange,
 }) => {
-  const isPendingStatus = value === schedulerStatusTypesOptions
-    .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label;
+  const isPendingStatus = React.useMemo(
+    () => value === schedulerStatusTypesOptions
+      .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label,
+    [value]
+  );
 
   const renderFields = () => {
     if (isDecimalNumber) {
@@ -55,9 +64,11 @@ export const TableCell: React.FC<TableCellProps> = ({
       return (
         <SelectInput
           placeholder="Select APR"
-          isDisabled={false}
           isClearable={false}
           options={selectOptions}
+          defaultValue={defaultSelectValue}
+          isEditableCellStyle={true}
+          onChange={onSelectChange}
         />
       );
     } else {
@@ -79,13 +90,16 @@ export const TableCell: React.FC<TableCellProps> = ({
       onKeyUp={onKeyUp}
       isDate={isDate}
       isEditable={isEditable}
+      isSelect={isSelect}
       textCenter={onCenter}
       isAccentColor={isPendingStatus}
       isSmaller={isSmaller}
     >
       {isEditable
         ? renderFields()
-        : value
+          : isSelect
+            ? selectLabel
+            : value
       }
     </TableItemWrapper>
   );

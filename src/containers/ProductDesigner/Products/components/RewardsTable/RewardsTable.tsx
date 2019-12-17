@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import {
   Button,
-  renderEditableTableCell,
+  EditableTableCell,
   Table,
   TableCell,
   TableHeader,
@@ -83,39 +83,45 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
       sortable: true,
       accessor: 'description',
       Header: <TableHeader title="Description" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductReward,
-        isSmaller: true,
-        cellInfo,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductReward}
+          isSmaller={true}
+          cellInfo={cellInfo}
+        />
+      ),
     },
     {
       maxWidth: 120,
       sortable: true,
       accessor: 'rate',
       Header: <TableHeader title="Rate" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductReward,
-        isSmaller: true,
-        isDecimalNumber: true,
-        cellInfo,
-        isEditable: cellInfo.original.rewardApplicationConditionValue
-          !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductReward}
+          isSmaller={true}
+          isDecimalNumber={true}
+          cellInfo={cellInfo}
+          isEditable={cellInfo.original.rewardApplicationConditionValue
+            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT}
+        />
+      ),
     },
     {
       maxWidth: 120,
       sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
-      Cell: (cellInfo: CellInfo) => renderEditableTableCell({
-        updateAction: updateProductReward,
-        isSmaller: true,
-        isDecimalNumber: true,
-        cellInfo,
-        isEditable: cellInfo.original.rewardApplicationConditionValue
-          !== feeRewardsTypesCodes.APPLY_ONLY_RATE,
-      }),
+      Cell: (cellInfo: CellInfo) => (
+        <EditableTableCell
+          updateAction={updateProductReward}
+          isSmaller={true}
+          isDecimalNumber={true}
+          cellInfo={cellInfo}
+          isEditable={cellInfo.original.rewardApplicationConditionValue
+            !== feeRewardsTypesCodes.APPLY_ONLY_RATE}
+        />
+      ),
     },
     {
       maxWidth: 200,

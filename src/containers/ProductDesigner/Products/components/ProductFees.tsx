@@ -13,20 +13,20 @@ import { formErrorUtil } from 'utils';
 interface ProductFeesProps {
   isDisabled: boolean;
   isLoading: boolean;
-  isAprDescriptionLoading: boolean;
+  isAprsLoading: boolean;
   isOnlyAmount: boolean;
   isOnlyRate: boolean;
   pristine: boolean;
-  aprDescriptionsOptions: Array<SelectValues>;
+  aprsOptions: Array<SelectValues>;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({
   isDisabled,
   isOnlyAmount,
-  isAprDescriptionLoading,
+  isAprsLoading,
   isOnlyRate,
   pristine,
-  aprDescriptionsOptions,
+  aprsOptions,
 }) => {
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
@@ -56,12 +56,12 @@ const ProductFees: React.FC<ProductFeesProps> = ({
       </Box>
       <Box width={[2 / 7]} p="10px">
         <Field
-          id="aprDescription"
-          name="aprDescription"
+          id="apr"
+          name="apr"
           component={SelectField}
           label="APR"
-          isLoading={isAprDescriptionLoading}
-          options={aprDescriptionsOptions}
+          isLoading={isAprsLoading}
+          options={aprsOptions}
           placeholder="Select APR"
           isDisabled={isDisabled}
           isClearable={false}

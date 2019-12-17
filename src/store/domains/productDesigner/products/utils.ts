@@ -687,6 +687,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     amount,
     fee_application_condition,
     apr_description,
+    apr_id,
   } = data;
 
   const feeApplicationCondition = feeTypesOptions
@@ -700,7 +701,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
     feeApplicationConditionValue: fee_application_condition,
-    aprDescription: apr_description,
+    apr: { value: apr_id, label: apr_description },
   };
 };
 
@@ -732,12 +733,12 @@ export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormVal
     return null;
   }
 
-  const { feeApplicationCondition, aprDescription } = data;
+  const { feeApplicationCondition, apr } = data;
 
   return {
     ...prepareProductFees(data),
     fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
-    apr_id: aprDescription && aprDescription.value,
+    apr_id: apr && apr.value,
   };
 };
 
@@ -746,13 +747,15 @@ export const prepareProductFeesToSend = (data: Partial<ProductFee>): Partial<Pro
     return null;
   }
 
+  const { apr } = data;
+
   const feeApplicationCondition = feeTypesOptions
     .find(el => el.label === data.feeApplicationCondition);
 
   return {
     ...prepareProductFees(data),
     fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
-
+    apr_id: apr && apr.value,
   };
 };
 
