@@ -152,7 +152,10 @@ export const withEditTable = <OriginProps extends {}>(
 
     return (
       <React.Fragment>
-        <ContextMenuTrigger id="tableContextMenu">
+        <ContextMenuTrigger
+          id="tableContextMenu"
+          disable={!editModalName}
+        >
           <Component
             onRowClick={handleClickOnRow}
             activeTableRowIndex={activeTableRowIndex}

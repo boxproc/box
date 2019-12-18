@@ -28,10 +28,17 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   card_acceptor_name: string;
   card_acceptor_location: string;
   transaction_type_description: string;
-  apr_id: number;
+  product_apr_id: number;
   apr_rate: number;
   apr_calculation_method: string;
   status: string;
+  card_conversion_rate: number;
+  product_fee_id: number;
+  product_reward_id: number;
+  fee_rate: number;
+  fee_application_condition: string;
+  reward_application_condition: string;
+  reward_rate: number;
 }
 
 export interface LedgerTransactionItems {
@@ -61,6 +68,13 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   aprRate: string;
   aprCalculationMethod: string;
   status: string;
+  cardConversionRate: string;
+  productFeeId: number;
+  productRewardId: number;
+  feeRate: string;
+  feeApplicationCondition: string;
+  rewardApplicationCondition: string;
+  rewardRate: string;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

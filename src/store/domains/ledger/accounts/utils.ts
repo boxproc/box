@@ -126,7 +126,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
   };
 };
 
-export const prepareDataToTableRender = (
+export const prepareDataToRender = (
   data: Partial<LedgerAccountItem>,
   institution?: SelectValues
 ) => {
@@ -141,7 +141,6 @@ export const prepareDataToTableRender = (
     customer_id,
     customer_first_name,
     customer_last_name,
-    product_override_id,
     product_name,
     balance_settled,
     balance_available,
@@ -150,40 +149,6 @@ export const prepareDataToTableRender = (
     balance_limit_shared,
     accrued_interest,
     statement_cycle_description,
-  } = data;
-
-  const currentStatus = statusTypesOptions.find(el => el.value === status);
-
-  return {
-    id,
-    institutionId: institution && institution.label,
-    product: product_name,
-    productOverrideFlag: product_override_id ? true : false,
-    accountAlias: account_alias,
-    customerId: customer_id,
-    firstName: customer_first_name,
-    lastName: customer_last_name,
-    status: currentStatus && currentStatus.label,
-    statementCycle: statement_cycle_description,
-    balanceSettled: stringsUtil.checkNumberToFixed(balance_settled) && balance_settled.toFixed(2),
-    balanceAvailable: stringsUtil.checkNumberToFixed(balance_available)
-      && balance_available.toFixed(2),
-    amountDueRepayment: stringsUtil.checkNumberToFixed(amount_due_repayment)
-      && amount_due_repayment.toFixed(2),
-    balanceLimit: stringsUtil.checkNumberToFixed(balance_limit) && balance_limit.toFixed(2),
-    balanceLimitShared: stringsUtil.checkNumberToFixed(balance_limit_shared)
-      && balance_limit_shared.toFixed(2),
-    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
-      && accrued_interest.toFixed(2),
-  };
-};
-
-export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
-  if (!data) {
-    return null;
-  }
-
-  const {
     account_alias_additional,
     date_of_product_override,
     product_id,
@@ -220,7 +185,29 @@ export const prepareDataToRender = (data: Partial<LedgerAccountItem>) => {
     currency_code,
   } = data;
 
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
   return {
+    id,
+    institutionId: institution && institution.label,
+    product: product_name,
+    productOverrideFlag: product_override_id ? true : false,
+    accountAlias: account_alias,
+    customerId: customer_id,
+    firstName: customer_first_name,
+    lastName: customer_last_name,
+    status: currentStatus && currentStatus.label,
+    statementCycle: statement_cycle_description,
+    balanceSettled: stringsUtil.checkNumberToFixed(balance_settled) && balance_settled.toFixed(2),
+    balanceAvailable: stringsUtil.checkNumberToFixed(balance_available)
+      && balance_available.toFixed(2),
+    amountDueRepayment: stringsUtil.checkNumberToFixed(amount_due_repayment)
+      && amount_due_repayment.toFixed(2),
+    balanceLimit: stringsUtil.checkNumberToFixed(balance_limit) && balance_limit.toFixed(2),
+    balanceLimitShared: stringsUtil.checkNumberToFixed(balance_limit_shared)
+      && balance_limit_shared.toFixed(2),
+    accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
+      && accrued_interest.toFixed(2),
     accountAliasAdditional: account_alias_additional,
     productId: product_id,
     productOverrideId: product_override_id,
@@ -294,7 +281,6 @@ export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => 
   const { status } = data;
 
   return {
-    ...prepareDataToTableRender(data),
     ...prepareDataToRender(data),
     status: statusTypesOptions.find(el => el.value === status),
   };

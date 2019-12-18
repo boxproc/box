@@ -12,7 +12,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardId"
             name="cardId"
@@ -22,7 +22,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardTransactionId"
             name="cardTransactionId"
@@ -32,7 +32,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardCurrency"
             name="cardCurrency"
@@ -41,7 +41,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardAmount"
             name="cardAmount"
@@ -53,7 +53,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardAcceptorName"
             name="cardAcceptorName"
@@ -62,12 +62,24 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 5]} p="10px">
           <Field
             id="cardAcceptorLocation"
             name="cardAcceptorLocation"
             component={InputField}
             label="Card Acceptor Location"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="cardConversionRate"
+            name="cardConversionRate"
+            component={NumberFormatField}
+            placeholder="0.000"
+            fixedDecimalScale={true}
+            decimalScale={3}
+            label="Card Conversion Rate"
             readOnly={true}
           />
         </Box>

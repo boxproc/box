@@ -70,7 +70,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 60,
     sortable: true,
     Header: <TableHeader title="D/C" />,
     accessor: 'debitCreditIndicator',
@@ -94,7 +94,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 65,
     sortable: true,
     Header: <TableHeader title="Currency" />,
     accessor: 'originalCurrency',
@@ -141,7 +141,31 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 120,
+    sortable: true,
+    Header: <TableHeader title="Fee Rate" />,
+    accessor: 'feeRate',
+    Cell: (props: TCell<'feeRate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 120,
+    sortable: true,
+    Header: <TableHeader title="Reward Rate" />,
+    accessor: 'rewardRate',
+    Cell: (props: TCell<'rewardRate'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 60,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',

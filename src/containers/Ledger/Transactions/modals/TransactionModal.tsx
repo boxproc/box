@@ -26,8 +26,8 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Transaction"
-      maxContainerWidth={600}
-      minContainerHeight={500}
+      maxContainerWidth={850}
+      minContainerHeight={590}
     >
       <LedgerTransactionsForm />
       <Hr />

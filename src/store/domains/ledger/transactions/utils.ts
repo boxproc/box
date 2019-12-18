@@ -1,4 +1,4 @@
-import { aprTypesOptions } from 'consts';
+import { aprTypesOptions, feeTypesOptions, rewardsTypesOptions } from 'consts';
 
 import {
   LedgerTransactionItem,
@@ -35,13 +35,24 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     card_acceptor_name,
     card_acceptor_location,
     transaction_type_description,
-    apr_id,
+    product_apr_id,
     apr_rate,
     apr_calculation_method,
     amount,
+    card_conversion_rate,
+    product_fee_id,
+    product_reward_id,
+    fee_rate,
+    fee_application_condition,
+    reward_application_condition,
+    reward_rate,
   } = values;
 
   const aprCalculationMethod = aprTypesOptions.find(el => el.value === apr_calculation_method);
+  const feeApplicationCondition = feeTypesOptions
+    .find(el => el.value === fee_application_condition);
+  const rewardApplicationCondition = rewardsTypesOptions
+    .find(el => el.value === reward_application_condition);
 
   return {
     id,
@@ -49,7 +60,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     transactionTypeId: transaction_type_id,
     status,
     transactionDatetime: transaction_datetime,
-    aprId: apr_id,
+    aprId: product_apr_id,
     aprRate: stringsUtil.checkNumberToFixed(apr_rate) ? apr_rate.toFixed(2) : null,
     aprCalculationMethod: aprCalculationMethod ? aprCalculationMethod.label : null,
     description,
@@ -78,6 +89,15 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
       ? balance_available_after.toFixed(2)
       : null,
+  cardConversionRate: stringsUtil.checkNumberToFixed(card_conversion_rate)
+    ? card_conversion_rate.toFixed(3)
+    : null,
+  productFeeId: product_fee_id,
+  productRewardId: product_reward_id,
+  feeRate: stringsUtil.checkNumberToFixed(fee_rate) ? fee_rate.toFixed(2) : null,
+  feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
+  rewardApplicationCondition: rewardApplicationCondition ? rewardApplicationCondition.label : null,
+  rewardRate: stringsUtil.checkNumberToFixed(reward_rate) ? reward_rate.toFixed(2) : null,
   };
 };
 

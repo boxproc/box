@@ -34,7 +34,6 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   setIsOpenFilter: SetIsOpenFilter;
   isOpenFilter: boolean;
   isDownloadButton?: boolean;
-  dataForDownload?: Array<object>;
   isSearchable?: boolean;
 }
 
@@ -57,7 +56,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     setIsOpenFilter,
     isOpenFilter,
     isDownloadButton,
-    dataForDownload,
     isSearchable,
     ...pageTemplateProps
   } = props;
@@ -88,11 +86,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   const isData = React.useMemo(
     () => data.length,
     [data]
-  );
-
-  const downloadData = React.useMemo(
-    () => dataForDownload ? dataForDownload : data,
-    [dataForDownload, data]
   );
 
   const storedFilter = cookiesUtil.get(location.pathname);
@@ -177,7 +170,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 <Button
                   text=".csv"
                   iconName={iconNamesConst.FILE_CSV}
-                  onClick={() => downloadUtil.downloadCSV(fileName, downloadData)}
+                  onClick={() => downloadUtil.downloadCSV(fileName, data)}
                   textTransformNone={true}
                 />
               </DropdownOption>
