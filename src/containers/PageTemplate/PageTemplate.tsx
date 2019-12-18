@@ -160,21 +160,6 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             {AdditionalButton}
           </Box>
         )}
-        {isAutoRefresh && (
-          <Box ml="25px">
-            <Flex alignItems="flex-end">
-              <CountDownTimer seconds={5} />
-              <Box ml="4px">
-                <Button
-                  text="Stop Auto Refreshing"
-                  size="11"
-                  iconName={iconNamesConst.STOP}
-                  onClick={stopAutoRefresh}
-                />
-              </Box>
-            </Flex>
-          </Box>
-        )}
         {isDownloadButton && (
           <Box mr="20px">
             <Dropdown
@@ -198,6 +183,19 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               </DropdownOption>
             </Dropdown>
           </Box>
+        )}
+        {isAutoRefresh && (
+          <Flex alignItems="flex-end">
+            <CountDownTimer seconds={5} />
+            <Box ml="4px">
+              <Button
+                text="Stop Auto Refreshing"
+                size="11"
+                iconName={iconNamesConst.STOP}
+                onClick={stopAutoRefresh}
+              />
+            </Box>
+          </Flex>
         )}
       </Flex>
       <Box mt="7px">

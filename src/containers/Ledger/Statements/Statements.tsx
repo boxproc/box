@@ -6,7 +6,9 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { StatementsFilter } from './forms';
 
-import { modalNamesConst } from 'consts';
+import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
+
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
   HandleFilterLedgerAccountsById,
@@ -14,7 +16,9 @@ import {
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerStatements,
   HandleFilterLedgerTransactionsById,
+  HandleGetLedgerStatementTransactions,
   LedgerStatementItemPrepared,
+  LedgerStatementTransactionsItemPrepared,
   ResetStatements,
 } from 'store/domains';
 
@@ -22,7 +26,7 @@ import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
 export interface StatementsProps {
-  ledgerStatements: Array<LedgerStatementItemPrepared>;
+  statements: Array<LedgerStatementItemPrepared>;
   filterLedgerStatements: HandleFilterLedgerStatements;
   institutionsOptions: Array<SelectValues>;
   currentId: number;
@@ -30,11 +34,14 @@ export interface StatementsProps {
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
+  currentStatement: LedgerStatementItemPrepared;
+  getStatementTransactions: HandleGetLedgerStatementTransactions;
+  statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   resetStatements: ResetStatements;
 }
 
 const Statements: React.FC<StatementsProps> = ({
-  ledgerStatements,
+  statements,
   filterLedgerStatements,
   institutionsOptions,
   filterLedgerTransactionsById,
@@ -42,6 +49,9 @@ const Statements: React.FC<StatementsProps> = ({
   filterLedgerCardsById,
   filterLedgerAccountsById,
   currentId,
+  currentStatement,
+  getStatementTransactions,
+  statementTransactions,
   resetStatements,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
@@ -57,8 +67,28 @@ const Statements: React.FC<StatementsProps> = ({
     [resetStatements]
   );
 
+  React.useEffect(
+    () => {
+      if (currentId) {
+        getStatementTransactions();
+      }
+    },
+    [currentId, getStatementTransactions]
+  );
+
   const contextMenuItems = React.useMemo(
     () => [
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Generate pdf file',
+        icon: iconNamesConst.FILE_PDF,
+        action: () => downloadPDF({
+          statement: currentStatement,
+          transactions: statementTransactions,
+        }),
+      },
       {
         isDivider: true,
       },
@@ -84,6 +114,8 @@ const Statements: React.FC<StatementsProps> = ({
       filterLedgerTransactionsById,
       filterLedgerCardsById,
       filterLedgerAccountsById,
+      currentStatement,
+      statementTransactions,
       currentId,
     ]
   );
@@ -91,7 +123,7 @@ const Statements: React.FC<StatementsProps> = ({
   return (
     <PageTemplate
       title="Statements"
-      data={ledgerStatements}
+      data={statements}
       columns={tableColumns}
       editModalName={modalNamesConst.LEDGER_STATEMENTS}
       filterAction={filterLedgerStatements}

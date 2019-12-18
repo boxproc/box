@@ -10,6 +10,7 @@ import {
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterLedgerStatements,
+  handleGetLedgerStatementTransactions,
   LedgerAccountsActionTypes,
   LedgerCardsActionTypes,
   LedgerCustomersActionTypes,
@@ -18,7 +19,9 @@ import {
   resetStatements,
   selectActiveItemId,
   selectInstitutionsOptions,
+  selectLedgerCurrentStatement,
   selectLedgerStatements,
+  selectLedgerStatementTransactions,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -33,7 +36,9 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  ledgerStatements: selectLedgerStatements(state),
+  statements: selectLedgerStatements(state),
+  statementTransactions: selectLedgerStatementTransactions(state),
+  currentStatement: selectLedgerCurrentStatement(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
 });
@@ -45,6 +50,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
     filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
     filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
+    getStatementTransactions: handleGetLedgerStatementTransactions,
     resetStatements,
   },
   dispatch

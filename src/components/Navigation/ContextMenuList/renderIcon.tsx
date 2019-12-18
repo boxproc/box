@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { DeleteIcon, EditIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
+import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
 
 import { iconNamesConst } from 'consts';
-
 export const renderIcon = (name: string) => {
   switch (name) {
     case iconNamesConst.EDIT:
@@ -16,6 +15,8 @@ export const renderIcon = (name: string) => {
       return (<PlusIcon size="15" />);
     case iconNamesConst.SHORT_TEXT:
       return (<ShortTextIcon size="16" />);
+    case iconNamesConst.FILE_PDF:
+      return (<FilePdfIcon size="13" />);
     default:
       return null;
   }
