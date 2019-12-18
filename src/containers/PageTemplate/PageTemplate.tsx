@@ -12,13 +12,10 @@ import { iconNamesConst } from 'consts';
 import EditableTable from './EditableTable';
 import Filter from './Filter';
 
-import { downloadCSV } from './downloadCSV';
-import { downloadPDF } from './downloadPDF';
-
 import { ResetUtils, SetIsOpenFilter, StopAutoRefresh } from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
-import { cookiesUtil, stringsUtil } from 'utils';
+import { cookiesUtil, downloadUtil, stringsUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
@@ -195,15 +192,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 <Button
                   text=".csv"
                   iconName={iconNamesConst.FILE_CSV}
-                  onClick={() => downloadCSV(fileName, downloadData)}
-                  textTransformNone={true}
-                />
-              </DropdownOption>
-              <DropdownOption>
-                <Button
-                  text=".pdf"
-                  iconName={iconNamesConst.FILE_PDF}
-                  onClick={() => downloadPDF(fileName, title, downloadData, window.location.href)}
+                  onClick={() => downloadUtil.downloadCSV(fileName, downloadData)}
                   textTransformNone={true}
                 />
               </DropdownOption>

@@ -87,7 +87,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
 
   React.useEffect(
     () => {
-      if (scriptValue) {
+      if (scriptValue && textarea) {
         setCurrentCursorPosition(textarea.selectionEnd);
       } else {
         setCurrentCursorPosition(0);

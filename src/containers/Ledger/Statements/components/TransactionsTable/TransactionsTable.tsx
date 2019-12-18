@@ -1,32 +1,20 @@
 import React from 'react';
 
-import { Table, withSpinner } from 'components';
+import { Table } from 'components';
 
-import {
-  HandleGetLedgerStatementTransactions,
-  LedgerStatementTransactionsItemPrepared
-} from 'store/domains';
+import { LedgerStatementTransactionsItemPrepared } from 'store/domains';
 import { tableTransactionsColumns } from './tableTransactionsColumns';
 
 interface TransactionsTableProps {
-  getLedgerStatementTransactions: HandleGetLedgerStatementTransactions;
-  ledgerStatementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
+  statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
 }
 
 export const TransactionsTable: React.FC<TransactionsTableProps> = ({
-  getLedgerStatementTransactions,
-  ledgerStatementTransactions,
+  statementTransactions,
 }) => {
-  React.useEffect(
-    () => {
-      getLedgerStatementTransactions();
-    },
-    [getLedgerStatementTransactions]
-  );
-
   return (
     <Table
-      data={ledgerStatementTransactions}
+      data={statementTransactions}
       columns={tableTransactionsColumns}
       isHeader={true}
       pageSize={8}
@@ -35,4 +23,4 @@ export const TransactionsTable: React.FC<TransactionsTableProps> = ({
   );
 };
 
-export default withSpinner()(TransactionsTable);
+export default TransactionsTable;

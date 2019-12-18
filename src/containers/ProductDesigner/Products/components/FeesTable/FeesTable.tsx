@@ -33,7 +33,6 @@ interface FeesTableProps {
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
-  isLoadingUpdateSelector: boolean;
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
@@ -43,7 +42,6 @@ const FeesTable: React.FC<FeesTableProps> = ({
   getProductFeeApr,
   deleteProductFee,
   updateProductFee,
-  isLoadingUpdateSelector,
 }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
@@ -98,7 +96,6 @@ const FeesTable: React.FC<FeesTableProps> = ({
           updateAction={updateProductFee}
           isSmaller={true}
           cellInfo={cellInfo}
-          isEditable={!isLoadingUpdateSelector}
         />
       ),
     },
@@ -114,7 +111,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
           isDecimalNumber={true}
           cellInfo={cellInfo}
           isEditable={cellInfo.original.feeApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT && !isLoadingUpdateSelector}
+            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT}
         />
       ),
     },
@@ -129,7 +126,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
           isSmaller={true}
           isDecimalNumber={true}
           isEditable={cellInfo.original.feeApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_RATE && !isLoadingUpdateSelector}
+            !== feeRewardsTypesCodes.APPLY_ONLY_RATE}
           cellInfo={cellInfo}
         />
       ),
@@ -158,7 +155,6 @@ const FeesTable: React.FC<FeesTableProps> = ({
           cellInfo={cellInfo}
           isSelect={true}
           selectOptions={aprsOptions}
-          isEditable={!isLoadingUpdateSelector}
         />
       ),
     },

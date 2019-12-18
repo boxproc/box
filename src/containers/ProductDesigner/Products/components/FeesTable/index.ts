@@ -20,13 +20,8 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.DELETE_PRODUCT_FEE,
 ]);
 
-const loadingUpdateSelector  = createLoadingSelector([
-  ProductsActionTypes.UPDATE_PRODUCT_FEE,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isLoadingUpdateSelector: loadingUpdateSelector(state),
   productFees: selectProductFees(state),
   aprsOptions: selectAprsOptions(state),
 });

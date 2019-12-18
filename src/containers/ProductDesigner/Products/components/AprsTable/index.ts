@@ -16,7 +16,6 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_APRS,
   ProductsActionTypes.DELETE_PRODUCT_APR,
-  ProductsActionTypes.UPDATE_PRODUCT_APR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

@@ -1,33 +1,31 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import RewardsTable from './RewardsTable';
+import StatementModal from './StatementModal';
 
 import {
   createLoadingSelector,
-  handleDeleteProductReward,
-  handleGetProductRewards,
-  handleUpdateProductReward,
-  ProductsActionTypes,
-  selectProductRewards,
+  handleGetLedgerStatementTransactions,
+  LedgerStatementsActionTypes,
+  selectLedgerCurrentStatement,
+  selectLedgerStatementTransactions,
 } from 'store/domains';
+
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_REWARDS,
-  ProductsActionTypes.DELETE_PRODUCT_REWARD,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  productRewards: selectProductRewards(state),
+  statementTransactions: selectLedgerStatementTransactions(state),
+  currentStatement: selectLedgerCurrentStatement(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getProductRewards: handleGetProductRewards,
-    deleteProductReward: handleDeleteProductReward,
-    updateProductReward: handleUpdateProductReward,
+    getStatementTransactions: handleGetLedgerStatementTransactions,
   },
   dispatch
 );
@@ -35,4 +33,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RewardsTable);
+)(StatementModal);

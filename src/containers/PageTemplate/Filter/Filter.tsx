@@ -169,8 +169,8 @@ const Filter: React.FC<FilterAllProps> = ({
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-end" flexWrap="wrap">{children}</Flex>
-          <Button text="Show" disabled={isDisabled} />
         </Box>
+        <Button text="Show" disabled={isDisabled} />
       </form>
     </FilterWrapper >
   );
