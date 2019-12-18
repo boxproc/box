@@ -5,11 +5,13 @@ import styled from 'theme';
 interface HighlightLinkProps {
   text: string;
   isActive?: boolean;
+  fontSize?: string;
   onClick?: () => void;
 }
 
 interface LinkProps {
   isActive?: boolean;
+  fontSize?: string;
 }
 
 const Link = styled.span<LinkProps>`
@@ -17,21 +19,24 @@ const Link = styled.span<LinkProps>`
   border-bottom: 1px solid ${({ theme, isActive }) =>
     isActive ? theme.colors.lightAccent : theme.colors.lightGray};
   line-height: 1.4;
-  font-size: 15px;
+  font-size: ${({ fontSize }) => fontSize ? fontSize : '12px'};
   cursor: pointer;
+
   &:hover {
-    border-bottom-color: ${({ theme }) => theme.colors.lighterAccent};
+    border-bottom-color: ${({ theme }) => theme.colors.normalAccent};
   }
 `;
 
 const HighlightLink: React.FC<HighlightLinkProps> = ({
   text,
+  fontSize,
   isActive,
   onClick,
 }) => {
   return (
     <Link
       isActive={isActive}
+      fontSize={fontSize}
       onClick={onClick}
     >
       {text}

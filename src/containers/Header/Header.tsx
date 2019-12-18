@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
-import { Container, Navbar, withSpinner } from 'components';
+import { Container, HighlightLink, Navbar, withSpinner } from 'components';
 
 import { basePath } from 'consts';
 
@@ -48,22 +48,6 @@ const Wrapper = styled.header<WrapperProps>`
     position: relative;
   }
 
-  ${({ currentPathname, theme }) => currentPathname && `
-    .user {
-      &:before {
-        content: '';
-        position: absolute;
-        top: 100%;
-        right: 3px;
-        display: block;
-        width: 100%;
-        height: .5px;
-        background-image: linear-gradient(to right, hsla(0,0%,0%,0) 0,
-        ${theme.colors.lightGray} 50%);
-      }
-    }
-  `}
-
   .user-main {
     margin: 2px 0;
   }
@@ -72,14 +56,7 @@ const Wrapper = styled.header<WrapperProps>`
     position: absolute;
     right: 5px;
     top: 100%;
-    margin-top: 2px;
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.gray};
-    font-size: 11px;
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.normalAccent};
-    }
   }
 `;
 
@@ -177,7 +154,11 @@ const Header: React.FC<HeaderProps> = ({
                 href={`${basePath}${currentPathname}`}
                 className="location"
               >
-                {currentPathname}
+                <HighlightLink
+                  text={currentPathname}
+                  fontSize="11px"
+                  isActive={true}
+                />
               </a>
             )}
           </Box>
