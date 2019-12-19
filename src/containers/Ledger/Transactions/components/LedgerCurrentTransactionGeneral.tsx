@@ -42,6 +42,16 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
+        <Box width={[1 / 5]}  p="10px">
+          <Field
+            id="parentTransactionId"
+            name="parentTransactionId"
+            component={InputField}
+            label="Parent Transaction ID"
+            readOnly={true}
+            isNumber={true}
+          />
+        </Box>
         <Box width="100px"  p="10px">
           <Field
             id="status"
@@ -57,6 +67,39 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="transactionDatetime"
             component={InputField}
             label="Transaction Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width="100px" p="10px">
+          <Field
+            id="debitCreditIndicator"
+            name="debitCreditIndicator"
+            component={InputField}
+            label="Debit Credit Indicator"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="amount"
+            name="amount"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            label="Amount"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="amountInOriginalCurrency"
+            name="amountInOriginalCurrency"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            label="Amount in Original Currency"
             readOnly={true}
           />
         </Box>
@@ -124,39 +167,6 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             name="description"
             component={TextField}
             label="Description"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="10px">
-          <Field
-            id="debitCreditIndicator"
-            name="debitCreditIndicator"
-            component={InputField}
-            label="Debit Credit Indicator"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="10px">
-          <Field
-            id="amount"
-            name="amount"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Amount"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="10px">
-          <Field
-            id="amountInOriginalCurrency"
-            name="amountInOriginalCurrency"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Amount in Original Currency"
             readOnly={true}
           />
         </Box>

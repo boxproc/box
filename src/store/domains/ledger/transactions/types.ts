@@ -39,6 +39,18 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   fee_application_condition: string;
   reward_application_condition: string;
   reward_rate: number;
+  card_currency_billing: string;
+  card_amount_billing: number;
+  card_acceptor_terminal_id: string;
+  card_acceptor_id_code: string;
+  card_stan: string;
+  card_mcc: string;
+  card_acquirer_id: string;
+  card_acquirer_country_code: string;
+  card_pos_entry_mode: string;
+  card_pos_condition_data: string;
+  card_response_code: string;
+  parent_transaction_id: number;
 }
 
 export interface LedgerTransactionItems {
@@ -75,6 +87,18 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   feeApplicationCondition: string;
   rewardApplicationCondition: string;
   rewardRate: string;
+  cardCurrencyBilling: string;
+  cardAmountBilling: string;
+  cardAcceptorTerminalId: string;
+  cardAcceptorIdCode: string;
+  cardStan: string;
+  cardMcc: string;
+  cardAcquirerId: string;
+  cardAcquirerCountryCode: string;
+  cardPosEntryMode: string;
+  cardPosConditionData: string;
+  cardResponseCode: string;
+  parentTransactionId: number;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

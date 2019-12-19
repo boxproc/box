@@ -5,6 +5,7 @@ import { ResponseStatusType } from 'types';
 export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
   transactions: [
     {
+      id: 2,
       account_id: 1,
       amount: 10.2,
       amount_in_original_currency: 10.2,
@@ -21,7 +22,6 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       card_transaction_id: 'A',
       debit_credit_indicator: 'C',
       description: 'description filtered',
-      id: 2,
       original_currency: 'GBP',
       transaction_datetime: '11/08/2019 00:04:46',
       transaction_type_id: 1,
@@ -36,6 +36,18 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       apr_calculation_method: 'A',
       reward_application_condition: null,
       reward_rate: null,
+      card_currency_billing: 'test',
+      card_amount_billing: null,
+      card_acceptor_terminal_id: null,
+      card_acceptor_id_code: null,
+      card_stan: null,
+      card_mcc: null,
+      card_acquirer_id: null,
+      card_acquirer_country_code: null,
+      card_pos_entry_mode: null,
+      card_pos_condition_data: null,
+      card_response_code: null,
+      parent_transaction_id: null,
     },
   ],
 };

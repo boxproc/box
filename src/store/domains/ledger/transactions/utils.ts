@@ -46,6 +46,18 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     fee_application_condition,
     reward_application_condition,
     reward_rate,
+    card_currency_billing,
+    card_amount_billing,
+    card_acceptor_terminal_id,
+    card_acceptor_id_code,
+    card_stan,
+    card_mcc,
+    card_acquirer_id,
+    card_acquirer_country_code,
+    card_pos_entry_mode,
+    card_pos_condition_data,
+    card_response_code,
+    parent_transaction_id,
   } = values;
 
   const aprCalculationMethod = aprTypesOptions.find(el => el.value === apr_calculation_method);
@@ -89,15 +101,31 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
       ? balance_available_after.toFixed(2)
       : null,
-  cardConversionRate: stringsUtil.checkNumberToFixed(card_conversion_rate)
-    ? card_conversion_rate.toFixed(3)
-    : null,
-  productFeeId: product_fee_id,
-  productRewardId: product_reward_id,
-  feeRate: stringsUtil.checkNumberToFixed(fee_rate) ? fee_rate.toFixed(2) : null,
-  feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
-  rewardApplicationCondition: rewardApplicationCondition ? rewardApplicationCondition.label : null,
-  rewardRate: stringsUtil.checkNumberToFixed(reward_rate) ? reward_rate.toFixed(2) : null,
+    cardConversionRate: stringsUtil.checkNumberToFixed(card_conversion_rate)
+      ? card_conversion_rate.toFixed(3)
+      : null,
+    productFeeId: product_fee_id,
+    productRewardId: product_reward_id,
+    feeRate: stringsUtil.checkNumberToFixed(fee_rate) ? fee_rate.toFixed(2) : null,
+    feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
+    rewardApplicationCondition: rewardApplicationCondition
+      ? rewardApplicationCondition.label
+      : null,
+    rewardRate: stringsUtil.checkNumberToFixed(reward_rate) ? reward_rate.toFixed(2) : null,
+    cardCurrencyBilling: card_currency_billing,
+    cardAmountBilling: stringsUtil.checkNumberToFixed(card_amount_billing)
+      ? card_amount_billing.toFixed(2)
+      : null,
+    cardAcceptorTerminalId: card_acceptor_terminal_id,
+    cardAcceptorIdCode: card_acceptor_id_code,
+    cardStan: card_stan,
+    cardMcc: card_mcc,
+    cardAcquirerId: card_acquirer_id,
+    cardAcquirerCountryCode: card_acquirer_country_code,
+    cardPosEntryMode: card_pos_entry_mode,
+    cardPosConditionData: card_pos_condition_data,
+    cardResponseCode: card_response_code,
+    parentTransactionId: parent_transaction_id,
   };
 };
 
