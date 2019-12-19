@@ -46,7 +46,7 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin }) => {
             key={modal.name + index}
             isBlured={isRelogin && !isMessageModal}
           >
-            {isRelogin && (
+            {modal.name && (
               <ScrollDisable />
             )}
             {modal.component}

@@ -1,21 +1,9 @@
 import React from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import ReactTable, { ComponentDecoratorProps, ReactTableDefaults } from 'react-table';
-
-import styled from 'theme';
 
 import { TableNoData } from 'components';
 
 import { TableStyled } from './TableStyled';
-
-const TableWrapper = styled.div`
-  box-shadow: ${({ theme }) => theme.shadows.normalBox};
-
-  .ps--active-x > .ps__rail-x,
-  .ps--active-y > .ps__rail-y {
-    z-index: 9;
-  }
-`;
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {
   data: Array<object>;
@@ -57,12 +45,13 @@ export const Table: React.FC<TableProps> = props => {
     [tableRef, data, pageSize]
   );
 
-  const renderTable = () => (
+  return (
     <TableStyled
       activeRowIndex={activeRowIndex}
       isSmaller={isSmaller}
       ref={tableRef}
       minHeight={height}
+      isScrollbar={isScrollbar}
     >
       <ReactTable
         {...props as TableProps}
@@ -82,16 +71,5 @@ export const Table: React.FC<TableProps> = props => {
         }
       />
     </TableStyled>
-  );
-
-  return (
-    <TableWrapper>
-      {isScrollbar
-        ? (
-          <PerfectScrollbar>{renderTable()}</PerfectScrollbar>
-        )
-        : renderTable()
-      }
-    </TableWrapper>
   );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 import { ContextMenuTrigger } from 'react-contextmenu';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import Editor from 'react-simple-code-editor';
 
 import jslint from 'libs/jslint';
@@ -77,7 +76,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
 
   React.useEffect(
     () => {
-      const wrapper = document.querySelector('.scrollbar-editor-wrapper');
+      const wrapper = wrapperRef.current;
+
       if (isScrollbarBottom && wrapper) {
         wrapper.scrollTop = wrapper.scrollHeight;
       }
@@ -132,39 +132,37 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         minHeight={minHeight}
         whiteSpacePre={whiteSpacePre}
       >
-        <PerfectScrollbar className="scrollbar-editor-wrapper visible">
-          <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
-            <Editor
-              value={value.toString()}
-              onValueChange={handleChange}
-              highlight={code => highlight(code, languages.js)}
-              textareaId={id}
-              name={name}
-              placeholder={placeholder}
-              onFocus={addFocusClass}
-              onBlur={removeFocusClass}
-              onKeyUp={setCursorCurrentPosition}
-              onClick={setCursorCurrentPosition}
-              onContextMenu={setCursorCurrentPosition}
-              tabSize={4}
-              padding={padding}
-              className="editor"
-              style={{
-                overflow: 'visible',
-                fontFamily: '"Roboto Mono", monospace',
-                fontSize: fontSize ? fontSize : 8.5,
-              }}
-            />
-          </ContextMenuTrigger>
-          {(contextMenuItems || contextSubMenuItems) && (
-            <ContextMenuList
-              menuId={menuId}
-              onClick={onContextMenuClick}
-              items={contextMenuItems}
-              subMenuItems={contextSubMenuItems}
-            />
-          )}
-        </PerfectScrollbar>
+        <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
+          <Editor
+            value={value.toString()}
+            onValueChange={handleChange}
+            highlight={code => highlight(code, languages.js)}
+            textareaId={id}
+            name={name}
+            placeholder={placeholder}
+            onFocus={addFocusClass}
+            onBlur={removeFocusClass}
+            onKeyUp={setCursorCurrentPosition}
+            onClick={setCursorCurrentPosition}
+            onContextMenu={setCursorCurrentPosition}
+            tabSize={4}
+            padding={padding}
+            className="editor"
+            style={{
+              overflow: 'visible',
+              fontFamily: '"Roboto Mono", monospace',
+              fontSize: fontSize ? fontSize : 8.5,
+            }}
+          />
+        </ContextMenuTrigger>
+        {(contextMenuItems || contextSubMenuItems) && (
+          <ContextMenuList
+            menuId={menuId}
+            onClick={onContextMenuClick}
+            items={contextMenuItems}
+            subMenuItems={contextSubMenuItems}
+          />
+        )}
       </EditorWrapper>
       {codeWarnings && codeWarnings.length && (
         <Box mt="5px">

@@ -1,11 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import 'theme/customScrollbar.css';
-
 import styled from 'theme';
 
 import {
@@ -103,11 +98,8 @@ const Root: React.FC<RootProps> = ({
   );
 
   return (
-    <PerfectScrollbar>
-      <RootWrapper
-        isBlured={isRelogin}
-        className="main-wrapper"
-      >
+    <React.Fragment>
+      <RootWrapper isBlured={isRelogin}>
         <div>
           <div>{isLoggedIn && (<Header />)}</div>
           <main>
@@ -133,7 +125,7 @@ const Root: React.FC<RootProps> = ({
         <Footer />
       </RootWrapper>
       <Modals isRelogin={isRelogin} />
-    </PerfectScrollbar>
+    </React.Fragment>
   );
 };
 

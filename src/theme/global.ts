@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     color: #333333;
     font-size: 14px;
     line-height: 1.35;
-    overflow: hidden;
+    overflow: auto;
   }
 
   ::-moz-selection {
