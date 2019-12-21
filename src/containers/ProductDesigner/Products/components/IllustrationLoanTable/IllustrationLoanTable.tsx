@@ -64,7 +64,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
       ),
     },
     {
-      maxWidth: 350,
+      maxWidth: 125,
       sortable: true,
       accessor: 'statementDate',
       Header: <TableHeader title="Statement Date" />,
@@ -88,7 +88,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
       ),
     },
     {
-      maxWidth: 200,
+      maxWidth: 125,
       sortable: true,
       accessor: 'apr',
       Header: <TableHeader title="Accrued Interest" />,
