@@ -19,7 +19,6 @@ const ProductIllustrationLoan: React.FC = () => {
           label="Start Date"
           placeholder={dateFormat.DATE}
           mask={maskFormat.DATE}
-          isDate={true}
           validate={[formErrorUtil.required, formErrorUtil.isDate]}
         />
       </Box>

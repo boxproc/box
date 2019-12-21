@@ -374,7 +374,7 @@ export const selectDefaultAprs = (state: StoreState) =>
   state.productDesigner.products.productFeeAprs;
 
 export const selectDefaultIllustrationLoan = (state: StoreState) =>
-  state.productDesigner.products.productInformation;
+  state.productDesigner.products.productIllustration;
 
 export const selectAprsOptions = createSelector(
   selectDefaultAprs,
@@ -385,6 +385,7 @@ export const selectAprsOptions = createSelector(
     };
   })
 );
+
 export const selectProductLoanIllustration = createSelector(
   selectDefaultIllustrationLoan,
   items => items && items.asMutable().map(item => prepareProductIllustrationData(item))

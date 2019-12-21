@@ -503,5 +503,5 @@ export interface ProductsState {
   productFees: ImmutableArray<ProductFeeItem>;
   productRewards: ImmutableArray<ProductRewardItem>;
   productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
-  productInformation: ImmutableArray<IllustrationProductLoanResp>;
+  productIllustration: ImmutableArray<IllustrationProductLoanResp>;
 }

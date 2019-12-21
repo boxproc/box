@@ -193,6 +193,8 @@ export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
 
 export type ResetProducts = () => void;
 
+export type ResetIllustrationLoan = () => void;
+
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
   type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
   payload: api.getInstitutionProducts(id),
@@ -344,6 +346,10 @@ export const illustrateLoanProduct: IllustrateLoanProduct = data => ({
 
 export const resetProducts: ResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
+});
+
+export const resetIllustrationLoan: ResetIllustrationLoan = () => ({
+  type: ActionTypeKeys.RESET_ILLUSTRATION_LOAN,
 });
 
 export const handleFilterProducts: HandleFilterProducts = () =>

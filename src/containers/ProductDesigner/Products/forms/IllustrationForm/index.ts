@@ -7,6 +7,7 @@ import {
   createLoadingSelector,
   handleIllustrateLoanProduct,
   ProductsActionTypes,
+  resetIllustrationLoan,
   selectCurrentProductType,
   selectProductLoanIllustration,
 } from 'store/domains';
@@ -32,6 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     illustrateLoanProduct: handleIllustrateLoanProduct,
+    resetIllustrationLoan,
   },
   dispatch
 );

@@ -140,6 +140,8 @@ export enum ActionTypeKeys {
   ILLUSTRATE_PRODUCT_LOAN_REJECTED = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN_REJECTED',
 
   RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
+
+  RESET_ILLUSTRATION_LOAN = 'productDesigner/products/RESET_ILLUSTRATION_LOAN',
 }
 
 export interface GetInstitutionProductsAction {
@@ -585,6 +587,10 @@ export interface ResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
 
+export interface ResetIllustrationLoanAction {
+  readonly type: ActionTypeKeys.RESET_ILLUSTRATION_LOAN;
+}
+
 export type ProductsActionTypes =
   | GetInstitutionProductsFulfilledAction
   | DeleteProductFulfilledAction
@@ -614,4 +620,5 @@ export type ProductsActionTypes =
   | UpdateProductAuxCountersFulfilledAction
   | GetProductFeeAprsFulfilledAction
   | IllustrateProductLoanFulfilledAction
-  | ResetProductsAction;
+  | ResetProductsAction
+  | ResetIllustrationLoanAction;

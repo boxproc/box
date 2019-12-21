@@ -13,7 +13,8 @@ import { formNamesConst } from 'consts';
 
 import {
   HandleIllustrateLoanProduct,
-  IllustrationProductLoan
+  IllustrationProductLoan,
+  ResetIllustrationLoan
 } from 'store/domains';
 import IllustrationLoanTable from '../../components/IllustrationLoanTable/IllustrationLoanTable';
 import ProductIllustrationLoan from '../../components/ProductIllustrationLoan';
@@ -22,6 +23,7 @@ interface IllustrationProductFormProps extends ExternalSpinnerProps {
   productIlustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   isLoading: boolean;
+  resetIllustrationLoan: ResetIllustrationLoan;
   onCancel?: () => void;
 }
 
@@ -31,11 +33,17 @@ type GeneralProductFormAllProps = IllustrationProductFormProps &
 const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   illustrateLoanProduct,
+  resetIllustrationLoan,
   productIlustration,
   onCancel,
   dirty,
 }) => {
-
+  React.useEffect(
+      () => {
+        return () => resetIllustrationLoan();
+      },
+      [resetIllustrationLoan]
+  );
   const handleSubmitForm = React.useCallback(
     handleSubmit(() => illustrateLoanProduct()),
     [handleSubmit]
