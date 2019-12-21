@@ -11,7 +11,7 @@ import { formErrorUtil } from 'utils';
 const ProductIllustrationLoan: React.FC = () => {
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
-      <Box width="120pxR" p="10px">
+      <Box width="120px" p="10px">
         <Field
           id="startDate"
           name="startDate"
