@@ -16,7 +16,7 @@ import { cookiesUtil } from 'utils';
 
 const FilterWrapper = styled.div`
   margin-bottom: 20px;
-  padding: 20px 20px 15px;
+  padding: 15px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
   background-color: rgba(0, 0, 0, .02);

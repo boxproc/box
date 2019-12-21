@@ -59,13 +59,6 @@ export const EditorWrapper = styled.div<WrapperProps>`
     min-width: 100%;
   }
 
-  .scrollbar-editor-wrapper {
-    ${({ visibilityHidden }) => visibilityHidden && `
-      visibility: hidden;
-      opacity: 0;
-    `}
-  }
-
   .react-contextmenu-wrapper {
     height: 100%;
   }

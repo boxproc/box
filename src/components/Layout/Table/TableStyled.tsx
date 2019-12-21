@@ -6,10 +6,12 @@ interface TableStyledProps {
   activeRowIndex: number;
   isSmaller?: boolean;
   minHeight?: number;
+  isScrollbar?: boolean;
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
-  overflow: visible;
+  box-shadow: ${({ theme }) => theme.shadows.normalBox};
+  overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
 
   .ReactTable,
   .ReactTable .rt-table {
