@@ -13,6 +13,7 @@ export enum uiItemConsts {
   ADMINISTRATION_ENDPOINTS = 'administration/endpoints',
   ADMINISTRATION_SCHEDULER = 'administration/scheduler',
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
+  ADMINISTRATION_UI_ITEMS_DESIGNER = 'administration/ui_items_designer',
   // AUDIT
   AUDIT_USER_ACTIVITY = 'audit/users_activity',
   AUDIT_API_CALLS = 'audit/api_calls',

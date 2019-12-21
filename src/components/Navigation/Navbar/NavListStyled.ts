@@ -7,20 +7,24 @@ export const NavListStyled = styled.div`
   display: flex;
   align-items: flex-start;
   line-height: 1.4;
+
   .${menuClasses.MENU_TITLE} {
     position: relative;
     cursor: pointer;
     padding: 7px 10px 6px;
+
     .icon {
       position: absolute;
       right: 2px;
       top: 50%;
       margin-top: -7px;
     }
+
     &:hover .icon {
       color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
+
   .${menuClasses.MENU_ITEM} {
     position: relative;
     border-radius: 2px;
@@ -33,6 +37,25 @@ export const NavListStyled = styled.div`
     margin: 0 1px;
     background-color: ${({ theme }) => theme.colors.white};
     z-index: 100
+
+    &.is-separator {
+      position: relative;
+      margin: 2px 4px 1px 1px;
+      pointer-events: none;
+      height: 3px;
+      overflow: none;
+
+      &:before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 7px;
+        right: 7px;
+        height: 1px
+        background: ${({ theme }) => theme.colors.lightGray};
+      }
+    }
+
     &:before {
       content: "";
       display: block;
@@ -43,12 +66,14 @@ export const NavListStyled = styled.div`
       bottom: -10px;
       cursor: default;
     }
+
     &.${menuClasses.ACTIVE} {
       & > .${menuClasses.SUB_MENU} {
         display: block;
       }
     }
   }
+
   .${menuClasses.SUB_MENU} {
     position: absolute;
     left: 0;
@@ -61,10 +86,12 @@ export const NavListStyled = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
+
     .${menuClasses.SUB_MENU} {
       left: calc(100% + 1px);
       top: -2px;
     }
+
     .${menuClasses.MENU_ITEM} {
       border-radius: 0;
       text-transform: none;
@@ -73,11 +100,13 @@ export const NavListStyled = styled.div`
       letter-spacing: normal;
       color: ${({ theme }) => theme.colors.black};
     }
+
     .${menuClasses.MENU_TITLE} {
       white-space: normal;
       padding-right: 15px;
     }
   }
+
   .${menuClasses.MENU_ITEM} {
     &:hover {
       background-color: ${({ theme }) => theme.colors.lighterGray};

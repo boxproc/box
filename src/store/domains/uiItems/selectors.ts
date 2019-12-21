@@ -1,21 +1,18 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store/StoreState';
+import { prepareUiItems, prepareUiItemsGroup } from './utils';
 
 export const selectDefaultUiItems = (state: StoreState) => state.uiItems.uiItems;
 
 export const selectUiItems = createSelector(
   selectDefaultUiItems,
-  uiItems => {
-    return uiItems && uiItems.asMutable().map(item => {
-      return {
-        id: item.ui_item,
-        parentId: item.ui_item.split('/').slice(0, -1).join('/') || null,
-        title: item.description,
-        type: item.item_type,
-      };
-    });
-  }
+  uiItems => prepareUiItems(uiItems)
+);
+
+export const selectUiItemsGroups = createSelector(
+  selectDefaultUiItems,
+  uiItems => prepareUiItemsGroup(uiItems)
 );
 
 export const selectIsUiItems = createSelector(

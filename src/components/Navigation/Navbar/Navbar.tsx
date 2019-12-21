@@ -32,25 +32,31 @@ const Navbar: React.FC<NavbarProps> = ({
   const menuRef = React.useRef(null);
 
   const renderItem = (item: UiItemPrepared) => {
-    const { id, parentId, title, type } = item;
+    const { id, parentId, title, type, separator } = item;
 
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
     const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
-
     const isLimitAdjustment = item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT;
+    const isUiItemsDesigner = item.id === uiItemConsts.ADMINISTRATION_UI_ITEMS_DESIGNER;
 
-    const handleClick = (isManualTransaction || isLimitAdjustment)
-      ? () => openModal({
-        name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
-        payload: { isLimitAdjustmentMode: isLimitAdjustment },
-      })
-      : () => history.push(`${basePath}${id}`);
+    const handleClick = () => {
+      if (isManualTransaction || isLimitAdjustment) {
+        return openModal({
+          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          payload: { isLimitAdjustmentMode: isLimitAdjustment },
+        });
+      } else if (isUiItemsDesigner) {
+        return openModal({ name: modalNamesConst.UI_ITEMS_DESIGNER });
+      } else {
+        return history.push(`${basePath}${id}`);
+      }
+    };
 
     return (
       <Box
         key={id}
-        className={menuClasses.MENU_ITEM}
+        className={`${menuClasses.MENU_ITEM} ${separator ? 'is-separator' : ''}`}
         onClick={() => !hasChildren && goToPage(handleClick, clearMenu)}
         onMouseEnter={e => toggleOpenMenu(e)}
       >

@@ -9,6 +9,7 @@ import LoginCode2faModal from 'containers/Modals/LoginCode2faModal';
 import LogModal from 'containers/Modals/LogModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
 import ChangePasswordModal from './ChangePasswordModal';
+import UiItemsDesignerModal from './UiItemsDesignerModal';
 
 import { endpointsModals } from 'containers/Administration/Endpoints/modals';
 import { institutionsModals } from 'containers/Administration/Institutions/modals';
@@ -43,6 +44,10 @@ export const modalsList = [
   {
     name: modalNamesConst.REGISTER_2FA,
     component: <Register2faModal />,
+  },
+  {
+    name: modalNamesConst.UI_ITEMS_DESIGNER,
+    component: <UiItemsDesignerModal />,
   },
   {
     name: modalNamesConst.LOGIN_CODE_2FA,
