@@ -10,3 +10,4 @@ export { default as FeesForm } from './FeesForm';
 export { default as RewardsForm } from './RewardsForm';
 export { default as GeneralLedgerFrom } from './GeneralLedgerFrom';
 export { default as ProductServicesForm } from './ProductServicesForm';
+export { default as IllustrationForm } from './IllustrationForm';

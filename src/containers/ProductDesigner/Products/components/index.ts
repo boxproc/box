@@ -10,4 +10,5 @@ export { default as AprsTable } from './AprsTable';
 export { default as FeesTable } from './FeesTable';
 export { default as RewardsTable } from './RewardsTable';
 export { default as GeneralLedger } from './GeneralLedger';
+export { default as IllustrationLoan } from './ProductIllustrationLoan';
 export * from './tableColumns';

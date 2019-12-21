@@ -9,6 +9,7 @@ import {
   ProductFeeAprItems,
   ProductFeeItems,
   ProductFeesIds,
+  ProductLoanIllustrationDataResp,
   ProductRewardItems,
   ProductRewardsIds,
   ProductRuleResp,
@@ -133,6 +134,10 @@ export enum ActionTypeKeys {
   DELETE_PRODUCT_REWARD = 'productDesigner/products/DELETE_PRODUCT_REWARD',
   DELETE_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_REWARD_FULFILLED',
   DELETE_PRODUCT_REWARD_REJECTED = 'productDesigner/products/DELETE_PRODUCT_REWARD_REJECTED',
+
+  ILLUSTRATE_PRODUCT_LOAN = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN',
+  ILLUSTRATE_PRODUCT_LOAN_FULFILLED = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN_FULFILLED',
+  ILLUSTRATE_PRODUCT_LOAN_REJECTED = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN_REJECTED',
 
   RESET_PRODUCTS = 'productDesigner/products/RESET_PRODUCTS',
 }
@@ -561,6 +566,21 @@ export interface DeleteProductRewardRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_REJECTED;
 }
 
+export interface IllustrateProductLoanAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN;
+}
+
+export interface IllustrateProductLoanFulfilledAction {
+  readonly payload: ProductLoanIllustrationDataResp ;
+  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED;
+}
+
+export interface IllustrateProductLoanRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_REJECTED;
+}
+
 export interface ResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
@@ -593,4 +613,5 @@ export type ProductsActionTypes =
   | UpdateGeneralLedgerFulfilledAction
   | UpdateProductAuxCountersFulfilledAction
   | GetProductFeeAprsFulfilledAction
+  | IllustrateProductLoanFulfilledAction
   | ResetProductsAction;
