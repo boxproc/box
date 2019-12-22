@@ -3,7 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import UiItemsDesignerModal from './UiItemsDesignerModal';
 
-import { selectUiItemsGroups } from 'store/domains';
+import { handleUpdateUiItems, selectUiItemsGroups } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
@@ -12,7 +12,9 @@ const mapStateToProps = (state: StoreState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {},
+  {
+    updateUiItems: handleUpdateUiItems,
+  },
   dispatch
 );
 

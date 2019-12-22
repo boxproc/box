@@ -10,8 +10,7 @@ export const uiItemsInitialState: ImmutableObject<UiItemsState> = Immutable({
 const uiItemsReducer = (state = uiItemsInitialState, action: UiItemsActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.GET_UI_ITEMS_FULFILLED:
-      return state
-        .set('uiItems', action.payload.ui_items);
+      return state.set('uiItems', action.payload.ui_items);
 
     default: return state;
   }

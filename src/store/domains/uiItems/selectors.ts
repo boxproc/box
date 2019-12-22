@@ -7,12 +7,12 @@ export const selectDefaultUiItems = (state: StoreState) => state.uiItems.uiItems
 
 export const selectUiItems = createSelector(
   selectDefaultUiItems,
-  uiItems => prepareUiItems(uiItems)
+  uiItems => uiItems && prepareUiItems(uiItems)
 );
 
 export const selectUiItemsGroups = createSelector(
   selectDefaultUiItems,
-  uiItems => prepareUiItemsGroup(uiItems)
+  uiItems => uiItems && prepareUiItemsGroup(uiItems)
 );
 
 export const selectIsUiItems = createSelector(

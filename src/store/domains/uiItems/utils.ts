@@ -1,11 +1,21 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { UiItem } from './types';
+import { UiItem, UiItemsGroupItem } from './types';
+
+const sortBySequenceNumber = (items: Array<UiItem>) => items.sort((a, b) => {
+  if (a.sequence_number) {
+    return 1;
+  } else if (b.sequence_number) {
+    return -1;
+  } else {
+    return null;
+  }
+});
 
 export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
-  return uiItems && uiItems.asMutable()
-    .sort((a, b) => a.sequence_number > b.sequence_number ? 1 : -1)
-    .map(item => {
+  const sortedItems = sortBySequenceNumber(uiItems.asMutable());
+
+  return sortedItems.map(item => {
       const {
         ui_item,
         description,
@@ -27,10 +37,10 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
 };
 
 export const prepareUiItemsGroup = (uiItems: ImmutableArray<UiItem>) => {
-  return uiItems && uiItems.asMutable()
-    .sort((a, b) => a.sequence_number > b.sequence_number ? 1 : -1)
-    .map(uiItem => {
-      const { ui_item, description, sequence_number, item_type } = uiItem;
+  const sortedItems = sortBySequenceNumber(uiItems.asMutable());
+
+  return sortedItems.map(item => {
+      const { ui_item, description, sequence_number, item_type } = item;
       const isSeparator = item_type === 'S';
 
       return {
@@ -58,4 +68,14 @@ export const prepareUiItemsGroup = (uiItems: ImmutableArray<UiItem>) => {
       }
       return acc;
     },      {});
+};
+
+export const prepareItemsToSend = (data: Array<Partial<UiItemsGroupItem>>):
+  Array<Partial<UiItem>> => {
+  return data && data.map(item => {
+    return {
+      ui_item: item.id,
+      sequence_number: item.sequenceNumber,
+    };
+  });
 };
