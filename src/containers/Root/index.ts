@@ -7,7 +7,7 @@ import {
   AuthActionTypes,
   createLoadingSelector,
   selectIsRelogin,
-  selectVisibleUiItems,
+  selectVisibleUiItemsList,
   setIsRelogin,
 } from 'store/domains';
 
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  visibleUiItems: selectVisibleUiItems(state),
+  visibleUiItemsList: selectVisibleUiItemsList(state),
   isRelogin: selectIsRelogin(state),
 });
 

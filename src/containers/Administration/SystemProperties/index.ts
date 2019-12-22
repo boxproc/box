@@ -12,6 +12,7 @@ import {
   resetSystemProperties,
   selectActiveItemId,
   selectAdminSysPropsItems,
+  selectIsReadOnly,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -25,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   adminSysPropsItems: selectAdminSysPropsItems(state),
   currentSysPropId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

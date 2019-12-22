@@ -7,8 +7,10 @@ import {
   resetUtils,
   selectIsAutoRefresh,
   selectIsOpenFilter,
+  selectUiItems,
+  setActivePagePermission,
   setIsOpenFilter,
-  stopAutoRefresh,
+  stopAutoRefresh
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -16,6 +18,7 @@ import { StoreState } from 'store/StoreState';
 const mapStateToProps = (state: StoreState) => ({
   isAutoRefresh: selectIsAutoRefresh(state),
   isOpenFilter: selectIsOpenFilter(state),
+  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -23,6 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     stopAutoRefresh,
     resetUtils,
     setIsOpenFilter,
+    setActivePagePermission,
   },
   dispatch
 );

@@ -47,13 +47,13 @@ const PagesWrapper = styled(Container)`
 `;
 
 interface RootProps extends ExternalSpinnerProps, WithModalProps {
-  visibleUiItems: Array<string>;
+  visibleUiItemsList: Array<string>;
   setIsRelogin: SetIsRelogin;
   isRelogin: boolean;
 }
 
 const Root: React.FC<RootProps> = ({
-  visibleUiItems,
+  visibleUiItemsList,
   openModal,
   setIsRelogin,
   isRelogin,
@@ -82,19 +82,21 @@ const Root: React.FC<RootProps> = ({
   );
 
   const routes = React.useMemo(
-    () => !isRelogin && pagesList && pagesList.map(page => {
-      return visibleUiItems
-        && visibleUiItems.includes(page.path)
-        && (
-          <PrivateRoute
-            exact={true}
-            key={page.path}
-            path={`${basePath}${page.path}`}
-            component={() => page.component}
-          />
-        );
-    }),
-    [visibleUiItems, isRelogin]
+    () => !isRelogin
+      && pagesList
+      && pagesList.map(page => {
+        return visibleUiItemsList
+          && visibleUiItemsList.includes(page.path)
+          && (
+            <PrivateRoute
+              exact={true}
+              key={page.path}
+              path={`${basePath}${page.path}`}
+              component={() => page.component}
+            />
+          );
+      }),
+    [visibleUiItemsList, isRelogin]
   );
 
   return (

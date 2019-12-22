@@ -12,6 +12,7 @@ export const utilsInitialState: ImmutableObject<UtilsState> = Immutable({
   isOpenFilter: true,
   isRelogin: false,
   isAccessibleFiltering: true,
+  activePagePermission: null,
 });
 
 const utilsReducer =
@@ -22,6 +23,9 @@ const utilsReducer =
 
       case ActionTypeKeys.SET_ACTIVE_ITEM_ID:
         return state.set('activeItemId', action.payload);
+
+      case ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION:
+        return state.set('activePagePermission', action.payload);
 
       case ActionTypeKeys.SET_IS_CLEAR_ACTIVE_IDS:
         return state.set('isClearActiveIds', action.payload);

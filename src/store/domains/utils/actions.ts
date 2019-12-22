@@ -1,6 +1,7 @@
 import {
   ActionTypeKeys,
   SetActiveItemIdAction,
+  SetActivePagePermissionAction,
   SetActiveTableRowIndexAction,
   SetIsAccessibleFilteringAction,
   SetIsClearActiveIdsAction,
@@ -15,6 +16,8 @@ export type HandleSetActiveTableRowIndex = (index: number) => void;
 
 export type SetActiveItemId = (id: number | string) => SetActiveItemIdAction;
 export type HandleSetActiveItemId = (id: number | string) => void;
+
+export type SetActivePagePermission = (value: string) => SetActivePagePermissionAction;
 
 export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
 export type HandleSetIsClearActiveIds = (value: boolean) => void;
@@ -38,6 +41,11 @@ export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
 export const setActiveItemId: SetActiveItemId = id => ({
   type: ActionTypeKeys.SET_ACTIVE_ITEM_ID,
   payload: id,
+});
+
+export const setActivePagePermission: SetActivePagePermission = value => ({
+  type: ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION,
+  payload: value,
 });
 
 export const setIsClearActiveIds: SetIsClearActiveIds = value => ({

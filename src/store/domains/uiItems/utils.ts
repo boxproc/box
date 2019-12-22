@@ -21,6 +21,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
         description,
         item_type,
         sequence_number,
+        permission,
       } = item;
 
       const isSeparator = item_type === 'S';
@@ -32,6 +33,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
         type: item_type,
         sequenceNumber: sequence_number,
         separator: isSeparator,
+        permission,
       };
     });
 };

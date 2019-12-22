@@ -5,6 +5,7 @@ export interface UiItem {
   ui_item: string;
   description: string;
   sequence_number: number;
+  permission: string;
 }
 
 export interface UiItemPrepared {
@@ -14,6 +15,7 @@ export interface UiItemPrepared {
   type: string;
   sequenceNumber: number;
   separator: boolean;
+  permission?: string;
 }
 
 export interface UiItemsGroupItem {

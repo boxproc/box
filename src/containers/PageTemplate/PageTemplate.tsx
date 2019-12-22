@@ -7,12 +7,18 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, CountDownTimer, Dropdown, DropdownOption, ExternalLink, T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst } from 'consts';
+import { basePath, iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
 import Filter from './Filter';
 
-import { ResetUtils, SetIsOpenFilter, StopAutoRefresh } from 'store/domains';
+import {
+  ResetUtils,
+  SetActivePagePermission,
+  SetIsOpenFilter,
+  StopAutoRefresh,
+  UiItemPrepared,
+} from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
 import { cookiesUtil, downloadUtil, stringsUtil } from 'utils';
@@ -35,6 +41,8 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   isOpenFilter: boolean;
   isDownloadButton?: boolean;
   isSearchable?: boolean;
+  uiItems: Array<UiItemPrepared>;
+  setActivePagePermission: SetActivePagePermission;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -57,6 +65,8 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     isOpenFilter,
     isDownloadButton,
     isSearchable,
+    uiItems,
+    setActivePagePermission,
     ...pageTemplateProps
   } = props;
 
@@ -69,6 +79,17 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       return () => clearInterval(timer);
     },
     [isAutoRefresh, filterAction]
+  );
+
+  React.useEffect(
+    () => {
+      const currentUiItem = uiItems
+        .find(item => `${basePath}${item.id}` === `${location.pathname}`);
+      const permission =  currentUiItem.permission;
+
+      setActivePagePermission(permission);
+    },
+    [setActivePagePermission, uiItems, location]
   );
 
   React.useEffect(
