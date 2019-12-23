@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { Button, ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
@@ -24,6 +24,7 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   mode: 'add' | 'edit';
   currentInterfaceName?: string;
+  isReadOnly: boolean;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -40,6 +41,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   mode,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -57,18 +59,18 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <GeneralInterfacesInfo
         institutionsOptions={institutionsOptions}
         isEditMode={isEditMode}
+        isReadOnly={isReadOnly}
       />
-      <Hr />
       <Flex
         alignItems="center"
         justifyContent="space-between"
       >
         <div>
-          {isEditMode && (
+          {isEditMode && !isReadOnly && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}
@@ -85,6 +87,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

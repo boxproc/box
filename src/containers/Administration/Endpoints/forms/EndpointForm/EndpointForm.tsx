@@ -25,6 +25,7 @@ interface EndpointFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
   mode: 'add' | 'edit';
   currentEndpointName: string;
+  isReadOnly: boolean;
 }
 
 type EndpointFormAllProps = EndpointFormProps &
@@ -41,6 +42,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   dirty,
   mode,
   currentEndpointName,
+  isReadOnly,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -58,10 +60,11 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <GeneralEndpointsInfo
         institutionsOptions={institutionsOptions}
         isEditMode={isEditMode}
+        isReadOnly={isReadOnly}
       />
       <Hr />
       <Flex
@@ -69,7 +72,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
         justifyContent="space-between"
       >
         <div>
-          {isEditMode && (
+          {isEditMode && !isReadOnly && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}
@@ -86,6 +89,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
           onCancel={onCancel}
           disabledOk={pristine}
           withCancelConfirmation={dirty}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

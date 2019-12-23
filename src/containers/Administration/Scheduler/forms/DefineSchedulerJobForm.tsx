@@ -41,6 +41,7 @@ interface DefineSchedulerJobFormProps {
   mode: 'add' | 'edit';
   openModal?: OpenModal;
   currentSchedulerName?: string;
+  isReadOnly?: boolean;
 }
 
 type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
@@ -59,6 +60,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   pristine,
   openModal,
   currentSchedulerName,
+  isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(defineAdminSchedulerJob),
@@ -73,7 +75,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   const isEditMode = mode === 'edit';
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Box mx="-10px" >
         <Flex
           flexWrap="wrap"
@@ -87,7 +89,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={isDisabledInstitutions}
+              isDisabled={isDisabledInstitutions || isReadOnly}
               isClearable={false}
               validate={[formErrorUtil.required]}
             />
@@ -99,6 +101,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Name"
               component={InputField}
               label="Name"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -110,7 +113,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               label="Status"
               placeholder="Select Status"
               options={schedulerStatusTypesOptions}
-              isDisabled={isDisabledStatus}
+              isDisabled={isDisabledStatus || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -123,6 +126,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   component={TextField}
                   label="Description"
                   placeholder="Enter Description"
+                  readOnly={isReadOnly}
                 />
               </Box>
               <Box width="50%" p="10px">
@@ -132,6 +136,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
                   component={TextField}
                   label="Parameters"
                   placeholder="Enter Parameters"
+                  readOnly={isReadOnly}
                 />
               </Box>
             </Flex>
@@ -144,6 +149,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               component={SelectField}
               label="Executable Type"
               options={executableTypeOptions}
+              isDisabled={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -154,6 +160,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Executable"
               component={InputField}
               label="Executable"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -164,6 +171,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Log Location"
               component={InputField}
               label="Log Location"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -174,6 +182,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               placeholder="Enter Cron Expression"
               component={InputField}
               label="Cron Expression"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -183,6 +192,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               text="Build cron expression"
               underline={true}
               onClick={handleOpenModal}
+              disabled={isReadOnly}
             />
           </Box>
         </Flex>
@@ -193,7 +203,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
         justifyContent="space-between"
       >
         <div>
-          {isEditMode && (
+          {isEditMode && !isReadOnly && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}
@@ -206,10 +216,11 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
         </div>
         <OkCancelButtons
           okText="Save"
-          cancelText="Cancel"
+          cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

@@ -14,11 +14,13 @@ import { formErrorUtil } from 'utils';
 export interface GeneralEndpointsInfoProps {
   institutionsOptions: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
+  isReadOnly: boolean;
 }
 
 const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
   institutionsOptions,
   isDisabledInstitutions,
+  isReadOnly,
 }) => {
   return (
     <Box mx="-10px" >
@@ -31,7 +33,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions}
+            isDisabled={isDisabledInstitutions || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />
@@ -43,6 +45,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={InputField}
             label="Name"
             placeholder="Enter name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -53,6 +56,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={InputField}
             label="Port"
             placeholder="Enter port"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -64,6 +68,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -75,6 +80,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             label="Type"
             options={endpointsOptions}
             placeholder="Select Type"
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -85,6 +91,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={InputField}
             label="Private Key Location"
             placeholder="Enter Private Key Location"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -95,6 +102,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={InputField}
             label="Log File Location"
             placeholder="Enter Log File Location"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -105,6 +113,7 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             component={TextField}
             label="Connection Attributes"
             placeholder="Enter Connection Attributes"
+            readOnly={isReadOnly}
           />
         </Box>
       </Flex>

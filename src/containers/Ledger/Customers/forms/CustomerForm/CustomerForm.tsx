@@ -95,7 +95,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
         )}
         <OkCancelButtons
           okText="Save"
-          cancelText="Cancel"
+          cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}

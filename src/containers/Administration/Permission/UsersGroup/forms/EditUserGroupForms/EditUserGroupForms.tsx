@@ -16,11 +16,13 @@ import EditUserGroupMembersForm from './EditUserGroupMembersForm';
 export interface EditUserGroupFormsProps {
   isAnyFormDirty: boolean;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
   isAnyFormDirty,
   onCancel,
+  isReadOnly,
 }) => {
   return (
     <Tabs>
@@ -28,25 +30,28 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         title="General"
         withConfirmation={isAnyFormDirty}
       >
-        <EditGeneralInfoUserGroupFrom onCancel={onCancel} />
+        <EditGeneralInfoUserGroupFrom
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="User Group Members"
         withConfirmation={isAnyFormDirty}
       >
-        <Box mb="10px">
-          <EditUserGroupMembersForm />
+        {!isReadOnly && (<EditUserGroupMembersForm />)}
+        <Box mt="20px">
+          <UserGroupMembers />
         </Box>
-        <UserGroupMembers />
       </TabsPanel>
       <TabsPanel
         title="Group Permission"
         withConfirmation={isAnyFormDirty}
       >
-        <Box mb="10px">
-          <EditGroupPermissionForm />
+        {!isReadOnly && (<EditGroupPermissionForm />)}
+        <Box mt="20px">
+          <UserGroupPermission />
         </Box>
-        <UserGroupPermission />
       </TabsPanel>
     </Tabs>
   );

@@ -16,6 +16,7 @@ export interface GeneralUserGroupInfoProps {
   isEditMode?: boolean;
   isInstitutionsLoading: boolean;
   getAdminInstitutions: HandleGetAdminInstitutions;
+  isReadOnly: boolean;
 }
 
 const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
@@ -23,6 +24,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
   isEditMode,
   getAdminInstitutions,
   isInstitutionsLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -44,7 +46,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isEditMode}
+            isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             isLoading={isInstitutionsLoading}
             validate={[formErrorUtil.required]}
@@ -57,6 +59,7 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
             component={InputField}
             label="Group Name"
             placeholder="Enter Group Name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>

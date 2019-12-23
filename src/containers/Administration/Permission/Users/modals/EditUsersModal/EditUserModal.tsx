@@ -22,6 +22,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   userDetails,
   isFormDirty,
   currentUsername,
+  isReadOnly,
 }) => {
   const username = React.useMemo(
     () => currentUsername ? `: "${currentUsername}"` : '',
@@ -45,6 +46,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
         onCancel={handleOnCancel}
         isEditMode={true}
         initialValues={userDetails}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

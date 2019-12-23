@@ -110,20 +110,6 @@ export const uiItems: UiItems = {
       permission: 'R',
     },
     {
-      ui_item: 'administration/separator_2',
-      description: null,
-      item_type: 'S',
-      order_number: 8,
-      permission: 'W',
-    },
-    {
-      ui_item: 'administration/ui_items_designer',
-      description: 'UI items designer',
-      item_type: 'm',
-      order_number: 9,
-      permission: 'W',
-    },
-    {
       ui_item: 'audit',
       description: 'Audit',
       item_type: 'M',

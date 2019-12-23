@@ -16,6 +16,7 @@ const modalName = modalNamesConst.EDIT_SYSTEM_PROPERTY;
 const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
   closeModal,
   isFormDirty,
+  isReadOnly,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -32,6 +33,7 @@ const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
       <SystemPropertyForm
         onCancel={handleOnCancel}
         isEditMode={true}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

@@ -22,6 +22,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   adminCurrentInstitution,
   adminCurrentInstitutionName,
   isFormDirty,
+  isReadOnly,
 }) => {
   const institutionName = React.useMemo(
     () => adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '',
@@ -44,6 +45,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
       <InstitutionForm
         initialValues={adminCurrentInstitution}
         onCancel={handleOnCancel}
+        isReadOnly={isReadOnly}
         mode="edit"
       />
     </Modal>

@@ -35,6 +35,7 @@ interface DefineUserFormProps {
   addAdminUser: HandleAddAdminUser;
   updateAdminUser: HandleUpdateAdminUser;
   onCancel?: () => void;
+  isReadOnly?: boolean;
 }
 
 type DefineUserFormAllProps = DefineUserFormProps &
@@ -52,6 +53,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   pristine,
   institutionsOptions,
   change,
+  isReadOnly,
 }) => {
   const isRegistrationPendingStatus = React.useMemo(
     () => !requires2faFlagValue
@@ -103,7 +105,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Box mx="-10px" >
         <Flex
           flexWrap="wrap"
@@ -116,6 +118,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               placeholder="Enter First Name"
               component={InputField}
               label="First Name"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -127,6 +130,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Last Name"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -137,7 +141,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -149,6 +153,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               options={typeOfCyclesEditorOptions}
               label="Email"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.email]}
             />
           </Box>
@@ -161,7 +166,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Institution"
               options={institutionsOptions}
               isClearable={false}
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -174,6 +179,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                 label="Status"
                 placeholder="Select Status"
                 options={statusOptions}
+                isDisabled={isEditMode || isReadOnly}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -184,7 +190,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="requires2faFlag"
               component={CheckboxField}
               label="2FA Required"
-              disabled={!isMasterInstitutionUser}
+              disabled={!isMasterInstitutionUser || isReadOnly}
             />
           </Box>
           <Box width="100%" p="5px 10px">
@@ -193,42 +199,47 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="changeProfileAllowedFlag"
               component={CheckboxField}
               label="Change Profile Allowed"
-              disabled={!isMasterInstitutionUser}
+              disabled={!isMasterInstitutionUser || isReadOnly}
             />
           </Box>
-          <Hr />
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="password"
-              name="password"
-              placeholder="Enter Password"
-              component={PasswordField}
-              autoComplete="new-password"
-              label="Password"
-              validate={passwordValidation}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="passwordRepeat"
-              name="passwordRepeat"
-              placeholder="Repeat Password"
-              component={PasswordField}
-              autoComplete="new-password"
-              label="Repeat Password"
-              validate={repeatPasswordValidation}
-            />
-          </Box>
+          {!isReadOnly && (
+            <React.Fragment>
+              <Hr />
+              <Box width={[1 / 3]} p="10px">
+                <Field
+                  id="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  component={PasswordField}
+                  autoComplete="new-password"
+                  label="Password"
+                  validate={passwordValidation}
+                />
+              </Box>
+              <Box width={[1 / 3]} p="10px">
+                <Field
+                  id="passwordRepeat"
+                  name="passwordRepeat"
+                  placeholder="Repeat Password"
+                  component={PasswordField}
+                  autoComplete="new-password"
+                  label="Repeat Password"
+                  validate={repeatPasswordValidation}
+                />
+              </Box>
+            </React.Fragment>
+          )}
         </Flex>
       </Box>
       <Hr />
       <OkCancelButtons
         okText="Save"
-        cancelText="Cancel"
+        cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form >
   );

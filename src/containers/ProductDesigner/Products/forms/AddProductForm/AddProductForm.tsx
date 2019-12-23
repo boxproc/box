@@ -60,7 +60,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
           <Hr />
           <OkCancelButtons
             okText="Save"
-            cancelText="Cancel"
+            cancelText="Close"
             onCancel={onCancel}
             rightPosition={true}
             withCancelConfirmation={dirty}

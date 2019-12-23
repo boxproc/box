@@ -26,6 +26,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   institutionsOptions,
   currentInterfaceName,
   isFormDirty,
+  isReadOnly,
 }) => {
   const interfaceName = React.useMemo(
     () => currentInterfaceName ? `: "${currentInterfaceName}"` : '',
@@ -51,6 +52,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
         initialValues={adminCurrentInterface}
         institutionsOptions={institutionsOptions}
         currentInterfaceName={currentInterfaceName}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

@@ -31,6 +31,7 @@ interface InstitutionFormProps extends ExternalSpinnerProps {
   adminCurrentInstitutionName: string;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  isReadOnly: boolean;
 }
 
 type InstitutionFormAllProps = InstitutionFormProps &
@@ -46,6 +47,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   mode,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -63,7 +65,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Box mx="-10px">
         <Flex
           alignItems="flex-end"
@@ -89,7 +91,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               component={InputField}
               label="Name"
               placeholder="Enter Institution"
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -101,6 +103,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               options={statusTypesOptions}
               label="Status"
               placeholder="Select Status"
+              isDisabled={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -111,6 +114,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               component={InputField}
               label="SFTP Location"
               placeholder="Enter SFTP Location"
+              readOnly={isReadOnly}
             />
           </Box>
           <Box width={[1]} p="10px">
@@ -120,6 +124,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               component={InputField}
               label="SFTP Public Key"
               placeholder="Enter SFTP Public Key"
+              readOnly={isReadOnly}
             />
           </Box>
           <Box width={[1]} p="10px">
@@ -139,7 +144,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
         justifyContent="space-between"
       >
         <div>
-          {isEditMode && (
+          {isEditMode && !isReadOnly && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}
@@ -156,6 +161,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           withCancelConfirmation={dirty}
           disabledOk={pristine}
           onCancel={onCancel}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

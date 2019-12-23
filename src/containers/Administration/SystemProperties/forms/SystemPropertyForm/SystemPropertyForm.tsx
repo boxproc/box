@@ -22,6 +22,7 @@ interface SystemPropertyFormProps extends ExternalSpinnerProps {
   addAdminSystemProperty: HandleAddAdminSysProp;
   updateAdminSystemProperty: HandleUpdateAdminSysProps;
   isEditMode?: boolean;
+  isReadOnly: boolean;
   onCancel: () => void;
 }
 
@@ -31,6 +32,7 @@ type SystemPropertyFormAllProps = SystemPropertyFormProps &
 const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   handleSubmit,
   isEditMode,
+  isReadOnly,
   addAdminSystemProperty,
   updateAdminSystemProperty,
   onCancel,
@@ -48,7 +50,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Box mx="-10px">
         <Flex
           alignItems="flex-end"
@@ -61,7 +63,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
             />
           </Box>
           {isEditMode && (
@@ -82,6 +84,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               placeholder="Enter Current Value"
               component={InputField}
               label="Current Value"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -109,11 +112,12 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
       <Hr />
       <OkCancelButtons
         okText="Save"
-        cancelText="Cancel"
+        cancelText="Close"
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form >
   );

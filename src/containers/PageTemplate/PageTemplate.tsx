@@ -43,6 +43,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   isSearchable?: boolean;
   uiItems: Array<UiItemPrepared>;
   setActivePagePermission: SetActivePagePermission;
+  isReadOnly: boolean;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -66,6 +67,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     isDownloadButton,
     isSearchable,
     uiItems,
+    isReadOnly,
     setActivePagePermission,
     ...pageTemplateProps
   } = props;
@@ -150,7 +152,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
         </Filter>
       )}
       <Flex alignItems="center">
-        {newModalName && (
+        {newModalName && !isReadOnly && (
           <Box mr="20px">
             <Button
               text="Add New"

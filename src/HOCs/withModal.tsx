@@ -9,12 +9,15 @@ import {
   CloseModal,
   openModal,
   OpenModal,
+  selectIsReadOnly,
 } from 'store/domains';
+import { StoreState } from 'store/StoreState';
 
 export interface WithModalProps {
   openModal: OpenModal;
   closeModal: CloseModal;
   closeAllModals: CloseAllModals;
+  isReadOnly: boolean;
 }
 
 export const withModal = <OriginProps extends {}>(
@@ -25,6 +28,11 @@ export const withModal = <OriginProps extends {}>(
       <Component {...props as OriginProps} />
     );
   };
+
+  const mapStateToProps = (state: StoreState) => ({
+    isReadOnly: selectIsReadOnly(state),
+  });
+
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     {
       openModal,
@@ -35,7 +43,7 @@ export const withModal = <OriginProps extends {}>(
   );
 
   return connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(WithModal);
 };

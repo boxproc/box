@@ -24,6 +24,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   isGeneralInfoFormDirty,
   isUserGroupMembersFormDirty,
   isGroupPermissionFormDirty,
+  isReadOnly,
 }) => {
   const currentName = React.useMemo(
     () => (groupName && institutionName) ? `: "${groupName}" (${institutionName})` : '',
@@ -53,6 +54,7 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
       <EditUserGroupForms
         onCancel={handleOnCancel}
         isAnyFormDirty={isAnyFormDirty}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

@@ -22,6 +22,7 @@ const modalName = modalNamesConst.EDIT_ENDPOINT;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
+  isReadOnly,
   adminCurrentEndpoint,
   institutionsOptions,
   isFormDirty,
@@ -51,6 +52,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
         initialValues={adminCurrentEndpoint}
         institutionsOptions={institutionsOptions}
         currentEndpointName={adminCurrentEndpointName}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

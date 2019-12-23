@@ -14,17 +14,17 @@ import { formErrorUtil } from 'utils';
 export interface GeneralInterfacesInfoProps {
   institutionsOptions: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
+  isReadOnly: boolean;
 }
 
 const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
   institutionsOptions,
   isDisabledInstitutions,
+  isReadOnly,
 }) => {
   return (
     <Box mx="-10px" >
-      <Flex
-        flexWrap="wrap"
-      >
+      <Flex flexWrap="wrap">
         <Box width={[1 / 3]} p="10px">
           <Field
             id="institutionId"
@@ -33,7 +33,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions}
+            isDisabled={isDisabledInstitutions || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />
@@ -45,6 +45,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             component={InputField}
             label="Name"
             placeholder="Enter Name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -55,6 +56,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             component={InputField}
             label="URL"
             placeholder="Enter URL"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -65,6 +67,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             component={InputField}
             label="Private Key Location"
             placeholder="Enter Private Key Location"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -76,6 +79,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -87,6 +91,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             label="Type"
             placeholder="Select Type"
             options={typeOfInterfacesCodes}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -98,6 +103,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             label="Protocol Type"
             placeholder="Select Type"
             options={protocolTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -111,6 +117,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
                 label="Log File Location Attributes"
                 placeholder="Enter Log File Location"
                 height={120}
+                readOnly={isReadOnly}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -122,6 +129,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
                 label="Connection Attributes"
                 placeholder="Enter Connection Attributes"
                 height={120}
+                readOnly={isReadOnly}
               />
             </Box>
           </Flex>

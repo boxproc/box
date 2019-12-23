@@ -30,6 +30,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   schedulerJobValues,
   currentSchedulerName,
   isFormDirty,
+  isReadOnly,
 }) => {
   const currentName = React.useMemo(
     () => currentSchedulerName ? `: "${currentSchedulerName}"` : '',
@@ -56,6 +57,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         isDisabledInstitutions={true}
         deleteAdminSchedulerJob={deleteAdminSchedulerJob}
         mode="edit"
+        isReadOnly={isReadOnly}
         currentSchedulerName={currentSchedulerName}
       />
     </Modal>
