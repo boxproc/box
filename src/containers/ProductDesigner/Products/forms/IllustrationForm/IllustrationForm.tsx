@@ -27,6 +27,7 @@ interface IllustrationProductFormProps extends ExternalSpinnerProps {
   isLoading: boolean;
   resetIllustrationLoan: ResetIllustrationLoan;
   onCancel?: () => void;
+  isReadOnly: boolean;
 }
 
 type GeneralProductFormAllProps = IllustrationProductFormProps &
@@ -39,6 +40,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   productIllustration,
   onCancel,
   dirty,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -54,14 +56,16 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmitForm}>
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <ProductIllustrationLoan />
-        </Flex>
-      </form>
+      {!isReadOnly && (
+        <form onSubmit={handleSubmitForm}>
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <ProductIllustrationLoan />
+          </Flex>
+        </form>
+      )}
       <Box mt="10px">
         <IllustrationLoanTable productIllustration={productIllustration} />
       </Box>

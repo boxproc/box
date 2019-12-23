@@ -11,12 +11,14 @@ interface ProductAuxiliaryCountersProps {
   isCounter1Enabled: boolean;
   isCounter2Enabled: boolean;
   isCounter3Enabled: boolean;
+  isReadOnly: boolean;
 }
 
 const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
   isCounter1Enabled,
   isCounter2Enabled,
   isCounter3Enabled,
+  isReadOnly,
 }) => {
   return (
     <Box mx="-10px">
@@ -30,6 +32,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             name="auxCounter1Enabled"
             component={CheckboxField}
             label=""
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -39,7 +42,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 1 Description"
             placeholder="Enter Aux Counter 1 Description"
-            disabled={!isCounter1Enabled}
+            readOnly={!isCounter1Enabled || isReadOnly}
             validate={isCounter1Enabled ? [formErrorUtil.required] : null}
           />
         </Box>
@@ -50,6 +53,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             name="auxCounter2Enabled"
             component={CheckboxField}
             label=""
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -59,7 +63,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 2 Description"
             placeholder="Enter Aux Counter 2 Description"
-            disabled={!isCounter2Enabled}
+            readOnly={!isCounter2Enabled || isReadOnly}
             validate={isCounter2Enabled ? [formErrorUtil.required] : null}
           />
         </Box>
@@ -70,6 +74,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             name="auxCounter3Enabled"
             component={CheckboxField}
             label=""
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 2]} p="10px">
@@ -79,7 +84,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             component={InputField}
             label="Aux Counter 3 Description"
             placeholder="Enter Aux Counter 3 Description"
-            disabled={!isCounter3Enabled}
+            readOnly={!isCounter3Enabled || isReadOnly}
             validate={isCounter3Enabled ? [formErrorUtil.required] : null}
           />
         </Box>

@@ -38,6 +38,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isServicesFormDirty,
   isGlFormDirty,
   isIllustrationFormDirty,
+  isReadOnly,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -94,6 +95,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         onCancel={handleOnCancel}
         isProductOverride={isProductOverride}
         isAnyFormDirty={isAnyFormDirty}
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

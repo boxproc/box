@@ -15,6 +15,7 @@ interface ProductServicesProps {
   getProductServices: HandleGetProductServices;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
+  isReadOnly: boolean;
 }
 
 const ProductServices: React.FC<ProductServicesProps> = ({
@@ -23,6 +24,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
   getProductServices,
   isLoadingInterfaces,
   isLoadingEndpoints,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -47,6 +49,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
+            isDisabled={isReadOnly}
           />
         </Box>
         <Delimiter />
@@ -60,6 +63,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productEndpointsServiceOptions}
             isLoading={isLoadingEndpoints}
             isClearable={false}
+            isDisabled={isReadOnly}
           />
         </Box>
         <Delimiter />
@@ -73,6 +77,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
+            isDisabled={isReadOnly}
           />
         </Box>
         <Delimiter />
@@ -86,6 +91,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
+            isDisabled={isReadOnly}
           />
         </Box>
         <Delimiter />
@@ -99,6 +105,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
             options={productInterfacesServiceOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
+            isDisabled={isReadOnly}
           />
         </Box>
       </Flex>

@@ -5,9 +5,11 @@ import { Box, Flex } from '@rebass/grid';
 
 import { InputField } from 'components';
 
-interface GeneralLedgerProps { }
+interface GeneralLedgerProps {
+  isReadOnly: boolean;
+}
 
-const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
+const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -21,6 +23,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
             component={InputField}
             label="Account Assets"
             placeholder="Enter Account Assets"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -30,6 +33,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
             component={InputField}
             label="Account Liabilities"
             placeholder="Enter Account Liabilities"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -39,6 +43,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
             component={InputField}
             label="Account Profit"
             placeholder="Enter Account Profit"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -48,6 +53,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = () => {
             component={InputField}
             label="Account Loss"
             placeholder="Enter Account Loss"
+            readOnly={isReadOnly}
           />
         </Box>
       </Flex>

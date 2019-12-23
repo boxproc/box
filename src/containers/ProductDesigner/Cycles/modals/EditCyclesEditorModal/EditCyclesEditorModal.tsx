@@ -20,6 +20,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
   cycleEditorValues,
   isFormDirty,
+  isReadOnly,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -38,6 +39,7 @@ const EditCyclesEditorModal: React.FC<EditSchedulerModalProps> = ({
         onCancel={handleOnCancel}
         initialValues={cycleEditorValues}
         mode="edit"
+        isReadOnly={isReadOnly}
       />
     </Modal>
   );

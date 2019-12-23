@@ -16,6 +16,7 @@ interface RulesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
+  isReadOnly: boolean;
   rulesValues: {
     eventId: SelectValues;
     actionType: SelectValues;
@@ -34,6 +35,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   pristine,
   rulesValues,
   change,
+  isReadOnly,
 }) => {
   const { eventId, actionType } = rulesValues;
 
@@ -62,11 +64,12 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductRules
         eventValue={eventId}
         onChangeValues={handleGetRule}
         changeFormField={change}
+        isReadOnly={isReadOnly}
       />
       <OkCancelButtons
         okText="Save"
@@ -75,6 +78,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form>
   );

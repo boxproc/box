@@ -18,6 +18,7 @@ interface RewardsFormProps {
   isLoading: boolean;
   rewardApplicationConditionValue: SelectValues;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 type RewardsFormAllProps = RewardsFormProps & InjectedFormProps<{}, RewardsFormProps>;
@@ -31,6 +32,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
   isLoading,
   rewardApplicationConditionValue,
   change,
+  isReadOnly,
 }) => {
   const isOnlyAmount = React.useMemo(
     () => {
@@ -73,7 +75,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
 
   return (
     <React.Fragment>
-      <Box pb="10px">
+      {!isReadOnly && (
         <form onSubmit={handleSubmitForm}>
           <ProductRewards
             isDisabled={isLoading}
@@ -82,8 +84,10 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
             isOnlyAmount={isOnlyAmount}
           />
         </form>
+      )}
+      <Box pt="10px">
+        <RewardsTable />
       </Box>
-      <RewardsTable />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

@@ -14,6 +14,7 @@ interface GeneralLedgerFromProps extends ExternalSpinnerProps {
   currentProductId: number;
   updateGeneralLedger: HandleUpdateGeneralLedger;
   onCancel?: () => void;
+  isReadOnly: boolean;
 }
 
 type GeneralLedgerFromAllProps = GeneralLedgerFromProps &
@@ -25,6 +26,7 @@ const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
   handleSubmit,
   onCancel,
   pristine,
+  isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateGeneralLedger({
@@ -35,8 +37,8 @@ const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <GeneralLedger />
+    <form onSubmit={isReadOnly ? handleSubmitForm : null}>
+      <GeneralLedger isReadOnly={isReadOnly} />
       <Hr />
       <OkCancelButtons
         okText="Save"
@@ -44,6 +46,7 @@ const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form>
   );

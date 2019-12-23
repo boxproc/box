@@ -16,7 +16,11 @@ import { aprTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-const RevolvingCreditDetails: React.FC = () => {
+interface RevolvingCreditDetailsProps {
+  isReadOnly?: boolean;
+}
+
+const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadOnly }) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -32,6 +36,7 @@ const RevolvingCreditDetails: React.FC = () => {
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -43,6 +48,7 @@ const RevolvingCreditDetails: React.FC = () => {
             component={SelectField}
             options={aprTypesOptions}
             label="APR Default Calculation Method"
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -55,6 +61,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Fee Exceed Limit"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -67,6 +74,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Rate Exceed Limit"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -79,6 +87,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Fee Late Payment"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -91,6 +100,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Rate Late Payment"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -104,6 +114,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Fee Overpayment"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -116,6 +127,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Rate Overpayment"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -128,6 +140,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum Payment Amount"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -140,6 +153,7 @@ const RevolvingCreditDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum Payment Rate"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -151,8 +165,9 @@ const RevolvingCreditDetails: React.FC = () => {
             placeholder="Enter # of Days"
             component={InputField}
             label="Payment Grace # Of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width={[2 / 5]} p="10px" pb="15px">
@@ -161,6 +176,7 @@ const RevolvingCreditDetails: React.FC = () => {
             name="limitSharingAllowedFlag"
             component={CheckboxField}
             label="Limit Sharing Allowed"
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

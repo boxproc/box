@@ -50,6 +50,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   changeFormField: (field: string, value: string) => void;
   scriptValue: string;
   actionTypesOptions: SelectValues;
+  isReadOnly: boolean;
 }
 
 const getNewCode = (element: string) => {
@@ -80,6 +81,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   changeFormField,
   scriptValue,
   actionTypesOptions,
+  isReadOnly,
 }) => {
   const textarea = document.querySelector('#rule-script') as HTMLInputElement;
 
@@ -216,13 +218,16 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               component={TextField}
               label="Description"
               height={34}
+              readOnly={isReadOnly}
             />
           </Box>
           <ScriptWrapper>
-            <SnippetButtons
-              className="snippet-buttons"
-              onClick={onSnippetButtonClick}
-            />
+            {!isReadOnly && (
+              <SnippetButtons
+                className="snippet-buttons"
+                onClick={onSnippetButtonClick}
+              />
+            )}
             <Box width={[1]} p="10px">
               <Field
                 id="rule-script"
@@ -237,6 +242,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 checkJSSyntax={true}
                 fontSize={11}
                 height="calc(100vh - 400px)"
+                readOnly={isReadOnly}
               />
             </Box>
           </ScriptWrapper>

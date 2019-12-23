@@ -14,6 +14,7 @@ interface AuxiliaryCountersFormProps extends ExternalSpinnerProps {
   currentProductId: number;
   updateProductAuxCounters: HandleUpdateProductAuxCounters;
   onCancel?: () => void;
+  isReadOnly: boolean;
 }
 
 type AuxiliaryCountersFormAllProps = AuxiliaryCountersFormProps &
@@ -25,6 +26,7 @@ const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
   handleSubmit,
   onCancel,
   pristine,
+  isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProductAuxCounters({
@@ -35,8 +37,8 @@ const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <ProductAuxiliaryCounters />
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
+      <ProductAuxiliaryCounters isReadOnly={isReadOnly} />
       <Hr />
       <OkCancelButtons
         okText="Save"
@@ -44,6 +46,7 @@ const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form>
   );

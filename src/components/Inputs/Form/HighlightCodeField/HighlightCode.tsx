@@ -71,6 +71,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   setCursorCurrentPosition,
   menuId,
   checkJSSyntax,
+  readOnly,
 }) => {
   const [codeWarnings, setCodeWarnings] = React.useState([]);
 
@@ -132,7 +133,10 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
         minHeight={minHeight}
         whiteSpacePre={whiteSpacePre}
       >
-        <ContextMenuTrigger id={menuId ? menuId : 'context-menu-trigger'}>
+        <ContextMenuTrigger
+          id={menuId ? menuId : 'context-menu-trigger'}
+          disable={readOnly}
+        >
           <Editor
             value={value.toString()}
             onValueChange={handleChange}
@@ -148,6 +152,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
             tabSize={4}
             padding={padding}
             className="editor"
+            disabled={readOnly}
             style={{
               overflow: 'visible',
               fontFamily: '"Roboto Mono", monospace',
@@ -155,7 +160,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
             }}
           />
         </ContextMenuTrigger>
-        {(contextMenuItems || contextSubMenuItems) && (
+        {!readOnly && (contextMenuItems || contextSubMenuItems) && (
           <ContextMenuList
             menuId={menuId}
             onClick={onContextMenuClick}
@@ -164,7 +169,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
           />
         )}
       </EditorWrapper>
-      {codeWarnings && codeWarnings.length && (
+      {!readOnly && codeWarnings && codeWarnings.length && (
         <Box mt="5px">
           <WarningsCount>
             <WarningIconWrapper size="12" />

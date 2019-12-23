@@ -22,6 +22,7 @@ interface EditProductFormsProps {
   isProductOverride: boolean;
   isAnyFormDirty: boolean;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 const EditProductForms: React.FC<EditProductFormsProps> = ({
@@ -29,6 +30,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   isProductOverride,
   isAnyFormDirty,
   onCancel,
+  isReadOnly,
 }) => {
   const isIllustration = React.useMemo(
     () => {
@@ -50,6 +52,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         <GeneralProductForm
           onCancel={onCancel}
           isProductOverride={isProductOverride}
+          isReadOnly={isReadOnly}
         />
       </TabsPanel>
       <TabsPanel
@@ -61,49 +64,71 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         <ProductDetailsForm
           productType={currentProductType}
           onCancel={onCancel}
+          isReadOnly={isReadOnly}
         />
       </TabsPanel>
       <TabsPanel
         title="Rules"
         withConfirmation={isAnyFormDirty}
       >
-        <ProductRulesForm onCancel={onCancel} />
+        <ProductRulesForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="Aux counters"
         withConfirmation={isAnyFormDirty}
       >
-        <AuxiliaryCountersForm onCancel={onCancel} />
+        <AuxiliaryCountersForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="APRs"
         withConfirmation={isAnyFormDirty}
       >
-        <AprsForm onCancel={onCancel} />
+        <AprsForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="Fees"
         withConfirmation={isAnyFormDirty}
       >
-        <FeesForm onCancel={onCancel} />
+        <FeesForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="Rewards"
         withConfirmation={isAnyFormDirty}
       >
-        <RewardsForm onCancel={onCancel} />
+        <RewardsForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="Services"
         withConfirmation={isAnyFormDirty}
       >
-        <ProductServicesForm onCancel={onCancel} />
+        <ProductServicesForm
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       <TabsPanel
         title="GL"
         withConfirmation={isAnyFormDirty}
       >
-        <GeneralLedgerFrom onCancel={onCancel} />
+        <GeneralLedgerFrom
+          onCancel={onCancel}
+          isReadOnly={isReadOnly}
+        />
       </TabsPanel>
       {isIllustration && (
         <TabsPanel
@@ -112,6 +137,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
         >
           <IllustrationForm
             onCancel={onCancel}
+            isReadOnly={isReadOnly}
           />
         </TabsPanel>
       )}

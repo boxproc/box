@@ -20,6 +20,7 @@ interface ProductDetailsFormProps extends ExternalSpinnerProps {
   productType: SelectValues;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
+  isReadOnly: boolean;
 }
 
 type ProductDetailsFormAllProps = ProductDetailsFormProps &
@@ -33,6 +34,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   updateProductDetails,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -47,9 +49,10 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductDetails
         productType={productType && productType.value}
+        isReadOnly={isReadOnly}
       />
       <Hr />
       <OkCancelButtons
@@ -59,6 +62,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form>
   );

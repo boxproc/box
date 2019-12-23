@@ -20,6 +20,7 @@ interface FeesFormProps {
   feeApplicationConditionValue: SelectValues;
   aprsOptions: Array<SelectValues>;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 type FeesFormAllProps = FeesFormProps & InjectedFormProps<{}, FeesFormProps>;
@@ -35,6 +36,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   feeApplicationConditionValue,
   aprsOptions,
   change,
+  isReadOnly,
 }) => {
   const isOnlyAmount = React.useMemo(
     () => {
@@ -77,7 +79,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
 
   return (
     <React.Fragment>
-      <Box pb="10px">
+      {!isReadOnly && (
         <form onSubmit={handleSubmitForm}>
           <ProductFees
             isAprsLoading={isAprsLoading}
@@ -89,8 +91,10 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
             aprsOptions={aprsOptions}
           />
         </form>
+      )}
+      <Box pt="10px">
+        <FeesTable />
       </Box>
-      <FeesTable />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

@@ -9,7 +9,11 @@ import { loanTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-const LoanDetails: React.FC = () => {
+interface LoanDetailsProps {
+  isReadOnly?: boolean;
+}
+
+const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -24,6 +28,7 @@ const LoanDetails: React.FC = () => {
             label="Loan Type"
             placeholder="Select Loan Type"
             options={loanTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -37,6 +42,7 @@ const LoanDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Apr"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -49,6 +55,7 @@ const LoanDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Fee Late Payment"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -59,8 +66,9 @@ const LoanDetails: React.FC = () => {
             placeholder="Enter # of Days"
             component={InputField}
             label="Payment Grace # of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             isNumber={true}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
       </Flex>

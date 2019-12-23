@@ -26,6 +26,7 @@ interface ProductGeneralInfoProps {
   getCyclesDescriptions: HandleGetCyclesDescriptions;
   statementCyclesOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
+  isReadOnly: boolean;
 }
 
 type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
@@ -38,6 +39,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   getCyclesDescriptions,
   statementCyclesOptions,
   currentInstitution,
+  isReadOnly,
 }) => {
   const currentInstitutionValue = React.useMemo(
     () => currentInstitution && currentInstitution.value,
@@ -69,7 +71,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Product Type"
             placeholder="Select Product Type"
             options={productTypesOptions}
-            isDisabled={isEditMode}
+            isDisabled={isEditMode || isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -81,7 +83,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionsOptions}
-            isDisabled={isEditMode}
+            isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />
@@ -93,6 +95,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter Name"
             component={InputField}
             label="Name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -104,6 +107,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Card Form Factor"
             placeholder="Select Card"
             options={cardFormFactorOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -115,6 +119,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={InputField}
             label="# of Days Card Expires"
             isNumber={true}
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
@@ -126,6 +131,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Status"
             placeholder="Select Status"
             options={statusTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -136,6 +142,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={SelectField}
             label="Scheme"
             placeholder="Select Scheme"
+            isDisabled={isReadOnly}
             options={schemeTypesOptions}
           />
         </Box>
@@ -148,6 +155,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Currency Code"
             options={currencyCodes}
             isLoading={isCurrencyCodesLoading}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -159,6 +167,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             label="Default Statement Cycle"
             placeholder="Select Statement Cycle"
             options={statementCyclesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -169,8 +178,9 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Enter # of Days"
             component={InputField}
             label="Retention # of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
             isNumber={true}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -181,6 +191,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             component={TextField}
             label="Description"
             height={115}
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -189,6 +200,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

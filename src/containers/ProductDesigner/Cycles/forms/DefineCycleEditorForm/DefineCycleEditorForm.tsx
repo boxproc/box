@@ -41,6 +41,7 @@ interface DefineCyclesEditorFormProps extends ExternalSpinnerProps {
   deleteCyclesEditor: HandleDeleteCycleEditor;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  isReadOnly: boolean;
 }
 
 type DefineCycleEditorFormAllProps = DefineCyclesEditorFormProps &
@@ -57,6 +58,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   mode,
   pristine,
   dirty,
+  isReadOnly,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -94,7 +96,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Box mx="-10px" >
         <Flex flexWrap="wrap">
           <Box width={[1 / 2]} p="10px">
@@ -105,7 +107,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               isClearable={false}
               validate={[formErrorUtil.required]}
             />
@@ -118,6 +120,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               label="Status"
               placeholder="Select Status"
               options={statusTypeCyclesOptions}
+              isDisabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -128,6 +131,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               placeholder="Enter Description"
               component={TextField}
               label="Description"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -139,7 +143,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
               component={SelectField}
               options={typeOfCyclesEditorOptions}
               label="Cycles Type"
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -153,6 +157,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 label="Monthly Cycle First Day"
                 options={executableTypeOptions}
                 isNumber={true}
+                readOnly={isReadOnly}
               />
             </Box>
           )}
@@ -165,6 +170,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 component={SelectField}
                 options={weeklyCycleTypeOptions}
                 label="Weekly First Day"
+                isDisabled={isReadOnly}
               />
             </Box>
           )}
@@ -177,6 +183,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
                 component={InputField}
                 label="Fixed Number of Days"
                 isNumber={true}
+                readOnly={isReadOnly}
               />
             </Box>
           )}
@@ -188,7 +195,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
         justifyContent="space-between"
       >
         <div>
-          {mode === 'edit' && (
+          {isEditMode && !isReadOnly && (
             <Button
               text="delete"
               iconName={iconNamesConst.DELETE}
@@ -205,6 +212,7 @@ const DefineCycleEditorForm: React.FC<DefineCycleEditorFormAllProps> = ({
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

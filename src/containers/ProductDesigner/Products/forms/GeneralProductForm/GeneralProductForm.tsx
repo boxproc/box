@@ -28,6 +28,7 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   isProductOverride: boolean;
   onCancel?: () => void;
   currentProductName: string;
+  isReadOnly: boolean;
 }
 
 type GeneralProductFormAllProps = GeneralProductFormProps &
@@ -44,6 +45,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   isProductOverride,
   currentInstitution,
   currentProductName,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -69,28 +71,33 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           </Box>
         </Flex>
       )}
-      <form onSubmit={handleSubmitForm}>
+      <form onSubmit={isReadOnly ? null : handleSubmitForm}>
         <ProductGeneralInfo
           isEditMode={true}
           currentInstitution={currentInstitution}
+          isReadOnly={isReadOnly}
         />
         <Hr />
         <Flex
           alignItems="center"
           justifyContent="space-between"
         >
-          <Button
-            text="delete"
-            iconName={iconNamesConst.DELETE}
-            type="reset"
-            withConfirmation={true}
-            confirmationText={
-              isProductOverride
-                ? `Delete product override: "${currentProductName}"?`
-                : `Delete product: "${currentProductName}"?`
-            }
-            onClick={deleteProduct}
-          />
+          <div>
+            {!isReadOnly && (
+              <Button
+                text="delete"
+                iconName={iconNamesConst.DELETE}
+                type="reset"
+                withConfirmation={true}
+                confirmationText={
+                  isProductOverride
+                    ? `Delete product override: "${currentProductName}"?`
+                    : `Delete product: "${currentProductName}"?`
+                }
+                onClick={deleteProduct}
+              />
+            )}
+          </div>
           <OkCancelButtons
             okText="Save"
             cancelText="Close"
@@ -98,6 +105,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
             rightPosition={true}
             withCancelConfirmation={dirty}
             disabledOk={pristine}
+            hideOk={isReadOnly}
           />
         </Flex>
       </form>

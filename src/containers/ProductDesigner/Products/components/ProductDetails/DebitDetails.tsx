@@ -7,7 +7,11 @@ import { CheckboxField, NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-const DebitDetails: React.FC = () => {
+interface DebitDetailsProps {
+  isReadOnly?: boolean;
+}
+
+const DebitDetails: React.FC<DebitDetailsProps> = ({ isReadOnly }) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -23,6 +27,7 @@ const DebitDetails: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Apr Overdraft"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
@@ -32,6 +37,7 @@ const DebitDetails: React.FC = () => {
             name="overdraftAllowed"
             component={CheckboxField}
             label="Overdraft Allowed"
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

@@ -15,6 +15,7 @@ interface AprsFormProps {
   addProductApr: HandleAddProductApr;
   isLoading: boolean;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
@@ -26,6 +27,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
   pristine,
   dirty,
   isLoading,
+  isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductApr),
@@ -34,7 +36,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
 
   return (
     <React.Fragment>
-      <Box pb="10px">
+      {!isReadOnly && (
         <form onSubmit={handleSubmitForm}>
           <Flex alignItems="flex-end" flexWrap="wrap">
             <ProductAprs
@@ -43,8 +45,10 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
             />
           </Flex>
         </form>
+      )}
+      <Box pt="10px">
+        <AprsTable />
       </Box>
-      <AprsTable />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

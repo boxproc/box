@@ -7,7 +7,11 @@ import { CheckboxField, InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-const PrepaidDetails: React.FC = () => {
+interface PrepaidDetailsProps {
+  isReadOnly?: boolean;
+}
+
+const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
   return (
     <Box mx="-10px">
       <Flex
@@ -21,8 +25,9 @@ const PrepaidDetails: React.FC = () => {
             placeholder="Enter # of Days"
             component={InputField}
             label="Dormant After # Of Days"
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
             isNumber={true}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -31,6 +36,7 @@ const PrepaidDetails: React.FC = () => {
             name="breakagesAllowed"
             component={CheckboxField}
             label="Break Ages Allowed"
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1]} p="10px">
@@ -39,6 +45,7 @@ const PrepaidDetails: React.FC = () => {
             name="reloadAllowed"
             component={CheckboxField}
             label="Reload Allowed"
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

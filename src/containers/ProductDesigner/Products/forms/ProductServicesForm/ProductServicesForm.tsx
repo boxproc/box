@@ -28,6 +28,7 @@ interface ServicesFormProps extends ExternalSpinnerProps {
   getProductServices: HandleGetProductServices;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
+  isReadOnly: boolean;
 }
 
 type ServicesFormAllProps = ServicesFormProps &
@@ -45,6 +46,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   isLoadingEndpoints,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
@@ -55,13 +57,14 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Services
         productEndpointsServiceOptions={productEndpointsServiceOptions}
         productInterfacesServiceOptions={productInterfacesServiceOptions}
         getProductServices={getProductServices}
         isLoadingInterfaces={isLoadingInterfaces}
         isLoadingEndpoints={isLoadingEndpoints}
+        isReadOnly={isReadOnly}
       />
       <Hr />
       <OkCancelButtons
@@ -71,6 +74,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </form>
   );
