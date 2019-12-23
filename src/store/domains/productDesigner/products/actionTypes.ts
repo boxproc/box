@@ -574,7 +574,7 @@ export interface IllustrateProductLoanAction {
 }
 
 export interface IllustrateProductLoanFulfilledAction {
-  readonly payload: ProductLoanIllustrationDataResp ;
+  readonly payload: ProductLoanIllustrationDataResp;
   readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED;
 }
 

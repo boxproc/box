@@ -12,15 +12,17 @@ import {
 import { formNamesConst } from 'consts';
 
 import {
+  IllustrationLoanTable,
+  ProductIllustrationLoan,
+} from 'containers/ProductDesigner/Products/components';
+import {
   HandleIllustrateLoanProduct,
   IllustrationProductLoan,
   ResetIllustrationLoan
 } from 'store/domains';
-import IllustrationLoanTable from '../../components/IllustrationLoanTable/IllustrationLoanTable';
-import ProductIllustrationLoan from '../../components/ProductIllustrationLoan';
 
 interface IllustrationProductFormProps extends ExternalSpinnerProps {
-  productIlustration: Array<IllustrationProductLoan>;
+  productIllustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   isLoading: boolean;
   resetIllustrationLoan: ResetIllustrationLoan;
@@ -34,16 +36,17 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   illustrateLoanProduct,
   resetIllustrationLoan,
-  productIlustration,
+  productIllustration,
   onCancel,
   dirty,
 }) => {
   React.useEffect(
-      () => {
-        return () => resetIllustrationLoan();
-      },
-      [resetIllustrationLoan]
+    () => {
+      return () => resetIllustrationLoan();
+    },
+    [resetIllustrationLoan]
   );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(() => illustrateLoanProduct()),
     [handleSubmit]
@@ -51,24 +54,18 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
 
   return (
     <React.Fragment>
-      )}
       <form onSubmit={handleSubmitForm}>
         <Flex
           alignItems="center"
           justifyContent="space-between"
         >
-          <ProductIllustrationLoan
-          />
+          <ProductIllustrationLoan />
         </Flex>
       </form>
       <Box mt="10px">
-        <IllustrationLoanTable
-          productIlustration={productIlustration}
-        />
+        <IllustrationLoanTable productIllustration={productIllustration} />
       </Box>
-      <Flex
-        justifyContent="flex-end"
-      >
+      <Flex justifyContent="flex-end">
         <Button
           text="Close"
           onClick={onCancel}

@@ -3,6 +3,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import IllustrationForm from './IllustrationForm';
 
+import { illustrationInitialValues } from 'containers/ProductDesigner/Products/consts';
+
 import {
   createLoadingSelector,
   handleIllustrateLoanProduct,
@@ -13,7 +15,6 @@ import {
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
-import { dateUtil } from 'utils';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.ILLUSTRATE_PRODUCT_LOAN,
@@ -21,13 +22,9 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: {
-      startDate: dateUtil.todayDate,
-      amount: 1200,
-      nrLoanCycles: 10,
-  },
+  initialValues: illustrationInitialValues,
   currentProductType: selectCurrentProductType,
-  productIlustration: selectProductLoanIllustration(state),
+  productIllustration: selectProductLoanIllustration(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

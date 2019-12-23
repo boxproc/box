@@ -186,7 +186,7 @@ export type GetProductFeeAprs = (id: number) => GetProductFeeAprsAction;
 export type HandleGetProductFeeAprs = () => Thunk<void>;
 
 export type IllustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
-IllustrateProductLoanAction;
+  IllustrateProductLoanAction;
 export type HandleIllustrateLoanProduct = () => Thunk<void>;
 
 export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
@@ -378,7 +378,7 @@ export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
           productId: selectActiveItemId(state),
           ...formValues(state),
         }
-          );
+        );
 
         if (preparedValues) {
           await dispatch(illustrateLoanProduct(preparedValues));

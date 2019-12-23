@@ -389,4 +389,4 @@ export const selectAprsOptions = createSelector(
 export const selectProductLoanIllustration = createSelector(
   selectDefaultIllustrationLoan,
   items => items && items.asMutable().map(item => prepareProductIllustrationData(item))
-  );
+);

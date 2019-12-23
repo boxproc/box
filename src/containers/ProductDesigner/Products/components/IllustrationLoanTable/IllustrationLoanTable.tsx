@@ -2,36 +2,20 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import {
-  Table,
-  TableCell,
-  TableHeader,
-} from 'components';
+import { Table, TableCell, TableHeader } from 'components';
 
-import {
-  IllustrationProductLoan
-} from 'store/domains';
+import { IllustrationProductLoan } from 'store/domains';
+
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof IllustrationProductLoan> = TableCellType<IllustrationProductLoan[T]>;
 
 interface IllustrationLoanTableProps {
-  productIlustration: Array<IllustrationProductLoan>;
+  productIllustration: Array<IllustrationProductLoan>;
 }
 
-const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
-  productIlustration,
-
-}) => {
+const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIllustration }) => {
   const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
-
-  React.useEffect(
-    () => {
-      Promise.all([
-      ]);
-    },
-    []
-  );
 
   // update screen height for setting various number of table rows per page
   const updateWindowHeight = () => setScreenHeight(window.innerHeight);
@@ -100,47 +84,47 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
       ),
     },
     {
-        maxWidth: 120,
-        sortable: true,
-        accessor: 'fee',
-        Header: <TableHeader title="Fees" />,
-        Cell: (props: TCell<'fee'>) => (
-          <TableCell
-            value={props.value}
-            isNumber={true}
-          />
-        ),
-      },
+      maxWidth: 120,
+      sortable: true,
+      accessor: 'fee',
+      Header: <TableHeader title="Fees" />,
+      Cell: (props: TCell<'fee'>) => (
+        <TableCell
+          value={props.value}
+          isNumber={true}
+        />
+      ),
+    },
     {
-        maxWidth: 120,
-        sortable: true,
-        accessor: 'minimumAmountDueRepayment',
-        Header: <TableHeader title="Payment Due" />,
-        Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
-          <TableCell
-            value={props.value}
-            isNumber={true}
-          />
-        ),
-      },
+      maxWidth: 120,
+      sortable: true,
+      accessor: 'minimumAmountDueRepayment',
+      Header: <TableHeader title="Payment Due" />,
+      Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
+        <TableCell
+          value={props.value}
+          isNumber={true}
+        />
+      ),
+    },
     {
-        maxWidth: 120,
-        sortable: true,
-        accessor: 'amount',
-        Header: <TableHeader title="Balance to Repay" />,
-        Cell: (props: TCell<'amount'>) => (
-          <TableCell
-            value={props.value}
-            isNumber={true}
-          />
-        ),
-      },
+      maxWidth: 120,
+      sortable: true,
+      accessor: 'amount',
+      Header: <TableHeader title="Balance to Repay" />,
+      Cell: (props: TCell<'amount'>) => (
+        <TableCell
+          value={props.value}
+          isNumber={true}
+        />
+      ),
+    },
   ];
 
   return (
     <Box pb="10px">
       <Table
-        data={productIlustration}
+        data={productIllustration}
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}

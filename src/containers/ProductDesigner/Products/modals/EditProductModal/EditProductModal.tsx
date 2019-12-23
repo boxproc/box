@@ -19,6 +19,7 @@ interface EditProductModalProps extends WithModalProps {
   isRewardsFormDirty: boolean;
   isServicesFormDirty: boolean;
   isGlFormDirty: boolean;
+  isIllustrationFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_PRODUCT;
@@ -36,6 +37,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isRewardsFormDirty,
   isServicesFormDirty,
   isGlFormDirty,
+  isIllustrationFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -62,7 +64,8 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         || isFeesFormDirty
         || isRewardsFormDirty
         || isServicesFormDirty
-        || isGlFormDirty;
+        || isGlFormDirty
+        || isIllustrationFormDirty;
     },
     [
       isGeneralProductFormDirty,
@@ -74,6 +77,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       isRewardsFormDirty,
       isServicesFormDirty,
       isGlFormDirty,
+      isIllustrationFormDirty,
     ]
   );
 

@@ -381,7 +381,7 @@ export interface ProductAprItems {
   product_aprs: Array<ProductAprItem>;
 }
 
-export interface ProductFeeAprItemResp  {
+export interface ProductFeeAprItemResp {
   product_apr_id: number | string;
   apr_description: string;
 }

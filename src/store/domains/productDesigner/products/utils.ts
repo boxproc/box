@@ -65,16 +65,16 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
   };
 };
 export const prepareProductLoanIllustrateDataToSend =
-(data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-  const { productId, amount, nrLoanCycles, startDate } = data;
+  (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
+    const { productId, amount, nrLoanCycles, startDate } = data;
 
-  return {
-    product_id: productId,
-    amount,
-    nr_loan_cycles: Number(nrLoanCycles),
-    start_date: startDate,
+    return {
+      product_id: productId,
+      amount,
+      nr_loan_cycles: Number(nrLoanCycles),
+      start_date: startDate,
+    };
   };
-};
 
 export const prepareCardServiceDataToSend = (data: Partial<ServicesItemsPrepared>) => {
   if (!data) {
@@ -327,21 +327,21 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
   }
 
   const {
-  statement_id,
-  statement_date,
-  installment_balance,
-  fee,
-  apr,
-  minimum_amount_due_repayment,
-  amount,
+    statement_id,
+    statement_date,
+    installment_balance,
+    fee,
+    apr,
+    minimum_amount_due_repayment,
+    amount,
   } = data;
 
   return {
     statementId: statement_id,
     statementDate: statement_date,
-    amount:  stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
-    installment_balance.toFixed(2),
+      installment_balance.toFixed(2),
     fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
     apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
     minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
