@@ -7,12 +7,14 @@ import {
   FeesForm,
   GeneralLedgerFrom,
   GeneralProductForm,
+  IllustrationForm,
   ProductDetailsForm,
   ProductRulesForm,
   ProductServicesForm,
   RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 
+import { productTypesCodes } from 'consts';
 import { SelectValues } from 'types';
 
 interface EditProductFormsProps {
@@ -28,6 +30,17 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   isAnyFormDirty,
   onCancel,
 }) => {
+  const isIllustration = React.useMemo(
+    () => {
+      if (!currentProductType) {
+        return false;
+      }
+
+      return currentProductType.value === productTypesCodes.LOAN;
+    },
+    [currentProductType]
+  );
+
   return (
     <Tabs>
       <TabsPanel
@@ -92,6 +105,16 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       >
         <GeneralLedgerFrom onCancel={onCancel} />
       </TabsPanel>
+      {isIllustration && (
+        <TabsPanel
+          title="Illustration"
+          withConfirmation={isAnyFormDirty}
+        >
+          <IllustrationForm
+            onCancel={onCancel}
+          />
+        </TabsPanel>
+      )}
     </Tabs>
   );
 };

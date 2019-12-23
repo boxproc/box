@@ -38,8 +38,32 @@ export interface ProductItemResp extends ProductItemPlainResp {
   aux_counter_3_enabled?: string;
 }
 
+export interface IllustrationProductLoanResp {
+  statement_id: number;
+  statement_date: string;
+  installment_balance: number;
+  fee: number;
+  apr: number;
+  amount: number;
+  minimum_amount_due_repayment: number;
+}
+
+export interface IllustrationProductLoan {
+  statementId: number | string;
+  statementDate: number | string;
+  installmentBalance: number | string;
+  fee: number | string;
+  apr: number | string;
+  amount: number | string;
+  minimumAmountDueRepayment: number | string;
+}
+
 export interface ProductsDataResp {
   products: Array<ProductItemResp>;
+}
+
+export interface ProductLoanIllustrationDataResp {
+  product_information: Array<IllustrationProductLoanResp>;
 }
 
 export interface ProductDataResp {
@@ -83,6 +107,20 @@ export interface ProductFilterPrepared {
   status: string;
   institution_id: number | string;
   product_type: Array<number | string>;
+}
+
+export interface LoanProductIllustratePrepared {
+  product_id: number;
+  amount: number;
+  start_date: string;
+  nr_loan_cycles: number;
+}
+
+export interface LoanProductIllustrate {
+  productId: number;
+  amount: number;
+  startDate: string;
+  nrLoanCycles: number;
 }
 
 export interface RevolvingCreditProductItemResp {
@@ -465,4 +503,5 @@ export interface ProductsState {
   productFees: ImmutableArray<ProductFeeItem>;
   productRewards: ImmutableArray<ProductRewardItem>;
   productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
+  productIllustration: ImmutableArray<IllustrationProductLoanResp>;
 }

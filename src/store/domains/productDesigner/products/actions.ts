@@ -32,6 +32,7 @@ import {
   GetProductFeesAction,
   GetProductRewardsAction,
   GetProductRuleAction,
+  IllustrateProductLoanAction,
   UpdateCardServiceAction,
   UpdateGeneralLedgerAction,
   UpdateProductAction,
@@ -47,6 +48,7 @@ import { selectCurrentInstitutionId, selectCurrentProductType } from './selector
 import {
   GeneralLedgerItem,
   GeneralLedgerItemPrepared,
+  LoanProductIllustratePrepared,
   NewProduct,
   NewProductPrepared,
   ProductApr,
@@ -87,6 +89,7 @@ import {
   prepareProductDetailsDataToSend,
   prepareProductFeesToSend,
   prepareProductFilterDataToSend,
+  prepareProductLoanIllustrateDataToSend,
   prepareProductRewardsToSend,
   prepareProductRuleDataToSend,
   prepareProductRuleIdsToSend,
@@ -182,9 +185,15 @@ export type HandleDeleteProductReward = (data: ProductRewardsIds) => Thunk<void>
 export type GetProductFeeAprs = (id: number) => GetProductFeeAprsAction;
 export type HandleGetProductFeeAprs = () => Thunk<void>;
 
+export type IllustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
+IllustrateProductLoanAction;
+export type HandleIllustrateLoanProduct = () => Thunk<void>;
+
 export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
 
 export type ResetProducts = () => void;
+
+export type ResetIllustrationLoan = () => void;
 
 export const getInstitutionProducts: GetInstitutionProducts = id => ({
   type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
@@ -330,8 +339,17 @@ export const getProductFeeAprs: GetProductFeeAprs = id => ({
   payload: api.getProductFeeAprs(id),
 });
 
+export const illustrateLoanProduct: IllustrateLoanProduct = data => ({
+  type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN,
+  payload: api.illustrateLoanProduct(data),
+});
+
 export const resetProducts: ResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
+});
+
+export const resetIllustrationLoan: ResetIllustrationLoan = () => ({
+  type: ActionTypeKeys.RESET_ILLUSTRATION_LOAN,
 });
 
 export const handleFilterProducts: HandleFilterProducts = () =>
@@ -344,6 +362,26 @@ export const handleFilterProducts: HandleFilterProducts = () =>
 
         if (preparedValues) {
           await dispatch(filterProducts(preparedValues));
+        }
+      },
+      dispatch
+    );
+  };
+
+export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
+        const state = getState();
+        const preparedValues = prepareProductLoanIllustrateDataToSend({
+          productId: selectActiveItemId(state),
+          ...formValues(state),
+        }
+          );
+
+        if (preparedValues) {
+          await dispatch(illustrateLoanProduct(preparedValues));
         }
       },
       dispatch

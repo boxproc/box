@@ -18,6 +18,9 @@ import {
   DebitProductItem,
   DebitProductItemResp,
   GeneralLedgerItemPrepared,
+  IllustrationProductLoanResp,
+  LoanProductIllustrate,
+  LoanProductIllustratePrepared,
   LoanProductItem,
   LoanProductItemResp,
   NewProduct,
@@ -59,6 +62,17 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
     status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
     institution_id: institutionId ? institutionId.value : null,
     product_type: productType && productType.length ? productType.map(type => type.value) : null,
+  };
+};
+export const prepareProductLoanIllustrateDataToSend =
+(data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
+  const { productId, amount, nrLoanCycles, startDate } = data;
+
+  return {
+    product_id: productId,
+    amount,
+    nr_loan_cycles: Number(nrLoanCycles),
+    start_date: startDate,
   };
 };
 
@@ -164,6 +178,24 @@ export const prepareGeneralProductItem = (
   };
 };
 
+export const prepareProductDetailsData = (product: any, productType: SelectValues) => {
+  const type = productType.value;
+
+  if (type === productTypesCodes.DEBIT) {
+    return prepareDebit(product);
+  } else if (type === productTypesCodes.LOAN) {
+    return prepareLoan(product);
+  } else if (type === productTypesCodes.PREPAID) {
+    return preparePrepaid(product);
+  } else if (type === productTypesCodes.REVOLVING_CREDIT) {
+    return prepareRevolvingCredit(product);
+  } else if (type === productTypesCodes.SAVINGS) {
+    return prepareSavings(product);
+  } else {
+    return null;
+  }
+};
+
 export const prepareGeneralProductData = (data: ProductItemResp):
   Partial<ProductItemGeneral> => {
   if (!data) {
@@ -243,24 +275,6 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
   };
 };
 
-export const prepareProductDetailsData = (product: any, productType: SelectValues) => {
-  const type = productType.value;
-
-  if (type === productTypesCodes.DEBIT) {
-    return prepareDebit(product);
-  } else if (type === productTypesCodes.LOAN) {
-    return prepareLoan(product);
-  } else if (type === productTypesCodes.PREPAID) {
-    return preparePrepaid(product);
-  } else if (type === productTypesCodes.REVOLVING_CREDIT) {
-    return prepareRevolvingCredit(product);
-  } else if (type === productTypesCodes.SAVINGS) {
-    return prepareSavings(product);
-  } else {
-    return null;
-  }
-};
-
 export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => {
   if (!data) {
     return null;
@@ -304,6 +318,34 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
       && rate_late_payment.toFixed(2),
     rateOverpayment: stringsUtil.checkNumberToFixed(rate_overpayment)
       && rate_overpayment.toFixed(2),
+  };
+};
+
+export const prepareProductIllustrationData = (data: IllustrationProductLoanResp) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+  statement_id,
+  statement_date,
+  installment_balance,
+  fee,
+  apr,
+  minimum_amount_due_repayment,
+  amount,
+  } = data;
+
+  return {
+    statementId: statement_id,
+    statementDate: statement_date,
+    amount:  stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
+    installment_balance.toFixed(2),
+    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
+    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
+    minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
+      && minimum_amount_due_repayment.toFixed(2),
   };
 };
 

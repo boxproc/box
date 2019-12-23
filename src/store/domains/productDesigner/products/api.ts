@@ -15,6 +15,7 @@ import { apiClient } from 'services';
 
 import {
   GeneralLedgerItem,
+  LoanProductIllustratePrepared,
   NewProductPrepared,
   ProductAprIds,
   ProductAprItem,
@@ -83,6 +84,9 @@ export const deleteProduct = (id: number) =>
 export const filterProducts = (data: ProductFilterPrepared) =>
   // throttleUtil.getDataAfter(productItemsFilteredData, 500);
   apiClient.post(productsPathNames.GET_PRODUCTS, { data });
+
+export const illustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
+  apiClient.post(productsPathNames.ILLUSTRATE_LOAN_PRODUCT, { data });
 
 export const addProduct = (data: NewProductPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
