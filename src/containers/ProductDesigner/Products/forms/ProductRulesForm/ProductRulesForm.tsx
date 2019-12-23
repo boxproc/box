@@ -50,7 +50,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
           && actionType.value === actionTypesCodeKeys.APPROVE_DENY) {
           setInitialScript(rulesInitialFormValues.transactionApproveDeny);
         } else if (eventId.value === eventTypesCodeKeys.TRANSACTION
-          && actionType.value === actionTypesCodeKeys.SET_TRANSACTION_APR) {
+          && actionType.value === actionTypesCodeKeys.SET_APR) {
           setInitialScript(rulesInitialFormValues.transactionSetTransactionApr);
         } else {
           setInitialScript(null);

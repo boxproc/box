@@ -201,7 +201,7 @@ export const dataTypesOptions = [
 export const actionTypesOptions = [
   { value: 'A', label: 'API Call' },
   { value: 'B', label: 'Approve / Deny' },
-  { value: 'T', label: 'Set transaction APR' },
+  { value: 'T', label: 'Set APR' },
   { value: 'R', label: 'Add reward' },
   { value: 'F', label: 'Add fee' },
   { value: '1', label: 'Update aux counter 1' },
@@ -212,7 +212,7 @@ export const actionTypesOptions = [
 export enum actionTypesCodeKeys {
   API_CALL = 'A',
   APPROVE_DENY = 'B',
-  SET_TRANSACTION_APR = 'T',
+  SET_APR = 'T',
   ADD_REWARD = 'R',
   ADD_FEE = 'F',
   UPDATE_AUX_COUNTER_1 = '1',
