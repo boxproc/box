@@ -40,20 +40,11 @@ export const NavListStyled = styled.div`
 
     &.is-separator {
       position: relative;
-      margin: 2px 4px 1px 1px;
       pointer-events: none;
-      height: 3px;
-      overflow: none;
-
-      &:before{
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 7px;
-        right: 7px;
-        height: 1px
-        background: ${({ theme }) => theme.colors.lightGray};
-      }
+      margin: 0 5px 1px;
+      height: 2px;
+      padding: 1px;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
     }
 
     &:before {
