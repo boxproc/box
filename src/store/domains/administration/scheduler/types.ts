@@ -55,11 +55,13 @@ export interface AdminSchedulerDataResp {
 export interface AdminSchedulerFilter {
   name: string;
   activeStatusFlag: boolean;
+  institutionId: SelectValues;
 }
 
 export interface AdminSchedulerFilterPrepared {
   name: string;
   status: Array<string>;
+  institution_id: string | number;
 }
 
 export interface AdminSchedulerNameItems {

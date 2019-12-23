@@ -25,6 +25,8 @@ import {
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
+import { SelectValues } from 'types';
+
 interface SchedulerProps extends WithModalProps {
   adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
   filterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs;
@@ -35,6 +37,7 @@ interface SchedulerProps extends WithModalProps {
   resetScheduler: ResetScheduler;
   getLogData: HandleGetLogData;
   filterAdminScheduledJobsById: HandleFilterScheduledJobsById;
+  institutionsOptions: Array<SelectValues>;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -47,6 +50,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   resetScheduler,
   getLogData,
   filterAdminScheduledJobsById,
+  institutionsOptions,
 }) => {
   React.useEffect(
     () => {
@@ -167,8 +171,11 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       filterAction={filterAdminSchedulerJobs}
       isDownloadButton={true}
       FilterForm={
-        <SchedulerFilter />
+        <SchedulerFilter institutionsOptions={institutionsOptions} />
       }
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       AdditionalButton={
         <Button
           text="Show scheduler master log"

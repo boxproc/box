@@ -3,11 +3,32 @@ import { Field } from 'redux-form';
 
 import { Box } from '@rebass/grid';
 
-import { CheckboxField, InputField } from 'components';
+import { CheckboxField, InputField, SelectField } from 'components';
 
-const SchedulerFilter: React.FC = () => {
+import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
+
+interface SchedulerFilterProps {
+  institutionsOptions: Array<SelectValues>;
+}
+
+const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
+  institutionsOptions,
+}) => {
   return (
     <React.Fragment>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="institutionId"
+          name="institutionId"
+          component={SelectField}
+          label="Institution"
+          placeholder="Select Institution"
+          options={institutionsOptions}
+          isClearable={false}
+          validate={[formErrorUtil.required]}
+        />
+      </Box>
       <Box width={[1 / 4]} p="10px">
         <Field
           id="name"

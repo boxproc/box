@@ -86,10 +86,12 @@ export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
   const {
     name,
     activeStatusFlag,
+    institutionId,
   } = params;
 
   return {
     name: name ? name : null,
     status: activeStatusFlag ? [statusTypesCodes.ACTIVE, statusTypesCodes.EXECUTION_PENDING] : null,
+    institution_id: institutionId ? institutionId.value : null,
   };
 };
