@@ -7,7 +7,6 @@ export enum authPathNames {
 
 export enum uiItemsPathNames {
   GET = '/ui/items/get',
-  UPDATE = '/ui/items/update',
 }
 
 export enum constsPathNames {

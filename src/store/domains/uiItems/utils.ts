@@ -1,11 +1,13 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { UiItem, UiItemsGroupItem } from './types';
+import { uiItemTypesCodes } from 'consts';
 
-const sortBySequenceNumber = (items: Array<UiItem>) => items.sort((a, b) => {
-  if (a.sequence_number) {
+import { UiItem } from './types';
+
+const sortByOrderNumber = (items: Array<UiItem>) => items.sort((a, b) => {
+  if (a.order_number > b.order_number) {
     return 1;
-  } else if (b.sequence_number) {
+  } else if (a.order_number < b.order_number) {
     return -1;
   } else {
     return null;
@@ -13,71 +15,27 @@ const sortBySequenceNumber = (items: Array<UiItem>) => items.sort((a, b) => {
 });
 
 export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
-  const sortedItems = sortBySequenceNumber(uiItems.asMutable());
+  const sortedItems = sortByOrderNumber(uiItems.asMutable());
 
   return sortedItems.map(item => {
-      const {
-        ui_item,
-        description,
-        item_type,
-        sequence_number,
-        permission,
-      } = item;
+    const {
+      ui_item,
+      description,
+      item_type,
+      order_number,
+      permission,
+    } = item;
 
-      const isSeparator = item_type === 'S';
+    const isSeparator = item_type === uiItemTypesCodes.SEPARATOR;
 
-      return {
-        id: ui_item,
-        parentId: ui_item.split('/').slice(0, -1).join('/') || null,
-        title: description,
-        type: item_type,
-        sequenceNumber: sequence_number,
-        separator: isSeparator,
-        permission,
-      };
-    });
-};
-
-export const prepareUiItemsGroup = (uiItems: ImmutableArray<UiItem>) => {
-  const sortedItems = sortBySequenceNumber(uiItems.asMutable());
-
-  return sortedItems.map(item => {
-      const { ui_item, description, sequence_number, item_type } = item;
-      const isSeparator = item_type === 'S';
-
-      return {
-        id: ui_item,
-        groupName: ui_item.split('/')[0].replace(/_/g, ' '),
-        name: isSeparator ? 'Separator' : description,
-        sequenceNumber: sequence_number,
-        separator: isSeparator,
-      };
-    })
-    .reduce((acc, obj) => {
-      acc[obj.groupName] = acc[obj.groupName] || {
-        groupName: null,
-        sequenceNumber: null,
-        items: [],
-      };
-
-      if (obj.id.split('/').length === 1) {
-        acc[obj.groupName].groupName = obj.groupName;
-        acc[obj.groupName].sequenceNumber = obj.sequenceNumber;
-      }
-
-      if (obj.id.split('/').length === 2) {
-        acc[obj.groupName].items.push(obj);
-      }
-      return acc;
-    },      {});
-};
-
-export const prepareItemsToSend = (data: Array<Partial<UiItemsGroupItem>>):
-  Array<Partial<UiItem>> => {
-  return data && data.map(item => {
     return {
-      ui_item: item.id,
-      sequence_number: item.sequenceNumber,
+      id: ui_item,
+      parentId: ui_item.split('/').slice(0, -1).join('/') || null,
+      title: description,
+      type: item_type,
+      orderNumber: order_number,
+      separator: isSeparator,
+      permission,
     };
   });
 };

@@ -9,10 +9,9 @@ export const permissionTypesOptions = [
 ];
 
 export enum uiItemTypesCodes {
-  SCREEN = 'S',
+  SEPARATOR = 'S',
   MENU_PARENT = 'M',
   MENU_CHILD = 'm',
-  FORM = 'F',
 }
 
 export enum yesNoTypesCodes {
