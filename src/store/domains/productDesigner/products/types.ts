@@ -161,10 +161,10 @@ export interface RevolvingCreditProductItem {
 
 export interface LoanProductItemResp {
   product_id: number;
-  loan_type: number | string;
-  apr: number;
-  fee_late_payment: number;
-  payment_grace_number_of_days: number;
+  def_num_of_installments: number;
+  def_num_of_intrst_free_instlmts: number;
+  interest_distribution_type: number|string;
+  allow_overpayment: number|string;
 }
 
 export interface LoanProductResp {
@@ -173,10 +173,10 @@ export interface LoanProductResp {
 
 export interface LoanProductItem {
   productId: number;
-  loanType: SelectValues;
-  apr: number;
-  feeLatePayment: number;
-  paymentGraceNumberOfDays: number;
+  defNumOfInstallments: number;
+  defNumOfIntrstFreeInstlmts: number;
+  interestDistibutionType: SelectValues;
+  allowOverpayment: number|string;
 }
 
 export interface PrepaidProductItemResp {

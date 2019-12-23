@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, NumberFormatField, SelectField } from 'components';
+import { CheckboxField, InputField, SelectField } from 'components';
 
 import { loanTypesOptions } from 'consts';
 
@@ -22,53 +22,46 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
       >
         <Box width={[1 / 5]} p="10px">
           <Field
-            id="loanType"
-            name="loanType"
+            id="interestDistributionType"
+            name="interestDistributionType"
             component={SelectField}
-            label="Loan Type"
-            placeholder="Select Loan Type"
+            label="Interest Distribution Type"
+            placeholder="Select Distribution Type"
             options={loanTypesOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Delimiter />
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
-            id="apr"
-            name="apr"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Apr"
+            id="defNumOfInstallments"
+            name="defNumOfInstallments"
+            component={InputField}
+            placeholder="# of installments "
+            label="Default # of installments"
             readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
-            id="feeLatePayment"
-            name="feeLatePayment"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Fee Late Payment"
+            id="defNumOfInterestFreeInstalments"
+            name="defNumOfInterestFreeInstalments"
+            component={InputField}
+            placeholder="# of interest free "
+            label="Default # of interest free installments"
             readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width="160px" p="10px">
           <Field
-            id="paymentGraceNumberOfDays"
-            name="paymentGraceNumberOfDays"
-            placeholder="Enter # of Days"
-            component={InputField}
-            label="Payment Grace # of Days"
-            isNumber={true}
+            id="allowOverpayment"
+            name="allowOverpayment"
+            component={CheckboxField}
+            label="Allow overpayment"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

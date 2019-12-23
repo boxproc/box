@@ -486,18 +486,19 @@ export const prepareLoan = (data: LoanProductItemResp) => {
 
   const {
     product_id,
-    apr,
-    fee_late_payment,
-    payment_grace_number_of_days,
-    loan_type,
+    def_num_of_installments,
+    def_num_of_intrst_free_instlmts,
+    interest_distribution_type,
+    allow_overpayment,
   } = data;
 
   return {
     productId: product_id,
-    apr,
-    feeLatePayment: fee_late_payment,
-    paymentGraceNumberOfDays: payment_grace_number_of_days,
-    loanType: loanTypesOptions.find(el => el.value === loan_type),
+    defNumOfInstallments: def_num_of_installments,
+    defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
+    loanType: loanTypesOptions.find(el => el.value === interest_distribution_type),
+    allowOverpayment: allow_overpayment,
+
   };
 };
 
@@ -508,18 +509,18 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
 
   const {
     productId,
-    apr,
-    feeLatePayment,
-    paymentGraceNumberOfDays,
-    loanType,
+    defNumOfInstallments,
+    defNumOfIntrstFreeInstlmts,
+    interestDistibutionType,
+    allowOverpayment,
   } = data;
 
   return {
     product_id: productId,
-    apr: Number(apr),
-    fee_late_payment: Number(feeLatePayment),
-    payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
-    loan_type: loanType.value,
+    def_num_of_installments: Number(defNumOfInstallments),
+    def_num_of_intrst_free_instlmts: Number(defNumOfIntrstFreeInstlmts),
+    interest_distribution_type: interestDistibutionType.value,
+    allow_overpayment: Number(allowOverpayment),
   };
 };
 
