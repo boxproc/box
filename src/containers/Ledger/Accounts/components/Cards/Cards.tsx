@@ -19,6 +19,7 @@ interface AccountCardsProps {
   orderLedgerAccountCard: HandleOrderLedgerAccountCard;
   isOrderingCard: boolean;
   onCancel: () => void;
+  isReadOnly: boolean;
 }
 
 export const Cards: React.FC<AccountCardsProps> = ({
@@ -28,6 +29,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
   orderLedgerAccountCard,
   onCancel,
   isOrderingCard,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -43,22 +45,26 @@ export const Cards: React.FC<AccountCardsProps> = ({
 
   return (
     <React.Fragment>
-      <Box mt="20px" mb="15px">
-        <Button
-          disabled={isOrderingCard}
-          type="reset"
-          onClick={handleOrderLedgerAccountCard}
-          text={isOrderingCard ? 'Ordering...' : 'Order Card'}
-          isFocused={true}
+      {!isReadOnly && (
+        <Box mt="20px" mb="15px">
+          <Button
+            disabled={isOrderingCard}
+            type="reset"
+            onClick={handleOrderLedgerAccountCard}
+            text={isOrderingCard ? 'Ordering...' : 'Order Card'}
+            isFocused={true}
+          />
+        </Box>
+      )}
+      <Box mt="20px">
+        <Table
+          title="Account Cards"
+          pageSize={8}
+          data={ledgerAccountCards}
+          columns={tableColumns}
+          isSmaller={true}
         />
       </Box>
-      <Table
-        title="Account Cards"
-        pageSize={8}
-        data={ledgerAccountCards}
-        columns={tableColumns}
-        isSmaller={true}
-      />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
           <Button

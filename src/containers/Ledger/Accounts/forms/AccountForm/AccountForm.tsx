@@ -37,6 +37,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;
   mode: 'add' | 'edit';
+  isReadOnly?: boolean;
 }
 
 type AccountFormAllProps = AccountFormProps & InjectedFormProps<{}, AccountFormProps>;
@@ -55,6 +56,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   mode,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -115,7 +117,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? handleSubmitForm : null}>
       <Tabs>
         <TabsPanel title="General">
           <GeneralAccountInfo
@@ -125,6 +127,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}
+            isReadOnly={isReadOnly}
           />
         </TabsPanel>
         <TabsPanel title="Aux Counters">
@@ -134,6 +137,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}
+            isReadOnly={isReadOnly}
           />
         </TabsPanel>
         <TabsPanel title="Overdue">
@@ -142,11 +146,15 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}
+            isReadOnly={isReadOnly}
           />
         </TabsPanel>
         {isEditMode && (
           <TabsPanel title="Cards">
-            <Cards onCancel={onCancel} />
+            <Cards
+              onCancel={onCancel}
+              isReadOnly={isReadOnly}
+            />
           </TabsPanel>
         )}
         {isEditMode && (

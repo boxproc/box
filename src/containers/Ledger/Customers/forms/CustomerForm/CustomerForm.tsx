@@ -27,6 +27,7 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   isEditMode?: boolean;
   loadCountryCodes: HandleGetDictionaryCountries;
   countryCodes: Array<SelectValues>;
+  isReadOnly: boolean;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &
@@ -45,6 +46,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   identificationTypeValue,
   loadCountryCodes,
   countryCodes,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -72,33 +74,37 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <CustomerInfo
         countryCodes={countryCodes}
         isEditMode={isEditMode}
         isIdentification={isIdentification}
+        isReadOnly={isReadOnly}
       />
       <Hr />
       <Flex
         alignItems="center"
         justifyContent={isEditMode ? 'space-between' : 'flex-end'}
       >
-        {isEditMode && (
-          <Button
-            text="delete"
-            iconName={iconNamesConst.DELETE}
-            type="reset"
-            withConfirmation={true}
-            confirmationText={`Delete customer "${ledgerCurrentCustomerName}"?`}
-            onClick={deleteLedgerCustomer}
-          />
-        )}
+        <div>
+          {isEditMode && !isReadOnly && (
+            <Button
+              text="delete"
+              iconName={iconNamesConst.DELETE}
+              type="reset"
+              withConfirmation={true}
+              confirmationText={`Delete customer "${ledgerCurrentCustomerName}"?`}
+              onClick={deleteLedgerCustomer}
+            />
+          )}
+        </div>
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
+          hideOk={isReadOnly}
         />
       </Flex>
     </form >

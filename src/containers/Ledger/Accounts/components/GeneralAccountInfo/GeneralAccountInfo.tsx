@@ -33,6 +33,7 @@ export interface CustomerInfoProps {
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
+  isReadOnly: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
@@ -48,6 +49,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   onCancel,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -95,7 +97,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               isClearable={false}
               validate={[formErrorUtil.required]}
             />
@@ -107,7 +109,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Customer ID"
               placeholder="Enter ID"
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required]}
             />
@@ -119,6 +121,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Account Alias"
               placeholder="Enter Account Alias"
+              readOnly={isReadOnly}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -128,6 +131,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Account Alias Additional"
               placeholder="Enter Account Alias"
+              readOnly={isReadOnly}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -138,6 +142,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="Status"
               placeholder="Select Status"
               options={statusTypesOptions}
+              isDisabled={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -148,7 +153,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={SelectField}
               label="Product"
               placeholder="Select Product"
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               options={institutionProductsOptions}
               validate={[formErrorUtil.required]}
             />
@@ -162,7 +167,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   component={InputField}
                   label="Loan Cycles"
                   placeholder="Enter Loan Cycles"
-                  readOnly={isEditMode}
+                  readOnly={isEditMode || isReadOnly}
                   isNumber={true}
                   validate={[formErrorUtil.required, formErrorUtil.isInteger]}
                 />
@@ -175,6 +180,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   label="Loan Start Date"
                   placeholder={dateFormat.DATE}
                   mask={maskFormat.DATE}
+                  readOnly={isReadOnly}
                   validate={[formErrorUtil.required, formErrorUtil.isDate]}
                 />
               </Box>
@@ -188,7 +194,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 component={InputField}
                 label="Product ID"
                 placeholder="Enter ID"
-                readOnly={isEditMode}
+                readOnly={isEditMode || isReadOnly}
                 isNumber={true}
                 validate={[formErrorUtil.required]}
               />
@@ -231,7 +237,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -244,7 +250,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -257,7 +263,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -270,7 +276,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -283,7 +289,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -296,7 +302,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -308,7 +314,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="Statement Cycle"
               placeholder="Select Statement Cycle"
               options={cyclesDescriptionsOptions}
-              isDisabled={isEditMode}
+              isDisabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -354,6 +360,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </React.Fragment>
   );

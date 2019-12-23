@@ -16,6 +16,7 @@ const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
 const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,
   isFormDirty,
+  isReadOnly,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -32,6 +33,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
     >
       <CustomerForm
         isEditMode={true}
+        isReadOnly={isReadOnly}
         onCancel={handleOnCancel}
       />
     </Modal>

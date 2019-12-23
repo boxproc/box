@@ -15,6 +15,7 @@ interface AuxiliaryCountersProps {
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
+  isReadOnly: boolean;
 }
 
 const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
@@ -23,6 +24,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
   onCancel,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   const auxCounter1Description = React.useMemo(
     () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter1Description,
@@ -70,7 +72,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode && !auxCounter1Enabled}
+              readOnly={(isEditMode && !auxCounter1Enabled) || isReadOnly}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -82,7 +84,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode && !auxCounter2Enabled}
+              readOnly={(isEditMode && !auxCounter2Enabled) || isReadOnly}
             />
           </Box>
           <Box width={[1 / 5]} p="10px">
@@ -94,7 +96,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode && !auxCounter3Enabled}
+              readOnly={(isEditMode && !auxCounter3Enabled) || isReadOnly}
               validate={[formErrorUtil.isNumber]}
             />
           </Box>
@@ -108,6 +110,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </React.Fragment>
   );

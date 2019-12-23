@@ -24,6 +24,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   currentAccount,
   currentAccountAuxCounters,
   isFormDirty,
+  isReadOnly,
 }) => {
   const accountAlias = React.useMemo(
     () => currentAccountAlias ? `: ${currentAccountAlias}` : '',
@@ -47,6 +48,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       <AccountForm
         onCancel={handleOnCancel}
         mode="edit"
+        isReadOnly={isReadOnly}
         initialValues={currentAccount}
         currentAccountAuxCounters={currentAccountAuxCounters}
       />

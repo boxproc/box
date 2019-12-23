@@ -12,6 +12,7 @@ interface OverdueProps {
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
+  isReadOnly: boolean;
 }
 
 const Overdue: React.FC<OverdueProps> = ({
@@ -19,6 +20,7 @@ const Overdue: React.FC<OverdueProps> = ({
   onCancel,
   dirty,
   pristine,
+  isReadOnly,
 }) => {
   return (
     <React.Fragment>
@@ -36,7 +38,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -49,7 +51,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -62,7 +64,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -75,7 +77,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -88,7 +90,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -101,7 +103,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -114,7 +116,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -127,7 +129,7 @@ const Overdue: React.FC<OverdueProps> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
@@ -140,7 +142,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue Total"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -153,7 +155,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 1 Cycle"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -166,7 +168,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 2 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -179,7 +181,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 3 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -192,7 +194,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 4 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -205,7 +207,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 5 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -218,7 +220,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 6 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -231,7 +233,7 @@ const Overdue: React.FC<OverdueProps> = ({
               label="Number of Times Overdue 7 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode}
+              readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
@@ -246,6 +248,7 @@ const Overdue: React.FC<OverdueProps> = ({
         rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
+        hideOk={isReadOnly}
       />
     </React.Fragment>
   );

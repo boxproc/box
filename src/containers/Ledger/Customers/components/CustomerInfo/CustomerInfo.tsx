@@ -22,6 +22,7 @@ interface CustomerInfoProps {
   isIdentification: boolean;
   countryCodes: Array<SelectValues>;
   isCountryCodesLoading: boolean;
+  isReadOnly: boolean;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
@@ -30,6 +31,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   isEditMode = false,
   isIdentification,
   isCountryCodesLoading,
+  isReadOnly,
 }) => {
   return (
     <Box mx="-10px">
@@ -57,7 +59,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionsOptions}
-            isDisabled={isEditMode}
+            isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />
@@ -70,6 +72,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Status"
             placeholder="Select Status"
             options={customerStatusTypesOptions}
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -81,6 +84,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             options={identificationTypesOptions}
             label="Identification Type"
             placeholder="Select Type"
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -92,6 +96,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={InputField}
               label="Identification Number"
               placeholder="Enter Number"
+              readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -104,6 +109,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="First Name"
             placeholder="Enter First Name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -114,6 +120,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Last Name"
             placeholder="Enter Last Name"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -124,8 +131,9 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={MaskField}
             label="Date of Birth"
             placeholder={dateFormat.DATE}
-            validate={[formErrorUtil.required, formErrorUtil.isDate]}
             mask={maskFormat.DATE}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isDate]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -135,6 +143,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Email"
             placeholder="Enter Email"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.email]}
           />
         </Box>
@@ -145,6 +154,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Mobile Phone Number"
             placeholder="Enter Phone Number"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -161,6 +171,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             isLoading={isCountryCodesLoading}
             label="Nationality Country Code"
             placeholder="Select Nationality Country Code"
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -173,6 +184,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             isLoading={isCountryCodesLoading}
             label="Address Country Code"
             placeholder="Select Country Code"
+            isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -183,6 +195,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Line 1"
             placeholder="Enter Line 1"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -193,6 +206,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Line 2"
             placeholder="Enter Line 2"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -202,6 +216,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Line 3"
             placeholder="Enter Line 3"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -211,6 +226,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Line 4"
             placeholder="Enter Line 4"
+            readOnly={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
@@ -220,6 +236,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Town"
             placeholder="Enter Town"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -230,6 +247,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={InputField}
             label="Post Code"
             placeholder="Enter Post Code"
+            readOnly={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
