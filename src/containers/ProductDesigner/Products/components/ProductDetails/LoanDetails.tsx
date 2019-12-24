@@ -22,8 +22,8 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
       >
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="loanType"
-            name="loanType"
+            id="interestDistributionType"
+            name="interestDistributionType"
             component={SelectField}
             label="Interest Distribution Type"
             placeholder="Select Distribution Type"

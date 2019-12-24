@@ -175,7 +175,7 @@ export interface LoanProductItem {
   productId: number;
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
-  interestDistibutionType: SelectValues;
+  interestDistributionType: SelectValues;
   allowOverpayment: number|string;
 }
 

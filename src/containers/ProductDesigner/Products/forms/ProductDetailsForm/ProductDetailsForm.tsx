@@ -61,7 +61,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
         onCancel={onCancel}
         rightPosition={true}
         withCancelConfirmation={dirty}
-        disabledOk={pristine}
+        // disabledOk={pristine}
         hideOk={isReadOnly}
       />
     </form>
