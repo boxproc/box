@@ -20,10 +20,10 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 4]} p="10px">
           <Field
-            id="interestDistributionType"
-            name="interestDistributionType"
+            id="loanType"
+            name="loanType"
             component={SelectField}
             label="Interest Distribution Type"
             placeholder="Select Distribution Type"
@@ -45,8 +45,8 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
         </Box>
         <Box width={[1 / 6]} p="10px">
           <Field
-            id="defNumOfInterestFreeInstalments"
-            name="defNumOfInterestFreeInstalments"
+            id="defNumOfIntrstFreeInstlmts"
+            name="defNumOfIntrstFreeInstlmts"
             component={InputField}
             placeholder="# of interest free "
             label="Default # of interest free installments"
@@ -61,7 +61,6 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
             component={CheckboxField}
             label="Allow overpayment"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
           />
         </Box>
       </Flex>

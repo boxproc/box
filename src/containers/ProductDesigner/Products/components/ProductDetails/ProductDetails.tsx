@@ -46,7 +46,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
     <React.Fragment>
       {isLoan && (<LoanDetails isReadOnly={isReadOnly} />)}
       {isPrepaid && (<PrepaidDetails isReadOnly={isReadOnly} />)}
-      {isDebit && (<DebitDetails isReadOnly={isReadOnly} />)}
+      {isDebit && (
+      <DebitDetails
+        isReadOnly={isReadOnly}
+      />)}
       {isSavings && (<SavingsDetails isReadOnly={isReadOnly} />)}
       {isRevolvingCredit && (<RevolvingCreditDetails isReadOnly={isReadOnly} />)}
     </React.Fragment>

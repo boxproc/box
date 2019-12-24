@@ -66,12 +66,12 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
 };
 export const prepareProductLoanIllustrateDataToSend =
   (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, nrLoanCycles, startDate } = data;
+    const { productId, amount, defNumOfInstallments, startDate } = data;
 
     return {
       product_id: productId,
       amount,
-      nr_loan_cycles: Number(nrLoanCycles),
+      nr_loan_cycles: Number(defNumOfInstallments),
       start_date: startDate,
     };
   };
@@ -497,7 +497,7 @@ export const prepareLoan = (data: LoanProductItemResp) => {
     defNumOfInstallments: def_num_of_installments,
     defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
     loanType: loanTypesOptions.find(el => el.value === interest_distribution_type),
-    allowOverpayment: allow_overpayment,
+    allowOverpayment: allow_overpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
 
   };
 };
@@ -519,8 +519,8 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
     product_id: productId,
     def_num_of_installments: Number(defNumOfInstallments),
     def_num_of_intrst_free_instlmts: Number(defNumOfIntrstFreeInstlmts),
-    interest_distribution_type: interestDistibutionType.value,
-    allow_overpayment: Number(allowOverpayment),
+    interest_distribution_type: interestDistibutionType && interestDistibutionType.value,
+    allow_overpayment: allowOverpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };
 

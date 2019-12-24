@@ -22,7 +22,7 @@ const ProductIllustrationLoan: React.FC = () => {
           validate={[formErrorUtil.required, formErrorUtil.isDate]}
         />
       </Box>
-      <Box width={[1 / 4]} ml="1px" p="10px">
+      <Box width={[1 / 5]} ml="1px" p="10px">
         <Field
           id="amount"
           name="amount"
@@ -36,10 +36,21 @@ const ProductIllustrationLoan: React.FC = () => {
       </Box>
       <Box width="115px" p="10px">
         <Field
-          id="nrLoanCycles"
-          name="nrLoanCycles"
+          id="defNumOfInstallments"
+          name="defNumOfInstallments"
+          placeholder="# Installments"
           component={NumberFormatField}
           label="# of Installments"
+          validate={[formErrorUtil.required]}
+        />
+      </Box>
+      <Box width="115px" p="10px">
+        <Field
+          id="defNumOfIntrstFreeInstlmts"
+          name="defNumOfIntrstFreeInstlmts"
+          component={NumberFormatField}
+          placeholder="# Interest Free"
+          label="# of Interest Free"
           validate={[formErrorUtil.required]}
         />
       </Box>

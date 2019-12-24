@@ -120,7 +120,7 @@ export interface LoanProductIllustrate {
   productId: number;
   amount: number;
   startDate: string;
-  nrLoanCycles: number;
+  defNumOfInstallments: number;
 }
 
 export interface RevolvingCreditProductItemResp {
