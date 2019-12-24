@@ -16,8 +16,12 @@ import {
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerStatements,
   HandleFilterLedgerTransactionsById,
+  HandleGetLedgerStatementAprsFeesRewards,
   HandleGetLedgerStatementTransactions,
+  LedgerStatementAprItemPrepared,
+  LedgerStatementFeeItemPrepared,
   LedgerStatementItemPrepared,
+  LedgerStatementRewardItemPrepared,
   LedgerStatementTransactionsItemPrepared,
   ResetStatements,
 } from 'store/domains';
@@ -37,6 +41,10 @@ export interface StatementsProps {
   currentStatement: LedgerStatementItemPrepared;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
+  getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
+  statementAprs: Array<LedgerStatementAprItemPrepared>;
+  statementFees: Array<LedgerStatementFeeItemPrepared>;
+  statementRewards: Array<LedgerStatementRewardItemPrepared>;
   resetStatements: ResetStatements;
 }
 
@@ -52,6 +60,10 @@ const Statements: React.FC<StatementsProps> = ({
   currentStatement,
   getStatementTransactions,
   statementTransactions,
+  getLedgerStatementAprsFeesRewards,
+  statementAprs,
+  statementFees,
+  statementRewards,
   resetStatements,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
@@ -70,10 +82,63 @@ const Statements: React.FC<StatementsProps> = ({
   React.useEffect(
     () => {
       if (currentId) {
-        getStatementTransactions();
+        Promise.all([
+          getStatementTransactions(),
+          getLedgerStatementAprsFeesRewards(currentId),
+        ]);
       }
     },
-    [currentId, getStatementTransactions]
+    [currentId, getStatementTransactions, getLedgerStatementAprsFeesRewards]
+  );
+
+  const reportFileName = React.useMemo(
+    () => {
+      if (!currentStatement) {
+        return null;
+      }
+
+      const date = currentStatement.statementDate;
+      const accountId = currentStatement.accountId;
+      const fileName = `statement_${accountId}_${date}`.replace(/\//g, '');
+
+      return fileName;
+    },
+    [currentStatement]
+  );
+
+  const handleGenerateReport = React.useCallback(
+    () => {
+      downloadPDF({
+        fileName: reportFileName,
+        statement: currentStatement,
+        tables: [
+          {
+            title: 'Transactions',
+            items: statementTransactions,
+          },
+          {
+            title: 'Accrued Interest',
+            items: statementAprs,
+          },
+          {
+            title: 'Fees',
+            items: statementFees,
+          },
+          {
+            title: 'Rewards',
+            items: statementRewards,
+          },
+        ],
+      });
+    },
+    [
+      statementTransactions,
+      statementAprs,
+      statementFees,
+      statementRewards,
+      currentStatement,
+      reportFileName,
+    ]
   );
 
   const contextMenuItems = React.useMemo(
@@ -84,10 +149,7 @@ const Statements: React.FC<StatementsProps> = ({
       {
         name: 'Generate pdf file',
         icon: iconNamesConst.FILE_PDF,
-        action: () => downloadPDF({
-          statement: currentStatement,
-          transactions: statementTransactions,
-        }),
+        action: handleGenerateReport,
       },
       {
         isDivider: true,
@@ -110,13 +172,12 @@ const Statements: React.FC<StatementsProps> = ({
       },
     ],
     [
+      currentId,
       filterLedgerCustomersById,
       filterLedgerTransactionsById,
       filterLedgerCardsById,
       filterLedgerAccountsById,
-      currentStatement,
-      statementTransactions,
-      currentId,
+      handleGenerateReport,
     ]
   );
 

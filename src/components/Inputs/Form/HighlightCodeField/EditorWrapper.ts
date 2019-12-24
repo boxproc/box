@@ -19,10 +19,6 @@ export const EditorWrapper = styled.div<WrapperProps>`
   overflow: auto;
   user-select: text;
 
-  * {
-    font-family: ${({ theme }) => theme.fonts.code};
-  }
-
   &.is-focus {
     border-color: ${({ theme }) => theme.colors.normalAccent};
   }
@@ -57,6 +53,10 @@ export const EditorWrapper = styled.div<WrapperProps>`
   .editor {
     float: left;
     min-width: 100%;
+
+    * {
+      font-family: ${({ theme }) => theme.fonts.code};
+    }
   }
 
   .react-contextmenu-wrapper {

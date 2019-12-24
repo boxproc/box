@@ -3,10 +3,12 @@ import 'jspdf-autotable';
 
 import { theme } from 'theme';
 
+import { logo } from 'resources/images/logo';
+
 import { dateUtil, storageUtil } from 'utils';
 
 const tableStyles = {
-  margin: { right: 10, left: 35 },
+  margin: { right: 10, left: 10 },
   styles: {
     minCellWidth: 30,
     fontSize: 7,
@@ -38,14 +40,20 @@ const formatValue = (value: string) =>
     ? '-'
     : value;
 
-export const downloadPDF = (data: { statement: object, transactions: Array<object> }) => {
-  const { statement, transactions } = data;
+export const downloadPDF = (data: {
+  fileName: string,
+  statement: object,
+  tables: Array<{
+    title: string;
+    items: Array<object>;
+  }>,
+}) => {
+  const { statement, tables, fileName } = data;
 
   const unit = 'pt';
   const size = 'a4';
-  const orientation = 'landscape';
-  const title = 'Statement';
-  // const fileName = 'statement';
+  const orientation = 'portrait';
+  const docTitle = 'Statement';
   const location = window.location.href;
 
   const dateTime = dateUtil.todayDateTime();
@@ -54,67 +62,79 @@ export const downloadPDF = (data: { statement: object, transactions: Array<objec
 
   const doc = new jsPDF(orientation, unit, size) as any;
 
+  doc.setProperties({
+    title: fileName,
+  });
+
   // Title of document
   doc.setFontSize(15);
   doc.setFontStyle('bold');
   doc.setTextColor(theme.colors.darkGray);
-  doc.text(40, 35, title);
+  doc.text(30, 35, docTitle);
 
   // Username, time, page location
   doc.setFontSize(8);
   doc.setFontStyle('normal');
   doc.setTextColor(theme.colors.gray);
-  doc.text(40, 51, `Created by ${username} at ${dateTime}`);
-  doc.text(40, 63, location);
+  doc.text(30, 51, `Created by ${username} at ${dateTime}`);
+  doc.text(30, 63, location);
+
+  // Image
+  doc.addImage(logo, 'JPEG', 517, 15, 62, 46);
 
   // line
   doc.setLineWidth(0.3);
   doc.setDrawColor(153, 153, 153);
-  doc.line(40, 71, 830, 71);
+  doc.line(30, 71, 580, 71);
 
   if (statement) {
     // Statement totals title
-    doc.setFontSize(13);
+    doc.setFontSize(12);
     doc.setFontStyle('bold');
     doc.setTextColor(theme.colors.darkGray);
-    doc.text(40, 100, 'Totals');
+    doc.text(30, 97, 'Totals');
 
     // Statement totals content
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setFontStyle('normal');
     doc.setTextColor(theme.colors.black);
 
     Object.entries(statement).forEach((el, i) => {
       doc.setTextColor(theme.colors.black);
-      doc.text(40, 125 + 17 * i, `${formatKey(el[0])}: `);
+      doc.text(30, 115 + 15 * i, `${formatKey(el[0])}: `);
       doc.setTextColor(theme.colors.darkGray);
-      doc.text(205, 125 + 17 * i, `${formatValue(el[1])}`);
+      doc.text(190, 115 + 15 * i, `${formatValue(el[1])}`);
     });
   }
 
-  if (transactions.length) {
-    // Statement transaction title
-    doc.setFontSize(13);
-    doc.setFontStyle('bold');
-    doc.setTextColor(theme.colors.darkGray);
-    doc.text(40, 420, 'Transactions');
-  }
+  tables.forEach((table, index) => {
+    const isFirstTable = index === 0;
 
-  // Statement transaction table
-  const transactionsHeaders = transactions.length
-    && Object.keys(transactions[0]).map(key => formatKey(formatValue(key)));
+    const { title, items } = table;
 
-  const preparedTransactions = transactions.length
-    && transactions.map(item => Object.values(item));
+    if (items.length) {
+      // Statement table title
+      doc.setFontSize(13);
+      doc.setFontStyle('bold');
+      doc.setTextColor(theme.colors.darkGray);
+      doc.text(30, isFirstTable ? 375 : doc.previousAutoTable.finalY + 25, title);
 
-  const content = {
-    head: [transactionsHeaders],
-    body: preparedTransactions,
-    startY: 435,
-    ...tableStyles,
-  };
+      // Table
+      const tableHead = items.length
+        && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
-  doc.autoTable(content);
+      const tableBody = items.length && items.map(item => Object.values(item));
+
+      const tableContent = {
+        head: [tableHead],
+        body: tableBody,
+        startY: isFirstTable ? 386 : doc.previousAutoTable.finalY + 35,
+        ...tableStyles,
+      };
+
+      doc.autoTable(tableContent);
+    }
+  });
 
   // Page number
   doc.setTextColor(theme.colors.gray);
@@ -127,8 +147,8 @@ export const downloadPDF = (data: { statement: object, transactions: Array<objec
 
     doc.setPage(i);
     doc.text(
-      830,
-      20,
+      580,
+      825,
       `${doc.internal.getCurrentPageInfo().pageNumber}/${pageCount}`,
       null,
       null,
@@ -136,6 +156,6 @@ export const downloadPDF = (data: { statement: object, transactions: Array<objec
     );
   }
 
-  // doc.output('save', `${fileName}.pdf`);
-  doc.output('dataurlnewwindow');
+  doc.output('save', `${fileName}.pdf`);
+  // doc.output('dataurlnewwindow');
 };

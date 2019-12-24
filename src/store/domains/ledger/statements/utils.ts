@@ -90,18 +90,18 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
     transactionDatetime: transaction_datetime,
     amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
-      && amount_in_original_currency.toFixed(2),
+      ? amount_in_original_currency.toFixed(2) : null,
     balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
-      && balance_available_before.toFixed(2),
+      ? balance_available_before.toFixed(2) : null,
     balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
-      && balance_available_after.toFixed(2),
+      ? balance_available_after.toFixed(2) : null,
     balanceSettledBefore: stringsUtil.checkNumberToFixed(balance_settled_before)
-      && balance_settled_before.toFixed(2),
+      ? balance_settled_before.toFixed(2) : null,
     balanceSettledAfter: stringsUtil.checkNumberToFixed(balance_settled_after)
-      && balance_settled_after.toFixed(2),
+      ? balance_settled_after.toFixed(2) : null,
     description,
     aprId: apr_id,
-    aprRate: stringsUtil.checkNumberToFixed(apr_rate) && apr_rate.toFixed(2),
+    aprRate: stringsUtil.checkNumberToFixed(apr_rate) ? apr_rate.toFixed(2) : null,
   };
 };
 

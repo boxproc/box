@@ -41,7 +41,7 @@ export const NavListStyled = styled.div`
     &.is-separator {
       position: relative;
       pointer-events: none;
-      margin: 0 5px 1px;
+      margin: 0 1px 1px;
       height: 2px;
       padding: 1px;
       border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
@@ -75,8 +75,9 @@ export const NavListStyled = styled.div`
     display: none;
     width: 180px;
     background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: ${({ theme }) => theme.shadows.normalBox};
+    box-shadow: ${({ theme }) => theme.shadows.aroundBox};
     border: 1px solid ${({ theme }) => theme.colors.darkGray};
+    border-radius: 2px;
 
     .${menuClasses.SUB_MENU} {
       left: calc(100% + 1px);

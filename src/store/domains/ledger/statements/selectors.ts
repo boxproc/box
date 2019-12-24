@@ -31,21 +31,13 @@ export const selectLedgerStatements = createSelector(
 
 export const selectLedgerStatementTransactions = createSelector(
   selectDefaultLedgerStatementTransactions,
-  items => items && items.asMutable().map(item => {
-    return {
-      ...prepareTransactionsDataToRender(item),
-    };
-  })
+  items => items && items.asMutable().map(item => prepareTransactionsDataToRender(item))
 );
 
 export const selectLedgerCurrentStatement = createSelector(
   selectLedgerStatements,
   selectActiveItemId,
-  (statement, currentId) => {
-    const current = statement.find(el => el.id === currentId);
-
-    return current;
-  }
+  (statement, currentId) => statement && statement.find(el => el.id === currentId)
 );
 
 export const selectLedgerCurrentStatementTransaction = createSelector(
@@ -75,7 +67,7 @@ export const selectLedgerAccountStatements = createSelector(
 export const selectLedgerAccountStatementDate = createSelector(
   selectLedgerAccountStatements,
   statements => {
-    if (!statements && !statements.length) {
+    if (!statements || !statements.length) {
       return null;
     }
 

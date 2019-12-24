@@ -37,7 +37,7 @@ const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
   );
 
   return (
-    <form onSubmit={isReadOnly ? handleSubmitForm : null}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <GeneralLedger isReadOnly={isReadOnly} />
       <Hr />
       <OkCancelButtons

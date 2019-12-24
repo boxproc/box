@@ -8,6 +8,9 @@ import {
   handleGetLedgerStatementTransactions,
   LedgerStatementsActionTypes,
   selectLedgerCurrentStatement,
+  selectLedgerStatementAprs,
+  selectLedgerStatementFees,
+  selectLedgerStatementRewards,
   selectLedgerStatementTransactions,
 } from 'store/domains';
 
@@ -21,6 +24,9 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   statementTransactions: selectLedgerStatementTransactions(state),
   currentStatement: selectLedgerCurrentStatement(state),
+  statementAprs: selectLedgerStatementAprs(state),
+  statementFees: selectLedgerStatementFees(state),
+  statementRewards: selectLedgerStatementRewards(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
