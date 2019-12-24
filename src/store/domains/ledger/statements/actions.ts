@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import { setIsOpenFilter } from 'store/domains/utils';
@@ -41,7 +41,15 @@ export type GetLedgerStatementAprs = (statementId: number) => GetLedgerStatement
 export type GetLedgerStatementFees = (statementId: number) => GetLedgerStatementFeesAction;
 export type GetLedgerStatementRewards = (statementId: number) =>
   GetLedgerStatementRewardsAction;
-export type HandleGetLedgerStatementAprsFeesRewards = (statementId: number) => Thunk<void>;
+export type HandleGetLedgerStatementAprsFeesRewards = (
+  statementId: number,
+  openModalName?: string
+) => Thunk<void>;
+
+export type HandleDownloadLedgerStatement = (
+  statementId: number,
+  formatFunction: () => void
+) => Thunk<void>;
 
 export type ResetStatements = () => void;
 
@@ -137,7 +145,7 @@ export const handleGetLedgerAccountStatements: HandleGetLedgerAccountStatements 
   };
 
 export const handleGetLedgerStatementAprsFeesRewards:
-  HandleGetLedgerStatementAprsFeesRewards = (statementId) =>
+  HandleGetLedgerStatementAprsFeesRewards = (statementId, openModalName) =>
     async dispatch => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
@@ -147,7 +155,7 @@ export const handleGetLedgerStatementAprsFeesRewards:
             dispatch(getLedgerAccountStatementRewards(statementId)),
           ]);
 
-          dispatch(openModal({ name: modalNamesConst.STATEMENT_APRS_FEES_REWARDS }));
+          dispatch(openModal({ name: openModalName }));
         },
         dispatch
       );

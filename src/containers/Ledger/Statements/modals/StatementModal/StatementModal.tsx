@@ -3,14 +3,22 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, Tabs, TabsPanel, withSpinner } from 'components';
-import { TransactionsTable } from 'containers/Ledger/Statements/components';
+import {
+  StatementAprsTable,
+  StatementFeesTable,
+  StatementRewardsTable,
+  TransactionsTable,
+} from 'containers/Ledger/Statements/components';
 import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import {
+  LedgerStatementAprItemPrepared,
+  LedgerStatementFeeItemPrepared,
   LedgerStatementItemPrepared,
+  LedgerStatementRewardItemPrepared,
   LedgerStatementTransactionsItemPrepared,
 } from 'store/domains';
 
@@ -18,8 +26,11 @@ import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
 
 interface StatementModalProps extends WithModalProps {
   statements: Array<LedgerStatementItemPrepared>;
-  currentStatement: Array<LedgerStatementItemPrepared>;
+  currentStatement: LedgerStatementItemPrepared;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
+  statementAprs: Array<LedgerStatementAprItemPrepared>;
+  statementFees: Array<LedgerStatementFeeItemPrepared>;
+  statementRewards: Array<LedgerStatementRewardItemPrepared>;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
@@ -28,10 +39,61 @@ const StatementModal: React.FC<StatementModalProps> = ({
   currentStatement,
   closeModal,
   statementTransactions,
+  statementAprs,
+  statementFees,
+  statementRewards,
 }) => {
+  const reportFileName = React.useMemo(
+    () => {
+      if (!currentStatement) {
+        return null;
+      }
+
+      const date = currentStatement.statementDate;
+      const accountId = currentStatement.accountId;
+      const fileName = `statement_${accountId}_${date}`.replace(/\//g, '');
+
+      return fileName;
+    },
+    [currentStatement]
+  );
+
   const handleCloseModal = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
+  );
+
+  const handleGenerateReport = React.useCallback(
+    () => downloadPDF({
+      fileName: reportFileName,
+      statement: currentStatement,
+      tables: [
+        {
+          title: 'Transactions',
+          items: statementTransactions,
+        },
+        {
+          title: 'Accrued Interest',
+          items: statementAprs,
+        },
+        {
+          title: 'Fees',
+          items: statementFees,
+        },
+        {
+          title: 'Rewards',
+          items: statementRewards,
+        },
+      ],
+    }),
+    [
+      statementTransactions,
+      statementAprs,
+      statementFees,
+      statementRewards,
+      currentStatement,
+      reportFileName,
+    ]
   );
 
   return (
@@ -52,6 +114,21 @@ const StatementModal: React.FC<StatementModalProps> = ({
             <TransactionsTable statementTransactions={statementTransactions} />
           </Box>
         </TabsPanel>
+        <TabsPanel title="Accrued Interest">
+          <Box mt="20px" mb="10px">
+            <StatementAprsTable data={statementAprs} />
+          </Box>
+        </TabsPanel>
+        <TabsPanel title="Fees">
+          <Box mt="20px" mb="10px">
+            <StatementFeesTable data={statementFees} />
+          </Box>
+        </TabsPanel>
+        <TabsPanel title="Rewards">
+          <Box mt="20px" mb="10px">
+            <StatementRewardsTable data={statementRewards} />
+          </Box>
+        </TabsPanel>
       </Tabs>
       <Flex
         alignItems="center"
@@ -60,10 +137,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
         <Button
           text="Generate pdf file"
           iconName={iconNamesConst.FILE_PDF}
-          onClick={() => downloadPDF({
-            statement: currentStatement,
-            transactions: statementTransactions,
-          })}
+          onClick={handleGenerateReport}
         />
         <Button
           text="Close"

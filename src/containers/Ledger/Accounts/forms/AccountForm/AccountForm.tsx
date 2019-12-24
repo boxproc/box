@@ -117,7 +117,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   );
 
   return (
-    <form onSubmit={isReadOnly ? handleSubmitForm : null}>
+    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Tabs>
         <TabsPanel title="General">
           <GeneralAccountInfo

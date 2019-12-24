@@ -5,9 +5,7 @@ import { CellInfo, RowInfo } from 'react-table';
 
 import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
 
-import { iconNamesConst } from 'consts';
-
-import { WithModalProps } from 'HOCs';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
   HandleGetLedgerAccountStatements,
@@ -19,7 +17,7 @@ import { TableCellType } from 'types';
 type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
   TableCellType<LedgerAccountStatementItemPrepared[T]>;
 
-interface AccountStatementsProps extends WithModalProps {
+interface AccountStatementsProps {
   accountStatements: Array<LedgerAccountStatementItemPrepared>;
   getLedgerAccountStatements: HandleGetLedgerAccountStatements;
   getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
@@ -47,7 +45,10 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
 
       return {
         onDoubleClick: () => {
-          getLedgerStatementAprsFeesRewards(statementId);
+          getLedgerStatementAprsFeesRewards(
+            statementId,
+            modalNamesConst.STATEMENT_APRS_FEES_REWARDS
+          );
         },
       };
     },
@@ -198,7 +199,10 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
             iconName={iconNamesConst.SHORT_TEXT}
             title="Details"
             type="reset"
-            onClick={() => getLedgerStatementAprsFeesRewards(cellInfo.original.id)}
+            onClick={() => getLedgerStatementAprsFeesRewards(
+              cellInfo.original.id,
+              modalNamesConst.STATEMENT_APRS_FEES_REWARDS
+            )}
           />
         </Flex>
       ),

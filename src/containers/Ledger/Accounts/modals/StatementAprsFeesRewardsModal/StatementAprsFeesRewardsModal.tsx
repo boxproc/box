@@ -2,37 +2,23 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal, Paragraph, Tabs, TabsPanel } from 'components';
+import { Button, Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import {
   StatementAprsTable,
+  StatementDate,
   StatementFeesTable,
   StatementRewardsTable,
-} from 'containers/Ledger/Accounts/components';
+} from 'containers/Ledger/Statements/components';
 
 import {
   LedgerStatementAprItemPrepared,
   LedgerStatementFeeItemPrepared,
   LedgerStatementRewardItemPrepared,
 } from 'store/domains';
-
-interface StatementDateProps {
-  date: string;
-}
-
-const StatementDate: React.FC<StatementDateProps> = ({ date }) => {
-  return (
-    <Paragraph
-      light={true}
-      size={13}
-    >
-      <b>Statement date:</b> {date}
-    </Paragraph>
-  );
-};
 
 interface StatementAprsFeesRewardsProps extends WithModalProps {
   statementAprs: Array<LedgerStatementAprItemPrepared>;
