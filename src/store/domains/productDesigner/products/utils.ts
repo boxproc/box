@@ -66,12 +66,13 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
 };
 export const prepareProductLoanIllustrateDataToSend =
   (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, defNumOfInstallments, startDate } = data;
+    const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
 
     return {
       product_id: productId,
       amount,
       nr_loan_cycles: Number(defNumOfInstallments),
+      nr_interest_free: Number(defNumOfIntrstFreeInstlmts),
       start_date: startDate,
     };
   };
@@ -339,13 +340,13 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
   return {
     statementId: statement_id,
     statementDate: statement_date,
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(4),
     installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
-      installment_balance.toFixed(2),
-    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
-    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
+      installment_balance.toFixed(4),
+    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(4),
+    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(4),
     minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
-      && minimum_amount_due_repayment.toFixed(2),
+      && minimum_amount_due_repayment.toFixed(4),
   };
 };
 

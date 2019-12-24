@@ -114,6 +114,7 @@ export interface LoanProductIllustratePrepared {
   amount: number;
   start_date: string;
   nr_loan_cycles: number;
+  nr_interest_free: number;
 }
 
 export interface LoanProductIllustrate {
@@ -121,6 +122,7 @@ export interface LoanProductIllustrate {
   amount: number;
   startDate: string;
   defNumOfInstallments: number;
+  defNumOfIntrstFreeInstlmts: number;
 }
 
 export interface RevolvingCreditProductItemResp {
