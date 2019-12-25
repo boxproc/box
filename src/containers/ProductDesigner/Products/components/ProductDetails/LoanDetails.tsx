@@ -5,15 +5,26 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components';
 
-import { loanTypesOptions } from 'consts';
+import { loanInterestDistributionTypesCodes, loanTypesOptions } from 'consts';
 
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface LoanDetailsProps {
   isReadOnly?: boolean;
+  interestDistributionEditorValue: SelectValues;
 }
 
-const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
+const LoanDetails: React.FC<LoanDetailsProps> = ({
+  isReadOnly,
+  interestDistributionEditorValue,
+}) => {
+  const isEqualOrActualDistribution = React.useMemo(
+    () => interestDistributionEditorValue
+      && (interestDistributionEditorValue.value === loanInterestDistributionTypesCodes.EQUAL
+        || interestDistributionEditorValue.value === loanInterestDistributionTypesCodes.ACTUAL),
+    [interestDistributionEditorValue]
+  );
   return (
     <Box mx="-10px">
       <Flex
@@ -43,7 +54,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        {isEqualOrActualDistribution && (<Box width={[1 / 6]} p="10px">
           <Field
             id="defNumOfIntrstFreeInstlmts"
             name="defNumOfIntrstFreeInstlmts"
@@ -54,6 +65,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ isReadOnly }) => {
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
+          )}
         <Box width="160px" p="10px">
           <Field
             id="allowOverpayment"
