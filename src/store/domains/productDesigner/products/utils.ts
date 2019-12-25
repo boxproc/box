@@ -66,12 +66,13 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
 };
 export const prepareProductLoanIllustrateDataToSend =
   (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, nrLoanCycles, startDate } = data;
+    const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
 
     return {
       product_id: productId,
       amount,
-      nr_loan_cycles: Number(nrLoanCycles),
+      nr_loan_cycles: Number(defNumOfInstallments),
+      nr_interest_free: Number(defNumOfIntrstFreeInstlmts),
       start_date: startDate,
     };
   };
@@ -339,13 +340,13 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
   return {
     statementId: statement_id,
     statementDate: statement_date,
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(4),
     installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
-      installment_balance.toFixed(2),
-    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
-    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
+      installment_balance.toFixed(4),
+    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(4),
+    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(4),
     minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
-      && minimum_amount_due_repayment.toFixed(2),
+      && minimum_amount_due_repayment.toFixed(4),
   };
 };
 
@@ -486,18 +487,19 @@ export const prepareLoan = (data: LoanProductItemResp) => {
 
   const {
     product_id,
-    apr,
-    fee_late_payment,
-    payment_grace_number_of_days,
-    loan_type,
+    def_num_of_installments,
+    def_num_of_intrst_free_instlmts,
+    interest_distribution_type,
+    allow_overpayment,
   } = data;
 
   return {
     productId: product_id,
-    apr,
-    feeLatePayment: fee_late_payment,
-    paymentGraceNumberOfDays: payment_grace_number_of_days,
-    loanType: loanTypesOptions.find(el => el.value === loan_type),
+    defNumOfInstallments: def_num_of_installments,
+    defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
+    interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
+    allowOverpayment: allow_overpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+
   };
 };
 
@@ -508,18 +510,18 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
 
   const {
     productId,
-    apr,
-    feeLatePayment,
-    paymentGraceNumberOfDays,
-    loanType,
+    defNumOfInstallments,
+    defNumOfIntrstFreeInstlmts,
+    interestDistributionType,
+    allowOverpayment,
   } = data;
 
   return {
     product_id: productId,
-    apr: Number(apr),
-    fee_late_payment: Number(feeLatePayment),
-    payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
-    loan_type: loanType.value,
+    def_num_of_installments: Number(defNumOfInstallments),
+    def_num_of_intrst_free_instlmts: Number(defNumOfIntrstFreeInstlmts),
+    interest_distribution_type: interestDistributionType && interestDistributionType.value,
+    allow_overpayment: allowOverpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };
 

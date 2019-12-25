@@ -2,6 +2,7 @@ import React from 'react';
 
 import { productTypesCodes } from 'consts';
 
+import { SelectValues } from 'types';
 import DebitDetails from './DebitDetails';
 import LoanDetails from './LoanDetails';
 import PrepaidDetails from './PrepaidDetails';
@@ -11,11 +12,13 @@ import SavingsDetails from './SavingsDetails';
 interface ProductDetailsProps {
   productType: string | number;
   isReadOnly?: boolean;
+  interestDistributionEditorValue?: SelectValues;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({
   productType,
   isReadOnly,
+  interestDistributionEditorValue,
 }) => {
   const isLoan = React.useMemo(
     () => productType === productTypesCodes.LOAN,
@@ -44,9 +47,16 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
 
   return (
     <React.Fragment>
-      {isLoan && (<LoanDetails isReadOnly={isReadOnly} />)}
+      {isLoan && (
+        <LoanDetails
+          isReadOnly={isReadOnly}
+          interestDistributionEditorValue={interestDistributionEditorValue}
+        />)}
       {isPrepaid && (<PrepaidDetails isReadOnly={isReadOnly} />)}
-      {isDebit && (<DebitDetails isReadOnly={isReadOnly} />)}
+      {isDebit && (
+      <DebitDetails
+        isReadOnly={isReadOnly}
+      />)}
       {isSavings && (<SavingsDetails isReadOnly={isReadOnly} />)}
       {isRevolvingCredit && (<RevolvingCreditDetails isReadOnly={isReadOnly} />)}
     </React.Fragment>

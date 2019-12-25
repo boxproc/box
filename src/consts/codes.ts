@@ -144,6 +144,11 @@ export enum cycleTypesCodes {
   FIXED_NUMBER_OF_DAYS = 'F',
 }
 
+export enum loanInterestDistributionTypesCodes {
+  EQUAL = 'E',
+  ACTUAL = 'A',
+}
+
 export const typeOfCyclesEditorOptions = [
   { value: 'M', label: 'Monthly' },
   { value: 'N', label: 'Bi-monthly' },
@@ -182,8 +187,9 @@ export const schemeTypesOptions = [
 ];
 
 export const loanTypesOptions = [
-  { value: 'B', label: 'Buy now, pay later' },
-  { value: 'I', label: 'Installments' },
+  { value: 'E', label: 'Equal distribution' },
+  { value: 'A', label: 'Actual distribution' },
+  { value: 'F', label: 'All interest in the final installment' },
 ];
 
 export const savingsTypesOptions = [

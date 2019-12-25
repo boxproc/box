@@ -16,6 +16,7 @@ import {
   ProductIllustrationLoan,
 } from 'containers/ProductDesigner/Products/components';
 import {
+  HandleGetProductDetails,
   HandleIllustrateLoanProduct,
   IllustrationProductLoan,
   ResetIllustrationLoan
@@ -24,6 +25,7 @@ import {
 interface IllustrationProductFormProps extends ExternalSpinnerProps {
   productIllustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
+  getProductDetails: HandleGetProductDetails;
   isLoading: boolean;
   resetIllustrationLoan: ResetIllustrationLoan;
   onCancel?: () => void;
@@ -38,15 +40,17 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   illustrateLoanProduct,
   resetIllustrationLoan,
   productIllustration,
+  getProductDetails,
   onCancel,
   dirty,
   isReadOnly,
 }) => {
   React.useEffect(
     () => {
+      getProductDetails();
       return () => resetIllustrationLoan();
     },
-    [resetIllustrationLoan]
+    [resetIllustrationLoan, getProductDetails]
   );
 
   const handleSubmitForm = React.useCallback(

@@ -11,7 +11,11 @@ import {
   selectCurrentProductDetails,
 } from 'store/domains';
 
+import { formNamesConst } from 'consts';
+import { formValueSelector } from 'redux-form';
 import { StoreState } from 'store/StoreState';
+
+const formSelector = formValueSelector(formNamesConst.PRODUCT_DETAILS);
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_DETAILS,
@@ -21,6 +25,10 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectCurrentProductDetails(state),
+  interestDistributionEditorValue: formSelector(
+    state,
+    'interestDistributionType'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
