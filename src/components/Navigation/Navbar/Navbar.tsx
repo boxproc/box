@@ -65,8 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {title}
           {hasChildren && parentId && (
             <ChevronIconStyled className="icon" size="17" />
-          )
-          }
+          )}
         </Flex>
         {hasChildren && renderMenu(id)}
       </Box>
