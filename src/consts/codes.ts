@@ -227,7 +227,10 @@ export enum actionTypesCodeKeys {
 }
 
 export enum eventTypesCodeKeys {
+  ACCOUNT_CREATE = 1,
+  ACCOUNT_CLOSE = 2,
   TRANSACTION = 3,
+  DAILY_SETTLEMENT = 4,
 }
 
 export enum codeKeys {

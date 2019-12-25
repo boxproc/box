@@ -23,7 +23,7 @@ const ScriptWrapper = styled.div`
 
   .snippet-buttons {
     position: absolute;
-    left: 60px;
+    right: 20px;
     top: 13px;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   onChangeValues?: () => void;
   changeFormField: (field: string, value: string) => void;
   scriptValue: string;
-  actionTypesOptions: SelectValues;
+  actionTypesOptions: Array<SelectValues>;
   isReadOnly: boolean;
 }
 

@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
 
-import { formNamesConst } from 'consts';
+import { actionTypesCodeKeys, eventTypesCodeKeys, formNamesConst } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
@@ -17,6 +17,7 @@ interface RulesFormProps extends ExternalSpinnerProps {
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
   isReadOnly: boolean;
+  actionTypesOptions: Array<SelectValues>;
   rulesValues: {
     eventId: SelectValues;
     actionType: SelectValues;
@@ -35,6 +36,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   pristine,
   rulesValues,
   change,
+  actionTypesOptions,
   isReadOnly,
 }) => {
   const { eventId, actionType } = rulesValues;
@@ -48,11 +50,55 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
     [getProductRule, eventId, actionType]
   );
 
+  const actionTypesOptionsPrepared = React.useMemo(
+    () => {
+      let filteredActionTypes;
+
+      if (eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CREATE
+        || eventId.value === eventTypesCodeKeys.DAILY_SETTLEMENT)) {
+
+        filteredActionTypes = actionTypesOptions
+          .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
+            && el.value !== actionTypesCodeKeys.SET_APR);
+
+        if (actionType) {
+          if (actionType.value === actionTypesCodeKeys.APPROVE_DENY
+            || actionType.value === actionTypesCodeKeys.SET_APR) {
+            change('actionType', filteredActionTypes[0]);
+          }
+        }
+
+      } else if (eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CLOSE)) {
+
+        filteredActionTypes = actionTypesOptions
+          .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
+            && el.value !== actionTypesCodeKeys.SET_APR
+            && el.value !== actionTypesCodeKeys.ADD_REWARD
+            && el.value !== actionTypesCodeKeys.ADD_FEE);
+
+        if (actionType) {
+          if (actionType.value === actionTypesCodeKeys.APPROVE_DENY
+            || actionType.value === actionTypesCodeKeys.SET_APR
+            || actionType.value === actionTypesCodeKeys.ADD_REWARD
+            || actionType.value === actionTypesCodeKeys.ADD_FEE) {
+            change('actionType', filteredActionTypes[0]);
+          }
+        }
+
+      } else {
+        filteredActionTypes = actionTypesOptions;
+      }
+
+      return filteredActionTypes;
+    },
+    [eventId, actionType, actionTypesOptions, change]
+  );
+
   const handleGetRule = React.useCallback(
     (value: SelectValues, val: SelectValues, prevVal: SelectValues, fieldName: string) => {
       if (value && (eventId || actionType)) {
         change(fieldName, value);
-        getProductRule();
+        setTimeout(() => getProductRule(), 50);
       }
     },
     [getProductRule, change, eventId, actionType]
@@ -69,6 +115,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
         eventValue={eventId}
         onChangeValues={handleGetRule}
         changeFormField={change}
+        actionTypesOptions={actionTypesOptionsPrepared}
         isReadOnly={isReadOnly}
       />
       <OkCancelButtons

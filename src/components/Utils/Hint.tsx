@@ -80,11 +80,11 @@ const Hint: React.FC<HintProps> = ({
     <HintWrapper
       position={position}
       icon={icon}
+      onMouseLeave={toggleIsHint}
     >
       <div
         className="toggle-hint"
         onMouseEnter={toggleIsHint}
-        onMouseLeave={toggleIsHint}
       >
         {icon && (
           <InfoButton size="18" />

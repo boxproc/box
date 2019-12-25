@@ -18,6 +18,7 @@ interface ProductRulesFormProps extends ExternalSpinnerProps {
   initialValues: any;
   isLoading: boolean;
   isReadOnly: boolean;
+  actionTypesOptions: Array<SelectValues>;
   rulesValues: {
     eventId: SelectValues;
     actionType: SelectValues;
@@ -33,6 +34,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   isLoading,
   currentProductScript,
   isReadOnly,
+  actionTypesOptions,
 }) => {
   const [initialScript, setInitialScript] = React.useState(null);
 
@@ -71,6 +73,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
       getProductRule={getProductRule}
       updateProductRules={updateProductRules}
       rulesValues={rulesValues}
+      actionTypesOptions={actionTypesOptions}
       isReadOnly={isReadOnly}
     />
   );

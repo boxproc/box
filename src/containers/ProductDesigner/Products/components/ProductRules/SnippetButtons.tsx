@@ -5,9 +5,25 @@ import { Box } from '@rebass/grid';
 import { theme } from 'theme';
 
 import { Button } from 'components';
-import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 const snippets = [
+  {
+    id: 3,
+    name: 'else if',
+    code: 'if () {\n\t\n} else {\n\t\n}',
+    // tslint:disable-next-line: max-line-length
+    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n} else {\n\t//  block of code to be executed if the condition is false\n}',
+    width: '300px',
+    shiftCharCount: 4,
+  },
+  {
+    id: 2,
+    name: 'if',
+    code: 'if () {\n\t\n}',
+    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n}',
+    width: '300px',
+    shiftCharCount: 4,
+  },
   {
     id: 1,
     name: 'function',
@@ -25,26 +41,9 @@ const snippets = [
     width: '140px',
     shiftCharCount: 7,
   },
-  {
-    id: 2,
-    name: 'if',
-    code: 'if () {\n\t\n}',
-    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n}',
-    width: '300px',
-    shiftCharCount: 4,
-  },
-  {
-    id: 3,
-    name: 'else if',
-    code: 'if () {\n\t\n} else {\n\t\n}',
-    // tslint:disable-next-line: max-line-length
-    hint: 'if (condition) {\n\t//  block of code to be executed if the condition is true\n} else {\n\t//  block of code to be executed if the condition is false\n}',
-    width: '300px',
-    shiftCharCount: 4,
-  },
 ];
 
-interface ProductRulesProps extends WithLoadDictionaryEventsProps {
+interface ProductRulesProps {
   className?: string;
   onClick?: (snippet: string, shiftCharCount?: number) => void;
 }
@@ -92,4 +91,4 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   );
 };
 
-export default withLoadDictionaryEvents(ProductRules);
+export default ProductRules;

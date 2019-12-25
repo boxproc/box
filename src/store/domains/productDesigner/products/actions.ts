@@ -763,7 +763,7 @@ export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = 
 
         await Promise.all([
           dispatch(getProductAprs(productId)),
-          dispatch(getProductRewards(productId)),
+          dispatch(getProductFees(productId)),
           dispatch(getProductRewards(productId)),
         ]);
       },

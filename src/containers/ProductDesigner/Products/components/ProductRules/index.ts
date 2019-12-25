@@ -9,7 +9,6 @@ import ProductRules from './ProductRules';
 import {
   handleFilterDictionaryEventDataElemsById,
   handleGetProductAprsFeesRewards,
-  selectActionTypesOptions,
   selectEventDataElemsForRules,
   selectProductAprsForRules,
   selectProductFeesForRules,
@@ -25,7 +24,6 @@ const mapStateToProps = (state: StoreState) => ({
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),
   productRewardsItems: selectProductRewardsForRules(state),
-  actionTypesOptions: selectActionTypesOptions(state),
   scriptValue: formSelector(
     state,
     'script'
