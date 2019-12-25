@@ -25,13 +25,18 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         || interestDistributionEditorValue.value === loanInterestDistributionTypesCodes.ACTUAL),
     [interestDistributionEditorValue]
   );
+
   return (
     <Box mx="-10px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 4]} p="10px">
+        <Box
+          width={[1 / 4]}
+          p="10px"
+          pt={!isEqualOrActualDistribution && '26px'}
+        >
           <Field
             id="interestDistributionType"
             name="interestDistributionType"
@@ -43,7 +48,11 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box
+          width={[1 / 6]}
+          p="10px"
+          pt={!isEqualOrActualDistribution && '26px'}
+        >
           <Field
             id="defNumOfInstallments"
             name="defNumOfInstallments"
@@ -51,10 +60,15 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             placeholder="# of installments "
             label="Default # of installments"
             readOnly={isReadOnly}
+            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        {isEqualOrActualDistribution && (<Box width={[1 / 6]} p="10px">
+        {isEqualOrActualDistribution && (
+        <Box
+          width={[1 / 6]}
+          p="10px"
+        >
           <Field
             id="defNumOfIntrstFreeInstlmts"
             name="defNumOfIntrstFreeInstlmts"
@@ -62,11 +76,17 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             placeholder="# of interest free "
             label="Default # of interest free installments"
             readOnly={isReadOnly}
+            isNumber={true}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-          )}
-        <Box width="160px" p="10px">
+        )}
+        <Box
+          width="160px"
+          p="10px"
+          pt={!isEqualOrActualDistribution && '26px'}
+          m="1px"
+        >
           <Field
             id="allowOverpayment"
             name="allowOverpayment"
