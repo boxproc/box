@@ -27,6 +27,7 @@ import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
 interface StatementModalProps extends WithModalProps {
   statements: Array<LedgerStatementItemPrepared>;
   currentStatement: LedgerStatementItemPrepared;
+  currentStatementForReport: Array<object>;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   statementAprs: Array<LedgerStatementAprItemPrepared>;
   statementFees: Array<LedgerStatementFeeItemPrepared>;
@@ -37,6 +38,7 @@ const modalName = modalNamesConst.LEDGER_STATEMENTS;
 
 const StatementModal: React.FC<StatementModalProps> = ({
   currentStatement,
+  currentStatementForReport,
   closeModal,
   statementTransactions,
   statementAprs,
@@ -66,7 +68,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
   const handleGenerateReport = React.useCallback(
     () => downloadPDF({
       fileName: reportFileName,
-      statement: currentStatement,
+      statement: currentStatementForReport,
       tables: [
         {
           title: 'Transactions',
@@ -91,7 +93,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       statementAprs,
       statementFees,
       statementRewards,
-      currentStatement,
+      currentStatementForReport,
       reportFileName,
     ]
   );

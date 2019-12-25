@@ -12,9 +12,10 @@ export interface ContextMenuItemProps {
   isDivider?: boolean;
 }
 
-interface ContextSubMenuItem {
+export interface ContextSubMenuItem {
   title: string;
-  items: Array<ContextMenuItemProps>;
+  items?: Array<ContextMenuItemProps>;
+  subItems?: Array<ContextSubMenuItem>;
   noDataStr?: string;
 }
 

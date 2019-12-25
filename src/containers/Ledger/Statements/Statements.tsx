@@ -39,6 +39,7 @@ export interface StatementsProps {
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
   currentStatement: LedgerStatementItemPrepared;
+  currentStatementForReport: Array<object>;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
@@ -58,6 +59,7 @@ const Statements: React.FC<StatementsProps> = ({
   filterLedgerAccountsById,
   currentId,
   currentStatement,
+  currentStatementForReport,
   getStatementTransactions,
   statementTransactions,
   getLedgerStatementAprsFeesRewards,
@@ -110,7 +112,7 @@ const Statements: React.FC<StatementsProps> = ({
     () => {
       downloadPDF({
         fileName: reportFileName,
-        statement: currentStatement,
+        statement: currentStatementForReport,
         tables: [
           {
             title: 'Transactions',
@@ -136,7 +138,7 @@ const Statements: React.FC<StatementsProps> = ({
       statementAprs,
       statementFees,
       statementRewards,
-      currentStatement,
+      currentStatementForReport,
       reportFileName,
     ]
   );

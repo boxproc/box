@@ -9,7 +9,6 @@ import { HighlightCodeField, SelectField, TextField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 import {
-  DictionaryEventDataElemsItem,
   HandleFilterDictionaryEventDataElemsById,
   HandleGetProductAprsFeesRewards,
 } from 'store/domains';
@@ -42,7 +41,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
   getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
   eventValue: SelectValues;
-  eventDataElemsItems: Array<DictionaryEventDataElemsItem>;
+  eventDataElemsItems: Array<ContextItemProps>;
   productAprsItems: Array<ContextItemProps>;
   productFeesItems: Array<ContextItemProps>;
   productRewardsItems: Array<ContextItemProps>;
@@ -114,10 +113,16 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     [filterDictionaryEventDataElemsById, eventValue]
   );
 
+  const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
+    return {
+      name: `/* ${el.description} */`,
+      description: `(${el.name})`,
+    };
+  });
+
   const onContextMenuClick = React.useCallback(
     (e: Event, value: { name: string, description: string }) => {
-      const comment = value.description ? ` /* ${value.description} */` : '';
-      const newValue = `${value.name}${comment}`;
+      const newValue = value.name;
       const code = getNewCode(newValue);
 
       changeFormField('script', code);
@@ -153,27 +158,76 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   const contextSubMenuItems = React.useMemo(
     () => [
       {
-        title: 'Data elements',
-        items: eventDataElemsItems,
+        title: 'Data element',
+        subItems: [
+          {
+            title: 'Insert data element',
+            items: eventDataElemsItems,
+            noDataStr: 'No available data elements',
+          },
+          {
+            title: 'Insert data element comment',
+            items: mapComments(eventDataElemsItems),
+            noDataStr: 'No available data element comments',
+          },
+        ],
         noDataStr: 'No available data elements',
       },
       {
-        title: 'APRs',
-        items: productAprsItems,
-        noDataStr: 'No available APRs',
+        title: 'APR ID',
+        subItems: [
+          {
+            title: 'Insert APR ID',
+            items: productAprsItems,
+            noDataStr: 'No available APR IDs',
+          },
+          {
+            title: 'Insert APR comment',
+            items: mapComments(productAprsItems),
+            noDataStr: 'No available APR comments',
+          },
+        ],
+        noDataStr: 'No available APR IDs',
       },
       {
-        title: 'Fees',
-        items: productFeesItems,
-        noDataStr: 'No available Fees',
+        title: 'Fee ID',
+        subItems: [
+          {
+            title: 'Insert Fee ID',
+            items: productFeesItems,
+            noDataStr: 'No available Fee IDs',
+          },
+          {
+            title: 'Insert fee comment',
+            items: mapComments(productFeesItems),
+            noDataStr: 'No available fee comments',
+          },
+        ],
+        noDataStr: 'No available fee IDs',
       },
       {
-        title: 'Rewards',
-        items: productRewardsItems,
-        noDataStr: 'No available Rewards',
+        title: 'Reward ID',
+        subItems: [
+          {
+            title: 'Insert reward ID',
+            items: productRewardsItems,
+            noDataStr: 'No available reward IDs',
+          },
+          {
+            title: 'Insert reward comment',
+            items: mapComments(productRewardsItems),
+            noDataStr: 'No available reward comments',
+          },
+        ],
+        noDataStr: 'No available reward IDs',
       },
     ],
-    [eventDataElemsItems, productAprsItems, productFeesItems, productRewardsItems]
+    [
+      eventDataElemsItems,
+      productAprsItems,
+      productFeesItems,
+      productRewardsItems,
+    ]
   );
 
   return (

@@ -64,7 +64,6 @@ export const tableColumns = [
     Cell: (props: TCell<'accountAlias'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
       />
     ),
   },

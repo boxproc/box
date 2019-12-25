@@ -22,8 +22,16 @@
   width: 250px;
   opacity: 0;
   visibility: hidden;
-  overflow-y: auto;
+  margin-top: -2px;
   font-size: 12px;
+}
+
+.react-contextmenu-submenu .react-contextmenu.is-overflow {
+  overflow-y: auto;
+}
+
+.react-contextmenu-submenu .react-contextmenu.is-smaller {
+  width: 150px;
 }
 
 .react-contextmenu-submenu .react-contextmenu--visible {
@@ -36,12 +44,8 @@
   color: #ffa400;
 }
 
-.react-contextmenu-item:hover .icon {
-  color: #ffa400;
-}
-
 .react-contextmenu-item.react-contextmenu-submenu .react-contextmenu-item {
-  padding: 5px 10px;
+  padding: 5px 12px 5px 10px;
 }
 
 .react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item {
@@ -58,6 +62,7 @@
   height: 2px;
   border-top: 1px solid #e6e6e6;
   cursor: default;
+  pointer-events: none;
 }
 
 .react-contextmenu::-webkit-scrollbar {

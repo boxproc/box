@@ -23,6 +23,14 @@ export interface LedgerStatementItem {
   accrued_interest_total?: number;
   accrued_fee_total?: number;
   accrued_reward_total?: number;
+  account_alias_additional: string;
+  address_line1: string;
+  address_line2: string;
+  address_line3: string;
+  address_line4: string;
+  address_town: string;
+  address_post_code: string;
+  address_country_code: string;
 }
 
 export interface LedgerStatementItemPrepared {
@@ -45,6 +53,14 @@ export interface LedgerStatementItemPrepared {
   accruedInterestTotal?: string;
   accruedFeeTotal?: string;
   accruedRewardTotal?: string;
+  accountAliasAdditional: string;
+  addressLine1: string;
+  addressLine2: string;
+  addressLine3: string;
+  addressLine4: string;
+  addressTown: string;
+  addressPostCode: string;
+  addressCountryCode: string;
 }
 
 export interface LedgerStatementTransactionsItem {

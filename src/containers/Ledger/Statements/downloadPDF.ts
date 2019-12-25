@@ -8,9 +8,9 @@ import { logo } from 'resources/images/logo';
 import { dateUtil, storageUtil } from 'utils';
 
 const tableStyles = {
-  margin: { right: 10, left: 10 },
+  margin: { right: 10, left: 20 },
   styles: {
-    minCellWidth: 30,
+    minCellWidth: 45,
     fontSize: 7,
     textColor: theme.colors.black,
     fillColor: '#fafafa',
@@ -33,7 +33,8 @@ const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
     .toLocaleLowerCase()
     .replace(/^./, str => str.toUpperCase())
-    .replace(/id|Id/g, 'ID');
+    .replace(/id|Id/g, 'ID')
+    .replace(/Institution ID/, 'Institution');
 
 const formatValue = (value: string) =>
   (value === null || value === undefined)
@@ -42,7 +43,7 @@ const formatValue = (value: string) =>
 
 export const downloadPDF = (data: {
   fileName: string,
-  statement: object,
+  statement?: Array<object>;
   tables: Array<{
     title: string;
     items: Array<object>;
@@ -88,22 +89,22 @@ export const downloadPDF = (data: {
   doc.line(30, 71, 580, 71);
 
   if (statement) {
-    // Statement totals title
-    doc.setFontSize(12);
-    doc.setFontStyle('bold');
-    doc.setTextColor(theme.colors.darkGray);
-    doc.text(30, 97, 'Totals');
+    statement.forEach((item, index) => {
+      const isSecondColumn = index === 1;
+      const leftSpaceKey = isSecondColumn ? 290 : 30;
+      const leftSpaceValue = isSecondColumn ? 428 : 132;
+      const topSpace = 97;
 
-    // Statement totals content
-    doc.setFontSize(9);
-    doc.setFontStyle('normal');
-    doc.setTextColor(theme.colors.black);
-
-    Object.entries(statement).forEach((el, i) => {
+      doc.setFontSize(9);
+      doc.setFontStyle('normal');
       doc.setTextColor(theme.colors.black);
-      doc.text(30, 115 + 15 * i, `${formatKey(el[0])}: `);
-      doc.setTextColor(theme.colors.darkGray);
-      doc.text(190, 115 + 15 * i, `${formatValue(el[1])}`);
+
+      Object.entries(item).forEach((el, i) => {
+        doc.setTextColor(theme.colors.black);
+        doc.text(leftSpaceKey, topSpace + 15 * i, `${formatKey(el[0])}: `);
+        doc.setTextColor(theme.colors.darkGray);
+        doc.text(leftSpaceValue, topSpace + 15 * i, `${formatValue(el[1])}`);
+      });
     });
   }
 
@@ -112,14 +113,12 @@ export const downloadPDF = (data: {
 
     const { title, items } = table;
 
-    if (items.length) {
-      // Statement table title
+    if (items && items.length) {
       doc.setFontSize(13);
       doc.setFontStyle('bold');
       doc.setTextColor(theme.colors.darkGray);
-      doc.text(30, isFirstTable ? 375 : doc.previousAutoTable.finalY + 25, title);
+      doc.text(30, isFirstTable ? 310 : doc.previousAutoTable.finalY + 25, title);
 
-      // Table
       const tableHead = items.length
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
@@ -128,7 +127,7 @@ export const downloadPDF = (data: {
       const tableContent = {
         head: [tableHead],
         body: tableBody,
-        startY: isFirstTable ? 386 : doc.previousAutoTable.finalY + 35,
+        startY: isFirstTable ? 320 : doc.previousAutoTable.finalY + 35,
         ...tableStyles,
       };
 
