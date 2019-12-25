@@ -9,6 +9,12 @@ import { StatementsFilter } from './forms';
 import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
+import {
+  emptyStatementAprs,
+  emptyStatementFees,
+  emptyStatementRewards,
+  emptyStatementTransactions,
+} from './consts';
 
 import {
   HandleFilterLedgerAccountsById,
@@ -108,6 +114,26 @@ const Statements: React.FC<StatementsProps> = ({
     [currentStatement]
   );
 
+  const reportStatementTransactions = React.useMemo(
+    () => statementTransactions.length ? statementTransactions : emptyStatementTransactions,
+    [statementTransactions]
+  );
+
+  const reportStatementAprs = React.useMemo(
+    () => statementAprs.length ? statementAprs : emptyStatementAprs,
+    [statementAprs]
+  );
+
+  const reportStatementFees = React.useMemo(
+    () => statementFees.length ? statementFees : emptyStatementFees,
+    [statementFees]
+  );
+
+  const reportStatementRewards = React.useMemo(
+    () => statementRewards.length ? statementRewards : emptyStatementRewards,
+    [statementRewards]
+  );
+
   const handleGenerateReport = React.useCallback(
     () => {
       downloadPDF({
@@ -116,28 +142,28 @@ const Statements: React.FC<StatementsProps> = ({
         tables: [
           {
             title: 'Transactions',
-            items: statementTransactions,
+            items: reportStatementTransactions,
           },
           {
             title: 'Accrued Interest',
-            items: statementAprs,
+            items: reportStatementAprs,
           },
           {
             title: 'Fees',
-            items: statementFees,
+            items: reportStatementFees,
           },
           {
             title: 'Rewards',
-            items: statementRewards,
+            items: reportStatementRewards,
           },
         ],
       });
     },
     [
-      statementTransactions,
-      statementAprs,
-      statementFees,
-      statementRewards,
+      reportStatementTransactions,
+      reportStatementAprs,
+      reportStatementFees,
+      reportStatementRewards,
       currentStatementForReport,
       reportFileName,
     ]

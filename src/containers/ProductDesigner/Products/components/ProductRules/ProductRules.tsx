@@ -66,6 +66,13 @@ const getNewCode = (element: string) => {
   return resultText;
 };
 
+const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
+  return {
+    name: `/* ${el.description} */`,
+    description: `(${el.name})`,
+  };
+});
+
 const ProductRules: React.FC<ProductRulesProps> = ({
   dictionaryEventsOptions,
   isDictionaryEventsLoading,
@@ -112,13 +119,6 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     },
     [filterDictionaryEventDataElemsById, eventValue]
   );
-
-  const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
-    return {
-      name: `/* ${el.description} */`,
-      description: `(${el.name})`,
-    };
-  });
 
   const onContextMenuClick = React.useCallback(
     (e: Event, value: { name: string, description: string }) => {

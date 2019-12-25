@@ -114,10 +114,6 @@ export const downloadPDF = (data: {
     const { title, items } = table;
 
     if (items && items.length) {
-      doc.setFontSize(13);
-      doc.setFontStyle('bold');
-      doc.setTextColor(theme.colors.darkGray);
-      doc.text(30, isFirstTable ? 310 : doc.previousAutoTable.finalY + 25, title);
 
       const tableHead = items.length
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
@@ -132,6 +128,11 @@ export const downloadPDF = (data: {
       };
 
       doc.autoTable(tableContent);
+
+      doc.setFontSize(13);
+      doc.setFontStyle('bold');
+      doc.setTextColor(theme.colors.darkGray);
+      doc.text(30, isFirstTable ? 310 : doc.previousAutoTable.pageStartY - 10, title);
     }
   });
 
