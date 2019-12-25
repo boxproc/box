@@ -16,7 +16,7 @@ import {
 import { SelectValues } from 'types';
 import { stringsUtil } from 'utils';
 
-export const prepareDataToRender = (
+export const prepareStatementDataToRender = (
   data: Partial<LedgerStatementItem>,
   institution?: SelectValues
 ) => {
@@ -40,29 +40,62 @@ export const prepareDataToRender = (
     product_name,
     first_name,
     last_name,
+    account_alias_additional,
+    address_line1,
+    address_line2,
+    address_line3,
+    address_line4,
+    address_town,
+    address_post_code,
+    address_country_code,
   } = data;
 
   const repaymentStatus = repaymentStatusTypesOptions
     .find(status => status.value === repayment_status);
 
   return {
-    id,
-    institutionId: institution && institution.label,
-    productName: product_name,
-    accountId: account_id,
-    accountAlias: account_alias,
-    firstName: first_name,
-    lastName: last_name,
-    firstTransactionId: first_transaction_id,
-    lastTransactionId: last_transaction_id,
-    statementDate: statement_date,
-    balanceOpen: stringsUtil.checkNumberToFixed(balance_open) && balance_open.toFixed(2),
-    balanceClose: stringsUtil.checkNumberToFixed(balance_close) && balance_close.toFixed(2),
-    minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
-      && minimum_amount_due_repayment.toFixed(2),
-    statementCycle: statement_cycle_description,
-    repaymentStatus: repaymentStatus && repaymentStatus.label,
-    dateOfLastUpdate: date_of_last_update,
+    account: {
+      accountId: account_id,
+      accountAlias: account_alias,
+      accountAliasAdditional: account_alias_additional,
+      firstName: first_name,
+      lastName: last_name,
+      institutionId: institution && institution.label,
+      addressLine1: address_line1,
+      addressLine2: address_line2,
+      addressLine3: address_line3,
+      addressLine4: address_line4,
+      addressTown: address_town,
+      addressPostCode: address_post_code,
+      addressCountryCode: address_country_code,
+    },
+    statement: {
+      id,
+      statementDate: statement_date,
+      productName: product_name,
+      statementCycle: statement_cycle_description,
+      firstTransactionId: first_transaction_id,
+      lastTransactionId: last_transaction_id,
+      balanceOpen: stringsUtil.checkNumberToFixed(balance_open) ? balance_open.toFixed(2) : null,
+      balanceClose: stringsUtil.checkNumberToFixed(balance_close) ? balance_close.toFixed(2) : null,
+      minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
+        ? minimum_amount_due_repayment.toFixed(2)
+        : null,
+      repaymentStatus: repaymentStatus && repaymentStatus.label,
+      dateOfLastUpdate: date_of_last_update,
+    },
+  };
+};
+
+export const prepareDataToRender = (
+  data: Partial<LedgerStatementItem>,
+  institution?: SelectValues
+) => {
+  const preparedData = prepareStatementDataToRender(data, institution);
+
+  return {
+    ...preparedData.account,
+    ...preparedData.statement,
   };
 };
 
@@ -88,7 +121,7 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
   return {
     id,
     transactionDatetime: transaction_datetime,
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
     amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
       ? amount_in_original_currency.toFixed(2) : null,
     balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
@@ -147,11 +180,14 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
   return {
     ...prepareDataToRender(data),
     accruedInterestTotal: stringsUtil.checkNumberToFixed(accrued_interest_total)
-      && accrued_interest_total.toFixed(5),
+      ? accrued_interest_total.toFixed(5)
+      : null,
     accruedFeeTotal: stringsUtil.checkNumberToFixed(accrued_fee_total)
-      && accrued_fee_total.toFixed(5),
+      ? accrued_fee_total.toFixed(5)
+      : null,
     accruedRewardTotal: stringsUtil.checkNumberToFixed(accrued_reward_total)
-      && accrued_reward_total.toFixed(5),
+      ? accrued_reward_total.toFixed(5)
+      : null,
   };
 };
 
@@ -173,9 +209,10 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
     statementId: statement_id,
     productAprId: product_apr_id,
     accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
-      && accrued_interest.toFixed(5),
+      ? accrued_interest.toFixed(5)
+      : null,
     description,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) ? rate.toFixed(2) : null,
   };
 };
 
@@ -201,10 +238,10 @@ export const prepareStatementFeeToRender = (data: LedgerStatementFeeItem):
   return {
     statementId: statement_id,
     productFeeId: product_fee_id,
-    accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) && accrued_fee.toFixed(5),
+    accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) ? accrued_fee.toFixed(5) : null,
     description,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) ? rate.toFixed(2) : null,
+    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
   };
 };
@@ -231,10 +268,12 @@ export const prepareStatementRewardToRender = (data: LedgerStatementRewardItem):
   return {
     statementId: statement_id,
     productRewardId: product_reward_id,
-    accruedReward: stringsUtil.checkNumberToFixed(accrued_reward) && accrued_reward.toFixed(5),
+    accruedReward: stringsUtil.checkNumberToFixed(accrued_reward)
+      ? accrued_reward.toFixed(5)
+      : null,
     description,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    rate: stringsUtil.checkNumberToFixed(rate) ? rate.toFixed(2) : null,
+    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
     rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
   };
 };

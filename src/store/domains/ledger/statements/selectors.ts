@@ -8,6 +8,7 @@ import {
   prepareAccountStatementsDataToRender,
   prepareDataToRender,
   prepareStatementAprToRender,
+  prepareStatementDataToRender,
   prepareStatementFeeToRender,
   prepareStatementRewardToRender,
   prepareTransactionsDataToRender,
@@ -37,7 +38,38 @@ export const selectLedgerStatementTransactions = createSelector(
 export const selectLedgerCurrentStatement = createSelector(
   selectLedgerStatements,
   selectActiveItemId,
-  (statement, currentId) => statement && statement.find(el => el.id === currentId)
+  (statements, currentId) => statements && statements.find(el => el.id === currentId)
+);
+
+export const selectLedgerCurrentStatementForReport = createSelector(
+  selectDefaultLedgerStatements,
+  selectInstitutionsOptions,
+  selectActiveItemId,
+  (statements, institutions, currentId) => {
+    const current = statements && statements.find(el => el.id === currentId);
+    const institution = current && institutions.find(el => el.value === current.institution_id);
+
+    const data = prepareStatementDataToRender(current, institution);
+
+    if (!data) {
+      return null;
+    }
+
+    const { account, statement } = data;
+    let clonedStatement = { ...statement };
+    const statementEntry = { statementId: clonedStatement.id };
+
+    if (clonedStatement) {
+
+      delete clonedStatement.id;
+      clonedStatement = {
+        ...statementEntry,
+        ...clonedStatement,
+      };
+    }
+
+    return [account, clonedStatement];
+  }
 );
 
 export const selectLedgerCurrentStatementTransaction = createSelector(

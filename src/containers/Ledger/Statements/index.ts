@@ -21,6 +21,7 @@ import {
   selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerCurrentStatement,
+  selectLedgerCurrentStatementForReport,
   selectLedgerStatementAprs,
   selectLedgerStatementFees,
   selectLedgerStatementRewards,
@@ -46,6 +47,7 @@ const mapStateToProps = (state: StoreState) => ({
   statementFees: selectLedgerStatementFees(state),
   statementRewards: selectLedgerStatementRewards(state),
   currentStatement: selectLedgerCurrentStatement(state),
+  currentStatementForReport: selectLedgerCurrentStatementForReport(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
 });
