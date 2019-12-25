@@ -7,9 +7,11 @@ import { illustrationInitialValues } from 'containers/ProductDesigner/Products/c
 
 import {
   createLoadingSelector,
+  handleGetProductDetails,
   handleIllustrateLoanProduct,
   ProductsActionTypes,
   resetIllustrationLoan,
+  selectCurrentProductDetails,
   selectCurrentProductType,
   selectProductLoanIllustration,
 } from 'store/domains';
@@ -22,7 +24,10 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: illustrationInitialValues,
+  initialValues: {
+    ...illustrationInitialValues,
+    ...selectCurrentProductDetails(state),
+  },
   currentProductType: selectCurrentProductType,
   productIllustration: selectProductLoanIllustration(state),
 });
@@ -30,6 +35,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     illustrateLoanProduct: handleIllustrateLoanProduct,
+    getProductDetails: handleGetProductDetails,
     resetIllustrationLoan,
   },
   dispatch
