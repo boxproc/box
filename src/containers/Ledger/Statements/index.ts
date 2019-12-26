@@ -22,11 +22,11 @@ import {
   selectInstitutionsOptions,
   selectLedgerCurrentStatement,
   selectLedgerCurrentStatementForReport,
-  selectLedgerStatementAprs,
-  selectLedgerStatementFees,
-  selectLedgerStatementRewards,
+  selectLedgerStatementAprsForReport,
+  selectLedgerStatementFeesForReport,
+  selectLedgerStatementRewardsForReport,
   selectLedgerStatements,
-  selectLedgerStatementTransactions,
+  selectLedgerStatementTransactionsForReport,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -42,10 +42,10 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   statements: selectLedgerStatements(state),
-  statementTransactions: selectLedgerStatementTransactions(state),
-  statementAprs: selectLedgerStatementAprs(state),
-  statementFees: selectLedgerStatementFees(state),
-  statementRewards: selectLedgerStatementRewards(state),
+  statementTransactionsForReport: selectLedgerStatementTransactionsForReport(state),
+  statementAprsForReport: selectLedgerStatementAprsForReport(state),
+  statementFeesForReport: selectLedgerStatementFeesForReport(state),
+  statementRewardsForReport: selectLedgerStatementRewardsForReport(state),
   currentStatement: selectLedgerCurrentStatement(state),
   currentStatementForReport: selectLedgerCurrentStatementForReport(state),
   institutionsOptions: selectInstitutionsOptions(state),

@@ -10,9 +10,13 @@ import {
   selectLedgerCurrentStatement,
   selectLedgerCurrentStatementForReport,
   selectLedgerStatementAprs,
+  selectLedgerStatementAprsForReport,
   selectLedgerStatementFees,
+  selectLedgerStatementFeesForReport,
   selectLedgerStatementRewards,
+  selectLedgerStatementRewardsForReport,
   selectLedgerStatementTransactions,
+  selectLedgerStatementTransactionsForReport,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -29,6 +33,10 @@ const mapStateToProps = (state: StoreState) => ({
   statementAprs: selectLedgerStatementAprs(state),
   statementFees: selectLedgerStatementFees(state),
   statementRewards: selectLedgerStatementRewards(state),
+  statementTransactionsForReport: selectLedgerStatementTransactionsForReport(state),
+  statementAprsForReport: selectLedgerStatementAprsForReport(state),
+  statementFeesForReport: selectLedgerStatementFeesForReport(state),
+  statementRewardsForReport: selectLedgerStatementRewardsForReport(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

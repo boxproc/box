@@ -13,12 +13,6 @@ import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
-import {
-  emptyStatementAprs,
-  emptyStatementFees,
-  emptyStatementRewards,
-  emptyStatementTransactions,
-} from 'containers/Ledger/Statements/consts';
 
 import {
   LedgerStatementAprItemPrepared,
@@ -37,7 +31,11 @@ interface StatementModalProps extends WithModalProps {
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   statementAprs: Array<LedgerStatementAprItemPrepared>;
   statementFees: Array<LedgerStatementFeeItemPrepared>;
+  statementTransactionsForReport: Array<Partial<LedgerStatementTransactionsItemPrepared>>;
   statementRewards: Array<LedgerStatementRewardItemPrepared>;
+  statementAprsForReport: Array<Partial<LedgerStatementAprItemPrepared>>;
+  statementFeesForReport: Array<Partial<LedgerStatementFeeItemPrepared>>;
+  statementRewardsForReport: Array<Partial<LedgerStatementRewardItemPrepared>>;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
@@ -50,6 +48,10 @@ const StatementModal: React.FC<StatementModalProps> = ({
   statementAprs,
   statementFees,
   statementRewards,
+  statementTransactionsForReport,
+  statementAprsForReport,
+  statementFeesForReport,
+  statementRewardsForReport,
 }) => {
   const reportFileName = React.useMemo(
     () => {
@@ -71,54 +73,34 @@ const StatementModal: React.FC<StatementModalProps> = ({
     [closeModal]
   );
 
-  const reportStatementTransactions = React.useMemo(
-    () => statementTransactions.length ? statementTransactions : emptyStatementTransactions,
-    [statementTransactions]
-  );
-
-  const reportStatementAprs = React.useMemo(
-    () => statementAprs.length ? statementAprs : emptyStatementAprs,
-    [statementAprs]
-  );
-
-  const reportStatementFees = React.useMemo(
-    () => statementFees.length ? statementFees : emptyStatementFees,
-    [statementFees]
-  );
-
-  const reportStatementRewards = React.useMemo(
-    () => statementRewards.length ? statementRewards : emptyStatementRewards,
-    [statementRewards]
-  );
-
   const handleGenerateReport = React.useCallback(
     () => downloadPDF({
       fileName: reportFileName,
       statement: currentStatementForReport,
       tables: [
         {
-          title: 'Transactions',
-          items: reportStatementTransactions,
+          id: 'Transactions',
+          items: statementTransactionsForReport,
         },
         {
-          title: 'Accrued Interest',
-          items: reportStatementAprs,
+          id: 'accruedInterest',
+          items: statementAprsForReport,
         },
         {
-          title: 'Fees',
-          items: reportStatementFees,
+          id: 'fees',
+          items: statementFeesForReport,
         },
         {
-          title: 'Rewards',
-          items: reportStatementRewards,
+          id: 'rewards',
+          items: statementRewardsForReport,
         },
       ],
     }),
     [
-      reportStatementTransactions,
-      reportStatementAprs,
-      reportStatementFees,
-      reportStatementRewards,
+      statementTransactionsForReport,
+      statementAprsForReport,
+      statementFeesForReport,
+      statementRewardsForReport,
       currentStatementForReport,
       reportFileName,
     ]
@@ -163,7 +145,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
         justifyContent="space-between"
       >
         <Button
-          text="Generate pdf file"
+          text="Open .pdf statement"
           iconName={iconNamesConst.FILE_PDF}
           onClick={handleGenerateReport}
         />

@@ -9,12 +9,6 @@ import { StatementsFilter } from './forms';
 import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
-import {
-  emptyStatementAprs,
-  emptyStatementFees,
-  emptyStatementRewards,
-  emptyStatementTransactions,
-} from './consts';
 
 import {
   HandleFilterLedgerAccountsById,
@@ -36,22 +30,22 @@ import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
 export interface StatementsProps {
-  statements: Array<LedgerStatementItemPrepared>;
-  filterLedgerStatements: HandleFilterLedgerStatements;
-  institutionsOptions: Array<SelectValues>;
   currentId: number;
+  statements: Array<LedgerStatementItemPrepared>;
+  institutionsOptions: Array<SelectValues>;
+  currentStatementForReport: Array<object>;
+  statementTransactionsForReport: Array<Partial<LedgerStatementTransactionsItemPrepared>>;
+  statementAprsForReport: Array<Partial<LedgerStatementAprItemPrepared>>;
+  statementFeesForReport: Array<Partial<LedgerStatementFeeItemPrepared>>;
+  statementRewardsForReport: Array<Partial<LedgerStatementRewardItemPrepared>>;
+  filterLedgerStatements: HandleFilterLedgerStatements;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
   currentStatement: LedgerStatementItemPrepared;
-  currentStatementForReport: Array<object>;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
-  statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
-  statementAprs: Array<LedgerStatementAprItemPrepared>;
-  statementFees: Array<LedgerStatementFeeItemPrepared>;
-  statementRewards: Array<LedgerStatementRewardItemPrepared>;
   resetStatements: ResetStatements;
 }
 
@@ -67,11 +61,11 @@ const Statements: React.FC<StatementsProps> = ({
   currentStatement,
   currentStatementForReport,
   getStatementTransactions,
-  statementTransactions,
+  statementTransactionsForReport,
   getLedgerStatementAprsFeesRewards,
-  statementAprs,
-  statementFees,
-  statementRewards,
+  statementAprsForReport,
+  statementFeesForReport,
+  statementRewardsForReport,
   resetStatements,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
@@ -114,26 +108,6 @@ const Statements: React.FC<StatementsProps> = ({
     [currentStatement]
   );
 
-  const reportStatementTransactions = React.useMemo(
-    () => statementTransactions.length ? statementTransactions : emptyStatementTransactions,
-    [statementTransactions]
-  );
-
-  const reportStatementAprs = React.useMemo(
-    () => statementAprs.length ? statementAprs : emptyStatementAprs,
-    [statementAprs]
-  );
-
-  const reportStatementFees = React.useMemo(
-    () => statementFees.length ? statementFees : emptyStatementFees,
-    [statementFees]
-  );
-
-  const reportStatementRewards = React.useMemo(
-    () => statementRewards.length ? statementRewards : emptyStatementRewards,
-    [statementRewards]
-  );
-
   const handleGenerateReport = React.useCallback(
     () => {
       downloadPDF({
@@ -141,29 +115,29 @@ const Statements: React.FC<StatementsProps> = ({
         statement: currentStatementForReport,
         tables: [
           {
-            title: 'Transactions',
-            items: reportStatementTransactions,
+            id: 'transactions',
+            items: statementTransactionsForReport,
           },
           {
-            title: 'Accrued Interest',
-            items: reportStatementAprs,
+            id: 'accruedInterest',
+            items: statementAprsForReport,
           },
           {
-            title: 'Fees',
-            items: reportStatementFees,
+            id: 'fees',
+            items: statementFeesForReport,
           },
           {
-            title: 'Rewards',
-            items: reportStatementRewards,
+            id: 'rewards',
+            items: statementRewardsForReport,
           },
         ],
       });
     },
     [
-      reportStatementTransactions,
-      reportStatementAprs,
-      reportStatementFees,
-      reportStatementRewards,
+      statementTransactionsForReport,
+      statementAprsForReport,
+      statementFeesForReport,
+      statementRewardsForReport,
       currentStatementForReport,
       reportFileName,
     ]
@@ -175,7 +149,7 @@ const Statements: React.FC<StatementsProps> = ({
         isDivider: true,
       },
       {
-        name: 'Generate pdf file',
+        name: 'Open .pdf statement',
         icon: iconNamesConst.FILE_PDF,
         action: handleGenerateReport,
       },
@@ -209,11 +183,33 @@ const Statements: React.FC<StatementsProps> = ({
     ]
   );
 
+  const statementsTableColumns = React.useMemo(
+    () => {
+      return [
+        // {
+        //   maxWidth: 60,
+        //   accessor: 'deleteButton',
+        //   Cell: (cellInfo: CellInfo) => (
+        //     <Button
+        //       iconName={iconNamesConst.FILE_PDF}
+        //       text=""
+        //       iconSize="24"
+        //       onClick={handleGenerateReport}
+        //       hint="Open .pdf statement"
+        //     />
+        //   ),
+        // },
+        ...tableColumns,
+      ];
+    },
+    []
+  );
+
   return (
     <PageTemplate
       title="Statements"
       data={statements}
-      columns={tableColumns}
+      columns={statementsTableColumns}
       editModalName={modalNamesConst.LEDGER_STATEMENTS}
       filterAction={filterLedgerStatements}
       contextMenuItems={contextMenuItems}

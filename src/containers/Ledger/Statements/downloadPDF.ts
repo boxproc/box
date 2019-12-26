@@ -7,28 +7,6 @@ import { logo } from 'resources/images/logo';
 
 import { dateUtil, storageUtil } from 'utils';
 
-const tableStyles = {
-  margin: { right: 10, left: 20 },
-  styles: {
-    minCellWidth: 45,
-    fontSize: 7,
-    textColor: theme.colors.black,
-    fillColor: '#fafafa',
-  },
-  headStyles: {
-    fontStyle: 'normal',
-    fillColor: theme.colors.lightGray,
-  },
-  alternateRowStyles: {
-    fillColor: theme.colors.white,
-  },
-  columnStyles: {
-    text: {
-      cellWidth: 'wrap',
-    },
-  },
-};
-
 const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
     .toLocaleLowerCase()
@@ -45,7 +23,7 @@ export const downloadPDF = (data: {
   fileName: string,
   statement?: Array<object>;
   tables: Array<{
-    title: string;
+    id: string;
     items: Array<object>;
   }>,
 }) => {
@@ -108,23 +86,55 @@ export const downloadPDF = (data: {
     });
   }
 
+  const previousFinalY = {};
+
   tables.forEach((table, index) => {
+
     const isFirstTable = index === 0;
 
-    const { title, items } = table;
+    const { id, items } = table;
+    const isTransactions = id === 'transactions';
+    const isRewards = id === 'rewards';
 
     if (items && items.length) {
-
       const tableHead = items.length
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
       const tableBody = items.length && items.map(item => Object.values(item));
 
+      const title = formatKey(id);
+
+      previousFinalY[id] = doc.previousAutoTable.finalY;
+
+      const startY = () => {
+        if (isFirstTable) {
+          return 320;
+        } else if (isRewards) {
+          return previousFinalY['fees'] + 35;
+        } else {
+          return doc.previousAutoTable.finalY + 35;
+        }
+      };
+
       const tableContent = {
         head: [tableHead],
         body: tableBody,
-        startY: isFirstTable ? 320 : doc.previousAutoTable.finalY + 35,
-        ...tableStyles,
+        startY: startY(),
+        margin: { right: 10, left: isRewards ? 250 : 20 },
+        styles: {
+          minCellWidth: 45,
+          fontSize: 7,
+          textColor: theme.colors.black,
+          fillColor: '#fafafa',
+        },
+        headStyles: {
+          fontStyle: 'normal',
+          fillColor: theme.colors.lightGray,
+          cellWidth: !isTransactions && 100,
+        },
+        alternateRowStyles: {
+          fillColor: theme.colors.white,
+        },
       };
 
       doc.autoTable(tableContent);
@@ -132,7 +142,11 @@ export const downloadPDF = (data: {
       doc.setFontSize(13);
       doc.setFontStyle('bold');
       doc.setTextColor(theme.colors.darkGray);
-      doc.text(30, isFirstTable ? 310 : doc.previousAutoTable.pageStartY - 10, title);
+      doc.text(
+        isRewards ? 250 : 30,
+        isFirstTable ? 310 : doc.previousAutoTable.pageStartY - 10,
+        title
+      );
     }
   });
 
@@ -144,7 +158,6 @@ export const downloadPDF = (data: {
   const pageCount = doc.internal.getNumberOfPages();
 
   for (let i = 0; i < pageCount; i++) {
-
     doc.setPage(i);
     doc.text(
       580,

@@ -68,6 +68,8 @@ export interface LedgerStatementTransactionsItem {
   transaction_datetime: string;
   amount: number;
   amount_in_original_currency: number;
+  original_currency: string;
+  grace_period: number;
   balance_available_before: number;
   balance_available_after: number;
   balance_settled_before: number;
@@ -82,6 +84,8 @@ export interface LedgerStatementTransactionsItemPrepared {
   transactionDatetime: number | string;
   amount: number | string;
   amountInOriginalCurrency: number | string;
+  originalCurrency: string;
+  gracePeriod: number;
   balanceAvailableBefore: number | string;
   balanceAvailableAfter: number | string;
   balanceSettledBefore: number | string;

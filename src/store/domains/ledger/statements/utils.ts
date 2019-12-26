@@ -109,6 +109,8 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
     transaction_datetime,
     amount,
     amount_in_original_currency,
+    original_currency,
+    grace_period,
     balance_available_before,
     balance_available_after,
     balance_settled_before,
@@ -122,6 +124,7 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
     id,
     transactionDatetime: transaction_datetime,
     amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
+    originalCurrency: original_currency,
     amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
       ? amount_in_original_currency.toFixed(2) : null,
     balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
@@ -135,6 +138,7 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
     description,
     aprId: apr_id,
     aprRate: stringsUtil.checkNumberToFixed(apr_rate) ? apr_rate.toFixed(2) : null,
+    gracePeriod: grace_period,
   };
 };
 
