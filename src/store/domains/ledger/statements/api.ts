@@ -7,6 +7,7 @@ import { LedgerId } from '../customers';
 //   ledgerAccountStatementFeeItems,
 //   ledgerAccountStatementRewardItems,
 //   ledgerAccountStatementsItems,
+//   ledgerStatementsItems,
 // } from './mock';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
 
@@ -17,7 +18,6 @@ export const filterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepa
   apiClient.post(lenderStatementsPathNames.GET, { data });
 
 export const getLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
-  // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
   apiClient.post(lenderStatementsPathNames.GET_TRANSACTIONS, {
     data: {
       first_transaction_id: data.firstTransactionId,
@@ -27,7 +27,7 @@ export const getLedgerStatementTransactions = (data: LedgerStatementTransactions
   });
 
 export const filterLedgerStatementsById = (data: LedgerId) =>
-  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+  // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
   apiClient.post(lenderStatementsPathNames.GET, { data });
 
 export const getLedgerAccountStatements = (accountId: number) =>

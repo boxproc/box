@@ -24,6 +24,7 @@ export const downloadStatementPDF = (data: {
   statement?: Array<object>;
   tables: Array<{
     id: string;
+    title: string;
     items: Array<object>;
   }>,
 }) => {
@@ -92,7 +93,7 @@ export const downloadStatementPDF = (data: {
 
     const isFirstTable = index === 0;
 
-    const { id, items } = table;
+    const { id, title, items } = table;
     const isTransactions = id === 'transactions';
     const isRewards = id === 'rewards';
 
@@ -101,8 +102,6 @@ export const downloadStatementPDF = (data: {
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
       const tableBody = items.length && items.map(item => Object.values(item));
-
-      const title = formatKey(id);
 
       previousFinalY[id] = doc.previousAutoTable.finalY;
 

@@ -16,6 +16,7 @@ import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import {
   HandleGetLedgerStatementAprsFeesRewards,
+  HandleGetLedgerStatementTransactions,
   LedgerStatementAprItemPrepared,
   LedgerStatementFeeItemPrepared,
   LedgerStatementItemPrepared,
@@ -24,25 +25,41 @@ import {
 } from 'store/domains';
 
 interface StatementModalProps extends WithModalProps {
+  currentStatementId: number;
   currentStatement: LedgerStatementItemPrepared;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   statementAprs: Array<LedgerStatementAprItemPrepared>;
   statementFees: Array<LedgerStatementFeeItemPrepared>;
   statementRewards: Array<LedgerStatementRewardItemPrepared>;
+  getStatementTransactions: HandleGetLedgerStatementTransactions;
+  getStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
   generateTransactionsAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
 
 const StatementModal: React.FC<StatementModalProps> = ({
+  currentStatementId,
   currentStatement,
   closeModal,
   statementTransactions,
   statementAprs,
   statementFees,
   statementRewards,
+  getStatementTransactions,
+  getStatementAprsFeesRewards,
   generateTransactionsAprsFeesRewards,
 }) => {
+  React.useEffect(
+    () => {
+      Promise.all([
+        getStatementTransactions(),
+        getStatementAprsFeesRewards(currentStatementId),
+      ]);
+    },
+    [getStatementTransactions, getStatementAprsFeesRewards, currentStatementId]
+  );
+
   const handleCloseModal = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
