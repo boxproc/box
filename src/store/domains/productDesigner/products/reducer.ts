@@ -16,6 +16,12 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   productRewards: Immutable([]),
   productFeeAprs: Immutable([]),
   productIllustration: Immutable([]),
+  productRevolvingCreditIllustration: {
+    statements: Immutable([]),
+    aprs: Immutable([]),
+    rewards: Immutable([]),
+    fees: Immutable([]),
+  },
 });
 
 const productsReducer =
@@ -53,6 +59,10 @@ const productsReducer =
 
       case ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED:
         return state.set('productIllustration', action.payload.product_information);
+
+      case ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED:
+        return state.set('productRevolvingCreditIllustration',
+                         action.payload.revolving_credit_information);
 
       case ActionTypeKeys.RESET_ILLUSTRATION_LOAN:
         return state.set('productIllustration', Immutable([]));

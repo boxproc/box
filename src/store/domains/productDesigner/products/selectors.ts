@@ -17,7 +17,11 @@ import {
   prepareProductAprsToRender,
   prepareProductDetailsData,
   prepareProductFeesToRender,
+  prepareProductIllustrationAprsItem,
   prepareProductIllustrationData,
+  prepareProductIllustrationFeesItem,
+  prepareProductIllustrationRewardsItem,
+  prepareProductIllustrationStatementsItem,
   prepareProductRewardsToRender,
   prepareProductRuleData,
 } from './utils';
@@ -30,6 +34,57 @@ export const selectDefaultInterfaces = (state: StoreState) =>
 
 export const selectDefaultEndpoints = (state: StoreState) =>
   state.productDesigner.products.endpoints.asMutable();
+
+export const selectDefaultRevolvingCreditIllustration = (state: StoreState) =>
+  state.productDesigner.products.productRevolvingCreditIllustration;
+
+export const selectStatementsIllustration = createSelector(
+  selectDefaultRevolvingCreditIllustration,
+  (revolvingCreditIllustration) =>
+    revolvingCreditIllustration &&
+    revolvingCreditIllustration.statements.asMutable().map(statement => {
+      if (!statement) {
+        return null;
+      }
+      return prepareProductIllustrationStatementsItem(statement);
+    })
+);
+
+export const selectAprsIllustration = createSelector(
+  selectDefaultRevolvingCreditIllustration,
+  (revolvingCreditIllustration) =>
+  revolvingCreditIllustration && revolvingCreditIllustration.aprs &&
+  revolvingCreditIllustration.aprs.asMutable().map(apr => {
+      if (!apr) {
+        return null;
+      }
+      return prepareProductIllustrationAprsItem(apr);
+    })
+);
+
+export const selectFeesIllustration = createSelector(
+  selectDefaultRevolvingCreditIllustration,
+  (revolvingCreditIllustration) =>
+  revolvingCreditIllustration && revolvingCreditIllustration.fees &&
+  revolvingCreditIllustration.fees.asMutable().map(fee => {
+      if (!fee) {
+        return null;
+      }
+      return prepareProductIllustrationFeesItem(fee);
+    })
+);
+
+export const selectRewardsIllustration = createSelector(
+  selectDefaultRevolvingCreditIllustration,
+  (revolvingCreditIllustration) =>
+  revolvingCreditIllustration && revolvingCreditIllustration.rewards &&
+  revolvingCreditIllustration.rewards.asMutable().map(reward => {
+      if (!reward) {
+        return null;
+      }
+      return prepareProductIllustrationRewardsItem(reward);
+    })
+);
 
 export const selectProductItems = createSelector(
   selectDefaultProductItems,

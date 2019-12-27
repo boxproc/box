@@ -33,6 +33,7 @@ import {
   GetProductRewardsAction,
   GetProductRuleAction,
   IllustrateProductLoanAction,
+  IllustrateProductRevolvingCreditAction,
   UpdateCardServiceAction,
   UpdateGeneralLedgerAction,
   UpdateProductAction,
@@ -73,6 +74,7 @@ import {
   ProductRuleRequestPrepared,
   ProductRulesItem,
   ProductRulesItemResp,
+  RevolvingCreditProductIllustratePrepared,
   ServicesItems,
   ServicesItemsPrepared,
 } from './types';
@@ -90,6 +92,7 @@ import {
   prepareProductFeesToSend,
   prepareProductFilterDataToSend,
   prepareProductLoanIllustrateDataToSend,
+  prepareProductRevolvingCreditIllustrateDataToSend,
   prepareProductRewardsToSend,
   prepareProductRuleDataToSend,
   prepareProductRuleIdsToSend,
@@ -188,6 +191,10 @@ export type HandleGetProductFeeAprs = () => Thunk<void>;
 export type IllustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
   IllustrateProductLoanAction;
 export type HandleIllustrateLoanProduct = () => Thunk<void>;
+
+export type IllustrateRevolvingCreditProduct =
+(data: Partial<RevolvingCreditProductIllustratePrepared>) => IllustrateProductRevolvingCreditAction;
+export type HandleIllustrateRevolvingCreditProduct = () => Thunk<void>;
 
 export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
 
@@ -344,6 +351,11 @@ export const illustrateLoanProduct: IllustrateLoanProduct = data => ({
   payload: api.illustrateLoanProduct(data),
 });
 
+export const illustrateRevolvingCreditProduct: IllustrateRevolvingCreditProduct = data => ({
+  type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,
+  payload: api.illustrateRevolvingCreditProduct(data),
+});
+
 export const resetProducts: ResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
 });
@@ -382,6 +394,26 @@ export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
 
         if (preparedValues) {
           await dispatch(illustrateLoanProduct(preparedValues));
+        }
+      },
+      dispatch
+    );
+  };
+
+export const handleIllustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
+        const state = getState();
+        const preparedValues = prepareProductRevolvingCreditIllustrateDataToSend({
+          productId: selectActiveItemId(state),
+          ...formValues(state),
+        }
+        );
+
+        if (preparedValues) {
+          await dispatch(illustrateRevolvingCreditProduct(preparedValues));
         }
       },
       dispatch

@@ -18,7 +18,11 @@ import {
   DebitProductItem,
   DebitProductItemResp,
   GeneralLedgerItemPrepared,
+  IllustrationProductAprRevolvingCreditResp,
+  IllustrationProductFeeRevolvingCreditResp,
   IllustrationProductLoanResp,
+  IllustrationProductRewardRevolvingCreditResp,
+  IllustrationProductStatementsRevolvingCreditResp,
   LoanProductIllustrate,
   LoanProductIllustratePrepared,
   LoanProductItem,
@@ -45,6 +49,8 @@ import {
   ProductRewardPlainInfo,
   ProductRulesItem,
   ProductRulesItemResp,
+  RevolvingCreditnProductIllustrate,
+  RevolvingCreditProductIllustratePrepared,
   RevolvingCreditProductItem,
   RevolvingCreditProductItemResp,
   SavingsProductItem,
@@ -73,6 +79,29 @@ export const prepareProductLoanIllustrateDataToSend =
       amount,
       nr_loan_cycles: Number(defNumOfInstallments),
       nr_interest_free: Number(defNumOfIntrstFreeInstlmts),
+      start_date: startDate,
+    };
+  };
+
+export const prepareProductRevolvingCreditIllustrateDataToSend =
+  (data: Partial<RevolvingCreditnProductIllustrate>):
+  Partial<RevolvingCreditProductIllustratePrepared> => {
+    const { productId, limit, startDate, transactionAmount1, transactionAmount2, transactionAmount3,
+      transactionDate1, transactionDate2, transactionDate3, transactionType1,
+      transactionType2, transactionType3 } = data;
+
+    return {
+      product_id: productId,
+      limit,
+      transaction_amount_1: transactionAmount1,
+      transaction_amount_2: transactionAmount2,
+      transaction_amount_3: transactionAmount3,
+      transaction_date_1: transactionDate1,
+      transaction_date_2: transactionDate2,
+      transaction_date_3: transactionDate3,
+      transaction_type_1: transactionType1 && transactionType1.value,
+      transaction_type_2: transactionType2 && transactionType2.value,
+      transaction_type_3: transactionType3 && transactionType3.value,
       start_date: startDate,
     };
   };
@@ -176,6 +205,46 @@ export const prepareGeneralProductItem = (
     defaultStatementCycle: item.statement_cycle_description,
     lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
     overridesProductId: item.overrides_product_id,
+  };
+};
+
+export const prepareProductIllustrationStatementsItem = (
+  item: IllustrationProductStatementsRevolvingCreditResp
+) => {
+  return {
+    statementId: item.statement_id,
+    statementDate: item.statement_date,
+    firstTransactionId: item.first_transaction_id,
+    lastTransactionId: item.last_transaction_id,
+    balanceOpen: item.balance_open,
+    balanceClose: item.balance_close,
+  };
+};
+
+export const prepareProductIllustrationAprsItem = (
+  item: IllustrationProductAprRevolvingCreditResp
+) => {
+  return {
+    productAprId: item.product_apr_id,
+    accruedInterest: item.accrued_interest,
+  };
+};
+
+export const prepareProductIllustrationFeesItem = (
+  item: IllustrationProductFeeRevolvingCreditResp
+) => {
+  return {
+    productFeeId: item.product_fee_id,
+    accruedFee: item.accrued_fee,
+  };
+};
+
+export const prepareProductIllustrationRewardsItem = (
+  item: IllustrationProductRewardRevolvingCreditResp
+) => {
+  return {
+    productRewardId: item.product_reward_id,
+    accruedReward: item.accrued_reward,
   };
 };
 

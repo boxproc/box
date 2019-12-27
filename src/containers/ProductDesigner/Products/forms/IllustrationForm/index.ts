@@ -3,7 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import IllustrationForm from './IllustrationForm';
 
-import { illustrationInitialValues } from 'containers/ProductDesigner/Products/consts';
+import { illustrationInitialValuesLoan } from 'containers/ProductDesigner/Products/consts';
 
 import {
   createLoadingSelector,
@@ -25,7 +25,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: {
-    ...illustrationInitialValues,
+    ...illustrationInitialValuesLoan,
     ...selectCurrentProductDetails(state),
   },
   currentProductType: selectCurrentProductType,

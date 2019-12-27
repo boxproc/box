@@ -58,12 +58,85 @@ export interface IllustrationProductLoan {
   minimumAmountDueRepayment: number | string;
 }
 
+export interface IllustrationProductStatementsRevolvingCreditResp {
+  statement_id: number;
+  statement_date: string;
+  first_transaction_id: number;
+  last_transaction_id: number;
+  balance_open: number;
+  balance_close: number;
+}
+
+export interface IllustrationProductStatementsRevolvingCredit {
+  statementId: number | string;
+  statementDate: number | string;
+  firstTransactionId: number| string;
+  lastTransactionId: number| string;
+  balanceOpen: number | string;
+  balanceClose: number | string;
+}
+
+export interface IllustrationProductAprRevolvingCreditResp {
+  product_apr_id: number | string;
+  accrued_interest: number| string;
+}
+export interface IllustrationProductFeeRevolvingCredit {
+  productFeeId: number | string;
+  accruedFee: number | string;
+}
+export interface IllustrationProductAprRevolvingCredit {
+  productAprId: number | string;
+  accruedInterest: number| string;
+}
+
+export interface IllustrationProductRewardsRevolvingCreditResp {
+  productRewardId: number | string;
+  accruedReward: number | string;
+}
+
+export interface IllustrationProductFeeRevolvingCreditResp {
+  product_fee_id: number | string;
+  accrued_fee: number | string;
+}
+
+export interface IllustrationProductRewardRevolvingCreditResp {
+  product_reward_id: number | string;
+  accrued_reward: number | string;
+}
+
 export interface ProductsDataResp {
   products: Array<ProductItemResp>;
 }
 
 export interface ProductLoanIllustrationDataResp {
   product_information: Array<IllustrationProductLoanResp>;
+}
+
+export interface ProductRevolvingCreditStatementsIllustrationDataResp {
+  statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
+}
+
+export interface ProductRevolvingCreditAprIllustrationDataResp {
+  aprs: Array<IllustrationProductAprRevolvingCreditResp>;
+}
+
+export interface ProductRevolvingCreditFeeIllustrationDataResp {
+  fees: Array<IllustrationProductFeeRevolvingCreditResp>;
+}
+
+export interface ProductRevolvingCreditRewardIllustrationDataResp {
+  rewards: Array<IllustrationProductRewardRevolvingCreditResp>;
+}
+
+export interface ProductRevolvingCreditIllustrationAllDataResp {
+  revolving_credit_information: ProductRevolvingCreditIllustrationDataResp;
+}
+
+export interface ProductRevolvingCreditIllustrationDataResp {
+  statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
+  aprs: Array<IllustrationProductAprRevolvingCreditResp>;
+  fees: Array<IllustrationProductFeeRevolvingCreditResp>;
+  rewards: Array<IllustrationProductRewardRevolvingCreditResp>;
 }
 
 export interface ProductDataResp {
@@ -117,12 +190,42 @@ export interface LoanProductIllustratePrepared {
   nr_interest_free: number;
 }
 
+export interface RevolvingCreditProductIllustratePrepared {
+  product_id: number;
+  limit: number;
+  start_date: string;
+  transaction_date_1: string;
+  transaction_date_2: string;
+  transaction_date_3: string;
+  transaction_type_1: number | string;
+  transaction_type_2: number | string;
+  transaction_type_3: number | string;
+  transaction_amount_1: number;
+  transaction_amount_2: number;
+  transaction_amount_3: number;
+}
+
 export interface LoanProductIllustrate {
   productId: number;
   amount: number;
   startDate: string;
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
+}
+
+export interface RevolvingCreditnProductIllustrate {
+  productId: number;
+  limit: number;
+  startDate: string;
+  transactionDate1: string;
+  transactionDate2: string;
+  transactionDate3: string;
+  transactionType1: SelectValues;
+  transactionType2: SelectValues;
+  transactionType3: SelectValues;
+  transactionAmount1: number;
+  transactionAmount2: number;
+  transactionAmount3: number;
 }
 
 export interface RevolvingCreditProductItemResp {
@@ -506,4 +609,10 @@ export interface ProductsState {
   productRewards: ImmutableArray<ProductRewardItem>;
   productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
   productIllustration: ImmutableArray<IllustrationProductLoanResp>;
+  productRevolvingCreditIllustration: {
+  statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
+  aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
+  fees: ImmutableArray<IllustrationProductFeeRevolvingCreditResp>;
+  rewards: ImmutableArray<IllustrationProductRewardRevolvingCreditResp>;
+};
 }

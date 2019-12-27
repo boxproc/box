@@ -16,6 +16,7 @@ import {
 
 import { productTypesCodes } from 'consts';
 import { SelectValues } from 'types';
+import IllustrationRevolvingCreditForm from '../IllustrationRevolvingCreditForm';
 
 interface EditProductFormsProps {
   currentProductType: SelectValues;
@@ -32,13 +33,24 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   onCancel,
   isReadOnly,
 }) => {
-  const isIllustration = React.useMemo(
+  const isIllustrationLoan = React.useMemo(
     () => {
       if (!currentProductType) {
         return false;
       }
 
       return currentProductType.value === productTypesCodes.LOAN;
+    },
+    [currentProductType]
+  );
+
+  const isIllustrationRevolvingCredit = React.useMemo(
+    () => {
+      if (!currentProductType) {
+        return false;
+      }
+
+      return currentProductType.value === productTypesCodes.REVOLVING_CREDIT;
     },
     [currentProductType]
   );
@@ -130,12 +142,23 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
-      {isIllustration && (
+      {isIllustrationLoan && (
         <TabsPanel
           title="Illustration"
           withConfirmation={isAnyFormDirty}
         >
           <IllustrationForm
+            onCancel={onCancel}
+            isReadOnly={isReadOnly}
+          />
+        </TabsPanel>
+      )}
+      {isIllustrationRevolvingCredit && (
+        <TabsPanel
+          title="Illustration"
+          withConfirmation={isAnyFormDirty}
+        >
+          <IllustrationRevolvingCreditForm
             onCancel={onCancel}
             isReadOnly={isReadOnly}
           />

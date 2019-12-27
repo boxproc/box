@@ -181,4 +181,6 @@ export enum productsPathNames {
   DELETE_REWARD = '/ui/product_designer/products/rewards/delete',
   GET_FEE_APRS = '/ui/product_designer/products/fees/get_fee_aprs',
   ILLUSTRATE_LOAN_PRODUCT = 'ui/product_designer/products/illustration/show_product',
+  ILLUSTRATE_REVOLVING_CREDIT_PRODUCT =
+  'ui/product_designer/products/illustration/show_revolving_credit',
 }

@@ -14,8 +14,6 @@ import {
   statusTypesOptions,
 } from 'consts';
 
-import { HandleGetCyclesDescriptions } from 'store/domains';
-
 import { SelectValues } from 'types';
 
 import { formErrorUtil } from 'utils';
@@ -23,9 +21,7 @@ import { formErrorUtil } from 'utils';
 interface ProductGeneralInfoProps {
   isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
-  getCyclesDescriptions: HandleGetCyclesDescriptions;
   statementCyclesOptions: Array<SelectValues>;
-  currentInstitution: SelectValues;
   isReadOnly: boolean;
 }
 
@@ -36,26 +32,9 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   isCurrencyCodesLoading,
   isEditMode = false,
   institutionsOptions,
-  getCyclesDescriptions,
   statementCyclesOptions,
-  currentInstitution,
   isReadOnly,
 }) => {
-  const currentInstitutionValue = React.useMemo(
-    () => currentInstitution && currentInstitution.value,
-    [currentInstitution]
-  );
-
-  React.useEffect(
-    () => {
-      if (currentInstitutionValue) {
-        getCyclesDescriptions({
-          institutionId: currentInstitutionValue,
-        });
-      }
-    },
-    [getCyclesDescriptions, currentInstitutionValue]
-  );
 
   return (
     <Box mx="-10px">

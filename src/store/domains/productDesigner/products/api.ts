@@ -29,6 +29,7 @@ import {
   ProductRewardsIds,
   ProductRuleRequestPrepared,
   ProductRulesItemResp,
+  RevolvingCreditProductIllustratePrepared,
   ServicesItems,
 } from './types';
 
@@ -87,6 +88,10 @@ export const filterProducts = (data: ProductFilterPrepared) =>
 
 export const illustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
   apiClient.post(productsPathNames.ILLUSTRATE_LOAN_PRODUCT, { data });
+
+export const illustrateRevolvingCreditProduct =
+  (data: Partial<RevolvingCreditProductIllustratePrepared>) =>
+    apiClient.post(productsPathNames.ILLUSTRATE_REVOLVING_CREDIT_PRODUCT, { data });
 
 export const addProduct = (data: NewProductPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
