@@ -5,7 +5,7 @@ import { theme } from 'theme';
 
 import { logo } from 'resources/images/logo';
 
-import { dateUtil, storageUtil } from 'utils';
+import { dateUtil, formErrorUtil, storageUtil } from 'utils';
 
 const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
@@ -24,6 +24,7 @@ export const downloadStatementPDF = (data: {
   statement?: Array<object>;
   tables: Array<{
     id: string;
+    title: string;
     items: Array<object>;
   }>,
 }) => {
@@ -92,7 +93,7 @@ export const downloadStatementPDF = (data: {
 
     const isFirstTable = index === 0;
 
-    const { id, items } = table;
+    const { id, title, items } = table;
     const isTransactions = id === 'transactions';
     const isRewards = id === 'rewards';
 
@@ -101,8 +102,6 @@ export const downloadStatementPDF = (data: {
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
       const tableBody = items.length && items.map(item => Object.values(item));
-
-      const title = formatKey(id);
 
       previousFinalY[id] = doc.previousAutoTable.finalY;
 
@@ -131,9 +130,30 @@ export const downloadStatementPDF = (data: {
           fontStyle: 'normal',
           fillColor: theme.colors.lightGray,
           cellWidth: !isTransactions && 100,
+          textColor: theme.colors.black,
         },
         alternateRowStyles: {
           fillColor: theme.colors.white,
+        },
+        didParseCell: (tableData: any) => {
+          const isHead = tableData.section === 'head';
+          const isBody = tableData.section === 'body';
+          const value = isBody && tableData.cell.raw;
+          const isNumber = !isNaN(value);
+          const isNotDate = formErrorUtil.isDateTime(value);
+          const styles = tableData.cell.styles;
+
+          if (isBody && isNumber) {
+            styles.halign = 'right';
+          } else if (isHead) {
+            styles.halign = 'center';
+          } else {
+            styles.halign = 'left';
+          }
+
+          if (!isNotDate) {
+            styles.textColor = theme.colors.darkGray;
+          }
         },
       };
 

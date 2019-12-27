@@ -6,8 +6,10 @@ import StatementModal from './StatementModal';
 import {
   createLoadingSelector,
   handleGenerateStatementTransactionsAprsFeesRewards,
+  handleGetLedgerStatementAprsFeesRewards,
   handleGetLedgerStatementTransactions,
   LedgerStatementsActionTypes,
+  selectActiveItemId,
   selectLedgerCurrentStatement,
   selectLedgerStatementAprs,
   selectLedgerStatementFees,
@@ -19,6 +21,9 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_FEES,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_REWARDS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -28,11 +33,13 @@ const mapStateToProps = (state: StoreState) => ({
   statementAprs: selectLedgerStatementAprs(state),
   statementFees: selectLedgerStatementFees(state),
   statementRewards: selectLedgerStatementRewards(state),
+  currentStatementId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getStatementTransactions: handleGetLedgerStatementTransactions,
+    getStatementAprsFeesRewards: handleGetLedgerStatementAprsFeesRewards,
     generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprsFeesRewards,
   },
   dispatch

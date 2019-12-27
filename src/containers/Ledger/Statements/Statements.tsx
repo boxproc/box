@@ -38,6 +38,7 @@ export interface StatementsProps {
   generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprsFeesRewards;
   resetStatements: ResetStatements;
   setActiveItemId: SetActiveItemId;
+  isLoadingStatement: boolean;
 }
 
 const Statements: React.FC<StatementsProps> = ({
@@ -52,6 +53,7 @@ const Statements: React.FC<StatementsProps> = ({
   generateTransactionsAprsFeesRewards,
   resetStatements,
   setActiveItemId,
+  isLoadingStatement,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
   const [dateTo, setDateTo] = React.useState(null);
@@ -133,6 +135,7 @@ const Statements: React.FC<StatementsProps> = ({
                 onClick={() => handleClickOnPdfReportButton(cellInfo.original.id)}
                 hint="Open pdf statement"
                 hintPosition="right"
+                disabled={isLoadingStatement}
               />
             </Flex>
           ),
@@ -140,7 +143,7 @@ const Statements: React.FC<StatementsProps> = ({
         ...tableColumns,
       ];
     },
-    [handleClickOnPdfReportButton]
+    [handleClickOnPdfReportButton, isLoadingStatement]
   );
 
   return (

@@ -33,8 +33,16 @@ const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.FILTER_LEDGER_CUSTOMERS_BY_ID,
 ]);
 
+const loadingStatementSelector = createLoadingSelector([
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_FEES,
+  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_REWARDS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isLoadingStatement: loadingStatementSelector(state),
   statements: selectLedgerStatements(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),

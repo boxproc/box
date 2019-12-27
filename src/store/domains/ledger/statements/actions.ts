@@ -184,17 +184,23 @@ export const handleGenerateStatementTransactionsAprsFeesRewards:
           const state = getState();
           const statementId = selectActiveItemId(state);
 
-          const data = selectLedgerCurrentStatementTransaction(state);
+          const currentTransaction = selectLedgerCurrentStatementTransaction(state);
 
-          const transactionsRes = await dispatch(getLedgerStatementTransactions(data)) as any;
-          const aprsRes = await dispatch(getLedgerAccountStatementAprs(statementId)) as any;
-          const feesRes = await dispatch(getLedgerAccountStatementFees(statementId)) as any;
-          const rewardsRes = await dispatch(getLedgerAccountStatementRewards(statementId)) as any;
+          const data: Array<any> = [];
 
-          const transactions = transactionsRes.value.transactions;
-          const aprs = aprsRes.value.statement_aprs;
-          const fees = feesRes.value.statement_fees;
-          const rewards = rewardsRes.value.statement_rewards;
+          const loadedData = await Promise.all([
+            dispatch(getLedgerStatementTransactions(currentTransaction)),
+            dispatch(getLedgerAccountStatementAprs(statementId)),
+            dispatch(getLedgerAccountStatementFees(statementId)),
+            dispatch(getLedgerAccountStatementRewards(statementId)),
+          ]) as Array<any>;
+
+          loadedData.forEach(item => data.push(item.value));
+
+          const transactions = data.find(el => el.transactions).transactions;
+          const aprs = data.find(el => el.statement_aprs).statement_aprs;
+          const fees = data.find(el => el.statement_fees).statement_fees;
+          const rewards = data.find(el => el.statement_rewards).statement_rewards;
 
           if (transactions.length) {
             downloadUtil.downloadStatementPDF({
@@ -203,18 +209,22 @@ export const handleGenerateStatementTransactionsAprsFeesRewards:
               tables: [
                 {
                   id: 'transactions',
+                  title: 'Transactions',
                   items: prepareStatementTransactionsForReport(transactions),
                 },
                 {
                   id: 'accruedInterest',
+                  title: 'Accrued interest',
                   items: prepareStatementAprsForReport(aprs),
                 },
                 {
                   id: 'fees',
+                  title: 'Fees',
                   items: prepareStatementFeesForReport(fees),
                 },
                 {
                   id: 'rewards',
+                  title: 'Rewards',
                   items: prepareStatementRewardsForReport(rewards),
                 },
               ],
