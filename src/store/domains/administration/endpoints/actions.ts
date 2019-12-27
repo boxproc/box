@@ -19,20 +19,20 @@ import {
   AdminEndpointItem,
   AdminEndpointItemDetailsPrepared
 } from './types';
-import { preparedFilterToSend, preparedValuesToSend } from './utils';
+import { preparedDataToSend, preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type AddAdminEndpoint = (values: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
-export type HandleAddAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
+export type AddAdminEndpoint = (data: Partial<AdminEndpointItem>) => AddAdminEndpointAction;
+export type HandleAddAdminEndpoint = (data: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
 export type HandleDeleteAdminEndpoint = () => Thunk<void>;
 
-export type UpdateAdminEndpoint = (values: Partial<AdminEndpointItem>) => UpdateAdminEndpointAction;
-export type HandleUpdateAdminEndpoint = (values: Partial<AdminEndpointItemDetailsPrepared>) =>
+export type UpdateAdminEndpoint = (data: Partial<AdminEndpointItem>) => UpdateAdminEndpointAction;
+export type HandleUpdateAdminEndpoint = (data: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterPrepared>) =>
@@ -45,9 +45,9 @@ export type GetEndpointsByInstitutionId = (id: string | number) =>
 
 export type ResetEndpoints = () => void;
 
-export const addAdminEndpoint: AddAdminEndpoint = values => ({
+export const addAdminEndpoint: AddAdminEndpoint = data => ({
   type: ActionTypeKeys.ADD_ADMIN_ENDPOINT,
-  payload: api.addAdminEndpoint(values),
+  payload: api.addAdminEndpoint(data),
 });
 
 export const deleteAdminEndpoint: DeleteAdminEndpoint = id => ({
@@ -61,9 +61,9 @@ export const filterAdminEndpoint: FilterAdminEndpoint = filter => ({
   payload: api.filterAdminEndpoint(filter),
 });
 
-export const updateAdminEndpoint: UpdateAdminEndpoint = values => ({
+export const updateAdminEndpoint: UpdateAdminEndpoint = data => ({
   type: ActionTypeKeys.UPDATE_ADMIN_ENDPOINT,
-  payload: api.updateAdminEndpoint(values),
+  payload: api.updateAdminEndpoint(data),
 });
 
 export const getEndpointsByInstitutionId: GetEndpointsByInstitutionId = id => ({
@@ -91,11 +91,11 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
     );
   };
 
-export const handleAddAdminEndpoint: HandleAddAdminEndpoint = values =>
+export const handleAddAdminEndpoint: HandleAddAdminEndpoint = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
@@ -125,11 +125,11 @@ export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
     );
   };
 
-export const handleUpdateEndpoint: HandleUpdateAdminEndpoint = values =>
+export const handleUpdateEndpoint: HandleUpdateAdminEndpoint = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(data);
 
         await dispatch(updateAdminEndpoint(preparedValues));
         await dispatch(handleFilterAdminEndpoint());

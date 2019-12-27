@@ -50,6 +50,8 @@ export enum dictionariesPathNames {
   GET_EVENT_DATA_ELEMS = '/ui/administration/dictionaries/event_data_elements/get',
   GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses/get',
   GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types/get',
+  GET_ENDPOINT_TYPES = '/ui/administration/endpoints/get_endpoint_types',
+  GET_INTERFACE_TYPES = '/ui/administration/interfaces/get_interface_types',
 }
 
 export enum adminUserPathNames {

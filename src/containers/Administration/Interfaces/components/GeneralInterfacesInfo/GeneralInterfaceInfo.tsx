@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextField } from 'components';
 
-import { protocolTypesOptions, statusTypesOptions, typeOfInterfacesCodes } from 'consts';
+import { statusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -13,13 +13,17 @@ import { formErrorUtil } from 'utils';
 
 export interface GeneralInterfacesInfoProps {
   institutionsOptions: Array<SelectValues>;
+  interfaceTypesOptions: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
+  isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
 }
 
 const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
   institutionsOptions,
   isDisabledInstitutions,
+  interfaceTypesOptions,
+  isLoadingTypesSelector,
   isReadOnly,
 }) => {
   return (
@@ -85,26 +89,35 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="type"
-            name="type"
+            id="interfaceTypeId"
+            name="interfaceTypeId"
             component={SelectField}
             label="Type"
             placeholder="Select Type"
-            options={typeOfInterfacesCodes}
+            options={interfaceTypesOptions}
+            isLoading={isLoadingTypesSelector}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 4]} p="10px">
           <Field
-            id="protocolType"
-            name="protocolType"
-            component={SelectField}
-            label="Protocol Type"
-            placeholder="Select Type"
-            options={protocolTypesOptions}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            id="lastMessageDatetime"
+            name="lastMessageDatetime"
+            component={InputField}
+            label="Last Message Datetime"
+            placeholder="Last Message Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 4]} p="10px">
+          <Field
+            id="lastFaultDatetime"
+            name="lastFaultDatetime"
+            component={InputField}
+            label="Last Fault Datetime"
+            placeholder="Last Fault Datetime"
+            readOnly={true}
           />
         </Box>
         <Box width="100%">

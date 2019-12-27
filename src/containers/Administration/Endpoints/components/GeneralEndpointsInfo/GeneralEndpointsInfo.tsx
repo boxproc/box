@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextField } from 'components';
 
-import { endpointsOptions, statusTypesOptions } from 'consts';
+import { statusTypesOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -13,13 +13,17 @@ import { formErrorUtil } from 'utils';
 
 export interface GeneralEndpointsInfoProps {
   institutionsOptions: Array<SelectValues>;
+  endpointTypesOptions: Array<SelectValues>;
   isDisabledInstitutions?: boolean;
+  isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
 }
 
 const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
   institutionsOptions,
+  endpointTypesOptions,
   isDisabledInstitutions,
+  isLoadingTypesSelector,
   isReadOnly,
 }) => {
   return (
@@ -74,13 +78,14 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
         </Box>
         <Box width={[1 / 3]} p="10px">
           <Field
-            id="type"
-            name="type"
+            id="endpointTypeId"
+            name="endpointTypeId"
             component={SelectField}
             label="Type"
-            options={endpointsOptions}
+            options={endpointTypesOptions}
             placeholder="Select Type"
             isDisabled={isReadOnly}
+            isLoading={isLoadingTypesSelector}
             validate={[formErrorUtil.required]}
           />
         </Box>
@@ -114,6 +119,36 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             label="Connection Attributes"
             placeholder="Enter Connection Attributes"
             readOnly={isReadOnly}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="sourceIpAddress"
+            name="sourceIpAddress"
+            component={InputField}
+            label="Source IP Address"
+            placeholder="Enter Source IP Address"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="lastMessageDatetime"
+            name="lastMessageDatetime"
+            component={InputField}
+            label="Last Message Datetime"
+            placeholder="Enter Last Message Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 3]} p="10px">
+          <Field
+            id="lastFaultDatetime"
+            name="lastFaultDatetime"
+            component={InputField}
+            label="Last Fault Datetime"
+            placeholder="Enter Last Fault Datetime"
+            readOnly={true}
           />
         </Box>
       </Flex>

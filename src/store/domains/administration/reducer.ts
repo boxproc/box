@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
-import dictionaryCardStatusesReducer from './dictionaries/cardStatuses/reducer';
+import dictionaryConstsReducer from './dictionaries/consts/reducer';
 import dictionaryCountriesReducer from './dictionaries/countries/reducer';
 import dictionaryCurrenciesReducer from './dictionaries/currencies/reducer';
 import dictionaryEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
@@ -17,7 +17,7 @@ import adminSysPropsReducer from './systemProperties/reducer';
 const administrationReducer = combineReducers({
   systemProperties: adminSysPropsReducer,
   scheduler: adminSchedulerJobsReducer,
-  cardStatuses: dictionaryCardStatusesReducer,
+  consts: dictionaryConstsReducer,
   countries: dictionaryCountriesReducer,
   currencies: dictionaryCurrenciesReducer,
   events: dictionaryEventsReducer,

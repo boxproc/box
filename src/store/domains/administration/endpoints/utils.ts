@@ -1,73 +1,83 @@
-import { endpointsOptions, statusTypesOptions } from 'consts';
+import { statusTypesOptions } from 'consts';
 import {
   AdminEndpointFilter,
   AdminEndpointItem,
   AdminEndpointItemDetailsPrepared,
-  AdminEndpointItemPrepared,
 } from './types';
 
 import { SelectValues } from 'types';
 
-export const preparedFilterToSend = (params: Partial<AdminEndpointFilter>) => {
-  if (!params) {
+export const preparedFilterToSend = (data: Partial<AdminEndpointFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { institutionId } = params;
+  const { institutionId } = data;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
   };
 };
 
-export const preparedValuesToSend = (values: Partial<AdminEndpointItemDetailsPrepared>) => {
-  if (!values) {
+export const preparedDataToSend = (data: Partial<AdminEndpointItemDetailsPrepared>) => {
+  if (!data) {
     return null;
   }
 
   return {
-    id: values.id,
-    status: values.status && values.status.value,
-    institution_id: values.institutionId && values.institutionId.value,
-    name: values.name,
-    port: values.port,
-    type: values.type && values.type.value,
-    private_key_location: values.privateKeyLocation,
-    log_file_location: values.logFileLocation,
-    connection_attributes: values.connectionAttributes,
+    id: data.id,
+    status: data.status && data.status.value,
+    institution_id: data.institutionId && data.institutionId.value,
+    name: data.name,
+    port: data.port,
+    endpoint_type_id: data.endpointTypeId && data.endpointTypeId.value,
+    private_key_location: data.privateKeyLocation,
+    log_file_location: data.logFileLocation,
+    connection_attributes: data.connectionAttributes,
+    source_ip_address: data.sourceIpAddress,
+    last_message_datetime: data.lastMessageDatetime,
+    last_fault_datetime: data.lastFaultDatetime,
   };
 };
 
-export const preparedValuesToRender = (
-  values: Partial<AdminEndpointItem>,
+export const preparedDataToRender = (
+  data: Partial<AdminEndpointItem>,
   institution?: SelectValues
 ) => {
-  if (!values) {
+  if (!data) {
     return null;
   }
-  const status = statusTypesOptions.find(el => el.value === values.status);
-  const type = endpointsOptions.find(el => el.value === values.type);
+
+  const status = statusTypesOptions.find(el => el.value === data.status);
 
   return {
-    id: values.id,
+    id: data.id,
     institutionId: institution && institution.label,
-    name: values.name,
-    port: values.port,
-    privateKeyLocation: values.private_key_location,
-    logFileLocation: values.log_file_location,
+    name: data.name,
+    port: data.port,
+    privateKeyLocation: data.private_key_location,
+    logFileLocation: data.log_file_location,
     status: status && status.label,
-    type: type && type.label,
-    connectionAttributes: values.connection_attributes,
+    endpointTypeId: data.endpoint_type_id,
+    endpointTypeName: data.endpoint_type_name,
+    connectionAttributes: data.connection_attributes,
+    sourceIpAddress: data.source_ip_address,
+    lastMessageDatetime: data.last_message_datetime,
+    lastFaultDatetime: data.last_fault_datetime,
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<AdminEndpointItemPrepared>) => {
-  if (!values) {
+export const preparedDataDetailsToRender = (data: Partial<AdminEndpointItem>) => {
+  if (!data) {
     return null;
   }
+
   return {
-    ...preparedValuesToRender(values),
-    status: statusTypesOptions.find(el => el.value === values.status),
-    type: endpointsOptions.find(el => el.value === values.type),
+    ...preparedDataToRender(data),
+    status: statusTypesOptions.find(el => el.value === data.status),
+    endpointTypeId: {
+      value: data.endpoint_type_id,
+      label: data.endpoint_type_name,
+    },
   };
 };

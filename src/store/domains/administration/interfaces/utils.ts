@@ -1,4 +1,4 @@
-import { protocolTypesOptions, statusTypesOptions, typeOfInterfacesCodes } from 'consts';
+import { statusTypesOptions } from 'consts';
 import {
   AdminInterfaceFilter,
   AdminInterfaceItem,
@@ -7,71 +7,74 @@ import {
 
 import { SelectValues } from 'types';
 
-export const preparedFilterToSend = (params: Partial<AdminInterfaceFilter>) => {
-  if (!params) {
+export const preparedFilterToSend = (data: Partial<AdminInterfaceFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { institutionId } = params;
+  const { institutionId } = data;
 
   return {
     institution_id: institutionId ? institutionId.value : null,
   };
 };
 
-export const preparedValuesToSend = (values: Partial<AdminInterfaceItemDetailsPrepared>) => {
-  if (!values) {
+export const preparedDataToSend = (data: Partial<AdminInterfaceItemDetailsPrepared>) => {
+  if (!data) {
     return null;
   }
 
   return {
-    id: values.id,
-    status: values.status && values.status.value,
-    institution_id: values.institutionId && values.institutionId.value,
-    name: values.name,
-    url: values.url,
-    type: values.type && values.type.value,
-    protocol_type: values.protocolType && values.protocolType.value,
-    private_key_location: values.privateKeyLocation,
-    connection_attributes: values.connectionAttributes,
-    log_file_location: values.logFileLocation,
+    id: data.id,
+    status: data.status && data.status.value,
+    institution_id: data.institutionId && data.institutionId.value,
+    name: data.name,
+    url: data.url,
+    interface_type_id: data.interfaceTypeId && data.interfaceTypeId.value,
+    private_key_location: data.privateKeyLocation,
+    connection_attributes: data.connectionAttributes,
+    log_file_location: data.logFileLocation,
+    last_message_datetime: data.lastMessageDatetime,
+    last_fault_datetime: data.lastFaultDatetime,
   };
 };
 
-export const preparedValuesToRender = (
-  values: Partial<AdminInterfaceItem>,
+export const preparedDataToRender = (
+  data: Partial<AdminInterfaceItem>,
   institution?: SelectValues
 ) => {
-  if (!values) {
+  if (!data) {
     return null;
   }
 
-  const status = statusTypesOptions.find(el => el.value === values.status);
-  const type = typeOfInterfacesCodes.find(el => el.value === values.type);
-  const protocolType = protocolTypesOptions.find(el => el.value === values.protocol_type);
+  const status = statusTypesOptions.find(el => el.value === data.status);
 
   return {
-    id: values.id,
+    id: data.id,
     institutionId: institution && institution.label,
-    name: values.name,
-    url: values.url,
-    privateKeyLocation: values.private_key_location,
+    name: data.name,
+    url: data.url,
+    privateKeyLocation: data.private_key_location,
     status: status && status.label,
-    type: type && type.label,
-    protocolType: protocolType && protocolType.label,
-    connectionAttributes: values.connection_attributes,
-    logFileLocation: values.log_file_location,
+    interfaceTypeId: data.interface_type_id,
+    interfaceTypeName: data.interface_type_name,
+    connectionAttributes: data.connection_attributes,
+    logFileLocation: data.log_file_location,
+    lastMessageDatetime: data.last_message_datetime,
+    lastFaultDatetime: data.last_fault_datetime,
   };
 };
 
-export const preparedValuesDetailsToRender = (values: Partial<AdminInterfaceItem>) => {
-  if (!values) {
+export const preparedValuesDetailsToRender = (data: Partial<AdminInterfaceItem>) => {
+  if (!data) {
     return null;
   }
   return {
-    ...preparedValuesToRender(values),
-    status: statusTypesOptions.find(el => el.value === values.status),
-    protocolType: protocolTypesOptions.find(el => el.value === values.protocol_type),
-    type: typeOfInterfacesCodes.find(el => el.value === values.type),
+    ...preparedDataToRender(data),
+    status: statusTypesOptions.find(el => el.value === data.status),
+    interfaceTypeId: {
+      value: data.interface_type_id,
+      label: data.interface_type_name,
+    },
   };
 };

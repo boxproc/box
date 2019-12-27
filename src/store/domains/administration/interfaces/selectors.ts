@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
-import { preparedValuesDetailsToRender, preparedValuesToRender } from './utils';
+import { preparedDataToRender, preparedValuesDetailsToRender } from './utils';
 
 export const selectDefaultAdminInterface = (state: StoreState) =>
   state.administration.interfaces && state.administration.interfaces.interfaces;
@@ -14,7 +14,7 @@ export const selectAdminInterface = createSelector(
   (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
-    return preparedValuesToRender(item, institution);
+    return preparedDataToRender(item, institution);
   })
 );
 

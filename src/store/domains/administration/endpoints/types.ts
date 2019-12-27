@@ -1,41 +1,45 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { IdNamePair, SelectValues } from 'types';
 
-export interface AdminEndpointItem extends AdminEndpointItemId {
+export interface AdminEndpointItem {
+  id: number;
   institution_id: number | string;
   name: string;
+  endpoint_type_id: string | number;
+  endpoint_type_name: string;
   port: number;
-  status: number | string;
   private_key_location: string;
-  log_file_location: string;
-  type: string | number;
+  status: number | string;
   connection_attributes: string;
+  source_ip_address: string;
+  last_message_datetime: string;
+  last_fault_datetime: string;
+  log_file_location: string;
 }
 
-export interface AdminEndpointItemPrepared extends AdminEndpointItemId {
-  institutionId: number | string;
-  name: string;
-  port: number;
-  status: string | number;
-  privateKeyLocation: string;
-  logFileLocation: string;
-  type: string | number;
-  connectionAttributes: string;
-}
-
-export interface AdminEndpointItemDetailsPrepared extends AdminEndpointItemId {
-  institutionId: SelectValues;
-  name: string;
-  port: number;
-  status: SelectValues;
-  type: SelectValues;
-  privateKeyLocation: string;
-  logFileLocation: string;
-  connectionAttributes: string;
-}
-
-export interface AdminEndpointItemId {
+interface EndpointItemPlain {
   id: number;
+  name: string;
+  port: number;
+  privateKeyLocation: string;
+  logFileLocation: string;
+  connectionAttributes: string;
+  sourceIpAddress: string;
+  lastMessageDatetime: string;
+  lastFaultDatetime: string;
+}
+
+export interface AdminEndpointItemPrepared extends EndpointItemPlain {
+  institutionId: number | string;
+  status: string | number;
+  endpointTypeId: string | number;
+  endpointTypeName: string;
+}
+
+export interface AdminEndpointItemDetailsPrepared extends EndpointItemPlain {
+  institutionId: SelectValues;
+  status: SelectValues;
+  endpointTypeId: SelectValues;
 }
 
 export interface AdminEndpointItems {

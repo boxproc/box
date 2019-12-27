@@ -8,17 +8,26 @@ import { StoreState } from 'store/StoreState';
 import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
+  DictionaryConstsActionTypes,
   handleAddAdminInterface,
   handleDeleteAdminInterface,
+  handleGetDictionaryInterfaceTypes,
   handleUpdateInterface,
+  selectInterfaceTypesOptions,
 } from 'store/domains';
 
 const loadingSelector = createLoadingSelector([
   AdminInterfacesActionTypes.UPDATE_ADMIN_INTERFACE,
 ]);
 
+const loadingTypesSelector = createLoadingSelector([
+  DictionaryConstsActionTypes.GET_DICTIONARY_INTERFACE_TYPES,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isLoadingTypesSelector: loadingTypesSelector(state),
+  interfaceTypesOptions: selectInterfaceTypesOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -26,6 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteInterface: handleDeleteAdminInterface,
     updateAdminInterface: handleUpdateInterface,
     addAdminInterface: handleAddAdminInterface,
+    getDictionaryInterfaceTypes: handleGetDictionaryInterfaceTypes,
   },
   dispatch
 );

@@ -1,6 +1,6 @@
 export * from './systemProperties';
 export * from './scheduler';
-export * from './dictionaries/cardStatuses';
+export * from './dictionaries/consts';
 export * from './dictionaries/countries';
 export * from './dictionaries/currencies';
 export * from './dictionaries/events';
