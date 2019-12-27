@@ -26,6 +26,7 @@ interface ButtonProps extends WithModalProps {
   textTransformNone?: boolean;
   title?: string;
   hint?: string | React.ReactChild;
+  hintPosition?: 'top' | 'right' | 'bottom' | 'left';
   hintStyle?: object;
   onClick?: () => void;
 }
@@ -48,6 +49,7 @@ const Button: React.FC<ButtonProps> = ({
   textTransformNone = false,
   title,
   hint,
+  hintPosition = 'top',
   hintStyle,
 }) => {
   const handleClick = React.useCallback(
@@ -86,15 +88,15 @@ const Button: React.FC<ButtonProps> = ({
       )}
       <span className="text-wrapper">
         {text}
+      </span>
         {hint && (
           <Hint
             text={hint}
             icon={false}
-            position="top"
+            position={hintPosition}
             style={hintStyle}
           />
         )}
-      </span>
     </ButtonWrapper>
   );
 

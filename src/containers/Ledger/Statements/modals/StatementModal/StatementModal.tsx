@@ -15,6 +15,7 @@ import { withModal, WithModalProps } from 'HOCs';
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import {
+  HandleGetLedgerStatementAprsFeesRewards,
   LedgerStatementAprItemPrepared,
   LedgerStatementFeeItemPrepared,
   LedgerStatementItemPrepared,
@@ -22,88 +23,29 @@ import {
   LedgerStatementTransactionsItemPrepared,
 } from 'store/domains';
 
-import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
-
 interface StatementModalProps extends WithModalProps {
-  statements: Array<LedgerStatementItemPrepared>;
   currentStatement: LedgerStatementItemPrepared;
-  currentStatementForReport: Array<object>;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   statementAprs: Array<LedgerStatementAprItemPrepared>;
   statementFees: Array<LedgerStatementFeeItemPrepared>;
-  statementTransactionsForReport: Array<Partial<LedgerStatementTransactionsItemPrepared>>;
   statementRewards: Array<LedgerStatementRewardItemPrepared>;
-  statementAprsForReport: Array<Partial<LedgerStatementAprItemPrepared>>;
-  statementFeesForReport: Array<Partial<LedgerStatementFeeItemPrepared>>;
-  statementRewardsForReport: Array<Partial<LedgerStatementRewardItemPrepared>>;
+  generateTransactionsAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
 
 const StatementModal: React.FC<StatementModalProps> = ({
   currentStatement,
-  currentStatementForReport,
   closeModal,
   statementTransactions,
   statementAprs,
   statementFees,
   statementRewards,
-  statementTransactionsForReport,
-  statementAprsForReport,
-  statementFeesForReport,
-  statementRewardsForReport,
+  generateTransactionsAprsFeesRewards,
 }) => {
-  const reportFileName = React.useMemo(
-    () => {
-      if (!currentStatement) {
-        return null;
-      }
-
-      const date = currentStatement.statementDate;
-      const accountId = currentStatement.accountId;
-      const fileName = `statement_${accountId}_${date}`.replace(/\//g, '');
-
-      return fileName;
-    },
-    [currentStatement]
-  );
-
   const handleCloseModal = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
-  );
-
-  const handleGenerateReport = React.useCallback(
-    () => downloadPDF({
-      fileName: reportFileName,
-      statement: currentStatementForReport,
-      tables: [
-        {
-          id: 'Transactions',
-          items: statementTransactionsForReport,
-        },
-        {
-          id: 'accruedInterest',
-          items: statementAprsForReport,
-        },
-        {
-          id: 'fees',
-          items: statementFeesForReport,
-        },
-        {
-          id: 'rewards',
-          items: statementRewardsForReport,
-        },
-      ],
-    }),
-    [
-      statementTransactionsForReport,
-      statementAprsForReport,
-      statementFeesForReport,
-      statementRewardsForReport,
-      currentStatementForReport,
-      reportFileName,
-    ]
   );
 
   return (
@@ -145,9 +87,9 @@ const StatementModal: React.FC<StatementModalProps> = ({
         justifyContent="space-between"
       >
         <Button
-          text="Open .pdf statement"
+          text="Open pdf statement"
           iconName={iconNamesConst.FILE_PDF}
-          onClick={handleGenerateReport}
+          onClick={generateTransactionsAprsFeesRewards}
         />
         <Button
           text="Close"

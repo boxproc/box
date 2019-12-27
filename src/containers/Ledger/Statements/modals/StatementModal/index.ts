@@ -5,18 +5,14 @@ import StatementModal from './StatementModal';
 
 import {
   createLoadingSelector,
+  handleGenerateStatementTransactionsAprsFeesRewards,
   handleGetLedgerStatementTransactions,
   LedgerStatementsActionTypes,
   selectLedgerCurrentStatement,
-  selectLedgerCurrentStatementForReport,
   selectLedgerStatementAprs,
-  selectLedgerStatementAprsForReport,
   selectLedgerStatementFees,
-  selectLedgerStatementFeesForReport,
   selectLedgerStatementRewards,
-  selectLedgerStatementRewardsForReport,
   selectLedgerStatementTransactions,
-  selectLedgerStatementTransactionsForReport,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -29,19 +25,15 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   statementTransactions: selectLedgerStatementTransactions(state),
   currentStatement: selectLedgerCurrentStatement(state),
-  currentStatementForReport: selectLedgerCurrentStatementForReport(state),
   statementAprs: selectLedgerStatementAprs(state),
   statementFees: selectLedgerStatementFees(state),
   statementRewards: selectLedgerStatementRewards(state),
-  statementTransactionsForReport: selectLedgerStatementTransactionsForReport(state),
-  statementAprsForReport: selectLedgerStatementAprsForReport(state),
-  statementFeesForReport: selectLedgerStatementFeesForReport(state),
-  statementRewardsForReport: selectLedgerStatementRewardsForReport(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getStatementTransactions: handleGetLedgerStatementTransactions,
+    generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprsFeesRewards,
   },
   dispatch
 );

@@ -19,7 +19,7 @@ const formatValue = (value: string) =>
     ? '-'
     : value;
 
-export const downloadPDF = (data: {
+export const downloadStatementPDF = (data: {
   fileName: string,
   statement?: Array<object>;
   tables: Array<{

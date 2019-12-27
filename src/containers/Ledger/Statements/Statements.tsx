@@ -1,12 +1,13 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { withSpinner } from 'components';
+import { Flex } from '@rebass/grid';
+
+import { Button, withSpinner } from 'components';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { StatementsFilter } from './forms';
-
-import { downloadPDF } from 'containers/Ledger/Statements/downloadPDF';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
@@ -16,14 +17,10 @@ import {
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerStatements,
   HandleFilterLedgerTransactionsById,
-  HandleGetLedgerStatementAprsFeesRewards,
-  HandleGetLedgerStatementTransactions,
-  LedgerStatementAprItemPrepared,
-  LedgerStatementFeeItemPrepared,
+  HandleGenerateStatementTransactionsAprsFeesRewards,
   LedgerStatementItemPrepared,
-  LedgerStatementRewardItemPrepared,
-  LedgerStatementTransactionsItemPrepared,
   ResetStatements,
+  SetActiveItemId,
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -33,20 +30,14 @@ export interface StatementsProps {
   currentId: number;
   statements: Array<LedgerStatementItemPrepared>;
   institutionsOptions: Array<SelectValues>;
-  currentStatementForReport: Array<object>;
-  statementTransactionsForReport: Array<Partial<LedgerStatementTransactionsItemPrepared>>;
-  statementAprsForReport: Array<Partial<LedgerStatementAprItemPrepared>>;
-  statementFeesForReport: Array<Partial<LedgerStatementFeeItemPrepared>>;
-  statementRewardsForReport: Array<Partial<LedgerStatementRewardItemPrepared>>;
   filterLedgerStatements: HandleFilterLedgerStatements;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
-  currentStatement: LedgerStatementItemPrepared;
-  getStatementTransactions: HandleGetLedgerStatementTransactions;
-  getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
+  generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprsFeesRewards;
   resetStatements: ResetStatements;
+  setActiveItemId: SetActiveItemId;
 }
 
 const Statements: React.FC<StatementsProps> = ({
@@ -58,15 +49,9 @@ const Statements: React.FC<StatementsProps> = ({
   filterLedgerCardsById,
   filterLedgerAccountsById,
   currentId,
-  currentStatement,
-  currentStatementForReport,
-  getStatementTransactions,
-  statementTransactionsForReport,
-  getLedgerStatementAprsFeesRewards,
-  statementAprsForReport,
-  statementFeesForReport,
-  statementRewardsForReport,
+  generateTransactionsAprsFeesRewards,
   resetStatements,
+  setActiveItemId,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
   const [dateTo, setDateTo] = React.useState(null);
@@ -81,66 +66,13 @@ const Statements: React.FC<StatementsProps> = ({
     [resetStatements]
   );
 
-  React.useEffect(
-    () => {
-      if (currentId) {
-        Promise.all([
-          getStatementTransactions(),
-          getLedgerStatementAprsFeesRewards(currentId),
-        ]);
-      }
+  const handleClickOnPdfReportButton = React.useCallback(
+    statementId => {
+      setActiveItemId(statementId);
+      generateTransactionsAprsFeesRewards();
+      setTimeout(() => setActiveItemId(null), 100);
     },
-    [currentId, getStatementTransactions, getLedgerStatementAprsFeesRewards]
-  );
-
-  const reportFileName = React.useMemo(
-    () => {
-      if (!currentStatement) {
-        return null;
-      }
-
-      const date = currentStatement.statementDate;
-      const accountId = currentStatement.accountId;
-      const fileName = `statement_${accountId}_${date}`.replace(/\//g, '');
-
-      return fileName;
-    },
-    [currentStatement]
-  );
-
-  const handleGenerateReport = React.useCallback(
-    () => {
-      downloadPDF({
-        fileName: reportFileName,
-        statement: currentStatementForReport,
-        tables: [
-          {
-            id: 'transactions',
-            items: statementTransactionsForReport,
-          },
-          {
-            id: 'accruedInterest',
-            items: statementAprsForReport,
-          },
-          {
-            id: 'fees',
-            items: statementFeesForReport,
-          },
-          {
-            id: 'rewards',
-            items: statementRewardsForReport,
-          },
-        ],
-      });
-    },
-    [
-      statementTransactionsForReport,
-      statementAprsForReport,
-      statementFeesForReport,
-      statementRewardsForReport,
-      currentStatementForReport,
-      reportFileName,
-    ]
+    [setActiveItemId, generateTransactionsAprsFeesRewards]
   );
 
   const contextMenuItems = React.useMemo(
@@ -149,9 +81,9 @@ const Statements: React.FC<StatementsProps> = ({
         isDivider: true,
       },
       {
-        name: 'Open .pdf statement',
+        name: 'Open pdf statement',
         icon: iconNamesConst.FILE_PDF,
-        action: handleGenerateReport,
+        action: generateTransactionsAprsFeesRewards,
       },
       {
         isDivider: true,
@@ -179,30 +111,36 @@ const Statements: React.FC<StatementsProps> = ({
       filterLedgerTransactionsById,
       filterLedgerCardsById,
       filterLedgerAccountsById,
-      handleGenerateReport,
+      generateTransactionsAprsFeesRewards,
     ]
   );
 
   const statementsTableColumns = React.useMemo(
     () => {
       return [
-        // {
-        //   maxWidth: 60,
-        //   accessor: 'deleteButton',
-        //   Cell: (cellInfo: CellInfo) => (
-        //     <Button
-        //       iconName={iconNamesConst.FILE_PDF}
-        //       text=""
-        //       iconSize="24"
-        //       onClick={handleGenerateReport}
-        //       hint="Open .pdf statement"
-        //     />
-        //   ),
-        // },
+        {
+          maxWidth: 60,
+          accessor: 'deleteButton',
+          Cell: (cellInfo: CellInfo) => (
+            <Flex
+              justifyContent="center"
+              width="100%"
+            >
+              <Button
+                iconName={iconNamesConst.FILE_PDF}
+                text=""
+                iconSize="22"
+                onClick={() => handleClickOnPdfReportButton(cellInfo.original.id)}
+                hint="Open pdf statement"
+                hintPosition="right"
+              />
+            </Flex>
+          ),
+        },
         ...tableColumns,
       ];
     },
-    []
+    [handleClickOnPdfReportButton]
   );
 
   return (

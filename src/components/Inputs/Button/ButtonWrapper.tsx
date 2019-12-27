@@ -9,6 +9,7 @@ interface ButtonWrapperProps {
 }
 
 export const ButtonWrapper = styled.button<ButtonWrapperProps>`
+  position: relative;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -23,7 +24,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   color: ${({ theme }) => theme.colors.gray};
   font-weight: 500;
   line-height: 1.3;
-  // white-space: nowrap;
   user-select: none;
 
   .text-wrapper {

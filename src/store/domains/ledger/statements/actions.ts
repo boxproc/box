@@ -4,9 +4,9 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, uiItemConsts } from 'consts';
 
 import { openModal } from 'store/domains/modals';
-import { setIsOpenFilter } from 'store/domains/utils';
+import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
 import { Thunk } from 'types';
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, downloadUtil, errorDecoratorUtil } from 'utils';
 import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
@@ -19,9 +19,19 @@ import {
   GetLedgerStatementTransactionsAction
 } from './actionTypes';
 import * as api from './api';
-import { selectLedgerCurrentStatementTransaction } from './selectors';
+import {
+  selectLedgerCurrentStatementForReport,
+  selectLedgerCurrentStatementTransaction,
+  selectLedgerStatementReportFileName,
+} from './selectors';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
-import { preparedFilterToSend } from './utils';
+import {
+  preparedFilterToSend,
+  prepareStatementAprsForReport,
+  prepareStatementFeesForReport,
+  prepareStatementRewardsForReport,
+  prepareStatementTransactionsForReport,
+} from './utils';
 
 export type FilterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
   FilterLedgerStatementsAction;
@@ -41,10 +51,13 @@ export type GetLedgerStatementAprs = (statementId: number) => GetLedgerStatement
 export type GetLedgerStatementFees = (statementId: number) => GetLedgerStatementFeesAction;
 export type GetLedgerStatementRewards = (statementId: number) =>
   GetLedgerStatementRewardsAction;
+
 export type HandleGetLedgerStatementAprsFeesRewards = (
   statementId: number,
   openModalName?: string
 ) => Thunk<void>;
+
+export type HandleGenerateStatementTransactionsAprsFeesRewards = () => Thunk<void>;
 
 export type HandleDownloadLedgerStatement = (
   statementId: number,
@@ -155,7 +168,58 @@ export const handleGetLedgerStatementAprsFeesRewards:
             dispatch(getLedgerAccountStatementRewards(statementId)),
           ]);
 
-          dispatch(openModal({ name: openModalName }));
+          if (openModalName) {
+            dispatch(openModal({ name: openModalName }));
+          }
+        },
+        dispatch
+      );
+    };
+
+export const handleGenerateStatementTransactionsAprsFeesRewards:
+  HandleGenerateStatementTransactionsAprsFeesRewards = () =>
+    async (dispatch, getState) => {
+      errorDecoratorUtil.withErrorHandler(
+        async () => {
+          const state = getState();
+          const statementId = selectActiveItemId(state);
+
+          const data = selectLedgerCurrentStatementTransaction(state);
+
+          const transactionsRes = await dispatch(getLedgerStatementTransactions(data)) as any;
+          const aprsRes = await dispatch(getLedgerAccountStatementAprs(statementId)) as any;
+          const feesRes = await dispatch(getLedgerAccountStatementFees(statementId)) as any;
+          const rewardsRes = await dispatch(getLedgerAccountStatementRewards(statementId)) as any;
+
+          const transactions = transactionsRes.value.transactions;
+          const aprs = aprsRes.value.statement_aprs;
+          const fees = feesRes.value.statement_fees;
+          const rewards = rewardsRes.value.statement_rewards;
+
+          if (transactions.length) {
+            downloadUtil.downloadStatementPDF({
+              fileName: selectLedgerStatementReportFileName(state),
+              statement: selectLedgerCurrentStatementForReport(state),
+              tables: [
+                {
+                  id: 'transactions',
+                  items: prepareStatementTransactionsForReport(transactions),
+                },
+                {
+                  id: 'accruedInterest',
+                  items: prepareStatementAprsForReport(aprs),
+                },
+                {
+                  id: 'fees',
+                  items: prepareStatementFeesForReport(fees),
+                },
+                {
+                  id: 'rewards',
+                  items: prepareStatementRewardsForReport(rewards),
+                },
+              ],
+            });
+          }
         },
         dispatch
       );

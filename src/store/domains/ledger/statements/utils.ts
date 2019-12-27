@@ -10,7 +10,8 @@ import {
   LedgerStatementRewardItem,
   LedgerStatementRewardItemPrepared,
   LedgerStatementsFilter,
-  LedgerStatementTransactionsItem
+  LedgerStatementTransactionsItem,
+  LedgerStatementTransactionsItemPrepared
 } from './types';
 
 import { SelectValues } from 'types';
@@ -280,4 +281,94 @@ export const prepareStatementRewardToRender = (data: LedgerStatementRewardItem):
     amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
     rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
   };
+};
+
+export const prepareStatementTransactionsForReport =
+  (transactions: Array<LedgerStatementTransactionsItem>):
+    Array<Partial<LedgerStatementTransactionsItemPrepared>> => {
+    if (transactions.length) {
+      return transactions.map(transaction => {
+        const preparedData = prepareTransactionsDataToRender(transaction);
+        const clonedTransactions = { ...preparedData };
+
+        delete clonedTransactions.id;
+        delete clonedTransactions.aprId;
+
+        return clonedTransactions;
+      });
+    } else {
+      return [{
+        transactionDatetime: null,
+        originalCurrency: null,
+        amount: null,
+        amountInOriginalCurrency: null,
+        balanceAvailableBefore: null,
+        balanceAvailableAfter: null,
+        balanceSettledBefore: null,
+        balanceSettledAfter: null,
+        description: null,
+        aprRate: null,
+        gracePeriod: null,
+      }];
+    }
+  };
+
+export const prepareStatementAprsForReport = (aprs: Array<LedgerStatementAprItem>) => {
+  if (aprs.length) {
+    return aprs.map(apr => {
+      const { description, rate, accrued_interest } = apr;
+
+      return {
+        description,
+        rate,
+        accruedInterest: stringsUtil.checkNumberToFixed(accrued_interest)
+        ? accrued_interest.toFixed(5)
+        : null,
+      };
+    });
+  } else {
+    return [{
+      description: null,
+      rate: null,
+      accruedInterest: null,
+    }];
+  }
+};
+
+export const prepareStatementFeesForReport = (fees: Array<LedgerStatementFeeItem>) => {
+  if (fees.length) {
+    return fees.map(fee => {
+      const { description, accrued_fee } = fee;
+
+      return {
+        description,
+        accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) ? accrued_fee.toFixed(5) : null,
+      };
+    });
+  } else {
+    return [{
+      description: null,
+      accruedFee: null,
+    }];
+  }
+};
+
+export const prepareStatementRewardsForReport = (rewards: Array<LedgerStatementRewardItem>) => {
+  if (rewards.length) {
+    return rewards.map(reward => {
+      const { description, accrued_reward } = reward;
+
+      return {
+        description,
+        accruedReward: stringsUtil.checkNumberToFixed(accrued_reward)
+          ? accrued_reward.toFixed(5)
+          : null,
+      };
+    });
+  } else {
+    return [{
+      description: null,
+      accruedReward: null,
+    }];
+  }
 };

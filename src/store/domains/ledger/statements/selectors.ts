@@ -35,36 +35,6 @@ export const selectLedgerStatementTransactions = createSelector(
   items => items && items.asMutable().map(item => prepareTransactionsDataToRender(item))
 );
 
-export const selectLedgerStatementTransactionsForReport = createSelector(
-  selectLedgerStatementTransactions,
-  transactions => {
-    if (transactions.length) {
-      return transactions.map(transaction => {
-        const clonedTransactions = { ...transaction };
-
-        delete clonedTransactions.id;
-        delete clonedTransactions.aprId;
-
-        return clonedTransactions;
-      });
-    } else {
-      return [{
-        transactionDatetime: null,
-        originalCurrency: null,
-        amount: null,
-        amountInOriginalCurrency: null,
-        balanceAvailableBefore: null,
-        balanceAvailableAfter: null,
-        balanceSettledBefore: null,
-        balanceSettledAfter: null,
-        description: null,
-        aprRate: null,
-        gracePeriod: null,
-      }];
-    }
-  }
-);
-
 export const selectLedgerCurrentStatement = createSelector(
   selectLedgerStatements,
   selectActiveItemId,
@@ -146,49 +116,12 @@ export const selectLedgerStatementAprs = createSelector(
   aprs => aprs && aprs.asMutable().map(apr => prepareStatementAprToRender(apr))
 );
 
-export const selectLedgerStatementAprsForReport = createSelector(
-  selectLedgerStatementAprs,
-  aprs => {
-    if (aprs.length) {
-      return aprs.map(apr => {
-        const { description, rate, accruedInterest } = apr;
-
-        return { description, rate, accruedInterest };
-      });
-    } else {
-      return [{
-        description: null,
-        rate: null,
-        accruedInterest: null,
-      }];
-    }
-  }
-);
-
 export const selectDefaultLedgerStatementFees = (state: StoreState) =>
   state.ledger.statements.statementFees;
 
 export const selectLedgerStatementFees = createSelector(
   selectDefaultLedgerStatementFees,
   fees => fees && fees.asMutable().map(fee => prepareStatementFeeToRender(fee))
-);
-
-export const selectLedgerStatementFeesForReport = createSelector(
-  selectLedgerStatementFees,
-  fees => {
-    if (fees.length) {
-      return fees.map(fee => {
-        const { description, accruedFee } = fee;
-
-        return { description, accruedFee };
-      });
-    } else {
-      return [{
-        description: null,
-        accruedFee: null,
-      }];
-    }
-  }
 );
 
 export const selectDefaultLedgerStatementRewards = (state: StoreState) =>
@@ -199,20 +132,16 @@ export const selectLedgerStatementRewards = createSelector(
   rewards => rewards && rewards.asMutable().map(reward => prepareStatementRewardToRender(reward))
 );
 
-export const selectLedgerStatementRewardsForReport = createSelector(
-  selectLedgerStatementRewards,
-  rewards => {
-    if (rewards.length) {
-      return rewards.map(reward => {
-        const { description, accruedReward } = reward;
-
-        return { description, accruedReward };
-      });
-    } else {
-      return [{
-        description: null,
-        accruedReward: null,
-      }];
+export const selectLedgerStatementReportFileName = createSelector(
+  selectLedgerCurrentStatement,
+  statement => {
+    if (!statement) {
+      return null;
     }
-  }
-);
+
+    const date = statement.statementDate;
+    const accountId = statement.accountId;
+    const fileName = `statement_${accountId}_${date}`.replace(/\//g, '');
+
+    return fileName;
+  });
