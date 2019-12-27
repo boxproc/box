@@ -5,7 +5,7 @@ import { theme } from 'theme';
 
 import { logo } from 'resources/images/logo';
 
-import { dateUtil, storageUtil } from 'utils';
+import { dateUtil, formErrorUtil, storageUtil } from 'utils';
 
 const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
@@ -130,9 +130,30 @@ export const downloadStatementPDF = (data: {
           fontStyle: 'normal',
           fillColor: theme.colors.lightGray,
           cellWidth: !isTransactions && 100,
+          textColor: theme.colors.black,
         },
         alternateRowStyles: {
           fillColor: theme.colors.white,
+        },
+        didParseCell: (tableData: any) => {
+          const isHead = tableData.section === 'head';
+          const isBody = tableData.section === 'body';
+          const value = isBody && tableData.cell.raw;
+          const isNumber = !isNaN(value);
+          const isNotDate = formErrorUtil.isDateTime(value);
+          const styles = tableData.cell.styles;
+
+          if (isBody && isNumber) {
+            styles.halign = 'right';
+          } else if (isHead) {
+            styles.halign = 'center';
+          } else {
+            styles.halign = 'left';
+          }
+
+          if (!isNotDate) {
+            styles.textColor = theme.colors.darkGray;
+          }
         },
       };
 
