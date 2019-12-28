@@ -218,6 +218,7 @@ export const prepareProductIllustrationStatementsItem = (
     lastTransactionId: item.last_transaction_id,
     balanceOpen: item.balance_open,
     balanceClose: item.balance_close,
+    minimumAmountDueRepayment: item.minimum_amount_due_repayment,
   };
 };
 

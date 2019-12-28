@@ -65,6 +65,7 @@ export interface IllustrationProductStatementsRevolvingCreditResp {
   last_transaction_id: number;
   balance_open: number;
   balance_close: number;
+  minimum_amount_due_repayment: number;
 }
 
 export interface IllustrationProductStatementsRevolvingCredit {
@@ -74,6 +75,7 @@ export interface IllustrationProductStatementsRevolvingCredit {
   lastTransactionId: number| string;
   balanceOpen: number | string;
   balanceClose: number | string;
+  minimumAmountDueRepayment: number | string;
 }
 
 export interface IllustrationProductAprRevolvingCreditResp {

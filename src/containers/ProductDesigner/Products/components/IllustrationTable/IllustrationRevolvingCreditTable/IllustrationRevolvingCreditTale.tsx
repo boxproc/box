@@ -108,6 +108,18 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
         />
       ),
     },
+    {
+      maxWidth: 120,
+      sortable: true,
+      accessor: 'minimumAmountDueRepayment',
+      Header: <TableHeader title="Due Repayent" />,
+      Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
+        <TableCell
+          value={props.value}
+          isNumber={true}
+        />
+      ),
+    },
   ];
 
   return (

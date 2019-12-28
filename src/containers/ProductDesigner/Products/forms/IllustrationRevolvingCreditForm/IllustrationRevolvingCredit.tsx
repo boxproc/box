@@ -84,7 +84,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
         </Paragraph>
         <IllustrationRevolvingCreditTable />]
       </Box>
-      <Flex alignItems="flex-end" flexWrap="wrap">
+      <Flex alignItems="flex-start" flexWrap="wrap">
         <Box mt="10px" width={[1 / 3]} padding="5px">
         <Paragraph
           bold={true}
