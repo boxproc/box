@@ -46,9 +46,7 @@ export const selectCurrencyNumCodesOptions = createSelector(
   })
 );
 
-export const selectIsCurrencyCodesLoaded =
-  createSelector(
-    selectDefaultDictionaryCurrenciesItems,
-    currencyCodes => {
-      return currencyCodes && currencyCodes.length > 0;
-    });
+export const selectIsCurrencyCodesLoaded = createSelector(
+  selectDefaultDictionaryCurrenciesItems,
+  currencyCodes => currencyCodes && currencyCodes.length > 0
+);

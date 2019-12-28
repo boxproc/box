@@ -33,9 +33,7 @@ export const selectCountryCodesOptions = createSelector(
   })
 );
 
-export const selectIsCountryCodesLoaded =
-  createSelector(
-    selectDefaultDictionaryCountriesItems,
-    countryCodes => {
-      return countryCodes && countryCodes.length > 0;
-    });
+export const selectIsCountryCodesLoaded = createSelector(
+  selectDefaultDictionaryCountriesItems,
+  countryCodes => countryCodes && countryCodes.length > 0
+);

@@ -92,8 +92,8 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Type" />,
-    accessor: 'type',
-    Cell: (props: TCell<'type'>) => (
+    accessor: 'endpointTypeName',
+    Cell: (props: TCell<'endpointTypeName'>) => (
       <TableCell
         value={props.value}
       />

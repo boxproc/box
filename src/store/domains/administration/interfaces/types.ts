@@ -1,44 +1,43 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { SelectValues } from 'types';
 
-export interface AdminInterfaceItem extends AdminInterfaceItemId {
+export interface AdminInterfaceItem {
+  id: number;
   institution_id: number | string;
   name: string;
   url: string;
-  type: string | number;
+  interface_type_id: string | number;
+  interface_type_name: string;
   status: number | string;
-  protocol_type: number | string;
   private_key_location: string;
   connection_attributes: string;
   log_file_location: string;
+  last_message_datetime: string;
+  last_fault_datetime: string;
 }
 
-export interface AdminInterfaceItemPrepared extends AdminInterfaceItemId {
-  institutionId: number | string;
-  name: string;
-  url: string;
-  type: string | number;
-  status: string | number;
-  privateKeyLocation: string;
-  protocolType: number | string;
-  connectionAttributes: string;
-  logFileLocation: string;
-}
-
-export interface AdminInterfaceItemDetailsPrepared extends AdminInterfaceItemId {
-  institutionId: SelectValues;
-  name: string;
-  url: string;
-  type: SelectValues;
-  status: SelectValues;
-  privateKeyLocation: string;
-  protocolType: SelectValues;
-  connectionAttributes: string;
-  logFileLocation: string;
-}
-
-export interface AdminInterfaceItemId {
+interface InterfaceItemPlain {
   id: number;
+  name: string;
+  url: string;
+  privateKeyLocation: string;
+  connectionAttributes: string;
+  logFileLocation: string;
+  lastMessageDatetime: string;
+  lastFaultDatetime: string;
+}
+
+export interface AdminInterfaceItemPrepared extends InterfaceItemPlain {
+  institutionId: number | string;
+  interfaceTypeId: string | number;
+  interfaceTypeName: string;
+  status: string | number;
+}
+
+export interface AdminInterfaceItemDetailsPrepared extends InterfaceItemPlain {
+  institutionId: SelectValues;
+  interfaceTypeId: SelectValues;
+  status: SelectValues;
 }
 
 export interface AdminInterfaceItems {

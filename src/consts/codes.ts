@@ -90,17 +90,6 @@ export const endpointsOptions = [
   { value: 'U', label: 'Tutuka' },
 ];
 
-export const typeOfInterfacesCodes = [
-  { value: 'T', label: 'Tribe' },
-  { value: 'U', label: 'Tutuka' },
-  { value: 'Q', label: 'QRails' },
-];
-
-export const protocolTypesOptions = [
-  { value: 'R', label: 'REST' },
-  { value: 'S', label: 'SOAP' },
-];
-
 export const customerStatusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },

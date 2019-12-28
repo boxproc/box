@@ -12,19 +12,22 @@ import { GeneralInterfacesInfo } from 'containers/Administration/Interfaces/comp
 import {
   HandleAddAdminInterface,
   HandleDeleteAdminInterface,
+  HandleGetDictionaryInterfaceTypes,
   HandleUpdateAdminInterface
 } from 'store/domains';
 import { SelectValues } from 'types';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {
-  institutionsOptions: Array<SelectValues>;
+  interfaceTypesOptions: Array<SelectValues>;
   updateAdminInterface: HandleUpdateAdminInterface;
   addAdminInterface: HandleAddAdminInterface;
   deleteInterface: HandleDeleteAdminInterface;
+  getDictionaryInterfaceTypes: HandleGetDictionaryInterfaceTypes;
   onCancel: () => void;
   mode: 'add' | 'edit';
   currentInterfaceName?: string;
   isReadOnly: boolean;
+  isLoadingTypesSelector: boolean;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -36,13 +39,22 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   deleteInterface,
   updateAdminInterface,
   addAdminInterface,
-  institutionsOptions,
   currentInterfaceName,
   mode,
   dirty,
   pristine,
   isReadOnly,
+  getDictionaryInterfaceTypes,
+  isLoadingTypesSelector,
+  interfaceTypesOptions,
 }) => {
+  React.useEffect(
+    () => {
+      getDictionaryInterfaceTypes();
+    },
+    [getDictionaryInterfaceTypes]
+  );
+
   const isEditMode = React.useMemo(
     () => mode === 'edit',
     [mode]
@@ -61,8 +73,9 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <GeneralInterfacesInfo
-        institutionsOptions={institutionsOptions}
+        interfaceTypesOptions={interfaceTypesOptions}
         isEditMode={isEditMode}
+        isLoadingTypesSelector={isLoadingTypesSelector}
         isReadOnly={isReadOnly}
       />
       <Flex

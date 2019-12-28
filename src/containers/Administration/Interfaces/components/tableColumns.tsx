@@ -81,19 +81,8 @@ export const tableColumns = [
     maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Type" />,
-    accessor: 'type',
-    Cell: (props: TCell<'type'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    maxWidth: 100,
-    sortable: true,
-    Header: <TableHeader title="Protocol Type" />,
-    accessor: 'protocolType',
-    Cell: (props: TCell<'protocolType'>) => (
+    accessor: 'interfaceTypeName',
+    Cell: (props: TCell<'interfaceTypeName'>) => (
       <TableCell
         value={props.value}
       />

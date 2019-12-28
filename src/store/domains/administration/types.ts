@@ -1,4 +1,4 @@
-import { DictionaryCardStatusesState } from './dictionaries/cardStatuses';
+import { DictionaryConstsState } from './dictionaries/consts';
 import { DictionaryCountriesState } from './dictionaries/countries';
 import { DictionaryCurrenciesState } from './dictionaries/currencies';
 import { DictionaryEventDataElemsState } from './dictionaries/eventDataElems';
@@ -17,7 +17,7 @@ export interface AdministrationState {
   scheduler: AdminSchedulerState;
   users: AdminUserState;
   userGroups: AdminUsersGroupState;
-  cardStatuses: DictionaryCardStatusesState;
+  consts: DictionaryConstsState;
   countries: DictionaryCountriesState;
   currencies: DictionaryCurrenciesState;
   events: DictionaryEventsState;

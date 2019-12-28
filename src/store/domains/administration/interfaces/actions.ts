@@ -18,22 +18,22 @@ import {
   AdminInterfaceItem,
   AdminInterfaceItemDetailsPrepared
 } from './types';
-import { preparedFilterToSend, preparedValuesToSend } from './utils';
+import { preparedDataToSend, preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type AddAdminInterface = (values: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
-export type HandleAddAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
+export type AddAdminInterface = (data: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
+export type HandleAddAdminInterface = (data: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
 export type HandleDeleteAdminInterface = () => Thunk<void>;
 
-export type UpdateAdminInterface = (values: Partial<AdminInterfaceItem>) =>
+export type UpdateAdminInterface = (data: Partial<AdminInterfaceItem>) =>
   UpdateAdminInterfaceAction;
-export type HandleUpdateAdminInterface = (values: Partial<AdminInterfaceItemDetailsPrepared>) =>
+export type HandleUpdateAdminInterface = (data: Partial<AdminInterfaceItemDetailsPrepared>) =>
   Thunk<void>;
 
 export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared>) =>
@@ -42,9 +42,9 @@ export type HandleFilterAdminInterface = () => Thunk<void>;
 
 export type ResetInterfaces = () => void;
 
-export const addAdminInterface: AddAdminInterface = values => ({
+export const addAdminInterface: AddAdminInterface = data => ({
   type: ActionTypeKeys.ADD_ADMIN_INTERFACE,
-  payload: api.addAdminInterface(values),
+  payload: api.addAdminInterface(data),
 });
 
 export const deleteAdminInterface: DeleteAdminInterface = id => ({
@@ -58,9 +58,9 @@ export const filterAdminInterface: FilterAdminInterface = filter => ({
   payload: api.filterAdminInterface(filter),
 });
 
-export const updateAdminInterface: UpdateAdminInterface = values => ({
+export const updateAdminInterface: UpdateAdminInterface = data => ({
   type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE,
-  payload: api.updateAdminInterface(values),
+  payload: api.updateAdminInterface(data),
 });
 
 export const resetInterfaces: ResetInterfaces = () => ({
@@ -87,7 +87,7 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
@@ -121,7 +121,7 @@ export const handleUpdateInterface: HandleUpdateAdminInterface = values =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedValuesToSend(values);
+        const preparedValues = preparedDataToSend(values);
 
         await dispatch(updateAdminInterface(preparedValues));
         await dispatch(handleFilterAdminInterface());

@@ -12,20 +12,23 @@ import { GeneralEndpointsInfo } from 'containers/Administration/Endpoints/compon
 import {
   HandleAddAdminEndpoint,
   HandleDeleteAdminEndpoint,
+  HandleGetDictionaryEndpointTypes,
   HandleUpdateAdminEndpoint
 } from 'store/domains';
 
 import { SelectValues } from 'types';
 
 interface EndpointFormProps extends ExternalSpinnerProps {
-  institutionsOptions: Array<SelectValues>;
+  endpointTypesOptions: Array<SelectValues>;
   updateAdminEndpoint: HandleUpdateAdminEndpoint;
   addAdminEndpoint: HandleAddAdminEndpoint;
   deleteEndpoint: HandleDeleteAdminEndpoint;
+  getDictionaryEndpointTypes: HandleGetDictionaryEndpointTypes;
   onCancel: () => void;
   mode: 'add' | 'edit';
   currentEndpointName: string;
   isReadOnly: boolean;
+  isLoadingTypesSelector: boolean;
 }
 
 type EndpointFormAllProps = EndpointFormProps &
@@ -37,13 +40,22 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   deleteEndpoint,
   updateAdminEndpoint,
   addAdminEndpoint,
-  institutionsOptions,
   pristine,
   dirty,
   mode,
   currentEndpointName,
   isReadOnly,
+  endpointTypesOptions,
+  getDictionaryEndpointTypes,
+  isLoadingTypesSelector,
 }) => {
+  React.useEffect(
+    () => {
+      getDictionaryEndpointTypes();
+    },
+    [getDictionaryEndpointTypes]
+  );
+
   const isEditMode = React.useMemo(
     () => mode === 'edit',
     [mode]
@@ -62,8 +74,9 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <GeneralEndpointsInfo
-        institutionsOptions={institutionsOptions}
+        endpointTypesOptions={endpointTypesOptions}
         isEditMode={isEditMode}
+        isLoadingTypesSelector={isLoadingTypesSelector}
         isReadOnly={isReadOnly}
       />
       <Hr />
