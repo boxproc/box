@@ -14,11 +14,13 @@ export interface InstitutionItemPlain {
 
 export interface InstitutionItemResp extends InstitutionItemPlain {
   institution_name: string;
+  master_institution_flag: string;
 }
 
 export interface InstitutionItem {
   id: number;
   institutionName: string;
+  masterInstitutionFlag: boolean;
 }
 
 export interface InstitutionsDataResp {

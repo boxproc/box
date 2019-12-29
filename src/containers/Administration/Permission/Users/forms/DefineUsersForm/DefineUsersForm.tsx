@@ -18,20 +18,21 @@ import {
   statusTypesCodes,
   statusTypesLoginOptions,
   typeOfCyclesEditorOptions,
-  yesNoTypesCodes,
 } from 'consts';
 
-import { HandleAddAdminUser, HandleUpdateAdminUser } from 'store/domains';
+import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-import { formErrorUtil, storageUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
   institutionsOptions: Array<SelectValues>;
+  institutions: Array<InstitutionItem>;
   isEditMode?: boolean;
   requires2faFlagValue: boolean;
   statusValue: SelectValues;
+  institutionValue: SelectValues;
   addAdminUser: HandleAddAdminUser;
   updateAdminUser: HandleUpdateAdminUser;
   onCancel?: () => void;
@@ -49,9 +50,11 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   onCancel,
   requires2faFlagValue,
   statusValue,
+  institutionValue,
   dirty,
   pristine,
   institutionsOptions,
+  institutions,
   change,
   isReadOnly,
 }) => {
@@ -95,9 +98,30 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
     [requires2faFlagValue]
   );
 
-  const userData = storageUtil.getUserData();
-  const isMasterInstitutionUser = userData
-    && userData.masterInstitutionFlag === yesNoTypesCodes.YES;
+  // logged in user info
+  // const userData = storageUtil.getUserData();
+  // const isMasterInstitutionUser = userData
+  //   && userData.masterInstitutionFlag === yesNoTypesCodes.YES;
+
+  const isMasterInstitutionUser = React.useMemo(
+    () => {
+      if (!institutionValue || !institutions) {
+        return false;
+      }
+
+      const currentInstitutionId = institutionValue.value;
+      const currentInstitution = institutions
+        .find(institution => institution.id === currentInstitutionId);
+      const isMasterInstitution = currentInstitution.masterInstitutionFlag;
+
+      if (!isMasterInstitution) {
+        change('changeProfileAllowedFlag', false);
+      }
+
+      return isMasterInstitution;
+    },
+    [institutionValue, institutions, change]
+  );
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitAction),
@@ -190,7 +214,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="requires2faFlag"
               component={CheckboxField}
               label="2FA Required"
-              disabled={!isMasterInstitutionUser || isReadOnly}
+              disabled={isReadOnly}
             />
           </Box>
           <Box width="100%" p="5px 10px">
