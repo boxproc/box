@@ -21,6 +21,8 @@ import {
   selectActiveItemId,
   selectInstitutionsOptions,
   selectLedgerAccounts,
+  selectLedgerCurrentAccountBalanceLimit,
+  selectLedgerCurrentAccountBalanceLimitShared,
   selectLedgerCurrentAccountCurrencyCode,
   selectLedgerCurrentAccountHasProductOverride,
   selectLedgerCurrentAccountProductOverrideId,
@@ -44,6 +46,8 @@ const mapStateToProps = (state: StoreState) => ({
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
   currentId: selectActiveItemId(state),
   currentCurrencyCode: selectLedgerCurrentAccountCurrencyCode(state),
+  currentAccountBalanceLimit: selectLedgerCurrentAccountBalanceLimit(state),
+  currentAccountBalanceLimitShared: selectLedgerCurrentAccountBalanceLimitShared(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

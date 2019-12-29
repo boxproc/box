@@ -5,7 +5,12 @@ import { Box, Flex } from '@rebass/grid';
 import { ExternalLink, Modal, T2, withSpinner } from 'components';
 import { ManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
 
-import { withModal, WithModalProps } from 'HOCs';
+import {
+  withLoadTransactionTypes,
+  WithLoadTransactionTypesProps,
+  withModal,
+  WithModalProps,
+} from 'HOCs';
 
 import { linksConst, modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
 
@@ -17,7 +22,7 @@ import {
 
 import { SelectValues } from 'types';
 
-interface ManualTransactionModalProps extends WithModalProps {
+interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactionTypesProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
   makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
   modalPayload: PayloadLedgerManualTransactionModal;
@@ -29,6 +34,9 @@ const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   makeLedgerTransaction,
   makeLedgerLimitAdjustment,
+  manualTransactionTypesOptions,
+  limitAdjustmentTypeOptions,
+  isTransactionTypesLoading,
   modalPayload,
   isLimitAdjustment,
   closeModal,
@@ -39,18 +47,37 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [isLimitAdjustment]
   );
 
+  const transactionTypes = React.useMemo(
+    () => isLimitAdjustment ? limitAdjustmentTypeOptions : manualTransactionTypesOptions,
+    [isLimitAdjustment, manualTransactionTypesOptions, limitAdjustmentTypeOptions]
+  );
+
   const initialFormValues = React.useMemo(
     () => {
       if (!modalPayload) {
         return null;
       }
 
-      const { currencyCode, accountId } = modalPayload;
+      const {
+        accountId,
+        balanceLimit,
+        balanceLimitShared,
+        currencyCode,
+        isLimitAdjustmentMode,
+      } = modalPayload;
+
       const currency = currenciesOptions.find(item => item.value === currencyCode);
 
+      const transactionType = isLimitAdjustmentMode
+        && transactionTypes
+        && transactionTypes[0];
+
       return {
-        currencyCode: currency,
         accountId,
+        currencyCode: currency,
+        balanceLimit,
+        balanceLimitShared,
+        transactionType,
       };
     },
     [currenciesOptions, modalPayload]
@@ -87,11 +114,15 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         initialValues={initialFormValues}
         onCancel={handleOnCancel}
         isLimitAdjustment={isLimitAdjustment}
+        transactionTypes={transactionTypes}
+        isTransactionTypesLoading={isTransactionTypesLoading}
       />
     </Modal>
   );
 };
 
+const withTransactionTypes = withLoadTransactionTypes(ManualTransactionModal);
+
 export default withSpinner({
   isFixed: true,
-})(withModal(ManualTransactionModal));
+})(withModal(withTransactionTypes));

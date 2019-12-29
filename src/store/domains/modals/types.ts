@@ -26,6 +26,8 @@ export interface PayloadLogModal {
 export interface PayloadLedgerManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
+  balanceLimit: string;
+  balanceLimitShared: string;
   isLimitAdjustmentMode?: boolean;
 }
 
