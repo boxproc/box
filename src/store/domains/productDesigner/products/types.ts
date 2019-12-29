@@ -127,18 +127,10 @@ export interface LoanProductIllustrate {
 
 export interface RevolvingCreditProductItemResp {
   product_id: number;
-  apr_default: number;
-  apr_default_calculation_method: string | number;
-  fee_exceed_limit: number;
-  fee_late_payment: number;
-  fee_overpayment: number;
   limit_sharing_allowed_flag: string;
   minimum_payment_amount: number;
   minimum_payment_rate: number;
   payment_grace_number_of_days: number;
-  rate_exceed_limit: number;
-  rate_late_payment: number;
-  rate_overpayment: number;
 }
 
 export interface RevolvingCreditProductResp {
@@ -147,18 +139,10 @@ export interface RevolvingCreditProductResp {
 
 export interface RevolvingCreditProductItem {
   productId: number;
-  aprDefault: number;
-  aprDefaultCalculationMethod: SelectValues;
-  feeExceedLimit: number;
-  feeLatePayment: number;
-  feeOverpayment: number;
   limitSharingAllowedFlag: boolean;
   minimumPaymentAmount: number;
   minimumPaymentRate: number;
   paymentGraceNumberOfDays: number;
-  rateExceedLimit: number;
-  rateLatePayment: number;
-  rateOverpayment: number;
 }
 
 export interface LoanProductItemResp {

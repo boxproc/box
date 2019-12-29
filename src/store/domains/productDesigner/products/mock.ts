@@ -95,19 +95,11 @@ export const productItemsFilteredData: ProductsDataResp = {
 
 export const productDetailsData: ProductDetailsResp = {
   product: {
-    apr_default: 29.99,
-    apr_default_calculation_method: 'A',
-    fee_exceed_limit: 25,
-    fee_late_payment: 25,
-    fee_overpayment: 25,
+    product_id: 1,
     limit_sharing_allowed_flag: 'N',
     minimum_payment_amount: 15,
     minimum_payment_rate: 5,
     payment_grace_number_of_days: 30,
-    product_id: 1,
-    rate_exceed_limit: 5,
-    rate_late_payment: 3,
-    rate_overpayment: 10,
   },
 };
 
