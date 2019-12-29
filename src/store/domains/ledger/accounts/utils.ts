@@ -20,6 +20,7 @@ export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
     firstName,
     lastName,
     accountAlias,
+    accountAliasAdditional,
     product,
   } = data;
 
@@ -29,6 +30,7 @@ export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
     last_name: lastName ? lastName : null,
     product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
+    account_alias_additional: accountAliasAdditional ? accountAliasAdditional : null,
     id: id ? id : null,
   };
 };

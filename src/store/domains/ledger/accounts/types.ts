@@ -135,6 +135,7 @@ export interface LedgerAccountsFilter extends LedgerAccountId {
   lastName: string;
   product: Array<SelectValues>;
   accountAlias: string;
+  accountAliasAdditional: string;
   id: number;
 }
 
@@ -144,6 +145,7 @@ export interface LedgerAccountsFilterPrepared extends LedgerAccountId {
   last_name: string;
   product: Array<string | number>;
   account_alias: string;
+  account_alias_additional: string;
   id: number;
 }
 

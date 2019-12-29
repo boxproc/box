@@ -28,7 +28,7 @@ const HintWrapper = styled.div<HintWrapperProps>`
     padding: 7px 10px;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.black};
-    box-shadow: ${({ theme }) => theme.shadows.aroundBox};
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
     border: 1px solid ${({ theme }) => theme.colors.lightGray};
     transform: ${({ position }) =>
     position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)'};
@@ -45,6 +45,7 @@ const HintWrapper = styled.div<HintWrapperProps>`
   .toggle-hint {
     width: 100%;
     height: 100%;
+    font-size: 0;
   }
 `;
 
@@ -87,7 +88,7 @@ const Hint: React.FC<HintProps> = ({
         onMouseEnter={toggleIsHint}
       >
         {icon && (
-          <InfoButton size="18" />
+          <InfoButton size="16" />
         )}
       </div>
       {isHint && (

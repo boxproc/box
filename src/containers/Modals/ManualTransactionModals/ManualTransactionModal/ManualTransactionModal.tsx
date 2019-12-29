@@ -80,7 +80,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         transactionType,
       };
     },
-    [currenciesOptions, modalPayload]
+    [currenciesOptions, modalPayload, transactionTypes]
   );
 
   const handleOnCancel = React.useCallback(
