@@ -27,13 +27,14 @@ export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>)
     return null;
   }
 
-  const { id, accountId, panAlias, customerId } = params;
+  const { id, accountId, panAlias, customerId, institutionId } = params;
 
   return {
     id: id ? id : null,
     account_id: accountId ? accountId : null,
     customer_id: customerId ? customerId : null,
     pan_alias: panAlias ? panAlias : null,
+    institution_id: institutionId ? institutionId.value : null,
   };
 };
 

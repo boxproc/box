@@ -18,10 +18,13 @@ import {
   ResetCards
 } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 export interface CardsProps {
+  currentId: number;
   ledgerCards: Array<LedgerCardItemPrepared>;
   filterLedgerCards: HandleFilterLedgerCards;
-  currentId: number;
+  institutionsOptions: Array<SelectValues>;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
@@ -36,6 +39,7 @@ const Cards: React.FC<CardsProps> = ({
   filterLedgerAccountsById,
   filterLedgerTransactionsById,
   filterLedgerStatementsById,
+  institutionsOptions,
   currentId,
   resetCards,
 }) => {
@@ -86,8 +90,11 @@ const Cards: React.FC<CardsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCards}
       isDownloadButton={true}
+      initialFilterValues={{
+        institutionId: institutionsOptions[0],
+      }}
       FilterForm={
-        <CardsFilter />
+        <CardsFilter institutionsOptions={institutionsOptions} />
       }
     />
   );
