@@ -21,7 +21,7 @@ import {
 import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store/domains';
 
 import { formNamesConst } from 'consts';
-import { dateUtil, formErrorUtil } from 'utils';
+import { formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
@@ -150,25 +150,13 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               </Box>
             </React.Fragment>
           )}
-          <Box width="170px" p="10px">
-            <Field
-              id="transactionDatetime"
-              name="transactionDatetime"
-              component={SelectField}
-              label="Transaction Date"
-              placeholder="Select Date"
-              options={[
-                { value: `${dateUtil.yesterdayDate} 00:00:00`, label: dateUtil.yesterdayDate },
-              ]}
-            />
-          </Box>
           <Box width={[1]} p="10px">
             <Field
               id="description"
               name="description"
               component={TextField}
-              placeholder="Enter Transaction Description"
-              label="Transaction Description"
+              placeholder="Enter Description"
+              label="Description"
               height={80}
               validate={[formErrorUtil.required]}
             />

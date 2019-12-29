@@ -8,7 +8,6 @@ export interface LedgerManualTransactionRequest {
   account_id: number;
   amount: number;
   description: string;
-  transaction_datetime: string | number;
 }
 
 export interface LedgerManualTransactionFromData {
@@ -17,7 +16,6 @@ export interface LedgerManualTransactionFromData {
   accountId: string;
   amount: string;
   description: string;
-  transactionDatetime: SelectValues;
 }
 
 export interface LedgerManualTransactionResult {
