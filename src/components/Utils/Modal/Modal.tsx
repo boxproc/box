@@ -131,28 +131,30 @@ const Modal: React.FC<ModalProps> = ({
         className="modal-backdrop"
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
-      <div className="modal-container">
-        {!hideCloseIcon && (
-          <span
-            className="modal-close"
-            onClick={handleCloseModal}
-            title="Close"
+      <div className="modal-container-wrapper">
+        <div className="modal-container">
+          {!hideCloseIcon && (
+            <span
+              className="modal-close"
+              onClick={handleCloseModal}
+              title="Close"
+            >
+              &times;
+            </span>
+          )}
+          <Flex
+            alignItems="baseline"
+            flexWrap="wrap"
           >
-            &times;
-          </span>
-        )}
-        <Flex
-          alignItems="baseline"
-          flexWrap="wrap"
-        >
-          {title && (
-            <ModalTitle>{title}</ModalTitle>
-          )}
-          {monoTitleStr && (
-            <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
-          )}
-        </Flex>
-        {children}
+            {title && (
+              <ModalTitle>{title}</ModalTitle>
+            )}
+            {monoTitleStr && (
+              <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
+            )}
+          </Flex>
+          {children}
+        </div>
       </div>
     </ModalWrapper>
   );
