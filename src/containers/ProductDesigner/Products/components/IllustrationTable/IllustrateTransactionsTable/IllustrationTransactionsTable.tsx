@@ -31,6 +31,18 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
       ),
     },
     {
+      maxWidth: 150,
+      sortable: true,
+      accessor: 'transactionType',
+      Header: <TableHeader title="Type" />,
+      Cell: (props: TCell<'transactionType'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
       maxWidth: 60,
       sortable: true,
       accessor: 'debitCreditIndicator',
@@ -119,18 +131,18 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         />
       ),
     },
-    {
-      maxWidth: 60,
-      sortable: true,
-      accessor: 'status',
-      Header: <TableHeader title="Status" />,
-      Cell: (props: TCell<'status'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
+    // {
+    //   maxWidth: 60,
+    //   sortable: true,
+    //   accessor: 'status',
+    //   Header: <TableHeader title="Status" />,
+    //   Cell: (props: TCell<'status'>) => (
+    //     <TableCell
+    //       value={props.value}
+    //       isSmaller={true}
+    //     />
+    //   ),
+    // },
     {
       maxWidth: 100,
       sortable: true,
