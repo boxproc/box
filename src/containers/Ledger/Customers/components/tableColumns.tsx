@@ -23,7 +23,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
@@ -34,7 +34,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 220,
     sortable: true,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
@@ -45,7 +45,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 220,
     sortable: true,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
@@ -90,7 +90,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     sortable: true,
     Header: <TableHeader title="Mobile Phone" />,
     accessor: 'mobilePhoneNumber',

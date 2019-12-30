@@ -50,11 +50,9 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 }) => {
   React.useEffect(
     () => {
-      if (!countryCodes.length) {
-        loadCountryCodes();
-      }
+      loadCountryCodes();
     },
-    [loadCountryCodes, countryCodes]
+    [loadCountryCodes]
   );
 
   const submitAction = React.useMemo(

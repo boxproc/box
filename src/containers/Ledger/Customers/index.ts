@@ -36,8 +36,8 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  ledgerCustomers: selectLedgerCustomers(state),
-  ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
+  customers: selectLedgerCustomers(state),
+  currentCustomerName: selectLedgerCurrentCustomerName(state),
   currentId: selectActiveItemId(state),
 });
 

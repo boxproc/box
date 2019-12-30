@@ -79,6 +79,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
         <form onSubmit={handleSubmitForm}>
           <ProductRewards
             isDisabled={isLoading}
+            isLoading={isLoading}
             pristine={pristine}
             isOnlyRate={isOnlyRate}
             isOnlyAmount={isOnlyAmount}

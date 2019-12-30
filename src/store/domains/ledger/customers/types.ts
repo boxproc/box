@@ -79,10 +79,6 @@ export interface LedgerCustomersFilterPrepared extends LedgerCustomerId {
   last_name: string;
 }
 
-export interface LedgerCustomersState {
-  customers: ImmutableArray<LedgerCustomerItem>;
-}
-
 export interface CardId {
   card_id: number;
 }
@@ -103,4 +99,76 @@ export interface StatementId {
   statement_id: number;
 }
 
+export interface RepaymentDebitCardsItem {
+  customer_id: number;
+  pan_alias: string;
+  pan_masked: string;
+  expiry_date: string;
+  cvv2_encrypted: string;
+  cardholder_name: string;
+  status: string | number;
+  repayment_interface_id: number;
+  last_update_datetime: string;
+}
+
+export interface RepaymentDebitCardsItems {
+  repayment_debit_cards: Array<RepaymentDebitCardsItem>;
+}
+
+export interface RepaymentDebitCardsItemPlain {
+  customerId: number;
+  panAlias: string;
+  panMasked: string;
+  expiryDate: string;
+  cvv2Encrypted: string;
+  cardholderName: string;
+  repaymentInterfaceId: number;
+  lastUpdateDatetime: string;
+}
+
+export interface RepaymentDebitCardsItemPrepared extends RepaymentDebitCardsItemPlain {
+  status: string | number;
+}
+
+export interface RepaymentDebitCardsItemFormValues extends RepaymentDebitCardsItemPlain {
+  status: SelectValues;
+}
+
+export interface RepaymentDirectDebitsItem {
+  customer_id: number;
+  account: string;
+  account_ext: string;
+  accountholder_name: string;
+  status: string;
+  repayment_interface_id: number;
+  last_update_datetime: string;
+}
+
+export interface RepaymentDirectDebitsItems {
+  repayment_debit_cards: Array<RepaymentDirectDebitsItem>;
+}
+
+interface RepaymentDirectDebitsItemPlain {
+  customerId: number;
+  account: string;
+  accountExt: string;
+  accountholderName: string;
+  repaymentInterfaceId: number;
+  lastUpdateDatetime: string;
+}
+
+export interface RepaymentDirectDebitsItemPrepared extends RepaymentDirectDebitsItemPlain {
+  status: string | number;
+}
+
+export interface RepaymentDirectDebitsItemFormValues extends RepaymentDirectDebitsItemPlain {
+  status: SelectValues;
+}
+
 export type LedgerId = CardId | AccountId | TransactionId | StatementId | CustomerId;
+
+export interface LedgerCustomersState {
+  customers: ImmutableArray<LedgerCustomerItem>;
+  repaymentDebitCards: ImmutableArray<RepaymentDebitCardsItem>;
+  repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItem>;
+}

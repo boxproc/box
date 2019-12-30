@@ -7,8 +7,9 @@ interface HrProps {
 }
 
 export const Hr = styled.div<HrProps>`
-  margin-top: ${({ noSpace }) => noSpace ? '1px' : '10px'};
-  margin-bottom:${({ noSpace }) => noSpace ? '0' : '8px'};;
+  margin-top: ${({ noSpace }) => noSpace ? '1px' : '9px'};
+  margin-bottom:${({ noSpace }) => noSpace ? '0' : '7px'};
+  padding: 1px 0;
   border-top: 1px solid ${({ theme, accentColor }) =>
     accentColor ? 'transparent' : theme.colors.lightGray};
   width: 100%;

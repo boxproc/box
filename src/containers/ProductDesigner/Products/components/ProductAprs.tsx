@@ -11,11 +11,13 @@ import { formErrorUtil } from 'utils';
 
 interface ProductAprsProps {
   isDisabled: boolean;
+  isLoading: boolean;
   pristine: boolean;
 }
 
 const ProductAprs: React.FC<ProductAprsProps> = ({
   isDisabled,
+  isLoading,
   pristine,
 }) => {
   return (
@@ -75,7 +77,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
         </Box>
         <Box width={[1 / 6]} pb="20px">
           <Button
-            text={isDisabled ? 'Adding...' : 'Add APR'}
+            text={isLoading ? 'Adding...' : 'Add APR'}
             iconName={iconNamesConst.PLUS}
             disabled={pristine || isDisabled}
           />

@@ -1,4 +1,4 @@
-import { LedgerCustomerItems } from './types';
+import { LedgerCustomerItems, RepaymentDebitCardsItems, RepaymentDirectDebitsItems } from './types';
 
 import { ApiResponse, ResponseStatusType } from 'types';
 
@@ -24,6 +24,29 @@ export enum ActionTypeKeys {
   'ledger/customers/FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED',
   FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED =
   'ledger/customers/FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED',
+
+  GET_REPAYMENT_DEBIT_CARDS = 'productDesigner/customers/GET_REPAYMENT_DEBIT_CARDS',
+  GET_REPAYMENT_DEBIT_CARDS_FULFILLED =
+  'productDesigner/customers/GET_REPAYMENT_DEBIT_CARDS_FULFILLED',
+  GET_REPAYMENT_DEBIT_CARDS_REJECTED =
+  'productDesigner/customers/GET_REPAYMENT_DEBIT_CARDS_REJECTED',
+
+  ADD_REPAYMENT_DEBIT_CARD = 'productDesigner/customers/ADD_REPAYMENT_DEBIT_CARD',
+  ADD_REPAYMENT_DEBIT_CARD_FULFILLED =
+  'productDesigner/customers/ADD_REPAYMENT_DEBIT_CARD_FULFILLED',
+  ADD_REPAYMENT_DEBIT_CARD_REJECTED = 'productDesigner/customers/ADD_REPAYMENT_DEBIT_CARD_REJECTED',
+
+  GET_REPAYMENT_DIRECT_DEBITS = 'productDesigner/customers/GET_REPAYMENT_DIRECT_DEBITS',
+  GET_REPAYMENT_DIRECT_DEBITS_FULFILLED =
+  'productDesigner/customers/GET_REPAYMENT_DIRECT_DEBITS_FULFILLED',
+  GET_REPAYMENT_DIRECT_DEBITS_REJECTED =
+  'productDesigner/customers/GET_REPAYMENT_DIRECT_DEBITS_REJECTED',
+
+  ADD_REPAYMENT_DIRECT_DEBIT = 'productDesigner/customers/ADD_REPAYMENT_DIRECT_DEBIT',
+  ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED =
+  'productDesigner/customers/ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED',
+  ADD_REPAYMENT_DIRECT_DEBIT_REJECTED =
+  'productDesigner/customers/ADD_REPAYMENT_DIRECT_DEBIT_REJECTED',
 
   RESET_CUSTOMERS = 'ledger/customers/RESET_CUSTOMERS',
 }
@@ -106,6 +129,66 @@ export interface FilterLedgerCustomersByIdRejectedAction {
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED;
 }
 
+export interface GetRepaymentDebitCardsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS;
+}
+
+export interface GetRepaymentDebitCardsFulfilledAction {
+  readonly payload: RepaymentDebitCardsItems;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS_FULFILLED;
+}
+
+export interface GetRepaymentDebitCardsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS_REJECTED;
+}
+
+export interface AddRepaymentDebitCardAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD;
+}
+
+export interface AddRepaymentDebitCardFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD_FULFILLED;
+}
+
+export interface AddRepaymentDebitCardRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD_REJECTED;
+}
+
+export interface GetRepaymentDirectDebitsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS;
+}
+
+export interface GetRepaymentDirectDebitsFulfilledAction {
+  readonly payload: RepaymentDirectDebitsItems;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_FULFILLED;
+}
+
+export interface GetRepaymentDirectDebitsRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_REJECTED;
+}
+
+export interface AddRepaymentDirectDebitAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT;
+}
+
+export interface AddRepaymentDirectDebitFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED;
+}
+
+export interface AddRepaymentDirectDebitRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_REJECTED;
+}
+
 export interface ResetCustomersAction {
   readonly type: ActionTypeKeys.RESET_CUSTOMERS;
 }
@@ -116,4 +199,8 @@ export type LedgerCustomersActionTypes =
   | UpdateLedgerCustomerFulfilledAction
   | FilterLedgerCustomersFulfilledAction
   | FilterLedgerCustomersByIdFulfilledAction
+  | GetRepaymentDebitCardsFulfilledAction
+  | AddRepaymentDebitCardFulfilledAction
+  | GetRepaymentDirectDebitsFulfilledAction
+  | AddRepaymentDirectDebitFulfilledAction
   | ResetCustomersAction;

@@ -40,6 +40,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
         <form onSubmit={handleSubmitForm}>
           <Flex alignItems="flex-end" flexWrap="wrap">
             <ProductAprs
+              isLoading={isLoading}
               isDisabled={isLoading}
               pristine={pristine}
             />

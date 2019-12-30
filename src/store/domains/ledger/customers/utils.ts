@@ -1,8 +1,16 @@
-import { customerStatusTypesOptions, identificationTypesOptions } from 'consts';
+import {
+  customerStatusTypesOptions,
+  identificationTypesOptions,
+  statusTypesOptions,
+} from 'consts';
+
 import {
   LedgerCustomerItem,
   LedgerCustomerItemDetailsPrepared,
   LedgerCustomersFilter,
+  RepaymentDebitCardsItem,
+  RepaymentDebitCardsItemFormValues,
+  RepaymentDebitCardsItemPrepared,
 } from './types';
 
 import { SelectValues } from 'types';
@@ -99,3 +107,59 @@ export const preparedDataDetailsToRender = (data: Partial<LedgerCustomerItem>) =
 
   };
 };
+
+export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem):
+  RepaymentDebitCardsItemPrepared => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    customer_id,
+    pan_alias,
+    pan_masked,
+    expiry_date,
+    cvv2_encrypted,
+    cardholder_name,
+    status,
+    repayment_interface_id,
+    last_update_datetime,
+  } = data;
+
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
+  return {
+    customerId: customer_id,
+    panAlias: pan_alias,
+    panMasked: pan_masked,
+    expiryDate: expiry_date,
+    cvv2Encrypted: cvv2_encrypted,
+    cardholderName: cardholder_name,
+    status: currentStatus && currentStatus.label,
+    repaymentInterfaceId: repayment_interface_id,
+    lastUpdateDatetime: last_update_datetime,
+  };
+};
+
+export const prepareFormDataRepaymentDebitCardToSend =
+  (data: Partial<RepaymentDebitCardsItemFormValues>): Partial<RepaymentDebitCardsItem> => {
+    const {
+      panAlias,
+      panMasked,
+      expiryDate,
+      cvv2Encrypted,
+      cardholderName,
+      status,
+      repaymentInterfaceId,
+    } = data;
+
+    return {
+      pan_alias: panAlias,
+      pan_masked: panMasked,
+      expiry_date: expiryDate,
+      cvv2_encrypted: cvv2Encrypted,
+      cardholder_name: cardholderName,
+      status: status && status.value,
+      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId),
+    };
+  };

@@ -51,6 +51,7 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         <TableCell
           value={props.value}
           isSmaller={true}
+          onCenter={true}
         />
       ),
     },

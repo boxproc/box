@@ -13,6 +13,7 @@ interface ProductRewardsProps {
   isDisabled: boolean;
   isOnlyRate: boolean;
   isOnlyAmount: boolean;
+  isLoading: boolean;
   pristine: boolean;
 }
 
@@ -20,6 +21,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
   isDisabled,
   isOnlyRate,
   isOnlyAmount,
+  isLoading,
   pristine,
 }) => {
   return (
@@ -76,7 +78,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
       </Box>
       <Box width={[1 / 7]} pb="20px">
         <Button
-          text={isDisabled ? 'Adding...' : 'Add Reward'}
+          text={isLoading ? 'Adding...' : 'Add Reward'}
           iconName={iconNamesConst.PLUS}
           disabled={pristine || isDisabled}
         />

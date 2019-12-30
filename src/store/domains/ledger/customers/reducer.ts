@@ -5,6 +5,8 @@ import { LedgerCustomersState } from './types';
 
 export const ledgerCustomersInitialState: ImmutableObject<LedgerCustomersState> = Immutable({
   customers: Immutable([]),
+  repaymentDebitCards: Immutable([]),
+  repaymentDirectDebits: Immutable([]),
 });
 
 const ledgerCustomersReducer =
@@ -18,12 +20,16 @@ const ledgerCustomersReducer =
           );
 
       case ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_FULFILLED:
-        return state
-          .set('customers', action.payload.customers);
+        return state.set('customers', action.payload.customers);
 
       case ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_FULFILLED:
-        return state
-          .set('customers', action.payload.customers);
+        return state.set('customers', action.payload.customers);
+
+      case ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS_FULFILLED:
+        return state.set('repaymentDebitCards', action.payload.repayment_debit_cards);
+
+      case ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_FULFILLED:
+        return state.set('repaymentDirectDebits', action.payload.repayment_debit_cards);
 
       case ActionTypeKeys.RESET_CUSTOMERS:
         return state = ledgerCustomersInitialState;

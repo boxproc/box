@@ -133,6 +133,10 @@ export enum lenderCustomersPathNames {
   CREATE = '/ui/ledger/customers/create',
   UPDATE = '/ui/ledger/customers/update',
   DELETE = '/ui/ledger/customers/delete',
+  GET_REPAYMENT_DEBIT_CARDS = 'ui/ledger/customers/get_repayment_debit_card',
+  CREATE_REPAYMENT_DEBIT_CARD = 'ui/ledger/customers/create_repayment_debit_card',
+  CREATE_REPAYMENT_DIRECT_DEBIT = 'ui/ledger/customers/create_repayment_direct_debits',
+  GET_REPAYMENT_DIRECT_DEBITS = 'ui/ledger/customers/get_repayment_direct_debits',
 }
 
 export enum lenderStatementsPathNames {

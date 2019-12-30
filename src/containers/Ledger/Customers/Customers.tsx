@@ -23,10 +23,10 @@ import { SelectValues } from 'types';
 
 export interface CustomersProps {
   institutionsOptions: Array<SelectValues>;
-  ledgerCustomers: Array<LedgerCustomerItemPrepared>;
+  customers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
-  ledgerCurrentCustomerName: string;
+  currentCustomerName: string;
   resetCustomers: ResetCustomers;
   currentId: number;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
@@ -37,10 +37,10 @@ export interface CustomersProps {
 
 const Customers: React.FC<CustomersProps> = ({
   institutionsOptions,
-  ledgerCustomers,
+  customers,
   filterLedgerCustomers,
   deleteLedgerCustomer,
-  ledgerCurrentCustomerName,
+  currentCustomerName,
   currentId,
   filterLedgerCardsById,
   filterLedgerTransactionsById,
@@ -62,7 +62,7 @@ const Customers: React.FC<CustomersProps> = ({
         icon: iconNamesConst.DELETE,
         action: deleteLedgerCustomer,
         withConfirmation: true,
-        confirmationText: `Delete customer "${ledgerCurrentCustomerName}"?`,
+        confirmationText: `Delete customer "${currentCustomerName}"?`,
       },
       {
         isDivider: true,
@@ -86,7 +86,7 @@ const Customers: React.FC<CustomersProps> = ({
     ],
     [
       deleteLedgerCustomer,
-      ledgerCurrentCustomerName,
+      currentCustomerName,
       filterLedgerTransactionsById,
       filterLedgerStatementsById,
       filterLedgerCardsById,
@@ -98,7 +98,7 @@ const Customers: React.FC<CustomersProps> = ({
   return (
     <PageTemplate
       title="Customers"
-      data={ledgerCustomers}
+      data={customers}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_LEDGER_CUSTOMER}
       editModalName={modalNamesConst.EDIT_LEDGER_CUSTOMER}

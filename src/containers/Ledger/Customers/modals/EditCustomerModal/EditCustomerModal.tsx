@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { Modal } from 'components';
+import { Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { CustomerForm } from 'containers/Ledger/Customers/forms';
+import { CustomerForm, RepaymentDebitCardsForm } from 'containers/Ledger/Customers/forms';
 
 interface EditCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
+  currentCustomerName: string;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
@@ -17,6 +18,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,
   isFormDirty,
   isReadOnly,
+  currentCustomerName,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
@@ -27,15 +29,24 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title="Edit Customer"
+      title={`Edit Customer: ${currentCustomerName}`}
       maxContainerWidth={1010}
+      minContainerHeight={600}
       withCloseConfirmation={isFormDirty}
     >
-      <CustomerForm
-        isEditMode={true}
-        isReadOnly={isReadOnly}
-        onCancel={handleOnCancel}
-      />
+      <Tabs>
+        <TabsPanel title="General">
+          <CustomerForm
+            isEditMode={true}
+            isReadOnly={isReadOnly}
+            onCancel={handleOnCancel}
+          />
+        </TabsPanel>
+        <TabsPanel title="Repayment Debit Cards">
+          <RepaymentDebitCardsForm />
+        </TabsPanel>
+        {/* <TabsPanel title="Repayment Direct Debits">1</TabsPanel> */}
+      </Tabs>
     </Modal>
   );
 };

@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
@@ -15,9 +15,13 @@ import {
 import {
   ActionTypeKeys,
   AddLedgerCustomerAction,
+  AddRepaymentDebitCardAction,
+  AddRepaymentDirectDebitAction,
   DeleteLedgerCustomerAction,
   FilterLedgerCustomersAction,
   FilterLedgerCustomersByIdAction,
+  GetRepaymentDebitCardsAction,
+  GetRepaymentDirectDebitsAction,
   UpdateLedgerCustomerAction,
 } from './actionTypes';
 import {
@@ -25,8 +29,16 @@ import {
   LedgerCustomerItemDetailsPrepared,
   LedgerCustomersFilterPrepared,
   LedgerId,
+  RepaymentDebitCardsItem,
+  RepaymentDebitCardsItemFormValues,
+  RepaymentDirectDebitsItem,
+  RepaymentDirectDebitsItemFormValues,
 } from './types';
-import { preparedDataToSend, preparedFilterToSend } from './utils';
+import {
+  preparedDataToSend,
+  preparedFilterToSend,
+  prepareFormDataRepaymentDebitCardToSend,
+} from './utils';
 
 import { Thunk } from 'types';
 
@@ -51,6 +63,22 @@ export type HandleFilterLedgerCustomers = () => Thunk<void>;
 
 export type FilterLedgerCustomersById = (id: LedgerId) => FilterLedgerCustomersByIdAction;
 export type HandleFilterLedgerCustomersById = (id: LedgerId) => Thunk<void>;
+
+export type GetRepaymentDebitCards = (id: number) => GetRepaymentDebitCardsAction;
+export type HandleGetRepaymentDebitCards = () => Thunk<void>;
+
+export type AddRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItem>) =>
+  AddRepaymentDebitCardAction;
+export type HandleAddRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItemFormValues>) =>
+  Thunk<void>;
+
+export type GetRepaymentDirectDebits = (id: number) => GetRepaymentDirectDebitsAction;
+export type HandleGetRepaymentDirectDebits = () => Thunk<void>;
+
+export type AddRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItem>) =>
+  AddRepaymentDirectDebitAction;
+export type HandleAddRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItemFormValues>) =>
+  Thunk<void>;
 
 export type ResetCustomers = () => void;
 
@@ -82,6 +110,26 @@ export const filterLedgerCustomersById: FilterLedgerCustomersById = data => ({
 
 export const resetCustomers: ResetCustomers = () => ({
   type: ActionTypeKeys.RESET_CUSTOMERS,
+});
+
+export const getRepaymentDebitCards: GetRepaymentDebitCards = id => ({
+  type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS,
+  payload: api.getRepaymentDebitCards(id),
+});
+
+export const addRepaymentDebitCard: AddRepaymentDebitCard = data => ({
+  type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
+  payload: api.addRepaymentDebitCard(data),
+});
+
+export const getRepaymentDirectDebits: GetRepaymentDirectDebits = id => ({
+  type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
+  payload: api.getRepaymentDirectDebits(id),
+});
+
+export const addRepaymentDirectDebit: AddRepaymentDirectDebit = data => ({
+  type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
+  payload: api.addRepaymentDirectDebit(data),
 });
 
 export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
@@ -154,6 +202,70 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`));
         await dispatch(filterLedgerCustomersById(id));
         dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetRepaymentDebitCards: HandleGetRepaymentDebitCards = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const customerId = selectActiveItemId(state);
+
+        await dispatch(getRepaymentDebitCards(customerId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddRepaymentDebitCard: HandleAddRepaymentDebitCard = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const customerId = selectActiveItemId(state);
+        const preparedValues = prepareFormDataRepaymentDebitCardToSend(data);
+
+        await dispatch(addRepaymentDebitCard({
+          ...preparedValues,
+          customer_id: customerId,
+        }));
+        await dispatch(handleGetRepaymentDebitCards());
+        dispatch(resetForm(formNamesConst.LEDGER_REPAYMENT_DEBIT_CARDS));
+      },
+      dispatch
+    );
+  };
+
+export const handleGetRepaymentDirectDebits: HandleGetRepaymentDirectDebits = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const customerId = selectActiveItemId(state);
+
+        await dispatch(getRepaymentDirectDebits(customerId));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const customerId = selectActiveItemId(state);
+        const preparedValues = data as any;
+
+        await dispatch(addRepaymentDirectDebit({
+          ...preparedValues,
+          customer_id: customerId,
+        }));
+        await dispatch(handleGetRepaymentDirectDebits());
+        dispatch(resetForm(formNamesConst.LEDGER_REPAYMENT_DIRECT_DEBITS));
       },
       dispatch
     );

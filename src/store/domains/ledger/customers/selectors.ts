@@ -5,7 +5,11 @@ import { StoreState } from 'store/StoreState';
 import { selectCountryCodesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
-import { prepareDataToRender, preparedDataDetailsToRender } from './utils';
+import {
+  prepareDataToRender,
+  preparedDataDetailsToRender,
+  prepareRepaymentDebitCardsToRender,
+} from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
   state.ledger.customers.customers;
@@ -13,8 +17,7 @@ export const selectDefaultLedgerCustomers = (state: StoreState) =>
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
   selectInstitutionsOptions,
-  selectCountryCodesOptions,
-  (items, institutions, countries) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareDataToRender(item, institution);
@@ -51,4 +54,12 @@ export const selectLedgerCurrentCustomer = createSelector(
 export const selectLedgerCurrentCustomerName = createSelector(
   selectLedgerCurrentCustomer,
   (customer) => customer && `${customer.firstName} ${customer.lastName}`
+);
+
+export const selectDefaultRepaymentDebitCards = (state: StoreState) =>
+  state.ledger.customers.repaymentDebitCards;
+
+export const selectRepaymentDebitCards = createSelector(
+  selectDefaultRepaymentDebitCards,
+  items => items && items.asMutable().map(item => prepareRepaymentDebitCardsToRender(item))
 );

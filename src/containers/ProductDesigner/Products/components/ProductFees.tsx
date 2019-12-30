@@ -27,6 +27,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
   isOnlyRate,
   pristine,
   aprsOptions,
+  isLoading,
 }) => {
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
@@ -95,7 +96,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
       </Box>
       <Box width={[1 / 7]} pb="20px">
         <Button
-          text={isDisabled ? 'Adding...' : 'Add Fee'}
+          text={isLoading ? 'Adding...' : 'Add Fee'}
           iconName={iconNamesConst.PLUS}
           disabled={pristine || isDisabled}
         />

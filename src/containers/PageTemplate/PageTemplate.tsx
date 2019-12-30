@@ -192,7 +192,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               <DropdownOption>
                 <Button
                   text=".csv"
-                  iconName={iconNamesConst.FILE_CSV}
+                  iconName={iconNamesConst.FILE}
                   onClick={() => downloadUtil.downloadCSV(fileName, data)}
                   textTransformNone={true}
                 />
