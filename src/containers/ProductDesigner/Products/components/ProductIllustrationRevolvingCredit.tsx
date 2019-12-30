@@ -216,6 +216,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
             <Delimiter />
             <Box width={[1 / 5]} pb="20px">
               <Button
+                isFocused={true}
                 text="Illustrate"
               />
             </Box>

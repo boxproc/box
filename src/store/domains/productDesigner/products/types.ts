@@ -95,16 +95,17 @@ export interface IllustrationProductAprRevolvingCredit {
 }
 
 export interface IllustrationProductTransactionsRevolvingCredit {
-  transactionDatetime: number | string;
-  debitCreditIndicator: number| string;
-  amount: number| string;
-  balanceSettledBefore: number| string;
-  balanceSettledAfter: number| string;
-  balanceAvailableBefore: number| string;
-  balanceAvailableAfter: number| string;
-  description: number| string;
-  status: number| string;
-  aprRate: number| string;
+  transactionDatetime: number|string;
+  debitCreditIndicator: number|string;
+  amount: number|string;
+  balanceSettledBefore: number|string;
+  balanceSettledAfter: number|string;
+  balanceAvailableBefore: number|string;
+  balanceAvailableAfter: number|string;
+  description: number|string;
+  status: number|string;
+  aprRate: number|string;
+  transactionType: string;
 }
 
 export interface IllustrationProductTransactionsRevolvingCreditResp {
@@ -118,6 +119,7 @@ export interface IllustrationProductTransactionsRevolvingCreditResp {
   description: number | string;
   status: number | string;
   apr_rate: number;
+  transaction_type: string;
 }
 
 export interface IllustrationProductRewardsRevolvingCreditResp {

@@ -265,6 +265,7 @@ export const prepareProductIllustrationTransactionsItem = (
     description: item.description,
     status: item.status,
     aprRate: item.apr_rate && item.apr_rate.toFixed(2),
+    transactionType:  item.transaction_type,
   };
 };
 
