@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
+import { OkCancelButtons } from 'components';
 
 import { actionTypesCodeKeys, eventTypesCodeKeys, formNamesConst } from 'consts';
 
@@ -12,16 +12,18 @@ import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface RulesFormProps extends ExternalSpinnerProps {
+interface RulesFormProps {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
   isReadOnly: boolean;
   actionTypesOptions: Array<SelectValues>;
+  initialActionType: string | number;
   rulesValues: {
     eventId: SelectValues;
     actionType: SelectValues;
   };
+  isLoading: boolean;
 }
 
 type RulesFormPropsAllProps = RulesFormProps &
@@ -37,17 +39,17 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   rulesValues,
   change,
   actionTypesOptions,
+  initialActionType,
+  isLoading,
   isReadOnly,
 }) => {
   const { eventId, actionType } = rulesValues;
 
   React.useEffect(
     () => {
-      if (!eventId && !actionType) {
-        getProductRule();
-      }
+      getProductRule();
     },
-    [getProductRule, eventId, actionType]
+    [getProductRule]
   );
 
   const actionTypesOptionsPrepared = React.useMemo(
@@ -95,13 +97,25 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   );
 
   const handleGetRule = React.useCallback(
-    (value: SelectValues, val: SelectValues, prevVal: SelectValues, fieldName: string) => {
-      if (value && (eventId || actionType)) {
+    (fieldName, value) => {
+      if (value) {
         change(fieldName, value);
-        setTimeout(() => getProductRule(), 50);
+
+        if (fieldName === 'eventId' && !actionType) {
+          change('actionType', actionTypesOptionsPrepared[0]);
+        }
+
+        getProductRule();
       }
     },
-    [getProductRule, change, eventId, actionType]
+    [getProductRule, actionType, change, actionTypesOptionsPrepared]
+  );
+
+  const handleGetRuleByChange = React.useCallback(
+    (value: SelectValues, val: SelectValues, prevVal: SelectValues, fieldName: string) => {
+      handleGetRule(fieldName, value);
+    },
+    [handleGetRule]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -113,9 +127,12 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductRules
         eventValue={eventId}
-        onChangeValues={handleGetRule}
+        onChangeValues={handleGetRuleByChange}
         changeFormField={change}
+        handleGetRule={handleGetRule}
         actionTypesOptions={actionTypesOptionsPrepared}
+        initialActionType={initialActionType}
+        isLoading={isLoading}
         isReadOnly={isReadOnly}
       />
       <OkCancelButtons
@@ -135,4 +152,4 @@ export default reduxForm<{}, RulesFormProps>({
   form: formNamesConst.PRODUCT_RULES,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(RulesForm));
+})(RulesForm);

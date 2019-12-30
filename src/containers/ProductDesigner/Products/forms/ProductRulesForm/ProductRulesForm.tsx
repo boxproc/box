@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { ExternalSpinnerProps, withSpinner } from 'components';
 import { rulesInitialFormValues } from 'containers/ProductDesigner/Products/consts';
 import RulesForm from './RulesForm';
 
@@ -10,7 +9,7 @@ import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
 
 import { SelectValues } from 'types';
 
-interface ProductRulesFormProps extends ExternalSpinnerProps {
+interface ProductRulesFormProps {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
@@ -40,11 +39,6 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
 
   const { eventId, actionType } = rulesValues;
 
-  const script = React.useMemo(
-    () => currentProductScript ? currentProductScript : initialScript,
-    [currentProductScript, initialScript]
-  );
-
   React.useEffect(
     () => {
       if (eventId && actionType) {
@@ -62,12 +56,23 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
     [getProductRule, eventId, actionType, initialScript]
   );
 
+  const initialActionType = React.useMemo(
+    () => initialValues.actionType && initialValues.actionType.value,
+    [initialValues]
+  );
+
+  const script = React.useMemo(
+    () => currentProductScript ? currentProductScript : initialScript,
+    [currentProductScript, initialScript]
+  );
+
   return (
     <RulesForm
       initialValues={{
         ...initialValues,
         script,
       }}
+      initialActionType={initialActionType}
       isLoading={isLoading}
       onCancel={onCancel}
       getProductRule={getProductRule}
@@ -79,4 +84,4 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   );
 };
 
-export default withSpinner()(ProductRulesForm);
+export default ProductRulesForm;

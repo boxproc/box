@@ -682,7 +682,7 @@ export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) =>
 };
 
 export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => {
-  if (!data) {
+  if (!data || !data.eventId || !data.actionType) {
     return null;
   }
 

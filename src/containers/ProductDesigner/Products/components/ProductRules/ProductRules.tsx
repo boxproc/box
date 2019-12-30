@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { HighlightCodeField, SelectField, TextField } from 'components';
+import { Button, HighlightCodeField, SelectField, TextField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 import {
@@ -24,12 +24,37 @@ const ScriptWrapper = styled.div`
   .snippet-buttons {
     position: absolute;
     right: 20px;
-    top: 13px;
+    top: 3px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     z-index: 1;
   }
+
+  .loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.darkGray};
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: .5pt;
+    text-transform: uppercase;
+    opacity: .5;
+    z-index: 10;
+  }
+`;
+
+const HiddenBox = styled(Box)`
+  // opacity: 0;
+  // visibility: hidden;
+  display: none;
 `;
 
 interface ContextItemProps {
@@ -45,11 +70,14 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   productAprsItems: Array<ContextItemProps>;
   productFeesItems: Array<ContextItemProps>;
   productRewardsItems: Array<ContextItemProps>;
-  onChangeValues?: () => void;
-  changeFormField: (field: string, value: string) => void;
   scriptValue: string;
   actionTypesOptions: Array<SelectValues>;
+  initialActionType: string | number;
+  isLoading: boolean;
   isReadOnly: boolean;
+  onChangeValues: () => void;
+  changeFormField: (field: string, value: string | SelectValues) => void;
+  handleGetRule: (field: string, value: string | SelectValues) => void;
 }
 
 const getNewCode = (element: string) => {
@@ -85,8 +113,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   productAprsItems,
   onChangeValues,
   changeFormField,
+  handleGetRule,
   scriptValue,
   actionTypesOptions,
+  initialActionType,
+  isLoading,
   isReadOnly,
 }) => {
   const textarea = document.querySelector('#rule-script') as HTMLInputElement;
@@ -253,6 +284,17 @@ const ProductRules: React.FC<ProductRulesProps> = ({
           </Box>
           <Box width={[1 / 3]} p="10px">
             <Field
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              component={TextField}
+              label="Description"
+              height={34}
+              readOnly={isReadOnly}
+            />
+          </Box>
+          <HiddenBox width={[1 / 3]} p="10px">
+            <Field
               id="actionType"
               name="actionType"
               component={SelectField}
@@ -263,18 +305,30 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               onChange={onChangeValues}
               validate={[formErrorUtil.required]}
             />
-          </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="description"
-              name="description"
-              placeholder="Enter Description"
-              component={TextField}
-              label="Description"
-              height={34}
-              readOnly={isReadOnly}
-            />
-          </Box>
+          </HiddenBox>
+          {eventValue && (
+            <Box
+              width={[1]}
+              m="0 10px 10px"
+            >
+              <Flex alignItems="center" flexWrap="wrap">
+                {actionTypesOptions && actionTypesOptions.map(type => (
+                  <Box
+                    key={type.value}
+                    mr="5px"
+                  >
+                    <Button
+                      text={type.label}
+                      size="11"
+                      isFocused={initialActionType === type.value}
+                      type="reset"
+                      onClick={() => handleGetRule('actionType', type)}
+                    />
+                  </Box>
+                ))}
+              </Flex>
+            </Box>
+          )}
           <ScriptWrapper>
             {!isReadOnly && (
               <SnippetButtons
@@ -282,7 +336,10 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 onClick={onSnippetButtonClick}
               />
             )}
-            <Box width={[1]} p="10px">
+            {isLoading && (
+              <div className="loading">loading...</div>
+            )}
+            <Box width={[1]} p="0 10px 10px">
               <Field
                 id="rule-script"
                 name="script"
