@@ -19,15 +19,6 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   text-align: center;
   z-index: ${({ zIndex }) => zIndex ? zIndex : 100};
 
-  &:after {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-    width: .1%;
-    margin-left: -.1%;
-  }
-
   .modal-backdrop {
     position: fixed;
     top: 0;
@@ -44,6 +35,15 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     bottom: 0;
     left: 0;
     overflow-y: scroll;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      width: .1%;
+      margin-left: -.1%;
+    }
   }
 
   .modal-container {
