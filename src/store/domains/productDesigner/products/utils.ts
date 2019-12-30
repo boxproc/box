@@ -407,13 +407,13 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
   return {
     statementId: statement_id,
     statementDate: statement_date,
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(4),
+    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
-      installment_balance.toFixed(4),
-    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(4),
-    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(4),
+      installment_balance.toFixed(2),
+    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
+    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
     minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
-      && minimum_amount_due_repayment.toFixed(4),
+      && minimum_amount_due_repayment.toFixed(2),
   };
 };
 

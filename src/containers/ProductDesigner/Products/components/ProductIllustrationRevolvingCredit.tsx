@@ -69,7 +69,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
-            <Box width={[1 / 7]} ml="1px" p="10px">
+            <Box width={[1 / 7]} ml="10px" p="10px">
               <Field
                 id="limit"
                 name="limit"
@@ -82,7 +82,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box mb="-15px">
+            <Box p="10px" width="150px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -90,7 +90,6 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 First Transaction
               </Paragraph>
             </Box>
-            <Delimiter />
             <Box width={[1 / 7]} p="10px">
               <Field
                 id="transactionDate1"
@@ -102,7 +101,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
-            <Box width={[1 / 4]} p="10px">
+            <Box width={[1 / 3]} p="10px">
               <Field
                 id="transactionType1"
                 name="transactionType1"
@@ -127,7 +126,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box mb="-15px">
+            <Box p="10px" width="150px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -135,7 +134,6 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 Second Transaction
               </Paragraph>
             </Box>
-            <Delimiter />
             <Box width={[1 / 7]} p="10px">
               <Field
                 id="transactionDate2"
@@ -147,7 +145,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
-            <Box width={[1 / 4]} p="10px">
+            <Box width={[1 / 3]} p="10px">
               <Field
                 id="transactionType2"
                 name="transactionType2"
@@ -172,7 +170,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box mb="-15px">
+            <Box  p="10px"  width="150px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -180,7 +178,6 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 Third Transaction
               </Paragraph>
             </Box>
-            <Delimiter />
             <Box width={[1 / 7]} p="10px">
               <Field
                 id="transactionDate3"
@@ -192,7 +189,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
-            <Box width={[1 / 4]} p="10px">
+            <Box width={[1 / 3]} p="10px">
               <Field
                 id="transactionType3"
                 name="transactionType3"
