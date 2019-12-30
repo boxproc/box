@@ -9,6 +9,7 @@ import DefineUsersForm from './DefineUsersForm';
 import {
   handleAddAdminUser,
   handleUpdateAdminUser,
+  selectInstitutions,
   selectInstitutionsOptions,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -17,6 +18,7 @@ const formSelector = formValueSelector(formNamesConst.DEFINE_USER);
 
 const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
+  institutions: selectInstitutions(state),
   requires2faFlagValue: formSelector(
     state,
     'requires2faFlag'
@@ -24,6 +26,10 @@ const mapStateToProps = (state: StoreState) => ({
   statusValue: formSelector(
     state,
     'status'
+  ),
+  institutionValue: formSelector(
+    state,
+    'institution'
   ),
 });
 

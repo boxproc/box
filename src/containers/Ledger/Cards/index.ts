@@ -17,6 +17,7 @@ import {
   LedgerTransactionsActionTypes,
   resetCards,
   selectActiveItemId,
+  selectInstitutionsOptions,
   selectLedgerCards,
 } from 'store/domains';
 
@@ -34,6 +35,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   ledgerCards: selectLedgerCards(state),
   currentId: selectActiveItemId(state),
+  institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

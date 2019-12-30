@@ -6,11 +6,13 @@ export const institutionsData: InstitutionsDataResp = {
       id: 1,
       institution_name: 'BOX Institution',
       status: 'A',
+      master_institution_flag: 'Y',
     },
     {
       id: 2,
       institution_name: 'Test customer',
       status: 'A',
+      master_institution_flag: 'N',
     },
   ],
 };

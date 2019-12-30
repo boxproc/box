@@ -14,6 +14,7 @@ interface AccountsFilterProps {
   institutionsOptions: Array<SelectValues>;
   getInstitutionProducts: HandleGetInstitutionProducts;
   institutionValue: SelectValues;
+  accountAliasValue: string;
   institutionProductsOptions: Array<SelectValues>;
   isLoadingInstitutionProducts: boolean;
 }
@@ -21,6 +22,7 @@ interface AccountsFilterProps {
 const AccountsFilter: React.FC<AccountsFilterProps> = ({
   institutionsOptions,
   institutionValue,
+  accountAliasValue,
   getInstitutionProducts,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
@@ -70,8 +72,19 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           placeholder="Enter Account Alias"
         />
       </Box>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="accountAliasAdditional"
+          name="accountAliasAdditional"
+          component={InputField}
+          label="Account Alias Additional"
+          placeholder={accountAliasValue && 'Enter Account Alias Additional'}
+          disabled={!accountAliasValue}
+          hint={!accountAliasValue && 'Fill account alias'}
+        />
+      </Box>
       <Delimiter />
-      <Box width={[1 / 3]} p="10px">
+      <Box width={[1 / 4]} p="10px">
         <Field
           id="product"
           name="product"

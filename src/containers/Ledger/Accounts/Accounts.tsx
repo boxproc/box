@@ -37,6 +37,8 @@ export interface AccountsProps extends WithModalProps {
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;
   currentId: number;
   currentCurrencyCode: string;
+  currentAccountBalanceLimit: string;
+  currentAccountBalanceLimitShared: string;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -55,6 +57,8 @@ const Accounts: React.FC<AccountsProps> = ({
   filterLedgerTransactionsById,
   filterLedgerStatementsById,
   currentCurrencyCode,
+  currentAccountBalanceLimit,
+  currentAccountBalanceLimitShared,
 }) => {
   React.useEffect(
     () => {
@@ -111,12 +115,27 @@ const Accounts: React.FC<AccountsProps> = ({
         action: () => filterLedgerTransactionsById({ account_id: currentId }),
       },
       {
+        isDivider: true,
+      },
+      {
         name: 'Manual Transaction',
         action: () => openModal({
           name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
           payload: {
             accountId: currentId,
             currencyCode: currentCurrencyCode,
+          },
+        }),
+      },
+      {
+        name: 'Limit Adjustment',
+        action: () => openModal({
+          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          payload: {
+            isLimitAdjustmentMode: true,
+            accountId: currentId,
+            balanceLimit: currentAccountBalanceLimit,
+            balanceLimitShared: currentAccountBalanceLimitShared,
           },
         }),
       },
@@ -130,6 +149,8 @@ const Accounts: React.FC<AccountsProps> = ({
       filterLedgerCardsById,
       currentId,
       currentCurrencyCode,
+      currentAccountBalanceLimit,
+      currentAccountBalanceLimitShared,
       openModal,
     ]
   );

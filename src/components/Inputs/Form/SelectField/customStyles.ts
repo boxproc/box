@@ -15,6 +15,10 @@ export interface SelectState {
 }
 
 export const customStyles: StylesConfig = {
+  indicatorsContainer: (provided: React.CSSProperties) => ({
+    ...provided,
+    alignItems: 'flex-start',
+  }),
   dropdownIndicator: (provided: React.CSSProperties, state: SelectState) => {
     const {
       isDisabled,
@@ -39,7 +43,8 @@ export const customStyles: StylesConfig = {
   clearIndicator: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     cursor: 'pointer',
-    padding: '5px',
+    margin: '6px 0',
+    padding: 0,
     // eslint-disable-next-line
     ['& > svg']: {
       width: 16,

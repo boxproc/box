@@ -84,12 +84,6 @@ export const lastExecutionResultOptions = [
   { value: 'U', label: 'Unknown' },
 ];
 
-export const endpointsOptions = [
-  { value: 'B', label: 'BOX API' },
-  { value: 'T', label: 'Tribe' },
-  { value: 'U', label: 'Tutuka' },
-];
-
 export const customerStatusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },

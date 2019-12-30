@@ -372,42 +372,20 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
 
   const {
     product_id,
-    apr_default,
-    apr_default_calculation_method,
-    fee_exceed_limit,
-    fee_late_payment,
-    fee_overpayment,
     limit_sharing_allowed_flag,
     minimum_payment_amount,
     minimum_payment_rate,
     payment_grace_number_of_days,
-    rate_exceed_limit,
-    rate_late_payment,
-    rate_overpayment,
   } = data;
-
-  const aprDefaultCalculationMethod = aprTypesOptions
-    .find(el => el.value === apr_default_calculation_method);
 
   return {
     productId: product_id,
-    aprDefault: stringsUtil.checkNumberToFixed(apr_default) && apr_default.toFixed(2),
-    aprDefaultCalculationMethod,
-    feeExceedLimit: stringsUtil.checkNumberToFixed(fee_exceed_limit) && fee_exceed_limit.toFixed(2),
-    feeLatePayment: stringsUtil.checkNumberToFixed(fee_late_payment) && fee_late_payment.toFixed(2),
-    feeOverpayment: stringsUtil.checkNumberToFixed(fee_overpayment) && fee_overpayment.toFixed(2),
     limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoTypesCodes.YES,
     minimumPaymentAmount: stringsUtil.checkNumberToFixed(minimum_payment_amount)
       && minimum_payment_amount.toFixed(2),
     minimumPaymentRate: stringsUtil.checkNumberToFixed(minimum_payment_rate)
       && minimum_payment_rate.toFixed(2),
     paymentGraceNumberOfDays: payment_grace_number_of_days,
-    rateExceedLimit: stringsUtil.checkNumberToFixed(rate_exceed_limit)
-      && rate_exceed_limit.toFixed(2),
-    rateLatePayment: stringsUtil.checkNumberToFixed(rate_late_payment)
-      && rate_late_payment.toFixed(2),
-    rateOverpayment: stringsUtil.checkNumberToFixed(rate_overpayment)
-      && rate_overpayment.toFixed(2),
   };
 };
 
@@ -446,35 +424,19 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
 
   const {
     productId,
-    aprDefault,
-    aprDefaultCalculationMethod,
-    feeExceedLimit,
-    feeLatePayment,
-    feeOverpayment,
     limitSharingAllowedFlag,
     minimumPaymentAmount,
     minimumPaymentRate,
     paymentGraceNumberOfDays,
-    rateExceedLimit,
-    rateLatePayment,
-    rateOverpayment,
   } = data;
 
   return {
     product_id: productId,
-    apr_default: Number(aprDefault),
-    apr_default_calculation_method: aprDefaultCalculationMethod.value,
-    fee_exceed_limit: Number(feeExceedLimit),
-    fee_late_payment: Number(feeLatePayment),
-    fee_overpayment: Number(feeOverpayment),
     limit_sharing_allowed_flag:
       limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
     minimum_payment_amount: Number(minimumPaymentAmount),
     minimum_payment_rate: Number(minimumPaymentRate),
     payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
-    rate_exceed_limit: Number(rateExceedLimit),
-    rate_late_payment: Number(rateLatePayment),
-    rate_overpayment: Number(rateOverpayment),
   };
 };
 

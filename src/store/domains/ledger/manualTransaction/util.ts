@@ -11,7 +11,6 @@ export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>
     accountId,
     amount,
     description,
-    transactionDatetime,
   } = data;
 
   return {
@@ -20,7 +19,6 @@ export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>
     account_id: Number(accountId),
     amount: Number(amount),
     description,
-    transaction_datetime: transactionDatetime && transactionDatetime.value,
   };
 };
 

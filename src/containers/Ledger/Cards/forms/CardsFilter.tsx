@@ -3,13 +3,32 @@ import { Field } from 'redux-form';
 
 import { Box } from '@rebass/grid';
 
-import { InputField } from 'components';
+import { InputField, SelectField } from 'components';
 
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
-const CardsFilter: React.FC = () => {
+interface CardsFilterProps {
+  institutionsOptions: Array<SelectValues>;
+}
+
+const CardsFilter: React.FC<CardsFilterProps> = ({
+  institutionsOptions,
+}) => {
   return (
     <React.Fragment>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="institutionId"
+          name="institutionId"
+          component={SelectField}
+          label="Institution"
+          placeholder="Select Institution"
+          options={institutionsOptions}
+          isClearable={false}
+          validate={[formErrorUtil.required]}
+        />
+      </Box>
       <Box width="150px" p="10px">
         <Field
           id="id"

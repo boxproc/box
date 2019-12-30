@@ -11,35 +11,32 @@ import {
   SelectField,
   TextField,
 } from 'components';
-import {
-  withLoadCurrencyCodes,
-  WithLoadCurrencyCodesProps,
-  withLoadTransactionTypes,
-  WithLoadTransactionTypesProps,
-} from 'HOCs';
+import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
 import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store/domains';
 
 import { formNamesConst } from 'consts';
-import { dateUtil, formErrorUtil } from 'utils';
+
+import { SelectValues } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
   makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
+  transactionTypes: Array<SelectValues>;
+  isTransactionTypesLoading: boolean;
   isLimitAdjustment: boolean;
   onCancel: () => void;
 }
 
 type ManualTransactionFormAllProps = ManualTransactionFormProps
   & WithLoadCurrencyCodesProps
-  & WithLoadTransactionTypesProps
   & InjectedFormProps<{}, ManualTransactionFormProps>;
 
 const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   numCurrencyCodes,
   isCurrencyCodesLoading,
-  manualTransactionTypesOptions,
-  limitAdjustmentTypeOptions,
+  transactionTypes,
   isTransactionTypesLoading,
   isLimitAdjustment,
   makeLedgerTransaction,
@@ -60,11 +57,6 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
     [handleSubmit, submitFormAction]
   );
 
-  const transactionTypes = React.useMemo(
-    () => isLimitAdjustment ? limitAdjustmentTypeOptions : manualTransactionTypesOptions,
-    [isLimitAdjustment, manualTransactionTypesOptions, limitAdjustmentTypeOptions]
-  );
-
   return (
     <form onSubmit={handleSubmitForm}>
       <Box mx="-10px">
@@ -81,6 +73,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               placeholder="Select Transaction Type"
               isLoading={isTransactionTypesLoading}
               options={transactionTypes}
+              isDisabled={isLimitAdjustment}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -150,25 +143,13 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               </Box>
             </React.Fragment>
           )}
-          <Box width="170px" p="10px">
-            <Field
-              id="transactionDatetime"
-              name="transactionDatetime"
-              component={SelectField}
-              label="Transaction Date"
-              placeholder="Select Date"
-              options={[
-                { value: `${dateUtil.yesterdayDate} 00:00:00`, label: dateUtil.yesterdayDate },
-              ]}
-            />
-          </Box>
           <Box width={[1]} p="10px">
             <Field
               id="description"
               name="description"
               component={TextField}
-              placeholder="Enter Transaction Description"
-              label="Transaction Description"
+              placeholder="Enter Description"
+              label="Description"
               height={80}
               validate={[formErrorUtil.required]}
             />
@@ -194,8 +175,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   );
 };
 
-const withTransactionTypes = withLoadTransactionTypes(ManualTransactionForm);
-const withTransactionTypesAndCurrencyCodes = withLoadCurrencyCodes(withTransactionTypes);
+const withTransactionTypesAndCurrencyCodes = withLoadCurrencyCodes(ManualTransactionForm);
 
 export default reduxForm<{}, ManualTransactionFormProps>({
   form: formNamesConst.LEDGER_MANUAL_TRANSACTION,

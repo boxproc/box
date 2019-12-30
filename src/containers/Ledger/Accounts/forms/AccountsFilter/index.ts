@@ -27,6 +27,10 @@ const mapStateToProps = (state: StoreState) => ({
     state,
     'institutionId'
   ),
+  accountAliasValue: formSelector(
+    state,
+    'accountAlias'
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -3,16 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import {
-  CheckboxField,
-  Delimiter,
-  Hr,
-  InputField,
-  NumberFormatField,
-  SelectField,
-} from 'components';
-
-import { aprTypesOptions } from 'consts';
+import { CheckboxField, InputField, NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
@@ -27,110 +18,6 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="aprDefault"
-            name="aprDefault"
-            component={NumberFormatField}
-            label="APR Default"
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="aprDefaultCalculationMethod"
-            name="aprDefaultCalculationMethod"
-            placeholder="Select Method"
-            component={SelectField}
-            options={aprTypesOptions}
-            label="APR Default Calculation Method"
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="feeExceedLimit"
-            name="feeExceedLimit"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Fee Exceed Limit"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="rateExceedLimit"
-            name="rateExceedLimit"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Rate Exceed Limit"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="feeLatePayment"
-            name="feeLatePayment"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Fee Late Payment"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="rateLatePayment"
-            name="rateLatePayment"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Rate Late Payment"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Delimiter />
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="feeOverpayment"
-            name="feeOverpayment"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Fee Overpayment"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
-        <Box width={[1 / 6]} p="10px">
-          <Field
-            id="rateOverpayment"
-            name="rateOverpayment"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            label="Rate Overpayment"
-            readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-          />
-        </Box>
         <Box width={[1 / 6]} p="10px">
           <Field
             id="minimumPaymentAmount"
@@ -157,7 +44,6 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Hr />
         <Box width={[1 / 5]} p="10px">
           <Field
             id="paymentGraceNumberOfDays"
