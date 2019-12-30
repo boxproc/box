@@ -23,6 +23,7 @@ import {
   IllustrationProductLoanResp,
   IllustrationProductRewardRevolvingCreditResp,
   IllustrationProductStatementsRevolvingCreditResp,
+  IllustrationProductTransactionsRevolvingCreditResp,
   LoanProductIllustrate,
   LoanProductIllustratePrepared,
   LoanProductItem,
@@ -217,7 +218,7 @@ export const prepareProductIllustrationStatementsItem = (
     firstTransactionId: item.first_transaction_id,
     lastTransactionId: item.last_transaction_id,
     balanceOpen: item.balance_open,
-    balanceClose: item.balance_close,
+    balanceClose: item.balance_close.toFixed(2),
     minimumAmountDueRepayment: item.minimum_amount_due_repayment,
   };
 };
@@ -226,8 +227,9 @@ export const prepareProductIllustrationAprsItem = (
   item: IllustrationProductAprRevolvingCreditResp
 ) => {
   return {
-    productAprId: item.product_apr_id,
-    accruedInterest: item.accrued_interest,
+    description: item.description,
+    accruedInterest: item.accrued_interest.toFixed(2),
+    rate: item.rate.toFixed(2),
   };
 };
 
@@ -235,8 +237,8 @@ export const prepareProductIllustrationFeesItem = (
   item: IllustrationProductFeeRevolvingCreditResp
 ) => {
   return {
-    productFeeId: item.product_fee_id,
-    accruedFee: item.accrued_fee,
+    description: item.description,
+    accruedFee: item.accrued_fee.toFixed(2),
   };
 };
 
@@ -244,8 +246,25 @@ export const prepareProductIllustrationRewardsItem = (
   item: IllustrationProductRewardRevolvingCreditResp
 ) => {
   return {
-    productRewardId: item.product_reward_id,
-    accruedReward: item.accrued_reward,
+    description: item.description,
+    accruedReward: item.accrued_reward.toFixed(2),
+  };
+};
+
+export const prepareProductIllustrationTransactionsItem = (
+  item: IllustrationProductTransactionsRevolvingCreditResp
+) => {
+  return {
+    transactionDatetime: item.transaction_datetime,
+    debitCreditIndicator: item.debit_credit_indicator,
+    amount: item.amount.toFixed(2),
+    balanceSettledBefore: item.balance_available_before.toFixed(2),
+    balanceSettledAfter: item.balance_available_after.toFixed(2),
+    balanceAvailableBefore: item.balance_available_before.toFixed(2),
+    balanceAvailableAfter: item.balance_available_after.toFixed(2),
+    description: item.description,
+    status: item.status,
+    aprRate: item.apr_rate && item.apr_rate.toFixed(2),
   };
 };
 

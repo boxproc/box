@@ -17,6 +17,7 @@ import {
   IllustrationFeesTable,
   IllustrationRevolvingCreditTable,
   IllustrationRewardsTable,
+  IllustrationTransactionsTable,
   ProductIllustrationRevolvingCredit
 } from '../../components';
 import { illustrationInitialValuesRevolvingCredit } from '../../consts';
@@ -80,6 +81,15 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
           bold={true}
           light={true}
         >
+          Transactions
+        </Paragraph>
+        <IllustrationTransactionsTable />]
+      </Box>
+      <Box mt="10px">
+        <Paragraph
+          bold={true}
+          light={true}
+        >
           Statements
         </Paragraph>
         <IllustrationRevolvingCreditTable />]
@@ -90,7 +100,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
           bold={true}
           light={true}
         >
-          Aprs
+          APR
         </Paragraph>
           <IllustrationAprsTable />
         </Box>

@@ -20,11 +20,11 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
 
   const columns = [
     {
-      maxWidth: 100,
+      maxWidth: 125,
       sortable: true,
-      accessor: 'productAprId',
-      Header: <TableHeader title="Product APR ID" />,
-      Cell: (props: TCell<'productAprId'>) => (
+      accessor: 'description',
+      Header: <TableHeader title="Description" />,
+      Cell: (props: TCell<'description'>) => (
         <TableCell
           value={props.value}
           isNumber={true}
@@ -37,6 +37,18 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
       accessor: 'accruedInterest',
       Header: <TableHeader title="Accrued Interest" />,
       Cell: (props: TCell<'accruedInterest'>) => (
+        <TableCell
+          value={props.value}
+          isDecimalNumber={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 125,
+      sortable: true,
+      accessor: 'rate',
+      Header: <TableHeader title="Rate" />,
+      Cell: (props: TCell<'rate'>) => (
         <TableCell
           value={props.value}
           isDecimalNumber={true}

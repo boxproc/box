@@ -20,9 +20,9 @@ const IllustrationRewardTable: React.FC<IllustrationRevolvingCreditTableProps> =
     {
       maxWidth: 100,
       sortable: true,
-      accessor: 'productRewardId',
-      Header: <TableHeader title="Product Reward ID" />,
-      Cell: (props: TCell<'productRewardId'>) => (
+      accessor: 'description',
+      Header: <TableHeader title="Description" />,
+      Cell: (props: TCell<'description'>) => (
         <TableCell
           value={props.value}
           isNumber={true}

@@ -21,6 +21,7 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
     aprs: Immutable([]),
     rewards: Immutable([]),
     fees: Immutable([]),
+    transactions: Immutable([]),
   },
 });
 

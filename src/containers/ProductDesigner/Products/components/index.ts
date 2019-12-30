@@ -27,4 +27,7 @@ export {
 export {
     default as IllustrationRewardsTable
 } from './IllustrationTable/IllustrationRewardsTable';
+export {
+    default as IllustrationTransactionsTable
+} from './IllustrationTable/IllustrateTransactionsTable';
 export * from './tableColumns';

@@ -79,31 +79,60 @@ export interface IllustrationProductStatementsRevolvingCredit {
 }
 
 export interface IllustrationProductAprRevolvingCreditResp {
-  product_apr_id: number | string;
-  accrued_interest: number| string;
+  description: number;
+  accrued_interest: number;
+  rate: number;
 }
 export interface IllustrationProductFeeRevolvingCredit {
-  productFeeId: number | string;
+  description: number | string;
   accruedFee: number | string;
 }
+
 export interface IllustrationProductAprRevolvingCredit {
-  productAprId: number | string;
+  description: number | string;
   accruedInterest: number| string;
+  rate: number| string;
+}
+
+export interface IllustrationProductTransactionsRevolvingCredit {
+  transactionDatetime: number | string;
+  debitCreditIndicator: number| string;
+  amount: number| string;
+  balanceSettledBefore: number| string;
+  balanceSettledAfter: number| string;
+  balanceAvailableBefore: number| string;
+  balanceAvailableAfter: number| string;
+  description: number| string;
+  status: number| string;
+  aprRate: number| string;
+}
+
+export interface IllustrationProductTransactionsRevolvingCreditResp {
+  transaction_datetime: number | string;
+  debit_credit_indicator: number| string;
+  amount: number;
+  balance_settled_before: number;
+  balance_settled_after: number;
+  balance_available_before: number;
+  balance_available_after: number;
+  description: number | string;
+  status: number | string;
+  apr_rate: number;
 }
 
 export interface IllustrationProductRewardsRevolvingCreditResp {
-  productRewardId: number | string;
+  description: number | string;
   accruedReward: number | string;
 }
 
 export interface IllustrationProductFeeRevolvingCreditResp {
-  product_fee_id: number | string;
-  accrued_fee: number | string;
+  description: string;
+  accrued_fee: number;
 }
 
 export interface IllustrationProductRewardRevolvingCreditResp {
-  product_reward_id: number | string;
-  accrued_reward: number | string;
+  description: number;
+  accrued_reward: number;
 }
 
 export interface ProductsDataResp {
@@ -116,6 +145,10 @@ export interface ProductLoanIllustrationDataResp {
 
 export interface ProductRevolvingCreditStatementsIllustrationDataResp {
   statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
+}
+
+export interface ProductRevolvingCreditTransactionsIllustrationDataResp {
+  transactions: Array<IllustrationProductTransactionsRevolvingCreditResp>;
 }
 
 export interface ProductRevolvingCreditAprIllustrationDataResp {
@@ -139,6 +172,7 @@ export interface ProductRevolvingCreditIllustrationDataResp {
   aprs: Array<IllustrationProductAprRevolvingCreditResp>;
   fees: Array<IllustrationProductFeeRevolvingCreditResp>;
   rewards: Array<IllustrationProductRewardRevolvingCreditResp>;
+  transactions: Array<IllustrationProductTransactionsRevolvingCreditResp>;
 }
 
 export interface ProductDataResp {
@@ -616,5 +650,6 @@ export interface ProductsState {
   aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
   fees: ImmutableArray<IllustrationProductFeeRevolvingCreditResp>;
   rewards: ImmutableArray<IllustrationProductRewardRevolvingCreditResp>;
+  transactions: ImmutableArray<IllustrationProductTransactionsRevolvingCreditResp>;
 };
 }

@@ -22,6 +22,7 @@ import {
   prepareProductIllustrationFeesItem,
   prepareProductIllustrationRewardsItem,
   prepareProductIllustrationStatementsItem,
+  prepareProductIllustrationTransactionsItem,
   prepareProductRewardsToRender,
   prepareProductRuleData,
 } from './utils';
@@ -83,6 +84,18 @@ export const selectRewardsIllustration = createSelector(
         return null;
       }
       return prepareProductIllustrationRewardsItem(reward);
+    })
+);
+
+export const selectTransactionsIllustration = createSelector(
+  selectDefaultRevolvingCreditIllustration,
+  (revolvingCreditIllustration) =>
+  revolvingCreditIllustration && revolvingCreditIllustration.transactions &&
+  revolvingCreditIllustration.transactions.asMutable().map(transaction => {
+      if (!transaction) {
+        return null;
+      }
+      return prepareProductIllustrationTransactionsItem(transaction);
     })
 );
 
