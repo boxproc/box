@@ -293,6 +293,17 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
             />
           </Box>
+          <Box width={[1 / 6]} p="10px">
+            <Field
+              id="statementCycleRepaymentDay"
+              name="statementCycleRepaymentDay"
+              component={InputField}
+              label="Statement Cycle Repayment Day"
+              placeholder="Enter Day"
+              readOnly={isReadOnly}
+              isNumber={true}
+            />
+          </Box>
           {isEditMode && (
             <React.Fragment>
               <Box width="150px" p="10px">

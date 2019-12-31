@@ -80,6 +80,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
     numberOfTimesOverdue5Cycles,
     numberOfTimesOverdue6Cycles,
     numberOfTimesOverdue7Cycles,
+    statementCycleRepaymentDay,
   } = data;
 
   return {
@@ -123,6 +124,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
     number_of_times_overdue_5_cycle: Number(numberOfTimesOverdue5Cycles),
     number_of_times_overdue_6_cycle: Number(numberOfTimesOverdue6Cycles),
     number_of_times_overdue_7_cycle: Number(numberOfTimesOverdue7Cycles),
+    statement_cycle_repayment_day: statementCycleRepaymentDay && Number(statementCycleRepaymentDay),
   };
 };
 
@@ -182,6 +184,7 @@ export const prepareDataToRender = (
     number_of_times_overdue_6_cycle,
     number_of_times_overdue_7_cycle,
     currency_code,
+    statement_cycle_repayment_day,
   } = data;
 
   const currentStatus = statusTypesOptions.find(el => el.value === status);
@@ -253,6 +256,7 @@ export const prepareDataToRender = (
     numberOfTimesOverdue5Cycles: number_of_times_overdue_5_cycle,
     numberOfTimesOverdue6Cycles: number_of_times_overdue_6_cycle,
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
+    statementCycleRepaymentDay: statement_cycle_repayment_day,
   };
 };
 
