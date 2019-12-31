@@ -13,14 +13,6 @@ export enum constsPathNames {
   GET_INSTITUTIONS = '/ui/service_data/institutions/get',
 }
 
-export enum cyclesPathNames {
-  GET = '/ui/administration/cycles/cycles_editor/get',
-  CREATE = '/ui/administration/cycles/cycles_editor/create',
-  DELETE = '/ui/administration/cycles/cycles_editor/delete',
-  UPDATE = '/ui/administration/cycles/cycles_editor/update',
-  GET_DESCRIPTIONS = '/ui/administration/cycles/cycles_editor/get_descriptions',
-}
-
 export enum adminInstitutionsPathNames {
   GET = '/ui/service_data/institutions/get_all',
   CREATE = '/ui/service_data/institutions/create',

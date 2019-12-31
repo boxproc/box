@@ -1,9 +1,6 @@
 import { createSelector } from 'reselect';
 
-import {
-  selectCyclesDescriptionsOptions,
-  selectInstitutionProductsOptions,
-} from 'store/domains/productDesigner';
+import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
 import { selectInstitutionsOptions } from 'store/domains/consts';
@@ -40,15 +37,13 @@ export const selectLedgerCurrentAccount = createSelector(
   selectInstitutionsOptions,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,
-  selectCyclesDescriptionsOptions,
-  (currentId, institutions, institutionProducts, accounts, cyclesOptions) => {
+  (currentId, institutions, institutionProducts, accounts) => {
     const current = accounts.find(el => el.id === currentId);
 
     return {
       ...prepareDataDetailsToRender(current),
       institutionId: current && institutions.find(el => el.value === current.institution_id),
       product: current && institutionProducts.find(el => el.value === current.product_id),
-      statementCycle: current && cyclesOptions.find(el => el.value === current.statement_cycle_id),
     };
   }
 );

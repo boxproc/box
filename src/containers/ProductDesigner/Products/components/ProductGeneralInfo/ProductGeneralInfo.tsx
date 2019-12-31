@@ -21,7 +21,6 @@ import { formErrorUtil } from 'utils';
 interface ProductGeneralInfoProps {
   isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
-  statementCyclesOptions: Array<SelectValues>;
   isReadOnly: boolean;
 }
 
@@ -32,7 +31,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   isCurrencyCodesLoading,
   isEditMode = false,
   institutionsOptions,
-  statementCyclesOptions,
   isReadOnly,
 }) => {
 
@@ -134,18 +132,6 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             placeholder="Select Currency Code"
             options={currencyCodes}
             isLoading={isCurrencyCodesLoading}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="10px">
-          <Field
-            id="defaultStatementCycle"
-            name="defaultStatementCycle"
-            component={SelectField}
-            label="Default Statement Cycle"
-            placeholder="Select Statement Cycle"
-            options={statementCyclesOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />

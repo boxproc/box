@@ -13,7 +13,6 @@ import {
   handleAddLedgerAccount,
   handleUpdateLedgerAccount,
   LedgerAccountsActionTypes,
-  selectCyclesDescriptionsOptions,
   selectInstitutionProducts,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -28,7 +27,6 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionProducts: selectInstitutionProducts(state),
-  cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentProduct: formSelector(
     state,

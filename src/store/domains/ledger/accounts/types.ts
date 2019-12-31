@@ -31,8 +31,6 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   accrued_interest: number;
   date_created: string;
   date_closed: string;
-  statement_cycle_id: number | string;
-  statement_cycle_description: string;
   last_cycle_date: string;
   aux_counter_1: number;
   aux_counter_2: number;
@@ -116,14 +114,12 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
 export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepared {
   status: string | number;
   institutionId: string | number;
-  statementCycle: string | number;
   product: string | number;
 }
 
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
   status: SelectValues;
   institutionId: SelectValues;
-  statementCycle: SelectValues;
   product: SelectValues;
   nrLoanCycles?: boolean;
   loanStartDate?: string;

@@ -11,7 +11,6 @@ export interface LedgerStatementItem {
   balance_open: number;
   balance_close: number;
   minimum_amount_due_repayment: number;
-  statement_cycle_id: number | string;
   repayment_status: string;
   date_of_last_update: string;
   account_alias: string;
@@ -19,7 +18,6 @@ export interface LedgerStatementItem {
   product_name: string;
   first_name: string;
   last_name: string;
-  statement_cycle_description: string;
   accrued_interest_total?: number;
   accrued_fee_total?: number;
   accrued_reward_total?: number;
@@ -44,7 +42,6 @@ export interface LedgerStatementItemPrepared {
   minimumAmountDueRepayment: string | number;
   repaymentStatus: string;
   dateOfLastUpdate: string;
-  statementCycle: string;
   accountAlias: string;
   institutionId: string | number;
   productName: string;

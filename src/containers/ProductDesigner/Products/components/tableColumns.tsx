@@ -112,17 +112,6 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
-    sortable: true,
-    Header: <TableHeader title="Default Statement Cycle" />,
-    accessor: 'defaultStatementCycle',
-    Cell: (props: TCell<'defaultStatementCycle'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
     maxWidth: 65,
     sortable: true,
     Header: <TableHeader title="Locked" />,

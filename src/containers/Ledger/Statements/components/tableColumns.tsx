@@ -164,17 +164,6 @@ export const tableColumns = [
   {
     maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="Statement Cycle" />,
-    accessor: 'statementCycle',
-    Cell: (props: TCell<'statementCycle'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Repayment Status" />,
     accessor: 'repaymentStatus',
     Cell: (props: TCell<'repaymentStatus'>) => (

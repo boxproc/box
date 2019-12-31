@@ -29,7 +29,6 @@ import { SelectValues } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValues>;
-  cyclesDescriptionsOptions: Array<SelectValues>;
   institutionProducts: Array<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   currentProduct: SelectValues;
@@ -51,8 +50,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   currentProduct,
   currentAccountAuxCounters,
   institutionProducts,
-  cyclesDescriptionsOptions,
-  change,
   mode,
   dirty,
   pristine,
@@ -66,30 +63,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   const submitFormAction = React.useMemo(
     () => isEditMode ? updateLedgerAccount : addLedgerAccount,
     [updateLedgerAccount, addLedgerAccount, isEditMode]
-  );
-
-  const defaultStatementCycleValue = React.useMemo(
-    () => {
-      if (!currentProduct) {
-        return undefined;
-      }
-
-      const productId = currentProduct.value;
-      const product = institutionProducts.find(el => el.id === productId);
-      const cycleId = product && product.defaultStatementCycleId;
-
-      return cyclesDescriptionsOptions.find(el => el.value === cycleId);
-    },
-    [institutionProducts, currentProduct, cyclesDescriptionsOptions]
-  );
-
-  React.useEffect(
-    () => {
-      if (defaultStatementCycleValue) {
-        change('statementCycle', defaultStatementCycleValue);
-      }
-    },
-    [defaultStatementCycleValue, change]
   );
 
   const currentProductType = React.useMemo(

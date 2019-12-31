@@ -16,8 +16,6 @@ export interface ProductItemResp extends ProductItemPlainResp {
   product_type: string | number;
   scheme: string | number;
   currency_code: string | number;
-  default_statement_cycle_id: string | number;
-  statement_cycle_description: string | number;
   overrides_product_id?: number;
   card_form_factor: string | number;
   number_of_days_card_expires: number;
@@ -194,7 +192,6 @@ export interface ProductItem extends ProductItemPlain {
   productType: string | number;
   scheme: string | number;
   currencyCode: string | number;
-  defaultStatementCycle: string | number;
 }
 
 export interface ProductItemGeneral extends ProductItemPlain {
@@ -203,7 +200,6 @@ export interface ProductItemGeneral extends ProductItemPlain {
   productType: SelectValues;
   scheme: SelectValues;
   currencyCode: SelectValues;
-  defaultStatementCycle: SelectValues;
   cardFormFactor: SelectValues;
   numberOfDaysCardExpires: number;
 }
@@ -420,12 +416,10 @@ export interface ProductRuleRequestPrepared {
 }
 
 export interface InstitutionProductsItem extends ProductItemInfoPlain {
-  default_statement_cycle_id: number;
   product_type: string;
 }
 
 export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
-  defaultStatementCycleId: number;
   productType: string;
 }
 

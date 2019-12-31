@@ -34,7 +34,6 @@ export enum formNamesConst {
   INTERFACE = 'interfaceForm',
   INSTITUTIONS = 'institutionsForm',
   ADD_SYSTEM_PROPERTY = 'addSystemPropertyForm',
-  DEFINE_CYCLE_EDITOR = 'defineCycleEditorForm',
 
   DEFINE_SCHEDULER_JOB = 'defineSchedulerJobForm',
   GENERATE_CRON_EXPRESSION = 'generateCronExpression',

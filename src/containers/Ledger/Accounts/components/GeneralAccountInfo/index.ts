@@ -9,7 +9,6 @@ import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
   handleGetInstitutionProducts,
-  selectCyclesDescriptionsOptions,
   selectInstitutionProductsOptions,
   selectLedgerCurrentAccountHasProductOverride,
 } from 'store/domains';
@@ -19,7 +18,6 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
-  cyclesDescriptionsOptions: selectCyclesDescriptionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   currentInstitution: formSelector(
     state,

@@ -74,11 +74,11 @@ export const handleFilterUsers: HandleFilterUsers = () =>
     );
   };
 
-export const handleAddAdminUser: HandleAddAdminUser = cycleEditorRecords =>
+export const handleAddAdminUser: HandleAddAdminUser = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserDataToSend(cycleEditorRecords);
+        const preparedValues = prepareAdminUserDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 

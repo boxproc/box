@@ -17,7 +17,7 @@ import {
   UsersGroup,
 } from './Administration';
 
-import { Cycles, Products } from 'containers/ProductDesigner';
+import { Products } from 'containers/ProductDesigner';
 
 import {
   Accounts,
@@ -117,10 +117,6 @@ export const pagesList = [
   {
     path: uiItemConsts.LEDGER_CARDS,
     component: <Cards />,
-  },
-  {
-    path: uiItemConsts.PRODUCT_DESIGNER_CYCLES,
-    component: <Cycles />,
   },
   {
     path: uiItemConsts.PRODUCT_DESIGNER_PRODUCTS,

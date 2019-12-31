@@ -203,7 +203,6 @@ export const prepareGeneralProductItem = (
     scheme: scheme && scheme.label,
     historyRetentionNumberOfDays: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
-    defaultStatementCycle: item.statement_cycle_description,
     lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
     overridesProductId: item.overrides_product_id,
   };
@@ -338,7 +337,6 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     productType,
     scheme,
     historyRetentionNumberOfDays,
-    defaultStatementCycle,
     lockedFlag,
     overridesProductId,
     cardFormFactor,
@@ -356,9 +354,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     scheme: scheme.value,
     history_retention_number_of_day: historyRetentionNumberOfDays
       && Number(historyRetentionNumberOfDays),
-    default_statement_cycle_id: defaultStatementCycle.value,
     locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    statement_cycle_description: defaultStatementCycle.value,
     overrides_product_id: overridesProductId,
     card_form_factor: cardFormFactor.value,
     number_of_days_card_expires: numberOfDaysCardExpires

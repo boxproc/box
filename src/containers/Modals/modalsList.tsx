@@ -24,7 +24,6 @@ import { customersModals } from 'containers/Ledger/Customers/modals';
 import { statementsModals } from 'containers/Ledger/Statements/modals';
 import { transactionsModals } from 'containers/Ledger/Transactions/modals';
 import { manualTransactionModals } from 'containers/Modals/ManualTransactionModals';
-import { cycleEditorModals } from 'containers/ProductDesigner/Cycles/modals';
 import { productsModals } from 'containers/ProductDesigner/Products/modals';
 
 export const modalsList = [
@@ -57,7 +56,6 @@ export const modalsList = [
     component: <ChangePasswordModal />,
   },
   ...manualTransactionModals,
-  ...cycleEditorModals,
   ...endpointsModals,
   ...institutionsModals,
   ...interfacesModals,

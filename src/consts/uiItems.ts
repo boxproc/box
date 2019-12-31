@@ -28,6 +28,5 @@ export enum uiItemConsts {
   LEDGER_TRANSACTIONS = 'ledger/transactions',
   LEDGER_STATEMENTS = 'ledger/statements',
   // PRODUCT DESIGNER
-  PRODUCT_DESIGNER_CYCLES = 'product_designer/cycles',
   PRODUCT_DESIGNER_PRODUCTS = 'product_designer/products',
 }

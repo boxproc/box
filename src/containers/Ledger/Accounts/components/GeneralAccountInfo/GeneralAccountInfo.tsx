@@ -24,7 +24,6 @@ export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   institutionProductsOptions: Array<SelectValues>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  cyclesDescriptionsOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
   isEditMode: boolean;
   hasProductOverride: boolean;
@@ -40,7 +39,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   currentInstitution,
   institutionProductsOptions,
   getInstitutionProducts,
-  cyclesDescriptionsOptions,
   isEditMode = false,
   isChosenLoanProductType,
   hasProductOverride,
@@ -293,18 +291,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
               validate={[formErrorUtil.required, formErrorUtil.isNumber]}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="statementCycle"
-              name="statementCycle"
-              component={SelectField}
-              label="Statement Cycle"
-              placeholder="Select Statement Cycle"
-              options={cyclesDescriptionsOptions}
-              isDisabled={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required]}
             />
           </Box>
           {isEditMode && (

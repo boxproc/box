@@ -10,7 +10,6 @@ import {
 } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
 import { selectActiveItemId } from 'store/domains/utils';
-import { selectCyclesDescriptionsOptions } from '../cycles';
 import {
   prepareGeneralProductData,
   prepareGeneralProductItem,
@@ -121,8 +120,7 @@ export const selectCurrentProduct = createSelector(
   selectDefaultCurrentProduct,
   selectInstitutionsOptions,
   selectCurrencyCodesOptions,
-  selectCyclesDescriptionsOptions,
-  (product, institutions, currencyCodes, cyclesOptions) => {
+  (product, institutions, currencyCodes) => {
     if (!product) {
       return null;
     }
@@ -131,8 +129,6 @@ export const selectCurrentProduct = createSelector(
       ...prepareGeneralProductData(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
-      defaultStatementCycle: cyclesOptions
-        .find(el => el.value === product.default_statement_cycle_id),
     };
   }
 );
@@ -378,7 +374,6 @@ export const selectInstitutionProducts = createSelector(
       return {
         id: product.id,
         name: product.name,
-        defaultStatementCycleId: product.default_statement_cycle_id,
         productType: product.product_type,
       };
     });

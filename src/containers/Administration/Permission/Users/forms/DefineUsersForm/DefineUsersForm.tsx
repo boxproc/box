@@ -17,7 +17,6 @@ import {
   statusTypes2faLoginOptions,
   statusTypesCodes,
   statusTypesLoginOptions,
-  typeOfCyclesEditorOptions,
 } from 'consts';
 
 import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store/domains';
@@ -98,11 +97,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
     [requires2faFlagValue]
   );
 
-  // logged in user info
-  // const userData = storageUtil.getUserData();
-  // const isMasterInstitutionUser = userData
-  //   && userData.masterInstitutionFlag === yesNoTypesCodes.YES;
-
   const isMasterInstitutionUser = React.useMemo(
     () => {
       if (!institutionValue || !institutions) {
@@ -152,7 +146,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="lastName"
               placeholder="Enter Last Name"
               component={InputField}
-              options={typeOfCyclesEditorOptions}
               label="Last Name"
               readOnly={isReadOnly}
               validate={[formErrorUtil.required]}
@@ -175,7 +168,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="email"
               placeholder="Enter Email"
               component={InputField}
-              options={typeOfCyclesEditorOptions}
               label="Email"
               readOnly={isReadOnly}
               validate={[formErrorUtil.email]}

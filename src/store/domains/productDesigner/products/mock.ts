@@ -12,7 +12,6 @@ import { ResponseStatusType } from 'types';
 export const productData: ProductDataResp = {
   product: {
     currency_code: 'AFN',
-    default_statement_cycle_id: 1,
     description: 'Test revolving credit product from mocks',
     history_retention_number_of_day: 90,
     id: 1,
@@ -22,7 +21,6 @@ export const productData: ProductDataResp = {
     product_type: 'C',
     scheme: 'V',
     status: 'A',
-    statement_cycle_description: '',
     overrides_product_id: 0,
     card_transactions_endpoint_id: null,
     card_management_interface_id: null,
@@ -42,7 +40,6 @@ export const productItemsFilteredData: ProductsDataResp = {
   products: [
     {
       currency_code: 'AFN',
-      default_statement_cycle_id: 1,
       description: 'Test revolving credit product',
       history_retention_number_of_day: 90,
       id: 1,
@@ -52,7 +49,6 @@ export const productItemsFilteredData: ProductsDataResp = {
       product_type: 'C',
       scheme: 'V',
       status: 'A',
-      statement_cycle_description: '',
       card_transactions_endpoint_id: null,
       card_management_interface_id: null,
       provider_3d_secure_interface_id: null,
@@ -67,7 +63,6 @@ export const productItemsFilteredData: ProductsDataResp = {
     },
     {
       currency_code: 'AFN',
-      default_statement_cycle_id: 1,
       description: 'Test loan product',
       history_retention_number_of_day: 90,
       id: 3,
@@ -77,7 +72,6 @@ export const productItemsFilteredData: ProductsDataResp = {
       product_type: 'L',
       scheme: 'X',
       status: 'I',
-      statement_cycle_description: '',
       card_transactions_endpoint_id: null,
       card_management_interface_id: null,
       provider_3d_secure_interface_id: null,
@@ -122,13 +116,11 @@ export const institutionProducts: InstitutionProducts = {
     {
       id: 1,
       name: 'Test revolving credit product',
-      default_statement_cycle_id: 1,
       product_type: 'C',
     },
     {
       id: 2,
       name: 'Product: debit',
-      default_statement_cycle_id: 2,
       product_type: 'D',
     },
   ],

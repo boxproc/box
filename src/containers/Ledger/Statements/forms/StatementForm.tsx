@@ -128,15 +128,6 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="statementCycle"
-              name="statementCycle"
-              component={InputField}
-              label="Statement Cycle"
-              readOnly={true}
-            />
-          </Box>
         </Flex>
       </Box>
     </form>
