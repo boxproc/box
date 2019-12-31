@@ -37,18 +37,6 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
 
   const columns = [
     {
-      maxWidth: 100,
-      sortable: true,
-      accessor: 'statementId',
-      Header: <TableHeader title="Statement ID" />,
-      Cell: (props: TCell<'statementId'>) => (
-        <TableCell
-          value={props.value}
-          isNumber={true}
-        />
-      ),
-    },
-    {
       maxWidth: 125,
       sortable: true,
       accessor: 'statementDate',
@@ -57,30 +45,6 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
         <TableCell
           value={props.value}
           isDate={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'firstTransactionId',
-      Header: <TableHeader title="First Transaction ID" />,
-      Cell: (props: TCell<'firstTransactionId'>) => (
-        <TableCell
-          value={props.value}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 125,
-      sortable: true,
-      accessor: 'lastTransactionId',
-      Header: <TableHeader title="Last Transaction ID" />,
-      Cell: (props: TCell<'lastTransactionId'>) => (
-        <TableCell
-          value={props.value}
-          isNumber={true}
         />
       ),
     },
