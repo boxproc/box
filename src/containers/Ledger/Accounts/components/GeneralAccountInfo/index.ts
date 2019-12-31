@@ -8,7 +8,6 @@ import { formNamesConst } from 'consts';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
-  handleGetCyclesDescriptions,
   handleGetInstitutionProducts,
   selectCyclesDescriptionsOptions,
   selectInstitutionProductsOptions,
@@ -31,7 +30,6 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstitutionProducts: handleGetInstitutionProducts,
-    getCyclesDescriptions: handleGetCyclesDescriptions,
   },
   dispatch
 );

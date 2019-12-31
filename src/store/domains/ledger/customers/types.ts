@@ -139,7 +139,7 @@ export interface RepaymentDirectDebitsItem {
   account: string;
   account_ext: string;
   accountholder_name: string;
-  status: string;
+  status: string | number;
   repayment_interface_id: number;
   last_update_datetime: string;
 }
