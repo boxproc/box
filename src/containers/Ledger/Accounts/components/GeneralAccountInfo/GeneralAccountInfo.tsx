@@ -12,7 +12,7 @@ import {
   SelectField,
 } from 'components';
 
-import { HandleGetCyclesDescriptions, HandleGetInstitutionProducts } from 'store/domains';
+import { HandleGetInstitutionProducts } from 'store/domains';
 
 import { dateFormat, maskFormat, statusTypesOptions } from 'consts';
 
@@ -24,7 +24,6 @@ export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValues>;
   institutionProductsOptions: Array<SelectValues>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  getCyclesDescriptions: HandleGetCyclesDescriptions;
   cyclesDescriptionsOptions: Array<SelectValues>;
   currentInstitution: SelectValues;
   isEditMode: boolean;
@@ -41,7 +40,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   currentInstitution,
   institutionProductsOptions,
   getInstitutionProducts,
-  getCyclesDescriptions,
   cyclesDescriptionsOptions,
   isEditMode = false,
   isChosenLoanProductType,
@@ -58,15 +56,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
       }
     },
     [getInstitutionProducts, currentInstitution]
-  );
-
-  React.useEffect(
-    () => {
-      if (currentInstitution) {
-        getCyclesDescriptions({ institutionId: currentInstitution.value });
-      }
-    },
-    [getCyclesDescriptions, currentInstitution]
   );
 
   return (
