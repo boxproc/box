@@ -6,6 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import {
   Button,
   Delimiter,
+  Hr,
   MaskField,
   NumberFormatField,
   Paragraph,
@@ -69,7 +70,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required, formErrorUtil.isDate]}
               />
             </Box>
-            <Box width={[1 / 7]} ml="10px" p="10px">
+            <Box width={[1 / 7]} ml="1px" p="10px">
               <Field
                 id="limit"
                 name="limit"
@@ -82,12 +83,12 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box p="10px" width="150px">
+            <Box  ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
               >
-                First Transaction
+                1st Transaction
               </Paragraph>
             </Box>
             <Box width={[1 / 7]} p="10px">
@@ -126,12 +127,12 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box p="10px" width="150px">
+            <Box  ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
               >
-                Second Transaction
+                2nd Transaction
               </Paragraph>
             </Box>
             <Box width={[1 / 7]} p="10px">
@@ -170,12 +171,12 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box  p="10px"  width="150px">
+            <Box  ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
               >
-                Third Transaction
+                3rd Transaction
               </Paragraph>
             </Box>
             <Box width={[1 / 7]} p="10px">
@@ -213,13 +214,14 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Delimiter />
-            <Box width={[1 / 5]} pb="20px">
+            <Hr />
+            <Flex justifyContent="flex-end" width="100%">
+            {/* <Box width={[1 / 5]} pb="20px"> */}
               <Button
-                isFocused={true}
                 text="Illustrate"
               />
-            </Box>
+              </Flex>
+            {/* </Box> */}
           </React.Fragment>
         )}
         )}

@@ -32,7 +32,7 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
       ),
     },
     {
-      maxWidth: 125,
+      width: 140,
       sortable: true,
       accessor: 'accruedInterest',
       Header: <TableHeader title="Accrued Interest" />,

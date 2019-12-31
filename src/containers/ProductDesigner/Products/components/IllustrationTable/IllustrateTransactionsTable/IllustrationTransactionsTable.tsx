@@ -21,7 +21,7 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
       maxWidth: 125,
       sortable: true,
       accessor: 'transactionDatetime',
-      Header: <TableHeader title="Transaction Datetime" />,
+      Header: <TableHeader title="Transaction Date" />,
       Cell: (props: TCell<'transactionDatetime'>) => (
         <TableCell
           value={props.value}
@@ -34,7 +34,7 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
       maxWidth: 150,
       sortable: true,
       accessor: 'transactionType',
-      Header: <TableHeader title="Type" />,
+      Header: <TableHeader title="Transaction Type" />,
       Cell: (props: TCell<'transactionType'>) => (
         <TableCell
           value={props.value}
@@ -132,23 +132,11 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         />
       ),
     },
-    // {
-    //   maxWidth: 60,
-    //   sortable: true,
-    //   accessor: 'status',
-    //   Header: <TableHeader title="Status" />,
-    //   Cell: (props: TCell<'status'>) => (
-    //     <TableCell
-    //       value={props.value}
-    //       isSmaller={true}
-    //     />
-    //   ),
-    // },
     {
       maxWidth: 100,
       sortable: true,
       accessor: 'aprRate',
-      Header: <TableHeader title="APR Rate" />,
+      Header: <TableHeader title="Rate %" />,
       Cell: (props: TCell<'aprRate'>) => (
         <TableCell
           value={props.value}

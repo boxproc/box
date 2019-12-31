@@ -3,14 +3,14 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, MaskField, NumberFormatField } from 'components';
+import { Button, Hr, MaskField, NumberFormatField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
 import { formErrorUtil } from 'utils';
 
 const ProductIllustrationLoan: React.FC = () => {
   return (
-    <Flex alignItems="flex-end" flexWrap="wrap">
+    <Flex alignItems="flex-end" flexWrap="wrap" width="100%" >
       <Box width="120px" p="10px">
         <Field
           id="startDate"
@@ -44,7 +44,7 @@ const ProductIllustrationLoan: React.FC = () => {
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="115px" p="10px">
+      <Box width="120px" p="10px">
         <Field
           id="defNumOfIntrstFreeInstlmts"
           name="defNumOfIntrstFreeInstlmts"
@@ -54,12 +54,12 @@ const ProductIllustrationLoan: React.FC = () => {
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 5]} pb="20px">
+      <Hr />
+        <Flex justifyContent="flex-end" width="100%">
         <Button
-          iconName="_"
           text="Illustrate"
         />
-      </Box>
+        </Flex>
     </Flex>
   );
 };

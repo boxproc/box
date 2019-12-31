@@ -219,7 +219,7 @@ export const prepareProductIllustrationStatementsItem = (
     lastTransactionId: item.last_transaction_id,
     balanceOpen: item.balance_open,
     balanceClose: item.balance_close.toFixed(2),
-    minimumAmountDueRepayment: item.minimum_amount_due_repayment,
+    minimumAmountDueRepayment: item.minimum_amount_due_repayment.toFixed(2),
   };
 };
 
@@ -228,7 +228,7 @@ export const prepareProductIllustrationAprsItem = (
 ) => {
   return {
     description: item.description,
-    accruedInterest: item.accrued_interest.toFixed(2),
+    accruedInterest: item.accrued_interest.toFixed(4),
     rate: item.rate.toFixed(2),
   };
 };

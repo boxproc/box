@@ -92,10 +92,12 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
         >
           Statements
         </Paragraph>
-        <IllustrationRevolvingCreditTable />]
+        <Flex>
+        <IllustrationRevolvingCreditTable />
+        </Flex>
       </Box>
       <Flex alignItems="flex-start" flexWrap="wrap">
-        <Box mt="10px" width={[1 / 3]} padding="5px">
+        <Box mt="10px"  padding="10px">
         <Paragraph
           bold={true}
           light={true}
@@ -104,7 +106,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
         </Paragraph>
           <IllustrationAprsTable />
         </Box>
-        <Box mt="10px" width={[1 / 3]} padding="5px">
+        <Box mt="10px" padding="10px">
         <Paragraph
           bold={true}
           light={true}
@@ -113,7 +115,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
         </Paragraph>
           <IllustrationFeesTable />
         </Box>
-        <Box mt="10px" width={[1 / 3]} padding="5px">
+        <Box mt="10px" padding="10px">
         <Paragraph
           bold={true}
           light={true}
