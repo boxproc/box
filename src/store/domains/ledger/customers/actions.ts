@@ -38,6 +38,7 @@ import {
   preparedDataToSend,
   preparedFilterToSend,
   prepareFormDataRepaymentDebitCardToSend,
+  prepareFormDataRepaymentDirectDebitToSend,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -258,7 +259,7 @@ export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data
       async () => {
         const state = getState();
         const customerId = selectActiveItemId(state);
-        const preparedValues = data as any;
+        const preparedValues = prepareFormDataRepaymentDirectDebitToSend(data);
 
         await dispatch(addRepaymentDirectDebit({
           ...preparedValues,

@@ -5,7 +5,7 @@ import RulesForm from './RulesForm';
 
 import { actionTypesCodeKeys, eventTypesCodeKeys } from 'consts';
 
-import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
+import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -14,7 +14,7 @@ interface ProductRulesFormProps {
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
   currentProductScript: string;
-  initialValues: any;
+  initialValues: ProductRulesItem;
   isLoading: boolean;
   isReadOnly: boolean;
   actionTypesOptions: Array<SelectValues>;

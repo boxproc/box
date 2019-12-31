@@ -11,6 +11,9 @@ import {
   RepaymentDebitCardsItem,
   RepaymentDebitCardsItemFormValues,
   RepaymentDebitCardsItemPrepared,
+  RepaymentDirectDebitsItem,
+  RepaymentDirectDebitsItemFormValues,
+  RepaymentDirectDebitsItemPrepared,
 } from './types';
 
 import { SelectValues } from 'types';
@@ -159,6 +162,54 @@ export const prepareFormDataRepaymentDebitCardToSend =
       expiry_date: expiryDate,
       cvv2_encrypted: cvv2Encrypted,
       cardholder_name: cardholderName,
+      status: status && status.value,
+      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId),
+    };
+  };
+
+export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebitsItem):
+  RepaymentDirectDebitsItemPrepared => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    customer_id,
+    account,
+    account_ext,
+    accountholder_name,
+    status,
+    repayment_interface_id,
+    last_update_datetime,
+  } = data;
+
+  const currentStatus = statusTypesOptions.find(el => el.value === status);
+
+  return {
+    customerId: customer_id,
+    account,
+    accountExt: account_ext,
+    accountholderName: accountholder_name,
+    status: currentStatus && currentStatus.label,
+    repaymentInterfaceId: repayment_interface_id,
+    lastUpdateDatetime: last_update_datetime,
+  };
+};
+
+export const prepareFormDataRepaymentDirectDebitToSend =
+  (data: Partial<RepaymentDirectDebitsItemFormValues>): Partial<RepaymentDirectDebitsItem> => {
+    const {
+      account,
+      accountExt,
+      accountholderName,
+      status,
+      repaymentInterfaceId,
+    } = data;
+
+    return {
+      account,
+      account_ext: accountExt,
+      accountholder_name: accountholderName,
       status: status && status.value,
       repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId),
     };

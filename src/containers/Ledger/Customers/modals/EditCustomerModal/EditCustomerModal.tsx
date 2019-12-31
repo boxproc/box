@@ -5,7 +5,11 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { CustomerForm, RepaymentDebitCardsForm } from 'containers/Ledger/Customers/forms';
+import {
+  CustomerForm,
+  RepaymentDebitCardsForm,
+  RepaymentDirectDebitsForm,
+} from 'containers/Ledger/Customers/forms';
 
 interface EditCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
@@ -45,7 +49,9 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
         <TabsPanel title="Repayment Debit Cards">
           <RepaymentDebitCardsForm />
         </TabsPanel>
-        {/* <TabsPanel title="Repayment Direct Debits">1</TabsPanel> */}
+        <TabsPanel title="Repayment Direct Debits">
+          <RepaymentDirectDebitsForm />
+        </TabsPanel>
       </Tabs>
     </Modal>
   );

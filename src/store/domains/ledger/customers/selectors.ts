@@ -9,6 +9,7 @@ import {
   prepareDataToRender,
   preparedDataDetailsToRender,
   prepareRepaymentDebitCardsToRender,
+  prepareRepaymentDirectDebitsToRender,
 } from './utils';
 
 export const selectDefaultLedgerCustomers = (state: StoreState) =>
@@ -62,4 +63,12 @@ export const selectDefaultRepaymentDebitCards = (state: StoreState) =>
 export const selectRepaymentDebitCards = createSelector(
   selectDefaultRepaymentDebitCards,
   items => items && items.asMutable().map(item => prepareRepaymentDebitCardsToRender(item))
+);
+
+export const selectDefaultRepaymentDirectDebits = (state: StoreState) =>
+  state.ledger.customers.repaymentDirectDebits;
+
+export const selectRepaymentDirectDebits = createSelector(
+  selectDefaultRepaymentDirectDebits,
+  items => items && items.asMutable().map(item => prepareRepaymentDirectDebitsToRender(item))
 );
