@@ -58,6 +58,18 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
+      accessor: 'description',
+      Header: <TableHeader title="Description" />,
+      Cell: (props: TCell<'description'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 125,
+      sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
       Cell: (props: TCell<'amount'>) => (
@@ -116,18 +128,6 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         <TableCell
           value={props.value}
           isDecimalNumber={true}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 125,
-      sortable: true,
-      accessor: 'description',
-      Header: <TableHeader title="Description" />,
-      Cell: (props: TCell<'description'>) => (
-        <TableCell
-          value={props.value}
           isSmaller={true}
         />
       ),

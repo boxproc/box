@@ -42,7 +42,6 @@ type GeneralProductFormAllProps = IllustrationProductFormProps &
 const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   illustrateLoanProduct,
-  resetIllustrationLoan,
   productIllustration,
   getProductDetails,
   onCancel,
@@ -52,9 +51,8 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   React.useEffect(
     () => {
       getProductDetails();
-      return () => resetIllustrationLoan();
     },
-    [resetIllustrationLoan, getProductDetails]
+    [getProductDetails]
   );
 
   const handleSubmitForm = React.useCallback(
