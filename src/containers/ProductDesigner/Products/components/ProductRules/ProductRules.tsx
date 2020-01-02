@@ -8,7 +8,7 @@ import styled from 'theme';
 import { Button, HighlightCodeField, SelectField } from 'components';
 import SnippetButtons from './SnippetButtons';
 
-import { messagesConst } from 'consts';
+import { eventTypesCodeKeys, messagesConst } from 'consts';
 
 import {
   HandleFilterDictionaryEventDataElemsById,
@@ -166,6 +166,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
     [scriptValue, textarea]
   );
 
+  const isTransactionEvent = React.useMemo(
+    () => eventValue && eventValue.value === eventTypesCodeKeys.TRANSACTION,
+    [eventValue]
+  );
+
   const onContextMenuClick = React.useCallback(
     (e: Event, value: { name: string, description: string }) => {
       const newValue = value.name;
@@ -269,7 +274,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       },
       {
         title: 'Transaction type ID',
-        subItems: [
+        subItems: isTransactionEvent && [
           {
             title: 'Insert transaction type ID',
             items: transactionTypesItems,
@@ -290,6 +295,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       productFeesItems,
       productRewardsItems,
       transactionTypesItems,
+      isTransactionEvent,
     ]
   );
 
