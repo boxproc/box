@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Button, HighlightCodeField, SelectField, TextField } from 'components';
+import { Button, HighlightCodeField, SelectField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 
 import {
@@ -52,8 +52,6 @@ const ScriptWrapper = styled.div`
 `;
 
 const HiddenBox = styled(Box)`
-  // opacity: 0;
-  // visibility: hidden;
   display: none;
 `;
 
@@ -282,17 +280,6 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
-            <Field
-              id="description"
-              name="description"
-              placeholder="Enter Description"
-              component={TextField}
-              label="Description"
-              height={34}
-              readOnly={isReadOnly}
-            />
-          </Box>
           <HiddenBox width={[1 / 3]} p="10px">
             <Field
               id="actionType"
@@ -307,10 +294,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             />
           </HiddenBox>
           {eventValue && (
-            <Box
-              width={[1]}
-              m="0 10px 10px"
-            >
+            <Box mb="15px">
               <Flex alignItems="center" flexWrap="wrap">
                 {actionTypesOptions && actionTypesOptions.map(type => (
                   <Box

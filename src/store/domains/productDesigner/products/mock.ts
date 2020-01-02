@@ -108,8 +108,6 @@ export const productDetailsData: ProductDetailsResp = {
 
 export const productRulesData: ProductRuleResp = {
   product_rule: {
-    // tslint:disable-next-line: max-line-length
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     event_id: 3,
     action_type: 'X',
     script:

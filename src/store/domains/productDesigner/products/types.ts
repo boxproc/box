@@ -386,7 +386,6 @@ export type ProductItemDetails =
   | SavingsProductItem;
 
 export interface ProductRulesItemResp {
-  description: string;
   event_id: string | number;
   action_type: string | number;
   script: string;
@@ -402,7 +401,6 @@ export interface ProductRuleResp {
 }
 
 export interface ProductRulesItem {
-  description: string;
   eventId: SelectValues;
   actionType: SelectValues;
   script: string;

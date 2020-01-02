@@ -142,28 +142,23 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
-      {isIllustrationLoan && (
-        <TabsPanel
-          title="Illustration"
-          withConfirmation={isAnyFormDirty}
-        >
+      <TabsPanel
+        title="Illustration"
+        withConfirmation={isAnyFormDirty}
+      >
+        {isIllustrationLoan && (
           <IllustrationForm
             onCancel={onCancel}
             isReadOnly={isReadOnly}
           />
-        </TabsPanel>
-      )}
-      {isIllustrationRevolvingCredit && (
-        <TabsPanel
-          title="Illustration"
-          withConfirmation={isAnyFormDirty}
-        >
+        )}
+        {isIllustrationRevolvingCredit && (
           <IllustrationRevolvingCreditForm
             onCancel={onCancel}
             isReadOnly={isReadOnly}
           />
-        </TabsPanel>
-      )}
+        )}
+      </TabsPanel>
     </Tabs>
   );
 };
