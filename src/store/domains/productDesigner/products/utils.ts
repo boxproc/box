@@ -87,13 +87,14 @@ export const prepareProductLoanIllustrateDataToSend =
 export const prepareProductRevolvingCreditIllustrateDataToSend =
   (data: Partial<RevolvingCreditnProductIllustrate>):
   Partial<RevolvingCreditProductIllustratePrepared> => {
-    const { productId, limit, startDate, transactionAmount1, transactionAmount2, transactionAmount3,
-      transactionDate1, transactionDate2, transactionDate3, transactionType1,
+    const { productId, limit, openBalance, startDate, transactionAmount1, transactionAmount2,
+      transactionAmount3, transactionDate1, transactionDate2, transactionDate3, transactionType1,
       transactionType2, transactionType3 } = data;
 
     return {
       product_id: productId,
       limit,
+      open_balance: openBalance,
       transaction_amount_1: transactionAmount1,
       transaction_amount_2: transactionAmount2,
       transaction_amount_3: transactionAmount3,

@@ -58,6 +58,18 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
+      accessor: 'description',
+      Header: <TableHeader title="Description" />,
+      Cell: (props: TCell<'description'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 125,
+      sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Amount" />,
       Cell: (props: TCell<'amount'>) => (
@@ -84,9 +96,9 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
-      accessor: 'balanceSettledBefore',
-      Header: <TableHeader title="Balance Settled After" />,
-      Cell: (props: TCell<'balanceSettledAfter'>) => (
+      accessor: 'balanceAvailableBefore',
+      Header: <TableHeader title="Balance Available Before" />,
+      Cell: (props: TCell<'balanceAvailableBefore'>) => (
         <TableCell
           value={props.value}
           isDecimalNumber={true}
@@ -97,9 +109,9 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
-      accessor: 'balanceAvailableBefore',
-      Header: <TableHeader title="Balance Available Before" />,
-      Cell: (props: TCell<'balanceAvailableBefore'>) => (
+      accessor: 'balanceSettledAfter',
+      Header: <TableHeader title="Balance Settled After" />,
+      Cell: (props: TCell<'balanceSettledAfter'>) => (
         <TableCell
           value={props.value}
           isDecimalNumber={true}
@@ -116,18 +128,6 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         <TableCell
           value={props.value}
           isDecimalNumber={true}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 125,
-      sortable: true,
-      accessor: 'description',
-      Header: <TableHeader title="Description" />,
-      Cell: (props: TCell<'description'>) => (
-        <TableCell
-          value={props.value}
           isSmaller={true}
         />
       ),
@@ -153,7 +153,6 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         data={transactionsIllustration}
         columns={columns}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );

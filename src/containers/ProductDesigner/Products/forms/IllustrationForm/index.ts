@@ -10,7 +10,6 @@ import {
   handleGetProductDetails,
   handleIllustrateLoanProduct,
   ProductsActionTypes,
-  resetIllustrationLoan,
   selectCurrentProductDetails,
   selectCurrentProductType,
   selectProductLoanIllustration,
@@ -36,7 +35,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     illustrateLoanProduct: handleIllustrateLoanProduct,
     getProductDetails: handleGetProductDetails,
-    resetIllustrationLoan,
   },
   dispatch
 );

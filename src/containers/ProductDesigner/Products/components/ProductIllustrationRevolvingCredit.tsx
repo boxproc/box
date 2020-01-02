@@ -82,6 +82,18 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 validate={[formErrorUtil.required]}
               />
             </Box>
+            <Box width={[1 / 7]} ml="1px" p="10px">
+              <Field
+                id="openBalance"
+                name="openBalance"
+                component={NumberFormatField}
+                label="Open Balance"
+                placeholder="0.00"
+                fixedDecimalScale={true}
+                decimalScale={2}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
             <Delimiter />
             <Box  ml="1px" p="10px" width="130px">
               <Paragraph

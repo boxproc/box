@@ -128,7 +128,6 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );

@@ -21,7 +21,11 @@ import {
   IllustrationProductLoan,
   ResetIllustrationLoan
 } from 'store/domains';
+import styled from 'styled-components';
 
+const TableWrapper = styled(Box)`
+  max-width: 100%;
+`;
 interface IllustrationProductFormProps extends ExternalSpinnerProps {
   productIllustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
@@ -38,7 +42,6 @@ type GeneralProductFormAllProps = IllustrationProductFormProps &
 const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   illustrateLoanProduct,
-  resetIllustrationLoan,
   productIllustration,
   getProductDetails,
   onCancel,
@@ -48,9 +51,8 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   React.useEffect(
     () => {
       getProductDetails();
-      return () => resetIllustrationLoan();
     },
-    [resetIllustrationLoan, getProductDetails]
+    [getProductDetails]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -70,9 +72,11 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           </Flex>
         </form>
       )}
-      <Box mt="10px">
+      <Flex>
+      <TableWrapper mt="10px">
         <IllustrationLoanTable productIllustration={productIllustration} />
-      </Box>
+      </TableWrapper>
+      </Flex>
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

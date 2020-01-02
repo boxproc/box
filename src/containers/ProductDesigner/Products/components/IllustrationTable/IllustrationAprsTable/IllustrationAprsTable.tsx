@@ -47,7 +47,7 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
       maxWidth: 125,
       sortable: true,
       accessor: 'rate',
-      Header: <TableHeader title="Rate" />,
+      Header: <TableHeader title="Rate %" />,
       Cell: (props: TCell<'rate'>) => (
         <TableCell
           value={props.value}
@@ -63,7 +63,6 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
         data={aprIllustration}
         columns={columns}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );
