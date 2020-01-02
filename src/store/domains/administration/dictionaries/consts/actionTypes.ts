@@ -2,6 +2,7 @@ import {
   DictionaryCardStatusesData,
   DictionaryEndpointTypesData,
   DictionaryInterfaceTypesData,
+  DictionaryStatementCycleTypesData,
 } from './types';
 
 import { ApiResponse } from 'types';
@@ -24,6 +25,13 @@ export enum ActionTypeKeys {
   'administration/consts/GET_DICTIONARY_INTERFACE_TYPES_FULFILLED',
   GET_DICTIONARY_INTERFACE_TYPES_REJECTED =
   'administration/consts/GET_DICTIONARY_INTERFACE_TYPES_REJECTED',
+
+  GET_DICTIONARY_STATEMENT_CYCLE_TYPES =
+  'administration/consts/GET_DICTIONARY_STATEMENT_CYCLE_TYPES',
+  GET_DICTIONARY_STATEMENT_CYCLE_TYPES_FULFILLED =
+  'administration/consts/GET_DICTIONARY_STATEMENT_CYCLE_TYPES_FULFILLED',
+  GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED =
+  'administration/consts/GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED',
 }
 
 export interface GetDictionaryCardStatusesAction {
@@ -71,7 +79,23 @@ export interface GetDictionaryInterfaceTypesRejectedAction {
   readonly type: ActionTypeKeys.GET_DICTIONARY_INTERFACE_TYPES_REJECTED;
 }
 
+export interface GetDictionaryStatementCycleTypesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES;
+}
+
+export interface GetDictionaryStatementCycleTypesFulfilledAction {
+  readonly payload: DictionaryStatementCycleTypesData;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES_FULFILLED;
+}
+
+export interface GetDictionaryStatementCycleTypesRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED;
+}
+
 export type DictionaryConstsActionTypes =
   | GetDictionaryCardStatusesFulfilledAction
   | GetDictionaryEndpointTypesFulfilledAction
-  | GetDictionaryInterfaceTypesFulfilledAction;
+  | GetDictionaryInterfaceTypesFulfilledAction
+  | GetDictionaryStatementCycleTypesFulfilledAction;

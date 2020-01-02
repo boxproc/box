@@ -3,9 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField, SelectField, TextField } from 'components';
-
-import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
+import { CheckboxField, Delimiter, InputField, SelectField, TextField } from 'components';
 
 import {
   cardFormFactorOptions,
@@ -13,6 +11,11 @@ import {
   schemeTypesOptions,
   statusTypesOptions,
 } from 'consts';
+
+import {
+  HandleGetDictionaryCurrencies,
+  HandleGetDictionaryStatementCycleTypes,
+} from 'store/domains';
 
 import { SelectValues } from 'types';
 
@@ -22,17 +25,34 @@ interface ProductGeneralInfoProps {
   isEditMode?: boolean;
   institutionsOptions: Array<SelectValues>;
   isReadOnly: boolean;
+  statementCycleTypesOptions: Array<SelectValues>;
+  getStatementCycleTypes: HandleGetDictionaryStatementCycleTypes;
+  isStatementCycleTypesLoading: boolean;
+  currencyCodes: Array<SelectValues>;
+  getCurrencyCodes: HandleGetDictionaryCurrencies;
+  isCurrencyCodesLoading: boolean;
 }
 
-type ProductGeneralInfoAllProps = ProductGeneralInfoProps & WithLoadCurrencyCodesProps;
-
-const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
+const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
   currencyCodes,
   isCurrencyCodesLoading,
+  getCurrencyCodes,
   isEditMode = false,
   institutionsOptions,
   isReadOnly,
+  statementCycleTypesOptions,
+  getStatementCycleTypes,
+  isStatementCycleTypesLoading,
 }) => {
+  React.useEffect(
+    () => {
+      Promise.all([
+        getCurrencyCodes(),
+        getStatementCycleTypes(),
+      ]);
+    },
+    [getStatementCycleTypes, getCurrencyCodes]
+  );
 
   return (
     <Box mx="-10px">
@@ -148,6 +168,32 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
             validate={[formErrorUtil.required, formErrorUtil.isInteger]}
           />
         </Box>
+        <Delimiter />
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="statementCycleTypeId"
+            name="statementCycleTypeId"
+            component={SelectField}
+            label="Statement Cycle Type"
+            placeholder="Select Type"
+            options={statementCycleTypesOptions}
+            isLoading={isStatementCycleTypesLoading}
+            isDisabled={isReadOnly}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="10px">
+          <Field
+            id="statementCycleParameter"
+            name="statementCycleParameter"
+            placeholder="Enter Parameter"
+            component={InputField}
+            label="Statement Cycle Parameter"
+            isNumber={true}
+            readOnly={isReadOnly}
+            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+          />
+        </Box>
         <Box width={[1]} p="10px">
           <Field
             id="description"
@@ -173,4 +219,4 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoAllProps> = ({
   );
 };
 
-export default withLoadCurrencyCodes(ProductGeneralInfo);
+export default ProductGeneralInfo;

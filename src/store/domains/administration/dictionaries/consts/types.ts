@@ -14,8 +14,13 @@ export interface DictionaryInterfaceTypesData {
   interface_types: Array<IdNamePair>;
 }
 
+export interface DictionaryStatementCycleTypesData {
+  statement_cycle_types: Array<IdNamePair>;
+}
+
 export interface DictionaryConstsState {
   cardStatuses: ImmutableArray<IdNamePair>;
   endpointTypes: ImmutableArray<IdNamePair>;
   interfaceTypes: ImmutableArray<IdNamePair>;
+  statementCycleTypes: ImmutableArray<IdNamePair>;
 }

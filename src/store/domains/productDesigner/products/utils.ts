@@ -205,6 +205,8 @@ export const prepareGeneralProductItem = (
     currencyCode: item.currency_code,
     lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
     overridesProductId: item.overrides_product_id,
+    statementCycleType: item.statement_cycle_type_name,
+    statementCycleParameter: item.statement_cycle_parameter,
   };
 };
 
@@ -304,6 +306,9 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     overrides_product_id,
     card_form_factor,
     number_of_days_card_expires,
+    statement_cycle_type_id,
+    statement_cycle_type_name,
+    statement_cycle_parameter,
   } = data;
 
   return {
@@ -318,6 +323,8 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     overridesProductId: overrides_product_id,
     cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
     numberOfDaysCardExpires: number_of_days_card_expires,
+    statementCycleTypeId: { value: statement_cycle_type_id, label: statement_cycle_type_name},
+    statementCycleParameter: statement_cycle_parameter,
   };
 };
 
@@ -341,6 +348,8 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     overridesProductId,
     cardFormFactor,
     numberOfDaysCardExpires,
+    statementCycleTypeId,
+    statementCycleParameter,
   } = data;
 
   return {
@@ -359,6 +368,8 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     card_form_factor: cardFormFactor.value,
     number_of_days_card_expires: numberOfDaysCardExpires
       && Number(numberOfDaysCardExpires),
+    statement_cycle_type_id: statementCycleTypeId && statementCycleTypeId.value,
+    statement_cycle_parameter: statementCycleParameter && Number(statementCycleParameter),
   };
 };
 

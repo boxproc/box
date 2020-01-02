@@ -34,6 +34,9 @@ export interface ProductItemResp extends ProductItemPlainResp {
   aux_counter_1_enabled?: string;
   aux_counter_2_enabled?: string;
   aux_counter_3_enabled?: string;
+  statement_cycle_type_id: number | string;
+  statement_cycle_type_name?: string;
+  statement_cycle_parameter: number;
 }
 
 export interface IllustrationProductLoanResp {
@@ -184,6 +187,7 @@ export interface ProductItemPlain extends ProductItemInfoPlain {
   historyRetentionNumberOfDays: number;
   lockedFlag: boolean;
   overridesProductId?: number;
+  statementCycleParameter: number;
 }
 
 export interface ProductItem extends ProductItemPlain {
@@ -192,6 +196,7 @@ export interface ProductItem extends ProductItemPlain {
   productType: string | number;
   scheme: string | number;
   currencyCode: string | number;
+  statementCycleType: string;
 }
 
 export interface ProductItemGeneral extends ProductItemPlain {
@@ -202,6 +207,7 @@ export interface ProductItemGeneral extends ProductItemPlain {
   currencyCode: SelectValues;
   cardFormFactor: SelectValues;
   numberOfDaysCardExpires: number;
+  statementCycleTypeId: SelectValues;
 }
 
 export interface ProductFilter {

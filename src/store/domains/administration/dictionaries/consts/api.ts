@@ -21,3 +21,6 @@ export const getDictionaryEndpointTypes = () =>
 export const getDictionaryInterfaceTypes = () =>
   // throttleUtil.getDataAfter(dictionaryInterfaceTypesData, 500);
   apiClient.post(dictionariesPathNames.GET_INTERFACE_TYPES);
+
+export const getDictionaryStatementCycleTypes = () =>
+  apiClient.post(dictionariesPathNames.GET_STATEMENT_CYCLE_TYPES);

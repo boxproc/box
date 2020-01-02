@@ -44,6 +44,7 @@ export enum dictionariesPathNames {
   GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types/get',
   GET_ENDPOINT_TYPES = '/ui/administration/endpoints/get_endpoint_types',
   GET_INTERFACE_TYPES = '/ui/administration/interfaces/get_interface_types',
+  GET_STATEMENT_CYCLE_TYPES = '/ui/ledger/statements/get_statement_cycle_types',
 }
 
 export enum adminUserPathNames {

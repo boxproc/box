@@ -8,6 +8,7 @@ export const dictionaryCardStatusesInitialState:
     cardStatuses: Immutable([]),
     endpointTypes: Immutable([]),
     interfaceTypes: Immutable([]),
+    statementCycleTypes: Immutable([]),
   });
 
 const dictionaryCardStatusesReducer =
@@ -21,6 +22,9 @@ const dictionaryCardStatusesReducer =
 
       case ActionTypeKeys.GET_DICTIONARY_INTERFACE_TYPES_FULFILLED:
         return state.set('interfaceTypes', action.payload.interface_types);
+
+      case ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES_FULFILLED:
+        return state.set('statementCycleTypes', action.payload.statement_cycle_types);
 
       default: return state;
     }

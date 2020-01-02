@@ -33,6 +33,9 @@ export const productData: ProductDataResp = {
     gl_acc_liabilities: 'ACC-004-02',
     gl_acc_profit: 'ACC-004-03',
     gl_acc_loss: 'ACC-004-04',
+    statement_cycle_type_id: 1,
+    statement_cycle_type_name: 'Test cycle',
+    statement_cycle_parameter: 1,
   },
 };
 
@@ -60,6 +63,9 @@ export const productItemsFilteredData: ProductsDataResp = {
       gl_acc_liabilities: 'ACC-004-02',
       gl_acc_profit: 'ACC-004-03',
       gl_acc_loss: 'ACC-004-04',
+      statement_cycle_type_id: 1,
+      statement_cycle_type_name: 'Test cycle',
+      statement_cycle_parameter: 1,
     },
     {
       currency_code: 'AFN',
@@ -83,6 +89,9 @@ export const productItemsFilteredData: ProductsDataResp = {
       gl_acc_liabilities: 'ACC-004-02',
       gl_acc_profit: 'ACC-004-03',
       gl_acc_loss: 'ACC-004-04',
+      statement_cycle_type_id: 1,
+      statement_cycle_type_name: 'Test cycle',
+      statement_cycle_parameter: 1,
     },
   ],
 };

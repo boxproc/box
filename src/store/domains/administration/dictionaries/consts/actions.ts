@@ -5,6 +5,7 @@ import {
   GetDictionaryCardStatusesAction,
   GetDictionaryEndpointTypesAction,
   GetDictionaryInterfaceTypesAction,
+  GetDictionaryStatementCycleTypesAction,
 } from './actionTypes';
 
 import {
@@ -16,6 +17,7 @@ import {
 import { VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
+import { selectIsStatementCycleTypesLoaded } from './selectors';
 
 export type GetDictionaryCardStatuses = () => GetDictionaryCardStatusesAction;
 export type HandleGetDictionaryCardStatuses = VoidPromiseThunk;
@@ -25,6 +27,9 @@ export type HandleGetDictionaryEndpointTypes = VoidPromiseThunk;
 
 export type GetDictionaryInterfaceTypes = () => GetDictionaryInterfaceTypesAction;
 export type HandleGetDictionaryInterfaceTypes = VoidPromiseThunk;
+
+export type GetDictionaryStatementCycleTypes = () => GetDictionaryStatementCycleTypesAction;
+export type HandleGetDictionaryStatementCycleTypes = VoidPromiseThunk;
 
 export const getDictionaryCardStatuses: GetDictionaryCardStatuses = () => ({
   type: ActionTypeKeys.GET_DICTIONARY_CARD_STATUSES,
@@ -39,6 +44,11 @@ export const getDictionaryEndpointTypes: GetDictionaryEndpointTypes = () => ({
 export const getDictionaryInterfaceTypes: GetDictionaryInterfaceTypes = () => ({
   type: ActionTypeKeys.GET_DICTIONARY_INTERFACE_TYPES,
   payload: api.getDictionaryInterfaceTypes(),
+});
+
+export const getDictionaryStatementCycleTypes: GetDictionaryStatementCycleTypes = () => ({
+  type: ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
+  payload: api.getDictionaryStatementCycleTypes(),
 });
 
 export const handleGetDictionaryCardStatuses: HandleGetDictionaryCardStatuses = () =>
@@ -71,6 +81,18 @@ export const handleGetDictionaryInterfaceTypes: HandleGetDictionaryInterfaceType
       async () => {
         if (!selectIsInterfaceTypesLoaded(getState())) {
           await dispatch(getDictionaryInterfaceTypes());
+        }
+      },
+      dispatch
+    );
+  };
+
+export const handleGetDictionaryStatementCycleTypes: HandleGetDictionaryStatementCycleTypes = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        if (!selectIsStatementCycleTypesLoaded(getState())) {
+          await dispatch(getDictionaryStatementCycleTypes());
         }
       },
       dispatch

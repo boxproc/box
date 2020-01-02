@@ -112,6 +112,29 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 120,
+    sortable: true,
+    Header: <TableHeader title="Statement Cycle Type" />,
+    accessor: 'statementCycleType',
+    Cell: (props: TCell<'statementCycleType'>) => (
+      <TableCell
+        value={props.value}
+      />
+    ),
+  },
+  {
+    maxWidth: 120,
+    sortable: true,
+    Header: <TableHeader title="Statement Cycle Parameter" />,
+    accessor: 'statementCycleParameter',
+    Cell: (props: TCell<'statementCycleParameter'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
     maxWidth: 65,
     sortable: true,
     Header: <TableHeader title="Locked" />,

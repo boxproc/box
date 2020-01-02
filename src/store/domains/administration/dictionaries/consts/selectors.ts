@@ -41,3 +41,16 @@ export const selectIsInterfaceTypesLoaded = createSelector(
   selectDefaultDictionaryInterfaceTypesItems,
   types => types && types.length > 0
 );
+
+export const selectDefaultDictionaryStatementCycleTypesItems = (state: StoreState) =>
+  state.administration.consts.statementCycleTypes.asMutable();
+
+export const selectStatementCycleTypesOptions = createSelector(
+  selectDefaultDictionaryStatementCycleTypesItems,
+  types => valueLabelParse(types)
+);
+
+export const selectIsStatementCycleTypesLoaded = createSelector(
+  selectDefaultDictionaryStatementCycleTypesItems,
+  types => types && types.length > 0
+);
