@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
     <Wrapper>
       <Container>
         <div className="highlight">
-          BOX Processing © {stringsUtil.currentYear} All rights reserved.
+          BOX Processing © 2019 - {stringsUtil.currentYear} All rights reserved.
         </div>
       </Container>
     </Wrapper>
