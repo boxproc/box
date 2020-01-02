@@ -35,6 +35,18 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 150,
+    sortable: true,
+    Header: <TableHeader title="Alpha-2 Code" />,
+    accessor: 'alpha2Code',
+    Cell: (props: TCell<'alpha2Code'>) => (
+      <TableCell
+        value={props.value}
+        onCenter={true}
+      />
+    ),
+  },
+  {
     maxWidth: 300,
     sortable: true,
     Header: <TableHeader title="Name" />,
