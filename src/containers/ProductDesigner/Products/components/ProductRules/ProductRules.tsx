@@ -6,13 +6,14 @@ import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button, HighlightCodeField, SelectField } from 'components';
-import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
 import SnippetButtons from './SnippetButtons';
 
 import { messagesConst } from 'consts';
 
 import {
   HandleFilterDictionaryEventDataElemsById,
+  HandleGetDictionaryEvents,
+  HandleGetDictionaryTransactionTypes,
   HandleGetProductAprsFeesRewards,
 } from 'store/domains';
 
@@ -58,24 +59,29 @@ const HiddenBox = styled(Box)`
 `;
 
 interface ContextItemProps {
-  name: string;
+  name: string | number;
   description: string;
 }
 
-interface ProductRulesProps extends WithLoadDictionaryEventsProps {
+interface ProductRulesProps {
   filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
   getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
-  eventValue: SelectValues;
+  getEvents: HandleGetDictionaryEvents;
+  getTransactionTypes: HandleGetDictionaryTransactionTypes;
   eventDataElemsItems: Array<ContextItemProps>;
   productAprsItems: Array<ContextItemProps>;
   productFeesItems: Array<ContextItemProps>;
   productRewardsItems: Array<ContextItemProps>;
-  scriptValue: string;
+  transactionTypesItems: Array<ContextItemProps>;
   actionTypesOptions: Array<SelectValues>;
+  eventsOptions: Array<SelectValues>;
+  eventValue: SelectValues;
   initialActionType: string | number;
   isLoading: boolean;
   isReadOnly: boolean;
   dirty: boolean;
+  scriptValue: string;
+  isEventsLoading: boolean;
   onChangeValues: () => void;
   changeFormField: (field: string, value: string | SelectValues) => void;
   handleGetRule: (field: string, value: string | SelectValues) => void;
@@ -103,8 +109,11 @@ const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
 });
 
 const ProductRules: React.FC<ProductRulesProps> = ({
-  dictionaryEventsOptions,
-  isDictionaryEventsLoading,
+  getEvents,
+  eventsOptions,
+  isEventsLoading,
+  getTransactionTypes,
+  transactionTypesItems,
   filterDictionaryEventDataElemsById,
   getProductAprsFeesRewards,
   productFeesItems,
@@ -128,20 +137,13 @@ const ProductRules: React.FC<ProductRulesProps> = ({
 
   React.useEffect(
     () => {
-      if (scriptValue && textarea) {
-        setCurrentCursorPosition(textarea.selectionEnd);
-      } else {
-        setCurrentCursorPosition(0);
-      }
+      Promise.all([
+        getEvents(),
+        getTransactionTypes(),
+        getProductAprsFeesRewards(),
+      ]);
     },
-    [scriptValue, textarea]
-  );
-
-  React.useEffect(
-    () => {
-      getProductAprsFeesRewards();
-    },
-    [getProductAprsFeesRewards]
+    [getEvents, getTransactionTypes, getProductAprsFeesRewards]
   );
 
   React.useEffect(
@@ -151,6 +153,17 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       }
     },
     [filterDictionaryEventDataElemsById, eventValue]
+  );
+
+  React.useEffect(
+    () => {
+      if (scriptValue && textarea) {
+        setCurrentCursorPosition(textarea.selectionEnd);
+      } else {
+        setCurrentCursorPosition(0);
+      }
+    },
+    [scriptValue, textarea]
   );
 
   const onContextMenuClick = React.useCallback(
@@ -254,12 +267,29 @@ const ProductRules: React.FC<ProductRulesProps> = ({
         ],
         noDataStr: 'No available reward IDs',
       },
+      {
+        title: 'Transaction type ID',
+        subItems: [
+          {
+            title: 'Insert transaction type ID',
+            items: transactionTypesItems,
+            noDataStr: 'No available transaction type IDs',
+          },
+          {
+            title: 'Insert transaction type comment',
+            items: mapComments(transactionTypesItems),
+            noDataStr: 'No available transaction type comments',
+          },
+        ],
+        noDataStr: 'No available transaction type IDs',
+      },
     ],
     [
       eventDataElemsItems,
       productAprsItems,
       productFeesItems,
       productRewardsItems,
+      transactionTypesItems,
     ]
   );
 
@@ -277,8 +307,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               component={SelectField}
               label="Event"
               placeholder="Select Event"
-              options={dictionaryEventsOptions}
-              isLoading={isDictionaryEventsLoading}
+              options={eventsOptions}
+              isLoading={isEventsLoading}
               isClearable={false}
               onChange={onChangeValues}
               validate={[formErrorUtil.required]}
@@ -351,4 +381,4 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   );
 };
 
-export default withLoadDictionaryEvents(ProductRules);
+export default ProductRules;

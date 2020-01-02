@@ -70,3 +70,14 @@ export const selectIsTransactionTypesLoaded = createSelector(
   selectDefaultDictionaryTransactionTypesItems,
   countryCodes => countryCodes && countryCodes.length > 0
 );
+
+export const selectTransactionTypesForRules = createSelector(
+  selectDefaultDictionaryTransactionTypesItems,
+  types => types && types.map(type => {
+
+    return {
+      name: type.id,
+      description: type.description,
+    };
+  })
+);
