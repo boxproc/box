@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Box, Flex } from '@rebass/grid';
+import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 import { highlightCss } from 'theme/highlightCss';
@@ -95,16 +95,13 @@ const Login: React.FC<LoginPropsAllProps> = ({
           component={CheckboxField}
           label="Remember me"
         />
-        <Flex
-          flexDirection="column"
-          alignItems="flex-end"
-        >
-          <Box width="100%" mt="7px">
-            <Flex justifyContent="center">
-              <Button text="Log in" />
-            </Flex>
-          </Box>
-        </Flex>
+        <Box width="100%" mt="12px">
+          <Button
+            text="Log in"
+            bordered={true}
+            width="100%"
+          />
+        </Box>
       </form>
     </FormWrapper>
   );

@@ -12,12 +12,14 @@ import { renderIcon } from './renderIcon';
 
 interface ButtonProps extends WithModalProps {
   text: string;
+  width?: string;
   size?: string;
   iconSize?: string;
   iconName?: string;
   type?: 'reset' | 'submit';
   disabled?: boolean;
   isFocused?: boolean;
+  isTabsTheme?: boolean;
   withConfirmation?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
@@ -33,7 +35,9 @@ interface ButtonProps extends WithModalProps {
 
 const Button: React.FC<ButtonProps> = ({
   disabled,
+  width,
   isFocused,
+  isTabsTheme,
   onClick,
   text,
   iconName,
@@ -43,10 +47,10 @@ const Button: React.FC<ButtonProps> = ({
   confirmationText,
   confirmationTitle,
   openModal,
-  withConfirmation = false,
-  bordered = false,
-  underline = false,
-  textTransformNone = false,
+  withConfirmation,
+  bordered,
+  underline,
+  textTransformNone,
   title,
   hint,
   hintPosition = 'top',
@@ -70,7 +74,8 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <ButtonWrapper
-      onClick={handleClick}
+      title={title}
+      width={width}
       disabled={disabled}
       type={type}
       size={size}
@@ -79,7 +84,8 @@ const Button: React.FC<ButtonProps> = ({
       hasIcon={!!iconName}
       textTransformNone={textTransformNone}
       className={isFocused && 'is-focused'}
-      title={title}
+      isTabsTheme={isTabsTheme}
+      onClick={handleClick}
     >
       {iconName && (
         <Box mr="2px">

@@ -1,4 +1,5 @@
 import styled from 'theme';
+import { scrollbarCss } from 'theme/scrollbarCss';
 
 interface WrapperProps {
   height?: string;
@@ -62,4 +63,6 @@ export const EditorWrapper = styled.div<WrapperProps>`
   .react-contextmenu-wrapper {
     height: 100%;
   }
+
+  ${scrollbarCss};
 `;

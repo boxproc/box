@@ -134,6 +134,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
         initialActionType={initialActionType}
         isLoading={isLoading}
         isReadOnly={isReadOnly}
+        dirty={dirty}
       />
       <OkCancelButtons
         okText="Save"

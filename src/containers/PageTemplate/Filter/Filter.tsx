@@ -170,7 +170,10 @@ const Filter: React.FC<FilterAllProps> = ({
         <Box width="940px" mx="-10px">
           <Flex alignItems="flex-end" flexWrap="wrap">{children}</Flex>
         </Box>
-        <Button text="Show" disabled={isDisabled} />
+        <Button
+          text="Show"
+          disabled={isDisabled}
+        />
       </form>
     </FilterWrapper >
   );
