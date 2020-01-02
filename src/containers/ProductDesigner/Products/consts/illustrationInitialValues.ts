@@ -7,6 +7,7 @@ export const illustrationInitialValuesLoan = {
 
 export const illustrationInitialValuesRevolvingCredit = {
   startDate: dateUtil.todayDate,
+  openBalance: 100,
   transactionDate1: dateUtil.todayDate,
   transactionDate2: dateUtil.todayDate,
   transactionDate3: dateUtil.todayDate,

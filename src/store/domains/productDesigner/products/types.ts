@@ -234,6 +234,7 @@ export interface RevolvingCreditProductIllustratePrepared {
   product_id: number;
   limit: number;
   start_date: string;
+  open_balance: number;
   transaction_date_1: string;
   transaction_date_2: string;
   transaction_date_3: string;
@@ -256,6 +257,7 @@ export interface LoanProductIllustrate {
 export interface RevolvingCreditnProductIllustrate {
   productId: number;
   limit: number;
+  openBalance: number;
   startDate: string;
   transactionDate1: string;
   transactionDate2: string;

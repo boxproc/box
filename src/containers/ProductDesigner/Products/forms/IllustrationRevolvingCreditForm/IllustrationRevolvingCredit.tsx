@@ -94,7 +94,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
             bold={true}
             light={true}
           >
-            Statements
+            Totals
           </Paragraph>
           <IllustrationRevolvingCreditTable />
         </TableWrapper>
@@ -103,7 +103,7 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
             bold={true}
             light={true}
           >
-            APR
+            APRs
           </Paragraph>
           <IllustrationAprsTable />
         </TableWrapper>
