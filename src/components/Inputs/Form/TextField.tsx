@@ -14,13 +14,13 @@ interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextA
 
 const TextField = styled.textarea<TextAreaProps>`
   ${sharedInputCss};
-  ${scrollbarCss};
   height: auto;
   min-height: ${({ height }) => height ? height + 'px' : '52px'};
   height: ${({ height }) => height ? height + 'px' : '52px'};
   line-height: 1.35;
   resize: vertical;
   overflow: auto;
+  ${scrollbarCss};
 `;
 
 export default withFormField(TextField);

@@ -7,6 +7,9 @@ import styled from 'theme';
 
 import { Button, HighlightCodeField, SelectField } from 'components';
 import { withLoadDictionaryEvents, WithLoadDictionaryEventsProps } from 'HOCs';
+import SnippetButtons from './SnippetButtons';
+
+import { messagesConst } from 'consts';
 
 import {
   HandleFilterDictionaryEventDataElemsById,
@@ -15,7 +18,6 @@ import {
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
-import SnippetButtons from './SnippetButtons';
 
 const ScriptWrapper = styled.div`
   position: relative;
@@ -73,6 +75,7 @@ interface ProductRulesProps extends WithLoadDictionaryEventsProps {
   initialActionType: string | number;
   isLoading: boolean;
   isReadOnly: boolean;
+  dirty: boolean;
   onChangeValues: () => void;
   changeFormField: (field: string, value: string | SelectValues) => void;
   handleGetRule: (field: string, value: string | SelectValues) => void;
@@ -117,6 +120,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   initialActionType,
   isLoading,
   isReadOnly,
+  dirty,
 }) => {
   const textarea = document.querySelector('#rule-script') as HTMLInputElement;
 
@@ -297,18 +301,18 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             <Box mb="15px">
               <Flex alignItems="center" flexWrap="wrap">
                 {actionTypesOptions && actionTypesOptions.map(type => (
-                  <Box
+                  <Button
                     key={type.value}
-                    mr="5px"
-                  >
-                    <Button
-                      text={type.label}
-                      size="11"
-                      isFocused={initialActionType === type.value}
-                      type="reset"
-                      onClick={() => handleGetRule('actionType', type)}
-                    />
-                  </Box>
+                    text={type.label}
+                    size="11"
+                    isFocused={initialActionType === type.value}
+                    isTabsTheme={true}
+                    type="reset"
+                    withConfirmation={dirty}
+                    confirmationTitle={messagesConst.SWITCH_TAB}
+                    confirmationText={messagesConst.UNSAVED_CHANGES}
+                    onClick={() => handleGetRule('actionType', type)}
+                  />
                 ))}
               </Flex>
             </Box>
@@ -336,7 +340,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 menuId="rulesCodeContextMenu"
                 checkJSSyntax={true}
                 fontSize={11}
-                height="calc(100vh - 400px)"
+                height="calc(100vh - 350px)"
                 readOnly={isReadOnly}
               />
             </Box>

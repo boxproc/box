@@ -62,6 +62,7 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
               <Button
                 text="Enable second factor authentication"
                 bordered={true}
+                width="100%"
                 iconName={iconNamesConst.SMARTPHONE}
                 onClick={handleOpenModal}
               />
