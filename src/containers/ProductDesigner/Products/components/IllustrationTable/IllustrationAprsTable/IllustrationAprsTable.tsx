@@ -63,7 +63,6 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> =
         data={aprIllustration}
         columns={columns}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );

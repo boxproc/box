@@ -93,7 +93,6 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
         columns={columns}
         pageSize={tablePagesCount}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );

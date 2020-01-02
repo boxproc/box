@@ -12,15 +12,18 @@ import {
 import { transactionTypesId } from 'consts';
 import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
 import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
+import styled from 'theme';
 import {
   IllustrationAprsTable,
-  IllustrationFeesTable,
   IllustrationRevolvingCreditTable,
-  IllustrationRewardsTable,
   IllustrationTransactionsTable,
   ProductIllustrationRevolvingCredit
 } from '../../components';
 import { illustrationInitialValuesRevolvingCredit } from '../../consts';
+
+const TableWrapper = styled(Box)`
+  max-width: 100%;
+`;
 
 interface IllustrationProductFormProps extends ExternalSpinnerProps, WithLoadTransactionTypesProps {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
@@ -85,45 +88,25 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
         </Paragraph>
         <IllustrationTransactionsTable />]
       </Box>
-      <Box mt="10px">
-        <Paragraph
-          bold={true}
-          light={true}
-        >
-          Statements
-        </Paragraph>
-        <Flex>
-        <IllustrationRevolvingCreditTable />
-        </Flex>
-      </Box>
-      <Flex alignItems="flex-start" flexWrap="wrap">
-        <Box mt="10px"  padding="10px">
-        <Paragraph
-          bold={true}
-          light={true}
-        >
-          APR
-        </Paragraph>
+      <Flex alignItems="flex-start" flexWrap="wrap" >
+        <TableWrapper mt="10px" padding="10px">
+          <Paragraph
+            bold={true}
+            light={true}
+          >
+            Statements
+          </Paragraph>
+          <IllustrationRevolvingCreditTable />
+        </TableWrapper>
+        <TableWrapper mt="10px" padding="10px">
+          <Paragraph
+            bold={true}
+            light={true}
+          >
+            APR
+          </Paragraph>
           <IllustrationAprsTable />
-        </Box>
-        <Box mt="10px" padding="10px">
-        <Paragraph
-          bold={true}
-          light={true}
-        >
-          Fees
-        </Paragraph>
-          <IllustrationFeesTable />
-        </Box>
-        <Box mt="10px" padding="10px">
-        <Paragraph
-          bold={true}
-          light={true}
-        >
-          Rewards
-        </Paragraph>
-          <IllustrationRewardsTable />
-        </Box>
+        </TableWrapper>
       </Flex>
       <Flex justifyContent="flex-end">
         <Button

@@ -153,7 +153,6 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
         data={transactionsIllustration}
         columns={columns}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );
