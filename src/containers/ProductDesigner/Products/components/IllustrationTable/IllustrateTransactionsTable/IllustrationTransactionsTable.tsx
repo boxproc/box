@@ -96,9 +96,9 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
-      accessor: 'balanceSettledBefore',
-      Header: <TableHeader title="Balance Settled After" />,
-      Cell: (props: TCell<'balanceSettledAfter'>) => (
+      accessor: 'balanceAvailableBefore',
+      Header: <TableHeader title="Balance Available Before" />,
+      Cell: (props: TCell<'balanceAvailableBefore'>) => (
         <TableCell
           value={props.value}
           isDecimalNumber={true}
@@ -109,9 +109,9 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
     {
       maxWidth: 125,
       sortable: true,
-      accessor: 'balanceAvailableBefore',
-      Header: <TableHeader title="Balance Available Before" />,
-      Cell: (props: TCell<'balanceAvailableBefore'>) => (
+      accessor: 'balanceSettledAfter',
+      Header: <TableHeader title="Balance Settled After" />,
+      Cell: (props: TCell<'balanceSettledAfter'>) => (
         <TableCell
           value={props.value}
           isDecimalNumber={true}
