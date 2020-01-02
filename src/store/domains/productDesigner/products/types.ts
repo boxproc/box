@@ -273,9 +273,9 @@ export interface RevolvingCreditnProductIllustrate {
 export interface RevolvingCreditProductItemResp {
   product_id: number;
   limit_sharing_allowed_flag: string;
-  minimum_payment_amount: number;
-  minimum_payment_rate: number;
-  payment_grace_number_of_days: number;
+  minimum_repayment_amount: number;
+  minimum_repayment_rate: number;
+  repayment_grace_number_of_days: number;
 }
 
 export interface RevolvingCreditProductResp {
@@ -285,9 +285,9 @@ export interface RevolvingCreditProductResp {
 export interface RevolvingCreditProductItem {
   productId: number;
   limitSharingAllowedFlag: boolean;
-  minimumPaymentAmount: number;
-  minimumPaymentRate: number;
-  paymentGraceNumberOfDays: number;
+  minimumRepaymentAmount: number;
+  minimumRepaymentRate: number;
+  repaymentGraceNumberOfDays: number;
 }
 
 export interface LoanProductItemResp {

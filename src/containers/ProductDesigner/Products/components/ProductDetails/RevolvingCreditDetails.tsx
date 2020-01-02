@@ -20,37 +20,37 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
       >
         <Box width={[1 / 6]} p="10px">
           <Field
-            id="minimumPaymentAmount"
-            name="minimumPaymentAmount"
+            id="minimumRepaymentAmount"
+            name="minimumRepaymentAmount"
             component={NumberFormatField}
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            label="Minimum Payment Amount"
+            label="Minimum Repayment Amount"
             readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
           <Field
-            id="minimumPaymentRate"
-            name="minimumPaymentRate"
+            id="minimumRepaymentRate"
+            name="minimumRepaymentRate"
             component={NumberFormatField}
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            label="Minimum Payment Rate"
+            label="Minimum Repayment Rate"
             readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
-            id="paymentGraceNumberOfDays"
-            name="paymentGraceNumberOfDays"
+            id="repaymentGraceNumberOfDays"
+            name="repaymentGraceNumberOfDays"
             placeholder="Enter # of Days"
             component={InputField}
-            label="Payment Grace # Of Days"
+            label="Repayment Grace # Of Days"
             isNumber={true}
             readOnly={isReadOnly}
             validate={[formErrorUtil.required, formErrorUtil.isNumber]}

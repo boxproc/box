@@ -382,19 +382,19 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
   const {
     product_id,
     limit_sharing_allowed_flag,
-    minimum_payment_amount,
-    minimum_payment_rate,
-    payment_grace_number_of_days,
+    minimum_repayment_amount,
+    minimum_repayment_rate,
+    repayment_grace_number_of_days,
   } = data;
 
   return {
     productId: product_id,
     limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoTypesCodes.YES,
-    minimumPaymentAmount: stringsUtil.checkNumberToFixed(minimum_payment_amount)
-      && minimum_payment_amount.toFixed(2),
-    minimumPaymentRate: stringsUtil.checkNumberToFixed(minimum_payment_rate)
-      && minimum_payment_rate.toFixed(2),
-    paymentGraceNumberOfDays: payment_grace_number_of_days,
+    minimumRepaymentAmount: stringsUtil.checkNumberToFixed(minimum_repayment_amount)
+      && minimum_repayment_amount.toFixed(2),
+    minimumRepaymentRate: stringsUtil.checkNumberToFixed(minimum_repayment_rate)
+      && minimum_repayment_rate.toFixed(2),
+    repaymentGraceNumberOfDays: repayment_grace_number_of_days,
   };
 };
 
@@ -434,18 +434,18 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
   const {
     productId,
     limitSharingAllowedFlag,
-    minimumPaymentAmount,
-    minimumPaymentRate,
-    paymentGraceNumberOfDays,
+    minimumRepaymentAmount,
+    minimumRepaymentRate,
+    repaymentGraceNumberOfDays,
   } = data;
 
   return {
     product_id: productId,
     limit_sharing_allowed_flag:
       limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    minimum_payment_amount: Number(minimumPaymentAmount),
-    minimum_payment_rate: Number(minimumPaymentRate),
-    payment_grace_number_of_days: Number(paymentGraceNumberOfDays),
+    minimum_repayment_amount: Number(minimumRepaymentAmount),
+    minimum_repayment_rate: Number(minimumRepaymentRate),
+    repayment_grace_number_of_days: Number(repaymentGraceNumberOfDays),
   };
 };
 

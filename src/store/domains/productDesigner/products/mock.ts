@@ -100,9 +100,9 @@ export const productDetailsData: ProductDetailsResp = {
   product: {
     product_id: 1,
     limit_sharing_allowed_flag: 'N',
-    minimum_payment_amount: 15,
-    minimum_payment_rate: 5,
-    payment_grace_number_of_days: 30,
+    minimum_repayment_amount: 15,
+    minimum_repayment_rate: 5,
+    repayment_grace_number_of_days: 30,
   },
 };
 
