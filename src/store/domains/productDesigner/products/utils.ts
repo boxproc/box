@@ -668,7 +668,6 @@ export const prepareProductRuleData = (rule: ProductRulesItemResp) => {
   }
 
   return {
-    description: rule.description,
     actionType: actionTypesOptions.find(el => el.value === rule.action_type),
     script: rule.script,
     productId: rule.product_id,
@@ -680,10 +679,9 @@ export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) =>
     return null;
   }
 
-  const { description, eventId, actionType, script } = rule;
+  const { eventId, actionType, script } = rule;
 
   return {
-    description,
     event_id: eventId && eventId.value,
     action_type: actionType && actionType.value,
     script: script ? script : null,
