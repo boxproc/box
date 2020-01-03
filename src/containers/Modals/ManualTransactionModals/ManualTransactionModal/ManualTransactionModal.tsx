@@ -112,7 +112,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
 
       return currentUiItem.helpPageURL;
     },
-    [uiItems]
+    [uiItems, currentPath]
   );
 
   return (
