@@ -9,7 +9,7 @@ import {
   DictionaryCurrenciesActionTypes,
   handleGetDictionaryCurrencies,
   handleGetDictionaryStatementCycleTypes,
-  selectDictionaryCurrencies,
+  selectCurrencyCodesOptions,
   selectInstitutionsOptions,
   selectStatementCycleTypesOptions,
 } from 'store/domains';
@@ -28,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isStatementCycleTypesLoading: statementCycleTypesLoading(state),
   institutionsOptions: selectInstitutionsOptions(state),
   statementCycleTypesOptions: selectStatementCycleTypesOptions(state),
-  currencyCodesOptions: selectDictionaryCurrencies(state),
+  currencyCodesOptions: selectCurrencyCodesOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
