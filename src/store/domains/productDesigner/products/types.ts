@@ -47,6 +47,8 @@ export interface IllustrationProductLoanResp {
   apr: number;
   amount: number;
   minimum_amount_due_repayment: number;
+  start_date: string;
+  end_date: string;
 }
 
 export interface IllustrationProductLoan {
@@ -57,6 +59,8 @@ export interface IllustrationProductLoan {
   apr: number | string;
   amount: number | string;
   minimumAmountDueRepayment: number | string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface IllustrationProductStatementsRevolvingCreditResp {

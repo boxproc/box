@@ -413,11 +413,15 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     apr,
     minimum_amount_due_repayment,
     amount,
+    start_date,
+    end_date,
   } = data;
 
   return {
     statementId: statement_id,
     statementDate: statement_date,
+    startDate: start_date,
+    endDate: end_date,
     amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
     installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
       installment_balance.toFixed(2),
