@@ -22,6 +22,7 @@ import { SelectValues } from 'types';
 interface ServicesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentGroupId: number;
+  currentInstitutionId: number;
   updateCardService: HandleUpdateCardService;
   productEndpointsServiceOptions: Array<SelectValues>;
   productInterfacesServiceOptions: Array<SelectValues>;
@@ -36,6 +37,7 @@ type ServicesFormAllProps = ServicesFormProps &
 
 const ServicesForm: React.FC<ServicesFormAllProps> = ({
   currentGroupId,
+  currentInstitutionId,
   updateCardService,
   handleSubmit,
   onCancel,
@@ -64,6 +66,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
         getProductServices={getProductServices}
         isLoadingInterfaces={isLoadingInterfaces}
         isLoadingEndpoints={isLoadingEndpoints}
+        currentInstitutionId={currentInstitutionId}
         isReadOnly={isReadOnly}
       />
       <Hr />

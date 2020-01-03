@@ -28,13 +28,13 @@ interface ProductGeneralInfoProps {
   statementCycleTypesOptions: Array<SelectValues>;
   getStatementCycleTypes: HandleGetDictionaryStatementCycleTypes;
   isStatementCycleTypesLoading: boolean;
-  currencyCodes: Array<SelectValues>;
+  currencyCodesOptions: Array<SelectValues>;
   getCurrencyCodes: HandleGetDictionaryCurrencies;
   isCurrencyCodesLoading: boolean;
 }
 
 const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
-  currencyCodes,
+  currencyCodesOptions,
   isCurrencyCodesLoading,
   getCurrencyCodes,
   isEditMode = false,
@@ -150,7 +150,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             component={SelectField}
             label="Currency Code"
             placeholder="Select Currency Code"
-            options={currencyCodes}
+            options={currencyCodesOptions}
             isLoading={isCurrencyCodesLoading}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}

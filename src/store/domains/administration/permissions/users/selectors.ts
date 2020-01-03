@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { statusTypes2faLoginOptions } from 'consts';
 
-import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 import { prepareAdminUserDataToRender } from './utils';

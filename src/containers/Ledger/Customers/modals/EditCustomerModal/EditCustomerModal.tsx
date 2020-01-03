@@ -10,10 +10,16 @@ import {
   RepaymentDebitCardsForm,
   RepaymentDirectDebitsForm,
 } from 'containers/Ledger/Customers/forms';
+import { HandleGetInterfacesService } from 'store/domains';
+import { SelectValues } from 'types';
 
 interface EditCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
   currentCustomerName: string;
+  currentCustomerInstitutionId: number;
+  getInterfaces: HandleGetInterfacesService;
+  interfacesOptions: Array<SelectValues>;
+  isInterfacesLoading: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
@@ -23,7 +29,18 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   isFormDirty,
   isReadOnly,
   currentCustomerName,
+  currentCustomerInstitutionId,
+  getInterfaces,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
+  React.useEffect(
+    () => {
+      getInterfaces(currentCustomerInstitutionId);
+    },
+    [getInterfaces, currentCustomerInstitutionId]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -47,10 +64,16 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
           />
         </TabsPanel>
         <TabsPanel title="Repayment Debit Cards">
-          <RepaymentDebitCardsForm />
+          <RepaymentDebitCardsForm
+            interfacesOptions={interfacesOptions}
+            isInterfacesLoading={isInterfacesLoading}
+          />
         </TabsPanel>
         <TabsPanel title="Repayment Direct Debits">
-          <RepaymentDirectDebitsForm />
+          <RepaymentDirectDebitsForm
+            interfacesOptions={interfacesOptions}
+            isInterfacesLoading={isInterfacesLoading}
+          />
         </TabsPanel>
       </Tabs>
     </Modal>

@@ -7,18 +7,23 @@ import { Button, InputField, SelectField } from 'components';
 
 import { iconNamesConst, statusTypesOptions } from 'consts';
 
+import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface RepaymentDirectDebitsProps {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
+  interfacesOptions: Array<SelectValues>;
+  isInterfacesLoading: boolean;
 }
 
 const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
   isDisabled,
   pristine,
   isLoading,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
   return (
     <Box width="100%">
@@ -76,11 +81,12 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
-            component={InputField}
+            component={SelectField}
             label="Repayment Interface ID"
-            placeholder="Enter ID"
+            placeholder="Select ID"
             disabled={isDisabled}
-            isNumber={true}
+            options={interfacesOptions}
+            isLoading={isInterfacesLoading}
             validate={[formErrorUtil.required]}
           />
         </Box>

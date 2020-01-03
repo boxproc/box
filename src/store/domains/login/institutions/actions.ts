@@ -1,16 +1,8 @@
+import { ActionTypeKeys, GetInstitutionsAction } from './actionTypes';
 import * as api from './api';
-
-import {
-  ActionTypeKeys,
-  GetInstitutionsAction,
-} from './actionTypes';
-
-import {
-  selectIsInstitutionsLoaded,
-} from './selectors';
+import { selectIsInstitutionsLoaded } from './selectors';
 
 import { VoidPromiseThunk } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
 export type GetInstitutions = () => GetInstitutionsAction;

@@ -197,6 +197,7 @@ export enum statusCodes {
   USER_NOT_AUTH = '04',
   SESSION_TIMEOUT = '05',
   INCORRECT_PASSWORD = '15',
+  UNDEFINED_USER = '17',
 }
 
 export const aprTypesOptions = [

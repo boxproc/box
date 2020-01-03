@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 import { selectCountryCodesOptions } from 'store/domains/administration';
-import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareDataToRender,
@@ -55,6 +55,11 @@ export const selectLedgerCurrentCustomer = createSelector(
 export const selectLedgerCurrentCustomerName = createSelector(
   selectLedgerCurrentCustomer,
   (customer) => customer && `${customer.firstName} ${customer.lastName}`
+);
+
+export const selectLedgerCurrentCustomerInstitutionId = createSelector(
+  selectLedgerCurrentCustomer,
+  (customer) => customer && customer.institutionId.value
 );
 
 export const selectDefaultRepaymentDebitCards = (state: StoreState) =>

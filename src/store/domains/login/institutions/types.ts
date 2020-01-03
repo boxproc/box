@@ -31,6 +31,6 @@ export interface InstitutionsData {
   institutions: Array<InstitutionItem>;
 }
 
-export interface ConstsState {
+export interface InstitutionsState {
   institutions: ImmutableArray<InstitutionItemResp>;
 }

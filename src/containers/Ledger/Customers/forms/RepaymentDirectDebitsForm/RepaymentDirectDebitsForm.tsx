@@ -13,11 +13,15 @@ import {
 } from 'containers/Ledger/Customers/components';
 import { HandleAddRepaymentDirectDebit } from 'store/domains';
 
+import { SelectValues } from 'types';
+
 interface RepaymentDirectDebitsFormProps {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
   addRepaymentDirectDebit: HandleAddRepaymentDirectDebit;
+  interfacesOptions: Array<SelectValues>;
+  isInterfacesLoading: boolean;
 }
 
 type RepaymentDirectDebitsFormAllProps = RepaymentDirectDebitsFormProps
@@ -31,6 +35,8 @@ const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = (
   isLoading,
   isReadOnly,
   addRepaymentDirectDebit,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(addRepaymentDirectDebit),
@@ -47,6 +53,8 @@ const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = (
                 isDisabled={isLoading}
                 isLoading={isLoading}
                 pristine={pristine}
+                interfacesOptions={interfacesOptions}
+                isInterfacesLoading={isInterfacesLoading}
               />
             </Flex>
           </Box>

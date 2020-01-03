@@ -5,9 +5,9 @@ import {
 import { ApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_INSTITUTIONS = 'const/GET_INSTITUTIONS',
-  GET_INSTITUTIONS_FULFILLED = 'const/GET_INSTITUTIONS_FULFILLED',
-  GET_INSTITUTIONS_REJECTED = 'const/GET_INSTITUTIONS_REJECTED',
+  GET_INSTITUTIONS = 'institutions/GET_INSTITUTIONS',
+  GET_INSTITUTIONS_FULFILLED = 'institutions/GET_INSTITUTIONS_FULFILLED',
+  GET_INSTITUTIONS_REJECTED = 'institutions/GET_INSTITUTIONS_REJECTED',
 }
 
 export interface GetInstitutionsAction {
@@ -25,5 +25,5 @@ export interface GetInstitutionsRejectedAction {
   readonly type: ActionTypeKeys.GET_INSTITUTIONS_REJECTED;
 }
 
-export type ConstsActionTypes =
+export type InstitutionsActionTypes =
   | GetInstitutionsFulfilledAction;
