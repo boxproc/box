@@ -110,6 +110,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 
       if (!isMasterInstitution) {
         change('changeProfileAllowedFlag', false);
+        change('requires2faFlag', true);
       }
 
       return isMasterInstitution;
@@ -206,7 +207,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               name="requires2faFlag"
               component={CheckboxField}
               label="2FA Required"
-              disabled={isReadOnly}
+              disabled={!isMasterInstitutionUser || isReadOnly}
             />
           </Box>
           <Box width="100%" p="5px 10px">
