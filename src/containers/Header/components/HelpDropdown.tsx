@@ -7,10 +7,9 @@ import styled from 'theme';
 
 import { Dropdown, DropdownOption, ExternalLink, HelpCircleIcon } from 'components';
 
-import { basePath } from 'consts';
+import { basePath, linksConst } from 'consts';
 
 import { UiItemPrepared } from 'store/domains';
-import { stringsUtil } from 'utils';
 
 const HelpIcon = styled(HelpCircleIcon)`
   margin-right: 3px;
@@ -46,26 +45,19 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
     [location]
   );
 
-  const currentUrl = React.useMemo(
-    () => stringsUtil.getCurrentBPSUrl(location.pathname),
-    [location]
-  );
-
-  const currentPathname = React.useMemo(
-    () => location.pathname.slice(1),
-    [location]
-  );
-
   const currentUiItem = React.useMemo(
-    () => currentPathname.split('/').slice(1).join('/'),
-    [currentPathname]
+    () => uiItems.find(item => `${basePath}${item.id}` === `${location.pathname}`),
+    [location, uiItems]
   );
 
-  const currentUiItemName = React.useMemo(
-    () => uiItems
-    && uiItems.find(item => item.id === currentUiItem)
-    && uiItems.find(item => item.id === currentUiItem).title,
-    [uiItems, currentUiItem]
+  const helpLink = React.useMemo(
+    () => currentUiItem && currentUiItem.helpPageURL,
+    [currentUiItem]
+  );
+
+  const helpLinkTitle = React.useMemo(
+    () => currentUiItem && currentUiItem.title,
+    [currentUiItem]
   );
 
   return (
@@ -75,15 +67,15 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
     >
       <DropdownOption>
         <ExternalLink
-          link={currentUrl}
+          link={linksConst.BPS_BASE}
           text="BOX-UI"
         />
       </DropdownOption>
       {!isHome && (
         <DropdownOption>
           <ExternalLink
-            link={currentUrl}
-            text={`Help: ${currentUiItemName}`}
+            link={helpLink}
+            text={`Help: ${helpLinkTitle}`}
           />
         </DropdownOption>
       )}

@@ -15,6 +15,7 @@ import {
   selectSystemMonitorLastTransactions,
   selectSystemMonitorScheduler,
   selectSystemMonitorSchedulerCounts,
+  selectUiItems,
   SystemMonitorActionTypes,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -22,15 +23,19 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
+
 const loadingSelectorInterfaces = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_INTERFACES,
 ]);
+
 const loadingSelectorEndpoints = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_ENDPOINTS,
 ]);
+
 const loadingSelectorScheduler = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_SCHEDULER,
 ]);
+
 const loadingSelectorLastTransactions = createLoadingSelector([
   SystemMonitorActionTypes.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS,
 ]);
@@ -48,6 +53,7 @@ const mapStateToProps = (state: StoreState) => ({
   interfacesCounts: selectSystemMonitorInterfacesCounts(state),
   endpointsCounts: selectSystemMonitorEndpointsCounts(state),
   schedulerCounts: selectSystemMonitorSchedulerCounts(state),
+  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -10,6 +10,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/separator_1',
@@ -17,6 +18,7 @@ export const uiItems: UiItems = {
       item_type: 'S',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/dictionaries',
@@ -24,6 +26,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/dictionaries/countries',
@@ -31,6 +34,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/dictionaries/currencies',
@@ -38,6 +42,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/dictionaries/events',
@@ -45,6 +50,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/dictionaries/event_data_elements',
@@ -52,6 +58,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 3,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/endpoints',
@@ -59,6 +66,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/institutions',
@@ -66,6 +74,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 3,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/interfaces',
@@ -73,6 +82,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 4,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/permissions',
@@ -80,6 +90,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 5,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/permissions/users',
@@ -87,6 +98,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/permissions/user_groups',
@@ -94,6 +106,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/scheduler',
@@ -101,6 +114,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 6,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'administration/system_properties',
@@ -108,6 +122,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 7,
       permission: 'R',
+      help_page_url: null,
     },
     {
       ui_item: 'audit',
@@ -115,6 +130,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'audit/api_calls',
@@ -122,6 +138,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'audit/scheduled_jobs',
@@ -129,6 +146,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'audit/users_activity',
@@ -136,6 +154,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger',
@@ -143,6 +162,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger/accounts',
@@ -150,6 +170,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger/cards',
@@ -157,6 +178,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger/customers',
@@ -164,6 +186,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger/statements',
@@ -171,6 +194,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 3,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'ledger/transactions',
@@ -178,6 +202,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 4,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'product_designer',
@@ -185,6 +210,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 3,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'product_designer/cycles',
@@ -192,6 +218,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'product_designer/products',
@@ -199,6 +226,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'reports',
@@ -206,6 +234,7 @@ export const uiItems: UiItems = {
       item_type: 'M',
       order_number: 4,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'reports/customer_statistics',
@@ -213,6 +242,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 2,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'reports/product_statistics',
@@ -220,6 +250,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 1,
       permission: 'W',
+      help_page_url: null,
     },
     {
       ui_item: 'reports/transactions_summary',
@@ -227,6 +258,7 @@ export const uiItems: UiItems = {
       item_type: 'm',
       order_number: 0,
       permission: 'W',
+      help_page_url: null,
     },
   ],
 };

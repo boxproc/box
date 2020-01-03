@@ -21,7 +21,7 @@ import {
 } from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
-import { cookiesUtil, downloadUtil, stringsUtil } from 'utils';
+import { cookiesUtil, downloadUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
@@ -83,15 +83,18 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [isAutoRefresh, filterAction]
   );
 
+  const currentUiItem = React.useMemo(
+    () => uiItems.find(item => `${basePath}${item.id}` === `${location.pathname}`),
+    [location, uiItems]
+  );
+
   React.useEffect(
     () => {
-      const currentUiItem = uiItems
-        .find(item => `${basePath}${item.id}` === `${location.pathname}`);
-      const permission =  currentUiItem.permission;
+      const permission = currentUiItem.permission;
 
       setActivePagePermission(permission);
     },
-    [setActivePagePermission, uiItems, location]
+    [setActivePagePermission, uiItems, location, currentUiItem]
   );
 
   React.useEffect(
@@ -99,6 +102,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       return () => resetUtils();
     },
     [resetUtils]
+  );
+
+  const helpLink = React.useMemo(
+    () => currentUiItem.helpPageURL,
+    [currentUiItem]
   );
 
   const fileName = React.useMemo(
@@ -124,7 +132,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
         <Box mr="15px">
           <ExternalLink
             text="HELP"
-            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+            link={helpLink}
             grayStyle={true}
           />
         </Box>
