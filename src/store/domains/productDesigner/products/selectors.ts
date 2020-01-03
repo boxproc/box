@@ -8,7 +8,7 @@ import {
   selectCurrencyCodesOptions,
   selectDictionaryEventsOptions,
 } from 'store/domains/administration';
-import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/consts';
+import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareGeneralProductData,

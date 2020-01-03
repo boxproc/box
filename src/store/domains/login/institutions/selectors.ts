@@ -5,7 +5,7 @@ import { yesNoTypesCodes } from 'consts';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultInstitutions = (state: StoreState) =>
-  state.consts.institutions.asMutable();
+  state.login.institutions.institutions.asMutable();
 
 export const selectInstitutions = createSelector(
   selectDefaultInstitutions,

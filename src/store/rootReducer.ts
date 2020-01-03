@@ -7,10 +7,9 @@ import { combineReducers } from 'redux-seamless-immutable';
 
 import administrationReducer from './domains/administration/reducer';
 import auditReducer from './domains/audit/reducer';
-import authReducer from './domains/auth/reducer';
-import constsReducer from './domains/consts/reducer';
 import ledgerReducer from './domains/ledger/reducer';
 import loaderReducer from './domains/loader/reducer';
+import loginReducer from './domains/login/reducer';
 import modalsReducer from './domains/modals/reducer';
 import productDesignerReducer from './domains/productDesigner/reducer';
 import uiItemsReducer from './domains/uiItems/reducer';
@@ -20,12 +19,11 @@ const createRootReducer = (history: History) => combineReducers({
   router: connectRouter(history),
   form: formReducer,
   loader: loaderReducer,
-  auth: authReducer,
+  login: loginReducer,
   modals: modalsReducer,
   uiItems: uiItemsReducer,
   administration: administrationReducer,
   productDesigner: productDesignerReducer,
-  consts: constsReducer,
   ledger: ledgerReducer,
   audit: auditReducer,
   utils: utilsReducer,

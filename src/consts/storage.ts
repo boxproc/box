@@ -14,5 +14,5 @@ export enum sessionStorageNames {
 
 export const cookiesExpires = {
   MONTH: 2592000,
-  TEST_SESSION_ID: 600,
+  TEST_SESSION_ID: 1200,
 };

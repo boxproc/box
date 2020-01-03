@@ -4,10 +4,9 @@ import { FormStateMap } from 'redux-form';
 
 import { AdministrationState } from './domains/administration/';
 import { AuditState } from './domains/audit';
-import { AuthState } from './domains/auth';
-import { ConstsState } from './domains/consts';
 import { LedgerState } from './domains/ledger';
 import { LoaderState } from './domains/loader';
+import { LoginState } from './domains/login';
 import { ModalsState } from './domains/modals';
 import { ProductDesignerState } from './domains/productDesigner';
 import { UiItemsState } from './domains/uiItems';
@@ -21,9 +20,8 @@ export interface StoreState {
   audit: AuditState;
   modals: ModalsState;
   administration: AdministrationState;
-  auth: AuthState;
+  login: LoginState;
   productDesigner: ProductDesignerState;
-  consts: ConstsState;
   ledger: LedgerState;
   utils: UtilsState;
 }

@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
 import { selectCountryCodesOptions } from 'store/domains/administration';
-import { selectInstitutionsOptions } from 'store/domains/consts';
+import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareDataToRender,

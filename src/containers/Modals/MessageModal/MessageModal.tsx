@@ -35,7 +35,8 @@ const MessageModal: React.FC<MessageModalProps> = ({
     () => isSessionEnded
       || statusCode === statusCodes.USER_NOT_AUTH
       || statusCode === statusCodes.NO_SESSION_ID
-      || statusCode === statusCodes.NO_SESSION,
+      || statusCode === statusCodes.NO_SESSION
+      || statusCode === statusCodes.UNDEFINED_USER,
     [statusCode, isSessionEnded]
   );
 
@@ -70,7 +71,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isVisibleDetail ? 1010 : 400}
+      maxContainerWidth={isVisibleDetail ? 1010 : 350}
       type={modalTypesConst.MESSAGE_MODAL}
       hideCloseIcon={isReLogin}
       zIndex="102"
