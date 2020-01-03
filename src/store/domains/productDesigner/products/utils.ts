@@ -222,6 +222,8 @@ export const prepareProductIllustrationStatementsItem = (
     balanceOpen: item.balance_open,
     balanceClose: item.balance_close.toFixed(2),
     minimumAmountDueRepayment: item.minimum_amount_due_repayment.toFixed(2),
+    startDate: item.start_date,
+    endDate: item.end_date,
   };
 };
 

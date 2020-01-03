@@ -49,6 +49,30 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
       ),
     },
     {
+      maxWidth: 125,
+      sortable: true,
+      accessor: 'startDate',
+      Header: <TableHeader title="Start Date" />,
+      Cell: (props: TCell<'startDate'>) => (
+        <TableCell
+          value={props.value}
+          isDate={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 125,
+      sortable: true,
+      accessor: 'endDate',
+      Header: <TableHeader title="End Date" />,
+      Cell: (props: TCell<'endDate'>) => (
+        <TableCell
+          value={props.value}
+          isDate={true}
+        />
+      ),
+    },
+    {
       maxWidth: 120,
       sortable: true,
       accessor: 'balanceOpen',
