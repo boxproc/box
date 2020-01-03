@@ -6,6 +6,7 @@ export interface UiItem {
   description: string;
   order_number: number;
   permission: string;
+  help_page_url: string;
 }
 
 export interface UiItemPrepared {
@@ -15,6 +16,7 @@ export interface UiItemPrepared {
   type: string;
   orderNumber: number;
   separator: boolean;
+  helpPageURL: string;
   permission?: string;
 }
 

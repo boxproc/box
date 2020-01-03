@@ -24,6 +24,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
       item_type,
       order_number,
       permission,
+      help_page_url,
     } = item;
 
     const isSeparator = item_type === uiItemTypesCodes.SEPARATOR;
@@ -36,6 +37,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
       orderNumber: order_number,
       separator: isSeparator,
       permission,
+      helpPageURL: help_page_url,
     };
   });
 };

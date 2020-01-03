@@ -1,13 +1,4 @@
-import { linksConst } from 'consts';
-
 export const currentYear = new Date().getFullYear();
-
-export const getCurrentBPSUrl = (pathname: string) => {
-  const currentPathname = pathname.slice(1);
-  const currentUrl = `${linksConst.BPS_BASE}${currentPathname}`;
-
-  return currentUrl;
-};
 
 export const padStartN = (num: number, N: number) => {
   let s = num.toString();

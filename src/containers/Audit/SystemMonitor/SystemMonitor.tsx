@@ -6,6 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { CountDownTimer, ExternalLink, T2, Table, withSpinner } from 'components';
 
 import {
+  basePath,
   cookiesExpires,
   systemMonitorInterval,
   systemMonitorTables,
@@ -30,8 +31,9 @@ import {
   SystemMonitorItem,
   SystemMonitorSchedulerItem,
   SystemMonitorTransaction,
+  UiItemPrepared,
 } from 'store/domains';
-import { cookiesUtil, stringsUtil } from 'utils';
+import { cookiesUtil } from 'utils';
 
 interface SystemMonitorProps extends RouteComponentProps {
   interfacesData: Array<SystemMonitorItem>;
@@ -48,6 +50,7 @@ interface SystemMonitorProps extends RouteComponentProps {
   endpointsCounts: SystemMonitorCounts;
   schedulerCounts: SystemMonitorCounts;
   resetSystemMonitor: ResetSystemMonitor;
+  uiItems: Array<UiItemPrepared>;
 }
 
 interface SystemMonitorBlockProps {
@@ -76,6 +79,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   schedulerCounts,
   location,
   getLogData,
+  uiItems,
 }) => {
   const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
@@ -180,6 +184,20 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
     [refreshingTables, getSystemMonitorData, location]
   );
 
+  const helpLink = React.useMemo(
+    () => {
+      const currentUiItem = uiItems
+        .find(item => `${basePath}${item.id}` === `${location.pathname}`);
+
+      if (!currentUiItem) {
+        return null;
+      }
+
+      return currentUiItem.helpPageURL;
+    },
+    [location, uiItems]
+  );
+
   const systemMonitorBlocks = React.useMemo(
     () => [
       [
@@ -244,7 +262,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         <Box mb="15px" mr="15px">
           <ExternalLink
             text="HELP"
-            link={stringsUtil.getCurrentBPSUrl(location.pathname)}
+            link={helpLink}
             grayStyle={true}
           />
         </Box>

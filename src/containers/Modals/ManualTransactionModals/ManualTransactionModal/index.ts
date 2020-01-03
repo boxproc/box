@@ -12,6 +12,7 @@ import {
   selectCurrencyCodesOptions,
   selectLedgerManualTransactionModalIsLimit,
   selectPayloadLedgerManualTransactionModal,
+  selectUiItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   modalPayload: selectPayloadLedgerManualTransactionModal(state),
   currenciesOptions: selectCurrencyCodesOptions(state),
   isLimitAdjustment: selectLedgerManualTransactionModalIsLimit(state),
+  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

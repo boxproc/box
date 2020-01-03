@@ -12,12 +12,13 @@ import {
   WithModalProps,
 } from 'HOCs';
 
-import { linksConst, modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
+import { modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
 
 import {
   HandleMakeLedgerLimitAdjustment,
   HandleMakeLedgerTransaction,
-  PayloadLedgerManualTransactionModal
+  PayloadLedgerManualTransactionModal,
+  UiItemPrepared
 } from 'store/domains';
 
 import { SelectValues } from 'types';
@@ -28,6 +29,7 @@ interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactio
   modalPayload: PayloadLedgerManualTransactionModal;
   currenciesOptions: Array<SelectValues>;
   isLimitAdjustment: boolean;
+  uiItems: Array<UiItemPrepared>;
 }
 const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
 
@@ -41,6 +43,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   isLimitAdjustment,
   closeModal,
   currenciesOptions,
+  uiItems,
 }) => {
   const modalTitle = React.useMemo(
     () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
@@ -88,9 +91,29 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [closeModal]
   );
 
-  const helpLink = isLimitAdjustment
-    ? `${linksConst.BPS_BASE}${uiItemConsts.LEDGER_LIMIT_ADJUSTMENT}`
-    : `${linksConst.BPS_BASE}${uiItemConsts.LEDGER_MANUAL_TRANSACTIONS}`;
+  const currentPath = React.useMemo(
+    () => isLimitAdjustment
+    ? uiItemConsts.LEDGER_LIMIT_ADJUSTMENT
+    : uiItemConsts.LEDGER_MANUAL_TRANSACTIONS,
+    [isLimitAdjustment]
+  );
+
+  const helpLink = React.useMemo(
+    () => {
+      if (!uiItems) {
+        return null;
+      }
+
+      const currentUiItem = uiItems.find(item => item.id === currentPath);
+
+      if (!currentUiItem) {
+        return null;
+      }
+
+      return currentUiItem.helpPageURL;
+    },
+    [uiItems, currentPath]
+  );
 
   return (
     <Modal
