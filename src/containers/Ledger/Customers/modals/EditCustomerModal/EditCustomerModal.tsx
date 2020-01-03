@@ -67,12 +67,14 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
           <RepaymentDebitCardsForm
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
+            onCancel={handleOnCancel}
           />
         </TabsPanel>
         <TabsPanel title="Repayment Direct Debits">
           <RepaymentDirectDebitsForm
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
+            onCancel={handleOnCancel}
           />
         </TabsPanel>
       </Tabs>
