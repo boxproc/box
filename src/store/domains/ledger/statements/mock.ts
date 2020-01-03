@@ -1,9 +1,7 @@
 import {
   LedgerAccountStatementItems,
   LedgerStatementAprItems,
-  LedgerStatementFeeItems,
   LedgerStatementItems,
-  LedgerStatementRewardItems,
 } from './types';
 
 export const ledgerStatementsItems: LedgerStatementItems = {
@@ -104,34 +102,6 @@ export const ledgerAccountStatementAprItems: LedgerStatementAprItems = {
       accrued_interest: 1,
       description: 'Description',
       rate: 1,
-    },
-  ],
-};
-
-export const ledgerAccountStatementFeeItems: LedgerStatementFeeItems = {
-  statement_fees: [
-    {
-      statement_id: 1,
-      product_fee_id: 1,
-      accrued_fee: 1,
-      description: 'Description',
-      rate: 1,
-      amount: 1,
-      fee_application_condition: 'R',
-    },
-  ],
-};
-
-export const ledgerAccountStatementRewardItems: LedgerStatementRewardItems = {
-  statement_rewards: [
-    {
-      statement_id: 1,
-      product_reward_id: 1,
-      accrued_reward: 1,
-      description: 'Description',
-      rate: 1,
-      amount: 1,
-      reward_application_condition: 'A',
     },
   ],
 };

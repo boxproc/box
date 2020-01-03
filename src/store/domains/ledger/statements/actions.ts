@@ -14,8 +14,6 @@ import {
   FilterLedgerStatementsByIdAction,
   GetLedgerAccountStatementsAction,
   GetLedgerStatementAprsAction,
-  GetLedgerStatementFeesAction,
-  GetLedgerStatementRewardsAction,
   GetLedgerStatementTransactionsAction
 } from './actionTypes';
 import * as api from './api';
@@ -28,8 +26,6 @@ import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest
 import {
   preparedFilterToSend,
   prepareStatementAprsForReport,
-  prepareStatementFeesForReport,
-  prepareStatementRewardsForReport,
   prepareStatementTransactionsForReport,
 } from './utils';
 
@@ -48,16 +44,11 @@ export type GetLedgerAccountStatements = (accountId: number) => GetLedgerAccount
 export type HandleGetLedgerAccountStatements = (accountId: number) => Thunk<void>;
 
 export type GetLedgerStatementAprs = (statementId: number) => GetLedgerStatementAprsAction;
-export type GetLedgerStatementFees = (statementId: number) => GetLedgerStatementFeesAction;
-export type GetLedgerStatementRewards = (statementId: number) =>
-  GetLedgerStatementRewardsAction;
 
-export type HandleGetLedgerStatementAprsFeesRewards = (
-  statementId: number,
-  openModalName?: string
-) => Thunk<void>;
+export type HandleGetLedgerStatementAprs = (statementId: number, openModalName?: string) =>
+  Thunk<void>;
 
-export type HandleGenerateStatementTransactionsAprsFeesRewards = () => Thunk<void>;
+export type HandleGenerateStatementTransactionsAprs = () => Thunk<void>;
 
 export type HandleDownloadLedgerStatement = (
   statementId: number,
@@ -89,16 +80,6 @@ export const getLedgerAccountStatements: GetLedgerAccountStatements = accountId 
 export const getLedgerAccountStatementAprs: GetLedgerStatementAprs = statementId => ({
   type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS,
   payload: api.getLedgerAccountStatementAprs(statementId),
-});
-
-export const getLedgerAccountStatementFees: GetLedgerStatementFees = statementId => ({
-  type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES,
-  payload: api.getLedgerAccountStatementFees(statementId),
-});
-
-export const getLedgerAccountStatementRewards: GetLedgerStatementRewards = statementId => ({
-  type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS,
-  payload: api.getLedgerAccountStatementRewards(statementId),
 });
 
 export const resetStatements: ResetStatements = () => ({
@@ -157,16 +138,12 @@ export const handleGetLedgerAccountStatements: HandleGetLedgerAccountStatements 
     );
   };
 
-export const handleGetLedgerStatementAprsFeesRewards:
-  HandleGetLedgerStatementAprsFeesRewards = (statementId, openModalName) =>
+export const handleGetLedgerStatementAprs:
+  HandleGetLedgerStatementAprs = (statementId, openModalName) =>
     async dispatch => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
-          await Promise.all([
-            dispatch(getLedgerAccountStatementAprs(statementId)),
-            dispatch(getLedgerAccountStatementFees(statementId)),
-            dispatch(getLedgerAccountStatementRewards(statementId)),
-          ]);
+          await dispatch(getLedgerAccountStatementAprs(statementId));
 
           if (openModalName) {
             dispatch(openModal({ name: openModalName }));
@@ -176,8 +153,8 @@ export const handleGetLedgerStatementAprsFeesRewards:
       );
     };
 
-export const handleGenerateStatementTransactionsAprsFeesRewards:
-  HandleGenerateStatementTransactionsAprsFeesRewards = () =>
+export const handleGenerateStatementTransactionsAprs:
+  HandleGenerateStatementTransactionsAprs = () =>
     async (dispatch, getState) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
@@ -191,16 +168,12 @@ export const handleGenerateStatementTransactionsAprsFeesRewards:
           const loadedData = await Promise.all([
             dispatch(getLedgerStatementTransactions(currentTransaction)),
             dispatch(getLedgerAccountStatementAprs(statementId)),
-            dispatch(getLedgerAccountStatementFees(statementId)),
-            dispatch(getLedgerAccountStatementRewards(statementId)),
           ]) as Array<any>;
 
           loadedData.forEach(item => data.push(item.value));
 
           const transactions = data.find(el => el.transactions).transactions;
           const aprs = data.find(el => el.statement_aprs).statement_aprs;
-          const fees = data.find(el => el.statement_fees).statement_fees;
-          const rewards = data.find(el => el.statement_rewards).statement_rewards;
 
           if (transactions.length) {
             downloadUtil.downloadStatementPDF({
@@ -216,16 +189,6 @@ export const handleGenerateStatementTransactionsAprsFeesRewards:
                   id: 'accruedInterest',
                   title: 'Accrued interest',
                   items: prepareStatementAprsForReport(aprs),
-                },
-                {
-                  id: 'fees',
-                  title: 'Fees',
-                  items: prepareStatementFeesForReport(fees),
-                },
-                {
-                  id: 'rewards',
-                  title: 'Rewards',
-                  items: prepareStatementRewardsForReport(rewards),
                 },
               ],
             });

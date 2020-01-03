@@ -118,54 +118,6 @@ export interface LedgerStatementAprItemPrepared {
   rate: string;
 }
 
-export interface LedgerStatementFeeItem {
-  statement_id: number;
-  product_fee_id: number;
-  accrued_fee: number;
-  description: string;
-  rate?: number;
-  amount?: number;
-  fee_application_condition: string;
-}
-
-export interface LedgerStatementFeeItems {
-  statement_fees: Array<LedgerStatementFeeItem>;
-}
-
-export interface LedgerStatementFeeItemPrepared {
-  statementId: number;
-  productFeeId: number;
-  accruedFee: string;
-  description: string;
-  rate?: string;
-  amount?: string;
-  feeApplicationCondition: string;
-}
-
-export interface LedgerStatementRewardItem {
-  statement_id: number;
-  product_reward_id: number;
-  accrued_reward: number;
-  description: string;
-  rate?: number;
-  amount?: number;
-  reward_application_condition: string;
-}
-
-export interface LedgerStatementRewardItems {
-  statement_rewards: Array<LedgerStatementRewardItem>;
-}
-
-export interface LedgerStatementRewardItemPrepared {
-  statementId: number;
-  productRewardId: number;
-  accruedReward: string;
-  description: string;
-  rate?: string;
-  amount?: string;
-  rewardApplicationCondition: string;
-}
-
 export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;
 
 export type LedgerAccountStatementItemPrepared = Partial<LedgerStatementItemPrepared>;
@@ -209,6 +161,4 @@ export interface LedgerStatementsState {
   transactions: ImmutableArray<LedgerStatementTransactionsItem>;
   accountStatements: ImmutableArray<LedgerAccountStatementItem>;
   statementAprs: ImmutableArray<LedgerStatementAprItem>;
-  statementFees: ImmutableArray<LedgerStatementFeeItem>;
-  statementRewards: ImmutableArray<LedgerStatementRewardItem>;
 }

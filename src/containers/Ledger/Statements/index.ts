@@ -10,7 +10,7 @@ import {
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterLedgerStatements,
-  handleGenerateStatementTransactionsAprsFeesRewards,
+  handleGenerateStatementTransactionsAprs,
   LedgerAccountsActionTypes,
   LedgerCardsActionTypes,
   LedgerCustomersActionTypes,
@@ -36,8 +36,6 @@ const loadingSelector = createLoadingSelector([
 const loadingStatementSelector = createLoadingSelector([
   LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
   LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_FEES,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_REWARDS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -55,7 +53,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
     filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
     filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
-    generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprsFeesRewards,
+    generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprs,
     resetStatements,
     setActiveItemId,
   },

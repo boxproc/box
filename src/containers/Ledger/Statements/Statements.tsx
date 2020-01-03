@@ -17,7 +17,7 @@ import {
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerStatements,
   HandleFilterLedgerTransactionsById,
-  HandleGenerateStatementTransactionsAprsFeesRewards,
+  HandleGenerateStatementTransactionsAprs,
   LedgerStatementItemPrepared,
   ResetStatements,
   SetActiveItemId,
@@ -35,7 +35,7 @@ export interface StatementsProps {
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
-  generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprsFeesRewards;
+  generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprs;
   resetStatements: ResetStatements;
   setActiveItemId: SetActiveItemId;
   isLoadingStatement: boolean;

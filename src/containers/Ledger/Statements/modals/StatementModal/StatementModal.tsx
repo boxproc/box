@@ -3,24 +3,17 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, Tabs, TabsPanel, withSpinner } from 'components';
-import {
-  StatementAprsTable,
-  StatementFeesTable,
-  StatementRewardsTable,
-  TransactionsTable,
-} from 'containers/Ledger/Statements/components';
+import { StatementAprsTable, TransactionsTable } from 'containers/Ledger/Statements/components';
 import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import {
-  HandleGetLedgerStatementAprsFeesRewards,
+  HandleGetLedgerStatementAprs,
   HandleGetLedgerStatementTransactions,
   LedgerStatementAprItemPrepared,
-  LedgerStatementFeeItemPrepared,
   LedgerStatementItemPrepared,
-  LedgerStatementRewardItemPrepared,
   LedgerStatementTransactionsItemPrepared,
 } from 'store/domains';
 
@@ -29,11 +22,9 @@ interface StatementModalProps extends WithModalProps {
   currentStatement: LedgerStatementItemPrepared;
   statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
   statementAprs: Array<LedgerStatementAprItemPrepared>;
-  statementFees: Array<LedgerStatementFeeItemPrepared>;
-  statementRewards: Array<LedgerStatementRewardItemPrepared>;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
-  getStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
-  generateTransactionsAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
+  getStatementAprs: HandleGetLedgerStatementAprs;
+  generateTransactionsAprs: HandleGetLedgerStatementAprs;
 }
 
 const modalName = modalNamesConst.LEDGER_STATEMENTS;
@@ -44,20 +35,18 @@ const StatementModal: React.FC<StatementModalProps> = ({
   closeModal,
   statementTransactions,
   statementAprs,
-  statementFees,
-  statementRewards,
   getStatementTransactions,
-  getStatementAprsFeesRewards,
-  generateTransactionsAprsFeesRewards,
+  getStatementAprs,
+  generateTransactionsAprs,
 }) => {
   React.useEffect(
     () => {
       Promise.all([
         getStatementTransactions(),
-        getStatementAprsFeesRewards(currentStatementId),
+        getStatementAprs(currentStatementId),
       ]);
     },
-    [getStatementTransactions, getStatementAprsFeesRewards, currentStatementId]
+    [getStatementTransactions, getStatementAprs, currentStatementId]
   );
 
   const handleCloseModal = React.useCallback(
@@ -88,16 +77,6 @@ const StatementModal: React.FC<StatementModalProps> = ({
             <StatementAprsTable data={statementAprs} />
           </Box>
         </TabsPanel>
-        <TabsPanel title="Fees">
-          <Box mt="20px" mb="10px">
-            <StatementFeesTable data={statementFees} />
-          </Box>
-        </TabsPanel>
-        <TabsPanel title="Rewards">
-          <Box mt="20px" mb="10px">
-            <StatementRewardsTable data={statementRewards} />
-          </Box>
-        </TabsPanel>
       </Tabs>
       <Flex
         alignItems="center"
@@ -106,7 +85,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
         <Button
           text="Open pdf statement"
           iconName={iconNamesConst.FILE_PDF}
-          onClick={generateTransactionsAprsFeesRewards}
+          onClick={generateTransactionsAprs}
         />
         <Button
           text="Close"

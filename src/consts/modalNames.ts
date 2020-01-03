@@ -25,7 +25,7 @@ export enum modalNamesConst {
   EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomerModal',
   EDIT_LEDGER_ACCOUNT = 'EditLedgerAccountModal',
   ADD_LEDGER_ACCOUNT = 'AddLedgerAccountModal',
-  STATEMENT_APRS_FEES_REWARDS = 'StatementAprsFeesRewardsModal',
+  STATEMENT_APRS = 'StatementAprsModal',
   LEDGER_TRANSACTION = 'LedgerTransactionModal',
   LEDGER_MANUAL_TRANSACTION = 'LedgerManualTransactionModal',
   LEDGER_MANUAL_TRANSACTION_RESULT = 'LedgerManualTransactionResultModal',

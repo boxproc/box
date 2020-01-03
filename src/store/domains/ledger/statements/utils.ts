@@ -1,14 +1,10 @@
-import { feeTypesOptions, repaymentStatusTypesOptions, rewardsTypesOptions } from 'consts';
+import { repaymentStatusTypesOptions } from 'consts';
 
 import {
   LedgerAccountStatementItem,
   LedgerStatementAprItem,
   LedgerStatementAprItemPrepared,
-  LedgerStatementFeeItem,
-  LedgerStatementFeeItemPrepared,
   LedgerStatementItem,
-  LedgerStatementRewardItem,
-  LedgerStatementRewardItemPrepared,
   LedgerStatementsFilter,
   LedgerStatementTransactionsItem,
   LedgerStatementTransactionsItemPrepared
@@ -219,68 +215,6 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
   };
 };
 
-export const prepareStatementFeeToRender = (data: LedgerStatementFeeItem):
-  LedgerStatementFeeItemPrepared => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    statement_id,
-    product_fee_id,
-    accrued_fee,
-    description,
-    rate,
-    amount,
-    fee_application_condition,
-  } = data;
-
-  const feeApplicationCondition = feeTypesOptions
-    .find(item => item.value === fee_application_condition);
-
-  return {
-    statementId: statement_id,
-    productFeeId: product_fee_id,
-    accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) ? accrued_fee.toFixed(5) : null,
-    description,
-    rate: stringsUtil.checkNumberToFixed(rate) ? rate.toFixed(2) : null,
-    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
-    feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
-  };
-};
-
-export const prepareStatementRewardToRender = (data: LedgerStatementRewardItem):
-  LedgerStatementRewardItemPrepared => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    statement_id,
-    product_reward_id,
-    accrued_reward,
-    description,
-    rate,
-    amount,
-    reward_application_condition,
-  } = data;
-
-  const rewardApplicationCondition = rewardsTypesOptions
-    .find(item => item.value === reward_application_condition);
-
-  return {
-    statementId: statement_id,
-    productRewardId: product_reward_id,
-    accruedReward: stringsUtil.checkNumberToFixed(accrued_reward)
-      ? accrued_reward.toFixed(5)
-      : null,
-    description,
-    rate: stringsUtil.checkNumberToFixed(rate) ? rate.toFixed(2) : null,
-    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
-    rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
-  };
-};
-
 export const prepareStatementTransactionsForReport =
   (transactions: Array<LedgerStatementTransactionsItem>):
     Array<Partial<LedgerStatementTransactionsItemPrepared>> => {
@@ -329,44 +263,6 @@ export const prepareStatementAprsForReport = (aprs: Array<LedgerStatementAprItem
       description: null,
       rate: null,
       accruedInterest: null,
-    }];
-  }
-};
-
-export const prepareStatementFeesForReport = (fees: Array<LedgerStatementFeeItem>) => {
-  if (fees.length) {
-    return fees.map(fee => {
-      const { description, accrued_fee } = fee;
-
-      return {
-        description,
-        accruedFee: stringsUtil.checkNumberToFixed(accrued_fee) ? accrued_fee.toFixed(5) : null,
-      };
-    });
-  } else {
-    return [{
-      description: null,
-      accruedFee: null,
-    }];
-  }
-};
-
-export const prepareStatementRewardsForReport = (rewards: Array<LedgerStatementRewardItem>) => {
-  if (rewards.length) {
-    return rewards.map(reward => {
-      const { description, accrued_reward } = reward;
-
-      return {
-        description,
-        accruedReward: stringsUtil.checkNumberToFixed(accrued_reward)
-          ? accrued_reward.toFixed(5)
-          : null,
-      };
-    });
-  } else {
-    return [{
-      description: null,
-      accruedReward: null,
     }];
   }
 };

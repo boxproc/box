@@ -9,7 +9,7 @@ import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
   HandleGetLedgerAccountStatements,
-  HandleGetLedgerStatementAprsFeesRewards,
+  HandleGetLedgerStatementAprs,
   LedgerAccountStatementItemPrepared,
 } from 'store/domains';
 import { TableCellType } from 'types';
@@ -20,14 +20,14 @@ type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
 interface AccountStatementsProps {
   accountStatements: Array<LedgerAccountStatementItemPrepared>;
   getLedgerAccountStatements: HandleGetLedgerAccountStatements;
-  getLedgerStatementAprsFeesRewards: HandleGetLedgerStatementAprsFeesRewards;
+  getLedgerStatementAprs: HandleGetLedgerStatementAprs;
   accountCurrentId: number;
   onCancel: () => void;
 }
 
 const AccountStatements: React.FC<AccountStatementsProps> = ({
   getLedgerAccountStatements,
-  getLedgerStatementAprsFeesRewards,
+  getLedgerStatementAprs,
   accountStatements,
   accountCurrentId,
   onCancel,
@@ -45,14 +45,14 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
 
       return {
         onDoubleClick: () => {
-          getLedgerStatementAprsFeesRewards(
+          getLedgerStatementAprs(
             statementId,
-            modalNamesConst.STATEMENT_APRS_FEES_REWARDS
+            modalNamesConst.STATEMENT_APRS
           );
         },
       };
     },
-    [getLedgerStatementAprsFeesRewards]
+    [getLedgerStatementAprs]
   );
 
   const tableColumns = [
@@ -199,9 +199,9 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
             iconName={iconNamesConst.SHORT_TEXT}
             title="Details"
             type="reset"
-            onClick={() => getLedgerStatementAprsFeesRewards(
+            onClick={() => getLedgerStatementAprs(
               cellInfo.original.id,
-              modalNamesConst.STATEMENT_APRS_FEES_REWARDS
+              modalNamesConst.STATEMENT_APRS
             )}
           />
         </Flex>

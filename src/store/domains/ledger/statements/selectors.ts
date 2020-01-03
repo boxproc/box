@@ -9,8 +9,6 @@ import {
   prepareDataToRender,
   prepareStatementAprToRender,
   prepareStatementDataToRender,
-  prepareStatementFeeToRender,
-  prepareStatementRewardToRender,
   prepareTransactionsDataToRender,
 } from './utils';
 
@@ -114,22 +112,6 @@ export const selectDefaultLedgerStatementAprs = (state: StoreState) =>
 export const selectLedgerStatementAprs = createSelector(
   selectDefaultLedgerStatementAprs,
   aprs => aprs && aprs.asMutable().map(apr => prepareStatementAprToRender(apr))
-);
-
-export const selectDefaultLedgerStatementFees = (state: StoreState) =>
-  state.ledger.statements.statementFees;
-
-export const selectLedgerStatementFees = createSelector(
-  selectDefaultLedgerStatementFees,
-  fees => fees && fees.asMutable().map(fee => prepareStatementFeeToRender(fee))
-);
-
-export const selectDefaultLedgerStatementRewards = (state: StoreState) =>
-  state.ledger.statements.statementRewards;
-
-export const selectLedgerStatementRewards = createSelector(
-  selectDefaultLedgerStatementRewards,
-  rewards => rewards && rewards.asMutable().map(reward => prepareStatementRewardToRender(reward))
 );
 
 export const selectLedgerStatementReportFileName = createSelector(

@@ -7,34 +7,21 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-import {
-  StatementAprsTable,
-  StatementDate,
-  StatementFeesTable,
-  StatementRewardsTable,
-} from 'containers/Ledger/Statements/components';
+import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/components';
 
-import {
-  LedgerStatementAprItemPrepared,
-  LedgerStatementFeeItemPrepared,
-  LedgerStatementRewardItemPrepared,
-} from 'store/domains';
+import { LedgerStatementAprItemPrepared } from 'store/domains';
 
-interface StatementAprsFeesRewardsProps extends WithModalProps {
+interface StatementAprsProps extends WithModalProps {
   statementAprs: Array<LedgerStatementAprItemPrepared>;
-  statementFees: Array<LedgerStatementFeeItemPrepared>;
-  statementRewards: Array<LedgerStatementRewardItemPrepared>;
   currentAccountAlias: string;
   currentStatementDate: string;
 }
 
-const modalName = modalNamesConst.STATEMENT_APRS_FEES_REWARDS;
+const modalName = modalNamesConst.STATEMENT_APRS;
 
-const StatementAprsFeesRewards: React.FC<StatementAprsFeesRewardsProps> = ({
+const StatementAprs: React.FC<StatementAprsProps> = ({
   closeModal,
   statementAprs,
-  statementFees,
-  statementRewards,
   currentAccountAlias,
   currentStatementDate,
 }) => {
@@ -62,18 +49,6 @@ const StatementAprsFeesRewards: React.FC<StatementAprsFeesRewardsProps> = ({
             <StatementAprsTable data={statementAprs} />
           </Box>
         </TabsPanel>
-        <TabsPanel title="Fees">
-          <Box mt="20px">
-            <StatementDate date={currentStatementDate} />
-            <StatementFeesTable data={statementFees} />
-          </Box>
-        </TabsPanel>
-        <TabsPanel title="Rewards">
-          <Box mt="20px">
-            <StatementDate date={currentStatementDate} />
-            <StatementRewardsTable data={statementRewards} />
-          </Box>
-        </TabsPanel>
       </Tabs>
       <Flex justifyContent="flex-end">
         <Box mt="10px">
@@ -87,4 +62,4 @@ const StatementAprsFeesRewards: React.FC<StatementAprsFeesRewardsProps> = ({
   );
 };
 
-export default withModal(StatementAprsFeesRewards);
+export default withModal(StatementAprs);

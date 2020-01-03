@@ -4,7 +4,7 @@ import { modalNamesConst } from 'consts';
 
 import AddAccountModal from './AddAccountModal';
 import EditAccountModal from './EditAccountModal';
-import StatementAprsFeesRewardsModal from './StatementAprsFeesRewardsModal';
+import StatementAprsModal from './StatementAprsModal';
 
 export const accountsModals = [
   {
@@ -16,7 +16,7 @@ export const accountsModals = [
     component: <EditAccountModal />,
   },
   {
-    name: modalNamesConst.STATEMENT_APRS_FEES_REWARDS,
-    component: <StatementAprsFeesRewardsModal />,
+    name: modalNamesConst.STATEMENT_APRS,
+    component: <StatementAprsModal />,
   },
 ];

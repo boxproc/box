@@ -6,7 +6,7 @@ import AccountStatements from './AccountStatements';
 import {
   createLoadingSelector,
   handleGetLedgerAccountStatements,
-  handleGetLedgerStatementAprsFeesRewards,
+  handleGetLedgerStatementAprs,
   LedgerStatementsActionTypes,
   selectActiveItemId,
   selectLedgerAccountStatements,
@@ -17,8 +17,6 @@ import { StoreState } from 'store/StoreState';
 const loadingSelector = createLoadingSelector([
   LedgerStatementsActionTypes.GET_LEDGER_ACCOUNT_STATEMENTS,
   LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_FEES,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_REWARDS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -30,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getLedgerAccountStatements: handleGetLedgerAccountStatements,
-    getLedgerStatementAprsFeesRewards: handleGetLedgerStatementAprsFeesRewards,
+    getLedgerStatementAprs: handleGetLedgerStatementAprs,
   },
   dispatch
 );

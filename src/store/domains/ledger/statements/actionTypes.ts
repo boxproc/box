@@ -2,9 +2,7 @@ import { ApiResponse } from 'types';
 import {
   LedgerAccountStatementItems,
   LedgerStatementAprItems,
-  LedgerStatementFeeItems,
   LedgerStatementItems,
-  LedgerStatementRewardItems,
   LedgerStatementTransactionsItems,
 } from './types';
 
@@ -34,15 +32,6 @@ export enum ActionTypeKeys {
   GET_LEDGER_STATEMENT_APRS = 'ledger/statements/GET_LEDGER_STATEMENT_APRS',
   GET_LEDGER_STATEMENT_APRS_FULFILLED = 'ledger/statements/GET_LEDGER_STATEMENT_APRS_FULFILLED',
   GET_LEDGER_STATEMENT_APRS_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_APRS_REJECTED',
-
-  GET_LEDGER_STATEMENT_FEES = 'ledger/statements/GET_LEDGER_STATEMENT_FEES',
-  GET_LEDGER_STATEMENT_FEES_FULFILLED = 'ledger/statements/GET_LEDGER_STATEMENT_FEES_FULFILLED',
-  GET_LEDGER_STATEMENT_FEES_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_FEES_REJECTED',
-
-  GET_LEDGER_STATEMENT_REWARDS = 'ledger/statements/GET_LEDGER_STATEMENT_REWARDS',
-  GET_LEDGER_STATEMENT_REWARDS_FULFILLED =
-  'ledger/statements/GET_LEDGER_STATEMENT_REWARDS_FULFILLED',
-  GET_LEDGER_STATEMENT_REWARDS_REJECTED = 'ledger/statements/GET_LEDGER_STATEMENT_REWARDS_REJECTED',
 
   RESET_STATEMENTS = 'ledger/statements/RESET_STATEMENTS',
 }
@@ -120,36 +109,6 @@ export interface GetLedgerStatementAprsRejectedAction {
   readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS_REJECTED;
 }
 
-export interface GetLedgerStatementFeesAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES;
-}
-
-export interface GetLedgerStatementFeesFulfilledAction {
-  readonly payload: LedgerStatementFeeItems;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES_FULFILLED;
-}
-
-export interface GetLedgerStatementFeesRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_FEES_REJECTED;
-}
-
-export interface GetLedgerStatementRewardsAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS;
-}
-
-export interface GetLedgerStatementRewardsFulfilledAction {
-  readonly payload: LedgerStatementRewardItems;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS_FULFILLED;
-}
-
-export interface GetLedgerStatementRewardsRejectedAction {
-  readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_REWARDS_REJECTED;
-}
-
 export interface ResetStatementsAction {
   readonly type: ActionTypeKeys.RESET_STATEMENTS;
 }
@@ -161,6 +120,4 @@ export type LedgerStatementsActionTypes =
   | GetLedgerAccountStatementsFulfilledAction
   | GetLedgerStatementTransactionsAction
   | GetLedgerStatementAprsFulfilledAction
-  | GetLedgerStatementFeesFulfilledAction
-  | GetLedgerStatementRewardsFulfilledAction
   | ResetStatementsAction;
