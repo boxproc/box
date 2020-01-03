@@ -175,24 +175,22 @@ export const handleGenerateStatementTransactionsAprs:
           const transactions = data.find(el => el.transactions).transactions;
           const aprs = data.find(el => el.statement_aprs).statement_aprs;
 
-          if (transactions.length) {
-            downloadUtil.downloadStatementPDF({
-              fileName: selectLedgerStatementReportFileName(state),
-              statement: selectLedgerCurrentStatementForReport(state),
-              tables: [
-                {
-                  id: 'transactions',
-                  title: 'Transactions',
-                  items: prepareStatementTransactionsForReport(transactions),
-                },
-                {
-                  id: 'accruedInterest',
-                  title: 'Accrued interest',
-                  items: prepareStatementAprsForReport(aprs),
-                },
-              ],
-            });
-          }
+          downloadUtil.downloadStatementPDF({
+            fileName: selectLedgerStatementReportFileName(state),
+            statement: selectLedgerCurrentStatementForReport(state),
+            tables: [
+              {
+                id: 'transactions',
+                title: 'Transactions',
+                items: prepareStatementTransactionsForReport(transactions),
+              },
+              {
+                id: 'accruedInterest',
+                title: 'Accrued interest',
+                items: prepareStatementAprsForReport(aprs),
+              },
+            ],
+          });
         },
         dispatch
       );
