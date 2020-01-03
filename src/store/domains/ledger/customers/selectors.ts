@@ -57,6 +57,11 @@ export const selectLedgerCurrentCustomerName = createSelector(
   (customer) => customer && `${customer.firstName} ${customer.lastName}`
 );
 
+export const selectLedgerCurrentCustomerInstitutionId = createSelector(
+  selectLedgerCurrentCustomer,
+  (customer) => customer && customer.institutionId.value
+);
+
 export const selectDefaultRepaymentDebitCards = (state: StoreState) =>
   state.ledger.customers.repaymentDebitCards;
 

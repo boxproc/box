@@ -12,12 +12,15 @@ import {
   RepaymentDebitCardsTable,
 } from 'containers/Ledger/Customers/components';
 import { HandleAddRepaymentDebitCard } from 'store/domains';
+import { SelectValues } from 'types';
 
 interface RepaymentDebitCardsFormProps {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
   addRepaymentDebitCard: HandleAddRepaymentDebitCard;
+  interfacesOptions: Array<SelectValues>;
+  isInterfacesLoading: boolean;
 }
 
 type RepaymentDebitCardsFormAllProps = RepaymentDebitCardsFormProps
@@ -31,6 +34,8 @@ const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
   isLoading,
   isReadOnly,
   addRepaymentDebitCard,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(addRepaymentDebitCard),
@@ -47,6 +52,8 @@ const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
                 isDisabled={isLoading}
                 isLoading={isLoading}
                 pristine={pristine}
+                interfacesOptions={interfacesOptions}
+                isInterfacesLoading={isInterfacesLoading}
               />
             </Flex>
           </Box>

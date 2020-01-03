@@ -13,6 +13,7 @@ interface ProductServicesProps {
   productEndpointsServiceOptions: Array<SelectValues>;
   productInterfacesServiceOptions: Array<SelectValues>;
   getProductServices: HandleGetProductServices;
+  currentInstitutionId: number;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isReadOnly: boolean;
@@ -22,15 +23,16 @@ const ProductServices: React.FC<ProductServicesProps> = ({
   productInterfacesServiceOptions,
   productEndpointsServiceOptions,
   getProductServices,
+  currentInstitutionId,
   isLoadingInterfaces,
   isLoadingEndpoints,
   isReadOnly,
 }) => {
   React.useEffect(
     () => {
-      getProductServices();
+      getProductServices(currentInstitutionId);
     },
-    [getProductServices]
+    [getProductServices, currentInstitutionId]
   );
 
   return (

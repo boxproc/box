@@ -45,7 +45,7 @@ import {
   UpdateProductRulesAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectCurrentInstitutionId, selectCurrentProductType } from './selectors';
+import { selectCurrentProductType } from './selectors';
 import {
   GeneralLedgerItem,
   GeneralLedgerItemPrepared,
@@ -120,11 +120,13 @@ export type HandleGetProduct = () => Thunk<void>;
 export type GetProductRule = (data: ProductRuleRequestPrepared) => GetProductRuleAction;
 export type HandleGetProductRule = () => Thunk<void>;
 
-export type GetInterfacesService = (institutionId: string | number) =>
+export type GetInterfacesService = (institutionId: number) =>
   GetInterfacesProductServiceAction;
-export type GetEndpointsService = (institutionId: string | number) =>
+export type GetEndpointsService = (institutionId: number) =>
   GetEndpointsProductServiceAction;
-export type HandleGetProductServices = () => Thunk<void>;
+
+export type HandleGetInterfacesService = (institutionId: number) => Thunk<void>;
+export type HandleGetProductServices = (institutionId: number) => Thunk<void>;
 
 export type AddProduct = (data: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (data: Partial<NewProduct>) => Thunk<void>;
@@ -430,16 +432,23 @@ export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
     );
   };
 
-export const handleGetProductServices: HandleGetProductServices = () =>
-  async (dispatch, getState) => {
+export const handleGetInterfacesService: HandleGetInterfacesService = institutionId =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const currentInstitutionId = selectCurrentInstitutionId(state);
+        await dispatch(getInterfacesService(institutionId));
+      },
+      dispatch
+    );
+  };
 
+export const handleGetProductServices: HandleGetProductServices = institutionId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
         await Promise.all([
-          dispatch(getInterfacesService(currentInstitutionId)),
-          dispatch(getEndpointsService(currentInstitutionId)),
+          dispatch(getInterfacesService(institutionId)),
+          dispatch(getEndpointsService(institutionId)),
         ]);
       },
       dispatch

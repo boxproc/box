@@ -133,7 +133,7 @@ export const selectCurrentProduct = createSelector(
   }
 );
 
-export const selectCurrentInstitutionId = createSelector(
+export const selectCurrentProductInstitutionId = createSelector(
   selectCurrentProduct,
   product => {
     if (!product || !product.institutionId) {

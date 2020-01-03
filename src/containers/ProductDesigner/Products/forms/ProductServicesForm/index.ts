@@ -9,6 +9,7 @@ import {
   handleUpdateCardService,
   ProductsActionTypes,
   selectActiveItemId,
+  selectCurrentProductInstitutionId,
   selectProductCardEndpointsService,
   selectProductCardInterfacesService,
   selectProductServices
@@ -34,6 +35,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectActiveItemId(state),
   productInterfacesServiceOptions: selectProductCardInterfacesService(state),
   productEndpointsServiceOptions: selectProductCardEndpointsService(state),
+  currentInstitutionId: selectCurrentProductInstitutionId(state),
   initialValues: selectProductServices(state),
 });
 

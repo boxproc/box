@@ -51,12 +51,12 @@ export const getProductDetails = (id: number) =>
     data: { id },
   });
 
-export const getEndpointsService = (institutionId: number | string) =>
+export const getEndpointsService = (institutionId: number) =>
   apiClient.post(productsPathNames.GET_ENDPOINTS_SERVICE, {
     data: { institution_id: institutionId },
   });
 
-export const getInterfacesService = (institutionId: number | string) =>
+export const getInterfacesService = (institutionId: number) =>
   apiClient.post(productsPathNames.GET_INTERFACES_SERVICE, {
     data: { institution_id: institutionId },
   });
