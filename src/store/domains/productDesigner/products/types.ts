@@ -47,6 +47,8 @@ export interface IllustrationProductLoanResp {
   apr: number;
   amount: number;
   minimum_amount_due_repayment: number;
+  start_date: string;
+  end_date: string;
 }
 
 export interface IllustrationProductLoan {
@@ -57,6 +59,8 @@ export interface IllustrationProductLoan {
   apr: number | string;
   amount: number | string;
   minimumAmountDueRepayment: number | string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface IllustrationProductStatementsRevolvingCreditResp {
@@ -67,6 +71,8 @@ export interface IllustrationProductStatementsRevolvingCreditResp {
   balance_open: number;
   balance_close: number;
   minimum_amount_due_repayment: number;
+  start_date: string;
+  end_date: string;
 }
 
 export interface IllustrationProductStatementsRevolvingCredit {
@@ -77,6 +83,8 @@ export interface IllustrationProductStatementsRevolvingCredit {
   balanceOpen: number | string;
   balanceClose: number | string;
   minimumAmountDueRepayment: number | string;
+  startDate: number | string;
+  endDate: number | string;
 }
 
 export interface IllustrationProductAprRevolvingCreditResp {
