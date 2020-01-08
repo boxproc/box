@@ -7,6 +7,7 @@ import { CheckboxField, Delimiter, InputField, SelectField, TextField } from 'co
 
 import {
   cardFormFactorOptions,
+  cycleTypesIds,
   productTypesOptions,
   schemeTypesOptions,
   statusTypesOptions,
@@ -31,6 +32,7 @@ interface ProductGeneralInfoProps {
   currencyCodesOptions: Array<SelectValues>;
   getCurrencyCodes: HandleGetDictionaryCurrencies;
   isCurrencyCodesLoading: boolean;
+  statementCycleTypeValue: SelectValues;
 }
 
 const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
@@ -43,6 +45,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
   statementCycleTypesOptions,
   getStatementCycleTypes,
   isStatementCycleTypesLoading,
+  statementCycleTypeValue,
 }) => {
   React.useEffect(
     () => {
@@ -52,6 +55,49 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
       ]);
     },
     [getStatementCycleTypes, getCurrencyCodes]
+  );
+
+  const statementCycleParameterLabel = React.useMemo(
+    () => {
+      const defaultLabel = 'Statement Cycle Parameter';
+
+      if (!statementCycleTypeValue) {
+        return defaultLabel;
+      }
+
+      if (statementCycleTypeValue.value === cycleTypesIds.MONTHLY
+        || statementCycleTypeValue.value === cycleTypesIds.BI_MONTHLY
+        || statementCycleTypeValue.value === cycleTypesIds.WEEKLY
+        || statementCycleTypeValue.value === cycleTypesIds.BI_WEEKLY) {
+        return 'Repayment day';
+      } else if (statementCycleTypeValue.value === cycleTypesIds.FIXED_NUMBER_OF_DAYS) {
+        return 'Number of days';
+      } else {
+        return defaultLabel;
+      }
+    },
+    [statementCycleTypeValue]
+  );
+
+  const statementCycleParameterValidation = React.useMemo(
+    () => {
+      if (!statementCycleTypeValue) {
+        return formErrorUtil.isInteger;
+      }
+
+      if (statementCycleTypeValue.value === cycleTypesIds.MONTHLY
+        || statementCycleTypeValue.value === cycleTypesIds.BI_MONTHLY) {
+        return formErrorUtil.rangeValueMin1Max28;
+      } else if (statementCycleTypeValue.value === cycleTypesIds.WEEKLY
+        || statementCycleTypeValue.value === cycleTypesIds.BI_WEEKLY) {
+        return formErrorUtil.rangeValueMin1Max28;
+      } else if (statementCycleTypeValue.value === cycleTypesIds.FIXED_NUMBER_OF_DAYS) {
+        return formErrorUtil.rangeValueMin1Max250;
+      } else {
+        return formErrorUtil.isInteger;
+      }
+    },
+    [statementCycleTypeValue]
   );
 
   return (
@@ -188,10 +234,12 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             name="statementCycleParameter"
             placeholder="Enter Parameter"
             component={InputField}
-            label="Statement Cycle Parameter"
+            label={statementCycleParameterLabel}
             isNumber={true}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            disabled={!statementCycleTypeValue}
+            validate={[formErrorUtil.required, statementCycleParameterValidation]}
+            hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
           />
         </Box>
         <Box width={[1]} p="10px">

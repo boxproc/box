@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
 
 import ProductGeneralInfo from './ProductGeneralInfo';
+
+import { formNamesConst } from 'consts';
 
 import {
   createLoadingSelector,
@@ -23,12 +26,17 @@ const statementCycleTypesLoading = createLoadingSelector([
   DictionaryConstsActionTypes.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
 ]);
 
+const formSelectorGeneralProduct = formValueSelector(formNamesConst.GENERAL_PRODUCT);
+const formSelectorAddProduct = formValueSelector(formNamesConst.ADD_PRODUCT);
+
 const mapStateToProps = (state: StoreState) => ({
   isCurrencyCodesLoading: currencyCodesLoading(state),
   isStatementCycleTypesLoading: statementCycleTypesLoading(state),
   institutionsOptions: selectInstitutionsOptions(state),
   statementCycleTypesOptions: selectStatementCycleTypesOptions(state),
   currencyCodesOptions: selectCurrencyCodesOptions(state),
+  statementCycleTypeValue: formSelectorGeneralProduct(state, 'statementCycleTypeId')
+    || formSelectorAddProduct(state, 'statementCycleTypeId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

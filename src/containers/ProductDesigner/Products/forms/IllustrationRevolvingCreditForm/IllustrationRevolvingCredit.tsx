@@ -9,7 +9,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { transactionTypesId } from 'consts';
+import { transactionTypesIds } from 'consts';
 import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
 import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
 import styled from 'theme';
@@ -40,26 +40,21 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
   isReadOnly,
   dirty,
 }) => {
-  // React.useEffect(
-  //   () => {
-  //     return () => console.log();
-  //   },
-  //   []
-  // );
+  const initialPurchaseType = React.useMemo(
+    () => transactionTypesOptions
+      .find(type => type.value === transactionTypesIds.PURCHASE_CARD_PAYMENT),
+    [transactionTypesOptions]
+  );
 
-  const initalPurchaseType = React.useMemo(
+  const initialCahWithdrawalType = React.useMemo(
     () => transactionTypesOptions
-      .find(type => type.value === transactionTypesId.PURCHASE_CARD_PAYMENT),
+      .find(type => type.value === transactionTypesIds.CASH_WITHDRAWAL_ATM),
     [transactionTypesOptions]
   );
-  const initalCahWithdrawalType = React.useMemo(
+
+  const initialBalanceTransferType = React.useMemo(
     () => transactionTypesOptions
-      .find(type => type.value === transactionTypesId.CASH_WITHDRAWAL_ATM),
-    [transactionTypesOptions]
-  );
-  const initalBalanceTransferType = React.useMemo(
-    () => transactionTypesOptions
-      .find(type => type.value === transactionTypesId.BALANCE_TRANSFER_DEBIT),
+      .find(type => type.value === transactionTypesIds.BALANCE_TRANSFER_DEBIT),
     [transactionTypesOptions]
   );
 
@@ -68,11 +63,10 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
       <ProductIllustrationRevolvingCredit
         initialValues={{
           ...illustrationInitialValuesRevolvingCredit,
-          transactionType1: initalPurchaseType,
-          transactionType2: initalCahWithdrawalType,
-          transactionType3: initalBalanceTransferType,
-        }
-        }
+          transactionType1: initialPurchaseType,
+          transactionType2: initialCahWithdrawalType,
+          transactionType3: initialBalanceTransferType,
+        }}
         illustrateRevolvingCreditProduct={illustrateRevolvingCreditProduct}
         transactionTypesOptions={transactionTypesOptions}
         isTransactionTypesLoading={isTransactionTypesLoading}

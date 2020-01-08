@@ -22,10 +22,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectActiveItemId(state),
   defaultAdminUiItems: selectDefaultAdminUiItems(state),
   uiItemsOptions: selectAdminGroupPermissionsUiItems(state),
-  selectedUiItem: formSelector(
-    state,
-    'uiItem'
-  ),
+  selectedUiItem: formSelector(state, 'uiItem'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -19,18 +19,9 @@ const formSelector = formValueSelector(formNamesConst.DEFINE_USER);
 const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   institutions: selectInstitutions(state),
-  requires2faFlagValue: formSelector(
-    state,
-    'requires2faFlag'
-  ),
-  statusValue: formSelector(
-    state,
-    'status'
-  ),
-  institutionValue: formSelector(
-    state,
-    'institution'
-  ),
+  requires2faFlagValue: formSelector(state, 'requires2faFlag'),
+  statusValue: formSelector(state, 'status'),
+  institutionValue: formSelector(state, 'institution'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

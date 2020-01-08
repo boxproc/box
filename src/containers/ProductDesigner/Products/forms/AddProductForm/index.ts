@@ -29,14 +29,8 @@ const mapStateToProps = (state: StoreState) => ({
     historyRetentionNumberOfDays: 90,
     ...detailsInitialFormValues,
   },
-  currentProductType: formSelector(
-    state,
-    'productType'
-  ),
-  currentInstitution: formSelector(
-    state,
-    'institutionId'
-  ),
+  currentProductType: formSelector(state, 'productType'),
+  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

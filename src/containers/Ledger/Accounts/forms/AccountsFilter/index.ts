@@ -23,14 +23,8 @@ const formSelector = formValueSelector(formNamesConst.FILTER);
 const mapStateToProps = (state: StoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),
   institutionProductsOptions: selectInstitutionProductsOptions(state),
-  institutionValue: formSelector(
-    state,
-    'institutionId'
-  ),
-  accountAliasValue: formSelector(
-    state,
-    'accountAlias'
-  ),
+  institutionValue: formSelector(state, 'institutionId'),
+  accountAliasValue: formSelector(state, 'accountAlias'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

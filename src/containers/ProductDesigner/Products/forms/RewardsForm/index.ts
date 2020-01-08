@@ -20,10 +20,7 @@ const formSelector = formValueSelector(formNamesConst.PRODUCT_REWARDS);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  rewardApplicationConditionValue: formSelector(
-    state,
-    'rewardApplicationCondition'
-  ),
+  rewardApplicationConditionValue: formSelector(state, 'rewardApplicationCondition'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

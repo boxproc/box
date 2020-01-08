@@ -33,10 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
   initialValues: selectLedgerCurrentCustomer(state),
   ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
   countryCodes: selectCountryCodesOptions(state),
-  identificationTypeValue: formSelector(
-    state,
-    'identificationType'
-  ),
+  identificationTypeValue: formSelector(state, 'identificationType'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

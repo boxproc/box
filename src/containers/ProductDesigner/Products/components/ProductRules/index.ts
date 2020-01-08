@@ -37,10 +37,7 @@ const mapStateToProps = (state: StoreState) => ({
   transactionTypesItems: selectTransactionTypesForRules(state),
   isEventsLoading: loadingEventsSelector(state),
   eventsOptions: selectDictionaryEventsOptions(state),
-  scriptValue: formSelector(
-    state,
-    'script'
-  ),
+  scriptValue: formSelector(state, 'script'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

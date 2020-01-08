@@ -24,10 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoadingUsers: loadingSelector(state),
   auditUsersOptions: selectAuditUsers(state),
-  currentInstitution: formSelector(
-    state,
-    'institutionId'
-  ),
+  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

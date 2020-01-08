@@ -28,10 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isAprsLoading: aprsLoading(state),
   aprsOptions: selectAprsOptions(state),
-  feeApplicationConditionValue: formSelector(
-    state,
-    'feeApplicationCondition'
-  ),
+  feeApplicationConditionValue: formSelector(state, 'feeApplicationCondition'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

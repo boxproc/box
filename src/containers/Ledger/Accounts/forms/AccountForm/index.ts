@@ -28,10 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionProducts: selectInstitutionProducts(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  currentProduct: formSelector(
-    state,
-    'product'
-  ),
+  currentProduct: formSelector(state, 'product'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

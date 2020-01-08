@@ -10,18 +10,9 @@ import { StoreState } from 'store/StoreState';
 const formSelector = formValueSelector(formNamesConst.PRODUCT_AUXILIARY_COUNTERS);
 
 const mapStateToProps = (state: StoreState) => ({
-  isCounter1Enabled: formSelector(
-    state,
-    'auxCounter1Enabled'
-  ),
-  isCounter2Enabled: formSelector(
-    state,
-    'auxCounter2Enabled'
-  ),
-  isCounter3Enabled: formSelector(
-    state,
-    'auxCounter3Enabled'
-  ),
+  isCounter1Enabled: formSelector(state, 'auxCounter1Enabled'),
+  isCounter2Enabled: formSelector(state, 'auxCounter2Enabled'),
+  isCounter3Enabled: formSelector(state, 'auxCounter3Enabled'),
 });
 
 export default connect(

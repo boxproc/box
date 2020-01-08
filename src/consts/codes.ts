@@ -249,11 +249,20 @@ export enum feeRewardsTypesCodes {
   APPLY_WHICHEVER_IS_SMALLER_RATE_OR_FIXED_AMOUNT = 'S',
 }
 
-export enum transactionTypesId {
+export enum transactionTypesIds {
   PURCHASE_CARD_PAYMENT = 1,
   CASH_WITHDRAWAL_ATM = 3,
   BALANCE_TRANSFER_DEBIT = 27,
 }
+
+export enum cycleTypesIds {
+  MONTHLY = 1,
+  BI_MONTHLY = 2,
+  WEEKLY = 3,
+  BI_WEEKLY = 4,
+  FIXED_NUMBER_OF_DAYS = 5,
+}
+
 export const daysOfWeekOptions = [
   { value: '1', label: 'Sunday' },
   { value: '2', label: 'Monday' },

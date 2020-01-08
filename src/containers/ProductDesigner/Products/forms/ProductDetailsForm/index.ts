@@ -25,10 +25,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectCurrentProductDetails(state),
-  interestDistributionEditorValue: formSelector(
-    state,
-    'interestDistributionType'
-  ),
+  interestDistributionEditorValue: formSelector(state, 'interestDistributionType'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

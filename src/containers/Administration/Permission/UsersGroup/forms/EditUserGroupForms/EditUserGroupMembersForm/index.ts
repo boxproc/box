@@ -20,10 +20,7 @@ const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS);
 const mapStateToProps = (state: StoreState) => ({
   currentGroupId: selectActiveItemId(state),
   activeUsersItemsOptions: selectActiveUsersItems(state),
-  selectedUser: formSelector(
-    state,
-    'username'
-  ),
+  selectedUser: formSelector(state, 'username'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -34,10 +34,7 @@ const mapStateToProps = (state: StoreState) => ({
   cardStatusesOptions: selectCardStatusesOptions(state),
   initialValues: selectCurrentCardStatusOption(state),
   currentCardId: selectActiveItemId(state),
-  statusValue: formSelector(
-    state,
-    'status'
-  ),
+  statusValue: formSelector(state, 'status'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

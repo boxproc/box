@@ -30,10 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectCurrentProduct(state),
   currentProductName: selectCurrentProductName(state),
-  currentInstitution: formSelector(
-    state,
-    'institutionId'
-  ),
+  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

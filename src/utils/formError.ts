@@ -13,6 +13,15 @@ export const email = (value: string) =>
 export const isNumber = (value: string | number) =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 
+const rangeValue = (min: number, max: number) => (value: string | number) =>
+  value && (value < min || value > max) ? `Must be in range ${min} and ${max}` : undefined;
+
+export const rangeValueMin1Max28 = rangeValue(1, 28);
+
+export const rangeValueMin1Max7 = rangeValue(1, 7);
+
+export const rangeValueMin1Max250 = rangeValue(1, 250);
+
 export const isInteger = (value: number) =>
   (Number.isInteger(Number(value)) || value === undefined) ? undefined : 'Must be an integer';
 
@@ -28,7 +37,7 @@ export const isDateTime = (value: string) =>
 export const isDate = (value: string) =>
   moment(value, dateFormat.DATE, true).isValid() ? undefined : 'Incorrect date';
 
-export const exactNumberValue = (exactNumber: number) => (value: string) =>
+const exactNumberValue = (exactNumber: number) => (value: string) =>
   value && value.length !== exactNumber ? `Must have ${exactNumber} digits` : undefined;
 
 export const exactNumberValue6 = exactNumberValue(6);

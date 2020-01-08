@@ -19,10 +19,7 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
-  currentInstitution: formSelector(
-    state,
-    'institutionId'
-  ),
+  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

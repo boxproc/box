@@ -23,10 +23,7 @@ const formSelector = formValueSelector(formNamesConst.FILTER);
 const mapStateToProps = (state: StoreState) => ({
   isLoadingSchedulerNames: loadingSelector(state),
   schedulerNameOptions: selectSchedulerNamesByInstIdOptions(state),
-  institutionValue: formSelector(
-    state,
-    'institutionId'
-  ),
+  institutionValue: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
