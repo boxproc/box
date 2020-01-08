@@ -28,10 +28,12 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   font-weight: 500;
   line-height: 1.3;
   user-select: none;
+  overflow: hidden;
   transition: all .1s linear;
 
   .text-wrapper {
     position: relative;
+    z-index: 1;
   }
 
   &:hover,
@@ -103,6 +105,24 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;
 
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: ${theme.colors.lightGray};
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    &:focus:not(:active):after {
+      animation: ripple 1s ease-out;
+    }
+
     &:hover,
     &.is-focused:not(:disabled) {
       box-shadow: ${theme.shadows.normalBox};
@@ -117,5 +137,20 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   &:disabled {
     opacity: .5;
     pointer-events: none;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 1;
+    }
+    20% {
+      transform: scale(25, 25);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(40, 40);
+    }
   }
 `;

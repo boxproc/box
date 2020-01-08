@@ -68,7 +68,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(userLogin),
+    handleSubmit(data => setTimeout(() => userLogin(data), 500)),
     [handleSubmit, userLogin]
   );
 
