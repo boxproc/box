@@ -47,6 +47,10 @@ interface LoginProps extends ExternalSpinnerProps {
   userLogin: HandleUserLogin;
   isPasswordFocus: boolean;
   isMessageModal: boolean;
+  loginValues: {
+    loginUsername: string;
+    loginPassword: string;
+  };
 }
 
 type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
@@ -56,7 +60,13 @@ const Login: React.FC<LoginPropsAllProps> = ({
   userLogin,
   isPasswordFocus,
   isMessageModal,
+  loginValues,
 }) => {
+  const isButtonFocused = React.useMemo(
+    () => loginValues && loginValues.loginUsername && loginValues.loginPassword,
+    [loginValues]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(userLogin),
     [handleSubmit, userLogin]
@@ -100,6 +110,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
             text="Log in"
             bordered={true}
             width="100%"
+            isFocused={isButtonFocused}
           />
         </Box>
       </form>

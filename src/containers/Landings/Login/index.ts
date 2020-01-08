@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
 
 import Login from './Login';
+
+import { formNamesConst } from 'consts';
 
 import {
   AuthActionTypes,
@@ -18,6 +21,8 @@ const loadingSelector = createLoadingSelector([
   AuthActionTypes.USER_ENTER_AUTH_KEY,
 ]);
 
+const formSelector = formValueSelector(formNamesConst.USER_LOGIN);
+
 const userName = storageUtil.getUserName();
 
 const mapStateToProps = (state: StoreState) => ({
@@ -28,6 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
     rememberMe: !!userName,
     loginUsername: userName,
   },
+  loginValues: formSelector(state, 'loginUsername', 'loginPassword'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
