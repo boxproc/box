@@ -33,6 +33,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
 
   .dropdown-option {
     margin: 1px;
+    transition: all .1s linear;
 
     > * {
       padding: 10px 10px 8px;
@@ -50,7 +51,8 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
     cursor: pointer;
 
     * {
-      color: ${({ theme, isActive }) => isActive && theme.colors.normalAccent}
+      color: ${({ theme, isActive }) => isActive && theme.colors.normalAccent};
+      transition: all .1s linear;
     }
 
     &:hover * {
@@ -66,6 +68,7 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
 
 const ToggleButton = styled(ArrowDropDownIcon)`
   color: ${({ theme }) => theme.colors.gray};
+  transition: all .1s linear;
 
   &:hover {
     color: ${({ theme }) => theme.colors.normalAccent};

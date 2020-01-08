@@ -10,7 +10,7 @@ export const scrollbarCss = css`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ffa400;
+    background-color: #999999;
     border-radius: 8px;
   }
 

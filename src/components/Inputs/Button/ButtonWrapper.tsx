@@ -28,6 +28,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   font-weight: 500;
   line-height: 1.3;
   user-select: none;
+  transition: all .1s linear;
 
   .text-wrapper {
     position: relative;

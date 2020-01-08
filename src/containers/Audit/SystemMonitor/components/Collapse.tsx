@@ -12,9 +12,10 @@ interface CollapseButtonProps {
 const CollapseButton = styled(ChevronDownIcon)<CollapseButtonProps>`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray};
+  transition: all .1s linear;
 
   ${({ isOpen }) => isOpen && `
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
   `}
 
   &:hover {

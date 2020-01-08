@@ -17,6 +17,10 @@ const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
   font-weight: ${({ grayStyle }) => grayStyle ? '500' : 'normal'};
   text-transform: capitalize;
 
+  * {
+    transition: all .1s linear;
+  }
+
   &:hover * {
     color: ${({ theme }) => theme.colors.normalAccent};
   }

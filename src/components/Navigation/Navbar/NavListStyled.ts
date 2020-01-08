@@ -100,6 +100,8 @@ export const NavListStyled = styled.div`
   }
 
   .${menuClasses.MENU_ITEM} {
+    transition: all .1s linear;
+
     &:hover {
       background-color: ${({ theme }) => theme.colors.lighterGray};
       color: ${({ theme }) => theme.colors.normalAccent};

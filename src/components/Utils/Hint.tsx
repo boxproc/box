@@ -52,6 +52,7 @@ const HintWrapper = styled.div<HintWrapperProps>`
 const InfoButton = styled(InfoCircleIcon)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray};
+  transition: all .1s linear;
 
   &:hover {
     color: ${({ theme }) => theme.colors.normalAccent};

@@ -21,6 +21,7 @@ const Link = styled.span<LinkProps>`
   line-height: 1.4;
   font-size: ${({ fontSize }) => fontSize ? fontSize : '12px'};
   cursor: pointer;
+  transition: all .1s linear;
 
   &:hover {
     border-bottom-color: ${({ theme }) => theme.colors.normalAccent};

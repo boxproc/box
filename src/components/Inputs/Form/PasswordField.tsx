@@ -30,6 +30,7 @@ const PasswordFieldWrapper = styled.div`
 
 const iconStyles = css`
   color: ${({ theme }) => theme.colors.gray};
+  transition: all .1s linear;
 
   &:hover {
   color: ${({ theme }) => theme.colors.normalAccent}
