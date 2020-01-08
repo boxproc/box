@@ -12,7 +12,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceSettledBefore"
             name="balanceSettledBefore"
@@ -24,7 +24,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceSettledAfter"
             name="balanceSettledAfter"
@@ -36,7 +36,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceAvailableBefore"
             name="balanceAvailableBefore"
@@ -48,7 +48,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="balanceAvailableAfter"
             name="balanceAvailableAfter"

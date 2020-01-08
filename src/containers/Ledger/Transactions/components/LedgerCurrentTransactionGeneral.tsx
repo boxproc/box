@@ -12,7 +12,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="id"
             name="id"
@@ -22,7 +22,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 5]}  p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="accountId"
             name="accountId"
@@ -32,7 +32,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 5]}  p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="transactionTypeId"
             name="transactionTypeId"
@@ -42,7 +42,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 5]}  p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="parentTransactionId"
             name="parentTransactionId"
@@ -52,7 +52,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width="100px"  p="10px">
+        <Box width="120px" p="10px">
           <Field
             id="status"
             name="status"
@@ -61,7 +61,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="transactionDatetime"
             name="transactionDatetime"
@@ -79,7 +79,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="amount"
             name="amount"
@@ -91,7 +91,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="amountInOriginalCurrency"
             name="amountInOriginalCurrency"
@@ -103,8 +103,39 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
+        <Box width={[1 / 6]} p="10px">
+          <Field
+            id="settledDatetime"
+            name="settledDatetime"
+            component={InputField}
+            label="Settled Datetime"
+            readOnly={true}
+          />
+        </Box>
+        <Box width={[1 / 6]} p="10px">
+          <Field
+            id="amountSettled"
+            name="amountSettled"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            label="Amount Settled"
+            readOnly={true}
+          />
+        </Box>
+        <Box width="150px" p="10px">
+          <Field
+            id="sourceEndpointId"
+            name="sourceEndpointId"
+            component={InputField}
+            label="Source Endpoint ID"
+            readOnly={true}
+            isNumber={true}
+          />
+        </Box>
         <Hr />
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="aprRate"
             name="aprRate"
@@ -114,7 +145,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="aprCalculationMethod"
             name="aprCalculationMethod"
@@ -123,7 +154,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="feeRate"
             name="feeRate"
@@ -133,7 +164,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="feeApplicationCondition"
             name="feeApplicationCondition"
@@ -142,7 +173,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="rewardRate"
             name="rewardRate"
@@ -152,7 +183,7 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 6]} p="10px">
           <Field
             id="rewardApplicationCondition"
             name="rewardApplicationCondition"

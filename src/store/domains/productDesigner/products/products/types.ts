@@ -52,13 +52,13 @@ export interface IllustrationProductLoanResp {
 }
 
 export interface IllustrationProductLoan {
-  statementId: number | string;
-  statementDate: number | string;
-  installmentBalance: number | string;
-  fee: number | string;
-  apr: number | string;
-  amount: number | string;
-  minimumAmountDueRepayment: number | string;
+  statementId: number;
+  statementDate: string;
+  installmentBalance: number;
+  fee: number;
+  apr: number;
+  amount: number;
+  minimumAmountDueRepayment: number;
   startDate: string;
   endDate: string;
 }
@@ -81,59 +81,59 @@ export interface IllustrationProductStatementsRevolvingCredit {
   firstTransactionId: number | string;
   lastTransactionId: number | string;
   balanceOpen: number | string;
-  balanceClose: number | string;
-  minimumAmountDueRepayment: number | string;
+  balanceClose: number;
+  minimumAmountDueRepayment: number;
   startDate: number | string;
   endDate: number | string;
 }
 
 export interface IllustrationProductAprRevolvingCreditResp {
-  description: number;
+  description: string;
   accrued_interest: number;
   rate: number;
 }
 export interface IllustrationProductFeeRevolvingCredit {
-  description: number | string;
-  accruedFee: number | string;
+  description: string;
+  accruedFee: number;
 }
 
 export interface IllustrationProductAprRevolvingCredit {
-  description: number | string;
-  accruedInterest: number | string;
-  rate: number | string;
+  description: string;
+  accruedInterest: number;
+  rate: number;
 }
 
 export interface IllustrationProductTransactionsRevolvingCredit {
-  transactionDatetime: number | string;
-  debitCreditIndicator: number | string;
-  amount: number | string;
-  balanceSettledBefore: number | string;
-  balanceSettledAfter: number | string;
-  balanceAvailableBefore: number | string;
-  balanceAvailableAfter: number | string;
-  description: number | string;
-  status: number | string;
-  aprRate: number | string;
+  transactionDatetime: string;
+  debitCreditIndicator: string;
+  amount: number;
+  balanceSettledBefore: number;
+  balanceSettledAfter: number;
+  balanceAvailableBefore: number;
+  balanceAvailableAfter: number;
+  description: string;
+  status: string;
+  aprRate: number;
   transactionType: string;
 }
 
 export interface IllustrationProductTransactionsRevolvingCreditResp {
-  transaction_datetime: number | string;
-  debit_credit_indicator: number | string;
+  transaction_datetime: string;
+  debit_credit_indicator: string;
   amount: number;
   balance_settled_before: number;
   balance_settled_after: number;
   balance_available_before: number;
   balance_available_after: number;
-  description: number | string;
-  status: number | string;
+  description: string;
+  status: string;
   apr_rate: number;
   transaction_type: string;
 }
 
 export interface IllustrationProductRewardsRevolvingCreditResp {
-  description: number | string;
-  accruedReward: number | string;
+  description: string;
+  accruedReward: number;
 }
 
 export interface IllustrationProductFeeRevolvingCreditResp {
@@ -142,7 +142,7 @@ export interface IllustrationProductFeeRevolvingCreditResp {
 }
 
 export interface IllustrationProductRewardRevolvingCreditResp {
-  description: number;
+  description: string;
   accrued_reward: number;
 }
 
@@ -348,7 +348,7 @@ export interface DebitProductResp {
 
 export interface DebitProductItem {
   productId: number;
-  aprOverdraft: number | string;
+  aprOverdraft: number;
   overdraftAllowed: boolean;
 }
 
@@ -456,7 +456,7 @@ export interface ProductAprIds {
 
 export interface ProductAprPlainInfo extends ProductAprIds {
   description: string;
-  rate: string;
+  rate: number;
   graceNumberOfDays: number;
 }
 
@@ -494,8 +494,8 @@ export interface ProductFeesIds {
 
 export interface ProductFeePlainInfo extends ProductFeesIds {
   description: string;
-  rate: string;
-  amount: string;
+  rate: number;
+  amount: number;
 }
 
 export interface ProductFee extends ProductFeePlainInfo {
@@ -533,8 +533,8 @@ export interface ProductRewardsIds {
 
 export interface ProductRewardPlainInfo extends ProductRewardsIds {
   description: string;
-  rate: string;
-  amount: string;
+  rate: number;
+  amount: number;
 }
 
 export interface ProductReward extends ProductRewardPlainInfo {

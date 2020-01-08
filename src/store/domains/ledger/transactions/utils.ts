@@ -1,12 +1,15 @@
-import { aprTypesOptions, feeTypesOptions, rewardsTypesOptions } from 'consts';
+import {
+  aprTypesOptions,
+  feeTypesOptions,
+  rewardsTypesOptions,
+  transactionStatusOptions,
+} from 'consts';
 
 import {
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
   LedgerTransactionsFilter,
 } from './types';
-
-import { stringsUtil } from 'utils';
 
 export const prepareValuesToRender = (values: LedgerTransactionItem):
   LedgerTransactionItemPrepared => {
@@ -58,6 +61,9 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     card_pos_condition_data,
     card_response_code,
     parent_transaction_id,
+    settled_datetime,
+    amount_settled,
+    source_endpoint_id,
   } = values;
 
   const aprCalculationMethod = aprTypesOptions.find(el => el.value === apr_calculation_method);
@@ -65,57 +71,44 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     .find(el => el.value === fee_application_condition);
   const rewardApplicationCondition = rewardsTypesOptions
     .find(el => el.value === reward_application_condition);
+  const transactionStatus = transactionStatusOptions.find(el => el.value === status);
 
   return {
     id,
     accountId: account_id,
     transactionTypeId: transaction_type_id,
-    status,
+    status: transactionStatus && transactionStatus.label,
     transactionDatetime: transaction_datetime,
     aprId: product_apr_id,
-    aprRate: stringsUtil.checkNumberToFixed(apr_rate) ? apr_rate.toFixed(2) : null,
+    aprRate: apr_rate,
     aprCalculationMethod: aprCalculationMethod ? aprCalculationMethod.label : null,
     description,
     debitCreditIndicator: debit_credit_indicator,
-    amount: stringsUtil.checkNumberToFixed(amount) ? amount.toFixed(2) : null,
-    amountInOriginalCurrency: stringsUtil.checkNumberToFixed(amount_in_original_currency)
-      ? amount_in_original_currency.toFixed(2)
-      : null,
+    amount,
+    amountInOriginalCurrency: amount_in_original_currency,
     cardId: card_id,
     cardTransactionId: card_transaction_id,
     transactionTypeDescription: transaction_type_description,
     originalCurrency: original_currency,
     cardCurrency: card_currency,
-    cardAmount: stringsUtil.checkNumberToFixed(card_amount) ? card_amount.toFixed(2) : null,
+    cardAmount: card_amount,
     cardAcceptorName: card_acceptor_name,
     cardAcceptorLocation: card_acceptor_location,
-    balanceSettledBefore: stringsUtil.checkNumberToFixed(balance_settled_before)
-      ? balance_settled_before.toFixed(2)
-      : null,
-    balanceSettledAfter: stringsUtil.checkNumberToFixed(balance_settled_after)
-      ? balance_settled_after.toFixed(2)
-      : null,
-    balanceAvailableBefore: stringsUtil.checkNumberToFixed(balance_available_before)
-      ? balance_available_before.toFixed(2)
-      : null,
-    balanceAvailableAfter: stringsUtil.checkNumberToFixed(balance_available_after)
-      ? balance_available_after.toFixed(2)
-      : null,
-    cardConversionRate: stringsUtil.checkNumberToFixed(card_conversion_rate)
-      ? card_conversion_rate.toFixed(3)
-      : null,
+    balanceSettledBefore: balance_settled_before,
+    balanceSettledAfter: balance_settled_after,
+    balanceAvailableBefore: balance_available_before,
+    balanceAvailableAfter: balance_available_after,
+    cardConversionRate: card_conversion_rate,
     productFeeId: product_fee_id,
     productRewardId: product_reward_id,
-    feeRate: stringsUtil.checkNumberToFixed(fee_rate) ? fee_rate.toFixed(2) : null,
+    feeRate: fee_rate,
     feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
     rewardApplicationCondition: rewardApplicationCondition
       ? rewardApplicationCondition.label
       : null,
-    rewardRate: stringsUtil.checkNumberToFixed(reward_rate) ? reward_rate.toFixed(2) : null,
+    rewardRate: reward_rate,
     cardCurrencyBilling: card_currency_billing,
-    cardAmountBilling: stringsUtil.checkNumberToFixed(card_amount_billing)
-      ? card_amount_billing.toFixed(2)
-      : null,
+    cardAmountBilling: card_amount_billing,
     cardAcceptorTerminalId: card_acceptor_terminal_id,
     cardAcceptorIdCode: card_acceptor_id_code,
     cardStan: card_stan,
@@ -126,6 +119,9 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     cardPosConditionData: card_pos_condition_data,
     cardResponseCode: card_response_code,
     parentTransactionId: parent_transaction_id,
+    settledDatetime: settled_datetime,
+    amountSettled: amount_settled,
+    sourceEndpointId: source_endpoint_id,
   };
 };
 

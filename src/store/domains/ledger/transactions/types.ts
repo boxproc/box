@@ -51,6 +51,9 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   card_pos_condition_data: string;
   card_response_code: string;
   parent_transaction_id: number;
+  settled_datetime: string;
+  amount_settled: number;
+  source_endpoint_id: number;
 }
 
 export interface LedgerTransactionItems {
@@ -58,37 +61,37 @@ export interface LedgerTransactionItems {
 }
 
 export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInfo {
-  amount: string;
+  amount: number;
   accountId: number;
   transactionDatetime: string;
   transactionTypeId: number;
   debitCreditIndicator: string;
-  amountInOriginalCurrency: string;
-  balanceSettledBefore: string;
-  balanceSettledAfter: string;
-  balanceAvailableBefore: string;
-  balanceAvailableAfter: string;
+  amountInOriginalCurrency: number;
+  balanceSettledBefore: number;
+  balanceSettledAfter: number;
+  balanceAvailableBefore: number;
+  balanceAvailableAfter: number;
   originalCurrency: string;
   cardTransactionId: string;
   cardId: number;
   cardCurrency: string;
-  cardAmount: string;
+  cardAmount: number;
   cardAcceptorName: string;
   cardAcceptorLocation: string;
   transactionTypeDescription: string;
   aprId: number;
-  aprRate: string;
+  aprRate: number;
   aprCalculationMethod: string;
   status: string;
-  cardConversionRate: string;
+  cardConversionRate: number;
   productFeeId: number;
   productRewardId: number;
-  feeRate: string;
+  feeRate: number;
   feeApplicationCondition: string;
   rewardApplicationCondition: string;
-  rewardRate: string;
+  rewardRate: number;
   cardCurrencyBilling: string;
-  cardAmountBilling: string;
+  cardAmountBilling: number;
   cardAcceptorTerminalId: string;
   cardAcceptorIdCode: string;
   cardStan: string;
@@ -99,6 +102,9 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   cardPosConditionData: string;
   cardResponseCode: string;
   parentTransactionId: number;
+  settledDatetime: string;
+  amountSettled: number;
+  sourceEndpointId: number;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

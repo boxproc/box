@@ -55,7 +55,6 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
-import { stringsUtil } from 'utils';
 
 export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
   const { activeStatusFlag, institutionId, productType } = data;
@@ -153,8 +152,8 @@ export const prepareProductIllustrationStatementsItem = (
     firstTransactionId: item.first_transaction_id,
     lastTransactionId: item.last_transaction_id,
     balanceOpen: item.balance_open,
-    balanceClose: item.balance_close.toFixed(2),
-    minimumAmountDueRepayment: item.minimum_amount_due_repayment.toFixed(2),
+    balanceClose: item.balance_close,
+    minimumAmountDueRepayment: item.minimum_amount_due_repayment,
     startDate: item.start_date,
     endDate: item.end_date,
   };
@@ -165,8 +164,8 @@ export const prepareProductIllustrationAprsItem = (
 ) => {
   return {
     description: item.description,
-    accruedInterest: item.accrued_interest.toFixed(4),
-    rate: item.rate.toFixed(2),
+    accruedInterest: item.accrued_interest,
+    rate: item.rate,
   };
 };
 
@@ -175,7 +174,7 @@ export const prepareProductIllustrationFeesItem = (
 ) => {
   return {
     description: item.description,
-    accruedFee: item.accrued_fee.toFixed(2),
+    accruedFee: item.accrued_fee,
   };
 };
 
@@ -184,7 +183,7 @@ export const prepareProductIllustrationRewardsItem = (
 ) => {
   return {
     description: item.description,
-    accruedReward: item.accrued_reward.toFixed(2),
+    accruedReward: item.accrued_reward,
   };
 };
 
@@ -194,14 +193,14 @@ export const prepareProductIllustrationTransactionsItem = (
   return {
     transactionDatetime: item.transaction_datetime,
     debitCreditIndicator: item.debit_credit_indicator,
-    amount: item.amount.toFixed(2),
-    balanceSettledBefore: item.balance_available_before.toFixed(2),
-    balanceSettledAfter: item.balance_available_after.toFixed(2),
-    balanceAvailableBefore: item.balance_available_before.toFixed(2),
-    balanceAvailableAfter: item.balance_available_after.toFixed(2),
+    amount: item.amount,
+    balanceSettledBefore: item.balance_available_before,
+    balanceSettledAfter: item.balance_available_after,
+    balanceAvailableBefore: item.balance_available_before,
+    balanceAvailableAfter: item.balance_available_after,
     description: item.description,
     status: item.status,
-    aprRate: item.apr_rate && item.apr_rate.toFixed(2),
+    aprRate: item.apr_rate,
     transactionType: item.transaction_type,
   };
 };
@@ -325,10 +324,8 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
   return {
     productId: product_id,
     limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoTypesCodes.YES,
-    minimumRepaymentAmount: stringsUtil.checkNumberToFixed(minimum_repayment_amount)
-      && minimum_repayment_amount.toFixed(2),
-    minimumRepaymentRate: stringsUtil.checkNumberToFixed(minimum_repayment_rate)
-      && minimum_repayment_rate.toFixed(2),
+    minimumRepaymentAmount: minimum_repayment_amount,
+    minimumRepaymentRate: minimum_repayment_rate,
     repaymentGraceNumberOfDays: repayment_grace_number_of_days,
   };
 };
@@ -355,13 +352,11 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     statementDate: statement_date,
     startDate: start_date,
     endDate: end_date,
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
-    installmentBalance: stringsUtil.checkNumberToFixed(installment_balance) &&
-      installment_balance.toFixed(2),
-    fee: stringsUtil.checkNumberToFixed(fee) && fee.toFixed(2),
-    apr: stringsUtil.checkNumberToFixed(apr) && apr.toFixed(2),
-    minimumAmountDueRepayment: stringsUtil.checkNumberToFixed(minimum_amount_due_repayment)
-      && minimum_amount_due_repayment.toFixed(2),
+    amount,
+    installmentBalance: installment_balance,
+    fee,
+    apr,
+    minimumAmountDueRepayment: minimum_amount_due_repayment,
   };
 };
 
@@ -405,12 +400,9 @@ export const prepareSavings = (data: SavingsProductItemResp) => {
   return {
     productId: product_id,
     apr,
-    minimumDepositAllowed: stringsUtil.checkNumberToFixed(minimum_deposit_allowed)
-      && minimum_deposit_allowed.toFixed(2),
-    maximumDepositAllowed: stringsUtil.checkNumberToFixed(maximum_deposit_allowed)
-      && maximum_deposit_allowed.toFixed(2),
-    maximumMonthlyDeposit: stringsUtil.checkNumberToFixed(maximum_monthly_deposit)
-      && maximum_monthly_deposit.toFixed(2),
+    minimumDepositAllowed: minimum_deposit_allowed,
+    maximumDepositAllowed: maximum_deposit_allowed,
+    maximumMonthlyDeposit: maximum_monthly_deposit,
     savingsType: savingsTypesOptions.find(el => el.value === savings_type),
   };
 };
@@ -537,7 +529,7 @@ export const prepareDebit = (data: DebitProductItemResp) => {
 
   return {
     productId: product_id,
-    aprOverdraft: stringsUtil.checkNumberToFixed(apr_overdraft) && apr_overdraft.toFixed(2),
+    aprOverdraft: apr_overdraft,
     overdraftAllowed: overdraft_allowed === yesNoTypesCodes.YES ? true : false,
   };
 };
@@ -622,7 +614,7 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
     productId: product_id,
     description,
     calculationMethod: calculationMethod && calculationMethod.label,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
+    rate,
     graceNumberOfDays: grace_number_of_days,
   };
 };
@@ -699,8 +691,8 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
     productId: product_id,
     productFeeId: product_fee_id,
     description,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    rate,
+    amount,
     feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
     feeApplicationConditionValue: fee_application_condition,
     apr: { value: apr_id, label: apr_description },
@@ -782,8 +774,8 @@ export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductR
     productId: product_id,
     productRewardId: product_reward_id,
     description,
-    rate: stringsUtil.checkNumberToFixed(rate) && rate.toFixed(2),
-    amount: stringsUtil.checkNumberToFixed(amount) && amount.toFixed(2),
+    rate,
+    amount,
     rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
     rewardApplicationConditionValue: reward_application_condition,
   };

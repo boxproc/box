@@ -2,11 +2,11 @@ import { lenderTransactionsPathNames } from 'consts';
 
 import { apiClient } from 'services';
 
+import { LedgerId } from '../customers';
 // import { ledgerTransactionsFilteredItems } from './mock';
+import { LedgerTransactionsFilterPrepared } from './types';
 
 // import { throttleUtil } from 'utils';
-import { LedgerId } from '../customers';
-import { LedgerTransactionsFilterPrepared } from './types';
 
 export const filterLedgerTransactions = (data: Partial<LedgerTransactionsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerTransactionsFilteredItems, 500);

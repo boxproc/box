@@ -147,10 +147,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           />
         </Box>
       )}
-      {FilterForm && isOpenFilter && (
+      {FilterForm && (
         <Filter
           filterAction={filterAction}
           location={location}
+          isHidden={!isOpenFilter}
           initialValues={{
             ...initialFilterValues,
             ...storedFilter && JSON.parse(storedFilter),

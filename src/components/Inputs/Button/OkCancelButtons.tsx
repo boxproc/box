@@ -20,7 +20,7 @@ const Wrapper = styled(Flex) <WrapperProps>`
     position: relative;
 
     &:first-child {
-      margin-right: 5px;
+      margin-right: 7px;
     }
   }
 `;

@@ -14,12 +14,20 @@ import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
 
 import { cookiesUtil } from 'utils';
 
-const FilterWrapper = styled.div`
+interface FilterWrapperProps {
+  isHidden: boolean;
+}
+
+const FilterWrapper = styled.div<FilterWrapperProps>`
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
   background-color: rgba(0, 0, 0, .02);
+
+  ${({isHidden}) => isHidden && `
+    display: none;
+  `};
 `;
 
 interface FilterProps {
@@ -29,6 +37,7 @@ interface FilterProps {
   isAutoRefresh: boolean;
   location: H.Location;
   setIsAccessibleFiltering: SetIsAccessibleFiltering;
+  isHidden: boolean;
 }
 
 export const filteredFieldsToStore = (data: object) => {
@@ -52,6 +61,7 @@ const Filter: React.FC<FilterAllProps> = ({
   isAutoRefresh,
   location,
   setIsAccessibleFiltering,
+  isHidden,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
@@ -164,7 +174,7 @@ const Filter: React.FC<FilterAllProps> = ({
   );
 
   return (
-    <FilterWrapper>
+    <FilterWrapper isHidden={isHidden}>
       <T3>Filter</T3>
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">

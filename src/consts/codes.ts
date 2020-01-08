@@ -38,6 +38,18 @@ export enum repaymentStatusTypesCodes {
   OVERPAID = 'O',
 }
 
+export enum transactionStatusCodes {
+  PENDING = 'P',
+  SETTLED = 'S',
+  INVALID = 'I',
+}
+
+export const transactionStatusOptions = [
+  { value: 'P', label: 'Pending' },
+  { value: 'S', label: 'Settled' },
+  { value: 'I', label: 'Invalid' },
+];
+
 export const statusTypesOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },

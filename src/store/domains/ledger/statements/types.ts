@@ -37,9 +37,9 @@ export interface LedgerStatementItemPrepared {
   firstTransactionId: number;
   lastTransactionId: number;
   statementDate: string;
-  balanceOpen: string | number;
-  balanceClose: string | number;
-  minimumAmountDueRepayment: string | number;
+  balanceOpen: number;
+  balanceClose: number;
+  minimumAmountDueRepayment: number;
   repaymentStatus: string;
   dateOfLastUpdate: string;
   accountAlias: string;
@@ -47,9 +47,9 @@ export interface LedgerStatementItemPrepared {
   productName: string;
   firstName: string;
   lastName: string;
-  accruedInterestTotal?: string;
-  accruedFeeTotal?: string;
-  accruedRewardTotal?: string;
+  accruedInterestTotal?: number;
+  accruedFeeTotal?: number;
+  accruedRewardTotal?: number;
   accountAliasAdditional: string;
   addressLine1: string;
   addressLine2: string;
@@ -79,17 +79,17 @@ export interface LedgerStatementTransactionsItem {
 export interface LedgerStatementTransactionsItemPrepared {
   id: number;
   transactionDatetime: number | string;
-  amount: number | string;
-  amountInOriginalCurrency: number | string;
+  amount: number;
+  amountInOriginalCurrency: number;
   originalCurrency: string;
   gracePeriod: number;
-  balanceAvailableBefore: number | string;
-  balanceAvailableAfter: number | string;
-  balanceSettledBefore: number | string;
-  balanceSettledAfter: number | string;
-  description: number | string;
+  balanceAvailableBefore: number;
+  balanceAvailableAfter: number;
+  balanceSettledBefore: number;
+  balanceSettledAfter: number;
+  description: string;
   aprId: number;
-  aprRate: string;
+  aprRate: number;
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
@@ -113,9 +113,9 @@ export interface LedgerStatementAprItems {
 export interface LedgerStatementAprItemPrepared {
   statementId: number;
   productAprId: number;
-  accruedInterest: string;
+  accruedInterest: number;
   description: string;
-  rate: string;
+  rate: number;
 }
 
 export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;
