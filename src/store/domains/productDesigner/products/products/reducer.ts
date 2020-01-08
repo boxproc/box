@@ -8,9 +8,6 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   institutionProducts: Immutable([]),
   currentProduct: null,
   currentProductDetails: null,
-  currentProductRule: null,
-  interfaces: Immutable([]),
-  endpoints: Immutable([]),
   productAprs: Immutable([]),
   productFees: Immutable([]),
   productRewards: Immutable([]),
@@ -40,17 +37,8 @@ const productsReducer =
       case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
         return state.set('currentProductDetails', action.payload.product);
 
-      case ActionTypeKeys.GET_PRODUCT_RULE_FULFILLED:
-        return state.set('currentProductRule', action.payload.product_rule);
-
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state.set('institutionProducts', action.payload.institution_products);
-
-      case ActionTypeKeys.GET_SERVICE_INTERFACES_FULFILLED:
-        return state.set('interfaces', action.payload.interfaces);
-
-      case ActionTypeKeys.GET_SERVICE_ENDPOINTS_FULFILLED:
-        return state.set('endpoints', action.payload.endpoints);
 
       case ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED:
         return state.set('productAprs', action.payload.product_aprs);
@@ -62,8 +50,10 @@ const productsReducer =
         return state.set('productIllustration', action.payload.product_information);
 
       case ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED:
-        return state.set('productRevolvingCreditIllustration',
-                         action.payload.revolving_credit_information);
+        return state.set(
+          'productRevolvingCreditIllustration',
+          action.payload.revolving_credit_information
+        );
 
       case ActionTypeKeys.RESET_ILLUSTRATION_LOAN:
         return state.set('productIllustration', Immutable([]));

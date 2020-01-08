@@ -6,14 +6,14 @@ import AuxiliaryCountersForm from './AuxiliaryCountersForm';
 import {
   createLoadingSelector,
   handleUpdateProductAuxCounters,
-  ProductsActionTypes,
+  ProductAuxCountersActionTypes,
   selectActiveItemId,
   selectProductAuxCounters,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.UPDATE_PRODUCT_AUX_COUNTERS,
+  ProductAuxCountersActionTypes.UPDATE_PRODUCT_AUX_COUNTERS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

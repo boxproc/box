@@ -78,8 +78,8 @@ export interface IllustrationProductStatementsRevolvingCreditResp {
 export interface IllustrationProductStatementsRevolvingCredit {
   statementId: number | string;
   statementDate: number | string;
-  firstTransactionId: number| string;
-  lastTransactionId: number| string;
+  firstTransactionId: number | string;
+  lastTransactionId: number | string;
   balanceOpen: number | string;
   balanceClose: number | string;
   minimumAmountDueRepayment: number | string;
@@ -99,27 +99,27 @@ export interface IllustrationProductFeeRevolvingCredit {
 
 export interface IllustrationProductAprRevolvingCredit {
   description: number | string;
-  accruedInterest: number| string;
-  rate: number| string;
+  accruedInterest: number | string;
+  rate: number | string;
 }
 
 export interface IllustrationProductTransactionsRevolvingCredit {
-  transactionDatetime: number|string;
-  debitCreditIndicator: number|string;
-  amount: number|string;
-  balanceSettledBefore: number|string;
-  balanceSettledAfter: number|string;
-  balanceAvailableBefore: number|string;
-  balanceAvailableAfter: number|string;
-  description: number|string;
-  status: number|string;
-  aprRate: number|string;
+  transactionDatetime: number | string;
+  debitCreditIndicator: number | string;
+  amount: number | string;
+  balanceSettledBefore: number | string;
+  balanceSettledAfter: number | string;
+  balanceAvailableBefore: number | string;
+  balanceAvailableAfter: number | string;
+  description: number | string;
+  status: number | string;
+  aprRate: number | string;
   transactionType: string;
 }
 
 export interface IllustrationProductTransactionsRevolvingCreditResp {
   transaction_datetime: number | string;
-  debit_credit_indicator: number| string;
+  debit_credit_indicator: number | string;
   amount: number;
   balance_settled_before: number;
   balance_settled_after: number;
@@ -302,8 +302,8 @@ export interface LoanProductItemResp {
   product_id: number;
   def_num_of_installments: number;
   def_num_of_intrst_free_instlmts: number;
-  interest_distribution_type: number|string;
-  allow_overpayment: number|string;
+  interest_distribution_type: number | string;
+  allow_overpayment: number | string;
 }
 
 export interface LoanProductResp {
@@ -315,7 +315,7 @@ export interface LoanProductItem {
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
   interestDistributionType: SelectValues;
-  allowOverpayment: number|string;
+  allowOverpayment: number | string;
 }
 
 export interface PrepaidProductItemResp {
@@ -395,39 +395,9 @@ export type ProductItemDetails =
   | RevolvingCreditProductItem
   | SavingsProductItem;
 
-export interface ProductRulesItemResp {
-  event_id: string | number;
-  action_type: string | number;
-  script: string;
-  product_id: number;
-}
-
 export type NewProduct = ProductItemDetails & ProductItemGeneral;
 
 export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
-
-export interface ProductRuleResp {
-  product_rule: ProductRulesItemResp;
-}
-
-export interface ProductRulesItem {
-  eventId: SelectValues;
-  actionType: SelectValues;
-  script: string;
-  productId: number;
-}
-
-export interface ProductRuleRequest {
-  productId: number;
-  eventId?: number | string;
-  actionType?: number | string;
-}
-
-export interface ProductRuleRequestPrepared {
-  product_id: number;
-  event_id?: number | string;
-  action_type?: number | string;
-}
 
 export interface InstitutionProductsItem extends ProductItemInfoPlain {
   product_type: string;
@@ -439,32 +409,6 @@ export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
 
 export interface InstitutionProducts {
   institution_products: Array<InstitutionProductsItem>;
-}
-
-export interface InstitutionProductServiceInterfaces {
-  interfaces: Array<IdNamePair>;
-}
-
-export interface InstitutionProductServiceEndpoints {
-  endpoints: Array<IdNamePair>;
-}
-
-export interface ServicesItems {
-  id: number;
-  card_transactions_endpoint_id: string | number;
-  card_management_interface_id: string | number;
-  provider_3d_secure_interface_id: string | number;
-  direct_debit_interface_id: string | number;
-  card_repayment_interface_id: string | number;
-}
-
-export interface ServicesItemsPrepared {
-  id: number;
-  endpoints: SelectValues;
-  interfaces: SelectValues;
-  secureProviderInterfaces: SelectValues;
-  directDebitRepaymentInterface: SelectValues;
-  cardRepaymentInterface: SelectValues;
 }
 
 export interface GeneralLedgerItem {
@@ -481,26 +425,6 @@ export interface GeneralLedgerItemPrepared {
   glAccLiabilities: string;
   glAccProfit: string;
   glAccLoss: string;
-}
-
-export interface ProductAuxCountersItem {
-  product_id: number;
-  aux_counter_1_description?: string;
-  aux_counter_2_description?: string;
-  aux_counter_3_description?: string;
-  aux_counter_1_enabled?: string;
-  aux_counter_2_enabled?: string;
-  aux_counter_3_enabled?: string;
-}
-
-export interface ProductAuxCountersItemPrepared {
-  id: number;
-  auxCounter1Description: string;
-  auxCounter2Description: string;
-  auxCounter3Description: string;
-  auxCounter1Enabled: boolean;
-  auxCounter2Enabled: boolean;
-  auxCounter3Enabled: boolean;
 }
 
 export interface ProductAprItem {
@@ -630,20 +554,17 @@ export interface ProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;
-  currentProductRule: ProductRulesItemResp;
   institutionProducts: ImmutableArray<InstitutionProductsItem>;
-  interfaces: ImmutableArray<IdNamePair>;
-  endpoints: ImmutableArray<IdNamePair>;
   productAprs: ImmutableArray<ProductAprItem>;
   productFees: ImmutableArray<ProductFeeItem>;
   productRewards: ImmutableArray<ProductRewardItem>;
   productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
   productIllustration: ImmutableArray<IllustrationProductLoanResp>;
   productRevolvingCreditIllustration: {
-  statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
-  aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
-  fees: ImmutableArray<IllustrationProductFeeRevolvingCreditResp>;
-  rewards: ImmutableArray<IllustrationProductRewardRevolvingCreditResp>;
-  transactions: ImmutableArray<IllustrationProductTransactionsRevolvingCreditResp>;
-};
+    statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
+    aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
+    fees: ImmutableArray<IllustrationProductFeeRevolvingCreditResp>;
+    rewards: ImmutableArray<IllustrationProductRewardRevolvingCreditResp>;
+    transactions: ImmutableArray<IllustrationProductTransactionsRevolvingCreditResp>;
+  };
 }

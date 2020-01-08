@@ -22,27 +22,21 @@ import {
   DeleteProductFeeAction,
   DeleteProductRewardAction,
   FilterProductsAction,
-  GetEndpointsProductServiceAction,
   GetInstitutionProductsAction,
-  GetInterfacesProductServiceAction,
   GetProductAction,
   GetProductAprsAction,
   GetProductDetailsAction,
   GetProductFeeAprsAction,
   GetProductFeesAction,
   GetProductRewardsAction,
-  GetProductRuleAction,
   IllustrateProductLoanAction,
   IllustrateProductRevolvingCreditAction,
-  UpdateCardServiceAction,
   UpdateGeneralLedgerAction,
   UpdateProductAction,
   UpdateProductAprAction,
-  UpdateProductAuxCountersAction,
   UpdateProductDetailsAction,
   UpdateProductFeeAction,
   UpdateProductRewardAction,
-  UpdateProductRulesAction,
 } from './actionTypes';
 import * as api from './api';
 import { selectCurrentProductType } from './selectors';
@@ -56,8 +50,6 @@ import {
   ProductAprFormValues,
   ProductAprIds,
   ProductAprItem,
-  ProductAuxCountersItem,
-  ProductAuxCountersItemPrepared,
   ProductFee,
   ProductFeeFormValues,
   ProductFeeItem,
@@ -71,16 +63,9 @@ import {
   ProductRewardFormValues,
   ProductRewardItem,
   ProductRewardsIds,
-  ProductRuleRequestPrepared,
-  ProductRulesItem,
-  ProductRulesItemResp,
   RevolvingCreditProductIllustratePrepared,
-  ServicesItems,
-  ServicesItemsPrepared,
 } from './types';
 import {
-  prepareAuxCountersToSend,
-  prepareCardServiceDataToSend,
   prepareFormDataProductAprsToSend,
   prepareFormDataProductFeesToSend,
   prepareFormDataProductRewardsToSend,
@@ -94,8 +79,6 @@ import {
   prepareProductLoanIllustrateDataToSend,
   prepareProductRevolvingCreditIllustrateDataToSend,
   prepareProductRewardsToSend,
-  prepareProductRuleDataToSend,
-  prepareProductRuleIdsToSend,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -117,39 +100,17 @@ export type HandleGetProductDetails = () => Thunk<void>;
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = () => Thunk<void>;
 
-export type GetProductRule = (data: ProductRuleRequestPrepared) => GetProductRuleAction;
-export type HandleGetProductRule = () => Thunk<void>;
-
-export type GetInterfacesService = (institutionId: number) =>
-  GetInterfacesProductServiceAction;
-export type GetEndpointsService = (institutionId: number) =>
-  GetEndpointsProductServiceAction;
-
-export type HandleGetInterfacesService = (institutionId: number) => Thunk<void>;
-export type HandleGetProductServices = (institutionId: number) => Thunk<void>;
-
 export type AddProduct = (data: NewProductPrepared) => AddProductAction;
 export type HandleAddProduct = (data: Partial<NewProduct>) => Thunk<void>;
 
-export type UpdateCardService = (data: ServicesItems) => UpdateCardServiceAction;
-export type HandleUpdateCardService = (data: Partial<ServicesItemsPrepared>) => Thunk<void>;
-
 export type UpdateGeneralLedger = (data: Partial<GeneralLedgerItem>) => UpdateGeneralLedgerAction;
 export type HandleUpdateGeneralLedger = (data: Partial<GeneralLedgerItemPrepared>) => Thunk<void>;
-
-export type UpdateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
-  UpdateProductAuxCountersAction;
-export type HandleUpdateProductAuxCounters = (data: Partial<ProductAuxCountersItemPrepared>) =>
-  Thunk<void>;
 
 export type UpdateProduct = (data: ProductItemResp) => UpdateProductAction;
 export type HandleUpdateProduct = (data: Partial<ProductItemGeneral>) => Thunk<void>;
 
 export type UpdateProductDetails = (data: ProductItemDetailsResp) => UpdateProductDetailsAction;
 export type HandleUpdateProductDetails = (data: Partial<ProductItemDetails>) => Thunk<void>;
-
-export type UpdateProductRules = (data: ProductRulesItemResp) => UpdateProductRulesAction;
-export type HandleUpdateProductRules = (data: Partial<ProductRulesItem>) => Thunk<void>;
 
 export type GetProductAprs = (id: number) => GetProductAprsAction;
 export type HandleGetProductAprs = () => Thunk<void>;
@@ -194,8 +155,9 @@ export type IllustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared
   IllustrateProductLoanAction;
 export type HandleIllustrateLoanProduct = () => Thunk<void>;
 
-export type IllustrateRevolvingCreditProduct =
-(data: Partial<RevolvingCreditProductIllustratePrepared>) => IllustrateProductRevolvingCreditAction;
+export type IllustrateRevolvingCreditProduct = (
+  data: Partial<RevolvingCreditProductIllustratePrepared>
+) => IllustrateProductRevolvingCreditAction;
 export type HandleIllustrateRevolvingCreditProduct = () => Thunk<void>;
 
 export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
@@ -209,16 +171,6 @@ export const getInstitutionProducts: GetInstitutionProducts = id => ({
   payload: api.getInstitutionProducts(id),
 });
 
-export const getEndpointsService: GetEndpointsService = institutionId => ({
-  type: ActionTypeKeys.GET_SERVICE_ENDPOINTS,
-  payload: api.getEndpointsService(institutionId),
-});
-
-export const getInterfacesService: GetInterfacesService = institutionId => ({
-  type: ActionTypeKeys.GET_SERVICE_INTERFACES,
-  payload: api.getInterfacesService(institutionId),
-});
-
 export const deleteProduct: DeleteProduct = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT,
   payload: api.deleteProduct(id),
@@ -230,19 +182,9 @@ export const filterProducts: FilterProducts = params => ({
   payload: api.filterProducts(params),
 });
 
-export const updateCardService: UpdateCardService = data => ({
-  type: ActionTypeKeys.UPDATE_CARD_SERVICES,
-  payload: api.updateCardService(data),
-});
-
 export const updateGeneralLedger: UpdateGeneralLedger = data => ({
   type: ActionTypeKeys.UPDATE_GENERAL_LEDGER,
   payload: api.updateGeneralLedger(data),
-});
-
-export const updateProductAuxCounters: UpdateProductAuxCounters = data => ({
-  type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS,
-  payload: api.updateProductAuxCounters(data),
 });
 
 export const getProductDetails: GetProductDetails = id => ({
@@ -253,11 +195,6 @@ export const getProductDetails: GetProductDetails = id => ({
 export const getProduct: GetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
-});
-
-export const getProductRule: GetProductRule = data => ({
-  type: ActionTypeKeys.GET_PRODUCT_RULE,
-  payload: api.getProductRule(data),
 });
 
 export const addProduct: AddProduct = data => ({
@@ -273,11 +210,6 @@ export const updateProduct: UpdateProduct = data => ({
 export const updateProductDetails: UpdateProductDetails = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS,
   payload: api.updateProductDetails(data),
-});
-
-export const updateProductRules: UpdateProductRules = data => ({
-  type: ActionTypeKeys.UPDATE_PRODUCT_RULES,
-  payload: api.updateProductRules(data),
 });
 
 export const getProductAprs: GetProductAprs = id => ({
@@ -432,42 +364,6 @@ export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
     );
   };
 
-export const handleGetInterfacesService: HandleGetInterfacesService = institutionId =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(getInterfacesService(institutionId));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetProductServices: HandleGetProductServices = institutionId =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await Promise.all([
-          dispatch(getInterfacesService(institutionId)),
-          dispatch(getEndpointsService(institutionId)),
-        ]);
-      },
-      dispatch
-    );
-  };
-
-export const handleUpdateCardService: HandleUpdateCardService = data =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareCardServiceDataToSend(data);
-
-        await dispatch(updateCardService(preparedValues));
-        await dispatch(handleFilterProducts());
-      },
-      dispatch
-    );
-  };
-
 export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -475,19 +371,6 @@ export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
         const preparedValues = prepareGeneralLedgerToSend(data);
 
         await dispatch(updateGeneralLedger(preparedValues));
-        await dispatch(handleFilterProducts());
-      },
-      dispatch
-    );
-  };
-
-export const handleUpdateProductAuxCounters: HandleUpdateProductAuxCounters = data =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareAuxCountersToSend(data);
-
-        await dispatch(updateProductAuxCounters(preparedValues));
         await dispatch(handleFilterProducts());
       },
       dispatch
@@ -533,23 +416,6 @@ export const handleGetProduct: HandleGetProduct = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(getProduct(id));
-      },
-      dispatch
-    );
-  };
-
-export const handleGetProductRule: HandleGetProductRule = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const formValues = getFormValues(formNamesConst.PRODUCT_RULES);
-        const state = getState();
-        const prepared = prepareProductRuleIdsToSend(formValues(state));
-
-        await dispatch(getProductRule({
-          product_id: selectActiveItemId(state),
-          ...prepared,
-        }));
       },
       dispatch
     );
@@ -608,23 +474,6 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = data =>
 
         await dispatch(updateProductDetails(preparedValues));
         await dispatch(handleGetProductDetails());
-      },
-      dispatch
-    );
-  };
-
-export const handleUpdateProductRules: HandleUpdateProductRules = data =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const state = getState();
-        const preparedValues = prepareProductRuleDataToSend(data);
-
-        await dispatch(updateProductRules({
-          ...preparedValues,
-          product_id: selectActiveItemId(state),
-        }));
-        await dispatch(handleGetProductRule());
       },
       dispatch
     );

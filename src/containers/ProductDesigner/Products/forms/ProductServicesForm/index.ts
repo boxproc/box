@@ -7,7 +7,7 @@ import {
   createLoadingSelector,
   handleGetProductServices,
   handleUpdateCardService,
-  ProductsActionTypes,
+  ProductServicesActionTypes,
   selectActiveItemId,
   selectCurrentProductInstitutionId,
   selectProductCardEndpointsService,
@@ -17,15 +17,15 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.UPDATE_CARD_SERVICES,
+  ProductServicesActionTypes.UPDATE_CARD_SERVICES,
 ]);
 
 const loadingSelectorInterfaces = createLoadingSelector([
-  ProductsActionTypes.GET_SERVICE_INTERFACES,
+  ProductServicesActionTypes.GET_SERVICE_INTERFACES,
 ]);
 
 const loadingSelectorEndpoints = createLoadingSelector([
-  ProductsActionTypes.GET_SERVICE_ENDPOINTS,
+  ProductServicesActionTypes.GET_SERVICE_ENDPOINTS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

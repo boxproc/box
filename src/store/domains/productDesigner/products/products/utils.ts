@@ -1,5 +1,4 @@
 import {
-  actionTypesOptions,
   aprTypesOptions,
   cardFormFactorOptions,
   feeTypesOptions,
@@ -35,7 +34,6 @@ import {
   ProductAprFormValues,
   ProductAprItem,
   ProductAprPlainInfo,
-  ProductAuxCountersItemPrepared,
   ProductFee,
   ProductFeeFormValues,
   ProductFeeItem,
@@ -48,15 +46,12 @@ import {
   ProductRewardFormValues,
   ProductRewardItem,
   ProductRewardPlainInfo,
-  ProductRulesItem,
-  ProductRulesItemResp,
   RevolvingCreditnProductIllustrate,
   RevolvingCreditProductIllustratePrepared,
   RevolvingCreditProductItem,
   RevolvingCreditProductItemResp,
   SavingsProductItem,
   SavingsProductItemResp,
-  ServicesItemsPrepared,
 } from './types';
 
 import { SelectValues } from 'types';
@@ -86,7 +81,7 @@ export const prepareProductLoanIllustrateDataToSend =
 
 export const prepareProductRevolvingCreditIllustrateDataToSend =
   (data: Partial<RevolvingCreditnProductIllustrate>):
-  Partial<RevolvingCreditProductIllustratePrepared> => {
+    Partial<RevolvingCreditProductIllustratePrepared> => {
     const { productId, limit, openBalance, startDate, transactionAmount1, transactionAmount2,
       transactionAmount3, transactionDate1, transactionDate2, transactionDate3, transactionType1,
       transactionType2, transactionType3 } = data;
@@ -108,42 +103,6 @@ export const prepareProductRevolvingCreditIllustrateDataToSend =
     };
   };
 
-export const prepareCardServiceDataToSend = (data: Partial<ServicesItemsPrepared>) => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    endpoints,
-    interfaces,
-    secureProviderInterfaces,
-    directDebitRepaymentInterface,
-    cardRepaymentInterface,
-    id,
-  } = data;
-
-  const endpointId = endpoints.value;
-  const interfaceId = interfaces.value;
-  const secureProviderInterfaceId = secureProviderInterfaces.value;
-  const directDebitRepaymentInterfaceId = directDebitRepaymentInterface.value;
-  const cardRepaymentInterfaceId = cardRepaymentInterface.value;
-
-  return {
-    id,
-    card_transactions_endpoint_id: endpointId ? endpointId : null,
-    card_management_interface_id: interfaceId ? interfaceId : null,
-    provider_3d_secure_interface_id: secureProviderInterfaceId
-      ? secureProviderInterfaceId
-      : null,
-    direct_debit_interface_id: directDebitRepaymentInterfaceId
-      ? directDebitRepaymentInterfaceId
-      : null,
-    card_repayment_interface_id: cardRepaymentInterfaceId
-      ? cardRepaymentInterfaceId
-      : null,
-  };
-};
-
 export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepared>) => {
   if (!data) {
     return null;
@@ -157,32 +116,6 @@ export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepar
     gl_acc_liabilities: glAccLiabilities,
     gl_acc_profit: glAccProfit,
     gl_acc_loss: glAccLoss,
-  };
-};
-
-export const prepareAuxCountersToSend = (data: Partial<ProductAuxCountersItemPrepared>) => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    id,
-    auxCounter1Description,
-    auxCounter2Description,
-    auxCounter3Description,
-    auxCounter1Enabled,
-    auxCounter2Enabled,
-    auxCounter3Enabled,
-  } = data;
-
-  return {
-    product_id: id,
-    aux_counter_1_description: auxCounter1Description,
-    aux_counter_2_description: auxCounter2Description,
-    aux_counter_3_description: auxCounter3Description,
-    aux_counter_1_enabled: auxCounter1Enabled ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    aux_counter_2_enabled: auxCounter2Enabled ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    aux_counter_3_enabled: auxCounter3Enabled ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };
 
@@ -269,7 +202,7 @@ export const prepareProductIllustrationTransactionsItem = (
     description: item.description,
     status: item.status,
     aprRate: item.apr_rate && item.apr_rate.toFixed(2),
-    transactionType:  item.transaction_type,
+    transactionType: item.transaction_type,
   };
 };
 
@@ -326,7 +259,7 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     overridesProductId: overrides_product_id,
     cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
     numberOfDaysCardExpires: number_of_days_card_expires,
-    statementCycleTypeId: { value: statement_cycle_type_id, label: statement_cycle_type_name},
+    statementCycleTypeId: { value: statement_cycle_type_id, label: statement_cycle_type_name },
     statementCycleParameter: statement_cycle_parameter,
   };
 };
@@ -665,45 +598,6 @@ export const prepareNewProductDataToSend = (product: Partial<NewProduct>) => {
   return {
     ...prepareGeneralProductDataToSend(product),
     ...prepareProductDetailsDataToSend(product, product.productType),
-  };
-};
-
-export const prepareProductRuleData = (rule: ProductRulesItemResp) => {
-  if (!rule) {
-    return null;
-  }
-
-  return {
-    actionType: actionTypesOptions.find(el => el.value === rule.action_type),
-    script: rule.script,
-    productId: rule.product_id,
-  };
-};
-
-export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) => {
-  if (!rule) {
-    return null;
-  }
-
-  const { eventId, actionType, script } = rule;
-
-  return {
-    event_id: eventId && eventId.value,
-    action_type: actionType && actionType.value,
-    script: script ? script : null,
-  };
-};
-
-export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => {
-  if (!data || !data.eventId || !data.actionType) {
-    return null;
-  }
-
-  const { eventId, actionType } = data;
-
-  return {
-    event_id: eventId && eventId.value,
-    action_type: actionType && actionType.value,
   };
 };
 

@@ -7,7 +7,6 @@ import { apiClient } from 'services';
 //   productData,
 //   productDetailsData,
 //   productItemsFilteredData,
-//   productRulesData,
 //   successResponseStatus,
 // } from './mock';
 
@@ -19,7 +18,6 @@ import {
   NewProductPrepared,
   ProductAprIds,
   ProductAprItem,
-  ProductAuxCountersItem,
   ProductFeeItem,
   ProductFeesIds,
   ProductFilterPrepared,
@@ -27,10 +25,7 @@ import {
   ProductItemResp,
   ProductRewardItem,
   ProductRewardsIds,
-  ProductRuleRequestPrepared,
-  ProductRulesItemResp,
   RevolvingCreditProductIllustratePrepared,
-  ServicesItems,
 } from './types';
 
 export const getInstitutionProducts = (id: number | string) =>
@@ -51,30 +46,9 @@ export const getProductDetails = (id: number) =>
     data: { id },
   });
 
-export const getEndpointsService = (institutionId: number) =>
-  apiClient.post(productsPathNames.GET_ENDPOINTS_SERVICE, {
-    data: { institution_id: institutionId },
-  });
-
-export const getInterfacesService = (institutionId: number) =>
-  apiClient.post(productsPathNames.GET_INTERFACES_SERVICE, {
-    data: { institution_id: institutionId },
-  });
-
-export const updateCardService = (data: Partial<ServicesItems>) =>
-  apiClient.post(productsPathNames.UPDATE_CARD_SERVICE, { data });
-
 export const updateGeneralLedger = (data: Partial<GeneralLedgerItem>) =>
   // throttleUtil.getDataAfter(productData, 500);
   apiClient.post(productsPathNames.UPDATE_GENERAL_LEDGER, { data });
-
-export const updateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
-  // throttleUtil.getDataAfter(productData, 500);
-  apiClient.post(productsPathNames.UPDATE_AUX_COUNTERS, { data });
-
-export const getProductRule = (data: ProductRuleRequestPrepared) =>
-  // throttleUtil.getDataAfter(productRulesData, 500);
-  apiClient.post(productsPathNames.GET_PRODUCTS_RULES, { data });
 
 export const deleteProduct = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
@@ -104,10 +78,6 @@ export const updateProduct = (data: ProductItemResp) =>
 export const updateProductDetails = (data: ProductItemDetailsResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
   apiClient.post(productsPathNames.UPDATE_DETAILS, { data });
-
-export const updateProductRules = (data: ProductRulesItemResp) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsPathNames.UPDATE_RULES, { data });
 
 export const getProductAprs = (id: number) =>
   apiClient.post(productsPathNames.GET_APRS, {

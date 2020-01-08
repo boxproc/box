@@ -9,7 +9,7 @@ import EditCustomerModal from './EditCustomerModal';
 import {
   createLoadingSelector,
   handleGetInterfacesService,
-  ProductsActionTypes,
+  ProductServicesActionTypes,
   selectLedgerCurrentCustomerInstitutionId,
   selectLedgerCurrentCustomerName,
   selectProductCardInterfacesService,
@@ -19,7 +19,7 @@ import { StoreState } from 'store/StoreState';
 const dirty = isDirty(formNamesConst.LEDGER_CUSTOMER);
 
 const loadingSelectorInterfaces = createLoadingSelector([
-  ProductsActionTypes.GET_SERVICE_INTERFACES,
+  ProductServicesActionTypes.GET_SERVICE_INTERFACES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

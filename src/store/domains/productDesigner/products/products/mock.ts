@@ -3,7 +3,6 @@ import {
   ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
-  ProductRuleResp,
   ProductsDataResp,
 } from './types';
 
@@ -103,18 +102,6 @@ export const productDetailsData: ProductDetailsResp = {
     minimum_repayment_amount: 15,
     minimum_repayment_rate: 5,
     repayment_grace_number_of_days: 30,
-  },
-};
-
-export const productRulesData: ProductRuleResp = {
-  product_rule: {
-    event_id: 3,
-    action_type: 'X',
-    script:
-      `function test(a, b) {
-    return a + b;
-}`,
-    product_id: 1,
   },
 };
 

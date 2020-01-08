@@ -10,7 +10,7 @@ import {
   createLoadingSelector,
   handleGetProductRule,
   handleUpdateProductRules,
-  ProductsActionTypes,
+  ProductRulesActionTypes,
   selectActionTypesOptions,
   selectCurrentProductRule,
   selectCurrentProductScript,
@@ -19,8 +19,8 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_RULE,
-  ProductsActionTypes.UPDATE_PRODUCT_RULES,
+  ProductRulesActionTypes.GET_PRODUCT_RULE,
+  ProductRulesActionTypes.UPDATE_PRODUCT_RULES,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
