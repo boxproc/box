@@ -23,6 +23,8 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   date_of_product_override?: string;
   product_name: string | number;
   product_type: string;
+  num_of_installments: number;
+  num_of_interest_free_instllmnts: number;
   balance_settled: number;
   balance_available: number;
   amount_due_repayment: number;
@@ -72,6 +74,8 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   firstName: string;
   lastName: string;
   productId: number | string;
+  numOfInstallments: number;
+  numOfInterestFreeInstllmnts: number;
   productOverrideId?: number;
   dateOfProductOverride?: string;
   productOverrideFlag?: boolean;
