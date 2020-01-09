@@ -100,7 +100,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
       }
     },
-    [institutionProducts, currentProduct]
+    [institutionProducts, currentProduct, change, isChosenLoanProductType, isEditMode]
   );
 
   const handleSubmitForm = React.useCallback(
