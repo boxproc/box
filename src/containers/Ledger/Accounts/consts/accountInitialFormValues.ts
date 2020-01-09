@@ -1,3 +1,5 @@
+import { dateUtil } from 'utils';
+
 export const accountInitialFormValues = {
   balanceSettled: '0.00',
   balanceAvailable: '0.00',
@@ -24,4 +26,5 @@ export const accountInitialFormValues = {
   numberOfTimesOverdue5Cycles: '0',
   numberOfTimesOverdue6Cycles: '0',
   numberOfTimesOverdue7Cycles: '0',
+  loanStartDate: dateUtil.todayDate,
 };

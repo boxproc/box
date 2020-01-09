@@ -215,6 +215,8 @@ export const selectInstitutionProducts = createSelector(
         id: product.id,
         name: product.name,
         productType: product.product_type,
+        defNumOfIntrstFreeInstlmts: product.def_num_of_intrst_free_instlmts,
+        defNumOfInstallments: product.def_num_of_installments,
       };
     });
   }

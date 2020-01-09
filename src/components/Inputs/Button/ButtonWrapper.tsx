@@ -48,7 +48,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 8px 10px 6px;
     border-radius: 2px;
-    border: 1px solid transparent;
 
     &.is-focused:not(:disabled) {
       background-color: ${theme.colors.lighterGray};
@@ -105,6 +104,18 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;
 
+    &:hover,
+    &.is-focused:not(:disabled) {
+      box-shadow: ${theme.shadows.normalBox};
+    }
+  `};
+
+  ${({ textTransformNone }) => textTransformNone && `
+    text-transform: none;
+    font-weight: normal;
+  `};
+
+  ${({ hasIcon, underline, theme}) => !hasIcon && !underline && `
     &:after {
       content: '';
       position: absolute;
@@ -122,16 +133,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     &:focus:not(:active):after {
       animation: ripple 1s ease-out;
     }
-
-    &:hover,
-    &.is-focused:not(:disabled) {
-      box-shadow: ${theme.shadows.normalBox};
-    }
-  `};
-
-  ${({ textTransformNone }) => textTransformNone && `
-    text-transform: none;
-    font-weight: normal;
   `};
 
   &:disabled {
@@ -145,12 +146,12 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       opacity: 1;
     }
     20% {
-      transform: scale(25, 25);
+      transform: scale(15, 15);
       opacity: 1;
     }
     100% {
       opacity: 0;
-      transform: scale(40, 40);
+      transform: scale(30, 30);
     }
   }
 `;

@@ -111,11 +111,15 @@ export const institutionProducts: InstitutionProducts = {
       id: 1,
       name: 'Test revolving credit product',
       product_type: 'C',
+      def_num_of_intrst_free_instlmts: 1,
+      def_num_of_installments: 1,
     },
     {
       id: 2,
       name: 'Product: debit',
       product_type: 'D',
+      def_num_of_intrst_free_instlmts: 1,
+      def_num_of_installments: 1,
     },
   ],
 };

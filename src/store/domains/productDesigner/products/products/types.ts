@@ -401,10 +401,14 @@ export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
 
 export interface InstitutionProductsItem extends ProductItemInfoPlain {
   product_type: string;
+  def_num_of_intrst_free_instlmts: number;
+  def_num_of_installments: number;
 }
 
 export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
   productType: string;
+  defNumOfIntrstFreeInstlmts: number;
+  defNumOfInstallments: number;
 }
 
 export interface InstitutionProducts {

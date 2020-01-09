@@ -145,26 +145,30 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 5]} p="10px">
-            <Field
-              id="numOfInstallments"
-              name="numOfInstallments"
-              component={InputField}
-              label="Number of Installments"
-              placeholder="Enter Number"
-              readOnly={isReadOnly}
-            />
-          </Box>
-          <Box width={[1 / 5]} p="10px">
-            <Field
-              id="numOfInterestFreeInstllmnts"
-              name="numOfInterestFreeInstllmnts"
-              component={InputField}
-              label="Number of Interest Free Installments"
-              placeholder="Enter Number"
-              readOnly={isReadOnly}
-            />
-          </Box>
+          {isChosenLoanProductType && (
+            <React.Fragment>
+              <Box width={[1 / 5]} p="10px">
+                <Field
+                  id="numOfInstallments"
+                  name="numOfInstallments"
+                  component={InputField}
+                  label="Number of Installments"
+                  placeholder="Enter Number"
+                  readOnly={isReadOnly}
+                />
+              </Box>
+              <Box width={[1 / 5]} p="10px">
+                <Field
+                  id="numOfInterestFreeInstllmnts"
+                  name="numOfInterestFreeInstllmnts"
+                  component={InputField}
+                  label="Number of Interest Free Installments"
+                  placeholder="Enter Number"
+                  readOnly={isReadOnly}
+                />
+              </Box>
+            </React.Fragment>
+          )}
           {isChosenLoanProductType && !isEditMode && (
             <React.Fragment>
               <Box width="150px" p="10px">
