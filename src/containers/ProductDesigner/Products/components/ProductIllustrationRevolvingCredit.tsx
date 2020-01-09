@@ -59,7 +59,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
         {isOpenParams && (
           <React.Fragment>
             <Delimiter />
-            <Box width={[1 / 7]} p="10px">
+            <Box width="130px" p="10px">
               <Field
                 id="startDate"
                 name="startDate"
@@ -95,7 +95,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box  ml="1px" p="10px" width="130px">
+            <Box ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -139,7 +139,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box  ml="1px" p="10px" width="130px">
+            <Box ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -183,7 +183,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
               />
             </Box>
             <Delimiter />
-            <Box  ml="1px" p="10px" width="130px">
+            <Box ml="1px" p="10px" width="130px">
               <Paragraph
                 bold={false}
                 light={true}
@@ -228,16 +228,11 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
             </Box>
             <Hr />
             <Flex justifyContent="flex-end" width="100%">
-            {/* <Box width={[1 / 5]} pb="20px"> */}
-              <Button
-                text="Illustrate"
-              />
-              </Flex>
-            {/* </Box> */}
+              <Button text="Illustrate" />
+            </Flex>
           </React.Fragment>
         )}
-        )}
-        </Flex>
+      </Flex>
     </form>
   );
 };

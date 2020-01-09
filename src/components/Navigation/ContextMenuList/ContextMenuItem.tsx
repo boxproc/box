@@ -23,6 +23,8 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
       preventClose={preventClose}
       data={{
         name: item.name,
+        value: item.value,
+        shiftCharCount: item.shiftCharCount,
         description: item.description,
         action: item.action,
         withConfirmation: item.withConfirmation,

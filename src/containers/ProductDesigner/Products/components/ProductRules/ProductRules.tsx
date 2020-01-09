@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button, HighlightCodeField, SelectField } from 'components';
-import SnippetButtons from './SnippetButtons';
+import { codeSnippetsContextMenuItems } from './codeSnippetsContextMenuItems';
 
 import { eventTypesCodeKeys, messagesConst } from 'consts';
 
@@ -23,16 +23,6 @@ import { formErrorUtil } from 'utils';
 const ScriptWrapper = styled.div`
   position: relative;
   width: 100%;
-
-  .snippet-buttons {
-    position: absolute;
-    right: 20px;
-    top: 3px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    z-index: 1;
-  }
 
   .loading {
     position: absolute;
@@ -103,7 +93,8 @@ const getNewCode = (element: string) => {
 
 const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
   return {
-    name: `/* ${el.description} */`,
+    name: el.description,
+    value: `/* ${el.description} */`,
     description: `(${el.name})`,
   };
 });
@@ -172,34 +163,26 @@ const ProductRules: React.FC<ProductRulesProps> = ({
   );
 
   const onContextMenuClick = React.useCallback(
-    (e: Event, value: { name: string, description: string }) => {
-      const newValue = value.name;
+    (e: Event, itemValue: {
+      name: string,
+      description: string,
+      value: string,
+      shiftCharCount: number,
+    }) => {
+      const {value, name, shiftCharCount} = itemValue;
+
+      const newValue = value ? value : name;
       const code = getNewCode(newValue);
 
-      changeFormField('script', code);
-      textarea.focus();
-
-      setTimeout(
-        () => textarea.setSelectionRange(
-          currentCursorPosition + newValue.length,
-          currentCursorPosition + newValue.length
-        ),
-        50);
-    },
-    [currentCursorPosition, changeFormField, textarea]
-  );
-
-  const onSnippetButtonClick = React.useCallback(
-    (snippet: string, shiftCharCount?: number) => {
-      const code = getNewCode(snippet);
+      const shiftCursor = shiftCharCount ? shiftCharCount : newValue.length;
 
       changeFormField('script', code);
       textarea.focus();
 
       setTimeout(
         () => textarea.setSelectionRange(
-          currentCursorPosition + shiftCharCount,
-          currentCursorPosition + shiftCharCount
+          currentCursorPosition + shiftCursor,
+          currentCursorPosition + shiftCursor
         ),
         50);
     },
@@ -288,6 +271,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
         ],
         noDataStr: 'No available transaction type IDs',
       },
+      codeSnippetsContextMenuItems,
     ],
     [
       eventDataElemsItems,
@@ -354,12 +338,6 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             </Box>
           )}
           <ScriptWrapper>
-            {!isReadOnly && (
-              <SnippetButtons
-                className="snippet-buttons"
-                onClick={onSnippetButtonClick}
-              />
-            )}
             {isLoading && (
               <div className="loading">loading...</div>
             )}

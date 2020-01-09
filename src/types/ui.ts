@@ -1,7 +1,9 @@
 import { SelectValues } from 'types';
 
 export interface ContextMenuItemProps {
-  name: string;
+  name: string | number;
+  value?: string | number;
+  shiftCharCount?: number;
   description?: string;
   icon?: string;
   withConfirmation?: boolean;

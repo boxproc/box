@@ -28,7 +28,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   font-weight: 500;
   line-height: 1.3;
   user-select: none;
-  overflow: hidden;
   transition: all .1s linear;
 
   .text-wrapper {
@@ -116,6 +115,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `};
 
   ${({ hasIcon, underline, theme}) => !hasIcon && !underline && `
+    overflow: hidden;
+
     &:after {
       content: '';
       position: absolute;

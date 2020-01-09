@@ -19,7 +19,7 @@
 }
 
 .react-contextmenu-submenu .react-contextmenu {
-  width: 250px;
+  width: 150px;
   opacity: 0;
   visibility: hidden;
   margin-top: -2px;
@@ -74,7 +74,7 @@
 }
 
 .react-contextmenu::-webkit-scrollbar-thumb {
-  background-color: #ffa400;
+  background-color: #999999;
   border-radius: 8px;
 }
 

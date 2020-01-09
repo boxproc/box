@@ -99,8 +99,8 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         change('numOfInstallments', numOfInstallments);
         change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
       } else {
-        change('numOfInstallments', null);
-        change('numOfInterestFreeInstllmnts', null);
+        change('numOfInstallments', 0);
+        change('numOfInterestFreeInstllmnts', 0);
         change('nr_loan_cycles', null);
         change('loan_start_date', null);
       }

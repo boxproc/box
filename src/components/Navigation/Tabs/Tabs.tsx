@@ -26,7 +26,7 @@ const TabTitle = styled.div<TabTitleProps>`
   cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};
   color: ${({ theme }) => theme.colors.gray};
   font-size: 12px;
-  letter-spacing: .5pt;
+  letter-spacing: .4pt;
   border-bottom: 1px solid transparent;
   user-select: none;
   transition: all .1s linear;
