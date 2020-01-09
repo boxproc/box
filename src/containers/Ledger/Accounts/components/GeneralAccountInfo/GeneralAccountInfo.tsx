@@ -155,6 +155,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   label="Number of Installments"
                   placeholder="Enter Number"
                   readOnly={isReadOnly}
+                  validate={[formErrorUtil.required]}
                 />
               </Box>
               <Box width={[1 / 5]} p="10px">
@@ -165,6 +166,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   label="Number of Interest Free Installments"
                   placeholder="Enter Number"
                   readOnly={isReadOnly}
+                  validate={[formErrorUtil.required]}
                 />
               </Box>
             </React.Fragment>

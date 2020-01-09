@@ -58,6 +58,7 @@ const RepaymentDirectDebitsTable: React.FC<RepaymentDirectDebitsTableProps> = ({
         <TableCell
           value={props.value}
           isSmaller={true}
+          isNumber={true}
         />
       ),
     },
@@ -86,7 +87,7 @@ const RepaymentDirectDebitsTable: React.FC<RepaymentDirectDebitsTableProps> = ({
       ),
     },
     {
-      maxWidth: 100,
+      maxWidth: 70,
       sortable: true,
       accessor: 'status',
       Header: <TableHeader title="Status" />,
@@ -100,13 +101,24 @@ const RepaymentDirectDebitsTable: React.FC<RepaymentDirectDebitsTableProps> = ({
     {
       maxWidth: 150,
       sortable: true,
-      accessor: 'repaymentInterfaceId',
-      Header: <TableHeader title="Repayment Interface ID" />,
-      Cell: (props: TCell<'repaymentInterfaceId'>) => (
+      accessor: 'repaymentInterfaceName',
+      Header: <TableHeader title="Repayment Interface" />,
+      Cell: (props: TCell<'repaymentInterfaceName'>) => (
         <TableCell
           value={props.value}
           isSmaller={true}
-          isNumber={true}
+        />
+      ),
+    },
+    {
+      maxWidth: 150,
+      sortable: true,
+      accessor: 'repayProviderCustomerId',
+      Header: <TableHeader title="Repay Provider Customer ID" />,
+      Cell: (props: TCell<'repayProviderCustomerId'>) => (
+        <TableCell
+          value={props.value}
+          isSmaller={true}
         />
       ),
     },

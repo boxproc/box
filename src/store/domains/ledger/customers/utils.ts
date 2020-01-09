@@ -126,6 +126,7 @@ export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem
     cardholder_name,
     status,
     repayment_interface_id,
+    interface_name,
     last_update_datetime,
   } = data;
 
@@ -140,6 +141,7 @@ export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem
     cardholderName: cardholder_name,
     status: currentStatus && currentStatus.label,
     repaymentInterfaceId: repayment_interface_id,
+    repaymentInterfaceName: interface_name,
     lastUpdateDatetime: last_update_datetime,
   };
 };
@@ -163,7 +165,7 @@ export const prepareFormDataRepaymentDebitCardToSend =
       cvv2_encrypted: cvv2Encrypted,
       cardholder_name: cardholderName,
       status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId),
+      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId.value),
     };
   };
 
@@ -180,7 +182,9 @@ export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebits
     accountholder_name,
     status,
     repayment_interface_id,
+    interface_name,
     last_update_datetime,
+    repay_provider_customer_id,
   } = data;
 
   const currentStatus = statusTypesOptions.find(el => el.value === status);
@@ -192,7 +196,9 @@ export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebits
     accountholderName: accountholder_name,
     status: currentStatus && currentStatus.label,
     repaymentInterfaceId: repayment_interface_id,
+    repaymentInterfaceName: interface_name,
     lastUpdateDatetime: last_update_datetime,
+    repayProviderCustomerId: repay_provider_customer_id,
   };
 };
 
@@ -211,6 +217,6 @@ export const prepareFormDataRepaymentDirectDebitToSend =
       account_ext: accountExt,
       accountholder_name: accountholderName,
       status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId),
+      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId.value),
     };
   };

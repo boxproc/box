@@ -107,7 +107,8 @@ export interface RepaymentDebitCardsItem {
   cvv2_encrypted: string;
   cardholder_name: string;
   status: string | number;
-  repayment_interface_id: number;
+  repayment_interface_id: number | string;
+  interface_name: string;
   last_update_datetime: string;
 }
 
@@ -122,16 +123,18 @@ export interface RepaymentDebitCardsItemPlain {
   expiryDate: string;
   cvv2Encrypted: string;
   cardholderName: string;
-  repaymentInterfaceId: number;
   lastUpdateDatetime: string;
+  repaymentInterfaceName: string;
 }
 
 export interface RepaymentDebitCardsItemPrepared extends RepaymentDebitCardsItemPlain {
   status: string | number;
+  repaymentInterfaceId: string | number;
 }
 
 export interface RepaymentDebitCardsItemFormValues extends RepaymentDebitCardsItemPlain {
   status: SelectValues;
+  repaymentInterfaceId: SelectValues;
 }
 
 export interface RepaymentDirectDebitsItem {
@@ -140,8 +143,10 @@ export interface RepaymentDirectDebitsItem {
   account_ext: string;
   accountholder_name: string;
   status: string | number;
-  repayment_interface_id: number;
+  repayment_interface_id: number | string;
+  interface_name: string;
   last_update_datetime: string;
+  repay_provider_customer_id: string;
 }
 
 export interface RepaymentDirectDebitsItems {
@@ -153,16 +158,19 @@ interface RepaymentDirectDebitsItemPlain {
   account: string;
   accountExt: string;
   accountholderName: string;
-  repaymentInterfaceId: number;
   lastUpdateDatetime: string;
+  repaymentInterfaceName: string;
+  repayProviderCustomerId: string;
 }
 
 export interface RepaymentDirectDebitsItemPrepared extends RepaymentDirectDebitsItemPlain {
   status: string | number;
+  repaymentInterfaceId: string | number;
 }
 
 export interface RepaymentDirectDebitsItemFormValues extends RepaymentDirectDebitsItemPlain {
   status: SelectValues;
+  repaymentInterfaceId: SelectValues;
 }
 
 export type LedgerId = CardId | AccountId | TransactionId | StatementId | CustomerId;

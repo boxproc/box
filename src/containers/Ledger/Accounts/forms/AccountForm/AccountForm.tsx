@@ -98,6 +98,11 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
       if (isChosenLoanProductType && !isEditMode) {
         change('numOfInstallments', numOfInstallments);
         change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
+      } else {
+        change('numOfInstallments', null);
+        change('numOfInterestFreeInstllmnts', null);
+        change('nr_loan_cycles', null);
+        change('loan_start_date', null);
       }
     },
     [institutionProducts, currentProduct, change, isChosenLoanProductType, isEditMode]

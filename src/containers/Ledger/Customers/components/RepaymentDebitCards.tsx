@@ -98,13 +98,13 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width="160px" p="10px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
             component={SelectField}
-            label="Repayment Interface ID"
-            placeholder="Select ID"
+            label="Repayment Interface"
+            placeholder="Select Interface"
             options={interfacesOptions}
             isLoading={isInterfacesLoading}
             disabled={isDisabled}
