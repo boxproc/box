@@ -54,11 +54,11 @@ export interface IllustrationProductLoanResp {
 export interface IllustrationProductLoan {
   statementId: number;
   statementDate: string;
-  installmentBalance: number;
-  fee: number;
-  apr: number;
-  amount: number;
-  minimumAmountDueRepayment: number;
+  installmentBalance: number | string;
+  fee: number | string;
+  apr: number | string;
+  amount: number | string;
+  minimumAmountDueRepayment: number | string;
   startDate: string;
   endDate: string;
 }
@@ -81,8 +81,8 @@ export interface IllustrationProductStatementsRevolvingCredit {
   firstTransactionId: number | string;
   lastTransactionId: number | string;
   balanceOpen: number | string;
-  balanceClose: number;
-  minimumAmountDueRepayment: number;
+  balanceClose: number | string;
+  minimumAmountDueRepayment: number | string;
   startDate: number | string;
   endDate: number | string;
 }
@@ -94,26 +94,26 @@ export interface IllustrationProductAprRevolvingCreditResp {
 }
 export interface IllustrationProductFeeRevolvingCredit {
   description: string;
-  accruedFee: number;
+  accruedFee: number | string;
 }
 
 export interface IllustrationProductAprRevolvingCredit {
   description: string;
-  accruedInterest: number;
-  rate: number;
+  accruedInterest: number | string;
+  rate: number | string;
 }
 
 export interface IllustrationProductTransactionsRevolvingCredit {
   transactionDatetime: string;
   debitCreditIndicator: string;
-  amount: number;
-  balanceSettledBefore: number;
-  balanceSettledAfter: number;
-  balanceAvailableBefore: number;
-  balanceAvailableAfter: number;
+  amount: number | string;
+  balanceSettledBefore: number | string;
+  balanceSettledAfter: number | string;
+  balanceAvailableBefore: number | string;
+  balanceAvailableAfter: number | string;
   description: string;
   status: string;
-  aprRate: number;
+  aprRate: number | string;
   transactionType: string;
 }
 
@@ -133,7 +133,7 @@ export interface IllustrationProductTransactionsRevolvingCreditResp {
 
 export interface IllustrationProductRewardsRevolvingCreditResp {
   description: string;
-  accruedReward: number;
+  accruedReward: number | string;
 }
 
 export interface IllustrationProductFeeRevolvingCreditResp {

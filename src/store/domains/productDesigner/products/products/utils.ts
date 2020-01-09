@@ -151,9 +151,9 @@ export const prepareProductIllustrationStatementsItem = (
     statementDate: item.statement_date,
     firstTransactionId: item.first_transaction_id,
     lastTransactionId: item.last_transaction_id,
-    balanceOpen: item.balance_open,
-    balanceClose: item.balance_close,
-    minimumAmountDueRepayment: item.minimum_amount_due_repayment,
+    balanceOpen: item.balance_open.toFixed(2),
+    balanceClose: item.balance_close.toFixed(2),
+    minimumAmountDueRepayment: item.minimum_amount_due_repayment.toFixed(2),
     startDate: item.start_date,
     endDate: item.end_date,
   };
@@ -164,8 +164,8 @@ export const prepareProductIllustrationAprsItem = (
 ) => {
   return {
     description: item.description,
-    accruedInterest: item.accrued_interest,
-    rate: item.rate,
+    accruedInterest: item.accrued_interest.toFixed(4),
+    rate: item.rate.toFixed(2),
   };
 };
 
@@ -174,7 +174,7 @@ export const prepareProductIllustrationFeesItem = (
 ) => {
   return {
     description: item.description,
-    accruedFee: item.accrued_fee,
+    accruedFee: item.accrued_fee.toFixed(2),
   };
 };
 
@@ -183,7 +183,7 @@ export const prepareProductIllustrationRewardsItem = (
 ) => {
   return {
     description: item.description,
-    accruedReward: item.accrued_reward,
+    accruedReward: item.accrued_reward.toFixed(2),
   };
 };
 
@@ -193,11 +193,11 @@ export const prepareProductIllustrationTransactionsItem = (
   return {
     transactionDatetime: item.transaction_datetime,
     debitCreditIndicator: item.debit_credit_indicator,
-    amount: item.amount,
-    balanceSettledBefore: item.balance_available_before,
-    balanceSettledAfter: item.balance_available_after,
-    balanceAvailableBefore: item.balance_available_before,
-    balanceAvailableAfter: item.balance_available_after,
+    amount: item.amount.toFixed(2),
+    balanceSettledBefore: item.balance_available_before.toFixed(2),
+    balanceSettledAfter: item.balance_available_after.toFixed(2),
+    balanceAvailableBefore: item.balance_available_before.toFixed(2),
+    balanceAvailableAfter: item.balance_available_after.toFixed(2),
     description: item.description,
     status: item.status,
     aprRate: item.apr_rate,
@@ -352,11 +352,11 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     statementDate: statement_date,
     startDate: start_date,
     endDate: end_date,
-    amount,
-    installmentBalance: installment_balance,
-    fee,
-    apr,
-    minimumAmountDueRepayment: minimum_amount_due_repayment,
+    amount: amount.toFixed(2),
+    installmentBalance: installment_balance.toFixed(2),
+    fee: fee.toFixed(2),
+    apr: apr.toFixed(2),
+    minimumAmountDueRepayment: minimum_amount_due_repayment.toFixed(2),
   };
 };
 
