@@ -54,6 +54,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   dirty,
   pristine,
   isReadOnly,
+  change,
 }) => {
   const isEditMode = React.useMemo(
     () => mode === 'edit',
@@ -82,6 +83,24 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   const isChosenLoanProductType = React.useMemo(
     () => currentProductType === productTypesCodes.LOAN,
     [currentProductType]
+  );
+
+  React.useEffect(
+    () => {
+      const currentProductId = currentProduct && currentProduct.value;
+      const currentProductItem = institutionProducts
+        .find(product => product.id === currentProductId);
+
+      const numOfInstallments = currentProductItem && currentProductItem.defNumOfInstallments;
+      const numOfInterestFreeInstllmnts = currentProductItem
+        && currentProductItem.defNumOfIntrstFreeInstlmts;
+
+      if (isChosenLoanProductType && !isEditMode) {
+        change('numOfInstallments', numOfInstallments);
+        change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
+      }
+    },
+    [institutionProducts, currentProduct]
   );
 
   const handleSubmitForm = React.useCallback(

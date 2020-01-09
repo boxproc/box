@@ -131,7 +131,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     }
 
     &:focus:not(:active):after {
-      animation: ripple 1s ease-out;
+      animation: ripple .5s ease-out;
     }
   `};
 
