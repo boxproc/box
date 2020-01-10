@@ -7,12 +7,11 @@ import { schedulerStatusTypesOptions, statusTypesCodes } from 'consts';
 import { TableItemWrapper } from './TableItemWrapper';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 interface TableCellProps {
   value: string | number;
   style?: object;
-  onBlur?: any;
-  onKeyUp?: (e: React.KeyboardEvent) => void;
   isDate?: boolean;
   isNumber?: boolean;
   isDecimalNumber?: boolean;
@@ -23,6 +22,9 @@ interface TableCellProps {
   selectOptions?: Array<SelectValues>;
   defaultSelectValue?: SelectValues;
   selectLabel?: string;
+  toFixedNumber?: number;
+  onKeyUp?: (e: React.KeyboardEvent) => void;
+  onBlur?: any;
   onSelectChange?: any;
 }
 
@@ -38,6 +40,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   isSmaller = false,
   isEditable = false,
   isSelect = false,
+  toFixedNumber,
   selectOptions,
   defaultSelectValue,
   selectLabel,
@@ -97,8 +100,10 @@ export const TableCell: React.FC<TableCellProps> = ({
     >
       {isEditable
         ? renderFields()
-          : isSelect
-            ? selectLabel
+        : isSelect
+          ? selectLabel
+          : toFixedNumber
+            ? stringsUtil.numberToFixed(value, toFixedNumber)
             : value
       }
     </TableItemWrapper>

@@ -37,9 +37,9 @@ export interface LedgerStatementItemPrepared {
   firstTransactionId: number;
   lastTransactionId: number;
   statementDate: string;
-  balanceOpen: number;
-  balanceClose: number;
-  minimumAmountDueRepayment: number;
+  balanceOpen: string;
+  balanceClose: string;
+  minimumAmountDueRepayment: string;
   repaymentStatus: string;
   dateOfLastUpdate: string;
   accountAlias: string;
@@ -47,9 +47,9 @@ export interface LedgerStatementItemPrepared {
   productName: string;
   firstName: string;
   lastName: string;
-  accruedInterestTotal?: number;
-  accruedFeeTotal?: number;
-  accruedRewardTotal?: number;
+  accruedInterestTotal?: string;
+  accruedFeeTotal?: string;
+  accruedRewardTotal?: string;
   accountAliasAdditional: string;
   addressLine1: string;
   addressLine2: string;
@@ -79,17 +79,17 @@ export interface LedgerStatementTransactionsItem {
 export interface LedgerStatementTransactionsItemPrepared {
   id: number;
   transactionDatetime: number | string;
-  amount: number;
-  amountInOriginalCurrency: number;
+  amount: string;
+  amountInOriginalCurrency: string;
   originalCurrency: string;
   gracePeriod: number;
-  balanceAvailableBefore: number;
-  balanceAvailableAfter: number;
-  balanceSettledBefore: number;
-  balanceSettledAfter: number;
+  balanceAvailableBefore: string;
+  balanceAvailableAfter: string;
+  balanceSettledBefore: string;
+  balanceSettledAfter: string;
   description: string;
   aprId: number;
-  aprRate: number;
+  aprRate: string;
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
@@ -113,9 +113,9 @@ export interface LedgerStatementAprItems {
 export interface LedgerStatementAprItemPrepared {
   statementId: number;
   productAprId: number;
-  accruedInterest: number;
+  accruedInterest: string;
   description: string;
-  rate: number;
+  rate: string;
 }
 
 export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;

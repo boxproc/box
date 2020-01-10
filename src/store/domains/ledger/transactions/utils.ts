@@ -11,6 +11,8 @@ import {
   LedgerTransactionsFilter,
 } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const prepareValuesToRender = (values: LedgerTransactionItem):
   LedgerTransactionItemPrepared => {
   if (!values) {
@@ -80,35 +82,35 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     status: transactionStatus && transactionStatus.label,
     transactionDatetime: transaction_datetime,
     aprId: product_apr_id,
-    aprRate: apr_rate,
+    aprRate: stringsUtil.numberToFixed(apr_rate, 2),
     aprCalculationMethod: aprCalculationMethod ? aprCalculationMethod.label : null,
     description,
     debitCreditIndicator: debit_credit_indicator,
-    amount,
-    amountInOriginalCurrency: amount_in_original_currency,
+    amount: stringsUtil.numberToFixed(amount, 2),
+    amountInOriginalCurrency: stringsUtil.numberToFixed(amount_in_original_currency, 2),
     cardId: card_id,
     cardTransactionId: card_transaction_id,
     transactionTypeDescription: transaction_type_description,
     originalCurrency: original_currency,
     cardCurrency: card_currency,
-    cardAmount: card_amount,
+    cardAmount: stringsUtil.numberToFixed(card_amount, 2),
     cardAcceptorName: card_acceptor_name,
     cardAcceptorLocation: card_acceptor_location,
-    balanceSettledBefore: balance_settled_before,
-    balanceSettledAfter: balance_settled_after,
-    balanceAvailableBefore: balance_available_before,
-    balanceAvailableAfter: balance_available_after,
-    cardConversionRate: card_conversion_rate,
+    balanceSettledBefore: stringsUtil.numberToFixed(balance_settled_before, 2),
+    balanceSettledAfter: stringsUtil.numberToFixed(balance_settled_after, 2),
+    balanceAvailableBefore: stringsUtil.numberToFixed(balance_available_before, 2),
+    balanceAvailableAfter: stringsUtil.numberToFixed(balance_available_after, 2),
+    cardConversionRate: stringsUtil.numberToFixed(card_conversion_rate, 3),
     productFeeId: product_fee_id,
     productRewardId: product_reward_id,
-    feeRate: fee_rate,
+    feeRate: stringsUtil.numberToFixed(fee_rate, 2),
     feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
     rewardApplicationCondition: rewardApplicationCondition
       ? rewardApplicationCondition.label
       : null,
-    rewardRate: reward_rate,
+    rewardRate: stringsUtil.numberToFixed(reward_rate, 2),
     cardCurrencyBilling: card_currency_billing,
-    cardAmountBilling: card_amount_billing,
+    cardAmountBilling: stringsUtil.numberToFixed(card_amount_billing, 2),
     cardAcceptorTerminalId: card_acceptor_terminal_id,
     cardAcceptorIdCode: card_acceptor_id_code,
     cardStan: card_stan,

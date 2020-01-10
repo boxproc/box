@@ -11,6 +11,7 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 export const prepareStatementDataToRender = (
   data: Partial<LedgerStatementItem>,
@@ -70,9 +71,9 @@ export const prepareStatementDataToRender = (
       productName: product_name,
       firstTransactionId: first_transaction_id,
       lastTransactionId: last_transaction_id,
-      balanceOpen: balance_open,
-      balanceClose: balance_close,
-      minimumAmountDueRepayment: minimum_amount_due_repayment,
+      balanceOpen: stringsUtil.numberToFixed(balance_open, 2),
+      balanceClose: stringsUtil.numberToFixed(balance_close, 2),
+      minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
       dateOfLastUpdate: date_of_last_update,
     },
@@ -115,16 +116,16 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
   return {
     id,
     transactionDatetime: transaction_datetime,
-    amount,
+    amount: stringsUtil.numberToFixed(amount, 2),
     originalCurrency: original_currency,
-    amountInOriginalCurrency: amount_in_original_currency,
-    balanceAvailableBefore: balance_available_before,
-    balanceAvailableAfter: balance_available_after,
-    balanceSettledBefore: balance_settled_before,
-    balanceSettledAfter: balance_settled_after,
+    amountInOriginalCurrency: stringsUtil.numberToFixed(amount_in_original_currency, 2),
+    balanceAvailableBefore: stringsUtil.numberToFixed(balance_available_before, 2),
+    balanceAvailableAfter: stringsUtil.numberToFixed(balance_available_after, 2),
+    balanceSettledBefore: stringsUtil.numberToFixed(balance_settled_before, 2),
+    balanceSettledAfter: stringsUtil.numberToFixed(balance_settled_after, 2),
     description,
     aprId: apr_id,
-    aprRate: apr_rate,
+    aprRate: stringsUtil.numberToFixed(apr_rate, 2),
     gracePeriod: grace_period,
   };
 };
@@ -170,9 +171,9 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
 
   return {
     ...prepareDataToRender(data),
-    accruedInterestTotal: accrued_interest_total,
-    accruedFeeTotal: accrued_fee_total,
-    accruedRewardTotal: accrued_reward_total,
+    accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
+    accruedFeeTotal: stringsUtil.numberToFixed(accrued_fee_total, 5),
+    accruedRewardTotal: stringsUtil.numberToFixed(accrued_reward_total, 5),
   };
 };
 
@@ -193,9 +194,9 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
   return {
     statementId: statement_id,
     productAprId: product_apr_id,
-    accruedInterest: accrued_interest,
+    accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
     description,
-    rate,
+    rate: stringsUtil.numberToFixed(rate, 2),
   };
 };
 
@@ -237,7 +238,7 @@ export const prepareStatementAprsForReport = (aprs: Array<LedgerStatementAprItem
       return {
         description,
         rate,
-        accruedInterest: accrued_interest,
+        accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
       };
     });
   } else {

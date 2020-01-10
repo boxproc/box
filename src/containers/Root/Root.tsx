@@ -43,7 +43,7 @@ const RootWrapper = styled.div<RootWrapperProps>`
 `;
 
 const PagesWrapper = styled(Container)`
-  padding-top: 30px;
+  padding-top: 20px;
 `;
 
 interface RootProps extends ExternalSpinnerProps, WithModalProps {

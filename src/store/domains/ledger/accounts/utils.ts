@@ -7,6 +7,7 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
   if (!data) {
@@ -206,12 +207,12 @@ export const prepareDataToRender = (
     firstName: customer_first_name,
     lastName: customer_last_name,
     status: currentStatus && currentStatus.label,
-    balanceSettled: balance_settled,
-    balanceAvailable: balance_available,
-    amountDueRepayment: amount_due_repayment,
-    balanceLimit: balance_limit,
-    balanceLimitShared: balance_limit_shared,
-    accruedInterest: accrued_interest,
+    balanceSettled: stringsUtil.numberToFixed(balance_settled, 2),
+    balanceAvailable: stringsUtil.numberToFixed(balance_available, 2),
+    amountDueRepayment: stringsUtil.numberToFixed(amount_due_repayment, 2),
+    balanceLimit: stringsUtil.numberToFixed(balance_limit, 2),
+    balanceLimitShared: stringsUtil.numberToFixed(balance_limit_shared, 2),
+    accruedInterest: stringsUtil.numberToFixed(accrued_interest, 2),
     accountAliasAdditional: account_alias_additional,
     productId: product_id,
     productOverrideId: product_override_id,
@@ -223,9 +224,9 @@ export const prepareDataToRender = (
     dateClosed: date_closed,
     lastCycleDate: last_cycle_date,
     currencyCode: currency_code,
-    auxCounter1: aux_counter_1,
-    auxCounter2: aux_counter_2,
-    auxCounter3: aux_counter_3,
+    auxCounter1: stringsUtil.numberToFixed(aux_counter_1, 2),
+    auxCounter2: stringsUtil.numberToFixed(aux_counter_2, 2),
+    auxCounter3: stringsUtil.numberToFixed(aux_counter_3, 2),
     auxCounter1Description: aux_counter_1_enabled === yesNoTypesCodes.YES
       ? aux_counter_1_description
       : 'Not Used',
@@ -238,14 +239,14 @@ export const prepareDataToRender = (
     auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,
     auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
     auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
-    amountOverdue: amount_overdue,
-    amountOverdue1Cycle: amount_overdue_1_cycle,
-    amountOverdue2Cycles: amount_overdue_2_cycles,
-    amountOverdue3Cycles: amount_overdue_3_cycles,
-    amountOverdue4Cycles: amount_overdue_4_cycles,
-    amountOverdue5Cycles: amount_overdue_5_cycles,
-    amountOverdue6Cycles: amount_overdue_6_cycles,
-    amountOverdue7Cycles: amount_overdue_7_cycles,
+    amountOverdue: stringsUtil.numberToFixed(amount_overdue, 2),
+    amountOverdue1Cycle: stringsUtil.numberToFixed(amount_overdue_1_cycle, 2),
+    amountOverdue2Cycles: stringsUtil.numberToFixed(amount_overdue_2_cycles, 2),
+    amountOverdue3Cycles: stringsUtil.numberToFixed(amount_overdue_3_cycles, 2),
+    amountOverdue4Cycles: stringsUtil.numberToFixed(amount_overdue_4_cycles, 2),
+    amountOverdue5Cycles: stringsUtil.numberToFixed(amount_overdue_5_cycles, 2),
+    amountOverdue6Cycles: stringsUtil.numberToFixed(amount_overdue_6_cycles, 2),
+    amountOverdue7Cycles: stringsUtil.numberToFixed(amount_overdue_7_cycles, 2),
     numberOfTimesOverdueTotal: number_of_times_overdue_total,
     numberOfTimesOverdue1Cycle: number_of_times_overdue_1_cycle,
     numberOfTimesOverdue2Cycles: number_of_times_overdue_2_cycle,

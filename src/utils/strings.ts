@@ -18,3 +18,13 @@ export const rangeNumbersArray = (N: number, startIndex: number = 0) => new Arra
 export const rangeDecimalNumbersArray = (N: number, startIndex: number = 0) => new Array(N)
   .fill(null)
   .map((item, index) => padStartN(index + startIndex, 2));
+
+export const numberToFixed = (value: number | string, toFixedNumber: number) => {
+  let fixedNumber;
+
+  if (value || value === 0) {
+    fixedNumber = Number(value).toFixed(toFixedNumber);
+  }
+
+  return fixedNumber;
+};

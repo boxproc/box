@@ -55,6 +55,7 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
   const { activeStatusFlag, institutionId, productType } = data;
@@ -151,9 +152,9 @@ export const prepareProductIllustrationStatementsItem = (
     statementDate: item.statement_date,
     firstTransactionId: item.first_transaction_id,
     lastTransactionId: item.last_transaction_id,
-    balanceOpen: item.balance_open.toFixed(2),
-    balanceClose: item.balance_close.toFixed(2),
-    minimumAmountDueRepayment: item.minimum_amount_due_repayment.toFixed(2),
+    balanceOpen: stringsUtil.numberToFixed(item.balance_open, 2),
+    balanceClose: stringsUtil.numberToFixed(item.balance_close, 2),
+    minimumAmountDueRepayment: stringsUtil.numberToFixed(item.minimum_amount_due_repayment, 2),
     startDate: item.start_date,
     endDate: item.end_date,
   };
@@ -164,8 +165,8 @@ export const prepareProductIllustrationAprsItem = (
 ) => {
   return {
     description: item.description,
-    accruedInterest: item.accrued_interest.toFixed(4),
-    rate: item.rate.toFixed(2),
+    accruedInterest: stringsUtil.numberToFixed(item.accrued_interest, 4),
+    rate: stringsUtil.numberToFixed(item.rate, 2),
   };
 };
 
@@ -174,7 +175,7 @@ export const prepareProductIllustrationFeesItem = (
 ) => {
   return {
     description: item.description,
-    accruedFee: item.accrued_fee.toFixed(2),
+    accruedFee: stringsUtil.numberToFixed(item.accrued_fee, 2),
   };
 };
 
@@ -183,7 +184,7 @@ export const prepareProductIllustrationRewardsItem = (
 ) => {
   return {
     description: item.description,
-    accruedReward: item.accrued_reward.toFixed(2),
+    accruedReward: stringsUtil.numberToFixed(item.accrued_reward, 2),
   };
 };
 
@@ -193,14 +194,14 @@ export const prepareProductIllustrationTransactionsItem = (
   return {
     transactionDatetime: item.transaction_datetime,
     debitCreditIndicator: item.debit_credit_indicator,
-    amount: item.amount.toFixed(2),
-    balanceSettledBefore: item.balance_available_before.toFixed(2),
-    balanceSettledAfter: item.balance_available_after.toFixed(2),
-    balanceAvailableBefore: item.balance_available_before.toFixed(2),
-    balanceAvailableAfter: item.balance_available_after.toFixed(2),
+    amount: stringsUtil.numberToFixed(item.amount, 2),
+    balanceSettledBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
+    balanceSettledAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
+    balanceAvailableBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
+    balanceAvailableAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
     description: item.description,
     status: item.status,
-    aprRate: item.apr_rate,
+    aprRate: stringsUtil.numberToFixed(item.apr_rate, 2),
     transactionType: item.transaction_type,
   };
 };
@@ -352,11 +353,11 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     statementDate: statement_date,
     startDate: start_date,
     endDate: end_date,
-    amount: amount.toFixed(2),
-    installmentBalance: installment_balance.toFixed(2),
-    fee: fee.toFixed(2),
-    apr: apr.toFixed(2),
-    minimumAmountDueRepayment: minimum_amount_due_repayment.toFixed(2),
+    amount: stringsUtil.numberToFixed(amount, 2),
+    installmentBalance: stringsUtil.numberToFixed(installment_balance, 2),
+    fee: stringsUtil.numberToFixed(fee, 2),
+    apr: stringsUtil.numberToFixed(apr, 2),
+    minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
   };
 };
 
