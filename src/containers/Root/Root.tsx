@@ -58,7 +58,10 @@ const Root: React.FC<RootProps> = ({
   setIsRelogin,
   isRelogin,
 }) => {
-  const isLoggedIn = storageUtil.getLoginFlag();
+  const isLoggedIn = React.useMemo(
+    () => storageUtil.getLoginFlag(),
+    []
+  );
 
   React.useEffect(
     () => {

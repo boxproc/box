@@ -57,7 +57,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
           <Field
             id="uiItem"
             name="uiItem"
-            placeholder="Select Ui Item"
+            placeholder="Select UI Item"
             component={SelectField}
             label="UI Item"
             options={uiItemsOptions}

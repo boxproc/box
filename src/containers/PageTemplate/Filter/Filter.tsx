@@ -12,7 +12,7 @@ import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
 
 import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
 
-import { cookiesUtil } from 'utils';
+import { cookiesUtil, storageUtil } from 'utils';
 
 interface FilterWrapperProps {
   isHidden: boolean;
@@ -25,7 +25,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
   border-radius: 2px;
   background-color: rgba(0, 0, 0, .02);
 
-  ${({isHidden}) => isHidden && `
+  ${({ isHidden }) => isHidden && `
     display: none;
   `};
 `;
@@ -63,21 +63,13 @@ const Filter: React.FC<FilterAllProps> = ({
   setIsAccessibleFiltering,
   isHidden,
 }) => {
-  const handleSubmitForm = React.useCallback(
-    handleSubmit(data => {
-      filterAction();
+  const username = React.useMemo(
+    () => {
+      const userData = storageUtil.getUserData();
 
-      if (isAutoRefresh) {
-        stopAutoRefresh();
-      }
-
-      cookiesUtil.set(
-        location.pathname,
-        JSON.stringify(filteredFieldsToStore(data)),
-        { expires: cookiesExpires.MONTH }
-      );
-    }),
-    [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
+      return userData && userData.username;
+    },
+    []
   );
 
   const hasInstitution = React.useMemo(
@@ -171,6 +163,23 @@ const Filter: React.FC<FilterAllProps> = ({
       setIsAccessibleFiltering(!isDisabled);
     },
     [isDisabled, setIsAccessibleFiltering]
+  );
+
+  const handleSubmitForm = React.useCallback(
+    handleSubmit(async data => {
+      await filterAction();
+
+      if (isAutoRefresh) {
+        stopAutoRefresh();
+      }
+
+      cookiesUtil.set(
+        `${location.pathname}-${username}`,
+        JSON.stringify(filteredFieldsToStore(data)),
+        { expires: cookiesExpires.MONTH }
+      );
+    }),
+    [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]
   );
 
   return (

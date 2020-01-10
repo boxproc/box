@@ -36,6 +36,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
 
 }) => {
   const [isOpenParams, setIsOpenParams] = React.useState(true);
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(async () => {
       await illustrateRevolvingCreditProduct();
@@ -43,6 +44,7 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
     }),
     [handleSubmit, illustrateRevolvingCreditProduct]
   );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end" flexWrap="wrap">

@@ -42,8 +42,8 @@ interface UserDataProps {
 const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) => (
   <Flex alignItems="center">
     {username === usernames.ADMIN
-      ? <div><UserShieldIconStyled size="15" /></div>
-      : <Box mt="-2px"><UserIconStyled size="12" /></Box>
+      ? (<div><UserShieldIconStyled size="15" /></div>)
+      : (<Box mt="-2px"><UserIconStyled size="12" /></Box>)
     }
     <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
   </Flex>

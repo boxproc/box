@@ -24,7 +24,10 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
   onCancel,
   pristine,
 }) => {
-  const userData = storageUtil.getUserData();
+  const userData = React.useMemo(
+    () => storageUtil.getUserData(),
+    []
+  );
 
   const isRequires2faFlag = React.useMemo(
     () => userData && userData.requires2faFlag !== yesNoTypesCodes.NO,

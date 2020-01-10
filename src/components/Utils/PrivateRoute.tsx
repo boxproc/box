@@ -15,7 +15,10 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   exact,
   ...rest
 }) => {
-  const isLoggedIn = storageUtil.getLoginFlag();
+  const isLoggedIn = React.useMemo(
+    () => storageUtil.getLoginFlag(),
+    []
+  );
 
   return (
     <Route

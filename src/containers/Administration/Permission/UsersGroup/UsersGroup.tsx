@@ -30,7 +30,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
 
   return (
     <PageTemplate
-      title="Users Group"
+      title="User Groups"
       data={adminUsersGroupItems}
       columns={tableColumns}
       isDownloadButton={true}

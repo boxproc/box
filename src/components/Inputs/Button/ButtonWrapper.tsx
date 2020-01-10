@@ -84,6 +84,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
   ${({ underline, theme }) => underline && `
     padding: 0;
+    background-color: transparent;
     border-radius: 0;
     border-bottom: 1px solid ${theme.colors.lightAccent};
 

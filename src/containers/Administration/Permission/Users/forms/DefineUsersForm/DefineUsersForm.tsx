@@ -196,7 +196,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                 label="Status"
                 placeholder="Select Status"
                 options={statusOptions}
-                isDisabled={isEditMode || isReadOnly}
+                isDisabled={isReadOnly}
                 validate={[formErrorUtil.required]}
               />
             </Box>

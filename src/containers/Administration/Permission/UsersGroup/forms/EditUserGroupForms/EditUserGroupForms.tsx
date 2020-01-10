@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
-
 import { Tabs, TabsPanel } from 'components';
 
 import {
@@ -40,18 +38,14 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         withConfirmation={isAnyFormDirty}
       >
         {!isReadOnly && (<EditUserGroupMembersForm />)}
-        <Box mt="20px">
-          <UserGroupMembers />
-        </Box>
+        <UserGroupMembers />
       </TabsPanel>
       <TabsPanel
         title="Group Permission"
         withConfirmation={isAnyFormDirty}
       >
         {!isReadOnly && (<EditGroupPermissionForm />)}
-        <Box mt="20px">
-          <UserGroupPermission />
-        </Box>
+        <UserGroupPermission />
       </TabsPanel>
     </Tabs>
   );

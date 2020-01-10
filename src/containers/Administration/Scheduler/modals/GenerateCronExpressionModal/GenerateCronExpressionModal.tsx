@@ -147,7 +147,6 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
           <Button
             text="Reset Values"
             type="reset"
-            iconName="_"
             disabled={pristine}
             onClick={reset}
           />

@@ -21,7 +21,7 @@ import {
 } from 'store/domains';
 
 import { ContextMenuItemProps } from 'types';
-import { cookiesUtil, downloadUtil } from 'utils';
+import { cookiesUtil, downloadUtil, storageUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   title: string;
@@ -119,7 +119,20 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [data]
   );
 
-  const storedFilter = cookiesUtil.get(location.pathname);
+  const filterInitialValues = React.useMemo(
+    () => {
+      const userData = storageUtil.getUserData();
+      const username = userData && userData.username;
+
+      const storedFilter = cookiesUtil.get(`${location.pathname}-${username}`);
+
+      return {
+        ...initialFilterValues,
+        ...storedFilter && JSON.parse(storedFilter),
+      };
+    },
+    [initialFilterValues, location]
+  );
 
   const handleOpenModal = React.useCallback(
     () => openModal({ name: newModalName }),
@@ -152,10 +165,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           filterAction={filterAction}
           location={location}
           isHidden={!isOpenFilter}
-          initialValues={{
-            ...initialFilterValues,
-            ...storedFilter && JSON.parse(storedFilter),
-          }}
+          initialValues={filterInitialValues}
         >
           {FilterForm}
         </Filter>

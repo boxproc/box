@@ -34,8 +34,15 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
     [openModal]
   );
 
-  const userData = storageUtil.getUserData();
-  const registrationPendingFlag = storageUtil.getRegistrationPendingFlag();
+  const userData = React.useMemo(
+    () => storageUtil.getUserData(),
+    []
+  );
+
+  const registrationPendingFlag = React.useMemo(
+    () => storageUtil.getRegistrationPendingFlag(),
+    []
+  );
 
   return (
     <React.Fragment>
