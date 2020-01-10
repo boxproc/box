@@ -9,7 +9,7 @@ import {
   createLoadingSelector,
   handleGetProductDetails,
   handleIllustrateLoanProduct,
-  ProductsActionTypes,
+  ProductIllustrationActionTypes,
   selectCurrentProductDetails,
   selectCurrentProductType,
   selectProductLoanIllustration,
@@ -18,7 +18,7 @@ import {
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ILLUSTRATE_PRODUCT_LOAN,
+  ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_LOAN,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

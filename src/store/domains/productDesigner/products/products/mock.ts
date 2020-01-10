@@ -1,6 +1,5 @@
 import {
   InstitutionProducts,
-  ProductAprItems,
   ProductDataResp,
   ProductDetailsResp,
   ProductsDataResp,
@@ -120,35 +119,6 @@ export const institutionProducts: InstitutionProducts = {
       product_type: 'D',
       def_num_of_intrst_free_instlmts: 1,
       def_num_of_installments: 1,
-    },
-  ],
-};
-
-export const productAprs: ProductAprItems = {
-  product_aprs: [
-    {
-      product_id: 1,
-      product_apr_id: 1,
-      description: 'Test description',
-      calculation_method: 'A',
-      rate: 0.00,
-      grace_number_of_days: 1,
-    },
-    {
-      product_id: 1,
-      product_apr_id: 2,
-      description: 'Test description',
-      calculation_method: 'A',
-      rate: 0.00,
-      grace_number_of_days: 1,
-    },
-    {
-      product_id: 1,
-      product_apr_id: 3,
-      description: 'Test description',
-      calculation_method: 'A',
-      rate: 0.00,
-      grace_number_of_days: 1,
     },
   ],
 };

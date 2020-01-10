@@ -1,11 +1,8 @@
 import {
-  aprTypesOptions,
   cardFormFactorOptions,
-  feeTypesOptions,
   loanTypesOptions,
   productTypesCodes,
   productTypesOptions,
-  rewardsTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
   statusTypesCodes,
@@ -16,38 +13,15 @@ import {
 import {
   DebitProductItem,
   DebitProductItemResp,
-  GeneralLedgerItemPrepared,
-  IllustrationProductAprRevolvingCreditResp,
-  IllustrationProductFeeRevolvingCreditResp,
-  IllustrationProductLoanResp,
-  IllustrationProductRewardRevolvingCreditResp,
-  IllustrationProductStatementsRevolvingCreditResp,
-  IllustrationProductTransactionsRevolvingCreditResp,
-  LoanProductIllustrate,
-  LoanProductIllustratePrepared,
   LoanProductItem,
   LoanProductItemResp,
   NewProduct,
   PrepaidProductItem,
   PrepaidProductItemResp,
-  ProductApr,
-  ProductAprFormValues,
-  ProductAprItem,
-  ProductAprPlainInfo,
-  ProductFee,
-  ProductFeeFormValues,
-  ProductFeeItem,
-  ProductFeePlainInfo,
   ProductFilter,
   ProductFilterPrepared,
   ProductItemGeneral,
   ProductItemResp,
-  ProductReward,
-  ProductRewardFormValues,
-  ProductRewardItem,
-  ProductRewardPlainInfo,
-  RevolvingCreditnProductIllustrate,
-  RevolvingCreditProductIllustratePrepared,
   RevolvingCreditProductItem,
   RevolvingCreditProductItemResp,
   SavingsProductItem,
@@ -55,7 +29,6 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
-import { stringsUtil } from 'utils';
 
 export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
   const { activeStatusFlag, institutionId, productType } = data;
@@ -64,58 +37,6 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
     status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
     institution_id: institutionId ? institutionId.value : null,
     product_type: productType && productType.length ? productType.map(type => type.value) : null,
-  };
-};
-export const prepareProductLoanIllustrateDataToSend =
-  (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
-
-    return {
-      product_id: productId,
-      amount,
-      nr_loan_cycles: Number(defNumOfInstallments),
-      nr_interest_free: Number(defNumOfIntrstFreeInstlmts),
-      start_date: startDate,
-    };
-  };
-
-export const prepareProductRevolvingCreditIllustrateDataToSend =
-  (data: Partial<RevolvingCreditnProductIllustrate>):
-    Partial<RevolvingCreditProductIllustratePrepared> => {
-    const { productId, limit, openBalance, startDate, transactionAmount1, transactionAmount2,
-      transactionAmount3, transactionDate1, transactionDate2, transactionDate3, transactionType1,
-      transactionType2, transactionType3 } = data;
-
-    return {
-      product_id: productId,
-      limit,
-      open_balance: openBalance,
-      transaction_amount_1: transactionAmount1,
-      transaction_amount_2: transactionAmount2,
-      transaction_amount_3: transactionAmount3,
-      transaction_date_1: transactionDate1,
-      transaction_date_2: transactionDate2,
-      transaction_date_3: transactionDate3,
-      transaction_type_1: transactionType1 && transactionType1.value,
-      transaction_type_2: transactionType2 && transactionType2.value,
-      transaction_type_3: transactionType3 && transactionType3.value,
-      start_date: startDate,
-    };
-  };
-
-export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepared>) => {
-  if (!data) {
-    return null;
-  }
-
-  const { glAccAssets, glAccLiabilities, glAccProfit, glAccLoss, id } = data;
-
-  return {
-    product_id: id,
-    gl_acc_assets: glAccAssets,
-    gl_acc_liabilities: glAccLiabilities,
-    gl_acc_profit: glAccProfit,
-    gl_acc_loss: glAccLoss,
   };
 };
 
@@ -141,68 +62,6 @@ export const prepareGeneralProductItem = (
     overridesProductId: item.overrides_product_id,
     statementCycleType: item.statement_cycle_type_name,
     statementCycleParameter: item.statement_cycle_parameter,
-  };
-};
-
-export const prepareProductIllustrationStatementsItem = (
-  item: IllustrationProductStatementsRevolvingCreditResp
-) => {
-  return {
-    statementId: item.statement_id,
-    statementDate: item.statement_date,
-    firstTransactionId: item.first_transaction_id,
-    lastTransactionId: item.last_transaction_id,
-    balanceOpen: stringsUtil.numberToFixed(item.balance_open, 2),
-    balanceClose: stringsUtil.numberToFixed(item.balance_close, 2),
-    minimumAmountDueRepayment: stringsUtil.numberToFixed(item.minimum_amount_due_repayment, 2),
-    startDate: item.start_date,
-    endDate: item.end_date,
-  };
-};
-
-export const prepareProductIllustrationAprsItem = (
-  item: IllustrationProductAprRevolvingCreditResp
-) => {
-  return {
-    description: item.description,
-    accruedInterest: stringsUtil.numberToFixed(item.accrued_interest, 4),
-    rate: stringsUtil.numberToFixed(item.rate, 2),
-  };
-};
-
-export const prepareProductIllustrationFeesItem = (
-  item: IllustrationProductFeeRevolvingCreditResp
-) => {
-  return {
-    description: item.description,
-    accruedFee: stringsUtil.numberToFixed(item.accrued_fee, 2),
-  };
-};
-
-export const prepareProductIllustrationRewardsItem = (
-  item: IllustrationProductRewardRevolvingCreditResp
-) => {
-  return {
-    description: item.description,
-    accruedReward: stringsUtil.numberToFixed(item.accrued_reward, 2),
-  };
-};
-
-export const prepareProductIllustrationTransactionsItem = (
-  item: IllustrationProductTransactionsRevolvingCreditResp
-) => {
-  return {
-    transactionDatetime: item.transaction_datetime,
-    debitCreditIndicator: item.debit_credit_indicator,
-    amount: stringsUtil.numberToFixed(item.amount, 2),
-    balanceSettledBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
-    balanceSettledAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
-    balanceAvailableBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
-    balanceAvailableAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
-    description: item.description,
-    status: item.status,
-    aprRate: stringsUtil.numberToFixed(item.apr_rate, 2),
-    transactionType: item.transaction_type,
   };
 };
 
@@ -328,36 +187,6 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
     minimumRepaymentAmount: minimum_repayment_amount,
     minimumRepaymentRate: minimum_repayment_rate,
     repaymentGraceNumberOfDays: repayment_grace_number_of_days,
-  };
-};
-
-export const prepareProductIllustrationData = (data: IllustrationProductLoanResp) => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    statement_id,
-    statement_date,
-    installment_balance,
-    fee,
-    apr,
-    minimum_amount_due_repayment,
-    amount,
-    start_date,
-    end_date,
-  } = data;
-
-  return {
-    statementId: statement_id,
-    statementDate: statement_date,
-    startDate: start_date,
-    endDate: end_date,
-    amount: stringsUtil.numberToFixed(amount, 2),
-    installmentBalance: stringsUtil.numberToFixed(installment_balance, 2),
-    fee: stringsUtil.numberToFixed(fee, 2),
-    apr: stringsUtil.numberToFixed(apr, 2),
-    minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
   };
 };
 
@@ -591,245 +420,5 @@ export const prepareNewProductDataToSend = (product: Partial<NewProduct>) => {
   return {
     ...prepareGeneralProductDataToSend(product),
     ...prepareProductDetailsDataToSend(product, product.productType),
-  };
-};
-
-export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    product_apr_id,
-    product_id,
-    description,
-    calculation_method,
-    rate,
-    grace_number_of_days,
-  } = data;
-
-  const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
-
-  return {
-    productAprId: product_apr_id,
-    productId: product_id,
-    description,
-    calculationMethod: calculationMethod && calculationMethod.label,
-    rate,
-    graceNumberOfDays: grace_number_of_days,
-  };
-};
-
-export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<ProductAprItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    productAprId,
-    productId,
-    description,
-    rate,
-    graceNumberOfDays,
-  } = data;
-
-  return {
-    product_apr_id: productAprId,
-    product_id: productId,
-    description,
-    rate: Number(rate),
-    grace_number_of_days: Number(graceNumberOfDays),
-  };
-};
-
-export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormValues>):
-  Partial<ProductAprItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const { calculationMethod } = data;
-
-  return {
-    ...prepareProductAprs(data),
-    calculation_method: calculationMethod && calculationMethod.value,
-  };
-};
-
-export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<ProductAprItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const calculationMethod = aprTypesOptions.find(el => el.label === data.calculationMethod);
-
-  return {
-    ...prepareProductAprs(data),
-    calculation_method: calculationMethod && calculationMethod.value,
-  };
-};
-
-export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    product_id,
-    product_fee_id,
-    description,
-    rate,
-    amount,
-    fee_application_condition,
-    apr_description,
-    apr_id,
-  } = data;
-
-  const feeApplicationCondition = feeTypesOptions
-    .find(el => el.value === fee_application_condition);
-
-  return {
-    productId: product_id,
-    productFeeId: product_fee_id,
-    description,
-    rate,
-    amount,
-    feeApplicationCondition: feeApplicationCondition && feeApplicationCondition.label,
-    feeApplicationConditionValue: fee_application_condition,
-    apr: { value: apr_id, label: apr_description },
-  };
-};
-
-export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<ProductFeeItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    productId,
-    productFeeId,
-    description,
-    rate,
-    amount,
-  } = data;
-
-  return {
-    product_id: productId,
-    product_fee_id: productFeeId,
-    description,
-    rate: Number(rate),
-    amount: Number(amount),
-  };
-};
-
-export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormValues>):
-  Partial<ProductFeeItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const { feeApplicationCondition, apr } = data;
-
-  return {
-    ...prepareProductFees(data),
-    fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
-    apr_id: apr && apr.value,
-  };
-};
-
-export const prepareProductFeesToSend = (data: Partial<ProductFee>): Partial<ProductFeeItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const { apr } = data;
-
-  const feeApplicationCondition = feeTypesOptions
-    .find(el => el.label === data.feeApplicationCondition);
-
-  return {
-    ...prepareProductFees(data),
-    fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
-    apr_id: apr && apr.value,
-  };
-};
-
-export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductReward => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    product_id,
-    product_reward_id,
-    description,
-    rate,
-    amount,
-    reward_application_condition,
-  } = data;
-
-  const rewardApplicationCondition = rewardsTypesOptions
-    .find(el => el.value === reward_application_condition);
-
-  return {
-    productId: product_id,
-    productRewardId: product_reward_id,
-    description,
-    rate,
-    amount,
-    rewardApplicationCondition: rewardApplicationCondition && rewardApplicationCondition.label,
-    rewardApplicationConditionValue: reward_application_condition,
-  };
-};
-
-export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
-  Partial<ProductRewardItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    productId,
-    productRewardId,
-    description,
-    rate,
-    amount,
-  } = data;
-
-  return {
-    product_id: productId,
-    product_reward_id: productRewardId,
-    description,
-    rate: Number(rate),
-    amount: Number(amount),
-  };
-};
-
-export const prepareFormDataProductRewardsToSend = (data: Partial<ProductRewardFormValues>):
-  Partial<ProductRewardItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const { rewardApplicationCondition } = data;
-
-  return {
-    ...prepareProductRewards(data),
-    reward_application_condition: rewardApplicationCondition && rewardApplicationCondition.value,
-  };
-};
-
-export const prepareProductRewardsToSend = (data: Partial<ProductReward>):
-  Partial<ProductRewardItem> => {
-  if (!data) {
-    return null;
-  }
-
-  const rewardApplicationCondition = rewardsTypesOptions
-    .find(el => el.label === data.rewardApplicationCondition);
-
-  return {
-    ...prepareProductRewards(data),
-    reward_application_condition: rewardApplicationCondition && rewardApplicationCondition.value,
   };
 };

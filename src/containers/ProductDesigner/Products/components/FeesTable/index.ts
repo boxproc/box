@@ -9,15 +9,15 @@ import {
   handleGetProductFeeAprs,
   handleGetProductFees,
   handleUpdateProductFee,
-  ProductsActionTypes,
+  ProductAprsFeesRewardsActionTypes,
   selectAprsOptions,
   selectProductFees,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_FEES,
-  ProductsActionTypes.DELETE_PRODUCT_FEE,
+  ProductAprsFeesRewardsActionTypes.GET_PRODUCT_FEES,
+  ProductAprsFeesRewardsActionTypes.DELETE_PRODUCT_FEE,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

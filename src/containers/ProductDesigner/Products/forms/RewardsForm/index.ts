@@ -9,12 +9,12 @@ import RewardsForm from './RewardsForm';
 import {
   createLoadingSelector,
   handleAddProductReward,
-  ProductsActionTypes,
+  ProductAprsFeesRewardsActionTypes,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ADD_PRODUCT_REWARD,
+  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_REWARD,
 ]);
 const formSelector = formValueSelector(formNamesConst.PRODUCT_REWARDS);
 

@@ -6,13 +6,13 @@ import IllustrationRevolvingCredit from './IllustrationRevolvingCredit';
 import {
   createLoadingSelector,
   handleIllustrateRevolvingCreditProduct,
-  ProductsActionTypes,
+  ProductIllustrationActionTypes,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,
+  ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

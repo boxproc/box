@@ -6,12 +6,12 @@ import AprsForm from './AprsForm';
 import {
   createLoadingSelector,
   handleAddProductApr,
-  ProductsActionTypes,
+  ProductAprsFeesRewardsActionTypes,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ADD_PRODUCT_APR,
+  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_APR,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

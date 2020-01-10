@@ -9,17 +9,17 @@ import FeesForm from './FeesForm';
 import {
   createLoadingSelector,
   handleAddProductFee,
-  ProductsActionTypes,
+  ProductAprsFeesRewardsActionTypes,
   selectAprsOptions,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ADD_PRODUCT_FEE,
+  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_FEE,
 ]);
 
 const aprsLoading = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_FEE_APR,
+  ProductAprsFeesRewardsActionTypes.GET_PRODUCT_FEE_APR,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_FEES);

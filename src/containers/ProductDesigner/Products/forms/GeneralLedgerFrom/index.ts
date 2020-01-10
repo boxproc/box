@@ -6,14 +6,14 @@ import GeneralLedgerFrom from './GeneralLedgerFrom';
 import {
   createLoadingSelector,
   handleUpdateGeneralLedger,
-  ProductsActionTypes,
+  ProductGeneralLedgerActionTypes,
   selectActiveItemId,
   selectProductGeneralLedger,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.UPDATE_GENERAL_LEDGER,
+  ProductGeneralLedgerActionTypes.UPDATE_GENERAL_LEDGER,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
