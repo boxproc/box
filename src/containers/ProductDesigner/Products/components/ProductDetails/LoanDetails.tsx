@@ -61,7 +61,10 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             label="Default # of installments"
             readOnly={isReadOnly}
             isNumber={true}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         {isEqualOrActualDistribution && (
@@ -77,7 +80,10 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             label="Default # of interest free installments"
             readOnly={isReadOnly}
             isNumber={true}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         )}

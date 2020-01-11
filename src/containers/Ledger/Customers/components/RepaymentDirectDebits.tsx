@@ -25,6 +25,11 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
   interfacesOptions,
   isInterfacesLoading,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add Direct Debit',
+    [isLoading]
+  );
+
   return (
     <Box width="100%">
       <Flex
@@ -92,7 +97,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
         </Box>
         <Box width="150px" pb="20px">
           <Button
-            text={isLoading ? 'Adding...' : 'Add Direct Debit'}
+            text={buttonText}
             iconName={iconNamesConst.PLUS}
             disabled={pristine || isDisabled}
           />

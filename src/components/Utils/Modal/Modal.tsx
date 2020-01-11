@@ -20,7 +20,7 @@ import {
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
-  margin-bottom: 10px;
+  font-size: 20px;
   text-transform: none;
 `;
 

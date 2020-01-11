@@ -1,19 +1,19 @@
-import { adminInterfacePathNames } from 'consts';
+import { adminInterfaceURLs } from 'consts';
 
 import { apiClient } from 'services';
 
 import { AdminInterfaceFilterPrepared, AdminInterfaceItem } from './types';
 
 export const addAdminInterface = (data: Partial<AdminInterfaceItem>) =>
-  apiClient.post(adminInterfacePathNames.CREATE, { data });
+  apiClient.post(adminInterfaceURLs.CREATE, { data });
 
 export const deleteAdminInterface = (id: number) =>
-  apiClient.post(adminInterfacePathNames.DELETE, {
+  apiClient.post(adminInterfaceURLs.DELETE, {
     data: { id },
   });
 
 export const updateAdminInterface = (data: Partial<AdminInterfaceItem>) =>
-  apiClient.post(adminInterfacePathNames.UPDATE, { data });
+  apiClient.post(adminInterfaceURLs.UPDATE, { data });
 
 export const filterAdminInterface = (data: Partial<AdminInterfaceFilterPrepared>) =>
-  apiClient.post(adminInterfacePathNames.GET, { data });
+  apiClient.post(adminInterfaceURLs.GET, { data });

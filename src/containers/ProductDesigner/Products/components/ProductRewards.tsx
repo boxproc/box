@@ -24,6 +24,11 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
   isLoading,
   pristine,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add Reward',
+    [isLoading]
+  );
+
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
       <Box width={[2 / 7]} p="10px">
@@ -78,7 +83,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
       </Box>
       <Box width={[1 / 7]} pb="20px">
         <Button
-          text={isLoading ? 'Adding...' : 'Add Reward'}
+          text={buttonText}
           iconName={iconNamesConst.PLUS}
           disabled={pristine || isDisabled}
         />

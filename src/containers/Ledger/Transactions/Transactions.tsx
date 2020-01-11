@@ -8,6 +8,8 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { TransactionsFilter } from './forms';
 
+import { withModal, WithModalProps } from 'HOCs';
+
 import {
   HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
@@ -21,15 +23,15 @@ import {
 import { SelectValues } from 'types';
 import { dateUtil } from 'utils';
 
-export interface TransactionsProps {
-  ledgerTransactions: Array<LedgerTransactionItemPrepared>;
-  filterLedgerTransactions: HandleFilterLedgerTransactions;
-  institutionsOptions: Array<SelectValues>;
+export interface TransactionsProps extends WithModalProps {
   currentId: number;
+  ledgerTransactions: Array<LedgerTransactionItemPrepared>;
+  institutionsOptions: Array<SelectValues>;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;
   filterLedgerCardsById: HandleFilterLedgerCardsById;
+  filterLedgerTransactions: HandleFilterLedgerTransactions;
   resetTransactions: ResetTransactions;
 }
 
@@ -43,6 +45,7 @@ const Transactions: React.FC<TransactionsProps> = ({
   filterLedgerStatementsById,
   filterLedgerCardsById,
   currentId,
+  openModal,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -78,6 +81,13 @@ const Transactions: React.FC<TransactionsProps> = ({
         name: 'Statements',
         action: () => filterLedgerStatementsById({ transaction_id: currentId }),
       },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Settle Transaction',
+        action: () => openModal({ name: modalNamesConst.SETTLE_TRANSACTION }),
+      },
     ],
     [
       filterLedgerCustomersById,
@@ -85,6 +95,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterLedgerCardsById,
       filterLedgerAccountsById,
       currentId,
+      openModal,
     ]
   );
 
@@ -111,4 +122,4 @@ const Transactions: React.FC<TransactionsProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(Transactions);
+})(withModal(Transactions));

@@ -35,6 +35,11 @@ const LogModal: React.FC<LogModalProps> = ({
     [data]
   );
 
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Refreshing...' : 'Refresh',
+    [isLoading]
+  );
+
   const handleCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -57,7 +62,7 @@ const LogModal: React.FC<LogModalProps> = ({
       <Box mt="10px">
         <Flex justifyContent="space-between">
           <Button
-            text={isLoading ? 'Refreshing...' : 'Refresh'}
+            text={buttonText}
             iconName={iconNamesConst.REFRESH}
             onClick={refreshLogData}
           />

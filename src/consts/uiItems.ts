@@ -28,6 +28,7 @@ export enum uiItemConsts {
   LEDGER_LIMIT_ADJUSTMENT = 'ledger/limit_adjustment',
   LEDGER_TRANSACTIONS = 'ledger/transactions',
   LEDGER_STATEMENTS = 'ledger/statements',
+  LEDGER_SETTLE_TRANSACTION = 'ledger/settle_transaction',
   // PRODUCT DESIGNER
   PRODUCT_DESIGNER_PRODUCTS = 'product_designer/products',
 }

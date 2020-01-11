@@ -1,4 +1,4 @@
-import { lenderTransactionsPathNames } from 'consts';
+import { lenderTransactionsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,8 +10,8 @@ import { LedgerTransactionsFilterPrepared } from './types';
 
 export const filterLedgerTransactions = (data: Partial<LedgerTransactionsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerTransactionsFilteredItems, 500);
-  apiClient.post(lenderTransactionsPathNames.GET, { data });
+  apiClient.post(lenderTransactionsURLs.GET, { data });
 
 export const filterLedgerTransactionsById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
-  apiClient.post(lenderTransactionsPathNames.GET, { data });
+  apiClient.post(lenderTransactionsURLs.GET, { data });

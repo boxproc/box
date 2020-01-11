@@ -127,7 +127,10 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isDateTime,
+          ]}
         />
       </Box>
       <Box width="200px" p="10px">
@@ -138,7 +141,10 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
-          validate={[formErrorUtil.required, formErrorUtil.isDateTime]}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isDateTime,
+          ]}
         />
       </Box>
     </React.Fragment>

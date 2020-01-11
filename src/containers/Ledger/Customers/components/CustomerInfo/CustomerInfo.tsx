@@ -133,7 +133,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             placeholder={dateFormat.DATE}
             mask={maskFormat.DATE}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isDate]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isDate,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -144,7 +147,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             label="Email"
             placeholder="Enter Email"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.email]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.email,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">

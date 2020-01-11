@@ -8,6 +8,7 @@ import ConfirmationModal from 'containers/Modals/ConfirmationModal';
 import LoginCode2faModal from 'containers/Modals/LoginCode2faModal';
 import LogModal from 'containers/Modals/LogModal';
 import Register2faModal from 'containers/Modals/Register2faModal';
+import SettleTransactionModal from 'containers/Modals/SettleTransactionModal';
 import ChangePasswordModal from './ChangePasswordModal';
 
 import { endpointsModals } from 'containers/Administration/Endpoints/modals';
@@ -24,6 +25,7 @@ import { customersModals } from 'containers/Ledger/Customers/modals';
 import { statementsModals } from 'containers/Ledger/Statements/modals';
 import { transactionsModals } from 'containers/Ledger/Transactions/modals';
 import { manualTransactionModals } from 'containers/Modals/ManualTransactionModals';
+
 import { productsModals } from 'containers/ProductDesigner/Products/modals';
 
 export const modalsList = [
@@ -54,6 +56,10 @@ export const modalsList = [
   {
     name: modalNamesConst.CHANGE_PASSWORD,
     component: <ChangePasswordModal />,
+  },
+  {
+    name: modalNamesConst.SETTLE_TRANSACTION,
+    component: <SettleTransactionModal />,
   },
   ...manualTransactionModals,
   ...endpointsModals,

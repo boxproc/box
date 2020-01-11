@@ -201,9 +201,7 @@ export const handleAddProduct: HandleAddProduct = data =>
           }
           dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
           dispatch(setActiveItemId(res.value.product_id));
-          dispatch(openModal({
-            name: modalNamesConst.EDIT_PRODUCT,
-          }));
+          dispatch(openModal({ name: modalNamesConst.EDIT_PRODUCT }));
         }
       },
       dispatch

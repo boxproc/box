@@ -1,4 +1,4 @@
-import { constsPathNames } from 'consts';
+import { constsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
-  apiClient.post(constsPathNames.GET_INSTITUTIONS);
+  apiClient.post(constsURLs.GET_INSTITUTIONS);

@@ -1,4 +1,4 @@
-import { adminSystemPropsPathNames } from 'consts';
+import { adminSystemPropsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,18 +10,18 @@ import { AdminSysPropFilterPrepared, EditableAdminSysPropPrepared } from './type
 
 export const deleteAdminSysProp = (id: number | string) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(adminSystemPropsPathNames.DELETE, {
+  apiClient.post(adminSystemPropsURLs.DELETE, {
     data: { property_name: id },
   });
 
 export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(adminSystemPropsPathNames.CREATE, { data });
+  apiClient.post(adminSystemPropsURLs.CREATE, { data });
 
 export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(adminSystemPropsPathNames.UPDATE, { data });
+  apiClient.post(adminSystemPropsURLs.UPDATE, { data });
 
 export const filterAdminSysProps = (data: AdminSysPropFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSysPropsItemsFilteredData, 500);
-  apiClient.post(adminSystemPropsPathNames.GET, {data});
+  apiClient.post(adminSystemPropsURLs.GET, {data});

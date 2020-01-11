@@ -4,7 +4,7 @@ export * from './modalNames';
 export * from './storage';
 export * from './codes';
 export * from './links';
-export * from './apiPathNames';
+export * from './URLs';
 export * from './strings';
 export * from './iconNames';
 export * from './scheduler';

@@ -1,4 +1,4 @@
-import { lenderManualTransactionPathNames } from 'consts';
+import { lenderManualTransactionURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,4 +10,4 @@ import { LedgerManualTransactionRequest } from './types';
 
 export const makeLedgerTransaction = (data: Partial<LedgerManualTransactionRequest>) =>
   // throttleUtil.getDataAfter(ledgerManualTransactionData, 500);
-  apiClient.post(lenderManualTransactionPathNames.MAKE_TRANSACTION, { data });
+  apiClient.post(lenderManualTransactionURLs.MAKE_TRANSACTION, { data });

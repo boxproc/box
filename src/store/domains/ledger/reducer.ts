@@ -5,6 +5,7 @@ import ledgerCardsReducer from './cards/reducer';
 import ledgerCustomersReducer from './customers/reducer';
 import ledgerLimitAdjustmentReducer from './limitAdjustment/reducer';
 import ledgerManualTransactionReducer from './manualTransaction/reducer';
+import ledgerSettleTransactionReducer from './settleTransaction/reducer';
 import ledgerStatementsReducer from './statements/reducer';
 import ledgerTransactionsReducer from './transactions/reducer';
 
@@ -16,6 +17,7 @@ const ledgerReducer = combineReducers({
   cards: ledgerCardsReducer,
   manualTransaction: ledgerManualTransactionReducer,
   limitAdjustment: ledgerLimitAdjustmentReducer,
+  settleTransaction: ledgerSettleTransactionReducer,
 });
 
 export default ledgerReducer;

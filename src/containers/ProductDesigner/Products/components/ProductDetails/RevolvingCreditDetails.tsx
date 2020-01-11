@@ -28,7 +28,10 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             decimalScale={2}
             label="Minimum Repayment Amount"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -41,7 +44,10 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             decimalScale={2}
             label="Minimum Repayment Rate"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -53,7 +59,10 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             label="Repayment Grace # Of Days"
             isNumber={true}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[2 / 5]} p="10px" pb="15px">

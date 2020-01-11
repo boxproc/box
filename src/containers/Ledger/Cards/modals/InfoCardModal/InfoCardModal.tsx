@@ -29,6 +29,16 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   isFormDirty,
   isLoading,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Activating...' : 'Activate Card',
+    [isLoading]
+  );
+
+  const isStatusActive = React.useMemo(
+    () => currentStatus === cardStatusesCodes.ACTIVE,
+    [currentStatus]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -38,8 +48,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     () => activateLedgerCard(),
     [activateLedgerCard]
   );
-
-  const isStatusActive = currentStatus === cardStatusesCodes.ACTIVE;
 
   return (
     <Modal
@@ -54,7 +62,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           disabled={isStatusActive || isLoading}
           type="reset"
           onClick={handleActivateLedgerCard}
-          text={isLoading ? 'Activating...' : 'Activate Card'}
+          text={buttonText}
           isFocused={true}
         />
       </Box>

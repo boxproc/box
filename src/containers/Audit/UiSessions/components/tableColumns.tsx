@@ -65,7 +65,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 400,
+    maxWidth: 500,
     sortable: true,
     Header: <TableHeader title="User Agent" />,
     accessor: 'userAgent',
@@ -76,7 +76,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 100,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',

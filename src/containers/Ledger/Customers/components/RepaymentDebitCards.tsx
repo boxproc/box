@@ -25,6 +25,11 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
   interfacesOptions,
   isInterfacesLoading,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add Card',
+    [isLoading]
+  );
+
   return (
     <Box width="100%">
       <Flex
@@ -61,7 +66,10 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             label="Expiry Date"
             placeholder={dateFormat.DATE}
             mask={maskFormat.DATE}
-            validate={[formErrorUtil.required, formErrorUtil.isDate]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isDate,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -113,7 +121,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
         </Box>
         <Box width={[1 / 5]} pb="20px">
           <Button
-            text={isLoading ? 'Adding...' : 'Add Card'}
+            text={buttonText}
             iconName={iconNamesConst.PLUS}
             disabled={pristine || isDisabled}
           />

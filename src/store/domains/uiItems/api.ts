@@ -1,4 +1,4 @@
-import { uiItemsPathNames } from 'consts';
+import { uiItemsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getUiItems = () =>
   // throttleUtil.getDataAfter(uiItems, 500);
-  apiClient.post(uiItemsPathNames.GET);
+  apiClient.post(uiItemsURLs.GET);

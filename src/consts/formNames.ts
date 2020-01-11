@@ -5,6 +5,9 @@ export enum formNamesConst {
   CHANGE_PROFILE = 'changeProfileForm',
   CHANGE_PASSWORD = 'changePasswordForm',
 
+  SETTLE_TRANSACTION_FORM = 'settleTransactionForm',
+  TRANSACTION_RETRIEVING_FORM = 'transactionRetrievingForm',
+
   FILTER = 'filterForm',
 
   PRODUCT = 'productForm',

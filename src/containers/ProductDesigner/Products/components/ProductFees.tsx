@@ -29,6 +29,11 @@ const ProductFees: React.FC<ProductFeesProps> = ({
   aprsOptions,
   isLoading,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add Fee',
+    [isLoading]
+  );
+
   return (
     <Flex alignItems="flex-end" flexWrap="wrap">
       <Box width={[2 / 7]} p="10px">
@@ -96,7 +101,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
       </Box>
       <Box width={[1 / 7]} pb="20px">
         <Button
-          text={isLoading ? 'Adding...' : 'Add Fee'}
+          text={buttonText}
           iconName={iconNamesConst.PLUS}
           disabled={pristine || isDisabled}
         />

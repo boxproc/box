@@ -1,33 +1,33 @@
 export const basePath = '/ui/';
 
-export enum authPathNames {
+export enum authURLs {
   LOGIN = '/ui/auth/login',
   LOGOUT = '/ui/auth/logout',
 }
 
-export enum uiItemsPathNames {
+export enum uiItemsURLs {
   GET = '/ui/items/get',
 }
 
-export enum constsPathNames {
+export enum constsURLs {
   GET_INSTITUTIONS = '/ui/service_data/institutions/get',
 }
 
-export enum adminInstitutionsPathNames {
+export enum adminInstitutionsURLs {
   GET = '/ui/service_data/institutions/get_all',
   CREATE = '/ui/service_data/institutions/create',
   DELETE = '/ui/service_data/institutions/delete',
   UPDATE = '/ui/service_data/institutions/update',
 }
 
-export enum adminInterfacePathNames {
+export enum adminInterfaceURLs {
   GET = '/ui/administration/interfaces/get',
   CREATE = '/ui/administration/interfaces/create',
   DELETE = '/ui/administration/interfaces/delete',
   UPDATE = '/ui/administration/interfaces/update',
 }
 
-export enum adminEndpointsPathNames {
+export enum adminEndpointsURLs {
   GET = '/ui/administration/endpoints/get',
   CREATE = '/ui/administration/endpoints/create',
   DELETE = '/ui/administration/endpoints/delete',
@@ -35,7 +35,7 @@ export enum adminEndpointsPathNames {
   GET_BY_INSTITUTION_ID = '/ui/administration/endpoints/get_by_institution',
 }
 
-export enum dictionariesPathNames {
+export enum dictionariesURLs {
   GET_COUNTRIES = '/ui/administration/dictionaries/countries/get',
   GET_CURRENCIES = '/ui/administration/dictionaries/currencies/get',
   GET_EVENTS = '/ui/administration/dictionaries/events/get',
@@ -47,7 +47,7 @@ export enum dictionariesPathNames {
   GET_STATEMENT_CYCLE_TYPES = '/ui/ledger/statements/get_statement_cycle_types',
 }
 
-export enum adminUserPathNames {
+export enum adminUserURLs {
   GET = '/ui/administration/permissions/users/get',
   CREATE = '/ui/administration/permissions/users/create',
   UPDATE = '/ui/administration/permissions/users/update',
@@ -56,7 +56,7 @@ export enum adminUserPathNames {
   GET_ADMIN_ACCESS_USERS = '/ui/administration/permissions/administrator/get',
 }
 
-export enum adminUserGroupsPathNames {
+export enum adminUserGroupsURLs {
   GET_USERS_GROUPS = '/ui/administration/permissions/users_group/get',
   GET_ACTIVE_USERS = '/ui/administration/permissions/users_group_members/get_active_users',
   GET_GROUP_MEMBERS = '/ui/administration/permissions/users_group_members/get',
@@ -70,7 +70,7 @@ export enum adminUserGroupsPathNames {
   CREATE_GROUP_PERMISSIONS = '/ui/administration/permissions/group_permissions/create',
 }
 
-export enum adminSchedulerPathNames {
+export enum adminSchedulerURLs {
   GET = '/ui/administration/scheduler/get',
   DELETE = '/ui/administration/scheduler/delete',
   CREATE = '/ui/administration/scheduler/create',
@@ -79,14 +79,14 @@ export enum adminSchedulerPathNames {
   SEND_ACTION = '/sys/scheduler/management',
 }
 
-export enum adminSystemPropsPathNames {
+export enum adminSystemPropsURLs {
   GET = '/ui/administration/system_properties/get',
   DELETE = '/ui/administration/system_properties/delete',
   CREATE = '/ui/administration/system_properties/create',
   UPDATE = '/ui/administration/system_properties/update',
 }
 
-export enum auditPathNames {
+export enum auditURLs {
   GET_SCHEDULED_JOBS = '/ui/audit/scheduler_jobs/get',
   GET_USER_ACTIVITY = '/ui/audit/users_activity/get',
   GET_API_CALLS = '/ui/audit/api_calls/get',
@@ -94,20 +94,20 @@ export enum auditPathNames {
   GET_UI_SESSIONS = '/ui/audit/ui_sessions/get',
 }
 
-export enum systemMonitorPathNames {
+export enum systemMonitorURLs {
   GET_INTERFACES = '/ui/audit/system_monitor/get_interface_data',
   GET_ENDPOINTS = '/ui/audit/system_monitor/get_endpoint_data',
   GET_SCHEDULER_JOBS = '/ui/audit/system_monitor/get_scheduler_data',
   GET_LAST_TRANSACTIONS = '/ui/audit/system_monitor/get_transactions_data',
 }
 
-export enum logDataPathNames {
+export enum logDataURLs {
   GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/get_log_file',
   GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
   GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
-export enum lenderAccountsPathNames {
+export enum lenderAccountsURLs {
   GET = '/ui/ledger/accounts/get',
   CREATE = '/ui/ledger/accounts/create',
   UPDATE = '/ui/ledger/accounts/update',
@@ -116,13 +116,13 @@ export enum lenderAccountsPathNames {
   CREATE_PRODUCT_OVERRIDE = 'ui/product_designer/products/override/create_products_override',
 }
 
-export enum lenderCardsPathNames {
+export enum lenderCardsURLs {
   GET = '/ui/ledger/cards/get',
   ACTIVATE_CARD = '/ui/ledger/cards/activate_card',
   CHANGE_STATUS = 'ui/ledger/cards/change_status',
 }
 
-export enum lenderCustomersPathNames {
+export enum lenderCustomersURLs {
   GET = '/ui/ledger/customers/get',
   CREATE = '/ui/ledger/customers/create',
   UPDATE = '/ui/ledger/customers/update',
@@ -133,23 +133,28 @@ export enum lenderCustomersPathNames {
   GET_REPAYMENT_DIRECT_DEBITS = 'ui/ledger/customers/get_repayment_direct_debits',
 }
 
-export enum lenderStatementsPathNames {
+export enum lenderStatementsURLs {
   GET = '/ui/ledger/statements/get',
   GET_TRANSACTIONS = '/ui/ledger/statements/get_transactions',
   GET_ACCOUNT_STATEMENTS = '/ui/ledger/accounts/get_statements',
   GET_ACCOUNT_STATEMENT_APRS = '/ui/ledger/accounts/get_statement_aprs',
 }
 
-export enum lenderTransactionsPathNames {
+export enum lenderTransactionsURLs {
   GET = '/ui/ledger/transactions/get',
 }
 
-export enum lenderManualTransactionPathNames {
+export enum lenderManualTransactionURLs {
   MAKE_TRANSACTION = 'ui/ledger/accounts/make_transaction',
   LIMIT_ADJUSTMENT = 'ui/ledger/accounts/limit_adjustment',
 }
 
-export enum productsPathNames {
+export enum lenderSettleTransactionURLs {
+  RETRIEVE_TRANSACTION = 'ui/ledger/accounts/retrieve_transaction',
+  SETTLE_TRANSACTION = 'ui/ledger/accounts/settle_transaction',
+}
+
+export enum productsURLs {
   GET_PRODUCTS = '/ui/product_designer/products/get',
   GET_INSTITUTIONS_PRODUCTS = '/ui/service_data/institutions/products/get',
   GET_PRODUCT = '/ui/product_designer/products/get_product_by_id',

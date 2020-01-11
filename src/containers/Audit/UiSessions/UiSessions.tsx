@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
+import { SmallText, withSpinner } from 'components';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -32,19 +32,23 @@ const UiSessions: React.FC<UiSessionsProps> = ({
   );
 
   return (
-    <PageTemplate
-      title="UI Sessions"
-      data={auditUiSessions}
-      columns={tableColumns}
-      isDownloadButton={true}
-      filterAction={filterUiSessions}
-      initialFilterValues={{
-        institutionId: [institutionsOptions[0]],
-      }}
-      FilterForm={
-        <UiSessionsFilter institutionsOptions={institutionsOptions} />
-      }
-    />
+    <React.Fragment>
+      <SmallText>(Temporarily works on mocks)</SmallText>
+      <PageTemplate
+        title="UI Sessions"
+        data={auditUiSessions}
+        columns={tableColumns}
+        isDownloadButton={true}
+        filterAction={filterUiSessions}
+        initialFilterValues={{
+          institutionId: [institutionsOptions[0]],
+        }}
+        FilterForm={
+          <UiSessionsFilter institutionsOptions={institutionsOptions} />
+        }
+      />
+
+    </React.Fragment>
   );
 };
 

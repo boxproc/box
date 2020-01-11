@@ -56,7 +56,10 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
           label="New Password"
           placeholder="Enter New Password"
           component={PasswordField}
-          validate={[formErrorUtil.required, formErrorUtil.passwordsDoNotMatch]}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.passwordsDoNotMatch,
+          ]}
         />
         {isRequires2faFlag && (
           <Field

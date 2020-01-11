@@ -182,7 +182,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   placeholder="Enter Loan Cycles"
                   readOnly={isEditMode || isReadOnly}
                   isNumber={true}
-                  validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+                  validate={[
+                    formErrorUtil.required,
+                    formErrorUtil.isInteger,
+                  ]}
                 />
               </Box>
               <Box width="150px" p="10px">
@@ -194,7 +197,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   placeholder={dateFormat.DATE}
                   mask={maskFormat.DATE}
                   readOnly={isReadOnly}
-                  validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                  validate={[
+                    formErrorUtil.required,
+                    formErrorUtil.isDate,
+                  ]}
                 />
               </Box>
             </React.Fragment>
@@ -251,7 +257,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">
@@ -264,7 +273,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">
@@ -277,7 +289,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">
@@ -290,7 +305,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">
@@ -303,7 +321,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">
@@ -316,7 +337,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="10px">

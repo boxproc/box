@@ -43,7 +43,10 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             decimalScale={2}
             label="Apr"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -56,7 +59,10 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             decimalScale={2}
             label="Minimum Deposit Allowed"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -69,7 +75,10 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             decimalScale={2}
             label="Maximum Deposit Allowed"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -82,7 +91,10 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             decimalScale={2}
             label="Maximum Monthly Deposit"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
       </Flex>

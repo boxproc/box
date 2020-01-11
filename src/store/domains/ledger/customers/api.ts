@@ -1,4 +1,4 @@
-import { lenderCustomersPathNames } from 'consts';
+import { lenderCustomersURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -16,38 +16,38 @@ import {
 
 export const deleteLedgerCustomer = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(lenderCustomersPathNames.DELETE, {
+  apiClient.post(lenderCustomersURLs.DELETE, {
     data: { id },
   });
 
 export const addLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(lenderCustomersPathNames.CREATE, { data });
+  apiClient.post(lenderCustomersURLs.CREATE, { data });
 
 export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(lenderCustomersPathNames.UPDATE, { data });
+  apiClient.post(lenderCustomersURLs.UPDATE, { data });
 
 export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
-  apiClient.post(lenderCustomersPathNames.GET, { data });
+  apiClient.post(lenderCustomersURLs.GET, { data });
 
 export const filterLedgerCustomersById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
-  apiClient.post(lenderCustomersPathNames.GET, { data });
+  apiClient.post(lenderCustomersURLs.GET, { data });
 
 export const addRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItem>) =>
-  apiClient.post(lenderCustomersPathNames.CREATE_REPAYMENT_DEBIT_CARD, { data });
+  apiClient.post(lenderCustomersURLs.CREATE_REPAYMENT_DEBIT_CARD, { data });
 
 export const getRepaymentDebitCards = (data: number) =>
-  apiClient.post(lenderCustomersPathNames.GET_REPAYMENT_DEBIT_CARDS, {
+  apiClient.post(lenderCustomersURLs.GET_REPAYMENT_DEBIT_CARDS, {
     data: { customer_id: data },
   });
 
 export const addRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItem>) =>
-  apiClient.post(lenderCustomersPathNames.CREATE_REPAYMENT_DIRECT_DEBIT, { data });
+  apiClient.post(lenderCustomersURLs.CREATE_REPAYMENT_DIRECT_DEBIT, { data });
 
 export const getRepaymentDirectDebits = (data: number) =>
-  apiClient.post(lenderCustomersPathNames.GET_REPAYMENT_DIRECT_DEBITS, {
+  apiClient.post(lenderCustomersURLs.GET_REPAYMENT_DIRECT_DEBITS, {
     data: { customer_id: data },
   });

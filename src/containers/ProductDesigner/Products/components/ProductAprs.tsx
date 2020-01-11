@@ -20,6 +20,11 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
   isLoading,
   pristine,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add APR',
+    [isLoading]
+  );
+
   return (
     <Box width="100%">
       <Flex
@@ -60,7 +65,10 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 6]} p="10px">
@@ -72,12 +80,15 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
             placeholder="Enter # of Days"
             isNumber={true}
             disabled={isDisabled}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1 / 6]} pb="20px">
           <Button
-            text={isLoading ? 'Adding...' : 'Add APR'}
+            text={buttonText}
             iconName={iconNamesConst.PLUS}
             disabled={pristine || isDisabled}
           />

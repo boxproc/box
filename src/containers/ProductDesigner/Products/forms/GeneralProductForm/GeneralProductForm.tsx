@@ -54,6 +54,13 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
     [getProduct]
   );
 
+  const deleteConfirmationText = React.useMemo(
+    () => isProductOverride
+      ? `Delete product override: "${currentProductName}"?`
+      : `Delete product: "${currentProductName}"?`,
+    [isProductOverride, currentProductName]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(updateProduct),
     [handleSubmit, updateProduct]
@@ -89,11 +96,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
                 iconName={iconNamesConst.DELETE}
                 type="reset"
                 withConfirmation={true}
-                confirmationText={
-                  isProductOverride
-                    ? `Delete product override: "${currentProductName}"?`
-                    : `Delete product: "${currentProductName}"?`
-                }
+                confirmationText={deleteConfirmationText}
                 onClick={deleteProduct}
               />
             )}

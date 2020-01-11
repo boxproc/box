@@ -12,7 +12,7 @@ export const uiSessionsData: AuditUiSessionsDataResp = {
       status: 'V',
     },
     {
-      user_id: 1,
+      user_id: 2,
       first_name: 'Jane',
       last_name: 'Doe',
       last_datetime: '2020-01-08 22:55:12',

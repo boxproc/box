@@ -1,6 +1,6 @@
 import { apiClient } from 'services';
 
-import { auditPathNames } from 'consts';
+import { auditURLs } from 'consts';
 
 import { AuditScheduledJobsFilterPrepared, SchedulerId } from './types';
 // import { schedulerJobsItems } from './mock';
@@ -9,7 +9,7 @@ import { AuditScheduledJobsFilterPrepared, SchedulerId } from './types';
 
 export const filterAuditScheduledJobs = (data: Partial<AuditScheduledJobsFilterPrepared>) =>
   // throttleUtil.getDataAfter(schedulerJobsItems, 500);
-  apiClient.post(auditPathNames.GET_SCHEDULED_JOBS, { data });
+  apiClient.post(auditURLs.GET_SCHEDULED_JOBS, { data });
 
 export const filterScheduledJobsById = (data: SchedulerId) =>
-  apiClient.post(auditPathNames.GET_SCHEDULED_JOBS, { data });
+  apiClient.post(auditURLs.GET_SCHEDULED_JOBS, { data });

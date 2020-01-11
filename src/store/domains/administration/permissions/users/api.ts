@@ -1,4 +1,4 @@
-import { adminUserPathNames } from 'consts';
+import { adminUserURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,14 +8,14 @@ import { AdminUserItem, UsersFilterPrepared } from './types';
 // import { throttleUtil } from 'utils';
 
 export const addAdminUser = (data: Partial<AdminUserItem>) =>
-  apiClient.post(adminUserPathNames.CREATE, { data });
+  apiClient.post(adminUserURLs.CREATE, { data });
 
 export const updateAdminUser = (data: Partial<AdminUserItem>) =>
-  apiClient.post(adminUserPathNames.UPDATE, { data });
+  apiClient.post(adminUserURLs.UPDATE, { data });
 
 export const filterAdminUsers = (data: Partial<UsersFilterPrepared>) =>
   // throttleUtil.getDataAfter(usersData, 500);
-  apiClient.post(adminUserPathNames.GET, { data });
+  apiClient.post(adminUserURLs.GET, { data });
 
 export const getAdminAccessUsers = () =>
-  apiClient.post(adminUserPathNames.GET_ADMIN_ACCESS_USERS);
+  apiClient.post(adminUserURLs.GET_ADMIN_ACCESS_USERS);

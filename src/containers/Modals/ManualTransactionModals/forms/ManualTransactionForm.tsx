@@ -86,7 +86,10 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               label="Account"
               placeholder="Enter Account ID"
               isNumber={true}
-              validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isInteger,
+              ]}
             />
           </Box>
           {!isLimitAdjustment && (
@@ -112,7 +115,10 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                   fixedDecimalScale={true}
                   decimalScale={2}
                   label="Amount"
-                  validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+                  validate={[
+                    formErrorUtil.required,
+                    formErrorUtil.isNumber,
+                  ]}
                 />
               </Box>
             </React.Fragment>

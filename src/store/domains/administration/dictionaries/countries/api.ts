@@ -1,4 +1,4 @@
-import { dictionariesPathNames } from 'consts';
+import { dictionariesURLs } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryCountries = () =>
   // throttleUtil.getDataAfter(dictionaryCountriesData, 500);
-  apiClient.post(dictionariesPathNames.GET_COUNTRIES);
+  apiClient.post(dictionariesURLs.GET_COUNTRIES);

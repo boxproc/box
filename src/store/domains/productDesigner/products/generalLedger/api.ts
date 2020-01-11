@@ -1,8 +1,8 @@
-import { productsPathNames } from 'consts';
+import { productsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
 import { GeneralLedgerItem } from './types';
 
 export const updateGeneralLedger = (data: Partial<GeneralLedgerItem>) =>
-  apiClient.post(productsPathNames.UPDATE_GENERAL_LEDGER, { data });
+  apiClient.post(productsURLs.UPDATE_GENERAL_LEDGER, { data });

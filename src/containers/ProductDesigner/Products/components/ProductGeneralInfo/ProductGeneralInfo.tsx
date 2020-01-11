@@ -163,7 +163,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             label="# of Days Card Expires"
             isNumber={true}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isInteger,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="10px">
@@ -211,7 +214,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             label="Retention # of Days"
             isNumber={true}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isInteger,
+            ]}
           />
         </Box>
         <Delimiter />
@@ -238,7 +244,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             isNumber={true}
             readOnly={isReadOnly}
             disabled={!statementCycleTypeValue}
-            validate={[formErrorUtil.required, statementCycleParameterValidation]}
+            validate={[
+              formErrorUtil.required,
+              statementCycleParameterValidation,
+            ]}
             hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
           />
         </Box>

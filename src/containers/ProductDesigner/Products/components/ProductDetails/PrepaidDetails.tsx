@@ -27,7 +27,10 @@ const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
             label="Dormant After # Of Days"
             isNumber={true}
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isInteger]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isInteger,
+            ]}
           />
         </Box>
         <Box width={[1]} p="10px">

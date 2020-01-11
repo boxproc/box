@@ -28,7 +28,10 @@ const DebitDetails: React.FC<DebitDetailsProps> = ({ isReadOnly }) => {
             decimalScale={2}
             label="Apr Overdraft"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required, formErrorUtil.isNumber]}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
           />
         </Box>
         <Box width={[1]} p="10px">

@@ -32,7 +32,7 @@ interface OkCancelButtonsProps {
   onOk?: () => void;
   disabledCancel?: boolean;
   disabledOk?: boolean;
-  focusedButton?: 'ok' | 'cancel';
+  focusedButton?: 'ok' | 'cancel' | 'none';
   cancelIconName?: string;
   hintOk?: string;
   hintCancel?: string;
@@ -62,8 +62,15 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   hideOk,
   hideCancel,
 }) => {
-  const okBtnFocused = focusedButton === 'ok';
-  const cancelBtnFocused = focusedButton === 'cancel';
+  const okBtnFocused = React.useMemo(
+    () => focusedButton === 'ok',
+    [focusedButton]
+  );
+
+  const cancelBtnFocused = React.useMemo(
+    () => focusedButton === 'cancel',
+    [focusedButton]
+  );
 
   return (
     <Wrapper rightPosition={rightPosition} >

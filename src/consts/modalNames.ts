@@ -16,6 +16,8 @@ export enum modalNamesConst {
   CHANGE_PROFILE = 'ChangeProfileModal',
   CHANGE_PASSWORD = 'ChangePasswordModal',
 
+  SETTLE_TRANSACTION = 'SettleTransaction',
+
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
 

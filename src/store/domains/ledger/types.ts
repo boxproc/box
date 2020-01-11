@@ -3,6 +3,7 @@ import { LedgerCardsState } from './cards';
 import { LedgerCustomersState } from './customers';
 import { LedgerLimitAdjustmentState } from './limitAdjustment';
 import { LedgerManualTransactionState } from './manualTransaction';
+import { LedgerSettleTransactionState } from './settleTransaction';
 import { LedgerStatementsState } from './statements';
 import { LedgerTransactionsState } from './transactions';
 
@@ -14,4 +15,5 @@ export interface LedgerState {
   cards: LedgerCardsState;
   manualTransaction: LedgerManualTransactionState;
   limitAdjustment: LedgerLimitAdjustmentState;
+  settleTransaction: LedgerSettleTransactionState;
 }

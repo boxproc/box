@@ -69,7 +69,10 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 label="Start Date"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
             <Box width={[1 / 7]} ml="1px" p="10px">
@@ -113,7 +116,10 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 label="Date"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
             <Box width={[1 / 3]} p="10px">
@@ -157,7 +163,10 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 label="Date"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
             <Box width={[1 / 3]} p="10px">
@@ -201,7 +210,10 @@ const ProductIllustrationRevolvingCredit: React.FC<GeneralProductFormAllProps> =
                 label="Date"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
             <Box width={[1 / 3]} p="10px">

@@ -114,7 +114,10 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Date From"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
             <Box width="200px" p="10px">
@@ -125,7 +128,10 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Date To"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                validate={[formErrorUtil.required, formErrorUtil.isDate]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
               />
             </Box>
           </Flex>
