@@ -6,8 +6,8 @@ import { Box, Flex } from '@rebass/grid';
 import {
   ExternalSpinnerProps,
   Hr,
-  InputField,
   MaskField,
+  NumberFormatField,
   OkCancelButtons,
   withSpinner,
 } from 'components';
@@ -46,9 +46,11 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
           <Field
             id="amountSettled"
             name="amountSettled"
-            placeholder="Enter Amount"
             label="Amount Settled"
-            component={InputField}
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
             isNumber={true}
             disabled={isDisabled}
             validate={[

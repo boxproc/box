@@ -27,7 +27,7 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
 
   return {
     id: id && Number(id),
-    amount_settled: amountSettled,
+    amount_settled: amountSettled && Number(amountSettled),
     settled_datetime: settledDatetime,
   };
 };
