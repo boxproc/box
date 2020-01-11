@@ -19,7 +19,7 @@ export enum yesNoTypesCodes {
   NO = 'N',
 }
 
-export enum statusTypesCodes {
+export enum statusCodes {
   ACTIVE = 'A',
   INACTIVE = 'I',
   DELETED = 'D',
@@ -31,7 +31,7 @@ export enum statusTypesCodes {
   SUSPENDED = 'S',
 }
 
-export enum repaymentStatusTypesCodes {
+export enum repaymentStatusCodes {
   NOT_REPIED = 'N',
   REPIED_IN_FULL = 'R',
   REPIED_PARTIALLY = 'P',
@@ -44,39 +44,53 @@ export enum transactionStatusCodes {
   INVALID = 'I',
 }
 
+export enum uiSessionsStatusCodes {
+  VALID = 'V',
+  INVALID = 'I',
+  REGISTRATION_PENDING = 'F',
+  AUTHENTICATION_PENDING = 'P',
+}
+
 export const transactionStatusOptions = [
   { value: 'P', label: 'Pending' },
   { value: 'S', label: 'Settled' },
   { value: 'I', label: 'Invalid' },
 ];
 
-export const statusTypesOptions = [
+export const statusOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },
   { value: 'D', label: 'Deleted' },
 ];
 
-export const statusTypesLoginOptions = [
-  ...statusTypesOptions,
+export const statusLoginOptions = [
+  ...statusOptions,
   { value: 'L', label: 'Locked' },
 ];
 
-export const statusTypes2faLoginOptions = [
-  ...statusTypesLoginOptions,
+export const status2faLoginOptions = [
+  ...statusLoginOptions,
   { value: 'F', label: '2FA registration pending' },
 ];
 
-export const schedulerStatusTypesOptions = [
-  ...statusTypesOptions,
+export const schedulerStatusOptions = [
+  ...statusOptions,
   { value: 'E', label: 'Execution pending' },
   { value: 'S', label: 'Suspended' },
 ];
 
-export const repaymentStatusTypesOptions = [
+export const repaymentStatusOptions = [
   { value: 'N', label: 'Not repied' },
   { value: 'R', label: 'Repied in full' },
   { value: 'P', label: 'Repied partially' },
   { value: 'O', label: 'Overpaid' },
+];
+
+export const uiSessionsStatusOptions = [
+  { value: 'V', label: 'Valid' },
+  { value: 'I', label: 'Invalid' },
+  { value: 'F', label: '2FA registration pending' },
+  { value: 'P', label: '2FA authentication pending' },
 ];
 
 export enum cardStatusesCodes {
@@ -96,7 +110,7 @@ export const lastExecutionResultOptions = [
   { value: 'U', label: 'Unknown' },
 ];
 
-export const customerStatusTypesOptions = [
+export const customerStatusOptions = [
   { value: 'A', label: 'Active' },
   { value: 'I', label: 'Inactive' },
   { value: 'C', label: 'Closed' },
@@ -203,7 +217,7 @@ export enum codeKeys {
   BACKSPACE = 'Backspace',
 }
 
-export enum statusCodes {
+export enum sessionStatusCodes {
   NO_SESSION_ID = '01',
   NO_SESSION = '03',
   USER_NOT_AUTH = '04',

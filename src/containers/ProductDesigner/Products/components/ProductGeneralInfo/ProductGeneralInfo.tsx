@@ -10,7 +10,7 @@ import {
   cycleTypesIds,
   productTypesOptions,
   schemeTypesOptions,
-  statusTypesOptions,
+  statusOptions,
 } from 'consts';
 
 import {
@@ -173,7 +173,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             component={SelectField}
             label="Status"
             placeholder="Select Status"
-            options={statusTypesOptions}
+            options={statusOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />

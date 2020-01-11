@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { statusTypesCodes, yesNoTypesCodes } from 'consts';
+import { statusCodes, yesNoTypesCodes } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 import { prepareUserDataToRender } from './utils';
@@ -21,8 +21,7 @@ export const selectAuthRequires2faFlag = (state: StoreState) =>
 export const selectIs2faAuthenticationPending = createSelector(
   selectAuthStatus,
   selectAuthRequires2faFlag,
-  (status, requiresFlag) =>
-    status === statusTypesCodes.ACTIVE && requiresFlag === yesNoTypesCodes.YES
+  (status, requiresFlag) => status === statusCodes.ACTIVE && requiresFlag === yesNoTypesCodes.YES
 );
 
 export const selectUserCurrentRegisterStep = (state: StoreState) =>

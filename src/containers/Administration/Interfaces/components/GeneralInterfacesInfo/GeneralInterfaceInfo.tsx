@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextField } from 'components';
 
-import { statusTypesOptions } from 'consts';
+import { statusOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -82,7 +82,7 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
             component={SelectField}
             label="Status"
             placeholder="Select Status"
-            options={statusTypesOptions}
+            options={statusOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />

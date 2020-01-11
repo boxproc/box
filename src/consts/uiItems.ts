@@ -19,6 +19,7 @@ export enum uiItemConsts {
   AUDIT_API_CALLS = 'audit/api_calls',
   AUDIT_SCHEDULED_JOBS = 'audit/scheduled_jobs',
   AUDIT_SYSTEM_MONITOR = 'audit/system_monitor',
+  AUDIT_UI_SESSIONS = 'audit/ui_sessions',
   // LEDGER
   LEDGER_ACCOUNTS = 'ledger/accounts',
   LEDGER_CARDS = 'ledger/cards',

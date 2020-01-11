@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, SelectField } from 'components';
 
-import { iconNamesConst, statusTypesOptions } from 'consts';
+import { iconNamesConst, statusOptions } from 'consts';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
@@ -70,7 +70,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             name="status"
             component={SelectField}
             label="Status"
-            options={statusTypesOptions}
+            options={statusOptions}
             placeholder="Select Status"
             isDisabled={isDisabled}
             isClearable={false}

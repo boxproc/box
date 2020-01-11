@@ -91,6 +91,7 @@ export enum auditPathNames {
   GET_USER_ACTIVITY = '/ui/audit/users_activity/get',
   GET_API_CALLS = '/ui/audit/api_calls/get',
   GET_API_CALLS_DETAILS = '/ui/audit/api_calls/get_whole_description',
+  GET_UI_SESSIONS = '/ui/audit/ui_sessions/get',
 }
 
 export enum systemMonitorPathNames {

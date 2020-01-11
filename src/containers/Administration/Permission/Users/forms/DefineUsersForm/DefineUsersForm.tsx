@@ -14,9 +14,9 @@ import {
 
 import {
   formNamesConst,
-  statusTypes2faLoginOptions,
-  statusTypesCodes,
-  statusTypesLoginOptions,
+  status2faLoginOptions,
+  statusCodes,
+  statusLoginOptions,
 } from 'consts';
 
 import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store/domains';
@@ -60,7 +60,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   const isRegistrationPendingStatus = React.useMemo(
     () => !requires2faFlagValue
       && statusValue
-      && statusValue.value === statusTypesCodes.REGISTRATION_PENDING,
+      && statusValue.value === statusCodes.REGISTRATION_PENDING,
     [statusValue, requires2faFlagValue]
   );
 
@@ -93,7 +93,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   );
 
   const statusOptions = React.useMemo(
-    () => requires2faFlagValue ? statusTypes2faLoginOptions : statusTypesLoginOptions,
+    () => requires2faFlagValue ? status2faLoginOptions : statusLoginOptions,
     [requires2faFlagValue]
   );
 

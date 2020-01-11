@@ -1,8 +1,8 @@
 import {
   executableTypeOptions,
   lastExecutionResultOptions,
-  schedulerStatusTypesOptions,
-  statusTypesCodes,
+  schedulerStatusOptions,
+  statusCodes,
 } from 'consts';
 
 import {
@@ -43,7 +43,7 @@ export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: Se
     return null;
   }
 
-  const status = schedulerStatusTypesOptions.find(el => el.value === item.status);
+  const status = schedulerStatusOptions.find(el => el.value === item.status);
   const lastExecutionResult = lastExecutionResultOptions
     .find(el => el.value === item.last_execution_result);
   const executableType = executableTypeOptions.find(el => el.value === item.executable_type);
@@ -71,7 +71,7 @@ export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
 
   return {
     ...prepareValuesToRender(item),
-    status: schedulerStatusTypesOptions.find(el => el.value === item.status),
+    status: schedulerStatusOptions.find(el => el.value === item.status),
     lastExecutionResult:
       lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
     executableType: executableTypeOptions.find(el => el.value === item.executable_type),
@@ -91,7 +91,7 @@ export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
 
   return {
     name: name ? name : null,
-    status: activeStatusFlag ? [statusTypesCodes.ACTIVE, statusTypesCodes.EXECUTION_PENDING] : null,
+    status: activeStatusFlag ? [statusCodes.ACTIVE, statusCodes.EXECUTION_PENDING] : null,
     institution_id: institutionId ? institutionId.value : null,
   };
 };

@@ -1,4 +1,4 @@
-import { statusTypes2faLoginOptions, statusTypesCodes, yesNoTypesCodes } from 'consts';
+import { status2faLoginOptions, statusCodes, yesNoTypesCodes } from 'consts';
 import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
 import { SelectValues } from 'types';
@@ -34,7 +34,7 @@ export const prepareAdminUserDataToRender = (
     return null;
   }
 
-  const status = statusTypes2faLoginOptions.find(el => el.value === data.status);
+  const status = status2faLoginOptions.find(el => el.value === data.status);
 
   return {
     id: data.id,
@@ -59,7 +59,7 @@ export const prepareUsersFiltersDataToSend = (data: Partial<UsersFilter>) => {
   const { statusActiveFlag, institutionId } = data;
 
   return {
-    status: statusActiveFlag ? statusTypesCodes.ACTIVE : null,
+    status: statusActiveFlag ? statusCodes.ACTIVE : null,
     institution_id: institutionId && institutionId.value,
   };
 };

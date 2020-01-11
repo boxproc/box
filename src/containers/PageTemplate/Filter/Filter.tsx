@@ -108,7 +108,8 @@ const Filter: React.FC<FilterAllProps> = ({
   );
 
   const valuesCount = React.useMemo(
-    () => filterValues && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0),
+    () => filterValues
+      && Object.values(filterValues).reduce((acc, curr) => curr ? ++acc : acc, 0),
     [filterValues]
   );
 

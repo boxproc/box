@@ -1,4 +1,4 @@
-import { repaymentStatusTypesOptions } from 'consts';
+import { repaymentStatusOptions } from 'consts';
 
 import {
   LedgerAccountStatementItem,
@@ -46,7 +46,7 @@ export const prepareStatementDataToRender = (
     address_country_code,
   } = data;
 
-  const repaymentStatus = repaymentStatusTypesOptions
+  const repaymentStatus = repaymentStatusOptions
     .find(status => status.value === repayment_status);
 
   return {

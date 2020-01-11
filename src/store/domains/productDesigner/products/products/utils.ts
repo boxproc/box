@@ -5,8 +5,8 @@ import {
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
-  statusTypesCodes,
-  statusTypesOptions,
+  statusCodes,
+  statusOptions,
   yesNoTypesCodes,
 } from 'consts';
 
@@ -34,7 +34,7 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
   const { activeStatusFlag, institutionId, productType } = data;
 
   return {
-    status: activeStatusFlag ? statusTypesCodes.ACTIVE : null,
+    status: activeStatusFlag ? statusCodes.ACTIVE : null,
     institution_id: institutionId ? institutionId.value : null,
     product_type: productType && productType.length ? productType.map(type => type.value) : null,
   };
@@ -44,7 +44,7 @@ export const prepareGeneralProductItem = (
   item: ProductItemResp,
   institutionName?: string
 ) => {
-  const status = statusTypesOptions.find(el => el.value === item.status);
+  const status = statusOptions.find(el => el.value === item.status);
   const productType = productTypesOptions.find(el => el.value === item.product_type);
   const scheme = schemeTypesOptions.find(el => el.value === item.scheme);
 
@@ -112,7 +112,7 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     description,
     historyRetentionNumberOfDays: history_retention_number_of_day,
     productType: productTypesOptions.find(el => el.value === product_type),
-    status: statusTypesOptions.find(el => el.value === status),
+    status: statusOptions.find(el => el.value === status),
     scheme: schemeTypesOptions.find(el => el.value === scheme),
     lockedFlag: locked_flag === yesNoTypesCodes.YES ? true : false,
     overridesProductId: overrides_product_id,

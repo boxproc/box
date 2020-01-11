@@ -65,7 +65,7 @@ export interface FilterUserActivityByIdRejectedAction {
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID_REJECTED;
 }
 
-export interface ResetUSerActivityAction {
+export interface ResetUserActivityAction {
   readonly type: ActionTypeKeys.RESET_USER_ACTIVITY;
 }
 
@@ -73,4 +73,4 @@ export type AuditUserActivityActionTypes =
   | GetAuditUsersFulfilledAction
   | FilterUserActivityFulfilledAction
   | FilterUserActivityByIdFulfilledAction
-  | ResetUSerActivityAction;
+  | ResetUserActivityAction;

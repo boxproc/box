@@ -45,6 +45,8 @@ export const NavListStyled = styled.div`
       height: 2px;
       padding: 1px;
       border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+      font-size: 0;
+      overflow: hidden;
     }
 
     &:before {

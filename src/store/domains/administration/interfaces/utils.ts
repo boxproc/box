@@ -1,4 +1,4 @@
-import { statusTypesOptions } from 'consts';
+import { statusOptions } from 'consts';
 import {
   AdminInterfaceFilter,
   AdminInterfaceItem,
@@ -47,7 +47,7 @@ export const preparedDataToRender = (
     return null;
   }
 
-  const status = statusTypesOptions.find(el => el.value === data.status);
+  const status = statusOptions.find(el => el.value === data.status);
 
   return {
     id: data.id,
@@ -71,7 +71,7 @@ export const preparedValuesDetailsToRender = (data: Partial<AdminInterfaceItem>)
   }
   return {
     ...preparedDataToRender(data),
-    status: statusTypesOptions.find(el => el.value === data.status),
+    status: statusOptions.find(el => el.value === data.status),
     interfaceTypeId: {
       value: data.interface_type_id,
       label: data.interface_type_name,

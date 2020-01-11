@@ -1,7 +1,7 @@
 import {
-  customerStatusTypesOptions,
+  customerStatusOptions,
   identificationTypesOptions,
-  statusTypesOptions,
+  statusOptions,
 } from 'consts';
 
 import {
@@ -70,7 +70,7 @@ export const prepareDataToRender = (
     return null;
   }
 
-  const status = customerStatusTypesOptions.find(el => el.value === data.status);
+  const status = customerStatusOptions.find(el => el.value === data.status);
 
   return {
     id: data.id,
@@ -102,7 +102,7 @@ export const preparedDataDetailsToRender = (data: Partial<LedgerCustomerItem>) =
     identificationTypesOptions.find(el => el.value === data.identification_type);
   return {
     ...prepareDataToRender(data),
-    status: customerStatusTypesOptions.find(el => el.value === data.status),
+    status: customerStatusOptions.find(el => el.value === data.status),
     identification_type:
       identificationTypesOptions.find(el => el.value === data.identification_type),
     identificationType,
@@ -130,7 +130,7 @@ export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem
     last_update_datetime,
   } = data;
 
-  const currentStatus = statusTypesOptions.find(el => el.value === status);
+  const currentStatus = statusOptions.find(el => el.value === status);
 
   return {
     customerId: customer_id,
@@ -187,7 +187,7 @@ export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebits
     repay_provider_customer_id,
   } = data;
 
-  const currentStatus = statusTypesOptions.find(el => el.value === status);
+  const currentStatus = statusOptions.find(el => el.value === status);
 
   return {
     customerId: customer_id,

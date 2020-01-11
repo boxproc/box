@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, Modal, Paragraph } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { basePath, modalNamesConst, modalTypesConst, statusCodes } from 'consts';
+import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from 'consts';
 
 import { PayloadMessageModal, SetIsRelogin } from 'store/domains';
 import { storageUtil, urlUtil } from 'utils';
@@ -27,16 +27,17 @@ const MessageModal: React.FC<MessageModalProps> = ({
   const { title, message, details, statusCode, type } = payloadMessageModal;
 
   const isSessionEnded = React.useMemo(
-    () => statusCode === statusCodes.SESSION_TIMEOUT || type === modalTypesConst.SESSION_ENDED,
+    () => statusCode === sessionStatusCodes.SESSION_TIMEOUT
+      || type === modalTypesConst.SESSION_ENDED,
     [statusCode, type]
   );
 
   const isReLogin = React.useMemo(
     () => isSessionEnded
-      || statusCode === statusCodes.USER_NOT_AUTH
-      || statusCode === statusCodes.NO_SESSION_ID
-      || statusCode === statusCodes.NO_SESSION
-      || statusCode === statusCodes.UNDEFINED_USER,
+      || statusCode === sessionStatusCodes.USER_NOT_AUTH
+      || statusCode === sessionStatusCodes.NO_SESSION_ID
+      || statusCode === sessionStatusCodes.NO_SESSION
+      || statusCode === sessionStatusCodes.UNDEFINED_USER,
     [statusCode, isSessionEnded]
   );
 

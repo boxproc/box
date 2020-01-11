@@ -1,4 +1,4 @@
-import { statusTypesOptions, yesNoTypesCodes } from 'consts';
+import { statusOptions, yesNoTypesCodes } from 'consts';
 
 import {
   AdminInstitutionsItem,
@@ -24,7 +24,7 @@ export const prepareDataToRender = (data: Partial<AdminInstitutionsItem>) => {
     return null;
   }
 
-  const status = statusTypesOptions.find(el => el.value === data.status);
+  const status = statusOptions.find(el => el.value === data.status);
 
   return {
     id: data.id,
@@ -43,6 +43,6 @@ export const preparedDataDetailsToRender = (data: Partial<AdminInstitutionsItem>
 
   return {
     ...prepareDataToRender(data),
-    status: statusTypesOptions.find(el => el.value === data.status),
+    status: statusOptions.find(el => el.value === data.status),
   };
 };

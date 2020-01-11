@@ -17,7 +17,7 @@ import {
   formNamesConst,
   iconNamesConst,
   modalNamesConst,
-  schedulerStatusTypesOptions,
+  schedulerStatusOptions,
 } from 'consts';
 
 import {
@@ -112,7 +112,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               component={SelectField}
               label="Status"
               placeholder="Select Status"
-              options={schedulerStatusTypesOptions}
+              options={schedulerStatusOptions}
               isDisabled={isDisabledStatus || isReadOnly}
               validate={[formErrorUtil.required]}
             />

@@ -14,7 +14,7 @@ import {
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
-import { dateFormat, maskFormat, statusTypesOptions } from 'consts';
+import { dateFormat, maskFormat, statusOptions } from 'consts';
 
 import { SelectValues } from 'types';
 
@@ -128,7 +128,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={SelectField}
               label="Status"
               placeholder="Select Status"
-              options={statusTypesOptions}
+              options={statusOptions}
               isDisabled={isReadOnly}
               validate={[formErrorUtil.required]}
             />

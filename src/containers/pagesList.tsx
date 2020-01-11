@@ -27,7 +27,13 @@ import {
   Transactions,
 } from 'containers/Ledger';
 
-import { ApiCalls, ScheduledJobs, SystemMonitor, UserActivity } from 'containers/Audit';
+import {
+  ApiCalls,
+  ScheduledJobs,
+  SystemMonitor,
+  UiSessions,
+  UserActivity,
+} from 'containers/Audit';
 
 export const pagesList = [
   {
@@ -85,6 +91,10 @@ export const pagesList = [
   {
     path: uiItemConsts.AUDIT_USER_ACTIVITY,
     component: <UserActivity />,
+  },
+  {
+    path: uiItemConsts.AUDIT_UI_SESSIONS,
+    component: <UiSessions />,
   },
   {
     path: uiItemConsts.LEDGER_CARDS,

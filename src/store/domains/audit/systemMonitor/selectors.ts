@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { StoreState } from 'store/StoreState';
 
-import { schedulerStatusTypesOptions, statusTypesOptions } from 'consts';
+import { schedulerStatusOptions, statusOptions } from 'consts';
 
 export const selectDefaultSystemMonitorInterfaces = (state: StoreState) =>
   state.audit.systemMonitor.interfaces;
@@ -25,7 +25,7 @@ export const selectSystemMonitorInterfaces = createSelector(
       return [];
     } else {
       return interfaces.interfaces_data.asMutable().map(item => {
-        const status = statusTypesOptions.find(el => el.value === item.interface_status);
+        const status = statusOptions.find(el => el.value === item.interface_status);
 
         return {
           institutionId: item.interface_institution_id,
@@ -62,7 +62,7 @@ export const selectSystemMonitorEndpoints = createSelector(
       return [];
     } else {
       return endpoints.endpoints_data.asMutable().map(item => {
-        const status = statusTypesOptions.find(el => el.value === item.endpoint_status);
+        const status = statusOptions.find(el => el.value === item.endpoint_status);
 
         return {
           institutionId: item.endpoint_institution_id,
@@ -99,7 +99,7 @@ export const selectSystemMonitorScheduler = createSelector(
       return [];
     } else {
       return scheduler.scheduler_data.asMutable().map(item => {
-        const status = schedulerStatusTypesOptions.find(el => el.value === item.scheduler_status);
+        const status = schedulerStatusOptions.find(el => el.value === item.scheduler_status);
 
         return {
           institutionId: item.scheduler_institution_id,

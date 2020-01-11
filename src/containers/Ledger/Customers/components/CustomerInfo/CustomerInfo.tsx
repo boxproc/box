@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Delimiter, Hr, InputField, MaskField, SelectField, T4 } from 'components';
 
 import {
-  customerStatusTypesOptions,
+  customerStatusOptions,
   dateFormat,
   identificationTypesOptions,
   maskFormat
@@ -71,7 +71,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             component={SelectField}
             label="Status"
             placeholder="Select Status"
-            options={customerStatusTypesOptions}
+            options={customerStatusOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.required]}
           />

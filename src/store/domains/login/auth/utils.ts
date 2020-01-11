@@ -1,6 +1,6 @@
 import config from 'config';
 
-import { statusTypesCodes, yesNoTypesCodes } from 'consts';
+import { statusCodes, yesNoTypesCodes } from 'consts';
 
 import {
   AuthRequest,
@@ -68,11 +68,11 @@ export const prepareChangePasswordDataToSend = (data: Partial<ChangePasswordData
 
 export const setUserDataToStorage = (data: UserData, isChangingProfile?: boolean) => {
   if (data) {
-    const is2faLogin = data.status === statusTypesCodes.ACTIVE
+    const is2faLogin = data.status === statusCodes.ACTIVE
       && data.requires2faFlag === yesNoTypesCodes.YES
       && !isChangingProfile;
 
-    const isRegistrationPending = data.status === statusTypesCodes.REGISTRATION_PENDING;
+    const isRegistrationPending = data.status === statusCodes.REGISTRATION_PENDING;
 
     storageUtil.setUserData(data);
 

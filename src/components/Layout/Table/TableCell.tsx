@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NumberFormatInput, SelectInput, TextInput } from 'components';
 
-import { schedulerStatusTypesOptions, statusTypesCodes } from 'consts';
+import { schedulerStatusOptions, statusCodes } from 'consts';
 
 import { TableItemWrapper } from './TableItemWrapper';
 
@@ -47,8 +47,8 @@ export const TableCell: React.FC<TableCellProps> = ({
   onSelectChange,
 }) => {
   const isPendingStatus = React.useMemo(
-    () => value === schedulerStatusTypesOptions
-      .find(status => status.value === statusTypesCodes.EXECUTION_PENDING).label,
+    () => value === schedulerStatusOptions
+      .find(status => status.value === statusCodes.EXECUTION_PENDING).label,
     [value]
   );
 

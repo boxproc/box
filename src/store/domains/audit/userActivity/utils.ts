@@ -1,6 +1,6 @@
-import { AuditUserActivityFilter, AuditUserActivityItemResp } from './types';
+import { AuditUserActivityFilter, AuditUserActivityItem, AuditUserActivityItemResp } from './types';
 
-export const preparedDataToRender = (data: Partial<AuditUserActivityItemResp>) => {
+export const preparedDataToRender = (data: AuditUserActivityItemResp): AuditUserActivityItem => {
   if (!data) {
     return null;
   }

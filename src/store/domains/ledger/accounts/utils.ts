@@ -1,4 +1,4 @@
-import { statusTypesOptions, yesNoTypesCodes } from 'consts';
+import { statusOptions, yesNoTypesCodes } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -195,7 +195,7 @@ export const prepareDataToRender = (
     statement_cycle_repayment_day,
   } = data;
 
-  const currentStatus = statusTypesOptions.find(el => el.value === status);
+  const currentStatus = statusOptions.find(el => el.value === status);
 
   return {
     id,
@@ -283,6 +283,6 @@ export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => 
 
   return {
     ...prepareDataToRender(data),
-    status: statusTypesOptions.find(el => el.value === status),
+    status: statusOptions.find(el => el.value === status),
   };
 };

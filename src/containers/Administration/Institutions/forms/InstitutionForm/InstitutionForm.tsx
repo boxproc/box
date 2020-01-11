@@ -14,7 +14,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNamesConst, iconNamesConst, statusTypesOptions } from 'consts';
+import { formNamesConst, iconNamesConst, statusOptions } from 'consts';
 
 import {
   HandleAddAdminInstitution,
@@ -100,7 +100,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               id="status"
               name="status"
               component={SelectField}
-              options={statusTypesOptions}
+              options={statusOptions}
               label="Status"
               placeholder="Select Status"
               isDisabled={isReadOnly}

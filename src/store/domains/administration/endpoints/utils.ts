@@ -1,4 +1,4 @@
-import { statusTypesOptions } from 'consts';
+import { statusOptions } from 'consts';
 import {
   AdminEndpointFilter,
   AdminEndpointItem,
@@ -48,7 +48,7 @@ export const preparedDataToRender = (
     return null;
   }
 
-  const status = statusTypesOptions.find(el => el.value === data.status);
+  const status = statusOptions.find(el => el.value === data.status);
 
   return {
     id: data.id,
@@ -74,7 +74,7 @@ export const preparedDataDetailsToRender = (data: Partial<AdminEndpointItem>) =>
 
   return {
     ...preparedDataToRender(data),
-    status: statusTypesOptions.find(el => el.value === data.status),
+    status: statusOptions.find(el => el.value === data.status),
     endpointTypeId: {
       value: data.endpoint_type_id,
       label: data.endpoint_type_name,

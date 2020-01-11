@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, iconNamesConst, maskFormat, statusTypesOptions } from 'consts';
+import { dateFormat, iconNamesConst, maskFormat, statusOptions } from 'consts';
 
 import { SelectValues } from 'types';
 import { formErrorUtil } from 'utils';
@@ -91,7 +91,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             name="status"
             component={SelectField}
             label="Status"
-            options={statusTypesOptions}
+            options={statusOptions}
             placeholder="Select Status"
             isDisabled={isDisabled}
             isClearable={false}
