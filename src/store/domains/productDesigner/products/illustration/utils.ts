@@ -20,8 +20,8 @@ export const prepareProductLoanIllustrateDataToSend =
     return {
       product_id: productId,
       amount,
-      nr_loan_cycles: Number(defNumOfInstallments),
-      nr_interest_free: Number(defNumOfIntrstFreeInstlmts),
+      nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
+      nr_interest_free: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
       start_date: startDate,
     };
   };

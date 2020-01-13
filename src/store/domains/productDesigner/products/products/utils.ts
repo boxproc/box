@@ -29,6 +29,7 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
   const { activeStatusFlag, institutionId, productType } = data;
@@ -156,15 +157,13 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     currency_code: currencyCode.value,
     product_type: productType.value,
     scheme: scheme.value,
-    history_retention_number_of_day: historyRetentionNumberOfDays
-      && Number(historyRetentionNumberOfDays),
+    history_retention_number_of_day: stringsUtil.toNumber(historyRetentionNumberOfDays),
     locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
     overrides_product_id: overridesProductId,
     card_form_factor: cardFormFactor.value,
-    number_of_days_card_expires: numberOfDaysCardExpires
-      && Number(numberOfDaysCardExpires),
+    number_of_days_card_expires: stringsUtil.toNumber(numberOfDaysCardExpires),
     statement_cycle_type_id: statementCycleTypeId && statementCycleTypeId.value,
-    statement_cycle_parameter: statementCycleParameter && Number(statementCycleParameter),
+    statement_cycle_parameter: stringsUtil.toNumber(statementCycleParameter),
   };
 };
 
@@ -207,9 +206,9 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
     product_id: productId,
     limit_sharing_allowed_flag:
       limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    minimum_repayment_amount: Number(minimumRepaymentAmount),
-    minimum_repayment_rate: Number(minimumRepaymentRate),
-    repayment_grace_number_of_days: Number(repaymentGraceNumberOfDays),
+    minimum_repayment_amount: stringsUtil.toNumber(minimumRepaymentAmount),
+    minimum_repayment_rate: stringsUtil.toNumber(minimumRepaymentRate),
+    repayment_grace_number_of_days: stringsUtil.toNumber(repaymentGraceNumberOfDays),
   };
 };
 
@@ -253,10 +252,10 @@ export const prepareSavingsToSend = (data: SavingsProductItem) => {
 
   return {
     product_id: productId,
-    apr: Number(apr),
-    minimum_deposit_allowed: Number(minimumDepositAllowed),
-    maximum_deposit_allowed: Number(maximumDepositAllowed),
-    maximum_monthly_deposit: Number(maximumMonthlyDeposit),
+    apr: stringsUtil.toNumber(apr),
+    minimum_deposit_allowed: stringsUtil.toNumber(minimumDepositAllowed),
+    maximum_deposit_allowed: stringsUtil.toNumber(maximumDepositAllowed),
+    maximum_monthly_deposit: stringsUtil.toNumber(maximumMonthlyDeposit),
     savings_type: savingsType.value,
   };
 };
@@ -275,7 +274,7 @@ export const preparePrepaid = (data: PrepaidProductItemResp) => {
 
   return {
     productId: product_id,
-    dormantAfterNumberOfDays: Number(dormant_after_number_of_days),
+    dormantAfterNumberOfDays: stringsUtil.toNumber(dormant_after_number_of_days),
     breakagesAllowed: breakages_allowed === yesNoTypesCodes.YES ? true : false,
     reloadAllowed: reload_allowed === yesNoTypesCodes.YES ? true : false,
   };
@@ -295,7 +294,7 @@ export const preparePrepaidToSend = (data: PrepaidProductItem) => {
 
   return {
     product_id: productId,
-    dormant_after_number_of_days: Number(dormantAfterNumberOfDays),
+    dormant_after_number_of_days: stringsUtil.toNumber(dormantAfterNumberOfDays),
     breakages_allowed: breakagesAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
     reload_allowed: reloadAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
@@ -339,8 +338,8 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
 
   return {
     product_id: productId,
-    def_num_of_installments: Number(defNumOfInstallments),
-    def_num_of_intrst_free_instlmts: Number(defNumOfIntrstFreeInstlmts),
+    def_num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
+    def_num_of_intrst_free_instlmts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
     interest_distribution_type: interestDistributionType && interestDistributionType.value,
     allow_overpayment: allowOverpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
@@ -377,7 +376,7 @@ export const prepareDebitToSend = (data: DebitProductItem) => {
 
   return {
     product_id: productId,
-    apr_overdraft: Number(aprOverdraft),
+    apr_overdraft: stringsUtil.toNumber(aprOverdraft),
     overdraft_allowed: overdraftAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
   };
 };

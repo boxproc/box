@@ -1,5 +1,7 @@
 import { LedgerManualTransactionFromData, LedgerManualTransactionResult } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>) => {
   if (!data) {
     return null;
@@ -16,8 +18,8 @@ export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>
   return {
     transaction_type_id: transactionType.value,
     currency_num_code: currencyCode.value,
-    account_id: Number(accountId),
-    amount: Number(amount),
+    account_id: stringsUtil.toNumber(accountId),
+    amount: stringsUtil.toNumber(amount),
     description,
   };
 };

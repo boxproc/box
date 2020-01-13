@@ -1,6 +1,8 @@
 import { uiSessionsStatusOptions } from 'consts';
 import { AuditUiSessionsFilter, AuditUiSessionsItem, AuditUiSessionsItemResp } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSessionsItem => {
   if (!data) {
     return null;
@@ -38,7 +40,7 @@ export const preparedFilterToSend = (params: Partial<AuditUiSessionsFilter>) => 
 
   return {
     institution_id: institutionId && institutionId.length
-      ? institutionId.map(id => Number(id.value))
+      ? institutionId.map(id => stringsUtil.toNumber(id.value))
       : null,
   };
 };

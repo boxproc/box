@@ -1,5 +1,7 @@
 import { LedgerLimitAdjustmentFromData, LedgerLimitAdjustmentResult } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const prepareDataToSend = (data: Partial<LedgerLimitAdjustmentFromData>) => {
   if (!data) {
     return null;
@@ -17,8 +19,8 @@ export const prepareDataToSend = (data: Partial<LedgerLimitAdjustmentFromData>) 
   return {
     transaction_type_id: transactionType.value,
     balance_limit_shared: balanceLimitShared,
-    account_id: Number(accountId),
-    balance_limit: Number(balanceLimit),
+    account_id: stringsUtil.toNumber(accountId),
+    balance_limit: stringsUtil.toNumber(balanceLimit),
     description,
     transaction_datetime: transactionDatetime && transactionDatetime.value,
   };

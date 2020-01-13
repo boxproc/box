@@ -19,6 +19,8 @@ import {
   ProductRewardPlainInfo,
 } from './types';
 
+import { stringsUtil } from 'utils';
+
 export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => {
   if (!data) {
     return null;
@@ -62,8 +64,8 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
     product_apr_id: productAprId,
     product_id: productId,
     description,
-    rate: Number(rate),
-    grace_number_of_days: Number(graceNumberOfDays),
+    rate: stringsUtil.toNumber(rate),
+    grace_number_of_days: stringsUtil.toNumber(graceNumberOfDays),
   };
 };
 
@@ -142,8 +144,8 @@ export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<
     product_id: productId,
     product_fee_id: productFeeId,
     description,
-    rate: Number(rate),
-    amount: Number(amount),
+    rate: stringsUtil.toNumber(rate),
+    amount: stringsUtil.toNumber(amount),
   };
 };
 
@@ -225,8 +227,8 @@ export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
     product_id: productId,
     product_reward_id: productRewardId,
     description,
-    rate: Number(rate),
-    amount: Number(amount),
+    rate: stringsUtil.toNumber(rate),
+    amount: stringsUtil.toNumber(amount),
   };
 };
 

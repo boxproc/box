@@ -4,13 +4,13 @@ import {
   SettleTransactionItem,
 } from './types';
 
-import { dateUtil } from 'utils';
+import { dateUtil, stringsUtil } from 'utils';
 
 export const prepareRetrieveTransactionRequest = (data: Partial<RetrieveTransactionFormValues>) => {
   const { id } = data;
 
   return {
-    id: id && Number(id),
+    id: stringsUtil.toNumber(id),
   };
 };
 
@@ -26,8 +26,8 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
   } = data;
 
   return {
-    id: id && Number(id),
-    amount_settled: amountSettled && Number(amountSettled),
+    id: stringsUtil.toNumber(id),
+    amount_settled: stringsUtil.toNumber(amountSettled),
     settled_datetime: settledDatetime,
   };
 };

@@ -17,6 +17,7 @@ import {
 } from './types';
 
 import { SelectValues } from 'types';
+import { stringsUtil } from 'utils';
 
 export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => {
   if (!params) {
@@ -165,7 +166,8 @@ export const prepareFormDataRepaymentDebitCardToSend =
       cvv2_encrypted: cvv2Encrypted,
       cardholder_name: cardholderName,
       status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId.value),
+      repayment_interface_id: repaymentInterfaceId
+        && stringsUtil.toNumber(repaymentInterfaceId.value),
     };
   };
 
@@ -217,6 +219,7 @@ export const prepareFormDataRepaymentDirectDebitToSend =
       account_ext: accountExt,
       accountholder_name: accountholderName,
       status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId && Number(repaymentInterfaceId.value),
+      repayment_interface_id: repaymentInterfaceId
+        && stringsUtil.toNumber(repaymentInterfaceId.value),
     };
   };
