@@ -28,3 +28,13 @@ export const numberToFixed = (value: number | string, toFixedNumber: number) => 
 
   return fixedNumber;
 };
+
+export const stringToNumber = (value: number | string) => {
+  let num;
+
+  if (value || value === 0) {
+    num = Number(value);
+  }
+
+  return num;
+};

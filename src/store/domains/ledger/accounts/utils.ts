@@ -96,10 +96,8 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
     institution_id: institutionId && institutionId.value,
     product_id: product && product.value,
     product_name: product && product.label,
-    num_of_installments: numOfInstallments ? Number(numOfInstallments) : null,
-    num_of_interest_free_instllmnts: numOfInterestFreeInstllmnts
-      ? Number(numOfInterestFreeInstllmnts)
-      : null,
+    num_of_installments: stringsUtil.stringToNumber(numOfInstallments),
+    num_of_interest_free_instllmnts: stringsUtil.stringToNumber(numOfInterestFreeInstllmnts),
     nr_loan_cycles: nrLoanCycles,
     loan_start_date: loanStartDate,
     balance_settled: Number(balanceSettled),
