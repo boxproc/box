@@ -39,6 +39,7 @@ const UiSessions: React.FC<UiSessionsProps> = ({
         columns={tableColumns}
         isDownloadButton={true}
         filterAction={filterUiSessions}
+        isSearchable={true}
         initialFilterValues={{
           institutionId: [institutionsOptions[0]],
         }}
