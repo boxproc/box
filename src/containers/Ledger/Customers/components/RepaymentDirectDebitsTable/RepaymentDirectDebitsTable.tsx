@@ -142,7 +142,6 @@ const RepaymentDirectDebitsTable: React.FC<RepaymentDirectDebitsTableProps> = ({
       <Table
         data={repaymentDirectDebits}
         columns={columns}
-        pageSize={10}
         isSmaller={true}
       />
     </Box>

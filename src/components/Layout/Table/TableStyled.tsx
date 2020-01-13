@@ -154,6 +154,8 @@ export const TableStyled = styled.div<TableStyledProps>`
 
     .rt-thead.-filters input {
       font-size: 13px;
+      transition: all .1s linear;
+
       &:focus {
         border-color: ${({ theme }) => theme.colors.normalAccent};
         border-radius: 2px;

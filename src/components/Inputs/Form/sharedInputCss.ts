@@ -15,6 +15,7 @@ export const sharedInputCss = css<InputProps>`
   color: ${({ theme }) => theme.colors.black};
   border: solid 1px ${({ theme, invalid }) => invalid ? theme.colors.red : theme.colors.gray};
   border-radius: 2px;
+  transition: all .1s linear;
 
   &:focus{
     border: solid 1px ${({ theme, invalid }) =>

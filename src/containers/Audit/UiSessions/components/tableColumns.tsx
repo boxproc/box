@@ -56,9 +56,9 @@ export const tableColumns = [
   {
     maxWidth: 120,
     sortable: true,
-    Header: <TableHeader title="API Address" />,
-    accessor: 'apiAddress',
-    Cell: (props: TCell<'apiAddress'>) => (
+    Header: <TableHeader title="IP Address" />,
+    accessor: 'ipAddress',
+    Cell: (props: TCell<'ipAddress'>) => (
       <TableCell
         value={props.value}
       />

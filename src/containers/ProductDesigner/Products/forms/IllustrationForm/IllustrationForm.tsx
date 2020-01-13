@@ -21,11 +21,7 @@ import {
   IllustrationProductLoan,
   ResetIllustrationLoan
 } from 'store/domains';
-import styled from 'styled-components';
 
-const TableWrapper = styled(Box)`
-  max-width: 100%;
-`;
 interface IllustrationProductFormProps extends ExternalSpinnerProps {
   productIllustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
@@ -72,11 +68,9 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           </Flex>
         </form>
       )}
-      <Flex>
-      <TableWrapper mt="10px">
+      <Box mt="15px">
         <IllustrationLoanTable productIllustration={productIllustration} />
-      </TableWrapper>
-      </Flex>
+      </Box>
       <Flex justifyContent="flex-end">
         <Button
           text="Close"

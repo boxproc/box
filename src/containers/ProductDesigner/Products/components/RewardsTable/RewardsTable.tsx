@@ -38,30 +38,11 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
   deleteProductReward,
   updateProductReward,
 }) => {
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
-
   React.useEffect(
     () => {
       getProductRewards();
     },
     [getProductRewards]
-  );
-
-  // update screen height for setting various number of table rows per page
-  const updateWindowHeight = () => setScreenHeight(window.innerHeight);
-
-  React.useEffect(
-    () => {
-      window.addEventListener('resize', updateWindowHeight);
-      return () => window.removeEventListener('resize', updateWindowHeight);
-    }
-  );
-
-  const tablePagesCount = React.useMemo(
-    () => screenHeight < 650 ? 8
-      : screenHeight < 850 ? 10
-        : screenHeight < 950 ? 12 : 15,
-    [screenHeight]
   );
 
   const columns = [
@@ -160,7 +141,6 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
       <Table
         data={productRewards}
         columns={columns}
-        pageSize={tablePagesCount}
         isSmaller={true}
       />
     </Box>

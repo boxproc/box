@@ -11,7 +11,7 @@ export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSess
     first_name,
     last_name,
     last_datetime,
-    api_address,
+    ip_address,
     user_agent,
     status,
   } = data;
@@ -23,7 +23,7 @@ export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSess
     firstName: first_name,
     lastName: last_name,
     lastDatetime: last_datetime,
-    apiAddress: api_address,
+    ipAddress: ip_address,
     userAgent: user_agent,
     status: uiSessionStatus && uiSessionStatus.label,
   };

@@ -7,7 +7,7 @@ import { IllustrationProductStatementsRevolvingCredit } from 'store/domains';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof IllustrationProductStatementsRevolvingCredit> =
-TableCellType<IllustrationProductStatementsRevolvingCredit[T]>;
+  TableCellType<IllustrationProductStatementsRevolvingCredit[T]>;
 
 interface IllustrationRevolvingCreditTableProps {
   statementsIllustration: Array<IllustrationProductStatementsRevolvingCredit>;
@@ -16,25 +16,6 @@ interface IllustrationRevolvingCreditTableProps {
 const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
   statementsIllustration = [],
 }) => {
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
-
-  // update screen height for setting various number of table rows per page
-  const updateWindowHeight = () => setScreenHeight(window.innerHeight);
-
-  React.useEffect(
-    () => {
-      window.addEventListener('resize', updateWindowHeight);
-      return () => window.removeEventListener('resize', updateWindowHeight);
-    }
-  );
-
-  const tablePagesCount = React.useMemo(
-    () => screenHeight < 650 ? 8
-      : screenHeight < 850 ? 10
-        : screenHeight < 950 ? 12 : 15,
-    [screenHeight]
-  );
-
   const columns = [
     {
       maxWidth: 125,
@@ -115,7 +96,6 @@ const IllustrationLoanTable: React.FC<IllustrationRevolvingCreditTableProps> = (
       <Table
         data={statementsIllustration}
         columns={columns}
-        pageSize={tablePagesCount}
         isSmaller={true}
       />
     </Box>

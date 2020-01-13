@@ -151,7 +151,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       <Table
         data={repaymentDebitCards}
         columns={columns}
-        pageSize={10}
         isSmaller={true}
       />
     </Box>

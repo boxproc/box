@@ -15,25 +15,6 @@ interface IllustrationLoanTableProps {
 }
 
 const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIllustration }) => {
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
-
-  // update screen height for setting various number of table rows per page
-  const updateWindowHeight = () => setScreenHeight(window.innerHeight);
-
-  React.useEffect(
-    () => {
-      window.addEventListener('resize', updateWindowHeight);
-      return () => window.removeEventListener('resize', updateWindowHeight);
-    }
-  );
-
-  const tablePagesCount = React.useMemo(
-    () => screenHeight < 650 ? 8
-      : screenHeight < 850 ? 10
-        : screenHeight < 950 ? 12 : 15,
-    [screenHeight]
-  );
-
   const columns = [
     {
       maxWidth: 100,
@@ -48,7 +29,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 125,
+      maxWidth: 120,
       sortable: true,
       accessor: 'startDate',
       Header: <TableHeader title="Start Date" />,
@@ -60,7 +41,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 125,
+      maxWidth: 120,
       sortable: true,
       accessor: 'endDate',
       Header: <TableHeader title="End Date" />,
@@ -72,7 +53,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 125,
+      maxWidth: 120,
       sortable: true,
       accessor: 'statementDate',
       Header: <TableHeader title="Statement Date" />,
@@ -84,7 +65,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       sortable: true,
       accessor: 'installmentBalance',
       Header: <TableHeader title="Statement Balance" />,
@@ -96,7 +77,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 125,
+      maxWidth: 150,
       sortable: true,
       accessor: 'apr',
       Header: <TableHeader title="Accrued Interest" />,
@@ -108,7 +89,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       sortable: true,
       accessor: 'fee',
       Header: <TableHeader title="Fees" />,
@@ -120,7 +101,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       sortable: true,
       accessor: 'minimumAmountDueRepayment',
       Header: <TableHeader title="Payment Due" />,
@@ -132,7 +113,7 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       ),
     },
     {
-      maxWidth: 120,
+      maxWidth: 150,
       sortable: true,
       accessor: 'amount',
       Header: <TableHeader title="Balance to Repay" />,
@@ -150,7 +131,6 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ productIl
       <Table
         data={productIllustration}
         columns={columns}
-        pageSize={tablePagesCount}
         isSmaller={true}
       />
     </Box>

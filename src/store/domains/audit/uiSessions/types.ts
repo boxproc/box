@@ -6,7 +6,7 @@ export interface AuditUiSessionsItemResp {
   first_name: string;
   last_name: string;
   last_datetime: string;
-  api_address: string;
+  ip_address: string;
   user_agent: string;
   status: string;
 }
@@ -16,7 +16,7 @@ export interface AuditUiSessionsItem {
   firstName: string;
   lastName: string;
   lastDatetime: string;
-  apiAddress: string;
+  ipAddress: string;
   userAgent: string;
   status: string;
 }
