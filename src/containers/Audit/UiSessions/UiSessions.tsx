@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SmallText, withSpinner } from 'components';
+import { withSpinner } from 'components';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -33,7 +33,6 @@ const UiSessions: React.FC<UiSessionsProps> = ({
 
   return (
     <React.Fragment>
-      <SmallText>(Temporarily works on mocks)</SmallText>
       <PageTemplate
         title="UI Sessions"
         data={auditUiSessions}
