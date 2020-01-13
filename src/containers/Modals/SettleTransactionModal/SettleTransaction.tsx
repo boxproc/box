@@ -22,6 +22,7 @@ interface SettleTransactionModalProps extends WithModalProps {
   isRetrieving: boolean;
   isLoading: boolean;
   isRetrievedTransaction: boolean;
+  isDirtySettleTransactionForm: boolean;
 }
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;
@@ -34,6 +35,7 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
   isLoading,
   isRetrieving,
   isRetrievedTransaction,
+  isDirtySettleTransactionForm,
   closeModal,
 }) => {
   React.useEffect(
@@ -56,6 +58,7 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
       name={modalName}
       maxContainerWidth={400}
       minContainerHeight={155}
+      withCloseConfirmation={isDirtySettleTransactionForm}
     >
       <SmallText>(Temporarily works on mocks)</SmallText>
       <TransactionRetrievingForm

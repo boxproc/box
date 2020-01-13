@@ -33,6 +33,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
   pristine,
   onCancel,
   settleTransaction,
+  dirty,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(settleTransaction),
@@ -81,6 +82,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
         disabledOk={isDisabled || pristine}
         rightPosition={true}
         onCancel={onCancel}
+        withCancelConfirmation={dirty}
       />
     </form>
   );
