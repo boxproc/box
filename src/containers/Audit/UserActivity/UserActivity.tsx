@@ -40,6 +40,17 @@ const UserActivity: React.FC<UserActivityProps> = ({
     [resetUserActivity]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+        userActivityDateTimeFrom: dateTimeFrom,
+        userActivityDateTimeTo: dateTimeTo,
+      };
+    },
+    [institutionsOptions, dateTimeFrom, dateTimeTo]
+  );
+
   return (
     <PageTemplate
       title="User Activity"
@@ -47,11 +58,7 @@ const UserActivity: React.FC<UserActivityProps> = ({
       columns={tableColumns}
       isDownloadButton={true}
       filterAction={filterAuditUserActivity}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-        userActivityDateTimeFrom: dateTimeFrom,
-        userActivityDateTimeTo: dateTimeTo,
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <UserActivityFilter
           institutionsOptions={institutionsOptions}

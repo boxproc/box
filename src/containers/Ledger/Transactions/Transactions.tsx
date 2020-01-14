@@ -99,6 +99,17 @@ const Transactions: React.FC<TransactionsProps> = ({
     ]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+        transactionsDateTimeFrom: dateTimeFrom,
+        transactionsDateTimeTo: dateTimeTo,
+      };
+    },
+    [institutionsOptions, dateTimeFrom, dateTimeTo]
+  );
+
   return (
     <PageTemplate
       title="Transactions"
@@ -108,11 +119,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterAction={filterLedgerTransactions}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-        transactionsDateTimeFrom: dateTimeFrom,
-        transactionsDateTimeTo: dateTimeTo,
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <TransactionsFilter institutionsOptions={institutionsOptions} />
       }

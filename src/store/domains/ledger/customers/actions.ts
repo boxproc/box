@@ -43,7 +43,7 @@ import {
 
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
 export type HandleDeleteLedgerCustomer = () => Thunk<void>;
@@ -199,7 +199,10 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`));
         await dispatch(filterLedgerCustomersById(id));
         dispatch(setIsOpenFilter(false));

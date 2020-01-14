@@ -160,6 +160,15 @@ export const Scheduler: React.FC<SchedulerProps> = ({
     ]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Scheduler"
@@ -170,12 +179,12 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSchedulerJobs}
       isDownloadButton={true}
+      initialFilterValues={initialFilterValues}
       FilterForm={
-        <SchedulerFilter institutionsOptions={institutionsOptions} />
+        <SchedulerFilter
+          institutionsOptions={institutionsOptions}
+        />
       }
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
       AdditionalButton={
         <Button
           text="Show scheduler master log"

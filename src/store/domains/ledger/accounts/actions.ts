@@ -31,7 +31,7 @@ import { prepareDataToSend, preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
 
 export type GetLedgerAccountCards = (accountId: number) => GetLedgerAccountCardsAction;
@@ -197,7 +197,10 @@ export const handleFilterByIdLedgerAccounts: HandleFilterLedgerAccountsById = id
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`));
         await dispatch(filterLedgerAccountsById(id));
         dispatch(setIsOpenFilter(false));

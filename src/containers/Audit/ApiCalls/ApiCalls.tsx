@@ -38,6 +38,17 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
     [resetApiCalls]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+        apiCallsDateTimeFrom: dateTimeFrom,
+        apiCallsDateTimeTo: dateTimeTo,
+      };
+    },
+    [institutionsOptions, dateTimeFrom, dateTimeTo]
+  );
+
   return (
     <PageTemplate
       title="API Calls"
@@ -46,11 +57,7 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       editModalName={modalNamesConst.AUDIT_API_CALL}
       filterAction={filterAuditApiCalls}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-        apiCallsDateTimeFrom: dateTimeFrom,
-        apiCallsDateTimeTo: dateTimeTo,
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <ApiCallsFilter institutionsOptions={institutionsOptions} />
       }

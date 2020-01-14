@@ -17,7 +17,7 @@ import { setIsOpenFilter } from 'store/domains/utils';
 
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 export type GetAuditUsers = (institutionId: number | string) => GetAuditUsersAction;
 export type HandleGetAuditUsers = (institutionId: number | string) => Thunk<void>;
@@ -81,7 +81,10 @@ export const handleFilterByIdAuditUserActivity: HandleFilterAuditUserById = id =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`));
         await dispatch(filterAuditUserActivityById(id));
         dispatch(setIsOpenFilter(false));

@@ -67,6 +67,15 @@ const Endpoints: React.FC<EndpointsProps> = ({
     [deleteEndpoint, adminCurrentEndpointName, getLogData, currentEndPointId]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Endpoints"
@@ -77,9 +86,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminEndpoint}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <EndpointsFilter institutionsOptions={institutionsOptions} />
       }

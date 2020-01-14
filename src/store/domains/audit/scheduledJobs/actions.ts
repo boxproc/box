@@ -16,7 +16,7 @@ import { preparedFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 export type FilterAuditScheduledJobs = (params: Partial<AuditScheduledJobsFilterPrepared>) =>
   FilterScheduledJobsAction;
@@ -61,7 +61,10 @@ export const handleFilterByIdAuditScheduledJobs: HandleFilterScheduledJobsById =
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}`));
         await dispatch(filterScheduledJobsById(id));
         dispatch(setIsOpenFilter(false));

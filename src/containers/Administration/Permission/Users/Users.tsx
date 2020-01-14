@@ -54,6 +54,16 @@ export const Users: React.FC<UsersProps> = ({
     [filterUsersById, currentUserId]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        statusActiveFlag: false,
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Users"
@@ -64,10 +74,7 @@ export const Users: React.FC<UsersProps> = ({
       editModalName={modalNamesConst.EDIT_USER}
       filterAction={filterUsers}
       isDownloadButton={true}
-      initialFilterValues={{
-        statusActiveFlag: false,
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <UsersFilter
           institutionsOptions={institutionsOptions}

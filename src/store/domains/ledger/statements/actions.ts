@@ -6,7 +6,7 @@ import { basePath, formNamesConst, uiItemConsts } from 'consts';
 import { openModal } from 'store/domains/modals';
 import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
 import { Thunk } from 'types';
-import { cookiesUtil, downloadUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
@@ -119,7 +119,10 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_STATEMENTS}`));
         await dispatch(filterLedgerStatementsById(id));
         dispatch(setIsOpenFilter(false));

@@ -146,6 +146,17 @@ const Statements: React.FC<StatementsProps> = ({
     [handleClickOnPdfReportButton, isLoadingStatement]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+        statementsDateFrom: dateFrom,
+        statementsDateTo: dateTo,
+      };
+    },
+    [institutionsOptions, dateFrom, dateTo]
+  );
+
   return (
     <PageTemplate
       title="Statements"
@@ -155,11 +166,7 @@ const Statements: React.FC<StatementsProps> = ({
       filterAction={filterLedgerStatements}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-        statementsDateFrom: dateFrom,
-        statementsDateTo: dateTo,
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <StatementsFilter institutionsOptions={institutionsOptions} />
       }

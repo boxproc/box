@@ -155,6 +155,15 @@ const Accounts: React.FC<AccountsProps> = ({
     ]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Accounts"
@@ -166,9 +175,7 @@ const Accounts: React.FC<AccountsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <AccountsFilter institutionsOptions={institutionsOptions} />
       }

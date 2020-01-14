@@ -18,7 +18,7 @@ import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
 import { Thunk } from 'types';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
 
 export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
@@ -109,14 +109,17 @@ export const handleChangeLedgerCardStatus: HandleChangeLedgerCardStatus = ids =>
   };
 
 export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
-    async dispatch => {
-      errorDecoratorUtil.withErrorHandler(
-        async () => {
-          cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CARDS}`);
-          dispatch(push(`${basePath}${uiItemConsts.LEDGER_CARDS}`));
-          await dispatch(filterLedgerCardsById(id));
-          dispatch(setIsOpenFilter(false));
-        },
-        dispatch
-      );
-   };
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CARDS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemConsts.LEDGER_CARDS}`));
+        await dispatch(filterLedgerCardsById(id));
+        dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };

@@ -54,6 +54,15 @@ export const Products: React.FC<ProductsProps> = ({
     [deleteProduct, currentProductName]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Products"
@@ -64,9 +73,7 @@ export const Products: React.FC<ProductsProps> = ({
       editModalName={modalNamesConst.EDIT_PRODUCT}
       contextMenuItems={contextMenuItems}
       filterAction={filterProducts}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <ProductsFilter
           institutionsOptions={institutionsOptions}

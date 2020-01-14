@@ -14,7 +14,7 @@ import * as api from './api';
 import { LedgerTransactionsFilterPrepared } from './types';
 import { preparedFilterToSend } from './utils';
 
-import { cookiesUtil, errorDecoratorUtil } from 'utils';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 import { Thunk } from 'types';
 
@@ -62,7 +62,10 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`);
+        const userData = storageUtil.getUserData();
+        const loggedInUsername = userData && userData.username;
+
+        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
         await dispatch(filterLedgerTransactionsById(id));
         dispatch(setIsOpenFilter(false));

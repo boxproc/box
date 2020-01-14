@@ -81,6 +81,15 @@ const Cards: React.FC<CardsProps> = ({
     ]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Cards"
@@ -90,9 +99,7 @@ const Cards: React.FC<CardsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCards}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <CardsFilter institutionsOptions={institutionsOptions} />
       }

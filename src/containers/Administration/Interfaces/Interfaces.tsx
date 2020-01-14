@@ -67,6 +67,15 @@ const Interfaces: React.FC<AccountsProps> = ({
     [deleteInterface, interfaceName, currentInterfaceId, getLogData]
   );
 
+  const initialFilterValues = React.useMemo(
+    () => {
+      return {
+        institutionId: institutionsOptions[0],
+      };
+    },
+    [institutionsOptions]
+  );
+
   return (
     <PageTemplate
       title="Interfaces"
@@ -77,9 +86,7 @@ const Interfaces: React.FC<AccountsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminInterface}
       isDownloadButton={true}
-      initialFilterValues={{
-        institutionId: institutionsOptions[0],
-      }}
+      initialFilterValues={initialFilterValues}
       FilterForm={
         <InterfacesFilter institutionsOptions={institutionsOptions} />
       }
