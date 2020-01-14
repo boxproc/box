@@ -7,7 +7,7 @@ import styled, { css } from 'theme';
 import { Button, Dropdown, DropdownOption, UserIcon, UserShieldIcon } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst, usernames } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { HandleUserLogout } from 'store/domains';
 import { storageUtil } from 'utils';
@@ -34,20 +34,24 @@ const TextWrapper = styled.div`
 `;
 
 interface UserDataProps {
-  username: string;
+  isChangeProfileAvailable: boolean;
   firstName: string;
   lastName: string;
 }
 
-const UserBlock: React.FC<UserDataProps> = ({ username, firstName, lastName }) => (
-  <Flex alignItems="center">
-    {username === usernames.ADMIN
-      ? (<div><UserShieldIconStyled size="15" /></div>)
-      : (<Box mt="-2px"><UserIconStyled size="12" /></Box>)
-    }
-    <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
-  </Flex>
-);
+const UserBlock: React.FC<UserDataProps> = ({
+  isChangeProfileAvailable,
+  firstName,
+  lastName,
+}) => (
+    <Flex alignItems="center">
+      {isChangeProfileAvailable
+        ? (<div><UserShieldIconStyled size="15" /></div>)
+        : (<Box mt="-2px"><UserIconStyled size="12" /></Box>)
+      }
+      <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>
+    </Flex>
+  );
 
 interface UserDropdownProps extends WithModalProps {
   userLogout: HandleUserLogout;
@@ -59,6 +63,21 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
   const isChangePasswordAvailable = React.useMemo(
     () => storageUtil.getLoginFlag() && !storageUtil.getRegistrationPendingFlag(),
     []
+  );
+
+  const isChangeProfileAvailable = React.useMemo(
+    () => userData && userData.masterInstitutionFlag,
+    [userData]
+  );
+
+  const firstName = React.useMemo(
+    () => userData && userData.firstName,
+    [userData]
+  );
+
+  const lastName = React.useMemo(
+    () => userData && userData.lastName,
+    [userData]
   );
 
   const handleUserLogout = React.useCallback(
@@ -82,9 +101,9 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
       dropdownListPosition="right"
       ToggleButtonComponent={
         <UserBlock
-          username={userData && userData.username}
-          firstName={userData && userData.firstName}
-          lastName={userData && userData.lastName}
+          isChangeProfileAvailable={isChangeProfileAvailable}
+          firstName={firstName}
+          lastName={lastName}
         />
       }
     >
@@ -98,7 +117,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
           />
         </DropdownOption>
       )}
-      {userData && userData.username === usernames.ADMIN && (
+      {isChangeProfileAvailable && (
         <DropdownOption>
           <Button
             text="Change profile"
@@ -106,7 +125,8 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
             onClick={handleOpenChangeProfileModal}
             textTransformNone={true}
           />
-        </DropdownOption>)}
+        </DropdownOption>
+      )}
       <DropdownOption>
         <Button
           text="Log out"

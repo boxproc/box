@@ -134,6 +134,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [initialFilterValues, location]
   );
 
+  const isSearchableButton = React.useMemo(
+    () => isSearchable && data && data.length > 10,
+    [isSearchable, data]
+  );
+
   const handleOpenModal = React.useCallback(
     () => openModal({ name: newModalName }),
     [openModal, newModalName]
@@ -180,7 +185,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
             />
           </Box>
         )}
-        {isSearchable && (
+        {isSearchableButton && (
           <Box mr="20px">
             <Button
               text="Search"

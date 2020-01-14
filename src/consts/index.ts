@@ -9,5 +9,4 @@ export * from './strings';
 export * from './iconNames';
 export * from './scheduler';
 export * from './formats';
-export * from './users';
 export * from './systemMonitor';
