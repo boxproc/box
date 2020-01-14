@@ -10,7 +10,7 @@ import {
   GetAuditUsersAction
 } from './actionTypes';
 import * as api from './api';
-import { AuditUserActivityFilterPrepared, UserId } from './types';
+import { AuditUserActivityFilter, AuditUserActivityFilterPrepared, UserId } from './types';
 import { preparedFilterToSend } from './utils';
 
 import { setIsOpenFilter } from 'store/domains/utils';
@@ -25,6 +25,7 @@ export type HandleGetAuditUsers = (institutionId: number | string) => Thunk<void
 export type FilterAuditUserActivity = (params: Partial<AuditUserActivityFilterPrepared>) =>
   FilterUserActivityAction;
 export type HandleFilterAuditUserActivity = () => Thunk<void>;
+export type HandleFilterAuditUserActivityByData = (data: AuditUserActivityFilter) => Thunk<void>;
 
 export type FilterAuditUserById = (id: UserId) => FilterUserActivityByIdAction;
 export type HandleFilterAuditUserById = (id: UserId) => Thunk<void>;
@@ -84,6 +85,20 @@ export const handleFilterByIdAuditUserActivity: HandleFilterAuditUserById = id =
         dispatch(push(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`));
         await dispatch(filterAuditUserActivityById(id));
         dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };
+
+export const handleFilterAuditUserActivityByData: HandleFilterAuditUserActivityByData = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = preparedFilterToSend(data);
+
+        if (preparedValues) {
+          await dispatch(filterAuditUserActivity(preparedValues));
+        }
       },
       dispatch
     );

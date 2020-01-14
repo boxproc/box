@@ -21,11 +21,7 @@ import {
 
 import logo from 'resources/images/logo.png';
 
-interface WrapperProps {
-  currentPathname: string;
-}
-
-const Wrapper = styled.header<WrapperProps>`
+const Wrapper = styled.header`
   position: fixed;
   top: 0;
   right: 0;
@@ -40,7 +36,7 @@ const Wrapper = styled.header<WrapperProps>`
   z-index: 100;
 
   .logo {
-    display: block;
+    display: inline-block;
     font-size: 0;
   }
 
@@ -102,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({
   );
 
   return (
-    <Wrapper currentPathname={currentPathname}>
+    <Wrapper>
       <Container>
         <Flex
           justifyContent="space-between"

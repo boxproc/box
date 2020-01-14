@@ -16,18 +16,24 @@ export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSess
     ip_address,
     user_agent,
     status,
+    username,
+    institution_id,
+    institution_name,
   } = data;
 
   const uiSessionStatus = uiSessionsStatusOptions.find(el => el.value === status);
 
   return {
-    userId: user_id,
+    id: user_id,
     firstName: first_name,
     lastName: last_name,
     lastDatetime: last_datetime,
     ipAddress: ip_address,
     userAgent: user_agent,
     status: uiSessionStatus && uiSessionStatus.label,
+    username,
+    institutionId: institution_id,
+    institutionName: institution_name,
   };
 };
 

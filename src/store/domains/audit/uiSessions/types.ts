@@ -9,16 +9,22 @@ export interface AuditUiSessionsItemResp {
   ip_address: string;
   user_agent: string;
   status: string;
+  username: string;
+  institution_id: number;
+  institution_name: string;
 }
 
 export interface AuditUiSessionsItem {
-  userId: number;
+  id: number; // user id
   firstName: string;
   lastName: string;
   lastDatetime: string;
   ipAddress: string;
   userAgent: string;
   status: string;
+  username: string;
+  institutionId: number;
+  institutionName: string;
 }
 
 export interface AuditUiSessionsDataResp {

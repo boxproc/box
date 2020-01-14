@@ -19,8 +19,11 @@ const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
   preventClose = false,
   subMenu,
 }) => {
-  const isNoData = (!subMenu.items || (subMenu.items && !subMenu.items.length))
-    && (!subMenu.subItems || (subMenu.subItems && !subMenu.subItems.length));
+  const isNoData = React.useMemo(
+    () => (!subMenu.items || (subMenu.items && !subMenu.items.length))
+      && (!subMenu.subItems || (subMenu.subItems && !subMenu.subItems.length)),
+    [subMenu]
+  );
 
   return (
     <div className="submenu-item">

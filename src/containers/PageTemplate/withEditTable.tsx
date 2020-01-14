@@ -105,6 +105,11 @@ export const withEditTable = <OriginProps extends {}>(
       ];
     }
 
+    const isDisableContextMenu = React.useMemo(
+      () => !menuItems.length,
+      [menuItems]
+    );
+
     const handleClickOnRow = React.useCallback(
       (_, rowInfo: RowInfo) => {
         const isLocked = rowInfo.original.lockedFlag;
@@ -154,7 +159,7 @@ export const withEditTable = <OriginProps extends {}>(
       <React.Fragment>
         <ContextMenuTrigger
           id="tableContextMenu"
-          disable={!editModalName}
+          disable={isDisableContextMenu}
         >
           <Component
             onRowClick={handleClickOnRow}

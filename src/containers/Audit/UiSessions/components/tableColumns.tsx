@@ -2,20 +2,32 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
+import { AuditUiSessionsItem } from 'store/domains';
+
 import { TableCellType } from 'types';
 
-type TCell<T extends keyof any> = TableCellType<any[T]>;
+type TCell<T extends keyof AuditUiSessionsItem> = TableCellType<AuditUiSessionsItem[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 150,
     sortable: true,
-    Header: <TableHeader title="User ID" />,
-    accessor: 'userId',
-    Cell: (props: TCell<'userId'>) => (
+    Header: <TableHeader title="Institution" />,
+    accessor: 'institutionName',
+    Cell: (props: TCell<'institutionName'>) => (
       <TableCell
         value={props.value}
-        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 150,
+    sortable: true,
+    Header: <TableHeader title="Username" />,
+    accessor: 'username',
+    Cell: (props: TCell<'username'>) => (
+      <TableCell
+        value={props.value}
       />
     ),
   },
@@ -42,7 +54,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 140,
     sortable: true,
     Header: <TableHeader title="Last Date Time" />,
     accessor: 'lastDatetime',

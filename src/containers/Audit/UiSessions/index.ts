@@ -7,7 +7,9 @@ import {
   AuditUiSessionsActionType,
   createLoadingSelector,
   handleFilterAuditUiSessions,
+  handleFilterAuditUserActivityByData,
   resetUiSessions,
+  selectActiveItemId,
   selectAuditUiSessions,
   selectInstitutionsOptions
 } from 'store/domains';
@@ -21,12 +23,14 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  auditUiSessions: selectAuditUiSessions(state),
+  uiSessions: selectAuditUiSessions(state),
+  currentUserId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterUiSessions: handleFilterAuditUiSessions,
+    filterUserActivity: handleFilterAuditUserActivityByData,
     resetUiSessions,
   },
   dispatch
