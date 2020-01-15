@@ -65,8 +65,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         || isFeesFormDirty
         || isRewardsFormDirty
         || isServicesFormDirty
-        || isGlFormDirty
-        || isIllustrationFormDirty;
+        || isGlFormDirty;
     },
     [
       isGeneralProductFormDirty,
@@ -78,7 +77,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       isRewardsFormDirty,
       isServicesFormDirty,
       isGlFormDirty,
-      isIllustrationFormDirty,
     ]
   );
 

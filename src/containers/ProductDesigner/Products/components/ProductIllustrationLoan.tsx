@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, MaskField, NumberFormatField } from 'components';
+import { Button, Hr, MaskField, NumberFormatField, InputField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
 import { formErrorUtil } from 'utils';
@@ -25,12 +25,12 @@ const ProductIllustrationLoan: React.FC = () => {
           ]}
         />
       </Box>
-      <Box width={[1 / 5]} ml="1px" p="10px">
+      <Box width={[1 / 4]} ml="1px" p="10px">
         <Field
           id="amount"
           name="amount"
           component={NumberFormatField}
-          label="Loan Amount"
+          label="Loan amount (principal)"
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
@@ -41,9 +41,10 @@ const ProductIllustrationLoan: React.FC = () => {
         <Field
           id="defNumOfInstallments"
           name="defNumOfInstallments"
-          placeholder="# Installments"
-          component={NumberFormatField}
+          placeholder="Enter #"
+          component={InputField}
           label="# of Installments"
+          isNumber={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -51,9 +52,10 @@ const ProductIllustrationLoan: React.FC = () => {
         <Field
           id="defNumOfIntrstFreeInstlmts"
           name="defNumOfIntrstFreeInstlmts"
-          component={NumberFormatField}
-          placeholder="# Interest Free"
+          component={InputField}
+          isNumber={true}
           label="# of Interest Free"
+          placeholder="Enter #"
           validate={[formErrorUtil.required]}
         />
       </Box>
