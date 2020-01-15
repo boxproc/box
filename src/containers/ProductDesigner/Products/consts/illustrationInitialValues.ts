@@ -15,5 +15,4 @@ export const illustrationInitialValuesRevolvingCredit = {
   transactionAmount2: 300,
   transactionAmount3: 400,
   limit: 1200,
-
 };

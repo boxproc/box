@@ -7,42 +7,42 @@ import { IllustrationProductFeeRevolvingCredit } from 'store/domains';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof IllustrationProductFeeRevolvingCredit> =
-TableCellType<IllustrationProductFeeRevolvingCredit[T]>;
+  TableCellType<IllustrationProductFeeRevolvingCredit[T]>;
+
+const columns = [
+  {
+    maxWidth: 100,
+    sortable: true,
+    accessor: 'description',
+    Header: <TableHeader title="Description" />,
+    Cell: (props: TCell<'description'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 125,
+    sortable: true,
+    accessor: 'accruedFee',
+    Header: <TableHeader title="Accrued Fee" />,
+    Cell: (props: TCell<'accruedFee'>) => (
+      <TableCell
+        value={props.value}
+        isDecimalNumber={true}
+      />
+    ),
+  },
+];
 
 interface IllustrationRevolvingCreditTableProps {
-    feeIllustration: Array<IllustrationProductFeeRevolvingCredit>;
+  feeIllustration: Array<IllustrationProductFeeRevolvingCredit>;
 }
 
-const IllustrationFeeTable: React.FC<IllustrationRevolvingCreditTableProps> =
-({feeIllustration }) => {
-
-  const columns = [
-    {
-      maxWidth: 100,
-      sortable: true,
-      accessor: 'description',
-      Header: <TableHeader title="Description" />,
-      Cell: (props: TCell<'description'>) => (
-        <TableCell
-          value={props.value}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 125,
-      sortable: true,
-      accessor: 'accruedFee',
-      Header: <TableHeader title="Accrued Fee" />,
-      Cell: (props: TCell<'accruedFee'>) => (
-        <TableCell
-          value={props.value}
-          isDecimalNumber={true}
-        />
-      ),
-    },
-  ];
-
+const IllustrationFeeTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
+  feeIllustration,
+}) => {
   return (
     <Box pb="10px">
       <Table

@@ -58,8 +58,7 @@ export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
         const preparedValues = prepareProductLoanIllustrateDataToSend({
           productId: selectActiveItemId(state),
           ...formValues(state),
-        }
-        );
+        });
 
         if (preparedValues) {
           await dispatch(illustrateLoanProduct(preparedValues));

@@ -17,15 +17,11 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-//   currentProductType: selectCurrentProductType,
-//   productIllustration: selectProductLoanIllustration(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-     illustrateRevolvingCreditProduct: handleIllustrateRevolvingCreditProduct,
-    // getProductDetails: handleGetProductDetails,
-    // resetIllustrationLoan,
+    illustrateRevolvingCreditProduct: handleIllustrateRevolvingCreditProduct,
   },
   dispatch
 );

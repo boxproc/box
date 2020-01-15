@@ -9,4 +9,4 @@ export const illustrateLoanProduct = (data: Partial<LoanProductIllustratePrepare
 
 export const illustrateRevolvingCreditProduct =
   (data: Partial<RevolvingCreditProductIllustratePrepared>) =>
-    apiClient.post(productsURLs.ILLUSTRATE_REVOLVING_CREDIT_PRODUCT, { data });
+    apiClient.post(productsURLs.ILLUSTRATE_REV_CREDIT_PRODUCT, { data });
