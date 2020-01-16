@@ -41,9 +41,8 @@ export const NavListStyled = styled.div`
     &.is-separator {
       position: relative;
       pointer-events: none;
-      margin: 0 1px 1px;
-      height: 2px;
-      padding: 1px;
+      margin: 1px;
+      height: 1px;
       border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
       font-size: 0;
       overflow: hidden;

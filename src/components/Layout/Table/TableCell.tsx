@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NumberFormatInput, SelectInput, TextInput } from 'components';
+import { renderIcon } from './renderIcon';
 
 import { schedulerStatusOptions, statusCodes } from 'consts';
 
@@ -19,6 +20,7 @@ interface TableCellProps {
   isSmaller?: boolean;
   isEditable?: boolean;
   isSelect?: boolean;
+  iconName?: string;
   selectOptions?: Array<SelectValues>;
   defaultSelectValue?: SelectValues;
   selectLabel?: string;
@@ -33,13 +35,14 @@ export const TableCell: React.FC<TableCellProps> = ({
   style,
   onBlur,
   onKeyUp,
-  isDate = false,
-  isNumber = false,
-  isDecimalNumber = false,
-  onCenter = false,
-  isSmaller = false,
-  isEditable = false,
-  isSelect = false,
+  isDate,
+  isNumber,
+  isDecimalNumber,
+  onCenter,
+  isSmaller,
+  isEditable,
+  isSelect,
+  iconName,
   toFixedNumber,
   selectOptions,
   defaultSelectValue,
@@ -98,6 +101,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       isAccentColor={isPendingStatus}
       isSmaller={isSmaller}
     >
+      {iconName && renderIcon(iconName)}
       {isEditable
         ? renderFields()
         : isSelect

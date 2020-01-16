@@ -7,6 +7,8 @@ import styled from 'theme';
 
 import { Container, HighlightLink, Navbar, withSpinner } from 'components';
 
+import logo from 'resources/images/logo.png';
+
 import { basePath } from 'consts';
 
 import { HelpDropdown, UserDropdown } from './components';
@@ -18,8 +20,6 @@ import {
   InstitutionItem,
   UiItemPrepared,
 } from 'store/domains';
-
-import logo from 'resources/images/logo.png';
 
 const Wrapper = styled.header`
   position: fixed;

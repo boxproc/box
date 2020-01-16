@@ -17,11 +17,11 @@ import {
 
 import { basePath, formNamesConst } from 'consts';
 
+import logo from 'resources/images/logo.svg';
+
 import { HandleUserLogin } from 'store/domains';
 
 import { formErrorUtil } from 'utils';
-
-import logo from 'resources/images/logo.svg';
 
 const FormWrapper = styled.div`
   display: flex;

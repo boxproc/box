@@ -33,13 +33,14 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 220,
     sortable: true,
     Header: <TableHeader title="Product Name" />,
     accessor: 'product',
     Cell: (props: TCell<'product'>) => (
       <TableCell
         value={props.value}
+        iconName={props.original.productType}
       />
     ),
   },
