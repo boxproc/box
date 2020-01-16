@@ -66,7 +66,9 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
   );
 
   const isChangeProfileAvailable = React.useMemo(
-    () => userData && userData.masterInstitutionFlag,
+    () => userData
+      && userData.masterInstitutionFlag
+      && !storageUtil.getRegistrationPendingFlag(),
     [userData]
   );
 
