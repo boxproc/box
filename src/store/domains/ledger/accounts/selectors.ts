@@ -32,6 +32,17 @@ export const selectLedgerAccountCards = createSelector(
   selectDefaultLedgerAccountCards,
   items => items && items.map(item => preparedAccountCardsToRender(item))
 );
+
+export const selectLedgerCurrentAccountProductType = createSelector(
+  selectActiveItemId,
+  selectDefaultLedgerAccounts,
+  (currentId, accounts) => {
+    const current = accounts.find(el => el.id === currentId);
+
+    return current && current.product_type;
+  }
+);
+
 export const selectLedgerCurrentAccount = createSelector(
   selectActiveItemId,
   selectInstitutionsOptions,

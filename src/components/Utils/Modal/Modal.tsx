@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -50,6 +50,7 @@ interface ModalProps extends WithModalProps {
   containerWidthAuto?: boolean; // sets width of container to 'auto'
   containerHeightFull?: boolean; // sets height of container to '100vh'
   hideCloseIcon?: boolean; // hides close icon '&times;
+  TitleIcon?: ReactChild;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -63,17 +64,18 @@ const Modal: React.FC<ModalProps> = ({
   minContainerHeight,
   zIndex,
   accentClose = true,
-  closeOnBackdrop = false,
-  withCloseConfirmation = false,
+  closeOnBackdrop,
+  withCloseConfirmation,
   setActiveTableRowIndex,
   setActiveItemId,
   type,
   setIsClearActiveIds,
   setIsEditModalOpened,
   isEditModalOpened,
-  containerWidthAuto = false,
-  containerHeightFull = false,
-  hideCloseIcon = false,
+  containerWidthAuto,
+  containerHeightFull,
+  hideCloseIcon,
+  TitleIcon,
 }) => {
   const isClearableActiveIdsFromStore = React.useMemo(
     () => type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
@@ -143,9 +145,12 @@ const Modal: React.FC<ModalProps> = ({
             </span>
           )}
           <Flex
-            alignItems="baseline"
+            alignItems="center"
             flexWrap="wrap"
           >
+            {TitleIcon && (
+              <Box mb="5px">{TitleIcon}</Box>
+            )}
             {title && (
               <ModalTitle>{title}</ModalTitle>
             )}

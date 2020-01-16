@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 
 import { NumberFormatInput, SelectInput, TextInput } from 'components';
-import { renderIcon } from './renderIcon';
 
 import { schedulerStatusOptions, statusCodes } from 'consts';
 
@@ -20,7 +19,7 @@ interface TableCellProps {
   isSmaller?: boolean;
   isEditable?: boolean;
   isSelect?: boolean;
-  iconName?: string;
+  Icon?: ReactChild;
   selectOptions?: Array<SelectValues>;
   defaultSelectValue?: SelectValues;
   selectLabel?: string;
@@ -42,7 +41,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   isSmaller,
   isEditable,
   isSelect,
-  iconName,
+  Icon,
   toFixedNumber,
   selectOptions,
   defaultSelectValue,
@@ -101,7 +100,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       isAccentColor={isPendingStatus}
       isSmaller={isSmaller}
     >
-      {iconName && renderIcon(iconName)}
+      {Icon}
       {isEditable
         ? renderFields()
         : isSelect

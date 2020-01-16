@@ -7,8 +7,12 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
+import { SelectValues } from 'types';
+import { renderProductIcon } from 'utils/renderProductIcon';
+
 interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
+  currentProductType: SelectValues;
   isProductOverride: boolean;
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
@@ -19,7 +23,6 @@ interface EditProductModalProps extends WithModalProps {
   isRewardsFormDirty: boolean;
   isServicesFormDirty: boolean;
   isGlFormDirty: boolean;
-  isIllustrationFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_PRODUCT;
@@ -27,6 +30,7 @@ const modalName = modalNamesConst.EDIT_PRODUCT;
 const EditProductModal: React.FC<EditProductModalProps> = ({
   closeModal,
   currentProductName,
+  currentProductType,
   isProductOverride,
   isGeneralProductFormDirty,
   isProductDetailsFormDirty,
@@ -37,7 +41,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isRewardsFormDirty,
   isServicesFormDirty,
   isGlFormDirty,
-  isIllustrationFormDirty,
   isReadOnly,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -80,6 +83,11 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     ]
   );
 
+  const TitleIcon = React.useMemo(
+    () => currentProductType && renderProductIcon(currentProductType.value),
+    [currentProductType]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -88,6 +96,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       maxContainerWidth={1010}
       minContainerHeight={window.innerHeight - 10}
       withCloseConfirmation={isAnyFormDirty}
+      TitleIcon={TitleIcon}
     >
       <EditProductForms
         onCancel={handleOnCancel}

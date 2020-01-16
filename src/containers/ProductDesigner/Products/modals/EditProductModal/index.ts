@@ -5,7 +5,11 @@ import { formNamesConst } from 'consts';
 
 import EditProductModal from './EditProductModal';
 
-import { selectCurrentProductName, selectIsProductOverride } from 'store/domains';
+import {
+  selectCurrentProductName,
+  selectCurrentProductType,
+  selectIsProductOverride,
+} from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const generalProductFormDirty = isDirty(formNamesConst.GENERAL_PRODUCT);
@@ -17,7 +21,6 @@ const feesFormDirty = isDirty(formNamesConst.PRODUCT_FEES);
 const rewardsFormDirty = isDirty(formNamesConst.PRODUCT_REWARDS);
 const servicesFormDirty = isDirty(formNamesConst.PRODUCT_SERVICES);
 const glFormDirty = isDirty(formNamesConst.PRODUCT_GENERAL_LEDGER);
-const illustrationFormDirty = isDirty(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
 
 const mapStateToProps = (state: StoreState) => ({
   isGeneralProductFormDirty: generalProductFormDirty(state),
@@ -29,9 +32,9 @@ const mapStateToProps = (state: StoreState) => ({
   isRewardsFormDirty: rewardsFormDirty(state),
   isServicesFormDirty: servicesFormDirty(state),
   isGlFormDirty: glFormDirty(state),
-  isIllustrationFormDirty: illustrationFormDirty(state),
   currentProductName: selectCurrentProductName(state),
   isProductOverride: selectIsProductOverride(state),
+  currentProductType: selectCurrentProductType(state),
 });
 
 export default connect(

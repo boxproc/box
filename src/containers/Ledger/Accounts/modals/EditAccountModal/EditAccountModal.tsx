@@ -9,10 +9,13 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { LedgerAccountItemDetailsPrepared } from 'store/domains';
 
+import { renderProductIcon } from 'utils/renderProductIcon';
+
 interface EditAccountModalProps extends WithModalProps {
   currentAccountAlias: string;
   currentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
+  currentProductType: string;
   isFormDirty: boolean;
 }
 
@@ -23,6 +26,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   currentAccountAlias,
   currentAccount,
   currentAccountAuxCounters,
+  currentProductType,
   isFormDirty,
   isReadOnly,
 }) => {
@@ -36,6 +40,11 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     [closeModal]
   );
 
+  const TitleIcon = React.useMemo(
+    () => currentProductType && renderProductIcon(currentProductType),
+    [currentProductType]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -44,6 +53,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       maxContainerWidth={1100}
       minContainerHeight={580}
       withCloseConfirmation={isFormDirty}
+      TitleIcon={TitleIcon}
     >
       <AccountForm
         onCancel={handleOnCancel}

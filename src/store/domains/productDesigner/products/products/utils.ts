@@ -56,6 +56,7 @@ export const prepareGeneralProductItem = (
     description: item.description,
     status: status && status.label,
     productType: productType && productType.label,
+    productTypeCode: item.product_type,
     scheme: scheme && scheme.label,
     historyRetentionNumberOfDays: item.history_retention_number_of_day,
     currencyCode: item.currency_code,

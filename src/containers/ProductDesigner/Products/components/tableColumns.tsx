@@ -5,6 +5,7 @@ import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 import { ProductItem } from 'store/domains';
 
 import { TableCellType } from 'types';
+import { renderProductIcon } from 'utils/renderProductIcon';
 
 type TCell<T extends keyof ProductItem> = TableCellType<ProductItem[T]>;
 
@@ -40,7 +41,7 @@ export const tableColumns = [
     Cell: (props: TCell<'name'>) => (
       <TableCell
         value={props.value}
-        iconName={props.original.productType}
+        Icon={renderProductIcon(props.original.productTypeCode)}
       />
     ),
   },

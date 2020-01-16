@@ -10,6 +10,7 @@ import {
   selectLedgerCurrentAccount,
   selectLedgerCurrentAccountAlias,
   selectLedgerCurrentAccountAuxCounters,
+  selectLedgerCurrentAccountProductType,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -20,6 +21,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentAccountAlias: selectLedgerCurrentAccountAlias(state),
   currentAccount: selectLedgerCurrentAccount(state),
   currentAccountAuxCounters: selectLedgerCurrentAccountAuxCounters(state),
+  currentProductType: selectLedgerCurrentAccountProductType(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
