@@ -1,4 +1,4 @@
-import { statusOptions, yesNoTypesCodes } from 'consts';
+import { yesNoTypesCodes } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -142,7 +142,6 @@ export const prepareDataToRender = (
 
   const {
     id,
-    status,
     account_alias,
     customer_id,
     customer_first_name,
@@ -191,9 +190,8 @@ export const prepareDataToRender = (
     number_of_times_overdue_7_cycle,
     currency_code,
     statement_cycle_repayment_day,
+    status_name,
   } = data;
-
-  const currentStatus = statusOptions.find(el => el.value === status);
 
   return {
     id,
@@ -204,7 +202,7 @@ export const prepareDataToRender = (
     customerId: customer_id,
     firstName: customer_first_name,
     lastName: customer_last_name,
-    status: currentStatus && currentStatus.label,
+    status: status_name,
     balanceSettled: stringsUtil.numberToFixed(balance_settled, 2),
     balanceAvailable: stringsUtil.numberToFixed(balance_available, 2),
     amountDueRepayment: stringsUtil.numberToFixed(amount_due_repayment, 2),
@@ -277,10 +275,10 @@ export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => 
     return null;
   }
 
-  const { status } = data;
+  const { status, status_name } = data;
 
   return {
     ...prepareDataToRender(data),
-    status: statusOptions.find(el => el.value === status),
+    status: { value: status, label: status_name },
   };
 };

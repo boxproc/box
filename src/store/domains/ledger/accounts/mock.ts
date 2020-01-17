@@ -56,6 +56,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       number_of_times_overdue_7_cycle: 1,
       currency_code: 'MWK',
       statement_cycle_repayment_day: 1,
+      status_name: 'Active',
     },
     {
       id: 2,
@@ -109,6 +110,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       number_of_times_overdue_7_cycle: 1,
       currency_code: 'MRU',
       statement_cycle_repayment_day: 1,
+      status_name: 'Active',
     },
   ],
 };
