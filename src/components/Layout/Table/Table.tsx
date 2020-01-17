@@ -52,7 +52,6 @@ export const Table: React.FC<TableProps> = props => {
       ref={tableRef}
       minHeight={height}
       isScrollbar={isScrollbar}
-      title="Double click on row to open modal window"
     >
       <ReactTable
         {...props as TableProps}
