@@ -20,13 +20,13 @@ import {
   LedgerAccountItemPrepared,
   ResetAccounts,
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {
   ledgerAccounts: Array<LedgerAccountItemPrepared>;
   filterLedgerAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   hasProductOverride: boolean;
   productOverrideId: number;
   resetAccounts: ResetAccounts;

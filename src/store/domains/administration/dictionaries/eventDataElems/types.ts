@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface DictionaryEventDataElemsItemResp {
   event_id: number;
@@ -22,7 +22,7 @@ export interface DictionaryEventDataElemsDataResp {
 }
 
 export interface DictionaryEventDataElemsFilter {
-  eventId?: SelectValues;
+  eventId?: SelectValue;
 }
 
 export interface DictionaryEventDataElemsFilterPrepared {

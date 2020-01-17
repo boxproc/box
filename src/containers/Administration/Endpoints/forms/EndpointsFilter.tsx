@@ -5,11 +5,11 @@ import { Box } from '@rebass/grid';
 
 import { SelectField } from 'components';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface EndpointFilterFormProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 const EndpointsFilter: React.FC<EndpointFilterFormProps> = ({

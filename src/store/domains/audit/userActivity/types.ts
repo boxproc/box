@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface PlainInfo {
   id: number;
@@ -22,8 +22,8 @@ export interface AuditUserActivityItem extends PlainInfo {
 }
 
 export interface AuditUserActivityFilter {
-  institutionId: SelectValues;
-  username: SelectValues;
+  institutionId: SelectValue;
+  username: SelectValue;
   userActivityDateTimeFrom: string;
   userActivityDateTimeTo: string;
 }

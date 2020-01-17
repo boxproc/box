@@ -7,13 +7,13 @@ import { InputField, SelectField, TextField } from 'components';
 
 import { statusOptions } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 export interface GeneralInterfacesInfoProps {
-  institutionsOptions: Array<SelectValues>;
-  interfaceTypesOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
+  interfaceTypesOptions: Array<SelectValue>;
   isDisabledInstitutions?: boolean;
   isLoadingTypesSelector: boolean;
   isReadOnly: boolean;

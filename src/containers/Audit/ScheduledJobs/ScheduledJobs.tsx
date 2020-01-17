@@ -15,11 +15,11 @@ import {
   HandleGetLogData,
   ResetScheduledJobs,
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 export interface ScheduledJobsProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
   filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
   getLogData: HandleGetLogData;

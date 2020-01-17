@@ -12,8 +12,7 @@ const dictionaryCurrenciesReducer =
   (state = dictionaryCurrenciesInitialState, action: DictionaryCurrenciesActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_DICTIONARY_CURRENCIES_FULFILLED:
-        return state
-          .set('currencies', action.payload.currencies);
+        return state.set('currencies', action.payload.currencies);
 
       default: return state;
     }

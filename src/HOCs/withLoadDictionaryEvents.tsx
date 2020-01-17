@@ -12,12 +12,12 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadDictionaryEventsProps {
-  dictionaryEventsOptions: Array<SelectValues>;
+  dictionaryEventsOptions: Array<SelectValue>;
   isDictionaryEventsLoading: boolean;
   loadDictionaryEvents: HandleGetDictionaryEvents;
 }

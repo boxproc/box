@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface IllustrationProductLoanResp {
   statement_id: number;
@@ -185,9 +185,9 @@ export interface RevolvingCreditProductIllustrate {
   transactionDate1: string;
   transactionDate2: string;
   transactionDate3: string;
-  transactionType1: SelectValues;
-  transactionType2: SelectValues;
-  transactionType3: SelectValues;
+  transactionType1: SelectValue;
+  transactionType2: SelectValue;
+  transactionType3: SelectValue;
   transactionAmount1: number;
   transactionAmount2: number;
   transactionAmount3: number;

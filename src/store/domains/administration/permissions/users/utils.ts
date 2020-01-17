@@ -1,7 +1,7 @@
 import { status2faLoginOptions, statusCodes, yesNoTypesCodes } from 'consts';
 import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) => {
   if (!data) {
@@ -28,7 +28,7 @@ export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) 
 
 export const prepareAdminUserDataToRender = (
   data: Partial<AdminUserItem>,
-  institution?: SelectValues
+  institution?: SelectValue
 ) => {
   if (!data) {
     return null;

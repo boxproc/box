@@ -12,12 +12,12 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadCountryCodesProps {
-  countryCodes: Array<SelectValues>;
+  countryCodes: Array<SelectValue>;
   isCountryCodesLoading: boolean;
   loadCountryCodes: HandleGetDictionaryCountries;
 }

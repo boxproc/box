@@ -52,7 +52,7 @@ export interface KeyValuePair<T = number> {
   value: string;
 }
 
-export interface SelectValues<T = number | string> {
+export interface SelectValue<T = number | string> {
   value: T;
   label: string;
 }

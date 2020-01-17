@@ -17,13 +17,13 @@ import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'st
 
 import { formNamesConst } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
   makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  transactionTypes: Array<SelectValues>;
+  transactionTypes: Array<SelectValue>;
   isTransactionTypesLoading: boolean;
   isLimitAdjustment: boolean;
   onCancel: () => void;

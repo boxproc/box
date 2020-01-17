@@ -15,11 +15,11 @@ import {
   ResetProducts,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ProductsProps {
   productItems: Array<ProductItem>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
   currentProductName: string;

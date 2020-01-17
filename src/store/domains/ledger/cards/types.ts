@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface LedgerCardItem {
   id: number;
@@ -37,7 +37,7 @@ export interface LedgerCardsFilterPrepared {
   id: number;
   accountId: number;
   customerId: number;
-  institutionId: SelectValues;
+  institutionId: SelectValue;
 }
 
 export interface LedgerCardIds {

@@ -7,7 +7,7 @@ import { actionTypesCodeKeys, eventTypesCodeKeys } from 'consts';
 
 import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ProductRulesFormProps {
   onCancel?: () => void;
@@ -17,10 +17,10 @@ interface ProductRulesFormProps {
   initialValues: ProductRulesItem;
   isLoading: boolean;
   isReadOnly: boolean;
-  actionTypesOptions: Array<SelectValues>;
+  actionTypesOptions: Array<SelectValue>;
   rulesValues: {
-    eventId: SelectValues;
-    actionType: SelectValues;
+    eventId: SelectValue;
+    actionType: SelectValue;
   };
 }
 

@@ -12,19 +12,21 @@ import {
   SelectField,
 } from 'components';
 
-import { HandleGetInstitutionProducts } from 'store/domains';
+import { HandleGetDictionaryAccountStatuses, HandleGetInstitutionProducts } from 'store/domains';
 
-import { dateFormat, maskFormat, statusOptions } from 'consts';
+import { dateFormat, maskFormat } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 export interface CustomerInfoProps {
-  institutionsOptions: Array<SelectValues>;
-  institutionProductsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
+  institutionProductsOptions: Array<SelectValue>;
+  statusesOptions: Array<SelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  currentInstitution: SelectValues;
+  getAccountStatuses: HandleGetDictionaryAccountStatuses;
+  currentInstitution: SelectValue;
   isEditMode: boolean;
   hasProductOverride: boolean;
   isChosenLoanProductType: boolean;
@@ -38,8 +40,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   institutionsOptions,
   currentInstitution,
   institutionProductsOptions,
+  statusesOptions,
   getInstitutionProducts,
-  isEditMode = false,
+  getAccountStatuses,
+  isEditMode,
   isChosenLoanProductType,
   hasProductOverride,
   onCancel,
@@ -47,6 +51,13 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   pristine,
   isReadOnly,
 }) => {
+  React.useEffect(
+    () => {
+      getAccountStatuses();
+    },
+    [getAccountStatuses]
+  );
+
   React.useEffect(
     () => {
       if (currentInstitution) {
@@ -128,7 +139,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               component={SelectField}
               label="Status"
               placeholder="Select Status"
-              options={statusOptions}
+              options={statusesOptions}
               isDisabled={isReadOnly}
               validate={[formErrorUtil.required]}
             />

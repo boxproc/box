@@ -25,7 +25,7 @@ import {
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface SchedulerProps extends WithModalProps {
   adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
@@ -37,7 +37,7 @@ interface SchedulerProps extends WithModalProps {
   resetScheduler: ResetScheduler;
   getLogData: HandleGetLogData;
   filterAdminScheduledJobsById: HandleFilterScheduledJobsById;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({

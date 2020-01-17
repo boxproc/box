@@ -18,13 +18,13 @@ import {
   ResetCards
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface CardsProps {
   currentId: number;
   ledgerCards: Array<LedgerCardItemPrepared>;
   filterLedgerCards: HandleFilterLedgerCards;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;

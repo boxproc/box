@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AuditScheduledJobsId {
   id: number;
@@ -23,8 +23,8 @@ export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
 }
 
 export interface AuditScheduledJobsFilter {
-  institutionId: SelectValues;
-  scheduler: SelectValues;
+  institutionId: SelectValue;
+  scheduler: SelectValue;
   scheduledJobsDateTimeFrom: string;
   scheduledJobsDateTimeTo: string;
 }

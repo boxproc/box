@@ -16,11 +16,11 @@ import {
   ResetUiSessions,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { cookiesUtil, dateUtil, storageUtil } from 'utils';
 
 export interface UiSessionsProps extends RouteComponentProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   resetUiSessions: ResetUiSessions;
   uiSessions: Array<AuditUiSessionsItem>;
   filterUiSessions: HandleFilterAuditUiSessions;

@@ -1,3 +1,4 @@
+import { DictionaryAccountStatusesState } from './dictionaries/accountStatuses';
 import { DictionaryConstsState } from './dictionaries/consts';
 import { DictionaryCountriesState } from './dictionaries/countries';
 import { DictionaryCurrenciesState } from './dictionaries/currencies';
@@ -23,6 +24,7 @@ export interface AdministrationState {
   events: DictionaryEventsState;
   transactionTypes: DictionaryTransactionTypesState;
   eventDataElements: DictionaryEventDataElemsState;
+  accountStatuses: DictionaryAccountStatusesState;
   endpoints: AdminEndpointState;
   interfaces: AdminInterfaceState;
   institutions: AdminInstitutionsState;

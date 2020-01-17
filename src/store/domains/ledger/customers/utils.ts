@@ -16,7 +16,7 @@ import {
   RepaymentDirectDebitsItemPrepared,
 } from './types';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => {
@@ -65,7 +65,7 @@ export const preparedDataToSend = (data: Partial<LedgerCustomerItemDetailsPrepar
 
 export const prepareDataToRender = (
   data: Partial<LedgerCustomerItem>,
-  institution?: SelectValues
+  institution?: SelectValue
 ) => {
   if (!data) {
     return null;

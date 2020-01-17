@@ -11,7 +11,7 @@ import { dateFormat, maskFormat } from 'consts';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ProductWrapper = styled(Box)`
@@ -20,10 +20,10 @@ const ProductWrapper = styled(Box)`
 `;
 
 interface StatementsFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: SelectValues;
-  institutionProductsOptions: Array<SelectValues>;
+  institutionValue: SelectValue;
+  institutionProductsOptions: Array<SelectValue>;
   isLoadingInstitutionProducts: boolean;
 }
 

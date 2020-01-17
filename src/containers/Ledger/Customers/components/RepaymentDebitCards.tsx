@@ -7,14 +7,14 @@ import { Button, InputField, MaskField, SelectField } from 'components';
 
 import { dateFormat, iconNamesConst, maskFormat, statusOptions } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface RepaymentDebitCardsProps {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
-  interfacesOptions: Array<SelectValues>;
+  interfacesOptions: Array<SelectValue>;
   isInterfacesLoading: boolean;
 }
 

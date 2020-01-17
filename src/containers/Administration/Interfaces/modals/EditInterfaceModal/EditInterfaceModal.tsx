@@ -9,11 +9,11 @@ import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
 import { AdminInterfaceItemDetailsPrepared } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface EditAccountModalProps extends WithModalProps {
   adminCurrentInterface: Partial<AdminInterfaceItemDetailsPrepared>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   currentInterfaceName: string;
   isFormDirty: boolean;
 }

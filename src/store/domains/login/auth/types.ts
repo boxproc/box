@@ -1,4 +1,4 @@
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface AuthPassword {
   loginPassword?: string;
@@ -9,7 +9,7 @@ export interface AuthCode {
 }
 
 export interface AuthUsername {
-  username?: SelectValues;
+  username?: SelectValue;
 }
 
 export interface AuthUserId {

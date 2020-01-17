@@ -5,11 +5,11 @@ import { Box } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface SchedulerFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 const SchedulerFilter: React.FC<SchedulerFilterProps> = ({

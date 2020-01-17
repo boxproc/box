@@ -17,7 +17,7 @@ import {
   HandleGetProductAprsFeesRewards,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ScriptWrapper = styled.div`
@@ -63,9 +63,9 @@ interface ProductRulesProps {
   productFeesItems: Array<ContextItemProps>;
   productRewardsItems: Array<ContextItemProps>;
   transactionTypesItems: Array<ContextItemProps>;
-  actionTypesOptions: Array<SelectValues>;
-  eventsOptions: Array<SelectValues>;
-  eventValue: SelectValues;
+  actionTypesOptions: Array<SelectValue>;
+  eventsOptions: Array<SelectValue>;
+  eventValue: SelectValue;
   initialActionType: string | number;
   isLoading: boolean;
   isReadOnly: boolean;
@@ -73,8 +73,8 @@ interface ProductRulesProps {
   scriptValue: string;
   isEventsLoading: boolean;
   onChangeValues: () => void;
-  changeFormField: (field: string, value: string | SelectValues) => void;
-  handleGetRule: (field: string, value: string | SelectValues) => void;
+  changeFormField: (field: string, value: string | SelectValue) => void;
+  handleGetRule: (field: string, value: string | SelectValue) => void;
 }
 
 const getNewCode = (element: string) => {

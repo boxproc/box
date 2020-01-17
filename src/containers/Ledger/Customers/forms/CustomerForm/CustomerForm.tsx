@@ -15,7 +15,7 @@ import {
   HandleUpdateLedgerCustomer,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface EditCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
@@ -23,10 +23,10 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;
   updateLedgerCustomer: HandleUpdateLedgerCustomer;
   ledgerCurrentCustomerName: string;
-  identificationTypeValue: SelectValues;
+  identificationTypeValue: SelectValue;
   isEditMode?: boolean;
   loadCountryCodes: HandleGetDictionaryCountries;
-  countryCodes: Array<SelectValues>;
+  countryCodes: Array<SelectValue>;
   isReadOnly: boolean;
 }
 

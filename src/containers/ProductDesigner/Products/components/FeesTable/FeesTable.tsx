@@ -22,13 +22,13 @@ import {
   ProductFee,
 } from 'store/domains';
 
-import { SelectValues, TableCellType } from 'types';
+import { SelectValue, TableCellType } from 'types';
 
 type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: Array<ProductFee>;
-  aprsOptions: Array<SelectValues>;
+  aprsOptions: Array<SelectValue>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;

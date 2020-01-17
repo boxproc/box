@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface LedgerAccountId {
   id: number;
@@ -124,18 +124,18 @@ export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepare
 }
 
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
-  status: SelectValues;
-  institutionId: SelectValues;
-  product: SelectValues;
+  status: SelectValue;
+  institutionId: SelectValue;
+  product: SelectValue;
   nrLoanCycles?: boolean;
   loanStartDate?: string;
 }
 
 export interface LedgerAccountsFilter extends LedgerAccountId {
-  institutionId: SelectValues;
+  institutionId: SelectValue;
   firstName: string;
   lastName: string;
-  product: Array<SelectValues>;
+  product: Array<SelectValue>;
   accountAlias: string;
   accountAliasAdditional: string;
   id: number;

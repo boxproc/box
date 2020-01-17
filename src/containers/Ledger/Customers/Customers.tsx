@@ -19,10 +19,10 @@ import {
   ResetCustomers,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface CustomersProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   customers: Array<LedgerCustomerItemPrepared>;
   filterLedgerCustomers: HandleFilterLedgerCustomers;
   deleteLedgerCustomer: HandleDeleteLedgerCustomer;

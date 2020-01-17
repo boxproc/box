@@ -7,12 +7,12 @@ import { CheckboxField, InputField, SelectField } from 'components';
 
 import { loanInterestDistributionTypesCodes, loanTypesOptions } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface LoanDetailsProps {
   isReadOnly?: boolean;
-  interestDistributionEditorValue: SelectValues;
+  interestDistributionEditorValue: SelectValue;
 }
 
 const LoanDetails: React.FC<LoanDetailsProps> = ({

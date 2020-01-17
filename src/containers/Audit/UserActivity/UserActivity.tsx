@@ -11,11 +11,11 @@ import {
   HandleFilterAuditUserActivity,
   ResetUserActivity,
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 export interface UserActivityProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   auditUserActivity: Array<AuditUserActivityItem>;
   filterAuditUserActivity: HandleFilterAuditUserActivity;
   resetUserActivity: ResetUserActivity;

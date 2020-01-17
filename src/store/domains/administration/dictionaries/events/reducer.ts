@@ -11,8 +11,7 @@ const dictionaryEventsReducer =
   (state = dictionaryEventsInitialState, action: DictionaryEventsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_DICTIONARY_EVENTS_FULFILLED:
-        return state
-          .set('events', action.payload.events);
+        return state.set('events', action.payload.events);
 
       default: return state;
     }

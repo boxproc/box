@@ -16,10 +16,10 @@ import {
   HandleUpdateAdminEndpoint
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface EndpointFormProps extends ExternalSpinnerProps {
-  endpointTypesOptions: Array<SelectValues>;
+  endpointTypesOptions: Array<SelectValue>;
   updateAdminEndpoint: HandleUpdateAdminEndpoint;
   addAdminEndpoint: HandleAddAdminEndpoint;
   deleteEndpoint: HandleDeleteAdminEndpoint;

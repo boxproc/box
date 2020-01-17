@@ -14,14 +14,14 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadTransactionTypesProps {
-  transactionTypesOptions: Array<SelectValues>;
-  manualTransactionTypesOptions: Array<SelectValues>;
-  limitAdjustmentTypeOptions: Array<SelectValues>;
+  transactionTypesOptions: Array<SelectValue>;
+  manualTransactionTypesOptions: Array<SelectValue>;
+  limitAdjustmentTypeOptions: Array<SelectValue>;
   isTransactionTypesLoading: boolean;
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
 }

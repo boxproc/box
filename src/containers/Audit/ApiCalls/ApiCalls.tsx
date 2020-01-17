@@ -9,13 +9,13 @@ import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
 import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
   auditApiCalls: Array<ApiCallsItemPrepared>;
   filterAuditApiCalls: HandleFilterAuditApiCalls;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   resetApiCalls: ResetApiCalls;
 }
 

@@ -11,14 +11,14 @@ import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/comp
 
 import { HandleAddProductFee } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface FeesFormProps {
   addProductFee: HandleAddProductFee;
   isLoading: boolean;
   isAprsLoading: boolean;
-  feeApplicationConditionValue: SelectValues;
-  aprsOptions: Array<SelectValues>;
+  feeApplicationConditionValue: SelectValue;
+  aprsOptions: Array<SelectValue>;
   onCancel: () => void;
   isReadOnly: boolean;
 }

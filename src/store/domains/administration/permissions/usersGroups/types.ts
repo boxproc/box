@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { IdNamePair, SelectValues } from 'types';
+import { IdNamePair, SelectValue } from 'types';
 
 interface InfoPlain extends IdNamePair { }
 
@@ -14,7 +14,7 @@ export interface AdminUsersGroupItemResp extends InfoPlain {
 }
 
 export interface AdminUsersGroupInfoEditable extends InfoPlain {
-  institutionId: SelectValues;
+  institutionId: SelectValue;
 }
 
 export interface AdminUsersGroupDataResp {
@@ -51,7 +51,7 @@ export interface AdminGroupPermissionItemResp extends AdminGroupPermissionItemPl
 
 export interface AdminGroupPermissionItemEditable {
   userGroupId: number;
-  uiItem: SelectValues;
+  uiItem: SelectValue;
   permission: boolean;
 }
 
@@ -75,13 +75,13 @@ export interface AdminGroupPermissionUiItemsDataResp {
 export interface AdminUserGroupMembersDeleteResp {
   user_group_id: number;
   user_id: string | number;
-  username: SelectValues;
+  username: SelectValue;
 }
 
 export interface AdminUserGroupMembersDelete {
   userGroupId: number;
   userId:  string | number;
-  username: SelectValues;
+  username: SelectValue;
 }
 
 export interface AdminUsersGroupState {

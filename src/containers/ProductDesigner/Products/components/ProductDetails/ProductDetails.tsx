@@ -2,7 +2,7 @@ import React from 'react';
 
 import { productTypesCodes } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import DebitDetails from './DebitDetails';
 import LoanDetails from './LoanDetails';
 import PrepaidDetails from './PrepaidDetails';
@@ -12,7 +12,7 @@ import SavingsDetails from './SavingsDetails';
 interface ProductDetailsProps {
   productType: string | number;
   isReadOnly?: boolean;
-  interestDistributionEditorValue?: SelectValues;
+  interestDistributionEditorValue?: SelectValue;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({

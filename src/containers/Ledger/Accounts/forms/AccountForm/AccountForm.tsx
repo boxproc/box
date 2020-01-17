@@ -25,13 +25,13 @@ import {
   LedgerAccountItemDetailsPrepared,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AccountFormProps extends ExternalSpinnerProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   institutionProducts: Array<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
-  currentProduct: SelectValues;
+  currentProduct: SelectValue;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
   onCancel: () => void;

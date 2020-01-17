@@ -13,14 +13,14 @@ import {
 } from 'containers/Ledger/Customers/components';
 import { HandleAddRepaymentDirectDebit } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface RepaymentDirectDebitsFormProps {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
   addRepaymentDirectDebit: HandleAddRepaymentDirectDebit;
-  interfacesOptions: Array<SelectValues>;
+  interfacesOptions: Array<SelectValue>;
   isInterfacesLoading: boolean;
 }
 

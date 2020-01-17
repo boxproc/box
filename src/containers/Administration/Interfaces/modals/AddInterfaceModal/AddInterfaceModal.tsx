@@ -7,10 +7,10 @@ import { modalNamesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AddInterfaceModalProps extends WithModalProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   isFormDirty: boolean;
 }
 

@@ -9,14 +9,14 @@ import { dateFormat, maskFormat } from 'consts';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface TransactionsFilterProps {
-  institutionsOptions: Array<SelectValues>;
-  institutionProductsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
+  institutionProductsOptions: Array<SelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: SelectValues;
+  institutionValue: SelectValue;
   isLoadingInstitutionProducts: boolean;
 }
 

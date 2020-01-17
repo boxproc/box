@@ -5,7 +5,7 @@ import {
   AdminEndpointItemDetailsPrepared,
 } from './types';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export const preparedFilterToSend = (data: Partial<AdminEndpointFilter>) => {
   if (!data) {
@@ -42,7 +42,7 @@ export const preparedDataToSend = (data: Partial<AdminEndpointItemDetailsPrepare
 
 export const preparedDataToRender = (
   data: Partial<AdminEndpointItem>,
-  institution?: SelectValues
+  institution?: SelectValue
 ) => {
   if (!data) {
     return null;

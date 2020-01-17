@@ -13,13 +13,13 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadCurrencyCodesProps {
-  currencyCodes: Array<SelectValues>;
-  numCurrencyCodes: Array<SelectValues>;
+  currencyCodes: Array<SelectValue>;
+  numCurrencyCodes: Array<SelectValue>;
   isCurrencyCodesLoading: boolean;
   loadCurrencyCodes: HandleGetDictionaryCurrencies;
 }

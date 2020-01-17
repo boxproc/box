@@ -8,12 +8,12 @@ import { formNamesConst } from 'consts';
 
 import { HandleChangeAdminProfile } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface ChangeProfileFormProps {
-  adminAccessUsersOptions: Array<SelectValues>;
+  adminAccessUsersOptions: Array<SelectValue>;
   changeAdminProfile: HandleChangeAdminProfile;
   isLoadingUsers: boolean;
   isChangingProfile: boolean;

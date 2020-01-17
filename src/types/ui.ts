@@ -1,4 +1,4 @@
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface ContextMenuItemProps {
   name: string | number;
@@ -31,5 +31,5 @@ export interface LogData {
 export type ChangeFieldValue = (
   formName: string,
   fieldName: string,
-  value: string | number | SelectValues
+  value: string | number | SelectValue
 ) => void;

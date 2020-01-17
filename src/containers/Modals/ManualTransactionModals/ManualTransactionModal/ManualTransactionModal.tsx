@@ -21,13 +21,13 @@ import {
   UiItemPrepared
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactionTypesProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
   makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
   modalPayload: PayloadLedgerManualTransactionModal;
-  currenciesOptions: Array<SelectValues>;
+  currenciesOptions: Array<SelectValue>;
   isLimitAdjustment: boolean;
   uiItems: Array<UiItemPrepared>;
 }

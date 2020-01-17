@@ -8,15 +8,15 @@ import { Button, SelectField, withSpinner } from 'components';
 import { formNamesConst } from 'consts';
 
 import { HandleChangeLedgerCardStatus, HandleGetDictionaryCardStatuses } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface StatusFormProps {
   getDictionaryCardStatuses: HandleGetDictionaryCardStatuses;
   changeLedgerCardStatus: HandleChangeLedgerCardStatus;
-  cardStatusesOptions: Array<SelectValues>;
+  cardStatusesOptions: Array<SelectValue>;
   isStatusesLoading: boolean;
   currentCardId: number;
-  statusValue: SelectValues;
+  statusValue: SelectValue;
 }
 
 type StatusFormAllProps = StatusFormProps & InjectedFormProps<{}, StatusFormProps>;

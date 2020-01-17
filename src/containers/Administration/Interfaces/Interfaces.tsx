@@ -15,13 +15,13 @@ import {
   HandleGetLogData,
   ResetInterfaces,
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface AccountsProps {
   interfaceName: string;
   currentInterfaceId: number;
   adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   deleteInterface: HandleDeleteAdminInterface;
   filterAdminInterface: HandleFilterAdminInterface;
   getLogData: HandleGetLogData;

@@ -9,7 +9,7 @@ import { CheckboxField, SelectField } from 'components';
 
 import { productTypesOptions } from 'consts';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ProductWrapper = styled(Box)`
@@ -18,7 +18,7 @@ const ProductWrapper = styled(Box)`
 `;
 
 interface ProductsFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 const ProductsFilter: React.FC<ProductsFilterProps> = ({

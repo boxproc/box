@@ -12,8 +12,7 @@ const dictionaryEventDataElemsReducer =
   (state = dictionaryEventsInitialState, action: DictionaryEventDataElemsActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.FILTER_ADMIN_EVENT_DATA_ELEMS_FULFILLED:
-        return state
-          .set('eventDataElems', action.payload.event_data_elements);
+        return state.set('eventDataElems', action.payload.event_data_elements);
 
       case ActionTypeKeys.RESET_EVENT_DATA_ELEMS:
         return state = dictionaryEventsInitialState;

@@ -12,8 +12,7 @@ const dictionaryCountriesReducer =
   (state = dictionaryCountriesInitialState, action: DictionaryCountriesActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.GET_DICTIONARY_COUNTRIES_FULFILLED:
-        return state
-          .set('countries', action.payload.countries);
+        return state.set('countries', action.payload.countries);
 
       default: return state;
     }

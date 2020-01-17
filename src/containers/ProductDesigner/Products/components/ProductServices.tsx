@@ -7,11 +7,11 @@ import { Delimiter, SelectField } from 'components';
 
 import { HandleGetProductServices } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ProductServicesProps {
-  productEndpointsServiceOptions: Array<SelectValues>;
-  productInterfacesServiceOptions: Array<SelectValues>;
+  productEndpointsServiceOptions: Array<SelectValue>;
+  productInterfacesServiceOptions: Array<SelectValue>;
   getProductServices: HandleGetProductServices;
   currentInstitutionId: number;
   isLoadingInterfaces: boolean;

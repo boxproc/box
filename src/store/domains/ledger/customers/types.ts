@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 export interface LedgerCustomerId {
   id: number;
 }
@@ -60,15 +60,15 @@ export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepa
 }
 
 export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPlainPrepared {
-  institutionId: SelectValues;
-  status: SelectValues;
-  identificationType: SelectValues;
-  addressCountryCode: SelectValues;
-  nationalityCountryCode: SelectValues;
+  institutionId: SelectValue;
+  status: SelectValue;
+  identificationType: SelectValue;
+  addressCountryCode: SelectValue;
+  nationalityCountryCode: SelectValue;
 }
 
 export interface LedgerCustomersFilter extends LedgerCustomerId {
-  institutionId: SelectValues;
+  institutionId: SelectValue;
   firstName: string;
   lastName: string;
 }
@@ -133,8 +133,8 @@ export interface RepaymentDebitCardsItemPrepared extends RepaymentDebitCardsItem
 }
 
 export interface RepaymentDebitCardsItemFormValues extends RepaymentDebitCardsItemPlain {
-  status: SelectValues;
-  repaymentInterfaceId: SelectValues;
+  status: SelectValue;
+  repaymentInterfaceId: SelectValue;
 }
 
 export interface RepaymentDirectDebitsItem {
@@ -169,8 +169,8 @@ export interface RepaymentDirectDebitsItemPrepared extends RepaymentDirectDebits
 }
 
 export interface RepaymentDirectDebitsItemFormValues extends RepaymentDirectDebitsItemPlain {
-  status: SelectValues;
-  repaymentInterfaceId: SelectValues;
+  status: SelectValue;
+  repaymentInterfaceId: SelectValue;
 }
 
 export type LedgerId = CardId | AccountId | TransactionId | StatementId | CustomerId;

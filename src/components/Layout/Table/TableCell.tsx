@@ -6,7 +6,7 @@ import { schedulerStatusOptions, statusCodes } from 'consts';
 
 import { TableItemWrapper } from './TableItemWrapper';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 interface TableCellProps {
@@ -20,8 +20,8 @@ interface TableCellProps {
   isEditable?: boolean;
   isSelect?: boolean;
   Icon?: ReactChild;
-  selectOptions?: Array<SelectValues>;
-  defaultSelectValue?: SelectValues;
+  selectOptions?: Array<SelectValue>;
+  defaultSelectValue?: SelectValue;
   selectLabel?: string;
   toFixedNumber?: number;
   onKeyUp?: (e: React.KeyboardEvent) => void;

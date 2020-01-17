@@ -18,21 +18,21 @@ import {
   HandleGetDictionaryStatementCycleTypes,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface ProductGeneralInfoProps {
   isEditMode?: boolean;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   isReadOnly: boolean;
-  statementCycleTypesOptions: Array<SelectValues>;
+  statementCycleTypesOptions: Array<SelectValue>;
   getStatementCycleTypes: HandleGetDictionaryStatementCycleTypes;
   isStatementCycleTypesLoading: boolean;
-  currencyCodesOptions: Array<SelectValues>;
+  currencyCodesOptions: Array<SelectValue>;
   getCurrencyCodes: HandleGetDictionaryCurrencies;
   isCurrencyCodesLoading: boolean;
-  statementCycleTypeValue: SelectValues;
+  statementCycleTypeValue: SelectValue;
 }
 
 const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({

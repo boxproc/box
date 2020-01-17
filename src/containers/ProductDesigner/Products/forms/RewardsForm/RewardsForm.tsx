@@ -11,12 +11,12 @@ import { ProductRewards, RewardsTable } from 'containers/ProductDesigner/Product
 
 import { HandleAddProductReward } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface RewardsFormProps {
   addProductReward: HandleAddProductReward;
   isLoading: boolean;
-  rewardApplicationConditionValue: SelectValues;
+  rewardApplicationConditionValue: SelectValue;
   onCancel: () => void;
   isReadOnly: boolean;
 }

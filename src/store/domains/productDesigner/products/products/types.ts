@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, SelectValues } from 'types';
+import { IdNamePair, SelectValue } from 'types';
 
 interface ProductItemInfoPlain extends IdNamePair { }
 
@@ -65,20 +65,20 @@ export interface ProductItem extends ProductItemPlain {
 }
 
 export interface ProductItemGeneral extends ProductItemPlain {
-  institutionId: SelectValues;
-  status: SelectValues;
-  productType: SelectValues;
-  scheme: SelectValues;
-  currencyCode: SelectValues;
-  cardFormFactor: SelectValues;
+  institutionId: SelectValue;
+  status: SelectValue;
+  productType: SelectValue;
+  scheme: SelectValue;
+  currencyCode: SelectValue;
+  cardFormFactor: SelectValue;
   numberOfDaysCardExpires: number;
-  statementCycleTypeId: SelectValues;
+  statementCycleTypeId: SelectValue;
 }
 
 export interface ProductFilter {
   activeStatusFlag?: boolean;
-  institutionId?: SelectValues;
-  productType?: Array<SelectValues>;
+  institutionId?: SelectValue;
+  productType?: Array<SelectValue>;
 }
 
 export interface ProductFilterPrepared {
@@ -123,7 +123,7 @@ export interface LoanProductItem {
   productId: number;
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
-  interestDistributionType: SelectValues;
+  interestDistributionType: SelectValue;
   allowOverpayment: number | string;
 }
 
@@ -176,7 +176,7 @@ export interface SavingsProductResp {
 
 export interface SavingsProductItem {
   productId: number;
-  savingsType: SelectValues;
+  savingsType: SelectValue;
   apr: number;
   minimumDepositAllowed: number;
   maximumDepositAllowed: number;

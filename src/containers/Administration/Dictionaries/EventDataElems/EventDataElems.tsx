@@ -14,12 +14,12 @@ import {
   ResetEventDataElems,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface EventDataElemsProps {
   getDictionaryEvents: HandleGetDictionaryEvents;
   dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
-  dictionaryEventsOptions: Array<SelectValues>;
+  dictionaryEventsOptions: Array<SelectValue>;
   filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
   resetEventDataElems: ResetEventDataElems;
 }

@@ -15,11 +15,11 @@ import {
 } from 'containers/ProductDesigner/Products/forms';
 
 import { productTypesCodes } from 'consts';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import IllustrationRevolvingCreditForm from '../IllustrationRevolvingCreditForm';
 
 interface EditProductFormsProps {
-  currentProductType: SelectValues;
+  currentProductType: SelectValue;
   isProductOverride: boolean;
   isAnyFormDirty: boolean;
   onCancel: () => void;

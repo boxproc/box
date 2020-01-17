@@ -14,8 +14,7 @@ const dictionaryTransactionTypesReducer = (
 ) => {
   switch (action.type) {
     case ActionTypeKeys.GET_DICTIONARY_TRANSACTION_TYPES_FULFILLED:
-      return state
-        .set('transactionTypes', action.payload.transaction_types);
+      return state.set('transactionTypes', action.payload.transaction_types);
 
     default: return state;
   }

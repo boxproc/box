@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
+import dictionaryAccountStatusesReducer from './dictionaries/accountStatuses/reducer';
 import dictionaryConstsReducer from './dictionaries/consts/reducer';
 import dictionaryCountriesReducer from './dictionaries/countries/reducer';
 import dictionaryCurrenciesReducer from './dictionaries/currencies/reducer';
@@ -23,6 +24,7 @@ const administrationReducer = combineReducers({
   events: dictionaryEventsReducer,
   eventDataElements: dictionaryEventDataElemsReducer,
   transactionTypes: dictionaryTransactionTypesReducer,
+  accountStatuses: dictionaryAccountStatusesReducer,
   users: adminUserReducer,
   userGroups: adminUsersGroupReducer,
   endpoints: adminEndpointsReducer,

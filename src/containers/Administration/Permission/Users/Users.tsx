@@ -15,11 +15,11 @@ import {
   ResetUsers
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface UsersProps {
   adminUserItems: Array<AdminUserItemPrepared>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   filterUsers: HandleFilterUsers;
   filterUsersById: HandleFilterAuditUserById;
   currentUserId: number;

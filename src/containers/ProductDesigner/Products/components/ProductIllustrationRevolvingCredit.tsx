@@ -15,12 +15,12 @@ import {
 
 import { dateFormat, formNamesConst, iconNamesConst, maskFormat } from 'consts';
 import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IllustrationRevolvingCreditProductFormProps {
   isTransactionTypesLoading: boolean;
-  transactionTypesOptions: Array<SelectValues>;
+  transactionTypesOptions: Array<SelectValue>;
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
   isReadOnly: boolean;
 }

@@ -15,13 +15,13 @@ import {
   HandleGetLogData,
   ResetEndpoints,
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface EndpointsProps {
   adminCurrentEndpointName: string;
   currentEndPointId: number;
   adminEndpointItems: Array<AdminEndpointItemPrepared>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   filterAdminEndpoint: HandleFilterAdminEndpoint;
   getLogData: HandleGetLogData;

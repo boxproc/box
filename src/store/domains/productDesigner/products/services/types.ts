@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, SelectValues } from 'types';
+import { IdNamePair, SelectValue } from 'types';
 
 export interface InstitutionProductServiceInterfaces {
   interfaces: Array<IdNamePair>;
@@ -21,11 +21,11 @@ export interface ServicesItems {
 
 export interface ServicesItemsPrepared {
   id: number;
-  endpoints: SelectValues;
-  interfaces: SelectValues;
-  secureProviderInterfaces: SelectValues;
-  directDebitRepaymentInterface: SelectValues;
-  cardRepaymentInterface: SelectValues;
+  endpoints: SelectValue;
+  interfaces: SelectValue;
+  secureProviderInterfaces: SelectValue;
+  directDebitRepaymentInterface: SelectValue;
+  cardRepaymentInterface: SelectValue;
 }
 
 export interface ProductServicesState {

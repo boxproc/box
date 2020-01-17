@@ -15,10 +15,10 @@ import {
   HandleGetDictionaryInterfaceTypes,
   HandleUpdateAdminInterface
 } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {
-  interfaceTypesOptions: Array<SelectValues>;
+  interfaceTypesOptions: Array<SelectValue>;
   updateAdminInterface: HandleUpdateAdminInterface;
   addAdminInterface: HandleAddAdminInterface;
   deleteInterface: HandleDeleteAdminInterface;

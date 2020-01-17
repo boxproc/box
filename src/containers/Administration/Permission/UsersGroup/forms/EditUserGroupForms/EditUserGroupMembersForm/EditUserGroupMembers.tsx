@@ -9,7 +9,7 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
@@ -17,8 +17,8 @@ interface EditUserGroupMembersProps {
   getActiveUsers: HandleGetAdminActiveUsers;
   addAdminActiveUsers?: HandleAddAdminActiveUsers;
   currentGroupId: number;
-  selectedUser: SelectValues;
-  activeUsersItemsOptions: Array<SelectValues>;
+  selectedUser: SelectValue;
+  activeUsersItemsOptions: Array<SelectValue>;
 }
 
 type EditUserGroupMembersPropsAllProps = EditUserGroupMembersProps &

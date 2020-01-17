@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AdminUserPlainInfo {
   id: number;
@@ -34,14 +34,14 @@ export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
 }
 
 export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
-  status: SelectValues;
-  institution: SelectValues;
+  status: SelectValue;
+  institution: SelectValue;
   password: string;
 }
 
 export interface UsersFilter {
   statusActiveFlag: boolean;
-  institutionId: SelectValues;
+  institutionId: SelectValue;
 }
 
 export interface UsersFilterPrepared {

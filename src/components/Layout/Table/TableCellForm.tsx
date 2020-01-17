@@ -3,14 +3,14 @@ import { Field, reduxForm } from 'redux-form';
 
 import { InputField, NumberFormatField, SelectField } from 'components';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface TableCellFormProps {
   value: string | number;
   isNumber?: boolean;
   isDecimalNumber?: boolean;
   isSelect?: boolean;
-  selectOptions?: Array<SelectValues>;
+  selectOptions?: Array<SelectValue>;
 }
 
 // type TableCellFormAllProps = TableCellFormProps & InjectedFormProps<{}, TableCellFormProps>;

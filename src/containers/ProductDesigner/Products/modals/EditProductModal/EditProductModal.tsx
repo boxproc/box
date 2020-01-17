@@ -7,12 +7,12 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { renderProductIcon } from 'utils/renderProductIcon';
 
 interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
-  currentProductType: SelectValues;
+  currentProductType: SelectValue;
   isProductOverride: boolean;
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;

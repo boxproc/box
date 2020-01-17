@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import { SelectField } from 'components';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const InstitutionsWrapper = styled(Box)`
@@ -17,7 +17,7 @@ const InstitutionsWrapper = styled(Box)`
 `;
 
 interface UiSessionsFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({

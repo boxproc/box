@@ -9,12 +9,12 @@ import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/form
 
 import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AddSchedulerModalProps extends WithModalProps {
   addAdminSchedulerJob: HandleAddAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   isFormDirty: boolean;
 }
 

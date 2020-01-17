@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 export interface AuditUiSessionsItemResp {
   user_id: number;
@@ -32,7 +32,7 @@ export interface AuditUiSessionsDataResp {
 }
 
 export interface AuditUiSessionsFilter {
-  institutionId: Array<SelectValues>;
+  institutionId: Array<SelectValue>;
 }
 
 export interface AuditUiSessionsFilterPrepared {

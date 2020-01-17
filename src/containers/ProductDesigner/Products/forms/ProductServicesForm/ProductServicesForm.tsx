@@ -17,15 +17,15 @@ import {
 } from 'store/domains';
 
 import { Services } from 'containers/ProductDesigner/Products/components';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ServicesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentGroupId: number;
   currentInstitutionId: number;
   updateCardService: HandleUpdateCardService;
-  productEndpointsServiceOptions: Array<SelectValues>;
-  productInterfacesServiceOptions: Array<SelectValues>;
+  productEndpointsServiceOptions: Array<SelectValue>;
+  productInterfacesServiceOptions: Array<SelectValue>;
   getProductServices: HandleGetProductServices;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;

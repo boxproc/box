@@ -20,13 +20,13 @@ import {
   ResetTransactions,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 export interface TransactionsProps extends WithModalProps {
   currentId: number;
   ledgerTransactions: Array<LedgerTransactionItemPrepared>;
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   filterLedgerCustomersById: HandleFilterLedgerCustomersById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;

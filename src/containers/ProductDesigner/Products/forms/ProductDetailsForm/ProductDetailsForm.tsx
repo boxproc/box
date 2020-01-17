@@ -13,15 +13,15 @@ import {
   HandleUpdateProductDetails,
 } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface ProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  productType: SelectValues;
+  productType: SelectValue;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
   isReadOnly: boolean;
-  interestDistributionEditorValue: SelectValues;
+  interestDistributionEditorValue: SelectValue;
 }
 
 type ProductDetailsFormAllProps = ProductDetailsFormProps &

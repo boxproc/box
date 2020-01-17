@@ -7,15 +7,15 @@ import { Delimiter, InputField, SelectField } from 'components';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface AccountsFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: SelectValues;
+  institutionValue: SelectValue;
   accountAliasValue: string;
-  institutionProductsOptions: Array<SelectValues>;
+  institutionProductsOptions: Array<SelectValue>;
   isLoadingInstitutionProducts: boolean;
 }
 

@@ -6,7 +6,7 @@ import {
   LedgerAccountsFilter,
 } from './types';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
@@ -134,7 +134,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
 
 export const prepareDataToRender = (
   data: Partial<LedgerAccountItem>,
-  institution?: SelectValues
+  institution?: SelectValue
 ) => {
   if (!data) {
     return null;

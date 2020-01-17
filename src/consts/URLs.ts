@@ -45,6 +45,7 @@ export enum dictionariesURLs {
   GET_ENDPOINT_TYPES = '/ui/administration/endpoints/get_endpoint_types',
   GET_INTERFACE_TYPES = '/ui/administration/interfaces/get_interface_types',
   GET_STATEMENT_CYCLE_TYPES = '/ui/ledger/statements/get_statement_cycle_types',
+  GET_ACCOUNT_STATUSES = '/ui/administration/dictionaries/account_statuses/get',
 }
 
 export enum adminUserURLs {

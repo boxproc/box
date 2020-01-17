@@ -8,10 +8,10 @@ import { modalNamesConst } from 'consts';
 import { accountInitialFormValues } from 'containers/Ledger/Accounts/consts';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface AddAccountModalProps extends WithModalProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
   isFormDirty: boolean;
 }
 

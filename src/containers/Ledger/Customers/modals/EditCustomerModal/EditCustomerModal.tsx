@@ -11,14 +11,14 @@ import {
   RepaymentDirectDebitsForm,
 } from 'containers/Ledger/Customers/forms';
 import { HandleGetInterfacesService } from 'store/domains';
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 interface EditCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
   currentCustomerName: string;
   currentCustomerInstitutionId: number;
   getInterfaces: HandleGetInterfacesService;
-  interfacesOptions: Array<SelectValues>;
+  interfacesOptions: Array<SelectValue>;
   isInterfacesLoading: boolean;
 }
 

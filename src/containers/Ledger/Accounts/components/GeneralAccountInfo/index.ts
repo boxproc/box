@@ -8,7 +8,9 @@ import { formNamesConst } from 'consts';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
+  handleGetDictionaryAccountStatuses,
   handleGetInstitutionProducts,
+  selectDictionaryAccountStatusesOptions,
   selectInstitutionProductsOptions,
   selectLedgerCurrentAccountHasProductOverride,
 } from 'store/domains';
@@ -19,12 +21,14 @@ const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
+  statusesOptions: selectDictionaryAccountStatusesOptions(state),
   currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstitutionProducts: handleGetInstitutionProducts,
+    getAccountStatuses: handleGetDictionaryAccountStatuses,
   },
   dispatch
 );

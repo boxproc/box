@@ -5,12 +5,12 @@ import { Box } from '@rebass/grid';
 
 import { CheckboxField, SelectField } from 'components';
 
-import { SelectValues } from 'types';
+import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface UsersFilterProps {
-  institutionsOptions: Array<SelectValues>;
+  institutionsOptions: Array<SelectValue>;
 }
 
 const UsersFilter: React.FC<UsersFilterProps> = ({
