@@ -149,7 +149,7 @@ const Modal: React.FC<ModalProps> = ({
             flexWrap="wrap"
           >
             {TitleIcon && (
-              <Box mb="5px">{TitleIcon}</Box>
+              <Box mb="10px">{TitleIcon}</Box>
             )}
             {title && (
               <ModalTitle>{title}</ModalTitle>

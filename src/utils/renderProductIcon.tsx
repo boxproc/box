@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
+import styled from 'theme';
+
 import { productTypesCodes } from 'consts';
 
 import card from 'resources/icons/card.svg';
@@ -9,31 +11,42 @@ import creditCard from 'resources/icons/creditCard.svg';
 import money from 'resources/icons/money.svg';
 import percent from 'resources/icons/percent.svg';
 
+const Wrapper = styled(Box)`
+  min-width: 26px;
+  width: 26px;
+  margin-right: 7px;
+  text-align: center;
+
+  img {
+    display: inline-block;
+  }
+`;
+
 export const renderProductIcon = (iconName: string | number) => {
   switch (iconName) {
     case productTypesCodes.REVOLVING_CREDIT:
       return (
-        <Box width="26px" mr="7px">
-          <img src={creditCard} width={26} alt="" />
-        </Box>
+        <Wrapper>
+          <img src={creditCard} width={20} alt="" />
+        </Wrapper>
       );
     case productTypesCodes.PREPAID:
       return (
-        <Box width="26px" mt="-3px" mr="7px">
-          <img src={money} width={29} alt="" />
-        </Box>
+        <Wrapper mt="-3px">
+          <img src={money} width={18} alt="" />
+        </Wrapper>
       );
     case productTypesCodes.DEBIT:
       return (
-        <Box width="26px" mr="7px">
+        <Wrapper>
           <img src={card} width={26} alt="" />
-        </Box>
+        </Wrapper>
       );
     case productTypesCodes.LOAN:
       return (
-        <Box width="26px" mr="7px">
-          <img src={percent} width={24} alt="" />
-        </Box>
+        <Wrapper>
+          <img src={percent} width={20} alt="" />
+        </Wrapper>
       );
     default:
       return null;
