@@ -87,15 +87,12 @@ export const downloadStatementPDF = (data: {
     });
   }
 
-  const previousFinalY = {};
-
   tables.forEach((table, index) => {
 
     const isFirstTable = index === 0;
 
     const { id, title, items } = table;
     const isTransactions = id === 'transactions';
-    const isRewards = id === 'rewards';
 
     if (items && items.length) {
       const tableHead = items.length
@@ -103,13 +100,9 @@ export const downloadStatementPDF = (data: {
 
       const tableBody = items.length && items.map(item => Object.values(item));
 
-      previousFinalY[id] = doc.previousAutoTable.finalY;
-
       const startY = () => {
         if (isFirstTable) {
           return 320;
-        } else if (isRewards) {
-          return previousFinalY['fees'] + 35;
         } else {
           return doc.previousAutoTable.finalY + 35;
         }
@@ -119,7 +112,7 @@ export const downloadStatementPDF = (data: {
         head: [tableHead],
         body: tableBody,
         startY: startY(),
-        margin: { right: 10, left: isRewards ? 250 : 20 },
+        margin: { right: 10, left: 20 },
         styles: {
           minCellWidth: 45,
           fontSize: 7,
@@ -163,7 +156,7 @@ export const downloadStatementPDF = (data: {
       doc.setFontStyle('bold');
       doc.setTextColor(theme.colors.darkGray);
       doc.text(
-        isRewards ? 250 : 30,
+        30,
         isFirstTable ? 310 : doc.previousAutoTable.pageStartY - 10,
         title
       );

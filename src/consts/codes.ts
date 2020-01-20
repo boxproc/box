@@ -165,9 +165,10 @@ export const schemeTypesOptions = [
 ];
 
 export const loanTypesOptions = [
-  { value: 'E', label: 'Equal distribution' },
-  { value: 'A', label: 'Actual distribution' },
-  { value: 'F', label: 'All interest in the final installment' },
+  { value: 'R', label: 'Reducing-balance method' },
+  { value: 'F', label: 'Flat-rate method' },
+  { value: 'D', label: 'Daily accrual method' },
+  { value: 'A', label: 'Average daily balance method' },
 ];
 
 export const savingsTypesOptions = [

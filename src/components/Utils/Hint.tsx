@@ -75,19 +75,15 @@ const Hint: React.FC<HintProps> = ({
 }) => {
   const [isHint, setIsHint] = React.useState(false);
 
-  const toggleIsHint = React.useCallback(
-    () => setIsHint(!isHint),
-    [isHint]);
-
   return (
     <HintWrapper
       position={position}
       icon={icon}
-      onMouseLeave={toggleIsHint}
+      onMouseLeave={() => setIsHint(false)}
     >
       <div
         className="toggle-hint"
-        onMouseEnter={toggleIsHint}
+        onMouseEnter={() => setIsHint(true)}
       >
         {icon && (
           <InfoButton size="16" />
