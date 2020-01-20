@@ -7,7 +7,7 @@ export interface RetrieveTransactionRequest {
 }
 
 export interface SettleTransactionItem {
-  id: number;
+  transaction_id: number;
   amount_settled: number;
   settled_datetime: string;
 }
@@ -17,7 +17,7 @@ export interface SettleTransactionData {
 }
 
 export interface SettleTransactionFormValues {
-  id: number;
+  transactionId: number;
   amountSettled: number;
   settledDatetime: string;
 }

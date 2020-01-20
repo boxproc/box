@@ -19,31 +19,24 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
     return null;
   }
 
-  const {
-    id,
-    amountSettled,
-    settledDatetime,
-  } = data;
+  const { transactionId, amountSettled, settledDatetime } = data;
 
   return {
-    id: stringsUtil.toNumber(id),
+    transaction_id: stringsUtil.toNumber(transactionId),
     amount_settled: stringsUtil.toNumber(amountSettled),
     settled_datetime: settledDatetime,
   };
 };
 
 export const prepareDataToRender = (data: SettleTransactionItem): SettleTransactionFormValues => {
-  if (!data) {
+  if (!data || !data[0]) {
     return null;
   }
 
-  const {
-    id,
-    amount_settled,
-  } = data;
+  const { transaction_id, amount_settled } = data[0];
 
   return {
-    id,
+    transactionId: transaction_id,
     amountSettled: amount_settled,
     settledDatetime: dateUtil.todayDateTime(),
   };
