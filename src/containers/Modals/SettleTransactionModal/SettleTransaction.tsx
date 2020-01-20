@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, SmallText } from 'components';
+import { Modal } from 'components';
 import { SettleTransactionForm, TransactionRetrievingForm } from './forms';
 
 import { modalNamesConst } from 'consts';
@@ -60,7 +60,6 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
       minContainerHeight={155}
       withCloseConfirmation={isDirtySettleTransactionForm}
     >
-      <SmallText>(Temporarily works on mocks)</SmallText>
       <TransactionRetrievingForm
         isRetrieving={isRetrieving}
         isRetrieved={isRetrievedTransaction}

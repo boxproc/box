@@ -3,7 +3,7 @@ export interface RetrieveTransactionFormValues {
 }
 
 export interface RetrieveTransactionRequest {
-  id: number;
+  transaction_id: number;
 }
 
 export interface SettleTransactionItem {

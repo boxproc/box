@@ -10,7 +10,7 @@ export const prepareRetrieveTransactionRequest = (data: Partial<RetrieveTransact
   const { id } = data;
 
   return {
-    id: stringsUtil.toNumber(id),
+    transaction_id: stringsUtil.toNumber(id),
   };
 };
 
