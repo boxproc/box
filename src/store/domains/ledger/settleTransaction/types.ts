@@ -1,3 +1,5 @@
+import { ImmutableArray } from 'seamless-immutable';
+
 export interface RetrieveTransactionFormValues {
   id: string;
 }
@@ -13,7 +15,7 @@ export interface SettleTransactionItem {
 }
 
 export interface SettleTransactionData {
-  transaction: SettleTransactionItem;
+  transaction: Array<SettleTransactionItem>;
 }
 
 export interface SettleTransactionFormValues {
@@ -23,5 +25,5 @@ export interface SettleTransactionFormValues {
 }
 
 export interface LedgerSettleTransactionState {
-  transaction: SettleTransactionItem;
+  transaction: ImmutableArray<SettleTransactionItem>;
 }

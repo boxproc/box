@@ -5,7 +5,7 @@ import { LedgerSettleTransactionState } from './types';
 
 export const ledgerSettleTransactionInitialState:
   ImmutableObject<LedgerSettleTransactionState> = Immutable({
-    transaction: null,
+    transaction: Immutable([]),
   });
 
 const ledgerSettleTransactionReducer =

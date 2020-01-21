@@ -28,8 +28,9 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
   };
 };
 
-export const prepareDataToRender = (data: SettleTransactionItem): SettleTransactionFormValues => {
-  if (!data || !data[0]) {
+export const prepareDataToRender = (data: Array<SettleTransactionItem>):
+  SettleTransactionFormValues => {
+  if (!data || !data.length) {
     return null;
   }
 
