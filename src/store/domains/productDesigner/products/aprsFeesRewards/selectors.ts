@@ -23,7 +23,7 @@ export const selectProductAprDefaultRepaymentOrder = createSelector(
   selectDefaultProductAprs,
   aprs => {
     if (!aprs || !aprs.length) {
-      return null;
+      return 1;
     }
 
     const repaymentOrders: Array<number> = [];
