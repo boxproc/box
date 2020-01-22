@@ -30,6 +30,7 @@ interface RewardsTableProps {
   getProductRewards: HandleGetProductRewards;
   deleteProductReward: HandleDeleteProductReward;
   updateProductReward: HandleUpdateProductReward;
+  isLoading: boolean;
 }
 
 const RewardsTable: React.FC<RewardsTableProps> = ({
@@ -37,6 +38,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
   getProductRewards,
   deleteProductReward,
   updateProductReward,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -45,96 +47,100 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
     [getProductRewards]
   );
 
-  const columns = [
-    {
-      maxWidth: 100,
-      sortable: true,
-      accessor: 'productRewardId',
-      Header: <TableHeader title="Product Reward ID" />,
-      Cell: (props: TCell<'productRewardId'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 350,
-      sortable: true,
-      accessor: 'description',
-      Header: <TableHeader title="Description" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductReward}
-          isSmaller={true}
-          cellInfo={cellInfo}
-        />
-      ),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'rate',
-      Header: <TableHeader title="Rate" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductReward}
-          isSmaller={true}
-          isDecimalNumber={true}
-          cellInfo={cellInfo}
-          isEditable={cellInfo.original.rewardApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT}
-        />
-      ),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'amount',
-      Header: <TableHeader title="Amount" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductReward}
-          isSmaller={true}
-          isDecimalNumber={true}
-          cellInfo={cellInfo}
-          isEditable={cellInfo.original.rewardApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_RATE}
-        />
-      ),
-    },
-    {
-      maxWidth: 200,
-      sortable: true,
-      accessor: 'rewardApplicationCondition',
-      Header: <TableHeader title="Reward Application Condition" />,
-      Cell: (props: TCell<'rewardApplicationCondition'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 80,
-      accessor: 'deleteButton',
-      Cell: (cellInfo: CellInfo) => (
-        <Button
-          iconName={iconNamesConst.DELETE}
-          text="Delete"
-          size="10"
-          iconSize="15"
-          withConfirmation={true}
-          confirmationText={`Confirm want you delete reward?`}
-          onClick={() => deleteProductReward({
-            productId: cellInfo.original.productId,
-            productRewardId: cellInfo.original.productRewardId,
-          })}
-        />
-      ),
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        maxWidth: 100,
+        sortable: true,
+        accessor: 'productRewardId',
+        Header: <TableHeader title="Product Reward ID" />,
+        Cell: (props: TCell<'productRewardId'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 350,
+        sortable: true,
+        accessor: 'description',
+        Header: <TableHeader title="Description" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductReward}
+            isSmaller={true}
+            cellInfo={cellInfo}
+            isEditable={!isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        sortable: true,
+        accessor: 'rate',
+        Header: <TableHeader title="Rate" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductReward}
+            isSmaller={true}
+            isDecimalNumber={true}
+            cellInfo={cellInfo}
+            isEditable={(cellInfo.original.rewardApplicationConditionValue
+              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && !isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        sortable: true,
+        accessor: 'amount',
+        Header: <TableHeader title="Amount" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductReward}
+            isSmaller={true}
+            isDecimalNumber={true}
+            cellInfo={cellInfo}
+            isEditable={(cellInfo.original.rewardApplicationConditionValue
+              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && !isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 200,
+        sortable: true,
+        accessor: 'rewardApplicationCondition',
+        Header: <TableHeader title="Reward Application Condition" />,
+        Cell: (props: TCell<'rewardApplicationCondition'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        accessor: 'deleteButton',
+        Cell: (cellInfo: CellInfo) => (
+          <Button
+            iconName={iconNamesConst.DELETE}
+            text="Delete"
+            size="10"
+            iconSize="15"
+            withConfirmation={true}
+            confirmationText={`Confirm want you delete reward?`}
+            onClick={() => deleteProductReward({
+              productId: cellInfo.original.productId,
+              productRewardId: cellInfo.original.productRewardId,
+            })}
+          />
+        ),
+      },
+    ],
+    [isLoading, deleteProductReward, updateProductReward]
+  );
 
   return (
     <Box pb="10px">

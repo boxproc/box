@@ -186,21 +186,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             <React.Fragment>
               <Box width="150px" p="10px">
                 <Field
-                  id="nrLoanCycles"
-                  name="nrLoanCycles"
-                  component={InputField}
-                  label="Loan Cycles"
-                  placeholder="Enter Loan Cycles"
-                  readOnly={isEditMode || isReadOnly}
-                  isNumber={true}
-                  validate={[
-                    formErrorUtil.required,
-                    formErrorUtil.isInteger,
-                  ]}
-                />
-              </Box>
-              <Box width="150px" p="10px">
-                <Field
                   id="loanStartDate"
                   name="loanStartDate"
                   component={MaskField}

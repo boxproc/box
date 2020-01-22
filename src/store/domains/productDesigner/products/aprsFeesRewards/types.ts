@@ -9,6 +9,7 @@ export interface ProductAprItem {
   calculation_method: string | number;
   rate: number;
   grace_number_of_days: number;
+  repayment_order: number | string;
 }
 
 export interface ProductAprItems {
@@ -37,10 +38,12 @@ export interface ProductAprPlainInfo extends ProductAprIds {
 
 export interface ProductApr extends ProductAprPlainInfo {
   calculationMethod: string;
+  repaymentOrder: SelectValue;
 }
 
 export interface ProductAprFormValues extends ProductAprPlainInfo {
   calculationMethod: SelectValue;
+  repaymentOrder: number;
 }
 
 export interface ProductAprs {

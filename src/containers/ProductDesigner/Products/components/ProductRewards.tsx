@@ -30,7 +30,11 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
   );
 
   return (
-    <Flex alignItems="flex-end" flexWrap="wrap">
+    <Flex
+      alignItems="flex-end"
+      flexWrap="wrap"
+      mx="-10px"
+    >
       <Box width={[2 / 7]} p="10px">
         <Field
           id="description"

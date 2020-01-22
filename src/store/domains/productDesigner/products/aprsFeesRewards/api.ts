@@ -2,6 +2,7 @@ import { productsURLs } from 'consts';
 
 import { apiClient } from 'services';
 
+// import { productAprs } from './mock';
 import {
   ProductAprIds,
   ProductAprItem,
@@ -11,7 +12,10 @@ import {
   ProductRewardsIds,
 } from './types';
 
+// import { throttleUtil } from 'utils';
+
 export const getProductAprs = (id: number) =>
+  // throttleUtil.getDataAfter(productAprs, 500);
   apiClient.post(productsURLs.GET_APRS, {
     data: { product_id: id },
   });

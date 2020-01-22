@@ -129,7 +129,6 @@ export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlain
   status: SelectValue;
   institutionId: SelectValue;
   product: SelectValue;
-  nrLoanCycles?: boolean;
   loanStartDate?: string;
 }
 

@@ -15,12 +15,11 @@ import { stringsUtil } from 'utils';
 
 export const prepareProductLoanIllustrateDataToSend =
   (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
+    const { productId, amount, defNumOfIntrstFreeInstlmts, startDate } = data;
 
     return {
       product_id: productId,
       amount,
-      nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
       nr_interest_free: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
       start_date: startDate,
     };

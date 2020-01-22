@@ -33,6 +33,7 @@ interface FeesTableProps {
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
+  isLoading: boolean;
 }
 
 const FeesTable: React.FC<FeesTableProps> = ({
@@ -42,6 +43,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
   getProductFeeApr,
   deleteProductFee,
   updateProductFee,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -53,111 +55,116 @@ const FeesTable: React.FC<FeesTableProps> = ({
     [getProductFees, getProductFeeApr]
   );
 
-  const columns = [
-    {
-      maxWidth: 100,
-      sortable: true,
-      accessor: 'productFeeId',
-      Header: <TableHeader title="Product Fee ID" />,
-      Cell: (props: TCell<'productFeeId'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 350,
-      sortable: true,
-      accessor: 'description',
-      Header: <TableHeader title="Description" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductFee}
-          isSmaller={true}
-          cellInfo={cellInfo}
-        />
-      ),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'rate',
-      Header: <TableHeader title="Rate" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductFee}
-          isSmaller={true}
-          isDecimalNumber={true}
-          cellInfo={cellInfo}
-          isEditable={cellInfo.original.feeApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT}
-        />
-      ),
-    },
-    {
-      maxWidth: 120,
-      sortable: true,
-      accessor: 'amount',
-      Header: <TableHeader title="Amount" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductFee}
-          isSmaller={true}
-          isDecimalNumber={true}
-          isEditable={cellInfo.original.feeApplicationConditionValue
-            !== feeRewardsTypesCodes.APPLY_ONLY_RATE}
-          cellInfo={cellInfo}
-        />
-      ),
-    },
-    {
-      maxWidth: 200,
-      sortable: true,
-      accessor: 'feeApplicationCondition',
-      Header: <TableHeader title="Fee Application Condition" />,
-      Cell: (props: TCell<'feeApplicationCondition'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 200,
-      sortable: true,
-      accessor: 'apr',
-      Header: <TableHeader title="APR" />,
-      Cell: (cellInfo: CellInfo) => (
-        <EditableTableCell
-          updateAction={updateProductFee}
-          isSmaller={true}
-          cellInfo={cellInfo}
-          isSelect={true}
-          selectOptions={aprsOptions}
-        />
-      ),
-    },
-    {
-      maxWidth: 80,
-      accessor: 'deleteButton',
-      Cell: (cellInfo: CellInfo) => (
-        <Button
-          iconName={iconNamesConst.DELETE}
-          text="Delete"
-          size="10"
-          iconSize="15"
-          withConfirmation={true}
-          confirmationText={`Confirm want you delete fee?`}
-          onClick={() => deleteProductFee({
-            productId: cellInfo.original.productId,
-            productFeeId: cellInfo.original.productFeeId,
-          })}
-        />
-      ),
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        maxWidth: 100,
+        sortable: true,
+        accessor: 'productFeeId',
+        Header: <TableHeader title="Product Fee ID" />,
+        Cell: (props: TCell<'productFeeId'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 350,
+        sortable: true,
+        accessor: 'description',
+        Header: <TableHeader title="Description" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductFee}
+            isSmaller={true}
+            cellInfo={cellInfo}
+            isEditable={!isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        sortable: true,
+        accessor: 'rate',
+        Header: <TableHeader title="Rate" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductFee}
+            isSmaller={true}
+            isDecimalNumber={true}
+            cellInfo={cellInfo}
+            isEditable={(cellInfo.original.feeApplicationConditionValue
+              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && !isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        sortable: true,
+        accessor: 'amount',
+        Header: <TableHeader title="Amount" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductFee}
+            isSmaller={true}
+            isDecimalNumber={true}
+            isEditable={(cellInfo.original.feeApplicationConditionValue
+              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && !isLoading}
+            cellInfo={cellInfo}
+          />
+        ),
+      },
+      {
+        maxWidth: 200,
+        sortable: true,
+        accessor: 'feeApplicationCondition',
+        Header: <TableHeader title="Fee Application Condition" />,
+        Cell: (props: TCell<'feeApplicationCondition'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 200,
+        sortable: true,
+        accessor: 'apr',
+        Header: <TableHeader title="APR" />,
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateProductFee}
+            isSmaller={true}
+            cellInfo={cellInfo}
+            isSelect={true}
+            selectOptions={aprsOptions}
+            isEditable={!isLoading}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        accessor: 'deleteButton',
+        Cell: (cellInfo: CellInfo) => (
+          <Button
+            iconName={iconNamesConst.DELETE}
+            text="Delete"
+            size="10"
+            iconSize="15"
+            withConfirmation={true}
+            confirmationText={`Confirm want you delete fee?`}
+            onClick={() => deleteProductFee({
+              productId: cellInfo.original.productId,
+              productFeeId: cellInfo.original.productFeeId,
+            })}
+          />
+        ),
+      },
+    ],
+    [isLoading, aprsOptions, deleteProductFee, updateProductFee]
+  );
 
   return (
     <Box pb="10px">
