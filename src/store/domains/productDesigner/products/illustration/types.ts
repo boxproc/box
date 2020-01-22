@@ -149,6 +149,7 @@ export interface LoanProductIllustratePrepared {
   product_id: number;
   amount: number;
   start_date: string;
+  nr_loan_cycles: number;
   nr_interest_free: number;
 }
 
