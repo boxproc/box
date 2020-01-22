@@ -10,7 +10,7 @@ import { savingsTypesOptions } from 'consts';
 import { formErrorUtil } from 'utils';
 
 interface SavingsDetailsProps {
-  isReadOnly?: boolean;
+  isReadOnly: boolean;
 }
 
 const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {

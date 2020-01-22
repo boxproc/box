@@ -8,7 +8,7 @@ import { CheckboxField, InputField, NumberFormatField } from 'components';
 import { formErrorUtil } from 'utils';
 
 interface RevolvingCreditDetailsProps {
-  isReadOnly?: boolean;
+  isReadOnly: boolean;
 }
 
 const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadOnly }) => {

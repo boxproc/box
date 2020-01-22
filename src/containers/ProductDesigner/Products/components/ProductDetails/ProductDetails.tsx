@@ -12,13 +12,15 @@ import SavingsDetails from './SavingsDetails';
 interface ProductDetailsProps {
   productType: string | number;
   isReadOnly?: boolean;
-  interestDistributionEditorValue?: SelectValue;
+  isUpdating?: boolean;
+  interestDistributionValue?: SelectValue;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({
   productType,
   isReadOnly,
-  interestDistributionEditorValue,
+  isUpdating,
+  interestDistributionValue,
 }) => {
   const isLoan = React.useMemo(
     () => productType === productTypesCodes.LOAN,
@@ -45,20 +47,22 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
     [productType]
   );
 
+  const readOnly = React.useMemo(
+    () => isReadOnly || isUpdating,
+    [isUpdating, isReadOnly]
+  );
+
   return (
     <React.Fragment>
       {isLoan && (
         <LoanDetails
-          isReadOnly={isReadOnly}
-          interestDistributionEditorValue={interestDistributionEditorValue}
+          isReadOnly={readOnly}
+          interestDistributionValue={interestDistributionValue}
         />)}
-      {isPrepaid && (<PrepaidDetails isReadOnly={isReadOnly} />)}
-      {isDebit && (
-      <DebitDetails
-        isReadOnly={isReadOnly}
-      />)}
-      {isSavings && (<SavingsDetails isReadOnly={isReadOnly} />)}
-      {isRevolvingCredit && (<RevolvingCreditDetails isReadOnly={isReadOnly} />)}
+      {isPrepaid && (<PrepaidDetails isReadOnly={readOnly} />)}
+      {isDebit && (<DebitDetails isReadOnly={readOnly} />)}
+      {isSavings && (<SavingsDetails isReadOnly={readOnly} />)}
+      {isRevolvingCredit && (<RevolvingCreditDetails isReadOnly={readOnly} />)}
     </React.Fragment>
   );
 };

@@ -36,53 +36,56 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     [getAdminGroupPermission, adminUserGroupMemberId]
   );
 
-  const columns = [
-    {
-      sortable: true,
-      Header: <TableHeader title="UI Items" />,
-      accessor: 'uiItem',
-      filterable: true,
-      Cell: (props: TCell<'uiItem'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 200,
-      sortable: true,
-      Header: <TableHeader title="Permission" />,
-      accessor: 'permission',
-      Cell: (props: TCell<'permission'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 90,
-      sortable: true,
-      accessor: 'deleteButton',
-      Cell: (cellInfo: CellInfo) => (
-        <Button
-          iconName={iconNamesConst.DELETE}
-          text="Remove"
-          size="10"
-          iconSize="15"
-          confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
-          withConfirmation={true}
-          onClick={() =>
-            deleteAdminGroupPermission(
-              cellInfo.original.userGroupId,
-              cellInfo.original.uiItem
-            )
-          }
-        />
-      ),
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        sortable: true,
+        Header: <TableHeader title="UI Items" />,
+        accessor: 'uiItem',
+        filterable: true,
+        Cell: (props: TCell<'uiItem'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 200,
+        sortable: true,
+        Header: <TableHeader title="Permission" />,
+        accessor: 'permission',
+        Cell: (props: TCell<'permission'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 90,
+        sortable: true,
+        accessor: 'deleteButton',
+        Cell: (cellInfo: CellInfo) => (
+          <Button
+            iconName={iconNamesConst.DELETE}
+            text="Remove"
+            size="10"
+            iconSize="15"
+            confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
+            withConfirmation={true}
+            onClick={() =>
+              deleteAdminGroupPermission(
+                cellInfo.original.userGroupId,
+                cellInfo.original.uiItem
+              )
+            }
+          />
+        ),
+      },
+    ],
+    [deleteAdminGroupPermission]
+  );
 
   return (
     <React.Fragment>

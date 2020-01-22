@@ -20,6 +20,9 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT,
+]);
+
+const loadingSelectorUpdateDelete = createLoadingSelector([
   ProductsActionTypes.DELETE_PRODUCT,
   ProductsActionTypes.UPDATE_PRODUCT,
 ]);
@@ -28,6 +31,7 @@ const formSelector = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isUpdatingOrDeleting: loadingSelectorUpdateDelete(state),
   initialValues: selectCurrentProduct(state),
   currentProductName: selectCurrentProductName(state),
   currentInstitution: formSelector(state, 'institutionId'),

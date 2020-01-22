@@ -21,7 +21,7 @@ interface UsersGroupMembersProps {
 }
 
 type TCell<T extends keyof AdminUserGroupMemberPrepared> =
- TableCellType<AdminUserGroupMemberPrepared[T]>;
+  TableCellType<AdminUserGroupMemberPrepared[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getAdminUserGroupMembers,
@@ -36,35 +36,38 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
     [getAdminUserGroupMembers, adminUserGroupMemberId]
   );
 
-  const columns = [
-    {
-      accessor: 'username',
-      Cell: (props: TCell<'username'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 90,
-      accessor: 'deleteButton',
-      Cell: (cellInfo: CellInfo) => (
-        <Button
-          iconName={iconNamesConst.DELETE}
-          text="Remove"
-          size="10"
-          iconSize="15"
-          withConfirmation={true}
-          confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
-          onClick={() => deleteAdminUserGroupMembers(
-            adminUserGroupMemberId,
-            cellInfo.original.id
-          )}
-        />
-      ),
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        accessor: 'username',
+        Cell: (props: TCell<'username'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 90,
+        accessor: 'deleteButton',
+        Cell: (cellInfo: CellInfo) => (
+          <Button
+            iconName={iconNamesConst.DELETE}
+            text="Remove"
+            size="10"
+            iconSize="15"
+            withConfirmation={true}
+            confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
+            onClick={() => deleteAdminUserGroupMembers(
+              adminUserGroupMemberId,
+              cellInfo.original.id
+            )}
+          />
+        ),
+      },
+    ],
+    [adminUserGroupMemberId, deleteAdminUserGroupMembers]
+  );
 
   return (
     <React.Fragment>

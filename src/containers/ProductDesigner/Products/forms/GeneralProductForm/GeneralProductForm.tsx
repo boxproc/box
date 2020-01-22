@@ -29,6 +29,7 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
   currentProductName: string;
   isReadOnly: boolean;
+  isUpdatingOrDeleting: boolean;
 }
 
 type GeneralProductFormAllProps = GeneralProductFormProps &
@@ -46,6 +47,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   currentInstitution,
   currentProductName,
   isReadOnly,
+  isUpdatingOrDeleting,
 }) => {
   React.useEffect(
     () => {
@@ -82,7 +84,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
         <ProductGeneralInfo
           isEditMode={true}
           currentInstitution={currentInstitution}
-          isReadOnly={isReadOnly}
+          isReadOnly={isReadOnly || isUpdatingOrDeleting}
         />
         <Hr />
         <Flex

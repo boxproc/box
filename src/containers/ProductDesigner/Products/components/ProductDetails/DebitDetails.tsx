@@ -8,7 +8,7 @@ import { CheckboxField, NumberFormatField } from 'components';
 import { formErrorUtil } from 'utils';
 
 interface DebitDetailsProps {
-  isReadOnly?: boolean;
+  isReadOnly: boolean;
 }
 
 const DebitDetails: React.FC<DebitDetailsProps> = ({ isReadOnly }) => {

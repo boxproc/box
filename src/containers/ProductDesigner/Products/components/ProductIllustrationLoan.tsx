@@ -8,7 +8,18 @@ import { Button, Hr, InputField, MaskField, NumberFormatField } from 'components
 import { dateFormat, maskFormat } from 'consts';
 import { formErrorUtil } from 'utils';
 
-const ProductIllustrationLoan: React.FC = () => {
+interface ProductIllustrationLoanProps {
+  isLoading: boolean;
+}
+
+const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
+  isLoading,
+}) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Illustrating...' : 'Illustrate',
+    [isLoading]
+  );
+
   return (
     <Flex
       alignItems="flex-end"
@@ -30,7 +41,7 @@ const ProductIllustrationLoan: React.FC = () => {
           ]}
         />
       </Box>
-      <Box width={[1 / 4]} ml="1px" p="10px">
+      <Box width="160px" ml="1px" p="10px">
         <Field
           id="amount"
           name="amount"
@@ -66,7 +77,7 @@ const ProductIllustrationLoan: React.FC = () => {
       </Box>
       <Hr />
       <Flex justifyContent="flex-end" width="100%">
-        <Button text="Illustrate" />
+        <Button text={buttonText} />
       </Flex>
     </Flex>
   );

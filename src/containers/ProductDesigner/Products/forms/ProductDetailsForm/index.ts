@@ -19,13 +19,17 @@ const formSelector = formValueSelector(formNamesConst.PRODUCT_DETAILS);
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_DETAILS,
+]);
+
+const loadingSelectorUpdate = createLoadingSelector([
   ProductsActionTypes.UPDATE_PRODUCT_DETAILS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isUpdating: loadingSelectorUpdate(state),
   initialValues: selectCurrentProductDetails(state),
-  interestDistributionEditorValue: formSelector(state, 'interestDistributionType'),
+  interestDistributionValue: formSelector(state, 'interestDistributionType'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

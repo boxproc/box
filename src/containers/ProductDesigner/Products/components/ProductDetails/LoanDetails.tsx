@@ -5,25 +5,25 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components';
 
-import { loanInterestDistributionTypesCodes, loanTypesOptions } from 'consts';
+import { loanInterestMethodsCodes, loanTypesOptions } from 'consts';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface LoanDetailsProps {
   isReadOnly?: boolean;
-  interestDistributionEditorValue: SelectValue;
+  interestDistributionValue: SelectValue;
 }
 
 const LoanDetails: React.FC<LoanDetailsProps> = ({
   isReadOnly,
-  interestDistributionEditorValue,
+  interestDistributionValue,
 }) => {
   const isEqualOrActualDistribution = React.useMemo(
-    () => interestDistributionEditorValue
-      && (interestDistributionEditorValue.value === loanInterestDistributionTypesCodes.EQUAL
-        || interestDistributionEditorValue.value === loanInterestDistributionTypesCodes.ACTUAL),
-    [interestDistributionEditorValue]
+    () => interestDistributionValue
+      && (interestDistributionValue.value === loanInterestMethodsCodes.REDUCING_BALANCE_METHOD
+        || interestDistributionValue.value === loanInterestMethodsCodes.FLAT_RATE_METHOD),
+    [interestDistributionValue]
   );
 
   return (
@@ -35,7 +35,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         <Box
           width={[1 / 3]}
           p="10px"
-          pt={!isEqualOrActualDistribution && '26px'}
+          pt="26px"
         >
           <Field
             id="interestDistributionType"
@@ -51,7 +51,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         <Box
           width={[1 / 6]}
           p="10px"
-          pt={!isEqualOrActualDistribution && '26px'}
+          pt="26px"
         >
           <Field
             id="defNumOfInstallments"
@@ -68,24 +68,24 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
           />
         </Box>
         {isEqualOrActualDistribution && (
-        <Box
-          width={[1 / 6]}
-          p="10px"
-        >
-          <Field
-            id="defNumOfIntrstFreeInstlmts"
-            name="defNumOfIntrstFreeInstlmts"
-            component={InputField}
-            placeholder="Enter #"
-            label="Default # of interest free installments"
-            readOnly={isReadOnly}
-            isNumber={true}
-            validate={[
-              formErrorUtil.required,
-              formErrorUtil.isNumber,
-            ]}
-          />
-        </Box>
+          <Box
+            width={[1 / 6]}
+            p="10px"
+          >
+            <Field
+              id="defNumOfIntrstFreeInstlmts"
+              name="defNumOfIntrstFreeInstlmts"
+              component={InputField}
+              placeholder="Enter #"
+              label="Default # of interest free installments"
+              readOnly={isReadOnly}
+              isNumber={true}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
+            />
+          </Box>
         )}
         <Box
           width="160px"

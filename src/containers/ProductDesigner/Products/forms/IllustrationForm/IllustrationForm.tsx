@@ -43,6 +43,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   onCancel,
   dirty,
   isReadOnly,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -64,7 +65,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
             alignItems="center"
             justifyContent="space-between"
           >
-            <ProductIllustrationLoan />
+            <ProductIllustrationLoan isLoading={isLoading} />
           </Flex>
         </form>
       )}

@@ -8,7 +8,7 @@ import { CheckboxField, InputField } from 'components';
 import { formErrorUtil } from 'utils';
 
 interface PrepaidDetailsProps {
-  isReadOnly?: boolean;
+  isReadOnly: boolean;
 }
 
 const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {

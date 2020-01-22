@@ -130,11 +130,6 @@ export const identificationTypesOptions = [
   { value: 'I', label: 'ID card' },
 ];
 
-export enum loanInterestDistributionTypesCodes {
-  EQUAL = 'E',
-  ACTUAL = 'A',
-}
-
 export enum productTypesCodes {
   LOAN = 'L',
   PREPAID = 'P',
@@ -169,6 +164,12 @@ export const loanTypesOptions = [
   { value: 'F', label: 'Flat-rate (daily accrual) method' },
   { value: 'A', label: 'All interest in last installment' },
 ];
+
+export enum loanInterestMethodsCodes {
+  REDUCING_BALANCE_METHOD = 'R',
+  FLAT_RATE_METHOD = 'F',
+  ALL_INTEREST_IN_LAS_INSTALLMENT = 'A',
+}
 
 export const savingsTypesOptions = [
   { value: 'F', label: 'Fixed term' },
