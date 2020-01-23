@@ -19,10 +19,12 @@ const ProductWrapper = styled(Box)`
 
 interface ProductsFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const ProductsFilter: React.FC<ProductsFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -35,6 +37,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -47,6 +50,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           placeholder="Select Product Type"
           options={productTypesOptions}
           isMulti={true}
+          isDisabled={isDisabled}
         />
       </ProductWrapper>
       <Box width={[1]} p="10px">
@@ -55,6 +59,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           name="activeStatusFlag"
           component={CheckboxField}
           label="Only &quot;Active&quot;"
+          disabled={isDisabled}
         />
       </Box>
     </React.Fragment>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -20,9 +18,10 @@ import { SelectValue } from 'types';
 interface ProductsProps {
   productItems: Array<ProductItem>;
   institutionsOptions: Array<SelectValue>;
+  currentProductName: string;
+  isLoading: boolean;
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
-  currentProductName: string;
   resetProducts: ResetProducts;
 }
 
@@ -33,6 +32,7 @@ export const Products: React.FC<ProductsProps> = ({
   currentProductName,
   deleteProduct,
   resetProducts,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -74,8 +74,10 @@ export const Products: React.FC<ProductsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterProducts}
       initialFilterValues={initialFilterValues}
+      isLoading={isLoading}
       FilterForm={
         <ProductsFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -83,6 +85,4 @@ export const Products: React.FC<ProductsProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Products);
+export default Products;

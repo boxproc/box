@@ -11,10 +11,12 @@ import { formErrorUtil } from 'utils';
 
 interface UsersFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const UsersFilter: React.FC<UsersFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -27,6 +29,7 @@ const UsersFilter: React.FC<UsersFilterProps> = ({
           label="Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>

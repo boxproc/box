@@ -6,16 +6,16 @@ import { StoreState } from 'store/StoreState';
 import { prepareDataToRender, preparedDataDetailsToRender } from './utils';
 
 export const selectDefaultAdminInstitutions = (state: StoreState) =>
-  state.administration.institutions.institutions.asMutable();
+  state.administration.institutions.institutions;
 
 export const selectAdminInstitutions = createSelector(
   selectDefaultAdminInstitutions,
-  items => items && items.map(item => prepareDataToRender(item))
+  items => items && items.asMutable().map(item => prepareDataToRender(item))
 );
 
 export const selectAdminInstitutionsOptions = createSelector(
   selectDefaultAdminInstitutions,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     return {
       value: item.id,
       label: item.name,

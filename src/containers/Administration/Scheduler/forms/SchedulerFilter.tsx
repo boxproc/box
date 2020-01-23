@@ -10,10 +10,12 @@ import { formErrorUtil } from 'utils';
 
 interface SchedulerFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -26,6 +28,7 @@ const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -36,6 +39,7 @@ const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
           placeholder="Enter Name"
           component={InputField}
           label="Name"
+          disabled={isDisabled}
         />
       </Box>
       <Box width={[1]} p="10px">
@@ -44,6 +48,7 @@ const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
           name="activeStatusFlag"
           component={CheckboxField}
           label="Only &quot;Active&quot;"
+          disabled={isDisabled}
         />
       </Box>
     </React.Fragment>

@@ -1,8 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UiSessionsFilter } from './forms';
@@ -26,6 +24,7 @@ export interface UiSessionsProps extends RouteComponentProps {
   filterUiSessions: HandleFilterAuditUiSessions;
   filterUserActivity: HandleFilterAuditUserActivityByData;
   currentUserId: number;
+  isLoading: boolean;
 }
 
 const UiSessions: React.FC<UiSessionsProps> = ({
@@ -36,6 +35,7 @@ const UiSessions: React.FC<UiSessionsProps> = ({
   resetUiSessions,
   currentUserId,
   history,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -122,10 +122,12 @@ const UiSessions: React.FC<UiSessionsProps> = ({
         isDownloadButton={true}
         filterAction={filterUiSessions}
         isSearchable={true}
+        isLoading={isLoading}
         contextMenuItems={contextMenuItems}
         initialFilterValues={initialFilterValues}
         FilterForm={
           <UiSessionsFilter
+            isDisabled={isLoading}
             institutionsOptions={institutionsOptions}
           />
         }
@@ -135,6 +137,4 @@ const UiSessions: React.FC<UiSessionsProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withRouter(UiSessions));
+export default withRouter(UiSessions);

@@ -8,7 +8,6 @@ import {
   ExternalSpinnerProps,
   Footer,
   PrivateRoute,
-  withSpinner,
 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
@@ -33,7 +32,7 @@ const RootWrapper = styled.div<RootWrapperProps>`
   justify-content: space-between;
   min-width: 1025px;
   height: 100vh;
-  padding-top: 70px;
+  padding-top: 64px;
 
   ${({ isBlured }) => isBlured && `
     filter: blur(3px);
@@ -43,7 +42,7 @@ const RootWrapper = styled.div<RootWrapperProps>`
 `;
 
 const PagesWrapper = styled(Container)`
-  padding-top: 20px;
+  padding-top: 15px;
 `;
 
 interface RootProps extends ExternalSpinnerProps, WithModalProps {
@@ -134,6 +133,4 @@ const Root: React.FC<RootProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withModal(Root));
+export default withModal(Root);

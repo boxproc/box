@@ -52,6 +52,4 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(AddSchedulerModal)
-);
+})(withModal(AddSchedulerModal));

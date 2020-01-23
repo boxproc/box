@@ -66,6 +66,4 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(
-  withModal(EditSchedulerModal)
-);
+})(withModal(EditSchedulerModal));

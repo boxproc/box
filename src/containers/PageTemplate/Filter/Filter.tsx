@@ -6,7 +6,7 @@ import * as H from 'history';
 
 import styled from 'theme';
 
-import { Button, T3 } from 'components';
+import { Button } from 'components';
 
 import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
 
@@ -19,11 +19,17 @@ interface FilterWrapperProps {
 }
 
 const FilterWrapper = styled.div<FilterWrapperProps>`
-  margin-bottom: 20px;
-  padding: 15px;
+  margin-bottom: 15px;
+  padding: 10px 15px 12px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
   background-color: rgba(0, 0, 0, .02);
+
+  .title {
+    font-size: 18px;
+    color: ${({ theme, color }) => color ? color : theme.colors.darkGray};
+    font-weight: bold;
+  }
 
   ${({ isHidden }) => isHidden && `
     display: none;
@@ -38,15 +44,19 @@ interface FilterProps {
   location: H.Location;
   setIsAccessibleFiltering: SetIsAccessibleFiltering;
   isHidden: boolean;
+  isLoading: boolean;
 }
 
 export const filteredFieldsToStore = (data: object) => {
   return data && Object.keys(data)
     .filter(key => !key.match(/dateFrom|dateTo|dateTimeFrom|dateTimeTo/gi))
-    .reduce((obj, key) => {
-      obj[key] = data[key];
-      return obj;
-    },      {});
+    .reduce(
+      (obj, key) => {
+        obj[key] = data[key];
+        return obj;
+      },
+      {}
+    );
 };
 
 type FilterAllProps = FilterProps & InjectedFormProps<{}, FilterProps>;
@@ -62,6 +72,7 @@ const Filter: React.FC<FilterAllProps> = ({
   location,
   setIsAccessibleFiltering,
   isHidden,
+  isLoading,
 }) => {
   const username = React.useMemo(
     () => {
@@ -155,8 +166,8 @@ const Filter: React.FC<FilterAllProps> = ({
   );
 
   const isDisabled = React.useMemo(
-    () => invalid || !isAccessibleButton(),
-    [isAccessibleButton, invalid]
+    () => invalid || !isAccessibleButton() || isLoading,
+    [isAccessibleButton, invalid, isLoading]
   );
 
   React.useEffect(
@@ -185,10 +196,15 @@ const Filter: React.FC<FilterAllProps> = ({
 
   return (
     <FilterWrapper isHidden={isHidden}>
-      <T3>Filter</T3>
+      <div className="title">Filter</div>
       <form onSubmit={handleSubmitForm}>
         <Box width="940px" mx="-10px">
-          <Flex alignItems="flex-end" flexWrap="wrap">{children}</Flex>
+          <Flex
+            alignItems="flex-end"
+            flexWrap="wrap"
+          >
+            {children}
+          </Flex>
         </Box>
         <Button
           text="Show"

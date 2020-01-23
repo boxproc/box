@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
@@ -13,11 +11,13 @@ import {
 interface CountriesProps {
   getDictionaryCountries: HandleGetDictionaryCountries;
   dictionaryCountries: Array<DictionaryCountriesItemPrepared>;
+  isLoading: boolean;
 }
 
 export const Countries: React.FC<CountriesProps> = ({
   getDictionaryCountries,
   dictionaryCountries,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -33,10 +33,9 @@ export const Countries: React.FC<CountriesProps> = ({
       columns={tableColumns}
       isSearchable={true}
       isDownloadButton={true}
+      isLoading={isLoading}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Countries);
+export default Countries;

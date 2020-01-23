@@ -18,9 +18,6 @@ interface EditProductModalProps extends WithModalProps {
   isProductDetailsFormDirty: boolean;
   isProductRulesFormDirty: boolean;
   isAuxCountersFormDirty: boolean;
-  isAprsFormDirty: boolean;
-  isFeesFormDirty: boolean;
-  isRewardsFormDirty: boolean;
   isServicesFormDirty: boolean;
   isGlFormDirty: boolean;
 }
@@ -36,9 +33,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   isProductDetailsFormDirty,
   isProductRulesFormDirty,
   isAuxCountersFormDirty,
-  isAprsFormDirty,
-  isFeesFormDirty,
-  isRewardsFormDirty,
   isServicesFormDirty,
   isGlFormDirty,
   isReadOnly,
@@ -64,9 +58,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
         || isProductDetailsFormDirty
         || isProductRulesFormDirty
         || isAuxCountersFormDirty
-        || isAprsFormDirty
-        || isFeesFormDirty
-        || isRewardsFormDirty
         || isServicesFormDirty
         || isGlFormDirty;
     },
@@ -75,9 +66,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       isProductDetailsFormDirty,
       isProductRulesFormDirty,
       isAuxCountersFormDirty,
-      isAprsFormDirty,
-      isFeesFormDirty,
-      isRewardsFormDirty,
       isServicesFormDirty,
       isGlFormDirty,
     ]

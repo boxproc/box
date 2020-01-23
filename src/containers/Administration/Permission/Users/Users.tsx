@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -24,6 +22,7 @@ interface UsersProps {
   filterUsersById: HandleFilterAuditUserById;
   currentUserId: number;
   resetUsers: ResetUsers;
+  isLoading: boolean;
 }
 
 export const Users: React.FC<UsersProps> = ({
@@ -33,6 +32,7 @@ export const Users: React.FC<UsersProps> = ({
   filterUsersById,
   currentUserId,
   resetUsers,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -74,9 +74,11 @@ export const Users: React.FC<UsersProps> = ({
       editModalName={modalNamesConst.EDIT_USER}
       filterAction={filterUsers}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
         <UsersFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -84,6 +86,4 @@ export const Users: React.FC<UsersProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Users);
+export default Users;

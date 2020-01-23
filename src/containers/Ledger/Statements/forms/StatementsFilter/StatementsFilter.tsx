@@ -25,6 +25,7 @@ interface StatementsFilterProps {
   institutionValue: SelectValue;
   institutionProductsOptions: Array<SelectValue>;
   isLoadingInstitutionProducts: boolean;
+  isDisabled: boolean;
 }
 
 const StatementsFilter: React.FC<StatementsFilterProps> = ({
@@ -33,6 +34,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
   getInstitutionProducts,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
+  isDisabled,
 }) => {
   const currentInstitutionId = React.useMemo(
     () => institutionValue && institutionValue.value,
@@ -65,6 +67,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 placeholder="Select Institution"
                 options={institutionsOptions}
                 isClearable={false}
+                isDisabled={isDisabled}
                 validate={[formErrorUtil.required]}
               />
             </Box>
@@ -76,6 +79,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Account ID"
                 placeholder="Enter ID"
                 isNumber={true}
+                disabled={isDisabled}
                 validate={[formErrorUtil.isInteger]}
               />
             </Box>
@@ -86,6 +90,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Account Alias"
                 placeholder="Enter Account Alias"
+                disabled={isDisabled}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -95,6 +100,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="First Name"
                 placeholder="Enter First Name"
+                disabled={isDisabled}
               />
             </Box>
             <Box width={[4 / 9]} p="10px">
@@ -104,6 +110,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 component={InputField}
                 label="Last Name"
                 placeholder="Enter Last Name"
+                disabled={isDisabled}
               />
             </Box>
             <Box width="200px" p="10px">
@@ -114,6 +121,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Date From"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
+                disabled={isDisabled}
                 validate={[
                   formErrorUtil.required,
                   formErrorUtil.isDate,
@@ -128,6 +136,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 label="Date To"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
+                disabled={isDisabled}
                 validate={[
                   formErrorUtil.required,
                   formErrorUtil.isDate,
@@ -147,6 +156,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
               options={institutionProductsOptions}
               isMulti={true}
               isLoading={isLoadingInstitutionProducts}
+              isDisabled={isDisabled}
             />
           </ProductWrapper>
         </Flex>

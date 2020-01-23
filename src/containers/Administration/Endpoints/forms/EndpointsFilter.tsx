@@ -10,10 +10,12 @@ import { formErrorUtil } from 'utils';
 
 interface EndpointFilterFormProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const EndpointsFilter: React.FC<EndpointFilterFormProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <Box width={[1 / 4]} p="10px">
@@ -25,6 +27,7 @@ const EndpointsFilter: React.FC<EndpointFilterFormProps> = ({
         placeholder="Select Institution"
         options={institutionsOptions}
         isClearable={false}
+        isDisabled={isDisabled}
         validate={[formErrorUtil.required]}
       />
     </Box>

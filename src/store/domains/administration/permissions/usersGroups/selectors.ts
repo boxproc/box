@@ -7,23 +7,23 @@ import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
-  state.administration.userGroups.usersGroups.asMutable();
+  state.administration.userGroups.usersGroups;
 
 export const selectDefaultAdminUserGroupMembers = (state: StoreState) =>
-  state.administration.userGroups.userGroupMembers.asMutable();
+  state.administration.userGroups.userGroupMembers;
 
 export const selectAdminGroupPermissions = (state: StoreState) =>
-  state.administration.userGroups.groupPermissions.asMutable();
+  state.administration.userGroups.groupPermissions;
 
 export const selectDefaultAdminActiveUsers = (state: StoreState) =>
-  state.administration.userGroups.allActiveUsers.asMutable();
+  state.administration.userGroups.allActiveUsers;
 
 export const selectDefaultAdminUiItems = (state: StoreState) =>
-  state.administration.userGroups.uiItems.asMutable();
+  state.administration.userGroups.uiItems;
 
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
 
     const {
       id,
@@ -43,7 +43,7 @@ export const selectUsersGroupEditorItems = createSelector(
 
 export const selectActiveUsersItems = createSelector(
   selectDefaultAdminActiveUsers,
-  data => data && data.map(el => {
+  data => data && data.asMutable().map(el => {
     return {
       value: el.id,
       label: `${el.first_name} ${el.last_name}`,
@@ -53,7 +53,7 @@ export const selectActiveUsersItems = createSelector(
 
 export const selectAdminUserGroupMembers = createSelector(
   selectDefaultAdminUserGroupMembers,
-  data => data && data.map(el => {
+  data => data && data.asMutable().map(el => {
     return {
       id: el.id,
       username: `${el.first_name} ${el.last_name} `,
@@ -64,7 +64,7 @@ export const selectAdminUserGroupMembers = createSelector(
 
 export const selectAdminGroupPermissionsItems = createSelector(
   selectAdminGroupPermissions,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     const permission = permissionTypesOptions.find(el => el.value === item.permission);
 
     return {
@@ -77,7 +77,7 @@ export const selectAdminGroupPermissionsItems = createSelector(
 
 export const selectAdminGroupPermissionsItem = createSelector(
   selectAdminGroupPermissions,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     const permission = permissionTypesOptions.find(el => el.value === item.permission);
 
     return {
@@ -90,7 +90,7 @@ export const selectAdminGroupPermissionsItem = createSelector(
 
 export const selectAdminGroupPermissionsUiItems = createSelector(
   selectDefaultAdminUiItems,
-  data => data && data.map(el => {
+  data => data && data.asMutable().map(el => {
     return {
       value: el.ui_item,
       label: el.ui_item,

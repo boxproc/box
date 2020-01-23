@@ -44,6 +44,7 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   uiItems: Array<UiItemPrepared>;
   setActivePagePermission: SetActivePagePermission;
   isReadOnly: boolean;
+  isLoading: boolean;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
@@ -68,6 +69,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     isSearchable,
     uiItems,
     isReadOnly,
+    isLoading,
     setActivePagePermission,
     ...pageTemplateProps
   } = props;
@@ -102,6 +104,11 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       return () => resetUtils();
     },
     [resetUtils]
+  );
+
+  const filterButtonText = React.useMemo(
+    () => isOpenFilter ? 'Hide Filter' : 'Show Filter',
+    [isOpenFilter]
   );
 
   const helpLink = React.useMemo(
@@ -147,7 +154,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
   return (
     <React.Fragment>
       <Flex alignItems="baseline">
-        <Box mr="15px">
+        <Box mr="10px">
           <ExternalLink
             text="HELP"
             link={helpLink}
@@ -157,9 +164,9 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
         <T2>{title}</T2>
       </Flex>
       {FilterForm && (
-        <Box mb="7px">
+        <Box mb="5px">
           <Button
-            text={isOpenFilter ? 'Hide Filter' : 'Show Filter'}
+            text={filterButtonText}
             iconName={iconNamesConst.FILTER}
             onClick={() => setIsOpenFilter(!isOpenFilter)}
           />
@@ -171,6 +178,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           location={location}
           isHidden={!isOpenFilter}
           initialValues={filterInitialValues}
+          isLoading={isLoading}
         >
           {FilterForm}
         </Filter>
@@ -182,6 +190,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               text="Add New"
               iconName={iconNamesConst.PLUS}
               onClick={handleOpenModal}
+              disabled={isLoading}
             />
           </Box>
         )}
@@ -189,7 +198,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           <Box mr="20px">
             <Button
               text="Search"
-              disabled={!isData}
+              disabled={!isData || isLoading}
               iconName={iconNamesConst.SEARCH}
               onClick={() => setIsFilterable(!isFilterable)}
             />
@@ -210,6 +219,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 <Button
                   text="Download"
                   iconName={iconNamesConst.DOWNLOAD}
+                  disabled={isLoading}
                 />
               }
             >
@@ -219,6 +229,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                   iconName={iconNamesConst.FILE}
                   onClick={() => downloadUtil.downloadCSV(fileName, data)}
                   textTransformNone={true}
+                  disabled={isLoading}
                 />
               </DropdownOption>
             </Dropdown>
@@ -233,16 +244,18 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                 size="11"
                 iconName={iconNamesConst.STOP}
                 onClick={stopAutoRefresh}
+                disabled={isLoading}
               />
             </Box>
           </Flex>
         )}
       </Flex>
-      <Box mt="7px">
+      <Box mt="5px">
         <EditableTable
           data={data}
           columns={columns}
           filterable={isFilterable}
+          isLoading={isLoading}
           {...pageTemplateProps}
         />
       </Box>

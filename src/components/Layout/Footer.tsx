@@ -8,7 +8,7 @@ import { Container } from 'components';
 import { stringsUtil } from 'utils';
 
 const Wrapper = styled.footer`
-  padding: 70px 0 20px;
+  padding: 70px 0 15px;
   font-size: 12px;
   text-align: center;
 
@@ -23,11 +23,13 @@ const Wrapper = styled.footer`
 `;
 
 const Footer: React.FC = () => {
+  const currentYear = stringsUtil.currentYear;
+
   return (
     <Wrapper>
       <Container>
         <div className="highlight">
-          BOX Processing © 2019 - {stringsUtil.currentYear} All rights reserved.
+          BOX Processing © 2019 - {currentYear} All rights reserved.
         </div>
       </Container>
     </Wrapper>

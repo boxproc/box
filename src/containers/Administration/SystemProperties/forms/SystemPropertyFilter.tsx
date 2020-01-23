@@ -5,7 +5,13 @@ import { Box } from '@rebass/grid';
 
 import { InputField } from 'components';
 
-const SystemPropertyFilter: React.FC = () => {
+interface SystemPropertyFilterProps {
+  isDisabled: boolean;
+}
+
+const SystemPropertyFilter: React.FC<SystemPropertyFilterProps> = ({
+  isDisabled,
+}) => {
   return (
     <Box width={[1 / 4]} p="10px">
       <Field
@@ -14,6 +20,7 @@ const SystemPropertyFilter: React.FC = () => {
         placeholder="Enter Property Name"
         component={InputField}
         label="Property Name"
+        disabled={isDisabled}
       />
     </Box>
   );

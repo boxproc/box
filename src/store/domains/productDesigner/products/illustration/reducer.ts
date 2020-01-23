@@ -5,7 +5,7 @@ import { ProductIllustrationState } from './types';
 
 export const productIllustrationInitialState: ImmutableObject<ProductIllustrationState> =
   Immutable({
-    productIllustration: Immutable([]),
+    productLoanIllustration: Immutable([]),
     productRevolvingCreditIllustration: {
       statements: Immutable([]),
       aprs: Immutable([]),
@@ -19,7 +19,7 @@ const productIllustrationReducer =
   (state = productIllustrationInitialState, action: ProductIllustrationActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED:
-        return state.set('productIllustration', action.payload.product_information);
+        return state.set('productLoanIllustration', action.payload.product_information);
 
       case ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED:
         return state.set(
@@ -27,8 +27,8 @@ const productIllustrationReducer =
           action.payload.revolving_credit_information
         );
 
-      case ActionTypeKeys.RESET_ILLUSTRATION_LOAN:
-        return state.set('productIllustration', Immutable([]));
+      case ActionTypeKeys.RESET_PRODUCT_ILLUSTRATION:
+        return state = productIllustrationInitialState;
 
       default:
         return state;

@@ -40,6 +40,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
+        justifyContent="center"
       >
         <Box width={[1 / 2]} p="10px">
           <Field

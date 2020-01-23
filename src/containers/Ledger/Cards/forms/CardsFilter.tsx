@@ -10,10 +10,12 @@ import { formErrorUtil } from 'utils';
 
 interface CardsFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const CardsFilter: React.FC<CardsFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -26,6 +28,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -37,6 +40,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           label="Card ID"
           placeholder="Card ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -48,6 +52,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           label="Account ID"
           placeholder="Account ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -59,6 +64,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           label="Customer ID"
           placeholder="Customer ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -69,6 +75,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           component={InputField}
           label="PAN Alias"
           placeholder="PAN Alias"
+          disabled={isDisabled}
         />
       </Box>
     </React.Fragment>

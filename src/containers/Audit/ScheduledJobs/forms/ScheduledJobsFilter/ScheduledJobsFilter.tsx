@@ -18,6 +18,7 @@ interface ScheduledJobsFilterProps {
   institutionValue: SelectValue;
   schedulerNameOptions: Array<SelectValue>;
   isLoadingSchedulerNames: boolean;
+  isDisabled: boolean;
 }
 
 const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
@@ -26,6 +27,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
   getSchedulerNames,
   schedulerNameOptions,
   isLoadingSchedulerNames,
+  isDisabled,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -49,6 +51,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -61,6 +64,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           label="Scheduler"
           placeholder="Select Scheduler"
           isLoading={isLoadingSchedulerNames}
+          isDisabled={isDisabled}
         />
       </Box>
       <Box width="200px" p="10px" >
@@ -71,6 +75,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
@@ -85,6 +90,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

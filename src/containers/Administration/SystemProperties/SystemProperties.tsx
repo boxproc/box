@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { SystemPropertyFilter } from './forms';
@@ -23,6 +21,7 @@ interface SystemPropertiesProps {
   adminSysPropsItems: Array<AdminSysPropsItem>;
   currentSysPropId: number | string;
   resetSystemProperties: ResetSystemProperties;
+  isLoading: boolean;
 }
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
@@ -32,6 +31,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   updateAdminSysProps,
   currentSysPropId,
   resetSystemProperties,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -68,17 +68,18 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       data={adminSysPropsItems}
       columns={tableColumns}
       isDownloadButton={true}
+      isLoading={isLoading}
       newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
       editModalName={modalNamesConst.EDIT_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSysProps}
       FilterForm={
-        <SystemPropertyFilter />
+        <SystemPropertyFilter
+          isDisabled={isLoading}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(SystemProperties);
+export default SystemProperties;

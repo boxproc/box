@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
@@ -22,6 +20,7 @@ interface EventDataElemsProps {
   dictionaryEventsOptions: Array<SelectValue>;
   filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
   resetEventDataElems: ResetEventDataElems;
+  isLoading: boolean;
 }
 
 export const EventDataElems: React.FC<EventDataElemsProps> = ({
@@ -30,6 +29,7 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
   dictionaryEventsOptions,
   filterDictionaryEventDataElems,
   resetEventDataElems,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -47,13 +47,15 @@ export const EventDataElems: React.FC<EventDataElemsProps> = ({
       filterAction={filterDictionaryEventDataElems}
       isSearchable={true}
       isDownloadButton={true}
+      isLoading={isLoading}
       FilterForm={
-        <EventDataElemsFilter eventOptions={dictionaryEventsOptions} />
+        <EventDataElemsFilter
+          isDisabled={isLoading}
+          eventOptions={dictionaryEventsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(EventDataElems);
+export default EventDataElems;

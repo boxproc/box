@@ -5,11 +5,11 @@ import { StoreState } from 'store/StoreState';
 import { stringsUtil } from 'utils';
 
 export const selectDefaultDictionaryCurrenciesItems = (state: StoreState) =>
-  state.administration.currencies.currencies.asMutable();
+  state.administration.currencies.currencies;
 
 export const selectDictionaryCurrencies = createSelector(
   selectDefaultDictionaryCurrenciesItems,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     if (!item) {
       return null;
     }
@@ -24,7 +24,7 @@ export const selectDictionaryCurrencies = createSelector(
 
 export const selectCurrencyCodesOptions = createSelector(
   selectDefaultDictionaryCurrenciesItems,
-  data => data && data.map(code => {
+  data => data && data.asMutable().map(code => {
     const { currency_code, name } = code;
 
     return {
@@ -36,7 +36,7 @@ export const selectCurrencyCodesOptions = createSelector(
 
 export const selectCurrencyNumCodesOptions = createSelector(
   selectDefaultDictionaryCurrenciesItems,
-  data => data && data.map(code => {
+  data => data && data.asMutable().map(code => {
     const { currency_code, name, numeric_code } = code;
 
     return {

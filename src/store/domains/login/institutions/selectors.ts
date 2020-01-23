@@ -5,11 +5,11 @@ import { yesNoTypesCodes } from 'consts';
 import { StoreState } from 'store/StoreState';
 
 export const selectDefaultInstitutions = (state: StoreState) =>
-  state.login.institutions.institutions.asMutable();
+  state.login.institutions.institutions;
 
 export const selectInstitutions = createSelector(
   selectDefaultInstitutions,
-  institutions => institutions && institutions.map(institution => {
+  institutions => institutions && institutions.asMutable().map(institution => {
     return {
       id: institution.id,
       institutionName: institution.institution_name,
@@ -20,7 +20,7 @@ export const selectInstitutions = createSelector(
 
 export const selectInstitutionsOptions = createSelector(
   selectDefaultInstitutions,
-  data => data && data.map(el => {
+  data => data && data.asMutable().map(el => {
     return {
       value: el.id,
       label: el.institution_name,

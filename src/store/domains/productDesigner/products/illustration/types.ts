@@ -194,7 +194,7 @@ export interface RevolvingCreditProductIllustrate {
 }
 
 export interface ProductIllustrationState {
-  productIllustration: ImmutableArray<IllustrationProductLoanResp>;
+  productLoanIllustration: ImmutableArray<IllustrationProductLoanResp>;
   productRevolvingCreditIllustration: {
     statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
     aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;

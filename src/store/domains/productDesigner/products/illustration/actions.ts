@@ -33,7 +33,7 @@ export type IllustrateRevolvingCreditProduct = (
 ) => IllustrateProductRevolvingCreditAction;
 export type HandleIllustrateRevolvingCreditProduct = () => Thunk<void>;
 
-export type ResetIllustrationLoan = () => void;
+export type ResetProductIllustration = () => void;
 
 export const illustrateLoanProduct: IllustrateLoanProduct = data => ({
   type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN,
@@ -45,8 +45,8 @@ export const illustrateRevolvingCreditProduct: IllustrateRevolvingCreditProduct 
   payload: api.illustrateRevolvingCreditProduct(data),
 });
 
-export const resetIllustrationLoan: ResetIllustrationLoan = () => ({
-  type: ActionTypeKeys.RESET_ILLUSTRATION_LOAN,
+export const resetProductIllustration: ResetProductIllustration = () => ({
+  type: ActionTypeKeys.RESET_PRODUCT_ILLUSTRATION,
 });
 
 export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>

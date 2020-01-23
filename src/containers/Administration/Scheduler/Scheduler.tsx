@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, withSpinner } from 'components';
+import { Button } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import {
@@ -38,6 +38,7 @@ interface SchedulerProps extends WithModalProps {
   getLogData: HandleGetLogData;
   filterAdminScheduledJobsById: HandleFilterScheduledJobsById;
   institutionsOptions: Array<SelectValue>;
+  isLoading: boolean;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
@@ -51,6 +52,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   getLogData,
   filterAdminScheduledJobsById,
   institutionsOptions,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -179,9 +181,11 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminSchedulerJobs}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
         <SchedulerFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -189,15 +193,12 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         <Button
           text="Show scheduler master log"
           iconName={iconNamesConst.SHORT_TEXT}
-          onClick={() => getLogData({
-            name: systemMonitorTables.SCHEDULER_JOBS,
-          })}
+          onClick={() => getLogData({ name: systemMonitorTables.SCHEDULER_JOBS })}
+          disabled={isLoading}
         />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withModal(Scheduler));
+export default withModal(Scheduler);

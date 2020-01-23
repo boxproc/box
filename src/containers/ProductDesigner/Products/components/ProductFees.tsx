@@ -40,7 +40,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
       flexWrap="wrap"
       mx="-10px"
     >
-      <Box width={[2 / 7]} p="10px">
+      <Box width={[1 / 5]} p="10px">
         <Field
           id="description"
           name="description"
@@ -51,7 +51,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[2 / 7]} p="10px">
+      <Box width={[1 / 5]} p="10px">
         <Field
           id="feeApplicationCondition"
           name="feeApplicationCondition"
@@ -64,7 +64,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[2 / 7]} p="10px">
+      <Box width={[1 / 5]} p="10px">
         <Field
           id="apr"
           name="apr"
@@ -103,7 +103,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           validate={!isOnlyRate ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
-      <Box width={[1 / 7]} pb="20px">
+      <Box pb="20px">
         <Button
           text={buttonText}
           iconName={iconNamesConst.PLUS}

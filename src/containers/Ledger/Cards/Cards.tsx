@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -30,6 +28,7 @@ export interface CardsProps {
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;
   resetCards: ResetCards;
+  isLoading: boolean;
 }
 
 const Cards: React.FC<CardsProps> = ({
@@ -42,6 +41,7 @@ const Cards: React.FC<CardsProps> = ({
   institutionsOptions,
   currentId,
   resetCards,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -99,14 +99,16 @@ const Cards: React.FC<CardsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCards}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <CardsFilter institutionsOptions={institutionsOptions} />
+        <CardsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Cards);
+export default Cards;

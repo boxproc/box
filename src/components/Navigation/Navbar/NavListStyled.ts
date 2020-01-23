@@ -42,7 +42,7 @@ export const NavListStyled = styled.div`
       position: relative;
       pointer-events: none;
       margin: 1px;
-      height: 1.5px;
+      height: 1.3px;
       border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
       font-size: 0;
       overflow: hidden;

@@ -4,8 +4,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Root from './Root';
 
 import {
-  AuthActionTypes,
-  createLoadingSelector,
   selectIsRelogin,
   selectVisibleUiItemsList,
   setIsRelogin,
@@ -13,12 +11,7 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-const loadingSelector = createLoadingSelector([
-  AuthActionTypes.USER_LOGIN,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
   visibleUiItemsList: selectVisibleUiItemsList(state),
   isRelogin: selectIsRelogin(state),
 });

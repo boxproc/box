@@ -24,14 +24,24 @@ const LogModal: React.FC<LogModalProps> = ({
   isLoading,
 }) => {
   const title = React.useMemo(
-    () => data.title ? data.title : 'Master log',
+    () => {
+      if (!data || !data.title) {
+        return 'Master log';
+      }
+
+      return data.title;
+    },
     [data]
   );
 
   const preparedLogData = React.useMemo(
-    () => data.logData
-      ? stringsUtil.addNewLines(data.logData)
-      : '',
+    () => {
+      if (!data || !data.logData) {
+        return '';
+      }
+
+      return stringsUtil.addNewLines(data.logData);
+    },
     [data]
   );
 
@@ -49,7 +59,7 @@ const LogModal: React.FC<LogModalProps> = ({
     <Modal
       name={modalName}
       title={title}
-      monoTitleStr={data.logLocation}
+      monoTitleStr={data && data.logLocation}
       maxContainerWidth={1400}
       containerHeightFull={true}
     >

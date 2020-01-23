@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
@@ -26,6 +24,7 @@ export interface AccountsProps {
   filterAdminInterface: HandleFilterAdminInterface;
   getLogData: HandleGetLogData;
   resetInterfaces: ResetInterfaces;
+  isLoading: boolean;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
@@ -37,6 +36,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   interfaceName,
   getLogData,
   currentInterfaceId,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -86,14 +86,16 @@ const Interfaces: React.FC<AccountsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminInterface}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <InterfacesFilter institutionsOptions={institutionsOptions} />
+        <InterfacesFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Interfaces);
+export default Interfaces;

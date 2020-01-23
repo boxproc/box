@@ -30,6 +30,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
       alignItems="flex-end"
       flexWrap="wrap"
       mx="-10px"
+      width="100%"
     >
       <Box width="120px" p="10px">
         <Field
@@ -55,7 +56,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 6]} p="10px">
+      <Box width={[1 / 5]} p="10px">
         <Field
           id="calculationMethod"
           name="calculationMethod"
@@ -68,7 +69,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 6]} p="10px">
+      <Box width={[1 / 5]} p="10px">
         <Field
           id="rate"
           name="rate"
@@ -84,7 +85,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           ]}
         />
       </Box>
-      <Box width={[1 / 8]} p="10px">
+      <Box width="120px" p="10px">
         <Field
           id="graceNumberOfDays"
           name="graceNumberOfDays"
@@ -99,7 +100,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           ]}
         />
       </Box>
-      <Box width={[1 / 7]} pb="20px">
+      <Box pb="20px">
         <Button
           text={buttonText}
           iconName={iconNamesConst.PLUS}

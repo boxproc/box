@@ -17,6 +17,7 @@ interface AccountsFilterProps {
   accountAliasValue: string;
   institutionProductsOptions: Array<SelectValue>;
   isLoadingInstitutionProducts: boolean;
+  isDisabled: boolean;
 }
 
 const AccountsFilter: React.FC<AccountsFilterProps> = ({
@@ -26,6 +27,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
   getInstitutionProducts,
   institutionProductsOptions,
   isLoadingInstitutionProducts,
+  isDisabled,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -49,6 +51,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -60,6 +63,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           label="Account"
           placeholder="Enter Account ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -70,6 +74,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           component={InputField}
           label="Account Alias"
           placeholder="Enter Account Alias"
+          disabled={isDisabled}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -79,7 +84,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           component={InputField}
           label="Account Alias Additional"
           placeholder={accountAliasValue && 'Enter Account Alias Additional'}
-          disabled={!accountAliasValue}
+          disabled={!accountAliasValue || isDisabled}
           hint={!accountAliasValue && 'Fill account alias'}
         />
       </Box>
@@ -94,6 +99,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           options={institutionProductsOptions}
           isMulti={true}
           isLoading={isLoadingInstitutionProducts}
+          isDisabled={isDisabled}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -103,6 +109,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           component={InputField}
           label="First Name"
           placeholder="Enter First Name"
+          disabled={isDisabled}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -112,6 +119,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           component={InputField}
           label="Last Name"
           placeholder="Enter Last Name"
+          disabled={isDisabled}
         />
       </Box>
     </Flex>

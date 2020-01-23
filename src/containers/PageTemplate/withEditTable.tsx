@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { connect } from 'react-redux';
 import { RowInfo } from 'react-table';

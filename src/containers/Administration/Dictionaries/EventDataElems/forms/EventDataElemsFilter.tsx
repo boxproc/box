@@ -10,10 +10,12 @@ import { formErrorUtil } from 'utils';
 
 interface EventsDataElemsFilterProps {
   eventOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const EventsDataElemsFilter: React.FC<EventsDataElemsFilterProps> = ({
   eventOptions,
+  isDisabled,
 }) => {
   return (
     <Box width={[1 / 4]} p="10px">
@@ -25,6 +27,7 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterProps> = ({
         placeholder="Select Event"
         options={eventOptions}
         validate={[formErrorUtil.required]}
+        isDisabled={isDisabled}
       />
     </Box>
   );

@@ -3,11 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import {
-  Button,
-  ExternalSpinnerProps,
-  withSpinner,
-} from 'components';
+import { Button } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -19,17 +15,17 @@ import {
   HandleGetProductDetails,
   HandleIllustrateLoanProduct,
   IllustrationProductLoan,
-  ResetIllustrationLoan
+  ResetProductIllustration
 } from 'store/domains';
 
-interface IllustrationProductFormProps extends ExternalSpinnerProps {
+interface IllustrationProductFormProps {
   productIllustration: Array<IllustrationProductLoan>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   getProductDetails: HandleGetProductDetails;
-  isLoading: boolean;
-  resetIllustrationLoan: ResetIllustrationLoan;
+  resetProductIllustration: ResetProductIllustration;
   onCancel?: () => void;
   isReadOnly: boolean;
+  isLoading: boolean;
 }
 
 type GeneralProductFormAllProps = IllustrationProductFormProps &
@@ -44,12 +40,20 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   dirty,
   isReadOnly,
   isLoading,
+  resetProductIllustration,
 }) => {
   React.useEffect(
     () => {
       getProductDetails();
     },
     [getProductDetails]
+  );
+
+  React.useEffect(
+    () => {
+      return () => resetProductIllustration();
+    },
+    [resetProductIllustration]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -70,7 +74,10 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
         </form>
       )}
       <Box mt="15px">
-        <IllustrationLoanTable productIllustration={productIllustration} />
+        <IllustrationLoanTable
+          productIllustration={productIllustration}
+          isLoading={isLoading}
+        />
       </Box>
       <Flex justifyContent="flex-end">
         <Button
@@ -78,6 +85,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
           onClick={onCancel}
           rightPosition={true}
           withCancelConfirmation={dirty}
+          disabled={isLoading}
         />
       </Flex>
     </React.Fragment>
@@ -88,4 +96,4 @@ export default reduxForm<{}, IllustrationProductFormProps>({
   form: formNamesConst.PRODUCT_ILLUSTRATION_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(GeneralProductForm));
+})(GeneralProductForm);

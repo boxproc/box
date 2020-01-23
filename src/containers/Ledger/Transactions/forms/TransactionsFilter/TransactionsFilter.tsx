@@ -18,6 +18,7 @@ interface TransactionsFilterProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   institutionValue: SelectValue;
   isLoadingInstitutionProducts: boolean;
+  isDisabled: boolean;
 }
 
 const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
@@ -26,6 +27,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
   getInstitutionProducts,
   institutionValue,
   isLoadingInstitutionProducts,
+  isDisabled,
 }) => {
   const currentInstitutionId = React.useMemo(
     () => institutionValue && institutionValue.value,
@@ -52,6 +54,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -64,6 +67,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder="Select Product"
           options={institutionProductsOptions}
           isLoading={isLoadingInstitutionProducts}
+          isDisabled={isDisabled}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -74,6 +78,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Customer ID"
           placeholder="Enter ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -84,6 +89,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           component={InputField}
           label="Transaction ID"
           placeholder="Enter ID"
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -95,6 +101,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Account ID"
           placeholder="Enter ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -106,6 +113,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Card ID"
           placeholder="Enter ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
@@ -117,6 +125,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Pan Alias"
           isNumber={true}
           placeholder="Enter Pan Alias"
+          disabled={isDisabled}
         />
       </Box>
       <Box width="200px" p="10px">
@@ -127,6 +136,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
@@ -141,6 +151,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

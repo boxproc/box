@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { ScheduledJobsFilter } from './forms';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -26,6 +24,7 @@ export interface ScheduledJobsProps {
   resetScheduledJobs: ResetScheduledJobs;
   currentSchedulerId: number;
   currentScheduledJobsName: string;
+  isLoading: boolean;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
@@ -36,6 +35,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   getLogData,
   currentSchedulerId,
   currentScheduledJobsName,
+  isLoading,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -71,6 +71,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       data={auditScheduledJobs}
       columns={tableColumns}
       isDownloadButton={true}
+      isLoading={isLoading}
       filterAction={filterAuditScheduledJobs}
       contextMenuItems={contextMenuItems}
       initialFilterValues={{
@@ -80,6 +81,7 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
       }}
       FilterForm={
         <ScheduledJobsFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -87,6 +89,4 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(ScheduledJobs);
+export default ScheduledJobs;

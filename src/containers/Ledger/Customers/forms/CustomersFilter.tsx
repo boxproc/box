@@ -10,10 +10,12 @@ import { formErrorUtil } from 'utils';
 
 interface CustomersFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const CustomersFilter: React.FC<CustomersFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -26,6 +28,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -36,6 +39,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           component={InputField}
           label="First Name"
           placeholder="Enter First Name"
+          disabled={isDisabled}
         />
       </Box>
       <Box width={[1 / 4]} p="10px">
@@ -45,6 +49,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           component={InputField}
           label="Last Name"
           placeholder="Enter Last Name"
+          disabled={isDisabled}
         />
       </Box>
       <Box width="150px" p="10px">
@@ -55,6 +60,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           label="Customer ID"
           placeholder="Enter ID"
           isNumber={true}
+          disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>

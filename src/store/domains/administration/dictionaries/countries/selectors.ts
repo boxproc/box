@@ -4,11 +4,11 @@ import { StoreState } from 'store/StoreState';
 import { stringsUtil } from 'utils';
 
 export const selectDefaultDictionaryCountriesItems = (state: StoreState) =>
-  state.administration.countries.countries.asMutable();
+  state.administration.countries.countries;
 
 export const selectDictionaryCountries = createSelector(
   selectDefaultDictionaryCountriesItems,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     if (!item) {
       return null;
     }
@@ -24,7 +24,7 @@ export const selectDictionaryCountries = createSelector(
 
 export const selectCountryCodesOptions = createSelector(
   selectDefaultDictionaryCountriesItems,
-  data => data && data.map(code => {
+  data => data && data.asMutable().map(code => {
     const { country_code, name } = code;
 
     return {

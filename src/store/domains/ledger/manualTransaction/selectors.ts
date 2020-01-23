@@ -4,11 +4,11 @@ import { StoreState } from 'store/StoreState';
 import { prepareResultDataToRender } from './util';
 
 export const selectDefaultLedgerManualTransaction = (state: StoreState) =>
-  state.ledger.manualTransaction.transactionResult.asMutable();
+  state.ledger.manualTransaction.transactionResult;
 
 export const selectLedgerManualTransaction = createSelector(
   selectDefaultLedgerManualTransaction,
-  transaction => transaction && prepareResultDataToRender(transaction)
+  transaction => transaction && prepareResultDataToRender(transaction.asMutable())
 );
 
 export const selectLedgerManualTransactionId = createSelector(

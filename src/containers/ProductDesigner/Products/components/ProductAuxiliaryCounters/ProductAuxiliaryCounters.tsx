@@ -25,6 +25,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
+        justifyContent="center"
       >
         <Box p="10px 0 20px 10px">
           <Field

@@ -13,24 +13,23 @@ import {
 } from './utils';
 
 export const selectDefaultLedgerAccounts = (state: StoreState) =>
-  state.ledger.accounts.accounts && state.ledger.accounts.accounts.asMutable();
+  state.ledger.accounts.accounts && state.ledger.accounts.accounts;
 
 export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.map(item => {
+  (items, institutions) => items && items.asMutable().map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareDataToRender(item, institution);
   })
 );
 
-export const selectDefaultLedgerAccountCards = (state: StoreState) =>
-  state.ledger.accounts.cards.asMutable();
+export const selectDefaultLedgerAccountCards = (state: StoreState) => state.ledger.accounts.cards;
 
 export const selectLedgerAccountCards = createSelector(
   selectDefaultLedgerAccountCards,
-  items => items && items.map(item => preparedAccountCardsToRender(item))
+  items => items && items.asMutable().map(item => preparedAccountCardsToRender(item))
 );
 
 export const selectLedgerCurrentAccountProductType = createSelector(

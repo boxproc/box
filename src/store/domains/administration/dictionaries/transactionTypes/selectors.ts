@@ -8,12 +8,12 @@ import {
 
 import { StoreState } from 'store/StoreState';
 
-export const selectDefaultDictionaryTransactionTypesItems = (state: StoreState) =>
-  state.administration.transactionTypes.transactionTypes.asMutable();
+export const selectDefaultDictionaryTransactionTypes = (state: StoreState) =>
+  state.administration.transactionTypes.transactionTypes;
 
 export const selectDictionaryTransactionTypes = createSelector(
-  selectDefaultDictionaryTransactionTypesItems,
-  items => items && items.map(item => {
+  selectDefaultDictionaryTransactionTypes,
+  items => items && items.asMutable().map(item => {
     const debitCreditIndicator = debitCreditIndicatorOptions
       .find(el => el.value === item.debit_credit_indicator);
 
@@ -67,13 +67,13 @@ export const selectDictionaryLimitAdjustmentTypesOptions = createSelector(
   });
 
 export const selectIsTransactionTypesLoaded = createSelector(
-  selectDefaultDictionaryTransactionTypesItems,
+  selectDefaultDictionaryTransactionTypes,
   countryCodes => countryCodes && countryCodes.length > 0
 );
 
 export const selectTransactionTypesForRules = createSelector(
-  selectDefaultDictionaryTransactionTypesItems,
-  types => types && types.map(type => {
+  selectDefaultDictionaryTransactionTypes,
+  types => types && types.asMutable().map(type => {
 
     return {
       name: type.id,

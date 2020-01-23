@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
@@ -13,11 +11,13 @@ import {
 interface TransactionTypesProps {
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
   transactionTypes: Array<DictionaryTransactionTypes>;
+  isLoading: boolean;
 }
 
 export const TransactionTypes: React.FC<TransactionTypesProps> = ({
   getTransactionTypes,
   transactionTypes,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -32,10 +32,9 @@ export const TransactionTypes: React.FC<TransactionTypesProps> = ({
       data={transactionTypes}
       columns={tableColumns}
       isDownloadButton={true}
+      isLoading={isLoading}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(TransactionTypes);
+export default TransactionTypes;

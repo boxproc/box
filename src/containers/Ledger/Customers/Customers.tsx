@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -33,6 +31,7 @@ export interface CustomersProps {
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
   filterLedgerStatementsById: HandleFilterLedgerStatementsById;
   filterLedgerAccountsById: HandleFilterLedgerAccountsById;
+  isLoading: boolean;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -47,6 +46,7 @@ const Customers: React.FC<CustomersProps> = ({
   filterLedgerStatementsById,
   filterLedgerAccountsById,
   resetCustomers,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -114,9 +114,11 @@ const Customers: React.FC<CustomersProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerCustomers}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
         <CustomersFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -124,6 +126,4 @@ const Customers: React.FC<CustomersProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Customers);
+export default Customers;

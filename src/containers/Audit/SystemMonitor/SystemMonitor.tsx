@@ -259,7 +259,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   return (
     <React.Fragment>
       <Flex alignItems="center">
-        <Box mb="15px" mr="15px">
+        <Box mb="10px" mr="15px">
           <ExternalLink
             text="HELP"
             link={helpLink}

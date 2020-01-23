@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UserActivityFilter } from './forms';
@@ -19,6 +17,7 @@ export interface UserActivityProps {
   auditUserActivity: Array<AuditUserActivityItem>;
   filterAuditUserActivity: HandleFilterAuditUserActivity;
   resetUserActivity: ResetUserActivity;
+  isLoading: boolean;
 }
 
 const UserActivity: React.FC<UserActivityProps> = ({
@@ -26,6 +25,7 @@ const UserActivity: React.FC<UserActivityProps> = ({
   auditUserActivity,
   filterAuditUserActivity,
   resetUserActivity,
+  isLoading,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -57,10 +57,12 @@ const UserActivity: React.FC<UserActivityProps> = ({
       data={auditUserActivity}
       columns={tableColumns}
       isDownloadButton={true}
+      isLoading={isLoading}
       filterAction={filterAuditUserActivity}
       initialFilterValues={initialFilterValues}
       FilterForm={
         <UserActivityFilter
+          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
         />
       }
@@ -68,6 +70,4 @@ const UserActivity: React.FC<UserActivityProps> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(UserActivity);
+export default UserActivity;

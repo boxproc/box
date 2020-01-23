@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -17,6 +15,7 @@ interface ApiCallsProps {
   filterAuditApiCalls: HandleFilterAuditApiCalls;
   institutionsOptions: Array<SelectValue>;
   resetApiCalls: ResetApiCalls;
+  isLoading: boolean;
 }
 
 const ApiCalls: React.FC<ApiCallsProps> = ({
@@ -24,6 +23,7 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
   filterAuditApiCalls,
   institutionsOptions,
   resetApiCalls,
+  isLoading,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -57,13 +57,15 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
       editModalName={modalNamesConst.AUDIT_API_CALL}
       filterAction={filterAuditApiCalls}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <ApiCallsFilter institutionsOptions={institutionsOptions} />
+        <ApiCallsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
-export default withSpinner({
-  isFixed: true,
-})(ApiCalls);
+export default ApiCalls;

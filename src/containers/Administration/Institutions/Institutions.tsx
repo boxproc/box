@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -20,6 +18,7 @@ export interface InstitutionsProps {
   deleteAdminInstitution: HandleDeleteAdminInstitution;
   adminCurrentInstitutionName: string;
   resetInstitutions: ResetInstitutions;
+  isLoading: boolean;
 }
 
 const Institutions: React.FC<InstitutionsProps> = ({
@@ -28,6 +27,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
   deleteAdminInstitution,
   adminCurrentInstitutionName,
   resetInstitutions,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -59,10 +59,9 @@ const Institutions: React.FC<InstitutionsProps> = ({
       newModalName={modalNamesConst.ADD_INSTITUTION}
       editModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
+      isLoading={isLoading}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Institutions);
+export default Institutions;

@@ -79,7 +79,7 @@ export const selectTransactionsIllustration = createSelector(
 );
 
 export const selectDefaultIllustrationLoan = (state: StoreState) =>
-  state.productDesigner.productIllustration.productIllustration;
+  state.productDesigner.productIllustration.productLoanIllustration;
 
 export const selectProductLoanIllustration = createSelector(
   selectDefaultIllustrationLoan,

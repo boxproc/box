@@ -18,10 +18,12 @@ const InstitutionsWrapper = styled(Box)`
 
 interface UiSessionsFilterProps {
   institutionsOptions: Array<SelectValue>;
+  isDisabled: boolean;
 }
 
 const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({
   institutionsOptions,
+  isDisabled,
 }) => {
   return (
     <React.Fragment>
@@ -34,6 +36,7 @@ const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isMulti={true}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </InstitutionsWrapper>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -33,6 +31,7 @@ export interface TransactionsProps extends WithModalProps {
   filterLedgerCardsById: HandleFilterLedgerCardsById;
   filterLedgerTransactions: HandleFilterLedgerTransactions;
   resetTransactions: ResetTransactions;
+  isLoading: boolean;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
@@ -46,6 +45,7 @@ const Transactions: React.FC<TransactionsProps> = ({
   filterLedgerCardsById,
   currentId,
   openModal,
+  isLoading,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -119,14 +119,16 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterAction={filterLedgerTransactions}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <TransactionsFilter institutionsOptions={institutionsOptions} />
+        <TransactionsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withModal(Transactions));
+export default withModal(Transactions);

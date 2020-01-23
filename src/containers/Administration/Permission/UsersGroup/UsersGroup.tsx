@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -13,12 +11,14 @@ interface UserFilterProps {
   adminUsersGroupItems: Array<AdminUsersGroupItem>;
   getAdminUsersGroup: HandleGetAdminUsersGroup;
   resetUsersGroup: ResetUsersGroup;
+  isLoading: boolean;
 }
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
   getAdminUsersGroup,
   adminUsersGroupItems,
   resetUsersGroup,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -36,10 +36,9 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       isDownloadButton={true}
       newModalName={modalNamesConst.ADD_USERS_GROUP}
       editModalName={modalNamesConst.EDIT_USERS_GROUP}
+      isLoading={isLoading}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(UsersGroup);
+export default UsersGroup;

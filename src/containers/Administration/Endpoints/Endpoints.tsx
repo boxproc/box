@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -26,6 +24,7 @@ export interface EndpointsProps {
   filterAdminEndpoint: HandleFilterAdminEndpoint;
   getLogData: HandleGetLogData;
   resetEndpoints: ResetEndpoints;
+  isLoading: boolean;
 }
 
 const Endpoints: React.FC<EndpointsProps> = ({
@@ -37,6 +36,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
   institutionsOptions,
   getLogData,
   resetEndpoints,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -86,14 +86,16 @@ const Endpoints: React.FC<EndpointsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterAdminEndpoint}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <EndpointsFilter institutionsOptions={institutionsOptions} />
+        <EndpointsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Endpoints);
+export default Endpoints;

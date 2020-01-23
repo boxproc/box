@@ -47,7 +47,7 @@ export const T3 = styled.h3<TitleProps>`
 `;
 
 export const T4 = styled.h4<TitleProps>`
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   font-size: 16px;
   color: ${({ theme, color }) => color ? color : theme.colors.darkGray};
 `;

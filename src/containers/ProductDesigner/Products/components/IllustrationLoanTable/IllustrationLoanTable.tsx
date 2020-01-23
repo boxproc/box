@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import { Table, TableCell, TableHeader } from 'components';
+import { Table, TableCell, TableHeader, withSpinner } from 'components';
 
 import { IllustrationProductLoan } from 'store/domains';
 
@@ -139,4 +139,4 @@ const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
   );
 };
 
-export default IllustrationLoanTable;
+export default withSpinner()(IllustrationLoanTable);

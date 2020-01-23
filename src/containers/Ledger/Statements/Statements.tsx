@@ -3,7 +3,7 @@ import { CellInfo } from 'react-table';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, withSpinner } from 'components';
+import { Button } from 'components';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -39,6 +39,7 @@ export interface StatementsProps {
   resetStatements: ResetStatements;
   setActiveItemId: SetActiveItemId;
   isLoadingStatement: boolean;
+  isLoading: boolean;
 }
 
 const Statements: React.FC<StatementsProps> = ({
@@ -54,6 +55,7 @@ const Statements: React.FC<StatementsProps> = ({
   resetStatements,
   setActiveItemId,
   isLoadingStatement,
+  isLoading,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
   const [dateTo, setDateTo] = React.useState(null);
@@ -166,14 +168,16 @@ const Statements: React.FC<StatementsProps> = ({
       filterAction={filterLedgerStatements}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <StatementsFilter institutionsOptions={institutionsOptions} />
+        <StatementsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Statements);
+export default Statements;

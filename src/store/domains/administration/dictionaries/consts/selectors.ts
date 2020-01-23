@@ -4,11 +4,11 @@ import { StoreState } from 'store/StoreState';
 import { valueLabelParse } from './utils';
 
 export const selectDefaultDictionaryCardStatusesItems = (state: StoreState) =>
-  state.administration.consts.cardStatuses.asMutable();
+  state.administration.consts.cardStatuses;
 
 export const selectCardStatusesOptions = createSelector(
   selectDefaultDictionaryCardStatusesItems,
-  statuses => valueLabelParse(statuses)
+  statuses => statuses && valueLabelParse(statuses.asMutable())
 );
 
 export const selectIsCardStatusesLoaded = createSelector(
@@ -17,11 +17,11 @@ export const selectIsCardStatusesLoaded = createSelector(
 );
 
 export const selectDefaultDictionaryEndpointTypesItems = (state: StoreState) =>
-  state.administration.consts.endpointTypes.asMutable();
+  state.administration.consts.endpointTypes;
 
 export const selectEndpointTypesOptions = createSelector(
   selectDefaultDictionaryEndpointTypesItems,
-  types => valueLabelParse(types)
+  types => types && valueLabelParse(types.asMutable())
 );
 
 export const selectIsEndpointTypesLoaded = createSelector(
@@ -30,11 +30,11 @@ export const selectIsEndpointTypesLoaded = createSelector(
 );
 
 export const selectDefaultDictionaryInterfaceTypesItems = (state: StoreState) =>
-  state.administration.consts.interfaceTypes.asMutable();
+  state.administration.consts.interfaceTypes;
 
 export const selectInterfaceTypesOptions = createSelector(
   selectDefaultDictionaryInterfaceTypesItems,
-  types => valueLabelParse(types)
+  types => types && valueLabelParse(types.asMutable())
 );
 
 export const selectIsInterfaceTypesLoaded = createSelector(
@@ -43,11 +43,11 @@ export const selectIsInterfaceTypesLoaded = createSelector(
 );
 
 export const selectDefaultDictionaryStatementCycleTypesItems = (state: StoreState) =>
-  state.administration.consts.statementCycleTypes.asMutable();
+  state.administration.consts.statementCycleTypes;
 
 export const selectStatementCycleTypesOptions = createSelector(
   selectDefaultDictionaryStatementCycleTypesItems,
-  types => valueLabelParse(types)
+  types => types && valueLabelParse(types.asMutable())
 );
 
 export const selectIsStatementCycleTypesLoaded = createSelector(

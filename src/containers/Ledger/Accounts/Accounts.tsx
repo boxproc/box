@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
@@ -39,6 +38,7 @@ export interface AccountsProps extends WithModalProps {
   currentCurrencyCode: string;
   currentAccountBalanceLimit: string;
   currentAccountBalanceLimitShared: string;
+  isLoading: boolean;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -59,6 +59,7 @@ const Accounts: React.FC<AccountsProps> = ({
   currentCurrencyCode,
   currentAccountBalanceLimit,
   currentAccountBalanceLimitShared,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -175,14 +176,16 @@ const Accounts: React.FC<AccountsProps> = ({
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}
       isDownloadButton={true}
+      isLoading={isLoading}
       initialFilterValues={initialFilterValues}
       FilterForm={
-        <AccountsFilter institutionsOptions={institutionsOptions} />
+        <AccountsFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
       }
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withModal(Accounts));
+export default withModal(Accounts);

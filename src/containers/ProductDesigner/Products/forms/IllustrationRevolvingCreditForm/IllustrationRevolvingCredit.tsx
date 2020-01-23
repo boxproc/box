@@ -114,4 +114,6 @@ const GeneralProductForm: React.FC<IllustrationProductFormProps> = ({
   );
 };
 
-export default (withSpinner())(withLoadTransactionTypes(GeneralProductForm));
+export default (withSpinner())(
+  withLoadTransactionTypes(GeneralProductForm)
+);

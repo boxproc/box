@@ -6,12 +6,11 @@ import { selectCardStatusesOptions } from 'store/domains/administration';
 import { selectActiveItemId } from 'store/domains/utils';
 import { prepareValuesToRender } from './utils';
 
-export const selectDefaultLedgerCards = (state: StoreState) =>
-  state.ledger.cards.cards.asMutable();
+export const selectDefaultLedgerCards = (state: StoreState) => state.ledger.cards.cards;
 
 export const selectLedgerCards = createSelector(
   selectDefaultLedgerCards,
-  items => items && items.map(item => prepareValuesToRender(item))
+  items => items && items.asMutable().map(item => prepareValuesToRender(item))
 );
 
 export const selectLedgerCardValues = createSelector(

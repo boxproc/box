@@ -18,6 +18,7 @@ interface ApiCallsFilterProps {
   institutionsOptions: Array<SelectValue>;
   endpointsOptions: Array<SelectValue>;
   isLoadingEndpoints: boolean;
+  isDisabled: boolean;
 }
 
 const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
@@ -26,6 +27,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
   institutionsOptions,
   endpointsOptions,
   isLoadingEndpoints,
+  isDisabled,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -49,6 +51,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           options={institutionsOptions}
           placeholder="Select Institution"
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -61,6 +64,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           options={endpointsOptions}
           placeholder="Select endpoint"
           isLoading={isLoadingEndpoints}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -71,6 +75,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           component={InputField}
           label="API Name"
           placeholder="Enter api name"
+          disabled={isDisabled}
         />
       </Box>
       <Delimiter />
@@ -82,6 +87,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
@@ -96,6 +102,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

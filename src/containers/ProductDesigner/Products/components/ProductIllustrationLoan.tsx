@@ -15,11 +15,6 @@ interface ProductIllustrationLoanProps {
 const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
   isLoading,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Illustrating...' : 'Illustrate',
-    [isLoading]
-  );
-
   return (
     <Flex
       alignItems="flex-end"
@@ -35,6 +30,7 @@ const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
           label="Start Date"
           placeholder={dateFormat.DATE}
           mask={maskFormat.DATE}
+          disabled={isLoading}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDate,
@@ -50,7 +46,11 @@ const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={[formErrorUtil.required]}
+          disabled={isLoading}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isNumber,
+          ]}
         />
       </Box>
       <Box width="115px" p="10px">
@@ -61,7 +61,11 @@ const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
           component={InputField}
           label="# of Installments"
           isNumber={true}
-          validate={[formErrorUtil.required]}
+          disabled={isLoading}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isInteger,
+          ]}
         />
       </Box>
       <Box width="120px" p="10px">
@@ -72,12 +76,16 @@ const ProductIllustrationLoan: React.FC<ProductIllustrationLoanProps> = ({
           isNumber={true}
           label="# of Interest Free"
           placeholder="Enter #"
-          validate={[formErrorUtil.required]}
+          disabled={isLoading}
+          validate={[
+            formErrorUtil.required,
+            formErrorUtil.isInteger,
+          ]}
         />
       </Box>
       <Hr />
       <Flex justifyContent="flex-end" width="100%">
-        <Button text={buttonText} />
+        <Button text="Illustrate" />
       </Flex>
     </Flex>
   );

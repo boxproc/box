@@ -17,6 +17,7 @@ interface UserActivityFilterProps {
   currentInstitution: SelectValue;
   auditUsersOptions: Array<SelectValue>;
   isLoadingUsers: boolean;
+  isDisabled: boolean;
 }
 
 const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
@@ -25,6 +26,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
   getAuditUsers,
   currentInstitution,
   isLoadingUsers,
+  isDisabled,
 }) => {
   const currentInstitutionId = currentInstitution && currentInstitution.value;
 
@@ -48,6 +50,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           placeholder="Select Institution"
           options={institutionsOptions}
           isClearable={false}
+          isDisabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -60,6 +63,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           options={auditUsersOptions}
           placeholder="Select Username"
           isLoading={isLoadingUsers}
+          disabled={isDisabled}
         />
       </Box>
       <Box width="200px" p="10px" >
@@ -70,6 +74,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time From"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
@@ -84,6 +89,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           label="Date&nbsp;/&nbsp;Time To"
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
+          disabled={isDisabled}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

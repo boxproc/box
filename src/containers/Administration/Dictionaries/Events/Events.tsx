@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { withSpinner } from 'components';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
@@ -12,11 +10,13 @@ import { IdNamePair } from 'types';
 interface EventsProps {
   getDictionaryEvents: HandleGetDictionaryEvents;
   dictionaryEventsItems: Array<IdNamePair>;
+  isLoading: boolean;
 }
 
 export const Events: React.FC<EventsProps> = ({
   getDictionaryEvents,
   dictionaryEventsItems,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
@@ -31,10 +31,9 @@ export const Events: React.FC<EventsProps> = ({
       data={dictionaryEventsItems}
       columns={tableColumns}
       isDownloadButton={true}
+      isLoading={isLoading}
     />
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(Events);
+export default Events;

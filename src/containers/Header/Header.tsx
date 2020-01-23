@@ -27,8 +27,8 @@ const Wrapper = styled.header`
   right: 0;
   left: 0;
   width: 100%;
-  min-height: 70px;
-  padding: 10px 0;
+  min-height: 64px;
+  padding: 7px 0;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.normalBox};
   font-size: 13px;
@@ -44,15 +44,12 @@ const Wrapper = styled.header`
     position: relative;
   }
 
-  .user-main {
-    margin: 2px 0;
-  }
-
   .location {
     position: absolute;
     right: 5px;
     top: 100%;
     text-decoration: none;
+    line-height: 1;
   }
 `;
 
@@ -130,10 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             ml="50px"
             className="user"
           >
-            <Flex
-              alignItems="center"
-              className="user-main"
-            >
+            <Flex alignItems="center">
               <Box mr="7px" fontSize="0px">
                 <HelpDropdown
                   location={location}
@@ -166,5 +160,5 @@ const Header: React.FC<HeaderProps> = ({
 
 export default withSpinner({
   isFixed: true,
-  maxHeight: '70px',
+  maxHeight: '64px',
 })(Header);
