@@ -32,7 +32,7 @@ export interface ProductAprIds {
 
 export interface ProductAprPlainInfo extends ProductAprIds {
   description: string;
-  rate: number;
+  rate: string;
   graceNumberOfDays: number;
 }
 
@@ -72,8 +72,8 @@ export interface ProductFeesIds {
 
 export interface ProductFeePlainInfo extends ProductFeesIds {
   description: string;
-  rate: number;
-  amount: number;
+  rate: string;
+  amount: string;
 }
 
 export interface ProductFee extends ProductFeePlainInfo {
@@ -111,8 +111,8 @@ export interface ProductRewardsIds {
 
 export interface ProductRewardPlainInfo extends ProductRewardsIds {
   description: string;
-  rate: number;
-  amount: number;
+  rate: string;
+  amount: string;
 }
 
 export interface ProductReward extends ProductRewardPlainInfo {
