@@ -58,11 +58,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
         <LoanDetails
           isReadOnly={readOnly}
           interestDistributionValue={interestDistributionValue}
-        />)}
-      {isPrepaid && (<PrepaidDetails isReadOnly={readOnly} />)}
-      {isDebit && (<DebitDetails isReadOnly={readOnly} />)}
-      {isSavings && (<SavingsDetails isReadOnly={readOnly} />)}
-      {isRevolvingCredit && (<RevolvingCreditDetails isReadOnly={readOnly} />)}
+        />
+      )}
+      {isPrepaid && (
+        <PrepaidDetails isReadOnly={readOnly} />
+      )}
+      {isDebit && (
+        <DebitDetails isReadOnly={readOnly} />
+      )}
+      {isSavings && (
+        <SavingsDetails isReadOnly={readOnly} />
+      )}
+      {isRevolvingCredit && (
+        <RevolvingCreditDetails isReadOnly={readOnly} />
+      )}
     </React.Fragment>
   );
 };

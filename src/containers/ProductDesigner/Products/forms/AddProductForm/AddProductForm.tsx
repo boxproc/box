@@ -22,6 +22,7 @@ interface AddProductFormProps extends ExternalSpinnerProps {
   currentProductType: SelectValue;
   addProduct: HandleAddProduct;
   currentInstitution: SelectValue;
+  interestDistributionValue: SelectValue;
   onCancel: () => void;
 }
 
@@ -35,7 +36,13 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   handleSubmit,
   dirty,
   pristine,
+  interestDistributionValue,
 }) => {
+  const productType = React.useMemo(
+    () => currentProductType && currentProductType.value,
+    [currentProductType]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProduct),
     [handleSubmit, addProduct]
@@ -55,7 +62,8 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
           hintIfDisabled="Select Product Type"
         >
           <ProductDetails
-            productType={currentProductType && currentProductType.value}
+            productType={productType}
+            interestDistributionValue={interestDistributionValue}
           />
           <Hr />
           <OkCancelButtons
