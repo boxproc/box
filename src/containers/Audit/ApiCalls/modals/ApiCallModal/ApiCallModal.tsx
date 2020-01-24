@@ -11,13 +11,13 @@ import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 
 import { HandleGetDetailsAuditApiCalls } from 'store/domains';
 
-interface EditTransactionModalProps extends WithModalProps {
+interface ApiCallModalProps extends WithModalProps {
   getDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls;
 }
 
 const modalName = modalNamesConst.AUDIT_API_CALL;
 
-const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
+const ApiCallModal: React.FC<ApiCallModalProps> = ({
   closeModal,
   getDetailsAuditApiCalls,
 }) => {
@@ -53,4 +53,4 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(withModal(EditTransactionModal));
+})(withModal(ApiCallModal));

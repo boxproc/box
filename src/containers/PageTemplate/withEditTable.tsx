@@ -96,7 +96,7 @@ export const withEditTable = <OriginProps extends {}>(
     if (editModalName) {
       menuItems = [
         {
-          name: editableItemName ? `Edit ${editableItemName}` : 'Edit',
+          name: editableItemName ? `Open ${editableItemName}` : 'Open',
           icon: iconNamesConst.EDIT,
           action: () => openCurrentRowInModal(),
         },

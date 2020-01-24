@@ -44,6 +44,10 @@
   color: #ffa400;
 }
 
+.react-contextmenu-item:hover .icon {
+  color: #ffa400;
+}
+
 .react-contextmenu-item.react-contextmenu-submenu .react-contextmenu-item {
   padding: 5px 12px 5px 10px;
 }
@@ -57,7 +61,7 @@
 }
 
 .react-contextmenu-item--divider {
-  margin: 3px 0;
+  margin: 1px 0;
   padding: 0;
   height: 2px;
   border-top: 1px solid #e6e6e6;

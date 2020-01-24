@@ -23,10 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   dictionaryEventDataElemsItems: selectDictionaryEventDataElemsItems(state),
   dictionaryEventsOptions: [
-    {
-      label: 'Select All',
-      value: '',
-    },
+    { label: 'Select All', value: '' },
     ...selectDictionaryEventsOptions(state),
   ],
 });

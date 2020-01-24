@@ -26,8 +26,9 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterProps> = ({
         label="Event"
         placeholder="Select Event"
         options={eventOptions}
-        validate={[formErrorUtil.required]}
         isDisabled={isDisabled}
+        isClearable={false}
+        validate={[formErrorUtil.required]}
       />
     </Box>
   );

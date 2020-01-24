@@ -3,6 +3,7 @@ import React from 'react';
 import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
 
 import { iconNamesConst } from 'consts';
+
 export const renderIcon = (name: string) => {
   switch (name) {
     case iconNamesConst.EDIT:

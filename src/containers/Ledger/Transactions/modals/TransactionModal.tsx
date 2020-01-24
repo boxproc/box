@@ -9,11 +9,11 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { LedgerTransactionsForm } from 'containers/Ledger/Transactions/forms';
 
-interface EditTransactionModalProps extends WithModalProps { }
+interface TransactionModalProps extends WithModalProps { }
 
 const modalName = modalNamesConst.LEDGER_TRANSACTION;
 
-const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
+const TransactionModal: React.FC<TransactionModalProps> = ({
   closeModal,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -41,4 +41,4 @@ const EditTransactionModal: React.FC<EditTransactionModalProps> = ({
   );
 };
 
-export default withModal(EditTransactionModal);
+export default withModal(TransactionModal);

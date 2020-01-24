@@ -122,7 +122,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
       maxContainerWidth={550}
     >
       <Flex alignItems="center">
-        <Box mb="15px" mr="15px">
+        <Box mb="10px" mr="15px">
           <ExternalLink
             text="HELP"
             link={helpLink}
