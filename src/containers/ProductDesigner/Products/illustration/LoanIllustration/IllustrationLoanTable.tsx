@@ -122,16 +122,16 @@ const columns = [
 ];
 
 interface IllustrationLoanTableProps {
-  productIllustration: Array<IllustrationProductLoan>;
+  data: Array<IllustrationProductLoan>;
 }
 
 const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
-  productIllustration,
+  data,
 }) => {
   return (
     <Box pb="10px">
       <Table
-        data={productIllustration}
+        data={data}
         columns={columns}
         isSmaller={true}
       />

@@ -23,12 +23,17 @@ export interface PayloadLogModal {
   logData: string;
   logLocation?: string;
 }
+
 export interface PayloadLedgerManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
   balanceLimit: string;
   balanceLimitShared: string;
   isLimitAdjustmentMode?: boolean;
+}
+
+export interface PayloadLedgerTransactionModal {
+  activeTab?: number;
 }
 
 export interface ModalsState {
@@ -38,4 +43,5 @@ export interface ModalsState {
   payloadConfirmationModal: PayloadConfirmationModal;
   payloadLogModal: PayloadLogModal;
   payloadLedgerManualTransactionModal: PayloadLedgerManualTransactionModal;
+  payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
 }

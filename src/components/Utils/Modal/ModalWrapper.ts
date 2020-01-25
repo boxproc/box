@@ -51,7 +51,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     display: inline-block;
     vertical-align: middle;
     margin: 5px 0;
-    padding: 15px 15px 10px;
+    padding: 15px;
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;

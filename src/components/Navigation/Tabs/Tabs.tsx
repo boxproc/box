@@ -16,6 +16,7 @@ const TabsWrapper = styled.div`
 
 interface TabTitleProps {
   isDisabled?: boolean;
+  hasTabs?: boolean;
 }
 
 const TabTitle = styled.div<TabTitleProps>`
@@ -49,27 +50,46 @@ const TabTitle = styled.div<TabTitleProps>`
     border-top-left-radius: 2px;
     cursor: default;
     user-select: inherit;
+
+    ${({ hasTabs }) => hasTabs && `
+      background-color: transparent;
+      border-bottom-color: transparent;
+    `}
   }
 `;
 
-interface TabsProps extends WithModalProps { }
+interface TabsProps extends WithModalProps {
+  activeTab?: number;
+}
 
 const Tabs: React.FC<TabsProps> = ({
   children,
   openModal,
+  activeTab = 0,
 }) => {
-  const [activeTabIndex, setActiveTabIndex] = React.useState(0);
+  const [activeTabIndex, setActiveTabIndex] = React.useState(activeTab);
+
+  const tab = React.useMemo(
+    () => {
+      const items = children as Array<object>;
+
+      return items.length
+        ? children[activeTabIndex]
+        : children;
+    },
+    [activeTabIndex, children]
+  );
 
   return (
     <React.Fragment>
       <TabsWrapper>
         <Flex flexWrap="wrap">
           {React.Children.map(children, (child, i) => {
-            if (!children[i]) {
+            if (!child) {
               return null;
             }
 
-            const { title, hintIfDisabled, isDisabled, withConfirmation } = children[i].props;
+            const { title, hintIfDisabled, isDisabled, withConfirmation, hasTabs } = child['props'];
 
             const handleClick = () =>
               withConfirmation
@@ -87,6 +107,7 @@ const Tabs: React.FC<TabsProps> = ({
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
                 isDisabled={isDisabled}
+                hasTabs={hasTabs}
                 onClick={(isDisabled || i === activeTabIndex) ? null : handleClick}
               >
                 <div className="title">{title}</div>
@@ -102,7 +123,7 @@ const Tabs: React.FC<TabsProps> = ({
           })}
         </Flex>
       </TabsWrapper>
-      <div>{children[activeTabIndex]}</div>
+      <div>{tab}</div>
     </React.Fragment>
   );
 };

@@ -7,16 +7,17 @@ import {
   FeesForm,
   GeneralLedgerFrom,
   GeneralProductForm,
-  IllustrationForm,
   ProductDetailsForm,
   ProductRulesForm,
   ProductServicesForm,
   RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 
+import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
+import RevolvingCreditIllustration from 'containers/ProductDesigner/Products/illustration/RevolvingCreditIllustration';
+
 import { productTypesCodes } from 'consts';
 import { SelectValue } from 'types';
-import IllustrationRevolvingCreditForm from '../IllustrationRevolvingCreditForm';
 
 interface EditProductFormsProps {
   currentProductType: SelectValue;
@@ -142,23 +143,22 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
-      <TabsPanel
-        title="Illustration"
-        withConfirmation={isAnyFormDirty}
-      >
-        {isIllustrationLoan && (
-          <IllustrationForm
-            onCancel={onCancel}
-            isReadOnly={isReadOnly}
-          />
-        )}
-        {isIllustrationRevolvingCredit && (
-          <IllustrationRevolvingCreditForm
-            onCancel={onCancel}
-            isReadOnly={isReadOnly}
-          />
-        )}
-      </TabsPanel>
+      {isIllustrationLoan && (
+        <TabsPanel
+          title="Illustration"
+          withConfirmation={isAnyFormDirty}
+        >
+          <LoanIllustration onCancel={onCancel} />
+        </TabsPanel>
+      )}
+      {isIllustrationRevolvingCredit && (
+        <TabsPanel
+          title="Illustration"
+          withConfirmation={isAnyFormDirty}
+        >
+          <RevolvingCreditIllustration onCancel={onCancel} />
+        </TabsPanel>
+      )}
     </Tabs>
   );
 };

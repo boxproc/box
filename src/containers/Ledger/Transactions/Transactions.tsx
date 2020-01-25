@@ -88,6 +88,16 @@ const Transactions: React.FC<TransactionsProps> = ({
         name: 'Settle Transaction',
         action: () => openModal({ name: modalNamesConst.SETTLE_TRANSACTION }),
       },
+      {
+        isDivider: true,
+      },
+      {
+        name: 'Convert to Loan',
+        action: () => openModal({
+          name: modalNamesConst.LEDGER_TRANSACTION,
+          payload: { activeTab: 1 },
+        }),
+      },
     ],
     [
       filterLedgerCustomersById,

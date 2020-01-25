@@ -17,8 +17,17 @@ export const selectLedgerCurrentTransaction = createSelector(
   selectLedgerTransactions,
   selectActiveItemId,
   (transaction, currentId) => {
+    if (!transaction) {
+      return null;
+    }
+
     const current = transaction.find(el => el.id === currentId);
 
     return current;
   }
+);
+
+export const selectLedgerTransactionAmount = createSelector(
+  selectLedgerCurrentTransaction,
+  transaction => transaction && transaction.amount
 );

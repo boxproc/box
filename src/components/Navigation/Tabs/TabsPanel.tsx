@@ -2,6 +2,7 @@ import React from 'react';
 
 interface TabsPanelProps {
   title: string;
+  hasTabs?: boolean;
   hintIfDisabled?: string;
   isDisabled?: boolean;
   withConfirmation?: boolean;

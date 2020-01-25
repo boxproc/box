@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import IllustrationForm from './IllustrationForm';
-
-import { illustrationInitialValuesLoan } from 'containers/ProductDesigner/Products/consts';
+import LoanIllustration from './LoanIllustration';
 
 import {
   createLoadingSelector,
@@ -24,12 +22,9 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  initialValues: {
-    ...illustrationInitialValuesLoan,
-    ...selectCurrentProductDetails(state),
-  },
+  loanDetails: selectCurrentProductDetails(state),
   currentProductType: selectCurrentProductType,
-  productIllustration: selectProductLoanIllustration(state),
+  productIllustrationData: selectProductLoanIllustration(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -44,4 +39,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(IllustrationForm);
+)(LoanIllustration);

@@ -49,16 +49,16 @@ const columns = [
 ];
 
 interface IllustrationRevolvingCreditTableProps {
-  aprIllustration: Array<IllustrationProductAprRevolvingCredit>;
+  data: Array<IllustrationProductAprRevolvingCredit>;
 }
 
-const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
-  aprIllustration,
+const AprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
+  data,
 }) => {
   return (
     <Box pb="10px">
       <Table
-        data={aprIllustration}
+        data={data}
         columns={columns}
         isSmaller={true}
       />
@@ -66,4 +66,4 @@ const IllustrationAprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
   );
 };
 
-export default IllustrationAprTable;
+export default AprTable;

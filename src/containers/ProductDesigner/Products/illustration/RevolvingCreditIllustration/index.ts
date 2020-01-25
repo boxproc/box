@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import IllustrationRevolvingCredit from './IllustrationRevolvingCredit';
+import IllustrationRevolvingCredit from './RevolvingCreditIllustration';
 
 import {
   createLoadingSelector,

@@ -1,11 +1,11 @@
 import { dateUtil } from 'utils';
 
-export const illustrationInitialValuesLoan = {
+export const illustrationInitValuesLoan = {
   startDate: dateUtil.todayDate,
   amount: 1200,
 };
 
-export const illustrationInitialValuesRevolvingCredit = {
+export const illustrationInitValuesRevCredit = {
   startDate: dateUtil.todayDate,
   openBalance: 100,
   transactionDate1: dateUtil.todayDate,

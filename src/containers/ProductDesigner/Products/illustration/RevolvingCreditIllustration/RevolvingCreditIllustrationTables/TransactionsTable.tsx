@@ -140,17 +140,17 @@ const columns = [
   },
 ];
 
-interface IllustrationRevolvingCreditTableProps {
-  transactionsIllustration: Array<IllustrationProductTransactionsRevolvingCredit>;
+interface TransactionsTableProps {
+  data: Array<IllustrationProductTransactionsRevolvingCredit>;
 }
 
-const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
-  transactionsIllustration,
+const TransactionsTable: React.FC<TransactionsTableProps> = ({
+  data,
 }) => {
   return (
     <Box pb="10px">
       <Table
-        data={transactionsIllustration}
+        data={data}
         columns={columns}
         isSmaller={true}
       />
@@ -158,4 +158,4 @@ const IllustrationTransactionsTable: React.FC<IllustrationRevolvingCreditTablePr
   );
 };
 
-export default IllustrationTransactionsTable;
+export default TransactionsTable;

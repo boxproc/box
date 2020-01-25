@@ -1,7 +1,9 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Tabs, TabsPanel } from 'components';
+import { Flex } from '@rebass/grid';
+
+import { Button, Hr, Tabs, TabsPanel } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -11,12 +13,16 @@ import {
   LedgerCurrentTransactionGeneral,
 } from 'containers/Ledger/Transactions/components';
 
-interface LedgerTransactionsFormProps { }
+interface LedgerTransactionFormProps {
+  onCancel: () => void;
+}
 
-type TransactionsFilterFormAllProps = LedgerTransactionsFormProps &
-  InjectedFormProps<{}, LedgerTransactionsFormProps>;
+type TransactionsFilterFormAllProps = LedgerTransactionFormProps &
+  InjectedFormProps<{}, LedgerTransactionFormProps>;
 
-const LedgerTransactionsForm: React.FC<TransactionsFilterFormAllProps> = () => {
+const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
+  onCancel,
+}) => {
   return (
     <form>
       <Tabs>
@@ -30,12 +36,19 @@ const LedgerTransactionsForm: React.FC<TransactionsFilterFormAllProps> = () => {
           <LedgerCurrentTransactionBalance />
         </TabsPanel>
       </Tabs>
+      <Hr />
+      <Flex justifyContent="flex-end">
+        <Button
+          text="close"
+          onClick={onCancel}
+        />
+      </Flex>
     </form>
   );
 };
 
-export default reduxForm<{}, LedgerTransactionsFormProps>({
-  form: formNamesConst.LEDGER_TRANSACTIONS,
+export default reduxForm<{}, LedgerTransactionFormProps>({
+  form: formNamesConst.LEDGER_TRANSACTION,
   destroyOnUnmount: false,
   enableReinitialize: true,
-})(LedgerTransactionsForm);
+})(LedgerTransactionForm);

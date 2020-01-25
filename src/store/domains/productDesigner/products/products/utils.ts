@@ -68,6 +68,10 @@ export const prepareGeneralProductItem = (
 };
 
 export const prepareProductDetailsData = (product: any, productType: SelectValue) => {
+  if (!productType) {
+    return null;
+  }
+
   const type = productType.value;
 
   if (type === productTypesCodes.DEBIT) {
@@ -320,7 +324,6 @@ export const prepareLoan = (data: LoanProductItemResp) => {
     defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
     interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
     allowOverpayment: allow_overpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-
   };
 };
 

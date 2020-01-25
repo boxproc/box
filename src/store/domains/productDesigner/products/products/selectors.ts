@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { productTypesCodes } from 'consts';
+
 import { StoreState } from 'store/StoreState';
 
 import { selectCurrencyCodesOptions } from 'store/domains/administration';
@@ -119,6 +121,25 @@ export const selectInstitutionProducts = createSelector(
         productType: product.product_type,
         defNumOfIntrstFreeInstlmts: product.def_num_of_intrst_free_instlmts,
         defNumOfInstallments: product.def_num_of_installments,
+      };
+    });
+  }
+);
+
+export const selectInstitutionLoanProductsOptions = createSelector(
+  selectDefaultInstitutionProducts,
+  products => {
+    if (!products) {
+      return null;
+    }
+
+    const loanProducts = products
+      .filter(product => product.product_type === productTypesCodes.LOAN);
+
+    return loanProducts && loanProducts.asMutable().map(product => {
+      return {
+        value: product.id,
+        label: product.name,
       };
     });
   }

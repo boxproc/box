@@ -74,6 +74,11 @@ const Filter: React.FC<FilterAllProps> = ({
   isHidden,
   isLoading,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Show...' : 'Show',
+    [isLoading]
+  );
+
   const username = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
@@ -207,7 +212,7 @@ const Filter: React.FC<FilterAllProps> = ({
           </Flex>
         </Box>
         <Button
-          text="Show"
+          text={buttonText}
           disabled={isDisabled}
         />
       </form>

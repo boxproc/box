@@ -30,6 +30,7 @@ const UncheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
 export const UncheckedBoxIcon = styled(UncheckedBox)`
   ${({ css }) => css}
 `;
+
 UncheckedBoxIcon.defaultProps = {
   el: 'g',
 };
