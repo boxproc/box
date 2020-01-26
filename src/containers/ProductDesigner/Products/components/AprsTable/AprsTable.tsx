@@ -75,8 +75,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
             cellInfo={cellInfo}
             isSelect={true}
             selectOptions={repaymentOptions}
-            isEditable={false}
-            // isEditable={!isLoading}
+            isEditable={!isLoading}
           />
         ),
       },

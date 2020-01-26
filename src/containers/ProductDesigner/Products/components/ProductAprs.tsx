@@ -40,7 +40,6 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           label="Repayment Order"
           placeholder="Enter Order"
           isNumber={true}
-          readOnly={true}
           disabled={isDisabled}
           validate={[formErrorUtil.required]}
         />
