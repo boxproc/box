@@ -35,7 +35,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     z-index: 1;
   }
 
-  &:hover,
+  &:hover:not(:disabled),
   &.is-focused:not(:disabled) {
     color: ${({ theme }) => theme.colors.normalAccent};
   }
@@ -53,8 +53,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       box-shadow: ${theme.shadows.bottomBox};
     }
 
-    &:hover,
-    &.is-focused:hover {
+    &:hover:not(:disabled),
+    &.is-focused:not(:disabled):hover {
       background-color: ${theme.colors.lighterGrayHover};
       box-shadow: ${theme.shadows.bottomBox};
     }
@@ -75,8 +75,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       pointer-events: none;
     }
 
-    &:hover,
-    &.is-focused:hover {
+    &:hover:not(:disabled),
+    &.is-focused:not(:disabled):hover {
       background-color: transparent;
       box-shadow: none;
     }
@@ -88,7 +88,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     border-radius: 0;
     border-bottom: 1px solid ${theme.colors.lightAccent};
 
-    &:hover,
+    &:hover:not(:disabled),
     &.is-focused:not(:disabled) {
       background-color: inherit;
       color: ${theme.colors.gray};
@@ -104,7 +104,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;
 
-    &:hover,
+    &:hover:not(:disabled),
     &.is-focused:not(:disabled) {
       box-shadow: ${theme.shadows.normalBox};
     }
@@ -138,8 +138,12 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `};
 
   &:disabled {
-    opacity: .5;
-    pointer-events: none;
+    overflow: visible;
+    cursor: default;
+
+    .text-wrapper {
+      opacity: .5;
+    }
   }
 
   @keyframes ripple {

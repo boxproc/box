@@ -25,6 +25,9 @@ const productsReducer =
       case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
         return state.set('currentProductDetails', action.payload.product);
 
+      case ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED:
+        return state.set('currentProductDetails', action.meta);
+
       case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
         return state.set('institutionProducts', action.payload.institution_products);
 

@@ -3,9 +3,6 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 import {
-  selectActiveItemId,
-} from 'store/domains/utils';
-import {
   ActionTypeKeys,
   IllustrateProductLoanAction,
   IllustrateProductRevolvingCreditAction,
@@ -55,10 +52,7 @@ export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
         const state = getState();
-        const preparedValues = prepareProductLoanIllustrateDataToSend({
-          productId: selectActiveItemId(state),
-          ...formValues(state),
-        });
+        const preparedValues = prepareProductLoanIllustrateDataToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(illustrateLoanProduct(preparedValues));
@@ -74,10 +68,7 @@ export const handleIllustrateRevolvingCreditProduct: HandleIllustrateRevolvingCr
       async () => {
         const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
         const state = getState();
-        const preparedValues = prepareProductRevolvingCreditIllustrateDataToSend({
-          productId: selectActiveItemId(state),
-          ...formValues(state),
-        });
+        const preparedValues = prepareProductRevolvingCreditIllustrateDataToSend(formValues(state));
 
         if (preparedValues) {
           await dispatch(illustrateRevolvingCreditProduct(preparedValues));

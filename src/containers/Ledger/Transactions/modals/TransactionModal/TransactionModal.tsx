@@ -5,14 +5,15 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import {
-  LedgerConvertToLoanForm,
-  LedgerTransactionForm,
-} from 'containers/Ledger/Transactions/forms';
+import { LedgerTransactionForm } from 'containers/Ledger/Transactions/forms';
+import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
+
 import { PayloadLedgerTransactionModal } from 'store/domains';
+import { dateUtil } from 'utils';
 
 interface TransactionModalProps extends WithModalProps {
   currentTransactionId: number;
+  transactionAmount: number;
   payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
 }
 
@@ -22,6 +23,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   closeModal,
   currentTransactionId,
   payloadLedgerTransactionModal,
+  transactionAmount,
   isReadOnly,
 }) => {
   const modalTitle = React.useMemo(
@@ -32,6 +34,16 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   const activeTab = React.useMemo(
     () => payloadLedgerTransactionModal && payloadLedgerTransactionModal.activeTab,
     [payloadLedgerTransactionModal]
+  );
+
+  const convertToLoanInitValues = React.useMemo(
+    () => {
+      return {
+        startDate: dateUtil.todayDate,
+        amount: transactionAmount,
+      };
+    },
+    [transactionAmount]
   );
 
   const handleOnCancel = React.useCallback(
@@ -55,9 +67,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           <LedgerTransactionForm onCancel={handleOnCancel} />
         </TabsPanel>
         <TabsPanel title="Convert to Loan">
-          <LedgerConvertToLoanForm
-            onCancel={handleOnCancel}
+          <LoanIllustration
+            initialFormValues={convertToLoanInitValues}
+            withLoanSelection={true}
+            withConvertToLoan={true}
             isReadOnly={isReadOnly}
+            onCancel={handleOnCancel}
           />
         </TabsPanel>
       </Tabs>

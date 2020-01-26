@@ -14,32 +14,58 @@ import {
   LoanProductItem,
   ResetProductIllustration,
 } from 'store/domains';
-import { illustrationInitValuesLoan } from '../../consts';
+
+import { SelectValue } from 'types';
 
 interface IllustrationProductProps {
   productIllustrationData: Array<IllustrationProductLoan>;
+  loanProductsOptions: Array<SelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   getProductDetails: HandleGetProductDetails;
   resetProductIllustration: ResetProductIllustration;
   loanDetails: Partial<LoanProductItem>;
-  onCancel?: () => void;
+  initialFormValues: object;
   isLoading: boolean;
+  isIllustrationLoading: boolean;
+  isConversionLoading: boolean;
+  withConvertToLoan?: boolean;
+  withLoanSelection?: boolean;
+  selectedLoanProduct?: SelectValue;
+  productId?: number;
+  isReadOnly: boolean;
+  onCancel?: () => void;
 }
 
 const LoanIllustration: React.FC<IllustrationProductProps> = ({
   illustrateLoanProduct,
   productIllustrationData,
+  loanProductsOptions,
   getProductDetails,
   onCancel,
   isLoading,
+  isIllustrationLoading,
+  isConversionLoading,
   resetProductIllustration,
   loanDetails,
+  withConvertToLoan,
+  withLoanSelection,
+  initialFormValues,
+  selectedLoanProduct,
+  productId,
+  isReadOnly,
 }) => {
+  const loanProductId = React.useMemo(
+    () => selectedLoanProduct && Number(selectedLoanProduct.value),
+    [selectedLoanProduct]
+  );
+
   React.useEffect(
     () => {
-      getProductDetails();
+      withLoanSelection
+        ? loanProductId && getProductDetails(loanProductId)
+        : productId && getProductDetails(productId);
     },
-    [getProductDetails]
+    [getProductDetails, loanProductId, productId, withLoanSelection]
   );
 
   React.useEffect(
@@ -51,25 +77,33 @@ const LoanIllustration: React.FC<IllustrationProductProps> = ({
 
   const initialValues = React.useMemo(
     () => {
-      return {
-        ...illustrationInitValuesLoan,
-        ...loanDetails,
-      };
+      const baseValues = { ...initialFormValues, ...loanDetails };
+
+      return withLoanSelection
+        ? { loanProduct: selectedLoanProduct, ...baseValues }
+        : baseValues;
     },
-    [loanDetails]
+    [loanDetails, initialFormValues, selectedLoanProduct, withLoanSelection]
   );
 
   return (
     <React.Fragment>
       <LoanIllustrationForm
-        isLoading={isLoading}
+        isDisabled={isLoading || isIllustrationLoading}
+        isIllustrationLoading={isIllustrationLoading}
+        isConversionLoading={isConversionLoading}
         illustrateLoanProduct={illustrateLoanProduct}
+        loanProductsOptions={loanProductsOptions}
+        withLoanSelection={withLoanSelection}
+        withConvertToLoan={withConvertToLoan}
+        selectedLoanProduct={selectedLoanProduct}
         initialValues={initialValues}
+        isReadOnly={isReadOnly}
       />
       <Box mt="15px">
         <IllustrationLoanTable
           data={productIllustrationData}
-          isLoading={isLoading}
+          isLoading={isIllustrationLoading}
         />
       </Box>
       <Flex justifyContent="flex-end">
@@ -77,7 +111,6 @@ const LoanIllustration: React.FC<IllustrationProductProps> = ({
           text="Close"
           onClick={onCancel}
           rightPosition={true}
-          disabled={isLoading}
         />
       </Flex>
     </React.Fragment>

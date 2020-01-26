@@ -8,6 +8,7 @@ import {
   handleGetProductDetails,
   handleUpdateProductDetails,
   ProductsActionTypes,
+  selectActiveItemId,
   selectCurrentProductDetails,
 } from 'store/domains';
 
@@ -29,6 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isUpdating: loadingSelectorUpdate(state),
   initialValues: selectCurrentProductDetails(state),
+  currentProductId: selectActiveItemId(state),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
 });
 

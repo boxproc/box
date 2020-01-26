@@ -54,7 +54,7 @@ export type FilterProducts = (params: ProductFilterPrepared) => FilterProductsAc
 export type HandleFilterProducts = () => Thunk<void>;
 
 export type GetProductDetails = (id: number) => GetProductDetailsAction;
-export type HandleGetProductDetails = () => Thunk<void>;
+export type HandleGetProductDetails = (id: number) => Thunk<void>;
 
 export type GetProduct = (id: number) => GetProductAction;
 export type HandleGetProduct = () => Thunk<void>;
@@ -109,6 +109,7 @@ export const updateProduct: UpdateProduct = data => ({
 export const updateProductDetails: UpdateProductDetails = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS,
   payload: api.updateProductDetails(data),
+  meta: data,
 });
 
 export const resetProducts: ResetProducts = () => ({
@@ -159,13 +160,10 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
     );
   };
 
-export const handleGetProductDetails: HandleGetProductDetails = () =>
-  async (dispatch, getState) => {
+export const handleGetProductDetails: HandleGetProductDetails = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(getProductDetails(id));
       },
       dispatch
@@ -235,7 +233,6 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = data =>
         );
 
         await dispatch(updateProductDetails(preparedValues));
-        await dispatch(handleGetProductDetails());
       },
       dispatch
     );

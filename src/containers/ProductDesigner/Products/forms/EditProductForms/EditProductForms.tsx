@@ -13,14 +13,22 @@ import {
   RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 
-import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
-import RevolvingCreditIllustration from 'containers/ProductDesigner/Products/illustration/RevolvingCreditIllustration';
+import {
+  LoanIllustration,
+  RevolvingCreditIllustration,
+} from 'containers/ProductDesigner/Products/illustration';
+
+import {
+  illustrationInitValuesLoan,
+  illustrationInitValuesRevCredit,
+} from 'containers/ProductDesigner/Products/consts';
 
 import { productTypesCodes } from 'consts';
 import { SelectValue } from 'types';
 
 interface EditProductFormsProps {
   currentProductType: SelectValue;
+  currentProductId: number;
   isProductOverride: boolean;
   isAnyFormDirty: boolean;
   onCancel: () => void;
@@ -29,12 +37,13 @@ interface EditProductFormsProps {
 
 const EditProductForms: React.FC<EditProductFormsProps> = ({
   currentProductType,
+  currentProductId,
   isProductOverride,
   isAnyFormDirty,
   onCancel,
   isReadOnly,
 }) => {
-  const isIllustrationLoan = React.useMemo(
+  const isLoanType = React.useMemo(
     () => {
       if (!currentProductType) {
         return false;
@@ -45,7 +54,7 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
     [currentProductType]
   );
 
-  const isIllustrationRevolvingCredit = React.useMemo(
+  const isRevolvingCreditType = React.useMemo(
     () => {
       if (!currentProductType) {
         return false;
@@ -54,6 +63,11 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
       return currentProductType.value === productTypesCodes.REVOLVING_CREDIT;
     },
     [currentProductType]
+  );
+
+  const isIllustrationTab = React.useMemo(
+    () => isLoanType || isRevolvingCreditType,
+    [isLoanType, isRevolvingCreditType]
   );
 
   return (
@@ -143,20 +157,25 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
-      {isIllustrationLoan && (
+      {isIllustrationTab && (
         <TabsPanel
           title="Illustration"
           withConfirmation={isAnyFormDirty}
         >
-          <LoanIllustration onCancel={onCancel} />
-        </TabsPanel>
-      )}
-      {isIllustrationRevolvingCredit && (
-        <TabsPanel
-          title="Illustration"
-          withConfirmation={isAnyFormDirty}
-        >
-          <RevolvingCreditIllustration onCancel={onCancel} />
+          {isLoanType && (
+            <LoanIllustration
+              productId={currentProductId}
+              initialFormValues={illustrationInitValuesLoan}
+              onCancel={onCancel}
+            />
+          )}
+          {isRevolvingCreditType && (
+            <RevolvingCreditIllustration
+              productId={currentProductId}
+              initialFormValues={illustrationInitValuesRevCredit}
+              onCancel={onCancel}
+            />
+          )}
         </TabsPanel>
       )}
     </Tabs>

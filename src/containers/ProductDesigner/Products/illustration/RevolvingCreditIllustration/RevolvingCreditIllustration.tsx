@@ -6,7 +6,6 @@ import { Button } from 'components';
 
 import { transactionTypesIds } from 'consts';
 
-import { illustrationInitValuesRevCredit } from 'containers/ProductDesigner/Products/consts';
 import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
@@ -15,18 +14,22 @@ import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
 
 interface IllustrationProductFormProps extends WithLoadTransactionTypesProps {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
+  initialFormValues: object;
+  productId: number;
   dirty: boolean;
   onCancel?: () => void;
   isLoading: boolean;
 }
 
 const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
-  onCancel,
   illustrateRevolvingCreditProduct,
+  initialFormValues,
   transactionTypesOptions,
   isTransactionTypesLoading,
+  productId,
   dirty,
   isLoading,
+  onCancel,
 }) => {
   const initialPurchaseType = React.useMemo(
     () => transactionTypesOptions
@@ -49,13 +52,20 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
   const initialValues = React.useMemo(
     () => {
       return {
-        ...illustrationInitValuesRevCredit,
+        ...initialFormValues,
         transactionType1: initialPurchaseType,
         transactionType2: initialCahWithdrawalType,
         transactionType3: initialBalanceTransferType,
+        productId,
       };
     },
-    [initialPurchaseType, initialCahWithdrawalType, initialBalanceTransferType]
+    [
+      initialPurchaseType,
+      initialCahWithdrawalType,
+      initialBalanceTransferType,
+      initialFormValues,
+      productId,
+    ]
   );
 
   return (

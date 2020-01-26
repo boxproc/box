@@ -90,7 +90,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         <Box
           width="160px"
           p="10px"
-          pt={!isEqualOrActualDistribution && '26px'}
+          pt="26px"
           m="1px"
         >
           <Field

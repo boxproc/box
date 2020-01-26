@@ -67,22 +67,16 @@ export const prepareGeneralProductItem = (
   };
 };
 
-export const prepareProductDetailsData = (product: any, productType: SelectValue) => {
-  if (!productType) {
-    return null;
-  }
-
-  const type = productType.value;
-
-  if (type === productTypesCodes.DEBIT) {
+export const prepareProductDetailsData = (product: any, productType: string | number) => {
+  if (productType === productTypesCodes.DEBIT) {
     return prepareDebit(product);
-  } else if (type === productTypesCodes.LOAN) {
+  } else if (productType === productTypesCodes.LOAN) {
     return prepareLoan(product);
-  } else if (type === productTypesCodes.PREPAID) {
+  } else if (productType === productTypesCodes.PREPAID) {
     return preparePrepaid(product);
-  } else if (type === productTypesCodes.REVOLVING_CREDIT) {
+  } else if (productType === productTypesCodes.REVOLVING_CREDIT) {
     return prepareRevolvingCredit(product);
-  } else if (type === productTypesCodes.SAVINGS) {
+  } else if (productType === productTypesCodes.SAVINGS) {
     return prepareSavings(product);
   } else {
     return null;

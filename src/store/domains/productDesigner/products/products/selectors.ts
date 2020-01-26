@@ -93,7 +93,20 @@ export const selectDetailsCurrentProductDetails = (state: StoreState) =>
 export const selectCurrentProductDetails = createSelector(
   selectDetailsCurrentProductDetails,
   selectCurrentProductType,
-  (product, productType) => product && prepareProductDetailsData(product, productType)
+  (product, productType) => {
+    if (!product) {
+      return null;
+    }
+
+    const type = productType.value;
+
+    return prepareProductDetailsData(product, type);
+  }
+);
+
+export const selectProductLoanDetails = createSelector(
+  selectDetailsCurrentProductDetails,
+  product => product && prepareProductDetailsData(product, 'L')
 );
 
 export const selectDefaultInstitutionProducts = (state: StoreState) =>

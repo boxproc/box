@@ -144,6 +144,7 @@ export interface UpdateProductDetailsAction {
 export interface UpdateProductDetailsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED;
+  readonly meta: object;
 }
 
 export interface UpdateProductDetailsRejectedAction {
