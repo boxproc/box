@@ -4,7 +4,7 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
+import { selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminInterfaceAction,
@@ -29,7 +29,7 @@ export type HandleAddAdminInterface = (data: Partial<AdminInterfaceItemDetailsPr
   Thunk<void>;
 
 export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
-export type HandleDeleteAdminInterface = () => Thunk<void>;
+export type HandleDeleteAdminInterface = (id: number) => Thunk<void>;
 
 export type UpdateAdminInterface = (data: Partial<AdminInterfaceItem>) =>
   UpdateAdminInterfaceAction;
@@ -102,16 +102,12 @@ export const handleAddAdminInterface: HandleAddAdminInterface = values =>
     );
   };
 
-export const handleDeleteAdminInterface: HandleDeleteAdminInterface = () =>
-  async (dispatch, getState) => {
+export const handleDeleteAdminInterface: HandleDeleteAdminInterface = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(deleteAdminInterface(id));
         dispatch(closeModal(modalNamesConst.EDIT_INTERFACE));
-        await dispatch(handleFilterAdminInterface());
       },
       dispatch
     );

@@ -19,21 +19,22 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
+  AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
   AdminSysPropsActionTypes.FILTER_ADMIN_SYS_PROPS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminSysPropsItems: selectAdminSysPropsItems(state),
+  sysPropsItems: selectAdminSysPropsItems(state),
   currentSysPropId: selectActiveItemId(state),
   isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteAdminSysProp: handleDeleteAdminSysProp,
-    updateAdminSysProps: handleUpdateAdminSysProps,
-    filterAdminSysProps: handleFilterAdminSysProps,
+    deleteSysProp: handleDeleteAdminSysProp,
+    updateSysProps: handleUpdateAdminSysProps,
+    filterSysProps: handleFilterAdminSysProps,
     resetSystemProperties,
   },
   dispatch

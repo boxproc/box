@@ -14,8 +14,7 @@ const adminInstitutionsReducer =
         return state.set('institutions', action.payload.institutions);
 
       case ActionTypeKeys.DELETE_ADMIN_INSTITUTION_FULFILLED:
-        return state
-          .set('institutions', state.institutions.filter(el => el.id !== action.meta.id));
+        return state.set('institutions', state.institutions.filter(el => el.id !== action.meta.id));
 
       case ActionTypeKeys.RESET_INSTITUTIONS:
         return state = adminInstitutionsInitialState;

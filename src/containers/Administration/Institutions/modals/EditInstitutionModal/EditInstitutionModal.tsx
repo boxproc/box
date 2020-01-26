@@ -10,8 +10,8 @@ import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 import { AdminInstitutionsItemDetailsPrepared } from 'store/domains';
 
 interface EditInstitutionModalProps extends WithModalProps {
-  adminCurrentInstitution: AdminInstitutionsItemDetailsPrepared;
-  adminCurrentInstitutionName: string;
+  currentInstitution: AdminInstitutionsItemDetailsPrepared;
+  currentInstitutionName: string;
   isFormDirty: boolean;
 }
 
@@ -19,14 +19,14 @@ const modalName = modalNamesConst.EDIT_INSTITUTION;
 
 const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   closeModal,
-  adminCurrentInstitution,
-  adminCurrentInstitutionName,
+  currentInstitution,
+  currentInstitutionName,
   isFormDirty,
   isReadOnly,
 }) => {
   const institutionName = React.useMemo(
-    () => adminCurrentInstitutionName ? `: "${adminCurrentInstitutionName}"` : '',
-    [adminCurrentInstitutionName]
+    () => currentInstitutionName ? `: "${currentInstitutionName}"` : '',
+    [currentInstitutionName]
   );
 
   const handleOnCancel = React.useCallback(
@@ -43,7 +43,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
       withCloseConfirmation={isFormDirty}
     >
       <InstitutionForm
-        initialValues={adminCurrentInstitution}
+        initialValues={currentInstitution}
         onCancel={handleOnCancel}
         isReadOnly={isReadOnly}
         mode="edit"

@@ -15,9 +15,9 @@ export enum ActionTypeKeys {
   UPDATE_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/UPDATE_ADMIN_ENDPOINT_FULFILLED',
   UPDATE_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/UPDATE_ADMIN_ENDPOINT_REJECTED',
 
-  FILTER_ADMIN_ENDPOINT = 'administration/endpoints/FILTER_ADMIN_ENDPOINT',
-  FILTER_ADMIN_ENDPOINT_FULFILLED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_FULFILLED',
-  FILTER_ADMIN_ENDPOINT_REJECTED = 'administration/endpoints/FILTER_ADMIN_ENDPOINT_REJECTED',
+  FILTER_ADMIN_ENDPOINTS = 'administration/endpoints/FILTER_ADMIN_ENDPOINTS',
+  FILTER_ADMIN_ENDPOINTS_FULFILLED = 'administration/endpoints/FILTER_ADMIN_ENDPOINTS_FULFILLED',
+  FILTER_ADMIN_ENDPOINTS_REJECTED = 'administration/endpoints/FILTER_ADMIN_ENDPOINTS_REJECTED',
 
   GET_ENDPOINTS_BY_INSTITUTION_ID = 'administration/endpoints/GET_ENDPOINTS_BY_INSTITUTION_ID',
   GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED =
@@ -74,19 +74,19 @@ export interface UpdateAdminEndpointRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_ADMIN_ENDPOINT_REJECTED;
 }
 
-export interface FilterAdminEndpointAction {
+export interface FilterAdminEndpointsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINTS;
 }
 
-export interface FilterAdminEndpointFulfilledAction {
+export interface FilterAdminEndpointsFulfilledAction {
   readonly payload: AdminEndpointItems;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT_FULFILLED;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINTS_FULFILLED;
 }
 
-export interface FilterAdminEndpointRejectedAction {
+export interface FilterAdminEndpointsRejectedAction {
   readonly payload: ApiResponse;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINTS_REJECTED;
 }
 export interface GetEndpointsByInstitutionIdAction {
   readonly payload: Promise<object>;
@@ -110,7 +110,7 @@ export interface ResetEndpointsAction {
 export type AdminEndpointActionTypes =
   | AddAdminEndpointFulfilledAction
   | DeleteAdminEndpointFulfilledAction
-  | FilterAdminEndpointFulfilledAction
+  | FilterAdminEndpointsFulfilledAction
   | UpdateAdminEndpointFulfilledAction
   | GetEndpointsByInstitutionIdFulfilledAction
   | ResetEndpointsAction;

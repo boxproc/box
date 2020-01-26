@@ -13,6 +13,7 @@ import {
   handleDeleteAdminInterface,
   handleGetDictionaryInterfaceTypes,
   handleUpdateInterface,
+  selectActiveItemId,
   selectInterfaceTypesOptions,
 } from 'store/domains';
 
@@ -28,13 +29,14 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isLoadingTypesSelector: loadingTypesSelector(state),
   interfaceTypesOptions: selectInterfaceTypesOptions(state),
+  currentInterfaceId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteInterface: handleDeleteAdminInterface,
-    updateAdminInterface: handleUpdateInterface,
-    addAdminInterface: handleAddAdminInterface,
+    updateInterface: handleUpdateInterface,
+    addInterface: handleAddAdminInterface,
     getDictionaryInterfaceTypes: handleGetDictionaryInterfaceTypes,
   },
   dispatch

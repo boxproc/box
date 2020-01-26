@@ -9,30 +9,30 @@ import { EndpointsFilter } from './forms';
 import {
   AdminEndpointItemPrepared,
   HandleDeleteAdminEndpoint,
-  HandleFilterAdminEndpoint,
+  HandleFilterAdminEndpoints,
   HandleGetLogData,
   ResetEndpoints,
 } from 'store/domains';
 import { SelectValue } from 'types';
 
 export interface EndpointsProps {
-  adminCurrentEndpointName: string;
-  currentEndPointId: number;
-  adminEndpointItems: Array<AdminEndpointItemPrepared>;
+  endpointItems: Array<AdminEndpointItemPrepared>;
   institutionsOptions: Array<SelectValue>;
+  currentEndpointName: string;
+  currentEndpointId: number;
+  isLoading: boolean;
   deleteEndpoint: HandleDeleteAdminEndpoint;
-  filterAdminEndpoint: HandleFilterAdminEndpoint;
+  filterEndpoints: HandleFilterAdminEndpoints;
   getLogData: HandleGetLogData;
   resetEndpoints: ResetEndpoints;
-  isLoading: boolean;
 }
 
 const Endpoints: React.FC<EndpointsProps> = ({
-  adminEndpointItems,
+  endpointItems,
   deleteEndpoint,
-  filterAdminEndpoint,
-  adminCurrentEndpointName,
-  currentEndPointId,
+  filterEndpoints,
+  currentEndpointName,
+  currentEndpointId,
   institutionsOptions,
   getLogData,
   resetEndpoints,
@@ -52,19 +52,19 @@ const Endpoints: React.FC<EndpointsProps> = ({
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           name: systemMonitorTables.ENDPOINTS,
-          id: currentEndPointId,
-          title: adminCurrentEndpointName,
+          id: currentEndpointId,
+          title: currentEndpointName,
         }),
       },
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteEndpoint,
+        action: () => deleteEndpoint(currentEndpointId),
         withConfirmation: true,
-        confirmationText: `Delete endpoint "${adminCurrentEndpointName}"?`,
+        confirmationText: `Delete endpoint "${currentEndpointName}"?`,
       },
     ],
-    [deleteEndpoint, adminCurrentEndpointName, getLogData, currentEndPointId]
+    [deleteEndpoint, currentEndpointName, getLogData, currentEndpointId]
   );
 
   const initialFilterValues = React.useMemo(
@@ -79,12 +79,12 @@ const Endpoints: React.FC<EndpointsProps> = ({
   return (
     <PageTemplate
       title="Endpoints"
-      data={adminEndpointItems}
+      data={endpointItems}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_ENDPOINT}
       editModalName={modalNamesConst.EDIT_ENDPOINT}
       contextMenuItems={contextMenuItems}
-      filterAction={filterAdminEndpoint}
+      filterAction={filterEndpoints}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

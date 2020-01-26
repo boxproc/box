@@ -11,6 +11,7 @@ import {
   handleAddAdminInstitution,
   handleDeleteAdminInstitution,
   handleUpdateAdminInstitution,
+  selectActiveItemId,
   selectAdminCurrentInstitutionName,
 } from 'store/domains';
 
@@ -22,14 +23,15 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
+  currentInstitutionName: selectAdminCurrentInstitutionName(state),
+  currentInstitutionId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateAdminInstitution: handleUpdateAdminInstitution,
-    addAdminInstitution: handleAddAdminInstitution,
-    deleteAdminInstitution: handleDeleteAdminInstitution,
+    updateInstitution: handleUpdateAdminInstitution,
+    addInstitution: handleAddAdminInstitution,
+    deleteInstitution: handleDeleteAdminInstitution,
   },
   dispatch
 );

@@ -38,8 +38,8 @@ export enum formNamesConst {
   INSTITUTIONS = 'institutionsForm',
   ADD_SYSTEM_PROPERTY = 'addSystemPropertyForm',
 
-  DEFINE_SCHEDULER_JOB = 'defineSchedulerJobForm',
-  GENERATE_CRON_EXPRESSION = 'generateCronExpression',
+  SCHEDULER = 'schedulerForm',
+  GENERATE_CRON_EXPRESSION = 'generateCronExpressionForm',
 
   AUDIT_API_CALL = 'auditApiCallForm',
 

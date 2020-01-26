@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
+import EditUsersGroupFrom from './EditUsersGroupFrom';
 
 import {
   AdminUsersGroupActionTypes,
@@ -23,7 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateAdminUsersGroup: handleUpdateAdminUsersGroup,
+    updateUsersGroup: handleUpdateAdminUsersGroup,
   },
   dispatch
 );
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditGeneralInfoUserGroupFrom);
+)(EditUsersGroupFrom);

@@ -2,7 +2,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import { connect } from 'react-redux';
 
-import GeneralUserGroupInfo from './GeneralUserGroupInfo';
+import UserGroupFields from './UserGroupFields';
 
 import {
   AdminInstitutionsActionTypes,
@@ -23,7 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminInstitutions: handleGetAdminInstitutions,
+    getInstitutions: handleGetAdminInstitutions,
   },
   dispatch
 );
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GeneralUserGroupInfo);
+)(UserGroupFields);

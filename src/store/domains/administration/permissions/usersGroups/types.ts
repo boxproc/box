@@ -3,14 +3,14 @@ import { IdNamePair, SelectValue } from 'types';
 
 interface InfoPlain extends IdNamePair { }
 
-export interface AdminUsersGroupItem extends InfoPlain {
-  institutionId: number | string;
-  institutionName: string;
-}
-
 export interface AdminUsersGroupItemResp extends InfoPlain {
   institution_id: number | string;
   institution_name: string;
+}
+
+export interface AdminUsersGroupItem extends InfoPlain {
+  institutionId: number | string;
+  institutionName: string;
 }
 
 export interface AdminUsersGroupInfoEditable extends InfoPlain {

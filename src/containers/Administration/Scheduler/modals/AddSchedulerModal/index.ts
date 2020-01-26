@@ -13,7 +13,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.DEFINE_SCHEDULER_JOB);
+const dirty = isDirty(formNamesConst.SCHEDULER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
@@ -23,7 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addAdminSchedulerJob: handleAddAdminSchedulerJob,
+    addSchedulerJob: handleAddAdminSchedulerJob,
   },
   dispatch
 );

@@ -141,7 +141,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     overflow: visible;
     cursor: default;
 
-    .text-wrapper {
+    .text-wrapper,
+    .icon {
       opacity: .5;
     }
   }

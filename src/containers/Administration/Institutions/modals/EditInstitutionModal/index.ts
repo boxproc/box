@@ -12,8 +12,8 @@ const dirty = isDirty(formNamesConst.INSTITUTIONS);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  adminCurrentInstitution: selectAdminCurrentInstitution(state),
-  adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
+  currentInstitution: selectAdminCurrentInstitution(state),
+  currentInstitutionName: selectAdminCurrentInstitutionName(state),
 });
 
 export default connect(

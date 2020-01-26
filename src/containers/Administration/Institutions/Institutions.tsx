@@ -13,28 +13,30 @@ import {
 } from 'store/domains';
 
 export interface InstitutionsProps {
-  getAdminInstitutions: HandleGetAdminInstitutions;
-  adminInstitutions: Array<AdminInstitutionsItemPrepared>;
-  deleteAdminInstitution: HandleDeleteAdminInstitution;
-  adminCurrentInstitutionName: string;
-  resetInstitutions: ResetInstitutions;
+  institutionsData: Array<AdminInstitutionsItemPrepared>;
+  currentInstitutionName: string;
+  currentInstitutionId: number;
   isLoading: boolean;
+  getInstitutions: HandleGetAdminInstitutions;
+  deleteInstitution: HandleDeleteAdminInstitution;
+  resetInstitutions: ResetInstitutions;
 }
 
 const Institutions: React.FC<InstitutionsProps> = ({
-  adminInstitutions,
-  getAdminInstitutions,
-  deleteAdminInstitution,
-  adminCurrentInstitutionName,
+  institutionsData,
+  getInstitutions,
+  deleteInstitution,
+  currentInstitutionName,
+  currentInstitutionId,
   resetInstitutions,
   isLoading,
 }) => {
   React.useEffect(
     () => {
-      getAdminInstitutions();
+      getInstitutions();
       return () => resetInstitutions();
     },
-    [getAdminInstitutions, resetInstitutions]
+    [getInstitutions, resetInstitutions]
   );
 
   const contextMenuItems = React.useMemo(
@@ -42,18 +44,18 @@ const Institutions: React.FC<InstitutionsProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteAdminInstitution,
+        action: () => deleteInstitution(currentInstitutionId),
         withConfirmation: true,
-        confirmationText: `Delete institution "${adminCurrentInstitutionName}"?`,
+        confirmationText: `Delete institution "${currentInstitutionName}"?`,
       },
     ],
-    [deleteAdminInstitution, adminCurrentInstitutionName]
+    [deleteInstitution, currentInstitutionName, currentInstitutionId]
   );
 
   return (
     <PageTemplate
       title="Institutions"
-      data={adminInstitutions}
+      data={institutionsData}
       columns={tableColumns}
       isDownloadButton={true}
       newModalName={modalNamesConst.ADD_INSTITUTION}

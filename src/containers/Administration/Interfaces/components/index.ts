@@ -1,2 +1,2 @@
-export { default as GeneralInterfacesInfo } from './GeneralInterfacesInfo';
+export { default as InterfaceFields } from './InterfaceFields';
 export * from './tableColumns';

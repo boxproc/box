@@ -17,7 +17,9 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <Flex alignItems="baseline" justifyContent="space-between">
-      <Box mr="10px"><T4>{title}</T4></Box>
+      <Box mr="10px">
+        <T4>{title}</T4>
+      </Box>
       {counts && (
         <SmallText>{counts.countActive} active, {counts.countFaulty} faulty</SmallText>
       )}

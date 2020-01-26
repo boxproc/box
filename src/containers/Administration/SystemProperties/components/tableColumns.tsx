@@ -10,7 +10,7 @@ type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[
 
 export const tableColumns = [
   {
-    maxWidth: 400,
+    maxWidth: 410,
     sortable: true,
     Header: <TableHeader title="Property Name" />,
     accessor: 'id',

@@ -6,7 +6,6 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSysPropAction,
@@ -30,7 +29,7 @@ import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
 export type DeleteAdminSysProp = (id: number | string) => DeleteAdminSysPropAction;
-export type HandleDeleteAdminSysProp = () => Thunk<void>;
+export type HandleDeleteAdminSysProp = (id: number | string) => Thunk<void>;
 
 export type AddAdminSysProp = (propValues: EditableAdminSysPropPrepared) =>
   AddAdminSysPropAction;
@@ -71,15 +70,12 @@ export const resetSystemProperties: ResetSystemProperties = () => ({
   type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES,
 });
 
-export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = () =>
-  async (dispatch, getState) => {
+export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(deleteAdminSysProp(id));
-        await dispatch(handleFilterAdminSysProps());
+        dispatch(closeModal(modalNamesConst.EDIT_SYSTEM_PROPERTY));
       },
       dispatch
     );
@@ -110,7 +106,6 @@ export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =
         });
 
         await dispatch(updateAdminSysProps(preparedValues));
-        dispatch(closeModal(modalNamesConst.EDIT_SYSTEM_PROPERTY));
         await dispatch(handleFilterAdminSysProps());
       },
       dispatch

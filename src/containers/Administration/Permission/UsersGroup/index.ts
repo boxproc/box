@@ -21,12 +21,12 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminUsersGroupItems: selectUsersGroupEditorItems(state),
+  usersGroupItems: selectUsersGroupEditorItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminUsersGroup: handleGetAdminUsersGroup,
+    getUsersGroup: handleGetAdminUsersGroup,
     resetUsersGroup,
   },
   dispatch

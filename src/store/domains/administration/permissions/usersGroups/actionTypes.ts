@@ -167,7 +167,6 @@ export interface DeleteAdminUserGroupMembersAction {
 export interface DeleteAdminUserGroupMembersFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBER_FULFILLED;
-  readonly meta: { userId: number };
 }
 
 export interface DeleteAdminUserGroupMembersRejectedAction {
@@ -182,7 +181,6 @@ export interface DeleteAdminGroupPermissionsAction {
 export interface DeleteAdminGroupPermissionsFulfilledAction {
   readonly payload: ResponseStatusType;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
-  readonly meta: { uiItem: string };
 }
 
 export interface DeleteAdminGroupPermissionsRejectedAction {

@@ -8,30 +8,30 @@ import { tableColumns } from './components';
 import { AdminUsersGroupItem, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store/domains';
 
 interface UserFilterProps {
-  adminUsersGroupItems: Array<AdminUsersGroupItem>;
-  getAdminUsersGroup: HandleGetAdminUsersGroup;
+  usersGroupItems: Array<AdminUsersGroupItem>;
+  getUsersGroup: HandleGetAdminUsersGroup;
   resetUsersGroup: ResetUsersGroup;
   isLoading: boolean;
 }
 
 export const UsersGroup: React.FC<UserFilterProps> = ({
-  getAdminUsersGroup,
-  adminUsersGroupItems,
+  getUsersGroup,
+  usersGroupItems,
   resetUsersGroup,
   isLoading,
 }) => {
   React.useEffect(
     () => {
-      getAdminUsersGroup();
+      getUsersGroup();
       return () => resetUsersGroup();
     },
-    [getAdminUsersGroup, resetUsersGroup]
+    [getUsersGroup, resetUsersGroup]
   );
 
   return (
     <PageTemplate
       title="User Groups"
-      data={adminUsersGroupItems}
+      data={usersGroupItems}
       columns={tableColumns}
       isDownloadButton={true}
       newModalName={modalNamesConst.ADD_USERS_GROUP}

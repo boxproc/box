@@ -15,7 +15,7 @@ export const deleteAdminEndpoint = (id: number) =>
 export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClient.post(adminEndpointsURLs.UPDATE, { data });
 
-export const filterAdminEndpoint = (data: Partial<AdminEndpointFilterPrepared>) =>
+export const filterAdminEndpoints = (data: Partial<AdminEndpointFilterPrepared>) =>
   apiClient.post(adminEndpointsURLs.GET, { data });
 
 export const getEndpointsByInstitutionId = (id: number | string) =>

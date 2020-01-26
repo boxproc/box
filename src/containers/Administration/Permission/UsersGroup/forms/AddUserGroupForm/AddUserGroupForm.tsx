@@ -5,12 +5,12 @@ import { ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { GeneralUserGroupInfo } from 'containers/Administration/Permission/UsersGroup/components';
+import { UserGroupFields } from 'containers/Administration/Permission/UsersGroup/components';
 
 import { HandleAddAdminUsersGroups } from 'store/domains';
 
 export interface AddUserGroupFormProps extends ExternalSpinnerProps {
-  addAdminUsersGroup: HandleAddAdminUsersGroups;
+  addUsersGroup: HandleAddAdminUsersGroups;
   onCancel: () => void;
 }
 
@@ -19,18 +19,18 @@ type AddUserGroupFormPropsAllProps = AddUserGroupFormProps &
 
 const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
   onCancel,
-  addAdminUsersGroup,
+  addUsersGroup,
   handleSubmit,
   dirty,
   pristine,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(addAdminUsersGroup),
-    [handleSubmit, addAdminUsersGroup]
+    handleSubmit(addUsersGroup),
+    [handleSubmit, addUsersGroup]
   );
   return (
     <form onSubmit={handleSubmitForm}>
-      <GeneralUserGroupInfo />
+      <UserGroupFields />
       <OkCancelButtons
         okText="Save"
         cancelText="Close"

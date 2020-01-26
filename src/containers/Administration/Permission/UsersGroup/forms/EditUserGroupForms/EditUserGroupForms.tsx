@@ -7,14 +7,14 @@ import {
   UserGroupPermission,
 } from 'containers/Administration/Permission/UsersGroup/components';
 
-import EditGeneralInfoUserGroupFrom from './EditGeneralInfoUserGroupFrom';
 import EditGroupPermissionForm from './EditGroupPermissionForm';
 import EditUserGroupMembersForm from './EditUserGroupMembersForm';
+import EditUsersGroupFrom from './EditUsersGroupFrom';
 
 export interface EditUserGroupFormsProps {
   isAnyFormDirty: boolean;
-  onCancel: () => void;
   isReadOnly: boolean;
+  onCancel: () => void;
 }
 
 const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
@@ -28,7 +28,7 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         title="General"
         withConfirmation={isAnyFormDirty}
       >
-        <EditGeneralInfoUserGroupFrom
+        <EditUsersGroupFrom
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />
@@ -37,14 +37,18 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         title="User Group Members"
         withConfirmation={isAnyFormDirty}
       >
-        {!isReadOnly && (<EditUserGroupMembersForm />)}
+        {!isReadOnly && (
+          <EditUserGroupMembersForm />
+        )}
         <UserGroupMembers />
       </TabsPanel>
       <TabsPanel
         title="Group Permission"
         withConfirmation={isAnyFormDirty}
       >
-        {!isReadOnly && (<EditGroupPermissionForm />)}
+        {!isReadOnly && (
+          <EditGroupPermissionForm />
+        )}
         <UserGroupPermission />
       </TabsPanel>
     </Tabs>

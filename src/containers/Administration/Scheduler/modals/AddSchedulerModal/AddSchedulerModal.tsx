@@ -5,14 +5,14 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
-import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
+import { SchedulerForm } from 'containers/Administration/Scheduler/forms';
 
 import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store/domains';
 
 import { SelectValue } from 'types';
 
 interface AddSchedulerModalProps extends WithModalProps {
-  addAdminSchedulerJob: HandleAddAdminSchedulerJob;
+  addSchedulerJob: HandleAddAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   institutionsOptions: Array<SelectValue>;
   isFormDirty: boolean;
@@ -23,7 +23,7 @@ const modalName = modalNamesConst.ADD_SCHEDULER;
 const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
   closeModal,
   openModal,
-  addAdminSchedulerJob,
+  addSchedulerJob,
   institutionsOptions,
   isFormDirty,
   schedulerJobValues,
@@ -36,12 +36,13 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
     <Modal
       name={modalName}
       title="Add Scheduler Job"
+      maxContainerWidth={740}
       withCloseConfirmation={isFormDirty}
     >
-      <DefineSchedulerJobForm
+      <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
-        defineAdminSchedulerJob={addAdminSchedulerJob}
+        defineAdminSchedulerJob={addSchedulerJob}
         institutionsOptions={institutionsOptions}
         mode="add"
         initialValues={schedulerJobValues}

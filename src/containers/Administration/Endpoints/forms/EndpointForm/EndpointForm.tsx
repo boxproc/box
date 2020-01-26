@@ -7,7 +7,7 @@ import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from '
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { GeneralEndpointsInfo } from 'containers/Administration/Endpoints/components';
+import { EndpointFields } from 'containers/Administration/Endpoints/components';
 
 import {
   HandleAddAdminEndpoint,
@@ -20,15 +20,16 @@ import { SelectValue } from 'types';
 
 interface EndpointFormProps extends ExternalSpinnerProps {
   endpointTypesOptions: Array<SelectValue>;
-  updateAdminEndpoint: HandleUpdateAdminEndpoint;
-  addAdminEndpoint: HandleAddAdminEndpoint;
+  currentEndpointName: string;
+  currentEndpointId: number;
+  isReadOnly: boolean;
+  isLoadingTypesSelector: boolean;
+  mode: 'add' | 'edit';
+  updateEndpoint: HandleUpdateAdminEndpoint;
+  addEndpoint: HandleAddAdminEndpoint;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   getDictionaryEndpointTypes: HandleGetDictionaryEndpointTypes;
   onCancel: () => void;
-  mode: 'add' | 'edit';
-  currentEndpointName: string;
-  isReadOnly: boolean;
-  isLoadingTypesSelector: boolean;
 }
 
 type EndpointFormAllProps = EndpointFormProps &
@@ -38,8 +39,8 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   onCancel,
   handleSubmit,
   deleteEndpoint,
-  updateAdminEndpoint,
-  addAdminEndpoint,
+  updateEndpoint,
+  addEndpoint,
   pristine,
   dirty,
   mode,
@@ -48,6 +49,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   endpointTypesOptions,
   getDictionaryEndpointTypes,
   isLoadingTypesSelector,
+  currentEndpointId,
 }) => {
   React.useEffect(
     () => {
@@ -62,8 +64,8 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   );
 
   const submitFormAction = React.useMemo(
-    () => isEditMode ? updateAdminEndpoint : addAdminEndpoint,
-    [isEditMode, updateAdminEndpoint, addAdminEndpoint]
+    () => isEditMode ? updateEndpoint : addEndpoint,
+    [isEditMode, updateEndpoint, addEndpoint]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -71,9 +73,14 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
     [handleSubmit, submitFormAction]
   );
 
+  const handleDeleteEndpoint = React.useCallback(
+    () => deleteEndpoint(currentEndpointId),
+    [deleteEndpoint, currentEndpointId]
+  );
+
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <GeneralEndpointsInfo
+      <EndpointFields
         endpointTypesOptions={endpointTypesOptions}
         isEditMode={isEditMode}
         isLoadingTypesSelector={isLoadingTypesSelector}
@@ -92,7 +99,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete endpoint "${currentEndpointName}"?`}
-              onClick={deleteEndpoint}
+              onClick={handleDeleteEndpoint}
             />
           )}
         </div>

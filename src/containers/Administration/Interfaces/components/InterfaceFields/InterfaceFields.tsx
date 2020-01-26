@@ -11,7 +11,7 @@ import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface GeneralInterfacesInfoProps {
+export interface InterfaceFieldsProps {
   institutionsOptions: Array<SelectValue>;
   interfaceTypesOptions: Array<SelectValue>;
   isDisabledInstitutions?: boolean;
@@ -19,7 +19,7 @@ export interface GeneralInterfacesInfoProps {
   isReadOnly: boolean;
 }
 
-const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
+const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
   institutionsOptions,
   isDisabledInstitutions,
   interfaceTypesOptions,
@@ -152,4 +152,4 @@ const GeneralInterfaceInfo: React.FC<GeneralInterfacesInfoProps> = ({
   );
 };
 
-export default GeneralInterfaceInfo;
+export default InterfaceFields;

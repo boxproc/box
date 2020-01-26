@@ -16,8 +16,8 @@ const dirty = isDirty(formNamesConst.ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  adminCurrentEndpoint: selectAdminCurrentEndpoint(state),
-  adminCurrentEndpointName: selectAdminCurrentEndpointName(state),
+  currentEndpoint: selectAdminCurrentEndpoint(state),
+  currentEndpointName: selectAdminCurrentEndpointName(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 

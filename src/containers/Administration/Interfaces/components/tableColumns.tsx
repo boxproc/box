@@ -52,6 +52,7 @@ export const tableColumns = [
     Cell: (props: TCell<'url'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
@@ -67,7 +68,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
@@ -96,6 +97,7 @@ export const tableColumns = [
     Cell: (props: TCell<'connectionAttributes'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
@@ -107,6 +109,7 @@ export const tableColumns = [
     Cell: (props: TCell<'logFileLocation'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

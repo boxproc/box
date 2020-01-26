@@ -13,19 +13,13 @@ const adminEndpointsReducer =
   (state = adminEndpointInitialState, action: AdminEndpointActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.DELETE_ADMIN_ENDPOINT_FULFILLED:
-        return state
-          .set(
-            'endpoints',
-            state.endpoints.filter(el => el.id !== action.meta.id)
-          );
+        return state.set('endpoints', state.endpoints.filter(el => el.id !== action.meta.id));
 
-      case ActionTypeKeys.FILTER_ADMIN_ENDPOINT_FULFILLED:
-        return state
-          .set('endpoints', action.payload.endpoints);
+      case ActionTypeKeys.FILTER_ADMIN_ENDPOINTS_FULFILLED:
+        return state.set('endpoints', action.payload.endpoints);
 
       case ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_FULFILLED:
-        return state
-          .set('endpointsByInstitutionId', action.payload.endpoints);
+        return state.set('endpointsByInstitutionId', action.payload.endpoints);
 
       case ActionTypeKeys.RESET_ENDPOINTS:
         return state = adminEndpointInitialState;

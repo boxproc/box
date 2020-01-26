@@ -12,10 +12,10 @@ import { AdminEndpointItemDetailsPrepared } from 'store/domains';
 import { SelectValue } from 'types';
 
 interface EditAccountModalProps extends WithModalProps {
-  adminCurrentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
+  currentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
   institutionsOptions: Array<SelectValue>;
   isFormDirty: boolean;
-  adminCurrentEndpointName: string;
+  currentEndpointName: string;
 }
 
 const modalName = modalNamesConst.EDIT_ENDPOINT;
@@ -23,14 +23,14 @@ const modalName = modalNamesConst.EDIT_ENDPOINT;
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
   isReadOnly,
-  adminCurrentEndpoint,
+  currentEndpoint,
   institutionsOptions,
   isFormDirty,
-  adminCurrentEndpointName,
+  currentEndpointName,
 }) => {
   const endpointName = React.useMemo(
-    () => adminCurrentEndpointName ? `: "${adminCurrentEndpointName}"` : '',
-    [adminCurrentEndpointName]
+    () => currentEndpointName ? `: "${currentEndpointName}"` : '',
+    [currentEndpointName]
   );
 
   const handleOnCancel = React.useCallback(
@@ -49,9 +49,9 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       <EndpointForm
         onCancel={handleOnCancel}
         mode="edit"
-        initialValues={adminCurrentEndpoint}
+        initialValues={currentEndpoint}
         institutionsOptions={institutionsOptions}
-        currentEndpointName={adminCurrentEndpointName}
+        currentEndpointName={currentEndpointName}
         isReadOnly={isReadOnly}
       />
     </Modal>

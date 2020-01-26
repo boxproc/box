@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import GeneralInterfaceInfo from './GeneralInterfaceInfo';
+import EndpointFields from './EndpointFields';
 
 import { selectInstitutionsOptions } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -11,4 +11,4 @@ const mapStateToProps = (state: StoreState) => ({
 
 export default connect(
   mapStateToProps
-)(GeneralInterfaceInfo);
+)(EndpointFields);

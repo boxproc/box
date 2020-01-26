@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
+import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
 interface AddUserModalProps extends WithModalProps {
   isFormDirty: boolean;
@@ -30,11 +30,9 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
       maxContainerWidth={750}
       withCloseConfirmation={isFormDirty}
     >
-      <DefineUsersForm
+      <UserForm
         onCancel={handleOnCancel}
-        initialValues={{
-          requires2faFlag: true,
-        }}
+        initialValues={{ requires2faFlag: true }}
       />
     </Modal>
   );

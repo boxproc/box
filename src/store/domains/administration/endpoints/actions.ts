@@ -4,12 +4,12 @@ import { formNamesConst, modalNamesConst, } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import { selectActiveItemId, selectIsAccessibleFiltering } from 'store/domains/utils';
+import { selectIsAccessibleFiltering } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminEndpointAction,
   DeleteAdminEndpointAction,
-  FilterAdminEndpointAction,
+  FilterAdminEndpointsAction,
   GetEndpointsByInstitutionIdAction,
   UpdateAdminEndpointAction,
 } from './actionTypes';
@@ -29,15 +29,15 @@ export type HandleAddAdminEndpoint = (data: Partial<AdminEndpointItemDetailsPrep
   Thunk<void>;
 
 export type DeleteAdminEndpoint = (id: number) => DeleteAdminEndpointAction;
-export type HandleDeleteAdminEndpoint = () => Thunk<void>;
+export type HandleDeleteAdminEndpoint = (id: number) => Thunk<void>;
 
 export type UpdateAdminEndpoint = (data: Partial<AdminEndpointItem>) => UpdateAdminEndpointAction;
 export type HandleUpdateAdminEndpoint = (data: Partial<AdminEndpointItemDetailsPrepared>) =>
   Thunk<void>;
 
-export type FilterAdminEndpoint = (params: Partial<AdminEndpointFilterPrepared>) =>
-  FilterAdminEndpointAction;
-export type HandleFilterAdminEndpoint = () => Thunk<void>;
+export type FilterAdminEndpoints = (params: Partial<AdminEndpointFilterPrepared>) =>
+  FilterAdminEndpointsAction;
+export type HandleFilterAdminEndpoints = () => Thunk<void>;
 
 export type HandleGetEndpointsByInstitutionId = (id: string | number) => Thunk<void>;
 export type GetEndpointsByInstitutionId = (id: string | number) =>
@@ -53,12 +53,12 @@ export const addAdminEndpoint: AddAdminEndpoint = data => ({
 export const deleteAdminEndpoint: DeleteAdminEndpoint = id => ({
   type: ActionTypeKeys.DELETE_ADMIN_ENDPOINT,
   payload: api.deleteAdminEndpoint(id),
-  meta: id,
+  meta: { id },
 });
 
-export const filterAdminEndpoint: FilterAdminEndpoint = filter => ({
-  type: ActionTypeKeys.FILTER_ADMIN_ENDPOINT,
-  payload: api.filterAdminEndpoint(filter),
+export const filterAdminEndpoints: FilterAdminEndpoints = filter => ({
+  type: ActionTypeKeys.FILTER_ADMIN_ENDPOINTS,
+  payload: api.filterAdminEndpoints(filter),
 });
 
 export const updateAdminEndpoint: UpdateAdminEndpoint = data => ({
@@ -75,7 +75,7 @@ export const resetEndpoints: ResetEndpoints = () => ({
   type: ActionTypeKeys.RESET_ENDPOINTS,
 });
 
-export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
+export const handleFilterAdminEndpoints: HandleFilterAdminEndpoints = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -84,7 +84,7 @@ export const handleFilterAdminEndpoint: HandleFilterAdminEndpoint = () =>
         const preparedValues = preparedFilterToSend(formValues(state));
 
         if (preparedValues) {
-          await dispatch(filterAdminEndpoint(preparedValues));
+          await dispatch(filterAdminEndpoints(preparedValues));
         }
       },
       dispatch
@@ -103,23 +103,19 @@ export const handleAddAdminEndpoint: HandleAddAdminEndpoint = data =>
         dispatch(closeModal(modalNamesConst.ADD_ENDPOINT));
 
         if (isAccessibleFiltering) {
-          await dispatch(handleFilterAdminEndpoint());
+          await dispatch(handleFilterAdminEndpoints());
         }
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = () =>
-  async (dispatch, getState) => {
+export const handleDeleteAdminEndpoint: HandleDeleteAdminEndpoint = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(deleteAdminEndpoint(id));
         dispatch(closeModal(modalNamesConst.EDIT_ENDPOINT));
-        await dispatch(handleFilterAdminEndpoint());
       },
       dispatch
     );
@@ -132,7 +128,7 @@ export const handleUpdateEndpoint: HandleUpdateAdminEndpoint = data =>
         const preparedValues = preparedDataToSend(data);
 
         await dispatch(updateAdminEndpoint(preparedValues));
-        await dispatch(handleFilterAdminEndpoint());
+        await dispatch(handleFilterAdminEndpoints());
       },
       dispatch
     );

@@ -1,2 +1,2 @@
-export { default as DefineSchedulerJobForm } from './DefineSchedulerJobForm';
+export { default as SchedulerForm } from './SchedulerForm';
 export { default as SchedulerFilter } from './SchedulerFilter';

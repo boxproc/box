@@ -7,24 +7,30 @@ import {
   AdminSysPropsActionTypes,
   createLoadingSelector,
   handleAddAdminSysProp,
+  handleDeleteAdminSysProp,
   handleUpdateAdminSysProps,
+  selectActiveItemId,
   selectCurrentAdminSysPropsItem,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.ADD_ADMIN_SYS_PROP,
+  AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
+  AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectCurrentAdminSysPropsItem(state),
+  currentSystemPropertyId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addAdminSystemProperty: handleAddAdminSysProp,
-    updateAdminSystemProperty: handleUpdateAdminSysProps,
+    addSystemProperty: handleAddAdminSysProp,
+    updateSystemProperty: handleUpdateAdminSysProps,
+    deleteSystemProperty: handleDeleteAdminSysProp,
   },
   dispatch
 );

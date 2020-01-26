@@ -52,7 +52,6 @@ const DropdownWrapper = styled.div<DropdownWrapperProps>`
 
     * {
       color: ${({ theme, isActive }) => isActive && theme.colors.normalAccent};
-      transition: all .1s linear;
     }
 
     &:hover * {

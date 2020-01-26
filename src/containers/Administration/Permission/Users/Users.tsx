@@ -16,7 +16,7 @@ import {
 import { SelectValue } from 'types';
 
 interface UsersProps {
-  adminUserItems: Array<AdminUserItemPrepared>;
+  userItems: Array<AdminUserItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   filterUsers: HandleFilterUsers;
   filterUsersById: HandleFilterAuditUserById;
@@ -26,7 +26,7 @@ interface UsersProps {
 }
 
 export const Users: React.FC<UsersProps> = ({
-  adminUserItems,
+  userItems,
   institutionsOptions,
   filterUsers,
   filterUsersById,
@@ -43,9 +43,7 @@ export const Users: React.FC<UsersProps> = ({
 
   const contextMenuItems = React.useMemo(
     () => [
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Activity',
         action: () => filterUsersById({ user_id: currentUserId }),
@@ -67,7 +65,7 @@ export const Users: React.FC<UsersProps> = ({
   return (
     <PageTemplate
       title="Users"
-      data={adminUserItems}
+      data={userItems}
       columns={tableColumns}
       contextMenuItems={contextMenuItems}
       newModalName={modalNamesConst.ADD_USER}

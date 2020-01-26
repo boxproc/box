@@ -11,6 +11,7 @@ import {
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleUpdateAdminSchedulerJobs,
+  selectActiveItemId,
   selectCurrentSchedulerName,
   selectSchedulerJobValues,
 } from 'store/domains';
@@ -20,19 +21,20 @@ const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
 ]);
 
-const dirty = isDirty(formNamesConst.DEFINE_SCHEDULER_JOB);
+const dirty = isDirty(formNamesConst.SCHEDULER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isFormDirty: dirty(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
+  currentSchedulerId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
-    updateAdminSchedulerJob: handleUpdateAdminSchedulerJobs,
+    deleteSchedulerJob: handleDeleteAdminSchedulerJob,
+    updateSchedulerJob: handleUpdateAdminSchedulerJobs,
   },
   dispatch
 );

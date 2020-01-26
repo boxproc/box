@@ -4,7 +4,7 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import DefineUsersForm from './DefineUsersForm';
+import UserForm from './UserForm';
 
 import {
   handleAddAdminUser,
@@ -26,8 +26,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateAdminUser: handleUpdateAdminUser,
-    addAdminUser: handleAddAdminUser,
+    updateUser: handleUpdateAdminUser,
+    addUser: handleAddAdminUser,
   },
   dispatch
 );
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DefineUsersForm);
+)(UserForm);

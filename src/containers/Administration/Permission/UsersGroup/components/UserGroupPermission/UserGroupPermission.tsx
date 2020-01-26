@@ -14,33 +14,33 @@ import {
 import { TableCellType } from 'types';
 
 interface UsersGroupMembersProps {
-  adminUserGroupMemberId: number;
-  getAdminGroupPermission: HandleGetAdminGroupPermissions;
-  deleteAdminGroupPermission: HandleDeleteAdminGroupPermissions;
-  adminGroupPermissions: Array<AdminGroupPermissionItem>;
+  userGroupMemberId: number;
+  getGroupPermission: HandleGetAdminGroupPermissions;
+  deleteGroupPermission: HandleDeleteAdminGroupPermissions;
+  groupPermissions: Array<AdminGroupPermissionItem>;
 }
 
 type TCell<T extends keyof AdminGroupPermissionItem> =
   TableCellType<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
-  getAdminGroupPermission,
-  adminUserGroupMemberId,
-  adminGroupPermissions,
-  deleteAdminGroupPermission,
+  getGroupPermission,
+  userGroupMemberId,
+  groupPermissions,
+  deleteGroupPermission,
 }) => {
   React.useEffect(
     () => {
-      getAdminGroupPermission(adminUserGroupMemberId);
+      getGroupPermission(userGroupMemberId);
     },
-    [getAdminGroupPermission, adminUserGroupMemberId]
+    [getGroupPermission, userGroupMemberId]
   );
 
   const columns = React.useMemo(
     () => [
       {
         sortable: true,
-        Header: <TableHeader title="UI Items" />,
+        Header: <TableHeader title="UI Item" />,
         accessor: 'uiItem',
         filterable: true,
         Cell: (props: TCell<'uiItem'>) => (
@@ -75,7 +75,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
             confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
             withConfirmation={true}
             onClick={() =>
-              deleteAdminGroupPermission(
+              deleteGroupPermission(
                 cellInfo.original.userGroupId,
                 cellInfo.original.uiItem
               )
@@ -84,16 +84,16 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
         ),
       },
     ],
-    [deleteAdminGroupPermission]
+    [deleteGroupPermission]
   );
 
   return (
     <React.Fragment>
       <T4>Group Permissions</T4>
       <Table
-        data={adminGroupPermissions}
+        data={groupPermissions}
         columns={columns}
-        pageSize={6}
+        pageSize={9}
         isSmaller={true}
       />
     </React.Fragment>

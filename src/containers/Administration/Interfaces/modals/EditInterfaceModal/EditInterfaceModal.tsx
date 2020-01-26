@@ -12,7 +12,7 @@ import { AdminInterfaceItemDetailsPrepared } from 'store/domains';
 import { SelectValue } from 'types';
 
 interface EditAccountModalProps extends WithModalProps {
-  adminCurrentInterface: Partial<AdminInterfaceItemDetailsPrepared>;
+  currentInterface: AdminInterfaceItemDetailsPrepared;
   institutionsOptions: Array<SelectValue>;
   currentInterfaceName: string;
   isFormDirty: boolean;
@@ -22,7 +22,7 @@ const modalName = modalNamesConst.EDIT_INTERFACE;
 
 const EditAccountModal: React.FC<EditAccountModalProps> = ({
   closeModal,
-  adminCurrentInterface,
+  currentInterface,
   institutionsOptions,
   currentInterfaceName,
   isFormDirty,
@@ -49,7 +49,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       <InterfaceForm
         onCancel={handleOnCancel}
         mode="edit"
-        initialValues={adminCurrentInterface}
+        initialValues={currentInterface}
         institutionsOptions={institutionsOptions}
         currentInterfaceName={currentInterfaceName}
         isReadOnly={isReadOnly}

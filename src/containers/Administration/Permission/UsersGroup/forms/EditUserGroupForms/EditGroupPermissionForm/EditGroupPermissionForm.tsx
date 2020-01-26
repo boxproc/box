@@ -12,11 +12,12 @@ import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store/dom
 import { SelectValue } from 'types';
 
 interface EditGroupPermissionFormProps {
-  addAdminGroupPermission: HandleAddAdminGroupPermissions;
-  currentGroupId: number;
-  getUiItems: HandleGetAdminUiItems;
   uiItemsOptions: Array<SelectValue>;
   selectedUiItem: SelectValue;
+  currentUserGroupId: number;
+  isLoading: boolean;
+  getUiItems: HandleGetAdminUiItems;
+  addGroupPermission: HandleAddAdminGroupPermissions;
 }
 
 type EditGroupPermissionFormPropsAllProps = EditGroupPermissionFormProps &
@@ -25,29 +26,35 @@ type EditGroupPermissionFormPropsAllProps = EditGroupPermissionFormProps &
 const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = ({
   handleSubmit,
   getUiItems,
-  addAdminGroupPermission,
-  currentGroupId,
+  addGroupPermission,
+  currentUserGroupId,
   uiItemsOptions,
   selectedUiItem,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
-      getUiItems(currentGroupId);
+      getUiItems(currentUserGroupId);
     },
-    [getUiItems, currentGroupId]
+    [getUiItems, currentUserGroupId]
   );
 
-  const isUiItemSelected = React.useMemo(
-    () => !!selectedUiItem,
-    [selectedUiItem]
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add to the group',
+    [isLoading]
+  );
+
+  const isDisabledButton = React.useMemo(
+    () => !selectedUiItem || isLoading,
+    [selectedUiItem, isLoading]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit((data) => addAdminGroupPermission({
+    handleSubmit(data => addGroupPermission({
       ...data,
-      userGroupId: currentGroupId,
+      userGroupId: currentUserGroupId,
     })),
-    [handleSubmit, addAdminGroupPermission, currentGroupId]
+    [handleSubmit, addGroupPermission, currentUserGroupId]
   );
 
   return (
@@ -60,6 +67,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             placeholder="Select UI Item"
             component={SelectField}
             label="UI Item"
+            isDisabled={isLoading}
             options={uiItemsOptions}
           />
         </Box>
@@ -69,13 +77,14 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             name="permission"
             component={CheckboxField}
             label={'"Write" Allowed'}
+            disabled={isLoading}
           />
         </Box>
         <Box width={[1 / 3]} pb="21px">
           <Button
             iconName={iconNamesConst.PLUS}
-            text="Add to the group"
-            disabled={!isUiItemSelected}
+            text={buttonText}
+            disabled={isDisabledButton}
           />
         </Box>
       </Flex>

@@ -18,6 +18,9 @@ const adminSchedulerJobsReducer =
       case ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_FULFILLED:
         return state.set('schedulerNames', action.payload.scheduler_names);
 
+      case ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED:
+        return state.set('scheduler', state.scheduler.filter(el => el.id !== action.meta.id));
+
       case ActionTypeKeys.RESET_SCHEDULER:
         return state = adminSchedulerJobsInitialState;
 

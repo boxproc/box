@@ -19,14 +19,14 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminUserGroupMemberId: selectActiveItemId(state),
-  adminGroupPermissions: selectAdminGroupPermissionsItems(state),
+  userGroupMemberId: selectActiveItemId(state),
+  groupPermissions: selectAdminGroupPermissionsItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminGroupPermission: handleGetAdminGroupPermission,
-    deleteAdminGroupPermission: handleDeleteAdminGroupPermissions,
+    getGroupPermission: handleGetAdminGroupPermission,
+    deleteGroupPermission: handleDeleteAdminGroupPermissions,
   },
   dispatch
 );

@@ -25,13 +25,14 @@ import {
 import { formErrorUtil } from 'utils';
 
 interface InstitutionFormProps extends ExternalSpinnerProps {
-  updateAdminInstitution: HandleUpdateAdminInstitution;
-  addAdminInstitution: HandleAddAdminInstitution;
-  deleteAdminInstitution: HandleDeleteAdminInstitution;
-  adminCurrentInstitutionName: string;
-  onCancel: () => void;
-  mode: 'add' | 'edit';
+  currentInstitutionName: string;
+  currentInstitutionId: number;
   isReadOnly: boolean;
+  mode: 'add' | 'edit';
+  updateInstitution: HandleUpdateAdminInstitution;
+  addInstitution: HandleAddAdminInstitution;
+  deleteInstitution: HandleDeleteAdminInstitution;
+  onCancel: () => void;
 }
 
 type InstitutionFormAllProps = InstitutionFormProps &
@@ -40,10 +41,11 @@ type InstitutionFormAllProps = InstitutionFormProps &
 const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   onCancel,
   handleSubmit,
-  updateAdminInstitution,
-  addAdminInstitution,
-  deleteAdminInstitution,
-  adminCurrentInstitutionName,
+  updateInstitution,
+  addInstitution,
+  deleteInstitution,
+  currentInstitutionName,
+  currentInstitutionId,
   mode,
   dirty,
   pristine,
@@ -54,14 +56,24 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
     [mode]
   );
 
+  const deleteConfirmationText = React.useMemo(
+    () => `Delete institution "${currentInstitutionName}"?`,
+    [currentInstitutionName]
+  );
+
   const submitFormAction = React.useMemo(
-    () => isEditMode ? updateAdminInstitution : addAdminInstitution,
-    [isEditMode, updateAdminInstitution, addAdminInstitution]
+    () => isEditMode ? updateInstitution : addInstitution,
+    [isEditMode, updateInstitution, addInstitution]
   );
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitFormAction),
     [handleSubmit, submitFormAction]
+  );
+
+  const handleDeleteInstitution = React.useCallback(
+    () => deleteInstitution(currentInstitutionId),
+    [currentInstitutionId, deleteInstitution]
   );
 
   return (
@@ -150,8 +162,8 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
-              confirmationText={`Delete institution "${adminCurrentInstitutionName}"?`}
-              onClick={deleteAdminInstitution}
+              confirmationText={deleteConfirmationText}
+              onClick={handleDeleteInstitution}
             />
           )}
         </div>

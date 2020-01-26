@@ -14,26 +14,26 @@ import {
 import { TableCellType } from 'types';
 
 interface UsersGroupMembersProps {
-  adminUserGroupMemberId: number;
-  getAdminUserGroupMembers: HandleGetAdminUserGroupMembers;
-  AdminUserGroupMembers: Array<AdminUserGroupMemberPrepared>;
-  deleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMembers;
+  userGroupMemberId: number;
+  getUserGroupMembers: HandleGetAdminUserGroupMembers;
+  userGroupMembers: Array<AdminUserGroupMemberPrepared>;
+  deleteUserGroupMembers: HandleDeleteAdminUserGroupMembers;
 }
 
 type TCell<T extends keyof AdminUserGroupMemberPrepared> =
   TableCellType<AdminUserGroupMemberPrepared[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
-  getAdminUserGroupMembers,
-  adminUserGroupMemberId,
-  AdminUserGroupMembers,
-  deleteAdminUserGroupMembers,
+  getUserGroupMembers,
+  userGroupMemberId,
+  userGroupMembers,
+  deleteUserGroupMembers,
 }) => {
   React.useEffect(
     () => {
-      getAdminUserGroupMembers(adminUserGroupMemberId);
+      getUserGroupMembers(userGroupMemberId);
     },
-    [getAdminUserGroupMembers, adminUserGroupMemberId]
+    [getUserGroupMembers, userGroupMemberId]
   );
 
   const columns = React.useMemo(
@@ -58,24 +58,23 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
             iconSize="15"
             withConfirmation={true}
             confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
-            onClick={() => deleteAdminUserGroupMembers(
-              adminUserGroupMemberId,
+            onClick={() => deleteUserGroupMembers(
+              userGroupMemberId,
               cellInfo.original.id
             )}
           />
         ),
       },
     ],
-    [adminUserGroupMemberId, deleteAdminUserGroupMembers]
+    [userGroupMemberId, deleteUserGroupMembers]
   );
 
   return (
     <React.Fragment>
       <T4>Group Members</T4>
       <Table
-        data={AdminUserGroupMembers}
+        data={userGroupMembers}
         columns={columns}
-        pageSize={6}
         isHeader={false}
         isSmaller={true}
       />

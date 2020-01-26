@@ -3,6 +3,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
 import {
+  AdminUsersGroupActionTypes,
+  createLoadingSelector,
   handleAddAdminActiveUsers,
   handleGetAdminActiveUsers,
   selectActiveItemId,
@@ -17,8 +19,13 @@ import { StoreState } from 'store/StoreState';
 
 const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS);
 
+const loadingSelector = createLoadingSelector([
+  AdminUsersGroupActionTypes.ADD_ADMIN_ACTIVE_USERS,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectActiveItemId(state),
+  isLoading: loadingSelector(state),
+  currentUserGroupId: selectActiveItemId(state),
   activeUsersItemsOptions: selectActiveUsersItems(state),
   selectedUser: formSelector(state, 'username'),
 });
@@ -26,7 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getActiveUsers: handleGetAdminActiveUsers,
-    addAdminActiveUsers: handleAddAdminActiveUsers,
+    addActiveUsers: handleAddAdminActiveUsers,
   },
   dispatch
 );

@@ -75,7 +75,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
     () => {
       if (cronExpression) {
         changeFormValue(
-          formNamesConst.DEFINE_SCHEDULER_JOB,
+          formNamesConst.SCHEDULER,
           'cronExpression',
           cronExpression.value
         );
@@ -90,7 +90,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
       name={modalName}
       title="Generate Cron Expression"
       maxContainerWidth={800}
-      minContainerHeight={580}
+      minContainerHeight={600}
       withCloseConfirmation={dirty}
     >
       <form>

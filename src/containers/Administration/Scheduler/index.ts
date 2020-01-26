@@ -32,18 +32,18 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminSchedulerJobsItems: selectAdminSchedulerJobsItems(state),
+  schedulerJobsItems: selectAdminSchedulerJobsItems(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
-  currentSchedulerJobId: selectActiveItemId(state),
+  currentSchedulerId: selectActiveItemId(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAdminSchedulerJobs: handleFilterAdminSchedulerJobs,
-    filterAdminScheduledJobsById: handleFilterByIdAuditScheduledJobs,
-    sendAdminSchedulerAction: handleSendAdminSchedulerAction,
-    deleteAdminSchedulerJob: handleDeleteAdminSchedulerJob,
+    filterSchedulerJobs: handleFilterAdminSchedulerJobs,
+    filterScheduledJobsById: handleFilterByIdAuditScheduledJobs,
+    sendSchedulerAction: handleSendAdminSchedulerAction,
+    deleteSchedulerJob: handleDeleteAdminSchedulerJob,
     getLogData: handleGetLogData,
     resetScheduler,
   },

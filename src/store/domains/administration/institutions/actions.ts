@@ -4,7 +4,6 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminInstitutionAction,
@@ -36,7 +35,7 @@ export type HandleUpdateAdminInstitution =
   (values: Partial<AdminInstitutionsItemDetailsPrepared>) => Thunk<void>;
 
 export type DeleteAdminInstitution = (id: number) => DeleteAdminInstitutionAction;
-export type HandleDeleteAdminInstitution = () => Thunk<void>;
+export type HandleDeleteAdminInstitution = (id: number) => Thunk<void>;
 
 export type ResetInstitutions = () => void;
 
@@ -102,13 +101,10 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
     );
   };
 
-export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = () =>
-  async (dispatch, getState) => {
+export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(deleteAdminInstitution(id));
         dispatch(closeModal(modalNamesConst.EDIT_INSTITUTION));
       },

@@ -30,7 +30,7 @@ const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
     <Modal
       name={modalName}
       title="Add Endpoint"
-      maxContainerWidth={550}
+      maxContainerWidth={600}
       withCloseConfirmation={isFormDirty}
     >
       <EndpointForm

@@ -88,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={handleClick}
     >
       {iconName && (
-        <Box mr="2px">
+        <Box mr="2px" className="icon">
           {renderIcon(iconName, iconSize)}
         </Box>
       )}

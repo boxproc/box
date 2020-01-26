@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { DefineSchedulerJobForm } from 'containers/Administration/Scheduler/forms';
+import { SchedulerForm } from 'containers/Administration/Scheduler/forms';
 import {
   AdminSchedulerEditableItem,
   HandleDeleteAdminSchedulerJob,
@@ -13,11 +13,12 @@ import {
 } from 'store/domains';
 
 interface EditSchedulerModalProps extends WithModalProps {
-  deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
-  updateAdminSchedulerJob: HandleUpdateAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   currentSchedulerName: string;
+  currentSchedulerId: number;
   isFormDirty: boolean;
+  deleteSchedulerJob: HandleDeleteAdminSchedulerJob;
+  updateSchedulerJob: HandleUpdateAdminSchedulerJob;
 }
 
 const modalName = modalNamesConst.EDIT_SCHEDULER;
@@ -25,15 +26,16 @@ const modalName = modalNamesConst.EDIT_SCHEDULER;
 const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
   closeModal,
   openModal,
-  deleteAdminSchedulerJob,
-  updateAdminSchedulerJob,
+  deleteSchedulerJob,
+  updateSchedulerJob,
   schedulerJobValues,
   currentSchedulerName,
   isFormDirty,
   isReadOnly,
+  currentSchedulerId,
 }) => {
-  const currentName = React.useMemo(
-    () => currentSchedulerName ? `: "${currentSchedulerName}"` : '',
+  const modalTitle = React.useMemo(
+    () => `Edit Scheduler: ${currentSchedulerName}`,
     [currentSchedulerName]
   );
 
@@ -42,20 +44,26 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
     [closeModal]
   );
 
+  const handleDeleteScheduler = React.useCallback(
+    () => deleteSchedulerJob(currentSchedulerId),
+    [deleteSchedulerJob, currentSchedulerId]
+  );
+
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit Scheduler${currentName}`}
+      title={modalTitle}
+      maxContainerWidth={740}
       withCloseConfirmation={isFormDirty}
     >
-      <DefineSchedulerJobForm
+      <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
-        defineAdminSchedulerJob={updateAdminSchedulerJob}
+        defineAdminSchedulerJob={updateSchedulerJob}
         initialValues={schedulerJobValues}
         isDisabledInstitutions={true}
-        deleteAdminSchedulerJob={deleteAdminSchedulerJob}
+        deleteSchedulerJob={handleDeleteScheduler}
         mode="edit"
         isReadOnly={isReadOnly}
         currentSchedulerName={currentSchedulerName}

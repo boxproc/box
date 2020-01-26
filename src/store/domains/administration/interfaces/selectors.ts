@@ -37,13 +37,3 @@ export const selectAdminCurrentInterfaceName = createSelector(
   selectAdminCurrentInterface,
   currentInterface => currentInterface && currentInterface.name
 );
-
-export const selectAdminInterfaceName = createSelector(
-  selectDefaultAdminInterface,
-  selectActiveItemId,
-  (interfaces, currentId) => {
-    const current = interfaces.find(el => el.id === currentId);
-
-    return current && current.name;
-  }
-);

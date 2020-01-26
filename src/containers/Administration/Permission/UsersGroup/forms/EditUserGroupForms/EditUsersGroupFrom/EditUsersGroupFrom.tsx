@@ -5,35 +5,35 @@ import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'componen
 
 import { formNamesConst } from 'consts';
 
-import { GeneralUserGroupInfo } from 'containers/Administration/Permission/UsersGroup/components';
+import { UserGroupFields } from 'containers/Administration/Permission/UsersGroup/components';
 
 import { HandleAddAdminUsersGroups } from 'store/domains';
 
-export interface EditGeneralInfoUserGroupFromProps extends ExternalSpinnerProps {
-  onCancel: () => void;
-  updateAdminUsersGroup: HandleAddAdminUsersGroups;
+export interface EditUsersGroupFromProps extends ExternalSpinnerProps {
+  updateUsersGroup: HandleAddAdminUsersGroups;
   isReadOnly: boolean;
+  onCancel: () => void;
 }
 
-type EditGeneralInfoUserGroupFromPropsAllProps = EditGeneralInfoUserGroupFromProps &
-  InjectedFormProps<{}, EditGeneralInfoUserGroupFromProps>;
+type EditUsersGroupFromPropsAllProps = EditUsersGroupFromProps &
+  InjectedFormProps<{}, EditUsersGroupFromProps>;
 
-const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAllProps> = ({
+const EditUsersGroupFrom: React.FC<EditUsersGroupFromPropsAllProps> = ({
   onCancel,
   handleSubmit,
-  updateAdminUsersGroup,
+  updateUsersGroup,
   dirty,
   pristine,
   isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(updateAdminUsersGroup),
-    [handleSubmit, updateAdminUsersGroup]
+    handleSubmit(updateUsersGroup),
+    [handleSubmit, updateUsersGroup]
   );
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <GeneralUserGroupInfo
+      <UserGroupFields
         isEditMode={true}
         isReadOnly={isReadOnly}
       />
@@ -51,8 +51,8 @@ const EditGeneralInfoUserGroupFrom: React.FC<EditGeneralInfoUserGroupFromPropsAl
   );
 };
 
-export default reduxForm<{}, EditGeneralInfoUserGroupFromProps>({
+export default reduxForm<{}, EditUsersGroupFromProps>({
   form: formNamesConst.EDIT_GENERAL_INFO_USER_GROUP,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(EditGeneralInfoUserGroupFrom));
+})(withSpinner()(EditUsersGroupFrom));

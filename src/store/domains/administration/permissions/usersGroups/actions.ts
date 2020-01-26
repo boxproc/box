@@ -3,7 +3,6 @@ import { reset as resetForm } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminActiveUsersAction,
@@ -30,10 +29,7 @@ import {
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import {
-  AdminGroupPermissionPreparedToSend,
-  prepareAdminUsersGroupValuesUnderscore,
-} from './utils';
+import { AdminGroupPermissionPreparedToSend, prepareAdminUsersGroupData } from './utils';
 
 import { errorDecoratorUtil } from 'utils';
 
@@ -46,38 +42,38 @@ export type HandleGetAdminUserGroupMembers = (id: number) => Thunk<void>;
 export type GetAdminUiItems = (id: number) => GetAdminUiItemsAction;
 export type HandleGetAdminUiItems = (id: number) => Thunk<void>;
 
-export type GetAdminUserGroupPermissions = (userGroupId: number) => GetAdminGroupPermissionsAction;
-export type HandleGetAdminGroupPermissions = (userGroupId: number) => Thunk<void>;
+export type GetAdminUserGroupPermissions = (id: number) => GetAdminGroupPermissionsAction;
+export type HandleGetAdminGroupPermissions = (id: number) => Thunk<void>;
 
-export type GetAdminActiveUsers = (userGroupId: number) => GetAdminActiveUsersAction;
-export type HandleGetAdminActiveUsers = (userGroupId: number) => Thunk<void>;
+export type GetAdminActiveUsers = (id: number) => GetAdminActiveUsersAction;
+export type HandleGetAdminActiveUsers = (id: number) => Thunk<void>;
 
-export type DeleteAdminUserGroupMembers = (groupId: number, userId: number) =>
+export type DeleteAdminUserGroupMembers = (id: number, userId: number) =>
   DeleteAdminUserGroupMembersAction;
-export type HandleDeleteAdminUserGroupMembers = (groupId: number, userId: number) => Thunk<void>;
+export type HandleDeleteAdminUserGroupMembers = (id: number, userId: number) => Thunk<void>;
 
-export type DeleteAdminGroupPermissions = (groupId: number, uiItem: string) =>
+export type DeleteAdminGroupPermissions = (id: number, uiItem: string) =>
   DeleteAdminGroupPermissionsAction;
-export type HandleDeleteAdminGroupPermissions = (groupId: number, uiItem: string) => Thunk<void>;
+export type HandleDeleteAdminGroupPermissions = (id: number, uiItem: string) => Thunk<void>;
 
-export type AddAdminUsersGroups = (values: Partial<AdminUsersGroupItem>) =>
+export type AddAdminUsersGroups = (data: Partial<AdminUsersGroupItem>) =>
   AddAdminUsersGroupAction;
-export type HandleAddAdminUsersGroups = (values: Partial<AdminUsersGroupInfoEditable>) =>
+export type HandleAddAdminUsersGroups = (data: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
-export type AddAdminActiveUsers = (values: Partial<AdminUserGroupMembersDeleteResp>) =>
+export type AddAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
   AddAdminActiveUsersAction;
-export type HandleAddAdminActiveUsers = (values: Partial<AdminUserGroupMembersDelete>) =>
+export type HandleAddAdminActiveUsers = (data: Partial<AdminUserGroupMembersDelete>) =>
   Thunk<void>;
 
-export type AddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemResp>) =>
+export type AddAdminGroupPermissions = (data: Partial<AdminGroupPermissionItemResp>) =>
   AddAdminGroupPermissionsAction;
-export type HandleAddAdminGroupPermissions = (values: Partial<AdminGroupPermissionItemEditable>) =>
+export type HandleAddAdminGroupPermissions = (data: Partial<AdminGroupPermissionItemEditable>) =>
   Thunk<void>;
 
-export type UpdateAdminUsersGroup = (values: Partial<AdminUsersGroupItem>) =>
+export type UpdateAdminUsersGroup = (data: Partial<AdminUsersGroupItem>) =>
   UpdateAdminUsersGroupAction;
-export type HandleUpdateAdminUsersGroup = (values: Partial<AdminUsersGroupInfoEditable>) =>
+export type HandleUpdateAdminUsersGroup = (data: Partial<AdminUsersGroupInfoEditable>) =>
   Thunk<void>;
 
 export type ResetUsersGroup = () => void;
@@ -107,36 +103,34 @@ export const getAdminUserGroupPermissions: GetAdminUserGroupPermissions = id => 
   payload: api.getAdminUserGroupPermissions(id),
 });
 
-export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (groupId, userId) => ({
+export const deleteAdminUserGroupMembers: DeleteAdminUserGroupMembers = (id, userId) => ({
   type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS,
-  payload: api.deleteAdminUserGroupMembers(groupId, userId),
-  meta: userId,
+  payload: api.deleteAdminUserGroupMembers(id, userId),
 });
 
-export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions = (groupId, uiItem) => ({
+export const deleteAdminUserGroupPermissions: DeleteAdminGroupPermissions = (id, uiItem) => ({
   type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS,
-  payload: api.deleteAdminUserGroupPermissions(groupId, uiItem),
-  meta: uiItem,
+  payload: api.deleteAdminUserGroupPermissions(id, uiItem),
 });
 
-export const addAdminUserUsersGroup: AddAdminUsersGroups = values => ({
+export const addAdminUserUsersGroup: AddAdminUsersGroups = data => ({
   type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP,
-  payload: api.addAdminUsersGroup(values),
+  payload: api.addAdminUsersGroup(data),
 });
 
-export const addAdminActiveUsers: AddAdminActiveUsers = values => ({
+export const addAdminActiveUsers: AddAdminActiveUsers = data => ({
   type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS,
-  payload: api.addAdminActiveUsers(values),
+  payload: api.addAdminActiveUsers(data),
 });
 
-export const addAdminGroupPermission: AddAdminGroupPermissions = values => ({
+export const addAdminGroupPermission: AddAdminGroupPermissions = data => ({
   type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS,
-  payload: api.addAdminGroupPermission(values),
+  payload: api.addAdminGroupPermission(data),
 });
 
-export const updateAdminUsersGroup: UpdateAdminUsersGroup = values => ({
+export const updateAdminUsersGroup: UpdateAdminUsersGroup = data => ({
   type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP,
-  payload: api.updateAdminUsersGroup(values),
+  payload: api.updateAdminUsersGroup(data),
 });
 
 export const resetUsersGroup: ResetUsersGroup = () => ({
@@ -164,32 +158,32 @@ export const handleGetAdminActiveUsers: HandleGetAdminActiveUsers = id =>
   };
 
 export const handleDeleteAdminUserGroupMembers: HandleDeleteAdminUserGroupMembers =
-  (groupId, userId) =>
-    async (dispatch, getState) => {
+  (id, userId) =>
+    async dispatch => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
-          const state = getState();
-          const currentGroupId = selectActiveItemId(state);
+          await dispatch(deleteAdminUserGroupMembers(id, userId));
 
-          await dispatch(deleteAdminUserGroupMembers(groupId, userId));
-          await dispatch(getAdminActiveUsers(currentGroupId));
-          await dispatch(getAdminUserGroupMembers(currentGroupId));
+          await Promise.all([
+            dispatch(getAdminActiveUsers(id)),
+            dispatch(getAdminUserGroupMembers(id)),
+          ]);
         },
         dispatch
       );
     };
 
 export const handleDeleteAdminGroupPermissions: HandleDeleteAdminGroupPermissions =
-  (groupId, uiItem) =>
-    async (dispatch, getState) => {
+  (id, uiItem) =>
+    async dispatch => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
-          const state = getState();
-          const currentGroupId = selectActiveItemId(state);
+          await dispatch(deleteAdminUserGroupPermissions(id, uiItem));
 
-          await dispatch(deleteAdminUserGroupPermissions(groupId, uiItem));
-          await dispatch(getAdminUserGroupPermissions(currentGroupId));
-          await dispatch(getAdminUiItems(currentGroupId));
+          await Promise.all([
+            dispatch(getAdminUserGroupPermissions(id)),
+            dispatch(getAdminUiItems(id)),
+          ]);
         },
         dispatch
       );
@@ -225,11 +219,11 @@ export const handleGetAdminGroupPermission: HandleGetAdminGroupPermissions = id 
     );
   };
 
-export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
+export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
+        const preparedValues = prepareAdminUsersGroupData(data);
 
         await dispatch(addAdminUserUsersGroup(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_USERS_GROUP));
@@ -239,48 +233,54 @@ export const handleAddAdminUsersGroup: HandleAddAdminUsersGroups = values =>
     );
   };
 
-export const handleAddGroupPermission: HandleAddAdminGroupPermissions =
-  (values) =>
-    async (dispatch, getState) => {
-      errorDecoratorUtil.withErrorHandler(
-        async () => {
-          const state = getState();
-          const currentGroupId = selectActiveItemId(state);
-          const preparedValues = AdminGroupPermissionPreparedToSend(values);
-
-          await dispatch(addAdminGroupPermission(preparedValues));
-          await dispatch(getAdminUserGroupPermissions(currentGroupId));
-          await dispatch(getAdminUiItems(currentGroupId));
-          dispatch(resetForm(formNamesConst.EDIT_GROUP_PERMISSION));
-        },
-        dispatch
-      );
-    };
-
-export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = (values) =>
-  async (dispatch, getState) => {
+export const handleAddGroupPermission: HandleAddAdminGroupPermissions = data =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const currentGroupId = selectActiveItemId(state);
+        const id = data && data.userGroupId;
+        const preparedValues = AdminGroupPermissionPreparedToSend(data);
+
+        await dispatch(addAdminGroupPermission(preparedValues));
+
+        await Promise.all([
+          dispatch(getAdminUserGroupPermissions(id)),
+          dispatch(getAdminUiItems(id)),
+        ]);
+
+        dispatch(resetForm(formNamesConst.EDIT_GROUP_PERMISSION));
+      },
+      dispatch
+    );
+  };
+
+export const handleAddAdminActiveUsers: HandleAddAdminActiveUsers = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const id = data && data.userGroupId;
+        const username = data.username && data.username.value;
 
         await dispatch(addAdminActiveUsers({
-          user_group_id: currentGroupId,
-          user_id: values.username && values.username.value,
+          user_group_id: id,
+          user_id: username,
         }));
-        await dispatch(getAdminActiveUsers(currentGroupId));
-        await dispatch(getAdminUserGroupMembers(currentGroupId));
+
+        await Promise.all([
+          dispatch(getAdminActiveUsers(id)),
+          dispatch(getAdminUserGroupMembers(id)),
+        ]);
+
         dispatch(resetForm(formNamesConst.EDIT_USER_GROUP_MEMBERS));
       },
       dispatch
     );
   };
 
-export const handleUpdateAdminUsersGroup: HandleUpdateAdminUsersGroup = values =>
+export const handleUpdateAdminUsersGroup: HandleUpdateAdminUsersGroup = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUsersGroupValuesUnderscore(values);
+        const preparedValues = prepareAdminUsersGroupData(data);
 
         await dispatch(updateAdminUsersGroup(preparedValues));
         await dispatch(handleGetAdminUsersGroup());

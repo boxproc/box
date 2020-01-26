@@ -26,8 +26,8 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   isGroupPermissionFormDirty,
   isReadOnly,
 }) => {
-  const currentName = React.useMemo(
-    () => (groupName && institutionName) ? `: "${groupName}" (${institutionName})` : '',
+  const modalTitle = React.useMemo(
+    () => `Edit User Group: "${groupName}" (${institutionName})`,
     [groupName, institutionName]
   );
 
@@ -47,8 +47,8 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit User Group${currentName}`}
-      minContainerHeight={550}
+      title={modalTitle}
+      minContainerHeight={580}
       withCloseConfirmation={isAnyFormDirty}
     >
       <EditUserGroupForms

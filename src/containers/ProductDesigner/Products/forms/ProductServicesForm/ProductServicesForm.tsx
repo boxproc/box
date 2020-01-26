@@ -21,7 +21,7 @@ import { SelectValue } from 'types';
 
 interface ServicesFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  currentGroupId: number;
+  currentUserGroupId: number;
   currentInstitutionId: number;
   updateCardService: HandleUpdateCardService;
   productEndpointsServiceOptions: Array<SelectValue>;
@@ -36,7 +36,7 @@ type ServicesFormAllProps = ServicesFormProps &
   InjectedFormProps<{}, ServicesFormProps>;
 
 const ServicesForm: React.FC<ServicesFormAllProps> = ({
-  currentGroupId,
+  currentUserGroupId,
   currentInstitutionId,
   updateCardService,
   handleSubmit,
@@ -53,7 +53,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
       ...data,
-      id: currentGroupId,
+      id: currentUserGroupId,
     })),
     [handleSubmit, updateCardService]
   );

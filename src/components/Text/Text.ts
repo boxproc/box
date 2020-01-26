@@ -32,7 +32,7 @@ interface TitleProps {
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   font-size: 22px;
   font-family: ${({ theme }) => theme.fonts.decorate};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};
@@ -49,6 +49,7 @@ export const T3 = styled.h3<TitleProps>`
 export const T4 = styled.h4<TitleProps>`
   margin-bottom: 7px;
   font-size: 16px;
+  font-weight: 500;
   color: ${({ theme, color }) => color ? color : theme.colors.darkGray};
 `;
 

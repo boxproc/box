@@ -37,19 +37,19 @@ export const addAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
 export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
   apiClient.post(adminUserGroupsURLs.UPDATE_USERS_GROUP, { data });
 
-export const deleteAdminUserGroupMembers = (groupId: number, userId: number) =>
+export const deleteAdminUserGroupMembers = (id: number, userId: number) =>
   apiClient.post(adminUserGroupsURLs.DELETE_USERS_GROUP_MEMBER, {
     data: {
-      user_group_id: groupId,
+      user_group_id: id,
       user_id: userId,
     },
   });
 
 export const deleteAdminUserGroupPermissions =
-  (groupId: number, uiItem: string) =>
+  (id: number, uiItem: string) =>
     apiClient.post(adminUserGroupsURLs.DELETE_GROUP_PERMISSIONS, {
       data: {
-        user_group_id: groupId,
+        user_group_id: id,
         ui_item: uiItem,
       },
     });

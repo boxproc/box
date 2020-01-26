@@ -28,29 +28,29 @@ import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 import { SelectValue } from 'types';
 
 interface SchedulerProps extends WithModalProps {
-  adminSchedulerJobsItems: Array<AdminSchedulerItemPrepared>;
-  filterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs;
-  sendAdminSchedulerAction: HandleSendAdminSchedulerAction;
-  deleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob;
-  currentSchedulerJobId: number;
+  schedulerJobsItems: Array<AdminSchedulerItemPrepared>;
+  institutionsOptions: Array<SelectValue>;
+  currentSchedulerId: number;
   currentSchedulerName: string;
+  isLoading: boolean;
+  filterSchedulerJobs: HandleFilterAdminSchedulerJobs;
+  sendSchedulerAction: HandleSendAdminSchedulerAction;
+  deleteSchedulerJob: HandleDeleteAdminSchedulerJob;
+  filterScheduledJobsById: HandleFilterScheduledJobsById;
   resetScheduler: ResetScheduler;
   getLogData: HandleGetLogData;
-  filterAdminScheduledJobsById: HandleFilterScheduledJobsById;
-  institutionsOptions: Array<SelectValue>;
-  isLoading: boolean;
 }
 
 export const Scheduler: React.FC<SchedulerProps> = ({
-  filterAdminSchedulerJobs,
-  adminSchedulerJobsItems,
-  sendAdminSchedulerAction,
-  currentSchedulerJobId,
-  deleteAdminSchedulerJob,
+  filterSchedulerJobs,
+  schedulerJobsItems,
+  sendSchedulerAction,
+  currentSchedulerId,
+  deleteSchedulerJob,
   currentSchedulerName,
   resetScheduler,
   getLogData,
-  filterAdminScheduledJobsById,
+  filterScheduledJobsById,
   institutionsOptions,
   isLoading,
 }) => {
@@ -68,7 +68,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
           name: systemMonitorTables.SCHEDULER_JOBS,
-          id: currentSchedulerJobId,
+          id: currentSchedulerId,
           title: currentSchedulerName,
         }),
       },
@@ -77,15 +77,15 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: 'Scheduled Jobs',
-        action: () => filterAdminScheduledJobsById({ scheduler_id: currentSchedulerJobId }),
+        action: () => filterScheduledJobsById({ scheduler_id: currentSchedulerId }),
       },
       {
         isDivider: true,
       },
       {
         name: schedulerTasksConsts.EXECUTE_TASK.NAME,
-        action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
+        action: () => sendSchedulerAction({
+          taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
         }),
         withConfirmation: true,
@@ -93,9 +93,9 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`,
-        action: () => sendAdminSchedulerAction(
+        action: () => sendSchedulerAction(
           {
-            taskId: currentSchedulerJobId,
+            taskId: currentSchedulerId,
             taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
           },
           {
@@ -107,8 +107,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.STOP.NAME,
-        action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
+        action: () => sendSchedulerAction({
+          taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.STOP.TASK_COMMAND,
         }),
         withConfirmation: true,
@@ -116,8 +116,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.START.NAME,
-        action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
+        action: () => sendSchedulerAction({
+          taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.START.TASK_COMMAND,
         }),
         withConfirmation: true,
@@ -125,8 +125,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.PAUSE.NAME,
-        action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
+        action: () => sendSchedulerAction({
+          taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.PAUSE.TASK_COMMAND,
         }),
         withConfirmation: true,
@@ -134,8 +134,8 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.RESUME.NAME,
-        action: () => sendAdminSchedulerAction({
-          taskId: currentSchedulerJobId,
+        action: () => sendSchedulerAction({
+          taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.RESUME.TASK_COMMAND,
         }),
         withConfirmation: true,
@@ -147,17 +147,17 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteAdminSchedulerJob,
+        action: () => deleteSchedulerJob(currentSchedulerId),
         withConfirmation: true,
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
       },
     ],
     [
-      sendAdminSchedulerAction,
+      sendSchedulerAction,
       currentSchedulerName,
-      currentSchedulerJobId,
-      deleteAdminSchedulerJob,
-      filterAdminScheduledJobsById,
+      currentSchedulerId,
+      deleteSchedulerJob,
+      filterScheduledJobsById,
       getLogData,
     ]
   );
@@ -174,12 +174,12 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   return (
     <PageTemplate
       title="Scheduler"
-      data={adminSchedulerJobsItems}
+      data={schedulerJobsItems}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_SCHEDULER}
       editModalName={modalNamesConst.EDIT_SCHEDULER}
       contextMenuItems={contextMenuItems}
-      filterAction={filterAdminSchedulerJobs}
+      filterAction={filterSchedulerJobs}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

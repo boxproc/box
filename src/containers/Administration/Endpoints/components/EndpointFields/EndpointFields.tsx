@@ -11,20 +11,22 @@ import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface GeneralEndpointsInfoProps {
+export interface EndpointFieldsProps {
   institutionsOptions: Array<SelectValue>;
   endpointTypesOptions: Array<SelectValue>;
   isDisabledInstitutions?: boolean;
   isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
+  isEditMode: boolean;
 }
 
-const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
+const EndpointFields: React.FC<EndpointFieldsProps> = ({
   institutionsOptions,
   endpointTypesOptions,
   isDisabledInstitutions,
   isLoadingTypesSelector,
   isReadOnly,
+  isEditMode,
 }) => {
   return (
     <Box mx="-10px" >
@@ -121,39 +123,43 @@ const GeneralEndpointsInfo: React.FC<GeneralEndpointsInfoProps> = ({
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="sourceIpAddress"
-            name="sourceIpAddress"
-            component={InputField}
-            label="Source IP Address"
-            placeholder="Enter Source IP Address"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="lastMessageDatetime"
-            name="lastMessageDatetime"
-            component={InputField}
-            label="Last Message Datetime"
-            placeholder="Enter Last Message Datetime"
-            readOnly={true}
-          />
-        </Box>
-        <Box width={[1 / 3]} p="10px">
-          <Field
-            id="lastFaultDatetime"
-            name="lastFaultDatetime"
-            component={InputField}
-            label="Last Fault Datetime"
-            placeholder="Enter Last Fault Datetime"
-            readOnly={true}
-          />
-        </Box>
+        {isEditMode && (
+          <React.Fragment>
+            <Box width={[1 / 3]} p="10px">
+              <Field
+                id="sourceIpAddress"
+                name="sourceIpAddress"
+                component={InputField}
+                label="Source IP Address"
+                placeholder="Enter Source IP Address"
+                readOnly={true}
+              />
+            </Box>
+            <Box width={[1 / 3]} p="10px">
+              <Field
+                id="lastMessageDatetime"
+                name="lastMessageDatetime"
+                component={InputField}
+                label="Last Message Datetime"
+                placeholder="Enter Last Message Datetime"
+                readOnly={true}
+              />
+            </Box>
+            <Box width={[1 / 3]} p="10px">
+              <Field
+                id="lastFaultDatetime"
+                name="lastFaultDatetime"
+                component={InputField}
+                label="Last Fault Datetime"
+                placeholder="Enter Last Fault Datetime"
+                readOnly={true}
+              />
+            </Box>
+          </React.Fragment>
+        )}
       </Flex>
     </Box>
   );
 };
 
-export default GeneralEndpointsInfo;
+export default EndpointFields;

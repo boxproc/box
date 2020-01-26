@@ -44,7 +44,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Port" />,
     accessor: 'port',
@@ -67,18 +67,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
-    sortable: true,
-    Header: <TableHeader title="Log File Location" />,
-    accessor: 'logFileLocation',
-    Cell: (props: TCell<'logFileLocation'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
-    maxWidth: 100,
+    maxWidth: 80,
     sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
@@ -106,6 +95,19 @@ export const tableColumns = [
     Cell: (props: TCell<'connectionAttributes'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 300,
+    sortable: true,
+    Header: <TableHeader title="Log File Location" />,
+    accessor: 'logFileLocation',
+    Cell: (props: TCell<'logFileLocation'>) => (
+      <TableCell
+        value={props.value}
+        isSmaller={true}
       />
     ),
   },

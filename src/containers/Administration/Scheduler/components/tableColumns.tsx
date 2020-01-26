@@ -107,6 +107,7 @@ export const tableColumns = [
     Cell: (props: TCell<'executable'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
@@ -118,6 +119,7 @@ export const tableColumns = [
     Cell: (props: TCell<'logLocation'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

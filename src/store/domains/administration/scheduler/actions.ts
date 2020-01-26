@@ -4,11 +4,7 @@ import { formNamesConst, modalNamesConst } from 'consts';
 
 import { closeModal } from 'store/domains/modals';
 
-import {
-  selectActiveItemId,
-  selectIsAccessibleFiltering,
-  startAutoRefresh,
-} from 'store/domains/utils';
+import { selectIsAccessibleFiltering, startAutoRefresh } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
@@ -42,7 +38,7 @@ export type HandleAddAdminSchedulerJob = (values: Partial<AdminSchedulerEditable
   Thunk<void>;
 
 export type DeleteAdminSchedulerJob = (id: number) => DeleteAdminSchedulerJobAction;
-export type HandleDeleteAdminSchedulerJob = () => Thunk<void>;
+export type HandleDeleteAdminSchedulerJob = (id: number) => Thunk<void>;
 
 export type SendAdminSchedulerAction = (values: Partial<AdminSchedulerJobAction>) =>
   SendAdminSchedulerActionJobAction;
@@ -131,16 +127,12 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
     );
   };
 
-export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = () =>
-  async (dispatch, getState) => {
+export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
-        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
         await dispatch(deleteAdminSchedulerJob(id));
-        await dispatch(handleFilterAdminSchedulerJobs());
+        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
       },
       dispatch
     );

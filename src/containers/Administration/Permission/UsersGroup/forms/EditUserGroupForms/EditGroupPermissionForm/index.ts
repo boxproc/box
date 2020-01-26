@@ -7,20 +7,25 @@ import { formNamesConst } from 'consts';
 import EditGroupPermissionForm from './EditGroupPermissionForm';
 
 import {
+  AdminUsersGroupActionTypes,
+  createLoadingSelector,
   handleAddGroupPermission,
   handleGetAdminUiItems,
   selectActiveItemId,
   selectAdminGroupPermissionsUiItems,
-  selectDefaultAdminUiItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
+const loadingSelector = createLoadingSelector([
+  AdminUsersGroupActionTypes.ADD_ADMIN_GROUP_PERMISSIONS,
+]);
+
 const formSelector = formValueSelector(formNamesConst.EDIT_GROUP_PERMISSION);
 
 const mapStateToProps = (state: StoreState) => ({
-  currentGroupId: selectActiveItemId(state),
-  defaultAdminUiItems: selectDefaultAdminUiItems(state),
+  isLoading: loadingSelector(state),
+  currentUserGroupId: selectActiveItemId(state),
   uiItemsOptions: selectAdminGroupPermissionsUiItems(state),
   selectedUiItem: formSelector(state, 'uiItem'),
 });
@@ -28,7 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getUiItems: handleGetAdminUiItems,
-    addAdminGroupPermission: handleAddGroupPermission,
+    addGroupPermission: handleAddGroupPermission,
   },
   dispatch
 );

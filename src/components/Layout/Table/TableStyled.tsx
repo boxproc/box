@@ -127,14 +127,12 @@ export const TableStyled = styled.div<TableStyledProps>`
       }
     `}
 
-    .rt-thead .rt-th.-sort-desc,
-    .rt-thead .rt-td.-sort-desc {
-      box-shadow: none;
+    .rt-thead .rt-th.-sort-asc {
+      box-shadow: inset 0 3px 0 0 ${({ theme }) => theme.colors.gray};
     }
 
-    .rt-thead .rt-th.-sort-asc,
-    .rt-thead .rt-td.-sort-asc {
-      box-shadow: none;
+    .rt-thead .rt-th.-sort-desc {
+      box-shadow: inset 0 -3px 0 0 ${({ theme }) => theme.colors.gray};
     }
 
     .rt-tbody .rt-th,
@@ -145,11 +143,6 @@ export const TableStyled = styled.div<TableStyledProps>`
     .rt-tbody .rt-td {
       word-break: break-word;
       overflow: visible;
-    }
-
-    .-sort-asc .up-icon path,
-    .-sort-desc .down-icon path {
-      stroke: ${({ theme }) => theme.colors.black};
     }
 
     .rt-thead.-filters input {

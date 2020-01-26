@@ -9,6 +9,7 @@ import {
   handleDeleteAdminInstitution,
   handleGetAdminInstitutions,
   resetInstitutions,
+  selectActiveItemId,
   selectAdminCurrentInstitutionName,
   selectAdminInstitutions,
 } from 'store/domains';
@@ -17,18 +18,20 @@ import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
   AdminInstitutionsActionTypes.GET_ADMIN_INSTITUTIONS,
+  AdminInstitutionsActionTypes.DELETE_ADMIN_INSTITUTION,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminInstitutions: selectAdminInstitutions(state),
-  adminCurrentInstitutionName: selectAdminCurrentInstitutionName(state),
+  institutionsData: selectAdminInstitutions(state),
+  currentInstitutionName: selectAdminCurrentInstitutionName(state),
+  currentInstitutionId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAdminInstitutions: handleGetAdminInstitutions,
-    deleteAdminInstitution: handleDeleteAdminInstitution,
+    getInstitutions: handleGetAdminInstitutions,
+    deleteInstitution: handleDeleteAdminInstitution,
     resetInstitutions,
   },
   dispatch

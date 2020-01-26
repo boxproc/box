@@ -15,20 +15,20 @@ import {
 } from 'store/domains';
 
 interface SystemPropertiesProps {
-  deleteAdminSysProp: HandleDeleteAdminSysProp;
-  filterAdminSysProps: HandleFilterAdminSysProps;
-  updateAdminSysProps: HandleUpdateAdminSysProps;
-  adminSysPropsItems: Array<AdminSysPropsItem>;
+  deleteSysProp: HandleDeleteAdminSysProp;
+  filterSysProps: HandleFilterAdminSysProps;
+  updateSysProps: HandleUpdateAdminSysProps;
+  sysPropsItems: Array<AdminSysPropsItem>;
   currentSysPropId: number | string;
   resetSystemProperties: ResetSystemProperties;
   isLoading: boolean;
 }
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
-  adminSysPropsItems,
-  deleteAdminSysProp,
-  filterAdminSysProps,
-  updateAdminSysProps,
+  sysPropsItems,
+  deleteSysProp,
+  filterSysProps,
+  updateSysProps,
   currentSysPropId,
   resetSystemProperties,
   isLoading,
@@ -45,34 +45,32 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteAdminSysProp,
+        action: () => deleteSysProp(currentSysPropId),
         withConfirmation: true,
         confirmationText: `Delete system property "${currentSysPropId}"?`,
       },
       {
         name: 'Lock',
         icon: iconNamesConst.LOCK,
-        action: () => updateAdminSysProps({
-          lockedFlag: true,
-        }),
+        action: () => updateSysProps({ lockedFlag: true }),
         withConfirmation: true,
         confirmationText: `Lock system property "${currentSysPropId}"?`,
       },
     ],
-    [deleteAdminSysProp, currentSysPropId, updateAdminSysProps]
+    [deleteSysProp, currentSysPropId, updateSysProps]
   );
 
   return (
     <PageTemplate
       title="System Properties"
-      data={adminSysPropsItems}
+      data={sysPropsItems}
       columns={tableColumns}
       isDownloadButton={true}
       isLoading={isLoading}
       newModalName={modalNamesConst.ADD_SYSTEM_PROPERTY}
       editModalName={modalNamesConst.EDIT_SYSTEM_PROPERTY}
       contextMenuItems={contextMenuItems}
-      filterAction={filterAdminSysProps}
+      filterAction={filterSysProps}
       FilterForm={
         <SystemPropertyFilter
           isDisabled={isLoading}

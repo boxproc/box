@@ -2,29 +2,29 @@ import { permissionTypesCodes } from 'consts';
 
 import { AdminGroupPermissionItemEditable, AdminUsersGroupInfoEditable } from './types';
 
-export const prepareAdminUsersGroupValuesUnderscore =
-  (values: Partial<AdminUsersGroupInfoEditable>) => {
-    if (!values) {
+export const prepareAdminUsersGroupData =
+  (data: Partial<AdminUsersGroupInfoEditable>) => {
+    if (!data) {
       return null;
     }
 
     return {
-      id: values.id,
-      institution_id: values.institutionId && values.institutionId.value,
-      name: values.name,
+      id: data.id,
+      institution_id: data.institutionId && data.institutionId.value,
+      name: data.name,
     };
   };
 
 export const AdminGroupPermissionPreparedToSend =
-  (values: Partial<AdminGroupPermissionItemEditable>) => {
-    if (!values) {
+  (data: Partial<AdminGroupPermissionItemEditable>) => {
+    if (!data) {
       return null;
     }
 
     return {
-      user_group_id: values.userGroupId,
-      ui_item: values.uiItem && values.uiItem.value,
-      permission: values.permission
+      user_group_id: data.userGroupId,
+      ui_item: data.uiItem && data.uiItem.value,
+      permission: data.permission
         ? permissionTypesCodes.READ_WRITE
         : permissionTypesCodes.READ_ONLY,
     };

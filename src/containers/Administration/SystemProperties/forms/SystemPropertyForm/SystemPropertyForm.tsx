@@ -4,6 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
+  Button,
   CheckboxField,
   ExternalSpinnerProps,
   Hr,
@@ -12,15 +13,21 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNamesConst } from 'consts';
+import { formNamesConst, iconNamesConst } from 'consts';
 
-import { HandleAddAdminSysProp, HandleUpdateAdminSysProps } from 'store/domains';
+import {
+  HandleAddAdminSysProp,
+  HandleDeleteAdminSysProp,
+  HandleUpdateAdminSysProps,
+} from 'store/domains';
 
 import { formErrorUtil } from 'utils';
 
 interface SystemPropertyFormProps extends ExternalSpinnerProps {
-  addAdminSystemProperty: HandleAddAdminSysProp;
-  updateAdminSystemProperty: HandleUpdateAdminSysProps;
+  addSystemProperty: HandleAddAdminSysProp;
+  updateSystemProperty: HandleUpdateAdminSysProps;
+  deleteSystemProperty: HandleDeleteAdminSysProp;
+  currentSystemPropertyId: number | string;
   isEditMode?: boolean;
   isReadOnly: boolean;
   onCancel: () => void;
@@ -33,20 +40,32 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   handleSubmit,
   isEditMode,
   isReadOnly,
-  addAdminSystemProperty,
-  updateAdminSystemProperty,
+  addSystemProperty,
+  updateSystemProperty,
   onCancel,
   dirty,
   pristine,
+  currentSystemPropertyId,
+  deleteSystemProperty,
 }) => {
   const submitFormAction = React.useMemo(
-    () => isEditMode ? updateAdminSystemProperty : addAdminSystemProperty,
-    [isEditMode, updateAdminSystemProperty, addAdminSystemProperty]
+    () => isEditMode ? updateSystemProperty : addSystemProperty,
+    [isEditMode, updateSystemProperty, addSystemProperty]
+  );
+
+  const deleteConfirmationText = React.useMemo(
+    () => `Delete system property "${currentSystemPropertyId}"?`,
+    [currentSystemPropertyId]
   );
 
   const handleSubmitForm = React.useCallback(
     handleSubmit(submitFormAction),
     [handleSubmit, submitFormAction]
+  );
+
+  const handleDelete = React.useCallback(
+    () => deleteSystemProperty(currentSystemPropertyId),
+    [currentSystemPropertyId, deleteSystemProperty]
   );
 
   return (
@@ -110,15 +129,32 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
         </Flex>
       </Box>
       <Hr />
-      <OkCancelButtons
-        okText="Save"
-        cancelText="Close"
-        onCancel={onCancel}
-        rightPosition={true}
-        withCancelConfirmation={dirty}
-        disabledOk={pristine}
-        hideOk={isReadOnly}
-      />
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <div>
+          {isEditMode && !isReadOnly && (
+            <Button
+              text="delete"
+              iconName={iconNamesConst.DELETE}
+              type="reset"
+              withConfirmation={true}
+              confirmationText={deleteConfirmationText}
+              onClick={handleDelete}
+            />
+          )}
+        </div>
+        <OkCancelButtons
+          okText="Save"
+          cancelText="Close"
+          onCancel={onCancel}
+          rightPosition={true}
+          withCancelConfirmation={dirty}
+          disabledOk={pristine}
+          hideOk={isReadOnly}
+        />
+      </Flex>
     </form >
   );
 };

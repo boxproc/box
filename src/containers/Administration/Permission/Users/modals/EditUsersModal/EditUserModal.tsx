@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { DefineUsersForm } from 'containers/Administration/Permission/Users/forms';
+import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
 import { AdminUserItemDetails } from 'store/domains';
 
@@ -42,7 +42,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       maxContainerWidth={750}
       withCloseConfirmation={isFormDirty}
     >
-      <DefineUsersForm
+      <UserForm
         onCancel={handleOnCancel}
         isEditMode={true}
         initialValues={userDetails}

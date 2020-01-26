@@ -1,2 +1,2 @@
-export { default as GeneralEndpointsInfo } from './GeneralEndpointsInfo';
+export { default as EndpointFields } from './EndpointFields';
 export * from './tableColumns';

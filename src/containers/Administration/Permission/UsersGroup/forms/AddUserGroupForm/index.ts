@@ -20,7 +20,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addAdminUsersGroup: handleAddAdminUsersGroup,
+    addUsersGroup: handleAddAdminUsersGroup,
   },
   dispatch
 );

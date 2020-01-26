@@ -16,7 +16,7 @@ const dirty = isDirty(formNamesConst.INTERFACE);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  adminCurrentInterface: selectAdminCurrentInterface(state),
+  currentInterface: selectAdminCurrentInterface(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentInterfaceName: selectAdminCurrentInterfaceName(state),
 });

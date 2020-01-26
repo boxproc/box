@@ -14,11 +14,12 @@ import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface EditUserGroupMembersProps {
-  getActiveUsers: HandleGetAdminActiveUsers;
-  addAdminActiveUsers?: HandleAddAdminActiveUsers;
-  currentGroupId: number;
-  selectedUser: SelectValue;
   activeUsersItemsOptions: Array<SelectValue>;
+  selectedUser: SelectValue;
+  currentUserGroupId: number;
+  isLoading: boolean;
+  getActiveUsers: HandleGetAdminActiveUsers;
+  addActiveUsers: HandleAddAdminActiveUsers;
 }
 
 type EditUserGroupMembersPropsAllProps = EditUserGroupMembersProps &
@@ -26,27 +27,36 @@ type EditUserGroupMembersPropsAllProps = EditUserGroupMembersProps &
 
 const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
   handleSubmit,
-  addAdminActiveUsers,
+  addActiveUsers,
   getActiveUsers,
-  currentGroupId,
+  currentUserGroupId,
   selectedUser,
   activeUsersItemsOptions,
+  isLoading,
 }) => {
   React.useEffect(
     () => {
-      getActiveUsers(currentGroupId);
+      getActiveUsers(currentUserGroupId);
     },
-    [getActiveUsers, currentGroupId]
+    [getActiveUsers, currentUserGroupId]
   );
 
-  const isSelectedUser = React.useMemo(
-    () => !!selectedUser,
-    [selectedUser]
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add to the group',
+    [isLoading]
+  );
+
+  const isDisabledButton = React.useMemo(
+    () => !selectedUser || isLoading,
+    [selectedUser, isLoading]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(addAdminActiveUsers),
-    [handleSubmit, addAdminActiveUsers]
+    handleSubmit(data => addActiveUsers({
+      ...data,
+      userGroupId: currentUserGroupId,
+    })),
+    [handleSubmit, addActiveUsers]
   );
 
   return (
@@ -59,15 +69,16 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
             placeholder="Select User"
             component={SelectField}
             label="Select User"
-            validate={[formErrorUtil.required]}
             options={activeUsersItemsOptions}
+            isDisabled={isLoading}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1 / 2]} pb="21px">
           <Button
             iconName={iconNamesConst.PLUS}
-            text="Add to the group"
-            disabled={!isSelectedUser}
+            text={buttonText}
+            disabled={isDisabledButton}
           />
         </Box>
       </Flex>

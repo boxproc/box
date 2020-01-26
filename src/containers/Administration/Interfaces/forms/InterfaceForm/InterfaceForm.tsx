@@ -7,7 +7,7 @@ import { Button, ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'comp
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { GeneralInterfacesInfo } from 'containers/Administration/Interfaces/components';
+import { InterfaceFields } from 'containers/Administration/Interfaces/components';
 
 import {
   HandleAddAdminInterface,
@@ -19,15 +19,16 @@ import { SelectValue } from 'types';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {
   interfaceTypesOptions: Array<SelectValue>;
-  updateAdminInterface: HandleUpdateAdminInterface;
-  addAdminInterface: HandleAddAdminInterface;
+  currentInterfaceName?: string;
+  currentInterfaceId: number;
+  isReadOnly: boolean;
+  isLoadingTypesSelector: boolean;
+  mode: 'add' | 'edit';
+  updateInterface: HandleUpdateAdminInterface;
+  addInterface: HandleAddAdminInterface;
   deleteInterface: HandleDeleteAdminInterface;
   getDictionaryInterfaceTypes: HandleGetDictionaryInterfaceTypes;
   onCancel: () => void;
-  mode: 'add' | 'edit';
-  currentInterfaceName?: string;
-  isReadOnly: boolean;
-  isLoadingTypesSelector: boolean;
 }
 
 type InterfaceFormAllProps = InterfaceFormProps &
@@ -37,8 +38,8 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   onCancel,
   handleSubmit,
   deleteInterface,
-  updateAdminInterface,
-  addAdminInterface,
+  updateInterface,
+  addInterface,
   currentInterfaceName,
   mode,
   dirty,
@@ -47,6 +48,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   getDictionaryInterfaceTypes,
   isLoadingTypesSelector,
   interfaceTypesOptions,
+  currentInterfaceId,
 }) => {
   React.useEffect(
     () => {
@@ -61,8 +63,13 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   );
 
   const submitFormAction = React.useMemo(
-    () => isEditMode ? updateAdminInterface : addAdminInterface,
-    [isEditMode, updateAdminInterface, addAdminInterface]
+    () => isEditMode ? updateInterface : addInterface,
+    [isEditMode, updateInterface, addInterface]
+  );
+
+  const deleteConfirmationText = React.useMemo(
+    () => `Delete interface: "${currentInterfaceName}"?`,
+    [currentInterfaceName]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -70,9 +77,14 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
     [handleSubmit, submitFormAction]
   );
 
+  const handleDeleteInterface = React.useCallback(
+    () => deleteInterface(currentInterfaceId),
+    [deleteInterface, currentInterfaceId]
+  );
+
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <GeneralInterfacesInfo
+      <InterfaceFields
         interfaceTypesOptions={interfaceTypesOptions}
         isEditMode={isEditMode}
         isLoadingTypesSelector={isLoadingTypesSelector}
@@ -89,8 +101,8 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
               iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
-              confirmationText={`Delete interface: "${currentInterfaceName}"?`}
-              onClick={deleteInterface}
+              confirmationText={deleteConfirmationText}
+              onClick={handleDeleteInterface}
             />
           )}
         </div>

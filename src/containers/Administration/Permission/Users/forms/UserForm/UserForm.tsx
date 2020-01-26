@@ -32,8 +32,8 @@ interface DefineUserFormProps {
   requires2faFlagValue: boolean;
   statusValue: SelectValue;
   institutionValue: SelectValue;
-  addAdminUser: HandleAddAdminUser;
-  updateAdminUser: HandleUpdateAdminUser;
+  addUser: HandleAddAdminUser;
+  updateUser: HandleUpdateAdminUser;
   onCancel?: () => void;
   isReadOnly?: boolean;
 }
@@ -43,8 +43,8 @@ type DefineUserFormAllProps = DefineUserFormProps &
 
 const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   handleSubmit,
-  addAdminUser,
-  updateAdminUser,
+  addUser,
+  updateUser,
   isEditMode,
   onCancel,
   requires2faFlagValue,
@@ -74,8 +74,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   );
 
   const submitAction = React.useMemo(
-    () => isEditMode ? updateAdminUser : addAdminUser,
-    [isEditMode, updateAdminUser, addAdminUser]
+    () => isEditMode ? updateUser : addUser,
+    [isEditMode, updateUser, addUser]
   );
 
   const passwordValidation = React.useMemo(

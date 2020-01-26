@@ -31,30 +31,30 @@ import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface DefineSchedulerJobFormProps {
+interface SchedulerFormProps {
   defineAdminSchedulerJob?: HandleAddAdminSchedulerJob | HandleUpdateAdminSchedulerJob;
   institutionsOptions?: Array<SelectValue>;
   isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;
-  deleteAdminSchedulerJob?: HandleDeleteAdminSchedulerJob;
+  deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;
   mode: 'add' | 'edit';
   openModal?: OpenModal;
   currentSchedulerName?: string;
   isReadOnly?: boolean;
 }
 
-type DefineSchedulerJobFormAllProps = DefineSchedulerJobFormProps &
-  InjectedFormProps<{}, DefineSchedulerJobFormProps>;
+type SchedulerFormAllProps = SchedulerFormProps &
+  InjectedFormProps<{}, SchedulerFormProps>;
 
-const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
+const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   handleSubmit,
   defineAdminSchedulerJob,
   isDisabledInstitutions,
   institutionsOptions,
   isDisabledStatus,
   onCancel,
-  deleteAdminSchedulerJob,
+  deleteSchedulerJob,
   mode,
   dirty,
   pristine,
@@ -164,7 +164,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 2]} p="10px">
             <Field
               id="logLocation"
               name="logLocation"
@@ -175,7 +175,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 4]} p="10px">
             <Field
               id="cronExpression"
               name="cronExpression"
@@ -186,7 +186,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px 10px 20px">
+          <Box p="10px 10px 20px">
             <Button
               type="reset"
               text="Build cron expression"
@@ -210,7 +210,7 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete scheduler "${currentSchedulerName}"?`}
-              onClick={deleteAdminSchedulerJob}
+              onClick={deleteSchedulerJob}
             />
           )}
         </div>
@@ -227,8 +227,8 @@ const DefineSchedulerJobForm: React.FC<DefineSchedulerJobFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, DefineSchedulerJobFormProps>({
-  form: formNamesConst.DEFINE_SCHEDULER_JOB,
+export default reduxForm<{}, SchedulerFormProps>({
+  form: formNamesConst.SCHEDULER,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(DefineSchedulerJobForm);
+})(SchedulerForm);

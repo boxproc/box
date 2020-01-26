@@ -25,7 +25,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  adminUserItems: selectUserEditorItems(state),
+  userItems: selectUserEditorItems(state),
   currentUserId: selectActiveItemId(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });

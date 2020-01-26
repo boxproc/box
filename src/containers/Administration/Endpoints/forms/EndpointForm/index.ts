@@ -15,6 +15,7 @@ import {
   handleDeleteAdminEndpoint,
   handleGetDictionaryEndpointTypes,
   handleUpdateEndpoint,
+  selectActiveItemId,
   selectEndpointTypesOptions,
 } from 'store/domains';
 
@@ -30,13 +31,14 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isLoadingTypesSelector: loadingTypesSelector(state),
   endpointTypesOptions: selectEndpointTypesOptions(state),
+  currentEndpointId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteEndpoint: handleDeleteAdminEndpoint,
-    updateAdminEndpoint: handleUpdateEndpoint,
-    addAdminEndpoint: handleAddAdminEndpoint,
+    updateEndpoint: handleUpdateEndpoint,
+    addEndpoint: handleAddAdminEndpoint,
     getDictionaryEndpointTypes: handleGetDictionaryEndpointTypes,
   },
   dispatch

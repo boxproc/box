@@ -11,26 +11,26 @@ import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface GeneralUserGroupInfoProps {
+export interface UserGroupFieldsProps {
   institutionsOptions: Array<SelectValue>;
   isEditMode?: boolean;
   isInstitutionsLoading: boolean;
-  getAdminInstitutions: HandleGetAdminInstitutions;
+  getInstitutions: HandleGetAdminInstitutions;
   isReadOnly: boolean;
 }
 
-const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
+const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
   institutionsOptions,
   isEditMode,
-  getAdminInstitutions,
+  getInstitutions,
   isInstitutionsLoading,
   isReadOnly,
 }) => {
   React.useEffect(
     () => {
-      getAdminInstitutions();
+      getInstitutions();
     },
-    [getAdminInstitutions]
+    [getInstitutions]
   );
 
   return (
@@ -68,4 +68,4 @@ const GeneralUserGroupInfo: React.FC<GeneralUserGroupInfoProps> = ({
   );
 };
 
-export default GeneralUserGroupInfo;
+export default UserGroupFields;

@@ -13,27 +13,28 @@ import {
   HandleGetLogData,
   ResetInterfaces,
 } from 'store/domains';
+
 import { SelectValue } from 'types';
 
 export interface AccountsProps {
-  interfaceName: string;
-  currentInterfaceId: number;
-  adminInterfaceItems: Array<AdminInterfaceItemPrepared>;
+  interfaceItems: Array<AdminInterfaceItemPrepared>;
   institutionsOptions: Array<SelectValue>;
+  currentInterfaceName: string;
+  currentInterfaceId: number;
+  isLoading: boolean;
   deleteInterface: HandleDeleteAdminInterface;
-  filterAdminInterface: HandleFilterAdminInterface;
+  filterInterface: HandleFilterAdminInterface;
   getLogData: HandleGetLogData;
   resetInterfaces: ResetInterfaces;
-  isLoading: boolean;
 }
 
 const Interfaces: React.FC<AccountsProps> = ({
-  adminInterfaceItems,
+  interfaceItems,
   deleteInterface,
-  filterAdminInterface,
+  filterInterface,
   institutionsOptions,
   resetInterfaces,
-  interfaceName,
+  currentInterfaceName,
   getLogData,
   currentInterfaceId,
   isLoading,
@@ -53,18 +54,18 @@ const Interfaces: React.FC<AccountsProps> = ({
         action: () => getLogData({
           name: systemMonitorTables.INTERFACES,
           id: currentInterfaceId,
-          title: interfaceName,
+          title: currentInterfaceName,
         }),
       },
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteInterface,
+        action: () => deleteInterface(currentInterfaceId),
         withConfirmation: true,
-        confirmationText: `Delete interface: ${interfaceName}?`,
+        confirmationText: `Delete interface: ${currentInterfaceName}?`,
       },
     ],
-    [deleteInterface, interfaceName, currentInterfaceId, getLogData]
+    [deleteInterface, currentInterfaceName, currentInterfaceId, getLogData]
   );
 
   const initialFilterValues = React.useMemo(
@@ -79,12 +80,12 @@ const Interfaces: React.FC<AccountsProps> = ({
   return (
     <PageTemplate
       title="Interfaces"
-      data={adminInterfaceItems}
+      data={interfaceItems}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_INTERFACE}
       editModalName={modalNamesConst.EDIT_INTERFACE}
       contextMenuItems={contextMenuItems}
-      filterAction={filterAdminInterface}
+      filterAction={filterInterface}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}
