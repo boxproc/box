@@ -1,6 +1,10 @@
 import React from 'react';
 
+import { Box } from '@rebass/grid';
+
 import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
+
+import percent from 'resources/icons/percent.svg';
 
 import { iconNamesConst } from 'consts';
 
@@ -18,6 +22,8 @@ export const renderIcon = (name: string) => {
       return (<ShortTextIcon size="16" />);
     case iconNamesConst.FILE_PDF:
       return (<FilePdfIcon size="13" />);
+    case iconNamesConst.LOAN:
+      return (<Box ml="-3px"><img src={percent} width={15} alt="" /></Box>);
     default:
       return null;
   }

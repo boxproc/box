@@ -18,4 +18,5 @@ export enum iconNamesConst {
   FILE_CSV = 'fileCsv',
   FILE_PDF = 'filePdf',
   SEARCH = 'search',
+  LOAN = 'loan',
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -93,6 +93,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       },
       {
         name: 'Convert to Loan',
+        icon: iconNamesConst.LOAN,
         action: () => openModal({
           name: modalNamesConst.LEDGER_TRANSACTION,
           payload: { activeTab: 1 },
