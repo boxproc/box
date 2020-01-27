@@ -33,6 +33,11 @@ export const selectLedgerTransactionAmount = createSelector(
   transaction => transaction && transaction.amount
 );
 
+export const selectLedgerCurrentTransactionAccountId = createSelector(
+  selectLedgerCurrentTransaction,
+  transaction => transaction && transaction.accountId
+);
+
 export const selectIsTransactionConvertibleToLoan = createSelector(
   selectLedgerCurrentTransaction,
   transaction => {

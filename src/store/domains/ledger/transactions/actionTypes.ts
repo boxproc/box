@@ -1,4 +1,4 @@
-import { ApiResponse } from 'types';
+import { ApiResponse, ResponseStatusType } from 'types';
 import { LedgerTransactionItems } from './types';
 
 export enum ActionTypeKeys {
@@ -11,6 +11,12 @@ export enum ActionTypeKeys {
   'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED',
   FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED =
   'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED',
+
+  CONVERT_TRANSACTION_TO_LOAN = 'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN',
+  CONVERT_TRANSACTION_TO_LOAN_FULFILLED =
+  'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN_FULFILLED',
+  CONVERT_TRANSACTION_TO_LOAN_REJECTED =
+  'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN_REJECTED',
 
   RESET_TRANSACTIONS = 'ledger/transactions/RESET_TRANSACTIONS',
 }
@@ -48,7 +54,24 @@ export interface FilterLedgerTransactionsByIdRejectedAction {
   readonly payload: ApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED;
 }
+
+export interface ConvertTransactionToLoanAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN;
+}
+
+export interface ConvertTransactionToLoanFulfilledAction {
+  readonly payload: ResponseStatusType;
+  readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_FULFILLED;
+}
+
+export interface ConvertTransactionToLoanRejectedAction {
+  readonly payload: ApiResponse;
+  readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_REJECTED;
+}
+
 export type LedgerTransactionsActionTypes =
   | FilterLedgerTransactionsFulfilledAction
   | FilterLedgerTransactionsByIdFulfilledAction
+  | ConvertTransactionToLoanFulfilledAction
   | ResetTransactionsAction;

@@ -1,21 +1,28 @@
 import { push } from 'connected-react-router';
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { setIsOpenFilter } from 'store/domains/utils';
 import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
+  ConvertTransactionToLoanAction,
   FilterLedgerTransactionsAction,
-  FilterLedgerTransactionsByIdAction
+  FilterLedgerTransactionsByIdAction,
 } from './actionTypes';
 import * as api from './api';
-import { LedgerTransactionsFilterPrepared } from './types';
-import { preparedFilterToSend } from './utils';
+import { selectLedgerCurrentTransactionAccountId } from './selectors';
+import {
+  LedgerConvertTransactionToLoanItem,
+  LedgerConvertTransactionToLoanItemPrepared,
+  LedgerTransactionsFilterPrepared
+} from './types';
+import { prepareDataToConvert, preparedFilterToSend } from './utils';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
+import { openModal } from 'store/domains/modals';
 import { Thunk } from 'types';
 
 export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterPrepared>) =>
@@ -24,6 +31,11 @@ export type HandleFilterLedgerTransactions = () => Thunk<void>;
 
 export type FilterLedgerTransactionsById = (id: LedgerId) => FilterLedgerTransactionsByIdAction;
 export type HandleFilterLedgerTransactionsById = (id: LedgerId) => Thunk<void>;
+
+export type ConvertTransactionToLoan = (data: Partial<LedgerConvertTransactionToLoanItem>) =>
+  ConvertTransactionToLoanAction;
+export type HandleConvertTransactionToLoan =
+  (data: Partial<LedgerConvertTransactionToLoanItemPrepared>) => Thunk<void>;
 
 export type ResetTransactions = () => void;
 
@@ -35,6 +47,11 @@ export const filterLedgerTransactions: FilterLedgerTransactions = filter => ({
 export const filterLedgerTransactionsById: FilterLedgerTransactionsById = data => ({
   type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID,
   payload: api.filterLedgerTransactionsById(data),
+});
+
+export const convertTransactionToLoan: ConvertTransactionToLoan = data => ({
+  type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN,
+  payload: api.convertTransactionToLoan(data),
 });
 
 export const resetTransactions: ResetTransactions = () => ({
@@ -69,6 +86,30 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
         dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
         await dispatch(filterLedgerTransactionsById(id));
         dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };
+
+export const handleConvertTransactionToLoan: HandleConvertTransactionToLoan = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedValues = prepareDataToConvert({
+          ...data,
+          accountId: selectLedgerCurrentTransactionAccountId(getState()),
+         }
+          );
+
+        await dispatch(convertTransactionToLoan(preparedValues));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Convert to Loan',
+            message: 'Transaction is successfully converted.',
+          },
+        }));
+        dispatch(resetForm(formNamesConst.LEDGER_TRANSACTION));
       },
       dispatch
     );

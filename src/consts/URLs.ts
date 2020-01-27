@@ -143,6 +143,7 @@ export enum lenderStatementsURLs {
 
 export enum lenderTransactionsURLs {
   GET = '/ui/ledger/transactions/get',
+  CONVERT_TO_LOAN = '/ui/ledger/transactions/convert_to_loan',
 }
 
 export enum lenderManualTransactionURLs {

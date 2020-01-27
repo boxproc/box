@@ -6,6 +6,7 @@ import {
 } from 'consts';
 
 import {
+  LedgerConvertTransactionToLoanItemPrepared,
   LedgerTransactionItem,
   LedgerTransactionItemPrepared,
   LedgerTransactionsFilter,
@@ -154,5 +155,27 @@ export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) =>
     account_id: accountId ? accountId : null,
     card_id: cardId ? cardId : null,
     pan_alias: panAlias ? panAlias : null,
+  };
+};
+
+export const prepareDataToConvert = (data: Partial<LedgerConvertTransactionToLoanItemPrepared>) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    defNumOfInstallments,
+    defNumOfIntrstFreeInstlmts,
+    accountId,
+    amount,
+    productId,
+  } = data;
+
+  return {
+    num_of_installments: defNumOfInstallments,
+    num_of_interest_free_instllmnts: defNumOfIntrstFreeInstlmts,
+    account_id: stringsUtil.toNumber(accountId),
+    product_id: stringsUtil.toNumber(productId),
+    amount,
   };
 };

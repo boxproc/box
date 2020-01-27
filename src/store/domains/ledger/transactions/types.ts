@@ -107,6 +107,22 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   sourceEndpointId: number;
 }
 
+export interface LedgerConvertTransactionToLoanItem {
+  amount: number;
+  account_id: number;
+  product_id: number;
+  num_of_installments: number;
+  num_of_interest_free_instllmnts: number;
+}
+
+export interface LedgerConvertTransactionToLoanItemPrepared {
+  amount: number;
+  accountId: number;
+  productId: number;
+  defNumOfInstallments: number;
+  defNumOfIntrstFreeInstlmts: number;
+}
+
 export interface LedgerTransactionsFilter extends LedgerTransactionId {
   institutionId: SelectValue;
   customerId: number;

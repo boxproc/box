@@ -7,7 +7,7 @@ import { Button, Hr, InputField, MaskField, NumberFormatField, SelectField } fro
 
 import { dateFormat, formNamesConst, maskFormat } from 'consts';
 
-import { HandleIllustrateLoanProduct } from 'store/domains';
+import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store/domains';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
@@ -22,6 +22,7 @@ interface IllustrationProductFormProps {
   withConvertToLoan: boolean;
   selectedLoanProduct: SelectValue;
   isReadOnly: boolean;
+  convertTransactionToLoan: HandleConvertTransactionToLoan;
 }
 
 type LoanIllustrationFormAllProps = IllustrationProductFormProps &
@@ -39,6 +40,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
   selectedLoanProduct,
   isReadOnly,
   change,
+  convertTransactionToLoan,
 }) => {
   React.useEffect(
     () => {
@@ -90,13 +92,13 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
   );
 
   const handleSubmitFormConvert = React.useCallback(
-    handleSubmit(() => console.log('---convert')),
+    handleSubmit(convertTransactionToLoan),
     [handleSubmit]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(withConvertToLoan ? () => console.log('---submit') : illustrateLoanProduct),
-    [handleSubmit, withConvertToLoan, illustrateLoanProduct]
+    handleSubmit(withConvertToLoan ? () => convertTransactionToLoan : illustrateLoanProduct),
+    [handleSubmit, withConvertToLoan, illustrateLoanProduct, convertTransactionToLoan]
   );
 
   return (
@@ -116,6 +118,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
               placeholder="Select Loan Product"
               label="Loan Product"
               options={loanProductsOptions}
+              isDisabled={isDisabled}
               validate={[formErrorUtil.required]}
             />
           </Box>

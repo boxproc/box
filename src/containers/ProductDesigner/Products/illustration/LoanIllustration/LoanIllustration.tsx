@@ -8,6 +8,7 @@ import IllustrationLoanTable from './IllustrationLoanTable';
 import LoanIllustrationForm from './LoanIllustrationForm';
 
 import {
+  HandleConvertTransactionToLoan,
   HandleGetProductDetails,
   HandleIllustrateLoanProduct,
   IllustrationProductLoan,
@@ -21,6 +22,7 @@ interface IllustrationProductProps {
   productIllustrationData: Array<IllustrationProductLoan>;
   loanProductsOptions: Array<SelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
+  convertTransactionToLoan: HandleConvertTransactionToLoan;
   getProductDetails: HandleGetProductDetails;
   resetProductIllustration: ResetProductIllustration;
   loanDetails: Partial<LoanProductItem>;
@@ -38,6 +40,7 @@ interface IllustrationProductProps {
 
 const LoanIllustration: React.FC<IllustrationProductProps> = ({
   illustrateLoanProduct,
+  convertTransactionToLoan,
   productIllustrationData,
   loanProductsOptions,
   getProductDetails,
@@ -86,13 +89,21 @@ const LoanIllustration: React.FC<IllustrationProductProps> = ({
     [loanDetails, initialFormValues, selectedLoanProduct, withLoanSelection]
   );
 
+  const isDisabledForm = React.useMemo(
+    () => {
+      return isLoading || isIllustrationLoading || isConversionLoading;
+    },
+    [isLoading, isIllustrationLoading, isConversionLoading]
+  );
+
   return (
     <React.Fragment>
       <LoanIllustrationForm
-        isDisabled={isLoading || isIllustrationLoading}
+        isDisabled={isDisabledForm}
         isIllustrationLoading={isIllustrationLoading}
         isConversionLoading={isConversionLoading}
         illustrateLoanProduct={illustrateLoanProduct}
+        convertTransactionToLoan={convertTransactionToLoan}
         loanProductsOptions={loanProductsOptions}
         withLoanSelection={withLoanSelection}
         withConvertToLoan={withConvertToLoan}
