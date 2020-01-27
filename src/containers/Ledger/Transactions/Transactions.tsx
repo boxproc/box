@@ -32,6 +32,7 @@ export interface TransactionsProps extends WithModalProps {
   filterLedgerTransactions: HandleFilterLedgerTransactions;
   resetTransactions: ResetTransactions;
   isLoading: boolean;
+  isTransactionConvertibleToLoan: boolean;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
@@ -46,6 +47,8 @@ const Transactions: React.FC<TransactionsProps> = ({
   currentId,
   openModal,
   isLoading,
+  isTransactionConvertibleToLoan,
+
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -59,55 +62,48 @@ const Transactions: React.FC<TransactionsProps> = ({
     },
     [resetTransactions]
   );
+  const baseItems = [{
+    isDivider: true,
+  },
+  {
+    name: 'Accounts',
+    action: () => filterLedgerAccountsById({ transaction_id: currentId }),
+  },
+  {
+    name: 'Customers',
+    action: () => filterLedgerCustomersById({ transaction_id: currentId }),
+  },
+  {
+    name: 'Cards',
+    action: () => filterLedgerCardsById({ transaction_id: currentId }),
+  },
+  {
+    name: 'Statements',
+    action: () => filterLedgerStatementsById({ transaction_id: currentId }),
+  },
+  {
+    isDivider: true,
+  },
+  {
+    name: 'Settle Transaction',
+    action: () => openModal({ name: modalNamesConst.SETTLE_TRANSACTION }),
+  },
+  {
+    isDivider: true,
+  },
+  ];
+  const convertItem = {
+    name: 'Convert to Loan',
+    icon: iconNamesConst.LOAN,
+    action: () => openModal({
+      name: modalNamesConst.LEDGER_TRANSACTION,
+      payload: { activeTab: 1 },
+    }),
+  };
 
   const contextMenuItems = React.useMemo(
-    () => [
-      {
-        isDivider: true,
-      },
-      {
-        name: 'Accounts',
-        action: () => filterLedgerAccountsById({ transaction_id: currentId }),
-      },
-      {
-        name: 'Customers',
-        action: () => filterLedgerCustomersById({ transaction_id: currentId }),
-      },
-      {
-        name: 'Cards',
-        action: () => filterLedgerCardsById({ transaction_id: currentId }),
-      },
-      {
-        name: 'Statements',
-        action: () => filterLedgerStatementsById({ transaction_id: currentId }),
-      },
-      {
-        isDivider: true,
-      },
-      {
-        name: 'Settle Transaction',
-        action: () => openModal({ name: modalNamesConst.SETTLE_TRANSACTION }),
-      },
-      {
-        isDivider: true,
-      },
-      {
-        name: 'Convert to Loan',
-        icon: iconNamesConst.LOAN,
-        action: () => openModal({
-          name: modalNamesConst.LEDGER_TRANSACTION,
-          payload: { activeTab: 1 },
-        }),
-      },
-    ],
-    [
-      filterLedgerCustomersById,
-      filterLedgerStatementsById,
-      filterLedgerCardsById,
-      filterLedgerAccountsById,
-      currentId,
-      openModal,
-    ]
+    () => isTransactionConvertibleToLoan ? [...baseItems, convertItem] : baseItems,
+    [isTransactionConvertibleToLoan, baseItems, convertItem]
   );
 
   const initialFilterValues = React.useMemo(

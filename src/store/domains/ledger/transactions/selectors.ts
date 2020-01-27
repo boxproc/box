@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
 
+import { transactionTypesIds } from 'consts';
 import { prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerTransactions = (state: StoreState) =>
@@ -31,3 +32,12 @@ export const selectLedgerTransactionAmount = createSelector(
   selectLedgerCurrentTransaction,
   transaction => transaction && transaction.amount
 );
+
+export const selectIsTransactionConvertibleToLoan = createSelector(
+  selectLedgerCurrentTransaction,
+  transaction => {
+    if (!transaction) {
+      return false;
+    }
+    return transaction.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
+  });

@@ -18,6 +18,7 @@ import {
   resetTransactions,
   selectActiveItemId,
   selectInstitutionsOptions,
+  selectIsTransactionConvertibleToLoan,
   selectLedgerTransactions,
 } from 'store/domains';
 
@@ -36,6 +37,7 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerTransactions: selectLedgerTransactions(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
+  isTransactionConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

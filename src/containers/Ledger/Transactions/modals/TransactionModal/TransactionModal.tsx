@@ -15,6 +15,7 @@ interface TransactionModalProps extends WithModalProps {
   currentTransactionId: number;
   transactionAmount: number;
   payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
+  isTransactionConvertibleToLoan: boolean;
 }
 
 const modalName = modalNamesConst.LEDGER_TRANSACTION;
@@ -25,6 +26,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   payloadLedgerTransactionModal,
   transactionAmount,
   isReadOnly,
+  isTransactionConvertibleToLoan,
 }) => {
   const modalTitle = React.useMemo(
     () => `Transaction ${currentTransactionId}`,
@@ -66,6 +68,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
         >
           <LedgerTransactionForm onCancel={handleOnCancel} />
         </TabsPanel>
+        {isTransactionConvertibleToLoan &&
         <TabsPanel title="Convert to Loan">
           <LoanIllustration
             initialFormValues={convertToLoanInitValues}
@@ -75,6 +78,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
+        }
       </Tabs>
     </Modal>
   );
