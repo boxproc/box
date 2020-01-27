@@ -144,7 +144,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isDisabledDetails}
+            disabled={isDisabled || withLoanSelection}
             validate={[
               formErrorUtil.required,
               formErrorUtil.isNumber,
