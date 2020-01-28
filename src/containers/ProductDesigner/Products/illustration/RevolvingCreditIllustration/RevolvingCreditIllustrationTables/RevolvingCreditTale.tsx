@@ -82,6 +82,18 @@ const columns = [
       />
     ),
   },
+  {
+    maxWidth: 120,
+    sortable: true,
+    accessor: 'minimumRepayment',
+    Header: <TableHeader title="Minimum Repayment" />,
+    Cell: (props: TCell<'minimumRepayment'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
 ];
 
 interface IllustrationRevolvingCreditTableProps {

@@ -61,6 +61,7 @@ export const prepareProductIllustrationStatementsItem = (
     balanceOpen: stringsUtil.numberToFixed(item.balance_open, 2),
     balanceClose: stringsUtil.numberToFixed(item.balance_close, 2),
     minimumAmountDueRepayment: stringsUtil.numberToFixed(item.minimum_amount_due_repayment, 2),
+    minimumRepayment: stringsUtil.numberToFixed(item.minimum_repayment, 2),
     startDate: item.start_date,
     endDate: item.end_date,
   };

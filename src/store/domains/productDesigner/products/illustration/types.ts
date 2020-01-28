@@ -34,6 +34,7 @@ export interface IllustrationProductStatementsRevolvingCreditResp {
   balance_open: number;
   balance_close: number;
   minimum_amount_due_repayment: number;
+  minimum_repayment: number;
   start_date: string;
   end_date: string;
 }
@@ -46,6 +47,7 @@ export interface IllustrationProductStatementsRevolvingCredit {
   balanceOpen: number | string;
   balanceClose: string;
   minimumAmountDueRepayment: string;
+  minimumRepayment: string;
   startDate: number | string;
   endDate: number | string;
 }
