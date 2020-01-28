@@ -185,6 +185,6 @@ export enum productsURLs {
   CREATE_REWARD = '/ui/product_designer/products/rewards/create',
   DELETE_REWARD = '/ui/product_designer/products/rewards/delete',
   GET_FEE_APRS = '/ui/product_designer/products/fees/get_fee_aprs',
-  ILLUSTRATE_LOAN_PRODUCT = 'ui/product_designer/products/illustration/show_product',
-  ILLUSTRATE_REV_CREDIT_PRODUCT = 'ui/product_designer/products/illustration/show_revolving_credit',
+  ILLUSTRATE_LOAN_PRODUCT = 'ui/product_designer/products/illustration/loan',
+  ILLUSTRATE_REV_CREDIT_PRODUCT = 'ui/product_designer/products/illustration/revolving_credit',
 }
