@@ -189,6 +189,7 @@ export const actionTypesOptions = [
   { value: 'T', label: 'Set APR' },
   { value: 'R', label: 'Add reward' },
   { value: 'F', label: 'Add fee' },
+  { value: 'C', label: 'Minimum Repayment Calculation' },
   { value: '1', label: 'Update aux counter 1' },
   { value: '2', label: 'Update aux counter 2' },
   { value: '3', label: 'Update aux counter 3' },
