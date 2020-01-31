@@ -113,6 +113,7 @@ export interface LedgerConvertTransactionToLoanItem {
   product_id: number;
   num_of_installments: number;
   num_of_interest_free_instllmnts: number;
+  transaction_id: number;
 }
 
 export interface LedgerConvertTransactionToLoanItemPrepared {
@@ -121,6 +122,7 @@ export interface LedgerConvertTransactionToLoanItemPrepared {
   productId: number;
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
+  transactionId: number;
 }
 
 export interface LedgerTransactionsFilter extends LedgerTransactionId {

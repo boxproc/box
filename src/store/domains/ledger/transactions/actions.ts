@@ -12,7 +12,10 @@ import {
   FilterLedgerTransactionsByIdAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectLedgerCurrentTransactionAccountId } from './selectors';
+import {
+  selectLedgerCurrentTransactionAccountId,
+  selectLedgerCurrentTransactionId
+} from './selectors';
 import {
   LedgerConvertTransactionToLoanItem,
   LedgerConvertTransactionToLoanItemPrepared,
@@ -98,8 +101,9 @@ export const handleConvertTransactionToLoan: HandleConvertTransactionToLoan = da
         const preparedValues = prepareDataToConvert({
           ...data,
           accountId: selectLedgerCurrentTransactionAccountId(getState()),
-         }
-          );
+          transactionId: selectLedgerCurrentTransactionId(getState()),
+        }
+        );
 
         await dispatch(convertTransactionToLoan(preparedValues));
         dispatch(openModal({
