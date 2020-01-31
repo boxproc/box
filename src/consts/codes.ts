@@ -54,6 +54,7 @@ export enum uiSessionsStatusCodes {
 export const transactionStatusOptions = [
   { value: 'P', label: 'Pending' },
   { value: 'S', label: 'Settled' },
+  { value: 'C', label: 'Converted' },
   { value: 'I', label: 'Invalid' },
 ];
 
