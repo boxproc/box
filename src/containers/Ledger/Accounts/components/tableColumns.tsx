@@ -12,7 +12,6 @@ type TCell<T extends keyof LedgerAccountItemPrepared> = TableCellType<LedgerAcco
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 130,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -35,7 +33,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 220,
-    sortable: true,
+    minWidth: 150,
     Header: <TableHeader title="Product Name" />,
     accessor: 'product',
     Cell: (props: TCell<'product'>) => (
@@ -46,15 +44,13 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
-    sortable: true,
+    maxWidth: 70,
     Header: <TableHeader title="Product Override" />,
     accessor: 'productOverrideFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Account Alias" />,
     accessor: 'accountAlias',
     Cell: (props: TCell<'accountAlias'>) => (
@@ -65,7 +61,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Customer ID" />,
     accessor: 'customerId',
     Cell: (props: TCell<'customerId'>) => (
@@ -77,7 +72,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
@@ -88,7 +82,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (
@@ -99,7 +92,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -110,7 +102,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Balance Settled" />,
     accessor: 'balanceSettled',
     Cell: (props: TCell<'balanceSettled'>) => (
@@ -122,7 +113,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Balance Available" />,
     accessor: 'balanceAvailable',
     Cell: (props: TCell<'balanceAvailable'>) => (
@@ -134,7 +124,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Amount Due Repayment" />,
     accessor: 'amountDueRepayment',
     Cell: (props: TCell<'amountDueRepayment'>) => (
@@ -146,7 +135,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Balance Limit" />,
     accessor: 'balanceLimit',
     Cell: (props: TCell<'balanceLimit'>) => (
@@ -158,7 +146,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Balance Limit Shared" />,
     accessor: 'balanceLimitShared',
     Cell: (props: TCell<'balanceLimitShared'>) => (
@@ -170,7 +157,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: TCell<'accruedInterest'>) => (

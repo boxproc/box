@@ -15,7 +15,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentTransactionId: selectActiveItemId(state),
   payloadLedgerTransactionModal: selectPayloadLedgerTransactionModal(state),
   transactionAmount: selectLedgerTransactionAmount(state),
-  isTransactionConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
+  isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
 });
 
 export default connect(

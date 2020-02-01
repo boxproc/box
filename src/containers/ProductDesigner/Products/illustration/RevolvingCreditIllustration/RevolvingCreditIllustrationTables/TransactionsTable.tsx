@@ -11,8 +11,7 @@ type TCell<T extends keyof IllustrationProductTransactionsRevolvingCredit> =
 
 const columns = [
   {
-    maxWidth: 125,
-    sortable: true,
+    maxWidth: 80,
     accessor: 'transactionDatetime',
     Header: <TableHeader title="Transaction Date" />,
     Cell: (props: TCell<'transactionDatetime'>) => (
@@ -25,7 +24,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'transactionType',
     Header: <TableHeader title="Transaction Type" />,
     Cell: (props: TCell<'transactionType'>) => (
@@ -37,7 +35,6 @@ const columns = [
   },
   {
     maxWidth: 60,
-    sortable: true,
     accessor: 'debitCreditIndicator',
     Header: <TableHeader title="D/C" />,
     Cell: (props: TCell<'debitCreditIndicator'>) => (
@@ -49,8 +46,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 125,
-    sortable: true,
+    maxWidth: 150,
     accessor: 'description',
     Header: <TableHeader title="Description" />,
     Cell: (props: TCell<'description'>) => (
@@ -62,7 +58,6 @@ const columns = [
   },
   {
     maxWidth: 125,
-    sortable: true,
     accessor: 'amount',
     Header: <TableHeader title="Amount" />,
     Cell: (props: TCell<'amount'>) => (
@@ -75,7 +70,6 @@ const columns = [
   },
   {
     maxWidth: 125,
-    sortable: true,
     accessor: 'balanceSettledBefore',
     Header: <TableHeader title="Balance Settled Before" />,
     Cell: (props: TCell<'balanceSettledBefore'>) => (
@@ -88,7 +82,6 @@ const columns = [
   },
   {
     maxWidth: 125,
-    sortable: true,
     accessor: 'balanceAvailableBefore',
     Header: <TableHeader title="Balance Available Before" />,
     Cell: (props: TCell<'balanceAvailableBefore'>) => (
@@ -101,7 +94,6 @@ const columns = [
   },
   {
     maxWidth: 125,
-    sortable: true,
     accessor: 'balanceSettledAfter',
     Header: <TableHeader title="Balance Settled After" />,
     Cell: (props: TCell<'balanceSettledAfter'>) => (
@@ -114,7 +106,6 @@ const columns = [
   },
   {
     maxWidth: 125,
-    sortable: true,
     accessor: 'balanceAvailableAfter',
     Header: <TableHeader title="Balance Available After" />,
     Cell: (props: TCell<'balanceAvailableAfter'>) => (
@@ -126,8 +117,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 100,
-    sortable: true,
+    maxWidth: 80,
     accessor: 'aprRate',
     Header: <TableHeader title="Rate %" />,
     Cell: (props: TCell<'aprRate'>) => (
@@ -144,9 +134,7 @@ interface TransactionsTableProps {
   data: Array<IllustrationProductTransactionsRevolvingCredit>;
 }
 
-const TransactionsTable: React.FC<TransactionsTableProps> = ({
-  data,
-}) => {
+const TransactionsTable: React.FC<TransactionsTableProps> = ({ data }) => {
   return (
     <Box pb="10px">
       <Table

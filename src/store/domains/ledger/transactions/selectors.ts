@@ -38,11 +38,17 @@ export const selectLedgerCurrentTransactionAccountId = createSelector(
   transaction => transaction && transaction.accountId
 );
 
+export const selectLedgerCurrentTransactionId = createSelector(
+  selectLedgerCurrentTransaction,
+  transaction => transaction && transaction.id
+);
+
 export const selectIsTransactionConvertibleToLoan = createSelector(
   selectLedgerCurrentTransaction,
   transaction => {
     if (!transaction) {
       return false;
     }
+
     return transaction.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
   });

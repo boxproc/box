@@ -12,7 +12,6 @@ type TCell<T extends keyof LedgerStatementTransactionsItemPrepared> =
 export const tableTransactionsColumns = [
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (
@@ -25,7 +24,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Amount" />,
     accessor: 'amount',
     Cell: (props: TCell<'amount'>) => (
@@ -38,7 +36,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
     Cell: (props: TCell<'amountInOriginalCurrency'>) => (
@@ -51,7 +48,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Balance Available Before" />,
     accessor: 'balanceAvailableBefore',
     Cell: (props: TCell<'balanceAvailableBefore'>) => (
@@ -64,7 +60,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Balance Available After" />,
     accessor: 'balanceAvailableAfter',
     Cell: (props: TCell<'balanceAvailableAfter'>) => (
@@ -77,7 +72,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Balance Settled Before" />,
     accessor: 'balanceSettledBefore',
     Cell: (props: TCell<'balanceSettledBefore'>) => (
@@ -90,7 +84,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Balance Settled After" />,
     accessor: 'balanceSettledAfter',
     Cell: (props: TCell<'balanceSettledAfter'>) => (
@@ -103,7 +96,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
@@ -115,7 +107,6 @@ export const tableTransactionsColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="APR Rate" />,
     accessor: 'aprRate',
     Cell: (props: TCell<'aprRate'>) => (

@@ -72,16 +72,12 @@ export const Scheduler: React.FC<SchedulerProps> = ({
           title: currentSchedulerName,
         }),
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Scheduled Jobs',
         action: () => filterScheduledJobsById({ scheduler_id: currentSchedulerId }),
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: schedulerTasksConsts.EXECUTE_TASK.NAME,
         action: () => sendSchedulerAction({
@@ -141,9 +137,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         withConfirmation: true,
         confirmationText: `${schedulerTasksConsts.RESUME.NAME} "${currentSchedulerName}"?`,
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,

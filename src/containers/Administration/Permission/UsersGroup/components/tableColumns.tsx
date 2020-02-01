@@ -11,7 +11,6 @@ type TCell<T extends keyof AdminUsersGroupItem> = TableCellType<AdminUsersGroupI
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -23,7 +22,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',
     Cell: (props: TCell<'institutionName'>) => (
@@ -34,7 +32,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name of User Group" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (

@@ -13,7 +13,6 @@ type TCell<T extends keyof IllustrationProductLoan> = TableCellType<Illustration
 const columns = [
   {
     maxWidth: 100,
-    sortable: true,
     accessor: 'statementId',
     Header: <TableHeader title="Statement ID" />,
     Cell: (props: TCell<'statementId'>) => (
@@ -25,7 +24,6 @@ const columns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     accessor: 'startDate',
     Header: <TableHeader title="Start Date" />,
     Cell: (props: TCell<'startDate'>) => (
@@ -37,7 +35,6 @@ const columns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     accessor: 'endDate',
     Header: <TableHeader title="End Date" />,
     Cell: (props: TCell<'endDate'>) => (
@@ -49,7 +46,6 @@ const columns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     accessor: 'statementDate',
     Header: <TableHeader title="Statement Date" />,
     Cell: (props: TCell<'statementDate'>) => (
@@ -61,7 +57,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'installmentBalance',
     Header: <TableHeader title="Statement Balance" />,
     Cell: (props: TCell<'installmentBalance'>) => (
@@ -73,7 +68,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'apr',
     Header: <TableHeader title="Accrued Interest" />,
     Cell: (props: TCell<'apr'>) => (
@@ -85,7 +79,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'fee',
     Header: <TableHeader title="Fees" />,
     Cell: (props: TCell<'fee'>) => (
@@ -97,7 +90,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'minimumAmountDueRepayment',
     Header: <TableHeader title="Payment Due" />,
     Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
@@ -109,7 +101,6 @@ const columns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     accessor: 'amount',
     Header: <TableHeader title="Balance to Repay" />,
     Cell: (props: TCell<'amount'>) => (

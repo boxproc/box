@@ -66,7 +66,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="200px" p="10px" >
+      <Box width="170px" p="10px" >
         <Field
           id="userActivityDateTimeFrom"
           name="userActivityDateTimeFrom"
@@ -81,7 +81,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="200px" p="10px" >
+      <Box width="170px" p="10px" >
         <Field
           id="userActivityDateTimeTo"
           name="userActivityDateTimeTo"

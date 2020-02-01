@@ -21,6 +21,7 @@ interface ButtonProps extends WithModalProps {
   isFocused?: boolean;
   isTabsTheme?: boolean;
   withConfirmation?: boolean;
+  withAnimation?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
   bordered?: boolean;
@@ -55,6 +56,7 @@ const Button: React.FC<ButtonProps> = ({
   hint,
   hintPosition = 'top',
   hintStyle,
+  withAnimation,
 }) => {
   const handleClick = React.useCallback(
     disabled
@@ -82,6 +84,7 @@ const Button: React.FC<ButtonProps> = ({
       bordered={bordered}
       underline={underline}
       hasIcon={!!iconName}
+      withAnimation={withAnimation}
       textTransformNone={textTransformNone}
       className={isFocused && 'is-focused'}
       isTabsTheme={isTabsTheme}

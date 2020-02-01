@@ -12,7 +12,6 @@ type TCell<T extends keyof DictionaryEventDataElemsItem> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'eventId',
     Cell: (props: TCell<'eventId'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Event" />,
     accessor: 'event',
     Cell: (props: TCell<'event'>) => (
@@ -57,7 +53,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Data Type" />,
     accessor: 'dataType',
     Cell: (props: TCell<'dataType'>) => (

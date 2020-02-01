@@ -10,7 +10,6 @@ type TCell<T extends keyof AuditUserActivityItem> = TableCellType<AuditUserActiv
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -22,7 +21,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="User Name" />,
     accessor: 'username',
     Cell: (props: TCell<'username'>) => (
@@ -33,7 +31,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Event Date Time" />,
     accessor: 'eventDatetime',
     Cell: (props: TCell<'eventDatetime'>) => (
@@ -45,7 +42,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="API Name" />,
     accessor: 'apiName',
     Cell: (props: TCell<'apiName'>) => (
@@ -55,7 +51,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (

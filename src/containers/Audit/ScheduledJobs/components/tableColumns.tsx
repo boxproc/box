@@ -11,7 +11,6 @@ type TCell<T extends keyof AuditScheduledJobsItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -23,7 +22,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Scheduler" />,
     accessor: 'scheduler',
     Cell: (props: TCell<'scheduler'>) => (
@@ -34,7 +32,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Date&nbsp;/&nbsp;Time From" />,
     accessor: 'dateTimeFrom',
     Cell: (props: TCell<'dateTimeFrom'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Date&nbsp;/&nbsp;Time To" />,
     accessor: 'dateTimeTo',
     Cell: (props: TCell<'dateTimeTo'>) => (
@@ -58,7 +54,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Execution Result" />,
     accessor: 'executionResult',
     Cell: (props: TCell<'executionResult'>) => (
@@ -68,7 +63,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="Error Description" />,
     accessor: 'errorDescription',
     Cell: (props: TCell<'errorDescription'>) => (

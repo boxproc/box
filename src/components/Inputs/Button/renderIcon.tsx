@@ -27,7 +27,7 @@ import { iconNamesConst } from 'consts';
 export const renderIcon = (name: string, size?: string) => {
   switch (name) {
     case iconNamesConst.FILTER:
-      return (<FilterIcon size={size ? size : '18'} />);
+      return (<Box mt="-1px"><FilterIcon size={size ? size : '18'} /></Box>);
     case iconNamesConst.PLUS:
       return (<Box mt="-2px"><PlusIcon size={size ? size : '18'} /></Box>);
     case iconNamesConst.LOGOUT:

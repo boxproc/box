@@ -64,9 +64,7 @@ const Customers: React.FC<CustomersProps> = ({
         withConfirmation: true,
         confirmationText: `Delete customer "${currentCustomerName}"?`,
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Accounts',
         action: () => filterLedgerAccountsById({ customer_id: currentId }),

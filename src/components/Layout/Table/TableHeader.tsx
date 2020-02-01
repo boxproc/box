@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
-
 import { TableItemWrapper } from './TableItemWrapper';
 
 interface TableHeaderProps {
@@ -10,10 +8,8 @@ interface TableHeaderProps {
 
 export const TableHeader: React.FC<TableHeaderProps> = ({ title }) => {
   return (
-    <Flex justifyContent="center" alignItems="center">
-      <TableItemWrapper>
-        <Box className="title">{title}</Box>
-      </TableItemWrapper>
-    </Flex>
+    <TableItemWrapper>
+      <div className="title">{title}</div>
+    </TableItemWrapper>
   );
 };

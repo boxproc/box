@@ -11,7 +11,6 @@ type TCell<T extends keyof LedgerStatementAprItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Product APR ID" />,
     accessor: 'productAprId',
     Cell: (props: TCell<'productAprId'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: TCell<'accruedInterest'>) => (
@@ -37,7 +35,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
@@ -49,7 +46,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Rate" />,
     accessor: 'rate',
     Cell: (props: TCell<'rate'>) => (

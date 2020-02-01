@@ -52,9 +52,7 @@ const Cards: React.FC<CardsProps> = ({
 
   const contextMenuItems = React.useMemo(
     () => [
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Accounts',
         action: () => filterLedgerAccountsById({ card_id: currentId }),

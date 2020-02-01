@@ -113,7 +113,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 disabled={isDisabled}
               />
             </Box>
-            <Box width="200px" p="10px">
+            <Box width="120px" p="10px">
               <Field
                 id="statementsDateFrom"
                 name="statementsDateFrom"
@@ -128,7 +128,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
                 ]}
               />
             </Box>
-            <Box width="200px" p="10px">
+            <Box width="120px" p="10px">
               <Field
                 id="statementsDateTo"
                 name="statementsDateTo"

@@ -12,7 +12,6 @@ type TCell<T extends keyof AdminInstitutionsItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -45,7 +42,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="SFTP Location" />,
     accessor: 'sftpLocation',
     Cell: (props: TCell<'sftpLocation'>) => (
@@ -55,7 +51,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="SFTP Public Key" />,
     accessor: 'sftpPublicKey',
     Cell: (props: TCell<'sftpPublicKey'>) => (
@@ -66,7 +61,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 130,
-    sortable: true,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
     Cell: renderCheckBoxTableCell(),

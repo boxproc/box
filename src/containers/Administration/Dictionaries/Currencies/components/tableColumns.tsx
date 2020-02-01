@@ -12,7 +12,6 @@ type TCell<T extends keyof DictionaryCurrenciesItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Numeric Code" />,
     accessor: 'numericCode',
     Cell: (props: TCell<'numericCode'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Currency Code" />,
     accessor: 'currencyCode',
     Cell: (props: TCell<'currencyCode'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (

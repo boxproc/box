@@ -63,7 +63,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 5]} p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="auxCounter1"
               name="auxCounter1"
@@ -75,7 +75,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               readOnly={(isEditMode && !auxCounter1Enabled) || isReadOnly}
             />
           </Box>
-          <Box width={[1 / 5]} p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="auxCounter2"
               name="auxCounter2"
@@ -87,7 +87,7 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               readOnly={(isEditMode && !auxCounter2Enabled) || isReadOnly}
             />
           </Box>
-          <Box width={[1 / 5]} p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="auxCounter3"
               name="auxCounter3"

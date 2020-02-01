@@ -66,6 +66,10 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
   `}
 
   .title {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
     color: ${({ theme }) => theme.colors.black};
     font-weight: 500;
     font-size: 11px;

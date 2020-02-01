@@ -11,7 +11,6 @@ type TCell<T extends keyof AdminSysPropsItem> = TableCellType<AdminSysPropsItem[
 export const tableColumns = [
   {
     maxWidth: 410,
-    sortable: true,
     Header: <TableHeader title="Property Name" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -20,7 +19,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Current Value" />,
     accessor: 'currentValue',
     Cell: (props: TCell<'currentValue'>) => (
@@ -29,7 +27,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Previous Value" />,
     accessor: 'previousValue',
     Cell: (props: TCell<'previousValue'>) => (
@@ -38,7 +35,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Last Datetime" />,
     accessor: 'lastDatetime',
     Cell: (props: TCell<'lastDatetime'>) => (
@@ -50,7 +46,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 65,
-    sortable: true,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',
     Cell: renderCheckBoxTableCell(),

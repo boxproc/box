@@ -120,8 +120,9 @@ const Login: React.FC<LoginPropsAllProps> = ({
           <Button
             text="Log in"
             bordered={true}
-            width="100%"
+            withAnimation={true}
             isFocused={isButtonFocused}
+            width="100%"
           />
         </Box>
       </form>

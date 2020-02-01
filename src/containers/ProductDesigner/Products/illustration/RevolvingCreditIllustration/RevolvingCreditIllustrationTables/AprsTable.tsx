@@ -11,38 +11,38 @@ type TCell<T extends keyof IllustrationProductAprRevolvingCredit> =
 
 const columns = [
   {
-    maxWidth: 125,
-    sortable: true,
+    maxWidth: 120,
     accessor: 'description',
     Header: <TableHeader title="Description" />,
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    width: 140,
-    sortable: true,
+    width: 100,
     accessor: 'accruedInterest',
     Header: <TableHeader title="Accrued Interest" />,
     Cell: (props: TCell<'accruedInterest'>) => (
       <TableCell
         value={props.value}
         isDecimalNumber={true}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 125,
-    sortable: true,
+    maxWidth: 80,
     accessor: 'rate',
     Header: <TableHeader title="Rate %" />,
     Cell: (props: TCell<'rate'>) => (
       <TableCell
         value={props.value}
         isDecimalNumber={true}
+        isSmaller={true}
       />
     ),
   },
@@ -52,9 +52,7 @@ interface IllustrationRevolvingCreditTableProps {
   data: Array<IllustrationProductAprRevolvingCredit>;
 }
 
-const AprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({
-  data,
-}) => {
+const AprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({ data }) => {
   return (
     <Box pb="10px">
       <Table

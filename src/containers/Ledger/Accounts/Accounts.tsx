@@ -96,9 +96,7 @@ const Accounts: React.FC<AccountsProps> = ({
         icon: hasProductOverride ? iconNamesConst.EDIT : iconNamesConst.PLUS,
         action: handleEditOverride,
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Customers',
         action: () => filterLedgerCustomersById({ account_id: currentId }),
@@ -115,9 +113,7 @@ const Accounts: React.FC<AccountsProps> = ({
         name: 'Transactions',
         action: () => filterLedgerTransactionsById({ account_id: currentId }),
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Manual Transaction',
         action: () => openModal({

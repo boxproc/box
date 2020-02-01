@@ -37,7 +37,7 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerTransactions: selectLedgerTransactions(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
-  isTransactionConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
+  isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

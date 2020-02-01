@@ -128,7 +128,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="200px" p="10px">
+      <Box width="170px" p="10px">
         <Field
           id="transactionsDateTimeFrom"
           name="transactionsDateTimeFrom"
@@ -143,7 +143,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="200px" p="10px">
+      <Box width="170px" p="10px">
         <Field
           id="transactionsDateTimeTo"
           name="transactionsDateTimeTo"
