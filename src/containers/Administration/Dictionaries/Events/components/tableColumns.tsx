@@ -9,7 +9,6 @@ type TCell<T extends keyof IdNamePair> = TableCellType<IdNamePair[T]>;
 export const tableColumns = [
     {
       maxWidth: 100,
-      sortable: true,
       Header: <TableHeader title="ID" />,
       accessor: 'id',
       Cell: (props: TCell<'id'>) => (
@@ -21,7 +20,6 @@ export const tableColumns = [
     },
     {
       maxWidth: 300,
-      sortable: true,
       Header: <TableHeader title="Name" />,
       accessor: 'name',
       Cell: (props: TCell<'name'>) => (

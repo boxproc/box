@@ -11,7 +11,6 @@ type TCell<T extends keyof AuditUiSessionsItem> = TableCellType<AuditUiSessionsI
 export const tableColumns = [
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',
     Cell: (props: TCell<'institutionName'>) => (
@@ -22,7 +21,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Username" />,
     accessor: 'username',
     Cell: (props: TCell<'username'>) => (
@@ -33,7 +31,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 180,
-    sortable: true,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
@@ -44,7 +41,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 180,
-    sortable: true,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (
@@ -55,7 +51,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 140,
-    sortable: true,
     Header: <TableHeader title="Last Date Time" />,
     accessor: 'lastDatetime',
     Cell: (props: TCell<'lastDatetime'>) => (
@@ -67,7 +62,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="IP Address" />,
     accessor: 'ipAddress',
     Cell: (props: TCell<'ipAddress'>) => (
@@ -78,7 +72,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 500,
-    sortable: true,
     Header: <TableHeader title="User Agent" />,
     accessor: 'userAgent',
     Cell: (props: TCell<'userAgent'>) => (
@@ -89,7 +82,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (

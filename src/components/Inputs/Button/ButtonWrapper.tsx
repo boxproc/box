@@ -8,6 +8,7 @@ interface ButtonWrapperProps {
   hasIcon?: boolean;
   textTransformNone?: boolean;
   isTabsTheme?: boolean;
+  withAnimation?: boolean;
 }
 
 export const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -115,7 +116,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     font-weight: normal;
   `};
 
-  ${({ hasIcon, underline, theme}) => !hasIcon && !underline && `
+  ${({ withAnimation, theme}) => withAnimation && `
     overflow: hidden;
 
     &:after {
@@ -127,7 +128,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       height: 5px;
       background: ${theme.colors.lightGray};
       opacity: 0;
-      border-radius: 100%;
+      border-radius: 50%;
       transform: scale(1, 1) translate(-50%);
       transform-origin: 50% 50%;
     }
@@ -138,7 +139,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `};
 
   &:disabled {
-    overflow: visible;
     cursor: default;
 
     .text-wrapper,

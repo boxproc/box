@@ -12,7 +12,6 @@ type TCell<T extends keyof LedgerTransactionItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Card ID" />,
     accessor: 'cardId',
     Cell: (props: TCell<'cardId'>) => (
@@ -48,7 +45,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (
@@ -60,18 +56,17 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Transaction" />,
     accessor: 'transactionTypeDescription',
     Cell: (props: TCell<'transactionTypeDescription'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
   {
     maxWidth: 60,
-    sortable: true,
     Header: <TableHeader title="D/C" />,
     accessor: 'debitCreditIndicator',
     Cell: (props: TCell<'debitCreditIndicator'>) => (
@@ -83,7 +78,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Amount" />,
     accessor: 'amount',
     Cell: (props: TCell<'amount'>) => (
@@ -95,7 +89,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 65,
-    sortable: true,
     Header: <TableHeader title="Currency" />,
     accessor: 'originalCurrency',
     Cell: (props: TCell<'originalCurrency'>) => (
@@ -107,7 +100,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Amount in Original Currency" />,
     accessor: 'amountInOriginalCurrency',
     Cell: (props: TCell<'amountInOriginalCurrency'>) => (
@@ -119,18 +111,17 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="APR Rate" />,
     accessor: 'aprRate',
     Cell: (props: TCell<'aprRate'>) => (
@@ -142,7 +133,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Fee Rate" />,
     accessor: 'feeRate',
     Cell: (props: TCell<'feeRate'>) => (
@@ -154,7 +144,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Reward Rate" />,
     accessor: 'rewardRate',
     Cell: (props: TCell<'rewardRate'>) => (
@@ -166,7 +155,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (

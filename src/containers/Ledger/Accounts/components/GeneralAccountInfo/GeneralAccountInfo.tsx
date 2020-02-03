@@ -100,7 +100,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width="150px" p="10px">
             <Field
               id="customerId"
               name="customerId"
@@ -144,7 +144,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 5]} p="10px">
             <Field
               id="product"
               name="product"
@@ -216,7 +216,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </Box>
           )}
           {hasProductOverride && (
-            <Box width={[1 / 6]} p="10px">
+            <Box width="150px" p="10px">
               <Field
                 id="productOverrideId"
                 name="productOverrideId"
@@ -229,7 +229,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </Box>
           )}
           {hasProductOverride && (
-            <Box width={[1 / 5]} p="10px">
+            <Box width="150px" p="10px">
               <Field
                 id="dateOfProductOverride"
                 name="dateOfProductOverride"
@@ -243,7 +243,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </Box>
           )}
           <Hr />
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="balanceSettled"
               name="balanceSettled"
@@ -259,7 +259,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="balanceAvailable"
               name="balanceAvailable"
@@ -275,7 +275,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="amountDueRepayment"
               name="amountDueRepayment"
@@ -291,7 +291,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="balanceLimit"
               name="balanceLimit"
@@ -307,7 +307,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="balanceLimitShared"
               name="balanceLimitShared"
@@ -323,7 +323,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="accruedInterest"
               name="accruedInterest"
@@ -339,7 +339,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 7]} p="10px">
             <Field
               id="statementCycleRepaymentDay"
               name="statementCycleRepaymentDay"
@@ -352,6 +352,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
           {isEditMode && (
             <React.Fragment>
+              <Hr />
               <Box width="150px" p="10px">
                 <Field
                   id="lastCycleDate"

@@ -57,7 +57,9 @@ export const handleSettleTransaction: HandleSettleTransaction = () =>
         const preparedData = prepareDataToSend(formValues(state));
 
         await dispatch(settleTransaction(preparedData));
+
         dispatch(resetForm(formNamesConst.TRANSACTION_RETRIEVING_FORM));
+
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
           payload: {

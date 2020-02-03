@@ -77,6 +77,7 @@ export const withEditTable = <OriginProps extends {}>(
       (e: Event, value: ContextMenuItemProps) => {
         setIsContextMenuVisible(false);
         setIsClearActiveIds(false);
+
         value.withConfirmation
           ? handleOpenModal({
             name: modalNamesConst.CONFIRMATION,

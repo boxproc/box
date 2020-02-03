@@ -57,7 +57,7 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
       title="Settle Transaction"
       name={modalName}
       maxContainerWidth={400}
-      minContainerHeight={155}
+      minContainerHeight={160}
       withCloseConfirmation={isDirtySettleTransactionForm}
     >
       <TransactionRetrievingForm

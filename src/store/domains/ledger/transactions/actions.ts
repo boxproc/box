@@ -14,7 +14,7 @@ import {
 import * as api from './api';
 import {
   selectLedgerCurrentTransactionAccountId,
-  selectLedgerCurrentTransactionId
+  selectLedgerCurrentTransactionId,
 } from './selectors';
 import {
   LedgerConvertTransactionToLoanItem,
@@ -98,14 +98,15 @@ export const handleConvertTransactionToLoan: HandleConvertTransactionToLoan = da
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
         const preparedValues = prepareDataToConvert({
           ...data,
-          accountId: selectLedgerCurrentTransactionAccountId(getState()),
-          transactionId: selectLedgerCurrentTransactionId(getState()),
-        }
-        );
+          accountId: selectLedgerCurrentTransactionAccountId(state),
+          transactionId: selectLedgerCurrentTransactionId(state),
+        });
 
         await dispatch(convertTransactionToLoan(preparedValues));
+
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
           payload: {

@@ -33,7 +33,7 @@ const UsersFilter: React.FC<UsersFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1]} p="10px">
+      <Box p="10px" pb="15px">
         <Field
           id="statusActiveFlag"
           name="statusActiveFlag"

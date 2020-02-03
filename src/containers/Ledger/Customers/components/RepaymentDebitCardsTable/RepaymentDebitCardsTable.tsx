@@ -36,7 +36,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
     () => [
       {
         maxWidth: 90,
-        sortable: true,
         accessor: 'customerId',
         Header: <TableHeader title="Customer ID" />,
         Cell: (props: TCell<'customerId'>) => (
@@ -49,7 +48,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 120,
-        sortable: true,
         accessor: 'panAlias',
         Header: <TableHeader title="Pan Alias" />,
         Cell: (props: TCell<'panAlias'>) => (
@@ -61,7 +59,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 120,
-        sortable: true,
         accessor: 'panMasked',
         Header: <TableHeader title="Pan Masked" />,
         Cell: (props: TCell<'panMasked'>) => (
@@ -73,7 +70,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 100,
-        sortable: true,
         accessor: 'expiryDate',
         Header: <TableHeader title="Expiry Date" />,
         Cell: (props: TCell<'expiryDate'>) => (
@@ -86,7 +82,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 100,
-        sortable: true,
         accessor: 'cvv2Encrypted',
         Header: <TableHeader title="cvv2" />,
         Cell: (props: TCell<'cvv2Encrypted'>) => (
@@ -98,7 +93,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 120,
-        sortable: true,
         accessor: 'cardholderName',
         Header: <TableHeader title="Cardholder Name" />,
         Cell: (props: TCell<'cardholderName'>) => (
@@ -110,7 +104,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 70,
-        sortable: true,
         accessor: 'status',
         Header: <TableHeader title="Status" />,
         Cell: (props: TCell<'status'>) => (
@@ -122,7 +115,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 150,
-        sortable: true,
         accessor: 'repaymentInterfaceName',
         Header: <TableHeader title="Repayment Interface" />,
         Cell: (props: TCell<'repaymentInterfaceName'>) => (
@@ -134,7 +126,6 @@ const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
       },
       {
         maxWidth: 120,
-        sortable: true,
         accessor: 'lastUpdateDatetime',
         Header: <TableHeader title="Last Update Datetime" />,
         Cell: (props: TCell<'lastUpdateDatetime'>) => (

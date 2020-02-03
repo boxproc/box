@@ -12,7 +12,6 @@ type TCell<T extends keyof DictionaryTransactionTypes> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 180,
-    sortable: true,
     Header: <TableHeader title="Debit Credit Indicator" />,
     accessor: 'debitCreditIndicator',
     Cell: (props: TCell<'debitCreditIndicator'>) => (
@@ -35,7 +33,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 250,
-    sortable: true,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (

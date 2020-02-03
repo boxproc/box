@@ -15,7 +15,7 @@ interface TransactionModalProps extends WithModalProps {
   currentTransactionId: number;
   transactionAmount: number;
   payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
-  isTransactionConvertibleToLoan: boolean;
+  isConvertibleToLoan: boolean;
 }
 
 const modalName = modalNamesConst.LEDGER_TRANSACTION;
@@ -26,7 +26,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   payloadLedgerTransactionModal,
   transactionAmount,
   isReadOnly,
-  isTransactionConvertibleToLoan,
+  isConvertibleToLoan,
 }) => {
   const modalTitle = React.useMemo(
     () => `Transaction ${currentTransactionId}`,
@@ -59,27 +59,30 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
       maxContainerWidth={1010}
-      minContainerHeight={590}
+      minContainerHeight={550}
     >
-      <Tabs activeTab={activeTab}>
-        <TabsPanel
-          title="Transaction Information"
-          hasTabs={true}
-        >
-          <LedgerTransactionForm onCancel={handleOnCancel} />
-        </TabsPanel>
-        {isTransactionConvertibleToLoan &&
-        <TabsPanel title="Convert to Loan">
-          <LoanIllustration
-            initialFormValues={convertToLoanInitValues}
-            withLoanSelection={true}
-            withConvertToLoan={true}
-            isReadOnly={isReadOnly}
-            onCancel={handleOnCancel}
-          />
-        </TabsPanel>
-        }
-      </Tabs>
+      {!isConvertibleToLoan && (
+        <LedgerTransactionForm onCancel={handleOnCancel} />
+      )}
+      {isConvertibleToLoan && (
+        <Tabs activeTab={activeTab}>
+          <TabsPanel
+            title="Transaction Information"
+            hasTabs={true}
+          >
+            <LedgerTransactionForm onCancel={handleOnCancel} />
+          </TabsPanel>
+          <TabsPanel title="Convert to Loan">
+            <LoanIllustration
+              initialFormValues={convertToLoanInitValues}
+              withLoanSelection={true}
+              withConvertToLoan={true}
+              isReadOnly={isReadOnly}
+              onCancel={handleOnCancel}
+            />
+          </TabsPanel>
+        </Tabs>
+      )}
     </Modal>
   );
 };

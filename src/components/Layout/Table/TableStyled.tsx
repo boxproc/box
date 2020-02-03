@@ -25,46 +25,41 @@ export const TableStyled = styled.div<TableStyledProps>`
       min-height: ${minHeight}px;
     `};
 
-    .rt-table {
+    .rt-table,
+    .rt-tbody {
       overflow: visible;
     }
 
-    .rt-thead .rt-resizable-header-content,
-    .rt-thead .rt-th {
-      overflow: visible;
+    .rt-tbody .rt-td {
+      ${({ isScrollbar }) => !isScrollbar && `
+        overflow: visible;
+      `};
     }
 
+    .rt-thead .rt-th,
+    .rt-tbody .rt-td {
+      padding: 0;
+    }
+
+    .rt-thead .rt-th,
     .rt-thead .rt-resizable-header,
     .rt-thead .rt-th.-cursor-pointer  {
       border-right: 1px solid ${({ theme }) => theme.colors.lighterGray};
       min-width: 50px;
     }
 
-    .rt-td {
-      display: flex;
-      align-items: center;
-      padding: 0;
-      transition: none;
-      transition-property: none;
-      min-width: 50px;
-    }
-
-    .rt-thead .rt-th,
-    .rt-thead .rt-td {
-      padding: 0;
-      outline: 0;
-      text-align: left;
-
-      ${({ isSmaller }) => isSmaller && `
-        padding: 3px;
-      `};
-    }
-
     .rt-thead .rt-th > div {
       display: flex;
       height: 100%;
-      justify-content: center;
-      align-items: center;
+    }
+
+    .rt-resizer {
+      width: 8px;
+      right: -4px;
+    }
+
+    .rt-th:last-child .rt-resizer {
+      display: none;
     }
 
     .rt-thead.-header {
@@ -72,9 +67,32 @@ export const TableStyled = styled.div<TableStyledProps>`
       box-shadow: none;
     }
 
+    .rt-thead .rt-th.-sort-asc {
+      box-shadow: inset 0 3px 0 0 ${({ theme }) => theme.colors.gray};
+    }
+
+    .rt-thead .rt-th.-sort-desc {
+      box-shadow: inset 0 -3px 0 0 ${({ theme }) => theme.colors.gray};
+    }
+
+    .rt-thead.-filters input {
+      font-size: 13px;
+      transition: all .1s linear;
+
+      &:focus {
+        border-color: ${({ theme }) => theme.colors.normalAccent};
+        border-radius: 2px;
+      }
+    }
+
     .rt-tbody {
-      overflow: visible;
       background-color: ${({ theme }) => theme.colors.white};
+    }
+
+    .rt-tbody .rt-td {
+      display: flex;
+      min-width: 50px;
+      text-align: left;
     }
 
     .rt-tbody .rt-tr-group,
@@ -82,7 +100,6 @@ export const TableStyled = styled.div<TableStyledProps>`
       position: relative;
       flex: 0 0 0;
       border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
-      transition: all .1s linear;
     }
 
     .rt-tr-group:hover,
@@ -127,33 +144,31 @@ export const TableStyled = styled.div<TableStyledProps>`
       }
     `}
 
-    .rt-thead .rt-th.-sort-asc {
-      box-shadow: inset 0 3px 0 0 ${({ theme }) => theme.colors.gray};
-    }
-
-    .rt-thead .rt-th.-sort-desc {
-      box-shadow: inset 0 -3px 0 0 ${({ theme }) => theme.colors.gray};
-    }
-
-    .rt-tbody .rt-th,
     .rt-tbody .rt-td {
+      position: relative;
       border-right: none;
-    }
 
-    .rt-tbody .rt-td {
-      word-break: break-word;
-      overflow: visible;
-    }
-
-    .rt-thead.-filters input {
-      font-size: 13px;
-      transition: all .1s linear;
-
-      &:focus {
-        border-color: ${({ theme }) => theme.colors.normalAccent};
-        border-radius: 2px;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 3px;
+        bottom: 3px;
+        right: 0;
+        width: 6px;
+        background: linear-gradient(to right, rgba(255,255,255,.6) 30%,rgba(255,255,255,1) 100%);
       }
     }
+
+    .rt-tbody .rt-tr-group:hover .rt-td:before {
+      background: linear-gradient(to right, rgba(243,243,243,.6) 30%,rgba(243,243,243,1) 100%);
+    }
+
+    ${({ activeRowIndex }) => activeRowIndex && `
+      .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}) .rt-td:before {
+        background: linear-gradient(to right, rgba(243,243,243,.6) 30%,rgba(243,243,243,1) 100%);
+      }
+    `};
 
     .-pagination {
       justify-content: flex-start;
@@ -217,15 +232,6 @@ export const TableStyled = styled.div<TableStyledProps>`
 
     input[type='number'] {
       -moz-appearance: textfield;
-    }
-
-    .rt-resizer {
-      width: 8px;
-      right: -4px;
-    }
-
-    .rt-th:last-child .rt-resizer {
-      display: none;
     }
   }
 `;

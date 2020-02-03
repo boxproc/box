@@ -11,7 +11,6 @@ type TCell<T extends keyof AdminUserItemPrepared> = TableCellType<AdminUserItemP
 export const tableColumns = [
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Username" />,
     accessor: 'username',
     Cell: (props: TCell<'username'>) => (
@@ -22,7 +21,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
@@ -33,7 +31,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (
@@ -44,7 +41,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 130,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institution',
     Cell: (props: TCell<'institution'>) => (
@@ -55,7 +51,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Email" />,
     accessor: 'email',
     Cell: (props: TCell<'email'>) => (
@@ -66,7 +61,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -77,21 +71,18 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="2FA Required" />,
     accessor: 'requires2faFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 90,
-    sortable: true,
     Header: <TableHeader title="Change Profile Allowed" />,
     accessor: 'changeProfileAllowedFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
     maxWidth: 90,
-    sortable: true,
     Header: <TableHeader title="Password Entry Counter" />,
     accessor: 'passwordEntryCounter',
     Cell: (props: TCell<'passwordEntryCounter'>) => (
@@ -103,7 +94,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Datetime of Last Login" />,
     accessor: 'datetimeOfLastLogin',
     Cell: (props: TCell<'datetimeOfLastLogin'>) => (

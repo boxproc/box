@@ -67,7 +67,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="200px" p="10px" >
+      <Box width="170px" p="10px" >
         <Field
           id="scheduledJobsDateTimeFrom"
           name="scheduledJobsDateTimeFrom"
@@ -82,7 +82,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="200px" p="10px" >
+      <Box width="170px" p="10px" >
         <Field
           id="scheduledJobsDateTimeTo"
           name="scheduledJobsDateTimeTo"

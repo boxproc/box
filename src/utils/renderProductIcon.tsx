@@ -12,10 +12,11 @@ import money from 'resources/icons/money.svg';
 import percent from 'resources/icons/percent.svg';
 
 const Wrapper = styled(Box)`
-  min-width: 26px;
-  width: 26px;
-  margin-right: 7px;
+  min-width: 24px;
+  width: 24px;
+  margin-right: 5px;
   text-align: center;
+  font-size: 0;
 
   img {
     display: inline-block;
@@ -27,25 +28,25 @@ export const renderProductIcon = (iconName: string | number) => {
     case productTypesCodes.REVOLVING_CREDIT:
       return (
         <Wrapper>
-          <img src={creditCard} width={20} alt="" />
+          <img src={creditCard} width={18} alt="" />
         </Wrapper>
       );
     case productTypesCodes.PREPAID:
       return (
-        <Wrapper mt="-3px">
-          <img src={money} width={18} alt="" />
+        <Wrapper mt="-5px">
+          <img src={money} width={17} alt="" />
         </Wrapper>
       );
     case productTypesCodes.DEBIT:
       return (
         <Wrapper>
-          <img src={card} width={26} alt="" />
+          <img src={card} width={24} alt="" />
         </Wrapper>
       );
     case productTypesCodes.LOAN:
       return (
         <Wrapper>
-          <img src={percent} width={20} alt="" />
+          <img src={percent} width={18} alt="" />
         </Wrapper>
       );
     default:

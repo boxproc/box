@@ -11,7 +11,6 @@ type TCell<T extends keyof AdminEndpointItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -23,7 +22,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 130,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -34,7 +32,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (
@@ -45,7 +42,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="Port" />,
     accessor: 'port',
     Cell: (props: TCell<'port'>) => (
@@ -57,7 +53,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Private Key Location" />,
     accessor: 'privateKeyLocation',
     Cell: (props: TCell<'privateKeyLocation'>) => (
@@ -68,7 +63,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    sortable: true,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -79,7 +73,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Type" />,
     accessor: 'endpointTypeName',
     Cell: (props: TCell<'endpointTypeName'>) => (
@@ -89,7 +82,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="Connection Attributes" />,
     accessor: 'connectionAttributes',
     Cell: (props: TCell<'connectionAttributes'>) => (
@@ -101,7 +93,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Log File Location" />,
     accessor: 'logFileLocation',
     Cell: (props: TCell<'logFileLocation'>) => (

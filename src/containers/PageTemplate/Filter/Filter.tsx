@@ -203,7 +203,7 @@ const Filter: React.FC<FilterAllProps> = ({
     <FilterWrapper isHidden={isHidden}>
       <div className="title">Filter</div>
       <form onSubmit={handleSubmitForm}>
-        <Box width="940px" mx="-10px">
+        <Box width="940px" m="0 -10px 5px">
           <Flex
             alignItems="flex-end"
             flexWrap="wrap"

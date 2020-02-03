@@ -64,8 +64,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 90,
-        sortable: true,
+        maxWidth: 120,
         accessor: 'repaymentOrder',
         Header: <TableHeader title="Repayment Order" />,
         Cell: (cellInfo: CellInfo) => (
@@ -80,8 +79,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 90,
-        sortable: true,
+        maxWidth: 120,
         accessor: 'productAprId',
         Header: <TableHeader title="APR ID" />,
         Cell: (props: TCell<'productAprId'>) => (
@@ -93,8 +91,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 380,
-        sortable: true,
+        maxWidth: 300,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -108,7 +105,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
       },
       {
         maxWidth: 120,
-        sortable: true,
         accessor: 'calculationMethod',
         Header: <TableHeader title="Calculation Method" />,
         Cell: (props: TCell<'calculationMethod'>) => (
@@ -119,8 +115,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 120,
-        sortable: true,
+        maxWidth: 100,
         accessor: 'rate',
         Header: <TableHeader title="Rate %" />,
         Cell: (cellInfo: CellInfo) => (
@@ -134,8 +129,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 100,
-        sortable: true,
+        maxWidth: 130,
         accessor: 'graceNumberOfDays',
         Header: <TableHeader title="Grace Number of&nbsp;Days" />,
         Cell: (cellInfo: CellInfo) => (
@@ -149,7 +143,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 60,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button

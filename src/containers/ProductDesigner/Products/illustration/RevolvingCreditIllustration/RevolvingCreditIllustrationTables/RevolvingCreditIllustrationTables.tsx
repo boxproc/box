@@ -4,10 +4,10 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Paragraph, withSpinner } from 'components';
+import { T4, withSpinner } from 'components';
 
 import AprsTable from './AprsTable';
-import RevolvingCreditTable from './RevolvingCreditTale';
+import RevolvingCreditTable from './RevolvingCreditTable';
 import TransactionsTable from './TransactionsTable';
 
 import {
@@ -16,10 +16,13 @@ import {
   IllustrationProductTransactionsRevolvingCredit,
 } from 'store/domains';
 
-const TableWrapper = styled(Box)`
-  max-width: 100%;
-  margin-top: 10px;
-  padding: 10px;
+const TablesWrapper = styled(Flex)`
+  margin: 0 -10px;
+
+  .table {
+    max-width: 100%;
+    padding: 10px;
+  }
 `;
 
 interface IllustrationProductFormProps {
@@ -34,22 +37,20 @@ const RevolvingCreditIllustrationTables: React.FC<IllustrationProductFormProps> 
   aprsData,
 }) => {
   return (
-    <React.Fragment>
-      <TableWrapper>
-        <Paragraph bold={true} light={true}>Transactions</Paragraph>
-        <TransactionsTable data={transactionsData} />
-      </TableWrapper>
-      <Flex alignItems="flex-start" flexWrap="wrap" >
-        <TableWrapper>
-          <Paragraph bold={true} light={true}>Totals</Paragraph>
+    <Box mt="10px">
+      <T4>Transactions</T4>
+      <TransactionsTable data={transactionsData} />
+      <TablesWrapper alignItems="flex-start" flexWrap="wrap" >
+        <div className="table">
+          <T4>Totals</T4>
           <RevolvingCreditTable data={statementsData} />
-        </TableWrapper>
-        <TableWrapper>
-          <Paragraph bold={true} light={true}>APRs</Paragraph>
+        </div>
+        <div className="table">
+          <T4>APRs</T4>
           <AprsTable data={aprsData} />
-        </TableWrapper>
-      </Flex>
-    </React.Fragment>
+        </div>
+      </TablesWrapper>
+    </Box>
   );
 };
 

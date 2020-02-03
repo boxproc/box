@@ -90,9 +90,7 @@ const LoanIllustration: React.FC<IllustrationProductProps> = ({
   );
 
   const isDisabledForm = React.useMemo(
-    () => {
-      return isLoading || isIllustrationLoading || isConversionLoading;
-    },
+    () => isLoading || isIllustrationLoading || isConversionLoading,
     [isLoading, isIllustrationLoading, isConversionLoading]
   );
 

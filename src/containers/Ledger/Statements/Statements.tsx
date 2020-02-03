@@ -81,17 +81,13 @@ const Statements: React.FC<StatementsProps> = ({
 
   const contextMenuItems = React.useMemo(
     () => [
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Open pdf statement',
         icon: iconNamesConst.FILE_PDF,
         action: generateTransactionsAprsFeesRewards,
       },
-      {
-        isDivider: true,
-      },
+      { isDivider: true },
       {
         name: 'Accounts',
         action: () => filterLedgerAccountsById({ statement_id: currentId }),

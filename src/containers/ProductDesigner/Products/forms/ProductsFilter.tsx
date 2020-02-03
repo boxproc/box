@@ -53,7 +53,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </ProductWrapper>
-      <Box width={[1]} p="10px">
+      <Box p="10px" pb="15px">
         <Field
           id="activeStatusFlag"
           name="activeStatusFlag"

@@ -12,7 +12,6 @@ type TCell<T extends keyof DictionaryCountriesItemPrepared> =
 export const tableColumns = [
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Numeric Code" />,
     accessor: 'numericCode',
     Cell: (props: TCell<'numericCode'>) => (
@@ -24,7 +23,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Country Code" />,
     accessor: 'countryCode',
     Cell: (props: TCell<'countryCode'>) => (
@@ -36,7 +34,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Alpha-2 Code" />,
     accessor: 'alpha2Code',
     Cell: (props: TCell<'alpha2Code'>) => (
@@ -48,7 +45,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    sortable: true,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (

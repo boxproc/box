@@ -11,7 +11,6 @@ type TCell<T extends keyof ApiCallsItemPrepared> = TableCellType<ApiCallsItemPre
 export const tableColumns = [
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -23,7 +22,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 130,
-    sortable: true,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -34,7 +32,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    sortable: true,
     Header: <TableHeader title="Endpoint ID" />,
     accessor: 'endpointId',
     Cell: (props: TCell<'endpointId'>) => (
@@ -46,7 +43,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 200,
-    sortable: true,
     Header: <TableHeader title="Endpoint Name" />,
     accessor: 'endpointName',
     Cell: (props: TCell<'endpointName'>) => (
@@ -57,7 +53,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    sortable: true,
     Header: <TableHeader title="Event Date Time" />,
     accessor: 'eventDatetime',
     Cell: (props: TCell<'eventDatetime'>) => (
@@ -69,7 +64,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    sortable: true,
     Header: <TableHeader title="API Name" />,
     accessor: 'apiName',
     Cell: (props: TCell<'apiName'>) => (
@@ -79,7 +73,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="Request Body" />,
     accessor: 'requestBody',
     Cell: (props: TCell<'requestBody'>) => (
@@ -89,7 +82,6 @@ export const tableColumns = [
     ),
   },
   {
-    sortable: true,
     Header: <TableHeader title="Response Body" />,
     accessor: 'responseBody',
     Cell: (props: TCell<'responseBody'>) => (

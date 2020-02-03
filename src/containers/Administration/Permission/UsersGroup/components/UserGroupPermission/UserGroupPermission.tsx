@@ -39,7 +39,6 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        sortable: true,
         Header: <TableHeader title="UI Item" />,
         accessor: 'uiItem',
         filterable: true,
@@ -52,7 +51,6 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       },
       {
         maxWidth: 200,
-        sortable: true,
         Header: <TableHeader title="Permission" />,
         accessor: 'permission',
         Cell: (props: TCell<'permission'>) => (
@@ -64,7 +62,6 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       },
       {
         maxWidth: 90,
-        sortable: true,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button

@@ -7,6 +7,7 @@ import {
   createLoadingSelector,
   handleIllustrateRevolvingCreditProduct,
   ProductIllustrationActionTypes,
+  resetProductIllustration,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -22,6 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     illustrateRevolvingCreditProduct: handleIllustrateRevolvingCreditProduct,
+    resetProductIllustration,
   },
   dispatch
 );

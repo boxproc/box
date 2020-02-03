@@ -49,5 +49,6 @@ export const selectIsTransactionConvertibleToLoan = createSelector(
     if (!transaction) {
       return false;
     }
+
     return transaction.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
   });

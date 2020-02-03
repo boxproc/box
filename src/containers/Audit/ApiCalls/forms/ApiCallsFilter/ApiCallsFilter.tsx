@@ -79,7 +79,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
         />
       </Box>
       <Delimiter />
-      <Box width="200px" p="10px">
+      <Box width="170px" p="10px">
         <Field
           id="apiCallsDateTimeFrom"
           name="apiCallsDateTimeFrom"
@@ -94,7 +94,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="200px" p="10px">
+      <Box width="170px" p="10px">
         <Field
           id="apiCallsDateTimeTo"
           name="apiCallsDateTimeTo"

@@ -10,10 +10,11 @@ import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
 
-import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
+import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store/domains';
 
 interface IllustrationProductFormProps extends WithLoadTransactionTypesProps {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
+  resetProductIllustration: ResetProductIllustration;
   initialFormValues: object;
   productId: number;
   dirty: boolean;
@@ -26,11 +27,19 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
   initialFormValues,
   transactionTypesOptions,
   isTransactionTypesLoading,
+  resetProductIllustration,
   productId,
   dirty,
   isLoading,
   onCancel,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetProductIllustration();
+    },
+    [resetProductIllustration]
+  );
+
   const initialPurchaseType = React.useMemo(
     () => transactionTypesOptions
       .find(type => type.value === transactionTypesIds.PURCHASE_CARD_PAYMENT),
@@ -78,7 +87,7 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
         isLoading={isLoading}
         isDisabled={isLoading}
       />
-      <RevolvingCreditIllustrationTables isLoading={isLoading}/>
+      <RevolvingCreditIllustrationTables isLoading={isLoading} />
       <Flex justifyContent="flex-end">
         <Button
           text="Close"
