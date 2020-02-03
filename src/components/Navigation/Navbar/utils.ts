@@ -32,14 +32,8 @@ export const toggleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
   toggleActiveClass(currentItem);
 };
 
-export const clearMenu = () =>
-  document
-    .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
-      el.classList.contains(menuClasses.ACTIVE)
-      && removeActiveClass(el)
-    );
-
-export const goToPage = (handlePushToHistory: () => void, handleClearMenu: () => void) => {
-  handlePushToHistory();
-  setTimeout(() => handleClearMenu(), 50);
-};
+export const clearMenu = () => document
+  .querySelectorAll(`.${menuClasses.MENU_ITEM}`).forEach(el =>
+    el.classList.contains(menuClasses.ACTIVE)
+    && removeActiveClass(el)
+  );

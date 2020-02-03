@@ -1,7 +1,7 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 
-import { Box, Flex } from '@rebass/grid';
+import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
@@ -12,7 +12,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, uiItemConsts, uiItemTypesCodes } from 'consts';
 
-import { clearMenu, goToPage, menuClasses, toggleOpenMenu } from './utils';
+import { clearMenu, menuClasses, toggleOpenMenu } from './utils';
 
 import { UiItemPrepared } from 'store/domains';
 
@@ -36,11 +36,15 @@ const Navbar: React.FC<NavbarProps> = ({
 
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
+    const isModalWindow = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS
+      || item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT
+      || item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION;
+
     const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
     const isLimitAdjustment = item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT;
     const isSettleTransaction = item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION;
 
-    const handleClick = () => {
+    const handleOpenModalWindow = () => {
       if (isManualTransaction || isLimitAdjustment) {
         return openModal({
           name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
@@ -49,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = ({
       } else if (isSettleTransaction) {
         return openModal({ name: modalNamesConst.SETTLE_TRANSACTION });
       } else {
-        return history.push(`${basePath}${id}`);
+        return false;
       }
     };
 
@@ -57,19 +61,32 @@ const Navbar: React.FC<NavbarProps> = ({
       <Box
         key={id}
         className={`${menuClasses.MENU_ITEM} ${separator ? 'is-separator' : ''}`}
-        onClick={() => !hasChildren && goToPage(handleClick, clearMenu)}
         onMouseEnter={e => toggleOpenMenu(e)}
       >
-        <Flex
-          alignItems="flex-start"
-          justifyContent="space-between"
-          className={menuClasses.MENU_TITLE}
-        >
-          {title}
-          {hasChildren && parentId && (
-            <ChevronIconStyled className="icon" size="17" />
-          )}
-        </Flex>
+        {!hasChildren && !isModalWindow && (
+          <Link
+            to={!isModalWindow && `${basePath}${id}`}
+            className={menuClasses.MENU_TITLE}
+          >
+            {title}
+          </Link>
+        )}
+        {!hasChildren && isModalWindow && (
+          <div
+            className={menuClasses.MENU_TITLE}
+            onClick={isModalWindow && handleOpenModalWindow}
+          >
+            {title}
+          </div>
+        )}
+        {hasChildren && (
+          <div className={menuClasses.MENU_TITLE}>
+            {title}
+            {hasChildren && parentId && (
+              <ChevronIconStyled className="icon" size="17" />
+            )}
+          </div>
+        )}
         {hasChildren && renderMenu(id)}
       </Box>
     );
