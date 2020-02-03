@@ -27,7 +27,7 @@ export const sharedInputCss = css<InputProps>`
     background-color: #fafafa;
     height: auto;
     align-self: flex-start;
-    padding: 0 7px;
+    padding: 0 6px;
 
     &:focus{
       background-color: ${theme.colors.white};

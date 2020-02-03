@@ -25,7 +25,7 @@ export const TableItemWrapper = styled.div<TableItemWrapperProps>`
 
   ${({ isSmaller }) => isSmaller && `
     font-size: 12px;
-    padding: 4px;
+    padding: 4px 6px;
   `};
 
   ${({ isEditable }) => isEditable && `

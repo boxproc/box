@@ -23,7 +23,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 100,
     accessor: 'startDate',
     Header: <TableHeader title="Start Date" />,
     Cell: (props: TCell<'startDate'>) => (
@@ -34,7 +34,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 100,
     accessor: 'endDate',
     Header: <TableHeader title="End Date" />,
     Cell: (props: TCell<'endDate'>) => (
@@ -45,7 +45,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 100,
     accessor: 'statementDate',
     Header: <TableHeader title="Statement Date" />,
     Cell: (props: TCell<'statementDate'>) => (
@@ -58,7 +58,7 @@ const columns = [
   {
     maxWidth: 150,
     accessor: 'installmentBalance',
-    Header: <TableHeader title="Statement Balance" />,
+    Header: <TableHeader title="Principal" />,
     Cell: (props: TCell<'installmentBalance'>) => (
       <TableCell
         value={props.value}
@@ -69,7 +69,7 @@ const columns = [
   {
     maxWidth: 150,
     accessor: 'apr',
-    Header: <TableHeader title="Accrued Interest" />,
+    Header: <TableHeader title="Interest" />,
     Cell: (props: TCell<'apr'>) => (
       <TableCell
         value={props.value}

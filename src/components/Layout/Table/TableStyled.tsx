@@ -155,7 +155,7 @@ export const TableStyled = styled.div<TableStyledProps>`
         top: 3px;
         bottom: 3px;
         right: 0;
-        width: 6px;
+        width: 5px;
         background: linear-gradient(to right, rgba(255,255,255,.6) 30%,rgba(255,255,255,1) 100%);
       }
     }
