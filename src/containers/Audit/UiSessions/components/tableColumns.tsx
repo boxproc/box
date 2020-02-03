@@ -77,6 +77,7 @@ export const tableColumns = [
     Cell: (props: TCell<'userAgent'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

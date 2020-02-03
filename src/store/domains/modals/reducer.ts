@@ -11,6 +11,7 @@ export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
   payloadLogModal: null,
   payloadLedgerManualTransactionModal: null,
   payloadLedgerTransactionModal: null,
+  payloadSettleTransactionModal: null,
 });
 
 const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {

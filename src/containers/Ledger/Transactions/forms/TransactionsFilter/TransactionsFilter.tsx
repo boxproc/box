@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box } from '@rebass/grid';
 
-import { InputField, MaskField, SelectField } from 'components';
+import { Delimiter, InputField, MaskField, SelectField } from 'components';
 
 import { dateFormat, maskFormat } from 'consts';
 
@@ -70,64 +70,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="150px" p="10px">
-        <Field
-          id="customerId"
-          name="customerId"
-          component={InputField}
-          label="Customer ID"
-          placeholder="Enter ID"
-          isNumber={true}
-          disabled={isDisabled}
-          validate={[formErrorUtil.isInteger]}
-        />
-      </Box>
-      <Box width="150px" p="10px">
-        <Field
-          id="id"
-          name="id"
-          component={InputField}
-          label="Transaction ID"
-          placeholder="Enter ID"
-          disabled={isDisabled}
-          validate={[formErrorUtil.isInteger]}
-        />
-      </Box>
-      <Box width="150px" p="10px">
-        <Field
-          id="accountId"
-          name="accountId"
-          component={InputField}
-          label="Account ID"
-          placeholder="Enter ID"
-          isNumber={true}
-          disabled={isDisabled}
-          validate={[formErrorUtil.isInteger]}
-        />
-      </Box>
-      <Box width="150px" p="10px">
-        <Field
-          id="cardId"
-          name="cardId"
-          component={InputField}
-          label="Card ID"
-          placeholder="Enter ID"
-          isNumber={true}
-          disabled={isDisabled}
-          validate={[formErrorUtil.isInteger]}
-        />
-      </Box>
-      <Box width="200px" p="10px">
-        <Field
-          id="panAlias"
-          name="panAlias"
-          component={InputField}
-          label="Pan Alias"
-          isNumber={true}
-          placeholder="Enter Pan Alias"
-          disabled={isDisabled}
-        />
-      </Box>
       <Box width="170px" p="10px">
         <Field
           id="transactionsDateTimeFrom"
@@ -156,6 +98,65 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
             formErrorUtil.required,
             formErrorUtil.isDateTime,
           ]}
+        />
+      </Box>
+      <Delimiter />
+      <Box width="130px" p="10px">
+        <Field
+          id="customerId"
+          name="customerId"
+          component={InputField}
+          label="Customer ID"
+          placeholder="Enter ID"
+          isNumber={true}
+          disabled={isDisabled}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="130px" p="10px">
+        <Field
+          id="id"
+          name="id"
+          component={InputField}
+          label="Transaction ID"
+          placeholder="Enter ID"
+          disabled={isDisabled}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="130px" p="10px">
+        <Field
+          id="accountId"
+          name="accountId"
+          component={InputField}
+          label="Account ID"
+          placeholder="Enter ID"
+          isNumber={true}
+          disabled={isDisabled}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="130px" p="10px">
+        <Field
+          id="cardId"
+          name="cardId"
+          component={InputField}
+          label="Card ID"
+          placeholder="Enter ID"
+          isNumber={true}
+          disabled={isDisabled}
+          validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width={[1 / 4]} p="10px">
+        <Field
+          id="panAlias"
+          name="panAlias"
+          component={InputField}
+          label="Pan Alias"
+          isNumber={true}
+          placeholder="Enter Pan Alias"
+          disabled={isDisabled}
         />
       </Box>
     </React.Fragment>

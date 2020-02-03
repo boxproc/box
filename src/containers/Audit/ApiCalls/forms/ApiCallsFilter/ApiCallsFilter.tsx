@@ -55,7 +55,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 3]} p="10px">
         <Field
           id="endpointId"
           name="endpointId"

@@ -10,6 +10,7 @@ import { withModal, WithModalProps } from 'HOCs';
 import {
   HandleRetrieveTransaction,
   HandleSettleTransaction,
+  PayloadSettleTransactionModal,
   ResetRetrievedTransaction,
   SettleTransactionFormValues,
 } from 'store/domains';
@@ -23,6 +24,7 @@ interface SettleTransactionModalProps extends WithModalProps {
   isLoading: boolean;
   isRetrievedTransaction: boolean;
   isDirtySettleTransactionForm: boolean;
+  payloadSettleTransactionModal: PayloadSettleTransactionModal;
 }
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;
@@ -37,12 +39,22 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
   isRetrievedTransaction,
   isDirtySettleTransactionForm,
   closeModal,
+  payloadSettleTransactionModal,
 }) => {
   React.useEffect(
     () => {
       return () => resetRetrievedTransaction();
     },
     [resetRetrievedTransaction]
+  );
+
+  const initialRetrievingFormValues = React.useMemo(
+    () => {
+      const id = payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId;
+
+      return { id };
+    },
+    [payloadSettleTransactionModal]
   );
 
   const handleCloseModal = React.useCallback(
@@ -64,6 +76,7 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
         isRetrieving={isRetrieving}
         isRetrieved={isRetrievedTransaction}
         retrieveTransaction={retrieveTransaction}
+        initialValues={initialRetrievingFormValues}
         onCancel={handleCloseModal}
       />
       {isRetrievedTransaction && (

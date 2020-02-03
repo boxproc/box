@@ -52,7 +52,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="150px" p="10px">
+      <Box width="130px" p="10px">
         <Field
           id="id"
           name="id"

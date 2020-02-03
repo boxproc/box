@@ -78,6 +78,7 @@ export const tableColumns = [
     Cell: (props: TCell<'requestBody'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
@@ -87,6 +88,7 @@ export const tableColumns = [
     Cell: (props: TCell<'responseBody'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

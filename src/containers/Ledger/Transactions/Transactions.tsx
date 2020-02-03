@@ -85,7 +85,10 @@ const Transactions: React.FC<TransactionsProps> = ({
         { isDivider: true },
         {
           name: 'Settle Transaction',
-          action: () => openModal({ name: modalNamesConst.SETTLE_TRANSACTION }),
+          action: () => openModal({
+            name: modalNamesConst.SETTLE_TRANSACTION,
+            payload: { transactionId: currentId },
+          }),
         },
       ];
 

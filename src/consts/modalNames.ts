@@ -16,12 +16,12 @@ export enum modalNamesConst {
   CHANGE_PROFILE = 'ChangeProfileModal',
   CHANGE_PASSWORD = 'ChangePasswordModal',
 
-  SETTLE_TRANSACTION = 'SettleTransaction',
+  SETTLE_TRANSACTION = 'SettleTransactionModal',
 
   ADD_PRODUCT = 'AddProductModal',
   EDIT_PRODUCT = 'EditProductModal',
 
-  AUDIT_API_CALL = 'AuditApiCall',
+  AUDIT_API_CALL = 'AuditApiCallModal',
 
   ADD_LEDGER_CUSTOMER = 'AddLedgerCustomerModal',
   EDIT_LEDGER_CUSTOMER = 'EditLedgerCustomerModal',
@@ -32,22 +32,22 @@ export enum modalNamesConst {
   LEDGER_MANUAL_TRANSACTION = 'LedgerManualTransactionModal',
   LEDGER_MANUAL_TRANSACTION_RESULT = 'LedgerManualTransactionResultModal',
   INFO_LEDGER_CARDS = 'InfoCardModal',
-  LEDGER_STATEMENTS = 'LedgerStatements',
+  LEDGER_STATEMENTS = 'LedgerStatementsModal',
 
   ADD_SYSTEM_PROPERTY = 'AddSystemPropertyModal',
   EDIT_SYSTEM_PROPERTY = 'EditSystemPropertyModal',
   ADD_SCHEDULER = 'AddSchedulerModal',
   EDIT_SCHEDULER = 'EditSchedulerModal',
   GENERATE_CRON_EXPRESSION = 'GenerateCronExpressionModal',
-  ADD_ACTIVE_USER = 'AddActiveUser',
+  ADD_ACTIVE_USER = 'AddActiveUserModal',
   ADD_USERS_GROUP = 'AddUsersGroupModal',
   EDIT_USERS_GROUP = 'EditUsersGroupModal',
   ADD_USER = 'AddUserModal',
   EDIT_USER = 'EditUserModal',
-  ADD_ENDPOINT = 'AddEndPoint',
-  EDIT_ENDPOINT = 'EditEndpoint',
-  ADD_INTERFACE = 'AddInterface',
-  EDIT_INTERFACE = 'EditInterface',
+  ADD_ENDPOINT = 'AddEndPointModal',
+  EDIT_ENDPOINT = 'EditEndpointModal',
+  ADD_INTERFACE = 'AddInterfaceModal',
+  EDIT_INTERFACE = 'EditInterfaceModal',
   ADD_INSTITUTION = 'AddInstitutionModal',
   EDIT_INSTITUTION = 'EditInstitutionModal',
 }

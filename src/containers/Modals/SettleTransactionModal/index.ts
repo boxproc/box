@@ -13,6 +13,7 @@ import {
   LedgerSettleTransactionActionTypes,
   resetRetrievedTransaction,
   selectIsRetrievedTransaction,
+  selectPayloadSettleTransactionModal,
   selectRetrievedTransaction,
 } from 'store/domains';
 
@@ -34,6 +35,7 @@ const mapStateToProps = (state: StoreState) => ({
   isRetrievedTransaction: selectIsRetrievedTransaction(state),
   isDirtySettleTransactionForm: dirtySettleTransactionForm(state),
   retrievedTransaction: selectRetrievedTransaction(state),
+  payloadSettleTransactionModal: selectPayloadSettleTransactionModal(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

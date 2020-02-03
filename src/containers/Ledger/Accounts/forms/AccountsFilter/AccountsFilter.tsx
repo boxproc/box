@@ -55,13 +55,13 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="150px" p="10px">
+      <Box width="130px" p="10px">
         <Field
           id="id"
           name="id"
           component={InputField}
           label="Account"
-          placeholder="Enter Account ID"
+          placeholder="Enter ID"
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}

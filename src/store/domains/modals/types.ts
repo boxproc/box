@@ -36,6 +36,10 @@ export interface PayloadLedgerTransactionModal {
   activeTab?: number;
 }
 
+export interface PayloadSettleTransactionModal {
+  transactionId?: number;
+}
+
 export interface ModalsState {
   isMessageModal: boolean;
   isEditModalOpened: boolean;
@@ -44,4 +48,5 @@ export interface ModalsState {
   payloadLogModal: PayloadLogModal;
   payloadLedgerManualTransactionModal: PayloadLedgerManualTransactionModal;
   payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
+  payloadSettleTransactionModal: PayloadSettleTransactionModal;
 }

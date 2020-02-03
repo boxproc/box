@@ -61,7 +61,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="150px" p="10px">
+      <Box width="130px" p="10px">
         <Field
           id="accountId"
           name="accountId"

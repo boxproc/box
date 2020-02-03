@@ -83,8 +83,8 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               id="accountId"
               name="accountId"
               component={InputField}
-              label="Account"
-              placeholder="Enter Account ID"
+              label="Account ID"
+              placeholder="Enter ID"
               isNumber={true}
               validate={[
                 formErrorUtil.required,

@@ -21,3 +21,6 @@ export const selectLedgerManualTransactionModalIsLimit = (state: StoreState) =>
 
 export const selectPayloadLedgerTransactionModal = (state: StoreState) =>
   state.modals.payloadLedgerTransactionModal;
+
+export const selectPayloadSettleTransactionModal = (state: StoreState) =>
+  state.modals.payloadSettleTransactionModal;
