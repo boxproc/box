@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, Hr, InputField, NumberFormatField } from 'components';
+import { Hr, InputField, NumberFormatField } from 'components';
 
 import { dateFormat, formNamesConst, maskFormat } from 'consts';
 
@@ -59,8 +59,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Delimiter />
-          <Box width={[1 / 5]} p="10px">
+          <Box width={[1 / 6]} p="10px">
             <Field
               id="repaymentStatus"
               name="repaymentStatus"
@@ -69,23 +68,12 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width="150px" p="10px">
+          <Box width="120px" p="10px">
             <Field
               id="statementDate"
               name="statementDate"
               component={InputField}
               label="Statement Date"
-              placeholder={dateFormat.DATE}
-              mask={maskFormat.DATE}
-              readOnly={true}
-            />
-          </Box>
-          <Box width="150px" p="10px">
-            <Field
-              id="dateOfLastUpdate"
-              name="dateOfLastUpdate"
-              component={InputField}
-              label="Date of Last Update"
               placeholder={dateFormat.DATE}
               mask={maskFormat.DATE}
               readOnly={true}

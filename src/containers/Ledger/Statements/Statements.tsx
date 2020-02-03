@@ -119,7 +119,7 @@ const Statements: React.FC<StatementsProps> = ({
     () => {
       return [
         {
-          maxWidth: 60,
+          maxWidth: 50,
           accessor: 'deleteButton',
           Cell: (cellInfo: CellInfo) => (
             <Flex
@@ -131,8 +131,7 @@ const Statements: React.FC<StatementsProps> = ({
                 text=""
                 iconSize="22"
                 onClick={() => handleClickOnPdfReportButton(cellInfo.original.id)}
-                hint="Open pdf statement"
-                hintPosition="right"
+                title="Open pdf statement"
                 disabled={isLoadingStatement}
               />
             </Flex>

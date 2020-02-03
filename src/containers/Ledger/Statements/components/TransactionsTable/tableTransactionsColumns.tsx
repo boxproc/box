@@ -11,7 +11,7 @@ type TCell<T extends keyof LedgerStatementTransactionsItemPrepared> =
 
 export const tableTransactionsColumns = [
   {
-    maxWidth: 150,
+    maxWidth: 120,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (

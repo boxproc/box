@@ -339,19 +339,19 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 7]} p="10px">
-            <Field
-              id="statementCycleRepaymentDay"
-              name="statementCycleRepaymentDay"
-              component={InputField}
-              label="Statement Cycle Repayment Day"
-              placeholder="Enter Day"
-              readOnly={isReadOnly}
-              isNumber={true}
-            />
-          </Box>
           {isEditMode && (
             <React.Fragment>
+              <Box width={[1 / 7]} p="10px">
+                <Field
+                  id="statementCycleRepaymentDay"
+                  name="statementCycleRepaymentDay"
+                  component={InputField}
+                  label="Statement Cycle Repayment Day"
+                  placeholder="Enter Day"
+                  readOnly={isReadOnly}
+                  isNumber={true}
+                />
+              </Box>
               <Hr />
               <Box width="150px" p="10px">
                 <Field

@@ -58,7 +58,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
   const tableColumns = React.useMemo(
     () => [
       {
-        maxWidth: 80,
+        maxWidth: 100,
         Header: <TableHeader title="Statement Date" />,
         accessor: 'statementDate',
         Cell: (props: TCell<'statementDate'>) => (
@@ -70,7 +70,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 100,
         Header: <TableHeader title="First Tr ID" />,
         accessor: 'firstTransactionId',
         Cell: (props: TCell<'firstTransactionId'>) => (
@@ -82,7 +82,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 90,
         Header: <TableHeader title="Last Tr ID" />,
         accessor: 'lastTransactionId',
         Cell: (props: TCell<'lastTransactionId'>) => (
@@ -94,7 +94,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 90,
         Header: <TableHeader title="Balance Open" />,
         accessor: 'balanceOpen',
         Cell: (props: TCell<'balanceOpen'>) => (
@@ -118,7 +118,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 120,
         Header: <TableHeader title="Repayment Amount" />,
         accessor: 'minimumAmountDueRepayment',
         Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
@@ -130,23 +130,11 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 120,
         Header: <TableHeader title="Repayment Status" />,
         accessor: 'repaymentStatus',
         Cell: (props: TCell<'repaymentStatus'>) => (
           <TableCell
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 80,
-        Header: <TableHeader title="Date of Last Update" />,
-        accessor: 'dateOfLastUpdate',
-        Cell: (props: TCell<'dateOfLastUpdate'>) => (
-          <TableCell
-            isDate={true}
             value={props.value}
             isSmaller={true}
           />

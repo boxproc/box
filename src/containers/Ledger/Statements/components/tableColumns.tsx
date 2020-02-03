@@ -22,7 +22,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 150,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -105,7 +105,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 90,
     Header: <TableHeader title="Statement Date" />,
     accessor: 'statementDate',
     Cell: (props: TCell<'statementDate'>) => (
@@ -156,18 +156,6 @@ export const tableColumns = [
       <TableCell
         value={props.value}
         isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 200,
-    Header: <TableHeader title="Date of Last Update" />,
-    accessor: 'dateOfLastUpdate',
-    Cell: (props: TCell<'dateOfLastUpdate'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-        isDate={true}
       />
     ),
   },

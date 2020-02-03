@@ -12,7 +12,6 @@ export interface LedgerStatementItem {
   balance_close: number;
   minimum_amount_due_repayment: number;
   repayment_status: string;
-  date_of_last_update: string;
   account_alias: string;
   institution_id: string | number;
   product_name: string;
@@ -41,7 +40,6 @@ export interface LedgerStatementItemPrepared {
   balanceClose: string;
   minimumAmountDueRepayment: string;
   repaymentStatus: string;
-  dateOfLastUpdate: string;
   accountAlias: string;
   institutionId: string | number;
   productName: string;

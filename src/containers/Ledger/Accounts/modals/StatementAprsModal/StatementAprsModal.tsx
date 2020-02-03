@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal, Tabs, TabsPanel } from 'components';
+import { Button, Modal, T4 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
@@ -42,14 +42,9 @@ const StatementAprs: React.FC<StatementAprsProps> = ({
       maxContainerWidth={1010}
       minContainerHeight={500}
     >
-      <Tabs>
-        <TabsPanel title="Accrued Interest">
-          <Box mt="20px">
-            <StatementDate date={currentStatementDate} />
-            <StatementAprsTable data={statementAprs} />
-          </Box>
-        </TabsPanel>
-      </Tabs>
+      <T4>Accrued Interest</T4>
+      <StatementDate date={currentStatementDate} />
+      <StatementAprsTable data={statementAprs} />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
           <Button

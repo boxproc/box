@@ -14,10 +14,7 @@ interface StatementDateProps {
 
 const StatementDate: React.FC<StatementDateProps> = ({ date }) => {
   return (
-    <Paragraph
-      light={true}
-      size={13}
-    >
+    <Paragraph light={true} size={13}>
       <b>Statement date:</b> {date ? date : (<LightText>no date</LightText>)}
     </Paragraph>
   );

@@ -11,9 +11,7 @@ import {
 import { formNamesConst, productTypesCodes } from 'consts';
 
 import {
-  AccountStatements,
   AuxiliaryCounters,
-  Cards,
   GeneralAccountInfo,
   Overdue,
 } from 'containers/Ledger/Accounts/components';
@@ -145,19 +143,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             isReadOnly={isReadOnly}
           />
         </TabsPanel>
-        {isEditMode && (
-          <TabsPanel title="Cards">
-            <Cards
-              onCancel={onCancel}
-              isReadOnly={isReadOnly}
-            />
-          </TabsPanel>
-        )}
-        {isEditMode && (
-          <TabsPanel title="Statements">
-            <AccountStatements onCancel={onCancel} />
-          </TabsPanel>
-        )}
       </Tabs>
     </form >
   );

@@ -31,7 +31,6 @@ export const prepareStatementDataToRender = (
     balance_close,
     minimum_amount_due_repayment,
     repayment_status,
-    date_of_last_update,
     account_alias,
     product_name,
     first_name,
@@ -75,7 +74,6 @@ export const prepareStatementDataToRender = (
       balanceClose: stringsUtil.numberToFixed(balance_close, 2),
       minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
-      dateOfLastUpdate: date_of_last_update,
     },
   };
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Modal } from 'components';
+import { Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
+import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { LedgerAccountItemDetailsPrepared } from 'store/domains';
@@ -55,13 +56,29 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       withCloseConfirmation={isFormDirty}
       TitleIcon={TitleIcon}
     >
-      <AccountForm
-        onCancel={handleOnCancel}
-        mode="edit"
-        isReadOnly={isReadOnly}
-        initialValues={currentAccount}
-        currentAccountAuxCounters={currentAccountAuxCounters}
-      />
+      <Tabs>
+        <TabsPanel
+          title="Account information"
+          hasTabs={true}
+        >
+          <AccountForm
+            onCancel={handleOnCancel}
+            mode="edit"
+            isReadOnly={isReadOnly}
+            initialValues={currentAccount}
+            currentAccountAuxCounters={currentAccountAuxCounters}
+          />
+        </TabsPanel>
+        <TabsPanel title="Cards">
+          <Cards
+            onCancel={handleOnCancel}
+            isReadOnly={isReadOnly}
+          />
+        </TabsPanel>
+        <TabsPanel title="Statements">
+          <AccountStatements onCancel={handleOnCancel} />
+        </TabsPanel>
+      </Tabs>
     </Modal>
   );
 };
