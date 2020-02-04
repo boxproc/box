@@ -36,7 +36,6 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
               component={InputField}
               label="Status"
               readOnly={true}
-              isNumber={true}
             />
           </Box>
           <Hr />

@@ -88,6 +88,11 @@ export const repaymentStatusOptions = [
   { value: 'O', label: 'Overpaid' },
 ];
 
+export const repaymentTypesOptions = [
+  { value: 'F', label: 'Full repayment' },
+  { value: 'M', label: 'Minimum repayment' },
+];
+
 export const uiSessionsStatusOptions = [
   { value: 'V', label: 'Valid' },
   { value: 'I', label: 'Invalid' },

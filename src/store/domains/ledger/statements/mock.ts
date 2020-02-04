@@ -29,6 +29,7 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       address_town: 'test',
       address_post_code: 'test',
       address_country_code: 'test',
+      previous_statement_id: 1,
     },
     {
       id: 2,
@@ -53,6 +54,7 @@ export const ledgerStatementsItems: LedgerStatementItems = {
       address_town: 'test',
       address_post_code: 'test',
       address_country_code: 'test',
+      previous_statement_id: 1,
     },
   ],
 };
@@ -72,6 +74,8 @@ export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
       accrued_interest_total: 1.00,
       accrued_fee_total: 1.00,
       accrued_reward_total: 1.00,
+      start_date: '07/10/2019',
+      repayment_type: null,
     },
     {
       id: 2,
@@ -86,6 +90,8 @@ export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
       accrued_interest_total: 1.00,
       accrued_fee_total: 1.00,
       accrued_reward_total: 1.00,
+      start_date: '07/10/2019',
+      repayment_type: null,
     },
   ],
 };

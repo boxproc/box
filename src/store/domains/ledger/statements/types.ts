@@ -28,6 +28,9 @@ export interface LedgerStatementItem {
   address_town: string;
   address_post_code: string;
   address_country_code: string;
+  previous_statement_id: number;
+  start_date?: string;
+  repayment_type?: string;
 }
 
 export interface LedgerStatementItemPrepared {
@@ -56,6 +59,9 @@ export interface LedgerStatementItemPrepared {
   addressTown: string;
   addressPostCode: string;
   addressCountryCode: string;
+  previousStatementId: number;
+  startDate?: string;
+  repaymentType?: string;
 }
 
 export interface LedgerStatementTransactionsItem {

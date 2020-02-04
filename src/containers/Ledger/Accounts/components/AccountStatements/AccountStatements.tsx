@@ -70,31 +70,19 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
+        maxWidth: 80,
+        Header: <TableHeader title="Start Date" />,
+        accessor: 'startDate',
+        Cell: (props: TableCellType<'startDate'>) => (
+          <TableCell
+            value={props.value}
+            isDate={true}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
         maxWidth: 100,
-        Header: <TableHeader title="First Tr ID" />,
-        accessor: 'firstTransactionId',
-        Cell: (props: TCell<'firstTransactionId'>) => (
-          <TableCell
-            isNumber={true}
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 90,
-        Header: <TableHeader title="Last Tr ID" />,
-        accessor: 'lastTransactionId',
-        Cell: (props: TCell<'lastTransactionId'>) => (
-          <TableCell
-            isNumber={true}
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 90,
         Header: <TableHeader title="Balance Open" />,
         accessor: 'balanceOpen',
         Cell: (props: TCell<'balanceOpen'>) => (
@@ -177,7 +165,18 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 60,
+        maxWidth: 100,
+        Header: <TableHeader title="Repayment Type" />,
+        accessor: 'repaymentType',
+        Cell: (props: TableCellType<'repaymentType'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 50,
         Header: <TableHeader title="Details" />,
         Cell: (cellInfo: CellInfo) => (
           <Flex

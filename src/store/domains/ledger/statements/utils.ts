@@ -1,4 +1,4 @@
-import { repaymentStatusOptions } from 'consts';
+import { repaymentStatusOptions, repaymentTypesOptions } from 'consts';
 
 import {
   LedgerAccountStatementItem,
@@ -43,6 +43,7 @@ export const prepareStatementDataToRender = (
     address_town,
     address_post_code,
     address_country_code,
+    previous_statement_id,
   } = data;
 
   const repaymentStatus = repaymentStatusOptions
@@ -74,6 +75,7 @@ export const prepareStatementDataToRender = (
       balanceClose: stringsUtil.numberToFixed(balance_close, 2),
       minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
+      previousStatementId: previous_statement_id,
     },
   };
 };
@@ -165,13 +167,19 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
     accrued_interest_total,
     accrued_fee_total,
     accrued_reward_total,
+    start_date,
+    repayment_type,
   } = data;
+
+  const repaymentType = repaymentTypesOptions.find(el => el.value === repayment_type);
 
   return {
     ...prepareDataToRender(data),
     accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
     accruedFeeTotal: stringsUtil.numberToFixed(accrued_fee_total, 5),
     accruedRewardTotal: stringsUtil.numberToFixed(accrued_reward_total, 5),
+    startDate: start_date,
+    repaymentType: repaymentType && repaymentType.label,
   };
 };
 

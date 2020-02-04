@@ -1,3 +1,5 @@
+import { transactionStatusOptions } from 'consts';
+
 import { LedgerManualTransactionFromData, LedgerManualTransactionResult } from './types';
 
 import { stringsUtil } from 'utils';
@@ -38,9 +40,11 @@ export const prepareResultDataToRender = (data: Array<LedgerManualTransactionRes
     balance_available_after,
   } = data[0];
 
+  const transactionStatus = transactionStatusOptions.find(el => el.value === status);
+
   return {
     transactionId: transaction_id,
-    status,
+    status: transactionStatus && transactionStatus.label,
     balanceSettledBefore: balance_settled_before,
     balanceSettledAfter: balance_settled_after,
     balanceAvailableBefore: balance_available_before,

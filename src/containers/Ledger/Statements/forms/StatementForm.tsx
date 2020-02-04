@@ -116,6 +116,16 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
+          <Box width={[1 / 6]} p="10px">
+            <Field
+              id="previousStatementId"
+              name="previousStatementId"
+              component={InputField}
+              label="Previous Statement ID"
+              readOnly={true}
+              isNumber={true}
+            />
+          </Box>
         </Flex>
       </Box>
     </form>

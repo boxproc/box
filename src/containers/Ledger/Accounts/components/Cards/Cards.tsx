@@ -46,7 +46,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
   return (
     <React.Fragment>
       {!isReadOnly && (
-        <Box mt="20px" mb="15px">
+        <Box mt="15px" mb="15px">
           <Button
             disabled={isOrderingCard}
             type="reset"
@@ -56,7 +56,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
           />
         </Box>
       )}
-      <Box mt="20px">
+      <Box mt="15px">
         <Table
           title="Account Cards"
           pageSize={8}
