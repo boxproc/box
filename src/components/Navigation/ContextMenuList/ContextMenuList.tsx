@@ -56,10 +56,6 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
   .gray {
     color: ${({ theme }) => theme.colors.gray};
   }
-
-  .code {
-    font-family: ${({ theme }) => theme.fonts.code};
-  }
 `;
 
 interface ContextMenuListProps {

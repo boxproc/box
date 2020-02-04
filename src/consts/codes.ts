@@ -41,6 +41,7 @@ export enum repaymentStatusCodes {
 export enum transactionStatusCodes {
   PENDING = 'P',
   SETTLED = 'S',
+  CONVERTED = 'C',
   INVALID = 'I',
 }
 

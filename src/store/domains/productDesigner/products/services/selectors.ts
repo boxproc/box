@@ -1,8 +1,7 @@
 import { createSelector } from 'reselect';
 
-import { selectActiveItemId } from 'store/domains/utils';
 import { StoreState } from 'store/StoreState';
-import { selectDefaultProductItems } from '../products';
+import { selectDefaultCurrentProduct } from '../products';
 
 export const selectDefaultInterfaces = (state: StoreState) =>
   state.productDesigner.productServices.interfaces;
@@ -31,13 +30,10 @@ export const selectProductCardEndpointsService = createSelector(
 );
 
 export const selectProductServices = createSelector(
-  selectDefaultProductItems,
-  selectActiveItemId,
+  selectDefaultCurrentProduct,
   selectProductCardInterfacesService,
   selectProductCardEndpointsService,
-  (products, activeId, interfacesOptions, endpointsOptions) => {
-    const current = products.find(product => product.id === activeId);
-
+  (current, interfacesOptions, endpointsOptions) => {
     if (!current) {
       return null;
     }

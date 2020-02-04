@@ -6,7 +6,6 @@ import { StoreState } from 'store/StoreState';
 
 import { selectCurrencyCodesOptions } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
 import {
   prepareGeneralProductData,
   prepareGeneralProductItem,
@@ -68,13 +67,8 @@ export const selectCurrentProductName = createSelector(
 );
 
 export const selectProductName = createSelector(
-  selectDefaultProductItems,
-  selectActiveItemId,
-  (products, activeId) => {
-    const current = products.find(product => product.id === activeId);
-
-    return current && current.name;
-  }
+  selectDefaultCurrentProduct,
+  current => current && current.name
 );
 
 export const selectIsProductOverride = createSelector(

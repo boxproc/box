@@ -2,14 +2,11 @@ import { createSelector } from 'reselect';
 
 import { actionTypesCodeKeys, actionTypesOptions, yesNoTypesCodes } from 'consts';
 
-import { selectActiveItemId } from 'store/domains/utils';
-import { selectDefaultProductItems } from '../products';
+import { selectDefaultCurrentProduct } from '../products';
 
 export const selectProductAuxCounters = createSelector(
-  selectDefaultProductItems,
-  selectActiveItemId,
-  (products, activeId) => {
-    const current = products.find(product => product.id === activeId);
+  selectDefaultCurrentProduct,
+  current => {
 
     if (!current) {
       return null;

@@ -44,6 +44,10 @@
   color: #ffa400;
 }
 
+.react-contextmenu-item .icon {
+  color: #999999;
+}
+
 .react-contextmenu-item:hover .icon {
   color: #ffa400;
 }
