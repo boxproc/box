@@ -24,7 +24,6 @@ type TransactionRetrievingFormPropsAllProps = TransactionRetrievingFormProps
 const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps> = ({
   retrieveTransaction,
   handleSubmit,
-  pristine,
   isRetrieving,
   isRetrieved,
   onCancel,
@@ -60,7 +59,6 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
         <Box pb="12px">
           <OkCancelButtons
             okText={buttonText}
-            disabledOk={pristine}
             hideCancel={isRetrieved}
             onCancel={onCancel}
             focusedButton="none"
