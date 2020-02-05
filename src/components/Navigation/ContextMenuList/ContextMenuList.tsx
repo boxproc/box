@@ -27,7 +27,6 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
       left: 0;
       top: 2px;
       font-size: 0;
-      color: ${({ theme }) => theme.colors.gray};
       width: 16px;
       text-align: center;
     }
