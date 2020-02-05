@@ -101,12 +101,12 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
   );
 
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="productType"
             name="productType"
@@ -118,7 +118,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -131,7 +131,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[4 / 15]} p="10px">
+        <Box width={[4 / 15]} p="8px">
           <Field
             id="name"
             name="name"
@@ -142,7 +142,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardFormFactor"
             name="cardFormFactor"
@@ -154,7 +154,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[2 / 15]} p="10px">
+        <Box width={[2 / 15]} p="8px">
           <Field
             id="numberOfDaysCardExpires"
             name="numberOfDaysCardExpires"
@@ -169,7 +169,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="status"
             name="status"
@@ -181,7 +181,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="scheme"
             name="scheme"
@@ -192,7 +192,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             options={schemeTypesOptions}
           />
         </Box>
-        <Box width={[4 / 15]} p="10px">
+        <Box width={[4 / 15]} p="8px">
           <Field
             id="currencyCode"
             name="currencyCode"
@@ -205,7 +205,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[2 / 15]} p="10px">
+        <Box width={[2 / 15]} p="8px">
           <Field
             id="historyRetentionNumberOfDays"
             name="historyRetentionNumberOfDays"
@@ -221,7 +221,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="statementCycleTypeId"
             name="statementCycleTypeId"
@@ -234,7 +234,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="statementCycleParameter"
             name="statementCycleParameter"
@@ -251,7 +251,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="description"
             name="description"
@@ -262,7 +262,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="lockedFlag"
             name="lockedFlag"

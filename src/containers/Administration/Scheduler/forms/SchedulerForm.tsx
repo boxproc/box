@@ -76,12 +76,12 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Box mx="-10px" >
+      <Box mx="-8px" >
         <Flex
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -94,7 +94,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="name"
               name="name"
@@ -105,7 +105,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="status"
               name="status"
@@ -119,7 +119,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
           </Box>
           <Box width="100%">
             <Flex alignItems="flex-start">
-              <Box width="50%" p="10px">
+              <Box width="50%" p="8px">
                 <Field
                   id="description"
                   name="description"
@@ -129,7 +129,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
                   readOnly={isReadOnly}
                 />
               </Box>
-              <Box width="50%" p="10px">
+              <Box width="50%" p="8px">
                 <Field
                   id="parameters"
                   name="parameters"
@@ -141,7 +141,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               </Box>
             </Flex>
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="executableType"
               name="executableType"
@@ -153,7 +153,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[2 / 3]} p="10px">
+          <Box width={[2 / 3]} p="8px">
             <Field
               id="executable"
               name="executable"
@@ -164,7 +164,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="logLocation"
               name="logLocation"
@@ -175,7 +175,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="cronExpression"
               name="cronExpression"
@@ -186,7 +186,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box p="10px 10px 20px">
+          <Box p="8px 8px 20px">
             <Button
               type="reset"
               text="Build cron expression"

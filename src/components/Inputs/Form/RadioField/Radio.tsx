@@ -26,6 +26,10 @@ const RadioWrapper = styled.label<RadioWrapperProps>`
     margin-top: 2px;
   }
 
+  .radio-icon-wrapper {
+    font-size: 0;
+  }
+
   ${({ alignItems }) => alignItems && `
     align-items: ${alignItems};
 
@@ -77,7 +81,7 @@ const Radio: React.FC<RadioProps> = ({ value, label, disabled, ...props }) => {
           checked={isChecked}
           onChange={handleChange}
         />
-        <span>
+        <span className="radio-icon-wrapper">
           {isChecked
             ? (<CheckedRadioIcon />)
             : (<UncheckedRadioIcon />)

@@ -14,12 +14,12 @@ type ResultLimitAdjustmentFormAllProps = ResultLimitAdjustmentFormProps
 const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = () => {
   return (
     <form>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceLimit"
               name="balanceLimit"
@@ -31,7 +31,7 @@ const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = (
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceLimitShared"
               name="balanceLimitShared"

@@ -36,7 +36,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="panAlias"
             name="panAlias"
@@ -47,7 +47,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="panMasked"
             name="panMasked"
@@ -58,7 +58,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="120px" p="10px">
+        <Box width="120px" p="8px">
           <Field
             id="expiryDate"
             name="expiryDate"
@@ -72,7 +72,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cvv2Encrypted"
             name="cvv2Encrypted"
@@ -82,7 +82,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             disabled={isDisabled}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardholderName"
             name="cardholderName"
@@ -93,7 +93,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width="150px" p="8px">
           <Field
             id="status"
             name="status"
@@ -106,7 +106,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Box width="160px" p="8px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
@@ -119,7 +119,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} pb="20px">
+        <Box width={[1 / 5]} pb="15px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}

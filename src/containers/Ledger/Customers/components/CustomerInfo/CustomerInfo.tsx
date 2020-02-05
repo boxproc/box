@@ -34,13 +34,13 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   isReadOnly,
 }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
         {isEditMode && (
-          <Box width="100px" p="10px">
+          <Box width="100px" p="8px">
             <Field
               id="id"
               name="id"
@@ -51,7 +51,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -64,7 +64,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="180px" p="10px">
+        <Box width="180px" p="8px">
           <Field
             id="status"
             name="status"
@@ -76,7 +76,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="180px" p="10px">
+        <Box width="180px" p="8px">
           <Field
             id="identificationType"
             name="identificationType"
@@ -89,7 +89,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           />
         </Box>
         {isIdentification && (
-          <Box width="180px" p="10px">
+          <Box width="180px" p="8px">
             <Field
               id="identificationNumber"
               name="identificationNumber"
@@ -102,7 +102,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
         )}
         <Delimiter />
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="firstName"
             name="firstName"
@@ -113,7 +113,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="lastName"
             name="lastName"
@@ -124,7 +124,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Box width="160px" p="8px">
           <Field
             id="dateOfBirth"
             name="dateOfBirth"
@@ -139,7 +139,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="email"
             name="email"
@@ -153,7 +153,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"
@@ -168,7 +168,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         <Box width="100%" px="10px">
           <T4>Address</T4>
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="nationalityCountryCode"
             name="nationalityCountryCode"
@@ -181,7 +181,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressCountryCode"
             name="addressCountryCode"
@@ -194,7 +194,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressLine1"
             name="addressLine1"
@@ -205,7 +205,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -215,7 +215,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressLine3"
             name="addressLine3"
@@ -225,7 +225,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressLine4"
             name="addressLine4"
@@ -235,7 +235,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressTown"
             name="addressTown"
@@ -246,7 +246,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="addressPostCode"
             name="addressPostCode"
@@ -260,7 +260,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
         {isEditMode && (
           <React.Fragment>
             <Hr />
-            <Box width="180px" p="10px">
+            <Box width="180px" p="8px">
               <Field
                 id="dateCreated"
                 name="dateCreated"
@@ -269,7 +269,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 readOnly={true}
               />
             </Box>
-            <Box width="180px" p="10px">
+            <Box width="180px" p="8px">
               <Field
                 id="dateClosed"
                 name="dateClosed"

@@ -15,12 +15,12 @@ type ApiCallFormAllProps = ApiCallFormProps & InjectedFormProps<{}, ApiCallFormP
 const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
   return (
     <form>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="100px" p="10px">
+          <Box width="100px" p="8px">
             <Field
               id="id"
               name="id"
@@ -30,7 +30,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[3 / 11]} p="10px">
+          <Box width={[3 / 11]} p="8px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -42,7 +42,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               isClearable={false}
             />
           </Box>
-          <Box width={[3 / 11]} p="10px">
+          <Box width={[3 / 11]} p="8px">
             <Field
               id="eventDatetime"
               name="eventDatetime"
@@ -52,7 +52,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="apiName"
               name="apiName"
@@ -63,7 +63,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
             />
           </Box>
           <Delimiter />
-          <Box width="100px" p="10px">
+          <Box width="100px" p="8px">
             <Field
               id="endpointId"
               name="endpointId"
@@ -73,7 +73,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[5 / 13]} p="10px">
+          <Box width={[5 / 13]} p="8px">
             <Field
               id="endpointName"
               name="endpointName"
@@ -85,7 +85,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
           </Box>
           <Box width="100%">
             <Flex alignItems="flex-start">
-              <Box width="50%" p="10px">
+              <Box width="50%" p="8px">
                 <Field
                   id="requestBody"
                   name="requestBody"
@@ -96,7 +96,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
                   height={250}
                 />
               </Box>
-              <Box width="50%" p="10px">
+              <Box width="50%" p="8px">
                 <Field
                   id="responseBody"
                   name="responseBody"

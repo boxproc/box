@@ -11,12 +11,12 @@ interface GeneralLedgerProps {
 
 const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="glAccAssets"
             name="glAccAssets"
@@ -26,7 +26,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="glAccLiabilities"
             name="glAccLiabilities"
@@ -36,7 +36,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="glAccProfit"
             name="glAccProfit"
@@ -46,7 +46,7 @@ const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
             readOnly={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="glAccLoss"
             name="glAccLoss"

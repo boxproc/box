@@ -14,12 +14,12 @@ type StatementFormAllProps = StatementFormProps & InjectedFormProps<{}, Statemen
 const StatementForm: React.FC<StatementFormAllProps> = () => {
   return (
     <form>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="id"
               name="id"
@@ -29,7 +29,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="accountId"
               name="accountId"
@@ -39,7 +39,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="firstTransactionId"
               name="firstTransactionId"
@@ -49,7 +49,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="lastTransactionId"
               name="lastTransactionId"
@@ -59,7 +59,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="repaymentStatus"
               name="repaymentStatus"
@@ -68,7 +68,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width="120px" p="10px">
+          <Box width="120px" p="8px">
             <Field
               id="statementDate"
               name="statementDate"
@@ -80,7 +80,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
             />
           </Box>
           <Hr />
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="balanceOpen"
               name="balanceOpen"
@@ -92,7 +92,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="balanceClose"
               name="balanceClose"
@@ -104,7 +104,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="minimumAmountDueRepayment"
               name="minimumAmountDueRepayment"
@@ -116,7 +116,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="10px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="previousStatementId"
               name="previousStatementId"

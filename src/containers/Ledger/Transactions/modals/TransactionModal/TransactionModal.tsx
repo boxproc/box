@@ -59,7 +59,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
       maxContainerWidth={1010}
-      minContainerHeight={550}
+      minContainerHeight={580}
     >
       {!isConvertibleToLoan && (
         <LedgerTransactionForm onCancel={handleOnCancel} />

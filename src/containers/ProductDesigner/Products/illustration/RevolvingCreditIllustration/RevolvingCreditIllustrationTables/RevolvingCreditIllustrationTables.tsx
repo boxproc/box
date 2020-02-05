@@ -17,7 +17,7 @@ import {
 } from 'store/domains';
 
 const TablesWrapper = styled(Flex)`
-  margin: 0 -10px;
+  margin: 0 -8px;
 
   .table {
     max-width: 100%;

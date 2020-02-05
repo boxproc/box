@@ -78,13 +78,13 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
           {isEditMode && (
-            <Box width={[3 / 15]} p="10px">
+            <Box width={[3 / 15]} p="8px">
               <Field
                 id="id"
                 name="id"
@@ -96,7 +96,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[7 / 15]} p="10px">
+          <Box width={[7 / 15]} p="8px">
             <Field
               id="name"
               name="name"
@@ -107,7 +107,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[5 / 15]} p="10px">
+          <Box width={[5 / 15]} p="8px">
             <Field
               id="status"
               name="status"
@@ -119,7 +119,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="sftpLocation"
               name="sftpLocation"
@@ -129,7 +129,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               readOnly={isReadOnly}
             />
           </Box>
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="sftpPublicKey"
               name="sftpPublicKey"
@@ -139,7 +139,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               readOnly={isReadOnly}
             />
           </Box>
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="masterInstitutionFlag"
               name="masterInstitutionFlag"

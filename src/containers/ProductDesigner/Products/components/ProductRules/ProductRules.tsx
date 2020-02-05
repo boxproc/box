@@ -285,12 +285,12 @@ const ProductRules: React.FC<ProductRulesProps> = ({
 
   return (
     <React.Fragment>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 5]} p="10px">
+          <Box width={[1 / 5]} p="8px">
             <Field
               id="eventId"
               name="eventId"
@@ -304,7 +304,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <HiddenBox width={[1 / 3]} p="10px">
+          <HiddenBox width={[1 / 3]} p="8px">
             <Field
               id="actionType"
               name="actionType"
@@ -318,7 +318,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
             />
           </HiddenBox>
           {eventValue && (
-            <Box mb="15px">
+            <Box mb="8px">
               <Flex alignItems="center" flexWrap="wrap">
                 {actionTypesOptions && actionTypesOptions.map(type => (
                   <Button

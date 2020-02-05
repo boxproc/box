@@ -29,9 +29,9 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
   isEditMode,
 }) => {
   return (
-    <Box mx="-10px" >
+    <Box mx="-8px">
       <Flex flexWrap="wrap">
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -44,7 +44,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="name"
             name="name"
@@ -55,7 +55,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 3]} p="8px">
           <Field
             id="port"
             name="port"
@@ -66,7 +66,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 3]} p="8px">
           <Field
             id="status"
             name="status"
@@ -78,7 +78,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 3]} p="8px">
           <Field
             id="endpointTypeId"
             name="endpointTypeId"
@@ -91,7 +91,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="privateKeyLocation"
             name="privateKeyLocation"
@@ -102,7 +102,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="logFileLocation"
             name="logFileLocation"
@@ -113,7 +113,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="connectionAttributes"
             name="connectionAttributes"
@@ -125,7 +125,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="sourceIpAddress"
                 name="sourceIpAddress"
@@ -135,7 +135,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
                 readOnly={true}
               />
             </Box>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="lastMessageDatetime"
                 name="lastMessageDatetime"
@@ -145,7 +145,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
                 readOnly={true}
               />
             </Box>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="lastFaultDatetime"
                 name="lastFaultDatetime"

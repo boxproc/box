@@ -33,9 +33,9 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
     <Flex
       alignItems="flex-end"
       flexWrap="wrap"
-      mx="-10px"
+      mx="-8px"
     >
-      <Box width={[1 / 5]} p="10px">
+      <Box width={[1 / 5]} p="8px">
         <Field
           id="description"
           name="description"
@@ -46,7 +46,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 5]} p="10px">
+      <Box width={[1 / 5]} p="8px">
         <Field
           id="rewardApplicationCondition"
           name="rewardApplicationCondition"
@@ -59,7 +59,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 5]} p="10px">
+      <Box width={[1 / 5]} p="8px">
         <Field
           id="rate"
           name="rate"
@@ -72,7 +72,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
           validate={!isOnlyAmount ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
-      <Box width={[1 / 5]} p="10px">
+      <Box width={[1 / 5]} p="8px">
         <Field
           id="amount"
           name="amount"
@@ -85,7 +85,7 @@ const ProductRewards: React.FC<ProductRewardsProps> = ({
           validate={!isOnlyRate ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
         />
       </Box>
-      <Box pb="20px">
+      <Box pb="15px">
         <Button
           text={buttonText}
           iconName={iconNamesConst.PLUS}

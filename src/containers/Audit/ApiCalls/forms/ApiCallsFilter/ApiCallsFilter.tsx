@@ -42,7 +42,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -55,7 +55,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 3]} p="10px">
+      <Box width={[1 / 3]} p="8px">
         <Field
           id="endpointId"
           name="endpointId"
@@ -68,7 +68,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="apiName"
           name="apiName"
@@ -79,7 +79,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
         />
       </Box>
       <Delimiter />
-      <Box width="170px" p="10px">
+      <Box width="170px" p="8px">
         <Field
           id="apiCallsDateTimeFrom"
           name="apiCallsDateTimeFrom"
@@ -94,7 +94,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="170px" p="10px">
+      <Box width="170px" p="8px">
         <Field
           id="apiCallsDateTimeTo"
           name="apiCallsDateTimeTo"

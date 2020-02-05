@@ -41,7 +41,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -54,7 +54,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="username"
           name="username"
@@ -66,7 +66,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="170px" p="10px" >
+      <Box width="170px" p="8px" >
         <Field
           id="userActivityDateTimeFrom"
           name="userActivityDateTimeFrom"
@@ -81,7 +81,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="170px" p="10px" >
+      <Box width="170px" p="8px" >
         <Field
           id="userActivityDateTimeTo"
           name="userActivityDateTimeTo"

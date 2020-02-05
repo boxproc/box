@@ -36,13 +36,13 @@ const ProductServices: React.FC<ProductServicesProps> = ({
   );
 
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
         justifyContent="center"
       >
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="interfaces"
             name="interfaces"
@@ -56,7 +56,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="endpoints"
             name="endpoints"
@@ -70,7 +70,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="secureProviderInterfaces"
             name="secureProviderInterfaces"
@@ -84,7 +84,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="directDebitRepaymentInterface"
             name="directDebitRepaymentInterface"
@@ -98,7 +98,7 @@ const ProductServices: React.FC<ProductServicesProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="cardRepaymentInterface"
             name="cardRepaymentInterface"

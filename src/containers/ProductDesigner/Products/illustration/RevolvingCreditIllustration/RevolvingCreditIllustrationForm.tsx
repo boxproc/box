@@ -77,9 +77,9 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
           <Flex
             alignItems="flex-end"
             flexWrap="wrap"
-            mx="-10px"
+            mx="-8px"
           >
-            <Box width="130px" p="10px">
+            <Box width="130px" p="8px">
               <Field
                 id="startDate"
                 name="startDate"
@@ -94,7 +94,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 ]}
               />
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="limit"
                 name="limit"
@@ -107,7 +107,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="openBalance"
                 name="openBalance"
@@ -121,12 +121,12 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="10px" width="130px">
+            <Box p="8px" width="130px">
               <Paragraph bold={false} light={true}>
                 1st Transaction
               </Paragraph>
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="transactionDate1"
                 name="transactionDate1"
@@ -141,7 +141,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 ]}
               />
             </Box>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="transactionType1"
                 name="transactionType1"
@@ -154,7 +154,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width={[1 / 7]} p="10px" >
+            <Box width={[1 / 7]} p="8px" >
               <Field
                 id="transactionAmount1"
                 name="transactionAmount1"
@@ -168,12 +168,12 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="10px" width="130px">
+            <Box p="8px" width="130px">
               <Paragraph bold={false} light={true}>
                 2nd Transaction
               </Paragraph>
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="transactionDate2"
                 name="transactionDate2"
@@ -188,7 +188,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 ]}
               />
             </Box>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="transactionType2"
                 name="transactionType2"
@@ -201,7 +201,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="transactionAmount2"
                 name="transactionAmount2"
@@ -215,12 +215,12 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="10px" width="130px">
+            <Box p="8px" width="130px">
               <Paragraph bold={false} light={true}>
                 3rd Transaction
               </Paragraph>
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="transactionDate3"
                 name="transactionDate3"
@@ -235,7 +235,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 ]}
               />
             </Box>
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="transactionType3"
                 name="transactionType3"
@@ -248,7 +248,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width={[1 / 7]} p="10px">
+            <Box width={[1 / 7]} p="8px">
               <Field
                 id="transactionAmount3"
                 name="transactionAmount3"

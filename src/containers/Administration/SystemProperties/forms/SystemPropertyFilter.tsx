@@ -13,7 +13,7 @@ const SystemPropertyFilter: React.FC<SystemPropertyFilterProps> = ({
   isDisabled,
 }) => {
   return (
-    <Box width={[1 / 3]} p="10px">
+    <Box width={[1 / 3]} p="8px">
       <Field
         id="id"
         name="id"

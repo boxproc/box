@@ -24,18 +24,20 @@ const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
   onCancel,
 }) => {
   return (
-    <form>
-      <Tabs>
-        <TabsPanel title="General">
-          <LedgerCurrentTransactionGeneral />
-        </TabsPanel>
-        <TabsPanel title="Card">
-          <LedgerCurrentTransactionCard />
-        </TabsPanel>
-        <TabsPanel title="Balance">
-          <LedgerCurrentTransactionBalance />
-        </TabsPanel>
-      </Tabs>
+    <React.Fragment>
+      <form>
+        <Tabs>
+          <TabsPanel title="General">
+            <LedgerCurrentTransactionGeneral />
+          </TabsPanel>
+          <TabsPanel title="Card">
+            <LedgerCurrentTransactionCard />
+          </TabsPanel>
+          <TabsPanel title="Balance">
+            <LedgerCurrentTransactionBalance />
+          </TabsPanel>
+        </Tabs>
+      </form>
       <Hr />
       <Flex justifyContent="flex-end">
         <Button
@@ -43,7 +45,7 @@ const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
           onClick={onCancel}
         />
       </Flex>
-    </form>
+    </React.Fragment>
   );
 };
 

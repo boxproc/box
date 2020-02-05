@@ -29,7 +29,7 @@ export const customStyles: StylesConfig = {
     return ({
       ...provided,
       cursor: 'pointer',
-      padding: selectProps.isEditableCellStyle ? '5px' : '8px',
+      padding: '5px',
       // eslint-disable-next-line
       ['& > svg path']: {
         color: isDisabled
@@ -43,7 +43,7 @@ export const customStyles: StylesConfig = {
   clearIndicator: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
     cursor: 'pointer',
-    margin: '6px 0',
+    margin: '3px 0',
     padding: 0,
     // eslint-disable-next-line
     ['& > svg']: {
@@ -62,7 +62,7 @@ export const customStyles: StylesConfig = {
     ...provided,
     color: theme.colors.gray,
     fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
-    lineHeight: '17px',
+    lineHeight: '15px',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
@@ -71,7 +71,7 @@ export const customStyles: StylesConfig = {
     ...provided,
     padding: '0 1px 1px',
     fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
-    lineHeight: '17px',
+    lineHeight: '15px',
     borderRadius: '0 0 2px 2px',
   }),
   menu: (provided: React.CSSProperties, state: SelectState) => ({
@@ -109,7 +109,7 @@ export const customStyles: StylesConfig = {
             : isEditableCellStyle ? theme.colors.lightGray : theme.colors.gray,
       backgroundColor: theme.colors.white,
       boxShadow: 'none',
-      minHeight: isEditableCellStyle ? '25px' : '31px',
+      minHeight: isEditableCellStyle ? '25px' : '29px',
       // eslint-disable-next-line
       ['&:hover']: {
         borderColor: '0',
@@ -127,7 +127,7 @@ export const customStyles: StylesConfig = {
     return ({
       ...provided,
       fontSize: isEditableCellStyle ? '12px' : '13px',
-      lineHeight: '17px',
+      lineHeight: '15px',
       color: theme.colors.black,
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
@@ -166,7 +166,8 @@ export const customStyles: StylesConfig = {
   }),
   valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
     ...provided,
-    minHeight: state.selectProps.isEditableCellStyle ? '25px' : '31px',
+    padding: '0 8px',
+    minHeight: state.selectProps.isEditableCellStyle ? '25px' : '27px',
     height: state.selectProps.isEditableCellStyle ? '25px' : 'auto',
   }),
   option: (provided: React.CSSProperties, state: SelectState) => ({

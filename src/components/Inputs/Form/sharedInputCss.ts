@@ -6,8 +6,8 @@ export const sharedInputCss = css<InputProps>`
   font-size: 13px;
   line-height: 1.3;
   width: 100%;
-  height: 33px;
-  padding: 7px;
+  height: 29px;
+  padding: 5px 7px;
   text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'}
   box-shadow: none;
   box-sizing: border-box;

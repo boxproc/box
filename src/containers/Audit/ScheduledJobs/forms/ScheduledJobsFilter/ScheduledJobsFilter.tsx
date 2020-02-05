@@ -42,7 +42,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -55,7 +55,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[2 / 7]} p="10px" >
+      <Box width={[2 / 7]} p="8px" >
         <Field
           id="scheduler"
           name="scheduler"
@@ -67,7 +67,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="170px" p="10px" >
+      <Box width="170px" p="8px" >
         <Field
           id="scheduledJobsDateTimeFrom"
           name="scheduledJobsDateTimeFrom"
@@ -82,7 +82,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="170px" p="10px" >
+      <Box width="170px" p="8px" >
         <Field
           id="scheduledJobsDateTimeTo"
           name="scheduledJobsDateTimeTo"

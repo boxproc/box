@@ -34,11 +34,11 @@ const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
   );
 
   return (
-    <Box mx="-10px" >
+    <Box mx="-8px" >
       <Flex
         flexWrap="wrap"
       >
-        <Box width={[isEditMode ? 1 / 2 : 1]} p="10px">
+        <Box width={[isEditMode ? 1 / 2 : 1]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -52,7 +52,7 @@ const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[isEditMode ? 1 / 2 : 1]} p="10px">
+        <Box width={[isEditMode ? 1 / 2 : 1]} p="8px">
           <Field
             id="name"
             name="name"

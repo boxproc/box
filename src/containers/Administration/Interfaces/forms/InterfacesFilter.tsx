@@ -18,7 +18,7 @@ const InterfacesFilter: React.FC<InterfacesFilterProps> = ({
   isDisabled,
 }) => {
   return (
-    <Box width={[1 / 4]} p="10px">
+    <Box width={[1 / 4]} p="8px">
       <Field
         id="institutionId"
         name="institutionId"

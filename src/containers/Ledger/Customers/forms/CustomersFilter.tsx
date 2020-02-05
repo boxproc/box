@@ -19,7 +19,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -32,7 +32,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="firstName"
           name="firstName"
@@ -42,7 +42,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="lastName"
           name="lastName"
@@ -52,7 +52,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="130px" p="10px">
+      <Box width="130px" p="8px">
         <Field
           id="id"
           name="id"

@@ -47,7 +47,7 @@ const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = (
     <React.Fragment>
       {!isReadOnly && (
         <form onSubmit={handleSubmitForm}>
-          <Box mx="-10px">
+          <Box mx="-8px">
             <Flex alignItems="flex-end" flexWrap="wrap">
               <RepaymentDirectDebits
                 isDisabled={isLoading}

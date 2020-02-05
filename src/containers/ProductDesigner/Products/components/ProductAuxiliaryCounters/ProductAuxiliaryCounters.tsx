@@ -21,13 +21,13 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
   isReadOnly,
 }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
         justifyContent="center"
       >
-        <Box p="10px 0 20px 10px">
+        <Box p="8px 0 15px 10px">
           <Field
             id="auxCounter1Enabled"
             name="auxCounter1Enabled"
@@ -36,7 +36,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="auxCounter1Description"
             name="auxCounter1Description"
@@ -48,7 +48,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box p="10px 0 20px 10px">
+        <Box p="8px 0 15px 8px">
           <Field
             id="auxCounter2Enabled"
             name="auxCounter2Enabled"
@@ -57,7 +57,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="auxCounter2Description"
             name="auxCounter2Description"
@@ -69,7 +69,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
           />
         </Box>
         <Delimiter />
-        <Box p="10px 0 20px 10px">
+        <Box p="8px 0 15px 8px">
           <Field
             id="auxCounter3Enabled"
             name="auxCounter3Enabled"
@@ -78,7 +78,7 @@ const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="auxCounter3Description"
             name="auxCounter3Description"

@@ -40,8 +40,8 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="flex-end" mx="-10px">
-        <Box width="180px" p="10px">
+      <Flex alignItems="flex-end" mx="-8px">
+        <Box width="180px" p="8px">
           <Field
             id="id"
             name="id"
@@ -56,7 +56,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
             autoFocus={true}
           />
         </Box>
-        <Box pb="12px">
+        <Box pb="7px">
           <OkCancelButtons
             okText={buttonText}
             hideCancel={isRetrieved}

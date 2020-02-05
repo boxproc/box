@@ -20,7 +20,7 @@ const UsersFilter: React.FC<UsersFilterProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -33,7 +33,7 @@ const UsersFilter: React.FC<UsersFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box p="10px" pb="15px">
+      <Box p="8px" pb="10px">
         <Field
           id="statusActiveFlag"
           name="statusActiveFlag"

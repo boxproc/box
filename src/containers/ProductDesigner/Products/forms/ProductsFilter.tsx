@@ -28,7 +28,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -41,7 +41,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <ProductWrapper p="10px">
+      <ProductWrapper p="8px">
         <Field
           id="productType"
           name="productType"
@@ -53,7 +53,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </ProductWrapper>
-      <Box p="10px" pb="15px">
+      <Box p="8px" pb="10px">
         <Field
           id="activeStatusFlag"
           name="activeStatusFlag"

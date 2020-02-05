@@ -60,7 +60,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end">
-        <Box width={[1 / 2]} pb="15px" mr="20px">
+        <Box width={[1 / 2]} pb="15px" mr="15px">
           <Field
             id="uiItem"
             name="uiItem"
@@ -71,7 +71,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             options={uiItemsOptions}
           />
         </Box>
-        <Box width="120px" pb="17px" mr="10px">
+        <Box width="120px" pb="17px" mr="8px">
           <Field
             id="permission"
             name="permission"

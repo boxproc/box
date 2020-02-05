@@ -70,12 +70,12 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="id"
               name="id"
@@ -86,7 +86,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 2]} p="10px">
+            <Box width={[1 / 2]} p="8px">
               <Field
                 id="lastDatetime"
                 name="lastDatetime"
@@ -96,7 +96,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="currentValue"
               name="currentValue"
@@ -108,7 +108,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 2]} p="10px">
+            <Box width={[1 / 2]} p="8px">
               <Field
                 id="previousValue"
                 name="previousValue"
@@ -118,7 +118,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="lockedFlag"
               name="lockedFlag"

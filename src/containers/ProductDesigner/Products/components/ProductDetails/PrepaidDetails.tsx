@@ -13,12 +13,12 @@ interface PrepaidDetailsProps {
 
 const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="160px" p="10px">
+        <Box width="160px" p="8px">
           <Field
             id="dormantAfterNumberOfDays"
             name="dormantAfterNumberOfDays"
@@ -33,7 +33,7 @@ const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="breakagesAllowed"
             name="breakagesAllowed"
@@ -42,7 +42,7 @@ const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1]} p="10px">
+        <Box width={[1]} p="8px">
           <Field
             id="reloadAllowed"
             name="reloadAllowed"

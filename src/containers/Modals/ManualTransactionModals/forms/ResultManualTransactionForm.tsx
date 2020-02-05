@@ -14,12 +14,12 @@ type ResultManualTransactionFormAllProps = ResultManualTransactionFormProps
 const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps> = () => {
   return (
     <form>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="transactionId"
               name="transactionId"
@@ -29,7 +29,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="status"
               name="status"
@@ -39,7 +39,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
             />
           </Box>
           <Hr />
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceSettledBefore"
               name="balanceSettledBefore"
@@ -51,7 +51,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceSettledAfter"
               name="balanceSettledAfter"
@@ -63,7 +63,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceAvailableBefore"
               name="balanceAvailableBefore"
@@ -75,7 +75,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="balanceAvailableAfter"
               name="balanceAvailableAfter"

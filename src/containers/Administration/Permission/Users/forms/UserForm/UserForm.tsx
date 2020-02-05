@@ -125,12 +125,12 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Box mx="-10px" >
+      <Box mx="-8px" >
         <Flex
           flexWrap="wrap"
           alignItems="flex-end"
         >
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="firstName"
               name="firstName"
@@ -141,7 +141,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="lastName"
               name="lastName"
@@ -152,7 +152,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="username"
               name="username"
@@ -163,7 +163,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="email"
               name="email"
@@ -174,7 +174,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               validate={[formErrorUtil.email]}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="institution"
               name="institution"
@@ -188,7 +188,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 3]} p="10px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="status"
                 name="status"
@@ -201,7 +201,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               />
             </Box>
           )}
-          <Box width="100%" p="10px 10px 5px">
+          <Box width="100%" p="8px 8px 5px">
             <Field
               id="requires2faFlag"
               name="requires2faFlag"
@@ -210,7 +210,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               disabled={!isMasterInstitutionUser || isReadOnly}
             />
           </Box>
-          <Box width="100%" p="5px 10px">
+          <Box width="100%" p="5px 8px">
             <Field
               id="changeProfileAllowedFlag"
               name="changeProfileAllowedFlag"
@@ -222,7 +222,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
           {!isReadOnly && (
             <React.Fragment>
               <Hr />
-              <Box width={[1 / 3]} p="10px">
+              <Box width={[1 / 3]} p="8px">
                 <Field
                   id="password"
                   name="password"
@@ -233,7 +233,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                   validate={passwordValidation}
                 />
               </Box>
-              <Box width={[1 / 3]} p="10px">
+              <Box width={[1 / 3]} p="8px">
                 <Field
                   id="passwordRepeat"
                   name="passwordRepeat"

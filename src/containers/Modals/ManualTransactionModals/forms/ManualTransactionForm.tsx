@@ -59,12 +59,12 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box mx="-10px">
+      <Box mx="-8px">
         <Flex
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="transactionType"
               name="transactionType"
@@ -78,7 +78,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             />
           </Box>
           )}
-          <Box width={[2 / 7]} p="10px">
+          <Box width={[2 / 7]} p="8px">
             <Field
               id="accountId"
               name="accountId"
@@ -94,7 +94,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
           </Box>
           {!isLimitAdjustment && (
             <React.Fragment>
-              <Box width={[3 / 7]} p="10px">
+              <Box width={[3 / 7]} p="8px">
                 <Field
                   id="currencyCode"
                   name="currencyCode"
@@ -106,7 +106,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                   validate={[formErrorUtil.required]}
                 />
               </Box>
-              <Box width={[2 / 7]} p="10px">
+              <Box width={[2 / 7]} p="8px">
                 <Field
                   id="amount"
                   name="amount"
@@ -125,7 +125,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
           )}
           {isLimitAdjustment && (
             <React.Fragment>
-              <Box width={[2 / 7]} p="10px">
+              <Box width={[2 / 7]} p="8px">
                 <Field
                   id="balanceLimit"
                   name="balanceLimit"
@@ -136,7 +136,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                   decimalScale={2}
                 />
               </Box>
-              <Box width={[2 / 7]} p="10px">
+              <Box width={[2 / 7]} p="8px">
                 <Field
                   id="balanceLimitShared"
                   name="balanceLimitShared"
@@ -149,7 +149,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               </Box>
             </React.Fragment>
           )}
-          <Box width={[1]} p="10px">
+          <Box width={[1]} p="8px">
             <Field
               id="description"
               name="description"

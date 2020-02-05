@@ -27,14 +27,14 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
   );
 
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
         <Box
           width={[1 / 3]}
-          p="10px"
+          p="8px"
           pt="26px"
         >
           <Field
@@ -50,7 +50,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         </Box>
         <Box
           width={[1 / 6]}
-          p="10px"
+          p="8px"
           pt="26px"
         >
           <Field
@@ -70,7 +70,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         {isEqualOrActualDistribution && (
           <Box
             width={[1 / 6]}
-            p="10px"
+            p="8px"
           >
             <Field
               id="defNumOfIntrstFreeInstlmts"
@@ -89,7 +89,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
         )}
         <Box
           width="160px"
-          p="10px"
+          p="8px"
           pt="26px"
           m="1px"
         >

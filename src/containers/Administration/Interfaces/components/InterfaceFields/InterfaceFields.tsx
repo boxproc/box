@@ -27,9 +27,9 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
   isReadOnly,
 }) => {
   return (
-    <Box mx="-10px" >
+    <Box mx="-8px" >
       <Flex flexWrap="wrap">
-        <Box width={[1 / 3]} p="10px">
+        <Box width={[1 / 3]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -42,7 +42,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="name"
             name="name"
@@ -53,7 +53,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="url"
             name="url"
@@ -64,7 +64,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 2]} p="10px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="privateKeyLocation"
             name="privateKeyLocation"
@@ -75,7 +75,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="status"
             name="status"
@@ -87,7 +87,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="interfaceTypeId"
             name="interfaceTypeId"
@@ -100,7 +100,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="lastMessageDatetime"
             name="lastMessageDatetime"
@@ -110,7 +110,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 4]} p="10px">
+        <Box width={[1 / 4]} p="8px">
           <Field
             id="lastFaultDatetime"
             name="lastFaultDatetime"
@@ -122,7 +122,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
         </Box>
         <Box width="100%">
           <Flex alignItems="flex-start">
-            <Box width="50%" p="10px">
+            <Box width="50%" p="8px">
               <Field
                 id="logFileLocation"
                 name="logFileLocation"
@@ -134,7 +134,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width="50%" p="10px">
+            <Box width="50%" p="8px">
               <Field
                 id="connectionAttributes"
                 name="connectionAttributes"

@@ -48,7 +48,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
       alignItems="flex-start"
       flexWrap="wrap"
     >
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -61,7 +61,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="130px" p="10px">
+      <Box width="130px" p="8px">
         <Field
           id="accountId"
           name="accountId"
@@ -73,7 +73,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="accountAlias"
           name="accountAlias"
@@ -83,7 +83,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="120px" p="10px">
+      <Box width="120px" p="8px">
         <Field
           id="statementsDateFrom"
           name="statementsDateFrom"
@@ -98,7 +98,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width="120px" p="10px">
+      <Box width="120px" p="8px">
         <Field
           id="statementsDateTo"
           name="statementsDateTo"
@@ -113,7 +113,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           ]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="product"
           name="product"
@@ -126,7 +126,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="firstName"
           name="firstName"
@@ -136,7 +136,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="lastName"
           name="lastName"

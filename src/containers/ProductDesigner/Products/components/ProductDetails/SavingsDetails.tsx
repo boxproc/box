@@ -15,12 +15,12 @@ interface SavingsDetailsProps {
 
 const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="savingsType"
             name="savingsType"
@@ -33,7 +33,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="apr"
             name="apr"
@@ -49,7 +49,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="minimumDepositAllowed"
             name="minimumDepositAllowed"
@@ -65,7 +65,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="maximumDepositAllowed"
             name="maximumDepositAllowed"
@@ -81,7 +81,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="maximumMonthlyDeposit"
             name="maximumMonthlyDeposit"

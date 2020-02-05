@@ -7,12 +7,12 @@ import { NumberFormatField } from 'components';
 
 const LedgerCurrentTransactionBalance: React.FC = () => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="balanceSettledBefore"
             name="balanceSettledBefore"
@@ -24,7 +24,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="balanceSettledAfter"
             name="balanceSettledAfter"
@@ -36,7 +36,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="balanceAvailableBefore"
             name="balanceAvailableBefore"
@@ -48,7 +48,7 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="balanceAvailableAfter"
             name="balanceAvailableAfter"

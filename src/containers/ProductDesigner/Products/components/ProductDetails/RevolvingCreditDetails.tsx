@@ -13,12 +13,12 @@ interface RevolvingCreditDetailsProps {
 
 const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadOnly }) => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="minimumRepaymentAmount"
             name="minimumRepaymentAmount"
@@ -34,7 +34,7 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             ]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="minimumRepaymentRate"
             name="minimumRepaymentRate"
@@ -50,7 +50,7 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             ]}
           />
         </Box>
-        <Box width={[1 / 6]} p="10px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="repaymentGraceNumberOfDays"
             name="repaymentGraceNumberOfDays"
@@ -65,7 +65,7 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             ]}
           />
         </Box>
-        <Box width={[2 / 5]} p="10px" pb="15px">
+        <Box width={[2 / 5]} p="8px" pb="10px">
           <Field
             id="limitSharingAllowedFlag"
             name="limitSharingAllowedFlag"

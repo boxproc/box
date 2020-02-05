@@ -42,8 +42,8 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="flex-end" mx="-10px">
-        <Box width="180px" p="10px">
+      <Flex alignItems="flex-end" mx="-8px">
+        <Box width="180px" p="8px">
           <Field
             id="amountSettled"
             name="amountSettled"
@@ -60,7 +60,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
             ]}
           />
         </Box>
-        <Box width="200px" p="10px" >
+        <Box width="200px" p="8px" >
           <Field
             id="settledDatetime"
             name="settledDatetime"

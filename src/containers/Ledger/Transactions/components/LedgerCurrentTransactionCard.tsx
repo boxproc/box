@@ -7,12 +7,12 @@ import { InputField, NumberFormatField } from 'components';
 
 const LedgerCurrentTransactionCard: React.FC = () => {
   return (
-    <Box mx="-10px">
+    <Box mx="-8px">
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardId"
             name="cardId"
@@ -22,7 +22,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardTransactionId"
             name="cardTransactionId"
@@ -32,7 +32,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardCurrency"
             name="cardCurrency"
@@ -41,7 +41,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAmount"
             name="cardAmount"
@@ -53,7 +53,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcceptorName"
             name="cardAcceptorName"
@@ -62,7 +62,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcceptorLocation"
             name="cardAcceptorLocation"
@@ -71,7 +71,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardConversionRate"
             name="cardConversionRate"
@@ -83,7 +83,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardCurrencyBilling"
             name="cardCurrencyBilling"
@@ -92,7 +92,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAmountBilling"
             name="cardAmountBilling"
@@ -104,7 +104,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcceptorTerminalId"
             name="cardAcceptorTerminalId"
@@ -113,7 +113,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcceptorIdCode"
             name="cardAcceptorIdCode"
@@ -122,7 +122,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardStan"
             name="cardStan"
@@ -131,7 +131,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardMcc"
             name="cardMcc"
@@ -140,7 +140,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcquirerId"
             name="cardAcquirerId"
@@ -149,7 +149,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardAcquirerCountryCode"
             name="cardAcquirerCountryCode"
@@ -158,7 +158,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardPosEntryMode"
             name="cardPosEntryMode"
@@ -167,7 +167,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardPosConditionData"
             name="cardPosConditionData"
@@ -176,7 +176,7 @@ const LedgerCurrentTransactionCard: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="cardResponseCode"
             name="cardResponseCode"

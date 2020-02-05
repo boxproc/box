@@ -14,9 +14,9 @@ type DefineCardFormAllProps = CardFormProps & InjectedFormProps<{}, CardFormProp
 const CardForm: React.FC<DefineCardFormAllProps> = () => {
   return (
     <form >
-      <Box mx="-10px" >
+      <Box mx="-8px" >
         <Flex flexWrap="wrap">
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="id"
               name="id"
@@ -26,7 +26,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="accountId"
               name="accountId"
@@ -36,7 +36,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="10px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="expiryDate"
               name="expiryDate"
@@ -45,7 +45,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="panAlias"
               name="panAlias"
@@ -55,7 +55,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="panMasked"
               name="panMasked"

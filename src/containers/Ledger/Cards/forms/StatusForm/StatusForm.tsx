@@ -48,9 +48,9 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box mx="-10px" >
+      <Box mx="-8px" >
         <Flex alignItems="flex-end">
-          <Box width={[1 / 2]} p="10px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="status"
               name="status"
@@ -62,7 +62,7 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
               isLoading={isStatusesLoading}
             />
           </Box>
-          <Box width={[1 / 2]} p="10px" pl="0">
+          <Box width={[1 / 2]} p="8px" pl="0">
             <Button
               text="Change Status"
               disabled={pristine}

@@ -107,10 +107,10 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
         width="100%"
-        mx="-10px"
+        mx="-8px"
       >
         {withLoanSelection && (
-          <Box width={[1 / 4]} p="10px">
+          <Box width={[1 / 4]} p="8px">
             <Field
               id="loanProduct"
               name="loanProduct"
@@ -123,7 +123,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             />
           </Box>
         )}
-        <Box width="120px" p="10px">
+        <Box width="120px" p="8px">
           <Field
             id="startDate"
             name="startDate"
@@ -138,7 +138,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             ]}
           />
         </Box>
-        <Box width="180px" ml="1px" p="10px">
+        <Box width="180px" ml="1px" p="8px">
           <Field
             id="amount"
             name="amount"
@@ -154,7 +154,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width="150px" p="8px">
           <Field
             id="defNumOfInstallments"
             name="defNumOfInstallments"
@@ -169,7 +169,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width="150px" p="8px">
           <Field
             id="defNumOfIntrstFreeInstlmts"
             name="defNumOfIntrstFreeInstlmts"

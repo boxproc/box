@@ -36,7 +36,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="125px" p="10px">
+        <Box width="125px" p="8px">
           <Field
             id="account"
             name="account"
@@ -47,7 +47,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="accountExt"
             name="accountExt"
@@ -58,7 +58,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="10px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="accountholderName"
             name="accountholderName"
@@ -69,7 +69,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" p="10px">
+        <Box width="150px" p="8px">
           <Field
             id="status"
             name="status"
@@ -82,7 +82,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="160px" p="10px">
+        <Box width="160px" p="8px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
@@ -95,7 +95,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width="150px" pb="20px">
+        <Box width="150px" pb="15px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}

@@ -46,7 +46,7 @@ const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
     <React.Fragment>
       {!isReadOnly && (
         <form onSubmit={handleSubmitForm}>
-          <Box mx="-10px">
+          <Box mx="-8px">
             <Flex alignItems="flex-end" flexWrap="wrap">
               <RepaymentDebitCards
                 isDisabled={isLoading}

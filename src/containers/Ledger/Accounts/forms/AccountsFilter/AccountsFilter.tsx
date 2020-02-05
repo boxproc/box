@@ -42,7 +42,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
 
   return (
     <Flex alignItems="flex-start" flexWrap="wrap">
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -55,7 +55,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           validate={[formErrorUtil.required]}
         />
       </Box>
-      <Box width="130px" p="10px">
+      <Box width="130px" p="8px">
         <Field
           id="id"
           name="id"
@@ -67,7 +67,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="accountAlias"
           name="accountAlias"
@@ -77,7 +77,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="accountAliasAdditional"
           name="accountAliasAdditional"
@@ -89,7 +89,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
         />
       </Box>
       <Delimiter />
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="product"
           name="product"
@@ -102,7 +102,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="firstName"
           name="firstName"
@@ -112,7 +112,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="10px">
+      <Box width={[1 / 4]} p="8px">
         <Field
           id="lastName"
           name="lastName"
