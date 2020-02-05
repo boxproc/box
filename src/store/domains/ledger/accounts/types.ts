@@ -62,6 +62,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   currency_code: string;
   statement_cycle_repayment_day: number;
   status_name: string;
+  repayment_type: number | string;
 }
 
 export interface LedgerAccountItems {
@@ -127,6 +128,7 @@ export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepare
 
 export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
   status: SelectValue;
+  repaymentType: SelectValue;
   institutionId: SelectValue;
   product: SelectValue;
   loanStartDate?: string;

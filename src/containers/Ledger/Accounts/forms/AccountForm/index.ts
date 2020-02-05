@@ -13,6 +13,7 @@ import {
   handleAddLedgerAccount,
   handleUpdateLedgerAccount,
   LedgerAccountsActionTypes,
+  selectDictionaryRepaymentTypesOptions,
   selectInstitutionProducts,
   selectInstitutionsOptions,
 } from 'store/domains';
@@ -28,6 +29,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionProducts: selectInstitutionProducts(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  repaymentTypesOptions: selectDictionaryRepaymentTypesOptions(state),
   currentProduct: formSelector(state, 'product'),
 });
 

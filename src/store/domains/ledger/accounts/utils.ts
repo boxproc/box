@@ -82,6 +82,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
     numberOfTimesOverdue6Cycles,
     numberOfTimesOverdue7Cycles,
     statementCycleRepaymentDay,
+    repaymentType,
   } = data;
 
   return {
@@ -127,6 +128,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
     number_of_times_overdue_6_cycle: stringsUtil.toNumber(numberOfTimesOverdue6Cycles),
     number_of_times_overdue_7_cycle: stringsUtil.toNumber(numberOfTimesOverdue7Cycles),
     statement_cycle_repayment_day: stringsUtil.toNumber(statementCycleRepaymentDay),
+    repayment_type: repaymentType && repaymentType.value,
   };
 };
 

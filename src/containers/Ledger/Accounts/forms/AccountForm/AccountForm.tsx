@@ -8,7 +8,11 @@ import {
   withSpinner,
 } from 'components';
 
-import { formNamesConst, productTypesCodes } from 'consts';
+import {
+  formNamesConst,
+  productTypesCodes,
+  repaymentTypesCodes,
+} from 'consts';
 
 import {
   AuxiliaryCounters,
@@ -24,6 +28,7 @@ import {
 } from 'store/domains';
 
 import { SelectValue } from 'types';
+import { dateUtil } from 'utils';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValue>;
@@ -32,6 +37,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   currentProduct: SelectValue;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
+  repaymentTypesOptions: Array<SelectValue>;
   onCancel: () => void;
   mode: 'add' | 'edit';
   isReadOnly?: boolean;
@@ -48,6 +54,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   currentProduct,
   currentAccountAuxCounters,
   institutionProducts,
+  repaymentTypesOptions,
   mode,
   dirty,
   pristine,
@@ -83,6 +90,11 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
     [currentProductType]
   );
 
+  const isChosenRevCreditProductType = React.useMemo(
+    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
+    [currentProductType]
+  );
+
   React.useEffect(
     () => {
       const currentProductId = currentProduct && currentProduct.value;
@@ -93,16 +105,44 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
       const numOfInterestFreeInstllmnts = currentProductItem
         && currentProductItem.defNumOfIntrstFreeInstlmts;
 
-      if (isChosenLoanProductType && !isEditMode) {
-        change('numOfInstallments', numOfInstallments);
-        change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
-      } else if (currentProduct && !isChosenLoanProductType && !isEditMode) {
+      const resetAll = () => {
         change('numOfInstallments', 0);
         change('numOfInterestFreeInstllmnts', 0);
-        change('loanStartDate', null);
+        change('loanStartDate', dateUtil.todayDate);
+        change('repaymentType', '');
+      };
+
+      if (!isEditMode) {
+        if (isChosenLoanProductType) {
+          change('numOfInstallments', numOfInstallments);
+          change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
+          change(
+            'repaymentType',
+            repaymentTypesOptions.find(type => type.value === repaymentTypesCodes.INSTALMENTS)
+          );
+        } else if (isChosenRevCreditProductType) {
+          change(
+            'repaymentType',
+            repaymentTypesOptions.find(type => type.value === repaymentTypesCodes.MINIMUM_REPAYMENT)
+          );
+        } else if (currentProduct && !isChosenLoanProductType) {
+          resetAll();
+        } else if (currentProduct && !isChosenRevCreditProductType) {
+          change('repaymentType', '');
+        } else if (!currentProduct) {
+          resetAll();
+        }
       }
     },
-    [institutionProducts, currentProduct, change, isChosenLoanProductType, isEditMode]
+    [
+      institutionProducts,
+      currentProduct,
+      change,
+      isChosenLoanProductType,
+      isChosenRevCreditProductType,
+      isEditMode,
+      repaymentTypesOptions,
+    ]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -118,6 +158,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             institutionsOptions={institutionsOptions}
             isEditMode={isEditMode}
             isChosenLoanProductType={isChosenLoanProductType}
+            isChosenRevCreditProductType={isChosenRevCreditProductType}
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}

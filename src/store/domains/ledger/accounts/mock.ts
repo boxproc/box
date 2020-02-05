@@ -57,6 +57,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       currency_code: 'MWK',
       statement_cycle_repayment_day: 1,
       status_name: 'Active',
+      repayment_type: 'M',
     },
     {
       id: 2,
@@ -111,6 +112,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       currency_code: 'MRU',
       statement_cycle_repayment_day: 1,
       status_name: 'Active',
+      repayment_type: 'O',
     },
   ],
 };

@@ -9,8 +9,10 @@ import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
   handleGetDictionaryAccountStatuses,
+  handleGetDictionaryRepaymentTypes,
   handleGetInstitutionProducts,
   selectDictionaryAccountStatusesOptions,
+  selectDictionaryRepaymentTypesOptions,
   selectInstitutionProductsOptions,
   selectLedgerCurrentAccountHasProductOverride,
 } from 'store/domains';
@@ -22,6 +24,7 @@ const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   statusesOptions: selectDictionaryAccountStatusesOptions(state),
+  repaymentTypesOptions: selectDictionaryRepaymentTypesOptions(state),
   currentInstitution: formSelector(state, 'institutionId'),
 });
 
@@ -29,6 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstitutionProducts: handleGetInstitutionProducts,
     getAccountStatuses: handleGetDictionaryAccountStatuses,
+    getRepaymentTypes: handleGetDictionaryRepaymentTypes,
   },
   dispatch
 );

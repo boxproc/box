@@ -89,9 +89,18 @@ export const repaymentStatusOptions = [
 ];
 
 export const repaymentTypesOptions = [
-  { value: 'F', label: 'Full repayment' },
-  { value: 'M', label: 'Minimum repayment' },
+  { value: 'M', label: 'Minimum Repayment' },
+  { value: 'O', label: 'Outstanding Balance' },
+  { value: 'F', label: 'Fixed Amount' },
+  { value: 'I', label: 'Instalments' },
 ];
+
+export enum repaymentTypesCodes {
+  MINIMUM_REPAYMENT = 'M',
+  OUTSTANDING_BALANCE = 'O',
+  FIXED_AMOUNT = 'F',
+  INSTALMENTS = 'I',
+}
 
 export const uiSessionsStatusOptions = [
   { value: 'V', label: 'Valid' },

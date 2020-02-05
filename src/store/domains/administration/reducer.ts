@@ -6,6 +6,7 @@ import dictionaryCountriesReducer from './dictionaries/countries/reducer';
 import dictionaryCurrenciesReducer from './dictionaries/currencies/reducer';
 import dictionaryEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
 import dictionaryEventsReducer from './dictionaries/events/reducer';
+import dictionaryRepaymentTypesReducer from './dictionaries/repaymentTypes/reducer';
 import dictionaryTransactionTypesReducer from './dictionaries/transactionTypes/reducer';
 import adminEndpointsReducer from './endpoints/reducer';
 import adminInstitutionsReducer from './institutions/reducer';
@@ -25,6 +26,7 @@ const administrationReducer = combineReducers({
   eventDataElements: dictionaryEventDataElemsReducer,
   transactionTypes: dictionaryTransactionTypesReducer,
   accountStatuses: dictionaryAccountStatusesReducer,
+  repaymentTypes: dictionaryRepaymentTypesReducer,
   users: adminUserReducer,
   userGroups: adminUsersGroupReducer,
   endpoints: adminEndpointsReducer,

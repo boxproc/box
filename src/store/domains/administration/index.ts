@@ -7,6 +7,7 @@ export * from './dictionaries/events';
 export * from './dictionaries/eventDataElems';
 export * from './dictionaries/transactionTypes';
 export * from './dictionaries/accountStatuses';
+export * from './dictionaries/repaymentTypes';
 export * from './permissions/usersGroups';
 export * from './permissions/users';
 export * from './endpoints';

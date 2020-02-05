@@ -27,4 +27,6 @@ export const accountInitialFormValues = {
   numberOfTimesOverdue6Cycles: '0',
   numberOfTimesOverdue7Cycles: '0',
   loanStartDate: dateUtil.todayDate,
+  numOfInstallments: 0,
+  numOfInterestFreeInstllmnts: 0,
 };

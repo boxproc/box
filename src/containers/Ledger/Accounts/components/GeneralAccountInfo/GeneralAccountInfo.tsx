@@ -12,7 +12,11 @@ import {
   SelectField,
 } from 'components';
 
-import { HandleGetDictionaryAccountStatuses, HandleGetInstitutionProducts } from 'store/domains';
+import {
+  HandleGetDictionaryAccountStatuses,
+  HandleGetDictionaryRepaymentTypes,
+  HandleGetInstitutionProducts,
+} from 'store/domains';
 
 import { dateFormat, maskFormat } from 'consts';
 
@@ -26,10 +30,13 @@ export interface CustomerInfoProps {
   statusesOptions: Array<SelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
   getAccountStatuses: HandleGetDictionaryAccountStatuses;
+  getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
   currentInstitution: SelectValue;
+  repaymentTypesOptions: Array<SelectValue>;
   isEditMode: boolean;
   hasProductOverride: boolean;
   isChosenLoanProductType: boolean;
+  isChosenRevCreditProductType: boolean;
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
@@ -45,7 +52,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   getAccountStatuses,
   isEditMode,
   isChosenLoanProductType,
+  isChosenRevCreditProductType,
   hasProductOverride,
+  repaymentTypesOptions,
+  getRepaymentTypes,
   onCancel,
   dirty,
   pristine,
@@ -53,9 +63,12 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
 }) => {
   React.useEffect(
     () => {
-      getAccountStatuses();
+      Promise.all([
+        getAccountStatuses(),
+        getRepaymentTypes(),
+      ]);
     },
-    [getAccountStatuses]
+    [getAccountStatuses, getRepaymentTypes]
   );
 
   React.useEffect(
@@ -65,6 +78,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
       }
     },
     [getInstitutionProducts, currentInstitution]
+  );
+
+  const isRepaymentType = React.useMemo(
+    () => isChosenLoanProductType || isChosenRevCreditProductType,
+    [isChosenLoanProductType, isChosenRevCreditProductType]
   );
 
   return (
@@ -87,7 +105,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               />
             </Box>
           )}
-          <Box width={[1 / 5]} p="8px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="institutionId"
               name="institutionId"
@@ -112,7 +130,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 5]} p="8px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="accountAlias"
               name="accountAlias"
@@ -122,7 +140,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               readOnly={isReadOnly}
             />
           </Box>
-          <Box width={[1 / 5]} p="8px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="accountAliasAdditional"
               name="accountAliasAdditional"
@@ -132,7 +150,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               readOnly={isReadOnly}
             />
           </Box>
-          <Box width={[1 / 5]} p="8px">
+          <Box width={[1 / 6]} p="8px">
             <Field
               id="status"
               name="status"
@@ -144,6 +162,20 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
+          {isEditMode && (
+            <Box width="150px" p="8px">
+              <Field
+                id="productId"
+                name="productId"
+                component={InputField}
+                label="Product ID"
+                placeholder="Enter ID"
+                readOnly={isEditMode || isReadOnly}
+                isNumber={true}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+          )}
           <Box width={[1 / 5]} p="8px">
             <Field
               id="product"
@@ -156,9 +188,23 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               validate={[formErrorUtil.required]}
             />
           </Box>
+          {isRepaymentType && (
+            <Box width={[1 / 5]} p="8px">
+              <Field
+                id="repaymentType"
+                name="repaymentType"
+                component={SelectField}
+                label="Repayment Type"
+                placeholder="Select Type"
+                isDisabled={isChosenLoanProductType || isReadOnly}
+                options={repaymentTypesOptions}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+          )}
           {isChosenLoanProductType && (
             <React.Fragment>
-              <Box width={[1 / 5]} p="8px">
+              <Box width="150px" p="8px">
                 <Field
                   id="numOfInstallments"
                   name="numOfInstallments"
@@ -166,10 +212,11 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   label="Number of Installments"
                   placeholder="Enter Number"
                   readOnly={isReadOnly}
+                  isNumber={true}
                   validate={[formErrorUtil.required]}
                 />
               </Box>
-              <Box width={[1 / 5]} p="8px">
+              <Box width="150px" p="8px">
                 <Field
                   id="numOfInterestFreeInstllmnts"
                   name="numOfInterestFreeInstllmnts"
@@ -177,6 +224,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   label="Number of Interest Free Installments"
                   placeholder="Enter Number"
                   readOnly={isReadOnly}
+                  isNumber={true}
                   validate={[formErrorUtil.required]}
                 />
               </Box>
@@ -201,20 +249,6 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               </Box>
             </React.Fragment>
           )}
-          {isEditMode && (
-            <Box width="150px" p="8px">
-              <Field
-                id="productId"
-                name="productId"
-                component={InputField}
-                label="Product ID"
-                placeholder="Enter ID"
-                readOnly={isEditMode || isReadOnly}
-                isNumber={true}
-                validate={[formErrorUtil.required]}
-              />
-            </Box>
-          )}
           {hasProductOverride && (
             <Box width="150px" p="8px">
               <Field
@@ -229,7 +263,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </Box>
           )}
           {hasProductOverride && (
-            <Box width="150px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="dateOfProductOverride"
                 name="dateOfProductOverride"
@@ -353,7 +387,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                 />
               </Box>
               <Hr />
-              <Box width="150px" p="8px">
+              <Box width="120px" p="8px">
                 <Field
                   id="lastCycleDate"
                   name="lastCycleDate"
@@ -363,7 +397,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   readOnly={true}
                 />
               </Box>
-              <Box width="150px" p="8px">
+              <Box width="120px" p="8px">
                 <Field
                   id="dateCreated"
                   name="dateCreated"
@@ -372,7 +406,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
                   readOnly={true}
                 />
               </Box>
-              <Box width="150px" p="8px">
+              <Box width="120px" p="8px">
                 <Field
                   id="dateClosed"
                   name="dateClosed"

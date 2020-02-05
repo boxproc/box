@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 import { StoreState } from 'store/StoreState';
 
+import { selectDictionaryRepaymentTypesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 
@@ -47,13 +48,16 @@ export const selectLedgerCurrentAccount = createSelector(
   selectInstitutionsOptions,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,
-  (currentId, institutions, institutionProducts, accounts) => {
+  selectDictionaryRepaymentTypesOptions,
+  (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {
     const current = accounts.find(el => el.id === currentId);
+    const repaymentType = current && current.repayment_type;
 
     return {
       ...prepareDataDetailsToRender(current),
       institutionId: current && institutions.find(el => el.value === current.institution_id),
       product: current && institutionProducts.find(el => el.value === current.product_id),
+      repaymentType: repaymentTypesOptions.find(el => el.value === repaymentType),
     };
   }
 );
