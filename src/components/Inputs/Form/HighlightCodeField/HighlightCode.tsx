@@ -63,7 +63,7 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   height,
   minHeight,
   padding = 10,
-  whiteSpacePre,
+  whiteSpacePre = true,
   isScrollbarBottom,
   contextMenuItems,
   contextSubMenuItems,
@@ -180,7 +180,6 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
             height="60px"
             minHeight="60px"
             padding={5}
-            whiteSpacePre={true}
             isScrollbarBottom={true}
           />
         </Box>

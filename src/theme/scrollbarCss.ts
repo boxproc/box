@@ -2,8 +2,8 @@ import { createGlobalStyle, css } from 'theme';
 
 export const scrollbarCss = css`
   ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 8px;

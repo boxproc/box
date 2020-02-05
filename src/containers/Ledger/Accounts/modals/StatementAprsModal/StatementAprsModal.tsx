@@ -39,11 +39,11 @@ const StatementAprs: React.FC<StatementAprsProps> = ({
     <Modal
       name={modalName}
       title={`Account${accountAlias}`}
-      maxContainerWidth={1010}
+      maxContainerWidth={700}
       minContainerHeight={500}
     >
-      <T4>Accrued Interest</T4>
       <StatementDate date={currentStatementDate} />
+      <T4>Accrued Interest</T4>
       <StatementAprsTable data={statementAprs} />
       <Flex justifyContent="flex-end">
         <Box mt="10px">

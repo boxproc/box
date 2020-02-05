@@ -169,7 +169,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
       value: string,
       shiftCharCount: number,
     }) => {
-      const {value, name, shiftCharCount} = itemValue;
+      const { value, name, shiftCharCount } = itemValue;
 
       const newValue = value ? value : name;
       const code = getNewCode(newValue);
