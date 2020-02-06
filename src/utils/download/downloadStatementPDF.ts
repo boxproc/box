@@ -150,16 +150,29 @@ export const downloadStatementPDF = (data: {
         },
       };
 
+      if (isTransactions) {
+        doc.setFontSize(13);
+        doc.setFontStyle('bold');
+        doc.setTextColor(theme.colors.darkGray);
+        doc.text(
+          30,
+          310,
+          title
+        );
+      }
+
       doc.autoTable(tableContent);
 
-      doc.setFontSize(13);
-      doc.setFontStyle('bold');
-      doc.setTextColor(theme.colors.darkGray);
-      doc.text(
-        30,
-        isFirstTable ? 310 : doc.previousAutoTable.pageStartY - 10,
-        title
-      );
+      if (!isTransactions) {
+        doc.setFontSize(13);
+        doc.setFontStyle('bold');
+        doc.setTextColor(theme.colors.darkGray);
+        doc.text(
+          30,
+          doc.previousAutoTable.pageStartY - 10,
+          title
+        );
+      }
     }
   });
 
