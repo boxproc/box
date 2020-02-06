@@ -14,7 +14,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.LEDGER_ACCOUNT);
+const dirty = isDirty(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

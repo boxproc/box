@@ -18,7 +18,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
+const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),

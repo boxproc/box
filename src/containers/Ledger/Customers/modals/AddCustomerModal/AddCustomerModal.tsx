@@ -11,7 +11,7 @@ interface AddCustomerModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_LEDGER_CUSTOMER;
+const modalName = modalNamesConst.ADD_CUSTOMER;
 
 const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
   closeModal,

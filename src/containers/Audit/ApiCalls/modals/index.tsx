@@ -6,7 +6,7 @@ import ApiCallModal from './ApiCallModal';
 
 export const apiCallsModals = [
   {
-    name: modalNamesConst.AUDIT_API_CALL,
+    name: modalNamesConst.API_CALL,
     component: <ApiCallModal />,
   },
 ];

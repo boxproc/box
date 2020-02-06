@@ -23,7 +23,7 @@ const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.ADD_LEDGER_ACCOUNT,
 ]);
 
-const formSelector = formValueSelector(formNamesConst.LEDGER_ACCOUNT);
+const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
   LedgerCardsActionTypes.CHANGE_LEDGER_CARD_STATUS,
 ]);
 
-const formSelector = formValueSelector(formNamesConst.LEDGER_CHANGE_CARD_STATUS);
+const formSelector = formValueSelector(formNamesConst.CHANGE_CARD_STATUS);
 
 const mapStateToProps = (state: StoreState) => ({
   isStatusesLoading: loadingStatusesSelector(state),

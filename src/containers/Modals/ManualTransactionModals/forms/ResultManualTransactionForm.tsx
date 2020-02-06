@@ -94,7 +94,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
 };
 
 export default reduxForm<{}, ResultManualTransactionFormProps>({
-  form: formNamesConst.LEDGER_RESULT_MANUAL_TRANSACTION,
+  form: formNamesConst.RESULT_MANUAL_TRANSACTION,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ResultManualTransactionForm);

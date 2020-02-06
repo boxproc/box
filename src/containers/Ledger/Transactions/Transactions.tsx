@@ -98,7 +98,7 @@ const Transactions: React.FC<TransactionsProps> = ({
           name: 'Convert to Loan',
           icon: iconNamesConst.LOAN,
           action: () => openModal({
-            name: modalNamesConst.LEDGER_TRANSACTION,
+            name: modalNamesConst.TRANSACTION,
             payload: { activeTab: 1 },
           }),
         },
@@ -133,7 +133,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       title="Transactions"
       data={ledgerTransactions}
       columns={tableColumns}
-      editModalName={modalNamesConst.LEDGER_TRANSACTION}
+      editModalName={modalNamesConst.TRANSACTION}
       filterAction={filterLedgerTransactions}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}

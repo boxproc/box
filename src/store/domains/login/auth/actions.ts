@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 
-import { basePath, modalNamesConst } from 'consts';
+import { basePath, messagesConst, modalNamesConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 import {
@@ -113,9 +113,7 @@ export const handleUserLogin: HandleUserLogin = (data) =>
         setUserDataToStorage(selectLoginData(state));
 
         if (selectIs2faAuthenticationPending(state)) {
-          dispatch(openModal({
-            name: modalNamesConst.LOGIN_CODE_2FA,
-          }));
+          dispatch(openModal({ name: modalNamesConst.LOGIN_CODE_2FA }));
         } else {
           dispatch(push(basePath));
         }
@@ -165,7 +163,7 @@ export const handleChangePassword: HandleChangePassword = data =>
         dispatch(closeModal(modalNamesConst.CHANGE_PASSWORD));
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
-          payload: { title: 'Password changed' },
+          payload: { message: messagesConst.PASSWORD_CHANGED },
         }));
       },
       dispatch

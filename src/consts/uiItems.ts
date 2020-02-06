@@ -1,5 +1,4 @@
 export enum uiItemConsts {
-  // ADMINISTRATION
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
   ADMINISTRATION_DICTIONARIES_EVENTS = 'administration/dictionaries/events',
@@ -14,13 +13,11 @@ export enum uiItemConsts {
   ADMINISTRATION_SCHEDULER = 'administration/scheduler',
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_UI_ITEMS_DESIGNER = 'administration/ui_items_designer',
-  // AUDIT
   AUDIT_USER_ACTIVITY = 'audit/users_activity',
   AUDIT_API_CALLS = 'audit/api_calls',
   AUDIT_SCHEDULED_JOBS = 'audit/scheduled_jobs',
   AUDIT_SYSTEM_MONITOR = 'audit/system_monitor',
   AUDIT_UI_SESSIONS = 'audit/ui_sessions',
-  // LEDGER
   LEDGER_ACCOUNTS = 'ledger/accounts',
   LEDGER_CARDS = 'ledger/cards',
   LEDGER_CUSTOMERS = 'ledger/customers',
@@ -29,6 +26,5 @@ export enum uiItemConsts {
   LEDGER_TRANSACTIONS = 'ledger/transactions',
   LEDGER_STATEMENTS = 'ledger/statements',
   LEDGER_SETTLE_TRANSACTION = 'ledger/settle_transaction',
-  // PRODUCT DESIGNER
   PRODUCT_DESIGNER_PRODUCTS = 'product_designer/products',
 }

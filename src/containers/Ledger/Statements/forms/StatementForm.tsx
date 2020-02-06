@@ -133,7 +133,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
 };
 
 export default reduxForm<{}, StatementFormProps>({
-  form: formNamesConst.LEDGER_STATEMENT,
+  form: formNamesConst.STATEMENT,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(StatementForm);

@@ -190,7 +190,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 };
 
 export default reduxForm<{}, AccountFormProps>({
-  form: formNamesConst.LEDGER_ACCOUNT,
+  form: formNamesConst.ACCOUNT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(AccountForm));

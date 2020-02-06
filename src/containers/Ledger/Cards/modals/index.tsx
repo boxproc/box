@@ -6,7 +6,7 @@ import InfoCardModal from './InfoCardModal';
 
 export const cardsModals = [
   {
-    name: modalNamesConst.INFO_LEDGER_CARDS,
+    name: modalNamesConst.INFO_CARDS,
     component: <InfoCardModal />,
   },
 ];

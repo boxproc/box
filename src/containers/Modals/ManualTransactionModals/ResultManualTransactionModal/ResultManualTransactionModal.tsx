@@ -3,7 +3,7 @@ import React from 'react';
 import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
 import {
   ResultLimitAdjustmentForm,
   ResultManualTransactionForm
@@ -23,7 +23,7 @@ interface ResultManualTransactionModalProps extends WithModalProps {
   isLimitAdjustment: boolean;
 }
 
-const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT;
+const modalName = modalNamesConst.MANUAL_TRANSACTION_RESULT;
 
 const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> = ({
   closeModal,
@@ -51,7 +51,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title="Transaction successfully completed"
+      title={messagesConst.TRANSACTION_SUCCESSFULLY_COMPLETED}
       maxContainerWidth={isLimitAdjustment ? 550 : 650}
     >
       {isLimitAdjustment

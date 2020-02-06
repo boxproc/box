@@ -66,7 +66,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 60,
+    maxWidth: 50,
     Header: <TableHeader title="D/C" />,
     accessor: 'debitCreditIndicator',
     Cell: (props: TCell<'debitCreditIndicator'>) => (
@@ -88,7 +88,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 65,
+    maxWidth: 60,
     Header: <TableHeader title="Currency" />,
     accessor: 'originalCurrency',
     Cell: (props: TCell<'originalCurrency'>) => (

@@ -29,8 +29,8 @@ export const handleMakeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment = 
           const preparedValues = prepareDataToSend(data);
 
           await dispatch(makeLedgerLimitAdjustment(preparedValues));
-          dispatch(resetForm(formNamesConst.LEDGER_MANUAL_TRANSACTION));
-          dispatch(openModal({ name: modalNamesConst.LEDGER_MANUAL_TRANSACTION_RESULT }));
+          dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
+          dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
         },
         dispatch
       );

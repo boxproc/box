@@ -22,7 +22,7 @@ interface EditCustomerModalProps extends WithModalProps {
   isInterfacesLoading: boolean;
 }
 
-const modalName = modalNamesConst.EDIT_LEDGER_CUSTOMER;
+const modalName = modalNamesConst.EDIT_CUSTOMER;
 
 const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
   closeModal,

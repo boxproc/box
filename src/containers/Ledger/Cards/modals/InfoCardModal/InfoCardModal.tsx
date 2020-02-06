@@ -19,7 +19,7 @@ interface InfoAccountModalProps extends WithModalProps {
   isLoading: boolean;
 }
 
-const modalName = modalNamesConst.INFO_LEDGER_CARDS;
+const modalName = modalNamesConst.INFO_CARDS;
 
 const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   closeModal,

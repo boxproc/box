@@ -6,7 +6,7 @@ import { modalNamesConst } from 'consts';
 
 export const statementsModals = [
   {
-    name: modalNamesConst.LEDGER_STATEMENTS,
+    name: modalNamesConst.STATEMENTS,
     component: <StatementModal />,
   },
 ];

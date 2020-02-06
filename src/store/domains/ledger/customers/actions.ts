@@ -141,7 +141,7 @@ export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
         const id = selectActiveItemId(state);
 
         await dispatch(deleteLedgerCustomer(id));
-        dispatch(closeModal(modalNamesConst.EDIT_LEDGER_CUSTOMER));
+        dispatch(closeModal(modalNamesConst.EDIT_CUSTOMER));
       },
       dispatch
     );
@@ -156,7 +156,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addLedgerCustomer(preparedValues));
-        dispatch(closeModal(modalNamesConst.ADD_LEDGER_CUSTOMER));
+        dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterLedgerCustomers());
@@ -237,7 +237,7 @@ export const handleAddRepaymentDebitCard: HandleAddRepaymentDebitCard = data =>
           customer_id: customerId,
         }));
         await dispatch(handleGetRepaymentDebitCards());
-        dispatch(resetForm(formNamesConst.LEDGER_REPAYMENT_DEBIT_CARDS));
+        dispatch(resetForm(formNamesConst.REPAYMENT_DEBIT_CARDS));
       },
       dispatch
     );
@@ -269,7 +269,7 @@ export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data
           customer_id: customerId,
         }));
         await dispatch(handleGetRepaymentDirectDebits());
-        dispatch(resetForm(formNamesConst.LEDGER_REPAYMENT_DIRECT_DEBITS));
+        dispatch(resetForm(formNamesConst.REPAYMENT_DIRECT_DEBITS));
       },
       dispatch
     );

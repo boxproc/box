@@ -50,7 +50,7 @@ const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
 };
 
 export default reduxForm<{}, LedgerTransactionFormProps>({
-  form: formNamesConst.LEDGER_TRANSACTION,
+  form: formNamesConst.TRANSACTION,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(LedgerTransactionForm);

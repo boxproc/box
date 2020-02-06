@@ -18,7 +18,7 @@ interface TransactionModalProps extends WithModalProps {
   isConvertibleToLoan: boolean;
 }
 
-const modalName = modalNamesConst.LEDGER_TRANSACTION;
+const modalName = modalNamesConst.TRANSACTION;
 
 const TransactionModal: React.FC<TransactionModalProps> = ({
   closeModal,

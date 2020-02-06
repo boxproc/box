@@ -75,7 +75,7 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
 };
 
 export default withSpinner()(reduxForm<{}, StatusFormProps>({
-  form: formNamesConst.LEDGER_CHANGE_CARD_STATUS,
+  form: formNamesConst.CHANGE_CARD_STATUS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(StatusForm));

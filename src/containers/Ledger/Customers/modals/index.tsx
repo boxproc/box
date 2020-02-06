@@ -7,11 +7,11 @@ import EditCustomerModal from './EditCustomerModal';
 
 export const customersModals = [
   {
-    name: modalNamesConst.ADD_LEDGER_CUSTOMER,
+    name: modalNamesConst.ADD_CUSTOMER,
     component: <AddCustomerModal />,
   },
   {
-    name: modalNamesConst.EDIT_LEDGER_CUSTOMER,
+    name: modalNamesConst.EDIT_CUSTOMER,
     component: <EditCustomerModal />,
   },
 ];

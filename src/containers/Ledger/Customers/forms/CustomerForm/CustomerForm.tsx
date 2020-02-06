@@ -110,7 +110,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 };
 
 export default reduxForm<{}, EditCustomerFormProps>({
-  form: formNamesConst.LEDGER_CUSTOMER,
+  form: formNamesConst.CUSTOMER,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withSpinner()(EditCustomerForm));

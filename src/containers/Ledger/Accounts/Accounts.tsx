@@ -117,7 +117,7 @@ const Accounts: React.FC<AccountsProps> = ({
       {
         name: 'Manual Transaction',
         action: () => openModal({
-          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          name: modalNamesConst.MANUAL_TRANSACTION,
           payload: {
             accountId: currentId,
             currencyCode: currentCurrencyCode,
@@ -127,7 +127,7 @@ const Accounts: React.FC<AccountsProps> = ({
       {
         name: 'Limit Adjustment',
         action: () => openModal({
-          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          name: modalNamesConst.MANUAL_TRANSACTION,
           payload: {
             isLimitAdjustmentMode: true,
             accountId: currentId,
@@ -166,8 +166,8 @@ const Accounts: React.FC<AccountsProps> = ({
       title="Accounts"
       data={ledgerAccounts}
       columns={tableColumns}
-      newModalName={modalNamesConst.ADD_LEDGER_ACCOUNT}
-      editModalName={modalNamesConst.EDIT_LEDGER_ACCOUNT}
+      newModalName={modalNamesConst.ADD_ACCOUNT}
+      editModalName={modalNamesConst.EDIT_ACCOUNT}
       editableItemName="account"
       contextMenuItems={contextMenuItems}
       filterAction={filterLedgerAccounts}

@@ -6,7 +6,7 @@ import TransactionModal from './TransactionModal';
 
 export const transactionsModals = [
   {
-    name: modalNamesConst.LEDGER_TRANSACTION,
+    name: modalNamesConst.TRANSACTION,
     component: <TransactionModal />,
   },
 ];

@@ -31,7 +31,7 @@ interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactio
   isLimitAdjustment: boolean;
   uiItems: Array<UiItemPrepared>;
 }
-const modalName = modalNamesConst.LEDGER_MANUAL_TRANSACTION;
+const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   makeLedgerTransaction,

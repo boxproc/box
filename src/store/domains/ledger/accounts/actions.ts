@@ -161,7 +161,7 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = data =>
         const isAccessibleFiltering = selectIsAccessibleFiltering(state);
 
         await dispatch(addLedgerAccount(preparedData));
-        dispatch(closeModal(modalNamesConst.ADD_LEDGER_ACCOUNT));
+        dispatch(closeModal(modalNamesConst.ADD_ACCOUNT));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterLedgerAccounts());
@@ -184,9 +184,7 @@ export const handleAddProductOverride: HandleAddProductOverride = (withOpenProdu
 
         if (withOpenProductModal) {
           dispatch(setActiveItemId(res.value.id));
-          dispatch(openModal({
-            name: modalNamesConst.EDIT_PRODUCT,
-          }));
+          dispatch(openModal({ name: modalNamesConst.EDIT_PRODUCT }));
         }
       },
       dispatch

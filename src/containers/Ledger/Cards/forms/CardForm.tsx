@@ -75,7 +75,7 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
 };
 
 export default reduxForm<{}, CardFormProps>({
-  form: formNamesConst.LEDGER_CARDS,
+  form: formNamesConst.CARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(CardForm);

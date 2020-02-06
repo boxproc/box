@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({
     const handleOpenModalWindow = () => {
       if (isManualTransaction || isLimitAdjustment) {
         return openModal({
-          name: modalNamesConst.LEDGER_MANUAL_TRANSACTION,
+          name: modalNamesConst.MANUAL_TRANSACTION,
           payload: { isLimitAdjustmentMode: isLimitAdjustment },
         });
       } else if (isSettleTransaction) {

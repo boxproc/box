@@ -20,13 +20,13 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  auditApiCalls: selectAuditApiCalls(state),
+  apiCalls: selectAuditApiCalls(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAuditApiCalls: handleFilterAuditApiCalls,
+    filterApiCalls: handleFilterAuditApiCalls,
     resetApiCalls,
   },
   dispatch

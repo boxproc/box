@@ -8,11 +8,11 @@ import StatementAprsModal from './StatementAprsModal';
 
 export const accountsModals = [
   {
-    name: modalNamesConst.ADD_LEDGER_ACCOUNT,
+    name: modalNamesConst.ADD_ACCOUNT,
     component: <AddAccountModal />,
   },
   {
-    name: modalNamesConst.EDIT_LEDGER_ACCOUNT,
+    name: modalNamesConst.EDIT_ACCOUNT,
     component: <EditAccountModal />,
   },
   {

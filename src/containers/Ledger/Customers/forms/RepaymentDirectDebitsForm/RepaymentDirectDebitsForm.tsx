@@ -75,7 +75,7 @@ const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = (
 };
 
 export default reduxForm<{}, RepaymentDirectDebitsFormProps>({
-  form: formNamesConst.LEDGER_REPAYMENT_DIRECT_DEBITS,
+  form: formNamesConst.REPAYMENT_DIRECT_DEBITS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(RepaymentDirectDebitsForm);

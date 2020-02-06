@@ -1,6 +1,6 @@
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { formNamesConst, modalNamesConst } from 'consts';
+import { formNamesConst, messagesConst, modalNamesConst } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import { ActionTypeKeys, RetrieveTransactionAction, SettleTransactionAction } from './actionTypes';
@@ -64,7 +64,7 @@ export const handleSettleTransaction: HandleSettleTransaction = () =>
           name: modalNamesConst.MESSAGE,
           payload: {
             title: 'Settle Transaction',
-            message: 'Transaction is successfully settled.',
+            message: messagesConst.TRANSACTION_SUCCESSFULLY_SETTLED,
           },
         }));
       },

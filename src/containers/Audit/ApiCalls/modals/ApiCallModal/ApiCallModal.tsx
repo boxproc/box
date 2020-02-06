@@ -15,7 +15,7 @@ interface ApiCallModalProps extends WithModalProps {
   getDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls;
 }
 
-const modalName = modalNamesConst.AUDIT_API_CALL;
+const modalName = modalNamesConst.API_CALL;
 
 const ApiCallModal: React.FC<ApiCallModalProps> = ({
   closeModal,

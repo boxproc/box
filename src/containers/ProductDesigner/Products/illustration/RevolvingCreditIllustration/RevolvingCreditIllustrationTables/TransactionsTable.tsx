@@ -34,7 +34,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 60,
+    maxWidth: 50,
     accessor: 'debitCreditIndicator',
     Header: <TableHeader title="D/C" />,
     Cell: (props: TCell<'debitCreditIndicator'>) => (

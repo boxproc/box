@@ -16,7 +16,7 @@ import {
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
-const dirty = isDirty(formNamesConst.LEDGER_CUSTOMER);
+const dirty = isDirty(formNamesConst.CUSTOMER);
 
 const loadingSelectorInterfaces = createLoadingSelector([
   ProductServicesActionTypes.GET_SERVICE_INTERFACES,

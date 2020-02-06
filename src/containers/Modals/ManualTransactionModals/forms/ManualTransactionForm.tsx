@@ -184,7 +184,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
 const withTransactionTypesAndCurrencyCodes = withLoadCurrencyCodes(ManualTransactionForm);
 
 export default reduxForm<{}, ManualTransactionFormProps>({
-  form: formNamesConst.LEDGER_MANUAL_TRANSACTION,
+  form: formNamesConst.MANUAL_TRANSACTION,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(withTransactionTypesAndCurrencyCodes);

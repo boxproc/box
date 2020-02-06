@@ -50,7 +50,7 @@ const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = (
 };
 
 export default reduxForm<{}, ResultLimitAdjustmentFormProps>({
-  form: formNamesConst.LEDGER_RESULT_LIMIT_ADJUSTMENT,
+  form: formNamesConst.RESULT_LIMIT_ADJUSTMENT,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(ResultLimitAdjustmentForm);

@@ -27,7 +27,7 @@ interface StatementModalProps extends WithModalProps {
   generateTransactionsAprs: HandleGetLedgerStatementAprs;
 }
 
-const modalName = modalNamesConst.LEDGER_STATEMENTS;
+const modalName = modalNamesConst.STATEMENTS;
 
 const StatementModal: React.FC<StatementModalProps> = ({
   currentStatementId,

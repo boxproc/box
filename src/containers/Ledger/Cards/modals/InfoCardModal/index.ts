@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
   LedgerCardsActionTypes.ACTIVATE_LEDGER_CARD,
 ]);
 
-const dirty = isDirty(formNamesConst.LEDGER_CHANGE_CARD_STATUS);
+const dirty = isDirty(formNamesConst.CHANGE_CARD_STATUS);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

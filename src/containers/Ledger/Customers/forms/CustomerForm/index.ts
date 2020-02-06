@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.ADD_LEDGER_CUSTOMER,
 ]);
 
-const formSelector = formValueSelector(formNamesConst.LEDGER_CUSTOMER);
+const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),

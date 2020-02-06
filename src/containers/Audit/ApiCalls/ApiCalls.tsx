@@ -11,16 +11,16 @@ import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
-  auditApiCalls: Array<ApiCallsItemPrepared>;
-  filterAuditApiCalls: HandleFilterAuditApiCalls;
+  apiCalls: Array<ApiCallsItemPrepared>;
+  filterApiCalls: HandleFilterAuditApiCalls;
   institutionsOptions: Array<SelectValue>;
   resetApiCalls: ResetApiCalls;
   isLoading: boolean;
 }
 
 const ApiCalls: React.FC<ApiCallsProps> = ({
-  auditApiCalls,
-  filterAuditApiCalls,
+  apiCalls,
+  filterApiCalls,
   institutionsOptions,
   resetApiCalls,
   isLoading,
@@ -52,10 +52,10 @@ const ApiCalls: React.FC<ApiCallsProps> = ({
   return (
     <PageTemplate
       title="API Calls"
-      data={auditApiCalls}
+      data={apiCalls}
       columns={tableColumns}
-      editModalName={modalNamesConst.AUDIT_API_CALL}
-      filterAction={filterAuditApiCalls}
+      editModalName={modalNamesConst.API_CALL}
+      filterAction={filterApiCalls}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

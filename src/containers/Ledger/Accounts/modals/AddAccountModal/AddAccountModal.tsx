@@ -15,7 +15,7 @@ interface AddAccountModalProps extends WithModalProps {
   isFormDirty: boolean;
 }
 
-const modalName = modalNamesConst.ADD_LEDGER_ACCOUNT;
+const modalName = modalNamesConst.ADD_ACCOUNT;
 
 const AddAccountModal: React.FC<AddAccountModalProps> = ({
   institutionsOptions,

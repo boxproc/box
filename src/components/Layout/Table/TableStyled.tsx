@@ -156,17 +156,17 @@ export const TableStyled = styled.div<TableStyledProps>`
         bottom: 3px;
         right: 0;
         width: 5px;
-        background: linear-gradient(to right, rgba(255,255,255,.6) 30%,rgba(255,255,255,1) 100%);
+        background: linear-gradient(to right, rgba(255,255,255,.6) 0%,rgba(255,255,255,1) 100%);
       }
     }
 
     .rt-tbody .rt-tr-group:hover .rt-td:before {
-      background: linear-gradient(to right, rgba(243,243,243,.6) 30%,rgba(243,243,243,1) 100%);
+      background: linear-gradient(to right, rgba(243,243,243,.6) 0%,rgba(243,243,243,1) 100%);
     }
 
     ${({ activeRowIndex }) => activeRowIndex && `
       .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}) .rt-td:before {
-        background: linear-gradient(to right, rgba(243,243,243,.6) 30%,rgba(243,243,243,1) 100%);
+        background: linear-gradient(to right, rgba(243,243,243,.6) 0%,rgba(243,243,243,1) 100%);
       }
     `};
 

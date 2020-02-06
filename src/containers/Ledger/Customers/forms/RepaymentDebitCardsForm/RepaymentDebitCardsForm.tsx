@@ -74,7 +74,7 @@ const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
 };
 
 export default reduxForm<{}, RepaymentDebitCardsFormProps>({
-  form: formNamesConst.LEDGER_REPAYMENT_DEBIT_CARDS,
+  form: formNamesConst.REPAYMENT_DEBIT_CARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(RepaymentDebitCardsForm);
