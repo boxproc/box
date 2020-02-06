@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { LedgerTransactionForm } from 'containers/Ledger/Transactions/forms';
+import { TransactionForm } from 'containers/Ledger/Transactions/forms';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
 
 import { PayloadTransactionModal } from 'store/domains';
@@ -62,7 +62,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       minContainerHeight={580}
     >
       {!isConvertibleToLoan && (
-        <LedgerTransactionForm onCancel={handleOnCancel} />
+        <TransactionForm onCancel={handleOnCancel} />
       )}
       {isConvertibleToLoan && (
         <Tabs activeTab={activeTab}>
@@ -70,7 +70,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
             title="Transaction Information"
             hasTabs={true}
           >
-            <LedgerTransactionForm onCancel={handleOnCancel} />
+            <TransactionForm onCancel={handleOnCancel} />
           </TabsPanel>
           <TabsPanel title="Convert to Loan">
             <LoanIllustration
