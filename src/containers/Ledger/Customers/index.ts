@@ -35,12 +35,12 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerCustomers: handleFilterLedgerCustomers,
-    deleteLedgerCustomer: handleDeleteLedgerCustomer,
-    filterLedgerCardsById: handleFilterByIdLedgerCards,
-    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
-    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
-    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
+    filterCustomers: handleFilterLedgerCustomers,
+    deleteCustomer: handleDeleteLedgerCustomer,
+    filterCardsById: handleFilterByIdLedgerCards,
+    filterTransactionsById: handleFilterByIdLedgerTransactions,
+    filterStatementsById: handleFilterByIdLedgerStatements,
+    filterAccountsById: handleFilterByIdLedgerAccounts,
     resetCustomers,
   },
   dispatch

@@ -25,14 +25,14 @@ const orderCardLoadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isOrderingCard: orderCardLoadingSelector(state),
-  ledgerAccountCurrentId: selectActiveItemId(state),
-  ledgerAccountCards: selectLedgerAccountCards(state),
+  accountCurrentId: selectActiveItemId(state),
+  accountCards: selectLedgerAccountCards(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getLedgerAccountCards: handleGetLedgerAccountCards,
-    orderLedgerAccountCard: handleOrderLedgerAccountCard,
+    getAccountCards: handleGetLedgerAccountCards,
+    orderAccountCard: handleOrderLedgerAccountCard,
   },
   dispatch
 );

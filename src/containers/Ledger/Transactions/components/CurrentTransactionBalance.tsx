@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { NumberFormatField } from 'components';
 
-const LedgerCurrentTransactionBalance: React.FC = () => {
+const CurrentTransactionBalance: React.FC = () => {
   return (
     <Box mx="-8px">
       <Flex
@@ -65,4 +65,4 @@ const LedgerCurrentTransactionBalance: React.FC = () => {
   );
 };
 
-export default LedgerCurrentTransactionBalance;
+export default CurrentTransactionBalance;

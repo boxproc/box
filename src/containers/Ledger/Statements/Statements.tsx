@@ -30,11 +30,11 @@ export interface StatementsProps {
   currentId: number;
   statements: Array<LedgerStatementItemPrepared>;
   institutionsOptions: Array<SelectValue>;
-  filterLedgerStatements: HandleFilterLedgerStatements;
-  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
-  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
-  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
-  filterLedgerCardsById: HandleFilterLedgerCardsById;
+  filterStatements: HandleFilterLedgerStatements;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterCardsById: HandleFilterLedgerCardsById;
   generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprs;
   resetStatements: ResetStatements;
   setActiveItemId: SetActiveItemId;
@@ -44,12 +44,12 @@ export interface StatementsProps {
 
 const Statements: React.FC<StatementsProps> = ({
   statements,
-  filterLedgerStatements,
+  filterStatements,
   institutionsOptions,
-  filterLedgerTransactionsById,
-  filterLedgerCustomersById,
-  filterLedgerCardsById,
-  filterLedgerAccountsById,
+  filterTransactionsById,
+  filterCustomersById,
+  filterCardsById,
+  filterAccountsById,
   currentId,
   generateTransactionsAprsFeesRewards,
   resetStatements,
@@ -90,27 +90,27 @@ const Statements: React.FC<StatementsProps> = ({
       { isDivider: true },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({ statement_id: currentId }),
+        action: () => filterAccountsById({ statement_id: currentId }),
       },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({ statement_id: currentId }),
+        action: () => filterCustomersById({ statement_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({ statement_id: currentId }),
+        action: () => filterCardsById({ statement_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({ statement_id: currentId }),
+        action: () => filterTransactionsById({ statement_id: currentId }),
       },
     ],
     [
       currentId,
-      filterLedgerCustomersById,
-      filterLedgerTransactionsById,
-      filterLedgerCardsById,
-      filterLedgerAccountsById,
+      filterCustomersById,
+      filterTransactionsById,
+      filterCardsById,
+      filterAccountsById,
       generateTransactionsAprsFeesRewards,
     ]
   );
@@ -160,7 +160,7 @@ const Statements: React.FC<StatementsProps> = ({
       data={statements}
       columns={statementsTableColumns}
       editModalName={modalNamesConst.STATEMENTS}
-      filterAction={filterLedgerStatements}
+      filterAction={filterStatements}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
       isLoading={isLoading}

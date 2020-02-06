@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import LedgerTransactionForm from './LedgerTransactionForm';
+import TransactionForm from './TransactionForm';
 
 import { selectLedgerCurrentTransaction } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -11,4 +11,4 @@ const mapStateToProps = (state: StoreState) => ({
 
 export default connect(
   mapStateToProps
-)(LedgerTransactionForm);
+)(TransactionForm);

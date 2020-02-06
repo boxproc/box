@@ -267,7 +267,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           />
         </Box>
         <T2>System Monitor</T2>
-        <Box mb="12px" ml="12px">
+        <Box mb="5px" ml="12px">
           {isCounter && (
             <CountDownTimer seconds={systemMonitorInterval.SECONDS} />
           )}

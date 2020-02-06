@@ -6,14 +6,14 @@ import {
   selectActiveItemId,
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactionAmount,
-  selectPayloadLedgerTransactionModal,
+  selectPayloadTransactionModal,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 
 const mapStateToProps = (state: StoreState) => ({
   currentTransactionId: selectActiveItemId(state),
-  payloadLedgerTransactionModal: selectPayloadLedgerTransactionModal(state),
+  payloadTransactionModal: selectPayloadTransactionModal(state),
   transactionAmount: selectLedgerTransactionAmount(state),
   isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
 });

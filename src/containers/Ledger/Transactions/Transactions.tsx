@@ -23,27 +23,27 @@ import { dateUtil } from 'utils';
 
 export interface TransactionsProps extends WithModalProps {
   currentId: number;
-  ledgerTransactions: Array<LedgerTransactionItemPrepared>;
+  transactions: Array<LedgerTransactionItemPrepared>;
   institutionsOptions: Array<SelectValue>;
-  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
-  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
-  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
-  filterLedgerCardsById: HandleFilterLedgerCardsById;
-  filterLedgerTransactions: HandleFilterLedgerTransactions;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterStatementsById: HandleFilterLedgerStatementsById;
+  filterCardsById: HandleFilterLedgerCardsById;
+  filterTransactions: HandleFilterLedgerTransactions;
   resetTransactions: ResetTransactions;
   isLoading: boolean;
   isConvertibleToLoan: boolean;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
-  ledgerTransactions,
-  filterLedgerTransactions,
+  transactions,
+  filterTransactions,
   institutionsOptions,
   resetTransactions,
-  filterLedgerCustomersById,
-  filterLedgerAccountsById,
-  filterLedgerStatementsById,
-  filterLedgerCardsById,
+  filterCustomersById,
+  filterAccountsById,
+  filterStatementsById,
+  filterCardsById,
   currentId,
   openModal,
   isLoading,
@@ -68,19 +68,19 @@ const Transactions: React.FC<TransactionsProps> = ({
         { isDivider: true },
         {
           name: 'Accounts',
-          action: () => filterLedgerAccountsById({ transaction_id: currentId }),
+          action: () => filterAccountsById({ transaction_id: currentId }),
         },
         {
           name: 'Customers',
-          action: () => filterLedgerCustomersById({ transaction_id: currentId }),
+          action: () => filterCustomersById({ transaction_id: currentId }),
         },
         {
           name: 'Cards',
-          action: () => filterLedgerCardsById({ transaction_id: currentId }),
+          action: () => filterCardsById({ transaction_id: currentId }),
         },
         {
           name: 'Statements',
-          action: () => filterLedgerStatementsById({ transaction_id: currentId }),
+          action: () => filterStatementsById({ transaction_id: currentId }),
         },
         { isDivider: true },
         {
@@ -109,10 +109,10 @@ const Transactions: React.FC<TransactionsProps> = ({
     [
       isConvertibleToLoan,
       currentId,
-      filterLedgerAccountsById,
-      filterLedgerCardsById,
-      filterLedgerCustomersById,
-      filterLedgerStatementsById,
+      filterAccountsById,
+      filterCardsById,
+      filterCustomersById,
+      filterStatementsById,
       openModal,
     ]
   );
@@ -131,10 +131,10 @@ const Transactions: React.FC<TransactionsProps> = ({
   return (
     <PageTemplate
       title="Transactions"
-      data={ledgerTransactions}
+      data={transactions}
       columns={tableColumns}
       editModalName={modalNamesConst.TRANSACTION}
-      filterAction={filterLedgerTransactions}
+      filterAction={filterTransactions}
       contextMenuItems={contextMenuItems}
       isDownloadButton={true}
       isLoading={isLoading}

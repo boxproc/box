@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Hr, InputField, NumberFormatField, TextField } from 'components';
 
-const LedgerCurrentTransactionGeneral: React.FC = () => {
+const CurrentTransactionGeneral: React.FC = () => {
   return (
     <Box mx="-8px">
       <Flex
@@ -206,4 +206,4 @@ const LedgerCurrentTransactionGeneral: React.FC = () => {
   );
 };
 
-export default LedgerCurrentTransactionGeneral;
+export default CurrentTransactionGeneral;

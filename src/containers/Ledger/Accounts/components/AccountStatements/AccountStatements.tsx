@@ -19,24 +19,24 @@ type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
 
 interface AccountStatementsProps {
   accountStatements: Array<LedgerAccountStatementItemPrepared>;
-  getLedgerAccountStatements: HandleGetLedgerAccountStatements;
-  getLedgerStatementAprs: HandleGetLedgerStatementAprs;
+  getAccountStatements: HandleGetLedgerAccountStatements;
+  getStatementAprs: HandleGetLedgerStatementAprs;
   accountCurrentId: number;
   onCancel: () => void;
 }
 
 const AccountStatements: React.FC<AccountStatementsProps> = ({
-  getLedgerAccountStatements,
-  getLedgerStatementAprs,
+  getAccountStatements,
+  getStatementAprs,
   accountStatements,
   accountCurrentId,
   onCancel,
 }) => {
   React.useEffect(
     () => {
-      getLedgerAccountStatements(accountCurrentId);
+      getAccountStatements(accountCurrentId);
     },
-    [getLedgerAccountStatements, accountCurrentId]
+    [getAccountStatements, accountCurrentId]
   );
 
   const handleClickOnRow = React.useCallback(
@@ -45,14 +45,14 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
 
       return {
         onDoubleClick: () => {
-          getLedgerStatementAprs(
+          getStatementAprs(
             statementId,
             modalNamesConst.STATEMENT_APRS
           );
         },
       };
     },
-    [getLedgerStatementAprs]
+    [getStatementAprs]
   );
 
   const tableColumns = React.useMemo(
@@ -187,7 +187,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
               iconName={iconNamesConst.SHORT_TEXT}
               title="Details"
               type="reset"
-              onClick={() => getLedgerStatementAprs(
+              onClick={() => getStatementAprs(
                 cellInfo.original.id,
                 modalNamesConst.STATEMENT_APRS
               )}
@@ -196,7 +196,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
     ],
-    [getLedgerStatementAprs]
+    [getStatementAprs]
   );
 
   return (

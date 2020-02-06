@@ -12,20 +12,20 @@ import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 import { HandleGetDetailsAuditApiCalls } from 'store/domains';
 
 interface ApiCallModalProps extends WithModalProps {
-  getDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls;
+  getDetailsApiCalls: HandleGetDetailsAuditApiCalls;
 }
 
 const modalName = modalNamesConst.API_CALL;
 
 const ApiCallModal: React.FC<ApiCallModalProps> = ({
   closeModal,
-  getDetailsAuditApiCalls,
+  getDetailsApiCalls,
 }) => {
   React.useEffect(
     () => {
-      getDetailsAuditApiCalls();
+      getDetailsApiCalls();
     },
-    [getDetailsAuditApiCalls]
+    [getDetailsApiCalls]
   );
 
   const handleOnCancel = React.useCallback(

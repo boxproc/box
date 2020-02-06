@@ -4,7 +4,7 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemConsts } from 'consts';
 
 import { openModal } from 'store/domains/modals';
-import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
+import { setIsOpenFilter } from 'store/domains/utils';
 import {
   ActionTypeKeys,
   ActivateLedgerCardAction,
@@ -26,7 +26,7 @@ export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
 export type HandleFilterLedgerCards = () => Thunk<void>;
 
 export type ActivateLedgerCard = (cardId: number) => ActivateLedgerCardAction;
-export type HandleActivateLedgerCard = () => Thunk<void>;
+export type HandleActivateLedgerCard = (cardId: number) => Thunk<void>;
 
 export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
 export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
@@ -76,13 +76,10 @@ export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
     );
   };
 
-export const handleActivateLedgerCard: HandleActivateLedgerCard = () =>
-  async (dispatch, getState) => {
+export const handleActivateLedgerCard: HandleActivateLedgerCard = cardId =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const cardId = selectActiveItemId(state);
-
         await dispatch(activateLedgerCard(cardId));
         await dispatch(handleFilterLedgerCards());
 

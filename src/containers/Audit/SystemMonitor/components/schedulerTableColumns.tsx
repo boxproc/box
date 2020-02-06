@@ -47,7 +47,7 @@ export const schedulerTableColumns = (getLogData: HandleGetLogData, name: string
     ),
   },
   {
-    maxWidth: 90,
+    maxWidth: 80,
     accessor: 'showLogButton',
     Cell: (cellInfo: CellInfo) => (
       <Button

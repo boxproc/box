@@ -17,7 +17,7 @@ import { modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
 import {
   HandleMakeLedgerLimitAdjustment,
   HandleMakeLedgerTransaction,
-  PayloadLedgerManualTransactionModal,
+  PayloadManualTransactionModal,
   UiItemPrepared
 } from 'store/domains';
 
@@ -26,7 +26,7 @@ import { SelectValue } from 'types';
 interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactionTypesProps {
   makeLedgerTransaction: HandleMakeLedgerTransaction;
   makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  modalPayload: PayloadLedgerManualTransactionModal;
+  modalPayload: PayloadManualTransactionModal;
   currenciesOptions: Array<SelectValue>;
   isLimitAdjustment: boolean;
   uiItems: Array<UiItemPrepared>;

@@ -22,18 +22,18 @@ import {
 import { SelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {
-  ledgerAccounts: Array<LedgerAccountItemPrepared>;
-  filterLedgerAccounts: HandleFilterLedgerAccounts;
+  accounts: Array<LedgerAccountItemPrepared>;
+  filterAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
   institutionsOptions: Array<SelectValue>;
   hasProductOverride: boolean;
   productOverrideId: number;
   resetAccounts: ResetAccounts;
   setActiveItemId: HandleSetActiveItemId;
-  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
-  filterLedgerCardsById: HandleFilterLedgerCardsById;
-  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
-  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterCardsById: HandleFilterLedgerCardsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterStatementsById: HandleFilterLedgerStatementsById;
   currentId: number;
   currentCurrencyCode: string;
   currentAccountBalanceLimit: string;
@@ -42,8 +42,8 @@ export interface AccountsProps extends WithModalProps {
 }
 
 const Accounts: React.FC<AccountsProps> = ({
-  ledgerAccounts,
-  filterLedgerAccounts,
+  accounts,
+  filterAccounts,
   institutionsOptions,
   hasProductOverride,
   addProductOverride,
@@ -52,10 +52,10 @@ const Accounts: React.FC<AccountsProps> = ({
   setActiveItemId,
   productOverrideId,
   currentId,
-  filterLedgerCustomersById,
-  filterLedgerCardsById,
-  filterLedgerTransactionsById,
-  filterLedgerStatementsById,
+  filterCustomersById,
+  filterCardsById,
+  filterTransactionsById,
+  filterStatementsById,
   currentCurrencyCode,
   currentAccountBalanceLimit,
   currentAccountBalanceLimitShared,
@@ -76,7 +76,7 @@ const Accounts: React.FC<AccountsProps> = ({
           openModal({ name: modalNamesConst.EDIT_PRODUCT });
         }
       } else {
-        addProductOverride({ withOpenProductModal: true });
+        addProductOverride(currentId, { withOpenProductModal: true });
       }
     },
     [
@@ -99,19 +99,19 @@ const Accounts: React.FC<AccountsProps> = ({
       { isDivider: true },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({ account_id: currentId }),
+        action: () => filterCustomersById({ account_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({ account_id: currentId }),
+        action: () => filterCardsById({ account_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({ account_id: currentId }),
+        action: () => filterStatementsById({ account_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({ account_id: currentId }),
+        action: () => filterTransactionsById({ account_id: currentId }),
       },
       { isDivider: true },
       {
@@ -140,10 +140,10 @@ const Accounts: React.FC<AccountsProps> = ({
     [
       hasProductOverride,
       handleEditOverride,
-      filterLedgerCustomersById,
-      filterLedgerTransactionsById,
-      filterLedgerStatementsById,
-      filterLedgerCardsById,
+      filterCustomersById,
+      filterTransactionsById,
+      filterStatementsById,
+      filterCardsById,
       currentId,
       currentCurrencyCode,
       currentAccountBalanceLimit,
@@ -164,13 +164,13 @@ const Accounts: React.FC<AccountsProps> = ({
   return (
     <PageTemplate
       title="Accounts"
-      data={ledgerAccounts}
+      data={accounts}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_ACCOUNT}
       editModalName={modalNamesConst.EDIT_ACCOUNT}
       editableItemName="account"
       contextMenuItems={contextMenuItems}
-      filterAction={filterLedgerAccounts}
+      filterAction={filterAccounts}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

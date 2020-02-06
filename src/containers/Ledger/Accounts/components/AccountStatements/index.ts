@@ -27,8 +27,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getLedgerAccountStatements: handleGetLedgerAccountStatements,
-    getLedgerStatementAprs: handleGetLedgerStatementAprs,
+    getAccountStatements: handleGetLedgerAccountStatements,
+    getStatementAprs: handleGetLedgerStatementAprs,
   },
   dispatch
 );

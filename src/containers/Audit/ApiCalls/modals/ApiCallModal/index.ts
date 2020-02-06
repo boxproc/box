@@ -21,7 +21,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getDetailsAuditApiCalls: handleGetDetailsAuditApiCalls,
+    getDetailsApiCalls: handleGetDetailsAuditApiCalls,
   },
   dispatch
 );

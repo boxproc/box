@@ -32,7 +32,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  ledgerAccounts: selectLedgerAccounts(state),
+  accounts: selectLedgerAccounts(state),
   institutionsOptions: selectInstitutionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
@@ -44,11 +44,11 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerAccounts: handleFilterLedgerAccounts,
-    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
-    filterLedgerCardsById: handleFilterByIdLedgerCards,
-    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
-    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
+    filterAccounts: handleFilterLedgerAccounts,
+    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterCardsById: handleFilterByIdLedgerCards,
+    filterTransactionsById: handleFilterByIdLedgerTransactions,
+    filterStatementsById: handleFilterByIdLedgerStatements,
     addProductOverride: handleAddProductOverride,
     setActiveItemId: handleSetActiveItemId,
     resetAccounts,

@@ -25,14 +25,14 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  auditScheduledJobs: selectAuditScheduledJobs(state),
+  scheduledJobs: selectAuditScheduledJobs(state),
   currentSchedulerId: selectAuditScheduledJobsSchedulerId(state),
-  currentScheduledJobsName: selectAuditScheduledJobsSchedulerName(state),
+  currentScheduledJobName: selectAuditScheduledJobsSchedulerName(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAuditScheduledJobs: handleFilterAuditScheduledJobs,
+    filterScheduledJobs: handleFilterAuditScheduledJobs,
     getLogData: handleGetLogData,
     resetScheduledJobs,
   },

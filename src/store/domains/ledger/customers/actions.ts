@@ -46,7 +46,7 @@ import { Thunk } from 'types';
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
-export type HandleDeleteLedgerCustomer = () => Thunk<void>;
+export type HandleDeleteLedgerCustomer = (id: number) => Thunk<void>;
 
 export type AddLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
   AddLedgerCustomerAction;
@@ -133,13 +133,10 @@ export const addRepaymentDirectDebit: AddRepaymentDirectDebit = data => ({
   payload: api.addRepaymentDirectDebit(data),
 });
 
-export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = () =>
-  async (dispatch, getState) => {
+export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = id =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const id = selectActiveItemId(state);
-
         await dispatch(deleteLedgerCustomer(id));
         dispatch(closeModal(modalNamesConst.EDIT_CUSTOMER));
       },

@@ -6,7 +6,6 @@ import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts'
 import { closeModal, openModal } from 'store/domains/modals';
 
 import {
-  selectActiveItemId,
   selectIsAccessibleFiltering,
   setActiveItemId,
   setIsOpenFilter,
@@ -53,7 +52,10 @@ export type FilterLedgerAccounts = (data: Partial<LedgerAccountsFilterPrepared>)
 export type HandleFilterLedgerAccounts = () => Thunk<void>;
 
 export type AddProductOverride = (accountId: number) => AddProductOverrideAction;
-export type HandleAddProductOverride = (data?: { withOpenProductModal?: boolean }) => Thunk<void>;
+export type HandleAddProductOverride = (
+  accountId: number,
+  data?: { withOpenProductModal?: boolean }
+) => Thunk<void>;
 
 export type FilterLedgerAccountsById = (id: LedgerId) => FilterLedgerAccountsByIdAction;
 export type HandleFilterLedgerAccountsById = (id: LedgerId) => Thunk<void>;
@@ -139,14 +141,11 @@ export const handleUpdateLedgerAccount: HandleUpdateLedgerAccount = data =>
   };
 
 export const handleOrderLedgerAccountCard: HandleOrderLedgerAccountCard = accountId =>
-  async (dispatch, getState) => {
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const currentAccountId = selectActiveItemId(state);
-
         await dispatch(orderLedgerAccountCard(accountId));
-        await dispatch(handleGetLedgerAccountCards(currentAccountId));
+        await dispatch(handleGetLedgerAccountCards(accountId));
       },
       dispatch
     );
@@ -171,13 +170,13 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = data =>
     );
   };
 
-export const handleAddProductOverride: HandleAddProductOverride = (withOpenProductModal) =>
-  async (dispatch, getState) => {
+export const handleAddProductOverride: HandleAddProductOverride = (
+  accountId,
+  withOpenProductModal
+) =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const accountId = selectActiveItemId(state);
-
         const res = await dispatch(addProductOverride(accountId)) as any;
 
         await dispatch(handleFilterLedgerAccounts());

@@ -13,34 +13,34 @@ import {
 } from 'store/domains';
 
 interface AccountCardsProps {
-  ledgerAccountCurrentId: number;
-  getLedgerAccountCards: HandleGetLedgerAccountCards;
-  ledgerAccountCards: Array<LedgerAccountsCardsItemPrepared>;
-  orderLedgerAccountCard: HandleOrderLedgerAccountCard;
+  accountCurrentId: number;
+  getAccountCards: HandleGetLedgerAccountCards;
+  accountCards: Array<LedgerAccountsCardsItemPrepared>;
+  orderAccountCard: HandleOrderLedgerAccountCard;
   isOrderingCard: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
 }
 
 export const Cards: React.FC<AccountCardsProps> = ({
-  getLedgerAccountCards,
-  ledgerAccountCurrentId,
-  ledgerAccountCards,
-  orderLedgerAccountCard,
+  getAccountCards,
+  accountCurrentId,
+  accountCards,
+  orderAccountCard,
   onCancel,
   isOrderingCard,
   isReadOnly,
 }) => {
   React.useEffect(
     () => {
-      getLedgerAccountCards(ledgerAccountCurrentId);
+      getAccountCards(accountCurrentId);
     },
-    [getLedgerAccountCards, ledgerAccountCurrentId]
+    [getAccountCards, accountCurrentId]
   );
 
   const handleOrderLedgerAccountCard = React.useCallback(
-    () => orderLedgerAccountCard(ledgerAccountCurrentId),
-    [ledgerAccountCurrentId, orderLedgerAccountCard]
+    () => orderAccountCard(accountCurrentId),
+    [accountCurrentId, orderAccountCard]
   );
 
   return (
@@ -60,7 +60,7 @@ export const Cards: React.FC<AccountCardsProps> = ({
         <Table
           title="Account Cards"
           pageSize={8}
-          data={ledgerAccountCards}
+          data={accountCards}
           columns={tableColumns}
           isSmaller={true}
         />

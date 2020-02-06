@@ -40,7 +40,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getDictionaryCardStatuses: handleGetDictionaryCardStatuses,
-    changeLedgerCardStatus: handleChangeLedgerCardStatus,
+    changeCardStatus: handleChangeLedgerCardStatus,
   },
   dispatch
 );

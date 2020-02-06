@@ -22,29 +22,29 @@ import { SelectValue } from 'types';
 export interface CustomersProps {
   institutionsOptions: Array<SelectValue>;
   customers: Array<LedgerCustomerItemPrepared>;
-  filterLedgerCustomers: HandleFilterLedgerCustomers;
-  deleteLedgerCustomer: HandleDeleteLedgerCustomer;
+  filterCustomers: HandleFilterLedgerCustomers;
+  deleteCustomer: HandleDeleteLedgerCustomer;
   currentCustomerName: string;
   resetCustomers: ResetCustomers;
   currentId: number;
-  filterLedgerCardsById: HandleFilterLedgerCardsById;
-  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
-  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
-  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
+  filterCardsById: HandleFilterLedgerCardsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterStatementsById: HandleFilterLedgerStatementsById;
+  filterAccountsById: HandleFilterLedgerAccountsById;
   isLoading: boolean;
 }
 
 const Customers: React.FC<CustomersProps> = ({
   institutionsOptions,
   customers,
-  filterLedgerCustomers,
-  deleteLedgerCustomer,
+  filterCustomers,
+  deleteCustomer,
   currentCustomerName,
   currentId,
-  filterLedgerCardsById,
-  filterLedgerTransactionsById,
-  filterLedgerStatementsById,
-  filterLedgerAccountsById,
+  filterCardsById,
+  filterTransactionsById,
+  filterStatementsById,
+  filterAccountsById,
   resetCustomers,
   isLoading,
 }) => {
@@ -60,35 +60,35 @@ const Customers: React.FC<CustomersProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
-        action: deleteLedgerCustomer,
+        action: () => deleteCustomer(currentId),
         withConfirmation: true,
         confirmationText: `Delete customer "${currentCustomerName}"?`,
       },
       { isDivider: true },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({ customer_id: currentId }),
+        action: () => filterAccountsById({ customer_id: currentId }),
       },
       {
         name: 'Cards',
-        action: () => filterLedgerCardsById({ customer_id: currentId }),
+        action: () => filterCardsById({ customer_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({ customer_id: currentId }),
+        action: () => filterStatementsById({ customer_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({ customer_id: currentId }),
+        action: () => filterTransactionsById({ customer_id: currentId }),
       },
     ],
     [
-      deleteLedgerCustomer,
+      deleteCustomer,
       currentCustomerName,
-      filterLedgerTransactionsById,
-      filterLedgerStatementsById,
-      filterLedgerCardsById,
-      filterLedgerAccountsById,
+      filterTransactionsById,
+      filterStatementsById,
+      filterCardsById,
+      filterAccountsById,
       currentId,
     ]
   );
@@ -110,7 +110,7 @@ const Customers: React.FC<CustomersProps> = ({
       newModalName={modalNamesConst.ADD_CUSTOMER}
       editModalName={modalNamesConst.EDIT_CUSTOMER}
       contextMenuItems={contextMenuItems}
-      filterAction={filterLedgerCustomers}
+      filterAction={filterCustomers}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

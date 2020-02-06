@@ -12,7 +12,7 @@ import { SelectValue } from 'types';
 
 interface StatusFormProps {
   getDictionaryCardStatuses: HandleGetDictionaryCardStatuses;
-  changeLedgerCardStatus: HandleChangeLedgerCardStatus;
+  changeCardStatus: HandleChangeLedgerCardStatus;
   cardStatusesOptions: Array<SelectValue>;
   isStatusesLoading: boolean;
   currentCardId: number;
@@ -24,7 +24,7 @@ type StatusFormAllProps = StatusFormProps & InjectedFormProps<{}, StatusFormProp
 const StatusForm: React.FC<StatusFormAllProps> = ({
   getDictionaryCardStatuses,
   cardStatusesOptions,
-  changeLedgerCardStatus,
+  changeCardStatus,
   isStatusesLoading,
   pristine,
   handleSubmit,
@@ -39,11 +39,11 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(() => changeLedgerCardStatus({
+    handleSubmit(() => changeCardStatus({
       cardStatusId: statusValue && statusValue.value,
       cardId: currentCardId,
     })),
-    [changeLedgerCardStatus, currentCardId, statusValue]
+    [changeCardStatus, currentCardId, statusValue]
   );
 
   return (

@@ -8,7 +8,7 @@ import {
   selectLedgerLimitAdjustment,
   selectLedgerManualTransaction,
   selectLedgerManualTransactionId,
-  selectLedgerManualTransactionModalIsLimit,
+  selectManualTransactionModalIsLimit,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state: StoreState) => ({
   ledgerManualTransaction: selectLedgerManualTransaction(state),
   ledgerLimitAdjustment: selectLedgerLimitAdjustment(state),
   transactionId: selectLedgerManualTransactionId(state),
-  isLimitAdjustment: selectLedgerManualTransactionModalIsLimit(state),
+  isLimitAdjustment: selectManualTransactionModalIsLimit(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

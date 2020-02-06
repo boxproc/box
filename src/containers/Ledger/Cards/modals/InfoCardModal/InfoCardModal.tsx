@@ -12,9 +12,10 @@ import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
 
 interface InfoAccountModalProps extends WithModalProps {
-  ledgerCurrentCard: Partial<LedgerCardItemPrepared>;
-  activateLedgerCard: HandleActivateLedgerCard;
+  currentCard: Partial<LedgerCardItemPrepared>;
+  activateCard: HandleActivateLedgerCard;
   currentStatus: number;
+  currentCardId: number;
   isFormDirty: boolean;
   isLoading: boolean;
 }
@@ -23,9 +24,10 @@ const modalName = modalNamesConst.INFO_CARDS;
 
 const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   closeModal,
-  ledgerCurrentCard,
-  activateLedgerCard,
+  currentCard,
+  activateCard,
   currentStatus,
+  currentCardId,
   isFormDirty,
   isLoading,
 }) => {
@@ -44,9 +46,9 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
     [closeModal]
   );
 
-  const handleActivateLedgerCard = React.useCallback(
-    () => activateLedgerCard(),
-    [activateLedgerCard]
+  const handleActivateCard = React.useCallback(
+    () => activateCard(currentCardId),
+    [activateCard, currentCardId]
   );
 
   return (
@@ -61,7 +63,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
         <Button
           disabled={isStatusActive || isLoading}
           type="reset"
-          onClick={handleActivateLedgerCard}
+          onClick={handleActivateCard}
           text={buttonText}
           isFocused={true}
         />
@@ -69,11 +71,9 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       <Hr />
       <StatusForm />
       <Hr />
-      <CardForm initialValues={ledgerCurrentCard} />
+      <CardForm initialValues={currentCard} />
       <Hr />
-      <Flex
-        justifyContent="flex-end"
-      >
+      <Flex justifyContent="flex-end">
         <Button
           rightPosition={true}
           onClick={handleOnCancel}

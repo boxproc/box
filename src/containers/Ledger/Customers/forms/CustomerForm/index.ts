@@ -15,6 +15,7 @@ import {
   handleGetDictionaryCountries,
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
+  selectActiveItemId,
   selectCountryCodesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
@@ -31,16 +32,17 @@ const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
-  ledgerCurrentCustomerName: selectLedgerCurrentCustomerName(state),
+  currentCustomerName: selectLedgerCurrentCustomerName(state),
   countryCodes: selectCountryCodesOptions(state),
+  currentId: selectActiveItemId(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addLedgerCustomer: handleAddLedgerCustomer,
-    deleteLedgerCustomer: handleDeleteLedgerCustomer,
-    updateLedgerCustomer: handleUpdateLedgerCustomer,
+    addCustomer: handleAddLedgerCustomer,
+    deleteCustomer: handleDeleteLedgerCustomer,
+    updateCustomer: handleUpdateLedgerCustomer,
     loadCountryCodes: handleGetDictionaryCountries,
   },
   dispatch

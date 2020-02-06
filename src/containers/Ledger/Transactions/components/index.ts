@@ -1,4 +1,4 @@
-export { default as LedgerCurrentTransactionBalance } from './LedgerCurrentTransactionBalance';
-export { default as LedgerCurrentTransactionCard } from './LedgerCurrentTransactionCard';
-export { default as LedgerCurrentTransactionGeneral } from './LedgerCurrentTransactionGeneral';
+export { default as CurrentTransactionBalance } from './CurrentTransactionBalance';
+export { default as CurrentTransactionCard } from './CurrentTransactionCard';
+export { default as CurrentTransactionGeneral } from './CurrentTransactionGeneral';
 export * from './tableColumns';

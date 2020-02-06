@@ -8,13 +8,13 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { LedgerTransactionForm } from 'containers/Ledger/Transactions/forms';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
 
-import { PayloadLedgerTransactionModal } from 'store/domains';
+import { PayloadTransactionModal } from 'store/domains';
 import { dateUtil } from 'utils';
 
 interface TransactionModalProps extends WithModalProps {
   currentTransactionId: number;
   transactionAmount: number;
-  payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
+  payloadTransactionModal: PayloadTransactionModal;
   isConvertibleToLoan: boolean;
 }
 
@@ -23,7 +23,7 @@ const modalName = modalNamesConst.TRANSACTION;
 const TransactionModal: React.FC<TransactionModalProps> = ({
   closeModal,
   currentTransactionId,
-  payloadLedgerTransactionModal,
+  payloadTransactionModal,
   transactionAmount,
   isReadOnly,
   isConvertibleToLoan,
@@ -34,8 +34,8 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   );
 
   const activeTab = React.useMemo(
-    () => payloadLedgerTransactionModal && payloadLedgerTransactionModal.activeTab,
-    [payloadLedgerTransactionModal]
+    () => payloadTransactionModal && payloadTransactionModal.activeTab,
+    [payloadTransactionModal]
   );
 
   const convertToLoanInitValues = React.useMemo(

@@ -18,23 +18,23 @@ import { dateUtil } from 'utils';
 
 export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValue>;
-  auditScheduledJobs: Array<AuditScheduledJobsItemPrepared>;
-  filterAuditScheduledJobs: HandleFilterAuditScheduledJobs;
+  scheduledJobs: Array<AuditScheduledJobsItemPrepared>;
+  filterScheduledJobs: HandleFilterAuditScheduledJobs;
   getLogData: HandleGetLogData;
   resetScheduledJobs: ResetScheduledJobs;
   currentSchedulerId: number;
-  currentScheduledJobsName: string;
+  currentScheduledJobName: string;
   isLoading: boolean;
 }
 
 const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
   institutionsOptions,
-  auditScheduledJobs,
-  filterAuditScheduledJobs,
+  scheduledJobs,
+  filterScheduledJobs,
   resetScheduledJobs,
   getLogData,
   currentSchedulerId,
-  currentScheduledJobsName,
+  currentScheduledJobName,
   isLoading,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
@@ -58,21 +58,21 @@ const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
         action: () => getLogData({
           id: currentSchedulerId,
           name: systemMonitorTables.SCHEDULER_JOBS,
-          title: currentScheduledJobsName,
+          title: currentScheduledJobName,
         }),
       },
     ],
-    [getLogData, currentSchedulerId, currentScheduledJobsName]
+    [getLogData, currentSchedulerId, currentScheduledJobName]
   );
 
   return (
     <PageTemplate
       title="Scheduled Jobs"
-      data={auditScheduledJobs}
+      data={scheduledJobs}
       columns={tableColumns}
       isDownloadButton={true}
       isLoading={isLoading}
-      filterAction={filterAuditScheduledJobs}
+      filterAction={filterScheduledJobs}
       contextMenuItems={contextMenuItems}
       initialFilterValues={{
         institutionId: institutionsOptions[0],

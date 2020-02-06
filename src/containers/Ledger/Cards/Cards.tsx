@@ -20,24 +20,24 @@ import { SelectValue } from 'types';
 
 export interface CardsProps {
   currentId: number;
-  ledgerCards: Array<LedgerCardItemPrepared>;
-  filterLedgerCards: HandleFilterLedgerCards;
+  cards: Array<LedgerCardItemPrepared>;
+  filterCards: HandleFilterLedgerCards;
   institutionsOptions: Array<SelectValue>;
-  filterLedgerCustomersById: HandleFilterLedgerCustomersById;
-  filterLedgerAccountsById: HandleFilterLedgerAccountsById;
-  filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
-  filterLedgerStatementsById: HandleFilterLedgerStatementsById;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterStatementsById: HandleFilterLedgerStatementsById;
   resetCards: ResetCards;
   isLoading: boolean;
 }
 
 const Cards: React.FC<CardsProps> = ({
-  ledgerCards,
-  filterLedgerCards,
-  filterLedgerCustomersById,
-  filterLedgerAccountsById,
-  filterLedgerTransactionsById,
-  filterLedgerStatementsById,
+  cards,
+  filterCards,
+  filterCustomersById,
+  filterAccountsById,
+  filterTransactionsById,
+  filterStatementsById,
   institutionsOptions,
   currentId,
   resetCards,
@@ -55,26 +55,26 @@ const Cards: React.FC<CardsProps> = ({
       { isDivider: true },
       {
         name: 'Accounts',
-        action: () => filterLedgerAccountsById({ card_id: currentId }),
+        action: () => filterAccountsById({ card_id: currentId }),
       },
       {
         name: 'Customers',
-        action: () => filterLedgerCustomersById({ card_id: currentId }),
+        action: () => filterCustomersById({ card_id: currentId }),
       },
       {
         name: 'Statements',
-        action: () => filterLedgerStatementsById({ card_id: currentId }),
+        action: () => filterStatementsById({ card_id: currentId }),
       },
       {
         name: 'Transactions',
-        action: () => filterLedgerTransactionsById({ card_id: currentId }),
+        action: () => filterTransactionsById({ card_id: currentId }),
       },
     ],
     [
-      filterLedgerCustomersById,
-      filterLedgerTransactionsById,
-      filterLedgerStatementsById,
-      filterLedgerAccountsById,
+      filterCustomersById,
+      filterTransactionsById,
+      filterStatementsById,
+      filterAccountsById,
       currentId,
     ]
   );
@@ -91,11 +91,11 @@ const Cards: React.FC<CardsProps> = ({
   return (
     <PageTemplate
       title="Cards"
-      data={ledgerCards}
+      data={cards}
       columns={tableColumns}
       editModalName={modalNamesConst.INFO_CARDS}
       contextMenuItems={contextMenuItems}
-      filterAction={filterLedgerCards}
+      filterAction={filterCards}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

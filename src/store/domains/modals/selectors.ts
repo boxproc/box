@@ -13,14 +13,14 @@ export const selectPayloadConfirmationModal = (state: StoreState) =>
 
 export const selectPayloadLogModal = (state: StoreState) => state.modals.payloadLogModal;
 
-export const selectPayloadLedgerManualTransactionModal = (state: StoreState) =>
-  state.modals.payloadLedgerManualTransactionModal;
+export const selectPayloadManualTransactionModal = (state: StoreState) =>
+  state.modals.payloadManualTransactionModal;
 
-export const selectLedgerManualTransactionModalIsLimit = (state: StoreState) =>
-  state.modals.payloadLedgerManualTransactionModal.isLimitAdjustmentMode;
+export const selectManualTransactionModalIsLimit = (state: StoreState) =>
+  state.modals.payloadManualTransactionModal.isLimitAdjustmentMode;
 
-export const selectPayloadLedgerTransactionModal = (state: StoreState) =>
-  state.modals.payloadLedgerTransactionModal;
+export const selectPayloadTransactionModal = (state: StoreState) =>
+  state.modals.payloadTransactionModal;
 
 export const selectPayloadSettleTransactionModal = (state: StoreState) =>
   state.modals.payloadSettleTransactionModal;

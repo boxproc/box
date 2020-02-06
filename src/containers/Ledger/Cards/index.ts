@@ -25,18 +25,18 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  ledgerCards: selectLedgerCards(state),
+  cards: selectLedgerCards(state),
   currentId: selectActiveItemId(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerCards: handleFilterLedgerCards,
-    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
-    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
-    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
-    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterCards: handleFilterLedgerCards,
+    filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterStatementsById: handleFilterByIdLedgerStatements,
+    filterTransactionsById: handleFilterByIdLedgerTransactions,
     resetCards,
   },
   dispatch

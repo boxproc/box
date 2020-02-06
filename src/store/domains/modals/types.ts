@@ -24,7 +24,7 @@ export interface PayloadLogModal {
   logLocation?: string;
 }
 
-export interface PayloadLedgerManualTransactionModal {
+export interface PayloadManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
   balanceLimit: string;
@@ -32,7 +32,7 @@ export interface PayloadLedgerManualTransactionModal {
   isLimitAdjustmentMode?: boolean;
 }
 
-export interface PayloadLedgerTransactionModal {
+export interface PayloadTransactionModal {
   activeTab?: number;
 }
 
@@ -46,7 +46,7 @@ export interface ModalsState {
   payloadMessageModal: PayloadMessageModal;
   payloadConfirmationModal: PayloadConfirmationModal;
   payloadLogModal: PayloadLogModal;
-  payloadLedgerManualTransactionModal: PayloadLedgerManualTransactionModal;
-  payloadLedgerTransactionModal: PayloadLedgerTransactionModal;
+  payloadManualTransactionModal: PayloadManualTransactionModal;
+  payloadTransactionModal: PayloadTransactionModal;
   payloadSettleTransactionModal: PayloadSettleTransactionModal;
 }

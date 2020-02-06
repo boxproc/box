@@ -10,6 +10,7 @@ import {
   createLoadingSelector,
   handleActivateLedgerCard,
   LedgerCardsActionTypes,
+  selectActiveItemId,
   selectCurrentCardStatus,
   selectLedgerCardValues,
 } from 'store/domains';
@@ -24,13 +25,14 @@ const dirty = isDirty(formNamesConst.CHANGE_CARD_STATUS);
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   isLoading: loadingSelector(state),
-  ledgerCurrentCard: selectLedgerCardValues(state),
+  currentCard: selectLedgerCardValues(state),
   currentStatus: selectCurrentCardStatus(state),
+  currentCardId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    activateLedgerCard: handleActivateLedgerCard,
+    activateCard: handleActivateLedgerCard,
   },
   dispatch
 );

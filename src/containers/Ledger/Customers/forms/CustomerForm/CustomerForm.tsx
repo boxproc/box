@@ -19,15 +19,16 @@ import { SelectValue } from 'types';
 
 interface EditCustomerFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
-  addLedgerCustomer: HandleAddLedgerCustomer;
-  deleteLedgerCustomer: HandleDeleteLedgerCustomer;
-  updateLedgerCustomer: HandleUpdateLedgerCustomer;
-  ledgerCurrentCustomerName: string;
+  addCustomer: HandleAddLedgerCustomer;
+  deleteCustomer: HandleDeleteLedgerCustomer;
+  updateCustomer: HandleUpdateLedgerCustomer;
+  currentCustomerName: string;
   identificationTypeValue: SelectValue;
   isEditMode?: boolean;
   loadCountryCodes: HandleGetDictionaryCountries;
   countryCodes: Array<SelectValue>;
   isReadOnly: boolean;
+  currentId: number;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &
@@ -36,17 +37,18 @@ type EditCustomerFormAllProps = EditCustomerFormProps &
 const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   onCancel,
   handleSubmit,
-  addLedgerCustomer,
-  deleteLedgerCustomer,
-  updateLedgerCustomer,
+  addCustomer,
+  deleteCustomer,
+  updateCustomer,
   dirty,
   pristine,
-  ledgerCurrentCustomerName,
+  currentCustomerName,
   isEditMode,
   identificationTypeValue,
   loadCountryCodes,
   countryCodes,
   isReadOnly,
+  currentId,
 }) => {
   React.useEffect(
     () => {
@@ -56,8 +58,8 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   );
 
   const submitAction = React.useMemo(
-    () => isEditMode ? updateLedgerCustomer : addLedgerCustomer,
-    [isEditMode, updateLedgerCustomer, addLedgerCustomer]
+    () => isEditMode ? updateCustomer : addCustomer,
+    [isEditMode, updateCustomer, addCustomer]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -69,6 +71,11 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
     () => identificationTypeValue
       && identificationTypeValue.value !== identificationTypesCodes.NO_IDENTIFICATION,
     [identificationTypeValue]
+  );
+
+  const handleDeleteCustomer = React.useCallback(
+    () => deleteCustomer(currentId),
+    [deleteCustomer, currentId]
   );
 
   return (
@@ -91,8 +98,8 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
               iconName={iconNamesConst.DELETE}
               type="reset"
               withConfirmation={true}
-              confirmationText={`Delete customer "${ledgerCurrentCustomerName}"?`}
-              onClick={deleteLedgerCustomer}
+              confirmationText={`Delete customer "${currentCustomerName}"?`}
+              onClick={handleDeleteCustomer}
             />
           )}
         </div>

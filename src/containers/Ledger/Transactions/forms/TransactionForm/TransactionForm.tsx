@@ -8,19 +8,19 @@ import { Button, Hr, Tabs, TabsPanel } from 'components';
 import { formNamesConst } from 'consts';
 
 import {
-  LedgerCurrentTransactionBalance,
-  LedgerCurrentTransactionCard,
-  LedgerCurrentTransactionGeneral,
+  CurrentTransactionBalance,
+  CurrentTransactionCard,
+  CurrentTransactionGeneral,
 } from 'containers/Ledger/Transactions/components';
 
-interface LedgerTransactionFormProps {
+interface TransactionFormProps {
   onCancel: () => void;
 }
 
-type TransactionsFilterFormAllProps = LedgerTransactionFormProps &
-  InjectedFormProps<{}, LedgerTransactionFormProps>;
+type TransactionsFilterFormAllProps = TransactionFormProps &
+  InjectedFormProps<{}, TransactionFormProps>;
 
-const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
+const TransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
   onCancel,
 }) => {
   return (
@@ -28,13 +28,13 @@ const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
       <form>
         <Tabs>
           <TabsPanel title="General">
-            <LedgerCurrentTransactionGeneral />
+            <CurrentTransactionGeneral />
           </TabsPanel>
           <TabsPanel title="Card">
-            <LedgerCurrentTransactionCard />
+            <CurrentTransactionCard />
           </TabsPanel>
           <TabsPanel title="Balance">
-            <LedgerCurrentTransactionBalance />
+            <CurrentTransactionBalance />
           </TabsPanel>
         </Tabs>
       </form>
@@ -49,8 +49,8 @@ const LedgerTransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, LedgerTransactionFormProps>({
+export default reduxForm<{}, TransactionFormProps>({
   form: formNamesConst.TRANSACTION,
   destroyOnUnmount: false,
   enableReinitialize: true,
-})(LedgerTransactionForm);
+})(TransactionForm);

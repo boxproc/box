@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  ledgerTransactions: selectLedgerTransactions(state),
+  transactions: selectLedgerTransactions(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
   isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
@@ -34,11 +34,11 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerTransactions: handleFilterLedgerTransactions,
-    filterLedgerCardsById: handleFilterByIdLedgerCards,
-    filterLedgerStatementsById: handleFilterByIdLedgerStatements,
-    filterLedgerCustomersById: handleFilterByIdLedgerCustomers,
-    filterLedgerAccountsById: handleFilterByIdLedgerAccounts,
+    filterTransactions: handleFilterLedgerTransactions,
+    filterCardsById: handleFilterByIdLedgerCards,
+    filterStatementsById: handleFilterByIdLedgerStatements,
+    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterAccountsById: handleFilterByIdLedgerAccounts,
     resetTransactions,
   },
   dispatch
