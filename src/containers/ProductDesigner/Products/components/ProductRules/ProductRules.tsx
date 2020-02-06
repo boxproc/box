@@ -352,9 +352,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 onContextMenuClick={onContextMenuClick}
                 setCursorCurrentPosition={() => setCurrentCursorPosition(textarea.selectionEnd)}
                 menuId="rulesCodeContextMenu"
-                checkJSSyntax={true}
                 fontSize={11}
-                height="calc(100vh - 350px)"
+                height="calc(100vh - 250px)"
                 readOnly={isReadOnly}
               />
             </Box>
