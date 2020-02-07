@@ -14,6 +14,7 @@ import {
   selectActionTypesOptions,
   selectCurrentProductRule,
   selectCurrentProductScript,
+  selectCurrentProductType,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -29,6 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   currentProductScript: selectCurrentProductScript(state),
   actionTypesOptions: selectActionTypesOptions(state),
+  currentProductType: selectCurrentProductType(state),
   initialValues: {
     ...selectCurrentProductRule(state),
     ...formSelector(

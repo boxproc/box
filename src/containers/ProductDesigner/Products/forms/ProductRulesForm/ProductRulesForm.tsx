@@ -3,7 +3,7 @@ import React from 'react';
 import { rulesInitialFormValues } from 'containers/ProductDesigner/Products/consts';
 import RulesForm from './RulesForm';
 
-import { actionTypesCodeKeys, eventTypesCodeKeys } from 'consts';
+import { actionTypesCodeKeys, eventTypesCodeKeys, productTypesCodes } from 'consts';
 
 import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store/domains';
 
@@ -18,6 +18,7 @@ interface ProductRulesFormProps {
   isLoading: boolean;
   isReadOnly: boolean;
   actionTypesOptions: Array<SelectValue>;
+  currentProductType: SelectValue;
   rulesValues: {
     eventId: SelectValue;
     actionType: SelectValue;
@@ -34,10 +35,22 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   currentProductScript,
   isReadOnly,
   actionTypesOptions,
+  currentProductType,
 }) => {
   const [initialScript, setInitialScript] = React.useState(null);
 
   const { eventId, actionType } = rulesValues;
+
+  const isRevolvingCredit = React.useMemo(
+    () => {
+      if (!currentProductType) {
+        return false;
+      }
+
+      return currentProductType.value === productTypesCodes.REVOLVING_CREDIT;
+    },
+    [currentProductType]
+  );
 
   React.useEffect(
     () => {
@@ -79,6 +92,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
       updateProductRules={updateProductRules}
       rulesValues={rulesValues}
       actionTypesOptions={actionTypesOptions}
+      isRevolvingCredit={isRevolvingCredit}
       isReadOnly={isReadOnly}
     />
   );

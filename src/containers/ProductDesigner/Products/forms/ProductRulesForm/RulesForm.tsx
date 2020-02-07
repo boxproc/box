@@ -19,6 +19,7 @@ interface RulesFormProps {
   isReadOnly: boolean;
   actionTypesOptions: Array<SelectValue>;
   initialActionType: string | number;
+  isRevolvingCredit: boolean;
   rulesValues: {
     eventId: SelectValue;
     actionType: SelectValue;
@@ -42,6 +43,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   initialActionType,
   isLoading,
   isReadOnly,
+  isRevolvingCredit,
 }) => {
   const { eventId, actionType } = rulesValues;
 
@@ -91,9 +93,14 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
         filteredActionTypes = actionTypesOptions;
       }
 
+      if (!isRevolvingCredit) {
+        filteredActionTypes = filteredActionTypes
+          .filter(el => el.value !== actionTypesCodeKeys.MINIMUM_REPAYMENT_CALC);
+      }
+
       return filteredActionTypes;
     },
-    [eventId, actionType, actionTypesOptions, change]
+    [eventId, actionType, actionTypesOptions, change, isRevolvingCredit]
   );
 
   const handleGetRule = React.useCallback(
