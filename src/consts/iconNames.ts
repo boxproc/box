@@ -19,4 +19,6 @@ export enum iconNamesConst {
   FILE_PDF = 'filePdf',
   SEARCH = 'search',
   LOAN = 'loan',
+  ARROW_UP = 'arrowUp',
+  ARROW_DOWN = 'arrowDown',
 }

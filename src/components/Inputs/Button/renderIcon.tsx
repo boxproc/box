@@ -3,6 +3,8 @@ import React from 'react';
 import { Box } from '@rebass/grid';
 
 import {
+  ArrowDropDownIcon,
+  ArrowDropUpIcon,
   DeleteIcon,
   DownloadIcon,
   FileCsvIcon,
@@ -60,6 +62,10 @@ export const renderIcon = (name: string, size?: string) => {
       return (<Box mt="-1px" mr="2px"><FilePdfIcon size={size ? size : '14'} /></Box>);
     case iconNamesConst.SEARCH:
       return (<Box mt="-1px" mr="2px"><SearchIcon size={size ? size : '12'} /></Box>);
+    case iconNamesConst.ARROW_DOWN:
+      return (<ArrowDropDownIcon size={size ? size : '20'} />);
+    case iconNamesConst.ARROW_UP:
+      return (<ArrowDropUpIcon size={size ? size : '20'} />);
     default:
       return null;
   }

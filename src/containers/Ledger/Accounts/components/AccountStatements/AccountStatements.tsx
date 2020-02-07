@@ -108,8 +108,8 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
       {
         maxWidth: 120,
         Header: <TableHeader title="Repayment Amount" />,
-        accessor: 'minimumAmountDueRepayment',
-        Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
+        accessor: 'repaymentMinimumAmountDue',
+        Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
           <TableCell
             isNumber={true}
             value={props.value}

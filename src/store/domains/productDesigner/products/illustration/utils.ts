@@ -60,7 +60,7 @@ export const prepareProductIllustrationStatementsItem = (
     lastTransactionId: item.last_transaction_id,
     balanceOpen: stringsUtil.numberToFixed(item.balance_open, 2),
     balanceClose: stringsUtil.numberToFixed(item.balance_close, 2),
-    minimumAmountDueRepayment: stringsUtil.numberToFixed(item.minimum_amount_due_repayment, 2),
+    repaymentMinimumAmountDue: stringsUtil.numberToFixed(item.repayment_minimum_amount_due, 2),
     minimumRepayment: stringsUtil.numberToFixed(item.minimum_repayment, 2),
     startDate: item.start_date,
     endDate: item.end_date,
@@ -124,7 +124,7 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     installment_balance,
     fee,
     apr,
-    minimum_amount_due_repayment,
+    repayment_minimum_amount_due,
     amount,
     start_date,
     end_date,
@@ -139,6 +139,6 @@ export const prepareProductIllustrationData = (data: IllustrationProductLoanResp
     installmentBalance: stringsUtil.numberToFixed(installment_balance, 2),
     fee: stringsUtil.numberToFixed(fee, 2),
     apr: stringsUtil.numberToFixed(apr, 2),
-    minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
+    repaymentMinimumAmountDue: stringsUtil.numberToFixed(repayment_minimum_amount_due, 2),
   };
 };

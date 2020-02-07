@@ -106,8 +106,8 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
           </Box>
           <Box width={[1 / 6]} p="8px">
             <Field
-              id="minimumAmountDueRepayment"
-              name="minimumAmountDueRepayment"
+              id="repaymentMinimumAmountDue"
+              name="repaymentMinimumAmountDue"
               component={NumberFormatField}
               placeholder="0.00"
               fixedDecimalScale={true}

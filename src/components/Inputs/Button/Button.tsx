@@ -58,6 +58,11 @@ const Button: React.FC<ButtonProps> = ({
   hintStyle,
   withAnimation,
 }) => {
+  const buttonClasses = React.useMemo(
+    () => isFocused ? 'button is-focused' : 'button',
+    [isFocused]
+  );
+
   const handleClick = React.useCallback(
     disabled
       ? null
@@ -86,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
       hasIcon={!!iconName}
       withAnimation={withAnimation}
       textTransformNone={textTransformNone}
-      className={isFocused && 'is-focused'}
+      className={buttonClasses}
       isTabsTheme={isTabsTheme}
       onClick={handleClick}
     >
