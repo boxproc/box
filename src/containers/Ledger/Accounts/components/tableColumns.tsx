@@ -125,8 +125,8 @@ export const tableColumns = [
   {
     maxWidth: 150,
     Header: <TableHeader title="Amount Due Repayment" />,
-    accessor: 'amountDueRepayment',
-    Cell: (props: TCell<'amountDueRepayment'>) => (
+    accessor: 'repaymentAmountDue',
+    Cell: (props: TCell<'repaymentAmountDue'>) => (
       <TableCell
         value={props.value}
         isNumber={true}

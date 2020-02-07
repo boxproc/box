@@ -27,7 +27,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   num_of_interest_free_instllmnts: number;
   balance_settled: number;
   balance_available: number;
-  amount_due_repayment: number;
+  repayment_amount_due: number;
   balance_limit: number;
   balance_limit_shared: number;
   accrued_interest: number;
@@ -83,7 +83,7 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   productOverrideFlag?: boolean;
   balanceSettled: number;
   balanceAvailable: number;
-  amountDueRepayment: number;
+  repaymentAmountDue: number;
   balanceLimit: number;
   balanceLimitShared: number;
   accruedInterest: number;

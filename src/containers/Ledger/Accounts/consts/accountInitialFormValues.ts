@@ -3,7 +3,7 @@ import { dateUtil } from 'utils';
 export const accountInitialFormValues = {
   balanceSettled: '0.00',
   balanceAvailable: '0.00',
-  amountDueRepayment: '0.00',
+  repaymentAmountDue: '0.00',
   balanceLimit: '0.00',
   balanceLimitShared: '0.00',
   accruedInterest: '0.00',

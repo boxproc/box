@@ -311,8 +311,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
           <Box width={[1 / 7]} p="8px">
             <Field
-              id="amountDueRepayment"
-              name="amountDueRepayment"
+              id="repaymentAmountDue"
+              name="repaymentAmountDue"
               label="Amount Due Repayment"
               component={NumberFormatField}
               placeholder="0.00"
