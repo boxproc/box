@@ -217,6 +217,7 @@ export enum actionTypesCodeKeys {
   SET_APR = 'T',
   ADD_REWARD = 'R',
   ADD_FEE = 'F',
+  MINIMUM_REPAYMENT_CALC = 'C',
   UPDATE_AUX_COUNTER_1 = '1',
   UPDATE_AUX_COUNTER_2 = '2',
   UPDATE_AUX_COUNTER_3 = '3',
