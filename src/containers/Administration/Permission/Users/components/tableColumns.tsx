@@ -20,7 +20,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 250,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
@@ -30,7 +30,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 250,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (

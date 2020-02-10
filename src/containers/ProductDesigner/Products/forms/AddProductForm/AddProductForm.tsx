@@ -65,17 +65,17 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
             productType={productType}
             interestDistributionValue={interestDistributionValue}
           />
-          <Hr />
-          <OkCancelButtons
-            okText="Save"
-            cancelText="Close"
-            onCancel={onCancel}
-            rightPosition={true}
-            withCancelConfirmation={dirty}
-            disabledOk={pristine}
-          />
         </TabsPanel>
       </Tabs>
+      <Hr />
+      <OkCancelButtons
+        okText="Save"
+        cancelText="Close"
+        onCancel={onCancel}
+        rightPosition={true}
+        withCancelConfirmation={dirty}
+        disabledOk={pristine}
+      />
     </form >
   );
 };

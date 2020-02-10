@@ -50,6 +50,11 @@ const MessageModal: React.FC<MessageModalProps> = ({
     [isReLogin, setIsRelogin]
   );
 
+  const detailsButtonText = React.useMemo(
+    () => isVisibleDetail ? 'Hide Details' : 'Show Details',
+    [isVisibleDetail]
+  );
+
   const handleRelogin = React.useCallback(
     () => {
       storageUtil.clear();
@@ -93,7 +98,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
         {details && (
           <Box mt="5px" ml="10px">
             <Button
-              text={isVisibleDetail ? 'Hide Details' : 'Show Details'}
+              text={detailsButtonText}
               onClick={handleSetVisibleDetails}
             />
           </Box>

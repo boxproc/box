@@ -27,7 +27,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
       name={modalName}
       title="Add New Product"
       maxContainerWidth={1010}
-      minContainerHeight={550}
+      minContainerHeight={560}
       withCloseConfirmation={isFormDirty}
     >
       <AddProductForm onCancel={handleOnCancel} />

@@ -32,7 +32,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 300,
     minWidth: 140,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
@@ -44,7 +44,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 300,
     minWidth: 140,
     Header: <TableHeader title="Description" />,
     accessor: 'description',

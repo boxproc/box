@@ -4,13 +4,14 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'styled-components';
 
-import { Button, CircleList, Hr } from 'components';
+import { Button, CircleList } from 'components';
 
 import { iconNamesConst } from 'consts';
 
 const DashedBlock = styled.div`
   margin: 10px 0 20px;
   padding: 10px;
+  text-align: center;
   font-size: 14px;
   border: 1px dashed ${({ theme }) => theme.gray};
   font-size: 14px;
@@ -49,7 +50,6 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
       {code && (
         <DashedBlock>{code}</DashedBlock>
       )}
-      <Hr />
       <Flex
         justifyContent="space-between"
         alignItems="center"

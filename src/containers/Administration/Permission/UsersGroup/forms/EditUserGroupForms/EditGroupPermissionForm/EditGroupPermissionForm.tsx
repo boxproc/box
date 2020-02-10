@@ -59,7 +59,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Flex alignItems="flex-end">
+      <Flex alignItems="flex-start">
         <Box width={[1 / 2]} pb="15px" mr="15px">
           <Field
             id="uiItem"
@@ -71,7 +71,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             options={uiItemsOptions}
           />
         </Box>
-        <Box width="120px" pb="17px" mr="8px">
+        <Box width="120px" pt="27px" mr="8px">
           <Field
             id="permission"
             name="permission"
@@ -80,7 +80,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
             disabled={isLoading}
           />
         </Box>
-        <Box width={[1 / 3]} pb="21px">
+        <Box width={[1 / 3]} pt="27px">
           <Button
             iconName={iconNamesConst.PLUS}
             text={buttonText}

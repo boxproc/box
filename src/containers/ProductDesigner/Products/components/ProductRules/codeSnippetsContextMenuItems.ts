@@ -16,7 +16,7 @@ const snippets = [
   },
   {
     title: 'Function run()',
-    code: 'function run() {\n\xa0\xa0\xa0\xa0return ;\n}\nrun();',
+    code: 'function run() {\n\xa0\xa0\xa0\xa0return ;\n}',
     shiftCharCount: 28,
   },
   {

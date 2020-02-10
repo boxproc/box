@@ -48,6 +48,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 8px 10px 6px;
     border-radius: 2px;
+    border: 1px solid ${theme.colors.lightGray};
 
     &.is-focused:not(:disabled) {
       background-color: ${theme.colors.lighterGray};
@@ -67,6 +68,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
   ${({ isTabsTheme, theme }) => isTabsTheme && `
     background-color: transparent;
+    border: 0;
     border-bottom: 1px solid transparent;
 
     &.is-focused:not(:disabled) {
@@ -87,6 +89,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     padding: 0;
     background-color: transparent;
     border-radius: 0;
+    border: 0;
     border-bottom: 1px solid ${theme.colors.lightAccent};
 
     &:hover:not(:disabled),
@@ -100,7 +103,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ bordered, theme }) => bordered && `
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 2px;
-    padding: 8px 10px 7px;
+    padding: 8px 10px 6px;
     justify-content: center;
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;
@@ -139,6 +142,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `};
 
   &:disabled {
+    border-color: transparent;
     cursor: default;
 
     .text-wrapper,

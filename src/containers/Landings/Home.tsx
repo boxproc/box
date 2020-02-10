@@ -39,6 +39,16 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
     []
   );
 
+  const lastActivity = React.useMemo(
+    () => userData && userData.lastActivity,
+    [userData]
+  );
+
+  const userName = React.useMemo(
+    () => `${userData && userData.firstName} ${userData && userData.lastName}`,
+    [userData]
+  );
+
   const registrationPendingFlag = React.useMemo(
     () => storageUtil.getRegistrationPendingFlag(),
     []
@@ -50,11 +60,13 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
         {storageUtil.getFirstScreenFlag() && (
           <React.Fragment>
             <Paragraph bold={true} size={15}>
-              Welcome {`${userData && userData.firstName} ${userData && userData.lastName}`}!
+              Welcome {userName}!
             </Paragraph>
-            <SmallText>
-              Your last activity: {userData && userData.lastActivity}
-            </SmallText>
+            {lastActivity && (
+              <SmallText>
+                Your last activity: {lastActivity}
+              </SmallText>
+            )}
           </React.Fragment>
         )}
         {registrationPendingFlag && (

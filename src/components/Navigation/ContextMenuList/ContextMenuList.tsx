@@ -44,7 +44,6 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
       right: 0;
       top: 50%;
       margin-top: -12px;
-      z-index: 1;
     }
 
     &:hover > .arrow-icon {

@@ -40,6 +40,11 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
     [getInstitutionProducts, currentInstitutionId]
   );
 
+  const accountAliasAdditionalPlaceholder = React.useMemo(
+    () => accountAliasValue && 'Enter Account Alias Additional',
+    [accountAliasValue]
+  );
+
   return (
     <Flex alignItems="flex-start" flexWrap="wrap">
       <Box width={[1 / 4]} p="8px">
@@ -83,7 +88,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           name="accountAliasAdditional"
           component={InputField}
           label="Account Alias Additional"
-          placeholder={accountAliasValue && 'Enter Account Alias Additional'}
+          placeholder={accountAliasAdditionalPlaceholder}
           disabled={!accountAliasValue || isDisabled}
           hint={!accountAliasValue && 'Fill account alias'}
         />
