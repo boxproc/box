@@ -18,7 +18,7 @@ interface ProductRulesFormProps {
   isLoading: boolean;
   isReadOnly: boolean;
   actionTypesOptions: Array<SelectValue>;
-  currentProductType: SelectValue;
+  currentProductType: string | number;
   rulesValues: {
     eventId: SelectValue;
     actionType: SelectValue;
@@ -42,13 +42,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   const { eventId, actionType } = rulesValues;
 
   const isRevolvingCredit = React.useMemo(
-    () => {
-      if (!currentProductType) {
-        return false;
-      }
-
-      return currentProductType.value === productTypesCodes.REVOLVING_CREDIT;
-    },
+    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
     [currentProductType]
   );
 

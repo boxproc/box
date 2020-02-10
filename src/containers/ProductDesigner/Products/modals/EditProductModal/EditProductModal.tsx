@@ -7,12 +7,11 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
-import { SelectValue } from 'types';
 import { renderProductIcon } from 'utils/renderProductIcon';
 
 interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
-  currentProductType: SelectValue;
+  currentProductType: string | number;
   isProductOverride: boolean;
   isGeneralProductFormDirty: boolean;
   isProductDetailsFormDirty: boolean;
@@ -72,7 +71,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   );
 
   const TitleIcon = React.useMemo(
-    () => currentProductType && renderProductIcon(currentProductType.value),
+    () => currentProductType && renderProductIcon(currentProductType),
     [currentProductType]
   );
 

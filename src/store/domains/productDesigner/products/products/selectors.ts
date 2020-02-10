@@ -77,8 +77,8 @@ export const selectIsProductOverride = createSelector(
 );
 
 export const selectCurrentProductType = createSelector(
-  selectCurrentProduct,
-  product => product && product.productType
+  selectDefaultCurrentProduct,
+  product => product && product.product_type
 );
 
 export const selectDetailsCurrentProductDetails = (state: StoreState) =>
@@ -92,9 +92,7 @@ export const selectCurrentProductDetails = createSelector(
       return null;
     }
 
-    const type = productType.value;
-
-    return prepareProductDetailsData(product, type);
+    return prepareProductDetailsData(product, productType);
   }
 );
 

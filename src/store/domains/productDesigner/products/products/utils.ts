@@ -28,7 +28,6 @@ import {
   SavingsProductItemResp,
 } from './types';
 
-import { SelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
@@ -380,8 +379,7 @@ export const prepareDebitToSend = (data: DebitProductItem) => {
 };
 
 export const prepareProductDetailsDataToSend =
-  (product: any, productType: SelectValue) => {
-    const type = productType.value;
+  (product: any, type: string | number) => {
 
     if (type === productTypesCodes.DEBIT) {
       return {
@@ -414,8 +412,10 @@ export const prepareProductDetailsDataToSend =
   };
 
 export const prepareNewProductDataToSend = (product: Partial<NewProduct>) => {
+  const type = product.productType && product.productType.value;
+
   return {
     ...prepareGeneralProductDataToSend(product),
-    ...prepareProductDetailsDataToSend(product, product.productType),
+    ...prepareProductDetailsDataToSend(product, type),
   };
 };

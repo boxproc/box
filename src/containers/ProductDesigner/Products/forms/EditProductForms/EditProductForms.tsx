@@ -24,10 +24,9 @@ import {
 } from 'containers/ProductDesigner/Products/consts';
 
 import { productTypesCodes } from 'consts';
-import { SelectValue } from 'types';
 
 interface EditProductFormsProps {
-  currentProductType: SelectValue;
+  currentProductType: string | number;
   currentProductId: number;
   isProductOverride: boolean;
   isAnyFormDirty: boolean;
@@ -44,24 +43,12 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   isReadOnly,
 }) => {
   const isLoanType = React.useMemo(
-    () => {
-      if (!currentProductType) {
-        return false;
-      }
-
-      return currentProductType.value === productTypesCodes.LOAN;
-    },
+    () => currentProductType === productTypesCodes.LOAN,
     [currentProductType]
   );
 
   const isRevolvingCreditType = React.useMemo(
-    () => {
-      if (!currentProductType) {
-        return false;
-      }
-
-      return currentProductType.value === productTypesCodes.REVOLVING_CREDIT;
-    },
+    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
     [currentProductType]
   );
 
