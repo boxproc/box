@@ -32,7 +32,7 @@ interface TitleProps {
 }
 
 export const T2 = styled.h2<TitleProps>`
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   font-size: 22px;
   font-family: ${({ theme }) => theme.fonts.decorate};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};

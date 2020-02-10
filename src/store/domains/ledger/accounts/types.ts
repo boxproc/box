@@ -51,6 +51,7 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   amount_overdue_5_cycles: number;
   amount_overdue_6_cycles: number;
   amount_overdue_7_cycles: number;
+  total_overdue_amount: number;
   number_of_times_overdue_total: number;
   number_of_times_overdue_1_cycle: number;
   number_of_times_overdue_2_cycle: number;
@@ -107,6 +108,7 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   amountOverdue5Cycles: number;
   amountOverdue6Cycles: number;
   amountOverdue7Cycles: number;
+  totalOverdueAmount: number;
   numberOfTimesOverdueTotal: number;
   numberOfTimesOverdue1Cycle: number;
   numberOfTimesOverdue2Cycles: number;

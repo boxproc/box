@@ -46,7 +46,7 @@ const Wrapper = styled.header`
 
   .location {
     position: absolute;
-    right: 5px;
+    right: 21px;
     top: 100%;
     text-decoration: none;
     line-height: 1;

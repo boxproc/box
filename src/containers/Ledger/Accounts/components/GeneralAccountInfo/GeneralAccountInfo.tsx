@@ -28,19 +28,19 @@ export interface CustomerInfoProps {
   institutionsOptions: Array<SelectValue>;
   institutionProductsOptions: Array<SelectValue>;
   statusesOptions: Array<SelectValue>;
-  getInstitutionProducts: HandleGetInstitutionProducts;
-  getAccountStatuses: HandleGetDictionaryAccountStatuses;
-  getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
   currentInstitution: SelectValue;
   repaymentTypesOptions: Array<SelectValue>;
   isEditMode: boolean;
   hasProductOverride: boolean;
   isChosenLoanProductType: boolean;
   isChosenRevCreditProductType: boolean;
-  onCancel: () => void;
   dirty: boolean;
   pristine: boolean;
   isReadOnly: boolean;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  getAccountStatuses: HandleGetDictionaryAccountStatuses;
+  getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
+  onCancel: () => void;
 }
 
 const CustomerInfo: React.FC<CustomerInfoProps> = ({
@@ -202,6 +202,19 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               />
             </Box>
           )}
+          {isEditMode && (
+            <Box width="150px" p="8px">
+              <Field
+                id="statementCycleRepaymentDay"
+                name="statementCycleRepaymentDay"
+                component={InputField}
+                label="Statement Cycle Repayment Day"
+                placeholder="Enter Day"
+                readOnly={isReadOnly}
+                isNumber={true}
+              />
+            </Box>
+          )}
           {isChosenLoanProductType && (
             <React.Fragment>
               <Box width="150px" p="8px">
@@ -231,100 +244,50 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             </React.Fragment>
           )}
           {isChosenLoanProductType && !isEditMode && (
+            <Box width="150px" p="8px">
+              <Field
+                id="loanStartDate"
+                name="loanStartDate"
+                component={MaskField}
+                label="Loan Start Date"
+                placeholder={dateFormat.DATE}
+                mask={maskFormat.DATE}
+                readOnly={isReadOnly}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isDate,
+                ]}
+              />
+            </Box>
+          )}
+          {hasProductOverride && (
             <React.Fragment>
               <Box width="150px" p="8px">
                 <Field
-                  id="loanStartDate"
-                  name="loanStartDate"
+                  id="productOverrideId"
+                  name="productOverrideId"
+                  component={InputField}
+                  label="Product Override ID"
+                  placeholder="Enter ID"
+                  readOnly={true}
+                  isNumber={true}
+                />
+              </Box>
+              <Box width="120px" p="8px">
+                <Field
+                  id="dateOfProductOverride"
+                  name="dateOfProductOverride"
                   component={MaskField}
-                  label="Loan Start Date"
+                  label="Date of Product Override"
                   placeholder={dateFormat.DATE}
                   mask={maskFormat.DATE}
-                  readOnly={isReadOnly}
-                  validate={[
-                    formErrorUtil.required,
-                    formErrorUtil.isDate,
-                  ]}
+                  readOnly={true}
+                  validate={[formErrorUtil.isDate]}
                 />
               </Box>
             </React.Fragment>
           )}
-          {hasProductOverride && (
-            <Box width="150px" p="8px">
-              <Field
-                id="productOverrideId"
-                name="productOverrideId"
-                component={InputField}
-                label="Product Override ID"
-                placeholder="Enter ID"
-                readOnly={true}
-                isNumber={true}
-              />
-            </Box>
-          )}
-          {hasProductOverride && (
-            <Box width="120px" p="8px">
-              <Field
-                id="dateOfProductOverride"
-                name="dateOfProductOverride"
-                component={MaskField}
-                label="Date of Product Override"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
-                readOnly={true}
-                validate={[formErrorUtil.isDate]}
-              />
-            </Box>
-          )}
           <Hr />
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceSettled"
-              name="balanceSettled"
-              label="Balance Settled"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceAvailable"
-              name="balanceAvailable"
-              label="Balance Available"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="repaymentAmountDue"
-              name="repaymentAmountDue"
-              label="Amount Due Repayment"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
           <Box width={[1 / 7]} p="8px">
             <Field
               id="balanceLimit"
@@ -359,9 +322,58 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
           </Box>
           <Box width={[1 / 7]} p="8px">
             <Field
+              id="balanceSettled"
+              name="balanceSettled"
+              label="Balance Settled"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              readOnly={isEditMode || isReadOnly}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
+            />
+          </Box>
+          <Box width={[1 / 7]} p="8px">
+            <Field
+              id="balanceAvailable"
+              name="balanceAvailable"
+              label="Balance Available"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              readOnly={isEditMode || isReadOnly}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
+            />
+          </Box>
+          <Hr />
+          <Box width={[1 / 7]} p="8px">
+            <Field
+              id="repaymentAmountDue"
+              name="repaymentAmountDue"
+              label="Repayment Amount Due"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              readOnly={isEditMode || isReadOnly}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isNumber,
+              ]}
+            />
+          </Box>
+          <Box width={[1 / 7]} p="8px">
+            <Field
               id="accruedInterest"
               name="accruedInterest"
-              label="Accrued Interest"
+              label="Total Accrued Interest"
               component={NumberFormatField}
               placeholder="0.00"
               fixedDecimalScale={true}
@@ -377,13 +389,18 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             <React.Fragment>
               <Box width={[1 / 7]} p="8px">
                 <Field
-                  id="statementCycleRepaymentDay"
-                  name="statementCycleRepaymentDay"
-                  component={InputField}
-                  label="Statement Cycle Repayment Day"
-                  placeholder="Enter Day"
-                  readOnly={isReadOnly}
-                  isNumber={true}
+                  id="totalOverdueAmount"
+                  name="totalOverdueAmount"
+                  label="Total Overdue Amount"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  readOnly={isEditMode || isReadOnly}
+                  validate={[
+                    formErrorUtil.required,
+                    formErrorUtil.isNumber,
+                  ]}
                 />
               </Box>
               <Hr />
