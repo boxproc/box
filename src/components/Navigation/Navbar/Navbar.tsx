@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({
         )}
         {!hasChildren && isModalWindow && (
           <div
-            className={menuClasses.MENU_TITLE}
+            className={`${menuClasses.MENU_TITLE} is-cursor-pointer`}
             onClick={isModalWindow && handleOpenModalWindow}
           >
             {title}

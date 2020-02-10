@@ -26,6 +26,10 @@ export const NavListStyled = styled.div`
     &:hover .icon {
       color: ${({ theme }) => theme.colors.normalAccent};
     }
+
+    &.is-cursor-pointer {
+      cursor: pointer;
+    }
   }
 
   .${menuClasses.MENU_ITEM} {
