@@ -17,7 +17,7 @@ import { SelectValue } from 'types';
 
 interface ProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
-  productType: SelectValue;
+  productType: string;
   getProductDetails: HandleGetProductDetails;
   updateProductDetails: HandleUpdateProductDetails;
   isReadOnly: boolean;
@@ -58,7 +58,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductDetails
         interestDistributionValue={interestDistributionValue}
-        productType={productType && productType.value}
+        productType={productType}
         isReadOnly={isReadOnly}
         isUpdating={isUpdating}
       />
