@@ -86,6 +86,15 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [currenciesOptions, modalPayload, transactionTypes]
   );
 
+  const isReadonlyId = React.useMemo(
+    () => {
+      const id = modalPayload && modalPayload.accountId;
+
+      return Boolean(id);
+    },
+    [modalPayload]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -138,6 +147,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         onCancel={handleOnCancel}
         isLimitAdjustment={isLimitAdjustment}
         transactionTypes={transactionTypes}
+        isReadonly={isReadonlyId}
         isTransactionTypesLoading={isTransactionTypesLoading}
       />
     </Modal>

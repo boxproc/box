@@ -46,7 +46,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `}
 
   ${({ hasIcon, theme }) => !hasIcon && `
-    padding: 8px 10px 6px;
+    padding: 6px 10px;
     border-radius: 2px;
     border: 1px solid ${theme.colors.lightGray};
 
@@ -103,7 +103,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ bordered, theme }) => bordered && `
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 2px;
-    padding: 8px 10px 6px;
+    padding: 6px 10px;
     justify-content: center;
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;

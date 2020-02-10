@@ -15,6 +15,7 @@ interface TransactionRetrievingFormProps {
   retrieveTransaction: HandleRetrieveTransaction;
   isRetrieving: boolean;
   isRetrieved: boolean;
+  isReadonly: boolean;
   onCancel: () => void;
 }
 
@@ -26,6 +27,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
   handleSubmit,
   isRetrieving,
   isRetrieved,
+  isReadonly,
   onCancel,
 }) => {
   const buttonText = React.useMemo(
@@ -49,6 +51,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
             label="Transaction ID"
             component={InputField}
             isNumber={true}
+            readOnly={isReadonly}
             validate={[
               formErrorUtil.required,
               formErrorUtil.isInteger,
@@ -56,7 +59,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
             autoFocus={true}
           />
         </Box>
-        <Box pb="7px">
+        <Box ml="10px" pb="7px">
           <OkCancelButtons
             okText={buttonText}
             hideCancel={isRetrieved}

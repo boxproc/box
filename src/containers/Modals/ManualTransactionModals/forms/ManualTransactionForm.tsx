@@ -26,6 +26,7 @@ interface ManualTransactionFormProps {
   transactionTypes: Array<SelectValue>;
   isTransactionTypesLoading: boolean;
   isLimitAdjustment: boolean;
+  isReadonly: boolean;
   onCancel: () => void;
 }
 
@@ -39,6 +40,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   transactionTypes,
   isTransactionTypesLoading,
   isLimitAdjustment,
+  isReadonly,
   makeLedgerTransaction,
   makeLedgerLimitAdjustment,
   handleSubmit,
@@ -86,6 +88,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
               label="Account ID"
               placeholder="Enter ID"
               isNumber={true}
+              readOnly={isReadonly}
               validate={[
                 formErrorUtil.required,
                 formErrorUtil.isInteger,

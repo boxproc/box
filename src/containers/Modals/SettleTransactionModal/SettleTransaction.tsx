@@ -57,6 +57,15 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
     [payloadSettleTransactionModal]
   );
 
+  const isReadonlyId = React.useMemo(
+    () => {
+      const id = payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId;
+
+      return Boolean(id);
+    },
+    [payloadSettleTransactionModal]
+  );
+
   const handleCloseModal = React.useCallback(
     () => {
       closeModal(modalName);
@@ -77,6 +86,7 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
         isRetrieved={isRetrievedTransaction}
         retrieveTransaction={retrieveTransaction}
         initialValues={initialRetrievingFormValues}
+        isReadonly={isReadonlyId}
         onCancel={handleCloseModal}
       />
       {isRetrievedTransaction && (
