@@ -80,7 +80,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
       const productId = currentProduct.value;
       const product = institutionProducts.find(el => el.id === productId);
 
-      return product.productType;
+      return product && product.productType;
     },
     [institutionProducts, currentProduct]
   );

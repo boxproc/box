@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector } from 'redux-form';
+import { change, formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
@@ -30,6 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstitutionProducts: handleGetInstitutionProducts,
+    filterChange: change,
   },
   dispatch
 );

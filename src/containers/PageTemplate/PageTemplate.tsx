@@ -146,6 +146,16 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [isSearchable, data]
   );
 
+  const handleSetIsFilterable = React.useCallback(
+    () => setIsFilterable(!isFilterable),
+    [isFilterable]
+  );
+
+  const handleSetIsOpenFilter = React.useCallback(
+    () => setIsOpenFilter(!isOpenFilter),
+    [setIsOpenFilter, isOpenFilter]
+  );
+
   const handleOpenModal = React.useCallback(
     () => openModal({ name: newModalName }),
     [openModal, newModalName]
@@ -168,7 +178,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           <Button
             text={filterButtonText}
             iconName={iconNamesConst.FILTER}
-            onClick={() => setIsOpenFilter(!isOpenFilter)}
+            onClick={handleSetIsOpenFilter}
           />
         </Box>
       )}
@@ -200,7 +210,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               text="Search"
               disabled={!isData || isLoading}
               iconName={iconNamesConst.SEARCH}
-              onClick={() => setIsFilterable(!isFilterable)}
+              onClick={handleSetIsFilterable}
             />
           </Box>
         )}

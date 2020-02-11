@@ -5,9 +5,11 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Delimiter, InputField, SelectField } from 'components';
 
+import { formNamesConst } from 'consts';
+
 import { HandleGetInstitutionProducts } from 'store/domains';
 
-import { SelectValue } from 'types';
+import { ChangeFieldValue, SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface AccountsFilterProps {
@@ -18,6 +20,7 @@ interface AccountsFilterProps {
   institutionProductsOptions: Array<SelectValue>;
   isLoadingInstitutionProducts: boolean;
   isDisabled: boolean;
+  filterChange: ChangeFieldValue;
 }
 
 const AccountsFilter: React.FC<AccountsFilterProps> = ({
@@ -28,6 +31,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
   institutionProductsOptions,
   isLoadingInstitutionProducts,
   isDisabled,
+  filterChange,
 }) => {
   const currentInstitutionId = institutionValue && institutionValue.value;
 
@@ -38,6 +42,15 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
       }
     },
     [getInstitutionProducts, currentInstitutionId]
+  );
+
+  React.useEffect(
+    () => {
+      if (!accountAliasValue) {
+        filterChange(formNamesConst.FILTER, 'accountAliasAdditional', null);
+      }
+    },
+    [accountAliasValue]
   );
 
   const accountAliasAdditionalPlaceholder = React.useMemo(
