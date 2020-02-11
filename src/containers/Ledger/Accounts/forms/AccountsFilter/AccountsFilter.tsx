@@ -50,7 +50,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
         filterChange(formNamesConst.FILTER, 'accountAliasAdditional', null);
       }
     },
-    [accountAliasValue]
+    [accountAliasValue, filterChange]
   );
 
   const accountAliasAdditionalPlaceholder = React.useMemo(
