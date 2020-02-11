@@ -172,8 +172,8 @@ export const prepareDataToConvert = (data: Partial<LedgerConvertTransactionToLoa
   } = data;
 
   return {
-    num_of_installments: defNumOfInstallments,
-    num_of_interest_free_instllmnts: defNumOfIntrstFreeInstlmts,
+    num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
+    num_of_interest_free_instllmnts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
     account_id: stringsUtil.toNumber(accountId),
     transaction_id: stringsUtil.toNumber(transactionId),
     amount,

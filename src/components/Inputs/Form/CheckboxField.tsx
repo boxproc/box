@@ -19,8 +19,8 @@ const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
     padding-left: 7px;
   }
 
-  ${({ disabled, theme }) => disabled && `
-    background-color: ${theme.colors.white};
+  ${({ disabled }) => disabled && `
+    pointer-events: none;
     opacity: 0.5;
   `};
 `;

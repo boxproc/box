@@ -18,8 +18,8 @@ export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>
   } = data;
 
   return {
-    transaction_type_id: transactionType.value,
-    currency_num_code: currencyCode.value,
+    transaction_type_id: transactionType && transactionType.value,
+    currency_num_code: currencyCode && currencyCode.value,
     account_id: stringsUtil.toNumber(accountId),
     amount: stringsUtil.toNumber(amount),
     description,
