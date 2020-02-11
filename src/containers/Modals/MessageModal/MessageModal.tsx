@@ -23,8 +23,27 @@ const MessageModal: React.FC<MessageModalProps> = ({
   closeModal,
   setIsRelogin,
 }) => {
-  const [isVisibleDetail, setVisibleDetail] = React.useState(false);
-  const { title, message, details, statusCode, type } = payloadMessageModal;
+  const [isVisibleDetails, setVisibleDetails] = React.useState(false);
+
+  const message = React.useMemo(
+    () => payloadMessageModal && payloadMessageModal.message,
+    [payloadMessageModal]
+  );
+
+  const details = React.useMemo(
+    () => payloadMessageModal && payloadMessageModal.details,
+    [payloadMessageModal]
+  );
+
+  const statusCode = React.useMemo(
+    () => payloadMessageModal && payloadMessageModal.statusCode,
+    [payloadMessageModal]
+  );
+
+  const type = React.useMemo(
+    () => payloadMessageModal && payloadMessageModal.type,
+    [payloadMessageModal]
+  );
 
   const isSessionEnded = React.useMemo(
     () => statusCode === sessionStatusCodes.SESSION_TIMEOUT
@@ -51,8 +70,22 @@ const MessageModal: React.FC<MessageModalProps> = ({
   );
 
   const detailsButtonText = React.useMemo(
-    () => isVisibleDetail ? 'Hide Details' : 'Show Details',
-    [isVisibleDetail]
+    () => isVisibleDetails ? 'Hide Details' : 'Show Details',
+    [isVisibleDetails]
+  );
+
+  const modalTitle = React.useMemo(
+    () => {
+      const { title } = payloadMessageModal;
+
+      return isSessionEnded ? 'Session ended' : title;
+    },
+    [isSessionEnded, payloadMessageModal]
+  );
+
+  const modalWidth = React.useMemo(
+    () => isVisibleDetails ? 1010 : 350,
+    [isVisibleDetails]
   );
 
   const handleRelogin = React.useCallback(
@@ -69,15 +102,15 @@ const MessageModal: React.FC<MessageModalProps> = ({
   );
 
   const handleSetVisibleDetails = React.useCallback(
-    () => setVisibleDetail(!isVisibleDetail),
-    [setVisibleDetail, isVisibleDetail]
+    () => setVisibleDetails(!isVisibleDetails),
+    [setVisibleDetails, isVisibleDetails]
   );
 
   return (
     <Modal
       name={modalName}
-      title={isSessionEnded ? 'Session ended' : title}
-      maxContainerWidth={isVisibleDetail ? 1010 : 350}
+      title={modalTitle}
+      maxContainerWidth={modalWidth}
       type={modalTypesConst.MESSAGE_MODAL}
       hideCloseIcon={isReLogin}
       zIndex="102"
@@ -104,7 +137,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
           </Box>
         )}
       </Flex>
-      {isVisibleDetail && (
+      {isVisibleDetails && (
         <Box mt="15px">
           <Paragraph
             light={true}

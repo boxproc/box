@@ -45,6 +45,11 @@ const LogModal: React.FC<LogModalProps> = ({
     [data]
   );
 
+  const monoTitleStr = React.useMemo(
+    () => data && data.logLocation,
+    [data]
+  );
+
   const buttonText = React.useMemo(
     () => isLoading ? 'Refreshing...' : 'Refresh',
     [isLoading]
@@ -59,7 +64,7 @@ const LogModal: React.FC<LogModalProps> = ({
     <Modal
       name={modalName}
       title={title}
-      monoTitleStr={data && data.logLocation}
+      monoTitleStr={monoTitleStr}
       maxContainerWidth={1400}
       containerHeightFull={true}
     >

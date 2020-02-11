@@ -46,7 +46,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   `}
 
   ${({ hasIcon, theme }) => !hasIcon && `
-    padding: 6px 10px;
+    padding: 7px 10px 5px;
     border-radius: 2px;
     border: 1px solid ${theme.colors.lightGray};
 
@@ -68,6 +68,8 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
   ${({ isTabsTheme, theme }) => isTabsTheme && `
     background-color: transparent;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
     border: 0;
     border-bottom: 1px solid transparent;
 
@@ -103,7 +105,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   ${({ bordered, theme }) => bordered && `
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 2px;
-    padding: 6px 10px;
+    padding: 7px 10px 5px;
     justify-content: center;
     background-color: ${theme.colors.lighterGray};
     line-height: 1.25;

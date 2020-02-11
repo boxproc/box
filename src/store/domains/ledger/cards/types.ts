@@ -7,6 +7,7 @@ export interface LedgerCardItem {
   pan_masked: string;
   expiry_date: string;
   account_id: number;
+  customer_id: number;
   card_status_id: number;
   card_status_name: string;
 }
@@ -21,6 +22,7 @@ export interface LedgerCardItemPrepared {
   panMasked: string;
   expiryDate: string;
   accountId: number;
+  customerId: number;
   status: string;
 }
 
@@ -34,7 +36,7 @@ export interface LedgerCardsFilter {
 
 export interface LedgerCardsFilterPrepared {
   panAlias: string;
-  id: number;
+  cardId: number;
   accountId: number;
   customerId: number;
   institutionId: SelectValue;

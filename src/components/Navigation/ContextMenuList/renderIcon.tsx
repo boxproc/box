@@ -13,7 +13,7 @@ export const renderIcon = (name: string) => {
     case iconNamesConst.EDIT:
       return (<EditIcon size="13" />);
     case iconNamesConst.DELETE:
-      return (<DeleteIcon size="16" />);
+      return (<Box ml="-3px"><DeleteIcon size="16" /></Box>);
     case iconNamesConst.LOCK:
       return (<LockIcon size="15" />);
     case iconNamesConst.PLUS:

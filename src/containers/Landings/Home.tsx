@@ -77,6 +77,7 @@ const Home: React.FC<HomeProps> = ({ openModal }) => {
             <Flex
               alignItems="center"
               justifyContent="center"
+              mt="10px"
             >
               <Button
                 text="Enable second factor authentication"

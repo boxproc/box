@@ -105,7 +105,11 @@ const Root: React.FC<RootProps> = ({
     <React.Fragment>
       <RootWrapper isBlured={isRelogin}>
         <div>
-          <div>{isLoggedIn && (<Header />)}</div>
+          <div>
+            {isLoggedIn && (
+              <Header />
+            )}
+          </div>
           <main>
             <PagesWrapper>
               <Switch>

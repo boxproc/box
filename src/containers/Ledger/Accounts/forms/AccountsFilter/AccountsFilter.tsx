@@ -62,8 +62,8 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
       </Box>
       <Box width="130px" p="8px">
         <Field
-          id="id"
-          name="id"
+          id="accountId"
+          name="accountId"
           component={InputField}
           label="Account"
           placeholder="Enter ID"

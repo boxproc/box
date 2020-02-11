@@ -134,7 +134,7 @@ export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) =>
   }
 
   const {
-    id,
+    transactionId,
     institutionId,
     customerId,
     productName,
@@ -146,7 +146,7 @@ export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) =>
   } = data;
 
   return {
-    transaction_id: id ? id : null,
+    transaction_id: transactionId ? transactionId : null,
     institution_id: institutionId ? institutionId.value : null,
     customer_id: customerId ? customerId : null,
     product_name: productName ? productName.label : null,

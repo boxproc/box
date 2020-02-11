@@ -39,7 +39,7 @@ export const renderIcon = (name: string, size?: string) => {
     case iconNamesConst.HELP:
       return (<Box mt="-1px"><HelpCircleIcon size={size ? size : '16'} /></Box>);
     case iconNamesConst.SMARTPHONE:
-      return (<Box mt="-1px"><SmartphoneIcon size={size ? size : '16'} /></Box>);
+      return (<Box mt="-2px"><SmartphoneIcon size={size ? size : '16'} /></Box>);
     case iconNamesConst.QRCODE:
       return (<Box mt="-1px" mr="3px"><QrcodeIcon size={size ? size : '14'} /></Box>);
     case iconNamesConst.USER:

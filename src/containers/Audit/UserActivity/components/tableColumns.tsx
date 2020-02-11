@@ -41,7 +41,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 350,
     Header: <TableHeader title="API Name" />,
     accessor: 'apiName',
     Cell: (props: TCell<'apiName'>) => (

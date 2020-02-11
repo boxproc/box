@@ -75,13 +75,18 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     [currentProductType]
   );
 
+  const modalHeight = React.useMemo(
+    () => window.innerHeight - 20,
+    []
+  );
+
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
       maxContainerWidth={1010}
-      minContainerHeight={window.innerHeight - 10}
+      minContainerHeight={modalHeight}
       withCloseConfirmation={isAnyFormDirty}
       TitleIcon={TitleIcon}
     >

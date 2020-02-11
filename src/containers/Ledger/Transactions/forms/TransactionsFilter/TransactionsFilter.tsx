@@ -115,8 +115,8 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
       </Box>
       <Box width="130px" p="8px">
         <Field
-          id="id"
-          name="id"
+          id="transactionId"
+          name="transactionId"
           component={InputField}
           label="Transaction ID"
           placeholder="Enter ID"

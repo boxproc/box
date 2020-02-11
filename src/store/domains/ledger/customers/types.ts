@@ -67,7 +67,8 @@ export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPla
   nationalityCountryCode: SelectValue;
 }
 
-export interface LedgerCustomersFilter extends LedgerCustomerId {
+export interface LedgerCustomersFilter {
+  customerId: number;
   institutionId: SelectValue;
   firstName: string;
   lastName: string;

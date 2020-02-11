@@ -39,7 +39,7 @@ const ScriptWrapper = styled.div`
     font-size: 10px;
     letter-spacing: .5pt;
     text-transform: uppercase;
-    opacity: .5;
+    opacity: .3;
     z-index: 10;
   }
 `;
@@ -187,6 +187,11 @@ const ProductRules: React.FC<ProductRulesProps> = ({
         50);
     },
     [currentCursorPosition, changeFormField, textarea]
+  );
+
+  const handleSetCursorPosition = React.useCallback(
+    () => setCurrentCursorPosition(textarea.selectionEnd),
+    [textarea]
   );
 
   const contextSubMenuItems = React.useMemo(
@@ -350,7 +355,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                 label="Script"
                 contextSubMenuItems={contextSubMenuItems}
                 onContextMenuClick={onContextMenuClick}
-                setCursorCurrentPosition={() => setCurrentCursorPosition(textarea.selectionEnd)}
+                setCursorCurrentPosition={handleSetCursorPosition}
                 menuId="rulesCodeContextMenu"
                 fontSize={11}
                 height="calc(100vh - 250px)"

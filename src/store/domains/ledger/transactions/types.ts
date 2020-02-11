@@ -1,11 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { SelectValue } from 'types';
 
-export interface LedgerTransactionId {
+export interface LedgerTransactionPlainInfo {
   id: number;
-}
-
-export interface LedgerTransactionPlainInfo extends LedgerTransactionId {
   description: string;
 }
 
@@ -123,9 +120,10 @@ export interface LedgerConvertTransactionToLoanItemPrepared {
   transactionId: number;
 }
 
-export interface LedgerTransactionsFilter extends LedgerTransactionId {
+export interface LedgerTransactionsFilter {
   institutionId: SelectValue;
   customerId: number;
+  transactionId: number;
   productName: SelectValue;
   transactionsDateTimeFrom: string;
   transactionsDateTimeTo: string;
@@ -134,9 +132,10 @@ export interface LedgerTransactionsFilter extends LedgerTransactionId {
   panAlias: string;
 }
 
-export interface LedgerTransactionsFilterPrepared extends LedgerTransactionId {
+export interface LedgerTransactionsFilterPrepared {
   institution_id: string | number;
   customer_id: number;
+  id: number;
   product_name: string | number;
   datetime_from: string;
   datetime_to: string;

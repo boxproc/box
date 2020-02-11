@@ -136,17 +136,17 @@ export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlain
   loanStartDate?: string;
 }
 
-export interface LedgerAccountsFilter extends LedgerAccountId {
+export interface LedgerAccountsFilter {
   institutionId: SelectValue;
   firstName: string;
   lastName: string;
   product: Array<SelectValue>;
   accountAlias: string;
   accountAliasAdditional: string;
-  id: number;
+  accountId: number;
 }
 
-export interface LedgerAccountsFilterPrepared extends LedgerAccountId {
+export interface LedgerAccountsFilterPrepared {
   institution_id: string | number;
   first_name: string;
   last_name: string;

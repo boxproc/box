@@ -20,7 +20,7 @@ const PasswordFieldWrapper = styled.div`
 
   .icon-wrapper {
     position: absolute;
-    top: 8px;
+    top: 6px;
     right: 10px;
     cursor: pointer;
     user-select:none;
@@ -72,6 +72,7 @@ export const PasswordField: React.FC<InputCommonProps> = props => {
       </span>
     </PasswordFieldWrapper>
   );
+
   return (
     <React.Fragment>
       {renderComponent({

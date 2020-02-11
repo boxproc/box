@@ -35,21 +35,21 @@ const Modals: React.FC<ModalsProps> = ({ modalsStateList, isRelogin }) => {
   return (
     <React.Fragment>
       {modalsList.map((modal, index) => {
-        if (!modalsStateList[`is${modal.name}`]) {
+        const { name, component } = modal;
+
+        if (!modalsStateList[`is${name}`]) {
           return null;
         }
 
-        const isMessageModal = modal.name === modalNamesConst.MESSAGE;
+        const isMessageModal = name === modalNamesConst.MESSAGE;
 
         return (
           <ModalsWrapper
-            key={modal.name + index}
+            key={name + index}
             isBlured={isRelogin && !isMessageModal}
           >
-            {modal.name && (
-              <ScrollDisable />
-            )}
-            {modal.component}
+            {name && (<ScrollDisable />)}
+            {component}
           </ModalsWrapper>
         );
       })}

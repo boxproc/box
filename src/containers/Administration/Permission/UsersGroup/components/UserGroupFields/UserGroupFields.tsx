@@ -35,9 +35,7 @@ const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
 
   return (
     <Box mx="-8px" >
-      <Flex
-        flexWrap="wrap"
-      >
+      <Flex flexWrap="wrap">
         <Box width={[isEditMode ? 1 / 2 : 1]} p="8px">
           <Field
             id="institutionId"

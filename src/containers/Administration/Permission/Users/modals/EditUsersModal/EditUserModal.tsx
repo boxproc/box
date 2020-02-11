@@ -24,8 +24,12 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   currentUsername,
   isReadOnly,
 }) => {
-  const username = React.useMemo(
-    () => currentUsername ? `: "${currentUsername}"` : '',
+  const modalTitle = React.useMemo(
+    () => {
+      const username = currentUsername ? `: "${currentUsername}"` : '';
+
+      return `Edit User${username}`;
+    },
     [currentUsername]
   );
 
@@ -38,7 +42,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit User${username}`}
+      title={modalTitle}
       maxContainerWidth={750}
       withCloseConfirmation={isFormDirty}
     >

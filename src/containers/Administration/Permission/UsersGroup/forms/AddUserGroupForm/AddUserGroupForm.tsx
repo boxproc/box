@@ -28,6 +28,7 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
     handleSubmit(addUsersGroup),
     [handleSubmit, addUsersGroup]
   );
+
   return (
     <form onSubmit={handleSubmitForm}>
       <UserGroupFields />

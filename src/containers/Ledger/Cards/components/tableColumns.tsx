@@ -11,7 +11,7 @@ type TCell<T extends keyof LedgerCardItemPrepared> =
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 120,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -22,10 +22,21 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 120,
     Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 120,
+    Header: <TableHeader title="Customer ID" />,
+    accessor: 'customerId',
+    Cell: (props: TCell<'customerId'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
@@ -64,7 +75,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 120,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (

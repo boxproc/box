@@ -24,8 +24,12 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   isFormDirty,
   isReadOnly,
 }) => {
-  const institutionName = React.useMemo(
-    () => currentInstitutionName ? `: "${currentInstitutionName}"` : '',
+  const modalTitle = React.useMemo(
+    () => {
+      const institutionName = currentInstitutionName ? `: "${currentInstitutionName}"` : '';
+
+      return `Edit Institution${institutionName}`;
+    },
     [currentInstitutionName]
   );
 
@@ -38,7 +42,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit Institution${institutionName}`}
+      title={modalTitle}
       maxContainerWidth={550}
       withCloseConfirmation={isFormDirty}
     >

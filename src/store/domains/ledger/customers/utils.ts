@@ -24,10 +24,10 @@ export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => 
     return null;
   }
 
-  const { id, institutionId, firstName, lastName } = params;
+  const { customerId, institutionId, firstName, lastName } = params;
 
   return {
-    id: id ? id : null,
+    id: customerId ? customerId : null,
     first_name: firstName ? firstName : null,
     institution_id: institutionId ? institutionId.value : null,
     last_name: lastName ? lastName : null,

@@ -13,7 +13,7 @@ import {
   FilterLedgerCardsByIdAction,
 } from './actionTypes';
 import * as api from './api';
-import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
+import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilter } from './types';
 import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
 
 import { Thunk } from 'types';
@@ -21,7 +21,7 @@ import { Thunk } from 'types';
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
 
-export type FilterLedgerCards = (params: Partial<LedgerCardsFilterPrepared>) =>
+export type FilterLedgerCards = (params: Partial<LedgerCardsFilter>) =>
   FilterLedgerCardsAction;
 export type HandleFilterLedgerCards = () => Thunk<void>;
 

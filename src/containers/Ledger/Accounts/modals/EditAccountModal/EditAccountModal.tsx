@@ -31,8 +31,12 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   isFormDirty,
   isReadOnly,
 }) => {
-  const accountAlias = React.useMemo(
-    () => currentAccountAlias ? `: ${currentAccountAlias}` : '',
+  const modalTitle = React.useMemo(
+    () => {
+      const accountAlias = currentAccountAlias ? `: ${currentAccountAlias}` : '';
+
+      return `Account${accountAlias}`;
+    },
     [currentAccountAlias]
   );
 
@@ -50,7 +54,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Account${accountAlias}`}
+      title={modalTitle}
       maxContainerWidth={1100}
       minContainerHeight={600}
       withCloseConfirmation={isFormDirty}

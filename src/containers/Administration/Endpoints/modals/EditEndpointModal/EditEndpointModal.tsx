@@ -28,8 +28,12 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   isFormDirty,
   currentEndpointName,
 }) => {
-  const endpointName = React.useMemo(
-    () => currentEndpointName ? `: "${currentEndpointName}"` : '',
+  const modalTitle = React.useMemo(
+    () => {
+      const endpointName = currentEndpointName ? `: "${currentEndpointName}"` : '';
+
+      return `Edit Endpoint${endpointName}`;
+    },
     [currentEndpointName]
   );
 
@@ -40,7 +44,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
 
   return (
     <Modal
-      title={`Edit Endpoint${endpointName}`}
+      title={modalTitle}
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       maxContainerWidth={600}

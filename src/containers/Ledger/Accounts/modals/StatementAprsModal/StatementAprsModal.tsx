@@ -25,8 +25,12 @@ const StatementAprs: React.FC<StatementAprsProps> = ({
   currentAccountAlias,
   currentStatementDate,
 }) => {
-  const accountAlias = React.useMemo(
-    () => currentAccountAlias ? `: ${currentAccountAlias}` : '',
+  const modalTitle = React.useMemo(
+    () => {
+      const accountAlias = currentAccountAlias ? `: ${currentAccountAlias}` : '';
+
+      return `Account${accountAlias}`;
+    },
     [currentAccountAlias]
   );
 
@@ -38,7 +42,7 @@ const StatementAprs: React.FC<StatementAprsProps> = ({
   return (
     <Modal
       name={modalName}
-      title={`Account${accountAlias}`}
+      title={modalTitle}
       maxContainerWidth={700}
       minContainerHeight={500}
     >

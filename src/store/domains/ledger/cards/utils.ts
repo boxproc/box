@@ -15,6 +15,7 @@ export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
   return {
     id: values.id,
     accountId: values.account_id,
+    customerId: values.customer_id,
     panAlias: values.pan_alias,
     panMasked: values.pan_masked,
     expiryDate: values.expiry_date,
@@ -27,10 +28,10 @@ export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>)
     return null;
   }
 
-  const { id, accountId, panAlias, customerId, institutionId } = params;
+  const { cardId, accountId, panAlias, customerId, institutionId } = params;
 
   return {
-    id: id ? id : null,
+    id: cardId ? cardId : null,
     account_id: accountId ? accountId : null,
     customer_id: customerId ? customerId : null,
     pan_alias: panAlias ? panAlias : null,

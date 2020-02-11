@@ -34,8 +34,8 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
       </Box>
       <Box width="130px" p="8px">
         <Field
-          id="id"
-          name="id"
+          id="cardId"
+          name="cardId"
           component={InputField}
           label="Card ID"
           placeholder="Card ID"

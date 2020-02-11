@@ -25,6 +25,11 @@ const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
     [subMenu]
   );
 
+  const submenuClassNames = React.useMemo(
+    () => (!subMenu.subItems && !isNoData) ? 'is-overflow' : 'is-smaller',
+    [subMenu, isNoData]
+  );
+
   return (
     <div className="submenu-item">
       <span className="arrow-icon">
@@ -33,7 +38,7 @@ const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
       <SubMenu
         title={subMenu.title}
         hoverDelay={200}
-        className={(!subMenu.subItems && !isNoData) ? 'is-overflow' : 'is-smaller'}
+        className={submenuClassNames}
       >
         {subMenu.items && subMenu.items.map((item, i) => (
           <ContextMenuItem

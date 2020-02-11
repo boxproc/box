@@ -54,8 +54,8 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
       </Box>
       <Box width="130px" p="8px">
         <Field
-          id="id"
-          name="id"
+          id="customerId"
+          name="customerId"
           component={InputField}
           label="Customer ID"
           placeholder="Enter ID"

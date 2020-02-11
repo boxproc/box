@@ -41,6 +41,11 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
     [getInterfaces, currentCustomerInstitutionId]
   );
 
+  const modalTitle = React.useMemo(
+    () => `Edit Customer: ${currentCustomerName}`,
+    [currentCustomerName]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -50,7 +55,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={`Edit Customer: ${currentCustomerName}`}
+      title={modalTitle}
       maxContainerWidth={1010}
       minContainerHeight={600}
       withCloseConfirmation={isFormDirty}

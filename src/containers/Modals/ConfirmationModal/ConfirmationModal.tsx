@@ -22,17 +22,34 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     [closeModal]
   );
 
-  const { confirmationAction, confirmationText, confirmationTitle } = payloadConfirmModal;
+  const confirmationText = React.useMemo(
+    () => payloadConfirmModal && payloadConfirmModal.confirmationText,
+    [payloadConfirmModal]
+  );
 
-  const handleConfirm = () => {
-    confirmationAction();
-    closeModal(modalName);
-  };
+  const modalTitle = React.useMemo(
+    () => {
+      const confirmationTitle = payloadConfirmModal && payloadConfirmModal.confirmationTitle;
+
+      return confirmationTitle ? confirmationTitle : 'Are you sure?';
+    },
+    [payloadConfirmModal]
+  );
+
+  const handleConfirm = React.useCallback(
+    () => {
+      const confirmationAction = payloadConfirmModal && payloadConfirmModal.confirmationAction;
+
+      confirmationAction();
+      closeModal(modalName);
+    },
+    [payloadConfirmModal, closeModal]
+  );
 
   return (
     <Modal
       name={modalName}
-      title={confirmationTitle ? confirmationTitle : 'Are you sure?'}
+      title={modalTitle}
       maxContainerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}

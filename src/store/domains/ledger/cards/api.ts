@@ -3,9 +3,9 @@ import { lenderCardsURLs } from 'consts';
 import { apiClient } from 'services';
 
 import { LedgerId } from '../customers';
-import { LedgerCardIdsPrepared, LedgerCardsFilterPrepared } from './types';
+import { LedgerCardIdsPrepared, LedgerCardsFilter } from './types';
 
-export const filterLedgerCards = (data: Partial<LedgerCardsFilterPrepared>) =>
+export const filterLedgerCards = (data: Partial<LedgerCardsFilter>) =>
   apiClient.post(lenderCardsURLs.GET, { data });
 
 export const activateLedgerCard = (cardId: number) =>

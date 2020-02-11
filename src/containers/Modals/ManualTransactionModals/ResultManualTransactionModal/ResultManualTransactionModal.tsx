@@ -34,6 +34,11 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
   transactionId,
   closeAllModals,
 }) => {
+  const modalWidth = React.useMemo(
+    () => isLimitAdjustment ? 550 : 650,
+    [isLimitAdjustment]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -52,7 +57,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={messagesConst.TRANSACTION_SUCCESSFULLY_COMPLETED}
-      maxContainerWidth={isLimitAdjustment ? 550 : 650}
+      maxContainerWidth={modalWidth}
     >
       {isLimitAdjustment
         ? (<ResultLimitAdjustmentForm initialValues={ledgerLimitAdjustment} />)

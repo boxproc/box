@@ -13,9 +13,10 @@ const DashedBlock = styled.div`
   padding: 10px;
   text-align: center;
   font-size: 14px;
-  border: 1px dashed ${({ theme }) => theme.gray};
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px dashed ${({ theme }) => theme.colors.gray};
   font-size: 14px;
-  font-family: ${({ theme }) => theme.code};
+  font-family: ${({ theme }) => theme.fonts.code};
 `;
 
 interface CodeScreenProps {
@@ -57,6 +58,7 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
         <Button
           text="Regenerate key"
           iconName={iconNamesConst.QRCODE}
+          bordered={true}
           onClick={onRegenerate}
         />
         <Button

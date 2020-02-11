@@ -171,7 +171,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Email"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.email]}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.email,
+              ]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">

@@ -45,6 +45,16 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
     [currentRegisterStep]
   );
 
+  const modalTitle = React.useMemo(
+    () => isSecondStep ? '2FA Registration' : 'Password',
+    [isSecondStep]
+  );
+
+  const modalWidth = React.useMemo(
+    () => isSecondStep ? 500 : 300,
+    [isSecondStep]
+  );
+
   const handleSetFirstStep = React.useCallback(
     () => setUserCurrentRegisterStep(1),
     [setUserCurrentRegisterStep]
@@ -53,8 +63,8 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title={isSecondStep ? '2FA Registration' : 'Password'}
-      maxContainerWidth={isSecondStep ? 500 : 300}
+      title={modalTitle}
+      maxContainerWidth={modalWidth}
       type={modalTypesConst.REGISTRATION_2FA}
     >
       {isSecondStep

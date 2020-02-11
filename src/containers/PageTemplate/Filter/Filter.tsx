@@ -93,8 +93,8 @@ const Filter: React.FC<FilterAllProps> = ({
     [filterValues]
   );
 
-  const hasId = React.useMemo(
-    () => filterValues && filterValues['id'],
+  const hasTransactionId = React.useMemo(
+    () => filterValues && filterValues['transactionId'],
     [filterValues]
   );
 
@@ -108,6 +108,11 @@ const Filter: React.FC<FilterAllProps> = ({
     [filterValues]
   );
 
+  const hasCardId = React.useMemo(
+    () => filterValues && filterValues['cardId'],
+    [filterValues]
+  );
+
   const hasProductName = React.useMemo(
     () => filterValues && filterValues['productName'],
     [filterValues]
@@ -115,6 +120,11 @@ const Filter: React.FC<FilterAllProps> = ({
 
   const hasAccountAlias = React.useMemo(
     () => filterValues && filterValues['accountAlias'],
+    [filterValues]
+  );
+
+  const hasPanAlias = React.useMemo(
+    () => filterValues && filterValues['panAlias'],
     [filterValues]
   );
 
@@ -142,31 +152,41 @@ const Filter: React.FC<FilterAllProps> = ({
           return valuesCount > 1;
 
         case `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`:
-          return hasInstitution && (hasId || hasAccountAlias || hasLastName);
+          return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
+
+        case `${basePath}${uiItemConsts.LEDGER_CARDS}`:
+          return hasInstitution && (hasAccountId || hasCardId || hasCustomerId || hasPanAlias);
 
         case `${basePath}${uiItemConsts.LEDGER_STATEMENTS}`:
           return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
         case `${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`:
-          return hasInstitution && (hasId || hasLastName);
+          return hasInstitution && (hasCustomerId || hasLastName);
 
         case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
-          return hasInstitution && (hasId || hasProductName || hasCustomerId || hasAccountId);
+          return hasInstitution && (
+            hasTransactionId
+            || hasProductName
+            || hasCustomerId
+            || hasAccountId
+          );
 
         default:
           return valuesCount > 0;
       }
     },
     [
-      hasAccountAlias,
+      hasInstitution,
       hasAccountId,
       hasCustomerId,
-      hasId,
-      hasInstitution,
+      hasCardId,
+      hasTransactionId,
+      hasAccountAlias,
+      hasPanAlias,
       hasLastName,
       hasProductName,
-      location,
       valuesCount,
+      location,
     ]
   );
 

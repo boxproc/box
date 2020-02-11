@@ -121,7 +121,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="8px" width="130px">
+            <Box px="8px" mb="5px" width="130px">
               <Paragraph bold={false} light={true}>
                 1st Transaction
               </Paragraph>
@@ -168,7 +168,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="8px" width="130px">
+            <Box px="8px" mb="5px" width="130px">
               <Paragraph bold={false} light={true}>
                 2nd Transaction
               </Paragraph>
@@ -215,7 +215,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
               />
             </Box>
             <Delimiter />
-            <Box p="8px" width="130px">
+            <Box px="8px" mb="5px" width="130px">
               <Paragraph bold={false} light={true}>
                 3rd Transaction
               </Paragraph>
