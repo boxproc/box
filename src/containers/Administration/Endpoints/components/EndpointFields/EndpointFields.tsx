@@ -14,7 +14,6 @@ import { formErrorUtil } from 'utils';
 export interface EndpointFieldsProps {
   institutionsOptions: Array<SelectValue>;
   endpointTypesOptions: Array<SelectValue>;
-  isDisabledInstitutions?: boolean;
   isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
   isEditMode: boolean;
@@ -23,7 +22,6 @@ export interface EndpointFieldsProps {
 const EndpointFields: React.FC<EndpointFieldsProps> = ({
   institutionsOptions,
   endpointTypesOptions,
-  isDisabledInstitutions,
   isLoadingTypesSelector,
   isReadOnly,
   isEditMode,
@@ -39,7 +37,8 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions || isReadOnly}
+            readOnly={isReadOnly}
+            isDisabled={isEditMode}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />

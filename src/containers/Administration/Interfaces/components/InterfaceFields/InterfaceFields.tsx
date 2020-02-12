@@ -14,16 +14,16 @@ import { formErrorUtil } from 'utils';
 export interface InterfaceFieldsProps {
   institutionsOptions: Array<SelectValue>;
   interfaceTypesOptions: Array<SelectValue>;
-  isDisabledInstitutions?: boolean;
   isLoadingTypesSelector: boolean;
+  isEditMode: boolean;
   isReadOnly: boolean;
 }
 
 const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
   institutionsOptions,
-  isDisabledInstitutions,
   interfaceTypesOptions,
   isLoadingTypesSelector,
+  isEditMode,
   isReadOnly,
 }) => {
   return (
@@ -37,7 +37,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            isDisabled={isDisabledInstitutions || isReadOnly}
+            isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />

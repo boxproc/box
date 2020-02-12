@@ -34,7 +34,6 @@ import { formErrorUtil } from 'utils';
 interface SchedulerFormProps {
   defineAdminSchedulerJob?: HandleAddAdminSchedulerJob | HandleUpdateAdminSchedulerJob;
   institutionsOptions?: Array<SelectValue>;
-  isDisabledInstitutions?: boolean;
   isDisabledStatus?: boolean;
   onCancel?: () => void;
   deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;
@@ -50,7 +49,6 @@ type SchedulerFormAllProps = SchedulerFormProps &
 const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   handleSubmit,
   defineAdminSchedulerJob,
-  isDisabledInstitutions,
   institutionsOptions,
   isDisabledStatus,
   onCancel,
@@ -72,7 +70,10 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
     [openModal]
   );
 
-  const isEditMode = mode === 'edit';
+  const isEditMode = React.useMemo(
+    () => mode === 'edit',
+    [mode]
+  );
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
@@ -89,7 +90,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               label="Institution"
               placeholder="Select Institution"
               options={institutionsOptions}
-              isDisabled={isDisabledInstitutions || isReadOnly}
+              isDisabled={isEditMode || isReadOnly}
               isClearable={false}
               validate={[formErrorUtil.required]}
             />

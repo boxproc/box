@@ -62,7 +62,6 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
         openModal={openModal}
         defineAdminSchedulerJob={updateSchedulerJob}
         initialValues={schedulerJobValues}
-        isDisabledInstitutions={true}
         deleteSchedulerJob={handleDeleteScheduler}
         mode="edit"
         isReadOnly={isReadOnly}
