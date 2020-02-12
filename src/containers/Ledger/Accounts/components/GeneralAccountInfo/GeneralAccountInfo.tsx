@@ -24,7 +24,7 @@ import { SelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface CustomerInfoProps {
+export interface GeneralAccountInfoProps {
   institutionsOptions: Array<SelectValue>;
   institutionProductsOptions: Array<SelectValue>;
   statusesOptions: Array<SelectValue>;
@@ -40,10 +40,11 @@ export interface CustomerInfoProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   getAccountStatuses: HandleGetDictionaryAccountStatuses;
   getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
+  changeField: any;
   onCancel: () => void;
 }
 
-const CustomerInfo: React.FC<CustomerInfoProps> = ({
+const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
   institutionsOptions,
   currentInstitution,
   institutionProductsOptions,
@@ -59,6 +60,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   onCancel,
   dirty,
   pristine,
+  changeField,
   isReadOnly,
 }) => {
   React.useEffect(
@@ -74,6 +76,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   React.useEffect(
     () => {
       if (currentInstitution) {
+        changeField('product', null);
         getInstitutionProducts(currentInstitution.value);
       }
     },
@@ -87,355 +90,354 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
 
   return (
     <React.Fragment>
-      <Box mx="-8px">
-        <Flex
-          alignItems="flex-end"
-          flexWrap="wrap"
-        >
-          {isEditMode && (
-            <Box width="150px" p="8px">
-              <Field
-                id="id"
-                name="id"
-                component={InputField}
-                label="ID"
-                placeholder="Enter ID"
-                readOnly={true}
-                isNumber={true}
-              />
-            </Box>
-          )}
-          <Box width={[1 / 6]} p="8px">
-            <Field
-              id="institutionId"
-              name="institutionId"
-              component={SelectField}
-              label="Institution"
-              placeholder="Select Institution"
-              options={institutionsOptions}
-              isDisabled={isEditMode || isReadOnly}
-              isClearable={false}
-              validate={[formErrorUtil.required]}
-            />
-          </Box>
+      <Flex
+        alignItems="flex-end"
+        flexWrap="wrap"
+        mx="-8px"
+      >
+        {isEditMode && (
           <Box width="150px" p="8px">
             <Field
-              id="customerId"
-              name="customerId"
+              id="id"
+              name="id"
               component={InputField}
-              label="Customer ID"
+              label="ID"
+              placeholder="Enter ID"
+              readOnly={true}
+              isNumber={true}
+            />
+          </Box>
+        )}
+        <Box width={[1 / 6]} p="8px">
+          <Field
+            id="institutionId"
+            name="institutionId"
+            component={SelectField}
+            label="Institution"
+            placeholder="Select Institution"
+            options={institutionsOptions}
+            isDisabled={isEditMode || isReadOnly}
+            isClearable={false}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width="150px" p="8px">
+          <Field
+            id="customerId"
+            name="customerId"
+            component={InputField}
+            label="Customer ID"
+            placeholder="Enter ID"
+            readOnly={isEditMode || isReadOnly}
+            isNumber={true}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        <Box width={[1 / 6]} p="8px">
+          <Field
+            id="accountAlias"
+            name="accountAlias"
+            component={InputField}
+            label="Account Alias"
+            placeholder="Enter Account Alias"
+            readOnly={isReadOnly}
+          />
+        </Box>
+        <Box width={[1 / 6]} p="8px">
+          <Field
+            id="accountAliasAdditional"
+            name="accountAliasAdditional"
+            component={InputField}
+            label="Account Alias Additional"
+            placeholder="Enter Account Alias"
+            readOnly={isReadOnly}
+          />
+        </Box>
+        <Box width={[1 / 6]} p="8px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            label="Status"
+            placeholder="Select Status"
+            options={statusesOptions}
+            isDisabled={isReadOnly}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        {isEditMode && (
+          <Box width="150px" p="8px">
+            <Field
+              id="productId"
+              name="productId"
+              component={InputField}
+              label="Product ID"
               placeholder="Enter ID"
               readOnly={isEditMode || isReadOnly}
               isNumber={true}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
-            <Field
-              id="accountAlias"
-              name="accountAlias"
-              component={InputField}
-              label="Account Alias"
-              placeholder="Enter Account Alias"
-              readOnly={isReadOnly}
-            />
-          </Box>
-          <Box width={[1 / 6]} p="8px">
-            <Field
-              id="accountAliasAdditional"
-              name="accountAliasAdditional"
-              component={InputField}
-              label="Account Alias Additional"
-              placeholder="Enter Account Alias"
-              readOnly={isReadOnly}
-            />
-          </Box>
-          <Box width={[1 / 6]} p="8px">
-            <Field
-              id="status"
-              name="status"
-              component={SelectField}
-              label="Status"
-              placeholder="Select Status"
-              options={statusesOptions}
-              isDisabled={isReadOnly}
-              validate={[formErrorUtil.required]}
-            />
-          </Box>
-          {isEditMode && (
-            <Box width="150px" p="8px">
-              <Field
-                id="productId"
-                name="productId"
-                component={InputField}
-                label="Product ID"
-                placeholder="Enter ID"
-                readOnly={isEditMode || isReadOnly}
-                isNumber={true}
-                validate={[formErrorUtil.required]}
-              />
-            </Box>
-          )}
+        )}
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="product"
+            name="product"
+            component={SelectField}
+            label="Product"
+            placeholder="Select Product"
+            isDisabled={isEditMode || isReadOnly}
+            options={institutionProductsOptions}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        {isRepaymentType && (
           <Box width={[1 / 5]} p="8px">
             <Field
-              id="product"
-              name="product"
+              id="repaymentType"
+              name="repaymentType"
               component={SelectField}
-              label="Product"
-              placeholder="Select Product"
-              isDisabled={isEditMode || isReadOnly}
-              options={institutionProductsOptions}
+              label="Repayment Type"
+              placeholder="Select Type"
+              isDisabled={isChosenLoanProductType || isReadOnly}
+              options={repaymentTypesOptions}
               validate={[formErrorUtil.required]}
             />
           </Box>
-          {isRepaymentType && (
-            <Box width={[1 / 5]} p="8px">
+        )}
+        {isEditMode && (
+          <Box width="150px" p="8px">
+            <Field
+              id="statementCycleRepaymentDay"
+              name="statementCycleRepaymentDay"
+              component={InputField}
+              label="Statement Cycle Repayment Day"
+              placeholder="Enter Day"
+              readOnly={isReadOnly}
+              isNumber={true}
+            />
+          </Box>
+        )}
+        {isChosenLoanProductType && (
+          <React.Fragment>
+            <Box width="150px" p="8px">
               <Field
-                id="repaymentType"
-                name="repaymentType"
-                component={SelectField}
-                label="Repayment Type"
-                placeholder="Select Type"
-                isDisabled={isChosenLoanProductType || isReadOnly}
-                options={repaymentTypesOptions}
+                id="numOfInstallments"
+                name="numOfInstallments"
+                component={InputField}
+                label="Number of Installments"
+                placeholder="Enter Number"
+                readOnly={isReadOnly}
+                isNumber={true}
                 validate={[formErrorUtil.required]}
               />
             </Box>
-          )}
-          {isEditMode && (
             <Box width="150px" p="8px">
               <Field
-                id="statementCycleRepaymentDay"
-                name="statementCycleRepaymentDay"
+                id="numOfInterestFreeInstllmnts"
+                name="numOfInterestFreeInstllmnts"
                 component={InputField}
-                label="Statement Cycle Repayment Day"
-                placeholder="Enter Day"
+                label="Number of Interest Free Installments"
+                placeholder="Enter Number"
                 readOnly={isReadOnly}
+                isNumber={true}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+        {isChosenLoanProductType && !isEditMode && (
+          <Box width="150px" p="8px">
+            <Field
+              id="loanStartDate"
+              name="loanStartDate"
+              component={MaskField}
+              label="Loan Start Date"
+              placeholder={dateFormat.DATE}
+              mask={maskFormat.DATE}
+              readOnly={isReadOnly}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isDate,
+              ]}
+            />
+          </Box>
+        )}
+        {hasProductOverride && (
+          <React.Fragment>
+            <Box width="150px" p="8px">
+              <Field
+                id="productOverrideId"
+                name="productOverrideId"
+                component={InputField}
+                label="Product Override ID"
+                placeholder="Enter ID"
+                readOnly={true}
                 isNumber={true}
               />
             </Box>
-          )}
-          {isChosenLoanProductType && (
-            <React.Fragment>
-              <Box width="150px" p="8px">
-                <Field
-                  id="numOfInstallments"
-                  name="numOfInstallments"
-                  component={InputField}
-                  label="Number of Installments"
-                  placeholder="Enter Number"
-                  readOnly={isReadOnly}
-                  isNumber={true}
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width="150px" p="8px">
-                <Field
-                  id="numOfInterestFreeInstllmnts"
-                  name="numOfInterestFreeInstllmnts"
-                  component={InputField}
-                  label="Number of Interest Free Installments"
-                  placeholder="Enter Number"
-                  readOnly={isReadOnly}
-                  isNumber={true}
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-            </React.Fragment>
-          )}
-          {isChosenLoanProductType && !isEditMode && (
-            <Box width="150px" p="8px">
+            <Box width="120px" p="8px">
               <Field
-                id="loanStartDate"
-                name="loanStartDate"
+                id="dateOfProductOverride"
+                name="dateOfProductOverride"
                 component={MaskField}
-                label="Loan Start Date"
+                label="Date of Product Override"
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
-                readOnly={isReadOnly}
+                readOnly={true}
+                validate={[formErrorUtil.isDate]}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+        <Hr />
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="balanceLimit"
+            name="balanceLimit"
+            label="Balance Limit"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="balanceLimitShared"
+            name="balanceLimitShared"
+            label="Balance Limit Shared"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="balanceSettled"
+            name="balanceSettled"
+            label="Balance Settled"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="balanceAvailable"
+            name="balanceAvailable"
+            label="Balance Available"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        <Hr />
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="repaymentAmountDue"
+            name="repaymentAmountDue"
+            label="Repayment Amount Due"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        <Box width={[1 / 7]} p="8px">
+          <Field
+            id="accruedInterest"
+            name="accruedInterest"
+            label="Total Accrued Interest"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            readOnly={isEditMode || isReadOnly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isNumber,
+            ]}
+          />
+        </Box>
+        {isEditMode && (
+          <React.Fragment>
+            <Box width={[1 / 7]} p="8px">
+              <Field
+                id="totalOverdueAmount"
+                name="totalOverdueAmount"
+                label="Total Overdue Amount"
+                component={NumberFormatField}
+                placeholder="0.00"
+                fixedDecimalScale={true}
+                decimalScale={2}
+                readOnly={isEditMode || isReadOnly}
                 validate={[
                   formErrorUtil.required,
-                  formErrorUtil.isDate,
+                  formErrorUtil.isNumber,
                 ]}
               />
             </Box>
-          )}
-          {hasProductOverride && (
-            <React.Fragment>
-              <Box width="150px" p="8px">
-                <Field
-                  id="productOverrideId"
-                  name="productOverrideId"
-                  component={InputField}
-                  label="Product Override ID"
-                  placeholder="Enter ID"
-                  readOnly={true}
-                  isNumber={true}
-                />
-              </Box>
-              <Box width="120px" p="8px">
-                <Field
-                  id="dateOfProductOverride"
-                  name="dateOfProductOverride"
-                  component={MaskField}
-                  label="Date of Product Override"
-                  placeholder={dateFormat.DATE}
-                  mask={maskFormat.DATE}
-                  readOnly={true}
-                  validate={[formErrorUtil.isDate]}
-                />
-              </Box>
-            </React.Fragment>
-          )}
-          <Hr />
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceLimit"
-              name="balanceLimit"
-              label="Balance Limit"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceLimitShared"
-              name="balanceLimitShared"
-              label="Balance Limit Shared"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceSettled"
-              name="balanceSettled"
-              label="Balance Settled"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="balanceAvailable"
-              name="balanceAvailable"
-              label="Balance Available"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Hr />
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="repaymentAmountDue"
-              name="repaymentAmountDue"
-              label="Repayment Amount Due"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 7]} p="8px">
-            <Field
-              id="accruedInterest"
-              name="accruedInterest"
-              label="Total Accrued Interest"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isNumber,
-              ]}
-            />
-          </Box>
-          {isEditMode && (
-            <React.Fragment>
-              <Box width={[1 / 7]} p="8px">
-                <Field
-                  id="totalOverdueAmount"
-                  name="totalOverdueAmount"
-                  label="Total Overdue Amount"
-                  component={NumberFormatField}
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                  readOnly={isEditMode || isReadOnly}
-                  validate={[
-                    formErrorUtil.required,
-                    formErrorUtil.isNumber,
-                  ]}
-                />
-              </Box>
-              <Hr />
-              <Box width="120px" p="8px">
-                <Field
-                  id="lastCycleDate"
-                  name="lastCycleDate"
-                  component={InputField}
-                  label="Last Cycle Date"
-                  placeholder={dateFormat.DATE}
-                  readOnly={true}
-                />
-              </Box>
-              <Box width="120px" p="8px">
-                <Field
-                  id="dateCreated"
-                  name="dateCreated"
-                  component={InputField}
-                  label="Date Created"
-                  readOnly={true}
-                />
-              </Box>
-              <Box width="120px" p="8px">
-                <Field
-                  id="dateClosed"
-                  name="dateClosed"
-                  component={InputField}
-                  label="Date Closed"
-                  readOnly={true}
-                />
-              </Box>
-            </React.Fragment>
-          )}
-        </Flex>
-      </Box>
+            <Hr />
+            <Box width="120px" p="8px">
+              <Field
+                id="lastCycleDate"
+                name="lastCycleDate"
+                component={InputField}
+                label="Last Cycle Date"
+                placeholder={dateFormat.DATE}
+                readOnly={true}
+              />
+            </Box>
+            <Box width="120px" p="8px">
+              <Field
+                id="dateCreated"
+                name="dateCreated"
+                component={InputField}
+                label="Date Created"
+                readOnly={true}
+              />
+            </Box>
+            <Box width="120px" p="8px">
+              <Field
+                id="dateClosed"
+                name="dateClosed"
+                component={InputField}
+                label="Date Closed"
+                readOnly={true}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+      </Flex>
       <Hr />
       <OkCancelButtons
         okText="Save"
@@ -450,4 +452,4 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
   );
 };
 
-export default CustomerInfo;
+export default GeneralAccountInfo;
