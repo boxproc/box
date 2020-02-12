@@ -35,6 +35,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   institutionProducts: Array<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   currentProduct: SelectValue;
+  currentInstitution: SelectValue;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
   repaymentTypesOptions: Array<SelectValue>;
@@ -52,6 +53,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   addLedgerAccount,
   institutionsOptions,
   currentProduct,
+  currentInstitution,
   currentAccountAuxCounters,
   institutionProducts,
   repaymentTypesOptions,
@@ -61,6 +63,20 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   isReadOnly,
   change,
 }) => {
+  const [currentInstId, setCurrentInstId] = React.useState(null);
+
+  React.useEffect(
+    () => {
+      if (currentInstitution) {
+        if (currentInstId !== currentInstitution.value) {
+          change('product', null);
+          setCurrentInstId(currentInstitution.value);
+        }
+      }
+    },
+    [currentInstitution, currentInstId, change]
+  );
+
   const isEditMode = React.useMemo(
     () => mode === 'edit',
     [mode]
@@ -162,7 +178,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}
-            changeField={change}
             isReadOnly={isReadOnly}
           />
         </TabsPanel>

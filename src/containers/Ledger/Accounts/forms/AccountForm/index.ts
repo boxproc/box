@@ -31,6 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   repaymentTypesOptions: selectDictionaryRepaymentTypesOptions(state),
   currentProduct: formSelector(state, 'product'),
+  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

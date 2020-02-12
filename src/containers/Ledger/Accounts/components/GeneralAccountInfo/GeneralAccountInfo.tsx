@@ -40,7 +40,6 @@ export interface GeneralAccountInfoProps {
   getInstitutionProducts: HandleGetInstitutionProducts;
   getAccountStatuses: HandleGetDictionaryAccountStatuses;
   getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
-  changeField: any;
   onCancel: () => void;
 }
 
@@ -60,7 +59,6 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
   onCancel,
   dirty,
   pristine,
-  changeField,
   isReadOnly,
 }) => {
   React.useEffect(
@@ -76,11 +74,10 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
   React.useEffect(
     () => {
       if (currentInstitution) {
-        changeField('product', null);
         getInstitutionProducts(currentInstitution.value);
       }
     },
-    [getInstitutionProducts, currentInstitution, changeField]
+    [getInstitutionProducts, currentInstitution]
   );
 
   const isRepaymentType = React.useMemo(
