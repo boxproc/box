@@ -9,7 +9,7 @@ import {
   handleMakeLedgerTransaction,
   LedgerLimitAdjustmentActionTypes,
   LedgerManualTransactionActionTypes,
-  selectCurrencyCodesOptions,
+  selectCurrencyNumCodesOptions,
   selectManualTransactionModalIsLimit,
   selectPayloadManualTransactionModal,
   selectUiItems,
@@ -25,7 +25,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   modalPayload: selectPayloadManualTransactionModal(state),
-  currenciesOptions: selectCurrencyCodesOptions(state),
+  currenciesOptions: selectCurrencyNumCodesOptions(state),
   isLimitAdjustment: selectManualTransactionModalIsLimit(state),
   uiItems: selectUiItems(state),
 });

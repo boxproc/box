@@ -61,111 +61,113 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <Box mx="-8px">
-        <Flex
-          alignItems="flex-end"
-          flexWrap="wrap"
-        >
-          <Box width={[1]} p="8px">
-            <Field
-              id="transactionType"
-              name="transactionType"
-              component={SelectField}
-              label="Transaction Type"
-              placeholder="Select Transaction Type"
-              isLoading={isTransactionTypesLoading}
-              options={transactionTypes}
-              isDisabled={isLimitAdjustment}
-              validate={[formErrorUtil.required]}
-            />
-          </Box>
-          )}
+      <Flex
+        alignItems="flex-end"
+        flexWrap="wrap"
+        mx="-8px"
+      >
+        <Box width={[1]} p="8px">
+          <Field
+            id="transactionType"
+            name="transactionType"
+            component={SelectField}
+            label="Transaction Type"
+            placeholder="Select Transaction Type"
+            isLoading={isTransactionTypesLoading}
+            options={transactionTypes}
+            isDisabled={isLimitAdjustment}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+        )}
           <Box width={[2 / 7]} p="8px">
-            <Field
-              id="accountId"
-              name="accountId"
-              component={InputField}
-              label="Account ID"
-              placeholder="Enter ID"
-              isNumber={true}
-              readOnly={isReadonly}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isInteger,
-              ]}
-            />
-          </Box>
-          {!isLimitAdjustment && (
-            <React.Fragment>
-              <Box width={[3 / 7]} p="8px">
-                <Field
-                  id="currencyCode"
-                  name="currencyCode"
-                  component={SelectField}
-                  label="Currency"
-                  placeholder="Select Currency"
-                  options={numCurrencyCodes}
-                  isLoading={isCurrencyCodesLoading}
-                  validate={[formErrorUtil.required]}
-                />
-              </Box>
-              <Box width={[2 / 7]} p="8px">
-                <Field
-                  id="amount"
-                  name="amount"
-                  component={NumberFormatField}
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                  label="Amount"
-                  validate={[
-                    formErrorUtil.required,
-                    formErrorUtil.isNumber,
-                  ]}
-                />
-              </Box>
-            </React.Fragment>
-          )}
-          {isLimitAdjustment && (
-            <React.Fragment>
-              <Box width={[2 / 7]} p="8px">
-                <Field
-                  id="balanceLimit"
-                  name="balanceLimit"
-                  component={NumberFormatField}
-                  label="Balance Limit"
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                />
-              </Box>
-              <Box width={[2 / 7]} p="8px">
-                <Field
-                  id="balanceLimitShared"
-                  name="balanceLimitShared"
-                  component={NumberFormatField}
-                  label="Balance limit shared"
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                />
-              </Box>
-            </React.Fragment>
-          )}
-          <Box width={[1]} p="8px">
-            <Field
-              id="description"
-              name="description"
-              component={TextField}
-              placeholder="Enter Description"
-              label="Description"
-              height={80}
-              validate={[formErrorUtil.required]}
-            />
-          </Box>
-        </Flex>
-      </Box>
-      <Flex justifyContent="space-between">
+          <Field
+            id="accountId"
+            name="accountId"
+            component={InputField}
+            label="Account ID"
+            placeholder="Enter ID"
+            isNumber={true}
+            readOnly={isReadonly}
+            validate={[
+              formErrorUtil.required,
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
+        {!isLimitAdjustment && (
+          <React.Fragment>
+            <Box width={[3 / 7]} p="8px">
+              <Field
+                id="currencyCode"
+                name="currencyCode"
+                component={SelectField}
+                label="Currency"
+                placeholder="Select Currency"
+                options={numCurrencyCodes}
+                isLoading={isCurrencyCodesLoading}
+                validate={[formErrorUtil.required]}
+              />
+            </Box>
+            <Box width={[2 / 7]} p="8px">
+              <Field
+                id="amount"
+                name="amount"
+                component={NumberFormatField}
+                placeholder="0.00"
+                fixedDecimalScale={true}
+                decimalScale={2}
+                label="Amount"
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isNumber,
+                ]}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+        {isLimitAdjustment && (
+          <React.Fragment>
+            <Box width={[2 / 7]} p="8px">
+              <Field
+                id="balanceLimit"
+                name="balanceLimit"
+                component={NumberFormatField}
+                label="Balance Limit"
+                placeholder="0.00"
+                fixedDecimalScale={true}
+                decimalScale={2}
+              />
+            </Box>
+            <Box width={[2 / 7]} p="8px">
+              <Field
+                id="balanceLimitShared"
+                name="balanceLimitShared"
+                component={NumberFormatField}
+                label="Balance limit shared"
+                placeholder="0.00"
+                fixedDecimalScale={true}
+                decimalScale={2}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+        <Box width={[1]} p="8px">
+          <Field
+            id="description"
+            name="description"
+            component={TextField}
+            placeholder="Enter Description"
+            label="Description"
+            height={80}
+            validate={[formErrorUtil.required]}
+          />
+        </Box>
+      </Flex>
+      <Flex
+        justifyContent="space-between"
+        mt="5px"
+      >
         <Button
           text="Reset form"
           disabled={pristine}

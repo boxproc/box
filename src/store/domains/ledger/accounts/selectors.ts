@@ -83,7 +83,7 @@ export const selectLedgerCurrentAccountAlias = createSelector(
 
 export const selectLedgerCurrentAccountCurrencyCode = createSelector(
   selectLedgerCurrentAccount,
-  currentAccount => currentAccount && currentAccount.currencyCode
+  currentAccount => currentAccount && currentAccount.currencyNumericCode
 );
 
 export const selectLedgerCurrentAccountBalanceLimit = createSelector(

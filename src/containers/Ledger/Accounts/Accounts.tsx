@@ -35,7 +35,7 @@ export interface AccountsProps extends WithModalProps {
   filterTransactionsById: HandleFilterLedgerTransactionsById;
   filterStatementsById: HandleFilterLedgerStatementsById;
   currentId: number;
-  currentCurrencyCode: string;
+  currentCurrencyCode: number;
   currentAccountBalanceLimit: string;
   currentAccountBalanceLimitShared: string;
   isLoading: boolean;

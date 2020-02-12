@@ -190,6 +190,7 @@ export const prepareDataToRender = (
     number_of_times_overdue_6_cycle,
     number_of_times_overdue_7_cycle,
     currency_code,
+    currency_numeric_code,
     statement_cycle_repayment_day,
     status_name,
   } = data;
@@ -221,6 +222,7 @@ export const prepareDataToRender = (
     dateClosed: date_closed,
     lastCycleDate: last_cycle_date,
     currencyCode: currency_code,
+    currencyNumericCode: currency_numeric_code,
     auxCounter1: stringsUtil.numberToFixed(aux_counter_1, 2),
     auxCounter2: stringsUtil.numberToFixed(aux_counter_2, 2),
     auxCounter3: stringsUtil.numberToFixed(aux_counter_3, 2),
