@@ -21,6 +21,7 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
     <MenuItem
       key={key}
       preventClose={preventClose}
+      disabled={item.isDisabled}
       data={{
         name: item.name,
         value: item.value,

@@ -33,6 +33,7 @@ interface FeesTableProps {
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;
   updateProductFee: HandleUpdateProductFee;
+  isReadOnly: boolean;
   isLoading: boolean;
 }
 
@@ -43,6 +44,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
   getProductFeeApr,
   deleteProductFee,
   updateProductFee,
+  isReadOnly,
   isLoading,
 }) => {
   React.useEffect(
@@ -53,6 +55,11 @@ const FeesTable: React.FC<FeesTableProps> = ({
       ]);
     },
     [getProductFees, getProductFeeApr]
+  );
+
+  const isEditableCell = React.useMemo(
+    () => !isReadOnly && !isLoading,
+    [isReadOnly, isLoading]
   );
 
   const columns = React.useMemo(
@@ -78,7 +85,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             updateAction={updateProductFee}
             isSmaller={true}
             cellInfo={cellInfo}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -93,7 +100,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.feeApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && !isLoading}
+              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
           />
         ),
       },
@@ -107,7 +114,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             isSmaller={true}
             isDecimalNumber={true}
             isEditable={(cellInfo.original.feeApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && !isLoading}
+              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && isEditableCell}
             cellInfo={cellInfo}
           />
         ),
@@ -134,7 +141,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             cellInfo={cellInfo}
             isSelect={true}
             selectOptions={aprsOptions}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -157,7 +164,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
     ],
-    [isLoading, aprsOptions, deleteProductFee, updateProductFee]
+    [aprsOptions, deleteProductFee, updateProductFee, isEditableCell]
   );
 
   return (

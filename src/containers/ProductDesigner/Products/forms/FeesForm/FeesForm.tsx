@@ -93,7 +93,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
         </form>
       )}
       <Box pt="10px">
-        <FeesTable />
+        <FeesTable isReadOnly={isReadOnly} />
       </Box>
       <Flex justifyContent="flex-end">
         <Button

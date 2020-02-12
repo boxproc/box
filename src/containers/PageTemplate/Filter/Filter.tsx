@@ -1,7 +1,7 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Box, Flex } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 import * as H from 'history';
 
 import styled from 'theme';
@@ -223,14 +223,14 @@ const Filter: React.FC<FilterAllProps> = ({
     <FilterWrapper isHidden={isHidden}>
       <div className="title">Filter</div>
       <form onSubmit={handleSubmitForm}>
-        <Box width="940px" m="0 -8px 5px">
-          <Flex
-            alignItems="flex-end"
-            flexWrap="wrap"
-          >
-            {children}
-          </Flex>
-        </Box>
+        <Flex
+          width="940px"
+          alignItems="flex-end"
+          flexWrap="wrap"
+          m="0 -8px 5px"
+        >
+          {children}
+        </Flex>
         <Button
           text={buttonText}
           disabled={isDisabled}

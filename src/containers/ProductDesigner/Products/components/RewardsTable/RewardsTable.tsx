@@ -30,6 +30,7 @@ interface RewardsTableProps {
   getProductRewards: HandleGetProductRewards;
   deleteProductReward: HandleDeleteProductReward;
   updateProductReward: HandleUpdateProductReward;
+  isReadOnly: boolean;
   isLoading: boolean;
 }
 
@@ -38,6 +39,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
   getProductRewards,
   deleteProductReward,
   updateProductReward,
+  isReadOnly,
   isLoading,
 }) => {
   React.useEffect(
@@ -45,6 +47,11 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
       getProductRewards();
     },
     [getProductRewards]
+  );
+
+  const isEditableCell = React.useMemo(
+    () => !isReadOnly && !isLoading,
+    [isReadOnly, isLoading]
   );
 
   const columns = React.useMemo(
@@ -62,7 +69,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
         ),
       },
       {
-        maxWidth: 350,
+        maxWidth: 250,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -70,7 +77,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
             updateAction={updateProductReward}
             isSmaller={true}
             cellInfo={cellInfo}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -85,7 +92,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.rewardApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && !isLoading}
+              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
           />
         ),
       },
@@ -100,12 +107,12 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.rewardApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && !isLoading}
+              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && isEditableCell}
           />
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 300,
         accessor: 'rewardApplicationCondition',
         Header: <TableHeader title="Reward Application Condition" />,
         Cell: (props: TCell<'rewardApplicationCondition'>) => (
@@ -134,7 +141,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
         ),
       },
     ],
-    [isLoading, deleteProductReward, updateProductReward]
+    [deleteProductReward, updateProductReward, isEditableCell]
   );
 
   return (

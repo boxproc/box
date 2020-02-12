@@ -14,6 +14,7 @@ import {
   selectAdminCurrentEndpointName,
   selectAdminEndpoints,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   SystemMonitorActionTypes,
 } from 'store/domains';
 
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   endpointItems: selectAdminEndpoints(state),
   currentEndpointName: selectAdminCurrentEndpointName(state),
   currentEndpointId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

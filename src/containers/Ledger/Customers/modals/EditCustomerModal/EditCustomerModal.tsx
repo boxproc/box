@@ -72,6 +72,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
           <RepaymentDebitCardsForm
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
+            isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
           />
         </TabsPanel>
@@ -79,6 +80,7 @@ const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
           <RepaymentDirectDebitsForm
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
+            isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
           />
         </TabsPanel>

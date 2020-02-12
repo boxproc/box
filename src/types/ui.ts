@@ -12,6 +12,7 @@ export interface ContextMenuItemProps {
   action?: () => void;
   noDataStr?: string;
   isDivider?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface ContextSubMenuItem {

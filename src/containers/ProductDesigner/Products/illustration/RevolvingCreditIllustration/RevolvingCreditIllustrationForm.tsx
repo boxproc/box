@@ -64,11 +64,12 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
 
   return (
     <React.Fragment>
-      <Box mt="15px">
+      <Box mt="15px" mb="5px">
         <Button
           text={filterButtonText}
           iconName={iconNamesConst.FILTER}
           type="reset"
+          bordered={true}
           onClick={handleFilter}
         />
       </Box>

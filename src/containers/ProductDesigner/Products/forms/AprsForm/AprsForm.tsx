@@ -48,7 +48,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
         </form>
       )}
       <Box pt="10px">
-        <AprsTable />
+        <AprsTable isReadOnly={isReadOnly} />
       </Box>
       <Flex justifyContent="flex-end">
         <Button

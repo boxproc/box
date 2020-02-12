@@ -18,6 +18,11 @@
   user-select: none;
 }
 
+.react-contextmenu-item--disabled {
+  opacity: .4;
+  pointer-events: none;
+}
+
 .react-contextmenu-submenu .react-contextmenu {
   width: 150px;
   opacity: 0;

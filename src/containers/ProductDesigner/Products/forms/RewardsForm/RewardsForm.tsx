@@ -87,7 +87,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
         </form>
       )}
       <Box pt="10px">
-        <RewardsTable />
+        <RewardsTable isReadOnly={isReadOnly} />
       </Box>
       <Flex justifyContent="flex-end">
         <Button

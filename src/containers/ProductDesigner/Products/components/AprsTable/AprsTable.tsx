@@ -30,6 +30,7 @@ interface AprsTableProps {
   getProductAprs: HandleGetProductAprs;
   deleteProductApr: HandleDeleteProductApr;
   updateProductApr: HandleUpdateProductApr;
+  isReadOnly: boolean;
   isLoading: boolean;
 }
 
@@ -38,6 +39,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   getProductAprs,
   deleteProductApr,
   updateProductApr,
+  isReadOnly,
   isLoading,
 }) => {
   React.useEffect(
@@ -61,6 +63,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
     [productAprs]
   );
 
+  const isEditableCell = React.useMemo(
+    () => !isReadOnly && !isLoading,
+    [isReadOnly, isLoading]
+  );
+
   const columns = React.useMemo(
     () => [
       {
@@ -71,10 +78,11 @@ const AprsTable: React.FC<AprsTableProps> = ({
           <EditableTableCell
             updateAction={updateProductApr}
             isSmaller={true}
+            isNumber={true}
             cellInfo={cellInfo}
             isSelect={true}
             selectOptions={repaymentOptions}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -99,7 +107,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
             updateAction={updateProductApr}
             isSmaller={true}
             cellInfo={cellInfo}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -124,7 +132,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
             isSmaller={true}
             isDecimalNumber={true}
             cellInfo={cellInfo}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -138,7 +146,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
             isSmaller={true}
             isNumber={true}
             cellInfo={cellInfo}
-            isEditable={!isLoading}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -161,7 +169,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
     ],
-    [deleteProductApr, updateProductApr, isLoading, repaymentOptions]
+    [deleteProductApr, updateProductApr, repaymentOptions, isEditableCell]
   );
 
   return (

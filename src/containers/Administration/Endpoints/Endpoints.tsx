@@ -21,6 +21,7 @@ export interface EndpointsProps {
   currentEndpointName: string;
   currentEndpointId: number;
   isLoading: boolean;
+  isReadOnly: boolean;
   deleteEndpoint: HandleDeleteAdminEndpoint;
   filterEndpoints: HandleFilterAdminEndpoints;
   getLogData: HandleGetLogData;
@@ -36,6 +37,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
   institutionsOptions,
   getLogData,
   resetEndpoints,
+  isReadOnly,
   isLoading,
 }) => {
   React.useEffect(
@@ -59,12 +61,13 @@ const Endpoints: React.FC<EndpointsProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteEndpoint(currentEndpointId),
         withConfirmation: true,
         confirmationText: `Delete endpoint "${currentEndpointName}"?`,
       },
     ],
-    [deleteEndpoint, currentEndpointName, getLogData, currentEndpointId]
+    [deleteEndpoint, currentEndpointName, getLogData, currentEndpointId, isReadOnly]
   );
 
   const initialFilterValues = React.useMemo(
