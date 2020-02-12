@@ -37,8 +37,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             component={SelectField}
             label="Institution"
             options={institutionsOptions}
-            readOnly={isReadOnly}
-            isDisabled={isEditMode}
+            isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             validate={[formErrorUtil.required]}
           />
