@@ -80,7 +80,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
         getInstitutionProducts(currentInstitution.value);
       }
     },
-    [getInstitutionProducts, currentInstitution]
+    [getInstitutionProducts, currentInstitution, changeField]
   );
 
   const isRepaymentType = React.useMemo(
