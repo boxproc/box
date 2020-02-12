@@ -21,7 +21,10 @@ const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
 
   ${({ disabled }) => disabled && `
     pointer-events: none;
-    opacity: 0.5;
+
+    .checkbox {
+      opacity: 0.5;
+    }
   `};
 `;
 
@@ -99,12 +102,14 @@ const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
       className="input-field checkbox-field"
       disabled={disabled}
     >
-      <Checkbox
-        {...props}
-        {...input}
-        id={id}
-        onChange={!disabled ? handleChange : null}
-      />
+      <div className="checkbox">
+        <Checkbox
+          {...props}
+          {...input}
+          id={id}
+          onChange={!disabled ? handleChange : null}
+        />
+      </div>
       {
         typeof label === 'string' ? (
           <DefaultLabel

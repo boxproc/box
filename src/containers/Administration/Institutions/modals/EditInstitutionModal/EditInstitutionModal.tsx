@@ -33,6 +33,11 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
     [currentInstitutionName]
   );
 
+  const isMasterInstitutionFlag = React.useMemo(
+    () => currentInstitution && currentInstitution.masterInstitutionFlag,
+    [currentInstitution]
+  );
+
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -50,6 +55,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
         initialValues={currentInstitution}
         onCancel={handleOnCancel}
         isReadOnly={isReadOnly}
+        isMasterInstitutionFlag={isMasterInstitutionFlag}
         mode="edit"
       />
     </Modal>

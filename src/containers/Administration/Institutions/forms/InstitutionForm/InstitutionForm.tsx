@@ -27,6 +27,7 @@ import { formErrorUtil } from 'utils';
 interface InstitutionFormProps extends ExternalSpinnerProps {
   currentInstitutionName: string;
   currentInstitutionId: number;
+  isMasterInstitutionFlag: boolean;
   isReadOnly: boolean;
   mode: 'add' | 'edit';
   updateInstitution: HandleUpdateAdminInstitution;
@@ -46,6 +47,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   deleteInstitution,
   currentInstitutionName,
   currentInstitutionId,
+  isMasterInstitutionFlag,
   mode,
   dirty,
   pristine,
@@ -103,7 +105,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               component={InputField}
               label="Name"
               placeholder="Enter Institution"
-              isDisabled={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[formErrorUtil.required]}
             />
           </Box>
@@ -139,15 +141,17 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               readOnly={isReadOnly}
             />
           </Box>
-          <Box width={[1]} p="8px">
-            <Field
-              id="masterInstitutionFlag"
-              name="masterInstitutionFlag"
-              component={CheckboxField}
-              label="Master Institution"
-              disabled={true}
-            />
-          </Box>
+          {isMasterInstitutionFlag && (
+            <Box width={[1]} p="8px">
+              <Field
+                id="masterInstitutionFlag"
+                name="masterInstitutionFlag"
+                component={CheckboxField}
+                label="Master Institution"
+                disabled={true}
+              />
+            </Box>
+          )}
         </Flex>
       </Box>
       <Hr />
