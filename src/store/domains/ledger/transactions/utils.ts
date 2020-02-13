@@ -169,6 +169,7 @@ export const prepareDataToConvert = (data: Partial<LedgerConvertTransactionToLoa
     accountId,
     amount,
     transactionId,
+    productId,
   } = data;
 
   return {
@@ -176,6 +177,7 @@ export const prepareDataToConvert = (data: Partial<LedgerConvertTransactionToLoa
     num_of_interest_free_instllmnts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
     account_id: stringsUtil.toNumber(accountId),
     transaction_id: stringsUtil.toNumber(transactionId),
+    product_id: productId,
     amount,
   };
 };
