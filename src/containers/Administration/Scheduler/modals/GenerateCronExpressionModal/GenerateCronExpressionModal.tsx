@@ -89,7 +89,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
     <Modal
       name={modalName}
       title="Generate Cron Expression"
-      maxContainerWidth={800}
+      containerWidth={800}
       minContainerHeight={600}
       withCloseConfirmation={dirty}
     >

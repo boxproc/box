@@ -64,7 +64,7 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      maxContainerWidth={modalWidth}
+      containerWidth={modalWidth}
       type={modalTypesConst.REGISTRATION_2FA}
     >
       {isSecondStep

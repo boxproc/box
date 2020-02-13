@@ -59,7 +59,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Statement"
-      maxContainerWidth={1100}
+      containerWidth={1010}
       minContainerHeight={500}
     >
       <Tabs>

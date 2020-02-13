@@ -23,7 +23,7 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
     <Modal
       name={modalName}
       title="Change Password"
-      maxContainerWidth={300}
+      containerWidth={300}
     >
       <ChangePasswordForm
         changePassword={changePassword}

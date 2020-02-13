@@ -128,7 +128,7 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      maxContainerWidth={550}
+      containerWidth={550}
     >
       <Flex alignItems="center">
         <Box mb="5px" mr="15px">

@@ -43,7 +43,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
-      maxContainerWidth={750}
+      containerWidth={750}
       withCloseConfirmation={isFormDirty}
     >
       <UserForm

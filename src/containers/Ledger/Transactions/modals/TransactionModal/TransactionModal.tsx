@@ -58,7 +58,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
-      maxContainerWidth={1010}
+      containerWidth={1010}
       minContainerHeight={580}
     >
       {!isConvertibleToLoan && (

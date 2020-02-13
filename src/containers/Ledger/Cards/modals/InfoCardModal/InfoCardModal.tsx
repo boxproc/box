@@ -56,7 +56,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title="Card"
-      maxContainerWidth={450}
+      containerWidth={450}
       withCloseConfirmation={isFormDirty}
     >
       <Box mb="10px">

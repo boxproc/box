@@ -36,7 +36,7 @@ interface ModalProps extends WithModalProps {
   title?: string; // modal title
   monoTitleStr?: string; // addition string to modal title. monoTitleStr has mono font-family.
   type?: string; // modal type, e.g. 'messageModal', 'editModal' etc.
-  maxContainerWidth?: string; // max width of modal container
+  containerWidth?: string; // width of modal container
   minContainerHeight?: string; // min height of modal container
   zIndex?: string; // z-index of modal
   accentClose?: boolean; // gives accent color for close icon '&times;'
@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({
   monoTitleStr,
   closeModal,
   openModal,
-  maxContainerWidth = '720',
+  containerWidth = '720',
   minContainerHeight,
   zIndex,
   accentClose = true,
@@ -122,7 +122,7 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <ModalWrapper
-      maxContainerWidth={maxContainerWidth}
+      containerWidth={containerWidth}
       minContainerHeight={minContainerHeight}
       containerWidthAuto={containerWidthAuto}
       containerHeightFull={containerHeightFull}

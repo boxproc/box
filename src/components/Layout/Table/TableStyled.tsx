@@ -12,14 +12,12 @@ interface TableStyledProps {
 }
 
 export const TableStyled = styled.div<TableStyledProps>`
-  box-shadow: ${({ theme }) => theme.shadows.normalBox};
-  overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
-  ${scrollbarCss}
-
   .ReactTable {
     height: 100%;
     border: none;
-    overflow: visible;
+    box-shadow: ${({ theme }) => theme.shadows.normalBox};
+    overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
+    ${scrollbarCss}
 
     ${({ minHeight }) => minHeight && `
       min-height: ${minHeight}px;
@@ -41,11 +39,16 @@ export const TableStyled = styled.div<TableStyledProps>`
       padding: 0;
     }
 
+    .rt-thead .rt-th {
+      border-right: 1px solid ${({ theme }) => theme.colors.lighterGray};
+    }
+
     .rt-thead .rt-th,
     .rt-thead .rt-resizable-header,
-    .rt-thead .rt-th.-cursor-pointer  {
-      border-right: 1px solid ${({ theme }) => theme.colors.lighterGray};
+    .rt-thead .rt-th.-cursor-pointer,
+    .rt-tbody .rt-td {
       min-width: 50px;
+      max-width: 500px !important;
     }
 
     .rt-thead .rt-th > div {

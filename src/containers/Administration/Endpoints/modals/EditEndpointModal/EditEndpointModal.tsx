@@ -47,7 +47,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       title={modalTitle}
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      maxContainerWidth={600}
+      containerWidth={600}
       withCloseConfirmation={isFormDirty}
     >
       <EndpointForm

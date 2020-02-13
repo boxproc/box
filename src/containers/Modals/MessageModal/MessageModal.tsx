@@ -110,7 +110,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      maxContainerWidth={modalWidth}
+      containerWidth={modalWidth}
       type={modalTypesConst.MESSAGE_MODAL}
       hideCloseIcon={isReLogin}
       zIndex="102"

@@ -1,7 +1,7 @@
 import styled from 'theme';
 
 interface ModalWrapperProps {
-  maxContainerWidth?: string;
+  containerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
   accentClose?: boolean;
@@ -34,39 +34,30 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     right: 0;
     bottom: 0;
     left: 0;
+    display: flex;
+    align-items: center;
     overflow-y: scroll;
-
-    &:after {
-      content: "";
-      display: inline-block;
-      vertical-align: middle;
-      height: 100%;
-      width: .1%;
-      margin-left: -.1%;
-    }
   }
 
   .modal-container {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin: 5px 0;
+    margin: 5px auto;
     padding: 15px;
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;
-    min-width: 350px;
-    max-width: ${({ maxContainerWidth }) =>
-    maxContainerWidth ? maxContainerWidth + 'px' : '500px'};
+    min-width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '350px'};
+    width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '500px'};
     min-height: ${({ minContainerHeight }) =>
-    minContainerHeight ? minContainerHeight + 'px' : 'auto'};
-    width: 100%;
+      minContainerHeight ? minContainerHeight + 'px' : 'auto'};
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;
 
     ${({ containerWidthAuto }) => containerWidthAuto && `
-      width: auto;
+      width: 100%;
       max-width: 1550px;
     `};
 

@@ -27,7 +27,7 @@ const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
     <Modal
       name={modalName}
       title="Edit System Property"
-      maxContainerWidth={550}
+      containerWidth={550}
       withCloseConfirmation={isFormDirty}
     >
       <SystemPropertyForm

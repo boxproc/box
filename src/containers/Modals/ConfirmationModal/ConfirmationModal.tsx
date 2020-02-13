@@ -50,7 +50,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      maxContainerWidth={350}
+      containerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}
       accentClose={false}

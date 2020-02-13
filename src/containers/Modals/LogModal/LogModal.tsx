@@ -65,7 +65,7 @@ const LogModal: React.FC<LogModalProps> = ({
       name={modalName}
       title={title}
       monoTitleStr={monoTitleStr}
-      maxContainerWidth={1400}
+      containerWidthAuto={true}
       containerHeightFull={true}
     >
       <HighlightCode

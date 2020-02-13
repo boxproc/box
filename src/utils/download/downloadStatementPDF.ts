@@ -71,7 +71,7 @@ export const downloadStatementPDF = (data: {
     statement.forEach((item, index) => {
       const isSecondColumn = index === 1;
       const leftSpaceKey = isSecondColumn ? 290 : 30;
-      const leftSpaceValue = isSecondColumn ? 428 : 132;
+      const leftSpaceValue = isSecondColumn ? 433 : 132;
       const topSpace = 97;
 
       doc.setFontSize(9);

@@ -43,7 +43,7 @@ const StatementAprs: React.FC<StatementAprsProps> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      maxContainerWidth={700}
+      containerWidth={700}
       minContainerHeight={500}
     >
       <StatementDate date={currentStatementDate} />

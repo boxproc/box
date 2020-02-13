@@ -57,7 +57,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={messagesConst.TRANSACTION_SUCCESSFULLY_COMPLETED}
-      maxContainerWidth={modalWidth}
+      containerWidth={modalWidth}
     >
       {isLimitAdjustment
         ? (<ResultLimitAdjustmentForm initialValues={ledgerLimitAdjustment} />)

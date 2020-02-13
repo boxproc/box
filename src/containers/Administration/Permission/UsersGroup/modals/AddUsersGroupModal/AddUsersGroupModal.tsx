@@ -27,7 +27,7 @@ const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
       name={modalName}
       title="Add New User Group"
       type={modalTypesConst.EDIT_MODAL}
-      maxContainerWidth={350}
+      containerWidth={350}
       withCloseConfirmation={isFormDirty}
     >
       <AddUserGroupForm onCancel={handleOnCancel} />

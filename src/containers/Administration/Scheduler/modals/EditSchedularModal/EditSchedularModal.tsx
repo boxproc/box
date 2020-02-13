@@ -54,7 +54,7 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
       title={modalTitle}
-      maxContainerWidth={740}
+      containerWidth={740}
       withCloseConfirmation={isFormDirty}
     >
       <SchedulerForm

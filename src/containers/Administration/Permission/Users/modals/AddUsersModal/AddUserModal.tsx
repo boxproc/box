@@ -27,7 +27,7 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
       name={modalName}
       title="Add New User"
       type={modalTypesConst.EDIT_MODAL}
-      maxContainerWidth={750}
+      containerWidth={750}
       withCloseConfirmation={isFormDirty}
     >
       <UserForm

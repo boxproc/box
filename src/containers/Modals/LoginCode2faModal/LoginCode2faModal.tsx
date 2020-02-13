@@ -17,7 +17,7 @@ const Register2faModal: React.FC<Register2faModalProps> = () => {
     <Modal
       title="Enter Second Factor Code"
       name={modalName}
-      maxContainerWidth={340}
+      containerWidth={340}
     >
       <Box mb="7px">
         <CircleList
