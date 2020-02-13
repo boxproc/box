@@ -57,7 +57,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 120,
+        maxWidth: 80,
         accessor: 'productRewardId',
         Header: <TableHeader title="Product Reward ID" />,
         Cell: (props: TCell<'productRewardId'>) => (
@@ -69,7 +69,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
         ),
       },
       {
-        maxWidth: 250,
+        maxWidth: 300,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -113,6 +113,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
       },
       {
         maxWidth: 300,
+        minWidth: 200,
         accessor: 'rewardApplicationCondition',
         Header: <TableHeader title="Reward Application Condition" />,
         Cell: (props: TCell<'rewardApplicationCondition'>) => (
@@ -123,7 +124,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 50,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button

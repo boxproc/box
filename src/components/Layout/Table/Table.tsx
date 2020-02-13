@@ -62,7 +62,7 @@ export const Table: React.FC<TableProps> = props => {
         showPageSizeOptions={false}
         defaultPageSize={pageSize}
         multiSort={false}
-        resizable={true}
+        resizable={isScrollbar}
         NoDataComponent={TableNoData}
         TheadComponent={
           isHeader && data && data.length > 0

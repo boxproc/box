@@ -65,7 +65,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 80,
         accessor: 'productFeeId',
         Header: <TableHeader title="Product Fee ID" />,
         Cell: (props: TCell<'productFeeId'>) => (
@@ -77,7 +77,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 350,
+        maxWidth: 300,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -90,7 +90,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 100,
         accessor: 'rate',
         Header: <TableHeader title="Rate" />,
         Cell: (cellInfo: CellInfo) => (
@@ -105,7 +105,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 100,
         accessor: 'amount',
         Header: <TableHeader title="Amount" />,
         Cell: (cellInfo: CellInfo) => (
@@ -120,7 +120,8 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 300,
+        minWidth: 150,
         accessor: 'feeApplicationCondition',
         Header: <TableHeader title="Fee Application Condition" />,
         Cell: (props: TCell<'feeApplicationCondition'>) => (
@@ -131,7 +132,8 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 300,
+        minWidth: 200,
         accessor: 'apr',
         Header: <TableHeader title="APR" />,
         Cell: (cellInfo: CellInfo) => (
@@ -146,7 +148,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 50,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button
