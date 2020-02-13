@@ -18,6 +18,7 @@ interface UsersGroupMembersProps {
   getGroupPermission: HandleGetAdminGroupPermissions;
   deleteGroupPermission: HandleDeleteAdminGroupPermissions;
   groupPermissions: Array<AdminGroupPermissionItem>;
+  isReadOnly: boolean;
 }
 
 type TCell<T extends keyof AdminGroupPermissionItem> =
@@ -28,6 +29,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   userGroupMemberId,
   groupPermissions,
   deleteGroupPermission,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -69,6 +71,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
             text="Remove"
             size="10"
             iconSize="15"
+            disabled={isReadOnly}
             confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
             withConfirmation={true}
             onClick={() =>
@@ -81,7 +84,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
         ),
       },
     ],
-    [deleteGroupPermission]
+    [deleteGroupPermission, isReadOnly]
   );
 
   return (

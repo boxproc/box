@@ -65,7 +65,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 80,
+        maxWidth: 100,
         accessor: 'productFeeId',
         Header: <TableHeader title="Product Fee ID" />,
         Cell: (props: TCell<'productFeeId'>) => (
@@ -148,7 +148,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
         ),
       },
       {
-        maxWidth: 50,
+        maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button

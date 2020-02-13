@@ -71,7 +71,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 80,
+        maxWidth: 100,
         accessor: 'repaymentOrder',
         Header: <TableHeader title="Repayment Order" />,
         Cell: (cellInfo: CellInfo) => (
@@ -87,7 +87,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 100,
         accessor: 'productAprId',
         Header: <TableHeader title="APR ID" />,
         Cell: (props: TCell<'productAprId'>) => (
@@ -99,7 +99,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 300,
+        maxWidth: 350,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -123,7 +123,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 100,
         accessor: 'rate',
         Header: <TableHeader title="Rate %" />,
         Cell: (cellInfo: CellInfo) => (
@@ -137,7 +137,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 100,
         accessor: 'graceNumberOfDays',
         Header: <TableHeader title="Grace Number of&nbsp;Days" />,
         Cell: (cellInfo: CellInfo) => (
@@ -151,7 +151,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 50,
+        maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
           <Button

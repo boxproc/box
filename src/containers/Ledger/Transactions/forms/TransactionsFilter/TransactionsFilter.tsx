@@ -154,7 +154,6 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           name="panAlias"
           component={InputField}
           label="Pan Alias"
-          isNumber={true}
           placeholder="Enter Pan Alias"
           disabled={isDisabled}
         />

@@ -69,7 +69,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
     () => {
       if (currentInstitution) {
         if (currentInstId !== currentInstitution.value) {
-          change('product', null);
+          change('product', '');
           setCurrentInstId(currentInstitution.value);
         }
       }

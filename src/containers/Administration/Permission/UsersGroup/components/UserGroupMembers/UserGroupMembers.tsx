@@ -18,6 +18,7 @@ interface UsersGroupMembersProps {
   getUserGroupMembers: HandleGetAdminUserGroupMembers;
   userGroupMembers: Array<AdminUserGroupMemberPrepared>;
   deleteUserGroupMembers: HandleDeleteAdminUserGroupMembers;
+  isReadOnly: boolean;
 }
 
 type TCell<T extends keyof AdminUserGroupMemberPrepared> =
@@ -28,6 +29,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   userGroupMemberId,
   userGroupMembers,
   deleteUserGroupMembers,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -57,6 +59,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
             size="10"
             iconSize="15"
             withConfirmation={true}
+            disabled={isReadOnly}
             confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
             onClick={() => deleteUserGroupMembers(
               userGroupMemberId,
@@ -66,7 +69,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
         ),
       },
     ],
-    [userGroupMemberId, deleteUserGroupMembers]
+    [userGroupMemberId, deleteUserGroupMembers, isReadOnly]
   );
 
   return (

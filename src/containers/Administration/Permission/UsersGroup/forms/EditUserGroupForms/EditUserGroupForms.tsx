@@ -40,7 +40,7 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         {!isReadOnly && (
           <EditUserGroupMembersForm />
         )}
-        <UserGroupMembers />
+        <UserGroupMembers isReadOnly={isReadOnly} />
       </TabsPanel>
       <TabsPanel
         title="Group Permission"
@@ -49,7 +49,7 @@ const EditUserGroupForms: React.FC<EditUserGroupFormsProps> = ({
         {!isReadOnly && (
           <EditGroupPermissionForm />
         )}
-        <UserGroupPermission />
+        <UserGroupPermission isReadOnly={isReadOnly} />
       </TabsPanel>
     </Tabs>
   );

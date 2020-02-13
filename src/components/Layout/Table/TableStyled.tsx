@@ -48,7 +48,6 @@ export const TableStyled = styled.div<TableStyledProps>`
     .rt-thead .rt-th.-cursor-pointer,
     .rt-tbody .rt-td {
       min-width: 50px;
-      max-width: 500px !important;
     }
 
     .rt-thead .rt-th > div {

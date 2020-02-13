@@ -62,7 +62,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     `};
 
     ${({ containerHeightFull }) => containerHeightFull && `
-      height: calc(100vh - 10px);
+      height: calc(100vh - 20px);
     `}
   }
 
