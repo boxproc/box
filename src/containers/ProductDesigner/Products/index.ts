@@ -10,6 +10,7 @@ import {
   ProductsActionTypes,
   resetProducts,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   selectProductItems,
   selectProductName,
 } from 'store/domains';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   productItems: selectProductItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentProductName: selectProductName(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

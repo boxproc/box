@@ -22,6 +22,7 @@ export interface AccountsProps {
   currentInterfaceName: string;
   currentInterfaceId: number;
   isLoading: boolean;
+  isReadOnly: boolean;
   deleteInterface: HandleDeleteAdminInterface;
   filterInterface: HandleFilterAdminInterface;
   getLogData: HandleGetLogData;
@@ -38,6 +39,7 @@ const Interfaces: React.FC<AccountsProps> = ({
   getLogData,
   currentInterfaceId,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -60,12 +62,13 @@ const Interfaces: React.FC<AccountsProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteInterface(currentInterfaceId),
         withConfirmation: true,
         confirmationText: `Delete interface: ${currentInterfaceName}?`,
       },
     ],
-    [deleteInterface, currentInterfaceName, currentInterfaceId, getLogData]
+    [deleteInterface, currentInterfaceName, currentInterfaceId, getLogData, isReadOnly]
   );
 
   const initialFilterValues = React.useMemo(

@@ -33,6 +33,7 @@ interface SchedulerProps extends WithModalProps {
   currentSchedulerId: number;
   currentSchedulerName: string;
   isLoading: boolean;
+  isReadOnly: boolean;
   filterSchedulerJobs: HandleFilterAdminSchedulerJobs;
   sendSchedulerAction: HandleSendAdminSchedulerAction;
   deleteSchedulerJob: HandleDeleteAdminSchedulerJob;
@@ -53,6 +54,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   filterScheduledJobsById,
   institutionsOptions,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -80,6 +82,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       { isDivider: true },
       {
         name: schedulerTasksConsts.EXECUTE_TASK.NAME,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
@@ -89,6 +92,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction(
           {
             taskId: currentSchedulerId,
@@ -103,6 +107,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.STOP.NAME,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.STOP.TASK_COMMAND,
@@ -112,6 +117,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.START.NAME,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.START.TASK_COMMAND,
@@ -121,6 +127,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.PAUSE.NAME,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.PAUSE.TASK_COMMAND,
@@ -130,6 +137,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
       {
         name: schedulerTasksConsts.RESUME.NAME,
+        isDisabled: isReadOnly,
         action: () => sendSchedulerAction({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.RESUME.TASK_COMMAND,
@@ -141,6 +149,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteSchedulerJob(currentSchedulerId),
         withConfirmation: true,
         confirmationText: `Delete scheduler "${currentSchedulerName}"?`,
@@ -153,6 +162,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       deleteSchedulerJob,
       filterScheduledJobsById,
       getLogData,
+      isReadOnly,
     ]
   );
 

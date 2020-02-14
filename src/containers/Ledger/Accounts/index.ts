@@ -16,12 +16,14 @@ import {
   resetAccounts,
   selectActiveItemId,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   selectLedgerAccounts,
   selectLedgerCurrentAccountBalanceLimit,
   selectLedgerCurrentAccountBalanceLimitShared,
   selectLedgerCurrentAccountCurrencyCode,
   selectLedgerCurrentAccountHasProductOverride,
   selectLedgerCurrentAccountProductOverrideId,
+  selectUiItems,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -40,6 +42,8 @@ const mapStateToProps = (state: StoreState) => ({
   currentCurrencyCode: selectLedgerCurrentAccountCurrencyCode(state),
   currentAccountBalanceLimit: selectLedgerCurrentAccountBalanceLimit(state),
   currentAccountBalanceLimitShared: selectLedgerCurrentAccountBalanceLimitShared(state),
+  isReadOnly: selectIsReadOnly(state),
+  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

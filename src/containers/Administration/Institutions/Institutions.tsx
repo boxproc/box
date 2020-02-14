@@ -17,6 +17,7 @@ export interface InstitutionsProps {
   currentInstitutionName: string;
   currentInstitutionId: number;
   isLoading: boolean;
+  isReadOnly: boolean;
   getInstitutions: HandleGetAdminInstitutions;
   deleteInstitution: HandleDeleteAdminInstitution;
   resetInstitutions: ResetInstitutions;
@@ -30,6 +31,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
   currentInstitutionId,
   resetInstitutions,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -44,12 +46,13 @@ const Institutions: React.FC<InstitutionsProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteInstitution(currentInstitutionId),
         withConfirmation: true,
         confirmationText: `Delete institution "${currentInstitutionName}"?`,
       },
     ],
-    [deleteInstitution, currentInstitutionName, currentInstitutionId]
+    [deleteInstitution, currentInstitutionName, currentInstitutionId, isReadOnly]
   );
 
   return (

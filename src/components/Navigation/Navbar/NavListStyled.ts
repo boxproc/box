@@ -30,6 +30,11 @@ export const NavListStyled = styled.div`
     &.is-cursor-pointer {
       cursor: pointer;
     }
+
+    &.is-disabled {
+      pointer-events: none;
+      opacity: .4;
+    }
   }
 
   .${menuClasses.MENU_ITEM} {
@@ -47,7 +52,7 @@ export const NavListStyled = styled.div`
     transition: all .1s linear;
 
 
-    &:hover > .${menuClasses.MENU_TITLE} {
+    &:hover > .${menuClasses.MENU_TITLE}:not(.is-disabled) {
       background-color: ${({ theme }) => theme.colors.lighterGray};
       color: ${({ theme }) => theme.colors.normalAccent};
     }

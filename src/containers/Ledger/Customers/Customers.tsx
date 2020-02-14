@@ -32,6 +32,7 @@ export interface CustomersProps {
   filterStatementsById: HandleFilterLedgerStatementsById;
   filterAccountsById: HandleFilterLedgerAccountsById;
   isLoading: boolean;
+  isReadOnly: boolean;
 }
 
 const Customers: React.FC<CustomersProps> = ({
@@ -47,6 +48,7 @@ const Customers: React.FC<CustomersProps> = ({
   filterAccountsById,
   resetCustomers,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -60,6 +62,7 @@ const Customers: React.FC<CustomersProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteCustomer(currentId),
         withConfirmation: true,
         confirmationText: `Delete customer "${currentCustomerName}"?`,
@@ -90,6 +93,7 @@ const Customers: React.FC<CustomersProps> = ({
       filterCardsById,
       filterAccountsById,
       currentId,
+      isReadOnly,
     ]
   );
 

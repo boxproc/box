@@ -18,6 +18,7 @@ interface InfoAccountModalProps extends WithModalProps {
   currentCardId: number;
   isFormDirty: boolean;
   isLoading: boolean;
+  isReadOnly: boolean;
 }
 
 const modalName = modalNamesConst.INFO_CARDS;
@@ -30,6 +31,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   currentCardId,
   isFormDirty,
   isLoading,
+  isReadOnly,
 }) => {
   const buttonText = React.useMemo(
     () => isLoading ? 'Activating...' : 'Activate Card',
@@ -59,17 +61,21 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       containerWidth={450}
       withCloseConfirmation={isFormDirty}
     >
-      <Box mb="10px">
-        <Button
-          disabled={isStatusActive || isLoading}
-          type="reset"
-          onClick={handleActivateCard}
-          text={buttonText}
-          isFocused={true}
-        />
-      </Box>
-      <Hr />
-      <StatusForm />
+      {!isReadOnly && (
+        <React.Fragment>
+          <Box mb="10px">
+            <Button
+              disabled={isStatusActive || isLoading}
+              type="reset"
+              onClick={handleActivateCard}
+              text={buttonText}
+              isFocused={true}
+            />
+          </Box>
+          <Hr />
+        </React.Fragment>
+      )}
+      <StatusForm isReadOnly={isReadOnly} />
       <Hr />
       <CardForm initialValues={currentCard} />
       <Hr />

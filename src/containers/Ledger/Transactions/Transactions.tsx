@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemConsts } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -16,6 +16,7 @@ import {
   HandleFilterLedgerTransactions,
   LedgerTransactionItemPrepared,
   ResetTransactions,
+  UiItemPrepared,
 } from 'store/domains';
 
 import { SelectValue } from 'types';
@@ -25,6 +26,7 @@ export interface TransactionsProps extends WithModalProps {
   currentId: number;
   transactions: Array<LedgerTransactionItemPrepared>;
   institutionsOptions: Array<SelectValue>;
+  uiItems: Array<UiItemPrepared>;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterStatementsById: HandleFilterLedgerStatementsById;
@@ -48,6 +50,7 @@ const Transactions: React.FC<TransactionsProps> = ({
   openModal,
   isLoading,
   isConvertibleToLoan,
+  uiItems,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);
   const [dateTimeTo, setDateTimeTo] = React.useState(null);
@@ -60,6 +63,19 @@ const Transactions: React.FC<TransactionsProps> = ({
       return () => resetTransactions();
     },
     [resetTransactions]
+  );
+
+  const isReadOnlySettleTr = React.useMemo(
+    () => {
+      const uiItem = uiItems.find(item => item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION);
+
+      if (!uiItem) {
+        return false;
+      }
+
+      return uiItem.permission === permissionTypesCodes.READ_ONLY;
+    },
+    [uiItems]
   );
 
   const contextMenuItems = React.useMemo(
@@ -85,6 +101,7 @@ const Transactions: React.FC<TransactionsProps> = ({
         { isDivider: true },
         {
           name: 'Settle Transaction',
+          isDisabled: isReadOnlySettleTr,
           action: () => openModal({
             name: modalNamesConst.SETTLE_TRANSACTION,
             payload: { transactionId: currentId },
@@ -114,6 +131,7 @@ const Transactions: React.FC<TransactionsProps> = ({
       filterCustomersById,
       filterStatementsById,
       openModal,
+      isReadOnlySettleTr,
     ]
   );
 

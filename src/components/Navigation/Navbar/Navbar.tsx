@@ -10,7 +10,13 @@ import { NavListStyled } from './NavListStyled';
 
 import { withModal, WithModalProps } from 'HOCs';
 
-import { basePath, modalNamesConst, uiItemConsts, uiItemTypesCodes } from 'consts';
+import {
+  basePath,
+  modalNamesConst,
+  permissionTypesCodes,
+  uiItemConsts,
+  uiItemTypesCodes,
+} from 'consts';
 
 import { clearMenu, menuClasses, toggleOpenMenu } from './utils';
 
@@ -32,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const menuRef = React.useRef(null);
 
   const renderItem = (item: UiItemPrepared) => {
-    const { id, parentId, title, type, separator } = item;
+    const { id, parentId, title, type, separator, permission } = item;
 
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
@@ -43,6 +49,8 @@ const Navbar: React.FC<NavbarProps> = ({
     const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
     const isLimitAdjustment = item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT;
     const isSettleTransaction = item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION;
+
+    const isReadOnly = permission === permissionTypesCodes.READ_ONLY;
 
     const handleOpenModalWindow = () => {
       if (isManualTransaction || isLimitAdjustment) {
@@ -73,7 +81,10 @@ const Navbar: React.FC<NavbarProps> = ({
         )}
         {!hasChildren && isModalWindow && (
           <div
-            className={`${menuClasses.MENU_TITLE} is-cursor-pointer`}
+            className={`
+              ${menuClasses.MENU_TITLE}
+              ${isReadOnly ? 'is-disabled' : 'is-cursor-pointer'}
+            `}
             onClick={isModalWindow && handleOpenModalWindow}
           >
             {title}

@@ -15,6 +15,7 @@ interface StatusFormProps {
   changeCardStatus: HandleChangeLedgerCardStatus;
   cardStatusesOptions: Array<SelectValue>;
   isStatusesLoading: boolean;
+  isReadOnly: boolean;
   currentCardId: number;
   statusValue: SelectValue;
 }
@@ -30,6 +31,7 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   handleSubmit,
   statusValue,
   currentCardId,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -58,16 +60,19 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
               label="Status"
               placeholder="Select Status"
               isClearable={false}
+              isDisabled={isReadOnly}
               options={cardStatusesOptions}
               isLoading={isStatusesLoading}
             />
           </Box>
-          <Box width={[1 / 2]} p="8px" pl="0">
-            <Button
-              text="Change Status"
-              disabled={pristine}
-            />
-          </Box>
+          {!isReadOnly && (
+            <Box width={[1 / 2]} p="8px" pl="0">
+              <Button
+                text="Change Status"
+                disabled={pristine}
+              />
+            </Box>
+          )}
         </Flex>
       </Box>
     </form >

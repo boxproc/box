@@ -81,6 +81,11 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
     [withLoanSelection, selectedLoanProduct]
   );
 
+  const convertToLoanHint = React.useMemo(
+    () => isReadOnly ? 'Permission denied.' : hintText,
+    [isReadOnly, hintText]
+  );
+
   const isDisabledDetails = React.useMemo(
     () => isDisabled || (withLoanSelection && !selectedLoanProduct),
     [isDisabled, withLoanSelection, selectedLoanProduct]
@@ -190,12 +195,12 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
           justifyContent="flex-end"
           width="100%"
         >
-          {withConvertToLoan && !isReadOnly && (
+          {withConvertToLoan && (
             <Box mr="7px">
               <Button
                 text={conversionButtonText}
-                disabled={isDisabledConversionButton}
-                hint={hintText}
+                disabled={isDisabledConversionButton || isReadOnly}
+                hint={convertToLoanHint}
                 isFocused={!isDisabledConversionButton}
                 onClick={handleSubmitFormConvert}
               />

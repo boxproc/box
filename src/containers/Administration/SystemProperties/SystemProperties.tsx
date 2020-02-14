@@ -22,6 +22,7 @@ interface SystemPropertiesProps {
   currentSysPropId: number | string;
   resetSystemProperties: ResetSystemProperties;
   isLoading: boolean;
+  isReadOnly: boolean;
 }
 
 export const SystemProperties: React.FC<SystemPropertiesProps> = ({
@@ -32,6 +33,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
   currentSysPropId,
   resetSystemProperties,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -45,6 +47,7 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: () => deleteSysProp(currentSysPropId),
         withConfirmation: true,
         confirmationText: `Delete system property "${currentSysPropId}"?`,
@@ -52,12 +55,13 @@ export const SystemProperties: React.FC<SystemPropertiesProps> = ({
       {
         name: 'Lock',
         icon: iconNamesConst.LOCK,
+        isDisabled: isReadOnly,
         action: () => updateSysProps({ lockedFlag: true }),
         withConfirmation: true,
         confirmationText: `Lock system property "${currentSysPropId}"?`,
       },
     ],
-    [deleteSysProp, currentSysPropId, updateSysProps]
+    [deleteSysProp, currentSysPropId, updateSysProps, isReadOnly]
   );
 
   return (

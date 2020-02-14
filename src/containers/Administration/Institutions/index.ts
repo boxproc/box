@@ -12,6 +12,7 @@ import {
   selectActiveItemId,
   selectAdminCurrentInstitutionName,
   selectAdminInstitutions,
+  selectIsReadOnly,
 } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsData: selectAdminInstitutions(state),
   currentInstitutionName: selectAdminCurrentInstitutionName(state),
   currentInstitutionId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

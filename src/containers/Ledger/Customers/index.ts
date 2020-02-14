@@ -15,6 +15,7 @@ import {
   resetCustomers,
   selectActiveItemId,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   selectLedgerCurrentCustomerName,
   selectLedgerCustomers,
 } from 'store/domains';
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   customers: selectLedgerCustomers(state),
   currentCustomerName: selectLedgerCurrentCustomerName(state),
   currentId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

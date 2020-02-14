@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemConsts } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -18,6 +18,7 @@ import {
   HandleSetActiveItemId,
   LedgerAccountItemPrepared,
   ResetAccounts,
+  UiItemPrepared,
 } from 'store/domains';
 import { SelectValue } from 'types';
 
@@ -26,6 +27,7 @@ export interface AccountsProps extends WithModalProps {
   filterAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
   institutionsOptions: Array<SelectValue>;
+  uiItems: Array<UiItemPrepared>;
   hasProductOverride: boolean;
   productOverrideId: number;
   resetAccounts: ResetAccounts;
@@ -39,6 +41,7 @@ export interface AccountsProps extends WithModalProps {
   currentAccountBalanceLimit: string;
   currentAccountBalanceLimitShared: string;
   isLoading: boolean;
+  isReadOnly: boolean;
 }
 
 const Accounts: React.FC<AccountsProps> = ({
@@ -60,12 +63,37 @@ const Accounts: React.FC<AccountsProps> = ({
   currentAccountBalanceLimit,
   currentAccountBalanceLimitShared,
   isLoading,
+  isReadOnly,
+  uiItems,
 }) => {
   React.useEffect(
     () => {
       return () => resetAccounts();
     },
     [resetAccounts]
+  );
+
+  const isReadOnlyTransactions = React.useMemo(
+    () => {
+      const manualTransaction = uiItems
+        .find(item => item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS);
+      const limitAdjustment = uiItems
+        .find(item => item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT);
+
+      const isReadOnlyItem = (item: UiItemPrepared) => {
+        if (!item) {
+          return false;
+        }
+
+        return item.permission === permissionTypesCodes.READ_ONLY;
+      };
+
+      return {
+        isReadOnlyManualTransaction: isReadOnlyItem(manualTransaction),
+        isReadOnlyLimitAdjustment: isReadOnlyItem(limitAdjustment),
+      };
+    },
+    [uiItems]
   );
 
   const handleEditOverride = React.useCallback(
@@ -94,6 +122,7 @@ const Accounts: React.FC<AccountsProps> = ({
       {
         name: hasProductOverride ? 'Edit product override' : 'Add product override',
         icon: hasProductOverride ? iconNamesConst.EDIT : iconNamesConst.PLUS,
+        isDisabled: isReadOnly,
         action: handleEditOverride,
       },
       { isDivider: true },
@@ -116,6 +145,7 @@ const Accounts: React.FC<AccountsProps> = ({
       { isDivider: true },
       {
         name: 'Manual Transaction',
+        isDisabled: isReadOnlyTransactions.isReadOnlyManualTransaction,
         action: () => openModal({
           name: modalNamesConst.MANUAL_TRANSACTION,
           payload: {
@@ -126,6 +156,7 @@ const Accounts: React.FC<AccountsProps> = ({
       },
       {
         name: 'Limit Adjustment',
+        isDisabled: isReadOnlyTransactions.isReadOnlyLimitAdjustment,
         action: () => openModal({
           name: modalNamesConst.MANUAL_TRANSACTION,
           payload: {
@@ -149,6 +180,8 @@ const Accounts: React.FC<AccountsProps> = ({
       currentAccountBalanceLimit,
       currentAccountBalanceLimitShared,
       openModal,
+      isReadOnly,
+      isReadOnlyTransactions,
     ]
   );
 

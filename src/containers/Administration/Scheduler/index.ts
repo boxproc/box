@@ -17,6 +17,7 @@ import {
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   SystemMonitorActionTypes,
 } from 'store/domains';
 
@@ -36,6 +37,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentSchedulerName: selectCurrentSchedulerName(state),
   currentSchedulerId: selectActiveItemId(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

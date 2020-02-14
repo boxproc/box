@@ -20,6 +20,7 @@ interface ProductsProps {
   institutionsOptions: Array<SelectValue>;
   currentProductName: string;
   isLoading: boolean;
+  isReadOnly: boolean;
   filterProducts: HandleFilterProducts;
   deleteProduct: HandleDeleteProduct;
   resetProducts: ResetProducts;
@@ -33,6 +34,7 @@ export const Products: React.FC<ProductsProps> = ({
   deleteProduct,
   resetProducts,
   isLoading,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -46,12 +48,13 @@ export const Products: React.FC<ProductsProps> = ({
       {
         name: 'Delete',
         icon: iconNamesConst.DELETE,
+        isDisabled: isReadOnly,
         action: deleteProduct,
         withConfirmation: true,
         confirmationText: `Delete product "${currentProductName}?`,
       },
     ],
-    [deleteProduct, currentProductName]
+    [deleteProduct, currentProductName, isReadOnly]
   );
 
   const initialFilterValues = React.useMemo(

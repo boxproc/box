@@ -14,6 +14,7 @@ import {
   selectAdminCurrentInterfaceName,
   selectAdminInterface,
   selectInstitutionsOptions,
+  selectIsReadOnly,
   SystemMonitorActionTypes,
 } from 'store/domains';
 
@@ -31,6 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   interfaceItems: selectAdminInterface(state),
   currentInterfaceName: selectAdminCurrentInterfaceName(state),
   currentInterfaceId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

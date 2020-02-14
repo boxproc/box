@@ -12,6 +12,7 @@ import {
   LedgerCardsActionTypes,
   selectActiveItemId,
   selectCurrentCardStatus,
+  selectIsReadOnly,
   selectLedgerCardValues,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
@@ -28,6 +29,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentCard: selectLedgerCardValues(state),
   currentStatus: selectCurrentCardStatus(state),
   currentCardId: selectActiveItemId(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
