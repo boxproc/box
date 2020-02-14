@@ -34,18 +34,18 @@ const TextWrapper = styled.div`
 `;
 
 interface UserDataProps {
-  isChangeProfileAvailable: boolean;
+  isMasterInstitution: boolean;
   firstName: string;
   lastName: string;
 }
 
 const UserBlock: React.FC<UserDataProps> = ({
-  isChangeProfileAvailable,
+  isMasterInstitution,
   firstName,
   lastName,
 }) => (
     <Flex alignItems="center">
-      {isChangeProfileAvailable
+      {isMasterInstitution
         ? (<div><UserShieldIconStyled size="15" /></div>)
         : (<Box mt="-2px"><UserIconStyled size="12" /></Box>)
       }
@@ -69,6 +69,11 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
     () => userData
       && userData.changeProfileAllowedFlag
       && !storageUtil.getRegistrationPendingFlag(),
+    [userData]
+  );
+
+  const isMasterInstitution = React.useMemo(
+    () => userData && userData.masterInstitutionFlag,
     [userData]
   );
 
@@ -103,7 +108,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
       dropdownListPosition="right"
       ToggleButtonComponent={
         <UserBlock
-          isChangeProfileAvailable={isChangeProfileAvailable}
+          isMasterInstitution={isMasterInstitution}
           firstName={firstName}
           lastName={lastName}
         />
