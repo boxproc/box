@@ -5,9 +5,7 @@ import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
-import { Container, HighlightLink, Navbar, withSpinner } from 'components';
-
-import logo from 'resources/images/logo.png';
+import { Container, HighlightLink, Logo, Navbar, SmallText, withSpinner } from 'components';
 
 import { basePath } from 'consts';
 
@@ -35,11 +33,6 @@ const Wrapper = styled.header`
   white-space: nowrap;
   z-index: 100;
 
-  .logo {
-    display: inline-block;
-    font-size: 0;
-  }
-
   .user {
     position: relative;
   }
@@ -48,8 +41,16 @@ const Wrapper = styled.header`
     position: absolute;
     right: 21px;
     top: 100%;
-    text-decoration: none;
     line-height: 1;
+
+    .read-only {
+      margin-right: 7px;
+      margin-top: 1px;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 `;
 
@@ -62,6 +63,7 @@ interface HeaderProps extends RouteComponentProps {
   getUiItems: HandleGetUiItems;
   getInstitutions: HandleGetInstitutions;
   userLogout: HandleUserLogout;
+  isReadOnly: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -73,6 +75,7 @@ const Header: React.FC<HeaderProps> = ({
   history,
   location,
   match,
+  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -84,8 +87,12 @@ const Header: React.FC<HeaderProps> = ({
     [getUiItems, getInstitutions]
   );
 
-  const institution = React.useMemo(
-    () => institutions[0],
+  const institutionName = React.useMemo(
+    () => {
+      const institution = institutions[0];
+
+      return institution && institution.institutionName;
+    },
     [institutions]
   );
 
@@ -106,13 +113,7 @@ const Header: React.FC<HeaderProps> = ({
             alignItems="center"
           >
             <Box mr="15px">
-              <a
-                href={basePath}
-                aria-label="BOX UI"
-                className="logo"
-              >
-                <img src={logo} width={62} alt="" />
-              </a>
+              <Logo />
             </Box>
             {uiItems && (
               <Navbar
@@ -134,23 +135,34 @@ const Header: React.FC<HeaderProps> = ({
                   uiItems={uiItems}
                 />
               </Box>
-              {institution && (
-                <Box mr="15px" fontSize="12px">{institution.institutionName}</Box>
+              {institutionName && (
+                <Box mr="15px" fontSize="12px">{institutionName}</Box>
               )}
               <UserDropdown userLogout={userLogout} />
             </Flex>
-            {currentPathname && (
-              <a
-                href={`${basePath}${currentPathname}`}
-                className="location"
-              >
-                <HighlightLink
-                  text={currentPathname}
-                  fontSize="11px"
-                  isActive={true}
-                />
-              </a>
-            )}
+            <Flex
+              alignItems="center"
+              className="location"
+            >
+              {isReadOnly && (
+                <SmallText
+                  light={true}
+                  bold={true}
+                  className="read-only"
+                >
+                  READ ONLY
+                </SmallText>
+              )}
+              {currentPathname && (
+                <a href={`${basePath}${currentPathname}`} >
+                  <HighlightLink
+                    text={currentPathname}
+                    fontSize="11px"
+                    isActive={true}
+                  />
+                </a>
+              )}
+            </Flex>
           </Box>
         </Flex>
       </Container>

@@ -36,7 +36,7 @@ const RefreshCheckbox: React.FC<RefreshCheckboxProps> = ({
         ? (<CheckedBoxIcon />)
         : (<UncheckedBoxIcon />)
       }
-      <Box ml="5px">
+      <Box ml="5px" mb="3px">
         <SmallText>Refresh table</SmallText>
       </Box>
     </CheckBoxWrapper>

@@ -11,13 +11,12 @@ import {
   CheckboxField,
   ExternalSpinnerProps,
   InputField,
+  Logo,
   PasswordField,
   withSpinner,
 } from 'components';
 
-import { basePath, formNamesConst } from 'consts';
-
-import logo from 'resources/images/logo.svg';
+import { formNamesConst } from 'consts';
 
 import { HandleUserLogin } from 'store/domains';
 
@@ -32,13 +31,6 @@ const FormWrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   text-align: left;
-
-  .logo {
-    display: inline-block;
-    min-width: 62px;
-    min-height: 46px;
-    font-size: 0;
-  }
 
   .highlight {
     ${highlightCss}
@@ -81,14 +73,12 @@ const Login: React.FC<LoginPropsAllProps> = ({
 
   return (
     <FormWrapper>
-      <Box my="15px" fontSize="0" className="highlight">
-        <a
-          href={basePath}
-          aria-label="BOX UI"
-          className="logo"
-        >
-          <img src={logo} width={62} alt="" />
-        </a>
+      <Box
+        my="15px"
+        fontSize="0"
+        className="highlight"
+      >
+        <Logo />
       </Box>
       <form onSubmit={handleSubmitForm}>
         <Field

@@ -11,6 +11,7 @@ import {
   handleGetUiItems,
   handleUserLogout,
   selectInstitutions,
+  selectIsReadOnly,
   selectUiItems,
   UiItemsActionTypes,
 } from 'store/domains';
@@ -25,6 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
   institutions: selectInstitutions(state),
+  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

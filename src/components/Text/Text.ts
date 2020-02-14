@@ -17,13 +17,21 @@ export const Label = styled.label<LabelProps>`
 
 interface SmallTextProps {
   bold?: boolean;
+  light?: boolean;
 }
 
 export const SmallText = styled.div<SmallTextProps>`
-  margin-bottom: 3px;
   font-size: 12px;
   color: ${({ theme }) => theme.colors.darkGray};
-  font-weight: ${({ bold }) => bold ? 500 : 'normal'};
+
+  ${({ light, theme }) => light && `
+    color: ${theme.colors.gray};
+    opacity: .6;
+  `};
+
+  ${({ bold }) => bold && `
+    font-weight: 500;
+  `};
 `;
 
 interface TitleProps {
