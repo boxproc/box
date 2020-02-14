@@ -29,7 +29,7 @@ interface InstitutionFormProps extends ExternalSpinnerProps {
   currentInstitutionId: number;
   isMasterInstitutionFlag: boolean;
   isReadOnly: boolean;
-  mode: 'add' | 'edit';
+  isEditMode?: boolean;
   updateInstitution: HandleUpdateAdminInstitution;
   addInstitution: HandleAddAdminInstitution;
   deleteInstitution: HandleDeleteAdminInstitution;
@@ -48,16 +48,11 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   currentInstitutionName,
   currentInstitutionId,
   isMasterInstitutionFlag,
-  mode,
+  isEditMode,
   dirty,
   pristine,
   isReadOnly,
 }) => {
-  const isEditMode = React.useMemo(
-    () => mode === 'edit',
-    [mode]
-  );
-
   const deleteConfirmationText = React.useMemo(
     () => `Delete institution "${currentInstitutionName}"?`,
     [currentInstitutionName]

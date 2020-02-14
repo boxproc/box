@@ -29,10 +29,7 @@ const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
       containerWidth={550}
       withCloseConfirmation={isFormDirty}
     >
-      <InstitutionForm
-        onCancel={handleOnCancel}
-        mode="add"
-      />
+      <InstitutionForm onCancel={handleOnCancel} />
     </Modal>
   );
 };

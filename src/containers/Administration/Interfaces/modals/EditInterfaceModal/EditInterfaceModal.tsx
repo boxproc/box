@@ -53,7 +53,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     >
       <InterfaceForm
         onCancel={handleOnCancel}
-        mode="edit"
+        isEditMode={true}
         initialValues={currentInterface}
         institutionsOptions={institutionsOptions}
         currentInterfaceName={currentInterfaceName}

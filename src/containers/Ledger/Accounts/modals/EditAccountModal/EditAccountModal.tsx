@@ -67,7 +67,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
         >
           <AccountForm
             onCancel={handleOnCancel}
-            mode="edit"
+            isEditMode={true}
             isReadOnly={isReadOnly}
             initialValues={currentAccount}
             currentAccountAuxCounters={currentAccountAuxCounters}

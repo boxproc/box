@@ -24,7 +24,7 @@ interface EndpointFormProps extends ExternalSpinnerProps {
   currentEndpointId: number;
   isReadOnly: boolean;
   isLoadingTypesSelector: boolean;
-  mode: 'add' | 'edit';
+  isEditMode?: boolean;
   updateEndpoint: HandleUpdateAdminEndpoint;
   addEndpoint: HandleAddAdminEndpoint;
   deleteEndpoint: HandleDeleteAdminEndpoint;
@@ -43,7 +43,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   addEndpoint,
   pristine,
   dirty,
-  mode,
+  isEditMode,
   currentEndpointName,
   isReadOnly,
   endpointTypesOptions,
@@ -56,11 +56,6 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
       getDictionaryEndpointTypes();
     },
     [getDictionaryEndpointTypes]
-  );
-
-  const isEditMode = React.useMemo(
-    () => mode === 'edit',
-    [mode]
   );
 
   const submitFormAction = React.useMemo(

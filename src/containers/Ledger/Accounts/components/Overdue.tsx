@@ -8,7 +8,7 @@ import { Hr, InputField, NumberFormatField, OkCancelButtons } from 'components';
 import { formErrorUtil } from 'utils';
 
 interface OverdueProps {
-  isEditMode: boolean;
+  isEditMode?: boolean;
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;

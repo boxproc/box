@@ -16,7 +16,7 @@ export interface EndpointFieldsProps {
   endpointTypesOptions: Array<SelectValue>;
   isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
-  isEditMode: boolean;
+  isEditMode?: boolean;
 }
 
 const EndpointFields: React.FC<EndpointFieldsProps> = ({

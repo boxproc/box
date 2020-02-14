@@ -44,7 +44,6 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
         openModal={openModal}
         defineAdminSchedulerJob={addSchedulerJob}
         institutionsOptions={institutionsOptions}
-        mode="add"
         initialValues={schedulerJobValues}
       />
     </Modal>

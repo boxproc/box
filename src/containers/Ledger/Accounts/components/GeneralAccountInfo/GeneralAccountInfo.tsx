@@ -30,7 +30,7 @@ export interface GeneralAccountInfoProps {
   statusesOptions: Array<SelectValue>;
   currentInstitution: SelectValue;
   repaymentTypesOptions: Array<SelectValue>;
-  isEditMode: boolean;
+  isEditMode?: boolean;
   hasProductOverride: boolean;
   isChosenLoanProductType: boolean;
   isChosenRevCreditProductType: boolean;

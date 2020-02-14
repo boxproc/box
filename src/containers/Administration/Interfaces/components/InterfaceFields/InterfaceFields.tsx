@@ -15,7 +15,7 @@ export interface InterfaceFieldsProps {
   institutionsOptions: Array<SelectValue>;
   interfaceTypesOptions: Array<SelectValue>;
   isLoadingTypesSelector: boolean;
-  isEditMode: boolean;
+  isEditMode?: boolean;
   isReadOnly: boolean;
 }
 

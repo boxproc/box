@@ -40,7 +40,7 @@ interface AccountFormProps extends ExternalSpinnerProps {
   addLedgerAccount: HandleAddLedgerAccount;
   repaymentTypesOptions: Array<SelectValue>;
   onCancel: () => void;
-  mode: 'add' | 'edit';
+  isEditMode?: boolean;
   isReadOnly?: boolean;
 }
 
@@ -57,7 +57,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   currentAccountAuxCounters,
   institutionProducts,
   repaymentTypesOptions,
-  mode,
+  isEditMode,
   dirty,
   pristine,
   isReadOnly,
@@ -67,7 +67,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 
   React.useEffect(
     () => {
-      if (currentInstitution) {
+      if (!isEditMode && currentInstitution) {
         if (currentInstId !== currentInstitution.value) {
           change('product', '');
           setCurrentInstId(currentInstitution.value);
@@ -75,11 +75,6 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
       }
     },
     [currentInstitution, currentInstId, change]
-  );
-
-  const isEditMode = React.useMemo(
-    () => mode === 'edit',
-    [mode]
   );
 
   const submitFormAction = React.useMemo(

@@ -52,7 +52,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     >
       <EndpointForm
         onCancel={handleOnCancel}
-        mode="edit"
+        isEditMode={true}
         initialValues={currentEndpoint}
         institutionsOptions={institutionsOptions}
         currentEndpointName={currentEndpointName}

@@ -36,7 +36,6 @@ const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
       <InterfaceForm
         institutionsOptions={institutionsOptions}
         onCancel={handleOnCancel}
-        mode="add"
       />
     </Modal>
   );

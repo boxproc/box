@@ -36,7 +36,6 @@ const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
       <EndpointForm
         institutionsOptions={institutionsOptions}
         onCancel={handleOnCancel}
-        mode="add"
       />
     </Modal>
   );

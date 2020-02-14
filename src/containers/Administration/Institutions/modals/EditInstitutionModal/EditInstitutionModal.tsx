@@ -56,7 +56,7 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
         onCancel={handleOnCancel}
         isReadOnly={isReadOnly}
         isMasterInstitutionFlag={isMasterInstitutionFlag}
-        mode="edit"
+        isEditMode={true}
       />
     </Modal>
   );

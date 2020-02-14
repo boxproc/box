@@ -23,7 +23,7 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   currentInterfaceId: number;
   isReadOnly: boolean;
   isLoadingTypesSelector: boolean;
-  mode: 'add' | 'edit';
+  isEditMode?: boolean;
   updateInterface: HandleUpdateAdminInterface;
   addInterface: HandleAddAdminInterface;
   deleteInterface: HandleDeleteAdminInterface;
@@ -41,7 +41,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   updateInterface,
   addInterface,
   currentInterfaceName,
-  mode,
+  isEditMode,
   dirty,
   pristine,
   isReadOnly,
@@ -55,11 +55,6 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
       getDictionaryInterfaceTypes();
     },
     [getDictionaryInterfaceTypes]
-  );
-
-  const isEditMode = React.useMemo(
-    () => mode === 'edit',
-    [mode]
   );
 
   const submitFormAction = React.useMemo(

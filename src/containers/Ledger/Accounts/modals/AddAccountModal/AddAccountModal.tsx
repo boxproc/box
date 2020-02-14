@@ -48,7 +48,6 @@ const AddAccountModal: React.FC<AddAccountModalProps> = ({
       <AccountForm
         initialValues={initialValues}
         onCancel={handleOnCancel}
-        mode="add"
       />
     </Modal>
   );

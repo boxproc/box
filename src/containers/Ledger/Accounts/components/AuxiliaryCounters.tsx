@@ -11,7 +11,7 @@ import { formErrorUtil } from 'utils';
 
 interface AuxiliaryCountersProps {
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
-  isEditMode: boolean;
+  isEditMode?: boolean;
   onCancel: () => void;
   dirty: boolean;
   pristine: boolean;

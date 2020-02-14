@@ -37,7 +37,7 @@ interface SchedulerFormProps {
   isDisabledStatus?: boolean;
   onCancel?: () => void;
   deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;
-  mode: 'add' | 'edit';
+  isEditMode?: boolean;
   openModal?: OpenModal;
   currentSchedulerName?: string;
   isReadOnly?: boolean;
@@ -53,7 +53,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   isDisabledStatus,
   onCancel,
   deleteSchedulerJob,
-  mode,
+  isEditMode,
   dirty,
   pristine,
   openModal,
@@ -68,11 +68,6 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   const handleOpenModal = React.useCallback(
     () => openModal({ name: modalNamesConst.GENERATE_CRON_EXPRESSION }),
     [openModal]
-  );
-
-  const isEditMode = React.useMemo(
-    () => mode === 'edit',
-    [mode]
   );
 
   return (
