@@ -37,6 +37,7 @@ export const prepareUserDataToRender = (data: AuthResponse): UserData => {
     status,
     requires_2fa_flag,
     master_institution_flag,
+    change_profile_allowed_flag,
   } = data;
 
   return {
@@ -48,6 +49,7 @@ export const prepareUserDataToRender = (data: AuthResponse): UserData => {
     status,
     requires2faFlag: requires_2fa_flag,
     masterInstitutionFlag: master_institution_flag,
+    changeProfileAllowedFlag: change_profile_allowed_flag,
   };
 };
 

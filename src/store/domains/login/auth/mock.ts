@@ -15,6 +15,7 @@ export const authResponseFullData: AuthResponse = {
   status: 'A',
   requires_2fa_flag: 'N',
   master_institution_flag: 'Y',
+  change_profile_allowed_flag: 'Y',
 };
 
 export const authSecretKeyData: AuthStepTwoResponse = {

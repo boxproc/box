@@ -40,6 +40,7 @@ export interface AuthResponse {
   status: string;
   requires_2fa_flag: string;
   master_institution_flag: string;
+  change_profile_allowed_flag: string;
 }
 
 export interface UserData {
@@ -51,6 +52,7 @@ export interface UserData {
   status: string;
   requires2faFlag: string;
   masterInstitutionFlag: string;
+  changeProfileAllowedFlag: string;
 }
 
 export interface AuthStepTwoData {
