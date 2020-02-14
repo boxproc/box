@@ -74,7 +74,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         }
       }
     },
-    [currentInstitution, currentInstId, change]
+    [currentInstitution, currentInstId, change, isEditMode]
   );
 
   const submitFormAction = React.useMemo(
