@@ -55,7 +55,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
     () => isSessionEnded
       || statusCode === sessionStatusCodes.USER_NOT_AUTH
       || statusCode === sessionStatusCodes.NO_SESSION_ID
-      || statusCode === sessionStatusCodes.NO_SESSION
       || statusCode === sessionStatusCodes.UNDEFINED_USER,
     [statusCode, isSessionEnded]
   );

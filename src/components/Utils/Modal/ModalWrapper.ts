@@ -46,17 +46,19 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     }
   }
 
-  @media only screen and (max-width: 1024px) {
-    .modal-container-wrapper:after {
-      display: none;
-    }
+  ${({ containerWidth }) => containerWidth && `
+    @media only screen and (max-width: ${containerWidth + 20}px) {
+      .modal-container-wrapper:after {
+        display: none;
+      }
+    }`
   }
 
   .modal-container {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin: 10px auto;
+    margin: 5px auto;
     padding: 15px;
     background-color: #fafafa;
     text-align: left;
