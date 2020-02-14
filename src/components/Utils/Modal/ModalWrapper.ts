@@ -34,16 +34,29 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
-    align-items: center;
     overflow-y: scroll;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      width: .1px;
+      margin-left: -.1px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .modal-container-wrapper:after {
+      display: none;
+    }
   }
 
   .modal-container {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin: 5px auto;
+    margin: 10px auto;
     padding: 15px;
     background-color: #fafafa;
     text-align: left;
