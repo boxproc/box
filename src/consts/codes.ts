@@ -305,6 +305,13 @@ export enum cycleTypesIds {
   FIXED_NUMBER_OF_DAYS = 5,
 }
 
+export const elementIdentifierOptions = [
+  { value: 'I', label: 'APR' },
+  { value: 'F', label: 'Fees' },
+  { value: 'A', label: 'Overdue/Arrears Amounts' },
+  { value: 'O', label: 'Overlimit Amounts' },
+];
+
 export const daysOfWeekOptions = [
   { value: '1', label: 'Sunday' },
   { value: '2', label: 'Monday' },

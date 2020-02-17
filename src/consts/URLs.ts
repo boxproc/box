@@ -188,4 +188,6 @@ export enum productsURLs {
   GET_FEE_APRS = 'ui/product_designer/products/fees/get_fee_aprs',
   ILLUSTRATE_LOAN_PRODUCT = 'ui/product_designer/products/illustration/loan',
   ILLUSTRATE_REV_CREDIT_PRODUCT = 'ui/product_designer/products/illustration/revolving_credit',
+  GET_REPAYMENT_HIERARCHY = '',
+  UPDATE_REPAYMENT_HIERARCHY = '',
 }

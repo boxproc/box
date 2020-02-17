@@ -49,20 +49,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
     [getProductAprs]
   );
 
-  const repaymentOptions = React.useMemo(
-    () => {
-      const count = productAprs.length;
-      const options = [];
-
-      for (let i = 1; i <= count; i++) {
-        options.push({ value: i, label: i.toString() });
-      }
-
-      return options;
-    },
-    [productAprs]
-  );
-
   const isEditableCell = React.useMemo(
     () => !isReadOnly && !isLoading,
     [isReadOnly, isLoading]
@@ -70,22 +56,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
 
   const columns = React.useMemo(
     () => [
-      {
-        maxWidth: 100,
-        accessor: 'repaymentOrder',
-        Header: <TableHeader title="Repayment Order" />,
-        Cell: (cellInfo: CellInfo) => (
-          <EditableTableCell
-            updateAction={updateProductApr}
-            isSmaller={true}
-            isNumber={true}
-            cellInfo={cellInfo}
-            isSelect={true}
-            selectOptions={repaymentOptions}
-            isEditable={isEditableCell}
-          />
-        ),
-      },
       {
         maxWidth: 100,
         accessor: 'productAprId',
@@ -169,7 +139,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
     ],
-    [deleteProductApr, updateProductApr, repaymentOptions, isEditableCell]
+    [deleteProductApr, updateProductApr, isEditableCell]
   );
 
   return (
@@ -178,7 +148,6 @@ const AprsTable: React.FC<AprsTableProps> = ({
         data={productAprs}
         columns={columns}
         isSmaller={true}
-        isScrollbar={false}
       />
     </Box>
   );

@@ -1,26 +1,30 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import AprsForm from './AprsForm';
+import RepaymentHierarchyTable from './RepaymentHierarchyTable';
 
 import {
   createLoadingSelector,
-  handleAddProductApr,
-  ProductAprsFeesRewardsActionTypes,
+  handleGetRepaymentHierarchy,
+  handleUpdateRepaymentHierarchy,
+  RepaymentHierarchyActionTypes,
+  selectRepaymentHierarchy,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
 const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_APR,
+  RepaymentHierarchyActionTypes.GET_REPAYMENT_HIERARCHY,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  data: selectRepaymentHierarchy(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addProductApr: handleAddProductApr,
+    getRepaymentHierarchy: handleGetRepaymentHierarchy,
+    updateRepaymentHierarchy: handleUpdateRepaymentHierarchy,
   },
   dispatch
 );
@@ -28,4 +32,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AprsForm);
+)(RepaymentHierarchyTable);

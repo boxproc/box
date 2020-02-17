@@ -33,7 +33,6 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
     calculation_method,
     rate,
     grace_number_of_days,
-    repayment_order,
   } = data;
 
   const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
@@ -45,7 +44,6 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: stringsUtil.numberToFixed(rate, 2),
     graceNumberOfDays: grace_number_of_days,
-    repaymentOrder: { value: repayment_order, label: repayment_order.toString()},
   };
 };
 
@@ -77,12 +75,11 @@ export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormVal
     return null;
   }
 
-  const { calculationMethod, repaymentOrder } = data;
+  const { calculationMethod } = data;
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethod && calculationMethod.value,
-    repayment_order: stringsUtil.toNumber(repaymentOrder),
   };
 };
 
@@ -91,14 +88,13 @@ export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<Pro
     return null;
   }
 
-  const { calculationMethod, repaymentOrder } = data;
+  const { calculationMethod } = data;
 
   const calculationMethodOption = aprTypesOptions.find(el => el.label === calculationMethod);
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethodOption && calculationMethodOption.value,
-    repayment_order: repaymentOrder && repaymentOrder.value,
   };
 };
 

@@ -13,25 +13,7 @@ export const selectDefaultProductAprs = (state: StoreState) =>
 
 export const selectProductAprs = createSelector(
   selectDefaultProductAprs,
-  aprs => aprs
-    && aprs.asMutable()
-      .sort((a, b) => (a.repayment_order > b.repayment_order) ? 1 : -1)
-      .map(apr => prepareProductAprsToRender(apr))
-);
-
-export const selectProductAprDefaultRepaymentOrder = createSelector(
-  selectDefaultProductAprs,
-  aprs => {
-    if (!aprs || !aprs.length) {
-      return 1;
-    }
-
-    const repaymentOrders: Array<number> = [];
-
-    aprs.forEach(apr => repaymentOrders.push(apr.repayment_order as number));
-
-    return Math.max(...repaymentOrders) + 1;
-  }
+  aprs => aprs && aprs.asMutable().map(apr => prepareProductAprsToRender(apr))
 );
 
 export const selectProductAprsForRules = createSelector(

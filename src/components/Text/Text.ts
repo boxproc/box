@@ -18,6 +18,7 @@ export const Label = styled.label<LabelProps>`
 interface SmallTextProps {
   bold?: boolean;
   light?: boolean;
+  accentColor?: boolean;
 }
 
 export const SmallText = styled.div<SmallTextProps>`
@@ -27,6 +28,10 @@ export const SmallText = styled.div<SmallTextProps>`
   ${({ light, theme }) => light && `
     color: ${theme.colors.gray};
     opacity: .7;
+  `};
+
+  ${({ accentColor, theme }) => accentColor && `
+    color: ${theme.colors.normalAccent};
   `};
 
   ${({ bold }) => bold && `

@@ -8,6 +8,7 @@ export { default as ProductRewards } from './ProductRewards';
 export { default as Services } from './ProductServices';
 export { default as AprsTable } from './AprsTable';
 export { default as FeesTable } from './FeesTable';
+export { default as RepaymentHierarchyTable } from './RepaymentHierarchyTable';
 export { default as RewardsTable } from './RewardsTable';
 export { default as GeneralLedger } from './GeneralLedger';
 export * from './tableColumns';

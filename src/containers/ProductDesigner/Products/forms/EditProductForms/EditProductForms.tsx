@@ -13,6 +13,8 @@ import {
   RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 
+import { RepaymentHierarchyTable } from 'containers/ProductDesigner/Products/components';
+
 import {
   LoanIllustration,
   RevolvingCreditIllustration,
@@ -125,6 +127,11 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />
+      </TabsPanel>
+      <TabsPanel
+        title="Repayment Hierarchy"
+      >
+        <RepaymentHierarchyTable />
       </TabsPanel>
       <TabsPanel
         title="Services"

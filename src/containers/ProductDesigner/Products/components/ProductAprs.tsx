@@ -32,19 +32,6 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
       mx="-8px"
       width="100%"
     >
-      <Box width="120px" p="8px">
-        <Field
-          id="repaymentOrder"
-          name="repaymentOrder"
-          component={InputField}
-          label="Repayment Order"
-          placeholder="Enter Order"
-          isNumber={true}
-          readonly={true}
-          disabled={isDisabled}
-          validate={[formErrorUtil.required]}
-        />
-      </Box>
       <Box width={[1 / 4]} p="8px">
         <Field
           id="description"

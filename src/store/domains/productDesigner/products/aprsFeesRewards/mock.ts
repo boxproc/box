@@ -11,7 +11,6 @@ export const productAprs: ProductAprItems = {
       calculation_method: 'A',
       rate: 2.5,
       grace_number_of_days: 1,
-      repayment_order: 1,
     },
     {
       product_id: 3,
@@ -20,7 +19,6 @@ export const productAprs: ProductAprItems = {
       calculation_method: 'A',
       rate: 2.5,
       grace_number_of_days: 1,
-      repayment_order: 3,
     },
     {
       product_id: 3,
@@ -29,7 +27,6 @@ export const productAprs: ProductAprItems = {
       calculation_method: 'A',
       rate: 2.5,
       grace_number_of_days: 1,
-      repayment_order: 2,
     },
   ],
 };
