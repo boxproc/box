@@ -76,7 +76,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
   );
 
   const modalHeight = React.useMemo(
-    () => window.innerHeight - 20,
+    () => window.innerHeight - 10,
     []
   );
 

@@ -234,7 +234,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             validate={[formErrorUtil.required]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width={[2 / 15]} p="8px">
           <Field
             id="statementCycleParameter"
             name="statementCycleParameter"

@@ -54,8 +54,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
   const isReLogin = React.useMemo(
     () => isSessionEnded
       || statusCode === sessionStatusCodes.USER_NOT_AUTH
-      || statusCode === sessionStatusCodes.NO_SESSION_ID
-      || statusCode === sessionStatusCodes.UNDEFINED_USER,
+      || statusCode === sessionStatusCodes.INVALID_ID,
     [statusCode, isSessionEnded]
   );
 

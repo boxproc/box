@@ -26,7 +26,7 @@ export const SmallText = styled.div<SmallTextProps>`
 
   ${({ light, theme }) => light && `
     color: ${theme.colors.gray};
-    opacity: .6;
+    opacity: .7;
   `};
 
   ${({ bold }) => bold && `

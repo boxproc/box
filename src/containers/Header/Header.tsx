@@ -147,7 +147,6 @@ const Header: React.FC<HeaderProps> = ({
               {isReadOnly && (
                 <SmallText
                   light={true}
-                  bold={true}
                   className="read-only"
                 >
                   READ ONLY

@@ -237,11 +237,9 @@ export enum codeKeys {
 }
 
 export enum sessionStatusCodes {
-  NO_SESSION_ID = '01',
-  SESSION_TIMEOUT = '03',
-  USER_NOT_AUTH = '04',
-  INCORRECT_PASSWORD = '15',
-  UNDEFINED_USER = '17',
+  SESSION_TIMEOUT = '02',
+  USER_NOT_AUTH = '03',
+  INVALID_ID = '07',
 }
 
 export const aprTypesOptions = [

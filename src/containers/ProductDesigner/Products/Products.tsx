@@ -51,7 +51,7 @@ export const Products: React.FC<ProductsProps> = ({
         isDisabled: isReadOnly,
         action: deleteProduct,
         withConfirmation: true,
-        confirmationText: `Delete product "${currentProductName}?`,
+        confirmationText: `Delete product "${currentProductName}"?`,
       },
     ],
     [deleteProduct, currentProductName, isReadOnly]
