@@ -1,4 +1,9 @@
-import { RepaymentHierarchy, RepaymentHierarchyItem } from './types';
+import {
+  ChangeRepaymentHierarchy,
+  ChangeRepaymentHierarchyRequest,
+  RepaymentHierarchy,
+  RepaymentHierarchyItem,
+} from './types';
 
 import { elementIdentifierOptions } from 'consts';
 
@@ -24,5 +29,15 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
     productId: product_id,
     productElementId: product_element_id,
     description,
+  };
+};
+
+export const prepareRepaymentHierarchyRequest = (data: ChangeRepaymentHierarchy):
+  ChangeRepaymentHierarchyRequest => {
+  const { productElementId, repaymentPriority } = data;
+
+  return {
+    product_element_id: productElementId,
+    repayment_priority: repaymentPriority,
   };
 };

@@ -16,8 +16,13 @@ const loadingSelector = createLoadingSelector([
   RepaymentHierarchyActionTypes.GET_REPAYMENT_HIERARCHY,
 ]);
 
+const loadingSelectorUpdate = createLoadingSelector([
+  RepaymentHierarchyActionTypes.UPDATE_REPAYMENT_HIERARCHY,
+]);
+
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isUpdating: loadingSelectorUpdate(state),
   data: selectRepaymentHierarchy(state),
 });
 

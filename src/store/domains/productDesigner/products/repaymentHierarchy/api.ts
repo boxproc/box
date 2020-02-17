@@ -1,8 +1,9 @@
-import { productsURLs } from 'consts';
+// import { productsURLs } from 'consts';
 
-import { apiClient } from 'services';
+// import { apiClient } from 'services';
 
-import { repaymentHierarchy } from './mock';
+import { repaymentHierarchy, successResponseStatus } from './mock';
+import { ChangeRepaymentHierarchyRequest } from './types';
 
 import { throttleUtil } from 'utils';
 
@@ -12,5 +13,6 @@ export const getRepaymentHierarchy = (id: number) =>
   //   data: { product_id: id },
   // });
 
-export const updateRepaymentHierarchy = (data: any) =>
-  apiClient.post(productsURLs.UPDATE_REPAYMENT_HIERARCHY, { data });
+export const updateRepaymentHierarchy = (order: ChangeRepaymentHierarchyRequest) =>
+  throttleUtil.getDataAfter(successResponseStatus, 500);
+  // apiClient.post(productsURLs.UPDATE_REPAYMENT_HIERARCHY, { data });

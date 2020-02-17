@@ -1,14 +1,21 @@
 import React from 'react';
+import { CellInfo } from 'react-table';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
+
+import styled from 'styled-components';
 
 import {
+  Button,
   SmallText,
   Table,
   TableCell,
   TableHeader,
+  WarningIcon,
   withSpinner,
 } from 'components';
+
+import { iconNamesConst } from 'consts';
 
 import {
   HandleGetRepaymentHierarchy,
@@ -18,6 +25,26 @@ import {
 
 import { TableCellType } from 'types';
 
+const ArrowButtonWrapper = styled.div`
+  position: relative;
+  width: 18px;
+  height: 13px;
+  overflow: hidden;
+
+  .button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -13px;
+    margin-top: -13px;
+
+    &:disabled {
+      opacity: .7;
+      pointer-events: none;
+    }
+  }
+`;
+
 type TCell<T extends keyof RepaymentHierarchy> = TableCellType<RepaymentHierarchy[T]>;
 
 interface RepaymentHierarchyTableProps {
@@ -25,7 +52,7 @@ interface RepaymentHierarchyTableProps {
   getRepaymentHierarchy: HandleGetRepaymentHierarchy;
   updateRepaymentHierarchy: HandleUpdateRepaymentHierarchy;
   isReadOnly: boolean;
-  isLoading: boolean;
+  isUpdating: boolean;
 }
 
 const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
@@ -33,7 +60,7 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
   getRepaymentHierarchy,
   updateRepaymentHierarchy,
   isReadOnly,
-  isLoading,
+  isUpdating,
 }) => {
   React.useEffect(
     () => {
@@ -43,22 +70,61 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
   );
 
   const isEditableCell = React.useMemo(
-    () => !isReadOnly && !isLoading,
-    [isReadOnly, isLoading]
+    () => !isReadOnly && !isUpdating,
+    [isReadOnly, isUpdating]
+  );
+
+  const countData = React.useMemo(
+    () => data && data.length,
+    [data]
   );
 
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 130,
+        maxWidth: 120,
         accessor: 'repaymentPriority',
         Header: <TableHeader title="Repayment Priority" />,
-        Cell: (props: TCell<'repaymentPriority'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            isNumber={true}
-          />
+        Cell: (cellInfo: CellInfo) => (
+          <React.Fragment>
+            <TableCell
+              value={cellInfo.value}
+              isSmaller={true}
+              isNumber={true}
+            />
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              p="2px 5px 5px 0"
+            >
+              <ArrowButtonWrapper>
+                <Button
+                  iconName={iconNamesConst.ARROW_UP}
+                  text=""
+                  iconSize="25"
+                  title="Move up"
+                  disabled={(cellInfo.index === 0) || !isEditableCell}
+                  onClick={() => updateRepaymentHierarchy({
+                    productElementId: cellInfo.original.productElementId,
+                    repaymentPriority: cellInfo.original.repaymentPriority - 1,
+                  })}
+                />
+              </ArrowButtonWrapper>
+              <ArrowButtonWrapper>
+                <Button
+                  iconName={iconNamesConst.ARROW_DOWN}
+                  text=""
+                  iconSize="25"
+                  title="Move down"
+                  disabled={(cellInfo.index === countData - 1) || !isEditableCell}
+                  onClick={() => updateRepaymentHierarchy({
+                    productElementId: cellInfo.original.productElementId,
+                    repaymentPriority: cellInfo.original.repaymentPriority + 1,
+                  })}
+                />
+              </ArrowButtonWrapper>
+            </Flex>
+          </React.Fragment>
         ),
       },
       {
@@ -108,12 +174,15 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
         ),
       },
     ],
-    [isEditableCell]
+    [isEditableCell, countData, updateRepaymentHierarchy]
   );
 
   return (
     <Box py="10px">
-      <SmallText accentColor={true} bold={true}>Works on mocks</SmallText>
+      <Flex alignItems="center">
+        <Box mr="3px"><WarningIcon size="12px" color="#ffa400" /></Box>
+        <SmallText accentColor={true} bold={true}>Works on mocks</SmallText>
+      </Flex>
       <Table
         data={data}
         columns={columns}

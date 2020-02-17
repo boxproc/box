@@ -5,6 +5,8 @@ import {
   UpdateRepaymentHierarchyAction,
 } from './actionTypes';
 import * as api from './api';
+import { ChangeRepaymentHierarchy, ChangeRepaymentHierarchyRequest } from './types';
+import { prepareRepaymentHierarchyRequest } from './utils';
 
 import { Thunk } from 'types';
 
@@ -13,8 +15,9 @@ import { errorDecoratorUtil } from 'utils';
 export type GetRepaymentHierarchy = (id: number) => GetRepaymentHierarchyAction;
 export type HandleGetRepaymentHierarchy = () => Thunk<void>;
 
-export type UpdateRepaymentHierarchy = (data: any) => UpdateRepaymentHierarchyAction;
-export type HandleUpdateRepaymentHierarchy = (data: any) => Thunk<void>;
+export type UpdateRepaymentHierarchy = (data: ChangeRepaymentHierarchyRequest) =>
+  UpdateRepaymentHierarchyAction;
+export type HandleUpdateRepaymentHierarchy = (data: ChangeRepaymentHierarchy) => Thunk<void>;
 
 export const getRepaymentHierarchy: GetRepaymentHierarchy = id => ({
   type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY,
@@ -43,7 +46,9 @@ export const handleUpdateRepaymentHierarchy: HandleUpdateRepaymentHierarchy = da
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(updateRepaymentHierarchy(data));
+        const preparedData = prepareRepaymentHierarchyRequest(data);
+
+        await dispatch(updateRepaymentHierarchy(preparedData));
         await dispatch(handleGetRepaymentHierarchy());
       },
       dispatch
