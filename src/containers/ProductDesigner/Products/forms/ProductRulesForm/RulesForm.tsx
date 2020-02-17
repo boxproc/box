@@ -56,23 +56,30 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
 
   const actionTypesOptionsPrepared = React.useMemo(
     () => {
+      const isDailySettlement = eventId && (eventId.value === eventTypesCodeKeys.DAILY_SETTLEMENT);
+      const isAccountCreate = eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CREATE);
+      const isAccountClose = eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CLOSE);
+
+      const isApproveDeny = actionType && (actionType.value === actionTypesCodeKeys.APPROVE_DENY);
+      const isSetApr = actionType && (actionType.value === actionTypesCodeKeys.SET_APR);
+      const isAddReward = actionType && (actionType.value === actionTypesCodeKeys.ADD_REWARD);
+      const isAddFee = actionType && (actionType.value === actionTypesCodeKeys.ADD_FEE);
+
       let filteredActionTypes;
 
-      if (eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CREATE
-        || eventId.value === eventTypesCodeKeys.DAILY_SETTLEMENT)) {
+      if (isAccountCreate || isDailySettlement) {
 
         filteredActionTypes = actionTypesOptions
           .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
             && el.value !== actionTypesCodeKeys.SET_APR);
 
         if (actionType) {
-          if (actionType.value === actionTypesCodeKeys.APPROVE_DENY
-            || actionType.value === actionTypesCodeKeys.SET_APR) {
+          if (isApproveDeny || isSetApr) {
             change('actionType', filteredActionTypes[0]);
           }
         }
 
-      } else if (eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CLOSE)) {
+      } else if (isAccountClose) {
 
         filteredActionTypes = actionTypesOptions
           .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
@@ -81,10 +88,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
             && el.value !== actionTypesCodeKeys.ADD_FEE);
 
         if (actionType) {
-          if (actionType.value === actionTypesCodeKeys.APPROVE_DENY
-            || actionType.value === actionTypesCodeKeys.SET_APR
-            || actionType.value === actionTypesCodeKeys.ADD_REWARD
-            || actionType.value === actionTypesCodeKeys.ADD_FEE) {
+          if (isApproveDeny || isSetApr || isAddReward || isAddFee) {
             change('actionType', filteredActionTypes[0]);
           }
         }
@@ -93,7 +97,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
         filteredActionTypes = actionTypesOptions;
       }
 
-      if (!isRevolvingCredit) {
+      if (!isRevolvingCredit || !isDailySettlement) {
         filteredActionTypes = filteredActionTypes
           .filter(el => el.value !== actionTypesCodeKeys.MINIMUM_REPAYMENT_CALC);
       }
