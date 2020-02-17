@@ -37,6 +37,7 @@ const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({
           options={institutionsOptions}
           isMulti={true}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </InstitutionsWrapper>

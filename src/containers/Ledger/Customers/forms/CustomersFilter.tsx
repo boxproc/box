@@ -29,6 +29,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           options={institutionsOptions}
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>

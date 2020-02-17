@@ -52,6 +52,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           options={institutionsOptions}
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -67,7 +68,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="170px" p="8px" >
+      <Box width="180px" p="8px" >
         <Field
           id="scheduledJobsDateTimeFrom"
           name="scheduledJobsDateTimeFrom"
@@ -76,13 +77,14 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width="170px" p="8px" >
+      <Box width="180px" p="8px" >
         <Field
           id="scheduledJobsDateTimeTo"
           name="scheduledJobsDateTimeTo"
@@ -91,6 +93,7 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

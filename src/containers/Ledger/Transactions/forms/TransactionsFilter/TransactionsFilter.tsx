@@ -55,6 +55,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           options={institutionsOptions}
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -70,7 +71,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="170px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="transactionsDateTimeFrom"
           name="transactionsDateTimeFrom"
@@ -79,13 +80,14 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width="170px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="transactionsDateTimeTo"
           name="transactionsDateTimeTo"
@@ -94,6 +96,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

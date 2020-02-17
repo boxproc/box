@@ -51,6 +51,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           options={institutionsOptions}
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -66,7 +67,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="170px" p="8px" >
+      <Box width="180px" p="8px" >
         <Field
           id="userActivityDateTimeFrom"
           name="userActivityDateTimeFrom"
@@ -75,13 +76,14 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width="170px" p="8px" >
+      <Box width="180px" p="8px" >
         <Field
           id="userActivityDateTimeTo"
           name="userActivityDateTimeTo"
@@ -90,6 +92,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,

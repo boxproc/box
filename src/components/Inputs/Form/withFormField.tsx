@@ -48,6 +48,7 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
   hint?: string | React.ReactChild;
+  isRequired?: boolean;
 }
 
 interface InputWrapperProps {
@@ -70,6 +71,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   focusOnLabelClick = false,
   invalid: defaultInvalid,
   hint,
+  isRequired,
   meta: {
     touched,
     error,
@@ -97,6 +99,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
             justifyContent="space-between"
           >
             {label}
+            {isRequired && '*'}
             {hint && (
               <Hint text={hint} position="top" />
             )}

@@ -29,6 +29,7 @@ const CardsFilter: React.FC<CardsFilterProps> = ({
           options={institutionsOptions}
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>

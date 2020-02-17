@@ -52,6 +52,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder="Select Institution"
           isClearable={false}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -65,6 +66,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder="Select endpoint"
           isLoading={isLoadingEndpoints}
           isDisabled={isDisabled}
+          isRequired={true}
           validate={[formErrorUtil.required]}
         />
       </Box>
@@ -79,7 +81,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
         />
       </Box>
       <Delimiter />
-      <Box width="170px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="apiCallsDateTimeFrom"
           name="apiCallsDateTimeFrom"
@@ -88,13 +90,14 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width="170px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="apiCallsDateTimeTo"
           name="apiCallsDateTimeTo"
@@ -103,6 +106,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           placeholder={dateFormat.DATE_TIME}
           mask={maskFormat.DATE_TIME}
           disabled={isDisabled}
+          isRequired={true}
           validate={[
             formErrorUtil.required,
             formErrorUtil.isDateTime,
