@@ -35,7 +35,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 95,
     accessor: 'statementDate',
     Header: <TableHeader title="Statement Date" />,
     Cell: (props: TCell<'statementDate'>) => (
@@ -84,6 +84,7 @@ const columns = [
   },
   {
     maxWidth: 120,
+    minWidth: 120,
     accessor: 'minimumRepayment',
     Header: <TableHeader title="Minimum Repayment" />,
     Cell: (props: TCell<'minimumRepayment'>) => (
