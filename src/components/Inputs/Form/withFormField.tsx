@@ -22,6 +22,10 @@ export const InputFieldWrapper = styled.div`
   .field {
     user-select: all;
   }
+
+  .is-red {
+    color: ${({ theme }) => theme.colors.red};
+  }
 `;
 
 const ErrorWrapper = styled.div`
@@ -98,8 +102,10 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
             alignItems="center"
             justifyContent="space-between"
           >
-            {label}
-            {isRequired && '*'}
+            <span>
+              {label}
+              {isRequired && (<span className="is-red">*</span>)}
+            </span>
             {hint && (
               <Hint text={hint} position="top" />
             )}
