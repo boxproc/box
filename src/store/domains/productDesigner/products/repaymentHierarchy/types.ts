@@ -1,6 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 export interface RepaymentHierarchyItem {
+  id: number;
   repayment_priority: number;
   element_identifier: string;
   product_id: number;
@@ -9,6 +10,7 @@ export interface RepaymentHierarchyItem {
 }
 
 export interface RepaymentHierarchy {
+  id: number;
   repaymentPriority: number;
   elementIdentifier: string;
   productId: number;
@@ -21,12 +23,12 @@ export interface RepaymentHierarchyItems {
 }
 
 export interface ChangeRepaymentHierarchy {
-  productElementId: number;
+  id: number;
   repaymentPriority: number;
 }
 
 export interface ChangeRepaymentHierarchyRequest {
-  product_element_id: number;
+  id: number;
   repayment_priority: number;
 }
 

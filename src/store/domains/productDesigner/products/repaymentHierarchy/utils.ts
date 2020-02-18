@@ -14,6 +14,7 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
   }
 
   const {
+    id,
     repayment_priority,
     element_identifier,
     product_id,
@@ -24,6 +25,7 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
   const elementIdentifier = elementIdentifierOptions.find(el => el.value === element_identifier);
 
   return {
+    id,
     repaymentPriority: repayment_priority,
     elementIdentifier: elementIdentifier && elementIdentifier.label,
     productId: product_id,
@@ -34,10 +36,10 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
 
 export const prepareRepaymentHierarchyRequest = (data: ChangeRepaymentHierarchy):
   ChangeRepaymentHierarchyRequest => {
-  const { productElementId, repaymentPriority } = data;
+  const { id, repaymentPriority } = data;
 
   return {
-    product_element_id: productElementId,
+    id,
     repayment_priority: repaymentPriority,
   };
 };

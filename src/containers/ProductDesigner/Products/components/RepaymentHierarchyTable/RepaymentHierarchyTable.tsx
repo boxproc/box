@@ -105,7 +105,7 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
                   title="Move up"
                   disabled={(cellInfo.index === 0) || !isEditableCell}
                   onClick={() => updateRepaymentHierarchy({
-                    productElementId: cellInfo.original.productElementId,
+                    id: cellInfo.original.id,
                     repaymentPriority: cellInfo.original.repaymentPriority - 1,
                   })}
                 />
@@ -118,7 +118,7 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
                   title="Move down"
                   disabled={(cellInfo.index === countData - 1) || !isEditableCell}
                   onClick={() => updateRepaymentHierarchy({
-                    productElementId: cellInfo.original.productElementId,
+                    id: cellInfo.original.id,
                     repaymentPriority: cellInfo.original.repaymentPriority + 1,
                   })}
                 />

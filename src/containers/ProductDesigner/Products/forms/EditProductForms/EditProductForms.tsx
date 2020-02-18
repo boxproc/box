@@ -128,11 +128,11 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
-      <TabsPanel
-        title="Repayment Hierarchy"
-      >
-        <RepaymentHierarchyTable />
-      </TabsPanel>
+      {isRevolvingCreditType && (
+        <TabsPanel title="Repayment Hierarchy">
+          <RepaymentHierarchyTable />
+        </TabsPanel>
+      )}
       <TabsPanel
         title="Services"
         withConfirmation={isAnyFormDirty}

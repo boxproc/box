@@ -57,7 +57,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 120,
         accessor: 'productRewardId',
         Header: <TableHeader title="Product Reward ID" />,
         Cell: (props: TCell<'productRewardId'>) => (
