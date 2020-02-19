@@ -36,10 +36,11 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
 
 export const prepareRepaymentHierarchyRequest = (data: ChangeRepaymentHierarchy):
   ChangeRepaymentHierarchyRequest => {
-  const { id, repaymentPriority } = data;
+  const { id, productId, repaymentPriority } = data;
 
   return {
     id,
+    product_id: productId,
     repayment_priority: repaymentPriority,
   };
 };

@@ -24,11 +24,13 @@ export interface RepaymentHierarchyItems {
 
 export interface ChangeRepaymentHierarchy {
   id: number;
+  productId: number;
   repaymentPriority: number;
 }
 
 export interface ChangeRepaymentHierarchyRequest {
   id: number;
+  product_id: number;
   repayment_priority: number;
 }
 

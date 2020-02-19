@@ -260,6 +260,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             label="Description"
             height={115}
             readOnly={isReadOnly}
+            validate={[formErrorUtil.required]}
           />
         </Box>
         <Box width={[1]} p="8px">
