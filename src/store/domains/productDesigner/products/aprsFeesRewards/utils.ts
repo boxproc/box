@@ -161,8 +161,8 @@ export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormVal
 
   return {
     ...prepareProductFees(data),
-    fee_application_condition: feeApplicationCondition && feeApplicationCondition.value,
-    apr_id: apr && apr.value,
+    fee_application_condition: feeApplicationCondition ? feeApplicationCondition.value : null,
+    apr_id: apr ? apr.value : null,
   };
 };
 
