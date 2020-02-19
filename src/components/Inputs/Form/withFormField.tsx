@@ -32,7 +32,7 @@ const ErrorWrapper = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  padding-top: 3px;
+  padding-top: 2px;
   font-size: 9px;
   line-height: 1;
   color: ${({ theme }) => theme.colors.red};
@@ -106,9 +106,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
               {label}
               {isRequired && (<span className="is-red">*</span>)}
             </span>
-            {hint && (
-              <Hint text={hint} position="top" />
-            )}
+            {hint && (<Hint text={hint} position="top" />)}
           </Flex>
         </Label>
       )}

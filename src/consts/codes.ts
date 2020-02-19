@@ -82,7 +82,7 @@ export const schedulerStatusOptions = [
 ];
 
 export const repaymentStatusOptions = [
-  { value: 'N', label: 'Not repied' },
+  { value: 'N', label: 'Not repaid' },
   { value: 'R', label: 'Repied in full' },
   { value: 'P', label: 'Repied partially' },
   { value: 'O', label: 'Overpaid' },
