@@ -22,9 +22,15 @@ export const rangeValueMin1Max7 = rangeValue(1, 7);
 
 export const rangeValueMin1Max250 = rangeValue(1, 250);
 
-export const isInteger = (value: number) =>
-  (Number(value) > 0 && (Number.isInteger(Number(value)))
-    || value === undefined) ? undefined : 'Must be an integer';
+export const isInteger = (value: number) => {
+  const valueNumber = Number(value);
+  const isValuePositive = valueNumber > 0;
+  const isValueInteger = Number.isInteger(valueNumber);
+
+  return ((isValuePositive && isValueInteger) || value === undefined)
+    ? undefined
+    : 'Must be an integer';
+};
 
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;
