@@ -83,6 +83,9 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               component={InputField}
               label="Property Name"
               readOnly={isEditMode || isReadOnly}
+              validate={[
+                formErrorUtil.required,
+              ]}
             />
           </Box>
           {isEditMode && (

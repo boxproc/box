@@ -7,11 +7,9 @@ import styled from 'styled-components';
 
 import {
   Button,
-  SmallText,
   Table,
   TableCell,
   TableHeader,
-  WarningIcon,
   withSpinner,
 } from 'components';
 
@@ -167,10 +165,6 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
 
   return (
     <Box py="10px">
-      <Flex alignItems="center">
-        <Box mr="3px"><WarningIcon size="12px" color="#ffa400" /></Box>
-        <SmallText accentColor={true}>Works on mocks</SmallText>
-      </Flex>
       <Table
         data={data}
         columns={columns}

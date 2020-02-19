@@ -102,6 +102,10 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               placeholder="Enter ID"
               readOnly={true}
               isNumber={true}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isInteger,
+              ]}
             />
           </Box>
         )}

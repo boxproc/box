@@ -89,7 +89,10 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
                 label="ID"
                 placeholder="Enter ID"
                 readOnly={true}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.required,
+                  formErrorUtil.isInteger,
+                ]}
               />
             </Box>
           )}

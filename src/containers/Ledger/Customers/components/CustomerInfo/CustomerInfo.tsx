@@ -48,6 +48,10 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
               label="ID"
               placeholder="Enter ID"
               readOnly={true}
+              validate={[
+                formErrorUtil.required,
+                formErrorUtil.isInteger,
+              ]}
             />
           </Box>
         )}
