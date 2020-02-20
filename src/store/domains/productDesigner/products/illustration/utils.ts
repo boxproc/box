@@ -72,7 +72,7 @@ export const prepareProductIllustrationAprsItem = (
 ) => {
   return {
     description: item.description,
-    accruedInterest: stringsUtil.numberToFixed(item.accrued_interest, 4),
+    currAccruedInterest: stringsUtil.numberToFixed(item.curr_accrued_interest, 4),
     rate: stringsUtil.numberToFixed(item.rate, 2),
   };
 };

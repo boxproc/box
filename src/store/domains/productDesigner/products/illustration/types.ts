@@ -54,7 +54,7 @@ export interface IllustrationProductStatementsRevolvingCredit {
 
 export interface IllustrationProductAprRevolvingCreditResp {
   description: string;
-  accrued_interest: number;
+  curr_accrued_interest: number;
   rate: number;
 }
 export interface IllustrationProductFeeRevolvingCredit {
@@ -64,7 +64,7 @@ export interface IllustrationProductFeeRevolvingCredit {
 
 export interface IllustrationProductAprRevolvingCredit {
   description: string;
-  accruedInterest: string;
+  currAccruedInterest: string;
   rate: string;
 }
 

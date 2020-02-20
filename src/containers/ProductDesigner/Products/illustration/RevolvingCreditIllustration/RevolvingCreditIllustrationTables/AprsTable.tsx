@@ -24,9 +24,9 @@ const columns = [
   },
   {
     width: 100,
-    accessor: 'accruedInterest',
+    accessor: 'currAccruedInterest',
     Header: <TableHeader title="Accrued Interest" />,
-    Cell: (props: TCell<'accruedInterest'>) => (
+    Cell: (props: TCell<'currAccruedInterest'>) => (
       <TableCell
         value={props.value}
         isDecimalNumber={true}
