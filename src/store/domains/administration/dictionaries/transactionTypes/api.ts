@@ -1,4 +1,4 @@
-import { dictionariesURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryTransactionTypes = () =>
   // throttleUtil.getDataAfter(dictionaryTransactionTypesData, 500);
-  apiClient.post(dictionariesURLs.GET_TRANSACTION_TYPES);
+  apiClient.post(apiUrls.dictionaries.GET_TRANSACTION_TYPES);

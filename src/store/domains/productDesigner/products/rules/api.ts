@@ -1,4 +1,4 @@
-import { productsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,8 +10,8 @@ import { ProductRuleRequestPrepared, ProductRulesItemResp } from './types';
 
 export const getProductRule = (data: ProductRuleRequestPrepared) =>
   // throttleUtil.getDataAfter(productRulesData, 500);
-  apiClient.post(productsURLs.GET_PRODUCTS_RULES, { data });
+  apiClient.post(apiUrls.products.GET_PRODUCTS_RULES, { data });
 
 export const updateProductRules = (data: ProductRulesItemResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.UPDATE_RULES, { data });
+  apiClient.post(apiUrls.products.UPDATE_RULES, { data });

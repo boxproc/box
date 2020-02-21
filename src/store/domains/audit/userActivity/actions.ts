@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
 import {
   ActionTypeKeys,
@@ -84,8 +84,8 @@ export const handleFilterByIdAuditUserActivity: HandleFilterAuditUserById = id =
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}`));
         await dispatch(filterAuditUserActivityById(id));
         dispatch(setIsOpenFilter(false));
       },

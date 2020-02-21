@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemConsts } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -67,7 +67,7 @@ const Transactions: React.FC<TransactionsProps> = ({
 
   const isReadOnlySettleTr = React.useMemo(
     () => {
-      const uiItem = uiItems.find(item => item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION);
+      const uiItem = uiItems.find(item => item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION);
 
       if (!uiItem) {
         return false;

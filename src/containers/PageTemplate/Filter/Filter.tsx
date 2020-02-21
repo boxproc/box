@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { Button } from 'components';
 
-import { basePath, cookiesExpires, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, cookiesExpires, formNamesConst, uiItemsConst } from 'consts';
 
 import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
 
@@ -142,28 +142,28 @@ const Filter: React.FC<FilterAllProps> = ({
   const isAccessibleButton = React.useCallback(
     () => {
       switch (location.pathname) {
-        case `${basePath}${uiItemConsts.ADMINISTRATION_SYS_PROPS}`:
-        case `${basePath}${uiItemConsts.ADMINISTRATION_USER}`:
-        case `${basePath}${uiItemConsts.ADMINISTRATION_SCHEDULER}`:
+        case `${basePath}${uiItemsConst.ADMINISTRATION_SYS_PROPS}`:
+        case `${basePath}${uiItemsConst.ADMINISTRATION_USER}`:
+        case `${basePath}${uiItemsConst.ADMINISTRATION_SCHEDULER}`:
           return valuesCount >= 0;
 
-        case `${basePath}${uiItemConsts.AUDIT_API_CALLS}`:
-        case `${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`:
+        case `${basePath}${uiItemsConst.AUDIT_API_CALLS}`:
+        case `${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}`:
           return valuesCount > 1;
 
-        case `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`:
+        case `${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`:
           return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
-        case `${basePath}${uiItemConsts.LEDGER_CARDS}`:
+        case `${basePath}${uiItemsConst.LEDGER_CARDS}`:
           return hasInstitution && (hasAccountId || hasCardId || hasCustomerId || hasPanAlias);
 
-        case `${basePath}${uiItemConsts.LEDGER_STATEMENTS}`:
+        case `${basePath}${uiItemsConst.LEDGER_STATEMENTS}`:
           return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
-        case `${basePath}${uiItemConsts.LEDGER_CUSTOMERS}`:
+        case `${basePath}${uiItemsConst.LEDGER_CUSTOMERS}`:
           return hasInstitution && (hasCustomerId || hasLastName);
 
-        case `${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`:
+        case `${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}`:
           return hasInstitution && (
             hasTransactionId
             || hasProductName

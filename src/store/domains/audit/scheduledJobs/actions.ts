@@ -2,7 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { push } from 'connected-react-router';
 
-import { basePath, formNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
 import { setIsOpenFilter } from 'store/domains/utils';
 import {
@@ -64,8 +64,8 @@ export const handleFilterByIdAuditScheduledJobs: HandleFilterScheduledJobsById =
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemConsts.AUDIT_SCHEDULED_JOBS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.AUDIT_SCHEDULED_JOBS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.AUDIT_SCHEDULED_JOBS}`));
         await dispatch(filterScheduledJobsById(id));
         dispatch(setIsOpenFilter(false));
       },

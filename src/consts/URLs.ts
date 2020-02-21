@@ -1,33 +1,31 @@
-export const basePath = '/ui/';
-
-export enum authURLs {
+export enum auth {
   LOGIN = 'ui/auth/login',
   LOGOUT = 'ui/auth/logout',
 }
 
-export enum uiItemsURLs {
+export enum uiItems {
   GET = 'ui/items/get',
 }
 
-export enum constsURLs {
+export enum userInstitutions {
   GET_INSTITUTIONS = 'ui/service_data/institutions/get',
 }
 
-export enum adminInstitutionsURLs {
+export enum institutions {
   GET = 'ui/service_data/institutions/get_all',
   CREATE = 'ui/service_data/institutions/create',
   DELETE = 'ui/service_data/institutions/delete',
   UPDATE = 'ui/service_data/institutions/update',
 }
 
-export enum adminInterfaceURLs {
+export enum interfaces {
   GET = 'ui/administration/interfaces/get',
   CREATE = 'ui/administration/interfaces/create',
   DELETE = 'ui/administration/interfaces/delete',
   UPDATE = 'ui/administration/interfaces/update',
 }
 
-export enum adminEndpointsURLs {
+export enum endpoints {
   GET = 'ui/administration/endpoints/get',
   CREATE = 'ui/administration/endpoints/create',
   DELETE = 'ui/administration/endpoints/delete',
@@ -35,7 +33,7 @@ export enum adminEndpointsURLs {
   GET_BY_INSTITUTION_ID = 'ui/administration/endpoints/get_by_institution',
 }
 
-export enum dictionariesURLs {
+export enum dictionaries {
   GET_COUNTRIES = 'ui/administration/dictionaries/countries/get',
   GET_CURRENCIES = 'ui/administration/dictionaries/currencies/get',
   GET_EVENTS = 'ui/administration/dictionaries/events/get',
@@ -49,7 +47,7 @@ export enum dictionariesURLs {
   GET_REPAYMENT_TYPES = 'ui/administration/dictionaries/repayment_types/get',
 }
 
-export enum adminUserURLs {
+export enum user {
   GET = 'ui/administration/permissions/users/get',
   CREATE = 'ui/administration/permissions/users/create',
   UPDATE = 'ui/administration/permissions/users/update',
@@ -58,7 +56,7 @@ export enum adminUserURLs {
   GET_ADMIN_ACCESS_USERS = 'ui/administration/permissions/administrator/get',
 }
 
-export enum adminUserGroupsURLs {
+export enum userGroups {
   GET_USERS_GROUPS = 'ui/administration/permissions/users_group/get',
   GET_ACTIVE_USERS = 'ui/administration/permissions/users_group_members/get_active_users',
   GET_GROUP_MEMBERS = 'ui/administration/permissions/users_group_members/get',
@@ -72,7 +70,7 @@ export enum adminUserGroupsURLs {
   CREATE_GROUP_PERMISSIONS = 'ui/administration/permissions/group_permissions/create',
 }
 
-export enum adminSchedulerURLs {
+export enum scheduler {
   GET = 'ui/administration/scheduler/get',
   DELETE = 'ui/administration/scheduler/delete',
   CREATE = 'ui/administration/scheduler/create',
@@ -81,14 +79,14 @@ export enum adminSchedulerURLs {
   SEND_ACTION = '/sys/scheduler/management',
 }
 
-export enum adminSystemPropsURLs {
+export enum systemProps {
   GET = 'ui/administration/system_properties/get',
   DELETE = 'ui/administration/system_properties/delete',
   CREATE = 'ui/administration/system_properties/create',
   UPDATE = 'ui/administration/system_properties/update',
 }
 
-export enum auditURLs {
+export enum audit {
   GET_SCHEDULED_JOBS = 'ui/audit/scheduler_jobs/get',
   GET_USER_ACTIVITY = 'ui/audit/users_activity/get',
   GET_API_CALLS = 'ui/audit/api_calls/get',
@@ -96,20 +94,20 @@ export enum auditURLs {
   GET_UI_SESSIONS = 'ui/audit/ui_sessions/get',
 }
 
-export enum systemMonitorURLs {
+export enum systemMonitor {
   GET_INTERFACES = 'ui/audit/system_monitor/get_interface_data',
   GET_ENDPOINTS = 'ui/audit/system_monitor/get_endpoint_data',
   GET_SCHEDULER_JOBS = 'ui/audit/system_monitor/get_scheduler_data',
   GET_LAST_TRANSACTIONS = 'ui/audit/system_monitor/get_transactions_data',
 }
 
-export enum logDataURLs {
+export enum logData {
   GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/get_log_file',
   GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
   GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
 
-export enum lenderAccountsURLs {
+export enum accounts {
   GET = 'ui/ledger/accounts/get',
   CREATE = 'ui/ledger/accounts/create',
   UPDATE = 'ui/ledger/accounts/update',
@@ -118,13 +116,13 @@ export enum lenderAccountsURLs {
   CREATE_PRODUCT_OVERRIDE = 'ui/product_designer/products/override/create_products_override',
 }
 
-export enum lenderCardsURLs {
+export enum cards {
   GET = 'ui/ledger/cards/get',
   ACTIVATE_CARD = 'ui/ledger/cards/activate_card',
   CHANGE_STATUS = 'ui/ledger/cards/change_status',
 }
 
-export enum lenderCustomersURLs {
+export enum customers {
   GET = 'ui/ledger/customers/get',
   CREATE = 'ui/ledger/customers/create',
   UPDATE = 'ui/ledger/customers/update',
@@ -135,29 +133,29 @@ export enum lenderCustomersURLs {
   GET_REPAYMENT_DIRECT_DEBITS = 'ui/ledger/customers/get_repayment_direct_debits',
 }
 
-export enum lenderStatementsURLs {
+export enum statements {
   GET = 'ui/ledger/statements/get',
   GET_TRANSACTIONS = 'ui/ledger/statements/get_transactions',
   GET_ACCOUNT_STATEMENTS = 'ui/ledger/accounts/get_statements',
   GET_ACCOUNT_STATEMENT_APRS = 'ui/ledger/accounts/get_statement_aprs',
 }
 
-export enum lenderTransactionsURLs {
+export enum transactions {
   GET = 'ui/ledger/transactions/get',
   CONVERT_TO_LOAN = 'ui/ledger/transactions/convert_to_loan',
 }
 
-export enum lenderManualTransactionURLs {
+export enum manualTransaction {
   MAKE_TRANSACTION = 'ui/ledger/accounts/make_transaction',
   LIMIT_ADJUSTMENT = 'ui/ledger/accounts/limit_adjustment',
 }
 
-export enum lenderSettleTransactionURLs {
+export enum settleTransaction {
   RETRIEVE_TRANSACTION = 'ui/ledger/accounts/retrieve_transaction',
   SETTLE_TRANSACTION = 'ui/ledger/accounts/settle_transaction',
 }
 
-export enum productsURLs {
+export enum products {
   GET_PRODUCTS = 'ui/product_designer/products/get',
   GET_INSTITUTIONS_PRODUCTS = 'ui/service_data/institutions/products/get',
   GET_PRODUCT = 'ui/product_designer/products/get_product_by_id',

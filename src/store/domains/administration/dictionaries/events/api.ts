@@ -1,4 +1,4 @@
-import { dictionariesURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryEvents = () =>
   // throttleUtil.getDataAfter(dictionaryEventsData, 500);
-  apiClient.post(dictionariesURLs.GET_EVENTS);
+  apiClient.post(apiUrls.dictionaries.GET_EVENTS);

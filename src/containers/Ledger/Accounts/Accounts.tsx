@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemConsts } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -76,9 +76,9 @@ const Accounts: React.FC<AccountsProps> = ({
   const isReadOnlyTransactions = React.useMemo(
     () => {
       const manualTransaction = uiItems
-        .find(item => item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS);
+        .find(item => item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS);
       const limitAdjustment = uiItems
-        .find(item => item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT);
+        .find(item => item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT);
 
       const isReadOnlyItem = (item: UiItemPrepared) => {
         if (!item) {

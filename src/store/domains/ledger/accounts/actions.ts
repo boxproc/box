@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
@@ -197,8 +197,8 @@ export const handleFilterByIdLedgerAccounts: HandleFilterLedgerAccountsById = id
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_ACCOUNTS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`));
         await dispatch(filterLedgerAccountsById(id));
         dispatch(setIsOpenFilter(false));
       },

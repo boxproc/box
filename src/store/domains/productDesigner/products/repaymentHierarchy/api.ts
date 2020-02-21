@@ -1,4 +1,4 @@
-import { productsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -9,10 +9,10 @@ import { ChangeRepaymentHierarchyRequest } from './types';
 
 export const getRepaymentHierarchy = (id: number) =>
   // throttleUtil.getDataAfter(repaymentHierarchy, 500);
-  apiClient.post(productsURLs.GET_REPAYMENT_HIERARCHY, {
+  apiClient.post(apiUrls.products.GET_REPAYMENT_HIERARCHY, {
     data: { product_id: id },
   });
 
 export const updateRepaymentHierarchy = (data: ChangeRepaymentHierarchyRequest) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.UPDATE_REPAYMENT_HIERARCHY, { data });
+  apiClient.post(apiUrls.products.UPDATE_REPAYMENT_HIERARCHY, { data });

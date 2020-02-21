@@ -1,4 +1,4 @@
-import { productsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -21,40 +21,40 @@ import {
 
 export const getInstitutionProducts = (id: number | string) =>
   // throttleUtil.getDataAfter(institutionProducts, 500);
-  apiClient.post(productsURLs.GET_INSTITUTIONS_PRODUCTS, {
+  apiClient.post(apiUrls.products.GET_INSTITUTIONS_PRODUCTS, {
     data: { institution_id: id },
   });
 
 export const getProduct = (id: number) =>
   // throttleUtil.getDataAfter(productData, 500);
-  apiClient.post(productsURLs.GET_PRODUCT, {
+  apiClient.post(apiUrls.products.GET_PRODUCT, {
     data: { id },
   });
 
 export const getProductDetails = (id: number) =>
   // throttleUtil.getDataAfter(productDetailsData, 500);
-  apiClient.post(productsURLs.GET_PRODUCTS_DETAILS, {
+  apiClient.post(apiUrls.products.GET_PRODUCTS_DETAILS, {
     data: { id },
   });
 
 export const deleteProduct = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.DELETE_PRODUCT, {
+  apiClient.post(apiUrls.products.DELETE_PRODUCT, {
     data: { id },
   });
 
 export const filterProducts = (data: ProductFilterPrepared) =>
   // throttleUtil.getDataAfter(productItemsFilteredData, 500);
-  apiClient.post(productsURLs.GET_PRODUCTS, { data });
+  apiClient.post(apiUrls.products.GET_PRODUCTS, { data });
 
 export const addProduct = (data: NewProductPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.CREATE_PRODUCT, { data });
+  apiClient.post(apiUrls.products.CREATE_PRODUCT, { data });
 
 export const updateProduct = (data: ProductItemResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.UPDATE_PRODUCT, { data });
+  apiClient.post(apiUrls.products.UPDATE_PRODUCT, { data });
 
 export const updateProductDetails = (data: ProductItemDetailsResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(productsURLs.UPDATE_DETAILS, { data });
+  apiClient.post(apiUrls.products.UPDATE_DETAILS, { data });

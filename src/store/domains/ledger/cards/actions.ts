@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import { setIsOpenFilter } from 'store/domains/utils';
@@ -112,8 +112,8 @@ export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_CARDS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemConsts.LEDGER_CARDS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_CARDS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.LEDGER_CARDS}`));
         await dispatch(filterLedgerCardsById(id));
         dispatch(setIsOpenFilter(false));
       },

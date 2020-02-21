@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { setIsOpenFilter } from 'store/domains/utils';
 import { LedgerId } from '../customers';
@@ -85,8 +85,8 @@ export const handleFilterByIdLedgerTransactions: HandleFilterLedgerTransactionsB
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemConsts.LEDGER_TRANSACTIONS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}`));
         await dispatch(filterLedgerTransactionsById(id));
         dispatch(setIsOpenFilter(false));
       },

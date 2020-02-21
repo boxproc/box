@@ -1,4 +1,4 @@
-import { adminUserURLs, authURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -17,26 +17,26 @@ import {
 
 export const userLogin = (data: PreparedAuthRequest) =>
   // throttleUtil.getDataAfter(authResponseFullData, 500);
-  apiClient.post(authURLs.LOGIN, { data });
+  apiClient.post(apiUrls.auth.LOGIN, { data });
 
 export const userLogout = () =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(authURLs.LOGOUT);
+  apiClient.post(apiUrls.auth.LOGOUT);
 
 export const getAuthKey = (data: AuthPassword) =>
   // throttleUtil.getDataAfter(authSecretKeyData, 500);
-  apiClient.post(authURLs.LOGIN, { data });
+  apiClient.post(apiUrls.auth.LOGIN, { data });
 
 export const userConfirmAuthKey = (data: AuthConfirm) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(authURLs.LOGIN, { data });
+  apiClient.post(apiUrls.auth.LOGIN, { data });
 
 export const enterAuthKey = (data: AuthCode) =>
   // throttleUtil.getDataAfter(authResponseFullData, 500);
-  apiClient.post(authURLs.LOGIN, { data });
+  apiClient.post(apiUrls.auth.LOGIN, { data });
 
 export const changeAdminProfile = (data: AuthUserId) =>
-  apiClient.post(adminUserURLs.CHANGE_PROFILE, { data });
+  apiClient.post(apiUrls.user.CHANGE_PROFILE, { data });
 
 export const changePassword = (data: Partial<ChangePasswordDataPrepared>) =>
-  apiClient.post(adminUserURLs.CHANGE_PASSWORD, { data });
+  apiClient.post(apiUrls.user.CHANGE_PASSWORD, { data });

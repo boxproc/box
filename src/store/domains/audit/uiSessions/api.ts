@@ -1,4 +1,4 @@
-import { auditURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 // import { uiSessionsData } from './mock';
 import { AuditUiSessionsFilterPrepared } from './types';
@@ -9,4 +9,4 @@ import { apiClient } from 'services';
 
 export const filterAuditUiSessions = (data: AuditUiSessionsFilterPrepared) =>
   // throttleUtil.getDataAfter(uiSessionsData, 500);
-  apiClient.post(auditURLs.GET_UI_SESSIONS, { data });
+  apiClient.post(apiUrls.audit.GET_UI_SESSIONS, { data });

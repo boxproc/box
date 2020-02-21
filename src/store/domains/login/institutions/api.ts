@@ -1,4 +1,4 @@
-import { constsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
-  apiClient.post(constsURLs.GET_INSTITUTIONS);
+  apiClient.post(apiUrls.userInstitutions.GET_INSTITUTIONS);

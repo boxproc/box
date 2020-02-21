@@ -14,7 +14,7 @@ import {
   basePath,
   modalNamesConst,
   permissionTypesCodes,
-  uiItemConsts,
+  uiItemsConst,
   uiItemTypesCodes,
 } from 'consts';
 
@@ -42,13 +42,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
     const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
 
-    const isModalWindow = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS
-      || item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT
-      || item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION;
+    const isModalWindow = item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS
+      || item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT
+      || item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION;
 
-    const isManualTransaction = item.id === uiItemConsts.LEDGER_MANUAL_TRANSACTIONS;
-    const isLimitAdjustment = item.id === uiItemConsts.LEDGER_LIMIT_ADJUSTMENT;
-    const isSettleTransaction = item.id === uiItemConsts.LEDGER_SETTLE_TRANSACTION;
+    const isManualTransaction = item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS;
+    const isLimitAdjustment = item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT;
+    const isSettleTransaction = item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION;
 
     const isReadOnly = permission === permissionTypesCodes.READ_ONLY;
 

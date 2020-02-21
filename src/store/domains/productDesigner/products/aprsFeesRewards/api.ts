@@ -1,4 +1,4 @@
-import { productsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -16,18 +16,18 @@ import {
 
 export const getProductAprs = (id: number) =>
   // throttleUtil.getDataAfter(productAprs, 500);
-  apiClient.post(productsURLs.GET_APRS, {
+  apiClient.post(apiUrls.products.GET_APRS, {
     data: { product_id: id },
   });
 
 export const addProductApr = (data: Partial<ProductAprItem>) =>
-  apiClient.post(productsURLs.CREATE_APR, { data });
+  apiClient.post(apiUrls.products.CREATE_APR, { data });
 
 export const updateProductApr = (data: Partial<ProductAprItem>) =>
-  apiClient.post(productsURLs.UPDATE_APR, { data });
+  apiClient.post(apiUrls.products.UPDATE_APR, { data });
 
 export const deleteProductApr = (data: ProductAprIds) =>
-  apiClient.post(productsURLs.DELETE_APR, {
+  apiClient.post(apiUrls.products.DELETE_APR, {
     data: {
       product_id: data.productId,
       product_apr_id: data.productAprId,
@@ -35,18 +35,18 @@ export const deleteProductApr = (data: ProductAprIds) =>
   });
 
 export const getProductFees = (id: number) =>
-  apiClient.post(productsURLs.GET_FEES, {
+  apiClient.post(apiUrls.products.GET_FEES, {
     data: { product_id: id },
   });
 
 export const addProductFee = (data: Partial<ProductFeeItem>) =>
-  apiClient.post(productsURLs.CREATE_FEE, { data });
+  apiClient.post(apiUrls.products.CREATE_FEE, { data });
 
 export const updateProductFee = (data: Partial<ProductFeeItem>) =>
-  apiClient.post(productsURLs.UPDATE_FEE, { data });
+  apiClient.post(apiUrls.products.UPDATE_FEE, { data });
 
 export const deleteProductFee = (data: ProductFeesIds) =>
-  apiClient.post(productsURLs.DELETE_FEE, {
+  apiClient.post(apiUrls.products.DELETE_FEE, {
     data: {
       product_id: data.productId,
       product_fee_id: data.productFeeId,
@@ -54,18 +54,18 @@ export const deleteProductFee = (data: ProductFeesIds) =>
   });
 
 export const getProductRewards = (id: number) =>
-  apiClient.post(productsURLs.GET_REWARDS, {
+  apiClient.post(apiUrls.products.GET_REWARDS, {
     data: { product_id: id },
   });
 
 export const addProductReward = (data: Partial<ProductRewardItem>) =>
-  apiClient.post(productsURLs.CREATE_REWARD, { data });
+  apiClient.post(apiUrls.products.CREATE_REWARD, { data });
 
 export const updateProductReward = (data: Partial<ProductRewardItem>) =>
-  apiClient.post(productsURLs.UPDATE_REWARD, { data });
+  apiClient.post(apiUrls.products.UPDATE_REWARD, { data });
 
 export const deleteProductReward = (data: ProductRewardsIds) =>
-  apiClient.post(productsURLs.DELETE_REWARD, {
+  apiClient.post(apiUrls.products.DELETE_REWARD, {
     data: {
       product_id: data.productId,
       product_reward_id: data.productRewardId,
@@ -73,6 +73,6 @@ export const deleteProductReward = (data: ProductRewardsIds) =>
   });
 
 export const getProductFeeAprs = (id: number) =>
-  apiClient.post(productsURLs.GET_FEE_APRS, {
+  apiClient.post(apiUrls.products.GET_FEE_APRS, {
     data: { product_id: id },
   });

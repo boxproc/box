@@ -12,7 +12,7 @@ import {
   WithModalProps,
 } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst, uiItemConsts } from 'consts';
+import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 
 import {
   HandleMakeLedgerLimitAdjustment,
@@ -102,8 +102,8 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
 
   const currentPath = React.useMemo(
     () => isLimitAdjustment
-    ? uiItemConsts.LEDGER_LIMIT_ADJUSTMENT
-    : uiItemConsts.LEDGER_MANUAL_TRANSACTIONS,
+    ? uiItemsConst.LEDGER_LIMIT_ADJUSTMENT
+    : uiItemsConst.LEDGER_MANUAL_TRANSACTIONS,
     [isLimitAdjustment]
   );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { uiItemConsts } from 'consts';
+import { uiItemsConst } from 'consts';
 
 import {
   Countries,
@@ -37,99 +37,99 @@ import {
 
 export const pagesList = [
   {
-    path: uiItemConsts.ADMINISTRATION_SYS_PROPS,
+    path: uiItemsConst.ADMINISTRATION_SYS_PROPS,
     component: <SystemProperties />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_INSTITUTIONS,
+    path: uiItemsConst.ADMINISTRATION_INSTITUTIONS,
     component: <Institutions />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_SCHEDULER,
+    path: uiItemsConst.ADMINISTRATION_SCHEDULER,
     component: <Scheduler />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_COUNTRIES,
+    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_COUNTRIES,
     component: <Countries />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_CURRENCIES,
+    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_CURRENCIES,
     component: <Currencies />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENTS,
+    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_EVENTS,
     component: <Events />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
+    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
     component: <EventDataElems />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES,
+    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES,
     component: <TransactionTypes />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_USER,
+    path: uiItemsConst.ADMINISTRATION_USER,
     component: <Users />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_USERS_GROUP,
+    path: uiItemsConst.ADMINISTRATION_USERS_GROUP,
     component: <UsersGroup />,
   },
   {
-    path: uiItemConsts.AUDIT_API_CALLS,
+    path: uiItemsConst.AUDIT_API_CALLS,
     component: <ApiCalls />,
   },
   {
-    path: uiItemConsts.AUDIT_SCHEDULED_JOBS,
+    path: uiItemsConst.AUDIT_SCHEDULED_JOBS,
     component: <ScheduledJobs />,
   },
   {
-    path: uiItemConsts.AUDIT_SYSTEM_MONITOR,
+    path: uiItemsConst.AUDIT_SYSTEM_MONITOR,
     component: <SystemMonitor />,
   },
   {
-    path: uiItemConsts.AUDIT_USER_ACTIVITY,
+    path: uiItemsConst.AUDIT_USER_ACTIVITY,
     component: <UserActivity />,
   },
   {
-    path: uiItemConsts.AUDIT_UI_SESSIONS,
+    path: uiItemsConst.AUDIT_UI_SESSIONS,
     component: <UiSessions />,
   },
   {
-    path: uiItemConsts.LEDGER_CARDS,
+    path: uiItemsConst.LEDGER_CARDS,
     component: <Cards />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_ENDPOINTS,
+    path: uiItemsConst.ADMINISTRATION_ENDPOINTS,
     component: <Endpoints />,
   },
   {
-    path: uiItemConsts.ADMINISTRATION_INTERFACES,
+    path: uiItemsConst.ADMINISTRATION_INTERFACES,
     component: <Interfaces />,
   },
   {
-    path: uiItemConsts.LEDGER_CUSTOMERS,
+    path: uiItemsConst.LEDGER_CUSTOMERS,
     component: <Customers />,
   },
   {
-    path: uiItemConsts.LEDGER_ACCOUNTS,
+    path: uiItemsConst.LEDGER_ACCOUNTS,
     component: <Accounts />,
   },
   {
-    path: uiItemConsts.LEDGER_STATEMENTS,
+    path: uiItemsConst.LEDGER_STATEMENTS,
     component: <Statements />,
   },
   {
-    path: uiItemConsts.LEDGER_TRANSACTIONS,
+    path: uiItemsConst.LEDGER_TRANSACTIONS,
     component: <Transactions />,
   },
   {
-    path: uiItemConsts.LEDGER_CARDS,
+    path: uiItemsConst.LEDGER_CARDS,
     component: <Cards />,
   },
   {
-    path: uiItemConsts.PRODUCT_DESIGNER_PRODUCTS,
+    path: uiItemsConst.PRODUCT_DESIGNER_PRODUCTS,
     component: <Products />,
   },
 ];

@@ -1,4 +1,4 @@
-import { adminInstitutionsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,18 +10,18 @@ import { AdminInstitutionsItem } from './types';
 
 export const getAdminInstitutions = () =>
   // throttleUtil.getDataAfter(adminInstitutionsItems, 500);
-  apiClient.post(adminInstitutionsURLs.GET);
+  apiClient.post(apiUrls.institutions.GET);
 
 export const addAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(adminInstitutionsURLs.CREATE, { data });
+  apiClient.post(apiUrls.institutions.CREATE, { data });
 
 export const deleteAdminInstitution = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(adminInstitutionsURLs.DELETE, {
+  apiClient.post(apiUrls.institutions.DELETE, {
     data: { id },
   });
 
 export const updateAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(adminInstitutionsURLs.UPDATE, { data });
+  apiClient.post(apiUrls.institutions.UPDATE, { data });

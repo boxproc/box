@@ -1,4 +1,4 @@
-import { systemMonitorURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -15,19 +15,19 @@ import { LogDataRequest } from './types';
 
 export const getSystemMonitorInterfaces = () =>
   // throttleUtil.getDataAfter(systemMonitorInterfaces, 500);
-  apiClient.post(systemMonitorURLs.GET_INTERFACES);
+  apiClient.post(apiUrls.systemMonitor.GET_INTERFACES);
 
 export const getSystemMonitorEndpoints = () =>
   // throttleUtil.getDataAfter(systemMonitorEndpoints, 500);
-  apiClient.post(systemMonitorURLs.GET_ENDPOINTS);
+  apiClient.post(apiUrls.systemMonitor.GET_ENDPOINTS);
 
 export const getSystemMonitorScheduler = () =>
   // throttleUtil.getDataAfter(systemMonitorScheduler, 500);
-  apiClient.post(systemMonitorURLs.GET_SCHEDULER_JOBS);
+  apiClient.post(apiUrls.systemMonitor.GET_SCHEDULER_JOBS);
 
 export const getSystemMonitorLastTransactions = () =>
   // throttleUtil.getDataAfter(systemMonitorLastTransactions, 500);
-  apiClient.post(systemMonitorURLs.GET_LAST_TRANSACTIONS);
+  apiClient.post(apiUrls.systemMonitor.GET_LAST_TRANSACTIONS);
 
 export const getLogData = (data: LogDataRequest) =>
   // return throttleUtil.getDataAfter(logData, 500);

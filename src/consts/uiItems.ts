@@ -1,4 +1,4 @@
-export enum uiItemConsts {
+export enum uiItemsConst {
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',
   ADMINISTRATION_DICTIONARIES_EVENTS = 'administration/dictionaries/events',

@@ -5,7 +5,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UiSessionsFilter } from './forms';
 
-import { basePath, cookiesExpires, iconNamesConst, uiItemConsts } from 'consts';
+import { basePath, cookiesExpires, iconNamesConst, uiItemsConst } from 'consts';
 
 import {
   AuditUiSessionsItem,
@@ -79,7 +79,7 @@ const UiSessions: React.FC<UiSessionsProps> = ({
 
   const handleGoToUserActivity = React.useCallback(
     () => {
-      const userActivityPathName = `${basePath}${uiItemConsts.AUDIT_USER_ACTIVITY}`;
+      const userActivityPathName = `${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}`;
 
       cookiesUtil.set(
         `${userActivityPathName}-${loggedInUsername}`,

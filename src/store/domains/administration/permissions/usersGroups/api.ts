@@ -1,4 +1,4 @@
-import { adminUserGroupsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -9,36 +9,36 @@ import {
 } from './types';
 
 export const getAdminUsersGroup = () =>
-  apiClient.post(adminUserGroupsURLs.GET_USERS_GROUPS);
+  apiClient.post(apiUrls.userGroups.GET_USERS_GROUPS);
 
 export const getAdminActiveUsers = (id: number) =>
-  apiClient.post(adminUserGroupsURLs.GET_ACTIVE_USERS, {
+  apiClient.post(apiUrls.userGroups.GET_ACTIVE_USERS, {
     data: { user_group_id: id },
   });
 
 export const getAdminUserGroupMembers = (id: number) =>
-  apiClient.post(adminUserGroupsURLs.GET_GROUP_MEMBERS, {
+  apiClient.post(apiUrls.userGroups.GET_GROUP_MEMBERS, {
     data: { id },
   });
 
 export const getAdminUiItems = (id: number) =>
-  apiClient.post(adminUserGroupsURLs.GET_GROUP_UI_ITEMS, {
+  apiClient.post(apiUrls.userGroups.GET_GROUP_UI_ITEMS, {
     data: { user_group_id: id },
   });
 
 export const getAdminUserGroupPermissions = (id: number) =>
-  apiClient.post(adminUserGroupsURLs.GET_GROUP_PERMISSIONS, {
+  apiClient.post(apiUrls.userGroups.GET_GROUP_PERMISSIONS, {
     data: { user_group_id: id },
   });
 
 export const addAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
-  apiClient.post(adminUserGroupsURLs.CREATE_USERS_GROUP, { data });
+  apiClient.post(apiUrls.userGroups.CREATE_USERS_GROUP, { data });
 
 export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
-  apiClient.post(adminUserGroupsURLs.UPDATE_USERS_GROUP, { data });
+  apiClient.post(apiUrls.userGroups.UPDATE_USERS_GROUP, { data });
 
 export const deleteAdminUserGroupMembers = (id: number, userId: number) =>
-  apiClient.post(adminUserGroupsURLs.DELETE_USERS_GROUP_MEMBER, {
+  apiClient.post(apiUrls.userGroups.DELETE_USERS_GROUP_MEMBER, {
     data: {
       user_group_id: id,
       user_id: userId,
@@ -47,7 +47,7 @@ export const deleteAdminUserGroupMembers = (id: number, userId: number) =>
 
 export const deleteAdminUserGroupPermissions =
   (id: number, uiItem: string) =>
-    apiClient.post(adminUserGroupsURLs.DELETE_GROUP_PERMISSIONS, {
+    apiClient.post(apiUrls.userGroups.DELETE_GROUP_PERMISSIONS, {
       data: {
         user_group_id: id,
         ui_item: uiItem,
@@ -55,7 +55,7 @@ export const deleteAdminUserGroupPermissions =
     });
 
 export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
-  apiClient.post(adminUserGroupsURLs.CREATE_USERS_GROUP_MEMBERS, { data });
+  apiClient.post(apiUrls.userGroups.CREATE_USERS_GROUP_MEMBERS, { data });
 
 export const addAdminGroupPermission = (data: Partial<AdminGroupPermissionItemResp>) =>
-  apiClient.post(adminUserGroupsURLs.CREATE_GROUP_PERMISSIONS, { data });
+  apiClient.post(apiUrls.userGroups.CREATE_GROUP_PERMISSIONS, { data });

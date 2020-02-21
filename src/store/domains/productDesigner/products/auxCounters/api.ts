@@ -1,4 +1,4 @@
-import { productsURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -10,4 +10,4 @@ import { ProductAuxCountersItem } from './types';
 
 export const updateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
   // throttleUtil.getDataAfter(productData, 500);
-  apiClient.post(productsURLs.UPDATE_AUX_COUNTERS, { data });
+  apiClient.post(apiUrls.products.UPDATE_AUX_COUNTERS, { data });

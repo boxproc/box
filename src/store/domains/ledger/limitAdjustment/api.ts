@@ -1,8 +1,7 @@
-import { lenderManualTransactionURLs } from 'consts';
-
+import { apiUrls } from 'consts';
 import { apiClient } from 'services';
 
 import { LedgerLimitAdjustmentRequest } from './types';
 
 export const makeLedgerLimitAdjustment = (data: Partial<LedgerLimitAdjustmentRequest>) =>
-  apiClient.post(lenderManualTransactionURLs.LIMIT_ADJUSTMENT, { data });
+  apiClient.post(apiUrls.manualTransaction.LIMIT_ADJUSTMENT, { data });

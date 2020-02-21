@@ -1,7 +1,7 @@
 
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, modalNamesConst, uiItemConsts } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 
@@ -152,7 +152,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
         await dispatch(deleteProduct(id));
         dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
 
-        if (window.location.pathname === `${basePath}${uiItemConsts.LEDGER_ACCOUNTS}`) {
+        if (window.location.pathname === `${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`) {
           await dispatch(handleFilterLedgerAccounts());
         }
       },

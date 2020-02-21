@@ -1,4 +1,4 @@
-import { dictionariesURLs } from 'consts';
+import { apiUrls } from 'consts';
 
 import { apiClient } from 'services';
 
@@ -12,15 +12,15 @@ import { apiClient } from 'services';
 
 export const getDictionaryCardStatuses = () =>
   // throttleUtil.getDataAfter(dictionaryCardStatusesData, 500);
-  apiClient.post(dictionariesURLs.GET_CARD_STATUSES);
+  apiClient.post(apiUrls.dictionaries.GET_CARD_STATUSES);
 
 export const getDictionaryEndpointTypes = () =>
   // throttleUtil.getDataAfter(dictionaryEndpointTypesData, 500);
-  apiClient.post(dictionariesURLs.GET_ENDPOINT_TYPES);
+  apiClient.post(apiUrls.dictionaries.GET_ENDPOINT_TYPES);
 
 export const getDictionaryInterfaceTypes = () =>
   // throttleUtil.getDataAfter(dictionaryInterfaceTypesData, 500);
-  apiClient.post(dictionariesURLs.GET_INTERFACE_TYPES);
+  apiClient.post(apiUrls.dictionaries.GET_INTERFACE_TYPES);
 
 export const getDictionaryStatementCycleTypes = () =>
-  apiClient.post(dictionariesURLs.GET_STATEMENT_CYCLE_TYPES);
+  apiClient.post(apiUrls.dictionaries.GET_STATEMENT_CYCLE_TYPES);

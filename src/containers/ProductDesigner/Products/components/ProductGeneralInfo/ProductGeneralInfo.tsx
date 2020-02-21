@@ -90,7 +90,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
         return formErrorUtil.rangeValueMin1Max28;
       } else if (statementCycleTypeValue.value === cycleTypesIds.WEEKLY
         || statementCycleTypeValue.value === cycleTypesIds.BI_WEEKLY) {
-        return formErrorUtil.rangeValueMin1Max28;
+        return formErrorUtil.rangeValueMin1Max7;
       } else if (statementCycleTypeValue.value === cycleTypesIds.FIXED_NUMBER_OF_DAYS) {
         return formErrorUtil.rangeValueMin1Max250;
       } else {
