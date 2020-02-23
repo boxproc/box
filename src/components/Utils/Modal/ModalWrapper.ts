@@ -66,7 +66,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     min-width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '350px'};
     width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '500px'};
     min-height: ${({ minContainerHeight }) =>
-      minContainerHeight ? minContainerHeight + 'px' : 'auto'};
+      minContainerHeight ? minContainerHeight + 'px' : '130px'};
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;

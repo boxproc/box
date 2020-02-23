@@ -27,9 +27,13 @@ export const isInteger = (value: number) => {
   const isValuePositive = valueNumber > 0;
   const isValueInteger = Number.isInteger(valueNumber);
 
-  return ((isValuePositive && isValueInteger) || value === undefined)
-    ? undefined
-    : 'Must be an integer';
+  if ((isValuePositive && isValueInteger) || value === undefined) {
+    return undefined;
+  } else if (!isValuePositive) {
+    return 'Must be positive';
+  } else {
+    return 'Must be an integer';
+  }
 };
 
 export const passwordsMatch = (value: string, allValues: any) =>

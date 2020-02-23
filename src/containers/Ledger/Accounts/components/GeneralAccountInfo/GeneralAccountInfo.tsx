@@ -221,7 +221,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
         )}
         {isChosenLoanProductType && (
           <React.Fragment>
-            <Box width="150px" p="8px">
+            <Box width="140px" p="8px">
               <Field
                 id="numOfInstallments"
                 name="numOfInstallments"
@@ -233,7 +233,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 validate={[formErrorUtil.required]}
               />
             </Box>
-            <Box width="150px" p="8px">
+            <Box width="140px" p="8px">
               <Field
                 id="numOfInterestFreeInstllmnts"
                 name="numOfInterestFreeInstllmnts"
@@ -247,7 +247,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             </Box>
           </React.Fragment>
         )}
-        {isChosenLoanProductType && !isEditMode && (
+        {isChosenLoanProductType && (
           <Box width="150px" p="8px">
             <Field
               id="loanStartDate"
@@ -256,7 +256,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               label="Loan Start Date"
               placeholder={dateFormat.DATE}
               mask={maskFormat.DATE}
-              readOnly={isReadOnly}
+              readOnly={isReadOnly || isEditMode}
               validate={[
                 formErrorUtil.required,
                 formErrorUtil.isDate,

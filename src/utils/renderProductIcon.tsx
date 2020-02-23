@@ -28,25 +28,25 @@ export const renderProductIcon = (iconName: string | number) => {
     case productTypesCodes.REVOLVING_CREDIT:
       return (
         <Wrapper>
-          <img src={creditCard} width={18} alt="" />
+          <img src={creditCard} width={18} alt="" title="Revolving credit" />
         </Wrapper>
       );
     case productTypesCodes.PREPAID:
       return (
         <Wrapper mt="-5px">
-          <img src={money} width={17} alt="" />
+          <img src={money} width={17} alt="" title="Prepaid" />
         </Wrapper>
       );
     case productTypesCodes.DEBIT:
       return (
         <Wrapper>
-          <img src={card} width={24} alt="" />
+          <img src={card} width={24} alt="" title="Debit" />
         </Wrapper>
       );
     case productTypesCodes.LOAN:
       return (
         <Wrapper>
-          <img src={percent} width={18} alt="" />
+          <img src={percent} width={18} alt="" title="Loan" />
         </Wrapper>
       );
     default:
