@@ -28,7 +28,7 @@ const EventsDataElemsFilter: React.FC<EventsDataElemsFilterProps> = ({
         options={eventOptions}
         isDisabled={isDisabled}
         isRequired={true}
-        validate={[formErrorUtil.required]}
+        validate={[formErrorUtil.isRequired]}
       />
     </Box>
   );

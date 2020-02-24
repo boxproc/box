@@ -45,7 +45,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             placeholder="Select Method"
             options={loanTypesOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box
@@ -62,8 +62,8 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
             readOnly={isReadOnly}
             isNumber={true}
             validate={[
-              formErrorUtil.required,
-              formErrorUtil.isNumber,
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
             ]}
           />
         </Box>
@@ -81,7 +81,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
               readOnly={isReadOnly}
               isNumber={true}
               validate={[
-                formErrorUtil.required,
+                formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
               ]}
             />

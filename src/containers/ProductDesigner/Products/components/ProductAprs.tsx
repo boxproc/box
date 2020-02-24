@@ -40,7 +40,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           label="Description"
           placeholder="Enter Description"
           disabled={isDisabled}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 5]} p="8px">
@@ -53,7 +53,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           placeholder="Select Method"
           isDisabled={isDisabled}
           isClearable={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 5]} p="8px">
@@ -67,7 +67,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           fixedDecimalScale={true}
           decimalScale={2}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isNumber,
           ]}
         />
@@ -82,8 +82,8 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           isNumber={true}
           disabled={isDisabled}
           validate={[
-            formErrorUtil.required,
-            formErrorUtil.isNumber,
+            formErrorUtil.isRequired,
+            formErrorUtil.isInteger,
           ]}
         />
       </Box>

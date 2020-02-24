@@ -49,7 +49,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           options={adminAccessUsersOptions}
           isDisabled={isChangingProfile}
           isLoading={isLoadingUsers}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
         <OkCancelButtons
           okText="Log in"

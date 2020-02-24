@@ -102,10 +102,6 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               placeholder="Enter ID"
               readOnly={true}
               isNumber={true}
-              validate={[
-                formErrorUtil.required,
-                formErrorUtil.isInteger,
-              ]}
             />
           </Box>
         )}
@@ -119,7 +115,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             options={institutionsOptions}
             isDisabled={isEditMode || isReadOnly}
             isClearable={false}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width="150px" p="8px">
@@ -131,7 +127,10 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             placeholder="Enter ID"
             readOnly={isEditMode || isReadOnly}
             isNumber={true}
-            validate={[formErrorUtil.required]}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+            ]}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -163,7 +162,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             placeholder="Select Status"
             options={statusesOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         {isEditMode && (
@@ -174,9 +173,8 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               component={InputField}
               label="Product ID"
               placeholder="Enter ID"
-              readOnly={isEditMode || isReadOnly}
+              readOnly={true}
               isNumber={true}
-              validate={[formErrorUtil.required]}
             />
           </Box>
         )}
@@ -189,7 +187,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             placeholder="Select Product"
             isDisabled={isEditMode || isReadOnly}
             options={institutionProductsOptions}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         {isRepaymentType && (
@@ -202,7 +200,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               placeholder="Select Type"
               isDisabled={isChosenLoanProductType || isReadOnly}
               options={repaymentTypesOptions}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
         )}
@@ -216,6 +214,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               placeholder="Enter Day"
               readOnly={isReadOnly}
               isNumber={true}
+              validate={[formErrorUtil.isInteger]}
             />
           </Box>
         )}
@@ -230,7 +229,10 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 placeholder="Enter Number"
                 readOnly={isReadOnly}
                 isNumber={true}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                ]}
               />
             </Box>
             <Box width="140px" p="8px">
@@ -242,7 +244,10 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 placeholder="Enter Number"
                 readOnly={isReadOnly}
                 isNumber={true}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                ]}
               />
             </Box>
           </React.Fragment>
@@ -258,7 +263,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               mask={maskFormat.DATE}
               readOnly={isReadOnly || isEditMode}
               validate={[
-                formErrorUtil.required,
+                formErrorUtil.isRequired,
                 formErrorUtil.isDate,
               ]}
             />
@@ -286,7 +291,6 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 placeholder={dateFormat.DATE}
                 mask={maskFormat.DATE}
                 readOnly={true}
-                validate={[formErrorUtil.isDate]}
               />
             </Box>
           </React.Fragment>
@@ -303,7 +307,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -319,7 +323,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -335,7 +339,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -351,7 +355,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -368,7 +372,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -384,7 +388,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             decimalScale={2}
             readOnly={isEditMode || isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -402,7 +406,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 decimalScale={2}
                 readOnly={isEditMode || isReadOnly}
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
                 ]}
               />

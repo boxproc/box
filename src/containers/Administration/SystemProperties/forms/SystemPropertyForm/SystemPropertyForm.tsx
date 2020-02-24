@@ -84,7 +84,8 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               label="Property Name"
               readOnly={isEditMode || isReadOnly}
               validate={[
-                formErrorUtil.required,
+                formErrorUtil.isRequired,
+                formErrorUtil.isAlphaNumeric,
               ]}
             />
           </Box>
@@ -107,7 +108,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               component={InputField}
               label="Current Value"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           {isEditMode && (

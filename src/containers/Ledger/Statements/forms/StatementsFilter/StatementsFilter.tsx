@@ -59,7 +59,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width="130px" p="8px">
@@ -95,7 +95,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDate,
           ]}
         />
@@ -111,7 +111,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDate,
           ]}
         />

@@ -44,7 +44,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             label="Pan Alias"
             placeholder="Enter Pan Alias"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -55,7 +55,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             label="Pan Masked"
             placeholder="Enter Pan Masked"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width="120px" p="8px">
@@ -67,7 +67,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             placeholder={dateFormat.DATE}
             mask={maskFormat.DATE}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isDate,
             ]}
           />
@@ -90,7 +90,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             label="Cardholder Name"
             placeholder="Enter Cardholder Name"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width="150px" p="8px">
@@ -103,10 +103,10 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             placeholder="Select Status"
             isDisabled={isDisabled}
             isClearable={false}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="160px" p="8px">
+        <Box width="300px" p="8px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
@@ -116,7 +116,7 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             options={interfacesOptions}
             isLoading={isInterfacesLoading}
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} pb="15px">

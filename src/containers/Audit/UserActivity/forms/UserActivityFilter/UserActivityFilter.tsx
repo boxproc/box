@@ -52,7 +52,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 4]} p="8px">
@@ -78,7 +78,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />
@@ -94,7 +94,7 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />

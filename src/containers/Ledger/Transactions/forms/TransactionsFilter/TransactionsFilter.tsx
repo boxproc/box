@@ -56,7 +56,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 4]} p="8px">
@@ -82,7 +82,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />
@@ -98,7 +98,7 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />

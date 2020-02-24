@@ -4,6 +4,7 @@ import { closeModal } from 'store/domains/modals';
 
 import * as api from './api';
 
+import { getInstitutions } from 'store/domains/login';
 import {
   ActionTypeKeys,
   AddAdminInstitutionAction,
@@ -82,6 +83,7 @@ export const handleUpdateAdminInstitution: HandleUpdateAdminInstitution = values
 
         await dispatch(updateAdminInstitutions(preparedValues));
         await dispatch(handleGetAdminInstitutions());
+        await dispatch(getInstitutions());
       },
       dispatch
     );
@@ -96,6 +98,7 @@ export const handleAddAdminInstitution: HandleAddAdminInstitution = values =>
         await dispatch(addAdminInstitution(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_INSTITUTION));
         await dispatch(handleGetAdminInstitutions());
+        await dispatch(getInstitutions());
       },
       dispatch
     );
@@ -107,6 +110,7 @@ export const handleDeleteAdminInstitution: HandleDeleteAdminInstitution = id =>
       async () => {
         await dispatch(deleteAdminInstitution(id));
         dispatch(closeModal(modalNamesConst.EDIT_INSTITUTION));
+        await dispatch(getInstitutions());
       },
       dispatch
     );

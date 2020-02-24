@@ -39,7 +39,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <ProductWrapper p="8px">

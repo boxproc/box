@@ -31,7 +31,7 @@ const UsersFilter: React.FC<UsersFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box p="8px" pb="10px">

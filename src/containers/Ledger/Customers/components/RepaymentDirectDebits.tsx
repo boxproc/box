@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, SelectField } from 'components';
+import { Button, Delimiter, InputField, SelectField } from 'components';
 
 import { iconNamesConst, statusOptions } from 'consts';
 
@@ -44,7 +44,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             label="Account"
             placeholder="Enter Account"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -55,7 +55,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             label="Account Ext"
             placeholder="Enter Account Ext"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -66,7 +66,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             label="Accountholder Name"
             placeholder="Enter Accountholder Name"
             disabled={isDisabled}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width="150px" p="8px">
@@ -79,10 +79,11 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             placeholder="Select Status"
             isDisabled={isDisabled}
             isClearable={false}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="160px" p="8px">
+        <Delimiter />
+        <Box width="300px" p="8px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
@@ -92,7 +93,7 @@ const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
             disabled={isDisabled}
             options={interfacesOptions}
             isLoading={isInterfacesLoading}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width="150px" pb="15px">

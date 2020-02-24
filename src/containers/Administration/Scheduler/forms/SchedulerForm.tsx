@@ -87,7 +87,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               options={institutionsOptions}
               isDisabled={isEditMode || isReadOnly}
               isClearable={false}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -98,7 +98,10 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               component={InputField}
               label="Name"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isAlphaNumeric,
+              ]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -110,7 +113,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               placeholder="Select Status"
               options={schedulerStatusOptions}
               isDisabled={isDisabledStatus || isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box width="100%">
@@ -146,7 +149,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               label="Executable Type"
               options={executableTypeOptions}
               isDisabled={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box width={[2 / 3]} p="8px">
@@ -157,7 +160,10 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               component={InputField}
               label="Executable"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isURL,
+              ]}
             />
           </Box>
           <Box width={[1 / 2]} p="8px">
@@ -168,7 +174,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               component={InputField}
               label="Log Location"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box width={[1 / 4]} p="8px">
@@ -178,8 +184,8 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               placeholder="Enter Cron Expression"
               component={InputField}
               label="Cron Expression"
-              readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              readOnly={true}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box p="8px 8px 15px">

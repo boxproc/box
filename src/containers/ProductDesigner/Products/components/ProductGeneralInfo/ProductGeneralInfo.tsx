@@ -115,7 +115,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             placeholder="Select Product Type"
             options={productTypesOptions}
             isDisabled={isEditMode || isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -128,7 +128,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             options={institutionsOptions}
             isDisabled={isEditMode || isReadOnly}
             isClearable={false}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[4 / 15]} p="8px">
@@ -139,7 +139,10 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             component={InputField}
             label="Name"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isAlphaNumeric,
+            ]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -151,7 +154,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             placeholder="Select Card"
             options={cardFormFactorOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[2 / 15]} p="8px">
@@ -164,7 +167,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             isNumber={true}
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />
@@ -178,7 +181,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             placeholder="Select Status"
             options={statusOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -202,7 +205,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             options={currencyCodesOptions}
             isLoading={isCurrencyCodesLoading}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[2 / 15]} p="8px">
@@ -215,7 +218,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             isNumber={true}
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />
@@ -231,7 +234,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             options={statementCycleTypesOptions}
             isLoading={isStatementCycleTypesLoading}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[2 / 15]} p="8px">
@@ -245,7 +248,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             readOnly={isReadOnly}
             disabled={!statementCycleTypeValue}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               statementCycleParameterValidation,
             ]}
             hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}

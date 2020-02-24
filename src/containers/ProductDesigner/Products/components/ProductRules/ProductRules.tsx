@@ -306,7 +306,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               isLoading={isEventsLoading}
               isClearable={false}
               onChange={onChangeValues}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <HiddenBox width={[1 / 3]} p="8px">
@@ -319,7 +319,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
               options={actionTypesOptions}
               isClearable={false}
               onChange={onChangeValues}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </HiddenBox>
           {eventValue && (

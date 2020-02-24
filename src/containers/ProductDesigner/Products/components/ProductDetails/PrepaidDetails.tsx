@@ -28,7 +28,7 @@ const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
             isNumber={true}
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />

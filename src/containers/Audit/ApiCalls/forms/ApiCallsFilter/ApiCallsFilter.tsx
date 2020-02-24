@@ -53,7 +53,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 3]} p="8px">
@@ -67,7 +67,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           isLoading={isLoadingEndpoints}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 4]} p="8px">
@@ -92,7 +92,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />
@@ -108,7 +108,7 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           disabled={isDisabled}
           isRequired={true}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isDateTime,
           ]}
         />

@@ -124,7 +124,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
               label="Loan Product"
               options={loanProductsOptions}
               isDisabled={isDisabled}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
         )}
@@ -138,7 +138,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             mask={maskFormat.DATE}
             disabled={isDisabled || withLoanSelection}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isDate,
             ]}
           />
@@ -154,7 +154,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             decimalScale={2}
             disabled={isDisabled || withLoanSelection}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -169,7 +169,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             isNumber={true}
             disabled={isDisabledDetails}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />
@@ -184,7 +184,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             placeholder="Enter #"
             disabled={isDisabledDetails}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />

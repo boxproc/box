@@ -81,7 +81,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           flexWrap="wrap"
         >
           {isEditMode && (
-            <Box width={[3 / 15]} p="8px">
+            <Box width={[1 / 5]} p="8px">
               <Field
                 id="id"
                 name="id"
@@ -89,14 +89,11 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
                 label="ID"
                 placeholder="Enter ID"
                 readOnly={true}
-                validate={[
-                  formErrorUtil.required,
-                  formErrorUtil.isInteger,
-                ]}
+                isNumber={true}
               />
             </Box>
           )}
-          <Box width={[7 / 15]} p="8px">
+          <Box width={isEditMode ? [7 / 15] : [2 / 3]} p="8px">
             <Field
               id="name"
               name="name"
@@ -104,10 +101,13 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               label="Name"
               placeholder="Enter Institution"
               disabled={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isAlphaNumeric,
+              ]}
             />
           </Box>
-          <Box width={[5 / 15]} p="8px">
+          <Box width={[1 / 3]} p="8px">
             <Field
               id="status"
               name="status"
@@ -116,7 +116,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
               label="Status"
               placeholder="Select Status"
               isDisabled={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           <Box width={[1]} p="8px">

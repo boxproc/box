@@ -39,7 +39,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             options={institutionsOptions}
             isDisabled={isEditMode || isReadOnly}
             isClearable={false}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 2]} p="8px">
@@ -50,7 +50,10 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             label="Name"
             placeholder="Enter name"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isAlphaNumeric,
+            ]}
           />
         </Box>
         <Box width={[1 / 3]} p="8px">
@@ -61,7 +64,10 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             label="Port"
             placeholder="Enter port"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isPort,
+            ]}
           />
         </Box>
         <Box width={[1 / 3]} p="8px">
@@ -73,7 +79,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             placeholder="Select Status"
             options={statusOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 3]} p="8px">
@@ -86,7 +92,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             placeholder="Select Type"
             isDisabled={isReadOnly}
             isLoading={isLoadingTypesSelector}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1]} p="8px">
@@ -97,7 +103,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             label="Private Key Location"
             placeholder="Enter Private Key Location"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1]} p="8px">
@@ -108,7 +114,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
             label="Log File Location"
             placeholder="Enter Log File Location"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1]} p="8px">

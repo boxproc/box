@@ -76,7 +76,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             isLoading={isTransactionTypesLoading}
             options={transactionTypes}
             isDisabled={isLimitAdjustment}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         )}
@@ -90,7 +90,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             isNumber={true}
             readOnly={isReadonly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />
@@ -106,7 +106,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 placeholder="Select Currency"
                 options={numCurrencyCodes}
                 isLoading={isCurrencyCodesLoading}
-                validate={[formErrorUtil.required]}
+                validate={[formErrorUtil.isRequired]}
               />
             </Box>
             <Box width={[2 / 7]} p="8px">
@@ -119,7 +119,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 decimalScale={2}
                 label="Amount"
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
                 ]}
               />
@@ -160,7 +160,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             placeholder="Enter Description"
             label="Description"
             height={80}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
       </Flex>

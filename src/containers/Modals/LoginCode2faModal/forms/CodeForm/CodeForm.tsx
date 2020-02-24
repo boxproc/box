@@ -36,7 +36,7 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
           placeholder="Enter code"
           component={InputField}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.isNumber,
             formErrorUtil.exactNumberValue6,
           ]}

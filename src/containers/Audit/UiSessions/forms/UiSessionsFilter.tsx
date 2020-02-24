@@ -38,7 +38,7 @@ const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({
           isMulti={true}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </InstitutionsWrapper>
     </React.Fragment>

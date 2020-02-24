@@ -108,6 +108,7 @@ export const handleDeleteAdminInterface: HandleDeleteAdminInterface = id =>
       async () => {
         await dispatch(deleteAdminInterface(id));
         dispatch(closeModal(modalNamesConst.EDIT_INTERFACE));
+        await dispatch(handleFilterAdminInterface());
       },
       dispatch
     );

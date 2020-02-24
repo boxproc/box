@@ -53,7 +53,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
             isNumber={true}
             readOnly={isReadonly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
             autoFocus={true}

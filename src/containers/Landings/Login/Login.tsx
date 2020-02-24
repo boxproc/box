@@ -88,7 +88,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
           component={InputField}
           disabled={isMessageModal}
           label="Login"
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
         <Field
           id="loginPassword"
@@ -97,7 +97,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
           component={PasswordField}
           disabled={isMessageModal}
           label="Password"
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
           autoFocus={isPasswordFocus}
         />
         <Field

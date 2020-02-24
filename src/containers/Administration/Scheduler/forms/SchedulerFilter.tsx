@@ -30,7 +30,7 @@ const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 4]} p="8px">

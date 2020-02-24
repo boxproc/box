@@ -90,7 +90,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 mask={maskFormat.DATE}
                 disabled={isDisabled}
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isDate,
                 ]}
               />
@@ -105,7 +105,10 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 fixedDecimalScale={true}
                 decimalScale={2}
                 disabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                ]}
               />
             </Box>
             <Box width={[1 / 7]} p="8px">
@@ -118,7 +121,10 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 fixedDecimalScale={true}
                 decimalScale={2}
                 disabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                ]}
               />
             </Box>
             <Delimiter />
@@ -137,7 +143,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 mask={maskFormat.DATE}
                 disabled={isDisabled}
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isDate,
                 ]}
               />
@@ -152,7 +158,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 options={transactionTypesOptions}
                 label="Type"
                 isDisabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[formErrorUtil.isRequired]}
               />
             </Box>
             <Box width={[1 / 7]} p="8px" >
@@ -165,7 +171,10 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 fixedDecimalScale={true}
                 decimalScale={2}
                 disabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                ]}
               />
             </Box>
             <Delimiter />
@@ -184,7 +193,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 mask={maskFormat.DATE}
                 disabled={isDisabled}
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isDate,
                 ]}
               />
@@ -199,7 +208,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 placeholder="Select Type"
                 label="Type"
                 isDisabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[formErrorUtil.isRequired]}
               />
             </Box>
             <Box width={[1 / 7]} p="8px">
@@ -212,7 +221,10 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 fixedDecimalScale={true}
                 decimalScale={2}
                 disabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                ]}
               />
             </Box>
             <Delimiter />
@@ -231,7 +243,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 mask={maskFormat.DATE}
                 disabled={isDisabled}
                 validate={[
-                  formErrorUtil.required,
+                  formErrorUtil.isRequired,
                   formErrorUtil.isDate,
                 ]}
               />
@@ -246,7 +258,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 placeholder="Select type"
                 label="Type"
                 isDisabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[formErrorUtil.isRequired]}
               />
             </Box>
             <Box width={[1 / 7]} p="8px">
@@ -259,7 +271,10 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 fixedDecimalScale={true}
                 decimalScale={2}
                 disabled={isDisabled}
-                validate={[formErrorUtil.required]}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                ]}
               />
             </Box>
             <Box width={[1]} px="10px">

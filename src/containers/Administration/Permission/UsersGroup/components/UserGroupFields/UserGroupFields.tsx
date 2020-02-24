@@ -47,7 +47,7 @@ const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
             isDisabled={isEditMode || isReadOnly}
             isClearable={false}
             isLoading={isInstitutionsLoading}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[isEditMode ? 1 / 2 : 1]} p="8px">
@@ -58,7 +58,10 @@ const UserGroupFields: React.FC<UserGroupFieldsProps> = ({
             label="Group Name"
             placeholder="Enter Group Name"
             readOnly={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isAlphaNumeric,
+            ]}
           />
         </Box>
       </Flex>

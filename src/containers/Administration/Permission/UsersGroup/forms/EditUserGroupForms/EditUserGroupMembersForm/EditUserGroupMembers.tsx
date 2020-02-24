@@ -71,7 +71,7 @@ const EditUserGroupMembers: React.FC<EditUserGroupMembersPropsAllProps> = ({
             label="Select User"
             options={activeUsersItemsOptions}
             isDisabled={isLoading}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[1 / 2]} pb="21px">

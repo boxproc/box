@@ -48,7 +48,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           label="Description"
           placeholder="Enter Description"
           disabled={isDisabled}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 5]} p="8px">
@@ -61,7 +61,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="Select Condition"
           isDisabled={isDisabled}
           isClearable={false}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 5]} p="8px">
@@ -87,7 +87,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyAmount ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
+          validate={!isOnlyAmount ? [formErrorUtil.isRequired, formErrorUtil.isNumber] : null}
         />
       </Box>
       <Box width={[1 / 7]} p="8px">
@@ -100,7 +100,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyRate ? [formErrorUtil.required, formErrorUtil.isNumber] : null}
+          validate={!isOnlyRate ? [formErrorUtil.isRequired, formErrorUtil.isNumber] : null}
         />
       </Box>
       <Box pb="15px">

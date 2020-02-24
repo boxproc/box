@@ -71,7 +71,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width="130px" p="8px">
@@ -79,7 +79,7 @@ const AccountsFilter: React.FC<AccountsFilterProps> = ({
           id="accountId"
           name="accountId"
           component={InputField}
-          label="Account"
+          label="Account ID"
           placeholder="Enter ID"
           isNumber={true}
           disabled={isDisabled}

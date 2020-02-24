@@ -29,7 +29,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             placeholder="Select Savings Type"
             options={savingsTypesOptions}
             isDisabled={isReadOnly}
-            validate={[formErrorUtil.required]}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Delimiter />
@@ -44,7 +44,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             label="Apr"
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -60,7 +60,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             label="Minimum Deposit Allowed"
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -76,7 +76,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             label="Maximum Deposit Allowed"
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -92,7 +92,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             label="Maximum Monthly Deposit"
             readOnly={isReadOnly}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />

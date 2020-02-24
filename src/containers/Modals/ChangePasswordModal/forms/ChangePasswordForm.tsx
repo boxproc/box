@@ -48,7 +48,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
           label="Current Password"
           placeholder="Enter Current Password"
           component={PasswordField}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
         <Field
           id="newPassword"
@@ -57,7 +57,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
           placeholder="Enter New Password"
           component={PasswordField}
           validate={[
-            formErrorUtil.required,
+            formErrorUtil.isRequired,
             formErrorUtil.passwordsDoNotMatch,
           ]}
         />
@@ -69,7 +69,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
             placeholder="Enter 2nd Factor Code"
             component={InputField}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
               formErrorUtil.exactNumberValue6,
             ]}

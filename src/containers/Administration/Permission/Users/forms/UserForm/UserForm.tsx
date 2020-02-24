@@ -81,14 +81,14 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   const passwordValidation = React.useMemo(
     () => isEditMode
       ? null
-      : [formErrorUtil.required],
+      : [formErrorUtil.isRequired],
     [isEditMode]
   );
 
   const repeatPasswordValidation = React.useMemo(
     () => isEditMode
       ? [formErrorUtil.passwordsMatch]
-      : [formErrorUtil.required, formErrorUtil.passwordsMatch],
+      : [formErrorUtil.isRequired, formErrorUtil.passwordsMatch],
     [isEditMode]
   );
 
@@ -138,7 +138,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="First Name"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isAlpha,
+              ]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -149,7 +152,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               component={InputField}
               label="Last Name"
               readOnly={isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isAlpha,
+              ]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -160,7 +166,10 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Username"
               placeholder="Enter Username"
               readOnly={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isUsername,
+              ]}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -172,8 +181,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               label="Email"
               readOnly={isReadOnly}
               validate={[
-                formErrorUtil.required,
-                formErrorUtil.email,
+                formErrorUtil.isRequired,
+                formErrorUtil.isEmail,
               ]}
             />
           </Box>
@@ -187,7 +196,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
               options={institutionsOptions}
               isClearable={false}
               isDisabled={isEditMode || isReadOnly}
-              validate={[formErrorUtil.required]}
+              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           {isEditMode && (
@@ -200,7 +209,7 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
                 placeholder="Select Status"
                 options={statusOptions}
                 isDisabled={isReadOnly}
-                validate={[formErrorUtil.required]}
+                validate={[formErrorUtil.isRequired]}
               />
             </Box>
           )}

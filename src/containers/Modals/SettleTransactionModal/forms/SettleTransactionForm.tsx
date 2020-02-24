@@ -55,7 +55,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
             isNumber={true}
             disabled={isDisabled}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
             ]}
           />
@@ -70,7 +70,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
             mask={maskFormat.DATE_TIME}
             disabled={isDisabled}
             validate={[
-              formErrorUtil.required,
+              formErrorUtil.isRequired,
               formErrorUtil.isDateTime,
             ]}
           />

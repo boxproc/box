@@ -30,7 +30,7 @@ const CustomersFilter: React.FC<CustomersFilterProps> = ({
           isClearable={false}
           isDisabled={isDisabled}
           isRequired={true}
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 4]} p="8px">

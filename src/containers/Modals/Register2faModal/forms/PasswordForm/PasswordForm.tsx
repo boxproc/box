@@ -37,7 +37,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
           placeholder="Enter Password"
           component={PasswordField}
           autoComplete="new-password"
-          validate={[formErrorUtil.required]}
+          validate={[formErrorUtil.isRequired]}
           autoFocus={true}
         />
         <Flex justifyContent="flex-end">

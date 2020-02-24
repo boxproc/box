@@ -29,7 +29,7 @@ const EndpointsFilter: React.FC<EndpointFilterFormProps> = ({
         isClearable={false}
         isDisabled={isDisabled}
         isRequired={true}
-        validate={[formErrorUtil.required]}
+        validate={[formErrorUtil.isRequired]}
       />
     </Box>
   );
