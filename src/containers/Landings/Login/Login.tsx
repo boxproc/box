@@ -13,6 +13,7 @@ import {
   InputField,
   Logo,
   PasswordField,
+  SmallText,
   withSpinner,
 } from 'components';
 
@@ -40,6 +41,17 @@ const FormWrapper = styled.div`
       left: 62px;
     }
   }
+
+  .password-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+
+    .caps-lock {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
 `;
 
 interface LoginProps extends ExternalSpinnerProps {
@@ -61,6 +73,8 @@ const Login: React.FC<LoginPropsAllProps> = ({
   isMessageModal,
   loginValues,
 }) => {
+  const [isCapsLock, setIsCapsLock] = React.useState(false);
+
   const isButtonFocused = React.useMemo(
     () => loginValues && loginValues.loginUsername && loginValues.loginPassword,
     [loginValues]
@@ -90,16 +104,22 @@ const Login: React.FC<LoginPropsAllProps> = ({
           label="Login"
           validate={[formErrorUtil.isRequired]}
         />
-        <Field
-          id="loginPassword"
-          name="loginPassword"
-          placeholder="Enter password"
-          component={PasswordField}
-          disabled={isMessageModal}
-          label="Password"
-          validate={[formErrorUtil.isRequired]}
-          autoFocus={isPasswordFocus}
-        />
+        <div className="password-wrapper">
+          {isCapsLock && (
+            <SmallText light={true} className="caps-lock">CAPS LOCK</SmallText>
+          )}
+          <Field
+            id="loginPassword"
+            name="loginPassword"
+            placeholder="Enter password"
+            component={PasswordField}
+            disabled={isMessageModal}
+            label="Password"
+            validate={[formErrorUtil.isRequired]}
+            autoFocus={isPasswordFocus}
+            onKeyUp={(e: MouseEvent) => setIsCapsLock(e.getModifierState('CapsLock'))}
+          />
+        </div>
         <Field
           id="rememberMe"
           name="rememberMe"
