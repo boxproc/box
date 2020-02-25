@@ -31,6 +31,7 @@ const DebitDetails: React.FC<DebitDetailsProps> = ({ isReadOnly }) => {
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>

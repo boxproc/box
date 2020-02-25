@@ -31,6 +31,7 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -47,6 +48,7 @@ const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadO
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>

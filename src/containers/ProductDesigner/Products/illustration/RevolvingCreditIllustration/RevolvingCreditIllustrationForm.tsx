@@ -108,6 +108,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>
@@ -124,6 +125,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>
@@ -174,6 +176,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>
@@ -224,6 +227,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>
@@ -274,6 +278,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>

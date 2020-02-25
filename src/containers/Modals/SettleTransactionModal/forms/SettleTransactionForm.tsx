@@ -57,6 +57,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>

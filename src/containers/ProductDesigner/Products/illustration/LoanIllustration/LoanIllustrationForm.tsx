@@ -156,6 +156,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>

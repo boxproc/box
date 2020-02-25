@@ -69,6 +69,7 @@ const ProductAprs: React.FC<ProductAprsProps> = ({
           validate={[
             formErrorUtil.isRequired,
             formErrorUtil.isNumber,
+            formErrorUtil.isPositive,
           ]}
         />
       </Box>

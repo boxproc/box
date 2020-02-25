@@ -46,6 +46,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -62,6 +63,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -78,6 +80,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -94,6 +97,7 @@ const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>

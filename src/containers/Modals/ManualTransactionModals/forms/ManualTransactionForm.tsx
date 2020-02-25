@@ -121,6 +121,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 validate={[
                   formErrorUtil.isRequired,
                   formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
                 ]}
               />
             </Box>
@@ -137,6 +138,11 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 placeholder="0.00"
                 fixedDecimalScale={true}
                 decimalScale={2}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
+                ]}
               />
             </Box>
             <Box width={[2 / 7]} p="8px">
@@ -148,6 +154,11 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 placeholder="0.00"
                 fixedDecimalScale={true}
                 decimalScale={2}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isNumber,
+                  formErrorUtil.isPositive,
+                ]}
               />
             </Box>
           </React.Fragment>

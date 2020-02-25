@@ -42,6 +42,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -58,6 +59,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -74,6 +76,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -90,6 +93,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -106,6 +110,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -122,6 +127,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -138,6 +144,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>
@@ -154,6 +161,7 @@ const Overdue: React.FC<OverdueProps> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
               ]}
             />
           </Box>

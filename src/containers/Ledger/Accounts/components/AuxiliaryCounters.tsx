@@ -73,7 +73,10 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={(isEditMode && !auxCounter1Enabled) || isReadOnly}
-              validate={[formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="8px">
@@ -86,7 +89,10 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={(isEditMode && !auxCounter2Enabled) || isReadOnly}
-              validate={[formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
+              ]}
             />
           </Box>
           <Box width={[1 / 6]} p="8px">
@@ -99,7 +105,10 @@ const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
               fixedDecimalScale={true}
               decimalScale={2}
               readOnly={(isEditMode && !auxCounter3Enabled) || isReadOnly}
-              validate={[formErrorUtil.isNumber]}
+              validate={[
+                formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
+              ]}
             />
           </Box>
         </Flex>

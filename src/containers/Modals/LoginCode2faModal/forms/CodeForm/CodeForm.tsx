@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Button, ExternalSpinnerProps, InputField, withSpinner } from 'components';
 
@@ -28,8 +28,8 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
   );
 
   return (
-    <React.Fragment>
-      <form onSubmit={handleSubmitForm}>
+    <form onSubmit={handleSubmitForm}>
+      <Box width="120px" mt="15px">
         <Field
           id="code"
           name="code"
@@ -37,19 +37,19 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
           component={InputField}
           validate={[
             formErrorUtil.isRequired,
-            formErrorUtil.isNumber,
+            formErrorUtil.isInteger,
             formErrorUtil.exactNumberValue6,
           ]}
           autoFocus={true}
         />
-        <Flex justifyContent="flex-end">
-          <Button
-            text="Log In"
-            disabled={pristine}
-          />
-        </Flex>
-      </form>
-    </React.Fragment>
+      </Box>
+      <Flex justifyContent="flex-end">
+        <Button
+          text="Log In"
+          disabled={pristine}
+        />
+      </Flex>
+    </form>
   );
 };
 

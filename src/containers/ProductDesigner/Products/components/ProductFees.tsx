@@ -10,6 +10,12 @@ import { feeTypesOptions, iconNamesConst } from 'consts';
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
+const numberFieldsValidators = [
+  formErrorUtil.isRequired,
+  formErrorUtil.isNumber,
+  formErrorUtil.isPositive,
+];
+
 interface ProductFeesProps {
   isDisabled: boolean;
   isLoading: boolean;
@@ -32,6 +38,16 @@ const ProductFees: React.FC<ProductFeesProps> = ({
   const buttonText = React.useMemo(
     () => isLoading ? 'Adding...' : 'Add Fee',
     [isLoading]
+  );
+
+  const rateValidators = React.useMemo(
+    () => !isOnlyAmount ? numberFieldsValidators : null,
+    [isOnlyAmount]
+  );
+
+  const amountValidators = React.useMemo(
+    () => !isOnlyRate ? numberFieldsValidators : null,
+    [isOnlyRate]
   );
 
   return (
@@ -87,7 +103,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyAmount ? [formErrorUtil.isRequired, formErrorUtil.isNumber] : null}
+          validate={rateValidators}
         />
       </Box>
       <Box width={[1 / 7]} p="8px">
@@ -100,7 +116,7 @@ const ProductFees: React.FC<ProductFeesProps> = ({
           placeholder="0.00"
           fixedDecimalScale={true}
           decimalScale={2}
-          validate={!isOnlyRate ? [formErrorUtil.isRequired, formErrorUtil.isNumber] : null}
+          validate={amountValidators}
         />
       </Box>
       <Box pb="15px">

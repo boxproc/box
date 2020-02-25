@@ -82,7 +82,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
-                formErrorUtil.isNumber,
+                formErrorUtil.isInteger,
               ]}
             />
           </Box>

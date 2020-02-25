@@ -51,6 +51,11 @@ export const isNumber = (value: string) => {
     : 'Must be a number';
 };
 
+export const isPositive = (value: string) =>
+  Number(value) >= 0
+    ? undefined
+    : 'Must be greater than zero';
+
 export const isInteger = (value: string) => {
   if (!value) {
     return undefined;
@@ -62,7 +67,7 @@ export const isInteger = (value: string) => {
   const isInt = validator.isInt(val);
 
   if (isNegative) {
-    return 'Must be a positive';
+    return 'Must be greater than zero';
   } else if (!isInt) {
     return 'Must be an integer';
   } else {
@@ -124,7 +129,7 @@ export const isDate = (value: string) =>
 
 const exactNumberValue = (exactNumber: number) => (value: string) =>
   value && value.length !== exactNumber
-    ? `Must have ${exactNumber} digits`
+    ? `Enter ${exactNumber} digits`
     : undefined;
 
 export const exactNumberValue6 = exactNumberValue(6);

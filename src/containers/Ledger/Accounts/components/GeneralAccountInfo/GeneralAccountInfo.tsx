@@ -309,6 +309,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -325,6 +326,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -341,6 +343,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -357,6 +360,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -374,6 +378,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -390,6 +395,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -404,11 +410,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 placeholder="0.00"
                 fixedDecimalScale={true}
                 decimalScale={2}
-                readOnly={isEditMode || isReadOnly}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                ]}
+                readOnly={true}
               />
             </Box>
             <Hr />
