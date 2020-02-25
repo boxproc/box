@@ -64,7 +64,9 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   change,
 }) => {
   const [currentInstId, setCurrentInstId] = React.useState(null);
+  const [currentProductId, setCurrentProductId] = React.useState(null);
 
+  // reset products list if institution changed (adding mode)
   React.useEffect(
     () => {
       if (!isEditMode && currentInstitution) {
@@ -108,44 +110,49 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
 
   React.useEffect(
     () => {
-      const currentProductId = currentProduct && currentProduct.value;
+      const selectedProductId = currentProduct && currentProduct.value;
       const currentProductItem = institutionProducts
-        .find(product => product.id === currentProductId);
+        .find(product => product.id === selectedProductId);
 
       const numOfInstallments = currentProductItem && currentProductItem.defNumOfInstallments;
       const numOfInterestFreeInstllmnts = currentProductItem
         && currentProductItem.defNumOfIntrstFreeInstlmts;
 
-      const resetAll = () => {
+      const repaymentTypeInstalments = repaymentTypesOptions
+        .find(type => type.value === repaymentTypesCodes.INSTALMENTS);
+      const repaymentTypeMinimumRepayment = repaymentTypesOptions
+        .find(type => type.value === repaymentTypesCodes.MINIMUM_REPAYMENT);
+
+      const resetLoanValues = () => {
         change('numOfInstallments', 0);
         change('numOfInterestFreeInstllmnts', 0);
         change('loanStartDate', dateUtil.todayDate);
-        change('repaymentType', '');
       };
 
       if (!isEditMode) {
-        if (isChosenLoanProductType) {
-          change('numOfInstallments', numOfInstallments);
-          change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
-          change(
-            'repaymentType',
-            repaymentTypesOptions.find(type => type.value === repaymentTypesCodes.INSTALMENTS)
-          );
-        } else if (isChosenRevCreditProductType) {
-          change(
-            'repaymentType',
-            repaymentTypesOptions.find(type => type.value === repaymentTypesCodes.MINIMUM_REPAYMENT)
-          );
-        } else if (currentProduct && !isChosenLoanProductType) {
-          resetAll();
-        } else if (currentProduct && !isChosenRevCreditProductType) {
+        if (currentProductId !== selectedProductId) {
+          setCurrentProductId(selectedProductId);
+
+          if (isChosenLoanProductType) {
+            change('numOfInstallments', numOfInstallments);
+            change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
+            change('repaymentType', repaymentTypeInstalments);
+          } else if (isChosenRevCreditProductType) {
+            change('repaymentType', repaymentTypeMinimumRepayment);
+          }
+        }
+
+        if (!isChosenLoanProductType) {
+          resetLoanValues();
+        }
+
+        if (!isChosenLoanProductType && !isChosenRevCreditProductType) {
           change('repaymentType', '');
-        } else if (!currentProduct) {
-          resetAll();
         }
       }
     },
     [
+      currentProductId,
       institutionProducts,
       currentProduct,
       change,
