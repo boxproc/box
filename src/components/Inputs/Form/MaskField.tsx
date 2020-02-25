@@ -22,6 +22,7 @@ interface MaskFieldProps extends InputCommonProps {
   formatChars?: { [key: string]: string };
   alwaysShowMask?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
+  isRequired?: boolean;
   beforeMaskedValueChange?(
     newState: InputState,
     oldState: InputState,
@@ -33,13 +34,12 @@ interface MaskFieldProps extends InputCommonProps {
 const MaskField: React.FC<MaskFieldProps> = ({
   invalid,
   fieldClassName,
+  isRequired,
   ...props
 }) => {
   return (
     <Wrapper invalid={invalid}>
-      <ReactInputMask
-        {...props}
-      />
+      <ReactInputMask {...props} />
     </Wrapper>
   );
 };
