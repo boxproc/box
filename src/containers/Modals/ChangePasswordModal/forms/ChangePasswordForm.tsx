@@ -30,7 +30,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
   );
 
   const isRequires2faFlag = React.useMemo(
-    () => userData && userData.requires2faFlag !== yesNoTypesCodes.NO,
+    () => userData && userData.requires2faFlag === yesNoTypesCodes.YES,
     [userData]
   );
 
