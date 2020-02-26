@@ -7,7 +7,7 @@ import styled, { css } from 'theme';
 import { Button, Dropdown, DropdownOption, UserIcon, UserShieldIcon } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, yesNoTypesCodes } from 'consts';
 
 import { HandleUserLogout } from 'store/domains';
 import { storageUtil } from 'utils';
@@ -67,7 +67,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
 
   const isChangeProfileAvailable = React.useMemo(
     () => userData
-      && userData.changeProfileAllowedFlag
+      && userData.changeProfileAllowedFlag === yesNoTypesCodes.YES
       && !storageUtil.getRegistrationPendingFlag(),
     [userData]
   );
