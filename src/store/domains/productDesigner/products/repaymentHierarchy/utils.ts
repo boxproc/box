@@ -5,7 +5,7 @@ import {
   RepaymentHierarchyItem,
 } from './types';
 
-import { elementIdentifierOptions } from 'consts';
+import { elementIdentifierOptions, hierarchyElemsStatusOptions } from 'consts';
 
 export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
   RepaymentHierarchy => {
@@ -19,10 +19,12 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
     element_identifier,
     product_id,
     product_element_id,
+    status,
     description,
   } = data;
 
   const elementIdentifier = elementIdentifierOptions.find(el => el.value === element_identifier);
+  const elementStatus = hierarchyElemsStatusOptions.find(el => el.value === status);
 
   return {
     id,
@@ -30,6 +32,7 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
     elementIdentifier: elementIdentifier && elementIdentifier.label,
     productId: product_id,
     productElementId: product_element_id,
+    status: elementStatus && elementStatus.label,
     description,
   };
 };

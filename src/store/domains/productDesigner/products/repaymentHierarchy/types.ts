@@ -6,6 +6,7 @@ export interface RepaymentHierarchyItem {
   element_identifier: string;
   product_id: number;
   product_element_id: number;
+  status: string;
   description: string;
 }
 
@@ -15,6 +16,7 @@ export interface RepaymentHierarchy {
   elementIdentifier: string;
   productId: number;
   productElementId: number;
+  status: string;
   description: string;
 }
 

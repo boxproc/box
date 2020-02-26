@@ -151,6 +151,17 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
         ),
       },
       {
+        maxWidth: 130,
+        accessor: 'status',
+        Header: <TableHeader title="Status" />,
+        Cell: (props: TCell<'status'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
         maxWidth: 300,
         accessor: 'description',
         Header: <TableHeader title="Description" />,

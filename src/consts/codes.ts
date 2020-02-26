@@ -88,6 +88,12 @@ export const repaymentStatusOptions = [
   { value: 'O', label: 'Overpaid' },
 ];
 
+export const hierarchyElemsStatusOptions = [
+  { value: 'C', label: 'Current' },
+  { value: 'P', label: 'Previous' },
+  { value: 'O', label: 'Outstanding' },
+];
+
 export const repaymentTypesOptions = [
   { value: 'M', label: 'Minimum Repayment' },
   { value: 'O', label: 'Outstanding Balance' },

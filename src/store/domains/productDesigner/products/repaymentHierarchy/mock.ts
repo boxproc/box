@@ -10,6 +10,7 @@ export const repaymentHierarchy: RepaymentHierarchyItems = {
       element_identifier: 'F',
       product_id: 1,
       product_element_id: 1,
+      status: 'C',
       description: 'Description 1',
     },
     {
@@ -18,6 +19,7 @@ export const repaymentHierarchy: RepaymentHierarchyItems = {
       element_identifier: 'O',
       product_id: 1,
       product_element_id: null,
+      status: 'P',
       description: 'Description 2',
     },
     {
@@ -26,6 +28,7 @@ export const repaymentHierarchy: RepaymentHierarchyItems = {
       element_identifier: 'A',
       product_id: 1,
       product_element_id: null,
+      status: 'O',
       description: 'Description 3',
     },
     {
@@ -34,6 +37,7 @@ export const repaymentHierarchy: RepaymentHierarchyItems = {
       element_identifier: 'I',
       product_id: 1,
       product_element_id: 4,
+      status: 'C',
       description: 'Description 4',
     },
   ],
