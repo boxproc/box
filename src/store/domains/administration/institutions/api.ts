@@ -14,14 +14,12 @@ export const getAdminInstitutions = () =>
 
 export const addAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.institutions.CREATE, { data });
+  apiClient.post(apiUrls.institutions.BASE, { data });
 
 export const deleteAdminInstitution = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.institutions.DELETE, {
-    data: { id },
-  });
+  apiClient.delete(`${apiUrls.institutions.BASE}/${id}`);
 
 export const updateAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(apiUrls.institutions.UPDATE, { data });
+  apiClient.put(apiUrls.institutions.BASE, { data });

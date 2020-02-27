@@ -295,7 +295,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 5]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="eventId"
               name="eventId"

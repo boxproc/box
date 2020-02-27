@@ -8,10 +8,8 @@ export enum uiItems {
 }
 
 export enum institutions {
-  GET = 'ui/service_data/institutions/get',
-  CREATE = 'ui/service_data/institutions/create',
-  DELETE = 'ui/service_data/institutions/delete',
-  UPDATE = 'ui/service_data/institutions/update',
+  BASE = 'ui/institutions',
+  GET = 'ui/institutions/get',
 }
 
 export enum interfaces {

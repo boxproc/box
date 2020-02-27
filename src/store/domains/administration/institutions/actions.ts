@@ -83,7 +83,6 @@ export const handleUpdateAdminInstitution: HandleUpdateAdminInstitution = values
 
         await dispatch(updateAdminInstitutions(preparedValues));
         await dispatch(handleGetAdminInstitutions());
-        await dispatch(getInstitutions());
       },
       dispatch
     );
