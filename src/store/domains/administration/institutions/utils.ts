@@ -12,7 +12,7 @@ export const preparedDataToSend = (data: Partial<AdminInstitutionsItemDetailsPre
 
   return {
     id: data.id,
-    name: data.name,
+    institution_name: data.institutionName,
     status: data.status && data.status.value,
     sftp_location: data.sftpLocation,
     sftp_public_key: data.sftpPublicKey,
@@ -28,7 +28,7 @@ export const prepareDataToRender = (data: Partial<AdminInstitutionsItem>) => {
 
   return {
     id: data.id,
-    name: data.name,
+    institutionName: data.institution_name,
     status: status && status.label,
     sftpLocation: data.sftp_location,
     sftpPublicKey: data.sftp_public_key,

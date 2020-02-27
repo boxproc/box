@@ -7,12 +7,8 @@ export enum uiItems {
   GET = 'ui/items/get',
 }
 
-export enum userInstitutions {
-  GET_INSTITUTIONS = 'ui/service_data/institutions/get',
-}
-
 export enum institutions {
-  GET = 'ui/service_data/institutions/get_all',
+  GET = 'ui/service_data/institutions/get',
   CREATE = 'ui/service_data/institutions/create',
   DELETE = 'ui/service_data/institutions/delete',
   UPDATE = 'ui/service_data/institutions/update',
@@ -157,7 +153,7 @@ export enum settleTransaction {
 
 export enum products {
   GET_PRODUCTS = 'ui/product_designer/products/get',
-  GET_INSTITUTIONS_PRODUCTS = 'ui/service_data/institutions/products/get',
+  GET_INSTITUTIONS_PRODUCTS = 'ui/product_designer/products/get_by_institution',
   GET_PRODUCT = 'ui/product_designer/products/get_product_by_id',
   GET_PRODUCTS_DETAILS = 'ui/product_designer/products/extensions/get',
   GET_PRODUCTS_RULES = 'ui/product_designer/products/rules/get',

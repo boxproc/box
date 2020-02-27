@@ -6,7 +6,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
   institutions: [
     {
       id: 1,
-      name: 'BOX Institution',
+      institution_name: 'BOX Institution',
       status: 'A',
       sftp_location: '',
       sftp_public_key: '',
@@ -14,7 +14,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
     },
     {
       id: 2,
-      name: 'Customer Institution',
+      institution_name: 'Customer Institution',
       status: 'A',
       sftp_location: '',
       sftp_public_key: '',

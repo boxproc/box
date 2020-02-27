@@ -1,11 +1,11 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, SelectValue } from 'types';
+import { SelectValue } from 'types';
 
-export interface AdminInstitutionsInfoPlain extends IdNamePair {}
-
-export interface AdminInstitutionsItem extends AdminInstitutionsInfoPlain {
+export interface AdminInstitutionsItem {
+  id: number;
+  institution_name: string;
   sftp_location: string;
   sftp_public_key: string;
   status: string | number;
@@ -16,7 +16,9 @@ export interface AdminInstitutionsItems {
   institutions: Array<AdminInstitutionsItem>;
 }
 
-export interface AdminInstitutionsItemPreparedPlain extends AdminInstitutionsInfoPlain {
+export interface AdminInstitutionsItemPreparedPlain {
+  id: number;
+  institutionName: string;
   sftpLocation: string;
   sftpPublicKey: string;
   masterInstitutionFlag: boolean;

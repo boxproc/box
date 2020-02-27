@@ -95,8 +95,8 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
           )}
           <Box width={isEditMode ? [7 / 15] : [2 / 3]} p="8px">
             <Field
-              id="name"
-              name="name"
+              id="institutionName"
+              name="institutionName"
               component={InputField}
               label="Name"
               placeholder="Enter Institution"

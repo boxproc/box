@@ -8,4 +8,4 @@ import { apiClient } from 'services';
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
-  apiClient.post(apiUrls.userInstitutions.GET_INSTITUTIONS);
+  apiClient.post(apiUrls.institutions.GET);

@@ -18,7 +18,7 @@ export const selectAdminInstitutionsOptions = createSelector(
   items => items && items.asMutable().map(item => {
     return {
       value: item.id,
-      label: item.name,
+      label: item.institution_name,
     };
   })
 );
@@ -35,5 +35,5 @@ export const selectAdminCurrentInstitution = createSelector(
 
 export const selectAdminCurrentInstitutionName = createSelector(
   selectAdminCurrentInstitution,
-  institution => institution && institution.name
+  institution => institution && institution.institutionName
 );

@@ -24,8 +24,8 @@ export const tableColumns = [
   {
     maxWidth: 300,
     Header: <TableHeader title="Name" />,
-    accessor: 'name',
-    Cell: (props: TCell<'name'>) => (
+    accessor: 'institutionName',
+    Cell: (props: TCell<'institutionName'>) => (
       <TableCell
         value={props.value}
       />
