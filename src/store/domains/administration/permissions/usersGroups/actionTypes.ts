@@ -1,5 +1,5 @@
 import {
-  AdminGroupPermissionDataResp,
+  AdminGroupPermissionData,
   AdminGroupPermissionUiItemsDataResp,
   AdminUserGroupMemberDataResp,
   AdminUsersGroupDataResp,
@@ -150,7 +150,7 @@ export interface GetAdminGroupPermissionsAction {
 }
 
 export interface GetAdminGroupPermissionsFulfilledAction {
-  readonly payload: AdminGroupPermissionDataResp;
+  readonly payload: AdminGroupPermissionData;
   readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_FULFILLED;
 }
 

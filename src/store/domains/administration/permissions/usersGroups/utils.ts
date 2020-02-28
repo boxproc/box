@@ -1,6 +1,6 @@
 import { permissionTypesCodes } from 'consts';
 
-import { AdminGroupPermissionItemEditable, AdminUsersGroupInfoEditable } from './types';
+import { AdminGroupPermissionFormValues, AdminUsersGroupInfoEditable } from './types';
 
 export const prepareAdminUsersGroupData =
   (data: Partial<AdminUsersGroupInfoEditable>) => {
@@ -8,24 +8,27 @@ export const prepareAdminUsersGroupData =
       return null;
     }
 
+    const { id, institutionId, name } = data;
+
     return {
-      id: data.id,
-      institution_id: data.institutionId && data.institutionId.value,
-      name: data.name,
+      id,
+      institution_id: institutionId && institutionId.value,
+      name,
     };
   };
 
 export const AdminGroupPermissionPreparedToSend =
-  (data: Partial<AdminGroupPermissionItemEditable>) => {
+  (data: Partial<AdminGroupPermissionFormValues>) => {
     if (!data) {
       return null;
     }
 
+    const { uiItems, userGroupId, permission } = data;
+    const preparedUiItems = uiItems.map(item => item.value);
+
     return {
-      user_group_id: data.userGroupId,
-      ui_item: data.uiItem && data.uiItem.value,
-      permission: data.permission
-        ? permissionTypesCodes.READ_WRITE
-        : permissionTypesCodes.READ_ONLY,
+      user_group_id: userGroupId,
+      ui_items: preparedUiItems,
+      permission: permission ? permissionTypesCodes.READ_WRITE : permissionTypesCodes.READ_ONLY,
     };
   };

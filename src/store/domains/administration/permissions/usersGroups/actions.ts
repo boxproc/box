@@ -19,8 +19,8 @@ import {
 } from './actionTypes';
 import * as api from './api';
 import {
-  AdminGroupPermissionItemEditable,
-  AdminGroupPermissionItemResp,
+  AdminGroupPermissionFormValues,
+  AdminGroupPermissionRequest,
   AdminUserGroupMembersDelete,
   AdminUserGroupMembersDeleteResp,
   AdminUsersGroupInfoEditable,
@@ -66,9 +66,9 @@ export type AddAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp
 export type HandleAddAdminActiveUsers = (data: Partial<AdminUserGroupMembersDelete>) =>
   Thunk<void>;
 
-export type AddAdminGroupPermissions = (data: Partial<AdminGroupPermissionItemResp>) =>
+export type AddAdminGroupPermissions = (data: Partial<AdminGroupPermissionRequest>) =>
   AddAdminGroupPermissionsAction;
-export type HandleAddAdminGroupPermissions = (data: Partial<AdminGroupPermissionItemEditable>) =>
+export type HandleAddAdminGroupPermissions = (data: Partial<AdminGroupPermissionFormValues>) =>
   Thunk<void>;
 
 export type UpdateAdminUsersGroup = (data: Partial<AdminUsersGroupItem>) =>

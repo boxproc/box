@@ -13,7 +13,7 @@ import { SelectValue } from 'types';
 
 interface EditGroupPermissionFormProps {
   uiItemsOptions: Array<SelectValue>;
-  selectedUiItem: SelectValue;
+  selectedUiItem: Array<SelectValue>;
   currentUserGroupId: number;
   isLoading: boolean;
   getUiItems: HandleGetAdminUiItems;
@@ -45,7 +45,7 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
   );
 
   const isDisabledButton = React.useMemo(
-    () => !selectedUiItem || isLoading,
+    () => !selectedUiItem || !selectedUiItem.length || isLoading,
     [selectedUiItem, isLoading]
   );
 
@@ -62,11 +62,12 @@ const EditGroupPermissionForm: React.FC<EditGroupPermissionFormPropsAllProps> = 
       <Flex alignItems="flex-start">
         <Box width={[1 / 2]} pb="15px" mr="15px">
           <Field
-            id="uiItem"
-            name="uiItem"
+            id="uiItems"
+            name="uiItems"
             placeholder="Select UI Item"
             component={SelectField}
             label="UI Item"
+            isMulti={true}
             isDisabled={isLoading}
             options={uiItemsOptions}
           />

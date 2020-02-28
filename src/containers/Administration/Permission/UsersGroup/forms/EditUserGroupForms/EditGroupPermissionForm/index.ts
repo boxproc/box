@@ -27,7 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   currentUserGroupId: selectActiveItemId(state),
   uiItemsOptions: selectAdminGroupPermissionsUiItems(state),
-  selectedUiItem: formSelector(state, 'uiItem'),
+  selectedUiItem: formSelector(state, 'uiItems'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

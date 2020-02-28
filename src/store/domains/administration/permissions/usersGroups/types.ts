@@ -40,28 +40,32 @@ export interface AdminUserGroupMemberDataResp {
   active_users: Array<AdminUserGroupMember>;
 }
 
-interface AdminGroupPermissionItemPlain {
-  permission: string;
-}
-
-export interface AdminGroupPermissionItemResp extends AdminGroupPermissionItemPlain {
-  user_group_id: number;
-  ui_item: string | number;
-}
-
-export interface AdminGroupPermissionItemEditable {
+export interface AdminGroupPermissionFormValues {
   userGroupId: number;
-  uiItem: SelectValue;
+  uiItems: Array<SelectValue>;
   permission: boolean;
 }
 
-export interface AdminGroupPermissionItem extends AdminGroupPermissionItemPlain {
-  userGroupId: number;
-  uiItem: string | number;
+export interface AdminGroupPermissionRequest {
+  permission: string;
+  user_group_id: number;
+  ui_items: Array<string | number>;
 }
 
-export interface AdminGroupPermissionDataResp {
-  group_permissions: Array<AdminGroupPermissionItemResp>;
+export interface AdminGroupPermissionItemData {
+  permission: string;
+  user_group_id: number;
+  ui_item: string;
+}
+
+export interface AdminGroupPermissionItem {
+  permission: string;
+  userGroupId: number;
+  uiItem: string;
+}
+
+export interface AdminGroupPermissionData {
+  group_permissions: Array<AdminGroupPermissionItemData>;
 }
 
 export interface AdminGroupPermissionUiItemResp {
@@ -88,6 +92,6 @@ export interface AdminUsersGroupState {
   usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
   userGroupMembers: ImmutableArray<AdminUserGroupMember>;
   allActiveUsers: ImmutableArray<AdminUserGroupMember>;
-  groupPermissions: ImmutableArray<AdminGroupPermissionItemResp>;
+  groupPermissions: ImmutableArray<AdminGroupPermissionItemData>;
   uiItems: ImmutableArray<AdminGroupPermissionUiItemResp>;
 }
