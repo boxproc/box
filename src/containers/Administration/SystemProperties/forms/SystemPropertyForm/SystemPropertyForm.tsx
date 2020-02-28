@@ -85,7 +85,6 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
               readOnly={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
-                formErrorUtil.isAlphaNumeric,
               ]}
             />
           </Box>
