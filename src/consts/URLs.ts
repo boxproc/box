@@ -28,17 +28,17 @@ export enum endpoints {
 }
 
 export enum dictionaries {
-  GET_COUNTRIES = 'ui/administration/dictionaries/countries/get',
-  GET_CURRENCIES = 'ui/administration/dictionaries/currencies/get',
-  GET_EVENTS = 'ui/administration/dictionaries/events/get',
-  GET_EVENT_DATA_ELEMS = 'ui/administration/dictionaries/event_data_elements/get',
-  GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses/get',
-  GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types/get',
-  GET_ENDPOINT_TYPES = 'ui/administration/endpoints/get_endpoint_types',
-  GET_INTERFACE_TYPES = 'ui/administration/interfaces/get_interface_types',
-  GET_STATEMENT_CYCLE_TYPES = 'ui/ledger/statements/get_statement_cycle_types',
-  GET_ACCOUNT_STATUSES = 'ui/administration/dictionaries/account_statuses/get',
-  GET_REPAYMENT_TYPES = 'ui/administration/dictionaries/repayment_types/get',
+  GET_COUNTRIES = 'ui/administration/dictionaries/countries',
+  GET_CURRENCIES = 'ui/administration/dictionaries/currencies',
+  GET_EVENTS = 'ui/administration/dictionaries/events',
+  GET_EVENT_DATA_ELEMS = 'ui/administration/dictionaries/event_data_elements',
+  GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses',
+  GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types',
+  GET_ENDPOINT_TYPES = 'ui/administration/endpoints',
+  GET_INTERFACE_TYPES = 'ui/administration/interfaces',
+  GET_STATEMENT_CYCLE_TYPES = 'ui/ledger/statements',
+  GET_ACCOUNT_STATUSES = 'ui/administration/dictionaries/account_statuses',
+  GET_REPAYMENT_TYPES = 'ui/administration/dictionaries/repayment_types',
 }
 
 export enum user {
