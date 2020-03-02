@@ -162,7 +162,6 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               readOnly={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
-                formErrorUtil.isURL,
               ]}
             />
           </Box>

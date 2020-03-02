@@ -4,7 +4,7 @@ import validator from 'validator';
 import { dateFormat } from 'consts';
 
 export const isRequired = (value: any) => {
-  if (!value) {
+  if (!value && value !== 0) {
     return true;
   }
 
@@ -17,6 +17,11 @@ export const isRequired = (value: any) => {
 export const isAlphaNumeric = (value: string) =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Can contain only letters and numbers'
+    : undefined;
+
+export const isAlphaNumericUnderscoresPoints = (value: string) =>
+  value && /[^a-zA-Z0-9._ ]/i.test(value)
+    ? 'Can contain only letters, numbers, underscores and points'
     : undefined;
 
 export const isAlpha = (value: string) =>
@@ -39,8 +44,8 @@ export const isMobilePhone = (value: string) =>
     ? undefined
     : 'Invalid phone number';
 
-export const isNumber = (value: string) => {
-  if (!value) {
+export const isNumber = (value: string | number) => {
+  if (!value && value !== 0) {
     return undefined;
   }
 
@@ -56,8 +61,8 @@ export const isPositive = (value: string) =>
     ? undefined
     : 'Must be greater than zero';
 
-export const isInteger = (value: string) => {
-  if (!value) {
+export const isInteger = (value: string | number) => {
+  if (!value && value !== 0) {
     return undefined;
   }
 
