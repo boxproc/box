@@ -13,10 +13,9 @@ export enum institutions {
 }
 
 export enum interfaces {
+  BASE = 'ui/administration/interfaces',
   GET = 'ui/administration/interfaces/get',
-  CREATE = 'ui/administration/interfaces/create',
-  DELETE = 'ui/administration/interfaces/delete',
-  UPDATE = 'ui/administration/interfaces/update',
+  GET_INTERFACE_TYPES = 'ui/administration/interfaces/types',
 }
 
 export enum endpoints {
@@ -35,7 +34,6 @@ export enum dictionaries {
   GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses',
   GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types',
   GET_ENDPOINT_TYPES = 'ui/administration/endpoints/get_endpoint_types',
-  GET_INTERFACE_TYPES = 'ui/administration/interfaces/get_interface_types',
   GET_STATEMENT_CYCLE_TYPES = 'ui/ledger/statements/get_statement_cycle_types',
   GET_ACCOUNT_STATUSES = 'ui/administration/dictionaries/account_statuses',
   GET_REPAYMENT_TYPES = 'ui/administration/dictionaries/repayment_types',
@@ -96,7 +94,7 @@ export enum systemMonitor {
 }
 
 export enum logData {
-  GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/get_log_file',
+  GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/log_file ',
   GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
   GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
 }
