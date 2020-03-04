@@ -15,15 +15,14 @@ export enum institutions {
 export enum interfaces {
   BASE = 'ui/administration/interfaces',
   GET = 'ui/administration/interfaces/get',
-  GET_INTERFACE_TYPES = 'ui/administration/interfaces/types',
+  GET_TYPES = 'ui/administration/interfaces/types',
 }
 
 export enum endpoints {
+  BASE = 'ui/administration/endpoints',
   GET = 'ui/administration/endpoints/get',
-  CREATE = 'ui/administration/endpoints/create',
-  DELETE = 'ui/administration/endpoints/delete',
-  UPDATE = 'ui/administration/endpoints/update',
-  GET_BY_INSTITUTION_ID = 'ui/administration/endpoints/get_by_institution',
+  GET_BY_INSTITUTION_ID = 'ui/administration/endpoints/id_and_name',
+  GET_TYPES = 'ui/administration/endpoints/types',
 }
 
 export enum dictionaries {
@@ -33,7 +32,6 @@ export enum dictionaries {
   GET_EVENT_DATA_ELEMS = 'ui/administration/dictionaries/event_data_elements',
   GET_CARD_STATUSES = 'ui/administration/dictionaries/card_statuses',
   GET_TRANSACTION_TYPES = 'ui/administration/dictionaries/transaction_types',
-  GET_ENDPOINT_TYPES = 'ui/administration/endpoints/get_endpoint_types',
   GET_STATEMENT_CYCLE_TYPES = 'ui/ledger/statements/get_statement_cycle_types',
   GET_ACCOUNT_STATUSES = 'ui/administration/dictionaries/account_statuses',
   GET_REPAYMENT_TYPES = 'ui/administration/dictionaries/repayment_types',
@@ -63,11 +61,9 @@ export enum userGroups {
 }
 
 export enum scheduler {
+  BASE = 'ui/administration/scheduler',
   GET = 'ui/administration/scheduler/get',
-  DELETE = 'ui/administration/scheduler/delete',
-  CREATE = 'ui/administration/scheduler/create',
-  UPDATE = 'ui/administration/scheduler/update',
-  GET_NAMES_BY_INSTITUTION_ID = 'ui/administration/scheduler/get_scheduler_name',
+  GET_NAMES_BY_INSTITUTION_ID = 'ui/administration/scheduler/name',
   SEND_ACTION = '/sys/scheduler/management',
 }
 
@@ -95,8 +91,8 @@ export enum systemMonitor {
 
 export enum logData {
   GET_INTERFACE_LOG_DATA = 'ui/administration/interfaces/log_file ',
-  GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/get_log_file',
-  GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/get_log_file',
+  GET_ENDPOINT_LOG_DATA = 'ui/administration/endpoints/log_file',
+  GET_SCHEDULER_LOG_DATA = 'ui/administration/scheduler/log_file',
 }
 
 export enum accounts {

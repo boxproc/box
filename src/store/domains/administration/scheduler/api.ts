@@ -16,17 +16,15 @@ export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.scheduler.DELETE, {
-    data: { id },
-  });
+  apiClient.delete(`${apiUrls.scheduler.BASE}/${id}`);
 
 export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.scheduler.CREATE, { data });
+  apiClient.post(apiUrls.scheduler.BASE, { data });
 
 export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(apiUrls.scheduler.UPDATE, { data });
+  apiClient.put(apiUrls.scheduler.BASE, { data });
 
 export const sendAdminSchedulerAction = (data: Partial<AdminSchedulerJobAction>) =>
   apiClient.post(apiUrls.scheduler.SEND_ACTION, { data });

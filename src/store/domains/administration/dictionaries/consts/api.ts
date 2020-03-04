@@ -16,11 +16,11 @@ export const getDictionaryCardStatuses = () =>
 
 export const getDictionaryEndpointTypes = () =>
   // throttleUtil.getDataAfter(dictionaryEndpointTypesData, 500);
-  apiClient.post(apiUrls.dictionaries.GET_ENDPOINT_TYPES);
+  apiClient.post(apiUrls.endpoints.GET_TYPES);
 
 export const getDictionaryInterfaceTypes = () =>
   // throttleUtil.getDataAfter(dictionaryInterfaceTypesData, 500);
-  apiClient.post(apiUrls.interfaces.GET_INTERFACE_TYPES);
+  apiClient.post(apiUrls.interfaces.GET_TYPES);
 
 export const getDictionaryStatementCycleTypes = () =>
   apiClient.post(apiUrls.dictionaries.GET_STATEMENT_CYCLE_TYPES);
