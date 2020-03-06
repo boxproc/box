@@ -59,9 +59,9 @@ export const isInteger = (value: string | number) => {
   const isNegative = Number(val) < 0;
   const isInt = validator.isInt(val);
 
-  if (isNegative) {
+  if (val && isNegative) {
     return 'Must be greater than zero';
-  } else if (!isInt) {
+  } else if (val && !isInt) {
     return 'Must be an integer';
   } else {
     return undefined;
