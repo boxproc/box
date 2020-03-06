@@ -4,11 +4,7 @@ import validator from 'validator';
 import { dateFormat } from 'consts';
 
 export const isRequired = (value: any) => {
-  if (!value && value !== 0) {
-    return true;
-  }
-
-  const val = value ? value.toString() : '';
+  const val = (value || (typeof value === 'number' && value === 0)) ? value.toString() : '';
   const isEmpty = validator.isEmpty(val, { ignore_whitespace: true });
 
   return isEmpty ? true : undefined;
@@ -45,11 +41,7 @@ export const isMobilePhone = (value: string) =>
     : 'Invalid phone number';
 
 export const isNumber = (value: string | number) => {
-  if (!value && value !== 0) {
-    return undefined;
-  }
-
-  const val = value ? value.toString() : '';
+  const val = (value || (typeof value === 'number' && value === 0)) ? value.toString() : '';
 
   return validator.isNumeric(val)
     ? undefined
@@ -62,11 +54,7 @@ export const isPositive = (value: string) =>
     : 'Must be greater than zero';
 
 export const isInteger = (value: string | number) => {
-  if (!value && value !== 0) {
-    return undefined;
-  }
-
-  const val = value ? value.toString() : '';
+  const val = (value || (typeof value === 'number' && value === 0)) ? value.toString() : '';
 
   const isNegative = Number(val) < 0;
   const isInt = validator.isInt(val);
