@@ -11,7 +11,7 @@ const snippets = [
   },
   {
     title: 'Function',
-    code: 'function functionName() {\n\xa0\xa0\xa0\xa0return ;\n}\nfunctionName();',
+    code: 'function functionName() {\n\xa0\xa0\xa0\xa0return ;\n}',
     shiftCharCount: 37,
   },
   {

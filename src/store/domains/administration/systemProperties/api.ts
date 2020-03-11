@@ -10,17 +10,15 @@ import { AdminSysPropFilterPrepared, EditableAdminSysPropPrepared } from './type
 
 export const deleteAdminSysProp = (id: number | string) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.systemProps.DELETE, {
-    data: { property_name: id },
-  });
+  apiClient.delete(`${apiUrls.systemProps.BASE}/${id}`);
 
 export const addAdminSysProp = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.systemProps.CREATE, { data });
+  apiClient.post(apiUrls.systemProps.BASE, { data });
 
 export const updateAdminSysProps = (data: EditableAdminSysPropPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.post(apiUrls.systemProps.UPDATE, { data });
+  apiClient.put(apiUrls.systemProps.BASE, { data });
 
 export const filterAdminSysProps = (data: AdminSysPropFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSysPropsItemsFilteredData, 500);

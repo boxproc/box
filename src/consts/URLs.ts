@@ -68,10 +68,8 @@ export enum scheduler {
 }
 
 export enum systemProps {
+  BASE = 'ui/administration/system_properties',
   GET = 'ui/administration/system_properties/get',
-  DELETE = 'ui/administration/system_properties/delete',
-  CREATE = 'ui/administration/system_properties/create',
-  UPDATE = 'ui/administration/system_properties/update',
 }
 
 export enum audit {
