@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemsConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import { setIsOpenFilter } from 'store/domains/utils';
@@ -85,7 +85,7 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = cardId =>
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
-          payload: { message: messagesConst.CARD_ACTIVATED },
+          payload: { message: 'Card was activated.' },
         }));
       },
       dispatch

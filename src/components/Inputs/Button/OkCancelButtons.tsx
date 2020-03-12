@@ -6,8 +6,6 @@ import styled from 'theme';
 
 import { Button, Hint } from 'components';
 
-import { messagesConst } from 'consts';
-
 interface WrapperProps {
   rightPosition?: boolean;
 }
@@ -57,8 +55,8 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   disabledOk = false,
   rightPosition = false,
   withCancelConfirmation = false,
-  cancelConfirmationText = messagesConst.UNSAVED_CHANGES,
-  cancelConfirmationTitle = messagesConst.CLOSE_MODAL_WINDOW,
+  cancelConfirmationText = 'You have unsaved changes.',
+  cancelConfirmationTitle = 'Close the window?',
   hideOk,
   hideCancel,
 }) => {

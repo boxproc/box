@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { getFormValues, reset as resetForm } from 'redux-form';
 
-import { basePath, formNamesConst, messagesConst, modalNamesConst, uiItemsConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { setIsOpenFilter } from 'store/domains/utils';
 import { LedgerId } from '../customers';
@@ -112,7 +112,7 @@ export const handleConvertTransactionToLoan: HandleConvertTransactionToLoan = da
           name: modalNamesConst.MESSAGE,
           payload: {
             title: 'Convert to Loan',
-            message: messagesConst.TRANSACTION_SUCCESSFULLY_CONVERTED,
+            message: 'Transaction is successfully converted.',
           },
         }));
         dispatch(resetForm(formNamesConst.TRANSACTION));

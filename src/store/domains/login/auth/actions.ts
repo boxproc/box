@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 
-import { basePath, messagesConst, modalNamesConst } from 'consts';
+import { basePath, modalNamesConst } from 'consts';
 
 import { closeModal, openModal } from 'store/domains/modals';
 import {
@@ -163,7 +163,7 @@ export const handleChangePassword: HandleChangePassword = data =>
         dispatch(closeModal(modalNamesConst.CHANGE_PASSWORD));
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
-          payload: { message: messagesConst.PASSWORD_CHANGED },
+          payload: { message: 'Password changed.' },
         }));
       },
       dispatch

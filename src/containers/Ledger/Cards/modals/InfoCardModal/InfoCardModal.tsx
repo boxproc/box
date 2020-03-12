@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, Hr, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { cardStatusesCodes, messagesConst, modalNamesConst, modalTypesConst } from 'consts';
+import { cardStatusesCodes, modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
@@ -85,8 +85,8 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
           onClick={handleOnCancel}
           text="Close"
           withConfirmation={isFormDirty}
-          confirmationTitle={messagesConst.CLOSE_MODAL_WINDOW}
-          confirmationText={messagesConst.UNSAVED_CHANGES}
+          confirmationTitle="Close the window?"
+          confirmationText="You have unsaved changes."
         />
       </Flex>
     </Modal>

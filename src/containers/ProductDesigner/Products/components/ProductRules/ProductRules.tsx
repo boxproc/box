@@ -8,7 +8,7 @@ import styled from 'theme';
 import { Button, HighlightCodeField, SelectField } from 'components';
 import { codeSnippetsContextMenuItems } from './codeSnippetsContextMenuItems';
 
-import { eventTypesCodeKeys, messagesConst } from 'consts';
+import { eventTypesCodeKeys } from 'consts';
 
 import {
   HandleFilterDictionaryEventDataElemsById,
@@ -334,8 +334,8 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                     isTabsTheme={true}
                     type="reset"
                     withConfirmation={dirty}
-                    confirmationTitle={messagesConst.SWITCH_TAB}
-                    confirmationText={messagesConst.UNSAVED_CHANGES}
+                    confirmationTitle="Switch the tab?'"
+                    confirmationText="You have unsaved changes."
                     onClick={() => handleGetRule('actionType', type)}
                   />
                 ))}

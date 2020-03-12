@@ -3,7 +3,7 @@ import React from 'react';
 import { Hr, Modal, OkCancelButtons } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 import {
   ResultLimitAdjustmentForm,
   ResultManualTransactionForm
@@ -56,7 +56,7 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
     <Modal
       name={modalName}
       type={modalTypesConst.EDIT_MODAL}
-      title={messagesConst.TRANSACTION_SUCCESSFULLY_COMPLETED}
+      title="Transaction is successfully completed."
       containerWidth={modalWidth}
     >
       {isLimitAdjustment

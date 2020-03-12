@@ -7,7 +7,7 @@ import styled from 'theme';
 import { Hint } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { messagesConst, modalNamesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 
 const TabsWrapper = styled.div`
   margin: 0 -15px 10px;
@@ -97,8 +97,8 @@ const Tabs: React.FC<TabsProps> = ({
                   name: modalNamesConst.CONFIRMATION,
                   payload: {
                     confirmationAction: () => setActiveTabIndex(i),
-                    confirmationTitle: messagesConst.SWITCH_TAB,
-                    confirmationText: messagesConst.UNSAVED_CHANGES,
+                    confirmationTitle: 'Switch the tab?',
+                    confirmationText: 'You have unsaved changes.',
                   },
                 })
                 : setActiveTabIndex(i);

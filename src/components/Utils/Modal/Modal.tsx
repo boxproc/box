@@ -7,7 +7,7 @@ import styled from 'theme';
 import { T2 } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { messagesConst, modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
@@ -112,8 +112,8 @@ const Modal: React.FC<ModalProps> = ({
         name: modalNamesConst.CONFIRMATION,
         payload: {
           confirmationAction: () => closeModal(name),
-          confirmationTitle: messagesConst.CLOSE_MODAL_WINDOW,
-          confirmationText: messagesConst.UNSAVED_CHANGES,
+          confirmationTitle: 'Close the window?',
+          confirmationText: 'You have unsaved changes.',
         },
       })
       : () => closeModal(name),
