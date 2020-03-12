@@ -1,17 +1,15 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 import { AdminInterfaceFilterPrepared, AdminInterfaceItem } from './types';
 
 export const addAdminInterface = (data: Partial<AdminInterfaceItem>) =>
-  apiClient.post(apiUrls.interfaces.BASE, { data });
+  apiClient.post('ui/administration/interfaces', { data });
 
 export const deleteAdminInterface = (id: number) =>
-  apiClient.delete(`${apiUrls.interfaces.BASE}/${id}`);
+  apiClient.delete(`ui/administration/interfaces/${id}`);
 
 export const updateAdminInterface = (data: Partial<AdminInterfaceItem>) =>
-  apiClient.put(apiUrls.interfaces.BASE, { data });
+  apiClient.put('ui/administration/interfaces', { data });
 
 export const filterAdminInterface = (data: Partial<AdminInterfaceFilterPrepared>) =>
-  apiClient.post(apiUrls.interfaces.GET, { data });
+  apiClient.post('ui/administration/interfaces/get', { data });

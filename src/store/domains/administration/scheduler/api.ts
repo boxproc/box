@@ -1,5 +1,3 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 // import {
@@ -12,25 +10,25 @@ import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobActi
 
 export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
   // throttleUtil.getDataAfter(adminSchedulerData, 500);
-  apiClient.post(apiUrls.scheduler.GET, { data });
+  apiClient.post('ui/administration/scheduler/get', { data });
 
 export const deleteAdminSchedulerJob = (id: string | number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.delete(`${apiUrls.scheduler.BASE}/${id}`);
+  apiClient.delete(`ui/administration/scheduler/${id}`);
 
 export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.scheduler.BASE, { data });
+  apiClient.post('ui/administration/scheduler', { data });
 
 export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.put(apiUrls.scheduler.BASE, { data });
+  apiClient.put('ui/administration/scheduler', { data });
 
 export const sendAdminSchedulerAction = (data: Partial<AdminSchedulerJobAction>) =>
-  apiClient.post(apiUrls.scheduler.SEND_ACTION, { data });
+  apiClient.post('sys/scheduler/management', { data });
 
 export const getSchedulerNamesByInstitutionId = (id: number | string) =>
   //  throttleUtil.getDataAfter(schedulerNames, 100);
-  apiClient.post(apiUrls.scheduler.GET_NAMES_BY_INSTITUTION_ID, {
+  apiClient.post('ui/administration/scheduler/name', {
     data: { institution_id: id },
   });

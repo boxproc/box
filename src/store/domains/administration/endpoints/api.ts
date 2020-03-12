@@ -1,22 +1,20 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 import { AdminEndpointFilterPrepared, AdminEndpointItem } from './types';
 
 export const filterAdminEndpoints = (data: Partial<AdminEndpointFilterPrepared>) =>
-  apiClient.post(apiUrls.endpoints.GET, { data });
+  apiClient.post('ui/administration/endpoints/get', { data });
 
 export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
-  apiClient.post(apiUrls.endpoints.BASE, { data });
+  apiClient.post('ui/administration/endpoints', { data });
 
 export const deleteAdminEndpoint = (id: number) =>
-  apiClient.delete(`${apiUrls.endpoints.BASE}/${id}`);
+  apiClient.delete(`ui/administration/endpoints'${id}`);
 
 export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
-  apiClient.put(apiUrls.endpoints.BASE, { data });
+  apiClient.put('ui/administration/endpoints', { data });
 
 export const getEndpointsByInstitutionId = (id: number | string) =>
-  apiClient.post(apiUrls.endpoints.GET_BY_INSTITUTION_ID, {
+  apiClient.post('ui/administration/endpoints/id_and_name', {
     data: { institution_id: id },
   });

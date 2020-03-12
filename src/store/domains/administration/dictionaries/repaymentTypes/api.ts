@@ -8,4 +8,4 @@ import { throttleUtil } from 'utils';
 
 export const getDictionaryRepaymentTypes = () =>
   throttleUtil.getDataAfter(dictionaryRepaymentTypesData, 500);
-  // apiClient.post(dictionariesURLs.GET_REPAYMENT_TYPES);
+  // apiClient.post('ui/administration/dictionaries/repayment_types');

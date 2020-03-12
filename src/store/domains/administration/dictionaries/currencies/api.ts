@@ -1,5 +1,3 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 // import { dictionaryCurrenciesData } from './mock';
@@ -8,4 +6,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryCurrencies = () =>
   // throttleUtil.getDataAfter(dictionaryCurrenciesData, 500);
-  apiClient.post(apiUrls.dictionaries.GET_CURRENCIES);
+  apiClient.post('ui/administration/dictionaries/currencies');

@@ -1,20 +1,19 @@
-import { apiUrls } from 'consts';
 import { apiClient } from 'services';
 
 import { LedgerId } from '../customers';
 import { LedgerCardIdsPrepared, LedgerCardsFilter } from './types';
 
 export const filterLedgerCards = (data: Partial<LedgerCardsFilter>) =>
-  apiClient.post(apiUrls.cards.GET, { data });
+  apiClient.post('ui/ledger/cards/get', { data });
 
 export const activateLedgerCard = (cardId: number) =>
-  apiClient.post(apiUrls.cards.ACTIVATE_CARD, {
+  apiClient.post('ui/ledger/cards/activate_card', {
     data: { card_id: cardId },
   });
 
 export const changeLedgerCardStatus = (data: LedgerCardIdsPrepared) =>
-  apiClient.post(apiUrls.cards.CHANGE_STATUS, { data });
+  apiClient.post('ui/ledger/cards/change_status', { data });
 
 export const filterLedgerCardsById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
-  apiClient.post(apiUrls.cards.GET, { data });
+  apiClient.post('ui/ledger/cards/get', { data });

@@ -1,5 +1,3 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 // import { adminInstitutionsItems, successResponseStatus } from './mock';
@@ -10,16 +8,16 @@ import { AdminInstitutionsItem } from './types';
 
 export const getAdminInstitutions = () =>
   // throttleUtil.getDataAfter(adminInstitutionsItems, 500);
-  apiClient.post(apiUrls.institutions.GET);
+  apiClient.post('ui/institutions/get');
 
 export const addAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.institutions.BASE, { data });
+  apiClient.post('ui/institutions', { data });
 
 export const deleteAdminInstitution = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.delete(`${apiUrls.institutions.BASE}/${id}`);
+  apiClient.delete(`ui/institutions/${id}`);
 
 export const updateAdminInstitution = (data: Partial<AdminInstitutionsItem>) =>
   // throttleUtil.getDataAfter(successResponseStatus, 100);
-  apiClient.put(apiUrls.institutions.BASE, { data });
+  apiClient.put('ui/institutions', { data });

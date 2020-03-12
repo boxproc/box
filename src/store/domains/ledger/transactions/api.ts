@@ -1,4 +1,3 @@
-import { apiUrls } from 'consts';
 import { apiClient } from 'services';
 
 import { LedgerId } from '../customers';
@@ -12,12 +11,12 @@ import {
 
 export const filterLedgerTransactions = (data: Partial<LedgerTransactionsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerTransactionsFilteredItems, 500);
-  apiClient.post(apiUrls.transactions.GET, { data });
+  apiClient.post('ui/ledger/transactions/get', { data });
 
 export const filterLedgerTransactionsById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
-  apiClient.post(apiUrls.transactions.GET, { data });
+  apiClient.post('ui/ledger/transactions/get', { data });
 
 export const convertTransactionToLoan =
   (data: Partial<LedgerConvertTransactionToLoanItemPrepared>) =>
-    apiClient.post(apiUrls.transactions.CONVERT_TO_LOAN, { data });
+    apiClient.post('ui/ledger/transactions/convert_to_loan', { data });

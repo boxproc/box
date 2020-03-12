@@ -1,8 +1,5 @@
-import * as apiUrls from './URLs';
-
 export const basePath = '/ui/';
 
-export { apiUrls };
 export * from './uiItems';
 export * from './formNames';
 export * from './modalNames';

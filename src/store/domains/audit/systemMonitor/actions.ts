@@ -1,4 +1,4 @@
-import { apiUrls, modalNamesConst, systemMonitorTables } from 'consts';
+import { modalNamesConst, systemMonitorTables } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import {
@@ -70,19 +70,19 @@ const tablesConfig = [
   {
     name: systemMonitorTables.INTERFACES,
     action: getSystemMonitorInterfaces,
-    apiLogPathName: apiUrls.logData.GET_INTERFACE_LOG_DATA,
+    apiLogPathName: 'ui/administration/interfaces/log_file',
     idName: 'interface_id',
   },
   {
     name: systemMonitorTables.ENDPOINTS,
     action: getSystemMonitorEndpoints,
-    apiLogPathName: apiUrls.logData.GET_ENDPOINT_LOG_DATA,
+    apiLogPathName: 'ui/administration/endpoints/log_file',
     idName: 'endpoint_id',
   },
   {
     name: systemMonitorTables.SCHEDULER_JOBS,
     action: getSystemMonitorScheduler,
-    apiLogPathName: apiUrls.logData.GET_SCHEDULER_LOG_DATA,
+    apiLogPathName: 'ui/administration/scheduler/log_file',
     idName: 'scheduler_id',
   },
   {

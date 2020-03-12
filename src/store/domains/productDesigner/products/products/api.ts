@@ -1,5 +1,3 @@
-import { apiUrls } from 'consts';
-
 import { apiClient } from 'services';
 
 // import {
@@ -21,40 +19,40 @@ import {
 
 export const getInstitutionProducts = (id: number | string) =>
   // throttleUtil.getDataAfter(institutionProducts, 500);
-  apiClient.post(apiUrls.products.GET_INSTITUTIONS_PRODUCTS, {
+  apiClient.post('ui/product_designer/products/get_by_institution', {
     data: { institution_id: id },
   });
 
 export const getProduct = (id: number) =>
   // throttleUtil.getDataAfter(productData, 500);
-  apiClient.post(apiUrls.products.GET_PRODUCT, {
+  apiClient.post('ui/product_designer/products/get_product_by_id', {
     data: { id },
   });
 
 export const getProductDetails = (id: number) =>
   // throttleUtil.getDataAfter(productDetailsData, 500);
-  apiClient.post(apiUrls.products.GET_PRODUCTS_DETAILS, {
+  apiClient.post('ui/product_designer/products/extensions/get', {
     data: { id },
   });
 
 export const deleteProduct = (id: number) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.products.DELETE_PRODUCT, {
+  apiClient.post('ui/product_designer/products/delete', {
     data: { id },
   });
 
 export const filterProducts = (data: ProductFilterPrepared) =>
   // throttleUtil.getDataAfter(productItemsFilteredData, 500);
-  apiClient.post(apiUrls.products.GET_PRODUCTS, { data });
+  apiClient.post('ui/product_designer/products/get', { data });
 
 export const addProduct = (data: NewProductPrepared) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.products.CREATE_PRODUCT, { data });
+  apiClient.post('ui/product_designer/products/create', { data });
 
 export const updateProduct = (data: ProductItemResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.products.UPDATE_PRODUCT, { data });
+  apiClient.post('ui/product_designer/products/update', { data });
 
 export const updateProductDetails = (data: ProductItemDetailsResp) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post(apiUrls.products.UPDATE_DETAILS, { data });
+  apiClient.post('ui/product_designer/products/extensions/update', { data });
