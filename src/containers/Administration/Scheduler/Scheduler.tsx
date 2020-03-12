@@ -6,7 +6,6 @@ import { withModal, WithModalProps } from 'HOCs';
 import {
   iconNamesConst,
   modalNamesConst,
-  schedulerTasksConsts,
   systemMonitorTables,
 } from 'consts';
 
@@ -26,6 +25,29 @@ import {
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
 import { SelectValue } from 'types';
+
+const schedulerTasksConsts = {
+  EXECUTE_TASK: {
+    TASK_COMMAND: 'execute_task',
+    NAME: 'Execute now',
+  },
+  START: {
+    TASK_COMMAND: 'start',
+    NAME: 'Start job',
+  },
+  STOP: {
+    TASK_COMMAND: 'stop',
+    NAME: 'Stop job',
+  },
+  RESUME: {
+    TASK_COMMAND: 'resume',
+    NAME: 'Resume job',
+  },
+  PAUSE: {
+    TASK_COMMAND: 'pause',
+    NAME: 'Pause job',
+  },
+};
 
 interface SchedulerProps extends WithModalProps {
   schedulerJobsItems: Array<AdminSchedulerItemPrepared>;
@@ -168,9 +190,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
 
   const initialFilterValues = React.useMemo(
     () => {
-      return {
-        institutionId: institutionsOptions[0],
-      };
+      return { institutionId: institutionsOptions[0] };
     },
     [institutionsOptions]
   );
