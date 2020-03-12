@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid';
 
 import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
 
-import percent from 'resources/icons/percent.svg';
+import percent from 'resources/images/percent.svg';
 
 import { iconNamesConst } from 'consts';
 

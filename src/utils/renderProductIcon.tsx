@@ -6,10 +6,10 @@ import styled from 'theme';
 
 import { productTypesCodes } from 'consts';
 
-import card from 'resources/icons/card.svg';
-import creditCard from 'resources/icons/creditCard.svg';
-import money from 'resources/icons/money.svg';
-import percent from 'resources/icons/percent.svg';
+import card from 'resources/images/card.svg';
+import creditCard from 'resources/images/creditCard.svg';
+import money from 'resources/images/money.svg';
+import percent from 'resources/images/percent.svg';
 
 const Wrapper = styled(Box)`
   min-width: 24px;

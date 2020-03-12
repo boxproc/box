@@ -28,7 +28,8 @@ import { Smartphone as SmartphoneIcon } from 'styled-icons/material/Smartphone';
 import { Stop as StopIcon } from 'styled-icons/material/Stop';
 import { Warning as WarningIcon } from 'styled-icons/material/Warning';
 import { LogoutCircle as LogOutIcon } from 'styled-icons/remix-line/LogoutCircle';
-import { CheckedBoxIcon, CheckedRadioIcon, UncheckedBoxIcon, UncheckedRadioIcon } from './Icons';
+import { CheckedBoxIcon, UncheckedBoxIcon } from './Checkbox';
+import { CheckedRadioIcon, UncheckedRadioIcon } from './RadioButton';
 
 export {
   FilterIcon,
