@@ -1,42 +1,20 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import Editor from 'react-simple-code-editor';
-
-import jslint from 'libs/jslint';
 
 import { highlight, languages } from 'prismjs/components/prism-core';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
-import styled from 'theme';
-
 import './prism.css';
 
-import { ContextMenuList, WarningIcon } from 'components';
+import { ContextMenuList } from 'components';
 
 import { EditorWrapper } from './EditorWrapper';
 
 import { ContextMenuItemProps, ContextSubMenuType } from 'types';
-
-const WarningsCount = styled.div`
-  display: flex;
-  align-items: center;
-  padding-bottom: 3px;
-  font-size: 11px;
-  color: ${({ theme }) => theme.colors.darkGray};
-  user-select: text;
-
-  .text {
-    margin-left: 5px;
-  }
-`;
-
-const WarningIconWrapper = styled(WarningIcon)`
-  color: ${({ theme }) => theme.colors.normalAccent};
-`;
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   fontSize?: number;
@@ -50,7 +28,6 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   onContextMenuClick?: () => void;
   setCursorCurrentPosition?: () => void;
   menuId?: string;
-  checkJSSyntax?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
@@ -70,11 +47,8 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
   onContextMenuClick,
   setCursorCurrentPosition,
   menuId,
-  checkJSSyntax,
   readOnly,
 }) => {
-  const [codeWarnings, setCodeWarnings] = React.useState([]);
-
   React.useEffect(
     () => {
       const wrapper = wrapperRef.current;
@@ -84,30 +58,6 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
       }
     },
     [isScrollbarBottom]
-  );
-
-  React.useEffect(
-    () => {
-      const warnings = jslint(value.toString()).warnings;
-      const warningsList = warnings.map((warning: { message: string }) => warning.message);
-
-      if (checkJSSyntax) {
-        setCodeWarnings(warningsList);
-      }
-    },
-    [value, checkJSSyntax]
-  );
-
-  const warningsCount = React.useMemo(
-    () => codeWarnings
-      && codeWarnings.length
-      && `${codeWarnings.length} warning(s)`,
-    [codeWarnings]
-  );
-
-  const preparedWarnings = React.useMemo(
-    () => codeWarnings.join('\n'),
-    [codeWarnings]
   );
 
   const wrapperRef = React.useRef(null);
@@ -169,21 +119,6 @@ const HighlightCode: React.FC<HighlightCodeProps> = ({
           />
         )}
       </EditorWrapper>
-      {!readOnly && codeWarnings && codeWarnings.length && (
-        <Box mt="5px">
-          <WarningsCount>
-            <WarningIconWrapper size="12" />
-            <div className="text">{warningsCount}</div>
-          </WarningsCount>
-          <HighlightCode
-            value={preparedWarnings}
-            height="60px"
-            minHeight="60px"
-            padding={5}
-            isScrollbarBottom={true}
-          />
-        </Box>
-      )}
     </React.Fragment>
   );
 };
