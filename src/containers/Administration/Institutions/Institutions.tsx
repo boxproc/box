@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, yesNoTypesCodes } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -11,6 +11,7 @@ import {
   HandleGetAdminInstitutions,
   ResetInstitutions,
 } from 'store/domains';
+import { storageUtil } from 'utils';
 
 export interface InstitutionsProps {
   institutionsData: Array<AdminInstitutionsItemPrepared>;
@@ -55,13 +56,22 @@ const Institutions: React.FC<InstitutionsProps> = ({
     [deleteInstitution, currentInstitutionName, currentInstitutionId, isReadOnly]
   );
 
+  const isMasterInstitution = React.useMemo(
+    () => {
+      const userData = storageUtil.getUserData();
+
+      return userData && userData.changeProfileAllowedFlag === yesNoTypesCodes.YES;
+    },
+    []
+  );
+
   return (
     <PageTemplate
       title="Institutions"
       data={institutionsData}
       columns={tableColumns}
       isDownloadButton={true}
-      newModalName={modalNamesConst.ADD_INSTITUTION}
+      newModalName={isMasterInstitution && modalNamesConst.ADD_INSTITUTION}
       editModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
       isLoading={isLoading}
