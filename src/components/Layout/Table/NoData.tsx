@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styledComponents from 'styled-components';
+import * as styledComponents from 'theme';
 
 const { default: styled } = styledComponents;
 

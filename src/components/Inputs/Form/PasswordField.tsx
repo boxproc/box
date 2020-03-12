@@ -1,7 +1,6 @@
 import React from 'react';
-import { css } from 'styled-components';
 
-import styled from 'theme';
+import styled, { css } from 'theme';
 
 import { EyeIcon, EyeSlashIcon } from 'components';
 
@@ -33,7 +32,7 @@ const iconStyles = css`
   transition: all .1s linear;
 
   &:hover {
-  color: ${({ theme }) => theme.colors.normalAccent}
+    color: ${({ theme }) => theme.colors.normalAccent}
   }
 `;
 

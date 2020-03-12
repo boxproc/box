@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box } from '@rebass/grid';
 
-import styled from 'styled-components';
+import styled from 'theme';
 
 import { SelectField } from 'components';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'styled-components';
+import styled from 'theme';
 
 import { Button, CircleList } from 'components';
 

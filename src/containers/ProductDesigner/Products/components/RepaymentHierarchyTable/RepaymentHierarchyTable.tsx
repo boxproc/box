@@ -3,7 +3,7 @@ import { CellInfo } from 'react-table';
 
 import { Box, Flex } from '@rebass/grid';
 
-import styled from 'styled-components';
+import styled from 'theme';
 
 import {
   Button,
