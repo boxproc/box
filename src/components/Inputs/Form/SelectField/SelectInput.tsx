@@ -7,7 +7,7 @@ import { OptionProps } from 'react-select/lib/components/Option';
 import { Props as SelectProps } from 'react-select/lib/Select';
 
 import styled from 'theme';
-import { scrollbarCss } from 'theme/scrollbarCss';
+import { scrollbarCss } from 'theme/styles';
 
 import { ChevronDownIcon, CloseIcon } from 'components';
 import MultiSelectOption from './Option';

@@ -4,6 +4,7 @@ export interface ThemeProps {
 
 export default interface Theme {
   fonts: {
+    normal: string,
     decorate: string;
     code: string;
   };
@@ -35,6 +36,7 @@ export default interface Theme {
 
 export const theme: Theme = {
   fonts: {
+    normal: 'Roboto, sans-serif',
     decorate: 'Raleway, sans-serif',
     code: 'Roboto Mono, monospace',
   },

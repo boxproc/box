@@ -1,8 +1,7 @@
-﻿import styled from 'theme';
+﻿import 'react-table/react-table.css';
 
-import 'react-table/react-table.css';
-
-import { scrollbarCss } from 'theme/scrollbarCss';
+import styled from 'theme';
+import { scrollbarCss } from 'theme/styles';
 
 interface TableStyledProps {
   activeRowIndex: number;
@@ -17,7 +16,7 @@ export const TableStyled = styled.div<TableStyledProps>`
     border: none;
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
     overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
-    ${scrollbarCss}
+    ${scrollbarCss};
 
     ${({ minHeight }) => minHeight && `
       min-height: ${minHeight}px;

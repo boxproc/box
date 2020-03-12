@@ -4,7 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box } from '@rebass/grid';
 
 import styled from 'theme';
-import { highlightCss } from 'theme/highlightCss';
+import { highlightCss } from 'theme/styles';
 
 import {
   Button,

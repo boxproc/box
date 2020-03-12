@@ -1,5 +1,5 @@
 import styled from 'theme';
-import { scrollbarCss } from 'theme/scrollbarCss';
+import { scrollbarCss } from 'theme/styles';
 
 interface WrapperProps {
   height?: string;

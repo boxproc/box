@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'theme';
 
-import { ScrollDisable } from 'theme/scrollbarCss';
+import { ScrollDisable } from 'theme/styles';
 
 import { modalNamesConst } from 'consts';
 

@@ -1,5 +1,5 @@
 import styled from 'theme';
-import { highlightCss } from 'theme/highlightCss';
+import { highlightCss } from 'theme/styles';
 
 interface HrProps {
   accentColor?: boolean;

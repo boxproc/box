@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 
 import { theme, ThemeProvider } from 'theme';
-import { GlobalStyles } from 'theme/global';
+import { GlobalStyles } from 'theme/styles';
 
 import App from 'containers';
 

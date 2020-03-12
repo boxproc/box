@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'theme';
-import { scrollbarCss } from 'theme/scrollbarCss';
+import { scrollbarCss } from 'theme/styles';
 
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
