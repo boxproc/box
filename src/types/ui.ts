@@ -1,4 +1,4 @@
-import { SelectValue } from 'types';
+import { SelectValue } from './common';
 
 export interface ContextMenuItemProps {
   name: string | number;

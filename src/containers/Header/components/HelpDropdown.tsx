@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { Dropdown, DropdownOption, ExternalLink, HelpCircleIcon } from 'components';
 
-import { basePath, linksConst } from 'consts';
+import { basePath } from 'consts';
 
 import { UiItemPrepared } from 'store/domains';
 
@@ -67,7 +67,7 @@ const HelpDropdown: React.FC<HelpDropdownProps> = ({
     >
       <DropdownOption>
         <ExternalLink
-          link={linksConst.BPS_BASE}
+          link="https://www.boxprocessing.com/confluence/display/bps/box+ui"
           text="BOX-UI"
         />
       </DropdownOption>
