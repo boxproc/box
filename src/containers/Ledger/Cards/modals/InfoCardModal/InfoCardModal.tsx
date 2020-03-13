@@ -81,7 +81,6 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
       <Hr />
       <Flex justifyContent="flex-end">
         <Button
-          rightPosition={true}
           onClick={handleOnCancel}
           text="Close"
           withConfirmation={isFormDirty}

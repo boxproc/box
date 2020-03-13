@@ -54,7 +54,6 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
         <OkCancelButtons
           okText="Log in"
           disabledOk={isChangingProfile || isLoadingUsers || pristine}
-          rightPosition={true}
           onCancel={onCancel}
         />
       </form>

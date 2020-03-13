@@ -44,7 +44,6 @@ const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         disabledOk={pristine}
         hideOk={isReadOnly}
       />

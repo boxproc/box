@@ -265,7 +265,6 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
         hideOk={isReadOnly}

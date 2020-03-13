@@ -68,7 +68,6 @@ const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> 
         okText="View transaction"
         cancelText="Close"
         focusedButton="ok"
-        rightPosition={true}
         onOk={handleGetTransaction}
         onCancel={handleOnCancel}
         hideOk={isLimitAdjustment}

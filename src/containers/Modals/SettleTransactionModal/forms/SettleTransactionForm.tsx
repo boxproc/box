@@ -81,7 +81,6 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
       <OkCancelButtons
         okText="Settle"
         disabledOk={isDisabled || pristine}
-        rightPosition={true}
         onCancel={onCancel}
         withCancelConfirmation={dirty}
       />

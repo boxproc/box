@@ -72,7 +72,6 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
       />

@@ -450,7 +450,6 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
         hideOk={isReadOnly}

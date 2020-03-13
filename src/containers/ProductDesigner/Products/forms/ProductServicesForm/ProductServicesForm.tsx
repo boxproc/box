@@ -75,7 +75,6 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
         cancelText="Close"
         withCancelConfirmation={dirty}
         onCancel={onCancel}
-        rightPosition={true}
         disabledOk={pristine}
         hideOk={isReadOnly}
       />

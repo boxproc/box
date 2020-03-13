@@ -63,7 +63,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       <OkCancelButtons
         onCancel={handleOnCancel}
         onOk={handleConfirm}
-        rightPosition={true}
       />
     </Modal>
   );

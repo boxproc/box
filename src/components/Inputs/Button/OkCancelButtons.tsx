@@ -1,18 +1,13 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
-
 import styled from 'theme';
 
 import { Button, Hint } from 'components';
 
-interface WrapperProps {
-  rightPosition?: boolean;
-}
-
-const Wrapper = styled(Flex) <WrapperProps>`
+const Wrapper = styled.div`
+  display: flex;
   align-items: center;
-  justify-content: ${({ rightPosition }) => rightPosition ? 'flex-end' : 'flex-start'};
+  justify-content: flex-end;
 
   .btn-wrapper {
     position: relative;
@@ -34,7 +29,6 @@ interface OkCancelButtonsProps {
   cancelIconName?: string;
   hintOk?: string;
   hintCancel?: string;
-  rightPosition?: boolean;
   withCancelConfirmation?: boolean;
   cancelConfirmationText?: string;
   cancelConfirmationTitle?: string;
@@ -53,7 +47,6 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   hintCancel,
   disabledCancel = false,
   disabledOk = false,
-  rightPosition = false,
   withCancelConfirmation = false,
   cancelConfirmationText = 'You have unsaved changes.',
   cancelConfirmationTitle = 'Close the window?',
@@ -71,7 +64,7 @@ const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
   );
 
   return (
-    <Wrapper rightPosition={rightPosition} >
+    <Wrapper>
       {!hideOk && (
         <div className="btn-wrapper">
           <Button

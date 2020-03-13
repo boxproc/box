@@ -78,7 +78,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
         <OkCancelButtons
           disabledOk={pristine}
           okText="Save"
-          rightPosition={true}
           onCancel={onCancel}
         />
       </form>

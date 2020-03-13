@@ -36,7 +36,6 @@ const AddUserGroupForm: React.FC<AddUserGroupFormPropsAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         withCancelConfirmation={dirty}
         disabledOk={pristine}
       />

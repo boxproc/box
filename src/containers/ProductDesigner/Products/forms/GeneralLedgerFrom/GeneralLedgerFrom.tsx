@@ -44,7 +44,6 @@ const GeneralLedgerFrom: React.FC<GeneralLedgerFromAllProps> = ({
         okText="Save"
         cancelText="Close"
         onCancel={onCancel}
-        rightPosition={true}
         disabledOk={pristine}
         hideOk={isReadOnly}
       />

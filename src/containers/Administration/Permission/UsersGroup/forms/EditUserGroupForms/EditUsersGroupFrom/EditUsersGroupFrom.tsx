@@ -43,7 +43,6 @@ const EditUsersGroupFrom: React.FC<EditUsersGroupFromPropsAllProps> = ({
         cancelText="Close"
         disabledOk={pristine}
         onCancel={onCancel}
-        rightPosition={true}
         withCancelConfirmation={dirty}
         hideOk={isReadOnly}
       />

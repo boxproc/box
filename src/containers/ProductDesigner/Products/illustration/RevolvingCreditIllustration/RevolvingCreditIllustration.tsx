@@ -92,7 +92,6 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
         <Button
           text="Close"
           onClick={onCancel}
-          rightPosition={true}
           withCancelConfirmation={dirty}
         />
       </Flex>

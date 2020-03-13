@@ -119,7 +119,6 @@ const LoanIllustration: React.FC<IllustrationProductProps> = ({
         <Button
           text="Close"
           onClick={onCancel}
-          rightPosition={true}
         />
       </Flex>
     </React.Fragment>
