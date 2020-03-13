@@ -16,4 +16,4 @@ export const filterAdminUsers = (data: Partial<UsersFilterPrepared>) =>
   apiClient.post('ui/administration/users/get', { data });
 
 export const getAdminAccessUsers = () =>
-  apiClient.post('ui/administration/permissions/administrator/get');
+  apiClient.post('ui/administration/users/get_change_allowed');

@@ -34,7 +34,7 @@ export const enterAuthKey = (data: AuthCode) =>
   apiClient.post('ui/auth/login', { data });
 
 export const changeAdminProfile = (data: AuthUserId) =>
-  apiClient.post('ui/administration/permissions/administrator/change_profile', { data });
+  apiClient.put('ui/administration/users/change_profile', { data });
 
 export const changePassword = (data: Partial<ChangePasswordDataPrepared>) =>
   apiClient.put('ui/administration/users/change_password', { data });

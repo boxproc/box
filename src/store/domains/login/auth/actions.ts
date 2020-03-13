@@ -142,7 +142,7 @@ export const handleChangeAdminProfile: HandleChangeAdminProfile = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(changeAdminProfile({ user_id: data.username.value }));
+        await dispatch(changeAdminProfile({ id: data.username.value }));
 
         const state = getState();
         setUserDataToStorage(selectLoginData(state), true);

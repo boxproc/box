@@ -13,7 +13,7 @@ export interface AuthUsername {
 }
 
 export interface AuthUserId {
-  user_id: number | string;
+  id: number | string;
 }
 
 export interface AuthConfirm {
