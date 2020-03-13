@@ -128,8 +128,6 @@ const Statements: React.FC<StatementsProps> = ({
             >
               <Button
                 iconName={iconNamesConst.FILE_PDF}
-                text=""
-                iconSize="22"
                 onClick={() => handleClickOnPdfReportButton(cellInfo.original.id)}
                 title="Open pdf statement"
                 disabled={isLoadingStatement}

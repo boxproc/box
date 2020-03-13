@@ -2,7 +2,7 @@ import React from 'react';
 import { MenuItem } from 'react-contextmenu';
 import { ContextMenuItemProps } from 'types';
 
-import { renderIcon } from './renderIcon';
+import { icons } from './icons';
 
 interface MenuItemProps {
   key?: number;
@@ -37,7 +37,7 @@ const ContextMenuItem: React.FC<MenuItemProps> = ({
     >
       <div className="item">
         {item.icon && (
-          <span className="icon">{renderIcon(item.icon)}</span>
+          <span className="icon">{icons[item.icon]}</span>
         )}
         <span>
           {item.name}

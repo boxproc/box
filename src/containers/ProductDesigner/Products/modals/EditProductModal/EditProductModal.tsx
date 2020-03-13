@@ -3,11 +3,9 @@ import React from 'react';
 import { Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst, modalTypesConst, productIconsConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
-
-import { renderProductIcon } from 'utils/renderProductIcon';
 
 interface EditProductModalProps extends WithModalProps {
   currentProductName: string;
@@ -70,11 +68,6 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
     ]
   );
 
-  const TitleIcon = React.useMemo(
-    () => currentProductType && renderProductIcon(currentProductType),
-    [currentProductType]
-  );
-
   const modalHeight = React.useMemo(
     () => window.innerHeight - 10,
     []
@@ -88,7 +81,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       containerWidth={1010}
       minContainerHeight={modalHeight}
       withCloseConfirmation={isAnyFormDirty}
-      TitleIcon={TitleIcon}
+      TitleIcon={productIconsConst[currentProductType]}
     >
       <EditProductForms
         onCancel={handleOnCancel}

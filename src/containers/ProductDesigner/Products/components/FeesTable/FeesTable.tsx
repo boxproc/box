@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
@@ -151,18 +151,22 @@ const FeesTable: React.FC<FeesTableProps> = ({
         maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
-          <Button
-            iconName={iconNamesConst.DELETE}
-            text="Delete"
-            size="10"
-            iconSize="15"
-            withConfirmation={true}
-            confirmationText={`Confirm want you delete fee?`}
-            onClick={() => deleteProductFee({
-              productId: cellInfo.original.productId,
-              productFeeId: cellInfo.original.productFeeId,
-            })}
-          />
+          <Flex
+            justifyContent="center"
+            width="100%"
+          >
+            <Button
+              iconName={iconNamesConst.DELETE}
+              title="delete"
+              size="10"
+              withConfirmation={true}
+              confirmationText={`Confirm want you delete fee?`}
+              onClick={() => deleteProductFee({
+                productId: cellInfo.original.productId,
+                productFeeId: cellInfo.original.productFeeId,
+              })}
+            />
+          </Flex>
         ),
       },
     ],

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
@@ -127,18 +127,22 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
         maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
-          <Button
-            iconName={iconNamesConst.DELETE}
-            text="Delete"
-            size="10"
-            iconSize="15"
-            withConfirmation={true}
-            confirmationText={`Confirm want you delete reward?`}
-            onClick={() => deleteProductReward({
-              productId: cellInfo.original.productId,
-              productRewardId: cellInfo.original.productRewardId,
-            })}
-          />
+          <Flex
+            justifyContent="center"
+            width="100%"
+          >
+            <Button
+              iconName={iconNamesConst.DELETE}
+              title="Delete"
+              size="10"
+              withConfirmation={true}
+              confirmationText={`Confirm want you delete reward?`}
+              onClick={() => deleteProductReward({
+                productId: cellInfo.original.productId,
+                productRewardId: cellInfo.original.productRewardId,
+              })}
+            />
+          </Flex>
         ),
       },
     ],

@@ -3,14 +3,12 @@ import React from 'react';
 import { Modal, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst, modalTypesConst, productIconsConst } from 'consts';
 
 import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { LedgerAccountItemDetailsPrepared } from 'store/domains';
-
-import { renderProductIcon } from 'utils/renderProductIcon';
 
 interface EditAccountModalProps extends WithModalProps {
   currentAccountAlias: string;
@@ -45,11 +43,6 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
     [closeModal]
   );
 
-  const TitleIcon = React.useMemo(
-    () => currentProductType && renderProductIcon(currentProductType),
-    [currentProductType]
-  );
-
   return (
     <Modal
       name={modalName}
@@ -58,7 +51,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       containerWidth={1010}
       minContainerHeight={600}
       withCloseConfirmation={isFormDirty}
-      TitleIcon={TitleIcon}
+      TitleIcon={productIconsConst[currentProductType]}
     >
       <Tabs>
         <TabsPanel

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
@@ -57,7 +57,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 120,
         accessor: 'productAprId',
         Header: <TableHeader title="APR ID" />,
         Cell: (props: TCell<'productAprId'>) => (
@@ -69,7 +69,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 350,
+        maxWidth: 370,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -82,7 +82,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 150,
+        maxWidth: 170,
         accessor: 'calculationMethod',
         Header: <TableHeader title="Calculation Method" />,
         Cell: (props: TCell<'calculationMethod'>) => (
@@ -93,7 +93,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 120,
         accessor: 'rate',
         Header: <TableHeader title="Rate %" />,
         Cell: (cellInfo: CellInfo) => (
@@ -107,7 +107,7 @@ const AprsTable: React.FC<AprsTableProps> = ({
         ),
       },
       {
-        maxWidth: 135,
+        maxWidth: 155,
         accessor: 'graceNumberOfDays',
         Header: <TableHeader title="Grace Number of&nbsp;Days" />,
         Cell: (cellInfo: CellInfo) => (
@@ -124,18 +124,22 @@ const AprsTable: React.FC<AprsTableProps> = ({
         maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
-          <Button
-            iconName={iconNamesConst.DELETE}
-            text="Delete"
-            size="10"
-            iconSize="15"
-            withConfirmation={true}
-            confirmationText={`Confirm want you delete APR?`}
-            onClick={() => deleteProductApr({
-              productId: cellInfo.original.productId,
-              productAprId: cellInfo.original.productAprId,
-            })}
-          />
+          <Flex
+            justifyContent="center"
+            width="100%"
+          >
+            <Button
+              iconName={iconNamesConst.DELETE}
+              title="delete"
+              size="10"
+              withConfirmation={true}
+              confirmationText={`Confirm want you delete APR?`}
+              onClick={() => deleteProductApr({
+                productId: cellInfo.original.productId,
+                productAprId: cellInfo.original.productAprId,
+              })}
+            />
+          </Flex>
         ),
       },
     ],

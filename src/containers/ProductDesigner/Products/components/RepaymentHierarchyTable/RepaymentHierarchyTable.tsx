@@ -98,8 +98,6 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
               <ArrowButtonWrapper>
                 <Button
                   iconName={iconNamesConst.ARROW_UP}
-                  text=""
-                  iconSize="25"
                   title="Move up"
                   disabled={(cellInfo.index === 0) || !isEditableCell}
                   onClick={() => updateRepaymentHierarchy({
@@ -112,8 +110,6 @@ const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
               <ArrowButtonWrapper>
                 <Button
                   iconName={iconNamesConst.ARROW_DOWN}
-                  text=""
-                  iconSize="25"
                   title="Move down"
                   disabled={(cellInfo.index === countData - 1) || !isEditableCell}
                   onClick={() => updateRepaymentHierarchy({

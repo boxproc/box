@@ -9,3 +9,4 @@ export * from './links';
 export * from './iconNames';
 export * from './formats';
 export * from './systemMonitor';
+export * from './productIcons';

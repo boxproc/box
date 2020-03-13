@@ -12,7 +12,6 @@ import { Edit as EditIcon  } from 'styled-icons/fa-regular/Edit';
 import { Eye as EyeIcon } from 'styled-icons/fa-regular/Eye';
 import { EyeSlash as EyeSlashIcon } from 'styled-icons/fa-regular/EyeSlash';
 import { File as FileIcon } from 'styled-icons/fa-solid/File';
-import { FileCsv as FileCsvIcon } from 'styled-icons/fa-solid/FileCsv';
 import { FilePdf as FilePdfIcon } from 'styled-icons/fa-solid/FilePdf';
 import { Key as KeyIcon } from 'styled-icons/fa-solid/Key';
 import { User as UserIcon } from 'styled-icons/fa-solid/User';
@@ -59,7 +58,6 @@ export {
   KeyIcon,
   DownloadIcon,
   FileIcon,
-  FileCsvIcon,
   FilePdfIcon,
   SearchIcon,
   CheckedRadioIcon,

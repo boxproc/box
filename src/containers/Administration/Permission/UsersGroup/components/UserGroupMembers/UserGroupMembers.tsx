@@ -1,6 +1,8 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
+import { Flex } from '@rebass/grid';
+
 import { Button, T4, Table, TableCell, withSpinner } from 'components';
 
 import { iconNamesConst } from 'consts';
@@ -50,22 +52,26 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
         ),
       },
       {
-        maxWidth: 90,
+        maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
-          <Button
-            iconName={iconNamesConst.DELETE}
-            text="Remove"
-            size="10"
-            iconSize="15"
-            withConfirmation={true}
-            disabled={isReadOnly}
-            confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
-            onClick={() => deleteUserGroupMembers(
-              userGroupMemberId,
-              cellInfo.original.id
-            )}
-          />
+          <Flex
+            justifyContent="center"
+            width="100%"
+          >
+            <Button
+              iconName={iconNamesConst.DELETE}
+              title="Remove"
+              size="10"
+              withConfirmation={true}
+              disabled={isReadOnly}
+              confirmationText={`Delete user "${cellInfo.original.username}" from the group?`}
+              onClick={() => deleteUserGroupMembers(
+                userGroupMemberId,
+                cellInfo.original.id
+              )}
+            />
+          </Flex>
         ),
       },
     ],

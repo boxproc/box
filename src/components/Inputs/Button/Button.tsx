@@ -8,13 +8,12 @@ import { withModal, WithModalProps } from 'HOCs';
 import { modalNamesConst } from 'consts';
 
 import { ButtonWrapper } from './ButtonWrapper';
-import { renderIcon } from './renderIcon';
+import { icons } from './icons';
 
 interface ButtonProps extends WithModalProps {
   text: string;
   width?: string;
   size?: string;
-  iconSize?: string;
   iconName?: string;
   type?: 'reset' | 'submit';
   disabled?: boolean;
@@ -44,7 +43,6 @@ const Button: React.FC<ButtonProps> = ({
   iconName,
   type,
   size,
-  iconSize,
   confirmationText,
   confirmationTitle,
   openModal,
@@ -97,20 +95,22 @@ const Button: React.FC<ButtonProps> = ({
     >
       {iconName && (
         <Box mr="2px" className="icon">
-          {renderIcon(iconName, iconSize)}
+          {icons[iconName]}
         </Box>
       )}
-      <span className="text-wrapper">
-        {text}
-      </span>
-        {hint && (
-          <Hint
-            text={hint}
-            icon={false}
-            position={hintPosition}
-            style={hintStyle}
-          />
-        )}
+      {text && (
+        <span className="text-wrapper">
+          {text}
+        </span>
+      )}
+      {hint && (
+        <Hint
+          text={hint}
+          icon={false}
+          position={hintPosition}
+          style={hintStyle}
+        />
+      )}
     </ButtonWrapper>
   );
 
