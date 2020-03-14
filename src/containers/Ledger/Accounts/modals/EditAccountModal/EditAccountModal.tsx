@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Modal, Tabs, TabsPanel } from 'components';
+import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst, productIconsConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
@@ -51,7 +51,7 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
       containerWidth={1010}
       minContainerHeight={600}
       withCloseConfirmation={isFormDirty}
-      TitleIcon={productIconsConst[currentProductType]}
+      TitleIcon={ProductImages[currentProductType]}
     >
       <Tabs>
         <TabsPanel

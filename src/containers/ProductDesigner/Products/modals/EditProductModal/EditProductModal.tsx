@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Modal } from 'components';
+import { Modal, ProductImages } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst, productIconsConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
@@ -81,7 +81,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
       containerWidth={1010}
       minContainerHeight={modalHeight}
       withCloseConfirmation={isAnyFormDirty}
-      TitleIcon={productIconsConst[currentProductType]}
+      TitleIcon={ProductImages[currentProductType]}
     >
       <EditProductForms
         onCancel={handleOnCancel}

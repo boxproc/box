@@ -8,4 +8,3 @@ export * from './codes';
 export * from './iconNames';
 export * from './formats';
 export * from './systemMonitor';
-export * from './productIcons';

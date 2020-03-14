@@ -4,7 +4,7 @@ import styled from 'theme';
 
 import { basePath } from 'consts';
 
-import logo from 'resources/images/logo.png';
+import { logo } from 'resources/images';
 
 const Wrapper = styled.a`
   display: inline-block;

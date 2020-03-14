@@ -3,8 +3,7 @@ import 'jspdf-autotable';
 
 import { theme } from 'theme';
 
-import { logo } from 'resources/images/logo';
-
+import { logoData } from 'resources/images';
 import { dateUtil, formErrorUtil, storageUtil } from 'utils';
 
 const formatKey = (key: string) =>
@@ -60,7 +59,7 @@ export const downloadStatementPDF = (data: {
   doc.text(30, 63, location);
 
   // Image
-  doc.addImage(logo, 'JPEG', 517, 15, 62, 46);
+  doc.addImage(logoData, 'JPEG', 517, 15, 62, 46);
 
   // line
   doc.setLineWidth(0.3);

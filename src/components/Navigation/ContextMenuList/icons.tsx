@@ -3,10 +3,8 @@ import React from 'react';
 import { Box } from '@rebass/grid';
 
 import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
-
-import percent from 'resources/images/percent.svg';
-
 import { iconNamesConst } from 'consts';
+import { percent } from 'resources/images';
 
 export const icons = {
   [iconNamesConst.EDIT]: <EditIcon size="13" />,

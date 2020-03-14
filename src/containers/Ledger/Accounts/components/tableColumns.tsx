@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
-
-import { productIconsConst } from 'consts';
+import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { LedgerAccountItemPrepared } from 'store/domains';
 
@@ -40,7 +38,7 @@ export const tableColumns = [
     Cell: (props: TCell<'product'>) => (
       <TableCell
         value={props.value}
-        Icon={productIconsConst[props.original.productType]}
+        Icon={ProductImages[props.original.productType]}
       />
     ),
   },
