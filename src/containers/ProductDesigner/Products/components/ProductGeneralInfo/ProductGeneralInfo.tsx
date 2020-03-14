@@ -7,7 +7,7 @@ import { CheckboxField, Delimiter, InputField, SelectField, TextField } from 'co
 
 import {
   cardFormFactorOptions,
-  cycleTypesIds,
+  cycleTypesConst,
   productTypesOptions,
   schemeTypesOptions,
   statusOptions,
@@ -65,12 +65,12 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
         return defaultLabel;
       }
 
-      if (statementCycleTypeValue.value === cycleTypesIds.MONTHLY
-        || statementCycleTypeValue.value === cycleTypesIds.BI_MONTHLY
-        || statementCycleTypeValue.value === cycleTypesIds.WEEKLY
-        || statementCycleTypeValue.value === cycleTypesIds.BI_WEEKLY) {
+      if (statementCycleTypeValue.value === cycleTypesConst.MONTHLY
+        || statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY
+        || statementCycleTypeValue.value === cycleTypesConst.WEEKLY
+        || statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
         return 'Repayment day';
-      } else if (statementCycleTypeValue.value === cycleTypesIds.FIXED_NUMBER_OF_DAYS) {
+      } else if (statementCycleTypeValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
         return 'Number of days';
       } else {
         return defaultLabel;
@@ -85,13 +85,13 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
         return formErrorUtil.isInteger;
       }
 
-      if (statementCycleTypeValue.value === cycleTypesIds.MONTHLY
-        || statementCycleTypeValue.value === cycleTypesIds.BI_MONTHLY) {
+      if (statementCycleTypeValue.value === cycleTypesConst.MONTHLY
+        || statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY) {
         return formErrorUtil.rangeValueMin1Max28;
-      } else if (statementCycleTypeValue.value === cycleTypesIds.WEEKLY
-        || statementCycleTypeValue.value === cycleTypesIds.BI_WEEKLY) {
+      } else if (statementCycleTypeValue.value === cycleTypesConst.WEEKLY
+        || statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
         return formErrorUtil.rangeValueMin1Max7;
-      } else if (statementCycleTypeValue.value === cycleTypesIds.FIXED_NUMBER_OF_DAYS) {
+      } else if (statementCycleTypeValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
         return formErrorUtil.rangeValueMin1Max250;
       } else {
         return formErrorUtil.isInteger;

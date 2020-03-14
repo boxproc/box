@@ -5,7 +5,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UiSessionsFilter } from './forms';
 
-import { basePath, cookiesExpires, iconNamesConst, uiItemsConst } from 'consts';
+import { basePath, cookiesExpiresConst, iconNamesConst, uiItemsConst } from 'consts';
 
 import {
   AuditUiSessionsItem,
@@ -84,7 +84,7 @@ const UiSessions: React.FC<UiSessionsProps> = ({
       cookiesUtil.set(
         `${userActivityPathName}-${loggedInUsername}`,
         JSON.stringify(currentUserDataForFilter),
-        { expires: cookiesExpires.MONTH }
+        { expires: cookiesExpiresConst.MONTH }
       );
 
       history.push(userActivityPathName);

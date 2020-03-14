@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import { MaskField, SelectField } from 'components';
 
-import { dateFormat, maskFormat, } from 'consts';
+import { dateFormatConst, maskFormatConst, } from 'consts';
 
 import { HandleGetSchedulerNamesByInstitutionId } from 'store/domains';
 
@@ -74,8 +74,8 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           name="scheduledJobsDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[
@@ -90,8 +90,8 @@ const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
           name="scheduledJobsDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[

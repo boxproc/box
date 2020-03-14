@@ -1,4 +1,4 @@
-import { modalNamesConst, systemMonitorTables } from 'consts';
+import { modalNamesConst, systemMonitorTablesConst } from 'consts';
 
 import { openModal } from 'store/domains/modals';
 import {
@@ -68,25 +68,25 @@ export const resetSystemMonitor: ResetSystemMonitor = () => ({
 
 const tablesConfig = [
   {
-    name: systemMonitorTables.INTERFACES,
+    name: systemMonitorTablesConst.INTERFACES,
     action: getSystemMonitorInterfaces,
     apiLogPathName: 'ui/administration/interfaces/log_file',
     idName: 'interface_id',
   },
   {
-    name: systemMonitorTables.ENDPOINTS,
+    name: systemMonitorTablesConst.ENDPOINTS,
     action: getSystemMonitorEndpoints,
     apiLogPathName: 'ui/administration/endpoints/log_file',
     idName: 'endpoint_id',
   },
   {
-    name: systemMonitorTables.SCHEDULER_JOBS,
+    name: systemMonitorTablesConst.SCHEDULER_JOBS,
     action: getSystemMonitorScheduler,
     apiLogPathName: 'ui/administration/scheduler/log_file',
     idName: 'scheduler_id',
   },
   {
-    name: systemMonitorTables.LAST_TRANSACTIONS,
+    name: systemMonitorTablesConst.LAST_TRANSACTIONS,
     action: getSystemMonitorLastTransactions,
   },
 ];

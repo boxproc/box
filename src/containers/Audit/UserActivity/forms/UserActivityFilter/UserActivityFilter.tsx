@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import { MaskField, SelectField } from 'components';
 
-import { dateFormat, maskFormat, } from 'consts';
+import { dateFormatConst, maskFormatConst, } from 'consts';
 
 import { HandleGetAuditUsers } from 'store/domains';
 import { SelectValue } from 'types';
@@ -73,8 +73,8 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           name="userActivityDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[
@@ -89,8 +89,8 @@ const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
           name="userActivityDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[

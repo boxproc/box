@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import styled from 'theme';
 
 import { RadioField } from 'components';
-
 import { timeUnits } from 'consts';
 
 import DaysBeforeEomFields from './DaysBeforeEomFields';
@@ -35,12 +34,12 @@ interface CronFieldsProps {
 }
 
 const count = {
-  Second: 60, // per minute
-  Minute: 60, // per hour
-  Hour: 24, // per day
-  Day: 31, // per month
-  Month: 12, // per year
-  Year: 50,
+  [timeUnits.SECOND]: 60, // per minute
+  [timeUnits.MINUTE]: 60, // per hour
+  [timeUnits.HOUR]: 24, // per day
+  [timeUnits.DAY]: 31, // per month
+  [timeUnits.MONTH]: 12, // per year
+  [timeUnits.YEAR]: 50,
 };
 
 const CronFields: React.FC<CronFieldsProps> = ({ name, radioValue }) => {

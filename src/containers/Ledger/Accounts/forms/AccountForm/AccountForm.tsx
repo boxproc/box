@@ -10,8 +10,8 @@ import {
 
 import {
   formNamesConst,
-  productTypesCodes,
-  repaymentTypesCodes,
+  productTypesConst,
+  repaymentTypesConst,
 } from 'consts';
 
 import {
@@ -99,12 +99,12 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   );
 
   const isChosenLoanProductType = React.useMemo(
-    () => currentProductType === productTypesCodes.LOAN,
+    () => currentProductType === productTypesConst.LOAN,
     [currentProductType]
   );
 
   const isChosenRevCreditProductType = React.useMemo(
-    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
+    () => currentProductType === productTypesConst.REVOLVING_CREDIT,
     [currentProductType]
   );
 
@@ -119,9 +119,9 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
         && currentProductItem.defNumOfIntrstFreeInstlmts;
 
       const repaymentTypeInstalments = repaymentTypesOptions
-        .find(type => type.value === repaymentTypesCodes.INSTALMENTS);
+        .find(type => type.value === repaymentTypesConst.INSTALMENTS);
       const repaymentTypeMinimumRepayment = repaymentTypesOptions
-        .find(type => type.value === repaymentTypesCodes.MINIMUM_REPAYMENT);
+        .find(type => type.value === repaymentTypesConst.MINIMUM_REPAYMENT);
 
       const resetLoanValues = () => {
         change('numOfInstallments', 0);

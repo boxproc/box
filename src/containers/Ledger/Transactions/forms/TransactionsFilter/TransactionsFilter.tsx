@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import { Delimiter, InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, maskFormat } from 'consts';
+import { dateFormatConst, maskFormatConst } from 'consts';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
@@ -77,8 +77,8 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           name="transactionsDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[
@@ -93,8 +93,8 @@ const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
           name="transactionsDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[

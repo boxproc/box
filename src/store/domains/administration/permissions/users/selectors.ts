@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { status2faLoginOptions } from 'consts';
+import { userStatusWith2faOptions } from 'consts';
 
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
@@ -30,7 +30,7 @@ export const selectUsersDetails = createSelector(
 
     return {
       ...prepareAdminUserDataToRender(current),
-      status: current && status2faLoginOptions.find(el => el.value === current.status),
+      status: current && userStatusWith2faOptions.find(el => el.value === current.status),
       institution,
     };
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { productTypesCodes } from 'consts';
+import { productTypesConst } from 'consts';
 
 import { SelectValue } from 'types';
 import DebitDetails from './DebitDetails';
@@ -23,27 +23,27 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   interestDistributionValue,
 }) => {
   const isLoan = React.useMemo(
-    () => productType === productTypesCodes.LOAN,
+    () => productType === productTypesConst.LOAN,
     [productType]
   );
 
   const isDebit = React.useMemo(
-    () => productType === productTypesCodes.DEBIT,
+    () => productType === productTypesConst.DEBIT,
     [productType]
   );
 
   const isSavings = React.useMemo(
-    () => productType === productTypesCodes.SAVINGS,
+    () => productType === productTypesConst.SAVINGS,
     [productType]
   );
 
   const isPrepaid = React.useMemo(
-    () => productType === productTypesCodes.PREPAID,
+    () => productType === productTypesConst.PREPAID,
     [productType]
   );
 
   const isRevolvingCredit = React.useMemo(
-    () => productType === productTypesCodes.REVOLVING_CREDIT,
+    () => productType === productTypesConst.REVOLVING_CREDIT,
     [productType]
   );
 

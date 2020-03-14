@@ -6,7 +6,7 @@ import { withModal, WithModalProps } from 'HOCs';
 import {
   iconNamesConst,
   modalNamesConst,
-  systemMonitorTables,
+  systemMonitorTablesConst,
 } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
@@ -91,7 +91,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
-          name: systemMonitorTables.SCHEDULER_JOBS,
+          name: systemMonitorTablesConst.SCHEDULER_JOBS,
           id: currentSchedulerId,
           title: currentSchedulerName,
         }),
@@ -217,7 +217,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
         <Button
           text="Show scheduler master log"
           iconName={iconNamesConst.SHORT_TEXT}
-          onClick={() => getLogData({ name: systemMonitorTables.SCHEDULER_JOBS })}
+          onClick={() => getLogData({ name: systemMonitorTablesConst.SCHEDULER_JOBS })}
           disabled={isLoading}
         />
       }

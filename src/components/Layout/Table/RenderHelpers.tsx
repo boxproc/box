@@ -5,7 +5,7 @@ import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
 
-import { yesNoTypesCodes } from 'consts';
+import { yesNoConst } from 'consts';
 
 const CheckBoxWrapper = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const renderCheckBoxTableCell = (updateAction?: (data: object) => void) =
 
     const handleClick = () => updateAction && updateAction({
       ...values,
-      lockedFlag: yesNoTypesCodes.YES,
+      lockedFlag: yesNoConst.YES,
     });
 
     return (

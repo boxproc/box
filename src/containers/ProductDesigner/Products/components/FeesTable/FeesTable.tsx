@@ -12,7 +12,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { feeRewardsTypesCodes, iconNamesConst } from 'consts';
+import { feeRewardsTypesConst, iconNamesConst } from 'consts';
 
 import {
   HandleDeleteProductFee,
@@ -100,7 +100,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.feeApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
+              !== feeRewardsTypesConst.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
           />
         ),
       },
@@ -114,7 +114,7 @@ const FeesTable: React.FC<FeesTableProps> = ({
             isSmaller={true}
             isDecimalNumber={true}
             isEditable={(cellInfo.original.feeApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && isEditableCell}
+              !== feeRewardsTypesConst.APPLY_ONLY_RATE) && isEditableCell}
             cellInfo={cellInfo}
           />
         ),

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
-import { codeKeys } from 'consts';
+import { codeKeysConst } from 'consts';
 
 import { TableCell } from './TableCell';
 
@@ -56,7 +56,7 @@ const EditableTableCell: React.FC<EditableTableCellProps> = ({
   );
 
   const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === codeKeys.ENTER) {
+    if (e.key === codeKeysConst.ENTER) {
       const el = e.target as HTMLElement;
       el.blur();
     }

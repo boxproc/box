@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { actionTypesCodeKeys, actionTypesOptions, yesNoTypesCodes } from 'consts';
+import { actionTypesConst, actionTypesOptions, yesNoConst } from 'consts';
 
 import { selectDefaultCurrentProduct } from '../products';
 
@@ -25,9 +25,9 @@ export const selectProductAuxCounters = createSelector(
       auxCounter1Description: aux_counter_1_description,
       auxCounter2Description: aux_counter_2_description,
       auxCounter3Description: aux_counter_3_description,
-      auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,
-      auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
-      auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
+      auxCounter1Enabled: aux_counter_1_enabled === yesNoConst.YES,
+      auxCounter2Enabled: aux_counter_2_enabled === yesNoConst.YES,
+      auxCounter3Enabled: aux_counter_3_enabled === yesNoConst.YES,
     };
   }
 );
@@ -42,11 +42,11 @@ export const selectActionTypesOptions = createSelector(
     const isAuxCounter3Enabled = auxCounters && auxCounters.auxCounter3Enabled;
 
     const auxCounter1Option = actionTypesOptions
-      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_1);
+      .find(el => el.value === actionTypesConst.UPDATE_AUX_COUNTER_1);
     const auxCounter2Option = actionTypesOptions
-      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_2);
+      .find(el => el.value === actionTypesConst.UPDATE_AUX_COUNTER_2);
     const auxCounter3Option = actionTypesOptions
-      .find(el => el.value === actionTypesCodeKeys.UPDATE_AUX_COUNTER_3);
+      .find(el => el.value === actionTypesConst.UPDATE_AUX_COUNTER_3);
 
     actionTypesOptions.forEach(type => set.add(type));
 

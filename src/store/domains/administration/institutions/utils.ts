@@ -1,4 +1,4 @@
-import { statusOptions, yesNoTypesCodes } from 'consts';
+import { statusOptions, yesNoConst } from 'consts';
 
 import {
   AdminInstitutionsItem,
@@ -32,7 +32,7 @@ export const prepareDataToRender = (data: Partial<AdminInstitutionsItem>) => {
     status: status && status.label,
     sftpLocation: data.sftp_location,
     sftpPublicKey: data.sftp_public_key,
-    masterInstitutionFlag: data.master_institution_flag === yesNoTypesCodes.YES,
+    masterInstitutionFlag: data.master_institution_flag === yesNoConst.YES,
   };
 };
 

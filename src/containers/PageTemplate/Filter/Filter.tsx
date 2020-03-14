@@ -8,7 +8,7 @@ import styled from 'theme';
 
 import { Button } from 'components';
 
-import { basePath, cookiesExpires, formNamesConst, uiItemsConst } from 'consts';
+import { basePath, cookiesExpiresConst, formNamesConst, uiItemsConst } from 'consts';
 
 import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
 
@@ -213,7 +213,7 @@ const Filter: React.FC<FilterAllProps> = ({
       cookiesUtil.set(
         `${location.pathname}-${username}`,
         JSON.stringify(filteredFieldsToStore(data)),
-        { expires: cookiesExpires.MONTH }
+        { expires: cookiesExpiresConst.MONTH }
       );
     }),
     [handleSubmit, filterAction, isAutoRefresh, stopAutoRefresh]

@@ -1,4 +1,4 @@
-import { permissionTypesCodes } from 'consts';
+import { permissionTypesConst } from 'consts';
 
 import { AdminGroupPermissionFormValues, AdminUsersGroupInfoEditable } from './types';
 
@@ -29,6 +29,6 @@ export const AdminGroupPermissionPreparedToSend =
     return {
       user_group_id: userGroupId,
       ui_items: preparedUiItems,
-      permission: permission ? permissionTypesCodes.READ_WRITE : permissionTypesCodes.READ_ONLY,
+      permission: permission ? permissionTypesConst.READ_WRITE : permissionTypesConst.READ_ONLY,
     };
   };

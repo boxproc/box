@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components';
 
-import { loanInterestMethodsCodes, loanTypesOptions } from 'consts';
+import { loanInterestConst, loanTypesOptions } from 'consts';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
@@ -21,8 +21,8 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({
 }) => {
   const isEqualOrActualDistribution = React.useMemo(
     () => interestDistributionValue
-      && (interestDistributionValue.value === loanInterestMethodsCodes.REDUCING_BALANCE_METHOD
-        || interestDistributionValue.value === loanInterestMethodsCodes.FLAT_RATE_METHOD),
+      && (interestDistributionValue.value === loanInterestConst.REDUCING_BALANCE_METHOD
+        || interestDistributionValue.value === loanInterestConst.FLAT_RATE_METHOD),
     [interestDistributionValue]
   );
 

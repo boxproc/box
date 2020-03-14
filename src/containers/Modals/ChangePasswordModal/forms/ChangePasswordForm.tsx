@@ -4,7 +4,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { InputField, OkCancelButtons, PasswordField } from 'components';
 
-import { formNamesConst, yesNoTypesCodes } from 'consts';
+import { formNamesConst, yesNoConst } from 'consts';
 
 import { HandleChangePassword } from 'store/domains';
 
@@ -30,7 +30,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
   );
 
   const isRequires2faFlag = React.useMemo(
-    () => userData && userData.requires2faFlag === yesNoTypesCodes.YES,
+    () => userData && userData.requires2faFlag === yesNoConst.YES,
     [userData]
   );
 

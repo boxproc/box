@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, InputField, MaskField, NumberFormatField, SelectField } from 'components';
 
-import { dateFormat, formNamesConst, maskFormat } from 'consts';
+import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
 import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store/domains';
 
@@ -134,8 +134,8 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
             name="startDate"
             component={MaskField}
             label="Start Date"
-            placeholder={dateFormat.DATE}
-            mask={maskFormat.DATE}
+            placeholder={dateFormatConst.DATE}
+            mask={maskFormatConst.DATE}
             disabled={isDisabled || withLoanSelection}
             validate={[
               formErrorUtil.isRequired,

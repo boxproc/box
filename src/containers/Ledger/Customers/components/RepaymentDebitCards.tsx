@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, iconNamesConst, maskFormat, statusOptions } from 'consts';
+import { dateFormatConst, iconNamesConst, maskFormatConst, statusOptions } from 'consts';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
@@ -64,8 +64,8 @@ const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
             name="expiryDate"
             component={MaskField}
             label="Expiry Date"
-            placeholder={dateFormat.DATE}
-            mask={maskFormat.DATE}
+            placeholder={dateFormatConst.DATE}
+            mask={maskFormatConst.DATE}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isDate,

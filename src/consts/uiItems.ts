@@ -13,11 +13,13 @@ export enum uiItemsConst {
   ADMINISTRATION_SCHEDULER = 'administration/scheduler',
   ADMINISTRATION_SYS_PROPS = 'administration/system_properties',
   ADMINISTRATION_UI_ITEMS_DESIGNER = 'administration/ui_items_designer',
+
   AUDIT_USER_ACTIVITY = 'audit/users_activity',
   AUDIT_API_CALLS = 'audit/api_calls',
   AUDIT_SCHEDULED_JOBS = 'audit/scheduled_jobs',
   AUDIT_SYSTEM_MONITOR = 'audit/system_monitor',
   AUDIT_UI_SESSIONS = 'audit/ui_sessions',
+
   LEDGER_ACCOUNTS = 'ledger/accounts',
   LEDGER_CARDS = 'ledger/cards',
   LEDGER_CUSTOMERS = 'ledger/customers',
@@ -26,5 +28,6 @@ export enum uiItemsConst {
   LEDGER_TRANSACTIONS = 'ledger/transactions',
   LEDGER_STATEMENTS = 'ledger/statements',
   LEDGER_SETTLE_TRANSACTION = 'ledger/settle_transaction',
+
   PRODUCT_DESIGNER_PRODUCTS = 'product_designer/products',
 }

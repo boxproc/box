@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Hr, InputField, NumberFormatField } from 'components';
 
-import { dateFormat, formNamesConst, maskFormat } from 'consts';
+import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
 interface StatementFormProps { }
 
@@ -74,8 +74,8 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               name="statementDate"
               component={InputField}
               label="Statement Date"
-              placeholder={dateFormat.DATE}
-              mask={maskFormat.DATE}
+              placeholder={dateFormatConst.DATE}
+              mask={maskFormatConst.DATE}
               readOnly={true}
             />
           </Box>

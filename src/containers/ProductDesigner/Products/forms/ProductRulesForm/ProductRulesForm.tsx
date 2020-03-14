@@ -3,7 +3,7 @@ import React from 'react';
 import { rulesInitialFormValues } from 'containers/ProductDesigner/Products/consts';
 import RulesForm from './RulesForm';
 
-import { actionTypesCodeKeys, eventTypesCodeKeys, productTypesCodes } from 'consts';
+import { actionTypesConst, eventTypesCodeKeys, productTypesConst } from 'consts';
 
 import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store/domains';
 
@@ -42,7 +42,7 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
   const { eventId, actionType } = rulesValues;
 
   const isRevolvingCredit = React.useMemo(
-    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
+    () => currentProductType === productTypesConst.REVOLVING_CREDIT,
     [currentProductType]
   );
 
@@ -50,10 +50,10 @@ const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
     () => {
       if (eventId && actionType) {
         if (eventId.value === eventTypesCodeKeys.TRANSACTION
-          && actionType.value === actionTypesCodeKeys.APPROVE_DENY) {
+          && actionType.value === actionTypesConst.APPROVE_DENY) {
           setInitialScript(rulesInitialFormValues.transactionApproveDeny);
         } else if (eventId.value === eventTypesCodeKeys.TRANSACTION
-          && actionType.value === actionTypesCodeKeys.SET_APR) {
+          && actionType.value === actionTypesConst.SET_APR) {
           setInitialScript(rulesInitialFormValues.transactionSetTransactionApr);
         } else {
           setInitialScript(null);

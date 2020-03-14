@@ -13,9 +13,9 @@ import { withModal, WithModalProps } from 'HOCs';
 import {
   basePath,
   modalNamesConst,
-  permissionTypesCodes,
+  permissionTypesConst,
   uiItemsConst,
-  uiItemTypesCodes,
+  uiItemTypesConst,
 } from 'consts';
 
 import { clearMenu, menuClasses, toggleOpenMenu } from './utils';
@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const renderItem = (item: UiItemPrepared) => {
     const { id, parentId, title, type, separator, permission } = item;
 
-    const hasChildren = type === uiItemTypesCodes.MENU_PARENT;
+    const hasChildren = type === uiItemTypesConst.MENU_PARENT;
 
     const isModalWindow = item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS
       || item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT
@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
     const isLimitAdjustment = item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT;
     const isSettleTransaction = item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION;
 
-    const isReadOnly = permission === permissionTypesCodes.READ_ONLY;
+    const isReadOnly = permission === permissionTypesConst.READ_ONLY;
 
     const handleOpenModalWindow = () => {
       if (isManualTransaction || isLimitAdjustment) {

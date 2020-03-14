@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { cookiesNames } from 'consts';
+import { cookiesNamesConst } from 'consts';
 
 import { handleSendNotification } from './notifications';
 
@@ -18,7 +18,7 @@ export const withErrorHandler = async (
 ) => {
   try {
     if (storageUtil.getSessionId()) {
-      apiClient.set(cookiesNames.SESSION_ID, storageUtil.getSessionId());
+      apiClient.set(cookiesNamesConst.SESSION_ID, storageUtil.getSessionId());
     }
 
     return await fn();

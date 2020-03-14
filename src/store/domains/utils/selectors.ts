@@ -1,4 +1,4 @@
-import { permissionTypesCodes } from 'consts';
+import { permissionTypesConst } from 'consts';
 import { StoreState } from 'store/StoreState';
 
 export const selectActiveTableRowIndex = (state: StoreState) => state.utils.activeTableRowIndex;
@@ -6,7 +6,7 @@ export const selectActiveTableRowIndex = (state: StoreState) => state.utils.acti
 export const selectActiveItemId = (state: StoreState) => state.utils.activeItemId;
 
 export const selectIsReadOnly = (state: StoreState) =>
-    state.utils.activePagePermission === permissionTypesCodes.READ_ONLY;
+    state.utils.activePagePermission === permissionTypesConst.READ_ONLY;
 
 export const selectIsAutoRefresh = (state: StoreState) => state.utils.isAutoRefresh;
 

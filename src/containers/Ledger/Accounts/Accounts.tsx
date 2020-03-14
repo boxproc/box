@@ -2,7 +2,7 @@ import React from 'react';
 
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemsConst } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesConst, uiItemsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -85,7 +85,7 @@ const Accounts: React.FC<AccountsProps> = ({
           return false;
         }
 
-        return item.permission === permissionTypesCodes.READ_ONLY;
+        return item.permission === permissionTypesConst.READ_ONLY;
       };
 
       return {

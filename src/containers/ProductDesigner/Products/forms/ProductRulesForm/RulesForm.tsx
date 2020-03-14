@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons } from 'components';
 
-import { actionTypesCodeKeys, eventTypesCodeKeys, formNamesConst } from 'consts';
+import { actionTypesConst, eventTypesCodeKeys, formNamesConst } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
@@ -60,18 +60,18 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
       const isAccountCreate = eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CREATE);
       const isAccountClose = eventId && (eventId.value === eventTypesCodeKeys.ACCOUNT_CLOSE);
 
-      const isApproveDeny = actionType && (actionType.value === actionTypesCodeKeys.APPROVE_DENY);
-      const isSetApr = actionType && (actionType.value === actionTypesCodeKeys.SET_APR);
-      const isAddReward = actionType && (actionType.value === actionTypesCodeKeys.ADD_REWARD);
-      const isAddFee = actionType && (actionType.value === actionTypesCodeKeys.ADD_FEE);
+      const isApproveDeny = actionType && (actionType.value === actionTypesConst.APPROVE_DENY);
+      const isSetApr = actionType && (actionType.value === actionTypesConst.SET_APR);
+      const isAddReward = actionType && (actionType.value === actionTypesConst.ADD_REWARD);
+      const isAddFee = actionType && (actionType.value === actionTypesConst.ADD_FEE);
 
       let filteredActionTypes;
 
       if (isAccountCreate || isDailySettlement) {
 
         filteredActionTypes = actionTypesOptions
-          .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
-            && el.value !== actionTypesCodeKeys.SET_APR);
+          .filter(el => el.value !== actionTypesConst.APPROVE_DENY
+            && el.value !== actionTypesConst.SET_APR);
 
         if (actionType) {
           if (isApproveDeny || isSetApr) {
@@ -82,10 +82,10 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
       } else if (isAccountClose) {
 
         filteredActionTypes = actionTypesOptions
-          .filter(el => el.value !== actionTypesCodeKeys.APPROVE_DENY
-            && el.value !== actionTypesCodeKeys.SET_APR
-            && el.value !== actionTypesCodeKeys.ADD_REWARD
-            && el.value !== actionTypesCodeKeys.ADD_FEE);
+          .filter(el => el.value !== actionTypesConst.APPROVE_DENY
+            && el.value !== actionTypesConst.SET_APR
+            && el.value !== actionTypesConst.ADD_REWARD
+            && el.value !== actionTypesConst.ADD_FEE);
 
         if (actionType) {
           if (isApproveDeny || isSetApr || isAddReward || isAddFee) {
@@ -99,7 +99,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
 
       if (!isRevolvingCredit || !isDailySettlement) {
         filteredActionTypes = filteredActionTypes
-          .filter(el => el.value !== actionTypesCodeKeys.MINIMUM_REPAYMENT_CALC);
+          .filter(el => el.value !== actionTypesConst.MINIMUM_REPAYMENT_CALC);
       }
 
       return filteredActionTypes;

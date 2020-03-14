@@ -1,4 +1,4 @@
-import { status2faLoginOptions, statusCodes, yesNoTypesCodes } from 'consts';
+import { statusConst, userStatusWith2faOptions, yesNoConst } from 'consts';
 import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
 import { SelectValue } from 'types';
@@ -34,10 +34,10 @@ export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) 
     datetime_of_last_login: datetimeOfLastLogin,
     status: status && status.value,
     institution_id: institution && institution.value,
-    requires_2fa_flag: requires2faFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    requires_2fa_flag: requires2faFlag ? yesNoConst.YES : yesNoConst.NO,
     change_profile_allowed_flag: changeProfileAllowedFlag
-      ? yesNoTypesCodes.YES
-      : yesNoTypesCodes.NO,
+      ? yesNoConst.YES
+      : yesNoConst.NO,
   };
 };
 
@@ -61,7 +61,7 @@ export const prepareAdminUserDataToRender = (
     datetime_of_last_login,
   } = data;
 
-  const status = status2faLoginOptions.find(el => el.value === data.status);
+  const status = userStatusWith2faOptions.find(el => el.value === data.status);
 
   return {
     id,
@@ -71,8 +71,8 @@ export const prepareAdminUserDataToRender = (
     institution: institution && institution.label,
     email,
     status: status && status.label,
-    requires2faFlag: requires_2fa_flag === yesNoTypesCodes.YES,
-    changeProfileAllowedFlag: change_profile_allowed_flag === yesNoTypesCodes.YES,
+    requires2faFlag: requires_2fa_flag === yesNoConst.YES,
+    changeProfileAllowedFlag: change_profile_allowed_flag === yesNoConst.YES,
     passwordEntryCounter: password_entry_counter,
     datetimeOfLastLogin: datetime_of_last_login,
   };
@@ -86,7 +86,7 @@ export const prepareUsersFiltersDataToSend = (data: Partial<UsersFilter>) => {
   const { statusActiveFlag, institutionId } = data;
 
   return {
-    status: statusActiveFlag ? statusCodes.ACTIVE : null,
+    status: statusActiveFlag ? statusConst.ACTIVE : null,
     institution_id: institutionId && institutionId.value,
   };
 };

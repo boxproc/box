@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { yesNoTypesCodes } from 'consts';
+import { yesNoConst } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -13,7 +13,7 @@ export const selectInstitutions = createSelector(
     return {
       id: institution.id,
       institutionName: institution.institution_name,
-      masterInstitutionFlag: institution.master_institution_flag === yesNoTypesCodes.YES,
+      masterInstitutionFlag: institution.master_institution_flag === yesNoConst.YES,
     };
   })
 );

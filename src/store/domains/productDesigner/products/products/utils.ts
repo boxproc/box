@@ -1,13 +1,13 @@
 import {
   cardFormFactorOptions,
   loanTypesOptions,
-  productTypesCodes,
+  productTypesConst,
   productTypesOptions,
   savingsTypesOptions,
   schemeTypesOptions,
-  statusCodes,
+  statusConst,
   statusOptions,
-  yesNoTypesCodes,
+  yesNoConst,
 } from 'consts';
 
 import {
@@ -34,7 +34,7 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
   const { activeStatusFlag, institutionId, productType } = data;
 
   return {
-    status: activeStatusFlag ? statusCodes.ACTIVE : null,
+    status: activeStatusFlag ? statusConst.ACTIVE : null,
     institution_id: institutionId ? institutionId.value : null,
     product_type: productType && productType.length ? productType.map(type => type.value) : null,
   };
@@ -59,7 +59,7 @@ export const prepareGeneralProductItem = (
     scheme: scheme && scheme.label,
     historyRetentionNumberOfDays: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
-    lockedFlag: item.locked_flag === yesNoTypesCodes.YES ? true : false,
+    lockedFlag: item.locked_flag === yesNoConst.YES ? true : false,
     overridesProductId: item.overrides_product_id,
     statementCycleType: item.statement_cycle_type_name,
     statementCycleParameter: item.statement_cycle_parameter,
@@ -67,15 +67,15 @@ export const prepareGeneralProductItem = (
 };
 
 export const prepareProductDetailsData = (product: any, productType: string | number) => {
-  if (productType === productTypesCodes.DEBIT) {
+  if (productType === productTypesConst.DEBIT) {
     return prepareDebit(product);
-  } else if (productType === productTypesCodes.LOAN) {
+  } else if (productType === productTypesConst.LOAN) {
     return prepareLoan(product);
-  } else if (productType === productTypesCodes.PREPAID) {
+  } else if (productType === productTypesConst.PREPAID) {
     return preparePrepaid(product);
-  } else if (productType === productTypesCodes.REVOLVING_CREDIT) {
+  } else if (productType === productTypesConst.REVOLVING_CREDIT) {
     return prepareRevolvingCredit(product);
-  } else if (productType === productTypesCodes.SAVINGS) {
+  } else if (productType === productTypesConst.SAVINGS) {
     return prepareSavings(product);
   } else {
     return null;
@@ -113,7 +113,7 @@ export const prepareGeneralProductData = (data: ProductItemResp):
     productType: productTypesOptions.find(el => el.value === product_type),
     status: statusOptions.find(el => el.value === status),
     scheme: schemeTypesOptions.find(el => el.value === scheme),
-    lockedFlag: locked_flag === yesNoTypesCodes.YES ? true : false,
+    lockedFlag: locked_flag === yesNoConst.YES ? true : false,
     overridesProductId: overrides_product_id,
     cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
     numberOfDaysCardExpires: number_of_days_card_expires,
@@ -156,7 +156,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
     product_type: productType.value,
     scheme: scheme.value,
     history_retention_number_of_day: stringsUtil.toNumber(historyRetentionNumberOfDays),
-    locked_flag: lockedFlag ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    locked_flag: lockedFlag ? yesNoConst.YES : yesNoConst.NO,
     overrides_product_id: overridesProductId,
     card_form_factor: cardFormFactor.value,
     number_of_days_card_expires: stringsUtil.toNumber(numberOfDaysCardExpires),
@@ -180,7 +180,7 @@ export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => 
 
   return {
     productId: product_id,
-    limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoTypesCodes.YES,
+    limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoConst.YES,
     minimumRepaymentAmount: minimum_repayment_amount,
     minimumRepaymentRate: minimum_repayment_rate,
     repaymentGraceNumberOfDays: repayment_grace_number_of_days,
@@ -203,7 +203,7 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
   return {
     product_id: productId,
     limit_sharing_allowed_flag:
-      limitSharingAllowedFlag === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+      limitSharingAllowedFlag === true ? yesNoConst.YES : yesNoConst.NO,
     minimum_repayment_amount: stringsUtil.toNumber(minimumRepaymentAmount),
     minimum_repayment_rate: stringsUtil.toNumber(minimumRepaymentRate),
     repayment_grace_number_of_days: stringsUtil.toNumber(repaymentGraceNumberOfDays),
@@ -273,8 +273,8 @@ export const preparePrepaid = (data: PrepaidProductItemResp) => {
   return {
     productId: product_id,
     dormantAfterNumberOfDays: stringsUtil.toNumber(dormant_after_number_of_days),
-    breakagesAllowed: breakages_allowed === yesNoTypesCodes.YES ? true : false,
-    reloadAllowed: reload_allowed === yesNoTypesCodes.YES ? true : false,
+    breakagesAllowed: breakages_allowed === yesNoConst.YES ? true : false,
+    reloadAllowed: reload_allowed === yesNoConst.YES ? true : false,
   };
 };
 
@@ -293,8 +293,8 @@ export const preparePrepaidToSend = (data: PrepaidProductItem) => {
   return {
     product_id: productId,
     dormant_after_number_of_days: stringsUtil.toNumber(dormantAfterNumberOfDays),
-    breakages_allowed: breakagesAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
-    reload_allowed: reloadAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    breakages_allowed: breakagesAllowed === true ? yesNoConst.YES : yesNoConst.NO,
+    reload_allowed: reloadAllowed === true ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 
@@ -316,7 +316,7 @@ export const prepareLoan = (data: LoanProductItemResp) => {
     defNumOfInstallments: def_num_of_installments,
     defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
     interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
-    allowOverpayment: allow_overpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    allowOverpayment: allow_overpayment ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 
@@ -338,7 +338,7 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
     def_num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
     def_num_of_intrst_free_instlmts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
     interest_distribution_type: interestDistributionType && interestDistributionType.value,
-    allow_overpayment: allowOverpayment ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    allow_overpayment: allowOverpayment ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 
@@ -356,7 +356,7 @@ export const prepareDebit = (data: DebitProductItemResp) => {
   return {
     productId: product_id,
     aprOverdraft: apr_overdraft,
-    overdraftAllowed: overdraft_allowed === yesNoTypesCodes.YES ? true : false,
+    overdraftAllowed: overdraft_allowed === yesNoConst.YES ? true : false,
   };
 };
 
@@ -374,34 +374,34 @@ export const prepareDebitToSend = (data: DebitProductItem) => {
   return {
     product_id: productId,
     apr_overdraft: stringsUtil.toNumber(aprOverdraft),
-    overdraft_allowed: overdraftAllowed === true ? yesNoTypesCodes.YES : yesNoTypesCodes.NO,
+    overdraft_allowed: overdraftAllowed === true ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 
 export const prepareProductDetailsDataToSend =
   (product: any, type: string | number) => {
 
-    if (type === productTypesCodes.DEBIT) {
+    if (type === productTypesConst.DEBIT) {
       return {
         ...prepareDebitToSend(product),
         product_type: type,
       };
-    } else if (type === productTypesCodes.LOAN) {
+    } else if (type === productTypesConst.LOAN) {
       return {
         ...prepareLoanToSend(product),
         product_type: type,
       };
-    } else if (type === productTypesCodes.PREPAID) {
+    } else if (type === productTypesConst.PREPAID) {
       return {
         ...preparePrepaidToSend(product),
         product_type: type,
       };
-    } else if (type === productTypesCodes.REVOLVING_CREDIT) {
+    } else if (type === productTypesConst.REVOLVING_CREDIT) {
       return {
         ...prepareRevolvingCreditToSend(product),
         product_type: type,
       };
-    } else if (type === productTypesCodes.SAVINGS) {
+    } else if (type === productTypesConst.SAVINGS) {
       return {
         ...prepareSavingsToSend(product),
         product_type: type,

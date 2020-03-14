@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
 
-import { feeRewardsTypesCodes, formNamesConst } from 'consts';
+import { feeRewardsTypesConst, formNamesConst } from 'consts';
 
 import { ProductRewards, RewardsTable } from 'containers/ProductDesigner/Products/components';
 
@@ -37,7 +37,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
   const isOnlyAmount = React.useMemo(
     () => {
       return rewardApplicationConditionValue
-        && rewardApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT;
+        && rewardApplicationConditionValue.value === feeRewardsTypesConst.APPLY_ONLY_FIXED_AMOUNT;
     },
     [rewardApplicationConditionValue]
   );
@@ -45,7 +45,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
   const isOnlyRate = React.useMemo(
     () => {
       return rewardApplicationConditionValue
-        && rewardApplicationConditionValue.value === feeRewardsTypesCodes.APPLY_ONLY_RATE;
+        && rewardApplicationConditionValue.value === feeRewardsTypesConst.APPLY_ONLY_RATE;
     },
     [rewardApplicationConditionValue]
   );

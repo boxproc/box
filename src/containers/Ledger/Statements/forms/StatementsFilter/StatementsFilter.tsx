@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, maskFormat } from 'consts';
+import { dateFormatConst, maskFormatConst } from 'consts';
 
 import { HandleGetInstitutionProducts } from 'store/domains';
 
@@ -90,8 +90,8 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           name="statementsDateFrom"
           component={MaskField}
           label="Date From"
-          placeholder={dateFormat.DATE}
-          mask={maskFormat.DATE}
+          placeholder={dateFormatConst.DATE}
+          mask={maskFormatConst.DATE}
           disabled={isDisabled}
           isRequired={true}
           validate={[
@@ -106,8 +106,8 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           name="statementsDateTo"
           component={MaskField}
           label="Date To"
-          placeholder={dateFormat.DATE}
-          mask={maskFormat.DATE}
+          placeholder={dateFormatConst.DATE}
+          mask={maskFormatConst.DATE}
           disabled={isDisabled}
           isRequired={true}
           validate={[

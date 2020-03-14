@@ -1,4 +1,4 @@
-import { yesNoTypesCodes } from 'consts';
+import { yesNoConst } from 'consts';
 import {
   LedgerAccountItem,
   LedgerAccountItemDetailsPrepared,
@@ -226,18 +226,18 @@ export const prepareDataToRender = (
     auxCounter1: stringsUtil.numberToFixed(aux_counter_1, 2),
     auxCounter2: stringsUtil.numberToFixed(aux_counter_2, 2),
     auxCounter3: stringsUtil.numberToFixed(aux_counter_3, 2),
-    auxCounter1Description: aux_counter_1_enabled === yesNoTypesCodes.YES
+    auxCounter1Description: aux_counter_1_enabled === yesNoConst.YES
       ? aux_counter_1_description
       : 'Not Used',
-    auxCounter2Description: aux_counter_2_enabled === yesNoTypesCodes.YES
+    auxCounter2Description: aux_counter_2_enabled === yesNoConst.YES
       ? aux_counter_2_description
       : 'Not Used',
-    auxCounter3Description: aux_counter_3_enabled === yesNoTypesCodes.YES
+    auxCounter3Description: aux_counter_3_enabled === yesNoConst.YES
       ? aux_counter_3_description
       : 'Not Used',
-    auxCounter1Enabled: aux_counter_1_enabled === yesNoTypesCodes.YES,
-    auxCounter2Enabled: aux_counter_2_enabled === yesNoTypesCodes.YES,
-    auxCounter3Enabled: aux_counter_3_enabled === yesNoTypesCodes.YES,
+    auxCounter1Enabled: aux_counter_1_enabled === yesNoConst.YES,
+    auxCounter2Enabled: aux_counter_2_enabled === yesNoConst.YES,
+    auxCounter3Enabled: aux_counter_3_enabled === yesNoConst.YES,
     amountOverdue: stringsUtil.numberToFixed(amount_overdue, 2),
     amountOverdue1Cycle: stringsUtil.numberToFixed(amount_overdue_1_cycle, 2),
     amountOverdue2Cycles: stringsUtil.numberToFixed(amount_overdue_2_cycles, 2),

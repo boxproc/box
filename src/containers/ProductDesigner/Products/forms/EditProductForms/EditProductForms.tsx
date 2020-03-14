@@ -25,7 +25,7 @@ import {
   illustrationInitValuesRevCredit,
 } from 'containers/ProductDesigner/Products/consts';
 
-import { productTypesCodes } from 'consts';
+import { productTypesConst } from 'consts';
 
 interface EditProductFormsProps {
   currentProductType: string | number;
@@ -45,12 +45,12 @@ const EditProductForms: React.FC<EditProductFormsProps> = ({
   isReadOnly,
 }) => {
   const isLoanType = React.useMemo(
-    () => currentProductType === productTypesCodes.LOAN,
+    () => currentProductType === productTypesConst.LOAN,
     [currentProductType]
   );
 
   const isRevolvingCreditType = React.useMemo(
-    () => currentProductType === productTypesCodes.REVOLVING_CREDIT,
+    () => currentProductType === productTypesConst.REVOLVING_CREDIT,
     [currentProductType]
   );
 

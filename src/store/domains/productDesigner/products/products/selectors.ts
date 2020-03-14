@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { productTypesCodes } from 'consts';
+import { productTypesConst } from 'consts';
 
 import { StoreState } from 'store/StoreState';
 
@@ -145,7 +145,7 @@ export const selectInstitutionLoanProductsOptions = createSelector(
     }
 
     const loanProducts = products
-      .filter(product => product.product_type === productTypesCodes.LOAN);
+      .filter(product => product.product_type === productTypesConst.LOAN);
 
     return loanProducts && loanProducts.asMutable().map(product => {
       return {

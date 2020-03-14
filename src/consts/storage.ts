@@ -1,9 +1,9 @@
-export enum cookiesNames {
+export enum cookiesNamesConst {
   SESSION_ID = 'session_id',
   USER_NAME = 'username',
 }
 
-export enum sessionStorageNames {
+export enum sessionStorageNamesConst {
   USER = 'user',
   FIRST_SCREEN = 'firstScreen',
   AUTH_PENDING = 'authPending',
@@ -12,7 +12,7 @@ export enum sessionStorageNames {
   REQUIRES_2FA_FLAG = 'requires2faFlag',
 }
 
-export const cookiesExpires = {
-  MONTH: 2592000,
-  TEST_SESSION_ID: 1200,
-};
+export enum cookiesExpiresConst {
+  MONTH = 2592000,
+  TEST_SESSION_ID = 1200,
+}

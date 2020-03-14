@@ -5,7 +5,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
 
-import { formNamesConst, iconNamesConst, identificationTypesCodes } from 'consts';
+import { formNamesConst, iconNamesConst, identificationTypesConst } from 'consts';
 
 import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
@@ -69,7 +69,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
 
   const isIdentification = React.useMemo(
     () => identificationTypeValue
-      && identificationTypeValue.value !== identificationTypesCodes.NO_IDENTIFICATION,
+      && identificationTypeValue.value !== identificationTypesConst.NO_IDENTIFICATION,
     [identificationTypeValue]
   );
 

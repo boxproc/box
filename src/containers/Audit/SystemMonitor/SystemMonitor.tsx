@@ -7,10 +7,9 @@ import { CountDownTimer, ExternalLink, T2, Table, withSpinner } from 'components
 
 import {
   basePath,
-  cookiesExpires,
-  systemMonitorInterval,
-  systemMonitorTables,
-  yesNoTypesCodes,
+  cookiesExpiresConst,
+  systemMonitorTablesConst,
+  yesNoConst,
 } from 'consts';
 
 import {
@@ -99,9 +98,9 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
     () => {
       const storedNames = [];
 
-      for (const table in systemMonitorTables) {
-        if (cookiesUtil.get(`${location.pathname}/${systemMonitorTables[table]}`)) {
-          storedNames.push(systemMonitorTables[table]);
+      for (const table in systemMonitorTablesConst) {
+        if (cookiesUtil.get(`${location.pathname}/${systemMonitorTablesConst[table]}`)) {
+          storedNames.push(systemMonitorTablesConst[table]);
         }
       }
 
@@ -127,7 +126,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
           getSystemMonitorData(refreshingTables);
           refreshCounter();
         },
-        systemMonitorInterval.MILLISECONDS
+        60000
       );
       return () => clearInterval(timer);
     },
@@ -176,8 +175,8 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       } else {
         cookiesUtil.set(
           storedTableName,
-          JSON.stringify(yesNoTypesCodes.YES),
-          { expires: cookiesExpires.MONTH }
+          JSON.stringify(yesNoConst.YES),
+          { expires: cookiesExpiresConst.MONTH }
         );
       }
     },
@@ -203,16 +202,16 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       [
         {
           id: 1,
-          name: systemMonitorTables.INTERFACES,
+          name: systemMonitorTablesConst.INTERFACES,
           title: 'Interfaces',
           counts: interfacesCounts,
           isLoading: isLoadingInterfaces,
           tableData: interfacesData,
-          columns: tableColumns(getLogData, systemMonitorTables.INTERFACES),
+          columns: tableColumns(getLogData, systemMonitorTablesConst.INTERFACES),
         },
         {
           id: 2,
-          name: systemMonitorTables.LAST_TRANSACTIONS,
+          name: systemMonitorTablesConst.LAST_TRANSACTIONS,
           title: 'Last Transactions',
           isLoading: isLoadingLastTransactions,
           tableData: lastTransactionsData,
@@ -222,21 +221,21 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       [
         {
           id: 3,
-          name: systemMonitorTables.ENDPOINTS,
+          name: systemMonitorTablesConst.ENDPOINTS,
           title: 'Endpoints',
           counts: endpointsCounts,
           isLoading: isLoadingEndpoints,
           tableData: endpointsData,
-          columns: tableColumns(getLogData, systemMonitorTables.ENDPOINTS),
+          columns: tableColumns(getLogData, systemMonitorTablesConst.ENDPOINTS),
         },
         {
           id: 4,
-          name: systemMonitorTables.SCHEDULER_JOBS,
+          name: systemMonitorTablesConst.SCHEDULER_JOBS,
           title: 'Scheduler Jobs',
           counts: schedulerCounts,
           isLoading: isLoadingScheduler,
           tableData: schedulerData,
-          columns: schedulerTableColumns(getLogData, systemMonitorTables.SCHEDULER_JOBS),
+          columns: schedulerTableColumns(getLogData, systemMonitorTablesConst.SCHEDULER_JOBS),
         },
       ],
     ],
@@ -269,7 +268,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         <T2>System Monitor</T2>
         <Box mb="5px" ml="12px">
           {isCounter && (
-            <CountDownTimer seconds={systemMonitorInterval.SECONDS} />
+            <CountDownTimer seconds={60} />
           )}
         </Box>
       </Flex>

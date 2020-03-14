@@ -12,7 +12,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { feeRewardsTypesCodes, iconNamesConst } from 'consts';
+import { feeRewardsTypesConst, iconNamesConst } from 'consts';
 
 import {
   HandleDeleteProductReward,
@@ -92,7 +92,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.rewardApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
+              !== feeRewardsTypesConst.APPLY_ONLY_FIXED_AMOUNT) && isEditableCell}
           />
         ),
       },
@@ -107,7 +107,7 @@ const RewardsTable: React.FC<RewardsTableProps> = ({
             isDecimalNumber={true}
             cellInfo={cellInfo}
             isEditable={(cellInfo.original.rewardApplicationConditionValue
-              !== feeRewardsTypesCodes.APPLY_ONLY_RATE) && isEditableCell}
+              !== feeRewardsTypesConst.APPLY_ONLY_RATE) && isEditableCell}
           />
         ),
       },

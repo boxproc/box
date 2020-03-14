@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { uiItemTypesCodes } from 'consts';
+import { uiItemTypesConst } from 'consts';
 
 import { UiItem } from './types';
 
@@ -27,7 +27,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
       help_page_url,
     } = item;
 
-    const isSeparator = item_type === uiItemTypesCodes.SEPARATOR;
+    const isSeparator = item_type === uiItemTypesConst.SEPARATOR;
 
     return {
       id: ui_item,

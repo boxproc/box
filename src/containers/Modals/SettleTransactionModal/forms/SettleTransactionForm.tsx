@@ -12,7 +12,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { dateFormat, formNamesConst, maskFormat } from 'consts';
+import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
 import { HandleSettleTransaction } from 'store/domains';
 
@@ -67,8 +67,8 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
             name="settledDatetime"
             component={MaskField}
             label="Settled Datetime"
-            placeholder={dateFormat.DATE_TIME}
-            mask={maskFormat.DATE_TIME}
+            placeholder={dateFormatConst.DATE_TIME}
+            mask={maskFormatConst.DATE_TIME}
             disabled={isDisabled}
             validate={[
               formErrorUtil.isRequired,

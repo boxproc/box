@@ -1,7 +1,7 @@
 import moment from 'moment';
 import validator from 'validator';
 
-import { dateFormat } from 'consts';
+import { dateFormatConst } from 'consts';
 
 export const isRequired = (value: any) => {
   const val = (value || (typeof value === 'number' && value === 0)) ? value.toString() : '';
@@ -111,12 +111,12 @@ export const passwordsDoNotMatch = (value: string, allValues: any) =>
   value === allValues.currentPassword ? 'Passwords match' : undefined;
 
 export const isDateTime = (value: string) =>
-  moment(value, dateFormat.DATE_TIME, true).isValid()
+  moment(value, dateFormatConst.DATE_TIME, true).isValid()
     ? undefined
     : 'Invalid date';
 
 export const isDate = (value: string) =>
-  moment(value, dateFormat.DATE, true).isValid()
+  moment(value, dateFormatConst.DATE, true).isValid()
     ? undefined
     : 'Invalid date';
 

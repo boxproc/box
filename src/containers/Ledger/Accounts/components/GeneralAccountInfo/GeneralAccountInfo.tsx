@@ -18,7 +18,7 @@ import {
   HandleGetInstitutionProducts,
 } from 'store/domains';
 
-import { dateFormat, maskFormat } from 'consts';
+import { dateFormatConst, maskFormatConst } from 'consts';
 
 import { SelectValue } from 'types';
 
@@ -259,8 +259,8 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
               name="loanStartDate"
               component={MaskField}
               label="Loan Start Date"
-              placeholder={dateFormat.DATE}
-              mask={maskFormat.DATE}
+              placeholder={dateFormatConst.DATE}
+              mask={maskFormatConst.DATE}
               readOnly={isReadOnly || isEditMode}
               validate={[
                 formErrorUtil.isRequired,
@@ -288,8 +288,8 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 name="dateOfProductOverride"
                 component={MaskField}
                 label="Date of Product Override"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
                 readOnly={true}
               />
             </Box>
@@ -420,7 +420,7 @@ const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
                 name="lastCycleDate"
                 component={InputField}
                 label="Last Cycle Date"
-                placeholder={dateFormat.DATE}
+                placeholder={dateFormatConst.DATE}
                 readOnly={true}
               />
             </Box>

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import {
-  debitCreditIndicatorCodes,
+  debitCreditIndicatorConst,
   debitCreditIndicatorIds,
   debitCreditIndicatorOptions,
 } from 'consts';
@@ -40,8 +40,8 @@ export const selectDictionaryManualTransactionTypesOptions = createSelector(
   selectDictionaryTransactionTypes,
   transactionTypes => {
     const items = transactionTypes
-      .filter(type => type.debitCreditIndicatorValue === debitCreditIndicatorCodes.DEBIT
-        || type.debitCreditIndicatorValue === debitCreditIndicatorCodes.CREDIT);
+      .filter(type => type.debitCreditIndicatorValue === debitCreditIndicatorConst.DEBIT
+        || type.debitCreditIndicatorValue === debitCreditIndicatorConst.CREDIT);
 
     return items && items.map(item => {
       return {

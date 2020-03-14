@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { dateFormat as dateFormatConst } from 'consts';
+import { dateFormatConst } from 'consts';
 
 export const todayDateTime = () => moment().format(dateFormatConst.DATE_TIME);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { iconNamesConst, modalNamesConst, permissionTypesCodes, uiItemsConst } from 'consts';
+import { iconNamesConst, modalNamesConst, permissionTypesConst, uiItemsConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -73,7 +73,7 @@ const Transactions: React.FC<TransactionsProps> = ({
         return false;
       }
 
-      return uiItem.permission === permissionTypesCodes.READ_ONLY;
+      return uiItem.permission === permissionTypesConst.READ_ONLY;
     },
     [uiItems]
   );

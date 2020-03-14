@@ -7,9 +7,9 @@ import { Delimiter, Hr, InputField, MaskField, SelectField, T4 } from 'component
 
 import {
   customerStatusOptions,
-  dateFormat,
+  dateFormatConst,
   identificationTypesOptions,
-  maskFormat
+  maskFormatConst
 } from 'consts';
 
 import { SelectValue } from 'types';
@@ -136,8 +136,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({
             name="dateOfBirth"
             component={MaskField}
             label="Date of Birth"
-            placeholder={dateFormat.DATE}
-            mask={maskFormat.DATE}
+            placeholder={dateFormatConst.DATE}
+            mask={maskFormatConst.DATE}
             readOnly={isReadOnly}
             validate={[
               formErrorUtil.isRequired,

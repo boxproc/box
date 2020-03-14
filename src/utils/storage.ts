@@ -1,4 +1,9 @@
-import { cookiesExpires, cookiesNames, sessionStorageNames, yesNoTypesCodes } from 'consts';
+import {
+  cookiesExpiresConst,
+  cookiesNamesConst,
+  sessionStorageNamesConst,
+  yesNoConst,
+} from 'consts';
 
 import { UserData } from 'store/domains';
 
@@ -12,41 +17,42 @@ export const clear = () => {
 };
 
 export const setRegistrationPendingFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.AUTH_REGISTRATION_PENDING, yesNoTypesCodes.YES);
+  sessionStorage.setItem(sessionStorageNamesConst.AUTH_REGISTRATION_PENDING, yesNoConst.YES);
 
 export const getRegistrationPendingFlag = () =>
-  sessionStorage.getItem(sessionStorageNames.AUTH_REGISTRATION_PENDING);
+  sessionStorage.getItem(sessionStorageNamesConst.AUTH_REGISTRATION_PENDING);
 
 export const setAuthPendingFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.AUTH_PENDING, yesNoTypesCodes.YES);
+  sessionStorage.setItem(sessionStorageNamesConst.AUTH_PENDING, yesNoConst.YES);
 
 export const setLoginStatus = (sessionId: string) => {
   if (sessionId) {
-    apiClient.set(cookiesNames.SESSION_ID, sessionId);
+    apiClient.set(cookiesNamesConst.SESSION_ID, sessionId);
   }
-  sessionStorage.removeItem(sessionStorageNames.AUTH_PENDING);
-  sessionStorage.setItem(sessionStorageNames.IS_LOGIN, yesNoTypesCodes.YES);
+  sessionStorage.removeItem(sessionStorageNamesConst.AUTH_PENDING);
+  sessionStorage.setItem(sessionStorageNamesConst.IS_LOGIN, yesNoConst.YES);
 };
 
 export const setFirstScreenFlag = () =>
-  sessionStorage.setItem(sessionStorageNames.FIRST_SCREEN, yesNoTypesCodes.YES);
+  sessionStorage.setItem(sessionStorageNamesConst.FIRST_SCREEN, yesNoConst.YES);
 
 export const removeFirstScreenFlag = () =>
-  sessionStorage.removeItem(sessionStorageNames.FIRST_SCREEN);
+  sessionStorage.removeItem(sessionStorageNamesConst.FIRST_SCREEN);
 
-export const getFirstScreenFlag = () => sessionStorage.getItem(sessionStorageNames.FIRST_SCREEN);
+export const getFirstScreenFlag = () =>
+  sessionStorage.getItem(sessionStorageNamesConst.FIRST_SCREEN);
 
-export const getLoginFlag = () => sessionStorage.getItem(sessionStorageNames.IS_LOGIN);
+export const getLoginFlag = () => sessionStorage.getItem(sessionStorageNamesConst.IS_LOGIN);
 
 export const setUserData = (data: UserData) =>
-  sessionStorage.setItem(sessionStorageNames.USER, JSON.stringify(data));
+  sessionStorage.setItem(sessionStorageNamesConst.USER, JSON.stringify(data));
 
-export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNames.USER));
+export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNamesConst.USER));
 
-export const setSessionId = (id: string) => cookiesUtil.set(cookiesNames.SESSION_ID, id, {
-  expires: cookiesExpires.TEST_SESSION_ID,
+export const setSessionId = (id: string) => cookiesUtil.set(cookiesNamesConst.SESSION_ID, id, {
+  expires: cookiesExpiresConst.TEST_SESSION_ID,
 });
 
-export const getSessionId = () => cookiesUtil.get(cookiesNames.SESSION_ID);
+export const getSessionId = () => cookiesUtil.get(cookiesNamesConst.SESSION_ID);
 
-export const getUserName = () => cookiesUtil.get(cookiesNames.USER_NAME);
+export const getUserName = () => cookiesUtil.get(cookiesNamesConst.USER_NAME);

@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, Hr, Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { cardStatusesCodes, modalNamesConst, modalTypesConst } from 'consts';
+import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
@@ -39,7 +39,7 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   );
 
   const isStatusActive = React.useMemo(
-    () => currentStatus === cardStatusesCodes.ACTIVE,
+    () => currentStatus === cardStatusesConst.ACTIVE,
     [currentStatus]
   );
 

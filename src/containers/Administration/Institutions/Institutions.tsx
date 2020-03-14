@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { iconNamesConst, modalNamesConst, yesNoTypesCodes } from 'consts';
+import { iconNamesConst, modalNamesConst, yesNoConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -60,7 +60,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
     () => {
       const userData = storageUtil.getUserData();
 
-      return userData && userData.changeProfileAllowedFlag === yesNoTypesCodes.YES;
+      return userData && userData.changeProfileAllowedFlag === yesNoConst.YES;
     },
     []
   );

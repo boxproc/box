@@ -4,7 +4,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { InterfacesFilter } from './forms';
 
-import { iconNamesConst, modalNamesConst, systemMonitorTables } from 'consts';
+import { iconNamesConst, modalNamesConst, systemMonitorTablesConst } from 'consts';
 
 import {
   AdminInterfaceItemPrepared,
@@ -54,7 +54,7 @@ const Interfaces: React.FC<AccountsProps> = ({
         name: 'Show log',
         icon: iconNamesConst.SHORT_TEXT,
         action: () => getLogData({
-          name: systemMonitorTables.INTERFACES,
+          name: systemMonitorTablesConst.INTERFACES,
           id: currentInterfaceId,
           title: currentInterfaceName,
         }),

@@ -1,10 +1,8 @@
-export const basePath = '/ui/';
-
-export * from './uiItems';
+export * from './codes';
+export * from './formats';
 export * from './formNames';
+export * from './iconNames';
 export * from './modalNames';
 export * from './storage';
-export * from './codes';
-export * from './iconNames';
-export * from './formats';
 export * from './systemMonitor';
+export * from './uiItems';

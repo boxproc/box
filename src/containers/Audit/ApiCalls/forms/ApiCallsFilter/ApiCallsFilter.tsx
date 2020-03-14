@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import { Delimiter, InputField, MaskField, SelectField } from 'components';
 
-import { dateFormat, maskFormat } from 'consts';
+import { dateFormatConst, maskFormatConst } from 'consts';
 
 import { HandleGetEndpointsByInstitutionId } from 'store/domains';
 
@@ -87,8 +87,8 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           name="apiCallsDateTimeFrom"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time From"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[
@@ -103,8 +103,8 @@ const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
           name="apiCallsDateTimeTo"
           component={MaskField}
           label="Date&nbsp;/&nbsp;Time To"
-          placeholder={dateFormat.DATE_TIME}
-          mask={maskFormat.DATE_TIME}
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           isRequired={true}
           validate={[

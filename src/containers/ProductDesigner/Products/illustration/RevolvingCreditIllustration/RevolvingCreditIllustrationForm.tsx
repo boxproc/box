@@ -13,7 +13,7 @@ import {
   SelectField
 } from 'components';
 
-import { dateFormat, formNamesConst, iconNamesConst, maskFormat } from 'consts';
+import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst } from 'consts';
 import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
@@ -86,8 +86,8 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 name="startDate"
                 component={MaskField}
                 label="Start Date"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
                 disabled={isDisabled}
                 validate={[
                   formErrorUtil.isRequired,
@@ -141,8 +141,8 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 name="transactionDate1"
                 component={MaskField}
                 label="Date"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
                 disabled={isDisabled}
                 validate={[
                   formErrorUtil.isRequired,
@@ -192,8 +192,8 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 name="transactionDate2"
                 component={MaskField}
                 label="Date"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
                 disabled={isDisabled}
                 validate={[
                   formErrorUtil.isRequired,
@@ -243,8 +243,8 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 name="transactionDate3"
                 component={MaskField}
                 label="Date"
-                placeholder={dateFormat.DATE}
-                mask={maskFormat.DATE}
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
                 disabled={isDisabled}
                 validate={[
                   formErrorUtil.isRequired,

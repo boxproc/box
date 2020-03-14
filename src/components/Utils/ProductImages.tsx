@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { productTypesCodes } from 'consts';
+import { productTypesConst } from 'consts';
 
 import { card, creditCard, money, percent } from 'resources/images';
 
@@ -21,7 +21,7 @@ const Wrapper = styled(Box)`
 `;
 
 export const ProductImages = {
-  [productTypesCodes.REVOLVING_CREDIT]: (
+  [productTypesConst.REVOLVING_CREDIT]: (
     <Wrapper>
       <img
         src={creditCard}
@@ -31,7 +31,7 @@ export const ProductImages = {
       />
     </Wrapper>
   ),
-  [productTypesCodes.PREPAID]: (
+  [productTypesConst.PREPAID]: (
     <Wrapper mt="-5px">
       <img
         src={money}
@@ -41,7 +41,7 @@ export const ProductImages = {
       />
     </Wrapper>
   ),
-  [productTypesCodes.DEBIT]: (
+  [productTypesConst.DEBIT]: (
     <Wrapper>
       <img
         src={card}
@@ -51,7 +51,7 @@ export const ProductImages = {
       />
     </Wrapper>
   ),
-  [productTypesCodes.LOAN]: (
+  [productTypesConst.LOAN]: (
     <Wrapper>
       <img
         src={percent}

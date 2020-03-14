@@ -2,7 +2,7 @@ import React, { ReactChild } from 'react';
 
 import { NumberFormatInput, SelectInput, TextInput } from 'components';
 
-import { schedulerStatusOptions, statusCodes } from 'consts';
+import { schedulerStatusOptions, statusConst } from 'consts';
 
 import { TableItemWrapper } from './TableItemWrapper';
 
@@ -50,7 +50,7 @@ export const TableCell: React.FC<TableCellProps> = ({
 }) => {
   const isPendingStatus = React.useMemo(
     () => value === schedulerStatusOptions
-      .find(status => status.value === statusCodes.EXECUTION_PENDING).label,
+      .find(status => status.value === statusConst.EXECUTION_PENDING).label,
     [value]
   );
 
