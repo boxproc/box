@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'theme';
 
-import { InfoCircleIcon } from 'components';
+import { InfoCircleIcon } from './../Icons';
 
 interface HintWrapperProps {
   position?: string;

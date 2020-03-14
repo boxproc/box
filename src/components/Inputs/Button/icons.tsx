@@ -20,7 +20,7 @@ import {
   SmartphoneIcon,
   StopIcon,
   UserIcon,
-} from 'components';
+} from './../../Icons';
 
 import { iconNamesConst } from 'consts';
 

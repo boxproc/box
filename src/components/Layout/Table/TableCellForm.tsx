@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import { InputField, NumberFormatField, SelectField } from 'components';
+import { InputField, NumberFormatField, SelectField } from './../../Inputs';
 
 import { SelectValue } from 'types';
 

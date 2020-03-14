@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { CheckedRadioIcon, UncheckedRadioIcon } from 'components';
+import { CheckedRadioIcon, UncheckedRadioIcon } from './../../../Icons';
 
 interface RadioWrapperProps {
   disabled?: boolean;

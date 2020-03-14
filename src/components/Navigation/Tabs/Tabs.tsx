@@ -4,7 +4,8 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Hint } from 'components';
+import { Hint } from './../../Utils';
+
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';

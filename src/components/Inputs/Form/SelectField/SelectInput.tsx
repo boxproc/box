@@ -9,7 +9,7 @@ import { Props as SelectProps } from 'react-select/lib/Select';
 import styled from 'theme';
 import { scrollbarCss } from 'theme/styles';
 
-import { ChevronDownIcon, CloseIcon } from 'components';
+import { ChevronDownIcon, CloseIcon } from './../../../Icons';
 import MultiSelectOption from './Option';
 
 import { customStyles } from './customStyles';

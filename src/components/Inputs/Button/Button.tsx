@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import { Hint } from 'components';
+import { Hint } from './../../Utils';
+
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst } from 'consts';

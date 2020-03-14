@@ -4,7 +4,8 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { T2 } from 'components';
+import { T2 } from './../../Text';
+
 import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';

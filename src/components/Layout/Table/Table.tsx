@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable, { ComponentDecoratorProps, ReactTableDefaults } from 'react-table';
 
-import { TableNoData } from 'components';
+import { TableNoData } from './../../Layout';
 
 import { TableStyled } from './TableStyled';
 

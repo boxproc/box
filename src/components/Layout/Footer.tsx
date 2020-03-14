@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'theme';
 import { highlightCss } from 'theme/styles';
 
-import { Container } from 'components';
+import { Container } from './../Layout';
 
 import { dateUtil } from 'utils';
 

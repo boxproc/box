@@ -1,6 +1,6 @@
 import React, { ReactChild } from 'react';
 
-import { NumberFormatInput, SelectInput, TextInput } from 'components';
+import { NumberFormatInput, SelectInput, TextInput } from './../../Inputs';
 
 import { schedulerStatusOptions, statusConst } from 'consts';
 

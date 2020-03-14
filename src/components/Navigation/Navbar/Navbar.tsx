@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ChevronRightIcon } from 'components';
+import { ChevronRightIcon } from './../../Icons';
 import { NavListStyled } from './NavListStyled';
 
 import { withModal, WithModalProps } from 'HOCs';

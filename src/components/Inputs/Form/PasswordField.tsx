@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled, { css } from 'theme';
 
-import { EyeIcon, EyeSlashIcon } from 'components';
+import { EyeIcon, EyeSlashIcon } from './../../Icons';
 
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';

@@ -3,7 +3,7 @@ import { MenuItem, SubMenu } from 'react-contextmenu';
 
 import './styles.css';
 
-import { ChevronRightIcon } from 'components';
+import { ChevronRightIcon } from './../../Icons';
 import ContextMenuItem from './ContextMenuItem';
 
 import { ContextMenuItemProps, ContextSubMenuItem } from 'types';

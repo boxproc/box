@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
+import { CheckedBoxIcon, UncheckedBoxIcon } from './../../../Icons';
 
 interface OptionWrapperProps {
   isFocused: boolean;

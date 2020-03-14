@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'theme';
 
-import { LinkExternalIcon } from 'components';
+import { LinkExternalIcon } from './../../Icons';
 
 interface ExternalLinkWrapperProps {
   grayStyle?: boolean;

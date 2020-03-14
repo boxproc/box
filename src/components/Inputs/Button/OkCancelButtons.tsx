@@ -2,7 +2,8 @@ import React from 'react';
 
 import styled from 'theme';
 
-import { Button, Hint } from 'components';
+import { Hint } from './../../Utils';
+import { Button } from './../Button';
 
 const Wrapper = styled.div`
   display: flex;

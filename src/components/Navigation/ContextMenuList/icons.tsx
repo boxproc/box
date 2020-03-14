@@ -2,7 +2,15 @@ import React from 'react';
 
 import { Box } from '@rebass/grid';
 
-import { DeleteIcon, EditIcon, FilePdfIcon, LockIcon, PlusIcon, ShortTextIcon } from 'components';
+import {
+  DeleteIcon,
+  EditIcon,
+  FilePdfIcon,
+  LockIcon,
+  PlusIcon,
+  ShortTextIcon,
+} from './../../Icons';
+
 import { iconNamesConst } from 'consts';
 import { percent } from 'resources/images';
 

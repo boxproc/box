@@ -3,7 +3,8 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
 import styled, { theme as mainTheme } from 'theme';
 
-import { CheckedBoxIcon, Label as DefaultLabel, UncheckedBoxIcon } from 'components';
+import { CheckedBoxIcon, UncheckedBoxIcon } from './../../Icons';
+import { Label as DefaultLabel } from './../../Text';
 
 interface CheckboxWrapperProp {
   disabled?: boolean;

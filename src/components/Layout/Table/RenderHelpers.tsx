@@ -3,7 +3,7 @@ import { CellInfo } from 'react-table';
 
 import styled from 'theme';
 
-import { CheckedBoxIcon, UncheckedBoxIcon } from 'components';
+import { CheckedBoxIcon, UncheckedBoxIcon } from './../../Icons';
 
 import { yesNoConst } from 'consts';
 

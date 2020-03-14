@@ -5,7 +5,8 @@ import { Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { Hint, Label } from 'components';
+import { Label } from './../../Text';
+import { Hint } from './../../Utils';
 
 import { componentUtil } from 'utils';
 
