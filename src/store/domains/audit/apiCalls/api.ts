@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 import { AuditApiCallsFilterPrepared } from './types';
 
@@ -8,8 +8,8 @@ import { AuditApiCallsFilterPrepared } from './types';
 
 export const filterAuditApiCalls = (data: Partial<AuditApiCallsFilterPrepared>) =>
   // throttleUtil.getDataAfter(apiCallsItems, 500);
-  apiClient.post('ui/audit/api_calls/get', { data });
+  apiClientService.post('ui/audit/api_calls/get', { data });
 
 export const getDetailsAuditApiCalls = (data: { id: number }) =>
   // throttleUtil.getDataAfter(apiCallsItems, 500);
-  apiClient.post('ui/audit/api_calls/get_whole_description', { data });
+  apiClientService.post('ui/audit/api_calls/get_whole_description', { data });

@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import { repaymentHierarchy, successResponseStatus } from './mock';
 import { ChangeRepaymentHierarchyRequest } from './types';
@@ -7,10 +7,10 @@ import { ChangeRepaymentHierarchyRequest } from './types';
 
 export const getRepaymentHierarchy = (id: number) =>
   // throttleUtil.getDataAfter(repaymentHierarchy, 500);
-  apiClient.post('/ui/product_designer/products/hierarchy/get', {
+  apiClientService.post('/ui/product_designer/products/hierarchy/get', {
     data: { product_id: id },
   });
 
 export const updateRepaymentHierarchy = (data: ChangeRepaymentHierarchyRequest) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post('/ui/product_designer/products/hierarchy/update', { data });
+  apiClientService.post('/ui/product_designer/products/hierarchy/update', { data });

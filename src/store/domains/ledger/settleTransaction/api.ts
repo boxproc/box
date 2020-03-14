@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import { successResponseStatus, transactionData } from './mock';
 import { RetrieveTransactionRequest, SettleTransactionItem } from './types';
@@ -7,8 +7,8 @@ import { RetrieveTransactionRequest, SettleTransactionItem } from './types';
 
 export const retrieveTransaction = (data: RetrieveTransactionRequest) =>
   // throttleUtil.getDataAfter(transactionData, 500);
-  apiClient.post('ui/ledger/accounts/retrieve_transaction', { data });
+  apiClientService.post('ui/ledger/accounts/retrieve_transaction', { data });
 
 export const settleTransaction = (data: SettleTransactionItem) =>
   // throttleUtil.getDataAfter(successResponseStatus, 500);
-  apiClient.post('ui/ledger/accounts/settle_transaction', { data });
+  apiClientService.post('ui/ledger/accounts/settle_transaction', { data });

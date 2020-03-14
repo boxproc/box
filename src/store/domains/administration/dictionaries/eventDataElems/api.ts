@@ -1,6 +1,6 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 import { DictionaryEventDataElemsFilterPrepared } from './types';
 
 export const filterDictionaryEventDataElems = (data: DictionaryEventDataElemsFilterPrepared) =>
-  apiClient.post('ui/administration/dictionaries/event_data_elements', { data });
+  apiClientService.post('ui/administration/dictionaries/event_data_elements', { data });

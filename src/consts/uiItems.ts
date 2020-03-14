@@ -1,3 +1,5 @@
+export const basePath = '/ui/';
+
 export enum uiItemsConst {
   ADMINISTRATION_DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   ADMINISTRATION_DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',

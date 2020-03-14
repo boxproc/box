@@ -7,13 +7,13 @@ import {
 
 import { UserData } from 'store/domains';
 
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 import { cookiesUtil } from 'utils';
 
 export const clear = () => {
   sessionStorage.clear();
-  apiClient.clear();
+  apiClientService.clear();
 };
 
 export const setRegistrationPendingFlag = () =>
@@ -27,7 +27,7 @@ export const setAuthPendingFlag = () =>
 
 export const setLoginStatus = (sessionId: string) => {
   if (sessionId) {
-    apiClient.set(cookiesNamesConst.SESSION_ID, sessionId);
+    apiClientService.set(cookiesNamesConst.SESSION_ID, sessionId);
   }
   sessionStorage.removeItem(sessionStorageNamesConst.AUTH_PENDING);
   sessionStorage.setItem(sessionStorageNamesConst.IS_LOGIN, yesNoConst.YES);

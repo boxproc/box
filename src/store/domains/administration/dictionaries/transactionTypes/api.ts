@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import { dictionaryTransactionTypesData } from './mock';
 
@@ -6,4 +6,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryTransactionTypes = () =>
   // throttleUtil.getDataAfter(dictionaryTransactionTypesData, 500);
-  apiClient.post('ui/administration/dictionaries/transaction_types');
+  apiClientService.post('ui/administration/dictionaries/transaction_types');

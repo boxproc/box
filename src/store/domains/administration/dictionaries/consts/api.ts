@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import {
 //   dictionaryCardStatusesData,
@@ -10,15 +10,15 @@ import { apiClient } from 'services';
 
 export const getDictionaryCardStatuses = () =>
   // throttleUtil.getDataAfter(dictionaryCardStatusesData, 500);
-  apiClient.post('ui/administration/dictionaries/card_statuses');
+  apiClientService.post('ui/administration/dictionaries/card_statuses');
 
 export const getDictionaryEndpointTypes = () =>
   // throttleUtil.getDataAfter(dictionaryEndpointTypesData, 500);
-  apiClient.post('ui/administration/endpoints/types');
+  apiClientService.post('ui/administration/endpoints/types');
 
 export const getDictionaryInterfaceTypes = () =>
   // throttleUtil.getDataAfter(dictionaryInterfaceTypesData, 500);
-  apiClient.post('ui/administration/interfaces/types');
+  apiClientService.post('ui/administration/interfaces/types');
 
 export const getDictionaryStatementCycleTypes = () =>
-  apiClient.post('ui/ledger/statements/get_statement_cycle_types');
+  apiClientService.post('ui/ledger/statements/get_statement_cycle_types');

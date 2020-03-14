@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import { dictionaryAccountStatusesData } from './mock';
 
@@ -6,4 +6,4 @@ import { apiClient } from 'services';
 
 export const getDictionaryAccountStatuses = () =>
   // throttleUtil.getDataAfter(dictionaryAccountStatusesData, 500);
-  apiClient.post('ui/administration/dictionaries/account_statuses');
+  apiClientService.post('ui/administration/dictionaries/account_statuses');

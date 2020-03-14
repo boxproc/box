@@ -7,7 +7,7 @@ import { handleSendNotification } from './notifications';
 
 import { StoreState } from 'store/StoreState';
 
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 import { storageUtil } from 'utils';
 
@@ -18,7 +18,7 @@ export const withErrorHandler = async (
 ) => {
   try {
     if (storageUtil.getSessionId()) {
-      apiClient.set(cookiesNamesConst.SESSION_ID, storageUtil.getSessionId());
+      apiClientService.set(cookiesNamesConst.SESSION_ID, storageUtil.getSessionId());
     }
 
     return await fn();

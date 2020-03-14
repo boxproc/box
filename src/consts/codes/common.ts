@@ -1,5 +1,3 @@
-export const basePath = '/ui/';
-
 export enum permissionTypesConst {
   READ_WRITE = 'W',
   READ_ONLY = 'R',

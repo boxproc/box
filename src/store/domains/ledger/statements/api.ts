@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 import { LedgerId } from '../customers';
 // import {
 //   ledgerAccountStatementAprItems,
@@ -11,10 +11,10 @@ import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest
 
 export const filterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
   // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
-  apiClient.post('ui/ledger/statements/get', { data });
+  apiClientService.post('ui/ledger/statements/get', { data });
 
 export const getLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
-  apiClient.post('ui/ledger/statements/get_transactions', {
+  apiClientService.post('ui/ledger/statements/get_transactions', {
     data: {
       first_transaction_id: data.firstTransactionId,
       last_transaction_id: data.lastTransactionId,
@@ -24,16 +24,16 @@ export const getLedgerStatementTransactions = (data: LedgerStatementTransactions
 
 export const filterLedgerStatementsById = (data: LedgerId) =>
   // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
-  apiClient.post('ui/ledger/statements/get', { data });
+  apiClientService.post('ui/ledger/statements/get', { data });
 
 export const getLedgerAccountStatements = (accountId: number) =>
   // throttleUtil.getDataAfter(ledgerAccountStatementsItems, 500);
-  apiClient.post('ui/ledger/accounts/get_statements', {
+  apiClientService.post('ui/ledger/accounts/get_statements', {
     data: { account_id: accountId },
   });
 
 export const getLedgerAccountStatementAprs = (statementId: number) =>
   // throttleUtil.getDataAfter(ledgerAccountStatementAprItems, 500);
-  apiClient.post('ui/ledger/accounts/get_statement_aprs', {
+  apiClientService.post('ui/ledger/accounts/get_statement_aprs', {
     data: { statement_id: statementId },
   });

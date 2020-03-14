@@ -4,8 +4,8 @@ import { Storage } from './storage';
 
 import config from 'config';
 
-export const logger = new Logger();
+export const loggerService = new Logger();
 
-export const storage = new Storage();
+export const storageService = new Storage();
 
-export const apiClient = new ApiClient(config.apiUrl);
+export const apiClientService = new ApiClient(config.apiUrl);

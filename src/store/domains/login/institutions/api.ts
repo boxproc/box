@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 // import { institutionsData } from './mock';
 
@@ -6,4 +6,4 @@ import { apiClient } from 'services';
 
 export const getInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
-  apiClient.post('ui/institutions/get');
+  apiClientService.post('ui/institutions/get');

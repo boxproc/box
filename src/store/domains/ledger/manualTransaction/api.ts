@@ -1,4 +1,4 @@
-import { apiClient } from 'services';
+import { apiClientService } from 'services';
 
 import { LedgerManualTransactionRequest } from './types';
 
@@ -8,4 +8,4 @@ import { LedgerManualTransactionRequest } from './types';
 
 export const makeLedgerTransaction = (data: Partial<LedgerManualTransactionRequest>) =>
   // throttleUtil.getDataAfter(ledgerManualTransactionData, 500);
-  apiClient.post('ui/ledger/accounts/make_transaction', { data });
+  apiClientService.post('ui/ledger/accounts/make_transaction', { data });
