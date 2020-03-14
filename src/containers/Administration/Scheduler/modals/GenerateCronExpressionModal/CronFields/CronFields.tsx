@@ -34,23 +34,13 @@ interface CronFieldsProps {
   radioValue: string;
 }
 
-const getCount = (name: string) => {
-  switch (name) {
-    case 'Second':
-      return 60; // per minute
-    case 'Minute':
-      return 60; // per hour
-    case 'Hour':
-      return 24; // per day
-    case 'Day':
-      return 31; // per month
-    case 'Month':
-      return 12; // per year
-    case 'Year':
-      return 50;
-    default:
-      return 0;
-  }
+const count = {
+  Second: 60, // per minute
+  Minute: 60, // per hour
+  Hour: 24, // per day
+  Day: 31, // per month
+  Month: 12, // per year
+  Year: 50,
 };
 
 const CronFields: React.FC<CronFieldsProps> = ({ name, radioValue }) => {
@@ -60,7 +50,7 @@ const CronFields: React.FC<CronFieldsProps> = ({ name, radioValue }) => {
   );
 
   const specificCount = React.useMemo(
-    () => getCount(name),
+    () => count[name],
     [name]
   );
 
