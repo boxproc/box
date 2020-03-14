@@ -14,8 +14,11 @@ const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
   color: ${({ theme, grayStyle }) => grayStyle ? theme.colors.gray : 'inherit'};
   font-size: 13px;
   text-decoration: none;
-  font-weight: ${({ grayStyle }) => grayStyle ? '500' : 'normal'};
   text-transform: capitalize;
+
+  ${({ grayStyle }) => grayStyle && `
+    font-weight: 500;
+  `}
 
   * {
     transition: all .1s linear;

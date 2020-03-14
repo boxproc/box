@@ -39,9 +39,11 @@ const TabTitle = styled.div<TabTitleProps>`
     }
   `}
 
-  .title {
-    opacity: ${({ isDisabled }) => isDisabled && .5};
-  }
+  ${({ isDisabled }) => isDisabled && `
+    .title {
+      opacity: .5;
+    }
+  `}
 
   &.is-active {
     color: ${({ theme }) => theme.colors.normalAccent};

@@ -75,7 +75,7 @@ interface ParagraphProps {
 }
 
 export const Paragraph = styled.p<ParagraphProps>`
-  font-size: ${({ size }) => size ? size + 'px' : '14px'};
+  font-size: ${({ size }) => size ? `${size}px` : '14px'};
   line-height: 1.5;
   color: ${({ theme, light }) => light ? theme.colors.darkGray : theme.colors.black};
   text-align: ${({ textAlign }) => textAlign ? textAlign : 'left'};

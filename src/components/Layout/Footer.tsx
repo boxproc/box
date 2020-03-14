@@ -16,6 +16,7 @@ const Wrapper = styled.footer`
     display: inline-block;
     color: ${({ theme }) => theme.colors.gray};
     ${highlightCss}
+
     &:before {
       top: -12px;
     }

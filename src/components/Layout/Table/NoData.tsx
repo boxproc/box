@@ -1,7 +1,5 @@
-import * as React from 'react';
-import * as styledComponents from 'theme';
-
-const { default: styled } = styledComponents;
+import React from 'react';
+import styled from 'theme';
 
 const NoDataWrapper = styled.div`
   display: flex;
@@ -36,6 +34,8 @@ export const TableNoData: React.FC<NoDataProps> = ({
 }) => (
     <NoDataWrapper>
       <div className="title">{title}</div>
-      {hint && <div className="hint">{hint}</div>}
+      {hint && (
+        <div className="hint">{hint}</div>
+      )}
     </NoDataWrapper>
   );

@@ -20,9 +20,9 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   border: 0;
   outline: 0;
   display: flex;
-  width: ${({ width }) => width ? width : 'auto'};
+  width: ${({ width }) => width || 'auto'};
   background-color: ${({ theme }) => theme.colors.lighterGray};
-  font-size: ${({ size }) => size ? size + 'px' : '13px'};
+  font-size: ${({ size }) => size ? `${size}px` : '13px'};
   text-transform: uppercase;
   letter-spacing: .2pt;
   color: ${({ theme }) => theme.colors.gray};

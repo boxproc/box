@@ -19,7 +19,7 @@ const Link = styled.span<LinkProps>`
   border-bottom: 1px solid ${({ theme, isActive }) =>
     isActive ? theme.colors.lightAccent : theme.colors.lightGray};
   line-height: 1.4;
-  font-size: ${({ fontSize }) => fontSize ? fontSize : '12px'};
+  font-size: ${({ fontSize }) => fontSize || '12px'};
   cursor: pointer;
   transition: all .1s linear;
 

@@ -10,8 +10,8 @@ interface WrapperProps {
 
 export const EditorWrapper = styled.div<WrapperProps>`
   padding: 0;
-  height: ${({ height }) => height ? height : '220px'};
-  min-height: ${({ minHeight }) => minHeight ? minHeight : '220px'};
+  height: ${({ height }) => height || '220px'};
+  min-height: ${({ minHeight }) => minHeight || '220px'};
   border: 1px solid ${({ theme }) => theme.colors.gray};
   background: ${({ theme }) => theme.colors.white};
   border-radius: 2px;

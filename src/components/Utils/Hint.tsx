@@ -9,6 +9,8 @@ interface HintWrapperProps {
   icon?: boolean;
 }
 
+const hintShift = 'calc(100% + 3px)';
+
 const HintWrapper = styled.div<HintWrapperProps>`
   position: ${({ icon }) => icon ? 'relative' : 'absolute'};
   width: ${({ icon }) => icon ? 'auto' : '100%'};
@@ -21,10 +23,10 @@ const HintWrapper = styled.div<HintWrapperProps>`
 
   .hint {
     position: absolute;
-    top: ${({ position }) => position === 'bottom' ? 'calc(100% + 3px)' : 'auto'};
-    right: ${({ position }) => position === 'left' ? 'calc(100% + 3px)' : 'auto'};
-    bottom: ${({ position }) => position === 'top' ? 'calc(100% + 3px)' : 'auto'};
-    left: ${({ position }) => position === 'right' ? 'calc(100% + 3px)' : 'auto'};
+    top: ${({ position }) => position === 'bottom' ? hintShift : 'auto'};
+    right: ${({ position }) => position === 'left' ? hintShift : 'auto'};
+    bottom: ${({ position }) => position === 'top' ? hintShift : 'auto'};
+    left: ${({ position }) => position === 'right' ? hintShift : 'auto'};
     min-width: ${({ icon }) => icon ? '160px' : 'auto'};
     padding: 7px 10px;
     background-color: ${({ theme }) => theme.colors.white};
@@ -39,8 +41,8 @@ const HintWrapper = styled.div<HintWrapperProps>`
     font-size: 13px;
     line-height: 1.5;
     text-transform: none;
-    z-index: 1;
     white-space: ${({ icon }) => icon ? 'normal' : 'nowrap'};
+    z-index: 1;
   }
 
   .toggle-hint {

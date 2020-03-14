@@ -4,7 +4,6 @@ interface ModalWrapperProps {
   containerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
-  accentClose?: boolean;
   containerWidthAuto?: boolean;
   containerHeightFull?: boolean;
 }
@@ -17,7 +16,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   left: 0;
   padding: 0 5px;
   text-align: center;
-  z-index: ${({ zIndex }) => zIndex ? zIndex : 100};
+  z-index: ${({ zIndex }) => zIndex || 100};
 
   .modal-backdrop {
     position: fixed;
@@ -63,10 +62,10 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;
-    min-width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '350px'};
-    width: ${({ containerWidth }) => containerWidth ? containerWidth + 'px' : '500px'};
+    min-width: ${({ containerWidth }) => containerWidth ? `${containerWidth}px` : '350px'};
+    width: ${({ containerWidth }) => containerWidth ? `${containerWidth}px` : '500px'};
     min-height: ${({ minContainerHeight }) =>
-      minContainerHeight ? minContainerHeight + 'px' : '130px'};
+    minContainerHeight ? `${minContainerHeight}px` : '130px'};
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;
@@ -90,8 +89,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     line-height: .5;
     outline: none;
     cursor: pointer;
-    color: ${({ theme, accentClose }) =>
-    accentClose ? theme.colors.lightAccent : theme.colors.gray};
+    color: ${({ theme }) => theme.colors.lightAccent};
     padding: 10px;
     user-select: none;
     transition: all .1s linear;

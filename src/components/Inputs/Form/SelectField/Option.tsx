@@ -15,7 +15,10 @@ const OptionWrapper = styled.div<OptionWrapperProps>`
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  background-color: ${({ isFocused, theme }) => isFocused ? theme.colors.lightGray : ''};
+
+  ${({ isFocused, theme }) => isFocused && `
+    background-color: ${theme.colors.lightGray};
+  `}
 
   svg {
     cursor: pointer;

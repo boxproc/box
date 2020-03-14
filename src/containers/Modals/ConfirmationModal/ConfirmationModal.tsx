@@ -53,7 +53,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       containerWidth={350}
       zIndex="101"
       closeOnBackdrop={true}
-      accentClose={false}
       type={modalTypesConst.CONFIRMATION_MODAL}
     >
       <Hr accentColor={true} />

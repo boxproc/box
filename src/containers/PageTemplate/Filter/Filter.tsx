@@ -27,7 +27,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 
   .title {
     font-size: 18px;
-    color: ${({ theme, color }) => color ? color : theme.colors.darkGray};
+    color: ${({ theme, color }) => color || theme.colors.darkGray};
     font-weight: bold;
   }
 

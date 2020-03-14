@@ -23,6 +23,7 @@ const SpinnerContainer = styled.div<ExternalSpinnerProps & Options>`
   ${({ isLoading }) => isLoading ? 'position: relative' : ''};
   width: 100%;
   height: 100%;
+
   ${({ isLoading, isGlobal, maxHeight = '100vh' }) => isGlobal && isLoading
     ? `max-height: ${maxHeight}; overflow-y: hidden;`
     : ''

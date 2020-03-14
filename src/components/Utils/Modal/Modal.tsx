@@ -40,7 +40,6 @@ interface ModalProps extends WithModalProps {
   containerWidth?: string; // width of modal container
   minContainerHeight?: string; // min height of modal container
   zIndex?: string; // z-index of modal
-  accentClose?: boolean; // gives accent color for close icon '&times;'
   closeOnBackdrop?: boolean; // allows close modal on backdrop
   withCloseConfirmation?: boolean; // opens confirmation modal by modal close
   setActiveTableRowIndex: HandleSetActiveTableRowIndex; // sets active table row index to store
@@ -64,7 +63,6 @@ const Modal: React.FC<ModalProps> = ({
   containerWidth = '720',
   minContainerHeight,
   zIndex,
-  accentClose = true,
   closeOnBackdrop,
   withCloseConfirmation,
   setActiveTableRowIndex,
@@ -128,7 +126,6 @@ const Modal: React.FC<ModalProps> = ({
       containerWidthAuto={containerWidthAuto}
       containerHeightFull={containerHeightFull}
       zIndex={zIndex}
-      accentClose={accentClose}
     >
       <div
         className="modal-backdrop"
