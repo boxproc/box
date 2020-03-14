@@ -62,8 +62,8 @@ const Statements: React.FC<StatementsProps> = ({
 
   React.useEffect(
     () => {
-      setDateFrom(dateUtil.yesterdayDate);
-      setDateTo(dateUtil.todayDate);
+      setDateFrom(dateUtil.yesterdayDate());
+      setDateTo(dateUtil.todayDate());
 
       return () => resetStatements();
     },

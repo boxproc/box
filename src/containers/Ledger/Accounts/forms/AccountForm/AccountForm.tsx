@@ -126,7 +126,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
       const resetLoanValues = () => {
         change('numOfInstallments', 0);
         change('numOfInterestFreeInstllmnts', 0);
-        change('loanStartDate', dateUtil.todayDate);
+        change('loanStartDate', dateUtil.todayDate());
       };
 
       if (!isEditMode) {

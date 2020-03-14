@@ -41,7 +41,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   const convertToLoanInitValues = React.useMemo(
     () => {
       return {
-        startDate: dateUtil.todayDate,
+        startDate: dateUtil.todayDate(),
         amount: transactionAmount,
       };
     },

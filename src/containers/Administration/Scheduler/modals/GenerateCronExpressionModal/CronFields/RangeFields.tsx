@@ -7,7 +7,7 @@ import { SelectField } from 'components';
 
 import { monthsOptions } from 'consts';
 
-import { stringsUtil } from 'utils';
+import { dateUtil, stringsUtil } from 'utils';
 
 interface RangeFieldsProps {
   name: string;
@@ -20,7 +20,7 @@ interface RangeFieldsProps {
 const RangeFields: React.FC<RangeFieldsProps> = ({ name, unity, count, isMonth, isYear }) => {
   const numbersRangeArray = React.useMemo(
     () => isYear
-      ? stringsUtil.rangeNumbersArray(count, stringsUtil.currentYear)
+      ? stringsUtil.rangeNumbersArray(count, dateUtil.getCurrentYear())
       : stringsUtil.rangeDecimalNumbersArray(count),
     [count, isYear]
   );

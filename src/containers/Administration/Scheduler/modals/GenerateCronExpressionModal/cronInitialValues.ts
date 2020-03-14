@@ -1,3 +1,5 @@
+import { dateUtil } from 'utils';
+
 export const cronInitialValues = {
   cronSecond: 'cronSecondSpecific',
   cronSecondIncrementIncrement: { value: '1', label: '1' },
@@ -34,7 +36,16 @@ export const cronInitialValues = {
   cronMonthRangeEnd: { value: '1', label: 'January' },
   cronYear: 'cronEveryYear',
   cronYearIncrementIncrement: { value: '1', label: '1' },
-  cronYearIncrementStart: { value: '2019', label: '2019' },
-  cronYearRangeStart: { value: '2019', label: '2019' },
-  cronYearRangeEnd: { value: '2019', label: '2019' },
+  cronYearIncrementStart: {
+    value: dateUtil.getCurrentYear(),
+    label: dateUtil.getCurrentYear(),
+  },
+  cronYearRangeStart: {
+    value: dateUtil.getCurrentYear(),
+    label: dateUtil.getCurrentYear(),
+  },
+  cronYearRangeEnd: {
+    value: dateUtil.getCurrentYear(),
+    label: dateUtil.getCurrentYear(),
+  },
 };

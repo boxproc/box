@@ -5,7 +5,7 @@ import { highlightCss } from 'theme/styles';
 
 import { Container } from 'components';
 
-import { stringsUtil } from 'utils';
+import { dateUtil } from 'utils';
 
 const Wrapper = styled.footer`
   padding: 70px 0 15px;
@@ -23,13 +23,11 @@ const Wrapper = styled.footer`
 `;
 
 const Footer: React.FC = () => {
-  const currentYear = stringsUtil.currentYear;
-
   return (
     <Wrapper>
       <Container>
         <div className="highlight">
-          BOX Processing © 2019 - {currentYear} All rights reserved.
+          BOX Processing © 2019 - {dateUtil.getCurrentYear()} All rights reserved.
         </div>
       </Container>
     </Wrapper>

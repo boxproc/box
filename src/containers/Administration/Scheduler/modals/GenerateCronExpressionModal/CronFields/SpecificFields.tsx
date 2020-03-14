@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import { monthsOptionsWithStrValue } from 'consts';
 
 import { CheckboxField } from 'components';
-import { stringsUtil } from 'utils';
+import { dateUtil, stringsUtil } from 'utils';
 
 interface SpecificFieldsProps {
   name: string;
@@ -27,7 +27,7 @@ const SpecificFields: React.FC<SpecificFieldsProps> = ({
 }) => {
   const numbersRangeArray = React.useMemo(
     () => isYear
-      ? stringsUtil.rangeNumbersArray(count, stringsUtil.currentYear)
+      ? stringsUtil.rangeNumbersArray(count, dateUtil.getCurrentYear())
       : stringsUtil.rangeDecimalNumbersArray(count),
     [count, isYear]
   );

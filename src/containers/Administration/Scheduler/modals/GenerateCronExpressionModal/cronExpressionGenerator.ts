@@ -1,6 +1,6 @@
 import { CronValuesTypes } from './cronExpressionTypes';
 
-import { stringsUtil } from 'utils';
+import { dateUtil } from 'utils';
 
 export const cronExpressionGenerator = (values: Partial<CronValuesTypes>) => {
   if (!values) {
@@ -323,8 +323,8 @@ export const cronExpressionGenerator = (values: Partial<CronValuesTypes>) => {
       }
 
       if (value === '') {
-        value = stringsUtil.currentYear.toString();
-        description = ` ${stringsUtil.currentYear.toString()}`;
+        value = dateUtil.getCurrentYearStr();
+        description = ` ${dateUtil.getCurrentYearStr()}`;
       } else {
         value = value.slice(0, -1);
         description = description.slice(0, -1);

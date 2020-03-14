@@ -7,7 +7,7 @@ import { SelectField } from 'components';
 
 import { monthsOptions } from 'consts';
 
-import { stringsUtil } from 'utils';
+import { dateUtil, stringsUtil } from 'utils';
 
 interface IncrementFieldsProps {
   name: string;
@@ -26,14 +26,14 @@ const IncrementFields: React.FC<IncrementFieldsProps> = ({
 }) => {
   const incrementArray = React.useMemo(
     () => isYear
-      ? stringsUtil.rangeNumbersArray(count, stringsUtil.currentYear)
+      ? stringsUtil.rangeNumbersArray(count, dateUtil.getCurrentYear())
       : stringsUtil.rangeNumbersArray(count, 1),
     [isYear, count]
   );
 
   const incrementStartArray = React.useMemo(
     () => isYear
-      ? stringsUtil.rangeNumbersArray(count, stringsUtil.currentYear)
+      ? stringsUtil.rangeNumbersArray(count, dateUtil.getCurrentYear())
       : stringsUtil.rangeDecimalNumbersArray(count),
     [isYear, count]
   );
