@@ -64,7 +64,7 @@ const InfoButton = styled(InfoCircleIcon)`
 
 interface HintProps {
   text: string | React.ReactChild;
-  position?: 'top' | 'right' | 'bottom' | 'left' | string;
+  position?: 'top' | 'right' | 'bottom' | 'left';
   icon?: boolean;
   style?: object;
 }

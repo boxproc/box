@@ -6,10 +6,12 @@ import styled from 'theme';
 
 import { ArrowDropDownIcon } from './../Icons';
 
+type AvailablePosition = 'left' | 'right' | 'center';
+
 interface DropdownWrapperProps {
   isActive: boolean;
   isDisabled?: boolean;
-  position?: 'left' | 'right' | 'center';
+  position?: AvailablePosition;
 }
 
 const DropdownWrapper = styled.div<DropdownWrapperProps>`
@@ -78,7 +80,7 @@ const ToggleButton = styled(ArrowDropDownIcon)`
 
 export interface DropdownProps {
   selectable?: boolean;
-  dropdownListPosition?: 'left' | 'right' | 'center';
+  dropdownListPosition?: AvailablePosition;
   ToggleButtonComponent?: ReactChild;
   isDisabled?: boolean;
 }
