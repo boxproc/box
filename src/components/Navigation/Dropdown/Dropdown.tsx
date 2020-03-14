@@ -4,70 +4,10 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { ArrowDropDownIcon } from './../Icons';
+import { ArrowDropDownIcon } from './../../Icons';
+import { DropdownWrapper } from './DropdownWrapper';
 
 type AvailablePosition = 'left' | 'right' | 'center';
-
-interface DropdownWrapperProps {
-  isActive: boolean;
-  isDisabled?: boolean;
-  position?: AvailablePosition;
-}
-
-const DropdownWrapper = styled.div<DropdownWrapperProps>`
-  position: relative;
-  display: inline-block;
-  user-select: none;
-
-  .dropdown-list {
-    position: absolute;
-    left: ${({ position }) => position === 'left' ? '-10px' : 'auto'};
-    right: ${({ position }) => position === 'right' ? '0' : 'auto'};
-    top: calc(100% + 2px);
-    background-color: ${({ theme }) => theme.colors.white};
-    border: 1px solid ${({ theme }) => theme.colors.darkGray};
-    border-radius: 2px;
-    z-index: 11;
-
-  ${({ position }) => position === 'center' && `
-    transform: translateX(-50%);
-    margin-left: 50%;
-  `};
-  }
-
-  .dropdown-option {
-    margin: 1px;
-    transition: all .1s linear;
-
-    > * {
-      padding: 10px 10px 8px;
-      width: 100%;
-    }
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.lighterGray};
-    }
-  }
-
-  .dropdown-toggle-btn {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    * {
-      color: ${({ theme, isActive }) => isActive && theme.colors.normalAccent};
-    }
-
-    &:hover * {
-      color: ${({ theme }) => theme.colors.normalAccent};
-    }
-  }
-
-  ${({ isDisabled }) => isDisabled && `
-    pointer-events: none;
-    opacity: .5;
-  `};
-`;
 
 const ToggleButton = styled(ArrowDropDownIcon)`
   color: ${({ theme }) => theme.colors.gray};
@@ -171,10 +111,4 @@ export const Dropdown: React.FC<DropdownProps> = ({
   );
 };
 
-export const DropdownOption: React.FC = ({
-  children,
-}) => {
-  return (
-    <React.Fragment>{children}</React.Fragment>
-  );
-};
+export default Dropdown;
