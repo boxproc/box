@@ -3,7 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { cookiesNamesConst } from 'consts';
 
-import { handleSendNotification } from './notifications';
+import { handleSendNotification } from 'store/domains';
 
 import { StoreState } from 'store/StoreState';
 

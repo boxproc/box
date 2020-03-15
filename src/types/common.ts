@@ -1,6 +1,6 @@
 import { CellInfo } from 'react-table';
 import { Action, AnyAction } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { Response as SuperagentApiResponse } from 'superagent';
 
 import { StoreState } from 'store/StoreState';
@@ -30,9 +30,6 @@ export interface MessageResponse {
 }
 
 export type ApiResponse = SuperagentApiResponse;
-
-export type SendNotification = (res: MessageResponse, isCatch?: boolean) =>
-  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export interface PromiseAction<R> extends Action {
   payload: R;

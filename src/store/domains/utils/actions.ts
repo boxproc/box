@@ -1,3 +1,11 @@
+import { Action, } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+import config from 'config';
+import { modalNamesConst } from 'consts';
+
+import { StoreState } from 'store/StoreState';
+import { openModal } from './../modals';
 import {
   ActionTypeKeys,
   SetActiveItemIdAction,
@@ -8,6 +16,9 @@ import {
   StartAutoRefreshAction,
   StopAutoRefreshAction,
 } from './actionTypes';
+
+import { MessageResponse } from 'types';
+import { stringsUtil } from 'utils';
 
 export type SetActiveTableRowIndex = (index: number) => SetActiveTableRowIndexAction;
 export type HandleSetActiveTableRowIndex = (index: number) => void;
@@ -25,6 +36,9 @@ export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
 
 export type ResetUtils = () => void;
+
+export type SendNotification = (res: MessageResponse, isCatch?: boolean) =>
+  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
   type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX,
@@ -67,3 +81,48 @@ export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index 
   setActiveTableRowIndex(index);
 
 export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemId(id);
+
+const getNotification = (
+  title: string,
+  message: string,
+  details?: string,
+  statusCode?: string,
+  errorCode?: number
+) => openModal({
+  name: modalNamesConst.MESSAGE,
+  payload: { title, message, details, statusCode, errorCode },
+});
+
+export const handleSendNotification: SendNotification =
+  (res, isCatch = false) =>
+    async dispatch => {
+      if (isCatch) {
+        if (config.isDevelopment) {
+          console.log('---res', res);
+        }
+
+        if (res && res.body && res.body.response_status) {
+          const { statusCode } = res;
+          const { error_message, error_description, status_code } = res.body.response_status;
+
+          const errorDescription = error_description
+            ? stringsUtil.addNewLines(error_description)
+            : '';
+
+          dispatch(getNotification(
+            `${statusCode} Error`, // title
+            error_message, // message
+            errorDescription, // description
+            status_code, // status code
+            statusCode // error code
+          ));
+        } else {
+          dispatch(getNotification(
+            `${(res && res.statusCode) ? res.statusCode : ''} Error`, // title
+            (res && res.error && res.error.message) // message
+              ? res.error.message.toString()
+              : 'An error occurred.'
+          ));
+        }
+      }
+    };
