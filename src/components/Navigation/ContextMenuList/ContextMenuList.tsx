@@ -48,7 +48,7 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
     }
 
     &:hover > .arrow-icon {
-      color: #ffa400;
+      color: ${({ theme }) => theme.colors.normalAccent};
     }
   }
 

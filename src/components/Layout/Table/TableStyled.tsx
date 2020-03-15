@@ -1,7 +1,15 @@
 ﻿import 'react-table/react-table.css';
 
-import styled from 'theme';
+import styled, { theme as themeColors } from 'theme';
 import { scrollbarCss } from 'theme/styles';
+
+const gradients = {
+  rowActive: `linear-gradient(to bottom,
+    hsla(0,0%,0%,0) 0, ${themeColors.colors.lighterAccent} 50%,
+    hsla(0,0%,0%,0) 100%)`,
+  cellWhite: 'linear-gradient(to right, rgba(255, 255, 255, .6) 0%,rgba(255, 255, 255,1) 100%)',
+  cellGray: 'linear-gradient(to right, rgba(243, 243, 243, .6) 0%,rgba(243, 243, 243,1) 100%)',
+};
 
 interface TableStyledProps {
   activeRowIndex: number;
@@ -22,19 +30,17 @@ export const TableStyled = styled.div<TableStyledProps>`
       min-height: ${minHeight}px;
     `};
 
-    .rt-table,
-    .rt-tbody {
+    .rt-table, .rt-tbody {
       overflow: visible;
     }
 
-    .rt-tbody .rt-td {
-      ${({ isScrollbar }) => !isScrollbar && `
+    ${({ isScrollbar }) => !isScrollbar && `
+      .rt-tbody .rt-td {
         overflow: visible;
-      `};
-    }
+      }
+    `};
 
-    .rt-thead .rt-th,
-    .rt-tbody .rt-td {
+    .rt-thead .rt-th, .rt-tbody .rt-td {
       padding: 0;
     }
 
@@ -119,9 +125,7 @@ export const TableStyled = styled.div<TableStyledProps>`
       height: 100%;
       width: 0.12rem;
       display: block;
-      background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
-        ${({ theme }) => theme.colors.lighterAccent} 50%,
-        hsla(0,0%,0%,0) 100%);
+      background-image: ${gradients.rowActive};
     }
 
     ${({ activeRowIndex, theme }) => activeRowIndex && `
@@ -139,9 +143,7 @@ export const TableStyled = styled.div<TableStyledProps>`
         height: 100%;
         width: 0.12rem;
         display: block;
-        background-image: linear-gradient(to bottom, hsla(0,0%,0%,0) 0,
-          ${theme.colors.lighterAccent} 50%,
-          hsla(0,0%,0%,0) 100%);
+        background-image: ${gradients.rowActive};
       }
     `}
 
@@ -157,17 +159,17 @@ export const TableStyled = styled.div<TableStyledProps>`
         bottom: 3px;
         right: 0;
         width: 5px;
-        background: linear-gradient(to right, rgba(255,255,255,.6) 0%,rgba(255,255,255,1) 100%);
+        background: ${gradients.cellWhite};
       }
     }
 
     .rt-tbody .rt-tr-group:hover .rt-td:before {
-      background: linear-gradient(to right, rgba(243,243,243,.6) 0%,rgba(243,243,243,1) 100%);
+      background: ${gradients.cellGray};
     }
 
     ${({ activeRowIndex }) => activeRowIndex && `
       .rt-tbody .rt-tr-group:nth-child(${activeRowIndex}) .rt-td:before {
-        background: linear-gradient(to right, rgba(243,243,243,.6) 0%,rgba(243,243,243,1) 100%);
+        background: ${gradients.cellGray};
       }
     `};
 

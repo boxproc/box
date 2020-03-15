@@ -15,7 +15,6 @@ const Wrapper = styled.div<InputCommonProps>`
 `;
 
 interface MaskFieldProps extends InputCommonProps {
-  fieldClassName?: string;
   mask: string;
   maskChar?: string | null;
   maskPlaceholder?: string;
@@ -33,7 +32,6 @@ interface MaskFieldProps extends InputCommonProps {
 
 const MaskField: React.FC<MaskFieldProps> = ({
   invalid,
-  fieldClassName,
   isRequired,
   ...props
 }) => {

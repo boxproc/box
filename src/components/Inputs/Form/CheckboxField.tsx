@@ -43,14 +43,12 @@ interface CheckboxProps extends BaseFieldProps, Partial<WrappedFieldProps> {
   value: boolean;
   id: string;
   onChange: (event: ChangeEvent, newValue?: boolean, name?: string) => void;
-  fieldClassName?: string;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
   value,
   id,
   meta: { invalid, touched },
-  fieldClassName,
   ...props
 }) => {
   return (
@@ -112,17 +110,17 @@ const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
         />
       </div>
       {
-        typeof label === 'string' ? (
-          <DefaultLabel
-            className="label"
-            htmlFor={id}
-            active={true}
-          >
-            {label}
-          </DefaultLabel>
-        ) : (
-            <Label {...props} />
+        typeof label === 'string'
+          ? (
+            <DefaultLabel
+              className="label"
+              htmlFor={id}
+              active={true}
+            >
+              {label}
+            </DefaultLabel>
           )
+          : (<Label {...props} />)
       }
     </CheckboxWrapper>
   );

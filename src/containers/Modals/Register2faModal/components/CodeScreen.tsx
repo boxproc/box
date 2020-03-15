@@ -13,7 +13,7 @@ const DashedBlock = styled.div`
   padding: 10px;
   text-align: center;
   font-size: 14px;
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: ${({ theme }) => theme.colors.lighterGray};
   border: 1px dashed ${({ theme }) => theme.colors.gray};
   font-size: 14px;
   font-family: ${({ theme }) => theme.fonts.code};

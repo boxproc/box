@@ -48,7 +48,6 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   invalid?: boolean;
   preventBlur?: boolean | undefined;
   validateOnChange?: boolean;
-  fieldClassName?: string;
   showErrors?: boolean;
   updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
@@ -71,7 +70,6 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   id,
   preventBlur,
   validateOnChange,
-  fieldClassName = '',
   showErrors = true,
   focusOnLabelClick = false,
   invalid: defaultInvalid,
@@ -93,7 +91,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
   }
 
   return (
-    <InputFieldWrapper className={['input-field', fieldClassName].join(' ')}>
+    <InputFieldWrapper className="input-field">
       {label && (
         <Label
           htmlFor={focusOnLabelClick ? id : null}

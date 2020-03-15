@@ -23,7 +23,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
   padding: 10px 15px 12px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
   border-radius: 2px;
-  background-color: rgba(0, 0, 0, .02);
+  background-color: ${({ theme }) => theme.colors.lighterGrayCell};
 
   .title {
     font-size: 18px;

@@ -4,64 +4,66 @@ export interface ThemeProps {
 
 export default interface Theme {
   fonts: {
-    normal: string,
-    decorate: string;
     code: string;
+    decorate: string;
+    normal: string,
   };
   colors: {
-    normalAccent: string;
     lightAccent: string;
     lighterAccent: string;
+    normalAccent: string;
 
     black: string;
     blackOpacity: string;
 
     red: string;
 
-    gray: string;
-    lightGray: string;
-    lighterGray: string;
-    lighterGrayHover: string;
     darkGray: string;
+    gray: string;
+    lighterGray: string;
+    lighterGrayCell: string;
+    lighterGrayHover: string;
+    lightGray: string;
 
     white: string;
     whiteOpacity: string;
   };
   shadows: {
-    normalBox: string;
-    bottomBox: string;
     aroundBox: string;
+    bottomBox: string;
+    normalBox: string;
   };
 }
 
 export const theme: Theme = {
   fonts: {
-    normal: 'Roboto, sans-serif',
-    decorate: 'Raleway, sans-serif',
     code: 'Roboto Mono, monospace',
+    decorate: 'Raleway, sans-serif',
+    normal: 'Roboto, sans-serif',
   },
   colors: {
-    normalAccent: '#ffa400',
     lightAccent: '#ffbf4d',
     lighterAccent: 'rgba(255, 164, 0, .9)',
+    normalAccent: '#ffa400',
 
     black: '#333333',
     blackOpacity: 'rgba(0, 0, 0, .7)',
 
     red: '#FF0000',
 
-    gray: '#999999',
-    lightGray: '#e6e6e6',
-    lighterGray: '#f3f3f3',
-    lighterGrayHover: '#f0f0f0',
     darkGray: '#6c6c6c',
+    gray: '#999999',
+    lighterGray: '#f3f3f3',
+    lighterGrayCell: '#fafafa',
+    lighterGrayHover: '#f0f0f0',
+    lightGray: '#e6e6e6',
 
     white: '#ffffff',
     whiteOpacity: 'rgba(255, 255, 255, .8)',
   },
   shadows: {
-    normalBox: '0 2px 4px 0 rgba(0, 0, 0, .1)',
-    bottomBox: '0 3px 3px 0 rgba(0, 0, 0, .1)',
     aroundBox: '0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15)',
+    bottomBox: '0 3px 3px 0 rgba(0, 0, 0, .1)',
+    normalBox: '0 2px 4px 0 rgba(0, 0, 0, .1)',
   },
 };

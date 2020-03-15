@@ -116,7 +116,7 @@ export const downloadStatementPDF = (data: {
           minCellWidth: 45,
           fontSize: 7,
           textColor: theme.colors.black,
-          fillColor: '#fafafa',
+          fillColor: theme.colors.lighterGrayCell,
         },
         headStyles: {
           fontStyle: 'normal',

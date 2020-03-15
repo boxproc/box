@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'theme';
+import styled, { theme } from 'theme';
 
 import { IconColorProps } from './types';
 
@@ -8,7 +8,7 @@ const UncheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
   <svg width={15} height={15} viewBox="0 0 15 15" {...props}>
     <path
       fill="none"
-      stroke="#0B132B"
+      stroke={theme.colors.black}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeOpacity={0.4}
@@ -29,8 +29,8 @@ UncheckedBoxIcon.defaultProps = {
 const CheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
   <svg width={15} height={15} viewBox="0 0 15 15" {...props}>
     <g
-      fill="#fffaf2"
-      stroke="#ffa400"
+      fill="none"
+      stroke={theme.colors.normalAccent}
       strokeLinecap="round"
       strokeLinejoin="round"
     >

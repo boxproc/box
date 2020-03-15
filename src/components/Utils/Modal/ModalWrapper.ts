@@ -22,7 +22,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, .6);
+    background-color: ${({ theme }) => theme.colors.blackOpacity};
 
     &.is-blured {
       backdrop-filter: blur(2.5px);
@@ -61,7 +61,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     vertical-align: middle;
     margin: 5px auto;
     padding: 15px;
-    background-color: #fafafa;
+    background-color: ${({ theme }) => theme.colors.lighterGrayCell};
     text-align: left;
     box-sizing: border-box;
     min-width: ${({ containerWidth }) => containerWidth || '350px'};

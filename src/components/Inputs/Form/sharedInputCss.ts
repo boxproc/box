@@ -24,7 +24,7 @@ export const sharedInputCss = css<InputProps>`
 
   ${({ isEditableCellStyle, theme }) => isEditableCellStyle && `
     border-color: transparent;
-    background-color: #fafafa;
+    background-color: ${theme.colors.lighterGrayCell};
     height: auto;
     align-self: flex-start;
     padding: 0 6px;
