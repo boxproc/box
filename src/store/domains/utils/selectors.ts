@@ -15,5 +15,3 @@ export const selectIsClearActiveIds = (state: StoreState) => state.utils.isClear
 export const selectIsOpenFilter = (state: StoreState) => state.utils.isOpenFilter;
 
 export const selectIsAccessibleFiltering = (state: StoreState) => state.utils.isAccessibleFiltering;
-
-export const selectIsRelogin = (state: StoreState) => state.utils.isRelogin;

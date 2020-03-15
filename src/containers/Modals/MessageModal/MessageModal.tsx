@@ -8,12 +8,11 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from 'consts';
 
-import { PayloadMessageModal, SetIsRelogin } from 'store/domains';
+import { PayloadMessageModal } from 'store/domains';
 import { storageUtil, urlUtil } from 'utils';
 
 interface MessageModalProps extends RouteComponentProps, WithModalProps {
   payloadMessageModal: PayloadMessageModal;
-  setIsRelogin: SetIsRelogin;
 }
 
 const modalName = modalNamesConst.MESSAGE;
@@ -21,7 +20,6 @@ const modalName = modalNamesConst.MESSAGE;
 const MessageModal: React.FC<MessageModalProps> = ({
   payloadMessageModal,
   closeModal,
-  setIsRelogin,
 }) => {
   const [isVisibleDetails, setVisibleDetails] = React.useState(false);
 
@@ -58,15 +56,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
     [statusCode, isSessionEnded]
   );
 
-  React.useEffect(
-    () => {
-      if (isReLogin) {
-        setIsRelogin(true);
-      }
-    },
-    [isReLogin, setIsRelogin]
-  );
-
   const detailsButtonText = React.useMemo(
     () => isVisibleDetails ? 'Hide Details' : 'Show Details',
     [isVisibleDetails]
@@ -74,6 +63,10 @@ const MessageModal: React.FC<MessageModalProps> = ({
 
   const modalTitle = React.useMemo(
     () => {
+      if (!payloadMessageModal) {
+        return null;
+      }
+
       const { title } = payloadMessageModal;
 
       return isSessionEnded ? 'Session ended' : title;
@@ -111,6 +104,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
       containerWidth={modalWidth}
       type={modalTypesConst.MESSAGE_MODAL}
       hideCloseIcon={isReLogin}
+      isBackdropBlured={isReLogin}
       zIndex="102"
     >
       <Paragraph light={true}>{message}</Paragraph>

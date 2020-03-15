@@ -10,7 +10,6 @@ export const utilsInitialState: ImmutableObject<UtilsState> = Immutable({
   isAutoRefresh: false,
   isClearActiveIds: true,
   isOpenFilter: true,
-  isRelogin: false,
   isAccessibleFiltering: true,
   activePagePermission: null,
 });
@@ -35,9 +34,6 @@ const utilsReducer =
 
       case ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING:
         return state.set('isAccessibleFiltering', action.payload);
-
-      case ActionTypeKeys.SET_IS_RELOGIN:
-        return state.set('isRelogin', action.payload);
 
       case ActionTypeKeys.START_AUTO_REFRESH:
         return state.set('isAutoRefresh', true);

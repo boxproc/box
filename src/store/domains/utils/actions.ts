@@ -6,7 +6,6 @@ import {
   SetIsAccessibleFilteringAction,
   SetIsClearActiveIdsAction,
   SetIsOpenFilterAction,
-  SetIsReloginAction,
   StartAutoRefreshAction,
   StopAutoRefreshAction,
 } from './actionTypes';
@@ -25,8 +24,6 @@ export type HandleSetIsClearActiveIds = (value: boolean) => void;
 export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
 
 export type SetIsAccessibleFiltering = (value: boolean) => SetIsAccessibleFilteringAction;
-
-export type SetIsRelogin = (value: boolean) => SetIsReloginAction;
 
 export type StartAutoRefresh = () => StartAutoRefreshAction;
 export type StopAutoRefresh = () => StopAutoRefreshAction;
@@ -60,11 +57,6 @@ export const setIsOpenFilter: SetIsOpenFilter = value => ({
 
 export const setIsAccessibleFiltering: SetIsAccessibleFiltering = value => ({
   type: ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING,
-  payload: value,
-});
-
-export const setIsRelogin: SetIsRelogin = value => ({
-  type: ActionTypeKeys.SET_IS_RELOGIN,
   payload: value,
 });
 

@@ -25,6 +25,10 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .6);
+
+    &.is-blured {
+      backdrop-filter: blur(2.5px);
+    }
   }
 
   .modal-container-wrapper {

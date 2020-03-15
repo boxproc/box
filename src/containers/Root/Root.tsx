@@ -9,87 +9,47 @@ import {
   Footer,
   PrivateRoute,
 } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
 
-import { basePath, modalNamesConst, modalTypesConst } from 'consts';
+import { basePath } from 'consts';
 
 import Header from 'containers/Header';
 import { Home, Login } from 'containers/Landings';
 import Modals from 'containers/Modals';
 import { pagesList } from 'containers/pagesList';
 
-import { SetIsRelogin } from 'store/domains';
-
 import { storageUtil } from 'utils';
 
-interface RootWrapperProps {
-  isBlured?: boolean;
-}
-
-const RootWrapper = styled.div<RootWrapperProps>`
+const RootWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 1025px;
   height: 100vh;
   padding-top: 64px;
-
-  ${({ isBlured }) => isBlured && `
-    filter: blur(3px);
-    pointer-events: none;
-    user-select: none;
-  `};
 `;
 
 const PagesWrapper = styled(Container)`
   padding-top: 15px;
 `;
 
-interface RootProps extends ExternalSpinnerProps, WithModalProps {
+interface RootProps extends ExternalSpinnerProps {
   visibleUiItemsList: Array<string>;
-  setIsRelogin: SetIsRelogin;
-  isRelogin: boolean;
 }
 
-const Root: React.FC<RootProps> = ({
-  visibleUiItemsList,
-  openModal,
-  setIsRelogin,
-  isRelogin,
-}) => {
-  const isLoggedIn = React.useMemo(
-    () => storageUtil.getLoginFlag(),
-    []
-  );
-
-  React.useEffect(
-    () => {
-      if (isLoggedIn && !storageUtil.getSessionId()) {
-        setIsRelogin(true);
-      }
-    },
-    [isLoggedIn, isRelogin, setIsRelogin]
-  );
-
-  React.useEffect(
-    () => {
-      if (isRelogin) {
-        openModal({
-          name: modalNamesConst.MESSAGE,
-          payload: { type: modalTypesConst.SESSION_ENDED },
-        });
-      }
-    },
-    [isRelogin, openModal]
-  );
+const Root: React.FC<RootProps> = ({ visibleUiItemsList }) => {
+  const isLoggedIn = storageUtil.getLoginFlag();
 
   const routes = React.useMemo(
-    () => !isRelogin
-      && pagesList
-      && pagesList.map(page => {
-        return visibleUiItemsList
-          && visibleUiItemsList.includes(page.path)
-          && (
+    () => {
+      if (!isLoggedIn || !pagesList || !visibleUiItemsList) {
+        return null;
+      }
+
+      const preparedRoutes: Array<object> = [];
+
+      pagesList.forEach(page => {
+        if (visibleUiItemsList.includes(page.path)) {
+          preparedRoutes.push(
             <PrivateRoute
               exact={true}
               key={page.path}
@@ -97,18 +57,20 @@ const Root: React.FC<RootProps> = ({
               component={() => page.component}
             />
           );
-      }),
-    [visibleUiItemsList, isRelogin]
+        }
+      });
+
+      return preparedRoutes;
+    },
+    [visibleUiItemsList, isLoggedIn]
   );
 
   return (
     <React.Fragment>
-      <RootWrapper isBlured={isRelogin}>
+      <RootWrapper>
         <div>
           <div>
-            {isLoggedIn && (
-              <Header />
-            )}
+            {isLoggedIn && (<Header />)}
           </div>
           <main>
             <PagesWrapper>
@@ -117,7 +79,7 @@ const Root: React.FC<RootProps> = ({
                   exact={true}
                   path={`${basePath}login`}
                   render={
-                    () => !isLoggedIn ? (<Login />) : (<Redirect from="*" to={basePath} />)
+                    () => isLoggedIn ? (<Redirect from="*" to={basePath} />) : (<Login />)
                   }
                 />
                 {routes}
@@ -132,9 +94,9 @@ const Root: React.FC<RootProps> = ({
         </div>
         <Footer />
       </RootWrapper>
-      <Modals isRelogin={isRelogin} />
+      <Modals />
     </React.Fragment>
   );
 };
 
-export default withModal(Root);
+export default Root;

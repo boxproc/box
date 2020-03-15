@@ -49,7 +49,8 @@ interface ModalProps extends WithModalProps {
   isEditModalOpened: boolean; // open state of edit modal
   containerWidthAuto?: boolean; // sets width of container to 'auto'
   containerHeightFull?: boolean; // sets height of container to '100vh'
-  hideCloseIcon?: boolean; // hides close icon '&times;
+  hideCloseIcon?: boolean; // hides close icon '&times';
+  isBackdropBlured?: boolean;
   TitleIcon?: ReactChild;
 }
 
@@ -74,6 +75,7 @@ const Modal: React.FC<ModalProps> = ({
   containerWidthAuto,
   containerHeightFull,
   hideCloseIcon,
+  isBackdropBlured,
   TitleIcon,
 }) => {
   const isClearableActiveIdsFromStore = React.useMemo(
@@ -128,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({
       zIndex={zIndex}
     >
       <div
-        className="modal-backdrop"
+        className={`modal-backdrop ${isBackdropBlured ? 'is-blured' : ''}`}
         onClick={closeOnBackdrop ? handleCloseModal : () => null}
       />
       <div className="modal-container-wrapper">
