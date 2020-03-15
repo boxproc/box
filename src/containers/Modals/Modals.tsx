@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 
 import { ScrollDisable } from 'theme/styles';
 
@@ -9,22 +9,31 @@ interface ModalsProps {
 }
 
 const Modals: React.FC<ModalsProps> = ({ modalsStateList }) => {
-  return (
-    <React.Fragment>
-      {modalsList.map((modal, index) => {
+  const activeModals = React.useMemo(
+    () => {
+      const preparedList: Array<ReactChild> = [];
+
+      modalsList.forEach((modal, index) => {
         const { name, component } = modal;
 
-        if (!modalsStateList[`is${name}`]) {
-          return null;
+        if (modalsStateList[`is${name}`]) {
+          preparedList.push(
+            <div key={name + index}>
+              {name && (<ScrollDisable />)}
+              {component}
+            </div>
+          );
         }
+      });
 
-        return (
-          <div key={name + index}>
-            {name && (<ScrollDisable />)}
-            {component}
-          </div>
-        );
-      })}
+      return preparedList;
+    },
+    [modalsStateList]
+  );
+
+  return (
+    <React.Fragment>
+      {activeModals}
     </React.Fragment>
   );
 };

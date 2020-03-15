@@ -4,7 +4,6 @@ import {
   SetActivePagePermissionAction,
   SetActiveTableRowIndexAction,
   SetIsAccessibleFilteringAction,
-  SetIsClearActiveIdsAction,
   SetIsOpenFilterAction,
   StartAutoRefreshAction,
   StopAutoRefreshAction,
@@ -17,9 +16,6 @@ export type SetActiveItemId = (id: number | string) => SetActiveItemIdAction;
 export type HandleSetActiveItemId = (id: number | string) => void;
 
 export type SetActivePagePermission = (value: string) => SetActivePagePermissionAction;
-
-export type SetIsClearActiveIds = (value: boolean) => SetIsClearActiveIdsAction;
-export type HandleSetIsClearActiveIds = (value: boolean) => void;
 
 export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
 
@@ -42,11 +38,6 @@ export const setActiveItemId: SetActiveItemId = id => ({
 
 export const setActivePagePermission: SetActivePagePermission = value => ({
   type: ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION,
-  payload: value,
-});
-
-export const setIsClearActiveIds: SetIsClearActiveIds = value => ({
-  type: ActionTypeKeys.SET_IS_CLEAR_ACTIVE_IDS,
   payload: value,
 });
 
@@ -76,6 +67,3 @@ export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index 
   setActiveTableRowIndex(index);
 
 export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemId(id);
-
-export const handleSetIsClearActiveIds: HandleSetIsClearActiveIds = value =>
-  setIsClearActiveIds(value);

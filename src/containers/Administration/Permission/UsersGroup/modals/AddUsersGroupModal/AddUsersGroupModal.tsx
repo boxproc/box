@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { AddUserGroupForm } from 'containers/Administration/Permission/UsersGroup/forms';
 
@@ -26,8 +26,7 @@ const AddAdminUsersGroupModal: React.FC<AddUserModalProps> = ({
     <Modal
       name={modalName}
       title="Add New User Group"
-      type={modalTypesConst.EDIT_MODAL}
-      containerWidth={350}
+      containerWidth="350px"
       withCloseConfirmation={isFormDirty}
     >
       <AddUserGroupForm onCancel={handleOnCancel} />

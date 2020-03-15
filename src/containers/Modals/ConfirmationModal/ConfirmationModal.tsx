@@ -50,10 +50,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      containerWidth={350}
-      zIndex="101"
-      closeOnBackdrop={true}
-      type={modalTypesConst.CONFIRMATION_MODAL}
+      containerWidth="350px"
+      type={modalTypesConst.CONFIRMATION}
     >
       <Hr accentColor={true} />
       {confirmationText && (

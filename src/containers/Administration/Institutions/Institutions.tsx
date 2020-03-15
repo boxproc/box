@@ -72,7 +72,7 @@ const Institutions: React.FC<InstitutionsProps> = ({
       columns={tableColumns}
       isDownloadButton={true}
       newModalName={isMasterInstitution && modalNamesConst.ADD_INSTITUTION}
-      editModalName={modalNamesConst.EDIT_INSTITUTION}
+      viewingModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
       isLoading={isLoading}
     />

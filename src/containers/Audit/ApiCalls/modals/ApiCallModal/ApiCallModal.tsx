@@ -36,9 +36,9 @@ const ApiCallModal: React.FC<ApiCallModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title="API Call"
-      containerWidth={980}
+      containerWidth="980px"
     >
       <ApiCallForm />
       <Flex justifyContent="flex-end">

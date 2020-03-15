@@ -46,9 +46,9 @@ const EditUsersGroupModal: React.FC<EditUsersGroupModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title={modalTitle}
-      minContainerHeight={580}
+      minContainerHeight="580px"
       withCloseConfirmation={isAnyFormDirty}
     >
       <EditUserGroupForms

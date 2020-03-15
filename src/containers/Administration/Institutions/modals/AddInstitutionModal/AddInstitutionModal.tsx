@@ -26,7 +26,7 @@ const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
     <Modal
       name={modalName}
       title="Add Institution"
-      containerWidth={550}
+      containerWidth="550px"
       withCloseConfirmation={isFormDirty}
     >
       <InstitutionForm onCancel={handleOnCancel} />

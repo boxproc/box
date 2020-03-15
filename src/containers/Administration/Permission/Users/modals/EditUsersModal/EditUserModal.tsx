@@ -41,9 +41,9 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title={modalTitle}
-      containerWidth={750}
+      containerWidth="750px"
       withCloseConfirmation={isFormDirty}
     >
       <UserForm

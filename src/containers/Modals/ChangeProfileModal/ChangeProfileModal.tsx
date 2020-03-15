@@ -40,7 +40,7 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
     <Modal
       name={modalName}
       title="Change Profile"
-      containerWidth={300}
+      containerWidth="300px"
     >
       <ChangeProfileForm
         adminAccessUsersOptions={adminAccessUsersOptions}

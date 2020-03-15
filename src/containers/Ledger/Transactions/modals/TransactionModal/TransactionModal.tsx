@@ -56,10 +56,10 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title={modalTitle}
-      containerWidth={1010}
-      minContainerHeight={580}
+      containerWidth="1010px"
+      minContainerHeight="580px"
     >
       {!isConvertibleToLoan && (
         <TransactionForm onCancel={handleOnCancel} />

@@ -26,7 +26,7 @@ const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
     <Modal
       name={modalName}
       title="Add New Customer"
-      containerWidth={1010}
+      containerWidth="1010px"
       withCloseConfirmation={isFormDirty}
     >
       <CustomerForm onCancel={handleOnCancel} />

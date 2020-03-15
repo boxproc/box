@@ -46,10 +46,10 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title={modalTitle}
-      containerWidth={1010}
-      minContainerHeight={600}
+      containerWidth="1010px"
+      minContainerHeight="600px"
       withCloseConfirmation={isFormDirty}
       TitleIcon={ProductImages[currentProductType]}
     >

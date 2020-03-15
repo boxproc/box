@@ -3,7 +3,6 @@ export interface UtilsState {
   activeItemId: number;
   activePagePermission: null;
   isAutoRefresh: boolean;
-  isClearActiveIds: boolean;
   isOpenFilter: boolean;
   isAccessibleFiltering: boolean;
 }

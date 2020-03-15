@@ -6,21 +6,19 @@ import { icons } from './icons';
 
 interface MenuItemProps {
   key?: number;
-  preventClose: boolean;
   item: ContextMenuItemProps;
   onClick?: (e: Event, value: ContextMenuItemProps) => void;
 }
 
 const ContextMenuItem: React.FC<MenuItemProps> = ({
   key,
-  preventClose,
   item,
   onClick,
 }) => {
   return (
     <MenuItem
       key={key}
-      preventClose={preventClose}
+      preventClose={true}
       disabled={item.isDisabled}
       data={{
         name: item.name,

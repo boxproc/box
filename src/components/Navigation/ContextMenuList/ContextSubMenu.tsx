@@ -10,15 +10,10 @@ import { ContextMenuItemProps, ContextSubMenuItem } from 'types';
 
 interface ContextSubMenuProps {
   subMenu: ContextSubMenuItem;
-  preventClose?: boolean;
   onClick?: (e: Event, value: ContextMenuItemProps) => void;
 }
 
-const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
-  onClick,
-  preventClose = false,
-  subMenu,
-}) => {
+const ContextSubMenu: React.FC<ContextSubMenuProps> = ({ onClick, subMenu }) => {
   const isNoData = React.useMemo(
     () => (!subMenu.items || (subMenu.items && !subMenu.items.length))
       && (!subMenu.subItems || (subMenu.subItems && !subMenu.subItems.length)),
@@ -44,7 +39,6 @@ const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
           <ContextMenuItem
             key={i}
             item={item}
-            preventClose={preventClose}
             onClick={onClick}
           />
         ))}
@@ -52,7 +46,6 @@ const ContextSubMenu: React.FC<ContextSubMenuProps> = ({
           <ContextSubMenu
             key={i}
             subMenu={item}
-            preventClose={preventClose}
             onClick={onClick}
           />
         ))}

@@ -29,7 +29,7 @@ const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
     <Modal
       name={modalName}
       title="Add System Property"
-      containerWidth={550}
+      containerWidth="550px"
       withCloseConfirmation={isFormDirty}
     >
       <SystemPropertyForm onCancel={handleOnCancel} />

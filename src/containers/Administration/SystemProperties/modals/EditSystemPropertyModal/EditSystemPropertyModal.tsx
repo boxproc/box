@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { modalNamesConst } from 'consts';
+import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
@@ -27,7 +27,8 @@ const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
     <Modal
       name={modalName}
       title="Edit System Property"
-      containerWidth={550}
+      containerWidth="550px"
+      type={modalTypesConst.VIEWING}
       withCloseConfirmation={isFormDirty}
     >
       <SystemPropertyForm

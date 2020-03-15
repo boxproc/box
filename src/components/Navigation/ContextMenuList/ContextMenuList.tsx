@@ -10,13 +10,14 @@ import { ContextMenuItemProps, ContextSubMenuItem, ContextSubMenuType } from 'ty
 import ContextSubMenu from './ContextSubMenu';
 
 interface ContextMenuWrapperProps {
-  isVisible?: boolean;
-  preventClose?: boolean;
+  isHidden?: boolean;
 }
 
 const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
-  opacity: ${({ isVisible }) => isVisible ? 1 : 0};
-  visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
+  ${({ isHidden }) => isHidden && `
+    visibility: hidden;
+    opacity: 0;
+  `};
 
   .item {
     position: relative;
@@ -59,9 +60,8 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
 interface ContextMenuListProps {
   menuId: string;
   items: Array<ContextMenuItemProps>;
+  isHidden?: boolean;
   subMenuItems?: ContextSubMenuType;
-  isVisible?: boolean;
-  preventClose?: boolean;
   onClick?: (e: Event, value: ContextMenuItemProps) => void;
   onHide?: () => void;
 }
@@ -70,10 +70,9 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
   menuId,
   onClick,
   items,
+  isHidden,
   subMenuItems,
   onHide,
-  isVisible = true,
-  preventClose = false,
 }) => {
   const renderSubMenu = (item: ContextSubMenuItem) => {
     return (
@@ -89,7 +88,7 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
   };
 
   return (
-    <ContextMenuWrapper isVisible={isVisible}>
+    <ContextMenuWrapper isHidden={isHidden}>
       <ContextMenu
         id={menuId}
         onHide={onHide}
@@ -101,7 +100,6 @@ const ContextMenuList: React.FC<ContextMenuListProps> = ({
         {items && items.map((item, i) => (
           <ContextMenuItem
             key={i}
-            preventClose={preventClose}
             item={item}
             onClick={onClick}
           />

@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import { ExternalLink, Modal, T2 } from 'components';
 import { SettleTransactionForm, TransactionRetrievingForm } from './forms';
 
-import { modalNamesConst, uiItemsConst } from 'consts';
+import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 
 import { withModal, WithModalProps } from 'HOCs';
 
@@ -99,8 +99,9 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
   return (
     <Modal
       name={modalName}
-      containerWidth={400}
-      minContainerHeight={160}
+      containerWidth="400px"
+      minContainerHeight="160px"
+      type={modalTypesConst.VIEWING}
       withCloseConfirmation={isDirtySettleTransactionForm}
     >
       <Flex alignItems="center">

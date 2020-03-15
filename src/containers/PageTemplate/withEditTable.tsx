@@ -8,17 +8,17 @@ import { ContextMenuList } from 'components';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
+import { modalsList } from 'containers/Modals/modalsList';
+
 import {
   handleSetActiveItemId,
   HandleSetActiveItemId,
   handleSetActiveTableRowIndex,
   HandleSetActiveTableRowIndex,
-  handleSetIsClearActiveIds,
-  HandleSetIsClearActiveIds,
   openModal,
   OpenModal,
   selectActiveTableRowIndex,
-  selectIsClearActiveIds,
+  selectModalsStateList,
 } from 'store/domains';
 import { StoreState } from 'store/StoreState';
 
@@ -27,16 +27,15 @@ import { ContextMenuItemProps } from 'types';
 import { componentUtil } from 'utils';
 
 export interface WithEditTableProps {
-  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
-  setActiveItemId: HandleSetActiveItemId;
-  editModalName: string;
-  editableItemName?: string;
-  contextMenuItems?: Array<ContextMenuItemProps>;
   activeTableRowIndex?: number;
+  contextMenuItems?: Array<ContextMenuItemProps>;
+  editableItemName?: string;
   handleOpenModal: OpenModal;
   onRowClick: () => object;
-  isClearActiveIds: boolean;
-  setIsClearActiveIds: HandleSetIsClearActiveIds;
+  setActiveItemId: HandleSetActiveItemId;
+  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
+  viewingModalName: string;
+  modalsStateList: object;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -44,40 +43,48 @@ export const withEditTable = <OriginProps extends {}>(
 ) => {
   const WithEditTable: React.FC<WithEditTableProps> = props => {
     const {
-      setActiveTableRowIndex,
-      setActiveItemId,
-      handleOpenModal,
-      editModalName,
-      editableItemName,
-      onRowClick,
       activeTableRowIndex,
       contextMenuItems = [],
-      isClearActiveIds,
-      setIsClearActiveIds,
+      editableItemName,
+      handleOpenModal,
+      onRowClick,
+      setActiveItemId,
+      setActiveTableRowIndex,
+      viewingModalName,
+      modalsStateList,
       ...originProps
     } = props;
-    const [isContextMenuVisible, setIsContextMenuVisible] = React.useState(false);
+
+    const [isOpenedModal, setIsOpenedModal] = React.useState(false);
+
+    React.useEffect(
+      () => {
+        const isSomeModalOpened = modalsList.find(modal => {
+          const { name } = modal;
+
+          return modalsStateList[`is${name}`];
+        });
+
+        isSomeModalOpened ? setIsOpenedModal(true) : setIsOpenedModal(false);
+      },
+      [modalsStateList]
+    );
 
     const handleRemoveActiveIds = React.useCallback(
       () => {
-        if (isClearActiveIds) {
-          setActiveTableRowIndex(null);
-          setActiveItemId(null);
-        }
+        setActiveTableRowIndex(null);
+        setActiveItemId(null);
       },
-      [setActiveTableRowIndex, setActiveItemId, isClearActiveIds]
+      [setActiveTableRowIndex, setActiveItemId]
     );
 
     const openCurrentRowInModal = React.useCallback(
-      () => handleOpenModal({ name: editModalName }),
-      [handleOpenModal, editModalName]
+      () => handleOpenModal({ name: viewingModalName }),
+      [handleOpenModal, viewingModalName]
     );
 
     const onContextMenuClick = React.useCallback(
       (e: Event, value: ContextMenuItemProps) => {
-        setIsContextMenuVisible(false);
-        setIsClearActiveIds(false);
-
         value.withConfirmation
           ? handleOpenModal({
             name: modalNamesConst.CONFIRMATION,
@@ -89,12 +96,12 @@ export const withEditTable = <OriginProps extends {}>(
           })
           : value.action();
       },
-      [handleOpenModal, setIsClearActiveIds]
+      [handleOpenModal]
     );
 
     let menuItems = [...contextMenuItems];
 
-    if (editModalName) {
+    if (viewingModalName) {
       menuItems = [
         {
           name: editableItemName ? `Open ${editableItemName}` : 'Open',
@@ -104,11 +111,6 @@ export const withEditTable = <OriginProps extends {}>(
         ...menuItems,
       ];
     }
-
-    const isDisableContextMenu = React.useMemo(
-      () => !menuItems.length,
-      [menuItems]
-    );
 
     const handleClickOnRow = React.useCallback(
       (_, rowInfo: RowInfo) => {
@@ -121,7 +123,7 @@ export const withEditTable = <OriginProps extends {}>(
 
         return {
           onDoubleClick: () => {
-            if (editModalName && !isLocked) {
+            if (viewingModalName && !isLocked) {
               setActiveItemId(id);
               setActiveTableRowIndex(rowIndex);
 
@@ -135,20 +137,16 @@ export const withEditTable = <OriginProps extends {}>(
             if (menuItems.length && !isLocked) {
               setActiveItemId(id);
               setActiveTableRowIndex(rowIndex);
-
-              setIsContextMenuVisible(true);
             } else {
               setActiveItemId(null);
               setActiveTableRowIndex(null);
-
-              setIsContextMenuVisible(false);
             }
           },
         };
       },
       [
         openCurrentRowInModal,
-        editModalName,
+        viewingModalName,
         menuItems,
         setActiveItemId,
         setActiveTableRowIndex,
@@ -159,7 +157,7 @@ export const withEditTable = <OriginProps extends {}>(
       <React.Fragment>
         <ContextMenuTrigger
           id="tableContextMenu"
-          disable={isDisableContextMenu}
+          disable={!menuItems.length}
         >
           <Component
             onRowClick={handleClickOnRow}
@@ -171,9 +169,8 @@ export const withEditTable = <OriginProps extends {}>(
           menuId="tableContextMenu"
           onClick={onContextMenuClick}
           items={menuItems}
-          isVisible={isContextMenuVisible}
-          onHide={handleRemoveActiveIds}
-          preventClose={true}
+          isHidden={isOpenedModal}
+          onHide={isOpenedModal ? null : handleRemoveActiveIds}
         />
       </React.Fragment>
     );
@@ -183,15 +180,14 @@ export const withEditTable = <OriginProps extends {}>(
 
   const mapStateToProps = (state: StoreState) => ({
     activeTableRowIndex: selectActiveTableRowIndex(state),
-    isClearActiveIds: selectIsClearActiveIds(state),
+    modalsStateList: selectModalsStateList(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     {
       handleOpenModal: openModal,
-      setActiveTableRowIndex: handleSetActiveTableRowIndex,
       setActiveItemId: handleSetActiveItemId,
-      setIsClearActiveIds: handleSetIsClearActiveIds,
+      setActiveTableRowIndex: handleSetActiveTableRowIndex,
     },
     dispatch
   );

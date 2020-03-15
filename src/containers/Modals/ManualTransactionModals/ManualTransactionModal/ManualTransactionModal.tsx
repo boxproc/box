@@ -127,8 +127,8 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
-      containerWidth={550}
+      type={modalTypesConst.VIEWING}
+      containerWidth="550px"
     >
       <Flex alignItems="center">
         <Box mb="5px" mr="15px">

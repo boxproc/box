@@ -23,6 +23,11 @@ const MessageModal: React.FC<MessageModalProps> = ({
 }) => {
   const [isVisibleDetails, setVisibleDetails] = React.useState(false);
 
+  const title = React.useMemo(
+    () => payloadMessageModal && payloadMessageModal.title,
+    [payloadMessageModal]
+  );
+
   const message = React.useMemo(
     () => payloadMessageModal && payloadMessageModal.message,
     [payloadMessageModal]
@@ -38,15 +43,9 @@ const MessageModal: React.FC<MessageModalProps> = ({
     [payloadMessageModal]
   );
 
-  const type = React.useMemo(
-    () => payloadMessageModal && payloadMessageModal.type,
-    [payloadMessageModal]
-  );
-
   const isSessionEnded = React.useMemo(
-    () => statusCode === sessionStatusCodes.SESSION_TIMEOUT
-      || type === modalTypesConst.SESSION_ENDED,
-    [statusCode, type]
+    () => statusCode === sessionStatusCodes.SESSION_TIMEOUT,
+    [statusCode]
   );
 
   const isReLogin = React.useMemo(
@@ -63,19 +62,13 @@ const MessageModal: React.FC<MessageModalProps> = ({
 
   const modalTitle = React.useMemo(
     () => {
-      if (!payloadMessageModal) {
-        return null;
-      }
-
-      const { title } = payloadMessageModal;
-
       return isSessionEnded ? 'Session ended' : title;
     },
-    [isSessionEnded, payloadMessageModal]
+    [isSessionEnded, title]
   );
 
   const modalWidth = React.useMemo(
-    () => isVisibleDetails ? 1010 : 350,
+    () => isVisibleDetails ? '1010px' : '350px',
     [isVisibleDetails]
   );
 
@@ -102,10 +95,9 @@ const MessageModal: React.FC<MessageModalProps> = ({
       name={modalName}
       title={modalTitle}
       containerWidth={modalWidth}
-      type={modalTypesConst.MESSAGE_MODAL}
       hideCloseIcon={isReLogin}
       isBackdropBlured={isReLogin}
-      zIndex="102"
+      type={modalTypesConst.MESSAGE}
     >
       <Paragraph light={true}>{message}</Paragraph>
       <Flex

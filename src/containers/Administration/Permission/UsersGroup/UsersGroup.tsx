@@ -35,7 +35,7 @@ export const UsersGroup: React.FC<UserFilterProps> = ({
       columns={tableColumns}
       isDownloadButton={true}
       newModalName={modalNamesConst.ADD_USERS_GROUP}
-      editModalName={modalNamesConst.EDIT_USERS_GROUP}
+      viewingModalName={modalNamesConst.EDIT_USERS_GROUP}
       isLoading={isLoading}
     />
   );

@@ -10,8 +10,6 @@ export const selectIsReadOnly = (state: StoreState) =>
 
 export const selectIsAutoRefresh = (state: StoreState) => state.utils.isAutoRefresh;
 
-export const selectIsClearActiveIds = (state: StoreState) => state.utils.isClearActiveIds;
-
 export const selectIsOpenFilter = (state: StoreState) => state.utils.isOpenFilter;
 
 export const selectIsAccessibleFiltering = (state: StoreState) => state.utils.isAccessibleFiltering;

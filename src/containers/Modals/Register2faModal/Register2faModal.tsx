@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'components';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import { CodeScreen } from './components';
 import { PasswordForm } from './forms';
@@ -51,7 +51,7 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
   );
 
   const modalWidth = React.useMemo(
-    () => isSecondStep ? 500 : 300,
+    () => isSecondStep ? '500px' : '300px',
     [isSecondStep]
   );
 
@@ -65,7 +65,6 @@ const Register2faModal: React.FC<Register2faModalProps> = ({
       name={modalName}
       title={modalTitle}
       containerWidth={modalWidth}
-      type={modalTypesConst.REGISTRATION_2FA}
     >
       {isSecondStep
         ? (

@@ -9,7 +9,6 @@ export interface PayloadMessageModal {
   details?: string;
   statusCode?: string;
   errorCode?: number;
-  type?: string;
 }
 
 export interface PayloadConfirmationModal {
@@ -42,7 +41,6 @@ export interface PayloadSettleTransactionModal {
 
 export interface ModalsState {
   isMessageModal: boolean;
-  isEditModalOpened: boolean;
   payloadMessageModal: PayloadMessageModal;
   payloadConfirmationModal: PayloadConfirmationModal;
   payloadLogModal: PayloadLogModal;

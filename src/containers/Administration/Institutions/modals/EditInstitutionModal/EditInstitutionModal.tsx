@@ -46,9 +46,9 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title={modalTitle}
-      containerWidth={550}
+      containerWidth="550px"
       withCloseConfirmation={isFormDirty}
     >
       <InstitutionForm

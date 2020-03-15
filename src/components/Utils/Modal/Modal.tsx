@@ -12,12 +12,13 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
-import {
-  HandleSetActiveItemId,
-  HandleSetActiveTableRowIndex,
-  HandleSetIsClearActiveIds,
-  SetIsEditModalOpened,
-} from 'store/domains';
+import { HandleSetActiveItemId, HandleSetActiveTableRowIndex } from 'store/domains';
+
+const zIndexes = {
+  [modalTypesConst.VIEWING]: 100,
+  [modalTypesConst.CONFIRMATION]: 101,
+  [modalTypesConst.MESSAGE]: 102,
+};
 
 const ModalTitle = styled(T2)`
   padding-right: 15px;
@@ -25,86 +26,67 @@ const ModalTitle = styled(T2)`
   text-transform: none;
 `;
 
-const MonoTitleStr = styled.div`
-  padding-right: 15px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-family: ${({ theme }) => theme.fonts.code};
-`;
-
 interface ModalProps extends WithModalProps {
-  name: string; // modal name
-  title?: string; // modal title
-  monoTitleStr?: string; // addition string to modal title. monoTitleStr has mono font-family.
-  type?: string; // modal type, e.g. 'messageModal', 'editModal' etc.
-  containerWidth?: string; // width of modal container
-  minContainerHeight?: string; // min height of modal container
-  zIndex?: string; // z-index of modal
-  closeOnBackdrop?: boolean; // allows close modal on backdrop
-  withCloseConfirmation?: boolean; // opens confirmation modal by modal close
-  setActiveTableRowIndex: HandleSetActiveTableRowIndex; // sets active table row index to store
-  setActiveItemId: HandleSetActiveItemId; // sets active item index to store
-  setIsClearActiveIds: HandleSetIsClearActiveIds; // clearing table row and item indexes in store
-  setIsEditModalOpened: SetIsEditModalOpened;  // sets open state of edit modal to store
-  isEditModalOpened: boolean; // open state of edit modal
-  containerWidthAuto?: boolean; // sets width of container to 'auto'
-  containerHeightFull?: boolean; // sets height of container to '100vh'
-  hideCloseIcon?: boolean; // hides close icon '&times';
+  /** Width of modal window container */
+  containerWidth?: string;
+
+  /** Hides close icon */
+  hideCloseIcon?: boolean;
+
+  /** Applies blur behind the backdrop */
   isBackdropBlured?: boolean;
+
+  /** Min height of modal window container */
+  minContainerHeight?: string;
+
+  /** Name of modal window used in store */
+  name: string;
+
+  /** Sets active item index to store */
+  setActiveItemId: HandleSetActiveItemId;
+
+  /** Sets active table row index to store */
+  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
+
+  /** Title of modal window */
+  title?: string;
+
+  /** Icon which is next to the title */
   TitleIcon?: ReactChild;
+
+  /** Modal window type, e.g. 'viewingModal' etc. */
+  type?: string;
+
+  /** Opens confirmation modal by modal window close */
+  withCloseConfirmation?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
   children,
-  name,
-  title,
-  monoTitleStr,
   closeModal,
-  openModal,
-  containerWidth = '720',
-  minContainerHeight,
-  zIndex,
-  closeOnBackdrop,
-  withCloseConfirmation,
-  setActiveTableRowIndex,
-  setActiveItemId,
-  type,
-  setIsClearActiveIds,
-  setIsEditModalOpened,
-  isEditModalOpened,
-  containerWidthAuto,
-  containerHeightFull,
+  containerWidth = '720px',
   hideCloseIcon,
   isBackdropBlured,
+  minContainerHeight,
+  name,
+  openModal,
+  setActiveItemId,
+  setActiveTableRowIndex,
+  title,
   TitleIcon,
+  type,
+  withCloseConfirmation,
 }) => {
-  const isClearableActiveIdsFromStore = React.useMemo(
-    () => type === modalTypesConst.EDIT_MODAL || !isEditModalOpened,
-    [type, isEditModalOpened]
-  );
-
   React.useEffect(
     () => {
-      if (type === modalTypesConst.EDIT_MODAL) {
-        setIsEditModalOpened(true);
-      }
-
-      return () => type === modalTypesConst.EDIT_MODAL ? setIsEditModalOpened(false) : null;
-    },
-    [setIsEditModalOpened, type]
-  );
-
-  React.useEffect(
-    () => {
-      return isClearableActiveIdsFromStore
+      return type === modalTypesConst.VIEWING
         ? () => {
           setActiveTableRowIndex(null);
           setActiveItemId(null);
-          setIsClearActiveIds(true);
         }
         : () => null;
     },
-    [setActiveTableRowIndex, setActiveItemId, setIsClearActiveIds, isClearableActiveIdsFromStore]
+    [type, setActiveTableRowIndex, setActiveItemId]
   );
 
   const handleCloseModal = React.useCallback(
@@ -125,21 +107,21 @@ const Modal: React.FC<ModalProps> = ({
     <ModalWrapper
       containerWidth={containerWidth}
       minContainerHeight={minContainerHeight}
-      containerWidthAuto={containerWidthAuto}
-      containerHeightFull={containerHeightFull}
-      zIndex={zIndex}
+      zIndex={zIndexes[type]}
     >
       <div
-        className={`modal-backdrop ${isBackdropBlured ? 'is-blured' : ''}`}
-        onClick={closeOnBackdrop ? handleCloseModal : () => null}
+        className={`
+          modal-backdrop
+          ${isBackdropBlured ? 'is-blured' : ''}
+        `}
       />
       <div className="modal-container-wrapper">
         <div className="modal-container">
           {!hideCloseIcon && (
             <span
               className="modal-close"
-              onClick={handleCloseModal}
               title="Close"
+              onClick={handleCloseModal}
             >
               &times;
             </span>
@@ -153,9 +135,6 @@ const Modal: React.FC<ModalProps> = ({
             )}
             {title && (
               <ModalTitle>{title}</ModalTitle>
-            )}
-            {monoTitleStr && (
-              <MonoTitleStr>{monoTitleStr}</MonoTitleStr>
             )}
           </Flex>
           {children}

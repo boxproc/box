@@ -4,8 +4,6 @@ interface ModalWrapperProps {
   containerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
-  containerWidthAuto?: boolean;
-  containerHeightFull?: boolean;
 }
 
 export const ModalWrapper = styled.div<ModalWrapperProps>`
@@ -66,22 +64,12 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
     background-color: #fafafa;
     text-align: left;
     box-sizing: border-box;
-    min-width: ${({ containerWidth }) => containerWidth ? `${containerWidth}px` : '350px'};
-    width: ${({ containerWidth }) => containerWidth ? `${containerWidth}px` : '500px'};
-    min-height: ${({ minContainerHeight }) =>
-    minContainerHeight ? `${minContainerHeight}px` : '130px'};
+    min-width: ${({ containerWidth }) => containerWidth || '350px'};
+    width: ${({ containerWidth }) => containerWidth || '500px'};
+    min-height: ${({ minContainerHeight }) => minContainerHeight || '130px'};
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;
-
-    ${({ containerWidthAuto }) => containerWidthAuto && `
-      width: 100%;
-      max-width: 1550px;
-    `};
-
-    ${({ containerHeightFull }) => containerHeightFull && `
-      height: calc(100vh - 20px);
-    `}
   }
 
   .modal-close {

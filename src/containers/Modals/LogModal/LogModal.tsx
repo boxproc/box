@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import { Button, ExternalSpinnerProps, HighlightCode, Modal, withSpinner } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { HandleRefreshLogData, PayloadLogModal } from 'store/domains';
 import { stringsUtil } from 'utils';
@@ -23,13 +23,17 @@ const LogModal: React.FC<LogModalProps> = ({
   refreshLogData,
   isLoading,
 }) => {
-  const title = React.useMemo(
+  const modalTitle = React.useMemo(
     () => {
-      if (!data || !data.title) {
-        return 'Master log';
+      if (!data) {
+        return null;
       }
 
-      return data.title;
+      const { title, logLocation } = data;
+      const logTitle = title || 'Master log';
+      const location = logLocation || '';
+
+      return `${logTitle} ${location}`;
     },
     [data]
   );
@@ -42,11 +46,6 @@ const LogModal: React.FC<LogModalProps> = ({
 
       return stringsUtil.addNewLines(data.logData);
     },
-    [data]
-  );
-
-  const monoTitleStr = React.useMemo(
-    () => data && data.logLocation,
     [data]
   );
 
@@ -63,10 +62,10 @@ const LogModal: React.FC<LogModalProps> = ({
   return (
     <Modal
       name={modalName}
-      title={title}
-      monoTitleStr={monoTitleStr}
-      containerWidthAuto={true}
-      containerHeightFull={true}
+      title={modalTitle}
+      containerWidth="1010px"
+      type={modalTypesConst.VIEWING}
+      minContainerHeight="calc(100vh - 20px)"
     >
       <HighlightCode
         value={preparedLogData}

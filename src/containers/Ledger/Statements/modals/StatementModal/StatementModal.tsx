@@ -57,10 +57,10 @@ const StatementModal: React.FC<StatementModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title="Statement"
-      containerWidth={1010}
-      minContainerHeight={500}
+      containerWidth="1010px"
+      minContainerHeight="500px"
     >
       <Tabs>
         <TabsPanel title="Totals">

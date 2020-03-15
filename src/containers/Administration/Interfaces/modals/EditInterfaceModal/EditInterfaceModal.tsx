@@ -45,10 +45,10 @@ const EditAccountModal: React.FC<EditAccountModalProps> = ({
 
   return (
     <Modal
-      containerWidth={850}
+      containerWidth="850px"
       title={modalTitle}
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       withCloseConfirmation={isFormDirty}
     >
       <InterfaceForm

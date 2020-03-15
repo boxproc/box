@@ -56,9 +56,9 @@ const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
   return (
     <Modal
       name={modalName}
-      type={modalTypesConst.EDIT_MODAL}
+      type={modalTypesConst.VIEWING}
       title="Card"
-      containerWidth={450}
+      containerWidth="450px"
       withCloseConfirmation={isFormDirty}
     >
       {!isReadOnly && (
