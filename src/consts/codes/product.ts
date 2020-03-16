@@ -136,3 +136,17 @@ export const rewardsTypesOptions = [
     label: 'apply whichever is smaller: % rate or the fixed amount',
   },
 ];
+
+/**
+ * Element identifier
+ */
+
+export enum elementIdentifierConst {
+  APR = 'I',
+  FEES = 'F',
+}
+
+export const elementIdentifierOptions = [
+  { value: elementIdentifierConst.APR, label: 'APR' },
+  { value: elementIdentifierConst.FEES, label: 'Fees' },
+];
