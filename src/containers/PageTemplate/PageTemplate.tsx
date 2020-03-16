@@ -238,7 +238,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
                   text=".csv"
                   iconName={iconNamesConst.FILE}
                   onClick={() => downloadUtil.downloadCSV(fileName, data)}
-                  textTransformNone={true}
+                  classNames={['no-text-transform']}
                   disabled={isLoading}
                 />
               </DropdownOption>

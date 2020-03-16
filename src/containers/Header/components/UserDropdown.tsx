@@ -120,7 +120,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
             text="Change password"
             iconName={iconNamesConst.KEY}
             onClick={handleOpenChangePasswordModal}
-            textTransformNone={true}
+            classNames={['no-text-transform']}
           />
         </DropdownOption>
       )}
@@ -130,7 +130,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
             text="Change profile"
             iconName={iconNamesConst.USER}
             onClick={handleOpenChangeProfileModal}
-            textTransformNone={true}
+            classNames={['no-text-transform']}
           />
         </DropdownOption>
       )}
@@ -139,7 +139,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) =>
           text="Log out"
           iconName={iconNamesConst.LOGOUT}
           onClick={handleUserLogout}
-          textTransformNone={true}
+          classNames={['no-text-transform']}
         />
       </DropdownOption>
     </Dropdown>

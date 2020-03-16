@@ -58,7 +58,7 @@ const CodeScreen: React.FC<CodeScreenProps> = ({
         <Button
           text="Regenerate key"
           iconName={iconNamesConst.QRCODE}
-          bordered={true}
+          classNames={['is-bordered']}
           onClick={onRegenerate}
         />
         <Button

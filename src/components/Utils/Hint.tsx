@@ -65,14 +65,12 @@ const InfoButton = styled(InfoCircleIcon)`
 interface HintProps {
   icon?: boolean;
   position?: 'top' | 'right' | 'bottom' | 'left';
-  style?: object;
   text: string | React.ReactChild;
 }
 
 const Hint: React.FC<HintProps> = ({
   icon = true,
   position = 'right',
-  style,
   text,
 }) => {
   const [isHint, setIsHint] = React.useState(false);
@@ -92,10 +90,7 @@ const Hint: React.FC<HintProps> = ({
         )}
       </div>
       {isHint && (
-        <div
-          className="hint"
-          style={style}
-        >
+        <div className="hint">
           {text}
         </div>
       )}

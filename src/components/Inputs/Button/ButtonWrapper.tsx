@@ -1,14 +1,10 @@
 import styled from 'theme';
 
 interface ButtonWrapperProps {
-  bordered?: boolean;
+  classNames?: Array<string>;
   hasIcon?: boolean;
-  isTabsTheme?: boolean;
   size?: string;
-  textTransformNone?: boolean;
-  underline?: boolean;
   width?: string;
-  withAnimation?: boolean;
 }
 
 export const ButtonWrapper = styled.button<ButtonWrapperProps>`
@@ -41,6 +37,11 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     color: ${({ theme }) => theme.colors.normalAccent};
   }
 
+  &.no-text-transform {
+    text-transform: none;
+    font-weight: normal;
+  }
+
   ${({ hasIcon }) => hasIcon && `
     background-color: transparent;
   `}
@@ -66,7 +67,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     }
   `}
 
-  ${({ isTabsTheme, theme }) => isTabsTheme && `
+  &.is-tabs {
     background-color: transparent;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -74,9 +75,9 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     border-bottom: 1px solid transparent;
 
     &.is-focused:not(:disabled) {
-      background-color: ${theme.colors.lighterGrayHover};
+      background-color: ${({ theme }) => theme.colors.lighterGrayHover};
       box-shadow: none;
-      border-bottom-color: ${theme.colors.normalAccent};
+      border-bottom-color: ${({ theme }) => theme.colors.normalAccent};
       pointer-events: none;
     }
 
@@ -85,43 +86,23 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       background-color: transparent;
       box-shadow: none;
     }
-  `}
+  }
 
-  ${({ underline, theme }) => underline && `
-    padding: 0;
-    background-color: transparent;
-    border-radius: 0;
-    border: 0;
-    border-bottom: 1px solid ${theme.colors.lightAccent};
-
-    &:hover:not(:disabled),
-    &.is-focused:not(:disabled) {
-      background-color: inherit;
-      color: ${theme.colors.gray};
-      border-bottom-color: ${theme.colors.normalAccent};
-    }
-  `};
-
-  ${({ bordered, theme }) => bordered && `
-    border: 1px solid ${theme.colors.lightGray};
+  &.is-bordered {
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
     border-radius: 2px;
     padding: 7px 10px 5px;
     justify-content: center;
-    background-color: ${theme.colors.lighterGray};
+    background-color: ${({ theme }) => theme.colors.lighterGray};
     line-height: 1.25;
 
     &:hover:not(:disabled),
     &.is-focused:not(:disabled) {
-      box-shadow: ${theme.shadows.normalBox};
+      box-shadow: ${({ theme }) => theme.shadows.normalBox};
     }
-  `};
+  }
 
-  ${({ textTransformNone }) => textTransformNone && `
-    text-transform: none;
-    font-weight: normal;
-  `};
-
-  ${({ withAnimation, theme}) => withAnimation && `
+  &.is-animated {
     overflow: hidden;
 
     &:after {
@@ -131,7 +112,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
       left: 50%;
       width: 5px;
       height: 5px;
-      background: ${theme.colors.lightGray};
+      background: ${({ theme }) => theme.colors.lightGray};
       opacity: 0;
       border-radius: 50%;
       transform: scale(1, 1) translate(-50%);
@@ -141,7 +122,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     &:focus:not(:active):after {
       animation: ripple .5s ease-out;
     }
-  `};
+  }
 
   &:disabled {
     border-color: transparent;

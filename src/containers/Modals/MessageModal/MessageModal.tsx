@@ -108,7 +108,7 @@ const MessageModal: React.FC<MessageModalProps> = ({
           <Button
             text={isReLogin ? 'Re Login' : 'Close'}
             isFocused={true}
-            withAnimation={isReLogin}
+            classNames={[isReLogin ? 'is-animated' : '']}
             onClick={isReLogin ? handleRelogin : handleCloseModal}
           />
         </Box>

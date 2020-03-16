@@ -12,54 +12,47 @@ import { ButtonWrapper } from './ButtonWrapper';
 import { icons } from './icons';
 
 interface ButtonProps extends WithModalProps {
-  bordered?: boolean;
+  classNames?: Array<string>; /** no-text-transform, is-tabs, is-bordered, is-animated */
   confirmationText?: string;
   confirmationTitle?: string;
   disabled?: boolean;
   hint?: string | React.ReactChild;
-  hintPosition?: 'top' | 'right' | 'bottom' | 'left';
-  hintStyle?: object;
   iconName?: string;
   isFocused?: boolean;
-  isTabsTheme?: boolean;
   onClick?: () => void;
   size?: string;
   text: string;
-  textTransformNone?: boolean;
   title?: string;
   type?: 'reset' | 'submit';
-  underline?: boolean;
   width?: string;
-  withAnimation?: boolean;
   withConfirmation?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  bordered,
+  classNames,
   confirmationText,
   confirmationTitle,
   disabled,
   hint,
-  hintPosition = 'top',
-  hintStyle,
   iconName,
   isFocused,
-  isTabsTheme,
   onClick,
   openModal,
   size,
   text,
-  textTransformNone,
   title,
   type,
-  underline,
   width,
-  withAnimation,
   withConfirmation,
 }) => {
   const buttonClasses = React.useMemo(
-    () => isFocused ? 'button is-focused' : 'button',
-    [isFocused]
+    () => {
+      const focused = isFocused ? 'is-focused' : '';
+      const classes = classNames ? classNames.join(',') : '';
+
+      return `button ${focused} ${classes}`;
+    },
+    [isFocused, classNames]
   );
 
   const handleClick = React.useCallback(
@@ -85,13 +78,8 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       size={size}
-      bordered={bordered}
-      underline={underline}
       hasIcon={!!iconName}
-      withAnimation={withAnimation}
-      textTransformNone={textTransformNone}
       className={buttonClasses}
-      isTabsTheme={isTabsTheme}
       onClick={handleClick}
     >
       {iconName && (
@@ -108,8 +96,7 @@ const Button: React.FC<ButtonProps> = ({
         <Hint
           text={hint}
           icon={false}
-          position={hintPosition}
-          style={hintStyle}
+          position="top"
         />
       )}
     </ButtonWrapper>

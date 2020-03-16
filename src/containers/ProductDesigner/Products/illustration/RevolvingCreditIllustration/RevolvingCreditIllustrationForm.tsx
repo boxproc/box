@@ -69,7 +69,6 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
           text={filterButtonText}
           iconName={iconNamesConst.FILTER}
           type="reset"
-          bordered={true}
           onClick={handleFilter}
         />
       </Box>

@@ -165,7 +165,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 2]} p="8px">
+          <Box width={[4 / 9]} p="8px">
             <Field
               id="logLocation"
               name="logLocation"
@@ -187,11 +187,11 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box p="8px 8px 15px">
+          <Box p="8px 8px 9px">
             <Button
               type="reset"
               text="Build cron expression"
-              underline={true}
+              isFocused={true}
               onClick={handleOpenModal}
               disabled={isReadOnly}
             />

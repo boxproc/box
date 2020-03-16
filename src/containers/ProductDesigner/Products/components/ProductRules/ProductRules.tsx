@@ -331,7 +331,7 @@ const ProductRules: React.FC<ProductRulesProps> = ({
                     text={type.label}
                     size="11"
                     isFocused={initialActionType === type.value}
-                    isTabsTheme={true}
+                    classNames={['is-tabs']}
                     type="reset"
                     withConfirmation={dirty}
                     confirmationTitle="Switch the tab?'"
