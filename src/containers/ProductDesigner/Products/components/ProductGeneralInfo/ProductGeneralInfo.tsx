@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, Delimiter, InputField, SelectField, TextField } from 'components';
+import { CheckboxField, Delimiter, InputField, SelectField, TextareaField } from 'components';
 
 import {
   cardFormFactorOptions,
@@ -259,7 +259,7 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             id="description"
             name="description"
             placeholder="Enter Description"
-            component={TextField}
+            component={TextareaField}
             label="Description"
             height={115}
             readOnly={isReadOnly}

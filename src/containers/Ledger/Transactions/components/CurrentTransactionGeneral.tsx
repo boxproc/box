@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, NumberFormatField, TextField } from 'components';
+import { Hr, InputField, NumberFormatField, TextareaField } from 'components';
 
 const CurrentTransactionGeneral: React.FC = () => {
   return (
@@ -196,7 +196,7 @@ const CurrentTransactionGeneral: React.FC = () => {
           <Field
             id="description"
             name="description"
-            component={TextField}
+            component={TextareaField}
             label="Description"
             readOnly={true}
           />

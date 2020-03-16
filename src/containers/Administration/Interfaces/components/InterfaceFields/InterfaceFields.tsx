@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField, TextField } from 'components';
+import { InputField, SelectField, TextareaField } from 'components';
 
 import { statusOptions } from 'consts';
 
@@ -136,7 +136,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
               <Field
                 id="logFileLocation"
                 name="logFileLocation"
-                component={TextField}
+                component={TextareaField}
                 label="Log File Location Attributes"
                 placeholder="Enter Log File Location"
                 height={120}
@@ -148,7 +148,7 @@ const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
               <Field
                 id="connectionAttributes"
                 name="connectionAttributes"
-                component={TextField}
+                component={TextareaField}
                 label="Connection Attributes"
                 placeholder="Enter Connection Attributes"
                 height={120}

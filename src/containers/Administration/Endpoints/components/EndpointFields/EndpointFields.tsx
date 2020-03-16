@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
-import { InputField, SelectField, TextField } from 'components';
+import { InputField, SelectField, TextareaField } from 'components';
 
 import { statusOptions } from 'consts';
 
@@ -121,7 +121,7 @@ const EndpointFields: React.FC<EndpointFieldsProps> = ({
           <Field
             id="connectionAttributes"
             name="connectionAttributes"
-            component={TextField}
+            component={TextareaField}
             label="Connection Attributes"
             placeholder="Enter Connection Attributes"
             readOnly={isReadOnly}

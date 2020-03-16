@@ -9,7 +9,7 @@ import {
   InputField,
   OkCancelButtons,
   SelectField,
-  TextField,
+  TextareaField,
 } from 'components';
 
 import {
@@ -122,7 +122,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
                 <Field
                   id="description"
                   name="description"
-                  component={TextField}
+                  component={TextareaField}
                   label="Description"
                   placeholder="Enter Description"
                   readOnly={isReadOnly}
@@ -132,7 +132,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
                 <Field
                   id="parameters"
                   name="parameters"
-                  component={TextField}
+                  component={TextareaField}
                   label="Parameters"
                   placeholder="Enter Parameters"
                   readOnly={isReadOnly}

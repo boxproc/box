@@ -9,7 +9,7 @@ import {
   NumberFormatField,
   OkCancelButtons,
   SelectField,
-  TextField,
+  TextareaField,
 } from 'components';
 import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
@@ -167,7 +167,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
           <Field
             id="description"
             name="description"
-            component={TextField}
+            component={TextareaField}
             placeholder="Enter Description"
             label="Description"
             height={80}

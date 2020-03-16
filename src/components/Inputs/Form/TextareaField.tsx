@@ -8,11 +8,11 @@ import { withFormField } from './withFormField';
 
 import { InvalidProp } from './types';
 
-interface TextAreaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextAreaElement> {
   height?: number;
 }
 
-const TextField = styled.textarea<TextAreaProps>`
+const TextareaField = styled.textarea<TextareaProps>`
   ${sharedInputCss};
   height: auto;
   min-height: ${({ height }) => height ? `${height}px` : '52px'};
@@ -23,4 +23,4 @@ const TextField = styled.textarea<TextAreaProps>`
   ${scrollbarCss};
 `;
 
-export default withFormField(TextField);
+export default withFormField(TextareaField);
