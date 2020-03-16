@@ -20,39 +20,39 @@ const Wrapper = styled.div`
 `;
 
 interface OkCancelButtonsProps {
-  okText?: string;
+  cancelConfirmationText?: string;
+  cancelConfirmationTitle?: string;
+  cancelIconName?: string;
   cancelText?: string;
-  onCancel?: () => void;
-  onOk?: () => void;
   disabledCancel?: boolean;
   disabledOk?: boolean;
   focusedButton?: 'ok' | 'cancel' | 'none';
-  cancelIconName?: string;
-  hintOk?: string;
-  hintCancel?: string;
-  withCancelConfirmation?: boolean;
-  cancelConfirmationText?: string;
-  cancelConfirmationTitle?: string;
-  hideOk?: boolean;
   hideCancel?: boolean;
+  hideOk?: boolean;
+  hintCancel?: string;
+  hintOk?: string;
+  okText?: string;
+  onCancel?: () => void;
+  onOk?: () => void;
+  withCancelConfirmation?: boolean;
 }
 
 const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
-  okText = 'Ok',
-  cancelText = 'Cancel',
-  focusedButton = 'ok',
-  onCancel,
-  onOk,
-  cancelIconName,
-  hintOk,
-  hintCancel,
-  disabledCancel = false,
-  disabledOk = false,
-  withCancelConfirmation = false,
   cancelConfirmationText = 'You have unsaved changes.',
   cancelConfirmationTitle = 'Close the window?',
-  hideOk,
+  cancelIconName,
+  cancelText = 'Cancel',
+  disabledCancel = false,
+  disabledOk = false,
+  focusedButton = 'ok',
   hideCancel,
+  hideOk,
+  hintCancel,
+  hintOk,
+  okText = 'Ok',
+  onCancel,
+  onOk,
+  withCancelConfirmation = false,
 }) => {
   const okBtnFocused = React.useMemo(
     () => focusedButton === 'ok',

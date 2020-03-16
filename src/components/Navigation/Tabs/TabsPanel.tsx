@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface TabsPanelProps {
-  title: string;
   hasTabs?: boolean;
   hintIfDisabled?: string;
   isDisabled?: boolean;
+  title: string;
   withConfirmation?: boolean;
 }
 

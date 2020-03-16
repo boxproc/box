@@ -24,19 +24,19 @@ const Wrapper = styled.div<InputCommonProps>`
 `;
 
 interface NumberFormatInputProps extends InputCommonProps {
-  invalid?: boolean;
-  value: string | number;
-  fixedDecimalScale?: boolean;
   decimalScale?: number;
+  fixedDecimalScale?: boolean;
+  invalid?: boolean;
   isEditableCellStyle?: boolean;
+  value: string | number;
 }
 
 const NumberFormatInput: React.FC<NumberFormatInputProps> = ({
-  invalid,
-  value,
   defaultValue,
+  invalid,
   isEditableCellStyle,
   type,
+  value,
   ...props
 }) => {
   return (

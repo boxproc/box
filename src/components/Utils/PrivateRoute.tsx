@@ -5,9 +5,9 @@ import { basePath } from 'consts';
 import { storageUtil } from 'utils';
 
 interface PrivateRouteProps {
-  path: string;
   component: React.ElementType;
   exact?: boolean;
+  path: string;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({

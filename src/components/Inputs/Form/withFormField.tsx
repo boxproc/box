@@ -41,18 +41,18 @@ const ErrorWrapper = styled.div`
 `;
 
 export interface InputFieldProps extends Partial<BaseFieldProps> {
-  id?: string;
-  type?: string;
-  label?: string;
-  placeholder?: string;
-  invalid?: boolean;
-  preventBlur?: boolean | undefined;
-  validateOnChange?: boolean;
-  showErrors?: boolean;
-  updateFieldOnChange?: (...args: any[]) => void;
   focusOnLabelClick?: boolean;
   hint?: string | React.ReactChild;
+  id?: string;
+  invalid?: boolean;
   isRequired?: boolean;
+  label?: string;
+  placeholder?: string;
+  preventBlur?: boolean | undefined;
+  showErrors?: boolean;
+  type?: string;
+  updateFieldOnChange?: (...args: any[]) => void;
+  validateOnChange?: boolean;
 }
 
 interface InputWrapperProps {
@@ -65,16 +65,16 @@ interface InputWrapperProps {
 export type FieldProps = WrappedFieldProps & InputFieldProps;
 
 const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
-  label,
-  render,
-  id,
-  preventBlur,
-  validateOnChange,
-  showErrors = true,
   focusOnLabelClick = false,
-  invalid: defaultInvalid,
   hint,
+  id,
+  invalid: defaultInvalid,
   isRequired,
+  label,
+  preventBlur,
+  render,
+  showErrors = true,
+  validateOnChange,
   meta: {
     touched,
     error,

@@ -24,13 +24,13 @@ const NoDataWrapper = styled.div`
 `;
 
 interface NoDataProps {
-  title?: string;
   hint?: string | React.ReactChild;
+  title?: string;
 }
 
 export const TableNoData: React.FC<NoDataProps> = ({
-  title = 'No data found',
   hint,
+  title = 'No data found',
 }) => (
     <NoDataWrapper>
       <div className="title">{title}</div>

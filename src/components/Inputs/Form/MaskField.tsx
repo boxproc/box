@@ -15,13 +15,13 @@ const Wrapper = styled.div<InputCommonProps>`
 `;
 
 interface MaskFieldProps extends InputCommonProps {
+  alwaysShowMask?: boolean;
+  formatChars?: { [key: string]: string };
+  inputRef?: React.Ref<HTMLInputElement>;
+  isRequired?: boolean;
   mask: string;
   maskChar?: string | null;
   maskPlaceholder?: string;
-  formatChars?: { [key: string]: string };
-  alwaysShowMask?: boolean;
-  inputRef?: React.Ref<HTMLInputElement>;
-  isRequired?: boolean;
   beforeMaskedValueChange?(
     newState: InputState,
     oldState: InputState,

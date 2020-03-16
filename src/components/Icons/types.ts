@@ -2,10 +2,10 @@ import ThemeProps from 'theme/theme';
 
 export interface IconColorProps {
   className?: string;
-  hover?: string;
   color?: string;
-  theme?: ThemeProps;
-  el?: string;
   css?: string;
+  el?: string;
+  hover?: string;
   onClick?: (e?: React.MouseEvent<SVGElement>) => void;
+  theme?: ThemeProps;
 }

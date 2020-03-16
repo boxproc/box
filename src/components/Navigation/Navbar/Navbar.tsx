@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Box } from '@rebass/grid';
 
@@ -26,14 +26,13 @@ const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-interface NavbarProps extends RouteComponentProps, WithModalProps {
+interface NavbarProps extends WithModalProps {
   uiItems: Array<UiItemPrepared>;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
-  uiItems,
-  history,
   openModal,
+  uiItems,
 }) => {
   const menuRef = React.useRef(null);
 

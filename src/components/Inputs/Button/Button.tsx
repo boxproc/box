@@ -12,50 +12,50 @@ import { ButtonWrapper } from './ButtonWrapper';
 import { icons } from './icons';
 
 interface ButtonProps extends WithModalProps {
-  text: string;
-  width?: string;
-  size?: string;
-  iconName?: string;
-  type?: 'reset' | 'submit';
-  disabled?: boolean;
-  isFocused?: boolean;
-  isTabsTheme?: boolean;
-  withConfirmation?: boolean;
-  withAnimation?: boolean;
+  bordered?: boolean;
   confirmationText?: string;
   confirmationTitle?: string;
-  bordered?: boolean;
-  underline?: boolean;
-  textTransformNone?: boolean;
-  title?: string;
+  disabled?: boolean;
   hint?: string | React.ReactChild;
   hintPosition?: 'top' | 'right' | 'bottom' | 'left';
   hintStyle?: object;
+  iconName?: string;
+  isFocused?: boolean;
+  isTabsTheme?: boolean;
   onClick?: () => void;
+  size?: string;
+  text: string;
+  textTransformNone?: boolean;
+  title?: string;
+  type?: 'reset' | 'submit';
+  underline?: boolean;
+  width?: string;
+  withAnimation?: boolean;
+  withConfirmation?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  disabled,
-  width,
-  isFocused,
-  isTabsTheme,
-  onClick,
-  text,
-  iconName,
-  type,
-  size,
+  bordered,
   confirmationText,
   confirmationTitle,
-  openModal,
-  withConfirmation,
-  bordered,
-  underline,
-  textTransformNone,
-  title,
+  disabled,
   hint,
   hintPosition = 'top',
   hintStyle,
+  iconName,
+  isFocused,
+  isTabsTheme,
+  onClick,
+  openModal,
+  size,
+  text,
+  textTransformNone,
+  title,
+  type,
+  underline,
+  width,
   withAnimation,
+  withConfirmation,
 }) => {
   const buttonClasses = React.useMemo(
     () => isFocused ? 'button is-focused' : 'button',

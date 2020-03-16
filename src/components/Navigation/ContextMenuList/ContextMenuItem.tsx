@@ -5,14 +5,14 @@ import { ContextMenuItemProps } from 'types';
 import { icons } from './icons';
 
 interface MenuItemProps {
-  key?: number;
   item: ContextMenuItemProps;
+  key?: number;
   onClick?: (e: Event, value: ContextMenuItemProps) => void;
 }
 
 const ContextMenuItem: React.FC<MenuItemProps> = ({
-  key,
   item,
+  key,
   onClick,
 }) => {
   return (

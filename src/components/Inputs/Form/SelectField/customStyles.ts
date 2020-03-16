@@ -4,13 +4,13 @@ import { StylesConfig } from 'react-select/lib/styles';
 import { theme } from 'theme';
 
 export interface CustomSelectProps extends Props {
-  isCustomSingleValue?: boolean;
   invalid?: boolean;
+  isCustomSingleValue?: boolean;
 }
 
 export interface SelectState {
-  isFocused: boolean;
   isDisabled: boolean;
+  isFocused: boolean;
   selectProps: CustomSelectProps;
 }
 

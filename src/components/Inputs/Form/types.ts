@@ -3,10 +3,10 @@ export interface InvalidProp {
 }
 
 export interface InputProps {
+  invalid?: boolean;
+  isEditableCellStyle?: boolean;
   isNumber?: boolean;
   isRightPlaceholder?: boolean;
-  isEditableCellStyle?: boolean;
-  invalid?: boolean;
 }
 
 export interface InputCommonProps extends

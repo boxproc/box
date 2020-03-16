@@ -4,8 +4,8 @@ import { scrollbarCss } from 'theme/styles';
 interface WrapperProps {
   height?: string;
   minHeight?: string;
-  whiteSpacePre?: boolean;
   visibilityHidden?: boolean;
+  whiteSpacePre?: boolean;
 }
 
 export const EditorWrapper = styled.div<WrapperProps>`

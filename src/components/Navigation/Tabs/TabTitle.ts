@@ -1,8 +1,8 @@
 import styled from 'theme';
 
 interface TabTitleProps {
-  isDisabled?: boolean;
   hasTabs?: boolean;
+  isDisabled?: boolean;
 }
 
 export const TabTitle = styled.div<TabTitleProps>`

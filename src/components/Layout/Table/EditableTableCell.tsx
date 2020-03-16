@@ -8,25 +8,25 @@ import { TableCell } from './TableCell';
 import { SelectValue } from 'types';
 
 interface EditableTableCellProps {
-  updateAction: (data: object) => void;
-  isSmaller?: boolean;
-  isNumber?: boolean;
+  cellInfo: CellInfo;
   isDecimalNumber?: boolean;
   isEditable?: boolean;
-  cellInfo: CellInfo;
+  isNumber?: boolean;
   isSelect?: boolean;
+  isSmaller?: boolean;
   selectOptions?: Array<SelectValue>;
+  updateAction: (data: object) => void;
 }
 
 const EditableTableCell: React.FC<EditableTableCellProps> = ({
-  updateAction,
-  isSmaller,
-  isNumber,
+  cellInfo,
   isDecimalNumber,
   isEditable = true,
-  cellInfo,
+  isNumber,
   isSelect,
+  isSmaller,
   selectOptions,
+  updateAction,
 }) => {
   const handleSelectValue = React.useCallback(
     (value: SelectValue) => {

@@ -2,13 +2,13 @@ import styled from 'theme';
 
 interface TableItemWrapperProps {
   color?: string;
-  textRight?: boolean;
-  isDate?: boolean;
   isAccentColor?: boolean;
-  textCenter?: boolean;
-  isSmaller?: boolean;
+  isDate?: boolean;
   isEditable?: boolean;
   isSelect?: boolean;
+  isSmaller?: boolean;
+  textCenter?: boolean;
+  textRight?: boolean;
 }
 
 export const TableItemWrapper = styled.div<TableItemWrapperProps>`

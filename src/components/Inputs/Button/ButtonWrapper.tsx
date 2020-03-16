@@ -1,13 +1,13 @@
 import styled from 'theme';
 
 interface ButtonWrapperProps {
-  size?: string;
-  width?: string;
   bordered?: boolean;
-  underline?: boolean;
   hasIcon?: boolean;
-  textTransformNone?: boolean;
   isTabsTheme?: boolean;
+  size?: string;
+  textTransformNone?: boolean;
+  underline?: boolean;
+  width?: string;
   withAnimation?: boolean;
 }
 

@@ -2,16 +2,9 @@ import React from 'react';
 
 import styled from 'theme';
 
-interface HighlightLinkProps {
-  text: string;
-  isActive?: boolean;
-  fontSize?: string;
-  onClick?: () => void;
-}
-
 interface LinkProps {
-  isActive?: boolean;
   fontSize?: string;
+  isActive?: boolean;
 }
 
 const Link = styled.span<LinkProps>`
@@ -28,11 +21,18 @@ const Link = styled.span<LinkProps>`
   }
 `;
 
+interface HighlightLinkProps {
+  fontSize?: string;
+  isActive?: boolean;
+  onClick?: () => void;
+  text: string;
+}
+
 const HighlightLink: React.FC<HighlightLinkProps> = ({
-  text,
   fontSize,
   isActive,
   onClick,
+  text,
 }) => {
   return (
     <Link

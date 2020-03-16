@@ -6,30 +6,30 @@ import { TableNoData } from './../../Layout';
 import { TableStyled } from './TableStyled';
 
 export interface TableProps extends Partial<ComponentDecoratorProps> {
-  data: Array<object>;
-  columns: Array<object>;
-  pageSize?: number;
-  style?: object;
-  sortable?: boolean;
-  filterable?: boolean;
-  className?: string;
-  title?: string;
-  isHeader?: boolean;
   activeRowIndex?: number;
-  isSmaller?: boolean;
+  className?: string;
+  columns: Array<object>;
+  data: Array<object>;
+  filterable?: boolean;
+  isHeader?: boolean;
   isScrollbar?: boolean;
+  isSmaller?: boolean;
+  pageSize?: number;
+  sortable?: boolean;
+  style?: object;
+  title?: string;
 }
 
 export const Table: React.FC<TableProps> = props => {
   const {
-    sortable = false,
+    activeRowIndex,
+    data,
     filterable = false,
     isHeader = true,
     isScrollbar = true,
-    data,
-    pageSize = 10,
-    activeRowIndex,
     isSmaller,
+    pageSize = 10,
+    sortable = false,
   } = props;
   const [height, setHeight] = React.useState(null);
   const tableRef = React.useRef(null);

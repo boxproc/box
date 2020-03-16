@@ -16,37 +16,37 @@ import { EditorWrapper } from './EditorWrapper';
 import { ContextMenuItemProps, ContextSubMenuType } from 'types';
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  fontSize?: number;
-  height?: string;
-  minHeight?: string;
-  padding?: number;
-  whiteSpacePre?: boolean;
-  isScrollbarBottom?: boolean;
   contextMenuItems?: Array<ContextMenuItemProps>;
   contextSubMenuItems?: ContextSubMenuType;
-  onContextMenuClick?: () => void;
-  setCursorCurrentPosition?: () => void;
+  fontSize?: number;
+  height?: string;
+  isScrollbarBottom?: boolean;
   menuId?: string;
+  minHeight?: string;
+  onContextMenuClick?: () => void;
+  padding?: number;
+  setCursorCurrentPosition?: () => void;
+  whiteSpacePre?: boolean;
 }
 
 const HighlightCode: React.FC<HighlightCodeProps> = ({
-  id,
-  name,
-  value,
-  onChange,
-  placeholder,
-  fontSize,
-  height,
-  minHeight,
-  padding = 10,
-  whiteSpacePre = true,
-  isScrollbarBottom,
   contextMenuItems,
   contextSubMenuItems,
-  onContextMenuClick,
-  setCursorCurrentPosition,
+  fontSize,
+  height,
+  id,
+  isScrollbarBottom,
   menuId,
+  minHeight,
+  name,
+  onChange,
+  onContextMenuClick,
+  padding = 10,
+  placeholder,
   readOnly,
+  setCursorCurrentPosition,
+  value,
+  whiteSpacePre = true,
 }) => {
   React.useEffect(
     () => {

@@ -21,9 +21,9 @@ interface TabsProps extends WithModalProps {
 }
 
 const Tabs: React.FC<TabsProps> = ({
+  activeTab = 0,
   children,
   openModal,
-  activeTab = 0,
 }) => {
   const [activeTabIndex, setActiveTabIndex] = React.useState(activeTab);
 

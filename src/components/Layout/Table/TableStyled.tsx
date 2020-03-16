@@ -13,9 +13,9 @@ const gradients = {
 
 interface TableStyledProps {
   activeRowIndex: number;
+  isScrollbar?: boolean;
   isSmaller?: boolean;
   minHeight?: number;
-  isScrollbar?: boolean;
 }
 
 export const TableStyled = styled.div<TableStyledProps>`

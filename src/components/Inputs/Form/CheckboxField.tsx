@@ -40,15 +40,15 @@ const CheckboxFieldWrapper = styled.div`
 `;
 
 interface CheckboxProps extends BaseFieldProps, Partial<WrappedFieldProps> {
-  value: boolean;
   id: string;
   onChange: (event: ChangeEvent, newValue?: boolean, name?: string) => void;
+  value: boolean;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
-  value,
   id,
   meta: { invalid, touched },
+  value,
   ...props
 }) => {
   return (
@@ -78,16 +78,16 @@ const Checkbox: React.FC<CheckboxProps> = ({
 };
 
 interface CheckboxFieldProps extends BaseFieldProps, WrappedFieldProps {
-  label: string | React.FC;
-  id?: string;
   disabled?: boolean;
+  id?: string;
+  label: string | React.FC;
 }
 
 const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
-  input,
-  label,
   disabled,
   id = 'option',
+  input,
+  label,
   ...props
 }) => {
   const Label = label;

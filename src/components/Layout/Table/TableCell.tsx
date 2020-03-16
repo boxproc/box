@@ -10,43 +10,43 @@ import { SelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 interface TableCellProps {
-  value: string | number;
-  style?: object;
-  isDate?: boolean;
-  isNumber?: boolean;
-  isDecimalNumber?: boolean;
-  onCenter?: boolean;
-  isSmaller?: boolean;
-  isEditable?: boolean;
-  isSelect?: boolean;
-  Icon?: ReactChild;
-  selectOptions?: Array<SelectValue>;
   defaultSelectValue?: SelectValue;
-  selectLabel?: string;
-  toFixedNumber?: number;
-  onKeyUp?: (e: React.KeyboardEvent) => void;
+  Icon?: ReactChild;
+  isDate?: boolean;
+  isDecimalNumber?: boolean;
+  isEditable?: boolean;
+  isNumber?: boolean;
+  isSelect?: boolean;
+  isSmaller?: boolean;
   onBlur?: any;
+  onCenter?: boolean;
+  onKeyUp?: (e: React.KeyboardEvent) => void;
   onSelectChange?: any;
+  selectLabel?: string;
+  selectOptions?: Array<SelectValue>;
+  style?: object;
+  toFixedNumber?: number;
+  value: string | number;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({
-  value,
-  style,
-  onBlur,
-  onKeyUp,
-  isDate,
-  isNumber,
-  isDecimalNumber,
-  onCenter,
-  isSmaller,
-  isEditable,
-  isSelect,
-  Icon,
-  toFixedNumber,
-  selectOptions,
   defaultSelectValue,
-  selectLabel,
+  Icon,
+  isDate,
+  isDecimalNumber,
+  isEditable,
+  isNumber,
+  isSelect,
+  isSmaller,
+  onBlur,
+  onCenter,
+  onKeyUp,
   onSelectChange,
+  selectLabel,
+  selectOptions,
+  style,
+  toFixedNumber,
+  value,
 }) => {
   const isPendingStatus = React.useMemo(
     () => value === schedulerStatusOptions

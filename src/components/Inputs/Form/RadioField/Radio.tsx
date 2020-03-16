@@ -8,8 +8,8 @@ import styled from 'theme';
 import { CheckedRadioIcon, UncheckedRadioIcon } from './../../../Icons';
 
 interface RadioWrapperProps {
-  disabled?: boolean;
   alignItems?: string;
+  disabled?: boolean;
 }
 
 const RadioWrapper = styled.label<RadioWrapperProps>`
@@ -49,9 +49,9 @@ const Input = styled.input`
 `;
 
 interface RadioProps extends BaseFieldProps, RadioWrapperProps, WrappedFieldProps {
+  className?: string;
   label: string | React.ReactNode;
   value: string;
-  className?: string;
 }
 
 const Radio: React.FC<RadioProps> = ({ value, label, disabled, ...props }) => {

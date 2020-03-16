@@ -19,18 +19,18 @@ const ToggleButton = styled(ArrowDropDownIcon)`
 `;
 
 export interface DropdownProps {
-  selectable?: boolean;
   dropdownListPosition?: AvailablePosition;
-  ToggleButtonComponent?: ReactChild;
   isDisabled?: boolean;
+  selectable?: boolean;
+  ToggleButtonComponent?: ReactChild;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
   children,
-  selectable = true,
   dropdownListPosition = 'left',
-  ToggleButtonComponent,
   isDisabled,
+  selectable = true,
+  ToggleButtonComponent,
 }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [isOpened, setIsOpened] = React.useState(false);

@@ -5,8 +5,8 @@ import styled from 'theme';
 import { InfoCircleIcon } from './../Icons';
 
 interface HintWrapperProps {
-  position?: string;
   icon?: boolean;
+  position?: string;
 }
 
 const hintShift = 'calc(100% + 3px)';
@@ -63,17 +63,17 @@ const InfoButton = styled(InfoCircleIcon)`
 `;
 
 interface HintProps {
-  text: string | React.ReactChild;
-  position?: 'top' | 'right' | 'bottom' | 'left';
   icon?: boolean;
+  position?: 'top' | 'right' | 'bottom' | 'left';
   style?: object;
+  text: string | React.ReactChild;
 }
 
 const Hint: React.FC<HintProps> = ({
-  text,
-  position = 'right',
   icon = true,
+  position = 'right',
   style,
+  text,
 }) => {
   const [isHint, setIsHint] = React.useState(false);
 

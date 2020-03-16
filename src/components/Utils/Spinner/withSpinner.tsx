@@ -11,10 +11,10 @@ export interface ExternalSpinnerProps {
 }
 
 interface Options {
-  isFixed?: boolean;
-  isGlobal?: boolean;
   backgroundColor?: string;
   color?: string;
+  isFixed?: boolean;
+  isGlobal?: boolean;
   maxHeight?: string | number;
   size?: string | number;
 }
@@ -31,11 +31,11 @@ const SpinnerContainer = styled.div<ExternalSpinnerProps & Options>`
 `;
 
 export const withSpinner = ({
+  backgroundColor,
+  color,
   isFixed = false,
   isGlobal = false,
-  backgroundColor,
   maxHeight,
-  color,
   size,
 }: Options = {}) => <OriginalProps extends {}>(
   Component: React.ComponentType<OriginalProps & Partial<ExternalSpinnerProps>>

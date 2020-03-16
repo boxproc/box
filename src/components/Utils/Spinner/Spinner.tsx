@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'theme';
 
 interface ContainerProps {
-  isFixed: boolean;
   backgroundColor?: string;
+  isFixed: boolean;
   maxHeight?: string | number;
 }
 
@@ -45,7 +45,11 @@ const Circle = styled.svg<CircleProps>`
 `;
 
 export const Spinner: React.FC<ContainerProps & CircleProps> = ({
-  size, color, isFixed, backgroundColor, maxHeight,
+  backgroundColor,
+  color,
+  isFixed,
+  maxHeight,
+  size,
 }) => (
     <Container
       isFixed={isFixed}

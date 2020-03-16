@@ -54,9 +54,9 @@ const PasswordFieldWrapper = styled.div`
 `;
 
 interface RenderComponentProps {
-  type: string;
   icon: React.ReactNode;
   tip: string;
+  type: string;
 }
 
 export const PasswordField: React.FC<InputCommonProps> = props => {

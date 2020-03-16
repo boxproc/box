@@ -13,8 +13,8 @@ interface RadioFieldProps extends Partial<BaseFieldProps>, WrappedFieldProps {
 }
 
 export const RadioField: React.FC<RadioFieldProps> = ({
-  option,
   name,
+  option,
   ...extraProps
 }) => (
     <Radio

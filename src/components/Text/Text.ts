@@ -16,9 +16,9 @@ export const Label = styled.label<LabelProps>`
 `;
 
 interface SmallTextProps {
+  accentColor?: boolean;
   bold?: boolean;
   light?: boolean;
-  accentColor?: boolean;
 }
 
 export const SmallText = styled.div<SmallTextProps>`
@@ -40,8 +40,8 @@ export const SmallText = styled.div<SmallTextProps>`
 `;
 
 interface TitleProps {
-  textAlign?: string;
   color?: string;
+  textAlign?: string;
 }
 
 export const T2 = styled.h2<TitleProps>`
@@ -67,11 +67,11 @@ export const T4 = styled.h4<TitleProps>`
 `;
 
 interface ParagraphProps {
-  light?: boolean;
-  textAlign?: string;
   bold?: boolean;
-  size?: number;
+  light?: boolean;
   monoFontFamily?: boolean;
+  size?: number;
+  textAlign?: string;
 }
 
 export const Paragraph = styled.p<ParagraphProps>`
