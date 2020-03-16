@@ -82,13 +82,21 @@ export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index 
 
 export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemId(id);
 
-const getNotification = (
-  title: string,
-  message: string,
-  details?: string,
-  statusCode?: string,
-  errorCode?: number
-) => openModal({
+interface Notification {
+  title: string;
+  message: string;
+  details?: string;
+  statusCode?: string;
+  errorCode?: number;
+}
+
+const getNotification = ({
+  title,
+  message,
+  details,
+  statusCode,
+  errorCode,
+}: Notification) => openModal({
   name: modalNamesConst.MESSAGE,
   payload: { title, message, details, statusCode, errorCode },
 });
@@ -109,20 +117,20 @@ export const handleSendNotification: SendNotification =
             ? stringsUtil.addNewLines(error_description)
             : '';
 
-          dispatch(getNotification(
-            `${statusCode} Error`, // title
-            error_message, // message
-            errorDescription, // description
-            status_code, // status code
-            statusCode // error code
-          ));
+          dispatch(getNotification({
+            title: `${statusCode} Error`,
+            message: error_message,
+            details: errorDescription,
+            statusCode: status_code,
+            errorCode: statusCode,
+          }));
         } else {
-          dispatch(getNotification(
-            `${(res && res.statusCode) ? res.statusCode : ''} Error`, // title
-            (res && res.error && res.error.message) // message
+          dispatch(getNotification({
+            title: `${(res && res.statusCode) ? res.statusCode : ''} Error`,
+            message: (res && res.error && res.error.message)
               ? res.error.message.toString()
-              : 'An error occurred.'
-          ));
+              : 'An error occurred.',
+          }));
         }
       }
     };

@@ -7,6 +7,17 @@ import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from './../../../Icons';
 
+interface IconProps {
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+const Icon: React.FC<IconProps> = ({ isSelected, onClick }) => {
+  return isSelected
+    ? (<CheckedBoxIcon onClick={onClick} />)
+    : (<UncheckedBoxIcon onClick={onClick} />);
+};
+
 interface OptionWrapperProps {
   isFocused: boolean;
 }
@@ -55,9 +66,10 @@ const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
     <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
       <Flex alignItems="flex-start">
         <Box mr="5px" mt="1px">
-          {isSelected
-            ? (<CheckedBoxIcon onClick={e => selectOption(modifiedData)} />)
-            : (<UncheckedBoxIcon onClick={e => selectOption(modifiedData)} />)}
+          <Icon
+            isSelected={isSelected}
+            onClick={() => selectOption(modifiedData)}
+          />
         </Box>
         <div>{children}</div>
       </Flex>

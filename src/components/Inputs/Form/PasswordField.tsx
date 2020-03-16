@@ -9,6 +9,32 @@ import { withFormField } from './withFormField';
 
 import { InputCommonProps } from './types';
 
+const iconStyles = css`
+  color: ${({ theme }) => theme.colors.gray};
+  transition: all .1s linear;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.normalAccent}
+  }
+`;
+
+const EyeSlashStyled = styled(EyeSlashIcon)`
+  ${iconStyles}
+`;
+
+const EyeStyled = styled(EyeIcon)`
+  ${iconStyles}
+`;
+
+interface IconProps {
+  masked: boolean;
+  size: string;
+}
+
+const Icon: React.FC<IconProps> = ({ masked, size }) => {
+  return masked ? (<EyeSlashStyled size={size} />) : (<EyeStyled size={size} />);
+};
+
 const PasswordFieldBase = styled.input`
   ${sharedInputCss};
   padding-right: 30px;
@@ -25,23 +51,6 @@ const PasswordFieldWrapper = styled.div`
     user-select:none;
     font-size: 0;
   }
-`;
-
-const iconStyles = css`
-  color: ${({ theme }) => theme.colors.gray};
-  transition: all .1s linear;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.normalAccent}
-  }
-`;
-
-const EyeSlashStyled = styled(EyeSlashIcon)`
-  ${iconStyles}
-`;
-
-const EyeStyled = styled(EyeIcon)`
-  ${iconStyles}
 `;
 
 interface RenderComponentProps {
@@ -76,7 +85,7 @@ export const PasswordField: React.FC<InputCommonProps> = props => {
     <React.Fragment>
       {renderComponent({
         type: masked ? 'password' : 'text',
-        icon: masked ? <EyeSlashStyled size="15" /> : <EyeStyled size="15" />,
+        icon: <Icon masked={masked} size="15" />,
         tip: masked ? 'Show password' : 'Hide password',
       })}
     </React.Fragment>
