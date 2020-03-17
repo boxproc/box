@@ -2,7 +2,7 @@ import { push } from 'connected-react-router';
 
 import { basePath, modalNamesConst } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
+import { closeModal, openModal } from 'store';
 import {
   ActionTypeKeys,
   ChangeAdminProfileAction,

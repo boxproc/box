@@ -11,7 +11,7 @@ import {
   AdminUserGroupMemberPrepared,
   HandleDeleteAdminUserGroupMembers,
   HandleGetAdminUserGroupMembers,
-} from 'store/domains';
+} from 'store';
 
 import { TableCellType } from 'types';
 

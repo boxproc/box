@@ -6,7 +6,7 @@ import { tableColumns } from './components';
 import {
   DictionaryCurrenciesItemPrepared,
   HandleGetDictionaryCurrencies,
-} from 'store/domains';
+} from 'store';
 
 interface CurrenciesProps {
   getDictionaryCurrencies: HandleGetDictionaryCurrencies;

@@ -8,8 +8,8 @@ import {
   handleGetRepaymentDirectDebits,
   LedgerCustomersActionTypes,
   selectRepaymentDirectDebits,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.GET_REPAYMENT_DIRECT_DEBITS,

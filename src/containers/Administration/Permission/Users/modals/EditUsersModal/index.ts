@@ -5,8 +5,7 @@ import { formNamesConst } from 'consts';
 
 import EditUserModal from './EditUserModal';
 
-import { selectCurrentPermissionsUsername, selectUsersDetails } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectCurrentPermissionsUsername, selectUsersDetails, StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.DEFINE_USER);
 

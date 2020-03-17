@@ -6,7 +6,7 @@ import { InputField, OkCancelButtons, PasswordField } from 'components';
 
 import { formNamesConst, yesNoConst } from 'consts';
 
-import { HandleChangePassword } from 'store/domains';
+import { HandleChangePassword } from 'store';
 
 import { formErrorUtil, storageUtil } from 'utils';
 

@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import ProductAuxiliaryCounters from './ProductAuxiliaryCounters';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_AUXILIARY_COUNTERS);
 

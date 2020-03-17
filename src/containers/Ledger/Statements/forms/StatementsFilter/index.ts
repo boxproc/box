@@ -11,8 +11,8 @@ import {
   handleGetInstitutionProducts,
   ProductsActionTypes,
   selectInstitutionProductsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_INSTITUTION_PRODUCTS,

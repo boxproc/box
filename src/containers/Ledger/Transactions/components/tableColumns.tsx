@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { LedgerTransactionItemPrepared } from 'store/domains';
+import { LedgerTransactionItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

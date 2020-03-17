@@ -12,7 +12,7 @@ import {
   HandleFilterAdminSysProps,
   HandleUpdateAdminSysProps,
   ResetSystemProperties,
-} from 'store/domains';
+} from 'store';
 
 interface SystemPropertiesProps {
   deleteSysProp: HandleDeleteAdminSysProp;

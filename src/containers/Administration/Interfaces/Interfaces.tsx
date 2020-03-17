@@ -12,7 +12,7 @@ import {
   HandleFilterAdminInterface,
   HandleGetLogData,
   ResetInterfaces,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

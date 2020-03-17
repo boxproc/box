@@ -14,7 +14,7 @@ import {
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-import { HandleSettleTransaction } from 'store/domains';
+import { HandleSettleTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 

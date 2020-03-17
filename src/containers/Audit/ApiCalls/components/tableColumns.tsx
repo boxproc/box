@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { ApiCallsItemPrepared } from 'store/domains';
+import { ApiCallsItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

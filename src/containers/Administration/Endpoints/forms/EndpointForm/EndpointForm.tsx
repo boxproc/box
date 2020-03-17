@@ -14,7 +14,7 @@ import {
   HandleDeleteAdminEndpoint,
   HandleGetDictionaryEndpointTypes,
   HandleUpdateAdminEndpoint
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

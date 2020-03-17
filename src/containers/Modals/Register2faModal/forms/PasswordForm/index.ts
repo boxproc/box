@@ -7,8 +7,8 @@ import {
   AuthActionTypes,
   createLoadingSelector,
   handleUserGetAuthKey,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuthActionTypes.USER_GET_AUTH_KEY,

@@ -13,7 +13,7 @@ import {
   HandleDeleteLedgerCustomer,
   HandleGetDictionaryCountries,
   HandleUpdateLedgerCustomer,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

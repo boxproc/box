@@ -13,9 +13,8 @@ import {
   handleGetAdminUiItems,
   selectActiveItemId,
   selectAdminGroupPermissionsUiItems,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.ADD_ADMIN_GROUP_PERMISSIONS,

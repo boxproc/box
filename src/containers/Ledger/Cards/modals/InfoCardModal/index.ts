@@ -14,8 +14,8 @@ import {
   selectCurrentCardStatus,
   selectIsReadOnly,
   selectLedgerCardValues,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerCardsActionTypes.ACTIVATE_LEDGER_CARD,

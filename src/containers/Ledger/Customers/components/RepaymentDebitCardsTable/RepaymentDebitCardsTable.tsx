@@ -9,7 +9,7 @@ import {
   withSpinner,
 } from 'components';
 
-import { HandleGetRepaymentDebitCards, RepaymentDebitCardsItemPrepared } from 'store/domains';
+import { HandleGetRepaymentDebitCards, RepaymentDebitCardsItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

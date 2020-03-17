@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Hr, NumberFormatField, OkCancelButtons } from 'components';
 
-import { LedgerAccountItemDetailsPrepared } from 'store/domains';
+import { LedgerAccountItemDetailsPrepared } from 'store';
 
 import { formErrorUtil } from 'utils';
 

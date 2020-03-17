@@ -11,7 +11,7 @@ import {
   HandleSetUserCurrentRegisterStep,
   HandleUserConfirmAuthKey,
   HandleUserGetAuthKey,
-} from 'store/domains';
+} from 'store';
 
 interface Register2faModalProps {
   userGetAuthKey: HandleUserGetAuthKey;

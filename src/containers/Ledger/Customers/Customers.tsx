@@ -15,7 +15,7 @@ import {
   HandleFilterLedgerTransactionsById,
   LedgerCustomerItemPrepared,
   ResetCustomers,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

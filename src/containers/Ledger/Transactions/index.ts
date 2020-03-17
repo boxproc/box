@@ -17,9 +17,8 @@ import {
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactions,
   selectUiItems,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerTransactionsActionTypes.FILTER_LEDGER_TRANSACTIONS,

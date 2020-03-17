@@ -31,7 +31,7 @@ import {
   SystemMonitorSchedulerItem,
   SystemMonitorTransaction,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 import { cookiesUtil } from 'utils';
 
 interface SystemMonitorProps extends RouteComponentProps {

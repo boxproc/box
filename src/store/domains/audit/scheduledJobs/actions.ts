@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
-import { setIsOpenFilter } from 'store/domains/utils';
+import { setIsOpenFilter } from 'store';
 import {
   ActionTypeKeys,
   FilterScheduledJobsAction,

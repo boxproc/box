@@ -7,7 +7,7 @@ import { modalNamesConst } from 'consts';
 
 import { SchedulerForm } from 'containers/Administration/Scheduler/forms';
 
-import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store/domains';
+import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store';
 
 import { SelectValue } from 'types';
 

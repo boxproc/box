@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { productTypesConst } from 'consts';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 import { selectCurrencyCodesOptions } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';

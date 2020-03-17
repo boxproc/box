@@ -7,7 +7,7 @@ import { Delimiter, InputField, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleGetInstitutionProducts } from 'store/domains';
+import { HandleGetInstitutionProducts } from 'store';
 
 import { ChangeFieldValue, SelectValue } from 'types';
 import { formErrorUtil } from 'utils';

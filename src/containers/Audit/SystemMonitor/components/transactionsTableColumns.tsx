@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { SystemMonitorTransaction } from 'store/domains';
+import { SystemMonitorTransaction } from 'store';
 
 import { TableCellType } from 'types';
 

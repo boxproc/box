@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
-import { ProductItem } from 'store/domains';
+import { ProductItem } from 'store';
 
 import { TableCellType } from 'types';
 

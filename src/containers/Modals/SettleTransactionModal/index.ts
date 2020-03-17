@@ -16,9 +16,8 @@ import {
   selectPayloadSettleTransactionModal,
   selectRetrievedTransaction,
   selectUiItems,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const retrieveLoadingSelector = createLoadingSelector([
   LedgerSettleTransactionActionTypes.RETRIEVE_TRANSACTION,

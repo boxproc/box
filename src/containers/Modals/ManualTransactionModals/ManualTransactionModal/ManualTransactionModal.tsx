@@ -19,7 +19,7 @@ import {
   HandleMakeLedgerTransaction,
   PayloadManualTransactionModal,
   UiItemPrepared
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

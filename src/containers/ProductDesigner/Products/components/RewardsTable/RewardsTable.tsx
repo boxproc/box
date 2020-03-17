@@ -19,7 +19,7 @@ import {
   HandleGetProductRewards,
   HandleUpdateProductReward,
   ProductReward,
-} from 'store/domains';
+} from 'store';
 
 import { TableCellType } from 'types';
 

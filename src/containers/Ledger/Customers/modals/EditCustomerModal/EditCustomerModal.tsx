@@ -10,7 +10,7 @@ import {
   RepaymentDebitCardsForm,
   RepaymentDirectDebitsForm,
 } from 'containers/Ledger/Customers/forms';
-import { HandleGetInterfacesService } from 'store/domains';
+import { HandleGetInterfacesService } from 'store';
 import { SelectValue } from 'types';
 
 interface EditCustomerModalProps extends WithModalProps {

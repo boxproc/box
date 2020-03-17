@@ -8,7 +8,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
-import { LedgerAccountItemDetailsPrepared } from 'store/domains';
+import { LedgerAccountItemDetailsPrepared } from 'store';
 
 interface EditAccountModalProps extends WithModalProps {
   currentAccountAlias: string;

@@ -7,7 +7,7 @@ import { MaskField, SelectField } from 'components';
 
 import { dateFormatConst, maskFormatConst, } from 'consts';
 
-import { HandleGetAuditUsers } from 'store/domains';
+import { HandleGetAuditUsers } from 'store';
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 

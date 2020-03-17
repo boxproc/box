@@ -3,8 +3,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import ChangeProfileModal from './ChangeProfileModal';
 
-import { StoreState } from 'store/StoreState';
-
 import {
   AdminUserActionTypes,
   AuthActionTypes,
@@ -12,7 +10,8 @@ import {
   handleChangeAdminProfile,
   handleGetAccessUsers,
   selectAdminAccessUsersOptions,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const changingProfile = createLoadingSelector([
   AuthActionTypes.CHANGE_ADMIN_PROFILE,

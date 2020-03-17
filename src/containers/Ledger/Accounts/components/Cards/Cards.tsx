@@ -10,7 +10,7 @@ import {
   HandleGetLedgerAccountCards,
   HandleOrderLedgerAccountCard,
   LedgerAccountsCardsItemPrepared
-} from 'store/domains';
+} from 'store';
 
 interface AccountCardsProps {
   accountCurrentId: number;

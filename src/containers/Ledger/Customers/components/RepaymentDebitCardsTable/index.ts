@@ -8,8 +8,8 @@ import {
   handleGetRepaymentDebitCards,
   LedgerCustomersActionTypes,
   selectRepaymentDebitCards,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.GET_REPAYMENT_DEBIT_CARDS,

@@ -5,8 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddEndpointModal from './AddEndpointModal';
 
-import { selectInstitutionsOptions } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectInstitutionsOptions, StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.ENDPOINT);
 

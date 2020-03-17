@@ -20,7 +20,7 @@ import {
   HandleGetLogData,
   HandleSendAdminSchedulerAction,
   ResetScheduler,
-} from 'store/domains';
+} from 'store';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 

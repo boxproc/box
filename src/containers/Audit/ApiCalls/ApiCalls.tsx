@@ -6,7 +6,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
-import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store/domains';
+import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store';
 import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 

@@ -11,10 +11,9 @@ import {
   selectUiItems,
   setActivePagePermission,
   setIsOpenFilter,
-  stopAutoRefresh
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  stopAutoRefresh,
+  StoreState,
+} from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   isAutoRefresh: selectIsAutoRefresh(state),

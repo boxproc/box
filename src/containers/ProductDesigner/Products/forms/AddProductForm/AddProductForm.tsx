@@ -14,7 +14,7 @@ import { formNamesConst } from 'consts';
 
 import { ProductDetails, ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
-import { HandleAddProduct } from 'store/domains';
+import { HandleAddProduct } from 'store';
 
 import { SelectValue } from 'types';
 

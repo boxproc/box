@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId } from 'store';
 import { ActionTypeKeys, GetProductRuleAction, UpdateProductRulesAction, } from './actionTypes';
 import * as api from './api';
 import { ProductRuleRequestPrepared, ProductRulesItem, ProductRulesItemResp } from './types';

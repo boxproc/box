@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { selectActiveItemId } from 'store/domains/utils';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 import { preparedValuesToRender } from './utils';
 
 export const selectDefaultAuditScheduledJobs = (state: StoreState) =>

@@ -10,8 +10,8 @@ import {
   handleAddAdminSchedulerJob,
   selectInstitutionsOptions,
   selectSchedulerJobValues,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const dirty = isDirty(formNamesConst.SCHEDULER);
 

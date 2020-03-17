@@ -7,7 +7,7 @@ import { Button, CheckboxField, SelectField } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store/domains';
+import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store';
 
 import { SelectValue } from 'types';
 

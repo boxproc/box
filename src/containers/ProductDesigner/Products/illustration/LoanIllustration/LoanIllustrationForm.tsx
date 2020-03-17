@@ -7,7 +7,7 @@ import { Button, Hr, InputField, MaskField, NumberFormatField, SelectField } fro
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store/domains';
+import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';

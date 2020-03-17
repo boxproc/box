@@ -5,7 +5,7 @@ import { modalNamesConst } from 'consts';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { AdminUsersGroupItem, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store/domains';
+import { AdminUsersGroupItem, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store';
 
 interface UserFilterProps {
   usersGroupItems: Array<AdminUsersGroupItem>;

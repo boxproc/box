@@ -6,8 +6,6 @@ import { formNamesConst } from 'consts';
 
 import CustomerForm from './CustomerForm';
 
-import { StoreState } from 'store/StoreState';
-
 import {
   createLoadingSelector,
   handleAddLedgerCustomer,
@@ -19,7 +17,8 @@ import {
   selectCountryCodesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.DELETE_LEDGER_CUSTOMER,

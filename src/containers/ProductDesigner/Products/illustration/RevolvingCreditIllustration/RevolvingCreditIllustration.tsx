@@ -10,7 +10,7 @@ import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
 
-import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store/domains';
+import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store';
 
 interface IllustrationProductFormProps extends WithLoadTransactionTypesProps {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;

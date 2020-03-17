@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AuditUserActivityItem } from 'store/domains';
+import { AuditUserActivityItem } from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof AuditUserActivityItem> = TableCellType<AuditUserActivityItem[T]>;

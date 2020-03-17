@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
+import { StoreState } from 'store';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
-import { StoreState } from 'store/StoreState';
 import { preparedDataToRender, preparedValuesDetailsToRender } from './utils';
 
 export const selectDefaultAdminInterface = (state: StoreState) =>

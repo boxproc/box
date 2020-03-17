@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader, withSpinner } from 'components';
 
-import { IllustrationProductLoan } from 'store/domains';
+import { IllustrationProductLoan } from 'store';
 
 import { TableCellType } from 'types';
 

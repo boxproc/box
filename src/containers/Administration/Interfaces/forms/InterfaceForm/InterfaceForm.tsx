@@ -14,7 +14,7 @@ import {
   HandleDeleteAdminInterface,
   HandleGetDictionaryInterfaceTypes,
   HandleUpdateAdminInterface
-} from 'store/domains';
+} from 'store';
 import { SelectValue } from 'types';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {

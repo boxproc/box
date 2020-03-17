@@ -15,8 +15,8 @@ import {
   selectCurrencyCodesOptions,
   selectInstitutionsOptions,
   selectStatementCycleTypesOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const currencyCodesLoading = createLoadingSelector([
   DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,

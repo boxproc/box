@@ -8,7 +8,7 @@ import { formNamesConst } from 'consts';
 
 import { GeneralLedger } from 'containers/ProductDesigner/Products/components';
 
-import { HandleUpdateGeneralLedger } from 'store/domains';
+import { HandleUpdateGeneralLedger } from 'store';
 
 interface GeneralLedgerFromProps extends ExternalSpinnerProps {
   currentProductId: number;

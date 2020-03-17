@@ -18,7 +18,7 @@ import {
   SetIsOpenFilter,
   StopAutoRefresh,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 
 import { ContextMenuItemProps } from 'types';
 import { cookiesUtil, downloadUtil, storageUtil } from 'utils';

@@ -3,8 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
-import { openModal } from 'store/domains/modals';
-import { setIsOpenFilter } from 'store/domains/utils';
+import { openModal, setIsOpenFilter } from 'store';
 import {
   ActionTypeKeys,
   ActivateLedgerCardAction,

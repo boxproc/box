@@ -13,7 +13,7 @@ import {
   HandleFilterLedgerTransactionsById,
   LedgerLimitAdjustmentResultPrepared,
   LedgerManualTransactionResultPrepared,
-} from 'store/domains';
+} from 'store';
 
 interface ResultManualTransactionModalProps extends WithModalProps {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;

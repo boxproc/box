@@ -8,7 +8,7 @@ import { actionTypesConst, eventTypesCodeKeys, formNamesConst } from 'consts';
 
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
-import { HandleGetProductRule, HandleUpdateProductRules } from 'store/domains';
+import { HandleGetProductRule, HandleUpdateProductRules } from 'store';
 
 import { SelectValue } from 'types';
 

@@ -12,7 +12,7 @@ import {
   HandleFilterAuditUiSessions,
   HandleFilterAuditUserActivityByData,
   ResetUiSessions,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 import { cookiesUtil, dateUtil, storageUtil } from 'utils';

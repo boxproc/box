@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectDefaultDictionaryRepaymentTypesItems = (state: StoreState) =>
   state.administration.repaymentTypes.repaymentTypes;

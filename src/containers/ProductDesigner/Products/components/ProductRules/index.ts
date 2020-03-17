@@ -19,9 +19,8 @@ import {
   selectProductFeesForRules,
   selectProductRewardsForRules,
   selectTransactionTypesForRules,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingEventsSelector = createLoadingSelector([
   DictionaryEventsActionTypes.GET_DICTIONARY_EVENTS,

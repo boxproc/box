@@ -17,9 +17,8 @@ import {
   selectInstitutionsOptions,
   selectLedgerStatements,
   setActiveItemId,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerStatementsActionTypes.FILTER_LEDGER_STATEMENTS,

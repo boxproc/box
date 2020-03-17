@@ -3,7 +3,7 @@ import React from 'react';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { HandleGetDictionaryEvents } from 'store/domains';
+import { HandleGetDictionaryEvents } from 'store';
 
 import { IdNamePair } from 'types';
 

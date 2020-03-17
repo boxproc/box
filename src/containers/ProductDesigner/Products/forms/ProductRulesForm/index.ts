@@ -15,9 +15,8 @@ import {
   selectCurrentProductRule,
   selectCurrentProductScript,
   selectCurrentProductType,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductRulesActionTypes.GET_PRODUCT_RULE,

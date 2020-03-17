@@ -5,8 +5,7 @@ import EditUsersGroupModal from './EditUserGroupModal';
 
 import { formNamesConst } from 'consts';
 
-import { selectUsersGroupInstitutionName, selectUsersGroupName } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectUsersGroupInstitutionName, selectUsersGroupName, StoreState, } from 'store';
 
 const generalInfoFormDirty = isDirty(formNamesConst.EDIT_GENERAL_INFO_USER_GROUP);
 const userGroupMembersFormDirty = isDirty(formNamesConst.EDIT_USER_GROUP_MEMBERS);

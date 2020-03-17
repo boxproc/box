@@ -2,7 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId } from 'store';
 import {
   ActionTypeKeys,
   FilterAuditApiCallsAction,

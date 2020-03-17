@@ -13,9 +13,8 @@ import {
   selectManualTransactionModalIsLimit,
   selectPayloadManualTransactionModal,
   selectUiItems,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerManualTransactionActionTypes.MAKE_LEDGER_TRANSACTION,

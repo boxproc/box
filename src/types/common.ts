@@ -3,7 +3,7 @@ import { Action, AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { Response as SuperagentApiResponse } from 'superagent';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export type Thunk<R> = ThunkAction<R, StoreState, {}, AnyAction>;
 

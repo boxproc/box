@@ -4,7 +4,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { SmallText, T4 } from 'components';
 
-import { SystemMonitorCounts } from 'store/domains';
+import { SystemMonitorCounts } from 'store';
 
 interface HeaderProps {
   title: string;

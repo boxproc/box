@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 import { selectDictionaryEventsOptions } from 'store/domains/administration';
 import { prepareProductRuleData } from './utils';

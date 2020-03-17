@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { StoreState } from 'store';
 import { selectActiveItemId } from 'store/domains/utils';
-import { StoreState } from 'store/StoreState';
 
 import { transactionTypesIds } from 'consts';
 import { prepareValuesToRender } from './utils';

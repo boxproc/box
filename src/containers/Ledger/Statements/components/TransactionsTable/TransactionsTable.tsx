@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Table } from 'components';
 
-import { LedgerStatementTransactionsItemPrepared } from 'store/domains';
+import { LedgerStatementTransactionsItemPrepared } from 'store';
 import { tableTransactionsColumns } from './tableTransactionsColumns';
 
 interface TransactionsTableProps {

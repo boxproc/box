@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
-import { LedgerAccountItemPrepared } from 'store/domains';
+import { LedgerAccountItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

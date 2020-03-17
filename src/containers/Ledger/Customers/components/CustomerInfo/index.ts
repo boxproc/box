@@ -6,8 +6,8 @@ import {
   createLoadingSelector,
   DictionaryCountriesActionTypes,
   selectInstitutionsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   DictionaryCountriesActionTypes.GET_DICTIONARY_COUNTRIES,

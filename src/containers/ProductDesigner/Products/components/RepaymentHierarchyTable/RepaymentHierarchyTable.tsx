@@ -19,7 +19,7 @@ import {
   HandleGetRepaymentHierarchy,
   HandleUpdateRepaymentHierarchy,
   RepaymentHierarchy,
-} from 'store/domains';
+} from 'store';
 
 import { TableCellType } from 'types';
 

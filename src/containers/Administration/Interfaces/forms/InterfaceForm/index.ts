@@ -3,8 +3,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import InterfaceForm from './InterfaceForm';
 
-import { StoreState } from 'store/StoreState';
-
 import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
@@ -15,7 +13,8 @@ import {
   handleUpdateInterface,
   selectActiveItemId,
   selectInterfaceTypesOptions,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminInterfacesActionTypes.UPDATE_ADMIN_INTERFACE,

@@ -2,8 +2,8 @@ import { createSelector } from 'reselect';
 
 import { yesNoConst } from 'consts';
 
+import { StoreState } from 'store';
 import { selectActiveItemId } from 'store/domains/utils';
-import { StoreState } from 'store/StoreState';
 
 export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
   state.administration.systemProperties.systemProperties;

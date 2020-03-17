@@ -19,7 +19,7 @@ import {
   userStatusWith2faOptions,
 } from 'consts';
 
-import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store/domains';
+import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store';
 
 import { SelectValue } from 'types';
 

@@ -10,9 +10,8 @@ import {
   LedgerAccountsActionTypes,
   selectActiveItemId,
   selectLedgerAccountCards,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.GET_LEDGER_ACCOUNT_CARDS,

@@ -6,7 +6,7 @@ import {
   debitCreditIndicatorOptions,
 } from 'consts';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectDefaultDictionaryTransactionTypes = (state: StoreState) =>
   state.administration.transactionTypes.transactionTypes;

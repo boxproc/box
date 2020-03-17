@@ -15,8 +15,8 @@ import {
   selectActiveItemId,
   selectCardStatusesOptions,
   selectCurrentCardStatusOption,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingStatusesSelector = createLoadingSelector([
   DictionaryConstsActionTypes.GET_DICTIONARY_CARD_STATUSES,

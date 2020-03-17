@@ -10,7 +10,7 @@ import {
   AdminSchedulerEditableItem,
   HandleDeleteAdminSchedulerJob,
   HandleUpdateAdminSchedulerJob,
-} from 'store/domains';
+} from 'store';
 
 interface EditSchedulerModalProps extends WithModalProps {
   schedulerJobValues: AdminSchedulerEditableItem;

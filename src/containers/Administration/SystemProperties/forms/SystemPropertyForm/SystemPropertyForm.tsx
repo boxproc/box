@@ -19,7 +19,7 @@ import {
   HandleAddAdminSysProp,
   HandleDeleteAdminSysProp,
   HandleUpdateAdminSysProps,
-} from 'store/domains';
+} from 'store';
 
 import { formErrorUtil } from 'utils';
 

@@ -9,13 +9,12 @@ import {
   handleGetAdminActiveUsers,
   selectActiveItemId,
   selectActiveUsersItems,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 import { formNamesConst } from 'consts';
 
 import EditUserGroupMembers from './EditUserGroupMembers';
-
-import { StoreState } from 'store/StoreState';
 
 const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS);
 

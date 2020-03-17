@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
-import { AdminInstitutionsItemDetailsPrepared } from 'store/domains';
+import { AdminInstitutionsItemDetailsPrepared } from 'store';
 
 interface EditInstitutionModalProps extends WithModalProps {
   currentInstitution: AdminInstitutionsItemDetailsPrepared;

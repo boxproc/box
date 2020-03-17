@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { formValueSelector } from 'redux-form';
+
+import { formNamesConst } from 'consts';
 
 import ProductDetailsForm from './ProductDetailsForm';
 
@@ -10,11 +13,8 @@ import {
   ProductsActionTypes,
   selectActiveItemId,
   selectCurrentProductDetails,
-} from 'store/domains';
-
-import { formNamesConst } from 'consts';
-import { formValueSelector } from 'redux-form';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_DETAILS);
 

@@ -11,7 +11,7 @@ import { ProductDetails } from 'containers/ProductDesigner/Products/components';
 import {
   HandleGetProductDetails,
   HandleUpdateProductDetails,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

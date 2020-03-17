@@ -11,8 +11,8 @@ import {
   handleUpdateAdminUser,
   selectInstitutions,
   selectInstitutionsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.DEFINE_USER);
 

@@ -1,10 +1,6 @@
 import { modalNamesConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
-
-import * as api from './api';
-
-import { getInstitutions } from 'store/domains/login';
+import { closeModal, getInstitutions } from 'store';
 import {
   ActionTypeKeys,
   AddAdminInstitutionAction,
@@ -12,6 +8,7 @@ import {
   GetAdminInstitutionsAction,
   UpdateAdminInstitutionAction,
 } from './actionTypes';
+import * as api from './api';
 import {
   AdminInstitutionsItem,
   AdminInstitutionsItemDetailsPrepared,

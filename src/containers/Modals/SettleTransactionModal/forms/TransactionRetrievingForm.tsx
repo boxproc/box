@@ -7,7 +7,7 @@ import { InputField, OkCancelButtons } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleRetrieveTransaction } from 'store/domains';
+import { HandleRetrieveTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 

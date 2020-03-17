@@ -15,10 +15,9 @@ import {
   selectAdminEndpoints,
   selectInstitutionsOptions,
   selectIsReadOnly,
+  StoreState,
   SystemMonitorActionTypes,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINTS,

@@ -2,7 +2,7 @@ import { reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
+import { closeModal } from 'store';
 import {
   ActionTypeKeys,
   AddAdminActiveUsersAction,

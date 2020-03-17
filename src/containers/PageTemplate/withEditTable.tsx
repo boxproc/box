@@ -19,8 +19,8 @@ import {
   OpenModal,
   selectActiveTableRowIndex,
   selectModalsStateList,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 import { ContextMenuItemProps } from 'types';
 

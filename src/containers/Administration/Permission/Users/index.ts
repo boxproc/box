@@ -13,8 +13,8 @@ import {
   selectActiveItemId,
   selectInstitutionsOptions,
   selectUserEditorItems,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminUserActionTypes.ADD_ADMIN_USER,

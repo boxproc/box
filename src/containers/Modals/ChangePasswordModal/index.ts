@@ -3,8 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import ChangePasswordModal from './ChangePasswordModal';
 
-import { AuthActionTypes, createLoadingSelector, handleChangePassword } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { AuthActionTypes, createLoadingSelector, handleChangePassword, StoreState } from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuthActionTypes.CHANGE_PASSWORD,

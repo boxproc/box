@@ -5,8 +5,11 @@ import { formNamesConst } from 'consts';
 
 import EditInstitutionModal from './EditInstitutionModal';
 
-import { selectAdminCurrentInstitution, selectAdminCurrentInstitutionName } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import {
+  selectAdminCurrentInstitution,
+  selectAdminCurrentInstitutionName,
+  StoreState,
+} from 'store';
 
 const dirty = isDirty(formNamesConst.INSTITUTIONS);
 

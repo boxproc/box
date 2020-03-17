@@ -9,7 +9,7 @@ import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
-import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store/domains';
+import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store';
 
 interface InfoAccountModalProps extends WithModalProps {
   currentCard: Partial<LedgerCardItemPrepared>;

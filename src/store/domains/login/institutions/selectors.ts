@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { yesNoConst } from 'consts';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectDefaultInstitutions = (state: StoreState) =>
   state.login.institutions.institutions;

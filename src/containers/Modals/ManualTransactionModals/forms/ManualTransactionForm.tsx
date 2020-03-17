@@ -13,7 +13,7 @@ import {
 } from 'components';
 import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
-import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store/domains';
+import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store';
 
 import { formNamesConst } from 'consts';
 

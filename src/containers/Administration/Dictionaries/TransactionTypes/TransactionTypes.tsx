@@ -6,7 +6,7 @@ import { tableColumns } from './components';
 import {
   DictionaryTransactionTypes,
   HandleGetDictionaryTransactionTypes,
-} from 'store/domains';
+} from 'store';
 
 interface TransactionTypesProps {
   getTransactionTypes: HandleGetDictionaryTransactionTypes;

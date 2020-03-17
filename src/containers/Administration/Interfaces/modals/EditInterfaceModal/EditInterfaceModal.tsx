@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
-import { AdminInterfaceItemDetailsPrepared } from 'store/domains';
+import { AdminInterfaceItemDetailsPrepared } from 'store';
 
 import { SelectValue } from 'types';
 

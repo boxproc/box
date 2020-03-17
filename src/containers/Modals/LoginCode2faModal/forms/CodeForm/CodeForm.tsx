@@ -7,7 +7,7 @@ import { Button, ExternalSpinnerProps, InputField, withSpinner } from 'component
 
 import { formNamesConst } from 'consts';
 
-import { HandleUserEnterAuthKey } from 'store/domains';
+import { HandleUserEnterAuthKey } from 'store';
 
 import { formErrorUtil } from 'utils';
 

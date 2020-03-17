@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminEndpointItemPrepared } from 'store/domains';
+import { AdminEndpointItemPrepared } from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof AdminEndpointItemPrepared> =

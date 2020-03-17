@@ -11,8 +11,8 @@ import {
   createLoadingSelector,
   handleGetSchedulerNamesByInstitutionId,
   selectSchedulerNamesByInstIdOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID,

@@ -17,7 +17,7 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
-import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store/domains';
+import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store';
 import { SelectValue } from 'types';
 
 interface GeneralProductFormProps extends ExternalSpinnerProps {

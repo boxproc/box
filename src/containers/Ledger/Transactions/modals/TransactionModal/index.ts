@@ -7,9 +7,8 @@ import {
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactionAmount,
   selectPayloadTransactionModal,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   currentTransactionId: selectActiveItemId(state),

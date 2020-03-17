@@ -2,7 +2,7 @@ import * as api from './api';
 
 import { ActionTypeKeys, GetDictionaryCountriesAction } from './actionTypes';
 
-import { selectIsCurrencyCodesLoaded } from 'store/domains/administration';
+import { selectIsCurrencyCodesLoaded } from 'store';
 
 import { VoidPromiseThunk } from 'types';
 

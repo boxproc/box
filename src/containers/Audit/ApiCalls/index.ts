@@ -10,9 +10,8 @@ import {
   resetApiCalls,
   selectAuditApiCalls,
   selectInstitutionsOptions,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuditApiCallsActionTypes.FILTER_AUDIT_API_CALLS,

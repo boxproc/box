@@ -14,8 +14,8 @@ import {
   selectActiveItemId,
   selectCurrentSchedulerName,
   selectSchedulerJobValues,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,

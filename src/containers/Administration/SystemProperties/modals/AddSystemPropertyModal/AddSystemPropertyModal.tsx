@@ -7,7 +7,7 @@ import { modalNamesConst } from 'consts';
 
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
-import { HandleAddAdminSysProp } from 'store/domains';
+import { HandleAddAdminSysProp } from 'store';
 
 interface AddSystemPropertyModalProps extends WithModalProps {
   addAdminSysProp: HandleAddAdminSysProp;

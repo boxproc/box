@@ -11,7 +11,7 @@ import {
   RepaymentDirectDebits,
   RepaymentDirectDebitsTable,
 } from 'containers/Ledger/Customers/components';
-import { HandleAddRepaymentDirectDebit } from 'store/domains';
+import { HandleAddRepaymentDirectDebit } from 'store';
 
 import { SelectValue } from 'types';
 

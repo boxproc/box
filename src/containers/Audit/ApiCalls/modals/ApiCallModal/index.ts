@@ -7,9 +7,8 @@ import {
   AuditApiCallsActionTypes,
   createLoadingSelector,
   handleGetDetailsAuditApiCalls,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuditApiCallsActionTypes.GET_DETAILS_AUDIT_API_CALLS,

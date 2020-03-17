@@ -14,7 +14,7 @@ import {
   IllustrationProductAprRevolvingCredit,
   IllustrationProductStatementsRevolvingCredit,
   IllustrationProductTransactionsRevolvingCredit,
-} from 'store/domains';
+} from 'store';
 
 const TablesWrapper = styled(Flex)`
   margin: 0 -8px;

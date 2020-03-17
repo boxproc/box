@@ -11,8 +11,8 @@ import {
   handleAddProductFee,
   ProductAprsFeesRewardsActionTypes,
   selectAprsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_FEE,

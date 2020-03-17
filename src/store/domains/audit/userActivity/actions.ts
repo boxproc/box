@@ -13,7 +13,7 @@ import * as api from './api';
 import { AuditUserActivityFilter, AuditUserActivityFilterPrepared, UserId } from './types';
 import { preparedFilterToSend } from './utils';
 
-import { setIsOpenFilter } from 'store/domains/utils';
+import { setIsOpenFilter } from 'store';
 
 import { Thunk } from 'types';
 

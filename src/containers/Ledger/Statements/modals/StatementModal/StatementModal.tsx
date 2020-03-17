@@ -15,7 +15,7 @@ import {
   LedgerStatementAprItemPrepared,
   LedgerStatementItemPrepared,
   LedgerStatementTransactionsItemPrepared,
-} from 'store/domains';
+} from 'store';
 
 interface StatementModalProps extends WithModalProps {
   currentStatementId: number;

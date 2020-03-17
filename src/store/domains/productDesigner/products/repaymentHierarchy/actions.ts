@@ -1,4 +1,4 @@
-import { selectActiveItemId } from 'store/domains/utils';
+import { selectActiveItemId } from 'store';
 import {
   ActionTypeKeys,
   GetRepaymentHierarchyAction,

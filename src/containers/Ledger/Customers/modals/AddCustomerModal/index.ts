@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddCustomerModal from './AddCustomerModal';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.CUSTOMER);
 

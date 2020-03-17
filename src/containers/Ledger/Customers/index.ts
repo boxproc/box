@@ -18,9 +18,8 @@ import {
   selectIsReadOnly,
   selectLedgerCurrentCustomerName,
   selectLedgerCustomers,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerCustomersActionTypes.FILTER_LEDGER_CUSTOMERS,

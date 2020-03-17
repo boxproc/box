@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
+import { StoreState } from 'store';
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
-import { StoreState } from 'store/StoreState';
 
 import { selectDictionaryRepaymentTypesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';

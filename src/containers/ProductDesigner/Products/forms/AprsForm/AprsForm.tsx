@@ -9,7 +9,7 @@ import { formNamesConst } from 'consts';
 
 import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
 
-import { HandleAddProductApr } from 'store/domains';
+import { HandleAddProductApr } from 'store';
 
 interface AprsFormProps {
   addProductApr: HandleAddProductApr;

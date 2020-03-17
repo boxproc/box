@@ -8,9 +8,8 @@ import {
   DictionaryEventsActionTypes,
   handleGetDictionaryEvents,
   selectDictionaryEventsItems,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   DictionaryEventsActionTypes.GET_DICTIONARY_EVENTS,

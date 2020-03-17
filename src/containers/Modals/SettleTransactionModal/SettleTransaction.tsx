@@ -16,7 +16,7 @@ import {
   ResetRetrievedTransaction,
   SettleTransactionFormValues,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 
 interface SettleTransactionModalProps extends WithModalProps {
   retrievedTransaction: SettleTransactionFormValues;

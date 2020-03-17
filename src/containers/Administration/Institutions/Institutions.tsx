@@ -10,7 +10,7 @@ import {
   HandleDeleteAdminInstitution,
   HandleGetAdminInstitutions,
   ResetInstitutions,
-} from 'store/domains';
+} from 'store';
 import { storageUtil } from 'utils';
 
 export interface InstitutionsProps {

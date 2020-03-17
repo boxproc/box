@@ -2,9 +2,9 @@ import { createSelector } from 'reselect';
 
 import { userStatusWith2faOptions } from 'consts';
 
+import { StoreState } from 'store';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
-import { StoreState } from 'store/StoreState';
 import { prepareAdminUserDataToRender } from './utils';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>

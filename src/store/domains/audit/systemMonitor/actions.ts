@@ -1,6 +1,6 @@
 import { modalNamesConst, systemMonitorTablesConst } from 'consts';
 
-import { openModal } from 'store/domains/modals';
+import { openModal } from 'store';
 import {
   ActionTypeKeys,
   GetLogDataAction,

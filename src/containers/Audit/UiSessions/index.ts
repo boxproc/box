@@ -11,10 +11,9 @@ import {
   resetUiSessions,
   selectActiveItemId,
   selectAuditUiSessions,
-  selectInstitutionsOptions
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  selectInstitutionsOptions,
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuditUiSessionsActionType.FILTER_AUDIT_UI_SESSIONS,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { DictionaryTransactionTypes } from 'store/domains';
+import { DictionaryTransactionTypes } from 'store';
 
 import { TableCellType } from 'types';
 

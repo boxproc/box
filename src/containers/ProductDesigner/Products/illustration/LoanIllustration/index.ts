@@ -18,9 +18,8 @@ import {
   selectInstitutionLoanProductsOptions,
   selectProductLoanDetails,
   selectProductLoanIllustration,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
 

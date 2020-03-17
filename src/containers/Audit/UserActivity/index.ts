@@ -9,10 +9,9 @@ import {
   handleFilterAuditUserActivity,
   resetUserActivity,
   selectAuditUserActivity,
-  selectInstitutionsOptions
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  selectInstitutionsOptions,
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuditUserActivityActionType.FILTER_AUDIT_USER_ACTIVITY,

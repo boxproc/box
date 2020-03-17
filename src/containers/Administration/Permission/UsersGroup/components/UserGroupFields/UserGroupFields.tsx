@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField } from 'components';
 
-import { HandleGetAdminInstitutions } from 'store/domains';
+import { HandleGetAdminInstitutions } from 'store';
 
 import { SelectValue } from 'types';
 

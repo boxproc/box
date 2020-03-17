@@ -13,10 +13,9 @@ import {
   selectInstitutions,
   selectIsReadOnly,
   selectUiItems,
+  StoreState,
   UiItemsActionTypes,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   UiItemsActionTypes.GET_UI_ITEMS,

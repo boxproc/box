@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Table, TableCell, TableHeader } from 'components';
 
-import { LedgerStatementAprItemPrepared } from 'store/domains';
+import { LedgerStatementAprItemPrepared } from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof LedgerStatementAprItemPrepared> =

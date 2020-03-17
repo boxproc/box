@@ -19,7 +19,7 @@ import {
   LedgerAccountItemPrepared,
   ResetAccounts,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 import { SelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {

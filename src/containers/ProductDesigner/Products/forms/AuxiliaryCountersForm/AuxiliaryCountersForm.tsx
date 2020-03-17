@@ -8,7 +8,7 @@ import { formNamesConst } from 'consts';
 
 import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/components';
 
-import { HandleUpdateProductAuxCounters } from 'store/domains';
+import { HandleUpdateProductAuxCounters } from 'store';
 
 interface AuxiliaryCountersFormProps extends ExternalSpinnerProps {
   currentProductId: number;

@@ -5,8 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddAccountModal from './AddAccountModal';
 
-import { selectInstitutionsOptions } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectInstitutionsOptions, StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.ACCOUNT);
 

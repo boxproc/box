@@ -6,8 +6,6 @@ import { formNamesConst } from 'consts';
 
 import AccountForm from './AccountForm';
 
-import { StoreState } from 'store/StoreState';
-
 import {
   createLoadingSelector,
   handleAddLedgerAccount,
@@ -16,7 +14,8 @@ import {
   selectDictionaryRepaymentTypesOptions,
   selectInstitutionProducts,
   selectInstitutionsOptions,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   LedgerAccountsActionTypes.UPDATE_LEDGER_ACCOUNT,

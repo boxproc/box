@@ -18,10 +18,9 @@ import {
   selectCurrentSchedulerName,
   selectInstitutionsOptions,
   selectIsReadOnly,
+  StoreState,
   SystemMonitorActionTypes,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminSchedulerJobsActionTypes.FILTER_ADMIN_SCHEDULER_JOBS,

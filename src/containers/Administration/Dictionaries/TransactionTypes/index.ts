@@ -8,9 +8,8 @@ import {
   DictionaryTransactionTypesActionTypes,
   handleGetDictionaryTransactionTypes,
   selectDictionaryTransactionTypes,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   DictionaryTransactionTypesActionTypes.GET_DICTIONARY_TRANSACTION_TYPES,

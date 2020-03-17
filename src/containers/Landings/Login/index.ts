@@ -11,8 +11,8 @@ import {
   createLoadingSelector,
   handleUserLogin,
   selectIsMessageModal,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 import { storageUtil } from 'utils';
 

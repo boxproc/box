@@ -7,7 +7,7 @@ import { formNamesConst } from 'consts';
 
 import { UserGroupFields } from 'containers/Administration/Permission/UsersGroup/components';
 
-import { HandleAddAdminUsersGroups } from 'store/domains';
+import { HandleAddAdminUsersGroups } from 'store';
 
 export interface AddUserGroupFormProps extends ExternalSpinnerProps {
   addUsersGroup: HandleAddAdminUsersGroups;

@@ -1,5 +1,5 @@
 import { permissionTypesConst } from 'consts';
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectActiveTableRowIndex = (state: StoreState) => state.utils.activeTableRowIndex;
 

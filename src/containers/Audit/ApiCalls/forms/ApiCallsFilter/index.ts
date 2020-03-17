@@ -11,8 +11,8 @@ import {
   createLoadingSelector,
   handleGetEndpointsByInstitutionId,
   selectEndpointsByInstIdOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminEndpointsActionTypes.GET_ENDPOINTS_BY_INSTITUTION_ID,

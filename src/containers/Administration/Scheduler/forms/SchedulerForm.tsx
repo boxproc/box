@@ -25,7 +25,7 @@ import {
   HandleDeleteAdminSchedulerJob,
   HandleUpdateAdminSchedulerJob,
   OpenModal,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 import { selectCountryCodesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';

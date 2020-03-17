@@ -20,7 +20,7 @@ import {
   HandleAddAdminInstitution,
   HandleDeleteAdminInstitution,
   HandleUpdateAdminInstitution,
-} from 'store/domains';
+} from 'store';
 
 import { formErrorUtil } from 'utils';
 

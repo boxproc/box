@@ -9,8 +9,8 @@ import {
   handleUpdateRepaymentHierarchy,
   RepaymentHierarchyActionTypes,
   selectRepaymentHierarchy,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   RepaymentHierarchyActionTypes.GET_REPAYMENT_HIERARCHY,

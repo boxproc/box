@@ -20,7 +20,7 @@ import {
 
 import { clearMenu, menuClasses, toggleOpenMenu } from './utils';
 
-import { UiItemPrepared } from 'store/domains';
+import { UiItemPrepared } from 'store';
 
 const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};

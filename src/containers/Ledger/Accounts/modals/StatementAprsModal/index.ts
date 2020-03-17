@@ -6,8 +6,8 @@ import {
   selectLedgerAccountStatementDate,
   selectLedgerCurrentAccountAlias,
   selectLedgerStatementAprs,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   statementAprs: selectLedgerStatementAprs(state),

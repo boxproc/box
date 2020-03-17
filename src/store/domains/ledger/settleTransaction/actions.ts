@@ -2,7 +2,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { openModal } from 'store/domains/modals';
+import { openModal } from 'store';
 import { ActionTypeKeys, RetrieveTransactionAction, SettleTransactionAction } from './actionTypes';
 import * as api from './api';
 import { RetrieveTransactionRequest, SettleTransactionItem } from './types';

@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
-import { AdminEndpointItemDetailsPrepared } from 'store/domains';
+import { AdminEndpointItemDetailsPrepared } from 'store';
 
 import { SelectValue } from 'types';
 

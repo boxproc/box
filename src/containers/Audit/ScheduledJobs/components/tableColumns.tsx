@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AuditScheduledJobsItemPrepared } from 'store/domains';
+import { AuditScheduledJobsItemPrepared } from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof AuditScheduledJobsItemPrepared> =

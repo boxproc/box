@@ -14,7 +14,7 @@ import {
   IllustrationProductLoan,
   LoanProductItem,
   ResetProductIllustration,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

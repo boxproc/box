@@ -12,9 +12,9 @@ import {
   selectCurrentProductInstitutionId,
   selectProductCardEndpointsService,
   selectProductCardInterfacesService,
-  selectProductServices
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  selectProductServices,
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductServicesActionTypes.UPDATE_CARD_SERVICES,

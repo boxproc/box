@@ -7,7 +7,7 @@ import { modalNamesConst } from 'consts';
 import { withModal, WithModalProps } from 'HOCs';
 import { ChangePasswordForm } from './forms';
 
-import { HandleChangePassword } from 'store/domains';
+import { HandleChangePassword } from 'store';
 
 interface ChangeProfileModalProps extends WithModalProps {
   changePassword: HandleChangePassword;

@@ -1,4 +1,4 @@
-import { ApiCallsItems } from 'store/domains/audit/apiCalls/types';
+import { ApiCallsItems } from 'store';
 
 export const apiCallsItems: ApiCallsItems = {
   api_calls: [

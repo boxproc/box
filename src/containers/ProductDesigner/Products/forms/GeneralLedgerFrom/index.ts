@@ -9,8 +9,8 @@ import {
   ProductGeneralLedgerActionTypes,
   selectActiveItemId,
   selectProductGeneralLedger,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductGeneralLedgerActionTypes.UPDATE_GENERAL_LEDGER,

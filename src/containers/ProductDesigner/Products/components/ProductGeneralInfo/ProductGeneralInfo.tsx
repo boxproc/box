@@ -16,7 +16,7 @@ import {
 import {
   HandleGetDictionaryCurrencies,
   HandleGetDictionaryStatementCycleTypes,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

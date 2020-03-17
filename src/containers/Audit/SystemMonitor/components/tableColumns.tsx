@@ -7,7 +7,7 @@ import { iconNamesConst } from 'consts';
 
 import { TableCellType } from 'types';
 
-import { HandleGetLogData, SystemMonitorItem } from 'store/domains';
+import { HandleGetLogData, SystemMonitorItem } from 'store';
 
 type TCell<T extends keyof SystemMonitorItem> = TableCellType<SystemMonitorItem[T]>;
 

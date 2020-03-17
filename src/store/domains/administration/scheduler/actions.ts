@@ -2,9 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
-
-import { selectIsAccessibleFiltering, startAutoRefresh } from 'store/domains/utils';
+import { closeModal, selectIsAccessibleFiltering, startAutoRefresh } from 'store';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,

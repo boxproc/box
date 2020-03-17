@@ -15,10 +15,9 @@ import {
   selectAdminInterface,
   selectInstitutionsOptions,
   selectIsReadOnly,
+  StoreState,
   SystemMonitorActionTypes,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminInterfacesActionTypes.FILTER_ADMIN_INTERFACE,

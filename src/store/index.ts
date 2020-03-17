@@ -19,4 +19,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
+export * from './domains';
+export * from './StoreState';
+
 export default store;

@@ -10,8 +10,8 @@ import {
   openModal,
   OpenModal,
   selectIsReadOnly,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 export interface WithModalProps {
   openModal: OpenModal;

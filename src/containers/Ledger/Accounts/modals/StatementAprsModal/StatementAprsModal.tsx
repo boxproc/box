@@ -9,7 +9,7 @@ import { modalNamesConst } from 'consts';
 
 import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/components';
 
-import { LedgerStatementAprItemPrepared } from 'store/domains';
+import { LedgerStatementAprItemPrepared } from 'store';
 
 interface StatementAprsProps extends WithModalProps {
   statementAprs: Array<LedgerStatementAprItemPrepared>;

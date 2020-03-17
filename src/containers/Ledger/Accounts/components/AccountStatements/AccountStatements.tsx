@@ -11,7 +11,7 @@ import {
   HandleGetLedgerAccountStatements,
   HandleGetLedgerStatementAprs,
   LedgerAccountStatementItemPrepared,
-} from 'store/domains';
+} from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof LedgerAccountStatementItemPrepared> =

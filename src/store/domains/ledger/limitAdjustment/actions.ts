@@ -2,7 +2,7 @@ import { reset as resetForm } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { openModal } from 'store/domains/modals';
+import { openModal } from 'store';
 import { ActionTypeKeys, MakeLedgerLimitAdjustmentAction } from './actionTypes';
 import * as api from './api';
 import { LedgerLimitAdjustmentFromData, LedgerLimitAdjustmentRequest } from './types';

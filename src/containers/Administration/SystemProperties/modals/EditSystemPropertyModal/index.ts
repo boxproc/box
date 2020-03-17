@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import EditSystemPropertyModal from './EditSystemPropertyModal';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.ADD_SYSTEM_PROPERTY);
 

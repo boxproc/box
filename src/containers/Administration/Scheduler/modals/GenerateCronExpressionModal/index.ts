@@ -7,7 +7,7 @@ import { formNamesConst } from 'consts';
 import { cronInitialValues } from './cronInitialValues';
 import GenerateCronExpressionModal from './GenerateCronExpressionModal';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.GENERATE_CRON_EXPRESSION);
 const formValues = getFormValues(formNamesConst.GENERATE_CRON_EXPRESSION);

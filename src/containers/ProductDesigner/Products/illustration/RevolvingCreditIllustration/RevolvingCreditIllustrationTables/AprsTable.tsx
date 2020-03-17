@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader } from 'components';
-import { IllustrationProductAprRevolvingCredit } from 'store/domains';
+import { IllustrationProductAprRevolvingCredit } from 'store';
 import { TableCellType } from 'types';
 
 type TCell<T extends keyof IllustrationProductAprRevolvingCredit> =

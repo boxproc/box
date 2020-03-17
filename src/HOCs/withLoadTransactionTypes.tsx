@@ -10,9 +10,8 @@ import {
   selectDictionaryLimitAdjustmentTypesOptions,
   selectDictionaryManualTransactionTypesOptions,
   selectDictionaryTransactionTypesOptions,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 import { SelectValue } from 'types';
 

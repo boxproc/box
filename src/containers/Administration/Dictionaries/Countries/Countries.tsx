@@ -6,7 +6,7 @@ import { tableColumns } from './components';
 import {
   DictionaryCountriesItemPrepared,
   HandleGetDictionaryCountries,
-} from 'store/domains';
+} from 'store';
 
 interface CountriesProps {
   getDictionaryCountries: HandleGetDictionaryCountries;

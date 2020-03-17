@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 import { stringsUtil } from 'utils';
 

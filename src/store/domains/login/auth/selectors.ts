@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { statusConst, yesNoConst } from 'consts';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 import { prepareUserDataToRender } from './utils';
 
 export const selectDefaultLoginData = (state: StoreState) => state.login.auth.loginData;

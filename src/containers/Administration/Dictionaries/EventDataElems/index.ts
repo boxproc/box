@@ -11,9 +11,8 @@ import {
   resetEventDataElems,
   selectDictionaryEventDataElemsItems,
   selectDictionaryEventsOptions,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   DictionaryEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,

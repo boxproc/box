@@ -1,4 +1,4 @@
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectModalsStateList = (state: StoreState) => state.modals;
 

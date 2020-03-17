@@ -16,9 +16,9 @@ import {
   selectSystemMonitorScheduler,
   selectSystemMonitorSchedulerCounts,
   selectUiItems,
+  StoreState,
   SystemMonitorActionTypes,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   SystemMonitorActionTypes.GET_LOG_DATA,

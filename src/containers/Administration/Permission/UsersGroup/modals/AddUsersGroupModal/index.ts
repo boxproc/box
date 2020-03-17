@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddUsersGroupModal from './AddUsersGroupModal';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.ADD_USER_GROUP);
 

@@ -17,7 +17,7 @@ import {
   HandleUserLogout,
   InstitutionItem,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 
 const Wrapper = styled.header`
   position: fixed;

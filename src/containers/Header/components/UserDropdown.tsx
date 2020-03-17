@@ -9,7 +9,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, yesNoConst } from 'consts';
 
-import { HandleUserLogout } from 'store/domains';
+import { HandleUserLogout } from 'store';
 import { storageUtil } from 'utils';
 
 const iconCss = css`

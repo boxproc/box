@@ -9,8 +9,8 @@ import {
   ProductAuxCountersActionTypes,
   selectActiveItemId,
   selectProductAuxCounters,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductAuxCountersActionTypes.UPDATE_PRODUCT_AUX_COUNTERS,

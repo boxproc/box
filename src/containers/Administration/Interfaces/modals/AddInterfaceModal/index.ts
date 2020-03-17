@@ -5,8 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddInterfaceModal from './AddInterfaceModal';
 
-import { selectInstitutionsOptions } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectInstitutionsOptions, StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.INTERFACE);
 

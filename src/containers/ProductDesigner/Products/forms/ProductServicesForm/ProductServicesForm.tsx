@@ -14,7 +14,7 @@ import { formNamesConst } from 'consts';
 import {
   HandleGetProductServices,
   HandleUpdateCardService,
-} from 'store/domains';
+} from 'store';
 
 import { Services } from 'containers/ProductDesigner/Products/components';
 import { SelectValue } from 'types';

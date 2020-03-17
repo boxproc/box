@@ -16,7 +16,7 @@ import {
   HandleGetDictionaryAccountStatuses,
   HandleGetDictionaryRepaymentTypes,
   HandleGetInstitutionProducts,
-} from 'store/domains';
+} from 'store';
 
 import { dateFormatConst, maskFormatConst } from 'consts';
 

@@ -8,9 +8,9 @@ import {
   handleGetAdminUserGroupMembers,
   selectActiveItemId,
   selectAdminUserGroupMembers,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
-import { StoreState } from 'store/StoreState';
 import UserGroupMembers from './UserGroupMembers';
 
 const loadingSelector = createLoadingSelector([

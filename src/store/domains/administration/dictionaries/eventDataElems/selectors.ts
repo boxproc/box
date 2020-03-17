@@ -4,7 +4,7 @@ import { dataTypesOptions } from 'consts';
 
 import { selectDictionaryEventsItems } from '../events';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 export const selectDefaultDictionaryEventDataElemsItems = (state: StoreState) =>
   state.administration.eventDataElements.eventDataElems;

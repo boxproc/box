@@ -7,7 +7,7 @@ import { Button, SelectField, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleChangeLedgerCardStatus, HandleGetDictionaryCardStatuses } from 'store/domains';
+import { HandleChangeLedgerCardStatus, HandleGetDictionaryCardStatuses } from 'store';
 import { SelectValue } from 'types';
 
 interface StatusFormProps {

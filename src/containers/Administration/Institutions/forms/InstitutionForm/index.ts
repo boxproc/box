@@ -3,8 +3,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import InstitutionForm from './InstitutionForm';
 
-import { StoreState } from 'store/StoreState';
-
 import {
   AdminInstitutionsActionTypes,
   createLoadingSelector,
@@ -13,7 +11,8 @@ import {
   handleUpdateAdminInstitution,
   selectActiveItemId,
   selectAdminCurrentInstitutionName,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminInstitutionsActionTypes.UPDATE_ADMIN_INSTITUTION,

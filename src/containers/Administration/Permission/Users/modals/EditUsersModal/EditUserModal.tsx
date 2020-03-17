@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
-import { AdminUserItemDetails } from 'store/domains';
+import { AdminUserItemDetails } from 'store';
 
 interface EditUserModalProps extends WithModalProps {
   userDetails: Partial<AdminUserItemDetails>;

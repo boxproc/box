@@ -9,8 +9,8 @@ import {
   selectUserCode,
   selectUserCurrentRegisterStep,
   selectUserDataUrl,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   currentRegisterStep: selectUserCurrentRegisterStep(state),

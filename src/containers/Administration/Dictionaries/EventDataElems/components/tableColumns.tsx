@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { DictionaryEventDataElemsItem } from 'store/domains';
+import { DictionaryEventDataElemsItem } from 'store';
 
 import { TableCellType } from 'types';
 

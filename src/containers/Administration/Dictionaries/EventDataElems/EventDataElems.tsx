@@ -10,7 +10,7 @@ import {
   HandleFilterDictionaryEventDataElems,
   HandleGetDictionaryEvents,
   ResetEventDataElems,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

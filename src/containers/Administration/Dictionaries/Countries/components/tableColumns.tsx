@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { DictionaryCountriesItemPrepared } from 'store/domains';
+import { DictionaryCountriesItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

@@ -20,7 +20,7 @@ import {
   HandleGetProductFees,
   HandleUpdateProductFee,
   ProductFee,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue, TableCellType } from 'types';
 

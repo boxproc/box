@@ -9,7 +9,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 
-import { HandleGetDetailsAuditApiCalls } from 'store/domains';
+import { HandleGetDetailsAuditApiCalls } from 'store';
 
 interface ApiCallModalProps extends WithModalProps {
   getDetailsApiCalls: HandleGetDetailsAuditApiCalls;

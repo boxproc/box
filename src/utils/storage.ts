@@ -5,7 +5,7 @@ import {
   yesNoConst,
 } from 'consts';
 
-import { UserData } from 'store/domains';
+import { UserData } from 'store';
 
 import { apiClientService } from 'services';
 

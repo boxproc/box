@@ -13,9 +13,9 @@ import {
   selectAuditScheduledJobsSchedulerId,
   selectAuditScheduledJobsSchedulerName,
   selectInstitutionsOptions,
-  SystemMonitorActionTypes
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+  SystemMonitorActionTypes,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AuditScheduledJobsActionType.FILTER_AUDIT_SCHEDULED_JOBS,

@@ -5,7 +5,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { PayloadConfirmationModal } from 'store/domains';
+import { PayloadConfirmationModal } from 'store';
 
 interface ConfirmationModalProps extends WithModalProps {
   payloadConfirmModal: PayloadConfirmationModal;

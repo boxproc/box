@@ -10,8 +10,8 @@ import {
   handleUpdateProductReward,
   ProductAprsFeesRewardsActionTypes,
   selectProductRewards,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductAprsFeesRewardsActionTypes.GET_PRODUCT_REWARDS,

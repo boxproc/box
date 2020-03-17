@@ -6,7 +6,7 @@ import { OkCancelButtons, SelectField } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleChangeAdminProfile } from 'store/domains';
+import { HandleChangeAdminProfile } from 'store';
 
 import { SelectValue } from 'types';
 

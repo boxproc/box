@@ -7,7 +7,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
-import { HandleRefreshLogData, PayloadLogModal } from 'store/domains';
+import { HandleRefreshLogData, PayloadLogModal } from 'store';
 import { stringsUtil } from 'utils';
 
 interface LogModalProps extends WithModalProps, ExternalSpinnerProps {

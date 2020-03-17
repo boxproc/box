@@ -8,9 +8,8 @@ import {
   handleIllustrateRevolvingCreditProduct,
   ProductIllustrationActionTypes,
   resetProductIllustration,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,

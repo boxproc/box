@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 import { preparedDataToRender } from './utils';
 
 export const selectDefaultAuditUsers = (state: StoreState) =>

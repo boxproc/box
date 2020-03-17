@@ -11,8 +11,8 @@ import {
   handleUpdateAdminSysProps,
   selectActiveItemId,
   selectCurrentAdminSysPropsItem,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminSysPropsActionTypes.ADD_ADMIN_SYS_PROP,

@@ -7,7 +7,7 @@ import { Button, SelectField } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store/domains';
+import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store';
 
 import { SelectValue } from 'types';
 

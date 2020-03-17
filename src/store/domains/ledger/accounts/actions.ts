@@ -3,13 +3,13 @@ import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
-import { closeModal, openModal } from 'store/domains/modals';
-
 import {
+  closeModal,
+  openModal,
   selectIsAccessibleFiltering,
   setActiveItemId,
   setIsOpenFilter,
-} from 'store/domains/utils';
+} from 'store';
 import {
   ActionTypeKeys,
   AddLedgerAccountAction,

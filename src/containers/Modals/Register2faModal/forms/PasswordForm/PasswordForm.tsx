@@ -5,7 +5,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, ExternalSpinnerProps, Paragraph, PasswordField, withSpinner } from 'components';
 
-import { HandleUserGetAuthKey } from 'store/domains';
+import { HandleUserGetAuthKey } from 'store';
 
 import { formNamesConst } from 'consts';
 

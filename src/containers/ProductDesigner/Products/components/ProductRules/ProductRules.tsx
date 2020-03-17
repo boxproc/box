@@ -15,7 +15,7 @@ import {
   HandleGetDictionaryEvents,
   HandleGetDictionaryTransactionTypes,
   HandleGetProductAprsFeesRewards,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';

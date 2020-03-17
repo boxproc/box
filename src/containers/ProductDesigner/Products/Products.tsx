@@ -11,7 +11,7 @@ import {
   HandleFilterProducts,
   ProductItem,
   ResetProducts,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

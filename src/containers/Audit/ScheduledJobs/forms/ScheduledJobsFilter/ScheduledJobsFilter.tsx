@@ -7,7 +7,7 @@ import { MaskField, SelectField } from 'components';
 
 import { dateFormatConst, maskFormatConst, } from 'consts';
 
-import { HandleGetSchedulerNamesByInstitutionId } from 'store/domains';
+import { HandleGetSchedulerNamesByInstitutionId } from 'store';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';

@@ -8,7 +8,7 @@ import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from 'consts';
 
-import { PayloadMessageModal } from 'store/domains';
+import { PayloadMessageModal } from 'store';
 import { storageUtil, urlUtil } from 'utils';
 
 interface MessageModalProps extends RouteComponentProps, WithModalProps {

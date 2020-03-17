@@ -10,7 +10,7 @@ import { Button } from 'components';
 
 import { basePath, cookiesExpiresConst, formNamesConst, uiItemsConst } from 'consts';
 
-import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store/domains';
+import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store';
 
 import { cookiesUtil, storageUtil } from 'utils';
 

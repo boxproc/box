@@ -14,7 +14,7 @@ import {
 } from 'components';
 
 import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst } from 'consts';
-import { HandleIllustrateRevolvingCreditProduct } from 'store/domains';
+import { HandleIllustrateRevolvingCreditProduct } from 'store';
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 

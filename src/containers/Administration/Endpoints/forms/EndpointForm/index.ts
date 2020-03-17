@@ -4,10 +4,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EndpointForm from './EndpointForm';
 
 import {
-  StoreState,
-} from 'store/StoreState';
-
-import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
   DictionaryConstsActionTypes,
@@ -17,7 +13,8 @@ import {
   handleUpdateEndpoint,
   selectActiveItemId,
   selectEndpointTypesOptions,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminEndpointsActionTypes.UPDATE_ADMIN_ENDPOINT,

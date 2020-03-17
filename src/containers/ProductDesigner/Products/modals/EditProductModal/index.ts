@@ -9,8 +9,8 @@ import {
   selectCurrentProductName,
   selectCurrentProductType,
   selectIsProductOverride,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const generalProductFormDirty = isDirty(formNamesConst.GENERAL_PRODUCT);
 const productDetailsFormDirty = isDirty(formNamesConst.PRODUCT_DETAILS);

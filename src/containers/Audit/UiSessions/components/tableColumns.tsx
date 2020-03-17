@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AuditUiSessionsItem } from 'store/domains';
+import { AuditUiSessionsItem } from 'store';
 
 import { TableCellType } from 'types';
 

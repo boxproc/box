@@ -4,7 +4,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import config from 'config';
 import { modalNamesConst } from 'consts';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 import { openModal } from './../modals';
 import {
   ActionTypeKeys,

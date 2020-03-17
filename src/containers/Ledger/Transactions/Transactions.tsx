@@ -17,7 +17,7 @@ import {
   LedgerTransactionItemPrepared,
   ResetTransactions,
   UiItemPrepared,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 import { dateUtil } from 'utils';

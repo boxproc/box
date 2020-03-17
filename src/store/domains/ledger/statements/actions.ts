@@ -3,8 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
-import { openModal } from 'store/domains/modals';
-import { selectActiveItemId, setIsOpenFilter } from 'store/domains/utils';
+import { openModal, selectActiveItemId, setIsOpenFilter } from 'store';
 import { Thunk } from 'types';
 import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';

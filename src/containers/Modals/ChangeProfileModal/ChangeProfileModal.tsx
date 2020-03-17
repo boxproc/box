@@ -7,7 +7,7 @@ import { modalNamesConst } from 'consts';
 import { withModal, WithModalProps } from 'HOCs';
 import { ChangeProfileForm } from './forms';
 
-import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store/domains';
+import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store';
 
 import { SelectValue } from 'types';
 

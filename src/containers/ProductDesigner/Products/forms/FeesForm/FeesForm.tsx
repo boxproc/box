@@ -9,7 +9,7 @@ import { feeRewardsTypesConst, formNamesConst } from 'consts';
 
 import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/components';
 
-import { HandleAddProductFee } from 'store/domains';
+import { HandleAddProductFee } from 'store';
 
 import { SelectValue } from 'types';
 

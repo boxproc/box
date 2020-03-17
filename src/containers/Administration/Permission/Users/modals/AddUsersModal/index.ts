@@ -5,7 +5,7 @@ import { formNamesConst } from 'consts';
 
 import AddUserModal from './AddUserModal';
 
-import { StoreState } from 'store/StoreState';
+import { StoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.DEFINE_USER);
 

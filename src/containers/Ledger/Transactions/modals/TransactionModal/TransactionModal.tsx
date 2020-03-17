@@ -8,7 +8,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { TransactionForm } from 'containers/Ledger/Transactions/forms';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
 
-import { PayloadTransactionModal } from 'store/domains';
+import { PayloadTransactionModal } from 'store';
 import { dateUtil } from 'utils';
 
 interface TransactionModalProps extends WithModalProps {

@@ -19,7 +19,7 @@ import {
 
 import { formNamesConst } from 'consts';
 
-import { HandleUserLogin } from 'store/domains';
+import { HandleUserLogin } from 'store';
 
 import { formErrorUtil } from 'utils';
 

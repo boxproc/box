@@ -7,7 +7,7 @@ import { Delimiter, InputField, MaskField, SelectField } from 'components';
 
 import { dateFormatConst, maskFormatConst } from 'consts';
 
-import { HandleGetEndpointsByInstitutionId } from 'store/domains';
+import { HandleGetEndpointsByInstitutionId } from 'store';
 
 import { SelectValue } from 'types';
 import { formErrorUtil } from 'utils';

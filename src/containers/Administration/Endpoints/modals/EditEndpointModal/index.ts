@@ -9,8 +9,8 @@ import {
   selectAdminCurrentEndpoint,
   selectAdminCurrentEndpointName,
   selectInstitutionsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const dirty = isDirty(formNamesConst.ENDPOINT);
 

@@ -9,8 +9,8 @@ import {
   createLoadingSelector,
   handleGetAdminInstitutions,
   selectAdminInstitutionsOptions,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminInstitutionsActionTypes.GET_ADMIN_INSTITUTIONS,

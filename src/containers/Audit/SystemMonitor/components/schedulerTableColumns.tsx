@@ -5,7 +5,7 @@ import { Button, TableCell, TableHeader } from 'components';
 
 import { iconNamesConst } from 'consts';
 
-import { HandleGetLogData, SystemMonitorSchedulerItem } from 'store/domains';
+import { HandleGetLogData, SystemMonitorSchedulerItem } from 'store';
 
 import { TableCellType } from 'types';
 

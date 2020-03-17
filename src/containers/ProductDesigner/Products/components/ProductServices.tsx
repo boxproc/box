@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { Delimiter, SelectField } from 'components';
 
-import { HandleGetProductServices } from 'store/domains';
+import { HandleGetProductServices } from 'store';
 
 import { SelectValue } from 'types';
 

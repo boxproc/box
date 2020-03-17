@@ -13,8 +13,8 @@ import {
   selectLedgerCurrentCustomerInstitutionId,
   selectLedgerCurrentCustomerName,
   selectProductCardInterfacesService,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const dirty = isDirty(formNamesConst.CUSTOMER);
 

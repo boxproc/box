@@ -7,8 +7,8 @@ import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddAdminUsersGroup,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,

@@ -6,8 +6,8 @@ import {
   selectAprsIllustration,
   selectStatementsIllustration,
   selectTransactionsIllustration,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   transactionsData: selectTransactionsIllustration(state),

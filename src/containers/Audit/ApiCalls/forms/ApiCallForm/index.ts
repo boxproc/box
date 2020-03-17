@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 
 import ApiCallForm from './ApiCallForm';
 
-import { selectAuditApiCallDetails } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectAuditApiCallDetails, StoreState } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   initialValues: selectAuditApiCallDetails(state),

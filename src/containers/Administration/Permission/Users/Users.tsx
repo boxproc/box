@@ -11,7 +11,7 @@ import {
   HandleFilterAuditUserById,
   HandleFilterUsers,
   ResetUsers
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

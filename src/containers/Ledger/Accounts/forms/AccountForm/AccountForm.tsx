@@ -25,7 +25,7 @@ import {
   HandleUpdateLedgerAccount,
   InstitutionProductsItemPrepared,
   LedgerAccountItemDetailsPrepared,
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 import { dateUtil } from 'utils';

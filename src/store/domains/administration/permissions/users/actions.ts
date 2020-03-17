@@ -3,9 +3,7 @@ import { getFormValues } from 'redux-form';
 import { formNamesConst, modalNamesConst, } from 'consts';
 import * as api from './api';
 
-import { closeModal } from 'store/domains/modals';
-
-import { selectIsAccessibleFiltering } from 'store/domains/utils';
+import { closeModal, selectIsAccessibleFiltering } from 'store';
 import {
   ActionTypeKeys,
   AddAdminUserAction,

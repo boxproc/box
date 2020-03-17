@@ -8,9 +8,9 @@ import {
   handleGetAdminGroupPermission,
   selectActiveItemId,
   selectAdminGroupPermissionsItems,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
-import { StoreState } from 'store/StoreState';
 import UserGroupPermission from './UserGroupPermission';
 
 const loadingSelector = createLoadingSelector([

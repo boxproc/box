@@ -11,7 +11,7 @@ import {
   RepaymentDebitCards,
   RepaymentDebitCardsTable,
 } from 'containers/Ledger/Customers/components';
-import { HandleAddRepaymentDebitCard } from 'store/domains';
+import { HandleAddRepaymentDebitCard } from 'store';
 import { SelectValue } from 'types';
 
 interface RepaymentDebitCardsFormProps {

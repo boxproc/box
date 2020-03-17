@@ -3,15 +3,14 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
-import { closeModal } from 'store/domains/modals';
-
 import * as api from './api';
 
 import {
+  closeModal,
   selectActiveItemId,
   selectIsAccessibleFiltering,
   setIsOpenFilter,
-} from 'store/domains/utils';
+} from 'store';
 import {
   ActionTypeKeys,
   AddLedgerCustomerAction,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AdminInterfaceItemPrepared } from 'store/domains';
+import { AdminInterfaceItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 

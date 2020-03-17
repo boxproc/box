@@ -8,9 +8,8 @@ import {
   DictionaryCurrenciesActionTypes,
   handleGetDictionaryCurrencies,
   selectDictionaryCurrencies,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,

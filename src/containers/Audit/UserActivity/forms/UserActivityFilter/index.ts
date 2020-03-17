@@ -11,9 +11,8 @@ import {
   createLoadingSelector,
   handleGetAuditUsers,
   selectAuditUsers,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 

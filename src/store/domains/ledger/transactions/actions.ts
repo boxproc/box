@@ -3,7 +3,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
-import { setIsOpenFilter } from 'store/domains/utils';
+import { openModal, setIsOpenFilter } from 'store';
 import { LedgerId } from '../customers';
 import {
   ActionTypeKeys,
@@ -23,10 +23,8 @@ import {
 } from './types';
 import { prepareDataToConvert, preparedFilterToSend } from './utils';
 
-import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
-
-import { openModal } from 'store/domains/modals';
 import { Thunk } from 'types';
+import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 export type FilterLedgerTransactions = (params: Partial<LedgerTransactionsFilterPrepared>) =>
   FilterLedgerTransactionsAction;

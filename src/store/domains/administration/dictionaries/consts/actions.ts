@@ -12,7 +12,7 @@ import {
   selectIsCardStatusesLoaded,
   selectIsEndpointTypesLoaded,
   selectIsInterfaceTypesLoaded,
-} from 'store/domains/administration';
+} from 'store';
 
 import { VoidPromiseThunk } from 'types';
 

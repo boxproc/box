@@ -13,9 +13,8 @@ import {
   selectIsReadOnly,
   selectProductItems,
   selectProductName,
-} from 'store/domains';
-
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductsActionTypes.FILTER_PRODUCTS,

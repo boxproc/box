@@ -15,8 +15,8 @@ import {
   selectDictionaryRepaymentTypesOptions,
   selectInstitutionProductsOptions,
   selectLedgerCurrentAccountHasProductOverride,
-} from 'store/domains';
-import { StoreState } from 'store/StoreState';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 

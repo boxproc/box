@@ -6,8 +6,7 @@ import { formNamesConst } from 'consts';
 
 import Filter from './Filter';
 
-import { selectIsAutoRefresh, setIsAccessibleFiltering, stopAutoRefresh } from 'store/domains';
-import { StoreState } from 'store/StoreState';
+import { selectIsAutoRefresh, setIsAccessibleFiltering, stopAutoRefresh, StoreState } from 'store';
 
 const formValues = getFormValues(formNamesConst.FILTER);
 

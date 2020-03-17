@@ -14,7 +14,7 @@ import {
   HandleFilterLedgerTransactionsById,
   LedgerCardItemPrepared,
   ResetCards
-} from 'store/domains';
+} from 'store';
 
 import { SelectValue } from 'types';
 

@@ -5,7 +5,7 @@ import RulesForm from './RulesForm';
 
 import { actionTypesConst, eventTypesCodeKeys, productTypesConst } from 'consts';
 
-import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store/domains';
+import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store';
 
 import { SelectValue } from 'types';
 

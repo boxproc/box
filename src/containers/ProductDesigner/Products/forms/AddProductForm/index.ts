@@ -8,14 +8,11 @@ import { detailsInitialFormValues } from '../../consts';
 import AddProductForm from './AddProductForm';
 
 import {
-  StoreState,
-} from 'store/StoreState';
-
-import {
   createLoadingSelector,
   handleAddProduct,
   ProductsActionTypes,
-} from 'store/domains';
+  StoreState,
+} from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ADD_PRODUCT);
 
