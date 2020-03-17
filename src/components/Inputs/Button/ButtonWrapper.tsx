@@ -9,52 +9,38 @@ interface ButtonWrapperProps {
 
 export const ButtonWrapper = styled.button<ButtonWrapperProps>`
   position: relative;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
   display: flex;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
   width: ${({ width }) => width || 'auto'};
-  background-color: ${({ theme }) => theme.colors.lighterGray};
+  color: ${({ theme }) => theme.colors.gray};
   font-size: ${({ size }) => size ? `${size}px` : '13px'};
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .2pt;
-  color: ${({ theme }) => theme.colors.gray};
-  font-weight: 500;
   line-height: 1.3;
+  outline: 0;
   user-select: none;
+  cursor: pointer;
   transition: all .1s linear;
-
-  .text-wrapper {
-    position: relative;
-    z-index: 1;
-  }
 
   &:hover:not(:disabled),
   &.is-focused:not(:disabled) {
     color: ${({ theme }) => theme.colors.normalAccent};
   }
 
-  &.no-text-transform {
-    text-transform: none;
-    font-weight: normal;
+  .text-wrapper {
+    position: relative;
+    z-index: 1;
   }
-
-  ${({ hasIcon }) => hasIcon && `
-    background-color: transparent;
-  `}
 
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 7px 10px 5px;
-    border-radius: 2px;
+    background-color: ${theme.colors.lighterGray};
     border: 1px solid ${theme.colors.lightGray};
-
-    &.is-focused:not(:disabled) {
-      background-color: ${theme.colors.lighterGray};
-      box-shadow: ${theme.shadows.bottomBox};
-    }
+    border-radius: 2px;
 
     &:hover:not(:disabled),
     &.is-focused:not(:disabled):hover {
@@ -65,7 +51,7 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     &:disabled {
       background-color: transparent;
     }
-  `}
+  `};
 
   &.is-tabs {
     background-color: transparent;
@@ -85,20 +71,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     &.is-focused:not(:disabled):hover {
       background-color: transparent;
       box-shadow: none;
-    }
-  }
-
-  &.is-bordered {
-    border: 1px solid ${({ theme }) => theme.colors.lightGray};
-    border-radius: 2px;
-    padding: 7px 10px 5px;
-    justify-content: center;
-    background-color: ${({ theme }) => theme.colors.lighterGray};
-    line-height: 1.25;
-
-    &:hover:not(:disabled),
-    &.is-focused:not(:disabled) {
-      box-shadow: ${({ theme }) => theme.shadows.normalBox};
     }
   }
 
@@ -124,28 +96,17 @@ export const ButtonWrapper = styled.button<ButtonWrapperProps>`
     }
   }
 
+  &.no-text-transform {
+    text-transform: none;
+    font-weight: normal;
+  }
+
   &:disabled {
-    border-color: transparent;
     cursor: default;
 
     .text-wrapper,
     .icon {
       opacity: .5;
-    }
-  }
-
-  @keyframes ripple {
-    0% {
-      transform: scale(0, 0);
-      opacity: 1;
-    }
-    20% {
-      transform: scale(15, 15);
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: scale(30, 30);
     }
   }
 `;

@@ -96,7 +96,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
       title={modalTitle}
       containerWidth={modalWidth}
       hideCloseIcon={isReLogin}
-      isBackdropBlured={isReLogin}
       type={modalTypesConst.MESSAGE}
     >
       <Paragraph light={true}>{message}</Paragraph>

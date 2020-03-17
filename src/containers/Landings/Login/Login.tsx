@@ -129,7 +129,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
         <Box width="100%" mt="12px">
           <Button
             text="Log in"
-            classNames={['is-bordered is-animated']}
+            classNames={['is-animated']}
             isFocused={isButtonFocused}
             width="100%"
           />

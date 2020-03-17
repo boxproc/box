@@ -12,8 +12,6 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { ModalWrapper } from './ModalWrapper';
 
-import { HandleSetActiveItemId, HandleSetActiveTableRowIndex } from 'store/domains';
-
 const zIndexes = {
   [modalTypesConst.VIEWING]: 100,
   [modalTypesConst.CONFIRMATION]: 101,
@@ -33,20 +31,11 @@ interface ModalProps extends WithModalProps {
   /** Hides close icon */
   hideCloseIcon?: boolean;
 
-  /** Applies blur behind the backdrop */
-  isBackdropBlured?: boolean;
-
   /** Min height of modal window container */
   minContainerHeight?: string;
 
   /** Name of modal window used in store */
   name: string;
-
-  /** Sets active item index to store */
-  setActiveItemId: HandleSetActiveItemId;
-
-  /** Sets active table row index to store */
-  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
 
   /** Title of modal window */
   title?: string;
@@ -66,29 +55,14 @@ const Modal: React.FC<ModalProps> = ({
   closeModal,
   containerWidth = '720px',
   hideCloseIcon,
-  isBackdropBlured,
   minContainerHeight,
   name,
   openModal,
-  setActiveItemId,
-  setActiveTableRowIndex,
   title,
   TitleIcon,
   type,
   withCloseConfirmation,
 }) => {
-  React.useEffect(
-    () => {
-      return type === modalTypesConst.VIEWING
-        ? () => {
-          setActiveTableRowIndex(null);
-          setActiveItemId(null);
-        }
-        : () => null;
-    },
-    [type, setActiveTableRowIndex, setActiveItemId]
-  );
-
   const handleCloseModal = React.useCallback(
     withCloseConfirmation
       ? () => openModal({
@@ -112,7 +86,7 @@ const Modal: React.FC<ModalProps> = ({
       <div
         className={`
           modal-backdrop
-          ${isBackdropBlured ? 'is-blured' : ''}
+          ${type === modalTypesConst.MESSAGE ? 'is-blured' : ''}
         `}
       />
       <div className="modal-container-wrapper">

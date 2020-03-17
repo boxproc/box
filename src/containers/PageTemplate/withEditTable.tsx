@@ -29,13 +29,12 @@ import { componentUtil } from 'utils';
 export interface WithEditTableProps {
   activeTableRowIndex?: number;
   contextMenuItems?: Array<ContextMenuItemProps>;
-  editableItemName?: string;
   handleOpenModal: OpenModal;
+  modalsStateList: object;
   onRowClick: () => object;
   setActiveItemId: HandleSetActiveItemId;
   setActiveTableRowIndex: HandleSetActiveTableRowIndex;
   viewingModalName: string;
-  modalsStateList: object;
 }
 
 export const withEditTable = <OriginProps extends {}>(
@@ -45,30 +44,17 @@ export const withEditTable = <OriginProps extends {}>(
     const {
       activeTableRowIndex,
       contextMenuItems = [],
-      editableItemName,
       handleOpenModal,
+      modalsStateList,
       onRowClick,
       setActiveItemId,
       setActiveTableRowIndex,
       viewingModalName,
-      modalsStateList,
       ...originProps
     } = props;
 
-    const [isOpenedModal, setIsOpenedModal] = React.useState(false);
-
-    React.useEffect(
-      () => {
-        const isSomeModalOpened = modalsList.find(modal => {
-          const { name } = modal;
-
-          return modalsStateList[`is${name}`];
-        });
-
-        isSomeModalOpened ? setIsOpenedModal(true) : setIsOpenedModal(false);
-      },
-      [modalsStateList]
-    );
+    const [isOpenedModal, setIsOpenedModal] = React.useState(null);
+    const [isHiddenContextMenu, setIsHiddenContextMenu] = React.useState(false);
 
     const handleRemoveActiveIds = React.useCallback(
       () => {
@@ -76,6 +62,24 @@ export const withEditTable = <OriginProps extends {}>(
         setActiveItemId(null);
       },
       [setActiveTableRowIndex, setActiveItemId]
+    );
+
+    React.useEffect(
+      () => {
+        const isSomeModalOpened = modalsList.find(modal => modalsStateList[`is${modal.name}`]);
+
+        setIsOpenedModal(isSomeModalOpened);
+      },
+      [modalsStateList]
+    );
+
+    React.useEffect(
+      () => {
+        if (!isOpenedModal) {
+          handleRemoveActiveIds();
+        }
+      },
+      [isOpenedModal, handleRemoveActiveIds]
     );
 
     const openCurrentRowInModal = React.useCallback(
@@ -99,18 +103,18 @@ export const withEditTable = <OriginProps extends {}>(
       [handleOpenModal]
     );
 
-    let menuItems = [...contextMenuItems];
-
-    if (viewingModalName) {
-      menuItems = [
-        {
-          name: editableItemName ? `Open ${editableItemName}` : 'Open',
+    const menuItems = React.useMemo(
+      () => {
+        const openItem = {
+          name: 'Open',
           icon: iconNamesConst.EDIT,
           action: () => openCurrentRowInModal(),
-        },
-        ...menuItems,
-      ];
-    }
+        };
+
+        return viewingModalName ? [openItem, ...contextMenuItems] : contextMenuItems;
+      },
+      [contextMenuItems, viewingModalName, openCurrentRowInModal]
+    );
 
     const handleClickOnRow = React.useCallback(
       (_, rowInfo: RowInfo) => {
@@ -119,7 +123,7 @@ export const withEditTable = <OriginProps extends {}>(
         const rowIndexOriginal = rowInfo.index + 1; // from 1 for css style
         const rowIndex = rowInfo.page
           ? rowIndexOriginal - rowInfo.pageSize * rowInfo.page
-          : rowIndexOriginal;
+          : rowIndexOriginal; // considering page number
 
         return {
           onDoubleClick: () => {
@@ -128,18 +132,14 @@ export const withEditTable = <OriginProps extends {}>(
               setActiveTableRowIndex(rowIndex);
 
               openCurrentRowInModal();
-            } else {
-              setActiveItemId(null);
-              setActiveTableRowIndex(null);
             }
           },
           onContextMenu: () => {
+            setIsHiddenContextMenu(isLocked);
+
             if (menuItems.length && !isLocked) {
               setActiveItemId(id);
               setActiveTableRowIndex(rowIndex);
-            } else {
-              setActiveItemId(null);
-              setActiveTableRowIndex(null);
             }
           },
         };
@@ -169,8 +169,8 @@ export const withEditTable = <OriginProps extends {}>(
           menuId="tableContextMenu"
           onClick={onContextMenuClick}
           items={menuItems}
-          isHidden={isOpenedModal}
-          onHide={isOpenedModal ? null : handleRemoveActiveIds}
+          isHidden={isOpenedModal || isHiddenContextMenu}
+          onHide={(!isOpenedModal && activeTableRowIndex) ? handleRemoveActiveIds : null}
         />
       </React.Fragment>
     );

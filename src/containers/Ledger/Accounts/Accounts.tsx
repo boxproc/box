@@ -201,7 +201,6 @@ const Accounts: React.FC<AccountsProps> = ({
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_ACCOUNT}
       viewingModalName={modalNamesConst.EDIT_ACCOUNT}
-      editableItemName="account"
       contextMenuItems={contextMenuItems}
       filterAction={filterAccounts}
       isDownloadButton={true}

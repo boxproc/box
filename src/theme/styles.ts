@@ -45,6 +45,21 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${theme.colors.normalAccent};
     color: ${theme.colors.black};
   }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 1;
+    }
+    20% {
+      transform: scale(15, 15);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(30, 30);
+    }
+  }
 `;
 
 export const highlightCss = css`

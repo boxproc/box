@@ -5,8 +5,6 @@ import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from './../../Icons';
 
-import { yesNoConst } from 'consts';
-
 const CheckBoxWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -15,30 +13,12 @@ const CheckBoxWrapper = styled.div`
   padding: 10px;
 `;
 
-export const renderCheckBoxTableCell = (updateAction?: (data: object) => void) =>
-  (cellInfo: CellInfo) => {
-    const isLocked = cellInfo.value === true;
-    const values = cellInfo.original;
+export const renderCheckBoxTableCell = () => (cellInfo: CellInfo) => {
+  const isLocked = cellInfo.value === true;
 
-    const handleClick = () => updateAction && updateAction({
-      ...values,
-      lockedFlag: yesNoConst.YES,
-    });
-
-    return (
-      <CheckBoxWrapper>
-        {
-          isLocked
-            ? (<CheckedBoxIcon />)
-            : (
-              <div
-                style={{ cursor: updateAction && 'pointer' }}
-                onClick={handleClick}
-              >
-                <UncheckedBoxIcon />
-              </div>
-            )
-        }
-      </CheckBoxWrapper>
-    );
-  };
+  return (
+    <CheckBoxWrapper>
+      {isLocked ? (<CheckedBoxIcon />) : (<UncheckedBoxIcon />)}
+    </CheckBoxWrapper>
+  );
+};
