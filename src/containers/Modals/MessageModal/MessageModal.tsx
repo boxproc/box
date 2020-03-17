@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal, Paragraph } from 'components';
+import { Button, HighlightCode, Modal, Paragraph } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from 'consts';
@@ -100,6 +100,14 @@ const MessageModal: React.FC<MessageModalProps> = ({
       type={modalTypesConst.MESSAGE}
     >
       <Paragraph light={true}>{message}</Paragraph>
+      {isVisibleDetails && (
+        <Box mt="15px" mb="10px">
+          <HighlightCode
+            value={details}
+            height="420px"
+          />
+        </Box>
+      )}
       <Flex
         alignItems="center"
         justifyContent="flex-end"
@@ -121,17 +129,6 @@ const MessageModal: React.FC<MessageModalProps> = ({
           </Box>
         )}
       </Flex>
-      {isVisibleDetails && (
-        <Box mt="15px">
-          <Paragraph
-            light={true}
-            size={9}
-            monoFontFamily={true}
-          >
-            {details}
-          </Paragraph>
-        </Box>
-      )}
     </Modal>
   );
 };
