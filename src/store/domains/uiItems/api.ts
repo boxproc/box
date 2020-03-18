@@ -6,4 +6,4 @@ import { apiClientService } from 'services';
 
 export const getUiItems = () =>
   // throttleUtil.getDataAfter(uiItems, 500);
-  apiClientService.post('ui/items/get');
+  apiClientService.post('ui/items/get_all');

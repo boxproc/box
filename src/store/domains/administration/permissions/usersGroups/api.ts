@@ -20,7 +20,7 @@ export const getAdminUserGroupMembers = (id: number) =>
   });
 
 export const getAdminUiItems = (id: number) =>
-  apiClientService.post('ui/administration/permissions/group_permissions_ui_items/get', {
+  apiClientService.post('ui/items/get', {
     data: { user_group_id: id },
   });
 
