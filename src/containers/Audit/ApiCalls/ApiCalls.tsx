@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { modalNamesConst } from 'consts';
 
@@ -11,7 +12,7 @@ import { SelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
-  apiCalls: Array<ApiCallsItemPrepared>;
+  apiCalls: ImmutableArray<ApiCallsItemPrepared>;
   filterApiCalls: HandleFilterAuditApiCalls;
   institutionsOptions: Array<SelectValue>;
   resetApiCalls: ResetApiCalls;

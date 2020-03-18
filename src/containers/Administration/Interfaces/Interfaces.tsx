@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -17,7 +18,7 @@ import {
 import { SelectValue } from 'types';
 
 export interface AccountsProps {
-  interfaceItems: Array<AdminInterfaceItemPrepared>;
+  interfaceItems: ImmutableArray<AdminInterfaceItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   currentInterfaceName: string;
   currentInterfaceId: number;

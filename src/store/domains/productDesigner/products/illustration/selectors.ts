@@ -4,8 +4,6 @@ import { StoreState } from 'store';
 import {
   prepareProductIllustrationAprsItem,
   prepareProductIllustrationData,
-  prepareProductIllustrationFeesItem,
-  prepareProductIllustrationRewardsItem,
   prepareProductIllustrationStatementsItem,
   prepareProductIllustrationTransactionsItem,
 } from './utils';
@@ -36,32 +34,6 @@ export const selectAprsIllustration = createSelector(
       }
 
       return prepareProductIllustrationAprsItem(apr);
-    })
-);
-
-export const selectFeesIllustration = createSelector(
-  selectDefaultRevolvingCreditIllustration,
-  (revolvingCreditIllustration) =>
-    revolvingCreditIllustration && revolvingCreditIllustration.fees &&
-    revolvingCreditIllustration.fees.asMutable().map(fee => {
-      if (!fee) {
-        return null;
-      }
-
-      return prepareProductIllustrationFeesItem(fee);
-    })
-);
-
-export const selectRewardsIllustration = createSelector(
-  selectDefaultRevolvingCreditIllustration,
-  (revolvingCreditIllustration) =>
-    revolvingCreditIllustration && revolvingCreditIllustration.rewards &&
-    revolvingCreditIllustration.rewards.asMutable().map(reward => {
-      if (!reward) {
-        return null;
-      }
-
-      return prepareProductIllustrationRewardsItem(reward);
     })
 );
 

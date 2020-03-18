@@ -17,5 +17,5 @@ export const selectIsUiItems = createSelector(
 
 export const selectVisibleUiItemsList = createSelector(
   selectDefaultUiItems,
-  uiItems => uiItems && uiItems.asMutable().map(item => item.ui_item)
+  uiItems => uiItems && uiItems.map(item => item.ui_item)
 );

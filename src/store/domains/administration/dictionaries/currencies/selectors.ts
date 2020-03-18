@@ -9,7 +9,7 @@ export const selectDefaultDictionaryCurrenciesItems = (state: StoreState) =>
 
 export const selectDictionaryCurrencies = createSelector(
   selectDefaultDictionaryCurrenciesItems,
-  items => items && items.asMutable().map(item => {
+  items => items && items.map(item => {
     if (!item) {
       return null;
     }

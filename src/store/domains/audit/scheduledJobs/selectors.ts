@@ -10,7 +10,7 @@ export const selectDefaultAuditScheduledJobs = (state: StoreState) =>
 
 export const selectAuditScheduledJobs = createSelector(
   selectDefaultAuditScheduledJobs,
-  jobs => jobs && jobs.asMutable().map(job => preparedValuesToRender(job)));
+  jobs => jobs && jobs.map(job => preparedValuesToRender(job)));
 
 export const selectAuditScheduledJobsSchedulerId = createSelector(
   selectDefaultAuditScheduledJobs,

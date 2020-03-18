@@ -10,7 +10,7 @@ export const selectDefaultAdminInstitutions = (state: StoreState) =>
 
 export const selectAdminInstitutions = createSelector(
   selectDefaultAdminInstitutions,
-  items => items && items.asMutable().map(item => prepareDataToRender(item))
+  items => items && items.map(item => prepareDataToRender(item))
 );
 
 export const selectAdminInstitutionsOptions = createSelector(

@@ -11,19 +11,10 @@ interface PageTemplateProps extends WithEditTableProps {
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {
-  const {
-    data,
-    columns,
-    onRowClick,
-    activeTableRowIndex,
-    ...pageTemplateProps
-  } = props;
+  const { onRowClick, ...pageTemplateProps } = props;
 
   return (
     <Table
-      data={data}
-      columns={columns}
-      activeRowIndex={activeTableRowIndex}
       getTrGroupProps={onRowClick}
       {...pageTemplateProps}
     />

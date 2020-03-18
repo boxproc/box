@@ -31,7 +31,7 @@ export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
 
     return {
       id: ui_item,
-      parentId: ui_item.split('/').slice(0, -1).join('/') || null,
+      parentId: ui_item.split('/').slice(0, -1).join('/'),
       title: description,
       type: item_type,
       orderNumber: order_number,

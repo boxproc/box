@@ -1,3 +1,5 @@
+import { ImmutableArray } from 'seamless-immutable';
+
 import { transactionStatusOptions } from 'consts';
 
 import { LedgerManualTransactionFromData, LedgerManualTransactionResult } from './types';
@@ -26,7 +28,7 @@ export const prepareDataToSend = (data: Partial<LedgerManualTransactionFromData>
   };
 };
 
-export const prepareResultDataToRender = (data: Array<LedgerManualTransactionResult>) => {
+export const prepareResultDataToRender = (data: ImmutableArray<LedgerManualTransactionResult>) => {
   if (!data || !data.length) {
     return null;
   }

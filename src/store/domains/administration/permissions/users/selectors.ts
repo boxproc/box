@@ -13,7 +13,7 @@ export const selectDefaultAdminUsersItems = (state: StoreState) =>
 export const selectUserEditorItems = createSelector(
   selectDefaultAdminUsersItems,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareAdminUserDataToRender(item, institution);

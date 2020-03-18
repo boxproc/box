@@ -20,7 +20,7 @@ export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectInstitutions,
   (products, institutions) => products && products.asMutable().map(product => {
-    if (!products) {
+    if (!product) {
       return null;
     }
 
@@ -124,17 +124,15 @@ export const selectInstitutionProductsOptions = createSelector(
 
 export const selectInstitutionProducts = createSelector(
   selectDefaultInstitutionProducts,
-  products => {
-    return products && products.asMutable().map(product => {
-      return {
-        id: product.id,
-        name: product.name,
-        productType: product.product_type,
-        defNumOfIntrstFreeInstlmts: product.def_num_of_intrst_free_instlmts,
-        defNumOfInstallments: product.def_num_of_installments,
-      };
-    });
-  }
+  products => products && products.asMutable().map(product => {
+    return {
+      id: product.id,
+      name: product.name,
+      productType: product.product_type,
+      defNumOfIntrstFreeInstlmts: product.def_num_of_intrst_free_instlmts,
+      defNumOfInstallments: product.def_num_of_installments,
+    };
+  })
 );
 
 export const selectInstitutionLoanProductsOptions = createSelector(

@@ -31,6 +31,7 @@ export const Table: React.FC<TableProps> = props => {
     pageSize = 10,
     sortable = false,
   } = props;
+
   const [height, setHeight] = React.useState(null);
   const tableRef = React.useRef(null);
 

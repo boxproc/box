@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { iconNamesConst, modalNamesConst, systemMonitorTablesConst } from 'consts';
 
@@ -16,7 +17,7 @@ import {
 import { SelectValue } from 'types';
 
 export interface EndpointsProps {
-  endpointItems: Array<AdminEndpointItemPrepared>;
+  endpointItems: ImmutableArray<AdminEndpointItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   currentEndpointName: string;
   currentEndpointId: number;

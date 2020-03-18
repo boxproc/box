@@ -8,7 +8,7 @@ export const selectDefaultDictionaryCardStatusesItems = (state: StoreState) =>
 
 export const selectCardStatusesOptions = createSelector(
   selectDefaultDictionaryCardStatusesItems,
-  statuses => statuses && valueLabelParse(statuses.asMutable())
+  statuses => statuses && valueLabelParse(statuses)
 );
 
 export const selectIsCardStatusesLoaded = createSelector(
@@ -21,7 +21,7 @@ export const selectDefaultDictionaryEndpointTypesItems = (state: StoreState) =>
 
 export const selectEndpointTypesOptions = createSelector(
   selectDefaultDictionaryEndpointTypesItems,
-  types => types && valueLabelParse(types.asMutable())
+  types => types && valueLabelParse(types)
 );
 
 export const selectIsEndpointTypesLoaded = createSelector(
@@ -34,7 +34,7 @@ export const selectDefaultDictionaryInterfaceTypesItems = (state: StoreState) =>
 
 export const selectInterfaceTypesOptions = createSelector(
   selectDefaultDictionaryInterfaceTypesItems,
-  types => types && valueLabelParse(types.asMutable())
+  types => types && valueLabelParse(types)
 );
 
 export const selectIsInterfaceTypesLoaded = createSelector(
@@ -47,7 +47,7 @@ export const selectDefaultDictionaryStatementCycleTypesItems = (state: StoreStat
 
 export const selectStatementCycleTypesOptions = createSelector(
   selectDefaultDictionaryStatementCycleTypesItems,
-  types => types && valueLabelParse(types.asMutable())
+  types => types && valueLabelParse(types)
 );
 
 export const selectIsStatementCycleTypesLoaded = createSelector(

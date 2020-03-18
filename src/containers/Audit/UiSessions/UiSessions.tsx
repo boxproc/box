@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -20,7 +21,7 @@ import { cookiesUtil, dateUtil, storageUtil } from 'utils';
 export interface UiSessionsProps extends RouteComponentProps {
   institutionsOptions: Array<SelectValue>;
   resetUiSessions: ResetUiSessions;
-  uiSessions: Array<AuditUiSessionsItem>;
+  uiSessions: ImmutableArray<AuditUiSessionsItem>;
   filterUiSessions: HandleFilterAuditUiSessions;
   filterUserActivity: HandleFilterAuditUserActivityByData;
   currentUserId: number;

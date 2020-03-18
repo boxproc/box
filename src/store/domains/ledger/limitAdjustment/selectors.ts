@@ -8,7 +8,7 @@ export const selectDefaultLedgerLimitAdjustment = (state: StoreState) =>
 
 export const selectLedgerLimitAdjustment = createSelector(
   selectDefaultLedgerLimitAdjustment,
-  transaction => transaction && prepareResultDataToRender(transaction.asMutable())
+  transaction => transaction && prepareResultDataToRender(transaction)
 );
 
 export const selectLedgerLimitAdjustmentId = createSelector(

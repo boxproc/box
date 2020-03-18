@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Button } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
@@ -50,7 +51,7 @@ const schedulerTasksConsts = {
 };
 
 interface SchedulerProps extends WithModalProps {
-  schedulerJobsItems: Array<AdminSchedulerItemPrepared>;
+  schedulerJobsItems: ImmutableArray<AdminSchedulerItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   currentSchedulerId: number;
   currentSchedulerName: string;

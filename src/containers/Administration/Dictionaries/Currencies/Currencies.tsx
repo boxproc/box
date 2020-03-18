@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -10,7 +11,7 @@ import {
 
 interface CurrenciesProps {
   getDictionaryCurrencies: HandleGetDictionaryCurrencies;
-  dictionaryCurrencies: Array<DictionaryCurrenciesItemPrepared>;
+  dictionaryCurrencies: ImmutableArray<DictionaryCurrenciesItemPrepared>;
   isLoading: boolean;
 }
 

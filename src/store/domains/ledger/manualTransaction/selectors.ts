@@ -8,7 +8,7 @@ export const selectDefaultLedgerManualTransaction = (state: StoreState) =>
 
 export const selectLedgerManualTransaction = createSelector(
   selectDefaultLedgerManualTransaction,
-  transaction => transaction && prepareResultDataToRender(transaction.asMutable())
+  transaction => transaction && prepareResultDataToRender(transaction)
 );
 
 export const selectLedgerManualTransactionId = createSelector(

@@ -31,7 +31,7 @@ export const selectLedgerCurrentCustomer = createSelector(
   selectInstitutionsOptions,
   selectCountryCodesOptions,
   (customers, currentId, institutions, countries) => {
-    const current = customers && customers.asMutable().find(el => el.id === currentId);
+    const current = customers && customers.find(el => el.id === currentId);
 
     if (!current) {
       return null;

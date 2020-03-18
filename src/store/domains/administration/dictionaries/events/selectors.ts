@@ -1,16 +1,11 @@
 import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 
-export const selectDefaultDictionaryEventsItems = (state: StoreState) =>
+export const selectDictionaryEventsItems = (state: StoreState) =>
   state.administration.events.events;
 
-export const selectDictionaryEventsItems = createSelector(
-  selectDefaultDictionaryEventsItems,
-  items => items && items.asMutable()
-);
-
 export const selectDictionaryEventsOptions = createSelector(
-  selectDefaultDictionaryEventsItems,
+  selectDictionaryEventsItems,
   items => items && items.asMutable().map(item => {
     return {
       value: item.id,

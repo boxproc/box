@@ -1,8 +1,6 @@
 import {
   IllustrationProductAprRevolvingCreditResp,
-  IllustrationProductFeeRevolvingCreditResp,
   IllustrationProductLoanResp,
-  IllustrationProductRewardRevolvingCreditResp,
   IllustrationProductStatementsRevolvingCreditResp,
   IllustrationProductTransactionsRevolvingCreditResp,
   LoanProductIllustrate,
@@ -74,24 +72,6 @@ export const prepareProductIllustrationAprsItem = (
     description: item.description,
     currAccruedInterest: stringsUtil.numberToFixed(item.curr_accrued_interest, 4),
     rate: stringsUtil.numberToFixed(item.rate, 2),
-  };
-};
-
-export const prepareProductIllustrationFeesItem = (
-  item: IllustrationProductFeeRevolvingCreditResp
-) => {
-  return {
-    description: item.description,
-    accruedFee: stringsUtil.numberToFixed(item.accrued_fee, 2),
-  };
-};
-
-export const prepareProductIllustrationRewardsItem = (
-  item: IllustrationProductRewardRevolvingCreditResp
-) => {
-  return {
-    description: item.description,
-    accruedReward: stringsUtil.numberToFixed(item.accrued_reward, 2),
   };
 };
 

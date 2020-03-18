@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { modalNamesConst } from 'consts';
 
@@ -8,7 +9,7 @@ import { tableColumns } from './components';
 import { AdminUsersGroupItem, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store';
 
 interface UserFilterProps {
-  usersGroupItems: Array<AdminUsersGroupItem>;
+  usersGroupItems: ImmutableArray<AdminUsersGroupItem>;
   getUsersGroup: HandleGetAdminUsersGroup;
   resetUsersGroup: ResetUsersGroup;
   isLoading: boolean;

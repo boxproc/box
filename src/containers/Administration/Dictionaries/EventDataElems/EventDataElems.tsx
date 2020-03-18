@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -16,7 +17,7 @@ import { SelectValue } from 'types';
 
 interface EventDataElemsProps {
   getDictionaryEvents: HandleGetDictionaryEvents;
-  dictionaryEventDataElemsItems: Array<DictionaryEventDataElemsItem>;
+  dictionaryEventDataElemsItems: ImmutableArray<DictionaryEventDataElemsItem>;
   dictionaryEventsOptions: Array<SelectValue>;
   filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
   resetEventDataElems: ResetEventDataElems;

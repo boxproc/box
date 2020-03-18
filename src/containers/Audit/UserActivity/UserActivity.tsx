@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -14,7 +15,7 @@ import { dateUtil } from 'utils';
 
 export interface UserActivityProps {
   institutionsOptions: Array<SelectValue>;
-  auditUserActivity: Array<AuditUserActivityItem>;
+  auditUserActivity: ImmutableArray<AuditUserActivityItem>;
   filterAuditUserActivity: HandleFilterAuditUserActivity;
   resetUserActivity: ResetUserActivity;
   isLoading: boolean;

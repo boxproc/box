@@ -10,7 +10,7 @@ export const selectDefaultAdminSysPropsItems = (state: StoreState) =>
 
 export const selectAdminSysPropsItems = createSelector(
   selectDefaultAdminSysPropsItems,
-  items => items && items.asMutable().map(item => {
+  items => items && items.map(item => {
     return {
       id: item.property_name,
       currentValue: item.current_value,

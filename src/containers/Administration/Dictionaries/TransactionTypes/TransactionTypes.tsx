@@ -3,10 +3,7 @@ import React from 'react';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import {
-  DictionaryTransactionTypes,
-  HandleGetDictionaryTransactionTypes,
-} from 'store';
+import { DictionaryTransactionTypes, HandleGetDictionaryTransactionTypes } from 'store';
 
 interface TransactionTypesProps {
   getTransactionTypes: HandleGetDictionaryTransactionTypes;

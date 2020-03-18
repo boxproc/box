@@ -9,8 +9,6 @@ export const productIllustrationInitialState: ImmutableObject<ProductIllustratio
     productRevolvingCreditIllustration: {
       statements: Immutable([]),
       aprs: Immutable([]),
-      rewards: Immutable([]),
-      fees: Immutable([]),
       transactions: Immutable([]),
     },
   });

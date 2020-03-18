@@ -1,11 +1,12 @@
+import { ImmutableArray } from 'seamless-immutable';
 import { IdNamePair, SelectValue } from 'types';
 
-export const valueLabelParse = (data: Array<IdNamePair>): Array<SelectValue> => {
+export const valueLabelParse = (data: ImmutableArray<IdNamePair>): Array<SelectValue> => {
   if (!data) {
     return null;
   }
 
-  return data.map(item => {
+  return data.asMutable().map(item => {
     const { id, name } = item;
 
     return {

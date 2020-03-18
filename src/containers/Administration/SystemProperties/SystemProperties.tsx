@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -18,7 +19,7 @@ interface SystemPropertiesProps {
   deleteSysProp: HandleDeleteAdminSysProp;
   filterSysProps: HandleFilterAdminSysProps;
   updateSysProps: HandleUpdateAdminSysProps;
-  sysPropsItems: Array<AdminSysPropsItem>;
+  sysPropsItems: ImmutableArray<AdminSysPropsItem>;
   currentSysPropId: number | string;
   resetSystemProperties: ResetSystemProperties;
   isLoading: boolean;

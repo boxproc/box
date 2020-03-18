@@ -57,10 +57,6 @@ export interface IllustrationProductAprRevolvingCreditResp {
   curr_accrued_interest: number;
   rate: number;
 }
-export interface IllustrationProductFeeRevolvingCredit {
-  description: string;
-  accruedFee: string;
-}
 
 export interface IllustrationProductAprRevolvingCredit {
   description: string;
@@ -96,21 +92,6 @@ export interface IllustrationProductTransactionsRevolvingCreditResp {
   transaction_type: string;
 }
 
-export interface IllustrationProductRewardsRevolvingCreditResp {
-  description: string;
-  accruedReward: string;
-}
-
-export interface IllustrationProductFeeRevolvingCreditResp {
-  description: string;
-  accrued_fee: number;
-}
-
-export interface IllustrationProductRewardRevolvingCreditResp {
-  description: string;
-  accrued_reward: number;
-}
-
 export interface ProductLoanIllustrationDataResp {
   product_information: Array<IllustrationProductLoanResp>;
 }
@@ -127,14 +108,6 @@ export interface ProductRevolvingCreditAprIllustrationDataResp {
   aprs: Array<IllustrationProductAprRevolvingCreditResp>;
 }
 
-export interface ProductRevolvingCreditFeeIllustrationDataResp {
-  fees: Array<IllustrationProductFeeRevolvingCreditResp>;
-}
-
-export interface ProductRevolvingCreditRewardIllustrationDataResp {
-  rewards: Array<IllustrationProductRewardRevolvingCreditResp>;
-}
-
 export interface ProductRevolvingCreditIllustrationAllDataResp {
   revolving_credit_information: ProductRevolvingCreditIllustrationDataResp;
 }
@@ -142,8 +115,6 @@ export interface ProductRevolvingCreditIllustrationAllDataResp {
 export interface ProductRevolvingCreditIllustrationDataResp {
   statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
   aprs: Array<IllustrationProductAprRevolvingCreditResp>;
-  fees: Array<IllustrationProductFeeRevolvingCreditResp>;
-  rewards: Array<IllustrationProductRewardRevolvingCreditResp>;
   transactions: Array<IllustrationProductTransactionsRevolvingCreditResp>;
 }
 
@@ -200,8 +171,6 @@ export interface ProductIllustrationState {
   productRevolvingCreditIllustration: {
     statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
     aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
-    fees: ImmutableArray<IllustrationProductFeeRevolvingCreditResp>;
-    rewards: ImmutableArray<IllustrationProductRewardRevolvingCreditResp>;
     transactions: ImmutableArray<IllustrationProductTransactionsRevolvingCreditResp>;
   };
 }

@@ -11,7 +11,7 @@ export const selectDefaultAuditApiCalls = (state: StoreState) => state.audit.api
 export const selectAuditApiCalls = createSelector(
   selectDefaultAuditApiCalls,
   selectInstitutionsOptions,
-  (items, institutionsOptions) => items && items.asMutable().map(item => {
+  (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
     return prepareValuesToRender(item, institution);

@@ -20,25 +20,19 @@ export const selectActiveItemInfoForLogData = (state: StoreState) =>
 
 export const selectSystemMonitorInterfaces = createSelector(
   selectDefaultSystemMonitorInterfaces,
-  interfaces => {
-    if (!interfaces) {
-      return [];
-    } else {
-      return interfaces.interfaces_data.asMutable().map(item => {
-        const status = statusOptions.find(el => el.value === item.interface_status);
+  interfaces => interfaces && interfaces.interfaces_data.asMutable().map(item => {
+    const status = statusOptions.find(el => el.value === item.interface_status);
 
-        return {
-          institutionId: item.interface_institution_id,
-          institutionName: item.interface_institution_name,
-          name: item.interface_name,
-          id: item.interface_id,
-          status: status && status.label,
-          lastMessageDatetime: item.interface_last_message_datetime,
-          lastFaultDatetime: item.interface_last_fault_datetime,
-        };
-      });
-    }
-  }
+    return {
+      institutionId: item.interface_institution_id,
+      institutionName: item.interface_institution_name,
+      name: item.interface_name,
+      id: item.interface_id,
+      status: status && status.label,
+      lastMessageDatetime: item.interface_last_message_datetime,
+      lastFaultDatetime: item.interface_last_fault_datetime,
+    };
+  })
 );
 
 export const selectSystemMonitorInterfacesCounts = createSelector(
@@ -57,25 +51,19 @@ export const selectSystemMonitorInterfacesCounts = createSelector(
 
 export const selectSystemMonitorEndpoints = createSelector(
   selectDefaultSystemMonitorEndpoints,
-  endpoints => {
-    if (!endpoints) {
-      return [];
-    } else {
-      return endpoints.endpoints_data.asMutable().map(item => {
-        const status = statusOptions.find(el => el.value === item.endpoint_status);
+  endpoints => endpoints && endpoints.endpoints_data.asMutable().map(item => {
+    const status = statusOptions.find(el => el.value === item.endpoint_status);
 
-        return {
-          institutionId: item.endpoint_institution_id,
-          institutionName: item.endpoint_institution_name,
-          name: item.endpoint_name,
-          id: item.endpoint_id,
-          status: status && status.label,
-          lastMessageDatetime: item.endpoint_last_message_datetime,
-          lastFaultDatetime: item.endpoint_last_fault_datetime,
-        };
-      });
-    }
-  }
+    return {
+      institutionId: item.endpoint_institution_id,
+      institutionName: item.endpoint_institution_name,
+      name: item.endpoint_name,
+      id: item.endpoint_id,
+      status: status && status.label,
+      lastMessageDatetime: item.endpoint_last_message_datetime,
+      lastFaultDatetime: item.endpoint_last_fault_datetime,
+    };
+  })
 );
 
 export const selectSystemMonitorEndpointsCounts = createSelector(
@@ -94,23 +82,17 @@ export const selectSystemMonitorEndpointsCounts = createSelector(
 
 export const selectSystemMonitorScheduler = createSelector(
   selectDefaultSystemMonitorScheduler,
-  scheduler => {
-    if (!scheduler) {
-      return [];
-    } else {
-      return scheduler.scheduler_data.asMutable().map(item => {
-        const status = schedulerStatusOptions.find(el => el.value === item.scheduler_status);
+  scheduler => scheduler && scheduler.scheduler_data.asMutable().map(item => {
+    const status = schedulerStatusOptions.find(el => el.value === item.scheduler_status);
 
-        return {
-          institutionId: item.scheduler_institution_id,
-          institutionName: item.scheduler_institution_name,
-          name: item.scheduler_name,
-          id: item.scheduler_id,
-          status: status && status.label,
-        };
-      });
-    }
-  }
+    return {
+      institutionId: item.scheduler_institution_id,
+      institutionName: item.scheduler_institution_name,
+      name: item.scheduler_name,
+      id: item.scheduler_id,
+      status: status && status.label,
+    };
+  })
 );
 
 export const selectSystemMonitorSchedulerCounts = createSelector(
@@ -129,16 +111,11 @@ export const selectSystemMonitorSchedulerCounts = createSelector(
 
 export const selectSystemMonitorLastTransactions = createSelector(
   selectDefaultSystemMonitorLastTransactions,
-  transactions => {
-    if (!transactions) {
-      return [];
-    } else {
-      return transactions.asMutable().map(transaction => {
-        return {
-          institutionName: transaction && transaction.institution_name,
-          institutionId: transaction && transaction.institution_id,
-          transactionDatetime: transaction && transaction.transaction_datetime,
-        };
-      });
-    }
-  });
+  transactions => transactions && transactions.asMutable().map(transaction => {
+    return {
+      institutionName: transaction && transaction.institution_name,
+      institutionId: transaction && transaction.institution_id,
+      transactionDatetime: transaction && transaction.transaction_datetime,
+    };
+  })
+);

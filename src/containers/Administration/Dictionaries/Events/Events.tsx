@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -9,7 +10,7 @@ import { IdNamePair } from 'types';
 
 interface EventsProps {
   getDictionaryEvents: HandleGetDictionaryEvents;
-  dictionaryEventsItems: Array<IdNamePair>;
+  dictionaryEventsItems: ImmutableArray<IdNamePair>;
   isLoading: boolean;
 }
 

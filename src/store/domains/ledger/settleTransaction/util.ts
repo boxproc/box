@@ -1,3 +1,4 @@
+import { ImmutableArray } from 'seamless-immutable';
 import {
   RetrieveTransactionFormValues,
   SettleTransactionFormValues,
@@ -28,7 +29,7 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
   };
 };
 
-export const prepareDataToRender = (data: Array<SettleTransactionItem>):
+export const prepareDataToRender = (data: ImmutableArray<SettleTransactionItem>):
   SettleTransactionFormValues => {
   if (!data || !data.length) {
     return null;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { modalNamesConst } from 'consts';
 
@@ -16,7 +17,7 @@ import {
 import { SelectValue } from 'types';
 
 interface UsersProps {
-  userItems: Array<AdminUserItemPrepared>;
+  userItems: ImmutableArray<AdminUserItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   filterUsers: HandleFilterUsers;
   filterUsersById: HandleFilterAuditUserById;

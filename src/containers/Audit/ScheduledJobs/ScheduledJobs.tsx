@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { ScheduledJobsFilter } from './forms';
 
@@ -18,7 +19,7 @@ import { dateUtil } from 'utils';
 
 export interface ScheduledJobsProps {
   institutionsOptions: Array<SelectValue>;
-  scheduledJobs: Array<AuditScheduledJobsItemPrepared>;
+  scheduledJobs: ImmutableArray <AuditScheduledJobsItemPrepared>;
   filterScheduledJobs: HandleFilterAuditScheduledJobs;
   getLogData: HandleGetLogData;
   resetScheduledJobs: ResetScheduledJobs;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { ImmutableArray } from 'seamless-immutable';
 
 import styled from 'theme';
 
@@ -33,7 +34,7 @@ const PagesWrapper = styled(Container)`
 `;
 
 interface RootProps extends ExternalSpinnerProps {
-  visibleUiItemsList: Array<string>;
+  visibleUiItemsList: ImmutableArray<string>;
 }
 
 const Root: React.FC<RootProps> = ({ visibleUiItemsList }) => {

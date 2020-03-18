@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { iconNamesConst, modalNamesConst, yesNoConst } from 'consts';
 
@@ -14,7 +15,7 @@ import {
 import { storageUtil } from 'utils';
 
 export interface InstitutionsProps {
-  institutionsData: Array<AdminInstitutionsItemPrepared>;
+  institutionsData: ImmutableArray<AdminInstitutionsItemPrepared>;
   currentInstitutionName: string;
   currentInstitutionId: number;
   isLoading: boolean;

@@ -8,7 +8,7 @@ export const selectDefaultRetrievedTransaction = (state: StoreState) =>
 
 export const selectRetrievedTransaction = createSelector(
   selectDefaultRetrievedTransaction,
-  transaction => transaction && prepareDataToRender(transaction.asMutable())
+  transaction => transaction && prepareDataToRender(transaction)
 );
 
 export const selectIsRetrievedTransaction = createSelector(

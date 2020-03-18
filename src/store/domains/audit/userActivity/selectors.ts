@@ -27,5 +27,5 @@ export const selectAuditUsers = createSelector(
 
 export const selectAuditUserActivity = createSelector(
   selectDefaultAuditUserActivity,
-  items => items && items.asMutable().map(item => preparedDataToRender(item))
+  items => items && items.map(item => preparedDataToRender(item))
 );

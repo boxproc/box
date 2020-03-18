@@ -34,8 +34,6 @@ export const TableNoData: React.FC<NoDataProps> = ({
 }) => (
     <NoDataWrapper>
       <div className="title">{title}</div>
-      {hint && (
-        <div className="hint">{hint}</div>
-      )}
+      {hint && (<div className="hint">{hint}</div>)}
     </NoDataWrapper>
   );

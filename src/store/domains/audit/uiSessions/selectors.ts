@@ -8,5 +8,5 @@ export const selectDefaultAuditUiSessions = (state: StoreState) =>
 
 export const selectAuditUiSessions = createSelector(
   selectDefaultAuditUiSessions,
-  items => items && items.asMutable().map(item => preparedDataToRender(item))
+  items => items && items.map(item => preparedDataToRender(item))
 );

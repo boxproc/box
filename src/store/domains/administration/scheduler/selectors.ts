@@ -11,7 +11,7 @@ export const selectDefaultAdminSchedulerJobsItems = (state: StoreState) =>
 export const selectAdminSchedulerJobsItems = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
-  (items, institutionsOptions) => items && items.asMutable().map(item => {
+  (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
     return prepareValuesToRender(item, institution);
@@ -23,7 +23,7 @@ export const selectSchedulerJobValues = createSelector(
   selectInstitutionsOptions,
   selectActiveItemId,
   (items, institutions, currentId) => {
-    const current = items && items.asMutable().find(item => item.id === currentId);
+    const current = items && items.find(item => item.id === currentId);
 
     return {
       ...prepareDetailsToRender(current),

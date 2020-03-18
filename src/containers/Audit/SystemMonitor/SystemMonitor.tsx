@@ -82,7 +82,6 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
 }) => {
   const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
-  const [screenHeight, setScreenHeight] = React.useState(window.innerHeight);
 
   // get data for each table and reset it on unmount
   React.useEffect(
@@ -131,23 +130,6 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       return () => clearInterval(timer);
     },
     [getSystemMonitorData, isCounter, refreshingTables]
-  );
-
-  // update screen height for setting various number of table rows per page
-  const updateWindowHeight = () => setScreenHeight(window.innerHeight);
-
-  React.useEffect(
-    () => {
-      window.addEventListener('resize', updateWindowHeight);
-      return () => window.removeEventListener('resize', updateWindowHeight);
-    }
-  );
-
-  const tablePagesCount = React.useMemo(
-    () => screenHeight < 750 ? 3
-      : screenHeight < 850 ? 5
-        : screenHeight < 950 ? 6 : 8,
-    [screenHeight]
   );
 
   const handleSetRefreshingTables = React.useCallback(
@@ -300,9 +282,9 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                     )}
                   >
                     <Table
-                      data={block.tableData}
+                      data={block.tableData || []}
                       columns={block.columns}
-                      pageSize={tablePagesCount}
+                      pageSize={4}
                       isSmaller={true}
                     />
                   </Collapse>

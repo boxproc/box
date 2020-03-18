@@ -23,7 +23,7 @@ export const selectDefaultAdminUiItems = (state: StoreState) =>
 
 export const selectUsersGroupEditorItems = createSelector(
   selectDefaultAdminUsersGroupItems,
-  items => items && items.asMutable().map(item => {
+  items => items && items.map(item => {
 
     const {
       id,
@@ -57,7 +57,6 @@ export const selectAdminUserGroupMembers = createSelector(
     return {
       id: el.id,
       username: `${el.first_name} ${el.last_name} `,
-
     };
   })
 );

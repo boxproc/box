@@ -1,16 +1,14 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import {
-  DictionaryCountriesItemPrepared,
-  HandleGetDictionaryCountries,
-} from 'store';
+import { DictionaryCountriesItemPrepared, HandleGetDictionaryCountries } from 'store';
 
 interface CountriesProps {
   getDictionaryCountries: HandleGetDictionaryCountries;
-  dictionaryCountries: Array<DictionaryCountriesItemPrepared>;
+  dictionaryCountries: ImmutableArray<DictionaryCountriesItemPrepared>;
   isLoading: boolean;
 }
 

@@ -12,7 +12,7 @@ export const selectDefaultDictionaryEventDataElemsItems = (state: StoreState) =>
 export const selectDictionaryEventDataElemsItems = createSelector(
   selectDefaultDictionaryEventDataElemsItems,
   selectDictionaryEventsItems,
-  (dataElems, events) => dataElems && dataElems.asMutable().map(item => {
+  (dataElems, events) => dataElems && dataElems.map(item => {
     const itemEvent = events.find(event => event.id === item.event_id);
     const dataType = dataTypesOptions.find(el => el.value === item.data_type);
 
@@ -28,7 +28,7 @@ export const selectDictionaryEventDataElemsItems = createSelector(
 
 export const selectEventDataElemsForRules = createSelector(
   selectDefaultDictionaryEventDataElemsItems,
-  (dataElems) => dataElems && dataElems.asMutable().map(item => {
+  dataElems => dataElems && dataElems.asMutable().map(item => {
     const dataType = dataTypesOptions.find(el => el.value === item.data_type);
 
     return {
