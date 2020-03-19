@@ -1,8 +1,4 @@
-import {
-  customerStatusOptions,
-  identificationTypesOptions,
-  statusOptions,
-} from 'consts';
+import { customerStatusOptions, identificationTypesOptions, statusOptions } from 'consts';
 
 import {
   LedgerCustomerItem,
@@ -27,7 +23,7 @@ export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => 
   const { customerId, institutionId, firstName, lastName } = params;
 
   return {
-    id: customerId ? customerId : null,
+    id: stringsUtil.toNumber(customerId),
     first_name: firstName ? firstName : null,
     institution_id: institutionId ? institutionId.value : null,
     last_name: lastName ? lastName : null,
@@ -39,27 +35,50 @@ export const preparedDataToSend = (data: Partial<LedgerCustomerItemDetailsPrepar
     return null;
   }
 
+  const {
+    id,
+    status,
+    email,
+    institutionId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    mobilePhoneNumber,
+    addressLine1,
+    addressLine2,
+    addressLine3,
+    addressLine4,
+    addressTown,
+    addressPostCode,
+    addressCountryCode,
+    nationalityCountryCode,
+    dateCreated,
+    dateClosed,
+    identificationType,
+    identificationNumber,
+  } = data;
+
   return {
-    id: data.id,
-    status: data.status && data.status.value,
-    email: data.email,
-    institution_id: data.institutionId.value,
-    first_name: data.firstName,
-    last_name: data.lastName,
-    date_of_birth: data.dateOfBirth,
-    mobile_phone_number: data.mobilePhoneNumber,
-    address_line1: data.addressLine1,
-    address_line2: data.addressLine2,
-    address_line3: data.addressLine3,
-    address_line4: data.addressLine4,
-    address_town: data.addressTown,
-    address_post_code: data.addressPostCode,
-    address_country_code: data.addressCountryCode && data.addressCountryCode.value,
-    nationality_country_code: data.nationalityCountryCode && data.nationalityCountryCode.value,
-    date_created: data.dateCreated,
-    date_closed: data.dateClosed,
-    identification_type: data.identificationType && data.identificationType.value,
-    identification_number: data.identificationNumber ? data.identificationNumber : null,
+    id: stringsUtil.toNumber(id),
+    status: status && status.value,
+    email,
+    institution_id: institutionId && institutionId.value,
+    first_name: firstName,
+    last_name: lastName,
+    date_of_birth: dateOfBirth,
+    mobile_phone_number: mobilePhoneNumber,
+    address_line1: addressLine1,
+    address_line2: addressLine2,
+    address_line3: addressLine3,
+    address_line4: addressLine4,
+    address_town: addressTown,
+    address_post_code: addressPostCode,
+    address_country_code: addressCountryCode && addressCountryCode.value,
+    nationality_country_code: nationalityCountryCode && nationalityCountryCode.value,
+    date_created: dateCreated,
+    date_closed: dateClosed,
+    identification_type: identificationType && identificationType.value,
+    identification_number: identificationNumber ? identificationNumber : null,
   };
 };
 
@@ -71,27 +90,47 @@ export const prepareDataToRender = (
     return null;
   }
 
-  const status = customerStatusOptions.find(el => el.value === data.status);
+  const {
+    id,
+    status,
+    last_name,
+    first_name,
+    date_of_birth,
+    email,
+    mobile_phone_number,
+    address_country_code,
+    nationality_country_code,
+    address_line1,
+    address_line2,
+    address_line3,
+    address_line4,
+    address_town,
+    address_post_code,
+    date_created,
+    date_closed,
+  } = data;
+
+  const dataStatus = customerStatusOptions.find(el => el.value === status);
 
   return {
-    id: data.id,
+    id,
     institutionId: institution && institution.label,
-    firstName: data.first_name,
-    lastName: data.last_name,
-    status: status && status.label,
-    dateOfBirth: data.date_of_birth,
-    email: data.email,
-    mobilePhoneNumber: data.mobile_phone_number,
-    addressCountryCode: data.address_country_code,
-    nationalityCountryCode: data.nationality_country_code,
-    addressLine1: data.address_line1,
-    addressLine2: data.address_line2,
-    addressLine3: data.address_line3,
-    addressLine4: data.address_line4,
-    addressTown: data.address_town,
-    addressPostCode: data.address_post_code,
-    dateCreated: data.date_created,
-    dateClosed: data.date_closed,
+    firstName: first_name,
+    lastName: last_name,
+    status: dataStatus && dataStatus.label,
+    dateOfBirth: date_of_birth,
+    email,
+    mobilePhoneNumber: mobile_phone_number,
+    addressCountryCode: address_country_code,
+    nationalityCountryCode: nationality_country_code,
+    addressLine1: address_line1,
+    addressLine2: address_line2,
+    addressLine3: address_line3,
+    addressLine4: address_line4,
+    addressTown: address_town,
+    addressPostCode: address_post_code,
+    dateCreated: date_created,
+    dateClosed: date_closed,
   };
 };
 
@@ -215,7 +254,7 @@ export const prepareFormDataRepaymentDirectDebitToSend =
     } = data;
 
     return {
-      account,
+      account: stringsUtil.toNumber(account),
       account_ext: accountExt,
       accountholder_name: accountholderName,
       status: status && status.value,

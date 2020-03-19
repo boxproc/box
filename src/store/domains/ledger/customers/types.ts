@@ -140,7 +140,7 @@ export interface RepaymentDebitCardsItemFormValues extends RepaymentDebitCardsIt
 
 export interface RepaymentDirectDebitsItem {
   customer_id: number;
-  account: string;
+  account: number;
   account_ext: string;
   accountholder_name: string;
   status: string | number;
@@ -156,7 +156,7 @@ export interface RepaymentDirectDebitsItems {
 
 interface RepaymentDirectDebitsItemPlain {
   customerId: number;
-  account: string;
+  account: number;
   accountExt: string;
   accountholderName: string;
   lastUpdateDatetime: string;
