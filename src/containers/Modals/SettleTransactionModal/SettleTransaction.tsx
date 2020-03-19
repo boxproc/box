@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
-
-import { ExternalLink, Modal, T2 } from 'components';
+import { Modal } from 'components';
 import { SettleTransactionForm, TransactionRetrievingForm } from './forms';
 
 import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
+
+import PageTitle from 'containers/PageTemplate/PageTitle';
 
 import { withModal, WithModalProps } from 'HOCs';
 
@@ -15,7 +15,6 @@ import {
   PayloadSettleTransactionModal,
   ResetRetrievedTransaction,
   SettleTransactionFormValues,
-  UiItemPrepared,
 } from 'store';
 
 interface SettleTransactionModalProps extends WithModalProps {
@@ -28,7 +27,6 @@ interface SettleTransactionModalProps extends WithModalProps {
   isRetrievedTransaction: boolean;
   isDirtySettleTransactionForm: boolean;
   payloadSettleTransactionModal: PayloadSettleTransactionModal;
-  uiItems: Array<UiItemPrepared>;
 }
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;
@@ -44,7 +42,6 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
   isDirtySettleTransactionForm,
   closeModal,
   payloadSettleTransactionModal,
-  uiItems,
 }) => {
   React.useEffect(
     () => {
@@ -71,24 +68,6 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
     [payloadSettleTransactionModal]
   );
 
-  const helpLink = React.useMemo(
-    () => {
-      if (!uiItems) {
-        return null;
-      }
-
-      const currentUiItem = uiItems
-        .find(item => item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION);
-
-      if (!currentUiItem) {
-        return null;
-      }
-
-      return currentUiItem.helpPageURL;
-    },
-    [uiItems]
-  );
-
   const handleCloseModal = React.useCallback(
     () => {
       closeModal(modalName);
@@ -104,16 +83,10 @@ const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
       type={modalTypesConst.VIEWING}
       withCloseConfirmation={isDirtySettleTransactionForm}
     >
-      <Flex alignItems="center">
-        <Box mb="5px" mr="15px">
-          <ExternalLink
-            text="HELP"
-            link={helpLink}
-            grayStyle={true}
-          />
-        </Box>
-        <T2>Settle Transaction</T2>
-      </Flex>
+      <PageTitle
+        title="Settle Transaction"
+        pageId={uiItemsConst.LEDGER_SETTLE_TRANSACTION}
+      />
       <TransactionRetrievingForm
         isRetrieving={isRetrieving}
         isRetrieved={isRetrievedTransaction}

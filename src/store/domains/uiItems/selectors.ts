@@ -19,3 +19,5 @@ export const selectVisibleUiItemsList = createSelector(
   selectDefaultUiItems,
   uiItems => uiItems && uiItems.map(item => item.ui_item)
 );
+
+export const selectHelpLink = (state: StoreState) => state.uiItems.helpLink;

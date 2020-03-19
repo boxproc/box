@@ -24,6 +24,11 @@ export interface UiItems {
   ui_items: Array<UiItem>;
 }
 
+export interface HelpLinkResp {
+  url: Array<{ help_page_url: string }>;
+}
+
 export interface UiItemsState {
   uiItems: ImmutableArray<UiItem>;
+  helpLink: string;
 }

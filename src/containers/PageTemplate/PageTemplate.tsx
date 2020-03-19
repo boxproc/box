@@ -4,13 +4,14 @@ import { withRouter } from 'react-router-dom';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, CountDownTimer, Dropdown, DropdownOption, ExternalLink, T2 } from 'components';
+import { Button, CountDownTimer, Dropdown, DropdownOption } from 'components';
 import { withModal, WithModalProps } from 'HOCs';
 
 import { basePath, iconNamesConst } from 'consts';
 
 import EditableTable from './EditableTable';
 import Filter from './Filter';
+import PageTitle from './PageTitle';
 
 import {
   ResetUtils,
@@ -111,18 +112,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     [isOpenFilter]
   );
 
-  const helpLink = React.useMemo(
-    () => currentUiItem.helpPageURL,
-    [currentUiItem]
-  );
-
   const fileName = React.useMemo(
     () => title.split(' ').join('_').toLowerCase(),
     [title]
   );
 
   const isData = React.useMemo(
-    () => data.length,
+    () => data && data.length,
     [data]
   );
 
@@ -163,16 +159,10 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
 
   return (
     <React.Fragment>
-      <Flex alignItems="baseline">
-        <Box mr="10px">
-          <ExternalLink
-            text="HELP"
-            link={helpLink}
-            grayStyle={true}
-          />
-        </Box>
-        <T2>{title}</T2>
-      </Flex>
+      <PageTitle
+        title={title}
+        pageId={currentUiItem.id}
+      />
       {FilterForm && (
         <Box mb="5px">
           <Button

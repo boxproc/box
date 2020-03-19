@@ -12,7 +12,6 @@ import {
   selectCurrencyNumCodesOptions,
   selectManualTransactionModalIsLimit,
   selectPayloadManualTransactionModal,
-  selectUiItems,
   StoreState,
 } from 'store';
 
@@ -26,7 +25,6 @@ const mapStateToProps = (state: StoreState) => ({
   modalPayload: selectPayloadManualTransactionModal(state),
   currenciesOptions: selectCurrencyNumCodesOptions(state),
   isLimitAdjustment: selectManualTransactionModalIsLimit(state),
-  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

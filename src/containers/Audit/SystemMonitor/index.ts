@@ -15,7 +15,6 @@ import {
   selectSystemMonitorLastTransactions,
   selectSystemMonitorScheduler,
   selectSystemMonitorSchedulerCounts,
-  selectUiItems,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
@@ -53,7 +52,6 @@ const mapStateToProps = (state: StoreState) => ({
   interfacesCounts: selectSystemMonitorInterfacesCounts(state),
   endpointsCounts: selectSystemMonitorEndpointsCounts(state),
   schedulerCounts: selectSystemMonitorSchedulerCounts(state),
-  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

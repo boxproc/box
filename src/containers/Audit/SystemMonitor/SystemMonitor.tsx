@@ -1,15 +1,15 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CountDownTimer, ExternalLink, T2, Table, withSpinner } from 'components';
+import { CountDownTimer, Table, withSpinner } from 'components';
 
 import {
   basePath,
   cookiesExpiresConst,
   systemMonitorTablesConst,
+  uiItemsConst,
   yesNoConst,
 } from 'consts';
 
@@ -23,6 +23,8 @@ import {
   transactionsTableColumns,
 } from './components';
 
+import PageTitle from 'containers/PageTemplate/PageTitle';
+
 import {
   HandleGetLogData,
   HandleGetSystemMonitorData,
@@ -31,11 +33,10 @@ import {
   SystemMonitorItem,
   SystemMonitorSchedulerItem,
   SystemMonitorTransaction,
-  UiItemPrepared,
 } from 'store';
 import { cookiesUtil } from 'utils';
 
-interface SystemMonitorProps extends RouteComponentProps {
+interface SystemMonitorProps {
   interfacesData: ImmutableArray<SystemMonitorItem>;
   endpointsData: ImmutableArray<SystemMonitorItem>;
   schedulerData: ImmutableArray<SystemMonitorSchedulerItem>;
@@ -50,7 +51,6 @@ interface SystemMonitorProps extends RouteComponentProps {
   endpointsCounts: SystemMonitorCounts;
   schedulerCounts: SystemMonitorCounts;
   resetSystemMonitor: ResetSystemMonitor;
-  uiItems: Array<UiItemPrepared>;
 }
 
 interface SystemMonitorBlockProps {
@@ -77,12 +77,12 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   interfacesCounts,
   endpointsCounts,
   schedulerCounts,
-  location,
   getLogData,
-  uiItems,
 }) => {
   const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
+
+  const location = `${basePath}${uiItemsConst.AUDIT_SYSTEM_MONITOR}`;
 
   // get data for each table and reset it on unmount
   React.useEffect(
@@ -99,7 +99,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       const storedNames = [];
 
       for (const table in systemMonitorTablesConst) {
-        if (cookiesUtil.get(`${location.pathname}/${systemMonitorTablesConst[table]}`)) {
+        if (cookiesUtil.get(`${location}/${systemMonitorTablesConst[table]}`)) {
           storedNames.push(systemMonitorTablesConst[table]);
         }
       }
@@ -151,7 +151,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
         }
       }
 
-      const storedTableName = `${location.pathname}/${tableName}`;
+      const storedTableName = `${location}/${tableName}`;
 
       if (cookiesUtil.get(storedTableName)) {
         cookiesUtil.remove(storedTableName);
@@ -164,20 +164,6 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
       }
     },
     [refreshingTables, getSystemMonitorData, location]
-  );
-
-  const helpLink = React.useMemo(
-    () => {
-      const currentUiItem = uiItems
-        .find(item => `${basePath}${item.id}` === `${location.pathname}`);
-
-      if (!currentUiItem) {
-        return null;
-      }
-
-      return currentUiItem.helpPageURL;
-    },
-    [location, uiItems]
   );
 
   const systemMonitorBlocks = React.useMemo(
@@ -241,14 +227,10 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
   return (
     <React.Fragment>
       <Flex alignItems="center">
-        <Box mb="5px" mr="15px">
-          <ExternalLink
-            text="HELP"
-            link={helpLink}
-            grayStyle={true}
-          />
-        </Box>
-        <T2>System Monitor</T2>
+        <PageTitle
+          title="System Monitor"
+          pageId={uiItemsConst.AUDIT_SYSTEM_MONITOR}
+        />
         <Box mb="5px" ml="12px">
           {isCounter && (
             <CountDownTimer seconds={60} />
@@ -278,7 +260,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
                     additionalTool={(
                       <RefreshCheckbox
                         onClick={() => handleSetRefreshingTables(block.name)}
-                        value={!!cookiesUtil.get(`${location.pathname}/${block.name}`)}
+                        value={!!cookiesUtil.get(`${location}/${block.name}`)}
                       />
                     )}
                   >
@@ -301,4 +283,4 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
 
 export default withSpinner({
   isFixed: true,
-})(withRouter(SystemMonitor));
+})(SystemMonitor);

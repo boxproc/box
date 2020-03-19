@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Box, Flex } from '@rebass/grid';
-
-import { ExternalLink, Modal, T2, withSpinner } from 'components';
+import { Modal, withSpinner } from 'components';
 import { ManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
@@ -14,11 +12,12 @@ import {
 
 import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 
+import PageTitle from 'containers/PageTemplate/PageTitle';
+
 import {
   HandleMakeLedgerLimitAdjustment,
   HandleMakeLedgerTransaction,
   PayloadManualTransactionModal,
-  UiItemPrepared
 } from 'store';
 
 import { SelectValue } from 'types';
@@ -29,7 +28,6 @@ interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactio
   modalPayload: PayloadManualTransactionModal;
   currenciesOptions: Array<SelectValue>;
   isLimitAdjustment: boolean;
-  uiItems: Array<UiItemPrepared>;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
@@ -43,7 +41,6 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   isLimitAdjustment,
   closeModal,
   currenciesOptions,
-  uiItems,
 }) => {
   const modalTitle = React.useMemo(
     () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
@@ -107,39 +104,16 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
     [isLimitAdjustment]
   );
 
-  const helpLink = React.useMemo(
-    () => {
-      if (!uiItems) {
-        return null;
-      }
-
-      const currentUiItem = uiItems.find(item => item.id === currentPath);
-
-      if (!currentUiItem) {
-        return null;
-      }
-
-      return currentUiItem.helpPageURL;
-    },
-    [uiItems, currentPath]
-  );
-
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
       containerWidth="550px"
     >
-      <Flex alignItems="center">
-        <Box mb="5px" mr="15px">
-          <ExternalLink
-            text="HELP"
-            link={helpLink}
-            grayStyle={true}
-          />
-        </Box>
-        <T2>{modalTitle}</T2>
-      </Flex>
+      <PageTitle
+        title={modalTitle}
+        pageId={currentPath}
+      />
       <ManualTransactionForm
         makeLedgerTransaction={makeLedgerTransaction}
         makeLedgerLimitAdjustment={makeLedgerLimitAdjustment}

@@ -15,7 +15,6 @@ import {
   selectIsRetrievedTransaction,
   selectPayloadSettleTransactionModal,
   selectRetrievedTransaction,
-  selectUiItems,
   StoreState,
 } from 'store';
 
@@ -36,7 +35,6 @@ const mapStateToProps = (state: StoreState) => ({
   isDirtySettleTransactionForm: dirtySettleTransactionForm(state),
   retrievedTransaction: selectRetrievedTransaction(state),
   payloadSettleTransactionModal: selectPayloadSettleTransactionModal(state),
-  uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
