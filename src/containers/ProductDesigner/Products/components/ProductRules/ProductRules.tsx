@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -58,11 +59,11 @@ interface ProductRulesProps {
   getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
   getEvents: HandleGetDictionaryEvents;
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
-  eventDataElemsItems: Array<ContextItemProps>;
-  productAprsItems: Array<ContextItemProps>;
-  productFeesItems: Array<ContextItemProps>;
-  productRewardsItems: Array<ContextItemProps>;
-  transactionTypesItems: Array<ContextItemProps>;
+  eventDataElemsItems: ImmutableArray<ContextItemProps>;
+  productAprsItems: ImmutableArray<ContextItemProps>;
+  productFeesItems: ImmutableArray<ContextItemProps>;
+  productRewardsItems: ImmutableArray<ContextItemProps>;
+  transactionTypesItems: ImmutableArray<ContextItemProps>;
   actionTypesOptions: Array<SelectValue>;
   eventsOptions: Array<SelectValue>;
   eventValue: SelectValue;
@@ -91,7 +92,7 @@ const getNewCode = (element: string) => {
   return resultText;
 };
 
-const mapComments = (items: Array<ContextItemProps>) => items.map(el => {
+const mapComments = (items: ImmutableArray<ContextItemProps>) => items.map(el => {
   return {
     name: el.description,
     value: `/* ${el.description} */`,

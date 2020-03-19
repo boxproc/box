@@ -1,6 +1,6 @@
 const snippets = [
   {
-    title: 'Else if',
+    title: 'If else',
     code: 'if () {\n\xa0\xa0\xa0\xa0\n} else {\n\xa0\xa0\xa0\xa0\n}',
     shiftCharCount: 4,
   },

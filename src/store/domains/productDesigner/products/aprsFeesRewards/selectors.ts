@@ -18,7 +18,7 @@ export const selectProductAprs = createSelector(
 
 export const selectProductAprsForRules = createSelector(
   selectDefaultProductAprs,
-  aprs => aprs && aprs.asMutable().map(apr => {
+  aprs => aprs && aprs.map(apr => {
     return {
       name: apr.product_apr_id,
       description: apr.description,
@@ -36,7 +36,7 @@ export const selectProductFees = createSelector(
 
 export const selectProductFeesForRules = createSelector(
   selectDefaultProductFees,
-  fees => fees && fees.asMutable().map(fee => {
+  fees => fees && fees.map(fee => {
     return {
       name: fee.product_fee_id,
       description: fee.description,
@@ -54,7 +54,7 @@ export const selectProductRewards = createSelector(
 
 export const selectProductRewardsForRules = createSelector(
   selectDefaultProductRewards,
-  rewards => rewards && rewards.asMutable().map(reward => {
+  rewards => rewards && rewards.map(reward => {
     return {
       name: reward.product_reward_id,
       description: reward.description,

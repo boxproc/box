@@ -28,7 +28,7 @@ export const selectDictionaryEventDataElemsItems = createSelector(
 
 export const selectEventDataElemsForRules = createSelector(
   selectDefaultDictionaryEventDataElemsItems,
-  dataElems => dataElems && dataElems.asMutable().map(item => {
+  dataElems => dataElems && dataElems.map(item => {
     const dataType = dataTypesOptions.find(el => el.value === item.data_type);
 
     return {

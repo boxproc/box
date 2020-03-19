@@ -73,7 +73,7 @@ export const selectIsTransactionTypesLoaded = createSelector(
 
 export const selectTransactionTypesForRules = createSelector(
   selectDefaultDictionaryTransactionTypes,
-  types => types && types.asMutable().map(type => {
+  types => types && types.map(type => {
 
     return {
       name: type.id,
