@@ -9,8 +9,6 @@ import { Dropdown, DropdownOption, ExternalLink, HelpCircleIcon } from 'componen
 
 import { basePath } from 'consts';
 
-import { UiItemPrepared } from 'store';
-
 const HelpIcon = styled(HelpCircleIcon)`
   margin-right: 3px;
   color: ${({ theme }) => theme.colors.gray};
@@ -32,32 +30,23 @@ const HelpBlock = () => (
 );
 
 interface HelpDropdownProps {
-  uiItems: Array<UiItemPrepared>;
+  helpLink: string;
   location: H.Location;
 }
 
-const HelpDropdown: React.FC<HelpDropdownProps> = ({
-  uiItems,
-  location,
-}) => {
+const HelpDropdown: React.FC<HelpDropdownProps> = ({ helpLink, location }) => {
   const isHome = React.useMemo(
     () => location.pathname === basePath,
     [location]
   );
 
-  const currentUiItem = React.useMemo(
-    () => uiItems.find(item => `${basePath}${item.id}` === `${location.pathname}`),
-    [location, uiItems]
-  );
-
-  const helpLink = React.useMemo(
-    () => currentUiItem && currentUiItem.helpPageURL,
-    [currentUiItem]
-  );
-
   const helpLinkTitle = React.useMemo(
-    () => currentUiItem && currentUiItem.title,
-    [currentUiItem]
+    () => {
+      const pathArr = location.pathname.split('/');
+      const lastElem = pathArr[pathArr.length - 1];
+      return lastElem.replace(/_/g, ' ');
+    },
+    [location]
   );
 
   return (

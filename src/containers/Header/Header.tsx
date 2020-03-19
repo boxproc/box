@@ -56,27 +56,29 @@ const Wrapper = styled.header`
 `;
 
 interface HeaderProps extends RouteComponentProps {
-  uiItems: Array<UiItemPrepared>;
-  institutions: ImmutableArray<InstitutionItem>;
   firstName: string;
-  lastName: string;
-  username: string;
-  getUiItems: HandleGetUiItems;
   getInstitutions: HandleGetInstitutions;
-  userLogout: HandleUserLogout;
+  getUiItems: HandleGetUiItems;
+  helpLink: string;
+  institutions: ImmutableArray<InstitutionItem>;
   isReadOnly: boolean;
+  lastName: string;
+  uiItems: Array<UiItemPrepared>;
+  userLogout: HandleUserLogout;
+  username: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
-  getUiItems,
   getInstitutions,
-  userLogout,
-  uiItems,
-  institutions,
+  getUiItems,
+  helpLink,
   history,
+  institutions,
+  isReadOnly,
   location,
   match,
-  isReadOnly,
+  uiItems,
+  userLogout,
 }) => {
   React.useEffect(
     () => {
@@ -133,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({
               <Box mr="7px" fontSize="0px">
                 <HelpDropdown
                   location={location}
-                  uiItems={uiItems}
+                  helpLink={helpLink}
                 />
               </Box>
               {institutionName && (

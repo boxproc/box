@@ -10,6 +10,7 @@ import {
   handleGetInstitutions,
   handleGetUiItems,
   handleUserLogout,
+  selectHelpLink,
   selectInstitutions,
   selectIsReadOnly,
   selectUiItems,
@@ -26,6 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
   uiItems: selectUiItems(state),
   institutions: selectInstitutions(state),
   isReadOnly: selectIsReadOnly(state),
+  helpLink: selectHelpLink(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
