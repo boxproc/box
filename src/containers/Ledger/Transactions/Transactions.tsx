@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { iconNamesConst, modalNamesConst, permissionTypesConst, uiItemsConst } from 'consts';
 
@@ -24,7 +25,7 @@ import { dateUtil } from 'utils';
 
 export interface TransactionsProps extends WithModalProps {
   currentId: number;
-  transactions: Array<LedgerTransactionItemPrepared>;
+  transactions: ImmutableArray<LedgerTransactionItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   uiItems: Array<UiItemPrepared>;
   filterCustomersById: HandleFilterLedgerCustomersById;

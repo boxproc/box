@@ -11,7 +11,7 @@ export const selectDefaultLedgerTransactions = (state: StoreState) =>
 
 export const selectLedgerTransactions = createSelector(
   selectDefaultLedgerTransactions,
-  items => items && items.asMutable().map(item => prepareValuesToRender(item))
+  items => items && items.map(item => prepareValuesToRender(item))
 );
 
 export const selectLedgerCurrentTransaction = createSelector(

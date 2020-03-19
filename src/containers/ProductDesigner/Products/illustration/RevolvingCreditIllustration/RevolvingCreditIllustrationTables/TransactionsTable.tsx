@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
 
@@ -131,7 +132,7 @@ const columns = [
 ];
 
 interface TransactionsTableProps {
-  data: Array<IllustrationProductTransactionsRevolvingCredit>;
+  data: ImmutableArray<IllustrationProductTransactionsRevolvingCredit>;
 }
 
 const TransactionsTable: React.FC<TransactionsTableProps> = ({ data }) => {

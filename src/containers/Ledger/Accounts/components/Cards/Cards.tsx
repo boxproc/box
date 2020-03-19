@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -15,7 +16,7 @@ import {
 interface AccountCardsProps {
   accountCurrentId: number;
   getAccountCards: HandleGetLedgerAccountCards;
-  accountCards: Array<LedgerAccountsCardsItemPrepared>;
+  accountCards: ImmutableArray<LedgerAccountsCardsItemPrepared>;
   orderAccountCard: HandleOrderLedgerAccountCard;
   isOrderingCard: boolean;
   onCancel: () => void;

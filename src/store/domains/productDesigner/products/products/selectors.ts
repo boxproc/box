@@ -19,7 +19,7 @@ export const selectDefaultProductItems = (state: StoreState) =>
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
   selectInstitutions,
-  (products, institutions) => products && products.asMutable().map(product => {
+  (products, institutions) => products && products.map(product => {
     if (!product) {
       return null;
     }
@@ -124,7 +124,7 @@ export const selectInstitutionProductsOptions = createSelector(
 
 export const selectInstitutionProducts = createSelector(
   selectDefaultInstitutionProducts,
-  products => products && products.asMutable().map(product => {
+  products => products && products.map(product => {
     return {
       id: product.id,
       name: product.name,

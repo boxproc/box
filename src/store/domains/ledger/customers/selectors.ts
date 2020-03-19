@@ -18,7 +18,7 @@ export const selectDefaultLedgerCustomers = (state: StoreState) =>
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareDataToRender(item, institution);
@@ -67,7 +67,7 @@ export const selectDefaultRepaymentDebitCards = (state: StoreState) =>
 
 export const selectRepaymentDebitCards = createSelector(
   selectDefaultRepaymentDebitCards,
-  items => items && items.asMutable().map(item => prepareRepaymentDebitCardsToRender(item))
+  items => items && items.map(item => prepareRepaymentDebitCardsToRender(item))
 );
 
 export const selectDefaultRepaymentDirectDebits = (state: StoreState) =>
@@ -75,5 +75,5 @@ export const selectDefaultRepaymentDirectDebits = (state: StoreState) =>
 
 export const selectRepaymentDirectDebits = createSelector(
   selectDefaultRepaymentDirectDebits,
-  items => items && items.asMutable().map(item => prepareRepaymentDirectDebitsToRender(item))
+  items => items && items.map(item => prepareRepaymentDirectDebitsToRender(item))
 );

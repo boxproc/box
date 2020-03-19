@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -19,7 +20,7 @@ import {
 import { SelectValue } from 'types';
 
 interface IllustrationProductProps {
-  productIllustrationData: Array<IllustrationProductLoan>;
+  productIllustrationData: ImmutableArray<IllustrationProductLoan>;
   loanProductsOptions: Array<SelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   convertTransactionToLoan: HandleConvertTransactionToLoan;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
+import { ImmutableArray } from 'seamless-immutable';
 
 import {
   ExternalSpinnerProps,
@@ -32,7 +33,7 @@ import { dateUtil } from 'utils';
 
 interface AccountFormProps extends ExternalSpinnerProps {
   institutionsOptions: Array<SelectValue>;
-  institutionProducts: Array<InstitutionProductsItemPrepared>;
+  institutionProducts: ImmutableArray<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   currentProduct: SelectValue;
   currentInstitution: SelectValue;

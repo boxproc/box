@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -46,7 +47,7 @@ const ArrowButtonWrapper = styled.div`
 type TCell<T extends keyof RepaymentHierarchy> = TableCellType<RepaymentHierarchy[T]>;
 
 interface RepaymentHierarchyTableProps {
-  data: Array<RepaymentHierarchy>;
+  data: ImmutableArray<RepaymentHierarchy>;
   getRepaymentHierarchy: HandleGetRepaymentHierarchy;
   updateRepaymentHierarchy: HandleUpdateRepaymentHierarchy;
   isReadOnly: boolean;

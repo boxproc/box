@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { modalNamesConst } from 'consts';
 
@@ -20,7 +21,7 @@ import { SelectValue } from 'types';
 
 export interface CardsProps {
   currentId: number;
-  cards: Array<LedgerCardItemPrepared>;
+  cards: ImmutableArray<LedgerCardItemPrepared>;
   filterCards: HandleFilterLedgerCards;
   institutionsOptions: Array<SelectValue>;
   filterCustomersById: HandleFilterLedgerCustomersById;

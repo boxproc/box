@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
@@ -16,7 +17,7 @@ import {
 import { SelectValue } from 'types';
 
 interface ProductsProps {
-  productItems: Array<ProductItem>;
+  productItems: ImmutableArray<ProductItem>;
   institutionsOptions: Array<SelectValue>;
   currentProductName: string;
   isLoading: boolean;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -26,9 +27,9 @@ const TablesWrapper = styled(Flex)`
 `;
 
 interface IllustrationProductFormProps {
-  transactionsData: Array<IllustrationProductTransactionsRevolvingCredit>;
-  aprsData: Array<IllustrationProductAprRevolvingCredit>;
-  statementsData: Array<IllustrationProductStatementsRevolvingCredit>;
+  transactionsData: ImmutableArray<IllustrationProductTransactionsRevolvingCredit>;
+  aprsData: ImmutableArray<IllustrationProductAprRevolvingCredit>;
+  statementsData: ImmutableArray<IllustrationProductStatementsRevolvingCredit>;
 }
 
 const RevolvingCreditIllustrationTables: React.FC<IllustrationProductFormProps> = ({

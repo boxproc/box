@@ -9,7 +9,7 @@ export const selectDefaultInstitutions = (state: StoreState) =>
 
 export const selectInstitutions = createSelector(
   selectDefaultInstitutions,
-  institutions => institutions && institutions.asMutable().map(institution => {
+  institutions => institutions && institutions.map(institution => {
     return {
       id: institution.id,
       institutionName: institution.institution_name,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -20,8 +21,8 @@ import {
 interface StatementModalProps extends WithModalProps {
   currentStatementId: number;
   currentStatement: LedgerStatementItemPrepared;
-  statementTransactions: Array<LedgerStatementTransactionsItemPrepared>;
-  statementAprs: Array<LedgerStatementAprItemPrepared>;
+  statementTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
+  statementAprs: ImmutableArray<LedgerStatementAprItemPrepared>;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
   getStatementAprs: HandleGetLedgerStatementAprs;
   generateTransactionsAprs: HandleGetLedgerStatementAprs;

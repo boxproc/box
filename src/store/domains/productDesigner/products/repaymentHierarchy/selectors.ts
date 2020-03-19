@@ -9,5 +9,5 @@ export const selectDefaultRepaymentHierarchy = (state: StoreState) =>
 
 export const selectRepaymentHierarchy = createSelector(
   selectDefaultRepaymentHierarchy,
-  items => items && items.asMutable().map(item => prepareRepaymentHierarchyToRender(item))
+  items => items && items.map(item => prepareRepaymentHierarchyToRender(item))
 );

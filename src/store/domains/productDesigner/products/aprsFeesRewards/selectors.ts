@@ -13,7 +13,7 @@ export const selectDefaultProductAprs = (state: StoreState) =>
 
 export const selectProductAprs = createSelector(
   selectDefaultProductAprs,
-  aprs => aprs && aprs.asMutable().map(apr => prepareProductAprsToRender(apr))
+  aprs => aprs && aprs.map(apr => prepareProductAprsToRender(apr))
 );
 
 export const selectProductAprsForRules = createSelector(
@@ -31,7 +31,7 @@ export const selectDefaultProductFees = (state: StoreState) =>
 
 export const selectProductFees = createSelector(
   selectDefaultProductFees,
-  fees => fees && fees.asMutable().map(fee => prepareProductFeesToRender(fee))
+  fees => fees && fees.map(fee => prepareProductFeesToRender(fee))
 );
 
 export const selectProductFeesForRules = createSelector(
@@ -49,7 +49,7 @@ export const selectDefaultProductRewards = (state: StoreState) =>
 
 export const selectProductRewards = createSelector(
   selectDefaultProductRewards,
-  rewards => rewards && rewards.asMutable().map(reward => prepareProductRewardsToRender(reward))
+  rewards => rewards && rewards.map(reward => prepareProductRewardsToRender(reward))
 );
 
 export const selectProductRewardsForRules = createSelector(

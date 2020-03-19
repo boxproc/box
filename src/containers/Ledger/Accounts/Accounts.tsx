@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { withModal, WithModalProps } from 'HOCs';
 
@@ -23,7 +24,7 @@ import {
 import { SelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {
-  accounts: Array<LedgerAccountItemPrepared>;
+  accounts: ImmutableArray<LedgerAccountItemPrepared>;
   filterAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
   institutionsOptions: Array<SelectValue>;

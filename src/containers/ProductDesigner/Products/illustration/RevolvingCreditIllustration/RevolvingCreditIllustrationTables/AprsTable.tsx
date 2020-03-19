@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
 
@@ -49,7 +50,7 @@ const columns = [
 ];
 
 interface IllustrationRevolvingCreditTableProps {
-  data: Array<IllustrationProductAprRevolvingCredit>;
+  data: ImmutableArray<IllustrationProductAprRevolvingCredit>;
 }
 
 const AprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({ data }) => {

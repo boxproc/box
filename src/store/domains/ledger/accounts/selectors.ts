@@ -19,7 +19,7 @@ export const selectDefaultLedgerAccounts = (state: StoreState) =>
 export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareDataToRender(item, institution);
@@ -30,7 +30,7 @@ export const selectDefaultLedgerAccountCards = (state: StoreState) => state.ledg
 
 export const selectLedgerAccountCards = createSelector(
   selectDefaultLedgerAccountCards,
-  items => items && items.asMutable().map(item => preparedAccountCardsToRender(item))
+  items => items && items.map(item => preparedAccountCardsToRender(item))
 );
 
 export const selectLedgerCurrentAccountProductType = createSelector(

@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
 
@@ -28,7 +29,7 @@ import { dateUtil } from 'utils';
 
 export interface StatementsProps {
   currentId: number;
-  statements: Array<LedgerStatementItemPrepared>;
+  statements: ImmutableArray<LedgerStatementItemPrepared>;
   institutionsOptions: Array<SelectValue>;
   filterStatements: HandleFilterLedgerStatements;
   filterCustomersById: HandleFilterLedgerCustomersById;

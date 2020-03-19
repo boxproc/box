@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -26,7 +27,7 @@ import { TableCellType } from 'types';
 type TCell<T extends keyof ProductReward> = TableCellType<ProductReward[T]>;
 
 interface RewardsTableProps {
-  productRewards: Array<ProductReward>;
+  productRewards: ImmutableArray<ProductReward>;
   getProductRewards: HandleGetProductRewards;
   deleteProductReward: HandleDeleteProductReward;
   updateProductReward: HandleUpdateProductReward;

@@ -20,7 +20,7 @@ export const selectActiveItemInfoForLogData = (state: StoreState) =>
 
 export const selectSystemMonitorInterfaces = createSelector(
   selectDefaultSystemMonitorInterfaces,
-  interfaces => interfaces && interfaces.interfaces_data.asMutable().map(item => {
+  interfaces => interfaces && interfaces.interfaces_data.map(item => {
     const status = statusOptions.find(el => el.value === item.interface_status);
 
     return {
@@ -51,7 +51,7 @@ export const selectSystemMonitorInterfacesCounts = createSelector(
 
 export const selectSystemMonitorEndpoints = createSelector(
   selectDefaultSystemMonitorEndpoints,
-  endpoints => endpoints && endpoints.endpoints_data.asMutable().map(item => {
+  endpoints => endpoints && endpoints.endpoints_data.map(item => {
     const status = statusOptions.find(el => el.value === item.endpoint_status);
 
     return {
@@ -82,7 +82,7 @@ export const selectSystemMonitorEndpointsCounts = createSelector(
 
 export const selectSystemMonitorScheduler = createSelector(
   selectDefaultSystemMonitorScheduler,
-  scheduler => scheduler && scheduler.scheduler_data.asMutable().map(item => {
+  scheduler => scheduler && scheduler.scheduler_data.map(item => {
     const status = schedulerStatusOptions.find(el => el.value === item.scheduler_status);
 
     return {
@@ -111,7 +111,7 @@ export const selectSystemMonitorSchedulerCounts = createSelector(
 
 export const selectSystemMonitorLastTransactions = createSelector(
   selectDefaultSystemMonitorLastTransactions,
-  transactions => transactions && transactions.asMutable().map(transaction => {
+  transactions => transactions && transactions.map(transaction => {
     return {
       institutionName: transaction && transaction.institution_name,
       institutionId: transaction && transaction.institution_id,

@@ -21,7 +21,7 @@ export const selectDefaultLedgerStatementTransactions = (state: StoreState) =>
 export const selectLedgerStatements = createSelector(
   selectDefaultLedgerStatements,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.asMutable().map(item => {
+  (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
     return prepareDataToRender(item, institution);
@@ -30,7 +30,7 @@ export const selectLedgerStatements = createSelector(
 
 export const selectLedgerStatementTransactions = createSelector(
   selectDefaultLedgerStatementTransactions,
-  items => items && items.asMutable().map(item => prepareTransactionsDataToRender(item))
+  items => items && items.map(item => prepareTransactionsDataToRender(item))
 );
 
 export const selectLedgerCurrentStatement = createSelector(
@@ -90,7 +90,7 @@ export const selectDefaultLedgerAccountStatements = (state: StoreState) =>
 
 export const selectLedgerAccountStatements = createSelector(
   selectDefaultLedgerAccountStatements,
-  statements => statements && statements.asMutable().map(statement =>
+  statements => statements && statements.map(statement =>
     prepareAccountStatementsDataToRender(statement)
   )
 );
@@ -111,7 +111,7 @@ export const selectDefaultLedgerStatementAprs = (state: StoreState) =>
 
 export const selectLedgerStatementAprs = createSelector(
   selectDefaultLedgerStatementAprs,
-  aprs => aprs && aprs.asMutable().map(apr => prepareStatementAprToRender(apr))
+  aprs => aprs && aprs.map(apr => prepareStatementAprToRender(apr))
 );
 
 export const selectLedgerStatementReportFileName = createSelector(

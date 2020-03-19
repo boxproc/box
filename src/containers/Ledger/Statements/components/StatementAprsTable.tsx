@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Table, TableCell, TableHeader } from 'components';
 
@@ -59,12 +60,10 @@ export const tableColumns = [
 ];
 
 interface StatementAprsTableProps {
-  data: Array<LedgerStatementAprItemPrepared>;
+  data: ImmutableArray<LedgerStatementAprItemPrepared>;
 }
 
-const StatementAprsTable: React.FC<StatementAprsTableProps> = ({
-  data,
-}) => {
+const StatementAprsTable: React.FC<StatementAprsTableProps> = ({ data }) => {
   return (
     <Table
       columns={tableColumns}

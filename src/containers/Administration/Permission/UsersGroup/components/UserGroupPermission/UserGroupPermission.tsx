@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
 
@@ -19,7 +20,7 @@ interface UsersGroupMembersProps {
   userGroupMemberId: number;
   getGroupPermission: HandleGetAdminGroupPermissions;
   deleteGroupPermission: HandleDeleteAdminGroupPermissions;
-  groupPermissions: Array<AdminGroupPermissionItem>;
+  groupPermissions: ImmutableArray<AdminGroupPermissionItem>;
   isReadOnly: boolean;
 }
 

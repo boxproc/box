@@ -9,7 +9,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   activeRowIndex?: number;
   className?: string;
   columns: Array<object>;
-  data: Array<object>;
+  data: any; // ImmutableArray<object>
   filterable?: boolean;
   isHeader?: boolean;
   isScrollbar?: boolean;

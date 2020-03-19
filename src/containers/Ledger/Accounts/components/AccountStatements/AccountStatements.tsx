@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 import { CellInfo, RowInfo } from 'react-table';
@@ -18,7 +19,7 @@ type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
   TableCellType<LedgerAccountStatementItemPrepared[T]>;
 
 interface AccountStatementsProps {
-  accountStatements: Array<LedgerAccountStatementItemPrepared>;
+  accountStatements: ImmutableArray<LedgerAccountStatementItemPrepared>;
   getAccountStatements: HandleGetLedgerAccountStatements;
   getStatementAprs: HandleGetLedgerStatementAprs;
   accountCurrentId: number;

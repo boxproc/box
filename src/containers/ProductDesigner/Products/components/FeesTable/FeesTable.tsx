@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -27,7 +28,7 @@ import { SelectValue, TableCellType } from 'types';
 type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
-  productFees: Array<ProductFee>;
+  productFees: ImmutableArray<ProductFee>;
   aprsOptions: Array<SelectValue>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;

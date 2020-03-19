@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -12,7 +13,7 @@ import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/
 import { LedgerStatementAprItemPrepared } from 'store';
 
 interface StatementAprsProps extends WithModalProps {
-  statementAprs: Array<LedgerStatementAprItemPrepared>;
+  statementAprs: ImmutableArray<LedgerStatementAprItemPrepared>;
   currentAccountAlias: string;
   currentStatementDate: string;
 }

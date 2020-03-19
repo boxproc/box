@@ -10,7 +10,7 @@ export const selectDefaultLedgerCards = (state: StoreState) => state.ledger.card
 
 export const selectLedgerCards = createSelector(
   selectDefaultLedgerCards,
-  items => items && items.asMutable().map(item => prepareValuesToRender(item))
+  items => items && items.map(item => prepareValuesToRender(item))
 );
 
 export const selectLedgerCardValues = createSelector(

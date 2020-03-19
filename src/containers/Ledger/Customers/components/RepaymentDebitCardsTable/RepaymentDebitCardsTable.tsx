@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
 
@@ -17,7 +18,7 @@ type TCell<T extends keyof RepaymentDebitCardsItemPrepared> =
   TableCellType<RepaymentDebitCardsItemPrepared[T]>;
 
 interface RepaymentDebitCardsTableProps {
-  repaymentDebitCards: Array<RepaymentDebitCardsItemPrepared>;
+  repaymentDebitCards: ImmutableArray<RepaymentDebitCardsItemPrepared>;
   getRepaymentDebitCards: HandleGetRepaymentDebitCards;
 }
 

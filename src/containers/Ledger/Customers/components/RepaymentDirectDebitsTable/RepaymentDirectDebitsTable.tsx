@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
 
@@ -9,10 +10,7 @@ import {
   withSpinner,
 } from 'components';
 
-import {
-  HandleGetRepaymentDirectDebits,
-  RepaymentDirectDebitsItemPrepared,
-} from 'store';
+import { HandleGetRepaymentDirectDebits, RepaymentDirectDebitsItemPrepared } from 'store';
 
 import { TableCellType } from 'types';
 
@@ -20,7 +18,7 @@ type TCell<T extends keyof RepaymentDirectDebitsItemPrepared> =
   TableCellType<RepaymentDirectDebitsItemPrepared[T]>;
 
 interface RepaymentDirectDebitsTableProps {
-  repaymentDirectDebits: Array<RepaymentDirectDebitsItemPrepared>;
+  repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItemPrepared>;
   getRepaymentDirectDebits: HandleGetRepaymentDirectDebits;
 }
 

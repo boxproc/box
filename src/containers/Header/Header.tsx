@@ -1,7 +1,8 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
-import { RouteComponentProps } from 'react-router';
 
 import styled from 'theme';
 
@@ -56,7 +57,7 @@ const Wrapper = styled.header`
 
 interface HeaderProps extends RouteComponentProps {
   uiItems: Array<UiItemPrepared>;
-  institutions: Array<InstitutionItem>;
+  institutions: ImmutableArray<InstitutionItem>;
   firstName: string;
   lastName: string;
   username: string;

@@ -13,9 +13,8 @@ export const selectDefaultRevolvingCreditIllustration = (state: StoreState) =>
 
 export const selectStatementsIllustration = createSelector(
   selectDefaultRevolvingCreditIllustration,
-  (revolvingCreditIllustration) =>
-    revolvingCreditIllustration &&
-    revolvingCreditIllustration.statements.asMutable().map(statement => {
+  (revolvingCreditIllustration) => revolvingCreditIllustration
+    && revolvingCreditIllustration.statements.map(statement => {
       if (!statement) {
         return null;
       }
@@ -26,9 +25,8 @@ export const selectStatementsIllustration = createSelector(
 
 export const selectAprsIllustration = createSelector(
   selectDefaultRevolvingCreditIllustration,
-  (revolvingCreditIllustration) =>
-    revolvingCreditIllustration && revolvingCreditIllustration.aprs &&
-    revolvingCreditIllustration.aprs.asMutable().map(apr => {
+  (revolvingCreditIllustration) => revolvingCreditIllustration && revolvingCreditIllustration.aprs
+    && revolvingCreditIllustration.aprs.map(apr => {
       if (!apr) {
         return null;
       }
@@ -39,9 +37,9 @@ export const selectAprsIllustration = createSelector(
 
 export const selectTransactionsIllustration = createSelector(
   selectDefaultRevolvingCreditIllustration,
-  (revolvingCreditIllustration) =>
-    revolvingCreditIllustration && revolvingCreditIllustration.transactions &&
-    revolvingCreditIllustration.transactions.asMutable().map(transaction => {
+  (revolvingCreditIllustration) => revolvingCreditIllustration
+    && revolvingCreditIllustration.transactions
+    && revolvingCreditIllustration.transactions.map(transaction => {
       if (!transaction) {
         return null;
       }
@@ -55,5 +53,5 @@ export const selectDefaultIllustrationLoan = (state: StoreState) =>
 
 export const selectProductLoanIllustration = createSelector(
   selectDefaultIllustrationLoan,
-  items => items && items.asMutable().map(item => prepareProductIllustrationData(item))
+  items => items && items.map(item => prepareProductIllustrationData(item))
 );

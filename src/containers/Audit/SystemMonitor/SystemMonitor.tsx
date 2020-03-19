@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -35,10 +36,10 @@ import {
 import { cookiesUtil } from 'utils';
 
 interface SystemMonitorProps extends RouteComponentProps {
-  interfacesData: Array<SystemMonitorItem>;
-  endpointsData: Array<SystemMonitorItem>;
-  schedulerData: Array<SystemMonitorSchedulerItem>;
-  lastTransactionsData: Array<SystemMonitorTransaction>;
+  interfacesData: ImmutableArray<SystemMonitorItem>;
+  endpointsData: ImmutableArray<SystemMonitorItem>;
+  schedulerData: ImmutableArray<SystemMonitorSchedulerItem>;
+  lastTransactionsData: ImmutableArray<SystemMonitorTransaction>;
   getLogData: HandleGetLogData;
   getSystemMonitorData: HandleGetSystemMonitorData;
   isLoadingInterfaces: boolean;

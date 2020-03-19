@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
 
@@ -113,12 +114,10 @@ const columns = [
 ];
 
 interface IllustrationLoanTableProps {
-  data: Array<IllustrationProductLoan>;
+  data: ImmutableArray<IllustrationProductLoan>;
 }
 
-const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({
-  data,
-}) => {
+const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ data }) => {
   return (
     <Box pb="10px">
       <Table

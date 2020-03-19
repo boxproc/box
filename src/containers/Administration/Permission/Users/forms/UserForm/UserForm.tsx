@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -27,7 +28,7 @@ import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
   institutionsOptions: Array<SelectValue>;
-  institutions: Array<InstitutionItem>;
+  institutions: ImmutableArray<InstitutionItem>;
   isEditMode?: boolean;
   requires2faFlagValue: boolean;
   statusValue: SelectValue;
