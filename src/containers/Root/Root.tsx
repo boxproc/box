@@ -42,13 +42,9 @@ const Root: React.FC<RootProps> = ({ visibleUiItemsList }) => {
 
   const routes = React.useMemo(
     () => {
-      if (!isLoggedIn || !pagesList || !visibleUiItemsList) {
-        return null;
-      }
-
       const preparedRoutes: Array<object> = [];
 
-      pagesList.forEach(page => {
+      isLoggedIn && visibleUiItemsList && pagesList.forEach(page => {
         if (visibleUiItemsList.includes(page.path)) {
           preparedRoutes.push(
             <PrivateRoute
