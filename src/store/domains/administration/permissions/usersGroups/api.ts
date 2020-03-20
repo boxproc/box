@@ -38,17 +38,11 @@ export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
 export const deleteAdminUserGroupMembers = (id: number, userId: number) =>
   apiClientService.delete(`/ui/administration/group/user/${userId}/${id}`);
 
-export const deleteAdminUserGroupPermissions =
-  (id: number, uiItem: string) =>
-    apiClientService.post('ui/administration/permissions/group_permissions/delete', {
-      data: {
-        user_group_id: id,
-        ui_item: uiItem,
-      },
-    });
+export const deleteAdminUserGroupPermissions = (id: number, uiItem: string) =>
+  apiClientService.delete(`ui/administration/permissions/${id}/${uiItem}`);
 
 export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
   apiClientService.post('/ui/administration/group/user', { data });
 
 export const addAdminGroupPermission = (data: Partial<AdminGroupPermissionRequest>) =>
-  apiClientService.post('ui/administration/permissions/group_permissions/create', { data });
+  apiClientService.post('ui/administration/permissions', { data });
