@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -7,7 +8,7 @@ import { DictionaryTransactionTypes, HandleGetDictionaryTransactionTypes } from 
 
 interface TransactionTypesProps {
   getTransactionTypes: HandleGetDictionaryTransactionTypes;
-  transactionTypes: Array<DictionaryTransactionTypes>;
+  transactionTypes: ImmutableArray<DictionaryTransactionTypes>;
   isLoading: boolean;
 }
 

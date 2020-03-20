@@ -13,7 +13,7 @@ export const selectDefaultDictionaryTransactionTypes = (state: StoreState) =>
 
 export const selectDictionaryTransactionTypes = createSelector(
   selectDefaultDictionaryTransactionTypes,
-  items => items && items.asMutable().map(item => {
+  items => items && items.map(item => {
     const debitCreditIndicator = debitCreditIndicatorOptions
       .find(el => el.value === item.debit_credit_indicator);
 
@@ -28,7 +28,7 @@ export const selectDictionaryTransactionTypes = createSelector(
 
 export const selectDictionaryTransactionTypesOptions = createSelector(
   selectDictionaryTransactionTypes,
-  items => items && items.map(item => {
+  items => items && items.asMutable().map(item => {
     return {
       value: item.id,
       label: `${item.debitCreditIndicator} - ${item.description}`,
@@ -43,7 +43,7 @@ export const selectDictionaryManualTransactionTypesOptions = createSelector(
       .filter(type => type.debitCreditIndicatorValue === debitCreditIndicatorConst.DEBIT
         || type.debitCreditIndicatorValue === debitCreditIndicatorConst.CREDIT);
 
-    return items && items.map(item => {
+    return items && items.asMutable().map(item => {
       return {
         value: item.id,
         label: `${item.description} - [${item.debitCreditIndicator}]`,
