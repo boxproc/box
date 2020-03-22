@@ -9,7 +9,7 @@ export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClientService.post('ui/administration/endpoints', { data });
 
 export const deleteAdminEndpoint = (id: number) =>
-  apiClientService.delete(`ui/administration/endpoints'${id}`);
+  apiClientService.delete(`ui/administration/endpoints/${id}`);
 
 export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
   apiClientService.put('ui/administration/endpoints', { data });
