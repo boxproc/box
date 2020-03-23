@@ -197,9 +197,10 @@ export const handleAddProduct: HandleAddProduct = data =>
           if (isAccessibleFiltering) {
             await dispatch(handleFilterProducts());
           }
-          dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
+
           dispatch(setActiveItemId(res.value.product_id));
           dispatch(openModal({ name: modalNamesConst.EDIT_PRODUCT }));
+          dispatch(closeModal(modalNamesConst.ADD_PRODUCT));
         }
       },
       dispatch

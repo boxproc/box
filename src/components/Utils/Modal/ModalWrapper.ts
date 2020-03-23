@@ -48,7 +48,7 @@ export const ModalWrapper = styled.div<ModalWrapperProps>`
   }
 
   ${({ containerWidth }) => containerWidth && `
-    @media only screen and (max-width: ${containerWidth + 20}px) {
+    @media only screen and (max-width: ${containerWidth}) {
       .modal-container-wrapper:after {
         display: none;
       }
