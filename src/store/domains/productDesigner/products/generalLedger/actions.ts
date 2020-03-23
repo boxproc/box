@@ -1,4 +1,5 @@
-import { handleFilterProducts } from '../products';
+import { selectActiveItemId } from 'store/domains/utils';
+import { getProduct } from './../products';
 import { ActionTypeKeys, UpdateGeneralLedgerAction } from './actionTypes';
 import * as api from './api';
 import { GeneralLedgerItem, GeneralLedgerItemPrepared } from './types';
@@ -17,13 +18,15 @@ export const updateGeneralLedger: UpdateGeneralLedger = data => ({
 });
 
 export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareGeneralLedgerToSend(data);
+        const state = getState();
+        const id = selectActiveItemId(state);
 
         await dispatch(updateGeneralLedger(preparedValues));
-        await dispatch(handleFilterProducts());
+        await dispatch(getProduct(id));
       },
       dispatch
     );

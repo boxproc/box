@@ -1,4 +1,5 @@
-import { handleFilterProducts } from '../products';
+import { selectActiveItemId } from 'store/domains/utils';
+import { getProduct } from './../products';
 import { ActionTypeKeys, UpdateProductAuxCountersAction } from './actionTypes';
 import * as api from './api';
 import { ProductAuxCountersItem, ProductAuxCountersItemPrepared } from './types';
@@ -19,13 +20,15 @@ export const updateProductAuxCounters: UpdateProductAuxCounters = data => ({
 });
 
 export const handleUpdateProductAuxCounters: HandleUpdateProductAuxCounters = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareAuxCountersToSend(data);
+        const state = getState();
+        const id = selectActiveItemId(state);
 
         await dispatch(updateProductAuxCounters(preparedValues));
-        await dispatch(handleFilterProducts());
+        await dispatch(getProduct(id));
       },
       dispatch
     );

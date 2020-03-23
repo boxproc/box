@@ -1,4 +1,5 @@
-import { handleFilterProducts } from '../products';
+import { selectActiveItemId } from 'store/domains/utils';
+import { getProduct } from './../products';
 import {
   ActionTypeKeys,
   GetEndpointsProductServiceAction,
@@ -63,13 +64,15 @@ export const handleGetProductServices: HandleGetProductServices = institutionId 
   };
 
 export const handleUpdateCardService: HandleUpdateCardService = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedValues = prepareCardServiceDataToSend(data);
+        const state = getState();
+        const id = selectActiveItemId(state);
 
         await dispatch(updateCardService(preparedValues));
-        await dispatch(handleFilterProducts());
+        await dispatch(getProduct(id));
       },
       dispatch
     );
