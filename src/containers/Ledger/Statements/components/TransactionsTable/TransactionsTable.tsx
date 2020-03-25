@@ -18,7 +18,7 @@ export const TransactionsTable: React.FC<TransactionsTableProps> = ({
       data={statementTransactions}
       columns={tableTransactionsColumns}
       isHeader={true}
-      pageSize={8}
+      pageSize={7}
       isSmaller={true}
     />
   );

@@ -61,7 +61,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       type={modalTypesConst.VIEWING}
       title="Statement"
       containerWidth="1010px"
-      minContainerHeight="500px"
+      minContainerHeight="600px"
     >
       <Tabs>
         <TabsPanel title="Totals">

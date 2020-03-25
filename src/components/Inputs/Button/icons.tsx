@@ -30,7 +30,7 @@ export const icons = {
   [iconNamesConst.DELETE]: <Box mt="-2px"><DeleteIcon size="18" /></Box>,
   [iconNamesConst.DOWNLOAD]: <Box mt="-1px" mr="2px"><DownloadIcon size="14" /></Box>,
   [iconNamesConst.FILE]: <Box mt="-1px" mr="2px"><FileIcon size="14" /></Box>,
-  [iconNamesConst.FILE_PDF]: <FilePdfIcon size="22" />,
+  [iconNamesConst.FILE_PDF]: <Box mt="-2px" mr="2px"><FilePdfIcon size="20" /></Box>,
   [iconNamesConst.FILTER]: <Box mt="-1px"><FilterIcon size="18" /></Box>,
   [iconNamesConst.KEY]: <Box mt="-1px" mr="2px"><KeyIcon size="12" /></Box>,
   [iconNamesConst.LOGOUT]: <Box mt="-1px" mr="1px"><LogOutIcon size="14" /></Box>,

@@ -18,8 +18,6 @@ export interface LedgerStatementItem {
   first_name: string;
   last_name: string;
   accrued_interest_total?: number;
-  accrued_fee_total?: number;
-  accrued_reward_total?: number;
   account_alias_additional: string;
   address_line1: string;
   address_line2: string;
@@ -49,8 +47,6 @@ export interface LedgerStatementItemPrepared {
   firstName: string;
   lastName: string;
   accruedInterestTotal?: string;
-  accruedFeeTotal?: string;
-  accruedRewardTotal?: string;
   accountAliasAdditional: string;
   addressLine1: string;
   addressLine2: string;

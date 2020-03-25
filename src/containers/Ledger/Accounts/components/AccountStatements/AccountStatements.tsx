@@ -142,31 +142,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         ),
       },
       {
-        maxWidth: 100,
-        Header: <TableHeader title="Fee" />,
-        accessor: 'accruedFeeTotal',
-        Cell: (props: TCell<'accruedFeeTotal'>) => (
-          <TableCell
-            isNumber={true}
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 100,
-        Header: <TableHeader title="Reward" />,
-        accessor: 'accruedRewardTotal',
-        Cell: (props: TableCellType<'accruedRewardTotal'>) => (
-          <TableCell
-            isNumber={true}
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 100,
+        maxWidth: 150,
         Header: <TableHeader title="Repayment Type" />,
         accessor: 'repaymentType',
         Cell: (props: TableCellType<'repaymentType'>) => (

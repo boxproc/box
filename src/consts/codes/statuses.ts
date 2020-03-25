@@ -99,16 +99,16 @@ export const hierarchyElemsStatusOptions = [
  */
 
 export enum repaymentStatusConst {
-  NOT_REPIED = 'N',
-  REPIED_IN_FULL = 'R',
-  REPIED_PARTIALLY = 'P',
+  NOT_REPAID = 'N',
+  REPAID_IN_FULL = 'R',
+  REPAID_PARTIALLY = 'P',
   OVERPAID = 'O',
 }
 
 export const repaymentStatusOptions = [
-  { value: repaymentStatusConst.NOT_REPIED, label: 'Not repaid' },
-  { value: repaymentStatusConst.REPIED_IN_FULL, label: 'Repied in full' },
-  { value: repaymentStatusConst.REPIED_PARTIALLY, label: 'Repied partially' },
+  { value: repaymentStatusConst.NOT_REPAID, label: 'Not repaid' },
+  { value: repaymentStatusConst.REPAID_IN_FULL, label: 'Repaid in full' },
+  { value: repaymentStatusConst.REPAID_PARTIALLY, label: 'Repaid partially' },
   { value: repaymentStatusConst.OVERPAID, label: 'Overpaid' },
 ];
 

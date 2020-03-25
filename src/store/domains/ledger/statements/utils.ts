@@ -165,8 +165,6 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
 
   const {
     accrued_interest_total,
-    accrued_fee_total,
-    accrued_reward_total,
     start_date,
     repayment_type,
   } = data;
@@ -176,8 +174,6 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
   return {
     ...prepareDataToRender(data),
     accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
-    accruedFeeTotal: stringsUtil.numberToFixed(accrued_fee_total, 5),
-    accruedRewardTotal: stringsUtil.numberToFixed(accrued_reward_total, 5),
     startDate: start_date,
     repaymentType: repaymentType && repaymentType.label,
   };
