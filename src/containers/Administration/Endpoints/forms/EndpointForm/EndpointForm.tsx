@@ -12,14 +12,14 @@ import { EndpointFields } from 'containers/Administration/Endpoints/components';
 import {
   HandleAddAdminEndpoint,
   HandleDeleteAdminEndpoint,
-  HandleGetDictionaryEndpointTypes,
-  HandleUpdateAdminEndpoint
+  HandleUpdateAdminEndpoint,
+  THandleGetDictionaryEndpointTypes
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EndpointFormProps extends ExternalSpinnerProps {
-  endpointTypesOptions: Array<SelectValue>;
+  endpointTypesOptions: Array<ISelectValue>;
   currentEndpointName: string;
   currentEndpointId: number;
   isReadOnly: boolean;
@@ -28,7 +28,7 @@ interface EndpointFormProps extends ExternalSpinnerProps {
   updateEndpoint: HandleUpdateAdminEndpoint;
   addEndpoint: HandleAddAdminEndpoint;
   deleteEndpoint: HandleDeleteAdminEndpoint;
-  getDictionaryEndpointTypes: HandleGetDictionaryEndpointTypes;
+  getDictionaryEndpointTypes: THandleGetDictionaryEndpointTypes;
   onCancel: () => void;
 }
 

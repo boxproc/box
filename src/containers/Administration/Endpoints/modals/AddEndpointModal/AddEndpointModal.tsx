@@ -7,10 +7,10 @@ import { modalNamesConst } from 'consts';
 
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface AddEndpointModalProps extends WithModalProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 

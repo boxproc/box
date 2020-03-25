@@ -8,7 +8,7 @@ import StatusForm from './StatusForm';
 
 import {
   createLoadingSelector,
-  DictionaryConstsActionTypes,
+  DictionaryActionTypes,
   handleChangeLedgerCardStatus,
   handleGetDictionaryCardStatuses,
   LedgerCardsActionTypes,
@@ -19,7 +19,7 @@ import {
 } from 'store';
 
 const loadingStatusesSelector = createLoadingSelector([
-  DictionaryConstsActionTypes.GET_DICTIONARY_CARD_STATUSES,
+  DictionaryActionTypes.GET_DICTIONARY_CARD_STATUSES,
 ]);
 
 const loadingSelector = createLoadingSelector([

@@ -1,6 +1,6 @@
 import { RepaymentHierarchyItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_REPAYMENT_HIERARCHY = 'productDesigner/products/GET_REPAYMENT_HIERARCHY',
@@ -25,7 +25,7 @@ export interface GetRepaymentHierarchyFulfilledAction {
 }
 
 export interface GetRepaymentHierarchyRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY_REJECTED;
 }
 
@@ -35,12 +35,12 @@ export interface UpdateRepaymentHierarchyAction {
 }
 
 export interface UpdateRepaymentHierarchyFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY_FULFILLED;
 }
 
 export interface UpdateRepaymentHierarchyRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY_REJECTED;
 }
 

@@ -20,27 +20,27 @@ import {
   PayloadManualTransactionModal,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactionTypesProps {
-  makeLedgerTransaction: HandleMakeLedgerTransaction;
-  makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  modalPayload: PayloadManualTransactionModal;
-  currenciesOptions: Array<SelectValue>;
+  currenciesOptions: Array<ISelectValue>;
   isLimitAdjustment: boolean;
+  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
+  makeTransaction: HandleMakeLedgerTransaction;
+  modalPayload: PayloadManualTransactionModal;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
 const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
-  makeLedgerTransaction,
-  makeLedgerLimitAdjustment,
-  manualTransactionTypesOptions,
-  limitAdjustmentTypeOptions,
-  isTransactionTypesLoading,
-  modalPayload,
-  isLimitAdjustment,
   closeModal,
   currenciesOptions,
+  isLimitAdjustment,
+  isTransTypesLoading,
+  limitAdjTypeOptions,
+  makeLimitAdjustment,
+  makeTransaction,
+  manualTransTypesOptions,
+  modalPayload,
 }) => {
   const modalTitle = React.useMemo(
     () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
@@ -48,8 +48,8 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   );
 
   const transactionTypes = React.useMemo(
-    () => isLimitAdjustment ? limitAdjustmentTypeOptions : manualTransactionTypesOptions,
-    [isLimitAdjustment, manualTransactionTypesOptions, limitAdjustmentTypeOptions]
+    () => isLimitAdjustment ? limitAdjTypeOptions : manualTransTypesOptions,
+    [isLimitAdjustment, manualTransTypesOptions, limitAdjTypeOptions]
   );
 
   const initialFormValues = React.useMemo(
@@ -115,14 +115,14 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         pageId={currentPath}
       />
       <ManualTransactionForm
-        makeLedgerTransaction={makeLedgerTransaction}
-        makeLedgerLimitAdjustment={makeLedgerLimitAdjustment}
+        makeTransaction={makeTransaction}
+        makeLimitAdjustment={makeLimitAdjustment}
         initialValues={initialFormValues}
         onCancel={handleOnCancel}
         isLimitAdjustment={isLimitAdjustment}
         transactionTypes={transactionTypes}
         isReadonly={isReadonlyId}
-        isTransactionTypesLoading={isTransactionTypesLoading}
+        isTransTypesLoading={isTransTypesLoading}
       />
     </Modal>
   );

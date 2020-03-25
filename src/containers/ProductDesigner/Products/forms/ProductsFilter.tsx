@@ -9,7 +9,7 @@ import { CheckboxField, SelectField } from 'components';
 
 import { productTypesOptions } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ProductWrapper = styled(Box)`
@@ -18,7 +18,7 @@ const ProductWrapper = styled(Box)`
 `;
 
 interface ProductsFilterProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 

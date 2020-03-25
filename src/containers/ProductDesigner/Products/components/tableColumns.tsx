@@ -4,9 +4,9 @@ import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from '
 
 import { ProductItem } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof ProductItem> = TableCellType<ProductItem[T]>;
+type TCell<T extends keyof ProductItem> = ITableCellType<ProductItem[T]>;
 
 export const tableColumns = [
   {

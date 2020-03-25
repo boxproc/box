@@ -1,4 +1,4 @@
-interface SelectValue {
+interface ISelectValue {
   value: string;
   label: string;
 }
@@ -15,33 +15,33 @@ export interface CronExpressionRadioTypes {
 }
 
 export interface CronValuesTypes extends CronExpressionRadioTypes {
-  cronSecondIncrementIncrement: SelectValue;
-  cronSecondIncrementStart: SelectValue;
-  cronSecondRangeStart: SelectValue;
-  cronSecondRangeEnd: SelectValue;
-  cronMinuteIncrementIncrement: SelectValue;
-  cronMinuteIncrementStart: SelectValue;
-  cronMinuteRangeStart: SelectValue;
-  cronMinuteRangeEnd: SelectValue;
-  cronHourIncrementIncrement: SelectValue;
-  cronHourIncrementStart: SelectValue;
-  cronHourRangeStart: SelectValue;
-  cronHourRangeEnd: SelectValue;
-  cronDowIncrementIncrement: SelectValue;
-  cronDowIncrementStart: SelectValue;
-  cronDomIncrementIncrement: SelectValue;
-  cronDomIncrementStart: SelectValue;
-  cronLastSpecificDomDay: SelectValue;
-  cronDaysNearestWeekday: SelectValue;
-  cronDaysBeforeEomMinus: SelectValue;
-  cronNthDayNth: SelectValue;
-  cronNthDayDay: SelectValue;
-  cronMonthIncrementIncrement: SelectValue;
-  cronMonthIncrementStart: SelectValue;
-  cronMonthRangeStart: SelectValue;
-  cronMonthRangeEnd: SelectValue;
-  cronYearIncrementIncrement: SelectValue;
-  cronYearIncrementStart: SelectValue;
-  cronYearRangeStart: SelectValue;
-  cronYearRangeEnd: SelectValue;
+  cronSecondIncrementIncrement: ISelectValue;
+  cronSecondIncrementStart: ISelectValue;
+  cronSecondRangeStart: ISelectValue;
+  cronSecondRangeEnd: ISelectValue;
+  cronMinuteIncrementIncrement: ISelectValue;
+  cronMinuteIncrementStart: ISelectValue;
+  cronMinuteRangeStart: ISelectValue;
+  cronMinuteRangeEnd: ISelectValue;
+  cronHourIncrementIncrement: ISelectValue;
+  cronHourIncrementStart: ISelectValue;
+  cronHourRangeStart: ISelectValue;
+  cronHourRangeEnd: ISelectValue;
+  cronDowIncrementIncrement: ISelectValue;
+  cronDowIncrementStart: ISelectValue;
+  cronDomIncrementIncrement: ISelectValue;
+  cronDomIncrementStart: ISelectValue;
+  cronLastSpecificDomDay: ISelectValue;
+  cronDaysNearestWeekday: ISelectValue;
+  cronDaysBeforeEomMinus: ISelectValue;
+  cronNthDayNth: ISelectValue;
+  cronNthDayDay: ISelectValue;
+  cronMonthIncrementIncrement: ISelectValue;
+  cronMonthIncrementStart: ISelectValue;
+  cronMonthRangeStart: ISelectValue;
+  cronMonthRangeEnd: ISelectValue;
+  cronYearIncrementIncrement: ISelectValue;
+  cronYearIncrementStart: ISelectValue;
+  cronYearRangeStart: ISelectValue;
+  cronYearRangeEnd: ISelectValue;
 }

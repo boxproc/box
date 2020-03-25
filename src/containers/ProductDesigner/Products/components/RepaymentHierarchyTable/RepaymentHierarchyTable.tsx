@@ -22,7 +22,7 @@ import {
   RepaymentHierarchy,
 } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 const ArrowButtonWrapper = styled.div`
   position: relative;
@@ -44,7 +44,7 @@ const ArrowButtonWrapper = styled.div`
   }
 `;
 
-type TCell<T extends keyof RepaymentHierarchy> = TableCellType<RepaymentHierarchy[T]>;
+type TCell<T extends keyof RepaymentHierarchy> = ITableCellType<RepaymentHierarchy[T]>;
 
 interface RepaymentHierarchyTableProps {
   data: ImmutableArray<RepaymentHierarchy>;

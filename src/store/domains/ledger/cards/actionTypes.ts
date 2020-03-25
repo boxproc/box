@@ -1,4 +1,4 @@
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 import { LedgerCardItems } from './types';
 
 export enum ActionTypeKeys {
@@ -32,7 +32,7 @@ export interface FilterLedgerCardsFulfilledAction {
 }
 
 export interface FilterLedgerCardsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_REJECTED;
 }
 
@@ -42,12 +42,12 @@ export interface ActivateLedgerCardAction {
 }
 
 export interface ActivateLedgerCardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD_FULFILLED;
 }
 
 export interface ActivateLedgerCardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD_REJECTED;
 }
 
@@ -57,12 +57,12 @@ export interface ChangeLedgerCardStatusAction {
 }
 
 export interface ChangeLedgerCardStatusFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_FULFILLED;
 }
 
 export interface ChangeLedgerCardStatusRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_REJECTED;
 }
 
@@ -77,7 +77,7 @@ export interface FilterLedgerCardsByIdFulfilledAction {
 }
 
 export interface FilterLedgerCardsByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_REJECTED;
 }
 

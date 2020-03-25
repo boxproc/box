@@ -4,25 +4,20 @@ import { bindActionCreators, Dispatch } from 'redux';
 import TransactionTypes from './TransactionTypes';
 
 import {
-  createLoadingSelector,
-  DictionaryTransactionTypesActionTypes,
   handleGetDictionaryTransactionTypes,
-  selectDictionaryTransactionTypes,
+  selectDictionaryTransTypes,
+  selectIsTransTypesLoading,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  DictionaryTransactionTypesActionTypes.GET_DICTIONARY_TRANSACTION_TYPES,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  transactionTypes: selectDictionaryTransactionTypes(state),
+  isLoading: selectIsTransTypesLoading(state),
+  transactionTypesData: selectDictionaryTransTypes(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getTransactionTypes: handleGetDictionaryTransactionTypes,
+    getTransactionTypesData: handleGetDictionaryTransactionTypes,
   },
   dispatch
 );

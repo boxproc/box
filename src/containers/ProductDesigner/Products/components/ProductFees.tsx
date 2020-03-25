@@ -7,7 +7,7 @@ import { Button, InputField, NumberFormatField, SelectField } from 'components';
 
 import { feeTypesOptions, iconNamesConst } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const numberFieldsValidators = [
@@ -23,7 +23,7 @@ interface ProductFeesProps {
   isOnlyAmount: boolean;
   isOnlyRate: boolean;
   pristine: boolean;
-  aprsOptions: Array<SelectValue>;
+  aprsOptions: Array<ISelectValue>;
 }
 
 const ProductFees: React.FC<ProductFeesProps> = ({

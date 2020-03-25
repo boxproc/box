@@ -1,6 +1,6 @@
 import { AuditScheduledJobsItems } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   FILTER_AUDIT_SCHEDULED_JOBS = 'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS',
@@ -28,7 +28,7 @@ export interface FilterScheduledJobsFulfilledAction {
 }
 
 export interface FilterScheduledJobsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_REJECTED;
 }
 
@@ -43,7 +43,7 @@ export interface FilterScheduledJobsByIdFulfilledAction {
 }
 
 export interface FilterScheduledJobsByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_REJECTED;
 }
 

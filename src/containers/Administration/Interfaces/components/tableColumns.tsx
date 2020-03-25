@@ -4,10 +4,10 @@ import { TableCell, TableHeader } from 'components';
 
 import { AdminInterfaceItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof AdminInterfaceItemPrepared> =
-  TableCellType<AdminInterfaceItemPrepared[T]>;
+  ITableCellType<AdminInterfaceItemPrepared[T]>;
 
 export const tableColumns = [
   {

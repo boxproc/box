@@ -13,31 +13,28 @@ import {
   statusOptions,
 } from 'consts';
 
-import {
-  HandleGetDictionaryCurrencies,
-  HandleGetDictionaryStatementCycleTypes,
-} from 'store';
+import { THandleGetDictionaryCurrencies, THandleGetDictionaryStatementCycleTypes } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface ProductGeneralInfoProps {
+  currenciesOptions: Array<ISelectValue>;
+  getCurrencyCodes: THandleGetDictionaryCurrencies;
+  getStatementCycleTypes: THandleGetDictionaryStatementCycleTypes;
+  institutionsOptions: Array<ISelectValue>;
+  isCurrenciesLoading: boolean;
   isEditMode?: boolean;
-  institutionsOptions: Array<SelectValue>;
   isReadOnly: boolean;
-  statementCycleTypesOptions: Array<SelectValue>;
-  getStatementCycleTypes: HandleGetDictionaryStatementCycleTypes;
   isStatementCycleTypesLoading: boolean;
-  currencyCodesOptions: Array<SelectValue>;
-  getCurrencyCodes: HandleGetDictionaryCurrencies;
-  isCurrencyCodesLoading: boolean;
-  statementCycleTypeValue: SelectValue;
+  statementCycleTypesOptions: Array<ISelectValue>;
+  statementCycleTypeValue: ISelectValue;
 }
 
 const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
-  currencyCodesOptions,
-  isCurrencyCodesLoading,
+  currenciesOptions,
+  isCurrenciesLoading,
   getCurrencyCodes,
   isEditMode = false,
   institutionsOptions,
@@ -202,8 +199,8 @@ const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
             component={SelectField}
             label="Currency Code"
             placeholder="Select Currency Code"
-            options={currencyCodesOptions}
-            isLoading={isCurrencyCodesLoading}
+            options={currenciesOptions}
+            isLoading={isCurrenciesLoading}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />

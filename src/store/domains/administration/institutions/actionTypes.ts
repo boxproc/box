@@ -1,6 +1,6 @@
 import { AdminInstitutionsItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_INSTITUTIONS = 'administration/institutions/GET_ADMIN_INSTITUTIONS',
@@ -37,7 +37,7 @@ export interface GetAdminInstitutionsFulfilledAction {
 }
 
 export interface GetAdminInstitutionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS_REJECTED;
 }
 
@@ -47,7 +47,7 @@ export interface DeleteAdminInstitutionAction {
 }
 
 export interface DeleteAdminInstitutionFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION_FULFILLED;
   readonly meta: {
     id: number;
@@ -55,7 +55,7 @@ export interface DeleteAdminInstitutionFulfilledAction {
 }
 
 export interface DeleteAdminInstitutionRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION_REJECTED;
 }
 
@@ -65,12 +65,12 @@ export interface AddAdminInstitutionAction {
 }
 
 export interface AddAdminInstitutionFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_INSTITUTION_FULFILLED;
 }
 
 export interface AddAdminInstitutionRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_INSTITUTION_REJECTED;
 }
 
@@ -80,12 +80,12 @@ export interface UpdateAdminInstitutionAction {
 }
 
 export interface UpdateAdminInstitutionFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION_FULFILLED;
 }
 
 export interface UpdateAdminInstitutionRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION_REJECTED;
 }
 

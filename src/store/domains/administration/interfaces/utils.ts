@@ -5,7 +5,7 @@ import {
   AdminInterfaceItemDetailsPrepared,
 } from './types';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export const preparedFilterToSend = (data: Partial<AdminInterfaceFilter>) => {
   if (!data) {
@@ -41,7 +41,7 @@ export const preparedDataToSend = (data: Partial<AdminInterfaceItemDetailsPrepar
 
 export const preparedDataToRender = (
   data: Partial<AdminInterfaceItem>,
-  institution?: SelectValue
+  institution?: ISelectValue
 ) => {
   if (!data) {
     return null;

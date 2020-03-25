@@ -24,13 +24,13 @@ import {
   SetActiveItemId,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 export interface StatementsProps {
   currentId: number;
   statements: ImmutableArray<LedgerStatementItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   filterStatements: HandleFilterLedgerStatements;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;

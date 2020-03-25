@@ -27,13 +27,13 @@ import {
   OpenModal,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface SchedulerFormProps {
   defineAdminSchedulerJob?: HandleAddAdminSchedulerJob | HandleUpdateAdminSchedulerJob;
-  institutionsOptions?: Array<SelectValue>;
+  institutionsOptions?: Array<ISelectValue>;
   isDisabledStatus?: boolean;
   onCancel?: () => void;
   deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;

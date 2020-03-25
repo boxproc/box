@@ -2,7 +2,7 @@ import {
   InstitutionsDataResp,
 } from './types';
 
-import { ApiResponse, } from 'types';
+import { TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
   GET_INSTITUTIONS = 'institutions/GET_INSTITUTIONS',
@@ -21,7 +21,7 @@ export interface GetInstitutionsFulfilledAction {
 }
 
 export interface GetInstitutionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_INSTITUTIONS_REJECTED;
 }
 

@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface LedgerManualTransactionRequest {
   transaction_type_id: number | string;
@@ -11,8 +11,8 @@ export interface LedgerManualTransactionRequest {
 }
 
 export interface LedgerManualTransactionFromData {
-  transactionType: SelectValue;
-  currencyCode: SelectValue;
+  transactionType: ISelectValue;
+  currencyCode: ISelectValue;
   accountId: string;
   amount: string;
   description: string;

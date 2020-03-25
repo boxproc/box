@@ -14,7 +14,7 @@ import {
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
   selectActiveItemId,
-  selectCountryCodesOptions,
+  selectCountriesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
   StoreState,
@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
   currentCustomerName: selectLedgerCurrentCustomerName(state),
-  countryCodes: selectCountryCodesOptions(state),
+  countryCodes: selectCountriesOptions(state),
   currentId: selectActiveItemId(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
 });

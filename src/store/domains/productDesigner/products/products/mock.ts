@@ -5,7 +5,7 @@ import {
   ProductsDataResp,
 } from './types';
 
-import { ResponseStatusType } from 'types';
+import { IResponseStatus } from 'types';
 
 export const productData: ProductDataResp = {
   product: {
@@ -123,7 +123,7 @@ export const institutionProducts: InstitutionProducts = {
   ],
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

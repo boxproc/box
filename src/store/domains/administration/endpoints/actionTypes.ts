@@ -1,6 +1,6 @@
 import { AdminEndpointItems, AdminEndpointNameItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_ENDPOINT = 'administration/endpoints/ADD_ADMIN_ENDPOINT',
@@ -34,12 +34,12 @@ export interface AddAdminEndpointAction {
 }
 
 export interface AddAdminEndpointFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_ENDPOINT_FULFILLED;
 }
 
 export interface AddAdminEndpointRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_ENDPOINT_REJECTED;
 }
 
@@ -49,13 +49,13 @@ export interface DeleteAdminEndpointAction {
 }
 
 export interface DeleteAdminEndpointFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_ENDPOINT_FULFILLED;
   meta: { id: number };
 }
 
 export interface DeleteAdminEndpointRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_ENDPOINT_REJECTED;
 }
 
@@ -65,12 +65,12 @@ export interface UpdateAdminEndpointAction {
 }
 
 export interface UpdateAdminEndpointFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_ENDPOINT_FULFILLED;
 }
 
 export interface UpdateAdminEndpointRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_ENDPOINT_REJECTED;
 }
 
@@ -85,7 +85,7 @@ export interface FilterAdminEndpointsFulfilledAction {
 }
 
 export interface FilterAdminEndpointsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_ENDPOINTS_REJECTED;
 }
 export interface GetEndpointsByInstitutionIdAction {
@@ -99,7 +99,7 @@ export interface GetEndpointsByInstitutionIdFulfilledAction {
 }
 
 export interface GetEndpointsByInstitutionIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ENDPOINTS_BY_INSTITUTION_ID_REJECTED;
 }
 

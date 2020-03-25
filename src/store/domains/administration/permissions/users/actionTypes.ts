@@ -1,6 +1,6 @@
 import { AdminUserDataResp } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   ADD_ADMIN_USER = 'administration/permissions/users/ADD_ADMIN_USER',
@@ -30,12 +30,12 @@ export interface AddAdminUserAction {
 }
 
 export interface AddAdminUserFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_USER_FULFILLED;
 }
 
 export interface AddAdminUserRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_USER_REJECTED;
 }
 
@@ -50,7 +50,7 @@ export interface FilterUsersFulfilledAction {
 }
 
 export interface FilterUsersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_USERS_REJECTED;
 }
 
@@ -60,12 +60,12 @@ export interface UpdateAdminUserAction {
 }
 
 export interface UpdateAdminUserFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_FULFILLED;
 }
 
 export interface UpdateAdminUserRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_REJECTED;
 }
 
@@ -80,7 +80,7 @@ export interface GetAccessUsersFulfilledAction {
 }
 
 export interface GetAccessUsersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_REJECTED;
 }
 

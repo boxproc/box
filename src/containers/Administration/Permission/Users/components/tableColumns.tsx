@@ -4,9 +4,9 @@ import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
 import { AdminUserItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminUserItemPrepared> = TableCellType<AdminUserItemPrepared[T]>;
+type TCell<T extends keyof AdminUserItemPrepared> = ITableCellType<AdminUserItemPrepared[T]>;
 
 export const tableColumns = [
   {

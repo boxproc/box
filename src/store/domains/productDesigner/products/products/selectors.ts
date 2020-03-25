@@ -4,7 +4,7 @@ import { productTypesConst } from 'consts';
 
 import { StoreState } from 'store';
 
-import { selectCurrencyCodesOptions } from 'store/domains/administration';
+import { selectCurrenciesOptions } from 'store/domains/administration';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
@@ -37,7 +37,7 @@ export const selectDefaultCurrentProduct = (state: StoreState) =>
 export const selectCurrentProduct = createSelector(
   selectDefaultCurrentProduct,
   selectInstitutionsOptions,
-  selectCurrencyCodesOptions,
+  selectCurrenciesOptions,
   (product, institutions, currencyCodes) => {
     if (!product) {
       return null;

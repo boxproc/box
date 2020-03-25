@@ -12,7 +12,7 @@ import {
   AdminSchedulerJobActionPrepared
 } from './types';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export const prepareValuesToSend = (values: Partial<AdminSchedulerEditableItem>) => {
   return {
@@ -38,7 +38,7 @@ export const prepareValuesToSendActions =
     };
   };
 
-export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: SelectValue) => {
+export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: ISelectValue) => {
   if (!item) {
     return null;
   }

@@ -1,7 +1,7 @@
 import { statusConst, userStatusWith2faOptions, yesNoConst } from 'consts';
 import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) => {
   if (!data) {
@@ -43,7 +43,7 @@ export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) 
 
 export const prepareAdminUserDataToRender = (
   data: Partial<AdminUserItem>,
-  institution?: SelectValue
+  institution?: ISelectValue
 ) => {
   if (!data) {
     return null;

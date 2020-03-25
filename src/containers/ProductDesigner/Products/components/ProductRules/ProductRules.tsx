@@ -12,13 +12,13 @@ import { codeSnippetsContextMenuItems } from './codeSnippetsContextMenuItems';
 import { eventTypesCodeKeys } from 'consts';
 
 import {
-  HandleFilterDictionaryEventDataElemsById,
-  HandleGetDictionaryEvents,
-  HandleGetDictionaryTransactionTypes,
   HandleGetProductAprsFeesRewards,
+  THandleFilterDictionaryEventDataElemsById,
+  THandleGetDictionaryEvents,
+  THandleGetDictionaryTransactionTypes,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ScriptWrapper = styled.div`
@@ -55,27 +55,27 @@ interface ContextItemProps {
 }
 
 interface ProductRulesProps {
-  filterDictionaryEventDataElemsById: HandleFilterDictionaryEventDataElemsById;
-  getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
-  getEvents: HandleGetDictionaryEvents;
-  getTransactionTypes: HandleGetDictionaryTransactionTypes;
+  actionTypesOptions: Array<ISelectValue>;
+  changeFormField: (field: string, value: string | ISelectValue) => void;
+  dirty: boolean;
   eventDataElemsItems: ImmutableArray<ContextItemProps>;
+  eventsOptions: Array<ISelectValue>;
+  eventValue: ISelectValue;
+  filterDictionaryEventDataElemsById: THandleFilterDictionaryEventDataElemsById;
+  getEvents: THandleGetDictionaryEvents;
+  getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
+  getTransactionTypes: THandleGetDictionaryTransactionTypes;
+  handleGetRule: (field: string, value: string | ISelectValue) => void;
+  initialActionType: string | number;
+  isEventsLoading: boolean;
+  isLoading: boolean;
+  isReadOnly: boolean;
+  onChangeValues: () => void;
   productAprsItems: ImmutableArray<ContextItemProps>;
   productFeesItems: ImmutableArray<ContextItemProps>;
   productRewardsItems: ImmutableArray<ContextItemProps>;
-  transactionTypesItems: ImmutableArray<ContextItemProps>;
-  actionTypesOptions: Array<SelectValue>;
-  eventsOptions: Array<SelectValue>;
-  eventValue: SelectValue;
-  initialActionType: string | number;
-  isLoading: boolean;
-  isReadOnly: boolean;
-  dirty: boolean;
   scriptValue: string;
-  isEventsLoading: boolean;
-  onChangeValues: () => void;
-  changeFormField: (field: string, value: string | SelectValue) => void;
-  handleGetRule: (field: string, value: string | SelectValue) => void;
+  transactionTypesItems: ImmutableArray<ContextItemProps>;
 }
 
 const getNewCode = (element: string) => {

@@ -8,7 +8,7 @@ import {
   ProductRewardsIds,
 } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_PRODUCT_FEE_APR = 'productDesigner/products/GET_PRODUCT_FEE_APR',
@@ -75,7 +75,7 @@ export interface GetProductAprsFulfilledAction {
 }
 
 export interface GetProductAprsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS_REJECTED;
 }
 
@@ -90,7 +90,7 @@ export interface GetProductFeeAprsFulfilledAction {
 }
 
 export interface GetProductFeeAprsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_REJECTED;
 }
 
@@ -100,12 +100,12 @@ export interface AddProductAprAction {
 }
 
 export interface AddProductAprFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR_FULFILLED;
 }
 
 export interface AddProductAprRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR_REJECTED;
 }
 
@@ -115,12 +115,12 @@ export interface UpdateProductAprAction {
 }
 
 export interface UpdateProductAprFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_FULFILLED;
 }
 
 export interface UpdateProductAprRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_REJECTED;
 }
 
@@ -130,13 +130,13 @@ export interface DeleteProductAprAction {
 }
 
 export interface DeleteProductAprFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED;
   readonly meta: { data: ProductAprIds };
 }
 
 export interface DeleteProductAprRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_REJECTED;
 }
 
@@ -151,7 +151,7 @@ export interface GetProductFeesFulfilledAction {
 }
 
 export interface GetProductFeesRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEES_REJECTED;
 }
 
@@ -161,12 +161,12 @@ export interface AddProductFeeAction {
 }
 
 export interface AddProductFeeFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_FULFILLED;
 }
 
 export interface AddProductFeeRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_REJECTED;
 }
 
@@ -176,12 +176,12 @@ export interface UpdateProductFeeAction {
 }
 
 export interface UpdateProductFeeFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_FULFILLED;
 }
 
 export interface UpdateProductFeeRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_REJECTED;
 }
 
@@ -191,13 +191,13 @@ export interface DeleteProductFeeAction {
 }
 
 export interface DeleteProductFeeFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_FULFILLED;
   readonly meta: { data: ProductFeesIds };
 }
 
 export interface DeleteProductFeeRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_REJECTED;
 }
 
@@ -212,7 +212,7 @@ export interface GetProductRewardsFulfilledAction {
 }
 
 export interface GetProductRewardsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_REJECTED;
 }
 
@@ -222,12 +222,12 @@ export interface AddProductRewardAction {
 }
 
 export interface AddProductRewardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_FULFILLED;
 }
 
 export interface AddProductRewardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_REJECTED;
 }
 
@@ -237,12 +237,12 @@ export interface UpdateProductRewardAction {
 }
 
 export interface UpdateProductRewardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_FULFILLED;
 }
 
 export interface UpdateProductRewardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_REJECTED;
 }
 
@@ -252,13 +252,13 @@ export interface DeleteProductRewardAction {
 }
 
 export interface DeleteProductRewardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_FULFILLED;
   readonly meta: { data: ProductRewardsIds };
 }
 
 export interface DeleteProductRewardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_REJECTED;
 }
 

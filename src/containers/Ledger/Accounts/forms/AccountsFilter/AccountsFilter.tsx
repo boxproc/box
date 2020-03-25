@@ -9,18 +9,18 @@ import { formNamesConst } from 'consts';
 
 import { HandleGetInstitutionProducts } from 'store';
 
-import { ChangeFieldValue, SelectValue } from 'types';
+import { ISelectValue, TChangeFieldValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface AccountsFilterProps {
-  institutionsOptions: Array<SelectValue>;
-  getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: SelectValue;
   accountAliasValue: string;
-  institutionProductsOptions: Array<SelectValue>;
-  isLoadingInstitutionProducts: boolean;
+  filterChange: TChangeFieldValue;
+  getInstitutionProducts: HandleGetInstitutionProducts;
+  institutionProductsOptions: Array<ISelectValue>;
+  institutionsOptions: Array<ISelectValue>;
+  institutionValue: ISelectValue;
   isDisabled: boolean;
-  filterChange: ChangeFieldValue;
+  isLoadingInstitutionProducts: boolean;
 }
 
 const AccountsFilter: React.FC<AccountsFilterProps> = ({

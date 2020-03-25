@@ -18,10 +18,10 @@ import {
   ResetCustomers,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface CustomersProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   customers: ImmutableArray<LedgerCustomerItemPrepared>;
   filterCustomers: HandleFilterLedgerCustomers;
   deleteCustomer: HandleDeleteLedgerCustomer;

@@ -15,10 +15,10 @@ import { CronFields } from './CronFields';
 import { cronExpressionGenerator } from './cronExpressionGenerator';
 import { CronExpressionRadioTypes, CronValuesTypes } from './cronExpressionTypes';
 
-import { ChangeFieldValue } from 'types';
+import { TChangeFieldValue } from 'types';
 
 interface GenerateCronExpressionModalProps extends WithModalProps {
-  changeFormValue: ChangeFieldValue;
+  changeFormValue: TChangeFieldValue;
   formValues: Partial<CronValuesTypes>;
   cronRadioValues: CronExpressionRadioTypes;
 }

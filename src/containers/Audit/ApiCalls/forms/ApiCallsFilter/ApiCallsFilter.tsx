@@ -9,14 +9,14 @@ import { dateFormatConst, maskFormatConst } from 'consts';
 
 import { HandleGetEndpointsByInstitutionId } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ApiCallsFilterProps {
   getEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId;
-  institutionValue: SelectValue;
-  institutionsOptions: Array<SelectValue>;
-  endpointsOptions: Array<SelectValue>;
+  institutionValue: ISelectValue;
+  institutionsOptions: Array<ISelectValue>;
+  endpointsOptions: Array<ISelectValue>;
   isLoadingEndpoints: boolean;
   isDisabled: boolean;
 }

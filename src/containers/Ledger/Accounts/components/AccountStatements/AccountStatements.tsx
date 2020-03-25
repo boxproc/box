@@ -13,10 +13,10 @@ import {
   HandleGetLedgerStatementAprs,
   LedgerAccountStatementItemPrepared,
 } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
-  TableCellType<LedgerAccountStatementItemPrepared[T]>;
+  ITableCellType<LedgerAccountStatementItemPrepared[T]>;
 
 interface AccountStatementsProps {
   accountStatements: ImmutableArray<LedgerAccountStatementItemPrepared>;
@@ -74,7 +74,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         maxWidth: 80,
         Header: <TableHeader title="Start Date" />,
         accessor: 'startDate',
-        Cell: (props: TableCellType<'startDate'>) => (
+        Cell: (props: ITableCellType<'startDate'>) => (
           <TableCell
             value={props.value}
             isDate={true}
@@ -145,7 +145,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         maxWidth: 150,
         Header: <TableHeader title="Repayment Type" />,
         accessor: 'repaymentType',
-        Cell: (props: TableCellType<'repaymentType'>) => (
+        Cell: (props: ITableCellType<'repaymentType'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}

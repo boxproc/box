@@ -23,13 +23,13 @@ import {
   ProductFee,
 } from 'store';
 
-import { SelectValue, TableCellType } from 'types';
+import { ISelectValue, ITableCellType } from 'types';
 
-type TCell<T extends keyof ProductFee> = TableCellType<ProductFee[T]>;
+type TCell<T extends keyof ProductFee> = ITableCellType<ProductFee[T]>;
 
 interface FeesTableProps {
   productFees: ImmutableArray<ProductFee>;
-  aprsOptions: Array<SelectValue>;
+  aprsOptions: Array<ISelectValue>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;
   deleteProductFee: HandleDeleteProductFee;

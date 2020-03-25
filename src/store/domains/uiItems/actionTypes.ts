@@ -1,6 +1,6 @@
 import { HelpLinkResp, UiItems } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_UI_ITEMS = 'uiItems/GET_UI_ITEMS',
@@ -23,7 +23,7 @@ export interface GetUiItemsFulfilledAction {
 }
 
 export interface GetUiItemsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_UI_ITEMS_REJECTED;
 }
 
@@ -38,7 +38,7 @@ export interface GetHelpLinkFulfilledAction {
 }
 
 export interface GetHelpLinkRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_HELP_LINK_REJECTED;
 }
 

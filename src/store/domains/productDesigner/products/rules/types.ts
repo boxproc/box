@@ -1,4 +1,4 @@
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface ProductRulesItemResp {
   event_id: string | number;
@@ -12,8 +12,8 @@ export interface ProductRuleResp {
 }
 
 export interface ProductRulesItem {
-  eventId: SelectValue;
-  actionType: SelectValue;
+  eventId: ISelectValue;
+  actionType: ISelectValue;
   script: string;
   productId: number;
 }

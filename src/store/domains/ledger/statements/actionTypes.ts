@@ -1,4 +1,4 @@
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 import {
   LedgerAccountStatementItems,
   LedgerStatementAprItems,
@@ -47,7 +47,7 @@ export interface FilterLedgerStatementsFulfilledAction {
 }
 
 export interface FilterLedgerStatementsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS_REJECTED;
 }
 export interface GetLedgerStatementTransactionsAction {
@@ -61,7 +61,7 @@ export interface GetLedgerStatementTransactionsFulfilledAction {
 }
 
 export interface GetLedgerStatementTransactionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_TRANSACTIONS_REJECTED;
 }
 export interface FilterLedgerStatementsByIdAction {
@@ -75,7 +75,7 @@ export interface FilterLedgerStatementsByIdFulfilledAction {
 }
 
 export interface FilterLedgerStatementsByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS_BY_ID_REJECTED;
 }
 
@@ -90,7 +90,7 @@ export interface GetLedgerAccountStatementsFulfilledAction {
 }
 
 export interface GetLedgerAccountStatementsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS_REJECTED;
 }
 
@@ -105,7 +105,7 @@ export interface GetLedgerStatementAprsFulfilledAction {
 }
 
 export interface GetLedgerStatementAprsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS_REJECTED;
 }
 

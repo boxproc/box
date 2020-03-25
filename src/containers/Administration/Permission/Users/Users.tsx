@@ -14,11 +14,11 @@ import {
   ResetUsers
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface UsersProps {
   userItems: ImmutableArray<AdminUserItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   filterUsers: HandleFilterUsers;
   filterUsersById: HandleFilterAuditUserById;
   currentUserId: number;

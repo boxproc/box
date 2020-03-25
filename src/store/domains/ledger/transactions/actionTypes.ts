@@ -1,4 +1,4 @@
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 import { LedgerTransactionItems } from './types';
 
 export enum ActionTypeKeys {
@@ -32,7 +32,7 @@ export interface FilterLedgerTransactionsFulfilledAction {
 }
 
 export interface FilterLedgerTransactionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_REJECTED;
 }
 
@@ -51,7 +51,7 @@ export interface FilterLedgerTransactionsByIdFulfilledAction {
 }
 
 export interface FilterLedgerTransactionsByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED;
 }
 
@@ -61,12 +61,12 @@ export interface ConvertTransactionToLoanAction {
 }
 
 export interface ConvertTransactionToLoanFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_FULFILLED;
 }
 
 export interface ConvertTransactionToLoanRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_REJECTED;
 }
 

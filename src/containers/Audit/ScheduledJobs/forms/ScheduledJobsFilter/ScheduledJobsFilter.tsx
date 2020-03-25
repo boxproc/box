@@ -9,14 +9,14 @@ import { dateFormatConst, maskFormatConst, } from 'consts';
 
 import { HandleGetSchedulerNamesByInstitutionId } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ScheduledJobsFilterProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   getSchedulerNames: HandleGetSchedulerNamesByInstitutionId;
-  institutionValue: SelectValue;
-  schedulerNameOptions: Array<SelectValue>;
+  institutionValue: ISelectValue;
+  schedulerNameOptions: Array<ISelectValue>;
   isLoadingSchedulerNames: boolean;
   isDisabled: boolean;
 }

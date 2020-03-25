@@ -1,6 +1,6 @@
 import { LedgerLimitAdjustmentResultResponse } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   LEDGER_LIMIT_ADJUSTMENT = 'ledger/limitAdjustment/LEDGER_LIMIT_ADJUSTMENT',
@@ -19,7 +19,7 @@ export interface MakeLedgerLimitAdjustmentFulfilledAction {
 }
 
 export interface MakeLedgerLimitAdjustmentRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT_REJECTED;
 }
 

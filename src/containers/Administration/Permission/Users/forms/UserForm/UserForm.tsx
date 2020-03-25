@@ -22,17 +22,17 @@ import {
 
 import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface DefineUserFormProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   institutions: ImmutableArray<InstitutionItem>;
   isEditMode?: boolean;
   requires2faFlagValue: boolean;
-  statusValue: SelectValue;
-  institutionValue: SelectValue;
+  statusValue: ISelectValue;
+  institutionValue: ISelectValue;
   addUser: HandleAddAdminUser;
   updateUser: HandleUpdateAdminUser;
   onCancel?: () => void;

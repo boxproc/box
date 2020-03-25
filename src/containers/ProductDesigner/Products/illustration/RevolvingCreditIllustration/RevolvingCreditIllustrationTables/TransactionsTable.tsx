@@ -5,10 +5,10 @@ import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader } from 'components';
 import { IllustrationProductTransactionsRevolvingCredit } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof IllustrationProductTransactionsRevolvingCredit> =
-  TableCellType<IllustrationProductTransactionsRevolvingCredit[T]>;
+  ITableCellType<IllustrationProductTransactionsRevolvingCredit[T]>;
 
 const columns = [
   {

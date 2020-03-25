@@ -1,4 +1,4 @@
-import { ApiResponse, ResponseStatusType, } from 'types';
+import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
   UPDATE_PRODUCT_AUX_COUNTERS = 'productDesigner/products/UPDATE_PRODUCT_AUX_COUNTERS',
@@ -14,12 +14,12 @@ export interface UpdateProductAuxCountersAction {
 }
 
 export interface UpdateProductAuxCountersFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS_FULFILLED;
 }
 
 export interface UpdateProductAuxCountersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS_REJECTED;
 }
 

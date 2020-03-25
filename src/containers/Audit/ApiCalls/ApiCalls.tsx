@@ -8,13 +8,13 @@ import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
 import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface ApiCallsProps {
   apiCalls: ImmutableArray<ApiCallsItemPrepared>;
   filterApiCalls: HandleFilterAuditApiCalls;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   resetApiCalls: ResetApiCalls;
   isLoading: boolean;
 }

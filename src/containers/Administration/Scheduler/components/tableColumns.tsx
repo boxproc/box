@@ -4,10 +4,10 @@ import { TableCell, TableHeader } from 'components';
 
 import { AdminSchedulerItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof AdminSchedulerItemPrepared> =
-  TableCellType<AdminSchedulerItemPrepared[T]>;
+  ITableCellType<AdminSchedulerItemPrepared[T]>;
 
 export const tableColumns = [
   {

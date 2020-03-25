@@ -12,10 +12,10 @@ import {
 
 import { HandleGetRepaymentDirectDebits, RepaymentDirectDebitsItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof RepaymentDirectDebitsItemPrepared> =
-  TableCellType<RepaymentDirectDebitsItemPrepared[T]>;
+  ITableCellType<RepaymentDirectDebitsItemPrepared[T]>;
 
 interface RepaymentDirectDebitsTableProps {
   repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItemPrepared>;

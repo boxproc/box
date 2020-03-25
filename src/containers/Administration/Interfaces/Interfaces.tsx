@@ -15,11 +15,11 @@ import {
   ResetInterfaces,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface AccountsProps {
   interfaceItems: ImmutableArray<AdminInterfaceItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   currentInterfaceName: string;
   currentInterfaceId: number;
   isLoading: boolean;

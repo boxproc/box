@@ -4,33 +4,28 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EventDataElems from './EventDataElems';
 
 import {
-  createLoadingSelector,
-  DictionaryEventDataElemsActionTypes,
   handleFilterDictionaryEventDataElems,
   handleGetDictionaryEvents,
   resetEventDataElems,
-  selectDictionaryEventDataElemsItems,
+  selectDictionaryEventDataElems,
   selectDictionaryEventsOptions,
+  selectIsEventDataElemsLoading,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  DictionaryEventDataElemsActionTypes.FILTER_ADMIN_EVENT_DATA_ELEMS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  dictionaryEventDataElemsItems: selectDictionaryEventDataElemsItems(state),
-  dictionaryEventsOptions: [
+  eventDataElemsData: selectDictionaryEventDataElems(state),
+  eventsOptions: [
     { label: 'Select All', value: '' },
     ...selectDictionaryEventsOptions(state),
   ],
+  isLoading: selectIsEventDataElemsLoading(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getDictionaryEvents: handleGetDictionaryEvents,
-    filterDictionaryEventDataElems: handleFilterDictionaryEventDataElems,
+    getEventsData: handleGetDictionaryEvents,
+    filterEventDataElems: handleFilterDictionaryEventDataElems,
     resetEventDataElems,
   },
   dispatch

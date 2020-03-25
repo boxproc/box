@@ -1,6 +1,6 @@
 import { UiItems } from './types';
 
-import { ResponseStatusType } from 'types';
+import { IResponseStatus } from 'types';
 
 export const uiItems: UiItems = {
   ui_items: [
@@ -263,7 +263,7 @@ export const uiItems: UiItems = {
   ],
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

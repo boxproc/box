@@ -17,13 +17,13 @@ import {
   ResetCards
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface CardsProps {
   currentId: number;
   cards: ImmutableArray<LedgerCardItemPrepared>;
   filterCards: HandleFilterLedgerCards;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;

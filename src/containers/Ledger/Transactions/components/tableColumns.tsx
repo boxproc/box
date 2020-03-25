@@ -4,10 +4,10 @@ import { TableCell, TableHeader } from 'components';
 
 import { LedgerTransactionItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof LedgerTransactionItemPrepared> =
-  TableCellType<LedgerTransactionItemPrepared[T]>;
+  ITableCellType<LedgerTransactionItemPrepared[T]>;
 
 export const tableColumns = [
   {

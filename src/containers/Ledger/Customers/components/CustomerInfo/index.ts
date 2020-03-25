@@ -4,13 +4,13 @@ import CustomerInfo from './CustomerInfo';
 
 import {
   createLoadingSelector,
-  DictionaryCountriesActionTypes,
+  DictionaryActionTypes,
   selectInstitutionsOptions,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  DictionaryCountriesActionTypes.GET_DICTIONARY_COUNTRIES,
+  DictionaryActionTypes.GET_DICTIONARY_COUNTRIES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

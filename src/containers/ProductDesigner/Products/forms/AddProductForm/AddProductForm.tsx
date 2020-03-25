@@ -16,13 +16,13 @@ import { ProductDetails, ProductGeneralInfo } from 'containers/ProductDesigner/P
 
 import { HandleAddProduct } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface AddProductFormProps extends ExternalSpinnerProps {
-  currentProductType: SelectValue;
+  currentProductType: ISelectValue;
   addProduct: HandleAddProduct;
-  currentInstitution: SelectValue;
-  interestDistributionValue: SelectValue;
+  currentInstitution: ISelectValue;
+  interestDistributionValue: ISelectValue;
   onCancel: () => void;
 }
 

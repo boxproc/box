@@ -7,17 +7,17 @@ import { Button, SelectField, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleChangeLedgerCardStatus, HandleGetDictionaryCardStatuses } from 'store';
-import { SelectValue } from 'types';
+import { HandleChangeLedgerCardStatus, THandleGetDictionaryCardStatuses } from 'store';
+import { ISelectValue } from 'types';
 
 interface StatusFormProps {
-  getDictionaryCardStatuses: HandleGetDictionaryCardStatuses;
+  getDictionaryCardStatuses: THandleGetDictionaryCardStatuses;
   changeCardStatus: HandleChangeLedgerCardStatus;
-  cardStatusesOptions: Array<SelectValue>;
+  cardStatusesOptions: Array<ISelectValue>;
   isStatusesLoading: boolean;
   isReadOnly: boolean;
   currentCardId: number;
-  statusValue: SelectValue;
+  statusValue: ISelectValue;
 }
 
 type StatusFormAllProps = StatusFormProps & InjectedFormProps<{}, StatusFormProps>;

@@ -11,24 +11,24 @@ import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
   HandleAddLedgerCustomer,
   HandleDeleteLedgerCustomer,
-  HandleGetDictionaryCountries,
   HandleUpdateLedgerCustomer,
+  THandleGetDictionaryCountries,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EditCustomerFormProps extends ExternalSpinnerProps {
-  onCancel: () => void;
   addCustomer: HandleAddLedgerCustomer;
-  deleteCustomer: HandleDeleteLedgerCustomer;
-  updateCustomer: HandleUpdateLedgerCustomer;
+  countryCodes: Array<ISelectValue>;
   currentCustomerName: string;
-  identificationTypeValue: SelectValue;
-  isEditMode?: boolean;
-  loadCountryCodes: HandleGetDictionaryCountries;
-  countryCodes: Array<SelectValue>;
-  isReadOnly: boolean;
   currentId: number;
+  deleteCustomer: HandleDeleteLedgerCustomer;
+  identificationTypeValue: ISelectValue;
+  isEditMode?: boolean;
+  isReadOnly: boolean;
+  loadCountryCodes: THandleGetDictionaryCountries;
+  onCancel: () => void;
+  updateCustomer: HandleUpdateLedgerCustomer;
 }
 
 type EditCustomerFormAllProps = EditCustomerFormProps &

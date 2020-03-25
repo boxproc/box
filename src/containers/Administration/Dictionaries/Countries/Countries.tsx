@@ -1,37 +1,38 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import PageTemplate from 'containers/PageTemplate';
-import { tableColumns } from './components';
+import { tableColumns } from './tableColumns';
 
-import { DictionaryCountriesItemPrepared, HandleGetDictionaryCountries } from 'store';
+import PageTemplate from 'containers/PageTemplate';
+
+import { IDictionaryCountryPrepared, THandleGetDictionaryCountries } from 'store';
 
 interface CountriesProps {
-  getDictionaryCountries: HandleGetDictionaryCountries;
-  dictionaryCountries: ImmutableArray<DictionaryCountriesItemPrepared>;
+  countriesData: ImmutableArray<IDictionaryCountryPrepared>;
+  getCountriesData: THandleGetDictionaryCountries;
   isLoading: boolean;
 }
 
 export const Countries: React.FC<CountriesProps> = ({
-  getDictionaryCountries,
-  dictionaryCountries,
+  countriesData,
+  getCountriesData,
   isLoading,
 }) => {
   React.useEffect(
     () => {
-      getDictionaryCountries();
+      getCountriesData();
     },
-    [getDictionaryCountries]
+    [getCountriesData]
   );
 
   return (
     <PageTemplate
-      title="Countries"
-      data={dictionaryCountries}
       columns={tableColumns}
-      isSearchable={true}
+      data={countriesData}
       isDownloadButton={true}
       isLoading={isLoading}
+      isSearchable={true}
+      title="Countries"
     />
   );
 };

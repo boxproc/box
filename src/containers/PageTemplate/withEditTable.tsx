@@ -22,13 +22,13 @@ import {
   StoreState,
 } from 'store';
 
-import { ContextMenuItemProps } from 'types';
+import { IContextMenuItem } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithEditTableProps {
   activeTableRowIndex?: number;
-  contextMenuItems?: Array<ContextMenuItemProps>;
+  contextMenuItems?: Array<IContextMenuItem>;
   handleOpenModal: OpenModal;
   modalsStateList: object;
   onRowClick: () => object;
@@ -88,7 +88,7 @@ export const withEditTable = <OriginProps extends {}>(
     );
 
     const onContextMenuClick = React.useCallback(
-      (e: Event, value: ContextMenuItemProps) => {
+      (e: Event, value: IContextMenuItem) => {
         value.withConfirmation
           ? handleOpenModal({
             name: modalNamesConst.CONFIRMATION,

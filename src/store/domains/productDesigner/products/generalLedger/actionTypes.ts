@@ -1,4 +1,4 @@
-import { ApiResponse, ResponseStatusType, } from 'types';
+import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
   UPDATE_GENERAL_LEDGER = 'productDesigner/products/UPDATE_GENERAL_LEDGER',
@@ -12,12 +12,12 @@ export interface UpdateGeneralLedgerAction {
 }
 
 export interface UpdateGeneralLedgerFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_FULFILLED;
 }
 
 export interface UpdateGeneralLedgerRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_REJECTED;
 }
 

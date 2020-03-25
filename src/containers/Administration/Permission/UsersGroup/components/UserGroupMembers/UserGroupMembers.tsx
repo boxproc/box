@@ -14,7 +14,7 @@ import {
   HandleGetAdminUserGroupMembers,
 } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 interface UsersGroupMembersProps {
   userGroupMemberId: number;
@@ -25,7 +25,7 @@ interface UsersGroupMembersProps {
 }
 
 type TCell<T extends keyof AdminUserGroupMemberPrepared> =
-  TableCellType<AdminUserGroupMemberPrepared[T]>;
+  ITableCellType<AdminUserGroupMemberPrepared[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getUserGroupMembers,

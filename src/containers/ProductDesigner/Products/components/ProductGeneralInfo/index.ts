@@ -8,33 +8,32 @@ import { formNamesConst } from 'consts';
 
 import {
   createLoadingSelector,
-  DictionaryConstsActionTypes,
-  DictionaryCurrenciesActionTypes,
+  DictionaryActionTypes,
   handleGetDictionaryCurrencies,
   handleGetDictionaryStatementCycleTypes,
-  selectCurrencyCodesOptions,
+  selectCurrenciesOptions,
   selectInstitutionsOptions,
   selectStatementCycleTypesOptions,
   StoreState,
 } from 'store';
 
 const currencyCodesLoading = createLoadingSelector([
-  DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,
+  DictionaryActionTypes.GET_DICTIONARY_CURRENCIES,
 ]);
 
 const statementCycleTypesLoading = createLoadingSelector([
-  DictionaryConstsActionTypes.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
+  DictionaryActionTypes.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
 ]);
 
 const formSelectorGeneralProduct = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 const formSelectorAddProduct = formValueSelector(formNamesConst.ADD_PRODUCT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isCurrencyCodesLoading: currencyCodesLoading(state),
+  isCurrenciesLoading: currencyCodesLoading(state),
   isStatementCycleTypesLoading: statementCycleTypesLoading(state),
   institutionsOptions: selectInstitutionsOptions(state),
   statementCycleTypesOptions: selectStatementCycleTypesOptions(state),
-  currencyCodesOptions: selectCurrencyCodesOptions(state),
+  currenciesOptions: selectCurrenciesOptions(state),
   statementCycleTypeValue: formSelectorGeneralProduct(state, 'statementCycleTypeId')
     || formSelectorAddProduct(state, 'statementCycleTypeId'),
 });

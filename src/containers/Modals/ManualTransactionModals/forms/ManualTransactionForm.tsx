@@ -17,14 +17,14 @@ import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'st
 
 import { formNamesConst } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ManualTransactionFormProps {
-  makeLedgerTransaction: HandleMakeLedgerTransaction;
-  makeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  transactionTypes: Array<SelectValue>;
-  isTransactionTypesLoading: boolean;
+  makeTransaction: HandleMakeLedgerTransaction;
+  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
+  transactionTypes: Array<ISelectValue>;
+  isTransTypesLoading: boolean;
   isLimitAdjustment: boolean;
   isReadonly: boolean;
   onCancel: () => void;
@@ -35,14 +35,14 @@ type ManualTransactionFormAllProps = ManualTransactionFormProps
   & InjectedFormProps<{}, ManualTransactionFormProps>;
 
 const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
-  numCurrencyCodes,
-  isCurrencyCodesLoading,
+  currenciesOptions,
+  isCurrenciesLoading,
   transactionTypes,
-  isTransactionTypesLoading,
+  isTransTypesLoading,
   isLimitAdjustment,
   isReadonly,
-  makeLedgerTransaction,
-  makeLedgerLimitAdjustment,
+  makeTransaction,
+  makeLimitAdjustment,
   handleSubmit,
   dirty,
   pristine,
@@ -50,8 +50,8 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   onCancel,
 }) => {
   const submitFormAction = React.useMemo(
-    () => isLimitAdjustment ? makeLedgerLimitAdjustment : makeLedgerTransaction,
-    [isLimitAdjustment, makeLedgerLimitAdjustment, makeLedgerTransaction]
+    () => isLimitAdjustment ? makeLimitAdjustment : makeTransaction,
+    [isLimitAdjustment, makeLimitAdjustment, makeTransaction]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -73,7 +73,7 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
             component={SelectField}
             label="Transaction Type"
             placeholder="Select Transaction Type"
-            isLoading={isTransactionTypesLoading}
+            isLoading={isTransTypesLoading}
             options={transactionTypes}
             isDisabled={isLimitAdjustment}
             validate={[formErrorUtil.isRequired]}
@@ -104,8 +104,8 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
                 component={SelectField}
                 label="Currency"
                 placeholder="Select Currency"
-                options={numCurrencyCodes}
-                isLoading={isCurrencyCodesLoading}
+                options={currenciesOptions}
+                isLoading={isCurrenciesLoading}
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>

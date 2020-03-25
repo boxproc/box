@@ -3,9 +3,9 @@ import React from 'react';
 import { TableCell, TableHeader } from 'components';
 
 import { AuditUserActivityItem } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AuditUserActivityItem> = TableCellType<AuditUserActivityItem[T]>;
+type TCell<T extends keyof AuditUserActivityItem> = ITableCellType<AuditUserActivityItem[T]>;
 
 export const tableColumns = [
   {

@@ -6,11 +6,11 @@ import { schedulerStatusOptions, statusConst } from 'consts';
 
 import { TableItemWrapper } from './TableItemWrapper';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 interface TableCellProps {
-  defaultSelectValue?: SelectValue;
+  defaultSelectValue?: ISelectValue;
   Icon?: ReactChild;
   isDate?: boolean;
   isDecimalNumber?: boolean;
@@ -23,7 +23,7 @@ interface TableCellProps {
   onKeyUp?: (e: React.KeyboardEvent) => void;
   onSelectChange?: any;
   selectLabel?: string;
-  selectOptions?: Array<SelectValue>;
+  selectOptions?: Array<ISelectValue>;
   style?: object;
   toFixedNumber?: number;
   value: string | number;

@@ -4,9 +4,10 @@ import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from '
 
 import { LedgerAccountItemPrepared } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof LedgerAccountItemPrepared> = TableCellType<LedgerAccountItemPrepared[T]>;
+type TCell<T extends keyof LedgerAccountItemPrepared> =
+  ITableCellType<LedgerAccountItemPrepared[T]>;
 
 export const tableColumns = [
   {

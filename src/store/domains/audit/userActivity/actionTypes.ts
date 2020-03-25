@@ -1,6 +1,6 @@
 import { AuditUserActivityDataResp, AuditUsersDataResp } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_AUDIT_USERS = 'audit/userActivity/GET_AUDIT_USERS',
@@ -31,7 +31,7 @@ export interface GetAuditUsersFulfilledAction {
 }
 
 export interface GetAuditUserActivityRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_AUDIT_USERS_FULFILLED;
 }
 
@@ -46,7 +46,7 @@ export interface FilterUserActivityFulfilledAction {
 }
 
 export interface FilterUserActivityRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_REJECTED;
 }
 
@@ -61,7 +61,7 @@ export interface FilterUserActivityByIdFulfilledAction {
 }
 
 export interface FilterUserActivityByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_USER_ACTIVITY_BY_ID_REJECTED;
 }
 

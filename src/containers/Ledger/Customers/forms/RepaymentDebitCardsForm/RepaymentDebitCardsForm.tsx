@@ -12,14 +12,14 @@ import {
   RepaymentDebitCardsTable,
 } from 'containers/Ledger/Customers/components';
 import { HandleAddRepaymentDebitCard } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface RepaymentDebitCardsFormProps {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
   addRepaymentDebitCard: HandleAddRepaymentDebitCard;
-  interfacesOptions: Array<SelectValue>;
+  interfacesOptions: Array<ISelectValue>;
   isInterfacesLoading: boolean;
 }
 

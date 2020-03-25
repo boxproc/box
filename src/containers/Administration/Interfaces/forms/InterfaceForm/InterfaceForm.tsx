@@ -12,13 +12,13 @@ import { InterfaceFields } from 'containers/Administration/Interfaces/components
 import {
   HandleAddAdminInterface,
   HandleDeleteAdminInterface,
-  HandleGetDictionaryInterfaceTypes,
-  HandleUpdateAdminInterface
+  HandleUpdateAdminInterface,
+  THandleGetDictionaryInterfaceTypes
 } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface InterfaceFormProps extends ExternalSpinnerProps {
-  interfaceTypesOptions: Array<SelectValue>;
+  interfaceTypesOptions: Array<ISelectValue>;
   currentInterfaceName?: string;
   currentInterfaceId: number;
   isReadOnly: boolean;
@@ -27,7 +27,7 @@ interface InterfaceFormProps extends ExternalSpinnerProps {
   updateInterface: HandleUpdateAdminInterface;
   addInterface: HandleAddAdminInterface;
   deleteInterface: HandleDeleteAdminInterface;
-  getDictionaryInterfaceTypes: HandleGetDictionaryInterfaceTypes;
+  getDictionaryInterfaceTypes: THandleGetDictionaryInterfaceTypes;
   onCancel: () => void;
 }
 

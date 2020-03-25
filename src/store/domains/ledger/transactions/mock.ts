@@ -1,6 +1,6 @@
 import { LedgerTransactionItems } from './types';
 
-import { ResponseStatusType } from 'types';
+import { IResponseStatus } from 'types';
 
 export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
   transactions: [
@@ -55,7 +55,7 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
   ],
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

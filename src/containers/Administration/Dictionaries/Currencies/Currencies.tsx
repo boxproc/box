@@ -1,40 +1,38 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import PageTemplate from 'containers/PageTemplate';
-import { tableColumns } from './components';
+import { tableColumns } from './tableColumns';
 
-import {
-  DictionaryCurrenciesItemPrepared,
-  HandleGetDictionaryCurrencies,
-} from 'store';
+import PageTemplate from 'containers/PageTemplate';
+
+import { IDictionaryCurrencyPrepared, THandleGetDictionaryCurrencies } from 'store';
 
 interface CurrenciesProps {
-  getDictionaryCurrencies: HandleGetDictionaryCurrencies;
-  dictionaryCurrencies: ImmutableArray<DictionaryCurrenciesItemPrepared>;
+  currenciesData: ImmutableArray<IDictionaryCurrencyPrepared>;
+  getCurrenciesData: THandleGetDictionaryCurrencies;
   isLoading: boolean;
 }
 
 export const Currencies: React.FC<CurrenciesProps> = ({
-  getDictionaryCurrencies,
-  dictionaryCurrencies,
+  currenciesData,
+  getCurrenciesData,
   isLoading,
 }) => {
   React.useEffect(
     () => {
-      getDictionaryCurrencies();
+      getCurrenciesData();
     },
-    [getDictionaryCurrencies]
+    [getCurrenciesData]
   );
 
   return (
     <PageTemplate
-      title="Currencies"
-      data={dictionaryCurrencies}
       columns={tableColumns}
-      isSearchable={true}
+      data={currenciesData}
       isDownloadButton={true}
       isLoading={isLoading}
+      isSearchable={true}
+      title="Currencies"
     />
   );
 };

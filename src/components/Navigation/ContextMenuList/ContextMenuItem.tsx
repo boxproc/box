@@ -1,13 +1,13 @@
 import React from 'react';
 import { MenuItem } from 'react-contextmenu';
-import { ContextMenuItemProps } from 'types';
+import { IContextMenuItem } from 'types';
 
 import { icons } from './icons';
 
 interface MenuItemProps {
-  item: ContextMenuItemProps;
+  item: IContextMenuItem;
   key?: number;
-  onClick?: (e: Event, value: ContextMenuItemProps) => void;
+  onClick?: (e: Event, value: IContextMenuItem) => void;
 }
 
 const ContextMenuItem: React.FC<MenuItemProps> = ({

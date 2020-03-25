@@ -1,6 +1,6 @@
 import { SettleTransactionData } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   RETRIEVE_TRANSACTION = 'ledger/settleTransaction/RETRIEVE_TRANSACTION',
@@ -29,7 +29,7 @@ export interface RetrieveTransactionFulfilledAction {
 }
 
 export interface RetrieveTransactionRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.RETRIEVE_TRANSACTION_REJECTED;
 }
 
@@ -39,12 +39,12 @@ export interface SettleTransactionAction {
 }
 
 export interface SettleTransactionFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.SETTLE_TRANSACTION_FULFILLED;
 }
 
 export interface SettleTransactionRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.SETTLE_TRANSACTION_REJECTED;
 }
 

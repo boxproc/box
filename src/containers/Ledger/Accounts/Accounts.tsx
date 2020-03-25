@@ -21,13 +21,13 @@ import {
   ResetAccounts,
   UiItemPrepared,
 } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {
   accounts: ImmutableArray<LedgerAccountItemPrepared>;
   filterAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   uiItems: Array<UiItemPrepared>;
   hasProductOverride: boolean;
   productOverrideId: number;

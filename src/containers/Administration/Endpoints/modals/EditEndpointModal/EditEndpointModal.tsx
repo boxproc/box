@@ -9,11 +9,11 @@ import { EndpointForm } from 'containers/Administration/Endpoints/forms';
 
 import { AdminEndpointItemDetailsPrepared } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EditAccountModalProps extends WithModalProps {
   currentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
   currentEndpointName: string;
 }

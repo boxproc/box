@@ -7,9 +7,9 @@ import { Table, TableCell, TableHeader, withSpinner } from 'components';
 
 import { IllustrationProductLoan } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof IllustrationProductLoan> = TableCellType<IllustrationProductLoan[T]>;
+type TCell<T extends keyof IllustrationProductLoan> = ITableCellType<IllustrationProductLoan[T]>;
 
 const columns = [
   {

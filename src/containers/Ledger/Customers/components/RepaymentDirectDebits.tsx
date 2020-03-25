@@ -7,14 +7,14 @@ import { Button, Delimiter, InputField, SelectField } from 'components';
 
 import { iconNamesConst, statusOptions } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface RepaymentDirectDebitsProps {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
-  interfacesOptions: Array<SelectValue>;
+  interfacesOptions: Array<ISelectValue>;
   isInterfacesLoading: boolean;
 }
 

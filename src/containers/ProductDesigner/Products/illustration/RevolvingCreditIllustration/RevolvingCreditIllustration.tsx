@@ -26,7 +26,7 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
   illustrateRevolvingCreditProduct,
   initialFormValues,
   transactionTypesOptions,
-  isTransactionTypesLoading,
+  isTransTypesLoading,
   resetProductIllustration,
   productId,
   dirty,
@@ -83,7 +83,7 @@ const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
         initialValues={initialValues}
         illustrateRevolvingCreditProduct={illustrateRevolvingCreditProduct}
         transactionTypesOptions={transactionTypesOptions}
-        isTransactionTypesLoading={isTransactionTypesLoading}
+        isTransTypesLoading={isTransTypesLoading}
         isLoading={isLoading}
         isDisabled={isLoading}
       />

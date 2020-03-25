@@ -5,7 +5,7 @@ import {
   ProductsDataResp,
 } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_INSTITUTION_PRODUCTS = 'productDesigner/products/GET_INSTITUTION_PRODUCTS',
@@ -56,7 +56,7 @@ export interface GetInstitutionProductsFulfilledAction {
 }
 
 export interface GetInstitutionProductsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_REJECTED;
 }
 
@@ -66,13 +66,13 @@ export interface DeleteProductAction {
 }
 
 export interface DeleteProductFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FULFILLED;
   readonly meta: { id: number };
 }
 
 export interface DeleteProductRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REJECTED;
 }
 
@@ -87,7 +87,7 @@ export interface FilterProductsFulfilledAction {
 }
 
 export interface FilterProductsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
 }
 
@@ -102,7 +102,7 @@ export interface GetProductFulfilledAction {
 }
 
 export interface GetProductRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
 }
 
@@ -117,7 +117,7 @@ export interface GetProductDetailsFulfilledAction {
 }
 
 export interface GetProductDetailsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_REJECTED;
 }
 
@@ -127,12 +127,12 @@ export interface UpdateProductAction {
 }
 
 export interface UpdateProductFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FULFILLED;
 }
 
 export interface UpdateProductRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REJECTED;
 }
 
@@ -142,13 +142,13 @@ export interface UpdateProductDetailsAction {
 }
 
 export interface UpdateProductDetailsFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED;
   readonly meta: object;
 }
 
 export interface UpdateProductDetailsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_REJECTED;
 }
 
@@ -158,12 +158,12 @@ export interface AddProductAction {
 }
 
 export interface AddProductFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FULFILLED;
 }
 
 export interface AddProductRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REJECTED;
 }
 

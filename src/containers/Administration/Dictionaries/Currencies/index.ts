@@ -4,25 +4,20 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Currencies from './Currencies';
 
 import {
-  createLoadingSelector,
-  DictionaryCurrenciesActionTypes,
   handleGetDictionaryCurrencies,
   selectDictionaryCurrencies,
+  selectIsCurrenciesLoading,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  dictionaryCurrencies: selectDictionaryCurrencies(state),
+  currenciesData: selectDictionaryCurrencies(state),
+  isLoading: selectIsCurrenciesLoading(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getDictionaryCurrencies: handleGetDictionaryCurrencies,
+    getCurrenciesData: handleGetDictionaryCurrencies,
   },
   dispatch
 );

@@ -7,13 +7,13 @@ import { InputField, SelectField, TextareaField } from 'components';
 
 import { statusOptions } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 export interface EndpointFieldsProps {
-  institutionsOptions: Array<SelectValue>;
-  endpointTypesOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
+  endpointTypesOptions: Array<ISelectValue>;
   isLoadingTypesSelector: boolean;
   isReadOnly: boolean;
   isEditMode?: boolean;

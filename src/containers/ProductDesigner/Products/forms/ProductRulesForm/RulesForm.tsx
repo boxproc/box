@@ -10,19 +10,19 @@ import { ProductRules } from 'containers/ProductDesigner/Products/components';
 
 import { HandleGetProductRule, HandleUpdateProductRules } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface RulesFormProps {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
   isReadOnly: boolean;
-  actionTypesOptions: Array<SelectValue>;
+  actionTypesOptions: Array<ISelectValue>;
   initialActionType: string | number;
   isRevolvingCredit: boolean;
   rulesValues: {
-    eventId: SelectValue;
-    actionType: SelectValue;
+    eventId: ISelectValue;
+    actionType: ISelectValue;
   };
   isLoading: boolean;
 }
@@ -123,7 +123,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   );
 
   const handleGetRuleByChange = React.useCallback(
-    (value: SelectValue, val: SelectValue, prevVal: SelectValue, fieldName: string) => {
+    (value: ISelectValue, val: ISelectValue, prevVal: ISelectValue, fieldName: string) => {
       handleGetRule(fieldName, value);
     },
     [handleGetRule]

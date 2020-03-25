@@ -14,11 +14,11 @@ import {
   ResetProducts,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface ProductsProps {
   productItems: ImmutableArray<ProductItem>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   currentProductName: string;
   isLoading: boolean;
   isReadOnly: boolean;

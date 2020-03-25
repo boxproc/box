@@ -6,11 +6,11 @@ import './styles.css';
 import { ChevronRightIcon } from './../../Icons';
 import ContextMenuItem from './ContextMenuItem';
 
-import { ContextMenuItemProps, ContextSubMenuItem } from 'types';
+import { IContextMenuItem, IContextSubMenuItem } from 'types';
 
 interface ContextSubMenuProps {
-  subMenu: ContextSubMenuItem;
-  onClick?: (e: Event, value: ContextMenuItemProps) => void;
+  subMenu: IContextSubMenuItem;
+  onClick?: (e: Event, value: IContextMenuItem) => void;
 }
 
 const ContextSubMenu: React.FC<ContextSubMenuProps> = ({ onClick, subMenu }) => {

@@ -1,8 +1,8 @@
 import { ApiCallsItem, AuditApiCallsFilter } from './types';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
-export const prepareValuesToRender = (values: ApiCallsItem, institution?: SelectValue) => {
+export const prepareValuesToRender = (values: ApiCallsItem, institution?: ISelectValue) => {
   if (!values) {
     return null;
   }

@@ -1,6 +1,6 @@
 import { AdminSysPropsDataResp } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
@@ -33,13 +33,13 @@ export interface DeleteAdminSysPropAction {
 }
 
 export interface DeleteAdminSysPropFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
   readonly meta: number | string;
 }
 
 export interface DeleteAdminSysPropRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_REJECTED;
 }
 
@@ -49,12 +49,12 @@ export interface AddAdminSysPropAction {
 }
 
 export interface AddAdminSysPropFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
 }
 
 export interface AddAdminSysPropRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_REJECTED;
 }
 
@@ -64,12 +64,12 @@ export interface UpdateAdminSysPropsAction {
 }
 
 export interface UpdateAdminSysPropsFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
 }
 
 export interface UpdateAdminSysPropsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_REJECTED;
 }
 
@@ -84,7 +84,7 @@ export interface FilterAdminSysPropsFulfilledAction {
 }
 
 export interface FilterAdminSysPropsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
 }
 

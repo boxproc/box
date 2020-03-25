@@ -8,14 +8,14 @@ import { MaskField, SelectField } from 'components';
 import { dateFormatConst, maskFormatConst, } from 'consts';
 
 import { HandleGetAuditUsers } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface UserActivityFilterProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   getAuditUsers: HandleGetAuditUsers;
-  currentInstitution: SelectValue;
-  auditUsersOptions: Array<SelectValue>;
+  currentInstitution: ISelectValue;
+  auditUsersOptions: Array<ISelectValue>;
   isLoadingUsers: boolean;
   isDisabled: boolean;
 }

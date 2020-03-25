@@ -14,11 +14,11 @@ import {
   HandleGetLogData,
   ResetEndpoints,
 } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface EndpointsProps {
   endpointItems: ImmutableArray<AdminEndpointItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   currentEndpointName: string;
   currentEndpointId: number;
   isLoading: boolean;

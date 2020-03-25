@@ -17,11 +17,11 @@ import {
   ResetProductIllustration,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface IllustrationProductProps {
   productIllustrationData: ImmutableArray<IllustrationProductLoan>;
-  loanProductsOptions: Array<SelectValue>;
+  loanProductsOptions: Array<ISelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   convertTransactionToLoan: HandleConvertTransactionToLoan;
   getProductDetails: HandleGetProductDetails;
@@ -33,7 +33,7 @@ interface IllustrationProductProps {
   isConversionLoading: boolean;
   withConvertToLoan?: boolean;
   withLoanSelection?: boolean;
-  selectedLoanProduct?: SelectValue;
+  selectedLoanProduct?: ISelectValue;
   productId?: number;
   isReadOnly: boolean;
   onCancel?: () => void;

@@ -14,7 +14,7 @@ import {
   HandleGetAdminGroupPermissions,
 } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 interface UsersGroupMembersProps {
   userGroupMemberId: number;
@@ -25,7 +25,7 @@ interface UsersGroupMembersProps {
 }
 
 type TCell<T extends keyof AdminGroupPermissionItem> =
-  TableCellType<AdminGroupPermissionItem[T]>;
+  ITableCellType<AdminGroupPermissionItem[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getGroupPermission,

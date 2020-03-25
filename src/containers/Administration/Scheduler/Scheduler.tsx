@@ -25,7 +25,7 @@ import {
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 const schedulerTasksConsts = {
   EXECUTE_TASK: {
@@ -52,7 +52,7 @@ const schedulerTasksConsts = {
 
 interface SchedulerProps extends WithModalProps {
   schedulerJobsItems: ImmutableArray<AdminSchedulerItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   currentSchedulerId: number;
   currentSchedulerName: string;
   isLoading: boolean;

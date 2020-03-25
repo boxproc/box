@@ -5,11 +5,11 @@ import { Box } from '@rebass/grid';
 
 import { InputField, SelectField } from 'components';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface CustomersFilterProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 

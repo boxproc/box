@@ -20,13 +20,13 @@ import {
   UiItemPrepared,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 export interface TransactionsProps extends WithModalProps {
   currentId: number;
   transactions: ImmutableArray<LedgerTransactionItemPrepared>;
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   uiItems: Array<UiItemPrepared>;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;

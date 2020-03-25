@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { IdNamePair, SelectValue } from 'types';
+import { IIdNamePair, ISelectValue } from 'types';
 
 export interface AdminEndpointItem {
   id: number;
@@ -37,9 +37,9 @@ export interface AdminEndpointItemPrepared extends EndpointItemPlain {
 }
 
 export interface AdminEndpointItemDetailsPrepared extends EndpointItemPlain {
-  institutionId: SelectValue;
-  status: SelectValue;
-  endpointTypeId: SelectValue;
+  institutionId: ISelectValue;
+  status: ISelectValue;
+  endpointTypeId: ISelectValue;
 }
 
 export interface AdminEndpointItems {
@@ -47,7 +47,7 @@ export interface AdminEndpointItems {
 }
 
 export interface AdminEndpointFilter {
-  institutionId: SelectValue;
+  institutionId: ISelectValue;
 }
 
 export interface AdminEndpointFilterPrepared {
@@ -55,10 +55,10 @@ export interface AdminEndpointFilterPrepared {
 }
 
 export interface AdminEndpointNameItems {
-  endpoints: Array<IdNamePair>;
+  endpoints: Array<IIdNamePair>;
 }
 
 export interface AdminEndpointState {
   endpoints: ImmutableArray<AdminEndpointItem>;
-  endpointsByInstitutionId: ImmutableArray<IdNamePair>;
+  endpointsByInstitutionId: ImmutableArray<IIdNamePair>;
 }

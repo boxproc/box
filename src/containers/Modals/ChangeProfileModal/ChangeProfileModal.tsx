@@ -9,12 +9,12 @@ import { ChangeProfileForm } from './forms';
 
 import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface ChangeProfileModalProps extends WithModalProps {
   getAccessUsers: HandleGetAccessUsers;
   changeAdminProfile: HandleChangeAdminProfile;
-  adminAccessUsersOptions: Array<SelectValue>;
+  adminAccessUsersOptions: Array<ISelectValue>;
   isChangingProfile: boolean;
   isLoadingUsers: boolean;
 }

@@ -18,13 +18,13 @@ import { formNamesConst, iconNamesConst } from 'consts';
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface GeneralProductFormProps extends ExternalSpinnerProps {
   getProduct: HandleGetProduct;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
-  currentInstitution: SelectValue;
+  currentInstitution: ISelectValue;
   isProductOverride: boolean;
   onCancel?: () => void;
   currentProductName: string;

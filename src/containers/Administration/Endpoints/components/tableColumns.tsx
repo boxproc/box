@@ -3,10 +3,10 @@ import React from 'react';
 import { TableCell, TableHeader } from 'components';
 
 import { AdminEndpointItemPrepared } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof AdminEndpointItemPrepared> =
-  TableCellType<AdminEndpointItemPrepared[T]>;
+  ITableCellType<AdminEndpointItemPrepared[T]>;
 
 export const tableColumns = [
   {

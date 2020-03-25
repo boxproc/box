@@ -1,6 +1,6 @@
 import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
 
-import { LogData, ResponseStatusType } from 'types';
+import { ILogData, IResponseStatus } from 'types';
 
 export const adminSchedulerData: AdminSchedulerDataResp = {
   s_scheduler: [
@@ -52,12 +52,12 @@ export const schedulerNames: AdminSchedulerNameItems = {
   ],
 };
 
-export const schedulerLogData: LogData = {
+export const schedulerLogData: ILogData = {
   // tslint:disable-next-line: max-line-length
   log_file: '2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start',
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

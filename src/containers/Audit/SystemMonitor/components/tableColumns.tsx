@@ -5,11 +5,11 @@ import { Button, TableCell, TableHeader } from 'components';
 
 import { iconNamesConst } from 'consts';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 import { HandleGetLogData, SystemMonitorItem } from 'store';
 
-type TCell<T extends keyof SystemMonitorItem> = TableCellType<SystemMonitorItem[T]>;
+type TCell<T extends keyof SystemMonitorItem> = ITableCellType<SystemMonitorItem[T]>;
 
 export const tableColumns = (getLogData: HandleGetLogData, name: string) => [
   {

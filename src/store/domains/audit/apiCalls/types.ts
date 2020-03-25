@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface AuditApiCallId {
   id: number;
@@ -30,8 +30,8 @@ export interface ApiCallsItemPrepared extends AuditApiCallId {
 }
 
 export interface AuditApiCallsFilter {
-  institutionId: SelectValue;
-  endpointId: SelectValue;
+  institutionId: ISelectValue;
+  endpointId: ISelectValue;
   apiName: string;
   apiCallsDateTimeFrom: string;
   apiCallsDateTimeTo: string;

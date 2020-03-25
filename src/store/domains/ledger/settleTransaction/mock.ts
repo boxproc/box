@@ -1,6 +1,6 @@
 import { SettleTransactionData } from './types';
 
-import { ResponseStatusType } from 'types';
+import { IResponseStatus } from 'types';
 
 export const transactionData: SettleTransactionData = {
   transaction: [
@@ -12,7 +12,7 @@ export const transactionData: SettleTransactionData = {
   ],
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

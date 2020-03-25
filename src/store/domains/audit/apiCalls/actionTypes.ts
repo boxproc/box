@@ -1,6 +1,6 @@
 import { ApiCallDetails, ApiCallsItems } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   FILTER_AUDIT_API_CALLS = 'audit/apiCalls/FILTER_AUDIT_API_CALLS',
@@ -25,7 +25,7 @@ export interface FilterAuditApiCallsFulfilledAction {
 }
 
 export interface FilterAuditApiCallsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_API_CALLS_REJECTED;
 }
 
@@ -40,17 +40,17 @@ export interface GetDetailsAuditApiCallsFulfilledAction {
 }
 
 export interface GetDetailsAuditApiCallsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
 }
 
 export interface GetDetailsAuditApiCallsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
 }
 
 export interface GetDetailsAuditApiCallsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
 }
 

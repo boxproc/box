@@ -13,7 +13,7 @@ import {
   HandleUpdateProductDetails,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface ProductDetailsFormProps extends ExternalSpinnerProps {
   onCancel?: () => void;
@@ -22,7 +22,7 @@ interface ProductDetailsFormProps extends ExternalSpinnerProps {
   updateProductDetails: HandleUpdateProductDetails;
   isReadOnly: boolean;
   isUpdating: boolean;
-  interestDistributionValue: SelectValue;
+  interestDistributionValue: ISelectValue;
   currentProductId: number;
 }
 

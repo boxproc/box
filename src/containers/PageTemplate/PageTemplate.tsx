@@ -21,31 +21,31 @@ import {
   UiItemPrepared,
 } from 'store';
 
-import { ContextMenuItemProps } from 'types';
+import { IContextMenuItem } from 'types';
 import { cookiesUtil, downloadUtil, storageUtil } from 'utils';
 
 interface PageTemplateProps extends RouteComponentProps, WithModalProps {
-  title: string;
-  data: Array<object>;
-  columns: Array<object>;
-  FilterForm?: ReactChild;
-  newModalName?: string;
-  contextMenuItems?: Array<ContextMenuItemProps>;
-  filterAction?: () => void;
-  isAutoRefresh?: boolean;
-  stopAutoRefresh: StopAutoRefresh;
-  resetUtils: ResetUtils;
   AdditionalButton?: ReactChild;
-  initialFilterValues?: object;
+  columns: Array<object>;
+  contextMenuItems?: Array<IContextMenuItem>;
+  data: Array<object>;
+  filterAction?: () => void;
   filterData: object;
-  setIsOpenFilter: SetIsOpenFilter;
-  isOpenFilter: boolean;
+  FilterForm?: ReactChild;
+  initialFilterValues?: object;
+  isAutoRefresh?: boolean;
   isDownloadButton?: boolean;
-  isSearchable?: boolean;
-  uiItems: Array<UiItemPrepared>;
-  setActivePagePermission: SetActivePagePermission;
-  isReadOnly: boolean;
   isLoading: boolean;
+  isOpenFilter: boolean;
+  isReadOnly: boolean;
+  isSearchable?: boolean;
+  newModalName?: string;
+  resetUtils: ResetUtils;
+  setActivePagePermission: SetActivePagePermission;
+  setIsOpenFilter: SetIsOpenFilter;
+  stopAutoRefresh: StopAutoRefresh;
+  title: string;
+  uiItems: Array<UiItemPrepared>;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {

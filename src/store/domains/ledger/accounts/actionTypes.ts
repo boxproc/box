@@ -1,6 +1,6 @@
 import { LedgerAccountCardsItems, LedgerAccountItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_LEDGER_ACCOUNT_CARDS = 'ledger/accounts/GET_LEDGER_ACCOUNT_CARDS',
@@ -45,7 +45,7 @@ export interface GetLedgerAccountCardsFulfilledAction {
 }
 
 export interface GetLedgerAccountCardsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS_REJECTED;
 }
 
@@ -55,12 +55,12 @@ export interface OrderLedgerAccountCardAction {
 }
 
 export interface OrderLedgerAccountCardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ORDER_LEDGER_ACCOUNT_CARD_FULFILLED;
 }
 
 export interface OrderLedgerAccountCardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ORDER_LEDGER_ACCOUNT_CARD_REJECTED;
 }
 
@@ -70,12 +70,12 @@ export interface AddLedgerAccountAction {
 }
 
 export interface AddLedgerAccountFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_LEDGER_ACCOUNT_FULFILLED;
 }
 
 export interface AddLedgerAccountRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_LEDGER_ACCOUNT_REJECTED;
 }
 
@@ -85,12 +85,12 @@ export interface UpdateLedgerAccountAction {
 }
 
 export interface UpdateLedgerAccountFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_LEDGER_ACCOUNT_FULFILLED;
 }
 
 export interface UpdateLedgerAccountRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_LEDGER_ACCOUNT_REJECTED;
 }
 
@@ -105,7 +105,7 @@ export interface FilterLedgerAccountsFulfilledAction {
 }
 
 export interface FilterLedgerAccountsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_REJECTED;
 }
 
@@ -120,7 +120,7 @@ export interface AddProductOverrideFulfilledAction {
 }
 
 export interface AddProductOverrideRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_OVERRIDE_REJECTED;
 }
 export interface FilterLedgerAccountsByIdAction {
@@ -134,7 +134,7 @@ export interface FilterLedgerAccountsByIdFulfilledAction {
 }
 
 export interface FilterLedgerAccountsByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID_REJECTED;
 }
 

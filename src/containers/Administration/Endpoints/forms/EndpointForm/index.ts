@@ -6,7 +6,7 @@ import EndpointForm from './EndpointForm';
 import {
   AdminEndpointsActionTypes,
   createLoadingSelector,
-  DictionaryConstsActionTypes,
+  DictionaryActionTypes,
   handleAddAdminEndpoint,
   handleDeleteAdminEndpoint,
   handleGetDictionaryEndpointTypes,
@@ -21,7 +21,7 @@ const loadingSelector = createLoadingSelector([
 ]);
 
 const loadingTypesSelector = createLoadingSelector([
-  DictionaryConstsActionTypes.GET_DICTIONARY_ENDPOINT_TYPES,
+  DictionaryActionTypes.GET_DICTIONARY_ENDPOINT_TYPES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

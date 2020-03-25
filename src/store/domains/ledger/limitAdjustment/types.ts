@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface LedgerLimitAdjustmentRequest {
   transaction_type_id: number | string;
@@ -12,12 +12,12 @@ export interface LedgerLimitAdjustmentRequest {
 }
 
 export interface LedgerLimitAdjustmentFromData {
-  transactionType: SelectValue;
-  balanceLimit: number;
   accountId: string;
+  balanceLimit: number;
   balanceLimitShared: number;
   description: string;
-  transactionDatetime: SelectValue;
+  transactionDatetime: ISelectValue;
+  transactionType: ISelectValue;
 }
 
 export interface LedgerLimitAdjustmentResult {

@@ -6,7 +6,7 @@ import InterfaceForm from './InterfaceForm';
 import {
   AdminInterfacesActionTypes,
   createLoadingSelector,
-  DictionaryConstsActionTypes,
+  DictionaryActionTypes,
   handleAddAdminInterface,
   handleDeleteAdminInterface,
   handleGetDictionaryInterfaceTypes,
@@ -21,7 +21,7 @@ const loadingSelector = createLoadingSelector([
 ]);
 
 const loadingTypesSelector = createLoadingSelector([
-  DictionaryConstsActionTypes.GET_DICTIONARY_INTERFACE_TYPES,
+  DictionaryActionTypes.GET_DICTIONARY_INTERFACE_TYPES,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({

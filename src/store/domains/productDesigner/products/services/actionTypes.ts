@@ -1,6 +1,6 @@
 import { InstitutionProductServiceEndpoints, InstitutionProductServiceInterfaces } from './types';
 
-import { ApiResponse, ResponseStatusType, } from 'types';
+import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
   GET_SERVICE_INTERFACES = 'productDesigner/products/GET_SERVICE_INTERFACES',
@@ -27,7 +27,7 @@ export interface GetInterfacesProductServiceFulfilledAction {
 }
 
 export interface GetInterfacesProductServiceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES_REJECTED;
 }
 
@@ -42,7 +42,7 @@ export interface GetEndpointsProductServiceFulfilledAction {
 }
 
 export interface GetEndpointsProductServiceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS_REJECTED;
 }
 
@@ -52,12 +52,12 @@ export interface UpdateCardServiceAction {
 }
 
 export interface UpdateCardServiceFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_FULFILLED;
 }
 
 export interface UpdateCardServiceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
 }
 

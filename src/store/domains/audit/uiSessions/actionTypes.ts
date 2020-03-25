@@ -1,6 +1,6 @@
 import { AuditUiSessionsDataResp } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   FILTER_AUDIT_UI_SESSIONS = 'audit/uiSessions/FILTER_AUDIT_UI_SESSIONS',
@@ -21,7 +21,7 @@ export interface FilterUiSessionsFulfilledAction {
 }
 
 export interface FilterUiSessionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_AUDIT_UI_SESSIONS_REJECTED;
 }
 

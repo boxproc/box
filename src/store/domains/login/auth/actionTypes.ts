@@ -1,6 +1,6 @@
 import { AuthResponse, AuthStepTwoResponse, ChangePasswordData } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   USER_LOGIN = 'user/USER_LOGIN',
@@ -46,7 +46,7 @@ export interface UserLoginFulfilledAction {
 }
 
 export interface UserLoginRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.USER_LOGIN_REJECTED;
 }
 export interface UserLogoutAction {
@@ -55,12 +55,12 @@ export interface UserLogoutAction {
 }
 
 export interface UserLogoutFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.USER_LOGOUT_FULFILLED;
 }
 
 export interface UserLogoutRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.USER_LOGOUT_REJECTED;
 }
 
@@ -80,7 +80,7 @@ export interface UserGetAuthKeyFulfilledAction {
 }
 
 export interface UserGetAuthKeyRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.USER_GET_AUTH_KEY_REJECTED;
 }
 
@@ -90,12 +90,12 @@ export interface UserConfirmAuthKeyAction {
 }
 
 export interface UserConfirmAuthKeyFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.USER_CONFIRM_AUTH_KEY_FULFILLED;
 }
 
 export interface UserConfirmAuthKeyRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.USER_CONFIRM_AUTH_KEY_REJECTED;
 }
 
@@ -110,7 +110,7 @@ export interface UserEnterAuthKeyFulfilledAction {
 }
 
 export interface UserEnterAuthKeyRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.USER_ENTER_AUTH_KEY_REJECTED;
 }
 
@@ -125,7 +125,7 @@ export interface ChangeAdminProfileFulfilledAction {
 }
 
 export interface ChangeAdminProfileRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.CHANGE_ADMIN_PROFILE_REJECTED;
 }
 
@@ -140,7 +140,7 @@ export interface ChangePasswordFulfilledAction {
 }
 
 export interface ChangePasswordRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.CHANGE_PASSWORD_REJECTED;
 }
 

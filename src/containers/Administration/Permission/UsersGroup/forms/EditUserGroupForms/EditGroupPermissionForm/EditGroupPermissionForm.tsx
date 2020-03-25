@@ -9,11 +9,11 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EditGroupPermissionFormProps {
-  uiItemsOptions: Array<SelectValue>;
-  selectedUiItem: Array<SelectValue>;
+  uiItemsOptions: Array<ISelectValue>;
+  selectedUiItem: Array<ISelectValue>;
   currentUserGroupId: number;
   isLoading: boolean;
   getUiItems: HandleGetAdminUiItems;

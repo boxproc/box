@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 
-import { selectCountryCodesOptions } from 'store/domains/administration';
+import { selectCountriesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 import {
@@ -29,7 +29,7 @@ export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
   selectActiveItemId,
   selectInstitutionsOptions,
-  selectCountryCodesOptions,
+  selectCountriesOptions,
   (customers, currentId, institutions, countries) => {
     const current = customers && customers.find(el => el.id === currentId);
 

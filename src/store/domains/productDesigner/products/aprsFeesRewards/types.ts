@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface ProductAprItem {
   product_id: number;
@@ -40,7 +40,7 @@ export interface ProductApr extends ProductAprPlainInfo {
 }
 
 export interface ProductAprFormValues extends ProductAprPlainInfo {
-  calculationMethod: SelectValue;
+  calculationMethod: ISelectValue;
 }
 
 export interface ProductAprs {
@@ -76,12 +76,12 @@ export interface ProductFeePlainInfo extends ProductFeesIds {
 export interface ProductFee extends ProductFeePlainInfo {
   feeApplicationCondition: string;
   feeApplicationConditionValue: string | number;
-  apr: SelectValue;
+  apr: ISelectValue;
 }
 
 export interface ProductFeeFormValues extends ProductFeePlainInfo {
-  feeApplicationCondition: SelectValue;
-  apr: SelectValue;
+  feeApplicationCondition: ISelectValue;
+  apr: ISelectValue;
 }
 
 export interface ProductFees {
@@ -118,7 +118,7 @@ export interface ProductReward extends ProductRewardPlainInfo {
 }
 
 export interface ProductRewardFormValues extends ProductRewardPlainInfo {
-  rewardApplicationCondition: SelectValue;
+  rewardApplicationCondition: ISelectValue;
 }
 
 export interface ProductRewards {

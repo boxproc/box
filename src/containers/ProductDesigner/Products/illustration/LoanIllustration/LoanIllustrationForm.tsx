@@ -9,18 +9,18 @@ import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
 import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IllustrationProductFormProps {
   illustrateLoanProduct: HandleIllustrateLoanProduct;
-  loanProductsOptions: Array<SelectValue>;
+  loanProductsOptions: Array<ISelectValue>;
   isDisabled: boolean;
   isIllustrationLoading: boolean;
   isConversionLoading: boolean;
   withLoanSelection: boolean;
   withConvertToLoan: boolean;
-  selectedLoanProduct: SelectValue;
+  selectedLoanProduct: ISelectValue;
   isReadOnly: boolean;
   convertTransactionToLoan: HandleConvertTransactionToLoan;
 }

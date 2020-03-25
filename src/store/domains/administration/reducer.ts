@@ -1,13 +1,6 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
-import dictionaryAccountStatusesReducer from './dictionaries/accountStatuses/reducer';
-import dictionaryConstsReducer from './dictionaries/consts/reducer';
-import dictionaryCountriesReducer from './dictionaries/countries/reducer';
-import dictionaryCurrenciesReducer from './dictionaries/currencies/reducer';
-import dictionaryEventDataElemsReducer from './dictionaries/eventDataElems/reducer';
-import dictionaryEventsReducer from './dictionaries/events/reducer';
-import dictionaryRepaymentTypesReducer from './dictionaries/repaymentTypes/reducer';
-import dictionaryTransactionTypesReducer from './dictionaries/transactionTypes/reducer';
+import dictionariesReducer from './dictionaries/reducer';
 import adminEndpointsReducer from './endpoints/reducer';
 import adminInstitutionsReducer from './institutions/reducer';
 import adminInterfacesReducer from './interfaces/reducer';
@@ -19,14 +12,7 @@ import adminSysPropsReducer from './systemProperties/reducer';
 const administrationReducer = combineReducers({
   systemProperties: adminSysPropsReducer,
   scheduler: adminSchedulerJobsReducer,
-  consts: dictionaryConstsReducer,
-  countries: dictionaryCountriesReducer,
-  currencies: dictionaryCurrenciesReducer,
-  events: dictionaryEventsReducer,
-  eventDataElements: dictionaryEventDataElemsReducer,
-  transactionTypes: dictionaryTransactionTypesReducer,
-  accountStatuses: dictionaryAccountStatusesReducer,
-  repaymentTypes: dictionaryRepaymentTypesReducer,
+  dictionaries: dictionariesReducer,
   users: adminUserReducer,
   userGroups: adminUsersGroupReducer,
   endpoints: adminEndpointsReducer,

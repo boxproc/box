@@ -1,8 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IdNamePair, SelectValue } from 'types';
+import { IIdNamePair, ISelectValue } from 'types';
 
-interface PlainInfo extends IdNamePair {
+interface PlainInfo extends IIdNamePair {
   description: string;
   executable: string;
   parameters: string;
@@ -32,10 +32,10 @@ export interface AdminSchedulerItemPrepared extends AdminSchedulerItemPreparedPl
 }
 
 export interface AdminSchedulerEditableItem extends AdminSchedulerItemPreparedPlain {
-  status: SelectValue;
-  institutionId: SelectValue;
-  executableType: SelectValue;
-  lastExecutionResult: SelectValue;
+  status: ISelectValue;
+  institutionId: ISelectValue;
+  executableType: ISelectValue;
+  lastExecutionResult: ISelectValue;
 }
 
 export interface AdminSchedulerJobAction {
@@ -55,7 +55,7 @@ export interface AdminSchedulerDataResp {
 export interface AdminSchedulerFilter {
   name: string;
   activeStatusFlag: boolean;
-  institutionId: SelectValue;
+  institutionId: ISelectValue;
 }
 
 export interface AdminSchedulerFilterPrepared {
@@ -65,10 +65,10 @@ export interface AdminSchedulerFilterPrepared {
 }
 
 export interface AdminSchedulerNameItems {
-  scheduler_names: Array<IdNamePair>;
+  scheduler_names: Array<IIdNamePair>;
 }
 
 export interface AdminSchedulerState {
   scheduler: ImmutableArray<AdminSchedulerItem>;
-  schedulerNames: ImmutableArray<IdNamePair>;
+  schedulerNames: ImmutableArray<IIdNamePair>;
 }

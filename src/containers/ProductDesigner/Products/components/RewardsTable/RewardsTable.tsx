@@ -22,9 +22,9 @@ import {
   ProductReward,
 } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof ProductReward> = TableCellType<ProductReward[T]>;
+type TCell<T extends keyof ProductReward> = ITableCellType<ProductReward[T]>;
 
 interface RewardsTableProps {
   productRewards: ImmutableArray<ProductReward>;

@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface LedgerStatementItem {
   id: number;
@@ -136,13 +136,13 @@ export interface LedgerAccountStatementItems {
 
 export interface LedgerStatementsFilter {
   accountId: number;
-  institutionId: SelectValue;
+  institutionId: ISelectValue;
   accountAlias: string;
   firstName: string;
   lastName: string;
   statementsDateFrom: string;
   statementsDateTo: string;
-  product: Array<SelectValue>;
+  product: Array<ISelectValue>;
 }
 
 export interface LedgerStatementsFilterPrepared {

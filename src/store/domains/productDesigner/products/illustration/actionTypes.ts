@@ -3,7 +3,7 @@ import {
   ProductRevolvingCreditIllustrationAllDataResp,
 } from './types';
 
-import { ApiResponse } from 'types';
+import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   ILLUSTRATE_PRODUCT_LOAN = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN',
@@ -31,7 +31,7 @@ export interface IllustrateProductLoanFulfilledAction {
 }
 
 export interface IllustrateProductLoanRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_REJECTED;
 }
 
@@ -46,7 +46,7 @@ export interface IllustrateProductRevolvingCreditFulfilledAction {
 }
 
 export interface IllustrateProductRevolvingCreditRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_REJECTED;
 }
 

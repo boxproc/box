@@ -5,7 +5,7 @@ import {
   AdminUsersGroupDataResp,
 } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   GET_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP',
@@ -96,7 +96,7 @@ export interface GetAdminUsersGroupFulfilledAction {
 }
 
 export interface GetAdminUsersGroupRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_USERS_GROUP_REJECTED;
 }
 
@@ -111,7 +111,7 @@ export interface GetAdminUiItemsFulfilledAction {
 }
 
 export interface GetAdminUiItemsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS_REJECTED;
 }
 
@@ -126,7 +126,7 @@ export interface GetAdminUserGroupMembersFulfilledAction {
 }
 
 export interface GetAdminUserGroupMembersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_USER_GROUP_MEMBERS_REJECTED;
 }
 
@@ -141,7 +141,7 @@ export interface GetAdminActiveUsersFulfilledAction {
 }
 
 export interface GetAdminActiveUsersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_ACTIVE_USERS_REJECTED;
 }
 export interface GetAdminGroupPermissionsAction {
@@ -155,7 +155,7 @@ export interface GetAdminGroupPermissionsFulfilledAction {
 }
 
 export interface GetAdminGroupPermissionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_REJECTED;
 }
 
@@ -165,12 +165,12 @@ export interface DeleteAdminUserGroupMembersAction {
 }
 
 export interface DeleteAdminUserGroupMembersFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBER_FULFILLED;
 }
 
 export interface DeleteAdminUserGroupMembersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS_REJECTED;
 }
 export interface DeleteAdminGroupPermissionsAction {
@@ -179,12 +179,12 @@ export interface DeleteAdminGroupPermissionsAction {
 }
 
 export interface DeleteAdminGroupPermissionsFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
 }
 
 export interface DeleteAdminGroupPermissionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED;
 }
 
@@ -194,12 +194,12 @@ export interface AddAdminGroupPermissionsAction {
 }
 
 export interface AddAdminGroupPermissionsFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
 }
 
 export interface AddAdminGroupPermissionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
 }
 
@@ -209,12 +209,12 @@ export interface AddAdminUsersGroupAction {
 }
 
 export interface AddAdminUsersGroupFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_FULFILLED;
 }
 
 export interface AddAdminUsersGroupRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_REJECTED;
 }
 export interface AddAdminActiveUsersAction {
@@ -223,12 +223,12 @@ export interface AddAdminActiveUsersAction {
 }
 
 export interface AddAdminActiveUsersFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
 }
 
 export interface AddAdminActiveUsersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
 }
 
@@ -238,12 +238,12 @@ export interface UpdateAdminUsersGroupAction {
 }
 
 export interface UpdateAdminUsersGroupFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_FULFILLED;
 }
 
 export interface UpdateAdminUsersGroupRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_REJECTED;
 }
 

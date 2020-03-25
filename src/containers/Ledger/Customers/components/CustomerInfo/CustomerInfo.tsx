@@ -12,15 +12,15 @@ import {
   maskFormatConst
 } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface CustomerInfoProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   isIdentification: boolean;
-  countryCodes: Array<SelectValue>;
+  countryCodes: Array<ISelectValue>;
   isCountryCodesLoading: boolean;
   isReadOnly: boolean;
 }

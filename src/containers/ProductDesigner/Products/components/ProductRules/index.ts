@@ -8,7 +8,7 @@ import ProductRules from './ProductRules';
 
 import {
   createLoadingSelector,
-  DictionaryEventsActionTypes,
+  DictionaryActionTypes,
   handleFilterDictionaryEventDataElemsById,
   handleGetDictionaryEvents,
   handleGetDictionaryTransactionTypes,
@@ -18,12 +18,12 @@ import {
   selectProductAprsForRules,
   selectProductFeesForRules,
   selectProductRewardsForRules,
-  selectTransactionTypesForRules,
+  selectTransTypesForRules,
   StoreState,
 } from 'store';
 
 const loadingEventsSelector = createLoadingSelector([
-  DictionaryEventsActionTypes.GET_DICTIONARY_EVENTS,
+  DictionaryActionTypes.GET_DICTIONARY_EVENTS,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
@@ -33,7 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),
   productRewardsItems: selectProductRewardsForRules(state),
-  transactionTypesItems: selectTransactionTypesForRules(state),
+  transactionTypesItems: selectTransTypesForRules(state),
   isEventsLoading: loadingEventsSelector(state),
   eventsOptions: selectDictionaryEventsOptions(state),
   scriptValue: formSelector(state, 'script'),

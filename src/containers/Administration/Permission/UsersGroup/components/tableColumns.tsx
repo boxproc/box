@@ -4,9 +4,9 @@ import { TableCell, TableHeader } from 'components';
 
 import { AdminUsersGroupItem } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminUsersGroupItem> = TableCellType<AdminUsersGroupItem[T]>;
+type TCell<T extends keyof AdminUsersGroupItem> = ITableCellType<AdminUsersGroupItem[T]>;
 
 export const tableColumns = [
   {

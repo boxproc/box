@@ -3,10 +3,10 @@ import React from 'react';
 import { TableCell, TableHeader } from 'components';
 
 import { AuditScheduledJobsItemPrepared } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof AuditScheduledJobsItemPrepared> =
-  TableCellType<AuditScheduledJobsItemPrepared[T]>;
+  ITableCellType<AuditScheduledJobsItemPrepared[T]>;
 
 export const tableColumns = [
   {

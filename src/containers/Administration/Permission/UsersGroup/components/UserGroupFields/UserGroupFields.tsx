@@ -7,12 +7,12 @@ import { InputField, SelectField } from 'components';
 
 import { HandleGetAdminInstitutions } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 export interface UserGroupFieldsProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   isInstitutionsLoading: boolean;
   getInstitutions: HandleGetAdminInstitutions;

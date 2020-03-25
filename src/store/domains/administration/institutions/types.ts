@@ -1,7 +1,7 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface AdminInstitutionsItem {
   id: number;
@@ -29,7 +29,7 @@ export interface AdminInstitutionsItemPrepared extends AdminInstitutionsItemPrep
 }
 
 export interface AdminInstitutionsItemDetailsPrepared extends AdminInstitutionsItemPreparedPlain {
-  status: SelectValue;
+  status: ISelectValue;
 }
 
 export interface AdminInstitutionsState {

@@ -1,58 +1,58 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import PageTemplate from 'containers/PageTemplate';
-import { tableColumns } from './components';
+import EventDataElemsFilter from './EventDataElemsFilter';
+import { tableColumns } from './tableColumns';
 
-import { EventDataElemsFilter } from 'containers/Administration/Dictionaries/EventDataElems/forms';
+import PageTemplate from 'containers/PageTemplate';
 
 import {
-  DictionaryEventDataElemsItem,
-  HandleFilterDictionaryEventDataElems,
-  HandleGetDictionaryEvents,
-  ResetEventDataElems,
+  IDictionaryEventDataElemPrepared,
+  THandleFilterDictionaryEventDataElems,
+  THandleGetDictionaryEvents,
+  TResetEventDataElems,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EventDataElemsProps {
-  getDictionaryEvents: HandleGetDictionaryEvents;
-  dictionaryEventDataElemsItems: ImmutableArray<DictionaryEventDataElemsItem>;
-  dictionaryEventsOptions: Array<SelectValue>;
-  filterDictionaryEventDataElems: HandleFilterDictionaryEventDataElems;
-  resetEventDataElems: ResetEventDataElems;
+  eventDataElemsData: ImmutableArray<IDictionaryEventDataElemPrepared>;
+  eventsOptions: Array<ISelectValue>;
+  filterEventDataElems: THandleFilterDictionaryEventDataElems;
+  getEventsData: THandleGetDictionaryEvents;
   isLoading: boolean;
+  resetEventDataElems: TResetEventDataElems;
 }
 
 export const EventDataElems: React.FC<EventDataElemsProps> = ({
-  getDictionaryEvents,
-  dictionaryEventDataElemsItems,
-  dictionaryEventsOptions,
-  filterDictionaryEventDataElems,
-  resetEventDataElems,
+  eventDataElemsData,
+  eventsOptions,
+  filterEventDataElems,
+  getEventsData,
   isLoading,
+  resetEventDataElems,
 }) => {
   React.useEffect(
     () => {
-      getDictionaryEvents();
+      getEventsData();
       return () => resetEventDataElems();
     },
-    [getDictionaryEvents, resetEventDataElems]
+    [getEventsData, resetEventDataElems]
   );
 
   return (
     <PageTemplate
-      title="Event Data Elements"
-      data={dictionaryEventDataElemsItems}
       columns={tableColumns}
-      filterAction={filterDictionaryEventDataElems}
-      isSearchable={true}
+      data={eventDataElemsData}
+      filterAction={filterEventDataElems}
       isDownloadButton={true}
       isLoading={isLoading}
+      isSearchable={true}
+      title="Event Data Elements"
       FilterForm={
         <EventDataElemsFilter
           isDisabled={isLoading}
-          eventOptions={dictionaryEventsOptions}
+          eventOptions={eventsOptions}
         />
       }
     />

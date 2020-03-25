@@ -22,9 +22,9 @@ import {
   ProductApr,
 } from 'store';
 
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
-type TCell<T extends keyof ProductApr> = TableCellType<ProductApr[T]>;
+type TCell<T extends keyof ProductApr> = ITableCellType<ProductApr[T]>;
 
 interface AprsTableProps {
   productAprs: ImmutableArray<ProductApr>;

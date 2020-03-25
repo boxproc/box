@@ -4,10 +4,10 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Table, TableCell, TableHeader } from 'components';
 
 import { LedgerStatementAprItemPrepared } from 'store';
-import { TableCellType } from 'types';
+import { ITableCellType } from 'types';
 
 type TCell<T extends keyof LedgerStatementAprItemPrepared> =
-  TableCellType<LedgerStatementAprItemPrepared[T]>;
+  ITableCellType<LedgerStatementAprItemPrepared[T]>;
 
 export const tableColumns = [
   {

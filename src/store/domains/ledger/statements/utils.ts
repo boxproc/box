@@ -10,12 +10,12 @@ import {
   LedgerStatementTransactionsItemPrepared
 } from './types';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const prepareStatementDataToRender = (
   data: Partial<LedgerStatementItem>,
-  institution?: SelectValue
+  institution?: ISelectValue
 ) => {
   if (!data) {
     return null;
@@ -82,7 +82,7 @@ export const prepareStatementDataToRender = (
 
 export const prepareDataToRender = (
   data: Partial<LedgerStatementItem>,
-  institution?: SelectValue
+  institution?: ISelectValue
 ) => {
   const preparedData = prepareStatementDataToRender(data, institution);
 

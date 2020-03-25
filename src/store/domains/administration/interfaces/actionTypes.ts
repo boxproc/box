@@ -1,4 +1,4 @@
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 import { AdminInterfaceItems } from './types';
 
 export enum ActionTypeKeys {
@@ -27,12 +27,12 @@ export interface AddAdminInterfaceAction {
 }
 
 export interface AddAdminInterfaceFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_INTERFACE_FULFILLED;
 }
 
 export interface AddAdminInterfaceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_INTERFACE_REJECTED;
 }
 
@@ -42,13 +42,13 @@ export interface DeleteAdminInterfaceAction {
 }
 
 export interface DeleteAdminInterfaceFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE_FULFILLED;
   meta: { id: number };
 }
 
 export interface DeleteAdminInterfaceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE_REJECTED;
 }
 
@@ -58,12 +58,12 @@ export interface UpdateAdminInterfaceAction {
 }
 
 export interface UpdateAdminInterfaceFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE_FULFILLED;
 }
 
 export interface UpdateAdminInterfaceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE_REJECTED;
 }
 
@@ -78,7 +78,7 @@ export interface FilterAdminInterfaceFulfilledAction {
 }
 
 export interface FilterAdminInterfaceRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE_REJECTED;
 }
 

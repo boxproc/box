@@ -1,6 +1,6 @@
 import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   FILTER_ADMIN_SCHEDULER_JOBS = 'administration/scheduler/FILTER_ADMIN_SCHEDULER_JOBS',
@@ -54,7 +54,7 @@ export interface FilterAdminSchedulerJobsFulfilledAction {
 }
 
 export interface FilterAdminSchedulerJobsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
@@ -64,12 +64,12 @@ export interface AddAdminSchedulerJobAction {
 }
 
 export interface AddAdminSchedulerJobFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS_FULFILLED;
 }
 
 export interface AddAdminSchedulerJobRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
@@ -79,13 +79,13 @@ export interface DeleteAdminSchedulerJobAction {
 }
 
 export interface DeleteAdminSchedulerJobFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_FULFILLED;
   meta: { id: number };
 }
 
 export interface DeleteAdminSchedulerJobRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
@@ -95,12 +95,12 @@ export interface UpdateAdminSchedulerJobAction {
 }
 
 export interface UpdateAdminSchedulerJobFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS_FULFILLED;
 }
 
 export interface UpdateAdminSchedulerJobRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS_REJECTED;
 }
 
@@ -110,12 +110,12 @@ export interface SendAdminSchedulerActionJobAction {
 }
 
 export interface SendAdminSchedulerActionJobFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_FULFILLED;
 }
 
 export interface SendAdminSchedulerActionJobRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB_REJECTED;
 }
 
@@ -130,7 +130,7 @@ export interface GetSchedulerNamesByInstitutionIdFulfilledAction {
 }
 
 export interface GetSchedulerNamesByInstitutionIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID_REJECTED;
 }
 

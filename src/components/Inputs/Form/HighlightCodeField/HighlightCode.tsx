@@ -13,11 +13,11 @@ import { ContextMenuList } from './../../../Navigation';
 
 import { EditorWrapper } from './EditorWrapper';
 
-import { ContextMenuItemProps, ContextSubMenuType } from 'types';
+import { IContextMenuItem, TContextSubMenu } from 'types';
 
 interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  contextMenuItems?: Array<ContextMenuItemProps>;
-  contextSubMenuItems?: ContextSubMenuType;
+  contextMenuItems?: Array<IContextMenuItem>;
+  contextSubMenuItems?: TContextSubMenu;
   fontSize?: number;
   height?: string;
   isScrollbarBottom?: boolean;

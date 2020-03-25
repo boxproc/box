@@ -1,36 +1,37 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import PageTemplate from 'containers/PageTemplate';
-import { tableColumns } from './components';
+import { tableColumns } from './tableColumns';
 
-import { DictionaryTransactionTypes, HandleGetDictionaryTransactionTypes } from 'store';
+import PageTemplate from 'containers/PageTemplate';
+
+import { IDictionaryTransactionTypePrepared, THandleGetDictionaryTransactionTypes } from 'store';
 
 interface TransactionTypesProps {
-  getTransactionTypes: HandleGetDictionaryTransactionTypes;
-  transactionTypes: ImmutableArray<DictionaryTransactionTypes>;
+  getTransactionTypesData: THandleGetDictionaryTransactionTypes;
   isLoading: boolean;
+  transactionTypesData: ImmutableArray<IDictionaryTransactionTypePrepared>;
 }
 
 export const TransactionTypes: React.FC<TransactionTypesProps> = ({
-  getTransactionTypes,
-  transactionTypes,
+  getTransactionTypesData,
   isLoading,
+  transactionTypesData,
 }) => {
   React.useEffect(
     () => {
-      getTransactionTypes();
+      getTransactionTypesData();
     },
-    [getTransactionTypes]
+    [getTransactionTypesData]
   );
 
   return (
     <PageTemplate
-      title="Transaction Types"
-      data={transactionTypes}
       columns={tableColumns}
+      data={transactionTypesData}
       isDownloadButton={true}
       isLoading={isLoading}
+      title="Transaction Types"
     />
   );
 };

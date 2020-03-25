@@ -9,13 +9,13 @@ import { formNamesConst, iconNamesConst } from 'consts';
 
 import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 interface EditUserGroupMembersProps {
-  activeUsersItemsOptions: Array<SelectValue>;
-  selectedUser: SelectValue;
+  activeUsersItemsOptions: Array<ISelectValue>;
+  selectedUser: ISelectValue;
   currentUserGroupId: number;
   isLoading: boolean;
   getActiveUsers: HandleGetAdminActiveUsers;

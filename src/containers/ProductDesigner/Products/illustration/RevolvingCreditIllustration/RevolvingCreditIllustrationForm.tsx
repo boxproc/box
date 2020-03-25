@@ -15,13 +15,13 @@ import {
 
 import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst } from 'consts';
 import { HandleIllustrateRevolvingCreditProduct } from 'store';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IllustrationRevolvingCreditProductFormProps {
-  transactionTypesOptions: Array<SelectValue>;
+  transactionTypesOptions: Array<ISelectValue>;
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
-  isTransactionTypesLoading: boolean;
+  isTransTypesLoading: boolean;
   isLoading: boolean;
   isDisabled: boolean;
 }
@@ -32,7 +32,7 @@ type GeneralProductFormAllProps = IllustrationRevolvingCreditProductFormProps &
 const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
   handleSubmit,
   transactionTypesOptions,
-  isTransactionTypesLoading,
+  isTransTypesLoading,
   illustrateRevolvingCreditProduct,
   isLoading,
   isDisabled,
@@ -155,7 +155,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 name="transactionType1"
                 component={SelectField}
                 placeholder="Select type"
-                isLoading={isTransactionTypesLoading}
+                isLoading={isTransTypesLoading}
                 options={transactionTypesOptions}
                 label="Type"
                 isDisabled={isDisabled}
@@ -205,7 +205,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 id="transactionType2"
                 name="transactionType2"
                 component={SelectField}
-                isLoading={isTransactionTypesLoading}
+                isLoading={isTransTypesLoading}
                 options={transactionTypesOptions}
                 placeholder="Select Type"
                 label="Type"
@@ -256,7 +256,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
                 id="transactionType3"
                 name="transactionType3"
                 component={SelectField}
-                isLoading={isTransactionTypesLoading}
+                isLoading={isTransTypesLoading}
                 options={transactionTypesOptions}
                 placeholder="Select type"
                 label="Type"

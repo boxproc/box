@@ -1,4 +1,4 @@
-import { ApiResponse, LogData } from 'types';
+import { ILogData, TApiResponse } from 'types';
 import {
   ItemInfoForLogDataRequest,
   SystemMonitorEndpointsData,
@@ -50,7 +50,7 @@ export interface GetSystemMonitorInterfacesFulfilledAction {
 }
 
 export interface GetSystemMonitorInterfacesRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_INTERFACES_REJECTED;
 }
 
@@ -65,7 +65,7 @@ export interface GetSystemMonitorEndpointsFulfilledAction {
 }
 
 export interface GetSystemMonitorEndpointsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_ENDPOINTS_REJECTED;
 }
 
@@ -80,7 +80,7 @@ export interface GetSystemMonitorSchedulerFulfilledAction {
 }
 
 export interface GetSystemMonitorSchedulerRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_SCHEDULER_REJECTED;
 }
 
@@ -95,7 +95,7 @@ export interface GetSystemMonitorLastTransactionsFulfilledAction {
 }
 
 export interface GetSystemMonitorLastTransactionsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS_REJECTED;
 }
 
@@ -105,13 +105,13 @@ export interface GetLogDataAction {
 }
 
 export interface GetLogDataFulfilledAction {
-  readonly payload: LogData;
+  readonly payload: ILogData;
   readonly type: ActionTypeKeys.GET_LOG_DATA_FULFILLED;
   readonly meta: ItemInfoForLogDataRequest;
 }
 
 export interface GetLogDataRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_LOG_DATA_REJECTED;
 }
 

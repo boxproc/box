@@ -4,23 +4,21 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import {
   createLoadingSelector,
-  DictionaryCurrenciesActionTypes,
-  HandleGetDictionaryCurrencies,
+  DictionaryActionTypes,
   handleGetDictionaryCurrencies,
-  selectCurrencyCodesOptions,
-  selectCurrencyNumCodesOptions,
+  selectCurrencyNumsOptions,
   StoreState,
+  THandleGetDictionaryCurrencies,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
 export interface WithLoadCurrencyCodesProps {
-  currencyCodes: Array<SelectValue>;
-  numCurrencyCodes: Array<SelectValue>;
-  isCurrencyCodesLoading: boolean;
-  loadCurrencyCodes: HandleGetDictionaryCurrencies;
+  currenciesOptions: Array<ISelectValue>;
+  isCurrenciesLoading: boolean;
+  loadCurrencies: THandleGetDictionaryCurrencies;
 }
 
 export const withLoadCurrencyCodes =
@@ -30,29 +28,27 @@ export const withLoadCurrencyCodes =
     const WithLoadCurrencyCodes:
       React.FC<WithLoadCurrencyCodesProps> = props => {
         const {
-          currencyCodes,
-          numCurrencyCodes,
-          loadCurrencyCodes,
-          isCurrencyCodesLoading,
+          currenciesOptions,
+          isCurrenciesLoading,
+          loadCurrencies,
           ...originProps
         } = props;
-        const isEmpty = currencyCodes.length === 0;
+        const isEmpty = currenciesOptions && currenciesOptions.length === 0;
 
         React.useEffect(
           () => {
             if (isEmpty) {
-              loadCurrencyCodes();
+              loadCurrencies();
             }
           },
-          [loadCurrencyCodes, isEmpty]
+          [loadCurrencies, isEmpty]
         );
 
         return (
           <Component
-            isCurrencyCodesLoading={isCurrencyCodesLoading}
-            currencyCodes={currencyCodes}
-            numCurrencyCodes={numCurrencyCodes}
-            loadCurrencyCodes={loadCurrencyCodes}
+            currenciesOptions={currenciesOptions}
+            isCurrenciesLoading={isCurrenciesLoading}
+            loadCurrencies={loadCurrencies}
             {...originProps as OriginProps}
           />
         );
@@ -62,18 +58,17 @@ export const withLoadCurrencyCodes =
       `WithLoadCurrencyCodes(${componentUtil.getDisplayName(Component)})`;
 
     const loadingSelector = createLoadingSelector([
-      DictionaryCurrenciesActionTypes.GET_DICTIONARY_CURRENCIES,
+      DictionaryActionTypes.GET_DICTIONARY_CURRENCIES,
     ]);
 
     const mapStateToProps = (state: StoreState) => ({
-      isCurrencyCodesLoading: loadingSelector(state),
-      currencyCodes: selectCurrencyCodesOptions(state),
-      numCurrencyCodes: selectCurrencyNumCodesOptions(state),
+      currenciesOptions: selectCurrencyNumsOptions(state),
+      isCurrenciesLoading: loadingSelector(state),
     });
 
     const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
       {
-        loadCurrencyCodes: handleGetDictionaryCurrencies,
+        loadCurrencies: handleGetDictionaryCurrencies,
       },
       dispatch
     );

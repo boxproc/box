@@ -1,6 +1,6 @@
 import { AuthResponse, AuthStepTwoResponse } from './types';
 
-import { ResponseStatusType } from 'types';
+import { IResponseStatus } from 'types';
 
 export const authResponseStepOneData: { status: string } = {
   status: 'A',
@@ -26,7 +26,7 @@ export const authSecretKeyData: AuthStepTwoResponse = {
   },
 };
 
-export const successResponseStatus: ResponseStatusType = {
+export const successResponseStatus: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

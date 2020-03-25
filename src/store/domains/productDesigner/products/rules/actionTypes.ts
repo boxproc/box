@@ -1,6 +1,6 @@
 import { ProductRuleResp } from './types';
 
-import { ApiResponse, ResponseStatusType, } from 'types';
+import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
   GET_PRODUCT_RULE = 'productDesigner/products/GET_PRODUCT_RULE',
@@ -23,7 +23,7 @@ export interface GetProductRuleFulfilledAction {
 }
 
 export interface GetProductRuleRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_RULE_REJECTED;
 }
 
@@ -33,12 +33,12 @@ export interface UpdateProductRulesAction {
 }
 
 export interface UpdateProductRulesFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_FULFILLED;
 }
 
 export interface UpdateProductRulesRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_REJECTED;
 }
 

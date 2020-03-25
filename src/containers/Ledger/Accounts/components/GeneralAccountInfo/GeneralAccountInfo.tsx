@@ -13,23 +13,23 @@ import {
 } from 'components';
 
 import {
-  HandleGetDictionaryAccountStatuses,
-  HandleGetDictionaryRepaymentTypes,
   HandleGetInstitutionProducts,
+  THandleGetDictionaryAccountStatuses,
+  THandleGetDictionaryRepaymentTypes,
 } from 'store';
 
 import { dateFormatConst, maskFormatConst } from 'consts';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
 export interface GeneralAccountInfoProps {
-  institutionsOptions: Array<SelectValue>;
-  institutionProductsOptions: Array<SelectValue>;
-  statusesOptions: Array<SelectValue>;
-  currentInstitution: SelectValue;
-  repaymentTypesOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
+  institutionProductsOptions: Array<ISelectValue>;
+  statusesOptions: Array<ISelectValue>;
+  currentInstitution: ISelectValue;
+  repaymentTypesOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   hasProductOverride: boolean;
   isChosenLoanProductType: boolean;
@@ -38,8 +38,8 @@ export interface GeneralAccountInfoProps {
   pristine: boolean;
   isReadOnly: boolean;
   getInstitutionProducts: HandleGetInstitutionProducts;
-  getAccountStatuses: HandleGetDictionaryAccountStatuses;
-  getRepaymentTypes: HandleGetDictionaryRepaymentTypes;
+  getAccountStatuses: THandleGetDictionaryAccountStatuses;
+  getRepaymentTypes: THandleGetDictionaryRepaymentTypes;
   onCancel: () => void;
 }
 

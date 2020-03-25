@@ -1,5 +1,5 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 export interface LedgerTransactionPlainInfo {
   id: number;
@@ -123,10 +123,10 @@ export interface LedgerConvertTransactionToLoanItemPrepared {
 }
 
 export interface LedgerTransactionsFilter {
-  institutionId: SelectValue;
+  institutionId: ISelectValue;
   customerId: number;
   transactionId: number;
-  productName: SelectValue;
+  productName: ISelectValue;
   transactionsDateTimeFrom: string;
   transactionsDateTimeTo: string;
   accountId: number;

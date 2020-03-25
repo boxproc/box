@@ -7,7 +7,7 @@ import styled from 'theme';
 
 import { SelectField } from 'components';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const InstitutionsWrapper = styled(Box)`
@@ -17,7 +17,7 @@ const InstitutionsWrapper = styled(Box)`
 `;
 
 interface UiSessionsFilterProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 

@@ -5,7 +5,7 @@ import { codeKeysConst } from 'consts';
 
 import { TableCell } from './TableCell';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 
 interface EditableTableCellProps {
   cellInfo: CellInfo;
@@ -14,7 +14,7 @@ interface EditableTableCellProps {
   isNumber?: boolean;
   isSelect?: boolean;
   isSmaller?: boolean;
-  selectOptions?: Array<SelectValue>;
+  selectOptions?: Array<ISelectValue>;
   updateAction: (data: object) => void;
 }
 
@@ -29,7 +29,7 @@ const EditableTableCell: React.FC<EditableTableCellProps> = ({
   updateAction,
 }) => {
   const handleSelectValue = React.useCallback(
-    (value: SelectValue) => {
+    (value: ISelectValue) => {
       if (value) {
         updateAction({
           ...cellInfo.original,

@@ -28,18 +28,18 @@ import {
   LedgerAccountItemDetailsPrepared,
 } from 'store';
 
-import { SelectValue } from 'types';
+import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface AccountFormProps extends ExternalSpinnerProps {
-  institutionsOptions: Array<SelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   institutionProducts: ImmutableArray<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
-  currentProduct: SelectValue;
-  currentInstitution: SelectValue;
+  currentProduct: ISelectValue;
+  currentInstitution: ISelectValue;
   updateLedgerAccount: HandleUpdateLedgerAccount;
   addLedgerAccount: HandleAddLedgerAccount;
-  repaymentTypesOptions: Array<SelectValue>;
+  repaymentTypesOptions: Array<ISelectValue>;
   onCancel: () => void;
   isEditMode?: boolean;
   isReadOnly?: boolean;

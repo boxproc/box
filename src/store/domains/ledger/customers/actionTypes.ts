@@ -1,6 +1,6 @@
 import { LedgerCustomerItems, RepaymentDebitCardsItems, RepaymentDirectDebitsItems } from './types';
 
-import { ApiResponse, ResponseStatusType } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   DELETE_LEDGER_CUSTOMER = 'ledger/customers/DELETE_LEDGER_CUSTOMER',
@@ -57,7 +57,7 @@ export interface DeleteLedgerCustomerAction {
 }
 
 export interface DeleteLedgerCustomerFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER_FULFILLED;
   readonly meta: {
     id: number;
@@ -65,7 +65,7 @@ export interface DeleteLedgerCustomerFulfilledAction {
 }
 
 export interface DeleteLedgerCustomerRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER_REJECTED;
 }
 
@@ -75,12 +75,12 @@ export interface AddLedgerCustomerAction {
 }
 
 export interface AddLedgerCustomerFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_LEDGER_CUSTOMER_FULFILLED;
 }
 
 export interface AddLedgerCustomerRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_LEDGER_CUSTOMER_REJECTED;
 }
 
@@ -90,12 +90,12 @@ export interface UpdateLedgerCustomerAction {
 }
 
 export interface UpdateLedgerCustomerFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_LEDGER_CUSTOMER_FULFILLED;
 }
 
 export interface UpdateLedgerCustomerRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_LEDGER_CUSTOMER_REJECTED;
 }
 
@@ -110,7 +110,7 @@ export interface FilterLedgerCustomersFulfilledAction {
 }
 
 export interface FilterLedgerCustomersRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_REJECTED;
 }
 
@@ -125,7 +125,7 @@ export interface FilterLedgerCustomersByIdFulfilledAction {
 }
 
 export interface FilterLedgerCustomersByIdRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID_REJECTED;
 }
 
@@ -140,7 +140,7 @@ export interface GetRepaymentDebitCardsFulfilledAction {
 }
 
 export interface GetRepaymentDebitCardsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS_REJECTED;
 }
 
@@ -150,12 +150,12 @@ export interface AddRepaymentDebitCardAction {
 }
 
 export interface AddRepaymentDebitCardFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD_FULFILLED;
 }
 
 export interface AddRepaymentDebitCardRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD_REJECTED;
 }
 
@@ -170,7 +170,7 @@ export interface GetRepaymentDirectDebitsFulfilledAction {
 }
 
 export interface GetRepaymentDirectDebitsRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_REJECTED;
 }
 
@@ -180,12 +180,12 @@ export interface AddRepaymentDirectDebitAction {
 }
 
 export interface AddRepaymentDirectDebitFulfilledAction {
-  readonly payload: ResponseStatusType;
+  readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED;
 }
 
 export interface AddRepaymentDirectDebitRejectedAction {
-  readonly payload: ApiResponse;
+  readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_REJECTED;
 }
 

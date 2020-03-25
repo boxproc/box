@@ -1,38 +1,39 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
+import { tableColumns } from './tableColumns';
+
 import PageTemplate from 'containers/PageTemplate';
-import { tableColumns } from './components';
 
-import { HandleGetDictionaryEvents } from 'store';
+import { THandleGetDictionaryEvents } from 'store';
 
-import { IdNamePair } from 'types';
+import { IIdNamePair } from 'types';
 
 interface EventsProps {
-  getDictionaryEvents: HandleGetDictionaryEvents;
-  dictionaryEventsItems: ImmutableArray<IdNamePair>;
+  eventsData: ImmutableArray<IIdNamePair>;
+  getEventsData: THandleGetDictionaryEvents;
   isLoading: boolean;
 }
 
 export const Events: React.FC<EventsProps> = ({
-  getDictionaryEvents,
-  dictionaryEventsItems,
+  eventsData,
+  getEventsData,
   isLoading,
 }) => {
   React.useEffect(
     () => {
-      getDictionaryEvents();
+      getEventsData();
     },
-    [getDictionaryEvents]
+    [getEventsData]
   );
 
   return (
     <PageTemplate
-      title="Events"
-      data={dictionaryEventsItems}
       columns={tableColumns}
+      data={eventsData}
       isDownloadButton={true}
       isLoading={isLoading}
+      title="Events"
     />
   );
 };

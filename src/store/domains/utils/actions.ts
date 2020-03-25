@@ -17,7 +17,7 @@ import {
   StopAutoRefreshAction,
 } from './actionTypes';
 
-import { MessageResponse } from 'types';
+import { IMessageResponse } from 'types';
 import { stringsUtil } from 'utils';
 
 export type SetActiveTableRowIndex = (index: number) => SetActiveTableRowIndexAction;
@@ -37,7 +37,7 @@ export type StopAutoRefresh = () => StopAutoRefreshAction;
 
 export type ResetUtils = () => void;
 
-export type SendNotification = (res: MessageResponse, isCatch?: boolean) =>
+export type SendNotification = (res: IMessageResponse, isCatch?: boolean) =>
   (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
 export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
