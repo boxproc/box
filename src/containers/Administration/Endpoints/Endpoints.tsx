@@ -73,9 +73,7 @@ const Endpoints: React.FC<EndpointsProps> = ({
 
   const initialFilterValues = React.useMemo(
     () => {
-      return {
-        institutionId: institutionsOptions[0],
-      };
+      return { institutionId: institutionsOptions[0] };
     },
     [institutionsOptions]
   );
