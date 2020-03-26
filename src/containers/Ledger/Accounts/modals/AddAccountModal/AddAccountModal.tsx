@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -10,7 +10,7 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { ISelectValue } from 'types';
 
-interface AddAccountModalProps extends WithModalProps {
+interface AddAccountModalProps extends IWithModal {
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }

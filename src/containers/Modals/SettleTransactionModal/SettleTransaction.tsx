@@ -7,17 +7,17 @@ import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 
 import PageTitle from 'containers/PageTemplate/PageTitle';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import {
   HandleRetrieveTransaction,
   HandleSettleTransaction,
-  PayloadSettleTransactionModal,
+  IPayloadSettleTransactionModal,
   ResetRetrievedTransaction,
   SettleTransactionFormValues,
 } from 'store';
 
-interface SettleTransactionModalProps extends WithModalProps {
+interface SettleTransactionModalProps extends IWithModal {
   retrievedTransaction: SettleTransactionFormValues;
   retrieveTransaction: HandleRetrieveTransaction;
   settleTransaction: HandleSettleTransaction;
@@ -26,7 +26,7 @@ interface SettleTransactionModalProps extends WithModalProps {
   isLoading: boolean;
   isRetrievedTransaction: boolean;
   isDirtySettleTransactionForm: boolean;
-  payloadSettleTransactionModal: PayloadSettleTransactionModal;
+  payloadSettleTransactionModal: IPayloadSettleTransactionModal;
 }
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;

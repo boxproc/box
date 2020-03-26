@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -10,7 +10,7 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { LedgerAccountItemDetailsPrepared } from 'store';
 
-interface EditAccountModalProps extends WithModalProps {
+interface EditAccountModalProps extends IWithModal {
   currentAccountAlias: string;
   currentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;

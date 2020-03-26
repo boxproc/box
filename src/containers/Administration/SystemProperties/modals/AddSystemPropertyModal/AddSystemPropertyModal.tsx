@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -9,7 +9,7 @@ import { SystemPropertyForm } from 'containers/Administration/SystemProperties/f
 
 import { HandleAddAdminSysProp } from 'store';
 
-interface AddSystemPropertyModalProps extends WithModalProps {
+interface AddSystemPropertyModalProps extends IWithModal {
   addAdminSysProp: HandleAddAdminSysProp;
   isFormDirty: boolean;
 }

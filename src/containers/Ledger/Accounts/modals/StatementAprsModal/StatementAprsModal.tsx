@@ -4,7 +4,7 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Modal, T4 } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -12,7 +12,7 @@ import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/
 
 import { IStatementApr } from 'store';
 
-interface StatementAprsProps extends WithModalProps {
+interface StatementAprsProps extends IWithModal {
   currentAccountAlias: string;
   currentStatementDate: string;
   statementAprs: ImmutableArray<IStatementApr>;

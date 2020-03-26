@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal, withSpinner } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -11,7 +11,7 @@ import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface AddSchedulerModalProps extends WithModalProps {
+interface AddSchedulerModalProps extends IWithModal {
   addSchedulerJob: HandleAddAdminSchedulerJob;
   schedulerJobValues: AdminSchedulerEditableItem;
   institutionsOptions: Array<ISelectValue>;

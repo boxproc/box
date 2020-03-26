@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal, withSpinner } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditUserGroupForms } from 'containers/Administration/Permission/UsersGroup/forms';
 
-interface EditUsersGroupModalProps extends WithModalProps {
+interface EditUsersGroupModalProps extends IWithModal {
   groupName: string;
   institutionName: string;
   isGeneralInfoFormDirty: boolean;

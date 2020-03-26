@@ -7,10 +7,10 @@ import { AuditState } from './domains/audit';
 import { LedgerState } from './domains/ledger';
 import { LoaderState } from './domains/loader';
 import { LoginState } from './domains/login';
-import { ModalsState } from './domains/modals';
+import { IModalsState } from './domains/modals';
 import { ProductDesignerState } from './domains/productDesigner';
 import { UiItemsState } from './domains/uiItems';
-import { UtilsState } from './domains/utils';
+import { IUtilsState } from './domains/utils';
 
 export interface StoreState {
   form: Reducer<FormStateMap>;
@@ -18,10 +18,10 @@ export interface StoreState {
   loader: LoaderState;
   uiItems: UiItemsState;
   audit: AuditState;
-  modals: ModalsState;
+  modals: IModalsState;
   administration: AdministrationState;
   login: LoginState;
   productDesigner: ProductDesignerState;
   ledger: LedgerState;
-  utils: UtilsState;
+  utils: IUtilsState;
 }

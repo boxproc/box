@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { CustomerForm } from 'containers/Ledger/Customers/forms';
 
-interface AddCustomerModalProps extends WithModalProps {
+interface AddCustomerModalProps extends IWithModal {
   isFormDirty: boolean;
 }
 

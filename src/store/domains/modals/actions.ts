@@ -1,25 +1,25 @@
 import {
   ActionTypeKeys,
-  CloseAllModalsAction,
-  CloseModalAction,
-  OpenModalAction,
+  ICloseAllModalsAction,
+  ICloseModalAction,
+  IOpenModalAction,
 } from './actionTypes';
-import { ModalsData } from './types';
+import { IModalsData } from './types';
 
-export type OpenModal = (data: ModalsData) => OpenModalAction;
-export type CloseModal = (modalName: string) => CloseModalAction;
-export type CloseAllModals = () => CloseAllModalsAction;
+export type TOpenModal = (data: IModalsData) => IOpenModalAction;
+export type TCloseModal = (modalName: string) => ICloseModalAction;
+export type TCloseAllModals = () => ICloseAllModalsAction;
 
-export const openModal: OpenModal = data => ({
+export const openModal: TOpenModal = data => ({
   type: ActionTypeKeys.OPEN_MODAL,
   payload: data,
 });
 
-export const closeModal: CloseModal = modalName => ({
+export const closeModal: TCloseModal = modalName => ({
   type: ActionTypeKeys.CLOSE_MODAL,
   payload: modalName,
 });
 
-export const closeAllModals: CloseAllModals = () => ({
+export const closeAllModals: TCloseAllModals = () => ({
   type: ActionTypeKeys.CLOSE_ALL_MODALS,
 });

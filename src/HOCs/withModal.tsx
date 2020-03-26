@@ -4,24 +4,24 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import {
   closeAllModals,
-  CloseAllModals,
   closeModal,
-  CloseModal,
   openModal,
-  OpenModal,
   selectIsReadOnly,
   StoreState,
+  TCloseAllModals,
+  TCloseModal,
+  TOpenModal,
 } from 'store';
 
-export interface WithModalProps {
-  openModal: OpenModal;
-  closeModal: CloseModal;
-  closeAllModals: CloseAllModals;
+export interface IWithModal {
+  openModal: TOpenModal;
+  closeModal: TCloseModal;
+  closeAllModals: TCloseAllModals;
   isReadOnly: boolean;
 }
 
 export const withModal = <OriginProps extends {}>(
-  Component: React.ComponentType<OriginProps & Partial<WithModalProps>>
+  Component: React.ComponentType<OriginProps & Partial<IWithModal>>
 ) => {
   const WithModal: React.FC = props => {
     return (

@@ -1,9 +1,9 @@
-export interface ModalsData {
+export interface IModalsData {
   name: string;
   payload?: object;
 }
 
-export interface PayloadMessageModal {
+export interface IPayloadMessageModal {
   title: string;
   message?: string;
   details?: string;
@@ -11,19 +11,19 @@ export interface PayloadMessageModal {
   errorCode?: number;
 }
 
-export interface PayloadConfirmationModal {
+export interface IPayloadConfirmationModal {
   confirmationAction: () => void;
   confirmationTitle?: string;
   confirmationText?: string;
 }
 
-export interface PayloadLogModal {
+export interface IPayloadLogModal {
   title?: string;
   logData: string;
   logLocation?: string;
 }
 
-export interface PayloadManualTransactionModal {
+export interface IPayloadManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
   balanceLimit: string;
@@ -31,20 +31,20 @@ export interface PayloadManualTransactionModal {
   isLimitAdjustmentMode?: boolean;
 }
 
-export interface PayloadTransactionModal {
+export interface IPayloadTransactionModal {
   activeTab?: number;
 }
 
-export interface PayloadSettleTransactionModal {
+export interface IPayloadSettleTransactionModal {
   transactionId?: number;
 }
 
-export interface ModalsState {
+export interface IModalsState {
   isMessageModal: boolean;
-  payloadMessageModal: PayloadMessageModal;
-  payloadConfirmationModal: PayloadConfirmationModal;
-  payloadLogModal: PayloadLogModal;
-  payloadManualTransactionModal: PayloadManualTransactionModal;
-  payloadTransactionModal: PayloadTransactionModal;
-  payloadSettleTransactionModal: PayloadSettleTransactionModal;
+  payloadMessageModal: IPayloadMessageModal;
+  payloadConfirmationModal: IPayloadConfirmationModal;
+  payloadLogModal: IPayloadLogModal;
+  payloadManualTransactionModal: IPayloadManualTransactionModal;
+  payloadTransactionModal: IPayloadTransactionModal;
+  payloadSettleTransactionModal: IPayloadSettleTransactionModal;
 }

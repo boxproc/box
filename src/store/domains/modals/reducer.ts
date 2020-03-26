@@ -1,9 +1,9 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
 import { ActionTypeKeys, ModalActionTypes } from './actionTypes';
-import { ModalsState } from './types';
+import { IModalsState } from './types';
 
-export const modalsInitialState: ImmutableObject<ModalsState> = Immutable({
+export const modalsInitialState: ImmutableObject<IModalsState> = Immutable({
   isMessageModal: false,
   payloadMessageModal: null,
   payloadConfirmationModal: null,

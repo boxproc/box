@@ -7,7 +7,7 @@ import styled from 'theme';
 import { Hint } from './../../Utils';
 import { TabTitle } from './TabTitle';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -16,7 +16,7 @@ const TabsWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.bottomBox};
 `;
 
-interface TabsProps extends WithModalProps {
+interface TabsProps extends IWithModal {
   activeTab?: number;
 }
 

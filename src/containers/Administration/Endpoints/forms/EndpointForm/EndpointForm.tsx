@@ -4,52 +4,49 @@ import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst, iconNamesConst } from 'consts';
-
 import { EndpointFields } from 'containers/Administration/Endpoints/components';
 
 import {
-  HandleAddAdminEndpoint,
-  HandleDeleteAdminEndpoint,
-  HandleUpdateAdminEndpoint,
-  THandleGetDictionaryEndpointTypes
+  THandleAddEndpoint,
+  THandleDeleteEndpoint,
+  THandleGetDictionaryEndpointTypes,
+  THandleUpdateEndpoint,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface EndpointFormProps extends ExternalSpinnerProps {
-  endpointTypesOptions: Array<ISelectValue>;
-  currentEndpointName: string;
+interface IEndpointForm extends ExternalSpinnerProps {
+  addEndpoint: THandleAddEndpoint;
   currentEndpointId: number;
-  isReadOnly: boolean;
-  isLoadingTypesSelector: boolean;
-  isEditMode?: boolean;
-  updateEndpoint: HandleUpdateAdminEndpoint;
-  addEndpoint: HandleAddAdminEndpoint;
-  deleteEndpoint: HandleDeleteAdminEndpoint;
+  currentEndpointName: string;
+  deleteEndpoint: THandleDeleteEndpoint;
+  endpointTypesOptions: Array<ISelectValue>;
   getDictionaryEndpointTypes: THandleGetDictionaryEndpointTypes;
+  isEditMode?: boolean;
+  isLoadingTypesSelector: boolean;
+  isReadOnly: boolean;
   onCancel: () => void;
+  updateEndpoint: THandleUpdateEndpoint;
 }
 
-type EndpointFormAllProps = EndpointFormProps &
-  InjectedFormProps<{}, EndpointFormProps>;
+type TEndpointForm = IEndpointForm & InjectedFormProps<{}, IEndpointForm>;
 
-const EndpointForm: React.FC<EndpointFormAllProps> = ({
-  onCancel,
-  handleSubmit,
-  deleteEndpoint,
-  updateEndpoint,
+const EndpointForm: React.FC<TEndpointForm> = ({
   addEndpoint,
-  pristine,
-  dirty,
-  isEditMode,
+  currentEndpointId,
   currentEndpointName,
-  isReadOnly,
+  deleteEndpoint,
+  dirty,
   endpointTypesOptions,
   getDictionaryEndpointTypes,
+  handleSubmit,
+  isEditMode,
   isLoadingTypesSelector,
-  currentEndpointId,
+  isReadOnly,
+  onCancel,
+  pristine,
+  updateEndpoint,
 }) => {
   React.useEffect(
     () => {
@@ -111,7 +108,7 @@ const EndpointForm: React.FC<EndpointFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EndpointFormProps>({
+export default reduxForm<{}, IEndpointForm>({
   form: formNamesConst.ENDPOINT,
   destroyOnUnmount: true,
   enableReinitialize: true,

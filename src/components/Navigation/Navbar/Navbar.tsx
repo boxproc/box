@@ -8,7 +8,7 @@ import styled from 'theme';
 import { ChevronRightIcon } from './../../Icons';
 import { NavListStyled } from './NavListStyled';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import {
   basePath,
@@ -26,7 +26,7 @@ const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-interface NavbarProps extends WithModalProps {
+interface NavbarProps extends IWithModal {
   uiItems: Array<UiItemPrepared>;
 }
 

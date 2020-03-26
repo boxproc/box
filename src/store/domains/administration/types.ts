@@ -1,5 +1,5 @@
 import { IDictionariesState } from './dictionaries';
-import { AdminEndpointState } from './endpoints';
+import { IEndpointsState } from './endpoints';
 import { AdminInstitutionsState } from './institutions';
 import { AdminInterfaceState } from './interfaces';
 import { AdminUserState } from './permissions/users';
@@ -9,7 +9,7 @@ import { AdminSysPropsState } from './systemProperties';
 
 export interface AdministrationState {
   dictionaries: IDictionariesState;
-  endpoints: AdminEndpointState;
+  endpoints: IEndpointsState;
   institutions: AdminInstitutionsState;
   interfaces: AdminInterfaceState;
   scheduler: AdminSchedulerState;

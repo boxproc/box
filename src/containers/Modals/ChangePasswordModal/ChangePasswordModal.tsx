@@ -4,12 +4,12 @@ import { Modal, withSpinner } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 import { ChangePasswordForm } from './forms';
 
 import { HandleChangePassword } from 'store';
 
-interface ChangeProfileModalProps extends WithModalProps {
+interface ChangeProfileModalProps extends IWithModal {
   changePassword: HandleChangePassword;
 }
 

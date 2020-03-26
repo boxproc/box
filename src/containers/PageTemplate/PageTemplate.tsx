@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, CountDownTimer, Dropdown, DropdownOption } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { basePath, iconNamesConst } from 'consts';
 
@@ -14,17 +14,17 @@ import Filter from './Filter';
 import PageTitle from './PageTitle';
 
 import {
-  ResetUtils,
-  SetActivePagePermission,
-  SetIsOpenFilter,
-  StopAutoRefresh,
+  TResetUtils,
+  TSetActivePagePermission,
+  TSetIsOpenFilter,
+  TStopAutoRefresh,
   UiItemPrepared,
 } from 'store';
 
 import { IContextMenuItem } from 'types';
 import { cookiesUtil, downloadUtil, storageUtil } from 'utils';
 
-interface PageTemplateProps extends RouteComponentProps, WithModalProps {
+interface PageTemplateProps extends RouteComponentProps, IWithModal {
   AdditionalButton?: ReactChild;
   columns: Array<object>;
   contextMenuItems?: Array<IContextMenuItem>;
@@ -40,10 +40,10 @@ interface PageTemplateProps extends RouteComponentProps, WithModalProps {
   isReadOnly: boolean;
   isSearchable?: boolean;
   newModalName?: string;
-  resetUtils: ResetUtils;
-  setActivePagePermission: SetActivePagePermission;
-  setIsOpenFilter: SetIsOpenFilter;
-  stopAutoRefresh: StopAutoRefresh;
+  resetUtils: TResetUtils;
+  setActivePagePermission: TSetActivePagePermission;
+  setIsOpenFilter: TSetIsOpenFilter;
+  stopAutoRefresh: TStopAutoRefresh;
   title: string;
   uiItems: Array<UiItemPrepared>;
 }

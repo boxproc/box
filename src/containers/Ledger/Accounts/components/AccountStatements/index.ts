@@ -5,23 +5,17 @@ import AccountStatements from './AccountStatements';
 
 import {
   accountStatementsSelector,
-  createLoadingSelector,
   handleGetAccountStatements,
   handleGetStatementAprs,
-  LedgerStatementsActionTypes,
+  IsAccStatementsAprsLoadingSelector,
   selectActiveItemId,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerStatementsActionTypes.GET_ACCOUNT_STATEMENTS,
-  LedgerStatementsActionTypes.GET_STATEMENT_APRS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
   accountCurrentId: selectActiveItemId(state),
   accountStatements: accountStatementsSelector(state),
-  isLoading: loadingSelector(state),
+  isLoading: IsAccStatementsAprsLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

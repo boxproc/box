@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -11,7 +11,7 @@ import { AdminInterfaceItemDetailsPrepared } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface EditAccountModalProps extends WithModalProps {
+interface EditAccountModalProps extends IWithModal {
   currentInterface: AdminInterfaceItemDetailsPrepared;
   institutionsOptions: Array<ISelectValue>;
   currentInterfaceName: string;

@@ -6,7 +6,7 @@ import { Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button, Hr, Modal, OkCancelButtons, Tabs, TabsPanel } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
@@ -17,7 +17,7 @@ import { CronExpressionRadioTypes, CronValuesTypes } from './cronExpressionTypes
 
 import { TChangeFieldValue } from 'types';
 
-interface GenerateCronExpressionModalProps extends WithModalProps {
+interface GenerateCronExpressionModalProps extends IWithModal {
   changeFormValue: TChangeFieldValue;
   formValues: Partial<CronValuesTypes>;
   cronRadioValues: CronExpressionRadioTypes;

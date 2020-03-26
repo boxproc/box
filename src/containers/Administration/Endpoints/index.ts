@@ -4,15 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Endpoints from './Endpoints';
 
 import {
-  AdminEndpointsActionTypes,
   createLoadingSelector,
-  handleDeleteAdminEndpoint,
-  handleFilterAdminEndpoints,
+  currentEndpointNameSelector,
+  endpointsSelector,
+  handleDeleteEndpoint,
+  handleFilterEndpoints,
   handleGetLogData,
+  isFilteringOrDeletingEndpointSelector,
   resetEndpoints,
   selectActiveItemId,
-  selectAdminCurrentEndpointName,
-  selectAdminEndpoints,
   selectInstitutionsOptions,
   selectIsReadOnly,
   StoreState,
@@ -20,24 +20,22 @@ import {
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminEndpointsActionTypes.FILTER_ADMIN_ENDPOINTS,
-  AdminEndpointsActionTypes.DELETE_ADMIN_ENDPOINT,
   SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
-  endpointItems: selectAdminEndpoints(state),
-  currentEndpointName: selectAdminCurrentEndpointName(state),
   currentEndpointId: selectActiveItemId(state),
+  currentEndpointName: currentEndpointNameSelector(state),
+  endpointItems: endpointsSelector(state),
+  institutionsOptions: selectInstitutionsOptions(state),
+  isLoading: loadingSelector(state) || isFilteringOrDeletingEndpointSelector(state),
   isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteEndpoint: handleDeleteAdminEndpoint,
-    filterEndpoints: handleFilterAdminEndpoints,
+    deleteEndpoint: handleDeleteEndpoint,
+    filterEndpoints: handleFilterEndpoints,
     getLogData: handleGetLogData,
     resetEndpoints,
   },

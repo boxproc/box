@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -9,7 +9,7 @@ import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
 import { AdminUserItemDetails } from 'store';
 
-interface EditUserModalProps extends WithModalProps {
+interface EditUserModalProps extends IWithModal {
   userDetails: Partial<AdminUserItemDetails>;
   isFormDirty: boolean;
   currentUsername: string;

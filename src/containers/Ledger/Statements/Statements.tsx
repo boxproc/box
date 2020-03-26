@@ -18,10 +18,10 @@ import {
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
   IStatement,
-  SetActiveItemId,
+  THandleDownloadStatement,
   THandleFilterStatements,
-  THandleGenerateStatementTransactionsAprs,
   TResetStatements,
+  TSetActiveItemId,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -34,12 +34,12 @@ export interface IStatements {
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterStatements: THandleFilterStatements;
   filterTransactionsById: HandleFilterLedgerTransactionsById;
-  generateTransactionsAprsFeesRewards: THandleGenerateStatementTransactionsAprs;
+  downloadStatement: THandleDownloadStatement;
   institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
   isLoadingStatement: boolean;
   resetStatements: TResetStatements;
-  setActiveItemId: SetActiveItemId;
+  setActiveItemId: TSetActiveItemId;
   statements: ImmutableArray<IStatement>;
 }
 
@@ -50,7 +50,7 @@ const Statements: React.FC<IStatements> = ({
   filterCustomersById,
   filterStatements,
   filterTransactionsById,
-  generateTransactionsAprsFeesRewards,
+  downloadStatement,
   institutionsOptions,
   isLoading,
   isLoadingStatement,
@@ -74,10 +74,10 @@ const Statements: React.FC<IStatements> = ({
   const handleClickOnPdfReportButton = React.useCallback(
     statementId => {
       setActiveItemId(statementId);
-      generateTransactionsAprsFeesRewards();
+      downloadStatement();
       setTimeout(() => setActiveItemId(null), 100);
     },
-    [setActiveItemId, generateTransactionsAprsFeesRewards]
+    [setActiveItemId, downloadStatement]
   );
 
   const contextMenuItems = React.useMemo(
@@ -86,7 +86,7 @@ const Statements: React.FC<IStatements> = ({
       {
         name: 'Open pdf statement',
         icon: iconNamesConst.FILE_PDF,
-        action: generateTransactionsAprsFeesRewards,
+        action: downloadStatement,
       },
       { isDivider: true },
       {
@@ -112,7 +112,7 @@ const Statements: React.FC<IStatements> = ({
       filterTransactionsById,
       filterCardsById,
       filterAccountsById,
-      generateTransactionsAprsFeesRewards,
+      downloadStatement,
     ]
   );
 

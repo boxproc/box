@@ -6,8 +6,8 @@ import { formNamesConst } from 'consts';
 import EditEndpointModal from './EditEndpointModal';
 
 import {
-  selectAdminCurrentEndpoint,
-  selectAdminCurrentEndpointName,
+  currentEndpointNameSelector,
+  currentEndpointSelector,
   selectInstitutionsOptions,
   StoreState,
 } from 'store';
@@ -15,10 +15,10 @@ import {
 const dirty = isDirty(formNamesConst.ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
-  currentEndpoint: selectAdminCurrentEndpoint(state),
-  currentEndpointName: selectAdminCurrentEndpointName(state),
+  currentEndpoint: currentEndpointSelector(state),
+  currentEndpointName: currentEndpointNameSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  isFormDirty: dirty(state),
 });
 
 export default connect(

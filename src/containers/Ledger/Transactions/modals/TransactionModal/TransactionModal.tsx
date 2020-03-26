@@ -1,20 +1,20 @@
 import React from 'react';
 
 import { Modal, Tabs, TabsPanel } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { TransactionForm } from 'containers/Ledger/Transactions/forms';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
 
-import { PayloadTransactionModal } from 'store';
+import { IPayloadTransactionModal } from 'store';
 import { dateUtil } from 'utils';
 
-interface TransactionModalProps extends WithModalProps {
+interface TransactionModalProps extends IWithModal {
   currentTransactionId: number;
   transactionAmount: number;
-  payloadTransactionModal: PayloadTransactionModal;
+  payloadTransactionModal: IPayloadTransactionModal;
   isConvertibleToLoan: boolean;
 }
 

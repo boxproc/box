@@ -1,32 +1,29 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
-
-import { AdminEndpointItemDetailsPrepared } from 'store';
-
+import { IEndpointDetails } from 'store';
 import { ISelectValue } from 'types';
 
-interface EditAccountModalProps extends WithModalProps {
-  currentEndpoint: Partial<AdminEndpointItemDetailsPrepared>;
+interface IEditAccountModal extends IWithModal {
+  currentEndpoint: Partial<IEndpointDetails>;
+  currentEndpointName: string;
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
-  currentEndpointName: string;
 }
 
 const modalName = modalNamesConst.EDIT_ENDPOINT;
 
-const EditAccountModal: React.FC<EditAccountModalProps> = ({
+const EditAccountModal: React.FC<IEditAccountModal> = ({
   closeModal,
-  isReadOnly,
   currentEndpoint,
+  currentEndpointName,
   institutionsOptions,
   isFormDirty,
-  currentEndpointName,
+  isReadOnly,
 }) => {
   const modalTitle = React.useMemo(
     () => {

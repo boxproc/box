@@ -4,14 +4,14 @@ import { Modal } from 'components';
 
 import { modalNamesConst } from 'consts';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 import { ChangeProfileForm } from './forms';
 
 import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface ChangeProfileModalProps extends WithModalProps {
+interface ChangeProfileModalProps extends IWithModal {
   getAccessUsers: HandleGetAccessUsers;
   changeAdminProfile: HandleChangeAdminProfile;
   adminAccessUsersOptions: Array<ISelectValue>;

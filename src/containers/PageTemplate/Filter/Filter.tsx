@@ -10,7 +10,7 @@ import { Button } from 'components';
 
 import { basePath, cookiesExpiresConst, formNamesConst, uiItemsConst } from 'consts';
 
-import { SetIsAccessibleFiltering, StopAutoRefresh } from 'store';
+import { TSetIsAccessibleFiltering, TStopAutoRefresh } from 'store';
 
 import { cookiesUtil, storageUtil } from 'utils';
 
@@ -39,10 +39,10 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 interface FilterProps {
   filterAction: () => void;
   filterValues: object;
-  stopAutoRefresh: StopAutoRefresh;
+  stopAutoRefresh: TStopAutoRefresh;
   isAutoRefresh: boolean;
   location: H.Location;
-  setIsAccessibleFiltering: SetIsAccessibleFiltering;
+  setIsAccessibleFiltering: TSetIsAccessibleFiltering;
   isHidden: boolean;
   isLoading: boolean;
 }

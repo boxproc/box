@@ -103,6 +103,11 @@ export const accountStatementDateSelector = createSelector(
   }
 );
 
+export const IsAccStatementsAprsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_ACCOUNT_STATEMENTS,
+  ActionTypeKeys.GET_STATEMENT_APRS,
+]);
+
 /**
  * Statement APRs selectors
  */

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -9,7 +9,7 @@ import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
 import { AdminInstitutionsItemDetailsPrepared } from 'store';
 
-interface EditInstitutionModalProps extends WithModalProps {
+interface EditInstitutionModalProps extends IWithModal {
   currentInstitution: AdminInstitutionsItemDetailsPrepared;
   currentInstitutionName: string;
   isFormDirty: boolean;

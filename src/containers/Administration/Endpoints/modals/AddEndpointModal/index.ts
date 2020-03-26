@@ -10,8 +10,8 @@ import { selectInstitutionsOptions, StoreState } from 'store';
 const dirty = isDirty(formNamesConst.ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  isFormDirty: dirty(state),
 });
 
 export default connect(

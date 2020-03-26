@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
-interface AddSystemPropertyModalProps extends WithModalProps {
+interface AddSystemPropertyModalProps extends IWithModal {
   isFormDirty: boolean;
 }
 

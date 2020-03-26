@@ -7,13 +7,13 @@ import { Delimiter, InputField, MaskField, SelectField } from 'components';
 
 import { dateFormatConst, maskFormatConst } from 'consts';
 
-import { HandleGetEndpointsByInstitutionId } from 'store';
+import { THandleGetEndpointsByInstId } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ApiCallsFilterProps {
-  getEndpointsByInstitutionId: HandleGetEndpointsByInstitutionId;
+  getEndpointsByInstitutionId: THandleGetEndpointsByInstId;
   institutionValue: ISelectValue;
   institutionsOptions: Array<ISelectValue>;
   endpointsOptions: Array<ISelectValue>;

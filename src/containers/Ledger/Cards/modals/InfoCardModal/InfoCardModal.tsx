@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
 
@@ -11,7 +11,7 @@ import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
 import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store';
 
-interface InfoAccountModalProps extends WithModalProps {
+interface InfoAccountModalProps extends IWithModal {
   currentCard: Partial<LedgerCardItemPrepared>;
   activateCard: HandleActivateLedgerCard;
   currentStatus: number;

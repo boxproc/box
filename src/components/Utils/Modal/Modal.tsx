@@ -6,7 +6,7 @@ import styled from 'theme';
 
 import { T2 } from './../../Text';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -24,7 +24,7 @@ const ModalTitle = styled(T2)`
   text-transform: none;
 `;
 
-interface ModalProps extends WithModalProps {
+interface ModalProps extends IWithModal {
   /** Width of modal window container */
   containerWidth?: string;
 

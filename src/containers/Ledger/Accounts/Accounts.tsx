@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, permissionTypesConst, uiItemsConst } from 'consts';
 
@@ -15,15 +15,15 @@ import {
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
-  HandleSetActiveItemId,
   LedgerAccountItemPrepared,
   ResetAccounts,
   THandleFilterStatementsById,
+  THandleSetActiveItemId,
   UiItemPrepared,
 } from 'store';
 import { ISelectValue } from 'types';
 
-export interface AccountsProps extends WithModalProps {
+export interface AccountsProps extends IWithModal {
   accounts: ImmutableArray<LedgerAccountItemPrepared>;
   addProductOverride: HandleAddProductOverride;
   currentAccountBalanceLimit: string;
@@ -41,7 +41,7 @@ export interface AccountsProps extends WithModalProps {
   isReadOnly: boolean;
   productOverrideId: number;
   resetAccounts: ResetAccounts;
-  setActiveItemId: HandleSetActiveItemId;
+  setActiveItemId: THandleSetActiveItemId;
   uiItems: Array<UiItemPrepared>;
 }
 

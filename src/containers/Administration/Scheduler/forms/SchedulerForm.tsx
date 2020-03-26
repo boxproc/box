@@ -24,7 +24,7 @@ import {
   HandleAddAdminSchedulerJob,
   HandleDeleteAdminSchedulerJob,
   HandleUpdateAdminSchedulerJob,
-  OpenModal,
+  TOpenModal,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -38,7 +38,7 @@ interface SchedulerFormProps {
   onCancel?: () => void;
   deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;
   isEditMode?: boolean;
-  openModal?: OpenModal;
+  openModal?: TOpenModal;
   currentSchedulerName?: string;
   isReadOnly?: boolean;
 }

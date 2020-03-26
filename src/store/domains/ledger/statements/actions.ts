@@ -37,56 +37,16 @@ import {
 import { Thunk } from 'types';
 import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
+/**
+ * Filter statements action
+ */
+
 export type TFilterStatements = (data: Partial<IStatementsFilterToSend>) => IFilterStatementsAction;
 export type THandleFilterStatements = () => Thunk<void>;
-
-export type TGetStatementTransactions = (data: IStatementTransReq) => IGetStatementTransAction;
-export type THandleGetStatementTransactions = () => Thunk<void>;
-
-export type TFilterStatementsById = (id: LedgerId) => IFilterStatementsByIdAction;
-export type THandleFilterStatementsById = (id: LedgerId) => Thunk<void>;
-
-export type TGetAccountStatements = (accountId: number) => IGetAccountStatementsAction;
-export type THandleGetAccountStatements = (accountId: number) => Thunk<void>;
-
-export type TGetStatementAprs = (statementId: number) => IGetStatementAprsAction;
-export type THandleGetStatementAprs = (statementId: number, openModalName?: string) =>
-  Thunk<void>;
-
-export type THandleGenerateStatementTransactionsAprs = () => Thunk<void>;
-
-export type THandleDownloadStatement = (statementId: number, formatFunction: () => void) =>
-  Thunk<void>;
-
-export type TResetStatements = () => void;
 
 export const filterStatements: TFilterStatements = filter => ({
   type: ActionTypeKeys.FILTER_STATEMENTS,
   payload: api.filterStatements(filter),
-});
-
-export const getStatementTransactions: TGetStatementTransactions = data => ({
-  type: ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
-  payload: api.getStatementTransactions(data),
-});
-
-export const filterStatementsById: TFilterStatementsById = data => ({
-  type: ActionTypeKeys.FILTER_STATEMENTS_BY_ID,
-  payload: api.filterStatementsById(data),
-});
-
-export const getAccountStatements: TGetAccountStatements = accountId => ({
-  type: ActionTypeKeys.GET_ACCOUNT_STATEMENTS,
-  payload: api.getAccountStatements(accountId),
-});
-
-export const getAccountStatementAprs: TGetStatementAprs = statementId => ({
-  type: ActionTypeKeys.GET_STATEMENT_APRS,
-  payload: api.getAccountStatementAprs(statementId),
-});
-
-export const resetStatements: TResetStatements = () => ({
-  type: ActionTypeKeys.FILTER_STATEMENTS,
 });
 
 export const handleFilterStatements: THandleFilterStatements = () =>
@@ -105,6 +65,18 @@ export const handleFilterStatements: THandleFilterStatements = () =>
     );
   };
 
+/**
+ * Get statement transactions action
+ */
+
+export type TGetStatementTransactions = (data: IStatementTransReq) => IGetStatementTransAction;
+export type THandleGetStatementTransactions = () => Thunk<void>;
+
+export const getStatementTransactions: TGetStatementTransactions = data => ({
+  type: ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
+  payload: api.getStatementTransactions(data),
+});
+
 export const handleGetStatementTransactions: THandleGetStatementTransactions = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
@@ -117,6 +89,18 @@ export const handleGetStatementTransactions: THandleGetStatementTransactions = (
       dispatch
     );
   };
+
+/**
+ * Filter statements by ID action
+ */
+
+export type TFilterStatementsById = (id: LedgerId) => IFilterStatementsByIdAction;
+export type THandleFilterStatementsById = (id: LedgerId) => Thunk<void>;
+
+export const filterStatementsById: TFilterStatementsById = data => ({
+  type: ActionTypeKeys.FILTER_STATEMENTS_BY_ID,
+  payload: api.filterStatementsById(data),
+});
 
 export const handleFilterByIdStatements: THandleFilterStatementsById = id =>
   async dispatch => {
@@ -134,6 +118,18 @@ export const handleFilterByIdStatements: THandleFilterStatementsById = id =>
     );
   };
 
+/**
+ * Get account statements action
+ */
+
+export type TGetAccountStatements = (accountId: number) => IGetAccountStatementsAction;
+export type THandleGetAccountStatements = (accountId: number) => Thunk<void>;
+
+export const getAccountStatements: TGetAccountStatements = accountId => ({
+  type: ActionTypeKeys.GET_ACCOUNT_STATEMENTS,
+  payload: api.getAccountStatements(accountId),
+});
+
 export const handleGetAccountStatements: THandleGetAccountStatements = accountId =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
@@ -143,6 +139,19 @@ export const handleGetAccountStatements: THandleGetAccountStatements = accountId
       dispatch
     );
   };
+
+/**
+ * Get statement APRs action
+ */
+
+export type TGetStatementAprs = (statementId: number) => IGetStatementAprsAction;
+export type THandleGetStatementAprs = (statementId: number, openModalName?: string) =>
+  Thunk<void>;
+
+export const getAccountStatementAprs: TGetStatementAprs = statementId => ({
+  type: ActionTypeKeys.GET_STATEMENT_APRS,
+  payload: api.getAccountStatementAprs(statementId),
+});
 
 export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, openModalName) =>
   async dispatch => {
@@ -158,8 +167,13 @@ export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, ope
     );
   };
 
-export const handleGenerateStatementTransactionsAprs:
-  THandleGenerateStatementTransactionsAprs = () =>
+/**
+ * Download statement action
+ */
+
+export type THandleDownloadStatement = () => Thunk<void>;
+
+export const handleDownloadStatement: THandleDownloadStatement = () =>
     async (dispatch, getState) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
@@ -206,3 +220,13 @@ export const handleGenerateStatementTransactionsAprs:
         dispatch
       );
     };
+
+/**
+ * Reset statements action
+ */
+
+export type TResetStatements = () => void;
+
+export const resetStatements: TResetStatements = () => ({
+  type: ActionTypeKeys.FILTER_STATEMENTS,
+});

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
-interface AddUserModalProps extends WithModalProps {
+interface AddUserModalProps extends IWithModal {
   isFormDirty: boolean;
 }
 

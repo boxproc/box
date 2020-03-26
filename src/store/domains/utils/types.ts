@@ -1,4 +1,4 @@
-export interface UtilsState {
+export interface IUtilsState {
   activeTableRowIndex: number;
   activeItemId: number;
   activePagePermission: null;

@@ -7,23 +7,18 @@ import { formNamesConst } from 'consts';
 import ApiCallsFilter from './ApiCallsFilter';
 
 import {
-  AdminEndpointsActionTypes,
-  createLoadingSelector,
+  endpointsByInstIdOptionsSelector,
   handleGetEndpointsByInstitutionId,
-  selectEndpointsByInstIdOptions,
+  isInstEndpointsLoadingSelector,
   StoreState,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  AdminEndpointsActionTypes.GET_ENDPOINTS_BY_INSTITUTION_ID,
-]);
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoadingEndpoints: loadingSelector(state),
-  endpointsOptions: selectEndpointsByInstIdOptions(state),
+  endpointsOptions: endpointsByInstIdOptionsSelector(state),
   institutionValue: formSelector(state, 'institutionId'),
+  isLoadingEndpoints: isInstEndpointsLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

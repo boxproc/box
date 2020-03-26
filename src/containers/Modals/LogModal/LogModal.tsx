@@ -3,15 +3,15 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, ExternalSpinnerProps, HighlightCode, Modal, withSpinner } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
-import { HandleRefreshLogData, PayloadLogModal } from 'store';
+import { HandleRefreshLogData, IPayloadLogModal } from 'store';
 import { stringsUtil } from 'utils';
 
-interface LogModalProps extends WithModalProps, ExternalSpinnerProps {
-  data: PayloadLogModal;
+interface LogModalProps extends IWithModal, ExternalSpinnerProps {
+  data: IPayloadLogModal;
   refreshLogData: HandleRefreshLogData;
 }
 

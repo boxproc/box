@@ -1,17 +1,17 @@
 import { apiClientService } from 'services';
 
-import { AdminEndpointFilterPrepared, AdminEndpointItem } from './types';
+import { IEndpointData, IEndpointsFilterToSend } from './types';
 
-export const filterAdminEndpoints = (data: Partial<AdminEndpointFilterPrepared>) =>
+export const filterEndpoints = (data: Partial<IEndpointsFilterToSend>) =>
   apiClientService.post('ui/administration/endpoints/get', { data });
 
-export const addAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
+export const addEndpoint = (data: Partial<IEndpointData>) =>
   apiClientService.post('ui/administration/endpoints', { data });
 
-export const deleteAdminEndpoint = (id: number) =>
+export const deleteEndpoint = (id: number) =>
   apiClientService.delete(`ui/administration/endpoints/${id}`);
 
-export const updateAdminEndpoint = (data: Partial<AdminEndpointItem>) =>
+export const updateEndpoint = (data: Partial<IEndpointData>) =>
   apiClientService.put('ui/administration/endpoints', { data });
 
 export const getEndpointsByInstitutionId = (id: number | string) =>

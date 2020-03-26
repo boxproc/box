@@ -4,14 +4,11 @@ import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
 import { InputField, SelectField, TextareaField } from 'components';
-
 import { statusOptions } from 'consts';
-
 import { ISelectValue } from 'types';
-
 import { formErrorUtil } from 'utils';
 
-export interface EndpointFieldsProps {
+export interface IEndpointFields {
   institutionsOptions: Array<ISelectValue>;
   endpointTypesOptions: Array<ISelectValue>;
   isLoadingTypesSelector: boolean;
@@ -19,7 +16,7 @@ export interface EndpointFieldsProps {
   isEditMode?: boolean;
 }
 
-const EndpointFields: React.FC<EndpointFieldsProps> = ({
+const EndpointFields: React.FC<IEndpointFields> = ({
   institutionsOptions,
   endpointTypesOptions,
   isLoadingTypesSelector,

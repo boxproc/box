@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { AddProductForm } from 'containers/ProductDesigner/Products/forms';
 
-interface AddProductModalProps extends WithModalProps {
+interface AddProductModalProps extends IWithModal {
   isFormDirty: boolean;
 }
 

@@ -4,38 +4,29 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EndpointForm from './EndpointForm';
 
 import {
-  AdminEndpointsActionTypes,
-  createLoadingSelector,
-  DictionaryActionTypes,
-  handleAddAdminEndpoint,
-  handleDeleteAdminEndpoint,
+  handleAddEndpoint,
+  handleDeleteEndpoint,
   handleGetDictionaryEndpointTypes,
   handleUpdateEndpoint,
+  isLoadingEndpointsTypesSelector,
+  isUpdatingEndpointSelector,
   selectActiveItemId,
   selectEndpointTypesOptions,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AdminEndpointsActionTypes.UPDATE_ADMIN_ENDPOINT,
-]);
-
-const loadingTypesSelector = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_ENDPOINT_TYPES,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  isLoadingTypesSelector: loadingTypesSelector(state),
+  isLoading: isUpdatingEndpointSelector(state),
+  isLoadingTypesSelector: isLoadingEndpointsTypesSelector(state),
   endpointTypesOptions: selectEndpointTypesOptions(state),
   currentEndpointId: selectActiveItemId(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteEndpoint: handleDeleteAdminEndpoint,
+    deleteEndpoint: handleDeleteEndpoint,
     updateEndpoint: handleUpdateEndpoint,
-    addEndpoint: handleAddAdminEndpoint,
+    addEndpoint: handleAddEndpoint,
     getDictionaryEndpointTypes: handleGetDictionaryEndpointTypes,
   },
   dispatch

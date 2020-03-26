@@ -2,9 +2,9 @@ import Immutable, { ImmutableObject } from 'seamless-immutable';
 
 import { ActionTypeKeys, UtilsActionTypes } from './actionTypes';
 
-import { UtilsState } from './types';
+import { IUtilsState } from './types';
 
-export const utilsInitialState: ImmutableObject<UtilsState> = Immutable({
+export const utilsInitialState: ImmutableObject<IUtilsState> = Immutable({
   activeTableRowIndex: null,
   activeItemId: null,
   isAutoRefresh: false,

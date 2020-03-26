@@ -1,22 +1,20 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
 import { EndpointForm } from 'containers/Administration/Endpoints/forms';
-
 import { ISelectValue } from 'types';
 
-interface AddEndpointModalProps extends WithModalProps {
+interface IAddEndpointModal extends IWithModal {
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ENDPOINT;
 
-const AddEndpointModal: React.FC<AddEndpointModalProps> = ({
+const AddEndpointModal: React.FC<IAddEndpointModal> = ({
   closeModal,
   institutionsOptions,
   isFormDirty,

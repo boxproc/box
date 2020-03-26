@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal, Tabs, TabsPanel } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -13,7 +13,7 @@ import {
 import { HandleGetInterfacesService } from 'store';
 import { ISelectValue } from 'types';
 
-interface EditCustomerModalProps extends WithModalProps {
+interface EditCustomerModalProps extends IWithModal {
   isFormDirty: boolean;
   currentCustomerName: string;
   currentCustomerInstitutionId: number;

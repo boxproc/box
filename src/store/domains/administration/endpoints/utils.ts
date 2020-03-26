@@ -1,83 +1,110 @@
 import { statusOptions } from 'consts';
 import {
-  AdminEndpointFilter,
-  AdminEndpointItem,
-  AdminEndpointItemDetailsPrepared,
+  IEndpointData,
+  IEndpointDetails,
+  IEndpointsFilter,
 } from './types';
 
 import { ISelectValue } from 'types';
 
-export const preparedFilterToSend = (data: Partial<AdminEndpointFilter>) => {
+export const preparedFilterToSend = (data: Partial<IEndpointsFilter>) => {
   if (!data) {
     return null;
   }
 
   const { institutionId } = data;
 
-  return {
-    institution_id: institutionId ? institutionId.value : null,
-  };
+  return { institution_id: institutionId ? institutionId.value : null };
 };
 
-export const preparedDataToSend = (data: Partial<AdminEndpointItemDetailsPrepared>) => {
+export const preparedDataToSend = (data: Partial<IEndpointDetails>) => {
   if (!data) {
     return null;
   }
 
+  const {
+    connectionAttributes,
+    endpointTypeId,
+    id,
+    institutionId,
+    lastFaultDatetime,
+    lastMessageDatetime,
+    logFileLocation,
+    name,
+    port,
+    privateKeyLocation,
+    sourceIpAddress,
+    status,
+  } = data;
+
   return {
-    id: data.id,
-    status: data.status && data.status.value,
-    institution_id: data.institutionId && data.institutionId.value,
-    name: data.name,
-    port: data.port,
-    endpoint_type_id: data.endpointTypeId && data.endpointTypeId.value,
-    private_key_location: data.privateKeyLocation,
-    log_file_location: data.logFileLocation,
-    connection_attributes: data.connectionAttributes,
-    source_ip_address: data.sourceIpAddress,
-    last_message_datetime: data.lastMessageDatetime,
-    last_fault_datetime: data.lastFaultDatetime,
+    connection_attributes: connectionAttributes,
+    endpoint_type_id: endpointTypeId && endpointTypeId.value,
+    id,
+    institution_id: institutionId && institutionId.value,
+    last_fault_datetime: lastFaultDatetime,
+    last_message_datetime: lastMessageDatetime,
+    log_file_location: logFileLocation,
+    name,
+    port,
+    private_key_location: privateKeyLocation,
+    source_ip_address: sourceIpAddress,
+    status: status && status.value,
   };
 };
 
-export const preparedDataToRender = (
-  data: Partial<AdminEndpointItem>,
-  institution?: ISelectValue
-) => {
+export const preparedDataToRender = (data: Partial<IEndpointData>, institution?: ISelectValue) => {
   if (!data) {
     return null;
   }
 
-  const status = statusOptions.find(el => el.value === data.status);
+  const {
+    id,
+    name,
+    port,
+    private_key_location,
+    log_file_location,
+    status,
+    endpoint_type_id,
+    endpoint_type_name,
+    connection_attributes,
+    source_ip_address,
+    last_message_datetime,
+    last_fault_datetime,
+  } = data;
+
+  const endpointStatus = statusOptions.find(el => el.value === status);
 
   return {
-    id: data.id,
+    id,
     institutionId: institution && institution.label,
-    name: data.name,
-    port: data.port,
-    privateKeyLocation: data.private_key_location,
-    logFileLocation: data.log_file_location,
-    status: status && status.label,
-    endpointTypeId: data.endpoint_type_id,
-    endpointTypeName: data.endpoint_type_name,
-    connectionAttributes: data.connection_attributes,
-    sourceIpAddress: data.source_ip_address,
-    lastMessageDatetime: data.last_message_datetime,
-    lastFaultDatetime: data.last_fault_datetime,
+    name,
+    port,
+    privateKeyLocation: private_key_location,
+    logFileLocation: log_file_location,
+    status: endpointStatus && endpointStatus.label,
+    endpointTypeId: endpoint_type_id,
+    endpointTypeName: endpoint_type_name,
+    connectionAttributes: connection_attributes,
+    sourceIpAddress: source_ip_address,
+    lastMessageDatetime: last_message_datetime,
+    lastFaultDatetime: last_fault_datetime,
   };
 };
 
-export const preparedDataDetailsToRender = (data: Partial<AdminEndpointItem>) => {
+export const preparedDataDetailsToRender = (data: Partial<IEndpointData>) => {
   if (!data) {
     return null;
   }
+
+  const { endpoint_type_id, endpoint_type_name, status } = data;
 
   return {
     ...preparedDataToRender(data),
-    status: statusOptions.find(el => el.value === data.status),
+    status: statusOptions.find(el => el.value === status),
     endpointTypeId: {
-      value: data.endpoint_type_id,
-      label: data.endpoint_type_name,
+      value: endpoint_type_id,
+      label: endpoint_type_name,
     },
   };
 };

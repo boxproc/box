@@ -5,7 +5,7 @@ import StatementModal from './StatementModal';
 
 import {
   currentStatementSelector,
-  handleGenerateStatementTransactionsAprs,
+  handleDownloadStatement,
   handleGetStatementAprs,
   handleGetStatementTransactions,
   isTransArsLoadingSelector,
@@ -27,7 +27,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    generateTransactionsAprs: handleGenerateStatementTransactionsAprs,
+    generateTransactionsAprs: handleDownloadStatement,
     getStatementAprs: handleGetStatementAprs,
     getStatementTransactions: handleGetStatementTransactions,
   },

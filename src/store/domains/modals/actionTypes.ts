@@ -1,4 +1,4 @@
-import { ModalsData } from './types';
+import { IModalsData } from './types';
 
 export enum ActionTypeKeys {
   OPEN_MODAL = 'modals/OPEN_MODAL',
@@ -6,21 +6,21 @@ export enum ActionTypeKeys {
   CLOSE_ALL_MODALS = 'modals/CLOSE_ALL_MODALS',
 }
 
-export interface OpenModalAction {
-  readonly payload: ModalsData;
+export interface IOpenModalAction {
+  readonly payload: IModalsData;
   readonly type: ActionTypeKeys.OPEN_MODAL;
 }
 
-export interface CloseModalAction {
+export interface ICloseModalAction {
   readonly payload: string;
   readonly type: ActionTypeKeys.CLOSE_MODAL;
 }
 
-export interface CloseAllModalsAction {
+export interface ICloseAllModalsAction {
   readonly type: ActionTypeKeys.CLOSE_ALL_MODALS;
 }
 
 export type ModalActionTypes =
-  | OpenModalAction
-  | CloseModalAction
-  | CloseAllModalsAction;
+  | IOpenModalAction
+  | ICloseModalAction
+  | ICloseAllModalsAction;

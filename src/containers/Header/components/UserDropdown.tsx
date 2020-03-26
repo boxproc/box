@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 import styled, { css } from 'theme';
 
 import { Button, Dropdown, DropdownOption, UserIcon, UserShieldIcon } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, yesNoConst } from 'consts';
 
@@ -53,7 +53,7 @@ const UserBlock: React.FC<UserDataProps> = ({
     </Flex>
   );
 
-interface UserDropdownProps extends WithModalProps {
+interface UserDropdownProps extends IWithModal {
   userLogout: HandleUserLogout;
 }
 

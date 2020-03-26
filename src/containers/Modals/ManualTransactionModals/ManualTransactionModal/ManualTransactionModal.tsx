@@ -4,10 +4,10 @@ import { Modal, withSpinner } from 'components';
 import { ManualTransactionForm } from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
+  IWithLoadTransactionTypes,
+  IWithModal,
   withLoadTransactionTypes,
-  WithLoadTransactionTypesProps,
   withModal,
-  WithModalProps,
 } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
@@ -17,20 +17,20 @@ import PageTitle from 'containers/PageTemplate/PageTitle';
 import {
   HandleMakeLedgerLimitAdjustment,
   HandleMakeLedgerTransaction,
-  PayloadManualTransactionModal,
+  IPayloadManualTransactionModal,
   THandleGetDictionaryCurrencies,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface IManualTransactionModal extends WithModalProps, WithLoadTransactionTypesProps {
+interface IManualTransactionModal extends IWithModal, IWithLoadTransactionTypes {
   currenciesOptions: Array<ISelectValue>;
   getCurrencies: THandleGetDictionaryCurrencies;
   isCurrenciesLoading: boolean;
   isLimitAdjustment: boolean;
   makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
   makeTransaction: HandleMakeLedgerTransaction;
-  modalPayload: PayloadManualTransactionModal;
+  modalPayload: IPayloadManualTransactionModal;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 

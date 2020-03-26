@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Modal, ProductImages } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
-interface EditProductModalProps extends WithModalProps {
+interface EditProductModalProps extends IWithModal {
   currentProductName: string;
   currentProductType: string | number;
   isProductOverride: boolean;

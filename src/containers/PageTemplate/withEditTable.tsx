@@ -12,14 +12,14 @@ import { modalsList } from 'containers/Modals/modalsList';
 
 import {
   handleSetActiveItemId,
-  HandleSetActiveItemId,
   handleSetActiveTableRowIndex,
-  HandleSetActiveTableRowIndex,
   openModal,
-  OpenModal,
   selectActiveTableRowIndex,
   selectModalsStateList,
   StoreState,
+  THandleSetActiveItemId,
+  THandleSetActiveTableRowIndex,
+  TOpenModal,
 } from 'store';
 
 import { IContextMenuItem } from 'types';
@@ -29,11 +29,11 @@ import { componentUtil } from 'utils';
 export interface WithEditTableProps {
   activeTableRowIndex?: number;
   contextMenuItems?: Array<IContextMenuItem>;
-  handleOpenModal: OpenModal;
+  handleOpenModal: TOpenModal;
   modalsStateList: object;
   onRowClick: () => object;
-  setActiveItemId: HandleSetActiveItemId;
-  setActiveTableRowIndex: HandleSetActiveTableRowIndex;
+  setActiveItemId: THandleSetActiveItemId;
+  setActiveTableRowIndex: THandleSetActiveTableRowIndex;
   viewingModalName: string;
 }
 

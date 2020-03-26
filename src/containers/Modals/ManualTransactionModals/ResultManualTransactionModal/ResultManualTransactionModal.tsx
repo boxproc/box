@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Hr, Modal, OkCancelButtons } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 import {
@@ -15,7 +15,7 @@ import {
   LedgerManualTransactionResultPrepared,
 } from 'store';
 
-interface IResultManualTransactionModal extends WithModalProps {
+interface IResultManualTransactionModal extends IWithModal {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;
   ledgerLimitAdjustment: LedgerLimitAdjustmentResultPrepared;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;

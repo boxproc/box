@@ -6,13 +6,13 @@ import { Button } from 'components';
 
 import { transactionTypesIds } from 'consts';
 
-import { withLoadTransactionTypes, WithLoadTransactionTypesProps } from 'HOCs';
+import { IWithLoadTransactionTypes, withLoadTransactionTypes } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
 
 import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store';
 
-interface IllustrationProductFormProps extends WithLoadTransactionTypesProps {
+interface IllustrationProductFormProps extends IWithLoadTransactionTypes {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
   resetProductIllustration: ResetProductIllustration;
   initialFormValues: object;

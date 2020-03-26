@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
@@ -9,7 +9,7 @@ import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
 
 import { ISelectValue } from 'types';
 
-interface AddInterfaceModalProps extends WithModalProps {
+interface AddInterfaceModalProps extends IWithModal {
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }

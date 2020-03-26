@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { AdminEndpointItemPrepared } from 'store';
+import { IEndpoint } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminEndpointItemPrepared> =
-  ITableCellType<AdminEndpointItemPrepared[T]>;
+type TCell<T extends keyof IEndpoint> = ITableCellType<IEndpoint[T]>;
 
 export const tableColumns = [
   {

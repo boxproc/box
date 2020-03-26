@@ -4,7 +4,7 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, T4, Tabs, TabsPanel, withSpinner } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { StatementAprsTable, TransactionsTable } from './../../components';
 import { StatementForm } from './../../forms';
@@ -19,7 +19,7 @@ import {
   THandleGetStatementTransactions,
 } from 'store';
 
-interface IStatementModal extends WithModalProps {
+interface IStatementModal extends IWithModal {
   currentStatement: IStatement;
   currentStatementId: number;
   generateTransactionsAprs: THandleGetStatementAprs;

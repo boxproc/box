@@ -8,81 +8,114 @@ import { StoreState } from 'store';
 import { openModal } from './../modals';
 import {
   ActionTypeKeys,
-  SetActiveItemIdAction,
-  SetActivePagePermissionAction,
-  SetActiveTableRowIndexAction,
-  SetIsAccessibleFilteringAction,
-  SetIsOpenFilterAction,
-  StartAutoRefreshAction,
-  StopAutoRefreshAction,
+  ISetActiveItemIdAction,
+  ISetActivePagePermissionAction,
+  ISetActiveTableRowIndexAction,
+  ISetIsAccessibleFilteringAction,
+  ISetIsOpenFilterAction,
+  IStartAutoRefreshAction,
+  IStopAutoRefreshAction,
 } from './actionTypes';
 
 import { IMessageResponse } from 'types';
 import { stringsUtil } from 'utils';
 
-export type SetActiveTableRowIndex = (index: number) => SetActiveTableRowIndexAction;
-export type HandleSetActiveTableRowIndex = (index: number) => void;
+/**
+ * Set active table row index util action
+ */
 
-export type SetActiveItemId = (id: number | string) => SetActiveItemIdAction;
-export type HandleSetActiveItemId = (id: number | string) => void;
+export type TSetActiveTableRowIndex = (index: number) => ISetActiveTableRowIndexAction;
+export type THandleSetActiveTableRowIndex = (index: number) => void;
 
-export type SetActivePagePermission = (value: string) => SetActivePagePermissionAction;
-
-export type SetIsOpenFilter = (value: boolean) => SetIsOpenFilterAction;
-
-export type SetIsAccessibleFiltering = (value: boolean) => SetIsAccessibleFilteringAction;
-
-export type StartAutoRefresh = () => StartAutoRefreshAction;
-export type StopAutoRefresh = () => StopAutoRefreshAction;
-
-export type ResetUtils = () => void;
-
-export type SendNotification = (res: IMessageResponse, isCatch?: boolean) =>
-  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
-
-export const setActiveTableRowIndex: SetActiveTableRowIndex = index => ({
+export const setActiveTableRowIndex: TSetActiveTableRowIndex = index => ({
   type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX,
   payload: index,
 });
 
-export const setActiveItemId: SetActiveItemId = id => ({
+export const handleSetActiveTableRowIndex: THandleSetActiveTableRowIndex = index =>
+  setActiveTableRowIndex(index);
+
+/**
+ * Set active item ID util action
+ */
+
+export type TSetActiveItemId = (id: number | string) => ISetActiveItemIdAction;
+export type THandleSetActiveItemId = (id: number | string) => void;
+
+export const setActiveItemId: TSetActiveItemId = id => ({
   type: ActionTypeKeys.SET_ACTIVE_ITEM_ID,
   payload: id,
 });
 
-export const setActivePagePermission: SetActivePagePermission = value => ({
+export const handleSetActiveItemId: THandleSetActiveItemId = id => setActiveItemId(id);
+
+/**
+ * Set permission for active page util action
+ */
+
+export type TSetActivePagePermission = (value: string) => ISetActivePagePermissionAction;
+
+export const setActivePagePermission: TSetActivePagePermission = value => ({
   type: ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION,
   payload: value,
 });
 
-export const setIsOpenFilter: SetIsOpenFilter = value => ({
+/**
+ * Set opening filter util action
+ */
+
+export type TSetIsOpenFilter = (value: boolean) => ISetIsOpenFilterAction;
+
+export const setIsOpenFilter: TSetIsOpenFilter = value => ({
   type: ActionTypeKeys.SET_IS_OPEN_FILTER,
   payload: value,
 });
 
-export const setIsAccessibleFiltering: SetIsAccessibleFiltering = value => ({
+/**
+ * Set accessible filtering util action
+ */
+
+export type TSetIsAccessibleFiltering = (value: boolean) => ISetIsAccessibleFilteringAction;
+
+export const setIsAccessibleFiltering: TSetIsAccessibleFiltering = value => ({
   type: ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING,
   payload: value,
 });
 
-export const startAutoRefresh: StartAutoRefresh = () => ({
+/**
+ * Stop / Start auto refresh util actions
+ */
+
+export type TStartAutoRefresh = () => IStartAutoRefreshAction;
+
+export const startAutoRefresh: TStartAutoRefresh = () => ({
   type: ActionTypeKeys.START_AUTO_REFRESH,
 });
 
-export const stopAutoRefresh: StopAutoRefresh = () => ({
+export type TStopAutoRefresh = () => IStopAutoRefreshAction;
+
+export const stopAutoRefresh: TStopAutoRefresh = () => ({
   type: ActionTypeKeys.STOP_AUTO_REFRESH,
 });
 
-export const resetUtils: ResetUtils = () => ({
+/**
+ * Reset utils action
+ */
+
+export type TResetUtils = () => void;
+
+export const resetUtils: TResetUtils = () => ({
   type: ActionTypeKeys.RESET_UTILS,
 });
 
-export const handleSetActiveTableRowIndex: HandleSetActiveTableRowIndex = index =>
-  setActiveTableRowIndex(index);
+/**
+ * Notification action
+ */
 
-export const handleSetActiveItemId: HandleSetActiveItemId = id => setActiveItemId(id);
+export type TSendNotification = (res: IMessageResponse, isCatch?: boolean) =>
+  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
 
-interface Notification {
+interface INotification {
   title: string;
   message: string;
   details?: string;
@@ -96,12 +129,12 @@ const getNotification = ({
   details,
   statusCode,
   errorCode,
-}: Notification) => openModal({
+}: INotification) => openModal({
   name: modalNamesConst.MESSAGE,
   payload: { title, message, details, statusCode, errorCode },
 });
 
-export const handleSendNotification: SendNotification =
+export const handleSendNotification: TSendNotification =
   (res, isCatch = false) =>
     async dispatch => {
       if (isCatch) {

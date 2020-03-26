@@ -13,49 +13,49 @@ export enum ActionTypeKeys {
   RESET_UTILS = 'utils/RESET_UTILS',
 }
 
-export interface SetActiveTableRowIndexAction {
+export interface ISetActiveTableRowIndexAction {
   readonly payload: number;
   readonly type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX;
 }
 
-export interface SetActiveItemIdAction {
+export interface ISetActiveItemIdAction {
   readonly payload: number | string;
   readonly type: ActionTypeKeys.SET_ACTIVE_ITEM_ID;
 }
 
-export interface SetActivePagePermissionAction {
+export interface ISetActivePagePermissionAction {
   readonly payload: string;
   readonly type: ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION;
 }
 
-export interface SetIsOpenFilterAction {
+export interface ISetIsOpenFilterAction {
   readonly payload: boolean;
   readonly type: ActionTypeKeys.SET_IS_OPEN_FILTER;
 }
 
-export interface SetIsAccessibleFilteringAction {
+export interface ISetIsAccessibleFilteringAction {
   readonly payload: boolean;
   readonly type: ActionTypeKeys.SET_IS_ACCESSIBLE_FILTERING;
 }
 
-export interface StartAutoRefreshAction {
+export interface IStartAutoRefreshAction {
   readonly type: ActionTypeKeys.START_AUTO_REFRESH;
 }
 
-export interface StopAutoRefreshAction {
+export interface IStopAutoRefreshAction {
   readonly type: ActionTypeKeys.STOP_AUTO_REFRESH;
 }
 
-export interface ResetUtilsAction {
+export interface IResetUtilsAction {
   readonly type: ActionTypeKeys.RESET_UTILS;
 }
 
 export type UtilsActionTypes =
-  | SetActiveTableRowIndexAction
-  | SetActiveItemIdAction
-  | SetActivePagePermissionAction
-  | StartAutoRefreshAction
-  | StopAutoRefreshAction
-  | ResetUtilsAction
-  | SetIsOpenFilterAction
-  | SetIsAccessibleFilteringAction;
+  | ISetActiveTableRowIndexAction
+  | ISetActiveItemIdAction
+  | ISetActivePagePermissionAction
+  | IStartAutoRefreshAction
+  | IStopAutoRefreshAction
+  | IResetUtilsAction
+  | ISetIsOpenFilterAction
+  | ISetIsAccessibleFilteringAction;

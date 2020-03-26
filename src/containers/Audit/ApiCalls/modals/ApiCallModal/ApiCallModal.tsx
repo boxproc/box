@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 
 import { Button, Modal, withSpinner } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
@@ -11,7 +11,7 @@ import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 
 import { HandleGetDetailsAuditApiCalls } from 'store';
 
-interface ApiCallModalProps extends WithModalProps {
+interface ApiCallModalProps extends IWithModal {
   getDetailsApiCalls: HandleGetDetailsAuditApiCalls;
 }
 

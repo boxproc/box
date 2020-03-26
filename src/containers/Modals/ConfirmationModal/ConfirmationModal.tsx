@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { Hr, Modal, OkCancelButtons, Paragraph } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { PayloadConfirmationModal } from 'store';
+import { IPayloadConfirmationModal } from 'store';
 
-interface ConfirmationModalProps extends WithModalProps {
-  payloadConfirmModal: PayloadConfirmationModal;
+interface ConfirmationModalProps extends IWithModal {
+  payloadConfirmModal: IPayloadConfirmationModal;
 }
 
 const modalName = modalNamesConst.CONFIRMATION;

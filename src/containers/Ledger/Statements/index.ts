@@ -4,12 +4,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Statements from './Statements';
 
 import {
+  handleDownloadStatement,
   handleFilterByIdLedgerAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterStatements,
-  handleGenerateStatementTransactionsAprs,
   isStatementsLoadingSelector,
   isTransArsLoadingSelector,
   resetStatements,
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterStatements: handleFilterStatements,
     filterTransactionsById: handleFilterByIdLedgerTransactions,
-    generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprs,
+    downloadStatement: handleDownloadStatement,
     resetStatements,
     setActiveItemId,
   },

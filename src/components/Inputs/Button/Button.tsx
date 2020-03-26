@@ -4,14 +4,14 @@ import { Box } from '@rebass/grid';
 
 import { Hint } from './../../Utils';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 
 import { ButtonWrapper } from './ButtonWrapper';
 import { icons } from './icons';
 
-interface ButtonProps extends WithModalProps {
+interface ButtonProps extends IWithModal {
   classNames?: Array<string>; /** no-text-transform, is-tabs, is-bordered, is-animated */
   confirmationText?: string;
   confirmationTitle?: string;

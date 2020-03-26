@@ -2,34 +2,33 @@ import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { iconNamesConst, modalNamesConst, systemMonitorTablesConst } from 'consts';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { EndpointsFilter } from './forms';
 
 import {
-  AdminEndpointItemPrepared,
-  HandleDeleteAdminEndpoint,
-  HandleFilterAdminEndpoints,
   HandleGetLogData,
-  ResetEndpoints,
+  IEndpoint,
+  THandleDeleteEndpoint,
+  THandleFilterEndpoints,
+  TResetEndpoints,
 } from 'store';
 import { ISelectValue } from 'types';
 
-export interface EndpointsProps {
-  endpointItems: ImmutableArray<AdminEndpointItemPrepared>;
-  institutionsOptions: Array<ISelectValue>;
-  currentEndpointName: string;
+export interface IEndpoints {
   currentEndpointId: number;
+  currentEndpointName: string;
+  deleteEndpoint: THandleDeleteEndpoint;
+  endpointItems: ImmutableArray<IEndpoint>;
+  filterEndpoints: THandleFilterEndpoints;
+  getLogData: HandleGetLogData;
+  institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
   isReadOnly: boolean;
-  deleteEndpoint: HandleDeleteAdminEndpoint;
-  filterEndpoints: HandleFilterAdminEndpoints;
-  getLogData: HandleGetLogData;
-  resetEndpoints: ResetEndpoints;
+  resetEndpoints: TResetEndpoints;
 }
 
-const Endpoints: React.FC<EndpointsProps> = ({
+const Endpoints: React.FC<IEndpoints> = ({
   endpointItems,
   deleteEndpoint,
   filterEndpoints,

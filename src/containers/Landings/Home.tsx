@@ -5,13 +5,13 @@ import { Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Button, Paragraph, SmallText } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { storageUtil } from 'utils';
 
-interface HomeProps extends WithModalProps { }
+interface HomeProps extends IWithModal { }
 
 const CenterBlock = styled.div`
   display: flex;

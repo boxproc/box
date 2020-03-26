@@ -76,6 +76,10 @@ export const selectIsEndpointTypesLoaded = createSelector(
   data => data && data.length > 0
 );
 
+export const isLoadingEndpointsTypesSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DICTIONARY_ENDPOINT_TYPES,
+]);
+
 /**
  * Interface types selectors
  */

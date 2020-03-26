@@ -17,7 +17,7 @@ import { ISelectValue } from 'types';
 
 import { componentUtil } from 'utils';
 
-export interface WithLoadTransactionTypesProps {
+export interface IWithLoadTransactionTypes {
   getTransactionTypes: THandleGetDictionaryTransactionTypes;
   isTransTypesLoading: boolean;
   limitAdjTypeOptions: Array<ISelectValue>;
@@ -26,10 +26,10 @@ export interface WithLoadTransactionTypesProps {
 }
 
 export const withLoadTransactionTypes = <OriginProps extends {}>(
-  Component: React.ComponentType<OriginProps & Partial<WithLoadTransactionTypesProps>>
+  Component: React.ComponentType<OriginProps & Partial<IWithLoadTransactionTypes>>
 ) => {
   const WithLoadTransactionTypes:
-    React.FC<WithLoadTransactionTypesProps> = props => {
+    React.FC<IWithLoadTransactionTypes> = props => {
       const {
         getTransactionTypes,
         isTransTypesLoading,
@@ -72,8 +72,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
     isTransTypesLoading: loadingSelector(state),
     transactionTypesOptions: selectDictionaryTransTypesOptions(state),
     manualTransTypesOptions: selectDictionaryManualTrTypesOptions(state),
-    limitAdjTypeOptions:
-      selectDictionaryLimitAdjTypesOptions(state),
+    limitAdjTypeOptions: selectDictionaryLimitAdjTypesOptions(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

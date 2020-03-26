@@ -4,15 +4,15 @@ import { RouteComponentProps } from 'react-router';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, HighlightCode, Modal, Paragraph } from 'components';
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from 'consts';
 
-import { PayloadMessageModal } from 'store';
+import { IPayloadMessageModal } from 'store';
 import { storageUtil, urlUtil } from 'utils';
 
-interface MessageModalProps extends RouteComponentProps, WithModalProps {
-  payloadMessageModal: PayloadMessageModal;
+interface MessageModalProps extends RouteComponentProps, IWithModal {
+  payloadMessageModal: IPayloadMessageModal;
 }
 
 const modalName = modalNamesConst.MESSAGE;

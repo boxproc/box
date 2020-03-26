@@ -7,7 +7,7 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { TransactionsFilter } from './forms';
 
-import { withModal, WithModalProps } from 'HOCs';
+import { IWithModal, withModal } from 'HOCs';
 
 import {
   HandleFilterLedgerAccountsById,
@@ -23,7 +23,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface TransactionsProps extends WithModalProps {
+export interface TransactionsProps extends IWithModal {
   currentId: number;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterCardsById: HandleFilterLedgerCardsById;
