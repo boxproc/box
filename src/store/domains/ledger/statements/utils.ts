@@ -207,7 +207,7 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
 export const prepareStatementTransactionsForReport =
   (transactions: Array<LedgerStatementTransactionsItem>):
     Array<Partial<LedgerStatementTransactionsItemPrepared>> => {
-    if (transactions.length) {
+    if (transactions && transactions.length) {
       return transactions.map(transaction => {
         const preparedData = prepareTransactionsDataToRender(transaction);
         const clonedTransactions = { ...preparedData };
@@ -236,7 +236,7 @@ export const prepareStatementTransactionsForReport =
   };
 
 export const prepareStatementAprsForReport = (aprs: Array<LedgerStatementAprItem>) => {
-  if (aprs.length) {
+  if (aprs && aprs.length) {
     return aprs.map(apr => {
       const { description, rate, accrued_interest } = apr;
 
