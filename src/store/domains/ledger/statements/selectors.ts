@@ -18,6 +18,9 @@ export const selectDefaultLedgerStatements = (state: StoreState) =>
 export const selectDefaultLedgerStatementTransactions = (state: StoreState) =>
   state.ledger.statements.transactions;
 
+export const selectDefaultLedgerStatementPendingTransactions = (state: StoreState) =>
+  state.ledger.statements.pendingTransactions;
+
 export const selectLedgerStatements = createSelector(
   selectDefaultLedgerStatements,
   selectInstitutionsOptions,
@@ -30,6 +33,11 @@ export const selectLedgerStatements = createSelector(
 
 export const selectLedgerStatementTransactions = createSelector(
   selectDefaultLedgerStatementTransactions,
+  items => items && items.map(item => prepareTransactionsDataToRender(item))
+);
+
+export const selectLedgerStatementPendingTransactions = createSelector(
+  selectDefaultLedgerStatementPendingTransactions,
   items => items && items.map(item => prepareTransactionsDataToRender(item))
 );
 

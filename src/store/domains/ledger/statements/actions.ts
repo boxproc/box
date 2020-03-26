@@ -175,12 +175,18 @@ export const handleGenerateStatementTransactionsAprs:
           loadedData.forEach(item => data.push(item.value));
 
           const transactions = data.find(el => el.transactions).transactions;
+          const pendingTransactions = data.find(el => el.transactions).pending_transactions;
           const aprs = data.find(el => el.statement_aprs).statement_aprs;
 
           downloadUtil.downloadStatementPDF({
             fileName: selectLedgerStatementReportFileName(state),
             statement: selectLedgerCurrentStatementForReport(state),
             tables: [
+              {
+                id: 'transactions',
+                title: 'Pending transactions',
+                items: prepareStatementTransactionsForReport(pendingTransactions),
+              },
               {
                 id: 'transactions',
                 title: 'Transactions',

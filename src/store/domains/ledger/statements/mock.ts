@@ -2,6 +2,7 @@ import {
   LedgerAccountStatementItems,
   LedgerStatementAprItems,
   LedgerStatementItems,
+  LedgerStatementTransactionsItems,
 } from './types';
 
 export const ledgerStatementsItems: LedgerStatementItems = {
@@ -88,6 +89,47 @@ export const ledgerAccountStatementsItems: LedgerAccountStatementItems = {
       accrued_interest_total: 1.00,
       start_date: '07/10/2019',
       repayment_type: null,
+    },
+  ],
+};
+
+export const ledgerStatementTransData: LedgerStatementTransactionsItems = {
+  pending_transactions: [
+    {
+      amount_in_original_currency: 2,
+      amount: 2,
+      apr_id: 1,
+      apr_rate: 2.5,
+      balance_available_after: 13,
+      balance_available_before: 11,
+      balance_settled_after: 12,
+      balance_settled_before: 11,
+      description: 'Test transaction',
+      grace_period: 0,
+      id: 2,
+      original_currency: 'USD',
+      status_name: 'Pending',
+      status: 'P',
+      transaction_datetime: '22/03/2020 15:19:53',
+    },
+  ],
+  transactions: [
+    {
+      amount_in_original_currency: 2,
+      amount: 2,
+      apr_id: 1,
+      apr_rate: 2.5,
+      balance_available_after: 13,
+      balance_available_before: 11,
+      balance_settled_after: 12,
+      balance_settled_before: 11,
+      description: 'Test transaction',
+      grace_period: 0,
+      id: 2,
+      original_currency: 'USD',
+      status_name: 'Settled',
+      status: 'S',
+      transaction_datetime: '22/03/2020 15:19:53',
     },
   ],
 };

@@ -12,6 +12,7 @@ import {
   selectActiveItemId,
   selectLedgerCurrentStatement,
   selectLedgerStatementAprs,
+  selectLedgerStatementPendingTransactions,
   selectLedgerStatementTransactions,
   StoreState,
 } from 'store';
@@ -23,6 +24,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  statementPendingTransactions: selectLedgerStatementPendingTransactions(state),
   statementTransactions: selectLedgerStatementTransactions(state),
   currentStatement: selectLedgerCurrentStatement(state),
   statementAprs: selectLedgerStatementAprs(state),

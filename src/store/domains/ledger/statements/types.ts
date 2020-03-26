@@ -61,35 +61,38 @@ export interface LedgerStatementItemPrepared {
 }
 
 export interface LedgerStatementTransactionsItem {
-  id: number;
-  transaction_datetime: string;
-  amount: number;
   amount_in_original_currency: number;
-  original_currency: string;
-  grace_period: number;
-  balance_available_before: number;
-  balance_available_after: number;
-  balance_settled_before: number;
-  balance_settled_after: number;
-  description: string;
+  amount: number;
   apr_id: number;
   apr_rate: number;
+  balance_available_after: number;
+  balance_available_before: number;
+  balance_settled_after: number;
+  balance_settled_before: number;
+  description: string;
+  grace_period: number;
+  id: number;
+  original_currency: string;
+  status_name: string;
+  status: string;
+  transaction_datetime: string;
 }
 
 export interface LedgerStatementTransactionsItemPrepared {
-  id: number;
-  transactionDatetime: number | string;
   amount: string;
   amountInOriginalCurrency: string;
-  originalCurrency: string;
-  gracePeriod: number;
-  balanceAvailableBefore: string;
-  balanceAvailableAfter: string;
-  balanceSettledBefore: string;
-  balanceSettledAfter: string;
-  description: string;
   aprId: number;
   aprRate: string;
+  balanceAvailableAfter: string;
+  balanceAvailableBefore: string;
+  balanceSettledAfter: string;
+  balanceSettledBefore: string;
+  description: string;
+  gracePeriod: number;
+  id: number;
+  originalCurrency: string;
+  status: string;
+  transactionDatetime: number | string;
 }
 
 export interface LedgerStatementTransactionsItemsRequest {
@@ -123,6 +126,7 @@ export type LedgerAccountStatementItem = Partial<LedgerStatementItem>;
 export type LedgerAccountStatementItemPrepared = Partial<LedgerStatementItemPrepared>;
 
 export interface LedgerStatementTransactionsItems {
+  pending_transactions: Array<LedgerStatementTransactionsItem>;
   transactions: Array<LedgerStatementTransactionsItem>;
 }
 
@@ -158,6 +162,7 @@ export interface LedgerStatementsFilterPrepared {
 
 export interface LedgerStatementsState {
   statements: ImmutableArray<LedgerStatementItem>;
+  pendingTransactions: ImmutableArray<LedgerStatementTransactionsItem>;
   transactions: ImmutableArray<LedgerStatementTransactionsItem>;
   accountStatements: ImmutableArray<LedgerAccountStatementItem>;
   statementAprs: ImmutableArray<LedgerStatementAprItem>;

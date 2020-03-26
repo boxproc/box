@@ -2,8 +2,6 @@ import React, { ReactChild } from 'react';
 
 import { NumberFormatInput, SelectInput, TextInput } from './../../Inputs';
 
-import { schedulerStatusOptions, statusConst } from 'consts';
-
 import { TableItemWrapper } from './TableItemWrapper';
 
 import { ISelectValue } from 'types';
@@ -48,9 +46,8 @@ export const TableCell: React.FC<TableCellProps> = ({
   toFixedNumber,
   value,
 }) => {
-  const isPendingStatus = React.useMemo(
-    () => value === schedulerStatusOptions
-      .find(status => status.value === statusConst.EXECUTION_PENDING).label,
+  const isAccentColor = React.useMemo(
+    () => value === 'Execution pending' || value === 'Pending',
     [value]
   );
 
@@ -97,7 +94,7 @@ export const TableCell: React.FC<TableCellProps> = ({
       isEditable={isEditable}
       isSelect={isSelect}
       textCenter={onCenter}
-      isAccentColor={isPendingStatus}
+      isAccentColor={isAccentColor}
       isSmaller={isSmaller}
     >
       {Icon}

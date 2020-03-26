@@ -1,9 +1,11 @@
 import { apiClientService } from 'services';
+
 import { LedgerId } from '../customers';
 // import {
 //   ledgerAccountStatementAprItems,
 //   ledgerAccountStatementsItems,
 //   ledgerStatementsItems,
+//   ledgerStatementTransData,
 // } from './mock';
 import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
 
@@ -14,6 +16,7 @@ export const filterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepa
   apiClientService.post('ui/ledger/statements/get', { data });
 
 export const getLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
+  // throttleUtil.getDataAfter(ledgerStatementTransData, 500);
   apiClientService.post('ui/ledger/statements/get_transactions', {
     data: {
       first_transaction_id: data.firstTransactionId,

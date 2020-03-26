@@ -11,13 +11,24 @@ type TCell<T extends keyof LedgerStatementTransactionsItemPrepared> =
 
 export const tableTransactionsColumns = [
   {
-    maxWidth: 120,
+    maxWidth: 130,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (
       <TableCell
         value={props.value}
         isDate={true}
+        isSmaller={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 75,
+    Header: <TableHeader title="Status" />,
+    accessor: 'status',
+    Cell: (props: TCell<'status'>) => (
+      <TableCell
+        value={props.value}
         isSmaller={true}
       />
     ),
@@ -106,7 +117,7 @@ export const tableTransactionsColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 70,
     Header: <TableHeader title="APR Rate" />,
     accessor: 'aprRate',
     Cell: (props: TCell<'aprRate'>) => (

@@ -3,7 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal, Tabs, TabsPanel, withSpinner } from 'components';
+import { Button, Hr, Modal, T4, Tabs, TabsPanel, withSpinner } from 'components';
 import { StatementAprsTable, TransactionsTable } from 'containers/Ledger/Statements/components';
 import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
@@ -21,6 +21,7 @@ import {
 interface StatementModalProps extends WithModalProps {
   currentStatementId: number;
   currentStatement: LedgerStatementItemPrepared;
+  statementPendingTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
   statementTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
   statementAprs: ImmutableArray<LedgerStatementAprItemPrepared>;
   getStatementTransactions: HandleGetLedgerStatementTransactions;
@@ -34,6 +35,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
   currentStatementId,
   currentStatement,
   closeModal,
+  statementPendingTransactions,
   statementTransactions,
   statementAprs,
   getStatementTransactions,
@@ -70,6 +72,11 @@ const StatementModal: React.FC<StatementModalProps> = ({
         </TabsPanel>
         <TabsPanel title="Transactions">
           <Box mt="20px" mb="10px">
+            <T4>Pending Transactions</T4>
+            <TransactionsTable statementTransactions={statementPendingTransactions} />
+          </Box>
+          <Box mt="20px" mb="10px">
+            <T4>Transactions</T4>
             <TransactionsTable statementTransactions={statementTransactions} />
           </Box>
         </TabsPanel>
@@ -82,6 +89,7 @@ const StatementModal: React.FC<StatementModalProps> = ({
       <Flex
         alignItems="center"
         justifyContent="space-between"
+        mt="20px"
       >
         <Button
           text="Open pdf statement"

@@ -13,14 +13,11 @@ const formatKey = (key: string) =>
     .replace(/id|Id/g, 'ID')
     .replace(/Institution ID/, 'Institution');
 
-const formatValue = (value: string) =>
-  (value === null || value === undefined)
-    ? '-'
-    : value;
+const formatValue = (value: string) => (value === null || value === undefined) ? '-' : value;
 
 export const downloadStatementPDF = (data: {
   fileName: string,
-  statement?: Array<object>;
+  statement: Array<object>;
   tables: Array<{
     id: string;
     title: string;
@@ -29,46 +26,65 @@ export const downloadStatementPDF = (data: {
 }) => {
   const { statement, tables, fileName } = data;
 
-  const unit = 'pt';
-  const size = 'a4';
-  const orientation = 'portrait';
-  const docTitle = 'Statement';
-  const location = window.location.href;
-
   const dateTime = dateUtil.todayDateTime();
   const userData = storageUtil.getUserData();
   const username = userData && `${userData.firstName} ${userData.lastName}`;
 
-  const doc = new jsPDF(orientation, unit, size) as any;
+  const doc = new jsPDF('portrait', 'pt', 'a4') as any;
 
-  doc.setProperties({
-    title: fileName,
-  });
+  /**
+   * Name of .pdf file.
+   * For example, the result name will be statement_1_25042020.pdf
+   */
+  doc.setProperties({ title: fileName });
 
-  // Title of document
+  /**
+   * Title of document
+   */
   doc.setFontSize(15);
   doc.setFontStyle('bold');
   doc.setTextColor(theme.colors.darkGray);
-  doc.text(30, 35, docTitle);
+  doc.text(30, 35, 'Statement');
 
-  // Username, time, page location
+  /**
+   * Datetime of generated file and username
+   * e.g. Created by Admin Lastname at 26/03/2020 13:06:24
+   */
   doc.setFontSize(8);
   doc.setFontStyle('normal');
   doc.setTextColor(theme.colors.gray);
   doc.text(30, 51, `Created by ${username} at ${dateTime}`);
-  doc.text(30, 63, location);
 
-  // Image
-  doc.addImage(logoData, 'JPEG', 517, 15, 62, 46);
+  /**
+   * BOX logo at the top right corner
+   * (data img, 'JPEG', left, top, width, height)
+   */
+  doc.addImage(logoData, 'JPEG', 525, 15, 50, 37);
 
-  // line
+  /**
+   * Horizontal line
+   */
   doc.setLineWidth(0.3);
   doc.setDrawColor(153, 153, 153);
-  doc.line(30, 71, 580, 71);
+  doc.line(30, 60, 580, 60);
 
+  /** Two columns:
+   * 1st: account and customer info
+   * e.g.
+   * Account ID: 1
+   * First name: John
+   * Last name: Doe
+   * key: value
+   *
+   * 2nd: statement info
+   * e.g.
+   * Statement ID: 1
+   * Statement date: 25/04/2020
+   * key: value
+   */
   if (statement) {
-    statement.forEach((item, index) => {
-      const isSecondColumn = index === 1;
+    statement.forEach((item, i) => {
+      const isSecondColumn = i === 1;
       const leftSpaceKey = isSecondColumn ? 290 : 30;
       const leftSpaceValue = isSecondColumn ? 433 : 132;
       const topSpace = 97;
@@ -77,35 +93,32 @@ export const downloadStatementPDF = (data: {
       doc.setFontStyle('normal');
       doc.setTextColor(theme.colors.black);
 
-      Object.entries(item).forEach((el, i) => {
+      Object.entries(item).forEach((el, j) => {
         doc.setTextColor(theme.colors.black);
-        doc.text(leftSpaceKey, topSpace + 15 * i, `${formatKey(el[0])}: `);
+        doc.text(leftSpaceKey, topSpace + 15 * j, `${formatKey(el[0])}: `);
         doc.setTextColor(theme.colors.darkGray);
-        doc.text(leftSpaceValue, topSpace + 15 * i, `${formatValue(el[1])}`);
+        doc.text(leftSpaceValue, topSpace + 15 * j, `${formatValue(el[1])}`);
       });
     });
   }
 
-  tables.forEach((table, index) => {
-
-    const isFirstTable = index === 0;
-
+  /**
+   * Tables
+   */
+  tables.forEach((table, i) => {
     const { id, title, items } = table;
+
+    const isFirstTable = i === 0;
     const isTransactions = id === 'transactions';
 
     if (items && items.length) {
       const tableHead = items.length
         && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
-      const tableBody = items.length && items.map(item => Object.values(item));
+      const tableBody = items.length
+        && items.map(item => Object.values(item));
 
-      const startY = () => {
-        if (isFirstTable) {
-          return 320;
-        } else {
-          return doc.previousAutoTable.finalY + 35;
-        }
-      };
+      const startY = () => isFirstTable ? 320 : doc.previousAutoTable.finalY + 35;
 
       const tableContent = {
         head: [tableHead],
@@ -149,7 +162,8 @@ export const downloadStatementPDF = (data: {
         },
       };
 
-      if (isTransactions) {
+      // set title for first table
+      if (isFirstTable) {
         doc.setFontSize(13);
         doc.setFontStyle('bold');
         doc.setTextColor(theme.colors.darkGray);
@@ -162,7 +176,8 @@ export const downloadStatementPDF = (data: {
 
       doc.autoTable(tableContent);
 
-      if (!isTransactions) {
+      // set titles for next tables
+      if (!isFirstTable) {
         doc.setFontSize(13);
         doc.setFontStyle('bold');
         doc.setTextColor(theme.colors.darkGray);
@@ -175,7 +190,9 @@ export const downloadStatementPDF = (data: {
     }
   });
 
-  // Page number
+  /**
+   * Page number at the bottom right corner
+   */
   doc.setTextColor(theme.colors.gray);
   doc.setFontStyle('normal');
   doc.setFontSize(7);

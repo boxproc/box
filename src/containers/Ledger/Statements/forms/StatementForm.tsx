@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Hr, InputField, NumberFormatField } from 'components';
+import { Delimiter, Hr, InputField, NumberFormatField } from 'components';
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
@@ -19,7 +19,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="id"
               name="id"
@@ -29,7 +29,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="accountId"
               name="accountId"
@@ -39,7 +39,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="firstTransactionId"
               name="firstTransactionId"
@@ -49,7 +49,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="lastTransactionId"
               name="lastTransactionId"
@@ -59,7 +59,8 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Delimiter />
+          <Box width="200px" p="8px">
             <Field
               id="repaymentStatus"
               name="repaymentStatus"
@@ -116,7 +117,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="previousStatementId"
               name="previousStatementId"

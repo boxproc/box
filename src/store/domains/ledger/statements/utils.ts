@@ -111,12 +111,14 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
     description,
     apr_id,
     apr_rate,
+    status_name,
   } = data;
 
   return {
     id,
     transactionDatetime: transaction_datetime,
     amount: stringsUtil.numberToFixed(amount, 2),
+    status: status_name,
     originalCurrency: original_currency,
     amountInOriginalCurrency: stringsUtil.numberToFixed(amount_in_original_currency, 2),
     balanceAvailableBefore: stringsUtil.numberToFixed(balance_available_before, 2),
@@ -218,8 +220,9 @@ export const prepareStatementTransactionsForReport =
     } else {
       return [{
         transactionDatetime: null,
-        originalCurrency: null,
+        status: null,
         amount: null,
+        originalCurrency: null,
         amountInOriginalCurrency: null,
         balanceAvailableBefore: null,
         balanceAvailableAfter: null,
