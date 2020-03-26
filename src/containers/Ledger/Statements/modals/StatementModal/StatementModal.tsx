@@ -4,43 +4,44 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Hr, Modal, T4, Tabs, TabsPanel, withSpinner } from 'components';
-import { StatementAprsTable, TransactionsTable } from 'containers/Ledger/Statements/components';
-import { StatementForm } from 'containers/Ledger/Statements/forms';
 import { withModal, WithModalProps } from 'HOCs';
+
+import { StatementAprsTable, TransactionsTable } from './../../components';
+import { StatementForm } from './../../forms';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import {
-  HandleGetLedgerStatementAprs,
-  HandleGetLedgerStatementTransactions,
-  LedgerStatementAprItemPrepared,
-  LedgerStatementItemPrepared,
-  LedgerStatementTransactionsItemPrepared,
+  IStatement,
+  IStatementApr,
+  IStatementTransaction,
+  THandleGetStatementAprs,
+  THandleGetStatementTransactions,
 } from 'store';
 
-interface StatementModalProps extends WithModalProps {
+interface IStatementModal extends WithModalProps {
+  currentStatement: IStatement;
   currentStatementId: number;
-  currentStatement: LedgerStatementItemPrepared;
-  statementPendingTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
-  statementTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
-  statementAprs: ImmutableArray<LedgerStatementAprItemPrepared>;
-  getStatementTransactions: HandleGetLedgerStatementTransactions;
-  getStatementAprs: HandleGetLedgerStatementAprs;
-  generateTransactionsAprs: HandleGetLedgerStatementAprs;
+  generateTransactionsAprs: THandleGetStatementAprs;
+  getStatementAprs: THandleGetStatementAprs;
+  getStatementTransactions: THandleGetStatementTransactions;
+  statementAprs: ImmutableArray<IStatementApr>;
+  statementPendingTransactions: ImmutableArray<IStatementTransaction>;
+  statementTransactions: ImmutableArray<IStatementTransaction>;
 }
 
 const modalName = modalNamesConst.STATEMENTS;
 
-const StatementModal: React.FC<StatementModalProps> = ({
-  currentStatementId,
-  currentStatement,
+const StatementModal: React.FC<IStatementModal> = ({
   closeModal,
+  currentStatement,
+  currentStatementId,
+  generateTransactionsAprs,
+  getStatementAprs,
+  getStatementTransactions,
+  statementAprs,
   statementPendingTransactions,
   statementTransactions,
-  statementAprs,
-  getStatementTransactions,
-  getStatementAprs,
-  generateTransactionsAprs,
 }) => {
   React.useEffect(
     () => {
@@ -66,25 +67,29 @@ const StatementModal: React.FC<StatementModalProps> = ({
       minContainerHeight="600px"
     >
       <Tabs>
+
         <TabsPanel title="Totals">
           <StatementForm initialValues={currentStatement} />
           <Hr />
         </TabsPanel>
+
         <TabsPanel title="Transactions">
           <Box mt="20px" mb="10px">
             <T4>Pending Transactions</T4>
-            <TransactionsTable statementTransactions={statementPendingTransactions} />
+            <TransactionsTable data={statementPendingTransactions} />
           </Box>
           <Box mt="20px" mb="10px">
             <T4>Transactions</T4>
-            <TransactionsTable statementTransactions={statementTransactions} />
+            <TransactionsTable data={statementTransactions} />
           </Box>
         </TabsPanel>
+
         <TabsPanel title="Accrued Interest">
           <Box mt="20px" mb="10px">
             <StatementAprsTable data={statementAprs} />
           </Box>
         </TabsPanel>
+
       </Tabs>
       <Flex
         alignItems="center"

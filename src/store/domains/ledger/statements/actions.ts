@@ -4,88 +4,92 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
 import { openModal, selectActiveItemId, setIsOpenFilter } from 'store';
-import { Thunk } from 'types';
-import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
+
 import {
   ActionTypeKeys,
-  FilterLedgerStatementsAction,
-  FilterLedgerStatementsByIdAction,
-  GetLedgerAccountStatementsAction,
-  GetLedgerStatementAprsAction,
-  GetLedgerStatementTransactionsAction
+  IFilterStatementsAction,
+  IFilterStatementsByIdAction,
+  IGetAccountStatementsAction,
+  IGetStatementAprsAction,
+  IGetStatementTransAction
 } from './actionTypes';
+
 import * as api from './api';
+
 import {
-  selectLedgerCurrentStatementForReport,
-  selectLedgerCurrentStatementTransaction,
-  selectLedgerStatementReportFileName,
+  currentStatementForReportSelector,
+  currentStatementTransactionSelector,
+  statementReportFileNameSelector,
 } from './selectors';
-import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
+
+import {
+  IStatementsFilterToSend,
+  IStatementTransReq,
+} from './types';
+
 import {
   preparedFilterToSend,
   prepareStatementAprsForReport,
   prepareStatementTransactionsForReport,
 } from './utils';
 
-export type FilterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
-  FilterLedgerStatementsAction;
-export type HandleFilterLedgerStatements = () => Thunk<void>;
+import { Thunk } from 'types';
+import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
-export type GetLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
-  GetLedgerStatementTransactionsAction;
-export type HandleGetLedgerStatementTransactions = () => Thunk<void>;
+export type TFilterStatements = (data: Partial<IStatementsFilterToSend>) => IFilterStatementsAction;
+export type THandleFilterStatements = () => Thunk<void>;
 
-export type FilterLedgerStatementsById = (id: LedgerId) => FilterLedgerStatementsByIdAction;
-export type HandleFilterLedgerStatementsById = (id: LedgerId) => Thunk<void>;
+export type TGetStatementTransactions = (data: IStatementTransReq) => IGetStatementTransAction;
+export type THandleGetStatementTransactions = () => Thunk<void>;
 
-export type GetLedgerAccountStatements = (accountId: number) => GetLedgerAccountStatementsAction;
-export type HandleGetLedgerAccountStatements = (accountId: number) => Thunk<void>;
+export type TFilterStatementsById = (id: LedgerId) => IFilterStatementsByIdAction;
+export type THandleFilterStatementsById = (id: LedgerId) => Thunk<void>;
 
-export type GetLedgerStatementAprs = (statementId: number) => GetLedgerStatementAprsAction;
+export type TGetAccountStatements = (accountId: number) => IGetAccountStatementsAction;
+export type THandleGetAccountStatements = (accountId: number) => Thunk<void>;
 
-export type HandleGetLedgerStatementAprs = (statementId: number, openModalName?: string) =>
+export type TGetStatementAprs = (statementId: number) => IGetStatementAprsAction;
+export type THandleGetStatementAprs = (statementId: number, openModalName?: string) =>
   Thunk<void>;
 
-export type HandleGenerateStatementTransactionsAprs = () => Thunk<void>;
+export type THandleGenerateStatementTransactionsAprs = () => Thunk<void>;
 
-export type HandleDownloadLedgerStatement = (
-  statementId: number,
-  formatFunction: () => void
-) => Thunk<void>;
+export type THandleDownloadStatement = (statementId: number, formatFunction: () => void) =>
+  Thunk<void>;
 
-export type ResetStatements = () => void;
+export type TResetStatements = () => void;
 
-export const filterLedgerStatements: FilterLedgerStatements = filter => ({
-  type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
-  payload: api.filterLedgerStatements(filter),
+export const filterStatements: TFilterStatements = filter => ({
+  type: ActionTypeKeys.FILTER_STATEMENTS,
+  payload: api.filterStatements(filter),
 });
 
-export const getLedgerStatementTransactions: GetLedgerStatementTransactions = data => ({
-  type: ActionTypeKeys.GET_LEDGER_STATEMENT_TRANSACTIONS,
-  payload: api.getLedgerStatementTransactions(data),
+export const getStatementTransactions: TGetStatementTransactions = data => ({
+  type: ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
+  payload: api.getStatementTransactions(data),
 });
 
-export const filterLedgerStatementsById: FilterLedgerStatementsById = data => ({
-  type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS_BY_ID,
-  payload: api.filterLedgerStatementsById(data),
+export const filterStatementsById: TFilterStatementsById = data => ({
+  type: ActionTypeKeys.FILTER_STATEMENTS_BY_ID,
+  payload: api.filterStatementsById(data),
 });
 
-export const getLedgerAccountStatements: GetLedgerAccountStatements = accountId => ({
-  type: ActionTypeKeys.GET_LEDGER_ACCOUNT_STATEMENTS,
-  payload: api.getLedgerAccountStatements(accountId),
+export const getAccountStatements: TGetAccountStatements = accountId => ({
+  type: ActionTypeKeys.GET_ACCOUNT_STATEMENTS,
+  payload: api.getAccountStatements(accountId),
 });
 
-export const getLedgerAccountStatementAprs: GetLedgerStatementAprs = statementId => ({
-  type: ActionTypeKeys.GET_LEDGER_STATEMENT_APRS,
-  payload: api.getLedgerAccountStatementAprs(statementId),
+export const getAccountStatementAprs: TGetStatementAprs = statementId => ({
+  type: ActionTypeKeys.GET_STATEMENT_APRS,
+  payload: api.getAccountStatementAprs(statementId),
 });
 
-export const resetStatements: ResetStatements = () => ({
-  type: ActionTypeKeys.FILTER_LEDGER_STATEMENTS,
+export const resetStatements: TResetStatements = () => ({
+  type: ActionTypeKeys.FILTER_STATEMENTS,
 });
 
-export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>
+export const handleFilterStatements: THandleFilterStatements = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -94,27 +98,27 @@ export const handleFilterLedgerStatements: HandleFilterLedgerStatements = () =>
         const preparedData = preparedFilterToSend(formValues(state));
 
         if (preparedData) {
-          await dispatch(filterLedgerStatements(preparedData));
+          await dispatch(filterStatements(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleGetLedgerStatementTransactions: HandleGetLedgerStatementTransactions = () =>
+export const handleGetStatementTransactions: THandleGetStatementTransactions = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const data = selectLedgerCurrentStatementTransaction(state);
+        const data = currentStatementTransactionSelector(state);
 
-        await dispatch(getLedgerStatementTransactions(data));
+        await dispatch(getStatementTransactions(data));
       },
       dispatch
     );
   };
 
-export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById = id =>
+export const handleFilterByIdStatements: THandleFilterStatementsById = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -123,53 +127,52 @@ export const handleFilterByIdLedgerStatements: HandleFilterLedgerStatementsById 
 
         cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_STATEMENTS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemsConst.LEDGER_STATEMENTS}`));
-        await dispatch(filterLedgerStatementsById(id));
+        await dispatch(filterStatementsById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch
     );
   };
 
-export const handleGetLedgerAccountStatements: HandleGetLedgerAccountStatements = accountId =>
+export const handleGetAccountStatements: THandleGetAccountStatements = accountId =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getLedgerAccountStatements(accountId));
+        await dispatch(getAccountStatements(accountId));
       },
       dispatch
     );
   };
 
-export const handleGetLedgerStatementAprs:
-  HandleGetLedgerStatementAprs = (statementId, openModalName) =>
-    async dispatch => {
-      errorDecoratorUtil.withErrorHandler(
-        async () => {
-          await dispatch(getLedgerAccountStatementAprs(statementId));
+export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, openModalName) =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getAccountStatementAprs(statementId));
 
-          if (openModalName) {
-            dispatch(openModal({ name: openModalName }));
-          }
-        },
-        dispatch
-      );
-    };
+        if (openModalName) {
+          dispatch(openModal({ name: openModalName }));
+        }
+      },
+      dispatch
+    );
+  };
 
 export const handleGenerateStatementTransactionsAprs:
-  HandleGenerateStatementTransactionsAprs = () =>
+  THandleGenerateStatementTransactionsAprs = () =>
     async (dispatch, getState) => {
       errorDecoratorUtil.withErrorHandler(
         async () => {
           const state = getState();
           const statementId = selectActiveItemId(state);
 
-          const currentTransaction = selectLedgerCurrentStatementTransaction(state);
+          const currentTransaction = currentStatementTransactionSelector(state);
 
           const data: Array<any> = [];
 
           const loadedData = await Promise.all([
-            dispatch(getLedgerStatementTransactions(currentTransaction)),
-            dispatch(getLedgerAccountStatementAprs(statementId)),
+            dispatch(getStatementTransactions(currentTransaction)),
+            dispatch(getAccountStatementAprs(statementId)),
           ]) as Array<any>;
 
           loadedData.forEach(item => data.push(item.value));
@@ -179,8 +182,8 @@ export const handleGenerateStatementTransactionsAprs:
           const aprs = data.find(el => el.statement_aprs).statement_aprs;
 
           downloadUtil.downloadStatementPDF({
-            fileName: selectLedgerStatementReportFileName(state),
-            statement: selectLedgerCurrentStatementForReport(state),
+            fileName: statementReportFileNameSelector(state),
+            statement: currentStatementForReportSelector(state),
             tables: [
               {
                 id: 'transactions',

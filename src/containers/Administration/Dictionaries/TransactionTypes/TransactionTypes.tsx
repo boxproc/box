@@ -7,13 +7,13 @@ import PageTemplate from 'containers/PageTemplate';
 
 import { IDictionaryTransactionTypePrepared, THandleGetDictionaryTransactionTypes } from 'store';
 
-interface TransactionTypesProps {
+interface ITransactionTypes {
   getTransactionTypesData: THandleGetDictionaryTransactionTypes;
   isLoading: boolean;
   transactionTypesData: ImmutableArray<IDictionaryTransactionTypePrepared>;
 }
 
-export const TransactionTypes: React.FC<TransactionTypesProps> = ({
+export const TransactionTypes: React.FC<ITransactionTypes> = ({
   getTransactionTypesData,
   isLoading,
   transactionTypesData,

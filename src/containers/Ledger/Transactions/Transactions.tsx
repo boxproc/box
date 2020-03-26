@@ -13,10 +13,10 @@ import {
   HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
-  HandleFilterLedgerStatementsById,
   HandleFilterLedgerTransactions,
   LedgerTransactionItemPrepared,
   ResetTransactions,
+  THandleFilterStatementsById,
   UiItemPrepared,
 } from 'store';
 
@@ -25,32 +25,32 @@ import { dateUtil } from 'utils';
 
 export interface TransactionsProps extends WithModalProps {
   currentId: number;
-  transactions: ImmutableArray<LedgerTransactionItemPrepared>;
-  institutionsOptions: Array<ISelectValue>;
-  uiItems: Array<UiItemPrepared>;
-  filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;
-  filterStatementsById: HandleFilterLedgerStatementsById;
   filterCardsById: HandleFilterLedgerCardsById;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterStatementsById: THandleFilterStatementsById;
   filterTransactions: HandleFilterLedgerTransactions;
-  resetTransactions: ResetTransactions;
-  isLoading: boolean;
+  institutionsOptions: Array<ISelectValue>;
   isConvertibleToLoan: boolean;
+  isLoading: boolean;
+  resetTransactions: ResetTransactions;
+  transactions: ImmutableArray<LedgerTransactionItemPrepared>;
+  uiItems: Array<UiItemPrepared>;
 }
 
 const Transactions: React.FC<TransactionsProps> = ({
-  transactions,
+  currentId,
+  filterAccountsById,
+  filterCardsById,
+  filterCustomersById,
+  filterStatementsById,
   filterTransactions,
   institutionsOptions,
-  resetTransactions,
-  filterCustomersById,
-  filterAccountsById,
-  filterStatementsById,
-  filterCardsById,
-  currentId,
-  openModal,
-  isLoading,
   isConvertibleToLoan,
+  isLoading,
+  openModal,
+  resetTransactions,
+  transactions,
   uiItems,
 }) => {
   const [dateTimeFrom, setDateTimeFrom] = React.useState(null);

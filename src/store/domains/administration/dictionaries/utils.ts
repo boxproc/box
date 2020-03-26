@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterPrepared } from './types';
+import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterToSend } from './types';
 
 import { IIdNamePair, ISelectValue } from 'types';
 
@@ -20,7 +20,7 @@ export const valueLabelParse = (data: ImmutableArray<IIdNamePair>): Array<ISelec
 };
 
 export const prepareDictionaryEventIdToSend =
-  (params: IDictionaryEventDataElemsFilter): IDictionaryEventDataElemsFilterPrepared => {
+  (params: IDictionaryEventDataElemsFilter): IDictionaryEventDataElemsFilterToSend => {
     if (!params || !params.eventId) {
       return null;
     }

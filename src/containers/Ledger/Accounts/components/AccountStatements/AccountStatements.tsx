@@ -9,28 +9,27 @@ import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
-  HandleGetLedgerAccountStatements,
-  HandleGetLedgerStatementAprs,
-  LedgerAccountStatementItemPrepared,
+  IAccountStatement,
+  THandleGetAccountStatements,
+  THandleGetStatementAprs,
 } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof LedgerAccountStatementItemPrepared> =
-  ITableCellType<LedgerAccountStatementItemPrepared[T]>;
+type TCell<T extends keyof IAccountStatement> = ITableCellType<IAccountStatement[T]>;
 
 interface AccountStatementsProps {
-  accountStatements: ImmutableArray<LedgerAccountStatementItemPrepared>;
-  getAccountStatements: HandleGetLedgerAccountStatements;
-  getStatementAprs: HandleGetLedgerStatementAprs;
   accountCurrentId: number;
+  accountStatements: ImmutableArray<IAccountStatement>;
+  getAccountStatements: THandleGetAccountStatements;
+  getStatementAprs: THandleGetStatementAprs;
   onCancel: () => void;
 }
 
 const AccountStatements: React.FC<AccountStatementsProps> = ({
+  accountCurrentId,
+  accountStatements,
   getAccountStatements,
   getStatementAprs,
-  accountStatements,
-  accountCurrentId,
   onCancel,
 }) => {
   React.useEffect(

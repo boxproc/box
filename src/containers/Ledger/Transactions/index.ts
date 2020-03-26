@@ -8,7 +8,7 @@ import {
   handleFilterByIdLedgerAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
-  handleFilterByIdLedgerStatements,
+  handleFilterByIdStatements,
   handleFilterLedgerTransactions,
   LedgerTransactionsActionTypes,
   resetTransactions,
@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterTransactions: handleFilterLedgerTransactions,
     filterCardsById: handleFilterByIdLedgerCards,
-    filterStatementsById: handleFilterByIdLedgerStatements,
+    filterStatementsById: handleFilterByIdStatements,
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterAccountsById: handleFilterByIdLedgerAccounts,
     resetTransactions,

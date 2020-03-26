@@ -1,61 +1,134 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
+import { createLoadingSelector } from 'store/domains/loader';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { selectActiveItemId } from 'store/domains/utils';
 
+import { ActionTypeKeys } from './actionTypes';
 import {
-  prepareAccountStatementsDataToRender,
-  prepareDataToRender,
-  prepareStatementAprToRender,
-  prepareStatementDataToRender,
-  prepareTransactionsDataToRender,
+  prepareAccountStatementsToRender,
+  prepareStatementAprsToRender,
+  prepareStatementsToRender,
+  prepareStatementToRender,
+  prepareTransactionsToRender,
 } from './utils';
 
-export const selectDefaultLedgerStatements = (state: StoreState) =>
-  state.ledger.statements.statements;
+/**
+ * Statements selectors
+ */
 
-export const selectDefaultLedgerStatementTransactions = (state: StoreState) =>
-  state.ledger.statements.transactions;
+export const defaultStatementsSelector = (state: StoreState) => state.ledger.statements.statements;
 
-export const selectDefaultLedgerStatementPendingTransactions = (state: StoreState) =>
-  state.ledger.statements.pendingTransactions;
-
-export const selectLedgerStatements = createSelector(
-  selectDefaultLedgerStatements,
+export const statementsSelector = createSelector(
+  defaultStatementsSelector,
   selectInstitutionsOptions,
-  (items, institutions) => items && items.map(item => {
-    const institution = institutions.find(el => el.value === item.institution_id);
+  (statements, institutions) => statements && statements.map(statement => {
+    const institution = institutions.find(el => el.value === statement.institution_id);
 
-    return prepareDataToRender(item, institution);
+    return prepareStatementsToRender(statement, institution);
   })
 );
 
-export const selectLedgerStatementTransactions = createSelector(
-  selectDefaultLedgerStatementTransactions,
-  items => items && items.map(item => prepareTransactionsDataToRender(item))
-);
-
-export const selectLedgerStatementPendingTransactions = createSelector(
-  selectDefaultLedgerStatementPendingTransactions,
-  items => items && items.map(item => prepareTransactionsDataToRender(item))
-);
-
-export const selectLedgerCurrentStatement = createSelector(
-  selectLedgerStatements,
+export const currentStatementSelector = createSelector(
+  statementsSelector,
   selectActiveItemId,
-  (statements, currentId) => statements && statements.find(el => el.id === currentId)
+  (data, currentId) => data && data.find(el => el.id === currentId)
 );
 
-export const selectLedgerCurrentStatementForReport = createSelector(
-  selectDefaultLedgerStatements,
+export const isStatementsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_STATEMENTS,
+]);
+
+/**
+ * Statement transactions selectors
+ */
+
+export const defaultStatementTransactionsSelector = (state: StoreState) =>
+  state.ledger.statements.transactions;
+
+export const statementTransactionsSelector = createSelector(
+  defaultStatementTransactionsSelector,
+  data => data && data.map(el => prepareTransactionsToRender(el))
+);
+
+export const defaultStatementPendingTransactionsSelector = (state: StoreState) =>
+  state.ledger.statements.pendingTransactions;
+
+export const statementPendingTransactionsSelector = createSelector(
+  defaultStatementPendingTransactionsSelector,
+  data => data && data.map(el => prepareTransactionsToRender(el))
+);
+
+export const currentStatementTransactionSelector = createSelector(
+  statementsSelector,
+  selectActiveItemId,
+  (statements, currentId) => {
+    const currStatement = statements.find(el => el.id === currentId);
+
+    if (!currStatement) {
+      return null;
+    }
+
+    const { firstTransactionId, lastTransactionId } = currStatement;
+
+    return {
+      id: currentId,
+      firstTransactionId,
+      lastTransactionId,
+    };
+  }
+);
+
+/**
+ * Account statements selectors
+ */
+
+export const defaultAccountStatementsSelector = (state: StoreState) =>
+  state.ledger.statements.accountStatements;
+
+export const accountStatementsSelector = createSelector(
+  defaultAccountStatementsSelector,
+  data => data && data.map(el => prepareAccountStatementsToRender(el))
+);
+
+export const accountStatementDateSelector = createSelector(
+  accountStatementsSelector,
+  data => {
+    if (!data || !data.length) {
+      return null;
+    }
+
+    return data[0].statementDate;
+  }
+);
+
+/**
+ * Statement APRs selectors
+ */
+
+export const defaultStatementAprsSelector = (state: StoreState) =>
+  state.ledger.statements.statementAprs;
+
+export const statementAprsSelector = createSelector(
+  defaultStatementAprsSelector,
+  data => data && data.map(el => prepareStatementAprsToRender(el))
+);
+
+/**
+ * Statement data selectors for report
+ */
+
+export const currentStatementForReportSelector = createSelector(
+  defaultStatementsSelector,
   selectInstitutionsOptions,
   selectActiveItemId,
   (statements, institutions, currentId) => {
-    const current = statements && statements.find(el => el.id === currentId);
-    const institution = current && institutions.find(el => el.value === current.institution_id);
+    const currStatement = statements && statements.find(el => el.id === currentId);
+    const institution = currStatement
+      && institutions.find(el => el.value === currStatement.institution_id);
 
-    const data = prepareStatementDataToRender(current, institution);
+    const data = prepareStatementToRender(currStatement, institution);
 
     if (!data) {
       return null;
@@ -78,52 +151,8 @@ export const selectLedgerCurrentStatementForReport = createSelector(
   }
 );
 
-export const selectLedgerCurrentStatementTransaction = createSelector(
-  selectLedgerStatements,
-  selectActiveItemId,
-  (statement, currentId) => {
-    const current = statement.find(el => el.id === currentId);
-    const data = {
-      id: currentId,
-      firstTransactionId: current.firstTransactionId,
-      lastTransactionId: current.lastTransactionId,
-    };
-
-    return data;
-  }
-);
-
-export const selectDefaultLedgerAccountStatements = (state: StoreState) =>
-  state.ledger.statements.accountStatements;
-
-export const selectLedgerAccountStatements = createSelector(
-  selectDefaultLedgerAccountStatements,
-  statements => statements && statements.map(statement =>
-    prepareAccountStatementsDataToRender(statement)
-  )
-);
-
-export const selectLedgerAccountStatementDate = createSelector(
-  selectLedgerAccountStatements,
-  statements => {
-    if (!statements || !statements.length) {
-      return null;
-    }
-
-    return statements[0].statementDate;
-  }
-);
-
-export const selectDefaultLedgerStatementAprs = (state: StoreState) =>
-  state.ledger.statements.statementAprs;
-
-export const selectLedgerStatementAprs = createSelector(
-  selectDefaultLedgerStatementAprs,
-  aprs => aprs && aprs.map(apr => prepareStatementAprToRender(apr))
-);
-
-export const selectLedgerStatementReportFileName = createSelector(
-  selectLedgerCurrentStatement,
+export const statementReportFileNameSelector = createSelector(
+  currentStatementSelector,
   statement => {
     if (!statement) {
       return null;
@@ -135,3 +164,8 @@ export const selectLedgerStatementReportFileName = createSelector(
 
     return fileName;
   });
+
+export const isTransArsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
+  ActionTypeKeys.GET_STATEMENT_APRS,
+]);

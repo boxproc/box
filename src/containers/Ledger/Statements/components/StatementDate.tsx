@@ -8,11 +8,11 @@ const LightText = styled.span`
   opacity: .6;
 `;
 
-interface StatementDateProps {
+interface IStatementDate {
   date: string;
 }
 
-const StatementDate: React.FC<StatementDateProps> = ({ date }) => {
+const StatementDate: React.FC<IStatementDate> = ({ date }) => {
   return (
     <Paragraph light={true} size={13}>
       <b>Statement date:</b> {date ? date : (<LightText>no date</LightText>)}

@@ -18,12 +18,15 @@ import {
   HandleMakeLedgerLimitAdjustment,
   HandleMakeLedgerTransaction,
   PayloadManualTransactionModal,
+  THandleGetDictionaryCurrencies,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactionTypesProps {
+interface IManualTransactionModal extends WithModalProps, WithLoadTransactionTypesProps {
   currenciesOptions: Array<ISelectValue>;
+  getCurrencies: THandleGetDictionaryCurrencies;
+  isCurrenciesLoading: boolean;
   isLimitAdjustment: boolean;
   makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
   makeTransaction: HandleMakeLedgerTransaction;
@@ -31,9 +34,11 @@ interface ManualTransactionModalProps extends WithModalProps, WithLoadTransactio
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
-const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
+const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   closeModal,
   currenciesOptions,
+  getCurrencies,
+  isCurrenciesLoading,
   isLimitAdjustment,
   isTransTypesLoading,
   limitAdjTypeOptions,
@@ -42,6 +47,13 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
   manualTransTypesOptions,
   modalPayload,
 }) => {
+  React.useEffect(
+    () => {
+      getCurrencies();
+    },
+    [getCurrencies]
+  );
+
   const modalTitle = React.useMemo(
     () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
     [isLimitAdjustment]
@@ -115,14 +127,16 @@ const ManualTransactionModal: React.FC<ManualTransactionModalProps> = ({
         pageId={currentPath}
       />
       <ManualTransactionForm
-        makeTransaction={makeTransaction}
-        makeLimitAdjustment={makeLimitAdjustment}
+        currenciesOptions={currenciesOptions}
         initialValues={initialFormValues}
-        onCancel={handleOnCancel}
+        isCurrenciesLoading={isCurrenciesLoading}
         isLimitAdjustment={isLimitAdjustment}
-        transactionTypes={transactionTypes}
         isReadonly={isReadonlyId}
         isTransTypesLoading={isTransTypesLoading}
+        makeLimitAdjustment={makeLimitAdjustment}
+        makeTransaction={makeTransaction}
+        onCancel={handleOnCancel}
+        transactionTypes={transactionTypes}
       />
     </Modal>
   );

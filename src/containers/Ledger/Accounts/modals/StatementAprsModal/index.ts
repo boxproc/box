@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import StatementAprsModal from './StatementAprsModal';
 
 import {
-  selectLedgerAccountStatementDate,
+  accountStatementDateSelector,
   selectLedgerCurrentAccountAlias,
-  selectLedgerStatementAprs,
+  statementAprsSelector,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  statementAprs: selectLedgerStatementAprs(state),
+  statementAprs: statementAprsSelector(state),
   currentAccountAlias: selectLedgerCurrentAccountAlias(state),
-  currentStatementDate: selectLedgerAccountStatementDate(state),
+  currentStatementDate: accountStatementDateSelector(state),
 });
 
 export default connect(

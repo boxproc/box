@@ -6,12 +6,12 @@ import { Box, Flex } from '@rebass/grid';
 import { NumberFormatField } from 'components';
 import { formNamesConst } from 'consts';
 
-interface ResultLimitAdjustmentFormProps { }
+interface IResultLimitAdjustmentForm { }
 
-type ResultLimitAdjustmentFormAllProps = ResultLimitAdjustmentFormProps
-  & InjectedFormProps<{}, ResultLimitAdjustmentFormProps>;
+type TResultLimitAdjustmentForm = IResultLimitAdjustmentForm
+  & InjectedFormProps<{}, IResultLimitAdjustmentForm>;
 
-const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = () => {
+const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
   return (
     <form>
       <Box mx="-8px">
@@ -49,7 +49,7 @@ const ResultLimitAdjustmentForm: React.FC<ResultLimitAdjustmentFormAllProps> = (
   );
 };
 
-export default reduxForm<{}, ResultLimitAdjustmentFormProps>({
+export default reduxForm<{}, IResultLimitAdjustmentForm>({
   form: formNamesConst.RESULT_LIMIT_ADJUSTMENT,
   destroyOnUnmount: true,
   enableReinitialize: true,

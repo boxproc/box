@@ -11,10 +11,10 @@ import {
   HandleFilterLedgerAccountsById,
   HandleFilterLedgerCards,
   HandleFilterLedgerCustomersById,
-  HandleFilterLedgerStatementsById,
   HandleFilterLedgerTransactionsById,
   LedgerCardItemPrepared,
-  ResetCards
+  ResetCards,
+  THandleFilterStatementsById,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -27,7 +27,7 @@ export interface CardsProps {
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;
-  filterStatementsById: HandleFilterLedgerStatementsById;
+  filterStatementsById: THandleFilterStatementsById;
   resetCards: ResetCards;
   isLoading: boolean;
 }

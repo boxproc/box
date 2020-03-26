@@ -2,24 +2,22 @@ import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Table } from 'components';
+import { tableColumns } from './tableColumns';
 
-import { LedgerStatementTransactionsItemPrepared } from 'store';
-import { tableTransactionsColumns } from './tableTransactionsColumns';
+import { IStatementTransaction } from 'store';
 
-interface TransactionsTableProps {
-  statementTransactions: ImmutableArray<LedgerStatementTransactionsItemPrepared>;
+interface ITransactionsTable {
+  data: ImmutableArray<IStatementTransaction>;
 }
 
-export const TransactionsTable: React.FC<TransactionsTableProps> = ({
-  statementTransactions,
-}) => {
+export const TransactionsTable: React.FC<ITransactionsTable> = ({ data }) => {
   return (
     <Table
-      data={statementTransactions}
-      columns={tableTransactionsColumns}
+      columns={tableColumns}
+      data={data}
       isHeader={true}
-      pageSize={7}
       isSmaller={true}
+      pageSize={7}
     />
   );
 };

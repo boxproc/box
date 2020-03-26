@@ -4,14 +4,14 @@ import { LedgerCustomersState } from './customers';
 import { LedgerLimitAdjustmentState } from './limitAdjustment';
 import { LedgerManualTransactionState } from './manualTransaction';
 import { LedgerSettleTransactionState } from './settleTransaction';
-import { LedgerStatementsState } from './statements';
+import { IStatementsState } from './statements';
 import { LedgerTransactionsState } from './transactions';
 
 export interface LedgerState {
   accounts: LedgerAccountsState;
   customers: LedgerCustomersState;
   transactions: LedgerTransactionsState;
-  statements: LedgerStatementsState;
+  statements: IStatementsState;
   cards: LedgerCardsState;
   manualTransaction: LedgerManualTransactionState;
   limitAdjustment: LedgerLimitAdjustmentState;

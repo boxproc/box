@@ -6,12 +6,12 @@ import { Box, Flex } from '@rebass/grid';
 import { Hr, InputField, NumberFormatField } from 'components';
 import { formNamesConst } from 'consts';
 
-interface ResultManualTransactionFormProps { }
+interface IResultManualTransactionForm { }
 
-type ResultManualTransactionFormAllProps = ResultManualTransactionFormProps
-  & InjectedFormProps<{}, ResultManualTransactionFormProps>;
+type TResultManualTransactionForm = IResultManualTransactionForm
+  & InjectedFormProps<{}, IResultManualTransactionForm>;
 
-const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps> = () => {
+const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () => {
   return (
     <form>
       <Box mx="-8px">
@@ -93,7 +93,7 @@ const ResultManualTransactionForm: React.FC<ResultManualTransactionFormAllProps>
   );
 };
 
-export default reduxForm<{}, ResultManualTransactionFormProps>({
+export default reduxForm<{}, IResultManualTransactionForm>({
   form: formNamesConst.RESULT_MANUAL_TRANSACTION,
   destroyOnUnmount: true,
   enableReinitialize: true,

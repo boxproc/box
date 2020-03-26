@@ -1,20 +1,20 @@
 import { repaymentStatusOptions, repaymentTypesOptions } from 'consts';
 
 import {
-  LedgerAccountStatementItem,
-  LedgerStatementAprItem,
-  LedgerStatementAprItemPrepared,
-  LedgerStatementItem,
-  LedgerStatementsFilter,
-  LedgerStatementTransactionsItem,
-  LedgerStatementTransactionsItemPrepared
+  IAccountStatementData,
+  IStatementApr,
+  IStatementAprData,
+  IStatementData,
+  IStatementsFilter,
+  IStatementTransaction,
+  IStatementTransactionData,
 } from './types';
 
 import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
-export const prepareStatementDataToRender = (
-  data: Partial<LedgerStatementItem>,
+export const prepareStatementToRender = (
+  data: Partial<IStatementData>,
   institution?: ISelectValue
 ) => {
   if (!data) {
@@ -46,8 +46,7 @@ export const prepareStatementDataToRender = (
     previous_statement_id,
   } = data;
 
-  const repaymentStatus = repaymentStatusOptions
-    .find(status => status.value === repayment_status);
+  const repaymentStatus = repaymentStatusOptions.find(el => el.value === repayment_status);
 
   return {
     account: {
@@ -80,19 +79,16 @@ export const prepareStatementDataToRender = (
   };
 };
 
-export const prepareDataToRender = (
-  data: Partial<LedgerStatementItem>,
+export const prepareStatementsToRender = (
+  data: Partial<IStatementData>,
   institution?: ISelectValue
 ) => {
-  const preparedData = prepareStatementDataToRender(data, institution);
+  const preparedData = prepareStatementToRender(data, institution);
 
-  return {
-    ...preparedData.account,
-    ...preparedData.statement,
-  };
+  return { ...preparedData.account, ...preparedData.statement };
 };
 
-export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTransactionsItem>) => {
+export const prepareTransactionsToRender = (data: Partial<IStatementTransactionData>) => {
   if (!data) {
     return null;
   }
@@ -132,35 +128,35 @@ export const prepareTransactionsDataToRender = (data: Partial<LedgerStatementTra
   };
 };
 
-export const preparedFilterToSend = (data: Partial<LedgerStatementsFilter>) => {
+export const preparedFilterToSend = (data: Partial<IStatementsFilter>) => {
   if (!data) {
     return null;
   }
 
   const {
-    accountId,
-    institutionId,
-    firstName,
-    lastName,
     accountAlias,
+    accountId,
+    firstName,
+    institutionId,
+    lastName,
     product,
     statementsDateFrom,
     statementsDateTo,
   } = data;
 
   return {
-    account_id: accountId ? accountId : null,
-    institution_id: institutionId ? institutionId.value : null,
-    first_name: firstName ? firstName : null,
-    last_name: lastName ? lastName : null,
-    product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
+    account_id: accountId ? stringsUtil.toNumber(accountId) : null,
     date_from: statementsDateFrom ? statementsDateFrom : null,
     date_to: statementsDateTo ? statementsDateTo : null,
+    first_name: firstName ? firstName : null,
+    institution_id: institutionId ? institutionId.value : null,
+    last_name: lastName ? lastName : null,
+    product: (product && product.length) ? product.map(name => name.value) : null,
   };
 };
 
-export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatementItem) => {
+export const prepareAccountStatementsToRender = (data: IAccountStatementData) => {
   if (!data) {
     return null;
   }
@@ -174,15 +170,14 @@ export const prepareAccountStatementsDataToRender = (data: LedgerAccountStatemen
   const repaymentType = repaymentTypesOptions.find(el => el.value === repayment_type);
 
   return {
-    ...prepareDataToRender(data),
+    ...prepareStatementsToRender(data),
     accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
     startDate: start_date,
     repaymentType: repaymentType && repaymentType.label,
   };
 };
 
-export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
-  LedgerStatementAprItemPrepared => {
+export const prepareStatementAprsToRender = (data: IStatementAprData): IStatementApr => {
   if (!data) {
     return null;
   }
@@ -205,11 +200,11 @@ export const prepareStatementAprToRender = (data: LedgerStatementAprItem):
 };
 
 export const prepareStatementTransactionsForReport =
-  (transactions: Array<LedgerStatementTransactionsItem>):
-    Array<Partial<LedgerStatementTransactionsItemPrepared>> => {
-    if (transactions && transactions.length) {
-      return transactions.map(transaction => {
-        const preparedData = prepareTransactionsDataToRender(transaction);
+  (data: Array<IStatementTransactionData>): Array<Partial<IStatementTransaction>> => {
+    if (data && data.length) {
+      return data.map(el => {
+
+        const preparedData = prepareTransactionsToRender(el);
         const clonedTransactions = { ...preparedData };
 
         delete clonedTransactions.id;
@@ -235,16 +230,18 @@ export const prepareStatementTransactionsForReport =
     }
   };
 
-export const prepareStatementAprsForReport = (aprs: Array<LedgerStatementAprItem>) => {
-  if (aprs && aprs.length) {
-    return aprs.map(apr => {
-      const { description, rate, accrued_interest } = apr;
+export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) => {
+  if (data && data.length) {
+    return data.map(el => {
+
+      const { description, rate, accrued_interest } = el;
 
       return {
         description,
         rate,
         accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
       };
+
     });
   } else {
     return [{

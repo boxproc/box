@@ -12,28 +12,28 @@ import {
   HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomers,
-  HandleFilterLedgerStatementsById,
   HandleFilterLedgerTransactionsById,
   LedgerCustomerItemPrepared,
   ResetCustomers,
+  THandleFilterStatementsById,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
 export interface CustomersProps {
-  institutionsOptions: Array<ISelectValue>;
-  customers: ImmutableArray<LedgerCustomerItemPrepared>;
-  filterCustomers: HandleFilterLedgerCustomers;
-  deleteCustomer: HandleDeleteLedgerCustomer;
   currentCustomerName: string;
-  resetCustomers: ResetCustomers;
   currentId: number;
-  filterCardsById: HandleFilterLedgerCardsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
-  filterStatementsById: HandleFilterLedgerStatementsById;
+  customers: ImmutableArray<LedgerCustomerItemPrepared>;
+  deleteCustomer: HandleDeleteLedgerCustomer;
   filterAccountsById: HandleFilterLedgerAccountsById;
+  filterCardsById: HandleFilterLedgerCardsById;
+  filterCustomers: HandleFilterLedgerCustomers;
+  filterStatementsById: THandleFilterStatementsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
   isReadOnly: boolean;
+  resetCustomers: ResetCustomers;
 }
 
 const Customers: React.FC<CustomersProps> = ({

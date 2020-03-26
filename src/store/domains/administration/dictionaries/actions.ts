@@ -31,7 +31,7 @@ import {
 } from 'store';
 
 import { selectIsStatementCycleTypesLoaded } from './selectors';
-import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterPrepared } from './types';
+import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterToSend } from './types';
 import { prepareDictionaryEventIdToSend } from './utils';
 
 import { Thunk, VoidPromiseThunk } from 'types';
@@ -250,7 +250,7 @@ export const handleGetDictionaryCurrencies: THandleGetDictionaryCurrencies = () 
 /**
  * Filter event data elements actions
  */
-export type TFilterDictionaryEventDataElems = (data: IDictionaryEventDataElemsFilterPrepared) =>
+export type TFilterDictionaryEventDataElems = (data: IDictionaryEventDataElemsFilterToSend) =>
   IFilterDictionaryEventDataElemsAction;
 export type THandleFilterDictionaryEventDataElems = () => Thunk<void>;
 export type THandleFilterDictionaryEventDataElemsById = (data: IDictionaryEventDataElemsFilter) =>

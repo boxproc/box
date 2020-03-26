@@ -1,15 +1,12 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { LedgerStatementTransactionsItemPrepared } from 'store';
-
+import { IStatementTransaction } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof LedgerStatementTransactionsItemPrepared> =
-  ITableCellType<LedgerStatementTransactionsItemPrepared[T]>;
+type TCell<T extends keyof IStatementTransaction> = ITableCellType<IStatementTransaction[T]>;
 
-export const tableTransactionsColumns = [
+export const tableColumns = [
   {
     maxWidth: 130,
     Header: <TableHeader title="Transaction Datetime" />,

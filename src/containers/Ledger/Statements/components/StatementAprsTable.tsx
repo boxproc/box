@@ -2,12 +2,10 @@ import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Table, TableCell, TableHeader } from 'components';
-
-import { LedgerStatementAprItemPrepared } from 'store';
+import { IStatementApr } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof LedgerStatementAprItemPrepared> =
-  ITableCellType<LedgerStatementAprItemPrepared[T]>;
+type TCell<T extends keyof IStatementApr> = ITableCellType<IStatementApr[T]>;
 
 export const tableColumns = [
   {
@@ -59,17 +57,17 @@ export const tableColumns = [
   },
 ];
 
-interface StatementAprsTableProps {
-  data: ImmutableArray<LedgerStatementAprItemPrepared>;
+interface IStatementAprsTable {
+  data: ImmutableArray<IStatementApr>;
 }
 
-const StatementAprsTable: React.FC<StatementAprsTableProps> = ({ data }) => {
+const StatementAprsTable: React.FC<IStatementAprsTable> = ({ data }) => {
   return (
     <Table
       columns={tableColumns}
       data={data}
-      pageSize={7}
       isSmaller={true}
+      pageSize={7}
     />
   );
 };

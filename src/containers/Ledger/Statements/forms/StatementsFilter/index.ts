@@ -7,22 +7,18 @@ import { formNamesConst } from 'consts';
 import StatementsFilter from './StatementsFilter';
 
 import {
-  createLoadingSelector,
   handleGetInstitutionProducts,
-  ProductsActionTypes,
+  instProductsLoadingSelector,
   selectInstitutionProductsOptions,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
-]);
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoadingInstitutionProducts: loadingSelector(state),
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   institutionValue: formSelector(state, 'institutionId'),
+  isLoadingInstProducts: instProductsLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

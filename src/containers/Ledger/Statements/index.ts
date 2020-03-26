@@ -4,46 +4,37 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Statements from './Statements';
 
 import {
-  createLoadingSelector,
   handleFilterByIdLedgerAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
-  handleFilterLedgerStatements,
+  handleFilterStatements,
   handleGenerateStatementTransactionsAprs,
-  LedgerStatementsActionTypes,
+  isStatementsLoadingSelector,
+  isTransArsLoadingSelector,
   resetStatements,
   selectActiveItemId,
   selectInstitutionsOptions,
-  selectLedgerStatements,
   setActiveItemId,
+  statementsSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerStatementsActionTypes.FILTER_LEDGER_STATEMENTS,
-]);
-
-const loadingStatementSelector = createLoadingSelector([
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  isLoadingStatement: loadingStatementSelector(state),
-  statements: selectLedgerStatements(state),
-  institutionsOptions: selectInstitutionsOptions(state),
   currentId: selectActiveItemId(state),
+  institutionsOptions: selectInstitutionsOptions(state),
+  isLoading: isStatementsLoadingSelector(state),
+  isLoadingStatement: isTransArsLoadingSelector(state),
+  statements: statementsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterStatements: handleFilterLedgerStatements,
-    filterCardsById: handleFilterByIdLedgerCards,
-    filterTransactionsById: handleFilterByIdLedgerTransactions,
-    filterCustomersById: handleFilterByIdLedgerCustomers,
     filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterCardsById: handleFilterByIdLedgerCards,
+    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterStatements: handleFilterStatements,
+    filterTransactionsById: handleFilterByIdLedgerTransactions,
     generateTransactionsAprsFeesRewards: handleGenerateStatementTransactionsAprs,
     resetStatements,
     setActiveItemId,

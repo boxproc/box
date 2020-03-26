@@ -1,59 +1,59 @@
 import { apiClientService } from 'services';
 
 // import {
-//   dictionaryAccountStatusesData,
-//   dictionaryCardStatusesData,
-//   dictionaryCountriesData,
-//   dictionaryCurrenciesData,
-//   dictionaryEndpointTypesData,
-//   dictionaryEventsData,
-//   dictionaryInterfaceTypesData,
-//   dictionaryRepaymentTypesData,
-//   dictionaryTransactionTypesData,
+//   dictionaryAccountStatusesMock,
+//   dictionaryCardStatusesMock,
+//   dictionaryCountriesMock,
+//   dictionaryCurrenciesMock,
+//   dictionaryEndpointTypesMock,
+//   dictionaryEventsMock,
+//   dictionaryInterfaceTypesMock,
+//   dictionaryRepaymentTypesMock,
+//   dictionaryTransactionTypesMock,
 // } from './mock';
-import { dictionaryRepaymentTypesData } from './mock';
-import { IDictionaryEventDataElemsFilterPrepared } from './types';
+import { dictionaryRepaymentTypesMock } from './mock';
+import { IDictionaryEventDataElemsFilterToSend } from './types';
 
 import { throttleUtil } from 'utils';
 
 export const getDictionaryAccountStatuses = () =>
-  // throttleUtil.getDataAfter(dictionaryAccountStatusesData, 500);
+  // throttleUtil.getDataAfter(dictionaryAccountStatusesMock, 500);
   apiClientService.post('ui/administration/dictionaries/account_statuses');
 
 export const getDictionaryCardStatuses = () =>
-  // throttleUtil.getDataAfter(dictionaryCardStatusesData, 500);
+  // throttleUtil.getDataAfter(dictionaryCardStatusesMock, 500);
   apiClientService.post('ui/administration/dictionaries/card_statuses');
 
 export const getDictionaryEndpointTypes = () =>
-  // throttleUtil.getDataAfter(dictionaryEndpointTypesData, 500);
+  // throttleUtil.getDataAfter(dictionaryEndpointTypesMock, 500);
   apiClientService.post('ui/administration/endpoints/types');
 
 export const getDictionaryInterfaceTypes = () =>
-  // throttleUtil.getDataAfter(dictionaryInterfaceTypesData, 500);
+  // throttleUtil.getDataAfter(dictionaryInterfaceTypesMock, 500);
   apiClientService.post('ui/administration/interfaces/types');
 
 export const getDictionaryStatementCycleTypes = () =>
   apiClientService.post('ui/ledger/statements/get_statement_cycle_types');
 
 export const getDictionaryRepaymentTypes = () =>
-  throttleUtil.getDataAfter(dictionaryRepaymentTypesData, 500);
+  throttleUtil.getDataAfter(dictionaryRepaymentTypesMock, 500);
 // apiClient.post('ui/administration/dictionaries/repayment_types');
 
 export const getDictionaryTransactionTypes = () =>
-  // throttleUtil.getDataAfter(dictionaryTransactionTypesData, 500);
+  // throttleUtil.getDataAfter(dictionaryTransactionTypesMock, 500);
   apiClientService.post('ui/administration/dictionaries/transaction_types');
 
 export const getDictionaryCountries = () =>
-  // throttleUtil.getDataAfter(dictionaryCountriesData, 500);
+  // throttleUtil.getDataAfter(dictionaryCountriesMock, 500);
   apiClientService.post('ui/administration/dictionaries/countries');
 
 export const getDictionaryCurrencies = () =>
-  // throttleUtil.getDataAfter(dictionaryCurrenciesData, 500);
+  // throttleUtil.getDataAfter(dictionaryCurrenciesMock, 500);
   apiClientService.post('ui/administration/dictionaries/currencies');
 
-export const filterDictionaryEventDataElems = (data: IDictionaryEventDataElemsFilterPrepared) =>
+export const filterDictionaryEventDataElems = (data: IDictionaryEventDataElemsFilterToSend) =>
   apiClientService.post('ui/administration/dictionaries/event_data_elements', { data });
 
 export const getDictionaryEvents = () =>
-  // throttleUtil.getDataAfter(dictionaryEventsData, 500);
+  // throttleUtil.getDataAfter(dictionaryEventsMock, 500);
   apiClientService.post('ui/administration/dictionaries/events');

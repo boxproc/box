@@ -10,21 +10,21 @@ import { modalNamesConst } from 'consts';
 
 import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/components';
 
-import { LedgerStatementAprItemPrepared } from 'store';
+import { IStatementApr } from 'store';
 
 interface StatementAprsProps extends WithModalProps {
-  statementAprs: ImmutableArray<LedgerStatementAprItemPrepared>;
   currentAccountAlias: string;
   currentStatementDate: string;
+  statementAprs: ImmutableArray<IStatementApr>;
 }
 
 const modalName = modalNamesConst.STATEMENT_APRS;
 
 const StatementAprs: React.FC<StatementAprsProps> = ({
   closeModal,
-  statementAprs,
   currentAccountAlias,
   currentStatementDate,
+  statementAprs,
 }) => {
   const modalTitle = React.useMemo(
     () => {

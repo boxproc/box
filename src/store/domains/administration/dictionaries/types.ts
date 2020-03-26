@@ -149,7 +149,7 @@ export interface IDictionaryEventDataElemsFilter {
   eventId?: ISelectValue;
 }
 
-export interface IDictionaryEventDataElemsFilterPrepared {
+export interface IDictionaryEventDataElemsFilterToSend {
   event_id?: number | string;
 }
 

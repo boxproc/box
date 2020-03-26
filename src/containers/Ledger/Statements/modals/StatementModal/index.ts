@@ -4,38 +4,32 @@ import { bindActionCreators, Dispatch } from 'redux';
 import StatementModal from './StatementModal';
 
 import {
-  createLoadingSelector,
+  currentStatementSelector,
   handleGenerateStatementTransactionsAprs,
-  handleGetLedgerStatementAprs,
-  handleGetLedgerStatementTransactions,
-  LedgerStatementsActionTypes,
+  handleGetStatementAprs,
+  handleGetStatementTransactions,
+  isTransArsLoadingSelector,
   selectActiveItemId,
-  selectLedgerCurrentStatement,
-  selectLedgerStatementAprs,
-  selectLedgerStatementPendingTransactions,
-  selectLedgerStatementTransactions,
+  statementAprsSelector,
+  statementPendingTransactionsSelector,
+  statementTransactionsSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_TRANSACTIONS,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  statementPendingTransactions: selectLedgerStatementPendingTransactions(state),
-  statementTransactions: selectLedgerStatementTransactions(state),
-  currentStatement: selectLedgerCurrentStatement(state),
-  statementAprs: selectLedgerStatementAprs(state),
+  currentStatement: currentStatementSelector(state),
   currentStatementId: selectActiveItemId(state),
+  isLoading: isTransArsLoadingSelector(state),
+  statementAprs: statementAprsSelector(state),
+  statementPendingTransactions: statementPendingTransactionsSelector(state),
+  statementTransactions: statementTransactionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getStatementTransactions: handleGetLedgerStatementTransactions,
-    getStatementAprs: handleGetLedgerStatementAprs,
     generateTransactionsAprs: handleGenerateStatementTransactionsAprs,
+    getStatementAprs: handleGetStatementAprs,
+    getStatementTransactions: handleGetStatementTransactions,
   },
   dispatch
 );

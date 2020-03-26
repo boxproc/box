@@ -12,7 +12,7 @@ import {
 } from './types';
 
 /** Dictionary account statuses mock */
-export const dictionaryAccountStatusesData: IDictionaryAccountStatusesData = {
+export const dictionaryAccountStatusesMock: IDictionaryAccountStatusesData = {
   account_statuses: [
     { status: 'A', name: 'Active' },
     { status: 'I', name: 'Inactive' },
@@ -29,7 +29,7 @@ export const dictionaryAccountStatusesData: IDictionaryAccountStatusesData = {
 };
 
 /** Dictionary card statuses mock */
-export const dictionaryCardStatusesData: IDictionaryCardStatusesData = {
+export const dictionaryCardStatusesMock: IDictionaryCardStatusesData = {
   card_statuses: [
     { id: 0, name: 'Unspecified' },
     { id: 1, name: 'Active' },
@@ -43,7 +43,7 @@ export const dictionaryCardStatusesData: IDictionaryCardStatusesData = {
 };
 
 /** Dictionary endpoint types mock */
-export const dictionaryEndpointTypesData: IDictionaryEndpointTypesData = {
+export const dictionaryEndpointTypesMock: IDictionaryEndpointTypesData = {
   endpoint_types: [
     { id: 1, name: 'BOX API' },
     { id: 2, name: 'Tutuka' },
@@ -54,7 +54,7 @@ export const dictionaryEndpointTypesData: IDictionaryEndpointTypesData = {
 };
 
 /** Dictionary interface types mock */
-export const dictionaryInterfaceTypesData: IDictionaryInterfaceTypesData = {
+export const dictionaryInterfaceTypesMock: IDictionaryInterfaceTypesData = {
   interface_types: [
     { id: 1, name: 'Reserved' },
     { id: 2, name: 'Tutuka' },
@@ -65,7 +65,7 @@ export const dictionaryInterfaceTypesData: IDictionaryInterfaceTypesData = {
 };
 
 /** Dictionary repayment types mock */
-export const dictionaryRepaymentTypesData: IDictionaryRepaymentTypesData = {
+export const dictionaryRepaymentTypesMock: IDictionaryRepaymentTypesData = {
   repayment_types: [
     { type: 'M', description: 'Minimum Repayment' },
     { type: 'O', description: 'Outstanding Balance' },
@@ -75,7 +75,7 @@ export const dictionaryRepaymentTypesData: IDictionaryRepaymentTypesData = {
 };
 
 /** Dictionary transaction types mock */
-export const dictionaryTransactionTypesData: IDictionaryTransactionTypesData = {
+export const dictionaryTransactionTypesMock: IDictionaryTransactionTypesData = {
   transaction_types: [
     { description: 'Unspecified', id: 0, debit_credit_indicator: 'U' },
     { description: 'Purchase - card payment', id: 1, debit_credit_indicator: 'D' },
@@ -102,7 +102,7 @@ export const dictionaryTransactionTypesData: IDictionaryTransactionTypesData = {
 };
 
 /** Dictionary countries mock */
-export const dictionaryCountriesData: IDictionaryCountriesData = {
+export const dictionaryCountriesMock: IDictionaryCountriesData = {
   countries: [
     { country_code: 'ABW', numeric_code: 533, name: 'Aruba', alpha2_code: 'AW' },
     { country_code: 'AFG', numeric_code: 4, name: 'Afghanistan', alpha2_code: 'AF' },
@@ -110,7 +110,7 @@ export const dictionaryCountriesData: IDictionaryCountriesData = {
 };
 
 /** Dictionary currencies mock */
-export const dictionaryCurrenciesData: IDictionaryCurrenciesData = {
+export const dictionaryCurrenciesMock: IDictionaryCurrenciesData = {
   currencies: [
     { currency_code: 'United Arab Emirates dirham', numeric_code: 784, name: 'AED' },
     { currency_code: 'Afghan afghani', numeric_code: 971, name: 'AFN' },
@@ -118,7 +118,7 @@ export const dictionaryCurrenciesData: IDictionaryCurrenciesData = {
 };
 
 /** Dictionary event data elements mock */
-export const dictionaryEventDataElemsData: IDictionaryEventDataElemsData = {
+export const dictionaryEventDataElemsMock: IDictionaryEventDataElemsData = {
   event_data_elements: [
     {
       event_id: 1,
@@ -154,7 +154,7 @@ export const dictionaryEventDataElemsData: IDictionaryEventDataElemsData = {
 };
 
 /** Dictionary events mock */
-export const dictionaryEventsData: IDictionaryEventsData = {
+export const dictionaryEventsMock: IDictionaryEventsData = {
   events: [
     { id: 1, name: 'Account create' },
     { id: 2, name: 'Account close' },

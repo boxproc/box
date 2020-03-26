@@ -7,13 +7,13 @@ import PageTemplate from 'containers/PageTemplate';
 
 import { IDictionaryCurrencyPrepared, THandleGetDictionaryCurrencies } from 'store';
 
-interface CurrenciesProps {
+interface ICurrencies {
   currenciesData: ImmutableArray<IDictionaryCurrencyPrepared>;
   getCurrenciesData: THandleGetDictionaryCurrencies;
   isLoading: boolean;
 }
 
-export const Currencies: React.FC<CurrenciesProps> = ({
+export const Currencies: React.FC<ICurrencies> = ({
   currenciesData,
   getCurrenciesData,
   isLoading,

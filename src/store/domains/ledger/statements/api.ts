@@ -2,21 +2,21 @@ import { apiClientService } from 'services';
 
 import { LedgerId } from '../customers';
 // import {
-//   ledgerAccountStatementAprItems,
-//   ledgerAccountStatementsItems,
-//   ledgerStatementsItems,
-//   ledgerStatementTransData,
+//   accountStatementsMock,
+//   statementAprsMock,
+//   statementsMock,
+//   statementTransMock,
 // } from './mock';
-import { LedgerStatementsFilterPrepared, LedgerStatementTransactionsItemsRequest } from './types';
+import { IStatementsFilterToSend, IStatementTransReq } from './types';
 
 // import { throttleUtil } from 'utils';
 
-export const filterLedgerStatements = (data: Partial<LedgerStatementsFilterPrepared>) =>
-  // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
+export const filterStatements = (data: Partial<IStatementsFilterToSend>) =>
+  // throttleUtil.getDataAfter(statementsMock, 500);
   apiClientService.post('ui/ledger/statements/get', { data });
 
-export const getLedgerStatementTransactions = (data: LedgerStatementTransactionsItemsRequest) =>
-  // throttleUtil.getDataAfter(ledgerStatementTransData, 500);
+export const getStatementTransactions = (data: IStatementTransReq) =>
+  // throttleUtil.getDataAfter(statementTransMock, 500);
   apiClientService.post('ui/ledger/statements/get_transactions', {
     data: {
       first_transaction_id: data.firstTransactionId,
@@ -25,18 +25,18 @@ export const getLedgerStatementTransactions = (data: LedgerStatementTransactions
     },
   });
 
-export const filterLedgerStatementsById = (data: LedgerId) =>
-  // throttleUtil.getDataAfter(ledgerStatementsItems, 500);
+export const filterStatementsById = (data: LedgerId) =>
+  // throttleUtil.getDataAfter(statementsMock, 500);
   apiClientService.post('ui/ledger/statements/get', { data });
 
-export const getLedgerAccountStatements = (accountId: number) =>
-  // throttleUtil.getDataAfter(ledgerAccountStatementsItems, 500);
+export const getAccountStatements = (accountId: number) =>
+  // throttleUtil.getDataAfter(accountStatementsMock, 500);
   apiClientService.post('ui/ledger/accounts/get_statements', {
     data: { account_id: accountId },
   });
 
-export const getLedgerAccountStatementAprs = (statementId: number) =>
-  // throttleUtil.getDataAfter(ledgerAccountStatementAprItems, 500);
+export const getAccountStatementAprs = (statementId: number) =>
+  // throttleUtil.getDataAfter(statementAprsMock, 500);
   apiClientService.post('ui/ledger/accounts/get_statement_aprs', {
     data: { statement_id: statementId },
   });

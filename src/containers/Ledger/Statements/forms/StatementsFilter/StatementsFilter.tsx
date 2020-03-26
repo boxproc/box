@@ -4,30 +4,27 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { InputField, MaskField, SelectField } from 'components';
-
 import { dateFormatConst, maskFormatConst } from 'consts';
-
 import { HandleGetInstitutionProducts } from 'store';
-
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface StatementsFilterProps {
-  institutionsOptions: Array<ISelectValue>;
+interface IStatementsFilter {
   getInstitutionProducts: HandleGetInstitutionProducts;
-  institutionValue: ISelectValue;
   institutionProductsOptions: Array<ISelectValue>;
-  isLoadingInstitutionProducts: boolean;
+  institutionsOptions: Array<ISelectValue>;
+  institutionValue: ISelectValue;
   isDisabled: boolean;
+  isLoadingInstProducts: boolean;
 }
 
-const StatementsFilter: React.FC<StatementsFilterProps> = ({
-  institutionsOptions,
-  institutionValue,
+const StatementsFilter: React.FC<IStatementsFilter> = ({
   getInstitutionProducts,
   institutionProductsOptions,
-  isLoadingInstitutionProducts,
+  institutionsOptions,
+  institutionValue,
   isDisabled,
+  isLoadingInstProducts,
 }) => {
   const currentInstitutionId = React.useMemo(
     () => institutionValue && institutionValue.value,
@@ -125,7 +122,7 @@ const StatementsFilter: React.FC<StatementsFilterProps> = ({
           placeholder="Select Product"
           options={institutionProductsOptions}
           isMulti={true}
-          isLoading={isLoadingInstitutionProducts}
+          isLoading={isLoadingInstProducts}
           isDisabled={isDisabled}
         />
       </Box>

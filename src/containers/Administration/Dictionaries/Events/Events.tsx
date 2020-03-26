@@ -9,13 +9,13 @@ import { THandleGetDictionaryEvents } from 'store';
 
 import { IIdNamePair } from 'types';
 
-interface EventsProps {
+interface IEvents {
   eventsData: ImmutableArray<IIdNamePair>;
   getEventsData: THandleGetDictionaryEvents;
   isLoading: boolean;
 }
 
-export const Events: React.FC<EventsProps> = ({
+export const Events: React.FC<IEvents> = ({
   eventsData,
   getEventsData,
   isLoading,

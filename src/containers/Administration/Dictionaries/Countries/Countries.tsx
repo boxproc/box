@@ -7,13 +7,13 @@ import PageTemplate from 'containers/PageTemplate';
 
 import { IDictionaryCountryPrepared, THandleGetDictionaryCountries } from 'store';
 
-interface CountriesProps {
+interface ICountries {
   countriesData: ImmutableArray<IDictionaryCountryPrepared>;
   getCountriesData: THandleGetDictionaryCountries;
   isLoading: boolean;
 }
 
-export const Countries: React.FC<CountriesProps> = ({
+export const Countries: React.FC<ICountries> = ({
   countriesData,
   getCountriesData,
   isLoading,

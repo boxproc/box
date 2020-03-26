@@ -15,7 +15,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface EventDataElemsProps {
+interface IEventDataElems {
   eventDataElemsData: ImmutableArray<IDictionaryEventDataElemPrepared>;
   eventsOptions: Array<ISelectValue>;
   filterEventDataElems: THandleFilterDictionaryEventDataElems;
@@ -24,7 +24,7 @@ interface EventDataElemsProps {
   resetEventDataElems: TResetEventDataElems;
 }
 
-export const EventDataElems: React.FC<EventDataElemsProps> = ({
+export const EventDataElems: React.FC<IEventDataElems> = ({
   eventDataElemsData,
   eventsOptions,
   filterEventDataElems,

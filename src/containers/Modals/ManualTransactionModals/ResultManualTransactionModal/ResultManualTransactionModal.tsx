@@ -15,7 +15,7 @@ import {
   LedgerManualTransactionResultPrepared,
 } from 'store';
 
-interface ResultManualTransactionModalProps extends WithModalProps {
+interface IResultManualTransactionModal extends WithModalProps {
   ledgerManualTransaction: LedgerManualTransactionResultPrepared;
   ledgerLimitAdjustment: LedgerLimitAdjustmentResultPrepared;
   filterLedgerTransactionsById: HandleFilterLedgerTransactionsById;
@@ -25,7 +25,7 @@ interface ResultManualTransactionModalProps extends WithModalProps {
 
 const modalName = modalNamesConst.MANUAL_TRANSACTION_RESULT;
 
-const ResultManualTransactionModal: React.FC<ResultManualTransactionModalProps> = ({
+const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
   closeModal,
   ledgerManualTransaction,
   ledgerLimitAdjustment,

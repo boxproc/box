@@ -8,12 +8,12 @@ import { SelectField } from 'components';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface EventsDataElemsFilterProps {
+interface IEventsDataElemsFilter {
   eventOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const EventsDataElemsFilter: React.FC<EventsDataElemsFilterProps> = ({
+const EventsDataElemsFilter: React.FC<IEventsDataElemsFilter> = ({
   eventOptions,
   isDisabled,
 }) => {

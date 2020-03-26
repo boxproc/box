@@ -11,7 +11,6 @@ import {
   SelectField,
   TextareaField,
 } from 'components';
-import { withLoadCurrencyCodes, WithLoadCurrencyCodesProps } from 'HOCs';
 
 import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store';
 
@@ -20,34 +19,35 @@ import { formNamesConst } from 'consts';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ManualTransactionFormProps {
-  makeTransaction: HandleMakeLedgerTransaction;
-  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  transactionTypes: Array<ISelectValue>;
-  isTransTypesLoading: boolean;
+interface IManualTransactionForm {
+  currenciesOptions: Array<ISelectValue>;
+  isCurrenciesLoading: boolean;
   isLimitAdjustment: boolean;
   isReadonly: boolean;
+  isTransTypesLoading: boolean;
+  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
+  makeTransaction: HandleMakeLedgerTransaction;
   onCancel: () => void;
+  transactionTypes: Array<ISelectValue>;
 }
 
-type ManualTransactionFormAllProps = ManualTransactionFormProps
-  & WithLoadCurrencyCodesProps
-  & InjectedFormProps<{}, ManualTransactionFormProps>;
+type TManualTransactionForm = IManualTransactionForm
+  & InjectedFormProps<{}, IManualTransactionForm>;
 
-const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
+const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
   currenciesOptions,
+  dirty,
+  handleSubmit,
   isCurrenciesLoading,
-  transactionTypes,
-  isTransTypesLoading,
   isLimitAdjustment,
   isReadonly,
-  makeTransaction,
+  isTransTypesLoading,
   makeLimitAdjustment,
-  handleSubmit,
-  dirty,
+  makeTransaction,
+  onCancel,
   pristine,
   reset,
-  onCancel,
+  transactionTypes,
 }) => {
   const submitFormAction = React.useMemo(
     () => isLimitAdjustment ? makeLimitAdjustment : makeTransaction,
@@ -197,10 +197,8 @@ const ManualTransactionForm: React.FC<ManualTransactionFormAllProps> = ({
   );
 };
 
-const withTransactionTypesAndCurrencyCodes = withLoadCurrencyCodes(ManualTransactionForm);
-
-export default reduxForm<{}, ManualTransactionFormProps>({
+export default reduxForm<{}, IManualTransactionForm>({
   form: formNamesConst.MANUAL_TRANSACTION,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withTransactionTypesAndCurrencyCodes);
+})(ManualTransactionForm);

@@ -4,30 +4,30 @@ import { bindActionCreators, Dispatch } from 'redux';
 import AccountStatements from './AccountStatements';
 
 import {
+  accountStatementsSelector,
   createLoadingSelector,
-  handleGetLedgerAccountStatements,
-  handleGetLedgerStatementAprs,
+  handleGetAccountStatements,
+  handleGetStatementAprs,
   LedgerStatementsActionTypes,
   selectActiveItemId,
-  selectLedgerAccountStatements,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  LedgerStatementsActionTypes.GET_LEDGER_ACCOUNT_STATEMENTS,
-  LedgerStatementsActionTypes.GET_LEDGER_STATEMENT_APRS,
+  LedgerStatementsActionTypes.GET_ACCOUNT_STATEMENTS,
+  LedgerStatementsActionTypes.GET_STATEMENT_APRS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
   accountCurrentId: selectActiveItemId(state),
-  accountStatements: selectLedgerAccountStatements(state),
+  accountStatements: accountStatementsSelector(state),
+  isLoading: loadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAccountStatements: handleGetLedgerAccountStatements,
-    getStatementAprs: handleGetLedgerStatementAprs,
+    getAccountStatements: handleGetAccountStatements,
+    getStatementAprs: handleGetStatementAprs,
   },
   dispatch
 );

@@ -14,35 +14,35 @@ import {
   HandleFilterLedgerAccounts,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
-  HandleFilterLedgerStatementsById,
   HandleFilterLedgerTransactionsById,
   HandleSetActiveItemId,
   LedgerAccountItemPrepared,
   ResetAccounts,
+  THandleFilterStatementsById,
   UiItemPrepared,
 } from 'store';
 import { ISelectValue } from 'types';
 
 export interface AccountsProps extends WithModalProps {
   accounts: ImmutableArray<LedgerAccountItemPrepared>;
-  filterAccounts: HandleFilterLedgerAccounts;
   addProductOverride: HandleAddProductOverride;
-  institutionsOptions: Array<ISelectValue>;
-  uiItems: Array<UiItemPrepared>;
+  currentAccountBalanceLimit: string;
+  currentAccountBalanceLimitShared: string;
+  currentCurrencyCode: number;
+  currentId: number;
+  filterAccounts: HandleFilterLedgerAccounts;
+  filterCardsById: HandleFilterLedgerCardsById;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterStatementsById: THandleFilterStatementsById;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
   hasProductOverride: boolean;
+  institutionsOptions: Array<ISelectValue>;
+  isLoading: boolean;
+  isReadOnly: boolean;
   productOverrideId: number;
   resetAccounts: ResetAccounts;
   setActiveItemId: HandleSetActiveItemId;
-  filterCustomersById: HandleFilterLedgerCustomersById;
-  filterCardsById: HandleFilterLedgerCardsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
-  filterStatementsById: HandleFilterLedgerStatementsById;
-  currentId: number;
-  currentCurrencyCode: number;
-  currentAccountBalanceLimit: string;
-  currentAccountBalanceLimitShared: string;
-  isLoading: boolean;
-  isReadOnly: boolean;
+  uiItems: Array<UiItemPrepared>;
 }
 
 const Accounts: React.FC<AccountsProps> = ({

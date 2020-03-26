@@ -5,11 +5,13 @@ import ManualTransactionModal from './ManualTransactionModal';
 
 import {
   createLoadingSelector,
+  handleGetDictionaryCurrencies,
   handleMakeLedgerLimitAdjustment,
   handleMakeLedgerTransaction,
   LedgerLimitAdjustmentActionTypes,
   LedgerManualTransactionActionTypes,
   selectCurrencyNumsOptions,
+  selectIsCurrenciesLoading,
   selectManualTransactionModalIsLimit,
   selectPayloadManualTransactionModal,
   StoreState,
@@ -22,6 +24,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
+  isCurrenciesLoading: selectIsCurrenciesLoading(state),
   modalPayload: selectPayloadManualTransactionModal(state),
   currenciesOptions: selectCurrencyNumsOptions(state),
   isLimitAdjustment: selectManualTransactionModalIsLimit(state),
@@ -31,6 +34,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     makeTransaction: handleMakeLedgerTransaction,
     makeLimitAdjustment: handleMakeLedgerLimitAdjustment,
+    getCurrencies: handleGetDictionaryCurrencies,
   },
   dispatch
 );

@@ -4,14 +4,13 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Delimiter, Hr, InputField, NumberFormatField } from 'components';
-
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-interface StatementFormProps { }
+interface IStatementForm { }
 
-type StatementFormAllProps = StatementFormProps & InjectedFormProps<{}, StatementFormProps>;
+type TStatementForm = IStatementForm & InjectedFormProps<{}, IStatementForm>;
 
-const StatementForm: React.FC<StatementFormAllProps> = () => {
+const StatementForm: React.FC<TStatementForm> = () => {
   return (
     <form>
       <Box mx="-8px">
@@ -133,7 +132,7 @@ const StatementForm: React.FC<StatementFormAllProps> = () => {
   );
 };
 
-export default reduxForm<{}, StatementFormProps>({
+export default reduxForm<{}, IStatementForm>({
   form: formNamesConst.STATEMENT,
   destroyOnUnmount: false,
   enableReinitialize: true,

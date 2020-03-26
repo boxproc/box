@@ -5,58 +5,58 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-
-import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { StatementsFilter } from './forms';
 
 import { iconNamesConst, modalNamesConst } from 'consts';
 
+import PageTemplate from 'containers/PageTemplate';
+
 import {
   HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
-  HandleFilterLedgerStatements,
   HandleFilterLedgerTransactionsById,
-  HandleGenerateStatementTransactionsAprs,
-  LedgerStatementItemPrepared,
-  ResetStatements,
+  IStatement,
   SetActiveItemId,
+  THandleFilterStatements,
+  THandleGenerateStatementTransactionsAprs,
+  TResetStatements,
 } from 'store';
 
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface StatementsProps {
+export interface IStatements {
   currentId: number;
-  statements: ImmutableArray<LedgerStatementItemPrepared>;
-  institutionsOptions: Array<ISelectValue>;
-  filterStatements: HandleFilterLedgerStatements;
-  filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: HandleFilterLedgerAccountsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
   filterCardsById: HandleFilterLedgerCardsById;
-  generateTransactionsAprsFeesRewards: HandleGenerateStatementTransactionsAprs;
-  resetStatements: ResetStatements;
-  setActiveItemId: SetActiveItemId;
-  isLoadingStatement: boolean;
+  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterStatements: THandleFilterStatements;
+  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  generateTransactionsAprsFeesRewards: THandleGenerateStatementTransactionsAprs;
+  institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
+  isLoadingStatement: boolean;
+  resetStatements: TResetStatements;
+  setActiveItemId: SetActiveItemId;
+  statements: ImmutableArray<IStatement>;
 }
 
-const Statements: React.FC<StatementsProps> = ({
-  statements,
-  filterStatements,
-  institutionsOptions,
-  filterTransactionsById,
-  filterCustomersById,
-  filterCardsById,
-  filterAccountsById,
+const Statements: React.FC<IStatements> = ({
   currentId,
+  filterAccountsById,
+  filterCardsById,
+  filterCustomersById,
+  filterStatements,
+  filterTransactionsById,
   generateTransactionsAprsFeesRewards,
+  institutionsOptions,
+  isLoading,
+  isLoadingStatement,
   resetStatements,
   setActiveItemId,
-  isLoadingStatement,
-  isLoading,
+  statements,
 }) => {
   const [dateFrom, setDateFrom] = React.useState(null);
   const [dateTo, setDateTo] = React.useState(null);
@@ -155,19 +155,19 @@ const Statements: React.FC<StatementsProps> = ({
 
   return (
     <PageTemplate
-      title="Statements"
-      data={statements}
       columns={statementsTableColumns}
-      viewingModalName={modalNamesConst.STATEMENTS}
-      filterAction={filterStatements}
       contextMenuItems={contextMenuItems}
+      data={statements}
+      filterAction={filterStatements}
+      initialFilterValues={initialFilterValues}
       isDownloadButton={true}
       isLoading={isLoading}
-      initialFilterValues={initialFilterValues}
+      title="Statements"
+      viewingModalName={modalNamesConst.STATEMENTS}
       FilterForm={
         <StatementsFilter
-          isDisabled={isLoading}
           institutionsOptions={institutionsOptions}
+          isDisabled={isLoading}
         />
       }
     />
