@@ -23,7 +23,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
 export const Table: React.FC<TableProps> = props => {
   const {
     activeRowIndex,
-    data,
+    data = [],
     filterable = false,
     isHeader = true,
     isScrollbar = true,
