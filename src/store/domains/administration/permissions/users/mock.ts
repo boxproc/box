@@ -1,6 +1,6 @@
-import { AdminUserDataResp } from './types';
+import { IUsersData } from './types';
 
-export const usersData: AdminUserDataResp = {
+export const usersMock: IUsersData = {
   users: [
     {
       change_profile_allowed_flag: 'Y',

@@ -2,38 +2,37 @@ import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { modalNamesConst } from 'consts';
-
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { UsersFilter } from './forms';
 
 import {
-  AdminUserItemPrepared,
   HandleFilterAuditUserById,
-  HandleFilterUsers,
-  ResetUsers
+  IUser,
+  THandleFilterUsers,
+  TResetUsers
 } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface UsersProps {
-  userItems: ImmutableArray<AdminUserItemPrepared>;
-  institutionsOptions: Array<ISelectValue>;
-  filterUsers: HandleFilterUsers;
-  filterUsersById: HandleFilterAuditUserById;
+interface IUsers {
   currentUserId: number;
-  resetUsers: ResetUsers;
+  filterUsers: THandleFilterUsers;
+  filterUsersById: HandleFilterAuditUserById;
+  institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
+  resetUsers: TResetUsers;
+  users: ImmutableArray<IUser>;
 }
 
-export const Users: React.FC<UsersProps> = ({
-  userItems,
-  institutionsOptions,
+export const Users: React.FC<IUsers> = ({
+  currentUserId,
   filterUsers,
   filterUsersById,
-  currentUserId,
-  resetUsers,
+  institutionsOptions,
   isLoading,
+  resetUsers,
+  users,
 }) => {
   React.useEffect(
     () => {
@@ -66,7 +65,7 @@ export const Users: React.FC<UsersProps> = ({
   return (
     <PageTemplate
       title="Users"
-      data={userItems}
+      data={users}
       columns={tableColumns}
       contextMenuItems={contextMenuItems}
       newModalName={modalNamesConst.ADD_USER}

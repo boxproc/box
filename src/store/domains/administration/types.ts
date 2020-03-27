@@ -2,7 +2,7 @@ import { IDictionariesState } from './dictionaries';
 import { IEndpointsState } from './endpoints';
 import { IInstitutionsState } from './institutions';
 import { IInterfacesState } from './interfaces';
-import { AdminUserState } from './permissions/users';
+import { IUsersState } from './permissions/users';
 import { AdminUsersGroupState } from './permissions/usersGroups';
 import { ISchedulerState } from './scheduler';
 import { ISysPropsState } from './systemProperties';
@@ -15,5 +15,5 @@ export interface AdministrationState {
   scheduler: ISchedulerState;
   systemProperties: ISysPropsState;
   userGroups: AdminUsersGroupState;
-  users: AdminUserState;
+  users: IUsersState;
 }

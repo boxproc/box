@@ -3,18 +3,17 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
-
 import UserForm from './UserForm';
 
 import {
-  handleAddAdminUser,
-  handleUpdateAdminUser,
+  handleAddUser,
+  handleUpdateUser,
   selectInstitutions,
   selectInstitutionsOptions,
   StoreState,
 } from 'store';
 
-const formSelector = formValueSelector(formNamesConst.DEFINE_USER);
+const formSelector = formValueSelector(formNamesConst.USER);
 
 const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
@@ -26,8 +25,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateUser: handleUpdateAdminUser,
-    addUser: handleAddAdminUser,
+    updateUser: handleUpdateUser,
+    addUser: handleAddUser,
   },
   dispatch
 );

@@ -31,7 +31,7 @@ export enum formNamesConst {
   EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
   USERS_GROUP = 'usersGroupForm',
   ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
-  DEFINE_USER = 'defineUserForm',
+  USER = 'UserForm',
 
   ENDPOINT = 'endpointsForm',
   INTERFACE = 'interfaceForm',

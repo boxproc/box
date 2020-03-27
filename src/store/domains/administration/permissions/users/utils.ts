@@ -1,9 +1,9 @@
 import { statusConst, userStatusWith2faOptions, yesNoConst } from 'consts';
-import { AdminUserItem, AdminUserItemDetails, UsersFilter } from './types';
+import { IUserData, IUserDetails, IUsersFilter } from './types';
 
 import { ISelectValue } from 'types';
 
-export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) => {
+export const prepareDataToSend = (data: Partial<IUserDetails>) => {
   if (!data) {
     return null;
   }
@@ -41,10 +41,7 @@ export const prepareAdminUserDataToSend = (data: Partial<AdminUserItemDetails>) 
   };
 };
 
-export const prepareAdminUserDataToRender = (
-  data: Partial<AdminUserItem>,
-  institution?: ISelectValue
-) => {
+export const prepareDataToRender = (data: Partial<IUserData>, institution?: ISelectValue) => {
   if (!data) {
     return null;
   }
@@ -55,13 +52,14 @@ export const prepareAdminUserDataToRender = (
     first_name,
     last_name,
     email,
+    status,
     requires_2fa_flag,
     change_profile_allowed_flag,
     password_entry_counter,
     datetime_of_last_login,
   } = data;
 
-  const status = userStatusWith2faOptions.find(el => el.value === data.status);
+  const userStatus = userStatusWith2faOptions.find(el => el.value === status);
 
   return {
     id,
@@ -70,7 +68,7 @@ export const prepareAdminUserDataToRender = (
     lastName: last_name,
     institution: institution && institution.label,
     email,
-    status: status && status.label,
+    status: userStatus && userStatus.label,
     requires2faFlag: requires_2fa_flag === yesNoConst.YES,
     changeProfileAllowedFlag: change_profile_allowed_flag === yesNoConst.YES,
     passwordEntryCounter: password_entry_counter,
@@ -78,7 +76,7 @@ export const prepareAdminUserDataToRender = (
   };
 };
 
-export const prepareUsersFiltersDataToSend = (data: Partial<UsersFilter>) => {
+export const prepareFilterToSend = (data: Partial<IUsersFilter>) => {
   if (!data) {
     return null;
   }

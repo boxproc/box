@@ -7,7 +7,7 @@ import AddUserModal from './AddUserModal';
 
 import { StoreState } from 'store';
 
-const dirty = isDirty(formNamesConst.DEFINE_USER);
+const dirty = isDirty(formNamesConst.USER);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),

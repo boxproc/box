@@ -20,29 +20,28 @@ import {
   userStatusWith2faOptions,
 } from 'consts';
 
-import { HandleAddAdminUser, HandleUpdateAdminUser, InstitutionItem } from 'store';
+import { InstitutionItem, THandleAddUser, THandleUpdateUser } from 'store';
 
 import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface DefineUserFormProps {
-  institutionsOptions: Array<ISelectValue>;
+interface IUserForm {
+  addUser: THandleAddUser;
   institutions: ImmutableArray<InstitutionItem>;
+  institutionsOptions: Array<ISelectValue>;
+  institutionValue: ISelectValue;
   isEditMode?: boolean;
+  isReadOnly?: boolean;
+  onCancel?: () => void;
   requires2faFlagValue: boolean;
   statusValue: ISelectValue;
-  institutionValue: ISelectValue;
-  addUser: HandleAddAdminUser;
-  updateUser: HandleUpdateAdminUser;
-  onCancel?: () => void;
-  isReadOnly?: boolean;
+  updateUser: THandleUpdateUser;
 }
 
-type DefineUserFormAllProps = DefineUserFormProps &
-  InjectedFormProps<{}, DefineUserFormProps>;
+type TUserForm = IUserForm & InjectedFormProps<{}, IUserForm>;
 
-const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
+const UserForm: React.FC<TUserForm> = ({
   handleSubmit,
   addUser,
   updateUser,
@@ -274,8 +273,8 @@ const DefineUserForm: React.FC<DefineUserFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, DefineUserFormProps>({
-  form: formNamesConst.DEFINE_USER,
+export default reduxForm<{}, IUserForm>({
+  form: formNamesConst.USER,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(DefineUserForm);
+})(UserForm);

@@ -6,81 +6,67 @@ import * as api from './api';
 import { closeModal, isAccessibleFilterSelector } from 'store';
 import {
   ActionTypeKeys,
-  AddAdminUserAction,
-  FilterUsersAction,
-  GetAccessUsersAction,
-  UpdateAdminUserAction,
+  IAddUserAction,
+  IFilterUsersAction,
+  IGetUsernamesAction,
+  IUpdateUserAction,
 } from './actionTypes';
-import { AdminUserItem, AdminUserItemDetails, UsersFilterPrepared } from './types';
-import { prepareAdminUserDataToSend, prepareUsersFiltersDataToSend } from './utils';
+import { IUserData, IUserDetails, IUsersFilterToSend } from './types';
+import { prepareDataToSend, prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type AddAdminUser = (values: Partial<AdminUserItem>) => AddAdminUserAction;
-export type HandleAddAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
+/**
+ * Filter users action
+ */
 
-export type FilterUsers = (params: Partial<UsersFilterPrepared>) => FilterUsersAction;
-export type HandleFilterUsers = () => Thunk<void>;
+export type TFilterUsers = (data: Partial<IUsersFilterToSend>) => IFilterUsersAction;
+export type THandleFilterUsers = () => Thunk<void>;
 
-export type UpdateAdminUser = (values: Partial<AdminUserItem>) => UpdateAdminUserAction;
-export type HandleUpdateAdminUser = (values: Partial<AdminUserItemDetails>) => Thunk<void>;
-
-export type GetAccessUsers = () => GetAccessUsersAction;
-export type HandleGetAccessUsers = () => Thunk<void>;
-
-export type ResetUsers = () => void;
-
-export const addAdminUser: AddAdminUser = values => ({
-  type: ActionTypeKeys.ADD_ADMIN_USER,
-  payload: api.addAdminUser(values),
-});
-
-export const filterUsers: FilterUsers = params => ({
+export const filterUsers: TFilterUsers = data => ({
   type: ActionTypeKeys.FILTER_USERS,
-  payload: api.filterAdminUsers(params),
+  payload: api.filterUsers(data),
 });
 
-export const updateAdminUser: UpdateAdminUser = values => ({
-  type: ActionTypeKeys.UPDATE_ADMIN_USER,
-  payload: api.updateAdminUser(values),
-});
-
-export const getAccessUsers: GetAccessUsers = () => ({
-  type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS,
-  payload: api.getAdminAccessUsers(),
-});
-
-export const resetUsers: ResetUsers = () => ({
-  type: ActionTypeKeys.RESET_USERS,
-});
-
-export const handleFilterUsers: HandleFilterUsers = () =>
+export const handleFilterUsers: THandleFilterUsers = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = prepareUsersFiltersDataToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterUsers(preparedValues));
+        if (preparedData) {
+          await dispatch(filterUsers(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleAddAdminUser: HandleAddAdminUser = data =>
+/**
+ * Add user action
+ */
+
+export type TAddUser = (data: Partial<IUserData>) => IAddUserAction;
+export type THandleAddUser = (data: Partial<IUserDetails>) => Thunk<void>;
+
+export const addUser: TAddUser = data => ({
+  type: ActionTypeKeys.ADD_USER,
+  payload: api.addUser(data),
+});
+
+export const handleAddUser: THandleAddUser = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserDataToSend(data);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addAdminUser(preparedValues));
+        await dispatch(addUser(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_USER));
 
         if (isAccessibleFiltering) {
@@ -91,13 +77,25 @@ export const handleAddAdminUser: HandleAddAdminUser = data =>
     );
   };
 
-export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
+/**
+ * Update user action
+ */
+
+export type TUpdateUser = (data: Partial<IUserData>) => IUpdateUserAction;
+export type THandleUpdateUser = (data: Partial<IUserDetails>) => Thunk<void>;
+
+export const updateUser: TUpdateUser = data => ({
+  type: ActionTypeKeys.UPDATE_USER,
+  payload: api.updateUser(data),
+});
+
+export const handleUpdateUser: THandleUpdateUser = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAdminUserDataToSend(values);
+        const preparedData = prepareDataToSend(data);
 
-        await dispatch(updateAdminUser(preparedValues));
+        await dispatch(updateUser(preparedData));
         dispatch(closeModal(modalNamesConst.EDIT_USER));
         await dispatch(handleFilterUsers());
       },
@@ -105,12 +103,34 @@ export const handleUpdateAdminUser: HandleUpdateAdminUser = values =>
     );
   };
 
-export const handleGetAccessUsers: HandleGetAccessUsers = () =>
+/**
+ * Get usernames action
+ */
+
+export type TGetUsernames = () => IGetUsernamesAction;
+export type THandleGetUsernames = () => Thunk<void>;
+
+export const getUsernames: TGetUsernames = () => ({
+  type: ActionTypeKeys.GET_USERNAMES,
+  payload: api.getUsernames(),
+});
+
+export const handleGetUsernames: THandleGetUsernames = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getAccessUsers());
+        await dispatch(getUsernames());
       },
       dispatch
     );
   };
+
+/**
+ * Reset users action
+ */
+
+export type TResetUsers = () => void;
+
+export const resetUsers: TResetUsers = () => ({
+  type: ActionTypeKeys.RESET_USERS,
+});

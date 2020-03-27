@@ -4,32 +4,28 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ChangeProfileModal from './ChangeProfileModal';
 
 import {
-  AdminUserActionTypes,
   AuthActionTypes,
   createLoadingSelector,
   handleChangeAdminProfile,
-  handleGetAccessUsers,
-  selectAdminAccessUsersOptions,
+  handleGetUsernames,
+  isLoadingUsernamesSelector,
   StoreState,
+  usernamesOptionsSelector,
 } from 'store';
 
 const changingProfile = createLoadingSelector([
   AuthActionTypes.CHANGE_ADMIN_PROFILE,
 ]);
 
-const loadingUsers = createLoadingSelector([
-  AdminUserActionTypes.GET_ADMIN_ACCESS_USERS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
   isChangingProfile: changingProfile(state),
-  isLoadingUsers: loadingUsers(state),
-  adminAccessUsersOptions: selectAdminAccessUsersOptions(state),
+  isLoadingUsers: isLoadingUsernamesSelector(state),
+  usernamesOptions: usernamesOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getAccessUsers: handleGetAccessUsers,
+    getUsernames: handleGetUsernames,
     changeAdminProfile: handleChangeAdminProfile,
   },
   dispatch

@@ -1,96 +1,104 @@
-import { AdminUserDataResp } from './types';
+import { IUsersData } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  ADD_ADMIN_USER = 'administration/permissions/users/ADD_ADMIN_USER',
-  ADD_ADMIN_USER_FULFILLED = 'administration/permissions/users/ADD_ADMIN_USER_FULFILLED',
-  ADD_ADMIN_USER_REJECTED = 'administration/permissions/users/ADD_ADMIN_USER_REJECTED',
+  ADD_USER = 'administration/permissions/users/ADD_USER',
+  ADD_USER_FULFILLED = 'administration/permissions/users/ADD_USER_FULFILLED',
+  ADD_USER_REJECTED = 'administration/permissions/users/ADD_USER_REJECTED',
 
   FILTER_USERS = 'administration/permissions/users/FILTER_USERS',
   FILTER_USERS_FULFILLED = 'administration/permissions/users/FILTER_USERS_FULFILLED',
   FILTER_USERS_REJECTED = 'administration/permissions/users/FILTER_USERS_REJECTED',
 
-  UPDATE_ADMIN_USER = 'administration/permissions/users/UPDATE_ADMIN_USER',
-  UPDATE_ADMIN_USER_FULFILLED = 'administration/permissions/users/UPDATE_ADMIN_USER_FULFILLED',
-  UPDATE_ADMIN_USER_REJECTED = 'administration/permissions/users/UPDATE_ADMIN_USER_REJECTED',
+  UPDATE_USER = 'administration/permissions/users/UPDATE_USER',
+  UPDATE_USER_FULFILLED = 'administration/permissions/users/UPDATE_USER_FULFILLED',
+  UPDATE_USER_REJECTED = 'administration/permissions/users/UPDATE_USER_REJECTED',
 
-  GET_ADMIN_ACCESS_USERS = 'administration/permissions/users/GET_ADMIN_ACCESS_USERS',
-  GET_ADMIN_ACCESS_USERS_FULFILLED =
-  'administration/permissions/users/GET_ADMIN_ACCESS_USERS_FULFILLED',
-  GET_ADMIN_ACCESS_USERS_REJECTED =
-  'administration/permissions/users/GET_ADMIN_ACCESS_USERS_REJECTED',
+  GET_USERNAMES = 'administration/permissions/users/GET_USERNAMES',
+  GET_USERNAMES_FULFILLED = 'administration/permissions/users/GET_USERNAMES_FULFILLED',
+  GET_USERNAMES_REJECTED = 'administration/permissions/users/GET_USERNAMES_REJECTED',
 
   RESET_USERS = 'administration/permissions/users/RESET_USERS',
 }
 
-export interface AddAdminUserAction {
+/** Add user action interfaces */
+
+export interface IAddUserAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USER;
+  readonly type: ActionTypeKeys.ADD_USER;
 }
 
-export interface AddAdminUserFulfilledAction {
+export interface IAddUserFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USER_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_USER_FULFILLED;
 }
 
-export interface AddAdminUserRejectedAction {
+export interface IAddUserRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USER_REJECTED;
+  readonly type: ActionTypeKeys.ADD_USER_REJECTED;
 }
 
-export interface FilterUsersAction {
+/** Filter users action interfaces */
+
+export interface IFilterUsersAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_USERS;
 }
 
-export interface FilterUsersFulfilledAction {
-  readonly payload: Partial<AdminUserDataResp>;
+export interface IFilterUsersFulfilledAction {
+  readonly payload: Partial<IUsersData>;
   readonly type: ActionTypeKeys.FILTER_USERS_FULFILLED;
 }
 
-export interface FilterUsersRejectedAction {
+export interface IFilterUsersRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_USERS_REJECTED;
 }
 
-export interface UpdateAdminUserAction {
+/** Update user action interfaces */
+
+export interface IUpdateUserAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USER;
+  readonly type: ActionTypeKeys.UPDATE_USER;
 }
 
-export interface UpdateAdminUserFulfilledAction {
+export interface IUpdateUserFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_USER_FULFILLED;
 }
 
-export interface UpdateAdminUserRejectedAction {
+export interface IUpdateUserRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USER_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_USER_REJECTED;
 }
 
-export interface GetAccessUsersAction {
+/** Get usernames action interfaces */
+
+export interface IGetUsernamesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS;
+  readonly type: ActionTypeKeys.GET_USERNAMES;
 }
 
-export interface GetAccessUsersFulfilledAction {
-  readonly payload: Partial<AdminUserDataResp>;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_FULFILLED;
+export interface IGetUsernamesFulfilledAction {
+  readonly payload: Partial<IUsersData>;
+  readonly type: ActionTypeKeys.GET_USERNAMES_FULFILLED;
 }
 
-export interface GetAccessUsersRejectedAction {
+export interface IGetUsernamesRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACCESS_USERS_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERNAMES_REJECTED;
 }
 
-export interface ResetUsersAction {
+/** Reset users action interfaces */
+
+export interface IResetUsersAction {
   readonly type: ActionTypeKeys.RESET_USERS;
 }
 
-export type AdminUserActionTypes =
-  | AddAdminUserFulfilledAction
-  | FilterUsersFulfilledAction
-  | UpdateAdminUserFulfilledAction
-  | GetAccessUsersFulfilledAction
-  | ResetUsersAction;
+export type TUserActionTypes =
+  | IAddUserFulfilledAction
+  | IFilterUsersFulfilledAction
+  | IUpdateUserFulfilledAction
+  | IGetUsernamesFulfilledAction
+  | IResetUsersAction;

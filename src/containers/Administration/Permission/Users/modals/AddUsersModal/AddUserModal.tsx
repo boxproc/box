@@ -7,13 +7,13 @@ import { modalNamesConst } from 'consts';
 
 import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
-interface AddUserModalProps extends IWithModal {
+interface IAddUserModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_USER;
 
-const AddAdminModal: React.FC<AddUserModalProps> = ({
+const AddUserModal: React.FC<IAddUserModal> = ({
   closeModal,
   isFormDirty,
 }) => {
@@ -37,4 +37,4 @@ const AddAdminModal: React.FC<AddUserModalProps> = ({
   );
 };
 
-export default withModal(AddAdminModal);
+export default withModal(AddUserModal);

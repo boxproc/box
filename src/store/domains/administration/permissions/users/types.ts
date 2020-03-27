@@ -2,13 +2,13 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
 
-interface AdminUserPlainInfo {
+interface IPlainInfo {
   id: number;
   username: string;
   email: string;
 }
 
-export interface AdminUserItem extends AdminUserPlainInfo {
+export interface IUserData extends IPlainInfo {
   first_name: string;
   last_name: string;
   password_entry_counter: number | string;
@@ -19,7 +19,11 @@ export interface AdminUserItem extends AdminUserPlainInfo {
   institution_id: number | string;
 }
 
-export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
+export interface IUsersData {
+  users: Array<IUserData>;
+}
+
+interface IUserPlain extends IPlainInfo {
   firstName: string;
   lastName: string;
   passwordEntryCounter: number | string;
@@ -28,32 +32,31 @@ export interface AdminUserItemPreparedPlain extends AdminUserPlainInfo {
   changeProfileAllowedFlag: boolean;
 }
 
-export interface AdminUserItemPrepared extends AdminUserItemPreparedPlain {
+export interface IUser extends IUserPlain {
   status: string | number;
   institution: string | number;
 }
 
-export interface AdminUserItemDetails extends AdminUserItemPreparedPlain {
+export interface IUserDetails extends IUserPlain {
   status: ISelectValue;
   institution: ISelectValue;
   password: string;
 }
 
-export interface UsersFilter {
+/** Users filter interfaces */
+
+export interface IUsersFilter {
   statusActiveFlag: boolean;
   institutionId: ISelectValue;
 }
 
-export interface UsersFilterPrepared {
+export interface IUsersFilterToSend {
   status: string;
   institution_id: string | number;
 }
 
-export interface AdminUserDataResp {
-  users: Array<AdminUserItem>;
-}
-
-export interface AdminUserState {
-  users: ImmutableArray<AdminUserItem>;
-  adminAccessUsers: ImmutableArray<AdminUserItem>;
+/** Users state interface */
+export interface IUsersState {
+  users: ImmutableArray<IUserData>;
+  usernames: ImmutableArray<IUserData>;
 }

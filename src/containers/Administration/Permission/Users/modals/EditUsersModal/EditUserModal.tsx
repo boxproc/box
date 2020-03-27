@@ -7,17 +7,17 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { UserForm } from 'containers/Administration/Permission/Users/forms';
 
-import { AdminUserItemDetails } from 'store';
+import { IUserDetails } from 'store';
 
-interface EditUserModalProps extends IWithModal {
-  userDetails: Partial<AdminUserItemDetails>;
+interface IEditUserModal extends IWithModal {
+  userDetails: Partial<IUserDetails>;
   isFormDirty: boolean;
   currentUsername: string;
 }
 
 const modalName = modalNamesConst.EDIT_USER;
 
-const EditUserModal: React.FC<EditUserModalProps> = ({
+const EditUserModal: React.FC<IEditUserModal> = ({
   closeModal,
   userDetails,
   isFormDirty,

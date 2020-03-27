@@ -5,29 +5,31 @@ import Users from './Users';
 
 import {
   activeItemIdSelector,
-  AdminUserActionTypes,
   AuditUserActivityActionType,
   createLoadingSelector,
   handleFilterByIdAuditUserActivity,
   handleFilterUsers,
+  isAddingUserSelector,
+  isFilteringUsersSelector,
+  isUpdatingUserSelector,
   resetUsers,
   selectInstitutionsOptions,
-  selectUserEditorItems,
   StoreState,
+  usersSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminUserActionTypes.ADD_ADMIN_USER,
-  AdminUserActionTypes.UPDATE_ADMIN_USER,
-  AdminUserActionTypes.FILTER_USERS,
   AuditUserActivityActionType.FILTER_AUDIT_USER_ACTIVITY_BY_ID,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  userItems: selectUserEditorItems(state),
   currentUserId: activeItemIdSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  users: usersSelector(state),
+  isLoading: loadingSelector(state)
+    || isAddingUserSelector(state)
+    || isUpdatingUserSelector(state)
+    || isFilteringUsersSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

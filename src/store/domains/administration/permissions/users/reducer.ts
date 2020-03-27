@@ -1,30 +1,26 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
-import { ActionTypeKeys, AdminUserActionTypes } from './actionTypes';
-import { AdminUserState } from './types';
+import { ActionTypeKeys, TUserActionTypes } from './actionTypes';
+import { IUsersState } from './types';
 
-export const adminUserInitialState:
-  seamlessImmutable.ImmutableObject<AdminUserState> = Immutable({
-    users: Immutable([]),
-    adminAccessUsers: Immutable([]),
-  });
+export const usersInitialState: seamlessImmutable.ImmutableObject<IUsersState> = Immutable({
+  users: Immutable([]),
+  usernames: Immutable([]),
+});
 
-const adminUserReducer =
-  (state = adminUserInitialState, action: AdminUserActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.FILTER_USERS_FULFILLED:
-        return state
-          .set('users', action.payload.users);
+const usersReducer = (state = usersInitialState, action: TUserActionTypes) => {
+  switch (action.type) {
+    case ActionTypeKeys.FILTER_USERS_FULFILLED:
+      return state.set('users', action.payload.users);
 
-      case ActionTypeKeys.GET_ADMIN_ACCESS_USERS_FULFILLED:
-        return state
-          .set('adminAccessUsers', action.payload.users);
+    case ActionTypeKeys.GET_USERNAMES_FULFILLED:
+      return state.set('usernames', action.payload.users);
 
-      case ActionTypeKeys.RESET_USERS:
-        return state = adminUserInitialState;
+    case ActionTypeKeys.RESET_USERS:
+      return state = usersInitialState;
 
-      default:
-        return state;
-    }
-  };
+    default:
+      return state;
+  }
+};
 
-export default adminUserReducer;
+export default usersReducer;

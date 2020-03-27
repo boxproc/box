@@ -1,19 +1,14 @@
 import React from 'react';
-
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons, SelectField } from 'components';
-
 import { formNamesConst } from 'consts';
-
 import { HandleChangeAdminProfile } from 'store';
-
 import { ISelectValue } from 'types';
-
 import { formErrorUtil } from 'utils';
 
 interface ChangeProfileFormProps {
-  adminAccessUsersOptions: Array<ISelectValue>;
+  usernamesOptions: Array<ISelectValue>;
   changeAdminProfile: HandleChangeAdminProfile;
   isLoadingUsers: boolean;
   isChangingProfile: boolean;
@@ -25,7 +20,7 @@ type ChangeProfileFormPropsAllProps =
 
 const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
   handleSubmit,
-  adminAccessUsersOptions,
+  usernamesOptions,
   changeAdminProfile,
   isLoadingUsers,
   isChangingProfile,
@@ -46,7 +41,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
           label="Username"
           placeholder="Select username"
           component={SelectField}
-          options={adminAccessUsersOptions}
+          options={usernamesOptions}
           isDisabled={isChangingProfile}
           isLoading={isLoadingUsers}
           validate={[formErrorUtil.isRequired]}

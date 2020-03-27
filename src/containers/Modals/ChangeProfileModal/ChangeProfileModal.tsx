@@ -7,14 +7,14 @@ import { modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
 import { ChangeProfileForm } from './forms';
 
-import { HandleChangeAdminProfile, HandleGetAccessUsers } from 'store';
+import { HandleChangeAdminProfile, THandleGetUsernames } from 'store';
 
 import { ISelectValue } from 'types';
 
 interface ChangeProfileModalProps extends IWithModal {
-  getAccessUsers: HandleGetAccessUsers;
+  getUsernames: THandleGetUsernames;
   changeAdminProfile: HandleChangeAdminProfile;
-  adminAccessUsersOptions: Array<ISelectValue>;
+  usernamesOptions: Array<ISelectValue>;
   isChangingProfile: boolean;
   isLoadingUsers: boolean;
 }
@@ -22,18 +22,18 @@ interface ChangeProfileModalProps extends IWithModal {
 const modalName = modalNamesConst.CHANGE_PROFILE;
 
 const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
-  getAccessUsers,
+  getUsernames,
   changeAdminProfile,
-  adminAccessUsersOptions,
+  usernamesOptions,
   isChangingProfile,
   isLoadingUsers,
   closeModal,
 }) => {
   React.useEffect(
     () => {
-      getAccessUsers();
+      getUsernames();
     },
-    [getAccessUsers]
+    [getUsernames]
   );
 
   return (
@@ -43,7 +43,7 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
       containerWidth="300px"
     >
       <ChangeProfileForm
-        adminAccessUsersOptions={adminAccessUsersOptions}
+        usernamesOptions={usernamesOptions}
         changeAdminProfile={changeAdminProfile}
         isLoadingUsers={isLoadingUsers}
         isChangingProfile={isChangingProfile}
