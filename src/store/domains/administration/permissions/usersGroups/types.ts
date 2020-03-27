@@ -1,97 +1,112 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { IIdNamePair, ISelectValue } from 'types';
 
-interface InfoPlain extends IIdNamePair { }
+/**
+ * Users group interfaces
+ */
 
-export interface AdminUsersGroupItemResp extends InfoPlain {
+interface IInfoPlain extends IIdNamePair { }
+
+export interface IUsersGroupData extends IInfoPlain {
   institution_id: number | string;
   institution_name: string;
 }
 
-export interface AdminUsersGroupItem extends InfoPlain {
+export interface AdminUsersGroupDataResp {
+  users_group: Array<IUsersGroupData>;
+}
+
+export interface IUsersGroup extends IInfoPlain {
   institutionId: number | string;
   institutionName: string;
 }
 
-export interface AdminUsersGroupInfoEditable extends InfoPlain {
+export interface IUsersGroupEditable extends IInfoPlain {
   institutionId: ISelectValue;
 }
 
-export interface AdminUsersGroupDataResp {
-  users_group: Array<AdminUsersGroupItemResp>;
-}
+/**
+ * Users group member interfaces
+ */
 
-export interface AdminUserGroupMember {
+export interface IUsersGroupMemberData {
   id: number;
   first_name: string;
   last_name: string;
 }
 
-export interface AdminUserGroupMemberPrepared {
+export interface IUsersGroupMembersData {
+  user_group_members: Array<IUsersGroupMemberData>;
+}
+
+export interface IUsersGroupUsersData {
+  active_users: Array<IUsersGroupMemberData>;
+}
+
+export interface IUsersGroupMember {
   id: number;
   username: string;
 }
 
-export interface AdminUserGroupMemberDataResp {
-  user_group_members: Array<AdminUserGroupMember>;
-}
-
-export interface AdminUserGroupMemberDataResp {
-  active_users: Array<AdminUserGroupMember>;
-}
-
-export interface AdminGroupPermissionFormValues {
-  userGroupId: number;
-  uiItems: Array<ISelectValue>;
-  permission: boolean;
-}
-
-export interface AdminGroupPermissionRequest {
-  permission: string;
-  user_group_id: number;
-  ui_items: Array<string | number>;
-}
-
-export interface AdminGroupPermissionItemData {
-  permission: string;
-  user_group_id: number;
-  ui_item: string;
-}
-
-export interface AdminGroupPermissionItem {
-  permission: string;
-  userGroupId: number;
-  uiItem: string;
-}
-
-export interface AdminGroupPermissionData {
-  group_permissions: Array<AdminGroupPermissionItemData>;
-}
-
-export interface AdminGroupPermissionUiItemResp {
-  ui_item: string;
-}
-
-export interface AdminGroupPermissionUiItemsDataResp {
-  ui_items: Array<AdminGroupPermissionUiItemResp>;
-}
-
-export interface AdminUserGroupMembersDeleteResp {
+export interface IUsersGroupMemberDeleteReqToSend {
   user_group_id: number;
   user_id: string | number;
   username: ISelectValue;
 }
 
-export interface AdminUserGroupMembersDelete {
+export interface IUsersGroupMemberDeleteReq {
   userGroupId: number;
   userId:  string | number;
   username: ISelectValue;
 }
 
-export interface AdminUsersGroupState {
-  usersGroups: ImmutableArray<AdminUsersGroupItemResp>;
-  userGroupMembers: ImmutableArray<AdminUserGroupMember>;
-  allActiveUsers: ImmutableArray<AdminUserGroupMember>;
-  groupPermissions: ImmutableArray<AdminGroupPermissionItemData>;
-  uiItems: ImmutableArray<AdminGroupPermissionUiItemResp>;
+/**
+ * Users group permissions interfaces
+ */
+
+export interface IUsersGroupPermissionData {
+  permission: string;
+  ui_item: string;
+  user_group_id: number;
+}
+
+export interface IUsersGroupPermissionsData {
+  group_permissions: Array<IUsersGroupPermissionData>;
+}
+
+export interface IUsersGroupPermissionEditable {
+  permission: boolean;
+  uiItems: Array<ISelectValue>;
+  userGroupId: number;
+}
+
+export interface IUsersGroupPermission {
+  permission: string;
+  uiItem: string;
+  userGroupId: number;
+}
+
+export interface IUserGroupUiItem {
+  ui_item: string;
+}
+
+export interface IUserGroupUiItems {
+  ui_items: Array<IUserGroupUiItem>;
+}
+
+export interface IUsersGroupPermissionReq {
+  permission: string;
+  ui_items: Array<string | number>;
+  user_group_id: number;
+}
+
+/**
+ * Users group state interface
+ */
+export interface IUsersGroupState {
+  allActiveUsers: ImmutableArray<IUsersGroupMemberData>;
+  groupPermissions: ImmutableArray<IUsersGroupPermissionData>;
+  uiItems: ImmutableArray<IUserGroupUiItem>;
+  userGroupMembers: ImmutableArray<IUsersGroupMemberData>;
+  usersGroups: ImmutableArray<IUsersGroupData>;
 }

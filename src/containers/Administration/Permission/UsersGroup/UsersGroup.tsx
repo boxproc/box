@@ -6,12 +6,12 @@ import { modalNamesConst } from 'consts';
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
-import { AdminUsersGroupItem, HandleGetAdminUsersGroup, ResetUsersGroup } from 'store';
+import { IUsersGroup, THandleGetUsersGroup, TResetUsersGroup } from 'store';
 
 interface UserFilterProps {
-  usersGroupItems: ImmutableArray<AdminUsersGroupItem>;
-  getUsersGroup: HandleGetAdminUsersGroup;
-  resetUsersGroup: ResetUsersGroup;
+  usersGroupItems: ImmutableArray<IUsersGroup>;
+  getUsersGroup: THandleGetUsersGroup;
+  resetUsersGroup: TResetUsersGroup;
   isLoading: boolean;
 }
 

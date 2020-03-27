@@ -9,23 +9,23 @@ import { Button, T4, Table, TableCell, TableHeader, withSpinner } from 'componen
 import { iconNamesConst } from 'consts';
 
 import {
-  AdminGroupPermissionItem,
-  HandleDeleteAdminGroupPermissions,
-  HandleGetAdminGroupPermissions,
+  IUsersGroupPermission,
+  THandleDeleteGroupPermissions,
+  THandleGetGroupPermissions,
 } from 'store';
 
 import { ITableCellType } from 'types';
 
 interface UsersGroupMembersProps {
   userGroupMemberId: number;
-  getGroupPermission: HandleGetAdminGroupPermissions;
-  deleteGroupPermission: HandleDeleteAdminGroupPermissions;
-  groupPermissions: ImmutableArray<AdminGroupPermissionItem>;
+  getGroupPermission: THandleGetGroupPermissions;
+  deleteGroupPermission: THandleDeleteGroupPermissions;
+  groupPermissions: ImmutableArray<IUsersGroupPermission>;
   isReadOnly: boolean;
 }
 
-type TCell<T extends keyof AdminGroupPermissionItem> =
-  ITableCellType<AdminGroupPermissionItem[T]>;
+type TCell<T extends keyof IUsersGroupPermission> =
+  ITableCellType<IUsersGroupPermission[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getGroupPermission,

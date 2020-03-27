@@ -11,13 +11,13 @@ import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddGroupPermission,
-  handleGetAdminUiItems,
+  handleGetUsersGroupUiItems,
   selectAdminGroupPermissionsUiItems,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.ADD_ADMIN_GROUP_PERMISSIONS,
+  AdminUsersGroupActionTypes.ADD_USERS_GROUP_PERMISSIONS,
 ]);
 
 const formSelector = formValueSelector(formNamesConst.EDIT_GROUP_PERMISSION);
@@ -31,7 +31,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getUiItems: handleGetAdminUiItems,
+    getUiItems: handleGetUsersGroupUiItems,
     addGroupPermission: handleAddGroupPermission,
   },
   dispatch

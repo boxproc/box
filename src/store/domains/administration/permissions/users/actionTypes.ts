@@ -3,23 +3,23 @@ import { IUsersData } from './types';
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  ADD_USER = 'administration/permissions/users/ADD_USER',
-  ADD_USER_FULFILLED = 'administration/permissions/users/ADD_USER_FULFILLED',
-  ADD_USER_REJECTED = 'administration/permissions/users/ADD_USER_REJECTED',
+  ADD_USER = 'admin/users/ADD_USER',
+  ADD_USER_FULFILLED = 'admin/users/ADD_USER_FULFILLED',
+  ADD_USER_REJECTED = 'admin/users/ADD_USER_REJECTED',
 
-  FILTER_USERS = 'administration/permissions/users/FILTER_USERS',
-  FILTER_USERS_FULFILLED = 'administration/permissions/users/FILTER_USERS_FULFILLED',
-  FILTER_USERS_REJECTED = 'administration/permissions/users/FILTER_USERS_REJECTED',
+  FILTER_USERS = 'admin/users/FILTER_USERS',
+  FILTER_USERS_FULFILLED = 'admin/users/FILTER_USERS_FULFILLED',
+  FILTER_USERS_REJECTED = 'admin/users/FILTER_USERS_REJECTED',
 
-  UPDATE_USER = 'administration/permissions/users/UPDATE_USER',
-  UPDATE_USER_FULFILLED = 'administration/permissions/users/UPDATE_USER_FULFILLED',
-  UPDATE_USER_REJECTED = 'administration/permissions/users/UPDATE_USER_REJECTED',
+  UPDATE_USER = 'admin/users/UPDATE_USER',
+  UPDATE_USER_FULFILLED = 'admin/users/UPDATE_USER_FULFILLED',
+  UPDATE_USER_REJECTED = 'admin/users/UPDATE_USER_REJECTED',
 
-  GET_USERNAMES = 'administration/permissions/users/GET_USERNAMES',
-  GET_USERNAMES_FULFILLED = 'administration/permissions/users/GET_USERNAMES_FULFILLED',
-  GET_USERNAMES_REJECTED = 'administration/permissions/users/GET_USERNAMES_REJECTED',
+  GET_USERNAMES = 'admin/users/GET_USERNAMES',
+  GET_USERNAMES_FULFILLED = 'admin/users/GET_USERNAMES_FULFILLED',
+  GET_USERNAMES_REJECTED = 'admin/users/GET_USERNAMES_REJECTED',
 
-  RESET_USERS = 'administration/permissions/users/RESET_USERS',
+  RESET_USERS = 'admin/users/RESET_USERS',
 }
 
 /** Add user action interfaces */

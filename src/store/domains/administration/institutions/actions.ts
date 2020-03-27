@@ -31,7 +31,7 @@ export const handleGetInstitutions: THandleGetInstitutions = () =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getUserInstitutions());
+        await dispatch(getInstitutions());
       },
       dispatch
     );

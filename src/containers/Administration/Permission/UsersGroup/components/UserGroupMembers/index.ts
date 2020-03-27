@@ -5,8 +5,8 @@ import {
   activeItemIdSelector,
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleDeleteAdminUserGroupMembers,
-  handleGetAdminUserGroupMembers,
+  handleDeleteUserGroupMembers,
+  handleGetUserGroupMembers,
   selectAdminUserGroupMembers,
   StoreState,
 } from 'store';
@@ -14,7 +14,7 @@ import {
 import UserGroupMembers from './UserGroupMembers';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.GET_ADMIN_USER_GROUP_MEMBERS,
+  AdminUsersGroupActionTypes.GET_USERS_GROUP_MEMBERS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -25,8 +25,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getUserGroupMembers: handleGetAdminUserGroupMembers,
-    deleteUserGroupMembers: handleDeleteAdminUserGroupMembers,
+    getUserGroupMembers: handleGetUserGroupMembers,
+    deleteUserGroupMembers: handleDeleteUserGroupMembers,
   },
   dispatch
 );

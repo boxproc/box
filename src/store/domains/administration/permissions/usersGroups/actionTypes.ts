@@ -1,266 +1,266 @@
 import {
-  AdminGroupPermissionData,
-  AdminGroupPermissionUiItemsDataResp,
-  AdminUserGroupMemberDataResp,
   AdminUsersGroupDataResp,
+  IUserGroupUiItems,
+  IUsersGroupMembersData,
+  IUsersGroupPermissionsData,
+  IUsersGroupUsersData,
 } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP',
-  GET_ADMIN_USERS_GROUP_FULFILLED =
-  'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP_FULFILLED',
-  GET_ADMIN_USERS_GROUP_REJECTED =
-  'administration/permissions/usersGroups/GET_ADMIN_USERS_GROUP_REJECTED',
+  GET_USERS_GROUPS = 'admin/usersGroups/GET_USERS_GROUPS',
+  GET_USERS_GROUPS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUPS_FULFILLED',
+  GET_USERS_GROUPS_REJECTED = 'admin/usersGroups/GET_USERS_GROUPS_REJECTED',
 
-  GET_ADMIN_USER_GROUP_MEMBERS =
-  'administration/permissions/usersGroups/GET_ADMIN_USER_GROUP_MEMBERS',
-  GET_ADMIN_USER_GROUP_MEMBERS_FULFILLED =
-  'administration/permissions/usersGroups/GET_ADMIN_USER_GROUP_MEMBERS_FULFILLED',
-  GET_ADMIN_USER_GROUP_MEMBERS_REJECTED =
-  'administration/permissions/usersGroups/GET_ADMIN_USER_GROUP_MEMBERS_REJECTED',
+  GET_USERS_GROUP_MEMBERS = 'admin/usersGroups/GET_USERS_GROUP_MEMBERS',
+  GET_USERS_GROUP_MEMBERS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_MEMBERS_FULFILLED',
+  GET_USERS_GROUP_MEMBERS_REJECTED = 'admin/usersGroups/GET_USERS_GROUP_MEMBERS_REJECTED',
 
-  GET_ADMIN_ACTIVE_USERS =
-  'administration/permissions/usersGroups/GET_ADMIN_ACTIVE_USERS',
-  GET_ADMIN_ACTIVE_USERS_FULFILLED =
-  'administration/permissions/usersGroups/GET_ADMIN_ACTIVE_USERS_FULFILLED',
-  GET_ADMIN_ACTIVE_USERS_REJECTED =
-  'administration/permissions/usersGroups/GET_ADMIN_ACTIVE_USERS_REJECTED',
+  GET_ACTIVE_USERS = 'admin/usersGroups/GET_ACTIVE_USERS',
+  GET_ACTIVE_USERS_FULFILLED = 'admin/usersGroups/GET_ACTIVE_USERS_FULFILLED',
+  GET_ACTIVE_USERS_REJECTED = 'admin/usersGroups/GET_ACTIVE_USERS_REJECTED',
 
-  GET_ADMIN_UI_ITEMS =
-  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS',
-  GET_ADMIN_UI_ITEMS_FULFILLED =
-  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS_FULFILLED',
-  GET_ADMIN_UI_ITEMS_REJECTED =
-  'administration/permissions/usersGroups/GET_ADMIN_UI_ITEMS_REJECTED',
+  GET_USERS_GROUP_UI_ITEMS = 'admin/usersGroups/GET_USERS_GROUP_UI_ITEMS',
+  GET_USERS_GROUP_UI_ITEMS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_UI_ITEMS_FULFILLED',
+  GET_USERS_GROUP_UI_ITEMS_REJECTED = 'admin/usersGroups/GET_USERS_GROUP_UI_ITEMS_REJECTED',
 
-  GET_ADMIN_GROUP_PERMISSIONS =
-  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS',
-  GET_ADMIN_GROUP_PERMISSIONS_FULFILLED =
-  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS_FULFILLED',
-  GET_ADMIN_GROUP_PERMISSIONS_REJECTED =
-  'administration/permissions/usersGroups/GET_ADMIN_GROUP_PERMISSIONS_REJECTED',
+  GET_USERS_GROUP_PERMISSIONS = 'admin/usersGroups/GET_USERS_GROUP_PERMISSIONS',
+  GET_USERS_GROUP_PERMISSIONS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_PERMISSIONS_FULFILLED',
+  GET_USERS_GROUP_PERMISSIONS_REJECTED = 'admin/usersGroups/GET_USERS_GROUP_PERMISSIONS_REJECTED',
 
-  ADD_ADMIN_GROUP_PERMISSIONS =
-  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS',
-  ADD_ADMIN_GROUP_PERMISSIONS_FULFILLED =
-  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS_FULFILLED',
-  ADD_ADMIN_GROUP_PERMISSIONS_REJECTED =
-  'administration/permissions/usersGroups/ADD_ADMIN_GROUP_PERMISSIONS_REJECTED',
+  ADD_USERS_GROUP_PERMISSIONS = 'admin/usersGroups/ADD_USERS_GROUP_PERMISSIONS',
+  ADD_USERS_GROUP_PERMISSIONS_FULFILLED = 'admin/usersGroups/ADD_USERS_GROUP_PERMISSIONS_FULFILLED',
+  ADD_USERS_GROUP_PERMISSIONS_REJECTED = 'admin/usersGroups/ADD_USERS_GROUP_PERMISSIONS_REJECTED',
 
-  DELETE_ADMIN_GROUP_PERMISSIONS =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS',
-  DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED',
-  DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED',
+  DELETE_USERS_GROUP_PERMISSION = 'admin/usersGroups/DELETE_USERS_GROUP_PERMISSION',
+  DELETE_USERS_GROUP_PERMISSION_FULFILLED =
+  'admin/usersGroups/DELETE_USERS_GROUP_PERMISSION_FULFILLED',
+  DELETE_USERS_GROUP_PERMISSION_REJECTED =
+  'admin/usersGroups/DELETE_USERS_GROUP_PERMISSION_REJECTED',
 
-  ADD_ADMIN_ACTIVE_USERS =
-  'administration/permissions/usersGroups/ADD_ADMIN_ACTIVE_USERS',
-  ADD_ADMIN_ACTIVE_USERS_FULFILLED =
-  'administration/permissions/usersGroups/ADD_ADMIN_ACTIVE_USERS_FULFILLED',
-  ADD_ADMIN_ACTIVE_USERS_REJECTED =
-  'administration/permissions/usersGroups/ADD_ADMIN_ACTIVE_USERS_REJECTED',
+  ADD_USERS_GROUP_MEMBER = 'admin/usersGroups/ADD_USERS_GROUP_MEMBER',
+  ADD_USERS_GROUP_MEMBER_FULFILLED = 'admin/usersGroups/ADD_USERS_GROUP_MEMBER_FULFILLED',
+  ADD_USERS_GROUP_MEMBER_REJECTED = 'admin/usersGroups/ADD_USERS_GROUP_MEMBER_REJECTED',
 
-  DELETE_ADMIN_GROUP_MEMBERS =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS',
-  DELETE_ADMIN_GROUP_MEMBER_FULFILLED =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS_FULFILLED',
-  DELETE_ADMIN_GROUP_MEMBERS_REJECTED =
-  'administration/permissions/usersGroups/DELETE_ADMIN_GROUP_MEMBERS_REJECTED',
+  DELETE_USERS_GROUP_MEMBER = 'admin/usersGroups/DELETE_USERS_GROUP_MEMBER',
+  DELETE_GROUP_MEMBER_FULFILLED = 'admin/usersGroups/DELETE_USERS_GROUP_MEMBER_FULFILLED',
+  DELETE_USERS_GROUP_MEMBER_REJECTED = 'admin/usersGroups/DELETE_USERS_GROUP_MEMBER_REJECTED',
 
-  ADD_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP',
-  ADD_ADMIN_USERS_GROUP_FULFILLED =
-  'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_FULFILLED',
-  ADD_ADMIN_USERS_GROUP_REJECTED =
-  'administration/permissions/usersGroups/ADD_ADMIN_USERS_GROUP_REJECTED',
+  ADD_USERS_GROUP = 'admin/usersGroups/ADD_USERS_GROUP',
+  ADD_USERS_GROUP_FULFILLED = 'admin/usersGroups/ADD_USERS_GROUP_FULFILLED',
+  ADD_USERS_GROUP_REJECTED = 'admin/usersGroups/ADD_USERS_GROUP_REJECTED',
 
-  UPDATE_ADMIN_USERS_GROUP = 'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP',
-  UPDATE_ADMIN_USERS_GROUP_FULFILLED =
-  'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_FULFILLED',
-  UPDATE_ADMIN_USERS_GROUP_REJECTED =
-  'administration/permissions/usersGroups/UPDATE_ADMIN_USERS_GROUP_REJECTED',
+  UPDATE_USERS_GROUP = 'admin/usersGroups/UPDATE_USERS_GROUP',
+  UPDATE_USERS_GROUP_FULFILLED = 'admin/usersGroups/UPDATE_USERS_GROUP_FULFILLED',
+  UPDATE_USERS_GROUP_REJECTED = 'admin/usersGroups/UPDATE_USERS_GROUP_REJECTED',
 
-  RESET_USERS_GROUP = 'administration/permissions/usersGroups/RESET_USERS_GROUP',
+  RESET_USERS_GROUPS = 'admin/usersGroups/RESET_USERS_GROUPS',
 }
 
-export interface GetAdminUsersGroupAction {
+/** Get users groups action interfaces */
+
+export interface IGetUsersGroupsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_USERS_GROUP;
+  readonly type: ActionTypeKeys.GET_USERS_GROUPS;
 }
 
-export interface GetAdminUsersGroupFulfilledAction {
+export interface IGetUsersGroupsFulfilledAction {
   readonly payload: AdminUsersGroupDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_USERS_GROUP_FULFILLED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUPS_FULFILLED;
 }
 
-export interface GetAdminUsersGroupRejectedAction {
+export interface IGetUsersGroupsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_USERS_GROUP_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUPS_REJECTED;
 }
 
-export interface GetAdminUiItemsAction {
+/** Add users group action interfaces */
+
+export interface IAddUsersGroupAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP;
 }
 
-export interface GetAdminUiItemsFulfilledAction {
-  readonly payload: AdminGroupPermissionUiItemsDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS_FULFILLED;
-}
-
-export interface GetAdminUiItemsRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_UI_ITEMS_REJECTED;
-}
-
-export interface GetAdminUserGroupMembersAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER_GROUP_MEMBERS;
-}
-
-export interface GetAdminUserGroupMembersFulfilledAction {
-  readonly payload: AdminUserGroupMemberDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER_GROUP_MEMBERS_FULFILLED;
-}
-
-export interface GetAdminUserGroupMembersRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_USER_GROUP_MEMBERS_REJECTED;
-}
-
-export interface GetAdminActiveUsersAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACTIVE_USERS;
-}
-
-export interface GetAdminActiveUsersFulfilledAction {
-  readonly payload: AdminUserGroupMemberDataResp;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACTIVE_USERS_FULFILLED;
-}
-
-export interface GetAdminActiveUsersRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_ACTIVE_USERS_REJECTED;
-}
-export interface GetAdminGroupPermissionsAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS;
-}
-
-export interface GetAdminGroupPermissionsFulfilledAction {
-  readonly payload: AdminGroupPermissionData;
-  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_FULFILLED;
-}
-
-export interface GetAdminGroupPermissionsRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_GROUP_PERMISSIONS_REJECTED;
-}
-
-export interface DeleteAdminUserGroupMembersAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS;
-}
-
-export interface DeleteAdminUserGroupMembersFulfilledAction {
+export interface IAddUsersGroupActionFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBER_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_FULFILLED;
 }
 
-export interface DeleteAdminUserGroupMembersRejectedAction {
+export interface IAddUsersGroupActionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_MEMBERS_REJECTED;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_REJECTED;
 }
-export interface DeleteAdminGroupPermissionsAction {
+
+/** Update users group action interfaces */
+
+export interface IUpdateUsersGroupAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS;
+  readonly type: ActionTypeKeys.UPDATE_USERS_GROUP;
 }
 
-export interface DeleteAdminGroupPermissionsFulfilledAction {
+export interface IUpdateUsersGroupActionFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_USERS_GROUP_FULFILLED;
 }
 
-export interface DeleteAdminGroupPermissionsRejectedAction {
+export interface IUpdateUsersGroupActionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_GROUP_PERMISSIONS_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_USERS_GROUP_REJECTED;
 }
 
-export interface AddAdminGroupPermissionsAction {
+/** Get users group UI items action interfaces */
+
+export interface IGetUsersGroupUiItemsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_GROUP_PERMISSIONS;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_UI_ITEMS;
 }
 
-export interface AddAdminGroupPermissionsFulfilledAction {
-  readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
+export interface IGetUsersGroupUiItemsFulfilledAction {
+  readonly payload: IUserGroupUiItems;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_UI_ITEMS_FULFILLED;
 }
 
-export interface AddAdminGroupPermissionsRejectedAction {
+export interface IGetUsersGroupUiItemsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_UI_ITEMS_REJECTED;
 }
 
-export interface AddAdminUsersGroupAction {
+/** Get users group members action interfaces */
+
+export interface IGetUsersGroupMembersAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_MEMBERS;
 }
 
-export interface AddAdminUsersGroupFulfilledAction {
-  readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_FULFILLED;
+export interface IGetUsersGroupMembersFulfilledAction {
+  readonly payload: IUsersGroupMembersData;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_MEMBERS_FULFILLED;
 }
 
-export interface AddAdminUsersGroupRejectedAction {
+export interface IGetUsersGroupMembersRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_USERS_GROUP_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_MEMBERS_REJECTED;
 }
-export interface AddAdminActiveUsersAction {
+
+/** Get users group users action interfaces */
+
+export interface IGetUsersGroupUsersAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS;
+  readonly type: ActionTypeKeys.GET_ACTIVE_USERS;
 }
 
-export interface AddAdminActiveUsersFulfilledAction {
-  readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_FULFILLED;
+export interface IGetUsersGroupUsersActionFulfilledAction {
+  readonly payload: IUsersGroupUsersData;
+  readonly type: ActionTypeKeys.GET_ACTIVE_USERS_FULFILLED;
 }
 
-export interface AddAdminActiveUsersRejectedAction {
+export interface IGetUsersGroupUsersActionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_ACTIVE_USERS_REJECTED;
+  readonly type: ActionTypeKeys.GET_ACTIVE_USERS_REJECTED;
 }
 
-export interface UpdateAdminUsersGroupAction {
+/** Get users group permissions action interfaces */
+
+export interface IGetUsersGroupPermissionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS;
 }
 
-export interface UpdateAdminUsersGroupFulfilledAction {
-  readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_FULFILLED;
+export interface IGetUsersGroupPermissionsFulfilledAction {
+  readonly payload: IUsersGroupPermissionsData;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS_FULFILLED;
 }
 
-export interface UpdateAdminUsersGroupRejectedAction {
+export interface IGetUsersGroupPermissionsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_USERS_GROUP_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS_REJECTED;
 }
 
-export interface ResetUsersGroupsAction {
-  readonly type: ActionTypeKeys.RESET_USERS_GROUP;
+/** Delete member from the users group action interfaces */
+
+export interface IDeleteUsersGroupMemberAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_USERS_GROUP_MEMBER;
+}
+
+export interface IDeleteUsersGroupMemberFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.DELETE_GROUP_MEMBER_FULFILLED;
+}
+
+export interface IDeleteUsersGroupMemberRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.DELETE_USERS_GROUP_MEMBER_REJECTED;
+}
+
+/** Delete permission from the users group action interfaces */
+
+export interface IDeleteUsersGroupPermissionAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.DELETE_USERS_GROUP_PERMISSION;
+}
+
+export interface IDeleteUsersGroupPermissionFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.DELETE_USERS_GROUP_PERMISSION_FULFILLED;
+}
+
+export interface IDeleteUsersGroupPermissionRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.DELETE_USERS_GROUP_PERMISSION_REJECTED;
+}
+
+/** Add permissions to the users group action interfaces */
+
+export interface IAddUsersGroupPermissionsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_PERMISSIONS;
+}
+
+export interface IAddUsersGroupPermissionsFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_FULFILLED;
+}
+
+export interface IAddUsersGroupPermissionsRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_REJECTED;
+}
+
+/** Add user to the users group action interfaces */
+
+export interface IAddUsersGroupUserAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER;
+}
+
+export interface IAddUsersGroupUserFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_FULFILLED;
+}
+
+export interface IAddUsersGroupUserRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_REJECTED;
+}
+
+/** Reset users groups action interface */
+
+export interface IResetUsersGroupsAction {
+  readonly type: ActionTypeKeys.RESET_USERS_GROUPS;
 }
 
 export type AdminUsersGroupActionTypes =
-  | GetAdminUsersGroupFulfilledAction
-  | GetAdminActiveUsersFulfilledAction
-  | GetAdminGroupPermissionsFulfilledAction
-  | AddAdminGroupPermissionsFulfilledAction
-  | DeleteAdminGroupPermissionsFulfilledAction
-  | AddAdminUsersGroupFulfilledAction
-  | GetAdminUserGroupMembersFulfilledAction
-  | DeleteAdminUserGroupMembersFulfilledAction
-  | AddAdminActiveUsersFulfilledAction
-  | GetAdminUiItemsFulfilledAction
-  | UpdateAdminUsersGroupFulfilledAction
-  | ResetUsersGroupsAction;
+  | IAddUsersGroupUserFulfilledAction
+  | IAddUsersGroupPermissionsFulfilledAction
+  | IAddUsersGroupActionFulfilledAction
+  | IDeleteUsersGroupPermissionFulfilledAction
+  | IDeleteUsersGroupMemberFulfilledAction
+  | IGetUsersGroupPermissionsFulfilledAction
+  | IGetUsersGroupMembersFulfilledAction
+  | IGetUsersGroupsFulfilledAction
+  | IGetUsersGroupUiItemsFulfilledAction
+  | IGetUsersGroupUsersActionFulfilledAction
+  | IResetUsersGroupsAction
+  | IUpdateUsersGroupAction;

@@ -1,48 +1,79 @@
 import { apiClientService } from 'services';
 
 import {
-  AdminGroupPermissionRequest,
-  AdminUserGroupMembersDeleteResp,
-  AdminUsersGroupItemResp,
+  IUsersGroupData,
+  IUsersGroupMemberDeleteReqToSend,
+  IUsersGroupPermissionReq,
 } from './types';
 
-export const getAdminUsersGroup = () =>
-  apiClientService.post('/ui/administration/group/get');
+/**
+ * Get users groups API
+ */
+export const getUsersGroup = () => apiClientService.post('/ui/administration/group/get');
 
-export const getAdminActiveUsers = (id: number) =>
+/**
+ * Get institution users which are do not belong to the users group API
+ */
+export const getActiveUsers = (id: number) =>
   apiClientService.post('/ui/administration/group/active_users', {
     data: { user_group_id: id },
   });
 
-export const getAdminUserGroupMembers = (id: number) =>
+/**
+ * Get users group members API
+ */
+export const getUserGroupMembers = (id: number) =>
   apiClientService.post('/ui/administration/group/get_users', {
     data: { id },
   });
 
-export const getAdminUiItems = (id: number) =>
-  apiClientService.post('ui/items/get', {
-    data: { user_group_id: id },
-  });
+/**
+ * Get UI items which are do not belong to the users group API
+ */
+export const getUiItems = (id: number) => apiClientService.post('ui/items/get', {
+  data: { user_group_id: id },
+});
 
-export const getAdminUserGroupPermissions = (id: number) =>
+/**
+ * Get users group permissions API
+ */
+export const getUserGroupPermissions = (id: number) =>
   apiClientService.post('ui/administration/permissions/get', {
     data: { user_group_id: id },
   });
 
-export const addAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
+/**
+ * Add users group API
+ */
+export const addUsersGroup = (data: Partial<IUsersGroupData>) =>
   apiClientService.post('/ui/administration/group', { data });
 
-export const updateAdminUsersGroup = (data: Partial<AdminUsersGroupItemResp>) =>
+/**
+ * Update users group API
+ */
+export const updateUsersGroup = (data: Partial<IUsersGroupData>) =>
   apiClientService.put('/ui/administration/group', { data });
 
-export const deleteAdminUserGroupMembers = (id: number, userId: number) =>
+/**
+ * Delete member from the users group API
+ */
+export const deleteUserGroupMembers = (id: number, userId: number) =>
   apiClientService.delete(`/ui/administration/group/user/${userId}/${id}`);
 
-export const deleteAdminUserGroupPermissions = (id: number, uiItem: string) =>
+/**
+ * Delete UI item from the users group API
+ */
+export const deleteUserGroupPermissions = (id: number, uiItem: string) =>
   apiClientService.delete(`ui/administration/permissions/${id}/${uiItem}`);
 
-export const addAdminActiveUsers = (data: Partial<AdminUserGroupMembersDeleteResp>) =>
+/**
+ * Add user to the users group API
+ */
+export const addActiveUsers = (data: Partial<IUsersGroupMemberDeleteReqToSend>) =>
   apiClientService.post('/ui/administration/group/user', { data });
 
-export const addAdminGroupPermission = (data: Partial<AdminGroupPermissionRequest>) =>
+/**
+ * Add UI item to the users group API
+ */
+export const addGroupPermission = (data: Partial<IUsersGroupPermissionReq>) =>
   apiClientService.post('ui/administration/permissions', { data });

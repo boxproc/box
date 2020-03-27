@@ -4,6 +4,6 @@ import { apiClientService } from 'services';
 
 // import { throttleUtil } from 'utils';
 
-export const getInstitutions = () =>
+export const getUserInstitutions = () =>
   // throttleUtil.getDataAfter(institutionsData, 500);
   apiClientService.post('ui/institutions/get');

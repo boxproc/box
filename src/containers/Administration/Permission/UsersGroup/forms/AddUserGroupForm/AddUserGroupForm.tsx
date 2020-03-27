@@ -7,10 +7,10 @@ import { formNamesConst } from 'consts';
 
 import { UserGroupFields } from 'containers/Administration/Permission/UsersGroup/components';
 
-import { HandleAddAdminUsersGroups } from 'store';
+import { THandleAddUsersGroups } from 'store';
 
 export interface AddUserGroupFormProps extends ExternalSpinnerProps {
-  addUsersGroup: HandleAddAdminUsersGroups;
+  addUsersGroup: THandleAddUsersGroups;
   onCancel: () => void;
 }
 

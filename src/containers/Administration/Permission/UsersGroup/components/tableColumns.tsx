@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { AdminUsersGroupItem } from 'store';
-
+import { IUsersGroup } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminUsersGroupItem> = ITableCellType<AdminUsersGroupItem[T]>;
+type TCell<T extends keyof IUsersGroup> = ITableCellType<IUsersGroup[T]>;
 
 export const tableColumns = [
   {

@@ -9,23 +9,23 @@ import { Button, T4, Table, TableCell, withSpinner } from 'components';
 import { iconNamesConst } from 'consts';
 
 import {
-  AdminUserGroupMemberPrepared,
-  HandleDeleteAdminUserGroupMembers,
-  HandleGetAdminUserGroupMembers,
+  IUsersGroupMember,
+  THandleDeleteUserGroupMembers,
+  THandleGetUserGroupMembers,
 } from 'store';
 
 import { ITableCellType } from 'types';
 
 interface UsersGroupMembersProps {
-  userGroupMemberId: number;
-  getUserGroupMembers: HandleGetAdminUserGroupMembers;
-  userGroupMembers: ImmutableArray<AdminUserGroupMemberPrepared>;
-  deleteUserGroupMembers: HandleDeleteAdminUserGroupMembers;
+  deleteUserGroupMembers: THandleDeleteUserGroupMembers;
+  getUserGroupMembers: THandleGetUserGroupMembers;
   isReadOnly: boolean;
+  userGroupMemberId: number;
+  userGroupMembers: ImmutableArray<IUsersGroupMember>;
 }
 
-type TCell<T extends keyof AdminUserGroupMemberPrepared> =
-  ITableCellType<AdminUserGroupMemberPrepared[T]>;
+type TCell<T extends keyof IUsersGroupMember> =
+  ITableCellType<IUsersGroupMember[T]>;
 
 export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
   getUserGroupMembers,

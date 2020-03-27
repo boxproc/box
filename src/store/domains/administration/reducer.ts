@@ -5,7 +5,7 @@ import adminEndpointsReducer from './endpoints/reducer';
 import institutionsReducer from './institutions/reducer';
 import interfacesReducer from './interfaces/reducer';
 import usersReducer from './permissions/users/reducer';
-import adminUsersGroupReducer from './permissions/usersGroups/reducer';
+import usersGroupReducer from './permissions/usersGroups/reducer';
 import schedulerReducer from './scheduler/reducer';
 import sysPropsReducer from './systemProperties/reducer';
 
@@ -16,7 +16,7 @@ const administrationReducer = combineReducers({
   interfaces: interfacesReducer,
   scheduler: schedulerReducer,
   systemProperties: sysPropsReducer,
-  userGroups: adminUsersGroupReducer,
+  userGroups: usersGroupReducer,
   users: usersReducer,
 });
 

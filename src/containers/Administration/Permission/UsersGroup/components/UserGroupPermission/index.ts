@@ -5,8 +5,8 @@ import {
   activeItemIdSelector,
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleDeleteAdminGroupPermissions,
-  handleGetAdminGroupPermission,
+  handleDeleteGroupPermissions,
+  handleGetGroupPermission,
   selectAdminGroupPermissionsItems,
   StoreState,
 } from 'store';
@@ -14,7 +14,7 @@ import {
 import UserGroupPermission from './UserGroupPermission';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.GET_ADMIN_GROUP_PERMISSIONS,
+  AdminUsersGroupActionTypes.GET_USERS_GROUP_PERMISSIONS,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -25,8 +25,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getGroupPermission: handleGetAdminGroupPermission,
-    deleteGroupPermission: handleDeleteAdminGroupPermissions,
+    getGroupPermission: handleGetGroupPermission,
+    deleteGroupPermission: handleDeleteGroupPermissions,
   },
   dispatch
 );

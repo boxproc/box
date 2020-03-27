@@ -7,7 +7,7 @@ import { Button, CheckboxField, SelectField } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { HandleAddAdminGroupPermissions, HandleGetAdminUiItems } from 'store';
+import { THandleAddGroupPermissions, THandleGetUsersGroupUiItems } from 'store';
 
 import { ISelectValue } from 'types';
 
@@ -16,8 +16,8 @@ interface EditGroupPermissionFormProps {
   selectedUiItem: Array<ISelectValue>;
   currentUserGroupId: number;
   isLoading: boolean;
-  getUiItems: HandleGetAdminUiItems;
-  addGroupPermission: HandleAddAdminGroupPermissions;
+  getUiItems: THandleGetUsersGroupUiItems;
+  addGroupPermission: THandleAddGroupPermissions;
 }
 
 type EditGroupPermissionFormPropsAllProps = EditGroupPermissionFormProps &

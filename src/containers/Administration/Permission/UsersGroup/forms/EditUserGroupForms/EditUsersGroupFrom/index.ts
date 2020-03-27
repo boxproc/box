@@ -6,13 +6,13 @@ import EditUsersGroupFrom from './EditUsersGroupFrom';
 import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleUpdateAdminUsersGroup,
+  handleUpdateUsersGroup,
   selectUsersGroupValues,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.UPDATE_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -22,7 +22,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateUsersGroup: handleUpdateAdminUsersGroup,
+    updateUsersGroup: handleUpdateUsersGroup,
   },
   dispatch
 );

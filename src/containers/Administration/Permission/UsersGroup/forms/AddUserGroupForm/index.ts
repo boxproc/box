@@ -6,12 +6,12 @@ import AddUserGroupForm from './AddUserGroupForm';
 import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleAddAdminUsersGroup,
+  handleAddUsersGroup,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.ADD_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -20,7 +20,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addUsersGroup: handleAddAdminUsersGroup,
+    addUsersGroup: handleAddUsersGroup,
   },
   dispatch
 );

@@ -6,16 +6,16 @@ import UsersGroup from './UsersGroup';
 import {
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleGetAdminUsersGroup,
+  handleGetUsersGroup,
   resetUsersGroup,
   selectUsersGroupEditorItems,
   StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.GET_ADMIN_USERS_GROUP,
-  AdminUsersGroupActionTypes.ADD_ADMIN_USERS_GROUP,
-  AdminUsersGroupActionTypes.UPDATE_ADMIN_USERS_GROUP,
+  AdminUsersGroupActionTypes.GET_USERS_GROUPS,
+  AdminUsersGroupActionTypes.ADD_USERS_GROUP,
+  AdminUsersGroupActionTypes.UPDATE_USERS_GROUP,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -25,7 +25,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getUsersGroup: handleGetAdminUsersGroup,
+    getUsersGroup: handleGetUsersGroup,
     resetUsersGroup,
   },
   dispatch

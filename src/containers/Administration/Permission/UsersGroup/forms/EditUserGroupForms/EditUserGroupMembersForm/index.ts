@@ -6,8 +6,8 @@ import {
   activeItemIdSelector,
   AdminUsersGroupActionTypes,
   createLoadingSelector,
-  handleAddAdminActiveUsers,
-  handleGetAdminActiveUsers,
+  handleAddActiveUsers,
+  handleGetActiveUsers,
   selectActiveUsersItems,
   StoreState,
 } from 'store';
@@ -19,7 +19,7 @@ import EditUserGroupMembers from './EditUserGroupMembers';
 const formSelector = formValueSelector(formNamesConst.EDIT_USER_GROUP_MEMBERS);
 
 const loadingSelector = createLoadingSelector([
-  AdminUsersGroupActionTypes.ADD_ADMIN_ACTIVE_USERS,
+  AdminUsersGroupActionTypes.ADD_USERS_GROUP_MEMBER,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
@@ -31,8 +31,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getActiveUsers: handleGetAdminActiveUsers,
-    addActiveUsers: handleAddAdminActiveUsers,
+    getActiveUsers: handleGetActiveUsers,
+    addActiveUsers: handleAddActiveUsers,
   },
   dispatch
 );

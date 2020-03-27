@@ -5,25 +5,25 @@ import {
 import { TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_INSTITUTIONS = 'institutions/GET_INSTITUTIONS',
-  GET_INSTITUTIONS_FULFILLED = 'institutions/GET_INSTITUTIONS_FULFILLED',
-  GET_INSTITUTIONS_REJECTED = 'institutions/GET_INSTITUTIONS_REJECTED',
+  GET_USER_INSTITUTIONS = 'institutions/GET_USER_INSTITUTIONS',
+  GET_USER_INSTITUTIONS_FULFILLED = 'institutions/GET_USER_INSTITUTIONS_FULFILLED',
+  GET_USER_INSTITUTIONS_REJECTED = 'institutions/GET_USER_INSTITUTIONS_REJECTED',
 }
 
-export interface GetInstitutionsAction {
+export interface IGetUserInstitutionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_INSTITUTIONS;
+  readonly type: ActionTypeKeys.GET_USER_INSTITUTIONS;
 }
 
-export interface GetInstitutionsFulfilledAction {
+export interface IGetUserInstitutionsFulfilledAction {
   readonly payload: InstitutionsDataResp;
-  readonly type: ActionTypeKeys.GET_INSTITUTIONS_FULFILLED;
+  readonly type: ActionTypeKeys.GET_USER_INSTITUTIONS_FULFILLED;
 }
 
-export interface GetInstitutionsRejectedAction {
+export interface IGetUserInstitutionsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_INSTITUTIONS_REJECTED;
+  readonly type: ActionTypeKeys.GET_USER_INSTITUTIONS_REJECTED;
 }
 
-export type InstitutionsActionTypes =
-  | GetInstitutionsFulfilledAction;
+export type TInstitutionsActionTypes =
+  | IGetUserInstitutionsFulfilledAction;

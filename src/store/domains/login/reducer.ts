@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
 import authReducer from './auth/reducer';
-import institutionsReducer from './institutions/reducer';
+import userInstitutionsReducer from './institutions/reducer';
 
 const loginReducer = combineReducers({
   auth: authReducer,
-  institutions: institutionsReducer,
+  institutions: userInstitutionsReducer,
 });
 
 export default loginReducer;

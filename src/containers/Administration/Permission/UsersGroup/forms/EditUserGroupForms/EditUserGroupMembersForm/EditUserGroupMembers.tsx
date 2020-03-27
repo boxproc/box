@@ -7,7 +7,7 @@ import { Button, SelectField } from 'components';
 
 import { formNamesConst, iconNamesConst } from 'consts';
 
-import { HandleAddAdminActiveUsers, HandleGetAdminActiveUsers } from 'store';
+import { THandleAddActiveUsers, THandleGetActiveUsers } from 'store';
 
 import { ISelectValue } from 'types';
 
@@ -18,8 +18,8 @@ interface EditUserGroupMembersProps {
   selectedUser: ISelectValue;
   currentUserGroupId: number;
   isLoading: boolean;
-  getActiveUsers: HandleGetAdminActiveUsers;
-  addActiveUsers: HandleAddAdminActiveUsers;
+  getActiveUsers: THandleGetActiveUsers;
+  addActiveUsers: THandleAddActiveUsers;
 }
 
 type EditUserGroupMembersPropsAllProps = EditUserGroupMembersProps &
