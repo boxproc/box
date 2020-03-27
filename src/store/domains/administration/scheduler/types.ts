@@ -2,73 +2,78 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { IIdNamePair, ISelectValue } from 'types';
 
-interface PlainInfo extends IIdNamePair {
+interface IPlainInfo extends IIdNamePair {
   description: string;
   executable: string;
   parameters: string;
 }
 
-export interface AdminSchedulerItem extends PlainInfo {
-  institution_id: string | number;
-  status: string | number;
+export interface ISchedulerJobData extends IPlainInfo {
   cron_expression: string;
   executable_type: string | number;
-  log_location: string;
+  institution_id: string | number;
   last_execution_datetime: string;
   last_execution_result: string | number;
-}
-
-export interface AdminSchedulerItemPreparedPlain extends PlainInfo {
-  cronExpression: string;
-  logLocation: string;
-  lastExecutionDatetime: string;
-}
-
-export interface AdminSchedulerItemPrepared extends AdminSchedulerItemPreparedPlain {
-  institutionId: string | number;
+  log_location: string;
   status: string | number;
+}
+
+export interface ISchedulerJobsData {
+  s_scheduler: Array<ISchedulerJobData>;
+}
+
+interface ISchedulerPlain extends IPlainInfo {
+  cronExpression: string;
+  lastExecutionDatetime: string;
+  logLocation: string;
+}
+
+export interface ISchedulerJob extends ISchedulerPlain {
   executableType: string | number;
-  lastExecutionResult:  string | number;
+  institutionId: string | number;
+  lastExecutionResult: string | number;
+  status: string | number;
 }
 
-export interface AdminSchedulerEditableItem extends AdminSchedulerItemPreparedPlain {
-  status: ISelectValue;
-  institutionId: ISelectValue;
+export interface ISchedulerJobEditable extends ISchedulerPlain {
   executableType: ISelectValue;
+  institutionId: ISelectValue;
   lastExecutionResult: ISelectValue;
+  status: ISelectValue;
 }
 
-export interface AdminSchedulerJobAction {
-  task_id: number;
-  task_command: string;
+export interface ISchedulerJobsNames {
+  scheduler_names: Array<IIdNamePair>;
 }
 
-export interface AdminSchedulerJobActionPrepared {
+/** Scheduler job execution request interfaces */
+
+export interface ISchedulerJobExecReq {
   taskId: number;
   taskCommand: string;
 }
 
-export interface AdminSchedulerDataResp {
-  s_scheduler: Array<AdminSchedulerItem>;
+export interface ISchedulerJobExecReqToSend {
+  task_id: number;
+  task_command: string;
 }
 
-export interface AdminSchedulerFilter {
+/** Scheduler jobs filter interfaces */
+
+export interface ISchedulerJobsFilter {
   name: string;
   activeStatusFlag: boolean;
   institutionId: ISelectValue;
 }
 
-export interface AdminSchedulerFilterPrepared {
+export interface ISchedulerJobsFilterToSend {
+  institution_id: string | number;
   name: string;
   status: Array<string>;
-  institution_id: string | number;
 }
 
-export interface AdminSchedulerNameItems {
-  scheduler_names: Array<IIdNamePair>;
-}
-
-export interface AdminSchedulerState {
-  scheduler: ImmutableArray<AdminSchedulerItem>;
+/** Scheduler state interface */
+export interface ISchedulerState {
+  scheduler: ImmutableArray<ISchedulerJobData>;
   schedulerNames: ImmutableArray<IIdNamePair>;
 }

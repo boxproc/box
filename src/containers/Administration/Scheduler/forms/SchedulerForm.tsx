@@ -21,34 +21,32 @@ import {
 } from 'consts';
 
 import {
-  HandleAddAdminSchedulerJob,
-  HandleDeleteAdminSchedulerJob,
-  HandleUpdateAdminSchedulerJob,
+  THandleAddSchedulerJob,
+  THandleDeleteSchedulerJob,
+  THandleUpdateSchedulerJob,
   TOpenModal,
 } from 'store';
 
 import { ISelectValue } from 'types';
-
 import { formErrorUtil } from 'utils';
 
-interface SchedulerFormProps {
-  defineAdminSchedulerJob?: HandleAddAdminSchedulerJob | HandleUpdateAdminSchedulerJob;
+interface ISchedulerForm {
+  currentSchedulerName?: string;
+  schedulerJobAction?: THandleAddSchedulerJob | THandleUpdateSchedulerJob;
+  deleteSchedulerJob?: THandleDeleteSchedulerJob;
   institutionsOptions?: Array<ISelectValue>;
   isDisabledStatus?: boolean;
-  onCancel?: () => void;
-  deleteSchedulerJob?: HandleDeleteAdminSchedulerJob;
   isEditMode?: boolean;
-  openModal?: TOpenModal;
-  currentSchedulerName?: string;
   isReadOnly?: boolean;
+  onCancel?: () => void;
+  openModal?: TOpenModal;
 }
 
-type SchedulerFormAllProps = SchedulerFormProps &
-  InjectedFormProps<{}, SchedulerFormProps>;
+type TSchedulerForm = ISchedulerForm & InjectedFormProps<{}, ISchedulerForm>;
 
-const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
+const SchedulerForm: React.FC<TSchedulerForm> = ({
   handleSubmit,
-  defineAdminSchedulerJob,
+  schedulerJobAction,
   institutionsOptions,
   isDisabledStatus,
   onCancel,
@@ -61,8 +59,8 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(defineAdminSchedulerJob),
-    [handleSubmit, defineAdminSchedulerJob]
+    handleSubmit(schedulerJobAction),
+    [handleSubmit, schedulerJobAction]
   );
 
   const handleOpenModal = React.useCallback(
@@ -228,7 +226,7 @@ const SchedulerForm: React.FC<SchedulerFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, SchedulerFormProps>({
+export default reduxForm<{}, ISchedulerForm>({
   form: formNamesConst.SCHEDULER,
   destroyOnUnmount: true,
   enableReinitialize: true,

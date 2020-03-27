@@ -1,34 +1,34 @@
 import { apiClientService } from 'services';
 
 // import {
-//   adminSchedulerData,
-//   schedulerNames,
-//   successResponseStatus,
+//   schedulerJobsMock,
+//   schedulerNamesMock,
+//   successResponseMock,
 // } from './mock';
 
-import { AdminSchedulerFilterPrepared, AdminSchedulerItem, AdminSchedulerJobAction } from './types';
+import { ISchedulerJobData, ISchedulerJobExecReqToSend, ISchedulerJobsFilterToSend } from './types';
 
-export const filterAdminSchedulerJobs = (data: AdminSchedulerFilterPrepared) =>
-  // throttleUtil.getDataAfter(adminSchedulerData, 500);
+export const filterSchedulerJobs = (data: ISchedulerJobsFilterToSend) =>
+  // throttleUtil.getDataAfter(schedulerJobsMock, 500);
   apiClientService.post('ui/administration/scheduler/get', { data });
 
-export const deleteAdminSchedulerJob = (id: string | number) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 500);
+export const deleteSchedulerJob = (id: string | number) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.delete(`ui/administration/scheduler/${id}`);
 
-export const addAdminSchedulerJob = (data: Partial<AdminSchedulerItem>) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 500);
+export const addSchedulerJob = (data: Partial<ISchedulerJobData>) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/administration/scheduler', { data });
 
-export const updateAdminSchedulerJobs = (data: Partial<AdminSchedulerItem>) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 100);
+export const updateSchedulerJobs = (data: Partial<ISchedulerJobData>) =>
+  // throttleUtil.getDataAfter(successResponseMock, 100);
   apiClientService.put('ui/administration/scheduler', { data });
 
-export const sendAdminSchedulerAction = (data: Partial<AdminSchedulerJobAction>) =>
+export const execSchedulerJob = (data: Partial<ISchedulerJobExecReqToSend>) =>
   apiClientService.post('sys/scheduler/management', { data });
 
 export const getSchedulerNamesByInstitutionId = (id: number | string) =>
-  //  throttleUtil.getDataAfter(schedulerNames, 100);
+  //  throttleUtil.getDataAfter(schedulerNamesMock, 100);
   apiClientService.post('ui/administration/scheduler/name', {
     data: { institution_id: id },
   });

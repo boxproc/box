@@ -3,9 +3,9 @@ interface ISelectValue {
   label: string;
 }
 
-export type UnityType = 'Second' | 'Minute' | 'Hour' | 'Day' | 'Month' | 'Year';
+export type TUnity = 'Second' | 'Minute' | 'Hour' | 'Day' | 'Month' | 'Year';
 
-export interface CronExpressionRadioTypes {
+export interface ICronExpressionRadio {
   cronSecond: string;
   cronMinute: string;
   cronHour: string;
@@ -14,7 +14,7 @@ export interface CronExpressionRadioTypes {
   cronYear: string;
 }
 
-export interface CronValuesTypes extends CronExpressionRadioTypes {
+export interface ICronValues extends ICronExpressionRadio {
   cronSecondIncrementIncrement: ISelectValue;
   cronSecondIncrementStart: ISelectValue;
   cronSecondRangeStart: ISelectValue;

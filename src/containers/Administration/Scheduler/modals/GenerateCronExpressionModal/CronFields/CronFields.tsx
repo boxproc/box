@@ -18,7 +18,7 @@ import NthDayFields from './NthDayFields';
 import RangeFields from './RangeFields';
 import SpecificFields from './SpecificFields';
 
-import { UnityType } from '../cronExpressionTypes';
+import { TUnity } from '../cronExpressionTypes';
 
 const Wrapper = styled.div`
   font-size: 13px;
@@ -28,8 +28,8 @@ const Wrapper = styled.div`
   }
 `;
 
-interface CronFieldsProps {
-  name: UnityType;
+interface ICronFields {
+  name: TUnity;
   radioValue: string;
 }
 
@@ -42,7 +42,7 @@ const count = {
   [timeUnits.YEAR]: 50,
 };
 
-const CronFields: React.FC<CronFieldsProps> = ({ name, radioValue }) => {
+const CronFields: React.FC<ICronFields> = ({ name, radioValue }) => {
   const unity = React.useMemo(
     () => name.toLowerCase(),
     [name]

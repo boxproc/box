@@ -7,23 +7,23 @@ import { formNamesConst } from 'consts';
 import AddSchedulerModal from './AddSchedulerModal';
 
 import {
-  handleAddAdminSchedulerJob,
+  currentSchedulerJobSelector,
+  handleAddSchedulerJob,
   selectInstitutionsOptions,
-  selectSchedulerJobValues,
   StoreState,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.SCHEDULER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isFormDirty: dirty(state),
+  currentSchedulerJob: currentSchedulerJobSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  schedulerJobValues: selectSchedulerJobValues(state),
+  isFormDirty: dirty(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addSchedulerJob: handleAddAdminSchedulerJob,
+    addSchedulerJob: handleAddSchedulerJob,
   },
   dispatch
 );

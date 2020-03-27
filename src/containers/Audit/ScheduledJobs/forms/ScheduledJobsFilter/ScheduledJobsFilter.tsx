@@ -7,14 +7,14 @@ import { MaskField, SelectField } from 'components';
 
 import { dateFormatConst, maskFormatConst, } from 'consts';
 
-import { HandleGetSchedulerNamesByInstitutionId } from 'store';
+import { THandleGetSchedulerNamesByInstId } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ScheduledJobsFilterProps {
   institutionsOptions: Array<ISelectValue>;
-  getSchedulerNames: HandleGetSchedulerNamesByInstitutionId;
+  getSchedulerNames: THandleGetSchedulerNamesByInstId;
   institutionValue: ISelectValue;
   schedulerNameOptions: Array<ISelectValue>;
   isLoadingSchedulerNames: boolean;

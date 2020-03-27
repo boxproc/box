@@ -6,39 +6,47 @@ import {
 } from 'consts';
 
 import {
-  AdminSchedulerEditableItem,
-  AdminSchedulerFilter,
-  AdminSchedulerItem,
-  AdminSchedulerJobActionPrepared
+  ISchedulerJobData,
+  ISchedulerJobEditable,
+  ISchedulerJobExecReq,
+  ISchedulerJobsFilter,
 } from './types';
 
 import { ISelectValue } from 'types';
 
-export const prepareValuesToSend = (values: Partial<AdminSchedulerEditableItem>) => {
+export const prepareDataToSend = (data: Partial<ISchedulerJobEditable>) => {
+  if (!data) {
+    return null;
+  }
+
   return {
-    id: values.id,
-    name: values.name,
-    description: values.description,
-    cron_expression: values.cronExpression,
-    executable: values.executable,
-    log_location: values.logLocation,
-    last_execution_datetime: values.lastExecutionDatetime,
-    last_execution_result: values.lastExecutionResult && values.lastExecutionResult.value,
-    institution_id: values.institutionId && values.institutionId.value,
-    executable_type: values.institutionId && values.executableType.value,
-    status: values.status && values.status.value,
-    parameters: values.parameters,
+    id: data.id,
+    name: data.name,
+    description: data.description,
+    cron_expression: data.cronExpression,
+    executable: data.executable,
+    log_location: data.logLocation,
+    last_execution_datetime: data.lastExecutionDatetime,
+    last_execution_result: data.lastExecutionResult && data.lastExecutionResult.value,
+    institution_id: data.institutionId && data.institutionId.value,
+    executable_type: data.institutionId && data.executableType.value,
+    status: data.status && data.status.value,
+    parameters: data.parameters,
   };
 };
-export const prepareValuesToSendActions =
-  (values: AdminSchedulerJobActionPrepared) => {
-    return {
-      task_id: values.taskId,
-      task_command: values.taskCommand,
-    };
-  };
 
-export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: ISelectValue) => {
+export const prepareDataToExec = (data: ISchedulerJobExecReq) => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    task_id: data.taskId,
+    task_command: data.taskCommand,
+  };
+};
+
+export const prepareDataToRender = (item: ISchedulerJobData, institution?: ISelectValue) => {
   if (!item) {
     return null;
   }
@@ -64,13 +72,13 @@ export const prepareValuesToRender = (item: AdminSchedulerItem, institution?: IS
   };
 };
 
-export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
+export const prepareDetailsToRender = (item: ISchedulerJobData) => {
   if (!item) {
     return null;
   }
 
   return {
-    ...prepareValuesToRender(item),
+    ...prepareDataToRender(item),
     status: schedulerStatusOptions.find(el => el.value === item.status),
     lastExecutionResult:
       lastExecutionResultOptions.find(el => el.value === item.last_execution_result),
@@ -78,8 +86,8 @@ export const prepareDetailsToRender = (item: AdminSchedulerItem) => {
   };
 };
 
-export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
-  if (!params) {
+export const prepareFilterToSend = (data: Partial<ISchedulerJobsFilter>) => {
+  if (!data) {
     return null;
   }
 
@@ -87,7 +95,7 @@ export const preparedFilterToSend = (params: Partial<AdminSchedulerFilter>) => {
     name,
     activeStatusFlag,
     institutionId,
-  } = params;
+  } = data;
 
   return {
     name: name ? name : null,

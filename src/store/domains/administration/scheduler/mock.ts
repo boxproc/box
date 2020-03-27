@@ -1,8 +1,8 @@
-import { AdminSchedulerDataResp, AdminSchedulerNameItems } from './types';
+import { ISchedulerJobsData, ISchedulerJobsNames } from './types';
 
-import { ILogData, IResponseStatus } from 'types';
+import { IResponseStatus } from 'types';
 
-export const adminSchedulerData: AdminSchedulerDataResp = {
+export const schedulerJobsMock: ISchedulerJobsData = {
   s_scheduler: [
     {
       id: 1,
@@ -35,29 +35,15 @@ export const adminSchedulerData: AdminSchedulerDataResp = {
   ],
 };
 
-export const schedulerNames: AdminSchedulerNameItems = {
+export const schedulerNamesMock: ISchedulerJobsNames = {
   scheduler_names: [
-    {
-      id: 1,
-      name: 'API test Job 1',
-    },
-    {
-      id: 2,
-      name: 'Shell script test Job 2',
-    },
-    {
-      id: 3,
-      name: 'Settlement - institution1',
-    },
+    { id: 1, name: 'API test Job 1' },
+    { id: 2, name: 'Shell script test Job 2' },
+    { id: 3, name: 'Settlement - institution1' },
   ],
 };
 
-export const schedulerLogData: ILogData = {
-  // tslint:disable-next-line: max-line-length
-  log_file: '2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start\n2019-10-08 15:55:15 INFO   [main]: Job: 5 start',
-};
-
-export const successResponseStatus: IResponseStatus = {
+export const successResponseMock: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

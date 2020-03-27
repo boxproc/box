@@ -4,35 +4,34 @@ import { Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { SchedulerForm } from 'containers/Administration/Scheduler/forms';
 import {
-  AdminSchedulerEditableItem,
-  HandleDeleteAdminSchedulerJob,
-  HandleUpdateAdminSchedulerJob,
+  ISchedulerJobEditable,
+  THandleDeleteSchedulerJob,
+  THandleUpdateSchedulerJob,
 } from 'store';
 
-interface EditSchedulerModalProps extends IWithModal {
-  schedulerJobValues: AdminSchedulerEditableItem;
-  currentSchedulerName: string;
+interface IEditSchedulerModal extends IWithModal {
   currentSchedulerId: number;
+  currentSchedulerJob: ISchedulerJobEditable;
+  currentSchedulerName: string;
+  deleteSchedulerJob: THandleDeleteSchedulerJob;
   isFormDirty: boolean;
-  deleteSchedulerJob: HandleDeleteAdminSchedulerJob;
-  updateSchedulerJob: HandleUpdateAdminSchedulerJob;
+  updateSchedulerJob: THandleUpdateSchedulerJob;
 }
 
 const modalName = modalNamesConst.EDIT_SCHEDULER;
 
-const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
+const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
   closeModal,
-  openModal,
-  deleteSchedulerJob,
-  updateSchedulerJob,
-  schedulerJobValues,
+  currentSchedulerId,
+  currentSchedulerJob,
   currentSchedulerName,
+  deleteSchedulerJob,
   isFormDirty,
   isReadOnly,
-  currentSchedulerId,
+  openModal,
+  updateSchedulerJob,
 }) => {
   const modalTitle = React.useMemo(
     () => `Edit Scheduler: ${currentSchedulerName}`,
@@ -60,8 +59,8 @@ const EditSchedulerModal: React.FC<EditSchedulerModalProps> = ({
       <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
-        defineAdminSchedulerJob={updateSchedulerJob}
-        initialValues={schedulerJobValues}
+        schedulerJobAction={updateSchedulerJob}
+        initialValues={currentSchedulerJob}
         deleteSchedulerJob={handleDeleteScheduler}
         isEditMode={true}
         isReadOnly={isReadOnly}

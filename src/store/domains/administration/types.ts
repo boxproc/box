@@ -4,7 +4,7 @@ import { IInstitutionsState } from './institutions';
 import { IInterfacesState } from './interfaces';
 import { AdminUserState } from './permissions/users';
 import { AdminUsersGroupState } from './permissions/usersGroups';
-import { AdminSchedulerState } from './scheduler';
+import { ISchedulerState } from './scheduler';
 import { ISysPropsState } from './systemProperties';
 
 export interface AdministrationState {
@@ -12,7 +12,7 @@ export interface AdministrationState {
   endpoints: IEndpointsState;
   institutions: IInstitutionsState;
   interfaces: IInterfacesState;
-  scheduler: AdminSchedulerState;
+  scheduler: ISchedulerState;
   systemProperties: ISysPropsState;
   userGroups: AdminUsersGroupState;
   users: AdminUserState;

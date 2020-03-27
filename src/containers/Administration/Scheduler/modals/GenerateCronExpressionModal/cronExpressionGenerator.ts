@@ -1,8 +1,8 @@
-import { CronValuesTypes } from './cronExpressionTypes';
+import { ICronValues } from './cronExpressionTypes';
 
 import { dateUtil } from 'utils';
 
-export const cronExpressionGenerator = (values: Partial<CronValuesTypes>) => {
+export const cronExpressionGenerator = (values: Partial<ICronValues>) => {
   if (!values) {
     return false;
   }

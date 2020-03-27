@@ -13,18 +13,18 @@ import { formNamesConst, modalNamesConst } from 'consts';
 import { CronFields } from './CronFields';
 
 import { cronExpressionGenerator } from './cronExpressionGenerator';
-import { CronExpressionRadioTypes, CronValuesTypes } from './cronExpressionTypes';
+import { ICronExpressionRadio, ICronValues } from './cronExpressionTypes';
 
 import { TChangeFieldValue } from 'types';
 
-interface GenerateCronExpressionModalProps extends IWithModal {
+interface IGenerateCronExpressionModal extends IWithModal {
   changeFormValue: TChangeFieldValue;
-  formValues: Partial<CronValuesTypes>;
-  cronRadioValues: CronExpressionRadioTypes;
+  formValues: Partial<ICronValues>;
+  cronRadioValues: ICronExpressionRadio;
 }
 
-type GenerateCronExpressionModalAllProps = GenerateCronExpressionModalProps
-  & InjectedFormProps<{}, GenerateCronExpressionModalProps>;
+type TGenerateCronExpressionModal = IGenerateCronExpressionModal
+  & InjectedFormProps<{}, IGenerateCronExpressionModal>;
 
 const ResultWrapper = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const ResultWrapper = styled.div`
 
 const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 
-const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps> = ({
+const GenerateCronExpressionModal: React.FC<TGenerateCronExpressionModal> = ({
   changeFormValue,
   closeModal,
   formValues,
@@ -141,15 +141,15 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
         {cronExpression && (
           <div>
             <ResultWrapper>
-            <div><b>Cron Expression:</b> {cronExpression.value}</div>
-            <div className="description">{cronExpression.description}</div>
-          </ResultWrapper>
-          <Button
-            text="Reset Values"
-            type="reset"
-            disabled={pristine}
-            onClick={reset}
-          />
+              <div><b>Cron Expression:</b> {cronExpression.value}</div>
+              <div className="description">{cronExpression.description}</div>
+            </ResultWrapper>
+            <Button
+              text="Reset Values"
+              type="reset"
+              disabled={pristine}
+              onClick={reset}
+            />
           </div>
         )}
         <OkCancelButtons
@@ -164,7 +164,7 @@ const GenerateCronExpressionModal: React.FC<GenerateCronExpressionModalAllProps>
   );
 };
 
-export default reduxForm<{}, GenerateCronExpressionModalProps>({
+export default reduxForm<{}, IGenerateCronExpressionModal>({
   form: formNamesConst.GENERATE_CRON_EXPRESSION,
   destroyOnUnmount: true,
   enableReinitialize: true,

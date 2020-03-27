@@ -14,17 +14,16 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import {
-  AdminSchedulerItemPrepared,
-  HandleDeleteAdminSchedulerJob,
-  HandleFilterAdminSchedulerJobs,
   HandleFilterScheduledJobsById,
   HandleGetLogData,
-  HandleSendAdminSchedulerAction,
-  ResetScheduler,
+  ISchedulerJob,
+  THandleDeleteSchedulerJob,
+  THandleExecSchedulerJob,
+  THandleFilterSchedulerJobs,
+  TResetScheduler,
 } from 'store';
 
 import { SchedulerFilter } from 'containers/Administration/Scheduler/forms';
-
 import { ISelectValue } from 'types';
 
 const schedulerTasksConsts = {
@@ -50,25 +49,25 @@ const schedulerTasksConsts = {
   },
 };
 
-interface SchedulerProps extends IWithModal {
-  schedulerJobsItems: ImmutableArray<AdminSchedulerItemPrepared>;
-  institutionsOptions: Array<ISelectValue>;
+interface IScheduler extends IWithModal {
   currentSchedulerId: number;
   currentSchedulerName: string;
+  deleteSchedulerJob: THandleDeleteSchedulerJob;
+  execSchedulerJob: THandleExecSchedulerJob;
+  filterScheduledJobsById: HandleFilterScheduledJobsById;
+  filterSchedulerJobs: THandleFilterSchedulerJobs;
+  getLogData: HandleGetLogData;
+  institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
   isReadOnly: boolean;
-  filterSchedulerJobs: HandleFilterAdminSchedulerJobs;
-  sendSchedulerAction: HandleSendAdminSchedulerAction;
-  deleteSchedulerJob: HandleDeleteAdminSchedulerJob;
-  filterScheduledJobsById: HandleFilterScheduledJobsById;
-  resetScheduler: ResetScheduler;
-  getLogData: HandleGetLogData;
+  resetScheduler: TResetScheduler;
+  schedulerJobs: ImmutableArray<ISchedulerJob>;
 }
 
-export const Scheduler: React.FC<SchedulerProps> = ({
+export const Scheduler: React.FC<IScheduler> = ({
   filterSchedulerJobs,
-  schedulerJobsItems,
-  sendSchedulerAction,
+  schedulerJobs,
+  execSchedulerJob,
   currentSchedulerId,
   deleteSchedulerJob,
   currentSchedulerName,
@@ -106,7 +105,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: schedulerTasksConsts.EXECUTE_TASK.NAME,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction({
+        action: () => execSchedulerJob({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
         }),
@@ -116,7 +115,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: `${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction(
+        action: () => execSchedulerJob(
           {
             taskId: currentSchedulerId,
             taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
@@ -131,7 +130,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: schedulerTasksConsts.STOP.NAME,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction({
+        action: () => execSchedulerJob({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.STOP.TASK_COMMAND,
         }),
@@ -141,7 +140,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: schedulerTasksConsts.START.NAME,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction({
+        action: () => execSchedulerJob({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.START.TASK_COMMAND,
         }),
@@ -151,7 +150,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: schedulerTasksConsts.PAUSE.NAME,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction({
+        action: () => execSchedulerJob({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.PAUSE.TASK_COMMAND,
         }),
@@ -161,7 +160,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       {
         name: schedulerTasksConsts.RESUME.NAME,
         isDisabled: isReadOnly,
-        action: () => sendSchedulerAction({
+        action: () => execSchedulerJob({
           taskId: currentSchedulerId,
           taskCommand: schedulerTasksConsts.RESUME.TASK_COMMAND,
         }),
@@ -179,7 +178,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
       },
     ],
     [
-      sendSchedulerAction,
+      execSchedulerJob,
       currentSchedulerName,
       currentSchedulerId,
       deleteSchedulerJob,
@@ -199,7 +198,7 @@ export const Scheduler: React.FC<SchedulerProps> = ({
   return (
     <PageTemplate
       title="Scheduler"
-      data={schedulerJobsItems}
+      data={schedulerJobs}
       columns={tableColumns}
       newModalName={modalNamesConst.ADD_SCHEDULER}
       viewingModalName={modalNamesConst.EDIT_SCHEDULER}

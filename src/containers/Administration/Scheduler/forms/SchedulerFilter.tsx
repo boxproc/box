@@ -4,16 +4,15 @@ import { Field } from 'redux-form';
 import { Box } from '@rebass/grid';
 
 import { CheckboxField, InputField, SelectField } from 'components';
-
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface SchedulerFilterProps {
+interface ISchedulerFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const SchedulerFilter: React.FC<SchedulerFilterProps> = ({
+const SchedulerFilter: React.FC<ISchedulerFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

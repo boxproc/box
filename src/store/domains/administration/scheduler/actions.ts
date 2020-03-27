@@ -5,159 +5,131 @@ import { formNamesConst, modalNamesConst } from 'consts';
 import { closeModal, isAccessibleFilterSelector, startAutoRefresh } from 'store';
 import {
   ActionTypeKeys,
-  AddAdminSchedulerJobAction,
-  DeleteAdminSchedulerJobAction,
-  FilterAdminSchedulerJobsAction,
-  GetSchedulerNamesByInstitutionIdAction,
-  SendAdminSchedulerActionJobAction,
-  UpdateAdminSchedulerJobAction
+  IAddSchedulerJobAction,
+  IDeleteSchedulerJobAction,
+  IExecSchedulerJobAction,
+  IFilterSchedulerJobsAction,
+  IGetSchedulerNamesByInstIdAction,
+  IUpdateSchedulerJobAction,
 } from './actionTypes';
 import * as api from './api';
 import {
-  AdminSchedulerEditableItem,
-  AdminSchedulerFilterPrepared,
-  AdminSchedulerItem,
-  AdminSchedulerJobAction,
-  AdminSchedulerJobActionPrepared,
+  ISchedulerJobData,
+  ISchedulerJobEditable,
+  ISchedulerJobExecReq,
+  ISchedulerJobExecReqToSend,
+  ISchedulerJobsFilterToSend,
 } from './types';
-import { preparedFilterToSend, prepareValuesToSend, prepareValuesToSendActions } from './utils';
+import { prepareDataToExec, prepareDataToSend, prepareFilterToSend } from './utils';
 
 import { Thunk, VoidPromiseThunk, } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
-export type FilterAdminSchedulerJobs = (params: AdminSchedulerFilterPrepared) =>
-  FilterAdminSchedulerJobsAction;
-export type HandleFilterAdminSchedulerJobs = VoidPromiseThunk;
+/**
+ * Filter scheduler jobs action
+ */
 
-export type AddAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
-  AddAdminSchedulerJobAction;
-export type HandleAddAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
-  Thunk<void>;
+export type TFilterSchedulerJobs = (data: ISchedulerJobsFilterToSend) => IFilterSchedulerJobsAction;
+export type THandleFilterSchedulerJobs = VoidPromiseThunk;
 
-export type DeleteAdminSchedulerJob = (id: number) => DeleteAdminSchedulerJobAction;
-export type HandleDeleteAdminSchedulerJob = (id: number) => Thunk<void>;
-
-export type SendAdminSchedulerAction = (values: Partial<AdminSchedulerJobAction>) =>
-  SendAdminSchedulerActionJobAction;
-export type HandleSendAdminSchedulerAction = (
-  values: AdminSchedulerJobActionPrepared,
-  params?: { withAutoRefresh?: boolean }
-) =>
-  Thunk<void>;
-
-export type UpdateAdminSchedulerJob = (values: Partial<AdminSchedulerItem>) =>
-  UpdateAdminSchedulerJobAction;
-export type HandleUpdateAdminSchedulerJob = (values: Partial<AdminSchedulerEditableItem>) =>
-  Thunk<void>;
-
-export type HandleGetSchedulerNamesByInstitutionId = (id: string | number) => Thunk<void>;
-export type GetSchedulerNamesByInstitutionId = (id: string | number) =>
-  GetSchedulerNamesByInstitutionIdAction;
-
-export type ResetScheduler = () => void;
-
-export const filterAdminSchedulerJobs: FilterAdminSchedulerJobs = (params) => ({
-  type: ActionTypeKeys.FILTER_ADMIN_SCHEDULER_JOBS,
-  payload: api.filterAdminSchedulerJobs(params),
+export const filterSchedulerJobs: TFilterSchedulerJobs = (data) => ({
+  type: ActionTypeKeys.FILTER_SCHEDULER_JOBS,
+  payload: api.filterSchedulerJobs(data),
 });
 
-export const addAdminSchedulerJob: AddAdminSchedulerJob = values => ({
-  type: ActionTypeKeys.ADD_ADMIN_SCHEDULER_JOBS,
-  payload: api.addAdminSchedulerJob(values),
-});
-
-export const deleteAdminSchedulerJob: DeleteAdminSchedulerJob = id => ({
-  type: ActionTypeKeys.DELETE_ADMIN_SCHEDULER_JOBS,
-  payload: api.deleteAdminSchedulerJob(id),
-  meta: { id },
-});
-
-export const sendAdminSchedulerAction: SendAdminSchedulerAction = values => ({
-  type: ActionTypeKeys.SEND_ADMIN_SCHEDULER_ACTION_JOB,
-  payload: api.sendAdminSchedulerAction(values),
-});
-
-export const updateAdminSchedulerJobs: UpdateAdminSchedulerJob = schedulerValues => ({
-  type: ActionTypeKeys.UPDATE_ADMIN_SCHEDULER_JOBS,
-  payload: api.updateAdminSchedulerJobs(schedulerValues),
-});
-
-export const getSchedulerNamesByInstitutionId: GetSchedulerNamesByInstitutionId = id => ({
-  type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID,
-  payload: api.getSchedulerNamesByInstitutionId(id),
-});
-
-export const resetScheduler: ResetScheduler = () => ({
-  type: ActionTypeKeys.RESET_SCHEDULER,
-});
-
-export const handleFilterAdminSchedulerJobs: HandleFilterAdminSchedulerJobs = () =>
+export const handleFilterSchedulerJobs: THandleFilterSchedulerJobs = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        await dispatch(filterAdminSchedulerJobs(preparedValues));
+        await dispatch(filterSchedulerJobs(preparedData));
       },
       dispatch
     );
   };
 
-export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerValues =>
+/**
+ * Add scheduler job action
+ */
+
+export type TAddSchedulerJob = (data: Partial<ISchedulerJobData>) => IAddSchedulerJobAction;
+export type THandleAddSchedulerJob = (data: Partial<ISchedulerJobEditable>) => Thunk<void>;
+
+export const addSchedulerJob: TAddSchedulerJob = data => ({
+  type: ActionTypeKeys.ADD_SCHEDULER_JOB,
+  payload: api.addSchedulerJob(data),
+});
+
+export const handleAddSchedulerJob: THandleAddSchedulerJob = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareValuesToSend(schedulerValues);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = isAccessibleFilterSelector(state);
+        const isAccessibleFilter = isAccessibleFilterSelector(state);
 
-        await dispatch(addAdminSchedulerJob(preparedValues));
+        await dispatch(addSchedulerJob(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));
 
-        if (isAccessibleFiltering) {
-          await dispatch(handleFilterAdminSchedulerJobs());
+        if (isAccessibleFilter) {
+          await dispatch(handleFilterSchedulerJobs());
         }
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminSchedulerJob: HandleDeleteAdminSchedulerJob = id =>
+/**
+ * Delete scheduler job action
+ */
+
+export type TDeleteSchedulerJob = (id: number) => IDeleteSchedulerJobAction;
+export type THandleDeleteSchedulerJob = (id: number) => Thunk<void>;
+
+export const deleteSchedulerJob: TDeleteSchedulerJob = id => ({
+  type: ActionTypeKeys.DELETE_SCHEDULER_JOB,
+  payload: api.deleteSchedulerJob(id),
+  meta: { id },
+});
+
+export const handleDeleteSchedulerJob: THandleDeleteSchedulerJob = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteAdminSchedulerJob(id));
+        await dispatch(deleteSchedulerJob(id));
         dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
       },
       dispatch
     );
   };
 
-export const handleUpdateAdminSchedulerJobs: HandleUpdateAdminSchedulerJob = schedulerValues =>
+/**
+ * Execute scheduler job action
+ */
+
+export type TExecSchedulerJobAction = (data: Partial<ISchedulerJobExecReqToSend>) =>
+  IExecSchedulerJobAction;
+export type THandleExecSchedulerJob = (
+  data: ISchedulerJobExecReq,
+  params?: { withAutoRefresh?: boolean }
+) => Thunk<void>;
+
+export const execSchedulerJob: TExecSchedulerJobAction = data => ({
+  type: ActionTypeKeys.EXEC_SCHEDULER_JOB,
+  payload: api.execSchedulerJob(data),
+});
+
+export const handleExecSchedulerJob: THandleExecSchedulerJob = (data, params) =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareValuesToSend(schedulerValues);
+        const preparedData = prepareDataToExec(data);
 
-        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
-        await dispatch(updateAdminSchedulerJobs(preparedValues));
-        await dispatch(handleFilterAdminSchedulerJobs());
-      },
-      dispatch
-    );
-  };
-
-export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = (values, params) =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedValues = prepareValuesToSendActions(values);
-
-        await dispatch(sendAdminSchedulerAction(preparedValues));
-        await dispatch(handleFilterAdminSchedulerJobs());
+        await dispatch(execSchedulerJob(preparedData));
+        await dispatch(handleFilterSchedulerJobs());
 
         if (params && params.withAutoRefresh) {
           dispatch(startAutoRefresh());
@@ -167,7 +139,46 @@ export const handleSendAdminSchedulerAction: HandleSendAdminSchedulerAction = (v
     );
   };
 
-export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByInstitutionId = id =>
+/**
+ * Update scheduler job action
+ */
+
+export type TUpdateSchedulerJob = (data: Partial<ISchedulerJobData>) => IUpdateSchedulerJobAction;
+export type THandleUpdateSchedulerJob = (data: Partial<ISchedulerJobEditable>) => Thunk<void>;
+
+export const updateSchedulerJobs: TUpdateSchedulerJob = data => ({
+  type: ActionTypeKeys.UPDATE_SCHEDULER_JOB,
+  payload: api.updateSchedulerJobs(data),
+});
+
+export const handleUpdateSchedulerJobs: THandleUpdateSchedulerJob = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareDataToSend(data);
+
+        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
+        await dispatch(updateSchedulerJobs(preparedData));
+        await dispatch(handleFilterSchedulerJobs());
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get scheduler jobs names action
+ */
+
+export type THandleGetSchedulerNamesByInstId = (id: string | number) => Thunk<void>;
+export type TGetSchedulerNamesByInstitutionId = (id: string | number) =>
+  IGetSchedulerNamesByInstIdAction;
+
+export const getSchedulerNamesByInstitutionId: TGetSchedulerNamesByInstitutionId = id => ({
+  type: ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INST_ID,
+  payload: api.getSchedulerNamesByInstitutionId(id),
+});
+
+export const handleGetSchedulerNamesByInstId: THandleGetSchedulerNamesByInstId = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -176,3 +187,13 @@ export const handleGetSchedulerNamesByInstitutionId: HandleGetSchedulerNamesByIn
       dispatch
     );
   };
+
+/**
+ * Reset scheduler job action
+ */
+
+export type TResetScheduler = () => void;
+
+export const resetScheduler: TResetScheduler = () => ({
+  type: ActionTypeKeys.RESET_SCHEDULER,
+});

@@ -1,56 +1,81 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
+import { createLoadingSelector } from 'store/domains/loader';
 import { selectInstitutionsOptions } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
-import { prepareDetailsToRender, prepareValuesToRender } from './utils';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender, prepareDetailsToRender } from './utils';
 
-export const selectDefaultAdminSchedulerJobsItems = (state: StoreState) =>
+export const defaultSchedulerJobsSelector = (state: StoreState) =>
   state.administration.scheduler.scheduler;
 
-export const selectAdminSchedulerJobsItems = createSelector(
-  selectDefaultAdminSchedulerJobsItems,
+export const schedulerJobsSelector = createSelector(
+  defaultSchedulerJobsSelector,
   selectInstitutionsOptions,
   (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
-    return prepareValuesToRender(item, institution);
+    return prepareDataToRender(item, institution);
   })
 );
 
-export const selectSchedulerJobValues = createSelector(
-  selectDefaultAdminSchedulerJobsItems,
+/**
+ * Current scheduler job selectors
+ */
+
+export const currentSchedulerJobSelector = createSelector(
+  defaultSchedulerJobsSelector,
   selectInstitutionsOptions,
   activeItemIdSelector,
-  (items, institutions, currentId) => {
-    const current = items && items.find(item => item.id === currentId);
+  (jobs, institutions, currentId) => {
+    const currentJob = jobs && jobs.find(job => job.id === currentId);
 
     return {
-      ...prepareDetailsToRender(current),
-      institutionId: current && institutions.find(el => el.value === current.institution_id),
+      ...prepareDetailsToRender(currentJob),
+      institutionId: currentJob && institutions.find(el => el.value === currentJob.institution_id),
     };
   }
 );
 
-export const selectCurrentSchedulerName = createSelector(
-  selectSchedulerJobValues,
-  scheduler => scheduler && scheduler.name
+export const currentSchedulerNameSelector = createSelector(
+  currentSchedulerJobSelector,
+  data => data && data.name
 );
 
-export const selectCurrentSchedulerStatus = createSelector(
-  selectSchedulerJobValues,
-  scheduler => scheduler && scheduler.status.label
-);
+/**
+ * Institution scheduler names selectors
+ */
 
-export const selectDefaultSchedulerNamesByInstIdOptions = (state: StoreState) =>
+export const defaultInstSchedulerNamesOptions = (state: StoreState) =>
   state.administration.scheduler.schedulerNames;
 
-export const selectSchedulerNamesByInstIdOptions = createSelector(
-  selectDefaultSchedulerNamesByInstIdOptions,
-  items => items && items.asMutable().map(item => {
+export const instSchedulerNamesOptions = createSelector(
+  defaultInstSchedulerNamesOptions,
+  data => data && data.asMutable().map(el => {
     return {
-      value: item.id,
-      label: item.name,
+      value: el.id,
+      label: el.name,
     };
   })
 );
+
+/**
+ * Scheduler loading selectors
+ */
+
+export const isSchedulerJobUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_SCHEDULER_JOB,
+]);
+
+export const isSchedulerJobsFilteringSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_SCHEDULER_JOBS,
+]);
+
+export const isSchedulerJobDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_SCHEDULER_JOB,
+]);
+
+export const isSchedulerJobNamesGettingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SCHEDULER_NAMES_BY_INST_ID,
+]);

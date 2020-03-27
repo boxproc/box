@@ -8,7 +8,7 @@ import { monthsOptionsWithStrValue } from 'consts';
 import { CheckboxField } from 'components';
 import { dateUtil, stringsUtil } from 'utils';
 
-interface SpecificFieldsProps {
+interface ISpecificFields {
   name: string;
   unity: string;
   count: number;
@@ -17,7 +17,7 @@ interface SpecificFieldsProps {
   isSpecific: boolean;
 }
 
-const SpecificFields: React.FC<SpecificFieldsProps> = ({
+const SpecificFields: React.FC<ISpecificFields> = ({
   name,
   unity,
   count,

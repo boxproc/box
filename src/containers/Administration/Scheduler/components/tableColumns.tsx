@@ -1,13 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { AdminSchedulerItemPrepared } from 'store';
-
+import { ISchedulerJob } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminSchedulerItemPrepared> =
-  ITableCellType<AdminSchedulerItemPrepared[T]>;
+type TCell<T extends keyof ISchedulerJob> = ITableCellType<ISchedulerJob[T]>;
 
 export const tableColumns = [
   {

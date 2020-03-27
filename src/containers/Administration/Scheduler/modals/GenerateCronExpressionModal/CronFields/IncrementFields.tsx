@@ -9,7 +9,7 @@ import { monthsOptions } from 'consts';
 
 import { dateUtil, stringsUtil } from 'utils';
 
-interface IncrementFieldsProps {
+interface IIncrementFields {
   name: string;
   unity: string;
   count: number;
@@ -17,7 +17,7 @@ interface IncrementFieldsProps {
   isYear?: boolean;
 }
 
-const IncrementFields: React.FC<IncrementFieldsProps> = ({
+const IncrementFields: React.FC<IIncrementFields> = ({
   name,
   unity,
   count,

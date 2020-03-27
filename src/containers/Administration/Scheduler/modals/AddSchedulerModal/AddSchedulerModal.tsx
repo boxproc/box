@@ -4,34 +4,32 @@ import { Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
 import { SchedulerForm } from 'containers/Administration/Scheduler/forms';
-
-import { AdminSchedulerEditableItem, HandleAddAdminSchedulerJob } from 'store';
-
+import { ISchedulerJobEditable, THandleAddSchedulerJob } from 'store';
 import { ISelectValue } from 'types';
 
-interface AddSchedulerModalProps extends IWithModal {
-  addSchedulerJob: HandleAddAdminSchedulerJob;
-  schedulerJobValues: AdminSchedulerEditableItem;
+interface IAddSchedulerModal extends IWithModal {
+  addSchedulerJob: THandleAddSchedulerJob;
+  currentSchedulerJob: ISchedulerJobEditable;
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_SCHEDULER;
 
-const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
-  closeModal,
-  openModal,
+const AddSchedulerModal: React.FC<IAddSchedulerModal> = ({
   addSchedulerJob,
+  closeModal,
+  currentSchedulerJob,
   institutionsOptions,
   isFormDirty,
-  schedulerJobValues,
+  openModal,
 }) => {
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
   );
+
   return (
     <Modal
       name={modalName}
@@ -42,9 +40,9 @@ const AddSchedulerModal: React.FC<AddSchedulerModalProps> = ({
       <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
-        defineAdminSchedulerJob={addSchedulerJob}
+        schedulerJobAction={addSchedulerJob}
         institutionsOptions={institutionsOptions}
-        initialValues={schedulerJobValues}
+        initialValues={currentSchedulerJob}
       />
     </Modal>
   );

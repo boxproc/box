@@ -9,7 +9,7 @@ import { monthsOptions } from 'consts';
 
 import { dateUtil, stringsUtil } from 'utils';
 
-interface RangeFieldsProps {
+interface IRangeFields {
   name: string;
   unity: string;
   count: number;
@@ -17,7 +17,7 @@ interface RangeFieldsProps {
   isYear?: boolean;
 }
 
-const RangeFields: React.FC<RangeFieldsProps> = ({ name, unity, count, isMonth, isYear }) => {
+const RangeFields: React.FC<IRangeFields> = ({ name, unity, count, isMonth, isYear }) => {
   const numbersRangeArray = React.useMemo(
     () => isYear
       ? stringsUtil.rangeNumbersArray(count, dateUtil.getCurrentYear())

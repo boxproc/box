@@ -9,11 +9,11 @@ import { stringsUtil } from 'utils';
 
 const numbersArray = stringsUtil.rangeDecimalNumbersArray(31, 1);
 
-interface DomSpecificFieldsProps {
+interface IDomSpecificFields {
   isSpecific: boolean;
 }
 
-const DomSpecificFields: React.FC<DomSpecificFieldsProps> = ({ isSpecific }) => {
+const DomSpecificFields: React.FC<IDomSpecificFields> = ({ isSpecific }) => {
   return (
     <Flex alignItems="baseline" flexWrap="wrap">
       Specific day of month (choose one or many)

@@ -8,33 +8,28 @@ import EditSchedulerModal from './EditSchedularModal';
 
 import {
   activeItemIdSelector,
-  AdminSchedulerJobsActionTypes,
-  createLoadingSelector,
-  handleDeleteAdminSchedulerJob,
-  handleUpdateAdminSchedulerJobs,
-  selectCurrentSchedulerName,
-  selectSchedulerJobValues,
+  currentSchedulerJobSelector,
+  currentSchedulerNameSelector,
+  handleDeleteSchedulerJob,
+  handleUpdateSchedulerJobs,
+  isSchedulerJobDeletingSelector,
   StoreState,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
-]);
 
 const dirty = isDirty(formNamesConst.SCHEDULER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  isFormDirty: dirty(state),
-  schedulerJobValues: selectSchedulerJobValues(state),
-  currentSchedulerName: selectCurrentSchedulerName(state),
   currentSchedulerId: activeItemIdSelector(state),
+  currentSchedulerJob: currentSchedulerJobSelector(state),
+  currentSchedulerName: currentSchedulerNameSelector(state),
+  isFormDirty: dirty(state),
+  isLoading: isSchedulerJobDeletingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteSchedulerJob: handleDeleteAdminSchedulerJob,
-    updateSchedulerJob: handleUpdateAdminSchedulerJobs,
+    deleteSchedulerJob: handleDeleteSchedulerJob,
+    updateSchedulerJob: handleUpdateSchedulerJobs,
   },
   dispatch
 );

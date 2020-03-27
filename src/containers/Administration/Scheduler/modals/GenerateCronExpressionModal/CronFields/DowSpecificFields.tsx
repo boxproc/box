@@ -7,11 +7,11 @@ import { CheckboxField } from 'components';
 
 import { daysOfWeekOptionsWithStrValues } from 'consts';
 
-interface DowSpecificFieldsProps {
+interface IDowSpecificFields {
   isSpecific: boolean;
 }
 
-const DowSpecificFields: React.FC<DowSpecificFieldsProps> = ({ isSpecific }) => {
+const DowSpecificFields: React.FC<IDowSpecificFields> = ({ isSpecific }) => {
   return (
     <Flex alignItems="baseline" flexWrap="wrap">
       Specific day of week (choose one or many)

@@ -5,46 +5,48 @@ import Scheduler from './Scheduler';
 
 import {
   activeItemIdSelector,
-  AdminSchedulerJobsActionTypes,
   AuditScheduledJobsActionType,
   createLoadingSelector,
-  handleDeleteAdminSchedulerJob,
-  handleFilterAdminSchedulerJobs,
+  currentSchedulerNameSelector,
+  handleDeleteSchedulerJob,
+  handleExecSchedulerJob,
   handleFilterByIdAuditScheduledJobs,
+  handleFilterSchedulerJobs,
   handleGetLogData,
-  handleSendAdminSchedulerAction,
   isReadOnlySelector,
+  isSchedulerJobDeletingSelector,
+  isSchedulerJobsFilteringSelector,
+  isSchedulerJobUpdatingSelector,
   resetScheduler,
-  selectAdminSchedulerJobsItems,
-  selectCurrentSchedulerName,
+  schedulerJobsSelector,
   selectInstitutionsOptions,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminSchedulerJobsActionTypes.FILTER_ADMIN_SCHEDULER_JOBS,
-  AdminSchedulerJobsActionTypes.DELETE_ADMIN_SCHEDULER_JOBS,
-  AdminSchedulerJobsActionTypes.UPDATE_ADMIN_SCHEDULER_JOBS,
   AuditScheduledJobsActionType.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID,
   SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  schedulerJobsItems: selectAdminSchedulerJobsItems(state),
-  currentSchedulerName: selectCurrentSchedulerName(state),
   currentSchedulerId: activeItemIdSelector(state),
+  currentSchedulerName: currentSchedulerNameSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
+  isLoading: loadingSelector(state)
+    || isSchedulerJobsFilteringSelector(state)
+    || isSchedulerJobUpdatingSelector(state)
+    || isSchedulerJobDeletingSelector(state),
   isReadOnly: isReadOnlySelector(state),
+  schedulerJobs: schedulerJobsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterSchedulerJobs: handleFilterAdminSchedulerJobs,
+    deleteSchedulerJob: handleDeleteSchedulerJob,
+    execSchedulerJob: handleExecSchedulerJob,
     filterScheduledJobsById: handleFilterByIdAuditScheduledJobs,
-    sendSchedulerAction: handleSendAdminSchedulerAction,
-    deleteSchedulerJob: handleDeleteAdminSchedulerJob,
+    filterSchedulerJobs: handleFilterSchedulerJobs,
     getLogData: handleGetLogData,
     resetScheduler,
   },

@@ -7,28 +7,23 @@ import { formNamesConst } from 'consts';
 import ScheduledJobsFilter from './ScheduledJobsFilter';
 
 import {
-  AdminSchedulerJobsActionTypes,
-  createLoadingSelector,
-  handleGetSchedulerNamesByInstitutionId,
-  selectSchedulerNamesByInstIdOptions,
+  handleGetSchedulerNamesByInstId,
+  instSchedulerNamesOptions,
+  isSchedulerJobNamesGettingSelector,
   StoreState,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  AdminSchedulerJobsActionTypes.GET_SCHEDULER_NAMES_BY_INSTITUTION_ID,
-]);
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoadingSchedulerNames: loadingSelector(state),
-  schedulerNameOptions: selectSchedulerNamesByInstIdOptions(state),
+  isLoadingSchedulerNames: isSchedulerJobNamesGettingSelector(state),
+  schedulerNameOptions: instSchedulerNamesOptions(state),
   institutionValue: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getSchedulerNames: handleGetSchedulerNamesByInstitutionId,
+    getSchedulerNames: handleGetSchedulerNamesByInstId,
   },
   dispatch
 );
