@@ -4,38 +4,29 @@ import { bindActionCreators, Dispatch } from 'redux';
 import InterfaceForm from './InterfaceForm';
 
 import {
-  AdminInterfacesActionTypes,
-  createLoadingSelector,
-  DictionaryActionTypes,
-  handleAddAdminInterface,
-  handleDeleteAdminInterface,
+  activeItemIdSelector,
+  handleAddInterface,
+  handleDeleteInterface,
   handleGetDictionaryInterfaceTypes,
   handleUpdateInterface,
-  selectActiveItemId,
+  isLoadingInterfacesTypesSelector,
+  isUpdatingInterfaceSelector,
   selectInterfaceTypesOptions,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AdminInterfacesActionTypes.UPDATE_ADMIN_INTERFACE,
-]);
-
-const loadingTypesSelector = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_INTERFACE_TYPES,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  isLoadingTypesSelector: loadingTypesSelector(state),
+  isLoading: isUpdatingInterfaceSelector(state),
+  isLoadingTypesSelector: isLoadingInterfacesTypesSelector(state),
   interfaceTypesOptions: selectInterfaceTypesOptions(state),
-  currentInterfaceId: selectActiveItemId(state),
+  currentInterfaceId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteInterface: handleDeleteAdminInterface,
+    deleteInterface: handleDeleteInterface,
     updateInterface: handleUpdateInterface,
-    addInterface: handleAddAdminInterface,
+    addInterface: handleAddInterface,
     getDictionaryInterfaceTypes: handleGetDictionaryInterfaceTypes,
   },
   dispatch

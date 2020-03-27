@@ -7,11 +7,11 @@ import { formNamesConst } from 'consts';
 import EditSchedulerModal from './EditSchedularModal';
 
 import {
+  activeItemIdSelector,
   AdminSchedulerJobsActionTypes,
   createLoadingSelector,
   handleDeleteAdminSchedulerJob,
   handleUpdateAdminSchedulerJobs,
-  selectActiveItemId,
   selectCurrentSchedulerName,
   selectSchedulerJobValues,
   StoreState,
@@ -28,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   schedulerJobValues: selectSchedulerJobValues(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
-  currentSchedulerId: selectActiveItemId(state),
+  currentSchedulerId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

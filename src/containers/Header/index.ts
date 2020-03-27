@@ -7,12 +7,12 @@ import Header from './Header';
 
 import {
   createLoadingSelector,
-  handleGetInstitutions,
   handleGetUiItems,
+  handleGetUserInstitutions,
   handleUserLogout,
+  isReadOnlySelector,
   selectHelpLink,
   selectInstitutions,
-  selectIsReadOnly,
   selectUiItems,
   StoreState,
   UiItemsActionTypes,
@@ -26,7 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
   institutions: selectInstitutions(state),
-  isReadOnly: selectIsReadOnly(state),
+  isReadOnly: isReadOnlySelector(state),
   helpLink: selectHelpLink(state),
 });
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getUiItems: handleGetUiItems,
     userLogout: handleUserLogout,
-    getInstitutions: handleGetInstitutions,
+    getInstitutions: handleGetUserInstitutions,
   },
   dispatch
 );

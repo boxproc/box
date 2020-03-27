@@ -5,8 +5,8 @@ import { bindActionCreators, Dispatch } from 'redux';
 import {
   closeAllModals,
   closeModal,
+  isReadOnlySelector,
   openModal,
-  selectIsReadOnly,
   StoreState,
   TCloseAllModals,
   TCloseModal,
@@ -30,7 +30,7 @@ export const withModal = <OriginProps extends {}>(
   };
 
   const mapStateToProps = (state: StoreState) => ({
-    isReadOnly: selectIsReadOnly(state),
+    isReadOnly: isReadOnlySelector(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

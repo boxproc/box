@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Scheduler from './Scheduler';
 
 import {
+  activeItemIdSelector,
   AdminSchedulerJobsActionTypes,
   AuditScheduledJobsActionType,
   createLoadingSelector,
@@ -12,12 +13,11 @@ import {
   handleFilterByIdAuditScheduledJobs,
   handleGetLogData,
   handleSendAdminSchedulerAction,
+  isReadOnlySelector,
   resetScheduler,
-  selectActiveItemId,
   selectAdminSchedulerJobsItems,
   selectCurrentSchedulerName,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
@@ -34,9 +34,9 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   schedulerJobsItems: selectAdminSchedulerJobsItems(state),
   currentSchedulerName: selectCurrentSchedulerName(state),
-  currentSchedulerId: selectActiveItemId(state),
+  currentSchedulerId: activeItemIdSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  isReadOnly: selectIsReadOnly(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

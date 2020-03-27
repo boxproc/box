@@ -5,7 +5,7 @@ import { selectInstitutionProductsOptions } from 'store/domains/productDesigner'
 
 import { selectDictionaryRepaymentTypesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import {
   preparedAccountCardsToRender,
@@ -34,7 +34,7 @@ export const selectLedgerAccountCards = createSelector(
 );
 
 export const selectLedgerCurrentAccountProductType = createSelector(
-  selectActiveItemId,
+  activeItemIdSelector,
   selectDefaultLedgerAccounts,
   (currentId, accounts) => {
     const current = accounts.find(el => el.id === currentId);
@@ -44,7 +44,7 @@ export const selectLedgerCurrentAccountProductType = createSelector(
 );
 
 export const selectLedgerCurrentAccount = createSelector(
-  selectActiveItemId,
+  activeItemIdSelector,
   selectInstitutionsOptions,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,

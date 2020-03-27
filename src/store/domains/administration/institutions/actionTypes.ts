@@ -1,101 +1,105 @@
-import { AdminInstitutionsItems } from './types';
+import { IInstitutionsData } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_ADMIN_INSTITUTIONS = 'administration/institutions/GET_ADMIN_INSTITUTIONS',
-  GET_ADMIN_INSTITUTIONS_FULFILLED = 'administration/institutions/GET_ADMIN_INSTITUTIONS_FULFILLED',
-  GET_ADMIN_INSTITUTIONS_REJECTED = 'administration/institutions/GET_ADMIN_INSTITUTIONS_REJECTED',
+  GET_INSTITUTIONS = 'administration/institutions/GET_INSTITUTIONS',
+  GET_INSTITUTIONS_FULFILLED = 'administration/institutions/GET_INSTITUTIONS_FULFILLED',
+  GET_INSTITUTIONS_REJECTED = 'administration/institutions/GET_INSTITUTIONS_REJECTED',
 
-  DELETE_ADMIN_INSTITUTION = 'administration/institutions/DELETE_ADMIN_INSTITUTION',
-  DELETE_ADMIN_INSTITUTION_FULFILLED =
-  'administration/institutions/DELETE_ADMIN_INSTITUTION_FULFILLED',
-  DELETE_ADMIN_INSTITUTION_REJECTED =
-  'administration/institutions/DELETE_ADMIN_INSTITUTION_REJECTED',
+  DELETE_INSTITUTION = 'administration/institutions/DELETE_INSTITUTION',
+  DELETE_INSTITUTION_FULFILLED = 'administration/institutions/DELETE_INSTITUTION_FULFILLED',
+  DELETE_INSTITUTION_REJECTED = 'administration/institutions/DELETE_INSTITUTION_REJECTED',
 
-  ADD_ADMIN_INSTITUTION = 'administration/institutions/ADD_ADMIN_INSTITUTION',
-  ADD_ADMIN_INSTITUTION_FULFILLED = 'administration/institutions/ADD_ADMIN_INSTITUTION_FULFILLED',
-  ADD_ADMIN_INSTITUTION_REJECTED = 'administration/institutions/ADD_ADMIN_INSTITUTION_REJECTED',
+  ADD_INSTITUTION = 'administration/institutions/ADD_INSTITUTION',
+  ADD_INSTITUTION_FULFILLED = 'administration/institutions/ADD_INSTITUTION_FULFILLED',
+  ADD_INSTITUTION_REJECTED = 'administration/institutions/ADD_INSTITUTION_REJECTED',
 
-  UPDATE_ADMIN_INSTITUTION = 'administration/institutions/UPDATE_ADMIN_INSTITUTIONS',
-  UPDATE_ADMIN_INSTITUTION_FULFILLED =
-  'administration/institutions/UPDATE_ADMIN_INSTITUTION_FULFILLED',
-  UPDATE_ADMIN_INSTITUTION_REJECTED =
-  'administration/institutions/UPDATE_ADMIN_INSTITUTION_REJECTED',
+  UPDATE_INSTITUTION = 'administration/institutions/UPDATE_INSTITUTIONS',
+  UPDATE_INSTITUTION_FULFILLED = 'administration/institutions/UPDATE_INSTITUTION_FULFILLED',
+  UPDATE_INSTITUTION_REJECTED = 'administration/institutions/UPDATE_INSTITUTION_REJECTED',
 
   RESET_INSTITUTIONS = 'administration/institutions/RESET_INSTITUTIONS',
 }
 
-export interface GetAdminInstitutionsAction {
+/** Get institutions action interfaces */
+
+export interface IGetInstitutionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS;
+  readonly type: ActionTypeKeys.GET_INSTITUTIONS;
 }
 
-export interface GetAdminInstitutionsFulfilledAction {
-  readonly payload: AdminInstitutionsItems;
-  readonly type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS_FULFILLED;
+export interface IGetInstitutionsFulfilledAction {
+  readonly payload: IInstitutionsData;
+  readonly type: ActionTypeKeys.GET_INSTITUTIONS_FULFILLED;
 }
 
-export interface GetAdminInstitutionsRejectedAction {
+export interface IGetInstitutionsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ADMIN_INSTITUTIONS_REJECTED;
+  readonly type: ActionTypeKeys.GET_INSTITUTIONS_REJECTED;
 }
 
-export interface DeleteAdminInstitutionAction {
+/** Delete institution action interfaces */
+
+export interface IDeleteInstitutionAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION;
+  readonly type: ActionTypeKeys.DELETE_INSTITUTION;
 }
 
-export interface DeleteAdminInstitutionFulfilledAction {
+export interface IDeleteInstitutionFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION_FULFILLED;
-  readonly meta: {
-    id: number;
-  };
+  readonly type: ActionTypeKeys.DELETE_INSTITUTION_FULFILLED;
+  readonly meta: { id: number };
 }
 
-export interface DeleteAdminInstitutionRejectedAction {
+export interface IDeleteInstitutionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INSTITUTION_REJECTED;
+  readonly type: ActionTypeKeys.DELETE_INSTITUTION_REJECTED;
 }
 
-export interface AddAdminInstitutionAction {
+/** Add institution action interfaces */
+
+export interface IAddInstitutionAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INSTITUTION;
+  readonly type: ActionTypeKeys.ADD_INSTITUTION;
 }
 
-export interface AddAdminInstitutionFulfilledAction {
+export interface IAddInstitutionFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INSTITUTION_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_INSTITUTION_FULFILLED;
 }
 
-export interface AddAdminInstitutionRejectedAction {
+export interface IAddInstitutionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INSTITUTION_REJECTED;
+  readonly type: ActionTypeKeys.ADD_INSTITUTION_REJECTED;
 }
 
-export interface UpdateAdminInstitutionAction {
+/** Update institution action interfaces */
+
+export interface IUpdateInstitutionAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION;
+  readonly type: ActionTypeKeys.UPDATE_INSTITUTION;
 }
 
-export interface UpdateAdminInstitutionFulfilledAction {
+export interface IUpdateInstitutionFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_INSTITUTION_FULFILLED;
 }
 
-export interface UpdateAdminInstitutionRejectedAction {
+export interface IUpdateInstitutionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INSTITUTION_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_INSTITUTION_REJECTED;
 }
 
-export interface ResetInstitutionsAction {
+/** Reset institutions action interfaces */
+
+export interface IResetInstitutionsAction {
   readonly type: ActionTypeKeys.RESET_INSTITUTIONS;
 }
 
-export type AdminInstitutionsActionTypes =
-  | GetAdminInstitutionsFulfilledAction
-  | AddAdminInstitutionFulfilledAction
-  | DeleteAdminInstitutionFulfilledAction
-  | UpdateAdminInstitutionFulfilledAction
-  | ResetInstitutionsAction;
+export type IInstitutionsActionTypes =
+  | IGetInstitutionsFulfilledAction
+  | IAddInstitutionFulfilledAction
+  | IDeleteInstitutionFulfilledAction
+  | IUpdateInstitutionFulfilledAction
+  | IResetInstitutionsAction;

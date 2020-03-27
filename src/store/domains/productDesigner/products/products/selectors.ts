@@ -7,7 +7,7 @@ import { StoreState } from 'store';
 import { selectCurrenciesOptions } from 'store/domains/administration';
 import { createLoadingSelector } from 'store/domains/loader';
 import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
 import {
@@ -71,7 +71,7 @@ export const selectCurrentProductName = createSelector(
 );
 
 export const selectProductName = createSelector(
-  selectActiveItemId,
+  activeItemIdSelector,
   selectDefaultProductItems,
   (currentId, products) => {
     const current = products.find(product => product.id === currentId);

@@ -4,10 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import GeneralLedgerFrom from './GeneralLedgerFrom';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleUpdateGeneralLedger,
   ProductGeneralLedgerActionTypes,
-  selectActiveItemId,
   selectProductGeneralLedger,
   StoreState,
 } from 'store';
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectProductGeneralLedger(state),
-  currentProductId: selectActiveItemId(state),
+  currentProductId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

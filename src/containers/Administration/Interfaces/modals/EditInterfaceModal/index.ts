@@ -6,8 +6,8 @@ import { formNamesConst } from 'consts';
 import EditInterfaceModal from './EditInterfaceModal';
 
 import {
-  selectAdminCurrentInterface,
-  selectAdminCurrentInterfaceName,
+  currentInterfaceNameSelector,
+  currentInterfaceSelector,
   selectInstitutionsOptions,
   StoreState,
 } from 'store';
@@ -16,9 +16,9 @@ const dirty = isDirty(formNamesConst.INTERFACE);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  currentInterface: selectAdminCurrentInterface(state),
+  currentInterface: currentInterfaceSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  currentInterfaceName: selectAdminCurrentInterfaceName(state),
+  currentInterfaceName: currentInterfaceNameSelector(state),
 });
 
 export default connect(

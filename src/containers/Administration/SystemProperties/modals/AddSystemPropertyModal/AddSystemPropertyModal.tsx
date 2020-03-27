@@ -7,16 +7,13 @@ import { modalNamesConst } from 'consts';
 
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
-import { HandleAddAdminSysProp } from 'store';
-
-interface AddSystemPropertyModalProps extends IWithModal {
-  addAdminSysProp: HandleAddAdminSysProp;
+interface IAddSystemPropertyModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_SYSTEM_PROPERTY;
 
-const AddSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
+const AddSystemPropertyModal: React.FC<IAddSystemPropertyModal> = ({
   closeModal,
   isFormDirty,
 }) => {

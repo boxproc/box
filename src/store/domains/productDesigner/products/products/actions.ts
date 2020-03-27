@@ -4,11 +4,11 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import {
+  activeItemIdSelector,
   closeModal,
   handleFilterLedgerAccounts,
+  isAccessibleFilterSelector,
   openModal,
-  selectActiveItemId,
-  selectIsAccessibleFiltering,
   setActiveItemId,
 } from 'store';
 import {
@@ -147,7 +147,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectActiveItemId(state);
+        const id = activeItemIdSelector(state);
 
         await dispatch(deleteProduct(id));
         dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
@@ -175,7 +175,7 @@ export const handleGetProduct: HandleGetProduct = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const id = selectActiveItemId(state);
+        const id = activeItemIdSelector(state);
 
         await dispatch(getProduct(id));
       },
@@ -189,7 +189,7 @@ export const handleAddProduct: HandleAddProduct = data =>
       async () => {
         const preparedValues = prepareNewProductDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         const res = await dispatch(addProduct(preparedValues)) as any;
 

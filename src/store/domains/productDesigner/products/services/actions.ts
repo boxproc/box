@@ -1,4 +1,4 @@
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
 import {
   ActionTypeKeys,
@@ -69,7 +69,7 @@ export const handleUpdateCardService: HandleUpdateCardService = data =>
       async () => {
         const preparedValues = prepareCardServiceDataToSend(data);
         const state = getState();
-        const id = selectActiveItemId(state);
+        const id = activeItemIdSelector(state);
 
         await dispatch(updateCardService(preparedValues));
         await dispatch(getProduct(id));

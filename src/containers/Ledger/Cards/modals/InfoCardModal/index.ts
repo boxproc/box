@@ -7,12 +7,12 @@ import { formNamesConst } from 'consts';
 import InfoCardModal from './InfoCardModal';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleActivateLedgerCard,
+  isReadOnlySelector,
   LedgerCardsActionTypes,
-  selectActiveItemId,
   selectCurrentCardStatus,
-  selectIsReadOnly,
   selectLedgerCardValues,
   StoreState,
 } from 'store';
@@ -28,8 +28,8 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   currentCard: selectLedgerCardValues(state),
   currentStatus: selectCurrentCardStatus(state),
-  currentCardId: selectActiveItemId(state),
-  isReadOnly: selectIsReadOnly(state),
+  currentCardId: activeItemIdSelector(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { StoreState } from 'store';
 import { preparedValuesToRender } from './utils';
@@ -14,7 +14,7 @@ export const selectAuditScheduledJobs = createSelector(
 
 export const selectAuditScheduledJobsSchedulerId = createSelector(
   selectDefaultAuditScheduledJobs,
-  selectActiveItemId,
+  activeItemIdSelector,
   (jobs, currentId) => {
     const current = jobs.find(job => job.id === currentId);
 
@@ -23,7 +23,7 @@ export const selectAuditScheduledJobsSchedulerId = createSelector(
 
 export const selectAuditScheduledJobsSchedulerName = createSelector(
   selectDefaultAuditScheduledJobs,
-  selectActiveItemId,
+  activeItemIdSelector,
   (jobs, currentId) => {
     const current = jobs.find(job => job.id === currentId);
 

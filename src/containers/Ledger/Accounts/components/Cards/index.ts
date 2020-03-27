@@ -4,11 +4,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Cards from './Cards';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleGetLedgerAccountCards,
   handleOrderLedgerAccountCard,
   LedgerAccountsActionTypes,
-  selectActiveItemId,
   selectLedgerAccountCards,
   StoreState,
 } from 'store';
@@ -24,7 +24,7 @@ const orderCardLoadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isOrderingCard: orderCardLoadingSelector(state),
-  accountCurrentId: selectActiveItemId(state),
+  accountCurrentId: activeItemIdSelector(state),
   accountCards: selectLedgerAccountCards(state),
 });
 

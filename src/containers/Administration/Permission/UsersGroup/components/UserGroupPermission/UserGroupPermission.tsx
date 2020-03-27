@@ -100,7 +100,7 @@ export const UsersGroupMembers: React.FC<UsersGroupMembersProps> = ({
       <Table
         data={groupPermissions}
         columns={columns}
-        pageSize={9}
+        pageSize={10}
         isSmaller={true}
       />
     </React.Fragment>

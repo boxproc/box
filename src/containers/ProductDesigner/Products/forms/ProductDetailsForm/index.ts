@@ -7,11 +7,11 @@ import { formNamesConst } from 'consts';
 import ProductDetailsForm from './ProductDetailsForm';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleGetProductDetails,
   handleUpdateProductDetails,
   ProductsActionTypes,
-  selectActiveItemId,
   selectCurrentProductDetails,
   StoreState,
 } from 'store';
@@ -30,7 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isUpdating: loadingSelectorUpdate(state),
   initialValues: selectCurrentProductDetails(state),
-  currentProductId: selectActiveItemId(state),
+  currentProductId: activeItemIdSelector(state),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
 });
 

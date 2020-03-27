@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Accounts from './Accounts';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleAddProductOverride,
   handleFilterByIdLedgerCards,
@@ -12,11 +13,10 @@ import {
   handleFilterByIdStatements,
   handleFilterLedgerAccounts,
   handleSetActiveItemId,
+  isReadOnlySelector,
   LedgerAccountsActionTypes,
   resetAccounts,
-  selectActiveItemId,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   selectLedgerAccounts,
   selectLedgerCurrentAccountBalanceLimit,
   selectLedgerCurrentAccountBalanceLimitShared,
@@ -37,11 +37,11 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
-  currentId: selectActiveItemId(state),
+  currentId: activeItemIdSelector(state),
   currentCurrencyCode: selectLedgerCurrentAccountCurrencyCode(state),
   currentAccountBalanceLimit: selectLedgerCurrentAccountBalanceLimit(state),
   currentAccountBalanceLimitShared: selectLedgerCurrentAccountBalanceLimitShared(state),
-  isReadOnly: selectIsReadOnly(state),
+  isReadOnly: isReadOnlySelector(state),
   uiItems: selectUiItems(state),
 });
 

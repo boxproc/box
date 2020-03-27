@@ -6,7 +6,7 @@ import LogModal from './LogModal';
 import {
   createLoadingSelector,
   handleRefreshLogData,
-  selectPayloadLogModal,
+  payloadLogModalSelector,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
@@ -17,7 +17,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  data: selectPayloadLogModal(state),
+  data: payloadLogModalSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

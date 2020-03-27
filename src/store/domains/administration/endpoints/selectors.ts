@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
 import { preparedDataDetailsToRender, preparedDataToRender } from './utils';
@@ -27,7 +27,7 @@ export const endpointsSelector = createSelector(
 
 export const currentEndpointSelector = createSelector(
   defaultEndpointsSelector,
-  selectActiveItemId,
+  activeItemIdSelector,
   selectInstitutionsOptions,
   (endpoints, currentId, institutions) => {
     const currentEndpoint = endpoints.find(el => el.id === currentId);
@@ -46,12 +46,15 @@ export const currentEndpointNameSelector = createSelector(
   data => data && data.name
 );
 
+export const isFilteringEndpointsSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_ENDPOINTS,
+]);
+
 export const isUpdatingEndpointSelector = createLoadingSelector([
   ActionTypeKeys.UPDATE_ENDPOINT,
 ]);
 
-export const isFilteringOrDeletingEndpointSelector = createLoadingSelector([
-  ActionTypeKeys.FILTER_ENDPOINTS,
+export const isDeletingEndpointSelector = createLoadingSelector([
   ActionTypeKeys.DELETE_ENDPOINT,
 ]);
 

@@ -1,7 +1,7 @@
 import React from 'react';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import {
   Button,
@@ -17,27 +17,26 @@ import {
 import { formNamesConst, iconNamesConst, statusOptions } from 'consts';
 
 import {
-  HandleAddAdminInstitution,
-  HandleDeleteAdminInstitution,
-  HandleUpdateAdminInstitution,
+  THandleAddInstitution,
+  THandleDeleteInstitution,
+  THandleUpdateInstitution,
 } from 'store';
 
 import { formErrorUtil } from 'utils';
 
-interface InstitutionFormProps extends ExternalSpinnerProps {
+interface IInstitutionForm extends ExternalSpinnerProps {
   currentInstitutionName: string;
   currentInstitutionId: number;
   isMasterInstitutionFlag: boolean;
   isReadOnly: boolean;
   isEditMode?: boolean;
-  updateInstitution: HandleUpdateAdminInstitution;
-  addInstitution: HandleAddAdminInstitution;
-  deleteInstitution: HandleDeleteAdminInstitution;
+  updateInstitution: THandleUpdateInstitution;
+  addInstitution: THandleAddInstitution;
+  deleteInstitution: THandleDeleteInstitution;
   onCancel: () => void;
 }
 
-type InstitutionFormAllProps = InstitutionFormProps &
-  InjectedFormProps<{}, InstitutionFormProps>;
+type InstitutionFormAllProps = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
 
 const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   onCancel,
@@ -182,7 +181,7 @@ const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, InstitutionFormProps>({
+export default reduxForm<{}, IInstitutionForm>({
   form: formNamesConst.INSTITUTIONS,
   destroyOnUnmount: true,
   enableReinitialize: true,

@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Statements from './Statements';
 
 import {
+  activeItemIdSelector,
   handleDownloadStatement,
   handleFilterByIdLedgerAccounts,
   handleFilterByIdLedgerCards,
@@ -13,7 +14,6 @@ import {
   isStatementsLoadingSelector,
   isTransArsLoadingSelector,
   resetStatements,
-  selectActiveItemId,
   selectInstitutionsOptions,
   setActiveItemId,
   statementsSelector,
@@ -21,7 +21,7 @@ import {
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  currentId: selectActiveItemId(state),
+  currentId: activeItemIdSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
   isLoading: isStatementsLoadingSelector(state),
   isLoadingStatement: isTransArsLoadingSelector(state),

@@ -4,40 +4,41 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Interfaces from './Interfaces';
 
 import {
-  AdminInterfacesActionTypes,
+  activeItemIdSelector,
   createLoadingSelector,
-  handleDeleteAdminInterface,
-  handleFilterAdminInterface,
+  currentInterfaceNameSelector,
+  handleDeleteInterface,
+  handleFilterInterfaces,
   handleGetLogData,
+  interfacesSelector,
+  isDeletingInterfaceSelector,
+  isFilteringInterfacesSelector,
+  isReadOnlySelector,
   resetInterfaces,
-  selectActiveItemId,
-  selectAdminCurrentInterfaceName,
-  selectAdminInterface,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
-  AdminInterfacesActionTypes.FILTER_ADMIN_INTERFACE,
-  AdminInterfacesActionTypes.DELETE_ADMIN_INTERFACE,
   SystemMonitorActionTypes.GET_LOG_DATA,
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: loadingSelector(state)
+    || isFilteringInterfacesSelector(state)
+    || isDeletingInterfaceSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  interfaceItems: selectAdminInterface(state),
-  currentInterfaceName: selectAdminCurrentInterfaceName(state),
-  currentInterfaceId: selectActiveItemId(state),
-  isReadOnly: selectIsReadOnly(state),
+  interfaceItems: interfacesSelector(state),
+  currentInterfaceName: currentInterfaceNameSelector(state),
+  currentInterfaceId: activeItemIdSelector(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    deleteInterface: handleDeleteAdminInterface,
-    filterInterface: handleFilterAdminInterface,
+    deleteInterface: handleDeleteInterface,
+    filterInterfaces: handleFilterInterfaces,
     getLogData: handleGetLogData,
     resetInterfaces,
   },

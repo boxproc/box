@@ -1,25 +1,23 @@
 import { statusOptions } from 'consts';
 import {
-  AdminInterfaceFilter,
-  AdminInterfaceItem,
-  AdminInterfaceItemDetailsPrepared,
+  IInterfaceData,
+  IInterfaceDetails,
+  IInterfacesFilter,
 } from './types';
 
 import { ISelectValue } from 'types';
 
-export const preparedFilterToSend = (data: Partial<AdminInterfaceFilter>) => {
+export const prepareFilterToSend = (data: Partial<IInterfacesFilter>) => {
   if (!data) {
     return null;
   }
 
   const { institutionId } = data;
 
-  return {
-    institution_id: institutionId ? institutionId.value : null,
-  };
+  return { institution_id: institutionId ? institutionId.value : null };
 };
 
-export const preparedDataToSend = (data: Partial<AdminInterfaceItemDetailsPrepared>) => {
+export const prepareDataToSend = (data: Partial<IInterfaceDetails>) => {
   if (!data) {
     return null;
   }
@@ -39,10 +37,7 @@ export const preparedDataToSend = (data: Partial<AdminInterfaceItemDetailsPrepar
   };
 };
 
-export const preparedDataToRender = (
-  data: Partial<AdminInterfaceItem>,
-  institution?: ISelectValue
-) => {
+export const prepareDataToRender = (data: Partial<IInterfaceData>, institution?: ISelectValue) => {
   if (!data) {
     return null;
   }
@@ -65,12 +60,13 @@ export const preparedDataToRender = (
   };
 };
 
-export const preparedValuesDetailsToRender = (data: Partial<AdminInterfaceItem>) => {
+export const prepareDetailsToRender = (data: Partial<IInterfaceData>) => {
   if (!data) {
     return null;
   }
+
   return {
-    ...preparedDataToRender(data),
+    ...prepareDataToRender(data),
     status: statusOptions.find(el => el.value === data.status),
     interfaceTypeId: {
       value: data.interface_type_id,

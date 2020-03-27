@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
+  activeItemIdSelector,
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleDeleteAdminUserGroupMembers,
   handleGetAdminUserGroupMembers,
-  selectActiveItemId,
   selectAdminUserGroupMembers,
   StoreState,
 } from 'store';
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  userGroupMemberId: selectActiveItemId(state),
+  userGroupMemberId: activeItemIdSelector(state),
   userGroupMembers: selectAdminUserGroupMembers(state),
 });
 

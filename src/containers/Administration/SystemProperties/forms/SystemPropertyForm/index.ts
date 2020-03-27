@@ -4,33 +4,30 @@ import { bindActionCreators, Dispatch } from 'redux';
 import SystemPropertyForm from './SystemPropertyForm';
 
 import {
-  AdminSysPropsActionTypes,
-  createLoadingSelector,
-  handleAddAdminSysProp,
-  handleDeleteAdminSysProp,
-  handleUpdateAdminSysProps,
-  selectActiveItemId,
-  selectCurrentAdminSysPropsItem,
+  activeItemIdSelector,
+  currentSysPropSelector,
+  handleAddSysProp,
+  handleDeleteSysProp,
+  handleUpdateSysProps,
+  isSysPropAddingSelector,
+  isSysPropDeletingSelector,
+  isSysPropUpdatingSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AdminSysPropsActionTypes.ADD_ADMIN_SYS_PROP,
-  AdminSysPropsActionTypes.UPDATE_ADMIN_SYS_PROPS,
-  AdminSysPropsActionTypes.DELETE_ADMIN_SYS_PROP,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  initialValues: selectCurrentAdminSysPropsItem(state),
-  currentSystemPropertyId: selectActiveItemId(state),
+  isLoading: isSysPropUpdatingSelector(state)
+    || isSysPropAddingSelector(state)
+    || isSysPropDeletingSelector(state),
+  initialValues: currentSysPropSelector(state),
+  currentSystemPropertyId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addSystemProperty: handleAddAdminSysProp,
-    updateSystemProperty: handleUpdateAdminSysProps,
-    deleteSystemProperty: handleDeleteAdminSysProp,
+    addSystemProperty: handleAddSysProp,
+    deleteSystemProperty: handleDeleteSysProp,
+    updateSystemProperty: handleUpdateSysProps,
   },
   dispatch
 );

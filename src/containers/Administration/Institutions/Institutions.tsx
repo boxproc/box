@@ -7,33 +7,33 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 
 import {
-  AdminInstitutionsItemPrepared,
-  HandleDeleteAdminInstitution,
-  HandleGetAdminInstitutions,
-  ResetInstitutions,
+  IInstitution,
+  THandleDeleteInstitution,
+  THandleGetInstitutions,
+  TResetInstitutions,
 } from 'store';
 import { storageUtil } from 'utils';
 
-export interface InstitutionsProps {
-  institutionsData: ImmutableArray<AdminInstitutionsItemPrepared>;
-  currentInstitutionName: string;
+interface IInstitutions {
   currentInstitutionId: number;
+  currentInstitutionName: string;
+  deleteInstitution: THandleDeleteInstitution;
+  getInstitutions: THandleGetInstitutions;
+  institutionsData: ImmutableArray<IInstitution>;
   isLoading: boolean;
   isReadOnly: boolean;
-  getInstitutions: HandleGetAdminInstitutions;
-  deleteInstitution: HandleDeleteAdminInstitution;
-  resetInstitutions: ResetInstitutions;
+  resetInstitutions: TResetInstitutions;
 }
 
-const Institutions: React.FC<InstitutionsProps> = ({
-  institutionsData,
-  getInstitutions,
-  deleteInstitution,
-  currentInstitutionName,
+const Institutions: React.FC<IInstitutions> = ({
   currentInstitutionId,
-  resetInstitutions,
+  currentInstitutionName,
+  deleteInstitution,
+  getInstitutions,
+  institutionsData,
   isLoading,
   isReadOnly,
+  resetInstitutions,
 }) => {
   React.useEffect(
     () => {

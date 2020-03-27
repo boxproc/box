@@ -4,37 +4,34 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { Flex } from '@rebass/grid';
 
 import { Button, ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst, iconNamesConst } from 'consts';
-
 import { InterfaceFields } from 'containers/Administration/Interfaces/components';
 
 import {
-  HandleAddAdminInterface,
-  HandleDeleteAdminInterface,
-  HandleUpdateAdminInterface,
-  THandleGetDictionaryInterfaceTypes
+  THandleAddInterface,
+  THandleDeleteInterface,
+  THandleGetDictionaryInterfaceTypes,
+  THandleUpdateInterface,
 } from 'store';
 import { ISelectValue } from 'types';
 
-interface InterfaceFormProps extends ExternalSpinnerProps {
+interface IInterfaceForm extends ExternalSpinnerProps {
   interfaceTypesOptions: Array<ISelectValue>;
   currentInterfaceName?: string;
   currentInterfaceId: number;
   isReadOnly: boolean;
   isLoadingTypesSelector: boolean;
   isEditMode?: boolean;
-  updateInterface: HandleUpdateAdminInterface;
-  addInterface: HandleAddAdminInterface;
-  deleteInterface: HandleDeleteAdminInterface;
+  updateInterface: THandleUpdateInterface;
+  addInterface: THandleAddInterface;
+  deleteInterface: THandleDeleteInterface;
   getDictionaryInterfaceTypes: THandleGetDictionaryInterfaceTypes;
   onCancel: () => void;
 }
 
-type InterfaceFormAllProps = InterfaceFormProps &
-  InjectedFormProps<{}, InterfaceFormProps>;
+type TInterfaceForm = IInterfaceForm & InjectedFormProps<{}, IInterfaceForm>;
 
-const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
+const InterfaceForm: React.FC<TInterfaceForm> = ({
   onCancel,
   handleSubmit,
   deleteInterface,
@@ -114,7 +111,7 @@ const InterfaceForm: React.FC<InterfaceFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, InterfaceFormProps>({
+export default reduxForm<{}, IInterfaceForm>({
   form: formNamesConst.INTERFACE,
   destroyOnUnmount: true,
   enableReinitialize: true,

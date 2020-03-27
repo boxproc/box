@@ -4,7 +4,7 @@ import { userStatusWith2faOptions } from 'consts';
 
 import { StoreState } from 'store';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { prepareAdminUserDataToRender } from './utils';
 
 export const selectDefaultAdminUsersItems = (state: StoreState) =>
@@ -22,7 +22,7 @@ export const selectUserEditorItems = createSelector(
 
 export const selectUsersDetails = createSelector(
   selectDefaultAdminUsersItems,
-  selectActiveItemId,
+  activeItemIdSelector,
   selectInstitutionsOptions,
   (items, currentId, institutions) => {
     const current = items && items.find(item => item.id === currentId);

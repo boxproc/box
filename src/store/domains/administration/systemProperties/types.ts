@@ -1,26 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface EditableAdminSysProp {
-  id?: string | number;
-  lockedFlag?: boolean;
-  currentValue?: string | number;
-}
-
-export interface EditableAdminSysPropPrepared {
-  property_name: string | number;
-  locked_flag: string;
-  current_value: string | number;
-}
-
-export interface AdminSysPropFilter {
-  id?: string;
-}
-
-export interface AdminSysPropFilterPrepared {
-  property_name: string | number;
-}
-
-export interface AdminSysPropsItemResp {
+export interface ISysPropData {
   property_name: string | number;
   current_value: string | number;
   previous_value: string | number;
@@ -28,7 +8,11 @@ export interface AdminSysPropsItemResp {
   locked_flag: string;
 }
 
-export interface AdminSysPropsItem {
+export interface ISysPropsData {
+  system_properties: Array<ISysPropData>;
+}
+
+export interface ISysProp {
   id: string | number;
   currentValue: string | number;
   previousValue: string | number;
@@ -36,10 +20,31 @@ export interface AdminSysPropsItem {
   lockedFlag: boolean;
 }
 
-export interface AdminSysPropsDataResp {
-  system_properties: Array<AdminSysPropsItemResp>;
+/** Editable system property interfaces */
+
+export interface IEditableSysProp {
+  id?: string | number;
+  lockedFlag?: boolean;
+  currentValue?: string | number;
 }
 
-export interface AdminSysPropsState {
-  systemProperties: ImmutableArray<AdminSysPropsItemResp>;
+export interface IEditableSysPropToSend {
+  property_name: string | number;
+  locked_flag: string;
+  current_value: string | number;
+}
+
+/** System properties filter interfaces */
+
+export interface ISysPropFilter {
+  id?: string;
+}
+
+export interface ISysPropFilterToSend {
+  property_name: string | number;
+}
+
+/** System properties state interface */
+export interface ISysPropsState {
+  sysProps: ImmutableArray<ISysPropData>;
 }

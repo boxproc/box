@@ -2,7 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst } from 'consts';
 
-import { closeModal, selectIsAccessibleFiltering, startAutoRefresh } from 'store';
+import { closeModal, isAccessibleFilterSelector, startAutoRefresh } from 'store';
 import {
   ActionTypeKeys,
   AddAdminSchedulerJobAction,
@@ -112,7 +112,7 @@ export const handleAddAdminSchedulerJob: HandleAddAdminSchedulerJob = schedulerV
       async () => {
         const preparedValues = prepareValuesToSend(schedulerValues);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         await dispatch(addAdminSchedulerJob(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_SCHEDULER));

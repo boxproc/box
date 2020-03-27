@@ -7,13 +7,13 @@ import { formNamesConst } from 'consts';
 import CustomerForm from './CustomerForm';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleAddLedgerCustomer,
   handleDeleteLedgerCustomer,
   handleGetDictionaryCountries,
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
-  selectActiveItemId,
   selectCountriesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
@@ -33,7 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
   initialValues: selectLedgerCurrentCustomer(state),
   currentCustomerName: selectLedgerCurrentCustomerName(state),
   countryCodes: selectCountriesOptions(state),
-  currentId: selectActiveItemId(state),
+  currentId: activeItemIdSelector(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
 });
 

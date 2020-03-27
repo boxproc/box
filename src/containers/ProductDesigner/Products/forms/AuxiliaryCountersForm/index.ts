@@ -4,10 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import AuxiliaryCountersForm from './AuxiliaryCountersForm';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleUpdateProductAuxCounters,
   ProductAuxCountersActionTypes,
-  selectActiveItemId,
   selectProductAuxCounters,
   StoreState,
 } from 'store';
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectProductAuxCounters(state),
-  currentProductId: selectActiveItemId(state),
+  currentProductId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

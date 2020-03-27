@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
-import { openModal, selectActiveItemId, setIsOpenFilter } from 'store';
+import { activeItemIdSelector, openModal, setIsOpenFilter } from 'store';
 import { LedgerId } from '../customers';
 
 import {
@@ -178,7 +178,7 @@ export const handleDownloadStatement: THandleDownloadStatement = () =>
       errorDecoratorUtil.withErrorHandler(
         async () => {
           const state = getState();
-          const statementId = selectActiveItemId(state);
+          const statementId = activeItemIdSelector(state);
 
           const currentTransaction = currentStatementTransactionSelector(state);
 

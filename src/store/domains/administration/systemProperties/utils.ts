@@ -1,32 +1,32 @@
 import { yesNoConst } from 'consts';
 
 import {
-  AdminSysPropFilter,
-  AdminSysPropFilterPrepared,
-  EditableAdminSysProp,
-  EditableAdminSysPropPrepared,
+  IEditableSysProp,
+  IEditableSysPropToSend,
+  ISysPropFilter,
+  ISysPropFilterToSend,
 } from './types';
 
-export const prepareEditableAdminSysPropItemValues =
-  (propValues: EditableAdminSysProp): EditableAdminSysPropPrepared => {
-    const { id, currentValue, lockedFlag } = propValues;
+export const prepareEditableSysProp = (data: IEditableSysProp): IEditableSysPropToSend => {
+  if (!data) {
+    return null;
+  }
 
-    return {
-      property_name: id,
-      current_value: currentValue,
-      locked_flag: lockedFlag ? yesNoConst.YES : yesNoConst.NO,
-    };
+  const { id, currentValue, lockedFlag } = data;
+
+  return {
+    property_name: id,
+    current_value: currentValue,
+    locked_flag: lockedFlag ? yesNoConst.YES : yesNoConst.NO,
   };
+};
 
-export const prepareAdminSysPropFilter =
-  (propValues: AdminSysPropFilter): AdminSysPropFilterPrepared => {
-    if (!propValues) {
-      return null;
-    }
+export const prepareSysPropsFilter = (data: ISysPropFilter): ISysPropFilterToSend => {
+  if (!data) {
+    return null;
+  }
 
-    const propName = propValues.id;
+  const propName = data.id;
 
-    return {
-      property_name: propName ? propName : null,
-    };
-  };
+  return { property_name: propName ? propName : null };
+};

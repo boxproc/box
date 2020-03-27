@@ -3,11 +3,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
 import {
+  activeItemIdSelector,
   AdminUsersGroupActionTypes,
   createLoadingSelector,
   handleAddAdminActiveUsers,
   handleGetAdminActiveUsers,
-  selectActiveItemId,
   selectActiveUsersItems,
   StoreState,
 } from 'store';
@@ -24,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  currentUserGroupId: selectActiveItemId(state),
+  currentUserGroupId: activeItemIdSelector(state),
   activeUsersItemsOptions: selectActiveUsersItems(state),
   selectedUser: formSelector(state, 'username'),
 });

@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 
 import { selectCardStatusesOptions } from 'store/domains/administration';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { prepareValuesToRender } from './utils';
 
 export const selectDefaultLedgerCards = (state: StoreState) => state.ledger.cards.cards;
@@ -15,7 +15,7 @@ export const selectLedgerCards = createSelector(
 
 export const selectLedgerCardValues = createSelector(
   selectDefaultLedgerCards,
-  selectActiveItemId,
+  activeItemIdSelector,
   (cardsItems, currentId) => {
     const current = cardsItems && cardsItems.find(item => item.id === currentId);
 
@@ -25,7 +25,7 @@ export const selectLedgerCardValues = createSelector(
 
 export const selectCurrentCardStatusOption = createSelector(
   selectDefaultLedgerCards,
-  selectActiveItemId,
+  activeItemIdSelector,
   selectCardStatusesOptions,
   (cardsItems, currentId, cardStatusesOptions) => {
     const current = cardsItems && cardsItems.find(item => item.id === currentId);
@@ -38,7 +38,7 @@ export const selectCurrentCardStatusOption = createSelector(
 
 export const selectCurrentCardStatus = createSelector(
   selectDefaultLedgerCards,
-  selectActiveItemId,
+  activeItemIdSelector,
   (cardsItems, currentId) => {
     const current = cardsItems && cardsItems.find(item => item.id === currentId);
 

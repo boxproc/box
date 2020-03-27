@@ -1,94 +1,104 @@
 import { IResponseStatus, TApiResponse } from 'types';
-import { AdminInterfaceItems } from './types';
+import { IInterfacesData } from './types';
 
 export enum ActionTypeKeys {
-  ADD_ADMIN_INTERFACE = 'administration/interfaces/ADD_ADMIN_INTERFACE',
-  ADD_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/ADD_ADMIN_INTERFACE_FULFILLED',
-  ADD_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/ADD_ADMIN_INTERFACE_REJECTED',
+  ADD_INTERFACE = 'administration/interfaces/ADD_INTERFACE',
+  ADD_INTERFACE_FULFILLED = 'administration/interfaces/ADD_INTERFACE_FULFILLED',
+  ADD_INTERFACE_REJECTED = 'administration/interfaces/ADD_INTERFACE_REJECTED',
 
-  DELETE_ADMIN_INTERFACE = 'administration/interfaces/DELETE_ADMIN_INTERFACE',
-  DELETE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_FULFILLED',
-  DELETE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/DELETE_ADMIN_INTERFACE_REJECTED',
+  DELETE_INTERFACE = 'administration/interfaces/DELETE_INTERFACE',
+  DELETE_INTERFACE_FULFILLED = 'administration/interfaces/DELETE_INTERFACE_FULFILLED',
+  DELETE_INTERFACE_REJECTED = 'administration/interfaces/DELETE_INTERFACE_REJECTED',
 
-  UPDATE_ADMIN_INTERFACE = 'administration/interfaces/UPDATE_ADMIN_INTERFACE',
-  UPDATE_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_FULFILLED',
-  UPDATE_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/UPDATE_ADMIN_INTERFACE_REJECTED',
+  UPDATE_INTERFACE = 'administration/interfaces/UPDATE_INTERFACE',
+  UPDATE_INTERFACE_FULFILLED = 'administration/interfaces/UPDATE_INTERFACE_FULFILLED',
+  UPDATE_INTERFACE_REJECTED = 'administration/interfaces/UPDATE_INTERFACE_REJECTED',
 
-  FILTER_ADMIN_INTERFACE = 'administration/interfaces/FILTER_ADMIN_INTERFACE',
-  FILTER_ADMIN_INTERFACE_FULFILLED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_FULFILLED',
-  FILTER_ADMIN_INTERFACE_REJECTED = 'administration/interfaces/FILTER_ADMIN_INTERFACE_REJECTED',
+  FILTER_INTERFACES = 'administration/interfaces/FILTER_INTERFACES',
+  FILTER_INTERFACES_FULFILLED = 'administration/interfaces/FILTER_INTERFACES_FULFILLED',
+  FILTER_INTERFACES_REJECTED = 'administration/interfaces/FILTER_INTERFACES_REJECTED',
 
   RESET_INTERFACES = 'administration/interfaces/RESET_INTERFACES',
 }
 
-export interface AddAdminInterfaceAction {
+/** Add interface action interfaces */
+
+export interface IAddInterfaceAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INTERFACE;
+  readonly type: ActionTypeKeys.ADD_INTERFACE;
 }
 
-export interface AddAdminInterfaceFulfilledAction {
+export interface IAddInterfaceFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INTERFACE_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_INTERFACE_FULFILLED;
 }
 
-export interface AddAdminInterfaceRejectedAction {
+export interface IAddInterfaceRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_INTERFACE_REJECTED;
+  readonly type: ActionTypeKeys.ADD_INTERFACE_REJECTED;
 }
 
-export interface DeleteAdminInterfaceAction {
+/** Delete interface action interfaces */
+
+export interface IDeleteInterfaceAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE;
+  readonly type: ActionTypeKeys.DELETE_INTERFACE;
 }
 
-export interface DeleteAdminInterfaceFulfilledAction {
+export interface IDeleteInterfaceFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE_FULFILLED;
+  readonly type: ActionTypeKeys.DELETE_INTERFACE_FULFILLED;
   meta: { id: number };
 }
 
-export interface DeleteAdminInterfaceRejectedAction {
+export interface IDeleteInterfaceRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_INTERFACE_REJECTED;
+  readonly type: ActionTypeKeys.DELETE_INTERFACE_REJECTED;
 }
 
-export interface UpdateAdminInterfaceAction {
+/** Update interface action interfaces */
+
+export interface IUpdateInterfaceAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE;
+  readonly type: ActionTypeKeys.UPDATE_INTERFACE;
 }
 
-export interface UpdateAdminInterfaceFulfilledAction {
+export interface IUpdateInterfaceFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_INTERFACE_FULFILLED;
 }
 
-export interface UpdateAdminInterfaceRejectedAction {
+export interface IUpdateInterfaceRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_INTERFACE_REJECTED;
 }
 
-export interface FilterAdminInterfaceAction {
+/** Filter interfaces action interfaces */
+
+export interface IFilterInterfacesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE;
+  readonly type: ActionTypeKeys.FILTER_INTERFACES;
 }
 
-export interface FilterAdminInterfaceFulfilledAction {
-  readonly payload: AdminInterfaceItems;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE_FULFILLED;
+export interface IFilterInterfacesFulfilledAction {
+  readonly payload: IInterfacesData;
+  readonly type: ActionTypeKeys.FILTER_INTERFACES_FULFILLED;
 }
 
-export interface FilterAdminInterfaceRejectedAction {
+export interface IFilterInterfacesRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_INTERFACE_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_INTERFACES_REJECTED;
 }
 
-export interface ResetInterfacesAction {
+/** Reset interfaces action interfaces */
+
+export interface IResetInterfacesAction {
   readonly type: ActionTypeKeys.RESET_INTERFACES;
 }
 
-export type AdminInterfacesActionTypes =
-  | AddAdminInterfaceFulfilledAction
-  | DeleteAdminInterfaceFulfilledAction
-  | FilterAdminInterfaceFulfilledAction
-  | UpdateAdminInterfaceFulfilledAction
-  | ResetInterfacesAction;
+export type TInterfacesActionTypes =
+  | IAddInterfaceFulfilledAction
+  | IDeleteInterfaceFulfilledAction
+  | IFilterInterfacesFulfilledAction
+  | IUpdateInterfaceFulfilledAction
+  | IResetInterfacesAction;

@@ -2,125 +2,141 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
-import { closeModal, selectIsAccessibleFiltering } from 'store';
+import { closeModal, isAccessibleFilterSelector } from 'store';
 import {
   ActionTypeKeys,
-  AddAdminInterfaceAction,
-  DeleteAdminInterfaceAction,
-  FilterAdminInterfaceAction,
-  UpdateAdminInterfaceAction,
+  IAddInterfaceAction,
+  IDeleteInterfaceAction,
+  IFilterInterfacesAction,
+  IUpdateInterfaceAction,
 } from './actionTypes';
 import * as api from './api';
 import {
-  AdminInterfaceFilterPrepared,
-  AdminInterfaceItem,
-  AdminInterfaceItemDetailsPrepared
+  IInterfaceData,
+  IInterfaceDetails,
+  IInterfacesFilterToSend,
 } from './types';
-import { preparedDataToSend, preparedFilterToSend } from './utils';
+import { prepareDataToSend, prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type AddAdminInterface = (data: Partial<AdminInterfaceItem>) => AddAdminInterfaceAction;
-export type HandleAddAdminInterface = (data: Partial<AdminInterfaceItemDetailsPrepared>) =>
-  Thunk<void>;
+/**
+ * Filter interfaces action
+ */
 
-export type DeleteAdminInterface = (id: number) => DeleteAdminInterfaceAction;
-export type HandleDeleteAdminInterface = (id: number) => Thunk<void>;
+export type TFilterInterfaces = (data: Partial<IInterfacesFilterToSend>) => IFilterInterfacesAction;
+export type THandleFilterInterfaces = () => Thunk<void>;
 
-export type UpdateAdminInterface = (data: Partial<AdminInterfaceItem>) =>
-  UpdateAdminInterfaceAction;
-export type HandleUpdateAdminInterface = (data: Partial<AdminInterfaceItemDetailsPrepared>) =>
-  Thunk<void>;
-
-export type FilterAdminInterface = (params: Partial<AdminInterfaceFilterPrepared>) =>
-  FilterAdminInterfaceAction;
-export type HandleFilterAdminInterface = () => Thunk<void>;
-
-export type ResetInterfaces = () => void;
-
-export const addAdminInterface: AddAdminInterface = data => ({
-  type: ActionTypeKeys.ADD_ADMIN_INTERFACE,
-  payload: api.addAdminInterface(data),
+export const filterInterfaces: TFilterInterfaces = filter => ({
+  type: ActionTypeKeys.FILTER_INTERFACES,
+  payload: api.filterInterface(filter),
 });
 
-export const deleteAdminInterface: DeleteAdminInterface = id => ({
-  type: ActionTypeKeys.DELETE_ADMIN_INTERFACE,
-  payload: api.deleteAdminInterface(id),
-  meta: id,
-});
-
-export const filterAdminInterface: FilterAdminInterface = filter => ({
-  type: ActionTypeKeys.FILTER_ADMIN_INTERFACE,
-  payload: api.filterAdminInterface(filter),
-});
-
-export const updateAdminInterface: UpdateAdminInterface = data => ({
-  type: ActionTypeKeys.UPDATE_ADMIN_INTERFACE,
-  payload: api.updateAdminInterface(data),
-});
-
-export const resetInterfaces: ResetInterfaces = () => ({
-  type: ActionTypeKeys.RESET_INTERFACES,
-});
-
-export const handleFilterAdminInterface: HandleFilterAdminInterface = () =>
+export const handleFilterInterfaces: THandleFilterInterfaces = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterAdminInterface(preparedValues));
+        if (preparedData) {
+          await dispatch(filterInterfaces(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleAddAdminInterface: HandleAddAdminInterface = values =>
+/**
+ * Add interface action
+ */
+
+export type TAddInterface = (data: Partial<IInterfaceData>) => IAddInterfaceAction;
+export type THandleAddInterface = (data: Partial<IInterfaceDetails>) => Thunk<void>;
+
+export const addInterface: TAddInterface = data => ({
+  type: ActionTypeKeys.ADD_INTERFACE,
+  payload: api.addInterface(data),
+});
+
+export const handleAddInterface: THandleAddInterface = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedDataToSend(values);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addAdminInterface(preparedValues));
+        await dispatch(addInterface(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_INTERFACE));
 
         if (isAccessibleFiltering) {
-          await dispatch(handleFilterAdminInterface());
+          await dispatch(handleFilterInterfaces());
         }
       },
       dispatch
     );
   };
 
-export const handleDeleteAdminInterface: HandleDeleteAdminInterface = id =>
+/**
+ * Delete interface action
+ */
+
+export type TDeleteInterface = (id: number) => IDeleteInterfaceAction;
+export type THandleDeleteInterface = (id: number) => Thunk<void>;
+
+export const deleteInterface: TDeleteInterface = id => ({
+  type: ActionTypeKeys.DELETE_INTERFACE,
+  payload: api.deleteInterface(id),
+  meta: id,
+});
+
+export const handleDeleteInterface: THandleDeleteInterface = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteAdminInterface(id));
+        await dispatch(deleteInterface(id));
         dispatch(closeModal(modalNamesConst.EDIT_INTERFACE));
-        await dispatch(handleFilterAdminInterface());
+        await dispatch(handleFilterInterfaces());
       },
       dispatch
     );
   };
 
-export const handleUpdateInterface: HandleUpdateAdminInterface = values =>
+/**
+ * Update interface action
+ */
+
+export type TUpdateInterface = (data: Partial<IInterfaceData>) => IUpdateInterfaceAction;
+export type THandleUpdateInterface = (data: Partial<IInterfaceDetails>) => Thunk<void>;
+
+export const updateInterface: TUpdateInterface = data => ({
+  type: ActionTypeKeys.UPDATE_INTERFACE,
+  payload: api.updateInterface(data),
+});
+
+export const handleUpdateInterface: THandleUpdateInterface = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedDataToSend(values);
+        const preparedData = prepareDataToSend(data);
 
-        await dispatch(updateAdminInterface(preparedValues));
-        await dispatch(handleFilterAdminInterface());
+        await dispatch(updateInterface(preparedData));
+        await dispatch(handleFilterInterfaces());
       },
       dispatch
     );
   };
+
+/**
+ * Reset interfaces action
+ */
+
+export type TResetInterfaces = () => void;
+
+export const resetInterfaces: TResetInterfaces = () => ({
+  type: ActionTypeKeys.RESET_INTERFACES,
+});

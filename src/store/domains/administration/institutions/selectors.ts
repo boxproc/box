@@ -1,39 +1,61 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
-import { selectActiveItemId } from 'store/domains/utils';
+import { createLoadingSelector } from 'store/domains/loader';
+import { activeItemIdSelector } from 'store/domains/utils';
 
+import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender, preparedDataDetailsToRender } from './utils';
 
-export const selectDefaultAdminInstitutions = (state: StoreState) =>
+export const defaultInstitutionsSelector = (state: StoreState) =>
   state.administration.institutions.institutions;
 
-export const selectAdminInstitutions = createSelector(
-  selectDefaultAdminInstitutions,
-  items => items && items.map(item => prepareDataToRender(item))
+export const institutionsSelector = createSelector(
+  defaultInstitutionsSelector,
+  data => data && data.map(el => prepareDataToRender(el))
 );
 
-export const selectAdminInstitutionsOptions = createSelector(
-  selectDefaultAdminInstitutions,
-  items => items && items.asMutable().map(item => {
+export const institutionsOptionsSelector = createSelector(
+  defaultInstitutionsSelector,
+  data => data && data.asMutable().map(el => {
     return {
-      value: item.id,
-      label: item.institution_name,
+      value: el.id,
+      label: el.institution_name,
     };
   })
 );
 
-export const selectAdminCurrentInstitution = createSelector(
-  selectDefaultAdminInstitutions,
-  selectActiveItemId,
-  (institutions, currentId) => {
-    const current = institutions.find(el => el.id === currentId);
+/** Current institution selectors */
 
-    return preparedDataDetailsToRender(current);
+export const currentInstitutionSelector = createSelector(
+  defaultInstitutionsSelector,
+  activeItemIdSelector,
+  (institutions, currentId) => {
+    const currentInst = institutions.find(el => el.id === currentId);
+
+    return preparedDataDetailsToRender(currentInst);
   }
 );
 
-export const selectAdminCurrentInstitutionName = createSelector(
-  selectAdminCurrentInstitution,
-  institution => institution && institution.institutionName
+export const currentInstitutionNameSelector = createSelector(
+  currentInstitutionSelector,
+  data => data && data.institutionName
 );
+
+/** Institution loading selectors */
+
+export const isUpdatingInstitutionSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_INSTITUTION,
+]);
+
+export const isAddingInstitutionSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_INSTITUTION,
+]);
+
+export const isDeletingInstitutionSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_INSTITUTION,
+]);
+
+export const isGettingInstitutionsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_INSTITUTIONS,
+]);

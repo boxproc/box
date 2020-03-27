@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import MessageModal from './MessageModal';
 
-import { selectPayloadMessageModal, StoreState } from 'store';
+import { payloadMessageModalSelector, StoreState } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  payloadMessageModal: selectPayloadMessageModal(state),
+  payloadMessageModal: payloadMessageModalSelector(state),
 });
 
 export default connect(

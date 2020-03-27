@@ -11,9 +11,9 @@ import {
   handleRetrieveTransaction,
   handleSettleTransaction,
   LedgerSettleTransactionActionTypes,
+  payloadSettleTrModalSelector,
   resetRetrievedTransaction,
   selectIsRetrievedTransaction,
-  selectPayloadSettleTransactionModal,
   selectRetrievedTransaction,
   StoreState,
 } from 'store';
@@ -34,7 +34,7 @@ const mapStateToProps = (state: StoreState) => ({
   isRetrievedTransaction: selectIsRetrievedTransaction(state),
   isDirtySettleTransactionForm: dirtySettleTransactionForm(state),
   retrievedTransaction: selectRetrievedTransaction(state),
-  payloadSettleTransactionModal: selectPayloadSettleTransactionModal(state),
+  payloadSettleTransactionModal: payloadSettleTrModalSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -4,11 +4,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ProductServicesForm from './ProductServicesForm';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleGetProductServices,
   handleUpdateCardService,
   ProductServicesActionTypes,
-  selectActiveItemId,
   selectCurrentProductInstitutionId,
   selectProductCardEndpointsService,
   selectProductCardInterfacesService,
@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
-  currentUserGroupId: selectActiveItemId(state),
+  currentUserGroupId: activeItemIdSelector(state),
   productInterfacesServiceOptions: selectProductCardInterfacesService(state),
   productEndpointsServiceOptions: selectProductCardEndpointsService(state),
   currentInstitutionId: selectCurrentProductInstitutionId(state),

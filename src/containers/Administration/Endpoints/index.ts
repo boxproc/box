@@ -4,17 +4,18 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Endpoints from './Endpoints';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   currentEndpointNameSelector,
   endpointsSelector,
   handleDeleteEndpoint,
   handleFilterEndpoints,
   handleGetLogData,
-  isFilteringOrDeletingEndpointSelector,
+  isDeletingEndpointSelector,
+  isFilteringEndpointsSelector,
+  isReadOnlySelector,
   resetEndpoints,
-  selectActiveItemId,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   StoreState,
   SystemMonitorActionTypes,
 } from 'store';
@@ -24,12 +25,14 @@ const loadingSelector = createLoadingSelector([
 ]);
 
 const mapStateToProps = (state: StoreState) => ({
-  currentEndpointId: selectActiveItemId(state),
+  currentEndpointId: activeItemIdSelector(state),
   currentEndpointName: currentEndpointNameSelector(state),
   endpointItems: endpointsSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  isLoading: loadingSelector(state) || isFilteringOrDeletingEndpointSelector(state),
-  isReadOnly: selectIsReadOnly(state),
+  isLoading: loadingSelector(state)
+    || isFilteringEndpointsSelector(state)
+    || isDeletingEndpointSelector(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

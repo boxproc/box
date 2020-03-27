@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
-
-import { AdminSysPropsItem } from 'store';
-
+import { ISysProp } from 'store';
 import { ITableCellType } from 'types';
 
-type TCell<T extends keyof AdminSysPropsItem> = ITableCellType<AdminSysPropsItem[T]>;
+type TCell<T extends keyof ISysProp> = ITableCellType<ISysProp[T]>;
 
 export const tableColumns = [
   {

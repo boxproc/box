@@ -8,32 +8,32 @@ import { InterfacesFilter } from './forms';
 import { iconNamesConst, modalNamesConst, systemMonitorTablesConst } from 'consts';
 
 import {
-  AdminInterfaceItemPrepared,
-  HandleDeleteAdminInterface,
-  HandleFilterAdminInterface,
   HandleGetLogData,
-  ResetInterfaces,
+  IInterface,
+  THandleDeleteInterface,
+  THandleFilterInterfaces,
+  TResetInterfaces,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
-export interface AccountsProps {
-  interfaceItems: ImmutableArray<AdminInterfaceItemPrepared>;
+interface IInterfaces {
+  interfaceItems: ImmutableArray<IInterface>;
   institutionsOptions: Array<ISelectValue>;
   currentInterfaceName: string;
   currentInterfaceId: number;
   isLoading: boolean;
   isReadOnly: boolean;
-  deleteInterface: HandleDeleteAdminInterface;
-  filterInterface: HandleFilterAdminInterface;
+  deleteInterface: THandleDeleteInterface;
+  filterInterfaces: THandleFilterInterfaces;
   getLogData: HandleGetLogData;
-  resetInterfaces: ResetInterfaces;
+  resetInterfaces: TResetInterfaces;
 }
 
-const Interfaces: React.FC<AccountsProps> = ({
+const Interfaces: React.FC<IInterfaces> = ({
   interfaceItems,
   deleteInterface,
-  filterInterface,
+  filterInterfaces,
   institutionsOptions,
   resetInterfaces,
   currentInterfaceName,
@@ -89,7 +89,7 @@ const Interfaces: React.FC<AccountsProps> = ({
       newModalName={modalNamesConst.ADD_INTERFACE}
       viewingModalName={modalNamesConst.EDIT_INTERFACE}
       contextMenuItems={contextMenuItems}
-      filterAction={filterInterface}
+      filterAction={filterInterfaces}
       isDownloadButton={true}
       isLoading={isLoading}
       initialFilterValues={initialFilterValues}

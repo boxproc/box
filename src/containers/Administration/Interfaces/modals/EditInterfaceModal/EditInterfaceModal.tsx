@@ -4,15 +4,12 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
-
-import { AdminInterfaceItemDetailsPrepared } from 'store';
-
+import { IInterfaceDetails } from 'store';
 import { ISelectValue } from 'types';
 
-interface EditAccountModalProps extends IWithModal {
-  currentInterface: AdminInterfaceItemDetailsPrepared;
+interface IEditInterfaceModal extends IWithModal {
+  currentInterface: IInterfaceDetails;
   institutionsOptions: Array<ISelectValue>;
   currentInterfaceName: string;
   isFormDirty: boolean;
@@ -20,7 +17,7 @@ interface EditAccountModalProps extends IWithModal {
 
 const modalName = modalNamesConst.EDIT_INTERFACE;
 
-const EditAccountModal: React.FC<EditAccountModalProps> = ({
+const EditAccountModal: React.FC<IEditInterfaceModal> = ({
   closeModal,
   currentInterface,
   institutionsOptions,

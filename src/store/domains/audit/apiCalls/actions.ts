@@ -2,7 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { selectActiveItemId } from 'store';
+import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
   FilterAuditApiCallsAction,
@@ -58,7 +58,7 @@ export const handleGetDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls = () =
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const apiCallId = selectActiveItemId(state);
+        const apiCallId = activeItemIdSelector(state);
 
         await dispatch(getDetailsAuditApiCalls(apiCallId));
       },

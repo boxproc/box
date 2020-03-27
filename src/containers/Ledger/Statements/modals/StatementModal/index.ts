@@ -4,12 +4,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 import StatementModal from './StatementModal';
 
 import {
+  activeItemIdSelector,
   currentStatementSelector,
   handleDownloadStatement,
   handleGetStatementAprs,
   handleGetStatementTransactions,
   isTransArsLoadingSelector,
-  selectActiveItemId,
   statementAprsSelector,
   statementPendingTransactionsSelector,
   statementTransactionsSelector,
@@ -18,7 +18,7 @@ import {
 
 const mapStateToProps = (state: StoreState) => ({
   currentStatement: currentStatementSelector(state),
-  currentStatementId: selectActiveItemId(state),
+  currentStatementId: activeItemIdSelector(state),
   isLoading: isTransArsLoadingSelector(state),
   statementAprs: statementAprsSelector(state),
   statementPendingTransactions: statementPendingTransactionsSelector(state),

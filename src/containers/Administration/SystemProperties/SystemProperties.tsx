@@ -8,25 +8,25 @@ import { SystemPropertyFilter } from './forms';
 import { iconNamesConst, modalNamesConst } from 'consts';
 
 import {
-  AdminSysPropsItem,
-  HandleDeleteAdminSysProp,
-  HandleFilterAdminSysProps,
-  HandleUpdateAdminSysProps,
-  ResetSystemProperties,
+  ISysProp,
+  THandleDeleteSysProp,
+  THandleFilterSysProps,
+  THandleUpdateSysProps,
+  TResetSystemProperties,
 } from 'store';
 
-interface SystemPropertiesProps {
-  deleteSysProp: HandleDeleteAdminSysProp;
-  filterSysProps: HandleFilterAdminSysProps;
-  updateSysProps: HandleUpdateAdminSysProps;
-  sysPropsItems: ImmutableArray<AdminSysPropsItem>;
+interface ISystemProperties {
+  deleteSysProp: THandleDeleteSysProp;
+  filterSysProps: THandleFilterSysProps;
+  updateSysProps: THandleUpdateSysProps;
+  sysPropsItems: ImmutableArray<ISysProp>;
   currentSysPropId: number | string;
-  resetSystemProperties: ResetSystemProperties;
+  resetSystemProperties: TResetSystemProperties;
   isLoading: boolean;
   isReadOnly: boolean;
 }
 
-export const SystemProperties: React.FC<SystemPropertiesProps> = ({
+export const SystemProperties: React.FC<ISystemProperties> = ({
   sysPropsItems,
   deleteSysProp,
   filterSysProps,

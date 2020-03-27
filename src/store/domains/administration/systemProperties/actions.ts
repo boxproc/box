@@ -8,122 +8,141 @@ import * as api from './api';
 
 import {
   ActionTypeKeys,
-  AddAdminSysPropAction,
-  DeleteAdminSysPropAction,
-  FilterAdminSysPropsAction,
-  UpdateAdminSysPropsAction,
+  IAddSysPropAction,
+  IDeleteSysPropAction,
+  IFilterSysPropsAction,
+  IUpdateSysPropAction,
 } from './actionTypes';
-import { selectCurrentAdminSysPropsItem } from './selectors';
+
+import { currentSysPropSelector } from './selectors';
+
 import {
-  AdminSysPropFilterPrepared,
-  EditableAdminSysProp,
-  EditableAdminSysPropPrepared,
+  IEditableSysProp,
+  IEditableSysPropToSend,
+  ISysPropFilterToSend,
 } from './types';
+
 import {
-  prepareAdminSysPropFilter,
-  prepareEditableAdminSysPropItemValues,
+  prepareEditableSysProp,
+  prepareSysPropsFilter,
 } from './utils';
 
 import { Thunk } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
-export type DeleteAdminSysProp = (id: number | string) => DeleteAdminSysPropAction;
-export type HandleDeleteAdminSysProp = (id: number | string) => Thunk<void>;
+/**
+ * Filter system properties action
+ */
 
-export type AddAdminSysProp = (propValues: EditableAdminSysPropPrepared) =>
-  AddAdminSysPropAction;
-export type HandleAddAdminSysProp = (propValues: EditableAdminSysProp) => Thunk<void>;
+export type TFilterSysProps = (data: ISysPropFilterToSend) => IFilterSysPropsAction;
+export type THandleFilterSysProps = () => Thunk<void>;
 
-export type UpdateAdminSysProps = (propValues: EditableAdminSysPropPrepared) =>
-  UpdateAdminSysPropsAction;
-export type HandleUpdateAdminSysProps = (propValues: EditableAdminSysProp) => Thunk<void>;
+export const filterSysProps: TFilterSysProps = data => ({
+  type: ActionTypeKeys.FILTER_SYS_PROPS,
+  payload: api.filterSysProps(data),
+});
 
-export type FilterAdminSysProps = (filter: AdminSysPropFilterPrepared) =>
-  FilterAdminSysPropsAction;
-export type HandleFilterAdminSysProps = () => Thunk<void>;
+export const handleFilterSysProps: THandleFilterSysProps = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const formValues = getFormValues(formNamesConst.FILTER);
+        const state = getState();
+        const preparedData = prepareSysPropsFilter(formValues(state));
 
-export type ResetSystemProperties = () => void;
+        if (preparedData) {
+          await dispatch(filterSysProps(preparedData));
+        }
+      },
+      dispatch
+    );
+  };
 
-export const deleteAdminSysProp: DeleteAdminSysProp = id => ({
-  type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP,
-  payload: api.deleteAdminSysProp(id),
+/**
+ * Delete system property action
+ */
+
+export type TDeleteSysProp = (id: number | string) => IDeleteSysPropAction;
+export type THandleDeleteSysProp = (id: number | string) => Thunk<void>;
+
+export const deleteSysProp: TDeleteSysProp = id => ({
+  type: ActionTypeKeys.DELETE_SYS_PROP,
+  payload: api.deleteSysProp(id),
   meta: id,
 });
 
-export const addAdminSysProp: AddAdminSysProp = propValues => ({
-  type: ActionTypeKeys.ADD_ADMIN_SYS_PROP,
-  payload: api.addAdminSysProp(propValues),
-});
-
-export const updateAdminSysProps: UpdateAdminSysProps = propValues => ({
-  type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS,
-  payload: api.updateAdminSysProps(propValues),
-});
-
-export const filterAdminSysProps: FilterAdminSysProps = filter => ({
-  type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS,
-  payload: api.filterAdminSysProps(filter),
-});
-
-export const resetSystemProperties: ResetSystemProperties = () => ({
-  type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES,
-});
-
-export const handleDeleteAdminSysProp: HandleDeleteAdminSysProp = id =>
+export const handleDeleteSysProp: THandleDeleteSysProp = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteAdminSysProp(id));
+        await dispatch(deleteSysProp(id));
         dispatch(closeModal(modalNamesConst.EDIT_SYSTEM_PROPERTY));
       },
       dispatch
     );
   };
 
-export const handleAddAdminSysProp: HandleAddAdminSysProp = propValues =>
+/**
+ * Add system property action
+ */
+
+export type TAddSysProp = (data: IEditableSysPropToSend) => IAddSysPropAction;
+export type THandleAddSysProp = (data: IEditableSysProp) => Thunk<void>;
+
+export const addSysProp: TAddSysProp = data => ({
+  type: ActionTypeKeys.ADD_SYS_PROP,
+  payload: api.addSysProp(data),
+});
+
+export const handleAddSysProp: THandleAddSysProp = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareEditableAdminSysPropItemValues(propValues);
+        const preparedData = prepareEditableSysProp(data);
 
-        await dispatch(addAdminSysProp(preparedValues));
+        await dispatch(addSysProp(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_SYSTEM_PROPERTY));
-        await dispatch(handleFilterAdminSysProps());
+        await dispatch(handleFilterSysProps());
       },
       dispatch
     );
   };
 
-export const handleUpdateAdminSysProps: HandleUpdateAdminSysProps = propValues =>
+/**
+ * Update system property action
+ */
+
+export type TUpdateSysProps = (data: IEditableSysPropToSend) => IUpdateSysPropAction;
+export type THandleUpdateSysProps = (data: IEditableSysProp) => Thunk<void>;
+
+export const updateSysProps: TUpdateSysProps = data => ({
+  type: ActionTypeKeys.UPDATE_SYS_PROP,
+  payload: api.updateSysProps(data),
+});
+
+export const handleUpdateSysProps: THandleUpdateSysProps = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const preparedValues = prepareEditableAdminSysPropItemValues({
-          ...selectCurrentAdminSysPropsItem(state),
-          ...propValues,
+        const preparedData = prepareEditableSysProp({
+          ...currentSysPropSelector(state),
+          ...data,
         });
 
-        await dispatch(updateAdminSysProps(preparedValues));
-        await dispatch(handleFilterAdminSysProps());
+        await dispatch(updateSysProps(preparedData));
+        await dispatch(handleFilterSysProps());
       },
       dispatch
     );
   };
 
-export const handleFilterAdminSysProps: HandleFilterAdminSysProps = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const formValues = getFormValues(formNamesConst.FILTER);
-        const state = getState();
-        const preparedValues = prepareAdminSysPropFilter(formValues(state));
+/**
+ * Reset system properties action
+ */
 
-        if (preparedValues) {
-          await dispatch(filterAdminSysProps(preparedValues));
-        }
-      },
-      dispatch
-    );
-  };
+export type TResetSystemProperties = () => void;
+
+export const resetSystemProperties: TResetSystemProperties = () => ({
+  type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES,
+});

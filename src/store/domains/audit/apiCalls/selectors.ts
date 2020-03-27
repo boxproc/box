@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { prepareValuesToRender } from './utils';
 
@@ -23,7 +23,7 @@ export const selectDefaultAuditApiCallDetails = (state: StoreState) =>
 
 export const selectAuditApiCallDetails = createSelector(
   selectDefaultAuditApiCalls,
-  selectActiveItemId,
+  activeItemIdSelector,
   selectInstitutionsOptions,
   selectDefaultAuditApiCallDetails,
   (items, currentId, institutionsOptions, apiCallDetails) => {

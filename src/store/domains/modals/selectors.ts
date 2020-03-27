@@ -1,24 +1,24 @@
 import { StoreState } from 'store';
 
-export const selectModalsStateList = (state: StoreState) => state.modals;
+export const modalsStateListSelector = (state: StoreState) => state.modals;
 
-export const selectIsMessageModal = (state: StoreState) => state.modals.isMessageModal;
+export const isMessageModalSelector = (state: StoreState) => state.modals.isMessageModal;
 
-export const selectPayloadMessageModal = (state: StoreState) => state.modals.payloadMessageModal;
+export const payloadMessageModalSelector = (state: StoreState) => state.modals.payloadMessageModal;
 
-export const selectPayloadConfirmationModal = (state: StoreState) =>
+export const payloadConfirmationModalSelector = (state: StoreState) =>
   state.modals.payloadConfirmationModal;
 
-export const selectPayloadLogModal = (state: StoreState) => state.modals.payloadLogModal;
+export const payloadLogModalSelector = (state: StoreState) => state.modals.payloadLogModal;
 
-export const selectPayloadManualTransactionModal = (state: StoreState) =>
+export const payloadManualTrModalSelector = (state: StoreState) =>
   state.modals.payloadManualTransactionModal;
 
-export const selectManualTransactionModalIsLimit = (state: StoreState) =>
+export const manualTrModalIsLimitAdjSelector = (state: StoreState) =>
   state.modals.payloadManualTransactionModal.isLimitAdjustmentMode;
 
-export const selectPayloadTransactionModal = (state: StoreState) =>
+export const payloadTransactionModalSelector = (state: StoreState) =>
   state.modals.payloadTransactionModal;
 
-export const selectPayloadSettleTransactionModal = (state: StoreState) =>
+export const payloadSettleTrModalSelector = (state: StoreState) =>
   state.modals.payloadSettleTransactionModal;

@@ -3,8 +3,8 @@ import { createSelector } from 'reselect';
 import { permissionTypesOptions } from 'consts';
 
 import { StoreState } from 'store';
-import { selectAdminInstitutionsOptions } from 'store/domains/administration/institutions';
-import { selectActiveItemId } from 'store/domains/utils';
+import { institutionsOptionsSelector } from 'store/domains/administration/institutions';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
   state.administration.userGroups.usersGroups;
@@ -86,8 +86,8 @@ export const selectAdminGroupPermissionsUiItems = createSelector(
 
 export const selectUsersGroupValues = createSelector(
   selectDefaultAdminUsersGroupItems,
-  selectAdminInstitutionsOptions,
-  selectActiveItemId,
+  institutionsOptionsSelector,
+  activeItemIdSelector,
   (items, institutions, currentId) => {
     if (!items) {
       return null;

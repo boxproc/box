@@ -11,11 +11,11 @@ import { iconNamesConst, modalNamesConst } from 'consts';
 import { modalsList } from 'containers/Modals/modalsList';
 
 import {
+  activeTableRowIndexSelector,
   handleSetActiveItemId,
   handleSetActiveTableRowIndex,
+  modalsStateListSelector,
   openModal,
-  selectActiveTableRowIndex,
-  selectModalsStateList,
   StoreState,
   THandleSetActiveItemId,
   THandleSetActiveTableRowIndex,
@@ -179,8 +179,8 @@ export const withEditTable = <OriginProps extends {}>(
   WithEditTable.displayName = `WithEditTable(${componentUtil.getDisplayName(Component)})`;
 
   const mapStateToProps = (state: StoreState) => ({
-    activeTableRowIndex: selectActiveTableRowIndex(state),
-    modalsStateList: selectModalsStateList(state),
+    activeTableRowIndex: activeTableRowIndexSelector(state),
+    modalsStateList: modalsStateListSelector(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

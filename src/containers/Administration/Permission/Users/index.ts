@@ -4,13 +4,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Users from './Users';
 
 import {
+  activeItemIdSelector,
   AdminUserActionTypes,
   AuditUserActivityActionType,
   createLoadingSelector,
   handleFilterByIdAuditUserActivity,
   handleFilterUsers,
   resetUsers,
-  selectActiveItemId,
   selectInstitutionsOptions,
   selectUserEditorItems,
   StoreState,
@@ -26,7 +26,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   userItems: selectUserEditorItems(state),
-  currentUserId: selectActiveItemId(state),
+  currentUserId: activeItemIdSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
 });
 

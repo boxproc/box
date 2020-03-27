@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 
 import EditProductForms from './EditProductForms';
 
-import { selectActiveItemId, selectCurrentProductType, StoreState } from 'store';
+import { activeItemIdSelector, selectCurrentProductType, StoreState } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   currentProductType: selectCurrentProductType(state),
-  currentProductId: selectActiveItemId(state),
+  currentProductId: activeItemIdSelector(state),
 });
 
 export default connect(

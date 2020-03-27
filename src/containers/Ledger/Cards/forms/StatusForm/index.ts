@@ -7,12 +7,12 @@ import { formNamesConst } from 'consts';
 import StatusForm from './StatusForm';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   DictionaryActionTypes,
   handleChangeLedgerCardStatus,
   handleGetDictionaryCardStatuses,
   LedgerCardsActionTypes,
-  selectActiveItemId,
   selectCardStatusesOptions,
   selectCurrentCardStatusOption,
   StoreState,
@@ -33,7 +33,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   cardStatusesOptions: selectCardStatusesOptions(state),
   initialValues: selectCurrentCardStatusOption(state),
-  currentCardId: selectActiveItemId(state),
+  currentCardId: activeItemIdSelector(state),
   statusValue: formSelector(state, 'status'),
 });
 

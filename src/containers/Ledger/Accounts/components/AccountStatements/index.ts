@@ -5,15 +5,15 @@ import AccountStatements from './AccountStatements';
 
 import {
   accountStatementsSelector,
+  activeItemIdSelector,
   handleGetAccountStatements,
   handleGetStatementAprs,
   IsAccStatementsAprsLoadingSelector,
-  selectActiveItemId,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  accountCurrentId: selectActiveItemId(state),
+  accountCurrentId: activeItemIdSelector(state),
   accountStatements: accountStatementsSelector(state),
   isLoading: IsAccStatementsAprsLoadingSelector(state),
 });

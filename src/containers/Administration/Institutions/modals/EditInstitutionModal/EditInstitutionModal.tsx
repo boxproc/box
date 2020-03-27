@@ -4,20 +4,18 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
+import { IInstitutionDetails } from 'store';
 
-import { AdminInstitutionsItemDetailsPrepared } from 'store';
-
-interface EditInstitutionModalProps extends IWithModal {
-  currentInstitution: AdminInstitutionsItemDetailsPrepared;
+interface IEditInstitutionModal extends IWithModal {
+  currentInstitution: IInstitutionDetails;
   currentInstitutionName: string;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_INSTITUTION;
 
-const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
+const EditInstitutionModal: React.FC<IEditInstitutionModal> = ({
   closeModal,
   currentInstitution,
   currentInstitutionName,
@@ -27,7 +25,6 @@ const EditInstitutionModal: React.FC<EditInstitutionModalProps> = ({
   const modalTitle = React.useMemo(
     () => {
       const institutionName = currentInstitutionName ? `: "${currentInstitutionName}"` : '';
-
       return `Edit Institution${institutionName}`;
     },
     [currentInstitutionName]

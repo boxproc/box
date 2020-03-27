@@ -1,7 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-export interface AdminInterfaceItem {
+export interface IInterfaceData {
   id: number;
   institution_id: number | string;
   name: string;
@@ -16,7 +16,11 @@ export interface AdminInterfaceItem {
   last_fault_datetime: string;
 }
 
-interface InterfaceItemPlain {
+export interface IInterfacesData {
+  interfaces: Array<IInterfaceData>;
+}
+
+interface IInterfacePlain {
   id: number;
   name: string;
   url: string;
@@ -27,31 +31,29 @@ interface InterfaceItemPlain {
   lastFaultDatetime: string;
 }
 
-export interface AdminInterfaceItemPrepared extends InterfaceItemPlain {
+export interface IInterface extends IInterfacePlain {
   institutionId: number | string;
   interfaceTypeId: string | number;
   interfaceTypeName: string;
   status: string | number;
 }
 
-export interface AdminInterfaceItemDetailsPrepared extends InterfaceItemPlain {
+export interface IInterfaceDetails extends IInterfacePlain {
   institutionId: ISelectValue;
   interfaceTypeId: ISelectValue;
   status: ISelectValue;
 }
 
-export interface AdminInterfaceItems {
-  interfaces: Array<AdminInterfaceItem>;
-}
+/** Interfaces filter interfaces */
 
-export interface AdminInterfaceFilter {
+export interface IInterfacesFilter {
   institutionId: ISelectValue;
 }
 
-export interface AdminInterfaceFilterPrepared {
+export interface IInterfacesFilterToSend {
   institution_id: string | number;
 }
 
-export interface AdminInterfaceState {
-  interfaces: ImmutableArray<AdminInterfaceItem>;
+export interface IInterfacesState {
+  interfaces: ImmutableArray<IInterfaceData>;
 }

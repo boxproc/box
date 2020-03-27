@@ -16,27 +16,26 @@ import {
 import { formNamesConst, iconNamesConst } from 'consts';
 
 import {
-  HandleAddAdminSysProp,
-  HandleDeleteAdminSysProp,
-  HandleUpdateAdminSysProps,
+  THandleAddSysProp,
+  THandleDeleteSysProp,
+  THandleUpdateSysProps,
 } from 'store';
 
 import { formErrorUtil } from 'utils';
 
-interface SystemPropertyFormProps extends ExternalSpinnerProps {
-  addSystemProperty: HandleAddAdminSysProp;
-  updateSystemProperty: HandleUpdateAdminSysProps;
-  deleteSystemProperty: HandleDeleteAdminSysProp;
+interface ISystemPropertyForm extends ExternalSpinnerProps {
+  addSystemProperty: THandleAddSysProp;
+  updateSystemProperty: THandleUpdateSysProps;
+  deleteSystemProperty: THandleDeleteSysProp;
   currentSystemPropertyId: number | string;
   isEditMode?: boolean;
   isReadOnly: boolean;
   onCancel: () => void;
 }
 
-type SystemPropertyFormAllProps = SystemPropertyFormProps &
-  InjectedFormProps<{}, SystemPropertyFormProps>;
+type TSystemPropertyForm = ISystemPropertyForm & InjectedFormProps<{}, ISystemPropertyForm>;
 
-const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
+const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
   handleSubmit,
   isEditMode,
   isReadOnly,
@@ -163,7 +162,7 @@ const SystemPropertyForm: React.FC<SystemPropertyFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, SystemPropertyFormProps>({
+export default reduxForm<{}, ISystemPropertyForm>({
   form: formNamesConst.ADD_SYSTEM_PROPERTY,
   destroyOnUnmount: true,
   enableReinitialize: true,

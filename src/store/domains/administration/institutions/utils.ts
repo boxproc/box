@@ -1,42 +1,59 @@
 import { statusOptions, yesNoConst } from 'consts';
 
 import {
-  AdminInstitutionsItem,
-  AdminInstitutionsItemDetailsPrepared,
+  IInstitutionData,
+  IInstitutionDetails,
 } from './types';
 
-export const preparedDataToSend = (data: Partial<AdminInstitutionsItemDetailsPrepared>) => {
+export const preparedDataToSend = (data: Partial<IInstitutionDetails>) => {
   if (!data) {
     return null;
   }
 
+  const {
+    id,
+    institutionName,
+    status,
+    sftpLocation,
+    sftpPublicKey,
+  } = data;
+
   return {
-    id: data.id,
-    institution_name: data.institutionName,
-    status: data.status && data.status.value,
-    sftp_location: data.sftpLocation,
-    sftp_public_key: data.sftpPublicKey,
+    id,
+    institution_name: institutionName,
+    status: status && status.value,
+    sftp_location: sftpLocation,
+    sftp_public_key: sftpPublicKey,
   };
 };
 
-export const prepareDataToRender = (data: Partial<AdminInstitutionsItem>) => {
+export const prepareDataToRender = (data: Partial<IInstitutionData>) => {
   if (!data) {
     return null;
   }
 
-  const status = statusOptions.find(el => el.value === data.status);
+  const {
+    id,
+    institution_name,
+    status,
+    sftp_location,
+    sftp_public_key,
+    master_institution_flag,
+  } = data;
+
+  const instStatus = statusOptions.find(el => el.value === status);
 
   return {
-    id: data.id,
-    institutionName: data.institution_name,
-    status: status && status.label,
-    sftpLocation: data.sftp_location,
-    sftpPublicKey: data.sftp_public_key,
-    masterInstitutionFlag: data.master_institution_flag === yesNoConst.YES,
+    id,
+    institutionName: institution_name,
+    status: instStatus && instStatus.label,
+    sftpLocation: sftp_location,
+    sftpPublicKey: sftp_public_key,
+    masterInstitutionFlag: master_institution_flag === yesNoConst.YES,
   };
 };
 
-export const preparedDataDetailsToRender = (data: Partial<AdminInstitutionsItem>) => {
+export const preparedDataDetailsToRender = (data: Partial<IInstitutionData>) => {
   if (!data) {
     return null;
   }

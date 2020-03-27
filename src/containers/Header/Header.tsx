@@ -13,8 +13,8 @@ import { basePath } from 'consts';
 import { HelpDropdown, UserDropdown } from './components';
 
 import {
-  HandleGetInstitutions,
   HandleGetUiItems,
+  HandleGetUserInstitutions,
   HandleUserLogout,
   InstitutionItem,
   UiItemPrepared,
@@ -57,7 +57,7 @@ const Wrapper = styled.header`
 
 interface HeaderProps extends RouteComponentProps {
   firstName: string;
-  getInstitutions: HandleGetInstitutions;
+  getInstitutions: HandleGetUserInstitutions;
   getUiItems: HandleGetUiItems;
   helpLink: string;
   institutions: ImmutableArray<InstitutionItem>;

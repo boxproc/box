@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import TransactionModal from './TransactionModal';
 
 import {
-  selectActiveItemId,
+  activeItemIdSelector,
+  payloadTransactionModalSelector,
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactionAmount,
-  selectPayloadTransactionModal,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  currentTransactionId: selectActiveItemId(state),
-  payloadTransactionModal: selectPayloadTransactionModal(state),
+  currentTransactionId: activeItemIdSelector(state),
+  payloadTransactionModal: payloadTransactionModalSelector(state),
   transactionAmount: selectLedgerTransactionAmount(state),
   isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
 });

@@ -4,12 +4,12 @@ import { bindActionCreators, Dispatch } from 'redux';
 import UiSessions from './UiSessions';
 
 import {
+  activeItemIdSelector,
   AuditUiSessionsActionType,
   createLoadingSelector,
   handleFilterAuditUiSessions,
   handleFilterAuditUserActivityByData,
   resetUiSessions,
-  selectActiveItemId,
   selectAuditUiSessions,
   selectInstitutionsOptions,
   StoreState,
@@ -23,7 +23,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionsOptions: selectInstitutionsOptions(state),
   uiSessions: selectAuditUiSessions(state),
-  currentUserId: selectActiveItemId(state),
+  currentUserId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

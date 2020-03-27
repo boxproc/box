@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
 import {
@@ -32,7 +32,7 @@ export const statementsSelector = createSelector(
 
 export const currentStatementSelector = createSelector(
   statementsSelector,
-  selectActiveItemId,
+  activeItemIdSelector,
   (data, currentId) => data && data.find(el => el.id === currentId)
 );
 
@@ -62,7 +62,7 @@ export const statementPendingTransactionsSelector = createSelector(
 
 export const currentStatementTransactionSelector = createSelector(
   statementsSelector,
-  selectActiveItemId,
+  activeItemIdSelector,
   (statements, currentId) => {
     const currStatement = statements.find(el => el.id === currentId);
 
@@ -127,7 +127,7 @@ export const statementAprsSelector = createSelector(
 export const currentStatementForReportSelector = createSelector(
   defaultStatementsSelector,
   selectInstitutionsOptions,
-  selectActiveItemId,
+  activeItemIdSelector,
   (statements, institutions, currentId) => {
     const currStatement = statements && statements.find(el => el.id === currentId);
     const institution = currStatement

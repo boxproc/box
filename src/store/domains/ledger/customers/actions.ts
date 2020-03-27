@@ -6,9 +6,9 @@ import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts'
 import * as api from './api';
 
 import {
+  activeItemIdSelector,
   closeModal,
-  selectActiveItemId,
-  selectIsAccessibleFiltering,
+  isAccessibleFilterSelector,
   setIsOpenFilter,
 } from 'store';
 import {
@@ -149,7 +149,7 @@ export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
       async () => {
         const preparedValues = preparedDataToSend(values);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         await dispatch(addLedgerCustomer(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
@@ -212,7 +212,7 @@ export const handleGetRepaymentDebitCards: HandleGetRepaymentDebitCards = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const customerId = selectActiveItemId(state);
+        const customerId = activeItemIdSelector(state);
 
         await dispatch(getRepaymentDebitCards(customerId));
       },
@@ -225,7 +225,7 @@ export const handleAddRepaymentDebitCard: HandleAddRepaymentDebitCard = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const customerId = selectActiveItemId(state);
+        const customerId = activeItemIdSelector(state);
         const preparedValues = prepareFormDataRepaymentDebitCardToSend(data);
 
         await dispatch(addRepaymentDebitCard({
@@ -244,7 +244,7 @@ export const handleGetRepaymentDirectDebits: HandleGetRepaymentDirectDebits = ()
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const customerId = selectActiveItemId(state);
+        const customerId = activeItemIdSelector(state);
 
         await dispatch(getRepaymentDirectDebits(customerId));
       },
@@ -257,7 +257,7 @@ export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const customerId = selectActiveItemId(state);
+        const customerId = activeItemIdSelector(state);
         const preparedValues = prepareFormDataRepaymentDirectDebitToSend(data);
 
         await dispatch(addRepaymentDirectDebit({

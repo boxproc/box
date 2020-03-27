@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { selectActiveItemId } from 'store';
+import { activeItemIdSelector } from 'store';
 import { ActionTypeKeys, GetProductRuleAction, UpdateProductRulesAction, } from './actionTypes';
 import * as api from './api';
 import { ProductRuleRequestPrepared, ProductRulesItem, ProductRulesItemResp } from './types';
@@ -37,7 +37,7 @@ export const handleGetProductRule: HandleGetProductRule = () =>
         const prepared = prepareProductRuleIdsToSend(formValues(state));
 
         await dispatch(getProductRule({
-          product_id: selectActiveItemId(state),
+          product_id: activeItemIdSelector(state),
           ...prepared,
         }));
       },
@@ -54,7 +54,7 @@ export const handleUpdateProductRules: HandleUpdateProductRules = data =>
 
         await dispatch(updateProductRules({
           ...preparedValues,
-          product_id: selectActiveItemId(state),
+          product_id: activeItemIdSelector(state),
         }));
         await dispatch(handleGetProductRule());
       },

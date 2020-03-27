@@ -4,35 +4,31 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Accounts from './Institutions';
 
 import {
-  AdminInstitutionsActionTypes,
-  createLoadingSelector,
-  handleDeleteAdminInstitution,
-  handleGetAdminInstitutions,
+  activeItemIdSelector,
+  currentInstitutionNameSelector,
+  handleDeleteInstitution,
+  handleGetInstitutions,
+  institutionsSelector,
+  isDeletingInstitutionSelector,
+  isGettingInstitutionsSelector,
+  isReadOnlySelector,
   resetInstitutions,
-  selectActiveItemId,
-  selectAdminCurrentInstitutionName,
-  selectAdminInstitutions,
-  selectIsReadOnly,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AdminInstitutionsActionTypes.GET_ADMIN_INSTITUTIONS,
-  AdminInstitutionsActionTypes.DELETE_ADMIN_INSTITUTION,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  institutionsData: selectAdminInstitutions(state),
-  currentInstitutionName: selectAdminCurrentInstitutionName(state),
-  currentInstitutionId: selectActiveItemId(state),
-  isReadOnly: selectIsReadOnly(state),
+  isLoading: isGettingInstitutionsSelector(state)
+    || isDeletingInstitutionSelector(state),
+  institutionsData: institutionsSelector(state),
+  currentInstitutionName: currentInstitutionNameSelector(state),
+  currentInstitutionId: activeItemIdSelector(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getInstitutions: handleGetAdminInstitutions,
-    deleteInstitution: handleDeleteAdminInstitution,
+    getInstitutions: handleGetInstitutions,
+    deleteInstitution: handleDeleteInstitution,
     resetInstitutions,
   },
   dispatch

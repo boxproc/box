@@ -4,7 +4,7 @@ import { StoreState } from 'store';
 
 import { selectCountriesOptions } from 'store/domains/administration';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import {
   prepareDataToRender,
   preparedDataDetailsToRender,
@@ -27,7 +27,7 @@ export const selectLedgerCustomers = createSelector(
 
 export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
-  selectActiveItemId,
+  activeItemIdSelector,
   selectInstitutionsOptions,
   selectCountriesOptions,
   (customers, currentId, institutions, countries) => {

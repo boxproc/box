@@ -3,35 +3,39 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
 
-export interface AdminInstitutionsItem {
+export interface IInstitutionData {
   id: number;
   institution_name: string;
+  master_institution_flag: string;
   sftp_location: string;
   sftp_public_key: string;
   status: string | number;
-  master_institution_flag: string;
 }
 
-export interface AdminInstitutionsItems {
-  institutions: Array<AdminInstitutionsItem>;
+export interface IInstitutionsData {
+  institutions: Array<IInstitutionData>;
 }
 
-export interface AdminInstitutionsItemPreparedPlain {
+interface IInstitutionPlain {
   id: number;
   institutionName: string;
+  masterInstitutionFlag: boolean;
   sftpLocation: string;
   sftpPublicKey: string;
-  masterInstitutionFlag: boolean;
 }
 
-export interface AdminInstitutionsItemPrepared extends AdminInstitutionsItemPreparedPlain {
+export interface IInstitution extends IInstitutionPlain {
   status: string | number;
 }
 
-export interface AdminInstitutionsItemDetailsPrepared extends AdminInstitutionsItemPreparedPlain {
+export interface IInstitutionDetails extends IInstitutionPlain {
   status: ISelectValue;
 }
 
-export interface AdminInstitutionsState {
-  institutions: ImmutableArray<AdminInstitutionsItem>;
+/**
+ * Institutions state interface
+ */
+
+export interface IInstitutionsState {
+  institutions: ImmutableArray<IInstitutionData>;
 }

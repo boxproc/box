@@ -5,11 +5,11 @@ import { Box } from '@rebass/grid';
 
 import { InputField } from 'components';
 
-interface SystemPropertyFilterProps {
+interface ISystemPropertyFilter {
   isDisabled: boolean;
 }
 
-const SystemPropertyFilter: React.FC<SystemPropertyFilterProps> = ({
+const SystemPropertyFilter: React.FC<ISystemPropertyFilter> = ({
   isDisabled,
 }) => {
   return (

@@ -3,7 +3,7 @@ import { reset as resetForm } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { selectActiveItemId } from 'store';
+import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
   AddProductAprAction,
@@ -162,7 +162,7 @@ export const handleGetProductAprs: HandleGetProductAprs = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await dispatch(getProductAprs(productId));
       },
@@ -175,7 +175,7 @@ export const handleAddProductApr: HandleAddProductApr = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
         const preparedValues = prepareFormDataProductAprsToSend(data);
 
         await dispatch(addProductApr({
@@ -217,7 +217,7 @@ export const handleGetProductFees: HandleGetProductFees = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await dispatch(getProductFees(productId));
       },
@@ -230,7 +230,7 @@ export const handleAddProductFee: HandleAddProductFee = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
         const preparedValues = prepareFormDataProductFeesToSend(data);
 
         await dispatch(addProductFee({
@@ -272,7 +272,7 @@ export const handleGetProductRewards: HandleGetProductRewards = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await dispatch(getProductRewards(productId));
       },
@@ -285,7 +285,7 @@ export const handleAddProductReward: HandleAddProductReward = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
         const preparedValues = prepareFormDataProductRewardsToSend(data);
 
         await dispatch(addProductReward({
@@ -327,7 +327,7 @@ export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await Promise.all([
           dispatch(getProductAprs(productId)),
@@ -344,7 +344,7 @@ export const handleGetProductFeeAprs: HandleGetProductFeeAprs = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await dispatch(getProductFeeAprs(productId));
       },

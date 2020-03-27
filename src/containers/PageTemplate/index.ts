@@ -4,10 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import PageTemplate from './PageTemplate';
 
 import {
+  isAutoRefreshSelector,
+  isOpenFilterSelector,
+  isReadOnlySelector,
   resetUtils,
-  selectIsAutoRefresh,
-  selectIsOpenFilter,
-  selectIsReadOnly,
   selectUiItems,
   setActivePagePermission,
   setIsOpenFilter,
@@ -16,10 +16,10 @@ import {
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  isAutoRefresh: selectIsAutoRefresh(state),
-  isOpenFilter: selectIsOpenFilter(state),
+  isAutoRefresh: isAutoRefreshSelector(state),
+  isOpenFilter: isOpenFilterSelector(state),
+  isReadOnly: isReadOnlySelector(state),
   uiItems: selectUiItems(state),
-  isReadOnly: selectIsReadOnly(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

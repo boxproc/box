@@ -1,4 +1,4 @@
-import { selectActiveItemId } from 'store';
+import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
   GetRepaymentHierarchyAction,
@@ -34,7 +34,7 @@ export const handleGetRepaymentHierarchy: HandleGetRepaymentHierarchy = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const productId = selectActiveItemId(state);
+        const productId = activeItemIdSelector(state);
 
         await dispatch(getRepaymentHierarchy(productId));
       },

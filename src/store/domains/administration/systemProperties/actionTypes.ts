@@ -1,100 +1,105 @@
-import { AdminSysPropsDataResp } from './types';
+import { ISysPropsData } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  DELETE_ADMIN_SYS_PROP = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP',
-  DELETE_ADMIN_SYS_PROP_FULFILLED =
-    'administration/systemProperties/DELETE_ADMIN_SYS_PROP_FULFILLED',
-  DELETE_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_ADMIN_SYS_PROP_REJECTED',
+  DELETE_SYS_PROP = 'administration/systemProperties/DELETE_SYS_PROP',
+  DELETE_SYS_PROP_FULFILLED = 'administration/systemProperties/DELETE_SYS_PROP_FULFILLED',
+  DELETE_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_SYS_PROP_REJECTED',
 
-  ADD_ADMIN_SYS_PROP = 'administration/systemProperties/ADD_ADMIN_SYS_PROP',
-  ADD_ADMIN_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_FULFILLED',
-  ADD_ADMIN_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_ADMIN_SYS_PROP_REJECTED',
+  ADD_SYS_PROP = 'administration/systemProperties/ADD_SYS_PROP',
+  ADD_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_SYS_PROP_FULFILLED',
+  ADD_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_SYS_PROP_REJECTED',
 
-  UPDATE_ADMIN_SYS_PROPS = 'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS',
-  UPDATE_ADMIN_SYS_PROPS_FULFILLED =
-    'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_FULFILLED',
-  UPDATE_ADMIN_SYS_PROPS_REJECTED =
-    'administration/systemProperties/UPDATE_ADMIN_SYS_PROPS_REJECTED',
+  UPDATE_SYS_PROP = 'administration/systemProperties/UPDATE_SYS_PROP',
+  UPDATE_SYS_PROP_FULFILLED = 'administration/systemProperties/UPDATE_SYS_PROP_FULFILLED',
+  UPDATE_SYS_PROP_REJECTED = 'administration/systemProperties/UPDATE_SYS_PROP_REJECTED',
 
-  FILTER_ADMIN_SYS_PROPS = 'administration/systemProperties/FILTER_ADMIN_SYS_PROPS',
-  FILTER_ADMIN_SYS_PROPS_FULFILLED =
-    'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_FULFILLED',
-  FILTER_ADMIN_SYS_PROPS_REJECTED =
-    'administration/systemProperties/FILTER_ADMIN_SYS_PROPS_REJECTED',
+  FILTER_SYS_PROPS = 'administration/systemProperties/FILTER_SYS_PROPS',
+  FILTER_SYS_PROPS_FULFILLED = 'administration/systemProperties/FILTER_SYS_PROPS_FULFILLED',
+  FILTER_SYS_PROPS_REJECTED = 'administration/systemProperties/FILTER_SYS_PROPS_REJECTED',
 
   RESET_SYSTEM_PROPERTIES = 'administration/systemProperties/RESET_SYSTEM_PROPERTIES',
 }
 
-export interface DeleteAdminSysPropAction {
+/** Delete system property action interfaces */
+
+export interface IDeleteSysPropAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP;
+  readonly type: ActionTypeKeys.DELETE_SYS_PROP;
 }
 
-export interface DeleteAdminSysPropFulfilledAction {
+export interface IDeleteSysPropFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED;
+  readonly type: ActionTypeKeys.DELETE_SYS_PROP_FULFILLED;
   readonly meta: number | string;
 }
 
-export interface DeleteAdminSysPropRejectedAction {
+export interface IDeleteSysPropRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_ADMIN_SYS_PROP_REJECTED;
+  readonly type: ActionTypeKeys.DELETE_SYS_PROP_REJECTED;
 }
 
-export interface AddAdminSysPropAction {
+/** Add system property action interfaces */
+
+export interface IAddSysPropAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP;
+  readonly type: ActionTypeKeys.ADD_SYS_PROP;
 }
 
-export interface AddAdminSysPropFulfilledAction {
+export interface IAddSysPropFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_SYS_PROP_FULFILLED;
 }
 
-export interface AddAdminSysPropRejectedAction {
+export interface IAddSysPropRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_ADMIN_SYS_PROP_REJECTED;
+  readonly type: ActionTypeKeys.ADD_SYS_PROP_REJECTED;
 }
 
-export interface UpdateAdminSysPropsAction {
+/** Update system property action interfaces */
+
+export interface IUpdateSysPropAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS;
+  readonly type: ActionTypeKeys.UPDATE_SYS_PROP;
 }
 
-export interface UpdateAdminSysPropsFulfilledAction {
+export interface IUpdateSysPropFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_SYS_PROP_FULFILLED;
 }
 
-export interface UpdateAdminSysPropsRejectedAction {
+export interface IUpdateSysPropRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_ADMIN_SYS_PROPS_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_SYS_PROP_REJECTED;
 }
 
-export interface FilterAdminSysPropsAction {
+/** Filter system properties action interfaces */
+
+export interface IFilterSysPropsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS;
+  readonly type: ActionTypeKeys.FILTER_SYS_PROPS;
 }
 
-export interface FilterAdminSysPropsFulfilledAction {
-  readonly payload: AdminSysPropsDataResp;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED;
+export interface IFilterSysPropsFulfilledAction {
+  readonly payload: ISysPropsData;
+  readonly type: ActionTypeKeys.FILTER_SYS_PROPS_FULFILLED;
 }
 
-export interface FilterAdminSysPropsRejectedAction {
+export interface IFilterSysPropsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_SYS_PROPS_REJECTED;
 }
 
-export interface ResetSystemPropertiesAction {
+/** Reset system properties action interfaces */
+
+export interface IResetSystemPropertiesAction {
   readonly type: ActionTypeKeys.RESET_SYSTEM_PROPERTIES;
 }
 
-export type AdminSysPropsActionTypes =
-  | AddAdminSysPropFulfilledAction
-  | DeleteAdminSysPropFulfilledAction
-  | UpdateAdminSysPropsFulfilledAction
-  | FilterAdminSysPropsFulfilledAction
-  | ResetSystemPropertiesAction;
+export type TSysPropsActionTypes =
+  | IAddSysPropFulfilledAction
+  | IDeleteSysPropFulfilledAction
+  | IUpdateSysPropFulfilledAction
+  | IFilterSysPropsFulfilledAction
+  | IResetSystemPropertiesAction;

@@ -10,10 +10,10 @@ import {
   handleMakeLedgerTransaction,
   LedgerLimitAdjustmentActionTypes,
   LedgerManualTransactionActionTypes,
+  manualTrModalIsLimitAdjSelector,
+  payloadManualTrModalSelector,
   selectCurrencyNumsOptions,
   selectIsCurrenciesLoading,
-  selectManualTransactionModalIsLimit,
-  selectPayloadManualTransactionModal,
   StoreState,
 } from 'store';
 
@@ -25,9 +25,9 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isCurrenciesLoading: selectIsCurrenciesLoading(state),
-  modalPayload: selectPayloadManualTransactionModal(state),
+  modalPayload: payloadManualTrModalSelector(state),
   currenciesOptions: selectCurrencyNumsOptions(state),
-  isLimitAdjustment: selectManualTransactionModalIsLimit(state),
+  isLimitAdjustment: manualTrModalIsLimitAdjSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

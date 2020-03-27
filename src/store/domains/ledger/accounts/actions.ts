@@ -5,8 +5,8 @@ import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts'
 
 import {
   closeModal,
+  isAccessibleFilterSelector,
   openModal,
-  selectIsAccessibleFiltering,
   setActiveItemId,
   setIsOpenFilter,
 } from 'store';
@@ -157,7 +157,7 @@ export const handleAddLedgerAccount: HandleAddLedgerAccount = data =>
       async () => {
         const preparedData = prepareDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         await dispatch(addLedgerAccount(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_ACCOUNT));

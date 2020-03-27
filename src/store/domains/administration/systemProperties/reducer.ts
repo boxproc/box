@@ -1,30 +1,25 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, AdminSysPropsActionTypes } from './actionTypes';
-import { AdminSysPropsState } from './types';
+import { ActionTypeKeys, TSysPropsActionTypes } from './actionTypes';
+import { ISysPropsState } from './types';
 
-export const adminSysPropsInitialState: ImmutableObject<AdminSysPropsState> = Immutable({
-  systemProperties: Immutable([]),
+export const sysPropsInitialState: ImmutableObject<ISysPropsState> = Immutable({
+  sysProps: Immutable([]),
 });
 
-const adminSysPropsReducer =
-  (state = adminSysPropsInitialState, action: AdminSysPropsActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.FILTER_ADMIN_SYS_PROPS_FULFILLED:
-        return state.set('systemProperties', action.payload.system_properties);
+const sysPropsReducer = (state = sysPropsInitialState, action: TSysPropsActionTypes) => {
+  switch (action.type) {
+    case ActionTypeKeys.FILTER_SYS_PROPS_FULFILLED:
+      return state.set('sysProps', action.payload.system_properties);
 
-      case ActionTypeKeys.DELETE_ADMIN_SYS_PROP_FULFILLED:
-        return state
-          .set(
-            'systemProperties',
-            state.systemProperties.filter(el => el.property_name !== action.meta)
-          );
+    case ActionTypeKeys.DELETE_SYS_PROP_FULFILLED:
+      return state.set('sysProps', state.sysProps.filter(el => el.property_name !== action.meta));
 
-      case ActionTypeKeys.RESET_SYSTEM_PROPERTIES:
-        return state = adminSysPropsInitialState;
+    case ActionTypeKeys.RESET_SYSTEM_PROPERTIES:
+      return state = sysPropsInitialState;
 
-      default: return state;
-    }
-  };
+    default: return state;
+  }
+};
 
-export default adminSysPropsReducer;
+export default sysPropsReducer;

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 import { selectInstitutionsOptions } from 'store/domains/login';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { prepareDetailsToRender, prepareValuesToRender } from './utils';
 
 export const selectDefaultAdminSchedulerJobsItems = (state: StoreState) =>
@@ -21,7 +21,7 @@ export const selectAdminSchedulerJobsItems = createSelector(
 export const selectSchedulerJobValues = createSelector(
   selectDefaultAdminSchedulerJobsItems,
   selectInstitutionsOptions,
-  selectActiveItemId,
+  activeItemIdSelector,
   (items, institutions, currentId) => {
     const current = items && items.find(item => item.id === currentId);
 

@@ -1,8 +1,8 @@
-import { AdminInstitutionsItems } from './types';
+import { IInstitutionsData } from './types';
 
 import { IResponseStatus } from 'types';
 
-export const adminInstitutionsItems: AdminInstitutionsItems = {
+export const institutionsMock: IInstitutionsData = {
   institutions: [
     {
       id: 1,
@@ -23,7 +23,7 @@ export const adminInstitutionsItems: AdminInstitutionsItems = {
   ],
 };
 
-export const successResponseStatus: IResponseStatus = {
+export const successResponseMock: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

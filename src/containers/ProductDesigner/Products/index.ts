@@ -7,10 +7,10 @@ import {
   createLoadingSelector,
   handleDeleteProduct,
   handleFilterProducts,
+  isReadOnlySelector,
   ProductsActionTypes,
   resetProducts,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   selectProductItems,
   selectProductName,
   StoreState,
@@ -26,7 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   productItems: selectProductItems(state),
   institutionsOptions: selectInstitutionsOptions(state),
   currentProductName: selectProductName(state),
-  isReadOnly: selectIsReadOnly(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

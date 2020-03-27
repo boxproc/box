@@ -4,16 +4,15 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
 import { InstitutionForm } from 'containers/Administration/Institutions/forms';
 
-interface AddInstitutionModalProps extends IWithModal {
+interface IAddInstitutionModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_INSTITUTION;
 
-const AddInstitutionModal: React.FC<AddInstitutionModalProps> = ({
+const AddInstitutionModal: React.FC<IAddInstitutionModal> = ({
   closeModal,
   isFormDirty,
 }) => {

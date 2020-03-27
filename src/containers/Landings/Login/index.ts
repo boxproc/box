@@ -10,7 +10,7 @@ import {
   AuthActionTypes,
   createLoadingSelector,
   handleUserLogin,
-  selectIsMessageModal,
+  isMessageModalSelector,
   StoreState,
 } from 'store';
 
@@ -27,7 +27,7 @@ const userName = storageUtil.getUserName();
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isMessageModal: selectIsMessageModal(state),
+  isMessageModal: isMessageModalSelector(state),
   isPasswordFocus: !!userName,
   initialValues: {
     rememberMe: !!userName,

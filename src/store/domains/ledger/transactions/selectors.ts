@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 
 import { transactionTypesIds } from 'consts';
 import { prepareValuesToRender } from './utils';
@@ -16,7 +16,7 @@ export const selectLedgerTransactions = createSelector(
 
 export const selectLedgerCurrentTransaction = createSelector(
   selectLedgerTransactions,
-  selectActiveItemId,
+  activeItemIdSelector,
   (transaction, currentId) => {
     if (!transaction) {
       return null;

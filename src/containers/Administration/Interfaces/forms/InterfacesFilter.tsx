@@ -4,16 +4,15 @@ import { Field } from 'redux-form';
 import { Box } from '@rebass/grid';
 
 import { SelectField } from 'components';
-
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface InterfacesFilterProps {
+interface IInterfacesFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const InterfacesFilter: React.FC<InterfacesFilterProps> = ({
+const InterfacesFilter: React.FC<IInterfacesFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

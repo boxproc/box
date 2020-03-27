@@ -1,4 +1,4 @@
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
 import { ActionTypeKeys, UpdateGeneralLedgerAction } from './actionTypes';
 import * as api from './api';
@@ -23,7 +23,7 @@ export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
       async () => {
         const preparedValues = prepareGeneralLedgerToSend(data);
         const state = getState();
-        const id = selectActiveItemId(state);
+        const id = activeItemIdSelector(state);
 
         await dispatch(updateGeneralLedger(preparedValues));
         await dispatch(getProduct(id));

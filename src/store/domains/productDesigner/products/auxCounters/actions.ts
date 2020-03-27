@@ -1,4 +1,4 @@
-import { selectActiveItemId } from 'store/domains/utils';
+import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
 import { ActionTypeKeys, UpdateProductAuxCountersAction } from './actionTypes';
 import * as api from './api';
@@ -25,7 +25,7 @@ export const handleUpdateProductAuxCounters: HandleUpdateProductAuxCounters = da
       async () => {
         const preparedValues = prepareAuxCountersToSend(data);
         const state = getState();
-        const id = selectActiveItemId(state);
+        const id = activeItemIdSelector(state);
 
         await dispatch(updateProductAuxCounters(preparedValues));
         await dispatch(getProduct(id));

@@ -97,6 +97,10 @@ export const selectIsInterfaceTypesLoaded = createSelector(
   data => data && data.length > 0
 );
 
+export const isLoadingInterfacesTypesSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DICTIONARY_INTERFACE_TYPES,
+]);
+
 /**
  * Statement cycle types selectors
  */

@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 import { formNamesConst, modalNamesConst, } from 'consts';
 import * as api from './api';
 
-import { closeModal, selectIsAccessibleFiltering } from 'store';
+import { closeModal, isAccessibleFilterSelector } from 'store';
 import {
   ActionTypeKeys,
   AddAdminUserAction,
@@ -78,7 +78,7 @@ export const handleAddAdminUser: HandleAddAdminUser = data =>
       async () => {
         const preparedValues = prepareAdminUserDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         await dispatch(addAdminUser(preparedValues));
         dispatch(closeModal(modalNamesConst.ADD_USER));

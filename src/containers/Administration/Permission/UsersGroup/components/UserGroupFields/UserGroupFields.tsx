@@ -5,7 +5,7 @@ import { Field } from 'redux-form';
 
 import { InputField, SelectField } from 'components';
 
-import { HandleGetAdminInstitutions } from 'store';
+import { THandleGetInstitutions } from 'store';
 
 import { ISelectValue } from 'types';
 
@@ -15,7 +15,7 @@ export interface UserGroupFieldsProps {
   institutionsOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   isInstitutionsLoading: boolean;
-  getInstitutions: HandleGetAdminInstitutions;
+  getInstitutions: THandleGetInstitutions;
   isReadOnly: boolean;
 }
 

@@ -4,16 +4,15 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { SystemPropertyForm } from 'containers/Administration/SystemProperties/forms';
 
-interface AddSystemPropertyModalProps extends IWithModal {
+interface IEditSystemPropertyModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_SYSTEM_PROPERTY;
 
-const EditSystemPropertyModal: React.FC<AddSystemPropertyModalProps> = ({
+const EditSystemPropertyModal: React.FC<IEditSystemPropertyModal> = ({
   closeModal,
   isFormDirty,
   isReadOnly,

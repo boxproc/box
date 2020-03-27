@@ -2,7 +2,7 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst, modalNamesConst, } from 'consts';
 
-import { closeModal, selectIsAccessibleFiltering } from 'store';
+import { closeModal, isAccessibleFilterSelector } from 'store';
 import {
   ActionTypeKeys,
   IAddEndpointAction,
@@ -71,7 +71,7 @@ export const handleAddEndpoint: THandleAddEndpoint = data =>
       async () => {
         const preparedData = preparedDataToSend(data);
         const state = getState();
-        const isAccessibleFiltering = selectIsAccessibleFiltering(state);
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         await dispatch(addEndpoint(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_ENDPOINT));

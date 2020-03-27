@@ -4,19 +4,17 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
 import { InterfaceForm } from 'containers/Administration/Interfaces/forms';
-
 import { ISelectValue } from 'types';
 
-interface AddInterfaceModalProps extends IWithModal {
+interface IAddInterfaceModal extends IWithModal {
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_INTERFACE;
 
-const AddInterfaceModal: React.FC<AddInterfaceModalProps> = ({
+const AddInterfaceModal: React.FC<IAddInterfaceModal> = ({
   closeModal,
   institutionsOptions,
   isFormDirty,

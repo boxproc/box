@@ -5,20 +5,20 @@ import { selectIsInstitutionsLoaded } from './selectors';
 import { VoidPromiseThunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type GetInstitutions = () => GetInstitutionsAction;
-export type HandleGetInstitutions= VoidPromiseThunk;
+export type GetUserInstitutions = () => GetInstitutionsAction;
+export type HandleGetUserInstitutions= VoidPromiseThunk;
 
-export const getInstitutions: GetInstitutions = () => ({
+export const getUserInstitutions: GetUserInstitutions = () => ({
   type: ActionTypeKeys.GET_INSTITUTIONS,
   payload: api.getInstitutions(),
 });
 
-export const handleGetInstitutions: HandleGetInstitutions = () =>
+export const handleGetUserInstitutions: HandleGetUserInstitutions = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         if (!selectIsInstitutionsLoaded(getState())) {
-          await dispatch(getInstitutions());
+          await dispatch(getUserInstitutions());
         }
       },
       dispatch

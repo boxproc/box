@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Customers from './Customers';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleDeleteLedgerCustomer,
   handleFilterByIdLedgerAccounts,
@@ -11,11 +12,10 @@ import {
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
   handleFilterLedgerCustomers,
+  isReadOnlySelector,
   LedgerCustomersActionTypes,
   resetCustomers,
-  selectActiveItemId,
   selectInstitutionsOptions,
-  selectIsReadOnly,
   selectLedgerCurrentCustomerName,
   selectLedgerCustomers,
   StoreState,
@@ -30,8 +30,8 @@ const mapStateToProps = (state: StoreState) => ({
   institutionsOptions: selectInstitutionsOptions(state),
   customers: selectLedgerCustomers(state),
   currentCustomerName: selectLedgerCurrentCustomerName(state),
-  currentId: selectActiveItemId(state),
-  isReadOnly: selectIsReadOnly(state),
+  currentId: activeItemIdSelector(state),
+  isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

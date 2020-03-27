@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Transactions from './Transactions';
 
 import {
+  activeItemIdSelector,
   createLoadingSelector,
   handleFilterByIdLedgerAccounts,
   handleFilterByIdLedgerCards,
@@ -12,7 +13,6 @@ import {
   handleFilterLedgerTransactions,
   LedgerTransactionsActionTypes,
   resetTransactions,
-  selectActiveItemId,
   selectInstitutionsOptions,
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactions,
@@ -28,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   transactions: selectLedgerTransactions(state),
   institutionsOptions: selectInstitutionsOptions(state),
-  currentId: selectActiveItemId(state),
+  currentId: activeItemIdSelector(state),
   isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
   uiItems: selectUiItems(state),
 });
