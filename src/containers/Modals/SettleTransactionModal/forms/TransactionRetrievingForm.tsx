@@ -11,7 +11,7 @@ import { HandleRetrieveTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 
-interface TransactionRetrievingFormProps {
+interface ITransactionRetrievingForm {
   retrieveTransaction: HandleRetrieveTransaction;
   isRetrieving: boolean;
   isRetrieved: boolean;
@@ -19,10 +19,10 @@ interface TransactionRetrievingFormProps {
   onCancel: () => void;
 }
 
-type TransactionRetrievingFormPropsAllProps = TransactionRetrievingFormProps
-  & InjectedFormProps<{}, TransactionRetrievingFormProps>;
+type TTransactionRetrievingForm = ITransactionRetrievingForm
+  & InjectedFormProps<{}, ITransactionRetrievingForm>;
 
-const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps> = ({
+const TransactionRetrievingForm: React.FC<TTransactionRetrievingForm> = ({
   retrieveTransaction,
   handleSubmit,
   isRetrieving,
@@ -72,7 +72,7 @@ const TransactionRetrievingForm: React.FC<TransactionRetrievingFormPropsAllProps
   );
 };
 
-export default reduxForm<{}, TransactionRetrievingFormProps>({
+export default reduxForm<{}, ITransactionRetrievingForm>({
   form: formNamesConst.TRANSACTION_RETRIEVING_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,

@@ -26,11 +26,11 @@ const CircleListWrapper = styled.ul`
   }
 `;
 
-interface CircleListProps {
+interface ICircleList {
   items: Array<string>;
 }
 
-const CircleList: React.FC<CircleListProps> = ({ items }) => {
+const CircleList: React.FC<ICircleList> = ({ items }) => {
   return (
     <CircleListWrapper>
       {items.length && items.map((item, index) => (

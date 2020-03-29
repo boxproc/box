@@ -2,8 +2,8 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 
-import { selectCountriesOptions } from 'store/domains/administration';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { countriesOptionsSelector } from 'store/domains/administration';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 import {
   prepareDataToRender,
@@ -17,7 +17,7 @@ export const selectDefaultLedgerCustomers = (state: StoreState) =>
 
 export const selectLedgerCustomers = createSelector(
   selectDefaultLedgerCustomers,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
@@ -28,8 +28,8 @@ export const selectLedgerCustomers = createSelector(
 export const selectLedgerCurrentCustomer = createSelector(
   selectDefaultLedgerCustomers,
   activeItemIdSelector,
-  selectInstitutionsOptions,
-  selectCountriesOptions,
+  userInstitutionsOptionsSelector,
+  countriesOptionsSelector,
   (customers, currentId, institutions, countries) => {
     const current = customers && customers.find(el => el.id === currentId);
 

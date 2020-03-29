@@ -2,9 +2,9 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 import { IEndpoint } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IEndpoint> = ITableCellType<IEndpoint[T]>;
+type TCell<T extends keyof IEndpoint> = ITableCell<IEndpoint[T]>;
 
 export const tableColumns = [
   {

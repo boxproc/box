@@ -5,10 +5,10 @@ import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader } from 'components';
 import { IllustrationProductAprRevolvingCredit } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof IllustrationProductAprRevolvingCredit> =
-  ITableCellType<IllustrationProductAprRevolvingCredit[T]>;
+  ITableCell<IllustrationProductAprRevolvingCredit[T]>;
 
 const columns = [
   {
@@ -49,11 +49,11 @@ const columns = [
   },
 ];
 
-interface IllustrationRevolvingCreditTableProps {
+interface IAprTable {
   data: ImmutableArray<IllustrationProductAprRevolvingCredit>;
 }
 
-const AprTable: React.FC<IllustrationRevolvingCreditTableProps> = ({ data }) => {
+const AprTable: React.FC<IAprTable> = ({ data }) => {
   return (
     <Box pb="10px">
       <Table

@@ -12,7 +12,7 @@ import { HandleGetInstitutionProducts } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface TransactionsFilterProps {
+interface ITransactionsFilter {
   institutionsOptions: Array<ISelectValue>;
   institutionProductsOptions: Array<ISelectValue>;
   getInstitutionProducts: HandleGetInstitutionProducts;
@@ -21,7 +21,7 @@ interface TransactionsFilterProps {
   isDisabled: boolean;
 }
 
-const TransactionsFilter: React.FC<TransactionsFilterProps> = ({
+const TransactionsFilter: React.FC<ITransactionsFilter> = ({
   institutionsOptions,
   institutionProductsOptions,
   getInstitutionProducts,

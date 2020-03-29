@@ -10,10 +10,10 @@ import {
   isReadOnlySelector,
   ProductsActionTypes,
   resetProducts,
-  selectInstitutionsOptions,
   selectProductItems,
   selectProductName,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -24,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   productItems: selectProductItems(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentProductName: selectProductName(state),
   isReadOnly: isReadOnlySelector(state),
 });

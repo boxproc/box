@@ -4,10 +4,9 @@ import { TableCell, TableHeader } from 'components';
 
 import { LedgerCustomerItemPrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof LedgerCustomerItemPrepared> =
-  ITableCellType<LedgerCustomerItemPrepared[T]>;
+type TCell<T extends keyof LedgerCustomerItemPrepared> = ITableCell<LedgerCustomerItemPrepared[T]>;
 
 export const tableColumns = [
   {

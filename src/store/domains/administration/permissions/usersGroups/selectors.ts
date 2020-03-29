@@ -4,33 +4,22 @@ import { permissionTypesOptions } from 'consts';
 
 import { StoreState } from 'store';
 import { institutionsOptionsSelector } from 'store/domains/administration/institutions';
+import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
+import { ActionTypeKeys } from './actionTypes';
 
-export const selectDefaultAdminUsersGroupItems = (state: StoreState) =>
-  state.administration.userGroups.usersGroups;
+/**
+ * Users groups selectors
+ */
 
-export const selectDefaultAdminUserGroupMembers = (state: StoreState) =>
-  state.administration.userGroups.userGroupMembers;
+export const defaultUsersGroupsSelector = (state: StoreState) =>
+  state.administration.userGroups.groups;
 
-export const selectAdminGroupPermissions = (state: StoreState) =>
-  state.administration.userGroups.groupPermissions;
+export const usersGroupsSelector = createSelector(
+  defaultUsersGroupsSelector,
+  data => data && data.map(el => {
 
-export const selectDefaultAdminActiveUsers = (state: StoreState) =>
-  state.administration.userGroups.allActiveUsers;
-
-export const selectDefaultAdminUiItems = (state: StoreState) =>
-  state.administration.userGroups.uiItems;
-
-export const selectUsersGroupEditorItems = createSelector(
-  selectDefaultAdminUsersGroupItems,
-  items => items && items.map(item => {
-
-    const {
-      id,
-      name,
-      institution_id,
-      institution_name,
-    } = item;
+    const { id, name, institution_id, institution_name } = el;
 
     return {
       id,
@@ -41,18 +30,57 @@ export const selectUsersGroupEditorItems = createSelector(
   })
 );
 
-export const selectActiveUsersItems = createSelector(
-  selectDefaultAdminActiveUsers,
-  data => data && data.asMutable().map(el => {
+export const currentUsersGroupSelector = createSelector(
+  defaultUsersGroupsSelector,
+  institutionsOptionsSelector,
+  activeItemIdSelector,
+  (groups, institutions, currentId) => {
+    if (!groups) {
+      return null;
+    }
+
+    const currentGroup = groups.find(group => group.id === currentId);
+
     return {
-      value: el.id,
-      label: `${el.first_name} ${el.last_name}`,
+      id: currentGroup && currentGroup.id,
+      name: currentGroup && currentGroup.name,
+      institutionId: currentGroup
+        && institutions.find(el => el.value === currentGroup.institution_id),
     };
-  })
+  }
 );
 
-export const selectAdminUserGroupMembers = createSelector(
-  selectDefaultAdminUserGroupMembers,
+export const currentUsersGroupInstNameSelector = createSelector(
+  currentUsersGroupSelector,
+  data => data.institutionId && data.institutionId.label
+);
+
+export const currentUsersGroupNameSelector = createSelector(
+  currentUsersGroupSelector,
+  data => data && data.name
+);
+
+export const isAddingUsersGroupSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_USERS_GROUP,
+]);
+
+export const isUpdatingUsersGroupSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_USERS_GROUP,
+]);
+
+export const isLoadingUsersGroupsSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_USERS_GROUP,
+]);
+
+/**
+ * Users group members selectors
+ */
+
+export const defaultUsersGroupMembersSelector = (state: StoreState) =>
+  state.administration.userGroups.members;
+
+export const usersGroupMembersSelector = createSelector(
+  defaultUsersGroupMembersSelector,
   data => data && data.map(el => {
     return {
       id: el.id,
@@ -61,8 +89,39 @@ export const selectAdminUserGroupMembers = createSelector(
   })
 );
 
-export const selectAdminGroupPermissionsItems = createSelector(
-  selectAdminGroupPermissions,
+export const defaultUsersGroupUsersSelector = (state: StoreState) =>
+  state.administration.userGroups.users;
+
+export const usersGroupUsersSelector = createSelector(
+  defaultUsersGroupUsersSelector,
+  data => data && data.asMutable().map(el => {
+    return {
+      value: el.id,
+      label: `${el.first_name} ${el.last_name}`,
+    };
+  })
+);
+
+export const isLoadingUsersGroupMembers = createLoadingSelector([
+  ActionTypeKeys.GET_USERS_GROUP_MEMBERS,
+]);
+
+export const isAddingUsersGroupMember = createLoadingSelector([
+  ActionTypeKeys.ADD_USERS_GROUP_MEMBER,
+]);
+
+/**
+ * Users group permissions selectors
+ */
+
+export const defaultUsersGroupPermissionsSelector = (state: StoreState) =>
+  state.administration.userGroups.permissions;
+
+export const defaultUsersGroupUiItemsSelector = (state: StoreState) =>
+  state.administration.userGroups.uiItems;
+
+export const usersGroupPermissionsSelector = createSelector(
+  defaultUsersGroupPermissionsSelector,
   items => items && items.map(item => {
     const permission = permissionTypesOptions.find(el => el.value === item.permission);
 
@@ -74,8 +133,8 @@ export const selectAdminGroupPermissionsItems = createSelector(
   })
 );
 
-export const selectAdminGroupPermissionsUiItems = createSelector(
-  selectDefaultAdminUiItems,
+export const usersGroupUiItemsSelector = createSelector(
+  defaultUsersGroupUiItemsSelector,
   data => data && data.asMutable().map(el => {
     return {
       value: el.ui_item,
@@ -84,31 +143,10 @@ export const selectAdminGroupPermissionsUiItems = createSelector(
   })
 );
 
-export const selectUsersGroupValues = createSelector(
-  selectDefaultAdminUsersGroupItems,
-  institutionsOptionsSelector,
-  activeItemIdSelector,
-  (items, institutions, currentId) => {
-    if (!items) {
-      return null;
-    }
+export const isLoadingUsersGroupPermissionsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS,
+]);
 
-    const current = items.find(item => item.id === currentId);
-
-    return {
-      id: current && current.id,
-      name: current && current.name,
-      institutionId: current && institutions.find(el => el.value === current.institution_id),
-    };
-  }
-);
-
-export const selectUsersGroupInstitutionName = createSelector(
-  selectUsersGroupValues,
-  data => data.institutionId && data.institutionId.label
-);
-
-export const selectUsersGroupName = createSelector(
-  selectUsersGroupValues,
-  data => data && data.name
-);
+export const isAddingUsersGroupPermissionsSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_USERS_GROUP_PERMISSIONS,
+]);

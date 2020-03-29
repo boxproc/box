@@ -27,7 +27,7 @@ import {
 
 import { productTypesConst } from 'consts';
 
-interface EditProductFormsProps {
+interface IEditProductForms {
   currentProductType: string | number;
   currentProductId: number;
   isProductOverride: boolean;
@@ -36,7 +36,7 @@ interface EditProductFormsProps {
   isReadOnly: boolean;
 }
 
-const EditProductForms: React.FC<EditProductFormsProps> = ({
+const EditProductForms: React.FC<IEditProductForms> = ({
   currentProductType,
   currentProductId,
   isProductOverride,

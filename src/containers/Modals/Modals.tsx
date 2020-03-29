@@ -4,11 +4,11 @@ import { ScrollDisable } from 'theme/styles';
 
 import { modalsList } from 'containers/Modals/modalsList';
 
-interface ModalsProps {
+interface IModals {
   modalsStateList?: object;
 }
 
-const Modals: React.FC<ModalsProps> = ({ modalsStateList }) => {
+const Modals: React.FC<IModals> = ({ modalsStateList }) => {
   const activeModals = React.useMemo(
     () => {
       const preparedList: Array<ReactChild> = [];

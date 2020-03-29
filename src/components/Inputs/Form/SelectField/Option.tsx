@@ -7,22 +7,22 @@ import styled from 'theme';
 
 import { CheckedBoxIcon, UncheckedBoxIcon } from './../../../Icons';
 
-interface IconProps {
+interface IIcon {
   isSelected: boolean;
   onClick: () => void;
 }
 
-const Icon: React.FC<IconProps> = ({ isSelected, onClick }) => {
+const Icon: React.FC<IIcon> = ({ isSelected, onClick }) => {
   return isSelected
     ? (<CheckedBoxIcon onClick={onClick} />)
     : (<UncheckedBoxIcon onClick={onClick} />);
 };
 
-interface OptionWrapperProps {
+interface IOptionWrapper {
   isFocused: boolean;
 }
 
-const OptionWrapper = styled.div<OptionWrapperProps>`
+const OptionWrapper = styled.div<IOptionWrapper>`
   display: flex;
   align-items: center;
   padding: 5px 10px;
@@ -41,11 +41,11 @@ const OptionWrapper = styled.div<OptionWrapperProps>`
   }
 `;
 
-interface MultiSelectOptionProps<T> extends OptionProps<T> {
+interface IMultiSelectOption<T> extends OptionProps<T> {
   modifySelectOption?: (props: OptionProps<T>) => void;
 }
 
-const MultiSelectOption = <T extends {}>(props: MultiSelectOptionProps<T>) => {
+const MultiSelectOption = <T extends {}>(props: IMultiSelectOption<T>) => {
   const {
     data,
     children,

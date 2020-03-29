@@ -7,7 +7,7 @@ import { EyeIcon, EyeSlashIcon } from './../../Icons';
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
 
-import { InputCommonProps } from './types';
+import { ICommonInput } from './types';
 
 const iconStyles = css`
   color: ${({ theme }) => theme.colors.gray};
@@ -26,12 +26,12 @@ const EyeStyled = styled(EyeIcon)`
   ${iconStyles}
 `;
 
-interface IconProps {
+interface IIcon {
   masked: boolean;
   size: string;
 }
 
-const Icon: React.FC<IconProps> = ({ masked, size }) => {
+const Icon: React.FC<IIcon> = ({ masked, size }) => {
   return masked ? (<EyeSlashStyled size={size} />) : (<EyeStyled size={size} />);
 };
 
@@ -53,18 +53,18 @@ const PasswordFieldWrapper = styled.div`
   }
 `;
 
-interface RenderComponentProps {
+interface IRenderComponent {
   icon: React.ReactNode;
   tip: string;
   type: string;
 }
 
-export const PasswordField: React.FC<InputCommonProps> = props => {
+export const PasswordField: React.FC<ICommonInput> = props => {
   const [masked, setMasked] = React.useState(true);
 
   const handleSetMask = () => setMasked(!masked);
 
-  const renderComponent = ({ type, icon, tip }: RenderComponentProps) => (
+  const renderComponent = ({ type, icon, tip }: IRenderComponent) => (
     <PasswordFieldWrapper>
       <PasswordFieldBase
         {...props}

@@ -8,11 +8,11 @@ import { formNamesConst } from 'consts';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
+  dictionaryAccountStatusesOptionsSelector,
+  dictionaryRepaymentTypesOptionsSelector,
   handleGetDictionaryAccountStatuses,
   handleGetDictionaryRepaymentTypes,
   handleGetInstitutionProducts,
-  selectDictionaryAccountStatusesOptions,
-  selectDictionaryRepaymentTypesOptions,
   selectInstitutionProductsOptions,
   selectLedgerCurrentAccountHasProductOverride,
   StoreState,
@@ -23,8 +23,8 @@ const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
-  statusesOptions: selectDictionaryAccountStatusesOptions(state),
-  repaymentTypesOptions: selectDictionaryRepaymentTypesOptions(state),
+  statusesOptions: dictionaryAccountStatusesOptionsSelector(state),
+  repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
   currentInstitution: formSelector(state, 'institutionId'),
 });
 

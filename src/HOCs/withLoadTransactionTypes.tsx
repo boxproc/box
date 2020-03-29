@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  createLoadingSelector,
-  DictionaryActionTypes,
+  dictionaryLimitAdjTypesOptionsSelector,
+  dictionaryManualTrTypesOptionsSelector,
+  dictionaryTransTypesOptionsSelector,
   handleGetDictionaryTransactionTypes,
-  selectDictionaryLimitAdjTypesOptions,
-  selectDictionaryManualTrTypesOptions,
-  selectDictionaryTransTypesOptions,
+  isTransTypesLoadingSelector,
   StoreState,
   THandleGetDictionaryTransactionTypes,
 } from 'store';
@@ -64,15 +63,11 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
   WithLoadTransactionTypes.displayName =
     `WithLoadTransactionTypes(${componentUtil.getDisplayName(Component)})`;
 
-  const loadingSelector = createLoadingSelector([
-    DictionaryActionTypes.GET_DICTIONARY_TRANSACTION_TYPES,
-  ]);
-
   const mapStateToProps = (state: StoreState) => ({
-    isTransTypesLoading: loadingSelector(state),
-    transactionTypesOptions: selectDictionaryTransTypesOptions(state),
-    manualTransTypesOptions: selectDictionaryManualTrTypesOptions(state),
-    limitAdjTypeOptions: selectDictionaryLimitAdjTypesOptions(state),
+    isTransTypesLoading: isTransTypesLoadingSelector(state),
+    transactionTypesOptions: dictionaryTransTypesOptionsSelector(state),
+    manualTransTypesOptions: dictionaryManualTrTypesOptionsSelector(state),
+    limitAdjTypeOptions: dictionaryLimitAdjTypesOptionsSelector(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

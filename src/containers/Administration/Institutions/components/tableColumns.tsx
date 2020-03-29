@@ -2,9 +2,9 @@ import React from 'react';
 
 import { renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 import { IInstitution } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IInstitution> = ITableCellType<IInstitution[T]>;
+type TCell<T extends keyof IInstitution> = ITableCell<IInstitution[T]>;
 
 export const tableColumns = [
   {

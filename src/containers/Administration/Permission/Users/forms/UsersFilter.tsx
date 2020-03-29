@@ -9,12 +9,12 @@ import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface UsersFilterProps {
+interface IUsersFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const UsersFilter: React.FC<UsersFilterProps> = ({
+const UsersFilter: React.FC<IUsersFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

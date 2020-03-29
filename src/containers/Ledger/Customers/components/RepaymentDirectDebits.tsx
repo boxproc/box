@@ -10,7 +10,7 @@ import { iconNamesConst, statusOptions } from 'consts';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface RepaymentDirectDebitsProps {
+interface IRepaymentDirectDebits {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
@@ -18,7 +18,7 @@ interface RepaymentDirectDebitsProps {
   isInterfacesLoading: boolean;
 }
 
-const RepaymentDirectDebits: React.FC<RepaymentDirectDebitsProps> = ({
+const RepaymentDirectDebits: React.FC<IRepaymentDirectDebits> = ({
   isDisabled,
   pristine,
   isLoading,

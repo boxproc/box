@@ -6,19 +6,18 @@ import { InputField, OkCancelButtons, PasswordField } from 'components';
 
 import { formNamesConst, yesNoConst } from 'consts';
 
-import { HandleChangePassword } from 'store';
+import { THandleChangePassword } from 'store';
 
 import { formErrorUtil, storageUtil } from 'utils';
 
-interface ChangePasswordFormProps {
-  changePassword: HandleChangePassword;
+interface IChangePasswordForm {
+  changePassword: THandleChangePassword;
   onCancel: () => void;
 }
 
-type ChangePasswordFormPropsAllProps =
-  ChangePasswordFormProps & InjectedFormProps<{}, ChangePasswordFormProps>;
+type TChangePasswordForm = IChangePasswordForm & InjectedFormProps<{}, IChangePasswordForm>;
 
-const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
+const ChangePasswordForm: React.FC<TChangePasswordForm> = ({
   handleSubmit,
   changePassword,
   onCancel,
@@ -85,7 +84,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, ChangePasswordFormProps>({
+export default reduxForm<{}, IChangePasswordForm>({
   form: formNamesConst.CHANGE_PASSWORD,
   destroyOnUnmount: true,
   enableReinitialize: true,

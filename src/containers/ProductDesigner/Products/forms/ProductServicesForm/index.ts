@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
-  currentUserGroupId: activeItemIdSelector(state),
+  currentUsersGroupId: activeItemIdSelector(state),
   productInterfacesServiceOptions: selectProductCardInterfacesService(state),
   productEndpointsServiceOptions: selectProductCardEndpointsService(state),
   currentInstitutionId: selectCurrentProductInstitutionId(state),

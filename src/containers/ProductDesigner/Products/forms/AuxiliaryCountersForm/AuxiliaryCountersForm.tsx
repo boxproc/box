@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -10,17 +10,17 @@ import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/co
 
 import { HandleUpdateProductAuxCounters } from 'store';
 
-interface AuxiliaryCountersFormProps extends ExternalSpinnerProps {
+interface IAuxiliaryCountersForm extends ISpinner {
   currentProductId: number;
   updateProductAuxCounters: HandleUpdateProductAuxCounters;
   onCancel?: () => void;
   isReadOnly: boolean;
 }
 
-type AuxiliaryCountersFormAllProps = AuxiliaryCountersFormProps &
-  InjectedFormProps<{}, AuxiliaryCountersFormProps>;
+type TAuxiliaryCountersForm = IAuxiliaryCountersForm &
+  InjectedFormProps<{}, IAuxiliaryCountersForm>;
 
-const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
+const AuxiliaryCountersForm: React.FC<TAuxiliaryCountersForm> = ({
   currentProductId,
   updateProductAuxCounters,
   handleSubmit,
@@ -51,7 +51,7 @@ const AuxiliaryCountersForm: React.FC<AuxiliaryCountersFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AuxiliaryCountersFormProps>({
+export default reduxForm<{}, IAuxiliaryCountersForm>({
   form: formNamesConst.PRODUCT_AUXILIARY_COUNTERS,
   destroyOnUnmount: true,
   enableReinitialize: true,

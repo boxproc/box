@@ -7,7 +7,7 @@ import { Hr, InputField, NumberFormatField, OkCancelButtons } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface OverdueProps {
+interface IOverdue {
   isEditMode?: boolean;
   onCancel: () => void;
   dirty: boolean;
@@ -15,7 +15,7 @@ interface OverdueProps {
   isReadOnly: boolean;
 }
 
-const Overdue: React.FC<OverdueProps> = ({
+const Overdue: React.FC<IOverdue> = ({
   isEditMode = false,
   onCancel,
   dirty,

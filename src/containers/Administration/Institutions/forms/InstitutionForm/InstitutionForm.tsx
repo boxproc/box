@@ -6,9 +6,9 @@ import { Box, Flex } from '@rebass/grid';
 import {
   Button,
   CheckboxField,
-  ExternalSpinnerProps,
   Hr,
   InputField,
+  ISpinner,
   OkCancelButtons,
   SelectField,
   withSpinner,
@@ -24,7 +24,7 @@ import {
 
 import { formErrorUtil } from 'utils';
 
-interface IInstitutionForm extends ExternalSpinnerProps {
+interface IInstitutionForm extends ISpinner {
   currentInstitutionName: string;
   currentInstitutionId: number;
   isMasterInstitutionFlag: boolean;
@@ -36,9 +36,9 @@ interface IInstitutionForm extends ExternalSpinnerProps {
   onCancel: () => void;
 }
 
-type InstitutionFormAllProps = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
+type TInstitutionForm = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
 
-const InstitutionForm: React.FC<InstitutionFormAllProps> = ({
+const InstitutionForm: React.FC<TInstitutionForm> = ({
   onCancel,
   handleSubmit,
   updateInstitution,

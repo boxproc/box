@@ -4,22 +4,22 @@ import { bindActionCreators, Dispatch } from 'redux';
 import EventDataElems from './EventDataElems';
 
 import {
+  dictionaryEventDataElemsSelector,
+  dictionaryEventsOptionsSelector,
   handleFilterDictionaryEventDataElems,
   handleGetDictionaryEvents,
+  isEventDataElemsLoadingSelector,
   resetEventDataElems,
-  selectDictionaryEventDataElems,
-  selectDictionaryEventsOptions,
-  selectIsEventDataElemsLoading,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  eventDataElemsData: selectDictionaryEventDataElems(state),
+  eventDataElemsData: dictionaryEventDataElemsSelector(state),
   eventsOptions: [
     { label: 'Select All', value: '' },
-    ...selectDictionaryEventsOptions(state),
+    ...dictionaryEventsOptionsSelector(state),
   ],
-  isLoading: selectIsEventDataElemsLoading(state),
+  isLoading: isEventDataElemsLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

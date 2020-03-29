@@ -6,16 +6,16 @@ import Register2faModal from './Register2faModal';
 import {
   handleSetUserCurrentRegisterStep,
   handleUserConfirmAuthKey,
-  selectUserCode,
-  selectUserCurrentRegisterStep,
-  selectUserDataUrl,
   StoreState,
+  userAuthCodeSelector,
+  userCurrentRegisterStepSelector,
+  userDataUrlSelector,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  currentRegisterStep: selectUserCurrentRegisterStep(state),
-  code: selectUserCode(state),
-  dataUrl: selectUserDataUrl(state),
+  currentRegisterStep: userCurrentRegisterStepSelector(state),
+  code: userAuthCodeSelector(state),
+  dataUrl: userDataUrlSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

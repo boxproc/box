@@ -12,17 +12,17 @@ import {
 
 import { HandleGetRepaymentDebitCards, RepaymentDebitCardsItemPrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof RepaymentDebitCardsItemPrepared> =
-  ITableCellType<RepaymentDebitCardsItemPrepared[T]>;
+  ITableCell<RepaymentDebitCardsItemPrepared[T]>;
 
-interface RepaymentDebitCardsTableProps {
+interface IRepaymentDebitCardsTable {
   repaymentDebitCards: ImmutableArray<RepaymentDebitCardsItemPrepared>;
   getRepaymentDebitCards: HandleGetRepaymentDebitCards;
 }
 
-const RepaymentDebitCardsTable: React.FC<RepaymentDebitCardsTableProps> = ({
+const RepaymentDebitCardsTable: React.FC<IRepaymentDebitCardsTable> = ({
   repaymentDebitCards,
   getRepaymentDebitCards,
 }) => {

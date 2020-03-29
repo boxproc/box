@@ -3,21 +3,21 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, ExternalSpinnerProps, Paragraph, PasswordField, withSpinner } from 'components';
+import { Button, ISpinner, Paragraph, PasswordField, withSpinner } from 'components';
 
-import { HandleUserGetAuthKey } from 'store';
+import { THandleUserGetAuthKey } from 'store';
 
 import { formNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-interface PasswordFormProps extends ExternalSpinnerProps {
-  userGetAuthKey?: HandleUserGetAuthKey;
+interface IPasswordForm extends ISpinner {
+  userGetAuthKey?: THandleUserGetAuthKey;
 }
 
-type PasswordFormPropsAllProps = PasswordFormProps & InjectedFormProps<{}, PasswordFormProps>;
+type TPasswordForm = IPasswordForm & InjectedFormProps<{}, IPasswordForm>;
 
-const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
+const PasswordForm: React.FC<TPasswordForm> = ({
   handleSubmit,
   userGetAuthKey,
   pristine,
@@ -51,7 +51,7 @@ const PasswordForm: React.FC<PasswordFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, PasswordFormProps>({
+export default reduxForm<{}, IPasswordForm>({
   form: formNamesConst.PASSWORD,
   destroyOnUnmount: true,
   enableReinitialize: true,

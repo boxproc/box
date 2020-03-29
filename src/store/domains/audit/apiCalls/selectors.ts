@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
 import { prepareValuesToRender } from './utils';
@@ -10,7 +10,7 @@ export const selectDefaultAuditApiCalls = (state: StoreState) => state.audit.api
 
 export const selectAuditApiCalls = createSelector(
   selectDefaultAuditApiCalls,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
@@ -24,7 +24,7 @@ export const selectDefaultAuditApiCallDetails = (state: StoreState) =>
 export const selectAuditApiCallDetails = createSelector(
   selectDefaultAuditApiCalls,
   activeItemIdSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   selectDefaultAuditApiCallDetails,
   (items, currentId, institutionsOptions, apiCallDetails) => {
     const current = items.find(el => el.id === currentId);

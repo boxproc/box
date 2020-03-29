@@ -4,15 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Currencies from './Currencies';
 
 import {
+  dictionaryCurrenciesSelector,
   handleGetDictionaryCurrencies,
-  selectDictionaryCurrencies,
-  selectIsCurrenciesLoading,
+  isCurrenciesLoadingSelector,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  currenciesData: selectDictionaryCurrencies(state),
-  isLoading: selectIsCurrenciesLoading(state),
+  currenciesData: dictionaryCurrenciesSelector(state),
+  isLoading: isCurrenciesLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

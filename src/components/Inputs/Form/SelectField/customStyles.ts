@@ -3,15 +3,15 @@ import { StylesConfig } from 'react-select/lib/styles';
 
 import { theme } from 'theme';
 
-export interface CustomSelectProps extends Props {
+interface ICustomSelect extends Props {
   invalid?: boolean;
   isCustomSingleValue?: boolean;
 }
 
-export interface SelectState {
+interface ISelectState {
   isDisabled: boolean;
   isFocused: boolean;
-  selectProps: CustomSelectProps;
+  selectProps: ICustomSelect;
 }
 
 export const customStyles: StylesConfig = {
@@ -19,7 +19,7 @@ export const customStyles: StylesConfig = {
     ...provided,
     alignItems: 'flex-start',
   }),
-  dropdownIndicator: (provided: React.CSSProperties, state: SelectState) => {
+  dropdownIndicator: (provided: React.CSSProperties, state: ISelectState) => {
     const {
       isDisabled,
       isFocused,
@@ -40,7 +40,7 @@ export const customStyles: StylesConfig = {
       },
     });
   },
-  clearIndicator: (provided: React.CSSProperties, state: SelectState) => ({
+  clearIndicator: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     cursor: 'pointer',
     margin: '3px 0',
@@ -58,7 +58,7 @@ export const customStyles: StylesConfig = {
       color: theme.colors.gray,
     },
   }),
-  placeholder: (provided: React.CSSProperties, state: SelectState) => ({
+  placeholder: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     color: theme.colors.gray,
     fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
@@ -67,14 +67,14 @@ export const customStyles: StylesConfig = {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
   }),
-  menuList: (provided: React.CSSProperties, state: SelectState) => ({
+  menuList: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     padding: '0 1px 1px',
     fontSize: state.selectProps.isEditableCellStyle ? '12px' : '13px',
     lineHeight: '15px',
     borderRadius: '0 0 2px 2px',
   }),
-  menu: (provided: React.CSSProperties, state: SelectState) => ({
+  menu: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     marginTop: 0,
     boxShadow: 'none',
@@ -85,7 +85,7 @@ export const customStyles: StylesConfig = {
     borderTop: '0',
     zIndex: 2,
   }),
-  control: (provided: React.CSSProperties, state: SelectState) => {
+  control: (provided: React.CSSProperties, state: ISelectState) => {
     const {
       isFocused,
       isDisabled,
@@ -116,7 +116,7 @@ export const customStyles: StylesConfig = {
       },
     });
   },
-  singleValue: (provided: React.CSSProperties, state: SelectState) => {
+  singleValue: (provided: React.CSSProperties, state: ISelectState) => {
     const {
       selectProps: {
         isCustomSingleValue,
@@ -132,18 +132,18 @@ export const customStyles: StylesConfig = {
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
   },
-  multiValueLabel: (provided: React.CSSProperties, state: SelectState) => ({
+  multiValueLabel: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     color: theme.colors.darkGray,
     padding: '3px 5px',
     paddingRight: 2,
     fontWeight: 500,
   }),
-  multiValue: (provided: React.CSSProperties, state: SelectState) => ({
+  multiValue: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     backgroundColor: theme.colors.lighterGray,
   }),
-  multiValueRemove: (provided: React.CSSProperties, state: SelectState) => ({
+  multiValueRemove: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     backgroundColor: theme.colors.lighterGray,
     // eslint-disable-next-line
@@ -160,17 +160,17 @@ export const customStyles: StylesConfig = {
       color: theme.colors.normalAccent,
     },
   }),
-  noOptionsMessage: (provided: React.CSSProperties, state: SelectState) => ({
+  noOptionsMessage: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     color: theme.colors.lightGray,
   }),
-  valueContainer: (provided: React.CSSProperties, state: SelectState) => ({
+  valueContainer: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     padding: '0 8px',
     minHeight: state.selectProps.isEditableCellStyle ? '25px' : '27px',
     height: state.selectProps.isEditableCellStyle ? '25px' : 'auto',
   }),
-  option: (provided: React.CSSProperties, state: SelectState) => ({
+  option: (provided: React.CSSProperties, state: ISelectState) => ({
     ...provided,
     backgroundColor: theme.colors.white,
     // eslint-disable-next-line

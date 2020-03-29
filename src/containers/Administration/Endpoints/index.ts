@@ -15,9 +15,9 @@ import {
   isFilteringEndpointsSelector,
   isReadOnlySelector,
   resetEndpoints,
-  selectInstitutionsOptions,
   StoreState,
   SystemMonitorActionTypes,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -28,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentEndpointId: activeItemIdSelector(state),
   currentEndpointName: currentEndpointNameSelector(state),
   endpointItems: endpointsSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: loadingSelector(state)
     || isFilteringEndpointsSelector(state)
     || isDeletingEndpointSelector(state),

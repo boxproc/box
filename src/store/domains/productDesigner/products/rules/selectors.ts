@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 
-import { selectDictionaryEventsOptions } from 'store/domains/administration';
+import { dictionaryEventsOptionsSelector } from 'store/domains/administration';
 import { prepareProductRuleData } from './utils';
 
 export const selectDefaultCurrentRule = (state: StoreState) =>
@@ -10,7 +10,7 @@ export const selectDefaultCurrentRule = (state: StoreState) =>
 
 export const selectCurrentProductRule = createSelector(
   selectDefaultCurrentRule,
-  selectDictionaryEventsOptions,
+  dictionaryEventsOptionsSelector,
   (currentRule, events) => {
     if (!currentRule) {
       return null;

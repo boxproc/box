@@ -1,14 +1,14 @@
 import styled from 'theme';
 import { scrollbarCss } from 'theme/styles';
 
-interface WrapperProps {
+interface IWrapper {
   height?: string;
   minHeight?: string;
   visibilityHidden?: boolean;
   whiteSpacePre?: boolean;
 }
 
-export const EditorWrapper = styled.div<WrapperProps>`
+export const EditorWrapper = styled.div<IWrapper>`
   padding: 0;
   height: ${({ height }) => height || '220px'};
   min-height: ${({ minHeight }) => minHeight || '220px'};

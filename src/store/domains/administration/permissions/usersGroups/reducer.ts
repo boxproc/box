@@ -1,39 +1,39 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
-import { ActionTypeKeys, AdminUsersGroupActionTypes } from './actionTypes';
-import { IUsersGroupState } from './types';
+import { ActionTypeKeys, TUsersGroupActionTypes } from './actionTypes';
+import { IUsersGroupsState } from './types';
 
-export const usersGroupInitialState:
-  seamlessImmutable.ImmutableObject<IUsersGroupState> = Immutable({
-    allActiveUsers: Immutable([]),
-    groupPermissions: Immutable([]),
+export const usersGroupsInitialState:
+  seamlessImmutable.ImmutableObject<IUsersGroupsState> = Immutable({
+    groups: Immutable([]),
+    members: Immutable([]),
+    permissions: Immutable([]),
     uiItems: Immutable([]),
-    userGroupMembers: Immutable([]),
-    usersGroups: Immutable([]),
+    users: Immutable([]),
   });
 
-const usersGroupReducer = (state = usersGroupInitialState, action: AdminUsersGroupActionTypes) => {
+const usersGroupsReducer = (state = usersGroupsInitialState, action: TUsersGroupActionTypes) => {
   switch (action.type) {
     case ActionTypeKeys.GET_USERS_GROUPS_FULFILLED:
-      return state.set('usersGroups', action.payload.users_group);
+      return state.set('groups', action.payload.users_group);
 
     case ActionTypeKeys.GET_USERS_GROUP_MEMBERS_FULFILLED:
-      return state.set('userGroupMembers', action.payload.user_group_members);
+      return state.set('members', action.payload.user_group_members);
 
     case ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS_FULFILLED:
-      return state.set('groupPermissions', action.payload.group_permissions);
+      return state.set('permissions', action.payload.group_permissions);
 
-    case ActionTypeKeys.GET_ACTIVE_USERS_FULFILLED:
-      return state.set('allActiveUsers', action.payload.active_users);
+    case ActionTypeKeys.GET_USERS_GROUP_USERS_FULFILLED:
+      return state.set('users', action.payload.active_users);
 
     case ActionTypeKeys.GET_USERS_GROUP_UI_ITEMS_FULFILLED:
       return state.set('uiItems', action.payload.ui_items);
 
     case ActionTypeKeys.RESET_USERS_GROUPS:
-      return state = usersGroupInitialState;
+      return state = usersGroupsInitialState;
 
     default:
       return state;
   }
 };
 
-export default usersGroupReducer;
+export default usersGroupsReducer;

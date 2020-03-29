@@ -1,8 +1,8 @@
 import {
   AdminUsersGroupDataResp,
-  IUserGroupUiItems,
   IUsersGroupMembersData,
   IUsersGroupPermissionsData,
+  IUsersGroupUiItems,
   IUsersGroupUsersData,
 } from './types';
 
@@ -17,9 +17,9 @@ export enum ActionTypeKeys {
   GET_USERS_GROUP_MEMBERS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_MEMBERS_FULFILLED',
   GET_USERS_GROUP_MEMBERS_REJECTED = 'admin/usersGroups/GET_USERS_GROUP_MEMBERS_REJECTED',
 
-  GET_ACTIVE_USERS = 'admin/usersGroups/GET_ACTIVE_USERS',
-  GET_ACTIVE_USERS_FULFILLED = 'admin/usersGroups/GET_ACTIVE_USERS_FULFILLED',
-  GET_ACTIVE_USERS_REJECTED = 'admin/usersGroups/GET_ACTIVE_USERS_REJECTED',
+  GET_USERS_GROUP_USERS = 'admin/usersGroups/GET_USERS_GROUP_USERS',
+  GET_USERS_GROUP_USERS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_USERS_FULFILLED',
+  GET_USERS_GROUP_USERS_REJECTED = 'admin/usersGroups/GET_USERS_GROUP_USERS_REJECTED',
 
   GET_USERS_GROUP_UI_ITEMS = 'admin/usersGroups/GET_USERS_GROUP_UI_ITEMS',
   GET_USERS_GROUP_UI_ITEMS_FULFILLED = 'admin/usersGroups/GET_USERS_GROUP_UI_ITEMS_FULFILLED',
@@ -117,7 +117,7 @@ export interface IGetUsersGroupUiItemsAction {
 }
 
 export interface IGetUsersGroupUiItemsFulfilledAction {
-  readonly payload: IUserGroupUiItems;
+  readonly payload: IUsersGroupUiItems;
   readonly type: ActionTypeKeys.GET_USERS_GROUP_UI_ITEMS_FULFILLED;
 }
 
@@ -147,17 +147,17 @@ export interface IGetUsersGroupMembersRejectedAction {
 
 export interface IGetUsersGroupUsersAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_ACTIVE_USERS;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_USERS;
 }
 
 export interface IGetUsersGroupUsersActionFulfilledAction {
   readonly payload: IUsersGroupUsersData;
-  readonly type: ActionTypeKeys.GET_ACTIVE_USERS_FULFILLED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_USERS_FULFILLED;
 }
 
 export interface IGetUsersGroupUsersActionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_ACTIVE_USERS_REJECTED;
+  readonly type: ActionTypeKeys.GET_USERS_GROUP_USERS_REJECTED;
 }
 
 /** Get users group permissions action interfaces */
@@ -228,19 +228,19 @@ export interface IAddUsersGroupPermissionsRejectedAction {
   readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_REJECTED;
 }
 
-/** Add user to the users group action interfaces */
+/** Add member to the users group action interfaces */
 
-export interface IAddUsersGroupUserAction {
+export interface IAddUsersGroupMemberAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER;
 }
 
-export interface IAddUsersGroupUserFulfilledAction {
+export interface IAddUsersGroupMemberFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_FULFILLED;
 }
 
-export interface IAddUsersGroupUserRejectedAction {
+export interface IAddUsersGroupMemberRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_USERS_GROUP_MEMBER_REJECTED;
 }
@@ -251,8 +251,8 @@ export interface IResetUsersGroupsAction {
   readonly type: ActionTypeKeys.RESET_USERS_GROUPS;
 }
 
-export type AdminUsersGroupActionTypes =
-  | IAddUsersGroupUserFulfilledAction
+export type TUsersGroupActionTypes =
+  | IAddUsersGroupMemberFulfilledAction
   | IAddUsersGroupPermissionsFulfilledAction
   | IAddUsersGroupActionFulfilledAction
   | IDeleteUsersGroupPermissionFulfilledAction

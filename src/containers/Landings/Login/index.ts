@@ -7,26 +7,21 @@ import Login from './Login';
 import { formNamesConst } from 'consts';
 
 import {
-  AuthActionTypes,
-  createLoadingSelector,
   handleUserLogin,
+  isEnteringAuthKeySelector,
+  isLoggingInSelector,
   isMessageModalSelector,
   StoreState,
 } from 'store';
 
 import { storageUtil } from 'utils';
 
-const loadingSelector = createLoadingSelector([
-  AuthActionTypes.USER_LOGIN,
-  AuthActionTypes.USER_ENTER_AUTH_KEY,
-]);
-
 const formSelector = formValueSelector(formNamesConst.USER_LOGIN);
 
 const userName = storageUtil.getUserName();
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isEnteringAuthKeySelector(state) || isLoggingInSelector(state),
   isMessageModal: isMessageModalSelector(state),
   isPasswordFocus: !!userName,
   initialValues: {

@@ -7,11 +7,11 @@ import { CheckboxField, NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface DebitDetailsProps {
+interface IDebitDetails {
   isReadOnly: boolean;
 }
 
-const DebitDetails: React.FC<DebitDetailsProps> = ({ isReadOnly }) => {
+const DebitDetails: React.FC<IDebitDetails> = ({ isReadOnly }) => {
   return (
     <Box mx="-8px">
       <Flex

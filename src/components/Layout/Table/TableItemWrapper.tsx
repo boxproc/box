@@ -1,6 +1,6 @@
 import styled from 'theme';
 
-interface TableItemWrapperProps {
+interface ITableItemWrapper {
   color?: string;
   isAccentColor?: boolean;
   isDate?: boolean;
@@ -11,7 +11,7 @@ interface TableItemWrapperProps {
   textRight?: boolean;
 }
 
-export const TableItemWrapper = styled.div<TableItemWrapperProps>`
+export const TableItemWrapper = styled.div<ITableItemWrapper>`
   height: 100%;
   width: 100%;
   display: flex;

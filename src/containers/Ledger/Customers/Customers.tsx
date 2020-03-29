@@ -20,7 +20,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-export interface CustomersProps {
+interface ICustomers {
   currentCustomerName: string;
   currentId: number;
   customers: ImmutableArray<LedgerCustomerItemPrepared>;
@@ -36,7 +36,7 @@ export interface CustomersProps {
   resetCustomers: ResetCustomers;
 }
 
-const Customers: React.FC<CustomersProps> = ({
+const Customers: React.FC<ICustomers> = ({
   institutionsOptions,
   customers,
   filterCustomers,

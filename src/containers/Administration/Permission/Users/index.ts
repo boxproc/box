@@ -13,8 +13,8 @@ import {
   isFilteringUsersSelector,
   isUpdatingUserSelector,
   resetUsers,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
   usersSelector,
 } from 'store';
 
@@ -24,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   currentUserId: activeItemIdSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   users: usersSelector(state),
   isLoading: loadingSelector(state)
     || isAddingUserSelector(state)

@@ -12,7 +12,7 @@ import { HandleGetProductRule, HandleUpdateProductRules } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface RulesFormProps {
+interface IRulesForm {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
@@ -27,10 +27,9 @@ interface RulesFormProps {
   isLoading: boolean;
 }
 
-type RulesFormPropsAllProps = RulesFormProps &
-  InjectedFormProps<{}, RulesFormProps>;
+type TRulesForm = IRulesForm & InjectedFormProps<{}, IRulesForm>;
 
-const RulesForm: React.FC<RulesFormPropsAllProps> = ({
+const RulesForm: React.FC<TRulesForm> = ({
   handleSubmit,
   onCancel,
   getProductRule,
@@ -159,7 +158,7 @@ const RulesForm: React.FC<RulesFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, RulesFormProps>({
+export default reduxForm<{}, IRulesForm>({
   form: formNamesConst.PRODUCT_RULES,
   destroyOnUnmount: true,
   enableReinitialize: true,

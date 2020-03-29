@@ -24,7 +24,7 @@ import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface GeneralAccountInfoProps {
+interface IGeneralAccountInfo {
   institutionsOptions: Array<ISelectValue>;
   institutionProductsOptions: Array<ISelectValue>;
   statusesOptions: Array<ISelectValue>;
@@ -43,7 +43,7 @@ export interface GeneralAccountInfoProps {
   onCancel: () => void;
 }
 
-const GeneralAccountInfo: React.FC<GeneralAccountInfoProps> = ({
+const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
   institutionsOptions,
   currentInstitution,
   institutionProductsOptions,

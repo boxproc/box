@@ -17,12 +17,12 @@ const ProductWrapper = styled(Box)`
   max-width: 500px;
 `;
 
-interface ProductsFilterProps {
+interface IProductsFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const ProductsFilter: React.FC<ProductsFilterProps> = ({
+const ProductsFilter: React.FC<IProductsFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

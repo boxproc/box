@@ -15,7 +15,7 @@ import { endpointsModals } from 'containers/Administration/Endpoints/modals';
 import { institutionsModals } from 'containers/Administration/Institutions/modals';
 import { interfacesModals } from 'containers/Administration/Interfaces/modals';
 import { usersModals } from 'containers/Administration/Permission/Users/modals';
-import { usersGroupModals } from 'containers/Administration/Permission/UsersGroup/modals';
+import { usersGroupModals } from 'containers/Administration/Permission/UsersGroups/modals';
 import { schedulerModals } from 'containers/Administration/Scheduler/modals';
 import { systemPropertiesModals } from 'containers/Administration/SystemProperties/modals';
 import { apiCallsModals } from 'containers/Audit/ApiCalls/modals';

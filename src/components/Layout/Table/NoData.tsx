@@ -23,12 +23,12 @@ const NoDataWrapper = styled.div`
   }
 `;
 
-interface NoDataProps {
+interface INoData {
   hint?: string | React.ReactChild;
   title?: string;
 }
 
-export const TableNoData: React.FC<NoDataProps> = ({
+export const TableNoData: React.FC<INoData> = ({
   hint,
   title = 'No data found',
 }) => (

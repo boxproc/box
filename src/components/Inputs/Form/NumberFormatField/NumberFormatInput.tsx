@@ -4,10 +4,9 @@ import NumberFormat from 'react-number-format';
 import styled from 'theme';
 
 import { sharedInputCss } from './../sharedInputCss';
+import { ICommonInput } from './../types';
 
-import { InputCommonProps } from './../types';
-
-const Wrapper = styled.div<InputCommonProps>`
+const Wrapper = styled.div<ICommonInput>`
   input {
     ${sharedInputCss};
 
@@ -23,7 +22,7 @@ const Wrapper = styled.div<InputCommonProps>`
   }
 `;
 
-interface NumberFormatInputProps extends InputCommonProps {
+interface INumberFormatInput extends ICommonInput {
   decimalScale?: number;
   fixedDecimalScale?: boolean;
   invalid?: boolean;
@@ -31,7 +30,7 @@ interface NumberFormatInputProps extends InputCommonProps {
   value: string | number;
 }
 
-const NumberFormatInput: React.FC<NumberFormatInputProps> = ({
+const NumberFormatInput: React.FC<INumberFormatInput> = ({
   defaultValue,
   invalid,
   isEditableCellStyle,

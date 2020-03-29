@@ -11,7 +11,7 @@ import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
 import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store';
 
-interface InfoAccountModalProps extends IWithModal {
+interface IInfoAccountModal extends IWithModal {
   currentCard: Partial<LedgerCardItemPrepared>;
   activateCard: HandleActivateLedgerCard;
   currentStatus: number;
@@ -23,7 +23,7 @@ interface InfoAccountModalProps extends IWithModal {
 
 const modalName = modalNamesConst.INFO_CARDS;
 
-const InfoAccountModal: React.FC<InfoAccountModalProps> = ({
+const InfoAccountModal: React.FC<IInfoAccountModal> = ({
   closeModal,
   currentCard,
   activateCard,

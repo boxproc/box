@@ -20,7 +20,7 @@ import {
   userStatusWith2faOptions,
 } from 'consts';
 
-import { InstitutionItem, THandleAddUser, THandleUpdateUser } from 'store';
+import { IUserInstitution, THandleAddUser, THandleUpdateUser } from 'store';
 
 import { ISelectValue } from 'types';
 
@@ -28,7 +28,7 @@ import { formErrorUtil } from 'utils';
 
 interface IUserForm {
   addUser: THandleAddUser;
-  institutions: ImmutableArray<InstitutionItem>;
+  institutions: ImmutableArray<IUserInstitution>;
   institutionsOptions: Array<ISelectValue>;
   institutionValue: ISelectValue;
   isEditMode?: boolean;

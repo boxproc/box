@@ -4,10 +4,10 @@ import { TableCell, TableHeader } from 'components';
 
 import { IDictionaryTransactionTypePrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof IDictionaryTransactionTypePrepared> =
-  ITableCellType<IDictionaryTransactionTypePrepared[T]>;
+  ITableCell<IDictionaryTransactionTypePrepared[T]>;
 
 export const tableColumns = [
   {

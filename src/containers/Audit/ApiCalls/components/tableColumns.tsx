@@ -4,9 +4,9 @@ import { TableCell, TableHeader } from 'components';
 
 import { ApiCallsItemPrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof ApiCallsItemPrepared> = ITableCellType<ApiCallsItemPrepared[T]>;
+type TCell<T extends keyof ApiCallsItemPrepared> = ITableCell<ApiCallsItemPrepared[T]>;
 
 export const tableColumns = [
   {

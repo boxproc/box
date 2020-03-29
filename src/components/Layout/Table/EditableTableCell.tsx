@@ -7,7 +7,7 @@ import { TableCell } from './TableCell';
 
 import { ISelectValue } from 'types';
 
-interface EditableTableCellProps {
+interface IEditableTableCell {
   cellInfo: CellInfo;
   isDecimalNumber?: boolean;
   isEditable?: boolean;
@@ -18,7 +18,7 @@ interface EditableTableCellProps {
   updateAction: (data: object) => void;
 }
 
-const EditableTableCell: React.FC<EditableTableCellProps> = ({
+const EditableTableCell: React.FC<IEditableTableCell> = ({
   cellInfo,
   isDecimalNumber,
   isEditable = true,

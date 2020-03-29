@@ -5,20 +5,20 @@ import EndpointForm from './EndpointForm';
 
 import {
   activeItemIdSelector,
+  endpointTypesOptionsSelector,
   handleAddEndpoint,
   handleDeleteEndpoint,
   handleGetDictionaryEndpointTypes,
   handleUpdateEndpoint,
   isLoadingEndpointsTypesSelector,
   isUpdatingEndpointSelector,
-  selectEndpointTypesOptions,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: isUpdatingEndpointSelector(state),
   isLoadingTypesSelector: isLoadingEndpointsTypesSelector(state),
-  endpointTypesOptions: selectEndpointTypesOptions(state),
+  endpointTypesOptions: endpointTypesOptionsSelector(state),
   currentEndpointId: activeItemIdSelector(state),
 });
 

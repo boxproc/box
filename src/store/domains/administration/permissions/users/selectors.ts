@@ -4,7 +4,7 @@ import { userStatusWith2faOptions } from 'consts';
 
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './utils';
@@ -13,7 +13,7 @@ export const defaultUsersSelector = (state: StoreState) => state.administration.
 
 export const usersSelector = createSelector(
   defaultUsersSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (users, institutions) => users && users.map(user => {
     const institution = institutions.find(el => el.value === user.institution_id);
 
@@ -28,7 +28,7 @@ export const usersSelector = createSelector(
 export const currentUserSelector = createSelector(
   defaultUsersSelector,
   activeItemIdSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (users, currentId, institutions) => {
     const currentUser = users && users.find(user => user.id === currentId);
     const institution = institutions.find(el => el.value === currentUser.institution_id);

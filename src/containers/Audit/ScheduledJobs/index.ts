@@ -12,9 +12,9 @@ import {
   selectAuditScheduledJobs,
   selectAuditScheduledJobsSchedulerId,
   selectAuditScheduledJobsSchedulerName,
-  selectInstitutionsOptions,
   StoreState,
   SystemMonitorActionTypes,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -24,7 +24,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   scheduledJobs: selectAuditScheduledJobs(state),
   currentSchedulerId: selectAuditScheduledJobsSchedulerId(state),
   currentScheduledJobName: selectAuditScheduledJobsSchedulerName(state),

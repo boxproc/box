@@ -10,7 +10,7 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { LedgerAccountItemDetailsPrepared } from 'store';
 
-interface EditAccountModalProps extends IWithModal {
+interface IEditAccountModal extends IWithModal {
   currentAccountAlias: string;
   currentAccount: Partial<LedgerAccountItemDetailsPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
@@ -20,7 +20,7 @@ interface EditAccountModalProps extends IWithModal {
 
 const modalName = modalNamesConst.EDIT_ACCOUNT;
 
-const EditAccountModal: React.FC<EditAccountModalProps> = ({
+const EditAccountModal: React.FC<IEditAccountModal> = ({
   closeModal,
   currentAccountAlias,
   currentAccount,

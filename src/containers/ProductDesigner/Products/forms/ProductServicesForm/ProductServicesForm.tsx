@@ -2,12 +2,7 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import {
-  ExternalSpinnerProps,
-  Hr,
-  OkCancelButtons,
-  withSpinner,
-} from 'components';
+import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -19,9 +14,9 @@ import {
 import { Services } from 'containers/ProductDesigner/Products/components';
 import { ISelectValue } from 'types';
 
-interface ServicesFormProps extends ExternalSpinnerProps {
+interface IServicesForm extends ISpinner {
   onCancel?: () => void;
-  currentUserGroupId: number;
+  currentUsersGroupId: number;
   currentInstitutionId: number;
   updateCardService: HandleUpdateCardService;
   productEndpointsServiceOptions: Array<ISelectValue>;
@@ -32,11 +27,10 @@ interface ServicesFormProps extends ExternalSpinnerProps {
   isReadOnly: boolean;
 }
 
-type ServicesFormAllProps = ServicesFormProps &
-  InjectedFormProps<{}, ServicesFormProps>;
+type TServicesForm = IServicesForm & InjectedFormProps<{}, IServicesForm>;
 
-const ServicesForm: React.FC<ServicesFormAllProps> = ({
-  currentUserGroupId,
+const ServicesForm: React.FC<TServicesForm> = ({
+  currentUsersGroupId,
   currentInstitutionId,
   updateCardService,
   handleSubmit,
@@ -53,7 +47,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateCardService({
       ...data,
-      id: currentUserGroupId,
+      id: currentUsersGroupId,
     })),
     [handleSubmit, updateCardService]
   );
@@ -82,7 +76,7 @@ const ServicesForm: React.FC<ServicesFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, ServicesFormProps>({
+export default reduxForm<{}, IServicesForm>({
   form: formNamesConst.PRODUCT_SERVICES,
   destroyOnUnmount: true,
   enableReinitialize: true,

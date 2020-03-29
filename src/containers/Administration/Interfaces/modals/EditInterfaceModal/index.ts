@@ -8,8 +8,8 @@ import EditInterfaceModal from './EditInterfaceModal';
 import {
   currentInterfaceNameSelector,
   currentInterfaceSelector,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.INTERFACE);
@@ -17,7 +17,7 @@ const dirty = isDirty(formNamesConst.INTERFACE);
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   currentInterface: currentInterfaceSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentInterfaceName: currentInterfaceNameSelector(state),
 });
 

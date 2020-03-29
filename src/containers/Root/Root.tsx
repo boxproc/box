@@ -4,12 +4,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import styled from 'theme';
 
-import {
-  Container,
-  ExternalSpinnerProps,
-  Footer,
-  PrivateRoute,
-} from 'components';
+import { Container, Footer, ISpinner, PrivateRoute } from 'components';
 
 import { basePath } from 'consts';
 
@@ -33,11 +28,11 @@ const PagesWrapper = styled(Container)`
   padding-top: 15px;
 `;
 
-interface RootProps extends ExternalSpinnerProps {
+interface IRoot extends ISpinner {
   visibleUiItemsList: ImmutableArray<string>;
 }
 
-const Root: React.FC<RootProps> = ({ visibleUiItemsList }) => {
+const Root: React.FC<IRoot> = ({ visibleUiItemsList }) => {
   const isLoggedIn = storageUtil.getLoginFlag();
 
   const routes = React.useMemo(

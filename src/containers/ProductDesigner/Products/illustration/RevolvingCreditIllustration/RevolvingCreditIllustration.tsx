@@ -12,7 +12,7 @@ import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTabl
 
 import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store';
 
-interface IllustrationProductFormProps extends IWithLoadTransactionTypes {
+interface IRevolvingCreditIllustration extends IWithLoadTransactionTypes {
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
   resetProductIllustration: ResetProductIllustration;
   initialFormValues: object;
@@ -22,7 +22,7 @@ interface IllustrationProductFormProps extends IWithLoadTransactionTypes {
   isLoading: boolean;
 }
 
-const RevolvingCreditIllustration: React.FC<IllustrationProductFormProps> = ({
+const RevolvingCreditIllustration: React.FC<IRevolvingCreditIllustration> = ({
   illustrateRevolvingCreditProduct,
   initialFormValues,
   transactionTypesOptions,

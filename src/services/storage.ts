@@ -37,10 +37,3 @@ export class Storage implements IStorage {
     );
   }
 }
-
-export interface StorageProps {
-  get: (key: string) => void;
-  setInSession: (data: object) => void;
-  setInLocal: (data: object) => void;
-  clear: (keys: Array<string>) => boolean;
-}

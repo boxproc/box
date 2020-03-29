@@ -2,8 +2,8 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import {
-  ExternalSpinnerProps,
   Hr,
+  ISpinner,
   OkCancelButtons,
   Tabs,
   TabsPanel,
@@ -18,7 +18,7 @@ import { HandleAddProduct } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface AddProductFormProps extends ExternalSpinnerProps {
+interface IAddProductForm extends ISpinner {
   currentProductType: ISelectValue;
   addProduct: HandleAddProduct;
   currentInstitution: ISelectValue;
@@ -26,9 +26,9 @@ interface AddProductFormProps extends ExternalSpinnerProps {
   onCancel: () => void;
 }
 
-type AddProductFormAllProps = AddProductFormProps & InjectedFormProps<{}, AddProductFormProps>;
+type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
 
-const AddProductForm: React.FC<AddProductFormAllProps> = ({
+const AddProductForm: React.FC<TAddProductForm> = ({
   currentProductType,
   addProduct,
   onCancel,
@@ -79,7 +79,7 @@ const AddProductForm: React.FC<AddProductFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AddProductFormProps>({
+export default reduxForm<{}, IAddProductForm>({
   form: formNamesConst.ADD_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,

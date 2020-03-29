@@ -11,7 +11,7 @@ import { iconNamesConst, modalNamesConst } from 'consts';
 
 import { storageUtil } from 'utils';
 
-interface HomeProps extends IWithModal { }
+interface IHome extends IWithModal { }
 
 const CenterBlock = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ const CenterBlock = styled.div`
   justify-content: center;
 `;
 
-const Home: React.FC<HomeProps> = ({ openModal }) => {
+const Home: React.FC<IHome> = ({ openModal }) => {
   React.useEffect(
     () => {
       return () => storageUtil.removeFirstScreenFlag();

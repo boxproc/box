@@ -11,7 +11,7 @@ import { HandleGetAuditUsers } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface UserActivityFilterProps {
+interface IUserActivityFilter {
   institutionsOptions: Array<ISelectValue>;
   getAuditUsers: HandleGetAuditUsers;
   currentInstitution: ISelectValue;
@@ -20,7 +20,7 @@ interface UserActivityFilterProps {
   isDisabled: boolean;
 }
 
-const UserActivityFilter: React.FC<UserActivityFilterProps> = ({
+const UserActivityFilter: React.FC<IUserActivityFilter> = ({
   auditUsersOptions,
   institutionsOptions,
   getAuditUsers,

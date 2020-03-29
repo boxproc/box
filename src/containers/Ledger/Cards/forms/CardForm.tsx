@@ -7,11 +7,11 @@ import { InputField } from 'components';
 
 import { formNamesConst } from 'consts';
 
-interface CardFormProps {}
+interface ICardForm {}
 
-type DefineCardFormAllProps = CardFormProps & InjectedFormProps<{}, CardFormProps>;
+type TCardForm = ICardForm & InjectedFormProps<{}, ICardForm>;
 
-const CardForm: React.FC<DefineCardFormAllProps> = () => {
+const CardForm: React.FC<TCardForm> = () => {
   return (
     <form >
       <Box mx="-8px" >
@@ -74,8 +74,8 @@ const CardForm: React.FC<DefineCardFormAllProps> = () => {
   );
 };
 
-export default reduxForm<{}, CardFormProps>({
-  form: formNamesConst.CARDS,
+export default reduxForm<{}, ICardForm>({
+  form: formNamesConst.CARD,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(CardForm);

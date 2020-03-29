@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { Button, Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
 import { EndpointFields } from 'containers/Administration/Endpoints/components';
 
@@ -16,7 +16,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface IEndpointForm extends ExternalSpinnerProps {
+interface IEndpointForm extends ISpinner {
   addEndpoint: THandleAddEndpoint;
   currentEndpointId: number;
   currentEndpointName: string;

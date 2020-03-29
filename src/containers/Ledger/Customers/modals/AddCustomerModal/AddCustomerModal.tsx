@@ -7,13 +7,13 @@ import { modalNamesConst } from 'consts';
 
 import { CustomerForm } from 'containers/Ledger/Customers/forms';
 
-interface AddCustomerModalProps extends IWithModal {
+interface IAddCustomerModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_CUSTOMER;
 
-const AddCustomerModal: React.FC<AddCustomerModalProps> = ({
+const AddCustomerModal: React.FC<IAddCustomerModal> = ({
   closeModal,
   isFormDirty,
 }) => {

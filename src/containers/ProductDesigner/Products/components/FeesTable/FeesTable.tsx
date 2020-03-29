@@ -23,11 +23,11 @@ import {
   ProductFee,
 } from 'store';
 
-import { ISelectValue, ITableCellType } from 'types';
+import { ISelectValue, ITableCell } from 'types';
 
-type TCell<T extends keyof ProductFee> = ITableCellType<ProductFee[T]>;
+type TCell<T extends keyof ProductFee> = ITableCell<ProductFee[T]>;
 
-interface FeesTableProps {
+interface IFeesTable {
   productFees: ImmutableArray<ProductFee>;
   aprsOptions: Array<ISelectValue>;
   getProductFeeApr: HandleGetProductFeeAprs;
@@ -38,7 +38,7 @@ interface FeesTableProps {
   isLoading: boolean;
 }
 
-const FeesTable: React.FC<FeesTableProps> = ({
+const FeesTable: React.FC<IFeesTable> = ({
   aprsOptions,
   productFees,
   getProductFees,

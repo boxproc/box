@@ -25,11 +25,11 @@ const SystemMonitorBoxWrapper = styled.div`
   }
 `;
 
-interface SystemMonitorBoxProps {
+interface ISystemMonitorBox {
   isLoading: boolean;
 }
 
-const SystemMonitorBox: React.FC<SystemMonitorBoxProps> = ({
+const SystemMonitorBox: React.FC<ISystemMonitorBox> = ({
   children,
   isLoading,
 }) => {

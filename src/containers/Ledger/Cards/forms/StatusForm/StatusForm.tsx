@@ -10,7 +10,7 @@ import { formNamesConst } from 'consts';
 import { HandleChangeLedgerCardStatus, THandleGetDictionaryCardStatuses } from 'store';
 import { ISelectValue } from 'types';
 
-interface StatusFormProps {
+interface IStatusForm {
   getDictionaryCardStatuses: THandleGetDictionaryCardStatuses;
   changeCardStatus: HandleChangeLedgerCardStatus;
   cardStatusesOptions: Array<ISelectValue>;
@@ -20,9 +20,9 @@ interface StatusFormProps {
   statusValue: ISelectValue;
 }
 
-type StatusFormAllProps = StatusFormProps & InjectedFormProps<{}, StatusFormProps>;
+type TStatusForm = IStatusForm & InjectedFormProps<{}, IStatusForm>;
 
-const StatusForm: React.FC<StatusFormAllProps> = ({
+const StatusForm: React.FC<TStatusForm> = ({
   getDictionaryCardStatuses,
   cardStatusesOptions,
   changeCardStatus,
@@ -79,7 +79,7 @@ const StatusForm: React.FC<StatusFormAllProps> = ({
   );
 };
 
-export default withSpinner()(reduxForm<{}, StatusFormProps>({
+export default withSpinner()(reduxForm<{}, IStatusForm>({
   form: formNamesConst.CHANGE_CARD_STATUS,
   destroyOnUnmount: true,
   enableReinitialize: true,

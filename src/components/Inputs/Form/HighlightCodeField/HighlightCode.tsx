@@ -15,7 +15,7 @@ import { EditorWrapper } from './EditorWrapper';
 
 import { IContextMenuItem, TContextSubMenu } from 'types';
 
-interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+interface IHighlightCode extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   contextMenuItems?: Array<IContextMenuItem>;
   contextSubMenuItems?: TContextSubMenu;
   fontSize?: number;
@@ -29,7 +29,7 @@ interface HighlightCodeProps extends React.InputHTMLAttributes<HTMLTextAreaEleme
   whiteSpacePre?: boolean;
 }
 
-const HighlightCode: React.FC<HighlightCodeProps> = ({
+const HighlightCode: React.FC<IHighlightCode> = ({
   contextMenuItems,
   contextSubMenuItems,
   fontSize,

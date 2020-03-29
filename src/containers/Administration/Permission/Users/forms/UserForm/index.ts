@@ -8,16 +8,16 @@ import UserForm from './UserForm';
 import {
   handleAddUser,
   handleUpdateUser,
-  selectInstitutions,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
+  userInstitutionsSelector,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.USER);
 
 const mapStateToProps = (state: StoreState) => ({
-  institutionsOptions: selectInstitutionsOptions(state),
-  institutions: selectInstitutions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
+  institutions: userInstitutionsSelector(state),
   requires2faFlagValue: formSelector(state, 'requires2faFlag'),
   statusValue: formSelector(state, 'status'),
   institutionValue: formSelector(state, 'institution'),

@@ -5,11 +5,11 @@ import { Box, Flex } from '@rebass/grid';
 
 import { InputField } from 'components';
 
-interface GeneralLedgerProps {
+interface IGeneralLedger {
   isReadOnly: boolean;
 }
 
-const GeneralLedger: React.FC<GeneralLedgerProps> = ({ isReadOnly }) => {
+const GeneralLedger: React.FC<IGeneralLedger> = ({ isReadOnly }) => {
   return (
     <Box mx="-8px">
       <Flex

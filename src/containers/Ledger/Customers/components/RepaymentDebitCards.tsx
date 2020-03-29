@@ -10,7 +10,7 @@ import { dateFormatConst, iconNamesConst, maskFormatConst, statusOptions } from 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface RepaymentDebitCardsProps {
+interface IRepaymentDebitCards {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
@@ -18,7 +18,7 @@ interface RepaymentDebitCardsProps {
   isInterfacesLoading: boolean;
 }
 
-const RepaymentDebitCards: React.FC<RepaymentDebitCardsProps> = ({
+const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
   isDisabled,
   pristine,
   isLoading,

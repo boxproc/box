@@ -6,12 +6,12 @@ import { formNamesConst } from 'consts';
 import EditAccountModal from './EditAccountModal';
 
 import {
-  selectInstitutionsOptions,
   selectLedgerCurrentAccount,
   selectLedgerCurrentAccountAlias,
   selectLedgerCurrentAccountAuxCounters,
   selectLedgerCurrentAccountProductType,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.ACCOUNT);
@@ -22,7 +22,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentAccount: selectLedgerCurrentAccount(state),
   currentAccountAuxCounters: selectLedgerCurrentAccountAuxCounters(state),
   currentProductType: selectLedgerCurrentAccountProductType(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 export default connect(

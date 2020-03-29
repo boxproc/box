@@ -3,8 +3,8 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 
-import { selectDictionaryRepaymentTypesOptions } from 'store/domains/administration';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/administration';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
 import {
@@ -18,7 +18,7 @@ export const selectDefaultLedgerAccounts = (state: StoreState) =>
 
 export const selectLedgerAccounts = createSelector(
   selectDefaultLedgerAccounts,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (items, institutions) => items && items.map(item => {
     const institution = institutions.find(el => el.value === item.institution_id);
 
@@ -45,10 +45,10 @@ export const selectLedgerCurrentAccountProductType = createSelector(
 
 export const selectLedgerCurrentAccount = createSelector(
   activeItemIdSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   selectInstitutionProductsOptions,
   selectDefaultLedgerAccounts,
-  selectDictionaryRepaymentTypesOptions,
+  dictionaryRepaymentTypesOptionsSelector,
   (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {
     const current = accounts.find(el => el.id === currentId);
     const repaymentType = current && current.repayment_type;

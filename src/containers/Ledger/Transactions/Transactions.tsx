@@ -23,7 +23,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface TransactionsProps extends IWithModal {
+interface ITransactions extends IWithModal {
   currentId: number;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterCardsById: HandleFilterLedgerCardsById;
@@ -38,7 +38,7 @@ export interface TransactionsProps extends IWithModal {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Transactions: React.FC<TransactionsProps> = ({
+const Transactions: React.FC<ITransactions> = ({
   currentId,
   filterAccountsById,
   filterCardsById,

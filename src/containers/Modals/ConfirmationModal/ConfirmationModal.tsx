@@ -7,13 +7,13 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { IPayloadConfirmationModal } from 'store';
 
-interface ConfirmationModalProps extends IWithModal {
+interface IConfirmationModal extends IWithModal {
   payloadConfirmModal: IPayloadConfirmationModal;
 }
 
 const modalName = modalNamesConst.CONFIRMATION;
 
-const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
+const ConfirmationModal: React.FC<IConfirmationModal> = ({
   closeModal,
   payloadConfirmModal,
 }) => {

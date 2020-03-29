@@ -13,9 +13,9 @@ import {
   handleFilterLedgerCards,
   LedgerCardsActionTypes,
   resetCards,
-  selectInstitutionsOptions,
   selectLedgerCards,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -26,7 +26,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   cards: selectLedgerCards(state),
   currentId: activeItemIdSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -9,7 +9,7 @@ import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, yesNoConst } from 'consts';
 
-import { HandleUserLogout } from 'store';
+import { THandleUserLogout } from 'store';
 import { storageUtil } from 'utils';
 
 const iconCss = css`
@@ -33,13 +33,13 @@ const TextWrapper = styled.div`
   letter-spacing: .2pt;
 `;
 
-interface UserDataProps {
+interface IUserData {
   isMasterInstitution: boolean;
   firstName: string;
   lastName: string;
 }
 
-const UserBlock: React.FC<UserDataProps> = ({
+const UserBlock: React.FC<IUserData> = ({
   isMasterInstitution,
   firstName,
   lastName,
@@ -53,11 +53,11 @@ const UserBlock: React.FC<UserDataProps> = ({
     </Flex>
   );
 
-interface UserDropdownProps extends IWithModal {
-  userLogout: HandleUserLogout;
+interface IUserDropdown extends IWithModal {
+  userLogout: THandleUserLogout;
 }
 
-const UserDropdown: React.FC<UserDropdownProps> = ({ userLogout, openModal }) => {
+const UserDropdown: React.FC<IUserDropdown> = ({ userLogout, openModal }) => {
   const userData = storageUtil.getUserData();
 
   const isChangePasswordAvailable = React.useMemo(

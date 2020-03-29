@@ -14,7 +14,7 @@ import {
   SystemProperties,
   TransactionTypes,
   Users,
-  UsersGroup,
+  UsersGroups,
 } from './Administration';
 
 import { Products } from 'containers/ProductDesigner';
@@ -74,7 +74,7 @@ export const pagesList = [
   },
   {
     path: uiItemsConst.ADMINISTRATION_USERS_GROUP,
-    component: <UsersGroup />,
+    component: <UsersGroups />,
   },
   {
     path: uiItemsConst.AUDIT_API_CALLS,

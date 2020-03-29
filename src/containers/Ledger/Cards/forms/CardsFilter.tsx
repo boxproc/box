@@ -8,12 +8,12 @@ import { InputField, SelectField } from 'components';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface CardsFilterProps {
+interface ICardsFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const CardsFilter: React.FC<CardsFilterProps> = ({
+const CardsFilter: React.FC<ICardsFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

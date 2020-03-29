@@ -13,11 +13,11 @@ import {
   handleFilterLedgerTransactions,
   LedgerTransactionsActionTypes,
   resetTransactions,
-  selectInstitutionsOptions,
   selectIsTransactionConvertibleToLoan,
   selectLedgerTransactions,
   selectUiItems,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -27,7 +27,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   transactions: selectLedgerTransactions(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentId: activeItemIdSelector(state),
   isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
   uiItems: selectUiItems(state),

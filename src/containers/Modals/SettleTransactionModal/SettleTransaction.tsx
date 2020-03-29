@@ -17,7 +17,7 @@ import {
   SettleTransactionFormValues,
 } from 'store';
 
-interface SettleTransactionModalProps extends IWithModal {
+interface ISettleTransactionModal extends IWithModal {
   retrievedTransaction: SettleTransactionFormValues;
   retrieveTransaction: HandleRetrieveTransaction;
   settleTransaction: HandleSettleTransaction;
@@ -31,7 +31,7 @@ interface SettleTransactionModalProps extends IWithModal {
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;
 
-const SettleTransactionModal: React.FC<SettleTransactionModalProps> = ({
+const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
   retrievedTransaction,
   retrieveTransaction,
   resetRetrievedTransaction,

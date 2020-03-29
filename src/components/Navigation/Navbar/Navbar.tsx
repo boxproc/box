@@ -26,11 +26,11 @@ const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-interface NavbarProps extends IWithModal {
+interface INavbar extends IWithModal {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
+const Navbar: React.FC<INavbar> = ({
   openModal,
   uiItems,
 }) => {

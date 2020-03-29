@@ -11,12 +11,12 @@ const CheckBoxWrapper = styled(Flex)`
   cursor: pointer;
 `;
 
-interface RefreshCheckboxProps {
+interface IRefreshCheckbox {
   value: boolean;
   onClick: () => void;
 }
 
-const RefreshCheckbox: React.FC<RefreshCheckboxProps> = ({
+const RefreshCheckbox: React.FC<IRefreshCheckbox> = ({
   value,
   onClick,
 }) => {

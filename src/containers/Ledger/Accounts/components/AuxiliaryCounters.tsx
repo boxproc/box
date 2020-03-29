@@ -9,7 +9,7 @@ import { LedgerAccountItemDetailsPrepared } from 'store';
 
 import { formErrorUtil } from 'utils';
 
-interface AuxiliaryCountersProps {
+interface IAuxiliaryCounters {
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
   isEditMode?: boolean;
   onCancel: () => void;
@@ -18,7 +18,7 @@ interface AuxiliaryCountersProps {
   isReadOnly: boolean;
 }
 
-const AuxiliaryCounters: React.FC<AuxiliaryCountersProps> = ({
+const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
   currentAccountAuxCounters,
   isEditMode,
   onCancel,

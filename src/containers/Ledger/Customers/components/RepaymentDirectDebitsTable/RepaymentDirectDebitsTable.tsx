@@ -12,17 +12,17 @@ import {
 
 import { HandleGetRepaymentDirectDebits, RepaymentDirectDebitsItemPrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof RepaymentDirectDebitsItemPrepared> =
-  ITableCellType<RepaymentDirectDebitsItemPrepared[T]>;
+  ITableCell<RepaymentDirectDebitsItemPrepared[T]>;
 
-interface RepaymentDirectDebitsTableProps {
+interface IRepaymentDirectDebitsTable {
   repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItemPrepared>;
   getRepaymentDirectDebits: HandleGetRepaymentDirectDebits;
 }
 
-const RepaymentDirectDebitsTable: React.FC<RepaymentDirectDebitsTableProps> = ({
+const RepaymentDirectDebitsTable: React.FC<IRepaymentDirectDebitsTable> = ({
   repaymentDirectDebits,
   getRepaymentDirectDebits,
 }) => {

@@ -11,7 +11,7 @@ import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from '
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-interface ApiCallsProps {
+interface IApiCalls {
   apiCalls: ImmutableArray<ApiCallsItemPrepared>;
   filterApiCalls: HandleFilterAuditApiCalls;
   institutionsOptions: Array<ISelectValue>;
@@ -19,7 +19,7 @@ interface ApiCallsProps {
   isLoading: boolean;
 }
 
-const ApiCalls: React.FC<ApiCallsProps> = ({
+const ApiCalls: React.FC<IApiCalls> = ({
   apiCalls,
   filterApiCalls,
   institutionsOptions,

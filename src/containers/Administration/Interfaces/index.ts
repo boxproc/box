@@ -15,9 +15,9 @@ import {
   isFilteringInterfacesSelector,
   isReadOnlySelector,
   resetInterfaces,
-  selectInstitutionsOptions,
   StoreState,
   SystemMonitorActionTypes,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -28,7 +28,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state)
     || isFilteringInterfacesSelector(state)
     || isDeletingInterfaceSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   interfaceItems: interfacesSelector(state),
   currentInterfaceName: currentInterfaceNameSelector(state),
   currentInterfaceId: activeItemIdSelector(state),

@@ -3,21 +3,18 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, ExternalSpinnerProps, InputField, withSpinner } from 'components';
-
+import { Button, InputField, ISpinner, withSpinner } from 'components';
 import { formNamesConst } from 'consts';
-
-import { HandleUserEnterAuthKey } from 'store';
-
+import { THandleUserEnterAuthKey } from 'store';
 import { formErrorUtil } from 'utils';
 
-interface CodeFormProps extends ExternalSpinnerProps {
-  userEnterAuthKey: HandleUserEnterAuthKey;
+interface ICodeForm extends ISpinner {
+  userEnterAuthKey: THandleUserEnterAuthKey;
 }
 
-type CodeFormPropsAllProps = CodeFormProps & InjectedFormProps<{}, CodeFormProps>;
+type TCodeForm = ICodeForm & InjectedFormProps<{}, ICodeForm>;
 
-const CodeForm: React.FC<CodeFormPropsAllProps> = ({
+const CodeForm: React.FC<TCodeForm> = ({
   handleSubmit,
   userEnterAuthKey,
   pristine,
@@ -53,7 +50,7 @@ const CodeForm: React.FC<CodeFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, CodeFormProps>({
+export default reduxForm<{}, ICodeForm>({
   form: formNamesConst.LOGIN_CODE,
   destroyOnUnmount: true,
   enableReinitialize: true,

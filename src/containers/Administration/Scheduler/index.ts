@@ -19,9 +19,9 @@ import {
   isSchedulerJobUpdatingSelector,
   resetScheduler,
   schedulerJobsSelector,
-  selectInstitutionsOptions,
   StoreState,
   SystemMonitorActionTypes,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -32,7 +32,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   currentSchedulerId: activeItemIdSelector(state),
   currentSchedulerName: currentSchedulerNameSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: loadingSelector(state)
     || isSchedulerJobsFilteringSelector(state)
     || isSchedulerJobUpdatingSelector(state)

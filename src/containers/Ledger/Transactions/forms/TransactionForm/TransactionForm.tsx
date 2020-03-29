@@ -13,14 +13,14 @@ import {
   CurrentTransactionGeneral,
 } from 'containers/Ledger/Transactions/components';
 
-interface TransactionFormProps {
+interface ITransactionForm {
   onCancel: () => void;
 }
 
-type TransactionsFilterFormAllProps = TransactionFormProps &
-  InjectedFormProps<{}, TransactionFormProps>;
+type TTransactionsFilterForm = ITransactionForm &
+  InjectedFormProps<{}, ITransactionForm>;
 
-const TransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
+const TransactionForm: React.FC<TTransactionsFilterForm> = ({
   onCancel,
 }) => {
   return (
@@ -49,7 +49,7 @@ const TransactionForm: React.FC<TransactionsFilterFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, TransactionFormProps>({
+export default reduxForm<{}, ITransactionForm>({
   form: formNamesConst.TRANSACTION,
   destroyOnUnmount: false,
   enableReinitialize: true,

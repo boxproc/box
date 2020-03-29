@@ -3,19 +3,14 @@ import { connect } from 'react-redux';
 import CustomerInfo from './CustomerInfo';
 
 import {
-  createLoadingSelector,
-  DictionaryActionTypes,
-  selectInstitutionsOptions,
+  isCountriesLoadingSelector,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_COUNTRIES,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isCountryCodesLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  isCountryCodesLoading: isCountriesLoadingSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 export default connect(

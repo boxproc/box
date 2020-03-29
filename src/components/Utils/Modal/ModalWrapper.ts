@@ -1,12 +1,12 @@
 import styled from 'theme';
 
-interface ModalWrapperProps {
+interface IModalWrapper {
   containerWidth?: string;
   minContainerHeight?: string;
   zIndex?: string;
 }
 
-export const ModalWrapper = styled.div<ModalWrapperProps>`
+export const ModalWrapper = styled.div<IModalWrapper>`
   position: fixed;
   top: 0;
   right: 0;

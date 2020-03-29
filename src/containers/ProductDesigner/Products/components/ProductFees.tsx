@@ -16,7 +16,7 @@ const numberFieldsValidators = [
   formErrorUtil.isPositive,
 ];
 
-interface ProductFeesProps {
+interface IProductFees {
   isDisabled: boolean;
   isLoading: boolean;
   isAprsLoading: boolean;
@@ -26,7 +26,7 @@ interface ProductFeesProps {
   aprsOptions: Array<ISelectValue>;
 }
 
-const ProductFees: React.FC<ProductFeesProps> = ({
+const ProductFees: React.FC<IProductFees> = ({
   isDisabled,
   isOnlyAmount,
   isAprsLoading,

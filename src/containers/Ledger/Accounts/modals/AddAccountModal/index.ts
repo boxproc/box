@@ -5,13 +5,13 @@ import { formNamesConst } from 'consts';
 
 import AddAccountModal from './AddAccountModal';
 
-import { selectInstitutionsOptions, StoreState } from 'store';
+import { StoreState, userInstitutionsOptionsSelector } from 'store';
 
 const dirty = isDirty(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 export default connect(

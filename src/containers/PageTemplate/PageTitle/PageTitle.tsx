@@ -5,14 +5,14 @@ import { Box, Flex } from '@rebass/grid';
 import { ExternalLink, T2 } from 'components';
 import { HandleGetHelpLink } from 'store';
 
-interface PageTitleProps {
+interface IPageTitle {
   getHelpLink: HandleGetHelpLink;
   helpLink: string;
   pageId: string;
   title: string;
 }
 
-export const PageTitle: React.FC<PageTitleProps> = ({
+export const PageTitle: React.FC<IPageTitle> = ({
   getHelpLink,
   helpLink,
   pageId,

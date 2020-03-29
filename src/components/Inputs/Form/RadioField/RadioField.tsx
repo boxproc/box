@@ -3,16 +3,16 @@ import { BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
 import Radio from './Radio';
 
-interface Option {
+interface IOption {
   label: string;
   value: string;
 }
 
-interface RadioFieldProps extends Partial<BaseFieldProps>, WrappedFieldProps {
-  option: Option;
+interface IRadioField extends Partial<BaseFieldProps>, WrappedFieldProps {
+  option: IOption;
 }
 
-export const RadioField: React.FC<RadioFieldProps> = ({
+export const RadioField: React.FC<IRadioField> = ({
   name,
   option,
   ...extraProps

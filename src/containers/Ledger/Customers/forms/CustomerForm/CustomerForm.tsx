@@ -1,10 +1,9 @@
 import React from 'react';
-
-import { Flex } from '@rebass/grid';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { Flex } from '@rebass/grid';
 
+import { Button, Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst, identificationTypesConst } from 'consts';
 
 import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
@@ -17,7 +16,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface EditCustomerFormProps extends ExternalSpinnerProps {
+interface IEditCustomerForm extends ISpinner {
   addCustomer: HandleAddLedgerCustomer;
   countryCodes: Array<ISelectValue>;
   currentCustomerName: string;
@@ -31,10 +30,9 @@ interface EditCustomerFormProps extends ExternalSpinnerProps {
   updateCustomer: HandleUpdateLedgerCustomer;
 }
 
-type EditCustomerFormAllProps = EditCustomerFormProps &
-  InjectedFormProps<{}, EditCustomerFormProps>;
+type TEditCustomerForm = IEditCustomerForm & InjectedFormProps<{}, IEditCustomerForm>;
 
-const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
+const EditCustomerForm: React.FC<TEditCustomerForm> = ({
   onCancel,
   handleSubmit,
   addCustomer,
@@ -116,7 +114,7 @@ const EditCustomerForm: React.FC<EditCustomerFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, EditCustomerFormProps>({
+export default reduxForm<{}, IEditCustomerForm>({
   form: formNamesConst.CUSTOMER,
   destroyOnUnmount: true,
   enableReinitialize: true,

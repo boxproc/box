@@ -6,13 +6,13 @@ import { scrollbarCss } from 'theme/styles';
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
 
-import { InvalidProp } from './types';
+import { IInvalidValue } from './types';
 
-interface TextareaProps extends InvalidProp, React.InputHTMLAttributes<HTMLTextAreaElement> {
+interface ITextarea extends IInvalidValue, React.InputHTMLAttributes<HTMLTextAreaElement> {
   height?: number;
 }
 
-const TextareaField = styled.textarea<TextareaProps>`
+const TextareaField = styled.textarea<ITextarea>`
   ${sharedInputCss};
   height: auto;
   min-height: ${({ height }) => height ? `${height}px` : '52px'};

@@ -36,7 +36,7 @@ import {
 } from 'store';
 import { cookiesUtil } from 'utils';
 
-interface SystemMonitorProps {
+interface ISystemMonitor {
   interfacesData: ImmutableArray<SystemMonitorItem>;
   endpointsData: ImmutableArray<SystemMonitorItem>;
   schedulerData: ImmutableArray<SystemMonitorSchedulerItem>;
@@ -53,7 +53,7 @@ interface SystemMonitorProps {
   resetSystemMonitor: ResetSystemMonitor;
 }
 
-interface SystemMonitorBlockProps {
+interface ISystemMonitorBlock {
   id: number;
   name: string;
   title: string;
@@ -63,7 +63,7 @@ interface SystemMonitorBlockProps {
   counts?: SystemMonitorCounts;
 }
 
-const SystemMonitor: React.FC<SystemMonitorProps> = ({
+const SystemMonitor: React.FC<ISystemMonitor> = ({
   getSystemMonitorData,
   resetSystemMonitor,
   interfacesData,
@@ -245,7 +245,7 @@ const SystemMonitor: React.FC<SystemMonitorProps> = ({
               width={[1 / 2]}
               px="20px"
             >
-              {el.map((block: Partial<SystemMonitorBlockProps>) => (
+              {el.map((block: Partial<ISystemMonitorBlock>) => (
                 <SystemMonitorBox
                   key={block.id}
                   isLoading={block.isLoading}

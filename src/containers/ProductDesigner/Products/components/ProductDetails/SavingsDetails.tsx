@@ -9,11 +9,11 @@ import { savingsTypesOptions } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-interface SavingsDetailsProps {
+interface ISavingsDetails {
   isReadOnly: boolean;
 }
 
-const SavingsDetails: React.FC<SavingsDetailsProps> = ({ isReadOnly }) => {
+const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
   return (
     <Box mx="-8px">
       <Flex

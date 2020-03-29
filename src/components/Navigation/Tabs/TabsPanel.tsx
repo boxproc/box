@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface TabsPanelProps {
+interface ITabsPanel {
   hasTabs?: boolean;
   hintIfDisabled?: string;
   isDisabled?: boolean;
@@ -8,7 +8,7 @@ interface TabsPanelProps {
   withConfirmation?: boolean;
 }
 
-const TabsPanel: React.FC<TabsPanelProps> = ({ children }) => (
+const TabsPanel: React.FC<ITabsPanel> = ({ children }) => (
   <div>{children}</div>
 );
 

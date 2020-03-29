@@ -48,13 +48,13 @@ export interface IUsersGroupMember {
   username: string;
 }
 
-export interface IUsersGroupMemberDeleteReqToSend {
+export interface IUsersGroupMemberReqToSend {
   user_group_id: number;
   user_id: string | number;
   username: ISelectValue;
 }
 
-export interface IUsersGroupMemberDeleteReq {
+export interface IUsersGroupMemberReq {
   userGroupId: number;
   userId:  string | number;
   username: ISelectValue;
@@ -86,12 +86,12 @@ export interface IUsersGroupPermission {
   userGroupId: number;
 }
 
-export interface IUserGroupUiItem {
+export interface IUsersGroupUiItem {
   ui_item: string;
 }
 
-export interface IUserGroupUiItems {
-  ui_items: Array<IUserGroupUiItem>;
+export interface IUsersGroupUiItems {
+  ui_items: Array<IUsersGroupUiItem>;
 }
 
 export interface IUsersGroupPermissionReq {
@@ -101,12 +101,12 @@ export interface IUsersGroupPermissionReq {
 }
 
 /**
- * Users group state interface
+ * Users groups state interface
  */
-export interface IUsersGroupState {
-  allActiveUsers: ImmutableArray<IUsersGroupMemberData>;
-  groupPermissions: ImmutableArray<IUsersGroupPermissionData>;
-  uiItems: ImmutableArray<IUserGroupUiItem>;
-  userGroupMembers: ImmutableArray<IUsersGroupMemberData>;
-  usersGroups: ImmutableArray<IUsersGroupData>;
+export interface IUsersGroupsState {
+  groups: ImmutableArray<IUsersGroupData>;
+  members: ImmutableArray<IUsersGroupMemberData>;
+  permissions: ImmutableArray<IUsersGroupPermissionData>;
+  uiItems: ImmutableArray<IUsersGroupUiItem>;
+  users: ImmutableArray<IUsersGroupMemberData>;
 }

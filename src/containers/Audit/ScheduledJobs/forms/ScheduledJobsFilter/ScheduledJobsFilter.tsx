@@ -12,7 +12,7 @@ import { THandleGetSchedulerNamesByInstId } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ScheduledJobsFilterProps {
+interface IScheduledJobsFilter {
   institutionsOptions: Array<ISelectValue>;
   getSchedulerNames: THandleGetSchedulerNamesByInstId;
   institutionValue: ISelectValue;
@@ -21,7 +21,7 @@ interface ScheduledJobsFilterProps {
   isDisabled: boolean;
 }
 
-const ScheduledJobsFilter: React.FC<ScheduledJobsFilterProps> = ({
+const ScheduledJobsFilter: React.FC<IScheduledJobsFilter> = ({
   institutionsOptions,
   institutionValue,
   getSchedulerNames,

@@ -4,14 +4,14 @@ import styled from 'theme';
 
 import { InfoCircleIcon } from './../Icons';
 
-interface HintWrapperProps {
+interface IHintWrapper {
   icon?: boolean;
   position?: string;
 }
 
 const hintShift = 'calc(100% + 3px)';
 
-const HintWrapper = styled.div<HintWrapperProps>`
+const HintWrapper = styled.div<IHintWrapper>`
   position: ${({ icon }) => icon ? 'relative' : 'absolute'};
   width: ${({ icon }) => icon ? 'auto' : '100%'};
   height: ${({ icon }) => icon ? 'auto' : '100%'};
@@ -62,13 +62,13 @@ const InfoButton = styled(InfoCircleIcon)`
   }
 `;
 
-interface HintProps {
+interface IHint {
   icon?: boolean;
   position?: 'top' | 'right' | 'bottom' | 'left';
   text: string | React.ReactChild;
 }
 
-const Hint: React.FC<HintProps> = ({
+const Hint: React.FC<IHint> = ({
   icon = true,
   position = 'right',
   text,

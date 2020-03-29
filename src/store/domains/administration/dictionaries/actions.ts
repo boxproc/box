@@ -20,17 +20,17 @@ import {
 } from './actionTypes';
 
 import {
-  selectIsAccountStatusesLoaded,
-  selectIsCardStatusesLoaded,
-  selectIsCountriesLoaded,
-  selectIsCurrenciesLoaded,
-  selectIsEndpointTypesLoaded,
-  selectIsInterfaceTypesLoaded,
-  selectIsRepaymentTypesLoaded,
-  selectIsTransTypesLoaded,
+  isAccountStatusesLoadedSelector,
+  isCardStatusesLoadedSelector,
+  isCountriesLoadedSelector,
+  isCurrenciesLoadedSelector,
+  isEndpointTypesLoadedSelector,
+  isInterfaceTypesLoadedSelector,
+  isRepaymentTypesLoadedSelector,
+  isStatementCycleTypesLoadedSelector,
+  isTransTypesLoadedSelector,
 } from 'store';
 
-import { selectIsStatementCycleTypesLoaded } from './selectors';
 import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterToSend } from './types';
 import { prepareDictionaryEventIdToSend } from './utils';
 
@@ -53,7 +53,7 @@ export const handleGetDictionaryAccountStatuses: THandleGetDictionaryAccountStat
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsAccountStatusesLoaded(getState())) {
+        if (!isAccountStatusesLoadedSelector(getState())) {
           await dispatch(getDictionaryAccountStatuses());
         }
       },
@@ -76,7 +76,7 @@ export const handleGetDictionaryCardStatuses: THandleGetDictionaryCardStatuses =
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsCardStatusesLoaded(getState())) {
+        if (!isCardStatusesLoadedSelector(getState())) {
           await dispatch(getDictionaryCardStatuses());
         }
       },
@@ -99,7 +99,7 @@ export const handleGetDictionaryEndpointTypes: THandleGetDictionaryEndpointTypes
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsEndpointTypesLoaded(getState())) {
+        if (!isEndpointTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryEndpointTypes());
         }
       },
@@ -122,7 +122,7 @@ export const handleGetDictionaryInterfaceTypes: THandleGetDictionaryInterfaceTyp
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsInterfaceTypesLoaded(getState())) {
+        if (!isInterfaceTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryInterfaceTypes());
         }
       },
@@ -145,7 +145,7 @@ export const handleGetDictionaryStatementCycleTypes: THandleGetDictionaryStateme
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsStatementCycleTypesLoaded(getState())) {
+        if (!isStatementCycleTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryStatementCycleTypes());
         }
       },
@@ -168,7 +168,7 @@ export const handleGetDictionaryRepaymentTypes: THandleGetDictionaryRepaymentTyp
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsRepaymentTypesLoaded(getState())) {
+        if (!isRepaymentTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryRepaymentTypes());
         }
       },
@@ -191,7 +191,7 @@ export const handleGetDictionaryTransactionTypes: THandleGetDictionaryTransactio
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsTransTypesLoaded(getState())) {
+        if (!isTransTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryTransactionTypes());
         }
       },
@@ -216,7 +216,7 @@ export const handleGetDictionaryCountries: THandleGetDictionaryCountries = () =>
       async () => {
         const state = getState();
 
-        if (!selectIsCountriesLoaded(state)) {
+        if (!isCountriesLoadedSelector(state)) {
           await dispatch(getDictionaryCountries());
         }
       },
@@ -239,7 +239,7 @@ export const handleGetDictionaryCurrencies: THandleGetDictionaryCurrencies = () 
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!selectIsCurrenciesLoaded(getState())) {
+        if (!isCurrenciesLoadedSelector(getState())) {
           await dispatch(getDictionaryCurrencies());
         }
       },

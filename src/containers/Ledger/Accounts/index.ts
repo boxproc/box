@@ -16,7 +16,6 @@ import {
   isReadOnlySelector,
   LedgerAccountsActionTypes,
   resetAccounts,
-  selectInstitutionsOptions,
   selectLedgerAccounts,
   selectLedgerCurrentAccountBalanceLimit,
   selectLedgerCurrentAccountBalanceLimitShared,
@@ -25,6 +24,7 @@ import {
   selectLedgerCurrentAccountProductOverrideId,
   selectUiItems,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -34,7 +34,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   accounts: selectLedgerAccounts(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
   productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
   currentId: activeItemIdSelector(state),

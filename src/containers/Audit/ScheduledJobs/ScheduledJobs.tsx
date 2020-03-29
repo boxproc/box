@@ -17,7 +17,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface ScheduledJobsProps {
+interface IScheduledJobs {
   institutionsOptions: Array<ISelectValue>;
   scheduledJobs: ImmutableArray <AuditScheduledJobsItemPrepared>;
   filterScheduledJobs: HandleFilterAuditScheduledJobs;
@@ -28,7 +28,7 @@ export interface ScheduledJobsProps {
   isLoading: boolean;
 }
 
-const ScheduledJobs: React.FC<ScheduledJobsProps> = ({
+const ScheduledJobs: React.FC<IScheduledJobs> = ({
   institutionsOptions,
   scheduledJobs,
   filterScheduledJobs,

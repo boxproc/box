@@ -9,16 +9,16 @@ import {
   handleDeleteInterface,
   handleGetDictionaryInterfaceTypes,
   handleUpdateInterface,
+  interfaceTypesOptionsSelector,
   isLoadingInterfacesTypesSelector,
   isUpdatingInterfaceSelector,
-  selectInterfaceTypesOptions,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: isUpdatingInterfaceSelector(state),
   isLoadingTypesSelector: isLoadingInterfacesTypesSelector(state),
-  interfaceTypesOptions: selectInterfaceTypesOptions(state),
+  interfaceTypesOptions: interfaceTypesOptionsSelector(state),
   currentInterfaceId: activeItemIdSelector(state),
 });
 

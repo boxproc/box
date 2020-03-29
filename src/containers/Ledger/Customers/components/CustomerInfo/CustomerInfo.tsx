@@ -16,7 +16,7 @@ import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface CustomerInfoProps {
+interface ICustomerInfo {
   institutionsOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   isIdentification: boolean;
@@ -25,7 +25,7 @@ interface CustomerInfoProps {
   isReadOnly: boolean;
 }
 
-const CustomerInfo: React.FC<CustomerInfoProps> = ({
+const CustomerInfo: React.FC<ICustomerInfo> = ({
   institutionsOptions,
   countryCodes,
   isEditMode = false,

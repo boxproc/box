@@ -10,14 +10,14 @@ import { AccountForm } from 'containers/Ledger/Accounts/forms';
 
 import { ISelectValue } from 'types';
 
-interface AddAccountModalProps extends IWithModal {
+interface IAddAccountModal extends IWithModal {
   institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_ACCOUNT;
 
-const AddAccountModal: React.FC<AddAccountModalProps> = ({
+const AddAccountModal: React.FC<IAddAccountModal> = ({
   institutionsOptions,
   isFormDirty,
   closeModal,

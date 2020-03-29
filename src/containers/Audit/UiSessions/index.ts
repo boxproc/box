@@ -11,8 +11,8 @@ import {
   handleFilterAuditUserActivityByData,
   resetUiSessions,
   selectAuditUiSessions,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -21,7 +21,7 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   uiSessions: selectAuditUiSessions(state),
   currentUserId: activeItemIdSelector(state),
 });

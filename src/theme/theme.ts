@@ -1,4 +1,4 @@
-export interface ThemeProps {
+export interface ITheme {
   theme: Theme;
 }
 

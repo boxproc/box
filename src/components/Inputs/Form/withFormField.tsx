@@ -40,7 +40,7 @@ const ErrorWrapper = styled.div`
   white-space: nowrap;
 `;
 
-export interface InputFieldProps extends Partial<BaseFieldProps> {
+interface IInputField extends Partial<BaseFieldProps> {
   focusOnLabelClick?: boolean;
   hint?: string | React.ReactChild;
   id?: string;
@@ -55,16 +55,16 @@ export interface InputFieldProps extends Partial<BaseFieldProps> {
   validateOnChange?: boolean;
 }
 
-interface InputWrapperProps {
+interface IInputWrapper {
   render: (
     invalid: boolean,
     preventBlur: boolean | undefined
   ) => React.ReactNode;
 }
 
-export type FieldProps = WrappedFieldProps & InputFieldProps;
+export type FieldProps = WrappedFieldProps & IInputField;
 
-const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
+const InputWrapper: React.FC<IInputWrapper & FieldProps> = ({
   focusOnLabelClick = false,
   hint,
   id,
@@ -120,7 +120,7 @@ const InputWrapper: React.FC<InputWrapperProps & FieldProps> = ({
 };
 
 export const withFormField = <OriginalProps extends {}>(
-  Component: React.ComponentType<OriginalProps & InputFieldProps>
+  Component: React.ComponentType<OriginalProps & IInputField>
 ): React.ComponentType<OriginalProps & FieldProps> =>
   class WithFormField extends
     React.Component<OriginalProps & FieldProps> {

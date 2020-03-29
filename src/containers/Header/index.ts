@@ -12,10 +12,10 @@ import {
   handleUserLogout,
   isReadOnlySelector,
   selectHelpLink,
-  selectInstitutions,
   selectUiItems,
   StoreState,
   UiItemsActionTypes,
+  userInstitutionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -25,7 +25,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   uiItems: selectUiItems(state),
-  institutions: selectInstitutions(state),
+  institutions: userInstitutionsSelector(state),
   isReadOnly: isReadOnlySelector(state),
   helpLink: selectHelpLink(state),
 });

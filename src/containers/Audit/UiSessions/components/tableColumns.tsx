@@ -4,9 +4,9 @@ import { TableCell, TableHeader } from 'components';
 
 import { AuditUiSessionsItem } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof AuditUiSessionsItem> = ITableCellType<AuditUiSessionsItem[T]>;
+type TCell<T extends keyof AuditUiSessionsItem> = ITableCell<AuditUiSessionsItem[T]>;
 
 export const tableColumns = [
   {

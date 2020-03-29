@@ -18,7 +18,7 @@ import { HandleIllustrateRevolvingCreditProduct } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface IllustrationRevolvingCreditProductFormProps {
+interface IRevolvingCreditIllustrationForm {
   transactionTypesOptions: Array<ISelectValue>;
   illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
   isTransTypesLoading: boolean;
@@ -26,10 +26,10 @@ interface IllustrationRevolvingCreditProductFormProps {
   isDisabled: boolean;
 }
 
-type GeneralProductFormAllProps = IllustrationRevolvingCreditProductFormProps &
-  InjectedFormProps<{}, IllustrationRevolvingCreditProductFormProps>;
+type TTGeneralProductForm = IRevolvingCreditIllustrationForm &
+  InjectedFormProps<{}, IRevolvingCreditIllustrationForm>;
 
-const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
+const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
   handleSubmit,
   transactionTypesOptions,
   isTransTypesLoading,
@@ -297,7 +297,7 @@ const RevolvingCreditIllustrationForm: React.FC<GeneralProductFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, IllustrationRevolvingCreditProductFormProps>({
+export default reduxForm<{}, IRevolvingCreditIllustrationForm>({
   form: formNamesConst.PRODUCT_ILLUSTRATION_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,

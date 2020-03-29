@@ -22,11 +22,11 @@ import {
   ProductReward,
 } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof ProductReward> = ITableCellType<ProductReward[T]>;
+type TCell<T extends keyof ProductReward> = ITableCell<ProductReward[T]>;
 
-interface RewardsTableProps {
+interface IRewardsTable {
   productRewards: ImmutableArray<ProductReward>;
   getProductRewards: HandleGetProductRewards;
   deleteProductReward: HandleDeleteProductReward;
@@ -35,7 +35,7 @@ interface RewardsTableProps {
   isLoading: boolean;
 }
 
-const RewardsTable: React.FC<RewardsTableProps> = ({
+const RewardsTable: React.FC<IRewardsTable> = ({
   productRewards,
   getProductRewards,
   deleteProductReward,

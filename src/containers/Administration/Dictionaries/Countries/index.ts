@@ -4,15 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Countries from './Countries';
 
 import {
+  dictionaryCountriesSelector,
   handleGetDictionaryCountries,
-  selectDictionaryCountries,
-  selectIsCountriesLoading,
+  isCountriesLoadingSelector,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  countriesData: selectDictionaryCountries(state),
-  isLoading: selectIsCountriesLoading(state),
+  countriesData: dictionaryCountriesSelector(state),
+  isLoading: isCountriesLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

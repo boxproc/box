@@ -18,7 +18,7 @@ import {
 import { ISelectValue } from 'types';
 import { cookiesUtil, dateUtil, storageUtil } from 'utils';
 
-export interface UiSessionsProps extends RouteComponentProps {
+interface IUiSessions extends RouteComponentProps {
   institutionsOptions: Array<ISelectValue>;
   resetUiSessions: ResetUiSessions;
   uiSessions: ImmutableArray<AuditUiSessionsItem>;
@@ -28,7 +28,7 @@ export interface UiSessionsProps extends RouteComponentProps {
   isLoading: boolean;
 }
 
-const UiSessions: React.FC<UiSessionsProps> = ({
+const UiSessions: React.FC<IUiSessions> = ({
   institutionsOptions,
   uiSessions,
   filterUiSessions,

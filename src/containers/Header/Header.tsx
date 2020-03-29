@@ -14,9 +14,9 @@ import { HelpDropdown, UserDropdown } from './components';
 
 import {
   HandleGetUiItems,
-  HandleGetUserInstitutions,
-  HandleUserLogout,
-  InstitutionItem,
+  IUserInstitution,
+  THandleGetUserInstitutions,
+  THandleUserLogout,
   UiItemPrepared,
 } from 'store';
 
@@ -55,20 +55,20 @@ const Wrapper = styled.header`
   }
 `;
 
-interface HeaderProps extends RouteComponentProps {
+interface IHeader extends RouteComponentProps {
   firstName: string;
-  getInstitutions: HandleGetUserInstitutions;
+  getInstitutions: THandleGetUserInstitutions;
   getUiItems: HandleGetUiItems;
   helpLink: string;
-  institutions: ImmutableArray<InstitutionItem>;
+  institutions: ImmutableArray<IUserInstitution>;
   isReadOnly: boolean;
   lastName: string;
   uiItems: Array<UiItemPrepared>;
-  userLogout: HandleUserLogout;
+  userLogout: THandleUserLogout;
   username: string;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const Header: React.FC<IHeader> = ({
   getInstitutions,
   getUiItems,
   helpLink,

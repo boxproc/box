@@ -2,9 +2,9 @@ import React from 'react';
 
 import styled, { theme } from 'theme';
 
-import { IconColorProps } from './types';
+import { IIconColor } from './types';
 
-const UncheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
+const UncheckedBox: React.FC<IIconColor> = ({ el, ...props }) => (
   <svg width={15} height={15} viewBox="0 0 15 15" {...props}>
     <path
       fill="none"
@@ -26,7 +26,7 @@ UncheckedBoxIcon.defaultProps = {
   el: 'g',
 };
 
-const CheckedBox: React.FC<IconColorProps> = ({ el, ...props }) => (
+const CheckedBox: React.FC<IIconColor> = ({ el, ...props }) => (
   <svg width={15} height={15} viewBox="0 0 15 15" {...props}>
     <g
       fill="none"

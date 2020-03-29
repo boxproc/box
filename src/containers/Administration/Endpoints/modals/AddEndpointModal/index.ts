@@ -5,12 +5,12 @@ import { formNamesConst } from 'consts';
 
 import AddEndpointModal from './AddEndpointModal';
 
-import { selectInstitutionsOptions, StoreState } from 'store';
+import { StoreState, userInstitutionsOptionsSelector } from 'store';
 
 const dirty = isDirty(formNamesConst.ENDPOINT);
 
 const mapStateToProps = (state: StoreState) => ({
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isFormDirty: dirty(state),
 });
 

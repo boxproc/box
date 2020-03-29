@@ -13,7 +13,7 @@ import {
 import { HandleGetInterfacesService } from 'store';
 import { ISelectValue } from 'types';
 
-interface EditCustomerModalProps extends IWithModal {
+interface IEditCustomerModal extends IWithModal {
   isFormDirty: boolean;
   currentCustomerName: string;
   currentCustomerInstitutionId: number;
@@ -24,7 +24,7 @@ interface EditCustomerModalProps extends IWithModal {
 
 const modalName = modalNamesConst.EDIT_CUSTOMER;
 
-const EditCustomerModal: React.FC<EditCustomerModalProps> = ({
+const EditCustomerModal: React.FC<IEditCustomerModal> = ({
   closeModal,
   isFormDirty,
   isReadOnly,

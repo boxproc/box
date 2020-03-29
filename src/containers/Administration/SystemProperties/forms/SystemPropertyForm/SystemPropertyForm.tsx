@@ -6,9 +6,9 @@ import { Box, Flex } from '@rebass/grid';
 import {
   Button,
   CheckboxField,
-  ExternalSpinnerProps,
   Hr,
   InputField,
+  ISpinner,
   OkCancelButtons,
   withSpinner,
 } from 'components';
@@ -23,7 +23,7 @@ import {
 
 import { formErrorUtil } from 'utils';
 
-interface ISystemPropertyForm extends ExternalSpinnerProps {
+interface ISystemPropertyForm extends ISpinner {
   addSystemProperty: THandleAddSysProp;
   updateSystemProperty: THandleUpdateSysProps;
   deleteSystemProperty: THandleDeleteSysProp;

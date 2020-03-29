@@ -7,11 +7,11 @@ import { CheckboxField, InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface PrepaidDetailsProps {
+interface IPrepaidDetails {
   isReadOnly: boolean;
 }
 
-const PrepaidDetails: React.FC<PrepaidDetailsProps> = ({ isReadOnly }) => {
+const PrepaidDetails: React.FC<IPrepaidDetails> = ({ isReadOnly }) => {
   return (
     <Box mx="-8px">
       <Flex

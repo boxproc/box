@@ -4,13 +4,13 @@ import { IContextMenuItem } from 'types';
 
 import { icons } from './icons';
 
-interface MenuItemProps {
+interface IMenuItem {
   item: IContextMenuItem;
   key?: number;
   onClick?: (e: Event, value: IContextMenuItem) => void;
 }
 
-const ContextMenuItem: React.FC<MenuItemProps> = ({
+const ContextMenuItem: React.FC<IMenuItem> = ({
   item,
   key,
   onClick,

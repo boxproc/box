@@ -4,11 +4,11 @@ import styled from 'theme';
 
 import { LinkExternalIcon } from './../../Icons';
 
-interface ExternalLinkWrapperProps {
+interface IExternalLinkWrapper {
   grayStyle?: boolean;
 }
 
-const ExternalLinkWrapper = styled.a<ExternalLinkWrapperProps>`
+const ExternalLinkWrapper = styled.a<IExternalLinkWrapper>`
   display: flex;
   align-items: center;
   color: ${({ theme, grayStyle }) => grayStyle ? theme.colors.gray : 'inherit'};
@@ -34,13 +34,13 @@ const LinkIcon = styled(LinkExternalIcon)`
   color: ${({ theme }) => theme.colors.gray};
 `;
 
-interface ExternalLinkProps {
+interface IExternalLink {
   link: string;
   text: string;
   grayStyle?: boolean;
 }
 
-const ExternalLink: React.FC<ExternalLinkProps> = ({
+const ExternalLink: React.FC<IExternalLink> = ({
   link,
   text,
   grayStyle = false,

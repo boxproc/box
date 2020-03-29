@@ -4,9 +4,9 @@ import { productTypesConst } from 'consts';
 
 import { StoreState } from 'store';
 
-import { selectCurrenciesOptions } from 'store/domains/administration';
+import { currenciesOptionsSelector } from 'store/domains/administration';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectInstitutions, selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector, userInstitutionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
@@ -21,7 +21,7 @@ export const selectDefaultProductItems = (state: StoreState) =>
 
 export const selectProductItems = createSelector(
   selectDefaultProductItems,
-  selectInstitutions,
+  userInstitutionsSelector,
   (products, institutions) => products && products.map(product => {
     if (!product) {
       return null;
@@ -39,8 +39,8 @@ export const selectDefaultCurrentProduct = (state: StoreState) =>
 
 export const selectCurrentProduct = createSelector(
   selectDefaultCurrentProduct,
-  selectInstitutionsOptions,
-  selectCurrenciesOptions,
+  userInstitutionsOptionsSelector,
+  currenciesOptionsSelector,
   (product, institutions, currencyCodes) => {
     if (!product) {
       return null;

@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-interface OkCancelButtonsProps {
+interface IOkCancelButtons {
   cancelConfirmationText?: string;
   cancelConfirmationTitle?: string;
   cancelIconName?: string;
@@ -37,7 +37,7 @@ interface OkCancelButtonsProps {
   withCancelConfirmation?: boolean;
 }
 
-const OkCancelButtons: React.FC<OkCancelButtonsProps> = ({
+const OkCancelButtons: React.FC<IOkCancelButtons> = ({
   cancelConfirmationText = 'You have unsaved changes.',
   cancelConfirmationTitle = 'Close the window?',
   cancelIconName,

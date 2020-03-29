@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
-import { ExternalSpinnerProps, Hr, OkCancelButtons, withSpinner } from 'components';
+import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
@@ -15,7 +15,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface ProductDetailsFormProps extends ExternalSpinnerProps {
+interface IProductDetailsForm extends ISpinner {
   onCancel?: () => void;
   productType: string;
   getProductDetails: HandleGetProductDetails;
@@ -26,10 +26,9 @@ interface ProductDetailsFormProps extends ExternalSpinnerProps {
   currentProductId: number;
 }
 
-type ProductDetailsFormAllProps = ProductDetailsFormProps &
-  InjectedFormProps<{}, ProductDetailsFormProps>;
+type TProductDetailsForm = IProductDetailsForm & InjectedFormProps<{}, IProductDetailsForm>;
 
-const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
+const ProductDetailsForm: React.FC<TProductDetailsForm> = ({
   handleSubmit,
   onCancel,
   productType,
@@ -75,7 +74,7 @@ const ProductDetailsForm: React.FC<ProductDetailsFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, ProductDetailsFormProps>({
+export default reduxForm<{}, IProductDetailsForm>({
   form: formNamesConst.PRODUCT_DETAILS,
   destroyOnUnmount: true,
   enableReinitialize: true,

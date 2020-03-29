@@ -3,33 +3,32 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { OkCancelButtons, SelectField } from 'components';
 import { formNamesConst } from 'consts';
-import { HandleChangeAdminProfile } from 'store';
+import { THandleChangeProfile } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ChangeProfileFormProps {
+interface IChangeProfileForm {
   usernamesOptions: Array<ISelectValue>;
-  changeAdminProfile: HandleChangeAdminProfile;
+  changeProfile: THandleChangeProfile;
   isLoadingUsers: boolean;
   isChangingProfile: boolean;
   onCancel: () => void;
 }
 
-type ChangeProfileFormPropsAllProps =
-  ChangeProfileFormProps & InjectedFormProps<{}, ChangeProfileFormProps>;
+type TChangeProfileForm = IChangeProfileForm & InjectedFormProps<{}, IChangeProfileForm>;
 
-const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
+const ChangeProfileForm: React.FC<TChangeProfileForm> = ({
   handleSubmit,
   usernamesOptions,
-  changeAdminProfile,
+  changeProfile,
   isLoadingUsers,
   isChangingProfile,
   pristine,
   onCancel,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(changeAdminProfile),
-    [handleSubmit, changeAdminProfile]
+    handleSubmit(changeProfile),
+    [handleSubmit, changeProfile]
   );
 
   return (
@@ -56,7 +55,7 @@ const ChangeProfileForm: React.FC<ChangeProfileFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, ChangeProfileFormProps>({
+export default reduxForm<{}, IChangeProfileForm>({
   form: formNamesConst.CHANGE_PROFILE,
   destroyOnUnmount: true,
   enableReinitialize: true,

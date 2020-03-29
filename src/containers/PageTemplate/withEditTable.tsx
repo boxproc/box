@@ -26,7 +26,7 @@ import { IContextMenuItem } from 'types';
 
 import { componentUtil } from 'utils';
 
-export interface WithEditTableProps {
+export interface IWithEditTable {
   activeTableRowIndex?: number;
   contextMenuItems?: Array<IContextMenuItem>;
   handleOpenModal: TOpenModal;
@@ -38,9 +38,9 @@ export interface WithEditTableProps {
 }
 
 export const withEditTable = <OriginProps extends {}>(
-  Component: React.ComponentType<OriginProps & Partial<WithEditTableProps>>
+  Component: React.ComponentType<OriginProps & Partial<IWithEditTable>>
 ) => {
-  const WithEditTable: React.FC<WithEditTableProps> = props => {
+  const WithEditTable: React.FC<IWithEditTable> = props => {
     const {
       activeTableRowIndex,
       contextMenuItems = [],

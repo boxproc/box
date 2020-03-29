@@ -13,11 +13,11 @@ import {
   THandleGetAccountStatements,
   THandleGetStatementAprs,
 } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IAccountStatement> = ITableCellType<IAccountStatement[T]>;
+type TCell<T extends keyof IAccountStatement> = ITableCell<IAccountStatement[T]>;
 
-interface AccountStatementsProps {
+interface IAccountStatements {
   accountCurrentId: number;
   accountStatements: ImmutableArray<IAccountStatement>;
   getAccountStatements: THandleGetAccountStatements;
@@ -25,7 +25,7 @@ interface AccountStatementsProps {
   onCancel: () => void;
 }
 
-const AccountStatements: React.FC<AccountStatementsProps> = ({
+const AccountStatements: React.FC<IAccountStatements> = ({
   accountCurrentId,
   accountStatements,
   getAccountStatements,
@@ -73,7 +73,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         maxWidth: 80,
         Header: <TableHeader title="Start Date" />,
         accessor: 'startDate',
-        Cell: (props: ITableCellType<'startDate'>) => (
+        Cell: (props: ITableCell<'startDate'>) => (
           <TableCell
             value={props.value}
             isDate={true}
@@ -144,7 +144,7 @@ const AccountStatements: React.FC<AccountStatementsProps> = ({
         maxWidth: 150,
         Header: <TableHeader title="Repayment Type" />,
         accessor: 'repaymentType',
-        Cell: (props: ITableCellType<'repaymentType'>) => (
+        Cell: (props: ITableCell<'repaymentType'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}

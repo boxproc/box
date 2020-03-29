@@ -6,12 +6,12 @@ import { SmallText, T4 } from 'components';
 
 import { SystemMonitorCounts } from 'store';
 
-interface HeaderProps {
+interface IHeader {
   title: string;
   counts?: SystemMonitorCounts;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const Header: React.FC<IHeader> = ({
   title,
   counts,
 }) => {

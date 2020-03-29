@@ -26,13 +26,13 @@ const TablesWrapper = styled(Flex)`
   }
 `;
 
-interface IllustrationProductFormProps {
+interface IRevolvingCreditIllustrationTables {
   transactionsData: ImmutableArray<IllustrationProductTransactionsRevolvingCredit>;
   aprsData: ImmutableArray<IllustrationProductAprRevolvingCredit>;
   statementsData: ImmutableArray<IllustrationProductStatementsRevolvingCredit>;
 }
 
-const RevolvingCreditIllustrationTables: React.FC<IllustrationProductFormProps> = ({
+const RevolvingCreditIllustrationTables: React.FC<IRevolvingCreditIllustrationTables> = ({
   transactionsData,
   statementsData,
   aprsData,

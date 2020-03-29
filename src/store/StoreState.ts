@@ -6,7 +6,7 @@ import { AdministrationState } from './domains/administration/';
 import { AuditState } from './domains/audit';
 import { LedgerState } from './domains/ledger';
 import { LoaderState } from './domains/loader';
-import { LoginState } from './domains/login';
+import { ILoginState } from './domains/login';
 import { IModalsState } from './domains/modals';
 import { ProductDesignerState } from './domains/productDesigner';
 import { UiItemsState } from './domains/uiItems';
@@ -20,7 +20,7 @@ export interface StoreState {
   audit: AuditState;
   modals: IModalsState;
   administration: AdministrationState;
-  login: LoginState;
+  login: ILoginState;
   productDesigner: ProductDesignerState;
   ledger: LedgerState;
   utils: IUtilsState;

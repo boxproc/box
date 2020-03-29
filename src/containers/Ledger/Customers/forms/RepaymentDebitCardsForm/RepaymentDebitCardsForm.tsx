@@ -14,7 +14,7 @@ import {
 import { HandleAddRepaymentDebitCard } from 'store';
 import { ISelectValue } from 'types';
 
-interface RepaymentDebitCardsFormProps {
+interface IRepaymentDebitCardsForm {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
@@ -23,10 +23,10 @@ interface RepaymentDebitCardsFormProps {
   isInterfacesLoading: boolean;
 }
 
-type RepaymentDebitCardsFormAllProps = RepaymentDebitCardsFormProps
-  & InjectedFormProps<{}, RepaymentDebitCardsFormProps>;
+type TRepaymentDebitCardsForm = IRepaymentDebitCardsForm
+  & InjectedFormProps<{}, IRepaymentDebitCardsForm>;
 
-const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
+const RepaymentDebitCardsForm: React.FC<TRepaymentDebitCardsForm> = ({
   onCancel,
   handleSubmit,
   pristine,
@@ -73,7 +73,7 @@ const RepaymentDebitCardsForm: React.FC<RepaymentDebitCardsFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, RepaymentDebitCardsFormProps>({
+export default reduxForm<{}, IRepaymentDebitCardsForm>({
   form: formNamesConst.REPAYMENT_DEBIT_CARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,

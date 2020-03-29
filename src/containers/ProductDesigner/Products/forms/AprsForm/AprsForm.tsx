@@ -11,16 +11,16 @@ import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/comp
 
 import { HandleAddProductApr } from 'store';
 
-interface AprsFormProps {
+interface IAprsForm {
   addProductApr: HandleAddProductApr;
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
 }
 
-type AprsFormAllProps = AprsFormProps & InjectedFormProps<{}, AprsFormProps>;
+type TAprsForm = IAprsForm & InjectedFormProps<{}, IAprsForm>;
 
-const AprsForm: React.FC<AprsFormAllProps> = ({
+const AprsForm: React.FC<TAprsForm> = ({
   onCancel,
   addProductApr,
   handleSubmit,
@@ -61,7 +61,7 @@ const AprsForm: React.FC<AprsFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AprsFormProps>({
+export default reduxForm<{}, IAprsForm>({
   form: formNamesConst.PRODUCT_APRS,
   destroyOnUnmount: true,
   enableReinitialize: true,

@@ -11,7 +11,7 @@ import LoanIllustration from 'containers/ProductDesigner/Products/illustration/L
 import { IPayloadTransactionModal } from 'store';
 import { dateUtil } from 'utils';
 
-interface TransactionModalProps extends IWithModal {
+interface ITransactionModal extends IWithModal {
   currentTransactionId: number;
   transactionAmount: number;
   payloadTransactionModal: IPayloadTransactionModal;
@@ -20,7 +20,7 @@ interface TransactionModalProps extends IWithModal {
 
 const modalName = modalNamesConst.TRANSACTION;
 
-const TransactionModal: React.FC<TransactionModalProps> = ({
+const TransactionModal: React.FC<ITransactionModal> = ({
   closeModal,
   currentTransactionId,
   payloadTransactionModal,

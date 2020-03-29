@@ -9,11 +9,11 @@ import ContextMenuItem from './ContextMenuItem';
 import { IContextMenuItem, IContextSubMenuItem, TContextSubMenu } from 'types';
 import ContextSubMenu from './ContextSubMenu';
 
-interface ContextMenuWrapperProps {
+interface IContextMenuWrapper {
   isHidden?: boolean;
 }
 
-const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
+const ContextMenuWrapper = styled.div<IContextMenuWrapper>`
   ${({ isHidden }) => isHidden && `
     visibility: hidden;
     opacity: 0;
@@ -57,7 +57,7 @@ const ContextMenuWrapper = styled.div<ContextMenuWrapperProps>`
   }
 `;
 
-interface ContextMenuListProps {
+interface IContextMenuList {
   menuId: string;
   items: Array<IContextMenuItem>;
   isHidden?: boolean;
@@ -66,7 +66,7 @@ interface ContextMenuListProps {
   onHide?: () => void;
 }
 
-const ContextMenuList: React.FC<ContextMenuListProps> = ({
+const ContextMenuList: React.FC<IContextMenuList> = ({
   menuId,
   onClick,
   items,

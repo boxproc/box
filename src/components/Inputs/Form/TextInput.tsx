@@ -3,16 +3,13 @@ import styled from 'theme';
 
 import { sharedInputCss } from './sharedInputCss';
 
-import { InputCommonProps } from './types';
+import { ICommonInput } from './types';
 
-const TextInputWrapper = styled.input<InputCommonProps>`
+const TextInputWrapper = styled.input<ICommonInput>`
   ${sharedInputCss};
 `;
 
-const TextInput: React.FC<InputCommonProps> = ({
-  value,
-  ...props
-}) => {
+const TextInput: React.FC<ICommonInput> = ({ value, ...props }) => {
   const [val, setVal] = React.useState(value);
 
   return (

@@ -6,11 +6,11 @@ import styled, { theme as mainTheme } from 'theme';
 import { CheckedBoxIcon, UncheckedBoxIcon } from './../../Icons';
 import { Label as DefaultLabel } from './../../Text';
 
-interface CheckboxWrapperProp {
+interface ICheckboxWrapper {
   disabled?: boolean;
 }
 
-const CheckboxWrapper = styled.div<CheckboxWrapperProp>`
+const CheckboxWrapper = styled.div<ICheckboxWrapper>`
   display: flex;
   align-items: flex-start;
   font-size: 0;
@@ -39,13 +39,13 @@ const CheckboxFieldWrapper = styled.div`
   }
 `;
 
-interface CheckboxProps extends BaseFieldProps, Partial<WrappedFieldProps> {
+interface ICheckbox extends BaseFieldProps, Partial<WrappedFieldProps> {
   id: string;
   onChange: (event: ChangeEvent, newValue?: boolean, name?: string) => void;
   value: boolean;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox: React.FC<ICheckbox> = ({
   id,
   meta: { invalid, touched },
   value,
@@ -77,13 +77,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   );
 };
 
-interface CheckboxFieldProps extends BaseFieldProps, WrappedFieldProps {
+interface ICheckboxField extends BaseFieldProps, WrappedFieldProps {
   disabled?: boolean;
   id?: string;
   label: string | React.FC;
 }
 
-const CheckboxField: React.FC<CheckboxFieldProps & WrappedFieldProps> = ({
+const CheckboxField: React.FC<ICheckboxField & WrappedFieldProps> = ({
   disabled,
   id = 'option',
   input,

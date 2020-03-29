@@ -10,12 +10,12 @@ import { loanInterestConst, loanTypesOptions } from 'consts';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface LoanDetailsProps {
+interface ILoanDetails {
   isReadOnly?: boolean;
   interestDistributionValue: ISelectValue;
 }
 
-const LoanDetails: React.FC<LoanDetailsProps> = ({
+const LoanDetails: React.FC<ILoanDetails> = ({
   isReadOnly,
   interestDistributionValue,
 }) => {

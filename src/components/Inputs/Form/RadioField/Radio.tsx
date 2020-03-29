@@ -7,12 +7,12 @@ import styled from 'theme';
 
 import { CheckedRadioIcon, UncheckedRadioIcon } from './../../../Icons';
 
-interface RadioWrapperProps {
+interface IRadioWrapper {
   alignItems?: string;
   disabled?: boolean;
 }
 
-const RadioWrapper = styled.label<RadioWrapperProps>`
+const RadioWrapper = styled.label<IRadioWrapper>`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -48,13 +48,13 @@ const Input = styled.input`
   display: none;
 `;
 
-interface RadioProps extends BaseFieldProps, RadioWrapperProps, WrappedFieldProps {
+interface IRadio extends BaseFieldProps, IRadioWrapper, WrappedFieldProps {
   className?: string;
   label: string | React.ReactNode;
   value: string;
 }
 
-const Radio: React.FC<RadioProps> = ({ value, label, disabled, ...props }) => {
+const Radio: React.FC<IRadio> = ({ value, label, disabled, ...props }) => {
   const { input, alignItems, className } = props;
 
   const isChecked = React.useMemo(

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
@@ -22,7 +22,7 @@ export const defaultStatementsSelector = (state: StoreState) => state.ledger.sta
 
 export const statementsSelector = createSelector(
   defaultStatementsSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (statements, institutions) => statements && statements.map(statement => {
     const institution = institutions.find(el => el.value === statement.institution_id);
 
@@ -126,7 +126,7 @@ export const statementAprsSelector = createSelector(
 
 export const currentStatementForReportSelector = createSelector(
   defaultStatementsSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   activeItemIdSelector,
   (statements, institutions, currentId) => {
     const currStatement = statements && statements.find(el => el.id === currentId);

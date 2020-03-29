@@ -9,13 +9,13 @@ import { aprTypesOptions, iconNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-interface ProductAprsProps {
+interface IProductAprs {
   isDisabled: boolean;
   isLoading: boolean;
   pristine: boolean;
 }
 
-const ProductAprs: React.FC<ProductAprsProps> = ({
+const ProductAprs: React.FC<IProductAprs> = ({
   isDisabled,
   isLoading,
   pristine,

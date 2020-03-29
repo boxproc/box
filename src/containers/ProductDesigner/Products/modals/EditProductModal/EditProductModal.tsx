@@ -7,7 +7,7 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 
 import { EditProductForms } from 'containers/ProductDesigner/Products/forms';
 
-interface EditProductModalProps extends IWithModal {
+interface IEditProductModal extends IWithModal {
   currentProductName: string;
   currentProductType: string | number;
   isProductOverride: boolean;
@@ -21,7 +21,7 @@ interface EditProductModalProps extends IWithModal {
 
 const modalName = modalNamesConst.EDIT_PRODUCT;
 
-const EditProductModal: React.FC<EditProductModalProps> = ({
+const EditProductModal: React.FC<IEditProductModal> = ({
   closeModal,
   currentProductName,
   currentProductType,

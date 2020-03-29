@@ -29,12 +29,12 @@ const HelpBlock = () => (
   </Flex>
 );
 
-interface HelpDropdownProps {
+interface IHelpDropdown {
   helpLink: string;
   location: H.Location;
 }
 
-const HelpDropdown: React.FC<HelpDropdownProps> = ({ helpLink, location }) => {
+const HelpDropdown: React.FC<IHelpDropdown> = ({ helpLink, location }) => {
   const isHome = React.useMemo(
     () => location.pathname === basePath,
     [location]

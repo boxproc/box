@@ -4,8 +4,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
-  ExternalSpinnerProps,
   Hr,
+  ISpinner,
   MaskField,
   NumberFormatField,
   OkCancelButtons,
@@ -18,16 +18,16 @@ import { HandleSettleTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 
-interface SettleTransactionFormProps extends ExternalSpinnerProps {
+interface ISettleTransactionForm extends ISpinner {
   isDisabled?: boolean;
   onCancel: () => void;
   settleTransaction: HandleSettleTransaction;
 }
 
-type SettleTransactionFormPropsAllProps = SettleTransactionFormProps
-  & InjectedFormProps<{}, SettleTransactionFormProps>;
+type TSettleTransactionForm = ISettleTransactionForm
+  & InjectedFormProps<{}, ISettleTransactionForm>;
 
-const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
+const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
   handleSubmit,
   isDisabled,
   pristine,
@@ -88,7 +88,7 @@ const SettleTransactionForm: React.FC<SettleTransactionFormPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, SettleTransactionFormProps>({
+export default reduxForm<{}, ISettleTransactionForm>({
   form: formNamesConst.SETTLE_TRANSACTION_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,

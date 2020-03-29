@@ -18,11 +18,11 @@ import { stringsUtil } from 'utils';
  * Account statuses selectors
  */
 
-export const selectDefaultDictionaryAccountStatuses = (state: StoreState) =>
+export const defaultDictionaryAccountStatusesSelector = (state: StoreState) =>
   state.administration.dictionaries.accountStatuses;
 
-export const selectDictionaryAccountStatusesOptions = createSelector(
-  selectDefaultDictionaryAccountStatuses,
+export const dictionaryAccountStatusesOptionsSelector = createSelector(
+  defaultDictionaryAccountStatusesSelector,
   data => data && data.asMutable().map(el => {
     if (!el) {
       return null;
@@ -37,8 +37,8 @@ export const selectDictionaryAccountStatusesOptions = createSelector(
   })
 );
 
-export const selectIsAccountStatusesLoaded = createSelector(
-  selectDefaultDictionaryAccountStatuses,
+export const isAccountStatusesLoadedSelector = createSelector(
+  defaultDictionaryAccountStatusesSelector,
   data => data && data.length > 0
 );
 
@@ -46,33 +46,37 @@ export const selectIsAccountStatusesLoaded = createSelector(
  * Card statuses selectors
  */
 
-export const selectDefaultDictionaryCardStatuses = (state: StoreState) =>
+export const defaultDictionaryCardStatusesSelector = (state: StoreState) =>
   state.administration.dictionaries.cardStatuses;
 
-export const selectCardStatusesOptions = createSelector(
-  selectDefaultDictionaryCardStatuses,
+export const cardStatusesOptionsSelector = createSelector(
+  defaultDictionaryCardStatusesSelector,
   data => data && valueLabelParse(data)
 );
 
-export const selectIsCardStatusesLoaded = createSelector(
-  selectDefaultDictionaryCardStatuses,
+export const isCardStatusesLoadedSelector = createSelector(
+  defaultDictionaryCardStatusesSelector,
   data => data && data.length > 0
 );
+
+export const isLoadingCardStatusesSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DICTIONARY_CARD_STATUSES,
+]);
 
 /**
  * Endpoint types selectors
  */
 
-export const selectDefaultDictionaryEndpointTypes = (state: StoreState) =>
+export const defaultDictionaryEndpointTypesSelector = (state: StoreState) =>
   state.administration.dictionaries.endpointTypes;
 
-export const selectEndpointTypesOptions = createSelector(
-  selectDefaultDictionaryEndpointTypes,
+export const endpointTypesOptionsSelector = createSelector(
+  defaultDictionaryEndpointTypesSelector,
   data => data && valueLabelParse(data)
 );
 
-export const selectIsEndpointTypesLoaded = createSelector(
-  selectDefaultDictionaryEndpointTypes,
+export const isEndpointTypesLoadedSelector = createSelector(
+  defaultDictionaryEndpointTypesSelector,
   data => data && data.length > 0
 );
 
@@ -84,16 +88,16 @@ export const isLoadingEndpointsTypesSelector = createLoadingSelector([
  * Interface types selectors
  */
 
-export const selectDefaultDictionaryInterfaceTypes = (state: StoreState) =>
+export const defaultDictionaryInterfaceTypesSelector = (state: StoreState) =>
   state.administration.dictionaries.interfaceTypes;
 
-export const selectInterfaceTypesOptions = createSelector(
-  selectDefaultDictionaryInterfaceTypes,
+export const interfaceTypesOptionsSelector = createSelector(
+  defaultDictionaryInterfaceTypesSelector,
   data => data && valueLabelParse(data)
 );
 
-export const selectIsInterfaceTypesLoaded = createSelector(
-  selectDefaultDictionaryInterfaceTypes,
+export const isInterfaceTypesLoadedSelector = createSelector(
+  defaultDictionaryInterfaceTypesSelector,
   data => data && data.length > 0
 );
 
@@ -105,28 +109,32 @@ export const isLoadingInterfacesTypesSelector = createLoadingSelector([
  * Statement cycle types selectors
  */
 
-export const selectDefaultDictionaryStatementCycleTypes = (state: StoreState) =>
+export const defaultDictionaryStatementCycleTypesSelector = (state: StoreState) =>
   state.administration.dictionaries.statementCycleTypes;
 
-export const selectStatementCycleTypesOptions = createSelector(
-  selectDefaultDictionaryStatementCycleTypes,
+export const statementCycleTypesOptionsSelector = createSelector(
+  defaultDictionaryStatementCycleTypesSelector,
   data => data && valueLabelParse(data)
 );
 
-export const selectIsStatementCycleTypesLoaded = createSelector(
-  selectDefaultDictionaryStatementCycleTypes,
+export const isStatementCycleTypesLoadedSelector = createSelector(
+  defaultDictionaryStatementCycleTypesSelector,
   data => data && data.length > 0
 );
+
+export const isStatementCycleTypesLoading = createLoadingSelector([
+  ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
+]);
 
 /**
  * Repayment types selectors
  */
 
-export const selectDefaultDictionaryRepaymentTypes = (state: StoreState) =>
+export const defaultDictionaryRepaymentTypesSelector = (state: StoreState) =>
   state.administration.dictionaries.repaymentTypes;
 
-export const selectDictionaryRepaymentTypesOptions = createSelector(
-  selectDefaultDictionaryRepaymentTypes,
+export const dictionaryRepaymentTypesOptionsSelector = createSelector(
+  defaultDictionaryRepaymentTypesSelector,
   data => data && data.asMutable().map(el => {
     if (!el) {
       return null;
@@ -141,8 +149,8 @@ export const selectDictionaryRepaymentTypesOptions = createSelector(
   })
 );
 
-export const selectIsRepaymentTypesLoaded = createSelector(
-  selectDefaultDictionaryRepaymentTypes,
+export const isRepaymentTypesLoadedSelector = createSelector(
+  defaultDictionaryRepaymentTypesSelector,
   data => data && data.length > 0
 );
 
@@ -150,11 +158,11 @@ export const selectIsRepaymentTypesLoaded = createSelector(
  * Transaction types selectors
  */
 
-export const selectDefaultDictionaryTransTypes = (state: StoreState) =>
+export const defaultDictionaryTransTypesSelector = (state: StoreState) =>
   state.administration.dictionaries.transactionTypes;
 
-export const selectDictionaryTransTypes = createSelector(
-  selectDefaultDictionaryTransTypes,
+export const dictionaryTransTypesSelector = createSelector(
+  defaultDictionaryTransTypesSelector,
   data => data && data.map(el => {
     if (!el) {
       return null;
@@ -173,8 +181,8 @@ export const selectDictionaryTransTypes = createSelector(
   })
 );
 
-export const selectDictionaryTransTypesOptions = createSelector(
-  selectDictionaryTransTypes,
+export const dictionaryTransTypesOptionsSelector = createSelector(
+  dictionaryTransTypesSelector,
   data => data && data.asMutable().map(el => {
     if (!el) {
       return null;
@@ -189,8 +197,8 @@ export const selectDictionaryTransTypesOptions = createSelector(
   })
 );
 
-export const selectDictionaryManualTrTypesOptions = createSelector(
-  selectDictionaryTransTypes,
+export const dictionaryManualTrTypesOptionsSelector = createSelector(
+  dictionaryTransTypesSelector,
   data => {
     const types = data
       .filter(el => el.debitCreditIndicatorValue === debitCreditIndicatorConst.DEBIT
@@ -211,8 +219,8 @@ export const selectDictionaryManualTrTypesOptions = createSelector(
   }
 );
 
-export const selectDictionaryLimitAdjTypesOptions = createSelector(
-  selectDictionaryTransTypes,
+export const dictionaryLimitAdjTypesOptionsSelector = createSelector(
+  dictionaryTransTypesSelector,
   data => {
     const limitAdjType = data.find(el => el.id === debitCreditIndicatorIds.LIMIT_ADJUSTMENT);
 
@@ -230,13 +238,13 @@ export const selectDictionaryLimitAdjTypesOptions = createSelector(
     });
   });
 
-export const selectIsTransTypesLoaded = createSelector(
-  selectDefaultDictionaryTransTypes,
+export const isTransTypesLoadedSelector = createSelector(
+  defaultDictionaryTransTypesSelector,
   data => data && data.length > 0
 );
 
-export const selectTransTypesForRules = createSelector(
-  selectDefaultDictionaryTransTypes,
+export const transTypesForRulesSelector = createSelector(
+  defaultDictionaryTransTypesSelector,
   data => data && data.map(el => {
     if (!el) {
       return null;
@@ -248,7 +256,7 @@ export const selectTransTypesForRules = createSelector(
   })
 );
 
-export const selectIsTransTypesLoading = createLoadingSelector([
+export const isTransTypesLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_DICTIONARY_TRANSACTION_TYPES,
 ]);
 
@@ -256,11 +264,11 @@ export const selectIsTransTypesLoading = createLoadingSelector([
  * Countries selectors
  */
 
-export const selectDefaultDictionaryCountries = (state: StoreState) =>
+export const defaultDictionaryCountriesSelector = (state: StoreState) =>
   state.administration.dictionaries.countries;
 
-export const selectDictionaryCountries = createSelector(
-  selectDefaultDictionaryCountries,
+export const dictionaryCountriesSelector = createSelector(
+  defaultDictionaryCountriesSelector,
   data => data && data.map(el => {
     if (!el) {
       return null;
@@ -277,8 +285,8 @@ export const selectDictionaryCountries = createSelector(
   })
 );
 
-export const selectCountriesOptions = createSelector(
-  selectDefaultDictionaryCountries,
+export const countriesOptionsSelector = createSelector(
+  defaultDictionaryCountriesSelector,
   data => data && data.asMutable().map(el => {
     const { country_code, name } = el;
 
@@ -289,12 +297,12 @@ export const selectCountriesOptions = createSelector(
   })
 );
 
-export const selectIsCountriesLoaded = createSelector(
-  selectDefaultDictionaryCountries,
+export const isCountriesLoadedSelector = createSelector(
+  dictionaryCountriesSelector,
   data => data && data.length > 0
 );
 
-export const selectIsCountriesLoading = createLoadingSelector([
+export const isCountriesLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_DICTIONARY_COUNTRIES,
 ]);
 
@@ -302,11 +310,11 @@ export const selectIsCountriesLoading = createLoadingSelector([
  * Currencies selectors
  */
 
-export const selectDefaultDictionaryCurrencies = (state: StoreState) =>
+export const defaultDictionaryCurrenciesSelector = (state: StoreState) =>
   state.administration.dictionaries.currencies;
 
-export const selectDictionaryCurrencies = createSelector(
-  selectDefaultDictionaryCurrencies,
+export const dictionaryCurrenciesSelector = createSelector(
+  defaultDictionaryCurrenciesSelector,
   data => data && data.map(el => {
     if (!el) {
       return null;
@@ -322,8 +330,8 @@ export const selectDictionaryCurrencies = createSelector(
   })
 );
 
-export const selectCurrenciesOptions = createSelector(
-  selectDefaultDictionaryCurrencies,
+export const currenciesOptionsSelector = createSelector(
+  defaultDictionaryCurrenciesSelector,
   data => data && data.asMutable().map(el => {
     if (!el) {
       return null;
@@ -338,8 +346,8 @@ export const selectCurrenciesOptions = createSelector(
   })
 );
 
-export const selectCurrencyNumsOptions = createSelector(
-  selectDefaultDictionaryCurrencies,
+export const currencyNumsOptionsSelector = createSelector(
+  defaultDictionaryCurrenciesSelector,
   data => data && data.asMutable().map(el => {
     if (!el) {
       return null;
@@ -354,12 +362,12 @@ export const selectCurrencyNumsOptions = createSelector(
   })
 );
 
-export const selectIsCurrenciesLoaded = createSelector(
-  selectDefaultDictionaryCurrencies,
+export const isCurrenciesLoadedSelector = createSelector(
+  defaultDictionaryCurrenciesSelector,
   data => data && data.length > 0
 );
 
-export const selectIsCurrenciesLoading = createLoadingSelector([
+export const isCurrenciesLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_DICTIONARY_CURRENCIES,
 ]);
 
@@ -367,15 +375,15 @@ export const selectIsCurrenciesLoading = createLoadingSelector([
  * Events selectors
  */
 
-export const selectDictionaryEvents = (state: StoreState) =>
+export const dictionaryEventsSelector = (state: StoreState) =>
   state.administration.dictionaries.events;
 
-export const selectDictionaryEventsOptions = createSelector(
-  selectDictionaryEvents,
+export const dictionaryEventsOptionsSelector = createSelector(
+  dictionaryEventsSelector,
   data => data && valueLabelParse(data)
 );
 
-export const selectIsEventsLoading = createLoadingSelector([
+export const isEventsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_DICTIONARY_EVENTS,
 ]);
 
@@ -383,12 +391,12 @@ export const selectIsEventsLoading = createLoadingSelector([
  * Event data element selectors
  */
 
-export const selectDefaultDictionaryEventDataElems = (state: StoreState) =>
+export const defaultDictionaryEventDataElemsSelector = (state: StoreState) =>
   state.administration.dictionaries.eventDataElems;
 
-export const selectDictionaryEventDataElems = createSelector(
-  selectDefaultDictionaryEventDataElems,
-  selectDictionaryEvents,
+export const dictionaryEventDataElemsSelector = createSelector(
+  defaultDictionaryEventDataElemsSelector,
+  dictionaryEventsSelector,
   (dataElems, events) => dataElems && dataElems.map(item => {
     if (!item) {
       return null;
@@ -408,8 +416,8 @@ export const selectDictionaryEventDataElems = createSelector(
   })
 );
 
-export const selectEventDataElemsForRules = createSelector(
-  selectDefaultDictionaryEventDataElems,
+export const eventDataElemsForRulesSelector = createSelector(
+  defaultDictionaryEventDataElemsSelector,
   data => data && data.map(el => {
     if (!el) {
       return null;
@@ -425,6 +433,6 @@ export const selectEventDataElemsForRules = createSelector(
   })
 );
 
-export const selectIsEventDataElemsLoading = createLoadingSelector([
+export const isEventDataElemsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_DICTIONARY_EVENT_DATA_ELEMS,
 ]);

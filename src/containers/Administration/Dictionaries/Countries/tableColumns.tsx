@@ -2,10 +2,9 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 import { IDictionaryCountryPrepared } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IDictionaryCountryPrepared> =
-  ITableCellType<IDictionaryCountryPrepared[T]>;
+type TCell<T extends keyof IDictionaryCountryPrepared> = ITableCell<IDictionaryCountryPrepared[T]>;
 
 export const tableColumns = [
   {

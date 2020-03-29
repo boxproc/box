@@ -8,12 +8,12 @@ import ContextMenuItem from './ContextMenuItem';
 
 import { IContextMenuItem, IContextSubMenuItem } from 'types';
 
-interface ContextSubMenuProps {
+interface IContextSubMenu {
   subMenu: IContextSubMenuItem;
   onClick?: (e: Event, value: IContextMenuItem) => void;
 }
 
-const ContextSubMenu: React.FC<ContextSubMenuProps> = ({ onClick, subMenu }) => {
+const ContextSubMenu: React.FC<IContextSubMenu> = ({ onClick, subMenu }) => {
   const isNoData = React.useMemo(
     () => (!subMenu.items || (subMenu.items && !subMenu.items.length))
       && (!subMenu.subItems || (subMenu.subItems && !subMenu.subItems.length)),

@@ -9,7 +9,7 @@ import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from
 
 import { ISelectValue } from 'types';
 
-interface ProductRulesFormProps {
+interface IProductRulesForm {
   onCancel?: () => void;
   getProductRule: HandleGetProductRule;
   updateProductRules: HandleUpdateProductRules;
@@ -25,7 +25,7 @@ interface ProductRulesFormProps {
   };
 }
 
-const ProductRulesForm: React.FC<ProductRulesFormProps> = ({
+const ProductRulesForm: React.FC<IProductRulesForm> = ({
   onCancel,
   getProductRule,
   updateProductRules,

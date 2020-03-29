@@ -23,7 +23,7 @@ import {
 } from 'store';
 import { ISelectValue } from 'types';
 
-export interface AccountsProps extends IWithModal {
+interface IAccounts extends IWithModal {
   accounts: ImmutableArray<LedgerAccountItemPrepared>;
   addProductOverride: HandleAddProductOverride;
   currentAccountBalanceLimit: string;
@@ -45,7 +45,7 @@ export interface AccountsProps extends IWithModal {
   uiItems: Array<UiItemPrepared>;
 }
 
-const Accounts: React.FC<AccountsProps> = ({
+const Accounts: React.FC<IAccounts> = ({
   accounts,
   filterAccounts,
   institutionsOptions,

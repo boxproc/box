@@ -7,13 +7,13 @@ import { modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
 import { ChangeProfileForm } from './forms';
 
-import { HandleChangeAdminProfile, THandleGetUsernames } from 'store';
+import { THandleChangeProfile, THandleGetUsernames } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface ChangeProfileModalProps extends IWithModal {
+interface IChangeProfileModal extends IWithModal {
   getUsernames: THandleGetUsernames;
-  changeAdminProfile: HandleChangeAdminProfile;
+  changeProfile: THandleChangeProfile;
   usernamesOptions: Array<ISelectValue>;
   isChangingProfile: boolean;
   isLoadingUsers: boolean;
@@ -21,9 +21,9 @@ interface ChangeProfileModalProps extends IWithModal {
 
 const modalName = modalNamesConst.CHANGE_PROFILE;
 
-const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
+const ChangeProfileModal: React.FC<IChangeProfileModal> = ({
   getUsernames,
-  changeAdminProfile,
+  changeProfile,
   usernamesOptions,
   isChangingProfile,
   isLoadingUsers,
@@ -44,7 +44,7 @@ const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
     >
       <ChangeProfileForm
         usernamesOptions={usernamesOptions}
-        changeAdminProfile={changeAdminProfile}
+        changeProfile={changeProfile}
         isLoadingUsers={isLoadingUsers}
         isChangingProfile={isChangingProfile}
         onCancel={() => closeModal(modalName)}

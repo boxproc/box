@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, ExternalSpinnerProps, HighlightCode, Modal, withSpinner } from 'components';
+import { Button, HighlightCode, ISpinner, Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
@@ -10,14 +10,14 @@ import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 import { HandleRefreshLogData, IPayloadLogModal } from 'store';
 import { stringsUtil } from 'utils';
 
-interface LogModalProps extends IWithModal, ExternalSpinnerProps {
+interface ILogModal extends IWithModal, ISpinner {
   data: IPayloadLogModal;
   refreshLogData: HandleRefreshLogData;
 }
 
 const modalName = modalNamesConst.LOG;
 
-const LogModal: React.FC<LogModalProps> = ({
+const LogModal: React.FC<ILogModal> = ({
   data,
   closeModal,
   refreshLogData,

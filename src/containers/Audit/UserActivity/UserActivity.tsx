@@ -13,7 +13,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface UserActivityProps {
+interface IUserActivity {
   institutionsOptions: Array<ISelectValue>;
   auditUserActivity: ImmutableArray<AuditUserActivityItem>;
   filterAuditUserActivity: HandleFilterAuditUserActivity;
@@ -21,7 +21,7 @@ export interface UserActivityProps {
   isLoading: boolean;
 }
 
-const UserActivity: React.FC<UserActivityProps> = ({
+const UserActivity: React.FC<IUserActivity> = ({
   institutionsOptions,
   auditUserActivity,
   filterAuditUserActivity,

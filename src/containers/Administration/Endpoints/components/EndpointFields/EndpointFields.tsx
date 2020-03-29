@@ -8,7 +8,7 @@ import { statusOptions } from 'consts';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-export interface IEndpointFields {
+interface IEndpointFields {
   institutionsOptions: Array<ISelectValue>;
   endpointTypesOptions: Array<ISelectValue>;
   isLoadingTypesSelector: boolean;

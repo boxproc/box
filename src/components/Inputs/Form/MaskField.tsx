@@ -6,15 +6,15 @@ import styled from 'theme';
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
 
-import { InputCommonProps } from './types';
+import { ICommonInput } from './types';
 
-const Wrapper = styled.div<InputCommonProps>`
+const Wrapper = styled.div<ICommonInput>`
   input {
     ${sharedInputCss};
   }
 `;
 
-interface MaskFieldProps extends InputCommonProps {
+interface IMaskField extends ICommonInput {
   alwaysShowMask?: boolean;
   formatChars?: { [key: string]: string };
   inputRef?: React.Ref<HTMLInputElement>;
@@ -30,7 +30,7 @@ interface MaskFieldProps extends InputCommonProps {
   ): InputState;
 }
 
-const MaskField: React.FC<MaskFieldProps> = ({
+const MaskField: React.FC<IMaskField> = ({
   invalid,
   isRequired,
   ...props

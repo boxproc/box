@@ -13,7 +13,7 @@ import {
   LedgerAccountsCardsItemPrepared
 } from 'store';
 
-interface AccountCardsProps {
+interface IAccountCards {
   accountCurrentId: number;
   getAccountCards: HandleGetLedgerAccountCards;
   accountCards: ImmutableArray<LedgerAccountsCardsItemPrepared>;
@@ -23,7 +23,7 @@ interface AccountCardsProps {
   isReadOnly: boolean;
 }
 
-export const Cards: React.FC<AccountCardsProps> = ({
+export const Cards: React.FC<IAccountCards> = ({
   getAccountCards,
   accountCurrentId,
   accountCards,

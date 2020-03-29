@@ -3,7 +3,7 @@ import { IEndpointsState } from './endpoints';
 import { IInstitutionsState } from './institutions';
 import { IInterfacesState } from './interfaces';
 import { IUsersState } from './permissions/users';
-import { IUsersGroupState } from './permissions/usersGroups';
+import { IUsersGroupsState } from './permissions/usersGroups';
 import { ISchedulerState } from './scheduler';
 import { ISysPropsState } from './systemProperties';
 
@@ -14,6 +14,6 @@ export interface AdministrationState {
   interfaces: IInterfacesState;
   scheduler: ISchedulerState;
   systemProperties: ISysPropsState;
-  userGroups: IUsersGroupState;
+  userGroups: IUsersGroupsState;
   users: IUsersState;
 }

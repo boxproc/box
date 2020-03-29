@@ -12,7 +12,7 @@ import { HandleGetInstitutionProducts } from 'store';
 import { ISelectValue, TChangeFieldValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface AccountsFilterProps {
+interface IAccountsFilter {
   accountAliasValue: string;
   filterChange: TChangeFieldValue;
   getInstitutionProducts: HandleGetInstitutionProducts;
@@ -23,7 +23,7 @@ interface AccountsFilterProps {
   isLoadingInstitutionProducts: boolean;
 }
 
-const AccountsFilter: React.FC<AccountsFilterProps> = ({
+const AccountsFilter: React.FC<IAccountsFilter> = ({
   institutionsOptions,
   institutionValue,
   accountAliasValue,

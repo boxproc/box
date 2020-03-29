@@ -1,8 +1,8 @@
 import { css } from 'theme';
 
-import { InputProps } from './types';
+import { IInput } from './types';
 
-export const sharedInputCss = css<InputProps>`
+export const sharedInputCss = css<IInput>`
   font-size: 13px;
   line-height: 1.3;
   width: 100%;

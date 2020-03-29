@@ -7,15 +7,15 @@ import { modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
 import { ChangePasswordForm } from './forms';
 
-import { HandleChangePassword } from 'store';
+import { THandleChangePassword } from 'store';
 
-interface ChangeProfileModalProps extends IWithModal {
-  changePassword: HandleChangePassword;
+interface IChangeProfileModal extends IWithModal {
+  changePassword: THandleChangePassword;
 }
 
 const modalName = modalNamesConst.CHANGE_PASSWORD;
 
-const ChangeProfileModal: React.FC<ChangeProfileModalProps> = ({
+const ChangeProfileModal: React.FC<IChangeProfileModal> = ({
   changePassword,
   closeModal,
 }) => {

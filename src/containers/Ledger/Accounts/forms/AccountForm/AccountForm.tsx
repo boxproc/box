@@ -2,12 +2,7 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 import { ImmutableArray } from 'seamless-immutable';
 
-import {
-  ExternalSpinnerProps,
-  Tabs,
-  TabsPanel,
-  withSpinner,
-} from 'components';
+import { ISpinner, Tabs, TabsPanel, withSpinner } from 'components';
 
 import {
   formNamesConst,
@@ -31,7 +26,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-interface AccountFormProps extends ExternalSpinnerProps {
+interface IAccountForm extends ISpinner {
   institutionsOptions: Array<ISelectValue>;
   institutionProducts: ImmutableArray<InstitutionProductsItemPrepared>;
   currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
@@ -45,9 +40,9 @@ interface AccountFormProps extends ExternalSpinnerProps {
   isReadOnly?: boolean;
 }
 
-type AccountFormAllProps = AccountFormProps & InjectedFormProps<{}, AccountFormProps>;
+type TAccountForm = IAccountForm & InjectedFormProps<{}, IAccountForm>;
 
-const AccountForm: React.FC<AccountFormAllProps> = ({
+const AccountForm: React.FC<TAccountForm> = ({
   onCancel,
   handleSubmit,
   updateLedgerAccount,
@@ -208,7 +203,7 @@ const AccountForm: React.FC<AccountFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, AccountFormProps>({
+export default reduxForm<{}, IAccountForm>({
   form: formNamesConst.ACCOUNT,
   destroyOnUnmount: true,
   enableReinitialize: true,

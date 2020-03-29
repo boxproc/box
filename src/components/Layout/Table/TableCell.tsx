@@ -7,7 +7,7 @@ import { TableItemWrapper } from './TableItemWrapper';
 import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
-interface TableCellProps {
+interface ITableCell {
   defaultSelectValue?: ISelectValue;
   Icon?: ReactChild;
   isDate?: boolean;
@@ -27,7 +27,7 @@ interface TableCellProps {
   value: string | number;
 }
 
-export const TableCell: React.FC<TableCellProps> = ({
+export const TableCell: React.FC<ITableCell> = ({
   defaultSelectValue,
   Icon,
   isDate,

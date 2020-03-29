@@ -12,7 +12,7 @@ import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'sto
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface IllustrationProductFormProps {
+interface ILoanIllustrationForm {
   illustrateLoanProduct: HandleIllustrateLoanProduct;
   loanProductsOptions: Array<ISelectValue>;
   isDisabled: boolean;
@@ -25,10 +25,9 @@ interface IllustrationProductFormProps {
   convertTransactionToLoan: HandleConvertTransactionToLoan;
 }
 
-type LoanIllustrationFormAllProps = IllustrationProductFormProps &
-  InjectedFormProps<{}, IllustrationProductFormProps>;
+type TLoanIllustrationForm = ILoanIllustrationForm & InjectedFormProps<{}, ILoanIllustrationForm>;
 
-const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
+const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
   illustrateLoanProduct,
   loanProductsOptions,
   withLoanSelection,
@@ -219,7 +218,7 @@ const LoanIllustrationForm: React.FC<LoanIllustrationFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, IllustrationProductFormProps>({
+export default reduxForm<{}, ILoanIllustrationForm>({
   form: formNamesConst.PRODUCT_ILLUSTRATION_FORM,
   destroyOnUnmount: true,
   enableReinitialize: true,

@@ -19,7 +19,7 @@ import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-interface ProductGeneralInfoProps {
+interface IProductGeneralInfo {
   currenciesOptions: Array<ISelectValue>;
   getCurrencyCodes: THandleGetDictionaryCurrencies;
   getStatementCycleTypes: THandleGetDictionaryStatementCycleTypes;
@@ -32,7 +32,7 @@ interface ProductGeneralInfoProps {
   statementCycleTypeValue: ISelectValue;
 }
 
-const ProductGeneralInfo: React.FC<ProductGeneralInfoProps> = ({
+const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   currenciesOptions,
   isCurrenciesLoading,
   getCurrencyCodes,

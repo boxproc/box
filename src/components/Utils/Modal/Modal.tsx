@@ -24,7 +24,7 @@ const ModalTitle = styled(T2)`
   text-transform: none;
 `;
 
-interface ModalProps extends IWithModal {
+interface IModal extends IWithModal {
   /** Width of modal window container */
   containerWidth?: string;
 
@@ -50,7 +50,7 @@ interface ModalProps extends IWithModal {
   withCloseConfirmation?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<IModal> = ({
   children,
   closeModal,
   containerWidth = '720px',

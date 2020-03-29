@@ -6,11 +6,11 @@ import { Spinner } from './Spinner';
 
 import { componentUtil } from 'utils';
 
-export interface ExternalSpinnerProps {
+export interface ISpinner {
   isLoading: boolean;
 }
 
-interface Options {
+interface IOptions {
   backgroundColor?: string;
   color?: string;
   isFixed?: boolean;
@@ -19,7 +19,7 @@ interface Options {
   size?: string | number;
 }
 
-const SpinnerContainer = styled.div<ExternalSpinnerProps & Options>`
+const SpinnerContainer = styled.div<ISpinner & IOptions>`
   ${({ isLoading }) => isLoading ? 'position: relative' : ''};
   width: 100%;
   height: 100%;
@@ -37,10 +37,10 @@ export const withSpinner = ({
   isGlobal = false,
   maxHeight,
   size,
-}: Options = {}) => <OriginalProps extends {}>(
-  Component: React.ComponentType<OriginalProps & Partial<ExternalSpinnerProps>>
+}: IOptions = {}) => <OriginalProps extends {}>(
+  Component: React.ComponentType<OriginalProps & Partial<ISpinner>>
 ) => {
-    const WithSpinner: React.FC<OriginalProps & ExternalSpinnerProps> = props => {
+    const WithSpinner: React.FC<OriginalProps & ISpinner> = props => {
       const { isLoading } = props;
 
       return (

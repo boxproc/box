@@ -12,7 +12,7 @@ import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/
 
 import { IStatementApr } from 'store';
 
-interface StatementAprsProps extends IWithModal {
+interface IStatementAprs extends IWithModal {
   currentAccountAlias: string;
   currentStatementDate: string;
   statementAprs: ImmutableArray<IStatementApr>;
@@ -20,7 +20,7 @@ interface StatementAprsProps extends IWithModal {
 
 const modalName = modalNamesConst.STATEMENT_APRS;
 
-const StatementAprs: React.FC<StatementAprsProps> = ({
+const StatementAprs: React.FC<IStatementAprs> = ({
   closeModal,
   currentAccountAlias,
   currentStatementDate,

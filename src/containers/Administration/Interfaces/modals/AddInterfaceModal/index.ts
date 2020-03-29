@@ -5,13 +5,13 @@ import { formNamesConst } from 'consts';
 
 import AddInterfaceModal from './AddInterfaceModal';
 
-import { selectInstitutionsOptions, StoreState } from 'store';
+import { StoreState, userInstitutionsOptionsSelector } from 'store';
 
 const dirty = isDirty(formNamesConst.INTERFACE);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 export default connect(

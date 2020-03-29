@@ -4,10 +4,10 @@ import { TableCell, TableHeader } from 'components';
 
 import { IDictionaryEventDataElemPrepared } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof IDictionaryEventDataElemPrepared> =
-  ITableCellType<IDictionaryEventDataElemPrepared[T]>;
+  ITableCell<IDictionaryEventDataElemPrepared[T]>;
 
 export const tableColumns = [
   {

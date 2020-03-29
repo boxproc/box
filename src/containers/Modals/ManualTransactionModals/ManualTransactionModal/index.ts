@@ -5,15 +5,15 @@ import ManualTransactionModal from './ManualTransactionModal';
 
 import {
   createLoadingSelector,
+  currencyNumsOptionsSelector,
   handleGetDictionaryCurrencies,
   handleMakeLedgerLimitAdjustment,
   handleMakeLedgerTransaction,
+  isCurrenciesLoadingSelector,
   LedgerLimitAdjustmentActionTypes,
   LedgerManualTransactionActionTypes,
   manualTrModalIsLimitAdjSelector,
   payloadManualTrModalSelector,
-  selectCurrencyNumsOptions,
-  selectIsCurrenciesLoading,
   StoreState,
 } from 'store';
 
@@ -24,9 +24,9 @@ const loadingSelector = createLoadingSelector([
 
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
-  isCurrenciesLoading: selectIsCurrenciesLoading(state),
+  isCurrenciesLoading: isCurrenciesLoadingSelector(state),
   modalPayload: payloadManualTrModalSelector(state),
-  currenciesOptions: selectCurrencyNumsOptions(state),
+  currenciesOptions: currencyNumsOptionsSelector(state),
   isLimitAdjustment: manualTrModalIsLimitAdjSelector(state),
 });
 

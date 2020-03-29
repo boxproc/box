@@ -7,10 +7,10 @@ import { iconNamesConst } from 'consts';
 
 import { HandleGetLogData, SystemMonitorSchedulerItem } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 type TCell<T extends keyof SystemMonitorSchedulerItem> =
-  ITableCellType<SystemMonitorSchedulerItem[T]>;
+  ITableCell<SystemMonitorSchedulerItem[T]>;
 
 export const schedulerTableColumns = (getLogData: HandleGetLogData, name: string) => [
   {

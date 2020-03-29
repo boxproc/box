@@ -9,8 +9,8 @@ import {
   handleFilterAuditApiCalls,
   resetApiCalls,
   selectAuditApiCalls,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -20,7 +20,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   apiCalls: selectAuditApiCalls(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -5,11 +5,11 @@ import styled from 'theme';
 
 import { ChevronDownIcon, Hr } from 'components';
 
-interface CollapseButtonProps {
+interface ICollapseButton {
   isOpen: boolean;
 }
 
-const CollapseButton = styled(ChevronDownIcon)<CollapseButtonProps>`
+const CollapseButton = styled(ChevronDownIcon)<ICollapseButton>`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray};
   transition: all .1s linear;
@@ -29,12 +29,12 @@ const CollapseHeader = styled.div`
   }
 `;
 
-interface CollapseProps {
+interface ICollapse {
   header?: ReactChild;
   additionalTool?: ReactChild;
 }
 
-const Collapse: React.FC<CollapseProps> = ({
+const Collapse: React.FC<ICollapse> = ({
   children,
   header,
   additionalTool,

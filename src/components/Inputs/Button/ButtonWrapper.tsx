@@ -1,13 +1,13 @@
 import styled from 'theme';
 
-interface ButtonWrapperProps {
+interface IButtonWrapper {
   classNames?: Array<string>;
   hasIcon?: boolean;
   size?: string;
   width?: string;
 }
 
-export const ButtonWrapper = styled.button<ButtonWrapperProps>`
+export const ButtonWrapper = styled.button<IButtonWrapper>`
   position: relative;
   display: flex;
   justify-content: center;

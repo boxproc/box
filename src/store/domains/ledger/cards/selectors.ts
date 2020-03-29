@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 
-import { selectCardStatusesOptions } from 'store/domains/administration';
+import { cardStatusesOptionsSelector } from 'store/domains/administration';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { prepareValuesToRender } from './utils';
 
@@ -26,7 +26,7 @@ export const selectLedgerCardValues = createSelector(
 export const selectCurrentCardStatusOption = createSelector(
   selectDefaultLedgerCards,
   activeItemIdSelector,
-  selectCardStatusesOptions,
+  cardStatusesOptionsSelector,
   (cardsItems, currentId, cardStatusesOptions) => {
     const current = cardsItems && cardsItems.find(item => item.id === currentId);
 

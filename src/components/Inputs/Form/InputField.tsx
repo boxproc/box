@@ -3,9 +3,9 @@ import styled from 'theme';
 import { sharedInputCss } from './sharedInputCss';
 import { withFormField } from './withFormField';
 
-import { InputCommonProps } from './types';
+import { ICommonInput } from './types';
 
-const InputField = styled.input<InputCommonProps>`
+const InputField = styled.input<ICommonInput>`
   ${sharedInputCss};
 `;
 

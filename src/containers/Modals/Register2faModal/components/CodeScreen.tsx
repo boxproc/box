@@ -19,14 +19,14 @@ const DashedBlock = styled.div`
   font-family: ${({ theme }) => theme.fonts.code};
 `;
 
-interface CodeScreenProps {
+interface ICodeScreen {
   code: string;
   dataUrl: string;
   onConfirm: () => void;
   onRegenerate: () => void;
 }
 
-const CodeScreen: React.FC<CodeScreenProps> = ({
+const CodeScreen: React.FC<ICodeScreen> = ({
   onConfirm,
   onRegenerate,
   code,

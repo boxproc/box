@@ -22,11 +22,11 @@ import {
   ProductApr,
 } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof ProductApr> = ITableCellType<ProductApr[T]>;
+type TCell<T extends keyof ProductApr> = ITableCell<ProductApr[T]>;
 
-interface AprsTableProps {
+interface IAprsTable {
   productAprs: ImmutableArray<ProductApr>;
   getProductAprs: HandleGetProductAprs;
   deleteProductApr: HandleDeleteProductApr;
@@ -35,7 +35,7 @@ interface AprsTableProps {
   isLoading: boolean;
 }
 
-const AprsTable: React.FC<AprsTableProps> = ({
+const AprsTable: React.FC<IAprsTable> = ({
   productAprs,
   getProductAprs,
   deleteProductApr,

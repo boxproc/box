@@ -16,7 +16,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface ProductsProps {
+interface IProducts {
   productItems: ImmutableArray<ProductItem>;
   institutionsOptions: Array<ISelectValue>;
   currentProductName: string;
@@ -27,7 +27,7 @@ interface ProductsProps {
   resetProducts: ResetProducts;
 }
 
-export const Products: React.FC<ProductsProps> = ({
+export const Products: React.FC<IProducts> = ({
   productItems,
   institutionsOptions,
   filterProducts,

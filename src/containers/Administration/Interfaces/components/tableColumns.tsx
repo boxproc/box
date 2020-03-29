@@ -2,9 +2,9 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 import { IInterface } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IInterface> = ITableCellType<IInterface[T]>;
+type TCell<T extends keyof IInterface> = ITableCell<IInterface[T]>;
 
 export const tableColumns = [
   {

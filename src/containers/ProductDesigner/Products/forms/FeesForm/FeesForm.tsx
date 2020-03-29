@@ -13,7 +13,7 @@ import { HandleAddProductFee } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface FeesFormProps {
+interface IFeesForm {
   addProductFee: HandleAddProductFee;
   isLoading: boolean;
   isAprsLoading: boolean;
@@ -23,9 +23,9 @@ interface FeesFormProps {
   isReadOnly: boolean;
 }
 
-type FeesFormAllProps = FeesFormProps & InjectedFormProps<{}, FeesFormProps>;
+type TFeesForm = IFeesForm & InjectedFormProps<{}, IFeesForm>;
 
-const FeesForm: React.FC<FeesFormAllProps> = ({
+const FeesForm: React.FC<TFeesForm> = ({
   onCancel,
   addProductFee,
   handleSubmit,
@@ -106,7 +106,7 @@ const FeesForm: React.FC<FeesFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, FeesFormProps>({
+export default reduxForm<{}, IFeesForm>({
   form: formNamesConst.PRODUCT_FEES,
   destroyOnUnmount: true,
   enableReinitialize: true,

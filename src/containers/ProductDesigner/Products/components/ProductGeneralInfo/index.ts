@@ -7,33 +7,25 @@ import ProductGeneralInfo from './ProductGeneralInfo';
 import { formNamesConst } from 'consts';
 
 import {
-  createLoadingSelector,
-  DictionaryActionTypes,
+  currenciesOptionsSelector,
   handleGetDictionaryCurrencies,
   handleGetDictionaryStatementCycleTypes,
-  selectCurrenciesOptions,
-  selectInstitutionsOptions,
-  selectStatementCycleTypesOptions,
+  isCurrenciesLoadingSelector,
+  isStatementCycleTypesLoading,
+  statementCycleTypesOptionsSelector,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
-
-const currencyCodesLoading = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_CURRENCIES,
-]);
-
-const statementCycleTypesLoading = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_STATEMENT_CYCLE_TYPES,
-]);
 
 const formSelectorGeneralProduct = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 const formSelectorAddProduct = formValueSelector(formNamesConst.ADD_PRODUCT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isCurrenciesLoading: currencyCodesLoading(state),
-  isStatementCycleTypesLoading: statementCycleTypesLoading(state),
-  institutionsOptions: selectInstitutionsOptions(state),
-  statementCycleTypesOptions: selectStatementCycleTypesOptions(state),
-  currenciesOptions: selectCurrenciesOptions(state),
+  isCurrenciesLoading: isCurrenciesLoadingSelector(state),
+  isStatementCycleTypesLoading: isStatementCycleTypesLoading(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
+  statementCycleTypesOptions: statementCycleTypesOptionsSelector(state),
+  currenciesOptions: currenciesOptionsSelector(state),
   statementCycleTypeValue: formSelectorGeneralProduct(state, 'statementCycleTypeId')
     || formSelectorAddProduct(state, 'statementCycleTypeId'),
 });

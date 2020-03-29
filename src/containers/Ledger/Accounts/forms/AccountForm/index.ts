@@ -8,13 +8,13 @@ import AccountForm from './AccountForm';
 
 import {
   createLoadingSelector,
+  dictionaryRepaymentTypesOptionsSelector,
   handleAddLedgerAccount,
   handleUpdateLedgerAccount,
   LedgerAccountsActionTypes,
-  selectDictionaryRepaymentTypesOptions,
   selectInstitutionProducts,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -27,8 +27,8 @@ const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   institutionProducts: selectInstitutionProducts(state),
-  institutionsOptions: selectInstitutionsOptions(state),
-  repaymentTypesOptions: selectDictionaryRepaymentTypesOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
+  repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
   currentProduct: formSelector(state, 'product'),
   currentInstitution: formSelector(state, 'institutionId'),
 });

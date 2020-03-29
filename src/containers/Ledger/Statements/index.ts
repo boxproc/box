@@ -14,15 +14,15 @@ import {
   isStatementsLoadingSelector,
   isTransArsLoadingSelector,
   resetStatements,
-  selectInstitutionsOptions,
   setActiveItemId,
   statementsSelector,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   currentId: activeItemIdSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: isStatementsLoadingSelector(state),
   isLoadingStatement: isTransArsLoadingSelector(state),
   statements: statementsSelector(state),

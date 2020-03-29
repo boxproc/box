@@ -4,15 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Events from './Events';
 
 import {
+  dictionaryEventsSelector,
   handleGetDictionaryEvents,
-  selectDictionaryEvents,
-  selectIsEventsLoading,
+  isEventsLoadingSelector,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  eventsData: selectDictionaryEvents(state),
-  isLoading: selectIsEventsLoading(state),
+  eventsData: dictionaryEventsSelector(state),
+  isLoading: isEventsLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -11,14 +11,14 @@ const gradients = {
   cellGray: 'linear-gradient(to right, rgba(243, 243, 243, .6) 0%,rgba(243, 243, 243,1) 100%)',
 };
 
-interface TableStyledProps {
+interface ITableStyled {
   activeRowIndex: number;
   isScrollbar?: boolean;
   isSmaller?: boolean;
   minHeight?: number;
 }
 
-export const TableStyled = styled.div<TableStyledProps>`
+export const TableStyled = styled.div<ITableStyled>`
   .ReactTable {
     height: 100%;
     border: none;

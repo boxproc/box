@@ -49,16 +49,16 @@ const HiddenBox = styled(Box)`
   display: none;
 `;
 
-interface ContextItemProps {
+interface IContextItem {
   name: string | number;
   description: string;
 }
 
-interface ProductRulesProps {
+interface IProductRules {
   actionTypesOptions: Array<ISelectValue>;
   changeFormField: (field: string, value: string | ISelectValue) => void;
   dirty: boolean;
-  eventDataElemsItems: ImmutableArray<ContextItemProps>;
+  eventDataElemsItems: ImmutableArray<IContextItem>;
   eventsOptions: Array<ISelectValue>;
   eventValue: ISelectValue;
   filterDictionaryEventDataElemsById: THandleFilterDictionaryEventDataElemsById;
@@ -71,11 +71,11 @@ interface ProductRulesProps {
   isLoading: boolean;
   isReadOnly: boolean;
   onChangeValues: () => void;
-  productAprsItems: ImmutableArray<ContextItemProps>;
-  productFeesItems: ImmutableArray<ContextItemProps>;
-  productRewardsItems: ImmutableArray<ContextItemProps>;
+  productAprsItems: ImmutableArray<IContextItem>;
+  productFeesItems: ImmutableArray<IContextItem>;
+  productRewardsItems: ImmutableArray<IContextItem>;
   scriptValue: string;
-  transactionTypesItems: ImmutableArray<ContextItemProps>;
+  transactionTypesItems: ImmutableArray<IContextItem>;
 }
 
 const getNewCode = (element: string) => {
@@ -92,7 +92,7 @@ const getNewCode = (element: string) => {
   return resultText;
 };
 
-const mapComments = (items: ImmutableArray<ContextItemProps>) => items.map(el => {
+const mapComments = (items: ImmutableArray<IContextItem>) => items.map(el => {
   return {
     name: el.description,
     value: `/* ${el.description} */`,
@@ -100,7 +100,7 @@ const mapComments = (items: ImmutableArray<ContextItemProps>) => items.map(el =>
   };
 });
 
-const ProductRules: React.FC<ProductRulesProps> = ({
+const ProductRules: React.FC<IProductRules> = ({
   getEvents,
   eventsOptions,
   isEventsLoading,

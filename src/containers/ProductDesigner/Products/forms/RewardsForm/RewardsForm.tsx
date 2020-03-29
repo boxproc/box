@@ -13,7 +13,7 @@ import { HandleAddProductReward } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface RewardsFormProps {
+interface IRewardsForm {
   addProductReward: HandleAddProductReward;
   isLoading: boolean;
   rewardApplicationConditionValue: ISelectValue;
@@ -21,9 +21,9 @@ interface RewardsFormProps {
   isReadOnly: boolean;
 }
 
-type RewardsFormAllProps = RewardsFormProps & InjectedFormProps<{}, RewardsFormProps>;
+type TRewardsForm = IRewardsForm & InjectedFormProps<{}, IRewardsForm>;
 
-const RewardsForm: React.FC<RewardsFormAllProps> = ({
+const RewardsForm: React.FC<TRewardsForm> = ({
   onCancel,
   addProductReward,
   handleSubmit,
@@ -100,7 +100,7 @@ const RewardsForm: React.FC<RewardsFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, RewardsFormProps>({
+export default reduxForm<{}, IRewardsForm>({
   form: formNamesConst.PRODUCT_REWARDS,
   destroyOnUnmount: true,
   enableReinitialize: true,

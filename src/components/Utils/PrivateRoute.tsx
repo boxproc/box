@@ -4,13 +4,13 @@ import { Redirect, Route } from 'react-router-dom';
 import { basePath } from 'consts';
 import { storageUtil } from 'utils';
 
-interface PrivateRouteProps {
+interface IPrivateRoute {
   component: React.ElementType;
   exact?: boolean;
   path: string;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({
+const PrivateRoute: React.FC<IPrivateRoute> = ({
   component: Component,
   exact,
   ...rest

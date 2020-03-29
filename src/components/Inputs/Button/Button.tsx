@@ -11,7 +11,7 @@ import { modalNamesConst } from 'consts';
 import { ButtonWrapper } from './ButtonWrapper';
 import { icons } from './icons';
 
-interface ButtonProps extends IWithModal {
+interface IButton extends IWithModal {
   classNames?: Array<string>; /** no-text-transform, is-tabs, is-bordered, is-animated */
   confirmationText?: string;
   confirmationTitle?: string;
@@ -28,7 +28,7 @@ interface ButtonProps extends IWithModal {
   withConfirmation?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<IButton> = ({
   classNames,
   confirmationText,
   confirmationTitle,

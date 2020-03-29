@@ -5,10 +5,8 @@ import {
   yesNoConst,
 } from 'consts';
 
-import { UserData } from 'store';
-
 import { apiClientService } from 'services';
-
+import { IAuthUserData } from 'store';
 import { cookiesUtil } from 'utils';
 
 export const clear = () => {
@@ -44,7 +42,7 @@ export const getFirstScreenFlag = () =>
 
 export const getLoginFlag = () => sessionStorage.getItem(sessionStorageNamesConst.IS_LOGIN);
 
-export const setUserData = (data: UserData) =>
+export const setUserData = (data: IAuthUserData) =>
   sessionStorage.setItem(sessionStorageNamesConst.USER, JSON.stringify(data));
 
 export const getUserData = () => JSON.parse(sessionStorage.getItem(sessionStorageNamesConst.USER));

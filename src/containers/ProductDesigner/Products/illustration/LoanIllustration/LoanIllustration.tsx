@@ -19,7 +19,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-interface IllustrationProductProps {
+interface ILoanIllustration {
   productIllustrationData: ImmutableArray<IllustrationProductLoan>;
   loanProductsOptions: Array<ISelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
@@ -39,7 +39,7 @@ interface IllustrationProductProps {
   onCancel?: () => void;
 }
 
-const LoanIllustration: React.FC<IllustrationProductProps> = ({
+const LoanIllustration: React.FC<ILoanIllustration> = ({
   illustrateLoanProduct,
   convertTransactionToLoan,
   productIllustrationData,

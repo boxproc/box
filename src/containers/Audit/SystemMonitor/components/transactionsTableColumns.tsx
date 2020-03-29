@@ -4,9 +4,9 @@ import { TableCell, TableHeader } from 'components';
 
 import { SystemMonitorTransaction } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof SystemMonitorTransaction> = ITableCellType<SystemMonitorTransaction[T]>;
+type TCell<T extends keyof SystemMonitorTransaction> = ITableCell<SystemMonitorTransaction[T]>;
 
 export const transactionsTableColumns = [
   {

@@ -5,7 +5,7 @@ import { TableNoData } from './../../Layout';
 
 import { TableStyled } from './TableStyled';
 
-export interface TableProps extends Partial<ComponentDecoratorProps> {
+interface ITable extends Partial<ComponentDecoratorProps> {
   activeRowIndex?: number;
   className?: string;
   columns: Array<object>;
@@ -20,7 +20,7 @@ export interface TableProps extends Partial<ComponentDecoratorProps> {
   title?: string;
 }
 
-export const Table: React.FC<TableProps> = props => {
+export const Table: React.FC<ITable> = props => {
   const {
     activeRowIndex,
     data = [],
@@ -55,7 +55,7 @@ export const Table: React.FC<TableProps> = props => {
       isScrollbar={isScrollbar}
     >
       <ReactTable
-        {...props as TableProps}
+        {...props as ITable}
         sortable={sortable}
         filterable={filterable}
         minRows={0}

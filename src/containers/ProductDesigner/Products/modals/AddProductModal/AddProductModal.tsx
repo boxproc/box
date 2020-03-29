@@ -7,13 +7,13 @@ import { modalNamesConst } from 'consts';
 
 import { AddProductForm } from 'containers/ProductDesigner/Products/forms';
 
-interface AddProductModalProps extends IWithModal {
+interface IAddProductModal extends IWithModal {
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.ADD_PRODUCT;
 
-const AddProductModal: React.FC<AddProductModalProps> = ({
+const AddProductModal: React.FC<IAddProductModal> = ({
   closeModal,
   isFormDirty,
 }) => {

@@ -2,13 +2,13 @@ import React from 'react';
 
 import styled from 'theme';
 
-interface ContainerProps {
+interface IContainer {
   backgroundColor?: string;
   isFixed: boolean;
   maxHeight?: string | number;
 }
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.div<IContainer>`
   position: ${({ isFixed }) => isFixed ? 'fixed' : 'absolute'};
   left: 0;
   top: 0;
@@ -22,12 +22,12 @@ const Container = styled.div<ContainerProps>`
   z-index: 100;
 `;
 
-interface CircleProps {
+interface ICircle {
   color?: string;
   size?: string | number;
 }
 
-const Circle = styled.svg<CircleProps>`
+const Circle = styled.svg<ICircle>`
   @keyframes rotate {
     100% {
       transform: rotate(360deg);
@@ -44,7 +44,7 @@ const Circle = styled.svg<CircleProps>`
   }
 `;
 
-export const Spinner: React.FC<ContainerProps & CircleProps> = ({
+export const Spinner: React.FC<IContainer & ICircle> = ({
   backgroundColor,
   color,
   isFixed,

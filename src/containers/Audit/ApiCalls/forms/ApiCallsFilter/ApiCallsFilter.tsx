@@ -12,7 +12,7 @@ import { THandleGetEndpointsByInstId } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
-interface ApiCallsFilterProps {
+interface IApiCallsFilter {
   getEndpointsByInstitutionId: THandleGetEndpointsByInstId;
   institutionValue: ISelectValue;
   institutionsOptions: Array<ISelectValue>;
@@ -21,7 +21,7 @@ interface ApiCallsFilterProps {
   isDisabled: boolean;
 }
 
-const ApiCallsFilter: React.FC<ApiCallsFilterProps> = ({
+const ApiCallsFilter: React.FC<IApiCallsFilter> = ({
   institutionValue,
   getEndpointsByInstitutionId,
   institutionsOptions,

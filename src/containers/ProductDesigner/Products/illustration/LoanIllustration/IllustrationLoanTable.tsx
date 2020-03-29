@@ -7,9 +7,9 @@ import { Table, TableCell, TableHeader, withSpinner } from 'components';
 
 import { IllustrationProductLoan } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IllustrationProductLoan> = ITableCellType<IllustrationProductLoan[T]>;
+type TCell<T extends keyof IllustrationProductLoan> = ITableCell<IllustrationProductLoan[T]>;
 
 const columns = [
   {
@@ -113,11 +113,11 @@ const columns = [
   },
 ];
 
-interface IllustrationLoanTableProps {
+interface IIllustrationLoanTable {
   data: ImmutableArray<IllustrationProductLoan>;
 }
 
-const IllustrationLoanTable: React.FC<IllustrationLoanTableProps> = ({ data }) => {
+const IllustrationLoanTable: React.FC<IIllustrationLoanTable> = ({ data }) => {
   return (
     <Box pb="10px">
       <Table

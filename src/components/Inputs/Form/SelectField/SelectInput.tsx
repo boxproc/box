@@ -37,21 +37,21 @@ const MultiValueRemove = <T extends {}>(props: MultiValueRemoveProps<T>) => {
   );
 };
 
-interface InputValue {
+interface IInputValue {
   inputValue: string;
 }
 
-const loadingMessage = (obj: InputValue) => 'Options are being fetched';
-const defaultNoOptionsMsg = (obj: InputValue) => 'No options';
+const loadingMessage = (obj: IInputValue) => 'Options are being fetched';
+const defaultNoOptionsMsg = (obj: IInputValue) => 'No options';
 const preventNoOptionsMsg = (): null => null;
 
-export interface SelectInputProps<T = object> extends SelectProps<T> {
+interface ISelectInput<T = object> extends SelectProps<T> {
   modifySelectOption?: (data: OptionProps<T>) => void;
   isCustomSingleValue?: boolean;
   onChange?: any;
 }
 
-export const SelectInput = <T extends {}>(props: SelectInputProps<T>) => {
+export const SelectInput = <T extends {}>(props: ISelectInput<T>) => {
   const { id, isMulti, isCustomSingleValue, onChange, ...extraProps } = props;
 
   return (

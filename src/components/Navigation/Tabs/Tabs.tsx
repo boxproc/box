@@ -16,11 +16,11 @@ const TabsWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.bottomBox};
 `;
 
-interface TabsProps extends IWithModal {
+interface ITabs extends IWithModal {
   activeTab?: number;
 }
 
-const Tabs: React.FC<TabsProps> = ({
+const Tabs: React.FC<ITabs> = ({
   activeTab = 0,
   children,
   openModal,

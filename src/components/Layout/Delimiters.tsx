@@ -1,12 +1,12 @@
 import styled from 'theme';
 import { highlightCss } from 'theme/styles';
 
-interface HrProps {
+interface IHr {
   accentColor?: boolean;
   noSpace?: boolean;
 }
 
-export const Hr = styled.div<HrProps>`
+export const Hr = styled.div<IHr>`
   margin-top: ${({ noSpace }) => noSpace ? '1px' : '9px'};
   margin-bottom:${({ noSpace }) => noSpace ? '0' : '7px'};
   padding: 1px 0;

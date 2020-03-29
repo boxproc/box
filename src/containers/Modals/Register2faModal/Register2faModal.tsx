@@ -8,23 +8,23 @@ import { CodeScreen } from './components';
 import { PasswordForm } from './forms';
 
 import {
-  HandleSetUserCurrentRegisterStep,
-  HandleUserConfirmAuthKey,
-  HandleUserGetAuthKey,
+  THandleSetUserCurrentRegisterStep,
+  THandleUserConfirmAuthKey,
+  THandleUserGetAuthKey,
 } from 'store';
 
-interface Register2faModalProps {
-  userGetAuthKey: HandleUserGetAuthKey;
+interface IRegister2faModal {
+  userGetAuthKey: THandleUserGetAuthKey;
   currentRegisterStep: number;
-  setUserCurrentRegisterStep: HandleSetUserCurrentRegisterStep;
-  userConfirmAuthKey: HandleUserConfirmAuthKey;
+  setUserCurrentRegisterStep: THandleSetUserCurrentRegisterStep;
+  userConfirmAuthKey: THandleUserConfirmAuthKey;
   code: string;
   dataUrl: string;
 }
 
 const modalName = modalNamesConst.REGISTER_2FA;
 
-const Register2faModal: React.FC<Register2faModalProps> = ({
+const Register2faModal: React.FC<IRegister2faModal> = ({
   userGetAuthKey,
   currentRegisterStep,
   setUserCurrentRegisterStep,

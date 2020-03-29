@@ -9,8 +9,8 @@ import { highlightCss } from 'theme/styles';
 import {
   Button,
   CheckboxField,
-  ExternalSpinnerProps,
   InputField,
+  ISpinner,
   Logo,
   PasswordField,
   SmallText,
@@ -19,7 +19,7 @@ import {
 
 import { formNamesConst } from 'consts';
 
-import { HandleUserLogin } from 'store';
+import { THandleUserLogin } from 'store';
 
 import { formErrorUtil } from 'utils';
 
@@ -54,8 +54,8 @@ const FormWrapper = styled.div`
   }
 `;
 
-interface LoginProps extends ExternalSpinnerProps {
-  userLogin: HandleUserLogin;
+interface ILogin extends ISpinner {
+  userLogin: THandleUserLogin;
   isPasswordFocus: boolean;
   isMessageModal: boolean;
   loginValues: {
@@ -64,9 +64,9 @@ interface LoginProps extends ExternalSpinnerProps {
   };
 }
 
-type LoginPropsAllProps = LoginProps & InjectedFormProps<{}, LoginProps>;
+type TLogin = ILogin & InjectedFormProps<{}, ILogin>;
 
-const Login: React.FC<LoginPropsAllProps> = ({
+const Login: React.FC<TLogin> = ({
   handleSubmit,
   userLogin,
   isPasswordFocus,
@@ -139,7 +139,7 @@ const Login: React.FC<LoginPropsAllProps> = ({
   );
 };
 
-export default reduxForm<{}, LoginProps>({
+export default reduxForm<{}, ILogin>({
   form: formNamesConst.USER_LOGIN,
   destroyOnUnmount: true,
   enableReinitialize: true,

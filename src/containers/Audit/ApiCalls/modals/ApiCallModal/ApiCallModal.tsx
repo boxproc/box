@@ -11,13 +11,13 @@ import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
 
 import { HandleGetDetailsAuditApiCalls } from 'store';
 
-interface ApiCallModalProps extends IWithModal {
+interface IApiCallModal extends IWithModal {
   getDetailsApiCalls: HandleGetDetailsAuditApiCalls;
 }
 
 const modalName = modalNamesConst.API_CALL;
 
-const ApiCallModal: React.FC<ApiCallModalProps> = ({
+const ApiCallModal: React.FC<IApiCallModal> = ({
   closeModal,
   getDetailsApiCalls,
 }) => {

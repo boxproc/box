@@ -7,11 +7,11 @@ import { CheckboxField, InputField, NumberFormatField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface RevolvingCreditDetailsProps {
+interface IRevolvingCreditDetails {
   isReadOnly: boolean;
 }
 
-const RevolvingCreditDetails: React.FC<RevolvingCreditDetailsProps> = ({ isReadOnly }) => {
+const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly }) => {
   return (
     <Box mx="-8px">
       <Flex

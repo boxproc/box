@@ -2,12 +2,12 @@ import React from 'react';
 
 import styled from 'theme';
 
-interface LinkProps {
+interface ILink {
   fontSize?: string;
   isActive?: boolean;
 }
 
-const Link = styled.span<LinkProps>`
+const Link = styled.span<ILink>`
   color: ${({ theme }) => theme.colors.gray};
   border-bottom: 1px solid ${({ theme, isActive }) =>
     isActive ? theme.colors.lightAccent : theme.colors.lightGray};
@@ -21,14 +21,14 @@ const Link = styled.span<LinkProps>`
   }
 `;
 
-interface HighlightLinkProps {
+interface IHighlightLink {
   fontSize?: string;
   isActive?: boolean;
   onClick?: () => void;
   text: string;
 }
 
-const HighlightLink: React.FC<HighlightLinkProps> = ({
+const HighlightLink: React.FC<IHighlightLink> = ({
   fontSize,
   isActive,
   onClick,

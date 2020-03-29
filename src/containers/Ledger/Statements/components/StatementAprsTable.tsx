@@ -3,9 +3,9 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Table, TableCell, TableHeader } from 'components';
 import { IStatementApr } from 'store';
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
-type TCell<T extends keyof IStatementApr> = ITableCellType<IStatementApr[T]>;
+type TCell<T extends keyof IStatementApr> = ITableCell<IStatementApr[T]>;
 
 export const tableColumns = [
   {

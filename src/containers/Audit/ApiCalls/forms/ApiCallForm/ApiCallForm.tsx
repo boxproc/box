@@ -1,18 +1,16 @@
 import React from 'react';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-
 import { Delimiter, InputField, SelectField, TextareaField } from 'components';
-
 import { formNamesConst } from 'consts';
 
-interface ApiCallFormProps { }
+interface IApiCallForm { }
 
-type ApiCallFormAllProps = ApiCallFormProps & InjectedFormProps<{}, ApiCallFormProps>;
+type TApiCallForm = IApiCallForm & InjectedFormProps<{}, IApiCallForm>;
 
-const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
+const ApiCallForm: React.FC<TApiCallForm> = () => {
   return (
     <form>
       <Box mx="-8px">
@@ -115,7 +113,7 @@ const ApiCallForm: React.FC<ApiCallFormAllProps> = () => {
   );
 };
 
-export default reduxForm<{}, ApiCallFormProps>({
+export default reduxForm<{}, IApiCallForm>({
   form: formNamesConst.AUDIT_API_CALL,
   destroyOnUnmount: false,
   enableReinitialize: true,

@@ -11,13 +11,13 @@ import { basePath, modalNamesConst, modalTypesConst, sessionStatusCodes } from '
 import { IPayloadMessageModal } from 'store';
 import { storageUtil, urlUtil } from 'utils';
 
-interface MessageModalProps extends RouteComponentProps, IWithModal {
+interface IMessageModal extends RouteComponentProps, IWithModal {
   payloadMessageModal: IPayloadMessageModal;
 }
 
 const modalName = modalNamesConst.MESSAGE;
 
-const MessageModal: React.FC<MessageModalProps> = ({
+const MessageModal: React.FC<IMessageModal> = ({
   payloadMessageModal,
   closeModal,
 }) => {

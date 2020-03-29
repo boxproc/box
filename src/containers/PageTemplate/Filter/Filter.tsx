@@ -14,11 +14,11 @@ import { TSetIsAccessibleFiltering, TStopAutoRefresh } from 'store';
 
 import { cookiesUtil, storageUtil } from 'utils';
 
-interface FilterWrapperProps {
+interface IFilterWrapper {
   isHidden: boolean;
 }
 
-const FilterWrapper = styled.div<FilterWrapperProps>`
+const FilterWrapper = styled.div<IFilterWrapper>`
   margin-bottom: 15px;
   padding: 10px 15px 12px;
   border: 1px solid ${({ theme }) => theme.colors.lighterGray};
@@ -36,7 +36,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
   `};
 `;
 
-interface FilterProps {
+interface IFilter {
   filterAction: () => void;
   filterValues: object;
   stopAutoRefresh: TStopAutoRefresh;
@@ -59,9 +59,9 @@ export const filteredFieldsToStore = (data: object) => {
     );
 };
 
-type FilterAllProps = FilterProps & InjectedFormProps<{}, FilterProps>;
+type TFilter = IFilter & InjectedFormProps<{}, IFilter>;
 
-const Filter: React.FC<FilterAllProps> = ({
+const Filter: React.FC<TFilter> = ({
   filterAction,
   children,
   handleSubmit,
@@ -240,7 +240,7 @@ const Filter: React.FC<FilterAllProps> = ({
   );
 };
 
-export default reduxForm<{}, FilterProps>({
+export default reduxForm<{}, IFilter>({
   form: formNamesConst.FILTER,
   keepDirtyOnReinitialize: true,
   destroyOnUnmount: false,

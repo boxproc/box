@@ -7,35 +7,30 @@ import { formNamesConst } from 'consts';
 import ProductRules from './ProductRules';
 
 import {
-  createLoadingSelector,
-  DictionaryActionTypes,
+  dictionaryEventsOptionsSelector,
+  eventDataElemsForRulesSelector,
   handleFilterDictionaryEventDataElemsById,
   handleGetDictionaryEvents,
   handleGetDictionaryTransactionTypes,
   handleGetProductAprsFeesRewards,
-  selectDictionaryEventsOptions,
-  selectEventDataElemsForRules,
+  isEventsLoadingSelector,
   selectProductAprsForRules,
   selectProductFeesForRules,
   selectProductRewardsForRules,
-  selectTransTypesForRules,
   StoreState,
+  transTypesForRulesSelector,
 } from 'store';
-
-const loadingEventsSelector = createLoadingSelector([
-  DictionaryActionTypes.GET_DICTIONARY_EVENTS,
-]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
 const mapStateToProps = (state: StoreState) => ({
-  eventDataElemsItems: selectEventDataElemsForRules(state),
+  eventDataElemsItems: eventDataElemsForRulesSelector(state),
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),
   productRewardsItems: selectProductRewardsForRules(state),
-  transactionTypesItems: selectTransTypesForRules(state),
-  isEventsLoading: loadingEventsSelector(state),
-  eventsOptions: selectDictionaryEventsOptions(state),
+  transactionTypesItems: transTypesForRulesSelector(state),
+  isEventsLoading: isEventsLoadingSelector(state),
+  eventsOptions: dictionaryEventsOptionsSelector(state),
   scriptValue: formSelector(state, 'script'),
 });
 

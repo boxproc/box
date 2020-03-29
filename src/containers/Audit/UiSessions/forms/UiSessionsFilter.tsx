@@ -16,12 +16,12 @@ const InstitutionsWrapper = styled(Box)`
   padding: 10px;
 `;
 
-interface UiSessionsFilterProps {
+interface IUiSessionsFilter {
   institutionsOptions: Array<ISelectValue>;
   isDisabled: boolean;
 }
 
-const UiSessionsFilter: React.FC<UiSessionsFilterProps> = ({
+const UiSessionsFilter: React.FC<IUiSessionsFilter> = ({
   institutionsOptions,
   isDisabled,
 }) => {

@@ -33,7 +33,7 @@ export interface IMessageResponse {
 
 export type TApiResponse = SuperagentApiResponse;
 
-export interface ITableCellType<T> extends CellInfo {
+export interface ITableCell<T> extends CellInfo {
   value: T;
 }
 

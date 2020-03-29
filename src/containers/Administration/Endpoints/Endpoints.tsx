@@ -15,7 +15,7 @@ import {
 } from 'store';
 import { ISelectValue } from 'types';
 
-export interface IEndpoints {
+interface IEndpoints {
   currentEndpointId: number;
   currentEndpointName: string;
   deleteEndpoint: THandleDeleteEndpoint;

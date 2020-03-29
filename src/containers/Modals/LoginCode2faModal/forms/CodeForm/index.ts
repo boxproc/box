@@ -4,18 +4,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import CodeForm from './CodeForm';
 
 import {
-  AuthActionTypes,
-  createLoadingSelector,
   handleUserEnterAuthKey,
+  isEnteringAuthKeySelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AuthActionTypes.USER_ENTER_AUTH_KEY,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isEnteringAuthKeySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

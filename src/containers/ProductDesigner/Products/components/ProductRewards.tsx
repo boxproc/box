@@ -15,7 +15,7 @@ const numberFieldsValidators = [
   formErrorUtil.isPositive,
 ];
 
-interface ProductRewardsProps {
+interface IProductRewards {
   isDisabled: boolean;
   isOnlyRate: boolean;
   isOnlyAmount: boolean;
@@ -23,7 +23,7 @@ interface ProductRewardsProps {
   pristine: boolean;
 }
 
-const ProductRewards: React.FC<ProductRewardsProps> = ({
+const ProductRewards: React.FC<IProductRewards> = ({
   isDisabled,
   isOnlyRate,
   isOnlyAmount,

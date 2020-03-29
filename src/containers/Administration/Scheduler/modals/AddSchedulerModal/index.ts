@@ -9,15 +9,15 @@ import AddSchedulerModal from './AddSchedulerModal';
 import {
   currentSchedulerJobSelector,
   handleAddSchedulerJob,
-  selectInstitutionsOptions,
   StoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.SCHEDULER);
 
 const mapStateToProps = (state: StoreState) => ({
   currentSchedulerJob: currentSchedulerJobSelector(state),
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isFormDirty: dirty(state),
 });
 

@@ -9,7 +9,7 @@ import { HandleGetProductServices } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface ProductServicesProps {
+interface IProductServices {
   productEndpointsServiceOptions: Array<ISelectValue>;
   productInterfacesServiceOptions: Array<ISelectValue>;
   getProductServices: HandleGetProductServices;
@@ -19,7 +19,7 @@ interface ProductServicesProps {
   isReadOnly: boolean;
 }
 
-const ProductServices: React.FC<ProductServicesProps> = ({
+const ProductServices: React.FC<IProductServices> = ({
   productInterfacesServiceOptions,
   productEndpointsServiceOptions,
   getProductServices,

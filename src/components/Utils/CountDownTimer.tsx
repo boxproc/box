@@ -2,11 +2,11 @@ import React from 'react';
 
 import styled from 'theme';
 
-interface WrapperProps {
+interface IWrapper {
   seconds: number;
 }
 
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div<IWrapper>`
   position: relative;
   width: 20px;
   height: 20px;
@@ -48,11 +48,11 @@ const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
-interface CountDownTimerProps {
+interface ICountDownTimer {
   seconds: number;
 }
 
-const CountDownTimer: React.FC<CountDownTimerProps> = ({ seconds }) => {
+const CountDownTimer: React.FC<ICountDownTimer> = ({ seconds }) => {
   const [count, setCount] = React.useState(seconds);
 
   React.useEffect(

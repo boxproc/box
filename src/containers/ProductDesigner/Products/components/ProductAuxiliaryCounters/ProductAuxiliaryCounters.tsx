@@ -7,14 +7,14 @@ import { CheckboxField, Delimiter, InputField } from 'components';
 
 import { formErrorUtil } from 'utils';
 
-interface ProductAuxiliaryCountersProps {
+interface IProductAuxiliaryCounters {
   isCounter1Enabled: boolean;
   isCounter2Enabled: boolean;
   isCounter3Enabled: boolean;
   isReadOnly: boolean;
 }
 
-const ProductAuxiliaryCounters: React.FC<ProductAuxiliaryCountersProps> = ({
+const ProductAuxiliaryCounters: React.FC<IProductAuxiliaryCounters> = ({
   isCounter1Enabled,
   isCounter2Enabled,
   isCounter3Enabled,

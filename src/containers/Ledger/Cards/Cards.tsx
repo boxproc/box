@@ -19,7 +19,7 @@ import {
 
 import { ISelectValue } from 'types';
 
-export interface CardsProps {
+interface ICards {
   currentId: number;
   cards: ImmutableArray<LedgerCardItemPrepared>;
   filterCards: HandleFilterLedgerCards;
@@ -32,7 +32,7 @@ export interface CardsProps {
   isLoading: boolean;
 }
 
-const Cards: React.FC<CardsProps> = ({
+const Cards: React.FC<ICards> = ({
   cards,
   filterCards,
   filterCustomersById,

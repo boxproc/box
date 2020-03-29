@@ -15,7 +15,7 @@ import { HandleAddRepaymentDirectDebit } from 'store';
 
 import { ISelectValue } from 'types';
 
-interface RepaymentDirectDebitsFormProps {
+interface IRepaymentDirectDebitsForm {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
@@ -24,10 +24,10 @@ interface RepaymentDirectDebitsFormProps {
   isInterfacesLoading: boolean;
 }
 
-type RepaymentDirectDebitsFormAllProps = RepaymentDirectDebitsFormProps
-  & InjectedFormProps<{}, RepaymentDirectDebitsFormProps>;
+type TRepaymentDirectDebitsForm = IRepaymentDirectDebitsForm
+  & InjectedFormProps<{}, IRepaymentDirectDebitsForm>;
 
-const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = ({
+const RepaymentDirectDebitsForm: React.FC<TRepaymentDirectDebitsForm> = ({
   onCancel,
   handleSubmit,
   pristine,
@@ -74,7 +74,7 @@ const RepaymentDirectDebitsForm: React.FC<RepaymentDirectDebitsFormAllProps> = (
   );
 };
 
-export default reduxForm<{}, RepaymentDirectDebitsFormProps>({
+export default reduxForm<{}, IRepaymentDirectDebitsForm>({
   form: formNamesConst.REPAYMENT_DIRECT_DEBITS,
   destroyOnUnmount: true,
   enableReinitialize: true,

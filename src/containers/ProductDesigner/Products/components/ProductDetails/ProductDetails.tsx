@@ -9,14 +9,14 @@ import PrepaidDetails from './PrepaidDetails';
 import RevolvingCreditDetails from './RevolvingCreditDetails';
 import SavingsDetails from './SavingsDetails';
 
-interface ProductDetailsProps {
+interface IProductDetails {
   productType: string | number;
   isReadOnly?: boolean;
   isUpdating?: boolean;
   interestDistributionValue?: ISelectValue;
 }
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({
+const ProductDetails: React.FC<IProductDetails> = ({
   productType,
   isReadOnly,
   isUpdating,

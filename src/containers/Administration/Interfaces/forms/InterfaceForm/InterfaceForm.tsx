@@ -3,7 +3,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, ExternalSpinnerProps, OkCancelButtons, withSpinner } from 'components';
+import { Button, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
 import { InterfaceFields } from 'containers/Administration/Interfaces/components';
 
@@ -15,7 +15,7 @@ import {
 } from 'store';
 import { ISelectValue } from 'types';
 
-interface IInterfaceForm extends ExternalSpinnerProps {
+interface IInterfaceForm extends ISpinner {
   interfaceTypesOptions: Array<ISelectValue>;
   currentInterfaceName?: string;
   currentInterfaceId: number;

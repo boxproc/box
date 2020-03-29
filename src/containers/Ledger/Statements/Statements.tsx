@@ -27,7 +27,7 @@ import {
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
-export interface IStatements {
+interface IStatements {
   currentId: number;
   filterAccountsById: HandleFilterLedgerAccountsById;
   filterCardsById: HandleFilterLedgerCardsById;

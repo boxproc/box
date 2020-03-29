@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender, prepareDetailsToRender } from './utils';
@@ -12,7 +12,7 @@ export const defaultSchedulerJobsSelector = (state: StoreState) =>
 
 export const schedulerJobsSelector = createSelector(
   defaultSchedulerJobsSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
@@ -26,7 +26,7 @@ export const schedulerJobsSelector = createSelector(
 
 export const currentSchedulerJobSelector = createSelector(
   defaultSchedulerJobsSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   activeItemIdSelector,
   (jobs, institutions, currentId) => {
     const currentJob = jobs && jobs.find(job => job.id === currentId);

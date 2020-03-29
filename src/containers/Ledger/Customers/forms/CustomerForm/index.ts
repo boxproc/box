@@ -8,13 +8,13 @@ import CustomerForm from './CustomerForm';
 
 import {
   activeItemIdSelector,
+  countriesOptionsSelector,
   createLoadingSelector,
   handleAddLedgerCustomer,
   handleDeleteLedgerCustomer,
   handleGetDictionaryCountries,
   handleUpdateLedgerCustomer,
   LedgerCustomersActionTypes,
-  selectCountriesOptions,
   selectLedgerCurrentCustomer,
   selectLedgerCurrentCustomerName,
   StoreState,
@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectLedgerCurrentCustomer(state),
   currentCustomerName: selectLedgerCurrentCustomerName(state),
-  countryCodes: selectCountriesOptions(state),
+  countryCodes: countriesOptionsSelector(state),
   currentId: activeItemIdSelector(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
 });

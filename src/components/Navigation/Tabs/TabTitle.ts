@@ -1,11 +1,11 @@
 import styled from 'theme';
 
-interface TabTitleProps {
+interface ITabTitle {
   hasTabs?: boolean;
   isDisabled?: boolean;
 }
 
-export const TabTitle = styled.div<TabTitleProps>`
+export const TabTitle = styled.div<ITabTitle>`
   position: relative;
   padding: 8px 15px;
   text-transform: uppercase;

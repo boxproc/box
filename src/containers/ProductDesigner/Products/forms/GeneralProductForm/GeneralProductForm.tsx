@@ -6,8 +6,8 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import {
   Button,
   CheckedBoxIcon,
-  ExternalSpinnerProps,
   Hr,
+  ISpinner,
   Label,
   OkCancelButtons,
   withSpinner,
@@ -20,7 +20,7 @@ import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/componen
 import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store';
 import { ISelectValue } from 'types';
 
-interface GeneralProductFormProps extends ExternalSpinnerProps {
+interface IGeneralProductForm extends ISpinner {
   getProduct: HandleGetProduct;
   updateProduct: HandleUpdateProduct;
   deleteProduct: HandleDeleteProduct;
@@ -32,10 +32,9 @@ interface GeneralProductFormProps extends ExternalSpinnerProps {
   isUpdatingOrDeleting: boolean;
 }
 
-type GeneralProductFormAllProps = GeneralProductFormProps &
-  InjectedFormProps<{}, GeneralProductFormProps>;
+type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
 
-const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
+const GeneralProductForm: React.FC<TGeneralProductForm> = ({
   getProduct,
   deleteProduct,
   updateProduct,
@@ -117,7 +116,7 @@ const GeneralProductForm: React.FC<GeneralProductFormAllProps> = ({
   );
 };
 
-export default reduxForm<{}, GeneralProductFormProps>({
+export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,

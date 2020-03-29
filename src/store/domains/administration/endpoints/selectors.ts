@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectInstitutionsOptions } from 'store/domains/login';
+import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
@@ -13,7 +13,7 @@ export const defaultEndpointsSelector = (state: StoreState) =>
 
 export const endpointsSelector = createSelector(
   defaultEndpointsSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (endpoints, institutions) => endpoints && endpoints.map(endpoint => {
     const institution = institutions.find(el => el.value === endpoint.institution_id);
 
@@ -28,7 +28,7 @@ export const endpointsSelector = createSelector(
 export const currentEndpointSelector = createSelector(
   defaultEndpointsSelector,
   activeItemIdSelector,
-  selectInstitutionsOptions,
+  userInstitutionsOptionsSelector,
   (endpoints, currentId, institutions) => {
     const currentEndpoint = endpoints.find(el => el.id === currentId);
 

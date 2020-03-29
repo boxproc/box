@@ -11,7 +11,7 @@ import { ISelectValue } from 'types';
 
 import { formErrorUtil } from 'utils';
 
-export interface InterfaceFieldsProps {
+interface IInterfaceFields {
   institutionsOptions: Array<ISelectValue>;
   interfaceTypesOptions: Array<ISelectValue>;
   isLoadingTypesSelector: boolean;
@@ -19,7 +19,7 @@ export interface InterfaceFieldsProps {
   isReadOnly: boolean;
 }
 
-const InterfaceFields: React.FC<InterfaceFieldsProps> = ({
+const InterfaceFields: React.FC<IInterfaceFields> = ({
   institutionsOptions,
   interfaceTypesOptions,
   isLoadingTypesSelector,

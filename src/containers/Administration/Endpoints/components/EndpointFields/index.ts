@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import EndpointFields from './EndpointFields';
 
-import { selectInstitutionsOptions, StoreState } from 'store';
+import { StoreState, userInstitutionsOptionsSelector } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  institutionsOptions: selectInstitutionsOptions(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 export default connect(

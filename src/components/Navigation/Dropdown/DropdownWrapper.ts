@@ -2,13 +2,13 @@ import styled from 'theme';
 
 type AvailablePosition = 'left' | 'right' | 'center';
 
-interface DropdownWrapperProps {
+interface IDropdownWrapper {
   isActive: boolean;
   isDisabled?: boolean;
   position?: AvailablePosition;
 }
 
-export const DropdownWrapper = styled.div<DropdownWrapperProps>`
+export const DropdownWrapper = styled.div<IDropdownWrapper>`
   position: relative;
   display: inline-block;
   user-select: none;

@@ -22,7 +22,7 @@ import {
   RepaymentHierarchy,
 } from 'store';
 
-import { ITableCellType } from 'types';
+import { ITableCell } from 'types';
 
 const ArrowButtonWrapper = styled.div`
   position: relative;
@@ -44,9 +44,9 @@ const ArrowButtonWrapper = styled.div`
   }
 `;
 
-type TCell<T extends keyof RepaymentHierarchy> = ITableCellType<RepaymentHierarchy[T]>;
+type TCell<T extends keyof RepaymentHierarchy> = ITableCell<RepaymentHierarchy[T]>;
 
-interface RepaymentHierarchyTableProps {
+interface IRepaymentHierarchyTable {
   data: ImmutableArray<RepaymentHierarchy>;
   getRepaymentHierarchy: HandleGetRepaymentHierarchy;
   updateRepaymentHierarchy: HandleUpdateRepaymentHierarchy;
@@ -54,7 +54,7 @@ interface RepaymentHierarchyTableProps {
   isUpdating: boolean;
 }
 
-const RepaymentHierarchyTable: React.FC<RepaymentHierarchyTableProps> = ({
+const RepaymentHierarchyTable: React.FC<IRepaymentHierarchyTable> = ({
   data,
   getRepaymentHierarchy,
   updateRepaymentHierarchy,
