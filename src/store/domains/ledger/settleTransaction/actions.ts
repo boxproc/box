@@ -3,38 +3,32 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { openModal } from 'store';
-import { ActionTypeKeys, RetrieveTransactionAction, SettleTransactionAction } from './actionTypes';
+import {
+  ActionTypeKeys,
+  IRetrieveTransactionAction,
+  ISettleTransactionAction,
+} from './actionTypes';
 import * as api from './api';
-import { RetrieveTransactionRequest, SettleTransactionItem } from './types';
+import { IRetrieveTrReq, ISettleTransaction } from './types';
 import { prepareDataToSend, prepareRetrieveTransactionRequest } from './util';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type RetrieveTransaction = (data: RetrieveTransactionRequest) => RetrieveTransactionAction;
-export type HandleRetrieveTransaction = () => Thunk<void>;
+/**
+ * Retrieve transaction action
+ */
 
-export type SettleTransaction = (data: SettleTransactionItem) => SettleTransactionAction;
-export type HandleSettleTransaction = () => Thunk<void>;
+export type TRetrieveTransaction = (data: IRetrieveTrReq) => IRetrieveTransactionAction;
+export type THandleRetrieveTransaction = () => Thunk<void>;
 
-export type ResetRetrievedTransaction = () => void;
-
-export const retrieveTransaction: RetrieveTransaction = data => ({
+export const retrieveTransaction: TRetrieveTransaction = data => ({
   type: ActionTypeKeys.RETRIEVE_TRANSACTION,
   payload: api.retrieveTransaction(data),
 });
 
-export const settleTransaction: SettleTransaction = data => ({
-  type: ActionTypeKeys.SETTLE_TRANSACTION,
-  payload: api.settleTransaction(data),
-});
-
-export const resetRetrievedTransaction: ResetRetrievedTransaction = () => ({
-  type: ActionTypeKeys.RESET_RETRIEVED_TRANSACTION,
-});
-
-export const handleRetrieveTransaction: HandleRetrieveTransaction = () =>
+export const handleRetrieveTransaction: THandleRetrieveTransaction = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -48,7 +42,19 @@ export const handleRetrieveTransaction: HandleRetrieveTransaction = () =>
     );
   };
 
-export const handleSettleTransaction: HandleSettleTransaction = () =>
+/**
+ * Settle transaction action
+ */
+
+export type TSettleTransaction = (data: ISettleTransaction) => ISettleTransactionAction;
+export type THandleSettleTransaction = () => Thunk<void>;
+
+export const settleTransaction: TSettleTransaction = data => ({
+  type: ActionTypeKeys.SETTLE_TRANSACTION,
+  payload: api.settleTransaction(data),
+});
+
+export const handleSettleTransaction: THandleSettleTransaction = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -71,3 +77,13 @@ export const handleSettleTransaction: HandleSettleTransaction = () =>
       dispatch
     );
   };
+
+/**
+ * Reset retrieved transaction action
+ */
+
+export type TResetRetrievedTransaction = () => void;
+
+export const resetRetrievedTransaction: TResetRetrievedTransaction = () => ({
+  type: ActionTypeKeys.RESET_RETRIEVED_TRANSACTION,
+});

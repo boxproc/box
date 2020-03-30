@@ -7,33 +7,25 @@ import SettleTransaction from './SettleTransaction';
 import { formNamesConst } from 'consts';
 
 import {
-  createLoadingSelector,
   handleRetrieveTransaction,
   handleSettleTransaction,
-  LedgerSettleTransactionActionTypes,
+  isRetrievedTransactionSelector,
+  isRetrievingTrSelector,
+  isSettlingTrSelector,
   payloadSettleTrModalSelector,
   resetRetrievedTransaction,
-  selectIsRetrievedTransaction,
-  selectRetrievedTransaction,
+  retrievedTransactionSelector,
   StoreState,
 } from 'store';
-
-const retrieveLoadingSelector = createLoadingSelector([
-  LedgerSettleTransactionActionTypes.RETRIEVE_TRANSACTION,
-]);
-
-const loadingSelector = createLoadingSelector([
-  LedgerSettleTransactionActionTypes.SETTLE_TRANSACTION,
-]);
 
 const dirtySettleTransactionForm = isDirty(formNamesConst.SETTLE_TRANSACTION_FORM);
 
 const mapStateToProps = (state: StoreState) => ({
-  isRetrieving: retrieveLoadingSelector(state),
-  isLoading: loadingSelector(state),
-  isRetrievedTransaction: selectIsRetrievedTransaction(state),
+  isRetrieving: isRetrievingTrSelector(state),
+  isLoading: isSettlingTrSelector(state),
+  isRetrievedTransaction: isRetrievedTransactionSelector(state),
   isDirtySettleTransactionForm: dirtySettleTransactionForm(state),
-  retrievedTransaction: selectRetrievedTransaction(state),
+  retrievedTransaction: retrievedTransactionSelector(state),
   payloadSettleTransactionModal: payloadSettleTrModalSelector(state),
 });
 

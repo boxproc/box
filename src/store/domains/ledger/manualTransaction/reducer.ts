@@ -1,21 +1,21 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, LedgerManualTransactionActionTypes } from './actionTypes';
-import { LedgerManualTransactionState } from './types';
+import { ActionTypeKeys, TManualTransactionActionTypes } from './actionTypes';
+import { IManualTransactionState } from './types';
 
-export const ledgerManualTransactionInitialState:
-  ImmutableObject<LedgerManualTransactionState> = Immutable({
+export const manualTransactionInitialState:
+  ImmutableObject<IManualTransactionState> = Immutable({
     transactionResult: Immutable([]),
   });
 
-const ledgerManualTransactionReducer =
-  (state = ledgerManualTransactionInitialState, action: LedgerManualTransactionActionTypes) => {
+const manualTransactionReducer =
+  (state = manualTransactionInitialState, action: TManualTransactionActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.MAKE_LEDGER_TRANSACTION_FULFILLED:
+      case ActionTypeKeys.MAKE_TRANSACTION_FULFILLED:
         return state.set('transactionResult', action.payload.transaction_result);
 
       default: return state;
     }
   };
 
-export default ledgerManualTransactionReducer;
+export default manualTransactionReducer;

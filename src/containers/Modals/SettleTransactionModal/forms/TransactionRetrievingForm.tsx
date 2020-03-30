@@ -7,12 +7,12 @@ import { InputField, OkCancelButtons } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleRetrieveTransaction } from 'store';
+import { THandleRetrieveTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 
 interface ITransactionRetrievingForm {
-  retrieveTransaction: HandleRetrieveTransaction;
+  retrieveTransaction: THandleRetrieveTransaction;
   isRetrieving: boolean;
   isRetrieved: boolean;
   isReadonly: boolean;

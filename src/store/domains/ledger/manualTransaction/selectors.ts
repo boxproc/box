@@ -1,17 +1,23 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
 import { prepareResultDataToRender } from './util';
 
-export const selectDefaultLedgerManualTransaction = (state: StoreState) =>
+export const defaultManualTrSelector = (state: StoreState) =>
   state.ledger.manualTransaction.transactionResult;
 
-export const selectLedgerManualTransaction = createSelector(
-  selectDefaultLedgerManualTransaction,
-  transaction => transaction && prepareResultDataToRender(transaction)
+export const manualTransactionSelector = createSelector(
+  defaultManualTrSelector,
+  data => data && prepareResultDataToRender(data)
 );
 
-export const selectLedgerManualTransactionId = createSelector(
-  selectLedgerManualTransaction,
-  transaction => transaction && transaction.transactionId
+export const manualTransactionIdSelector = createSelector(
+  manualTransactionSelector,
+  data => data && data.transactionId
 );
+
+export const isManualTransactionLoading = createLoadingSelector([
+  ActionTypeKeys.MAKE_TRANSACTION,
+]);

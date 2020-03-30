@@ -2,7 +2,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
 
-export interface LedgerManualTransactionRequest {
+export interface IManualTransactionReq {
   transaction_type_id: number | string;
   currency_num_code: number | string;
   account_id: number;
@@ -10,7 +10,7 @@ export interface LedgerManualTransactionRequest {
   description: string;
 }
 
-export interface LedgerManualTransactionFromData {
+export interface IManualTransactionFromData {
   transactionType: ISelectValue;
   currencyCode: ISelectValue;
   accountId: string;
@@ -18,7 +18,7 @@ export interface LedgerManualTransactionFromData {
   description: string;
 }
 
-export interface LedgerManualTransactionResult {
+export interface IManualTransactionResultData {
   transaction_id: number;
   status: string;
   balance_settled_before: number;
@@ -27,7 +27,11 @@ export interface LedgerManualTransactionResult {
   balance_available_after: number;
 }
 
-export interface LedgerManualTransactionResultPrepared {
+export interface IManualTransactionResultResponse {
+  transaction_result: Array<IManualTransactionResultData>;
+}
+
+export interface IManualTransactionResult {
   transactionId: number;
   status: string;
   balanceSettledBefore: number;
@@ -36,10 +40,6 @@ export interface LedgerManualTransactionResultPrepared {
   balanceAvailableAfter: number;
 }
 
-export interface LedgerManualTransactionResultResponse {
-  transaction_result: Array<LedgerManualTransactionResult>;
-}
-
-export interface LedgerManualTransactionState {
-  transactionResult: ImmutableArray<LedgerManualTransactionResult>;
+export interface IManualTransactionState {
+  transactionResult: ImmutableArray<IManualTransactionResultData>;
 }

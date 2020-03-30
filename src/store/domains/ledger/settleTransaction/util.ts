@@ -1,13 +1,13 @@
 import { ImmutableArray } from 'seamless-immutable';
 import {
-  RetrieveTransactionFormValues,
-  SettleTransactionFormValues,
-  SettleTransactionItem,
+  IRetrieveTrFormValues,
+  ISettleTransaction,
+  ISettleTrFormValues,
 } from './types';
 
 import { dateUtil, stringsUtil } from 'utils';
 
-export const prepareRetrieveTransactionRequest = (data: Partial<RetrieveTransactionFormValues>) => {
+export const prepareRetrieveTransactionRequest = (data: Partial<IRetrieveTrFormValues>) => {
   const { id } = data;
 
   return {
@@ -15,7 +15,7 @@ export const prepareRetrieveTransactionRequest = (data: Partial<RetrieveTransact
   };
 };
 
-export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) => {
+export const prepareDataToSend = (data: Partial<ISettleTrFormValues>) => {
   if (!data) {
     return null;
   }
@@ -29,8 +29,8 @@ export const prepareDataToSend = (data: Partial<SettleTransactionFormValues>) =>
   };
 };
 
-export const prepareDataToRender = (data: ImmutableArray<SettleTransactionItem>):
-  SettleTransactionFormValues => {
+export const prepareDataToRender = (data: ImmutableArray<ISettleTransaction>):
+  ISettleTrFormValues => {
   if (!data || !data.length) {
     return null;
   }

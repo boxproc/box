@@ -1,6 +1,9 @@
 import { apiClientService } from 'services';
 
-import { LedgerLimitAdjustmentRequest } from './types';
+import { ILimitAdjReq } from './types';
 
-export const makeLedgerLimitAdjustment = (data: Partial<LedgerLimitAdjustmentRequest>) =>
+/**
+ * Limit adjustment API
+ */
+export const makeLimitAdjustment = (data: Partial<ILimitAdjReq>) =>
   apiClientService.post('ui/ledger/accounts/limit_adjustment', { data });

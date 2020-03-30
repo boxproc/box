@@ -1,21 +1,21 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, LedgerLimitAdjustmentActionTypes } from './actionTypes';
-import { LedgerLimitAdjustmentState } from './types';
+import { ActionTypeKeys, TLimitAdjustmentActionTypes } from './actionTypes';
+import { ILimitAdjustmentState } from './types';
 
-export const ledgerLimitAdjustmentInitialState:
-  ImmutableObject<LedgerLimitAdjustmentState> = Immutable({
+export const limitAdjustmentInitialState:
+  ImmutableObject<ILimitAdjustmentState> = Immutable({
     transactionResult: Immutable([]),
   });
 
-const ledgerLimitAdjustmentReducer =
-  (state = ledgerLimitAdjustmentInitialState, action: LedgerLimitAdjustmentActionTypes) => {
+const limitAdjustmentReducer =
+  (state = limitAdjustmentInitialState, action: TLimitAdjustmentActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT_FULFILLED:
+      case ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED:
         return state.set('transactionResult', action.payload.transaction_result);
 
       default: return state;
     }
   };
 
-export default ledgerLimitAdjustmentReducer;
+export default limitAdjustmentReducer;

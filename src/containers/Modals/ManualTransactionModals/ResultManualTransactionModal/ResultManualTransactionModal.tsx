@@ -10,14 +10,14 @@ import {
 } from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
-  LedgerLimitAdjustmentResultPrepared,
-  LedgerManualTransactionResultPrepared,
+  ILimitAdjustmentResult,
+  IManualTransactionResult,
   THandleFilterTransactionsById,
 } from 'store';
 
 interface IResultManualTransactionModal extends IWithModal {
-  ledgerManualTransaction: LedgerManualTransactionResultPrepared;
-  ledgerLimitAdjustment: LedgerLimitAdjustmentResultPrepared;
+  ledgerManualTransaction: IManualTransactionResult;
+  ledgerLimitAdjustment: ILimitAdjustmentResult;
   filterLedgerTransactionsById: THandleFilterTransactionsById;
   transactionId: number;
   isLimitAdjustment: boolean;

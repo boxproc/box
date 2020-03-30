@@ -1,9 +1,9 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { LedgerLimitAdjustmentFromData, LedgerLimitAdjustmentResult } from './types';
+import { ILimitAdjustmentFromData, ILimitAdjustmentResultData } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const prepareDataToSend = (data: Partial<LedgerLimitAdjustmentFromData>) => {
+export const prepareDataToSend = (data: Partial<ILimitAdjustmentFromData>) => {
   if (!data) {
     return null;
   }
@@ -27,7 +27,7 @@ export const prepareDataToSend = (data: Partial<LedgerLimitAdjustmentFromData>) 
   };
 };
 
-export const prepareResultDataToRender = (data: ImmutableArray<LedgerLimitAdjustmentResult>) => {
+export const prepareResultDataToRender = (data: ImmutableArray<ILimitAdjustmentResultData>) => {
   if (!data || !data.length) {
     return null;
   }

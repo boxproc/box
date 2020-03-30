@@ -10,18 +10,18 @@ import PageTitle from 'containers/PageTemplate/PageTitle';
 import { IWithModal, withModal } from 'HOCs';
 
 import {
-  HandleRetrieveTransaction,
-  HandleSettleTransaction,
   IPayloadSettleTransactionModal,
-  ResetRetrievedTransaction,
-  SettleTransactionFormValues,
+  ISettleTrFormValues,
+  THandleRetrieveTransaction,
+  THandleSettleTransaction,
+  TResetRetrievedTransaction,
 } from 'store';
 
 interface ISettleTransactionModal extends IWithModal {
-  retrievedTransaction: SettleTransactionFormValues;
-  retrieveTransaction: HandleRetrieveTransaction;
-  settleTransaction: HandleSettleTransaction;
-  resetRetrievedTransaction: ResetRetrievedTransaction;
+  retrievedTransaction: ISettleTrFormValues;
+  retrieveTransaction: THandleRetrieveTransaction;
+  settleTransaction: THandleSettleTransaction;
+  resetRetrievedTransaction: TResetRetrievedTransaction;
   isRetrieving: boolean;
   isLoading: boolean;
   isRetrievedTransaction: boolean;

@@ -3,32 +3,34 @@ import { reset as resetForm } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { openModal } from 'store';
-import { ActionTypeKeys, MakeLedgerTransactionAction } from './actionTypes';
+import { ActionTypeKeys, IMakeTransactionAction } from './actionTypes';
 import * as api from './api';
-import { LedgerManualTransactionFromData, LedgerManualTransactionRequest } from './types';
+import { IManualTransactionFromData, IManualTransactionReq } from './types';
 import { prepareDataToSend } from './util';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type MakeLedgerTransaction = (data: Partial<LedgerManualTransactionRequest>) =>
-  MakeLedgerTransactionAction;
-export type HandleMakeLedgerTransaction = (data: Partial<LedgerManualTransactionFromData>) =>
-  Thunk<void>;
+/**
+ * Make manual transaction action
+ */
 
-export const makeLedgerTransaction: MakeLedgerTransaction = data => ({
-  type: ActionTypeKeys.MAKE_LEDGER_TRANSACTION,
-  payload: api.makeLedgerTransaction(data),
+export type TMakeTransaction = (data: Partial<IManualTransactionReq>) => IMakeTransactionAction;
+export type THandleMakeTransaction = (data: Partial<IManualTransactionFromData>) => Thunk<void>;
+
+export const makeTransaction: TMakeTransaction = data => ({
+  type: ActionTypeKeys.MAKE_TRANSACTION,
+  payload: api.makeTransaction(data),
 });
 
-export const handleMakeLedgerTransaction: HandleMakeLedgerTransaction = data =>
+export const handleMakeTransaction: THandleMakeTransaction = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareDataToSend(data);
+        const preparedData = prepareDataToSend(data);
 
-        await dispatch(makeLedgerTransaction(preparedValues));
+        await dispatch(makeTransaction(preparedData));
         dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
         dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
       },

@@ -3,35 +3,37 @@ import { reset as resetForm } from 'redux-form';
 import { formNamesConst, modalNamesConst } from 'consts';
 
 import { openModal } from 'store';
-import { ActionTypeKeys, MakeLedgerLimitAdjustmentAction } from './actionTypes';
+import { ActionTypeKeys, IMakeLimitAdjustmentAction } from './actionTypes';
 import * as api from './api';
-import { LedgerLimitAdjustmentFromData, LedgerLimitAdjustmentRequest } from './types';
+import { ILimitAdjReq, ILimitAdjustmentFromData } from './types';
 import { prepareDataToSend } from './util';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type MakeLedgerLimitAdjustment = (data: Partial<LedgerLimitAdjustmentRequest>) =>
-  MakeLedgerLimitAdjustmentAction;
-export type HandleMakeLedgerLimitAdjustment = (data: Partial<LedgerLimitAdjustmentFromData>) =>
-  Thunk<void>;
+/**
+ * Limit adjustment action
+ */
 
-export const makeLedgerLimitAdjustment: MakeLedgerLimitAdjustment = data => ({
-  type: ActionTypeKeys.LEDGER_LIMIT_ADJUSTMENT,
-  payload: api.makeLedgerLimitAdjustment(data),
+export type TMakeLimitAdjustment = (data: Partial<ILimitAdjReq>) => IMakeLimitAdjustmentAction;
+export type THandleMakeLimitAdjustment = (data: Partial<ILimitAdjustmentFromData>) => Thunk<void>;
+
+export const makeLimitAdjustment: TMakeLimitAdjustment = data => ({
+  type: ActionTypeKeys.LIMIT_ADJUSTMENT,
+  payload: api.makeLimitAdjustment(data),
 });
 
-export const handleMakeLedgerLimitAdjustment: HandleMakeLedgerLimitAdjustment = data =>
-    async dispatch => {
-      errorDecoratorUtil.withErrorHandler(
-        async () => {
-          const preparedValues = prepareDataToSend(data);
+export const handleMakeLimitAdjustment: THandleMakeLimitAdjustment = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareDataToSend(data);
 
-          await dispatch(makeLedgerLimitAdjustment(preparedValues));
-          dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
-          dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
-        },
-        dispatch
-      );
-    };
+        await dispatch(makeLimitAdjustment(preparedData));
+        dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
+        dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
+      },
+      dispatch
+    );
+  };

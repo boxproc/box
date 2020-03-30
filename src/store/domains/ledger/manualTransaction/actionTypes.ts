@@ -1,29 +1,31 @@
-import { LedgerManualTransactionResultResponse } from './types';
+import { IManualTransactionResultResponse } from './types';
 
 import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  MAKE_LEDGER_TRANSACTION = 'ledger/manualTransaction/MAKE_LEDGER_TRANSACTION',
-  MAKE_LEDGER_TRANSACTION_FULFILLED =
-  'ledger/manualTransaction/MAKE_LEDGER_TRANSACTION_FULFILLED',
-  MAKE_LEDGER_TRANSACTION_REJECTED =
-  'ledger/manualTransaction/MAKE_LEDGER_TRANSACTION_REJECTED',
+  MAKE_TRANSACTION = 'manualTransaction/MAKE_TRANSACTION',
+  MAKE_TRANSACTION_FULFILLED = 'manualTransaction/MAKE_TRANSACTION_FULFILLED',
+  MAKE_TRANSACTION_REJECTED = 'manualTransaction/MAKE_TRANSACTION_REJECTED',
 }
 
-export interface MakeLedgerTransactionAction {
+/**
+ * Make manual transaction action interfaces
+ */
+
+export interface IMakeTransactionAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_TRANSACTION;
+  readonly type: ActionTypeKeys.MAKE_TRANSACTION;
 }
 
-export interface MakeLedgerTransactionFulfilledAction {
-  readonly payload: LedgerManualTransactionResultResponse;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_TRANSACTION_FULFILLED;
+export interface IMakeTransactionFulfilledAction {
+  readonly payload: IManualTransactionResultResponse;
+  readonly type: ActionTypeKeys.MAKE_TRANSACTION_FULFILLED;
 }
 
-export interface MakeLedgerTransactionRejectedAction {
+export interface IMakeTransactionRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.MAKE_LEDGER_TRANSACTION_REJECTED;
+  readonly type: ActionTypeKeys.MAKE_TRANSACTION_REJECTED;
 }
 
-export type LedgerManualTransactionActionTypes =
-  | MakeLedgerTransactionFulfilledAction;
+export type TManualTransactionActionTypes =
+  | IMakeTransactionFulfilledAction;

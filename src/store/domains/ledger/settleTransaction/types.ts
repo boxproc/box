@@ -1,29 +1,40 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface RetrieveTransactionFormValues {
+/**
+ * Retrieve transaction interfaces
+ */
+
+export interface IRetrieveTrFormValues {
   id: string;
 }
 
-export interface RetrieveTransactionRequest {
+export interface IRetrieveTrReq {
   transaction_id: number;
 }
 
-export interface SettleTransactionItem {
+/**
+ * Settle transaction interfaces
+ */
+
+export interface ISettleTransaction {
   transaction_id: number;
   amount_settled: number;
   settled_datetime: string;
 }
 
-export interface SettleTransactionData {
-  transaction: Array<SettleTransactionItem>;
+export interface ISettleTransactionData {
+  transaction: Array<ISettleTransaction>;
 }
 
-export interface SettleTransactionFormValues {
+export interface ISettleTrFormValues {
   transactionId: number;
   amountSettled: number;
   settledDatetime: string;
 }
 
-export interface LedgerSettleTransactionState {
-  transaction: ImmutableArray<SettleTransactionItem>;
+/**
+ * Settle transaction state interfaces
+ */
+export interface ISettleTransactionState {
+  transaction: ImmutableArray<ISettleTransaction>;
 }

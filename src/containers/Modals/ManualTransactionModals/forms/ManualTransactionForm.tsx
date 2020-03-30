@@ -12,7 +12,7 @@ import {
   TextareaField,
 } from 'components';
 
-import { HandleMakeLedgerLimitAdjustment, HandleMakeLedgerTransaction } from 'store';
+import { THandleMakeLimitAdjustment, THandleMakeTransaction } from 'store';
 
 import { formNamesConst } from 'consts';
 
@@ -25,8 +25,8 @@ interface IManualTransactionForm {
   isLimitAdjustment: boolean;
   isReadonly: boolean;
   isTransTypesLoading: boolean;
-  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  makeTransaction: HandleMakeLedgerTransaction;
+  makeLimitAdjustment: THandleMakeLimitAdjustment;
+  makeTransaction: THandleMakeTransaction;
   onCancel: () => void;
   transactionTypes: Array<ISelectValue>;
 }

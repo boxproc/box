@@ -2,7 +2,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
 
-export interface LedgerLimitAdjustmentRequest {
+export interface ILimitAdjReq {
   transaction_type_id: number | string;
   account_id: number;
   balance_limit: number;
@@ -11,7 +11,7 @@ export interface LedgerLimitAdjustmentRequest {
   transaction_datetime: string | number;
 }
 
-export interface LedgerLimitAdjustmentFromData {
+export interface ILimitAdjustmentFromData {
   accountId: string;
   balanceLimit: number;
   balanceLimitShared: number;
@@ -20,22 +20,22 @@ export interface LedgerLimitAdjustmentFromData {
   transactionType: ISelectValue;
 }
 
-export interface LedgerLimitAdjustmentResult {
+export interface ILimitAdjustmentResultData {
   transaction_id: number;
   balance_limit: number;
   balance_limit_shared: number;
 }
 
-export interface LedgerLimitAdjustmentResultPrepared {
+export interface ILimitAdjustmentResult {
   transactionId: number;
   balanceLimit: number;
   balanceLimitShared: number;
 }
 
-export interface LedgerLimitAdjustmentResultResponse {
-  transaction_result: Array<LedgerLimitAdjustmentResult>;
+export interface ILimitAdjustmentResultResponse {
+  transaction_result: Array<ILimitAdjustmentResultData>;
 }
 
-export interface LedgerLimitAdjustmentState {
-  transactionResult: ImmutableArray<LedgerLimitAdjustmentResult>;
+export interface ILimitAdjustmentState {
+  transactionResult: ImmutableArray<ILimitAdjustmentResultData>;
 }

@@ -14,14 +14,14 @@ import {
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-import { HandleSettleTransaction } from 'store';
+import { THandleSettleTransaction } from 'store';
 
 import { formErrorUtil } from 'utils';
 
 interface ISettleTransactionForm extends ISpinner {
   isDisabled?: boolean;
   onCancel: () => void;
-  settleTransaction: HandleSettleTransaction;
+  settleTransaction: THandleSettleTransaction;
 }
 
 type TSettleTransactionForm = ISettleTransactionForm

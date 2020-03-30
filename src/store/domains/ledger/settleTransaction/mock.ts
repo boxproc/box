@@ -1,8 +1,8 @@
-import { SettleTransactionData } from './types';
+import { ISettleTransactionData } from './types';
 
 import { IResponseStatus } from 'types';
 
-export const transactionData: SettleTransactionData = {
+export const settleTransactionMock: ISettleTransactionData = {
   transaction: [
     {
       transaction_id: 3456,
@@ -12,7 +12,7 @@ export const transactionData: SettleTransactionData = {
   ],
 };
 
-export const successResponseStatus: IResponseStatus = {
+export const successResponseMock: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

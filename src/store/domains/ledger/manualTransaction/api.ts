@@ -1,11 +1,12 @@
 import { apiClientService } from 'services';
 
-import { LedgerManualTransactionRequest } from './types';
-
-// import { ledgerManualTransactionData } from './mock';
-
+// import { manualTransactionMock } from './mock';
+import { IManualTransactionReq } from './types';
 // import { throttleUtil } from 'utils';
 
-export const makeLedgerTransaction = (data: Partial<LedgerManualTransactionRequest>) =>
-  // throttleUtil.getDataAfter(ledgerManualTransactionData, 500);
+/**
+ * Manual transaction API
+ */
+export const makeTransaction = (data: Partial<IManualTransactionReq>) =>
+  // throttleUtil.getDataAfter(manualTransactionMock, 500);
   apiClientService.post('ui/ledger/accounts/make_transaction', { data });

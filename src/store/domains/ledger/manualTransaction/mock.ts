@@ -1,6 +1,6 @@
-import { LedgerManualTransactionResultResponse } from './types';
+import { IManualTransactionResultResponse } from './types';
 
-export const ledgerManualTransactionData: LedgerManualTransactionResultResponse = {
+export const manualTransactionMock: IManualTransactionResultResponse = {
   transaction_result: [
     {
       transaction_id: 1,

@@ -15,10 +15,10 @@ import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 import PageTitle from 'containers/PageTemplate/PageTitle';
 
 import {
-  HandleMakeLedgerLimitAdjustment,
-  HandleMakeLedgerTransaction,
   IPayloadManualTransactionModal,
   THandleGetDictionaryCurrencies,
+  THandleMakeLimitAdjustment,
+  THandleMakeTransaction,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -28,8 +28,8 @@ interface IManualTransactionModal extends IWithModal, IWithLoadTransactionTypes 
   getCurrencies: THandleGetDictionaryCurrencies;
   isCurrenciesLoading: boolean;
   isLimitAdjustment: boolean;
-  makeLimitAdjustment: HandleMakeLedgerLimitAdjustment;
-  makeTransaction: HandleMakeLedgerTransaction;
+  makeLimitAdjustment: THandleMakeLimitAdjustment;
+  makeTransaction: THandleMakeTransaction;
   modalPayload: IPayloadManualTransactionModal;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;

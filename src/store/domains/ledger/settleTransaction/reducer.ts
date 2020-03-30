@@ -1,27 +1,27 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, LedgerSettleTransactionActionTypes } from './actionTypes';
-import { LedgerSettleTransactionState } from './types';
+import { ActionTypeKeys, TSettleTransactionActionTypes } from './actionTypes';
+import { ISettleTransactionState } from './types';
 
-export const ledgerSettleTransactionInitialState:
-  ImmutableObject<LedgerSettleTransactionState> = Immutable({
+export const settleTransactionInitialState:
+  ImmutableObject<ISettleTransactionState> = Immutable({
     transaction: Immutable([]),
   });
 
-const ledgerSettleTransactionReducer =
-  (state = ledgerSettleTransactionInitialState, action: LedgerSettleTransactionActionTypes) => {
+const settleTransactionReducer =
+  (state = settleTransactionInitialState, action: TSettleTransactionActionTypes) => {
     switch (action.type) {
       case ActionTypeKeys.RETRIEVE_TRANSACTION_FULFILLED:
         return state.set('transaction', action.payload.transaction);
 
       case ActionTypeKeys.SETTLE_TRANSACTION_FULFILLED:
-        return state = ledgerSettleTransactionInitialState;
+        return state = settleTransactionInitialState;
 
       case ActionTypeKeys.RESET_RETRIEVED_TRANSACTION:
-        return state = ledgerSettleTransactionInitialState;
+        return state = settleTransactionInitialState;
 
       default: return state;
     }
   };
 
-export default ledgerSettleTransactionReducer;
+export default settleTransactionReducer;

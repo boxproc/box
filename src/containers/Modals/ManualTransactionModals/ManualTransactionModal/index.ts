@@ -4,26 +4,20 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ManualTransactionModal from './ManualTransactionModal';
 
 import {
-  createLoadingSelector,
   currencyNumsOptionsSelector,
   handleGetDictionaryCurrencies,
-  handleMakeLedgerLimitAdjustment,
-  handleMakeLedgerTransaction,
+  handleMakeLimitAdjustment,
+  handleMakeTransaction,
   isCurrenciesLoadingSelector,
-  LedgerLimitAdjustmentActionTypes,
-  LedgerManualTransactionActionTypes,
+  isLimitAdjustmentLoadingSelector,
+  isManualTransactionLoading,
   manualTrModalIsLimitAdjSelector,
   payloadManualTrModalSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerManualTransactionActionTypes.MAKE_LEDGER_TRANSACTION,
-  LedgerLimitAdjustmentActionTypes.LEDGER_LIMIT_ADJUSTMENT,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isLimitAdjustmentLoadingSelector(state) || isManualTransactionLoading(state),
   isCurrenciesLoading: isCurrenciesLoadingSelector(state),
   modalPayload: payloadManualTrModalSelector(state),
   currenciesOptions: currencyNumsOptionsSelector(state),
@@ -32,8 +26,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    makeTransaction: handleMakeLedgerTransaction,
-    makeLimitAdjustment: handleMakeLedgerLimitAdjustment,
+    makeTransaction: handleMakeTransaction,
+    makeLimitAdjustment: handleMakeLimitAdjustment,
     getCurrencies: handleGetDictionaryCurrencies,
   },
   dispatch
