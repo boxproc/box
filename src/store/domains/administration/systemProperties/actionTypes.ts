@@ -3,23 +3,23 @@ import { ISysPropsData } from './types';
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  DELETE_SYS_PROP = 'administration/systemProperties/DELETE_SYS_PROP',
-  DELETE_SYS_PROP_FULFILLED = 'administration/systemProperties/DELETE_SYS_PROP_FULFILLED',
-  DELETE_SYS_PROP_REJECTED = 'administration/systemProperties/DELETE_SYS_PROP_REJECTED',
+  DELETE_SYS_PROP = 'systemProperties/DELETE_SYS_PROP',
+  DELETE_SYS_PROP_FULFILLED = 'systemProperties/DELETE_SYS_PROP_FULFILLED',
+  DELETE_SYS_PROP_REJECTED = 'systemProperties/DELETE_SYS_PROP_REJECTED',
 
-  ADD_SYS_PROP = 'administration/systemProperties/ADD_SYS_PROP',
-  ADD_SYS_PROP_FULFILLED = 'administration/systemProperties/ADD_SYS_PROP_FULFILLED',
-  ADD_SYS_PROP_REJECTED = 'administration/systemProperties/ADD_SYS_PROP_REJECTED',
+  ADD_SYS_PROP = 'systemProperties/ADD_SYS_PROP',
+  ADD_SYS_PROP_FULFILLED = 'systemProperties/ADD_SYS_PROP_FULFILLED',
+  ADD_SYS_PROP_REJECTED = 'systemProperties/ADD_SYS_PROP_REJECTED',
 
-  UPDATE_SYS_PROP = 'administration/systemProperties/UPDATE_SYS_PROP',
-  UPDATE_SYS_PROP_FULFILLED = 'administration/systemProperties/UPDATE_SYS_PROP_FULFILLED',
-  UPDATE_SYS_PROP_REJECTED = 'administration/systemProperties/UPDATE_SYS_PROP_REJECTED',
+  UPDATE_SYS_PROP = 'systemProperties/UPDATE_SYS_PROP',
+  UPDATE_SYS_PROP_FULFILLED = 'systemProperties/UPDATE_SYS_PROP_FULFILLED',
+  UPDATE_SYS_PROP_REJECTED = 'systemProperties/UPDATE_SYS_PROP_REJECTED',
 
-  FILTER_SYS_PROPS = 'administration/systemProperties/FILTER_SYS_PROPS',
-  FILTER_SYS_PROPS_FULFILLED = 'administration/systemProperties/FILTER_SYS_PROPS_FULFILLED',
-  FILTER_SYS_PROPS_REJECTED = 'administration/systemProperties/FILTER_SYS_PROPS_REJECTED',
+  FILTER_SYS_PROPS = 'systemProperties/FILTER_SYS_PROPS',
+  FILTER_SYS_PROPS_FULFILLED = 'systemProperties/FILTER_SYS_PROPS_FULFILLED',
+  FILTER_SYS_PROPS_REJECTED = 'systemProperties/FILTER_SYS_PROPS_REJECTED',
 
-  RESET_SYSTEM_PROPERTIES = 'administration/systemProperties/RESET_SYSTEM_PROPERTIES',
+  RESET_SYSTEM_PROPERTIES = 'systemProperties/RESET_SYSTEM_PROPERTIES',
 }
 
 /** Delete system property action interfaces */

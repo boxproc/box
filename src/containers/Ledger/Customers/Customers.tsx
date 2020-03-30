@@ -8,14 +8,14 @@ import { tableColumns } from './components';
 import { CustomersFilter } from './forms';
 
 import {
-  HandleDeleteLedgerCustomer,
-  HandleFilterLedgerCustomers,
-  HandleFilterLedgerTransactionsById,
-  LedgerCustomerItemPrepared,
-  ResetCustomers,
+  ICustomer,
+  THandleDeleteCustomer,
   THandleFilterAccountsById,
   THandleFilterCardsById,
+  THandleFilterCustomers,
   THandleFilterStatementsById,
+  THandleFilterTransactionsById,
+  TResetCustomers,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -23,17 +23,17 @@ import { ISelectValue } from 'types';
 interface ICustomers {
   currentCustomerName: string;
   currentId: number;
-  customers: ImmutableArray<LedgerCustomerItemPrepared>;
-  deleteCustomer: HandleDeleteLedgerCustomer;
+  customers: ImmutableArray<ICustomer>;
+  deleteCustomer: THandleDeleteCustomer;
   filterAccountsById: THandleFilterAccountsById;
   filterCardsById: THandleFilterCardsById;
-  filterCustomers: HandleFilterLedgerCustomers;
+  filterCustomers: THandleFilterCustomers;
   filterStatementsById: THandleFilterStatementsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterTransactionsById: THandleFilterTransactionsById;
   institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
   isReadOnly: boolean;
-  resetCustomers: ResetCustomers;
+  resetCustomers: TResetCustomers;
 }
 
 const Customers: React.FC<ICustomers> = ({

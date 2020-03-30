@@ -9,17 +9,14 @@ import {
   TableHeader,
   withSpinner,
 } from 'components';
-
-import { HandleGetRepaymentDirectDebits, RepaymentDirectDebitsItemPrepared } from 'store';
-
+import { IRepaymentDirectDebit, THandleGetRepaymentDirectDebits } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof RepaymentDirectDebitsItemPrepared> =
-  ITableCell<RepaymentDirectDebitsItemPrepared[T]>;
+type TCell<T extends keyof IRepaymentDirectDebit> = ITableCell<IRepaymentDirectDebit[T]>;
 
 interface IRepaymentDirectDebitsTable {
-  repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItemPrepared>;
-  getRepaymentDirectDebits: HandleGetRepaymentDirectDebits;
+  repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebit>;
+  getRepaymentDirectDebits: THandleGetRepaymentDirectDebits;
 }
 
 const RepaymentDirectDebitsTable: React.FC<IRepaymentDirectDebitsTable> = ({

@@ -8,10 +8,10 @@ import EditCustomerModal from './EditCustomerModal';
 
 import {
   createLoadingSelector,
+  currentCustomerInstIdSelector,
+  currentCustomerNameSelector,
   handleGetInterfacesService,
   ProductServicesActionTypes,
-  selectLedgerCurrentCustomerInstitutionId,
-  selectLedgerCurrentCustomerName,
   selectProductCardInterfacesService,
   StoreState,
 } from 'store';
@@ -25,8 +25,8 @@ const loadingSelectorInterfaces = createLoadingSelector([
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
   isInterfacesLoading: loadingSelectorInterfaces(state),
-  currentCustomerName: selectLedgerCurrentCustomerName(state),
-  currentCustomerInstitutionId: selectLedgerCurrentCustomerInstitutionId(state),
+  currentCustomerName: currentCustomerNameSelector(state),
+  currentCustomerInstitutionId: currentCustomerInstIdSelector(state),
   interfacesOptions: selectProductCardInterfacesService(state),
 });
 

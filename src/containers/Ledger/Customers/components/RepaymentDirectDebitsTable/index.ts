@@ -4,20 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RepaymentDirectDebitsTable from './RepaymentDirectDebitsTable';
 
 import {
-  createLoadingSelector,
   handleGetRepaymentDirectDebits,
-  LedgerCustomersActionTypes,
-  selectRepaymentDirectDebits,
+  isGettingRepaymentDirectDebitsSelector,
+  repaymentDirectDebitsSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerCustomersActionTypes.GET_REPAYMENT_DIRECT_DEBITS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  repaymentDirectDebits: selectRepaymentDirectDebits(state),
+  isLoading: isGettingRepaymentDirectDebitsSelector(state),
+  repaymentDirectDebits: repaymentDirectDebitsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

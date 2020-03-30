@@ -10,7 +10,7 @@ import {
   setActiveItemId,
   setIsOpenFilter,
 } from 'store';
-import { LedgerId } from '../customers';
+import { TLedgerId } from '../customers';
 import {
   ActionTypeKeys,
   IAddAccountAction,
@@ -201,8 +201,8 @@ export const handleAddProductOverride: THandleAddProductOverride = (
  * Filter accounts by ID action
  */
 
-export type TFilterAccountsById = (id: LedgerId) => IFilterAccountsByIdAction;
-export type THandleFilterAccountsById = (id: LedgerId) => Thunk<void>;
+export type TFilterAccountsById = (id: TLedgerId) => IFilterAccountsByIdAction;
+export type THandleFilterAccountsById = (id: TLedgerId) => Thunk<void>;
 
 export const filterAccountsById: TFilterAccountsById = data => ({
   type: ActionTypeKeys.FILTER_ACCOUNTS_BY_ID,

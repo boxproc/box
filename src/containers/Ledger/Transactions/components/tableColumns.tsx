@@ -2,12 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { LedgerTransactionItemPrepared } from 'store';
+import { ITransaction } from 'store';
 
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof LedgerTransactionItemPrepared> =
-  ITableCell<LedgerTransactionItemPrepared[T]>;
+type TCell<T extends keyof ITransaction> = ITableCell<ITransaction[T]>;
 
 export const tableColumns = [
   {

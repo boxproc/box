@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { LedgerCustomerItemPrepared } from 'store';
-
+import { ICustomer } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof LedgerCustomerItemPrepared> = ITableCell<LedgerCustomerItemPrepared[T]>;
+type TCell<T extends keyof ICustomer> = ITableCell<ICustomer[T]>;
 
 export const tableColumns = [
   {

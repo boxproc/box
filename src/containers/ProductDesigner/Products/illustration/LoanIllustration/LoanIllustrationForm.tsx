@@ -7,7 +7,7 @@ import { Button, Hr, InputField, MaskField, NumberFormatField, SelectField } fro
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-import { HandleConvertTransactionToLoan, HandleIllustrateLoanProduct } from 'store';
+import { HandleIllustrateLoanProduct, THandleConvertTrToLoan } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
@@ -22,7 +22,7 @@ interface ILoanIllustrationForm {
   withConvertToLoan: boolean;
   selectedLoanProduct: ISelectValue;
   isReadOnly: boolean;
-  convertTransactionToLoan: HandleConvertTransactionToLoan;
+  convertTransactionToLoan: THandleConvertTrToLoan;
 }
 
 type TLoanIllustrationForm = ILoanIllustrationForm & InjectedFormProps<{}, ILoanIllustrationForm>;

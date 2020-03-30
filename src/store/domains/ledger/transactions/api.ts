@@ -1,22 +1,25 @@
 import { apiClientService } from 'services';
 
-import { LedgerId } from '../customers';
-// import { ledgerTransactionsFilteredItems } from './mock';
-import {
-  LedgerConvertTransactionToLoanItemPrepared,
-  LedgerTransactionsFilterPrepared
-} from './types';
-
+import { TLedgerId } from '../customers';
+// import { transactionsMock } from './mock';
+import { IConvertTrToLoanReq, ITransactionsFilterToSend } from './types';
 // import { throttleUtil } from 'utils';
 
-export const filterLedgerTransactions = (data: Partial<LedgerTransactionsFilterPrepared>) =>
-  // throttleUtil.getDataAfter(ledgerTransactionsFilteredItems, 500);
+/**
+ * Filter transactions API
+ */
+export const filterTransactions = (data: Partial<ITransactionsFilterToSend>) =>
+  // throttleUtil.getDataAfter(transactionsMock, 500);
   apiClientService.post('ui/ledger/transactions/get', { data });
 
-export const filterLedgerTransactionsById = (data: LedgerId) =>
-  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+/**
+ * Filter transactions by ID API
+ */
+export const filterTransactionsById = (data: TLedgerId) =>
   apiClientService.post('ui/ledger/transactions/get', { data });
 
-export const convertTransactionToLoan =
-  (data: Partial<LedgerConvertTransactionToLoanItemPrepared>) =>
-    apiClientService.post('ui/ledger/transactions/convert_to_loan', { data });
+/**
+ * Convert transaction to loan API
+ */
+export const convertTransactionToLoan = (data: Partial<IConvertTrToLoanReq>) =>
+  apiClientService.post('ui/ledger/transactions/convert_to_loan', { data });

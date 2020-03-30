@@ -1,26 +1,26 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, LedgerTransactionsActionTypes } from './actionTypes';
-import { LedgerTransactionsState } from './types';
+import { ActionTypeKeys, TTransactionsActionTypes } from './actionTypes';
+import { ITransactionsState } from './types';
 
-export const ledgerTransactionsInitialState: ImmutableObject<LedgerTransactionsState> = Immutable({
+export const transactionsInitialState: ImmutableObject<ITransactionsState> = Immutable({
   transactions: Immutable([]),
 });
 
-const ledgerTransactionsReducer =
-  (state = ledgerTransactionsInitialState, action: LedgerTransactionsActionTypes) => {
+const transactionsReducer =
+  (state = transactionsInitialState, action: TTransactionsActionTypes) => {
     switch (action.type) {
-      case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_FULFILLED:
+      case ActionTypeKeys.FILTER_TRANSACTIONS_FULFILLED:
         return state.set('transactions', action.payload.transactions);
 
-      case ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED:
+      case ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID_FULFILLED:
         return state.set('transactions', action.payload.transactions);
 
       case ActionTypeKeys.RESET_TRANSACTIONS:
-        return state = ledgerTransactionsInitialState;
+        return state = transactionsInitialState;
 
       default: return state;
     }
   };
 
-export default ledgerTransactionsReducer;
+export default transactionsReducer;

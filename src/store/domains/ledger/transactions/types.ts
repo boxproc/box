@@ -1,12 +1,12 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-export interface LedgerTransactionPlainInfo {
+interface ITransactionPlain {
   id: number;
   description: string;
 }
 
-export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
+export interface ITransactionData extends ITransactionPlain {
   amount: number;
   account_id: number;
   transaction_datetime: string;
@@ -53,11 +53,11 @@ export interface LedgerTransactionItem extends LedgerTransactionPlainInfo {
   source_endpoint_id: number;
 }
 
-export interface LedgerTransactionItems {
-  transactions: Array<LedgerTransactionItem>;
+export interface ITransactionsData {
+  transactions: Array<ITransactionData>;
 }
 
-export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInfo {
+export interface ITransaction extends ITransactionPlain {
   amount: string;
   accountId: number;
   transactionDatetime: string;
@@ -104,16 +104,9 @@ export interface LedgerTransactionItemPrepared extends LedgerTransactionPlainInf
   sourceEndpointId: number;
 }
 
-export interface LedgerConvertTransactionToLoanItem {
-  amount: number;
-  account_id: number;
-  num_of_installments: number;
-  num_of_interest_free_instllmnts: number;
-  transaction_id: number;
-  product_id: number;
-}
+/** Convert transaction loan request interfaces */
 
-export interface LedgerConvertTransactionToLoanItemPrepared {
+export interface IConvertTrToLoanReq {
   amount: number;
   accountId: number;
   defNumOfInstallments: number;
@@ -122,7 +115,18 @@ export interface LedgerConvertTransactionToLoanItemPrepared {
   productId: number;
 }
 
-export interface LedgerTransactionsFilter {
+export interface IConvertTrToLoanReqToSend {
+  amount: number;
+  account_id: number;
+  num_of_installments: number;
+  num_of_interest_free_instllmnts: number;
+  transaction_id: number;
+  product_id: number;
+}
+
+/** Transactions filter interfaces */
+
+export interface ITransactionsFilter {
   institutionId: ISelectValue;
   customerId: number;
   transactionId: number;
@@ -134,7 +138,7 @@ export interface LedgerTransactionsFilter {
   panAlias: string;
 }
 
-export interface LedgerTransactionsFilterPrepared {
+export interface ITransactionsFilterToSend {
   institution_id: string | number;
   customer_id: number;
   id: number;
@@ -146,6 +150,7 @@ export interface LedgerTransactionsFilterPrepared {
   pan_alias: string;
 }
 
-export interface LedgerTransactionsState {
-  transactions: ImmutableArray<LedgerTransactionItem>;
+/** Transactions state interface */
+export interface ITransactionsState {
+  transactions: ImmutableArray<ITransactionData>;
 }

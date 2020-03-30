@@ -4,7 +4,7 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
 import { activeItemIdSelector, openModal, setIsOpenFilter } from 'store';
-import { LedgerId } from '../customers';
+import { TLedgerId } from '../customers';
 
 import {
   ActionTypeKeys,
@@ -94,8 +94,8 @@ export const handleGetStatementTransactions: THandleGetStatementTransactions = (
  * Filter statements by ID action
  */
 
-export type TFilterStatementsById = (id: LedgerId) => IFilterStatementsByIdAction;
-export type THandleFilterStatementsById = (id: LedgerId) => Thunk<void>;
+export type TFilterStatementsById = (id: TLedgerId) => IFilterStatementsByIdAction;
+export type THandleFilterStatementsById = (id: TLedgerId) => Thunk<void>;
 
 export const filterStatementsById: TFilterStatementsById = data => ({
   type: ActionTypeKeys.FILTER_STATEMENTS_BY_ID,

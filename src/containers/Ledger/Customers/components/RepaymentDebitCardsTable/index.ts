@@ -4,20 +4,15 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RepaymentDebitCardsTable from './RepaymentDebitCardsTable';
 
 import {
-  createLoadingSelector,
   handleGetRepaymentDebitCards,
-  LedgerCustomersActionTypes,
-  selectRepaymentDebitCards,
+  isGettingRepaymentDebitCardsSelector,
+  repaymentDebitCardsSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerCustomersActionTypes.GET_REPAYMENT_DEBIT_CARDS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  repaymentDebitCards: selectRepaymentDebitCards(state),
+  isLoading: isGettingRepaymentDebitCardsSelector(state),
+  repaymentDebitCards: repaymentDebitCardsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

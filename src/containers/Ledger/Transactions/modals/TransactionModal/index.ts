@@ -4,17 +4,17 @@ import TransactionModal from './TransactionModal';
 
 import {
   activeItemIdSelector,
+  currentTrAmountSelector,
+  isTrConvertibleToLoanSelector,
   payloadTransactionModalSelector,
-  selectIsTransactionConvertibleToLoan,
-  selectLedgerTransactionAmount,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   currentTransactionId: activeItemIdSelector(state),
   payloadTransactionModal: payloadTransactionModalSelector(state),
-  transactionAmount: selectLedgerTransactionAmount(state),
-  isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
+  transactionAmount: currentTrAmountSelector(state),
+  isConvertibleToLoan: isTrConvertibleToLoanSelector(state),
 });
 
 export default connect(

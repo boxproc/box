@@ -1,50 +1,75 @@
 import { apiClientService } from 'services';
 
-// import { ledgerCustomersFilteredItems, successResponseStatus } from './mock';
-
+// import { customersMock, successResponseMock } from './mock';
 import {
-  LedgerCustomerItem,
-  LedgerCustomersFilterPrepared,
-  LedgerId,
-  RepaymentDebitCardsItem,
-  RepaymentDirectDebitsItem,
+  ICustomerData,
+  ICustomersFilterToSend,
+  IRepaymentDebitCardData,
+  IRepaymentDirectDebitData,
+  TLedgerId,
 } from './types';
-
 // import { throttleUtil } from 'utils';
 
-export const deleteLedgerCustomer = (id: number) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 500);
+/**
+ * Delete customer API
+ */
+export const deleteCustomer = (id: number) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/ledger/customers/delete', {
     data: { id },
   });
 
-export const addLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 500);
+/**
+ * Add customer API
+ */
+export const addCustomer = (data: Partial<ICustomerData>) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/ledger/customers/create', { data });
 
-export const updateLedgerCustomer = (data: Partial<LedgerCustomerItem>) =>
-  // throttleUtil.getDataAfter(successResponseStatus, 100);
+/**
+ * Update customer API
+ */
+export const updateCustomer = (data: Partial<ICustomerData>) =>
+  // throttleUtil.getDataAfter(successResponseMock, 100);
   apiClientService.post('ui/ledger/customers/update', { data });
 
-export const filterLedgerCustomers = (data: Partial<LedgerCustomersFilterPrepared>) =>
-  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+/**
+ * Filter customers API
+ */
+export const filterCustomers = (data: Partial<ICustomersFilterToSend>) =>
+  // throttleUtil.getDataAfter(customersMock, 500);
   apiClientService.post('ui/ledger/customers/get', { data });
 
-export const filterLedgerCustomersById = (data: LedgerId) =>
-  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+/**
+ * Filter customers API
+ */
+export const filterCustomersById = (data: TLedgerId) =>
+  // throttleUtil.getDataAfter(customersMock, 500);
   apiClientService.post('ui/ledger/customers/get', { data });
 
-export const addRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItem>) =>
+/**
+ * Add repayment debit card API
+ */
+export const addRepaymentDebitCard = (data: Partial<IRepaymentDebitCardData>) =>
   apiClientService.post('ui/ledger/customers/create_repayment_debit_card', { data });
 
+/**
+ * Get repayment debit cards API
+ */
 export const getRepaymentDebitCards = (data: number) =>
   apiClientService.post('ui/ledger/customers/get_repayment_debit_card', {
     data: { customer_id: data },
   });
 
-export const addRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItem>) =>
+/**
+ * Add repayment direct debit API
+ */
+export const addRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitData>) =>
   apiClientService.post('ui/ledger/customers/create_repayment_direct_debits', { data });
 
+/**
+ * Get repayment direct debits API
+ */
 export const getRepaymentDirectDebits = (data: number) =>
   apiClientService.post('ui/ledger/customers/get_repayment_direct_debits', {
     data: { customer_id: data },

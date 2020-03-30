@@ -7,9 +7,9 @@ import {
   activeItemIdSelector,
   cardsSelector,
   handleFilterByIdAccounts,
-  handleFilterByIdLedgerCustomers,
-  handleFilterByIdLedgerTransactions,
+  handleFilterByIdCustomers,
   handleFilterByIdStatements,
+  handleFilterByIdTransactions,
   handleFilterCards,
   isLoadingCardsSelector,
   resetCards,
@@ -28,9 +28,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCards: handleFilterCards,
     filterAccountsById: handleFilterByIdAccounts,
-    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterCustomersById: handleFilterByIdCustomers,
     filterStatementsById: handleFilterByIdStatements,
-    filterTransactionsById: handleFilterByIdLedgerTransactions,
+    filterTransactionsById: handleFilterByIdTransactions,
     resetCards,
   },
   dispatch

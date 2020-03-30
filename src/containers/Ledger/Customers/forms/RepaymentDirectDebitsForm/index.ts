@@ -4,18 +4,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RepaymentDirectDebitsForm from './RepaymentDirectDebitsForm';
 
 import {
-  createLoadingSelector,
   handleAddRepaymentDirectDebit,
-  LedgerCustomersActionTypes,
+  isAddingRepaymentDirectDebitSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerCustomersActionTypes.ADD_REPAYMENT_DIRECT_DEBIT,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isAddingRepaymentDirectDebitSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

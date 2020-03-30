@@ -10,13 +10,13 @@ import { TransactionsFilter } from './forms';
 import { IWithModal, withModal } from 'HOCs';
 
 import {
-  HandleFilterLedgerCustomersById,
-  HandleFilterLedgerTransactions,
-  LedgerTransactionItemPrepared,
-  ResetTransactions,
+  ITransaction,
   THandleFilterAccountsById,
   THandleFilterCardsById,
+  THandleFilterCustomersById,
   THandleFilterStatementsById,
+  THandleFilterTransactions,
+  TResetTransactions,
   UiItemPrepared,
 } from 'store';
 
@@ -27,14 +27,14 @@ interface ITransactions extends IWithModal {
   currentId: number;
   filterAccountsById: THandleFilterAccountsById;
   filterCardsById: THandleFilterCardsById;
-  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterCustomersById: THandleFilterCustomersById;
   filterStatementsById: THandleFilterStatementsById;
-  filterTransactions: HandleFilterLedgerTransactions;
+  filterTransactions: THandleFilterTransactions;
   institutionsOptions: Array<ISelectValue>;
   isConvertibleToLoan: boolean;
   isLoading: boolean;
-  resetTransactions: ResetTransactions;
-  transactions: ImmutableArray<LedgerTransactionItemPrepared>;
+  resetTransactions: TResetTransactions;
+  transactions: ImmutableArray<ITransaction>;
   uiItems: Array<UiItemPrepared>;
 }
 

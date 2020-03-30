@@ -2,15 +2,10 @@
 import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
-export interface LedgerCustomerId {
+
+export interface ICustomerData {
   id: number;
-}
-
-export interface LedgerCustomerItemPlain extends LedgerCustomerId {
   email: string;
-}
-
-export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   status: string | number;
   institution_id: string | number;
   first_name: string;
@@ -31,11 +26,13 @@ export interface LedgerCustomerItem extends LedgerCustomerItemPlain {
   identification_number: number;
 }
 
-export interface LedgerCustomerItems {
-  customers: Array<LedgerCustomerItem>;
+export interface ICustomersData {
+  customers: Array<ICustomerData>;
 }
 
-export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain {
+interface ICustomerPlain {
+  id: number;
+  email: string;
   firstName: string;
   lastName: string;
   dateOfBirth: string;
@@ -51,7 +48,7 @@ export interface LedgerCustomerItemPlainPrepared extends LedgerCustomerItemPlain
   identificationNumber?: number;
 }
 
-export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepared {
+export interface ICustomer extends ICustomerPlain {
   institutionId: string | number;
   status: string | number;
   identificationType?: string | number;
@@ -59,7 +56,7 @@ export interface LedgerCustomerItemPrepared extends LedgerCustomerItemPlainPrepa
   nationalityCountryCode: string | number;
 }
 
-export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPlainPrepared {
+export interface ICustomerDetails extends ICustomerPlain {
   institutionId: ISelectValue;
   status: ISelectValue;
   identificationType: ISelectValue;
@@ -67,40 +64,55 @@ export interface LedgerCustomerItemDetailsPrepared extends LedgerCustomerItemPla
   nationalityCountryCode: ISelectValue;
 }
 
-export interface LedgerCustomersFilter {
+/**
+ * Customers filter interfaces
+ */
+
+export interface ICustomersFilter {
   customerId: number;
   institutionId: ISelectValue;
   firstName: string;
   lastName: string;
 }
 
-export interface LedgerCustomersFilterPrepared extends LedgerCustomerId {
+export interface ICustomersFilterToSend {
+  id: number;
   institution_id: string | number;
   first_name: string;
   last_name: string;
 }
 
-export interface CardId {
+/**
+ * Ledger IDs interfaces
+ */
+
+export interface ICardId {
   card_id: number;
 }
 
-export interface CustomerId {
+export interface ICustomerId {
   customer_id: number;
 }
 
-export interface AccountId {
+export interface IAccountId {
   account_id: number;
 }
 
-export interface TransactionId {
+export interface ITransactionId {
   transaction_id: number;
 }
 
-export interface StatementId {
+export interface IStatementId {
   statement_id: number;
 }
 
-export interface RepaymentDebitCardsItem {
+export type TLedgerId = ICardId | IAccountId | ITransactionId | IStatementId | ICustomerId;
+
+/**
+ * Repayment debit cards interfaces
+ */
+
+export interface IRepaymentDebitCardData {
   customer_id: number;
   pan_alias: string;
   pan_masked: string;
@@ -113,11 +125,11 @@ export interface RepaymentDebitCardsItem {
   last_update_datetime: string;
 }
 
-export interface RepaymentDebitCardsItems {
-  repayment_debit_cards: Array<RepaymentDebitCardsItem>;
+export interface IRepaymentDebitCardsData {
+  repayment_debit_cards: Array<IRepaymentDebitCardData>;
 }
 
-export interface RepaymentDebitCardsItemPlain {
+interface IRepaymentDebitCardPlain {
   customerId: number;
   panAlias: string;
   panMasked: string;
@@ -128,17 +140,21 @@ export interface RepaymentDebitCardsItemPlain {
   repaymentInterfaceName: string;
 }
 
-export interface RepaymentDebitCardsItemPrepared extends RepaymentDebitCardsItemPlain {
+export interface IRepaymentDebitCard extends IRepaymentDebitCardPlain {
   status: string | number;
   repaymentInterfaceId: string | number;
 }
 
-export interface RepaymentDebitCardsItemFormValues extends RepaymentDebitCardsItemPlain {
+export interface IRepaymentDebitCardFormValues extends IRepaymentDebitCardPlain {
   status: ISelectValue;
   repaymentInterfaceId: ISelectValue;
 }
 
-export interface RepaymentDirectDebitsItem {
+/**
+ * Repayment direct debit interfaces
+ */
+
+export interface IRepaymentDirectDebitData {
   customer_id: number;
   account: number;
   account_ext: string;
@@ -150,11 +166,11 @@ export interface RepaymentDirectDebitsItem {
   repay_provider_customer_id: string;
 }
 
-export interface RepaymentDirectDebitsItems {
-  repayment_debit_cards: Array<RepaymentDirectDebitsItem>;
+export interface IRepaymentDirectDebitsData {
+  repayment_debit_cards: Array<IRepaymentDirectDebitData>;
 }
 
-interface RepaymentDirectDebitsItemPlain {
+interface IRepaymentDirectDebitPlain {
   customerId: number;
   account: number;
   accountExt: string;
@@ -164,20 +180,21 @@ interface RepaymentDirectDebitsItemPlain {
   repayProviderCustomerId: string;
 }
 
-export interface RepaymentDirectDebitsItemPrepared extends RepaymentDirectDebitsItemPlain {
+export interface IRepaymentDirectDebit extends IRepaymentDirectDebitPlain {
   status: string | number;
   repaymentInterfaceId: string | number;
 }
 
-export interface RepaymentDirectDebitsItemFormValues extends RepaymentDirectDebitsItemPlain {
+export interface IRepaymentDirectDebitFormValues extends IRepaymentDirectDebitPlain {
   status: ISelectValue;
   repaymentInterfaceId: ISelectValue;
 }
 
-export type LedgerId = CardId | AccountId | TransactionId | StatementId | CustomerId;
-
-export interface LedgerCustomersState {
-  customers: ImmutableArray<LedgerCustomerItem>;
-  repaymentDebitCards: ImmutableArray<RepaymentDebitCardsItem>;
-  repaymentDirectDebits: ImmutableArray<RepaymentDirectDebitsItem>;
+/**
+ * Customer state interface
+ */
+export interface ICustomersState {
+  customers: ImmutableArray<ICustomerData>;
+  repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
+  repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebitData>;
 }

@@ -1,6 +1,6 @@
 import { apiClientService } from 'services';
 
-import { LedgerId } from '../customers';
+import { TLedgerId } from '../customers';
 // import { accountsMock, successResponseMock } from './mock';
 import { IAccountData, IAccountsFilterToSend } from './types';
 // import { throttleUtil } from 'utils';
@@ -54,6 +54,6 @@ export const orderAccountCard = (accountId: number) =>
 /**
  * Filter accounts by account ID API
  */
-export const filterAccountsById = (data: LedgerId) =>
+export const filterAccountsById = (data: TLedgerId) =>
   // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
   apiClientService.post('ui/ledger/accounts/get', { data });

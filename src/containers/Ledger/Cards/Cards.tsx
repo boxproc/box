@@ -8,12 +8,12 @@ import { tableColumns } from './components';
 import { CardsFilter } from './forms';
 
 import {
-  HandleFilterLedgerCustomersById,
-  HandleFilterLedgerTransactionsById,
   ICard,
   THandleFilterAccountsById,
   THandleFilterCards,
+  THandleFilterCustomersById,
   THandleFilterStatementsById,
+  THandleFilterTransactionsById,
   TResetCards,
 } from 'store';
 
@@ -24,9 +24,9 @@ interface ICards {
   cards: ImmutableArray<ICard>;
   filterCards: THandleFilterCards;
   institutionsOptions: Array<ISelectValue>;
-  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterCustomersById: THandleFilterCustomersById;
   filterAccountsById: THandleFilterAccountsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterTransactionsById: THandleFilterTransactionsById;
   filterStatementsById: THandleFilterStatementsById;
   resetCards: TResetCards;
   isLoading: boolean;

@@ -4,18 +4,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RepaymentDebitCardsForm from './RepaymentDebitCardsForm';
 
 import {
-  createLoadingSelector,
   handleAddRepaymentDebitCard,
-  LedgerCustomersActionTypes,
+  isAddingRepaymentDebitCardSelector,
   StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerCustomersActionTypes.ADD_REPAYMENT_DEBIT_CARD,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isAddingRepaymentDebitCardSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

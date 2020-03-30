@@ -3,30 +3,35 @@ import { createSelector } from 'reselect';
 import { StoreState } from 'store';
 
 import { countriesOptionsSelector } from 'store/domains/administration';
+import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
+import { ActionTypeKeys } from './actionTypes';
 import {
   prepareDataToRender,
-  preparedDataDetailsToRender,
+  prepareDetailsToRender,
   prepareRepaymentDebitCardsToRender,
   prepareRepaymentDirectDebitsToRender,
 } from './utils';
 
-export const selectDefaultLedgerCustomers = (state: StoreState) =>
-  state.ledger.customers.customers;
+export const defaultCustomersSelector = (state: StoreState) => state.ledger.customers.customers;
 
-export const selectLedgerCustomers = createSelector(
-  selectDefaultLedgerCustomers,
+export const customersSelector = createSelector(
+  defaultCustomersSelector,
   userInstitutionsOptionsSelector,
-  (items, institutions) => items && items.map(item => {
-    const institution = institutions.find(el => el.value === item.institution_id);
+  (customers, institutions) => customers && customers.map(customer => {
+    const institution = institutions.find(el => el.value === customer.institution_id);
 
-    return prepareDataToRender(item, institution);
+    return prepareDataToRender(customer, institution);
   })
 );
 
-export const selectLedgerCurrentCustomer = createSelector(
-  selectDefaultLedgerCustomers,
+/**
+ * Current customer selectors
+ */
+
+export const currentCustomerSelector = createSelector(
+  defaultCustomersSelector,
   activeItemIdSelector,
   userInstitutionsOptionsSelector,
   countriesOptionsSelector,
@@ -44,7 +49,7 @@ export const selectLedgerCurrentCustomer = createSelector(
       && countries.find(el => el.value === current.nationality_country_code);
 
     return {
-      ...preparedDataDetailsToRender(current),
+      ...prepareDetailsToRender(current),
       institutionId,
       addressCountryCode,
       nationalityCountryCode,
@@ -52,28 +57,72 @@ export const selectLedgerCurrentCustomer = createSelector(
   }
 );
 
-export const selectLedgerCurrentCustomerName = createSelector(
-  selectLedgerCurrentCustomer,
-  (customer) => customer && `${customer.firstName} ${customer.lastName}`
+export const currentCustomerNameSelector = createSelector(
+  currentCustomerSelector,
+  data => data && `${data.firstName} ${data.lastName}`
 );
 
-export const selectLedgerCurrentCustomerInstitutionId = createSelector(
-  selectLedgerCurrentCustomer,
-  (customer) => customer && customer.institutionId.value
+export const currentCustomerInstIdSelector = createSelector(
+  currentCustomerSelector,
+  data => data && data.institutionId.value
 );
 
-export const selectDefaultRepaymentDebitCards = (state: StoreState) =>
+/**
+ * Repayment debit cards selectors
+ */
+
+export const defaultRepaymentDebitCardsSelector = (state: StoreState) =>
   state.ledger.customers.repaymentDebitCards;
 
-export const selectRepaymentDebitCards = createSelector(
-  selectDefaultRepaymentDebitCards,
-  items => items && items.map(item => prepareRepaymentDebitCardsToRender(item))
+export const repaymentDebitCardsSelector = createSelector(
+  defaultRepaymentDebitCardsSelector,
+  data => data && data.map(el => prepareRepaymentDebitCardsToRender(el))
 );
 
-export const selectDefaultRepaymentDirectDebits = (state: StoreState) =>
+/**
+ * Repayment direct debit selectors
+ */
+
+export const defaultRepaymentDirectDebitsSelector = (state: StoreState) =>
   state.ledger.customers.repaymentDirectDebits;
 
-export const selectRepaymentDirectDebits = createSelector(
-  selectDefaultRepaymentDirectDebits,
-  items => items && items.map(item => prepareRepaymentDirectDebitsToRender(item))
+export const repaymentDirectDebitsSelector = createSelector(
+  defaultRepaymentDirectDebitsSelector,
+  data => data && data.map(el => prepareRepaymentDirectDebitsToRender(el))
 );
+
+/**
+ * Customers loading selectors
+ */
+
+export const isLoadingCustomersSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_CUSTOMERS,
+]);
+
+export const isDeletingCustomerSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_CUSTOMER,
+]);
+
+export const isUpdatingCustomerSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_CUSTOMER,
+]);
+
+export const isAddingCustomerSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_CUSTOMER,
+]);
+
+export const isGettingRepaymentDebitCardsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS,
+]);
+
+export const isAddingRepaymentDebitCardSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
+]);
+
+export const isGettingRepaymentDirectDebitsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
+]);
+
+export const isAddingRepaymentDirectDebitSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
+]);

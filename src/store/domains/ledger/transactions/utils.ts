@@ -6,17 +6,16 @@ import {
 } from 'consts';
 
 import {
-  LedgerConvertTransactionToLoanItemPrepared,
-  LedgerTransactionItem,
-  LedgerTransactionItemPrepared,
-  LedgerTransactionsFilter,
+  IConvertTrToLoanReq,
+  ITransaction,
+  ITransactionData,
+  ITransactionsFilter,
 } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const prepareValuesToRender = (values: LedgerTransactionItem):
-  LedgerTransactionItemPrepared => {
-  if (!values) {
+export const prepareDataToRender = (data: ITransactionData): ITransaction => {
+  if (!data) {
     return null;
   }
 
@@ -67,7 +66,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
     settled_datetime,
     amount_settled,
     source_endpoint_id,
-  } = values;
+  } = data;
 
   const aprCalculationMethod = aprTypesOptions.find(el => el.value === apr_calculation_method);
   const feeApplicationCondition = feeTypesOptions
@@ -128,7 +127,7 @@ export const prepareValuesToRender = (values: LedgerTransactionItem):
   };
 };
 
-export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) => {
+export const prepareFilterToSend = (data: Partial<ITransactionsFilter>) => {
   if (!data) {
     return null;
   }
@@ -158,7 +157,7 @@ export const preparedFilterToSend = (data: Partial<LedgerTransactionsFilter>) =>
   };
 };
 
-export const prepareDataToConvert = (data: Partial<LedgerConvertTransactionToLoanItemPrepared>) => {
+export const prepareDataToConvert = (data: Partial<IConvertTrToLoanReq>) => {
   if (!data) {
     return null;
   }

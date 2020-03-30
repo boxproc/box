@@ -9,29 +9,26 @@ import CustomerForm from './CustomerForm';
 import {
   activeItemIdSelector,
   countriesOptionsSelector,
-  createLoadingSelector,
-  handleAddLedgerCustomer,
-  handleDeleteLedgerCustomer,
+  currentCustomerNameSelector,
+  currentCustomerSelector,
+  handleAddCustomer,
+  handleDeleteCustomer,
   handleGetDictionaryCountries,
-  handleUpdateLedgerCustomer,
-  LedgerCustomersActionTypes,
-  selectLedgerCurrentCustomer,
-  selectLedgerCurrentCustomerName,
+  handleUpdateCustomer,
+  isAddingCustomerSelector,
+  isDeletingCustomerSelector,
+  isUpdatingCustomerSelector,
   StoreState,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  LedgerCustomersActionTypes.DELETE_LEDGER_CUSTOMER,
-  LedgerCustomersActionTypes.UPDATE_LEDGER_CUSTOMER,
-  LedgerCustomersActionTypes.ADD_LEDGER_CUSTOMER,
-]);
 
 const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  initialValues: selectLedgerCurrentCustomer(state),
-  currentCustomerName: selectLedgerCurrentCustomerName(state),
+  isLoading: isAddingCustomerSelector(state)
+    || isUpdatingCustomerSelector(state)
+    || isDeletingCustomerSelector(state),
+  initialValues: currentCustomerSelector(state),
+  currentCustomerName: currentCustomerNameSelector(state),
   countryCodes: countriesOptionsSelector(state),
   currentId: activeItemIdSelector(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
@@ -39,9 +36,9 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addCustomer: handleAddLedgerCustomer,
-    deleteCustomer: handleDeleteLedgerCustomer,
-    updateCustomer: handleUpdateLedgerCustomer,
+    addCustomer: handleAddCustomer,
+    deleteCustomer: handleDeleteCustomer,
+    updateCustomer: handleUpdateCustomer,
     loadCountryCodes: handleGetDictionaryCountries,
   },
   dispatch

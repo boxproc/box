@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import TransactionForm from './TransactionForm';
 
-import { selectLedgerCurrentTransaction, StoreState } from 'store';
+import { currentTransactionSelector, StoreState } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
-  initialValues: selectLedgerCurrentTransaction(state),
+  initialValues: currentTransactionSelector(state),
 });
 
 export default connect(

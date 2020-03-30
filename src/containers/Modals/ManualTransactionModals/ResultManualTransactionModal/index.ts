@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ManualTransactionModal from './ResultManualTransactionModal';
 
 import {
-  handleFilterByIdLedgerTransactions,
+  handleFilterByIdTransactions,
   manualTrModalIsLimitAdjSelector,
   selectLedgerLimitAdjustment,
   selectLedgerManualTransaction,
@@ -21,7 +21,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerTransactionsById: handleFilterByIdLedgerTransactions,
+    filterLedgerTransactionsById: handleFilterByIdTransactions,
   },
   dispatch
 );

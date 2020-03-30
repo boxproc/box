@@ -13,29 +13,29 @@ import {
 } from 'store';
 import {
   ActionTypeKeys,
-  AddLedgerCustomerAction,
-  AddRepaymentDebitCardAction,
-  AddRepaymentDirectDebitAction,
-  DeleteLedgerCustomerAction,
-  FilterLedgerCustomersAction,
-  FilterLedgerCustomersByIdAction,
-  GetRepaymentDebitCardsAction,
-  GetRepaymentDirectDebitsAction,
-  UpdateLedgerCustomerAction,
+  IAddCustomerAction,
+  IAddRepaymentDebitCardAction,
+  IAddRepaymentDirectDebitAction,
+  IDeleteCustomerAction,
+  IFilterCustomersAction,
+  IFilterCustomersByIdAction,
+  IGetRepaymentDebitCardsAction,
+  IGetRepaymentDirectDebitsAction,
+  IUpdateCustomerAction,
 } from './actionTypes';
 import {
-  LedgerCustomerItem,
-  LedgerCustomerItemDetailsPrepared,
-  LedgerCustomersFilterPrepared,
-  LedgerId,
-  RepaymentDebitCardsItem,
-  RepaymentDebitCardsItemFormValues,
-  RepaymentDirectDebitsItem,
-  RepaymentDirectDebitsItemFormValues,
+  ICustomerData,
+  ICustomerDetails,
+  ICustomersFilterToSend,
+  IRepaymentDebitCardData,
+  IRepaymentDebitCardFormValues,
+  IRepaymentDirectDebitData,
+  IRepaymentDirectDebitFormValues,
+  TLedgerId,
 } from './types';
 import {
-  preparedDataToSend,
-  preparedFilterToSend,
+  prepareDataToSend,
+  prepareFilterToSend,
   prepareFormDataRepaymentDebitCardToSend,
   prepareFormDataRepaymentDirectDebitToSend,
 } from './utils';
@@ -44,154 +44,127 @@ import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
-export type DeleteLedgerCustomer = (id: number) => DeleteLedgerCustomerAction;
-export type HandleDeleteLedgerCustomer = (id: number) => Thunk<void>;
+/**
+ * Filter customers action
+ */
 
-export type AddLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
-  AddLedgerCustomerAction;
-export type HandleAddLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
-  Thunk<void>;
+export type TFilterCustomers = (data: Partial<ICustomersFilterToSend>) => IFilterCustomersAction;
+export type THandleFilterCustomers = () => Thunk<void>;
 
-export type UpdateLedgerCustomer = (values: Partial<LedgerCustomerItem>) =>
-  UpdateLedgerCustomerAction;
-export type HandleUpdateLedgerCustomer = (values: Partial<LedgerCustomerItemDetailsPrepared>) =>
-  Thunk<void>;
+export const filterCustomers: TFilterCustomers = data => ({
+  type: ActionTypeKeys.FILTER_CUSTOMERS,
+  payload: api.filterCustomers(data),
+});
 
-export type FilterLedgerCustomers = (params: Partial<LedgerCustomersFilterPrepared>) =>
-  FilterLedgerCustomersAction;
-export type HandleFilterLedgerCustomers = () => Thunk<void>;
+export const handleFilterCustomers: THandleFilterCustomers = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const formValues = getFormValues(formNamesConst.FILTER);
+        const state = getState();
+        const preparedData = prepareFilterToSend(formValues(state));
 
-export type FilterLedgerCustomersById = (id: LedgerId) => FilterLedgerCustomersByIdAction;
-export type HandleFilterLedgerCustomersById = (id: LedgerId) => Thunk<void>;
+        if (preparedData) {
+          await dispatch(filterCustomers(preparedData));
+        }
+      },
+      dispatch
+    );
+  };
 
-export type GetRepaymentDebitCards = (id: number) => GetRepaymentDebitCardsAction;
-export type HandleGetRepaymentDebitCards = () => Thunk<void>;
+/**
+ * Delete customer action
+ */
 
-export type AddRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItem>) =>
-  AddRepaymentDebitCardAction;
-export type HandleAddRepaymentDebitCard = (data: Partial<RepaymentDebitCardsItemFormValues>) =>
-  Thunk<void>;
+export type TDeleteCustomer = (id: number) => IDeleteCustomerAction;
+export type THandleDeleteCustomer = (id: number) => Thunk<void>;
 
-export type GetRepaymentDirectDebits = (id: number) => GetRepaymentDirectDebitsAction;
-export type HandleGetRepaymentDirectDebits = () => Thunk<void>;
-
-export type AddRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItem>) =>
-  AddRepaymentDirectDebitAction;
-export type HandleAddRepaymentDirectDebit = (data: Partial<RepaymentDirectDebitsItemFormValues>) =>
-  Thunk<void>;
-
-export type ResetCustomers = () => void;
-
-export const deleteLedgerCustomer: DeleteLedgerCustomer = id => ({
-  type: ActionTypeKeys.DELETE_LEDGER_CUSTOMER,
-  payload: api.deleteLedgerCustomer(id),
+export const deleteCustomer: TDeleteCustomer = id => ({
+  type: ActionTypeKeys.DELETE_CUSTOMER,
+  payload: api.deleteCustomer(id),
   meta: { id },
 });
 
-export const addLedgerCustomer: AddLedgerCustomer = values => ({
-  type: ActionTypeKeys.ADD_LEDGER_CUSTOMER,
-  payload: api.addLedgerCustomer(values),
-});
-
-export const updateLedgerCustomers: UpdateLedgerCustomer = values => ({
-  type: ActionTypeKeys.UPDATE_LEDGER_CUSTOMER,
-  payload: api.updateLedgerCustomer(values),
-});
-
-export const filterLedgerCustomers: FilterLedgerCustomers = filter => ({
-  type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS,
-  payload: api.filterLedgerCustomers(filter),
-});
-
-export const filterLedgerCustomersById: FilterLedgerCustomersById = data => ({
-  type: ActionTypeKeys.FILTER_LEDGER_CUSTOMERS_BY_ID,
-  payload: api.filterLedgerCustomersById(data),
-});
-
-export const resetCustomers: ResetCustomers = () => ({
-  type: ActionTypeKeys.RESET_CUSTOMERS,
-});
-
-export const getRepaymentDebitCards: GetRepaymentDebitCards = id => ({
-  type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS,
-  payload: api.getRepaymentDebitCards(id),
-});
-
-export const addRepaymentDebitCard: AddRepaymentDebitCard = data => ({
-  type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
-  payload: api.addRepaymentDebitCard(data),
-});
-
-export const getRepaymentDirectDebits: GetRepaymentDirectDebits = id => ({
-  type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
-  payload: api.getRepaymentDirectDebits(id),
-});
-
-export const addRepaymentDirectDebit: AddRepaymentDirectDebit = data => ({
-  type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
-  payload: api.addRepaymentDirectDebit(data),
-});
-
-export const handleDeleteLedgerCustomer: HandleDeleteLedgerCustomer = id =>
+export const handleDeleteCustomer: THandleDeleteCustomer = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(deleteLedgerCustomer(id));
+        await dispatch(deleteCustomer(id));
         dispatch(closeModal(modalNamesConst.EDIT_CUSTOMER));
       },
       dispatch
     );
   };
 
-export const handleAddLedgerCustomer: HandleAddLedgerCustomer = values =>
+/**
+ * Add customer action
+ */
+
+export type TAddCustomer = (data: Partial<ICustomerData>) => IAddCustomerAction;
+export type THandleAddCustomer = (data: Partial<ICustomerDetails>) => Thunk<void>;
+
+export const addCustomer: TAddCustomer = data => ({
+  type: ActionTypeKeys.ADD_CUSTOMER,
+  payload: api.addCustomer(data),
+});
+
+export const handleAddCustomer: THandleAddCustomer = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedDataToSend(values);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addLedgerCustomer(preparedValues));
+        await dispatch(addCustomer(preparedData));
         dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
 
         if (isAccessibleFiltering) {
-          await dispatch(handleFilterLedgerCustomers());
+          await dispatch(handleFilterCustomers());
         }
       },
       dispatch
     );
   };
 
-export const handleUpdateLedgerCustomer: HandleUpdateLedgerCustomer = values =>
+/**
+ * Update customer action
+ */
+
+export type TUpdateCustomer = (data: Partial<ICustomerData>) => IUpdateCustomerAction;
+export type THandleUpdateCustomer = (data: Partial<ICustomerDetails>) => Thunk<void>;
+
+export const updateCustomer: TUpdateCustomer = data => ({
+  type: ActionTypeKeys.UPDATE_CUSTOMER,
+  payload: api.updateCustomer(data),
+});
+
+export const handleUpdateCustomer: THandleUpdateCustomer = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = preparedDataToSend(values);
+        const preparedData = prepareDataToSend(data);
 
-        await dispatch(updateLedgerCustomers(preparedValues));
-        await dispatch(handleFilterLedgerCustomers());
+        await dispatch(updateCustomer(preparedData));
+        await dispatch(handleFilterCustomers());
       },
       dispatch
     );
   };
 
-export const handleFilterLedgerCustomers: HandleFilterLedgerCustomers = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const formValues = getFormValues(formNamesConst.FILTER);
-        const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+/**
+ * Filter customers by ID action
+ */
 
-        if (preparedValues) {
-          await dispatch(filterLedgerCustomers(preparedValues));
-        }
-      },
-      dispatch
-    );
-  };
+export type TFilterCustomersById = (id: TLedgerId) => IFilterCustomersByIdAction;
+export type THandleFilterCustomersById = (id: TLedgerId) => Thunk<void>;
 
-export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = id =>
+export const filterCustomersById: TFilterCustomersById = data => ({
+  type: ActionTypeKeys.FILTER_CUSTOMERS_BY_ID,
+  payload: api.filterCustomersById(data),
+});
+
+export const handleFilterByIdCustomers: THandleFilterCustomersById = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -200,14 +173,26 @@ export const handleFilterByIdLedgerCustomers: HandleFilterLedgerCustomersById = 
 
         cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_CUSTOMERS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemsConst.LEDGER_CUSTOMERS}`));
-        await dispatch(filterLedgerCustomersById(id));
+        await dispatch(filterCustomersById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch
     );
   };
 
-export const handleGetRepaymentDebitCards: HandleGetRepaymentDebitCards = () =>
+/**
+ * Get repayment debit cards action
+ */
+
+export type TGetRepaymentDebitCards = (id: number) => IGetRepaymentDebitCardsAction;
+export type THandleGetRepaymentDebitCards = () => Thunk<void>;
+
+export const getRepaymentDebitCards: TGetRepaymentDebitCards = id => ({
+  type: ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS,
+  payload: api.getRepaymentDebitCards(id),
+});
+
+export const handleGetRepaymentDebitCards: THandleGetRepaymentDebitCards = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -220,16 +205,30 @@ export const handleGetRepaymentDebitCards: HandleGetRepaymentDebitCards = () =>
     );
   };
 
-export const handleAddRepaymentDebitCard: HandleAddRepaymentDebitCard = data =>
+/**
+ * Add repayment debit card action
+ */
+
+export type TAddRepaymentDebitCard = (data: Partial<IRepaymentDebitCardData>) =>
+  IAddRepaymentDebitCardAction;
+export type THandleAddRepaymentDebitCard = (data: Partial<IRepaymentDebitCardFormValues>) =>
+  Thunk<void>;
+
+export const addRepaymentDebitCard: TAddRepaymentDebitCard = data => ({
+  type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
+  payload: api.addRepaymentDebitCard(data),
+});
+
+export const handleAddRepaymentDebitCard: THandleAddRepaymentDebitCard = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const customerId = activeItemIdSelector(state);
-        const preparedValues = prepareFormDataRepaymentDebitCardToSend(data);
+        const preparedData = prepareFormDataRepaymentDebitCardToSend(data);
 
         await dispatch(addRepaymentDebitCard({
-          ...preparedValues,
+          ...preparedData,
           customer_id: customerId,
         }));
         await dispatch(handleGetRepaymentDebitCards());
@@ -239,7 +238,19 @@ export const handleAddRepaymentDebitCard: HandleAddRepaymentDebitCard = data =>
     );
   };
 
-export const handleGetRepaymentDirectDebits: HandleGetRepaymentDirectDebits = () =>
+/**
+ * Get repayment direct debits action
+ */
+
+export type TGetRepaymentDirectDebits = (id: number) => IGetRepaymentDirectDebitsAction;
+export type THandleGetRepaymentDirectDebits = () => Thunk<void>;
+
+export const getRepaymentDirectDebits: TGetRepaymentDirectDebits = id => ({
+  type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
+  payload: api.getRepaymentDirectDebits(id),
+});
+
+export const handleGetRepaymentDirectDebits: THandleGetRepaymentDirectDebits = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -252,16 +263,30 @@ export const handleGetRepaymentDirectDebits: HandleGetRepaymentDirectDebits = ()
     );
   };
 
-export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data =>
+/**
+ * Add repayment direct debit action
+ */
+
+export type TAddRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitData>) =>
+  IAddRepaymentDirectDebitAction;
+export type THandleAddRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitFormValues>) =>
+  Thunk<void>;
+
+export const addRepaymentDirectDebit: TAddRepaymentDirectDebit = data => ({
+  type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
+  payload: api.addRepaymentDirectDebit(data),
+});
+
+export const handleAddRepaymentDirectDebit: THandleAddRepaymentDirectDebit = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const customerId = activeItemIdSelector(state);
-        const preparedValues = prepareFormDataRepaymentDirectDebitToSend(data);
+        const preparedData = prepareFormDataRepaymentDirectDebitToSend(data);
 
         await dispatch(addRepaymentDirectDebit({
-          ...preparedValues,
+          ...preparedData,
           customer_id: customerId,
         }));
         await dispatch(handleGetRepaymentDirectDebits());
@@ -270,3 +295,13 @@ export const handleAddRepaymentDirectDebit: HandleAddRepaymentDirectDebit = data
       dispatch
     );
   };
+
+/**
+ * Reset customers action
+ */
+
+export type TResetCustomers = () => void;
+
+export const resetCustomers: TResetCustomers = () => ({
+  type: ActionTypeKeys.RESET_CUSTOMERS,
+});

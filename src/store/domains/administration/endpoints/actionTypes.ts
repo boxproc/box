@@ -4,33 +4,32 @@ import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
   /** Add endpoint action type keys */
-  ADD_ENDPOINT = 'administration/endpoints/ADD_ENDPOINT',
-  ADD_ENDPOINT_FULFILLED = 'administration/endpoints/ADD_ENDPOINT_FULFILLED',
-  ADD_ENDPOINT_REJECTED = 'administration/endpoints/ADD_ENDPOINT_REJECTED',
+  ADD_ENDPOINT = 'endpoints/ADD_ENDPOINT',
+  ADD_ENDPOINT_FULFILLED = 'endpoints/ADD_ENDPOINT_FULFILLED',
+  ADD_ENDPOINT_REJECTED = 'endpoints/ADD_ENDPOINT_REJECTED',
 
   /** Delete endpoint action type keys */
-  DELETE_ENDPOINT = 'administration/endpoints/DELETE_ENDPOINT',
-  DELETE_ENDPOINT_FULFILLED = 'administration/endpoints/DELETE_ENDPOINT_FULFILLED',
-  DELETE_ENDPOINT_REJECTED = 'administration/endpoints/DELETE_ENDPOINT_REJECTED',
+  DELETE_ENDPOINT = 'endpoints/DELETE_ENDPOINT',
+  DELETE_ENDPOINT_FULFILLED = 'endpoints/DELETE_ENDPOINT_FULFILLED',
+  DELETE_ENDPOINT_REJECTED = 'endpoints/DELETE_ENDPOINT_REJECTED',
 
   /** Update endpoint action type keys */
-  UPDATE_ENDPOINT = 'administration/endpoints/UPDATE_ENDPOINT',
-  UPDATE_ENDPOINT_FULFILLED = 'administration/endpoints/UPDATE_ENDPOINT_FULFILLED',
-  UPDATE_ENDPOINT_REJECTED = 'administration/endpoints/UPDATE_ENDPOINT_REJECTED',
+  UPDATE_ENDPOINT = 'endpoints/UPDATE_ENDPOINT',
+  UPDATE_ENDPOINT_FULFILLED = 'endpoints/UPDATE_ENDPOINT_FULFILLED',
+  UPDATE_ENDPOINT_REJECTED = 'endpoints/UPDATE_ENDPOINT_REJECTED',
 
   /** Filter endpoints action type keys */
-  FILTER_ENDPOINTS = 'administration/endpoints/FILTER_ENDPOINTS',
-  FILTER_ENDPOINTS_FULFILLED = 'administration/endpoints/FILTER_ENDPOINTS_FULFILLED',
-  FILTER_ENDPOINTS_REJECTED = 'administration/endpoints/FILTER_ENDPOINTS_REJECTED',
+  FILTER_ENDPOINTS = 'endpoints/FILTER_ENDPOINTS',
+  FILTER_ENDPOINTS_FULFILLED = 'endpoints/FILTER_ENDPOINTS_FULFILLED',
+  FILTER_ENDPOINTS_REJECTED = 'endpoints/FILTER_ENDPOINTS_REJECTED',
 
   /** Get endpoints by institution ID action type keys */
-  GET_ENDPOINTS_BY_INST_ID = 'administration/endpoints/GET_ENDPOINTS_BY_INST_ID',
-  GET_ENDPOINTS_BY_INST_ID_FULFILLED =
-  'administration/endpoints/GET_ENDPOINTS_BY_INST_ID_FULFILLED',
-  GET_ENDPOINTS_BY_INST_ID_REJECTED = 'administration/endpoints/GET_ENDPOINTS_BY_INST_ID_REJECTED',
+  GET_ENDPOINTS_BY_INST_ID = 'endpoints/GET_ENDPOINTS_BY_INST_ID',
+  GET_ENDPOINTS_BY_INST_ID_FULFILLED = 'endpoints/GET_ENDPOINTS_BY_INST_ID_FULFILLED',
+  GET_ENDPOINTS_BY_INST_ID_REJECTED = 'endpoints/GET_ENDPOINTS_BY_INST_ID_REJECTED',
 
   /** Reset endpoints action type keys */
-  RESET_ENDPOINTS = 'administration/endpoints/RESET_ENDPOINTS',
+  RESET_ENDPOINTS = 'endpoints/RESET_ENDPOINTS',
 }
 
 /** Add endpoint action interfaces */

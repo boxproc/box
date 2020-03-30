@@ -8,26 +8,26 @@ import { formNamesConst, iconNamesConst, identificationTypesConst } from 'consts
 
 import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
-  HandleAddLedgerCustomer,
-  HandleDeleteLedgerCustomer,
-  HandleUpdateLedgerCustomer,
+  THandleAddCustomer,
+  THandleDeleteCustomer,
   THandleGetDictionaryCountries,
+  THandleUpdateCustomer,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
 interface IEditCustomerForm extends ISpinner {
-  addCustomer: HandleAddLedgerCustomer;
+  addCustomer: THandleAddCustomer;
   countryCodes: Array<ISelectValue>;
   currentCustomerName: string;
   currentId: number;
-  deleteCustomer: HandleDeleteLedgerCustomer;
+  deleteCustomer: THandleDeleteCustomer;
   identificationTypeValue: ISelectValue;
   isEditMode?: boolean;
   isReadOnly: boolean;
   loadCountryCodes: THandleGetDictionaryCountries;
   onCancel: () => void;
-  updateCustomer: HandleUpdateLedgerCustomer;
+  updateCustomer: THandleUpdateCustomer;
 }
 
 type TEditCustomerForm = IEditCustomerForm & InjectedFormProps<{}, IEditCustomerForm>;

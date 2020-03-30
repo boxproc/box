@@ -1,8 +1,6 @@
-import { LedgerTransactionItems } from './types';
+import { ITransactionsData } from './types';
 
-import { IResponseStatus } from 'types';
-
-export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
+export const transactionsMock: ITransactionsData = {
   transactions: [
     {
       id: 2,
@@ -53,10 +51,4 @@ export const ledgerTransactionsFilteredItems: LedgerTransactionItems = {
       parent_transaction_id: null,
     },
   ],
-};
-
-export const successResponseStatus: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

@@ -10,13 +10,13 @@ import { tableColumns } from './components';
 import { AccountsFilter } from './forms';
 
 import {
-  HandleFilterLedgerCustomersById,
-  HandleFilterLedgerTransactionsById,
   IAccount,
   THandleAddProductOverride,
   THandleFilterAccounts,
   THandleFilterCardsById,
+  THandleFilterCustomersById,
   THandleFilterStatementsById,
+  THandleFilterTransactionsById,
   THandleSetActiveItemId,
   TResetAccounts,
   UiItemPrepared,
@@ -32,9 +32,9 @@ interface IAccounts extends IWithModal {
   currentId: number;
   filterAccounts: THandleFilterAccounts;
   filterCardsById: THandleFilterCardsById;
-  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterCustomersById: THandleFilterCustomersById;
   filterStatementsById: THandleFilterStatementsById;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterTransactionsById: THandleFilterTransactionsById;
   hasProductOverride: boolean;
   institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;

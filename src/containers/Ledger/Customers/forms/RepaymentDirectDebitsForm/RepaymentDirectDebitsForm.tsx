@@ -11,7 +11,7 @@ import {
   RepaymentDirectDebits,
   RepaymentDirectDebitsTable,
 } from 'containers/Ledger/Customers/components';
-import { HandleAddRepaymentDirectDebit } from 'store';
+import { THandleAddRepaymentDirectDebit } from 'store';
 
 import { ISelectValue } from 'types';
 
@@ -19,7 +19,7 @@ interface IRepaymentDirectDebitsForm {
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
-  addRepaymentDirectDebit: HandleAddRepaymentDirectDebit;
+  addRepaymentDirectDebit: THandleAddRepaymentDirectDebit;
   interfacesOptions: Array<ISelectValue>;
   isInterfacesLoading: boolean;
 }

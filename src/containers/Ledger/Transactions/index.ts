@@ -5,40 +5,35 @@ import Transactions from './Transactions';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
   handleFilterByIdAccounts,
   handleFilterByIdCards,
-  handleFilterByIdLedgerCustomers,
+  handleFilterByIdCustomers,
   handleFilterByIdStatements,
-  handleFilterLedgerTransactions,
-  LedgerTransactionsActionTypes,
+  handleFilterTransactions,
+  isLoadingTransactionsSelector,
+  isTrConvertibleToLoanSelector,
   resetTransactions,
-  selectIsTransactionConvertibleToLoan,
-  selectLedgerTransactions,
   selectUiItems,
   StoreState,
+  transactionsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerTransactionsActionTypes.FILTER_LEDGER_TRANSACTIONS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  transactions: selectLedgerTransactions(state),
+  isLoading: isLoadingTransactionsSelector(state),
+  transactions: transactionsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   currentId: activeItemIdSelector(state),
-  isConvertibleToLoan: selectIsTransactionConvertibleToLoan(state),
+  isConvertibleToLoan: isTrConvertibleToLoanSelector(state),
   uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterTransactions: handleFilterLedgerTransactions,
+    filterTransactions: handleFilterTransactions,
     filterCardsById: handleFilterByIdCards,
     filterStatementsById: handleFilterByIdStatements,
-    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterCustomersById: handleFilterByIdCustomers,
     filterAccountsById: handleFilterByIdAccounts,
     resetTransactions,
   },

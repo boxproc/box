@@ -1,26 +1,26 @@
 import { customerStatusOptions, identificationTypesOptions, statusOptions } from 'consts';
 
 import {
-  LedgerCustomerItem,
-  LedgerCustomerItemDetailsPrepared,
-  LedgerCustomersFilter,
-  RepaymentDebitCardsItem,
-  RepaymentDebitCardsItemFormValues,
-  RepaymentDebitCardsItemPrepared,
-  RepaymentDirectDebitsItem,
-  RepaymentDirectDebitsItemFormValues,
-  RepaymentDirectDebitsItemPrepared,
+  ICustomerData,
+  ICustomerDetails,
+  ICustomersFilter,
+  IRepaymentDebitCard,
+  IRepaymentDebitCardData,
+  IRepaymentDebitCardFormValues,
+  IRepaymentDirectDebit,
+  IRepaymentDirectDebitData,
+  IRepaymentDirectDebitFormValues,
 } from './types';
 
 import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
-export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => {
-  if (!params) {
+export const prepareFilterToSend = (data: Partial<ICustomersFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { customerId, institutionId, firstName, lastName } = params;
+  const { customerId, institutionId, firstName, lastName } = data;
 
   return {
     id: stringsUtil.toNumber(customerId),
@@ -30,7 +30,7 @@ export const preparedFilterToSend = (params: Partial<LedgerCustomersFilter>) => 
   };
 };
 
-export const preparedDataToSend = (data: Partial<LedgerCustomerItemDetailsPrepared>) => {
+export const prepareDataToSend = (data: Partial<ICustomerDetails>) => {
   if (!data) {
     return null;
   }
@@ -82,10 +82,7 @@ export const preparedDataToSend = (data: Partial<LedgerCustomerItemDetailsPrepar
   };
 };
 
-export const prepareDataToRender = (
-  data: Partial<LedgerCustomerItem>,
-  institution?: ISelectValue
-) => {
+export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: ISelectValue) => {
   if (!data) {
     return null;
   }
@@ -134,7 +131,7 @@ export const prepareDataToRender = (
   };
 };
 
-export const preparedDataDetailsToRender = (data: Partial<LedgerCustomerItem>) => {
+export const prepareDetailsToRender = (data: Partial<ICustomerData>) => {
   if (!data) {
     return null;
   }
@@ -151,8 +148,8 @@ export const preparedDataDetailsToRender = (data: Partial<LedgerCustomerItem>) =
   };
 };
 
-export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem):
-  RepaymentDebitCardsItemPrepared => {
+export const prepareRepaymentDebitCardsToRender = (data: IRepaymentDebitCardData):
+  IRepaymentDebitCard => {
   if (!data) {
     return null;
   }
@@ -187,7 +184,7 @@ export const prepareRepaymentDebitCardsToRender = (data: RepaymentDebitCardsItem
 };
 
 export const prepareFormDataRepaymentDebitCardToSend =
-  (data: Partial<RepaymentDebitCardsItemFormValues>): Partial<RepaymentDebitCardsItem> => {
+  (data: Partial<IRepaymentDebitCardFormValues>): Partial<IRepaymentDebitCardData> => {
     const {
       panAlias,
       panMasked,
@@ -210,8 +207,8 @@ export const prepareFormDataRepaymentDebitCardToSend =
     };
   };
 
-export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebitsItem):
-  RepaymentDirectDebitsItemPrepared => {
+export const prepareRepaymentDirectDebitsToRender = (data: IRepaymentDirectDebitData):
+  IRepaymentDirectDebit => {
   if (!data) {
     return null;
   }
@@ -244,7 +241,7 @@ export const prepareRepaymentDirectDebitsToRender = (data: RepaymentDirectDebits
 };
 
 export const prepareFormDataRepaymentDirectDebitToSend =
-  (data: Partial<RepaymentDirectDebitsItemFormValues>): Partial<RepaymentDirectDebitsItem> => {
+  (data: Partial<IRepaymentDirectDebitFormValues>): Partial<IRepaymentDirectDebitData> => {
     const {
       account,
       accountExt,

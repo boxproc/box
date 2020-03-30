@@ -8,10 +8,10 @@ import { formNamesConst } from 'consts';
 
 import {
   createLoadingSelector,
-  handleConvertTransactionToLoan,
+  handleConvertTrToLoan,
   handleGetProductDetails,
   handleIllustrateLoanProduct,
-  LedgerTransactionsActionTypes,
+  isConvertingTrToLoanSelector,
   ProductIllustrationActionTypes,
   ProductsActionTypes,
   resetProductIllustration,
@@ -31,14 +31,10 @@ const loadingSelectorIllustration = createLoadingSelector([
   ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_LOAN,
 ]);
 
-const loadingSelectorConvertion = createLoadingSelector([
-  LedgerTransactionsActionTypes.CONVERT_TRANSACTION_TO_LOAN,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
   isLoading: loadingSelector(state),
   isIllustrationLoading: loadingSelectorIllustration(state),
-  isConversionLoading: loadingSelectorConvertion(state),
+  isConversionLoading: isConvertingTrToLoanSelector(state),
   loanDetails: selectProductLoanDetails(state),
   productIllustrationData: selectProductLoanIllustration(state),
   loanProductsOptions: selectInstitutionLoanProductsOptions(state),
@@ -49,7 +45,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     illustrateLoanProduct: handleIllustrateLoanProduct,
     getProductDetails: handleGetProductDetails,
-    convertTransactionToLoan: handleConvertTransactionToLoan,
+    convertTransactionToLoan: handleConvertTrToLoan,
     resetProductIllustration,
   },
   dispatch

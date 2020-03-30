@@ -13,13 +13,13 @@ import { iconNamesConst, modalNamesConst } from 'consts';
 import PageTemplate from 'containers/PageTemplate';
 
 import {
-  HandleFilterLedgerCustomersById,
-  HandleFilterLedgerTransactionsById,
   IStatement,
   THandleDownloadStatement,
   THandleFilterAccountsById,
   THandleFilterCardsById,
+  THandleFilterCustomersById,
   THandleFilterStatements,
+  THandleFilterTransactionsById,
   TResetStatements,
   TSetActiveItemId,
 } from 'store';
@@ -31,9 +31,9 @@ interface IStatements {
   currentId: number;
   filterAccountsById: THandleFilterAccountsById;
   filterCardsById: THandleFilterCardsById;
-  filterCustomersById: HandleFilterLedgerCustomersById;
+  filterCustomersById: THandleFilterCustomersById;
   filterStatements: THandleFilterStatements;
-  filterTransactionsById: HandleFilterLedgerTransactionsById;
+  filterTransactionsById: THandleFilterTransactionsById;
   downloadStatement: THandleDownloadStatement;
   institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;

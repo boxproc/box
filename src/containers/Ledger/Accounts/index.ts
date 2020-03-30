@@ -14,9 +14,9 @@ import {
   handleAddProductOverride,
   handleFilterAccounts,
   handleFilterByIdCards,
-  handleFilterByIdLedgerCustomers,
-  handleFilterByIdLedgerTransactions,
+  handleFilterByIdCustomers,
   handleFilterByIdStatements,
+  handleFilterByIdTransactions,
   handleSetActiveItemId,
   isAccountLoadingSelector,
   isReadOnlySelector,
@@ -43,9 +43,9 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAccounts: handleFilterAccounts,
-    filterCustomersById: handleFilterByIdLedgerCustomers,
+    filterCustomersById: handleFilterByIdCustomers,
     filterCardsById: handleFilterByIdCards,
-    filterTransactionsById: handleFilterByIdLedgerTransactions,
+    filterTransactionsById: handleFilterByIdTransactions,
     filterStatementsById: handleFilterByIdStatements,
     addProductOverride: handleAddProductOverride,
     setActiveItemId: handleSetActiveItemId,

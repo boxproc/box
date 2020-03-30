@@ -1,5 +1,5 @@
 import { apiClientService } from 'services';
-import { LedgerId } from '../customers';
+import { TLedgerId } from '../customers';
 import { ICardIdsToSend, ICardsFilterToSend } from './types';
 
 /**
@@ -25,5 +25,5 @@ export const changeCardStatus = (data: ICardIdsToSend) =>
 /**
  * Filter cards bi ID API
  */
-export const filterCardsById = (data: LedgerId) =>
+export const filterCardsById = (data: TLedgerId) =>
   apiClientService.post('ui/ledger/cards/get', { data });

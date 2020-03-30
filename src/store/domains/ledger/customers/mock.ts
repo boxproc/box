@@ -1,8 +1,8 @@
-import { LedgerCustomerItems } from './types';
+import { ICustomersData } from './types';
 
 import { IResponseStatus } from 'types';
 
-export const ledgerCustomersFilteredItems: LedgerCustomerItems = {
+export const customersMock: ICustomersData = {
   customers: [
     {
       id: 1,
@@ -51,7 +51,7 @@ export const ledgerCustomersFilteredItems: LedgerCustomerItems = {
   ],
 };
 
-export const successResponseStatus: IResponseStatus = {
+export const successResponseMock: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

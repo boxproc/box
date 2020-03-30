@@ -9,12 +9,12 @@ import IllustrationLoanTable from './IllustrationLoanTable';
 import LoanIllustrationForm from './LoanIllustrationForm';
 
 import {
-  HandleConvertTransactionToLoan,
   HandleGetProductDetails,
   HandleIllustrateLoanProduct,
   IllustrationProductLoan,
   LoanProductItem,
   ResetProductIllustration,
+  THandleConvertTrToLoan,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -23,7 +23,7 @@ interface ILoanIllustration {
   productIllustrationData: ImmutableArray<IllustrationProductLoan>;
   loanProductsOptions: Array<ISelectValue>;
   illustrateLoanProduct: HandleIllustrateLoanProduct;
-  convertTransactionToLoan: HandleConvertTransactionToLoan;
+  convertTransactionToLoan: THandleConvertTrToLoan;
   getProductDetails: HandleGetProductDetails;
   resetProductIllustration: ResetProductIllustration;
   loanDetails: Partial<LoanProductItem>;

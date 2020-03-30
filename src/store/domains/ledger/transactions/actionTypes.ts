@@ -1,77 +1,81 @@
 import { IResponseStatus, TApiResponse } from 'types';
-import { LedgerTransactionItems } from './types';
+import { ITransactionsData } from './types';
 
 export enum ActionTypeKeys {
-  FILTER_LEDGER_TRANSACTIONS = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS',
-  FILTER_LEDGER_TRANSACTIONS_FULFILLED = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_FULFILLED',
-  FILTER_LEDGER_TRANSACTIONS_REJECTED = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_REJECTED',
+  FILTER_TRANSACTIONS = 'transactions/FILTER_TRANSACTIONS',
+  FILTER_TRANSACTIONS_FULFILLED = 'transactions/FILTER_TRANSACTIONS_FULFILLED',
+  FILTER_TRANSACTIONS_REJECTED = 'transactions/FILTER_TRANSACTIONS_REJECTED',
 
-  FILTER_LEDGER_TRANSACTIONS_BY_ID = 'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_BY_ID',
-  FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED =
-  'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED',
-  FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED =
-  'ledger/transactions/FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED',
+  FILTER_TRANSACTIONS_BY_ID = 'transactions/FILTER_TRANSACTIONS_BY_ID',
+  FILTER_TRANSACTIONS_BY_ID_FULFILLED = 'transactions/FILTER_TRANSACTIONS_BY_ID_FULFILLED',
+  FILTER_TRANSACTIONS_BY_ID_REJECTED = 'transactions/FILTER_TRANSACTIONS_BY_ID_REJECTED',
 
-  CONVERT_TRANSACTION_TO_LOAN = 'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN',
-  CONVERT_TRANSACTION_TO_LOAN_FULFILLED =
-  'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN_FULFILLED',
-  CONVERT_TRANSACTION_TO_LOAN_REJECTED =
-  'ledger/transactions/CONVERT_TRANSACTION_TO_LOAN_REJECTED',
+  CONVERT_TRANSACTION_TO_LOAN = 'transactions/CONVERT_TRANSACTION_TO_LOAN',
+  CONVERT_TRANSACTION_TO_LOAN_FULFILLED = 'transactions/CONVERT_TRANSACTION_TO_LOAN_FULFILLED',
+  CONVERT_TRANSACTION_TO_LOAN_REJECTED = 'transactions/CONVERT_TRANSACTION_TO_LOAN_REJECTED',
 
-  RESET_TRANSACTIONS = 'ledger/transactions/RESET_TRANSACTIONS',
+  RESET_TRANSACTIONS = 'transactions/RESET_TRANSACTIONS',
 }
 
-export interface FilterLedgerTransactionsAction {
+/** Filter transactions action interfaces */
+
+export interface IFilterTransactionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS;
 }
 
-export interface FilterLedgerTransactionsFulfilledAction {
-  readonly payload: LedgerTransactionItems;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_FULFILLED;
+export interface IFilterTransactionsFulfilledAction {
+  readonly payload: ITransactionsData;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS_FULFILLED;
 }
 
-export interface FilterLedgerTransactionsRejectedAction {
+export interface IFilterTransactionsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS_REJECTED;
 }
 
-export interface ResetTransactionsAction {
+/** Reset transactions action interfaces */
+
+export interface IResetTransactionsAction {
   readonly type: ActionTypeKeys.RESET_TRANSACTIONS;
 }
 
-export interface FilterLedgerTransactionsByIdAction {
+/** Filter transactions by ID action interfaces */
+
+export interface IFilterTransactionsByIdAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID;
 }
 
-export interface FilterLedgerTransactionsByIdFulfilledAction {
-  readonly payload: LedgerTransactionItems;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_FULFILLED;
+export interface IFilterTransactionsByIdFulfilledAction {
+  readonly payload: ITransactionsData;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID_FULFILLED;
 }
 
-export interface FilterLedgerTransactionsByIdRejectedAction {
+export interface IFilterTransactionsByIdRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_TRANSACTIONS_BY_ID_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID_REJECTED;
 }
 
-export interface ConvertTransactionToLoanAction {
+/** Convert transaction to loan action interfaces */
+
+export interface IConvertTrToLoanAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN;
 }
 
-export interface ConvertTransactionToLoanFulfilledAction {
+export interface IConvertTrToLoanFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_FULFILLED;
 }
 
-export interface ConvertTransactionToLoanRejectedAction {
+export interface IConvertTrToLoanRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_REJECTED;
 }
 
-export type LedgerTransactionsActionTypes =
-  | FilterLedgerTransactionsFulfilledAction
-  | FilterLedgerTransactionsByIdFulfilledAction
-  | ConvertTransactionToLoanFulfilledAction
-  | ResetTransactionsAction;
+export type TTransactionsActionTypes =
+  | IFilterTransactionsFulfilledAction
+  | IFilterTransactionsByIdFulfilledAction
+  | IConvertTrToLoanFulfilledAction
+  | IResetTransactionsAction;
