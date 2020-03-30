@@ -8,33 +8,28 @@ import InfoCardModal from './InfoCardModal';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
-  handleActivateLedgerCard,
+  currentCardSelector,
+  currentCardStatusSelector,
+  handleActivateCard,
+  isActivatingCardSelector,
   isReadOnlySelector,
-  LedgerCardsActionTypes,
-  selectCurrentCardStatus,
-  selectLedgerCardValues,
   StoreState,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  LedgerCardsActionTypes.ACTIVATE_LEDGER_CARD,
-]);
 
 const dirty = isDirty(formNamesConst.CHANGE_CARD_STATUS);
 
 const mapStateToProps = (state: StoreState) => ({
   isFormDirty: dirty(state),
-  isLoading: loadingSelector(state),
-  currentCard: selectLedgerCardValues(state),
-  currentStatus: selectCurrentCardStatus(state),
+  isLoading: isActivatingCardSelector(state),
+  currentCard: currentCardSelector(state),
+  currentStatus: currentCardStatusSelector(state),
   currentCardId: activeItemIdSelector(state),
   isReadOnly: isReadOnlySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    activateCard: handleActivateLedgerCard,
+    activateCard: handleActivateCard,
   },
   dispatch
 );

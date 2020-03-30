@@ -1,93 +1,103 @@
 import { IResponseStatus, TApiResponse } from 'types';
-import { LedgerCardItems } from './types';
+import { ICardsData } from './types';
 
 export enum ActionTypeKeys {
-  FILTER_LEDGER_CARDS = 'ledger/cards/FILTER_LEDGER_CARDS',
-  FILTER_LEDGER_CARDS_FULFILLED = 'ledger/cards/FILTER_LEDGER_CARDS_FULFILLED',
-  FILTER_LEDGER_CARDS_REJECTED = 'ledger/cards/FILTER_LEDGER_CARDS_REJECTED',
+  FILTER_CARDS = 'ledger/cards/FILTER_CARDS',
+  FILTER_CARDS_FULFILLED = 'ledger/cards/FILTER_CARDS_FULFILLED',
+  FILTER_CARDS_REJECTED = 'ledger/cards/FILTER_CARDS_REJECTED',
 
-  ACTIVATE_LEDGER_CARD = 'ledger/accounts/ACTIVATE_LEDGER_CARD',
-  ACTIVATE_LEDGER_CARD_FULFILLED = 'ledger/accounts/ACTIVATE_LEDGER_CARD_FULFILLED',
-  ACTIVATE_LEDGER_CARD_REJECTED = 'ledger/accounts/ACTIVATE_LEDGER_CARD_REJECTED',
+  ACTIVATE_CARD = 'ledger/accounts/ACTIVATE_CARD',
+  ACTIVATE_CARD_FULFILLED = 'ledger/accounts/ACTIVATE_CARD_FULFILLED',
+  ACTIVATE_CARD_REJECTED = 'ledger/accounts/ACTIVATE_CARD_REJECTED',
 
-  CHANGE_LEDGER_CARD_STATUS = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS',
-  CHANGE_LEDGER_CARD_STATUS_FULFILLED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_FULFILLED',
-  CHANGE_LEDGER_CARD_STATUS_REJECTED = 'ledger/accounts/CHANGE_LEDGER_CARD_STATUS_REJECTED',
+  CHANGE_CARD_STATUS = 'ledger/accounts/CHANGE_CARD_STATUS',
+  CHANGE_CARD_STATUS_FULFILLED = 'ledger/accounts/CHANGE_CARD_STATUS_FULFILLED',
+  CHANGE_CARD_STATUS_REJECTED = 'ledger/accounts/CHANGE_CARD_STATUS_REJECTED',
 
-  FILTER_LEDGER_CARDS_BY_ID = 'ledger/cards/FILTER_LEDGER_CARDS_BY_ID',
-  FILTER_LEDGER_CARDS_BY_ID_FULFILLED = 'ledger/cards/FILTER_LEDGER_CARDS_BY_ID_FULFILLED',
-  FILTER_LEDGER_CARDS_BY_ID_REJECTED = 'ledger/cards/FILTER_LEDGER_CARDS_BY_ID_REJECTED',
+  FILTER_CARDS_BY_ID = 'ledger/cards/FILTER_CARDS_BY_ID',
+  FILTER_CARDS_BY_ID_FULFILLED = 'ledger/cards/FILTER_CARDS_BY_ID_FULFILLED',
+  FILTER_CARDS_BY_ID_REJECTED = 'ledger/cards/FILTER_CARDS_BY_ID_REJECTED',
 
   RESET_CARDS = 'ledger/accounts/RESET_CARDS',
 }
 
-export interface FilterLedgerCardsAction {
+/** Filter cards action interfaces */
+
+export interface IFilterCardsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS;
+  readonly type: ActionTypeKeys.FILTER_CARDS;
 }
 
-export interface FilterLedgerCardsFulfilledAction {
-  readonly payload: LedgerCardItems;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_FULFILLED;
+export interface IFilterCardsFulfilledAction {
+  readonly payload: ICardsData;
+  readonly type: ActionTypeKeys.FILTER_CARDS_FULFILLED;
 }
 
-export interface FilterLedgerCardsRejectedAction {
+export interface IFilterCardsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_CARDS_REJECTED;
 }
 
-export interface ActivateLedgerCardAction {
+/** Activate card action interfaces */
+
+export interface IActivateCardAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD;
+  readonly type: ActionTypeKeys.ACTIVATE_CARD;
 }
 
-export interface ActivateLedgerCardFulfilledAction {
+export interface IActivateCardFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD_FULFILLED;
+  readonly type: ActionTypeKeys.ACTIVATE_CARD_FULFILLED;
 }
 
-export interface ActivateLedgerCardRejectedAction {
+export interface IActivateCardRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ACTIVATE_LEDGER_CARD_REJECTED;
+  readonly type: ActionTypeKeys.ACTIVATE_CARD_REJECTED;
 }
 
-export interface ChangeLedgerCardStatusAction {
+/** Change card status action interfaces */
+
+export interface IChangeCardStatusAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS;
+  readonly type: ActionTypeKeys.CHANGE_CARD_STATUS;
 }
 
-export interface ChangeLedgerCardStatusFulfilledAction {
+export interface IChangeCardStatusFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_FULFILLED;
+  readonly type: ActionTypeKeys.CHANGE_CARD_STATUS_FULFILLED;
 }
 
-export interface ChangeLedgerCardStatusRejectedAction {
+export interface IChangeCardStatusRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS_REJECTED;
+  readonly type: ActionTypeKeys.CHANGE_CARD_STATUS_REJECTED;
 }
 
-export interface FilterLedgerCardsByIdAction {
+/** Filter cards bi ID action interfaces */
+
+export interface IFilterCardsByIdAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID;
+  readonly type: ActionTypeKeys.FILTER_CARDS_BY_ID;
 }
 
-export interface FilterLedgerCardsByIdFulfilledAction {
-  readonly payload: LedgerCardItems;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_FULFILLED;
+export interface IFilterCardsByIdFulfilledAction {
+  readonly payload: ICardsData;
+  readonly type: ActionTypeKeys.FILTER_CARDS_BY_ID_FULFILLED;
 }
 
-export interface FilterLedgerCardsByIdRejectedAction {
+export interface IFilterCardsByIdRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_CARDS_BY_ID_REJECTED;
 }
 
-export interface ResetCarsAction {
+/** Reset cards action interfaces */
+
+export interface IResetCarsAction {
   readonly type: ActionTypeKeys.RESET_CARDS;
 }
 
-export type LedgerCardsActionTypes =
-  | ActivateLedgerCardFulfilledAction
-  | FilterLedgerCardsFulfilledAction
-  | ChangeLedgerCardStatusFulfilledAction
-  | FilterLedgerCardsByIdFulfilledAction
-  | ResetCarsAction;
+export type TCardsActionTypes =
+  | IActivateCardFulfilledAction
+  | IFilterCardsFulfilledAction
+  | IChangeCardStatusFulfilledAction
+  | IFilterCardsByIdFulfilledAction
+  | IResetCarsAction;

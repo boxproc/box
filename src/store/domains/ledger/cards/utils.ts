@@ -1,34 +1,33 @@
 import {
-  LedgerCardIds,
-  LedgerCardIdsPrepared,
-  LedgerCardItem,
-  LedgerCardItemPrepared,
-  LedgerCardsFilterPrepared,
+  ICard,
+  ICardData,
+  ICardIds,
+  ICardIdsToSend,
+  ICardsFilter,
 } from './types';
 
-export const prepareValuesToRender = (values: Partial<LedgerCardItem>):
-  LedgerCardItemPrepared => {
-  if (!values) {
+export const prepareDataToRender = (data: Partial<ICardData>): ICard => {
+  if (!data) {
     return null;
   }
 
   return {
-    id: values.id,
-    accountId: values.account_id,
-    customerId: values.customer_id,
-    panAlias: values.pan_alias,
-    panMasked: values.pan_masked,
-    expiryDate: values.expiry_date,
-    status: values.card_status_name,
+    id: data.id,
+    accountId: data.account_id,
+    customerId: data.customer_id,
+    panAlias: data.pan_alias,
+    panMasked: data.pan_masked,
+    expiryDate: data.expiry_date,
+    status: data.card_status_name,
   };
 };
 
-export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>) => {
-  if (!params) {
+export const prepareFilterToSend = (data: Partial<ICardsFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { cardId, accountId, panAlias, customerId, institutionId } = params;
+  const { cardId, accountId, panAlias, customerId, institutionId } = data;
 
   return {
     id: cardId ? cardId : null,
@@ -39,7 +38,7 @@ export const preparedFilterToSend = (params: Partial<LedgerCardsFilterPrepared>)
   };
 };
 
-export const prepareLedgerCartIds = (ids: LedgerCardIds): LedgerCardIdsPrepared => {
+export const prepareCardIds = (ids: ICardIds): ICardIdsToSend => {
   if (!ids) {
     return null;
   }

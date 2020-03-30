@@ -6,81 +6,66 @@ import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts'
 import { openModal, setIsOpenFilter } from 'store';
 import {
   ActionTypeKeys,
-  ActivateLedgerCardAction,
-  ChangeLedgerCardStatusAction,
-  FilterLedgerCardsAction,
-  FilterLedgerCardsByIdAction,
+  IActivateCardAction,
+  IChangeCardStatusAction,
+  IFilterCardsAction,
+  IFilterCardsByIdAction,
 } from './actionTypes';
 import * as api from './api';
-import { LedgerCardIds, LedgerCardIdsPrepared, LedgerCardsFilter } from './types';
-import { preparedFilterToSend, prepareLedgerCartIds } from './utils';
+import { ICardIds, ICardIdsToSend, ICardsFilterToSend } from './types';
+import { prepareCardIds, prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 import { LedgerId } from '../customers';
 
-export type FilterLedgerCards = (params: Partial<LedgerCardsFilter>) =>
-  FilterLedgerCardsAction;
-export type HandleFilterLedgerCards = () => Thunk<void>;
+/**
+ * Filter cards action
+ */
 
-export type ActivateLedgerCard = (cardId: number) => ActivateLedgerCardAction;
-export type HandleActivateLedgerCard = (cardId: number) => Thunk<void>;
+export type TFilterCards = (data: Partial<ICardsFilterToSend>) => IFilterCardsAction;
+export type THandleFilterCards = () => Thunk<void>;
 
-export type ChangeLedgerCardStatus = (ids: LedgerCardIdsPrepared) => ChangeLedgerCardStatusAction;
-export type HandleChangeLedgerCardStatus = (ids: LedgerCardIds) => Thunk<void>;
-
-export type FilterLedgerCardsById = (id: LedgerId) => FilterLedgerCardsByIdAction;
-export type HandleFilterLedgerCardsById = (id: LedgerId) => Thunk<void>;
-
-export type ResetCards = () => void;
-
-export const filterLedgerCards: FilterLedgerCards = filter => ({
-  type: ActionTypeKeys.FILTER_LEDGER_CARDS,
-  payload: api.filterLedgerCards(filter),
+export const filterCards: TFilterCards = data => ({
+  type: ActionTypeKeys.FILTER_CARDS,
+  payload: api.filterCards(data),
 });
 
-export const activateLedgerCard: ActivateLedgerCard = cardId => ({
-  type: ActionTypeKeys.ACTIVATE_LEDGER_CARD,
-  payload: api.activateLedgerCard(cardId),
-});
-
-export const changeLedgerCardStatus: ChangeLedgerCardStatus = ids => ({
-  type: ActionTypeKeys.CHANGE_LEDGER_CARD_STATUS,
-  payload: api.changeLedgerCardStatus(ids),
-});
-
-export const filterLedgerCardsById: FilterLedgerCardsById = data => ({
-  type: ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID,
-  payload: api.filterLedgerCardsById(data),
-});
-
-export const resetCards: ResetCards = () => ({
-  type: ActionTypeKeys.RESET_CARDS,
-});
-
-export const handleFilterLedgerCards: HandleFilterLedgerCards = () =>
+export const handleFilterCards: THandleFilterCards = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterLedgerCards(preparedValues));
+        if (preparedData) {
+          await dispatch(filterCards(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleActivateLedgerCard: HandleActivateLedgerCard = cardId =>
+/**
+ * Activate card action
+ */
+
+export type TActivateCard = (cardId: number) => IActivateCardAction;
+export type THandleActivateCard = (cardId: number) => Thunk<void>;
+
+export const activateCard: TActivateCard = cardId => ({
+  type: ActionTypeKeys.ACTIVATE_CARD,
+  payload: api.activateCard(cardId),
+});
+
+export const handleActivateCard: THandleActivateCard = cardId =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(activateLedgerCard(cardId));
-        await dispatch(handleFilterLedgerCards());
+        await dispatch(activateCard(cardId));
+        await dispatch(handleFilterCards());
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
@@ -91,20 +76,44 @@ export const handleActivateLedgerCard: HandleActivateLedgerCard = cardId =>
     );
   };
 
-export const handleChangeLedgerCardStatus: HandleChangeLedgerCardStatus = ids =>
+/**
+ * Change card status action
+ */
+
+export type TChangeCardStatus = (ids: ICardIdsToSend) => IChangeCardStatusAction;
+export type THandleChangeCardStatus = (ids: ICardIds) => Thunk<void>;
+
+export const changeCardStatus: TChangeCardStatus = ids => ({
+  type: ActionTypeKeys.CHANGE_CARD_STATUS,
+  payload: api.changeCardStatus(ids),
+});
+
+export const handleChangeCardStatus: THandleChangeCardStatus = ids =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const prepared = prepareLedgerCartIds(ids);
+        const preparedData = prepareCardIds(ids);
 
-        await dispatch(changeLedgerCardStatus(prepared));
-        await dispatch(handleFilterLedgerCards());
+        await dispatch(changeCardStatus(preparedData));
+        await dispatch(handleFilterCards());
       },
       dispatch
     );
   };
 
-export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
+/**
+ * Filter cards by ID action
+ */
+
+export type TFilterCardsById = (id: LedgerId) => IFilterCardsByIdAction;
+export type THandleFilterCardsById = (id: LedgerId) => Thunk<void>;
+
+export const filterCardsById: TFilterCardsById = data => ({
+  type: ActionTypeKeys.FILTER_CARDS_BY_ID,
+  payload: api.filterCardsById(data),
+});
+
+export const handleFilterByIdCards: THandleFilterCardsById = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -113,9 +122,19 @@ export const handleFilterByIdLedgerCards: HandleFilterLedgerCardsById = id =>
 
         cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_CARDS}-${loggedInUsername}`);
         dispatch(push(`${basePath}${uiItemsConst.LEDGER_CARDS}`));
-        await dispatch(filterLedgerCardsById(id));
+        await dispatch(filterCardsById(id));
         dispatch(setIsOpenFilter(false));
       },
       dispatch
     );
   };
+
+/**
+ * Reset cards action
+ */
+
+export type TResetCards = () => void;
+
+export const resetCards: TResetCards = () => ({
+  type: ActionTypeKeys.RESET_CARDS,
+});

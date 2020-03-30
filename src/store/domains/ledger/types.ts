@@ -1,5 +1,5 @@
 import { IAccountsState } from './accounts';
-import { LedgerCardsState } from './cards';
+import { ICardsState } from './cards';
 import { LedgerCustomersState } from './customers';
 import { LedgerLimitAdjustmentState } from './limitAdjustment';
 import { LedgerManualTransactionState } from './manualTransaction';
@@ -12,7 +12,7 @@ export interface LedgerState {
   customers: LedgerCustomersState;
   transactions: LedgerTransactionsState;
   statements: IStatementsState;
-  cards: LedgerCardsState;
+  cards: ICardsState;
   manualTransaction: LedgerManualTransactionState;
   limitAdjustment: LedgerLimitAdjustmentState;
   settleTransaction: LedgerSettleTransactionState;

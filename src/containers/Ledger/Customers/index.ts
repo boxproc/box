@@ -8,7 +8,7 @@ import {
   createLoadingSelector,
   handleDeleteLedgerCustomer,
   handleFilterByIdAccounts,
-  handleFilterByIdLedgerCards,
+  handleFilterByIdCards,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
   handleFilterLedgerCustomers,
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCustomers: handleFilterLedgerCustomers,
     deleteCustomer: handleDeleteLedgerCustomer,
-    filterCardsById: handleFilterByIdLedgerCards,
+    filterCardsById: handleFilterByIdCards,
     filterTransactionsById: handleFilterByIdLedgerTransactions,
     filterStatementsById: handleFilterByIdStatements,
     filterAccountsById: handleFilterByIdAccounts,

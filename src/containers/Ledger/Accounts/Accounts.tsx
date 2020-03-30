@@ -10,12 +10,12 @@ import { tableColumns } from './components';
 import { AccountsFilter } from './forms';
 
 import {
-  HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
   IAccount,
   THandleAddProductOverride,
   THandleFilterAccounts,
+  THandleFilterCardsById,
   THandleFilterStatementsById,
   THandleSetActiveItemId,
   TResetAccounts,
@@ -31,7 +31,7 @@ interface IAccounts extends IWithModal {
   currentCurrencyCode: number;
   currentId: number;
   filterAccounts: THandleFilterAccounts;
-  filterCardsById: HandleFilterLedgerCardsById;
+  filterCardsById: THandleFilterCardsById;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterStatementsById: THandleFilterStatementsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;

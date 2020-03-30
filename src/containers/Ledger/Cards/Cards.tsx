@@ -8,27 +8,27 @@ import { tableColumns } from './components';
 import { CardsFilter } from './forms';
 
 import {
-  HandleFilterLedgerCards,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
-  LedgerCardItemPrepared,
-  ResetCards,
+  ICard,
   THandleFilterAccountsById,
+  THandleFilterCards,
   THandleFilterStatementsById,
+  TResetCards,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
 interface ICards {
   currentId: number;
-  cards: ImmutableArray<LedgerCardItemPrepared>;
-  filterCards: HandleFilterLedgerCards;
+  cards: ImmutableArray<ICard>;
+  filterCards: THandleFilterCards;
   institutionsOptions: Array<ISelectValue>;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterAccountsById: THandleFilterAccountsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;
   filterStatementsById: THandleFilterStatementsById;
-  resetCards: ResetCards;
+  resetCards: TResetCards;
   isLoading: boolean;
 }
 

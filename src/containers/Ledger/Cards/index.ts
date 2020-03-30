@@ -5,33 +5,28 @@ import Cards from './Cards';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
+  cardsSelector,
   handleFilterByIdAccounts,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
-  handleFilterLedgerCards,
-  LedgerCardsActionTypes,
+  handleFilterCards,
+  isLoadingCardsSelector,
   resetCards,
-  selectLedgerCards,
   StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerCardsActionTypes.FILTER_LEDGER_CARDS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  cards: selectLedgerCards(state),
+  isLoading: isLoadingCardsSelector(state),
+  cards: cardsSelector(state),
   currentId: activeItemIdSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterCards: handleFilterLedgerCards,
+    filterCards: handleFilterCards,
     filterAccountsById: handleFilterByIdAccounts,
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterStatementsById: handleFilterByIdStatements,

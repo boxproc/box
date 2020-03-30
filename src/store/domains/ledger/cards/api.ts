@@ -1,19 +1,29 @@
 import { apiClientService } from 'services';
-
 import { LedgerId } from '../customers';
-import { LedgerCardIdsPrepared, LedgerCardsFilter } from './types';
+import { ICardIdsToSend, ICardsFilterToSend } from './types';
 
-export const filterLedgerCards = (data: Partial<LedgerCardsFilter>) =>
+/**
+ * Filter cards API
+ */
+export const filterCards = (data: Partial<ICardsFilterToSend>) =>
   apiClientService.post('ui/ledger/cards/get', { data });
 
-export const activateLedgerCard = (cardId: number) =>
+/**
+ * Activate card API
+ */
+export const activateCard = (cardId: number) =>
   apiClientService.post('ui/ledger/cards/activate_card', {
     data: { card_id: cardId },
   });
 
-export const changeLedgerCardStatus = (data: LedgerCardIdsPrepared) =>
+/**
+ * Change card status API
+ */
+export const changeCardStatus = (data: ICardIdsToSend) =>
   apiClientService.post('ui/ledger/cards/change_status', { data });
 
-export const filterLedgerCardsById = (data: LedgerId) =>
-  // throttleUtil.getDataAfter(ledgerCustomersFilteredItems, 500);
+/**
+ * Filter cards bi ID API
+ */
+export const filterCardsById = (data: LedgerId) =>
   apiClientService.post('ui/ledger/cards/get', { data });

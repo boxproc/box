@@ -9,12 +9,12 @@ import { CustomersFilter } from './forms';
 
 import {
   HandleDeleteLedgerCustomer,
-  HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomers,
   HandleFilterLedgerTransactionsById,
   LedgerCustomerItemPrepared,
   ResetCustomers,
   THandleFilterAccountsById,
+  THandleFilterCardsById,
   THandleFilterStatementsById,
 } from 'store';
 
@@ -26,7 +26,7 @@ interface ICustomers {
   customers: ImmutableArray<LedgerCustomerItemPrepared>;
   deleteCustomer: HandleDeleteLedgerCustomer;
   filterAccountsById: THandleFilterAccountsById;
-  filterCardsById: HandleFilterLedgerCardsById;
+  filterCardsById: THandleFilterCardsById;
   filterCustomers: HandleFilterLedgerCustomers;
   filterStatementsById: THandleFilterStatementsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;

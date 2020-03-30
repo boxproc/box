@@ -9,11 +9,11 @@ import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
 
 import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
 
-import { HandleActivateLedgerCard, LedgerCardItemPrepared } from 'store';
+import { ICard, THandleActivateCard } from 'store';
 
 interface IInfoAccountModal extends IWithModal {
-  currentCard: Partial<LedgerCardItemPrepared>;
-  activateCard: HandleActivateLedgerCard;
+  currentCard: Partial<ICard>;
+  activateCard: THandleActivateCard;
   currentStatus: number;
   currentCardId: number;
   isFormDirty: boolean;

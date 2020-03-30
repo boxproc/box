@@ -13,7 +13,7 @@ import {
   currentAccProductOverrideIdSelector,
   handleAddProductOverride,
   handleFilterAccounts,
-  handleFilterByIdLedgerCards,
+  handleFilterByIdCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterAccounts: handleFilterAccounts,
     filterCustomersById: handleFilterByIdLedgerCustomers,
-    filterCardsById: handleFilterByIdLedgerCards,
+    filterCardsById: handleFilterByIdCards,
     filterTransactionsById: handleFilterByIdLedgerTransactions,
     filterStatementsById: handleFilterByIdStatements,
     addProductOverride: handleAddProductOverride,

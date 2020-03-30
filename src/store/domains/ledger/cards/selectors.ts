@@ -1,47 +1,65 @@
 import { createSelector } from 'reselect';
 
 import { StoreState } from 'store';
-
 import { cardStatusesOptionsSelector } from 'store/domains/administration';
+import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
-import { prepareValuesToRender } from './utils';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender } from './utils';
 
-export const selectDefaultLedgerCards = (state: StoreState) => state.ledger.cards.cards;
+export const defaultCardsSelector = (state: StoreState) => state.ledger.cards.cards;
 
-export const selectLedgerCards = createSelector(
-  selectDefaultLedgerCards,
-  items => items && items.map(item => prepareValuesToRender(item))
+export const cardsSelector = createSelector(
+  defaultCardsSelector,
+  data => data && data.map(el => prepareDataToRender(el))
 );
 
-export const selectLedgerCardValues = createSelector(
-  selectDefaultLedgerCards,
+export const currentCardSelector = createSelector(
+  defaultCardsSelector,
   activeItemIdSelector,
-  (cardsItems, currentId) => {
-    const current = cardsItems && cardsItems.find(item => item.id === currentId);
+  (cards, currentId) => {
+    const currentCard = cards && cards.find(card => card.id === currentId);
 
-    return prepareValuesToRender(current);
+    return prepareDataToRender(currentCard);
   }
 );
 
-export const selectCurrentCardStatusOption = createSelector(
-  selectDefaultLedgerCards,
+export const currentCardStatusOptionSelector = createSelector(
+  defaultCardsSelector,
   activeItemIdSelector,
   cardStatusesOptionsSelector,
-  (cardsItems, currentId, cardStatusesOptions) => {
-    const current = cardsItems && cardsItems.find(item => item.id === currentId);
+  (cards, currentId, cardStatusesOptions) => {
+    const currentCard = cards && cards.find(card => card.id === currentId);
 
     return {
-      status: cardStatusesOptions.find(status => status.value === current.card_status_id),
+      status: currentCard && cardStatusesOptions
+        .find(status => status.value === currentCard.card_status_id),
     };
   }
 );
 
-export const selectCurrentCardStatus = createSelector(
-  selectDefaultLedgerCards,
+export const currentCardStatusSelector = createSelector(
+  defaultCardsSelector,
   activeItemIdSelector,
-  (cardsItems, currentId) => {
-    const current = cardsItems && cardsItems.find(item => item.id === currentId);
+  (cards, currentId) => {
+    const currentCard = cards && cards.find(card => card.id === currentId);
 
-    return current.card_status_id;
+    return currentCard && currentCard.card_status_id;
   }
 );
+
+/**
+ * Cards loading selectors
+ */
+
+export const isLoadingCardsSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_CARDS,
+]);
+
+export const isChangingCardStatusSelector = createLoadingSelector([
+  ActionTypeKeys.CHANGE_CARD_STATUS,
+]);
+
+export const isActivatingCardSelector = createLoadingSelector([
+  ActionTypeKeys.ACTIVATE_CARD,
+]);

@@ -1,26 +1,25 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, LedgerCardsActionTypes } from './actionTypes';
-import { LedgerCardsState } from './types';
+import { ActionTypeKeys, TCardsActionTypes } from './actionTypes';
+import { ICardsState } from './types';
 
-export const ledgerCardsInitialState: ImmutableObject<LedgerCardsState> = Immutable({
+export const cardsInitialState: ImmutableObject<ICardsState> = Immutable({
   cards: Immutable([]),
 });
 
-const ledgerCardsReducer =
-  (state = ledgerCardsInitialState, action: LedgerCardsActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.FILTER_LEDGER_CARDS_FULFILLED:
-        return state.set('cards', action.payload.cards);
+const cardsReducer = (state = cardsInitialState, action: TCardsActionTypes) => {
+  switch (action.type) {
+    case ActionTypeKeys.FILTER_CARDS_FULFILLED:
+      return state.set('cards', action.payload.cards);
 
-      case ActionTypeKeys.FILTER_LEDGER_CARDS_BY_ID_FULFILLED:
-        return state.set('cards', action.payload.cards);
+    case ActionTypeKeys.FILTER_CARDS_BY_ID_FULFILLED:
+      return state.set('cards', action.payload.cards);
 
-      case ActionTypeKeys.RESET_CARDS:
-        return state = ledgerCardsInitialState;
+    case ActionTypeKeys.RESET_CARDS:
+      return state = cardsInitialState;
 
-      default: return state;
-    }
-  };
+    default: return state;
+  }
+};
 
-export default ledgerCardsReducer;
+export default cardsReducer;

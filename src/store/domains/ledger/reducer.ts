@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
 import accountsReducer from './accounts/reducer';
-import ledgerCardsReducer from './cards/reducer';
+import cardsReducer from './cards/reducer';
 import ledgerCustomersReducer from './customers/reducer';
 import ledgerLimitAdjustmentReducer from './limitAdjustment/reducer';
 import ledgerManualTransactionReducer from './manualTransaction/reducer';
@@ -11,7 +11,7 @@ import ledgerTransactionsReducer from './transactions/reducer';
 
 const ledgerReducer = combineReducers({
   accounts: accountsReducer,
-  cards: ledgerCardsReducer,
+  cards: cardsReducer,
   customers: ledgerCustomersReducer,
   limitAdjustment: ledgerLimitAdjustmentReducer,
   manualTransaction: ledgerManualTransactionReducer,

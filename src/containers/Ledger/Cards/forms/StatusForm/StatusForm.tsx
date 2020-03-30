@@ -7,12 +7,12 @@ import { Button, SelectField, withSpinner } from 'components';
 
 import { formNamesConst } from 'consts';
 
-import { HandleChangeLedgerCardStatus, THandleGetDictionaryCardStatuses } from 'store';
+import { THandleChangeCardStatus, THandleGetDictionaryCardStatuses } from 'store';
 import { ISelectValue } from 'types';
 
 interface IStatusForm {
   getDictionaryCardStatuses: THandleGetDictionaryCardStatuses;
-  changeCardStatus: HandleChangeLedgerCardStatus;
+  changeCardStatus: THandleChangeCardStatus;
   cardStatusesOptions: Array<ISelectValue>;
   isStatusesLoading: boolean;
   isReadOnly: boolean;

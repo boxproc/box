@@ -1,7 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-export interface LedgerCardItem {
+export interface ICardData {
   id: number;
   pan_alias: string;
   pan_masked: string;
@@ -12,11 +12,11 @@ export interface LedgerCardItem {
   card_status_name: string;
 }
 
-export interface LedgerCardItems {
-  cards: Array<LedgerCardItem>;
+export interface ICardsData {
+  cards: Array<ICardData>;
 }
 
-export interface LedgerCardItemPrepared {
+export interface ICard {
   id: number;
   panAlias: string;
   panMasked: string;
@@ -26,15 +26,19 @@ export interface LedgerCardItemPrepared {
   status: string;
 }
 
-export interface LedgerCardsFilter {
-  id: number;
-  pan_alias: string;
-  account_id: number;
-  customer_id: number;
-  institution_id: number | string;
+export interface ICardIds {
+  cardId: number;
+  cardStatusId: number | string;
 }
 
-export interface LedgerCardsFilterPrepared {
+export interface ICardIdsToSend {
+  card_id: number;
+  card_status_id: number | string;
+}
+
+/** Cards filter interfaces */
+
+export interface ICardsFilter {
   panAlias: string;
   cardId: number;
   accountId: number;
@@ -42,16 +46,15 @@ export interface LedgerCardsFilterPrepared {
   institutionId: ISelectValue;
 }
 
-export interface LedgerCardIds {
-  cardId: number;
-  cardStatusId: number | string;
+export interface ICardsFilterToSend {
+  id: number;
+  pan_alias: string;
+  account_id: number;
+  customer_id: number;
+  institution_id: number | string;
 }
 
-export interface LedgerCardIdsPrepared {
-  card_id: number;
-  card_status_id: number | string;
-}
-
-export interface LedgerCardsState {
-  cards: ImmutableArray<LedgerCardItem>;
+/** Cards state interface */
+export interface ICardsState {
+  cards: ImmutableArray<ICardData>;
 }
