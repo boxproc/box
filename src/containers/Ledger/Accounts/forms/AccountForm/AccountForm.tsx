@@ -17,10 +17,10 @@ import {
 } from 'containers/Ledger/Accounts/components';
 
 import {
-  HandleAddLedgerAccount,
-  HandleUpdateLedgerAccount,
+  IAccountDetails,
   InstitutionProductsItemPrepared,
-  LedgerAccountItemDetailsPrepared,
+  THandleAddAccount,
+  THandleUpdateAccount,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -29,11 +29,11 @@ import { dateUtil } from 'utils';
 interface IAccountForm extends ISpinner {
   institutionsOptions: Array<ISelectValue>;
   institutionProducts: ImmutableArray<InstitutionProductsItemPrepared>;
-  currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
+  currentAccAuxCounters: Partial<IAccountDetails>;
   currentProduct: ISelectValue;
   currentInstitution: ISelectValue;
-  updateLedgerAccount: HandleUpdateLedgerAccount;
-  addLedgerAccount: HandleAddLedgerAccount;
+  updateAccount: THandleUpdateAccount;
+  addAccount: THandleAddAccount;
   repaymentTypesOptions: Array<ISelectValue>;
   onCancel: () => void;
   isEditMode?: boolean;
@@ -45,12 +45,12 @@ type TAccountForm = IAccountForm & InjectedFormProps<{}, IAccountForm>;
 const AccountForm: React.FC<TAccountForm> = ({
   onCancel,
   handleSubmit,
-  updateLedgerAccount,
-  addLedgerAccount,
+  updateAccount,
+  addAccount,
   institutionsOptions,
   currentProduct,
   currentInstitution,
-  currentAccountAuxCounters,
+  currentAccAuxCounters,
   institutionProducts,
   repaymentTypesOptions,
   isEditMode,
@@ -76,8 +76,8 @@ const AccountForm: React.FC<TAccountForm> = ({
   );
 
   const submitFormAction = React.useMemo(
-    () => isEditMode ? updateLedgerAccount : addLedgerAccount,
-    [updateLedgerAccount, addLedgerAccount, isEditMode]
+    () => isEditMode ? updateAccount : addAccount,
+    [updateAccount, addAccount, isEditMode]
   );
 
   const currentProductType = React.useMemo(
@@ -182,7 +182,7 @@ const AccountForm: React.FC<TAccountForm> = ({
         <TabsPanel title="Aux Counters">
           <AuxiliaryCounters
             isEditMode={isEditMode}
-            currentAccountAuxCounters={currentAccountAuxCounters}
+            currentAccAuxCounters={currentAccAuxCounters}
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}

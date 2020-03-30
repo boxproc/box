@@ -6,7 +6,7 @@ import Cards from './Cards';
 import {
   activeItemIdSelector,
   createLoadingSelector,
-  handleFilterByIdLedgerAccounts,
+  handleFilterByIdAccounts,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
@@ -32,7 +32,7 @@ const mapStateToProps = (state: StoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCards: handleFilterLedgerCards,
-    filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterAccountsById: handleFilterByIdAccounts,
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterStatementsById: handleFilterByIdStatements,
     filterTransactionsById: handleFilterByIdLedgerTransactions,

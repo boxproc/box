@@ -1,49 +1,11 @@
 
 import { ImmutableArray } from 'seamless-immutable';
-
 import { ISelectValue } from 'types';
 
-export interface LedgerAccountId {
-  id: number;
-}
-
-export interface LedgerAccountItemPlain extends LedgerAccountId {
-  status: string | number;
-}
-
-export interface LedgerAccountItem extends LedgerAccountItemPlain {
-  account_alias: string;
+export interface IAccountData {
   account_alias_additional: string;
-  customer_id: number;
-  customer_first_name: string;
-  customer_last_name: string;
-  institution_id: number | string;
-  product_id: number | string;
-  product_override_id?: number;
-  date_of_product_override?: string;
-  product_name: string | number;
-  product_type: string;
-  num_of_installments: number;
-  num_of_interest_free_instllmnts: number;
-  balance_settled: number;
-  balance_available: number;
-  repayment_amount_due: number;
-  balance_limit: number;
-  balance_limit_shared: number;
+  account_alias: string;
   accrued_interest: number;
-  date_created: string;
-  date_closed: string;
-  last_cycle_date: string;
-  aux_counter_1: number;
-  aux_counter_2: number;
-  aux_counter_3: number;
-  aux_counter_1_description: string;
-  aux_counter_2_description: string;
-  aux_counter_3_description: string;
-  aux_counter_1_enabled: string;
-  aux_counter_2_enabled: string;
-  aux_counter_3_enabled: string;
-  amount_overdue: number;
   amount_overdue_1_cycle: number;
   amount_overdue_2_cycles: number;
   amount_overdue_3_cycles: number;
@@ -51,8 +13,34 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   amount_overdue_5_cycles: number;
   amount_overdue_6_cycles: number;
   amount_overdue_7_cycles: number;
-  total_overdue_amount: number;
-  number_of_times_overdue_total: number;
+  amount_overdue: number;
+  aux_counter_1_description: string;
+  aux_counter_1_enabled: string;
+  aux_counter_1: number;
+  aux_counter_2_description: string;
+  aux_counter_2_enabled: string;
+  aux_counter_2: number;
+  aux_counter_3_description: string;
+  aux_counter_3_enabled: string;
+  aux_counter_3: number;
+  balance_available: number;
+  balance_limit_shared: number;
+  balance_limit: number;
+  balance_settled: number;
+  currency_code: string;
+  currency_numeric_code: number;
+  customer_first_name: string;
+  customer_id: number;
+  customer_last_name: string;
+  date_closed: string;
+  date_created: string;
+  date_of_product_override?: string;
+  id: number;
+  institution_id: number | string;
+  last_cycle_date: string;
+  start_loan_date: string;
+  num_of_installments: number;
+  num_of_interest_free_instllmnts: number;
   number_of_times_overdue_1_cycle: number;
   number_of_times_overdue_2_cycle: number;
   number_of_times_overdue_3_cycle: number;
@@ -60,47 +48,27 @@ export interface LedgerAccountItem extends LedgerAccountItemPlain {
   number_of_times_overdue_5_cycle: number;
   number_of_times_overdue_6_cycle: number;
   number_of_times_overdue_7_cycle: number;
-  currency_code: string;
-  currency_numeric_code: number;
+  number_of_times_overdue_total: number;
+  product_id: number | string;
+  product_name: string | number;
+  product_override_id?: number;
+  product_type: string;
+  repayment_amount_due: number;
+  repayment_type: number | string;
   statement_cycle_repayment_day: number;
   status_name: string;
-  repayment_type: number | string;
+  status: string | number;
+  total_overdue_amount: number;
 }
 
-export interface LedgerAccountItems {
-  accounts: Array<LedgerAccountItem>;
+export interface IAccountsData {
+  accounts: Array<IAccountData>;
 }
 
-export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
+interface IAccountPlain {
   accountAlias: string;
   accountAliasAdditional: string;
-  customerId: number;
-  firstName: string;
-  lastName: string;
-  productId: number | string;
-  numOfInstallments: number;
-  numOfInterestFreeInstllmnts: number;
-  productOverrideId?: number;
-  dateOfProductOverride?: string;
-  productOverrideFlag?: boolean;
-  balanceSettled: number;
-  balanceAvailable: number;
-  repaymentAmountDue: number;
-  balanceLimit: number;
-  balanceLimitShared: number;
   accruedInterest: number;
-  dateCreated: string;
-  dateClosed: string;
-  lastCycleDate: string;
-  auxCounter1: number;
-  auxCounter2: number;
-  auxCounter3: number;
-  auxCounter1Description: string;
-  auxCounter2Description: string;
-  auxCounter3Description: string;
-  auxCounter1Enabled: boolean;
-  auxCounter2Enabled: boolean;
-  auxCounter3Enabled: boolean;
   amountOverdue: number;
   amountOverdue1Cycle: number;
   amountOverdue2Cycles: number;
@@ -109,8 +77,29 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   amountOverdue5Cycles: number;
   amountOverdue6Cycles: number;
   amountOverdue7Cycles: number;
-  totalOverdueAmount: number;
-  numberOfTimesOverdueTotal: number;
+  auxCounter1: number;
+  auxCounter1Description: string;
+  auxCounter1Enabled: boolean;
+  auxCounter2: number;
+  auxCounter2Description: string;
+  auxCounter2Enabled: boolean;
+  auxCounter3: number;
+  auxCounter3Description: string;
+  auxCounter3Enabled: boolean;
+  balanceAvailable: number;
+  balanceLimit: number;
+  balanceLimitShared: number;
+  balanceSettled: number;
+  currencyCode: string;
+  currencyNumericCode: number;
+  customerId: number;
+  dateClosed: string;
+  dateCreated: string;
+  dateOfProductOverride?: string;
+  firstName: string;
+  id: number;
+  lastCycleDate: string;
+  lastName: string;
   numberOfTimesOverdue1Cycle: number;
   numberOfTimesOverdue2Cycles: number;
   numberOfTimesOverdue3Cycles: number;
@@ -118,65 +107,76 @@ export interface LedgerAccountItemPlainPrepared extends LedgerAccountId {
   numberOfTimesOverdue5Cycles: number;
   numberOfTimesOverdue6Cycles: number;
   numberOfTimesOverdue7Cycles: number;
-  currencyCode: string;
-  currencyNumericCode: number;
+  numberOfTimesOverdueTotal: number;
+  numOfInstallments: number;
+  numOfInterestFreeInstllmnts: number;
+  productId: number | string;
+  productOverrideFlag?: boolean;
+  productOverrideId?: number;
+  repaymentAmountDue: number;
   statementCycleRepaymentDay: number;
   statusName: string;
+  totalOverdueAmount: number;
 }
 
-export interface LedgerAccountItemPrepared extends LedgerAccountItemPlainPrepared {
-  status: string | number;
+export interface IAccount extends IAccountPlain {
   institutionId: string | number;
   product: string | number;
+  status: string | number;
 }
 
-export interface LedgerAccountItemDetailsPrepared extends LedgerAccountItemPlainPrepared {
-  status: ISelectValue;
-  repaymentType: ISelectValue;
+export interface IAccountDetails extends IAccountPlain {
   institutionId: ISelectValue;
-  product: ISelectValue;
   loanStartDate?: string;
+  product: ISelectValue;
+  repaymentType: ISelectValue;
+  status: ISelectValue;
 }
 
-export interface LedgerAccountsFilter {
-  institutionId: ISelectValue;
-  firstName: string;
-  lastName: string;
-  product: Array<ISelectValue>;
+/** Accounts filter interfaces */
+
+export interface IAccountsFilter {
   accountAlias: string;
   accountAliasAdditional: string;
   accountId: number;
+  firstName: string;
+  institutionId: ISelectValue;
+  lastName: string;
+  product: Array<ISelectValue>;
 }
 
-export interface LedgerAccountsFilterPrepared {
-  institution_id: string | number;
+export interface IAccountsFilterToSend {
+  account_alias_additional: string;
+  account_alias: string;
   first_name: string;
+  id: number;
+  institution_id: string | number;
   last_name: string;
   product: Array<string | number>;
-  account_alias: string;
-  account_alias_additional: string;
-  id: number;
 }
 
-export interface LedgerAccountsCardsItem {
+/** Account cards interfaces */
+
+export interface IAccountCardData {
+  card_status_name: string;
+  expiry_date: string;
   pan_alias: string;
   pan_masked: string;
-  expiry_date: string;
-  card_status_name: string;
 }
 
-export interface LedgerAccountsCardsItemPrepared {
+export interface IAccountCardsData {
+  cards: Array<IAccountCardData>;
+}
+
+export interface IAccountCard {
+  cardStatus: string;
+  expiryDate: string;
   panAlias: string;
   panMasked: string;
-  expiryDate: string;
-  cardStatus: string;
 }
 
-export interface LedgerAccountCardsItems {
-  cards: Array<LedgerAccountsCardsItem>;
-}
-
-export interface LedgerAccountsState {
-  accounts: ImmutableArray<LedgerAccountItem>;
-  cards: ImmutableArray<LedgerAccountsCardsItem>;
+/** Account state interface */
+export interface IAccountsState {
+  accounts: ImmutableArray<IAccountData>;
+  cards: ImmutableArray<IAccountCardData>;
 }

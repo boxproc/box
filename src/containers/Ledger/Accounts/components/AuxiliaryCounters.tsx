@@ -4,13 +4,11 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Hr, NumberFormatField, OkCancelButtons } from 'components';
-
-import { LedgerAccountItemDetailsPrepared } from 'store';
-
+import { IAccountDetails } from 'store';
 import { formErrorUtil } from 'utils';
 
 interface IAuxiliaryCounters {
-  currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
+  currentAccAuxCounters: Partial<IAccountDetails>;
   isEditMode?: boolean;
   onCancel: () => void;
   dirty: boolean;
@@ -19,7 +17,7 @@ interface IAuxiliaryCounters {
 }
 
 const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
-  currentAccountAuxCounters,
+  currentAccAuxCounters,
   isEditMode,
   onCancel,
   dirty,
@@ -27,33 +25,33 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
   isReadOnly,
 }) => {
   const auxCounter1Description = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter1Description,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter1Description,
+    [currentAccAuxCounters]
   );
 
   const auxCounter2Description = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter2Description,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter2Description,
+    [currentAccAuxCounters]
   );
 
   const auxCounter3Description = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter3Description,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter3Description,
+    [currentAccAuxCounters]
   );
 
   const auxCounter1Enabled = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter1Enabled,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter1Enabled,
+    [currentAccAuxCounters]
   );
 
   const auxCounter2Enabled = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter2Enabled,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter2Enabled,
+    [currentAccAuxCounters]
   );
 
   const auxCounter3Enabled = React.useMemo(
-    () => currentAccountAuxCounters && currentAccountAuxCounters.auxCounter3Enabled,
-    [currentAccountAuxCounters]
+    () => currentAccAuxCounters && currentAccAuxCounters.auxCounter3Enabled,
+    [currentAccAuxCounters]
   );
 
   return (

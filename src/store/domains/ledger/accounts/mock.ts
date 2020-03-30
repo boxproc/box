@@ -1,8 +1,8 @@
-import { LedgerAccountItems } from './types';
+import { IAccountsData } from './types';
 
 import { IResponseStatus } from 'types';
 
-export const ledgerAccountsFilteredItems: LedgerAccountItems = {
+export const accountsMock: IAccountsData = {
   accounts: [
     {
       id: 1,
@@ -20,6 +20,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       product_type: 'L',
       num_of_installments: 1,
       num_of_interest_free_instllmnts: 1,
+      start_loan_date: '2019-07-29',
       balance_settled: 1.01,
       balance_available: 1.01,
       repayment_amount_due: 1.01,
@@ -77,6 +78,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
       product_type: 'C',
       num_of_installments: 1,
       num_of_interest_free_instllmnts: 1,
+      start_loan_date: '2019-07-29',
       balance_settled: 1.01,
       balance_available: 1.01,
       repayment_amount_due: 1.01,
@@ -121,7 +123,7 @@ export const ledgerAccountsFilteredItems: LedgerAccountItems = {
   ],
 };
 
-export const successResponseStatus: IResponseStatus = {
+export const successResponseMock: IResponseStatus = {
   response_status: {
     status_code: '00',
   },

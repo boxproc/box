@@ -8,12 +8,12 @@ import { tableColumns } from './components';
 import { CardsFilter } from './forms';
 
 import {
-  HandleFilterLedgerAccountsById,
   HandleFilterLedgerCards,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
   LedgerCardItemPrepared,
   ResetCards,
+  THandleFilterAccountsById,
   THandleFilterStatementsById,
 } from 'store';
 
@@ -25,7 +25,7 @@ interface ICards {
   filterCards: HandleFilterLedgerCards;
   institutionsOptions: Array<ISelectValue>;
   filterCustomersById: HandleFilterLedgerCustomersById;
-  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterAccountsById: THandleFilterAccountsById;
   filterTransactionsById: HandleFilterLedgerTransactionsById;
   filterStatementsById: THandleFilterStatementsById;
   resetCards: ResetCards;

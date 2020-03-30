@@ -1,33 +1,28 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
+import { ActionTypeKeys, TAccountsActionTypes } from './actionTypes';
+import { IAccountsState } from './types';
 
-import { ActionTypeKeys, LedgerAccountsActionTypes } from './actionTypes';
-import { LedgerAccountsState } from './types';
-
-export const ledgerAccountsInitialState: ImmutableObject<LedgerAccountsState> = Immutable({
+export const accountsInitialState: ImmutableObject<IAccountsState> = Immutable({
   accounts: Immutable([]),
   cards: Immutable([]),
 });
 
-const ledgerAccountsReducer =
-  (state = ledgerAccountsInitialState, action: LedgerAccountsActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_FULFILLED:
-        return state
-          .set('accounts', action.payload.accounts);
+const accountsReducer = (state = accountsInitialState, action: TAccountsActionTypes) => {
+  switch (action.type) {
+    case ActionTypeKeys.FILTER_ACCOUNTS_FULFILLED:
+      return state.set('accounts', action.payload.accounts);
 
-      case ActionTypeKeys.FILTER_LEDGER_ACCOUNTS_BY_ID_FULFILLED:
-        return state
-          .set('accounts', action.payload.accounts);
+    case ActionTypeKeys.FILTER_ACCOUNTS_BY_ID_FULFILLED:
+      return state.set('accounts', action.payload.accounts);
 
-      case ActionTypeKeys.GET_LEDGER_ACCOUNT_CARDS_FULFILLED:
-        return state
-          .set('cards', action.payload.cards);
+    case ActionTypeKeys.GET_ACCOUNT_CARDS_FULFILLED:
+      return state.set('cards', action.payload.cards);
 
-      case ActionTypeKeys.RESET_ACCOUNTS:
-        return state = ledgerAccountsInitialState;
+    case ActionTypeKeys.RESET_ACCOUNTS:
+      return state = accountsInitialState;
 
-      default: return state;
-    }
-  };
+    default: return state;
+  }
+};
 
-export default ledgerAccountsReducer;
+export default accountsReducer;

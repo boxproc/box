@@ -1,15 +1,15 @@
 import { yesNoConst } from 'consts';
 import {
-  LedgerAccountItem,
-  LedgerAccountItemDetailsPrepared,
-  LedgerAccountsCardsItem,
-  LedgerAccountsFilter,
+  IAccountCardData,
+  IAccountData,
+  IAccountDetails,
+  IAccountsFilter,
 } from './types';
 
 import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
-export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
+export const prepareFilterToSend = (data: Partial<IAccountsFilter>) => {
   if (!data) {
     return null;
   }
@@ -35,7 +35,7 @@ export const preparedFilterToSend = (data: Partial<LedgerAccountsFilter>) => {
   };
 };
 
-export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared>) => {
+export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
   if (!data) {
     return null;
   }
@@ -132,10 +132,7 @@ export const prepareDataToSend = (data: Partial<LedgerAccountItemDetailsPrepared
   };
 };
 
-export const prepareDataToRender = (
-  data: Partial<LedgerAccountItem>,
-  institution?: ISelectValue
-) => {
+export const prepareDataToRender = (data: Partial<IAccountData>, institution?: ISelectValue) => {
   if (!data) {
     return null;
   }
@@ -149,6 +146,7 @@ export const prepareDataToRender = (
     product_name,
     num_of_installments,
     num_of_interest_free_instllmnts,
+    start_loan_date,
     balance_settled,
     balance_available,
     repayment_amount_due,
@@ -218,6 +216,7 @@ export const prepareDataToRender = (
     productType: product_type,
     numOfInstallments: num_of_installments,
     numOfInterestFreeInstllmnts: num_of_interest_free_instllmnts,
+    loanStartDate: start_loan_date,
     dateCreated: date_created,
     dateClosed: date_closed,
     lastCycleDate: last_cycle_date,
@@ -259,7 +258,7 @@ export const prepareDataToRender = (
   };
 };
 
-export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsItem>) => {
+export const prepareCardsToRender = (data: Partial<IAccountCardData>) => {
   if (!data) {
     return null;
   }
@@ -274,7 +273,7 @@ export const preparedAccountCardsToRender = (data: Partial<LedgerAccountsCardsIt
   };
 };
 
-export const prepareDataDetailsToRender = (data: Partial<LedgerAccountItem>) => {
+export const prepareDetailsToRender = (data: Partial<IAccountData>) => {
   if (!data) {
     return null;
   }

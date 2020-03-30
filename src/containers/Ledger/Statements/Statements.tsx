@@ -13,12 +13,12 @@ import { iconNamesConst, modalNamesConst } from 'consts';
 import PageTemplate from 'containers/PageTemplate';
 
 import {
-  HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
   IStatement,
   THandleDownloadStatement,
+  THandleFilterAccountsById,
   THandleFilterStatements,
   TResetStatements,
   TSetActiveItemId,
@@ -29,7 +29,7 @@ import { dateUtil } from 'utils';
 
 interface IStatements {
   currentId: number;
-  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterAccountsById: THandleFilterAccountsById;
   filterCardsById: HandleFilterLedgerCardsById;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterStatements: THandleFilterStatements;

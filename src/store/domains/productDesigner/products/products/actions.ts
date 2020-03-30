@@ -6,7 +6,7 @@ import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts'
 import {
   activeItemIdSelector,
   closeModal,
-  handleFilterLedgerAccounts,
+  handleFilterAccounts,
   isAccessibleFilterSelector,
   openModal,
   setActiveItemId,
@@ -153,7 +153,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
         dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
 
         if (window.location.pathname === `${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`) {
-          await dispatch(handleFilterLedgerAccounts());
+          await dispatch(handleFilterAccounts());
         }
       },
       dispatch

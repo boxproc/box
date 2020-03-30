@@ -7,7 +7,7 @@ import {
   activeItemIdSelector,
   createLoadingSelector,
   handleDeleteLedgerCustomer,
-  handleFilterByIdLedgerAccounts,
+  handleFilterByIdAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterCardsById: handleFilterByIdLedgerCards,
     filterTransactionsById: handleFilterByIdLedgerTransactions,
     filterStatementsById: handleFilterByIdStatements,
-    filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterAccountsById: handleFilterByIdAccounts,
     resetCustomers,
   },
   dispatch

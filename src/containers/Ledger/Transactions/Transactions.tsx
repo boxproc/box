@@ -10,12 +10,12 @@ import { TransactionsFilter } from './forms';
 import { IWithModal, withModal } from 'HOCs';
 
 import {
-  HandleFilterLedgerAccountsById,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactions,
   LedgerTransactionItemPrepared,
   ResetTransactions,
+  THandleFilterAccountsById,
   THandleFilterStatementsById,
   UiItemPrepared,
 } from 'store';
@@ -25,7 +25,7 @@ import { dateUtil } from 'utils';
 
 interface ITransactions extends IWithModal {
   currentId: number;
-  filterAccountsById: HandleFilterLedgerAccountsById;
+  filterAccountsById: THandleFilterAccountsById;
   filterCardsById: HandleFilterLedgerCardsById;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterStatementsById: THandleFilterStatementsById;

@@ -1,4 +1,4 @@
-import { LedgerAccountsState } from './accounts';
+import { IAccountsState } from './accounts';
 import { LedgerCardsState } from './cards';
 import { LedgerCustomersState } from './customers';
 import { LedgerLimitAdjustmentState } from './limitAdjustment';
@@ -8,7 +8,7 @@ import { IStatementsState } from './statements';
 import { LedgerTransactionsState } from './transactions';
 
 export interface LedgerState {
-  accounts: LedgerAccountsState;
+  accounts: IAccountsState;
   customers: LedgerCustomersState;
   transactions: LedgerTransactionsState;
   statements: IStatementsState;

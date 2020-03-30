@@ -4,16 +4,14 @@ import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
 import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
 import { AccountForm } from 'containers/Ledger/Accounts/forms';
-
-import { LedgerAccountItemDetailsPrepared } from 'store';
+import { IAccountDetails } from 'store';
 
 interface IEditAccountModal extends IWithModal {
-  currentAccountAlias: string;
-  currentAccount: Partial<LedgerAccountItemDetailsPrepared>;
-  currentAccountAuxCounters: Partial<LedgerAccountItemDetailsPrepared>;
+  currentAccAlias: string;
+  currentAcc: Partial<IAccountDetails>;
+  currentAccAuxCounters: Partial<IAccountDetails>;
   currentProductType: string;
   isFormDirty: boolean;
 }
@@ -22,20 +20,20 @@ const modalName = modalNamesConst.EDIT_ACCOUNT;
 
 const EditAccountModal: React.FC<IEditAccountModal> = ({
   closeModal,
-  currentAccountAlias,
-  currentAccount,
-  currentAccountAuxCounters,
+  currentAccAlias,
+  currentAcc,
+  currentAccAuxCounters,
   currentProductType,
   isFormDirty,
   isReadOnly,
 }) => {
   const modalTitle = React.useMemo(
     () => {
-      const accountAlias = currentAccountAlias ? `: ${currentAccountAlias}` : '';
+      const accountAlias = currentAccAlias ? `: ${currentAccAlias}` : '';
 
       return `Account${accountAlias}`;
     },
-    [currentAccountAlias]
+    [currentAccAlias]
   );
 
   const handleOnCancel = React.useCallback(
@@ -62,8 +60,8 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
             onCancel={handleOnCancel}
             isEditMode={true}
             isReadOnly={isReadOnly}
-            initialValues={currentAccount}
-            currentAccountAuxCounters={currentAccountAuxCounters}
+            initialValues={currentAcc}
+            currentAccAuxCounters={currentAccAuxCounters}
           />
         </TabsPanel>
         <TabsPanel title="Cards">

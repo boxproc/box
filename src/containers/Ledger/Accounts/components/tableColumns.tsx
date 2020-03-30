@@ -2,12 +2,11 @@ import React from 'react';
 
 import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
 
-import { LedgerAccountItemPrepared } from 'store';
+import { IAccount } from 'store';
 
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof LedgerAccountItemPrepared> =
-  ITableCell<LedgerAccountItemPrepared[T]>;
+type TCell<T extends keyof IAccount> = ITableCell<IAccount[T]>;
 
 export const tableColumns = [
   {

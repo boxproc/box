@@ -4,50 +4,45 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Accounts from './Accounts';
 
 import {
+  accountsSelector,
   activeItemIdSelector,
-  createLoadingSelector,
+  currentAccBalanceLimitSelector,
+  currentAccBalanceLimitSharedSelector,
+  currentAccCurrencyCodeSelector,
+  currentAccHasProductOverrideSelector,
+  currentAccProductOverrideIdSelector,
   handleAddProductOverride,
+  handleFilterAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
   handleFilterByIdStatements,
-  handleFilterLedgerAccounts,
   handleSetActiveItemId,
+  isAccountLoadingSelector,
   isReadOnlySelector,
-  LedgerAccountsActionTypes,
   resetAccounts,
-  selectLedgerAccounts,
-  selectLedgerCurrentAccountBalanceLimit,
-  selectLedgerCurrentAccountBalanceLimitShared,
-  selectLedgerCurrentAccountCurrencyCode,
-  selectLedgerCurrentAccountHasProductOverride,
-  selectLedgerCurrentAccountProductOverrideId,
   selectUiItems,
   StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerAccountsActionTypes.FILTER_LEDGER_ACCOUNTS,
-]);
-
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  accounts: selectLedgerAccounts(state),
+  isLoading: isAccountLoadingSelector(state),
+  accounts: accountsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
-  hasProductOverride: selectLedgerCurrentAccountHasProductOverride(state),
-  productOverrideId: selectLedgerCurrentAccountProductOverrideId(state),
+  hasProductOverride: currentAccHasProductOverrideSelector(state),
+  productOverrideId: currentAccProductOverrideIdSelector(state),
   currentId: activeItemIdSelector(state),
-  currentCurrencyCode: selectLedgerCurrentAccountCurrencyCode(state),
-  currentAccountBalanceLimit: selectLedgerCurrentAccountBalanceLimit(state),
-  currentAccountBalanceLimitShared: selectLedgerCurrentAccountBalanceLimitShared(state),
+  currentCurrencyCode: currentAccCurrencyCodeSelector(state),
+  currentAccBalanceLimit: currentAccBalanceLimitSelector(state),
+  currentAccBalanceLimitShared: currentAccBalanceLimitSharedSelector(state),
   isReadOnly: isReadOnlySelector(state),
   uiItems: selectUiItems(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAccounts: handleFilterLedgerAccounts,
+    filterAccounts: handleFilterAccounts,
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterCardsById: handleFilterByIdLedgerCards,
     filterTransactionsById: handleFilterByIdLedgerTransactions,

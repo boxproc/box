@@ -8,16 +8,16 @@ import { Button, Table, withSpinner } from 'components';
 import { tableColumns } from './tableColumns';
 
 import {
-  HandleGetLedgerAccountCards,
-  HandleOrderLedgerAccountCard,
-  LedgerAccountsCardsItemPrepared
+  IAccountCard,
+  THandleGetAccountCards,
+  THandleOrderAccountCard,
 } from 'store';
 
 interface IAccountCards {
   accountCurrentId: number;
-  getAccountCards: HandleGetLedgerAccountCards;
-  accountCards: ImmutableArray<LedgerAccountsCardsItemPrepared>;
-  orderAccountCard: HandleOrderLedgerAccountCard;
+  getAccountCards: THandleGetAccountCards;
+  accountCards: ImmutableArray<IAccountCard>;
+  orderAccountCard: THandleOrderAccountCard;
   isOrderingCard: boolean;
   onCancel: () => void;
   isReadOnly: boolean;
@@ -39,7 +39,7 @@ export const Cards: React.FC<IAccountCards> = ({
     [getAccountCards, accountCurrentId]
   );
 
-  const handleOrderLedgerAccountCard = React.useCallback(
+  const handleOrderAccountCard = React.useCallback(
     () => orderAccountCard(accountCurrentId),
     [accountCurrentId, orderAccountCard]
   );
@@ -51,7 +51,7 @@ export const Cards: React.FC<IAccountCards> = ({
           <Button
             disabled={isOrderingCard}
             type="reset"
-            onClick={handleOrderLedgerAccountCard}
+            onClick={handleOrderAccountCard}
             text={isOrderingCard ? 'Ordering...' : 'Order Card'}
             isFocused={true}
           />

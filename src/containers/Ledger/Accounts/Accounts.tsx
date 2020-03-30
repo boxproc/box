@@ -10,27 +10,27 @@ import { tableColumns } from './components';
 import { AccountsFilter } from './forms';
 
 import {
-  HandleAddProductOverride,
-  HandleFilterLedgerAccounts,
   HandleFilterLedgerCardsById,
   HandleFilterLedgerCustomersById,
   HandleFilterLedgerTransactionsById,
-  LedgerAccountItemPrepared,
-  ResetAccounts,
+  IAccount,
+  THandleAddProductOverride,
+  THandleFilterAccounts,
   THandleFilterStatementsById,
   THandleSetActiveItemId,
+  TResetAccounts,
   UiItemPrepared,
 } from 'store';
 import { ISelectValue } from 'types';
 
 interface IAccounts extends IWithModal {
-  accounts: ImmutableArray<LedgerAccountItemPrepared>;
-  addProductOverride: HandleAddProductOverride;
-  currentAccountBalanceLimit: string;
-  currentAccountBalanceLimitShared: string;
+  accounts: ImmutableArray<IAccount>;
+  addProductOverride: THandleAddProductOverride;
+  currentAccBalanceLimit: string;
+  currentAccBalanceLimitShared: string;
   currentCurrencyCode: number;
   currentId: number;
-  filterAccounts: HandleFilterLedgerAccounts;
+  filterAccounts: THandleFilterAccounts;
   filterCardsById: HandleFilterLedgerCardsById;
   filterCustomersById: HandleFilterLedgerCustomersById;
   filterStatementsById: THandleFilterStatementsById;
@@ -40,7 +40,7 @@ interface IAccounts extends IWithModal {
   isLoading: boolean;
   isReadOnly: boolean;
   productOverrideId: number;
-  resetAccounts: ResetAccounts;
+  resetAccounts: TResetAccounts;
   setActiveItemId: THandleSetActiveItemId;
   uiItems: Array<UiItemPrepared>;
 }
@@ -61,8 +61,8 @@ const Accounts: React.FC<IAccounts> = ({
   filterTransactionsById,
   filterStatementsById,
   currentCurrencyCode,
-  currentAccountBalanceLimit,
-  currentAccountBalanceLimitShared,
+  currentAccBalanceLimit,
+  currentAccBalanceLimitShared,
   isLoading,
   isReadOnly,
   uiItems,
@@ -163,8 +163,8 @@ const Accounts: React.FC<IAccounts> = ({
           payload: {
             isLimitAdjustmentMode: true,
             accountId: currentId,
-            balanceLimit: currentAccountBalanceLimit,
-            balanceLimitShared: currentAccountBalanceLimitShared,
+            balanceLimit: currentAccBalanceLimit,
+            balanceLimitShared: currentAccBalanceLimitShared,
           },
         }),
       },
@@ -178,8 +178,8 @@ const Accounts: React.FC<IAccounts> = ({
       filterCardsById,
       currentId,
       currentCurrencyCode,
-      currentAccountBalanceLimit,
-      currentAccountBalanceLimitShared,
+      currentAccBalanceLimit,
+      currentAccBalanceLimitShared,
       openModal,
       isReadOnly,
       isReadOnlyTransactions,

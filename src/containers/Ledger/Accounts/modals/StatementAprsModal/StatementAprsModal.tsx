@@ -13,7 +13,7 @@ import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/
 import { IStatementApr } from 'store';
 
 interface IStatementAprs extends IWithModal {
-  currentAccountAlias: string;
+  currentAccAlias: string;
   currentStatementDate: string;
   statementAprs: ImmutableArray<IStatementApr>;
 }
@@ -22,17 +22,17 @@ const modalName = modalNamesConst.STATEMENT_APRS;
 
 const StatementAprs: React.FC<IStatementAprs> = ({
   closeModal,
-  currentAccountAlias,
+  currentAccAlias,
   currentStatementDate,
   statementAprs,
 }) => {
   const modalTitle = React.useMemo(
     () => {
-      const accountAlias = currentAccountAlias ? `: ${currentAccountAlias}` : '';
+      const accountAlias = currentAccAlias ? `: ${currentAccAlias}` : '';
 
       return `Account${accountAlias}`;
     },
-    [currentAccountAlias]
+    [currentAccAlias]
   );
 
   const handleOnCancel = React.useCallback(

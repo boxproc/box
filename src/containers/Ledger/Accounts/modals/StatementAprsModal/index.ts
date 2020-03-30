@@ -4,14 +4,14 @@ import StatementAprsModal from './StatementAprsModal';
 
 import {
   accountStatementDateSelector,
-  selectLedgerCurrentAccountAlias,
+  currentAccAliasSelector,
   statementAprsSelector,
   StoreState,
 } from 'store';
 
 const mapStateToProps = (state: StoreState) => ({
   statementAprs: statementAprsSelector(state),
-  currentAccountAlias: selectLedgerCurrentAccountAlias(state),
+  currentAccAlias: currentAccAliasSelector(state),
   currentStatementDate: accountStatementDateSelector(state),
 });
 

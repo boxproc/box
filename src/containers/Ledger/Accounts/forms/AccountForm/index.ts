@@ -7,25 +7,20 @@ import { formNamesConst } from 'consts';
 import AccountForm from './AccountForm';
 
 import {
-  createLoadingSelector,
   dictionaryRepaymentTypesOptionsSelector,
-  handleAddLedgerAccount,
-  handleUpdateLedgerAccount,
-  LedgerAccountsActionTypes,
+  handleAddAccount,
+  handleUpdateAccount,
+  isAddingAccountSelector,
+  isUpdatingAccountSelector,
   selectInstitutionProducts,
   StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  LedgerAccountsActionTypes.UPDATE_LEDGER_ACCOUNT,
-  LedgerAccountsActionTypes.ADD_LEDGER_ACCOUNT,
-]);
-
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isAddingAccountSelector(state) || isUpdatingAccountSelector(state),
   institutionProducts: selectInstitutionProducts(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
@@ -35,8 +30,8 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateLedgerAccount: handleUpdateLedgerAccount,
-    addLedgerAccount: handleAddLedgerAccount,
+    updateAccount: handleUpdateAccount,
+    addAccount: handleAddAccount,
   },
   dispatch
 );

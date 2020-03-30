@@ -6,7 +6,7 @@ import Statements from './Statements';
 import {
   activeItemIdSelector,
   handleDownloadStatement,
-  handleFilterByIdLedgerAccounts,
+  handleFilterByIdAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdLedgerTransactions,
@@ -30,7 +30,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterAccountsById: handleFilterByIdAccounts,
     filterCardsById: handleFilterByIdLedgerCards,
     filterCustomersById: handleFilterByIdLedgerCustomers,
     filterStatements: handleFilterStatements,

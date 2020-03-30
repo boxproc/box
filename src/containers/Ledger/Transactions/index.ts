@@ -6,7 +6,7 @@ import Transactions from './Transactions';
 import {
   activeItemIdSelector,
   createLoadingSelector,
-  handleFilterByIdLedgerAccounts,
+  handleFilterByIdAccounts,
   handleFilterByIdLedgerCards,
   handleFilterByIdLedgerCustomers,
   handleFilterByIdStatements,
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterCardsById: handleFilterByIdLedgerCards,
     filterStatementsById: handleFilterByIdStatements,
     filterCustomersById: handleFilterByIdLedgerCustomers,
-    filterAccountsById: handleFilterByIdLedgerAccounts,
+    filterAccountsById: handleFilterByIdAccounts,
     resetTransactions,
   },
   dispatch

@@ -22,9 +22,7 @@ export const UncheckedBoxIcon = styled(UncheckedBox)`
   ${({ css }) => css}
 `;
 
-UncheckedBoxIcon.defaultProps = {
-  el: 'g',
-};
+UncheckedBoxIcon.defaultProps = { el: 'g' };
 
 const CheckedBox: React.FC<IIconColor> = ({ el, ...props }) => (
   <svg width={15} height={15} viewBox="0 0 15 15" {...props}>
@@ -47,6 +45,4 @@ export const CheckedBoxIcon = styled(CheckedBox)`
   ${({ css }) => css}
 `;
 
-CheckedBoxIcon.defaultProps = {
-  el: 'g',
-};
+CheckedBoxIcon.defaultProps = { el: 'g' };

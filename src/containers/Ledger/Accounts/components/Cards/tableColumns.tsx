@@ -1,13 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { LedgerAccountsCardsItemPrepared } from 'store';
-
+import { IAccountCard } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof LedgerAccountsCardsItemPrepared> =
-  ITableCell<LedgerAccountsCardsItemPrepared[T]>;
+type TCell<T extends keyof IAccountCard> = ITableCell<IAccountCard[T]>;
 
 export const tableColumns = [
   {
