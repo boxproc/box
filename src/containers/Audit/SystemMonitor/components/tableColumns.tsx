@@ -2,14 +2,11 @@ import React from 'react';
 import { CellInfo } from 'react-table';
 
 import { Button, TableCell, TableHeader } from 'components';
-
 import { iconNamesConst } from 'consts';
-
+import { HandleGetLogData, ISysMonitorItem } from 'store';
 import { ITableCell } from 'types';
 
-import { HandleGetLogData, SystemMonitorItem } from 'store';
-
-type TCell<T extends keyof SystemMonitorItem> = ITableCell<SystemMonitorItem[T]>;
+type TCell<T extends keyof ISysMonitorItem> = ITableCell<ISysMonitorItem[T]>;
 
 export const tableColumns = (getLogData: HandleGetLogData, name: string) => [
   {

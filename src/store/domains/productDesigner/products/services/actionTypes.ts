@@ -3,17 +3,17 @@ import { InstitutionProductServiceEndpoints, InstitutionProductServiceInterfaces
 import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_SERVICE_INTERFACES = 'productDesigner/products/GET_SERVICE_INTERFACES',
-  GET_SERVICE_INTERFACES_FULFILLED = 'productDesigner/products/GET_SERVICE_INTERFACES_FULFILLED',
-  GET_SERVICE_INTERFACES_REJECTED = 'productDesigner/products/GET_SERVICE_INTERFACES_REJECTED',
+  GET_SERVICE_INTERFACES = 'products/GET_SERVICE_INTERFACES',
+  GET_SERVICE_INTERFACES_FULFILLED = 'products/GET_SERVICE_INTERFACES_FULFILLED',
+  GET_SERVICE_INTERFACES_REJECTED = 'products/GET_SERVICE_INTERFACES_REJECTED',
 
-  GET_SERVICE_ENDPOINTS = 'productDesigner/products/GET_SERVICE_ENDPOINTS',
-  GET_SERVICE_ENDPOINTS_FULFILLED = 'productDesigner/products/GET_SERVICE_ENDPOINTS_FULFILLED',
-  GET_SERVICE_ENDPOINTS_REJECTED = 'productDesigner/products/GET_SERVICE_ENDPOINTS_REJECTED',
+  GET_SERVICE_ENDPOINTS = 'products/GET_SERVICE_ENDPOINTS',
+  GET_SERVICE_ENDPOINTS_FULFILLED = 'products/GET_SERVICE_ENDPOINTS_FULFILLED',
+  GET_SERVICE_ENDPOINTS_REJECTED = 'products/GET_SERVICE_ENDPOINTS_REJECTED',
 
-  UPDATE_CARD_SERVICES = 'productDesigner/products/UPDATE_CARD_SERVICES',
-  UPDATE_CARD_SERVICES_FULFILLED = 'productDesigner/products/UPDATE_CARD_SERVICES_FULFILLED',
-  UPDATE_CARD_SERVICES_REJECTED = 'productDesigner/products/UPDATE_CARD_SERVICES_REJECTED',
+  UPDATE_CARD_SERVICES = 'products/UPDATE_CARD_SERVICES',
+  UPDATE_CARD_SERVICES_FULFILLED = 'products/UPDATE_CARD_SERVICES_FULFILLED',
+  UPDATE_CARD_SERVICES_REJECTED = 'products/UPDATE_CARD_SERVICES_REJECTED',
 }
 
 export interface GetInterfacesProductServiceAction {
@@ -61,7 +61,7 @@ export interface UpdateCardServiceRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
 }
 
-export type ProductServicesActionTypes =
+export type TProductServicesAction =
   | GetEndpointsProductServiceFulfilledAction
   | GetInterfacesProductServiceFulfilledAction
   | UpdateCardServiceFulfilledAction;

@@ -1,5 +1,10 @@
+// import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-
+// import {
+//   authResponseMock,
+//   authSecretKeyMock,
+//   userInstitutionsMock,
+// } from './mock';
 import {
   IAuthCode,
   IAuthConfirm,
@@ -8,14 +13,6 @@ import {
   IAuthUserId,
   IChangePasswordToSend,
 } from './types';
-
-// import {
-//   authResponseMock,
-//   authSecretKeyMock,
-//   successResponseMock,
-//   userInstitutionsMock,
-// } from './mock';
-
 // import { throttleUtil } from 'utils';
 
 /**

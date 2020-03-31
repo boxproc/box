@@ -3,14 +3,14 @@ import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { Response as SuperagentApiResponse } from 'superagent';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
 /**
  * I - interface
  * T - type
  */
 
-export type Thunk<R> = ThunkAction<R, StoreState, {}, AnyAction>;
+export type Thunk<R> = ThunkAction<R, IStoreState, {}, AnyAction>;
 export type VoidPromiseThunk = () => Thunk<Promise<void>>;
 export type VoidThunk = () => Thunk<void>;
 

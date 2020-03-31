@@ -7,13 +7,13 @@ import { Button, Hr, InputField, MaskField, NumberFormatField, SelectField } fro
 
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-import { HandleIllustrateLoanProduct, THandleConvertTrToLoan } from 'store';
+import { THandleConvertTrToLoan, THandleIllustrateLoan } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ILoanIllustrationForm {
-  illustrateLoanProduct: HandleIllustrateLoanProduct;
+  illustrateLoanProduct: THandleIllustrateLoan;
   loanProductsOptions: Array<ISelectValue>;
   isDisabled: boolean;
   isIllustrationLoading: boolean;

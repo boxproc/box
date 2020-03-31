@@ -10,12 +10,12 @@ import {
   createLoadingSelector,
   handleGetProductRule,
   handleUpdateProductRules,
+  IStoreState,
   ProductRulesActionTypes,
   selectActionTypesOptions,
   selectCurrentProductRule,
   selectCurrentProductScript,
   selectCurrentProductType,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -25,7 +25,7 @@ const loadingSelector = createLoadingSelector([
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   currentProductScript: selectCurrentProductScript(state),
   actionTypesOptions: selectActionTypesOptions(state),

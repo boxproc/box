@@ -4,11 +4,10 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader } from 'components';
-import { IllustrationProductAprRevolvingCredit } from 'store';
+import { IRevCreditIllustrationApr } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof IllustrationProductAprRevolvingCredit> =
-  ITableCell<IllustrationProductAprRevolvingCredit[T]>;
+type TCell<T extends keyof IRevCreditIllustrationApr> = ITableCell<IRevCreditIllustrationApr[T]>;
 
 const columns = [
   {
@@ -50,7 +49,7 @@ const columns = [
 ];
 
 interface IAprTable {
-  data: ImmutableArray<IllustrationProductAprRevolvingCredit>;
+  data: ImmutableArray<IRevCreditIllustrationApr>;
 }
 
 const AprTable: React.FC<IAprTable> = ({ data }) => {

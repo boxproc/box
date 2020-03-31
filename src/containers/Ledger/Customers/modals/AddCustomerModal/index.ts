@@ -5,11 +5,11 @@ import { formNamesConst } from 'consts';
 
 import AddCustomerModal from './AddCustomerModal';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
 const dirty = isDirty(formNamesConst.CUSTOMER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
 });
 

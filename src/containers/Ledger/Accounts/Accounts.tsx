@@ -11,6 +11,7 @@ import { AccountsFilter } from './forms';
 
 import {
   IAccount,
+  IUiItem,
   THandleAddProductOverride,
   THandleFilterAccounts,
   THandleFilterCardsById,
@@ -19,7 +20,6 @@ import {
   THandleFilterTransactionsById,
   THandleSetActiveItemId,
   TResetAccounts,
-  UiItemPrepared,
 } from 'store';
 import { ISelectValue } from 'types';
 
@@ -42,7 +42,7 @@ interface IAccounts extends IWithModal {
   productOverrideId: number;
   resetAccounts: TResetAccounts;
   setActiveItemId: THandleSetActiveItemId;
-  uiItems: Array<UiItemPrepared>;
+  uiItems: Array<IUiItem>;
 }
 
 const Accounts: React.FC<IAccounts> = ({
@@ -76,12 +76,10 @@ const Accounts: React.FC<IAccounts> = ({
 
   const isReadOnlyTransactions = React.useMemo(
     () => {
-      const manualTransaction = uiItems
-        .find(item => item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS);
-      const limitAdjustment = uiItems
-        .find(item => item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT);
+      const manualTransaction = uiItems.find(item => item.id === uiItemsConst.MANUAL_TRANSACTION);
+      const limitAdjustment = uiItems.find(item => item.id === uiItemsConst.LIMIT_ADJUSTMENT);
 
-      const isReadOnlyItem = (item: UiItemPrepared) => {
+      const isReadOnlyItem = (item: IUiItem) => {
         if (!item) {
           return false;
         }

@@ -8,11 +8,11 @@ import {
   handleGetUsernames,
   isChangingProfileSelector,
   isLoadingUsernamesSelector,
-  StoreState,
+  IStoreState,
   usernamesOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isChangingProfile: isChangingProfileSelector(state),
   isLoadingUsers: isLoadingUsernamesSelector(state),
   usernamesOptions: usernamesOptionsSelector(state),

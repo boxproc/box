@@ -11,9 +11,9 @@ import {
   currentCustomerInstIdSelector,
   currentCustomerNameSelector,
   handleGetInterfacesService,
+  IStoreState,
   ProductServicesActionTypes,
   selectProductCardInterfacesService,
-  StoreState,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.CUSTOMER);
@@ -22,7 +22,7 @@ const loadingSelectorInterfaces = createLoadingSelector([
   ProductServicesActionTypes.GET_SERVICE_INTERFACES,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
   isInterfacesLoading: loadingSelectorInterfaces(state),
   currentCustomerName: currentCustomerNameSelector(state),

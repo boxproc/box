@@ -2,9 +2,9 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { uiItemTypesConst } from 'consts';
 
-import { UiItem } from './types';
+import { IUiItemData } from './types';
 
-const sortByOrderNumber = (items: Array<UiItem>) => items.sort((a, b) => {
+const sortByOrderNumber = (items: Array<IUiItemData>) => items.sort((a, b) => {
   if (a.order_number > b.order_number) {
     return 1;
   } else if (a.order_number < b.order_number) {
@@ -14,7 +14,7 @@ const sortByOrderNumber = (items: Array<UiItem>) => items.sort((a, b) => {
   }
 });
 
-export const prepareUiItems = (uiItems: ImmutableArray<UiItem>) => {
+export const prepareUiItems = (uiItems: ImmutableArray<IUiItemData>) => {
   const sortedItems = sortByOrderNumber(uiItems.asMutable());
 
   return sortedItems.map(item => {

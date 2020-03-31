@@ -5,8 +5,8 @@ import { Flex } from '@rebass/grid';
 
 import { Button, Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst, identificationTypesConst } from 'consts';
+import { CustomerInfo } from './../../components';
 
-import CustomerInfo from 'containers/Ledger/Customers/components/CustomerInfo';
 import {
   THandleAddCustomer,
   THandleDeleteCustomer,

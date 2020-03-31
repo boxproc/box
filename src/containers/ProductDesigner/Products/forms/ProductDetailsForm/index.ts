@@ -11,9 +11,9 @@ import {
   createLoadingSelector,
   handleGetProductDetails,
   handleUpdateProductDetails,
+  IStoreState,
   ProductsActionTypes,
   selectCurrentProductDetails,
-  StoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_DETAILS);
@@ -26,7 +26,7 @@ const loadingSelectorUpdate = createLoadingSelector([
   ProductsActionTypes.UPDATE_PRODUCT_DETAILS,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   isUpdating: loadingSelectorUpdate(state),
   initialValues: selectCurrentProductDetails(state),

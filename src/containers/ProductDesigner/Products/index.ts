@@ -8,11 +8,11 @@ import {
   handleDeleteProduct,
   handleFilterProducts,
   isReadOnlySelector,
+  IStoreState,
   ProductsActionTypes,
   resetProducts,
   selectProductItems,
   selectProductName,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
@@ -21,7 +21,7 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.DELETE_PRODUCT,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   productItems: selectProductItems(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),

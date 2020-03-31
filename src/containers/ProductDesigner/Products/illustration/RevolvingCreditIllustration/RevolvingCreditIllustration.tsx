@@ -10,11 +10,11 @@ import { IWithLoadTransactionTypes, withLoadTransactionTypes } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
 
-import { HandleIllustrateRevolvingCreditProduct, ResetProductIllustration } from 'store';
+import { THandleIllustrateRevCredit, TResetProductIllustration } from 'store';
 
 interface IRevolvingCreditIllustration extends IWithLoadTransactionTypes {
-  illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
-  resetProductIllustration: ResetProductIllustration;
+  illustrateRevolvingCreditProduct: THandleIllustrateRevCredit;
+  resetProductIllustration: TResetProductIllustration;
   initialFormValues: object;
   productId: number;
   dirty: boolean;

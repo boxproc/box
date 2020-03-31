@@ -1,12 +1,12 @@
 import { ILogData } from 'types';
 import {
-  SystemMonitorEndpointsData,
-  SystemMonitorInterfacesData,
-  SystemMonitorSchedulerData,
-  SystemMonitorTransactionsData,
+  ISysMonitorEndpointsData,
+  ISysMonitorInterfacesData,
+  ISysMonitorSchedulerData,
+  ISysMonitorTransactionsData,
 } from './types';
 
-export const systemMonitorInterfaces: SystemMonitorInterfacesData = {
+export const systemMonitorInterfaces: ISysMonitorInterfacesData = {
   system_monitor_interfaces: {
     interfaces_data: [
       {
@@ -33,7 +33,7 @@ export const systemMonitorInterfaces: SystemMonitorInterfacesData = {
   },
 };
 
-export const systemMonitorEndpoints: SystemMonitorEndpointsData = {
+export const systemMonitorEndpoints: ISysMonitorEndpointsData = {
   system_monitor_endpoints: {
     endpoints_data: [
       {
@@ -60,7 +60,7 @@ export const systemMonitorEndpoints: SystemMonitorEndpointsData = {
   },
 };
 
-export const systemMonitorScheduler: SystemMonitorSchedulerData = {
+export const systemMonitorScheduler: ISysMonitorSchedulerData = {
   system_monitor_scheduler_jobs: {
     scheduler_data: [
       {
@@ -83,7 +83,7 @@ export const systemMonitorScheduler: SystemMonitorSchedulerData = {
   },
 };
 
-export const systemMonitorLastTransactions: SystemMonitorTransactionsData = {
+export const systemMonitorLastTransactions: ISysMonitorTransactionsData = {
   transactions: [
     {
       institution_id: 1,

@@ -14,12 +14,12 @@ import {
   handleGetDictionaryCardStatuses,
   isChangingCardStatusSelector,
   isLoadingCardStatusesSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.CHANGE_CARD_STATUS);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isStatusesLoading: isLoadingCardStatusesSelector(state),
   isLoading: isChangingCardStatusSelector(state),
   cardStatusesOptions: cardStatusesOptionsSelector(state),

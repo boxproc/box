@@ -14,13 +14,13 @@ import {
 } from 'components';
 
 import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst } from 'consts';
-import { HandleIllustrateRevolvingCreditProduct } from 'store';
+import { THandleIllustrateRevCredit } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IRevolvingCreditIllustrationForm {
   transactionTypesOptions: Array<ISelectValue>;
-  illustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct;
+  illustrateRevolvingCreditProduct: THandleIllustrateRevCredit;
   isTransTypesLoading: boolean;
   isLoading: boolean;
   isDisabled: boolean;

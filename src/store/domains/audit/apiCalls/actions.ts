@@ -5,62 +5,61 @@ import { formNamesConst } from 'consts';
 import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
-  FilterAuditApiCallsAction,
-  GetDetailsAuditApiCallsAction,
+  IFilterApiCallsAction,
+  IGetDetailsApiCallsAction,
 } from './actionTypes';
 import * as api from './api';
-import { AuditApiCallsFilterPrepared } from './types';
-import { preparedFilterToSend } from './utils';
+import { IApiCallsFilterToSend } from './types';
+import { prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type HandleFilterAuditApiCalls = () => Thunk<void>;
-export type FilterAuditApiCalls = (params: Partial<AuditApiCallsFilterPrepared>) =>
-  FilterAuditApiCallsAction;
+export type THandleFilterApiCalls = () => Thunk<void>;
+export type TFilterApiCalls = (data: Partial<IApiCallsFilterToSend>) => IFilterApiCallsAction;
 
-export type HandleGetDetailsAuditApiCalls = () => Thunk<void>;
-export type GetDetailsAuditApiCalls = (id: number) => GetDetailsAuditApiCallsAction;
+export type THandleGetDetailsApiCalls = () => Thunk<void>;
+export type TGetDetailsApiCalls = (id: number) => IGetDetailsApiCallsAction;
 
-export type ResetApiCalls = () => void;
+export type TResetApiCalls = () => void;
 
-export const filterAuditApiCalls: FilterAuditApiCalls = params => ({
-  type: ActionTypeKeys.FILTER_AUDIT_API_CALLS,
-  payload: api.filterAuditApiCalls(params),
+export const filterApiCalls: TFilterApiCalls = data => ({
+  type: ActionTypeKeys.FILTER_API_CALLS,
+  payload: api.filterApiCalls(data),
 });
 
-export const getDetailsAuditApiCalls: GetDetailsAuditApiCalls = id => ({
-  type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS,
-  payload: api.getDetailsAuditApiCalls({ id }),
+export const getDetailsApiCalls: TGetDetailsApiCalls = id => ({
+  type: ActionTypeKeys.GET_DETAILS_API_CALLS,
+  payload: api.getDetailsApiCalls({ id }),
 });
 
-export const resetApiCalls: ResetApiCalls = () => ({
+export const resetApiCalls: TResetApiCalls = () => ({
   type: ActionTypeKeys.RESET_API_CALLS,
 });
 
-export const handleFilterAuditApiCalls: HandleFilterAuditApiCalls = () =>
+export const handleFilterApiCalls: THandleFilterApiCalls = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const formValues = getFormValues(formNamesConst.FILTER);
-        const preparedParams = preparedFilterToSend(formValues(state));
+        const preparedParams = prepareFilterToSend(formValues(state));
 
-        await dispatch(filterAuditApiCalls(preparedParams));
+        await dispatch(filterApiCalls(preparedParams));
       },
       dispatch
     );
   };
 
-export const handleGetDetailsAuditApiCalls: HandleGetDetailsAuditApiCalls = () =>
+export const handleGetDetailsApiCalls: THandleGetDetailsApiCalls = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const apiCallId = activeItemIdSelector(state);
 
-        await dispatch(getDetailsAuditApiCalls(apiCallId));
+        await dispatch(getDetailsApiCalls(apiCallId));
       },
       dispatch
     );

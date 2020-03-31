@@ -1,25 +1,25 @@
 import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  UPDATE_GENERAL_LEDGER = 'productDesigner/products/UPDATE_GENERAL_LEDGER',
-  UPDATE_GENERAL_LEDGER_FULFILLED = 'productDesigner/products/UPDATE_GENERAL_LEDGER_FULFILLED',
-  UPDATE_GENERAL_LEDGER_REJECTED = 'productDesigner/products/UPDATE_GENERAL_LEDGER_REJECTED',
+  UPDATE_GENERAL_LEDGER = 'products/UPDATE_GENERAL_LEDGER',
+  UPDATE_GENERAL_LEDGER_FULFILLED = 'products/UPDATE_GENERAL_LEDGER_FULFILLED',
+  UPDATE_GENERAL_LEDGER_REJECTED = 'products/UPDATE_GENERAL_LEDGER_REJECTED',
 }
 
-export interface UpdateGeneralLedgerAction {
+export interface UpdateProductGLAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER;
 }
 
-export interface UpdateGeneralLedgerFulfilledAction {
+export interface UpdateProductGLFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_FULFILLED;
 }
 
-export interface UpdateGeneralLedgerRejectedAction {
+export interface UpdateProductGLRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_GENERAL_LEDGER_REJECTED;
 }
 
-export type ProductGeneralLedgerActionTypes =
-  | UpdateGeneralLedgerFulfilledAction;
+export type TProductGLAction =
+  | UpdateProductGLFulfilledAction;

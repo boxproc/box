@@ -5,23 +5,23 @@ import {
 } from 'consts';
 
 import {
-  ProductApr,
-  ProductAprFormValues,
-  ProductAprItem,
-  ProductAprPlainInfo,
-  ProductFee,
-  ProductFeeFormValues,
-  ProductFeeItem,
-  ProductFeePlainInfo,
-  ProductReward,
-  ProductRewardFormValues,
-  ProductRewardItem,
-  ProductRewardPlainInfo,
+  IProductApr,
+  IProductAprData,
+  IProductAprFormValues,
+  IProductAprPlain,
+  IProductFee,
+  IProductFeeData,
+  IProductFeeFormValues,
+  IProductFeePlain,
+  IProductReward,
+  IProductRewardData,
+  IProductRewardFormValues,
+  IProductRewardPlain,
 } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => {
+export const prepareProductAprsToRender = (data: IProductAprData): IProductApr => {
   if (!data) {
     return null;
   }
@@ -47,7 +47,7 @@ export const prepareProductAprsToRender = (data: ProductAprItem): ProductApr => 
   };
 };
 
-export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<ProductAprItem> => {
+export const prepareProductAprs = (data: Partial<IProductAprPlain>): Partial<IProductAprData> => {
   if (!data) {
     return null;
   }
@@ -69,8 +69,8 @@ export const prepareProductAprs = (data: Partial<ProductAprPlainInfo>): Partial<
   };
 };
 
-export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormValues>):
-  Partial<ProductAprItem> => {
+export const prepareFormDataProductAprsToSend = (data: Partial<IProductAprFormValues>):
+  Partial<IProductAprData> => {
   if (!data) {
     return null;
   }
@@ -83,7 +83,7 @@ export const prepareFormDataProductAprsToSend = (data: Partial<ProductAprFormVal
   };
 };
 
-export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<ProductAprItem> => {
+export const prepareProductAprsToSend = (data: Partial<IProductApr>): Partial<IProductAprData> => {
   if (!data) {
     return null;
   }
@@ -98,7 +98,7 @@ export const prepareProductAprsToSend = (data: Partial<ProductApr>): Partial<Pro
   };
 };
 
-export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => {
+export const prepareProductFeesToRender = (data: IProductFeeData): IProductFee => {
   if (!data) {
     return null;
   }
@@ -129,7 +129,7 @@ export const prepareProductFeesToRender = (data: ProductFeeItem): ProductFee => 
   };
 };
 
-export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<ProductFeeItem> => {
+export const prepareProductFees = (data: Partial<IProductFeePlain>): Partial<IProductFeeData> => {
   if (!data) {
     return null;
   }
@@ -151,8 +151,8 @@ export const prepareProductFees = (data: Partial<ProductFeePlainInfo>): Partial<
   };
 };
 
-export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormValues>):
-  Partial<ProductFeeItem> => {
+export const prepareFormDataProductFeesToSend = (data: Partial<IProductFeeFormValues>):
+  Partial<IProductFeeData> => {
   if (!data) {
     return null;
   }
@@ -166,7 +166,7 @@ export const prepareFormDataProductFeesToSend = (data: Partial<ProductFeeFormVal
   };
 };
 
-export const prepareProductFeesToSend = (data: Partial<ProductFee>): Partial<ProductFeeItem> => {
+export const prepareProductFeesToSend = (data: Partial<IProductFee>): Partial<IProductFeeData> => {
   if (!data) {
     return null;
   }
@@ -183,7 +183,7 @@ export const prepareProductFeesToSend = (data: Partial<ProductFee>): Partial<Pro
   };
 };
 
-export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductReward => {
+export const prepareProductRewardsToRender = (data: IProductRewardData): IProductReward => {
   if (!data) {
     return null;
   }
@@ -211,8 +211,8 @@ export const prepareProductRewardsToRender = (data: ProductRewardItem): ProductR
   };
 };
 
-export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
-  Partial<ProductRewardItem> => {
+export const prepareProductRewards = (data: Partial<IProductRewardPlain>):
+  Partial<IProductRewardData> => {
   if (!data) {
     return null;
   }
@@ -234,8 +234,8 @@ export const prepareProductRewards = (data: Partial<ProductRewardPlainInfo>):
   };
 };
 
-export const prepareFormDataProductRewardsToSend = (data: Partial<ProductRewardFormValues>):
-  Partial<ProductRewardItem> => {
+export const prepareFormDataProductRewardsToSend = (data: Partial<IProductRewardFormValues>):
+  Partial<IProductRewardData> => {
   if (!data) {
     return null;
   }
@@ -248,8 +248,8 @@ export const prepareFormDataProductRewardsToSend = (data: Partial<ProductRewardF
   };
 };
 
-export const prepareProductRewardsToSend = (data: Partial<ProductReward>):
-  Partial<ProductRewardItem> => {
+export const prepareProductRewardsToSend = (data: Partial<IProductReward>):
+  Partial<IProductRewardData> => {
   if (!data) {
     return null;
   }

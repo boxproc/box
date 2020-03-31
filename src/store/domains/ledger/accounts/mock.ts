@@ -1,7 +1,5 @@
 import { IAccountsData } from './types';
 
-import { IResponseStatus } from 'types';
-
 export const accountsMock: IAccountsData = {
   accounts: [
     {
@@ -121,10 +119,4 @@ export const accountsMock: IAccountsData = {
       repayment_type: 'O',
     },
   ],
-};
-
-export const successResponseMock: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

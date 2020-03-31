@@ -16,21 +16,21 @@ import {
 } from 'store';
 
 interface IResultManualTransactionModal extends IWithModal {
-  ledgerManualTransaction: IManualTransactionResult;
-  ledgerLimitAdjustment: ILimitAdjustmentResult;
-  filterLedgerTransactionsById: THandleFilterTransactionsById;
-  transactionId: number;
+  filterTransactionsById: THandleFilterTransactionsById;
   isLimitAdjustment: boolean;
+  limitAdjustment: ILimitAdjustmentResult;
+  manualTransaction: IManualTransactionResult;
+  transactionId: number;
 }
 
 const modalName = modalNamesConst.MANUAL_TRANSACTION_RESULT;
 
 const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
   closeModal,
-  ledgerManualTransaction,
-  ledgerLimitAdjustment,
+  manualTransaction,
+  limitAdjustment,
   isLimitAdjustment,
-  filterLedgerTransactionsById,
+  filterTransactionsById,
   transactionId,
   closeAllModals,
 }) => {
@@ -41,10 +41,10 @@ const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
 
   const handleGetTransaction = React.useCallback(
     () => {
-      filterLedgerTransactionsById({ transaction_id: transactionId });
+      filterTransactionsById({ transaction_id: transactionId });
       closeAllModals();
     },
-    [transactionId, filterLedgerTransactionsById, closeAllModals]
+    [transactionId, filterTransactionsById, closeAllModals]
   );
 
   return (
@@ -55,8 +55,8 @@ const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
       containerWidth="650px"
     >
       {isLimitAdjustment
-        ? (<ResultLimitAdjustmentForm initialValues={ledgerLimitAdjustment} />)
-        : (<ResultManualTransactionForm initialValues={ledgerManualTransaction} />)
+        ? (<ResultLimitAdjustmentForm initialValues={limitAdjustment} />)
+        : (<ResultManualTransactionForm initialValues={manualTransaction} />)
       }
       <Hr />
       <OkCancelButtons

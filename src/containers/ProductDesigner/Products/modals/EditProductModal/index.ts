@@ -6,10 +6,10 @@ import { formNamesConst } from 'consts';
 import EditProductModal from './EditProductModal';
 
 import {
+  IStoreState,
   selectCurrentProductName,
   selectCurrentProductType,
   selectIsProductOverride,
-  StoreState,
 } from 'store';
 
 const generalProductFormDirty = isDirty(formNamesConst.GENERAL_PRODUCT);
@@ -19,7 +19,7 @@ const productAuxCounterFormDirty = isDirty(formNamesConst.PRODUCT_AUXILIARY_COUN
 const servicesFormDirty = isDirty(formNamesConst.PRODUCT_SERVICES);
 const glFormDirty = isDirty(formNamesConst.PRODUCT_GENERAL_LEDGER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isGeneralProductFormDirty: generalProductFormDirty(state),
   isProductDetailsFormDirty: productDetailsFormDirty(state),
   isProductRulesFormDirty: productRulesFormDirty(state),

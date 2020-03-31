@@ -11,12 +11,12 @@ import {
   isCurrenciesLoadingSelector,
   isLimitAdjustmentLoadingSelector,
   isManualTransactionLoading,
+  IStoreState,
   manualTrModalIsLimitAdjSelector,
   payloadManualTrModalSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isLimitAdjustmentLoadingSelector(state) || isManualTransactionLoading(state),
   isCurrenciesLoading: isCurrenciesLoadingSelector(state),
   modalPayload: payloadManualTrModalSelector(state),

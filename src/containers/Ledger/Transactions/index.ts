@@ -11,21 +11,21 @@ import {
   handleFilterByIdStatements,
   handleFilterTransactions,
   isLoadingTransactionsSelector,
+  IStoreState,
   isTrConvertibleToLoanSelector,
   resetTransactions,
-  selectUiItems,
-  StoreState,
   transactionsSelector,
+  uiItemsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isLoadingTransactionsSelector(state),
   transactions: transactionsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   currentId: activeItemIdSelector(state),
   isConvertibleToLoan: isTrConvertibleToLoanSelector(state),
-  uiItems: selectUiItems(state),
+  uiItems: uiItemsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -7,9 +7,7 @@ import { Button, Modal, T4 } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
 import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/components';
-
 import { IStatementApr } from 'store';
 
 interface IStatementAprs extends IWithModal {

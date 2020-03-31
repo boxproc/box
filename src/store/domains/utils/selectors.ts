@@ -1,15 +1,15 @@
 import { permissionTypesConst } from 'consts';
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
-export const activeTableRowIndexSelector = (state: StoreState) => state.utils.activeTableRowIndex;
+export const activeTableRowIndexSelector = (state: IStoreState) => state.utils.activeTableRowIndex;
 
-export const activeItemIdSelector = (state: StoreState) => state.utils.activeItemId;
+export const activeItemIdSelector = (state: IStoreState) => state.utils.activeItemId;
 
-export const isReadOnlySelector = (state: StoreState) =>
+export const isReadOnlySelector = (state: IStoreState) =>
     state.utils.activePagePermission === permissionTypesConst.READ_ONLY;
 
-export const isAutoRefreshSelector = (state: StoreState) => state.utils.isAutoRefresh;
+export const isAutoRefreshSelector = (state: IStoreState) => state.utils.isAutoRefresh;
 
-export const isOpenFilterSelector = (state: StoreState) => state.utils.isOpenFilter;
+export const isOpenFilterSelector = (state: IStoreState) => state.utils.isOpenFilter;
 
-export const isAccessibleFilterSelector = (state: StoreState) => state.utils.isAccessibleFiltering;
+export const isAccessibleFilterSelector = (state: IStoreState) => state.utils.isAccessibleFiltering;

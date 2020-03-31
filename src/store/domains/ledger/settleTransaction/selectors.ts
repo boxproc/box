@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './util';
 
-export const defaultRetrievedTrSelector = (state: StoreState) =>
+export const defaultRetrievedTrSelector = (state: IStoreState) =>
   state.ledger.settleTransaction.transaction;
 
 export const retrievedTransactionSelector = createSelector(

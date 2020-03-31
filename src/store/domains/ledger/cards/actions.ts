@@ -120,8 +120,8 @@ export const handleFilterByIdCards: THandleFilterCardsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_CARDS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.LEDGER_CARDS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.CARDS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.CARDS}`));
         await dispatch(filterCardsById(id));
         dispatch(setIsOpenFilter(false));
       },

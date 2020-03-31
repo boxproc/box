@@ -22,18 +22,18 @@ import {
 } from './actionTypes';
 import * as api from './api';
 import {
-  ProductApr,
-  ProductAprFormValues,
-  ProductAprIds,
-  ProductAprItem,
-  ProductFee,
-  ProductFeeFormValues,
-  ProductFeeItem,
-  ProductFeesIds,
-  ProductReward,
-  ProductRewardFormValues,
-  ProductRewardItem,
-  ProductRewardsIds,
+  IProductApr,
+  IProductAprData,
+  IProductAprFormValues,
+  IProductAprIds,
+  IProductFee,
+  IProductFeeData,
+  IProductFeeFormValues,
+  IProductFeesIds,
+  IProductReward,
+  IProductRewardData,
+  IProductRewardFormValues,
+  IProductRewardsIds,
 } from './types';
 import {
   prepareFormDataProductAprsToSend,
@@ -51,38 +51,38 @@ import { errorDecoratorUtil } from 'utils';
 export type GetProductAprs = (id: number) => GetProductAprsAction;
 export type HandleGetProductAprs = () => Thunk<void>;
 
-export type AddProductApr = (data: Partial<ProductAprItem>) => AddProductAprAction;
-export type HandleAddProductApr = (data: Partial<ProductAprFormValues>) => Thunk<void>;
+export type AddProductApr = (data: Partial<IProductAprData>) => AddProductAprAction;
+export type HandleAddProductApr = (data: Partial<IProductAprFormValues>) => Thunk<void>;
 
-export type UpdateProductApr = (data: Partial<ProductAprItem>) => UpdateProductAprAction;
-export type HandleUpdateProductApr = (data: Partial<ProductApr>) => Thunk<void>;
+export type UpdateProductApr = (data: Partial<IProductAprData>) => UpdateProductAprAction;
+export type HandleUpdateProductApr = (data: Partial<IProductApr>) => Thunk<void>;
 
-export type DeleteProductApr = (data: ProductAprIds) => DeleteProductAprAction;
-export type HandleDeleteProductApr = (data: ProductAprIds) => Thunk<void>;
+export type DeleteProductApr = (data: IProductAprIds) => DeleteProductAprAction;
+export type HandleDeleteProductApr = (data: IProductAprIds) => Thunk<void>;
 
 export type GetProductFees = (id: number) => GetProductFeesAction;
 export type HandleGetProductFees = () => Thunk<void>;
 
-export type AddProductFee = (data: Partial<ProductFeeItem>) => AddProductFeeAction;
-export type HandleAddProductFee = (data: Partial<ProductFeeFormValues>) => Thunk<void>;
+export type AddProductFee = (data: Partial<IProductFeeData>) => AddProductFeeAction;
+export type HandleAddProductFee = (data: Partial<IProductFeeFormValues>) => Thunk<void>;
 
-export type UpdateProductFee = (data: Partial<ProductFeeItem>) => UpdateProductFeeAction;
-export type HandleUpdateProductFee = (data: Partial<ProductFee>) => Thunk<void>;
+export type UpdateProductFee = (data: Partial<IProductFeeData>) => UpdateProductFeeAction;
+export type HandleUpdateProductFee = (data: Partial<IProductFee>) => Thunk<void>;
 
-export type DeleteProductFee = (data: ProductFeesIds) => DeleteProductFeeAction;
-export type HandleDeleteProductFee = (data: ProductFeesIds) => Thunk<void>;
+export type DeleteProductFee = (data: IProductFeesIds) => DeleteProductFeeAction;
+export type HandleDeleteProductFee = (data: IProductFeesIds) => Thunk<void>;
 
 export type GetProductRewards = (id: number) => GetProductRewardsAction;
 export type HandleGetProductRewards = () => Thunk<void>;
 
-export type AddProductReward = (data: Partial<ProductRewardItem>) => AddProductRewardAction;
-export type HandleAddProductReward = (data: Partial<ProductRewardFormValues>) => Thunk<void>;
+export type AddProductReward = (data: Partial<IProductRewardData>) => AddProductRewardAction;
+export type HandleAddProductReward = (data: Partial<IProductRewardFormValues>) => Thunk<void>;
 
-export type UpdateProductReward = (data: Partial<ProductRewardItem>) => UpdateProductRewardAction;
-export type HandleUpdateProductReward = (data: Partial<ProductReward>) => Thunk<void>;
+export type UpdateProductReward = (data: Partial<IProductRewardData>) => UpdateProductRewardAction;
+export type HandleUpdateProductReward = (data: Partial<IProductReward>) => Thunk<void>;
 
-export type DeleteProductReward = (data: ProductRewardsIds) => DeleteProductRewardAction;
-export type HandleDeleteProductReward = (data: ProductRewardsIds) => Thunk<void>;
+export type DeleteProductReward = (data: IProductRewardsIds) => DeleteProductRewardAction;
+export type HandleDeleteProductReward = (data: IProductRewardsIds) => Thunk<void>;
 
 export type GetProductFeeAprs = (id: number) => GetProductFeeAprsAction;
 export type HandleGetProductFeeAprs = () => Thunk<void>;
@@ -176,10 +176,10 @@ export const handleAddProductApr: HandleAddProductApr = data =>
       async () => {
         const state = getState();
         const productId = activeItemIdSelector(state);
-        const preparedValues = prepareFormDataProductAprsToSend(data);
+        const preparedData = prepareFormDataProductAprsToSend(data);
 
         await dispatch(addProductApr({
-          ...preparedValues,
+          ...preparedData,
           product_id: productId,
         }));
         await dispatch(handleGetProductAprs());
@@ -193,9 +193,9 @@ export const handleUpdateProductApr: HandleUpdateProductApr = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareProductAprsToSend(data);
+        const preparedData = prepareProductAprsToSend(data);
 
-        await dispatch(updateProductApr(preparedValues));
+        await dispatch(updateProductApr(preparedData));
         await dispatch(handleGetProductAprs());
       },
       dispatch
@@ -231,10 +231,10 @@ export const handleAddProductFee: HandleAddProductFee = data =>
       async () => {
         const state = getState();
         const productId = activeItemIdSelector(state);
-        const preparedValues = prepareFormDataProductFeesToSend(data);
+        const preparedData = prepareFormDataProductFeesToSend(data);
 
         await dispatch(addProductFee({
-          ...preparedValues,
+          ...preparedData,
           product_id: productId,
         }));
         await dispatch(handleGetProductFees());
@@ -248,9 +248,9 @@ export const handleUpdateProductFee: HandleUpdateProductFee = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareProductFeesToSend(data);
+        const preparedData = prepareProductFeesToSend(data);
 
-        await dispatch(updateProductFee(preparedValues));
+        await dispatch(updateProductFee(preparedData));
         await dispatch(handleGetProductFees());
       },
       dispatch
@@ -286,10 +286,10 @@ export const handleAddProductReward: HandleAddProductReward = data =>
       async () => {
         const state = getState();
         const productId = activeItemIdSelector(state);
-        const preparedValues = prepareFormDataProductRewardsToSend(data);
+        const preparedData = prepareFormDataProductRewardsToSend(data);
 
         await dispatch(addProductReward({
-          ...preparedValues,
+          ...preparedData,
           product_id: productId,
         }));
         await dispatch(handleGetProductRewards());
@@ -303,9 +303,9 @@ export const handleUpdateProductReward: HandleUpdateProductReward = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareProductRewardsToSend(data);
+        const preparedData = prepareProductRewardsToSend(data);
 
-        await dispatch(updateProductReward(preparedValues));
+        await dispatch(updateProductReward(preparedData));
         await dispatch(handleGetProductRewards());
       },
       dispatch

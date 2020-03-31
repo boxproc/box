@@ -12,15 +12,15 @@ import {
   isRetrievedTransactionSelector,
   isRetrievingTrSelector,
   isSettlingTrSelector,
+  IStoreState,
   payloadSettleTrModalSelector,
   resetRetrievedTransaction,
   retrievedTransactionSelector,
-  StoreState,
 } from 'store';
 
 const dirtySettleTransactionForm = isDirty(formNamesConst.SETTLE_TRANSACTION_FORM);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isRetrieving: isRetrievingTrSelector(state),
   isLoading: isSettlingTrSelector(state),
   isRetrievedTransaction: isRetrievedTransactionSelector(state),

@@ -15,12 +15,12 @@ import {
   handleFilterCustomers,
   isLoadingCustomersSelector,
   isReadOnlySelector,
+  IStoreState,
   resetCustomers,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isLoadingCustomersSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   customers: customersSelector(state),

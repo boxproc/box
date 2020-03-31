@@ -2,39 +2,38 @@ import { getFormValues } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { ActionTypeKeys, FilterUiSessionsAction } from './actionTypes';
+import { ActionTypeKeys, IFilterUiSessionsAction } from './actionTypes';
 import * as api from './api';
-import { AuditUiSessionsFilterPrepared } from './types';
-import { preparedFilterToSend } from './utils';
+import { IUiSessionsFilterToSend } from './types';
+import { prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type FilterAuditUiSessions = (params: AuditUiSessionsFilterPrepared) =>
-  FilterUiSessionsAction;
-export type HandleFilterAuditUiSessions = () => Thunk<void>;
+export type TFilterUiSessions = (data: IUiSessionsFilterToSend) => IFilterUiSessionsAction;
+export type THandleFilterUiSessions = () => Thunk<void>;
 
-export type ResetUiSessions = () => void;
+export type TResetUiSessions = () => void;
 
-export const filterAuditUiSessions: FilterAuditUiSessions = filter => ({
-  type: ActionTypeKeys.FILTER_AUDIT_UI_SESSIONS,
-  payload: api.filterAuditUiSessions(filter),
+export const filterUiSessions: TFilterUiSessions = filter => ({
+  type: ActionTypeKeys.FILTER_UI_SESSIONS,
+  payload: api.filterUiSessions(filter),
 });
 
-export const resetUiSessions: ResetUiSessions = () => ({
+export const resetUiSessions: TResetUiSessions = () => ({
   type: ActionTypeKeys.RESET_UI_SESSIONS,
 });
 
-export const handleFilterAuditUiSessions: HandleFilterAuditUiSessions = () =>
+export const handleFilterUiSessions: THandleFilterUiSessions = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterAuditUiSessions(preparedValues));
+        if (preparedData) {
+          await dispatch(filterUiSessions(preparedData));
         }
       },
       dispatch

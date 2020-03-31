@@ -1,5 +1,4 @@
 import { ImmutableArray } from 'seamless-immutable';
-
 import { ISelectValue } from 'types';
 
 export interface IManualTransactionReq {

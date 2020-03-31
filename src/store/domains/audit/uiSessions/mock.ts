@@ -1,6 +1,6 @@
-import { AuditUiSessionsDataResp } from './types';
+import { IUiSessionsData } from './types';
 
-export const uiSessionsData: AuditUiSessionsDataResp = {
+export const uiSessionsMock: IUiSessionsData = {
   ui_sessions: [
     {
       user_id: 1,

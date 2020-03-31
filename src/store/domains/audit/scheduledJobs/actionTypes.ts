@@ -1,57 +1,54 @@
-import { AuditScheduledJobsItems } from './types';
+import { IScheduledJobsData } from './types';
 
 import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  FILTER_AUDIT_SCHEDULED_JOBS = 'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS',
-  FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED =
-  'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED',
-  FILTER_AUDIT_SCHEDULED_JOBS_REJECTED = 'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_REJECTED',
+  FILTER_SCHEDULED_JOBS = 'scheduledJobs/FILTER_SCHEDULED_JOBS',
+  FILTER_SCHEDULED_JOBS_FULFILLED = 'scheduledJobs/FILTER_SCHEDULED_JOBS_FULFILLED',
+  FILTER_SCHEDULED_JOBS_REJECTED = 'scheduledJobs/FILTER_SCHEDULED_JOBS_REJECTED',
 
-  FILTER_AUDIT_SCHEDULED_JOBS_BY_ID = 'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_BY_ID',
-  FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_FULFILLED =
-  'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_FULFILLED',
-  FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_REJECTED =
-  'audit/scheduledJobs/FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_REJECTED',
+  FILTER_SCHEDULED_JOBS_BY_ID = 'scheduledJobs/FILTER_SCHEDULED_JOBS_BY_ID',
+  FILTER_SCHEDULED_JOBS_BY_ID_FULFILLED = 'scheduledJobs/FILTER_SCHEDULED_JOBS_BY_ID_FULFILLED',
+  FILTER_SCHEDULED_JOBS_BY_ID_REJECTED = 'scheduledJobs/FILTER_SCHEDULED_JOBS_BY_ID_REJECTED',
 
-  RESET_SCHEDULED_JOBS = 'audit/scheduledJobs/RESET_SCHEDULED_JOBS',
+  RESET_SCHEDULED_JOBS = 'scheduledJobs/RESET_SCHEDULED_JOBS',
 }
 
-export interface FilterScheduledJobsAction {
+export interface IFilterScheduledJobsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS;
 }
 
-export interface FilterScheduledJobsFulfilledAction {
-  readonly payload: AuditScheduledJobsItems;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED;
+export interface IFilterScheduledJobsFulfilledAction {
+  readonly payload: IScheduledJobsData;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_FULFILLED;
 }
 
-export interface FilterScheduledJobsRejectedAction {
+export interface IFilterScheduledJobsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_REJECTED;
 }
 
-export interface FilterScheduledJobsByIdAction {
+export interface IFilterScheduledJobsByIdAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID;
 }
 
-export interface FilterScheduledJobsByIdFulfilledAction {
-  readonly payload: AuditScheduledJobsItems;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_FULFILLED;
+export interface IFilterScheduledJobsByIdFulfilledAction {
+  readonly payload: IScheduledJobsData;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID_FULFILLED;
 }
 
-export interface FilterScheduledJobsByIdRejectedAction {
+export interface IFilterScheduledJobsByIdRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID_REJECTED;
 }
 
-export interface ResetScheduledJobsAction {
+export interface IResetScheduledJobsAction {
   readonly type: ActionTypeKeys.RESET_SCHEDULED_JOBS;
 }
 
-export type AuditScheduledJobsActionTypes =
-  | FilterScheduledJobsFulfilledAction
-  | FilterScheduledJobsByIdFulfilledAction
-  | ResetScheduledJobsAction;
+export type TScheduledJobsAction =
+  | IFilterScheduledJobsFulfilledAction
+  | IFilterScheduledJobsByIdFulfilledAction
+  | IResetScheduledJobsAction;

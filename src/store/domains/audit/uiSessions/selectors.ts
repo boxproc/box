@@ -1,12 +1,17 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
-import { preparedDataToRender } from './utils';
+import { IStoreState } from 'store';
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender } from './utils';
 
-export const selectDefaultAuditUiSessions = (state: StoreState) =>
-  state.audit.uiSessions.uiSessions;
+export const defaultUiSessionsSelector = (state: IStoreState) => state.audit.uiSessions.uiSessions;
 
-export const selectAuditUiSessions = createSelector(
-  selectDefaultAuditUiSessions,
-  items => items && items.map(item => preparedDataToRender(item))
+export const uiSessionsSelector = createSelector(
+  defaultUiSessionsSelector,
+  data => data && data.map(el => prepareDataToRender(el))
 );
+
+export const isUiSessionsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_UI_SESSIONS,
+]);

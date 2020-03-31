@@ -159,7 +159,7 @@ export interface IResetAccountsAction {
   readonly type: ActionTypeKeys.RESET_ACCOUNTS;
 }
 
-export type TAccountsActionTypes =
+export type TAccountsAction =
   | IGetAccountCardsFulfilledAction
   | IOrderAccountCardFulfilledAction
   | IUpdateAccountFulfilledAction

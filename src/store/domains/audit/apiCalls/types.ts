@@ -1,11 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-export interface AuditApiCallId {
+export interface IApiCallData {
   id: number;
-}
-
-export interface ApiCallsItem extends AuditApiCallId {
   event_datetime: string;
   endpoint_id: number;
   endpoint_name: string;
@@ -15,11 +12,12 @@ export interface ApiCallsItem extends AuditApiCallId {
   institution_id: number;
 }
 
-export interface ApiCallsItems {
-  api_calls: Array<ApiCallsItem>;
+export interface IApiCallsData {
+  api_calls: Array<IApiCallData>;
 }
 
-export interface ApiCallsItemPrepared extends AuditApiCallId {
+export interface IApiCall {
+  id: number;
   eventDatetime: string;
   endpointId: number;
   endpointName: string;
@@ -29,7 +27,20 @@ export interface ApiCallsItemPrepared extends AuditApiCallId {
   institutionId: string | number;
 }
 
-export interface AuditApiCallsFilter {
+export interface IApiCallDetailsData {
+  request_body: string;
+  response_body: string;
+}
+
+export interface IApiCallDetails {
+  api_call: IApiCallDetailsData;
+}
+
+/**
+ * API calls filter interfaces
+ */
+
+export interface IApiCallsFilter {
   institutionId: ISelectValue;
   endpointId: ISelectValue;
   apiName: string;
@@ -37,7 +48,7 @@ export interface AuditApiCallsFilter {
   apiCallsDateTimeTo: string;
 }
 
-export interface AuditApiCallsFilterPrepared {
+export interface IApiCallsFilterToSend {
   institution_id: string | number;
   endpoint_id: string | number;
   api_name: string;
@@ -45,16 +56,8 @@ export interface AuditApiCallsFilterPrepared {
   date_to: string;
 }
 
-export interface ApiCallDetailsItem {
-  request_body: string;
-  response_body: string;
-}
-
-export interface ApiCallDetails {
-  api_call: ApiCallDetailsItem;
-}
-
-export interface AuditApiCallsState {
-  apiCalls: ImmutableArray<ApiCallsItem>;
-  apiCallDetails: ApiCallDetailsItem;
+/** API calls state interface */
+export interface IApiCallsState {
+  apiCalls: ImmutableArray<IApiCallData>;
+  apiCallDetails: IApiCallDetailsData;
 }

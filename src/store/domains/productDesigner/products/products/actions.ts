@@ -50,7 +50,7 @@ export type HandleGetInstitutionProducts = (id: number | string) => Thunk<void>;
 export type DeleteProduct = (id: number) => DeleteProductAction;
 export type HandleDeleteProduct = () => Thunk<void>;
 
-export type FilterProducts = (params: ProductFilterPrepared) => FilterProductsAction;
+export type FilterProducts = (data: ProductFilterPrepared) => FilterProductsAction;
 export type HandleFilterProducts = () => Thunk<void>;
 
 export type GetProductDetails = (id: number) => GetProductDetailsAction;
@@ -81,9 +81,9 @@ export const deleteProduct: DeleteProduct = id => ({
   meta: { id },
 });
 
-export const filterProducts: FilterProducts = params => ({
+export const filterProducts: FilterProducts = data => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
-  payload: api.filterProducts(params),
+  payload: api.filterProducts(data),
 });
 
 export const getProductDetails: GetProductDetails = id => ({
@@ -122,10 +122,10 @@ export const handleFilterProducts: HandleFilterProducts = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = prepareProductFilterDataToSend(formValues(state));
+        const preparedData = prepareProductFilterDataToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterProducts(preparedValues));
+        if (preparedData) {
+          await dispatch(filterProducts(preparedData));
         }
       },
       dispatch
@@ -152,7 +152,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
         await dispatch(deleteProduct(id));
         dispatch(closeModal(modalNamesConst.EDIT_PRODUCT));
 
-        if (window.location.pathname === `${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`) {
+        if (window.location.pathname === `${basePath}${uiItemsConst.ACCOUNTS}`) {
           await dispatch(handleFilterAccounts());
         }
       },
@@ -187,11 +187,11 @@ export const handleAddProduct: HandleAddProduct = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareNewProductDataToSend(data);
+        const preparedData = prepareNewProductDataToSend(data);
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        const res = await dispatch(addProduct(preparedValues)) as any;
+        const res = await dispatch(addProduct(preparedData)) as any;
 
         if (res) {
           if (isAccessibleFiltering) {
@@ -211,9 +211,9 @@ export const handleUpdateProduct: HandleUpdateProduct = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareGeneralProductDataToSend(data);
+        const preparedData = prepareGeneralProductDataToSend(data);
 
-        await dispatch(updateProduct(preparedValues));
+        await dispatch(updateProduct(preparedData));
         await Promise.all([
           dispatch(handleGetProduct()),
           dispatch(handleFilterProducts()),
@@ -228,12 +228,12 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const preparedValues = prepareProductDetailsDataToSend(
+        const preparedData = prepareProductDetailsDataToSend(
           data,
           selectCurrentProductType(state)
         );
 
-        await dispatch(updateProductDetails(preparedValues));
+        await dispatch(updateProductDetails(preparedData));
       },
       dispatch
     );

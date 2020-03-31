@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 
 import ConfirmationModal from './ConfirmationModal';
 
-import { payloadConfirmationModalSelector, StoreState } from 'store';
+import { IStoreState, payloadConfirmationModalSelector } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   payloadConfirmModal: payloadConfirmationModalSelector(state),
 });
 

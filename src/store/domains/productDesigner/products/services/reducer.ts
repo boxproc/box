@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, ProductServicesActionTypes } from './actionTypes';
+import { ActionTypeKeys, TProductServicesAction } from './actionTypes';
 import { ProductServicesState } from './types';
 
 export const productServicesInitialState: ImmutableObject<ProductServicesState> = Immutable({
@@ -9,7 +9,7 @@ export const productServicesInitialState: ImmutableObject<ProductServicesState> 
 });
 
 const productServicesReducer =
-  (state = productServicesInitialState, action: ProductServicesActionTypes) => {
+  (state = productServicesInitialState, action: TProductServicesAction) => {
     switch (action.type) {
       case ActionTypeKeys.GET_SERVICE_INTERFACES_FULFILLED:
         return state.set('interfaces', action.payload.interfaces);

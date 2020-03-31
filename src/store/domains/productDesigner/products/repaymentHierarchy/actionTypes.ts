@@ -3,15 +3,13 @@ import { RepaymentHierarchyItems } from './types';
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_REPAYMENT_HIERARCHY = 'productDesigner/products/GET_REPAYMENT_HIERARCHY',
-  GET_REPAYMENT_HIERARCHY_FULFILLED = 'productDesigner/products/GET_REPAYMENT_HIERARCHY_FULFILLED',
-  GET_REPAYMENT_HIERARCHY_REJECTED = 'productDesigner/products/GET_REPAYMENT_HIERARCHY_REJECTED',
+  GET_REPAYMENT_HIERARCHY = 'products/GET_REPAYMENT_HIERARCHY',
+  GET_REPAYMENT_HIERARCHY_FULFILLED = 'products/GET_REPAYMENT_HIERARCHY_FULFILLED',
+  GET_REPAYMENT_HIERARCHY_REJECTED = 'products/GET_REPAYMENT_HIERARCHY_REJECTED',
 
-  UPDATE_REPAYMENT_HIERARCHY = 'productDesigner/products/UPDATE_REPAYMENT_HIERARCHY',
-  UPDATE_REPAYMENT_HIERARCHY_FULFILLED =
-  'productDesigner/products/UPDATE_REPAYMENT_HIERARCHY_FULFILLED',
-  UPDATE_REPAYMENT_HIERARCHY_REJECTED =
-  'productDesigner/products/UPDATE_REPAYMENT_HIERARCHY_REJECTED',
+  UPDATE_REPAYMENT_HIERARCHY = 'products/UPDATE_REPAYMENT_HIERARCHY',
+  UPDATE_REPAYMENT_HIERARCHY_FULFILLED = 'products/UPDATE_REPAYMENT_HIERARCHY_FULFILLED',
+  UPDATE_REPAYMENT_HIERARCHY_REJECTED = 'products/UPDATE_REPAYMENT_HIERARCHY_REJECTED',
 }
 
 export interface GetRepaymentHierarchyAction {
@@ -44,6 +42,6 @@ export interface UpdateRepaymentHierarchyRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY_REJECTED;
 }
 
-export type RepaymentHierarchyActionTypes =
+export type TRepaymentHierarchyAction =
   | GetRepaymentHierarchyFulfilledAction
   | UpdateRepaymentHierarchyFulfilledAction;

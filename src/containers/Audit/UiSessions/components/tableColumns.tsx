@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { AuditUiSessionsItem } from 'store';
-
+import { IUiSession } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof AuditUiSessionsItem> = ITableCell<AuditUiSessionsItem[T]>;
+type TCell<T extends keyof IUiSession> = ITableCell<IUiSession[T]>;
 
 export const tableColumns = [
   {

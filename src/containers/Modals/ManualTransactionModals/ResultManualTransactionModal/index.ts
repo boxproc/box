@@ -5,23 +5,23 @@ import ManualTransactionModal from './ResultManualTransactionModal';
 
 import {
   handleFilterByIdTransactions,
+  IStoreState,
   limitAdjustmentSelector,
   manualTransactionIdSelector,
   manualTransactionSelector,
   manualTrModalIsLimitAdjSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
-  ledgerManualTransaction: manualTransactionSelector(state),
-  ledgerLimitAdjustment: limitAdjustmentSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  manualTransaction: manualTransactionSelector(state),
+  limitAdjustment: limitAdjustmentSelector(state),
   transactionId: manualTransactionIdSelector(state),
   isLimitAdjustment: manualTrModalIsLimitAdjSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterLedgerTransactionsById: handleFilterByIdTransactions,
+    filterTransactionsById: handleFilterByIdTransactions,
   },
   dispatch
 );

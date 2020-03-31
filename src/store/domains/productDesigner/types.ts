@@ -1,19 +1,17 @@
-import { ProductAprsFeesRewardsState } from './products/aprsFeesRewards';
-import { ProductAuxCountersState } from './products/auxCounters';
-import { ProductGeneralLedgerState } from './products/generalLedger';
-import { ProductIllustrationState } from './products/illustration';
+import { IProductAprsFeesRewardsState } from './products/aprsFeesRewards';
+import { IProductAuxCountersState } from './products/auxCounters';
+import { IProductIllustrationState } from './products/illustration';
 import { ProductsState } from './products/products';
 import { RepaymentHierarchyState } from './products/repaymentHierarchy';
 import { ProductRulesState } from './products/rules';
 import { ProductServicesState } from './products/services';
 
-export interface ProductDesignerState {
+export interface IProductDesignerState {
   products: ProductsState;
   productRules: ProductRulesState;
-  productAuxCounters: ProductAuxCountersState;
+  productAuxCounters: IProductAuxCountersState;
   productServices: ProductServicesState;
-  productGeneralLedger: ProductGeneralLedgerState;
-  productIllustration: ProductIllustrationState;
-  productAprsFeesRewards: ProductAprsFeesRewardsState;
+  productIllustration: IProductIllustrationState;
+  productAprsFeesRewards: IProductAprsFeesRewardsState;
   repaymentHierarchy: RepaymentHierarchyState;
 }

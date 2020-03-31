@@ -12,15 +12,15 @@ import {
   handleFilterByIdTransactions,
   handleFilterStatements,
   isStatementsLoadingSelector,
+  IStoreState,
   isTransArsLoadingSelector,
   resetStatements,
   setActiveItemId,
   statementsSelector,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   currentId: activeItemIdSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: isStatementsLoadingSelector(state),

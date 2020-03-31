@@ -14,11 +14,11 @@ import Filter from './Filter';
 import PageTitle from './PageTitle';
 
 import {
+  IUiItem,
   TResetUtils,
   TSetActivePagePermission,
   TSetIsOpenFilter,
   TStopAutoRefresh,
-  UiItemPrepared,
 } from 'store';
 
 import { IContextMenuItem } from 'types';
@@ -45,7 +45,7 @@ interface PageTemplateProps extends RouteComponentProps, IWithModal {
   setIsOpenFilter: TSetIsOpenFilter;
   stopAutoRefresh: TStopAutoRefresh;
   title: string;
-  uiItems: Array<UiItemPrepared>;
+  uiItems: Array<IUiItem>;
 }
 
 export const PageTemplate: React.FC<PageTemplateProps> = props => {

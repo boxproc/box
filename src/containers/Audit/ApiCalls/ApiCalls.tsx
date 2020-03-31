@@ -7,15 +7,15 @@ import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
 import { ApiCallsFilter } from './forms';
 
-import { ApiCallsItemPrepared, HandleFilterAuditApiCalls, ResetApiCalls } from 'store';
+import { IApiCall, THandleFilterApiCalls, TResetApiCalls } from 'store';
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface IApiCalls {
-  apiCalls: ImmutableArray<ApiCallsItemPrepared>;
-  filterApiCalls: HandleFilterAuditApiCalls;
+  apiCalls: ImmutableArray<IApiCall>;
+  filterApiCalls: THandleFilterApiCalls;
   institutionsOptions: Array<ISelectValue>;
-  resetApiCalls: ResetApiCalls;
+  resetApiCalls: TResetApiCalls;
   isLoading: boolean;
 }
 

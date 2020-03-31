@@ -11,7 +11,7 @@ import {
   CurrentTransactionBalance,
   CurrentTransactionCard,
   CurrentTransactionGeneral,
-} from 'containers/Ledger/Transactions/components';
+} from './../../components';
 
 interface ITransactionForm {
   onCancel: () => void;

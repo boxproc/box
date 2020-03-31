@@ -5,31 +5,26 @@ import UiSessions from './UiSessions';
 
 import {
   activeItemIdSelector,
-  AuditUiSessionsActionType,
-  createLoadingSelector,
-  handleFilterAuditUiSessions,
-  handleFilterAuditUserActivityByData,
+  handleFilterUiSessions,
+  handleFilterUsersActivityByData,
+  IStoreState,
+  isUiSessionsLoadingSelector,
   resetUiSessions,
-  selectAuditUiSessions,
-  StoreState,
+  uiSessionsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AuditUiSessionsActionType.FILTER_AUDIT_UI_SESSIONS,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isUiSessionsLoadingSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
-  uiSessions: selectAuditUiSessions(state),
+  uiSessions: uiSessionsSelector(state),
   currentUserId: activeItemIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterUiSessions: handleFilterAuditUiSessions,
-    filterUserActivity: handleFilterAuditUserActivityByData,
+    filterUiSessions: handleFilterUiSessions,
+    filterUsersActivity: handleFilterUsersActivityByData,
     resetUiSessions,
   },
   dispatch

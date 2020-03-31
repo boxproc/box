@@ -1,6 +1,6 @@
-import { AuditScheduledJobsItems } from './types';
+import { IScheduledJobsData } from './types';
 
-export const schedulerJobsItems: AuditScheduledJobsItems = {
+export const scheduledJobsMock: IScheduledJobsData = {
   scheduler_jobs: [
     {
       id: 1,

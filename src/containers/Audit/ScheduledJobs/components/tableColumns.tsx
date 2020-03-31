@@ -2,11 +2,10 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { AuditScheduledJobsItemPrepared } from 'store';
+import { IScheduledJob } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof AuditScheduledJobsItemPrepared> =
-  ITableCell<AuditScheduledJobsItemPrepared[T]>;
+type TCell<T extends keyof IScheduledJob> = ITableCell<IScheduledJob[T]>;
 
 export const tableColumns = [
   {

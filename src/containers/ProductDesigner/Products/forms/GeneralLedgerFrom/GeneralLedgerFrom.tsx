@@ -8,11 +8,11 @@ import { formNamesConst } from 'consts';
 
 import { GeneralLedger } from 'containers/ProductDesigner/Products/components';
 
-import { HandleUpdateGeneralLedger } from 'store';
+import { HandleUpdateProductGL } from 'store';
 
 interface IGeneralLedgerFrom extends ISpinner {
   currentProductId: number;
-  updateGeneralLedger: HandleUpdateGeneralLedger;
+  updateGeneralLedger: HandleUpdateProductGL;
   onCancel?: () => void;
   isReadOnly: boolean;
 }

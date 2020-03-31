@@ -9,10 +9,10 @@ import { UiSessionsFilter } from './forms';
 import { basePath, cookiesExpiresConst, iconNamesConst, uiItemsConst } from 'consts';
 
 import {
-  AuditUiSessionsItem,
-  HandleFilterAuditUiSessions,
-  HandleFilterAuditUserActivityByData,
-  ResetUiSessions,
+  IUiSession,
+  THandleFilterUiSessions,
+  THandleFilterUsersActivityByData,
+  TResetUiSessions,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -20,10 +20,10 @@ import { cookiesUtil, dateUtil, storageUtil } from 'utils';
 
 interface IUiSessions extends RouteComponentProps {
   institutionsOptions: Array<ISelectValue>;
-  resetUiSessions: ResetUiSessions;
-  uiSessions: ImmutableArray<AuditUiSessionsItem>;
-  filterUiSessions: HandleFilterAuditUiSessions;
-  filterUserActivity: HandleFilterAuditUserActivityByData;
+  resetUiSessions: TResetUiSessions;
+  uiSessions: ImmutableArray<IUiSession>;
+  filterUiSessions: THandleFilterUiSessions;
+  filterUsersActivity: THandleFilterUsersActivityByData;
   currentUserId: number;
   isLoading: boolean;
 }
@@ -32,7 +32,7 @@ const UiSessions: React.FC<IUiSessions> = ({
   institutionsOptions,
   uiSessions,
   filterUiSessions,
-  filterUserActivity,
+  filterUsersActivity,
   resetUiSessions,
   currentUserId,
   history,
@@ -62,8 +62,8 @@ const UiSessions: React.FC<IUiSessions> = ({
           value: userData.institutionId,
           label: userData.institutionName,
         },
-        userActivityDateTimeFrom: dateUtil.yesterdayDateTime(),
-        userActivityDateTimeTo: dateUtil.todayDateTime(),
+        usersActivityDateTimeFrom: dateUtil.yesterdayDateTime(),
+        usersActivityDateTimeTo: dateUtil.todayDateTime(),
       };
     },
     [uiSessions, currentUserId]
@@ -78,20 +78,20 @@ const UiSessions: React.FC<IUiSessions> = ({
     []
   );
 
-  const handleGoToUserActivity = React.useCallback(
+  const handleGoToUsersActivity = React.useCallback(
     () => {
-      const userActivityPathName = `${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}`;
+      const usersActivityPathName = `${basePath}${uiItemsConst.USERS_ACTIVITY}`;
 
       cookiesUtil.set(
-        `${userActivityPathName}-${loggedInUsername}`,
+        `${usersActivityPathName}-${loggedInUsername}`,
         JSON.stringify(currentUserDataForFilter),
         { expires: cookiesExpiresConst.MONTH }
       );
 
-      history.push(userActivityPathName);
-      filterUserActivity(currentUserDataForFilter);
+      history.push(usersActivityPathName);
+      filterUsersActivity(currentUserDataForFilter);
     },
-    [history, currentUserDataForFilter, filterUserActivity, loggedInUsername]
+    [history, currentUserDataForFilter, filterUsersActivity, loggedInUsername]
   );
 
   const contextMenuItems = React.useMemo(
@@ -99,10 +99,10 @@ const UiSessions: React.FC<IUiSessions> = ({
       {
         name: 'Show user activity',
         icon: iconNamesConst.SHORT_TEXT,
-        action: handleGoToUserActivity,
+        action: handleGoToUsersActivity,
       },
     ],
-    [handleGoToUserActivity]
+    [handleGoToUsersActivity]
   );
 
   const initialFilterValues = React.useMemo(

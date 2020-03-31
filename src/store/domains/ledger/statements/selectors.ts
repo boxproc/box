@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
@@ -18,7 +18,7 @@ import {
  * Statements selectors
  */
 
-export const defaultStatementsSelector = (state: StoreState) => state.ledger.statements.statements;
+export const defaultStatementsSelector = (state: IStoreState) => state.ledger.statements.statements;
 
 export const statementsSelector = createSelector(
   defaultStatementsSelector,
@@ -44,7 +44,7 @@ export const isStatementsLoadingSelector = createLoadingSelector([
  * Statement transactions selectors
  */
 
-export const defaultStatementTransactionsSelector = (state: StoreState) =>
+export const defaultStatementTransactionsSelector = (state: IStoreState) =>
   state.ledger.statements.transactions;
 
 export const statementTransactionsSelector = createSelector(
@@ -52,7 +52,7 @@ export const statementTransactionsSelector = createSelector(
   data => data && data.map(el => prepareTransactionsToRender(el))
 );
 
-export const defaultStatementPendingTransactionsSelector = (state: StoreState) =>
+export const defaultStatementPendingTransactionsSelector = (state: IStoreState) =>
   state.ledger.statements.pendingTransactions;
 
 export const statementPendingTransactionsSelector = createSelector(
@@ -84,7 +84,7 @@ export const currentStatementTransactionSelector = createSelector(
  * Account statements selectors
  */
 
-export const defaultAccountStatementsSelector = (state: StoreState) =>
+export const defaultAccountStatementsSelector = (state: IStoreState) =>
   state.ledger.statements.accountStatements;
 
 export const accountStatementsSelector = createSelector(
@@ -112,7 +112,7 @@ export const IsAccStatementsAprsLoadingSelector = createLoadingSelector([
  * Statement APRs selectors
  */
 
-export const defaultStatementAprsSelector = (state: StoreState) =>
+export const defaultStatementAprsSelector = (state: IStoreState) =>
   state.ledger.statements.statementAprs;
 
 export const statementAprsSelector = createSelector(

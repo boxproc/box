@@ -1,0 +1,42 @@
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+
+import Users from './Users';
+
+import {
+  activeItemIdSelector,
+  handleFilterByIdUsersActivity,
+  handleFilterUsers,
+  isAddingUserSelector,
+  isFilteringUsersActivityByIDSelector,
+  isFilteringUsersSelector,
+  IStoreState,
+  isUpdatingUserSelector,
+  resetUsers,
+  userInstitutionsOptionsSelector,
+  usersSelector,
+} from 'store';
+
+const mapStateToProps = (state: IStoreState) => ({
+  currentUserId: activeItemIdSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
+  users: usersSelector(state),
+  isLoading: isFilteringUsersActivityByIDSelector(state)
+    || isAddingUserSelector(state)
+    || isUpdatingUserSelector(state)
+    || isFilteringUsersSelector(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    filterUsers: handleFilterUsers,
+    filterUsersById: handleFilterByIdUsersActivity,
+    resetUsers,
+  },
+  dispatch
+);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Users);

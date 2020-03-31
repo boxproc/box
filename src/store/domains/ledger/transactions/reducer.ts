@@ -1,14 +1,13 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TTransactionsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TTransactionsAction } from './actionTypes';
 import { ITransactionsState } from './types';
 
 export const transactionsInitialState: ImmutableObject<ITransactionsState> = Immutable({
   transactions: Immutable([]),
 });
 
-const transactionsReducer =
-  (state = transactionsInitialState, action: TTransactionsActionTypes) => {
+const transactionsReducer = (state = transactionsInitialState, action: TTransactionsAction) => {
     switch (action.type) {
       case ActionTypeKeys.FILTER_TRANSACTIONS_FULFILLED:
         return state.set('transactions', action.payload.transactions);

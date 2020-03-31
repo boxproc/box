@@ -20,7 +20,7 @@ export interface ICloseAllModalsAction {
   readonly type: ActionTypeKeys.CLOSE_ALL_MODALS;
 }
 
-export type ModalActionTypes =
+export type TModalAction =
   | IOpenModalAction
   | ICloseModalAction
   | ICloseAllModalsAction;

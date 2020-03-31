@@ -10,13 +10,13 @@ import {
   currentAccAuxCountersSelector,
   currentAccProductTypeSelector,
   currentAccSelector,
-  StoreState,
+  IStoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.ACCOUNT);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
   currentAccAlias: currentAccAliasSelector(state),
   currentAcc: currentAccSelector(state),

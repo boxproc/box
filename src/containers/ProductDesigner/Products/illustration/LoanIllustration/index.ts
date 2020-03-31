@@ -10,15 +10,15 @@ import {
   createLoadingSelector,
   handleConvertTrToLoan,
   handleGetProductDetails,
-  handleIllustrateLoanProduct,
+  handleIllustrateLoan,
   isConvertingTrToLoanSelector,
-  ProductIllustrationActionTypes,
+  isLoanIllustrationLoadingSelector,
+  IStoreState,
+  loanIllustrationSelector,
   ProductsActionTypes,
   resetProductIllustration,
   selectInstitutionLoanProductsOptions,
   selectProductLoanDetails,
-  selectProductLoanIllustration,
-  StoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
@@ -27,23 +27,19 @@ const loadingSelector = createLoadingSelector([
   ProductsActionTypes.GET_PRODUCT_DETAILS,
 ]);
 
-const loadingSelectorIllustration = createLoadingSelector([
-  ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_LOAN,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
-  isIllustrationLoading: loadingSelectorIllustration(state),
+  isIllustrationLoading: isLoanIllustrationLoadingSelector(state),
   isConversionLoading: isConvertingTrToLoanSelector(state),
   loanDetails: selectProductLoanDetails(state),
-  productIllustrationData: selectProductLoanIllustration(state),
+  productIllustrationData: loanIllustrationSelector(state),
   loanProductsOptions: selectInstitutionLoanProductsOptions(state),
   selectedLoanProduct: formSelector(state, 'loanProduct'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    illustrateLoanProduct: handleIllustrateLoanProduct,
+    illustrateLoanProduct: handleIllustrateLoan,
     getProductDetails: handleGetProductDetails,
     convertTransactionToLoan: handleConvertTrToLoan,
     resetProductIllustration,

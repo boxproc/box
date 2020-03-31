@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, ProductsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TProductsAction } from './actionTypes';
 import { ProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
@@ -10,32 +10,31 @@ export const productsInitialState: ImmutableObject<ProductsState> = Immutable({
   currentProductDetails: null,
 });
 
-const productsReducer =
-  (state = productsInitialState, action: ProductsActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.DELETE_PRODUCT_FULFILLED:
-        return state.set('products', state.products.filter(el => el.id !== action.meta.id));
+const productsReducer = (state = productsInitialState, action: TProductsAction) => {
+  switch (action.type) {
+    case ActionTypeKeys.DELETE_PRODUCT_FULFILLED:
+      return state.set('products', state.products.filter(el => el.id !== action.meta.id));
 
-      case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
-        return state.set('products', action.payload.products);
+    case ActionTypeKeys.FILTER_PRODUCTS_FULFILLED:
+      return state.set('products', action.payload.products);
 
-      case ActionTypeKeys.GET_PRODUCT_FULFILLED:
-        return state.set('currentProduct', action.payload.product);
+    case ActionTypeKeys.GET_PRODUCT_FULFILLED:
+      return state.set('currentProduct', action.payload.product);
 
-      case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
-        return state.set('currentProductDetails', action.payload.product);
+    case ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED:
+      return state.set('currentProductDetails', action.payload.product);
 
-      case ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED:
-        return state.set('currentProductDetails', action.meta);
+    case ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED:
+      return state.set('currentProductDetails', action.meta);
 
-      case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
-        return state.set('institutionProducts', action.payload.institution_products);
+    case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
+      return state.set('institutionProducts', action.payload.institution_products);
 
-      case ActionTypeKeys.RESET_PRODUCTS:
-        return state = productsInitialState;
+    case ActionTypeKeys.RESET_PRODUCTS:
+      return state = productsInitialState;
 
-      default: return state;
-    }
-  };
+    default: return state;
+  }
+};
 
 export default productsReducer;

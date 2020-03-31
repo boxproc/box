@@ -3,10 +3,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import PageTitle from './PageTitle';
 
-import { handleGetHelpLink, selectHelpLink, StoreState } from 'store';
+import { handleGetHelpLink, helpLinkSelector, IStoreState } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
-  helpLink: selectHelpLink(state),
+const mapStateToProps = (state: IStoreState) => ({
+  helpLink: helpLinkSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

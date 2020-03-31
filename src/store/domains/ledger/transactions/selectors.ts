@@ -2,13 +2,13 @@ import { createSelector } from 'reselect';
 
 import { transactionTypesIds } from 'consts';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './utils';
 
-export const defaultTransactionsSelector = (state: StoreState) =>
+export const defaultTransactionsSelector = (state: IStoreState) =>
   state.ledger.transactions.transactions;
 
 export const transactionsSelector = createSelector(

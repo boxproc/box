@@ -7,19 +7,19 @@ import {
   isAutoRefreshSelector,
   isOpenFilterSelector,
   isReadOnlySelector,
+  IStoreState,
   resetUtils,
-  selectUiItems,
   setActivePagePermission,
   setIsOpenFilter,
   stopAutoRefresh,
-  StoreState,
+  uiItemsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isAutoRefresh: isAutoRefreshSelector(state),
   isOpenFilter: isOpenFilterSelector(state),
   isReadOnly: isReadOnlySelector(state),
-  uiItems: selectUiItems(state),
+  uiItems: uiItemsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

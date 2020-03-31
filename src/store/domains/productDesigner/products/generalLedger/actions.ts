@@ -1,31 +1,31 @@
 import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
-import { ActionTypeKeys, UpdateGeneralLedgerAction } from './actionTypes';
+import { ActionTypeKeys, UpdateProductGLAction } from './actionTypes';
 import * as api from './api';
-import { GeneralLedgerItem, GeneralLedgerItemPrepared } from './types';
-import { prepareGeneralLedgerToSend } from './utils';
+import { IProductGL, IProductGLData } from './types';
+import { prepareProductGLToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type UpdateGeneralLedger = (data: Partial<GeneralLedgerItem>) => UpdateGeneralLedgerAction;
-export type HandleUpdateGeneralLedger = (data: Partial<GeneralLedgerItemPrepared>) => Thunk<void>;
+export type UpdateProductGL = (data: Partial<IProductGLData>) => UpdateProductGLAction;
+export type HandleUpdateProductGL = (data: Partial<IProductGL>) => Thunk<void>;
 
-export const updateGeneralLedger: UpdateGeneralLedger = data => ({
+export const updateProductGL: UpdateProductGL = data => ({
   type: ActionTypeKeys.UPDATE_GENERAL_LEDGER,
-  payload: api.updateGeneralLedger(data),
+  payload: api.updateProductGL(data),
 });
 
-export const handleUpdateGeneralLedger: HandleUpdateGeneralLedger = data =>
+export const handleUpdateProductGL: HandleUpdateProductGL = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareGeneralLedgerToSend(data);
+        const preparedData = prepareProductGLToSend(data);
         const state = getState();
         const id = activeItemIdSelector(state);
 
-        await dispatch(updateGeneralLedger(preparedValues));
+        await dispatch(updateProductGL(preparedData));
         await dispatch(getProduct(id));
       },
       dispatch

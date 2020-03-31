@@ -1,10 +1,10 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, ProductAprsFeesRewardsActionTypes } from './actionTypes';
-import { ProductAprsFeesRewardsState } from './types';
+import { ActionTypeKeys, TProductAprsFeesRewardsAction } from './actionTypes';
+import { IProductAprsFeesRewardsState } from './types';
 
 export const productAprsFeesRewardsInitialState:
-  ImmutableObject<ProductAprsFeesRewardsState> = Immutable({
+  ImmutableObject<IProductAprsFeesRewardsState> = Immutable({
     productAprs: Immutable([]),
     productFees: Immutable([]),
     productRewards: Immutable([]),
@@ -12,7 +12,7 @@ export const productAprsFeesRewardsInitialState:
   });
 
 const productAprsFeesRewardsReducer =
-  (state = productAprsFeesRewardsInitialState, action: ProductAprsFeesRewardsActionTypes) => {
+  (state = productAprsFeesRewardsInitialState, action: TProductAprsFeesRewardsAction) => {
     switch (action.type) {
       case ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED:
         return state.set('productAprs', action.payload.product_aprs);

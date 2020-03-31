@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 
 import Modals from './Modals';
 
-import { modalsStateListSelector, StoreState } from 'store';
+import { IStoreState, modalsStateListSelector } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   modalsStateList: modalsStateListSelector(state),
 });
 

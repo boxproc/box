@@ -1,60 +1,57 @@
 import {
-  ProductLoanIllustrationDataResp,
-  ProductRevolvingCreditIllustrationAllDataResp,
+  ILoansIllustrationData,
+  IRevCreditIllustrationAllData,
 } from './types';
 
 import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  ILLUSTRATE_PRODUCT_LOAN = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN',
-  ILLUSTRATE_PRODUCT_LOAN_FULFILLED = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN_FULFILLED',
-  ILLUSTRATE_PRODUCT_LOAN_REJECTED = 'productDesigner/products/ILLUSTRATE_PRODUCT_LOAN_REJECTED',
+  ILLUSTRATE_LOAN = 'products/ILLUSTRATE_LOAN',
+  ILLUSTRATE_LOAN_FULFILLED = 'products/ILLUSTRATE_LOAN_FULFILLED',
+  ILLUSTRATE_LOAN_REJECTED = 'products/ILLUSTRATE_LOAN_REJECTED',
 
-  ILLUSTRATE_PRODUCT_REVOLVING_CREDIT =
-  'productDesigner/products/ILLUSTRATE_PRODUCT_REVOLVING_CREDIT',
-  ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED =
-  'productDesigner/products/ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED',
-  ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_REJECTED =
-  'productDesigner/products/ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_REJECTED',
+  ILLUSTRATE_REVOLVING_CREDIT = 'products/ILLUSTRATE_REVOLVING_CREDIT',
+  ILLUSTRATE_REVOLVING_CREDIT_FULFILLED = 'products/ILLUSTRATE_REVOLVING_CREDIT_FULFILLED',
+  ILLUSTRATE_REVOLVING_CREDIT_REJECTED = 'products/ILLUSTRATE_REVOLVING_CREDIT_REJECTED',
 
-  RESET_PRODUCT_ILLUSTRATION = 'productDesigner/products/RESET_PRODUCT_ILLUSTRATION',
+  RESET_PRODUCT_ILLUSTRATION = 'products/RESET_PRODUCT_ILLUSTRATION',
 }
 
-export interface IllustrateProductLoanAction {
+export interface IIllustrateLoanAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN;
+  readonly type: ActionTypeKeys.ILLUSTRATE_LOAN;
 }
 
-export interface IllustrateProductLoanFulfilledAction {
-  readonly payload: ProductLoanIllustrationDataResp;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED;
+export interface IIllustrateLoanFulfilledAction {
+  readonly payload: ILoansIllustrationData;
+  readonly type: ActionTypeKeys.ILLUSTRATE_LOAN_FULFILLED;
 }
 
-export interface IllustrateProductLoanRejectedAction {
+export interface IIllustrateLoanRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_REJECTED;
+  readonly type: ActionTypeKeys.ILLUSTRATE_LOAN_REJECTED;
 }
 
-export interface IllustrateProductRevolvingCreditAction {
+export interface IIllustrateRevCreditAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT;
+  readonly type: ActionTypeKeys.ILLUSTRATE_REVOLVING_CREDIT;
 }
 
-export interface IllustrateProductRevolvingCreditFulfilledAction {
-  readonly payload: ProductRevolvingCreditIllustrationAllDataResp;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED;
+export interface IIllustrateRevCreditFulfilledAction {
+  readonly payload: IRevCreditIllustrationAllData;
+  readonly type: ActionTypeKeys.ILLUSTRATE_REVOLVING_CREDIT_FULFILLED;
 }
 
-export interface IllustrateProductRevolvingCreditRejectedAction {
+export interface IIllustrateRevCreditRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_REJECTED;
+  readonly type: ActionTypeKeys.ILLUSTRATE_REVOLVING_CREDIT_REJECTED;
 }
 
-export interface ResetProductIllustrationAction {
+export interface IResetProductIllustrationAction {
   readonly type: ActionTypeKeys.RESET_PRODUCT_ILLUSTRATION;
 }
 
-export type ProductIllustrationActionTypes =
-  | IllustrateProductLoanFulfilledAction
-  | IllustrateProductRevolvingCreditFulfilledAction
-  | ResetProductIllustrationAction;
+export type TIllustrationAction =
+  | IIllustrateLoanFulfilledAction
+  | IIllustrateRevCreditFulfilledAction
+  | IResetProductIllustrationAction;

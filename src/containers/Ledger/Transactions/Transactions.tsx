@@ -11,13 +11,13 @@ import { IWithModal, withModal } from 'HOCs';
 
 import {
   ITransaction,
+  IUiItem,
   THandleFilterAccountsById,
   THandleFilterCardsById,
   THandleFilterCustomersById,
   THandleFilterStatementsById,
   THandleFilterTransactions,
   TResetTransactions,
-  UiItemPrepared,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -35,7 +35,7 @@ interface ITransactions extends IWithModal {
   isLoading: boolean;
   resetTransactions: TResetTransactions;
   transactions: ImmutableArray<ITransaction>;
-  uiItems: Array<UiItemPrepared>;
+  uiItems: Array<IUiItem>;
 }
 
 const Transactions: React.FC<ITransactions> = ({
@@ -68,7 +68,7 @@ const Transactions: React.FC<ITransactions> = ({
 
   const isReadOnlySettleTr = React.useMemo(
     () => {
-      const uiItem = uiItems.find(item => item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION);
+      const uiItem = uiItems.find(item => item.id === uiItemsConst.SETTLE_TRANSACTION);
 
       if (!uiItem) {
         return false;

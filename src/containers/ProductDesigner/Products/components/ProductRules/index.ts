@@ -14,16 +14,16 @@ import {
   handleGetDictionaryTransactionTypes,
   handleGetProductAprsFeesRewards,
   isEventsLoadingSelector,
+  IStoreState,
   selectProductAprsForRules,
   selectProductFeesForRules,
   selectProductRewardsForRules,
-  StoreState,
   transTypesForRulesSelector,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   eventDataElemsItems: eventDataElemsForRulesSelector(state),
   productAprsItems: selectProductAprsForRules(state),
   productFeesItems: selectProductFeesForRules(state),

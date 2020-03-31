@@ -3,10 +3,10 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { ExternalLink, T2 } from 'components';
-import { HandleGetHelpLink } from 'store';
+import { THandleGetHelpLink } from 'store';
 
 interface IPageTitle {
-  getHelpLink: HandleGetHelpLink;
+  getHelpLink: THandleGetHelpLink;
   helpLink: string;
   pageId: string;
   title: string;

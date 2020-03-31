@@ -4,7 +4,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import config from 'config';
 import { modalNamesConst } from 'consts';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { openModal } from './../modals';
 import {
   ActionTypeKeys,
@@ -113,7 +113,7 @@ export const resetUtils: TResetUtils = () => ({
  */
 
 export type TSendNotification = (res: IMessageResponse, isCatch?: boolean) =>
-  (dispatch: ThunkDispatch<StoreState, {}, Action>) => void;
+  (dispatch: ThunkDispatch<IStoreState, {}, Action>) => void;
 
 interface INotification {
   title: string;

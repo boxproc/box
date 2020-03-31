@@ -95,7 +95,7 @@ export interface IResetCarsAction {
   readonly type: ActionTypeKeys.RESET_CARDS;
 }
 
-export type TCardsActionTypes =
+export type TCardsAction =
   | IActivateCardFulfilledAction
   | IFilterCardsFulfilledAction
   | IChangeCardStatusFulfilledAction

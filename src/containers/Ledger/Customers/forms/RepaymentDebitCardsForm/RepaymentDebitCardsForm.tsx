@@ -10,7 +10,8 @@ import { formNamesConst } from 'consts';
 import {
   RepaymentDebitCards,
   RepaymentDebitCardsTable,
-} from 'containers/Ledger/Customers/components';
+} from './../../components';
+
 import { THandleAddRepaymentDebitCard } from 'store';
 import { ISelectValue } from 'types';
 

@@ -1,34 +1,34 @@
-import { AuditUiSessionsDataResp } from './types';
+import { IUiSessionsData } from './types';
 
 import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  FILTER_AUDIT_UI_SESSIONS = 'audit/uiSessions/FILTER_AUDIT_UI_SESSIONS',
-  FILTER_AUDIT_UI_SESSIONS_FULFILLED = 'audit/uiSessions/FILTER_AUDIT_UI_SESSIONS_FULFILLED',
-  FILTER_AUDIT_UI_SESSIONS_REJECTED = 'audit/uiSessions/FILTER_AUDIT_UI_SESSIONS_REJECTED',
+  FILTER_UI_SESSIONS = 'uiSessions/FILTER_UI_SESSIONS',
+  FILTER_UI_SESSIONS_FULFILLED = 'uiSessions/FILTER_UI_SESSIONS_FULFILLED',
+  FILTER_UI_SESSIONS_REJECTED = 'uiSessions/FILTER_UI_SESSIONS_REJECTED',
 
-  RESET_UI_SESSIONS = 'audit/uiSessions/FILTER_AUDIT_UI_SESSIONS_REJECTED',
+  RESET_UI_SESSIONS = 'uiSessions/FILTER_UI_SESSIONS_REJECTED',
 }
 
-export interface FilterUiSessionsAction {
+export interface IFilterUiSessionsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_UI_SESSIONS;
+  readonly type: ActionTypeKeys.FILTER_UI_SESSIONS;
 }
 
-export interface FilterUiSessionsFulfilledAction {
-  readonly payload: AuditUiSessionsDataResp;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_UI_SESSIONS_FULFILLED;
+export interface IFilterUiSessionsFulfilledAction {
+  readonly payload: IUiSessionsData;
+  readonly type: ActionTypeKeys.FILTER_UI_SESSIONS_FULFILLED;
 }
 
-export interface FilterUiSessionsRejectedAction {
+export interface IFilterUiSessionsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_UI_SESSIONS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_UI_SESSIONS_REJECTED;
 }
 
-export interface ResetUiSessionsAction {
+export interface IResetUiSessionsAction {
   readonly type: ActionTypeKeys.RESET_UI_SESSIONS;
 }
 
-export type AuditUiSessionsActionTypes =
-  | FilterUiSessionsFulfilledAction
-  | ResetUiSessionsAction;
+export type TUiSessionsAction =
+  | IFilterUiSessionsFulfilledAction
+  | IResetUiSessionsAction;

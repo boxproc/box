@@ -1,8 +1,6 @@
-import { UiItems } from './types';
+import { IUiItemsData } from './types';
 
-import { IResponseStatus } from 'types';
-
-export const uiItems: UiItems = {
+export const uiItemsMock: IUiItemsData = {
   ui_items: [
     {
       ui_item: 'administration',
@@ -261,10 +259,4 @@ export const uiItems: UiItems = {
       help_page_url: null,
     },
   ],
-};
-
-export const successResponseStatus: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

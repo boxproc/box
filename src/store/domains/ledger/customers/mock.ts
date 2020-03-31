@@ -1,7 +1,5 @@
 import { ICustomersData } from './types';
 
-import { IResponseStatus } from 'types';
-
 export const customersMock: ICustomersData = {
   customers: [
     {
@@ -49,10 +47,4 @@ export const customersMock: ICustomersData = {
       identification_number: 1,
     },
   ],
-};
-
-export const successResponseMock: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

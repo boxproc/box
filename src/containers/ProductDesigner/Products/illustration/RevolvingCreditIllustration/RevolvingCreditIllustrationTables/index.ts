@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTables';
 
 import {
-  selectAprsIllustration,
-  selectStatementsIllustration,
-  selectTransactionsIllustration,
-  StoreState,
+  IStoreState,
+  revCreditAprsIllustrationSelector,
+  revCreditStatementsIllustrationSelector,
+  revCreditTransIllustrationSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
-  transactionsData: selectTransactionsIllustration(state),
-  aprsData: selectAprsIllustration(state),
-  statementsData: selectStatementsIllustration(state),
+const mapStateToProps = (state: IStoreState) => ({
+  transactionsData: revCreditTransIllustrationSelector(state),
+  aprsData: revCreditAprsIllustrationSelector(state),
+  statementsData: revCreditStatementsIllustrationSelector(state),
 });
 
 export default connect(

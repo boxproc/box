@@ -18,7 +18,7 @@ interface IServicesForm extends ISpinner {
   onCancel?: () => void;
   currentUsersGroupId: number;
   currentInstitutionId: number;
-  updateCardService: HandleUpdateCardService;
+  updateCardServices: HandleUpdateCardService;
   productEndpointsServiceOptions: Array<ISelectValue>;
   productInterfacesServiceOptions: Array<ISelectValue>;
   getProductServices: HandleGetProductServices;
@@ -32,7 +32,7 @@ type TServicesForm = IServicesForm & InjectedFormProps<{}, IServicesForm>;
 const ServicesForm: React.FC<TServicesForm> = ({
   currentUsersGroupId,
   currentInstitutionId,
-  updateCardService,
+  updateCardServices,
   handleSubmit,
   onCancel,
   productEndpointsServiceOptions,
@@ -45,11 +45,11 @@ const ServicesForm: React.FC<TServicesForm> = ({
   isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateCardService({
+    handleSubmit(data => updateCardServices({
       ...data,
       id: currentUsersGroupId,
     })),
-    [handleSubmit, updateCardService]
+    [handleSubmit, updateCardServices]
   );
 
   return (

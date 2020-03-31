@@ -5,9 +5,7 @@ import {
   ProductsDataResp,
 } from './types';
 
-import { IResponseStatus } from 'types';
-
-export const productData: ProductDataResp = {
+export const productsMock: ProductDataResp = {
   product: {
     currency_code: 'AFN',
     description: 'Test revolving credit product from mocks',
@@ -37,7 +35,7 @@ export const productData: ProductDataResp = {
   },
 };
 
-export const productItemsFilteredData: ProductsDataResp = {
+export const productsFilteredMock: ProductsDataResp = {
   products: [
     {
       currency_code: 'AFN',
@@ -94,7 +92,7 @@ export const productItemsFilteredData: ProductsDataResp = {
   ],
 };
 
-export const productDetailsData: ProductDetailsResp = {
+export const productDetailsMock: ProductDetailsResp = {
   product: {
     product_id: 1,
     limit_sharing_allowed_flag: 'N',
@@ -104,7 +102,7 @@ export const productDetailsData: ProductDetailsResp = {
   },
 };
 
-export const institutionProducts: InstitutionProducts = {
+export const institutionProductsMock: InstitutionProducts = {
   institution_products: [
     {
       id: 1,
@@ -121,10 +119,4 @@ export const institutionProducts: InstitutionProducts = {
       def_num_of_installments: 1,
     },
   ],
-};
-
-export const successResponseStatus: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

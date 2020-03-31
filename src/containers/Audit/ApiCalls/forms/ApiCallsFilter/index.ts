@@ -10,12 +10,12 @@ import {
   endpointsByInstIdOptionsSelector,
   handleGetEndpointsByInstitutionId,
   isInstEndpointsLoadingSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   endpointsOptions: endpointsByInstIdOptionsSelector(state),
   institutionValue: formSelector(state, 'institutionId'),
   isLoadingEndpoints: isInstEndpointsLoadingSelector(state),

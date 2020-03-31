@@ -2,11 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
 
-import { ApiCallsItemPrepared } from 'store';
+import { IApiCall } from 'store';
 
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof ApiCallsItemPrepared> = ITableCell<ApiCallsItemPrepared[T]>;
+type TCell<T extends keyof IApiCall> = ITableCell<IApiCall[T]>;
 
 export const tableColumns = [
   {

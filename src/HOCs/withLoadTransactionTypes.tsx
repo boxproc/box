@@ -7,8 +7,8 @@ import {
   dictionaryManualTrTypesOptionsSelector,
   dictionaryTransTypesOptionsSelector,
   handleGetDictionaryTransactionTypes,
+  IStoreState,
   isTransTypesLoadingSelector,
-  StoreState,
   THandleGetDictionaryTransactionTypes,
 } from 'store';
 
@@ -63,7 +63,7 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
   WithLoadTransactionTypes.displayName =
     `WithLoadTransactionTypes(${componentUtil.getDisplayName(Component)})`;
 
-  const mapStateToProps = (state: StoreState) => ({
+  const mapStateToProps = (state: IStoreState) => ({
     isTransTypesLoading: isTransTypesLoadingSelector(state),
     transactionTypesOptions: dictionaryTransTypesOptionsSelector(state),
     manualTransTypesOptions: dictionaryManualTrTypesOptionsSelector(state),

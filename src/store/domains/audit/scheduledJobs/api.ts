@@ -1,13 +1,12 @@
 import { apiClientService } from 'services';
 
-import { AuditScheduledJobsFilterPrepared, SchedulerId } from './types';
-// import { schedulerJobsItems } from './mock';
-
+import { IScheduledJobsFilterToSend, ISchedulerId } from './types';
+// import { scheduledJobsMock } from './mock';
 // import { throttleUtil } from 'utils';
 
-export const filterAuditScheduledJobs = (data: Partial<AuditScheduledJobsFilterPrepared>) =>
-  // throttleUtil.getDataAfter(schedulerJobsItems, 500);
+export const filterScheduledJobs = (data: Partial<IScheduledJobsFilterToSend>) =>
+  // throttleUtil.getDataAfter(scheduledJobsMock, 500);
   apiClientService.post('ui/audit/scheduler_jobs/get', { data });
 
-export const filterScheduledJobsById = (data: SchedulerId) =>
+export const filterScheduledJobsById = (data: ISchedulerId) =>
   apiClientService.post('ui/audit/scheduler_jobs/get', { data });

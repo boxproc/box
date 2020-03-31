@@ -18,7 +18,7 @@ import {
   Header,
   RefreshCheckbox,
   schedulerTableColumns,
-  SystemMonitorBox,
+  SysMonitorBox,
   tableColumns,
   transactionsTableColumns,
 } from './components';
@@ -27,45 +27,45 @@ import PageTitle from 'containers/PageTemplate/PageTitle';
 
 import {
   HandleGetLogData,
-  HandleGetSystemMonitorData,
-  ResetSystemMonitor,
-  SystemMonitorCounts,
-  SystemMonitorItem,
-  SystemMonitorSchedulerItem,
-  SystemMonitorTransaction,
+  HandleGetSysMonitorData,
+  ISysMonitorCounts,
+  ISysMonitorItem,
+  ISysMonitorScheduler,
+  ISysMonitorTransaction,
+  ResetSysMonitor,
 } from 'store';
 import { cookiesUtil } from 'utils';
 
 interface ISystemMonitor {
-  interfacesData: ImmutableArray<SystemMonitorItem>;
-  endpointsData: ImmutableArray<SystemMonitorItem>;
-  schedulerData: ImmutableArray<SystemMonitorSchedulerItem>;
-  lastTransactionsData: ImmutableArray<SystemMonitorTransaction>;
+  interfacesData: ImmutableArray<ISysMonitorItem>;
+  endpointsData: ImmutableArray<ISysMonitorItem>;
+  schedulerData: ImmutableArray<ISysMonitorScheduler>;
+  lastTransactionsData: ImmutableArray<ISysMonitorTransaction>;
   getLogData: HandleGetLogData;
-  getSystemMonitorData: HandleGetSystemMonitorData;
+  getSysMonitorData: HandleGetSysMonitorData;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isLoadingScheduler: boolean;
   isLoadingLastTransactions: boolean;
-  interfacesCounts: SystemMonitorCounts;
-  endpointsCounts: SystemMonitorCounts;
-  schedulerCounts: SystemMonitorCounts;
-  resetSystemMonitor: ResetSystemMonitor;
+  interfacesCounts: ISysMonitorCounts;
+  endpointsCounts: ISysMonitorCounts;
+  schedulerCounts: ISysMonitorCounts;
+  resetSysMonitor: ResetSysMonitor;
 }
 
-interface ISystemMonitorBlock {
+interface ISysMonitorBlock {
   id: number;
   name: string;
   title: string;
   isLoading: boolean;
   tableData: Array<object>;
   columns: Array<object>;
-  counts?: SystemMonitorCounts;
+  counts?: ISysMonitorCounts;
 }
 
 const SystemMonitor: React.FC<ISystemMonitor> = ({
-  getSystemMonitorData,
-  resetSystemMonitor,
+  getSysMonitorData,
+  resetSysMonitor,
   interfacesData,
   endpointsData,
   schedulerData,
@@ -82,15 +82,15 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
   const [refreshingTables, setRefreshingTables] = React.useState([]);
   const [isCounter, setIsCounter] = React.useState(false);
 
-  const location = `${basePath}${uiItemsConst.AUDIT_SYSTEM_MONITOR}`;
+  const location = `${basePath}${uiItemsConst.SYSTEM_MONITOR}`;
 
   // get data for each table and reset it on unmount
   React.useEffect(
     () => {
-      getSystemMonitorData();
-      return () => resetSystemMonitor();
+      getSysMonitorData();
+      return () => resetSysMonitor();
     },
-    [getSystemMonitorData, resetSystemMonitor]
+    [getSysMonitorData, resetSysMonitor]
   );
 
   // get table names which have to be refreshed from cookies and set to state
@@ -123,14 +123,14 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
     () => {
       const timer = isCounter && setInterval(
         () => {
-          getSystemMonitorData(refreshingTables);
+          getSysMonitorData(refreshingTables);
           refreshCounter();
         },
         60000
       );
       return () => clearInterval(timer);
     },
-    [getSystemMonitorData, isCounter, refreshingTables]
+    [getSysMonitorData, isCounter, refreshingTables]
   );
 
   const handleSetRefreshingTables = React.useCallback(
@@ -138,7 +138,7 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
       const hasTableName = refreshingTables.find(name => name === tableName);
 
       if (!hasTableName) {
-        getSystemMonitorData([tableName]); // update current table
+        getSysMonitorData([tableName]); // update current table
         setRefreshingTables([...refreshingTables, tableName]);
         refreshCounter();
       } else {
@@ -163,7 +163,7 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
         );
       }
     },
-    [refreshingTables, getSystemMonitorData, location]
+    [refreshingTables, getSysMonitorData, location]
   );
 
   const systemMonitorBlocks = React.useMemo(
@@ -229,7 +229,7 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
       <Flex alignItems="center">
         <PageTitle
           title="System Monitor"
-          pageId={uiItemsConst.AUDIT_SYSTEM_MONITOR}
+          pageId={uiItemsConst.SYSTEM_MONITOR}
         />
         <Box mb="5px" ml="12px">
           {isCounter && (
@@ -245,8 +245,8 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
               width={[1 / 2]}
               px="20px"
             >
-              {el.map((block: Partial<ISystemMonitorBlock>) => (
-                <SystemMonitorBox
+              {el.map((block: Partial<ISysMonitorBlock>) => (
+                <SysMonitorBox
                   key={block.id}
                   isLoading={block.isLoading}
                 >
@@ -271,7 +271,7 @@ const SystemMonitor: React.FC<ISystemMonitor> = ({
                       isSmaller={true}
                     />
                   </Collapse>
-                </SystemMonitorBox>
+                </SysMonitorBox>
               ))}
             </Box>
           ))}

@@ -13,11 +13,11 @@ import { basePath } from 'consts';
 import { HelpDropdown, UserDropdown } from './components';
 
 import {
-  HandleGetUiItems,
+  IUiItem,
   IUserInstitution,
+  THandleGetUiItems,
   THandleGetUserInstitutions,
   THandleUserLogout,
-  UiItemPrepared,
 } from 'store';
 
 const Wrapper = styled.header`
@@ -58,12 +58,12 @@ const Wrapper = styled.header`
 interface IHeader extends RouteComponentProps {
   firstName: string;
   getInstitutions: THandleGetUserInstitutions;
-  getUiItems: HandleGetUiItems;
+  getUiItems: THandleGetUiItems;
   helpLink: string;
   institutions: ImmutableArray<IUserInstitution>;
   isReadOnly: boolean;
   lastName: string;
-  uiItems: Array<UiItemPrepared>;
+  uiItems: Array<IUiItem>;
   userLogout: THandleUserLogout;
   username: string;
 }

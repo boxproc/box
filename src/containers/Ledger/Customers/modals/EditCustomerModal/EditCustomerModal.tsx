@@ -9,7 +9,8 @@ import {
   CustomerForm,
   RepaymentDebitCardsForm,
   RepaymentDirectDebitsForm,
-} from 'containers/Ledger/Customers/forms';
+} from './../../forms';
+
 import { HandleGetInterfacesService } from 'store';
 import { ISelectValue } from 'types';
 

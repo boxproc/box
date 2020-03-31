@@ -1,6 +1,6 @@
-import { GeneralLedgerItem, GeneralLedgerItemPrepared } from './types';
+import { IProductGL, IProductGLData } from './types';
 
-export const prepareGeneralLedgerToRender = (data: Partial<GeneralLedgerItem>) => {
+export const prepareProductGLToRender = (data: Partial<IProductGLData>) => {
   if (!data) {
     return null;
   }
@@ -20,7 +20,7 @@ export const prepareGeneralLedgerToRender = (data: Partial<GeneralLedgerItem>) =
   };
 };
 
-export const prepareGeneralLedgerToSend = (data: Partial<GeneralLedgerItemPrepared>) => {
+export const prepareProductGLToSend = (data: Partial<IProductGL>) => {
   if (!data) {
     return null;
   }

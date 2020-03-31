@@ -17,13 +17,13 @@ import {
   handleUpdateCustomer,
   isAddingCustomerSelector,
   isDeletingCustomerSelector,
+  IStoreState,
   isUpdatingCustomerSelector,
-  StoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingCustomerSelector(state)
     || isUpdatingCustomerSelector(state)
     || isDeletingCustomerSelector(state),

@@ -1,8 +1,7 @@
+// import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-
-// import { successResponseMock, settleTransactionMock } from './mock';
+// import { settleTransactionMock } from './mock';
 import { IRetrieveTrReq, ISettleTransaction } from './types';
-
 // import { throttleUtil } from 'utils';
 
 /**

@@ -1,4 +1,4 @@
-import { HelpLinkResp, UiItems } from './types';
+import { IHelpLinkData, IUiItemsData } from './types';
 
 import { TApiResponse } from 'types';
 
@@ -12,36 +12,36 @@ export enum ActionTypeKeys {
   GET_HELP_LINK_REJECTED = 'uiItems/GET_HELP_LINK_REJECTED',
 }
 
-export interface GetUiItemsAction {
+export interface IGetUiItemsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_UI_ITEMS;
 }
 
-export interface GetUiItemsFulfilledAction {
-  readonly payload: UiItems;
+export interface IGetUiItemsFulfilledAction {
+  readonly payload: IUiItemsData;
   readonly type: ActionTypeKeys.GET_UI_ITEMS_FULFILLED;
 }
 
-export interface GetUiItemsRejectedAction {
+export interface IGetUiItemsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_UI_ITEMS_REJECTED;
 }
 
-export interface GetHelpLinkAction {
+export interface IGetHelpLinkAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_HELP_LINK;
 }
 
-export interface GetHelpLinkFulfilledAction {
-  readonly payload: HelpLinkResp;
+export interface IGetHelpLinkFulfilledAction {
+  readonly payload: IHelpLinkData;
   readonly type: ActionTypeKeys.GET_HELP_LINK_FULFILLED;
 }
 
-export interface GetHelpLinkRejectedAction {
+export interface IGetHelpLinkRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_HELP_LINK_REJECTED;
 }
 
-export type UiItemsActionTypes =
-  | GetUiItemsFulfilledAction
-  | GetHelpLinkFulfilledAction;
+export type TUiItemsAction =
+  | IGetUiItemsFulfilledAction
+  | IGetHelpLinkFulfilledAction;

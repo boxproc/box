@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TAuthActionTypes } from './actionTypes';
+import { ActionTypeKeys, TAuthAction } from './actionTypes';
 import { ILoginState } from './types';
 
 export const loginInitialState: ImmutableObject<ILoginState> = Immutable({
@@ -10,7 +10,7 @@ export const loginInitialState: ImmutableObject<ILoginState> = Immutable({
   institutions: Immutable([]),
 });
 
-const loginReducer = (state = loginInitialState, action: TAuthActionTypes) => {
+const loginReducer = (state = loginInitialState, action: TAuthAction) => {
   switch (action.type) {
     case ActionTypeKeys.USER_LOGIN_FULFILLED:
     case ActionTypeKeys.CHANGE_PROFILE_FULFILLED:

@@ -20,15 +20,15 @@ import {
   HandleGetProductFeeAprs,
   HandleGetProductFees,
   HandleUpdateProductFee,
-  ProductFee,
+  IProductFee,
 } from 'store';
 
 import { ISelectValue, ITableCell } from 'types';
 
-type TCell<T extends keyof ProductFee> = ITableCell<ProductFee[T]>;
+type TCell<T extends keyof IProductFee> = ITableCell<IProductFee[T]>;
 
 interface IFeesTable {
-  productFees: ImmutableArray<ProductFee>;
+  productFees: ImmutableArray<IProductFee>;
   aprsOptions: Array<ISelectValue>;
   getProductFeeApr: HandleGetProductFeeAprs;
   getProductFees: HandleGetProductFees;

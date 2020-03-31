@@ -1,7 +1,5 @@
 import { ISettleTransactionData } from './types';
 
-import { IResponseStatus } from 'types';
-
 export const settleTransactionMock: ISettleTransactionData = {
   transaction: [
     {
@@ -10,10 +8,4 @@ export const settleTransactionMock: ISettleTransactionData = {
       settled_datetime: '2020-01-08 22:55:12',
     },
   ],
-};
-
-export const successResponseMock: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

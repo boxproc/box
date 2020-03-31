@@ -1,6 +1,6 @@
-import { ApiCallsItems } from 'store';
+import { IApiCallsData } from 'store';
 
-export const apiCallsItems: ApiCallsItems = {
+export const apiCallsMock: IApiCallsData = {
   api_calls: [
     {
       id: 1,

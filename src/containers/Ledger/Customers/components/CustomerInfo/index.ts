@@ -4,11 +4,11 @@ import CustomerInfo from './CustomerInfo';
 
 import {
   isCountriesLoadingSelector,
-  StoreState,
+  IStoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isCountryCodesLoading: isCountriesLoadingSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
 });

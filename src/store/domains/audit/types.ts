@@ -1,13 +1,13 @@
-import { AuditApiCallsState } from './apiCalls';
-import { AuditScheduledJobsState } from './scheduledJobs';
-import { SystemMonitorState } from './systemMonitor';
-import { AuditUiSessionsState } from './uiSessions';
-import { AuditUserActivityState } from './userActivity';
+import { IApiCallsState } from './apiCalls';
+import { IScheduledJobsState } from './scheduledJobs';
+import { ISysMonitorState } from './systemMonitor';
+import { IUiSessionsState } from './uiSessions';
+import { IUsersActivityState } from './usersActivity';
 
-export interface AuditState {
-  userActivity: AuditUserActivityState;
-  apiCalls: AuditApiCallsState;
-  scheduledJobs: AuditScheduledJobsState;
-  systemMonitor: SystemMonitorState;
-  uiSessions: AuditUiSessionsState;
+export interface IAuditState {
+  apiCalls: IApiCallsState;
+  scheduledJobs: IScheduledJobsState;
+  systemMonitor: ISysMonitorState;
+  uiSessions: IUiSessionsState;
+  usersActivity: IUsersActivityState;
 }

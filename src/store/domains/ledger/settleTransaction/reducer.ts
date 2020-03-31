@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TSettleTransactionActionTypes } from './actionTypes';
+import { ActionTypeKeys, TSettleTransactionAction } from './actionTypes';
 import { ISettleTransactionState } from './types';
 
 export const settleTransactionInitialState:
@@ -9,7 +9,7 @@ export const settleTransactionInitialState:
   });
 
 const settleTransactionReducer =
-  (state = settleTransactionInitialState, action: TSettleTransactionActionTypes) => {
+  (state = settleTransactionInitialState, action: TSettleTransactionAction) => {
     switch (action.type) {
       case ActionTypeKeys.RETRIEVE_TRANSACTION_FULFILLED:
         return state.set('transaction', action.payload.transaction);

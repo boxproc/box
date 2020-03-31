@@ -4,19 +4,14 @@ import { bindActionCreators, Dispatch } from 'redux';
 import LogModal from './LogModal';
 
 import {
-  createLoadingSelector,
   handleRefreshLogData,
+  isSysMonitorLoadingLogDataSelector,
+  IStoreState,
   payloadLogModalSelector,
-  StoreState,
-  SystemMonitorActionTypes,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  SystemMonitorActionTypes.GET_LOG_DATA,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isSysMonitorLoadingLogDataSelector(state),
   data: payloadLogModalSelector(state),
 });
 

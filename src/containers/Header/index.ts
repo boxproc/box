@@ -6,28 +6,23 @@ import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 import {
-  createLoadingSelector,
   handleGetUiItems,
   handleGetUserInstitutions,
   handleUserLogout,
+  helpLinkSelector,
   isReadOnlySelector,
-  selectHelpLink,
-  selectUiItems,
-  StoreState,
-  UiItemsActionTypes,
+  IStoreState,
+  isUiItemsLoadingSelector,
+  uiItemsSelector,
   userInstitutionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  UiItemsActionTypes.GET_UI_ITEMS,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
-  uiItems: selectUiItems(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isUiItemsLoadingSelector(state),
+  uiItems: uiItemsSelector(state),
   institutions: userInstitutionsSelector(state),
   isReadOnly: isReadOnlySelector(state),
-  helpLink: selectHelpLink(state),
+  helpLink: helpLinkSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

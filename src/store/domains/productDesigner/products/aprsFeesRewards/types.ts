@@ -2,7 +2,11 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISelectValue } from 'types';
 
-export interface ProductAprItem {
+/**
+ * Product APRs interfaces
+ */
+
+export interface IProductAprData {
   product_id: number;
   product_apr_id: number;
   description: string;
@@ -11,43 +15,43 @@ export interface ProductAprItem {
   grace_number_of_days: number;
 }
 
-export interface ProductAprItems {
-  product_aprs: Array<ProductAprItem>;
+export interface IProductAprsData {
+  product_aprs: Array<IProductAprData>;
 }
 
-export interface ProductFeeAprItemResp {
-  product_apr_id: number | string;
-  apr_description: string;
-}
-
-export interface ProductFeeAprItems {
-  product_fee_aprs: Array<ProductFeeAprItemResp>;
-}
-
-export interface ProductAprIds {
+export interface IProductAprIds {
   productId: number;
   productAprId: number;
 }
 
-export interface ProductAprPlainInfo extends ProductAprIds {
+export interface IProductAprPlain extends IProductAprIds {
   description: string;
   rate: string;
   graceNumberOfDays: number;
 }
 
-export interface ProductApr extends ProductAprPlainInfo {
+export interface IProductApr extends IProductAprPlain {
   calculationMethod: string;
 }
 
-export interface ProductAprFormValues extends ProductAprPlainInfo {
+export interface IProductAprFormValues extends IProductAprPlain {
   calculationMethod: ISelectValue;
 }
 
-export interface ProductAprs {
-  product_aprs: Array<ProductApr>;
+export interface IProductFeeAprData {
+  product_apr_id: number | string;
+  apr_description: string;
 }
 
-export interface ProductFeeItem {
+export interface IProductFeesAprsData {
+  product_fee_aprs: Array<IProductFeeAprData>;
+}
+
+/**
+ * Product Fees interfaces
+ */
+
+export interface IProductFeeData {
   product_id: number;
   product_fee_id: number;
   description: string;
@@ -58,37 +62,37 @@ export interface ProductFeeItem {
   apr_id: string | number;
 }
 
-export interface ProductFeeItems {
-  product_fees: Array<ProductFeeItem>;
+export interface IProductFeesData {
+  product_fees: Array<IProductFeeData>;
 }
 
-export interface ProductFeesIds {
+export interface IProductFeesIds {
   productId: number;
   productFeeId: number;
 }
 
-export interface ProductFeePlainInfo extends ProductFeesIds {
+export interface IProductFeePlain extends IProductFeesIds {
   description: string;
   rate: string;
   amount: string;
 }
 
-export interface ProductFee extends ProductFeePlainInfo {
+export interface IProductFee extends IProductFeePlain {
   feeApplicationCondition: string;
   feeApplicationConditionValue: string | number;
   apr: ISelectValue;
 }
 
-export interface ProductFeeFormValues extends ProductFeePlainInfo {
+export interface IProductFeeFormValues extends IProductFeePlain {
   feeApplicationCondition: ISelectValue;
   apr: ISelectValue;
 }
 
-export interface ProductFees {
-  product_fees: Array<ProductFee>;
-}
+/**
+ * Product Rewards interfaces
+ */
 
-export interface ProductRewardItem {
+export interface IProductRewardData {
   product_id: number;
   product_reward_id: number;
   description: string;
@@ -97,37 +101,36 @@ export interface ProductRewardItem {
   reward_application_condition: string | number;
 }
 
-export interface ProductRewardItems {
-  product_rewards: Array<ProductRewardItem>;
+export interface IProductRewardsData {
+  product_rewards: Array<IProductRewardData>;
 }
 
-export interface ProductRewardsIds {
+export interface IProductRewardsIds {
   productId: number;
   productRewardId: number;
 }
 
-export interface ProductRewardPlainInfo extends ProductRewardsIds {
+export interface IProductRewardPlain extends IProductRewardsIds {
   description: string;
   rate: string;
   amount: string;
 }
 
-export interface ProductReward extends ProductRewardPlainInfo {
+export interface IProductReward extends IProductRewardPlain {
   rewardApplicationCondition: string;
   rewardApplicationConditionValue: string | number;
 }
 
-export interface ProductRewardFormValues extends ProductRewardPlainInfo {
+export interface IProductRewardFormValues extends IProductRewardPlain {
   rewardApplicationCondition: ISelectValue;
 }
 
-export interface ProductRewards {
-  product_rewards: Array<ProductReward>;
-}
-
-export interface ProductAprsFeesRewardsState {
-  productAprs: ImmutableArray<ProductAprItem>;
-  productFees: ImmutableArray<ProductFeeItem>;
-  productRewards: ImmutableArray<ProductRewardItem>;
-  productFeeAprs: ImmutableArray<ProductFeeAprItemResp>;
+/**
+ * Product APRs, rewards and fees state interface
+ */
+export interface IProductAprsFeesRewardsState {
+  productAprs: ImmutableArray<IProductAprData>;
+  productFees: ImmutableArray<IProductFeeData>;
+  productRewards: ImmutableArray<IProductRewardData>;
+  productFeeAprs: ImmutableArray<IProductFeeAprData>;
 }

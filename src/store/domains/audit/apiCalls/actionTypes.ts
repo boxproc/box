@@ -1,64 +1,64 @@
-import { ApiCallDetails, ApiCallsItems } from './types';
+import { IApiCallDetails, IApiCallsData } from './types';
 
 import { TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  FILTER_AUDIT_API_CALLS = 'audit/apiCalls/FILTER_AUDIT_API_CALLS',
-  FILTER_AUDIT_API_CALLS_FULFILLED = 'audit/apiCalls/FILTER_AUDIT_API_CALLS_FULFILLED',
-  FILTER_AUDIT_API_CALLS_REJECTED = 'audit/apiCalls/FILTER_AUDIT_API_CALLS_REJECTED',
+  FILTER_API_CALLS = 'apiCalls/FILTER_API_CALLS',
+  FILTER_API_CALLS_FULFILLED = 'apiCalls/FILTER_API_CALLS_FULFILLED',
+  FILTER_API_CALLS_REJECTED = 'apiCalls/FILTER_API_CALLS_REJECTED',
 
-  GET_DETAILS_AUDIT_API_CALLS = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS',
-  GET_DETAILS_AUDIT_API_CALLS_FULFILLED = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS_FULFILLED',
-  GET_DETAILS_AUDIT_API_CALLS_REJECTED = 'audit/apiCalls/GET_DETAILS_AUDIT_API_CALLS_REJECTED',
+  GET_DETAILS_API_CALLS = 'apiCalls/GET_DETAILS_API_CALLS',
+  GET_DETAILS_API_CALLS_FULFILLED = 'apiCalls/GET_DETAILS_API_CALLS_FULFILLED',
+  GET_DETAILS_API_CALLS_REJECTED = 'apiCalls/GET_DETAILS_API_CALLS_REJECTED',
 
-  RESET_API_CALLS = 'audit/apiCalls/RESET_API_CALLS',
+  RESET_API_CALLS = 'apiCalls/RESET_API_CALLS',
 }
 
-export interface FilterAuditApiCallsAction {
+export interface IFilterApiCallsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_API_CALLS;
+  readonly type: ActionTypeKeys.FILTER_API_CALLS;
 }
 
-export interface FilterAuditApiCallsFulfilledAction {
-  readonly payload: ApiCallsItems;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_API_CALLS_FULFILLED;
+export interface IFilterApiCallsFulfilledAction {
+  readonly payload: IApiCallsData;
+  readonly type: ActionTypeKeys.FILTER_API_CALLS_FULFILLED;
 }
 
-export interface FilterAuditApiCallsRejectedAction {
+export interface IFilterApiCallsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.FILTER_AUDIT_API_CALLS_REJECTED;
+  readonly type: ActionTypeKeys.FILTER_API_CALLS_REJECTED;
 }
 
-export interface GetDetailsAuditApiCallsAction {
+export interface IGetDetailsApiCallsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS;
+  readonly type: ActionTypeKeys.GET_DETAILS_API_CALLS;
 }
 
-export interface GetDetailsAuditApiCallsFulfilledAction {
-  readonly payload: ApiCallDetails;
-  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_FULFILLED;
+export interface IGetDetailsApiCallsFulfilledAction {
+  readonly payload: IApiCallDetails;
+  readonly type: ActionTypeKeys.GET_DETAILS_API_CALLS_FULFILLED;
 }
 
-export interface GetDetailsAuditApiCallsRejectedAction {
+export interface IGetDetailsApiCallsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
+  readonly type: ActionTypeKeys.GET_DETAILS_API_CALLS_REJECTED;
 }
 
-export interface GetDetailsAuditApiCallsRejectedAction {
+export interface IGetDetailsApiCallsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
+  readonly type: ActionTypeKeys.GET_DETAILS_API_CALLS_REJECTED;
 }
 
-export interface GetDetailsAuditApiCallsRejectedAction {
+export interface IGetDetailsApiCallsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_REJECTED;
+  readonly type: ActionTypeKeys.GET_DETAILS_API_CALLS_REJECTED;
 }
 
-export interface ResetApiCallsAction {
+export interface IResetApiCallsAction {
   readonly type: ActionTypeKeys.RESET_API_CALLS;
 }
 
-export type AuditApiCallsActionTypes =
-  | FilterAuditApiCallsFulfilledAction
-  | GetDetailsAuditApiCallsFulfilledAction
-  | ResetApiCallsAction;
+export type TApiCallsAction =
+  | IFilterApiCallsFulfilledAction
+  | IGetDetailsApiCallsFulfilledAction
+  | IResetApiCallsAction;

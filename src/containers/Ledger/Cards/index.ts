@@ -12,12 +12,12 @@ import {
   handleFilterByIdTransactions,
   handleFilterCards,
   isLoadingCardsSelector,
+  IStoreState,
   resetCards,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isLoadingCardsSelector(state),
   cards: cardsSelector(state),
   currentId: activeItemIdSelector(state),

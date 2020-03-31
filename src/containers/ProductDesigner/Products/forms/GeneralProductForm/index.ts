@@ -11,10 +11,10 @@ import {
   handleDeleteProduct,
   handleGetProduct,
   handleUpdateProduct,
+  IStoreState,
   ProductsActionTypes,
   selectCurrentProduct,
   selectCurrentProductName,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -28,7 +28,7 @@ const loadingSelectorUpdateDelete = createLoadingSelector([
 
 const formSelector = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   isUpdatingOrDeleting: loadingSelectorUpdateDelete(state),
   initialValues: selectCurrentProduct(state),

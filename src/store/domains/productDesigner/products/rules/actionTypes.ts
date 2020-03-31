@@ -3,13 +3,13 @@ import { ProductRuleResp } from './types';
 import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_PRODUCT_RULE = 'productDesigner/products/GET_PRODUCT_RULE',
-  GET_PRODUCT_RULE_FULFILLED = 'productDesigner/products/GET_PRODUCT_RULE_FULFILLED',
-  GET_PRODUCT_RULE_REJECTED = 'productDesigner/products/GET_PRODUCT_RULE_REJECTED',
+  GET_PRODUCT_RULE = 'products/GET_PRODUCT_RULE',
+  GET_PRODUCT_RULE_FULFILLED = 'products/GET_PRODUCT_RULE_FULFILLED',
+  GET_PRODUCT_RULE_REJECTED = 'products/GET_PRODUCT_RULE_REJECTED',
 
-  UPDATE_PRODUCT_RULES = 'productDesigner/products/UPDATE_PRODUCT_RULES',
-  UPDATE_PRODUCT_RULES_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_RULES_FULFILLED',
-  UPDATE_PRODUCT_RULES_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_RULES_REJECTED',
+  UPDATE_PRODUCT_RULES = 'products/UPDATE_PRODUCT_RULES',
+  UPDATE_PRODUCT_RULES_FULFILLED = 'products/UPDATE_PRODUCT_RULES_FULFILLED',
+  UPDATE_PRODUCT_RULES_REJECTED = 'products/UPDATE_PRODUCT_RULES_REJECTED',
 }
 
 export interface GetProductRuleAction {
@@ -42,6 +42,6 @@ export interface UpdateProductRulesRejectedAction {
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_REJECTED;
 }
 
-export type ProductRulesActionTypes =
+export type TProductRulesAction =
   | GetProductRuleFulfilledAction
   | UpdateProductRulesFulfilledAction;

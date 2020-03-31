@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
-import { dictionaryEventsOptionsSelector } from 'store/domains/administration';
+import { dictionaryEventsOptionsSelector } from 'store/domains/admin';
 import { prepareProductRuleData } from './utils';
 
-export const selectDefaultCurrentRule = (state: StoreState) =>
+export const selectDefaultCurrentRule = (state: IStoreState) =>
   state.productDesigner.productRules.currentProductRule;
 
 export const selectCurrentProductRule = createSelector(

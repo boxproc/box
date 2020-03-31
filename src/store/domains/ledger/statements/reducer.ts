@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TStatementsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TStatementsAction } from './actionTypes';
 import { IStatementsState } from './types';
 
 export const statementsInitialState: ImmutableObject<IStatementsState> = Immutable({
@@ -11,7 +11,7 @@ export const statementsInitialState: ImmutableObject<IStatementsState> = Immutab
   transactions: Immutable([]),
 });
 
-const statementsReducer = (state = statementsInitialState, action: TStatementsActionTypes) => {
+const statementsReducer = (state = statementsInitialState, action: TStatementsAction) => {
   switch (action.type) {
     case ActionTypeKeys.FILTER_STATEMENTS_FULFILLED:
       return state.set('statements', action.payload.statements);

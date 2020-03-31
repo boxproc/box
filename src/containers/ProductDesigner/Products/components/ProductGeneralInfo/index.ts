@@ -12,15 +12,15 @@ import {
   handleGetDictionaryStatementCycleTypes,
   isCurrenciesLoadingSelector,
   isStatementCycleTypesLoading,
+  IStoreState,
   statementCycleTypesOptionsSelector,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
 const formSelectorGeneralProduct = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 const formSelectorAddProduct = formValueSelector(formNamesConst.ADD_PRODUCT);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isCurrenciesLoading: isCurrenciesLoadingSelector(state),
   isStatementCycleTypesLoading: isStatementCycleTypesLoading(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),

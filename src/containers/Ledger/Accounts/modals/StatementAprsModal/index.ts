@@ -5,11 +5,11 @@ import StatementAprsModal from './StatementAprsModal';
 import {
   accountStatementDateSelector,
   currentAccAliasSelector,
+  IStoreState,
   statementAprsSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   statementAprs: statementAprsSelector(state),
   currentAccAlias: currentAccAliasSelector(state),
   currentStatementDate: accountStatementDateSelector(state),

@@ -114,7 +114,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
 };
 
 export default reduxForm<{}, IApiCallForm>({
-  form: formNamesConst.AUDIT_API_CALL,
+  form: formNamesConst.API_CALL,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(ApiCallForm);

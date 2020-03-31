@@ -5,12 +5,12 @@ import TransactionModal from './TransactionModal';
 import {
   activeItemIdSelector,
   currentTrAmountSelector,
+  IStoreState,
   isTrConvertibleToLoanSelector,
   payloadTransactionModalSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   currentTransactionId: activeItemIdSelector(state),
   payloadTransactionModal: payloadTransactionModalSelector(state),
   transactionAmount: currentTrAmountSelector(state),

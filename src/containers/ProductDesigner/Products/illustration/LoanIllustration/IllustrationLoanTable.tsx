@@ -2,14 +2,11 @@ import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Box } from '@rebass/grid';
-
 import { Table, TableCell, TableHeader, withSpinner } from 'components';
-
-import { IllustrationProductLoan } from 'store';
-
+import { ILoanIllustration } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof IllustrationProductLoan> = ITableCell<IllustrationProductLoan[T]>;
+type TCell<T extends keyof ILoanIllustration> = ITableCell<ILoanIllustration[T]>;
 
 const columns = [
   {
@@ -114,7 +111,7 @@ const columns = [
 ];
 
 interface IIllustrationLoanTable {
-  data: ImmutableArray<IllustrationProductLoan>;
+  data: ImmutableArray<ILoanIllustration>;
 }
 
 const IllustrationLoanTable: React.FC<IIllustrationLoanTable> = ({ data }) => {

@@ -85,7 +85,7 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
     >
       <PageTitle
         title="Settle Transaction"
-        pageId={uiItemsConst.LEDGER_SETTLE_TRANSACTION}
+        pageId={uiItemsConst.SETTLE_TRANSACTION}
       />
       <TransactionRetrievingForm
         isRetrieving={isRetrieving}

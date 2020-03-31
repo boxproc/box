@@ -6,10 +6,10 @@ import RepaymentDebitCardsForm from './RepaymentDebitCardsForm';
 import {
   handleAddRepaymentDebitCard,
   isAddingRepaymentDebitCardSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingRepaymentDebitCardSelector(state),
 });
 

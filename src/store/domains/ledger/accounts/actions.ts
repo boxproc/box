@@ -216,8 +216,8 @@ export const handleFilterByIdAccounts: THandleFilterAccountsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_ACCOUNTS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.ACCOUNTS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.ACCOUNTS}`));
         await dispatch(filterAccountsById(id));
         dispatch(setIsOpenFilter(false));
       },

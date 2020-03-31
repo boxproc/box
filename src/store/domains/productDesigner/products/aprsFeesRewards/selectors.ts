@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
 import {
   prepareProductAprsToRender,
@@ -8,7 +8,7 @@ import {
   prepareProductRewardsToRender,
 } from './utils';
 
-export const selectDefaultProductAprs = (state: StoreState) =>
+export const selectDefaultProductAprs = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productAprs;
 
 export const selectProductAprs = createSelector(
@@ -26,7 +26,7 @@ export const selectProductAprsForRules = createSelector(
   })
 );
 
-export const selectDefaultProductFees = (state: StoreState) =>
+export const selectDefaultProductFees = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productFees;
 
 export const selectProductFees = createSelector(
@@ -44,7 +44,7 @@ export const selectProductFeesForRules = createSelector(
   })
 );
 
-export const selectDefaultProductRewards = (state: StoreState) =>
+export const selectDefaultProductRewards = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productRewards;
 
 export const selectProductRewards = createSelector(
@@ -61,7 +61,7 @@ export const selectProductRewardsForRules = createSelector(
     };
   })
 );
-export const selectDefaultAprs = (state: StoreState) =>
+export const selectDefaultAprs = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productFeeAprs;
 
 export const selectAprsOptions = createSelector(

@@ -9,13 +9,13 @@ import StatementsFilter from './StatementsFilter';
 import {
   handleGetInstitutionProducts,
   instProductsLoadingSelector,
+  IStoreState,
   selectInstitutionProductsOptions,
-  StoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   institutionValue: formSelector(state, 'institutionId'),
   isLoadingInstProducts: instProductsLoadingSelector(state),

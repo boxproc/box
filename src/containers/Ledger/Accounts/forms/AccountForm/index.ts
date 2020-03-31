@@ -11,15 +11,15 @@ import {
   handleAddAccount,
   handleUpdateAccount,
   isAddingAccountSelector,
+  IStoreState,
   isUpdatingAccountSelector,
   selectInstitutionProducts,
-  StoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingAccountSelector(state) || isUpdatingAccountSelector(state),
   institutionProducts: selectInstitutionProducts(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),

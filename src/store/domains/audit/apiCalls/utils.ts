@@ -1,9 +1,9 @@
-import { ApiCallsItem, AuditApiCallsFilter } from './types';
+import { IApiCallData, IApiCallsFilter } from './types';
 
 import { ISelectValue } from 'types';
 
-export const prepareValuesToRender = (values: ApiCallsItem, institution?: ISelectValue) => {
-  if (!values) {
+export const prepareDataToRender = (data: IApiCallData, institution?: ISelectValue) => {
+  if (!data) {
     return null;
   }
 
@@ -15,7 +15,7 @@ export const prepareValuesToRender = (values: ApiCallsItem, institution?: ISelec
     api_name,
     request_body,
     response_body,
-  } = values;
+  } = data;
 
   return {
     id,
@@ -29,12 +29,12 @@ export const prepareValuesToRender = (values: ApiCallsItem, institution?: ISelec
   };
 };
 
-export const preparedFilterToSend = (params: Partial<AuditApiCallsFilter>) => {
-  if (!params) {
+export const prepareFilterToSend = (data: Partial<IApiCallsFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { institutionId, endpointId, apiName, apiCallsDateTimeFrom, apiCallsDateTimeTo } = params;
+  const { institutionId, endpointId, apiName, apiCallsDateTimeFrom, apiCallsDateTimeTo } = data;
 
   return {
     institution_id: institutionId ? institutionId.value : null,

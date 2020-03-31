@@ -1,14 +1,14 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, UiItemsActionTypes } from './actionTypes';
-import { UiItemsState } from './types';
+import { ActionTypeKeys, TUiItemsAction } from './actionTypes';
+import { IUiItemsState } from './types';
 
-export const uiItemsInitialState: ImmutableObject<UiItemsState> = Immutable({
+export const uiItemsInitialState: ImmutableObject<IUiItemsState> = Immutable({
   uiItems: Immutable([]),
   helpLink: null,
 });
 
-const uiItemsReducer = (state = uiItemsInitialState, action: UiItemsActionTypes) => {
+const uiItemsReducer = (state = uiItemsInitialState, action: TUiItemsAction) => {
   switch (action.type) {
     case ActionTypeKeys.GET_UI_ITEMS_FULFILLED:
       return state.set('uiItems', action.payload.ui_items);

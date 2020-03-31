@@ -1,8 +1,6 @@
-import { ProductAprItems } from './types';
+import { IProductAprsData } from './types';
 
-import { IResponseStatus } from 'types';
-
-export const productAprs: ProductAprItems = {
+export const productAprsMock: IProductAprsData = {
   product_aprs: [
     {
       product_id: 3,
@@ -29,10 +27,4 @@ export const productAprs: ProductAprItems = {
       grace_number_of_days: 1,
     },
   ],
-};
-
-export const successResponseStatus: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

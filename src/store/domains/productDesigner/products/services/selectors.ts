@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { selectDefaultCurrentProduct } from '../products';
 
-export const selectDefaultInterfaces = (state: StoreState) =>
+export const selectDefaultInterfaces = (state: IStoreState) =>
   state.productDesigner.productServices.interfaces;
 
-export const selectDefaultEndpoints = (state: StoreState) =>
+export const selectDefaultEndpoints = (state: IStoreState) =>
   state.productDesigner.productServices.endpoints;
 
 export const selectProductCardInterfacesService = createSelector(

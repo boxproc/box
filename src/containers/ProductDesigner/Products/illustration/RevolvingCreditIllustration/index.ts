@@ -4,24 +4,19 @@ import { bindActionCreators, Dispatch } from 'redux';
 import IllustrationRevolvingCredit from './RevolvingCreditIllustration';
 
 import {
-  createLoadingSelector,
-  handleIllustrateRevolvingCreditProduct,
-  ProductIllustrationActionTypes,
+  handleIllustrateRevCredit,
+  isRevCreditIllustrationLoadingSelector,
+  IStoreState,
   resetProductIllustration,
-  StoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductIllustrationActionTypes.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isRevCreditIllustrationLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    illustrateRevolvingCreditProduct: handleIllustrateRevolvingCreditProduct,
+    illustrateRevolvingCreditProduct: handleIllustrateRevCredit,
     resetProductIllustration,
   },
   dispatch

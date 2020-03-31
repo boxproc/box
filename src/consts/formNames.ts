@@ -25,23 +25,22 @@ export enum formNamesConst {
   PRODUCT_GENERAL_LEDGER = 'productGeneralLedger',
   PRODUCT_ILLUSTRATION_FORM = 'productIllustrationForm',
 
-  ADD_USERS_GROUP = 'addUsersGroupForm',
-  EDIT_GENERAL_INFO_USERS_GROUP = 'editGeneralInfoUsersGroupForm',
-  EDIT_USERS_GROUP_MEMBERS = 'editUsersGroupMembersForm',
-  EDIT_GROUP_PERMISSION = 'editGroupPermissionForm',
   USERS_GROUP = 'usersGroupForm',
-  ADD_GROUP_PERMISSIONS = 'addGroupPermissions',
-  USER = 'UserForm',
+  ADD_USERS_GROUP = 'addUsersGroupForm',
+  EDIT_USERS_GROUP = 'editUsersGroupForm',
+  EDIT_USERS_GROUP_MEMBERS = 'editUsersGroupMembersForm',
+  EDIT_USERS_GROUP_PERMISSIONS = 'editUsersGroupPermissionsForm',
+  USER = 'userForm',
 
   ENDPOINT = 'endpointsForm',
   INTERFACE = 'interfaceForm',
-  INSTITUTIONS = 'institutionsForm',
+  INSTITUTION = 'institutionForm',
   ADD_SYSTEM_PROPERTY = 'addSystemPropertyForm',
 
   SCHEDULER = 'schedulerForm',
   GENERATE_CRON_EXPRESSION = 'generateCronExpressionForm',
 
-  AUDIT_API_CALL = 'auditApiCallForm',
+  API_CALL = 'apiCallForm',
 
   CUSTOMER = 'customerForm',
   REPAYMENT_DEBIT_CARDS = 'repaymentDebitCardsForm',

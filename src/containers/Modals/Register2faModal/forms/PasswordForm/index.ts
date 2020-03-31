@@ -6,10 +6,10 @@ import PasswordForm from './PasswordForm';
 import {
   handleUserGetAuthKey,
   isGettingAuthKeySelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isGettingAuthKeySelector(state),
 });
 

@@ -142,28 +142,28 @@ const Filter: React.FC<TFilter> = ({
   const isAccessibleButton = React.useCallback(
     () => {
       switch (location.pathname) {
-        case `${basePath}${uiItemsConst.ADMINISTRATION_SYS_PROPS}`:
-        case `${basePath}${uiItemsConst.ADMINISTRATION_USER}`:
-        case `${basePath}${uiItemsConst.ADMINISTRATION_SCHEDULER}`:
+        case `${basePath}${uiItemsConst.SYSTEM_PROPERTIES}`:
+        case `${basePath}${uiItemsConst.USERS}`:
+        case `${basePath}${uiItemsConst.SCHEDULER}`:
           return valuesCount >= 0;
 
-        case `${basePath}${uiItemsConst.AUDIT_API_CALLS}`:
-        case `${basePath}${uiItemsConst.AUDIT_USER_ACTIVITY}`:
+        case `${basePath}${uiItemsConst.API_CALLS}`:
+        case `${basePath}${uiItemsConst.USERS_ACTIVITY}`:
           return valuesCount > 1;
 
-        case `${basePath}${uiItemsConst.LEDGER_ACCOUNTS}`:
+        case `${basePath}${uiItemsConst.ACCOUNTS}`:
           return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
-        case `${basePath}${uiItemsConst.LEDGER_CARDS}`:
+        case `${basePath}${uiItemsConst.CARDS}`:
           return hasInstitution && (hasAccountId || hasCardId || hasCustomerId || hasPanAlias);
 
-        case `${basePath}${uiItemsConst.LEDGER_STATEMENTS}`:
+        case `${basePath}${uiItemsConst.STATEMENTS}`:
           return hasInstitution && (hasAccountId || hasAccountAlias || hasLastName);
 
-        case `${basePath}${uiItemsConst.LEDGER_CUSTOMERS}`:
+        case `${basePath}${uiItemsConst.CUSTOMERS}`:
           return hasInstitution && (hasCustomerId || hasLastName);
 
-        case `${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}`:
+        case `${basePath}${uiItemsConst.TRANSACTIONS}`:
           return hasInstitution && (
             hasTransactionId
             || hasProductName

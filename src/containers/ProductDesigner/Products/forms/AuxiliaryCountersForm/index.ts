@@ -7,16 +7,16 @@ import {
   activeItemIdSelector,
   createLoadingSelector,
   handleUpdateProductAuxCounters,
+  IStoreState,
   ProductAuxCountersActionTypes,
   selectProductAuxCounters,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
   ProductAuxCountersActionTypes.UPDATE_PRODUCT_AUX_COUNTERS,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   initialValues: selectProductAuxCounters(state),
   currentProductId: activeItemIdSelector(state),

@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
 
-import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/administration';
+import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/admin';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
@@ -17,7 +17,7 @@ import {
 
 /** Accounts selectors */
 
-export const defaultAccountsSelector = (state: StoreState) => state.ledger.accounts.accounts;
+export const defaultAccountsSelector = (state: IStoreState) => state.ledger.accounts.accounts;
 
 export const accountsSelector = createSelector(
   defaultAccountsSelector,
@@ -31,7 +31,7 @@ export const accountsSelector = createSelector(
 
 /** Account cards selectors */
 
-export const defaultAccountCardsSelector = (state: StoreState) => state.ledger.accounts.cards;
+export const defaultAccountCardsSelector = (state: IStoreState) => state.ledger.accounts.cards;
 
 export const accountCardsSelector = createSelector(
   defaultAccountCardsSelector,

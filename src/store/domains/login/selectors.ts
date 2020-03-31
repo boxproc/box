@@ -2,22 +2,22 @@ import { createSelector } from 'reselect';
 
 import { statusConst, yesNoConst } from 'consts';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from '../loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareUserDataToRender } from './utils';
 
-export const defaultLoginDataSelector = (state: StoreState) => state.login.loginData;
+export const defaultLoginDataSelector = (state: IStoreState) => state.login.loginData;
 
 export const loginDataSelector = createSelector(
   defaultLoginDataSelector,
   data => prepareUserDataToRender(data)
 );
 
-export const authStatusSelector = (state: StoreState) =>
+export const authStatusSelector = (state: IStoreState) =>
   state.login.loginData && state.login.loginData.status;
 
-export const authRequires2faFlagSelector = (state: StoreState) =>
+export const authRequires2faFlagSelector = (state: IStoreState) =>
   state.login.loginData.requires_2fa_flag;
 
 export const is2faAuthPendingSelector = createSelector(
@@ -26,10 +26,10 @@ export const is2faAuthPendingSelector = createSelector(
   (status, requiresFlag) => status === statusConst.ACTIVE && requiresFlag === yesNoConst.YES
 );
 
-export const userCurrentRegisterStepSelector = (state: StoreState) =>
+export const userCurrentRegisterStepSelector = (state: IStoreState) =>
   state.login.currentRegisterStep;
 
-export const defaultAuthCodeSelector = (state: StoreState) =>
+export const defaultAuthCodeSelector = (state: IStoreState) =>
   state.login.data2fa && state.login.data2fa.secret_key;
 
 export const userAuthCodeSelector = createSelector(
@@ -37,14 +37,14 @@ export const userAuthCodeSelector = createSelector(
   code => code && code.match(/.{1,4}/g).join(' ')
 );
 
-export const userDataUrlSelector = (state: StoreState) =>
+export const userDataUrlSelector = (state: IStoreState) =>
   state.login.data2fa && state.login.data2fa.data_url;
 
 /**
  * User institutions selectors
  */
 
-export const defaultUserInstitutionsSelector = (state: StoreState) =>
+export const defaultUserInstitutionsSelector = (state: IStoreState) =>
   state.login.institutions;
 
 export const userInstitutionsSelector = createSelector(

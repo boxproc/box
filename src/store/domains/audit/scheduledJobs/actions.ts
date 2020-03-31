@@ -7,65 +7,65 @@ import { basePath, formNamesConst, uiItemsConst } from 'consts';
 import { setIsOpenFilter } from 'store';
 import {
   ActionTypeKeys,
-  FilterScheduledJobsAction,
-  FilterScheduledJobsByIdAction,
+  IFilterScheduledJobsAction,
+  IFilterScheduledJobsByIdAction,
 } from './actionTypes';
 import * as api from './api';
-import { AuditScheduledJobsFilterPrepared, SchedulerId } from './types';
-import { preparedFilterToSend } from './utils';
+import { IScheduledJobsFilterToSend, ISchedulerId } from './types';
+import { prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
-export type FilterAuditScheduledJobs = (params: Partial<AuditScheduledJobsFilterPrepared>) =>
-  FilterScheduledJobsAction;
-export type HandleFilterAuditScheduledJobs = () => Thunk<void>;
+export type TFilterScheduledJobs = (data: Partial<IScheduledJobsFilterToSend>) =>
+  IFilterScheduledJobsAction;
+export type THandleFilterScheduledJobs = () => Thunk<void>;
 
-export type ResetScheduledJobs = () => void;
+export type TResetScheduledJobs = () => void;
 
-export type FilterScheduledJobsById = (id: SchedulerId) => FilterScheduledJobsByIdAction;
-export type HandleFilterScheduledJobsById = (id: SchedulerId) => Thunk<void>;
+export type TFilterScheduledJobsById = (id: ISchedulerId) => IFilterScheduledJobsByIdAction;
+export type THandleFilterScheduledJobsById = (id: ISchedulerId) => Thunk<void>;
 
-export const filterAuditScheduledJobs: FilterAuditScheduledJobs = filter => ({
-  type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS,
-  payload: api.filterAuditScheduledJobs(filter),
+export const filterScheduledJobs: TFilterScheduledJobs = filter => ({
+  type: ActionTypeKeys.FILTER_SCHEDULED_JOBS,
+  payload: api.filterScheduledJobs(filter),
 });
 
-export const filterScheduledJobsById: FilterScheduledJobsById = data => ({
-  type: ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID,
+export const filterScheduledJobsById: TFilterScheduledJobsById = data => ({
+  type: ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID,
   payload: api.filterScheduledJobsById(data),
 });
 
-export const resetScheduledJobs: ResetScheduledJobs = () => ({
+export const resetScheduledJobs: TResetScheduledJobs = () => ({
   type: ActionTypeKeys.RESET_SCHEDULED_JOBS,
 });
 
-export const handleFilterAuditScheduledJobs: HandleFilterAuditScheduledJobs = () =>
+export const handleFilterScheduledJobs: THandleFilterScheduledJobs = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedValues = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(filterAuditScheduledJobs(preparedValues));
+        if (preparedData) {
+          await dispatch(filterScheduledJobs(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleFilterByIdAuditScheduledJobs: HandleFilterScheduledJobsById = id =>
+export const handleFilterByIdScheduledJobs: THandleFilterScheduledJobsById = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.AUDIT_SCHEDULED_JOBS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.AUDIT_SCHEDULED_JOBS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.SCHEDULED_JOBS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.SCHEDULED_JOBS}`));
         await dispatch(filterScheduledJobsById(id));
         dispatch(setIsOpenFilter(false));
       },

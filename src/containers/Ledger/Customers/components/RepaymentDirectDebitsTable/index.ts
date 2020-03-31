@@ -6,11 +6,11 @@ import RepaymentDirectDebitsTable from './RepaymentDirectDebitsTable';
 import {
   handleGetRepaymentDirectDebits,
   isGettingRepaymentDirectDebitsSelector,
+  IStoreState,
   repaymentDirectDebitsSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isGettingRepaymentDirectDebitsSelector(state),
   repaymentDirectDebits: repaymentDirectDebitsSelector(state),
 });

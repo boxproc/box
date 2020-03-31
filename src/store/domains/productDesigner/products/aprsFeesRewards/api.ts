@@ -1,30 +1,30 @@
 import { apiClientService } from 'services';
 
-// import { productAprs } from './mock';
+// import { productAprsMock } from './mock';
 import {
-  ProductAprIds,
-  ProductAprItem,
-  ProductFeeItem,
-  ProductFeesIds,
-  ProductRewardItem,
-  ProductRewardsIds,
+  IProductAprData,
+  IProductAprIds,
+  IProductFeeData,
+  IProductFeesIds,
+  IProductRewardData,
+  IProductRewardsIds,
 } from './types';
 
 // import { throttleUtil } from 'utils';
 
 export const getProductAprs = (id: number) =>
-  // throttleUtil.getDataAfter(productAprs, 500);
+  // throttleUtil.getDataAfter(productAprsMock, 500);
   apiClientService.post('ui/product_designer/products/aprs/get', {
     data: { product_id: id },
   });
 
-export const addProductApr = (data: Partial<ProductAprItem>) =>
+export const addProductApr = (data: Partial<IProductAprData>) =>
   apiClientService.post('ui/product_designer/products/aprs/create', { data });
 
-export const updateProductApr = (data: Partial<ProductAprItem>) =>
+export const updateProductApr = (data: Partial<IProductAprData>) =>
   apiClientService.post('ui/product_designer/products/aprs/update', { data });
 
-export const deleteProductApr = (data: ProductAprIds) =>
+export const deleteProductApr = (data: IProductAprIds) =>
   apiClientService.post('ui/product_designer/products/aprs/delete', {
     data: {
       product_id: data.productId,
@@ -37,13 +37,13 @@ export const getProductFees = (id: number) =>
     data: { product_id: id },
   });
 
-export const addProductFee = (data: Partial<ProductFeeItem>) =>
+export const addProductFee = (data: Partial<IProductFeeData>) =>
   apiClientService.post('ui/product_designer/products/fees/create', { data });
 
-export const updateProductFee = (data: Partial<ProductFeeItem>) =>
+export const updateProductFee = (data: Partial<IProductFeeData>) =>
   apiClientService.post('ui/product_designer/products/fees/update', { data });
 
-export const deleteProductFee = (data: ProductFeesIds) =>
+export const deleteProductFee = (data: IProductFeesIds) =>
   apiClientService.post('ui/product_designer/products/fees/delete', {
     data: {
       product_id: data.productId,
@@ -56,13 +56,13 @@ export const getProductRewards = (id: number) =>
     data: { product_id: id },
   });
 
-export const addProductReward = (data: Partial<ProductRewardItem>) =>
+export const addProductReward = (data: Partial<IProductRewardData>) =>
   apiClientService.post('ui/product_designer/products/rewards/create', { data });
 
-export const updateProductReward = (data: Partial<ProductRewardItem>) =>
+export const updateProductReward = (data: Partial<IProductRewardData>) =>
   apiClientService.post('ui/product_designer/products/rewards/update', { data });
 
-export const deleteProductReward = (data: ProductRewardsIds) =>
+export const deleteProductReward = (data: IProductRewardsIds) =>
   apiClientService.post('ui/product_designer/products/rewards/delete', {
     data: {
       product_id: data.productId,

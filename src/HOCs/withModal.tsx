@@ -7,7 +7,7 @@ import {
   closeModal,
   isReadOnlySelector,
   openModal,
-  StoreState,
+  IStoreState,
   TCloseAllModals,
   TCloseModal,
   TOpenModal,
@@ -29,7 +29,7 @@ export const withModal = <OriginProps extends {}>(
     );
   };
 
-  const mapStateToProps = (state: StoreState) => ({
+  const mapStateToProps = (state: IStoreState) => ({
     isReadOnly: isReadOnlySelector(state),
   });
 

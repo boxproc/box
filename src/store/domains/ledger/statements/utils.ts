@@ -128,7 +128,7 @@ export const prepareTransactionsToRender = (data: Partial<IStatementTransactionD
   };
 };
 
-export const preparedFilterToSend = (data: Partial<IStatementsFilter>) => {
+export const prepareFilterToSend = (data: Partial<IStatementsFilter>) => {
   if (!data) {
     return null;
   }

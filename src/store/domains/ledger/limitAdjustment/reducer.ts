@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TLimitAdjustmentActionTypes } from './actionTypes';
+import { ActionTypeKeys, TLimitAdjustmentAction } from './actionTypes';
 import { ILimitAdjustmentState } from './types';
 
 export const limitAdjustmentInitialState:
@@ -9,7 +9,7 @@ export const limitAdjustmentInitialState:
   });
 
 const limitAdjustmentReducer =
-  (state = limitAdjustmentInitialState, action: TLimitAdjustmentActionTypes) => {
+  (state = limitAdjustmentInitialState, action: TLimitAdjustmentAction) => {
     switch (action.type) {
       case ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED:
         return state.set('transactionResult', action.payload.transaction_result);

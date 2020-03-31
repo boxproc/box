@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareResultDataToRender } from './util';
 
-export const defaultManualTrSelector = (state: StoreState) =>
+export const defaultManualTrSelector = (state: IStoreState) =>
   state.ledger.manualTransaction.transactionResult;
 
 export const manualTransactionSelector = createSelector(

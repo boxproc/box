@@ -1,6 +1,6 @@
+// import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-
-// import { customersMock, successResponseMock } from './mock';
+// import { customersMock } from './mock';
 import {
   ICustomerData,
   ICustomersFilterToSend,

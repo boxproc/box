@@ -4,74 +4,72 @@ import { getFormValues } from 'redux-form';
 import { formNamesConst } from 'consts';
 import {
   ActionTypeKeys,
-  IllustrateProductLoanAction,
-  IllustrateProductRevolvingCreditAction,
+  IIllustrateLoanAction,
+  IIllustrateRevCreditAction,
 } from './actionTypes';
 import * as api from './api';
 import {
-  LoanProductIllustratePrepared,
-  RevolvingCreditProductIllustratePrepared,
+  ILoanIllustrationReqToSend,
+  IRevCreditIllustrationReqToSend,
 } from './types';
 import {
-  prepareProductLoanIllustrateDataToSend,
-  prepareProductRevolvingCreditIllustrateDataToSend,
+  prepareLoanToSend,
+  prepareRevCreditToSend,
 } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type IllustrateLoanProduct = (data: Partial<LoanProductIllustratePrepared>) =>
-  IllustrateProductLoanAction;
-export type HandleIllustrateLoanProduct = () => Thunk<void>;
+export type TIllustrateLoan = (data: ILoanIllustrationReqToSend) => IIllustrateLoanAction;
+export type THandleIllustrateLoan = () => Thunk<void>;
 
-export type IllustrateRevolvingCreditProduct = (
-  data: Partial<RevolvingCreditProductIllustratePrepared>
-) => IllustrateProductRevolvingCreditAction;
-export type HandleIllustrateRevolvingCreditProduct = () => Thunk<void>;
+export type TIllustrateRevCredit = (data: IRevCreditIllustrationReqToSend) =>
+  IIllustrateRevCreditAction;
+export type THandleIllustrateRevCredit = () => Thunk<void>;
 
-export type ResetProductIllustration = () => void;
+export type TResetProductIllustration = () => void;
 
-export const illustrateLoanProduct: IllustrateLoanProduct = data => ({
-  type: ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN,
-  payload: api.illustrateLoanProduct(data),
+export const illustrateLoan: TIllustrateLoan = data => ({
+  type: ActionTypeKeys.ILLUSTRATE_LOAN,
+  payload: api.illustrateLoan(data),
 });
 
-export const illustrateRevolvingCreditProduct: IllustrateRevolvingCreditProduct = data => ({
-  type: ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT,
-  payload: api.illustrateRevolvingCreditProduct(data),
+export const illustrateRevCredit: TIllustrateRevCredit = data => ({
+  type: ActionTypeKeys.ILLUSTRATE_REVOLVING_CREDIT,
+  payload: api.illustrateRevCredit(data),
 });
 
-export const resetProductIllustration: ResetProductIllustration = () => ({
+export const resetProductIllustration: TResetProductIllustration = () => ({
   type: ActionTypeKeys.RESET_PRODUCT_ILLUSTRATION,
 });
 
-export const handleIllustrateLoanProduct: HandleIllustrateLoanProduct = () =>
+export const handleIllustrateLoan: THandleIllustrateLoan = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
         const state = getState();
-        const preparedValues = prepareProductLoanIllustrateDataToSend(formValues(state));
+        const preparedData = prepareLoanToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(illustrateLoanProduct(preparedValues));
+        if (preparedData) {
+          await dispatch(illustrateLoan(preparedData));
         }
       },
       dispatch
     );
   };
 
-export const handleIllustrateRevolvingCreditProduct: HandleIllustrateRevolvingCreditProduct = () =>
+export const handleIllustrateRevCredit: THandleIllustrateRevCredit = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
         const state = getState();
-        const preparedValues = prepareProductRevolvingCreditIllustrateDataToSend(formValues(state));
+        const preparedData = prepareRevCreditToSend(formValues(state));
 
-        if (preparedValues) {
-          await dispatch(illustrateRevolvingCreditProduct(preparedValues));
+        if (preparedData) {
+          await dispatch(illustrateRevCredit(preparedData));
         }
       },
       dispatch

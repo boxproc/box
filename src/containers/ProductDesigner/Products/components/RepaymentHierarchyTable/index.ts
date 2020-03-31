@@ -7,9 +7,9 @@ import {
   createLoadingSelector,
   handleGetRepaymentHierarchy,
   handleUpdateRepaymentHierarchy,
+  IStoreState,
   RepaymentHierarchyActionTypes,
   selectRepaymentHierarchy,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -20,7 +20,7 @@ const loadingSelectorUpdate = createLoadingSelector([
   RepaymentHierarchyActionTypes.UPDATE_REPAYMENT_HIERARCHY,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   isUpdating: loadingSelectorUpdate(state),
   data: selectRepaymentHierarchy(state),

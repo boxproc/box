@@ -74,7 +74,7 @@ export interface IConvertTrToLoanRejectedAction {
   readonly type: ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN_REJECTED;
 }
 
-export type TTransactionsActionTypes =
+export type TTransactionsAction =
   | IFilterTransactionsFulfilledAction
   | IFilterTransactionsByIdFulfilledAction
   | IConvertTrToLoanFulfilledAction

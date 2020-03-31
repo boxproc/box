@@ -2,9 +2,9 @@ import { createSelector } from 'reselect';
 
 import { productTypesConst } from 'consts';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
-import { currenciesOptionsSelector } from 'store/domains/administration';
+import { currenciesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector, userInstitutionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
@@ -16,7 +16,7 @@ import {
   prepareProductDetailsData,
 } from './utils';
 
-export const selectDefaultProductItems = (state: StoreState) =>
+export const selectDefaultProductItems = (state: IStoreState) =>
   state.productDesigner.products.products;
 
 export const selectProductItems = createSelector(
@@ -34,7 +34,7 @@ export const selectProductItems = createSelector(
   })
 );
 
-export const selectDefaultCurrentProduct = (state: StoreState) =>
+export const selectDefaultCurrentProduct = (state: IStoreState) =>
   state.productDesigner.products.currentProduct;
 
 export const selectCurrentProduct = createSelector(
@@ -90,7 +90,7 @@ export const selectCurrentProductType = createSelector(
   product => product && product.product_type
 );
 
-export const selectDetailsCurrentProductDetails = (state: StoreState) =>
+export const selectDetailsCurrentProductDetails = (state: IStoreState) =>
   state.productDesigner.products.currentProductDetails;
 
 export const selectCurrentProductDetails = createSelector(
@@ -110,7 +110,7 @@ export const selectProductLoanDetails = createSelector(
   product => product && prepareProductDetailsData(product, 'L')
 );
 
-export const selectDefaultInstitutionProducts = (state: StoreState) =>
+export const selectDefaultInstitutionProducts = (state: IStoreState) =>
   state.productDesigner.products.institutionProducts;
 
 export const selectInstitutionProductsOptions = createSelector(

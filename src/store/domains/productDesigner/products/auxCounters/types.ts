@@ -1,4 +1,4 @@
-export interface ProductAuxCountersItem {
+export interface IProductAuxCountersData {
   product_id: number;
   aux_counter_1_description?: string;
   aux_counter_2_description?: string;
@@ -8,7 +8,7 @@ export interface ProductAuxCountersItem {
   aux_counter_3_enabled?: string;
 }
 
-export interface ProductAuxCountersItemPrepared {
+export interface IProductAuxCounters {
   id: number;
   auxCounter1Description: string;
   auxCounter2Description: string;
@@ -18,4 +18,4 @@ export interface ProductAuxCountersItemPrepared {
   auxCounter3Enabled: boolean;
 }
 
-export interface ProductAuxCountersState { }
+export interface IProductAuxCountersState { }

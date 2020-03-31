@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
-import { cardStatusesOptionsSelector } from 'store/domains/administration';
+import { IStoreState } from 'store';
+import { cardStatusesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './utils';
 
-export const defaultCardsSelector = (state: StoreState) => state.ledger.cards.cards;
+export const defaultCardsSelector = (state: IStoreState) => state.ledger.cards.cards;
 
 export const cardsSelector = createSelector(
   defaultCardsSelector,

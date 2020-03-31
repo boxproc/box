@@ -1,67 +1,67 @@
 import {
-  ProductAprIds,
-  ProductAprItems,
-  ProductFeeAprItems,
-  ProductFeeItems,
-  ProductFeesIds,
-  ProductRewardItems,
-  ProductRewardsIds,
+  IProductAprIds,
+  IProductAprsData,
+  IProductFeesAprsData,
+  IProductFeesData,
+  IProductFeesIds,
+  IProductRewardsData,
+  IProductRewardsIds,
 } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_PRODUCT_FEE_APR = 'productDesigner/products/GET_PRODUCT_FEE_APR',
-  GET_PRODUCT_FEE_APR_FULFILLED = 'productDesigner/products/GET_PRODUCT_FEE_APR_FULFILLED',
-  GET_PRODUCT_FEE_APR_REJECTED = 'productDesigner/products/GET_PRODUCT_FEE_APR_REJECTED',
+  GET_PRODUCT_FEE_APR = 'products/GET_PRODUCT_FEE_APR',
+  GET_PRODUCT_FEE_APR_FULFILLED = 'products/GET_PRODUCT_FEE_APR_FULFILLED',
+  GET_PRODUCT_FEE_APR_REJECTED = 'products/GET_PRODUCT_FEE_APR_REJECTED',
 
-  GET_PRODUCT_APRS = 'productDesigner/products/GET_PRODUCT_APRS',
-  GET_PRODUCT_APRS_FULFILLED = 'productDesigner/products/GET_PRODUCT_APRS_FULFILLED',
-  GET_PRODUCT_APRS_REJECTED = 'productDesigner/products/GET_PRODUCT_APRS_REJECTED',
+  GET_PRODUCT_APRS = 'products/GET_PRODUCT_APRS',
+  GET_PRODUCT_APRS_FULFILLED = 'products/GET_PRODUCT_APRS_FULFILLED',
+  GET_PRODUCT_APRS_REJECTED = 'products/GET_PRODUCT_APRS_REJECTED',
 
-  ADD_PRODUCT_APR = 'productDesigner/products/ADD_PRODUCT_APR',
-  ADD_PRODUCT_APR_FULFILLED = 'productDesigner/products/ADD_PRODUCT_APR_FULFILLED',
-  ADD_PRODUCT_APR_REJECTED = 'productDesigner/products/ADD_PRODUCT_APR_REJECTED',
+  ADD_PRODUCT_APR = 'products/ADD_PRODUCT_APR',
+  ADD_PRODUCT_APR_FULFILLED = 'products/ADD_PRODUCT_APR_FULFILLED',
+  ADD_PRODUCT_APR_REJECTED = 'products/ADD_PRODUCT_APR_REJECTED',
 
-  UPDATE_PRODUCT_APR = 'productDesigner/products/UPDATE_PRODUCT_APR',
-  UPDATE_PRODUCT_APR_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_APR_FULFILLED',
-  UPDATE_PRODUCT_APR_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_APR_REJECTED',
+  UPDATE_PRODUCT_APR = 'products/UPDATE_PRODUCT_APR',
+  UPDATE_PRODUCT_APR_FULFILLED = 'products/UPDATE_PRODUCT_APR_FULFILLED',
+  UPDATE_PRODUCT_APR_REJECTED = 'products/UPDATE_PRODUCT_APR_REJECTED',
 
-  DELETE_PRODUCT_APR = 'productDesigner/products/DELETE_PRODUCT_APR',
-  DELETE_PRODUCT_APR_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_APR_FULFILLED',
-  DELETE_PRODUCT_APR_REJECTED = 'productDesigner/products/DELETE_PRODUCT_APR_REJECTED',
+  DELETE_PRODUCT_APR = 'products/DELETE_PRODUCT_APR',
+  DELETE_PRODUCT_APR_FULFILLED = 'products/DELETE_PRODUCT_APR_FULFILLED',
+  DELETE_PRODUCT_APR_REJECTED = 'products/DELETE_PRODUCT_APR_REJECTED',
 
-  GET_PRODUCT_FEES = 'productDesigner/products/GET_PRODUCT_FEES',
-  GET_PRODUCT_FEES_FULFILLED = 'productDesigner/products/GET_PRODUCT_FEES_FULFILLED',
-  GET_PRODUCT_FEES_REJECTED = 'productDesigner/products/GET_PRODUCT_FEES_REJECTED',
+  GET_PRODUCT_FEES = 'products/GET_PRODUCT_FEES',
+  GET_PRODUCT_FEES_FULFILLED = 'products/GET_PRODUCT_FEES_FULFILLED',
+  GET_PRODUCT_FEES_REJECTED = 'products/GET_PRODUCT_FEES_REJECTED',
 
-  ADD_PRODUCT_FEE = 'productDesigner/products/ADD_PRODUCT_FEE',
-  ADD_PRODUCT_FEE_FULFILLED = 'productDesigner/products/ADD_PRODUCT_FEE_FULFILLED',
-  ADD_PRODUCT_FEE_REJECTED = 'productDesigner/products/ADD_PRODUCT_FEE_REJECTED',
+  ADD_PRODUCT_FEE = 'products/ADD_PRODUCT_FEE',
+  ADD_PRODUCT_FEE_FULFILLED = 'products/ADD_PRODUCT_FEE_FULFILLED',
+  ADD_PRODUCT_FEE_REJECTED = 'products/ADD_PRODUCT_FEE_REJECTED',
 
-  UPDATE_PRODUCT_FEE = 'productDesigner/products/UPDATE_PRODUCT_FEE',
-  UPDATE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_FEE_FULFILLED',
-  UPDATE_PRODUCT_FEE_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_FEE_REJECTED',
+  UPDATE_PRODUCT_FEE = 'products/UPDATE_PRODUCT_FEE',
+  UPDATE_PRODUCT_FEE_FULFILLED = 'products/UPDATE_PRODUCT_FEE_FULFILLED',
+  UPDATE_PRODUCT_FEE_REJECTED = 'products/UPDATE_PRODUCT_FEE_REJECTED',
 
-  DELETE_PRODUCT_FEE = 'productDesigner/products/DELETE_PRODUCT_FEE',
-  DELETE_PRODUCT_FEE_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_FEE_FULFILLED',
-  DELETE_PRODUCT_FEE_REJECTED = 'productDesigner/products/DELETE_PRODUCT_FEE_REJECTED',
+  DELETE_PRODUCT_FEE = 'products/DELETE_PRODUCT_FEE',
+  DELETE_PRODUCT_FEE_FULFILLED = 'products/DELETE_PRODUCT_FEE_FULFILLED',
+  DELETE_PRODUCT_FEE_REJECTED = 'products/DELETE_PRODUCT_FEE_REJECTED',
 
-  GET_PRODUCT_REWARDS = 'productDesigner/products/GET_PRODUCT_REWARDS',
-  GET_PRODUCT_REWARDS_FULFILLED = 'productDesigner/products/GET_PRODUCT_REWARDS_FULFILLED',
-  GET_PRODUCT_REWARDS_REJECTED = 'productDesigner/products/GET_PRODUCT_REWARDS_REJECTED',
+  GET_PRODUCT_REWARDS = 'products/GET_PRODUCT_REWARDS',
+  GET_PRODUCT_REWARDS_FULFILLED = 'products/GET_PRODUCT_REWARDS_FULFILLED',
+  GET_PRODUCT_REWARDS_REJECTED = 'products/GET_PRODUCT_REWARDS_REJECTED',
 
-  ADD_PRODUCT_REWARD = 'productDesigner/products/ADD_PRODUCT_REWARD',
-  ADD_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/ADD_PRODUCT_REWARD_FULFILLED',
-  ADD_PRODUCT_REWARD_REJECTED = 'productDesigner/products/ADD_PRODUCT_REWARD_REJECTED',
+  ADD_PRODUCT_REWARD = 'products/ADD_PRODUCT_REWARD',
+  ADD_PRODUCT_REWARD_FULFILLED = 'products/ADD_PRODUCT_REWARD_FULFILLED',
+  ADD_PRODUCT_REWARD_REJECTED = 'products/ADD_PRODUCT_REWARD_REJECTED',
 
-  UPDATE_PRODUCT_REWARD = 'productDesigner/products/UPDATE_PRODUCT_REWARD',
-  UPDATE_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/UPDATE_PRODUCT_REWARD_FULFILLED',
-  UPDATE_PRODUCT_REWARD_REJECTED = 'productDesigner/products/UPDATE_PRODUCT_REWARD_REJECTED',
+  UPDATE_PRODUCT_REWARD = 'products/UPDATE_PRODUCT_REWARD',
+  UPDATE_PRODUCT_REWARD_FULFILLED = 'products/UPDATE_PRODUCT_REWARD_FULFILLED',
+  UPDATE_PRODUCT_REWARD_REJECTED = 'products/UPDATE_PRODUCT_REWARD_REJECTED',
 
-  DELETE_PRODUCT_REWARD = 'productDesigner/products/DELETE_PRODUCT_REWARD',
-  DELETE_PRODUCT_REWARD_FULFILLED = 'productDesigner/products/DELETE_PRODUCT_REWARD_FULFILLED',
-  DELETE_PRODUCT_REWARD_REJECTED = 'productDesigner/products/DELETE_PRODUCT_REWARD_REJECTED',
+  DELETE_PRODUCT_REWARD = 'products/DELETE_PRODUCT_REWARD',
+  DELETE_PRODUCT_REWARD_FULFILLED = 'products/DELETE_PRODUCT_REWARD_FULFILLED',
+  DELETE_PRODUCT_REWARD_REJECTED = 'products/DELETE_PRODUCT_REWARD_REJECTED',
 }
 
 export interface GetProductAprsAction {
@@ -70,7 +70,7 @@ export interface GetProductAprsAction {
 }
 
 export interface GetProductAprsFulfilledAction {
-  readonly payload: ProductAprItems;
+  readonly payload: IProductAprsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED;
 }
 
@@ -85,7 +85,7 @@ export interface GetProductFeeAprsAction {
 }
 
 export interface GetProductFeeAprsFulfilledAction {
-  readonly payload: ProductFeeAprItems;
+  readonly payload: IProductFeesAprsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_FULFILLED;
 }
 
@@ -132,7 +132,7 @@ export interface DeleteProductAprAction {
 export interface DeleteProductAprFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED;
-  readonly meta: { data: ProductAprIds };
+  readonly meta: { data: IProductAprIds };
 }
 
 export interface DeleteProductAprRejectedAction {
@@ -146,7 +146,7 @@ export interface GetProductFeesAction {
 }
 
 export interface GetProductFeesFulfilledAction {
-  readonly payload: ProductFeeItems;
+  readonly payload: IProductFeesData;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEES_FULFILLED;
 }
 
@@ -193,7 +193,7 @@ export interface DeleteProductFeeAction {
 export interface DeleteProductFeeFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_FULFILLED;
-  readonly meta: { data: ProductFeesIds };
+  readonly meta: { data: IProductFeesIds };
 }
 
 export interface DeleteProductFeeRejectedAction {
@@ -207,7 +207,7 @@ export interface GetProductRewardsAction {
 }
 
 export interface GetProductRewardsFulfilledAction {
-  readonly payload: ProductRewardItems;
+  readonly payload: IProductRewardsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_FULFILLED;
 }
 
@@ -254,7 +254,7 @@ export interface DeleteProductRewardAction {
 export interface DeleteProductRewardFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_FULFILLED;
-  readonly meta: { data: ProductRewardsIds };
+  readonly meta: { data: IProductRewardsIds };
 }
 
 export interface DeleteProductRewardRejectedAction {
@@ -262,7 +262,7 @@ export interface DeleteProductRewardRejectedAction {
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_REJECTED;
 }
 
-export type ProductAprsFeesRewardsActionTypes =
+export type TProductAprsFeesRewardsAction =
   | GetProductAprsFulfilledAction
   | AddProductAprFulfilledAction
   | UpdateProductAprFulfilledAction

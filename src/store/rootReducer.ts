@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import { combineReducers } from 'redux-seamless-immutable';
 
-import administrationReducer from './domains/administration/reducer';
+import adminReducer from './domains/admin/reducer';
 import auditReducer from './domains/audit/reducer';
 import ledgerReducer from './domains/ledger/reducer';
 import loaderReducer from './domains/loader/reducer';
@@ -22,7 +22,7 @@ const createRootReducer = (history: History) => combineReducers({
   login: loginReducer,
   modals: modalsReducer,
   uiItems: uiItemsReducer,
-  administration: administrationReducer,
+  admin: adminReducer,
   productDesigner: productDesignerReducer,
   ledger: ledgerReducer,
   audit: auditReducer,

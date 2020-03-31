@@ -1,12 +1,12 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ProductAuxCountersActionTypes } from './actionTypes';
-import { ProductAuxCountersState } from './types';
+import { TProductAuxCountersAction } from './actionTypes';
+import { IProductAuxCountersState } from './types';
 
-export const productsInitialState: ImmutableObject<ProductAuxCountersState> = Immutable({});
+export const productsInitialState: ImmutableObject<IProductAuxCountersState> = Immutable({});
 
 const productAuxCountersReducer =
-  (state = productsInitialState, action: ProductAuxCountersActionTypes) => {
+  (state = productsInitialState, action: TProductAuxCountersAction) => {
     switch (action.type) {
       default: return state;
     }

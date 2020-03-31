@@ -1,6 +1,8 @@
 import { apiClientService } from 'services';
+import { IProductGLData } from './types';
 
-import { GeneralLedgerItem } from './types';
-
-export const updateGeneralLedger = (data: Partial<GeneralLedgerItem>) =>
+/**
+ * Update general ledger API
+ */
+export const updateProductGL = (data: Partial<IProductGLData>) =>
   apiClientService.post('ui/product_designer/products/update_general_ledger', { data });

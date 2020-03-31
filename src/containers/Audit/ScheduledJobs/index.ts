@@ -4,35 +4,30 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ScheduledJobs from './ScheduledJobs';
 
 import {
-  AuditScheduledJobsActionType,
-  createLoadingSelector,
-  handleFilterAuditScheduledJobs,
+  currentScheduledJobIdSelector,
+  currentScheduledJobNameSelector,
+  handleFilterScheduledJobs,
   handleGetLogData,
+  isScheduledJobsLoadingSelector,
+  isSysMonitorLoadingLogDataSelector,
+  IStoreState,
   resetScheduledJobs,
-  selectAuditScheduledJobs,
-  selectAuditScheduledJobsSchedulerId,
-  selectAuditScheduledJobsSchedulerName,
-  StoreState,
-  SystemMonitorActionTypes,
+  scheduledJobsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AuditScheduledJobsActionType.FILTER_AUDIT_SCHEDULED_JOBS,
-  SystemMonitorActionTypes.GET_LOG_DATA,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isSysMonitorLoadingLogDataSelector(state)
+    || isScheduledJobsLoadingSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
-  scheduledJobs: selectAuditScheduledJobs(state),
-  currentSchedulerId: selectAuditScheduledJobsSchedulerId(state),
-  currentScheduledJobName: selectAuditScheduledJobsSchedulerName(state),
+  scheduledJobs: scheduledJobsSelector(state),
+  currentSchedulerId: currentScheduledJobIdSelector(state),
+  currentScheduledJobName: currentScheduledJobNameSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    filterScheduledJobs: handleFilterAuditScheduledJobs,
+    filterScheduledJobs: handleFilterScheduledJobs,
     getLogData: handleGetLogData,
     resetScheduledJobs,
   },

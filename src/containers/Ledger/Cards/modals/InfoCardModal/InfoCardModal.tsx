@@ -7,7 +7,7 @@ import { IWithModal, withModal } from 'HOCs';
 
 import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
 
-import { CardForm, StatusForm } from 'containers/Ledger/Cards/forms';
+import { CardForm, StatusForm } from './../../forms';
 
 import { ICard, THandleActivateCard } from 'store';
 

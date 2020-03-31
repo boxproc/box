@@ -4,56 +4,56 @@ import { openModal } from 'store';
 import {
   ActionTypeKeys,
   GetLogDataAction,
-  GetSystemMonitorEndpointsAction,
-  GetSystemMonitorInterfacesAction,
-  GetSystemMonitorLastTransactionsAction,
-  GetSystemMonitorSchedulerAction,
+  GetSysMonitorEndpointsAction,
+  GetSysMonitorInterfacesAction,
+  GetSysMonitorLastTransactionsAction,
+  GetSysMonitorSchedulerAction,
 } from './actionTypes';
 import * as api from './api';
-import { ItemInfoForLogDataRequest, LogDataRequest } from './types';
+import { ISysMonitorLogData, ISysMonitorLogDataReq } from './types';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
-import { selectActiveItemInfoForLogData } from './selectors';
+import { activeSysMonitorItemLogDataSelector } from './selectors';
 
-export type HandleGetSystemMonitorData = (refreshedTables?: Array<string>) => Thunk<void>;
+export type HandleGetSysMonitorData = (refreshedTables?: Array<string>) => Thunk<void>;
 
-export type GetSystemMonitorInterfaces = () => GetSystemMonitorInterfacesAction;
-export type GetSystemMonitorEndpoints = () => GetSystemMonitorEndpointsAction;
-export type GetSystemMonitorScheduler = () => GetSystemMonitorSchedulerAction;
-export type GetSystemMonitorLastTransactions = () => GetSystemMonitorLastTransactionsAction;
+export type GetSysMonitorInterfaces = () => GetSysMonitorInterfacesAction;
+export type GetSysMonitorEndpoints = () => GetSysMonitorEndpointsAction;
+export type GetSysMonitorScheduler = () => GetSysMonitorSchedulerAction;
+export type GetSysMonitorLastTransactions = () => GetSysMonitorLastTransactionsAction;
 
 export type GetLogData = (
   data: {
-    requestData: LogDataRequest,
-    itemData: ItemInfoForLogDataRequest
+    requestData: ISysMonitorLogDataReq,
+    itemData: ISysMonitorLogData
   }
 ) =>
   GetLogDataAction;
-export type HandleGetLogData = (data: ItemInfoForLogDataRequest) => Thunk<void>;
+export type HandleGetLogData = (data: ISysMonitorLogData) => Thunk<void>;
 export type HandleRefreshLogData = () => Thunk<void>;
 
-export type ResetSystemMonitor = () => void;
+export type ResetSysMonitor = () => void;
 
-export const getSystemMonitorInterfaces: GetSystemMonitorInterfaces = () => ({
-  type: ActionTypeKeys.GET_SYSTEM_MONITOR_INTERFACES,
-  payload: api.getSystemMonitorInterfaces(),
+export const getSysMonitorInterfaces: GetSysMonitorInterfaces = () => ({
+  type: ActionTypeKeys.GET_SYS_MONITOR_INTERFACES,
+  payload: api.getSysMonitorInterfaces(),
 });
 
-export const getSystemMonitorEndpoints: GetSystemMonitorEndpoints = () => ({
-  type: ActionTypeKeys.GET_SYSTEM_MONITOR_ENDPOINTS,
-  payload: api.getSystemMonitorEndpoints(),
+export const getSysMonitorEndpoints: GetSysMonitorEndpoints = () => ({
+  type: ActionTypeKeys.GET_SYS_MONITOR_ENDPOINTS,
+  payload: api.getSysMonitorEndpoints(),
 });
 
-export const getSystemMonitorScheduler: GetSystemMonitorScheduler = () => ({
-  type: ActionTypeKeys.GET_SYSTEM_MONITOR_SCHEDULER,
-  payload: api.getSystemMonitorScheduler(),
+export const getSysMonitorScheduler: GetSysMonitorScheduler = () => ({
+  type: ActionTypeKeys.GET_SYS_MONITOR_SCHEDULER,
+  payload: api.getSysMonitorScheduler(),
 });
 
-export const getSystemMonitorLastTransactions: GetSystemMonitorLastTransactions = () => ({
-  type: ActionTypeKeys.GET_SYSTEM_MONITOR_LAST_TRANSACTIONS,
-  payload: api.getSystemMonitorLastTransactions(),
+export const getSysMonitorLastTransactions: GetSysMonitorLastTransactions = () => ({
+  type: ActionTypeKeys.GET_SYS_MONITOR_LAST_TRANSACTIONS,
+  payload: api.getSysMonitorLastTransactions(),
 });
 
 export const getLogData: GetLogData = data => ({
@@ -62,36 +62,36 @@ export const getLogData: GetLogData = data => ({
   meta: data.itemData,
 });
 
-export const resetSystemMonitor: ResetSystemMonitor = () => ({
-  type: ActionTypeKeys.RESET_SYSTEM_MONITOR,
+export const resetSysMonitor: ResetSysMonitor = () => ({
+  type: ActionTypeKeys.RESET_SYS_MONITOR,
 });
 
 const tablesConfig = [
   {
     name: systemMonitorTablesConst.INTERFACES,
-    action: getSystemMonitorInterfaces,
+    action: getSysMonitorInterfaces,
     apiLogPathName: 'ui/administration/interfaces/log_file',
     idName: 'interface_id',
   },
   {
     name: systemMonitorTablesConst.ENDPOINTS,
-    action: getSystemMonitorEndpoints,
+    action: getSysMonitorEndpoints,
     apiLogPathName: 'ui/administration/endpoints/log_file',
     idName: 'endpoint_id',
   },
   {
     name: systemMonitorTablesConst.SCHEDULER_JOBS,
-    action: getSystemMonitorScheduler,
+    action: getSysMonitorScheduler,
     apiLogPathName: 'ui/administration/scheduler/log_file',
     idName: 'scheduler_id',
   },
   {
     name: systemMonitorTablesConst.LAST_TRANSACTIONS,
-    action: getSystemMonitorLastTransactions,
+    action: getSysMonitorLastTransactions,
   },
 ];
 
-export const handleGetSystemMonitorData: HandleGetSystemMonitorData = refreshedTables =>
+export const handleGetSysMonitorData: HandleGetSysMonitorData = refreshedTables =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -151,7 +151,7 @@ export const handleRefreshLogData: HandleRefreshLogData = () =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const itemData = selectActiveItemInfoForLogData(state);
+        const itemData = activeSysMonitorItemLogDataSelector(state);
 
         await dispatch(handleGetLogData(itemData));
       },

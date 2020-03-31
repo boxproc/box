@@ -181,7 +181,7 @@ export interface IGetUserInstitutionsRejectedAction {
   readonly type: ActionTypeKeys.GET_USER_INSTITUTIONS_REJECTED;
 }
 
-export type TAuthActionTypes =
+export type TAuthAction =
   | IUserLoginFulfilledAction
   | IUserLogoutFulfilledAction
   | IUserGetAuthKeyFulfilledAction

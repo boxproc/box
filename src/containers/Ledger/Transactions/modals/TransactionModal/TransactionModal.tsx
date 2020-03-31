@@ -5,8 +5,8 @@ import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 
-import { TransactionForm } from 'containers/Ledger/Transactions/forms';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
+import { TransactionForm } from './../../forms';
 
 import { IPayloadTransactionModal } from 'store';
 import { dateUtil } from 'utils';

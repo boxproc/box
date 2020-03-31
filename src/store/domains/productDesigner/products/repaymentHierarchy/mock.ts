@@ -1,8 +1,6 @@
 import { RepaymentHierarchyItems } from './types';
 
-import { IResponseStatus } from 'types';
-
-export const repaymentHierarchy: RepaymentHierarchyItems = {
+export const repaymentHierarchyMock: RepaymentHierarchyItems = {
   repayment_hierarchy: [
     {
       id: 1,
@@ -41,10 +39,4 @@ export const repaymentHierarchy: RepaymentHierarchyItems = {
       description: 'Description 4',
     },
   ],
-};
-
-export const successResponseStatus: IResponseStatus = {
-  response_status: {
-    status_code: '00',
-  },
 };

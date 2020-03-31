@@ -1,15 +1,19 @@
 import { apiClientService } from 'services';
 
-import { AuditApiCallsFilterPrepared } from './types';
-
-// import { apiCallsItems } from './mock';
-
+import { IApiCallsFilterToSend } from './types';
+// import { apiCallsMock } from './mock';
 // import { throttleUtil } from 'utils';
 
-export const filterAuditApiCalls = (data: Partial<AuditApiCallsFilterPrepared>) =>
-  // throttleUtil.getDataAfter(apiCallsItems, 500);
+/**
+ * Filter API calls API
+ */
+export const filterApiCalls = (data: Partial<IApiCallsFilterToSend>) =>
+  // throttleUtil.getDataAfter(apiCallsMock, 500);
   apiClientService.post('ui/audit/api_calls', { data });
 
-export const getDetailsAuditApiCalls = (data: { id: number }) =>
-  // throttleUtil.getDataAfter(apiCallsItems, 500);
+/**
+ * Get API call details API
+ */
+export const getDetailsApiCalls = (data: { id: number }) =>
+  // throttleUtil.getDataAfter(apiCallsMock, 500);
   apiClientService.post('ui/audit/api_calls/get', { data });

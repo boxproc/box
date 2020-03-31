@@ -1,11 +1,8 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-interface AuditScheduledJobsId {
+export interface IScheduledJobData {
   id: number;
-}
-
-export interface AuditScheduledJobsItem extends AuditScheduledJobsId {
   scheduler_name: string;
   scheduler_id: number;
   start_datetime: string;
@@ -14,7 +11,12 @@ export interface AuditScheduledJobsItem extends AuditScheduledJobsId {
   error_description: string;
 }
 
-export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
+export interface IScheduledJobsData {
+  scheduler_jobs: Array<IScheduledJobData>;
+}
+
+export interface IScheduledJob {
+  id: number;
   scheduler: string;
   dateTimeFrom: string;
   dateTimeTo: string;
@@ -22,28 +24,29 @@ export interface AuditScheduledJobsItemPrepared extends AuditScheduledJobsId {
   errorDescription: string;
 }
 
-export interface AuditScheduledJobsFilter {
+export interface ISchedulerId {
+  scheduler_id: number;
+}
+
+/**
+ * Scheduled jobs filter interfaces
+ */
+
+export interface IScheduledJobsFilter {
   institutionId: ISelectValue;
   scheduler: ISelectValue;
   scheduledJobsDateTimeFrom: string;
   scheduledJobsDateTimeTo: string;
 }
 
-export interface AuditScheduledJobsFilterPrepared {
+export interface IScheduledJobsFilterToSend {
   institution_id: string | number;
   scheduler_id: string | number;
   start_datetime: string;
   finish_datetime: string;
 }
 
-export interface SchedulerId {
-  scheduler_id: number;
-}
-
-export interface AuditScheduledJobsItems {
-  scheduler_jobs: Array<AuditScheduledJobsItem>;
-}
-
-export interface AuditScheduledJobsState {
-  schedulerJobs: ImmutableArray<AuditScheduledJobsItem>;
+/** Scheduled jobs state */
+export interface IScheduledJobsState {
+  schedulerJobs: ImmutableArray<IScheduledJobData>;
 }

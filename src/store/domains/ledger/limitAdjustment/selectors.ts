@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareResultDataToRender } from './util';
 
-export const defaultLimitAdjustmentSelector = (state: StoreState) =>
+export const defaultLimitAdjustmentSelector = (state: IStoreState) =>
   state.ledger.limitAdjustment.transactionResult;
 
 export const limitAdjustmentSelector = createSelector(

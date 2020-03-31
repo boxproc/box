@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import Root from './Root';
 
-import { selectVisibleUiItemsList, StoreState } from 'store';
+import { IStoreState, visibleUiItemsListSelector } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
-  visibleUiItemsList: selectVisibleUiItemsList(state),
+const mapStateToProps = (state: IStoreState) => ({
+  visibleUiItemsList: visibleUiItemsListSelector(state),
 });
 
 export default connect(

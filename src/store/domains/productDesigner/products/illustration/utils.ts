@@ -1,99 +1,124 @@
 import {
-  IllustrationProductAprRevolvingCreditResp,
-  IllustrationProductLoanResp,
-  IllustrationProductStatementsRevolvingCreditResp,
-  IllustrationProductTransactionsRevolvingCreditResp,
-  LoanProductIllustrate,
-  LoanProductIllustratePrepared,
-  RevolvingCreditProductIllustrate,
-  RevolvingCreditProductIllustratePrepared,
+  ILoanIllustrationData,
+  ILoanIllustrationReq,
+  ILoanIllustrationReqToSend,
+  IRevCreditIllustrationAprData,
+  IRevCreditIllustrationReq,
+  IRevCreditIllustrationReqToSend,
+  IRevCreditIllustrationStatementData,
+  IRevCreditIllustrationTransData,
 } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const prepareProductLoanIllustrateDataToSend =
-  (data: Partial<LoanProductIllustrate>): Partial<LoanProductIllustratePrepared> => {
-    const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
+export const prepareLoanToSend = (data: Partial<ILoanIllustrationReq>):
+  ILoanIllustrationReqToSend => {
+  if (!data) {
+    return null;
+  }
 
-    return {
-      product_id: productId,
-      amount,
-      nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
-      nr_interest_free: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
-      start_date: startDate,
-    };
-  };
+  const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
 
-export const prepareProductRevolvingCreditIllustrateDataToSend =
-  (data: Partial<RevolvingCreditProductIllustrate>):
-    Partial<RevolvingCreditProductIllustratePrepared> => {
-    const { productId, limit, openBalance, startDate, transactionAmount1, transactionAmount2,
-      transactionAmount3, transactionDate1, transactionDate2, transactionDate3, transactionType1,
-      transactionType2, transactionType3 } = data;
-
-    return {
-      product_id: productId,
-      limit,
-      open_balance: openBalance,
-      transaction_amount_1: transactionAmount1,
-      transaction_amount_2: transactionAmount2,
-      transaction_amount_3: transactionAmount3,
-      transaction_date_1: transactionDate1,
-      transaction_date_2: transactionDate2,
-      transaction_date_3: transactionDate3,
-      transaction_type_1: transactionType1 && transactionType1.value,
-      transaction_type_2: transactionType2 && transactionType2.value,
-      transaction_type_3: transactionType3 && transactionType3.value,
-      start_date: startDate,
-    };
-  };
-
-export const prepareProductIllustrationStatementsItem = (
-  item: IllustrationProductStatementsRevolvingCreditResp
-) => {
   return {
-    statementId: item.statement_id,
-    statementDate: item.statement_date,
-    firstTransactionId: item.first_transaction_id,
-    lastTransactionId: item.last_transaction_id,
-    balanceOpen: stringsUtil.numberToFixed(item.balance_open, 2),
-    balanceClose: stringsUtil.numberToFixed(item.balance_close, 2),
-    repaymentMinimumAmountDue: stringsUtil.numberToFixed(item.repayment_minimum_amount_due, 2),
-    minimumRepayment: stringsUtil.numberToFixed(item.minimum_repayment, 2),
-    startDate: item.start_date,
-    endDate: item.end_date,
+    product_id: productId,
+    amount,
+    nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
+    nr_interest_free: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
+    start_date: startDate,
   };
 };
 
-export const prepareProductIllustrationAprsItem = (
-  item: IllustrationProductAprRevolvingCreditResp
-) => {
+export const prepareRevCreditToSend = (data: Partial<IRevCreditIllustrationReq>):
+  IRevCreditIllustrationReqToSend => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    productId,
+    limit,
+    openBalance,
+    startDate,
+    transactionAmount1,
+    transactionAmount2,
+    transactionAmount3,
+    transactionDate1,
+    transactionDate2,
+    transactionDate3,
+    transactionType1,
+    transactionType2,
+    transactionType3,
+  } = data;
+
   return {
-    description: item.description,
-    currAccruedInterest: stringsUtil.numberToFixed(item.curr_accrued_interest, 4),
-    rate: stringsUtil.numberToFixed(item.rate, 2),
+    product_id: productId,
+    limit,
+    open_balance: openBalance,
+    transaction_amount_1: transactionAmount1,
+    transaction_amount_2: transactionAmount2,
+    transaction_amount_3: transactionAmount3,
+    transaction_date_1: transactionDate1,
+    transaction_date_2: transactionDate2,
+    transaction_date_3: transactionDate3,
+    transaction_type_1: transactionType1 && transactionType1.value,
+    transaction_type_2: transactionType2 && transactionType2.value,
+    transaction_type_3: transactionType3 && transactionType3.value,
+    start_date: startDate,
   };
 };
 
-export const prepareProductIllustrationTransactionsItem = (
-  item: IllustrationProductTransactionsRevolvingCreditResp
-) => {
+export const prepareStatementToRender = (data: IRevCreditIllustrationStatementData) => {
+  if (!data) {
+    return null;
+  }
+
   return {
-    transactionDatetime: item.transaction_datetime,
-    debitCreditIndicator: item.debit_credit_indicator,
-    amount: stringsUtil.numberToFixed(item.amount, 2),
-    balanceSettledBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
-    balanceSettledAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
-    balanceAvailableBefore: stringsUtil.numberToFixed(item.balance_available_before, 2),
-    balanceAvailableAfter: stringsUtil.numberToFixed(item.balance_available_after, 2),
-    description: item.description,
-    status: item.status,
-    aprRate: stringsUtil.numberToFixed(item.apr_rate, 2),
-    transactionType: item.transaction_type,
+    statementId: data.statement_id,
+    statementDate: data.statement_date,
+    firstTransactionId: data.first_transaction_id,
+    lastTransactionId: data.last_transaction_id,
+    balanceOpen: stringsUtil.numberToFixed(data.balance_open, 2),
+    balanceClose: stringsUtil.numberToFixed(data.balance_close, 2),
+    repaymentMinimumAmountDue: stringsUtil.numberToFixed(data.repayment_minimum_amount_due, 2),
+    minimumRepayment: stringsUtil.numberToFixed(data.minimum_repayment, 2),
+    startDate: data.start_date,
+    endDate: data.end_date,
   };
 };
 
-export const prepareProductIllustrationData = (data: IllustrationProductLoanResp) => {
+export const prepareAprToRender = (data: IRevCreditIllustrationAprData) => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    description: data.description,
+    currAccruedInterest: stringsUtil.numberToFixed(data.curr_accrued_interest, 4),
+    rate: stringsUtil.numberToFixed(data.rate, 2),
+  };
+};
+
+export const prepareTransToRender = (data: IRevCreditIllustrationTransData) => {
+  if (!data) {
+    return null;
+  }
+
+  return {
+    transactionDatetime: data.transaction_datetime,
+    debitCreditIndicator: data.debit_credit_indicator,
+    amount: stringsUtil.numberToFixed(data.amount, 2),
+    balanceSettledBefore: stringsUtil.numberToFixed(data.balance_available_before, 2),
+    balanceSettledAfter: stringsUtil.numberToFixed(data.balance_available_after, 2),
+    balanceAvailableBefore: stringsUtil.numberToFixed(data.balance_available_before, 2),
+    balanceAvailableAfter: stringsUtil.numberToFixed(data.balance_available_after, 2),
+    description: data.description,
+    status: data.status,
+    aprRate: stringsUtil.numberToFixed(data.apr_rate, 2),
+    transactionType: data.transaction_type,
+  };
+};
+
+export const prepareLoanToRender = (data: ILoanIllustrationData) => {
   if (!data) {
     return null;
   }

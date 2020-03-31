@@ -1,31 +1,28 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
 
-import { AuditScheduledJobsState } from './types';
+import { IScheduledJobsState } from './types';
 
-import { ActionTypeKeys, AuditScheduledJobsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TScheduledJobsAction } from './actionTypes';
 
-export const auditScheduledJobsInitialState:
-  seamlessImmutable.ImmutableObject<AuditScheduledJobsState> = Immutable({
+export const scheduledJobsInitialState:
+  seamlessImmutable.ImmutableObject<IScheduledJobsState> = Immutable({
     schedulerJobs: Immutable([]),
   });
 
-const auditScheduledJobsReducer =
-  (state = auditScheduledJobsInitialState, action: AuditScheduledJobsActionTypes) => {
-    switch (action.type) {
-      case ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_FULFILLED:
-        return state
-          .set('schedulerJobs', action.payload.scheduler_jobs);
+const scheduledJobsReducer = (state = scheduledJobsInitialState, action: TScheduledJobsAction) => {
+  switch (action.type) {
+    case ActionTypeKeys.FILTER_SCHEDULED_JOBS_FULFILLED:
+      return state.set('schedulerJobs', action.payload.scheduler_jobs);
 
-      case ActionTypeKeys.FILTER_AUDIT_SCHEDULED_JOBS_BY_ID_FULFILLED:
-        return state
-          .set('schedulerJobs', action.payload.scheduler_jobs);
+    case ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID_FULFILLED:
+      return state.set('schedulerJobs', action.payload.scheduler_jobs);
 
-      case ActionTypeKeys.RESET_SCHEDULED_JOBS:
-        return state = auditScheduledJobsInitialState;
+    case ActionTypeKeys.RESET_SCHEDULED_JOBS:
+      return state = scheduledJobsInitialState;
 
-      default:
-        return state;
-    }
-  };
+    default:
+      return state;
+  }
+};
 
-export default auditScheduledJobsReducer;
+export default scheduledJobsReducer;

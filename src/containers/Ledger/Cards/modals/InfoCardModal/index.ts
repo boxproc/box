@@ -13,12 +13,12 @@ import {
   handleActivateCard,
   isActivatingCardSelector,
   isReadOnlySelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.CHANGE_CARD_STATUS);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
   isLoading: isActivatingCardSelector(state),
   currentCard: currentCardSelector(state),

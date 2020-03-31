@@ -1,11 +1,10 @@
 import { apiClientService } from 'services';
 
-// import { uiItems } from './mock';
-
+// import { uiItemsMock } from './mock';
 // import { throttleUtil } from 'utils';
 
 export const getUiItems = () =>
-  // throttleUtil.getDataAfter(uiItems, 500);
+  // throttleUtil.getDataAfter(uiItemsMock, 500);
   apiClientService.post('ui/items/get_all');
 
 export const getHelpLink = (data: string) =>

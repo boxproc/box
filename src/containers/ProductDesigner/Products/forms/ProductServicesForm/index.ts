@@ -8,12 +8,12 @@ import {
   createLoadingSelector,
   handleGetProductServices,
   handleUpdateCardService,
+  IStoreState,
   ProductServicesActionTypes,
   selectCurrentProductInstitutionId,
   selectProductCardEndpointsService,
   selectProductCardInterfacesService,
   selectProductServices,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -28,7 +28,7 @@ const loadingSelectorEndpoints = createLoadingSelector([
   ProductServicesActionTypes.GET_SERVICE_ENDPOINTS,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   isLoadingInterfaces: loadingSelectorInterfaces(state),
   isLoadingEndpoints: loadingSelectorEndpoints(state),
@@ -41,7 +41,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateCardService: handleUpdateCardService,
+    updateCardServices: handleUpdateCardService,
     getProductServices: handleGetProductServices,
   },
   dispatch

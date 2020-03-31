@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, ModalActionTypes } from './actionTypes';
+import { ActionTypeKeys, TModalAction } from './actionTypes';
 import { IModalsState } from './types';
 
 export const modalsInitialState: ImmutableObject<IModalsState> = Immutable({
@@ -13,7 +13,7 @@ export const modalsInitialState: ImmutableObject<IModalsState> = Immutable({
   payloadSettleTransactionModal: null,
 });
 
-const modalsReducer = (state = modalsInitialState, action: ModalActionTypes) => {
+const modalsReducer = (state = modalsInitialState, action: TModalAction) => {
   switch (action.type) {
     case ActionTypeKeys.OPEN_MODAL:
       return state

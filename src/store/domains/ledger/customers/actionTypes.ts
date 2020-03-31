@@ -204,7 +204,7 @@ export interface IResetCustomersAction {
   readonly type: ActionTypeKeys.RESET_CUSTOMERS;
 }
 
-export type TCustomersActionTypes =
+export type TCustomersAction =
   | IAddCustomerFulfilledAction
   | IDeleteCustomerFulfilledAction
   | IUpdateCustomerFulfilledAction

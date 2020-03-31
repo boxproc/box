@@ -20,13 +20,13 @@ import {
   handleSetActiveItemId,
   isAccountLoadingSelector,
   isReadOnlySelector,
+  IStoreState,
   resetAccounts,
-  selectUiItems,
-  StoreState,
+  uiItemsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAccountLoadingSelector(state),
   accounts: accountsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
@@ -37,7 +37,7 @@ const mapStateToProps = (state: StoreState) => ({
   currentAccBalanceLimit: currentAccBalanceLimitSelector(state),
   currentAccBalanceLimitShared: currentAccBalanceLimitSharedSelector(state),
   isReadOnly: isReadOnlySelector(state),
-  uiItems: selectUiItems(state),
+  uiItems: uiItemsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

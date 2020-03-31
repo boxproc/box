@@ -6,7 +6,7 @@ import customersReducer from './customers/reducer';
 import limitAdjustmentReducer from './limitAdjustment/reducer';
 import manualTransactionReducer from './manualTransaction/reducer';
 import settleTransactionReducer from './settleTransaction/reducer';
-import ledgerStatementsReducer from './statements/reducer';
+import statementsReducer from './statements/reducer';
 import transactionsReducer from './transactions/reducer';
 
 const ledgerReducer = combineReducers({
@@ -16,7 +16,7 @@ const ledgerReducer = combineReducers({
   limitAdjustment: limitAdjustmentReducer,
   manualTransaction: manualTransactionReducer,
   settleTransaction: settleTransactionReducer,
-  statements: ledgerStatementsReducer,
+  statements: statementsReducer,
   transactions: transactionsReducer,
 });
 

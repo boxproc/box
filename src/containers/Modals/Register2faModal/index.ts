@@ -6,13 +6,13 @@ import Register2faModal from './Register2faModal';
 import {
   handleSetUserCurrentRegisterStep,
   handleUserConfirmAuthKey,
-  StoreState,
+  IStoreState,
   userAuthCodeSelector,
   userCurrentRegisterStepSelector,
   userDataUrlSelector,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   currentRegisterStep: userCurrentRegisterStepSelector(state),
   code: userAuthCodeSelector(state),
   dataUrl: userDataUrlSelector(state),

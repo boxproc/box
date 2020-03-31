@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TCustomersActionTypes } from './actionTypes';
+import { ActionTypeKeys, TCustomersAction } from './actionTypes';
 import { ICustomersState } from './types';
 
 export const customersInitialState: ImmutableObject<ICustomersState> = Immutable({
@@ -9,7 +9,7 @@ export const customersInitialState: ImmutableObject<ICustomersState> = Immutable
   repaymentDirectDebits: Immutable([]),
 });
 
-const customersReducer = (state = customersInitialState, action: TCustomersActionTypes) => {
+const customersReducer = (state = customersInitialState, action: TCustomersAction) => {
   switch (action.type) {
     case ActionTypeKeys.DELETE_CUSTOMER_FULFILLED:
       return state

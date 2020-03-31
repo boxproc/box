@@ -1,9 +1,9 @@
 import { uiSessionsStatusOptions } from 'consts';
-import { AuditUiSessionsFilter, AuditUiSessionsItem, AuditUiSessionsItemResp } from './types';
+import { IUiSession, IUiSessionData, IUiSessionsFilter } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSessionsItem => {
+export const prepareDataToRender = (data: IUiSessionData): IUiSession => {
   if (!data) {
     return null;
   }
@@ -37,12 +37,12 @@ export const preparedDataToRender = (data: AuditUiSessionsItemResp): AuditUiSess
   };
 };
 
-export const preparedFilterToSend = (params: Partial<AuditUiSessionsFilter>) => {
-  if (!params) {
+export const prepareFilterToSend = (data: Partial<IUiSessionsFilter>) => {
+  if (!data) {
     return null;
   }
 
-  const { institutionId } = params;
+  const { institutionId } = data;
 
   return {
     institution_id: institutionId && institutionId.length

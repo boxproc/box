@@ -74,8 +74,8 @@ export const handleFilterByIdTransactions: THandleFilterTransactionsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.LEDGER_TRANSACTIONS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.TRANSACTIONS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.TRANSACTIONS}`));
         await dispatch(filterTransactionsById(id));
         dispatch(setIsOpenFilter(false));
       },

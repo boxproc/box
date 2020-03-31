@@ -14,9 +14,9 @@ import {
   activeTableRowIndexSelector,
   handleSetActiveItemId,
   handleSetActiveTableRowIndex,
+  IStoreState,
   modalsStateListSelector,
   openModal,
-  StoreState,
   THandleSetActiveItemId,
   THandleSetActiveTableRowIndex,
   TOpenModal,
@@ -178,7 +178,7 @@ export const withEditTable = <OriginProps extends {}>(
 
   WithEditTable.displayName = `WithEditTable(${componentUtil.getDisplayName(Component)})`;
 
-  const mapStateToProps = (state: StoreState) => ({
+  const mapStateToProps = (state: IStoreState) => ({
     activeTableRowIndex: activeTableRowIndexSelector(state),
     modalsStateList: modalsStateListSelector(state),
   });

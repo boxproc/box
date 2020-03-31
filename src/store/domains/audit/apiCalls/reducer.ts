@@ -1,33 +1,27 @@
 import Immutable, * as seamlessImmutable from 'seamless-immutable';
 
-import { ActionTypeKeys, AuditApiCallsActionTypes } from './actionTypes';
-import { AuditApiCallsState } from './types';
+import { ActionTypeKeys, TApiCallsAction } from './actionTypes';
+import { IApiCallsState } from './types';
 
-export const auditApiCallsInitialState:
-  seamlessImmutable.ImmutableObject<AuditApiCallsState> = Immutable({
-    apiCalls: Immutable([]),
-    apiCallDetails: null,
-  });
+export const apiCallsInitialState: seamlessImmutable.ImmutableObject<IApiCallsState> = Immutable({
+  apiCalls: Immutable([]),
+  apiCallDetails: null,
+});
 
-const auditApiCallsReducer = (
-  state = auditApiCallsInitialState,
-  action: AuditApiCallsActionTypes
-) => {
+const apiCallsReducer = (state = apiCallsInitialState, action: TApiCallsAction) => {
   switch (action.type) {
-    case ActionTypeKeys.FILTER_AUDIT_API_CALLS_FULFILLED:
-      return state
-        .set('apiCalls', action.payload.api_calls);
+    case ActionTypeKeys.FILTER_API_CALLS_FULFILLED:
+      return state.set('apiCalls', action.payload.api_calls);
 
-    case ActionTypeKeys.GET_DETAILS_AUDIT_API_CALLS_FULFILLED:
-      return state
-        .set('apiCallDetails', action.payload.api_call);
+    case ActionTypeKeys.GET_DETAILS_API_CALLS_FULFILLED:
+      return state.set('apiCallDetails', action.payload.api_call);
 
     case ActionTypeKeys.RESET_API_CALLS:
-      return state = auditApiCallsInitialState;
+      return state = apiCallsInitialState;
 
     default:
       return state;
   }
 };
 
-export default auditApiCallsReducer;
+export default apiCallsReducer;

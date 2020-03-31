@@ -1,8 +1,11 @@
 import { ImmutableArray } from 'seamless-immutable';
-
 import { ISelectValue } from 'types';
 
-export interface IllustrationProductLoanResp {
+/**
+ * Loan illustration interfaces
+ */
+
+export interface ILoanIllustrationData {
   statement_id: number;
   statement_date: string;
   installment_balance: number;
@@ -14,7 +17,11 @@ export interface IllustrationProductLoanResp {
   end_date: string;
 }
 
-export interface IllustrationProductLoan {
+export interface ILoansIllustrationData {
+  product_information: Array<ILoanIllustrationData>;
+}
+
+export interface ILoanIllustration {
   statementId: number;
   statementDate: string;
   installmentBalance: string;
@@ -26,7 +33,32 @@ export interface IllustrationProductLoan {
   endDate: string;
 }
 
-export interface IllustrationProductStatementsRevolvingCreditResp {
+/**
+ * Loan illustration request interfaces
+ */
+
+export interface ILoanIllustrationReq {
+  productId: number;
+  amount: number;
+  startDate: string;
+  defNumOfInstallments: number;
+  defNumOfIntrstFreeInstlmts: number;
+}
+
+export interface ILoanIllustrationReqToSend {
+  product_id: number;
+  amount: number;
+  start_date: string;
+  nr_loan_cycles: number;
+  nr_interest_free: number;
+}
+
+/**
+ * Revolving credit illustration interfaces
+ */
+
+/** statements */
+export interface IRevCreditIllustrationStatementData {
   statement_id: number;
   statement_date: string;
   first_transaction_id: number;
@@ -39,7 +71,7 @@ export interface IllustrationProductStatementsRevolvingCreditResp {
   end_date: string;
 }
 
-export interface IllustrationProductStatementsRevolvingCredit {
+export interface IRevCreditIllustrationStatement {
   statementId: number | string;
   statementDate: number | string;
   firstTransactionId: number | string;
@@ -52,33 +84,21 @@ export interface IllustrationProductStatementsRevolvingCredit {
   endDate: number | string;
 }
 
-export interface IllustrationProductAprRevolvingCreditResp {
+/** aprs */
+export interface IRevCreditIllustrationAprData {
   description: string;
   curr_accrued_interest: number;
   rate: number;
 }
 
-export interface IllustrationProductAprRevolvingCredit {
+export interface IRevCreditIllustrationApr {
   description: string;
   currAccruedInterest: string;
   rate: string;
 }
 
-export interface IllustrationProductTransactionsRevolvingCredit {
-  transactionDatetime: string;
-  debitCreditIndicator: string;
-  amount: string;
-  balanceSettledBefore: string;
-  balanceSettledAfter: string;
-  balanceAvailableBefore: string;
-  balanceAvailableAfter: string;
-  description: string;
-  status: string;
-  aprRate: string;
-  transactionType: string;
-}
-
-export interface IllustrationProductTransactionsRevolvingCreditResp {
+/** transactions */
+export interface IRevCreditIllustrationTransData {
   transaction_datetime: string;
   debit_credit_indicator: string;
   amount: number;
@@ -92,41 +112,35 @@ export interface IllustrationProductTransactionsRevolvingCreditResp {
   transaction_type: string;
 }
 
-export interface ProductLoanIllustrationDataResp {
-  product_information: Array<IllustrationProductLoanResp>;
+export interface IRevCreditIllustrationTrans {
+  transactionDatetime: string;
+  debitCreditIndicator: string;
+  amount: string;
+  balanceSettledBefore: string;
+  balanceSettledAfter: string;
+  balanceAvailableBefore: string;
+  balanceAvailableAfter: string;
+  description: string;
+  status: string;
+  aprRate: string;
+  transactionType: string;
 }
 
-export interface ProductRevolvingCreditStatementsIllustrationDataResp {
-  statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
+export interface IRevCreditIllustration {
+  statements: Array<IRevCreditIllustrationStatementData>;
+  aprs: Array<IRevCreditIllustrationAprData>;
+  transactions: Array<IRevCreditIllustrationTransData>;
 }
 
-export interface ProductRevolvingCreditTransactionsIllustrationDataResp {
-  transactions: Array<IllustrationProductTransactionsRevolvingCreditResp>;
+export interface IRevCreditIllustrationAllData {
+  revolving_credit_information: IRevCreditIllustration;
 }
 
-export interface ProductRevolvingCreditAprIllustrationDataResp {
-  aprs: Array<IllustrationProductAprRevolvingCreditResp>;
-}
+/**
+ * Revolving credit illustration request interfaces
+ */
 
-export interface ProductRevolvingCreditIllustrationAllDataResp {
-  revolving_credit_information: ProductRevolvingCreditIllustrationDataResp;
-}
-
-export interface ProductRevolvingCreditIllustrationDataResp {
-  statements: Array<IllustrationProductStatementsRevolvingCreditResp>;
-  aprs: Array<IllustrationProductAprRevolvingCreditResp>;
-  transactions: Array<IllustrationProductTransactionsRevolvingCreditResp>;
-}
-
-export interface LoanProductIllustratePrepared {
-  product_id: number;
-  amount: number;
-  start_date: string;
-  nr_loan_cycles: number;
-  nr_interest_free: number;
-}
-
-export interface RevolvingCreditProductIllustratePrepared {
+export interface IRevCreditIllustrationReqToSend {
   product_id: number;
   limit: number;
   start_date: string;
@@ -142,15 +156,7 @@ export interface RevolvingCreditProductIllustratePrepared {
   transaction_amount_3: number;
 }
 
-export interface LoanProductIllustrate {
-  productId: number;
-  amount: number;
-  startDate: string;
-  defNumOfInstallments: number;
-  defNumOfIntrstFreeInstlmts: number;
-}
-
-export interface RevolvingCreditProductIllustrate {
+export interface IRevCreditIllustrationReq {
   productId: number;
   limit: number;
   openBalance: number;
@@ -166,11 +172,14 @@ export interface RevolvingCreditProductIllustrate {
   transactionAmount3: number;
 }
 
-export interface ProductIllustrationState {
-  productLoanIllustration: ImmutableArray<IllustrationProductLoanResp>;
-  productRevolvingCreditIllustration: {
-    statements: ImmutableArray<IllustrationProductStatementsRevolvingCreditResp>;
-    aprs: ImmutableArray<IllustrationProductAprRevolvingCreditResp>;
-    transactions: ImmutableArray<IllustrationProductTransactionsRevolvingCreditResp>;
+/**
+ * Product illustration state interface
+ */
+export interface IProductIllustrationState {
+  loanIllustration: ImmutableArray<ILoanIllustrationData>;
+  revCreditIllustration: {
+    statements: ImmutableArray<IRevCreditIllustrationStatementData>;
+    aprs: ImmutableArray<IRevCreditIllustrationAprData>;
+    transactions: ImmutableArray<IRevCreditIllustrationTransData>;
   };
 }

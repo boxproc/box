@@ -4,23 +4,18 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ApiCallModal from './ApiCallModal';
 
 import {
-  AuditApiCallsActionTypes,
-  createLoadingSelector,
-  handleGetDetailsAuditApiCalls,
-  StoreState,
+  handleGetDetailsApiCalls,
+  isGettingApiCallDetailsSelector,
+  IStoreState,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  AuditApiCallsActionTypes.GET_DETAILS_AUDIT_API_CALLS,
-]);
-
-const mapStateToProps = (state: StoreState) => ({
-  isLoading: loadingSelector(state),
+const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isGettingApiCallDetailsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getDetailsApiCalls: handleGetDetailsAuditApiCalls,
+    getDetailsApiCalls: handleGetDetailsApiCalls,
   },
   dispatch
 );

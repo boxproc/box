@@ -6,10 +6,10 @@ import RepaymentDirectDebitsForm from './RepaymentDirectDebitsForm';
 import {
   handleAddRepaymentDirectDebit,
   isAddingRepaymentDirectDebitSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingRepaymentDirectDebitSelector(state),
 });
 

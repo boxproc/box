@@ -20,14 +20,14 @@ import {
 
 import { clearMenu, menuClasses, toggleOpenMenu } from './utils';
 
-import { UiItemPrepared } from 'store';
+import { IUiItem } from 'store';
 
 const ChevronIconStyled = styled(ChevronRightIcon)`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 interface INavbar extends IWithModal {
-  uiItems: Array<UiItemPrepared>;
+  uiItems: Array<IUiItem>;
 }
 
 const Navbar: React.FC<INavbar> = ({
@@ -36,18 +36,18 @@ const Navbar: React.FC<INavbar> = ({
 }) => {
   const menuRef = React.useRef(null);
 
-  const renderItem = (item: UiItemPrepared) => {
+  const renderItem = (item: IUiItem) => {
     const { id, parentId, title, type, separator, permission } = item;
 
     const hasChildren = type === uiItemTypesConst.MENU_PARENT;
 
-    const isModalWindow = item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS
-      || item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT
-      || item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION;
+    const isModalWindow = item.id === uiItemsConst.MANUAL_TRANSACTION
+      || item.id === uiItemsConst.LIMIT_ADJUSTMENT
+      || item.id === uiItemsConst.SETTLE_TRANSACTION;
 
-    const isManualTransaction = item.id === uiItemsConst.LEDGER_MANUAL_TRANSACTIONS;
-    const isLimitAdjustment = item.id === uiItemsConst.LEDGER_LIMIT_ADJUSTMENT;
-    const isSettleTransaction = item.id === uiItemsConst.LEDGER_SETTLE_TRANSACTION;
+    const isManualTransaction = item.id === uiItemsConst.MANUAL_TRANSACTION;
+    const isLimitAdjustment = item.id === uiItemsConst.LIMIT_ADJUSTMENT;
+    const isSettleTransaction = item.id === uiItemsConst.SETTLE_TRANSACTION;
 
     const isReadOnly = permission === permissionTypesConst.READ_ONLY;
 

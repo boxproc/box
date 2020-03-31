@@ -4,8 +4,9 @@ import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { AccountStatements, Cards } from 'containers/Ledger/Accounts/components';
-import { AccountForm } from 'containers/Ledger/Accounts/forms';
+import { AccountStatements, Cards } from './../../components';
+import { AccountForm } from './../../forms';
+
 import { IAccountDetails } from 'store';
 
 interface IEditAccountModal extends IWithModal {

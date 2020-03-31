@@ -10,12 +10,12 @@ import {
   handleGetSchedulerNamesByInstId,
   instSchedulerNamesOptions,
   isSchedulerJobNamesGettingSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoadingSchedulerNames: isSchedulerJobNamesGettingSelector(state),
   schedulerNameOptions: instSchedulerNamesOptions(state),
   institutionValue: formSelector(state, 'institutionId'),

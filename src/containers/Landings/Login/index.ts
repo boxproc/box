@@ -11,7 +11,7 @@ import {
   isEnteringAuthKeySelector,
   isLoggingInSelector,
   isMessageModalSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
 import { storageUtil } from 'utils';
@@ -20,7 +20,7 @@ const formSelector = formValueSelector(formNamesConst.USER_LOGIN);
 
 const userName = storageUtil.getUserName();
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isEnteringAuthKeySelector(state) || isLoggingInSelector(state),
   isMessageModal: isMessageModalSelector(state),
   isPasswordFocus: !!userName,

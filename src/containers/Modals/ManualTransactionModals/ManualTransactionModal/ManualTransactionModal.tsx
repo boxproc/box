@@ -110,9 +110,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   );
 
   const currentPath = React.useMemo(
-    () => isLimitAdjustment
-    ? uiItemsConst.LEDGER_LIMIT_ADJUSTMENT
-    : uiItemsConst.LEDGER_MANUAL_TRANSACTIONS,
+    () => isLimitAdjustment ? uiItemsConst.LIMIT_ADJUSTMENT : uiItemsConst.MANUAL_TRANSACTION,
     [isLimitAdjustment]
   );
 

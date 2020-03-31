@@ -8,14 +8,14 @@ import Filter from './Filter';
 
 import {
   isAutoRefreshSelector,
+  IStoreState,
   setIsAccessibleFiltering,
   stopAutoRefresh,
-  StoreState,
 } from 'store';
 
 const formValues = getFormValues(formNamesConst.FILTER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   filterValues: formValues(state),
   isAutoRefresh: isAutoRefreshSelector(state),
 });

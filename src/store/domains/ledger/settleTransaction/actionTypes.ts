@@ -11,7 +11,7 @@ export enum ActionTypeKeys {
   SETTLE_TRANSACTION_FULFILLED = 'settleTransaction/SETTLE_TRANSACTION_FULFILLED',
   SETTLE_TRANSACTION_REJECTED = 'settleTransaction/SETTLE_TRANSACTION_REJECTED',
 
-  RESET_RETRIEVED_TRANSACTION = 'administration/settleTransaction/RESET_RETRIEVED_TRANSACTION',
+  RESET_RETRIEVED_TRANSACTION = 'settleTransaction/RESET_RETRIEVED_TRANSACTION',
 }
 
 /** Retrieve transaction action interfaces */
@@ -54,7 +54,7 @@ export interface IResetRetrievedTransactionAction {
   readonly type: ActionTypeKeys.RESET_RETRIEVED_TRANSACTION;
 }
 
-export type TSettleTransactionActionTypes =
+export type TSettleTransactionAction =
   | IRetrieveTransactionFulfilledAction
   | ISettleTransactionFulfilledAction
   | IResetRetrievedTransactionAction;

@@ -9,9 +9,9 @@ import TransactionsFilter from './TransactionsFilter';
 import {
   createLoadingSelector,
   handleGetInstitutionProducts,
+  IStoreState,
   ProductsActionTypes,
   selectInstitutionProductsOptions,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -19,7 +19,7 @@ const loadingSelector = createLoadingSelector([
 ]);
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoadingInstitutionProducts: loadingSelector(state),
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   institutionValue: formSelector(state, 'institutionId'),

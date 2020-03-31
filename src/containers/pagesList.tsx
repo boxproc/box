@@ -15,7 +15,7 @@ import {
   TransactionTypes,
   Users,
   UsersGroups,
-} from './Administration';
+} from './Admin';
 
 import { Products } from 'containers/ProductDesigner';
 
@@ -32,104 +32,104 @@ import {
   ScheduledJobs,
   SystemMonitor,
   UiSessions,
-  UserActivity,
+  UsersActivity,
 } from 'containers/Audit';
 
 export const pagesList = [
   {
-    path: uiItemsConst.ADMINISTRATION_SYS_PROPS,
+    path: uiItemsConst.SYSTEM_PROPERTIES,
     component: <SystemProperties />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_INSTITUTIONS,
+    path: uiItemsConst.INSTITUTIONS,
     component: <Institutions />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_SCHEDULER,
+    path: uiItemsConst.SCHEDULER,
     component: <Scheduler />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_COUNTRIES,
+    path: uiItemsConst.DICTIONARIES_COUNTRIES,
     component: <Countries />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_CURRENCIES,
+    path: uiItemsConst.DICTIONARIES_CURRENCIES,
     component: <Currencies />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_EVENTS,
+    path: uiItemsConst.DICTIONARIES_EVENTS,
     component: <Events />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_EVENT_DATA_ELEMENTS,
+    path: uiItemsConst.DICTIONARIES_EVENT_DATA_ELEMENTS,
     component: <EventDataElems />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_DICTIONARIES_TRANSACTION_TYPES,
+    path: uiItemsConst.DICTIONARIES_TRANSACTION_TYPES,
     component: <TransactionTypes />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_USER,
+    path: uiItemsConst.USERS,
     component: <Users />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_USERS_GROUP,
+    path: uiItemsConst.USERS_GROUPS,
     component: <UsersGroups />,
   },
   {
-    path: uiItemsConst.AUDIT_API_CALLS,
+    path: uiItemsConst.API_CALLS,
     component: <ApiCalls />,
   },
   {
-    path: uiItemsConst.AUDIT_SCHEDULED_JOBS,
+    path: uiItemsConst.SCHEDULED_JOBS,
     component: <ScheduledJobs />,
   },
   {
-    path: uiItemsConst.AUDIT_SYSTEM_MONITOR,
+    path: uiItemsConst.SYSTEM_MONITOR,
     component: <SystemMonitor />,
   },
   {
-    path: uiItemsConst.AUDIT_USER_ACTIVITY,
-    component: <UserActivity />,
+    path: uiItemsConst.USERS_ACTIVITY,
+    component: <UsersActivity />,
   },
   {
-    path: uiItemsConst.AUDIT_UI_SESSIONS,
+    path: uiItemsConst.UI_SESSIONS,
     component: <UiSessions />,
   },
   {
-    path: uiItemsConst.LEDGER_CARDS,
+    path: uiItemsConst.CARDS,
     component: <Cards />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_ENDPOINTS,
+    path: uiItemsConst.ENDPOINTS,
     component: <Endpoints />,
   },
   {
-    path: uiItemsConst.ADMINISTRATION_INTERFACES,
+    path: uiItemsConst.INTERFACES,
     component: <Interfaces />,
   },
   {
-    path: uiItemsConst.LEDGER_CUSTOMERS,
+    path: uiItemsConst.CUSTOMERS,
     component: <Customers />,
   },
   {
-    path: uiItemsConst.LEDGER_ACCOUNTS,
+    path: uiItemsConst.ACCOUNTS,
     component: <Accounts />,
   },
   {
-    path: uiItemsConst.LEDGER_STATEMENTS,
+    path: uiItemsConst.STATEMENTS,
     component: <Statements />,
   },
   {
-    path: uiItemsConst.LEDGER_TRANSACTIONS,
+    path: uiItemsConst.TRANSACTIONS,
     component: <Transactions />,
   },
   {
-    path: uiItemsConst.LEDGER_CARDS,
+    path: uiItemsConst.CARDS,
     component: <Cards />,
   },
   {
-    path: uiItemsConst.PRODUCT_DESIGNER_PRODUCTS,
+    path: uiItemsConst.PRODUCTS,
     component: <Products />,
   },
 ];

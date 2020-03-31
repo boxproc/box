@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
 import { prepareRepaymentHierarchyToRender } from './utils';
 
-export const selectDefaultRepaymentHierarchy = (state: StoreState) =>
+export const selectDefaultRepaymentHierarchy = (state: IStoreState) =>
   state.productDesigner.repaymentHierarchy.repaymentHierarchy;
 
 export const selectRepaymentHierarchy = createSelector(

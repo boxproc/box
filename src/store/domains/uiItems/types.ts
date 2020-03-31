@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface UiItem {
+export interface IUiItemData {
   item_type: string;
   ui_item: string;
   description: string;
@@ -9,7 +9,7 @@ export interface UiItem {
   help_page_url: string;
 }
 
-export interface UiItemPrepared {
+export interface IUiItem {
   id: string;
   parentId: string;
   title: string;
@@ -20,15 +20,15 @@ export interface UiItemPrepared {
   permission?: string;
 }
 
-export interface UiItems {
-  ui_items: Array<UiItem>;
+export interface IUiItemsData {
+  ui_items: Array<IUiItemData>;
 }
 
-export interface HelpLinkResp {
+export interface IHelpLinkData {
   url: Array<{ help_page_url: string }>;
 }
 
-export interface UiItemsState {
-  uiItems: ImmutableArray<UiItem>;
+export interface IUiItemsState {
+  uiItems: ImmutableArray<IUiItemData>;
   helpLink: string;
 }

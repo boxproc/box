@@ -9,14 +9,14 @@ import {
   handleDownloadStatement,
   handleGetStatementAprs,
   handleGetStatementTransactions,
+  IStoreState,
   isTransArsLoadingSelector,
   statementAprsSelector,
   statementPendingTransactionsSelector,
   statementTransactionsSelector,
-  StoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   currentStatement: currentStatementSelector(state),
   currentStatementId: activeItemIdSelector(state),
   isLoading: isTransArsLoadingSelector(state),

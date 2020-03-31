@@ -1,4 +1,8 @@
-export interface GeneralLedgerItem {
+/**
+ * Product general ledger interfaces
+ */
+
+export interface IProductGLData {
   product_id: number;
   gl_acc_assets: string;
   gl_acc_liabilities: string;
@@ -6,12 +10,10 @@ export interface GeneralLedgerItem {
   gl_acc_loss: string;
 }
 
-export interface GeneralLedgerItemPrepared {
+export interface IProductGL {
   id: number;
   glAccAssets: string;
   glAccLiabilities: string;
   glAccProfit: string;
   glAccLoss: string;
 }
-
-export interface ProductGeneralLedgerState { }

@@ -50,10 +50,10 @@ export const handleUpdateProductRules: HandleUpdateProductRules = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const preparedValues = prepareProductRuleDataToSend(data);
+        const preparedData = prepareProductRuleDataToSend(data);
 
         await dispatch(updateProductRules({
-          ...preparedValues,
+          ...preparedData,
           product_id: activeItemIdSelector(state),
         }));
         await dispatch(handleGetProductRule());

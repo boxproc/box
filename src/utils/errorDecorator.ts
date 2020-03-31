@@ -3,7 +3,7 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { cookiesNamesConst } from 'consts';
 
-import { handleSendNotification, StoreState } from 'store';
+import { handleSendNotification, IStoreState } from 'store';
 
 import { apiClientService } from 'services';
 
@@ -11,7 +11,7 @@ import { storageUtil } from 'utils';
 
 export const withErrorHandler = async (
   fn: () => Promise<any>,
-  dispatch?: ThunkDispatch<StoreState, {}, Action>,
+  dispatch?: ThunkDispatch<IStoreState, {}, Action>,
   returnReject: boolean = false
 ) => {
   try {

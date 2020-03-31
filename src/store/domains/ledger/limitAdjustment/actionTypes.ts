@@ -25,5 +25,5 @@ export interface IMakeLimitAdjustmentRejectedAction {
   readonly type: ActionTypeKeys.LIMIT_ADJUSTMENT_REJECTED;
 }
 
-export type TLimitAdjustmentActionTypes =
+export type TLimitAdjustmentAction =
   | IMakeLimitAdjustmentFulfilledAction;

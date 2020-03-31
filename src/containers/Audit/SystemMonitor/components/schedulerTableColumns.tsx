@@ -2,15 +2,11 @@ import React from 'react';
 import { CellInfo } from 'react-table';
 
 import { Button, TableCell, TableHeader } from 'components';
-
 import { iconNamesConst } from 'consts';
-
-import { HandleGetLogData, SystemMonitorSchedulerItem } from 'store';
-
+import { HandleGetLogData, ISysMonitorScheduler } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof SystemMonitorSchedulerItem> =
-  ITableCell<SystemMonitorSchedulerItem[T]>;
+type TCell<T extends keyof ISysMonitorScheduler> = ITableCell<ISysMonitorScheduler[T]>;
 
 export const schedulerTableColumns = (getLogData: HandleGetLogData, name: string) => [
   {

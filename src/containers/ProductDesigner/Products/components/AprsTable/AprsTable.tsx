@@ -19,15 +19,15 @@ import {
   HandleDeleteProductApr,
   HandleGetProductAprs,
   HandleUpdateProductApr,
-  ProductApr,
+  IProductApr,
 } from 'store';
 
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof ProductApr> = ITableCell<ProductApr[T]>;
+type TCell<T extends keyof IProductApr> = ITableCell<IProductApr[T]>;
 
 interface IAprsTable {
-  productAprs: ImmutableArray<ProductApr>;
+  productAprs: ImmutableArray<IProductApr>;
   getProductAprs: HandleGetProductAprs;
   deleteProductApr: HandleDeleteProductApr;
   updateProductApr: HandleUpdateProductApr;

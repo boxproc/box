@@ -1,25 +1,27 @@
 import { createSelector } from 'reselect';
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
 import { schedulerStatusOptions, statusOptions } from 'consts';
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
 
-export const selectDefaultSystemMonitorInterfaces = (state: StoreState) =>
+export const defaultSysMonitorInterfacesSelector = (state: IStoreState) =>
   state.audit.systemMonitor.interfaces;
 
-export const selectDefaultSystemMonitorEndpoints = (state: StoreState) =>
+export const defaultSysMonitorEndpointsSelector = (state: IStoreState) =>
   state.audit.systemMonitor.endpoints;
 
-export const selectDefaultSystemMonitorScheduler = (state: StoreState) =>
+export const defaultSysMonitorSchedulerSelector = (state: IStoreState) =>
   state.audit.systemMonitor.scheduler;
 
-export const selectDefaultSystemMonitorLastTransactions = (state: StoreState) =>
+export const defaultSysMonitorLastTransactionsSelector = (state: IStoreState) =>
   state.audit.systemMonitor.lastTransactions;
 
-export const selectActiveItemInfoForLogData = (state: StoreState) =>
+export const activeSysMonitorItemLogDataSelector = (state: IStoreState) =>
   state.audit.systemMonitor.activeItemInfoForLogData;
 
-export const selectSystemMonitorInterfaces = createSelector(
-  selectDefaultSystemMonitorInterfaces,
+export const sysMonitorInterfacesSelector = createSelector(
+  defaultSysMonitorInterfacesSelector,
   interfaces => interfaces && interfaces.interfaces_data.map(item => {
     const status = statusOptions.find(el => el.value === item.interface_status);
 
@@ -35,8 +37,8 @@ export const selectSystemMonitorInterfaces = createSelector(
   })
 );
 
-export const selectSystemMonitorInterfacesCounts = createSelector(
-  selectDefaultSystemMonitorInterfaces,
+export const sysMonitorInterfacesCountsSelector = createSelector(
+  defaultSysMonitorInterfacesSelector,
   interfaces => {
     if (!interfaces) {
       return null;
@@ -49,8 +51,8 @@ export const selectSystemMonitorInterfacesCounts = createSelector(
   }
 );
 
-export const selectSystemMonitorEndpoints = createSelector(
-  selectDefaultSystemMonitorEndpoints,
+export const sysMonitorEndpointsSelector = createSelector(
+  defaultSysMonitorEndpointsSelector,
   endpoints => endpoints && endpoints.endpoints_data.map(item => {
     const status = statusOptions.find(el => el.value === item.endpoint_status);
 
@@ -66,8 +68,8 @@ export const selectSystemMonitorEndpoints = createSelector(
   })
 );
 
-export const selectSystemMonitorEndpointsCounts = createSelector(
-  selectDefaultSystemMonitorEndpoints,
+export const sysMonitorEndpointsCountsSelector = createSelector(
+  defaultSysMonitorEndpointsSelector,
   endpoints => {
     if (!endpoints) {
       return null;
@@ -80,8 +82,8 @@ export const selectSystemMonitorEndpointsCounts = createSelector(
   }
 );
 
-export const selectSystemMonitorScheduler = createSelector(
-  selectDefaultSystemMonitorScheduler,
+export const sysMonitorSchedulerSelector = createSelector(
+  defaultSysMonitorSchedulerSelector,
   scheduler => scheduler && scheduler.scheduler_data.map(item => {
     const status = schedulerStatusOptions.find(el => el.value === item.scheduler_status);
 
@@ -95,8 +97,8 @@ export const selectSystemMonitorScheduler = createSelector(
   })
 );
 
-export const selectSystemMonitorSchedulerCounts = createSelector(
-  selectDefaultSystemMonitorScheduler,
+export const sysMonitorSchedulerCountsSelector = createSelector(
+  defaultSysMonitorSchedulerSelector,
   scheduler => {
     if (!scheduler) {
       return null;
@@ -109,8 +111,8 @@ export const selectSystemMonitorSchedulerCounts = createSelector(
   }
 );
 
-export const selectSystemMonitorLastTransactions = createSelector(
-  selectDefaultSystemMonitorLastTransactions,
+export const sysMonitorLastTransactionsSelector = createSelector(
+  defaultSysMonitorLastTransactionsSelector,
   transactions => transactions && transactions.map(transaction => {
     return {
       institutionName: transaction && transaction.institution_name,
@@ -119,3 +121,27 @@ export const selectSystemMonitorLastTransactions = createSelector(
     };
   })
 );
+
+/**
+ * System monitor loading selectors
+ */
+
+export const isSysMonitorInterfacesLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SYS_MONITOR_INTERFACES,
+]);
+
+export const isSysMonitorEndpointsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SYS_MONITOR_ENDPOINTS,
+]);
+
+export const isSysMonitorSchedulerLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SYS_MONITOR_SCHEDULER,
+]);
+
+export const isSysMonitorLastTransactionsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SYS_MONITOR_LAST_TRANSACTIONS,
+]);
+
+export const isSysMonitorLoadingLogDataSelector = createLoadingSelector([
+  ActionTypeKeys.GET_LOG_DATA,
+]);

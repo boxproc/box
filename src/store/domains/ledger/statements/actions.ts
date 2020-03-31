@@ -29,7 +29,7 @@ import {
 } from './types';
 
 import {
-  preparedFilterToSend,
+  prepareFilterToSend,
   prepareStatementAprsForReport,
   prepareStatementTransactionsForReport,
 } from './utils';
@@ -55,7 +55,7 @@ export const handleFilterStatements: THandleFilterStatements = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedData = preparedFilterToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
         if (preparedData) {
           await dispatch(filterStatements(preparedData));
@@ -109,8 +109,8 @@ export const handleFilterByIdStatements: THandleFilterStatementsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_STATEMENTS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.LEDGER_STATEMENTS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.STATEMENTS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.STATEMENTS}`));
         await dispatch(filterStatementsById(id));
         dispatch(setIsOpenFilter(false));
       },

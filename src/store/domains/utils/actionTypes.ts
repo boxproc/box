@@ -50,7 +50,7 @@ export interface IResetUtilsAction {
   readonly type: ActionTypeKeys.RESET_UTILS;
 }
 
-export type UtilsActionTypes =
+export type TUtilsAction =
   | ISetActiveTableRowIndexAction
   | ISetActiveItemIdAction
   | ISetActivePagePermissionAction

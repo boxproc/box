@@ -1,23 +1,29 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
+import { createLoadingSelector } from '../loader';
+import { ActionTypeKeys } from './actionTypes';
 import { prepareUiItems } from './utils';
 
-export const selectDefaultUiItems = (state: StoreState) => state.uiItems.uiItems;
+export const defaultUiItemsSelector = (state: IStoreState) => state.uiItems.uiItems;
 
-export const selectUiItems = createSelector(
-  selectDefaultUiItems,
-  uiItems => uiItems && prepareUiItems(uiItems)
+export const uiItemsSelector = createSelector(
+  defaultUiItemsSelector,
+  data => data && prepareUiItems(data)
 );
 
-export const selectIsUiItems = createSelector(
-  selectUiItems,
-  uiItems => uiItems && uiItems.length
+export const isLoadedUiItemsSelector = createSelector(
+  uiItemsSelector,
+  data => data && data.length
 );
 
-export const selectVisibleUiItemsList = createSelector(
-  selectDefaultUiItems,
-  uiItems => uiItems && uiItems.map(item => item.ui_item)
+export const visibleUiItemsListSelector = createSelector(
+  defaultUiItemsSelector,
+  data => data && data.map(el => el.ui_item)
 );
 
-export const selectHelpLink = (state: StoreState) => state.uiItems.helpLink;
+export const helpLinkSelector = (state: IStoreState) => state.uiItems.helpLink;
+
+export const isUiItemsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_UI_ITEMS,
+]);

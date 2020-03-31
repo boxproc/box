@@ -14,13 +14,13 @@ import {
   handleGetDictionaryAccountStatuses,
   handleGetDictionaryRepaymentTypes,
   handleGetInstitutionProducts,
+  IStoreState,
   selectInstitutionProductsOptions,
-  StoreState,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   institutionProductsOptions: selectInstitutionProductsOptions(state),
   hasProductOverride: currentAccHasProductOverrideSelector(state),
   statusesOptions: dictionaryAccountStatusesOptionsSelector(state),

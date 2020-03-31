@@ -9,20 +9,20 @@ import { tableColumns } from './components';
 import { iconNamesConst, systemMonitorTablesConst } from 'consts';
 
 import {
-  AuditScheduledJobsItemPrepared,
-  HandleFilterAuditScheduledJobs,
   HandleGetLogData,
-  ResetScheduledJobs,
+  IScheduledJob,
+  THandleFilterScheduledJobs,
+  TResetScheduledJobs,
 } from 'store';
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface IScheduledJobs {
   institutionsOptions: Array<ISelectValue>;
-  scheduledJobs: ImmutableArray <AuditScheduledJobsItemPrepared>;
-  filterScheduledJobs: HandleFilterAuditScheduledJobs;
+  scheduledJobs: ImmutableArray <IScheduledJob>;
+  filterScheduledJobs: THandleFilterScheduledJobs;
   getLogData: HandleGetLogData;
-  resetScheduledJobs: ResetScheduledJobs;
+  resetScheduledJobs: TResetScheduledJobs;
   currentSchedulerId: number;
   currentScheduledJobName: string;
   isLoading: boolean;

@@ -8,9 +8,9 @@ import {
   handleDeleteProductReward,
   handleGetProductRewards,
   handleUpdateProductReward,
+  IStoreState,
   ProductAprsFeesRewardsActionTypes,
   selectProductRewards,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -18,7 +18,7 @@ const loadingSelector = createLoadingSelector([
   ProductAprsFeesRewardsActionTypes.DELETE_PRODUCT_REWARD,
 ]);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   productRewards: selectProductRewards(state),
 });

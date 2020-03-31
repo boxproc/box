@@ -1,5 +1,5 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
-import { ActionTypeKeys, TAccountsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TAccountsAction } from './actionTypes';
 import { IAccountsState } from './types';
 
 export const accountsInitialState: ImmutableObject<IAccountsState> = Immutable({
@@ -7,7 +7,7 @@ export const accountsInitialState: ImmutableObject<IAccountsState> = Immutable({
   cards: Immutable([]),
 });
 
-const accountsReducer = (state = accountsInitialState, action: TAccountsActionTypes) => {
+const accountsReducer = (state = accountsInitialState, action: TAccountsAction) => {
   switch (action.type) {
     case ActionTypeKeys.FILTER_ACCOUNTS_FULFILLED:
       return state.set('accounts', action.payload.accounts);

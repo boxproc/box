@@ -4,11 +4,11 @@ import { Box, Flex } from '@rebass/grid';
 
 import { SmallText, T4 } from 'components';
 
-import { SystemMonitorCounts } from 'store';
+import { ISysMonitorCounts } from 'store';
 
 interface IHeader {
   title: string;
-  counts?: SystemMonitorCounts;
+  counts?: ISysMonitorCounts;
 }
 
 const Header: React.FC<IHeader> = ({

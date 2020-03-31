@@ -10,22 +10,21 @@ import LoanIllustrationForm from './LoanIllustrationForm';
 
 import {
   HandleGetProductDetails,
-  HandleIllustrateLoanProduct,
-  IllustrationProductLoan,
+  ILoanIllustration,
   LoanProductItem,
-  ResetProductIllustration,
   THandleConvertTrToLoan,
+  THandleIllustrateLoan,
+  TResetProductIllustration,
 } from 'store';
-
 import { ISelectValue } from 'types';
 
-interface ILoanIllustration {
-  productIllustrationData: ImmutableArray<IllustrationProductLoan>;
+interface ILoanIllust {
+  productIllustrationData: ImmutableArray<ILoanIllustration>;
   loanProductsOptions: Array<ISelectValue>;
-  illustrateLoanProduct: HandleIllustrateLoanProduct;
+  illustrateLoanProduct: THandleIllustrateLoan;
   convertTransactionToLoan: THandleConvertTrToLoan;
   getProductDetails: HandleGetProductDetails;
-  resetProductIllustration: ResetProductIllustration;
+  resetProductIllustration: TResetProductIllustration;
   loanDetails: Partial<LoanProductItem>;
   initialFormValues: object;
   isLoading: boolean;
@@ -39,7 +38,7 @@ interface ILoanIllustration {
   onCancel?: () => void;
 }
 
-const LoanIllustration: React.FC<ILoanIllustration> = ({
+const LoanIllustration: React.FC<ILoanIllust> = ({
   illustrateLoanProduct,
   convertTransactionToLoan,
   productIllustrationData,

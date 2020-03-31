@@ -4,8 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-
-import { CustomerForm } from 'containers/Ledger/Customers/forms';
+import { CustomerForm } from './../../forms';
 
 interface IAddCustomerModal extends IWithModal {
   isFormDirty: boolean;

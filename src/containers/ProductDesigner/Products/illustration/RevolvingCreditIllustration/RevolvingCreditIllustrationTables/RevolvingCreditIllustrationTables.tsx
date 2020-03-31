@@ -12,9 +12,9 @@ import RevolvingCreditTable from './RevolvingCreditTable';
 import TransactionsTable from './TransactionsTable';
 
 import {
-  IllustrationProductAprRevolvingCredit,
-  IllustrationProductStatementsRevolvingCredit,
-  IllustrationProductTransactionsRevolvingCredit,
+  IRevCreditIllustrationApr,
+  IRevCreditIllustrationStatement,
+  IRevCreditIllustrationTrans,
 } from 'store';
 
 const TablesWrapper = styled(Flex)`
@@ -27,9 +27,9 @@ const TablesWrapper = styled(Flex)`
 `;
 
 interface IRevolvingCreditIllustrationTables {
-  transactionsData: ImmutableArray<IllustrationProductTransactionsRevolvingCredit>;
-  aprsData: ImmutableArray<IllustrationProductAprRevolvingCredit>;
-  statementsData: ImmutableArray<IllustrationProductStatementsRevolvingCredit>;
+  transactionsData: ImmutableArray<IRevCreditIllustrationTrans>;
+  aprsData: ImmutableArray<IRevCreditIllustrationApr>;
+  statementsData: ImmutableArray<IRevCreditIllustrationStatement>;
 }
 
 const RevolvingCreditIllustrationTables: React.FC<IRevolvingCreditIllustrationTables> = ({

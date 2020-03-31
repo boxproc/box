@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 
 import TransactionForm from './TransactionForm';
 
-import { currentTransactionSelector, StoreState } from 'store';
+import { currentTransactionSelector, IStoreState } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   initialValues: currentTransactionSelector(state),
 });
 

@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, UtilsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TUtilsAction } from './actionTypes';
 
 import { IUtilsState } from './types';
 
@@ -14,7 +14,7 @@ export const utilsInitialState: ImmutableObject<IUtilsState> = Immutable({
 });
 
 const utilsReducer =
-  (state = utilsInitialState, action: UtilsActionTypes) => {
+  (state = utilsInitialState, action: TUtilsAction) => {
     switch (action.type) {
       case ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX:
         return state.set('activeTableRowIndex', action.payload);

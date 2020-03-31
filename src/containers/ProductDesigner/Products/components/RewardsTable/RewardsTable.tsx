@@ -19,15 +19,15 @@ import {
   HandleDeleteProductReward,
   HandleGetProductRewards,
   HandleUpdateProductReward,
-  ProductReward,
+  IProductReward,
 } from 'store';
 
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof ProductReward> = ITableCell<ProductReward[T]>;
+type TCell<T extends keyof IProductReward> = ITableCell<IProductReward[T]>;
 
 interface IRewardsTable {
-  productRewards: ImmutableArray<ProductReward>;
+  productRewards: ImmutableArray<IProductReward>;
   getProductRewards: HandleGetProductRewards;
   deleteProductReward: HandleDeleteProductReward;
   updateProductReward: HandleUpdateProductReward;

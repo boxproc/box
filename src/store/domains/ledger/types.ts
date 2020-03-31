@@ -7,7 +7,7 @@ import { ISettleTransactionState } from './settleTransaction';
 import { IStatementsState } from './statements';
 import { ITransactionsState } from './transactions';
 
-export interface LedgerState {
+export interface ILedgerState {
   accounts: IAccountsState;
   customers: ICustomersState;
   transactions: ITransactionsState;

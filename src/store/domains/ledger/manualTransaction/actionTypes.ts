@@ -27,5 +27,5 @@ export interface IMakeTransactionRejectedAction {
   readonly type: ActionTypeKeys.MAKE_TRANSACTION_REJECTED;
 }
 
-export type TManualTransactionActionTypes =
+export type TManualTransactionAction =
   | IMakeTransactionFulfilledAction;

@@ -1,7 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
-export interface AuditUiSessionsItemResp {
+export interface IUiSessionData {
   user_id: number;
   first_name: string;
   last_name: string;
@@ -14,7 +14,11 @@ export interface AuditUiSessionsItemResp {
   institution_name: string;
 }
 
-export interface AuditUiSessionsItem {
+export interface IUiSessionsData {
+  ui_sessions: Array<IUiSessionData>;
+}
+
+export interface IUiSession {
   id: number; // user id
   firstName: string;
   lastName: string;
@@ -27,18 +31,14 @@ export interface AuditUiSessionsItem {
   institutionName: string;
 }
 
-export interface AuditUiSessionsDataResp {
-  ui_sessions: Array<AuditUiSessionsItemResp>;
-}
-
-export interface AuditUiSessionsFilter {
+export interface IUiSessionsFilter {
   institutionId: Array<ISelectValue>;
 }
 
-export interface AuditUiSessionsFilterPrepared {
+export interface IUiSessionsFilterToSend {
   institution_id: Array<number>;
 }
 
-export interface AuditUiSessionsState {
-  uiSessions: ImmutableArray<AuditUiSessionsItemResp>;
+export interface IUiSessionsState {
+  uiSessions: ImmutableArray<IUiSessionData>;
 }

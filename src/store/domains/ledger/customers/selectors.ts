@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 
-import { countriesOptionsSelector } from 'store/domains/administration';
+import { countriesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
@@ -14,7 +14,7 @@ import {
   prepareRepaymentDirectDebitsToRender,
 } from './utils';
 
-export const defaultCustomersSelector = (state: StoreState) => state.ledger.customers.customers;
+export const defaultCustomersSelector = (state: IStoreState) => state.ledger.customers.customers;
 
 export const customersSelector = createSelector(
   defaultCustomersSelector,
@@ -71,7 +71,7 @@ export const currentCustomerInstIdSelector = createSelector(
  * Repayment debit cards selectors
  */
 
-export const defaultRepaymentDebitCardsSelector = (state: StoreState) =>
+export const defaultRepaymentDebitCardsSelector = (state: IStoreState) =>
   state.ledger.customers.repaymentDebitCards;
 
 export const repaymentDebitCardsSelector = createSelector(
@@ -83,7 +83,7 @@ export const repaymentDebitCardsSelector = createSelector(
  * Repayment direct debit selectors
  */
 
-export const defaultRepaymentDirectDebitsSelector = (state: StoreState) =>
+export const defaultRepaymentDirectDebitsSelector = (state: IStoreState) =>
   state.ledger.customers.repaymentDirectDebits;
 
 export const repaymentDirectDebitsSelector = createSelector(

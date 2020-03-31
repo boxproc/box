@@ -2,16 +2,16 @@ import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
 import { ActionTypeKeys, UpdateProductAuxCountersAction } from './actionTypes';
 import * as api from './api';
-import { ProductAuxCountersItem, ProductAuxCountersItemPrepared } from './types';
+import { IProductAuxCounters, IProductAuxCountersData } from './types';
 import { prepareAuxCountersToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type UpdateProductAuxCounters = (data: Partial<ProductAuxCountersItem>) =>
+export type UpdateProductAuxCounters = (data: Partial<IProductAuxCountersData>) =>
   UpdateProductAuxCountersAction;
-export type HandleUpdateProductAuxCounters = (data: Partial<ProductAuxCountersItemPrepared>) =>
+export type HandleUpdateProductAuxCounters = (data: Partial<IProductAuxCounters>) =>
   Thunk<void>;
 
 export const updateProductAuxCounters: UpdateProductAuxCounters = data => ({
@@ -23,11 +23,11 @@ export const handleUpdateProductAuxCounters: HandleUpdateProductAuxCounters = da
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedValues = prepareAuxCountersToSend(data);
+        const preparedData = prepareAuxCountersToSend(data);
         const state = getState();
         const id = activeItemIdSelector(state);
 
-        await dispatch(updateProductAuxCounters(preparedValues));
+        await dispatch(updateProductAuxCounters(preparedData));
         await dispatch(getProduct(id));
       },
       dispatch

@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 
 import { selectDefaultCurrentProduct } from '../products';
-import { prepareGeneralLedgerToRender } from './utils';
+import { prepareProductGLToRender } from './utils';
 
-export const selectProductGeneralLedger = createSelector(
+export const selectProductGL = createSelector(
   selectDefaultCurrentProduct,
-  current => prepareGeneralLedgerToRender(current)
+  current => prepareProductGLToRender(current)
 );

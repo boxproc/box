@@ -1,39 +1,49 @@
 import { createSelector } from 'reselect';
 
-import { StoreState } from 'store';
+import { IStoreState } from 'store';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 
-import { prepareValuesToRender } from './utils';
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender } from './utils';
 
-export const selectDefaultAuditApiCalls = (state: StoreState) => state.audit.apiCalls.apiCalls;
+export const defaultApiCallsSelector = (state: IStoreState) => state.audit.apiCalls.apiCalls;
 
-export const selectAuditApiCalls = createSelector(
-  selectDefaultAuditApiCalls,
+export const apiCallsSelector = createSelector(
+  defaultApiCallsSelector,
   userInstitutionsOptionsSelector,
   (items, institutionsOptions) => items && items.map(item => {
     const institution = institutionsOptions.find(el => el.value === item.institution_id);
 
-    return prepareValuesToRender(item, institution);
+    return prepareDataToRender(item, institution);
   })
 );
 
-export const selectDefaultAuditApiCallDetails = (state: StoreState) =>
+export const defaultApiCallDetailsSelector = (state: IStoreState) =>
   state.audit.apiCalls.apiCallDetails;
 
-export const selectAuditApiCallDetails = createSelector(
-  selectDefaultAuditApiCalls,
+export const apiCallDetailsSelector = createSelector(
+  defaultApiCallsSelector,
   activeItemIdSelector,
   userInstitutionsOptionsSelector,
-  selectDefaultAuditApiCallDetails,
+  defaultApiCallDetailsSelector,
   (items, currentId, institutionsOptions, apiCallDetails) => {
     const current = items.find(el => el.id === currentId);
 
     return {
-      ...prepareValuesToRender(current),
+      ...prepareDataToRender(current),
       requestBody: apiCallDetails && apiCallDetails.request_body,
       responseBody: apiCallDetails && apiCallDetails.response_body,
       institutionId: institutionsOptions.find(el => el.value === current.institution_id),
     };
   }
 );
+
+export const isLoadingApiCallsSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_API_CALLS,
+]);
+
+export const isGettingApiCallDetailsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DETAILS_API_CALLS,
+]);

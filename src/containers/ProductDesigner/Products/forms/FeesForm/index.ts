@@ -9,9 +9,9 @@ import FeesForm from './FeesForm';
 import {
   createLoadingSelector,
   handleAddProductFee,
+  IStoreState,
   ProductAprsFeesRewardsActionTypes,
   selectAprsOptions,
-  StoreState,
 } from 'store';
 
 const loadingSelector = createLoadingSelector([
@@ -24,7 +24,7 @@ const aprsLoading = createLoadingSelector([
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_FEES);
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: loadingSelector(state),
   isAprsLoading: aprsLoading(state),
   aprsOptions: selectAprsOptions(state),

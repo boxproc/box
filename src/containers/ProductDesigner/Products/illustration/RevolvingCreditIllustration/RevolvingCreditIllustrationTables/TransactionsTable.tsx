@@ -4,11 +4,11 @@ import { ImmutableArray } from 'seamless-immutable';
 import { Box } from '@rebass/grid';
 
 import { Table, TableCell, TableHeader } from 'components';
-import { IllustrationProductTransactionsRevolvingCredit } from 'store';
+import { IRevCreditIllustrationTrans } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof IllustrationProductTransactionsRevolvingCredit> =
-  ITableCell<IllustrationProductTransactionsRevolvingCredit[T]>;
+type TCell<T extends keyof IRevCreditIllustrationTrans> =
+  ITableCell<IRevCreditIllustrationTrans[T]>;
 
 const columns = [
   {
@@ -132,7 +132,7 @@ const columns = [
 ];
 
 interface ITransactionsTable {
-  data: ImmutableArray<IllustrationProductTransactionsRevolvingCredit>;
+  data: ImmutableArray<IRevCreditIllustrationTrans>;
 }
 
 const TransactionsTable: React.FC<ITransactionsTable> = ({ data }) => {

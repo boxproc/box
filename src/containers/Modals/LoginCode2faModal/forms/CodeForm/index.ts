@@ -6,10 +6,10 @@ import CodeForm from './CodeForm';
 import {
   handleUserEnterAuthKey,
   isEnteringAuthKeySelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isEnteringAuthKeySelector(state),
 });
 

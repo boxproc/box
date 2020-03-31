@@ -4,17 +4,9 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { ISpinner, Tabs, TabsPanel, withSpinner } from 'components';
 
-import {
-  formNamesConst,
-  productTypesConst,
-  repaymentTypesConst,
-} from 'consts';
+import { formNamesConst, productTypesConst, repaymentTypesConst } from 'consts';
 
-import {
-  AuxiliaryCounters,
-  GeneralAccountInfo,
-  Overdue,
-} from 'containers/Ledger/Accounts/components';
+import { AuxiliaryCounters, GeneralAccountInfo, Overdue } from './../../components';
 
 import {
   IAccountDetails,

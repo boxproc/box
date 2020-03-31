@@ -9,10 +9,10 @@ import {
   handleGetAccountStatements,
   handleGetStatementAprs,
   IsAccStatementsAprsLoadingSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   accountCurrentId: activeItemIdSelector(state),
   accountStatements: accountStatementsSelector(state),
   isLoading: IsAccStatementsAprsLoadingSelector(state),

@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { TableCell, TableHeader } from 'components';
-
-import { SystemMonitorTransaction } from 'store';
-
+import { ISysMonitorTransaction } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof SystemMonitorTransaction> = ITableCell<SystemMonitorTransaction[T]>;
+type TCell<T extends keyof ISysMonitorTransaction> = ITableCell<ISysMonitorTransaction[T]>;
 
 export const transactionsTableColumns = [
   {

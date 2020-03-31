@@ -1,13 +1,13 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TCardsActionTypes } from './actionTypes';
+import { ActionTypeKeys, TCardsAction } from './actionTypes';
 import { ICardsState } from './types';
 
 export const cardsInitialState: ImmutableObject<ICardsState> = Immutable({
   cards: Immutable([]),
 });
 
-const cardsReducer = (state = cardsInitialState, action: TCardsActionTypes) => {
+const cardsReducer = (state = cardsInitialState, action: TCardsAction) => {
   switch (action.type) {
     case ActionTypeKeys.FILTER_CARDS_FULFILLED:
       return state.set('cards', action.payload.cards);

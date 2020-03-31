@@ -6,13 +6,12 @@ import { Button, Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
+import { ApiCallForm } from './../../forms';
 
-import { ApiCallForm } from 'containers/Audit/ApiCalls/forms';
-
-import { HandleGetDetailsAuditApiCalls } from 'store';
+import { THandleGetDetailsApiCalls } from 'store';
 
 interface IApiCallModal extends IWithModal {
-  getDetailsApiCalls: HandleGetDetailsAuditApiCalls;
+  getDetailsApiCalls: THandleGetDetailsApiCalls;
 }
 
 const modalName = modalNamesConst.API_CALL;

@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, TManualTransactionActionTypes } from './actionTypes';
+import { ActionTypeKeys, TManualTransactionAction } from './actionTypes';
 import { IManualTransactionState } from './types';
 
 export const manualTransactionInitialState:
@@ -9,7 +9,7 @@ export const manualTransactionInitialState:
   });
 
 const manualTransactionReducer =
-  (state = manualTransactionInitialState, action: TManualTransactionActionTypes) => {
+  (state = manualTransactionInitialState, action: TManualTransactionAction) => {
     switch (action.type) {
       case ActionTypeKeys.MAKE_TRANSACTION_FULFILLED:
         return state.set('transactionResult', action.payload.transaction_result);

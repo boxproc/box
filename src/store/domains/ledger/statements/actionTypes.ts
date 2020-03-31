@@ -121,7 +121,7 @@ export interface IResetStatementsAction {
   readonly type: ActionTypeKeys.RESET_STATEMENTS;
 }
 
-export type TStatementsActionTypes =
+export type TStatementsAction =
   | IFilterStatementsFulfilledAction
   | IGetStatementTransFulfilledAction
   | IFilterStatementsByIdFulfilledAction

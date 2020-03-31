@@ -1,12 +1,12 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, ProductIllustrationActionTypes } from './actionTypes';
-import { ProductIllustrationState } from './types';
+import { ActionTypeKeys, TIllustrationAction } from './actionTypes';
+import { IProductIllustrationState } from './types';
 
-export const productIllustrationInitialState: ImmutableObject<ProductIllustrationState> =
+export const productIllustrationInitialState: ImmutableObject<IProductIllustrationState> =
   Immutable({
-    productLoanIllustration: Immutable([]),
-    productRevolvingCreditIllustration: {
+    loanIllustration: Immutable([]),
+    revCreditIllustration: {
       statements: Immutable([]),
       aprs: Immutable([]),
       transactions: Immutable([]),
@@ -14,16 +14,13 @@ export const productIllustrationInitialState: ImmutableObject<ProductIllustratio
   });
 
 const productIllustrationReducer =
-  (state = productIllustrationInitialState, action: ProductIllustrationActionTypes) => {
+  (state = productIllustrationInitialState, action: TIllustrationAction) => {
     switch (action.type) {
-      case ActionTypeKeys.ILLUSTRATE_PRODUCT_LOAN_FULFILLED:
-        return state.set('productLoanIllustration', action.payload.product_information);
+      case ActionTypeKeys.ILLUSTRATE_LOAN_FULFILLED:
+        return state.set('loanIllustration', action.payload.product_information);
 
-      case ActionTypeKeys.ILLUSTRATE_PRODUCT_REVOLVING_CREDIT_FULFILLED:
-        return state.set(
-          'productRevolvingCreditIllustration',
-          action.payload.revolving_credit_information
-        );
+      case ActionTypeKeys.ILLUSTRATE_REVOLVING_CREDIT_FULFILLED:
+        return state.set('revCreditIllustration', action.payload.revolving_credit_information);
 
       case ActionTypeKeys.RESET_PRODUCT_ILLUSTRATION:
         return state = productIllustrationInitialState;

@@ -3,9 +3,9 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import ChangePasswordModal from './ChangePasswordModal';
 
-import { handleChangePassword, isChangingPasswordSelector, StoreState } from 'store';
+import { handleChangePassword, isChangingPasswordSelector, IStoreState } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isChangingPasswordSelector(state),
 });
 

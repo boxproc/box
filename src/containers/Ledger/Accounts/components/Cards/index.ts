@@ -10,10 +10,10 @@ import {
   handleOrderAccountCard,
   isAccountCardsLoadingSelector,
   isOrderingAccountCardSelector,
-  StoreState,
+  IStoreState,
 } from 'store';
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAccountCardsLoadingSelector(state),
   isOrderingCard: isOrderingAccountCardSelector(state),
   accountCurrentId: activeItemIdSelector(state),

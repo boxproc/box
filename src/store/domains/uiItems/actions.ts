@@ -1,35 +1,35 @@
 import * as api from './api';
 
-import { ActionTypeKeys, GetHelpLinkAction, GetUiItemsAction } from './actionTypes';
-import { selectIsUiItems } from './selectors';
+import { ActionTypeKeys, IGetHelpLinkAction, IGetUiItemsAction } from './actionTypes';
+import { isLoadedUiItemsSelector } from './selectors';
 
 import { Thunk, VoidPromiseThunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetUiItems = () => GetUiItemsAction;
-export type HandleGetUiItems = VoidPromiseThunk;
+export type TGetUiItems = () => IGetUiItemsAction;
+export type THandleGetUiItems = VoidPromiseThunk;
 
-export type GetHelpLink = (data: string) => GetHelpLinkAction;
-export type HandleGetHelpLink = (data: string) => Thunk<void>;
+export type TGetHelpLink = (data: string) => IGetHelpLinkAction;
+export type THandleGetHelpLink = (data: string) => Thunk<void>;
 
-export const getUiItems: GetUiItems = () => ({
+export const getUiItems: TGetUiItems = () => ({
   type: ActionTypeKeys.GET_UI_ITEMS,
   payload: api.getUiItems(),
 });
 
-export const getHelpLink: GetHelpLink = data => ({
+export const getHelpLink: TGetHelpLink = data => ({
   type: ActionTypeKeys.GET_HELP_LINK,
   payload: api.getHelpLink(data),
 });
 
-export const handleGetUiItems: HandleGetUiItems = () =>
+export const handleGetUiItems: THandleGetUiItems = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
 
-        if (!selectIsUiItems(state)) {
+        if (!isLoadedUiItemsSelector(state)) {
           await dispatch(getUiItems());
         }
       },
@@ -37,7 +37,7 @@ export const handleGetUiItems: HandleGetUiItems = () =>
     );
   };
 
-export const handleGetHelpLink: HandleGetHelpLink = data =>
+export const handleGetHelpLink: THandleGetHelpLink = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {

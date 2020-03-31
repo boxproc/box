@@ -171,8 +171,8 @@ export const handleFilterByIdCustomers: THandleFilterCustomersById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.LEDGER_CUSTOMERS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.LEDGER_CUSTOMERS}`));
+        cookiesUtil.remove(`${basePath}${uiItemsConst.CUSTOMERS}-${loggedInUsername}`);
+        dispatch(push(`${basePath}${uiItemsConst.CUSTOMERS}`));
         await dispatch(filterCustomersById(id));
         dispatch(setIsOpenFilter(false));
       },
