@@ -31,6 +31,7 @@ const AddEndpointModal: React.FC<IAddEndpointModal> = ({
       title="Add Endpoint"
       containerWidth="600px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <EndpointForm
         institutionsOptions={institutionsOptions}

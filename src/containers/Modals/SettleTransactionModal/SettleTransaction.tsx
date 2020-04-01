@@ -50,22 +50,21 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
     [resetRetrievedTransaction]
   );
 
-  const initialRetrievingFormValues = React.useMemo(
-    () => {
-      const id = payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId;
-
-      return { id };
-    },
+  const transactionId = React.useMemo(
+    () => payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId,
     [payloadSettleTransactionModal]
   );
 
-  const isReadonlyId = React.useMemo(
+  const initialRetrievingFormValues = React.useMemo(
     () => {
-      const id = payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId;
-
-      return Boolean(id);
+      return { id: transactionId };
     },
-    [payloadSettleTransactionModal]
+    [transactionId]
+  );
+
+  const isReadonlyId = React.useMemo(
+    () => Boolean(transactionId),
+    [transactionId]
   );
 
   const handleCloseModal = React.useCallback(
@@ -81,6 +80,7 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
       containerWidth="400px"
       minContainerHeight="160px"
       type={modalTypesConst.VIEWING}
+      isBluredBackdrop={!transactionId}
       withCloseConfirmation={isDirtySettleTransactionForm}
     >
       <PageTitle

@@ -59,15 +59,15 @@ export const currentUsersGroupNameSelector = createSelector(
   data => data && data.name
 );
 
+export const isLoadingUsersGroupsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_USERS_GROUPS,
+]);
+
 export const isAddingUsersGroupSelector = createLoadingSelector([
   ActionTypeKeys.ADD_USERS_GROUP,
 ]);
 
 export const isUpdatingUsersGroupSelector = createLoadingSelector([
-  ActionTypeKeys.UPDATE_USERS_GROUP,
-]);
-
-export const isLoadingUsersGroupsSelector = createLoadingSelector([
   ActionTypeKeys.UPDATE_USERS_GROUP,
 ]);
 

@@ -41,6 +41,7 @@ const ChangeProfileModal: React.FC<IChangeProfileModal> = ({
       name={modalName}
       title="Change Profile"
       containerWidth="300px"
+      isBluredBackdrop={true}
     >
       <ChangeProfileForm
         usernamesOptions={usernamesOptions}

@@ -27,6 +27,7 @@ const AddUsersGroupModal: React.FC<IAddUserModal> = ({
       title="Add New User Group"
       containerWidth="350px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <AddUsersGroupForm onCancel={handleOnCancel} />
     </Modal>

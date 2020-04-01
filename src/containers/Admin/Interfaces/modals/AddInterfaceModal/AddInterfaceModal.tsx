@@ -31,6 +31,7 @@ const AddInterfaceModal: React.FC<IAddInterfaceModal> = ({
       name={modalName}
       title="Add Interface"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <InterfaceForm
         institutionsOptions={institutionsOptions}

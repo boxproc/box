@@ -29,6 +29,7 @@ const AddProductModal: React.FC<IAddProductModal> = ({
       containerWidth="1010px"
       minContainerHeight="580px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <AddProductForm onCancel={handleOnCancel} />
     </Modal>

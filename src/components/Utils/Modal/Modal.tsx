@@ -4,12 +4,9 @@ import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
 
-import { T2 } from './../../Text';
-
-import { IWithModal, withModal } from 'HOCs';
-
 import { modalNamesConst, modalTypesConst } from 'consts';
-
+import { IWithModal, withModal } from 'HOCs';
+import { T2 } from './../../Text';
 import { ModalWrapper } from './ModalWrapper';
 
 const zIndexes = {
@@ -30,6 +27,9 @@ interface IModal extends IWithModal {
 
   /** Hides close icon */
   hideCloseIcon?: boolean;
+
+  /** Blurs backdrop */
+  isBluredBackdrop?: boolean;
 
   /** Min height of modal window container */
   minContainerHeight?: string;
@@ -55,6 +55,7 @@ const Modal: React.FC<IModal> = ({
   closeModal,
   containerWidth = '720px',
   hideCloseIcon,
+  isBluredBackdrop,
   minContainerHeight,
   name,
   openModal,
@@ -86,7 +87,7 @@ const Modal: React.FC<IModal> = ({
       <div
         className={`
           modal-backdrop
-          ${type === modalTypesConst.MESSAGE ? 'is-blured' : ''}
+          ${isBluredBackdrop ? 'is-blured' : ''}
         `}
       />
       <div className="modal-container-wrapper">

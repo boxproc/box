@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { Flex } from '@rebass/grid';
-
 const DropdownOption: React.FC = ({ children }) => (
-  <Flex>{children}</Flex>
+  <React.Fragment>{children}</React.Fragment>
 );
 
 export default DropdownOption;

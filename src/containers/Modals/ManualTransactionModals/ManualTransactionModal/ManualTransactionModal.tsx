@@ -96,12 +96,8 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   );
 
   const isReadonlyId = React.useMemo(
-    () => {
-      const id = modalPayload && modalPayload.accountId;
-
-      return Boolean(id);
-    },
-    [modalPayload]
+    () => Boolean(initialFormValues.accountId),
+    [initialFormValues]
   );
 
   const handleOnCancel = React.useCallback(
@@ -119,6 +115,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
       name={modalName}
       type={modalTypesConst.VIEWING}
       containerWidth="550px"
+      isBluredBackdrop={!initialFormValues.accountId}
     >
       <PageTitle
         title={modalTitle}

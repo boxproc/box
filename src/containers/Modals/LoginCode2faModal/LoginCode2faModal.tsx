@@ -8,16 +8,15 @@ import { modalNamesConst } from 'consts';
 
 import { CodeForm } from './forms';
 
-interface IRegister2faModal {}
-
 const modalName = modalNamesConst.LOGIN_CODE_2FA;
 
-const Register2faModal: React.FC<IRegister2faModal> = () => {
+const Register2faModal: React.FC = () => {
   return (
     <Modal
       title="Enter Second Factor Code"
       name={modalName}
       containerWidth="340px"
+      isBluredBackdrop={true}
     >
       <Box mb="7px">
         <CircleList

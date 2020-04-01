@@ -27,6 +27,7 @@ const AddUserModal: React.FC<IAddUserModal> = ({
       title="Add New User"
       containerWidth="750px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <UserForm
         onCancel={handleOnCancel}

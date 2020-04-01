@@ -10,7 +10,6 @@ interface IButtonWrapper {
 export const ButtonWrapper = styled.button<IButtonWrapper>`
   position: relative;
   display: flex;
-  justify-content: center;
   padding: 0;
   background-color: transparent;
   border: 0;
@@ -38,6 +37,7 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
 
   ${({ hasIcon, theme }) => !hasIcon && `
     padding: 7px 10px 5px;
+    justify-content: center;
     background-color: ${theme.colors.lighterGray};
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 2px;

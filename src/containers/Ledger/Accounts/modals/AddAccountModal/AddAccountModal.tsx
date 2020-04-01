@@ -44,6 +44,7 @@ const AddAccountModal: React.FC<IAddAccountModal> = ({
       containerWidth="1010px"
       minContainerHeight="510px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <AccountForm
         initialValues={initialValues}

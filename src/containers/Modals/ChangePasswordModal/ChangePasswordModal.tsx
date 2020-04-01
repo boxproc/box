@@ -24,6 +24,7 @@ const ChangeProfileModal: React.FC<IChangeProfileModal> = ({
       name={modalName}
       title="Change Password"
       containerWidth="300px"
+      isBluredBackdrop={true}
     >
       <ChangePasswordForm
         changePassword={changePassword}

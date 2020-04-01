@@ -44,7 +44,7 @@ export const filterStatementsById = (data: TLedgerId) =>
 export const getAccountStatements = (accountId: number) =>
   // throttleUtil.getDataAfter(accountStatementsMock, 500);
   apiClientService.post('ui/ledger/accounts/get_statements', {
-    data: { account_id: accountId },
+    data: { id: accountId },
   });
 
 /**

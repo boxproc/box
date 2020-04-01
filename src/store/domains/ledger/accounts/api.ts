@@ -17,7 +17,7 @@ export const filterAccounts = (data: Partial<IAccountsFilterToSend>) =>
  */
 export const addAccount = (data: Partial<IAccountData>) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
-  apiClientService.post('ui/ledger/accounts/create', { data });
+  apiClientService.post('ui/ledger/accounts', { data });
 
 /**
  * Add product override API
@@ -33,7 +33,7 @@ export const addProductOverride = (accountId: number) =>
  */
 export const updateAccount = (data: Partial<IAccountData>) =>
   // throttleUtil.getDataAfter(successResponseMock, 100);
-  apiClientService.post('ui/ledger/accounts/update', { data });
+  apiClientService.put('ui/ledger/accounts', { data });
 
 /**
  * Get account cards API

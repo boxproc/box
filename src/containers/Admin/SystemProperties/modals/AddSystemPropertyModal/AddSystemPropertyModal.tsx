@@ -27,6 +27,7 @@ const AddSystemPropertyModal: React.FC<IAddSystemPropertyModal> = ({
       title="Add System Property"
       containerWidth="600px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <SystemPropertyForm onCancel={handleOnCancel} />
     </Modal>

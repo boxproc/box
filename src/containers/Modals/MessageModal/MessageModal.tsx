@@ -92,10 +92,11 @@ const MessageModal: React.FC<IMessageModal> = ({
 
   return (
     <Modal
-      name={modalName}
-      title={modalTitle}
       containerWidth={modalWidth}
       hideCloseIcon={isReLogin}
+      isBluredBackdrop={true}
+      name={modalName}
+      title={modalTitle}
       type={modalTypesConst.MESSAGE}
     >
       <Paragraph light={true}>{message}</Paragraph>

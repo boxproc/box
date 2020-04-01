@@ -27,6 +27,7 @@ const AddCustomerModal: React.FC<IAddCustomerModal> = ({
       title="Add New Customer"
       containerWidth="1010px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <CustomerForm onCancel={handleOnCancel} />
     </Modal>

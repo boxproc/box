@@ -27,6 +27,7 @@ const AddInstitutionModal: React.FC<IAddInstitutionModal> = ({
       title="Add Institution"
       containerWidth="550px"
       withCloseConfirmation={isFormDirty}
+      isBluredBackdrop={true}
     >
       <InstitutionForm onCancel={handleOnCancel} />
     </Modal>

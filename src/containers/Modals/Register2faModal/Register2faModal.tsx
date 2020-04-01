@@ -65,6 +65,7 @@ const Register2faModal: React.FC<IRegister2faModal> = ({
       name={modalName}
       title={modalTitle}
       containerWidth={modalWidth}
+      isBluredBackdrop={true}
     >
       {isSecondStep
         ? (
