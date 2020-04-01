@@ -1,14 +1,13 @@
 import {
-  ChangeRepaymentHierarchy,
-  ChangeRepaymentHierarchyRequest,
-  RepaymentHierarchy,
-  RepaymentHierarchyItem,
+  IRepaymentHierarchy,
+  IRepaymentHierarchyItemData,
+  IRepaymentHierarchyReq,
+  IRepaymentHierarchyReqToSend,
 } from './types';
 
 import { elementIdentifierOptions, hierarchyElemsStatusOptions } from 'consts';
 
-export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
-  RepaymentHierarchy => {
+export const prepareDataToRender = (data: IRepaymentHierarchyItemData): IRepaymentHierarchy => {
   if (!data) {
     return null;
   }
@@ -37,8 +36,7 @@ export const prepareRepaymentHierarchyToRender = (data: RepaymentHierarchyItem):
   };
 };
 
-export const prepareRepaymentHierarchyRequest = (data: ChangeRepaymentHierarchy):
-  ChangeRepaymentHierarchyRequest => {
+export const prepareDataToSend = (data: IRepaymentHierarchyReq): IRepaymentHierarchyReqToSend => {
   const { id, productId, repaymentPriority } = data;
 
   return {

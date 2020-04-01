@@ -64,215 +64,215 @@ export enum ActionTypeKeys {
   DELETE_PRODUCT_REWARD_REJECTED = 'products/DELETE_PRODUCT_REWARD_REJECTED',
 }
 
-export interface GetProductAprsAction {
+export interface IGetProductAprsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS;
 }
 
-export interface GetProductAprsFulfilledAction {
+export interface IGetProductAprsFulfilledAction {
   readonly payload: IProductAprsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS_FULFILLED;
 }
 
-export interface GetProductAprsRejectedAction {
+export interface IGetProductAprsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_APRS_REJECTED;
 }
 
-export interface GetProductFeeAprsAction {
+export interface IGetProductFeeAprsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR;
 }
 
-export interface GetProductFeeAprsFulfilledAction {
+export interface IGetProductFeeAprsFulfilledAction {
   readonly payload: IProductFeesAprsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_FULFILLED;
 }
 
-export interface GetProductFeeAprsRejectedAction {
+export interface IGetProductFeeAprsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEE_APR_REJECTED;
 }
 
-export interface AddProductAprAction {
+export interface IAddProductAprAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR;
 }
 
-export interface AddProductAprFulfilledAction {
+export interface IAddProductAprFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR_FULFILLED;
 }
 
-export interface AddProductAprRejectedAction {
+export interface IAddProductAprRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_APR_REJECTED;
 }
 
-export interface UpdateProductAprAction {
+export interface IUpdateProductAprAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR;
 }
 
-export interface UpdateProductAprFulfilledAction {
+export interface IUpdateProductAprFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_FULFILLED;
 }
 
-export interface UpdateProductAprRejectedAction {
+export interface IUpdateProductAprRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_APR_REJECTED;
 }
 
-export interface DeleteProductAprAction {
+export interface IDeleteProductAprAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR;
 }
 
-export interface DeleteProductAprFulfilledAction {
+export interface IDeleteProductAprFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_FULFILLED;
   readonly meta: { data: IProductAprIds };
 }
 
-export interface DeleteProductAprRejectedAction {
+export interface IDeleteProductAprRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_APR_REJECTED;
 }
 
-export interface GetProductFeesAction {
+export interface IGetProductFeesAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEES;
 }
 
-export interface GetProductFeesFulfilledAction {
+export interface IGetProductFeesFulfilledAction {
   readonly payload: IProductFeesData;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEES_FULFILLED;
 }
 
-export interface GetProductFeesRejectedAction {
+export interface IGetProductFeesRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_FEES_REJECTED;
 }
 
-export interface AddProductFeeAction {
+export interface IAddProductFeeAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FEE;
 }
 
-export interface AddProductFeeFulfilledAction {
+export interface IAddProductFeeFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_FULFILLED;
 }
 
-export interface AddProductFeeRejectedAction {
+export interface IAddProductFeeRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FEE_REJECTED;
 }
 
-export interface UpdateProductFeeAction {
+export interface IUpdateProductFeeAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE;
 }
 
-export interface UpdateProductFeeFulfilledAction {
+export interface IUpdateProductFeeFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_FULFILLED;
 }
 
-export interface UpdateProductFeeRejectedAction {
+export interface IUpdateProductFeeRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FEE_REJECTED;
 }
 
-export interface DeleteProductFeeAction {
+export interface IDeleteProductFeeAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE;
 }
 
-export interface DeleteProductFeeFulfilledAction {
+export interface IDeleteProductFeeFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_FULFILLED;
   readonly meta: { data: IProductFeesIds };
 }
 
-export interface DeleteProductFeeRejectedAction {
+export interface IDeleteProductFeeRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FEE_REJECTED;
 }
 
-export interface GetProductRewardsAction {
+export interface IGetProductRewardsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS;
 }
 
-export interface GetProductRewardsFulfilledAction {
+export interface IGetProductRewardsFulfilledAction {
   readonly payload: IProductRewardsData;
   readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_FULFILLED;
 }
 
-export interface GetProductRewardsRejectedAction {
+export interface IGetProductRewardsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_REWARDS_REJECTED;
 }
 
-export interface AddProductRewardAction {
+export interface IAddProductRewardAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD;
 }
 
-export interface AddProductRewardFulfilledAction {
+export interface IAddProductRewardFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_FULFILLED;
 }
 
-export interface AddProductRewardRejectedAction {
+export interface IAddProductRewardRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REWARD_REJECTED;
 }
 
-export interface UpdateProductRewardAction {
+export interface IUpdateProductRewardAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD;
 }
 
-export interface UpdateProductRewardFulfilledAction {
+export interface IUpdateProductRewardFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_FULFILLED;
 }
 
-export interface UpdateProductRewardRejectedAction {
+export interface IUpdateProductRewardRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REWARD_REJECTED;
 }
 
-export interface DeleteProductRewardAction {
+export interface IDeleteProductRewardAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD;
 }
 
-export interface DeleteProductRewardFulfilledAction {
+export interface IDeleteProductRewardFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_FULFILLED;
   readonly meta: { data: IProductRewardsIds };
 }
 
-export interface DeleteProductRewardRejectedAction {
+export interface IDeleteProductRewardRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REWARD_REJECTED;
 }
 
 export type TProductAprsFeesRewardsAction =
-  | GetProductAprsFulfilledAction
-  | AddProductAprFulfilledAction
-  | UpdateProductAprFulfilledAction
-  | DeleteProductAprFulfilledAction
-  | GetProductFeesFulfilledAction
-  | UpdateProductFeeFulfilledAction
-  | AddProductFeeFulfilledAction
-  | DeleteProductFeeFulfilledAction
-  | GetProductRewardsFulfilledAction
-  | UpdateProductRewardFulfilledAction
-  | AddProductRewardFulfilledAction
-  | DeleteProductRewardFulfilledAction
-  | GetProductFeeAprsFulfilledAction;
+  | IGetProductAprsFulfilledAction
+  | IAddProductAprFulfilledAction
+  | IUpdateProductAprFulfilledAction
+  | IDeleteProductAprFulfilledAction
+  | IGetProductFeesFulfilledAction
+  | IUpdateProductFeeFulfilledAction
+  | IAddProductFeeFulfilledAction
+  | IDeleteProductFeeFulfilledAction
+  | IGetProductRewardsFulfilledAction
+  | IUpdateProductRewardFulfilledAction
+  | IAddProductRewardFulfilledAction
+  | IDeleteProductRewardFulfilledAction
+  | IGetProductFeeAprsFulfilledAction;

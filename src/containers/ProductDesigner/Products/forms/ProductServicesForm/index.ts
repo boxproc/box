@@ -5,43 +5,32 @@ import ProductServicesForm from './ProductServicesForm';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
   handleGetProductServices,
-  handleUpdateCardService,
+  handleUpdateProductServices,
+  isProductServiceUpdatingSelector,
+  isServiceEndpointsLoadingSelector,
+  isServiceInterfacesLoadingSelector,
   IStoreState,
-  ProductServicesActionTypes,
+  productServicesSelector,
   selectCurrentProductInstitutionId,
-  selectProductCardEndpointsService,
-  selectProductCardInterfacesService,
-  selectProductServices,
+  servicesEndpointsOptionsSelector,
+  servicesInterfacesOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductServicesActionTypes.UPDATE_CARD_SERVICES,
-]);
-
-const loadingSelectorInterfaces = createLoadingSelector([
-  ProductServicesActionTypes.GET_SERVICE_INTERFACES,
-]);
-
-const loadingSelectorEndpoints = createLoadingSelector([
-  ProductServicesActionTypes.GET_SERVICE_ENDPOINTS,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  isLoadingInterfaces: loadingSelectorInterfaces(state),
-  isLoadingEndpoints: loadingSelectorEndpoints(state),
+  isLoading: isProductServiceUpdatingSelector(state),
+  isLoadingInterfaces: isServiceInterfacesLoadingSelector(state),
+  isLoadingEndpoints: isServiceEndpointsLoadingSelector(state),
   currentUsersGroupId: activeItemIdSelector(state),
-  productInterfacesServiceOptions: selectProductCardInterfacesService(state),
-  productEndpointsServiceOptions: selectProductCardEndpointsService(state),
+  servicesInterfacesOptions: servicesInterfacesOptionsSelector(state),
+  servicesEndpointsOptions: servicesEndpointsOptionsSelector(state),
   currentInstitutionId: selectCurrentProductInstitutionId(state),
-  initialValues: selectProductServices(state),
+  initialValues: productServicesSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    updateCardServices: handleUpdateCardService,
+    updateProductServices: handleUpdateProductServices,
     getProductServices: handleGetProductServices,
   },
   dispatch

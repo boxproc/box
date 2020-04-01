@@ -1,10 +1,10 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
 import { ActionTypeKeys, TRepaymentHierarchyAction } from './actionTypes';
-import { RepaymentHierarchyState } from './types';
+import { IRepaymentHierarchyState } from './types';
 
 export const repaymentHierarchyInitialState:
-  ImmutableObject<RepaymentHierarchyState> = Immutable({
+  ImmutableObject<IRepaymentHierarchyState> = Immutable({
     repaymentHierarchy: Immutable([]),
   });
 

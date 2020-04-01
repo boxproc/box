@@ -8,11 +8,11 @@ import { formNamesConst } from 'consts';
 
 import { ProductAuxiliaryCounters } from 'containers/ProductDesigner/Products/components';
 
-import { HandleUpdateProductAuxCounters } from 'store';
+import { THandleUpdateProductAuxCounters } from 'store';
 
 interface IAuxiliaryCountersForm extends ISpinner {
   currentProductId: number;
-  updateProductAuxCounters: HandleUpdateProductAuxCounters;
+  updateProductAuxCounters: THandleUpdateProductAuxCounters;
   onCancel?: () => void;
   isReadOnly: boolean;
 }

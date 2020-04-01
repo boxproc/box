@@ -6,19 +6,19 @@ import { formNamesConst } from 'consts';
 import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
-  AddProductAprAction,
-  AddProductFeeAction,
-  AddProductRewardAction,
-  DeleteProductAprAction,
-  DeleteProductFeeAction,
-  DeleteProductRewardAction,
-  GetProductAprsAction,
-  GetProductFeeAprsAction,
-  GetProductFeesAction,
-  GetProductRewardsAction,
-  UpdateProductAprAction,
-  UpdateProductFeeAction,
-  UpdateProductRewardAction,
+  IAddProductAprAction,
+  IAddProductFeeAction,
+  IAddProductRewardAction,
+  IDeleteProductAprAction,
+  IDeleteProductFeeAction,
+  IDeleteProductRewardAction,
+  IGetProductAprsAction,
+  IGetProductFeeAprsAction,
+  IGetProductFeesAction,
+  IGetProductRewardsAction,
+  IUpdateProductAprAction,
+  IUpdateProductFeeAction,
+  IUpdateProductRewardAction,
 } from './actionTypes';
 import * as api from './api';
 import {
@@ -48,116 +48,117 @@ import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetProductAprs = (id: number) => GetProductAprsAction;
-export type HandleGetProductAprs = () => Thunk<void>;
+export type TGetProductAprs = (id: number) => IGetProductAprsAction;
+export type THandleGetProductAprs = () => Thunk<void>;
 
-export type AddProductApr = (data: Partial<IProductAprData>) => AddProductAprAction;
-export type HandleAddProductApr = (data: Partial<IProductAprFormValues>) => Thunk<void>;
+export type TAddProductApr = (data: Partial<IProductAprData>) => IAddProductAprAction;
+export type THandleAddProductApr = (data: Partial<IProductAprFormValues>) => Thunk<void>;
 
-export type UpdateProductApr = (data: Partial<IProductAprData>) => UpdateProductAprAction;
-export type HandleUpdateProductApr = (data: Partial<IProductApr>) => Thunk<void>;
+export type TUpdateProductApr = (data: Partial<IProductAprData>) => IUpdateProductAprAction;
+export type THandleUpdateProductApr = (data: Partial<IProductApr>) => Thunk<void>;
 
-export type DeleteProductApr = (data: IProductAprIds) => DeleteProductAprAction;
-export type HandleDeleteProductApr = (data: IProductAprIds) => Thunk<void>;
+export type TDeleteProductApr = (data: IProductAprIds) => IDeleteProductAprAction;
+export type THandleDeleteProductApr = (data: IProductAprIds) => Thunk<void>;
 
-export type GetProductFees = (id: number) => GetProductFeesAction;
-export type HandleGetProductFees = () => Thunk<void>;
+export type TGetProductFees = (id: number) => IGetProductFeesAction;
+export type THandleGetProductFees = () => Thunk<void>;
 
-export type AddProductFee = (data: Partial<IProductFeeData>) => AddProductFeeAction;
-export type HandleAddProductFee = (data: Partial<IProductFeeFormValues>) => Thunk<void>;
+export type TAddProductFee = (data: Partial<IProductFeeData>) => IAddProductFeeAction;
+export type THandleAddProductFee = (data: Partial<IProductFeeFormValues>) => Thunk<void>;
 
-export type UpdateProductFee = (data: Partial<IProductFeeData>) => UpdateProductFeeAction;
-export type HandleUpdateProductFee = (data: Partial<IProductFee>) => Thunk<void>;
+export type TUpdateProductFee = (data: Partial<IProductFeeData>) => IUpdateProductFeeAction;
+export type THandleUpdateProductFee = (data: Partial<IProductFee>) => Thunk<void>;
 
-export type DeleteProductFee = (data: IProductFeesIds) => DeleteProductFeeAction;
-export type HandleDeleteProductFee = (data: IProductFeesIds) => Thunk<void>;
+export type TDeleteProductFee = (data: IProductFeesIds) => IDeleteProductFeeAction;
+export type THandleDeleteProductFee = (data: IProductFeesIds) => Thunk<void>;
 
-export type GetProductRewards = (id: number) => GetProductRewardsAction;
-export type HandleGetProductRewards = () => Thunk<void>;
+export type TGetProductRewards = (id: number) => IGetProductRewardsAction;
+export type THandleGetProductRewards = () => Thunk<void>;
 
-export type AddProductReward = (data: Partial<IProductRewardData>) => AddProductRewardAction;
-export type HandleAddProductReward = (data: Partial<IProductRewardFormValues>) => Thunk<void>;
+export type TAddProductReward = (data: Partial<IProductRewardData>) => IAddProductRewardAction;
+export type THandleAddProductReward = (data: Partial<IProductRewardFormValues>) => Thunk<void>;
 
-export type UpdateProductReward = (data: Partial<IProductRewardData>) => UpdateProductRewardAction;
-export type HandleUpdateProductReward = (data: Partial<IProductReward>) => Thunk<void>;
+export type TUpdateProductReward = (data: Partial<IProductRewardData>) =>
+  IUpdateProductRewardAction;
+export type THandleUpdateProductReward = (data: Partial<IProductReward>) => Thunk<void>;
 
-export type DeleteProductReward = (data: IProductRewardsIds) => DeleteProductRewardAction;
-export type HandleDeleteProductReward = (data: IProductRewardsIds) => Thunk<void>;
+export type TDeleteProductReward = (data: IProductRewardsIds) => IDeleteProductRewardAction;
+export type THandleDeleteProductReward = (data: IProductRewardsIds) => Thunk<void>;
 
-export type GetProductFeeAprs = (id: number) => GetProductFeeAprsAction;
-export type HandleGetProductFeeAprs = () => Thunk<void>;
+export type TGetProductFeeAprs = (id: number) => IGetProductFeeAprsAction;
+export type THandleGetProductFeeAprs = () => Thunk<void>;
 
-export type HandleGetProductAprsFeesRewards = () => Thunk<void>;
+export type THandleGetProductAprsFeesRewards = () => Thunk<void>;
 
-export const getProductAprs: GetProductAprs = id => ({
+export const getProductAprs: TGetProductAprs = id => ({
   type: ActionTypeKeys.GET_PRODUCT_APRS,
   payload: api.getProductAprs(id),
 });
 
-export const addProductApr: AddProductApr = data => ({
+export const addProductApr: TAddProductApr = data => ({
   type: ActionTypeKeys.ADD_PRODUCT_APR,
   payload: api.addProductApr(data),
 });
 
-export const updateProductApr: UpdateProductApr = data => ({
+export const updateProductApr: TUpdateProductApr = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_APR,
   payload: api.updateProductApr(data),
 });
 
-export const deleteProductApr: DeleteProductApr = data => ({
+export const deleteProductApr: TDeleteProductApr = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_APR,
   payload: api.deleteProductApr(data),
   meta: { data },
 });
 
-export const getProductFees: GetProductFees = id => ({
+export const getProductFees: TGetProductFees = id => ({
   type: ActionTypeKeys.GET_PRODUCT_FEES,
   payload: api.getProductFees(id),
 });
 
-export const addProductFee: AddProductFee = data => ({
+export const addProductFee: TAddProductFee = data => ({
   type: ActionTypeKeys.ADD_PRODUCT_FEE,
   payload: api.addProductFee(data),
 });
 
-export const updateProductFee: UpdateProductFee = data => ({
+export const updateProductFee: TUpdateProductFee = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_FEE,
   payload: api.updateProductFee(data),
 });
 
-export const deleteProductFee: DeleteProductFee = data => ({
+export const deleteProductFee: TDeleteProductFee = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_FEE,
   payload: api.deleteProductFee(data),
   meta: { data },
 });
 
-export const getProductRewards: GetProductRewards = id => ({
+export const getProductRewards: TGetProductRewards = id => ({
   type: ActionTypeKeys.GET_PRODUCT_REWARDS,
   payload: api.getProductRewards(id),
 });
 
-export const addProductReward: AddProductReward = data => ({
+export const addProductReward: TAddProductReward = data => ({
   type: ActionTypeKeys.ADD_PRODUCT_REWARD,
   payload: api.addProductReward(data),
 });
 
-export const updateProductReward: UpdateProductReward = data => ({
+export const updateProductReward: TUpdateProductReward = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_REWARD,
   payload: api.updateProductReward(data),
 });
 
-export const deleteProductReward: DeleteProductReward = data => ({
+export const deleteProductReward: TDeleteProductReward = data => ({
   type: ActionTypeKeys.DELETE_PRODUCT_REWARD,
   payload: api.deleteProductReward(data),
   meta: { data },
 });
 
-export const getProductFeeAprs: GetProductFeeAprs = id => ({
+export const getProductFeeAprs: TGetProductFeeAprs = id => ({
   type: ActionTypeKeys.GET_PRODUCT_FEE_APR,
   payload: api.getProductFeeAprs(id),
 });
 
-export const handleGetProductAprs: HandleGetProductAprs = () =>
+export const handleGetProductAprs: THandleGetProductAprs = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -170,7 +171,7 @@ export const handleGetProductAprs: HandleGetProductAprs = () =>
     );
   };
 
-export const handleAddProductApr: HandleAddProductApr = data =>
+export const handleAddProductApr: THandleAddProductApr = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -189,7 +190,7 @@ export const handleAddProductApr: HandleAddProductApr = data =>
     );
   };
 
-export const handleUpdateProductApr: HandleUpdateProductApr = data =>
+export const handleUpdateProductApr: THandleUpdateProductApr = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -202,7 +203,7 @@ export const handleUpdateProductApr: HandleUpdateProductApr = data =>
     );
   };
 
-export const handleDeleteProductApr: HandleDeleteProductApr = data =>
+export const handleDeleteProductApr: THandleDeleteProductApr = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -212,7 +213,7 @@ export const handleDeleteProductApr: HandleDeleteProductApr = data =>
     );
   };
 
-export const handleGetProductFees: HandleGetProductFees = () =>
+export const handleGetProductFees: THandleGetProductFees = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -225,7 +226,7 @@ export const handleGetProductFees: HandleGetProductFees = () =>
     );
   };
 
-export const handleAddProductFee: HandleAddProductFee = data =>
+export const handleAddProductFee: THandleAddProductFee = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -244,7 +245,7 @@ export const handleAddProductFee: HandleAddProductFee = data =>
     );
   };
 
-export const handleUpdateProductFee: HandleUpdateProductFee = data =>
+export const handleUpdateProductFee: THandleUpdateProductFee = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -257,7 +258,7 @@ export const handleUpdateProductFee: HandleUpdateProductFee = data =>
     );
   };
 
-export const handleDeleteProductFee: HandleDeleteProductFee = data =>
+export const handleDeleteProductFee: THandleDeleteProductFee = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -267,7 +268,7 @@ export const handleDeleteProductFee: HandleDeleteProductFee = data =>
     );
   };
 
-export const handleGetProductRewards: HandleGetProductRewards = () =>
+export const handleGetProductRewards: THandleGetProductRewards = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -280,7 +281,7 @@ export const handleGetProductRewards: HandleGetProductRewards = () =>
     );
   };
 
-export const handleAddProductReward: HandleAddProductReward = data =>
+export const handleAddProductReward: THandleAddProductReward = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -299,7 +300,7 @@ export const handleAddProductReward: HandleAddProductReward = data =>
     );
   };
 
-export const handleUpdateProductReward: HandleUpdateProductReward = data =>
+export const handleUpdateProductReward: THandleUpdateProductReward = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -312,7 +313,7 @@ export const handleUpdateProductReward: HandleUpdateProductReward = data =>
     );
   };
 
-export const handleDeleteProductReward: HandleDeleteProductReward = data =>
+export const handleDeleteProductReward: THandleDeleteProductReward = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -322,7 +323,7 @@ export const handleDeleteProductReward: HandleDeleteProductReward = data =>
     );
   };
 
-export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = () =>
+export const handleGetProductAprsFeesRewards: THandleGetProductAprsFeesRewards = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -339,7 +340,7 @@ export const handleGetProductAprsFeesRewards: HandleGetProductAprsFeesRewards = 
     );
   };
 
-export const handleGetProductFeeAprs: HandleGetProductFeeAprs = () =>
+export const handleGetProductFeeAprs: THandleGetProductFeeAprs = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {

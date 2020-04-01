@@ -34,10 +34,10 @@ import {
   ProductItemResp,
 } from './types';
 import {
+  prepareDetailsToSend,
+  prepareFilterToSend,
   prepareGeneralProductDataToSend,
-  prepareNewProductDataToSend,
-  prepareProductDetailsDataToSend,
-  prepareProductFilterDataToSend,
+  prepareNewProductToSend,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -122,7 +122,7 @@ export const handleFilterProducts: HandleFilterProducts = () =>
       async () => {
         const formValues = getFormValues(formNamesConst.FILTER);
         const state = getState();
-        const preparedData = prepareProductFilterDataToSend(formValues(state));
+        const preparedData = prepareFilterToSend(formValues(state));
 
         if (preparedData) {
           await dispatch(filterProducts(preparedData));
@@ -187,7 +187,7 @@ export const handleAddProduct: HandleAddProduct = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedData = prepareNewProductDataToSend(data);
+        const preparedData = prepareNewProductToSend(data);
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
@@ -228,7 +228,7 @@ export const handleUpdateProductDetails: HandleUpdateProductDetails = data =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const preparedData = prepareProductDetailsDataToSend(
+        const preparedData = prepareDetailsToSend(
           data,
           selectCurrentProductType(state)
         );

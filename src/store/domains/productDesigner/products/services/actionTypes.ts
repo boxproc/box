@@ -1,67 +1,67 @@
-import { InstitutionProductServiceEndpoints, InstitutionProductServiceInterfaces } from './types';
+import { IProductServicesEndpoints, IProductServicesInterfaces } from './types';
 
 import { IResponseStatus, TApiResponse, } from 'types';
 
 export enum ActionTypeKeys {
-  GET_SERVICE_INTERFACES = 'products/GET_SERVICE_INTERFACES',
-  GET_SERVICE_INTERFACES_FULFILLED = 'products/GET_SERVICE_INTERFACES_FULFILLED',
-  GET_SERVICE_INTERFACES_REJECTED = 'products/GET_SERVICE_INTERFACES_REJECTED',
+  GET_SERVICES_INTERFACES = 'products/GET_SERVICES_INTERFACES',
+  GET_SERVICES_INTERFACES_FULFILLED = 'products/GET_SERVICES_INTERFACES_FULFILLED',
+  GET_SERVICES_INTERFACES_REJECTED = 'products/GET_SERVICES_INTERFACES_REJECTED',
 
-  GET_SERVICE_ENDPOINTS = 'products/GET_SERVICE_ENDPOINTS',
-  GET_SERVICE_ENDPOINTS_FULFILLED = 'products/GET_SERVICE_ENDPOINTS_FULFILLED',
-  GET_SERVICE_ENDPOINTS_REJECTED = 'products/GET_SERVICE_ENDPOINTS_REJECTED',
+  GET_SERVICES_ENDPOINTS = 'products/GET_SERVICES_ENDPOINTS',
+  GET_SERVICES_ENDPOINTS_FULFILLED = 'products/GET_SERVICES_ENDPOINTS_FULFILLED',
+  GET_SERVICES_ENDPOINTS_REJECTED = 'products/GET_SERVICES_ENDPOINTS_REJECTED',
 
-  UPDATE_CARD_SERVICES = 'products/UPDATE_CARD_SERVICES',
-  UPDATE_CARD_SERVICES_FULFILLED = 'products/UPDATE_CARD_SERVICES_FULFILLED',
-  UPDATE_CARD_SERVICES_REJECTED = 'products/UPDATE_CARD_SERVICES_REJECTED',
+  UPDATE_PRODUCT_SERVICES = 'products/UPDATE_PRODUCT_SERVICES',
+  UPDATE_PRODUCT_SERVICES_FULFILLED = 'products/UPDATE_PRODUCT_SERVICES_FULFILLED',
+  UPDATE_PRODUCT_SERVICES_REJECTED = 'products/UPDATE_PRODUCT_SERVICES_REJECTED',
 }
 
-export interface GetInterfacesProductServiceAction {
+export interface IGetServicesInterfacesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES;
+  readonly type: ActionTypeKeys.GET_SERVICES_INTERFACES;
 }
 
-export interface GetInterfacesProductServiceFulfilledAction {
-  readonly payload: InstitutionProductServiceInterfaces;
-  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES_FULFILLED;
+export interface IGetServicesInterfacesFulfilledAction {
+  readonly payload: IProductServicesInterfaces;
+  readonly type: ActionTypeKeys.GET_SERVICES_INTERFACES_FULFILLED;
 }
 
-export interface GetInterfacesProductServiceRejectedAction {
+export interface IGetServicesInterfacesRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_SERVICE_INTERFACES_REJECTED;
+  readonly type: ActionTypeKeys.GET_SERVICES_INTERFACES_REJECTED;
 }
 
-export interface GetEndpointsProductServiceAction {
+export interface IGetServicesEndpointsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS;
+  readonly type: ActionTypeKeys.GET_SERVICES_ENDPOINTS;
 }
 
-export interface GetEndpointsProductServiceFulfilledAction {
-  readonly payload: InstitutionProductServiceEndpoints;
-  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS_FULFILLED;
+export interface IGetServicesEndpointsFulfilledAction {
+  readonly payload: IProductServicesEndpoints;
+  readonly type: ActionTypeKeys.GET_SERVICES_ENDPOINTS_FULFILLED;
 }
 
-export interface GetEndpointsProductServiceRejectedAction {
+export interface IGetServicesEndpointsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_SERVICE_ENDPOINTS_REJECTED;
+  readonly type: ActionTypeKeys.GET_SERVICES_ENDPOINTS_REJECTED;
 }
 
-export interface UpdateCardServiceAction {
+export interface IUpdateProductServicesAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_SERVICES;
 }
 
-export interface UpdateCardServiceFulfilledAction {
+export interface IUpdateProductServicesFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_SERVICES_FULFILLED;
 }
 
-export interface UpdateCardServiceRejectedAction {
+export interface IUpdateProductServicesRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_CARD_SERVICES_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_SERVICES_REJECTED;
 }
 
 export type TProductServicesAction =
-  | GetEndpointsProductServiceFulfilledAction
-  | GetInterfacesProductServiceFulfilledAction
-  | UpdateCardServiceFulfilledAction;
+  | IGetServicesEndpointsFulfilledAction
+  | IGetServicesInterfacesFulfilledAction
+  | IUpdateProductServicesFulfilledAction;

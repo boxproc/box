@@ -4,17 +4,13 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-
 import { feeRewardsTypesConst, formNamesConst } from 'consts';
-
 import { ProductRewards, RewardsTable } from 'containers/ProductDesigner/Products/components';
-
-import { HandleAddProductReward } from 'store';
-
+import { THandleAddProductReward } from 'store';
 import { ISelectValue } from 'types';
 
 interface IRewardsForm {
-  addProductReward: HandleAddProductReward;
+  addProductReward: THandleAddProductReward;
   isLoading: boolean;
   rewardApplicationConditionValue: ISelectValue;
   onCancel: () => void;

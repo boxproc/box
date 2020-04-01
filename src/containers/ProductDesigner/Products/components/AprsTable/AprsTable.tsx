@@ -16,10 +16,10 @@ import {
 import { iconNamesConst } from 'consts';
 
 import {
-  HandleDeleteProductApr,
-  HandleGetProductAprs,
-  HandleUpdateProductApr,
   IProductApr,
+  THandleDeleteProductApr,
+  THandleGetProductAprs,
+  THandleUpdateProductApr,
 } from 'store';
 
 import { ITableCell } from 'types';
@@ -28,9 +28,9 @@ type TCell<T extends keyof IProductApr> = ITableCell<IProductApr[T]>;
 
 interface IAprsTable {
   productAprs: ImmutableArray<IProductApr>;
-  getProductAprs: HandleGetProductAprs;
-  deleteProductApr: HandleDeleteProductApr;
-  updateProductApr: HandleUpdateProductApr;
+  getProductAprs: THandleGetProductAprs;
+  deleteProductApr: THandleDeleteProductApr;
+  updateProductApr: THandleUpdateProductApr;
   isReadOnly: boolean;
   isLoading: boolean;
 }

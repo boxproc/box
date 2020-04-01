@@ -1,7 +1,7 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 // import { repaymentHierarchyMock } from './mock';
-import { ChangeRepaymentHierarchyRequest } from './types';
+import { IRepaymentHierarchyReqToSend } from './types';
 // import { throttleUtil } from 'utils';
 
 /**
@@ -16,6 +16,6 @@ export const getRepaymentHierarchy = (id: number) =>
 /**
  * Update repayment hierarchy API
  */
-export const updateRepaymentHierarchy = (data: ChangeRepaymentHierarchyRequest) =>
+export const updateRepaymentHierarchy = (data: IRepaymentHierarchyReqToSend) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('/ui/product_designer/products/hierarchy/update', { data });

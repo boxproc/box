@@ -1,10 +1,11 @@
 import { createSelector } from 'reselect';
 
 import { actionTypesConst, actionTypesOptions, yesNoConst } from 'consts';
-
+import { createLoadingSelector } from 'store/domains/loader';
 import { selectDefaultCurrentProduct } from '../products';
+import { ActionTypeKeys } from './actionTypes';
 
-export const selectProductAuxCounters = createSelector(
+export const productAuxCountersSelector = createSelector(
   selectDefaultCurrentProduct,
   current => {
 
@@ -32,8 +33,8 @@ export const selectProductAuxCounters = createSelector(
   }
 );
 
-export const selectActionTypesOptions = createSelector(
-  selectProductAuxCounters,
+export const actionTypesOptionsSelector = createSelector(
+  productAuxCountersSelector,
   auxCounters => {
     const set = new Set() as any;
 
@@ -65,3 +66,7 @@ export const selectActionTypesOptions = createSelector(
     return [...set];
   }
 );
+
+export const isProductAuxCountersUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_PRODUCT_AUX_COUNTERS,
+]);

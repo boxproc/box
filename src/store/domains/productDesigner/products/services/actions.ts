@@ -2,73 +2,90 @@ import { activeItemIdSelector } from 'store/domains/utils';
 import { getProduct } from './../products';
 import {
   ActionTypeKeys,
-  GetEndpointsProductServiceAction,
-  GetInterfacesProductServiceAction,
-  UpdateCardServiceAction,
+  IGetServicesEndpointsAction,
+  IGetServicesInterfacesAction,
+  IUpdateProductServicesAction,
 } from './actionTypes';
 import * as api from './api';
-import { ServicesItems, ServicesItemsPrepared } from './types';
-import { prepareCardServiceDataToSend } from './utils';
+import { IProductServices, IProductServicesData } from './types';
+import { prepareDataToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type GetInterfacesService = (institutionId: number) => GetInterfacesProductServiceAction;
-export type GetEndpointsService = (institutionId: number) => GetEndpointsProductServiceAction;
+/**
+ * Get product services interfaces action
+ */
 
-export type HandleGetInterfacesService = (institutionId: number) => Thunk<void>;
-export type HandleGetProductServices = (institutionId: number) => Thunk<void>;
+export type TGetServicesInterfaces = (instId: number) => IGetServicesInterfacesAction;
+export type THandleGetServicesInterfaces = (instId: number) => Thunk<void>;
 
-export type UpdateCardService = (data: ServicesItems) => UpdateCardServiceAction;
-export type HandleUpdateCardService = (data: Partial<ServicesItemsPrepared>) => Thunk<void>;
-
-export const getEndpointsService: GetEndpointsService = institutionId => ({
-  type: ActionTypeKeys.GET_SERVICE_ENDPOINTS,
-  payload: api.getEndpointsService(institutionId),
+export const getServicesInterfaces: TGetServicesInterfaces = instId => ({
+  type: ActionTypeKeys.GET_SERVICES_INTERFACES,
+  payload: api.getServicesInterfaces(instId),
 });
 
-export const getInterfacesService: GetInterfacesService = institutionId => ({
-  type: ActionTypeKeys.GET_SERVICE_INTERFACES,
-  payload: api.getInterfacesService(institutionId),
-});
-
-export const updateCardServices: UpdateCardService = data => ({
-  type: ActionTypeKeys.UPDATE_CARD_SERVICES,
-  payload: api.updateCardServices(data),
-});
-
-export const handleGetInterfacesService: HandleGetInterfacesService = institutionId =>
+export const handleGetServicesInterfaces: THandleGetServicesInterfaces = instId =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getInterfacesService(institutionId));
+        await dispatch(getServicesInterfaces(instId));
       },
       dispatch
     );
   };
 
-export const handleGetProductServices: HandleGetProductServices = institutionId =>
+/**
+ * Get product services interfaces action
+ */
+
+export type TGetServicesEndpoints = (instId: number) => IGetServicesEndpointsAction;
+
+export const getServicesEndpoints: TGetServicesEndpoints = instId => ({
+  type: ActionTypeKeys.GET_SERVICES_ENDPOINTS,
+  payload: api.getServicesEndpoints(instId),
+});
+
+/**
+ * Get product services action
+ */
+
+export type THandleGetProductServices = (instId: number) => Thunk<void>;
+
+export const handleGetProductServices: THandleGetProductServices = instId =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await Promise.all([
-          dispatch(getInterfacesService(institutionId)),
-          dispatch(getEndpointsService(institutionId)),
+          dispatch(getServicesInterfaces(instId)),
+          dispatch(getServicesEndpoints(instId)),
         ]);
       },
       dispatch
     );
   };
 
-export const handleUpdateCardService: HandleUpdateCardService = data =>
+/**
+ * Update product services interfaces action
+ */
+
+export type TUpdateProductServices = (data: IProductServicesData) => IUpdateProductServicesAction;
+export type THandleUpdateProductServices = (data: Partial<IProductServices>) => Thunk<void>;
+
+export const updateProductServices: TUpdateProductServices = data => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_SERVICES,
+  payload: api.updateProductServices(data),
+});
+
+export const handleUpdateProductServices: THandleUpdateProductServices = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedData = prepareCardServiceDataToSend(data);
+        const preparedData = prepareDataToSend(data);
         const state = getState();
         const id = activeItemIdSelector(state);
 
-        await dispatch(updateCardServices(preparedData));
+        await dispatch(updateProductServices(preparedData));
         await dispatch(getProduct(id));
       },
       dispatch

@@ -5,17 +5,14 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { OkCancelButtons } from 'components';
 
 import { actionTypesConst, eventTypesCodeKeys, formNamesConst } from 'consts';
-
 import { ProductRules } from 'containers/ProductDesigner/Products/components';
-
-import { HandleGetProductRule, HandleUpdateProductRules } from 'store';
-
+import { THandleGetProductRule, THandleUpdateProductRule } from 'store';
 import { ISelectValue } from 'types';
 
 interface IRulesForm {
   onCancel?: () => void;
-  getProductRule: HandleGetProductRule;
-  updateProductRules: HandleUpdateProductRules;
+  getProductRule: THandleGetProductRule;
+  updateProductRule: THandleUpdateProductRule;
   isReadOnly: boolean;
   actionTypesOptions: Array<ISelectValue>;
   initialActionType: string | number;
@@ -33,7 +30,7 @@ const RulesForm: React.FC<TRulesForm> = ({
   handleSubmit,
   onCancel,
   getProductRule,
-  updateProductRules,
+  updateProductRule,
   dirty,
   pristine,
   rulesValues,
@@ -129,8 +126,8 @@ const RulesForm: React.FC<TRulesForm> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(updateProductRules),
-    [handleSubmit, updateProductRules]
+    handleSubmit(updateProductRule),
+    [handleSubmit, updateProductRule]
   );
 
   return (

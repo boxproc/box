@@ -1,16 +1,18 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
+import { createLoadingSelector } from 'store/domains/loader';
 import { selectDefaultCurrentProduct } from '../products';
+import { ActionTypeKeys } from './actionTypes';
 
-export const selectDefaultInterfaces = (state: IStoreState) =>
+export const defaultServicesInterfacesSelector = (state: IStoreState) =>
   state.productDesigner.productServices.interfaces;
 
-export const selectDefaultEndpoints = (state: IStoreState) =>
+export const defaultServicesEndpointsSelector = (state: IStoreState) =>
   state.productDesigner.productServices.endpoints;
 
-export const selectProductCardInterfacesService = createSelector(
-  selectDefaultInterfaces,
+export const servicesInterfacesOptionsSelector = createSelector(
+  defaultServicesInterfacesSelector,
   data => data && data.asMutable().map(el => {
     return {
       value: el.id ? el.id : 0,
@@ -19,8 +21,8 @@ export const selectProductCardInterfacesService = createSelector(
   })
 );
 
-export const selectProductCardEndpointsService = createSelector(
-  selectDefaultEndpoints,
+export const servicesEndpointsOptionsSelector = createSelector(
+  defaultServicesEndpointsSelector,
   data => data && data.asMutable().map(el => {
     return {
       value: el.id ? el.id : 0,
@@ -29,10 +31,10 @@ export const selectProductCardEndpointsService = createSelector(
   })
 );
 
-export const selectProductServices = createSelector(
+export const productServicesSelector = createSelector(
   selectDefaultCurrentProduct,
-  selectProductCardInterfacesService,
-  selectProductCardEndpointsService,
+  servicesInterfacesOptionsSelector,
+  servicesEndpointsOptionsSelector,
   (current, interfacesOptions, endpointsOptions) => {
     if (!current) {
       return null;
@@ -66,3 +68,19 @@ export const selectProductServices = createSelector(
     };
   }
 );
+
+/**
+ * Product services loading selectors
+ */
+
+export const isServiceInterfacesLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SERVICES_INTERFACES,
+]);
+
+export const isServiceEndpointsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_SERVICES_ENDPOINTS,
+]);
+
+export const isProductServiceUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_PRODUCT_SERVICES,
+]);

@@ -7,31 +7,25 @@ import ProductRulesForm from './ProductRulesForm';
 import { formNamesConst } from 'consts';
 
 import {
-  createLoadingSelector,
+  actionTypesOptionsSelector,
+  currentProductRuleSelector,
+  currentProductScriptSelector,
   handleGetProductRule,
-  handleUpdateProductRules,
+  handleUpdateProductRule,
+  isProductRuleLoadingSelector,
   IStoreState,
-  ProductRulesActionTypes,
-  selectActionTypesOptions,
-  selectCurrentProductRule,
-  selectCurrentProductScript,
   selectCurrentProductType,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  ProductRulesActionTypes.GET_PRODUCT_RULE,
-  ProductRulesActionTypes.UPDATE_PRODUCT_RULES,
-]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  currentProductScript: selectCurrentProductScript(state),
-  actionTypesOptions: selectActionTypesOptions(state),
+  isLoading: isProductRuleLoadingSelector(state),
+  currentProductScript: currentProductScriptSelector(state),
+  actionTypesOptions: actionTypesOptionsSelector(state),
   currentProductType: selectCurrentProductType(state),
   initialValues: {
-    ...selectCurrentProductRule(state),
+    ...currentProductRuleSelector(state),
     ...formSelector(
       state,
       'eventId',
@@ -48,7 +42,7 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getProductRule: handleGetProductRule,
-    updateProductRules: handleUpdateProductRules,
+    updateProductRule: handleUpdateProductRule,
   },
   dispatch
 );

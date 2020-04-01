@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux-seamless-immutable';
 
 import productAprsFeesRewardsReducer from './products/aprsFeesRewards/reducer';
-import productAuxCountersReducer from './products/auxCounters/reducer';
 import productIllustrationReducer from './products/illustration/reducer';
 import productsReducer from './products/products/reducer';
 import repaymentHierarchyReducer from './products/repaymentHierarchy/reducer';
@@ -11,7 +10,6 @@ import productServicesReducer from './products/services/reducer';
 const productDesignerReducer = combineReducers({
   products: productsReducer,
   productRules: productRulesReducer,
-  productAuxCounters: productAuxCountersReducer,
   productServices: productServicesReducer,
   productIllustration: productIllustrationReducer,
   productAprsFeesRewards: productAprsFeesRewardsReducer,

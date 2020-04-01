@@ -11,14 +11,14 @@ import {
   RepaymentDirectDebitsForm,
 } from './../../forms';
 
-import { HandleGetInterfacesService } from 'store';
+import { THandleGetServicesInterfaces } from 'store';
 import { ISelectValue } from 'types';
 
 interface IEditCustomerModal extends IWithModal {
   isFormDirty: boolean;
   currentCustomerName: string;
   currentCustomerInstitutionId: number;
-  getInterfaces: HandleGetInterfacesService;
+  getInterfaces: THandleGetServicesInterfaces;
   interfacesOptions: Array<ISelectValue>;
   isInterfacesLoading: boolean;
 }

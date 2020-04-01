@@ -1,9 +1,9 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
 import { ActionTypeKeys, TProductRulesAction } from './actionTypes';
-import { ProductRulesState } from './types';
+import { IProductRulesState } from './types';
 
-export const productRulesInitialState: ImmutableObject<ProductRulesState> = Immutable({
+export const productRulesInitialState: ImmutableObject<IProductRulesState> = Immutable({
   currentProductRule: null,
 });
 

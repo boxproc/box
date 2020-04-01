@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-export interface RepaymentHierarchyItem {
+export interface IRepaymentHierarchyItemData {
   id: number;
   repayment_priority: number;
   element_identifier: string;
@@ -10,7 +10,7 @@ export interface RepaymentHierarchyItem {
   description: string;
 }
 
-export interface RepaymentHierarchy {
+export interface IRepaymentHierarchy {
   id: number;
   repaymentPriority: number;
   elementIdentifier: string;
@@ -20,22 +20,22 @@ export interface RepaymentHierarchy {
   description: string;
 }
 
-export interface RepaymentHierarchyItems {
-  repayment_hierarchy: Array<RepaymentHierarchyItem>;
+export interface IRepaymentHierarchyItemsData {
+  repayment_hierarchy: Array<IRepaymentHierarchyItemData>;
 }
 
-export interface ChangeRepaymentHierarchy {
+export interface IRepaymentHierarchyReq {
   id: number;
   productId: number;
   repaymentPriority: number;
 }
 
-export interface ChangeRepaymentHierarchyRequest {
+export interface IRepaymentHierarchyReqToSend {
   id: number;
   product_id: number;
   repayment_priority: number;
 }
 
-export interface RepaymentHierarchyState {
-  repaymentHierarchy: ImmutableArray<RepaymentHierarchyItem>;
+export interface IRepaymentHierarchyState {
+  repaymentHierarchy: ImmutableArray<IRepaymentHierarchyItemData>;
 }

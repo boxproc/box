@@ -1,6 +1,6 @@
-import { RepaymentHierarchyItems } from './types';
+import { IRepaymentHierarchyItemsData } from './types';
 
-export const repaymentHierarchyMock: RepaymentHierarchyItems = {
+export const repaymentHierarchyMock: IRepaymentHierarchyItemsData = {
   repayment_hierarchy: [
     {
       id: 1,

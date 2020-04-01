@@ -5,16 +5,16 @@ import RulesForm from './RulesForm';
 
 import { actionTypesConst, eventTypesCodeKeys, productTypesConst } from 'consts';
 
-import { HandleGetProductRule, HandleUpdateProductRules, ProductRulesItem } from 'store';
+import { IProductRule, THandleGetProductRule, THandleUpdateProductRule } from 'store';
 
 import { ISelectValue } from 'types';
 
 interface IProductRulesForm {
   onCancel?: () => void;
-  getProductRule: HandleGetProductRule;
-  updateProductRules: HandleUpdateProductRules;
+  getProductRule: THandleGetProductRule;
+  updateProductRule: THandleUpdateProductRule;
   currentProductScript: string;
-  initialValues: ProductRulesItem;
+  initialValues: IProductRule;
   isLoading: boolean;
   isReadOnly: boolean;
   actionTypesOptions: Array<ISelectValue>;
@@ -28,7 +28,7 @@ interface IProductRulesForm {
 const ProductRulesForm: React.FC<IProductRulesForm> = ({
   onCancel,
   getProductRule,
-  updateProductRules,
+  updateProductRule,
   rulesValues,
   initialValues,
   isLoading,
@@ -83,7 +83,7 @@ const ProductRulesForm: React.FC<IProductRulesForm> = ({
       isLoading={isLoading}
       onCancel={onCancel}
       getProductRule={getProductRule}
-      updateProductRules={updateProductRules}
+      updateProductRule={updateProductRule}
       rulesValues={rulesValues}
       actionTypesOptions={actionTypesOptions}
       isRevolvingCredit={isRevolvingCredit}

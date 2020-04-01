@@ -224,7 +224,7 @@ export interface InstitutionProducts {
   institution_products: Array<InstitutionProductsItem>;
 }
 
-export interface ProductsState {
+export interface IProductsState {
   products: ImmutableArray<ProductItemResp>;
   currentProduct: ProductItemResp;
   currentProductDetails: ProductItemDetailsResp;

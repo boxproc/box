@@ -4,15 +4,12 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-
 import { formNamesConst } from 'consts';
-
 import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
-
-import { HandleAddProductApr } from 'store';
+import { THandleAddProductApr } from 'store';
 
 interface IAprsForm {
-  addProductApr: HandleAddProductApr;
+  addProductApr: THandleAddProductApr;
   isLoading: boolean;
   onCancel: () => void;
   isReadOnly: boolean;

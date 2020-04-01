@@ -3,18 +3,18 @@ import { apiClientService } from 'services';
 // import { productRulesMock } from './mock';
 // import { throttleUtil } from 'utils';
 
-import { ProductRuleRequestPrepared, ProductRulesItemResp } from './types';
+import { IProductRuleData, IProductRuleReqToSend } from './types';
 
 /**
  * Get product rule API
  */
-export const getProductRule = (data: ProductRuleRequestPrepared) =>
+export const getProductRule = (data: IProductRuleReqToSend) =>
   // throttleUtil.getDataAfter(productRulesMock, 500);
   apiClientService.post('ui/product_designer/products/rules/get', { data });
 
 /**
- * Update product rules API
+ * Update product rule API
  */
-export const updateProductRules = (data: ProductRulesItemResp) =>
+export const updateProductRule = (data: IProductRuleData) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/product_designer/products/rules/update', { data });

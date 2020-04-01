@@ -17,5 +17,3 @@ export interface IProductAuxCounters {
   auxCounter2Enabled: boolean;
   auxCounter3Enabled: boolean;
 }
-
-export interface IProductAuxCountersState { }

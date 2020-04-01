@@ -4,26 +4,18 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RepaymentHierarchyTable from './RepaymentHierarchyTable';
 
 import {
-  createLoadingSelector,
   handleGetRepaymentHierarchy,
   handleUpdateRepaymentHierarchy,
+  isRepaymentHierarchyLoadingSelector,
+  isRepaymentHierarchyUpdatingSelector,
   IStoreState,
-  RepaymentHierarchyActionTypes,
-  selectRepaymentHierarchy,
+  repaymentHierarchySelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  RepaymentHierarchyActionTypes.GET_REPAYMENT_HIERARCHY,
-]);
-
-const loadingSelectorUpdate = createLoadingSelector([
-  RepaymentHierarchyActionTypes.UPDATE_REPAYMENT_HIERARCHY,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  isUpdating: loadingSelectorUpdate(state),
-  data: selectRepaymentHierarchy(state),
+  isLoading: isRepaymentHierarchyLoadingSelector(state),
+  isUpdating: isRepaymentHierarchyUpdatingSelector(state),
+  data: repaymentHierarchySelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

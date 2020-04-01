@@ -7,32 +7,27 @@ import { formNamesConst } from 'consts';
 import EditCustomerModal from './EditCustomerModal';
 
 import {
-  createLoadingSelector,
   currentCustomerInstIdSelector,
   currentCustomerNameSelector,
-  handleGetInterfacesService,
+  handleGetServicesInterfaces,
+  isServiceInterfacesLoadingSelector,
   IStoreState,
-  ProductServicesActionTypes,
-  selectProductCardInterfacesService,
+  servicesInterfacesOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.CUSTOMER);
 
-const loadingSelectorInterfaces = createLoadingSelector([
-  ProductServicesActionTypes.GET_SERVICE_INTERFACES,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
-  isInterfacesLoading: loadingSelectorInterfaces(state),
+  isInterfacesLoading: isServiceInterfacesLoadingSelector(state),
   currentCustomerName: currentCustomerNameSelector(state),
   currentCustomerInstitutionId: currentCustomerInstIdSelector(state),
-  interfacesOptions: selectProductCardInterfacesService(state),
+  interfacesOptions: servicesInterfacesOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getInterfaces: handleGetInterfacesService,
+    getInterfaces: handleGetServicesInterfaces,
   },
   dispatch
 );

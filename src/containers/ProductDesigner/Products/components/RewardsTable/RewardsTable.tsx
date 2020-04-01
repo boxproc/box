@@ -16,10 +16,10 @@ import {
 import { feeRewardsTypesConst, iconNamesConst } from 'consts';
 
 import {
-  HandleDeleteProductReward,
-  HandleGetProductRewards,
-  HandleUpdateProductReward,
   IProductReward,
+  THandleDeleteProductReward,
+  THandleGetProductRewards,
+  THandleUpdateProductReward,
 } from 'store';
 
 import { ITableCell } from 'types';
@@ -28,9 +28,9 @@ type TCell<T extends keyof IProductReward> = ITableCell<IProductReward[T]>;
 
 interface IRewardsTable {
   productRewards: ImmutableArray<IProductReward>;
-  getProductRewards: HandleGetProductRewards;
-  deleteProductReward: HandleDeleteProductReward;
-  updateProductReward: HandleUpdateProductReward;
+  getProductRewards: THandleGetProductRewards;
+  deleteProductReward: THandleDeleteProductReward;
+  updateProductReward: THandleUpdateProductReward;
   isReadOnly: boolean;
   isLoading: boolean;
 }

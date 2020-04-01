@@ -1,7 +1,7 @@
 import { yesNoConst } from 'consts';
 import { IProductAuxCounters } from './types';
 
-export const prepareAuxCountersToSend = (data: Partial<IProductAuxCounters>) => {
+export const prepareDataToSend = (data: Partial<IProductAuxCounters>) => {
   if (!data) {
     return null;
   }

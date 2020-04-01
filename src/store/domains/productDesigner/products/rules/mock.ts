@@ -1,6 +1,6 @@
-import { ProductRuleResp } from './types';
+import { IProductRuleResp } from './types';
 
-export const productRulesMock: ProductRuleResp = {
+export const productRulesMock: IProductRuleResp = {
   product_rule: {
     event_id: 3,
     action_type: 'X',

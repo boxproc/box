@@ -3,16 +3,13 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst } from 'consts';
-
 import { GeneralLedger } from 'containers/ProductDesigner/Products/components';
-
-import { HandleUpdateProductGL } from 'store';
+import { THandleUpdateProductGL } from 'store';
 
 interface IGeneralLedgerFrom extends ISpinner {
   currentProductId: number;
-  updateGeneralLedger: HandleUpdateProductGL;
+  updateGeneralLedger: THandleUpdateProductGL;
   onCancel?: () => void;
   isReadOnly: boolean;
 }

@@ -5,20 +5,15 @@ import GeneralLedgerFrom from './GeneralLedgerFrom';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
   handleUpdateProductGL,
+  isProductGLUpdatingSelector,
   IStoreState,
-  ProductGLActionTypes,
-  selectProductGL,
+  productGLSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductGLActionTypes.UPDATE_GENERAL_LEDGER,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  initialValues: selectProductGL(state),
+  isLoading: isProductGLUpdatingSelector(state),
+  initialValues: productGLSelector(state),
   currentProductId: activeItemIdSelector(state),
 });
 

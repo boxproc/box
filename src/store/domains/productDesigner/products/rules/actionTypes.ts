@@ -1,4 +1,4 @@
-import { ProductRuleResp } from './types';
+import { IProductRuleResp } from './types';
 
 import { IResponseStatus, TApiResponse, } from 'types';
 
@@ -7,41 +7,41 @@ export enum ActionTypeKeys {
   GET_PRODUCT_RULE_FULFILLED = 'products/GET_PRODUCT_RULE_FULFILLED',
   GET_PRODUCT_RULE_REJECTED = 'products/GET_PRODUCT_RULE_REJECTED',
 
-  UPDATE_PRODUCT_RULES = 'products/UPDATE_PRODUCT_RULES',
-  UPDATE_PRODUCT_RULES_FULFILLED = 'products/UPDATE_PRODUCT_RULES_FULFILLED',
-  UPDATE_PRODUCT_RULES_REJECTED = 'products/UPDATE_PRODUCT_RULES_REJECTED',
+  UPDATE_PRODUCT_RULE = 'products/UPDATE_PRODUCT_RULE',
+  UPDATE_PRODUCT_RULE_FULFILLED = 'products/UPDATE_PRODUCT_RULE_FULFILLED',
+  UPDATE_PRODUCT_RULE_REJECTED = 'products/UPDATE_PRODUCT_RULE_REJECTED',
 }
 
-export interface GetProductRuleAction {
+export interface IGetProductRuleAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_RULE;
 }
 
-export interface GetProductRuleFulfilledAction {
-  readonly payload: ProductRuleResp;
+export interface IGetProductRuleFulfilledAction {
+  readonly payload: IProductRuleResp;
   readonly type: ActionTypeKeys.GET_PRODUCT_RULE_FULFILLED;
 }
 
-export interface GetProductRuleRejectedAction {
+export interface IGetProductRuleRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_RULE_REJECTED;
 }
 
-export interface UpdateProductRulesAction {
+export interface IUpdateProductRuleAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULE;
 }
 
-export interface UpdateProductRulesFulfilledAction {
+export interface IUpdateProductRuleFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_FULFILLED;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULE_FULFILLED;
 }
 
-export interface UpdateProductRulesRejectedAction {
+export interface IUpdateProductRuleRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULES_REJECTED;
+  readonly type: ActionTypeKeys.UPDATE_PRODUCT_RULE_REJECTED;
 }
 
 export type TProductRulesAction =
-  | GetProductRuleFulfilledAction
-  | UpdateProductRulesFulfilledAction;
+  | IGetProductRuleFulfilledAction
+  | IUpdateProductRuleFulfilledAction;

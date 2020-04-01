@@ -1,9 +1,15 @@
 import { createSelector } from 'reselect';
 
+import { createLoadingSelector } from 'store/domains/loader';
 import { selectDefaultCurrentProduct } from '../products';
-import { prepareProductGLToRender } from './utils';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender } from './utils';
 
-export const selectProductGL = createSelector(
+export const productGLSelector = createSelector(
   selectDefaultCurrentProduct,
-  current => prepareProductGLToRender(current)
+  data => prepareDataToRender(data)
 );
+
+export const isProductGLUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_GENERAL_LEDGER,
+]);

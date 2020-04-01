@@ -1,6 +1,6 @@
 import { IProductGL, IProductGLData } from './types';
 
-export const prepareProductGLToRender = (data: Partial<IProductGLData>) => {
+export const prepareDataToRender = (data: Partial<IProductGLData>) => {
   if (!data) {
     return null;
   }
@@ -20,7 +20,7 @@ export const prepareProductGLToRender = (data: Partial<IProductGLData>) => {
   };
 };
 
-export const prepareProductGLToSend = (data: Partial<IProductGL>) => {
+export const prepareDataToSend = (data: Partial<IProductGL>) => {
   if (!data) {
     return null;
   }

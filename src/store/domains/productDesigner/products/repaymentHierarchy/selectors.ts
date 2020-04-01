@@ -2,12 +2,26 @@ import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
 
-import { prepareRepaymentHierarchyToRender } from './utils';
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
+import { prepareDataToRender } from './utils';
 
-export const selectDefaultRepaymentHierarchy = (state: IStoreState) =>
+export const defaultRepaymentHierarchySelector = (state: IStoreState) =>
   state.productDesigner.repaymentHierarchy.repaymentHierarchy;
 
-export const selectRepaymentHierarchy = createSelector(
-  selectDefaultRepaymentHierarchy,
-  items => items && items.map(item => prepareRepaymentHierarchyToRender(item))
+export const repaymentHierarchySelector = createSelector(
+  defaultRepaymentHierarchySelector,
+  data => data && data.map(el => prepareDataToRender(el))
 );
+
+/**
+ * Repayment hierarchy loading selectors
+ */
+
+export const isRepaymentHierarchyLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_REPAYMENT_HIERARCHY,
+]);
+
+export const isRepaymentHierarchyUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY,
+]);

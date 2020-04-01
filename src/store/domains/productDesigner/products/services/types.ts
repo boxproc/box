@@ -1,16 +1,7 @@
 import { ImmutableArray } from 'seamless-immutable';
-
 import { IIdNamePair, ISelectValue } from 'types';
 
-export interface InstitutionProductServiceInterfaces {
-  interfaces: Array<IIdNamePair>;
-}
-
-export interface InstitutionProductServiceEndpoints {
-  endpoints: Array<IIdNamePair>;
-}
-
-export interface ServicesItems {
+export interface IProductServicesData {
   id: number;
   card_transactions_endpoint_id: string | number;
   card_management_interface_id: string | number;
@@ -19,7 +10,7 @@ export interface ServicesItems {
   card_repayment_interface_id: string | number;
 }
 
-export interface ServicesItemsPrepared {
+export interface IProductServices {
   id: number;
   endpoints: ISelectValue;
   interfaces: ISelectValue;
@@ -28,7 +19,15 @@ export interface ServicesItemsPrepared {
   cardRepaymentInterface: ISelectValue;
 }
 
-export interface ProductServicesState {
+export interface IProductServicesInterfaces {
+  interfaces: Array<IIdNamePair>;
+}
+
+export interface IProductServicesEndpoints {
+  endpoints: Array<IIdNamePair>;
+}
+
+export interface IProductServicesState {
   interfaces: ImmutableArray<IIdNamePair>;
   endpoints: ImmutableArray<IIdNamePair>;
 }

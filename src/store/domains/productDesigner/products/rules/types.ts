@@ -1,35 +1,29 @@
 import { ISelectValue } from 'types';
 
-export interface ProductRulesItemResp {
+export interface IProductRuleData {
   event_id: string | number;
   action_type: string | number;
   script: string;
   product_id: number;
 }
 
-export interface ProductRuleResp {
-  product_rule: ProductRulesItemResp;
+export interface IProductRuleResp {
+  product_rule: IProductRuleData;
 }
 
-export interface ProductRulesItem {
+export interface IProductRule {
   eventId: ISelectValue;
   actionType: ISelectValue;
   script: string;
   productId: number;
 }
 
-export interface ProductRuleRequest {
-  productId: number;
-  eventId?: number | string;
-  actionType?: number | string;
-}
-
-export interface ProductRuleRequestPrepared {
+export interface IProductRuleReqToSend {
   product_id: number;
   event_id?: number | string;
   action_type?: number | string;
 }
 
-export interface ProductRulesState {
-  currentProductRule: ProductRulesItemResp;
+export interface IProductRulesState {
+  currentProductRule: IProductRuleData;
 }

@@ -16,11 +16,11 @@ import {
 import { feeRewardsTypesConst, iconNamesConst } from 'consts';
 
 import {
-  HandleDeleteProductFee,
-  HandleGetProductFeeAprs,
-  HandleGetProductFees,
-  HandleUpdateProductFee,
   IProductFee,
+  THandleDeleteProductFee,
+  THandleGetProductFeeAprs,
+  THandleGetProductFees,
+  THandleUpdateProductFee,
 } from 'store';
 
 import { ISelectValue, ITableCell } from 'types';
@@ -30,10 +30,10 @@ type TCell<T extends keyof IProductFee> = ITableCell<IProductFee[T]>;
 interface IFeesTable {
   productFees: ImmutableArray<IProductFee>;
   aprsOptions: Array<ISelectValue>;
-  getProductFeeApr: HandleGetProductFeeAprs;
-  getProductFees: HandleGetProductFees;
-  deleteProductFee: HandleDeleteProductFee;
-  updateProductFee: HandleUpdateProductFee;
+  getProductFeeApr: THandleGetProductFeeAprs;
+  getProductFees: THandleGetProductFees;
+  deleteProductFee: THandleDeleteProductFee;
+  updateProductFee: THandleUpdateProductFee;
   isReadOnly: boolean;
   isLoading: boolean;
 }

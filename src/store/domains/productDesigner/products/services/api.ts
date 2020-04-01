@@ -1,19 +1,18 @@
 import { apiClientService } from 'services';
-
-import { ServicesItems } from './types';
+import { IProductServicesData } from './types';
 
 /**
- * Get product endpoints API
+ * Get product services endpoints API
  */
-export const getEndpointsService = (institutionId: number) =>
+export const getServicesEndpoints = (institutionId: number) =>
   apiClientService.post('ui/product_designer/products/services/get/endpoints', {
     data: { institution_id: institutionId },
   });
 
 /**
- * Get product interfaces API
+ * Get product services interfaces API
  */
-export const getInterfacesService = (institutionId: number) =>
+export const getServicesInterfaces = (institutionId: number) =>
   apiClientService.post('ui/product_designer/products/services/get/interfaces', {
     data: { institution_id: institutionId },
   });
@@ -21,5 +20,5 @@ export const getInterfacesService = (institutionId: number) =>
 /**
  * Update product services API
  */
-export const updateCardServices = (data: Partial<ServicesItems>) =>
+export const updateProductServices = (data: Partial<IProductServicesData>) =>
   apiClientService.post('ui/product_designer/products/services/update', { data });

@@ -30,7 +30,7 @@ import {
 
 import { stringsUtil } from 'utils';
 
-export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilterPrepared => {
+export const prepareFilterToSend = (data: ProductFilter): ProductFilterPrepared => {
   const { activeStatusFlag, institutionId, productType } = data;
 
   return {
@@ -40,7 +40,7 @@ export const prepareProductFilterDataToSend = (data: ProductFilter): ProductFilt
   };
 };
 
-export const prepareGeneralProductItem = (
+export const prepareGeneralProductToRender = (
   item: ProductItemResp,
   institutionName?: string
 ) => {
@@ -66,24 +66,25 @@ export const prepareGeneralProductItem = (
   };
 };
 
-export const prepareProductDetailsData = (product: any, productType: string | number) => {
+export const prepareDetailsToRender = (product: any, productType: string | number) => {
   if (productType === productTypesConst.DEBIT) {
-    return prepareDebit(product);
+    return prepareDebitToRender(product);
   } else if (productType === productTypesConst.LOAN) {
-    return prepareLoan(product);
+    return prepareLoanToRender(product);
   } else if (productType === productTypesConst.PREPAID) {
-    return preparePrepaid(product);
+    return preparePrepaidToRender(product);
   } else if (productType === productTypesConst.REVOLVING_CREDIT) {
-    return prepareRevolvingCredit(product);
+    return prepareRevolvingCreditToRender(product);
   } else if (productType === productTypesConst.SAVINGS) {
-    return prepareSavings(product);
+    return prepareSavingsToRender(product);
   } else {
     return null;
   }
 };
 
-export const prepareGeneralProductData = (data: ProductItemResp):
+export const prepareCurrGeneralProductToRender = (data: ProductItemResp):
   Partial<ProductItemGeneral> => {
+
   if (!data) {
     return null;
   }
@@ -165,7 +166,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
   };
 };
 
-export const prepareRevolvingCredit = (data: RevolvingCreditProductItemResp) => {
+export const prepareRevolvingCreditToRender = (data: RevolvingCreditProductItemResp) => {
   if (!data) {
     return null;
   }
@@ -210,7 +211,7 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
   };
 };
 
-export const prepareSavings = (data: SavingsProductItemResp) => {
+export const prepareSavingsToRender = (data: SavingsProductItemResp) => {
   if (!data) {
     return null;
   }
@@ -258,7 +259,7 @@ export const prepareSavingsToSend = (data: SavingsProductItem) => {
   };
 };
 
-export const preparePrepaid = (data: PrepaidProductItemResp) => {
+export const preparePrepaidToRender = (data: PrepaidProductItemResp) => {
   if (!data) {
     return null;
   }
@@ -298,7 +299,7 @@ export const preparePrepaidToSend = (data: PrepaidProductItem) => {
   };
 };
 
-export const prepareLoan = (data: LoanProductItemResp) => {
+export const prepareLoanToRender = (data: LoanProductItemResp) => {
   if (!data) {
     return null;
   }
@@ -342,7 +343,7 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
   };
 };
 
-export const prepareDebit = (data: DebitProductItemResp) => {
+export const prepareDebitToRender = (data: DebitProductItemResp) => {
   if (!data) {
     return null;
   }
@@ -378,44 +379,42 @@ export const prepareDebitToSend = (data: DebitProductItem) => {
   };
 };
 
-export const prepareProductDetailsDataToSend =
-  (product: any, type: string | number) => {
+export const prepareDetailsToSend = (product: any, type: string | number) => {
+  if (type === productTypesConst.DEBIT) {
+    return {
+      ...prepareDebitToSend(product),
+      product_type: type,
+    };
+  } else if (type === productTypesConst.LOAN) {
+    return {
+      ...prepareLoanToSend(product),
+      product_type: type,
+    };
+  } else if (type === productTypesConst.PREPAID) {
+    return {
+      ...preparePrepaidToSend(product),
+      product_type: type,
+    };
+  } else if (type === productTypesConst.REVOLVING_CREDIT) {
+    return {
+      ...prepareRevolvingCreditToSend(product),
+      product_type: type,
+    };
+  } else if (type === productTypesConst.SAVINGS) {
+    return {
+      ...prepareSavingsToSend(product),
+      product_type: type,
+    };
+  } else {
+    return null;
+  }
+};
 
-    if (type === productTypesConst.DEBIT) {
-      return {
-        ...prepareDebitToSend(product),
-        product_type: type,
-      };
-    } else if (type === productTypesConst.LOAN) {
-      return {
-        ...prepareLoanToSend(product),
-        product_type: type,
-      };
-    } else if (type === productTypesConst.PREPAID) {
-      return {
-        ...preparePrepaidToSend(product),
-        product_type: type,
-      };
-    } else if (type === productTypesConst.REVOLVING_CREDIT) {
-      return {
-        ...prepareRevolvingCreditToSend(product),
-        product_type: type,
-      };
-    } else if (type === productTypesConst.SAVINGS) {
-      return {
-        ...prepareSavingsToSend(product),
-        product_type: type,
-      };
-    } else {
-      return null;
-    }
-  };
-
-export const prepareNewProductDataToSend = (product: Partial<NewProduct>) => {
+export const prepareNewProductToSend = (product: Partial<NewProduct>) => {
   const type = product.productType && product.productType.value;
 
   return {
     ...prepareGeneralProductDataToSend(product),
-    ...prepareProductDetailsDataToSend(product, type),
+    ...prepareDetailsToSend(product, type),
   };
 };

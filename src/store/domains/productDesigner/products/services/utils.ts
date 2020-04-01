@@ -1,6 +1,6 @@
-import { ServicesItemsPrepared } from './types';
+import { IProductServices } from './types';
 
-export const prepareCardServiceDataToSend = (data: Partial<ServicesItemsPrepared>) => {
+export const prepareDataToSend = (data: Partial<IProductServices>) => {
   if (!data) {
     return null;
   }

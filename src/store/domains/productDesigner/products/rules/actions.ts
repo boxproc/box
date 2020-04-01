@@ -4,37 +4,37 @@ import { getFormValues } from 'redux-form';
 import { formNamesConst } from 'consts';
 
 import { activeItemIdSelector } from 'store';
-import { ActionTypeKeys, GetProductRuleAction, UpdateProductRulesAction, } from './actionTypes';
+import { ActionTypeKeys, IGetProductRuleAction, IUpdateProductRuleAction, } from './actionTypes';
 import * as api from './api';
-import { ProductRuleRequestPrepared, ProductRulesItem, ProductRulesItemResp } from './types';
-import { prepareProductRuleDataToSend, prepareProductRuleIdsToSend } from './utils';
+import { IProductRule, IProductRuleData, IProductRuleReqToSend } from './types';
+import { prepareRuleIdsToSend, prepareRuleToSend } from './utils';
 
 import { Thunk } from 'types';
 import { errorDecoratorUtil } from 'utils';
 
-export type GetProductRule = (data: ProductRuleRequestPrepared) => GetProductRuleAction;
-export type HandleGetProductRule = () => Thunk<void>;
+export type TGetProductRule = (data: IProductRuleReqToSend) => IGetProductRuleAction;
+export type THandleGetProductRule = () => Thunk<void>;
 
-export type UpdateProductRules = (data: ProductRulesItemResp) => UpdateProductRulesAction;
-export type HandleUpdateProductRules = (data: Partial<ProductRulesItem>) => Thunk<void>;
+export type TUpdateProductRule = (data: IProductRuleData) => IUpdateProductRuleAction;
+export type THandleUpdateProductRule = (data: Partial<IProductRule>) => Thunk<void>;
 
-export const getProductRule: GetProductRule = data => ({
+export const getProductRule: TGetProductRule = data => ({
   type: ActionTypeKeys.GET_PRODUCT_RULE,
   payload: api.getProductRule(data),
 });
 
-export const updateProductRules: UpdateProductRules = data => ({
-  type: ActionTypeKeys.UPDATE_PRODUCT_RULES,
-  payload: api.updateProductRules(data),
+export const updateProductRule: TUpdateProductRule = data => ({
+  type: ActionTypeKeys.UPDATE_PRODUCT_RULE,
+  payload: api.updateProductRule(data),
 });
 
-export const handleGetProductRule: HandleGetProductRule = () =>
+export const handleGetProductRule: THandleGetProductRule = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const formValues = getFormValues(formNamesConst.PRODUCT_RULES);
         const state = getState();
-        const prepared = prepareProductRuleIdsToSend(formValues(state));
+        const prepared = prepareRuleIdsToSend(formValues(state));
 
         await dispatch(getProductRule({
           product_id: activeItemIdSelector(state),
@@ -45,14 +45,14 @@ export const handleGetProductRule: HandleGetProductRule = () =>
     );
   };
 
-export const handleUpdateProductRules: HandleUpdateProductRules = data =>
+export const handleUpdateProductRule: THandleUpdateProductRule = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
-        const preparedData = prepareProductRuleDataToSend(data);
+        const preparedData = prepareRuleToSend(data);
 
-        await dispatch(updateProductRules({
+        await dispatch(updateProductRule({
           ...preparedData,
           product_id: activeItemIdSelector(state),
         }));

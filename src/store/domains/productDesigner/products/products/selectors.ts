@@ -11,9 +11,9 @@ import { activeItemIdSelector } from 'store/domains/utils';
 
 import { ActionTypeKeys } from './actionTypes';
 import {
-  prepareGeneralProductData,
-  prepareGeneralProductItem,
-  prepareProductDetailsData,
+  prepareCurrGeneralProductToRender,
+  prepareDetailsToRender,
+  prepareGeneralProductToRender,
 } from './utils';
 
 export const selectDefaultProductItems = (state: IStoreState) =>
@@ -30,7 +30,7 @@ export const selectProductItems = createSelector(
     const institution = institutions.find(el => el.id === product.institution_id);
     const institutionName = institution && institution.institutionName;
 
-    return prepareGeneralProductItem(product, institutionName);
+    return prepareGeneralProductToRender(product, institutionName);
   })
 );
 
@@ -47,7 +47,7 @@ export const selectCurrentProduct = createSelector(
     }
 
     return {
-      ...prepareGeneralProductData(product),
+      ...prepareCurrGeneralProductToRender(product),
       institutionId: institutions && institutions.find(el => el.value === product.institution_id),
       currencyCode: currencyCodes && currencyCodes.find(el => el.value === product.currency_code),
     };
@@ -56,18 +56,18 @@ export const selectCurrentProduct = createSelector(
 
 export const selectCurrentProductInstitutionId = createSelector(
   selectCurrentProduct,
-  product => {
-    if (!product || !product.institutionId) {
+  data => {
+    if (!data || !data.institutionId) {
       return null;
     }
 
-    return product.institutionId.value;
+    return data.institutionId.value;
   }
 );
 
 export const selectCurrentProductName = createSelector(
   selectDefaultCurrentProduct,
-  product => product && product.name
+  data => data && data.name
 );
 
 export const selectProductName = createSelector(
@@ -82,12 +82,12 @@ export const selectProductName = createSelector(
 
 export const selectIsProductOverride = createSelector(
   selectCurrentProduct,
-  product => product && product.overridesProductId ? true : false
+  data => data && data.overridesProductId ? true : false
 );
 
 export const selectCurrentProductType = createSelector(
   selectDefaultCurrentProduct,
-  product => product && product.product_type
+  data => data && data.product_type
 );
 
 export const selectDetailsCurrentProductDetails = (state: IStoreState) =>
@@ -101,13 +101,13 @@ export const selectCurrentProductDetails = createSelector(
       return null;
     }
 
-    return prepareProductDetailsData(product, productType);
+    return prepareDetailsToRender(product, productType);
   }
 );
 
 export const selectProductLoanDetails = createSelector(
   selectDetailsCurrentProductDetails,
-  product => product && prepareProductDetailsData(product, 'L')
+  data => data && prepareDetailsToRender(data, 'L')
 );
 
 export const selectDefaultInstitutionProducts = (state: IStoreState) =>
@@ -131,13 +131,13 @@ export const instProductsLoadingSelector = createLoadingSelector([
 
 export const selectInstitutionProducts = createSelector(
   selectDefaultInstitutionProducts,
-  products => products && products.map(product => {
+  data => data && data.map(el => {
     return {
-      id: product.id,
-      name: product.name,
-      productType: product.product_type,
-      defNumOfIntrstFreeInstlmts: product.def_num_of_intrst_free_instlmts,
-      defNumOfInstallments: product.def_num_of_installments,
+      id: el.id,
+      name: el.name,
+      productType: el.product_type,
+      defNumOfIntrstFreeInstlmts: el.def_num_of_intrst_free_instlmts,
+      defNumOfInstallments: el.def_num_of_installments,
     };
   })
 );
@@ -149,13 +149,12 @@ export const selectInstitutionLoanProductsOptions = createSelector(
       return null;
     }
 
-    const loanProducts = products
-      .filter(product => product.product_type === productTypesConst.LOAN);
+    const loanProducts = products.filter(el => el.product_type === productTypesConst.LOAN);
 
-    return loanProducts && loanProducts.asMutable().map(product => {
+    return loanProducts && loanProducts.asMutable().map(el => {
       return {
-        value: product.id,
-        label: product.name,
+        value: el.id,
+        label: el.name,
       };
     });
   }

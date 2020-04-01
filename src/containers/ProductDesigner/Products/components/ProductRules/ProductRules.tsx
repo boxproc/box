@@ -12,10 +12,10 @@ import { codeSnippetsContextMenuItems } from './codeSnippetsContextMenuItems';
 import { eventTypesCodeKeys } from 'consts';
 
 import {
-  HandleGetProductAprsFeesRewards,
   THandleFilterDictionaryEventDataElemsById,
   THandleGetDictionaryEvents,
   THandleGetDictionaryTransactionTypes,
+  THandleGetProductAprsFeesRewards,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -63,7 +63,7 @@ interface IProductRules {
   eventValue: ISelectValue;
   filterDictionaryEventDataElemsById: THandleFilterDictionaryEventDataElemsById;
   getEvents: THandleGetDictionaryEvents;
-  getProductAprsFeesRewards: HandleGetProductAprsFeesRewards;
+  getProductAprsFeesRewards: THandleGetProductAprsFeesRewards;
   getTransactionTypes: THandleGetDictionaryTransactionTypes;
   handleGetRule: (field: string, value: string | ISelectValue) => void;
   initialActionType: string | number;

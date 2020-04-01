@@ -1,18 +1,16 @@
 import React from 'react';
-
-import { Box, Flex } from '@rebass/grid';
 import { Field } from 'redux-form';
 
+import { Box, Flex } from '@rebass/grid';
+
 import { Delimiter, SelectField } from 'components';
-
-import { HandleGetProductServices } from 'store';
-
+import { THandleGetProductServices } from 'store';
 import { ISelectValue } from 'types';
 
 interface IProductServices {
-  productEndpointsServiceOptions: Array<ISelectValue>;
-  productInterfacesServiceOptions: Array<ISelectValue>;
-  getProductServices: HandleGetProductServices;
+  servicesEndpointsOptions: Array<ISelectValue>;
+  servicesInterfacesOptions: Array<ISelectValue>;
+  getProductServices: THandleGetProductServices;
   currentInstitutionId: number;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
@@ -20,8 +18,8 @@ interface IProductServices {
 }
 
 const ProductServices: React.FC<IProductServices> = ({
-  productInterfacesServiceOptions,
-  productEndpointsServiceOptions,
+  servicesInterfacesOptions,
+  servicesEndpointsOptions,
   getProductServices,
   currentInstitutionId,
   isLoadingInterfaces,
@@ -49,7 +47,7 @@ const ProductServices: React.FC<IProductServices> = ({
             component={SelectField}
             placeholder="Select Interface"
             label="Card Management Interface"
-            options={productInterfacesServiceOptions}
+            options={servicesInterfacesOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
             isDisabled={isReadOnly}
@@ -63,7 +61,7 @@ const ProductServices: React.FC<IProductServices> = ({
             component={SelectField}
             placeholder="Select Endpoint"
             label="Card Transactions Endpoint"
-            options={productEndpointsServiceOptions}
+            options={servicesEndpointsOptions}
             isLoading={isLoadingEndpoints}
             isClearable={false}
             isDisabled={isReadOnly}
@@ -77,7 +75,7 @@ const ProductServices: React.FC<IProductServices> = ({
             component={SelectField}
             placeholder="Select Interface"
             label="3D Secure Provider Interface"
-            options={productInterfacesServiceOptions}
+            options={servicesInterfacesOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
             isDisabled={isReadOnly}
@@ -91,7 +89,7 @@ const ProductServices: React.FC<IProductServices> = ({
             component={SelectField}
             placeholder="Select Interface"
             label="Direct Debit Repayment Interface"
-            options={productInterfacesServiceOptions}
+            options={servicesInterfacesOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
             isDisabled={isReadOnly}
@@ -105,7 +103,7 @@ const ProductServices: React.FC<IProductServices> = ({
             component={SelectField}
             placeholder="Select Interface"
             label="Debit Card Repayment Interface"
-            options={productInterfacesServiceOptions}
+            options={servicesInterfacesOptions}
             isLoading={isLoadingInterfaces}
             isClearable={false}
             isDisabled={isReadOnly}

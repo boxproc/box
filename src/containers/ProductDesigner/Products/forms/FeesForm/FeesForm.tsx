@@ -4,17 +4,13 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-
 import { feeRewardsTypesConst, formNamesConst } from 'consts';
-
 import { FeesTable, ProductFees } from 'containers/ProductDesigner/Products/components';
-
-import { HandleAddProductFee } from 'store';
-
+import { THandleAddProductFee } from 'store';
 import { ISelectValue } from 'types';
 
 interface IFeesForm {
-  addProductFee: HandleAddProductFee;
+  addProductFee: THandleAddProductFee;
   isLoading: boolean;
   isAprsLoading: boolean;
   feeApplicationConditionValue: ISelectValue;

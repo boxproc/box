@@ -1,35 +1,35 @@
 import { activeItemIdSelector } from 'store';
 import {
   ActionTypeKeys,
-  GetRepaymentHierarchyAction,
-  UpdateRepaymentHierarchyAction,
+  IGetRepaymentHierarchyAction,
+  IUpdateRepaymentHierarchyAction,
 } from './actionTypes';
 import * as api from './api';
-import { ChangeRepaymentHierarchy, ChangeRepaymentHierarchyRequest } from './types';
-import { prepareRepaymentHierarchyRequest } from './utils';
+import { IRepaymentHierarchyReq, IRepaymentHierarchyReqToSend } from './types';
+import { prepareDataToSend } from './utils';
 
 import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetRepaymentHierarchy = (id: number) => GetRepaymentHierarchyAction;
-export type HandleGetRepaymentHierarchy = () => Thunk<void>;
+export type TGetRepaymentHierarchy = (id: number) => IGetRepaymentHierarchyAction;
+export type THandleGetRepaymentHierarchy = () => Thunk<void>;
 
-export type UpdateRepaymentHierarchy = (data: ChangeRepaymentHierarchyRequest) =>
-  UpdateRepaymentHierarchyAction;
-export type HandleUpdateRepaymentHierarchy = (data: ChangeRepaymentHierarchy) => Thunk<void>;
+export type TUpdateRepaymentHierarchy = (data: IRepaymentHierarchyReqToSend) =>
+  IUpdateRepaymentHierarchyAction;
+export type THandleUpdateRepaymentHierarchy = (data: IRepaymentHierarchyReq) => Thunk<void>;
 
-export const getRepaymentHierarchy: GetRepaymentHierarchy = id => ({
+export const getRepaymentHierarchy: TGetRepaymentHierarchy = id => ({
   type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY,
   payload: api.getRepaymentHierarchy(id),
 });
 
-export const updateRepaymentHierarchy: UpdateRepaymentHierarchy = data => ({
+export const updateRepaymentHierarchy: TUpdateRepaymentHierarchy = data => ({
   type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY,
   payload: api.updateRepaymentHierarchy(data),
 });
 
-export const handleGetRepaymentHierarchy: HandleGetRepaymentHierarchy = () =>
+export const handleGetRepaymentHierarchy: THandleGetRepaymentHierarchy = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -42,11 +42,11 @@ export const handleGetRepaymentHierarchy: HandleGetRepaymentHierarchy = () =>
     );
   };
 
-export const handleUpdateRepaymentHierarchy: HandleUpdateRepaymentHierarchy = data =>
+export const handleUpdateRepaymentHierarchy: THandleUpdateRepaymentHierarchy = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedData = prepareRepaymentHierarchyRequest(data);
+        const preparedData = prepareDataToSend(data);
 
         await dispatch(updateRepaymentHierarchy(preparedData));
         await dispatch(handleGetRepaymentHierarchy());

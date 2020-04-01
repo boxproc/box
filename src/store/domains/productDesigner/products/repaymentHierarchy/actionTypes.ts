@@ -1,4 +1,4 @@
-import { RepaymentHierarchyItems } from './types';
+import { IRepaymentHierarchyItemsData } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
@@ -12,36 +12,36 @@ export enum ActionTypeKeys {
   UPDATE_REPAYMENT_HIERARCHY_REJECTED = 'products/UPDATE_REPAYMENT_HIERARCHY_REJECTED',
 }
 
-export interface GetRepaymentHierarchyAction {
+export interface IGetRepaymentHierarchyAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY;
 }
 
-export interface GetRepaymentHierarchyFulfilledAction {
-  readonly payload: RepaymentHierarchyItems;
+export interface IGetRepaymentHierarchyFulfilledAction {
+  readonly payload: IRepaymentHierarchyItemsData;
   readonly type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY_FULFILLED;
 }
 
-export interface GetRepaymentHierarchyRejectedAction {
+export interface IGetRepaymentHierarchyRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_REPAYMENT_HIERARCHY_REJECTED;
 }
 
-export interface UpdateRepaymentHierarchyAction {
+export interface IUpdateRepaymentHierarchyAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY;
 }
 
-export interface UpdateRepaymentHierarchyFulfilledAction {
+export interface IUpdateRepaymentHierarchyFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY_FULFILLED;
 }
 
-export interface UpdateRepaymentHierarchyRejectedAction {
+export interface IUpdateRepaymentHierarchyRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_REPAYMENT_HIERARCHY_REJECTED;
 }
 
 export type TRepaymentHierarchyAction =
-  | GetRepaymentHierarchyFulfilledAction
-  | UpdateRepaymentHierarchyFulfilledAction;
+  | IGetRepaymentHierarchyFulfilledAction
+  | IUpdateRepaymentHierarchyFulfilledAction;

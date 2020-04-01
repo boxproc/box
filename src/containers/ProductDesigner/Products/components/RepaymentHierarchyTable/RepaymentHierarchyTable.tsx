@@ -17,9 +17,9 @@ import {
 import { iconNamesConst } from 'consts';
 
 import {
-  HandleGetRepaymentHierarchy,
-  HandleUpdateRepaymentHierarchy,
-  RepaymentHierarchy,
+  IRepaymentHierarchy,
+  THandleGetRepaymentHierarchy,
+  THandleUpdateRepaymentHierarchy,
 } from 'store';
 
 import { ITableCell } from 'types';
@@ -44,12 +44,12 @@ const ArrowButtonWrapper = styled.div`
   }
 `;
 
-type TCell<T extends keyof RepaymentHierarchy> = ITableCell<RepaymentHierarchy[T]>;
+type TCell<T extends keyof IRepaymentHierarchy> = ITableCell<IRepaymentHierarchy[T]>;
 
 interface IRepaymentHierarchyTable {
-  data: ImmutableArray<RepaymentHierarchy>;
-  getRepaymentHierarchy: HandleGetRepaymentHierarchy;
-  updateRepaymentHierarchy: HandleUpdateRepaymentHierarchy;
+  data: ImmutableArray<IRepaymentHierarchy>;
+  getRepaymentHierarchy: THandleGetRepaymentHierarchy;
+  updateRepaymentHierarchy: THandleUpdateRepaymentHierarchy;
   isReadOnly: boolean;
   isUpdating: boolean;
 }

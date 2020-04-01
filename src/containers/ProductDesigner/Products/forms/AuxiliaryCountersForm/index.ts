@@ -5,20 +5,15 @@ import AuxiliaryCountersForm from './AuxiliaryCountersForm';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
   handleUpdateProductAuxCounters,
+  isProductAuxCountersUpdatingSelector,
   IStoreState,
-  ProductAuxCountersActionTypes,
-  selectProductAuxCounters,
+  productAuxCountersSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductAuxCountersActionTypes.UPDATE_PRODUCT_AUX_COUNTERS,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  initialValues: selectProductAuxCounters(state),
+  isLoading: isProductAuxCountersUpdatingSelector(state),
+  initialValues: productAuxCountersSelector(state),
   currentProductId: activeItemIdSelector(state),
 });
 

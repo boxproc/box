@@ -1,8 +1,8 @@
 import { actionTypesOptions } from 'consts';
 
-import { ProductRulesItem, ProductRulesItemResp } from './types';
+import { IProductRule, IProductRuleData } from './types';
 
-export const prepareProductRuleData = (rule: ProductRulesItemResp) => {
+export const prepareRuleToRender = (rule: IProductRuleData) => {
   if (!rule) {
     return null;
   }
@@ -14,7 +14,7 @@ export const prepareProductRuleData = (rule: ProductRulesItemResp) => {
   };
 };
 
-export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) => {
+export const prepareRuleToSend = (rule: Partial<IProductRule>) => {
   if (!rule) {
     return null;
   }
@@ -28,7 +28,7 @@ export const prepareProductRuleDataToSend = (rule: Partial<ProductRulesItem>) =>
   };
 };
 
-export const prepareProductRuleIdsToSend = (data: Partial<ProductRulesItem>) => {
+export const prepareRuleIdsToSend = (data: Partial<IProductRule>) => {
   if (!data || !data.eventId || !data.actionType) {
     return null;
   }

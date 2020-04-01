@@ -1,27 +1,20 @@
 import React from 'react';
-
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst } from 'consts';
-
-import {
-  HandleGetProductServices,
-  HandleUpdateCardService,
-} from 'store';
-
 import { Services } from 'containers/ProductDesigner/Products/components';
+import { THandleGetProductServices, THandleUpdateProductServices } from 'store';
 import { ISelectValue } from 'types';
 
 interface IServicesForm extends ISpinner {
   onCancel?: () => void;
   currentUsersGroupId: number;
   currentInstitutionId: number;
-  updateCardServices: HandleUpdateCardService;
-  productEndpointsServiceOptions: Array<ISelectValue>;
-  productInterfacesServiceOptions: Array<ISelectValue>;
-  getProductServices: HandleGetProductServices;
+  updateProductServices: THandleUpdateProductServices;
+  servicesEndpointsOptions: Array<ISelectValue>;
+  servicesInterfacesOptions: Array<ISelectValue>;
+  getProductServices: THandleGetProductServices;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isReadOnly: boolean;
@@ -32,11 +25,11 @@ type TServicesForm = IServicesForm & InjectedFormProps<{}, IServicesForm>;
 const ServicesForm: React.FC<TServicesForm> = ({
   currentUsersGroupId,
   currentInstitutionId,
-  updateCardServices,
+  updateProductServices,
   handleSubmit,
   onCancel,
-  productEndpointsServiceOptions,
-  productInterfacesServiceOptions,
+  servicesEndpointsOptions,
+  servicesInterfacesOptions,
   getProductServices,
   isLoadingInterfaces,
   isLoadingEndpoints,
@@ -45,18 +38,18 @@ const ServicesForm: React.FC<TServicesForm> = ({
   isReadOnly,
 }) => {
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => updateCardServices({
+    handleSubmit(data => updateProductServices({
       ...data,
       id: currentUsersGroupId,
     })),
-    [handleSubmit, updateCardServices]
+    [handleSubmit, updateProductServices]
   );
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <Services
-        productEndpointsServiceOptions={productEndpointsServiceOptions}
-        productInterfacesServiceOptions={productInterfacesServiceOptions}
+        servicesEndpointsOptions={servicesEndpointsOptions}
+        servicesInterfacesOptions={servicesInterfacesOptions}
         getProductServices={getProductServices}
         isLoadingInterfaces={isLoadingInterfaces}
         isLoadingEndpoints={isLoadingEndpoints}
